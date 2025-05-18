@@ -1,146 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Curated classic cinema, indie films, and documentaries on The Ben Palmer Show.">
-    <meta name="author" content="Ben Palmer">
-    <meta name="keywords" content="Ben Palmer Show, HowdyStranger, Kanopy, classic cinema, indie films, documentaries">
-    <title>Watch - The Ben Palmer Show</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        nav.nav-links {
-            background-color: #1a1a1a;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .nav-link {
-            color: #fff;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .nav-link:hover {
-            color: #4CAF50;
-        }
-
-        main {
-            flex: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .video-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .video-card iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
-
-        .video-card h3 {
-            padding: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .video-card p {
-            padding: 0 1rem 1rem;
-            color: #666;
-        }
-
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .video-card iframe {
-                height: 180px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="watch.html" aria-current="page">🎥 Watch</a>
-        <a class="nav-link" href="read.html">📚 Read</a>
-        <a class="nav-link" href="listen.html">📻 Listen</a>
-    </nav>
-
-    <main>
-        <h1>Watch Curated Films</h1>
-        <section class="video-grid" aria-label="Curated video selection">
-            <article class="video-card">
-                <iframe allow="encrypted-media" src="https://www.kanopy.com/en/sfpl/embed/video/14632473" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen aria-label="The Great Beauty"></iframe>
-                <h3>The Great Beauty</h3>
-                <p>A visually stunning Italian drama exploring art, beauty, and existential reflection in Rome.</p>
-            </article>
-            <article class="video-card">
-                <iframe allow="encrypted-media" src="https://www.kanopy.com/en/sfpl/embed/video/15088237" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen aria-label="Moonlight"></iframe>
-                <h3>Moonlight</h3>
-                <p>An Oscar-winning coming-of-age story about identity and self-discovery.</p>
-            </article>
-            <article class="video-card">
-                <iframe allow="encrypted-media" src="https://www.kanopy.com/en/sfpl/embed/video/14545556" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen aria-label="Paris, Texas"></iframe>
-                <h3>Paris, Texas</h3>
-                <p>A poetic exploration of family, loss, and redemption in the American Southwest.</p>
-            </article>
-            <article class="video-card">
-                <iframe allow="encrypted-media" src="https://www.kanopy.com/en/sfpl/embed/video/13182305" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen aria-label="The Act of Killing"></iframe>
-                <h3>The Act of Killing</h3>
-                <p>A chilling documentary examining the Indonesian mass killings of 1965–66.</p>
-            </article>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 The Ben Palmer Show. All rights reserved.</p>
-        <p>
-            <a href="https://github.com/benpalmershow" aria-label="GitHub profile">GitHub</a> |
-            <a href="https://x.com/benpalmershow" aria-label="X profile">X</a>
-        </p>
-    </footer>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+    />
+    <title>Howdy, Stranger</title>
+    <meta
+      name="description"
+      content="The Ben Palmer Show hosted by HowdyStranger."
+    />
+  </head>
+  <body>
+    <nav class="nav-links">
+    <a class="nav-link" href="index.html">Home<a>
+    <a class="nav-link" href="watch.html">🎥watch</a>
+    <a class="nav-link" href="read.html">📚read</a>
+    <a class="nav-link" href="listen.html">📻listen</a>
+</nav>
+    <h1>Howdy, Stranger</h1>
+<iframe allow='encrypted-media;' width='640' height='390' src='https://www.kanopy.com/en/sfpl/embed/video/14632473' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+ <iframe allow='encrypted-media;' width='640' height='390' src='https://www.kanopy.com/en/sfpl/embed/video/15088237' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+<iframe allow='encrypted-media;' width='640' height='390' src='https://www.kanopy.com/en/sfpl/embed/video/14545556' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+<iframe allow='encrypted-media;' width='640' height='390' src='https://www.kanopy.com/en/sfpl/embed/video/13182305' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
 </body>
 </html>

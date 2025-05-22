@@ -71,7 +71,7 @@
 }
 
 .content .number:empty {
-  border: none; /* Hide border for empty cells */
+  border: none;
 }
 
 .content a {
@@ -83,7 +83,6 @@
   color: #666666;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 600px) {
   .content table {
     display: block;
@@ -91,6 +90,8 @@
     -webkit-overflow-scrolling: touch;
   }
   .content th, .content td {
-    min-width: 80px;
+    min-width: 60px;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.3rem;
   }
 }

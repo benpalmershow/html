@@ -18,7 +18,7 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 01:48 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 01:54 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       <table>
         <thead>
@@ -35,7 +35,7 @@
         </thead>
         <tbody></tbody>
       </table>
-      <p id="errorMessage" style="color: red; display: none;">API rate limit exceeded or error occurred. Using last known data.</p>
+      <p id="errorMessage" style="color: red; display: none;">API or rendering error. Using last known data or check console.</p>
       <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
     </div>
     <script>
@@ -82,7 +82,7 @@
           return { revenue, revenueGrowth, grossMargin, ebitda, netIncome, marketCap, cash, debt };
         } catch (error) {
           console.error(`Fetch error for ${ticker}:`, error);
-          return null; // Trigger fallback
+          return null;
         }
       }
 
@@ -91,10 +91,13 @@
         const tbody = document.querySelector("tbody");
         const errorMessage = document.getElementById("errorMessage");
 
+        // Debug device info
+        const isIPhone = /iPhone/.test(navigator.userAgent);
+        console.log(`Device: ${isIPhone ? 'iPhone' : 'Not iPhone'}, User Agent: ${navigator.userAgent}`);
+
         for (const ticker of companies) {
           let data = await fetchFinancialData(ticker);
           if (!data) {
-            // Use fallback data if API fails
             data = fallbackData[ticker];
             errorMessage.style.display = "block";
           }

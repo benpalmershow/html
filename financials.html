@@ -18,24 +18,24 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 01:24 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 01:35 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       <table>
         <thead>
           <tr>
-            <th>Company</th>
-            <th>Revenue</th>
-            <th>Gross Margin</th>
+            <th>Co.</th>
+            <th>Rev</th>
+            <th>Gross Marg</th>
             <th>EBITDA</th>
-            <th>Net Income</th>
-            <th>Market Cap</th>
+            <th>Net Inc</th>
+            <th>Mkt Cap</th>
             <th>Cash</th>
             <th>Debt</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-      <p>Notes: All figures are in USD unless otherwise specified (e.g., CAD for PRLTO market cap). YoY growth reflects performance compared to the previous year. Verify data by clicking the company ticker to view SEC filings.</p>
+      <p>Notes: Figures in $USD unless specified (e.g., CAD for PRLTO Mkt Cap). YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
     </div>
     <script>
       async function fetchFinancialData(ticker) {
@@ -51,14 +51,14 @@
             fetch(overviewUrl).then(res => res.json())
           ]);
 
-          const revenue = incomeRes.annualReports?.[0]?.totalRevenue || "N/A";
-          const revenueGrowth = overviewRes.RevenueGrowth || "N/A";
-          const grossMargin = overviewRes.GrossMarginTTM || "N/A";
-          const ebitda = incomeRes.annualReports?.[0]?.ebitda || "N/A";
-          const netIncome = incomeRes.annualReports?.[0]?.netIncome || "N/A";
-          const marketCap = overviewRes.MarketCapitalization || "N/A";
-          const cash = balanceRes.annualReports?.[0]?.cashAndCashEquivalentsAtCarryingValue || "N/A";
-          const debt = balanceRes.annualReports?.[0]?.longTermDebt || "N/A";
+          const revenue = incomeRes.annualReports?.[0]?.totalRevenue || null;
+          const revenueGrowth = overviewRes.RevenueGrowth || null;
+          const grossMargin = overviewRes.GrossMarginTTM || null;
+          const ebitda = incomeRes.annualReports?.[0]?.ebitda || null;
+          const netIncome = incomeRes.annualReports?.[0]?.netIncome || null;
+          const marketCap = overviewRes.MarketCapitalization || null;
+          const cash = balanceRes.annualReports?.[0]?.cashAndCashEquivalentsAtCarryingValue || null;
+          const debt = balanceRes.annualReports?.[0]?.longTermDebt || null;
           const sourceUrl = `https://www.sec.gov/edgar/search/#/q=${ticker}`;
 
           return { revenue, revenueGrowth, grossMargin, ebitda, netIncome, marketCap, cash, debt, sourceUrl };
@@ -78,13 +78,13 @@
             const row = tbody.insertRow();
             const cell0 = row.insertCell();
             cell0.innerHTML = `<a href="${data.sourceUrl}" target="_blank">${ticker}</a>`;
-            row.insertCell().textContent = data.revenue ? `${(data.revenue / 1e6).toFixed(0)}M, ${data.revenueGrowth ? '+' + data.revenueGrowth + '% yoy' : ''}` : "N/A";
-            row.insertCell().textContent = data.grossMargin ? `${data.grossMargin}%` : "N/A";
-            row.insertCell().textContent = data.ebitda ? `${(data.ebitda / 1e6).toFixed(1)}M` : "N/A";
-            row.insertCell().textContent = data.netIncome ? `${(data.netIncome / 1e6).toFixed(1)}M` : "N/A";
-            row.insertCell().textContent = data.marketCap ? `${(data.marketCap / 1e9).toFixed(2)}B` : "N/A";
-            row.insertCell().textContent = data.cash ? `${(data.cash / 1e6).toFixed(1)}M` : "N/A";
-            row.insertCell().textContent = data.debt ? `${(data.debt / 1e6).toFixed(1)}M` : "N/A";
+            row.insertCell().textContent = data.revenue ? `$${Math.round(data.revenue / 1e6)}M${data.revenueGrowth ? ', +' + data.revenueGrowth + '% yoy' : ''}` : '';
+            row.insertCell().textContent = data.grossMargin ? `${data.grossMargin}%` : '';
+            row.insertCell().textContent = data.ebitda ? `$${Math.round(data.ebitda / 1e6)}M` : '';
+            row.insertCell().textContent = data.netIncome ? `$${Math.round(data.netIncome / 1e6)}M` : '';
+            row.insertCell().textContent = data.marketCap ? `$${Math.round(data.marketCap / 1e9)}B` : '';
+            row.insertCell().textContent = data.cash ? `$${Math.round(data.cash / 1e6)}M` : '';
+            row.insertCell().textContent = data.debt ? `$${Math.round(data.debt / 1e6)}M` : '';
             row.cells[1].className = "number";
             row.cells[2].className = "number";
             row.cells[3].className = "number";

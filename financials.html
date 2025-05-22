@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
     <title>Financials at a Glance | Howdy, Stranger</title>
-    <meta name="description" content="Financial overview of SEZL, PAYS, DAVE, and PRLTO by HowdyStranger.">
+    <meta name="description" content="Financial overview of SEZL, PAYS, and DAVE by HowdyStranger.">
   </head>
   <body>
     <nav class="nav-links">
@@ -18,7 +18,7 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 01:35 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 01:41 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       <table>
         <thead>
@@ -35,7 +35,7 @@
         </thead>
         <tbody></tbody>
       </table>
-      <p>Notes: Figures in $USD unless specified (e.g., CAD for PRLTO Mkt Cap). YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
+      <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
     </div>
     <script>
       async function fetchFinancialData(ticker) {
@@ -53,13 +53,24 @@
 
           const revenue = incomeRes.annualReports?.[0]?.totalRevenue || null;
           const revenueGrowth = overviewRes.RevenueGrowth || null;
-          const grossMargin = overviewRes.GrossMarginTTM || null;
+          let grossMargin = overviewRes.GrossMarginTTM || null;
           const ebitda = incomeRes.annualReports?.[0]?.ebitda || null;
           const netIncome = incomeRes.annualReports?.[0]?.netIncome || null;
           const marketCap = overviewRes.MarketCapitalization || null;
           const cash = balanceRes.annualReports?.[0]?.cashAndCashEquivalentsAtCarryingValue || null;
-          const debt = balanceRes.annualReports?.[0]?.longTermDebt || null;
+          let debt = incomeRes.annualReports?.[0]?.longTermDebt || null;
+          const totalLiabilities = balanceRes.annualReports?.[0]?.totalLiabilities || null;
           const sourceUrl = `https://www.sec.gov/edgar/search/#/q=${ticker}`;
+
+          // Infer gross margin if missing but revenue and ebitda are available
+          if (!grossMargin && revenue && ebitda && revenue > 0) {
+            grossMargin = ((ebitda / revenue) * 100).toFixed(1);
+          }
+
+          // Infer debt from total liabilities if longTermDebt is missing
+          if (!debt && totalLiabilities) {
+            debt = totalLiabilities;
+          }
 
           return { revenue, revenueGrowth, grossMargin, ebitda, netIncome, marketCap, cash, debt, sourceUrl };
         } catch (error) {
@@ -69,7 +80,7 @@
       }
 
       async function populateTable() {
-        const companies = ["SEZL", "PAYS", "DAVE", "PRLTO"];
+        const companies = ["SEZL", "PAYS", "DAVE"];
         const tbody = document.querySelector("tbody");
 
         for (const ticker of companies) {

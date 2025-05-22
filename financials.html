@@ -18,7 +18,7 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 01:41 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 01:48 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       <table>
         <thead>
@@ -35,9 +35,17 @@
         </thead>
         <tbody></tbody>
       </table>
+      <p id="errorMessage" style="color: red; display: none;">API rate limit exceeded or error occurred. Using last known data.</p>
       <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
     </div>
     <script>
+      // Fallback data from image
+      const fallbackData = {
+        "SEZL": { revenue: 105000000, revenueGrowth: 123, grossMargin: 71, ebitda: 63000000, netIncome: 36000000, marketCap: 3290000000, cash: 89000000, debt: 71000000 },
+        "PAYS": { revenue: 19000000, revenueGrowth: 41, grossMargin: 63, ebitda: 4300000, netIncome: 2600000, marketCap: 197000000, cash: 6800000, debt: 2800000 },
+        "DAVE": { revenue: 108000000, revenueGrowth: 47, grossMargin: 68, ebitda: 37000000, netIncome: 29000000, marketCap: 2430000000, cash: 88000000, debt: 76000000 }
+      };
+
       async function fetchFinancialData(ticker) {
         const apiKey = "HX66SP8T1PT1AEJK";
         const incomeUrl = `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${ticker}&apikey=${apiKey}`;
@@ -60,55 +68,60 @@
           const cash = balanceRes.annualReports?.[0]?.cashAndCashEquivalentsAtCarryingValue || null;
           let debt = incomeRes.annualReports?.[0]?.longTermDebt || null;
           const totalLiabilities = balanceRes.annualReports?.[0]?.totalLiabilities || null;
-          const sourceUrl = `https://www.sec.gov/edgar/search/#/q=${ticker}`;
 
           // Infer gross margin if missing but revenue and ebitda are available
           if (!grossMargin && revenue && ebitda && revenue > 0) {
             grossMargin = ((ebitda / revenue) * 100).toFixed(1);
           }
 
-          // Infer debt from total liabilities if longTermDebt is missing
-          if (!debt && totalLiabilities) {
-            debt = totalLiabilities;
+          // Infer debt from total liabilities if longTermDebt is missing or NaN
+          if (!debt || isNaN(debt)) {
+            debt = totalLiabilities || null;
           }
 
-          return { revenue, revenueGrowth, grossMargin, ebitda, netIncome, marketCap, cash, debt, sourceUrl };
+          return { revenue, revenueGrowth, grossMargin, ebitda, netIncome, marketCap, cash, debt };
         } catch (error) {
-          console.error(`Error fetching data for ${ticker}:`, error);
-          return null;
+          console.error(`Fetch error for ${ticker}:`, error);
+          return null; // Trigger fallback
         }
       }
 
       async function populateTable() {
         const companies = ["SEZL", "PAYS", "DAVE"];
         const tbody = document.querySelector("tbody");
+        const errorMessage = document.getElementById("errorMessage");
 
         for (const ticker of companies) {
-          const data = await fetchFinancialData(ticker);
-          if (data) {
-            const row = tbody.insertRow();
-            const cell0 = row.insertCell();
-            cell0.innerHTML = `<a href="${data.sourceUrl}" target="_blank">${ticker}</a>`;
-            row.insertCell().textContent = data.revenue ? `$${Math.round(data.revenue / 1e6)}M${data.revenueGrowth ? ', +' + data.revenueGrowth + '% yoy' : ''}` : '';
-            row.insertCell().textContent = data.grossMargin ? `${data.grossMargin}%` : '';
-            row.insertCell().textContent = data.ebitda ? `$${Math.round(data.ebitda / 1e6)}M` : '';
-            row.insertCell().textContent = data.netIncome ? `$${Math.round(data.netIncome / 1e6)}M` : '';
-            row.insertCell().textContent = data.marketCap ? `$${Math.round(data.marketCap / 1e9)}B` : '';
-            row.insertCell().textContent = data.cash ? `$${Math.round(data.cash / 1e6)}M` : '';
-            row.insertCell().textContent = data.debt ? `$${Math.round(data.debt / 1e6)}M` : '';
-            row.cells[1].className = "number";
-            row.cells[2].className = "number";
-            row.cells[3].className = "number";
-            row.cells[4].className = "number";
-            row.cells[5].className = "number";
-            row.cells[6].className = "number";
-            row.cells[7].className = "number";
+          let data = await fetchFinancialData(ticker);
+          if (!data) {
+            // Use fallback data if API fails
+            data = fallbackData[ticker];
+            errorMessage.style.display = "block";
           }
+
+          const row = tbody.insertRow();
+          const cell0 = row.insertCell();
+          cell0.innerHTML = `<a href="https://www.sec.gov/edgar/search/#/q=${ticker}" target="_blank">${ticker}</a>`;
+          row.insertCell().textContent = data.revenue ? `$${Math.round(data.revenue / 1e6)}M${data.revenueGrowth ? ', +' + data.revenueGrowth + '% yoy' : ''}` : '';
+          row.insertCell().textContent = data.grossMargin !== null ? `${data.grossMargin}%` : '';
+          row.insertCell().textContent = data.ebitda ? `$${Math.round(data.ebitda / 1e6)}M` : '';
+          row.insertCell().textContent = data.netIncome ? `$${Math.round(data.netIncome / 1e6)}M` : '';
+          row.insertCell().textContent = data.marketCap ? `$${Math.round(data.marketCap / 1e9)}B` : '';
+          row.insertCell().textContent = data.cash ? `$${Math.round(data.cash / 1e6)}M` : '';
+          row.insertCell().textContent = data.debt ? `$${Math.round(data.debt / 1e6)}M` : '';
+          row.cells[1].className = "number";
+          row.cells[2].className = "number";
+          row.cells[3].className = "number";
+          row.cells[4].className = "number";
+          row.cells[5].className = "number";
+          row.cells[6].className = "number";
+          row.cells[7].className = "number";
         }
 
         const timestamp = document.getElementById("timestamp");
         timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
       }
+
       document.addEventListener("DOMContentLoaded", populateTable);
     </script>
   </body>

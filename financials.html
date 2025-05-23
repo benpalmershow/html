@@ -18,7 +18,7 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 01:54 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 05:54 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       <table>
         <thead>
@@ -33,9 +33,9 @@
             <th>Debt</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="tableBody"></tbody>
       </table>
-      <p id="errorMessage" style="color: red; display: none;">API or rendering error. Using last known data or check console.</p>
+      <p id="errorMessage" style="color: red; display: none;">Error loading data on this device. Using fallback data. If issue persists, clear Safari cache (Settings > Safari > Clear History and Website Data).</p>
       <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
     </div>
     <script>
@@ -69,12 +69,10 @@
           let debt = incomeRes.annualReports?.[0]?.longTermDebt || null;
           const totalLiabilities = balanceRes.annualReports?.[0]?.totalLiabilities || null;
 
-          // Infer gross margin if missing but revenue and ebitda are available
           if (!grossMargin && revenue && ebitda && revenue > 0) {
             grossMargin = ((ebitda / revenue) * 100).toFixed(1);
           }
 
-          // Infer debt from total liabilities if longTermDebt is missing or NaN
           if (!debt || isNaN(debt)) {
             debt = totalLiabilities || null;
           }
@@ -88,18 +86,24 @@
 
       async function populateTable() {
         const companies = ["SEZL", "PAYS", "DAVE"];
-        const tbody = document.querySelector("tbody");
+        const tbody = document.getElementById("tableBody");
         const errorMessage = document.getElementById("errorMessage");
-
-        // Debug device info
         const isIPhone = /iPhone/.test(navigator.userAgent);
-        console.log(`Device: ${isIPhone ? 'iPhone' : 'Not iPhone'}, User Agent: ${navigator.userAgent}`);
+
+        // Force fallback on iPhone due to loading issue
+        let useFallback = isIPhone;
+        if (isIPhone) {
+          console.log("iPhone detected, forcing fallback data.");
+          errorMessage.style.display = "block";
+        }
 
         for (const ticker of companies) {
-          let data = await fetchFinancialData(ticker);
+          let data = useFallback ? null : await fetchFinancialData(ticker);
           if (!data) {
             data = fallbackData[ticker];
-            errorMessage.style.display = "block";
+            if (!useFallback) {
+              errorMessage.style.display = "block";
+            }
           }
 
           const row = tbody.insertRow();

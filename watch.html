@@ -1,263 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger." />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
-    <link rel="stylesheet" href="/css/body.css" />
-    <title>Howdy, Stranger</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch movie trailers for Jeanne du Barry and other films.">
+    <meta name="keywords" content="movie trailers, Jeanne du Barry, YouTube, watch">
+    <meta name="author" content="Your Name">
+    <title>Movie Trailers - Watch Now</title>
     <style>
-      /* Navigation adjustments (consistent with financials.html) */
-      .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        padding: 0.5rem 0;
-      }
-      
-      .nav-link {
-        padding: 0.4rem 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        white-space: nowrap;
-        flex: 1;
-        text-align: center;
-        min-width: fit-content;
-      }
-      
-      /* Content container */
-      .content {
-        padding: 0 0.75rem;
-        max-width: 100vw;
-        overflow-x: hidden;
-      }
-      
-      h1 {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.2;
-      }
-      
-      #timestamp {
-        font-size: 0.75rem;
-        color: #666;
-        margin-bottom: 1rem;
-        line-height: 1.3;
-      }
-      
-      /* Article links (used for buttons) */
-      .article-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        margin: 1rem 0;
-      }
-      
-      .article-links a {
-        color: #0066cc;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: bold;
-        line-height: 1.4;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        background-color: #f0f8ff;
-        transition: background-color 0.3s, transform 0.2s;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 120px;
-        text-align: center;
-      }
-      
-      .article-links a:hover {
-        text-decoration: none;
-        background-color: #e0e7ff;
-        transform: scale(1.05);
-      }
-      
-      /* Button group for links */
-      .button-group {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-      
-      /* YouTube video embeds */
-      .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        margin-bottom: 1rem;
-      }
-      
-      .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-      
-      /* Very small screens - stack navigation vertically */
-      @media (max-width: 380px) {
-        .nav-links {
-          flex-direction: column;
-        }
-        
-        .nav-link {
-          flex: none;
-        }
-        
-        h1 {
-          font-size: 1.2rem;
-        }
-        
-        .article-links a {
-          font-size: 0.85rem;
-        }
-      }
-      
-      /* iPhone-specific adjustments (portrait, e.g., 375px) */
-      @media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-        .content {
-          padding: 0 0.5rem;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
         }
         h1 {
-          font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 20px;
         }
-        #timestamp {
-          font-size: 0.65rem;
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
-        .article-links a {
-          font-size: 0.8rem;
-          line-height: 1.3;
-          letter-spacing: -0.01rem;
-          padding: 0.4rem 0.8rem;
+        .video-wrapper {
+            max-width: 560px;
+            width: 100%;
         }
-      }
-      
-      /* Android-specific adjustments (e.g., 360px to 412px) */
-      @media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
-        .content {
-          padding: 0 0.5rem;
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
         }
-        h1 {
-          font-size: 1.15rem;
+        @media (max-width: 600px) {
+            iframe {
+                height: 200px;
+            }
         }
-        #timestamp {
-          font-size: 0.7rem;
-        }
-        .article-links a {
-          font-size: 0.82rem;
-          line-height: 1.3;
-          padding: 0.4rem 0.8rem;
-        }
-      }
-      
-      /* Medium screens */
-      @media (min-width: 768px) {
-        .content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 1.5rem;
-        }
-        
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        #timestamp {
-          font-size: 0.85rem;
-        }
-        
-        .article-links a {
-          font-size: 1rem;
-        }
-      }
-      
-      /* Large screens */
-      @media (min-width: 1024px) {
-        h1 {
-          font-size: 2rem;
-        }
-        
-        .article-links a {
-          font-size: 1.1rem;
-        }
-      }
-      
-      /* Improve touch targets on mobile */
-      @media (hover: none) and (pointer: coarse) {
-        .nav-link {
-          min-height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .article-links a {
-          min-height: 44px;
-          padding: 0.5rem 1rem;
-        }
-      }
     </style>
-  </head>
-  <body>
-    <nav class="nav-links">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="watch.html">🎥watch</a>
-      <a class="nav-link" href="read.html">📚read</a>
-      <a class="nav-link" href="listen.html">📻listen</a>
-    </nav>
-    <div class="content">
-      <h1>Howdy, Stranger</h1>
-      <p id="timestamp">Updated as of 07:11 PM PDT, Thursday, May 22, 2025.</p>
-      <div class="article-links">
-        <div>
-          <h2>Holy Spider</h2>
-          <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/4u3fdN-fdQA" title="Holy Spider Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="button-group">
-            <a href="https://www.youtube.com/watch?v=4u3fdN-fdQA">Holy Spider Trailer</a>
-            <a href="https://www.imdb.com/title/tt18550140/">Holy Spider IMDb</a>
-            <a href="https://www.kanopy.com/en/sfpl/video/14632473">Holy Spider Kanopy</a>
-          </div>
+</head>
+<body>
+    <h1>Watch Movie Trailers</h1>
+    <div class="video-container">
+        <!-- Video 1 -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
+                    title="Movie Trailer 1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
         </div>
-        <div>
-          <h2>The Pact</h2>
-          <div class="button-group">
-            <a href="https://www.imdb.com/title/tt15986924/">The Pact IMDb</a>
-            <a href="https://www.kanopy.com/en/sfpl/video/15088237">The Pact Kanopy</a>
-          </div>
+        <!-- Video 2 -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
+                    title="Movie Trailer 2" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
         </div>
-        <div>
-          <h2>Jeanne du Barry</h2>
-          <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/3dx6vS8zhBE" title="Jeanne du Barry Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="button-group">
-            <a href="https://www.youtube.com/watch?v=3dx6vS8zhBE">Jeanne du Barry Trailer</a>
-            <a href="https://www.imdb.com/title/tt20267886/">Jeanne du Barry IMDb</a>
-            <a href="https://www.kanopy.com/en/sfpl/video/14545556">Jeanne du Barry Kanopy</a>
-          </div>
+        <!-- Video 3 -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
+                    title="Movie Trailer 3" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
         </div>
-      </div>
     </div>
-    <script>
-      // Update timestamp dynamically
-      document.addEventListener("DOMContentLoaded", () => {
-        const timestamp = document.getElementById("timestamp");
-        timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
-      });
-    </script>
-  </body>
+</body>
 </html>

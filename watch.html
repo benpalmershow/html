@@ -1,73 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Watch movie trailers for Jeanne du Barry and other films.">
-    <meta name="keywords" content="movie trailers, Jeanne du Barry, YouTube, watch">
-    <meta name="author" content="Your Name">
-    <title>Movie Trailers - Watch Now</title>
+    <meta name="description" content="Watch movie trailers including Jeanne du Barry on The Ben Palmer Show hosted by HowdyStranger.">
+    <meta name="keywords" content="movie trailers, Jeanne du Barry, YouTube, watch, HowdyStranger">
+    <meta name="author" content="HowdyStranger">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <link rel="stylesheet" href="/css/body.css">
+    <title>Watch Movie Trailers - Howdy, Stranger</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+      /* Navigation adjustments (consistent with provided HTML) */
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+      }
+      
+      .nav-link {
+        padding: 0.4rem 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        flex: 1;
+        text-align: center;
+        min-width: fit-content;
+      }
+      
+      /* Content container */
+      .content {
+        padding: 0 0.75rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+      
+      #timestamp {
+        font-size: 0.75rem;
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      
+      /* Video container */
+      .video-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+      
+      .video-wrapper {
+        max-width: 560px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      
+      iframe {
+        width: 100%;
+        height: 315px;
+        border: none;
+      }
+      
+      .video-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #0066cc;
+      }
+      
+      /* Very small screens - stack navigation vertically */
+      @media (max-width: 380px) {
+        .nav-links {
+          flex-direction: column;
+        }
+        
+        .nav-link {
+          flex: none;
+        }
+        
+        h1 {
+          font-size: 1.2rem;
+        }
+        
+        .video-title {
+          font-size: 0.85rem;
+        }
+        
+        iframe {
+          height: 200px;
+        }
+      }
+      
+      /* iPhone-specific adjustments (portrait, e.g., 375px) */
+      @media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+        .content {
+          padding: 0 0.5rem;
         }
         h1 {
-            text-align: center;
-            margin-bottom: 20px;
+          font-size: 1.1rem;
         }
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        #timestamp {
+          font-size: 0.65rem;
         }
-        .video-wrapper {
-            max-width: 560px;
-            width: 100%;
+        .video-title {
+          font-size: 0.8rem;
+          line-height: 1.3;
+          letter-spacing: -0.01rem;
         }
         iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
+          height: 200px;
         }
-        @media (max-width: 600px) {
-            iframe {
-                height: 200px;
-            }
+      }
+      
+      /* Android-specific adjustments (e.g., 360px to 412px) */
+      @media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
+        .content {
+          padding: 0 0.5rem;
         }
+        h1 {
+          font-size: 1.15rem;
+        }
+        #timestamp {
+          font-size: 0.7rem;
+        }
+        .video-title {
+          font-size: 0.82rem;
+          line-height: 1.3;
+        }
+        iframe {
+          height: 200px;
+        }
+      }
+      
+      /* Medium screens */
+      @media (min-width: 768px) {
+        .content {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1.5rem;
+        }
+        
+        h1 {
+          font-size: 1.8rem;
+        }
+        
+        #timestamp {
+          font-size: 0.85rem;
+        }
+        
+        .video-title {
+          font-size: 1rem;
+        }
+      }
+      
+      /* Large screens */
+      @media (min-width: 1024px) {
+        h1 {
+          font-size: 2rem;
+        }
+        
+        .video-title {
+          font-size: 1.1rem;
+        }
+      }
+      
+      /* Improve touch targets on mobile */
+      @media (hover: none) and (pointer: coarse) {
+        .nav-link {
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .video-title {
+          min-height: 44px;
+          display: inline-flex;
+          align-items: center;
+          padding: 0.5rem 0;
+        }
+      }
     </style>
-</head>
-<body>
-    <h1>Watch Movie Trailers</h1>
-    <div class="video-container">
+  </head>
+  <body>
+    <nav class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="watch.html">🎥watch</a>
+      <a class="nav-link" href="read.html">📚read</a>
+      <a class="nav-link" href="listen.html">📻listen</a>
+    </nav>
+    <div class="content">
+      <h1>Watch Movie Trailers</h1>
+      <p id="timestamp">Updated as of 07:22 PM PDT, Thursday, May 22, 2025.</p>
+      <p>Explore our curated selection of movie trailers, including <em>Jeanne du Barry</em> and other exciting films.</p>
+      <div class="video-container">
         <!-- Video 1 -->
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
-                    title="Movie Trailer 1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+          <div class="video-title">Jeanne du Barry Trailer #1 (2024)</div>
+          <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
+                  title="Jeanne du Barry Trailer #1 (2024)" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
         </div>
         <!-- Video 2 -->
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
-                    title="Movie Trailer 2" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+          <div class="video-title">Movie Trailer 2</div>
+          <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
+                  title="Movie Trailer 2" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
         </div>
         <!-- Video 3 -->
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
-                    title="Movie Trailer 3" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+          <div class="video-title">Movie Trailer 3</div>
+          <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
+                  title="Movie Trailer 3" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
         </div>
+      </div>
     </div>
-</body>
+    <script>
+      // Update timestamp dynamically
+      document.addEventListener("DOMContentLoaded", () => {
+        const timestamp = document.getElementById("timestamp");
+        timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
+      });
+    </script>
+  </body>
 </html>

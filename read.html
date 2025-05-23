@@ -3,33 +3,205 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Read articles and insights from The Ben Palmer Show hosted by HowdyStranger." />
+    <meta name="author" content="HowdyStranger" />
+    <meta name="keywords" content="Ben Palmer Show, HowdyStranger, articles, Trump v CASA, stocks" />
+    <meta name="robots" content="index, follow" />
     <script defer src="/_vercel/insights/script.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
     />
-    <title>Howdy, Stranger</title>
-    <meta
-      name="description"
-      content="The Ben Palmer Show hosted by HowdyStranger."
-    />
-
+    <link rel="stylesheet" href="/css/body.css" />
+    <title>Read | Howdy, Stranger</title>
+    <style>
+      /* Navigation adjustments (consistent with financials.html) */
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+      }
+      
+      .nav-link {
+        padding: 0.4rem 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        flex: 1;
+        text-align: center;
+        min-width: fit-content;
+      }
+      
+      /* Content container */
+      .content {
+        padding: 0 0.75rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+      
+      #timestamp {
+        font-size: 0.75rem;
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      
+      /* Article links */
+      .article-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 1rem 0;
+      }
+      
+      .article-links a {
+        color: #0066cc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      
+      .article-links a:hover {
+        text-decoration: underline;
+      }
+      
+      /* Very small screens - stack navigation vertically */
+      @media (max-width: 380px) {
+        .nav-links {
+          flex-direction: column;
+        }
+        
+        .nav-link {
+          flex: none;
+        }
+        
+        h1 {
+          font-size: 1.2rem;
+        }
+        
+        .article-links a {
+          font-size: 0.85rem;
+        }
+      }
+      
+      /* iPhone-specific adjustments (portrait, e.g., 375px) */
+      @media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+        .content {
+          padding: 0 0.5rem;
+        }
+        h1 {
+          font-size: 1.1rem;
+        }
+        #timestamp {
+          font-size: 0.65rem;
+        }
+        .article-links a {
+          font-size: 0.8rem;
+          line-height: 1.3;
+          letter-spacing: -0.01rem;
+        }
+      }
+      
+      /* Android-specific adjustments (e.g., 360px to 412px) */
+      @media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
+        .content {
+          padding: 0 0.5rem;
+        }
+        h1 {
+          font-size: 1.15rem;
+        }
+        #timestamp {
+          font-size: 0.7rem;
+        }
+        .article-links a {
+          font-size: 0.82rem;
+          line-height: 1.3;
+        }
+      }
+      
+      /* Medium screens */
+      @media (min-width: 768px) {
+        .content {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1.5rem;
+        }
+        
+        h1 {
+          font-size: 1.8rem;
+        }
+        
+        #timestamp {
+          font-size: 0.85rem;
+        }
+        
+        .article-links a {
+          font-size: 1rem;
+        }
+      }
+      
+      /* Large screens */
+      @media (min-width: 1024px) {
+        h1 {
+          font-size: 2rem;
+        }
+        
+        .article-links a {
+          font-size: 1.1rem;
+        }
+      }
+      
+      /* Improve touch targets on mobile */
+      @media (hover: none) and (pointer: coarse) {
+        .nav-link {
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .article-links a {
+          min-height: 44px;
+          display: inline-flex;
+          align-items: center;
+          padding: 0.5rem 0;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav class="nav-links">
-    <a class="nav-link" href="index.html">Home<a>
-    <a class="nav-link" href="watch.html">🎥watch</a>
-    <a class="nav-link" href="read.html">📚read</a>
-    <a class="nav-link" href="listen.html">📻listen</a>
-</nav>
-    <h1>Howdy, Stranger</h1>
-      <div></div>
-        <a href="Trump v. CASA, Inc.html">Trump v. CASA: Universal Injunctions, Not Birthright Citizenship
-</a>
-<div></div><p>
-  </p>
-        <a href="financials.html">stocks
-</a>
-
-    </body>
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="watch.html">🎥watch</a>
+      <a class="nav-link" href="read.html">📚read</a>
+      <a class="nav-link" href="listen.html">📻listen</a>
+    </nav>
+    <div class="content">
+      <h1>Read | Howdy, Stranger</h1>
+      <p id="timestamp">Updated as of 06:49 PM PDT, Thursday, May 22, 2025.</p>
+      <p>Explore articles and insights from The Ben Palmer Show hosted by HowdyStranger.</p>
+      <div class="article-links">
+        <a href="Trump v. CASA, Inc.html">Trump v. CASA: Universal Injunctions, Not Birthright Citizenship</a>
+        <a href="financials.html">Stocks</a>
+      </div>
+    </div>
+    <script>
+      // Update timestamp dynamically
+      document.addEventListener("DOMContentLoaded", () => {
+        const timestamp = document.getElementById("timestamp");
+        timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
+      });
+    </script>
+  </body>
 </html>

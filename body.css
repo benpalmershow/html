@@ -55,18 +55,17 @@
   font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap; /* Ensure no wrapping */
 }
 
 .content th {
   background: #e0e0e0;
   font-weight: bold;
-  white-space: nowrap;
   min-width: 30px;
 }
 
 .content td {
   background: #ffffff;
-  white-space: nowrap;
 }
 
 .content .number {
@@ -86,7 +85,7 @@
   color: #666666;
 }
 
-/* Mobile responsiveness */
+/* General mobile responsiveness */
 @media (max-width: 600px) {
   .content table {
     display: block;
@@ -94,26 +93,35 @@
     -webkit-overflow-scrolling: touch;
   }
   .content th, .content td {
-    min-width: 25px; /* Reduced from 30px */
-    font-size: 0.55rem; /* Reduced from 0.6rem */
-    padding: 0.03rem 0.1rem; /* Reduced from 0.05rem 0.15rem */
+    min-width: 25px;
+    font-size: 0.55rem;
+    padding: 0.03rem 0.1rem;
   }
 }
 
-/* Very small screens (e.g., iPhone portrait) */
-@media (max-width: 400px) {
+/* iPhone-specific adjustments (portrait, e.g., 375px) */
+@media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .content th, .content td {
-    min-width: 20px; /* Further reduced */
-    font-size: 0.45rem; /* Further reduced */
-    padding: 0.02rem 0.05rem; /* Further reduced */
+    min-width: 15px; /* Narrower columns */
+    font-size: 0.35rem; /* Much smaller font */
+    padding: 0.01rem 0.02rem; /* Minimal padding */
+    white-space: nowrap; /* Strictly prevent wrapping */
+    line-height: 1; /* Reduce line height */
   }
 }
 
 /* Extremely small screens (e.g., iPhone SE, 320px) */
 @media (max-width: 320px) {
   .content th, .content td {
-    min-width: 15px; /* Even smaller */
-    font-size: 0.4rem; /* Even smaller */
-    padding: 0.01rem 0.03rem; /* Even smaller */
+    min-width: 10px; /* Even narrower */
+    font-size: 0.3rem; /* Even smaller font */
+    padding: 0.005rem 0.01rem; /* Even less padding */
+    white-space: nowrap;
+    line-height: 1;
   }
 }

@@ -57,13 +57,13 @@
 .content th {
   background: #e0e0e0;
   font-weight: bold;
-  white-space: normal;
-  word-wrap: break-word;
+  white-space: nowrap; /* Prevent wrapping in headers */
   min-width: 50px;
 }
 
 .content td {
   background: #ffffff;
+  white-space: nowrap; /* Prevent wrapping in cells */
 }
 
 .content .number {
@@ -83,6 +83,7 @@
   color: #666666;
 }
 
+/* Mobile responsiveness */
 @media (max-width: 600px) {
   .content table {
     display: block;
@@ -90,8 +91,17 @@
     -webkit-overflow-scrolling: touch;
   }
   .content th, .content td {
-    min-width: 60px;
-    font-size: 0.75rem;
-    padding: 0.15rem 0.3rem;
+    min-width: 40px; /* Reduced from 60px */
+    font-size: 0.65rem; /* Reduced from 0.75rem */
+    padding: 0.1rem 0.2rem; /* Reduced from 0.15rem 0.3rem */
+  }
+}
+
+/* Extra small screens (e.g., iPhone) */
+@media (max-width: 400px) {
+  .content th, .content td {
+    min-width: 30px; /* Further reduced */
+    font-size: 0.55rem; /* Further reduced */
+    padding: 0.05rem 0.15rem; /* Further reduced */
   }
 }

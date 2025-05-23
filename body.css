@@ -45,7 +45,7 @@
   width: 100%;
   border-collapse: collapse;
   margin: 0.75rem 0;
-  table-layout: fixed; /* Ensure consistent column widths */
+  table-layout: fixed;
 }
 
 .content th, .content td {
@@ -53,15 +53,15 @@
   padding: 0.25rem 0.5rem;
   text-align: left;
   font-size: 0.9rem;
-  overflow: hidden; /* Prevent overflow */
-  text-overflow: ellipsis; /* Truncate with ellipsis if too long */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content th {
   background: #e0e0e0;
   font-weight: bold;
   white-space: nowrap;
-  min-width: 30px; /* Reduced baseline */
+  min-width: 30px;
 }
 
 .content td {
@@ -94,17 +94,26 @@
     -webkit-overflow-scrolling: touch;
   }
   .content th, .content td {
-    min-width: 30px; /* Reduced from 40px */
-    font-size: 0.6rem; /* Reduced from 0.65rem */
-    padding: 0.05rem 0.15rem; /* Reduced from 0.1rem 0.2rem */
+    min-width: 25px; /* Reduced from 30px */
+    font-size: 0.55rem; /* Reduced from 0.6rem */
+    padding: 0.03rem 0.1rem; /* Reduced from 0.05rem 0.15rem */
   }
 }
 
-/* Extra small screens (e.g., iPhone) */
+/* Very small screens (e.g., iPhone portrait) */
 @media (max-width: 400px) {
   .content th, .content td {
-    min-width: 25px; /* Further reduced */
-    font-size: 0.5rem; /* Further reduced */
-    padding: 0.03rem 0.1rem; /* Further reduced */
+    min-width: 20px; /* Further reduced */
+    font-size: 0.45rem; /* Further reduced */
+    padding: 0.02rem 0.05rem; /* Further reduced */
+  }
+}
+
+/* Extremely small screens (e.g., iPhone SE, 320px) */
+@media (max-width: 320px) {
+  .content th, .content td {
+    min-width: 15px; /* Even smaller */
+    font-size: 0.4rem; /* Even smaller */
+    padding: 0.01rem 0.03rem; /* Even smaller */
   }
 }

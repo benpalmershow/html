@@ -55,7 +55,7 @@
   font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; /* Ensure no wrapping */
+  white-space: nowrap;
 }
 
 .content th {
@@ -100,27 +100,44 @@
 }
 
 /* iPhone-specific adjustments (portrait, e.g., 375px) */
-@media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
   .content table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   .content th, .content td {
-    min-width: 15px; /* Narrower columns */
-    font-size: 0.35rem; /* Much smaller font */
-    padding: 0.01rem 0.02rem; /* Minimal padding */
-    white-space: nowrap; /* Strictly prevent wrapping */
-    line-height: 1; /* Reduce line height */
+    min-width: 12px; /* Reduced further to prevent overlap */
+    font-size: 0.28rem; /* Smaller font to avoid overlap */
+    padding: 0.005rem 0.01rem; /* Minimal padding */
+    white-space: nowrap;
+    line-height: 1.1; /* Slight increase for readability */
+    letter-spacing: -0.02rem; /* Adjust spacing to prevent overlap */
   }
 }
 
-/* Extremely small screens (e.g., iPhone SE, 320px) */
+/* Android-specific adjustments (e.g., 360px to 412px, pixel ratios 2 to 4) */
+@media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
+  .content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .content th, .content td {
+    min-width: 12px;
+    font-size: 0.32rem;
+    padding: 0.008rem 0.015rem;
+    white-space: nowrap;
+    line-height: 1;
+  }
+}
+
+/* Extremely small screens (e.g., older Androids or iPhone SE, 320px) */
 @media (max-width: 320px) {
   .content th, .content td {
-    min-width: 10px; /* Even narrower */
-    font-size: 0.3rem; /* Even smaller font */
-    padding: 0.005rem 0.01rem; /* Even less padding */
+    min-width: 10px;
+    font-size: 0.3rem;
+    padding: 0.005rem 0.01rem;
     white-space: nowrap;
     line-height: 1;
   }

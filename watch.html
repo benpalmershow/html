@@ -50,7 +50,7 @@
         line-height: 1.3;
       }
       
-      /* Article links (used for movie buttons) */
+      /* Article links (used for buttons) */
       .article-links {
         display: flex;
         flex-direction: column;
@@ -66,7 +66,7 @@
         line-height: 1.4;
         padding: 0.5rem 1rem;
         border-radius: 6px;
-        background-color: #f0f8ff; /* Light blue background for buttons */
+        background-color: #f0f8ff;
         transition: background-color 0.3s, transform 0.2s;
         display: inline-flex;
         align-items: center;
@@ -76,9 +76,9 @@
       }
       
       .article-links a:hover {
-        text-decoration: none; /* Remove underline on hover for button feel */
-        background-color: #e0e7ff; /* Slightly darker blue on hover */
-        transform: scale(1.05); /* Subtle zoom effect */
+        text-decoration: none;
+        background-color: #e0e7ff;
+        transform: scale(1.05);
       }
       
       /* Button group for YouTube and IMDb */
@@ -86,6 +86,24 @@
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
+      }
+      
+      /* YouTube video embeds */
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
       
       /* Very small screens - stack navigation vertically */
@@ -201,19 +219,40 @@
     </nav>
     <div class="content">
       <h1>Howdy, Stranger</h1>
-      <p id="timestamp">Updated as of 07:04 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 07:08 PM PDT, Thursday, May 22, 2025.</p>
       <div class="article-links">
-        <div class="button-group">
-          <a href="https://www.youtube.com/watch?v=OqCa2-6jCJI">Holy Spider Trailer</a>
-          <a href="https://www.imdb.com/title/tt18550140/">Holy Spider IMDb</a>
+        <div>
+          <h2>Holy Spider</h2>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/OqCa2-6jCJI" title="Holy Spider Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="button-group">
+            <a href="https://www.youtube.com/watch?v=OqCa2-6jCJI">Holy Spider Trailer</a>
+            <a href="https://www.imdb.com/title/tt18550140/">Holy Spider IMDb</a>
+            <a href="https://www.kanopy.com/en/sfpl/video/14632473">Holy Spider Kanopy</a>
+          </div>
         </div>
-        <div class="button-group">
-          <a href="https://www.youtube.com/watch?v=1U2bI5zMNA0">The Pact Trailer</a>
-          <a href="https://www.imdb.com/title/tt15986924/">The Pact IMDb</a>
+        <div>
+          <h2>The Pact</h2>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/1U2bI5zMNA0" title="The Pact Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="button-group">
+            <a href="https://www.youtube.com/watch?v=1U2bI5zMNA0">The Pact Trailer</a>
+            <a href="https://www.imdb.com/title/tt15986924/">The Pact IMDb</a>
+            <a href="https://www.kanopy.com/en/sfpl/video/15088237">The Pact Kanopy</a>
+          </div>
         </div>
-        <div class="button-group">
-          <a href="https://www.youtube.com/watch?v=A0mV0w8uKVA">Jeanne du Barry Trailer</a>
-          <a href="https://www.imdb.com/title/tt20267886/">Jeanne du Barry IMDb</a>
+        <div>
+          <h2>Jeanne du Barry</h2>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/A0mV0w8uKVA" title="Jeanne du Barry Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="button-group">
+            <a href="https://www.youtube.com/watch?v=A0mV0w8uKVA">Jeanne du Barry Trailer</a>
+            <a href="https://www.imdb.com/title/tt20267886/">Jeanne du Barry IMDb</a>
+            <a href="https://www.kanopy.com/en/sfpl/video/14545556">Jeanne du Barry Kanopy</a>
+          </div>
         </div>
       </div>
     </div>

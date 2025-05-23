@@ -1,67 +1,89 @@
+/* Mobile-first approach - base styles for mobile */
 .content {
   max-width: 800px;
-  margin: 1.5rem auto;
-  padding: 0 0.5rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
   background: #f8f8f8;
   font-family: Georgia, serif;
   color: #333333;
-  line-height: 1.4;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .content h1 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 1rem;
   color: #222222;
+  line-height: 1.2;
 }
 
 .content h2 {
-  font-size: 1.5rem;
-  margin: 1rem 0;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  margin: 1rem 0 0.5rem 0;
+  line-height: 1.3;
 }
 
 .content p {
   margin: 0.75rem 0;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
 .content ul, .content ol {
   margin: 0.75rem 0;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 
 .content li {
   margin: 0.25rem 0;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
 .content blockquote {
   border-left: 3px solid #666666;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem;
   margin: 0.75rem 0;
   background: #ffffff;
   font-style: italic;
+  border-radius: 2px;
 }
 
+/* Optimized table styles for mobile */
 .content table {
   width: 100%;
   border-collapse: collapse;
   margin: 0.75rem 0;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.content thead,
+.content tbody,
+.content tr {
+  display: table;
+  width: 100%;
   table-layout: fixed;
 }
 
 .content th, .content td {
   border: 1px solid #666666;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.25rem;
   text-align: left;
-  font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  word-wrap: break-word;
+  hyphens: auto;
+  display: table-cell;
 }
 
 .content th {
   background: #e0e0e0;
   font-weight: bold;
-  min-width: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .content td {
@@ -70,6 +92,7 @@
 
 .content .number {
   text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 .content .number:empty {
@@ -79,66 +102,196 @@
 .content a {
   color: #333333;
   text-decoration: underline;
+  word-break: break-word;
 }
 
-.content a:hover {
+.content a:hover,
+.content a:focus {
   color: #666666;
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
 }
 
-/* General mobile responsiveness */
-@media (max-width: 600px) {
+/* Touch-friendly interactive elements */
+.content a,
+.content button,
+.content [tabindex] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 481px) {
+  .content {
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+  }
+  
   .content table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    display: table;
+    overflow-x: visible;
   }
+  
   .content th, .content td {
-    min-width: 25px;
-    font-size: 0.55rem;
-    padding: 0.03rem 0.1rem;
+    padding: 0.5rem;
+    white-space: normal;
   }
 }
 
-/* iPhone-specific adjustments (portrait, e.g., 375px) */
-@media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-  .content table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+/* Desktop styles */
+@media (min-width: 769px) {
+  .content {
+    padding: 0 2rem;
+    line-height: 1.6;
   }
+  
   .content th, .content td {
-    min-width: 12px; /* Reduced further to prevent overlap */
-    font-size: 0.28rem; /* Smaller font to avoid overlap */
-    padding: 0.005rem 0.01rem; /* Minimal padding */
-    white-space: nowrap;
-    line-height: 1.1; /* Slight increase for readability */
-    letter-spacing: -0.02rem; /* Adjust spacing to prevent overlap */
+    padding: 0.75rem;
   }
 }
 
-/* Android-specific adjustments (e.g., 360px to 412px, pixel ratios 2 to 4) */
-@media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
-  .content table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .content th, .content td {
-    min-width: 12px;
-    font-size: 0.32rem;
-    padding: 0.008rem 0.015rem;
-    white-space: nowrap;
-    line-height: 1;
+/* Large desktop */
+@media (min-width: 1024px) {
+  .content {
+    padding: 0 0.5rem;
   }
 }
 
-/* Extremely small screens (e.g., older Androids or iPhone SE, 320px) */
+/* Small mobile devices (320px and under) */
 @media (max-width: 320px) {
+  .content {
+    margin: 0.5rem auto;
+    padding: 0 0.5rem;
+  }
+  
+  .content table {
+    font-size: 0.7rem;
+    margin: 0.5rem -0.5rem;
+    width: calc(100% + 1rem);
+  }
+  
   .content th, .content td {
-    min-width: 10px;
-    font-size: 0.3rem;
-    padding: 0.005rem 0.01rem;
-    white-space: nowrap;
-    line-height: 1;
+    padding: 0.25rem 0.125rem;
+    min-width: 40px;
+    font-size: 0.65rem;
+  }
+  
+  .content h1 {
+    font-size: 1.25rem;
+  }
+  
+  .content h2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Very small screens optimization */
+@media (max-width: 280px) {
+  .content table {
+    font-size: 0.6rem;
+  }
+  
+  .content th, .content td {
+    padding: 0.125rem;
+    min-width: 30px;
+    font-size: 0.55rem;
+    line-height: 1.2;
+  }
+}
+
+/* High DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .content {
+    margin: 0.5rem auto;
+  }
+  
+  .content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .content h2 {
+    font-size: 1.25rem;
+    margin: 0.75rem 0 0.25rem 0;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .content {
+    background: #1a1a1a;
+    color: #e0e0e0;
+  }
+  
+  .content h1, .content h2 {
+    color: #ffffff;
+  }
+  
+  .content th {
+    background: #333333;
+    color: #ffffff;
+  }
+  
+  .content td {
+    background: #2a2a2a;
+  }
+  
+  .content blockquote {
+    background: #2a2a2a;
+    border-left-color: #888888;
+  }
+  
+  .content th, .content td {
+    border-color: #555555;
+  }
+  
+  .content a {
+    color: #4da6ff;
+  }
+  
+  .content a:hover,
+  .content a:focus {
+    color: #80bfff;
+  }
+}
+
+/* Print styles */
+@media print {
+  .content {
+    background: white;
+    color: black;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .content table {
+    font-size: 8pt;
+    page-break-inside: avoid;
+  }
+  
+  .content th, .content td {
+    padding: 0.25rem;
+    font-size: 8pt;
   }
 }

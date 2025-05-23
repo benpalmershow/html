@@ -18,7 +18,7 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 06:08 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 06:24:10 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       <table>
         <thead>
@@ -35,7 +35,7 @@
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
-      <p id="errorMessage" style="color: red; display: none;">Using static data on this device due to previous loading issues. Clear Safari cache if table doesn’t display correctly (Settings > Safari > Clear History and Website Data).</p>
+      <p id="errorMessage" style="color: red; display: none;">Using static data on this device (optimized for iPhone and Android). Clear browser cache if table doesn’t display correctly (Settings > Apps > Browser > Storage > Clear Data).</p>
       <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
     </div>
     <script>
@@ -51,9 +51,10 @@
         const tbody = document.getElementById("tableBody");
         const errorMessage = document.getElementById("errorMessage");
         const isIPhone = /iPhone/.test(navigator.userAgent);
+        const isAndroid = /Android/.test(navigator.userAgent);
 
-        if (isIPhone) {
-          console.log("iPhone detected, using static data.");
+        if (isIPhone || isAndroid) {
+          console.log(`${isIPhone ? 'iPhone' : 'Android'} detected, using static data.`);
           errorMessage.style.display = "block";
         }
 

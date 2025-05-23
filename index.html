@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
+    <meta name="description" content="Watch movie trailers including Jeanne du Barry on The Ben Palmer Show hosted by HowdyStranger.">
+    <meta name="keywords" content="movie trailers, Jeanne du Barry, YouTube, watch, HowdyStranger">
+    <meta name="author" content="HowdyStranger">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
-    <title>Howdy, Stranger</title>
+    <title>Watch Movie Trailers - Howdy, Stranger</title>
     <style>
-      /* Navigation adjustments (consistent with financials.html) */
+      /* Navigation adjustments (consistent with provided HTML) */
       .nav-links {
         display: flex;
         flex-wrap: wrap;
@@ -50,24 +52,31 @@
         line-height: 1.3;
       }
       
-      /* Article links */
-      .article-links {
+      /* Video container */
+      .video-container {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 1.5rem;
         margin: 1rem 0;
       }
       
-      .article-links a {
-        color: #0066cc;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: bold;
-        line-height: 1.4;
+      .video-wrapper {
+        max-width: 560px;
+        width: 100%;
+        margin: 0 auto;
       }
       
-      .article-links a:hover {
-        text-decoration: underline;
+      iframe {
+        width: 100%;
+        height: 315px;
+        border: none;
+      }
+      
+      .video-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #0066cc;
       }
       
       /* Very small screens - stack navigation vertically */
@@ -84,8 +93,12 @@
           font-size: 1.2rem;
         }
         
-        .article-links a {
+        .video-title {
           font-size: 0.85rem;
+        }
+        
+        iframe {
+          height: 200px;
         }
       }
       
@@ -100,10 +113,13 @@
         #timestamp {
           font-size: 0.65rem;
         }
-        .article-links a {
+        .video-title {
           font-size: 0.8rem;
           line-height: 1.3;
           letter-spacing: -0.01rem;
+        }
+        iframe {
+          height: 200px;
         }
       }
       
@@ -118,9 +134,12 @@
         #timestamp {
           font-size: 0.7rem;
         }
-        .article-links a {
+        .video-title {
           font-size: 0.82rem;
           line-height: 1.3;
+        }
+        iframe {
+          height: 200px;
         }
       }
       
@@ -140,7 +159,7 @@
           font-size: 0.85rem;
         }
         
-        .article-links a {
+        .video-title {
           font-size: 1rem;
         }
       }
@@ -151,7 +170,7 @@
           font-size: 2rem;
         }
         
-        .article-links a {
+        .video-title {
           font-size: 1.1rem;
         }
       }
@@ -165,7 +184,7 @@
           justify-content: center;
         }
         
-        .article-links a {
+        .video-title {
           min-height: 44px;
           display: inline-flex;
           align-items: center;
@@ -182,27 +201,38 @@
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
     <div class="content">
-      <h1>Howdy, Stranger</h1>
-      <p id="timestamp">Updated as of 07:00 PM PDT, Thursday, May 22, 2025.</p>
-      <p>my tweets ⬇️</p>
-      <p>5/22/25 - getting more disciplined. If I'm on X, YouTube, etc. and don't find anything that benefits me, EXIT. Algo wants engagement. </p>
-      <p>5/22/25 - Anyone surfing the Web?</p>
-      <p>5/22/25 - I want to tell a story here, but not sure if anyone is listening. I would post a chapter at a time in the '📚read' section where you can now find the latest Supreme Court case analysis.</p>
-      <p>5/20/25 - the algorithm selects, organizes, and presents using algorithms.</p>
-      <p>5/19/25 - the algorithm doesn't serve me well; it serves the company. I'm in need of content that benefits me, so I'm learning to code.</p>
-      <p>5/18/25 - remember the outrage over describing Biden as, "an elderly man with a poor memory?"</p>
-      <p>5/17/25 - how many times do you catch yourself having squandered time on social media?</p>
-      <p>5/15/25 - Watch Holy Spider in '🎥watch' Section with Kanopy.</p>
-      <p>About: Female journalist Rahimi (Zar Amir Ebrahimi) travels to the Iranian holy city of Mashhad to investigate a serial killer who believes he is doing the work of God, cleansing the streets of sinners by murdering sex workers. As the body count mounts, and Rahimi draws closer to exposing his crimes, the opportunity for justice grows harder to attain as the "Spider Killer" is embraced by many as a hero. Based on the horrific true story of serial killer Saeed Hanaei, acclaimed writer/director Ali Abbasi (Border) unveils a gripping crime thriller, and a daring indictment of a society in which rough justice is routinely a fact of life.</p>
-      <p>5/15/25 - meanwhile Klobuchar (who looks like she just woke up or is between cosmos) and Laurence are getting to the bottom of the airplane gift scandal.</p>
-      <p>5/15/25 - seems like every time I tune to BBC, they're talking about chimps again.</p>
-      <p>5/14/25 - the clothed contempt of the tired New Yorker regarding the Post as "naked malice" is the old guard telling young Hamilton to bite his tongue.</p>
-      <p>5/14/25 - It's now acceptable to affirm developed-nation sovereignty; UK PM "I’ve already returned over 24,000 people with no right to be here."</p>
-      <p>5/13/25 - tweeting on Github feels like how it should be. creators hanging with other creators. agency. no sycophants.</p>
-      <p>5/12/25 - tweeting to myself. that'll show them!</p>
-      <p>5/12/25 - I want a Defender so I can drive on top of dunes and up streams to waterfalls and up steps to Tudor homes.</p>
-      <p>5/11/25 - In the book “Positive Intelligence” we are taught to embrace our Sage over our Judge. The Five Sage Powers are Empathy, Exploration, Innovation, Navigation, and Activation.<br>As a preemptive Judge (Hyper Vigilant Saboteur), I of course was pissed at the junkie in the Mother’s Day card section who was rummaging through the cards and not moving. Another card shopper with earpods in, took the situation calmly as if he didn’t notice how angry I was. I later reported the junkie to security and left without a Mother’s Day card.<br>Through Empathy, I thought maybe the junkie was rummaging through Mother’s Day cards because he missed his mom. This man was once a young boy embraced by a loving mother.<br>Through Exploration, I became curious (Fascinated Anthropologist). How does a happy boy become an addict? How many instances of grief and disappointment had this man gone through?<br>Through Innovation, I thought maybe I could share this story because I still struggle with accepting the many mentally unstable individuals constantly disrupting our lives in San Francisco.<br>Through Navigation, I realize no one wants to deal with them. They say they do, but the idealist judges and doesn't act. They are saboteurs, not sages.<br>Through Activation, I channel Candy Lightner who lost her 13-year old daughter to a drunk driver and started MADD. The mentally ill need to be removed from the streets against their free will if they are breaking the law. The rule of law must apply to them because it’s not fair to everyone else.</p>
-      <p>5/9/2025 -<br>Nob Hill<br>Asian Man Black shoes<br>Rolls Royce Dusty top<br>Long shadows on a Friday night bench<br>A laundromat (closed for repair) with empty windows<br>An Acura parked long term. A tucked ticket.<br>Clipping heals to date night.<br>Gas engines purring from stop signs.<br>Wandering elderly man in sneakers, jeans, and a sweatshirt.<br>A crew, “for me to be happy in the city…”<br>Sitting still is not easy.<br>The world passes you by and it’s completely indifferent.<br>The sun feels nice and the cable cars creak; comfort in cacophony and cacophony in comfort.<br>A weird word. A weird world.</p>
+      <h1>Watch Movie Trailers</h1>
+      <p id="timestamp">Updated as of 07:22 PM PDT, Thursday, May 22, 2025.</p>
+      <p>Explore our curated selection of movie trailers, including <em>Jeanne du Barry</em> and other exciting films.</p>
+      <div class="video-container">
+        <!-- Video 1 -->
+        <div class="video-wrapper">
+          <div class="video-title">Jeanne du Barry Trailer #1 (2024)</div>
+          <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
+                  title="Jeanne du Barry Trailer #1 (2024)" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+        </div>
+        <!-- Video 2 -->
+        <div class="video-wrapper">
+          <div class="video-title">Movie Trailer 2</div>
+          <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
+                  title="Movie Trailer 2" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+        </div>
+        <!-- Video 3 -->
+        <div class="video-wrapper">
+          <div class="video-title">Movie Trailer 3</div>
+          <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
+                  title="Movie Trailer 3" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
     <script>
       // Update timestamp dynamically

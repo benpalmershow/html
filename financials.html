@@ -11,7 +11,7 @@
     <style>
       /* Mobile-first responsive design */
       
-      /* Navigation adjustments */
+      /* Navigation adjustments (retained as requested) */
       .nav-links {
         display: flex;
         flex-wrap: wrap;
@@ -64,7 +64,7 @@
       
       table {
         width: 100%;
-        min-width: 620px; /* Ensures table doesn't get too cramped */
+        min-width: 620px;
         border-collapse: collapse;
         margin: 0;
         font-size: 0.8rem;
@@ -171,6 +171,42 @@
         }
       }
       
+      /* iPhone-specific adjustments (portrait, e.g., 375px) */
+      @media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+        table {
+          min-width: 500px; /* Reduced to fit better */
+          font-size: 0.65rem; /* Smaller base font */
+        }
+        th, td {
+          min-width: 10px; /* Narrower columns */
+          font-size: 0.25rem; /* Even smaller font to prevent overlap */
+          padding: 0.003rem 0.008rem; /* Minimal padding */
+          white-space: nowrap;
+          line-height: 1.2; /* Adjusted for readability */
+          letter-spacing: -0.015rem; /* Fine-tuned spacing */
+        }
+        th:first-child,
+        td:first-child {
+          min-width: 40px; /* Reduced sticky column width */
+          width: 40px;
+        }
+      }
+      
+      /* Android-specific adjustments (e.g., 360px to 412px, pixel ratios 2 to 4) */
+      @media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
+        table {
+          min-width: 520px;
+          font-size: 0.7rem;
+        }
+        th, td {
+          min-width: 12px;
+          font-size: 0.32rem;
+          padding: 0.008rem 0.015rem;
+          white-space: nowrap;
+          line-height: 1;
+        }
+      }
+      
       /* Medium screens */
       @media (min-width: 768px) {
         .content {
@@ -200,7 +236,6 @@
           font-size: 0.85rem;
         }
         
-        /* Remove sticky positioning on larger screens */
         th:first-child,
         td:first-child {
           position: static;
@@ -255,7 +290,7 @@
     </nav>
     <div class="content">
       <h1>Financials at a Glance</h1>
-      <p id="timestamp">Updated as of 06:24:10 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 06:37 PM PDT, Thursday, May 22, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       
       <div class="table-wrapper">

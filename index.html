@@ -8,171 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
     <title>Howdy, Stranger</title>
-    <style>
-      /* Navigation adjustments (consistent with financials.html) */
-      .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        padding: 0.5rem 0;
-      }
-      
-      .nav-link {
-        padding: 0.4rem 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        white-space: nowrap;
-        flex: 1;
-        text-align: center;
-        min-width: fit-content;
-      }
-      
-      /* Content container */
-      .content {
-        padding: 0 0.75rem;
-        max-width: 100vw;
-        overflow-x: hidden;
-      }
-      
-      h1 {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.2;
-      }
-      
-      #timestamp {
-        font-size: 0.75rem;
-        color: #666;
-        margin-bottom: 1rem;
-        line-height: 1.3;
-      }
-      
-      /* Article links */
-      .article-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        margin: 1rem 0;
-      }
-      
-      .article-links a {
-        color: #0066cc;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: bold;
-        line-height: 1.4;
-      }
-      
-      .article-links a:hover {
-        text-decoration: underline;
-      }
-      
-      /* Very small screens - stack navigation vertically */
-      @media (max-width: 380px) {
-        .nav-links {
-          flex-direction: column;
-        }
-        
-        .nav-link {
-          flex: none;
-        }
-        
-        h1 {
-          font-size: 1.2rem;
-        }
-        
-        .article-links a {
-          font-size: 0.85rem;
-        }
-      }
-      
-      /* iPhone-specific adjustments (portrait, e.g., 375px) */
-      @media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-        .content {
-          padding: 0 0.5rem;
-        }
-        h1 {
-          font-size: 1.1rem;
-        }
-        #timestamp {
-          font-size: 0.65rem;
-        }
-        .article-links a {
-          font-size: 0.8rem;
-          line-height: 1.3;
-          letter-spacing: -0.01rem;
-        }
-      }
-      
-      /* Android-specific adjustments (e.g., 360px to 412px) */
-      @media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
-        .content {
-          padding: 0 0.5rem;
-        }
-        h1 {
-          font-size: 1.15rem;
-        }
-        #timestamp {
-          font-size: 0.7rem;
-        }
-        .article-links a {
-          font-size: 0.82rem;
-          line-height: 1.3;
-        }
-      }
-      
-      /* Medium screens */
-      @media (min-width: 768px) {
-        .content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 1.5rem;
-        }
-        
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        #timestamp {
-          font-size: 0.85rem;
-        }
-        
-        .article-links a {
-          font-size: 1rem;
-        }
-      }
-      
-      /* Large screens */
-      @media (min-width: 1024px) {
-        h1 {
-          font-size: 2rem;
-        }
-        
-        .article-links a {
-          font-size: 1.1rem;
-        }
-      }
-      
-      /* Improve touch targets on mobile */
-      @media (hover: none) and (pointer: coarse) {
-        .nav-link {
-          min-height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .article-links a {
-          min-height: 44px;
-          display: inline-flex;
-          align-items: center;
-          padding: 0.5rem 0;
-        }
-      }
-    </style>
   </head>
   <body>
     <nav class="nav-links">
@@ -198,12 +33,12 @@
       <p>5/15/25 - meanwhile Klobuchar (who looks like she just woke up or is between cosmos) and Laurence are getting to the bottom of the airplane gift scandal.</p>
       <p>5/15/25 - seems like every time I tune to BBC, they're talking about chimps again.</p>
       <p>5/14/25 - the clothed contempt of the tired New Yorker regarding the Post as "naked malice" is the old guard telling young Hamilton to bite his tongue.</p>
-      <p>5/14/25 - It's now acceptable to affirm developed-nation sovereignty; UK PM "I’ve already returned over 24,000 people with no right to be here."</p>
+      <p>5/14/25 - It's now acceptable to affirm developed-nation sovereignty; UK PM "I've already returned over 24,000 people with no right to be here."</p>
       <p>5/13/25 - tweeting on Github feels like how it should be. creators hanging with other creators. agency. no sycophants.</p>
       <p>5/12/25 - tweeting to myself. that'll show them!</p>
       <p>5/12/25 - I want a Defender so I can drive on top of dunes and up streams to waterfalls and up steps to Tudor homes.</p>
-      <p>5/11/25 - In the book “Positive Intelligence” we are taught to embrace our Sage over our Judge. The Five Sage Powers are Empathy, Exploration, Innovation, Navigation, and Activation.<br>As a preemptive Judge (Hyper Vigilant Saboteur), I of course was pissed at the junkie in the Mother’s Day card section who was rummaging through the cards and not moving. Another card shopper with earpods in, took the situation calmly as if he didn’t notice how angry I was. I later reported the junkie to security and left without a Mother’s Day card.<br>Through Empathy, I thought maybe the junkie was rummaging through Mother’s Day cards because he missed his mom. This man was once a young boy embraced by a loving mother.<br>Through Exploration, I became curious (Fascinated Anthropologist). How does a happy boy become an addict? How many instances of grief and disappointment had this man gone through?<br>Through Innovation, I thought maybe I could share this story because I still struggle with accepting the many mentally unstable individuals constantly disrupting our lives in San Francisco.<br>Through Navigation, I realize no one wants to deal with them. They say they do, but the idealist judges and doesn't act. They are saboteurs, not sages.<br>Through Activation, I channel Candy Lightner who lost her 13-year old daughter to a drunk driver and started MADD. The mentally ill need to be removed from the streets against their free will if they are breaking the law. The rule of law must apply to them because it’s not fair to everyone else.</p>
-      <p>5/9/2025 -<br>Nob Hill<br>Asian Man Black shoes<br>Rolls Royce Dusty top<br>Long shadows on a Friday night bench<br>A laundromat (closed for repair) with empty windows<br>An Acura parked long term. A tucked ticket.<br>Clipping heals to date night.<br>Gas engines purring from stop signs.<br>Wandering elderly man in sneakers, jeans, and a sweatshirt.<br>A crew, “for me to be happy in the city…”<br>Sitting still is not easy.<br>The world passes you by and it’s completely indifferent.<br>The sun feels nice and the cable cars creak; comfort in cacophony and cacophony in comfort.<br>A weird word. A weird world.</p>
+      <p>5/11/25 - In the book "Positive Intelligence" we are taught to embrace our Sage over our Judge. The Five Sage Powers are Empathy, Exploration, Innovation, Navigation, and Activation.<br>As a preemptive Judge (Hyper Vigilant Saboteur), I of course was pissed at the junkie in the Mother's Day card section who was rummaging through the cards and not moving. Another card shopper with earpods in, took the situation calmly as if he didn't notice how angry I was. I later reported the junkie to security and left without a Mother's Day card.<br>Through Empathy, I thought maybe the junkie was rummaging through Mother's Day cards because he missed his mom. This man was once a young boy embraced by a loving mother.<br>Through Exploration, I became curious (Fascinated Anthropologist). How does a happy boy become an addict? How many instances of grief and disappointment had this man gone through?<br>Through Innovation, I thought maybe I could share this story because I still struggle with accepting the many mentally unstable individuals constantly disrupting our lives in San Francisco.<br>Through Navigation, I realize no one wants to deal with them. They say they do, but the idealist judges and doesn't act. They are saboteurs, not sages.<br>Through Activation, I channel Candy Lightner who lost her 13-year old daughter to a drunk driver and started MADD. The mentally ill need to be removed from the streets against their free will if they are breaking the law. The rule of law must apply to them because it's not fair to everyone else.</p>
+      <p>5/9/2025 -<br>Nob Hill<br>Asian Man Black shoes<br>Rolls Royce Dusty top<br>Long shadows on a Friday night bench<br>A laundromat (closed for repair) with empty windows<br>An Acura parked long term. A tucked ticket.<br>Clipping heals to date night.<br>Gas engines purring from stop signs.<br>Wandering elderly man in sneakers, jeans, and a sweatshirt.<br>A crew, "for me to be happy in the city…"<br>Sitting still is not easy.<br>The world passes you by and it's completely indifferent.<br>The sun feels nice and the cable cars creak; comfort in cacophony and cacophony in comfort.<br>A weird word. A weird world.</p>
     </div>
     <script>
       // Update timestamp dynamically

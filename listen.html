@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
+    <meta name="keywords" content="podcasts, The Ben Palmer Show, Supreme Court, Marketplace, HowdyStranger">
+    <meta name="author" content="HowdyStranger">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
-    <title>Howdy, Stranger</title>
+    <link rel="stylesheet" href="listen.css">
+    <title>Listen to Podcasts - Howdy, Stranger</title>
   </head>
   <body>
     <nav class="nav-links">
@@ -17,10 +20,38 @@
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
     <div class="content">
-      <h1>Howdy, Stranger</h1>
-      <p>my tweets ⬇️</p>
-      <div id="post-feed"></div>
+      
+      <h4>Podcasts</h4>
+      <div class="podcast-links">
+        <p>The Ben Palmer Show (TBPS):
+          <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">Apple</a>
+          <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">Spotify</a>
+          <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">YouTube</a>
+        </p>
+        <p>The Free Law Project:
+          <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">Apple</a>
+        </p>
+        <p>Marketplace:
+          <a href="https://podcasts.apple.com/us/podcast/marketplace/id201853034">Apple</a>
+          <a href="https://open.spotify.com/show/6zYlX5UGEPmNCWacYUJQGD?si=2feea069e3c14461">Spotify</a>
+        </p>
+      </div>
+      <h4>Episodes</h4>
+      <div class="podcast-links">
+        <p>Trump v. CASA, Inc.:
+          <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">Apple</a>
+          <h4>Songs</h4>
+          
+          <p>Allen Stone - A Fathers Song: <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
+        </p>
+      </div>
     </div>
-    <script src="/js/posts.js"></script>
+    <script>
+      // Update timestamp dynamically
+      document.addEventListener("DOMContentLoaded", () => {
+        const timestamp = document.getElementById("timestamp");
+        timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
+      });
+    </script>
   </body>
 </html>

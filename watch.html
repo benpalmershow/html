@@ -9,50 +9,9 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
-    <title>Watch Movie Trailers - Howdy, Stranger</title>
+    <title>Howdy, Stranger</title>
     <style>
-      /* Navigation adjustments (consistent with provided HTML) */
-      .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        padding: 0.5rem 0;
-      }
-      
-      .nav-link {
-        padding: 0.4rem 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        white-space: nowrap;
-        flex: 1;
-        text-align: center;
-        min-width: fit-content;
-      }
-      
-      /* Content container */
-      .content {
-        padding: 0 0.75rem;
-        max-width: 100vw;
-        overflow-x: hidden;
-      }
-      
-      h1 {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.2;
-      }
-      
-      #timestamp {
-        font-size: 0.75rem;
-        color: #666;
-        margin-bottom: 1rem;
-        line-height: 1.3;
-      }
-      
-      /* Video container */
+      /* Video-specific styles only */
       .video-container {
         display: flex;
         flex-direction: column;
@@ -70,6 +29,7 @@
         width: 100%;
         height: 315px;
         border: none;
+        border-radius: 4px;
       }
       
       .video-title {
@@ -79,20 +39,8 @@
         color: #0066cc;
       }
       
-      /* Very small screens - stack navigation vertically */
+      /* Mobile adjustments for videos */
       @media (max-width: 380px) {
-        .nav-links {
-          flex-direction: column;
-        }
-        
-        .nav-link {
-          flex: none;
-        }
-        
-        h1 {
-          font-size: 1.2rem;
-        }
-        
         .video-title {
           font-size: 0.85rem;
         }
@@ -102,17 +50,8 @@
         }
       }
       
-      /* iPhone-specific adjustments (portrait, e.g., 375px) */
+      /* iPhone-specific video adjustments */
       @media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-        .content {
-          padding: 0 0.5rem;
-        }
-        h1 {
-          font-size: 1.1rem;
-        }
-        #timestamp {
-          font-size: 0.65rem;
-        }
         .video-title {
           font-size: 0.8rem;
           line-height: 1.3;
@@ -123,17 +62,8 @@
         }
       }
       
-      /* Android-specific adjustments (e.g., 360px to 412px) */
+      /* Android-specific video adjustments */
       @media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
-        .content {
-          padding: 0 0.5rem;
-        }
-        h1 {
-          font-size: 1.15rem;
-        }
-        #timestamp {
-          font-size: 0.7rem;
-        }
         .video-title {
           font-size: 0.82rem;
           line-height: 1.3;
@@ -145,20 +75,6 @@
       
       /* Medium screens */
       @media (min-width: 768px) {
-        .content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 1.5rem;
-        }
-        
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        #timestamp {
-          font-size: 0.85rem;
-        }
-        
         .video-title {
           font-size: 1rem;
         }
@@ -166,29 +82,29 @@
       
       /* Large screens */
       @media (min-width: 1024px) {
-        h1 {
-          font-size: 2rem;
-        }
-        
         .video-title {
           font-size: 1.1rem;
         }
       }
       
-      /* Improve touch targets on mobile */
+      /* Touch-friendly video titles */
       @media (hover: none) and (pointer: coarse) {
-        .nav-link {
-          min-height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
         .video-title {
           min-height: 44px;
           display: inline-flex;
           align-items: center;
           padding: 0.5rem 0;
+        }
+      }
+      
+      /* Dark mode support for videos */
+      @media (prefers-color-scheme: dark) {
+        .video-title {
+          color: #4da6ff;
+        }
+        
+        iframe {
+          border: 1px solid #555555;
         }
       }
     </style>
@@ -201,8 +117,6 @@
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
     <div class="content">
-      <p id="timestamp">Updated as of 07:22 PM PDT, Thursday, May 22, 2025.</p>
-    
       <div class="video-container">
         <!-- Video 1 -->
         <div class="video-wrapper">
@@ -234,11 +148,5 @@
       </div>
     </div>
     <script>
-      // Update timestamp dynamically
-      document.addEventListener("DOMContentLoaded", () => {
-        const timestamp = document.getElementById("timestamp");
-        timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
-      });
-    </script>
   </body>
 </html>

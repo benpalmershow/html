@@ -1,65 +1,69 @@
-/* css/listen.css */
+/* css/body.css */
+body {
+  font-family: system-ui, -apple-system, sans-serif; /* Matches new.css */
+  line-height: 1.6; /* Improves readability */
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 800px; /* Limit content width */
+  margin: 0 auto; /* Center content */
+  padding: 0 1rem; /* Side padding for mobile */
+}
+
 p {
-  padding: 0.5rem; /* Space for dividers */
-  border-bottom: 1px solid #e0e0e0; /* Subtle divider */
-  opacity: 0; /* For animation */
-  animation: fadeIn 0.5s ease forwards; /* Fade-in effect */
-  animation-delay: calc(var(--order) * 0.1s); /* Staggered */
+  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+  margin: 0.75rem 0; /* Consistent spacing */
+  color: #333; /* High contrast */
 }
 
-p:last-child {
-  border-bottom: none; /* Clean end */
+h1, h4 {
+  color: #222; /* Darker headings */
+  margin: 1rem 0 0.5rem;
 }
 
-h4 + p {
-  margin-top: 0; /* Tighten after headings */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap; /* Responsive on mobile */
+  gap: 0.5rem; /* Space between links */
+  margin: 1rem 0;
 }
 
-p strong {
-  color: #222; /* Emphasize titles */
-  font-weight: 600;
-}
-
-p a {
-  color: #0066cc; /* Blue links */
+.nav-links a {
+  background-color: #4da6ff; /* Blue pill */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem; /* Pill shape */
   text-decoration: none;
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
   transition: background-color 0.2s ease;
 }
 
-p a:hover {
-  background-color: #e6f0ff; /* Light blue hover */
-  color: #003366;
+.nav-links a:hover {
+  background-color: #0066cc; /* Darker blue on hover */
 }
 
-p a:focus {
-  outline: 2px solid #0066cc;
+.nav-links a:focus {
+  outline: 2px solid #0066cc; /* Accessible focus */
   outline-offset: 2px;
 }
 
-.explicit {
-  background-color: #ff4d4d; /* Red for explicit */
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.8rem;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
 @media (prefers-color-scheme: dark) {
-  p { color: #ddd; border-bottom-color: #555; }
-  p strong { color: #fff; }
-  p a { color: #4da6ff; }
-  p a:hover { background-color: #1a3c66; color: #80bfff; }
-  p a:focus { outline-color: #4da6ff; }
-  .explicit { background-color: #cc0000; }
+  p { color: #ddd; }
+  h1, h4 { color: #fff; }
+  .nav-links a { background-color: #1a3c66; }
+  .nav-links a:hover { background-color: #4da6ff; }
+  .nav-links a:focus { outline-color: #4da6ff; }
+}
+
+@media (max-width: 600px) {
+  p { font-size: 0.9rem; }
+  h1 { font-size: 1.5rem; }
+  h4 { font-size: 1.2rem; }
 }
 
 @media (max-width: 320px) {
-  p { font-size: 0.8rem; }
-  .explicit { font-size: 0.75rem; }
+  p { font-size: 0.85rem; }
+  .content { padding: 0 0.5rem; }
+  .nav-links a { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
 }

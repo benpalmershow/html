@@ -1,510 +1,65 @@
-/* Mobile-first approach - base styles for mobile */
-.content {
-  max-width: 800px;
-  margin: 1rem auto;
-  padding: 0 1rem;
-  background: #f8f8f8;
-  font-family: Georgia, serif;
-  color: #333333;
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  overflow-x: hidden;
+/* css/listen.css */
+p {
+  padding: 0.5rem; /* Space for dividers */
+  border-bottom: 1px solid #e0e0e0; /* Subtle divider */
+  opacity: 0; /* For animation */
+  animation: fadeIn 0.5s ease forwards; /* Fade-in effect */
+  animation-delay: calc(var(--order) * 0.1s); /* Staggered */
 }
 
-.content h1 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 1rem;
-  color: #222222;
-  line-height: 1.2;
+p:last-child {
+  border-bottom: none; /* Clean end */
 }
 
-.content h2 {
-  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
-  margin: 1rem 0 0.5rem 0;
-  line-height: 1.3;
+h4 + p {
+  margin-top: 0; /* Tighten after headings */
 }
 
-.content p {
-  margin: 0.75rem 0;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+p strong {
+  color: #222; /* Emphasize titles */
+  font-weight: 600;
 }
 
-.content ul, .content ol {
-  margin: 0.75rem 0;
-  padding-left: 1.25rem;
-}
-
-.content li {
-  margin: 0.25rem 0;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-}
-
-.content blockquote {
-  border-left: 3px solid #666666;
-  padding: 0.5rem;
-  margin: 0.75rem 0;
-  background: #ffffff;
-  font-style: italic;
-  border-radius: 2px;
-}
-
-/* Navigation styles */
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
-}
-
-.nav-link {
-  padding: 0.6rem 1rem;
-  border: 2px solid #ccc;
-  border-radius: 6px;
+p a {
+  color: #0066cc; /* Blue links */
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  white-space: nowrap;
-  flex: 1;
-  text-align: center;
-  min-width: fit-content;
-  color: #333333;
-  background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  background: #f5f5f5;
-  border-color: #999;
-  color: #000000;
-  outline: none;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+p a:hover {
+  background-color: #e6f0ff; /* Light blue hover */
+  color: #003366;
 }
 
-/* Page-specific content adjustments */
-.content {
-  padding: 0 0.75rem;
-  max-width: 100vw;
-}
-
-.content h1 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-}
-
-#timestamp {
-  font-size: 0.75rem;
-  color: #666;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-/* Article links styles */
-.article-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 1rem 0;
-}
-
-.article-links a {
-  color: #0066cc;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.article-links a:hover {
-  text-decoration: underline;
-}
-
-/* Optimized table styles for mobile */
-.content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.75rem 0;
-  font-size: clamp(0.75rem, 2vw, 0.9rem);
-  overflow-x: auto;
-  display: block;
-  white-space: nowrap;
-}
-
-.content thead,
-.content tbody,
-.content tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
-.content th, .content td {
-  border: 1px solid #666666;
-  padding: 0.5rem 0.25rem;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  hyphens: auto;
-  display: table-cell;
-}
-
-.content th {
-  background: #e0e0e0;
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.content td {
-  background: #ffffff;
-}
-
-.content .number {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.content .number:empty {
-  border: none;
-}
-
-.content a {
-  color: #333333;
-  text-decoration: underline;
-  word-break: break-word;
-}
-
-.content a:hover,
-.content a:focus {
-  color: #666666;
+p a:focus {
   outline: 2px solid #0066cc;
   outline-offset: 2px;
 }
 
-/* Touch-friendly interactive elements */
-.content a,
-.content button,
-.content [tabindex],
-.nav-link {
-  min-height: 44px;
-  min-width: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.explicit {
+  background-color: #ff4d4d; /* Red for explicit */
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
 }
 
-/* Very small screens - stack navigation vertically */
-@media (max-width: 380px) {
-  .nav-links {
-    flex-direction: column;
-  }
-  
-  .nav-link {
-    flex: none;
-  }
-  
-  .content h1 {
-    font-size: 1.2rem;
-  }
-  
-  .article-links a {
-    font-size: 0.85rem;
-  }
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
-/* iPhone-specific adjustments (portrait, e.g., 375px) */
-@media only screen and (max-width: 400px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-  .content {
-    padding: 0 0.5rem;
-  }
-  
-  .content h1 {
-    font-size: 1.1rem;
-  }
-  
-  #timestamp {
-    font-size: 0.65rem;
-  }
-  
-  .article-links a {
-    font-size: 0.8rem;
-    line-height: 1.3;
-    letter-spacing: -0.01rem;
-  }
-}
-
-/* Android-specific adjustments (e.g., 360px to 412px) */
-@media only screen and (max-width: 412px) and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 4) and (hover: none) {
-  .content {
-    padding: 0 0.5rem;
-  }
-  
-  .content h1 {
-    font-size: 1.15rem;
-  }
-  
-  #timestamp {
-    font-size: 0.7rem;
-  }
-  
-  .article-links a {
-    font-size: 0.82rem;
-    line-height: 1.3;
-  }
-}
-
-/* Small mobile devices (320px and under) */
-@media (max-width: 320px) {
-  .content {
-    margin: 0.5rem auto;
-    padding: 0 0.5rem;
-  }
-  
-  .content table {
-    font-size: 0.7rem;
-    margin: 0.5rem -0.5rem;
-    width: calc(100% + 1rem);
-  }
-  
-  .content th, .content td {
-    padding: 0.25rem 0.125rem;
-    min-width: 40px;
-    font-size: 0.65rem;
-  }
-  
-  .content h1 {
-    font-size: 1.25rem;
-  }
-  
-  .content h2 {
-    font-size: 1.1rem;
-  }
-}
-
-/* Tablet and larger screens */
-@media (min-width: 481px) {
-  .content {
-    margin: 1.5rem auto;
-    padding: 0 1.5rem;
-  }
-  
-  .content table {
-    display: table;
-    overflow-x: visible;
-  }
-  
-  .content th, .content td {
-    padding: 0.5rem;
-    white-space: normal;
-  }
-}
-
-/* Medium screens */
-@media (min-width: 768px) {
-  .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .content h1 {
-    font-size: 1.8rem;
-  }
-  
-  #timestamp {
-    font-size: 0.85rem;
-  }
-  
-  .article-links a {
-    font-size: 1rem;
-  }
-  
-  .content th, .content td {
-    padding: 0.75rem;
-  }
-}
-
-/* Desktop styles */
-@media (min-width: 769px) {
-  .content {
-    padding: 0 2rem;
-    line-height: 1.6;
-  }
-}
-
-/* Large screens */
-@media (min-width: 1024px) {
-  .content {
-    padding: 0 0.5rem;
-  }
-  
-  .content h1 {
-    font-size: 2rem;
-  }
-  
-  .article-links a {
-    font-size: 1.1rem;
-  }
-}
-
-/* Very small screens optimization */
-@media (max-width: 280px) {
-  .content table {
-    font-size: 0.6rem;
-  }
-  
-  .content th, .content td {
-    padding: 0.125rem;
-    min-width: 30px;
-    font-size: 0.55rem;
-    line-height: 1.2;
-  }
-}
-
-/* High DPI display optimization */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .content {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-/* Landscape orientation adjustments for mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  .content {
-    margin: 0.5rem auto;
-  }
-  
-  .content h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .content h2 {
-    font-size: 1.25rem;
-    margin: 0.75rem 0 0.25rem 0;
-  }
-}
-
-/* Improve touch targets on mobile */
-@media (hover: none) and (pointer: coarse) {
-  .nav-link {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .article-links a {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 0;
-  }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .content {
-    background: #1a1a1a;
-    color: #e0e0e0;
-  }
-  
-  .content h1, .content h2 {
-    color: #ffffff;
-  }
-  
-  .nav-link {
-    border-color: #444444;
-    background: #333333;
-    color: #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
-  
-  .nav-link:hover,
-  .nav-link:focus {
-    background: #444444;
-    border-color: #666;
-    color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-  }
-  
-  .content th {
-    background: #333333;
-    color: #ffffff;
-  }
-  
-  .content td {
-    background: #2a2a2a;
-  }
-  
-  .content blockquote {
-    background: #2a2a2a;
-    border-left-color: #888888;
-  }
-  
-  .content th, .content td {
-    border-color: #555555;
-  }
-  
-  .content a,
-  .article-links a {
-    color: #4da6ff;
-  }
-  
-  .content a:hover,
-  .content a:focus,
-  .article-links a:hover {
-    color: #80bfff;
-  }
-  
-  #timestamp {
-    color: #aaa;
-  }
+  p { color: #ddd; border-bottom-color: #555; }
+  p strong { color: #fff; }
+  p a { color: #4da6ff; }
+  p a:hover { background-color: #1a3c66; color: #80bfff; }
+  p a:focus { outline-color: #4da6ff; }
+  .explicit { background-color: #cc0000; }
 }
 
-/* Print styles */
-@media print {
-  .nav-links {
-    display: none;
-  }
-  
-  .content {
-    background: white;
-    color: black;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .content table {
-    font-size: 8pt;
-    page-break-inside: avoid;
-  }
-  
-  .content th, .content td {
-    padding: 0.25rem;
-    font-size: 8pt;
-  }
-  
-  .article-links a {
-    color: black;
-    text-decoration: underline;
-  }
+@media (max-width: 320px) {
+  p { font-size: 0.8rem; }
+  .explicit { font-size: 0.75rem; }
 }

@@ -37,12 +37,68 @@
         font-weight: bold;
         margin-bottom: 0.5rem;
         color: #0066cc;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      
+      .movie-name {
+        flex: 1;
+        min-width: 120px;
+      }
+      
+      .ratings-container {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      
+      .rating-link {
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: normal;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      
+      .rt-rating {
+        background-color: #fa320a;
+        color: white;
+      }
+      
+      .rt-rating:hover {
+        background-color: #e02d09;
+        color: white;
+        transform: translateY(-1px);
+      }
+      
+      .imdb-rating {
+        background-color: #f5c518;
+        color: #000;
+      }
+      
+      .imdb-rating:hover {
+        background-color: #e6b800;
+        color: #000;
+        transform: translateY(-1px);
       }
       
       /* Mobile adjustments for videos */
       @media (max-width: 380px) {
         .video-title {
           font-size: 0.85rem;
+        }
+        
+        .rating-link {
+          font-size: 0.7rem;
+          padding: 0.2rem 0.4rem;
         }
         
         iframe {
@@ -57,6 +113,11 @@
           line-height: 1.3;
           letter-spacing: -0.01rem;
         }
+        
+        .rating-link {
+          font-size: 0.7rem;
+        }
+        
         iframe {
           height: 200px;
         }
@@ -68,6 +129,11 @@
           font-size: 0.82rem;
           line-height: 1.3;
         }
+        
+        .rating-link {
+          font-size: 0.7rem;
+        }
+        
         iframe {
           height: 200px;
         }
@@ -78,6 +144,10 @@
         .video-title {
           font-size: 1rem;
         }
+        
+        .rating-link {
+          font-size: 0.85rem;
+        }
       }
       
       /* Large screens */
@@ -85,15 +155,24 @@
         .video-title {
           font-size: 1.1rem;
         }
+        
+        .rating-link {
+          font-size: 0.9rem;
+        }
       }
       
       /* Touch-friendly video titles */
       @media (hover: none) and (pointer: coarse) {
         .video-title {
           min-height: 44px;
-          display: inline-flex;
+          display: flex;
           align-items: center;
           padding: 0.5rem 0;
+        }
+        
+        .rating-link {
+          min-height: 32px;
+          padding: 0.4rem 0.6rem;
         }
       }
       
@@ -103,8 +182,28 @@
           color: #4da6ff;
         }
         
+        .movie-name {
+          color: #4da6ff;
+        }
+        
         iframe {
           border: 1px solid #555555;
+        }
+        
+        .rt-rating {
+          background-color: #d42c0a;
+        }
+        
+        .rt-rating:hover {
+          background-color: #c02609;
+        }
+        
+        .imdb-rating {
+          background-color: #e6b800;
+        }
+        
+        .imdb-rating:hover {
+          background-color: #d4a600;
         }
       }
     </style>
@@ -120,7 +219,23 @@
       <div class="video-container">
         <!-- Video 1 -->
         <div class="video-wrapper">
-          <div class="video-title">Holy Spider</div>
+          <div class="video-title">
+            <span class="movie-name">Holy Spider</span>
+            <div class="ratings-container">
+              <a href="https://www.rottentomatoes.com/m/holy_spider" 
+                 class="rating-link rt-rating" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                🍅 85%
+              </a>
+              <a href="https://www.imdb.com/title/tt15325794/" 
+                 class="rating-link imdb-rating" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                ⭐ 7.3
+              </a>
+            </div>
+          </div>
           <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
                   title="Holy Spider" 
                   frameborder="0" 
@@ -129,7 +244,23 @@
         </div>
         <!-- Video 2 -->
         <div class="video-wrapper">
-          <div class="video-title">The Pact</div>
+          <div class="video-title">
+            <span class="movie-name">The Pact</span>
+            <div class="ratings-container">
+              <a href="https://www.rottentomatoes.com/m/the_pact_2022" 
+                 class="rating-link rt-rating" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                🍅 74%
+              </a>
+              <a href="https://www.imdb.com/title/tt13651794/" 
+                 class="rating-link imdb-rating" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                ⭐ 6.9
+              </a>
+            </div>
+          </div>
           <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
                   title="The Pact" 
                   frameborder="0" 
@@ -138,7 +269,23 @@
         </div>
         <!-- Video 3 -->
         <div class="video-wrapper">
-          <div class="video-title">Jeanne du Barry</div>
+          <div class="video-title">
+            <span class="movie-name">Jeanne du Barry</span>
+            <div class="ratings-container">
+              <a href="https://www.rottentomatoes.com/m/jeanne_du_barry" 
+                 class="rating-link rt-rating" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                🍅 68%
+              </a>
+              <a href="https://www.imdb.com/title/tt13651794/" 
+                 class="rating-link imdb-rating" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                ⭐ 6.8
+              </a>
+            </div>
+          </div>
           <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
                   title="Jeanne du Barry" 
                   frameborder="0" 
@@ -147,6 +294,6 @@
         </div>
       </div>
     </div>
-    <script>
+    <!-- No scripts needed at the end of body -->
   </body>
 </html>

@@ -1,16 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
-    <meta name="keywords" content="podcasts, The Ben Palmer Show, Supreme Court, Marketplace, HowdyStranger">
-    <meta name="author" content="HowdyStranger">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger." />
+    <meta name="keywords" content="podcasts, The Ben Palmer Show, Supreme Court, Marketplace, HowdyStranger" />
+    <meta name="author" content="HowdyStranger" />
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <link rel="stylesheet" href="/css/body.css">
-    <link rel="stylesheet" href="listen.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
+    <link rel="stylesheet" href="/css/body.css" />
     <title>Listen to Podcasts - Howdy, Stranger</title>
+    <style>
+      .card-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #0056b3;
+      }
+
+      .card a {
+        text-decoration: none;
+        color: #0056b3;
+        margin-right: 0.75rem;
+      }
+
+      .card a:hover {
+        text-decoration: underline;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .card {
+          background-color: #1c1c1c;
+          color: #e0e0e0;
+        }
+
+        .card a {
+          color: #4da6ff;
+        }
+
+        .card a:hover {
+          color: #82cfff;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav class="nav-links">
@@ -19,31 +73,34 @@
       <a class="nav-link" href="read.html">📚read</a>
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
-    <div class="content">
-      
-      <h4>Podcasts</h4>
-      <div class="podcast-links">
-        <p>The Ben Palmer Show (TBPS):
-          <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">Apple</a>
-          <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">Spotify</a>
-          <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">YouTube</a>
-        </p>
-        <p>The Free Law Project:
-          <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">Apple</a>
-        </p>
-        <p>Marketplace:
-          <a href="https://podcasts.apple.com/us/podcast/marketplace/id201853034">Apple</a>
-          <a href="https://open.spotify.com/show/6zYlX5UGEPmNCWacYUJQGD?si=2feea069e3c14461">Spotify</a>
-        </p>
+
+    <div class="card-container">
+      <div class="card">
+        <div class="card-title">The Ben Palmer Show (TBPS)</div>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">Apple</a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">Spotify</a>
+        <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">YouTube</a>
       </div>
-      <h4>Episodes</h4>
-      <div class="podcast-links">
-        <p>Trump v. CASA, Inc.:
-          <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">Apple</a>
-          <h4>Songs</h4>
-          
-          <p>Allen Stone - A Fathers Song: <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
-        </p>
+
+      <div class="card">
+        <div class="card-title">The Free Law Project (SCOTUS Oral Arguments)</div>
+        <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">Apple</a>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Marketplace</div>
+        <a href="https://podcasts.apple.com/us/podcast/marketplace/id201853034">Apple</a>
+        <a href="https://open.spotify.com/show/6zYlX5UGEPmNCWacYUJQGD?si=2feea069e3c14461">Spotify</a>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Featured Episode: Trump v. CASA, Inc.</div>
+        <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">Apple</a>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Music: Allen Stone – “A Father's Song”</div>
+        <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
       </div>
     </div>
   </body>

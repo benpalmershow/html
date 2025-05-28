@@ -28,6 +28,7 @@
         max-width: 800px;
         margin: 2rem auto;
         padding: 0 1rem;
+        align-items: stretch;
       }
 
       .card {
@@ -36,6 +37,8 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         padding: 1.5rem;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .card:hover {
@@ -48,15 +51,33 @@
         font-weight: bold;
         margin-bottom: 0.75rem;
         color: #0056b3;
+        text-align: left;
+        line-height: 1.4;
       }
 
       .card a {
         text-decoration: none;
         color: #0056b3;
+        display: block;
+        width: 100%;
       }
 
       .card a:hover {
         text-decoration: underline;
+      }
+
+      /* Optional: Grid layout for larger screens */
+      @media (min-width: 900px) {
+        .card-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 1.5rem;
+          max-width: 1200px;
+        }
+        
+        .card {
+          height: fit-content;
+        }
       }
 
       @media (prefers-color-scheme: dark) {
@@ -82,24 +103,27 @@
       <a class="nav-link" href="read.html">📚read</a>
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
-     <div class="card-container">
+    
+    <div class="card-container">
       <div class="card">
         <div class="card-title">
           <a href="fomc.html">5/28/25 - FOMC Minutes - May</a>
         </div>
       </div>
-       <div class="card-container">
+      
       <div class="card">
         <div class="card-title">
           <a href="Trump v. CASA, Inc.html">5/14/25 - Supreme Court: Trump v. CASA, Inc.</a>
         </div>
       </div>
+      
       <div class="card">
         <div class="card-title">
-          <a href="financials.html">Invest</a>
+          <a href="financials.html">5/12/25 - Invest</a>
         </div>
       </div>
     </div>
+    
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const timestamp = document.getElementById("timestamp");

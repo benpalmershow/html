@@ -8,12 +8,63 @@
     <meta name="keywords" content="Ben Palmer Show, HowdyStranger, articles, Trump v CASA, stocks" />
     <meta name="robots" content="index, follow" />
     <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
     <link rel="stylesheet" href="/css/body.css" />
     <title>Howdy, Stranger</title>
+    <style>
+      .card-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+        color: #0056b3;
+      }
+
+      .card a {
+        text-decoration: none;
+        color: #0056b3;
+      }
+
+      .card a:hover {
+        text-decoration: underline;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .card {
+          background-color: #1c1c1c;
+          color: #e0e0e0;
+        }
+
+        .card a {
+          color: #4da6ff;
+        }
+
+        .card a:hover {
+          color: #82cfff;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav class="nav-links">
@@ -22,17 +73,24 @@
       <a class="nav-link" href="read.html">📚read</a>
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
-    <div class="content">
-      <h1>Howdy, Stranger</h1>
-        <p></p><a href="Trump v. CASA, Inc.html">Trump v. CASA: Universal Injunctions, Not Birthright Citizenship</a></p>
-        <a href="financials.html">stonks</a>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-title">
+          <a href="Trump v. CASA, Inc.html">5/14/25 - Supreme Court: Trump v. CASA, Inc.</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          <a href="financials.html">Invest</a>
+        </div>
       </div>
     </div>
     <script>
-      // Update timestamp dynamically
       document.addEventListener("DOMContentLoaded", () => {
         const timestamp = document.getElementById("timestamp");
-        timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
+        if (timestamp) {
+          timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
+        }
       });
     </script>
   </body>

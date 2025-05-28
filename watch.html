@@ -12,168 +12,132 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Watch movie trailers including Jeanne du Barry on The Ben Palmer Show hosted by HowdyStranger." />
-  <meta name="keywords" content="movie trailers, Jeanne du Barry, YouTube, watch, HowdyStranger" />
+  <meta name="description" content="Watch videos from The Ben Palmer Show hosted by HowdyStranger." />
   <meta name="author" content="HowdyStranger" />
-  <title>Howdy, Stranger</title>
+  <meta name="keywords" content="Ben Palmer Show, HowdyStranger, videos, YouTube, watch" />
   <script defer src="/_vercel/insights/script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
   <link rel="stylesheet" href="/css/body.css" />
+  <title>Watch Videos - Howdy, Stranger</title>
   <style>
-    body {
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0 1rem;
-      font-family: system-ui, sans-serif;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding-bottom: 4rem;
-    }
-
-    .video-container {
+    .card-container {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      margin-top: 1rem;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      color: #0056b3;
+    }
+    
+    .card a {
+      text-decoration: none;
+      color: #0056b3;
+    }
+    
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger." />
+  <meta name="keywords" content="podcasts, The Ben Palmer Show, Supreme Court, Marketplace, HowdyStranger" />
+  <meta name="author" content="HowdyStranger" />
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
+  <link rel="stylesheet" href="/css/body.css" />
+  <title>Listen – Howdy, Stranger</title>
+  <style>
+    .content {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
 
-    .video-card {
-      background: #fff;
+    .card {
+      background-color: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 1rem;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .video-card:hover {
+    .card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
-    .video-title {
-      font-size: 1rem;
-      font-weight: bold;
+    .card h2 {
+      margin-top: 0;
       margin-bottom: 0.5rem;
-      color: #0066cc;
+    }
+
+    .platform-icons {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       gap: 0.75rem;
-    }
-
-    .movie-name {
-      flex: 1;
-      min-width: 120px;
-    }
-
-    .ratings-container {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
       align-items: center;
-    }
-
-    .rating-link {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: normal;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .rt-rating {
-      background-color: #fa320a;
-      color: white;
-    }
-
-    .rt-rating:hover {
-      background-color: #e02d09;
-      transform: translateY(-1px);
-    }
-
-    .imdb-rating {
-      background-color: #f5c518;
-      color: #000;
-    }
-
-    .imdb-rating:hover {
-      background-color: #e6b800;
-      transform: translateY(-1px);
-    }
-
-    iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-      border-radius: 8px;
       margin-top: 0.5rem;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 380px) {
-      .video-title {
-        font-size: 0.85rem;
-      }
-      .rating-link {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.4rem;
-      }
-      iframe {
-        height: 200px;
-      }
+    .platform-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      transition: transform 0.2s ease;
     }
 
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #111;
-        color: #ddd;
-      }
-      .nav-link {
-        color: #eee;
-      }
-      .video-card {
-        background: #1c1c1c;
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.03);
-      }
-      .video-title, .movie-name {
-        color: #4da6ff;
-      }
-      .rt-rating {
-        background-color: #d42c0a;
-      }
-      .rt-rating:hover {
-        background-color: #c02609;
-      }
-      .imdb-rating {
-        background-color: #e6b800;
-      }
-      .imdb-rating:hover {
-        background-color: #d4a600;
-      }
-      iframe {
-        border: 1px solid #555;
-      }
+    .platform-icons a:hover {
+      transform: scale(1.15);
+    }
+
+    .platform-icons svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
+
+    nav.nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-weight: bold;
+      color: #0077cc;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    h4 {
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -184,42 +148,41 @@
     <a class="nav-link" href="read.html">📚read</a>
     <a class="nav-link" href="listen.html">📻listen</a>
   </nav>
+
   <div class="content">
-    <div class="video-container">
-      <!-- Video 1 -->
-      <div class="video-card">
-        <div class="video-title">
-          <span class="movie-name">Holy Spider</span>
-          <div class="ratings-container">
-            <a href="https://www.rottentomatoes.com/m/holy_spider" class="rating-link rt-rating" target="_blank" rel="noopener noreferrer">🍅 82%</a>
-            <a href="https://www.imdb.com/title/tt18550140/" class="rating-link imdb-rating" target="_blank" rel="noopener noreferrer">⭐ 7.3</a>
-          </div>
-        </div>
-        <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" title="Holy Spider" allowfullscreen></iframe>
+    <div class="card">
+      <h2>The Ben Palmer Show (TBPS)</h2>
+      <div class="platform-icons">
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289" target="_blank" title="Apple Podcasts">
+          <svg viewBox="0 0 24 24"><path d="M17.57 10.53a1 1 0 0 0-.71.29 5.77 5.77 0 0 1-1.19.9 3.91 3.91 0 0 1-.75.27 1.12 1.12 0 0 0-.34.15c-.16.12-.22.3-.2.49a7.79 7.79 0 0 0 .41 1.73 2.25 2.25 0 0 1 .12 1.14c-.09.37-.36.61-.87.72a5.59 5.59 0 0 1-1.57.13 5.55 5.55 0 0 1-1.57-.13c-.51-.11-.78-.35-.87-.72a2.25 2.25 0 0 1 .12-1.14 7.79 7.79 0 0 0 .41-1.73c0-.19-.04-.37-.2-.49a1.12 1.12 0 0 0-.34-.15 3.91 3.91 0 0 1-.75-.27 5.77 5.77 0 0 1-1.19-.9 1 1 0 0 0-.71-.29H6.21a9 9 0 0 1 18 0Z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40" target="_blank" title="Spotify">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.38 0 12s5.37 12 12 12 12-5.38 12-12S18.63 0 12 0Zm5.47 17.6a.75.75 0 0 1-1.04.26 12.4 12.4 0 0 0-6.38-1.75c-1.62 0-3.18.3-4.62.88a.75.75 0 1 1-.56-1.39c1.67-.67 3.44-1.01 5.18-1.01a13.88 13.88 0 0 1 7.12 1.96c.36.22.47.7.26 1.05Zm.94-3.23a.94.94 0 0 1-1.31.33 15.75 15.75 0 0 0-8.07-2.2c-2.1 0-4.13.4-6.03 1.2a.94.94 0 1 1-.74-1.73A17.77 17.77 0 0 1 9 10.25c3.1 0 6.13.86 8.74 2.48.45.28.6.88.34 1.33Zm.88-3.28a1.13 1.13 0 0 1-1.56.38 19.5 19.5 0 0 0-9.75-2.63c-2.55 0-5.06.49-7.44 1.44a1.13 1.13 0 0 1-.82-2.11C2.74 6.94 6.15 6.25 9.6 6.25c3.57 0 7.06.96 10.14 2.79.53.32.7 1.02.35 1.56Z"/></svg>
+        </a>
+        <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3" target="_blank" title="YouTube Music">
+          <svg viewBox="0 0 24 24"><path d="M12 2.01 12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-.15 4.56a5.65 5.65 0 1 0 0 10.86 5.65 5.65 0 0 0 0-10.86Zm-1.1 2.94v4.6l3.99-2.3-3.99-2.3Z"/></svg>
+        </a>
       </div>
+    </div>
 
-      <!-- Video 2 -->
-      <div class="video-card">
-        <div class="video-title">
-          <span class="movie-name">The Pact</span>
-          <div class="ratings-container">
-            <a href="https://www.rottentomatoes.com/m/the_pact_2022" class="rating-link rt-rating" target="_blank" rel="noopener noreferrer">🍅 79%</a>
-            <a href="https://www.imdb.com/title/tt11204060/" class="rating-link imdb-rating" target="_blank" rel="noopener noreferrer">⭐ 6.4</a>
-          </div>
-        </div>
-        <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" title="The Pact" allowfullscreen></iframe>
+    <div class="card">
+      <h2>The Free Law Project</h2>
+      <div class="platform-icons">
+        <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137" target="_blank" title="Apple Podcasts">
+          <svg viewBox="0 0 24 24"><path d="M17.57 10.53a1 1 0 0 0-.71.29 5.77 5.77 0 0 1-1.19.9 3.91 3.91 0 0 1-.75.27 1.12 1.12 0 0 0-.34.15c-.16.12-.22.3-.2.49a7.79 7.79 0 0 0 .41 1.73 2.25 2.25 0 0 1 .12 1.14c-.09.37-.36.61-.87.72a5.59 5.59 0 0 1-1.57.13 5.55 5.55 0 0 1-1.57-.13c-.51-.11-.78-.35-.87-.72a2.25 2.25 0 0 1 .12-1.14 7.79 7.79 0 0 0 .41-1.73c0-.19-.04-.37-.2-.49a1.12 1.12 0 0 0-.34-.15 3.91 3.91 0 0 1-.75-.27 5.77 5.77 0 0 1-1.19-.9 1 1 0 0 0-.71-.29H6.21a9 9 0 0 1 18 0Z"/></svg>
+        </a>
       </div>
+    </div>
 
-      <!-- Video 3 -->
-      <div class="video-card">
-        <div class="video-title">
-          <span class="movie-name">Jeanne du Barry</span>
-          <div class="ratings-container">
-            <a href="https://www.rottentomatoes.com/m/jeanne_du_barry" class="rating-link rt-rating" target="_blank" rel="noopener noreferrer">🍅 48%</a>
-            <a href="https://www.imdb.com/title/tt17277414/" class="rating-link imdb-rating" target="_blank" rel="noopener noreferrer">⭐ 6.7</a>
-          </div>
-        </div>
-        <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" title="Jeanne du Barry" allowfullscreen></iframe>
+    <div class="card">
+      <h2>Marketplace</h2>
+      <div class="platform-icons">
+        <a href="https://podcasts.apple.com/us/podcast/marketplace/id201853034" target="_blank" title="Apple Podcasts">
+          <svg viewBox="0 0 24 24"><path d="M17.57 10.53a1 1 0 0 0-.71.29 5.77 5.77 0 0 1-1.19.9 3.91 3.91 0 0 1-.75.27 1.12 1.12 0 0 0-.34.15c-.16.12-.22.3-.2.49a7.79 7.79 0 0 0 .41 1.73 2.25 2.25 0 0 1 .12 1.14c-.09.37-.36.61-.87.72a5.59 5.59 0 0 1-1.57.13 5.55 5.55 0 0 1-1.57-.13c-.51-.11-.78-.35-.87-.72a2.25 2.25 0 0 1 .12-1.14 7.79 7.79 0 0 0 .41-1.73c0-.19-.04-.37-.2-.49a1.12 1.12 0 0 0-.34-.15 3.91 3.91 0 0 1-.75-.27 5.77 5.77 0 0 1-1.19-.9 1 1 0 0 0-.71-.29H6.21a9 9 0 0 1 18 0Z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/show/6zYlX5UGEPmNCWacYUJQGD?si=2feea069e3c14461" target="_blank" title="Spotify">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.38 0 12s5.37 12 12 12 12-5.38 12-12S18.63 0 12 0Zm5.47 17.6a.75.75 0 0 1-1.04.26 12.4 12.4 0 0 0-6.38-1.75c-1.62 0-3.18.3-4.62.88a.75.75 0 1 1-.56-1.39c1.67-.67 3.44-1.01 5.18-1.01a13.88 13.88 0 0 1 7.12 1.96c.36.22.47.7.26 1.05Z"/></svg>
+        </a>
       </div>
     </div>
   </div>

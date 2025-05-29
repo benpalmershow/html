@@ -137,7 +137,7 @@ body {
 .nav-container {
   width: 100%;
   margin: 0;
-  padding: 0 var(--content-padding);
+  padding: 1rem var(--content-padding) 0;
   background: transparent;
   border-bottom: none;
 }
@@ -341,7 +341,7 @@ h4 {
   }
 
   .nav-container {
-    padding: 0 var(--mobile-padding);
+    padding: 0.75rem var(--mobile-padding) 0;
   }
 
   .site-footer {

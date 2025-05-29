@@ -102,7 +102,6 @@ body {
   margin: 0 auto;
   filter: drop-shadow(0 4px 8px var(--shadow-color));
   transition: transform 0.3s ease;
-  max-height: 60px;
 }
 
 .logo:hover {

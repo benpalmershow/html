@@ -257,6 +257,7 @@ body {
   display: block;
   width: 100%;
   position: relative;
+  font-size: 0.85em;
 }
 
 .card a:hover {

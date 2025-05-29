@@ -1,0 +1,126 @@
+/* Header and Navigation Styles */
+.site-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color, #e1e5e9);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-height: 60px;
+  width: auto;
+  height: auto;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0 2rem 0;
+  padding: 0.75rem 0;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-primary, #333);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--logo-teal, #0066cc);
+  background-color: var(--bg-secondary, #f8f9fa);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.nav-link:focus {
+  outline: 2px solid var(--accent-focus, #0066cc);
+  outline-offset: 2px;
+}
+
+/* Active/current page styling */
+.nav-link.active {
+  color: var(--logo-teal, #0066cc);
+  background-color: var(--bg-secondary, #f8f9fa);
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+  
+  .logo {
+    max-height: 50px;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    margin: 0.75rem 0 1.5rem 0;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link {
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .site-header {
+    border-bottom-color: #444;
+  }
+  
+  .nav-link {
+    color: #e1e5e9;
+  }
+  
+  .nav-link:hover {
+    color: #4da6ff;
+    background-color: #2a2a2a;
+  }
+  
+  .nav-link.active {
+    color: #4da6ff;
+    background-color: #2a2a2a;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link {
+    transition: none;
+  }
+  
+  .nav-link:hover {
+    transform: none;
+  }
+}

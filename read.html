@@ -24,7 +24,7 @@
       .card-container {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
         max-width: 800px;
         margin: 2rem auto;
         padding: 0 1rem;
@@ -32,38 +32,63 @@
       }
 
       .card {
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        padding: 1.5rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background-color: var(--bg-secondary);
+        border-radius: 0.5rem;
+        border: 1px solid var(--border-color);
+        padding: 1.25rem;
+        transition: all 0.2s ease;
         width: 100%;
         box-sizing: border-box;
+        position: relative;
       }
 
       .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        border-color: var(--logo-teal);
+        background-color: var(--bg-primary);
+        box-shadow: 0 2px 8px var(--shadow-color);
       }
 
       .card-title {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin-bottom: 0.75rem;
-        color: #0056b3;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin: 0;
+        color: var(--text-primary);
         text-align: left;
         line-height: 1.4;
+        font-family: 'Georgia', 'Times New Roman', serif;
       }
 
       .card a {
         text-decoration: none;
-        color: #0056b3;
+        color: var(--text-primary);
         display: block;
         width: 100%;
+        position: relative;
       }
 
       .card a:hover {
-        text-decoration: underline;
+        color: var(--logo-teal);
+        text-decoration: none;
+      }
+
+      .card a:focus {
+        outline: 2px solid var(--accent-focus);
+        outline-offset: 2px;
+        border-radius: 0.25rem;
+      }
+
+      /* Add subtle date styling */
+      .card-date {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        font-family: 'Georgia', 'Times New Roman', serif;
+      }
+
+      .card-content {
+        color: var(--logo-teal);
+        font-weight: 600;
       }
 
       /* Optional: Grid layout for larger screens */
@@ -71,7 +96,7 @@
         .card-container {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 1.5rem;
+          gap: 1rem;
           max-width: 1200px;
         }
         
@@ -80,46 +105,63 @@
         }
       }
 
-      @media (prefers-color-scheme: dark) {
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
         .card {
-          background-color: #1c1c1c;
-          color: #e0e0e0;
+          transition: none;
         }
-
-        .card a {
-          color: #4da6ff;
-        }
-
-        .card a:hover {
-          color: #82cfff;
+        
+        .card:hover {
+          transform: none;
         }
       }
     </style>
   </head>
   <body>
-    <nav class="nav-links">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="watch.html">🎥watch</a>
-      <a class="nav-link" href="read.html">📚read</a>
-      <a class="nav-link" href="listen.html">📻listen</a>
-    </nav>
-    
-    <div class="card-container">
-      <div class="card">
-        <div class="card-title">
-          <a href="fomc.html">5/28/25 - FOMC Minutes - May</a>
-        </div>
+    <!-- Logo Header -->
+    <header class="site-header">
+      <div class="logo-container">
+        <img src="howdy-stranger-logo.png" alt="Howdy Stranger" class="logo">
       </div>
+    </header>
+
+    <div class="content">
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="watch.html">🎥 Watch</a>
+        <a class="nav-link" href="read.html">📚 Read</a>
+        <a class="nav-link" href="listen.html">📻 Listen</a>
+      </nav>
       
-      <div class="card">
-        <div class="card-title">
-          <a href="Trump v. CASA, Inc.html">5/14/25 - Supreme Court: Trump v. CASA, Inc.</a>
+      <h1>Latest Reads</h1>
+      <div class="section-divider"></div>
+      
+      <div class="card-container">
+        <div class="card">
+          <div class="card-title">
+            <a href="fomc.html">
+              <div class="card-date">May 28, 2025</div>
+              <div class="card-content">FOMC Minutes - May</div>
+            </a>
+          </div>
         </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-title">
-          <a href="financials.html">5/12/25 - Invest</a>
+        
+        <div class="card">
+          <div class="card-title">
+            <a href="Trump v. CASA, Inc.html">
+              <div class="card-date">May 14, 2025</div>
+              <div class="card-content">Supreme Court: Trump v. CASA, Inc.</div>
+            </a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">
+            <a href="financials.html">
+              <div class="card-date">May 12, 2025</div>
+              <div class="card-content">Investment Insights</div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

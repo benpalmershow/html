@@ -1,32 +1,38 @@
-/* css/body.css - Optimized with improved dark mode support */
+/* css/body.css - Updated with Howdy Stranger logo integration */
 
 /* CSS Custom Properties for consistent theming */
 :root {
-  --text-primary: #222;
+  --text-primary: #2c5f5a;
   --text-secondary: #333;
   --text-muted: #666;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --accent-primary: #4da6ff;
-  --accent-hover: #0066cc;
-  --accent-focus: #0066cc;
-  --border-color: #e1e5e9;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --bg-primary: #fdf6e8;
+  --bg-secondary: #f8f4e6;
+  --accent-primary: #2c5f5a;
+  --accent-secondary: #d4822a;
+  --accent-hover: #1e4640;
+  --accent-focus: #1e4640;
+  --border-color: #e8dcc0;
+  --shadow-color: rgba(44, 95, 90, 0.1);
+  --logo-teal: #2c5f5a;
+  --logo-orange: #d4822a;
+  --warm-cream: #fdf6e8;
 }
 
 /* Dark mode variables */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-primary: #ffffff;
+    --text-primary: #87c5be;
     --text-secondary: #e1e5e9;
     --text-muted: #a0a9b8;
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --accent-primary: #4da6ff;
-    --accent-hover: #66b3ff;
-    --accent-focus: #66b3ff;
+    --bg-primary: #1a1f1e;
+    --bg-secondary: #252b2a;
+    --accent-primary: #87c5be;
+    --accent-secondary: #e8955d;
+    --accent-hover: #a3d4cf;
+    --accent-focus: #a3d4cf;
     --border-color: #404040;
     --shadow-color: rgba(0, 0, 0, 0.3);
+    --warm-cream: #2a2e2d;
   }
 }
 
@@ -36,7 +42,7 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -47,6 +53,47 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* Logo styles */
+.logo {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  filter: drop-shadow(0 4px 8px var(--shadow-color));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-container {
+  text-align: center;
+  padding: 1rem 0;
+  background: linear-gradient(135deg, var(--warm-cream) 0%, var(--bg-secondary) 100%);
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+/* Header styles to complement the logo */
+.site-header {
+  background: linear-gradient(135deg, var(--warm-cream) 0%, var(--bg-secondary) 100%);
+  border-bottom: 3px solid var(--logo-teal);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  position: relative;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--logo-orange) 0%, var(--logo-teal) 50%, var(--logo-orange) 100%);
 }
 
 /* Layout */
@@ -62,12 +109,13 @@ body {
   }
 }
 
-/* Typography */
+/* Typography with western-friendly styling */
 p {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   margin: 0.75rem 0;
   color: var(--text-secondary);
   max-width: 65ch;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,18 +123,28 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1.5rem 0 0.75rem;
   font-weight: 600;
   line-height: 1.3;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 h1 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin-top: 0;
+  color: var(--logo-teal);
+  text-shadow: 1px 1px 2px var(--shadow-color);
+}
+
+h2 {
+  color: var(--logo-orange);
+  border-bottom: 2px solid var(--logo-orange);
+  padding-bottom: 0.5rem;
 }
 
 h4 {
   font-size: clamp(1.1rem, 3vw, 1.3rem);
+  color: var(--logo-teal);
 }
 
-/* Navigation */
+/* Navigation with western theme */
 .nav-links {
   display: flex;
   flex-wrap: nowrap;
@@ -113,7 +171,7 @@ h4 {
 }
 
 .nav-links a {
-  background-color: var(--accent-primary);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--logo-teal) 100%);
   color: white;
   padding: 0.625rem 1.25rem;
   border-radius: 2rem;
@@ -127,19 +185,38 @@ h4 {
   align-items: center;
   justify-content: center;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 4px var(--shadow-color);
+  box-shadow: 0 3px 6px var(--shadow-color);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.nav-links a:hover::before {
+  left: 100%;
 }
 
 .nav-links a:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--shadow-color);
+  background: linear-gradient(135deg, var(--accent-hover) 0%, var(--logo-orange) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+  border-color: var(--logo-orange);
 }
 
 .nav-links a:focus {
-  outline: 2px solid var(--accent-focus);
+  outline: 3px solid var(--accent-focus);
   outline-offset: 2px;
-  background-color: var(--accent-hover);
+  background: linear-gradient(135deg, var(--accent-hover) 0%, var(--logo-orange) 100%);
 }
 
 .nav-links a:active {
@@ -147,10 +224,45 @@ h4 {
   box-shadow: 0 2px 4px var(--shadow-color);
 }
 
+/* Western-style accent elements */
+.section-divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--logo-teal) 20%, var(--logo-orange) 50%, var(--logo-teal) 80%, transparent 100%);
+  margin: 2rem 0;
+  border-radius: 2px;
+}
+
+.western-accent {
+  position: relative;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--logo-orange);
+  border-radius: 0 8px 8px 0;
+  margin: 1rem 0;
+}
+
+.western-accent::before {
+  content: '🤠';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-primary);
+  padding: 0.25rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
+
 /* Responsive design improvements */
 @media (max-width: 768px) {
   .content {
     padding: 0 1rem;
+  }
+
+  .logo {
+    max-width: 250px;
+    margin: 1.5rem auto;
   }
 
   .nav-links {
@@ -178,6 +290,11 @@ h4 {
     padding: 0 0.75rem;
   }
 
+  .logo {
+    max-width: 200px;
+    margin: 1rem auto;
+  }
+
   .nav-links::before,
   .nav-links::after {
     flex: 0 0 0.4rem;
@@ -199,8 +316,8 @@ h4 {
   :root {
     --text-primary: #000000;
     --text-secondary: #000000;
-    --accent-primary: #0066cc;
-    --accent-hover: #004499;
+    --accent-primary: #1e4640;
+    --accent-hover: #0d2e29;
     --border-color: #000000;
   }
 
@@ -208,8 +325,8 @@ h4 {
     :root {
       --text-primary: #ffffff;
       --text-secondary: #ffffff;
-      --accent-primary: #66b3ff;
-      --accent-hover: #99ccff;
+      --accent-primary: #87c5be;
+      --accent-hover: #a3d4cf;
       --bg-primary: #000000;
     }
   }
@@ -227,6 +344,14 @@ h4 {
   .nav-links a:hover {
     transform: none;
   }
+
+  .logo:hover {
+    transform: none;
+  }
+
+  .nav-links a::before {
+    display: none;
+  }
 }
 
 /* Print styles */
@@ -242,12 +367,55 @@ h4 {
     display: none;
   }
 
+  .logo {
+    max-width: 200px;
+    filter: none;
+  }
+
+  .site-header::before {
+    display: none;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
+    text-shadow: none;
   }
 
   p {
     orphans: 3;
     widows: 3;
   }
+}
+
+/* Additional utility classes for western theme */
+.badge-style {
+  background: linear-gradient(135deg, var(--logo-orange) 0%, #b8671d 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0.25rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.quote-style {
+  border-left: 4px solid var(--logo-teal);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 1rem 0;
+  position: relative;
+}
+
+.quote-style::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--logo-orange);
+  position: absolute;
+  left: -0.5rem;
+  top: -0.5rem;
+  font-family: 'Georgia', serif;
+  opacity: 0.5;
 }

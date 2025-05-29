@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="/css/body.css" />
     <title>Listen to Podcasts - Howdy, Stranger</title>
     <style>
+      body {
+        background-color: #f5e6d3;
+        color: #2c5456;
+      }
+
       .card-container {
         display: flex;
         flex-direction: column;
@@ -30,47 +35,84 @@
       }
 
       .card {
-        background-color: white;
+        background-color: #ffffff;
+        border: 2px solid #2c5456;
         border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 12px rgba(44, 84, 86, 0.15);
         padding: 1.5rem;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 20px rgba(44, 84, 86, 0.25);
+        border-color: #d2691e;
       }
 
       .card-title {
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 0.5rem;
-        color: #0056b3;
+        color: #2c5456;
       }
 
       .card a {
         text-decoration: none;
-        color: #0056b3;
+        color: #d2691e;
         margin-right: 0.75rem;
+        font-weight: 500;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
       }
 
       .card a:hover {
-        text-decoration: underline;
+        background-color: #f5e6d3;
+        text-decoration: none;
+      }
+
+      .nav-links .nav-link {
+        color: #2c5456 !important;
+      }
+
+      .nav-links .nav-link:hover {
+        color: #d2691e !important;
       }
 
       @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #1a1a1a;
+          color: #7bb3b5;
+        }
+
         .card {
-          background-color: #1c1c1c;
+          background-color: #2a2a2a;
+          border-color: #7bb3b5;
           color: #e0e0e0;
         }
 
+        .card:hover {
+          border-color: #ff8c42;
+        }
+
+        .card-title {
+          color: #7bb3b5;
+        }
+
         .card a {
-          color: #4da6ff;
+          color: #ff8c42;
         }
 
         .card a:hover {
-          color: #82cfff;
+          background-color: #3a3a3a;
+        }
+
+        .nav-links .nav-link {
+          color: #7bb3b5 !important;
+        }
+
+        .nav-links .nav-link:hover {
+          color: #ff8c42 !important;
         }
       }
     </style>
@@ -108,8 +150,15 @@
       </div>
 
       <div class="card">
-        <div class="card-title">Music: Allen Stone – “A Father's Song”</div>
+        <div class="card-title">Music: Allen Stone – "A Father's Song"</div>
         <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Music: Almost Monday – "Can't Slow Down"</div>
+        <a href="https://music.apple.com/us/album/cant-slow-down-single/1746137121">Apple</a>
+        <a href="https://open.spotify.com/track/15IF4wSCMrAo2Rq0eytARR">Spotify</a>
+        <a href="https://music.youtube.com/watch?v=U19wX8npUV8&si=Ts8uoxtqLL_onzRT">YouTube</a>
       </div>
     </div>
   </body>

@@ -141,13 +141,14 @@ body {
   gap: 0.25rem;
 }
 
+/* --- Active and hover states use palette colors --- */
 .nav-link:hover,
 .nav-links a:hover {
-  color: var(--logo-teal);
+  color: var(--logo-orange);
   background-color: var(--bg-secondary);
   text-decoration: none;
   transform: translateY(-1px);
-  border-color: var(--logo-teal);
+  border-color: var(--logo-orange);
   box-shadow: 0 2px 4px var(--shadow-color);
 }
 
@@ -156,13 +157,13 @@ body {
   outline: 2px solid var(--accent-focus);
   outline-offset: 2px;
   background-color: var(--bg-primary);
-  border-color: var(--logo-teal);
-  color: var(--logo-teal);
+  border-color: var(--logo-orange);
+  color: var(--logo-orange);
 }
 
 .nav-link.active,
 .nav-links a.active {
-  color: var(--logo-teal);
+  color: var(--logo-orange);
   background-color: var(--bg-secondary);
   font-weight: 600;
 }
@@ -297,35 +298,19 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
-  margin: 1.5rem 0 0.75rem;
-  font-weight: 600;
-  line-height: 1.3;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  max-width: 100%;
 }
 
 h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-top: 0;
   color: var(--logo-teal);
   text-shadow: 1px 1px 2px var(--shadow-color);
-  text-align: center;
 }
 
 h2 {
   color: var(--logo-orange);
   border-bottom: 2px solid var(--logo-orange);
-  padding-bottom: 0.5rem;
-  margin-top: 2rem;
 }
 
-h3 {
-  color: var(--logo-teal);
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-}
-
-h4 {
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
+h3, h4 {
   color: var(--logo-teal);
 }
 
@@ -629,25 +614,23 @@ iframe {
 }
 
 .rt-rating {
-  background-color: #fa320a;
+  background-color: var(--logo-orange);
   color: white;
 }
 
 .rt-rating:hover {
-  background-color: #e02d09;
+  background-color: #b8671d;
   color: white;
-  transform: translateY(-1px);
 }
 
 .imdb-rating {
-  background-color: #f5c518;
-  color: #000;
+  background-color: #ffe08a;
+  color: #2c5f5a;
 }
 
 .imdb-rating:hover {
-  background-color: #e6b800;
-  color: #000;
-  transform: translateY(-1px);
+  background-color: #ffd166;
+  color: #2c5f5a;
 }
 
 /* --- Media Queries --- */
@@ -718,31 +701,53 @@ iframe {
 /* --- Dark Mode Specific Styles --- */
 @media (prefers-color-scheme: dark) {
   .site-header { border-bottom-color: var(--border-color); }
-  
-  body.listen {
-    background-color: #1a1a1a;
+  .nav-link,
+  .nav-links a {
     color: var(--accent-primary);
   }
-  
-  .listen .card {
+  .nav-link:hover,
+  .nav-links a:hover {
+    color: var(--accent-secondary);
     background-color: var(--bg-secondary);
-    border-color: var(--accent-primary);
-    color: var(--text-secondary);
   }
-  
-  .listen .card:hover { border-color: var(--accent-secondary); }
-  .listen .card-title { color: var(--accent-primary); }
-  .listen .card a { color: var(--accent-secondary); }
-  .listen .card a:hover { background-color: var(--bg-primary); }
-  
-  .video-title { color: var(--accent-primary); }
-  .movie-name { color: var(--accent-primary); }
-  iframe { border: 1px solid var(--border-color); }
-  
-  .rt-rating { background-color: #d42c0a; }
-  .rt-rating:hover { background-color: #c02609; }
-  .imdb-rating { background-color: #e6b800; }
-  .imdb-rating:hover { background-color: #d4a600; }
+  .nav-link.active,
+  .nav-links a.active {
+    color: var(--accent-secondary);
+    background-color: var(--bg-secondary);
+  }
+  .article-header,
+  .article-title,
+  .section-title,
+  .back-link {
+    color: var(--accent-primary);
+  }
+  .article-footer {
+    border-top-color: var(--accent-secondary);
+  }
+  .article-footer a {
+    color: var(--accent-secondary);
+  }
+  .article-footer a:hover {
+    color: var(--logo-orange);
+  }
+  .video-title,
+  .movie-name {
+    color: var(--accent-primary);
+  }
+  .rt-rating {
+    background-color: var(--accent-secondary);
+  }
+  .rt-rating:hover {
+    background-color: #b8671d;
+  }
+  .imdb-rating {
+    background-color: #ffe08a;
+    color: var(--accent-primary);
+  }
+  .imdb-rating:hover {
+    background-color: #ffd166;
+    color: var(--accent-primary);
+  }
 }
 
 /* --- Touch and Accessibility --- */

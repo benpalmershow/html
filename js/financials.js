@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Fetch the widget configuration from financials-data.json
-  fetch('financials-data.json')
+  fetch('json/financials-data.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to load financials-data.json');

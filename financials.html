@@ -6,7 +6,41 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
-  
+    <style>
+      .table-wrapper {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .number {
+        text-align: right;
+      }
+      th:first-child,
+      td:first-child {
+        min-width: 90px;
+        width: 110px;
+        /* Adjust values as needed */
+      }
+      th:nth-child(2),
+      td:nth-child(2),
+      th:nth-child(3),
+      td:nth-child(3) {
+        min-width: 60px;
+        width: 70px;
+        /* Adjust as needed for your data */
+      }
+    </style>
     <title>Financials at a Glance | Howdy, Stranger</title>
     <meta name="description" content="Financial overview of SEZL, PAYS, and DAVE by HowdyStranger.">
   </head>
@@ -22,9 +56,65 @@
       <a class="nav-link" href="read.html">📚read</a>
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
-    <h1>stonks</h1>
+   
+    
+      <h2>Market Indices</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Latest Value</th>
+              <th>Change (%)</th>
+            </tr>
+          </thead>
+          <tbody id="indicesTableBody">
+            <tr>
+              <td>Consumer Sentiment</td>
+              <td class="number">87.5</td>
+              <td class="number">+2.3</td>
+            </tr>
+            <tr>
+              <td>Interest Rates</td>
+              <td class="number">5.25</td>
+              <td class="number">-0.5</td>
+            </tr>
+            <tr>
+              <td>Unemployment</td>
+              <td class="number">3.8</td>
+              <td class="number">+0.2</td>
+            </tr>
+            <tr>
+              <td>30yr Fixed</td>
+              <td class="number">6.7</td>
+              <td class="number">+1.1</td>
+            </tr>
+            <tr>
+              <td>CPI</td>
+              <td class="number">3.2</td>
+              <td class="number">-0.3</td>
+            </tr>
+            <tr>
+              <td>10 Year</td>
+              <td class="number">4.4</td>
+              <td class="number">+0.4</td>
+            </tr>
+            <tr>
+              <td>New Home Sales</td>
+              <td class="number">650K</td>
+              <td class="number">-1.5</td>
+            </tr>
+            <tr>
+              <td>Housing Affordability Index</td>
+              <td class="number">92.0</td>
+              <td class="number">+0.8</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div class="content">
-      <p id="timestamp">Updated as of 06:37 PM PDT, Thursday, May 22, 2025.</p>
+      <p id="timestamp">Updated as of 11:38 AM PDT, Friday, May 30, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       
       <div class="table-wrapper">
@@ -48,9 +138,9 @@
       
       <p id="errorMessage" style="color: red; display: none;">Using static data on this device (optimized for iPhone and Android). Clear browser cache if table doesn't display correctly (Settings > Apps > Browser > Storage > Clear Data).</p>
       <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
-    </div>
+
     <script>
-      // Static data from screenshot
+      // Static data for company table
       const staticData = {
         "SEZL": { revenue: 71000000, grossMargin: 30.3, ebitda: 82000000, netIncome: 7000000, marketCap: 3700000000, cash: 73000000, debt: 11000000 },
         "PAYS": { revenue: 58000000, grossMargin: 12.0, ebitda: 7000000, netIncome: 4000000, marketCap: 80000000, cash: 11000000, debt: 4900000 },
@@ -95,99 +185,18 @@
       }
 
       document.addEventListener("DOMContentLoaded", populateTable);
+
+      // Fetch data from external JSON file
+      fetch('json/financials-data.json')
+        .then(response => response.json())
+        .then(data => {
+          window.staticData = data;
+          document.getElementById("tableBody").innerHTML = "";
+          populateTable();
+        })
+        .catch(err => {
+          console.warn("Could not load external data, using built-in staticData.");
+        });
     </script>
-    <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-<script type="text/javascript">
-  new TradingView.MediumWidget({
-    "container_id": "tradingview-widget-container__widget",
-    "colorTheme": "light",
-    "dateRange": "12M",
-    "showChart": true,
-    "locale": "en",
-    "width": "100%",
-    "height": "100%",
-    "largeChartUrl": "",
-    "isTransparent": false,
-    "showSymbolLogo": true,
-    "showFloatingTooltip": false,
-    "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
-    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
-    "gridLineColor": "rgba(240, 243, 250, 0)",
-    "scaleFontColor": "rgba(15, 15, 15, 1)",
-    "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-    "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-    "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-    "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-    "tabs": [
-      {
-        "title": "Indices",
-        "symbols": [
-          { "s": "FRED:UMCSENT", "d": "Consumer Sentiment  " },
-          { "s": "ECONOMICS:USINTR", "d": "Interest Rates" },
-          { "s": "FRED:UNRATE", "d": "Unemployment" },
-          { "s": "FRED:MORTGAGE30US", "d": "30yr Fixed" },
-          { "s": "ECONOMICS:USCPI", "d": "CPI" },
-          { "s": "TVC:US10Y", "d": "10 Year" },
-          { "s": "ECONOMICS:USNHS", "d": "New Home Sales" },
-          { "s": "FRED:FIXHAI", "d": "Housing Affordability Index" }
-        ],
-        "originalTitle": "Indices"
-      },
-      {
-        "title": "Forex",
-        "symbols": [
-          { "s": "FX:EURUSD", "d": "EUR to USD" },
-          { "s": "FX:GBPUSD", "d": "GBP to USD" },
-          { "s": "FX:USDJPY", "d": "USD to JPY" },
-          { "s": "FX:USDCHF", "d": "USD to CHF" },
-          { "s": "FX:AUDUSD", "d": "AUD to USD" },
-          { "s": "FX:USDCAD", "d": "USD to CAD" }
-        ],
-        "originalTitle": "Forex"
-      },
-      {
-        "title": "Futures",
-        "symbols": [
-          { "s": "BMFBOVESPA:ISP1!", "d": "S&P 500 Index Futures" },
-          { "s": "BMFBOVESPA:EUR1!", "d": "Euro Futures" },
-          { "s": "PYTH:WTI3!", "d": "WTI CRUDE OIL" },
-          { "s": "BMFBOVESPA:ETH1!", "d": "Hydrous ethanol" },
-          { "s": "BMFBOVESPA:CCM1!", "d": "Corn" }
-        ],
-        "originalTitle": "Futures"
-      },
-      {
-        "title": "Bonds",
-        "symbols": [
-          { "s": "EUREX:FGBL1!", "d": "Euro Bund" },
-          { "s": "EUREX:FBTP1!", "d": "Euro BTP" },
-          { "s": "EUREX:FGBM1!", "d": "Euro BOBL" }
-        ],
-        "originalTitle": "Bonds"
-      }
-    ]
-  });
-</script>
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async></script>
-</div>
-<script>
-  // Fetch data from external JSON file
-  fetch('financials-data.json')
-    .then(response => response.json())
-    .then(data => {
-      window.staticData = data;
-      // Re-populate table with fetched data
-      document.getElementById("tableBody").innerHTML = "";
-      populateTable();
-    })
-    .catch(err => {
-      console.warn("Could not load external data, using built-in staticData.");
-    });
-</script>
-<!-- TradingView Widget END -->
   </body>
 </html>

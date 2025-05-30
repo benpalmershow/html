@@ -32,38 +32,6 @@
         { "s": "FRED:FIXHAI", "d": "Housing Affordability Index" }
       ],
       "originalTitle": "Indices"
-    },
-    {
-      "title": "Forex",
-      "symbols": [
-        { "s": "FX:EURUSD", "d": "EUR to USD" },
-        { "s": "FX:GBPUSD", "d": "GBP to USD" },
-        { "s": "FX:USDJPY", "d": "USD to JPY" },
-        { "s": "FX:USDCHF", "d": "USD to CHF" },
-        { "s": "FX:AUDUSD", "d": "AUD to USD" },
-        { "s": "FX:USDCAD", "d": "USD to CAD" }
-      ],
-      "originalTitle": "Forex"
-    },
-    {
-      "title": "Futures",
-      "symbols": [
-        { "s": "BMFBOVESPA:ISP1!", "d": "S&P 500 Index Futures" },
-        { "s": "BMFBOVESPA:EUR1!", "d": "Euro Futures" },
-        { "s": "PYTH:WTI3!", "d": "WTI CRUDE OIL" },
-        { "s": "BMFBOVESPA:ETH1!", "d": "Hydrous ethanol" },
-        { "s": "BMFBOVESPA:CCM1!", "d": "Corn" }
-      ],
-      "originalTitle": "Futures"
-    },
-    {
-      "title": "Bonds",
-      "symbols": [
-        { "s": "EUREX:FGBL1!", "d": "Euro Bund" },
-        { "s": "EUREX:FBTP1!", "d": "Euro BTP" },
-        { "s": "EUREX:FGBM1!", "d": "Euro BOBL" }
-      ],
-      "originalTitle": "Bonds"
     }
   ]
 }

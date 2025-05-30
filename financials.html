@@ -7,16 +7,53 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
     <style>
+      body {
+        margin: 0;
+        padding: 0 10px;
+      }
+      .site-header {
+        text-align: center;
+        padding: 10px 0;
+      }
+      .logo-container img {
+        max-width: 150px;
+        height: auto;
+      }
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 10px 0;
+        background: #f8f8f8;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-size: 0.9em;
+      }
+      .content {
+        max-width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+      }
+      h1 {
+        font-size: 1.5em;
+        text-align: center;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
       .table-wrapper {
         overflow-x: auto;
-        margin: 20px 0;
+        margin: 10px 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       }
       table {
         width: 100%;
         border-collapse: collapse;
+        font-size: 0.85em;
       }
       th, td {
-        padding: 8px;
+        padding: 6px;
         text-align: left;
         border: 1px solid #ddd;
       }
@@ -26,19 +63,120 @@
       .number {
         text-align: right;
       }
-      th:first-child,
-      td:first-child {
-        min-width: 90px;
-        width: 110px;
-        /* Adjust values as needed */
+      .scroll-hint {
+        font-size: 0.8em;
+        text-align: center;
+        color: #666;
+        margin: 5px 0;
       }
-      th:nth-child(2),
-      td:nth-child(2),
-      th:nth-child(3),
-      td:nth-child(3) {
-        min-width: 60px;
-        width: 70px;
-        /* Adjust as needed for your data */
+      #errorMessage {
+        font-size: 0.75em;
+        text-align: center;
+      }
+      #timestamp, p {
+        font-size: 0.8em;
+      }
+
+      /* Hamburger menu */
+      .hamburger {
+        display: none;
+        font-size: 1.5em;
+        cursor: pointer;
+        padding: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+
+      /* Responsive table columns */
+      th:first-child, td:first-child {
+        min-width: 70px;
+        width: 80px;
+      }
+      th:nth-child(2), td:nth-child(2),
+      th:nth-child(3), td:nth-child(3) {
+        min-width: 50px;
+        width: 60px;
+      }
+      th:nth-child(n+4), td:nth-child(n+4) {
+        min-width: 50px;
+        width: 60px;
+      }
+
+      /* Media queries for small screens */
+      @media (max-width: 600px) {
+        .logo-container img {
+          max-width: 100px;
+        }
+        .hamburger {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 50px;
+          left: 0;
+          right: 0;
+          background: #f8f8f8;
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+        .nav-links a {
+          padding: 8px 0;
+          font-size: 0.8em;
+        }
+        h1 {
+          font-size: 1.2em;
+        }
+        h2 {
+          font-size: 1em;
+        }
+        table {
+          font-size: 0.75em;
+        }
+        th, td {
+          padding: 4px;
+        }
+        /* Stack company table columns */
+        #tableBody tr {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 10px;
+        }
+        #tableBody th, #tableBody td {
+          display: block;
+          text-align: left;
+        }
+        #tableBody th:not(:first-child),
+        #tableBody td:not(:first-child):not(:nth-child(2)):not(:nth-child(6)) {
+          display: none; /* Show only Co., Rev, Mkt Cap */
+        }
+        #tableBody td:first-child {
+          font-weight: bold;
+        }
+        /* Stack indices table columns */
+        #indicesTableBody tr {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 10px;
+        }
+        #indicesTableBody th, #indicesTableBody td {
+          display: block;
+          text-align: left;
+        }
+        #indicesTableBody th:not(:first-child):not(:nth-child(2)),
+        #indicesTableBody td:not(:first-child):not(:nth-child(2)) {
+          display: none; /* Show only Index, Latest Value */
+        }
+        #indicesTableBody td:first-child {
+          font-weight: bold;
+        }
+        .scroll-hint {
+          display: none; /* Hide scroll hint as tables are now stacked */
+        }
       }
     </style>
     <title>Financials at a Glance | Howdy, Stranger</title>
@@ -49,6 +187,7 @@
       <div class="logo-container">
         <img src="images/logo.png" alt="Howdy Stranger" class="logo">
       </div>
+      <div class="hamburger">☰</div>
     </header>
     <nav class="nav-links">
       <a class="nav-link" href="index.html">Home</a>
@@ -56,8 +195,33 @@
       <a class="nav-link" href="read.html">📚read</a>
       <a class="nav-link" href="listen.html">📻listen</a>
     </nav>
-   
-    
+    <div class="content">
+      <h1>stonks</h1>
+      <p id="timestamp">Updated as of 11:45 AM PDT, Friday, May 30, 2025.</p>
+      <p>Below is a snapshot of key financial metrics for selected companies.</p>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Co.</th>
+              <th>Rev</th>
+              <th>Gross Marg</th>
+              <th>EBITDA</th>
+              <th>Net Inc</th>
+              <th>Mkt Cap</th>
+              <th>Cash</th>
+              <th>Debt</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="scroll-hint">← Scroll horizontally to view all columns →</div>
+      
+      <p id="errorMessage" style="color: red; display: none;">Using static data on this device. Clear browser cache if table doesn't display (Settings > Apps > Browser > Storage > Clear Data).</p>
+      <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
+
       <h2>Market Indices</h2>
       <div class="table-wrapper">
         <table>
@@ -113,32 +277,6 @@
         </table>
       </div>
     </div>
-    <div class="content">
-      <p id="timestamp">Updated as of 11:38 AM PDT, Friday, May 30, 2025.</p>
-      <p>Below is a snapshot of key financial metrics for selected companies.</p>
-      
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Co.</th>
-              <th>Rev</th>
-              <th>Gross Marg</th>
-              <th>EBITDA</th>
-              <th>Net Inc</th>
-              <th>Mkt Cap</th>
-              <th>Cash</th>
-              <th>Debt</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-      <div class="scroll-hint">← Scroll horizontally to view all columns →</div>
-      
-      <p id="errorMessage" style="color: red; display: none;">Using static data on this device (optimized for iPhone and Android). Clear browser cache if table doesn't display correctly (Settings > Apps > Browser > Storage > Clear Data).</p>
-      <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
-
     <script>
       // Static data for company table
       const staticData = {
@@ -184,7 +322,15 @@
         timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
       }
 
-      document.addEventListener("DOMContentLoaded", populateTable);
+      // Hamburger menu toggle
+      document.addEventListener("DOMContentLoaded", () => {
+        populateTable();
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      });
 
       // Fetch data from external JSON file
       fetch('json/financials-data.json')

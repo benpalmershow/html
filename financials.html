@@ -197,7 +197,7 @@
     </nav>
     <div class="content">
       <h1>stonks</h1>
-      <p id="timestamp">Updated as of 11:45 AM PDT, Friday, May 30, 2025.</p>
+      <p id="timestamp">Updated as of 11:50 AM PDT, Friday, May 30, 2025.</p>
       <p>Below is a snapshot of key financial metrics for selected companies.</p>
       
       <div class="table-wrapper">
@@ -232,52 +232,62 @@
               <th>Change (%)</th>
             </tr>
           </thead>
-          <tbody id="indicesTableBody">
-            <tr>
-              <td>Consumer Sentiment</td>
-              <td class="number">87.5</td>
-              <td class="number">+2.3</td>
-            </tr>
-            <tr>
-              <td>Interest Rates</td>
-              <td class="number">5.25</td>
-              <td class="number">-0.5</td>
-            </tr>
-            <tr>
-              <td>Unemployment</td>
-              <td class="number">3.8</td>
-              <td class="number">+0.2</td>
-            </tr>
-            <tr>
-              <td>30yr Fixed</td>
-              <td class="number">6.7</td>
-              <td class="number">+1.1</td>
-            </tr>
-            <tr>
-              <td>CPI</td>
-              <td class="number">3.2</td>
-              <td class="number">-0.3</td>
-            </tr>
-            <tr>
-              <td>10 Year</td>
-              <td class="number">4.4</td>
-              <td class="number">+0.4</td>
-            </tr>
-            <tr>
-              <td>New Home Sales</td>
-              <td class="number">650K</td>
-              <td class="number">-1.5</td>
-            </tr>
-            <tr>
-              <td>Housing Affordability Index</td>
-              <td class="number">92.0</td>
-              <td class="number">+0.8</td>
-            </tr>
-          </tbody>
+          <tbody id="indicesTableBody"></tbody>
         </table>
       </div>
     </div>
     <script>
+      // JSON data for indices
+      const indicesJson = {
+        "colorTheme": "light",
+        "dateRange": "12M",
+        "showChart": true,
+        "locale": "en",
+        "width": "100%",
+        "height": "100%",
+        "largeChartUrl": "",
+        "isTransparent": false,
+        "showSymbolLogo": true,
+        "showFloatingTooltip": false,
+        "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+        "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+        "gridLineColor": "rgba(240, 243, 250, 0)",
+        "scaleFontColor": "rgba(15, 15, 15, 1)",
+        "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+        "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+        "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+        "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+        "tabs": [
+          {
+            "title": "Indices",
+            "symbols": [
+              { "s": "FRED:UMCSENT", "d": "Consumer Sentiment" },
+              { "s": "ECONOMICS:USINTR", "d": "Interest Rates" },
+              { "s": "FRED:UNRATE", "d": "Unemployment" },
+              { "s": "FRED:MORTGAGE30US", "d": "30yr Fixed" },
+              { "s": "ECONOMICS:USCPI", "d": "CPI" },
+              { "s": "TVC:US10Y", "d": "10 Year" },
+              { "s": "ECONOMICS:USNHS", "d": "New Home Sales" },
+              { "s": "FRED:FIXHAI", "d": "Housing Affordability Index" }
+            ],
+            "originalTitle": "Indices"
+          }
+        ]
+      };
+
+      // Placeholder data for indices (since JSON lacks values)
+      const indicesData = [
+        { name: "Consumer Sentiment", value: 87.5, change: 2.3 },
+        { name: "Interest Rates", value: 5.25, change: -0.5 },
+        { name: "Unemployment", value: 3.8, change: 0.2 },
+        { name: "30yr Fixed", value: 6.7, change: 1.1 },
+        { name: "CPI", value: 3.2, change: -0.3 },
+        { name: "10 Year", value: 4.4, change: 0.4 },
+        { name: "New Home Sales", value: "650K", change: -1.5 },
+        { name: "Housing Affordability Index", value: 92.0, change: 0.8 }
+      ];
+
       // Static data for company table
       const staticData = {
         "SEZL": { revenue: 71000000, grossMargin: 30.3, ebitda: 82000000, netIncome: 7000000, marketCap: 3700000000, cash: 73000000, debt: 11000000 },
@@ -285,7 +295,7 @@
         "DAVE": { revenue: 347000000, grossMargin: 21.9, ebitda: 76000000, netIncome: 58000000, marketCap: 3300000000, cash: 50000000, debt: 16000000 }
       };
 
-      function populateTable() {
+      function populateCompanyTable() {
         const companies = ["SEZL", "PAYS", "DAVE"];
         const tbody = document.getElementById("tableBody");
         const errorMessage = document.getElementById("errorMessage");
@@ -322,9 +332,24 @@
         timestamp.textContent = `Updated as of ${new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })}.`;
       }
 
-      // Hamburger menu toggle
+      function populateIndicesTable() {
+        const tbody = document.getElementById("indicesTableBody");
+        const symbols = indicesJson.tabs[0].symbols;
+        symbols.forEach((symbol, index) => {
+          const data = indicesData[index] || { value: "N/A", change: "N/A" }; // Fallback if no placeholder data
+          const row = tbody.insertRow();
+          row.insertCell().textContent = symbol.d; // Use description from JSON
+          row.insertCell().textContent = data.value;
+          row.insertCell().textContent = data.change;
+          row.cells[1].className = "number";
+          row.cells[2].className = "number";
+        });
+      }
+
+      // Hamburger menu toggle and table population
       document.addEventListener("DOMContentLoaded", () => {
-        populateTable();
+        populateCompanyTable();
+        populateIndicesTable();
         const hamburger = document.querySelector(".hamburger");
         const navLinks = document.querySelector(".nav-links");
         hamburger.addEventListener("click", () => {
@@ -338,7 +363,7 @@
         .then(data => {
           window.staticData = data;
           document.getElementById("tableBody").innerHTML = "";
-          populateTable();
+          populateCompanyTable();
         })
         .catch(err => {
           console.warn("Could not load external data, using built-in staticData.");

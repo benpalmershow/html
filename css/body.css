@@ -169,28 +169,23 @@ body {
 }
 
 /* --- Main Container and Layout --- */
-.page-container {
+.page-container,
+.container {
   width: 100%;
   max-width: var(--max-content-width);
   margin: 2rem auto;
-  padding: 0;
-  min-height: calc(100vh - 4rem);
-  display: flex;
-  flex-direction: column;
-  border: 3px solid var(--logo-teal);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px var(--shadow-color);
-  background: var(--bg-primary);
-  overflow: hidden;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
 }
 
 .content {
   width: 100%;
   flex: 1;
-  margin: 0;
+  margin: 0 auto;
   padding: var(--content-padding);
   max-width: 100vw;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* --- Cards and Card Containers --- */
@@ -206,40 +201,70 @@ body {
 
 .card {
   background: var(--bg-secondary);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   border: 1px solid var(--border-color);
-  padding: 1.5rem;
-  margin: 1rem 0;
+  padding: 1.25rem;
   box-shadow: 0 2px 8px var(--shadow-color);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
+  margin: 0.5rem 0;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .card:hover {
-  border-color: var(--logo-teal);
-  background-color: var(--bg-primary);
-  transform: translateY(-2px);
+  border-color: var(--logo-orange);
   box-shadow: 0 4px 16px var(--shadow-color);
 }
 
 .card-title {
   font-size: 1.1rem;
   font-weight: 500;
-  margin: 0;
+  margin-bottom: 0.5rem;
   color: var(--text-primary);
-  text-align: left;
-  line-height: 1.4;
+}
+
+/* Card date: smaller, muted, different font */
+.card-date {
+  font-size: 0.78em;
+  color: var(--text-muted);
   font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 400;
+  margin-bottom: 0.2em;
+  letter-spacing: 0.01em;
+  display: block;
+}
+
+/* Card title link: distinct style and hover effect */
+.card-title a {
+  color: var(--logo-teal);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.18s, text-decoration 0.18s, background 0.18s;
+  display: block;
+  border-radius: 4px;
+  padding: 0.1em 0.2em;
+  background: none;
+}
+
+.card-title a:hover,
+.card-title a:focus {
+  color: var(--logo-orange);
+  text-decoration: underline;
+  background: rgba(212,130,42,0.06);
+  outline: none;
+}
+
+/* Remove hover effect from card links in .card-content or .card-date */
+.card-title a .card-date,
+.card-title a .card-content {
+  color: inherit;
+  background: none;
+  text-decoration: none;
+  transition: none;
 }
 
 .card a {
   text-decoration: none;
   color: var(--logo-orange);
   display: inline-block;
-  width: auto;
-  position: relative;
   font-size: 0.85em;
   font-weight: 600;
   background: rgba(212, 130, 42, 0.08);
@@ -266,48 +291,28 @@ body {
   outline: none;
 }
 
-.card-date {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  font-family: 'Georgia', 'Times New Roman', serif;
-}
-
-.card-content {
-  color: var(--logo-teal);
-  font-weight: 600;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-  margin: 2rem 0;
-}
-
 /* --- Typography --- */
-p {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  margin: 0.75rem 0;
-  color: var(--text-secondary);
-  max-width: 70ch;
-  font-family: 'Georgia', 'Times New Roman', serif;
-}
-
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
+  text-align: center;           /* Center all headings */
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 h1 {
   color: var(--logo-teal);
   text-shadow: 1px 1px 2px var(--shadow-color);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-top: 0;
+  border-bottom: none;
 }
 
 h2 {
   color: var(--logo-orange);
   border-bottom: 2px solid var(--logo-orange);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 
 h3, h4 {
@@ -326,6 +331,7 @@ h3, h4 {
   max-width: 100%;
 }
 
+/* --- Section Divider --- */
 .section-divider {
   width: 100%;
   height: 3px;
@@ -613,24 +619,29 @@ iframe {
   white-space: nowrap;
 }
 
+/* --- Watch Styles: Ratings --- */
 .rt-rating {
-  background-color: var(--logo-orange);
-  color: white;
+  background-color: #fa320a !important;   /* Rotten Tomatoes red */
+  color: #fff !important;
+  border: none;
 }
 
-.rt-rating:hover {
-  background-color: #b8671d;
-  color: white;
+.rt-rating:hover,
+.rt-rating:focus {
+  background-color: #c22105 !important;   /* darker Rotten Tomatoes red */
+  color: #fff !important;
 }
 
 .imdb-rating {
-  background-color: #ffe08a;
-  color: #2c5f5a;
+  background-color: #f5c518 !important;   /* IMDb yellow */
+  color: #222 !important;
+  border: none;
 }
 
-.imdb-rating:hover {
-  background-color: #ffd166;
-  color: #2c5f5a;
+.imdb-rating:hover,
+.imdb-rating:focus {
+  background-color: #e2b616 !important;   /* darker IMDb yellow */
+  color: #222 !important;
 }
 
 /* --- Media Queries --- */

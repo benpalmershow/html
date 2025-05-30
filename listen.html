@@ -15,7 +15,6 @@
     <meta name="keywords" content="podcasts, The Ben Palmer Show, Supreme Court, Marketplace, HowdyStranger" />
     <meta name="author" content="HowdyStranger" />
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
     <link rel="stylesheet" href="/css/body.css" />
     <title>Listen to Podcasts - Howdy, Stranger</title>
   </head>
@@ -33,44 +32,67 @@
       <a class="nav-link active" href="listen.html">📻listen</a>
     </nav>
           <h1>Podcasts | Music</h1>
-         <div class="content">
+    <div class="content">
       <div class="section-divider"></div>
 
-    <div class="card-container">
-      <div class="card">
-        <div class="card-title">The Ben Palmer Show (TBPS)</div>
-        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">Apple</a>
-        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">Spotify</a>
-        <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">YouTube</a>
-      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="card-title">The Ben Palmer Show (TBPS)</div>
+          <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">Apple</a>
+          <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">Spotify</a>
+          <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">YouTube</a>
+        </div>
 
-      <div class="card">
-        <div class="card-title">The Free Law Project (SCOTUS Oral Arguments)</div>
-        <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">Apple</a>
-      </div>
+        <div class="card">
+          <div class="card-title">The Free Law Project (SCOTUS Oral Arguments)</div>
+          <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">Apple</a>
+        </div>
 
-      <div class="card">
-        <div class="card-title">Marketplace</div>
-        <a href="https://podcasts.apple.com/us/podcast/marketplace/id201853034">Apple</a>
-        <a href="https://open.spotify.com/show/6zYlX5UGEPmNCWacYUJQGD?si=2feea069e3c14461">Spotify</a>
-      </div>
+        <div class="card">
+          <div class="card-title">Marketplace</div>
+          <a href="https://podcasts.apple.com/us/podcast/marketplace/id201853034">Apple</a>
+          <a href="https://open.spotify.com/show/6zYlX5UGEPmNCWacYUJQGD?si=2feea069e3c14461">Spotify</a>
+        </div>
 
-      <div class="card">
-        <div class="card-title">Featured Episode: Trump v. CASA, Inc.</div>
-        <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">Apple</a>
-      </div>
+        <div class="card">
+          <div class="card-title">Featured Episode: Trump v. CASA, Inc.</div>
+          <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">Apple</a>
+        </div>
 
-      <div class="card">
-        <div class="card-title">Music: Allen Stone – "A Father's Song"</div>
-        <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
-      </div>
+        <div class="card">
+          <div class="card-title">Music: Allen Stone – "A Father's Song"</div>
+          <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
+        </div>
 
-      <div class="card">
-        <div class="card-title">Music: Almost Monday – "Can't Slow Down"</div>
-        <a href="https://music.apple.com/us/album/cant-slow-down-single/1746137121">Apple</a>
-        <a href="https://open.spotify.com/track/15IF4wSCMrAo2Rq0eytARR">Spotify</a>
-        <a href="https://music.youtube.com/watch?v=U19wX8npUV8&si=Ts8uoxtqLL_onzRT">YouTube</a>
+        <div class="card">
+          <div class="card-title">Music: Almost Monday – "Can't Slow Down"</div>
+          <a href="https://music.apple.com/us/album/cant-slow-down-single/1746137121">Apple</a>
+          <a href="https://open.spotify.com/track/15IF4wSCMrAo2Rq0eytARR">Spotify</a>
+          <a href="https://music.youtube.com/watch?v=U19wX8npUV8&si=Ts8uoxtqLL_onzRT">YouTube</a>
+        </div>
       </div>
     </div>
   </body>
 </html>
+
+<style>
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  align-items: stretch;
+}
+
+.card-container .card {
+  background: var(--bg-secondary);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  margin: 0.5rem 0;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+</style>

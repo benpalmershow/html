@@ -235,23 +235,6 @@ td a:hover { color: var(--logo-orange); text-decoration: underline; }
 }
 
 /* Listen Page Styles */
-body.listen { background-color: #f5e6d3; color: var(--logo-teal); }
-.listen .card-container { gap: 1.5rem; }
-.listen .card {
-  background-color: #ffffff; border: 2px solid var(--logo-teal); border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(44, 84, 86, 0.15); padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.listen .card:hover {
-  transform: translateY(-4px); box-shadow: 0 6px 20px rgba(44, 84, 86, 0.25);
-  border-color: var(--logo-orange);
-}
-.listen .card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--logo-teal); }
-.listen .card a {
-  text-decoration: none; color: var(--logo-orange); margin-right: 0.75rem;
-  font-weight: 500; padding: 0.25rem 0.5rem; border-radius: 4px; transition: background-color 0.2s ease;
-}
-.listen .card a:hover { background-color: #f5e6d3; text-decoration: none; }
 
 /* Video/Watch Styles */
 .video-container { display: flex; flex-direction: column; gap: 1.5rem; margin: 1rem 0; }

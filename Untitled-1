@@ -1,0 +1,24 @@
+project-root/
+│
+├── html/                  # All your HTML files go here
+│   ├── index.html
+│   ├── read.html
+│   ├── watch.html
+│   ├── listen.html
+│   ├── opinion.html
+│   └── ... (other HTML files)
+│
+├── css/                   # All your CSS files
+│   └── body.css
+│
+├── js/                    # All your JavaScript files
+│   └── nav.js
+│
+├── images/                # All your images
+│   └── logo.png
+│
+├── json/                  # All your JSON data files
+│   └── posts.json
+│   └── financials-data.json
+│
+└── ... (other folders/files as needed)

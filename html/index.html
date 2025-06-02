@@ -2,35 +2,50 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DWEVPGLJDP');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="/css/body.css">
     <title>Howdy, Stranger</title>
   </head>
   <body>
     <!-- Logo Header -->
     <header class="site-header">
       <div class="logo-container">
-        <img src="images/logo.png" alt="Howdy Stranger" class="logo">
+        <img src="/images/logo.png" alt="Howdy Stranger" class="logo">
       </div>
     </header>
-    <nav class="nav-links">
-      <!-- Navigation will be populated by nav.js -->
-    </nav>
-    
-    
-    <script src="js/nav.js"></script>
+    <nav class="nav-links" id="main-nav"></nav>
+    <div class="content">
+      <p>my tweets ⬇️</p>
+      <div id="post-feed"></div>
+    </div>
+    <script>
    
+      // Posts feed
+      fetch('/json/posts.json')
+        .then(response => response.json())
+        .then(posts => {
+          const feed = document.getElementById('post-feed');
+          feed.innerHTML = posts.map(post =>
+            `<div class="card">
+              <div class="card-title">${post.title || ''}</div>
+              <div class="card-date">${post.date || ''}</div>
+              <div class="card-content">${post.content || ''}</div>
+            </div>`
+          ).join('');
+        });
+    </script>
+        <script src="/js/nav.js"></script>
+
   </body>
 </html>

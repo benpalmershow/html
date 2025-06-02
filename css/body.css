@@ -246,6 +246,24 @@ img[alt="Opinion Image"] {
   outline: none;
 }
 
+/* Card style for widgets */
+.widget-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  max-width: 700px;
+  width: 95%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.tradingview-widget-container {
+  width: 100% !important;
+  min-width: 0;
+}
+
 /* Typography */
 h1,
 h2,

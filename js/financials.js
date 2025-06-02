@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Fetch the widget configuration from financials-data.json
-  fetch('json/financials-data.json')
+  fetch('/json/financials-data.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to load financials-data.json');
@@ -12,8 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.async = true;
+      script.innerHTML = JSON.stringify(config, null, 2);
       script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
-      script.innerHTML = JSON.stringify(config);
+
+      // Workaround: TradingView expects the config as the script's innerHTML, not as a JS object.
+      // So, set innerHTML and src, but NOT text or textContent.
 
       // Append the script to the TradingView widget container
       const container = document.getElementById('tradingview-widget');

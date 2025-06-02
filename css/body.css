@@ -85,6 +85,23 @@ body {
 
 .logo-container {
   display: flex;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 80px;      /* Adjust size as needed */
+  height: auto;
+  margin: 10px 0 0 10px;
+}
+
+img[alt="Opinion Image"] {
+  width: 80px;      /* Adjust size as needed */
+  height: auto;
+  margin: 10px 0 0 10px;
+}
+
+.logo-container {
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;

@@ -26,25 +26,10 @@
     </header>
     <nav class="nav-links" id="main-nav"></nav>
     <div class="content">
-      <p>my tweets ⬇️</p>
+      <p>tweets moved to opinion section</p>
       <div id="post-feed"></div>
     </div>
-    <script>
    
-      // Posts feed
-      fetch('/json/posts.json')
-        .then(response => response.json())
-        .then(posts => {
-          const feed = document.getElementById('post-feed');
-          feed.innerHTML = posts.map(post =>
-            `<div class="card">
-              <div class="card-title">${post.title || ''}</div>
-              <div class="card-date">${post.date || ''}</div>
-              <div class="card-content">${post.content || ''}</div>
-            </div>`
-          ).join('');
-        });
-    </script>
         <script src="/js/nav.js"></script>
 
   </body>

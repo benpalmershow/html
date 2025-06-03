@@ -497,3 +497,9 @@ h4 {
     widows: 3;
   }
 }
+
+.table-wrapper table th,
+.table-wrapper table td {
+  font-size: 0.85em;
+  white-space: nowrap;
+}

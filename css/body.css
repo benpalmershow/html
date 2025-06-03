@@ -339,7 +339,7 @@ h2, h3, h4, h5, h6 { text-align: left; margin-left: 0; margin-right: 0; }
   background: var(--bg-secondary, #f8f4e6);
   border-left: 4px solid var(--logo-orange, #d4822a);
   padding: 1em 1.5em;
-  margin: 1.5em 0;
+  margin: 1.5em 0 1.5em 1.5em; /* top right bottom left */
   border-radius: 0.4em;
   color: var(--text-secondary, #333);
   font-size: 0.98em;

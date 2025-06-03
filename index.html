@@ -26,12 +26,28 @@
   </header>
   <nav class="nav-links" id="main-nav"></nav>
   <div class="content" style="max-width: 600px; padding: 1.2em 1.2em 0 1.2em;">
-    <h2 style="margin-bottom: 0.4em;">Howdy, Stranger</h2>
+    <h2 class="animated-title" style="margin-bottom: 0.4em;">Howdy, Stranger</h2>
     <p style="margin-top: 0; margin-bottom: 1em; font-size: 1em;">
       This site is a curated hub for commentary, news, and analysis on law, economics, and current events. Explore opinions, financial insights, and Supreme Court coverage.
     </p>
     <div id="post-feed"></div>
   </div>
+  <style>
+    .animated-title {
+      animation: fadeInSlideDown 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 1;
+    }
+    @keyframes fadeInSlideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
   <script src="/js/nav.js"></script>
 </body>
 </html>

@@ -21,46 +21,46 @@
       
     </nav>
     <div class="content">
-      
-      <p id="timestamp">Updated as of 11:50 AM PDT, Friday, May 30, 2025.</p>
-      <p>Below is a snapshot of key financial metrics for selected companies.</p>
-      
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Co.</th>
-              <th>Rev</th>
-              <th>Gross Marg</th>
-              <th>EBITDA</th>
-              <th>Net Inc</th>
-              <th>Mkt Cap</th>
-              <th>Cash</th>
-              <th>Debt</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-      <div class="scroll-hint">← Scroll horizontally to view all columns →</div>
-      
-      <p id="errorMessage" style="color: red; display: none;">Using static data on this device. Clear browser cache if table doesn't display (Settings > Apps > Browser > Storage > Clear Data).</p>
-      <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
+  
+  <p id="timestamp">Updated as of 11:50 AM PDT, Friday, May 30, 2025.</p>
+  <p>Below is a snapshot of key financial metrics for selected companies.</p>
+  
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Co.</th>
+          <th>Rev</th>
+          <th>Gross Marg</th>
+          <th>EBITDA</th>
+          <th>Net Inc</th>
+          <th>Mkt Cap</th>
+          <th>Cash</th>
+          <th>Debt</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <div class="scroll-hint">← Scroll horizontally to view all columns →</div>
+  
+  <p id="errorMessage" style="color: red; display: none;">Using static data on this device. Clear browser cache if table doesn't display (Settings > Apps > Browser > Storage > Clear Data).</p>
+  <p>Notes: Figures in $USD. YoY growth reflects prior year. Verify via ticker links to SEC filings.</p>
 
-      <h2>Market Indices</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>Latest Value</th>
-              <th>Change (%)</th>
-            </tr>
-          </thead>
-          <tbody id="indicesTableBody"></tbody>
-        </table>
-      </div>
-    </div>
+  <h2>Market Indices</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Latest Value</th>
+          <th>Change (%)</th>
+        </tr>
+      </thead>
+      <tbody id="indicesTableBody"></tbody>
+    </table>
+  </div>
+</div>
     <script>
       // JSON data for indices
       const indicesJson = {

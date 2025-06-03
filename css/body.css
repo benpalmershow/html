@@ -335,3 +335,41 @@ h2, h3, h4, h5, h6 { text-align: left; margin-left: 0; margin-right: 0; }
   display: block;
   margin-left: 1.5em;
 }
+.note {
+  background: var(--bg-secondary, #f8f4e6);
+  border-left: 4px solid var(--logo-orange, #d4822a);
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  border-radius: 0.4em;
+  color: var(--text-secondary, #333);
+  font-size: 0.98em;
+}
+.note strong {
+  color: var(--logo-orange, #d4822a);
+}
+.welcome-card {
+  background: var(--bg-primary, #fdf6e8);
+  border: 2px solid var(--logo-teal, #2c5f5a);
+  border-radius: 0.6em;
+  box-shadow: 0 2px 8px var(--shadow-color, rgba(44,95,90,0.08));
+  padding: 1.3em 1.7em;
+  margin: 1.5em 0 2em 0;
+  color: var(--text-primary, #2c5f5a);
+  font-size: 1.08em;
+}
+.welcome-card h2 {
+  margin-top: 0;
+  color: var(--logo-orange, #d4822a);
+  font-size: 1.25em;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: var(--logo-orange, #d4822a);
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+a:hover, a:focus {
+  color: var(--logo-teal, #2c5f5a);
+  text-decoration: underline;
+}

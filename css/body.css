@@ -373,3 +373,20 @@ a:hover, a:focus {
   color: var(--logo-teal, #2c5f5a);
   text-decoration: underline;
 }
+
+.card-container,
+.card.compact-card {
+  width: fit-content;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card.compact-card {
+  box-sizing: border-box;
+  min-width: 240px;
+  width: fit-content;
+  max-width: 100%;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+}

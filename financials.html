@@ -58,14 +58,16 @@
     row.insertCell().textContent = data.may !== undefined ? data.may : '';
     row.insertCell().textContent = data.june !== undefined ? data.june : '';
 
-    // Change cell with arrow (special logic for Used Vehicle)
+    // Change cell with arrow
     let changeCell = row.insertCell();
     if (data.name === "Used Vehicle") {
       if (typeof data.change === "number" && !isNaN(data.change)) {
-        if (data.change > 0) {
-          changeCell.innerHTML = `<span style="color: #c0392b;">&#9650; ${data.change}</span>`;
-        } else if (data.change < 0) {
+        if (data.change < 0) {
+          // Only for Used Vehicle: negative is green down arrow
           changeCell.innerHTML = `<span style="color: #1a7f3c;">&#9660; ${data.change}</span>`;
+        } else if (data.change > 0) {
+          // Only for Used Vehicle: positive is red up arrow
+          changeCell.innerHTML = `<span style="color: #c0392b;">&#9650; ${data.change}</span>`;
         } else {
           changeCell.textContent = data.change;
         }

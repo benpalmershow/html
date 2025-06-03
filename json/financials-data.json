@@ -137,7 +137,7 @@
       "april": 52.2,
       "may": 52.2,
       "june": "",
-      "change": 0.0
+      "change": -8.4
     },
     {
       "name": "CPI",
@@ -146,7 +146,7 @@
       "april": 2.3,
       "may": "*TBD 6/11",
       "june": "",
-      "change": 1.0
+      "change": -4.2
     },
     {
       "name": "Unemployment",
@@ -155,7 +155,7 @@
       "april": 4.2,
       "may": "",
       "june": "*TBD 6/6",
-      "change": 0.1
+      "change": 0.0
     },
     {
       "name": "30yr Fixed",
@@ -164,7 +164,7 @@
       "april": 6.73,
       "may": 6.82,
       "june": "",
-      "change": 0.0
+      "change": 2.6
     },
     {
       "name": "10 Year",
@@ -173,7 +173,7 @@
       "april": 4.28,
       "may": 4.42,
       "june": "",
-      "change": 0.4
+      "change": 3.3
     },
     {
       "name": "New Home Sales (thousands)",
@@ -182,7 +182,7 @@
       "april": 743,
       "may": "",
       "june": "",
-      "change": -10000
+      "change": 10.9
     },
     {
       "name": "Housing Affordability Index",
@@ -191,45 +191,51 @@
       "april": "*6/13",
       "may": "",
       "june": "",
-      "change": 0.5
+      "change": ""
     },
     {
       "name": "Job openings/unemployment",
       "url": "https://www.bls.gov/jlt/",
       "march": "3.2",
       "april": "",
-      "may": ""
+      "may": "",
+      "change": ""
     },
     {
       "name": "ISM Manufacturing PMI",
       "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi/may/",
-       "march": "53.4",
-       "april": "48.7",
-      "may": "48.5"
+      "march": "53.4",
+      "april": "48.7",
+      "may": "48.5",
+      "change": -9.2
     },
     {
       "name": "Producer Price Index Home",
       "url": "https://www.bls.gov/ppi/",
       "april": 2.4,
-      "may": ""
+      "may": "",
+      "change": ""
     },
     {
       "name": "Used Vehicle Value Index",
       "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
       "april": "208.2",
-      "may": "205.9"
+      "may": "205.9",
+      "change": -1.1
     },
     {
       "name": "Conference Board Consumer Confidence",
       "url": "https://www.conference-board.org/topics/consumer-confidence",
       "april": "85.7",
-      "may": "98"
+      "may": "98",
+      "change": 14.3
     },
     {
       "name": "NY Fed Empire Survey",
       "url": "https://www.newyorkfed.org/survey/empire/empiresurvey_overview",
       "april": "-8.1",
-      "may": "-9.2"
+      "may": "-9.2",
+      "change": -13.6
     }
   ]
 }

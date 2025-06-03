@@ -17,21 +17,31 @@
     </header>
     <nav class="nav-links"></nav>
     <div class="content">
-      <h2>All Indices</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>March</th>
-              <th>April</th>
-              <th>May</th>
-              <th>June</th>
-              <th>Change (%)</th>
-            </tr>
-          </thead>
-          <tbody id="indicesTableBody"></tbody>
-        </table>
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h2 class="card-title">About This Table</h2>
+        <p>
+          This table presents key U.S. economic and housing indices for the past several months. 
+          Each row links to the most authoritative source available for that index (prioritizing .gov and official sites). 
+          The "Change (%)" column shows the percent change from April to May where data is available. 
+          All values are sourced from official releases or reputable providers and are updated as new data becomes available.
+        </p>
+      </div>
+      <div class="card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>March</th>
+                <th>April</th>
+                <th>May</th>
+                <th>June</th>
+                <th>Change (%)</th>
+              </tr>
+            </thead>
+            <tbody id="indicesTableBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
     <script>

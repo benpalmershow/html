@@ -206,6 +206,9 @@ img[alt="Opinion Image"] {
   box-shadow: 0 2px 8px var(--shadow-color);
   margin: 0.5rem 0;
   transition: box-shadow 0.2s, border-color 0.2s;
+  overflow-x: auto;
+  /* Optional: add a max-width if you want to limit card width */
+  /* max-width: 100%; */
 }
 
 .card:hover {
@@ -500,6 +503,19 @@ h4 {
 
 .table-wrapper table th,
 .table-wrapper table td {
-  font-size: 0.85em;
+  font-size: 0.78em;
+  padding: 0.25em 0.5em;
   white-space: nowrap;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  min-width: unset;
+  width: auto;
+  table-layout: auto;
+  max-width: 100%;
 }

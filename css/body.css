@@ -328,7 +328,7 @@ h2, h3, h4, h5, h6 { text-align: left; margin-left: 0; margin-right: 0; }
   .logo { max-width: 200px; filter: none; }
   .site-header::before { display: none; }
   h1, h2, h3, h4, h5, h6 { page-break-after: avoid; text-shadow: none; }
-  p { orphans: 3; widows: 3; }
+  p { widows: 3; }
 }
 
 .card > h1 + p > em {

@@ -34,101 +34,6 @@
       "originalTitle": "Indices"
     }
   ],
-  "companies": {
-    "SEZL": {
-      "monthly": {
-        "May": {
-          "revenue": 71000000,
-          "grossMargin": 30.3,
-          "ebitda": 82000000,
-          "netIncome": 7000000,
-          "marketCap": 3700000000,
-          "cash": 73000000,
-          "debt": 11000000
-        },
-        "April": {
-          "revenue": 69000000,
-          "grossMargin": 29.8,
-          "ebitda": 80000000,
-          "netIncome": 6500000,
-          "marketCap": 3600000000,
-          "cash": 70000000,
-          "debt": 12000000
-        },
-        "March": {
-          "revenue": 67000000,
-          "grossMargin": 29.0,
-          "ebitda": 78000000,
-          "netIncome": 6000000,
-          "marketCap": 3500000000,
-          "cash": 68000000,
-          "debt": 12500000
-        }
-      }
-    },
-    "PAYS": {
-      "monthly": {
-        "May": {
-          "revenue": 58000000,
-          "grossMargin": 12.0,
-          "ebitda": 7000000,
-          "netIncome": 4000000,
-          "marketCap": 80000000,
-          "cash": 11000000,
-          "debt": 4900000
-        },
-        "April": {
-          "revenue": 57000000,
-          "grossMargin": 11.8,
-          "ebitda": 6900000,
-          "netIncome": 3900000,
-          "marketCap": 79000000,
-          "cash": 10800000,
-          "debt": 5000000
-        },
-        "March": {
-          "revenue": 56000000,
-          "grossMargin": 11.5,
-          "ebitda": 6800000,
-          "netIncome": 3800000,
-          "marketCap": 78000000,
-          "cash": 10600000,
-          "debt": 5100000
-        }
-      }
-    },
-    "DAVE": {
-      "monthly": {
-        "May": {
-          "revenue": 347000000,
-          "grossMargin": 21.9,
-          "ebitda": 76000000,
-          "netIncome": 58000000,
-          "marketCap": 3300000000,
-          "cash": 50000000,
-          "debt": 16000000
-        },
-        "April": {
-          "revenue": 340000000,
-          "grossMargin": 21.5,
-          "ebitda": 75000000,
-          "netIncome": 57000000,
-          "marketCap": 3250000000,
-          "cash": 49500000,
-          "debt": 16200000
-        },
-        "March": {
-          "revenue": 335000000,
-          "grossMargin": 21.0,
-          "ebitda": 74000000,
-          "netIncome": 56000000,
-          "marketCap": 3200000000,
-          "cash": 49000000,
-          "debt": 16500000
-        }
-      }
-    }
-  },
   "indices": [
     {
       "name": "Consumer Sentiment",
@@ -237,5 +142,100 @@
       "may": "-9.2",
       "change": -13.58
     }
-  ]
+  ],
+  "companies": {
+    "SEZL": {
+      "monthly": {
+        "May": {
+          "revenue": 71000000,
+          "grossMargin": 30.3,
+          "ebitda": 82000000,
+          "netIncome": 7000000,
+          "marketCap": 3700000000,
+          "cash": 73000000,
+          "debt": 11000000
+        },
+        "April": {
+          "revenue": 69000000,
+          "grossMargin": 29.8,
+          "ebitda": 80000000,
+          "netIncome": 6500000,
+          "marketCap": 3600000000,
+          "cash": 70000000,
+          "debt": 12000000
+        },
+        "March": {
+          "revenue": 67000000,
+          "grossMargin": 29.0,
+          "ebitda": 78000000,
+          "netIncome": 6000000,
+          "marketCap": 3500000000,
+          "cash": 68000000,
+          "debt": 12500000
+        }
+      }
+    },
+    "PAYS": {
+      "monthly": {
+        "May": {
+          "revenue": 58000000,
+          "grossMargin": 12.0,
+          "ebitda": 7000000,
+          "netIncome": 4000000,
+          "marketCap": 80000000,
+          "cash": 11000000,
+          "debt": 4900000
+        },
+        "April": {
+          "revenue": 57000000,
+          "grossMargin": 11.8,
+          "ebitda": 6900000,
+          "netIncome": 3900000,
+          "marketCap": 79000000,
+          "cash": 10800000,
+          "debt": 5000000
+        },
+        "March": {
+          "revenue": 56000000,
+          "grossMargin": 11.5,
+          "ebitda": 6800000,
+          "netIncome": 3800000,
+          "marketCap": 78000000,
+          "cash": 10600000,
+          "debt": 5100000
+        }
+      }
+    },
+    "DAVE": {
+      "monthly": {
+        "May": {
+          "revenue": 347000000,
+          "grossMargin": 21.9,
+          "ebitda": 76000000,
+          "netIncome": 58000000,
+          "marketCap": 3300000000,
+          "cash": 50000000,
+          "debt": 16000000
+        },
+        "April": {
+          "revenue": 340000000,
+          "grossMargin": 21.5,
+          "ebitda": 75000000,
+          "netIncome": 57000000,
+          "marketCap": 3250000000,
+          "cash": 49500000,
+          "debt": 16200000
+        },
+        "March": {
+          "revenue": 335000000,
+          "grossMargin": 21.0,
+          "ebitda": 74000000,
+          "netIncome": 56000000,
+          "marketCap": 3200000000,
+          "cash": 49000000,
+          "debt": 16500000
+        }
+      }
+    }
+  }
 }

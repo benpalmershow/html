@@ -35,7 +35,7 @@
     <script>
    
       // Posts feed
-      fetch('/json/posts.json')
+      fetch(`/json/posts.json?ts=${Date.now()}`)
         .then(response => response.json())
         .then(posts => {
           const feed = document.getElementById('post-feed');

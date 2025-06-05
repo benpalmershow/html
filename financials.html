@@ -41,74 +41,7 @@
         </p>
       </div>
     </div>
-    <script>
-      function populateIndicesTable(indices) {
-  const tbody = document.getElementById("indicesTableBody");
-  tbody.innerHTML = "";
-  indices.forEach(data => {
-    const row = tbody.insertRow();
-    // Always use the url if present
-    if (data.url) {
-      row.insertCell().innerHTML = `<a href="${data.url}" target="_blank" rel="noopener">${data.name}</a>`;
-    } else {
-      row.insertCell().textContent = data.name;
-    }
-    row.insertCell().textContent = data.march !== undefined ? data.march : '';
-    row.insertCell().textContent = data.april !== undefined ? data.april : '';
-    row.insertCell().textContent = data.may !== undefined ? data.may : '';
-    row.insertCell().textContent = data.june !== undefined ? data.june : '';
-
-  // Add Change (%) column
-  const changeCell = row.insertCell();
-  const inverseIndices = ["30yr Fixed", "10 Year"];
-  const isInverse = inverseIndices.includes(data.name);
-
-    if (typeof data.change === "number" && !isNaN(data.change)) {
-      if (isInverse) {
-        if (data.change > 0) {
-          changeCell.innerHTML = `<span style="color: #c0392b;">&#9650; ${data.change}</span>`;
-        } else if (data.change < 0) {
-          changeCell.innerHTML = `<span style="color: #1a7f3c;">&#9660; ${data.change}</span>`;
-        } else {
-          changeCell.textContent = data.change;
-        }
-      } else {
-        if (data.change > 0) {
-          changeCell.innerHTML = `<span style="color: #1a7f3c;">&#9650; ${data.change}</span>`;
-        } else if (data.change < 0) {
-          changeCell.innerHTML = `<span style="color: #c0392b;">&#9660; ${data.change}</span>`;
-        } else {
-          changeCell.textContent = data.change;
-        }
-      }
-    } else {
-      changeCell.textContent = data.change !== undefined ? data.change : '';
-    }
-
-    for (let i = 1; i < row.cells.length; i++) row.cells[i].className = "number";
-  });
-}
-
-      document.addEventListener("DOMContentLoaded", () => {
-        fetch('json/financials-data.json')
-          .then((response) => response.json())
-          .then(data => {
-            populateIndicesTable(data.indices);
-          })
-          .catch(err => {
-            console.warn("Could not load external data, using built-in staticData.");
-          });
-
-        const hamburger = document.querySelector(".hamburger");
-        const navLinks = document.querySelector(".nav-links");
-        if (hamburger && navLinks) {
-          hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-          });
-        }
-      });
-    </script>
-  
+    <script src="/js/financials.js"></script>
     <script src="/js/nav.js"></script>
   </body>
 </html>

@@ -1,39 +1,4 @@
 {
-  "colorTheme": "light",
-  "dateRange": "12M",
-  "showChart": true,
-  "locale": "en",
-  "width": "100%",
-  "height": "100%",
-  "largeChartUrl": "",
-  "isTransparent": false,
-  "showSymbolLogo": true,
-  "showFloatingTooltip": false,
-  "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
-  "plotLineColorFalling": "rgba(41, 98, 255, 1)",
-  "gridLineColor": "rgba(240, 243, 250, 0)",
-  "scaleFontColor": "rgba(15, 15, 15, 1)",
-  "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-  "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-  "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-  "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-  "tabs": [
-    {
-      "title": "Indices",
-      "symbols": [
-        { "s": "FRED:UMCSENT", "d": "Consumer Sentiment" },
-        { "s": "ECONOMICS:USINTR", "d": "Interest Rates" },
-        { "s": "FRED:UNRATE", "d": "Unemployment" },
-        { "s": "FRED:MORTGAGE30US", "d": "30yr Fixed" },
-        { "s": "ECONOMICS:USCPI", "d": "CPI" },
-        { "s": "TVC:US10Y", "d": "10 Year" },
-        { "s": "ECONOMICS:USNHS", "d": "New Home Sales" },
-        { "s": "FRED:FIXHAI", "d": "Housing Affordability Index" }
-      ],
-      "originalTitle": "Indices"
-    }
-  ],
   "indices": [
     {
       "name": "Consumer Sentiment",
@@ -42,7 +7,7 @@
       "april": 52.2,
       "may": 52.2,
       "june": "",
-      "change": 0.0
+      "change": 0
     },
     {
       "name": "CPI",
@@ -51,7 +16,7 @@
       "april": 2.3,
       "may": "*TBD 6/11",
       "june": "",
-      "change": ""
+      "change": -4.17
     },
     {
       "name": "Unemployment",
@@ -60,7 +25,7 @@
       "april": 4.2,
       "may": "",
       "june": "*TBD 6/6",
-      "change": ""
+      "change": 0
     },
     {
       "name": "30yr Fixed",
@@ -87,7 +52,7 @@
       "april": 743,
       "may": "",
       "june": "",
-      "change": ""
+      "change": 10.9
     },
     {
       "name": "Housing Affordability Index",
@@ -101,10 +66,11 @@
     {
       "name": "Job openings/unemployment",
       "url": "https://www.bls.gov/jlt/",
-      "march": "3.2",
-      "april": "",
+      "march": 3.4,
+      "april": 3.5,
       "may": "",
-      "change": ""
+      "june": "",
+      "change": 2.94
     },
     {
       "name": "ISM Manufacturing PMI",
@@ -112,130 +78,80 @@
       "march": "53.4",
       "april": "51.6",
       "may": "49.9",
-      "change": ""
+      "june": "",
+      "change": -3.29
     },
     {
       "name": "Producer Price Index Home",
       "url": "https://www.bls.gov/ppi/",
+      "march": "",
       "april": 2.4,
       "may": "",
+      "june": "",
       "change": ""
     },
     {
       "name": "Used Vehicle Value Index",
       "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
+      "march": "",
       "april": "208.2",
       "may": "205.9",
-      "change": -1.11
+      "june": "",
+      "change": -1.1
     },
     {
       "name": "Conference Board Consumer Confidence",
       "url": "https://www.conference-board.org/topics/consumer-confidence",
+      "march": "",
       "april": "85.7",
       "may": "98",
-      "change": 14.33
+      "june": "",
+      "change": 14.35
     },
     {
       "name": "NY Fed Empire Survey",
       "url": "https://www.newyorkfed.org/survey/empire/empiresurvey_overview",
+      "march": "",
       "april": "-8.1",
       "may": "-9.2",
-      "change": -13.58
-    }
-  ],
-  "companies": {
-    "SEZL": {
-      "monthly": {
-        "May": {
-          "revenue": 71000000,
-          "grossMargin": 30.3,
-          "ebitda": 82000000,
-          "netIncome": 7000000,
-          "marketCap": 3700000000,
-          "cash": 73000000,
-          "debt": 11000000
-        },
-        "April": {
-          "revenue": 69000000,
-          "grossMargin": 29.8,
-          "ebitda": 80000000,
-          "netIncome": 6500000,
-          "marketCap": 3600000000,
-          "cash": 70000000,
-          "debt": 12000000
-        },
-        "March": {
-          "revenue": 67000000,
-          "grossMargin": 29.0,
-          "ebitda": 78000000,
-          "netIncome": 6000000,
-          "marketCap": 3500000000,
-          "cash": 68000000,
-          "debt": 12500000
-        }
-      }
+      "june": "",
+      "change": 13.58
     },
-    "PAYS": {
-      "monthly": {
-        "May": {
-          "revenue": 58000000,
-          "grossMargin": 12.0,
-          "ebitda": 7000000,
-          "netIncome": 4000000,
-          "marketCap": 80000000,
-          "cash": 11000000,
-          "debt": 4900000
-        },
-        "April": {
-          "revenue": 57000000,
-          "grossMargin": 11.8,
-          "ebitda": 6900000,
-          "netIncome": 3900000,
-          "marketCap": 79000000,
-          "cash": 10800000,
-          "debt": 5000000
-        },
-        "March": {
-          "revenue": 56000000,
-          "grossMargin": 11.5,
-          "ebitda": 6800000,
-          "netIncome": 3800000,
-          "marketCap": 78000000,
-          "cash": 10600000,
-          "debt": 5100000
-        }
-      }
+    {
+      "name": "ADP National Employment (thousands)",
+      "url": "https://www.adp.com/what-we-offer/insights/adp-national-employment-report.aspx",
+      "march": "",
+      "april": 62,
+      "may": 37,
+      "june": "",
+      "change": -40.32
     },
-    "DAVE": {
-      "monthly": {
-        "May": {
-          "revenue": 347000000,
-          "grossMargin": 21.9,
-          "ebitda": 76000000,
-          "netIncome": 58000000,
-          "marketCap": 3300000000,
-          "cash": 50000000,
-          "debt": 16000000
-        },
-        "April": {
-          "revenue": 340000000,
-          "grossMargin": 21.5,
-          "ebitda": 75000000,
-          "netIncome": 57000000,
-          "marketCap": 3250000000,
-          "cash": 49500000,
-          "debt": 16200000
-        },
-        "March": {
-          "revenue": 335000000,
-          "grossMargin": 21.0,
-          "ebitda": 74000000,
-          "netIncome": 56000000,
-          "marketCap": 3200000000,
-          "cash": 49000000,
-          "debt": 16500000
-        }
-      }
+    {
+      "name": "Job Openings (millions)",
+      "url": "https://www.bls.gov/jlt/",
+      "march": 7.2,
+      "april": 7.4,
+      "may": "",
+      "june": "",
+      "change": 2.78
+    },
+    {
+      "name": "New Orders (billions)",
+      "url": "https://www.commerce.gov/",
+      "march": 617.4,
+      "april": 594.6,
+      "may": "",
+      "june": "",
+      "change": -3.69
+    },
+    {
+      "name": "Construction Spending (trillions)",
+      "url": "https://www.commerce.gov/",
+      "march": 2.162,
+      "april": 2.152,
+      "may": "",
+      "june": "",
+      "change": -0.46
     }
-  }
+  ]
 }

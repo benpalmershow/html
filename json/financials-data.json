@@ -48,10 +48,10 @@
     {
       "category": "Employment Indicators",
       "agency": "BLS",
-      "name": "Nonfarm Payrolls (000s)",
+      "name": "Nonfarm Payrolls",
       "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
-      "march": "315",
-      "april": "177",
+      "march": "315,000",
+      "april": "177,000",
       "may": "TBD 6/7",
       "june": "",
       "change": "-43.8"
@@ -59,11 +59,11 @@
     {
       "category": "Employment Indicators",
       "agency": "DOL",
-      "name": "Initial Jobless Claims (000s)",
+      "name": "Initial Jobless Claims",
       "url": "https://www.dol.gov/ui/data.pdf",
-      "march": "239",
-      "april": "247",
-      "may": "247",
+      "march": "239,000",
+      "april": "247,000",
+      "may": "247,000",
       "june": "TBD",
       "change": "+3.35"
     },
@@ -81,11 +81,11 @@
     {
       "category": "Employment Indicators",
       "agency": "ADP",
-      "name": "National Employment (000s)",
+      "name": "National Employment",
       "url": "https://www.adp.com/what-we-offer/insights/adp-national-employment-report.aspx",
       "march": "184",
-      "april": "62",
-      "may": "37",
+      "april": "62,000",
+      "may": "37,000",
       "june": "TBD",
       "change": "-40.3"
     },
@@ -232,29 +232,6 @@
       "june": "",
       "change": "-1.10"
     }
-  ],
-  "tradingViewTabs": [
-    {
-      "title": "Indices",
-      "symbols": [
-        {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
-        {"s": "FOREXCOM:NSXUSD", "d": "US 100"},
-        {"s": "FOREXCOM:DJI", "d": "Dow 30"},
-        {"s": "INDEX:NKY", "d": "Nikkei 225"},
-        {"s": "INDEX:DEU40", "d": "DAX Index"},
-        {"s": "FOREXCOM:UKXGBP", "d": "UK 100"}
-      ]
-    },
-    {
-      "title": "Futures",
-      "symbols": [
-        {"s": "CME_MINI:ES1!", "d": "S&P 500"},
-        {"s": "CME:6E1!", "d": "Euro"},
-        {"s": "COMEX:GC1!", "d": "Gold"},
-        {"s": "NYMEX:CL1!", "d": "Crude Oil"},
-        {"s": "NYMEX:NG1!", "d": "Natural Gas"},
-        {"s": "CBOT:ZC1!", "d": "Corn"}
-      ]
-    }
   ]
+  
 }

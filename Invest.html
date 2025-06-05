@@ -161,6 +161,10 @@
 				height: 100%;
 				width: 100%;
 			}
+			.tradingview-widget-container-widget-fullsize {
+				height: calc(100% - 32px);
+				width: 100%;
+			}
 		</style>
 	</head>
 	<body>
@@ -207,8 +211,8 @@
 					<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
 					</script>
 				</div>
-				<div class="tradingview-widget-container tradingview-widget-container-advanced-chart">
-			</section>
+				<div class="tradingview-widget-container tradingview-widget-container-fullsize">
+					<div class="tradingview-widget-container__widget tradingview-widget-container-widget-fullsize"></div>
 			<section id="advanced-chart">
 				<!-- TradingView Widget BEGIN -->
 				<div class="tradingview-widget-container" style="height:100%;width:100%">

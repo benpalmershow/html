@@ -43,6 +43,16 @@ body, html {
   box-sizing: border-box;
 }
 
+/* Page Images - Consolidated styling for opinion and read pages */
+.page-image,
+img[alt="Opinion Image"],
+img[alt="Read Image"] {
+  width: 80px;
+  height: auto;
+  margin: 10px 0 0 10px;
+  display: block;
+}
+
 .card {
   background: var(--bg-secondary);
   border-radius: 0.5rem;
@@ -207,7 +217,6 @@ body, html {
   transition: transform 0.3s;
 }
 .logo:hover { transform: scale(1.02); }
-img[alt="Opinion Image"] { width: 80px; height: auto; margin: 10px 0 0 10px; }
 
 /* Navigation */
 .nav-links {
@@ -266,6 +275,14 @@ h2, h3, h4, h5, h6 { text-align: left; margin-left: 0; margin-right: 0; }
   .nav-links { gap: 0.75rem; }
   .nav-links a { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
   .card { padding: 1rem; }
+  
+  /* Page image responsive behavior */
+  .page-image,
+  img[alt="Opinion Image"],
+  img[alt="Read Image"] {
+    width: 60px;
+    margin: 8px 0 0 8px;
+  }
 }
 @media (max-width: 480px) {
   body { font-size: 0.9rem; }
@@ -276,6 +293,14 @@ h2, h3, h4, h5, h6 { text-align: left; margin-left: 0; margin-right: 0; }
   .nav-links { gap: 0.5rem; margin: 0.75rem 0 1.5rem 0; }
   .nav-links a { padding: 0.4rem 0.6rem; font-size: 0.8rem; min-height: 36px; }
   .content { padding: 1rem; }
+  
+  /* Smaller page image on mobile */
+  .page-image,
+  img[alt="Opinion Image"],
+  img[alt="Read Image"] {
+    width: 50px;
+    margin: 6px 0 0 6px;
+  }
 }
 @media (max-width: 380px) {
   .nav-links { flex-direction: column; }
@@ -329,6 +354,9 @@ h2, h3, h4, h5, h6 { text-align: left; margin-left: 0; margin-right: 0; }
   .site-header::before { display: none; }
   h1, h2, h3, h4, h5, h6 { page-break-after: avoid; text-shadow: none; }
   p { widows: 3; }
+  .page-image,
+  img[alt="Opinion Image"],
+  img[alt="Read Image"] { display: none; }
 }
 
 .card > h1 + p > em {

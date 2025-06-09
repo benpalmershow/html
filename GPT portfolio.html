@@ -1,182 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <title>GPT Portfolio Dashboard</title>
     <link rel="stylesheet" href="/css/body.css">
     <style>
-      .category-header {
-        background-color: var(--bg-secondary, #f8f9fa);
-        font-weight: bold;
-        color: var(--text-primary, #333);
-        padding: 0.75rem 1rem;
-        border-top: 2px solid var(--border-color, #dee2e6);
-      }
-      
-      .category-divider {
-        border-bottom: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      .number {
-        text-align: right;
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 0.9em;
-      }
-      
-      .loading-state {
-        text-align: center;
-        padding: 2rem;
-        color: var(--text-secondary, #666);
-        font-style: italic;
-      }
-      
-      .error-state {
-        text-align: center;
-        padding: 2rem;
-        color: var(--error-color, #dc3545);
-        background-color: var(--error-bg, #f8d7da);
-        border: 1px solid var(--error-border, #f5c6cb);
-        border-radius: 4px;
-        margin: 1rem 0;
-      }
-      
-      .data-notes {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      .data-notes h3 {
-        margin-bottom: 1rem;
-        color: var(--text-primary, #333);
-      }
-      
-      .data-notes ul {
-        margin-bottom: 1rem;
-      }
-      
-      .data-notes li {
-        margin-bottom: 0.5rem;
-      }
-      
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1rem;
-      }
-      
-      th, td {
-        padding: 0.75rem;
-        text-align: left;
-        border-bottom: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      th {
-        background-color: var(--bg-secondary, #f8f9fa);
-        font-weight: 600;
-        color: var(--text-primary, #333);
-      }
-      
-      tr:hover {
-        background-color: var(--hover-bg, #f8f9fa);
-      }
-      
-      a {
-        color: var(--link-color, #007bff);
-        text-decoration: none;
-      }
-      
-      a:hover {
-        text-decoration: underline;
-      }
-      
-      /* Portfolio-specific styles */
-      .table-container {
-        width: 100%;
-        min-height: 600px;
-        position: relative;
-        border: 1px solid var(--border-color, #dee2e6);
-        border-radius: 4px;
-        overflow: hidden;
-        background-color: white;
-      }
-      
-      .table-container iframe {
-        width: 100%;
-        height: 600px;
-        border: none;
-        display: block;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      
-      .table-container iframe.loaded {
-        opacity: 1;
-      }
-      
-    
-      
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .table-container {
-          min-height: 500px;
+        /* Portfolio-specific styles that extend body.css */
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        
-        .table-container iframe {
-          height: 500px;
+
+        .portfolio-header h1 {
+            color: var(--logo-teal);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px var(--shadow-color);
         }
-      }
+
+        .portfolio-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--logo-orange);
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin: 0 0 0.5rem 0;
+            font-weight: 500;
+        }
+
+        .stat-card .value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .stat-card .change {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .positive { color: var(--logo-teal); }
+        .negative { color: var(--logo-orange); }
+
+        .portfolio-table {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            margin-bottom: 2rem;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--logo-orange);
+        }
+
+        .table-header h2 {
+            color: var(--logo-orange);
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .refresh-btn {
+            background: var(--logo-orange);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .refresh-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--logo-teal);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .portfolio-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .portfolio-table th,
+        .portfolio-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .portfolio-table th {
+            background: var(--bg-primary);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-table td {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .portfolio-table tr:hover {
+            background: var(--bg-primary);
+        }
+
+        .symbol {
+            font-weight: 700;
+            color: var(--logo-teal);
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .price {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-weight: 600;
+        }
+
+        .last-updated {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 0.375rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .last-updated p {
+            margin: 0.25rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .error {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+        }
+
+        .portfolio-notes {
+            background: var(--bg-primary);
+            border-left: 4px solid var(--logo-teal);
+            padding: 1em 1.5em;
+            margin: 2em 0;
+            border-radius: 0.4em;
+            color: var(--text-secondary);
+            font-size: 0.98em;
+        }
+
+        .portfolio-notes h3 {
+            margin-top: 0;
+            color: var(--logo-teal);
+            font-size: 1.1em;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.25rem;
+            }
+
+            .stat-card .value {
+                font-size: 1.8rem;
+            }
+
+            .table-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .portfolio-table {
+                padding: 1rem;
+            }
+
+            .portfolio-table table {
+                font-size: 0.85rem;
+            }
+
+            .portfolio-table th,
+            .portfolio-table td {
+                padding: 0.5rem 0.25rem;
+            }
+
+            /* Stack table on very small screens */
+            @media (max-width: 480px) {
+                .portfolio-table {
+                    overflow-x: auto;
+                }
+                
+                .portfolio-table table {
+                    min-width: 600px;
+                }
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .error {
+                background: #4a1a1a;
+                color: #ff9999;
+                border-color: #6b2c2c;
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .spinner {
+                animation: none;
+                border: 3px solid var(--border-color);
+            }
+            
+            .stat-card:hover,
+            .refresh-btn:hover {
+                transform: none;
+            }
+            
+            .stat-card,
+            .refresh-btn {
+                transition: none;
+            }
+        }
     </style>
     <meta name="description" content="Investment portfolio tracking and performance dashboard with real-time data visualization.">
     <meta name="keywords" content="portfolio, investments, stocks, financial tracking, performance dashboard">
     <meta name="author" content="HowdyStranger">
-    <meta property="og:title" content="Investment Portfolio Dashboard">
+    <meta property="og:title" content="GPT Portfolio Dashboard">
     <meta property="og:description" content="Track investment portfolio performance and holdings with comprehensive data visualization.">
     <meta property="og:type" content="website">
-  </head>
-  <body>
+</head>
+<body>
     <header class="site-header">
-      <div class="logo-container">
-        <img src="images/logo.png" alt="Howdy Stranger" class="logo">
-      </div>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Howdy Stranger" class="logo">
+        </div>
     </header>
+    
     <nav class="nav-links"></nav>
+    
     <div class="content">
-      <div class="card">
-        <h1>GPT Portfolio Dashboard</h1>
-        <div class="table-container">
-          <iframe 
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT6z_p9IuSfz8-mFdOtKMNbmuqli7-EVaIDy9PiDkw-mneYgAmVroJEx5PGtUDEhYldcsnVyKLR5R2n/pubhtml?gid=1020374850&single=true&widget=true&headers=false"
-            title="Portfolio Data"
-            onload="this.classList.add('loaded')">
-          </iframe>
+        <div class="portfolio-header">
+            <h1>GPT Portfolio Dashboard</h1>
+            <p>Automated investment tracking with live market data</p>
         </div>
-        <div class="data-notes">
-          <h3>Portfolio Notes & Information</h3>
-          
-          
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-This live portfolio was automated by Autopilot with a $1,000 allocation.           </p>
-          
-          <div id="last-updated" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-            Portfolio data refreshed automatically
-          </div>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3>Total Portfolio Value</h3>
+                <div class="value" id="totalValue">$0.00</div>
+                <div class="change" id="totalChange">+$0.00 (0.00%)</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's Change</h3>
+                <div class="value" id="dayChange">$0.00</div>
+                <div class="change" id="dayChangePercent">0.00%</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Return</h3>
+                <div class="value" id="totalReturn">$0.00</div>
+                <div class="change" id="totalReturnPercent">0.00%</div>
+            </div>
         </div>
-      </div>
+
+        <div class="card portfolio-table">
+            <div class="table-header">
+                <h2>Current Holdings</h2>
+                <button class="refresh-btn" onclick="loadPortfolioData()">
+                    <span id="refreshText">Refresh Data</span>
+                </button>
+            </div>
+
+            <div id="tableContent">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading portfolio data...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-notes">
+            <h3>Portfolio Information</h3>
+            <p>This live portfolio was automated by Autopilot with a $1,000 allocation. Data is sourced directly from Google Sheets and updates automatically every 5 minutes during market hours.</p>
+        </div>
+
+        <div class="last-updated">
+            <p><strong>Last Updated:</strong> <span id="lastUpdated">Never</span></p>
+            <p>Next refresh: <span id="nextRefresh">In 5 minutes</span></p>
+        </div>
     </div>
+
     <script src="/js/nav.js"></script>
     <script>
-      // Portfolio-specific JavaScript
-      document.addEventListener('DOMContentLoaded', function() {
-        const iframe = document.querySelector('iframe');
-        if (iframe) {
-          iframe.addEventListener('load', function() {
-            this.classList.add('loaded');
-          });
+        // Google Sheets CSV URL - using your existing sheet
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT6z_p9IuSfz8-mFdOtKMNbmuqli7-EVaIDy9PiDkw-mneYgAmVroJEx5PGtUDEhYldcsnVyKLR5R2n/pub?gid=1020374850&single=true&output=csv';
+
+        let portfolioData = [];
+        let refreshInterval;
+
+        async function loadPortfolioData() {
+            const refreshBtn = document.querySelector('.refresh-btn');
+            const refreshText = document.getElementById('refreshText');
+            
+            refreshText.textContent = 'Loading...';
+            refreshBtn.disabled = true;
+
+            try {
+                const response = await fetch(SHEET_URL);
+                const csvText = await response.text();
+                
+                // Parse CSV data
+                const rows = csvText.split('\n').map(row => {
+                    // Handle CSV parsing with proper quote handling
+                    const result = [];
+                    let current = '';
+                    let inQuotes = false;
+                    
+                    for (let i = 0; i < row.length; i++) {
+                        const char = row[i];
+                        if (char === '"') {
+                            inQuotes = !inQuotes;
+                        } else if (char === ',' && !inQuotes) {
+                            result.push(current.trim());
+                            current = '';
+                        } else {
+                            current += char;
+                        }
+                    }
+                    result.push(current.trim());
+                    return result;
+                });
+                
+                const headers = rows[0].map(h => h.replace(/"/g, '').trim());
+                
+                portfolioData = rows.slice(1)
+                    .filter(row => row.length > 1 && row[0] && row[0].trim() !== '')
+                    .map(row => {
+                        const item = {};
+                        headers.forEach((header, index) => {
+                            item[header] = row[index] ? row[index].replace(/"/g, '').trim() : '';
+                        });
+                        return item;
+                    });
+
+                updateDashboard();
+                updateTable();
+                updateTimestamp();
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('tableContent').innerHTML = 
+                    '<div class="error">Failed to load portfolio data. Please check your connection and try again.</div>';
+            }
+
+            refreshText.textContent = 'Refresh Data';
+            refreshBtn.disabled = false;
         }
-      });
+
+        function updateDashboard() {
+            let totalValue = 0;
+            let totalChange = 0;
+            let totalReturn = 0;
+
+            portfolioData.forEach(item => {
+                // Try different possible column names from your sheet
+                const value = parseFloat(item['Market Value'] || item['Value'] || item['Current Value'] || 0);
+                const change = parseFloat(item['Day Change'] || item['Change'] || item['Daily Change'] || 0);
+                const returns = parseFloat(item['Total Return'] || item['Return'] || item['Gain/Loss'] || 0);
+                
+                if (!isNaN(value)) totalValue += value;
+                if (!isNaN(change)) totalChange += change;
+                if (!isNaN(returns)) totalReturn += returns;
+            });
+
+            // Update dashboard cards
+            document.getElementById('totalValue').textContent = formatCurrency(totalValue);
+            document.getElementById('dayChange').textContent = formatCurrency(totalChange);
+            document.getElementById('totalReturn').textContent = formatCurrency(totalReturn);
+            
+            // Calculate percentages
+            const dayChangePercent = totalValue > 0 ? (totalChange / (totalValue - totalChange)) * 100 : 0;
+            const totalReturnPercent = totalValue > 0 ? (totalReturn / (totalValue - totalReturn)) * 100 : 0;
+            
+            document.getElementById('dayChangePercent').textContent = formatPercent(dayChangePercent);
+            document.getElementById('totalReturnPercent').textContent = formatPercent(totalReturnPercent);
+            
+            // Apply color coding
+            updateChangeColor('totalChange', totalChange);
+            updateChangeColor('dayChange', totalChange);
+            updateChangeColor('totalReturn', totalReturn);
+            updateChangeColor('dayChangePercent', dayChangePercent);
+            updateChangeColor('totalReturnPercent', totalReturnPercent);
+        }
+
+        function updateTable() {
+            if (portfolioData.length === 0) {
+                document.getElementById('tableContent').innerHTML = 
+                    '<div class="loading"><p>No portfolio data found.</p></div>';
+                return;
+            }
+
+            // Try to identify the correct column names from your data
+            const firstItem = portfolioData[0];
+            const columnMappings = {
+                symbol: Object.keys(firstItem).find(key => 
+                    key.toLowerCase().includes('symbol') || 
+                    key.toLowerCase().includes('ticker') ||
+                    key.toLowerCase().includes('stock')
+                ) || Object.keys(firstItem)[0],
+                shares: Object.keys(firstItem).find(key =>
+                    key.toLowerCase().includes('shares') ||
+                    key.toLowerCase().includes('quantity') ||
+                    key.toLowerCase().includes('units')
+                ),
+                price: Object.keys(firstItem).find(key =>
+                    key.toLowerCase().includes('price') ||
+                    key.toLowerCase().includes('current')
+                ),
+                value: Object.keys(firstItem).find(key =>
+                    key.toLowerCase().includes('market value') ||
+                    key.toLowerCase().includes('value') ||
+                    key.toLowerCase().includes('total')
+                ),
+                change: Object.keys(firstItem).find(key =>
+                    key.toLowerCase().includes('change') ||
+                    key.toLowerCase().includes('daily')
+                ),
+                return: Object.keys(firstItem).find(key =>
+                    key.toLowerCase().includes('return') ||
+                    key.toLowerCase().includes('gain') ||
+                    key.toLowerCase().includes('loss')
+                )
+            };
+
+            const tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Shares</th>
+                            <th>Price</th>
+                            <th>Market Value</th>
+                            <th>Day Change</th>
+                            <th>Total Return</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${portfolioData.map(item => `
+                            <tr>
+                                <td class="symbol">${item[columnMappings.symbol] || 'N/A'}</td>
+                                <td>${item[columnMappings.shares] || '0'}</td>
+                                <td class="price">${formatCurrency(parseFloat(item[columnMappings.price] || 0))}</td>
+                                <td class="price">${formatCurrency(parseFloat(item[columnMappings.value] || 0))}</td>
+                                <td class="price ${getChangeClass(parseFloat(item[columnMappings.change] || 0))}">${formatCurrency(parseFloat(item[columnMappings.change] || 0))}</td>
+                                <td class="price ${getChangeClass(parseFloat(item[columnMappings.return] || 0))}">${formatCurrency(parseFloat(item[columnMappings.return] || 0))}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('tableContent').innerHTML = tableHTML;
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('lastUpdated').textContent = now.toLocaleString();
+            
+            // Update next refresh countdown
+            let minutes = 5;
+            const countdownInterval = setInterval(() => {
+                minutes--;
+                if (minutes <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('nextRefresh').textContent = 'Refreshing...';
+                } else {
+                    document.getElementById('nextRefresh').textContent = `In ${minutes} minute${minutes !== 1 ? 's' : ''}`;
+                }
+            }, 60000);
+        }
+
+        function formatCurrency(value) {
+            if (isNaN(value)) return '$0.00';
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2
+            }).format(value);
+        }
+
+        function formatPercent(value) {
+            if (isNaN(value)) return '0.00%';
+            return `${value >= 0 ? '+' : ''}${value.toFixed(2)}%`;
+        }
+
+        function getChangeClass(value) {
+            if (isNaN(value)) return '';
+            return value >= 0 ? 'positive' : 'negative';
+        }
+
+        function updateChangeColor(elementId, value) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.className = `change ${getChangeClass(value)}`;
+            }
+        }
+
+        // Auto-refresh every 5 minutes
+        function startAutoRefresh() {
+            refreshInterval = setInterval(loadPortfolioData, 5 * 60 * 1000);
+        }
+
+        // Initial load and start auto-refresh
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPortfolioData();
+            startAutoRefresh();
+        });
+
+        // Handle page visibility changes to pause/resume auto-refresh
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                if (refreshInterval) {
+                    clearInterval(refreshInterval);
+                }
+            } else {
+                startAutoRefresh();
+                loadPortfolioData(); // Refresh when page becomes visible again
+            }
+        });
     </script>
-  </body>
+</body>
 </html>

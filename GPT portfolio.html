@@ -6,98 +6,6 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
-    <style>
-      .category-header {
-        background-color: var(--bg-secondary, #f8f9fa);
-        font-weight: bold;
-        color: var(--text-primary, #333);
-        padding: 0.75rem 1rem;
-        border-top: 2px solid var(--border-color, #dee2e6);
-      }
-      
-      .category-divider {
-        border-bottom: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      .number {
-        text-align: right;
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 0.9em;
-      }
-      
-      .loading-state {
-        text-align: center;
-        padding: 2rem;
-        color: var(--text-secondary, #666);
-        font-style: italic;
-      }
-      
-      .error-state {
-        text-align: center;
-        padding: 2rem;
-        color: var(--error-color, #dc3545);
-        background-color: var(--error-bg, #f8d7da);
-        border: 1px solid var(--error-border, #f5c6cb);
-        border-radius: 4px;
-        margin: 1rem 0;
-      }
-      
-      .data-notes {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      .data-notes h3 {
-        margin-bottom: 1rem;
-        color: var(--text-primary, #333);
-      }
-      
-      .data-notes ul {
-        margin-bottom: 1rem;
-      }
-      
-      .data-notes li {
-        margin-bottom: 0.5rem;
-      }
-      
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1rem;
-      }
-      
-      th, td {
-        padding: 0.75rem;
-        text-align: left;
-        border-bottom: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      th {
-        background-color: var(--bg-secondary, #f8f9fa);
-        font-weight: 600;
-        color: var(--text-primary, #333);
-      }
-      
-      tr:hover {
-        background-color: var(--hover-bg, #f8f9fa);
-      }
-      
-      a {
-        color: var(--link-color, #007bff);
-        text-decoration: none;
-      }
-      
-      a:hover {
-        text-decoration: underline;
-      }
-    </style>
-    <meta name="description" content="Comprehensive overview of key U.S. economic indicators including inflation, employment, housing, and leading economic indices. Data sourced from BLS, Census Bureau, and other official agencies.">
-    <meta name="keywords" content="economic indicators, CPI, unemployment rate, housing starts, inflation, economic data, BLS, Census Bureau">
-    <meta name="author" content="HowdyStranger">
-    <meta property="og:title" content="U.S. Economic Indicators Dashboard">
-    <meta property="og:description" content="Track key U.S. economic metrics including inflation, employment, and housing data from official government sources.">
-    <meta property="og:type" content="website">
   </head>
   <body>
     <header class="site-header">
@@ -108,53 +16,10 @@
     <nav class="nav-links"></nav>
     <div class="content">
       <div class="card">
-        <h1>U.S. Economic Indicators Dashboard</h1>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Economic Indicator</th>
-                <th>March 2025</th>
-                <th>April 2025</th>
-                <th>May 2025</th>
-                <th>June 2025</th>
-                <th>Change (%)</th>
-              </tr>
-            </thead>
-            <tbody id="indicesTableBody">
-              <!-- Data will be dynamically loaded from JSON -->
-            </tbody>
-          </table>
-        </div>
-        <div class="data-notes">
-          <h3>Data Notes & Sources</h3>
-          <p><strong>Agency Abbreviations:</strong></p>
-          <ul>
-            <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
-            <li><strong>Census:</strong> U.S. Census Bureau</li>
-            <li><strong>DOL:</strong> U.S. Department of Labor</li>
-            <li><strong>CB:</strong> The Conference Board</li>
-          </ul>
-          
-          <p><strong>Current Data Status (as of June 2025):</strong></p>
-          <ul>
-            <li>May 2025 CPI data scheduled for release June 11, 2025</li>
-            <li>April unemployment rate held steady at 4.2%</li>
-            <li>Annual inflation rate approximately 2.3-2.4% as of April 2025</li>
-            <li>Housing starts increased 1.6% from March to April 2025</li>
-          </ul>
-          
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
-          </p>
-          
-          <div id="last-updated" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-            Loading data...
-          </div>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT6z_p9IuSfz8-mFdOtKMNbmuqli7-EVaIDy9PiDkw-mneYgAmVroJEx5PGtUDEhYldcsnVyKLR5R2n/pubhtml?gid=1020374850&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
         </div>
       </div>
     </div>
-    <script src="/js/financials.js"></script>
     <script src="/js/nav.js"></script>
   </body>
 </html>

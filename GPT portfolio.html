@@ -7,7 +7,179 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
     <title>GPT Portfolio Dashboard</title>
+    <style>
+      /* Your existing general styles */
+      .category-header {
+        background-color: var(--bg-secondary, #f8f9fa);
+        font-weight: bold;
+        color: var(--text-primary, #333);
+        padding: 0.75rem 1rem;
+        border-top: 2px solid var(--border-color, #dee2e6);
+      }
+      
+      .category-divider {
+        border-bottom: 1px solid var(--border-color, #dee2e6);
+      }
+      
+      .number {
+        text-align: right;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9em; /* Matches example's number font size */
+      }
+      
+      .loading-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary, #666);
+        font-style: italic;
+      }
+      
+      .error-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--error-color, #dc3545);
+        background-color: var(--error-bg, #f8d7da);
+        border: 1px solid var(--error-border, #f5c6cb);
+        border-radius: 4px;
+        margin: 1rem 0;
+      }
+      
+      .data-notes {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color, #dee2e6);
+      }
+      
+      .data-notes h3 {
+        margin-bottom: 1rem;
+        color: var(--text-primary, #333);
+      }
+      
+      .data-notes ul {
+        margin-bottom: 1rem;
+      }
+      
+      .data-notes li {
+        margin-bottom: 0.5rem;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem; /* Matches example's table margin */
+        /* Removed font-size here to let browser default or body.css take over,
+           as the example doesn't explicitly set a table font-size. */
+      }
+      
+      th, td {
+        padding: 0.75rem; /* Matches example's padding */
+        text-align: left;
+        border-bottom: 1px solid var(--border-color, #dee2e6);
+        white-space: nowrap; /* Prevent text wrapping in cells (kept for consistency) */
+      }
+      
+      th {
+        background-color: var(--bg-secondary, #f8f9fa);
+        font-weight: 600;
+        color: var(--text-primary, #333);
+        vertical-align: middle;
+      }
+      
+      tr:hover {
+        background-color: var(--hover-bg, #f8f9fa);
+      }
+      
+      a {
+        color: var(--link-color, #007bff);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      /* Portfolio-specific styles */
+      .table-container {
+        width: 100%;
+        min-height: 500px; /* Kept for general visual structure */
+        position: relative;
+        border: 1px solid var(--border-color, #dee2e6);
+        border-radius: 4px;
+        overflow-x: auto; /* Allow horizontal scrolling for the table */
+        background-color: white;
+      }
+      
+      /* New styles for the dynamically generated table for responsiveness */
+      #portfolio-table-container table {
+        display: block; 
+        width: max-content; /* Table will take minimum required width to allow scrolling */
+      }
 
+      /* Freeze first column */
+      #portfolio-table-container th:first-child,
+      #portfolio-table-container td:first-child {
+        position: sticky;
+        left: 0;
+        background-color: var(--bg-primary, #fff); /* Ensure background is visible when sticky */
+        z-index: 2; /* Make sure it stays on top of other cells */
+        box-shadow: 1px 0 2px rgba(0,0,0,0.1); /* Subtle shadow to differentiate */
+      }
+
+      #portfolio-table-container th:first-child {
+          background-color: var(--bg-secondary, #f8f9fa); /* Keep header background */
+          z-index: 3; /* Header needs to be above body sticky cells */
+      }
+      
+      /* Responsive adjustments for small screens (max-width: 768px) */
+      @media (max-width: 768px) {
+        .table-container {
+          min-height: 400px; /* Reduced min-height for very small screens */
+        }
+
+        table {
+          font-size: 0.8em; /* Smaller font on small screens for compactness */
+        }
+        
+        th, td {
+          padding: 0.3em 0.4em; /* Even less padding on small screens for compactness */
+        }
+
+        .number {
+          font-size: 0.7em; /* Even smaller font for numbers on small screens for compactness */
+        }
+
+        /* --- Vertical Ticker Pill Style for Small Screens --- */
+        #portfolio-table-container th:first-child,
+        #portfolio-table-container td:first-child {
+            writing-mode: vertical-rl; /* Rotate text vertically */
+            text-orientation: mixed; /* Ensure characters are upright */
+            transform: rotate(180deg); /* Rotate for standard reading direction */
+            height: 60px; /* Reduced height for vertical text */
+            min-width: 30px; /* Reduced width for narrow column */
+            padding: 0.2rem 0.1rem; /* Further reduced padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color, #dee2e6);
+            border-right: 1px solid var(--border-color, #dee2e6); /* Keep right border for separation */
+            border-radius: 10px; /* Slightly smaller border-radius */
+            background-color: var(--bg-secondary, #f0f0f0);
+            font-weight: bold;
+            color: var(--text-primary, #333);
+            margin: 0.1rem 0; /* Reduced vertical margin */
+            box-shadow: none; /* Remove shadow for pills to keep it lighter */
+        }
+        
+        /* Adjust header for vertical ticker */
+        #portfolio-table-container th:first-child {
+             padding: 0.2rem 0.1rem;
+             height: auto;
+             background-color: var(--bg-secondary, #f8f9fa);
+             border-radius: 0;
+             box-shadow: 1px 0 2px rgba(0,0,0,0.1); /* Keep header shadow */
+        }
+      }
+    </style>
     <meta name="description" content="Investment portfolio tracking and performance dashboard with real-time data visualization.">
     <meta name="keywords" content="portfolio, investments, stocks, financial tracking, performance dashboard">
     <meta name="author" content="HowdyStranger">

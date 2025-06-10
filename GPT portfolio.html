@@ -24,7 +24,7 @@
       .number {
         text-align: right;
         font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 0.9em;
+        font-size: 0.8em; /* Slightly smaller font for numbers */
       }
       
       .loading-state {
@@ -66,11 +66,12 @@
       table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem; /* Reduced margin */
+        font-size: 0.9em; /* Slightly smaller default table font */
       }
       
       th, td {
-        padding: 0.75rem;
+        padding: 0.4em 0.6em; /* Reduced padding for cells */
         text-align: left;
         border-bottom: 1px solid var(--border-color, #dee2e6);
         white-space: nowrap; /* Prevent text wrapping in cells */
@@ -80,6 +81,7 @@
         background-color: var(--bg-secondary, #f8f9fa);
         font-weight: 600;
         color: var(--text-primary, #333);
+        vertical-align: middle; /* Align header text in the middle */
       }
       
       tr:hover {
@@ -98,7 +100,7 @@
       /* Portfolio-specific styles */
       .table-container {
         width: 100%;
-        min-height: 600px;
+        min-height: 500px; /* Slightly reduced min-height for small screens */
         position: relative;
         border: 1px solid var(--border-color, #dee2e6);
         border-radius: 4px;
@@ -108,57 +110,72 @@
       
       /* New styles for the dynamically generated table */
       #portfolio-table-container table {
-        /* This container helps with horizontal scrolling if needed */
-        display: block; /* Allows overflow-x to work on the table itself */
+        display: block; 
         width: max-content; /* Table will take minimum required width */
+      }
+
+      /* Freeze first column */
+      #portfolio-table-container th:first-child,
+      #portfolio-table-container td:first-child {
+        position: sticky;
+        left: 0;
+        background-color: var(--bg-primary, #fff); /* Ensure background is visible when sticky */
+        z-index: 2; /* Make sure it stays on top of other cells */
+        box-shadow: 1px 0 2px rgba(0,0,0,0.1); /* Subtle shadow to differentiate */
+      }
+
+      #portfolio-table-container th:first-child {
+          background-color: var(--bg-secondary, #f8f9fa); /* Keep header background */
+          z-index: 3; /* Header needs to be above body sticky cells */
       }
       
       /* Responsive adjustments */
       @media (max-width: 768px) {
         .table-container {
-          min-height: 500px;
+          min-height: 400px; /* Further reduced min-height for very small screens */
+        }
+
+        table {
+          font-size: 0.8em; /* Even smaller font on small screens */
+        }
+        
+        th, td {
+          padding: 0.3em 0.4em; /* Even less padding on small screens */
+        }
+
+        .number {
+          font-size: 0.7em; /* Even smaller font for numbers on small screens */
         }
 
         /* --- Vertical Ticker Pill Style for Small Screens --- */
-        /* Assuming 'Ticker' is the first column (index 0) */
         #portfolio-table-container th:first-child,
         #portfolio-table-container td:first-child {
             writing-mode: vertical-rl; /* Rotate text vertically */
             text-orientation: mixed; /* Ensure characters are upright */
             transform: rotate(180deg); /* Rotate for standard reading direction */
-            height: 80px; /* Adjust height to accommodate vertical text */
-            width: 40px; /* Adjust width to make it a narrow column */
-            padding: 0.5rem 0.25rem; /* Reduced padding */
+            height: 60px; /* Reduced height for vertical text */
+            min-width: 30px; /* Reduced width for narrow column */
+            padding: 0.2rem 0.1rem; /* Further reduced padding */
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid var(--border-color, #dee2e6); /* Keep consistent border */
-            /* Pill specific styles for the data cells */
-            border-radius: 15px; /* Rounded corners */
-            background-color: var(--bg-secondary, #f0f0f0); /* Light background */
+            border-bottom: 1px solid var(--border-color, #dee2e6);
+            border-right: 1px solid var(--border-color, #dee2e6); /* Keep right border for separation */
+            border-radius: 10px; /* Slightly smaller border-radius */
+            background-color: var(--bg-secondary, #f0f0f0);
             font-weight: bold;
             color: var(--text-primary, #333);
-            margin: 0.25rem 0; /* Add slight vertical margin between pills */
+            margin: 0.1rem 0; /* Reduced vertical margin */
+            box-shadow: none; /* Remove shadow for pills to keep it lighter */
         }
         
-        /* Adjust cell styles for other columns on small screens if necessary */
-        #portfolio-table-container th,
-        #portfolio-table-container td {
-            padding: 0.5rem; /* Slightly reduced padding for all cells on small screens */
-        }
-        
-        /* Remove specific border-bottom for ticker cells as the pill has its own styling */
-        #portfolio-table-container td:first-child {
-            border-bottom: none; 
-            border-right: 1px solid var(--border-color, #dee2e6); /* Add right border to separate pills */
-        }
-
-        /* Ensure header for vertical ticker also rotates */
+        /* Adjust header for vertical ticker */
         #portfolio-table-container th:first-child {
-             padding: 0.5rem 0.25rem; /* Adjust header padding */
-             height: auto; /* Let content define height */
-             background-color: var(--bg-secondary, #f8f9fa); /* Keep header background */
-             border-radius: 0; /* No border-radius for header */
+             padding: 0.2rem 0.1rem;
+             height: auto;
+             background-color: var(--bg-secondary, #f8f9fa);
+             border-radius: 0;
+             box-shadow: 1px 0 2px rgba(0,0,0,0.1); /* Keep header shadow */
         }
       }
     </style>

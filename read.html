@@ -1,70 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-DWEVPGLJDP');
-</script>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Read articles and insights from The Ben Palmer Show hosted by HowdyStranger." />
-<meta name="author" content="HowdyStranger" />
-<meta name="keywords" content="Ben Palmer Show, HowdyStranger, articles, Trump v CASA, stocks" />
-<meta name="robots" content="index, follow" />
-<script defer src="/_vercel/insights/script.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
-<link rel="stylesheet" href="/css/body.css" />
-<title>Howdy, Stranger</title>
-</head>
-<body>
-<!-- Logo Header -->
-<header class="site-header">
-<div class="logo-container">
-<img src="/images/logo.png" alt="Howdy Stranger" class="logo">
-</div>
-</header>
-<nav class="nav-links" id="main-nav"></nav>
-<!-- Page Image -->
-<img src="/images/read.png" alt="Read Image" class="page-image">
-<div class="content">
-<div class="card-container">
-<div class="card">
-<div class="card-title">
-<div class="card-date">June 9, 2025</div>
-<a href="GPT portfolio.html" class="card-link">
-<div class="card-content">New GPT Portfolio w/Autopilot</div>
-</a>
-</div>
-<div class="card-title">
-<div class="card-date">May 28, 2025</div>
-<a href="fomc.html" class="card-link">
-<div class="card-content">FOMC Minutes - May</div>
-</a>
-</div>
-<div class="card-title">
-<div class="card-date">May 14, 2025</div>
-<a href="Trump v. CASA, Inc.html" class="card-link">
-<div class="card-content">Supreme Court: Trump v. CASA, Inc.</div>
-</a>
-</div>
-<div class="card-title">
-<div class="card-date">May 12, 2025</div>
-<a href="financials.html" class="card-link">
-<div class="card-content">Investment Insights</div>
-</a>
-</div>
-<div class="card-title">
-<div class="card-date">Oct 26, 2023</div>
-<a href="https://benpalmershow.substack.com/p/culdesac-agave-and-a-man-of-integrity" class="card-link" target="_blank" rel="noopener">
-<div class="card-content">Culdesac, Agave, and A Man of Integrity (Substack)</div>
-</a>
-</div>
-</div>
-</div>
-<script src="/js/nav.js"></script>
-</body>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <link rel="stylesheet" href="/css/body.css">
+    <title>Howdy, Stranger</title>
+  </head>
+  <body>
+    <!-- Logo Header -->
+    <header class="site-header">
+      <div class="logo-container">
+        <img src="/images/logo.png" alt="Howdy Stranger" class="logo">
+      </div>
+    </header>
+    <nav class="nav-links" id="main-nav">
+      <!-- Navigation links will be dynamically generated here -->
+    </nav>
+    
+    <img src="/images/read.png" alt="Read Image">
+    <div class="content">
+      <div id="post-feed"></div>
+    </div>
+    <script>
+   
+      // Posts feed
+      fetch(`/json/posts.json?ts=${Date.now()}`)
+        .then(response => response.json())
+        .then(posts => {
+          const feed = document.getElementById('post-feed');
+          feed.innerHTML = posts.map(post =>
+            `<div class="card">
+              <div class="card-title">${post.title || ''}</div>
+              <div class="card-date">${post.date || ''}</div>
+              <div class="card-content">${post.content || ''}</div>
+            </div>`
+          ).join('');
+        });
+    </script>
+        <script>
+          // Dynamically populate navigation links
+          const nav = document.getElementById('main-nav');
+          nav.innerHTML = `
+            <ul>
+              <li><a href="/home">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          `;
+        </script>
+        <script src="/js/nav.js"></script>
+
+  </body>
 </html>

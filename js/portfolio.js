@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tableContainer = document.getElementById('portfolio-table-container');
     const loadingMessage = document.getElementById('loading-message');
     const errorMessage = document.getElementById('error-message');
-    const lastUpdatedElement = document.getElementById('last-updated');
+    const lastUpdatedElement = document.getElementById('last-updated-portfolio');
 
     function displayError(message) {
         loadingMessage.style.display = 'none';

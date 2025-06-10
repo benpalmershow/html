@@ -173,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(script);
       }
       
-      // Update last updated timestamp if element exists
-      const lastUpdated = document.getElementById('last-updated');
-      if (lastUpdated && data.lastUpdated) {
-        lastUpdated.textContent = `Last updated: ${new Date(data.lastUpdated).toLocaleDateString()}`;
+      // Update last updated timestamp for economic indicators
+      const lastUpdatedEconomic = document.getElementById('last-updated-economic');
+      if (lastUpdatedEconomic && data.lastUpdated) {
+        lastUpdatedEconomic.textContent = `Last updated: ${new Date(data.lastUpdated).toLocaleDateString()}`;
       }
     })
     .catch(error => {

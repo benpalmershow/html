@@ -4,7 +4,6 @@
   const navItems = [
     { text: 'Home', href: 'index.html', icon: '' },
     { text: '📻listen', href: 'listen.html', icon: '' },
-    { text: '📢opinion', href: 'opinion.html', icon: '' },
     { text: '📚read', href: 'read.html', icon: '' },
     { text: '🎥watch', href: 'watch.html', icon: '' }
   ];

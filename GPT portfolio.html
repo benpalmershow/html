@@ -101,60 +101,19 @@
         position: relative;
         border: 1px solid var(--border-color, #dee2e6);
         border-radius: 4px;
-        overflow: auto;
+        overflow: auto; /* Changed from hidden to auto for internal scrolling */
         background-color: white;
-        margin-bottom: 1rem; /* Added margin to separate from new card */
       }
       
       /* New styles for the dynamically generated table, if needed */
       #portfolio-table-container table {
         /* Add any specific styles you want for your table */
       }
-
-      /* Styles for the new summary card */
-      #summary-card {
-        padding: 1.5rem;
-        border: 1px solid var(--border-color, #dee2e6);
-        border-radius: 4px;
-        background-color: var(--bg-secondary, #f8f9fa);
-        margin-top: 1rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
-        text-align: center;
-      }
-
-      #summary-card .summary-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem;
-      }
-
-      #summary-card .summary-item strong {
-        font-size: 0.8em;
-        color: var(--text-secondary, #666);
-      }
-
-      #summary-card .summary-value {
-        font-size: 1.2em;
-        font-weight: bold;
-        color: var(--text-primary, #333);
-        margin-top: 0.25rem;
-      }
-
-      #summary-card #return-percentage .summary-value {
-        color: var(--success-color, #28a745); /* Example color for positive return */
-      }
       
       /* Responsive adjustments */
       @media (max-width: 768px) {
         .table-container {
           min-height: 500px;
-        }
-        #summary-card {
-            grid-template-columns: 1fr; /* Stack items on small screens */
         }
       }
     </style>
@@ -175,36 +134,11 @@
     <div class="content">
       <div class="card">
         <h1>GPT Portfolio Dashboard</h1>
-        
-        <div id="summary-card" style="display: none;">
-            <div class="summary-item" id="initial-date-container">
-                <strong>Initial Date</strong>
-                <span class="summary-value" id="initial-date">--</span>
-            </div>
-            <div class="summary-item" id="initial-value-container">
-                <strong>Initial Value</strong>
-                <span class="summary-value" id="initial-value">--</span>
-            </div>
-            <div class="summary-item" id="current-date-container">
-                <strong>Current Date</strong>
-                <span class="summary-value" id="current-date">--</span>
-            </div>
-            <div class="summary-item" id="current-value-container">
-                <strong>Current Value</strong>
-                <span class="summary-value" id="current-value">--</span>
-            </div>
-            <div class="summary-item" id="return-percentage">
-                <strong>Return</strong>
-                <span class="summary-value" id="return">--</span>
-            </div>
-        </div>
-
         <div class="table-container">
           <div id="loading-message" class="loading-state">Loading portfolio data...</div>
           <div id="error-message" class="error-state" style="display: none;"></div>
           <div id="portfolio-table-container"></div>
         </div>
-        
         <div class="data-notes">
           <h3>Portfolio Notes & Information</h3>
           <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">

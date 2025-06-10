@@ -5,10 +5,7 @@
   --accent-primary: #2c5f5a; --accent-secondary: #d4822a;
   --border-color: #e8dcc0; --shadow-color: rgba(44, 95, 90, 0.1);
   --logo-teal: #2c5f5a; --logo-orange: #d4822a;
-<<<<<<< HEAD
   --content-padding: 2rem; --mobile-padding: 1rem;
-=======
->>>>>>> 7caae3b99f50471b15ba448ccc0593d280d226eb
 }
 
 /* Base Styles */
@@ -38,7 +35,7 @@ body, html { min-height: 100vh; margin: 0; padding: 0; font-family: 'Georgia', '
 .nav-link.active, .nav-links a.active { color: var(--logo-orange); background-color: rgba(248, 244, 230, 0.2); font-weight: 600; border-color: rgba(212, 130, 42, 0.15); }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 { color: var(--text-primary); margin: 0; width: 100%; }
+h1, h2, h3, h4, h5, h6 { color: var(--text-primary); margin: 0 auto; width: 100%; }
 h1 { text-align: center; color: var(--logo-teal); text-shadow: 1px 1px 2px var(--shadow-color); font-size: clamp(1.5rem, 5vw, 2.5rem); margin-top: 0; }
 h2 { color: var(--logo-orange); border-bottom: 2px solid var(--logo-orange); padding-bottom: 0.5rem; margin-top: 2rem; font-size: clamp(1.2rem, 4vw, 1.5rem); }
 h3, h4 { color: var(--logo-teal); font-size: clamp(1rem, 3vw, 1.25rem); }

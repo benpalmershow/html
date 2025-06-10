@@ -36,7 +36,6 @@ body, html {
   width: 100%;
   padding: var(--content-padding);
   margin: 0 auto;
-  max-width: var(--max-content-width);
 }
 
 /* Cards */

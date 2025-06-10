@@ -1,3 +1,67 @@
+// Enhanced financials.js with automatic change calculation
+
+function extractNumericValue(value) {
+  if (!value || value === "" || value === "TBD" || value.includes("TBD") || value === "—") {
+    return null;
+  }
+  
+  // Remove common formatting characters and extract number
+  const cleaned = value.toString().replace(/[$,%,\s,]/g, '');
+  const num = parseFloat(cleaned);
+  return isNaN(num) ? null : num;
+}
+
+function getLastTwoValues(item) {
+  const values = [
+    { month: 'march', value: item.march },
+    { month: 'april', value: item.april },
+    { month: 'may', value: item.may },
+    { month: 'june', value: item.june }
+  ];
+  
+  // Filter out null/empty values and extract numeric values
+  const validValues = values
+    .map(v => ({ ...v, numeric: extractNumericValue(v.value) }))
+    .filter(v => v.numeric !== null);
+  
+  if (validValues.length < 2) {
+    return null;
+  }
+  
+  // Return the last two values
+  const lastTwo = validValues.slice(-2);
+  return {
+    previous: lastTwo[0],
+    current: lastTwo[1]
+  };
+}
+
+function calculatePercentageChange(previous, current) {
+  if (previous === 0) return current > 0 ? 100 : 0;
+  return ((current - previous) / Math.abs(previous)) * 100;
+}
+
+function autoCalculateChanges(indices) {
+  return indices.map(item => {
+    const lastTwo = getLastTwoValues(item);
+    
+    // If change is blank or empty, calculate it
+    if ((!item.change || item.change === "" || item.change === "—") && lastTwo) {
+      const percentChange = calculatePercentageChange(lastTwo.previous.numeric, lastTwo.current.numeric);
+      const newChange = percentChange >= 0 ? `+${percentChange.toFixed(2)}` : `${percentChange.toFixed(2)}`;
+      
+      console.log(`Auto-calculated change for ${item.name}: ${newChange}%`);
+      
+      return {
+        ...item,
+        change: newChange
+      };
+    }
+    
+    return item;
+  });
+}
+
 function populateIndicesTable(indices) {
   const tbody = document.getElementById("indicesTableBody");
   tbody.innerHTML = "";
@@ -30,6 +94,18 @@ function populateIndicesTable(indices) {
     [marchCell, aprilCell, mayCell, juneCell, changeCell].forEach(cell => {
       cell.className = "number";
     });
+    
+    // Color-code the change cell based on positive/negative values
+    if (data.change && data.change !== "—" && data.change !== "") {
+      const numericChange = parseFloat(data.change.replace(/[+%]/g, ''));
+      if (!isNaN(numericChange)) {
+        if (numericChange > 0) {
+          changeCell.style.color = '#059669'; // Green for positive
+        } else if (numericChange < 0) {
+          changeCell.style.color = '#DC2626'; // Red for negative
+        }
+      }
+    }
     
     // Add category styling if specified
     if (data.category) {
@@ -122,6 +198,18 @@ function addCategoryHeaders(indices) {
         cell.className = "number";
       });
       
+      // Color-code the change cell based on positive/negative values
+      if (data.change && data.change !== "—" && data.change !== "") {
+        const numericChange = parseFloat(data.change.replace(/[+%]/g, ''));
+        if (!isNaN(numericChange)) {
+          if (numericChange > 0) {
+            changeCell.style.color = '#059669'; // Green for positive
+          } else if (numericChange < 0) {
+            changeCell.style.color = '#DC2626'; // Red for negative
+          }
+        }
+      }
+      
       row.setAttribute('data-category', categoryName.toLowerCase().replace(/\s+/g, '-'));
     });
   });
@@ -134,15 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return response.json();
     })
     .then(data => {
-      // Populate the indices table with category organization
+      // Auto-calculate missing change values
       if (data.indices && data.indices.length > 0) {
+        const indicesWithCalculatedChanges = autoCalculateChanges(data.indices);
+        
         // Check if data has categories defined
-        const hasCategories = data.indices.some(item => item.category);
+        const hasCategories = indicesWithCalculatedChanges.some(item => item.category);
         
         if (hasCategories) {
-          addCategoryHeaders(data.indices);
+          addCategoryHeaders(indicesWithCalculatedChanges);
         } else {
-          populateIndicesTable(data.indices);
+          populateIndicesTable(indicesWithCalculatedChanges);
         }
       }
       

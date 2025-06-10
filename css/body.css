@@ -11,7 +11,7 @@
   --shadow-color: rgba(44, 95, 90, 0.1);
   --logo-teal: #2c5f5a;
   --logo-orange: #d4822a;
-  --max-content-width: 1200px;
+  --max-content-width: none; /* Changed from 1200px to allow full width */
   --content-padding: 2rem;
   --mobile-padding: 1rem;
 }
@@ -209,7 +209,7 @@ h3, h4 {
 
 h2, h3, h4, h5, h6 { text-align: left; }
 
-/* Tables */
+/* Tables - Enhanced with universal frozen first column */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -238,6 +238,22 @@ tr:hover {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+/* Universal frozen first column for all tables with horizontal scrolling */
+.table-wrapper th:first-child,
+.table-wrapper td:first-child {
+  position: sticky;
+  left: 0;
+  background-color: var(--bg-primary);
+  z-index: 2;
+  box-shadow: 1px 0 2px var(--shadow-color);
+}
+
+.table-wrapper th:first-child {
+  background-color: var(--bg-secondary);
+  z-index: 3;
 }
 
 .number {
@@ -265,6 +281,7 @@ tr:hover {
   background-color: var(--bg-primary);
 }
 
+/* Keep specific portfolio table styling but enhance it */
 #portfolio-table-container th:first-child,
 #portfolio-table-container td:first-child {
   position: sticky;
@@ -382,6 +399,46 @@ a:hover, a:focus {
     background-color: rgba(37, 43, 42, 0.2);
     border-color: rgba(232, 149, 93, 0.15);
   }
+
+  /* Dark mode frozen column backgrounds */
+  .table-wrapper th:first-child,
+  .table-wrapper td:first-child {
+    background-color: var(--bg-primary);
+  }
+
+  .table-wrapper th:first-child {
+    background-color: var(--bg-secondary);
+  }
+
+  #portfolio-table-container th:first-child,
+  #portfolio-table-container td:first-child {
+    background-color: var(--bg-primary);
+  }
+
+  #portfolio-table-container th:first-child {
+    background-color: var(--bg-secondary);
+  }
+}
+
+/* Large Screen Optimization - Full Width Usage */
+@media (min-width: 1400px) {
+  :root {
+    --content-padding: 3rem;
+  }
+  
+  .content {
+    padding: var(--content-padding) 4rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --content-padding: 4rem;
+  }
+  
+  .content {
+    padding: var(--content-padding) 6rem;
+  }
 }
 
 /* Mobile Optimizations */
@@ -390,6 +447,9 @@ a:hover, a:focus {
   
   .nav-links { gap: 0.5rem; }
   
+  /* Mobile specific frozen column styling */
+  .table-wrapper th:first-child,
+  .table-wrapper td:first-child,
   #portfolio-table-container th:first-child,
   #portfolio-table-container td:first-child {
     writing-mode: vertical-rl;
@@ -399,7 +459,6 @@ a:hover, a:focus {
     min-width: 30px;
     padding: 0.2rem 0.1rem;
     border-radius: 10px;
-    background-color: var(--bg-secondary);
   }
 }
 

@@ -1,7 +1,6 @@
 // js/portfolio.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    // IMPORTANT: This URL points to your Google Sheet published as CSV.
     const googleSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT6z_p9IuSfz8-mFdOtKMNbmuqli7-EVaIDy9PiDkw-mneYgAmVroJEx5PGtUDEhYldcsnVyKLR5R2n/pub?gid=1020374850&single=true&output=csv';
     
     const tableContainer = document.getElementById('portfolio-table-container');
@@ -9,21 +8,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.getElementById('error-message');
     const lastUpdatedElement = document.getElementById('last-updated');
 
+    // New elements for the summary card
+    const summaryCard = document.getElementById('summary-card');
+    const initialDateElement = document.getElementById('initial-date');
+    const initialValueElement = document.getElementById('initial-value');
+    const currentDateElement = document.getElementById('current-date');
+    const currentValueElement = document.getElementById('current-value');
+    const returnElement = document.getElementById('return');
+
+    // --- IMPORTANT: Adjust these column indices based on your Google Sheet's structure ---
+    // Assuming the first data row (after headers) contains this summary info
+    // Column indices are 0-based.
+    const summaryRowIndex = 1; // Assuming the summary data is in the second row of the CSV (first data row after header)
+    const initialDateCol = 0; // Example: Column A in Google Sheet
+    const initialValueCol = 1; // Example: Column B in Google Sheet
+    const currentDateCol = 2;  // Example: Column C in Google Sheet
+    const currentValueCol = 3; // Example: Column D in Google Sheet
+    const returnCol = 4;       // Example: Column E in Google Sheet
+    // --- End of IMPORTANT section ---
+
+
     // Function to display an error message
     function displayError(message) {
-        loadingMessage.style.display = 'none'; // Hide loading
+        loadingMessage.style.display = 'none';
         errorMessage.textContent = 'Error loading portfolio data: ' + message;
-        errorMessage.style.display = 'block'; // Show error
+        errorMessage.style.display = 'block';
+        summaryCard.style.display = 'none'; // Hide summary card on error
         console.error('Portfolio data fetch error:', message);
     }
 
     // Function to parse CSV data
     function parseCSV(csvText) {
-        // Split into lines, filter out empty lines
         const lines = csvText.split('\n').filter(line => line.trim() !== '');
         
-        // Map each line to an array of trimmed cell values
-        // Handles commas within quotes (basic handling, for more complex CSV, use a library)
         const data = lines.map(line => {
             const cells = [];
             let inQuote = false;
@@ -39,15 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentCell += char;
                 }
             }
-            cells.push(currentCell.trim()); // Add the last cell
+            cells.push(currentCell.trim());
             return cells;
         });
         return data;
     }
 
-    // Function to render the table
+    // Function to render the main table
     function renderTable(data) {
-        if (!data || data.length < 2) { // Need at least header and one data row
+        if (!data || data.length < 2) {
             tableContainer.innerHTML = '<p>No data available to display.</p>';
             return;
         }
@@ -67,8 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
         thead.appendChild(headerRow);
         table.appendChild(thead);
 
-        // Data rows (starting from the second row)
-        for (let i = 1; i < data.length; i++) {
+        // Data rows (starting from the second row or after summary row if different)
+        // If your summary data is in the same row as the first table data, adjust the loop start
+        const tableDataStartIndex = (summaryRowIndex === 0) ? 1 : summaryRowIndex + 1; // Start rendering table from row after summary if summary is not part of table headers.
+        
+        for (let i = tableDataStartIndex; i < data.length; i++) {
             const rowData = data[i];
             const tr = document.createElement('tr');
             rowData.forEach((cellData, index) => {
@@ -88,24 +108,66 @@ document.addEventListener('DOMContentLoaded', function() {
         tableContainer.appendChild(table);
     }
 
+    // Function to update the summary card
+    function updateSummaryCard(data) {
+        if (!data || data.length <= summaryRowIndex) {
+            summaryCard.style.display = 'none'; // Hide if no data or not enough rows
+            return;
+        }
+
+        const summaryDataRow = data[summaryRowIndex];
+
+        // Ensure columns exist before trying to access them
+        if (summaryDataRow[initialDateCol] !== undefined) {
+            initialDateElement.textContent = summaryDataRow[initialDateCol];
+        }
+        if (summaryDataRow[initialValueCol] !== undefined) {
+            initialValueElement.textContent = summaryDataRow[initialValueCol];
+        }
+        if (summaryDataRow[currentDateCol] !== undefined) {
+            currentDateElement.textContent = summaryDataRow[currentDateCol];
+        }
+        if (summaryDataRow[currentValueCol] !== undefined) {
+            currentValueElement.textContent = summaryDataRow[currentValueCol];
+        }
+        if (summaryDataRow[returnCol] !== undefined) {
+            const returnValue = summaryDataRow[returnCol];
+            returnElement.textContent = returnValue;
+
+            // Optional: Apply color based on return value
+            if (parseFloat(returnValue) > 0) { // Assuming return value is numeric
+                returnElement.closest('.summary-item').style.color = 'var(--success-color, #28a745)';
+            } else if (parseFloat(returnValue) < 0) {
+                returnElement.closest('.summary-item').style.color = 'var(--error-color, #dc3545)';
+            } else {
+                returnElement.closest('.summary-item').style.color = 'var(--text-primary, #333)';
+            }
+        }
+        
+        summaryCard.style.display = 'grid'; // Show the summary card once data is loaded
+    }
+
+
     // Fetch data from Google Sheet
     async function fetchGoogleSheetData() {
-        loadingMessage.style.display = 'block'; // Show loading message
-        errorMessage.style.display = 'none'; // Hide any previous error
+        loadingMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
         tableContainer.innerHTML = ''; // Clear previous table content
+        summaryCard.style.display = 'none'; // Hide summary card while loading
 
         try {
             const response = await fetch(googleSheetUrl);
             if (!response.ok) {
-                // Throw an error if the HTTP status is not OK (e.g., 404, 500)
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const csvText = await response.text();
             const data = parseCSV(csvText);
-            renderTable(data);
-            loadingMessage.style.display = 'none'; // Hide loading message on success
             
-            // Update the 'Last updated' timestamp
+            updateSummaryCard(data); // Populate the summary card
+            renderTable(data);       // Render the main table
+            
+            loadingMessage.style.display = 'none';
+            
             const now = new Date();
             lastUpdatedElement.textContent = `Portfolio data refreshed automatically. Last updated: ${now.toLocaleTimeString()} on ${now.toLocaleDateString()}`;
 

@@ -7,7 +7,157 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
     <title>GPT Portfolio Dashboard</title>
-   
+    <style>
+      /* Your existing styles */
+      .category-header {
+        background-color: var(--bg-secondary, #f8f9fa);
+        font-weight: bold;
+        color: var(--text-primary, #333);
+        padding: 0.75rem 1rem;
+        border-top: 2px solid var(--border-color, #dee2e6);
+      }
+      
+      .category-divider {
+        border-bottom: 1px solid var(--border-color, #dee2e6);
+      }
+      
+      .number {
+        text-align: right;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9em;
+      }
+      
+      .loading-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary, #666);
+        font-style: italic;
+      }
+      
+      .error-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--error-color, #dc3545);
+        background-color: var(--error-bg, #f8d7da);
+        border: 1px solid var(--error-border, #f5c6cb);
+        border-radius: 4px;
+        margin: 1rem 0;
+      }
+      
+      .data-notes {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color, #dee2e6);
+      }
+      
+      .data-notes h3 {
+        margin-bottom: 1rem;
+        color: var(--text-primary, #333);
+      }
+      
+      .data-notes ul {
+        margin-bottom: 1rem;
+      }
+      
+      .data-notes li {
+        margin-bottom: 0.5rem;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+      
+      th, td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color, #dee2e6);
+      }
+      
+      th {
+        background-color: var(--bg-secondary, #f8f9fa);
+        font-weight: 600;
+        color: var(--text-primary, #333);
+      }
+      
+      tr:hover {
+        background-color: var(--hover-bg, #f8f9fa);
+      }
+      
+      a {
+        color: var(--link-color, #007bff);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      /* Portfolio-specific styles */
+      .table-container {
+        width: 100%;
+        min-height: 600px;
+        position: relative;
+        border: 1px solid var(--border-color, #dee2e6);
+        border-radius: 4px;
+        overflow: auto;
+        background-color: white;
+        margin-bottom: 1rem; /* Added margin to separate from new card */
+      }
+      
+      /* New styles for the dynamically generated table, if needed */
+      #portfolio-table-container table {
+        /* Add any specific styles you want for your table */
+      }
+
+      /* Styles for the new summary card */
+      #summary-card {
+        padding: 1.5rem;
+        border: 1px solid var(--border-color, #dee2e6);
+        border-radius: 4px;
+        background-color: var(--bg-secondary, #f8f9fa);
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        text-align: center;
+      }
+
+      #summary-card .summary-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+      }
+
+      #summary-card .summary-item strong {
+        font-size: 0.8em;
+        color: var(--text-secondary, #666);
+      }
+
+      #summary-card .summary-value {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--text-primary, #333);
+        margin-top: 0.25rem;
+      }
+
+      #summary-card #return-percentage .summary-value {
+        color: var(--success-color, #28a745); /* Example color for positive return */
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .table-container {
+          min-height: 500px;
+        }
+        #summary-card {
+            grid-template-columns: 1fr; /* Stack items on small screens */
+        }
+      }
+    </style>
     <meta name="description" content="Investment portfolio tracking and performance dashboard with real-time data visualization.">
     <meta name="keywords" content="portfolio, investments, stocks, financial tracking, performance dashboard">
     <meta name="author" content="HowdyStranger">
@@ -25,11 +175,36 @@
     <div class="content">
       <div class="card">
         <h1>GPT Portfolio Dashboard</h1>
+        
+        <div id="summary-card" style="display: none;">
+            <div class="summary-item" id="initial-date-container">
+                <strong>Initial Date</strong>
+                <span class="summary-value" id="initial-date">--</span>
+            </div>
+            <div class="summary-item" id="initial-value-container">
+                <strong>Initial Value</strong>
+                <span class="summary-value" id="initial-value">--</span>
+            </div>
+            <div class="summary-item" id="current-date-container">
+                <strong>Current Date</strong>
+                <span class="summary-value" id="current-date">--</span>
+            </div>
+            <div class="summary-item" id="current-value-container">
+                <strong>Current Value</strong>
+                <span class="summary-value" id="current-value">--</span>
+            </div>
+            <div class="summary-item" id="return-percentage">
+                <strong>Return</strong>
+                <span class="summary-value" id="return">--</span>
+            </div>
+        </div>
+
         <div class="table-container">
           <div id="loading-message" class="loading-state">Loading portfolio data...</div>
           <div id="error-message" class="error-state" style="display: none;"></div>
           <div id="portfolio-table-container"></div>
         </div>
+        
         <div class="data-notes">
           <h3>Portfolio Notes & Information</h3>
           <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">

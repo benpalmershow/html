@@ -91,12 +91,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const tr = document.createElement('tr');
             rowData.forEach((cellData, index) => {
                 const td = document.createElement('td');
-                // Adjust these indices based on your actual data columns that should be right-aligned
-                // For example, if 'Current Value', 'Gain/Loss', 'Return %' are columns 2, 3, 4 (0-indexed)
-                if (index === 2 || index === 3 || index === 4) { // Modify these indices as per your sheet's number columns
+                
+                // First column should contain stock symbols - make them links to Yahoo Finance
+                if (index === 0 && cellData && cellData.trim() !== '') {
+                    const symbol = cellData.trim();
+                    // Check if it looks like a stock symbol (not header-like text)
+                    if (symbol.length <= 5 && symbol.match(/^[A-Z]+$/)) {
+                        const link = document.createElement('a');
+                        link.href = `https://finance.yahoo.com/quote/${symbol}`;
+                        link.target = '_blank';
+                        link.rel = 'noopener';
+                        link.textContent = symbol;
+                        td.appendChild(link);
+                    } else {
+                        td.textContent = cellData;
+                    }
+                } else {
+                    td.textContent = cellData;
+                }
+                
+                // Apply number formatting to numeric columns (adjust indices based on your data structure)
+                // Typically columns with dollar amounts, percentages, or quantities should be right-aligned
+                if (index >= 1 && cellData && (
+                    cellData.includes('$') || 
+                    cellData.includes('%') || 
+                    !isNaN(parseFloat(cellData.replace(/[$,%]/g, '')))
+                )) {
                     td.classList.add('number');
                 }
-                td.textContent = cellData;
+                
                 tr.appendChild(td);
             });
             tbody.appendChild(tr);

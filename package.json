@@ -1,0 +1,12 @@
+{
+  "name": "howdystranger",
+  "version": "1.0.0",
+  "description": "Howdy Stranger website",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "start": "echo 'No start step required'"
+  }
+} 

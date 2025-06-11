@@ -1,0 +1,79 @@
+/* typography.css */
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.animated-title {
+  animation: fadeInSlideDown 5.5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 1;
+}
+@keyframes fadeInSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  text-align: center;
+  color: var(--logo-teal);
+  text-shadow: 1px 1px 2px var(--shadow-color);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-top: 0;
+}
+
+h2 {
+  color: var(--logo-orange);
+  border-bottom: 2px solid var(--logo-orange);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+h3, h4 {
+  color: var(--logo-teal);
+  font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+h2, h3, h4, h5, h6 {
+  text-align: left;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Pill-style links */
+a {
+  color: var(--logo-orange);
+  background: var(--logo-teal, #00bfae);
+  padding: 0.25em 1em;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+  display: inline-block;
+  margin: 0 0.15em;
+}
+
+a:hover,
+a:focus {
+  background: var(--logo-orange, #ff9800);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}

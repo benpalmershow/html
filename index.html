@@ -14,7 +14,9 @@
     <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <link rel="stylesheet" href="/css/body.css">
+<link rel="stylesheet" href="./css/body.css">
+<!-- or -->
+<link rel="stylesheet" href="css/body.css">
     <title>Howdy, Stranger</title>
   </head>
   <body>
@@ -25,29 +27,10 @@
     </div>
   </header>
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="content">
-    <h2 class="animated-title" style="margin-bottom: 0.4em;">Howdy, Stranger</h2>
-    <p style="margin-top: 0; margin-bottom: 1em; font-size: 1em;">
-      This site is a curated hub for commentary, news, analysis, economics, and contemporary issues. 
-    The name Howdy, Stranger comes from a book, Stuck by Yoni Appelbaum. The author cites mobility as a key component of American society. The term "stranger," often synonymous with enemy, instead became "a common form of friendly salutation." </p>
-    <div id="post-feed"></div>
+  <h1>Howdy, Stranger</h1>
+      <p>This site is a curated hub for commentary, news, analysis, economics, and contemporary issues.</p>
+
   </div>
-  <style>
-    .animated-title {
-      animation: fadeInSlideDown 5.5s cubic-bezier(0.23, 1, 0.32, 1);
-      opacity: 1;
-    }
-    @keyframes fadeInSlideDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
   <script src="/js/nav.js"></script>
 </body>
 </html>

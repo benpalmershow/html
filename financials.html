@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <link rel="preload" href="/css/body.css" as="style">
     <link rel="stylesheet" href="/css/body.css">
     <meta name="description" content="Combined financial dashboard featuring U.S. economic indicators and investment portfolio tracking with real-time data visualization.">
     <meta name="keywords" content="economic indicators, CPI, unemployment rate, housing starts, inflation, economic data, BLS, Census Bureau, portfolio, investments, stocks, financial tracking, performance dashboard">
@@ -90,8 +91,8 @@
         </div>
       </div>
     </div>
-    <script src="/js/nav.js"></script>
-    <script src="/js/financials.js"></script>
-    <script src="/js/portfolio.js"></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/financials.js" defer></script>
+    <script src="/js/portfolio.js" defer></script>
   </body>
 </html>

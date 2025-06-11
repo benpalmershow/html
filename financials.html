@@ -13,6 +13,192 @@
     <meta property="og:description" content="Track key U.S. economic metrics and investment portfolio performance from official government sources and real-time data.">
     <meta property="og:type" content="website">
     <title>Financial Dashboard - Economic Indicators & Portfolio</title>
+    <style>
+      /* Viewport optimization styles */
+      html, body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .site-header {
+        flex-shrink: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        background: var(--background, #fff);
+        border-bottom: 1px solid var(--border, #e0e0e0);
+      }
+      
+      .logo {
+        height: 40px;
+        width: auto;
+      }
+      
+      .nav-links {
+        flex-shrink: 0;
+        height: 40px;
+      }
+      
+      .content {
+        flex: 1;
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        min-height: 0; /* Important for flex children */
+        overflow: hidden;
+      }
+      
+      .card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: var(--card-background, #fff);
+        border: 1px solid var(--border, #e0e0e0);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        min-height: 0; /* Important for flex children */
+        overflow: hidden;
+      }
+      
+      .card h1 {
+        margin: 0 0 1rem 0;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+      
+      .table-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+      }
+      
+      .table-container {
+        flex: 1;
+        overflow: auto;
+        margin-bottom: 1rem;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      
+      th, td {
+        padding: 0.5rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border, #e0e0e0);
+      }
+      
+      th {
+        background: var(--table-header, #f5f5f5);
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+      }
+      
+      .data-notes {
+        flex-shrink: 0;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border, #e0e0e0);
+        font-size: 0.85rem;
+      }
+      
+      .data-notes h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1rem;
+      }
+      
+      .data-notes ul {
+        margin: 0.5rem 0;
+        padding-left: 1.5rem;
+      }
+      
+      .data-notes li {
+        margin-bottom: 0.25rem;
+      }
+      
+      .loading-state, .error-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        color: var(--text-secondary, #666);
+        font-style: italic;
+      }
+      
+      .error-state {
+        color: var(--error, #d32f2f);
+      }
+      
+      /* Responsive design */
+      @media (max-width: 1024px) {
+        .content {
+          flex-direction: column;
+        }
+        
+        .card {
+          min-height: 300px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .content {
+          padding: 0.5rem;
+        }
+        
+        .card {
+          padding: 1rem;
+        }
+        
+        .site-header {
+          height: 50px;
+          padding: 0 0.5rem;
+        }
+        
+        .logo {
+          height: 30px;
+        }
+        
+        table {
+          font-size: 0.8rem;
+        }
+        
+        th, td {
+          padding: 0.25rem;
+        }
+      }
+      
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #1a1a1a;
+          --card-background: #2a2a2a;
+          --border: #404040;
+          --text-secondary: #aaa;
+          --table-header: #3a3a3a;
+          --error: #f44336;
+        }
+        
+        body {
+          background: var(--background);
+          color: #fff;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -24,24 +210,25 @@
     <div class="content">
       <!-- U.S. Economic Indicators Section -->
       <div class="card">
-        <h1>U.S. Economic Indicators Dashboard</h1>
-        <br>
+        <h1>U.S. Economic Indicators</h1>
         <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>March 2025</th>
-                <th>April 2025</th>
-                <th>May 2025</th>
-                <th>June 2025</th>
-                <th>Change (%)</th>
-              </tr>
-            </thead>
-            <tbody id="indicesTableBody">
-              <!-- Data will be dynamically loaded from JSON -->
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>March 2025</th>
+                  <th>April 2025</th>
+                  <th>May 2025</th>
+                  <th>June 2025</th>
+                  <th>Change (%)</th>
+                </tr>
+              </thead>
+              <tbody id="indicesTableBody">
+                <!-- Data will be dynamically loaded from JSON -->
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="data-notes">
           <h3>Data Notes & Sources</h3>
@@ -61,11 +248,11 @@
             <li>Housing starts increased 1.6% from March to April 2025</li>
           </ul>
           
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
+          <p style="margin-top: 1rem;">
+            This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source.
           </p>
           
-          <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+          <div id="last-updated-economic" style="margin-top: 1rem; text-align: center; opacity: 0.7;">
             Loading data...
           </div>
         </div>
@@ -74,7 +261,6 @@
       <!-- GPT Portfolio Section -->
       <div class="card">
         <h1>GPT Portfolio Dashboard</h1>
-        <br>
         <div class="table-wrapper">
           <div id="loading-message" class="loading-state">Loading portfolio data...</div>
           <div id="error-message" class="error-state" style="display: none;"></div>
@@ -82,10 +268,10 @@
         </div>
         <div class="data-notes">
           <h3>Portfolio Notes & Information</h3>
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+          <p style="margin-top: 1rem;">
             This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
           </p>
-          <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+          <div id="last-updated-portfolio" style="margin-top: 1rem; text-align: center; opacity: 0.7;">
             Portfolio data refreshed automatically
           </div>
         </div>

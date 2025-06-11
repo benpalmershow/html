@@ -21,6 +21,7 @@
 
 body, html {
   width: 100vw;
+  max-width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -30,13 +31,14 @@ body, html {
   color: var(--text-secondary);
   transition: background-color 0.3s, color 0.3s;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
+  overflow-x: hidden;
 }
 
 .content {
   width: 100%;
+  max-width: 100%;
   padding: var(--content-padding);
   margin: 0 auto;
-  max-width: var(--max-content-width);
 }
 
 /* Cards */

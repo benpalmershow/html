@@ -1,0 +1,40 @@
+/* nav.css */
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  font-size: 1rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--text-muted);
+}
+
+nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent-primary);
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: width 0.3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+nav a:hover::after {
+  width: 100%;
+}

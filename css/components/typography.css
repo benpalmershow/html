@@ -5,15 +5,16 @@ body {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   line-height: 1.6;
   color: var(--text-secondary);
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 1rem 0 0.5rem;
-  font-weight: 600;
   color: var(--text-primary);
+  margin: 0 auto;
+  width: 100%;
 }
 
 h1 {
@@ -47,32 +48,13 @@ p {
 }
 
 a {
-  position: relative;
-  display: inline-block;
-  padding: 0.15em 0.3em;
   color: var(--logo-orange);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-a::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: transparent;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  z-index: -1;
+  text-decoration: underline;
+  transition: color 0.15s;
 }
 
 a:hover,
 a:focus {
-  color: var(--accent-hover);
-}
-
-a:hover::before,
-a:focus::before {
-  background-color: var(--accent-primary);
-  opacity: 0.1;
+  color: var(--logo-teal);
+  text-decoration: underline;
 }

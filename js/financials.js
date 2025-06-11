@@ -376,11 +376,80 @@ if (typeof window !== 'undefined') {
   };
 }
 
-fetch('/json/financials-data.json?ts=' + Date.now())
-  .then(response => response.json())
-  .then(data => {
-    // your code to render data
-  })
-  .catch(error => {
-    // handle error
-  });
+async function loadFinancialData() {
+    try {
+        const response = await fetch('/json/financials-data.json');
+        const data = await response.json();
+        
+        // Group indices by category
+        const groupedData = data.indices.reduce((acc, item) => {
+            if (!acc[item.category]) {
+                acc[item.category] = [];
+            }
+            acc[item.category].push(item);
+            return acc;
+        }, {});
+
+        // Create HTML for each category
+        const container = document.getElementById('financials-container');
+        container.innerHTML = '';
+
+        for (const [category, items] of Object.entries(groupedData)) {
+            const categorySection = document.createElement('div');
+            categorySection.className = 'category-section';
+            
+            const categoryTitle = document.createElement('h3');
+            categoryTitle.textContent = category;
+            categorySection.appendChild(categoryTitle);
+
+            const table = document.createElement('table');
+            table.className = 'financials-table';
+
+            // Create table header
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Indicator</th>
+                    <th>March</th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>Change</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement('tbody');
+            items.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><a href="${item.url}" target="_blank">${item.name}</a></td>
+                    <td>${item.march}</td>
+                    <td>${item.april}</td>
+                    <td>${item.may}</td>
+                    <td>${item.june}</td>
+                    <td>${item.change}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+            categorySection.appendChild(table);
+            container.appendChild(categorySection);
+        }
+
+        // Add last updated timestamp
+        const lastUpdated = document.createElement('p');
+        lastUpdated.className = 'last-updated';
+        lastUpdated.textContent = `Last Updated: ${new Date(data.lastUpdated).toLocaleDateString()}`;
+        container.appendChild(lastUpdated);
+
+    } catch (error) {
+        console.error('Error loading financial data:', error);
+        document.getElementById('financials-container').innerHTML = 
+            '<p class="error">Error loading financial data. Please try again later.</p>';
+    }
+}
+
+// Load data when the page loads
+document.addEventListener('DOMContentLoaded', loadFinancialData);

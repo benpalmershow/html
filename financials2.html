@@ -238,242 +238,19 @@
     </div>
 
     <script>
-        const financialData = {
-            "lastUpdated": "2025-06-10T12:00:00Z",
-            "indices": [
-                {
-                    "category": "Inflation Measures",
-                    "agency": "BLS",
-                    "name": "Consumer Price Index (CPI-U)",
-                    "url": "https://www.bls.gov/cpi/",
-                    "march": "319.8",
-                    "april": "320.8",
-                    "may": "321.5",
-                    "june": "",
-                    "change": "+0.22"
-                },
-                {
-                    "category": "Inflation Measures",
-                    "agency": "BLS",
-                    "name": "CPI (YoY % Change)",
-                    "url": "https://www.bls.gov/cpi/",
-                    "march": "—",
-                    "april": "+2.3%",
-                    "may": "+2.4%",
-                    "june": "",
-                    "change": "+0.10"
-                },
-                {
-                    "category": "Inflation Measures",
-                    "agency": "BLS",
-                    "name": "Producer Price Index (PPI)",
-                    "url": "https://www.bls.gov/ppi/",
-                    "march": "2.4%",
-                    "april": "2.4%",
-                    "may": "TBD 6/12",
-                    "june": "",
-                    "change": "0"
-                },
-                {
-                    "category": "Employment Indicators",
-                    "agency": "BLS",
-                    "name": "Unemployment Rate (%)",
-                    "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
-                    "march": "4.2%",
-                    "april": "4.2%",
-                    "may": "4.2%",
-                    "june": "",
-                    "change": "0.00"
-                },
-                {
-                    "category": "Employment Indicators",
-                    "agency": "BLS",
-                    "name": "Nonfarm Payrolls",
-                    "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
-                    "march": "120,000",
-                    "april": "147,000",
-                    "may": "139,000",
-                    "june": "",
-                    "change": "-5.44"
-                },
-                {
-                    "category": "Employment Indicators",
-                    "agency": "DOL",
-                    "name": "Initial Jobless Claims",
-                    "url": "https://www.dol.gov/ui/data.pdf",
-                    "march": "239,000",
-                    "april": "247,000",
-                    "may": "247,000",
-                    "june": "TBD",
-                    "change": "+3.35"
-                },
-                {
-                    "category": "Employment Indicators",
-                    "agency": "BLS",
-                    "name": "Job Openings (millions)",
-                    "url": "https://www.bls.gov/jlt/",
-                    "march": "7.2",
-                    "april": "7.4",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "+2.78"
-                },
-                {
-                    "category": "Employment Indicators",
-                    "agency": "ADP",
-                    "name": "National Employment",
-                    "url": "https://www.adp.com/what-we-offer/insights/adp-national-employment-report.aspx",
-                    "march": "",
-                    "april": "62,000",
-                    "may": "37,000",
-                    "june": "TBD",
-                    "change": "-40.3"
-                },
-                {
-                    "category": "Housing Market",
-                    "agency": "Census",
-                    "name": "Housing Starts (000s)",
-                    "url": "https://www.census.gov/construction/nrc/",
-                    "march": "1,339",
-                    "april": "1,361",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "+1.64"
-                },
-                {
-                    "category": "Housing Market",
-                    "agency": "Census",
-                    "name": "Building Permits (000s)",
-                    "url": "https://www.census.gov/construction/bps/",
-                    "march": "1,458",
-                    "april": "1,440",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "-1.23"
-                },
-                {
-                    "category": "Housing Market",
-                    "agency": "NAR",
-                    "name": "New Home Sales (000s)",
-                    "url": "https://fred.stlouisfed.org/series/HSN1F",
-                    "march": "670",
-                    "april": "743",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "+10.9"
-                },
-                {
-                    "category": "Housing Market",
-                    "agency": "FHFA",
-                    "name": "Housing Affordability Index",
-                    "url": "https://fred.stlouisfed.org/series/FIXHAI",
-                    "march": "103.2",
-                    "april": "TBD 6/13",
-                    "may": "",
-                    "june": "",
-                    "change": "—"
-                },
-                {
-                    "category": "Interest Rates",
-                    "agency": "FHFA",
-                    "name": "30-Year Fixed Mortgage Rate (%)",
-                    "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
-                    "march": "6.65%",
-                    "april": "6.73%",
-                    "may": "6.82%",
-                    "june": "6.85%",
-                    "change": "+0.44"
-                },
-                {
-                    "category": "Interest Rates",
-                    "agency": "Treasury",
-                    "name": "10-Year Treasury Yield (%)",
-                    "url": "https://fred.stlouisfed.org/series/DGS10",
-                    "march": "4.28%",
-                    "april": "4.28%",
-                    "may": "4.42%",
-                    "june": "4.51%",
-                    "change": "+2.04"
-                },
-                {
-                    "category": "Business Indicators",
-                    "agency": "ISM",
-                    "name": "Manufacturing PMI",
-                    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi/may/",
-                    "march": "53.4",
-                    "april": "51.6",
-                    "may": "49.9",
-                    "june": "",
-                    "change": "-3.29"
-                },
-                {
-                    "category": "Business Indicators",
-                    "agency": "CB",
-                    "name": "Leading Economic Index",
-                    "url": "https://www.conference-board.org/topics/us-leading-indicators",
-                    "march": "119.0",
-                    "april": "119.3",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "+0.30"
-                },
-                {
-                    "category": "Business Indicators",
-                    "agency": "Commerce",
-                    "name": "New Orders (billions)",
-                    "url": "https://www.commerce.gov/",
-                    "march": "$617.4",
-                    "april": "$594.6",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "-3.69"
-                },
-                {
-                    "category": "Business Indicators",
-                    "agency": "Commerce",
-                    "name": "Construction Spending (trillions)",
-                    "url": "https://www.commerce.gov/",
-                    "march": "$2.162",
-                    "april": "$2.152",
-                    "may": "TBD",
-                    "june": "",
-                    "change": "-0.46"
-                },
-                {
-                    "category": "Consumer Indicators",
-                    "agency": "UM",
-                    "name": "Consumer Sentiment",
-                    "url": "https://www.sca.isr.umich.edu",
-                    "march": "57.0",
-                    "april": "52.2",
-                    "may": "52.2",
-                    "june": "TBD",
-                    "change": "0.00"
-                },
-                {
-                    "category": "Consumer Indicators",
-                    "agency": "CB",
-                    "name": "Consumer Confidence",
-                    "url": "https://www.conference-board.org/topics/consumer-confidence",
-                    "march": "85.7",
-                    "april": "85.7",
-                    "may": "98.0",
-                    "june": "",
-                    "change": "+14.4"
-                },
-                {
-                    "category": "Consumer Indicators",
-                    "agency": "Manheim",
-                    "name": "Used Vehicle Value Index",
-                    "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
-                    "march": "210.1",
-                    "april": "208.2",
-                    "may": "205.9",
-                    "june": "",
-                    "change": "-1.10"
-                }
-            ]
-        };
+        let financialData = null;
+
+        async function fetchFinancialData() {
+            try {
+                const response = await fetch('/json/financials-data.json');
+                financialData = await response.json();
+                initializeDashboard();
+            } catch (error) {
+                console.error('Error loading financial data:', error);
+                document.getElementById('categories').innerHTML = 
+                    '<div class="error">Error loading financial data. Please try again later.</div>';
+            }
+        }
 
         function formatDate(dateString) {
             const date = new Date(dateString);
@@ -574,12 +351,14 @@
             });
         }
 
-        // Initialize dashboard
-        document.addEventListener('DOMContentLoaded', () => {
+        function initializeDashboard() {
             document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
             setupFilters();
             renderDashboard();
-        });
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', fetchFinancialData);
     </script>
 </body>
 </html>

@@ -16,19 +16,21 @@
             font-family: 'Georgia', 'Times New Roman', serif;
             background: var(--bg-primary);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
             color: var(--text-secondary);
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .header {
             text-align: center;
             color: var(--text-primary);
             margin-bottom: 40px;
+            padding-top: 20px;
         }
 
         .header h1 {
@@ -224,6 +226,14 @@
     </style>
 </head>
 <body>
+    <!-- Logo Header -->
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="/images/logo.png" alt="Howdy Stranger" class="logo">
+        </div>
+    </header>
+    <nav class="nav-links" id="main-nav"></nav>
+
     <div class="container">
         <div class="header">
             <h1>Financial Indicators Dashboard</h1>
@@ -360,5 +370,6 @@
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', fetchFinancialData);
     </script>
+    <script src="/js/nav.js"></script>
 </body>
 </html>

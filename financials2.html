@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Indicators Dashboard</title>
+    <link rel="stylesheet" href="/css/body.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px var(--shadow-color);
+            color: var(--logo-teal);
+        }
+
+        .last-updated {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--text-muted);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-secondary);
+            color: var(--logo-teal);
+            border: 2px solid var(--logo-orange);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--logo-orange);
+            color: #fff;
+            border-color: var(--logo-orange);
+            transform: translateY(-2px);
+        }
+
+        .categories {
+            display: grid;
+            gap: 30px;
+        }
+
+        .category {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--logo-orange);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--logo-teal);
+        }
+
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .indicator {
+            background: var(--bg-primary);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--logo-teal), var(--logo-orange));
+        }
+
+        .indicator:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .indicator-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .indicator-agency {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+
+        .month-label {
+            font-weight: 500;
+            color: var(--text-muted);
+            min-width: 60px;
+        }
+
+        .month-value {
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .change-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .change-positive {
+            background: rgba(44, 95, 90, 0.08);
+            color: var(--logo-teal);
+        }
+
+        .change-negative {
+            background: rgba(212, 130, 42, 0.08);
+            color: var(--logo-orange);
+        }
+
+        .change-neutral {
+            background: rgba(107, 114, 128, 0.08);
+            color: var(--text-muted);
+        }
+
+        .arrow-up::before {
+            content: '↗';
+            font-size: 1.1em;
+        }
+
+        .arrow-down::before {
+            content: '↘';
+            font-size: 1.1em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .indicators-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                justify-content: stretch;
+            }
+            
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Financial Indicators Dashboard</h1>
+            <div class="last-updated" id="lastUpdated"></div>
+        </div>
+        
+        <div class="filters" id="filters">
+            <button class="filter-btn active" data-category="all">All Categories</button>
+        </div>
+        
+        <div class="categories" id="categories"></div>
+    </div>
+
+    <script>
+        const financialData = {
+            "lastUpdated": "2025-06-10T12:00:00Z",
+            "indices": [
+                {
+                    "category": "Inflation Measures",
+                    "agency": "BLS",
+                    "name": "Consumer Price Index (CPI-U)",
+                    "url": "https://www.bls.gov/cpi/",
+                    "march": "319.8",
+                    "april": "320.8",
+                    "may": "321.5",
+                    "june": "",
+                    "change": "+0.22"
+                },
+                {
+                    "category": "Inflation Measures",
+                    "agency": "BLS",
+                    "name": "CPI (YoY % Change)",
+                    "url": "https://www.bls.gov/cpi/",
+                    "march": "—",
+                    "april": "+2.3%",
+                    "may": "+2.4%",
+                    "june": "",
+                    "change": "+0.10"
+                },
+                {
+                    "category": "Inflation Measures",
+                    "agency": "BLS",
+                    "name": "Producer Price Index (PPI)",
+                    "url": "https://www.bls.gov/ppi/",
+                    "march": "2.4%",
+                    "april": "2.4%",
+                    "may": "TBD 6/12",
+                    "june": "",
+                    "change": "0"
+                },
+                {
+                    "category": "Employment Indicators",
+                    "agency": "BLS",
+                    "name": "Unemployment Rate (%)",
+                    "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+                    "march": "4.2%",
+                    "april": "4.2%",
+                    "may": "4.2%",
+                    "june": "",
+                    "change": "0.00"
+                },
+                {
+                    "category": "Employment Indicators",
+                    "agency": "BLS",
+                    "name": "Nonfarm Payrolls",
+                    "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+                    "march": "120,000",
+                    "april": "147,000",
+                    "may": "139,000",
+                    "june": "",
+                    "change": "-5.44"
+                },
+                {
+                    "category": "Employment Indicators",
+                    "agency": "DOL",
+                    "name": "Initial Jobless Claims",
+                    "url": "https://www.dol.gov/ui/data.pdf",
+                    "march": "239,000",
+                    "april": "247,000",
+                    "may": "247,000",
+                    "june": "TBD",
+                    "change": "+3.35"
+                },
+                {
+                    "category": "Employment Indicators",
+                    "agency": "BLS",
+                    "name": "Job Openings (millions)",
+                    "url": "https://www.bls.gov/jlt/",
+                    "march": "7.2",
+                    "april": "7.4",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "+2.78"
+                },
+                {
+                    "category": "Employment Indicators",
+                    "agency": "ADP",
+                    "name": "National Employment",
+                    "url": "https://www.adp.com/what-we-offer/insights/adp-national-employment-report.aspx",
+                    "march": "",
+                    "april": "62,000",
+                    "may": "37,000",
+                    "june": "TBD",
+                    "change": "-40.3"
+                },
+                {
+                    "category": "Housing Market",
+                    "agency": "Census",
+                    "name": "Housing Starts (000s)",
+                    "url": "https://www.census.gov/construction/nrc/",
+                    "march": "1,339",
+                    "april": "1,361",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "+1.64"
+                },
+                {
+                    "category": "Housing Market",
+                    "agency": "Census",
+                    "name": "Building Permits (000s)",
+                    "url": "https://www.census.gov/construction/bps/",
+                    "march": "1,458",
+                    "april": "1,440",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "-1.23"
+                },
+                {
+                    "category": "Housing Market",
+                    "agency": "NAR",
+                    "name": "New Home Sales (000s)",
+                    "url": "https://fred.stlouisfed.org/series/HSN1F",
+                    "march": "670",
+                    "april": "743",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "+10.9"
+                },
+                {
+                    "category": "Housing Market",
+                    "agency": "FHFA",
+                    "name": "Housing Affordability Index",
+                    "url": "https://fred.stlouisfed.org/series/FIXHAI",
+                    "march": "103.2",
+                    "april": "TBD 6/13",
+                    "may": "",
+                    "june": "",
+                    "change": "—"
+                },
+                {
+                    "category": "Interest Rates",
+                    "agency": "FHFA",
+                    "name": "30-Year Fixed Mortgage Rate (%)",
+                    "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+                    "march": "6.65%",
+                    "april": "6.73%",
+                    "may": "6.82%",
+                    "june": "6.85%",
+                    "change": "+0.44"
+                },
+                {
+                    "category": "Interest Rates",
+                    "agency": "Treasury",
+                    "name": "10-Year Treasury Yield (%)",
+                    "url": "https://fred.stlouisfed.org/series/DGS10",
+                    "march": "4.28%",
+                    "april": "4.28%",
+                    "may": "4.42%",
+                    "june": "4.51%",
+                    "change": "+2.04"
+                },
+                {
+                    "category": "Business Indicators",
+                    "agency": "ISM",
+                    "name": "Manufacturing PMI",
+                    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi/may/",
+                    "march": "53.4",
+                    "april": "51.6",
+                    "may": "49.9",
+                    "june": "",
+                    "change": "-3.29"
+                },
+                {
+                    "category": "Business Indicators",
+                    "agency": "CB",
+                    "name": "Leading Economic Index",
+                    "url": "https://www.conference-board.org/topics/us-leading-indicators",
+                    "march": "119.0",
+                    "april": "119.3",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "+0.30"
+                },
+                {
+                    "category": "Business Indicators",
+                    "agency": "Commerce",
+                    "name": "New Orders (billions)",
+                    "url": "https://www.commerce.gov/",
+                    "march": "$617.4",
+                    "april": "$594.6",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "-3.69"
+                },
+                {
+                    "category": "Business Indicators",
+                    "agency": "Commerce",
+                    "name": "Construction Spending (trillions)",
+                    "url": "https://www.commerce.gov/",
+                    "march": "$2.162",
+                    "april": "$2.152",
+                    "may": "TBD",
+                    "june": "",
+                    "change": "-0.46"
+                },
+                {
+                    "category": "Consumer Indicators",
+                    "agency": "UM",
+                    "name": "Consumer Sentiment",
+                    "url": "https://www.sca.isr.umich.edu",
+                    "march": "57.0",
+                    "april": "52.2",
+                    "may": "52.2",
+                    "june": "TBD",
+                    "change": "0.00"
+                },
+                {
+                    "category": "Consumer Indicators",
+                    "agency": "CB",
+                    "name": "Consumer Confidence",
+                    "url": "https://www.conference-board.org/topics/consumer-confidence",
+                    "march": "85.7",
+                    "april": "85.7",
+                    "may": "98.0",
+                    "june": "",
+                    "change": "+14.4"
+                },
+                {
+                    "category": "Consumer Indicators",
+                    "agency": "Manheim",
+                    "name": "Used Vehicle Value Index",
+                    "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
+                    "march": "210.1",
+                    "april": "208.2",
+                    "may": "205.9",
+                    "june": "",
+                    "change": "-1.10"
+                }
+            ]
+        };
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function getChangeClass(change) {
+            if (change === "—" || change === "0" || change === "0.00") return 'change-neutral';
+            if (change.startsWith('+')) return 'change-positive';
+            if (change.startsWith('-')) return 'change-negative';
+            return 'change-neutral';
+        }
+
+        function getArrowClass(change) {
+            if (change === "—" || change === "0" || change === "0.00") return '';
+            if (change.startsWith('+')) return 'arrow-up';
+            if (change.startsWith('-')) return 'arrow-down';
+            return '';
+        }
+
+        function createIndicatorCard(indicator) {
+            const months = ['march', 'april', 'may', 'june'];
+            const monthLabels = ['Mar', 'Apr', 'May', 'Jun'];
+            
+            let dataRows = '';
+            months.forEach((month, index) => {
+                const value = indicator[month];
+                if (value && value !== '') {
+                    dataRows += `
+                        <div class="data-row">
+                            <span class="month-label">${monthLabels[index]}:</span>
+                            <span class="month-value">${value}</span>
+                        </div>
+                    `;
+                }
+            });
+
+            return `
+                <div class="indicator">
+                    <div class="indicator-name">${indicator.name}</div>
+                    <div class="indicator-agency">Source: ${indicator.agency}</div>
+                    ${dataRows}
+                    <div class="change-indicator ${getChangeClass(indicator.change)} ${getArrowClass(indicator.change)}">
+                        Change: ${indicator.change}${indicator.change !== "—" && !indicator.change.includes('%') ? '%' : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDashboard(filterCategory = 'all') {
+            const categoriesContainer = document.getElementById('categories');
+            const categories = [...new Set(financialData.indices.map(item => item.category))];
+            
+            let html = '';
+            
+            categories.forEach(category => {
+                if (filterCategory !== 'all' && category !== filterCategory) return;
+                
+                const categoryIndicators = financialData.indices.filter(item => item.category === category);
+                
+                html += `
+                    <div class="category" data-category="${category}">
+                        <h2 class="category-title">${category}</h2>
+                        <div class="indicators-grid">
+                            ${categoryIndicators.map(indicator => createIndicatorCard(indicator)).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            categoriesContainer.innerHTML = html;
+        }
+
+        function setupFilters() {
+            const filtersContainer = document.getElementById('filters');
+            const categories = [...new Set(financialData.indices.map(item => item.category))];
+            
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.className = 'filter-btn';
+                button.textContent = category;
+                button.dataset.category = category;
+                filtersContainer.appendChild(button);
+            });
+
+            filtersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderDashboard(e.target.dataset.category);
+                }
+            });
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+            setupFilters();
+            renderDashboard();
+        });
+    </script>
+</body>
+</html>

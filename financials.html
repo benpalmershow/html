@@ -6,177 +6,13 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="stylesheet" href="/css/body.css">
-    <style>
-      .category-header {
-        background-color: var(--bg-secondary, #f8f9fa);
-        font-weight: bold;
-        color: var(--text-primary, #333);
-        padding: 0.75rem 1rem;
-        border-top: 2px solid var(--border-color, #dee2e6);
-      }
-      
-      .category-divider {
-        border-bottom: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      .number {
-        text-align: right;
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 0.9em;
-      }
-      
-      .loading-state {
-        text-align: center;
-        padding: 2rem;
-        color: var(--text-secondary, #666);
-        font-style: italic;
-      }
-      
-      .error-state {
-        text-align: center;
-        padding: 2rem;
-        color: var(--error-color, #dc3545);
-        background-color: var(--error-bg, #f8d7da);
-        border: 1px solid var(--error-border, #f5c6cb);
-        border-radius: 4px;
-        margin: 1rem 0;
-      }
-      
-      .data-notes {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border-color, #dee2e6);
-      }
-      
-      .data-notes h3 {
-        margin-bottom: 1rem;
-        color: var(--text-primary, #333);
-      }
-      
-      .data-notes ul {
-        margin-bottom: 1rem;
-      }
-      
-      .data-notes li {
-        margin-bottom: 0.5rem;
-      }
-      
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1rem;
-      }
-      
-      th, td {
-        padding: 0.75rem;
-        text-align: left;
-        border-bottom: 1px solid var(--border-color, #dee2e6);
-        white-space: nowrap;
-      }
-      
-      th {
-        background-color: var(--bg-secondary, #f8f9fa);
-        font-weight: 600;
-        color: var(--text-primary, #333);
-        vertical-align: middle;
-      }
-      
-      tr:hover {
-        background-color: var(--hover-bg, #f8f9fa);
-      }
-      
-      a {
-        color: var(--link-color, #007bff);
-        text-decoration: none;
-      }
-      
-      a:hover {
-        text-decoration: underline;
-      }
-      
-      /* Portfolio-specific styles */
-      .table-container {
-        width: 100%;
-        min-height: 500px;
-        position: relative;
-        border: 1px solid var(--border-color, #dee2e6);
-        border-radius: 4px;
-        overflow-x: auto;
-        background-color: white;
-      }
-      
-      #portfolio-table-container table {
-        display: block; 
-        width: max-content;
-      }
-
-      #portfolio-table-container th:first-child,
-      #portfolio-table-container td:first-child {
-        position: sticky;
-        left: 0;
-        background-color: var(--bg-primary, #fff);
-        z-index: 2;
-        box-shadow: 1px 0 2px rgba(0,0,0,0.1);
-      }
-
-      #portfolio-table-container th:first-child {
-          background-color: var(--bg-secondary, #f8f9fa);
-          z-index: 3;
-      }
-      
-      @media (max-width: 768px) {
-        .table-container {
-          min-height: 400px;
-        }
-
-        table {
-          font-size: 0.8em;
-        }
-        
-        th, td {
-          padding: 0.3em 0.4em;
-        }
-
-        .number {
-          font-size: 0.7em;
-        }
-
-        #portfolio-table-container th:first-child,
-        #portfolio-table-container td:first-child {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            height: 60px;
-            min-width: 30px;
-            padding: 0.2rem 0.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid var(--border-color, #dee2e6);
-            border-right: 1px solid var(--border-color, #dee2e6);
-            border-radius: 10px;
-            background-color: var(--bg-secondary, #f0f0f0);
-            font-weight: bold;
-            color: var(--text-primary, #333);
-            margin: 0.1rem 0;
-            box-shadow: none;
-        }
-        
-        #portfolio-table-container th:first-child {
-             padding: 0.2rem 0.1rem;
-             height: auto;
-             background-color: var(--bg-secondary, #f8f9fa);
-             border-radius: 0;
-             box-shadow: 1px 0 2px rgba(0,0,0,0.1);
-        }
-      }
-    </style>
     <meta name="description" content="Combined financial dashboard featuring U.S. economic indicators and investment portfolio tracking with real-time data visualization.">
     <meta name="keywords" content="economic indicators, CPI, unemployment rate, housing starts, inflation, economic data, BLS, Census Bureau, portfolio, investments, stocks, financial tracking, performance dashboard">
     <meta name="author" content="HowdyStranger">
     <meta property="og:title" content="Combined Financial Dashboard">
     <meta property="og:description" content="Track key U.S. economic metrics and investment portfolio performance from official government sources and real-time data.">
     <meta property="og:type" content="website">
+    <title>Financial Dashboard - Economic Indicators & Portfolio</title>
   </head>
   <body>
     <header class="site-header">
@@ -189,11 +25,12 @@
       <!-- U.S. Economic Indicators Section -->
       <div class="card">
         <h1>U.S. Economic Indicators Dashboard</h1>
+        <br>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th>Economic Indicator</th>
+                <th></th>
                 <th>March 2025</th>
                 <th>April 2025</th>
                 <th>May 2025</th>
@@ -234,30 +71,22 @@
         </div>
       </div>
 
-<!-- GPT Portfolio Section -->
+      <!-- GPT Portfolio Section -->
       <div class="card">
         <h1>GPT Portfolio Dashboard</h1>
+        <br>
         <div class="table-wrapper">
+          <div id="loading-message" class="loading-state">Loading portfolio data...</div>
           <div id="error-message" class="error-state" style="display: none;"></div>
           <div id="portfolio-table-container" class="table-container"></div>
         </div>
         <div class="data-notes">
           <h3>Portfolio Notes & Information</h3>
           <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            This live portfolio was automated by Autopilot with a $1,000 allocation. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
+            This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
           </p>
           <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
             Portfolio data refreshed automatically
-          </div>
-        </div>
-      </div>       
-          <div id="loading-message" class="loading-state">Loading portfolio data...</div>
-          <div id="error-message" class="error-state" style="display: none;"></div>
-          <div id="portfolio-table-container"></div>
-        </div>
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            This live portfolio was automated by Autopilot with a $1,000 allocation.
-          </p>
           </div>
         </div>
       </div>

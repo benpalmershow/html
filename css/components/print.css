@@ -1,0 +1,24 @@
+/* print.css */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+
+  .nav-links,
+  .page-image,
+  img[alt*="Image"] {
+    display: none;
+  }
+
+  .logo {
+    max-width: 200px;
+    filter: none;
+  }
+
+  .site-header::before {
+    display: none;
+  }
+}

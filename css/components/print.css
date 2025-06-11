@@ -2,24 +2,23 @@
 
 @media print {
   body {
-    background: #fff;
-    color: #000;
+    background: white;
+    color: black;
+    font-size: 12pt;
   }
 
-  a {
-    color: #000;
-    text-decoration: underline;
+  .nav-links,
+  .page-image,
+  img[alt*="Image"] {
+    display: none;
   }
 
-  .site-header,
-  nav,
-  footer,
-  .no-print {
-    display: none !important;
+  .logo {
+    max-width: 200px;
+    filter: none;
   }
 
-  .card {
-    box-shadow: none;
-    border: 1px solid #000;
+  .site-header::before {
+    display: none;
   }
 }

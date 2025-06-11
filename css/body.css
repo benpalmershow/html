@@ -12,7 +12,7 @@
   --logo-teal: #2c5f5a;
   --logo-orange: #d4822a;
   --max-content-width: none; /* Changed from 1200px to allow full width */
-  --content-padding: 2rem;
+  --content-padding: 1rem;
   --mobile-padding: 1rem;
 }
 
@@ -50,7 +50,9 @@ body, html {
   padding: clamp(1rem, 3vw, 1.25rem);
   box-shadow: 0 2px 8px var(--shadow-color);
   margin: 0.5rem 0;
-  width: 100%;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
@@ -215,9 +217,11 @@ h2, h3, h4, h5, h6 { text-align: left; }
 /* Tables - Enhanced with universal frozen first column */
 table {
   width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
   font-size: clamp(0.7rem, 2vw, 0.9rem);
+  table-layout: auto;
 }
 
 th, td {
@@ -239,9 +243,12 @@ tr:hover {
 
 .table-wrapper {
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 /* Universal frozen first column for all tables with horizontal scrolling */
@@ -276,12 +283,15 @@ tr:hover {
 
 .table-container {
   width: 100%;
+  max-width: 100%;
   min-height: clamp(300px, 50vh, 500px);
   position: relative;
   border: 1px solid var(--border-color);
   border-radius: 4px;
   overflow-x: auto;
   background-color: var(--bg-primary);
+  margin: 0;
+  padding: 0;
 }
 
 /* Keep specific portfolio table styling but enhance it */
@@ -426,21 +436,25 @@ a:hover, a:focus {
 /* Large Screen Optimization - Full Width Usage */
 @media (min-width: 1400px) {
   :root {
-    --content-padding: 3rem;
+    --content-padding: 2rem;
   }
   
   .content {
-    padding: var(--content-padding) 4rem;
+    padding: var(--content-padding);
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
 @media (min-width: 1800px) {
   :root {
-    --content-padding: 4rem;
+    --content-padding: 2rem;
   }
   
   .content {
-    padding: var(--content-padding) 6rem;
+    padding: var(--content-padding);
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 

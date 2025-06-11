@@ -11,12 +11,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-primary);
-  margin: 0 auto;
-  width: 100%;
-}
-
 h1 {
   text-align: center;
   color: var(--logo-teal);
@@ -55,6 +49,6 @@ a {
 
 a:hover,
 a:focus {
-  color: var(--logo-teal);
+  color: var(--logo-orange);
   text-decoration: underline;
 }

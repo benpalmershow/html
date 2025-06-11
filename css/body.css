@@ -35,10 +35,11 @@ body, html {
 }
 
 .content {
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
+  max-width: 100vw;
   padding: var(--content-padding);
-  margin: 0 auto;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* Cards */

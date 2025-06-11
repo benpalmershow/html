@@ -8,5 +8,8 @@
   "scripts": {
     "build": "echo 'No build step required'",
     "start": "echo 'No start step required'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.2.0"
   }
-} 
+}

@@ -63,13 +63,6 @@
       ]
     }
   ],
-
-  "functions": {
-    "api/*.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  },
   "regions": ["iad1"],
   "github": {
     "silent": true

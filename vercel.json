@@ -63,12 +63,7 @@
       ]
     }
   ],
-  "compress": true,
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
+
   "functions": {
     "api/*.js": {
       "memory": 1024,

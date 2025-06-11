@@ -375,3 +375,12 @@ if (typeof window !== 'undefined') {
     extractNumericValue
   };
 }
+
+fetch('/json/financials-data.json?ts=' + Date.now())
+  .then(response => response.json())
+  .then(data => {
+    // your code to render data
+  })
+  .catch(error => {
+    // handle error
+  });

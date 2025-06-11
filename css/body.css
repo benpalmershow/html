@@ -447,18 +447,19 @@ a:hover, a:focus {
   
   .nav-links { gap: 0.5rem; }
   
-  /* Mobile specific frozen column styling */
+  /* Mobile specific frozen column styling - FIXED */
   .table-wrapper th:first-child,
   .table-wrapper td:first-child,
   #portfolio-table-container th:first-child,
   #portfolio-table-container td:first-child {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    height: 60px;
-    min-width: 30px;
-    padding: 0.2rem 0.1rem;
-    border-radius: 10px;
+    /* Removed the problematic styles that caused upside-down text:
+       - writing-mode: vertical-rl;
+       - text-orientation: mixed;
+       - transform: rotate(180deg);
+    */
+    min-width: 80px; /* Ensure minimum width for readability */
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8em; /* Slightly smaller text for mobile */
   }
 }
 

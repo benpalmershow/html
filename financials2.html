@@ -6,12 +6,17 @@
     <title>Financials 2 - Howdy, Stranger</title>
     
     <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/x-icon" href="images/icons/logo.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#2C5F5A">
+    
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <style>
         * {
             margin: 0;
@@ -22,15 +27,14 @@
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             background: var(--bg-primary);
-            width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             padding: 0;
             color: var(--text-secondary);
         }
 
         .container {
-            width: 100%;
-            margin: 0;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 20px;
         }
 
@@ -39,7 +43,6 @@
             color: var(--text-primary);
             margin-bottom: 40px;
             padding-top: 20px;
-            width: 100%;
         }
 
         .header h1 {
@@ -61,7 +64,6 @@
             gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
-            width: 100%;
         }
 
         .filter-btn {
@@ -86,7 +88,6 @@
         .categories {
             display: grid;
             gap: 30px;
-            width: 100%;
         }
 
         .category {
@@ -114,7 +115,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            width: 100%;
         }
 
         .indicator {
@@ -126,7 +126,6 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 8px var(--shadow-color);
-            width: 100%;
         }
 
         .indicator::before {

@@ -47,6 +47,12 @@
             color: var(--logo-teal);
         }
 
+        .last-updated {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--text-muted);
+        }
+
         .filters {
             display: flex;
             justify-content: center;
@@ -254,6 +260,7 @@
     <div class="container">
         <div class="header">
             <h1>Financial Indicators Dashboard</h1>
+            <div class="last-updated" id="lastUpdated"></div>
         </div>
         
         <div class="filters" id="filters">
@@ -278,6 +285,16 @@
             }
         }
 
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
 
         function getChangeClass(change) {
             if (change === "—" || change === "0" || change === "0.00") return 'change-neutral';
@@ -426,6 +443,7 @@
         }
 
         function initializeDashboard() {
+            document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
             setupFilters();
             renderDashboard();
         }

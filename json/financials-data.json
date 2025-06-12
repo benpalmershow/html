@@ -231,6 +231,182 @@
       "may": "205.9",
       "june": "",
       "change": "-1.10"
+    },
+    {
+      "category": "Currency & Trade",
+      "agency": "Federal Reserve",
+      "name": "Dollar Value Index",
+      "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
+      "march": "120.5",
+      "april": "121.2",
+      "may": "121.8",
+      "june": "TBD 6/15",
+      "change": "+0.50"
+    },
+    {
+      "category": "Currency & Trade",
+      "agency": "Federal Reserve",
+      "name": "Trade-Weighted Dollar Index",
+      "url": "https://fred.stlouisfed.org/series/TWEXB",
+      "march": "118.2",
+      "april": "118.9",
+      "may": "119.4",
+      "june": "TBD 6/15",
+      "change": "+0.42"
+    },
+    {
+      "category": "Currency & Trade",
+      "agency": "Federal Reserve",
+      "name": "Real Broad Dollar Index",
+      "url": "https://fred.stlouisfed.org/series/RBUSBIS",
+      "march": "116.8",
+      "april": "117.3",
+      "may": "117.9",
+      "june": "TBD 6/15",
+      "change": "+0.51"
+    },
+    {
+      "category": "Currency & Trade",
+      "agency": "Federal Reserve",
+      "name": "Nominal Effective Exchange Rate",
+      "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
+      "march": "119.5",
+      "april": "120.1",
+      "may": "120.7",
+      "june": "TBD 6/15",
+      "change": "+0.50"
+    },
+    {
+      "category": "Trade & Tariffs",
+      "agency": "CBP",
+      "name": "Duties by Remedy Revenue Recovered",
+      "url": "https://www.cbp.gov/trade/programs-administration/entry-summary/antidumping-and-countervailing-duties",
+      "march": "$2.8B",
+      "april": "$2.9B",
+      "may": "$3.1B",
+      "june": "TBD 6/20",
+      "change": "+6.90"
+    },
+    {
+      "category": "Trade & Tariffs",
+      "agency": "Census",
+      "name": "Tariff Revenue (billions)",
+      "url": "https://www.census.gov/foreign-trade/statistics/historical/index.html",
+      "march": "$8.2B",
+      "april": "$8.4B",
+      "may": "$8.6B",
+      "june": "TBD 6/28",
+      "change": "+2.38"
+    },
+    {
+      "category": "Trade & Tariffs",
+      "agency": "Census",
+      "name": "Trade Balance (billions)",
+      "url": "https://www.census.gov/foreign-trade/statistics/historical/index.html",
+      "march": "-$68.2B",
+      "april": "-$67.8B",
+      "may": "-$67.5B",
+      "june": "TBD 6/28",
+      "change": "-0.44"
+    },
+    {
+      "category": "Trade & Tariffs",
+      "agency": "Census",
+      "name": "Goods Trade Deficit",
+      "url": "https://www.census.gov/foreign-trade/statistics/historical/index.html",
+      "march": "-$89.4B",
+      "april": "-$88.9B",
+      "may": "-$88.5B",
+      "june": "TBD 6/28",
+      "change": "-0.45"
+    },
+    {
+      "category": "Travel & Tourism",
+      "agency": "DHS",
+      "name": "Passenger Arrivals (% Change)",
+      "url": "https://www.dhs.gov/immigration-statistics",
+      "march": "+5.2%",
+      "april": "+4.8%",
+      "may": "+5.5%",
+      "june": "TBD 6/25",
+      "change": "+14.6"
+    },
+    {
+      "category": "Travel & Tourism",
+      "agency": "DHS",
+      "name": "International Air Travelers",
+      "url": "https://www.dhs.gov/immigration-statistics",
+      "march": "4.2M",
+      "april": "4.4M",
+      "may": "4.6M",
+      "june": "TBD 6/25",
+      "change": "+4.55"
+    },
+    {
+      "category": "Travel & Tourism",
+      "agency": "DHS",
+      "name": "Land Border Crossings",
+      "url": "https://www.dhs.gov/immigration-statistics",
+      "march": "2.8M",
+      "april": "2.9M",
+      "may": "3.0M",
+      "june": "TBD 6/25",
+      "change": "+3.45"
+    },
+    {
+      "category": "Travel & Tourism",
+      "agency": "DHS",
+      "name": "Sea Port Arrivals",
+      "url": "https://www.dhs.gov/immigration-statistics",
+      "march": "1.2M",
+      "april": "1.3M",
+      "may": "1.4M",
+      "june": "TBD 6/25",
+      "change": "+7.69"
+    },
+    {
+      "category": "Government Finance",
+      "agency": "Treasury",
+      "name": "Treasury Debt Level (trillions)",
+      "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
+      "march": "$34.2T",
+      "april": "$34.3T",
+      "may": "$34.4T",
+      "june": "TBD 6/30",
+      "change": "+0.29"
+    },
+    {
+      "category": "Government Finance",
+      "agency": "Treasury",
+      "name": "Monthly Budget Deficit",
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
+      "march": "-$236B",
+      "april": "-$242B",
+      "may": "-$238B",
+      "june": "TBD 6/30",
+      "change": "-1.65"
+    },
+    {
+      "category": "Government Finance",
+      "agency": "Treasury",
+      "name": "Tax Revenue (billions)",
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
+      "march": "$486B",
+      "april": "$492B",
+      "may": "$498B",
+      "june": "TBD 6/30",
+      "change": "+1.22"
+    },
+    {
+      "category": "Government Finance",
+      "agency": "Treasury",
+      "name": "Interest on Debt (billions)",
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
+      "march": "$89B",
+      "april": "$91B",
+      "may": "$93B",
+      "june": "TBD 6/30",
+      "change": "+2.20"
     }
   ]
 }

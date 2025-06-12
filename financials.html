@@ -7,7 +7,6 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
     <title>Financials - Howdy, Stranger</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
     <meta name="description" content="Combined financial dashboard featuring U.S. economic indicators and investment portfolio tracking with real-time data visualization.">
@@ -29,6 +28,19 @@
         align-items: center;
         min-height: 100px;
       }
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: var(--bg-primary);
+        min-height: 100vh;
+        padding: 0;
+        color: var(--text-secondary);
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -40,113 +52,115 @@
       </div>
     </header>
     <nav class="nav-links"></nav>
-    <div class="content">
-      <!-- U.S. Economic Indicators Section -->
-      <div class="card">
-        <h1>U.S. Economic Indicators Dashboard</h1>
-        <br>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>March 2025</th>
-                <th>April 2025</th>
-                <th>May 2025</th>
-                <th>June 2025</th>
-                <th>Change (%)</th>
-              </tr>
-            </thead>
-            <tbody id="indicesTableBody">
-              <!-- Data will be dynamically loaded from JSON -->
-            </tbody>
-          </table>
+    <div class="container">
+      <div class="content">
+        <!-- U.S. Economic Indicators Section -->
+        <div class="card">
+          <h1>U.S. Economic Indicators Dashboard</h1>
+          <br>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>March 2025</th>
+                  <th>April 2025</th>
+                  <th>May 2025</th>
+                  <th>June 2025</th>
+                  <th>Change (%)</th>
+                </tr>
+              </thead>
+              <tbody id="indicesTableBody">
+                <!-- Data will be dynamically loaded from JSON -->
+              </tbody>
+            </table>
+          </div>
+          <div class="data-notes">
+            <h3>Data Notes & Sources</h3>
+            <p><strong>Agency Abbreviations:</strong></p>
+            <ul>
+              <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
+              <li><strong>Census:</strong> U.S. Census Bureau</li>
+              <li><strong>DOL:</strong> U.S. Department of Labor</li>
+              <li><strong>CB:</strong> The Conference Board</li>
+            </ul>
+            
+            <p><strong>Current Data Status (as of June 2025):</strong></p>
+            <ul>
+              <li>May 2025 CPI data released</li>
+              <li>April unemployment rate held steady at 4.2%</li>
+              <li>Housing starts increased 1.6% from March to April 2025</li>
+            </ul>
+            
+            <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+              This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
+            </p>
+            
+            <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+              Loading data...
+            </div>
+          </div>
         </div>
-        <div class="data-notes">
-          <h3>Data Notes & Sources</h3>
-          <p><strong>Agency Abbreviations:</strong></p>
-          <ul>
-            <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
-            <li><strong>Census:</strong> U.S. Census Bureau</li>
-            <li><strong>DOL:</strong> U.S. Department of Labor</li>
-            <li><strong>CB:</strong> The Conference Board</li>
-          </ul>
-          
-          <p><strong>Current Data Status (as of June 2025):</strong></p>
-          <ul>
-            <li>May 2025 CPI data released</li>
-            <li>April unemployment rate held steady at 4.2%</li>
-            <li>Housing starts increased 1.6% from March to April 2025</li>
-          </ul>
-          
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
-          </p>
-          
-          <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-            Loading data...
+
+        <!-- GPT Portfolio Section -->
+        <div class="card">
+          <h1>GPT Portfolio Dashboard</h1>
+          <br>
+          <div class="table-wrapper">
+            <div id="loading-message" class="loading-state">Loading portfolio data...</div>
+            <div id="error-message" class="error-state" style="display: none;"></div>
+            <div id="portfolio-table-container" class="table-container"></div>
+          </div>
+          <div class="data-notes">
+            <h3>Portfolio Notes & Information</h3>
+            <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+              This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
+            </p>
+            <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+              Portfolio data refreshed automatically
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- GPT Portfolio Section -->
       <div class="card">
-        <h1>GPT Portfolio Dashboard</h1>
-        <br>
-        <div class="table-wrapper">
-          <div id="loading-message" class="loading-state">Loading portfolio data...</div>
-          <div id="error-message" class="error-state" style="display: none;"></div>
-          <div id="portfolio-table-container" class="table-container"></div>
-        </div>
-        <div class="data-notes">
-          <h3>Portfolio Notes & Information</h3>
+        <h2>Data Sources & References</h2>
+        <div class="data-sources">
+          <h3>Government Agencies</h3>
+          <ul>
+            <li><a href="https://www.bls.gov/" target="_blank" rel="noopener noreferrer">Bureau of Labor Statistics (BLS)</a> - Employment, inflation, and price data</li>
+            <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a> - Housing, construction, and demographic data</li>
+            <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">Department of Labor (DOL)</a> - Employment and labor statistics</li>
+            <li><a href="https://www.treasury.gov/" target="_blank" rel="noopener noreferrer">U.S. Treasury</a> - Financial and economic data</li>
+            <li><a href="https://www.federalreserve.gov/" target="_blank" rel="noopener noreferrer">Federal Reserve</a> - Monetary policy and economic indicators</li>
+            <li><a href="https://www.commerce.gov/" target="_blank" rel="noopener noreferrer">Department of Commerce</a> - Economic and business statistics</li>
+          </ul>
+
+          <h3>Financial Data Providers</h3>
+          <ul>
+            <li><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">FRED (Federal Reserve Economic Data)</a> - Economic time series data</li>
+            <li><a href="https://www.conference-board.org/" target="_blank" rel="noopener noreferrer">The Conference Board</a> - Leading economic indicators</li>
+            <li><a href="https://www.adp.com/" target="_blank" rel="noopener noreferrer">ADP</a> - Employment and payroll data</li>
+            <li><a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer">National Association of Realtors</a> - Housing market data</li>
+            <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency</a> - Housing finance data</li>
+          </ul>
+
+          <h3>Economic Indicators</h3>
+          <ul>
+            <li><a href="https://www.ismworld.org/" target="_blank" rel="noopener noreferrer">Institute for Supply Management (ISM)</a> - Manufacturing and services PMI</li>
+            <li><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer">University of Michigan</a> - Consumer sentiment surveys</li>
+            <li><a href="https://www.manheim.com/" target="_blank" rel="noopener noreferrer">Manheim</a> - Used vehicle value index</li>
+          </ul>
+
           <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
+            All data is sourced from official government agencies and recognized economic data providers. Links open in new tabs and point to the most relevant data pages for each indicator.
           </p>
-          <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-            Portfolio data refreshed automatically
-          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <h2>Data Sources & References</h2>
-      <div class="data-sources">
-        <h3>Government Agencies</h3>
-        <ul>
-          <li><a href="https://www.bls.gov/" target="_blank" rel="noopener noreferrer">Bureau of Labor Statistics (BLS)</a> - Employment, inflation, and price data</li>
-          <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a> - Housing, construction, and demographic data</li>
-          <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">Department of Labor (DOL)</a> - Employment and labor statistics</li>
-          <li><a href="https://www.treasury.gov/" target="_blank" rel="noopener noreferrer">U.S. Treasury</a> - Financial and economic data</li>
-          <li><a href="https://www.federalreserve.gov/" target="_blank" rel="noopener noreferrer">Federal Reserve</a> - Monetary policy and economic indicators</li>
-          <li><a href="https://www.commerce.gov/" target="_blank" rel="noopener noreferrer">Department of Commerce</a> - Economic and business statistics</li>
-        </ul>
-
-        <h3>Financial Data Providers</h3>
-        <ul>
-          <li><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">FRED (Federal Reserve Economic Data)</a> - Economic time series data</li>
-          <li><a href="https://www.conference-board.org/" target="_blank" rel="noopener noreferrer">The Conference Board</a> - Leading economic indicators</li>
-          <li><a href="https://www.adp.com/" target="_blank" rel="noopener noreferrer">ADP</a> - Employment and payroll data</li>
-          <li><a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer">National Association of Realtors</a> - Housing market data</li>
-          <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency</a> - Housing finance data</li>
-        </ul>
-
-        <h3>Economic Indicators</h3>
-        <ul>
-          <li><a href="https://www.ismworld.org/" target="_blank" rel="noopener noreferrer">Institute for Supply Management (ISM)</a> - Manufacturing and services PMI</li>
-          <li><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer">University of Michigan</a> - Consumer sentiment surveys</li>
-          <li><a href="https://www.manheim.com/" target="_blank" rel="noopener noreferrer">Manheim</a> - Used vehicle value index</li>
-        </ul>
-
-        <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-          All data is sourced from official government agencies and recognized economic data providers. Links open in new tabs and point to the most relevant data pages for each indicator.
-        </p>
-      </div>
-    </div>
+    <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
+    <script src="js/last-updated.js"></script>
     <script src="/js/nav.js" defer></script>
     <script src="/js/financials.js" defer></script>
     <script src="/js/portfolio.js" defer></script>
-      <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
-    <script src="js/last-updated.js"></script>
 </body>
 </html>

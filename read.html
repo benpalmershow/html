@@ -17,7 +17,7 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <script defer src="@vercel/speed-insights/script.js"></script>
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
     <title>Read - Howdy, Stranger</title>
@@ -33,6 +33,19 @@
         justify-content: center;
         align-items: center;
         min-height: 100px;
+      }
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: var(--bg-primary);
+        min-height: 100vh;
+        padding: 0;
+        color: var(--text-secondary);
+        width: 100%;
       }
     </style>
   </head>
@@ -50,8 +63,10 @@
     </nav>
     
     <img src="images/read.png" alt="Read Image" class="page-image" loading="lazy">
-    <div class="content">
-      <div id="post-feed"></div>
+    <div class="container">
+      <div class="content">
+        <div id="post-feed"></div>
+      </div>
     </div>
     <script>
    

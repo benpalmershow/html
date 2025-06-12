@@ -11,7 +11,7 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <script defer src="@vercel/speed-insights/script.js"></script>
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
 
@@ -149,6 +149,21 @@
         align-items: center;
         min-height: 100px;
       }
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: var(--bg-primary);
+        min-height: 100vh;
+        padding: 0;
+        color: var(--text-secondary);
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -164,110 +179,112 @@
     <!-- Page Image - matching opinion page -->
     <img src="images/watch.png" alt="Watch Image" class="page-image" loading="lazy">
           
-    <div class="content">
-      <div class="video-cards">
-        <!-- Video Card 1 -->
-        <div class="video-card">
-          <div class="video-header">
-            <span class="movie-name">Holy Spider</span>
-            <div class="ratings-container">
-              <a href="https://www.rottentomatoes.com/m/holy_spider" 
-                 class="rating-link rt-rating" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                🍅 82%
-              </a>
-              <a href="https://www.imdb.com/title/tt18550140/" 
-                 class="rating-link imdb-rating" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                ⭐ 7.3
-              </a>
+    <div class="container">
+      <div class="content">
+        <div class="video-cards">
+          <!-- Video Card 1 -->
+          <div class="video-card">
+            <div class="video-header">
+              <span class="movie-name">Holy Spider</span>
+              <div class="ratings-container">
+                <a href="https://www.rottentomatoes.com/m/holy_spider" 
+                   class="rating-link rt-rating" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  🍅 82%
+                </a>
+                <a href="https://www.imdb.com/title/tt18550140/" 
+                   class="rating-link imdb-rating" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  ⭐ 7.3
+                </a>
+              </div>
             </div>
+            <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
+                    title="Holy Spider" 
+                    class="video-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
           </div>
-          <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
-                  title="Holy Spider" 
-                  class="video-iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
-        </div>
 
-        <!-- Video Card 2 -->
-        <div class="video-card">
-          <div class="video-header">
-            <span class="movie-name">The Pact</span>
-            <div class="ratings-container">
-              <a href="https://www.rottentomatoes.com/m/the_pact_2022" 
-                 class="rating-link rt-rating" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                🍅 79%
-              </a>
-              <a href="https://www.imdb.com/title/tt11204060/" 
-                 class="rating-link imdb-rating" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                ⭐ 6.4
-              </a>
+          <!-- Video Card 2 -->
+          <div class="video-card">
+            <div class="video-header">
+              <span class="movie-name">The Pact</span>
+              <div class="ratings-container">
+                <a href="https://www.rottentomatoes.com/m/the_pact_2022" 
+                   class="rating-link rt-rating" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  🍅 79%
+                </a>
+                <a href="https://www.imdb.com/title/tt11204060/" 
+                   class="rating-link imdb-rating" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  ⭐ 6.4
+                </a>
+              </div>
             </div>
+            <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
+                    title="The Pact" 
+                    class="video-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
           </div>
-          <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
-                  title="The Pact" 
-                  class="video-iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
-        </div>
 
-        <!-- Video Card 3 -->
-        <div class="video-card">
-          <div class="video-header">
-            <span class="movie-name">Jeanne du Barry</span>
-            <div class="ratings-container">
-              <a href="https://www.rottentomatoes.com/m/jeanne_du_barry" 
-                 class="rating-link rt-rating" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                🍅 48%
-              </a>
-              <a href="https://www.imdb.com/title/tt17277414/" 
-                 class="rating-link imdb-rating" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                ⭐ 6.8
-              </a>
+          <!-- Video Card 3 -->
+          <div class="video-card">
+            <div class="video-header">
+              <span class="movie-name">Jeanne du Barry</span>
+              <div class="ratings-container">
+                <a href="https://www.rottentomatoes.com/m/jeanne_du_barry" 
+                   class="rating-link rt-rating" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  🍅 48%
+                </a>
+                <a href="https://www.imdb.com/title/tt17277414/" 
+                   class="rating-link imdb-rating" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                  ⭐ 6.8
+                </a>
+              </div>
             </div>
+            <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
+                    title="Jeanne du Barry" 
+                    class="video-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
           </div>
-          <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
-                  title="Jeanne du Barry" 
-                  class="video-iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
-        </div>
 
-        <!-- Video Card 4 - New Addition -->
-        <div class="video-card">
-          <div class="video-header">
-            <span class="movie-name">Let It Be Morning</span>
-            <div class="ratings-container">
-              <a href="https://www.rottentomatoes.com/m/let_it_be_morning"
-                 class="rating-link rt-rating"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                🍅 84%
-              </a>
-              <a href="https://www.imdb.com/title/tt14775586/"
-                 class="rating-link imdb-rating"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                ⭐ 6.8
-              </a>
+          <!-- Video Card 4 - New Addition -->
+          <div class="video-card">
+            <div class="video-header">
+              <span class="movie-name">Let It Be Morning</span>
+              <div class="ratings-container">
+                <a href="https://www.rottentomatoes.com/m/let_it_be_morning"
+                   class="rating-link rt-rating"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  🍅 84%
+                </a>
+                <a href="https://www.imdb.com/title/tt14775586/"
+                   class="rating-link imdb-rating"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  ⭐ 6.8
+                </a>
+              </div>
             </div>
+            <iframe src="https://www.youtube.com/embed/GBeb_ZUmiRQ"
+                    title="Let It Be Morning"
+                    class="video-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
           </div>
-          <iframe src="https://www.youtube.com/embed/GBeb_ZUmiRQ"
-                  title="Let It Be Morning"
-                  class="video-iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
         </div>
       </div>
     </div>

@@ -10,8 +10,8 @@
   --shadow-color: rgba(44, 95, 90, 0.1);
   --logo-teal: #2c5f5a;
   --logo-orange: #d4822a;
-  --max-content-width: none;
-  --content-padding: 1rem;
+  --max-content-width: 100%;
+  --content-padding: 2rem;
   --mobile-padding: 1rem
 }
 * {
@@ -27,12 +27,28 @@ html {
   color: var(--text-secondary);
   transition: background-color .3s,color .3s;
   font-size: clamp(.9rem, 2.5vw, 1rem);
-  overflow-x: hidden
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .content {
   padding: var(--content-padding);
   margin: 0;
-  box-sizing: border-box
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--max-content-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content > * {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card {
   background: var(--bg-secondary);

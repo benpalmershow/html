@@ -287,7 +287,11 @@
         }
 
         function formatDate(dateString) {
-            const date = new Date(dateString);
+            // Handle Git date format (e.g., "2024-03-19 15:53:59 -0700")
+            const date = new Date(dateString.replace(/-(\d{2})(\d{2})$/, ' -$1:$2'));
+            if (isNaN(date.getTime())) {
+                return 'Date not available';
+            }
             return date.toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'long', 

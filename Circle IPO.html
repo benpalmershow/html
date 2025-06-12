@@ -6,15 +6,31 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <link rel="preload" href="/css/body.css" as="style">
-    <link rel="stylesheet" href="/css/body.css">
-    <title>Financials at a Glance | Howdy, Stranger</title>
+    <link rel="preload" href="css/body.css" as="style">
+    <link rel="stylesheet" href="css/body.css">
+    <title>Circle IPO - Howdy, Stranger</title>
     <meta name="description" content="Financial overview of SEZL, PAYS, and DAVE by HowdyStranger.">
+    <style>
+      .site-header {
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100px;
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <div class="logo-container">
-        <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+        </a>
       </div>
     </header>
     <nav class="nav-links"></nav>

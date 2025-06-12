@@ -3,7 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Stock Details</title>
+		<title>Invest - Howdy, Stranger</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+		<link rel="preload" href="css/body.css" as="style">
+		<link rel="stylesheet" href="css/body.css">
 		<style>
 			:root {
 				--gap-size: 32px;
@@ -165,12 +168,27 @@
 				height: calc(100% - 32px);
 				width: 100%;
 			}
+			.site-header {
+				background: var(--bg-primary);
+				border-bottom: 1px solid var(--border-color);
+				padding: 1rem;
+				margin-bottom: 2rem;
+			}
+			.logo-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100px;
+			}
 		</style>
 	</head>
 	<body>
-		<header>
-			<a id="site-logo" href="#">TradingVista</a>
-			<input type="search" placeholder="Search..." />
+		<header class="site-header">
+			<div class="logo-container">
+				<a href="index.html">
+					<img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+				</a>
+			</div>
 		</header>
 		<nav id="ticker-tape">
 			<!-- TradingView Widget BEGIN -->

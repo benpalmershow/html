@@ -5,21 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
-    <title>Financial Indicators Dashboard</title>
+    <title>Financials - Howdy, Stranger</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <link rel="preload" href="/css/body.css" as="style">
-    <link rel="stylesheet" href="/css/body.css">
+    <link rel="preload" href="css/body.css" as="style">
+    <link rel="stylesheet" href="css/body.css">
     <meta name="description" content="Combined financial dashboard featuring U.S. economic indicators and investment portfolio tracking with real-time data visualization.">
     <meta name="keywords" content="economic indicators, CPI, unemployment rate, housing starts, inflation, economic data, BLS, Census Bureau, portfolio, investments, stocks, financial tracking, performance dashboard">
     <meta name="author" content="HowdyStranger">
     <meta property="og:title" content="Combined Financial Dashboard">
     <meta property="og:description" content="Track key U.S. economic metrics and investment portfolio performance from official government sources and real-time data.">
     <meta property="og:type" content="website">
+    <style>
+      .site-header {
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100px;
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <div class="logo-container">
-        <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+        </a>
       </div>
     </header>
     <nav class="nav-links"></nav>

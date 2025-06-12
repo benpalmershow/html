@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="last-commit" content="2025-06-12 15:53:59 -0700">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financials 2 - Howdy, Stranger</title>
     
@@ -443,7 +444,11 @@
         }
 
         function initializeDashboard() {
-            document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+            const lastCommitMeta = document.querySelector('meta[name="last-commit"]');
+            if (lastCommitMeta) {
+                const lastCommitDate = lastCommitMeta.getAttribute('content');
+                document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(lastCommitDate)}`;
+            }
             setupFilters();
             renderDashboard();
         }
@@ -452,5 +457,7 @@
         document.addEventListener('DOMContentLoaded', fetchFinancialData);
     </script>
     <script src="/js/nav.js" defer></script>
+    <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
+    <script src="js/last-updated.js"></script>
 </body>
 </html>

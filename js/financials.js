@@ -21,13 +21,27 @@ const fallbackData={lastUpdated:"2025-06-10T12:00:00Z",indices:[{category:"Infla
     "HUD": "https://www.hud.gov/",
     "USDA": "https://www.usda.gov/",
     "DOI": "https://www.doi.gov/",
-    "DOC": "https://www.commerce.gov/"
+    "DOC": "https://www.commerce.gov/",
+    "Federal Reserve": "https://www.federalreserve.gov/",
+    "DOL": "https://www.dol.gov/",
+    "CB": "https://www.conference-board.org/",
+    "ADP": "https://www.adp.com/",
+    "NAR": "https://www.nar.realtor/",
+    "FHFA": "https://www.fhfa.gov/",
+    "ISM": "https://www.ismworld.org/",
+    "UM": "https://www.sca.isr.umich.edu/",
+    "Manheim": "https://www.manheim.com/",
+    "Commerce": "https://www.commerce.gov/"
   };
 
   // Use specific URL if provided, otherwise use agency's main page
-  const url = e.url || agencyUrls[e.agency] || `https://www.google.com/search?q=${encodeURIComponent(`${e.agency} official website`)}`;
-  
-  a.innerHTML = `<a href="${url}" target="_blank" rel="noopener">${e.agency}: ${e.name}</a>`;
+  let url = e.url;
+  if (!url || url === "") {
+    url = agencyUrls[e.agency] || `https://www.google.com/search?q=${encodeURIComponent(`${e.agency} official website`)}`;
+  }
+
+  // Create the link with proper attributes
+  a.innerHTML = `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: underline;">${e.agency}: ${e.name}</a>`;
   t.appendChild(a);
   
   ["march", "april", "may", "june"].forEach((a => {

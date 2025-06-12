@@ -346,7 +346,8 @@
                     "Trade-Weighted Dollar Index": "https://fred.stlouisfed.org/series/TWEXB"
                 },
                 "Treasury": {
-                    "10-Year Treasury Yield (%)": "https://fred.stlouisfed.org/series/DGS10"
+                    "10-Year Treasury Yield (%)": "https://fred.stlouisfed.org/series/DGS10",
+                    "Treasury Debt Level": "https://fred.stlouisfed.org/series/GFDEBTN"
                 },
                 "ISM": {
                     "Manufacturing PMI": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi/"
@@ -367,28 +368,19 @@
                 "FHFA": {
                     "Housing Affordability Index": "https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index.aspx",
                     "30-Year Fixed Mortgage Rate (%)": "https://www.fhfa.gov/DataTools/Downloads/Pages/Monthly-Interest-Rate-Data.aspx"
+                },
+                "ADP": {
+                    "Private Payrolls": "https://www.adp.com/insights/market-insights/market-insights.aspx"
+                },
+                "Commerce": {
+                    "Trade Balance (billions)": "https://www.census.gov/foreign-trade/balance/c0004.html",
+                    "Goods Trade Deficit": "https://www.census.gov/foreign-trade/balance/c0004.html"
                 }
             };
 
-            // Get the specific URL for this indicator, or fall back to agency's main page
+            // Get the specific URL for this indicator, or fall back to a Google search
             const specificUrl = agencyUrls[indicator.agency]?.[indicator.name];
-            const agencyMainUrls = {
-                "BLS": "https://www.bls.gov/",
-                "Census": "https://www.census.gov/",
-                "DOL": "https://www.dol.gov/",
-                "Federal Reserve": "https://www.federalreserve.gov/",
-                "Treasury": "https://www.treasury.gov/",
-                "ISM": "https://www.ismworld.org/",
-                "CB": "https://www.conference-board.org/",
-                "UM": "https://www.sca.isr.umich.edu/",
-                "Manheim": "https://www.manheim.com/",
-                "NAR": "https://www.nar.realtor/",
-                "FHFA": "https://www.fhfa.gov/",
-                "ADP": "https://www.adp.com/",
-                "Commerce": "https://www.commerce.gov/"
-            };
-
-            const url = specificUrl || agencyMainUrls[indicator.agency] || `https://www.google.com/search?q=${encodeURIComponent(`${indicator.agency} ${indicator.name} official data`)}`;
+            const url = specificUrl || `https://www.google.com/search?q=${encodeURIComponent(`${indicator.agency} ${indicator.name} official data`)}`;
 
             return `
                 <div class="indicator">

@@ -75,7 +75,35 @@ html {
   box-shadow: 0 2px 8px rgba(212,130,42,.18);
   outline: 0
 }
+.site-header {
+    text-align: center;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
 
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo {
+        max-width: 150px;
+    }
+}
 
 .nav-links {
   display: flex;

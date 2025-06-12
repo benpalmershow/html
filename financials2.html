@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="last-commit" content="2025-06-12 15:53:59 -0700">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financials 2 - Howdy, Stranger</title>
     
@@ -46,12 +45,6 @@
             margin-bottom: 10px;
             text-shadow: 1px 1px 2px var(--shadow-color);
             color: var(--logo-teal);
-        }
-
-        .last-updated {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            color: var(--text-muted);
         }
 
         .filters {
@@ -261,7 +254,6 @@
     <div class="container">
         <div class="header">
             <h1>Financial Indicators Dashboard</h1>
-            <div class="last-updated" id="lastUpdated"></div>
         </div>
         
         <div class="filters" id="filters">
@@ -434,11 +426,6 @@
         }
 
         function initializeDashboard() {
-            const lastCommitMeta = document.querySelector('meta[name="last-commit"]');
-            if (lastCommitMeta) {
-                const lastCommitDate = lastCommitMeta.getAttribute('content');
-                document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(lastCommitDate)}`;
-            }
             setupFilters();
             renderDashboard();
         }

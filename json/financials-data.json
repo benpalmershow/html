@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-06-12T16:00:00Z",
+  "lastUpdated": "2025-06-12T21:00:00Z",
   "indices": [
     {
       "category": "Inflation Measures",
@@ -39,15 +39,15 @@
       "agency": "BLS",
       "name": "Jobs Added (All Employment)",
       "url": "https://www.bls.gov/cps/data.htm",
-      "march": "120,000",
-      "april": "147,000",
-      "may": "139,000",
+      "march": "+120,000",
+      "april": "+147,000",
+      "may": "+139,000",
       "june": "TBD 7/3",
       "change": "-5.44"
     },
     {
       "category": "Employment Indicators",
-      "agency": "DOL",
+      "agency": "FRED",
       "name": "Initial Jobless Claims",
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "march": "223,200",
@@ -82,7 +82,7 @@
       "category": "Housing Market",
       "agency": "Census",
       "name": "Housing Starts (000s)",
-      "url": "https://www.census.gov/construction/nrc/data/index.html",
+      "url": "https://www.census.gov/construction/nrc/current/index.html",
       "march": "1,339",
       "april": "1,361",
       "may": "TBD 6/18",
@@ -92,30 +92,19 @@
     {
       "category": "Housing Market",
       "agency": "Census",
-      "name": "Building Permits (000s)",
-      "url": "https://www.census.gov/construction/bps/data/index.html",
-      "march": "1,458",
-      "april": "1,440",
-      "may": "TBD 6/18",
-      "june": "TBD 7/17",
-      "change": "-1.23"
-    },
-    {
-      "category": "Housing Market",
-      "agency": "NAR",
-      "name": "New Home Sales (000s)",
-      "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/new-home-sales",
-      "march": "670",
-      "april": "743",
+      "name": "New Home Sales",
+      "url": "https://www.census.gov/construction/nrs/current/index.html#:~:text=New%20Home%20Sales,April%202024%20rate%20of%20719%2C000.",
+      "march": "670,000",
+      "april": "743,000",
       "may": "TBD 6/25",
       "june": "TBD 7/24",
       "change": "+10.9"
     },
     {
       "category": "Housing Market",
-      "agency": "FHFA",
+      "agency": "FRED",
       "name": "Housing Affordability Index",
-      "url": "https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx",
+      "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "march": "103.2",
       "april": "TBD 6/13",
       "may": "TBD 7/11",
@@ -124,8 +113,8 @@
     },
     {
       "category": "Interest Rates",
-      "agency": "FHFA",
-      "name": "30-Year Fixed Mortgage Rate (%)",
+      "agency": "FRED",
+      "name": "30-Year Fixed Mortgage Rate",
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "march": "6.65%",
       "april": "6.73%",
@@ -135,7 +124,7 @@
     },
     {
       "category": "Interest Rates",
-      "agency": "Treasury",
+      "agency": "FRED",
       "name": "10-Year Treasury Yield (%)",
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "march": "4.28%",
@@ -148,23 +137,23 @@
       "category": "Business Indicators",
       "agency": "ISM",
       "name": "Manufacturing PMI",
-      "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi/robsi-home/",
-      "march": "53.4",
-      "april": "51.6",
-      "may": "49.9",
+      "url": "https://tradingeconomics.com/united-states/business-confidence",
+      "march": "49",
+      "april": "48.7",
+      "may": "48.5",
       "june": "TBD 7/1",
-      "change": "-3.29"
+      "change": "-0.40"
     },
     {
       "category": "Business Indicators",
       "agency": "CB",
-      "name": "Leading Economic Index",
+      "name": "Lagging Economic Index",
       "url": "https://www.conference-board.org/topics/us-leading-indicators",
-      "march": "119.0",
+      "march": "118.9",
       "april": "119.3",
       "may": "TBD 6/20",
       "june": "TBD 7/18",
-      "change": "+0.30"
+      "change": "+0.33"
     },
     {
       "category": "Business Indicators",
@@ -173,8 +162,8 @@
       "url": "https://www.census.gov/economic-indicators/",
       "march": "$617.4",
       "april": "$594.6",
-      "may": "TBD 6/4",
-      "june": "TBD 7/3",
+      "may": "TBD 7/3",
+      "june": "TBD 8/4",
       "change": "-3.69"
     },
     {
@@ -184,15 +173,15 @@
       "url": "https://www.census.gov/construction/c30/",
       "march": "$2.162",
       "april": "$2.152",
-      "may": "TBD 6/3",
-      "june": "TBD 7/1",
+      "may": "TBD 7/1",
+      "june": "TBD 8/1",
       "change": "-0.46"
     },
     {
       "category": "Consumer Indicators",
       "agency": "UM",
       "name": "Consumer Sentiment",
-      "url": "https://www.sca.isr.umich.edu/data-archive",
+      "url": "https://data.sca.isr.umich.edu",
       "march": "57.0",
       "april": "52.2",
       "may": "52.2",
@@ -217,53 +206,20 @@
       "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
       "march": "210.1",
       "april": "208.2",
-      "may": "205.9",
+      "may": "205.2",
       "june": "TBD 7/9",
-      "change": "-1.10"
+      "change": "-1.44"
     },
     {
       "category": "Currency & Trade",
       "agency": "Federal Reserve",
       "name": "Dollar Value Index",
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
-      "march": "120.5",
-      "april": "121.2",
-      "may": "121.8",
-      "june": "TBD 6/15",
-      "change": "+0.50"
-    },
-    {
-      "category": "Currency & Trade",
-      "agency": "Federal Reserve",
-      "name": "Trade-Weighted Dollar Index",
-      "url": "https://fred.stlouisfed.org/series/TWEXB",
-      "march": "118.2",
-      "april": "118.9",
-      "may": "119.4",
-      "june": "TBD 6/15",
-      "change": "+0.42"
-    },
-    {
-      "category": "Currency & Trade",
-      "agency": "Federal Reserve",
-      "name": "Real Broad Dollar Index",
-      "url": "https://fred.stlouisfed.org/series/RBUSBIS",
-      "march": "116.8",
-      "april": "117.3",
-      "may": "117.9",
-      "june": "TBD 6/15",
-      "change": "+0.51"
-    },
-    {
-      "category": "Currency & Trade",
-      "agency": "Federal Reserve",
-      "name": "Nominal Effective Exchange Rate",
-      "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
-      "march": "119.5",
-      "april": "120.1",
-      "may": "120.7",
-      "june": "TBD 6/15",
-      "change": "+0.50"
+      "march": "126.4",
+      "april": "124",
+      "may": "122.68",
+      "june": "121.3",
+      "change": "-1.12"
     },
     {
       "category": "Trade & Tariffs",

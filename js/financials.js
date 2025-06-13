@@ -69,3 +69,84 @@ const fallbackData={lastUpdated:"2025-06-10T12:00:00Z",indices:[{category:"Infla
   loadTradingViewWidget(e)
   updateLastUpdatedTimestamp(e)
 }catch(e){showError("Error processing economic data. Please check back later.")}}async function loadFinancialsData(){const e=["./json/financials-data.json","./financials-data.json","json/financials-data.json","/json/financials-data.json","../json/financials-data.json"];for(const t of e)try{const e=await fetch(t);if(!e.ok)continue;return await e.json()}catch(e){continue}throw new Error("Could not load financials data from any path")}async function loadFinancialData(){try{const e=await fetch("/json/financials-data.json"),t=await e.json(),a=t.indices.reduce(((e,t)=>(e[t.category]||(e[t.category]=[]),e[t.category].push(t),e)),{}),n=document.getElementById("financials-container");n.innerHTML="";for(const[e,t]of Object.entries(a)){const a=document.createElement("div");a.className="category-section";const c=document.createElement("h3");c.textContent=e,a.appendChild(c);const o=document.createElement("table");o.className="financials-table";const r=document.createElement("thead");r.innerHTML="\n                <tr>\n                    <th>Indicator</th>\n                    <th>March</th>\n                    <th>April</th>\n                    <th>May</th>\n                    <th>June</th>\n                    <th>Change</th>\n                </tr>\n            ",o.appendChild(r);const i=document.createElement("tbody");t.forEach((e=>{const t=document.createElement("tr");t.innerHTML=`\n                    <td><a href="${e.url}" target="_blank">${e.name}</a></td>\n                    <td>${e.march}</td>\n                    <td>${e.april}</td>\n                    <td>${e.may}</td>\n                    <td>${e.june}</td>\n                    <td>${e.change}</td>\n                `,i.appendChild(t)})),o.appendChild(i),a.appendChild(o),n.appendChild(a)}const c=document.createElement("p");c.className="last-updated",c.textContent=`Last Updated: ${new Date(t.lastUpdated).toLocaleDateString()}`,n.appendChild(c)}catch(e){document.getElementById("financials-container").innerHTML='<p class="error">Error loading financial data. Please try again later.</p>'}}document.addEventListener("DOMContentLoaded",(async()=>{try{processFinancialsData(await loadFinancialsData())}catch(e){try{processFinancialsData(fallbackData);const e=document.getElementById("indicesTableBody");if(e&&e.children.length>0){const t=document.createElement("tr");t.innerHTML='<td colspan="6" style="text-align: center; padding: 1rem; background-color: #FEF3C7; color: #92400E; font-size: 0.9em;">⚠️ Using cached data - some information may be outdated</td>',e.insertBefore(t,e.firstChild)}}catch(e){showError("Unable to load economic data. Please refresh the page or check back later.")}}})),"undefined"!=typeof window&&(window.financialsDebug={loadFinancialsData:loadFinancialsData,processFinancialsData:processFinancialsData,autoCalculateChanges:autoCalculateChanges,extractNumericValue:extractNumericValue}),document.addEventListener("DOMContentLoaded",loadFinancialData);
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('/json/financials-data.json');
+        if (!response.ok) {
+            throw new Error('Failed to load financials data');
+        }
+        const data = await response.json();
+        const tableBody = document.getElementById('indicesTableBody');
+        const lastUpdated = document.getElementById('last-updated-economic');
+
+        // Update last updated timestamp
+        if (lastUpdated) {
+            const date = new Date(data.lastUpdated);
+            lastUpdated.textContent = `Last updated: ${date.toLocaleString()}`;
+        }
+
+        // Group indices by category
+        const categories = {};
+        data.indices.forEach(index => {
+            if (!categories[index.category]) {
+                categories[index.category] = [];
+            }
+            categories[index.category].push(index);
+        });
+
+        // Create table rows for each category
+        Object.entries(categories).forEach(([category, indices]) => {
+            // Add category header
+            const categoryRow = document.createElement('tr');
+            categoryRow.className = 'category-header';
+            const categoryCell = document.createElement('td');
+            categoryCell.colSpan = 6;
+            categoryCell.textContent = category;
+            categoryRow.appendChild(categoryCell);
+            tableBody.appendChild(categoryRow);
+
+            // Add indices for this category
+            indices.forEach(index => {
+                const row = document.createElement('tr');
+                
+                // Name cell with link
+                const nameCell = document.createElement('td');
+                const nameLink = document.createElement('a');
+                nameLink.href = index.url;
+                nameLink.target = '_blank';
+                nameLink.textContent = index.name;
+                nameCell.appendChild(nameLink);
+                row.appendChild(nameCell);
+
+                // Data cells
+                [index.march, index.april, index.may, index.june].forEach(value => {
+                    const cell = document.createElement('td');
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
+
+                // Change cell
+                const changeCell = document.createElement('td');
+                changeCell.textContent = index.change;
+                if (index.change && index.change !== '—') {
+                    const change = parseFloat(index.change);
+                    if (change > 0) {
+                        changeCell.style.color = 'var(--positive-color, #28a745)';
+                    } else if (change < 0) {
+                        changeCell.style.color = 'var(--negative-color, #dc3545)';
+                    }
+                }
+                row.appendChild(changeCell);
+
+                tableBody.appendChild(row);
+            });
+        });
+    } catch (error) {
+        console.error('Error loading financials data:', error);
+        const tableBody = document.getElementById('indicesTableBody');
+        if (tableBody) {
+            tableBody.innerHTML = '<tr><td colspan="6" class="error-state">Error loading data. Please try again later.</td></tr>';
+        }
+    }
+});

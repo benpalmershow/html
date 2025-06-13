@@ -28,51 +28,22 @@
      <header class="site-header">
       <div class="logo-container">
         <a href="index.html">
-          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+          <img src="/images/optimized/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
         </a>
       </div>
     </header>
     <nav class="nav-links" id="main-nav">
       <!-- Navigation links will be dynamically generated here -->
     </nav>
-    
-    <img src="images/read.png" alt="Read Image" class="page-image" loading="lazy">
+    <img src="/images/optimized/read.png" alt="Read Image" class="page-image" loading="lazy">
     <div class="container">
       <div class="content">
         <div id="post-feed"></div>
       </div>
     </div>
-    <script>
-   
-      // Posts feed
-      fetch(`/json/posts.json?ts=${Date.now()}`)
-        .then(response => response.json())
-        .then(posts => {
-          const feed = document.getElementById('post-feed');
-          feed.innerHTML = posts.map(post =>
-            `<div class="card">
-              <div class="card-title">${post.title || ''}</div>
-              <div class="card-date">${post.date || ''}</div>
-              <div class="card-content">${post.content || ''}</div>
-            </div>`
-          ).join('');
-        });
-    </script>
-        <script>
-          // Dynamically populate navigation links
-          const nav = document.getElementById('main-nav');
-          nav.innerHTML = `
-            <ul>
-              <li><a href="/home">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          `;
-        </script>
-        <script src="/js/nav.js" defer></script>
-        <script src="/js/posts.js"></script>
-
-      <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/posts.js"></script>
+    <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
     <script src="js/last-updated.js"></script>
 </body>
 </html>

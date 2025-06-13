@@ -48,7 +48,7 @@
     {
       "category": "Employment Indicators",
       "agency": "BLS",
-      "name": "Nonfarm Payrolls",
+      "name": "Jobs Added (All Employment)",
       "url": "https://www.bls.gov/cps/data.htm",
       "march": "120,000",
       "april": "147,000",
@@ -81,11 +81,11 @@
     {
       "category": "Employment Indicators",
       "agency": "ADP",
-      "name": "National Employment",
-      "url": "https://www.adp.com/insights/market-insights/market-insights.aspx",
+      "name": "Jobs Added (Private Employment)",
+      "url": "https://www.adp.com/insights/market-insights/adp-national-employment-report/",
       "march": "",
-      "april": "62,000",
-      "may": "37,000",
+      "april": "+62,000",
+      "may": "+37,000",
       "june": "TBD 7/3",
       "change": "-40.3"
     },

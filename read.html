@@ -21,7 +21,6 @@
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
     <title>Read - Howdy, Stranger</title>
-   
   </head>
   <body>
      <!-- Logo Header -->
@@ -42,39 +41,8 @@
         <div id="post-feed"></div>
       </div>
     </div>
-    <script>
-      // Posts feed
-      fetch('/json/posts.json?ts=' + Date.now())
-        .then(response => response.json())
-        .then(posts => {
-          posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort newest first
-          const feed = document.getElementById('post-feed');
-          feed.innerHTML = posts.map(post =>
-            `<div class="card">
-              <div class="card-title">${post.title || ''}</div>
-              <div class="card-date">${post.date || ''}</div>
-              <div class="card-content">${post.content || ''}</div>
-            </div>`
-          ).join('');
-        })
-        .catch(error => {
-          document.getElementById('post-feed').innerHTML = '<div class="error-state">Could not load posts.</div>';
-        });
-    </script>
-        <script>
-          // Dynamically populate navigation links
-          const nav = document.getElementById('main-nav');
-          nav.innerHTML = `
-            <ul>
-              <li><a href="/home">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          `;
-        </script>
-        <script src="/js/nav.js" defer></script>
-
-      <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
-    <script src="js/last-updated.js"></script>
+   
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/post-feed.js" defer></script>
 </body>
 </html>

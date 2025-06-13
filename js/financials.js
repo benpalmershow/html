@@ -29,7 +29,7 @@ const fallbackData={lastUpdated:"2025-06-10T12:00:00Z",indices:[{category:"Infla
     "NAR": "https://www.nar.realtor/",
     "FHFA": "https://www.fhfa.gov/",
     "ISM": "https://www.ismworld.org/",
-    "UM": "https://www.sca.isr.umich.edu/",
+    "UM": "https://surveyresearchcenter.umich.edu/projects/surveys-of-consumers/",
     "Manheim": "https://www.manheim.com/",
     "Commerce": "https://www.commerce.gov/"
   };

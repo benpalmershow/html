@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = [
+        { href: 'read.html', icon: '📚', title: 'Read', isLogo: true },
         { href: 'financials.html', icon: '📊', title: 'Financial Indicators - Table' },
         { href: 'financials2.html', icon: '📈', title: 'Financial Indicators - Dashboard' },
         { href: 'trumpvcasa.html', icon: '⚖️', title: 'Supreme Court' },
@@ -32,7 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const logoDiv = document.createElement('div');
         logoDiv.className = 'financial-logo';
-        logoDiv.textContent = link.icon;
+        
+        if (link.isLogo) {
+            const img = document.createElement('img');
+            img.src = 'images/read.png';
+            img.alt = 'Read';
+            img.className = 'page-logo';
+            logoDiv.appendChild(img);
+        } else {
+            logoDiv.textContent = link.icon;
+        }
 
         const tooltip = document.createElement('span');
         tooltip.className = 'tooltip';
@@ -91,16 +101,24 @@ document.addEventListener('DOMContentLoaded', function() {
             border-radius: 4px;
             background: var(--bg-secondary);
             box-shadow: 0 1px 3px var(--shadow-color);
-            font-size: 1.2rem;
-            width: 32px;
-            height: 32px;
+            font-size: 1.4rem;
+            width: 40px;
+            height: 40px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .page-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
         }
 
         .tooltip {
             visibility: hidden;
             position: absolute;
-            bottom: -25px;
+            bottom: -30px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--bg-secondary);
@@ -108,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             text-align: center;
             padding: 4px 8px;
             border-radius: 4px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             white-space: nowrap;
             box-shadow: 0 1px 3px var(--shadow-color);
             opacity: 0;

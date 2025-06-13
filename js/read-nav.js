@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     linksContainer.className = 'financial-links';
 
     // Add each link
-    navLinks.forEach(link => {
+    navLinks.forEach((link, index) => {
         const a = document.createElement('a');
         a.href = link.href;
         a.className = 'financial-link';
@@ -51,6 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
         logoDiv.appendChild(tooltip);
         a.appendChild(logoDiv);
         linksContainer.appendChild(a);
+
+        // Add vertical line after Read icon
+        if (index === 0) {
+            const verticalLine = document.createElement('div');
+            verticalLine.className = 'vertical-line';
+            linksContainer.appendChild(verticalLine);
+        }
     });
 
     // Create bottom line
@@ -81,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
             justify-content: center;
             padding: 8px 20px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .financial-link {
@@ -113,6 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
             height: 100%;
             object-fit: cover;
             border-radius: 2px;
+        }
+
+        .vertical-line {
+            width: 1px;
+            height: 24px;
+            background: var(--border-color);
+            margin: 0 4px;
         }
 
         .tooltip {

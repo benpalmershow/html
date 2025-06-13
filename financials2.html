@@ -265,6 +265,7 @@
     <div class="container">
         <div class="header">
             <h1>Financial Indicators Dashboard</h1>
+            <div id="lastUpdated" class="last-updated"></div>
         </div>
         
         <div class="filters" id="filters">
@@ -278,15 +279,31 @@
         let financialData = null;
 
         async function fetchFinancialData() {
-            try {
-                const response = await fetch('/json/financials-data.json');
-                financialData = await response.json();
-                initializeDashboard();
-            } catch (error) {
-                console.error('Error loading financial data:', error);
-                document.getElementById('categories').innerHTML = 
-                    '<div class="error">Error loading financial data. Please try again later.</div>';
+            const paths = [
+                './json/financials-data.json',
+                './financials-data.json',
+                'json/financials-data.json',
+                '/json/financials-data.json',
+                '../json/financials-data.json'
+            ];
+
+            for (const path of paths) {
+                try {
+                    const response = await fetch(path);
+                    if (!response.ok) continue;
+                    financialData = await response.json();
+                    initializeDashboard();
+                    return;
+                } catch (error) {
+                    console.error(`Error loading from ${path}:`, error);
+                    continue;
+                }
             }
+
+            // If we get here, none of the paths worked
+            console.error('Could not load financial data from any path');
+            document.getElementById('categories').innerHTML = 
+                '<div class="error">Error loading financial data. Please try again later.</div>';
         }
 
         function formatDate(dateString) {
@@ -455,6 +472,7 @@
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', fetchFinancialData);
     </script>
+    <script src="/js/financials.js" defer></script>
     <script src="/js/nav.js" defer></script>
 </body>
 </html>

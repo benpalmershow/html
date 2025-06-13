@@ -43,11 +43,11 @@
       </div>
     </div>
     <script>
-   
       // Posts feed
-      fetch(`/json/posts.json?ts=${Date.now()}`)
+      fetch('/json/posts.json?ts=' + Date.now())
         .then(response => response.json())
         .then(posts => {
+          posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort newest first
           const feed = document.getElementById('post-feed');
           feed.innerHTML = posts.map(post =>
             `<div class="card">
@@ -56,6 +56,9 @@
               <div class="card-content">${post.content || ''}</div>
             </div>`
           ).join('');
+        })
+        .catch(error => {
+          document.getElementById('post-feed').innerHTML = '<div class="error-state">Could not load posts.</div>';
         });
     </script>
         <script>

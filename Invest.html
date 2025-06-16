@@ -1,135 +1,449 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Invest - Howdy, Stranger</title>
-		<link rel="preload" href="css/body.css" as="style">
-		<link rel="stylesheet" href="css/body.css">
-		<script defer src="/_vercel/insights/script.js"></script>
-		<script defer src="@vercel/speed-insights/script.js"></script>
-	
-	</head>
-	<body>
-		<header class="site-header">
-			<div class="logo-container">
-				<a href="index.html">
-					<img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
-				</a>
-			</div>
-		</header>
-		<nav id="ticker-tape">
-			<!-- TradingView Widget BEGIN -->
-			<div class="tradingview-widget-container">
-				<div class="tradingview-widget-container__widget"></div>
-				<script type="text/javascript">
-					new TradingView.widget({
-						"symbols": [
-							{ "description": "", "proName": "NASDAQ:TSLA" },
-							{ "description": "", "proName": "NASDAQ:AAPL" },
-							{ "description": "", "proName": "NASDAQ:NVDA" },
-							{ "description": "", "proName": "NASDAQ:MSFT" },
-							{ "description": "", "proName": "NASDAQ:AMZN" },
-							{ "description": "", "proName": "NASDAQ:GOOGL" },
-							{ "description": "", "proName": "NASDAQ:META" },
-							{ "description": "", "proName": "NYSE:BRK.B" },
-							{ "description": "", "proName": "NYSE:LLY" },
-							{ "description": "", "proName": "NYSE:UNH" },
-							{ "description": "", "proName": "NYSE:V" },
-							{ "description": "", "proName": "NYSE:WMT" }
-						],
-						"showSymbolLogo": true,
-						"colorTheme": "light",
-						"isTransparent": false,
-						"displayMode": "adaptive",
-						"locale": "en"
-					});
-				</script>
-				<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"></script>
-			</div>
-			<!-- TradingView Widget END -->
-		</nav>
-		<div class="container">
-			<main>
-				<section id="symbol-info">
-					<!-- TradingView Widget BEGIN -->
-					<div class="tradingview-widget-container">
-						<div class="tradingview-widget-container__widget"></div>
-						<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
-						</script>
-					</div>
-					<div class="tradingview-widget-container tradingview-widget-container-fullsize">
-						<div class="tradingview-widget-container__widget tradingview-widget-container-widget-fullsize"></div>
-				<section id="advanced-chart">
-					<!-- TradingView Widget BEGIN -->
-					<div class="tradingview-widget-container tradingview-widget-container-advanced-chart">
-						<div class="tradingview-widget-container__widget tradingview-widget-container-widget-fullsize"></div>
-					<script type="text/javascript">
-						new TradingView.widget({
-							"autosize": true,
-							"symbol": "NASDAQ:AAPL",
-							"interval": "D",
-							"timezone": "Etc/UTC",
-							"theme": "light",
-							"style": "1",
-							"locale": "en",
-							"allow_symbol_change": true,
-							"calendar": false,
-							"support_host": "https://www.tradingview.com"
-						});
-					</script>
-					<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
-					</div>
-					<!-- TradingView Widget END -->
-				</section>
-				<section id="company-profile">
-					<!-- TradingView Widget BEGIN -->
-					<div class="tradingview-widget-container">
-						<div class="tradingview-widget-container__widget"></div>
-						<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async></script>
-					</div>
-					<!-- TradingView Widget END -->
-				</section>
-				<section id="fundamental-data">
-					<!-- TradingView Widget BEGIN -->
-					<div class="tradingview-widget-container">
-						<div class="tradingview-widget-container__widget"></div>
-						<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async></script>
-					</div>
-					<!-- TradingView Widget END -->
-				</section>
-				<section id="top-stories">
-					<!-- TradingView Widget BEGIN -->
-					<div class="tradingview-widget-container">
-						<div class="tradingview-widget-container__widget"></div>
-						<script
-							type="text/javascript"
-							src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
-							async
-						<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async></script>
-						<use
-							href="/widget-docs/tradingview-logo.svg#tradingview-logo"
-						></use>
-					</svg>
-					<p>
-						Charts and financial information provided by TradingView, a
-						popular charting & trading platform. Check out even more
-						<a href="https://www.tradingview.com/features/"
-							>advanced features</a
-						>
-						or
-						<a href="https://www.tradingview.com/widget/"
-							>grab charts</a
-						>
-						for your website.
-					</p>
-				</section>
-			</main>
-		</div>
-		<script>
-		  let x = 5;
-		  let y = 10;
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invest - Howdy, Stranger</title>
+    <link rel="preload" href="css/body.css" as="style">
+    <link rel="stylesheet" href="css/body.css">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="@vercel/speed-insights/script.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+            </a>
+        </div>
+    </header>
 
-		  const obj = {
-			// Add your object properties here
-		  };
+    <!-- Main Navigation -->
+    <nav class="nav-links">
+        <!-- Navigation will be populated by nav.js -->
+    </nav>
+
+    <!-- Investment Sub-Navigation -->
+    <div class="invest-sub-nav">
+        <div class="sub-nav-line"></div>
+        <div class="invest-links">
+            <a href="invest.html" class="invest-link active" title="Investment Dashboard">
+                <div class="invest-logo">
+                    <img src="images/invest.png" alt="Invest" class="page-logo">
+                    <span class="tooltip">Investment Dashboard</span>
+                </div>
+            </a>
+            <div class="vertical-line"></div>
+            <a href="#ticker-tape" class="invest-link" title="Market Ticker">
+                <div class="invest-logo">
+                    📊
+                    <span class="tooltip">Market Ticker</span>
+                </div>
+            </a>
+            <a href="#advanced-chart" class="invest-link" title="Advanced Charts">
+                <div class="invest-logo">
+                    📈
+                    <span class="tooltip">Advanced Charts</span>
+                </div>
+            </a>
+            <a href="#company-profile" class="invest-link" title="Company Profile">
+                <div class="invest-logo">
+                    🏢
+                    <span class="tooltip">Company Profile</span>
+                </div>
+            </a>
+            <a href="#fundamental-data" class="invest-link" title="Fundamental Data">
+                <div class="invest-logo">
+                    📋
+                    <span class="tooltip">Fundamental Data</span>
+                </div>
+            </a>
+            <a href="#housing-market" class="invest-link" title="Housing Market">
+                <div class="invest-logo">
+                    🏠
+                    <span class="tooltip">Housing Market</span>
+                </div>
+            </a>
+            <a href="#top-stories" class="invest-link" title="Market News">
+                <div class="invest-logo">
+                    📰
+                    <span class="tooltip">Market News</span>
+                </div>
+            </a>
+        </div>
+        <div class="sub-nav-line"></div>
+    </div>
+
+    <div class="content">
+        <main>
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <h2>💰 Investment Dashboard</h2>
+                <p>Track market movements, analyze stocks, monitor housing markets, and stay informed with real-time financial data. Navigate through different sections using the tools above to explore charts, company profiles, real estate trends, and market news.</p>
+            </div>
+
+            <!-- Market Ticker Section -->
+            <section id="ticker-tape" class="card">
+                <div class="card-title">📊 Live Market Ticker</div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript">
+                        new TradingView.widget({
+                            "symbols": [
+                                { "description": "", "proName": "NASDAQ:TSLA" },
+                                { "description": "", "proName": "NASDAQ:AAPL" },
+                                { "description": "", "proName": "NASDAQ:NVDA" },
+                                { "description": "", "proName": "NASDAQ:MSFT" },
+                                { "description": "", "proName": "NASDAQ:AMZN" },
+                                { "description": "", "proName": "NASDAQ:GOOGL" },
+                                { "description": "", "proName": "NASDAQ:META" },
+                                { "description": "", "proName": "NYSE:BRK.B" },
+                                { "description": "", "proName": "NYSE:LLY" },
+                                { "description": "", "proName": "NYSE:UNH" },
+                                { "description": "", "proName": "NYSE:V" },
+                                { "description": "", "proName": "NYSE:WMT" }
+                            ],
+                            "showSymbolLogo": true,
+                            "colorTheme": "light",
+                            "isTransparent": false,
+                            "displayMode": "adaptive",
+                            "locale": "en"
+                        });
+                    </script>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"></script>
+                </div>
+            </section>
+
+            <!-- Symbol Info Section -->
+            <section id="symbol-info" class="card">
+                <div class="card-title">📋 Symbol Information</div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async></script>
+                </div>
+            </section>
+
+            <!-- Advanced Chart Section -->
+            <section id="advanced-chart" class="card">
+                <div class="card-title">📈 Advanced Chart Analysis</div>
+                <div class="tradingview-widget-container tradingview-widget-container-advanced-chart">
+                    <div class="tradingview-widget-container__widget tradingview-widget-container-widget-fullsize"></div>
+                    <script type="text/javascript">
+                        new TradingView.widget({
+                            "autosize": true,
+                            "symbol": "NASDAQ:AAPL",
+                            "interval": "D",
+                            "timezone": "Etc/UTC",
+                            "theme": "light",
+                            "style": "1",
+                            "locale": "en",
+                            "allow_symbol_change": true,
+                            "calendar": false,
+                            "support_host": "https://www.tradingview.com"
+                        });
+                    </script>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
+                </div>
+            </section>
+
+            <!-- Company Profile Section -->
+            <section id="company-profile" class="card">
+                <div class="card-title">🏢 Company Profile</div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async></script>
+                </div>
+            </section>
+
+            <!-- Fundamental Data Section -->
+            <section id="fundamental-data" class="card">
+                <div class="card-title">📊 Financial Fundamentals</div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async></script>
+                </div>
+            </section>
+
+            <!-- Technical Analysis Section -->
+            <section id="technical-analysis" class="card">
+                <div class="card-title">🔍 Technical Analysis</div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async></script>
+                </div>
+            </section>
+
+            <!-- Housing Market Section -->
+            <section id="housing-market" class="card">
+                <div class="card-title">🏠 Housing Market Tracker</div>
+                <p>Track real estate trends, home prices, and market conditions across different regions with Redfin's comprehensive housing market data.</p>
+                <div class="redfin-widget-container">
+                    <iframe src="https://www.redfin.com/news/data-center" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0" 
+                            title="Redfin Housing Market Data"
+                            loading="lazy">
+                    </iframe>
+                </div>
+                <div class="housing-links">
+                    <a href="https://www.redfin.com/news/data-center" target="_blank" rel="noopener">View Full Data Center</a>
+                    <a href="https://www.redfin.com/news/housing-market-tracker" target="_blank" rel="noopener">Housing Market Reports</a>
+                </div>
+            </section>
+
+            <!-- Top Stories Section -->
+            <section id="top-stories" class="card">
+                <div class="card-title">📰 Market News & Timeline</div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async></script>
+                </div>
+            </section>
+
+            <!-- TradingView Attribution -->
+            <div class="note">
+                <p>
+                    Charts and financial information provided by 
+                    <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>, 
+                    a popular charting & trading platform. Check out even more
+                    <a href="https://www.tradingview.com/features/" target="_blank" rel="noopener">advanced features</a>
+                    or
+                    <a href="https://www.tradingview.com/widget/" target="_blank" rel="noopener">grab charts</a>
+                    for your website.
+                </p>
+            </div>
+
+            <!-- Investment Disclaimer -->
+            <div class="legal-box">
+                <h3>⚠️ Investment Disclaimer</h3>
+                <p>
+                    The information provided on this page is for educational and informational purposes only. 
+                    It should not be considered as financial advice, investment recommendations, or an offer to buy or sell securities or real estate. 
+                    Past performance does not guarantee future results. Market data is provided by third-party sources and may be delayed. 
+                    Always consult with a qualified financial advisor before making investment decisions.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Load Navigation Scripts -->
+    <script src="js/nav.js"></script>
+    
+    <!-- Investment Page Specific Styles -->
+    <style>
+        .invest-sub-nav {
+            margin: 8px 0;
+        }
+
+        .sub-nav-line {
+            height: 1px;
+            background: var(--border-color);
+            margin: 0 20px;
+        }
+
+        .invest-links {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            justify-content: center;
+            padding: 8px 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .invest-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s ease;
+        }
+
+        .invest-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .invest-link.active .invest-logo {
+            background: var(--accent-secondary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(212, 130, 42, 0.3);
+        }
+
+        .invest-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 4px;
+            background: var(--bg-secondary);
+            box-shadow: 0 1px 3px var(--shadow-color);
+            font-size: 1.4rem;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .page-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .vertical-line {
+            width: 1px;
+            height: 24px;
+            background: var(--border-color);
+            margin: 0 4px;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-align: center;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px var(--shadow-color);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 100;
+            border: 1px solid var(--border-color);
+        }
+
+        .invest-logo:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Redfin Housing Market Styles */
+        .redfin-widget-container {
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .redfin-widget-container iframe {
+            border: none;
+            width: 100%;
+            min-height: 600px;
+            background: white;
+        }
+
+        .housing-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .housing-links a {
+            background: rgba(212, 130, 42, 0.08);
+            border: 1px solid var(--logo-orange);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--logo-orange);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .housing-links a:hover {
+            background: var(--logo-orange);
+            color: white;
+            box-shadow: 0 2px 8px rgba(212, 130, 42, 0.3);
+        }
+
+        /* TradingView Widget Containers */
+        .tradingview-widget-container {
+            min-height: 300px;
+            margin: 1rem 0;
+        }
+
+        .tradingview-widget-container-advanced-chart {
+            min-height: 500px;
+        }
+
+        .tradingview-widget-container-widget-fullsize {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .invest-links {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .invest-logo {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .tooltip {
+                font-size: 0.7rem;
+                padding: 3px 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .invest-links {
+                gap: 6px;
+            }
+
+            .invest-logo {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Dark mode adjustments */
+        @media (prefers-color-scheme: dark) {
+            .invest-link.active .invest-logo {
+                background: var(--accent-secondary);
+                color: var(--bg-primary);
+            }
+
+            .tooltip {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                border-color: var(--border-color);
+            }
+        }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section spacing */
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Loading states for widgets */
+        .tradingview-widget-container:empty::after {
+            content: "Loading financial data...";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</body>
+</html>

@@ -167,7 +167,29 @@
       padding: 1.5rem 0;
     }
 
-    /* Responsive adjustments */
+    /* Financial grid layout for side-by-side tables */
+    .financial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .financial-column {
+      min-width: 0; /* Allows grid items to shrink */
+    }
+
+    .financial-column h2 {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    /* Responsive behavior for financial grid */
+    @media (max-width: 768px) {
+      .financial-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
     @media (max-width: 768px) {
       .card-header {
         padding: 0.625rem 0.75rem;
@@ -237,83 +259,87 @@
         <div class="card-content">
           <div class="card-inner">
             <section class="section">
-              <h2>Annual Income Summary</h2>
-              <div class="table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Source</th>
-                      <th>Type</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>HarperCollins Publishers LLC</td>
-                      <td>Royalties</td>
-                      <td class="number">$250,000.00</td>
-                    </tr>
-                    <tr>
-                      <td>George Mason University</td>
-                      <td>Teaching</td>
-                      <td class="number">$30,379.91</td>
-                    </tr>
-                    <tr>
-                      <td>Princeton University Press</td>
-                      <td>Royalties</td>
-                      <td class="number">$259.95</td>
-                    </tr>
-                    <tr>
-                      <td>Investment Dividends</td>
-                      <td>Investment Income</td>
-                      <td class="number">~$50,000 - $100,000</td>
-                    </tr>
-                    <tr>
-                      <td>Bank Interest / CDs</td>
-                      <td>Investment Income</td>
-                      <td class="number">~$1,000 - $2,500</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="total-summary">Estimated Total Annual Income: $330,000 - $380,000</div>
-            </section>
+              <div class="financial-grid">
+                <div class="financial-column">
+                  <h2>Annual Income Summary</h2>
+                  <div class="table-wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Source</th>
+                          <th>Type</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>HarperCollins Publishers LLC</td>
+                          <td>Royalties</td>
+                          <td class="number">$250,000.00</td>
+                        </tr>
+                        <tr>
+                          <td>George Mason University</td>
+                          <td>Teaching</td>
+                          <td class="number">$30,379.91</td>
+                        </tr>
+                        <tr>
+                          <td>Princeton University Press</td>
+                          <td>Royalties</td>
+                          <td class="number">$259.95</td>
+                        </tr>
+                        <tr>
+                          <td>Investment Dividends</td>
+                          <td>Investment Income</td>
+                          <td class="number">~$50,000 - $100,000</td>
+                        </tr>
+                        <tr>
+                          <td>Bank Interest / CDs</td>
+                          <td>Investment Income</td>
+                          <td class="number">~$1,000 - $2,500</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="total-summary">Estimated Total Annual Income: $330,000 - $380,000</div>
+                </div>
 
-            <section class="section">
-              <h2>Assets Summary</h2>
-              <div class="table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Asset Type</th>
-                      <th>Inferred Range</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
-                      <td class="number">$1M - $25M+</td>
-                    </tr>
-                    <tr>
-                      <td>Retirement Accounts (IRAs)</td>
-                      <td class="number">$1M - $25M</td>
-                    </tr>
-                    <tr>
-                      <td>529 Education Savings Plans</td>
-                      <td class="number">&lt;$50,000</td>
-                    </tr>
-                    <tr>
-                      <td>Bank / Cash Accounts</td>
-                      <td class="number">&lt;$250,000</td>
-                    </tr>
-                    <tr>
-                      <td>CDs / Money Market Funds</td>
-                      <td class="number">&lt;$250,000</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="financial-column">
+                  <h2>Assets Summary</h2>
+                  <div class="table-wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Asset Type</th>
+                          <th>Inferred Range</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
+                          <td class="number">$1M - $25M+</td>
+                        </tr>
+                        <tr>
+                          <td>Retirement Accounts (IRAs)</td>
+                          <td class="number">$1M - $25M</td>
+                        </tr>
+                        <tr>
+                          <td>529 Education Savings Plans</td>
+                          <td class="number">&lt;$50,000</td>
+                        </tr>
+                        <tr>
+                          <td>Bank / Cash Accounts</td>
+                          <td class="number">&lt;$250,000</td>
+                        </tr>
+                        <tr>
+                          <td>CDs / Money Market Funds</td>
+                          <td class="number">&lt;$250,000</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="total-summary">Total Assets (Estimate): $6 million – $25+ million</div>
+                </div>
               </div>
-              <div class="total-summary">Total Assets (Estimate): $6 million – $25+ million</div>
             </section>
 
             <section class="section">
@@ -390,44 +416,48 @@
         <div class="card-content">
           <div class="card-inner">
             <section class="section">
-              <h2>Annual Income Summary</h2>
-              <div class="table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Source</th>
-                      <th>Type</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td colspan="3" style="text-align: center; font-style: italic; color: var(--text-muted);">
-                        Add income data here
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Assets Summary</h2>
-              <div class="table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Asset Type</th>
-                      <th>Inferred Range</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td colspan="2" style="text-align: center; font-style: italic; color: var(--text-muted);">
-                        Add asset data here
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="financial-grid">
+                <div class="financial-column">
+                  <h2>Annual Income Summary</h2>
+                  <div class="table-wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Source</th>
+                          <th>Type</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="3" style="text-align: center; font-style: italic; color: var(--text-muted);">
+                            Add income data here
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="financial-column">
+                  <h2>Assets Summary</h2>
+                  <div class="table-wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Asset Type</th>
+                          <th>Inferred Range</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="2" style="text-align: center; font-style: italic; color: var(--text-muted);">
+                            Add asset data here
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </section>
           </div>

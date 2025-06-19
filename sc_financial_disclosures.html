@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Justice Gorsuch 2024 Financial Summary</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preload" href="css/body.css" as="style">
+    <link rel="stylesheet" href="css/body.css">
+
+</head>
+<body>
+        <!-- Logo Header -->
+     <header class="site-header">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+        </a>
+      </div>
+    </header>
+    <nav class="nav-links" id="main-nav">
+      <!-- Navigation links will be dynamically generated here -->
+    </nav>
+        
+    <div class="container">
+        <div class="content">
+            <h2 class="animated-title" style="margin-bottom: 0.4em;">Supreme Court 2024 Financial Summaries</h2>
+    <div class="card">
+        <div class="card-header">
+            <h1>Justice Gorsuch</h1>
+
+  <section>
+    <h2>Annual Income Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Type</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HarperCollins Publishers LLC</td>
+          <td>Royalties</td>
+          <td>$250,000.00</td>
+        </tr>
+        <tr>
+          <td>George Mason University</td>
+          <td>Teaching</td>
+          <td>$30,379.91</td>
+        </tr>
+        <tr>
+          <td>Princeton University Press</td>
+          <td>Royalties</td>
+          <td>$259.95</td>
+        </tr>
+        <tr>
+          <td>Investment Dividends</td>
+          <td>Investment Income</td>
+          <td>~$50,000 - $100,000</td>
+        </tr>
+        <tr>
+          <td>Bank Interest / CDs</td>
+          <td>Investment Income</td>
+          <td>~$1,000 - $2,500</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="text-align:center;"><strong>Estimated Total Annual Income: $330,000 - $380,000</strong></p>
+  </section>
+
+  <section>
+    <h2>Assets Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Asset Type</th>
+          <th>Inferred Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
+          <td>$1M - $25M+</td>
+        </tr>
+        <tr>
+          <td>Retirement Accounts (IRAs)</td>
+          <td>$1M - $25M</td>
+        </tr>
+        <tr>
+          <td>529 Education Savings Plans</td>
+          <td>&lt;$50,000</td>
+        </tr>
+        <tr>
+          <td>Bank / Cash Accounts</td>
+          <td>&lt;$250,000</td>
+        </tr>
+        <tr>
+          <td>CDs / Money Market Funds</td>
+          <td>&lt;$250,000</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="text-align:center;"><strong>Total Assets (Estimate): $6 million – $25+ million</strong></p>
+  </section>
+
+  <section>
+    <h2>Investments & Trust Highlights</h2>
+    <ul>
+      <li>Diversified holdings across large-cap, small-cap, international, bond, REIT, and commodity ETFs.</li>
+      <li>Four brokerage accounts, multiple IRAs, CDs, money markets, and bank accounts.</li>
+      <li>Frequent portfolio activity: multiple buy/sell transactions throughout 2024.</li>
+      <li>529 plans for education savings with modest balances.</li>
+      <li>No liabilities, no gifts reported.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Asset Allocation Pie Chart</h2>
+    <canvas id="assetPieChart"></canvas>
+  </section>
+
+  <script>
+    const ctx = document.getElementById('assetPieChart').getContext('2d');
+    const data = {
+      labels: [
+        'Brokerage Accounts (ETFs, stocks, bonds)',
+        'Retirement Accounts (IRAs)',
+        '529 Plans (Education Savings)',
+        'Bank / Cash Accounts',
+        'CDs / Money Markets'
+      ],
+      datasets: [{
+        data: [
+          50,  // brokerage ~50% of total
+          30,  // retirement ~30%
+          2,   // 529 plans ~2%
+          10,  // bank / cash ~10%
+          8    // CDs / money markets ~8%
+        ],
+        backgroundColor: [
+          '#003366',
+          '#006699',
+          '#3399cc',
+          '#66cccc',
+          '#99cccc'
+        ]
+      }]
+    };
+
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let label = context.label || '';
+                let value = context.raw;
+                return `${label}: ${value}%`;
+              }
+            }
+          }
+        }
+      }
+    };
+
+    new Chart(ctx, config);
+  </script>
+   <script src="/js/nav.js" defer></script>
+    <script src="/js/read-nav.js?v=2" defer></script>
+</body>
+</html>

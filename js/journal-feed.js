@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(journals => {
             // Sort journals by date (newest first)
-            journals.sort((a, b) => new Date(a.date) - new Date(b.date));
+            journals.sort((a, b) => {
+                const dateA = parseDate(a.date);
+                const dateB = parseDate(b.date);
+                return dateB - dateA; // Newest first
+            });
             
             // Generate HTML for each journal entry
             const journalFeed = document.getElementById('journal-feed');
@@ -39,14 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+// Helper function to parse date from MM/DD/YY format
+function parseDate(dateString) {
+    try {
+        const [month, day, year] = dateString.split('/');
+        const fullYear = year.length === 2 ? `20${year}` : year;
+        return new Date(fullYear, month - 1, day);
+    } catch (error) {
+        console.error('Error parsing date:', error);
+        return new Date(0); // Return epoch if parsing fails
+    }
+}
+
 // Helper function to format date for display
 function formatDate(dateString) {
     try {
-        // Handle the MM/DD/YY format in your JSON
-        const [month, day, year] = dateString.split('/');
-        // Convert 2-digit year to 4-digit year (assuming 20xx)
-        const fullYear = year.length === 2 ? `20${year}` : year;
-        const date = new Date(fullYear, month - 1, day);
+        const date = parseDate(dateString);
         
         // Check if date is valid
         if (isNaN(date.getTime())) {
@@ -67,9 +79,7 @@ function formatDate(dateString) {
 // Helper function to format date for datetime attribute
 function formatDateForDateTime(dateString) {
     try {
-        const [month, day, year] = dateString.split('/');
-        const fullYear = year.length === 2 ? `20${year}` : year;
-        const date = new Date(fullYear, month - 1, day);
+        const date = parseDate(dateString);
         
         if (isNaN(date.getTime())) {
             return dateString;

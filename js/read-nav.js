@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = [
-        { href: 'read.html', icon: '📚', title: 'Read', isLogo: true },
-        { href: 'financials.html', icon: '📊', title: 'Financial Indicators - Table' },
-        { href: 'financials2.html', icon: '📈', title: 'Financial Indicators - Dashboard' },
-        { href: 'trumpvcasa.html', icon: '⚖️', title: 'Supreme Court' },
-        { href: 'fomc.html', icon: '🗒️', title: 'Federal Reserve' },
-        { href: 'circleipo.html', icon: '💸', title: 'Latest IPO News' }
+        { href: 'read.html', title: 'Announcements', isLogo: true },
+        { href: 'financials.html', icon: '📊', title: 'Financial Table' },
+        { href: 'financials2.html', icon: '📈', title: 'Financial Dashboard' },
+        { href: 'trumpvcasa.html', icon: '⚖️', title: 'Legal' },
+        { href: 'fomc.html', icon: '🗒️', title: 'Monetary' },
+        { href: 'ipo.html', icon: '💸', title: 'IPO' },
+        { href: 'journal.html', icon: '✍️', title: 'Journal', image: "images/read.png" },
     ];
 
     const navContainer = document.querySelector('.nav-links');
@@ -36,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (link.isLogo) {
             const img = document.createElement('img');
-            img.src = 'images/read.png';
-            img.alt = 'Read';
+            img.src = 'images/announcements.png';
+            img.alt = 'Announcements';
             img.className = 'page-logo';
             logoDiv.appendChild(img);
         } else {
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         a.appendChild(logoDiv);
         linksContainer.appendChild(a);
 
-        // Add vertical line after Read icon
+        // Add vertical line after Announcements icon
         if (index === 0) {
             const verticalLine = document.createElement('div');
             verticalLine.className = 'vertical-line';
@@ -166,4 +167,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Insert the sub-nav after the main nav
     navContainer.parentNode.insertBefore(subNav, navContainer.nextSibling);
     document.head.appendChild(style);
-}); 
+});

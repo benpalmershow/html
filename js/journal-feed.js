@@ -12,14 +12,25 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Generate HTML for each journal entry
             const journalFeed = document.getElementById('journal-feed');
-            journalFeed.innerHTML = journals.map(journal => `
-                <article class="journal-entry">
-                    <div class="card-title">
-                        <time datetime="${journal.date}">${formatDate(journal.date)}</time>
+            journalFeed.innerHTML = journals.map(journal => {
+                const entriesHTML = journal.entries.map(entry => `
+                    <div class="entry">
+                        <h3 class="entry-title">${entry.title}</h3>
+                        <div class="entry-content">${entry.content}</div>
                     </div>
-                    <div class="content">${journal.content}</div>
-                </article>
-            `).join('');
+                `).join('');
+                
+                return `
+                    <article class="journal-entry">
+                        <div class="card-title">
+                            <time datetime="${journal.date}">${formatDate(journal.date)}</time>
+                        </div>
+                        <div class="content">
+                            ${entriesHTML}
+                        </div>
+                    </article>
+                `;
+            }).join('');
         })
         .catch(error => {
             console.error('Error loading journal entries:', error);

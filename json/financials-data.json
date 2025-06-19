@@ -234,11 +234,11 @@
     },
     {
       "category": "Consumer Indicators",
-      "agency": "BEA",
-      "name": "Consumer Spending (PCE)",
-      "url": "https://www.bea.gov/data/consumer-spending/main",
-      "march": "+0.7%",
-      "april": "+0.2%",
+      "agency": "FRED",
+      "name": "Personal Consumption Expenditures (PCE)",
+      "url": "https://fred.stlouisfed.org/series/PCE",
+      "march": "20,621.8",
+      "april": "20,669",
       "may": "TBD 6/28",
       "june": "TBD 7/26",
       "change": ""

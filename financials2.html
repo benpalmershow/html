@@ -402,9 +402,8 @@
                 }
             };
 
-            // Get the specific URL for this indicator, or fall back to a Google search
-            const specificUrl = agencyUrls[indicator.agency]?.[indicator.name];
-            const url = specificUrl || `https://www.google.com/search?q=${encodeURIComponent(`${indicator.agency} ${indicator.name} official data`)}`;
+            // Use the URL provided in the indicator object
+            const url = indicator.url || '#';
 
             return `
                 <div class="indicator">

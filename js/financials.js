@@ -1,52 +1,18 @@
 const fallbackData={lastUpdated:"2025-06-10T12:00:00Z",indices:[{category:"Inflation Measures",agency:"BLS",name:"Consumer Price Index (CPI-U)",url:"https://www.bls.gov/cpi/",march:"319.8",april:"320.8",may:"321.5",june:"",change:"+0.22"}]};function extractNumericValue(e){if(!e||""===e||"TBD"===e||e.includes("TBD")||"—"===e)return null;const t=e.toString().replace(/[$,%,\s,]/g,""),a=parseFloat(t);return isNaN(a)?null:a}function getLastTwoValues(e){const t=[{month:"march",value:e.march},{month:"april",value:e.april},{month:"may",value:e.may},{month:"june",value:e.june}].map((e=>({...e,numeric:extractNumericValue(e.value)}))).filter((e=>null!==e.numeric));if(t.length<2)return null;const a=t.slice(-2);return{previous:a[0],current:a[1]}}function calculatePercentageChange(e,t){return 0===e?t>0?100:0:(t-e)/Math.abs(e)*100}function autoCalculateChanges(e){return e.map((e=>{const t=getLastTwoValues(e);if((!e.change||""===e.change||"—"===e.change)&&t){const a=calculatePercentageChange(t.previous.numeric,t.current.numeric),n=a>=0?`+${a.toFixed(2)}`:`${a.toFixed(2)}`;return{...e,change:n}}return e}))}function formatDataValue(e){return e&&""!==e&&null!=e?("string"==typeof e&&(e.includes("TBD")||e.includes("*")),e):"—"}function formatChangeValue(e){if(!e||""===e||null==e)return"—";const t=parseFloat(e.replace(/[+%]/g,""));if(isNaN(t))return e;return t>0?`+${t.toFixed(2)}%`:`${t.toFixed(2)}%`}function createTableRow(e){const t=document.createElement("tr"),a=document.createElement("td");
 
-  // Map of agency names to their official URLs
-  const agencyUrls = {
-    "BLS": "https://www.bls.gov/",
-    "FRED": "https://fred.stlouisfed.org/",
-    "Census": "https://www.census.gov/",
-    "CBP": "https://www.cbp.gov/",
-    "DHS": "https://www.dhs.gov/",
-    "Treasury": "https://www.treasury.gov/",
-    "FOMC": "https://www.federalreserve.gov/monetarypolicy/fomc.htm",
-    "SEC": "https://www.sec.gov/",
-    "IRS": "https://www.irs.gov/",
-    "BEA": "https://www.bea.gov/",
-    "FTC": "https://www.ftc.gov/",
-    "FCC": "https://www.fcc.gov/",
-    "FDA": "https://www.fda.gov/",
-    "EPA": "https://www.epa.gov/",
-    "DOJ": "https://www.justice.gov/",
-    "DOT": "https://www.transportation.gov/",
-    "HUD": "https://www.hud.gov/",
-    "USDA": "https://www.usda.gov/",
-    "DOI": "https://www.doi.gov/",
-    "DOC": "https://www.commerce.gov/",
-    "Federal Reserve": "https://www.federalreserve.gov/",
-    "DOL": "https://www.dol.gov/",
-    "CB": "https://www.conference-board.org/",
-    "ADP": "https://www.adp.com/",
-    "NAR": "https://www.nar.realtor/",
-    "FHFA": "https://www.fhfa.gov/",
-    "ISM": "https://www.ismworld.org/",
-    "UM": "https://surveyresearchcenter.umich.edu/projects/surveys-of-consumers/",
-    "Manheim": "https://www.manheim.com/",
-    "Commerce": "https://www.commerce.gov/"
-  };
-
-  // Use specific URL if provided, otherwise use agency's main page
+  // Use only the URL provided in the JSON
   let url = e.url;
   if (!url || url === "") {
-    url = agencyUrls[e.agency] || `https://www.google.com/search?q=${encodeURIComponent(`${e.agency} official website`)}`;
+    url = `https://www.google.com/search?q=${encodeURIComponent(`${e.agency} official website`)}`;
   }
 
   // Create the link with proper attributes
   a.innerHTML = `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: underline;">${e.agency}: ${e.name}</a>`;
   t.appendChild(a);
   
-  ["march", "april", "may", "june"].forEach((a => {
+  ["march", "april", "may", "june"].forEach((month => {
     const n = document.createElement("td");
-    n.textContent = formatDataValue(e[a]);
+    n.textContent = formatDataValue(e[month]);
     n.className = "number";
     t.appendChild(n);
   }));

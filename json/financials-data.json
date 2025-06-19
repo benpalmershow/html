@@ -112,6 +112,17 @@
       "change": "—"
     },
     {
+      "category": "Housing Market",
+      "agency": "NAHB/Wells Fargo",
+      "name": "Housing Market Index (HMI)",
+      "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
+      "march": "39",
+      "april": "40",
+      "may": "34",
+      "june": "32",
+      "change": "-5.88"
+    },
+    {
       "category": "Interest Rates",
       "agency": "FRED",
       "name": "30-Year Fixed Mortgage Rate",
@@ -178,6 +189,17 @@
       "change": "-0.46"
     },
     {
+      "category": "Business Indicators",
+      "agency": "Census",
+      "name": "Monthly Retail Sales",
+      "url": "https://www.census.gov/retail/sales.html",
+      "march": "",
+      "april": "$722B",
+      "may": "$715.4B",
+      "june": "TBD 7/16",
+      "change": "-0.92"
+    },
+    {
       "category": "Consumer Indicators",
       "agency": "UM",
       "name": "Consumer Sentiment",
@@ -209,6 +231,17 @@
       "may": "205.2",
       "june": "TBD 7/9",
       "change": "-1.44"
+    },
+    {
+      "category": "Consumer Indicators",
+      "agency": "BEA",
+      "name": "Consumer Spending (PCE)",
+      "url": "https://www.bea.gov/data/consumer-spending/main",
+      "march": "+0.7%",
+      "april": "+0.2%",
+      "may": "TBD 6/28",
+      "june": "TBD 7/26",
+      "change": ""
     },
     {
       "category": "Currency & Trade",
@@ -254,16 +287,17 @@
       "june": "TBD 6/28",
       "change": "-0.44"
     },
+  
     {
       "category": "Trade & Tariffs",
-      "agency": "Census",
-      "name": "Goods Trade Deficit",
-      "url": "https://www.census.gov/foreign-trade/balance/c0004.html",
-      "march": "-$89.4B",
-      "april": "-$88.9B",
-      "may": "-$88.5B",
-      "june": "TBD 6/28",
-      "change": "-0.45"
+      "agency": "BEA",
+      "name": "U.S. Trade Deficit",
+      "url": "https://www.bea.gov/data/intl-trade-investment/international-trade-goods-and-services",
+      "march": "-$138.3B",
+      "april": "-$61.6B",
+      "may": "TBD 7/3",
+      "june": "TBD 8/6",
+      "change": ""
     },
     {
       "category": "Travel & Tourism",
@@ -352,6 +386,17 @@
       "may": "$93B",
       "june": "TBD 6/30",
       "change": "+2.20"
+    },
+    {
+      "category": "Business Indicators",
+      "agency": "FRED",
+      "name": "Industrial Production Index (INDPRO)",
+      "url": "https://fred.stlouisfed.org/series/INDPRO",
+      "march": "103.74",
+      "april": "103.82",
+      "may": "103.59",
+      "june": "TBD 7/16",
+      "change": ""
     }
   ]
 }

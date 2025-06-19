@@ -3,177 +3,409 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Justice Gorsuch 2024 Financial Summary</title>
+  <title>Supreme Court 2024 Financial Summaries</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preload" href="css/body.css" as="style">
-    <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/body.css">
+  <style>
+    .justice-card {
+      margin-bottom: 20px;
+    }
 
+    .card-header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: .5rem .5rem 0 0;
+      transition: all 0.3s ease;
+    }
+
+    .card-header:hover {
+      border-color: var(--logo-orange);
+      background: var(--bg-primary);
+    }
+
+    .card-header h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      text-align: left;
+    }
+
+    .expand-icon {
+      font-size: 1.5rem;
+      color: var(--logo-orange);
+      transition: transform 0.3s ease;
+      font-weight: bold;
+    }
+
+    .card-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-top: none;
+      border-radius: 0 0 .5rem .5rem;
+    }
+
+    .card-content.expanded {
+      max-height: 2000px;
+    }
+
+    .card-inner {
+      padding: 1.25rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 400px;
+      margin: 20px 0;
+    }
+
+    .total-summary {
+      text-align: center;
+      font-weight: bold;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      background: var(--bg-primary);
+      padding: 15px;
+      border-radius: .5rem;
+      margin: 20px 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .highlights {
+      background: var(--bg-primary);
+      padding: 1.25rem;
+      border-radius: .5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .highlights ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .highlights li {
+      margin-bottom: 8px;
+    }
+
+    .add-justice-btn {
+      background: var(--logo-orange);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: .5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto;
+      transition: all 0.3s ease;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .add-justice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px var(--shadow-color);
+      background: var(--logo-teal);
+    }
+
+    .animated-title {
+      margin-bottom: 2rem;
+    }
+
+    .placeholder-content {
+      text-align: center;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 40px;
+    }
+  </style>
 </head>
 <body>
-        <!-- Logo Header -->
-     <header class="site-header">
-      <div class="logo-container">
-        <a href="index.html">
-          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
-        </a>
-      </div>
-    </header>
-    <nav class="nav-links" id="main-nav">
-      <!-- Navigation links will be dynamically generated here -->
-    </nav>
+  <!-- Logo Header -->
+  <header class="site-header">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+      </a>
+    </div>
+  </header>
+  <nav class="nav-links" id="main-nav">
+    <!-- Navigation links will be dynamically generated here -->
+  </nav>
         
-    <div class="container">
-        <div class="content">
-            <h2 class="animated-title" style="margin-bottom: 0.4em;">Supreme Court 2024 Financial Summaries</h2>
-    <div class="card">
-        <div class="card-header">
-            <h1>Justice Gorsuch</h1>
+  <div class="container">
+    <div class="content">
+      <h2 class="animated-title">Supreme Court 2024 Financial Summaries</h2>
+      
+      <!-- Justice Gorsuch Card -->
+      <div class="justice-card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h1>Justice Gorsuch</h1>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-content">
+          <div class="card-inner">
+            <section class="section">
+              <h2>Annual Income Summary</h2>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Source</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>HarperCollins Publishers LLC</td>
+                      <td>Royalties</td>
+                      <td class="number">$250,000.00</td>
+                    </tr>
+                    <tr>
+                      <td>George Mason University</td>
+                      <td>Teaching</td>
+                      <td class="number">$30,379.91</td>
+                    </tr>
+                    <tr>
+                      <td>Princeton University Press</td>
+                      <td>Royalties</td>
+                      <td class="number">$259.95</td>
+                    </tr>
+                    <tr>
+                      <td>Investment Dividends</td>
+                      <td>Investment Income</td>
+                      <td class="number">~$50,000 - $100,000</td>
+                    </tr>
+                    <tr>
+                      <td>Bank Interest / CDs</td>
+                      <td>Investment Income</td>
+                      <td class="number">~$1,000 - $2,500</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="total-summary">Estimated Total Annual Income: $330,000 - $380,000</div>
+            </section>
 
-  <section>
-    <h2>Annual Income Summary</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Source</th>
-          <th>Type</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>HarperCollins Publishers LLC</td>
-          <td>Royalties</td>
-          <td>$250,000.00</td>
-        </tr>
-        <tr>
-          <td>George Mason University</td>
-          <td>Teaching</td>
-          <td>$30,379.91</td>
-        </tr>
-        <tr>
-          <td>Princeton University Press</td>
-          <td>Royalties</td>
-          <td>$259.95</td>
-        </tr>
-        <tr>
-          <td>Investment Dividends</td>
-          <td>Investment Income</td>
-          <td>~$50,000 - $100,000</td>
-        </tr>
-        <tr>
-          <td>Bank Interest / CDs</td>
-          <td>Investment Income</td>
-          <td>~$1,000 - $2,500</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="text-align:center;"><strong>Estimated Total Annual Income: $330,000 - $380,000</strong></p>
-  </section>
+            <section class="section">
+              <h2>Assets Summary</h2>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Asset Type</th>
+                      <th>Inferred Range</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
+                      <td class="number">$1M - $25M+</td>
+                    </tr>
+                    <tr>
+                      <td>Retirement Accounts (IRAs)</td>
+                      <td class="number">$1M - $25M</td>
+                    </tr>
+                    <tr>
+                      <td>529 Education Savings Plans</td>
+                      <td class="number">&lt;$50,000</td>
+                    </tr>
+                    <tr>
+                      <td>Bank / Cash Accounts</td>
+                      <td class="number">&lt;$250,000</td>
+                    </tr>
+                    <tr>
+                      <td>CDs / Money Market Funds</td>
+                      <td class="number">&lt;$250,000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="total-summary">Total Assets (Estimate): $6 million – $25+ million</div>
+            </section>
 
-  <section>
-    <h2>Assets Summary</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Asset Type</th>
-          <th>Inferred Range</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
-          <td>$1M - $25M+</td>
-        </tr>
-        <tr>
-          <td>Retirement Accounts (IRAs)</td>
-          <td>$1M - $25M</td>
-        </tr>
-        <tr>
-          <td>529 Education Savings Plans</td>
-          <td>&lt;$50,000</td>
-        </tr>
-        <tr>
-          <td>Bank / Cash Accounts</td>
-          <td>&lt;$250,000</td>
-        </tr>
-        <tr>
-          <td>CDs / Money Market Funds</td>
-          <td>&lt;$250,000</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="text-align:center;"><strong>Total Assets (Estimate): $6 million – $25+ million</strong></p>
-  </section>
+            <section class="section">
+              <h2>Investments & Trust Highlights</h2>
+              <div class="highlights">
+                <ul>
+                  <li>Diversified holdings across large-cap, small-cap, international, bond, REIT, and commodity ETFs.</li>
+                  <li>Four brokerage accounts, multiple IRAs, CDs, money markets, and bank accounts.</li>
+                  <li>Frequent portfolio activity: multiple buy/sell transactions throughout 2024.</li>
+                  <li>529 plans for education savings with modest balances.</li>
+                  <li>No liabilities, no gifts reported.</li>
+                </ul>
+              </div>
+            </section>
 
-  <section>
-    <h2>Investments & Trust Highlights</h2>
-    <ul>
-      <li>Diversified holdings across large-cap, small-cap, international, bond, REIT, and commodity ETFs.</li>
-      <li>Four brokerage accounts, multiple IRAs, CDs, money markets, and bank accounts.</li>
-      <li>Frequent portfolio activity: multiple buy/sell transactions throughout 2024.</li>
-      <li>529 plans for education savings with modest balances.</li>
-      <li>No liabilities, no gifts reported.</li>
-    </ul>
-  </section>
+            <section class="section">
+              <h2>Asset Allocation Pie Chart</h2>
+              <div class="chart-container">
+                <canvas id="gorsuchChart"></canvas>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
 
-  <section>
-    <h2>Asset Allocation Pie Chart</h2>
-    <canvas id="assetPieChart"></canvas>
-  </section>
+      <!-- Example template for additional justices -->
+      <div class="justice-card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h1>Justice [Name] - Coming Soon</h1>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-content">
+          <div class="card-inner">
+            <div class="placeholder-content">
+              Financial disclosure data for this justice will be added soon.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="add-justice-btn" onclick="addNewJustice()">
+        + Add Another Justice
+      </button>
+    </div>
+  </div>
 
   <script>
-    const ctx = document.getElementById('assetPieChart').getContext('2d');
-    const data = {
-      labels: [
-        'Brokerage Accounts (ETFs, stocks, bonds)',
-        'Retirement Accounts (IRAs)',
-        '529 Plans (Education Savings)',
-        'Bank / Cash Accounts',
-        'CDs / Money Markets'
-      ],
-      datasets: [{
-        data: [
-          50,  // brokerage ~50% of total
-          30,  // retirement ~30%
-          2,   // 529 plans ~2%
-          10,  // bank / cash ~10%
-          8    // CDs / money markets ~8%
-        ],
-        backgroundColor: [
-          '#003366',
-          '#006699',
-          '#3399cc',
-          '#66cccc',
-          '#99cccc'
-        ]
-      }]
-    };
+    function toggleCard(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.expand-icon');
+      
+      if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('expanded');
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
 
-    const config = {
-      type: 'pie',
-      data: data,
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom'
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                let label = context.label || '';
-                let value = context.raw;
-                return `${label}: ${value}%`;
+    function addNewJustice() {
+      const container = document.querySelector('.content');
+      const addButton = document.querySelector('.add-justice-btn');
+      
+      const newCard = document.createElement('div');
+      newCard.className = 'justice-card';
+      newCard.innerHTML = `
+        <div class="card-header" onclick="toggleCard(this)">
+          <h1>Justice [Enter Name] - Template</h1>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-content">
+          <div class="card-inner">
+            <section class="section">
+              <h2>Annual Income Summary</h2>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Source</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="3" style="text-align: center; font-style: italic; color: var(--text-muted);">
+                        Add income data here
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section class="section">
+              <h2>Assets Summary</h2>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Asset Type</th>
+                      <th>Inferred Range</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="2" style="text-align: center; font-style: italic; color: var(--text-muted);">
+                        Add asset data here
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      `;
+      
+      container.insertBefore(newCard, addButton);
+    }
+
+    // Initialize Gorsuch chart
+    window.addEventListener('load', function() {
+      const ctx = document.getElementById('gorsuchChart').getContext('2d');
+      const data = {
+        labels: [
+          'Brokerage Accounts (ETFs, stocks, bonds)',
+          'Retirement Accounts (IRAs)',
+          '529 Plans (Education Savings)',
+          'Bank / Cash Accounts',
+          'CDs / Money Markets'
+        ],
+        datasets: [{
+          data: [50, 30, 2, 10, 8],
+          backgroundColor: [
+            '#2c5f5a',
+            '#87c5be',
+            '#d4822a',
+            '#e8955d',
+            '#f8f4e6'
+          ]
+        }]
+      };
+
+      const config = {
+        type: 'pie',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.label || '';
+                  let value = context.raw;
+                  return `${label}: ${value}%`;
+                }
               }
             }
           }
         }
-      }
-    };
+      };
 
-    new Chart(ctx, config);
+      new Chart(ctx, config);
+    });
   </script>
-   <script src="/js/nav.js" defer></script>
-    <script src="/js/read-nav.js?v=2" defer></script>
+  <script src="/js/nav.js" defer></script>
+  <script src="/js/read-nav.js?v=2" defer></script>
 </body>
 </html>

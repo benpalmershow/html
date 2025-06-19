@@ -97,6 +97,10 @@
             box-shadow: 0 2px 8px var(--shadow-color);
             backdrop-filter: blur(10px);
             transition: transform 0.3s ease;
+            padding: 20px 0 0 0;
+            margin: 0 0 30px 0;
+            background: none;
+            box-shadow: none;
         }
 
         .category:hover {
@@ -106,15 +110,16 @@
         .category-title {
             font-size: 1.8rem;
             color: var(--logo-orange);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             padding-bottom: 10px;
             border-bottom: 3px solid var(--logo-teal);
         }
 
         .indicators-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
+            align-items: flex-start;
         }
 
         .indicator {
@@ -126,6 +131,11 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 8px var(--shadow-color);
+            flex: 0 0 320px;
+            max-width: 320px;
+            min-width: 260px;
+            margin: 0;
+            align-self: flex-start;
         }
 
         .indicator::before {

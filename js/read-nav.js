@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { href: 'trumpvcasa.html', icon: '⚖️', title: 'Legal' },
         { href: 'fomc.html', icon: '🗒️', title: 'Monetary' },
         { href: 'ipo.html', icon: '💸', title: 'IPO' },
-        { href: 'journal.html', icon: '✍️', title: 'Journal', image: "images/read.png" },
+        { href: 'journal.html', icon: '✍️', title: 'Journal' },
     ];
 
     const navContainer = document.querySelector('.nav-links');

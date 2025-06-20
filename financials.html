@@ -54,6 +54,8 @@
     <nav class="nav-links"></nav>
 
         <!-- U.S. Economic Indicators Section -->
+          <div class="card">
+            <div class="card-title">
           <h1>Financial Table</h1>
           <br>
             <table>
@@ -71,8 +73,29 @@
                 <!-- Data will be dynamically loaded from JSON -->
               </tbody>
             </table>
-          </div>
-          <div class="data-notes">
+            <h3>Data Notes & Sources</h3>
+            <p><strong>Agency Abbreviations:</strong></p>
+            <ul>
+              <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
+              <li><strong>Census:</strong> U.S. Census Bureau</li>
+              <li><strong>DOL:</strong> U.S. Department of Labor</li>
+              <li><strong>CB:</strong> The Conference Board</li>
+            </ul>
+            
+            <p><strong>Current Data Status (as of June 2025):</strong></p>
+            <ul>
+              <li>May 2025 CPI data released</li>
+              <li>April unemployment rate held steady at 4.2%</li>
+              <li>Housing starts increased 1.6% from March to April 2025</li>
+            </ul>
+            
+            <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+              This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
+            </p>
+            
+            <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+              Loading data...
+            </div>
             <h3>Data Notes & Sources</h3>
             <p><strong>Agency Abbreviations:</strong></p>
             <ul>
@@ -98,7 +121,6 @@
             </div>
           </div>
         </div>
-
         <!-- GPT Portfolio Section -->
         <div class="card">
           <h1>GPT Portfolio Dashboard</h1>

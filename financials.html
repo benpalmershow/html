@@ -1,185 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="last-commit" content="2025-06-12 15:53:59 -0700">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="@vercel/speed-insights/script.js"></script>
-    <title>Financials - Howdy, Stranger</title>
+    <title>Financials 2 - Howdy, Stranger</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#2C5F5A">
+    
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
-    <meta name="description" content="Combined financial dashboard featuring U.S. economic indicators and investment portfolio tracking with real-time data visualization.">
-    <meta name="keywords" content="economic indicators, CPI, unemployment rate, housing starts, inflation, economic data, BLS, Census Bureau, portfolio, investments, stocks, financial tracking, performance dashboard">
-    <meta name="author" content="HowdyStranger">
-    <meta property="og:title" content="Combined Financial Dashboard">
-    <meta property="og:description" content="Track key U.S. economic metrics and investment portfolio performance from official government sources and real-time data.">
-    <meta property="og:type" content="website">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="@vercel/speed-insights/script.js"></script>
     <style>
-      .site-header {
-        background: var(--bg-primary);
-        border-bottom: 1px solid var(--border-color);
-        padding: 1rem;
-        margin-bottom: 2rem;
-      }
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100px;
-      }
-      .container {
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      body {
-        font-family: 'Georgia', 'Times New Roman', serif;
-        background: var(--bg-primary);
-        min-height: 100vh;
-        padding: 0;
-        color: var(--text-secondary);
-        width: 100%;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            padding: 0;
+            color: var(--text-secondary);
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px var(--shadow-color);
+            color: var(--logo-teal);
+        }
+
+        .last-updated {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--text-muted);
+        }
+
+        /* Collapsible section styles */
+        .collapsible-section {
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .collapsible-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+            position: relative;
+        }
+
+        .collapsible-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--logo-teal), var(--logo-orange));
+        }
+        
+        .collapsible-header:hover {
+            background: var(--bg-hover, #e9ecef);
+        }
+        
+        .collapsible-header h1, .collapsible-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--logo-orange);
+        }
+        
+        .collapse-toggle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--logo-teal);
+            transition: transform 0.2s ease;
+        }
+        
+        .collapse-toggle.collapsed {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .collapsible-content.collapsed {
+            max-height: 0;
+            padding: 0 1.5rem;
+            opacity: 0;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-secondary);
+            color: var(--logo-teal);
+            border: 2px solid var(--logo-orange);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--logo-orange);
+            color: #fff;
+            border-color: var(--logo-orange);
+            transform: translateY(-2px);
+        }
+
+        .categories {
+            display: grid;
+            gap: 30px;
+        }
+
+        .category {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            padding: 20px 0 0 0;
+            margin: 0 0 30px 0;
+            background: none;
+            box-shadow: none;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--logo-orange);
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--logo-teal);
+        }
+
+        .indicators-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .indicator {
+            background: var(--bg-primary);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            flex: 0 0 320px;
+            max-width: 320px;
+            min-width: 260px;
+            margin: 0;
+            align-self: flex-start;
+        }
+
+        .indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--logo-teal), var(--logo-orange));
+        }
+
+        .indicator:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .indicator-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .indicator-agency {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+
+        .month-label {
+            font-weight: 500;
+            color: var(--text-muted);
+            min-width: 60px;
+        }
+
+        .month-value {
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .change-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .change-positive {
+            background: rgba(44, 95, 90, 0.08);
+            color: var(--logo-teal);
+        }
+
+        .change-negative {
+            background: rgba(212, 130, 42, 0.08);
+            color: var(--logo-orange);
+        }
+
+        .change-neutral {
+            background: rgba(107, 114, 128, 0.08);
+            color: var(--text-muted);
+        }
+
+        .arrow-up::before {
+            content: '↗';
+            font-size: 1.1em;
+        }
+
+        .arrow-down::before {
+            content: '↘';
+            font-size: 1.1em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Table styles for Financial Table section */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        tbody tr:hover {
+            background: var(--bg-hover, rgba(44, 95, 90, 0.05));
+        }
+
+        /* Portfolio styles */
+        .table-wrapper {
+            margin: 1rem 0;
+        }
+
+        .loading-state, .error-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .error-state {
+            color: var(--logo-orange);
+        }
+
+        .data-notes {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .data-notes h3 {
+            color: var(--logo-orange);
+            margin-bottom: 1rem;
+        }
+
+        .data-notes ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .data-notes li {
+            margin-bottom: 0.5rem;
+        }
+
+        .data-notes a {
+            color: var(--logo-teal);
+            text-decoration: none;
+        }
+
+        .data-notes a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .indicators-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                justify-content: stretch;
+            }
+            
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .collapsible-header h1, .collapsible-header h2 {
+                font-size: 1.4rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        .site-header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+    <!-- Logo Header -->
     <header class="site-header">
-      <div class="logo-container">
-        <a href="index.html">
-          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
-        </a>
-      </div>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+            </a>
+        </div>
     </header>
-    <nav class="nav-links"></nav>
-
-        <!-- U.S. Economic Indicators Section -->
-          <div class="card">
-            <div class="card-title">
-          <h1>Financial Table</h1>
-          <br>
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>March 2025</th>
-                  <th>April 2025</th>
-                  <th>May 2025</th>
-                  <th>June 2025</th>
-                  <th>Change (%)</th>
-                </tr>
-              </thead>
-              <tbody id="indicesTableBody">
-                <!-- Data will be dynamically loaded from JSON -->
-              </tbody>
-            </table>
-            <h3>Data Notes & Sources</h3>
-            <p><strong>Agency Abbreviations:</strong></p>
-            <ul>
-              <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
-              <li><strong>Census:</strong> U.S. Census Bureau</li>
-              <li><strong>DOL:</strong> U.S. Department of Labor</li>
-              <li><strong>CB:</strong> The Conference Board</li>
-            </ul>
-            
-            <p><strong>Current Data Status (as of June 2025):</strong></p>
-            <ul>
-              <li>May 2025 CPI data released</li>
-              <li>April unemployment rate held steady at 4.2%</li>
-              <li>Housing starts increased 1.6% from March to April 2025</li>
-            </ul>
-            
-            <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-              This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
-            </p>
-            
-            <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-              Loading data...
-            </div>
-            <h3>Data Notes & Sources</h3>
-            <p><strong>Agency Abbreviations:</strong></p>
-            <ul>
-              <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
-              <li><strong>Census:</strong> U.S. Census Bureau</li>
-              <li><strong>DOL:</strong> U.S. Department of Labor</li>
-              <li><strong>CB:</strong> The Conference Board</li>
-            </ul>
-            
-            <p><strong>Current Data Status (as of June 2025):</strong></p>
-            <ul>
-              <li>May 2025 CPI data released</li>
-              <li>April unemployment rate held steady at 4.2%</li>
-              <li>Housing starts increased 1.6% from March to April 2025</li>
-            </ul>
-            
-            <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-              This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available. Data is updated as new releases become available from official sources.
-            </p>
-            
-            <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-              Loading data...
-            </div>
-          </div>
+    <nav class="nav-links" id="main-nav"></nav>
+    <div class="container">
+        <div class="header">
+            <h1>Financial Insight</h1>
+            <div id="lastUpdated" class="last-updated"></div>
         </div>
+
+        <!-- Financial Table Section -->
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleCollapse('financial-table')">
+                <h2>Table</h2>
+                <span class="collapse-toggle" id="financial-table-toggle">▼</span>
+            </div>
+            <div class="collapsible-content" id="financial-table-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>March 2025</th>
+                            <th>April 2025</th>
+                            <th>May 2025</th>
+                            <th>June 2025</th>
+                            <th>Change (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="indicesTableBody">
+                        <!-- Data will be dynamically loaded from JSON -->
+                    </tbody>
+                </table>
+                <div class="data-notes">
+                    <h3>Data Notes & Sources</h3>
+                    <p><strong>Agency Abbreviations:</strong></p>
+                    <ul>
+                        <li><strong>BLS:</strong> U.S. Bureau of Labor Statistics</li>
+                        <li><strong>Census:</strong> U.S. Census Bureau</li>
+                        <li><strong>DOL:</strong> U.S. Department of Labor</li>
+                        <li><strong>CB:</strong> The Conference Board</li>
+                    </ul>
+                    
+                    <p><strong>Current Data Status (as of June 2025):</strong></p>
+                    <ul>
+                        <li>May 2025 CPI data released</li>
+                        <li>April unemployment rate held steady at 4.2%</li>
+                        <li>Housing starts increased 1.6% from March to April 2025</li>
+                    </ul>
+                    
+                    <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+                        This dashboard tracks key U.S. economic indicators organized by category: inflation measures, employment data, housing market indicators, and leading economic indices. Each indicator links directly to its authoritative government source. The "Change (%)" column shows month-over-month percentage changes where available.
+                    </p>
+                    
+                    <div id="last-updated-economic" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+                        Loading data...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Dashboard Section -->
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleCollapse('interactive-dashboard')">
+                <h2>Dashboard</h2>
+                <span class="collapse-toggle" id="interactive-dashboard-toggle">▼</span>
+            </div>
+            <div class="collapsible-content" id="interactive-dashboard-content">
+                <div class="filters" id="filters">
+                    <button class="filter-btn active" data-category="all">All Categories</button>
+                </div>
+                
+                <div class="categories" id="categories"></div>
+            </div>
+        </div>
+
         <!-- GPT Portfolio Section -->
-        <div class="card">
-          <h1>GPT Portfolio Dashboard</h1>
-          <br>
-          <div class="table-wrapper">
-            <div id="loading-message" class="loading-state">Loading portfolio data...</div>
-            <div id="error-message" class="error-state" style="display: none;"></div>
-            <div id="portfolio-table-container" class="table-container"></div>
-          </div>
-          <div class="data-notes">
-            <h3>Portfolio Notes & Information</h3>
-            <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-              This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
-            </p>
-            <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-              Portfolio data refreshed automatically
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleCollapse('gpt-portfolio')">
+                <h2>GPT Portfolio</h2>
+                <span class="collapse-toggle" id="gpt-portfolio-toggle">▼</span>
             </div>
-          </div>
+            <div class="collapsible-content" id="gpt-portfolio-content">
+                <div class="table-wrapper">
+                    <div id="loading-message" class="loading-state">Loading portfolio data...</div>
+                    <div id="error-message" class="error-state" style="display: none;"></div>
+                    <div id="portfolio-table-container" class="table-container"></div>
+                </div>
+                <div class="data-notes">
+                    <h3>Portfolio Notes & Information</h3>
+                    <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+                        This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
+                    </p>
+                    <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+                        Portfolio data refreshed automatically
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <h2>Data Sources & References</h2>
-        <div class="data-sources">
-          <h3>Government Agencies</h3>
-          <ul>
-            <li><a href="https://www.bls.gov/" target="_blank" rel="noopener noreferrer">Bureau of Labor Statistics (BLS)</a> - Employment, inflation, and price data</li>
-            <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a> - Housing, construction, and demographic data</li>
-            <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">Department of Labor (DOL)</a> - Employment and labor statistics</li>
-            <li><a href="https://www.treasury.gov/" target="_blank" rel="noopener noreferrer">U.S. Treasury</a> - Financial and economic data</li>
-            <li><a href="https://www.federalreserve.gov/" target="_blank" rel="noopener noreferrer">Federal Reserve</a> - Monetary policy and economic indicators</li>
-            <li><a href="https://www.commerce.gov/" target="_blank" rel="noopener noreferrer">Department of Commerce</a> - Economic and business statistics</li>
-          </ul>
 
-          <h3>Financial Data Providers</h3>
-          <ul>
-            <li><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">FRED (Federal Reserve Economic Data)</a> - Economic time series data</li>
-            <li><a href="https://www.conference-board.org/" target="_blank" rel="noopener noreferrer">The Conference Board</a> - Leading economic indicators</li>
-            <li><a href="https://www.adp.com/" target="_blank" rel="noopener noreferrer">ADP</a> - Employment and payroll data</li>
-            <li><a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer">National Association of Realtors</a> - Housing market data</li>
-            <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency</a> - Housing finance data</li>
-          </ul>
+        <!-- Data Sources Section -->
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleCollapse('data-sources')">
+                <h2>Data Sources & References</h2>
+                <span class="collapse-toggle" id="data-sources-toggle">▼</span>
+            </div>
+            <div class="collapsible-content" id="data-sources-content">
+                <div class="data-notes">
+                    <h3>Government Agencies</h3>
+                    <ul>
+                        <li><a href="https://www.bls.gov/" target="_blank" rel="noopener noreferrer">Bureau of Labor Statistics (BLS)</a> - Employment, inflation, and price data</li>
+                        <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a> - Housing, construction, and demographic data</li>
+                        <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">Department of Labor (DOL)</a> - Employment and labor statistics</li>
+                        <li><a href="https://www.treasury.gov/" target="_blank" rel="noopener noreferrer">U.S. Treasury</a> - Financial and economic data</li>
+                        <li><a href="https://www.federalreserve.gov/" target="_blank" rel="noopener noreferrer">Federal Reserve</a> - Monetary policy and economic indicators</li>
+                        <li><a href="https://www.commerce.gov/" target="_blank" rel="noopener noreferrer">Department of Commerce</a> - Economic and business statistics</li>
+                    </ul>
 
-          <h3>Economic Indicators</h3>
-          <ul>
-            <li><a href="https://www.ismworld.org/" target="_blank" rel="noopener noreferrer">Institute for Supply Management (ISM)</a> - Manufacturing and services PMI</li>
-            <li><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer">University of Michigan</a> - Consumer sentiment surveys</li>
-            <li><a href="https://www.manheim.com/" target="_blank" rel="noopener noreferrer">Manheim</a> - Used vehicle value index</li>
-          </ul>
+                    <h3>Financial Data Providers</h3>
+                    <ul>
+                        <li><a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">FRED (Federal Reserve Economic Data)</a> - Economic time series data</li>
+                        <li><a href="https://www.conference-board.org/" target="_blank" rel="noopener noreferrer">The Conference Board</a> - Leading economic indicators</li>
+                        <li><a href="https://www.adp.com/" target="_blank" rel="noopener noreferrer">ADP</a> - Employment and payroll data</li>
+                        <li><a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer">National Association of Realtors</a> - Housing market data</li>
+                        <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency</a> - Housing finance data</li>
+                    </ul>
 
-          <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-            All data is sourced from official government agencies and recognized economic data providers. Links open in new tabs and point to the most relevant data pages for each indicator.
-          </p>
+                    <h3>Economic Indicators</h3>
+                    <ul>
+                        <li><a href="https://www.ismworld.org/" target="_blank" rel="noopener noreferrer">Institute for Supply Management (ISM)</a> - Manufacturing and services PMI</li>
+                        <li><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer">University of Michigan</a> - Consumer sentiment surveys</li>
+                        <li><a href="https://www.manheim.com/" target="_blank" rel="noopener noreferrer">Manheim</a> - Used vehicle value index</li>
+                    </ul>
+
+                    <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+                        All data is sourced from official government agencies and recognized economic data providers. Links open in new tabs and point to the most relevant data pages for each indicator.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <script src="/js/nav.js" defer></script>
-    <script src="/js/read-nav.js?v=2" defer></script>
+
+    <script>
+        let financialData = null;
+
+        // Collapsible functionality
+        function toggleCollapse(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const toggle = document.getElementById(sectionId + '-toggle');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                toggle.classList.remove('collapsed');
+                toggle.textContent = '▼';
+            } else {
+                content.classList.add('collapsed');
+                toggle.classList.add('collapsed');
+                toggle.textContent = '▲';
+            }
+        }
+
+        async function fetchFinancialData() {
+            const paths = [
+                './json/financials-data.json',
+                './financials-data.json',
+                'json/financials-data.json',
+                '/json/financials-data.json',
+                '../json/financials-data.json'
+            ];
+
+            for (const path of paths) {
+                try {
+                    const response = await fetch(path);
+                    if (!response.ok) continue;
+                    financialData = await response.json();
+                    initializeDashboard();
+                    return;
+                } catch (error) {
+                    console.error(`Error loading from ${path}:`, error);
+                    continue;
+                }
+            }
+
+            // If we get here, none of the paths worked
+            console.error('Could not load financial data from any path');
+            document.getElementById('categories').innerHTML = 
+                '<div class="error">Error loading financial data. Please try again later.</div>';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function getChangeClass(change) {
+            if (change === "—" || change === "0" || change === "0.00") return 'change-neutral';
+            if (change.startsWith('+')) return 'change-positive';
+            if (change.startsWith('-')) return 'change-negative';
+            return 'change-neutral';
+        }
+
+        function getArrowClass(change) {
+            if (change === "—" || change === "0" || change === "0.00") return '';
+            if (change.startsWith('+')) return 'arrow-up';
+            if (change.startsWith('-')) return 'arrow-down';
+            return '';
+        }
+
+        function createIndicatorCard(indicator) {
+            const months = ['march', 'april', 'may', 'june'];
+            const monthLabels = ['Mar', 'Apr', 'May', 'Jun'];
+            
+            let dataRows = '';
+            months.forEach((month, index) => {
+                const value = indicator[month];
+                if (value && value !== '') {
+                    dataRows += `
+                        <div class="data-row">
+                            <span class="month-label">${monthLabels[index]}:</span>
+                            <span class="month-value">${value}</span>
+                        </div>
+                    `;
+                }
+            });
+
+            const url = indicator.url || '#';
+
+            return `
+                <div class="indicator">
+                    <div class="indicator-name">${indicator.name}</div>
+                    <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
+                    ${dataRows}
+                    <div class="change-indicator ${getChangeClass(indicator.change)} ${getArrowClass(indicator.change)}">
+                        Change: ${indicator.change}${indicator.change !== "—" && !indicator.change.includes('%') ? '%' : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDashboard(filterCategory = 'all') {
+            const categoriesContainer = document.getElementById('categories');
+            const categories = [...new Set(financialData.indices.map(item => item.category))];
+            
+            let html = '';
+            
+            categories.forEach(category => {
+                if (filterCategory !== 'all' && category !== filterCategory) return;
+                
+                const categoryIndicators = financialData.indices.filter(item => item.category === category);
+                
+                html += `
+                    <div class="category" data-category="${category}">
+                        <h2 class="category-title">${category}</h2>
+                        <div class="indicators-grid">
+                            ${categoryIndicators.map(indicator => createIndicatorCard(indicator)).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            categoriesContainer.innerHTML = html;
+        }
+
+        function setupFilters() {
+            const filtersContainer = document.getElementById('filters');
+            const categories = [...new Set(financialData.indices.map(item => item.category))];
+            
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.className = 'filter-btn';
+                button.textContent = category;
+                button.dataset.category = category;
+                filtersContainer.appendChild(button);
+            });
+
+            filtersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderDashboard(e.target.dataset.category);
+                }
+            });
+        }
+
+        function initializeDashboard() {
+            document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+            setupFilters();
+            renderDashboard();
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', fetchFinancialData);
+    </script>
     <script src="/js/financials.js" defer></script>
     <script src="/js/portfolio.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/read-nav.js?v=2" defer></script>
     <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
     <script src="js/last-updated.js"></script>
 </body>

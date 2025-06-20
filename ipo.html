@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DWEVPGLJDP');
+</script>
     <meta charset="UTF-8">
     <meta name="last-commit" content="2025-06-12 15:53:59 -0700">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Financial overview of IPO News and FOMC Minutes by HowdyStranger.">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
-    <title>Circle IPO - Howdy, Stranger</title>
-    <meta name="description" content="Financial overview of SEZL, PAYS, and DAVE by HowdyStranger.">
+    <title>Financial News - IPO & FOMC | Howdy, Stranger</title>
     <style>
-      /* Base styles aligned with financials.css */
+      /* Base styles */
       body {
         font-family: 'Georgia', 'Times New Roman', serif;
         background: var(--bg-primary);
@@ -51,11 +60,11 @@
         font-weight: bold;
       }
       
-      /* Collapsible card styles using existing patterns */
+      /* Collapsible card styles */
       .card {
         border: 1px solid var(--border-color, #ddd);
         border-radius: 4px;
-        margin-bottom: em;
+        margin-bottom: 1em;
         background: var(--bg-primary, white);
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       }
@@ -68,6 +77,10 @@
         align-items: center;
         user-select: none;
         transition: background-color 0.3s ease;
+      }
+      
+      .card-header:hover {
+        background-color: #f8f9fa;
       }
       
       .card-toggle {
@@ -93,9 +106,6 @@
         padding: 16px;
         transition: max-height 0.5s ease-in;
       }
-    
-      
-     
       
       /* Dark mode support */
       @media (prefers-color-scheme: dark) {
@@ -138,11 +148,12 @@
     <div class="container">
       <div class="content">
         <div id="ipo-feed"></div>
-        <h1>IPO News</h1>
-        <p>Welcome to the IPO overview page. Here, we provide detailed summaries of recent and upcoming IPOs, including company profiles, financial performance, business strategies, and key metrics. This page is designed to help investors and analysts understand the latest developments in the IPO market.</p>
+        <h1>Financial News</h1>
+        <p>Welcome to the financial overview page. Here, we provide detailed summaries of recent IPOs, FOMC meeting minutes, and other important financial developments. This page is designed to help investors and analysts understand the latest developments in financial markets.</p>
+        
         <div class="card">
           <div class="card-header" onclick="toggleCard('airo-card')">
-            <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener" onclick="event.stopPropagation()">AIRO</a></h1>
+            <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener" onclick="event.stopPropagation()">IPO - AIRO</a></h1>
             <span class="card-toggle" id="airo-toggle">▼</span>
           </div>
           <div class="card-content" id="airo-card">
@@ -218,7 +229,7 @@
 
         <div class="card">
           <div class="card-header" onclick="toggleCard('crcl-card')">
-            <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener" onclick="event.stopPropagation()">CRCL</a></h1>
+            <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener" onclick="event.stopPropagation()">IPO - CRCL</a></h1>
             <span class="card-toggle" id="crcl-toggle">▼</span>
           </div>
           <div class="card-content" id="crcl-card">
@@ -255,6 +266,37 @@
               <p>Led by J.P. Morgan, Citigroup, and Goldman Sachs, the underwriting syndicate includes several firms. ARK Investment Management indicated interest in purchasing up to $150 million in shares. Circle relies on third-party market data, noting potential inaccuracies due to data collection challenges.</p>
 
               <p>For full details, refer to the <a href="https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm" target="_blank" rel="noopener">SEC filing</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" onclick="toggleCard('fomc-card')">
+            <h1>FOMC Minutes - May 2025</h1>
+            <span class="card-toggle" id="fomc-toggle">▼</span>
+          </div>
+          <div class="card-content" id="fomc-card">
+            <div class="card-inner">
+              <p><em>Federal Open Market Committee Meeting: May 6-7, 2025</em></p>
+
+              <h2>Monetary Policy Review</h2>
+              <p>The Federal Open Market Committee (FOMC) held a joint meeting with the Board of Governors of the Federal Reserve System on May 6-7, 2025. During this meeting, they thoroughly reviewed their monetary policy strategy, tools, and communication approaches.</p>
+              <p>A key outcome was the reaffirmation of their commitment to a <strong>2 percent longer-run inflation objective</strong>. Participants emphasized the critical importance of maintaining anchored longer-term inflation expectations to ensure economic stability. Discussions also compared flexible average inflation targeting with flexible inflation targeting, concluding that the latter represents a more robust and adaptable policy strategy for current economic conditions.</p>
+
+              <h2>Financial Market Developments</h2>
+              <p>The manager's review of financial market developments highlighted significant volatility. Key observations included a rise in longer-maturity Treasury yields and a depreciating U.S. dollar. Market participants adjusted their forecasts, lowering GDP projections while raising inflation expectations.</p>
+              <p>The Treasury yield curve steepened, and measures of Treasury market liquidity showed deterioration. While short-horizon inflation expectations increased modestly, longer-horizon expectations remained notably stable, indicating a degree of confidence in long-term price stability.</p>
+
+              <h2>Committee Actions & Economic Situation</h2>
+              <p>The Committee took several actions, including voting to renew dollar and foreign currency liquidity swap arrangements and reciprocal currency arrangements with various central banks. They also ratified the Desk's domestic transactions, ensuring smooth market operations.</p>
+              <p>Staff analysis of the economic situation indicated that consumer price inflation remained somewhat elevated, even as the unemployment rate stabilized at a low level. Real GDP growth experienced a step down in the first quarter of 2025, though labor market conditions continued to be solid overall.</p>
+
+              <h2>Financial System Vulnerabilities</h2>
+              <p>The manager also noted extreme volatility in prices of risky assets, with corporate bond and leveraged loan spreads widening. The dollar's depreciation against several advanced foreign economy (AFE) currencies was also observed. Despite these shifts, conditions in U.S. short-term funding markets remained orderly, though most borrowing costs for businesses, households, and municipalities increased.</p>
+              <p>Participants engaged in discussions about vulnerabilities within the financial system. They acknowledged that markets had continued to function despite lower measures of liquidity. A notable point of discussion was a change in typical asset price correlations, leading to questions among participants about whether current asset prices accurately reflected fundamental valuations.</p>
+
+              <h2>Monetary Policy Considerations</h2>
+              <p>In their overall consideration of monetary policy, participants consistently noted that inflation remained somewhat elevated. Concurrently, economic activity had continued to expand at a solid pace.</p>
             </div>
           </div>
         </div>

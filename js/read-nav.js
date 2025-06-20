@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = [
         { href: 'read.html', title: 'Announcements', isLogo: true },
-        { href: 'financials.html', icon: '📊', title: 'Financial Table' },
-        { href: 'financials2.html', icon: '📈', title: 'Financial Dashboard' },
-        { href: 'trumpvcasa.html', icon: '⚖️', title: 'Legal' },
-        { href: 'fomc.html', icon: '🗒️', title: 'Monetary' },
-        { href: 'ipo.html', icon: '💸', title: 'IPO News' },
+        { href: 'financials.html', icon: '📊', title: 'Financial Insight' },
+        { href: 'trumpvcasa.html', icon: '⚖️', title: 'Legal News' },
+        { href: 'ipo.html', icon: '🗒️', title: 'Financial News' },
         { href: 'journal.html', icon: '✍️', title: 'Journal' },
     ];
 

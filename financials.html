@@ -293,36 +293,84 @@
             display: none;
         }
 
-        /* Table styles for Financial Table section */
+        /* Updated table styles with scrollable wrapper */
+        .table-wrapper {
+            margin: 1rem 0;
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            background: var(--bg-primary);
+        }
+
+        .table-container {
+            min-width: 100%;
+            overflow-x: auto;
+        }
+
         table {
             width: 100%;
+            min-width: 600px; /* Ensures table has minimum width for scrolling */
             border-collapse: collapse;
-            margin: 1rem 0;
+            margin: 0;
             background: var(--bg-primary);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px var(--shadow-color);
         }
 
         th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            white-space: nowrap; /* Prevents text wrapping in cells */
         }
 
         th {
             background: var(--bg-secondary);
             font-weight: 600;
             color: var(--text-primary);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        /* Make first column sticky for better readability while scrolling */
+        th:first-child,
+        td:first-child {
+            position: sticky;
+            left: 0;
+            background: var(--bg-secondary);
+            z-index: 2;
+            border-right: 2px solid var(--border-color);
+        }
+
+        td:first-child {
+            background: var(--bg-primary);
+            font-weight: 600;
         }
 
         tbody tr:hover {
             background: var(--bg-hover, rgba(44, 95, 90, 0.05));
         }
 
-        /* Portfolio styles */
-        .table-wrapper {
-            margin: 1rem 0;
+        tbody tr:hover td:first-child {
+            background: var(--bg-hover, rgba(44, 95, 90, 0.05));
+        }
+
+        /* Scrollbar styling */
+        .table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--logo-teal);
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--logo-orange);
         }
 
         .loading-state, .error-state {
@@ -387,12 +435,20 @@
                 font-size: 1.4rem;
             }
 
-            table {
-                font-size: 0.9rem;
+            /* Mobile table adjustments */
+            th, td {
+                padding: 8px 6px;
+                font-size: 0.85rem;
             }
 
-            th, td {
-                padding: 8px;
+            th:first-child,
+            td:first-child {
+                max-width: 120px;
+                min-width: 100px;
+            }
+
+            table {
+                min-width: 500px;
             }
         }
 
@@ -434,21 +490,25 @@
                 <span class="collapse-toggle" id="financial-table-toggle">▼</span>
             </div>
             <div class="collapsible-content" id="financial-table-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>March 2025</th>
-                            <th>April 2025</th>
-                            <th>May 2025</th>
-                            <th>June 2025</th>
-                            <th>Change (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="indicesTableBody">
-                        <!-- Data will be dynamically loaded from JSON -->
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>March 2025</th>
+                                    <th>April 2025</th>
+                                    <th>May 2025</th>
+                                    <th>June 2025</th>
+                                    <th>Change (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="indicesTableBody">
+                                <!-- Data will be dynamically loaded from JSON -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div class="data-notes">
                     <h3>Data Notes & Sources</h3>
                     <p><strong>Agency Abbreviations:</strong></p>

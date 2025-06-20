@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { href: 'financials2.html', icon: '📈', title: 'Financial Dashboard' },
         { href: 'trumpvcasa.html', icon: '⚖️', title: 'Legal' },
         { href: 'fomc.html', icon: '🗒️', title: 'Monetary' },
-        { href: 'ipo.html', icon: '💸', title: 'IPO' },
+        { href: 'ipo.html', icon: '💸', title: 'IPO News' },
         { href: 'journal.html', icon: '✍️', title: 'Journal' },
     ];
 

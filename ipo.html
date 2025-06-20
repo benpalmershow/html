@@ -55,33 +55,20 @@
       .card {
         border: 1px solid var(--border-color, #ddd);
         border-radius: 4px;
-        margin-bottom: 2em;
+        margin-bottom: em;
         background: var(--bg-primary, white);
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       }
       
       .card-header {
-        background-color: #f8f9fa;
         padding: 12px 16px;
         cursor: pointer;
-        border-radius: 4px 4px 0 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         user-select: none;
         transition: background-color 0.3s ease;
         border-bottom: 1px solid var(--border-color, #ddd);
-      }
-      
-      .card-header:hover {
-        background-color: #e9ecef;
-      }
-      
-      .card-header h1 {
-        margin: 0;
-        color: #333;
-        font-size: 1.5rem;
-        font-weight: 700;
       }
       
       .card-toggle {
@@ -155,11 +142,11 @@
     <div class="container">
       <div class="content">
         <div id="ipo-feed"></div>
-        <h1>Initial Public Offerings (IPOs)</h1>
+        <h1>IPO News</h1>
         <p>Welcome to the IPO overview page. Here, we provide detailed summaries of recent and upcoming IPOs, including company profiles, financial performance, business strategies, and key metrics. This page is designed to help investors and analysts understand the latest developments in the IPO market.</p>
         <div class="card">
           <div class="card-header" onclick="toggleCard('airo-card')">
-            <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener" onclick="event.stopPropagation()">$AIRO</a></h1>
+            <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener" onclick="event.stopPropagation()">AIRO</a></h1>
             <span class="card-toggle" id="airo-toggle">▼</span>
           </div>
           <div class="card-content" id="airo-card">
@@ -235,7 +222,7 @@
 
         <div class="card">
           <div class="card-header" onclick="toggleCard('crcl-card')">
-            <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener" onclick="event.stopPropagation()">$CRCL</a></h1>
+            <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener" onclick="event.stopPropagation()">CRCL</a></h1>
             <span class="card-toggle" id="crcl-toggle">▼</span>
           </div>
           <div class="card-content" id="crcl-card">

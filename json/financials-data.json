@@ -4,7 +4,7 @@
     {
       "category": "Inflation Measures",
       "agency": "BLS",
-      "name": "CPI (Consumer Price Index)",
+      "name": "CPI",
       "url": "https://www.bls.gov/cpi/data.htm",
       "march": "319.8",
       "april": "320.8",
@@ -15,7 +15,7 @@
     {
       "category": "Inflation Measures",
       "agency": "BLS",
-      "name": "CPI (YoY % Change)",
+      "name": "CPI (YoY)",
       "url": "https://www.bls.gov/cpi/data.htm",
       "march": "+2.4%",
       "april": "+2.3%",
@@ -26,7 +26,7 @@
     {
       "category": "Inflation Measures",
       "agency": "BLS",
-      "name": "Producer Price Index (PPI)",
+      "name": "PPI",
       "url": "https://www.bls.gov/ppi/data.htm",
       "march": "3.3%",
       "april": "2.5%",
@@ -37,7 +37,7 @@
     {
       "category": "Employment Indicators",
       "agency": "BLS",
-      "name": "Jobs Added (All Employment)",
+      "name": "Jobs Added",
       "url": "https://www.bls.gov/cps/data.htm",
       "march": "+120,000",
       "april": "+147,000",
@@ -48,7 +48,7 @@
     {
       "category": "Employment Indicators",
       "agency": "FRED",
-      "name": "Initial Jobless Claims",
+      "name": "Jobless Claims",
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "march": "223,200",
       "april": "226,000",
@@ -59,10 +59,10 @@
     {
       "category": "Employment Indicators",
       "agency": "BLS",
-      "name": "Job Openings (millions)",
+      "name": "Job Openings",
       "url": "https://www.bls.gov/jlt/data.htm",
-      "march": "7.2",
-      "april": "7.4",
+      "march": "7.2M",
+      "april": "7.4M",
       "may": "TBD 7/1",
       "june": "TBD 8/2",
       "change": "+2.78"
@@ -70,7 +70,7 @@
     {
       "category": "Employment Indicators",
       "agency": "ADP",
-      "name": "Jobs Added (Private Employment)",
+      "name": "Jobs Created",
       "url": "https://www.adp.com/insights/market-insights/adp-national-employment-report/",
       "march": "",
       "april": "+62,000",
@@ -103,7 +103,7 @@
     {
       "category": "Housing Market",
       "agency": "FRED",
-      "name": "Housing Affordability Index",
+      "name": "Affordability Index",
       "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "march": "103.4",
       "april": "101",
@@ -113,8 +113,8 @@
     },
     {
       "category": "Housing Market",
-      "agency": "NAHB/Wells Fargo",
-      "name": "Housing Market Index (HMI)",
+      "agency": "NAHB",
+      "name": "HMI",
       "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
       "march": "39",
       "april": "40",
@@ -125,7 +125,7 @@
     {
       "category": "Interest Rates",
       "agency": "FRED",
-      "name": "30-Year Fixed Mortgage Rate",
+      "name": "30-yr Mortgage Rate",
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "march": "6.65%",
       "april": "6.73%",
@@ -136,7 +136,7 @@
     {
       "category": "Interest Rates",
       "agency": "FRED",
-      "name": "10-Year Treasury Yield (%)",
+      "name": "10-yr Treasury Yield",
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "march": "4.28%",
       "april": "4.28%",
@@ -169,10 +169,10 @@
     {
       "category": "Business Indicators",
       "agency": "Commerce",
-      "name": "New Orders (billions)",
+      "name": "New Orders",
       "url": "https://www.census.gov/economic-indicators/",
-      "march": "$617.4",
-      "april": "$594.6",
+      "march": "$617.4B",
+      "april": "$594.6B",
       "may": "TBD 7/3",
       "june": "TBD 8/4",
       "change": "-3.69"
@@ -180,10 +180,10 @@
     {
       "category": "Business Indicators",
       "agency": "Commerce",
-      "name": "Construction Spending (trillions)",
+      "name": "Construction Spending",
       "url": "https://www.census.gov/construction/c30/",
-      "march": "$2.162",
-      "april": "$2.152",
+      "march": "$2.162T",
+      "april": "$2.152T",
       "may": "TBD 7/1",
       "june": "TBD 8/1",
       "change": "-0.46"
@@ -235,7 +235,7 @@
     {
       "category": "Consumer Indicators",
       "agency": "FRED",
-      "name": "Personal Consumption Expenditures (PCE)",
+      "name": "PCE",
       "url": "https://fred.stlouisfed.org/series/PCE",
       "march": "20621.8",
       "april": "20669",
@@ -245,7 +245,7 @@
     },
     {
       "category": "Currency & Trade",
-      "agency": "Federal Reserve",
+      "agency": "FRED",
       "name": "Dollar Value Index",
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "march": "126.4",
@@ -257,7 +257,7 @@
     {
       "category": "Trade & Tariffs",
       "agency": "CBP",
-      "name": "Duties by Remedy Revenue Recovered",
+      "name": "Duties Recovered",
       "url": "https://www.cbp.gov/newsroom/stats",
       "march": "$2.8B",
       "april": "$2.9B",
@@ -268,7 +268,7 @@
     {
       "category": "Trade & Tariffs",
       "agency": "Census",
-      "name": "Tariff Revenue (billions)",
+      "name": "Tariff Revenue",
       "url": "https://www.census.gov/foreign-trade/balance/c0004.html",
       "march": "$8.2B",
       "april": "$8.4B",
@@ -279,7 +279,7 @@
     {
       "category": "Trade & Tariffs",
       "agency": "Census",
-      "name": "Trade Balance (billions)",
+      "name": "Trade Balance",
       "url": "https://www.census.gov/foreign-trade/balance/c0004.html",
       "march": "-$68.2B",
       "april": "-$67.8B",
@@ -291,7 +291,7 @@
     {
       "category": "Trade & Tariffs",
       "agency": "BEA",
-      "name": "U.S. Trade Deficit",
+      "name": "Trade Deficit",
       "url": "https://www.bea.gov/data/intl-trade-investment/international-trade-goods-and-services",
       "march": "-138.3",
       "april": "-61.6",
@@ -302,7 +302,7 @@
     {
       "category": "Travel & Tourism",
       "agency": "DHS",
-      "name": "Passenger Arrivals (% Change)",
+      "name": "Passenger Arrivals",
       "url": "https://www.dhs.gov/immigration-statistics",
       "march": "+5.2%",
       "april": "+4.8%",
@@ -346,7 +346,7 @@
     {
       "category": "Government Finance",
       "agency": "Treasury",
-      "name": "Treasury Debt Level (trillions)",
+      "name": "Treasury Debt Level",
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
       "march": "$34.5T",
       "april": "$34.6T",
@@ -368,7 +368,7 @@
     {
       "category": "Government Finance",
       "agency": "Treasury",
-      "name": "Tax Revenue (billions)",
+      "name": "Tax Revenue",
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$486B",
       "april": "$492B",
@@ -379,7 +379,7 @@
     {
       "category": "Government Finance",
       "agency": "Treasury",
-      "name": "Interest on Debt (billions)",
+      "name": "Interest on Debt",
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$89B",
       "april": "$91B",
@@ -390,7 +390,7 @@
     {
       "category": "Business Indicators",
       "agency": "FRED",
-      "name": "Industrial Production Index (INDPRO)",
+      "name": "Industrial Production Index",
       "url": "https://fred.stlouisfed.org/series/INDPRO",
       "march": "103.74",
       "april": "103.82",

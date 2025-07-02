@@ -39,74 +39,6 @@ body {
     color: #333;
 }
 
-/* Table styles */
-.financials-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1em;
-    font-size: .9em;
-}
-
-.financials-table td,
-.financials-table th {
-    padding: .5em;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.financials-table th {
-    background-color: #f5f5f5;
-    font-weight: 700;
-}
-
-.financials-table tr:hover {
-    background-color: #f9f9f9;
-}
-
-.financials-table a {
-    color: #06c;
-    text-decoration: none;
-}
-
-.financials-table a:hover {
-    text-decoration: underline;
-}
-
-/* Category header styling for frozen columns */
-.category-divider {
-    background-color: #f8f9fa !important;
-    border-top: 2px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
-
-.category-header {
-    font-weight: bold;
-    padding: 12px 16px !important;
-    color: #333;
-    background-color: #f8f9fa;
-    border-right: 1px solid #ddd;
-    font-size: 0.95em;
-}
-
-.category-header-empty {
-    background-color: #f8f9fa;
-    border-right: 1px solid #ddd;
-    padding: 12px 16px !important;
-}
-
-/* Ensure category headers work with frozen columns */
-.category-divider td:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    background-color: #f8f9fa;
-}
-
-/* Optional: Add visual separation for better readability */
-.category-divider + tr td {
-    border-top: none;
-}
-
 /* Utility styles */
 .last-updated {
     font-size: .8em;
@@ -138,4 +70,44 @@ body {
     .category-divider td:first-child {
         background-color: #2d3748;
     }
+}
+
+.indicator-name {
+    position: relative;
+    cursor: pointer;
+}
+
+.indicator-tooltip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: -2.2em;
+    transform: translateX(-50%);
+    background: rgba(44, 95, 90, 0.95);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.indicator-name:hover .indicator-tooltip {
+    display: block;
+    opacity: 1;
+}
+
+.indicator-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    border-width: 8px 8px 0 8px;
+    border-style: solid;
+    border-color: rgba(44, 95, 90, 0.95) transparent transparent transparent;
 }

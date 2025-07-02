@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Supreme Court 2024 Financial Summaries</title>
+  <title>Legal News</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preload" href="css/body.css" as="style">
   <link rel="stylesheet" href="css/body.css">
@@ -248,12 +248,12 @@
         
   <div class="container">
     <div class="content">
-      <h2 class="animated-title">Supreme Court 2024 Financial Summaries</h2>
+      <h2 class="animated-title">Legal News</h2>
       
       <!-- Justice Gorsuch Card -->
       <div class="justice-card">
         <div class="card-header" onclick="toggleCard(this)">
-          <h1>Justice Gorsuch</h1>
+          <h1>Financial Disclosures: Justice Gorsuch</h1>
           <span class="expand-icon">+</span>
         </div>
         <div class="card-content">
@@ -365,24 +365,69 @@
         </div>
       </div>
 
-      <!-- Example template for additional justices -->
+
+      <!-- Trump v. CASA Card -->
       <div class="justice-card">
         <div class="card-header" onclick="toggleCard(this)">
-          <h1>Justice [Name] - Coming Soon</h1>
+          <h1>Supreme Court Case: Trump v. CASA, Inc.</h1>
           <span class="expand-icon">+</span>
         </div>
         <div class="card-content">
           <div class="card-inner">
-            <div class="placeholder-content">
-              Financial disclosure data for this justice will be added soon.
-            </div>
+            <section class="section">
+              <h2>Case Summary</h2>
+              <div class="highlights">
+                <ul>
+                  <li><strong>Issue:</strong> Judicial authority to issue nationwide (universal) injunctions against federal policies.</li>
+                  <li><strong>Key Question:</strong> Can federal courts block federal policies for all, or only for the parties before them?</li>
+                  <li><strong>Context:</strong> Emerged from litigation over Trump administration immigration policies; over 55 nationwide injunctions issued during this period.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="section">
+              <h2>Key Legal Issues</h2>
+              <div class="highlights">
+                <ul>
+                  <li><strong>Universal Injunctions:</strong> Allow a single court to enjoin the government nationwide, not just for plaintiffs.</li>
+                  <li><strong>Arguments For:</strong> Ensure uniform law, prevent widespread constitutional violations, provide complete relief.</li>
+                  <li><strong>Arguments Against:</strong> Exceed judicial authority, encourage forum shopping, prevent legal issue percolation.</li>
+                  <li><strong>Article III Limits:</strong> "Case or controversy" requirement restricts courts to resolving disputes between specific parties.</li>
+                  <li><strong>Standing & Remedial Principles:</strong> Relief should be no broader than necessary for plaintiffs; universal injunctions may go beyond this.</li>
+                  <li><strong>Separation of Powers:</strong> Universal injunctions risk courts acting like legislators.</li>
+                  <li><strong>Class Actions (Rule 23):</strong> Provide procedural safeguards for broad relief; universal injunctions may bypass these.</li>
+                  <li><strong>Historical Equity:</strong> Bills of peace and Equity Rule 48 allowed some broad relief, but with limits and procedural protections.</li>
+                  <li><strong>Administrative Uniformity:</strong> Piecemeal injunctions complicate federal policy implementation; universal injunctions simplify but may overreach.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="section">
+              <h2>Scholarly Resources & Further Reading</h2>
+              <div class="highlights">
+                <ul>
+                  <li><a href="https://harvardlawreview.org/print/vol-131/multiple-chancellors-reforming-the-national-injunction/" target="_blank">Samuel L. Bray: "Multiple Chancellors: Reforming the National Injunction"</a> – Argues nationwide injunctions exceed traditional equity and constitutional powers.</li>
+                  <li><a href="https://harvardlawreview.org/print/vol-133/the-lost-history-of-the-universal-injunction/" target="_blank">Mila Sohoni: "The Lost History of the 'Universal' Injunction"</a> – Identifies historical cases supporting broader relief.</li>
+                  <li><a href="https://www.theatlantic.com/ideas/archive/2018/10/end-nationwide-injunctions/574471/" target="_blank">Bagley & Bray: "Judges Shouldn't Have the Power to Halt Laws Nationwide"</a> – Explains constitutional and practical concerns.</li>
+                  <li><a href="https://www.nyulawreview.org/issues/volume-93-number-5/in-defense-of-nationwide-injunctions/" target="_blank">Amanda Frost: "In Defense of Nationwide Injunctions"</a> – Argues for their necessity in the modern state.</li>
+                  <li><a href="https://www.supremecourt.gov/opinions/17pdf/17-965_h315.pdf" target="_blank">Justice Thomas's Concurrence in Trump v. Hawaii</a> – Skeptical of universal injunctions, questions their constitutional basis.</li>
+                </ul>
+              </div>
+            </section>
+            <section class="section">
+              <h2>Executive Summary: Key Insights</h2>
+              <div class="highlights">
+                <ul>
+                  <li>Universal injunctions raise fundamental questions about judicial power limits under Article III, balancing effective remedies and separation of powers.</li>
+                  <li>Class actions (Rule 23) offer due process safeguards; universal injunctions provide expedient but less protected remedies.</li>
+                  <li>Historical equity practices provide competing narratives about legitimacy of broad injunctions.</li>
+                  <li>Practical concerns about uniform federal policy implementation must be balanced against constitutional limits.</li>
+                  <li>The Supreme Court is increasingly skeptical, suggesting future restrictions on universal injunctions.</li>
+                </ul>
+              </div>
+            </section>
           </div>
         </div>
       </div>
 
-      <button class="add-justice-btn" onclick="addNewJustice()">
-        + Add Another Justice
-      </button>
     </div>
   </div>
 
@@ -402,70 +447,6 @@
       }
     }
 
-    function addNewJustice() {
-      const container = document.querySelector('.content');
-      const addButton = document.querySelector('.add-justice-btn');
-      
-      const newCard = document.createElement('div');
-      newCard.className = 'justice-card';
-      newCard.innerHTML = `
-        <div class="card-header" onclick="toggleCard(this)">
-          <h1>Justice [Enter Name] - Template</h1>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <section class="section">
-              <div class="financial-grid">
-                <div class="financial-column">
-                  <h2>Annual Income Summary</h2>
-                  <div class="table-wrapper">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Source</th>
-                          <th>Type</th>
-                          <th>Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td colspan="3" style="text-align: center; font-style: italic; color: var(--text-muted);">
-                            Add income data here
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="financial-column">
-                  <h2>Assets Summary</h2>
-                  <div class="table-wrapper">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Asset Type</th>
-                          <th>Inferred Range</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td colspan="2" style="text-align: center; font-style: italic; color: var(--text-muted);">
-                            Add asset data here
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      `;
-      
-      container.insertBefore(newCard, addButton);
-    }
 
     // Initialize Gorsuch chart
     window.addEventListener('load', function() {

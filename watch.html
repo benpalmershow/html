@@ -20,132 +20,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
-
     <title>Watch - Howdy, Stranger</title>
-    <style>
-      .video-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 2rem;
-        padding: 2rem 0;
-      }
-
-      .video-card {
-        background: var(--nc-bg-2, #f6f8fa);
-        border: 1px solid var(--nc-bg-3, #e1e4e8);
-        border-radius: 8px;
-        padding: 1.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .video-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      }
-
-      .video-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-        flex-wrap: nowrap;
-        gap: 1rem;
-      }
-
-      .movie-name {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: var(--nc-tx-1, #1a202c);
-        flex-shrink: 0;
-      }
-
-      .ratings-container {
-        gap: 0.5rem;
-        flex-shrink: 0;
-        align-items: center;
-      }
-
-      .rating-link {
-        text-decoration: none;
-        padding: 0.25rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        transition: background-color 0.2s ease;
-        white-space: nowrap;
-      }
-
-      .rt-rating {
-        background-color: #fa320a;
-        color: white;
-      }
-
-      .rt-rating:hover {
-        background-color: #e02d09;
-        color: white;
-      }
-
-      .imdb-rating {
-        background-color: #f5c518;
-        color: #000;
-      }
-
-      .imdb-rating:hover {
-        background-color: #e6b800;
-        color: #000;
-      }
-
-      .video-iframe {
-        width: 100%;
-        height: 250px;
-        border-radius: 8px;
-        border: none;
-      }
-
-      @media (max-width: 768px) {
-        .video-cards {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-          padding: 1rem 0;
-        }
-
-        .video-card {
-          padding: 1rem;
-        }
-
-        .video-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.75rem;
-        }
-
-        .movie-name {
-          font-size: 1.125rem;
-        }
-
-        .video-iframe {
-          height: 200px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .ratings-container {
-          flex-direction: column;
-          gap: 0.25rem;
-          width: 100%;
-        }
-
-        .rating-link {
-          text-align: center;
-          width: 100%;
-        }
-      }
-
-      
-
-
-    </style>
+    <link rel="stylesheet" href="css/watch.css">
   </head>
   <body>
     <!-- Logo Header -->
@@ -183,11 +59,13 @@
                 </a>
               </div>
             </div>
-            <iframe src="https://www.youtube.com/embed/GgB7smBkk4I?si=Wm9iFuCA87KBZWAV" 
-                    title="The Animal Kingdom" 
-                    class="video-iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+            <div class="video-iframe-container">
+              <iframe src="https://www.youtube.com/embed/GgB7smBkk4I?si=Wm9iFuCA87KBZWAV" 
+                      title="The Animal Kingdom" 
+                      class="video-iframe"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen></iframe>
+            </div>
           </div> 
 
           <!-- Holy Spider -->
@@ -209,11 +87,13 @@
                 </a>
               </div>
             </div>
-            <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
-                    title="Holy Spider" 
-                    class="video-iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+            <div class="video-iframe-container">
+              <iframe src="https://www.youtube.com/embed/27wZZ6O1IBc" 
+                      title="Holy Spider" 
+                      class="video-iframe"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen></iframe>
+            </div>
           </div>
 
           <!-- Video Card 2 -->
@@ -235,11 +115,13 @@
                 </a>
               </div>
             </div>
-            <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
-                    title="The Pact" 
-                    class="video-iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+            <div class="video-iframe-container">
+              <iframe src="https://www.youtube.com/embed/XFEjEo8T2E4" 
+                      title="The Pact" 
+                      class="video-iframe"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen></iframe>
+            </div>
           </div>
 
           <!-- Video Card 3 -->
@@ -261,11 +143,13 @@
                 </a>
               </div>
             </div>
-            <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
-                    title="Jeanne du Barry" 
-                    class="video-iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+            <div class="video-iframe-container">
+              <iframe src="https://www.youtube.com/embed/7vz6PE6fM-g" 
+                      title="Jeanne du Barry" 
+                      class="video-iframe"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen></iframe>
+            </div>
           </div>
 
           <!-- Video Card 4 - New Addition -->
@@ -287,11 +171,13 @@
                 </a>
               </div>
             </div>
-            <iframe src="https://www.youtube.com/embed/GBeb_ZUmiRQ"
-                    title="Let It Be Morning"
-                    class="video-iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+            <div class="video-iframe-container">
+              <iframe src="https://www.youtube.com/embed/GBeb_ZUmiRQ"
+                      title="Let It Be Morning"
+                      class="video-iframe"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </div>

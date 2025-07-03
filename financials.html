@@ -8,7 +8,7 @@
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-32x32.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
     
@@ -271,101 +271,11 @@
     .arrow-up::before { content: '↗'; font-size: 1.1em; }
     .arrow-down::before { content: '↘'; font-size: 1.1em; }
 
-    /* Table */
-    .table-wrapper {
-        margin: 1rem 0;
-        overflow: auto;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px var(--shadow-color);
-        background: var(--bg-primary);
-        max-height: 70vh;
-        position: relative;
-    }
 
-    table {
-        width: 100%;
-        min-width: 600px;
-        border-collapse: collapse;
-        position: relative;
-    }
 
-    th, td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid var(--border-color);
-        white-space: nowrap;
-        background: var(--bg-primary);
-    }
+ 
 
-    th {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        font-weight: 600;
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        border: 1px solid var(--border-color);
-    }
-
-    td:first-child, th:first-child {
-        position: sticky;
-        left: 0;
-        background: var(--bg-secondary);
-        border-right: 2px solid var(--border-color);
-        z-index: 1;
-        box-shadow: 2px 0 4px rgba(0,0,0,0.1);
-    }
-
-    th:first-child {
-        z-index: 3;
-        background: var(--bg-secondary);
-    }
-
-    tbody tr:hover td {
-        background: var(--bg-hover, rgba(44, 95, 90, 0.05));
-    }
-
-    tbody tr:hover td:first-child {
-        background: var(--bg-hover, rgba(44, 95, 90, 0.05));
-    }
-
-    /* Scrollbar styling */
-    .table-wrapper::-webkit-scrollbar {
-        height: 8px;
-    }
-
-    .table-wrapper::-webkit-scrollbar-thumb {
-        background: var(--logo-teal);
-        border-radius: 4px;
-    }
-
-    .table-wrapper::-webkit-scrollbar-thumb:hover {
-        background: var(--logo-orange);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .header h1 {
-            font-size: 2rem;
-        }
-
-        .filters {
-            justify-content: stretch;
-        }
-
-        .filter-btn {
-            flex: 1;
-        }
-
-        table {
-            min-width: 500px;
-        }
-
-        th, td {
-            padding: 8px 6px;
-            font-size: 0.85rem;
-        }
-    }
+ 
 </style>
 
 </head>

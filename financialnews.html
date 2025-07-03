@@ -41,8 +41,8 @@
     <div class="content">
       <h2 class="animated-title">Financial News</h2>
         <div class="card">
-          <div class="card-header" onclick="toggleCard('airo-card')">
-            <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener" onclick="event.stopPropagation()">IPO - AIRO</a></h1>
+          <div class="card-header" data-toggle="airo-card">
+            <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a></h1>
             <span class="card-toggle" id="airo-toggle">▼</span>
           </div>
           <div class="card-content" id="airo-card">
@@ -117,8 +117,8 @@
         </div>
 
         <div class="card">
-          <div class="card-header" onclick="toggleCard('crcl-card')">
-            <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener" onclick="event.stopPropagation()">IPO - CRCL</a></h1>
+          <div class="card-header" data-toggle="crcl-card">
+            <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a></h1>
             <span class="card-toggle" id="crcl-toggle">▼</span>
           </div>
           <div class="card-content" id="crcl-card">
@@ -160,7 +160,7 @@
         </div>
 
         <div class="card">
-          <div class="card-header" onclick="toggleCard('fomc-card')">
+          <div class="card-header" data-toggle="fomc-card">
             <h1>FOMC Minutes - May 2025</h1>
             <span class="card-toggle" id="fomc-toggle">▼</span>
           </div>
@@ -193,25 +193,7 @@
       </div>
     </div>
 
-    <script>
-      function toggleCard(cardId) {
-        const content = document.getElementById(cardId);
-        const toggle = document.getElementById(cardId.replace('-card', '-toggle'));
-        
-        if (content.classList.contains('expanded')) {
-          content.classList.remove('expanded');
-          toggle.classList.remove('rotated');
-        } else {
-          content.classList.add('expanded');
-          toggle.classList.add('rotated');
-        }
-      }
-      
-      // Initialize cards as collapsed on load
-      document.addEventListener('DOMContentLoaded', function() {
-        // Cards start collapsed by default due to max-height: 0
-      });
-    </script>
+    <script src="js/financialnews.js" defer></script>
 
     <script src="/js/nav.js" defer></script>
     <script src="/js/read-nav.js" defer></script>

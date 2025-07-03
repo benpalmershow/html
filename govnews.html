@@ -10,15 +10,9 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
   <title>Government News</title>
-  <!-- Third-party scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preload" href="css/body.css" as="style">
   <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/news.css">
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-3gJwYp4gkAI6k3B8hZrK6YwQK4l1Q5lI4Q+6Q5Q5Q5Q=" crossorigin="anonymous"></script>
-  <!-- Collapsible logic (shared) -->
-  <script src="js/collapsible.js" defer></script>
   <style>
     .justice-card {
       margin-bottom: 15px;
@@ -264,11 +258,11 @@
 
       <!-- Senate One Big Beautiful Bill Card -->
       <div class="justice-card">
-        <div class="card-header" data-toggle="big-bill-card">
+        <div class="card-header" onclick="toggleCard(this)">
           <h1>Latest on Big Beautiful Bill</h1>
           <span class="expand-icon">+</span>
         </div>
-        <div class="card-content" id="big-bill-card">
+        <div class="card-content">
           <div class="card-inner">
             <section class="section">
               <div class="highlights">
@@ -313,11 +307,11 @@
 
       <!-- California CEQA Reforms Card -->
       <div class="justice-card">
-        <div class="card-header" data-toggle="ca-ceqa-card">
+        <div class="card-header" onclick="toggleCard(this)">
           <h1>CA CEQA Reforms </h1>
           <span class="expand-icon">+</span>
         </div>
-        <div class="card-content" id="ca-ceqa-card">
+        <div class="card-content">
           <div class="card-inner">
             <section class="section">
               <div class="highlights">
@@ -375,6 +369,22 @@
   </div>
 
   <script>
+    function toggleCard(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.expand-icon');
+      
+      if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('expanded');
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+
     // Initialize Gorsuch chart
     window.addEventListener('load', function() {
       const ctx = document.getElementById('gorsuchChart').getContext('2d');

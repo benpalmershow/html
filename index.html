@@ -29,6 +29,7 @@
     <script defer src="@vercel/speed-insights/script.js"></script>
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
+    
     <title>Howdy, Stranger</title>
    
   </head>
@@ -56,6 +57,23 @@
       </p>
     </div>
   </div>
+   <style>
+   
+    .animated-title {
+      animation: fadeInSlideDown 5.5s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 1;
+    }
+    @keyframes fadeInSlideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
   <script src="/js/nav.js" defer></script>
 </body>
 </html>

@@ -25,11 +25,11 @@ function toggleCard(headerOrId) {
   }
 }
 
-window.addEventListener('load', function() {
-  const chartCanvas = document.getElementById('gorsuchChart');
+$(function() {
+  var chartCanvas = document.getElementById('gorsuchChart');
   if (chartCanvas && window.Chart) {
-    const ctx = chartCanvas.getContext('2d');
-    const data = {
+    var ctx = chartCanvas.getContext('2d');
+    var data = {
       labels: [
         'Brokerage Accounts (ETFs, stocks, bonds)',
         'Retirement Accounts (IRAs)',
@@ -48,7 +48,7 @@ window.addEventListener('load', function() {
         ]
       }]
     };
-    const config = {
+    var config = {
       type: 'pie',
       data: data,
       options: {
@@ -61,9 +61,9 @@ window.addEventListener('load', function() {
           tooltip: {
             callbacks: {
               label: function(context) {
-                let label = context.label || '';
-                let value = context.raw;
-                return `${label}: ${value}%`;
+                var label = context.label || '';
+                var value = context.raw;
+                return label + ': ' + value + '%';
               }
             }
           }

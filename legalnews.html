@@ -4,15 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Legal News</title>
+  <!-- Third-party scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-32x32.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#2C5F5A">
   <link rel="preload" href="css/body.css" as="style">
   <link rel="stylesheet" href="css/body.css">
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-32x32.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#2C5F5A">
+  <link rel="stylesheet" href="css/news.css">
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-3gJwYp4gkAI6k3B8hZrK6YwQK4l1Q5lI4Q+6Q5Q5Q5Q=" crossorigin="anonymous"></script>
+  <!-- Collapsible logic (shared) -->
+  <script src="js/collapsible.js" defer></script>
+  <!-- Page-specific logic -->
+  <script src="js/legalnews.js" defer></script>
   <style>
     .justice-card {
       margin-bottom: 15px;
@@ -258,96 +266,92 @@
       
       <!-- Justice Gorsuch Card -->
       <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header" data-toggle="gorsuch-card">
           <h1>Financial Disclosures: Justice Gorsuch</h1>
           <span class="expand-icon">+</span>
         </div>
-        <div class="card-content">
+        <div class="card-content" id="gorsuch-card">
           <div class="card-inner">
-            <section class="section">
-              <div class="financial-grid">
-                <div class="financial-column">
-                  <h2>Annual Income Summary</h2>
-                  <div class="table-wrapper">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Source</th>
-                          <th>Type</th>
-                          <th>Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>HarperCollins Publishers LLC</td>
-                          <td>Royalties</td>
-                          <td class="number">$250,000.00</td>
-                        </tr>
-                        <tr>
-                          <td>George Mason University</td>
-                          <td>Teaching</td>
-                          <td class="number">$30,379.91</td>
-                        </tr>
-                        <tr>
-                          <td>Princeton University Press</td>
-                          <td>Royalties</td>
-                          <td class="number">$259.95</td>
-                        </tr>
-                        <tr>
-                          <td>Investment Dividends</td>
-                          <td>Investment Income</td>
-                          <td class="number">~$50,000 - $100,000</td>
-                        </tr>
-                        <tr>
-                          <td>Bank Interest / CDs</td>
-                          <td>Investment Income</td>
-                          <td class="number">~$1,000 - $2,500</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="total-summary">Estimated Total Annual Income: $330,000 - $380,000</div>
+            <div class="financial-grid">
+              <div class="financial-column">
+                <h2>Annual Income Summary</h2>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Source</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>HarperCollins Publishers LLC</td>
+                        <td>Royalties</td>
+                        <td class="number">$250,000.00</td>
+                      </tr>
+                      <tr>
+                        <td>George Mason University</td>
+                        <td>Teaching</td>
+                        <td class="number">$30,379.91</td>
+                      </tr>
+                      <tr>
+                        <td>Princeton University Press</td>
+                        <td>Royalties</td>
+                        <td class="number">$259.95</td>
+                      </tr>
+                      <tr>
+                        <td>Investment Dividends</td>
+                        <td>Investment Income</td>
+                        <td class="number">~$50,000 - $100,000</td>
+                      </tr>
+                      <tr>
+                        <td>Bank Interest / CDs</td>
+                        <td>Investment Income</td>
+                        <td class="number">~$1,000 - $2,500</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-
-                <div class="financial-column">
-                  <h2>Assets Summary</h2>
-                  <div class="table-wrapper">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Asset Type</th>
-                          <th>Inferred Range</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
-                          <td class="number">$1M - $25M+</td>
-                        </tr>
-                        <tr>
-                          <td>Retirement Accounts (IRAs)</td>
-                          <td class="number">$1M - $25M</td>
-                        </tr>
-                        <tr>
-                          <td>529 Education Savings Plans</td>
-                          <td class="number">&lt;$50,000</td>
-                        </tr>
-                        <tr>
-                          <td>Bank / Cash Accounts</td>
-                          <td class="number">&lt;$250,000</td>
-                        </tr>
-                        <tr>
-                          <td>CDs / Money Market Funds</td>
-                          <td class="number">&lt;$250,000</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="total-summary">Total Assets (Estimate): $6 million – $25+ million</div>
-                </div>
+                <div class="total-summary">Estimated Total Annual Income: $330,000 - $380,000</div>
               </div>
-            </section>
-
+              <div class="financial-column">
+                <h2>Assets Summary</h2>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Asset Type</th>
+                        <th>Inferred Range</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
+                        <td class="number">$1M - $25M+</td>
+                      </tr>
+                      <tr>
+                        <td>Retirement Accounts (IRAs)</td>
+                        <td class="number">$1M - $25M</td>
+                      </tr>
+                      <tr>
+                        <td>529 Education Savings Plans</td>
+                        <td class="number">&lt;$50,000</td>
+                      </tr>
+                      <tr>
+                        <td>Bank / Cash Accounts</td>
+                        <td class="number">&lt;$250,000</td>
+                      </tr>
+                      <tr>
+                        <td>CDs / Money Market Funds</td>
+                        <td class="number">&lt;$250,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="total-summary">Total Assets (Estimate): $6 million – $25+ million</div>
+              </div>
+            </div>
             <section class="section">
               <h2>Investments & Trust Highlights</h2>
               <div class="highlights">
@@ -360,7 +364,6 @@
                 </ul>
               </div>
             </section>
-
             <section class="section">
               <h2>Asset Allocation Pie Chart</h2>
               <div class="chart-container">
@@ -374,11 +377,11 @@
 
       <!-- Trump v. CASA Card -->
       <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header" data-toggle="trump-card">
           <h1>Supreme Court Case: Trump v. CASA, Inc.</h1>
           <span class="expand-icon">+</span>
         </div>
-        <div class="card-content">
+        <div class="card-content" id="trump-card">
           <div class="card-inner">
             <section class="section">
               <h2>Case Summary</h2>
@@ -437,7 +440,6 @@
     </div>
   </div>
 
-    <script src="js/legalnews.js" defer></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.card-header[data-toggle]').forEach(function(header) {

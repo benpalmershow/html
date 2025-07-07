@@ -1,7 +1,4 @@
-.justice-card {
-  margin-bottom: 15px;
-}
-
+.justice-card { margin-bottom: 15px; }
 .card-header {
   cursor: pointer;
   display: flex;
@@ -13,25 +10,20 @@
   border-radius: .375rem .375rem 0 0;
   transition: all 0.3s ease;
 }
-
 .card-header:hover {
   border-color: var(--logo-orange);
   background: var(--bg-primary);
 }
-
 .card-header h1 {
   margin: 0;
   font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-  text-align: left;
 }
-
 .expand-icon {
   font-size: 1.3rem;
   color: var(--logo-orange);
   transition: transform 0.3s ease;
   font-weight: bold;
 }
-
 .card-content {
   max-height: 0;
   overflow: hidden;
@@ -41,47 +33,12 @@
   border-top: none;
   border-radius: 0 0 .375rem .375rem;
 }
-
-.card-content.expanded {
-  max-height: 2000px;
-}
-
-.card-inner {
-  padding: 1rem;
-}
-
-.section {
-  margin-bottom: 1.5rem;
-}
-
-.section:last-child {
-  margin-bottom: 0;
-}
-
-.section h2 {
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-}
-
-.table-wrapper {
-  margin: 0;
-}
-
-.table-wrapper table {
-  margin: 0;
-}
-
-.table-wrapper table th,
-.table-wrapper table td {
-  padding: 0.5rem 0.75rem;
-}
-
-.chart-container {
-  position: relative;
-  height: 350px;
-  margin: 15px 0 0 0;
-}
-
+.card-content.expanded { max-height: 2000px; }
+.card-inner { padding: 1rem; }
+.section { margin-bottom: 1.5rem; }
+.section h2 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+.table-wrapper table th, .table-wrapper table td { padding: 0.5rem 0.75rem; }
+.chart-container { position: relative; height: 350px; margin: 15px 0; }
 .total-summary {
   text-align: center;
   font-weight: bold;
@@ -90,31 +47,17 @@
   background: var(--bg-primary);
   padding: 0.75rem;
   border-radius: .375rem;
-  margin: 15px 0 0 0;
+  margin: 15px 0;
   border: 1px solid var(--border-color);
 }
-
 .highlights {
   background: var(--bg-primary);
   padding: 1rem;
   border-radius: .375rem;
   border: 1px solid var(--border-color);
-  margin: 0;
 }
-
-.highlights ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.highlights li {
-  margin-bottom: 6px;
-}
-
-.highlights li:last-child {
-  margin-bottom: 0;
-}
-
+.highlights ul { margin: 0; padding-left: 18px; }
+.highlights li { margin-bottom: 6px; }
 .add-justice-btn {
   background: var(--logo-orange);
   color: white;
@@ -124,88 +67,31 @@
   font-size: 1rem;
   cursor: pointer;
   display: block;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
   transition: all 0.3s ease;
   font-family: Georgia, 'Times New Roman', serif;
 }
-
 .add-justice-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px var(--shadow-color);
   background: var(--logo-teal);
 }
-
-.animated-title {
-  margin-bottom: 1.5rem;
-}
-
-.placeholder-content {
-  text-align: center;
-  color: var(--text-muted);
-  font-style: italic;
-  padding: 30px 20px;
-}
-
-.container {
-  max-width: min(95%, 1200px);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.content {
-  padding: 1.5rem 0;
-}
-
-.financial-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.financial-column {
-  min-width: 0;
-}
-
-.financial-column h2 {
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-}
-
+.container { max-width: min(95%, 1200px); margin: 0 auto; padding: 0 1rem; }
+.content { padding: 1.5rem 0; }
+.financial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.financial-column { min-width: 0; }
+.financial-column h2 { margin-bottom: 0.75rem; font-size: 1.1rem; }
 @media (max-width: 768px) {
-  .financial-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .card-header {
-    padding: 0.625rem 0.75rem;
-  }
-  .card-inner {
-    padding: 0.75rem;
-  }
-  .table-wrapper table th,
-  .table-wrapper table td {
-    padding: 0.375rem 0.5rem;
-    font-size: 0.9rem;
-  }
-  .chart-container {
-    height: 300px;
-  }
-  .container {
-    padding: 0 0.75rem;
-  }
+  .financial-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .card-header { padding: 0.625rem 0.75rem; }
+  .card-inner { padding: 0.75rem; }
+  .table-wrapper table th, .table-wrapper table td { padding: 0.375rem 0.5rem; font-size: 0.9rem; }
+  .chart-container { height: 300px; }
+  .container { padding: 0 0.75rem; }
 }
-
 @media (max-width: 480px) {
-  .card-header {
-    padding: 0.5rem;
-  }
-  .card-inner {
-    padding: 0.5rem;
-  }
-  .section {
-    margin-bottom: 1rem;
-  }
-  .chart-container {
-    height: 250px;
-  }
-} 
+  .card-header { padding: 0.5rem; }
+  .card-inner { padding: 0.5rem; }
+  .section { margin-bottom: 1rem; }
+  .chart-container { height: 250px; }
+}

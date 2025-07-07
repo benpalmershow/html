@@ -449,23 +449,4 @@ a:hover {
     display: none
   }
 }
-/* Socials Footer */
-.site-footer-social {
-  padding: 2rem 1rem;
-  margin-top: 2rem;
-  text-align: center;
-  border-top: 1px solid #e5e7eb; /* A light gray border */
-}
 
-.social-links a {
-  margin: 0 15px;
-  color: #4b5563; /* A darker gray for text */
-  text-decoration: none;
-  font-size: 1em;
-  transition: color 0.2s ease-in-out;
-}
-
-.social-links a:hover {
-  color: #111827; /* Black on hover */
-  text-decoration: underline;
-}

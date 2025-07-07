@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = [
         { href: 'read.html', title: 'Announcements', isLogo: true },
         { href: 'financials.html', icon: '📊', title: 'Financial Insight' },
-        { href: 'legalnews.html', icon: '⚖️', title: 'Legal News' },
-        { href: 'financialnews.html', icon: '🗒️', title: 'Financial News' },
+        { href: 'news.html', icon: '📰', title: 'News' },
         { href: 'journal.html', icon: '✍️', title: 'Journal' },
     ];
 

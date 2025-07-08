@@ -1,3 +1,17 @@
+.tag {
+  display: inline-block;
+  background: var(--logo-orange);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin: 0.25rem;
+  font-weight: 500;
+}
+
+.card-tags {
+  margin-top: 1rem;
+}
 .justice-card { margin-bottom: 15px; }
 .card-header {
   cursor: pointer;

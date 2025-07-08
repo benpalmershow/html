@@ -20,6 +20,7 @@
     <script defer src="@vercel/speed-insights/script.js"></script>
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -46,44 +47,104 @@
     
     <div class="container">
       <div class="content">
-        <div id="listen-feed">
-          <div class="card">
-            <div class="card-title">TBPS – JulCara</div>
-            <a href="https://music.youtube.com/playlist?list=PLJzHo08oXQBcMObZ71kTeyZzTr7NzgTuC&si=rhjMceC6osgrD4A8" target="_blank" rel="noopener">YouTube</a>
-          </div>
-          <div class="card">
-            <div class="card-title">TBPS – JunCara</div>
-            <a href="https://music.youtube.com/playlist?list=PLJzHo08oXQBfkXW0-RYSFbLhWwOh6djrZ&si=M4HWaOd3NM1oSJ6m" target="_blank" rel="noopener">YouTube</a>
-          </div>
-          <div class="card">
-            <div class="card-title">The Ben Palmer Show (TBPS)</div>
-            <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">Apple</a>
-            <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">Spotify</a>
-            <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">YouTube</a>
-          </div>
-          
-          <div class="card">
-            <div class="card-title">SCOTUS Oral Arguments</div>
-            <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">Apple</a>
-            </div>
-          
         
-          
-          <div class="card">
-            <div class="card-title">SCOTUS – Trump v. CASA, Inc.</div>
-            <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">Apple</a>
+        
+        <div id="listen-feed">
+          <div class="card audio-card">
+            <div class="card-header">
+              <i class="fas fa-podcast card-icon"></i>
+              <div class="card-title">TBPS – JulCara</div>
+            </div>
+            <div class="card-links">
+              <a href="https://music.youtube.com/playlist?list=PLJzHo08oXQBcMObZ71kTeyZzTr7NzgTuC&si=rhjMceC6osgrD4A8" target="_blank" rel="noopener">
+                <i class="fab fa-youtube"></i> YouTube Music
+              </a>
+            </div>
           </div>
           
-          <div class="card">
-            <div class="card-title">Allen Stone – "A Father's Song"</div>
-            <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">YouTube</a>
+          <div class="card audio-card">
+            <div class="card-header">
+              <i class="fas fa-podcast card-icon"></i>
+              <div class="card-title">TBPS – JunCara</div>
+            </div>
+            <div class="card-links">
+              <a href="https://music.youtube.com/playlist?list=PLJzHo08oXQBfkXW0-RYSFbLhWwOh6djrZ&si=M4HWaOd3NM1oSJ6m" target="_blank" rel="noopener">
+                <i class="fab fa-youtube"></i> YouTube Music
+              </a>
+            </div>
           </div>
           
-          <div class="card">
-            <div class="card-title">Almost Monday – "Can't Slow Down"</div>
-            <a href="https://music.apple.com/us/album/cant-slow-down-single/1746137121">Apple</a>
-            <a href="https://open.spotify.com/track/15IF4wSCMrAo2Rq0eytARR">Spotify</a>
-            <a href="https://music.youtube.com/watch?v=U19wX8npUV8&si=Ts8uoxtqLL_onzRT">YouTube</a>
+          <div class="card audio-card featured">
+            <div class="card-header">
+              <i class="fas fa-microphone card-icon"></i>
+              <div class="card-title">The Ben Palmer Show (TBPS)</div>
+              <span class="featured-badge">Featured</span>
+            </div>
+            <div class="card-links">
+              <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289">
+                <i class="fab fa-apple"></i> Apple Podcasts
+              </a>
+              <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ?si=d455345231ee4d40">
+                <i class="fab fa-spotify"></i> Spotify
+              </a>
+              <a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJt1shUPbdHllgLiSpA3WMq3&feature=shared">
+                <i class="fab fa-youtube"></i> YouTube
+              </a>
+            </div>
+          </div>
+          
+          <div class="card audio-card">
+            <div class="card-header">
+              <i class="fas fa-gavel card-icon"></i>
+              <div class="card-title">SCOTUS Oral Arguments</div>
+            </div>
+            <div class="card-links">
+              <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137">
+                <i class="fab fa-apple"></i> Apple Podcasts
+              </a>
+            </div>
+          </div>
+          
+          <div class="card audio-card">
+            <div class="card-header">
+              <i class="fas fa-balance-scale card-icon"></i>
+              <div class="card-title">SCOTUS – Trump v. CASA, Inc.</div>
+            </div>
+            <div class="card-links">
+              <a href="https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000708646110">
+                <i class="fab fa-apple"></i> Apple Podcasts
+              </a>
+            </div>
+          </div>
+          
+          <div class="card audio-card">
+            <div class="card-header">
+              <i class="fas fa-music card-icon"></i>
+              <div class="card-title">Allen Stone – "A Father's Song"</div>
+            </div>
+            <div class="card-links">
+              <a href="https://music.youtube.com/watch?v=Tgvjv5yIr9o&si=_mgXBCGuHBAyI264">
+                <i class="fab fa-youtube"></i> YouTube Music
+              </a>
+            </div>
+          </div>
+          
+          <div class="card audio-card">
+            <div class="card-header">
+              <i class="fas fa-music card-icon"></i>
+              <div class="card-title">Almost Monday – "Can't Slow Down"</div>
+            </div>
+            <div class="card-links">
+              <a href="https://music.apple.com/us/album/cant-slow-down-single/1746137121">
+                <i class="fab fa-apple"></i> Apple Music
+              </a>
+              <a href="https://open.spotify.com/track/15IF4wSCMrAo2Rq0eytARR">
+                <i class="fab fa-spotify"></i> Spotify
+              </a>
+              <a href="https://music.youtube.com/watch?v=U19wX8npUV8&si=Ts8uoxtqLL_onzRT">
+                <i class="fab fa-youtube"></i> YouTube Music
+              </a>
+            </div>
           </div>
           
         </div>

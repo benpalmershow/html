@@ -10,6 +10,7 @@
       "april": "320.8",
       "may": "321.5",
       "june": "TBD 7/11",
+      "july": "",
       "change": "+0.22"
     },
     {
@@ -21,6 +22,7 @@
       "april": "+2.3%",
       "may": "+2.4%",
       "june": "TBD 7/11",
+      "july": "",
       "change": "+0.10"
     },
     {
@@ -32,6 +34,7 @@
       "april": "2.5%",
       "may": "2.6%",
       "june": "TBD 7/16",
+      "july": "",
       "change": "+0.10"
     },
     {
@@ -43,6 +46,7 @@
       "april": "+158,000",
       "may": "+144,000",
       "june": "+147,000",
+      "july": "",
       "change": "+2.08"
     },
     {
@@ -54,6 +58,7 @@
       "april": "226,000",
       "may": "234,000",
       "june": "241,500",
+      "july": "",
       "change": "+3.21"
     },
     {
@@ -65,6 +70,7 @@
       "april": "7.4M",
       "may": "7.8M",
       "june": "TBD 8/2",
+      "july": "",
       "change": "+5.26"
     },
     {
@@ -72,10 +78,11 @@
       "agency": "ADP",
       "name": "Private Employment",
       "url": "https://www.adpresearch.com",
-      "march": "134,391,000",
-      "april": "134,451,000",
-      "may": "134,480,000",
-      "june": "134,447,000",
+      "march": "134,391M",
+      "april": "134,451M",
+      "may": "134,480M",
+      "june": "134,447M",
+      "july": "",
       "change": "-0.02"
     },
     {
@@ -87,6 +94,7 @@
       "april": "1,392,000",
       "may": "1,256,000",
       "june": "TBD 7/17",
+      "july": "",
       "change": "-9.78"
     },
     {
@@ -98,6 +106,7 @@
       "april": "722,000",
       "may": "623,000",
       "june": "TBD 7/24",
+      "july": "",
       "change": "-13.7"
     },
     {
@@ -109,6 +118,7 @@
       "april": "101",
       "may": "TBD 7/11",
       "june": "TBD 8/8",
+      "july": "",
       "change": "-2.33"
     },
     {
@@ -120,6 +130,7 @@
       "april": "40",
       "may": "34",
       "june": "32",
+      "july": "",
       "change": "-5.88"
     },
     {
@@ -131,6 +142,7 @@
       "april": "6.73%",
       "may": "6.82%",
       "june": "6.85%",
+      "july": "",
       "change": "+0.44"
     },
     {
@@ -142,6 +154,7 @@
       "april": "4.28%",
       "may": "4.42%",
       "june": "4.41%",
+      "july": "",
       "change": "-0.23"
     },
     {
@@ -153,6 +166,7 @@
       "april": "48.7",
       "may": "48.5",
       "june": "49",
+      "july": "",
       "change": "+1.02"
     },
     {
@@ -164,6 +178,7 @@
       "april": "119.3",
       "may": "TBD 6/20",
       "june": "TBD 7/18",
+      "july": "",
       "change": "+0.33"
     },
     {
@@ -175,18 +190,20 @@
       "april": "$594.6B",
       "may": "TBD 7/3",
       "june": "TBD 8/4",
+      "july": "",
       "change": "-3.69"
     },
     {
       "category": "Business Indicators",
       "agency": "Commerce",
       "name": "Construction Spending",
-      "url": "https://www.census.gov/construction/c30/",
+      "url": "https://www.census.gov/construction/c30/current/index.html",
       "march": "$2.162T",
-      "april": "$2.152T",
-      "may": "TBD 7/1",
+      "april": "$2.145T",
+      "may": "2.138T",
       "june": "TBD 8/1",
-      "change": "-0.46"
+      "july": "",
+      "change": "-.03"
     },
     {
       "category": "Business Indicators",
@@ -197,6 +214,7 @@
       "april": "$722B",
       "may": "$715.4B",
       "june": "TBD 7/16",
+      "july": "",
       "change": "-0.92"
     },
     {
@@ -208,6 +226,7 @@
       "april": "52.2",
       "may": "52.2",
       "june": "60.7",
+      "july": "",
       "change": "+15.06"
     },
     {
@@ -219,6 +238,7 @@
       "april": "85.7",
       "may": "98.4",
       "june": "93",
+      "july": "",
       "change": "-5.4"
     },
     {
@@ -229,8 +249,9 @@
       "march": "210.1",
       "april": "208.2",
       "may": "205.2",
-      "june": "TBD 7/9",
-      "change": "-1.44"
+      "june": "208.5",
+      "july": "TBD 8/7",
+      "change": "+1.6"
     },
     {
       "category": "Consumer Indicators",
@@ -241,10 +262,11 @@
       "april": "20669",
       "may": "20592.7",
       "june": "TBD 7/26",
+      "july": "",
       "change": "-0.369"
     },
     {
-      "category": "Currency & Trade",
+      "category": "Trade & Tariffs",
       "agency": "FRED",
       "name": "Dollar Value Index",
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
@@ -252,6 +274,7 @@
       "april": "124",
       "may": "122.68",
       "june": "120.07",
+      "july": "",
       "change": "-2.14"
     },
     {
@@ -263,6 +286,7 @@
       "april": "$2.9B",
       "may": "$3.1B",
       "june": "TBD 6/20",
+      "july": "",
       "change": "+6.90"
     },
     {
@@ -274,6 +298,7 @@
       "april": "$8.4B",
       "may": "$8.6B",
       "june": "TBD 6/28",
+      "july": "",
       "change": "+2.38"
     },
     {
@@ -285,6 +310,7 @@
       "april": "-$67.8B",
       "may": "-$67.5B",
       "june": "TBD 6/28",
+      "july": "",
       "change": "-0.44"
     },
   
@@ -297,6 +323,7 @@
       "april": "-61.6",
       "may": "TBD 7/3",
       "june": "TBD 8/6",
+      "july": "",
       "change": "-55.48"
     },
     {
@@ -308,6 +335,7 @@
       "april": "+4.8%",
       "may": "+5.5%",
       "june": "TBD 6/25",
+      "july": "",
       "change": "+14.6"
     },
     {
@@ -319,6 +347,7 @@
       "april": "4.4M",
       "may": "4.6M",
       "june": "TBD 6/25",
+      "july": "",
       "change": "+4.55"
     },
     {
@@ -330,6 +359,7 @@
       "april": "12,030",
       "may": "12,425",
       "june": "",
+      "july": "",
       "change": "+3.28"
     },
     {
@@ -341,6 +371,7 @@
       "april": "1.3M",
       "may": "1.4M",
       "june": "TBD 6/25",
+      "july": "",
       "change": "+7.69"
     },
     {
@@ -348,22 +379,24 @@
       "agency": "Treasury",
       "name": "Treasury Debt Level",
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
-      "march": "$34.5T",
-      "april": "$34.6T",
-      "may": "$34.7T",
-      "june": "TBD 6/30",
-      "change": "+0.29"
+      "march": "$36,216,627,186,278.78",
+      "april": "$36,215,156,673,113.80",
+      "may": "$36,215,576,799,286.87",
+      "june": "$36,214,400,664,854.53",
+      "july": "$36,214,482,241,911.14",
+      "change": "+"
     },
     {
       "category": "Government Finance",
       "agency": "Treasury",
       "name": "Monthly Budget Deficit",
-      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
-      "march": "-$236B",
-      "april": "-$242B",
-      "may": "-$238B",
-      "june": "TBD 6/30",
-      "change": "-1.65"
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
+      "march": "-$160,528,321,499.36",
+      "april": "+$258,399,949,114.96",
+      "may": "-$316,003,761,189.44",
+      "june": "",
+      "july": "",
+      "change": ""
     },
     {
       "category": "Government Finance",
@@ -374,6 +407,7 @@
       "april": "$492B",
       "may": "$498B",
       "june": "TBD 6/30",
+      "july": "",
       "change": "+1.22"
     },
     {
@@ -383,9 +417,10 @@
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$89B",
       "april": "$91B",
-      "may": "$93B",
-      "june": "TBD 6/30",
-      "change": "+2.20"
+      "may": "$92.230B",
+      "june": "",
+      "july": "",
+      "change": ""
     },
     {
       "category": "Business Indicators",
@@ -396,6 +431,7 @@
       "april": "103.82",
       "may": "103.59",
       "june": "TBD 7/16",
+      "july": "",
       "change": "-0.22"
     },
     {
@@ -407,7 +443,20 @@
       "april": "329.6",
       "may": "TBD 7/30",
       "june": "TBD 8/27",
+      "july": "",
       "change": "+0.62"
+    },
+    {
+      "category": "Commodities",
+      "agency": "CME",
+      "name": "Copper Futures",
+      "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
+      "march": "4.5600",
+      "april": "4.6525",
+      "may": "5.0825",
+      "june": "5.5490",
+      "july": "5.5535",
+      "change": "+0.04"
     }
   ]
 }

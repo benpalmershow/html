@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financials 2 - Howdy, Stranger</title>
+    <title>Financials - Howdy, Stranger</title>
     
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -229,16 +229,17 @@
             'Southern Border Encounters': 'Number of encounters at the southern U.S. border.',
             'Sea Port Arrivals': 'Number of arrivals at U.S. sea ports.',
             'Treasury Debt Level': 'Total outstanding U.S. government debt.',
-            'Monthly Budget Deficit': 'Monthly difference between government spending and revenue.',
+            'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
             'Tax Revenue': 'Total tax revenue collected by the U.S. government.',
             'Interest on Debt': 'Monthly interest paid on U.S. government debt.',
             'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.',
-            'Case-Shiller National Home Price Index': 'Tracks changes in U.S. residential housing prices.'
+            'Case-Shiller National Home Price Index': 'Tracks changes in U.S. residential housing prices.',
+            'Copper Futures': 'Price of U.S. copper futures per pound. Used as a benchmark for industrial demand and economic activity.'
         };
 
         function createIndicatorCard(indicator) {
-            const months = ['march', 'april', 'may', 'june'];
-            const monthLabels = ['Mar', 'Apr', 'May', 'Jun'];
+            const months = ['march', 'april', 'may', 'june', 'july'];
+            const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
             let dataRows = '';
             months.forEach((month, index) => {
                 const value = indicator[month];
@@ -320,7 +321,6 @@
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', fetchFinancialData);
     </script>
-    <script src="/js/financials.js" defer></script>
     <script src="/js/portfolio.js" defer></script>
     <script src="/js/nav.js" defer></script>
     <script src="/js/read-nav.js?v=2" defer></script>

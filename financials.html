@@ -241,17 +241,32 @@
             const months = ['march', 'april', 'may', 'june', 'july'];
             const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
             let dataRows = '';
-            months.forEach((month, index) => {
-                const value = indicator[month];
-                if (value && value !== '') {
-                    dataRows += `
-                        <div class="data-row">
-                            <span class="month-label">${monthLabels[index]}:</span>
-                            <span class="month-value">${value}</span>
-                        </div>
-                    `;
-                }
-            });
+            // Special handling for Polymarket FOMC BPS indicator
+            if (indicator.name === 'FOMC July Rate Decision (BPS)' && indicator.bps_probabilities) {
+                dataRows += `<div class="data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
+                Object.entries(indicator.bps_probabilities).forEach(([bps, prob]) => {
+                    if (prob && prob !== '') {
+                        dataRows += `
+                            <div class="data-row">
+                                <span class="month-label">${bps}:</span>
+                                <span class="month-value">${prob}</span>
+                            </div>
+                        `;
+                    }
+                });
+            } else {
+                months.forEach((month, index) => {
+                    const value = indicator[month];
+                    if (value && value !== '') {
+                        dataRows += `
+                            <div class="data-row">
+                                <span class="month-label">${monthLabels[index]}:</span>
+                                <span class="month-value">${value}</span>
+                            </div>
+                        `;
+                    }
+                });
+            }
             const url = indicator.url || '#';
             // Add explanation as a tooltip on the indicator name
             const explanation = indicatorExplanations[indicator.name] || '';

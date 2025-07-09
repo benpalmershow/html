@@ -457,6 +457,24 @@
       "june": "5.5490",
       "july": "5.5535",
       "change": "+0.04"
+    },
+    {
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "FOMC July Rate Decision (BPS)",
+      "url": "https://polymarket.com/event/fed-decision-in-july?tid=1752095808940",
+      "march": "",
+      "april": "",
+      "may": "",
+      "june": "",
+      "july": "",
+      "next_meeting": "July 2024",
+      "bps_probabilities": {
+        "25BP Decrease": "4%",
+        "50+BP Decrease": "1%",
+        "No Change": "95%"
+      },
+      "change": ""
     }
   ]
 }

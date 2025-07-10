@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack">
           <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo" style="height: 1.7em; width: 1.7em; vertical-align: middle; transition: filter 0.2s;" />
         </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo" style="height: 1.7em; width: 1.7em; vertical-align: middle; transition: filter 0.2s;" />
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4" target="_blank" rel="noopener noreferrer" aria-label="Apple Podcasts">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" alt="Apple Podcasts logo" style="height: 1.7em; width: 1.7em; vertical-align: middle; transition: filter 0.2s;" />
+        </a>
       </div>
     </footer>
   `;

@@ -475,6 +475,42 @@
         "No Change": "95%"
       },
       "change": ""
+    },
+    {
+      "category": "Housing Market",
+      "agency": "NAR",
+      "name": "Existing Home Sales",
+      "url": "https://www.nar.realtor/newsroom/existing-home-sales-edged-lower-by-0-5-in-april",
+      "march": "",
+      "april": "3.99M",
+      "may": "4.03M",
+      "june": "TBD 7/23",
+      "july": "",
+      "change": "+0.8%"
+    },
+    {
+      "category": "Housing Market",
+      "agency": "NAR/Redfin/BofA",
+      "name": "Number of Days on Market (Median)",
+      "url": "https://mortgage.bankofamerica.com/l-artola?article=202505TR&p=real-estate-professionals",
+      "march": "",
+      "april": "47",
+      "may": "46",
+      "june": "TBD 7/23",
+      "july": "",
+      "change": "-2.13"
+    },
+    {
+      "category": "Commodities",
+      "agency": "Freightos/Goodhope",
+      "name": "Shipping Container Rate (China-US 40ft)",
+      "url": "https://goodhopefreight.com/shipping-to-usa/2025/fcl.html",
+      "march": "$3,800",
+      "april": "$4,200",
+      "may": "$5,650",
+      "june": "$6,100",
+      "july": "TBD",
+      "change": "+8.0%"
     }
   ]
 }

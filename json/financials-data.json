@@ -16,18 +16,6 @@
     {
       "category": "Inflation Measures",
       "agency": "BLS",
-      "name": "CPI (YoY)",
-      "url": "https://www.bls.gov/cpi/data.htm",
-      "march": "+2.4%",
-      "april": "+2.3%",
-      "may": "+2.4%",
-      "june": "TBD 7/11",
-      "july": "",
-      "change": "+0.10"
-    },
-    {
-      "category": "Inflation Measures",
-      "agency": "BLS",
       "name": "PPI",
       "url": "https://www.bls.gov/ppi/data.htm",
       "march": "3.3%",
@@ -40,24 +28,24 @@
     {
       "category": "Employment Indicators",
       "agency": "BLS",
-      "name": "Jobs Added",
+      "name": "Jobs Added (thousand)",
       "url": "https://www.bls.gov/cps/data.htm",
-      "march": "+120,000",
-      "april": "+158,000",
-      "may": "+144,000",
-      "june": "+147,000",
+      "march": "+120",
+      "april": "+158",
+      "may": "+144",
+      "june": "+147",
       "july": "",
       "change": "+2.08"
     },
     {
       "category": "Employment Indicators",
       "agency": "FRED",
-      "name": "Jobless Claims",
+      "name": "Jobless Claims (thousand)",
       "url": "https://fred.stlouisfed.org/series/ICSA",
-      "march": "223,200",
-      "april": "226,000",
-      "may": "234,000",
-      "june": "241,500",
+      "march": "223.2",
+      "april": "226",
+      "may": "234",
+      "june": "241.5",
       "july": "",
       "change": "+3.21"
     },
@@ -78,10 +66,10 @@
       "agency": "ADP",
       "name": "Private Employment",
       "url": "https://www.adpresearch.com",
-      "march": "134,391M",
-      "april": "134,451M",
-      "may": "134,480M",
-      "june": "134,447M",
+      "march": "134.4M",
+      "april": "134.5M",
+      "may": "134.5M",
+      "june": "134.45M",
       "july": "",
       "change": "-0.02"
     },
@@ -90,9 +78,9 @@
       "agency": "Census",
       "name": "Housing Starts",
       "url": "https://www.census.gov/construction/nrc/current/index.html",
-      "march": "1,339,000",
-      "april": "1,392,000",
-      "may": "1,256,000",
+      "march": "1.339M",
+      "april": "1.392M",
+      "may": "1.256M",
       "june": "TBD 7/17",
       "july": "",
       "change": "-9.78"
@@ -100,11 +88,11 @@
     {
       "category": "Housing Market",
       "agency": "Census",
-      "name": "New Home Sales",
+      "name": "New Home Sales (thousand)",
       "url": "https://www.census.gov/construction/nrs/current/index.html#:~:text=New%20Home%20Sales,April%202024%20rate%20of%20719%2C000.",
-      "march": "670,000",
-      "april": "722,000",
-      "may": "623,000",
+      "march": "670",
+      "april": "722",
+      "may": "623",
       "june": "TBD 7/24",
       "july": "",
       "change": "-13.7"
@@ -116,10 +104,10 @@
       "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "march": "103.4",
       "april": "101",
-      "may": "TBD 7/11",
+      "may": "97.2",
       "june": "TBD 8/8",
       "july": "",
-      "change": "-2.33"
+      "change": "-3.76"
     },
     {
       "category": "Housing Market",
@@ -176,10 +164,10 @@
       "url": "https://www.conference-board.org/topics/us-leading-indicators",
       "march": "118.9",
       "april": "119.3",
-      "may": "TBD 6/20",
+      "may": "119.6",
       "june": "TBD 7/18",
       "july": "",
-      "change": "+0.33"
+      "change": "+.4"
     },
     {
       "category": "Business Indicators",
@@ -188,7 +176,7 @@
       "url": "https://www.census.gov/economic-indicators/",
       "march": "$617.4B",
       "april": "$593.5B",
-      "may": "642B",
+      "may": "$642B",
       "june": "TBD 8/4",
       "july": "",
       "change": "+8.2"
@@ -200,7 +188,7 @@
       "url": "https://www.census.gov/construction/c30/current/index.html",
       "march": "$2.162T",
       "april": "$2.145T",
-      "may": "2.138T",
+      "may": "$2.138T",
       "june": "TBD 8/1",
       "july": "",
       "change": "-.03"
@@ -258,12 +246,12 @@
       "agency": "FRED",
       "name": "PCE",
       "url": "https://fred.stlouisfed.org/series/PCE",
-      "march": "20621.8",
-      "april": "20669",
-      "may": "20592.7",
+      "march": "20,578.5B",
+      "april": "20,662B",
+      "may": "20,592.7B",
       "june": "TBD 7/26",
       "july": "",
-      "change": "-0.369"
+      "change": "-0.34"
     },
     {
       "category": "Trade & Tariffs",
@@ -309,7 +297,7 @@
       "march": "-$68.2B",
       "april": "-$67.8B",
       "may": "-$67.5B",
-      "june": "TBD 6/28",
+      "june": "TBD",
       "july": "",
       "change": "-0.44"
     },
@@ -328,30 +316,6 @@
     },
     {
       "category": "Travel & Tourism",
-      "agency": "DHS",
-      "name": "Passenger Arrivals",
-      "url": "https://www.dhs.gov/immigration-statistics",
-      "march": "+5.2%",
-      "april": "+4.8%",
-      "may": "+5.5%",
-      "june": "TBD 6/25",
-      "july": "",
-      "change": "+14.6"
-    },
-    {
-      "category": "Travel & Tourism",
-      "agency": "DHS",
-      "name": "International Air Travelers",
-      "url": "https://www.dhs.gov/immigration-statistics",
-      "march": "4.2M",
-      "april": "4.4M",
-      "may": "4.6M",
-      "june": "TBD 6/25",
-      "july": "",
-      "change": "+4.55"
-    },
-    {
-      "category": "Travel & Tourism",
       "agency": "CBP",
       "name": "Southern Border Encounters",
       "url": "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
@@ -362,18 +326,7 @@
       "july": "",
       "change": "+3.28"
     },
-    {
-      "category": "Travel & Tourism",
-      "agency": "DHS",
-      "name": "Sea Port Arrivals",
-      "url": "https://www.dhs.gov/immigration-statistics",
-      "march": "1.2M",
-      "april": "1.3M",
-      "may": "1.4M",
-      "june": "TBD 6/25",
-      "july": "",
-      "change": "+7.69"
-    },
+   
     {
       "category": "Government Finance",
       "agency": "Treasury",
@@ -384,7 +337,7 @@
       "may": "$36,215,576,799,286.87",
       "june": "$36,214,400,664,854.53",
       "july": "$36,214,482,241,911.14",
-      "change": "+"
+      "change": "+0.002"
     },
     {
       "category": "Government Finance",
@@ -394,9 +347,9 @@
       "march": "-$160,530B",
       "april": "+$258,400B",
       "may": "-$315,652B",
-      "june": "+27,010B",
+      "june": "+$27,010B",
       "july": "",
-      "change": ""
+      "change": "+108.56"
     },
     {
       "category": "Government Finance",
@@ -420,7 +373,7 @@
       "may": "$92.230B",
       "june": "",
       "july": "",
-      "change": ""
+      "change": "+1.35"
     },
     {
       "category": "Business Indicators",

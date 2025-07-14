@@ -81,7 +81,7 @@
               card.style.background = genreColors[book.genre] || genreColors['default'];
               card.innerHTML = `
                 ${book.tag ? `<div class="book-tag">${book.tag}</div>` : ''}
-                <div class="book-thumb">${book.thumbs === 'up' ? '👍' : '👎'}</div>
+                <div class="book-thumb">${book.thumbs === 'up' ? '👍' : ''}</div>
                 <div class="book-title">${book.title}</div>
                 <div class="book-author"><strong>Author:</strong> ${book.author}</div>
                 <div class="book-date"><strong>Year:</strong> ${book.date}</div>

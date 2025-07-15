@@ -42,6 +42,31 @@ body {
   margin: 2rem auto;
   max-width: 1200px;
 }
+a.book-title {
+  color: var(--accent-primary);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  transition: color 0.2s;
+}
+a.book-title::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--accent-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+a.book-title:hover,
+a.book-title:focus {
+  color: var(--accent-secondary);
+}
+a.book-title:hover::after,
+a.book-title:focus::after {
+  transform: scaleX(1);
+}
 .book-card {
   background: var(--bg-secondary);
   border-radius: 0.5rem;

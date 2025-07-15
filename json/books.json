@@ -31,17 +31,7 @@
     "genre": "Politics",
     "titleColor": "#cc0000"
   },
-  {
-    "title": "Refactoring",
-    "author": "Martin Fowler",
-    "description": "A guide to improving the design of existing code, with step-by-step techniques for refactoring and code quality.",
-    "link": "https://martinfowler.com/books/refactoring.html",
-    "thumbs": "down",
-    "date": "1999",
-    "genre": "Programming",
-    "titleColor": "#ffffff",
-    "tag": ""
-  },
+  
   {
     "title": "Stuck",
     "author": "Yoni Appelbaum",
@@ -62,16 +52,7 @@
     "genre": "Technology",
     "titleColor": "#ffffff"
   },
-  {
-    "title": "The Software Engineer’s Guidebook",
-    "author": "Gergely Orosz",
-    "description": "A practical guide for software engineers on navigating career growth, technical leadership, and working in tech companies.",
-    "link": "https://blog.pragmaticengineer.com/the-software-engineers-guidebook/",
-    "thumbs": "down",
-    "date": "2022",
-    "genre": "Programming",
-    "titleColor": "#ffffff"
-  },
+ 
   {
     "title": "The Anxious Investor",
     "author": "Scott Nations",
@@ -82,16 +63,7 @@
     "genre": "Finance",
     "titleColor": "#ffffff"
   },
-  {
-    "title": "How to Be a Grown Up",
-    "author": "Raffi Grinberg",
-    "description": "A practical guide to essential life skills for young adults, covering topics from finances to relationships.",
-    "link": "https://www.amazon.com/How-Be-Grown-Up-Essential/dp/1734296902",
-    "thumbs": "down",
-    "date": "2020",
-    "genre": "Self-Help",
-    "titleColor": "#000000"
-  },
+
   {
     "title": "Scratch Crash Course",
     "author": "Nick Morgan",
@@ -108,72 +80,7 @@
     "genre": "History",
     "description": "Panoptic, fearless, and beautifully written, this book covers the epic, five-millennia history of the region between the Tigris and Euphrates Rivers, the birthplace of civilization and a crucial crossroads between East and West. It explores Iraq’s rich and turbulent past, from its earliest civilizations to modern times."
   },
-  {
-    "title": "Kingmaker",
-    "author": "Sonia Purnell",
-    "date": "2024",
-    "genre": "Biography",
-    "description": "'Kingmaker' is a gripping biography by Sonia Purnell, chronicling the astonishing life and influence of Pamela Harriman. Written with novelistic richness and investigative rigor, it explores sex, politics, yachts, palaces, and the heart of 20th-century power."
-  },
-  {
-    "title": "Never Enough From Barista to Billionaire",
-    "author": "Wilkinson, Andrew",
-    "date": "2024"
-  },
-  {
-    "title": "You Only Die Once How to Make It to the End With No Regrets",
-    "author": "Wellman, Jodi",
-    "date": "2024"
-  },
-  {
-    "title": "Just Keep Buying Proven Ways to Save Money and Build your Wealth",
-    "author": "Maggiulli, Nick",
-    "date": "2022"
-  },
-  {
-    "title": "When Breath Becomes Air",
-    "author": "Kalanithi, Paul",
-    "date": "2016"
-  },
-  {
-    "title": "Nexus A Brief History of Information Networks From the Stone Age to AI",
-    "author": "Harari, Yuval Noah",
-    "date": "2024"
-  },
-  {
-    "title": "The Extinction of Experience Being Human in A Disembodied World",
-    "author": "Rosen, Christine",
-    "date": "2024"
-  },
-  {
-    "title": "Key to the City How Zoning Shapes Our World",
-    "author": "Bronin, Sara C.",
-    "date": "2024"
-  },
-  {
-    "title": "Revenge of the Tipping Point Overstories, Superspreaders, and the Rise of Social Engineering",
-    "author": "Gladwell, Malcolm",
-    "date": "2024",
-    "genre": "Nonfiction"
-  },
-  {
-    "title": "The Denial of Death",
-    "author": "Becker, Ernest",
-    "date": "1997",
-    "genre": "Nonfiction"
-  },
-  {
-    "title": "Digital Dharma How AI Can Elevate Spiritual Intelligence and Personal Well-being",
-    "author": "Chopra, Deepak",
-    "date": "2024"
-  },
-  {
-    "title": "Atomic Habits",
-    "author": "James Clear",
-    "date": "2018",
-    "genre": "Self-Help",
-    "description": "'Atomic Habits' is the most comprehensive and practical guide on how to create good habits, break bad ones, and get 1 percent better every day. Drawing on proven ideas from biology, psychology, and neuroscience, James Clear offers a proven plan for making good habits inevitable and bad habits impossible. The book is filled with true stories of top performers and practical strategies for lasting change."
-  },
+
   {
     "title": "Designing Your Life",
     "author": "Bill Burnett & Dave Evans",
@@ -183,7 +90,7 @@
     "date": "2016",
     "genre": "Self-Help",
     "titleColor": "#ffffff",
-    "tag": "Recommended"
+    "tag": ""
   },
   {
     "title": "Empty Vessel",
@@ -194,7 +101,7 @@
     "date": "2025",
     "genre": "Economics",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "An Abundance of Caution",
@@ -205,7 +112,7 @@
     "date": "2025",
     "genre": "Education",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": "Policymakers"
   },
 
   {
@@ -259,7 +166,7 @@
     "author": "Virginia Lee Burton",
     "description": "A classic children's story about a steam shovel and its operator's dedication.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "1967",
     "genre": "Children's",
     "titleColor": "#ffffff",
@@ -314,7 +221,7 @@
     "author": "Sonia Purnell",
     "description": "A biography of Pamela Harriman's life of power and influence.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2024",
     "genre": "Biography",
     "titleColor": "#ffffff",
@@ -451,51 +358,41 @@
     "date": "2024",
     "genre": "Self-Help",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Just Keep Buying",
     "author": "Nick Maggiulli",
     "description": "Practical strategies for saving money and building wealth.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "島": "2022",
     "genre": "Finance",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": "Don't Sell"
   },
   {
     "title": "When Breath Becomes Air",
     "author": "Paul Kalanithi",
     "description": "A memoir about life, death, and meaning from a neurosurgeon facing terminal illness.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2016",
     "genre": "Memoir",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": "Sad"
   },
-  {
-    "title": "Off the Grid",
-    "author": "Lori Ryker",
-    "description": "Explores modern homes using alternative energy for sustainable living.",
-    "link": "",
-    "thumbs": "neutral",
-    "date": "2005",
-    "genre": "Architecture",
-    "titleColor": "#ffffff",
-    "tag": "Nonfiction"
-  },
+ 
   {
     "title": "Nexus",
     "author": "Yuval N. Harari",
     "description": "A history of information networks from the Stone Age to the AI era.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2024",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Range",
@@ -506,7 +403,7 @@
     "date": "2019",
     "genre": "Self-Help",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Billionaire, Nerd, Savior, King",
@@ -517,7 +414,7 @@
     "date": "2024",
     "genre": "Biography",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Frostbite",
@@ -528,7 +425,7 @@
     "date": "2024",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Algebra of Wealth",
@@ -539,7 +436,7 @@
     "date": "2024",
     "genre": "Finance",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The New Tourist",
@@ -550,18 +447,18 @@
     "date": "2024",
     "genre": "Travel",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Over Ruled",
     "author": "Neil M. Gorsuch",
     "description": "Examines the human cost of excessive legal regulation.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2024",
     "genre": "Law",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Stolen Focus",
@@ -572,7 +469,7 @@
     "date": "2022",
     "genre": "Psychology",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "All the Beauty in the World",
@@ -583,7 +480,7 @@
     "date": "2023",
     "genre": "Memoir",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Tomorrow, and Tomorrow, and Tomorrow",
@@ -594,7 +491,7 @@
     "date": "2022",
     "genre": "Fiction",
     "titleColor": "#ffffff",
-    "tag": "Novel"
+    "tag": ""
   },
   {
     "title": "Up in Arms",
@@ -605,7 +502,7 @@
     "date": "2024",
     "genre": "Political Science",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Sailing Alone",
@@ -616,7 +513,7 @@
     "date": "2023",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "In This Economy?",
@@ -627,40 +524,40 @@
     "date": "2024",
     "genre": "Economics",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The King of Diamonds",
     "author": "Rena Pederson",
     "description": "The search for an elusive Texas jewel thief.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2024",
     "genre": "True Crime",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Taber's Cyclopedic Medical Dictionary",
     "author": "",
     "description": "A comprehensive medical dictionary for health professionals and students.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2021",
     "genre": "Reference",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": "COVID-19"
   },
   {
     "title": "Good Energy",
     "author": "Casey Means",
     "description": "Explores the connection between metabolism and overall health.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2024",
     "genre": "Health",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Chinese Groove",
@@ -671,7 +568,7 @@
     "date": "2023",
     "genre": "Fiction",
     "titleColor": "#ffffff",
-    "tag": "Novel"
+    "tag": ""
   },
   {
     "title": "Co-intelligence",
@@ -682,7 +579,7 @@
     "date": "2024",
     "genre": "Technology",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Year of Living Constitutionally",
@@ -693,7 +590,7 @@
     "date": "2024",
     "genre": "Memoir",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Herbal Year",
@@ -704,7 +601,7 @@
     "date": "2024",
     "genre": "Gardening",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Israel Lobby and U.S. Foreign Policy",
@@ -715,7 +612,7 @@
     "date": "2007",
     "genre": "Political Science",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Balance of Power",
@@ -726,7 +623,7 @@
     "date": "2024",
     "genre": "Economics",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Operation Mincemeat",
@@ -737,7 +634,7 @@
     "date": "2010",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "A Man Called Intrepid",
@@ -748,7 +645,7 @@
     "date": "2000",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Cholesterol Hoax",
@@ -759,18 +656,18 @@
     "date": "2008",
     "genre": "Health",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Bad Therapy",
     "author": "Abigail Shrier",
     "description": "Critiques modern therapeutic practices and their impact on children.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2024",
     "genre": "Psychology",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Number Go Up",
@@ -781,7 +678,7 @@
     "date": "2023",
     "genre": "Finance",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Slow Productivity",
@@ -792,7 +689,7 @@
     "date": "2024",
     "genre": "Self-Help",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Why We Remember",
@@ -803,7 +700,7 @@
     "date": "2024",
     "genre": "Psychology",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Limitarianism",
@@ -814,7 +711,7 @@
     "date": "2024",
     "genre": "Economics",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Heart and the Chip",
@@ -825,7 +722,7 @@
     "date": "2024",
     "genre": "Technology",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Filterworld",
@@ -836,7 +733,7 @@
     "date": "2024",
     "genre": "Sociology",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Vagabonds",
@@ -891,16 +788,7 @@
     "genre": "Health",
     "titleColor": "#ffffff"
   },
-  {
-    "title": "Craps",
-    "author": "Thomas Midgley",
-    "description": "A guide to playing and winning at the game of craps.",
-    "link": "",
-    "thumbs": "",
-    "date": "2011",
-    "genre": "Gaming",
-    "titleColor": "#ffffff"
-  },
+
   {
     "title": "The Last Ships From Hamburg",
     "author": "Steven Ujifusa",
@@ -910,18 +798,18 @@
     "date": "2023",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Best Land Under Heaven",
     "author": "Michael Wallis",
     "description": "The story of the Donner Party and the American West.",
     "link": "",
-    "thumbs": "",
+    "thumbs": "up",
     "date": "2017",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Our Beloved Kin",
@@ -932,7 +820,7 @@
     "date": "2018",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "How to Ikigai",
@@ -943,7 +831,7 @@
     "date": "2019",
     "genre": "Self-Help",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Every Man for Himself and God Against All",
@@ -954,14 +842,14 @@
     "date": "2023",
     "genre": "Memoir",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Odyssey",
     "author": "Homer, translated by Emily Wilson",
     "description": "A modern translation of the classic epic poem about Odysseus's journey.",
     "link": "",
-    "thumbs": "",
+    "thumbs": "up",
     "date": "2018",
     "genre": "Poetry",
     "titleColor": "#ffffff",
@@ -1070,7 +958,7 @@
     "date": "2023",
     "genre": "Health",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Allergic",
@@ -1081,7 +969,7 @@
     "date": "2023",
     "genre": "Health",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "The Worldly Philosophers",
@@ -1092,7 +980,7 @@
     "date": "1999",
     "genre": "Economics",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Pharma",
@@ -1103,7 +991,7 @@
     "date": "2020",
     "genre": "Investigative",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
+    "tag": ""
   },
   {
     "title": "Trust",
@@ -1116,17 +1004,7 @@
     "titleColor": "#ffffff",
     "tag": "Novel"
   },
-  {
-    "title": "Masonry",
-    "author": "",
-    "description": "A guide to designing, building, and maintaining masonry structures.",
-    "link": "",
-    "thumbs": "neutral",
-    "date": "2002",
-    "genre": "Architecture",
-    "titleColor": "#ffffff",
-    "tag": "Don't Recall"
-  },
+ 
   {
     "title": "Not Accountable",
     "author": "Philip K. Howard",
@@ -1135,7 +1013,7 @@
     "date": "2023",
     "genre": "Political Science",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   },
   {
     "title": "Paddle-to-the-Sea",
@@ -1168,7 +1046,7 @@
     "date": "1998",
     "genre": "Fiction",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   },
   {
     "title": "Julia Morgan",
@@ -1179,30 +1057,9 @@
     "date": "2007",
     "genre": "Biography",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   },
-  {
-    "title": "Ultimate Guide to Masonry and Concrete",
-    "author": "",
-    "description": "A comprehensive guide to masonry and concrete construction techniques.",
-    "link": "",
-    "thumbs": "neutral",
-    "date": "2009",
-    "genre": "Architecture",
-    "titleColor": "#ffffff",
-    "tag": "Don't Recall"
-  },
-  {
-    "title": "The Book of Home How-to",
-    "author": "",
-    "description": "A photo guide to home repairs including wiring, plumbing, and more.",
-    "link": "",
-    "thumbs": "neutral",
-    "date": "2019",
-    "genre": "Home Improvement",
-    "titleColor": "#ffffff",
-    "tag": "Don't Recall"
-  },
+ 
   {
     "title": "The Wager",
     "author": "David Grann",
@@ -1212,10 +1069,7 @@
     "date": "2023",
     "genre": "History",
     "titleColor": "#ffffff",
-    "tag": "Nonfiction"
-  },
-  {
-    "title": "Don't Recall"
+    "tag": ""
   },
   {
     "title": "The Big Con",
@@ -1226,7 +1080,7 @@
     "date": "2023",
     "genre": "Economics",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   },
   {
     "title": "Heart, You Bully, You Punk",
@@ -1237,18 +1091,18 @@
     "date": "2003",
     "genre": "Fiction",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   },
   {
     "title": "The Norton Anthology of American Literature",
     "author": "",
     "description": "A collection of significant works in American literature.",
     "link": "",
-    "thumbs": "neutral",
+    "thumbs": "up",
     "date": "2022",
     "genre": "Literature",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   },
   {
     "title": "Pastoral Song",
@@ -1259,5 +1113,5 @@
     "date": "2023",
     "genre": "Gardening",
     "titleColor": "#ffffff",
-    "tag": "Don't Recall"
+    "tag": ""
   }]

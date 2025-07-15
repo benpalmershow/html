@@ -82,7 +82,7 @@
               card.innerHTML = `
                 ${book.tag ? `<div class="book-tag">${book.tag}</div>` : ''}
                 <div class="book-thumb">${book.thumbs === 'up' ? '👍' : ''}</div>
-                <div class="book-title" title="${book.link}">${book.title}</div>
+                <a class="book-title" href="${book.link}" target="_blank" rel="noopener noreferrer">${book.title}</a>
                 <div class="book-author"><strong>Author:</strong> ${book.author}</div>
                 <div class="book-date"><strong>Year:</strong> ${book.date}</div>
                 <div class="book-genre"><strong>Genre:</strong> ${book.genre}</div>

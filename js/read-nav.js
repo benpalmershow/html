@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { href: 'read.html', title: 'Announcements', isLogo: true },
         { href: 'financials.html', icon: '📊', title: 'The Numbers' },
         { href: 'news.html', icon: '📰', title: 'News' },
+        { href: 'books.html', icon: '📚', title: 'Books' },
         { href: 'journal.html', icon: '✍️', title: 'Journal' },
     ];
 

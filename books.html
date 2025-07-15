@@ -82,13 +82,12 @@
               card.innerHTML = `
                 ${book.tag ? `<div class="book-tag">${book.tag}</div>` : ''}
                 <div class="book-thumb">${book.thumbs === 'up' ? '👍' : ''}</div>
-                <div class="book-title">${book.title}</div>
+                <div class="book-title" title="${book.link}">${book.title}</div>
                 <div class="book-author"><strong>Author:</strong> ${book.author}</div>
                 <div class="book-date"><strong>Year:</strong> ${book.date}</div>
                 <div class="book-genre"><strong>Genre:</strong> ${book.genre}</div>
                 <div class="book-desc"><strong>Description:</strong> ${book.description}</div>
-                <a href="${book.link}" target="_blank" rel="noopener noreferrer" class="book-link">Link to Book</a>
-              `;
+                              `;
               container.appendChild(card);
             });
           }
@@ -112,6 +111,6 @@
         });
     </script>
     <script src="/js/nav.js" defer></script>
-    <script src="/js/read-nav.js?v=3.1" defer></script>
+    <script src="/js/read-nav.js?v=3.2" defer></script>
 </body>
 </html>

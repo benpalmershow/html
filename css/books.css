@@ -72,27 +72,124 @@ a.book-title:focus::after {
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 8px var(--shadow-color);
-  padding: 2.2em 1.25rem 1rem 1.25rem; /* extra top padding for thumb */
-  width: 270px;
+  padding: 0;
+  width: 150px;
+  height: 200px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   transition: box-shadow 0.2s, border-color 0.2s;
   position: relative;
+  overflow: hidden;
 }
+
+.book-cover-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.book-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.4em;
+  display: block;
+}
+
 .book-thumb {
   position: absolute;
-  top: 0.35em;
-  right: 0.45em;
-  font-size: 1.5em;
+  right: 0.4em;
+  bottom: 0.2em;
+  font-size: 1.3em;
   z-index: 2;
   user-select: none;
   pointer-events: none;
   transition: transform 0.2s;
 }
+
+.book-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.4em;
+  margin-bottom: 0.3em;
+}
+
+.book-cover {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.4em;
+  margin-bottom: 0.7em;
+}
+.book-thumb {
+  position: absolute;
+  right: 0.7em;
+  bottom: 0.5em;
+  font-size: 1.3em;
+  z-index: 2;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.2s;
+  margin-top: auto;
+}
 .book-card:hover .book-thumb {
   animation: bounce-thumb 1.35s cubic-bezier(.28,.84,.42,1) 1;
 }
+
+.book-desc-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 95, 90, 0.87);
+  color: #fff;
+  font-size: 0.87rem;
+  line-height: 1.22;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  padding: 0.55em 0.5em;
+  border-radius: 0.4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 0.22s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.book-desc-overlay-title {
+  font-size: 1.07em;
+  font-weight: bold;
+  margin-bottom: 0.42em;
+  letter-spacing: 0.01em;
+  line-height: 1.18;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(44,95,90,0.18);
+}
+
+.book-desc-overlay-desc {
+  font-size: 0.87em;
+  font-weight: 400;
+  color: #e8dcc0;
+  line-height: 1.22;
+  word-break: break-word;
+}
+
+
+.book-card:hover .book-desc-overlay,
+.book-card:focus-within .book-desc-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 @keyframes bounce-thumb {
   0% {
     transform: translateY(0);

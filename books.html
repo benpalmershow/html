@@ -37,80 +37,9 @@
       </label>
     </div>
     <div class="book-cards" id="book-cards"></div>
-    <script>
-      fetch('json/books.json')
-        .then(response => response.json())
-        .then(books => {
-          const container = document.getElementById('book-cards');
-          const thumbsSelect = document.getElementById('filter-thumbs');
-          const dateSelect = document.getElementById('filter-date');
-          const genreSelect = document.getElementById('filter-genre');
-
-          // Populate year and genre filters
-          const years = Array.from(new Set(books.map(b => b.date))).sort((a,b) => b.localeCompare(a));
-          years.forEach(y => {
-            const opt = document.createElement('option');
-            opt.value = y;
-            opt.textContent = y;
-            dateSelect.appendChild(opt);
-          });
-          const genres = Array.from(new Set(books.map(b => b.genre))).sort();
-          genres.forEach(g => {
-            const opt = document.createElement('option');
-            opt.value = g;
-            opt.textContent = g;
-            genreSelect.appendChild(opt);
-          });
-
-          const genreColors = {
-            'Finance': 'var(--bg-primary)',
-            'Programming': 'var(--bg-secondary)',
-            'Politics': 'var()',
-            'Economics': 'var()',
-            'Technology': 'var()',
-            'Self-Help': '#fffbe6', // a light yellow, fallback if needed
-            // fallback
-            'default': 'var(--bg-primary)'
-          };
-
-          function render(filtered) {
-            container.innerHTML = '';
-            filtered.forEach((book) => {
-              const card = document.createElement('div');
-              card.className = 'book-card';
-              card.style.background = genreColors[book.genre] || genreColors['default'];
-              card.innerHTML = `
-                ${book.tag ? `<div class="book-tag">${book.tag}</div>` : ''}
-                <div class="book-thumb">${book.thumbs === 'up' ? '👍' : ''}</div>
-                <a class="book-title" href="${book.link}" target="_blank" rel="noopener noreferrer">${book.title}</a>
-                <div class="book-author"><strong>Author:</strong> ${book.author}</div>
-                <div class="book-date"><strong>Year:</strong> ${book.date}</div>
-                <div class="book-genre"><strong>Genre:</strong> ${book.genre}</div>
-                <div class="book-desc"><strong>Description:</strong> ${book.description}</div>
-                              `;
-              container.appendChild(card);
-            });
-          }
-
-          function filterBooks() {
-            let filtered = books;
-            const thumbs = thumbsSelect.value;
-            const year = dateSelect.value;
-            const genre = genreSelect.value;
-            if (thumbs !== 'all') filtered = filtered.filter(b => b.thumbs === thumbs);
-            if (year !== 'all') filtered = filtered.filter(b => b.date === year);
-            if (genre !== 'all') filtered = filtered.filter(b => b.genre === genre);
-            render(filtered);
-          }
-
-          thumbsSelect.addEventListener('change', filterBooks);
-          dateSelect.addEventListener('change', filterBooks);
-          genreSelect.addEventListener('change', filterBooks);
-
-          render(books);
-        });
-    </script>
+  
     <script src="/js/nav.js" defer></script>
     <script src="/js/read-nav.js?v=3.2" defer></script>
+    <script src="js/books.js" defer></script>
 </body>
 </html>

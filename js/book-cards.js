@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', async function() {
       // Overlay
       const overlay = document.createElement('a');
       overlay.className = 'book-overlay';
-      overlay.href = book.link || '#';
       overlay.target = '_blank';
       overlay.rel = 'noopener noreferrer';
       overlay.tabIndex = 0;

@@ -1,7 +1,7 @@
 // Dynamically load and display book cards from books_with_covers.json
 
 async function fetchBooks() {
-  const res = await fetch('/json/books.json');
+  const res = await fetch('json/books.json');
   return res.json();
 }
 
@@ -18,7 +18,7 @@ function createBookCard(book) {
 
   const img = document.createElement('img');
   img.className = 'book-cover';
-  img.src = book.cover || '/images/book-placeholder.png';
+  img.src = book.cover || 'images/book-placeholder.png';
   img.alt = book.title || 'book cover';
   img.loading = 'lazy';
   img.style.objectFit = 'cover';

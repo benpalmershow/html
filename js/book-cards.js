@@ -48,21 +48,23 @@ document.addEventListener('DOMContentLoaded', async function() {
       const card = document.createElement('div');
       card.className = 'book-card';
 
-      // Cover image
-      const img = document.createElement('img');
-      img.className = 'book-cover';
-      img.src = book.cover || 'images/book-placeholder.png';
-      img.alt = book.title || 'book cover';
-      img.loading = 'lazy';
-      card.appendChild(img);
-
-      // Thumbs icon
-      const thumb = document.createElement('div');
-      thumb.className = 'book-thumb';
-      if (book.thumbs === 'up') thumb.textContent = '👍';
-      else if (book.thumbs === 'down') thumb.textContent = '👎';
-      else thumb.textContent = '';
-      card.appendChild(thumb);
+      // Cover image or accessible label
+      if (book.cover) {
+        const img = document.createElement('img');
+        img.className = 'book-cover';
+        img.src = book.cover;
+        img.alt = book.title ? `Cover of ${book.title}` : 'Book cover';
+        img.loading = 'lazy';
+        card.appendChild(img);
+      } else {
+        card.classList.add('book-cover-missing');
+        card.style.background = '#f8f4e6';
+        // Add visually hidden label for accessibility
+        const hiddenLabel = document.createElement('span');
+        hiddenLabel.className = 'book-cover-missing-label visually-hidden';
+        hiddenLabel.textContent = book.title || 'Book title';
+        card.appendChild(hiddenLabel);
+      }
 
       // Overlay
       const overlay = document.createElement('a');
@@ -71,9 +73,16 @@ document.addEventListener('DOMContentLoaded', async function() {
       overlay.target = '_blank';
       overlay.rel = 'noopener noreferrer';
       overlay.tabIndex = 0;
+      let thumbsHTML = '';
+      if (book.thumbs === 'up') thumbsHTML = '<div class="book-thumb">👍</div>';
+      else if (book.thumbs === 'down') thumbsHTML = '<div class="book-thumb">👎</div>';
+      // Truncate description to 120 characters
+      let desc = book.description || '';
+      if (desc.length > 120) desc = desc.slice(0, 117) + '…';
       overlay.innerHTML = `
-        <div class=\"book-overlay-title\">${book.title || ''}</div>
-        <div class=\"book-overlay-desc\">${book.description || ''}</div>
+        ${thumbsHTML}
+        <div class="book-overlay-title">${book.title || ''}</div>
+        <div class="book-overlay-desc">${desc}</div>
       `;
       card.appendChild(overlay);
 

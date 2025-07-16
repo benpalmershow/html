@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP');
+    </script>
     <meta charset="UTF-8">
+    <meta name="last-commit" content="2025-06-12 15:53:59 -0700">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
+    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="@vercel/speed-insights/script.js"></script>
+    <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
-    <link rel="stylesheet" href="css/books.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/book-cards.css">
+      <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#2C5F5A">
+    <title>Books - Howdy, Stranger</title>
+   
+  </head>
+  <body>
+    <!-- Logo Header -->
     <header class="site-header">
       <div class="logo-container">
         <a href="index.html">
-          <img src="/images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
+          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
         </a>
       </div>
     </header>
-    <nav class="nav-links" id="main-nav"></nav>
-    <div class="book-filters">
-      <img src="/images/read.png" alt="Read Logo" class="book-filters-logo" loading="lazy">
-      <label>Rating:
-        <select id="filter-thumbs">
-          <option value="all">All</option>
-          <option value="up">👍 Up</option>
-          <option value="down">👎 Down</option>
-        </select>
-      </label>
-      <label>Year:
-        <select id="filter-date">
-          <option value="all">All</option>
-        </select>
-      </label>
-      <label>Genre:
-        <select id="filter-genre">
-          <option value="all">All</option>
-        </select>
-      </label>
-    </div>
-    <div class="book-cards" id="book-cards"></div>
-  
-    <script src="/js/nav.js" defer></script>
-    <script src="/js/read-nav.js?v=3.2" defer></script>
-    <script src="js/books.js?v=1.0.1" defer></script>
+     <nav class="nav-links" id="main-nav">
+            
+    </nav>
+
+<div class="book-filters">
+  <label>Rating:
+    <select id="filter-thumbs">
+      <option value="all">All</option>
+      <option value="up">👍 Up</option>
+      <option value="down">👎 Down</option>
+    </select>
+  </label>
+  <label>Year:
+    <select id="filter-date">
+      <option value="all">All</option>
+    </select>
+  </label>
+  <label>Genre:
+    <select id="filter-genre">
+      <option value="all">All</option>
+    </select>
+  </label>
+</div>
+
+<div class="book-cards" id="book-cards"></div>
+
+<script src="js/book-cards.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/read-nav.js" defer></script>
 </body>
 </html>
+

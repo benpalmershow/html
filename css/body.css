@@ -235,13 +235,6 @@ tr:hover {
   font-family: Monaco,Menlo,'Ubuntu Mono',monospace;
   font-size: .9em
 }
-.category-header {
-  background-color: var(--bg-secondary);
-  font-weight: 700;
-  color: var(--text-primary);
-  padding: .75rem 1rem;
-  border-top: 2px solid var(--border-color)
-}
 .table-container {
   position: relative;
   border: 1px solid var(--border-color);

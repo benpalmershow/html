@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+// DEPRECATED: Functionality moved to nav.js
+
     const navLinks = [
         { href: 'read.html', title: 'Announcements', isLogo: true },
         { href: 'financials.html', icon: '📊', title: 'The Numbers' },

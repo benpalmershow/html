@@ -1,7 +1,7 @@
 !function(){const navItems=[
     { text: "Home", href: "index.html", icon: "🏠", image: "" },
     { text: "Listen", href: "listen.html", icon: "📻", image: "images/listen.png" },
-    { text: "The Numbers", href: "financials.html", icon: "📊", image: "" },
+    { text: "Numbers", href: "financials.html", icon: "📊", image: "" },
     { text: "Announcements", href: "read.html", icon: "", image: "images/announcements.png" },
     { text: "News", href: "news.html", icon: "📰", image: "" },
     { text: "Books", href: "books.html", icon: "📚", image: "" },

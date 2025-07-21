@@ -50,8 +50,8 @@ body {
 
 /* Collapsible */
 .collapsible-section {
-    margin-bottom: 2rem;
-    border-radius: 20px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
     box-shadow: 0 2px 8px var(--shadow-color);
     overflow: hidden;
 }
@@ -61,7 +61,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -101,7 +101,7 @@ body {
 
 .collapsible-content {
     background: var(--bg-primary);
-    padding: 1.5rem;
+    padding: 1rem;
     border: 1px solid var(--border-color);
     border-top: none;
     transition: max-height 0.4s ease, opacity 0.4s ease;
@@ -110,7 +110,7 @@ body {
 
 .collapsible-content.collapsed {
     max-height: 0;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
     opacity: 0;
 }
 
@@ -152,13 +152,13 @@ body {
 /* Categories & Indicators */
 .categories {
     display: grid;
-    gap: 30px;
+    gap: 20px;
 }
 
 .category {
     background: var(--bg-secondary);
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 15px;
+    padding: 15px;
     box-shadow: 0 2px 8px var(--shadow-color);
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
@@ -169,14 +169,14 @@ body {
 }
 
 .category-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--logo-orange);
-    margin-bottom: 10px;
-    border-bottom: 3px solid var(--logo-teal);
-    padding-bottom: 10px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--logo-teal);
+    padding-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .category-icon {
@@ -188,20 +188,20 @@ body {
 .indicators-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
     align-items: flex-start;
 }
 
 .indicator {
     background: var(--bg-primary);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 15px;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 8px var(--shadow-color);
     transition: all 0.3s ease;
     position: relative;
-    flex: 0 0 320px;
-    max-width: 320px;
+    flex: 0 0 300px;
+    max-width: 300px;
 }
 
 .indicator:hover {

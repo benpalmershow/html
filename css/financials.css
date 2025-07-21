@@ -61,22 +61,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 1rem;
+    padding: 0.75rem 1rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     transition: background-color 0.2s ease, color 0.2s ease;
     position: relative;
 }
 
-.collapsible-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--logo-teal), var(--logo-orange));
-}
+
 
 .collapsible-header:hover {
     background: var(--bg-hover, #e9ecef);
@@ -86,6 +78,8 @@ body {
 .collapsible-header h1, .collapsible-header h2 {
     font-size: 1.8rem;
     color: var(--logo-orange);
+    margin: 0;
+    line-height: 1.2;
 }
 
 .collapse-toggle {

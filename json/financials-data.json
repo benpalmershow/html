@@ -2,6 +2,18 @@
   "lastUpdated": "2025-07-21T14:00:00Z",
   "indices": [
     {
+      "category": "Economic Indicators",
+      "agency": "The Conference Board",
+      "name": "Leading Economic Indicator",
+      "url": "https://www.conference-board.org/topics/leading-economic-indicators",
+      "march": "",
+      "april": "99.1",
+      "may": "99.1",
+      "june": "98.8",
+      "july": "",
+      "change": ""
+    },
+    {
       "category": "Inflation Measures",
       "agency": "BLS",
       "name": "CPI",
@@ -66,12 +78,12 @@
       "agency": "ADP",
       "name": "Private Employment",
       "url": "https://www.adpresearch.com",
-      "march": "134.4M",
-      "april": "134.5M",
-      "may": "134.5M",
-      "june": "134.45M",
+      "march": "134,391,000",
+      "april": "134,451,000",
+      "may": "134,480,000",
+      "june": "134,447,000",
       "july": "",
-      "change": "-0.02"
+      "change": ""
     },
     {
       "category": "Housing Market",
@@ -464,6 +476,30 @@
       "june": "$6,100",
       "july": "TBD",
       "change": "+8.0%"
+    },
+    {
+      "category": "Trade & Tariffs",
+      "agency": "Freightos",
+      "name": "Shipping Container Rate (China-US 40ft)",
+      "url": "https://goodhopefreight.com/shipping-to-usa/2025/fcl.html",
+      "march": "$5,200",
+      "april": "$5,450",
+      "may": "$5,600",
+      "june": "$5,750",
+      "july": "",
+      "change": "+10.58"
+    },
+    {
+      "category": "Trade & Tariffs",
+      "agency": "Port of LA/Long Beach",
+      "name": "20ft Equivalents (TEUs)",
+      "url": "https://www.portoflosangeles.org/business/statistics/container-statistics",
+      "march": "778,405.70",
+      "april": "842,806.65",
+      "may": "716,618.60",
+      "june": "892,339.75",
+      "july": "",
+      "change": ""
     }
   ]
 }

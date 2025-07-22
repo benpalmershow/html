@@ -175,6 +175,7 @@
             const months = ['march', 'april', 'may', 'june', 'july'];
             let currentValue = null;
             let previousValue = null;
+            let currentRawValue = '';
             
             // Find the latest available value and the previous one
             for (let i = months.length - 1; i >= 0; i--) {
@@ -184,6 +185,7 @@
                 if (value && value !== '' && !value.startsWith('TBD')) {
                     if (currentValue === null) {
                         currentValue = extractNumericValue(value);
+                        currentRawValue = value;
                     } else if (previousValue === null) {
                         previousValue = extractNumericValue(value);
                         break;
@@ -196,7 +198,14 @@
             }
             
             const change = ((currentValue - previousValue) / previousValue) * 100;
-            return change;
+            const numberChange = currentValue - previousValue;
+            
+            // Return both percentage change and number change
+            return {
+                percentChange: change,
+                numberChange: numberChange,
+                currentRawValue: currentRawValue
+            };
         }
 
         // Calculate Year-over-Year (YoY) change (comparing to same month last year)
@@ -301,10 +310,20 @@
             
             // MoM change
             if (momChange !== null) {
-                const momFormatted = formatChange(momChange);
+                const momFormatted = formatChange(momChange.percentChange);
+                let changeText = `MoM: ${momFormatted}`;
+                
+                // Add number change for ADP Private Employment
+                if (indicator.name === 'Private Employment' && indicator.agency === 'ADP') {
+                    const numberChange = momChange.numberChange;
+                    const changeSign = numberChange >= 0 ? '+' : '';
+                    const formattedNumber = numberChange.toLocaleString();
+                    changeText += ` (${changeSign}${formattedNumber})`;
+                }
+                
                 changeIndicators += `
                     <div class="change-indicator ${getChangeClass(momFormatted)} ${getArrowClass(momFormatted)}" title="Month-over-Month (MoM) change calculated from available data.">
-                        MoM: ${momFormatted}
+                        ${changeText}
                     </div>
                 `;
             }

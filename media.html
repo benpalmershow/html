@@ -42,33 +42,33 @@
       </div>
     </header>
      <nav class="nav-links" id="main-nav"></nav>
+
 <h1 class="page-title">Media</h1>
 
 <div class="media-filters">
-  <label>Type:
+  <label>Filter by type:
     <select id="filter-type">
-      <option value="all">All</option>
-      <option value="read">Read</option>
-      <option value="watch">Watch</option>
-      <option value="listen">Listen</option>
+      <option value="all">All Media</option>
+      <!-- Options will be populated by JavaScript -->
     </select>
   </label>
-  <label>Rating:
-    <select id="filter-thumbs">
-      <option value="all">All</option>
-      <option value="up">👍 Up</option>
-    </select>
-  </label>
-  <label>Category:
-    <select id="filter-category">
-      <option value="all">All</option>
+  
+  <label>Sort by:
+    <select id="sort-by">
+      <option value="date-desc">Newest First</option>
+      <option value="date-asc">Oldest First</option>
+      <option value="title-asc">Title (A-Z)</option>
+      <option value="title-desc">Title (Z-A)</option>
     </select>
   </label>
 </div>
 
-<div class="media-cards" id="media-cards"></div>
-<script src="js/nav.js?v=20250717" defer></script>
+<div class="media-cards" id="media-cards-container">
+  <!-- Media cards will be inserted here by JavaScript -->
+</div>
 
-<script type="module" src="js/media.js"></script>
+<script src="js/nav.js?v=20250717" defer></script>
+<script src="js/media.js" defer></script>
+
 </body>
 </html>

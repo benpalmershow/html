@@ -51,19 +51,16 @@
 
 /* Uniform card design for all media types */
 .media-card {
-  background: #f8f4e6;
-  border-radius: 0.5rem;
-  border: 1px solid #e8dcc0;
-  box-shadow: 0 2px 8px rgba(44,95,90,0.10);
-  width: 150px;
-  height: 210px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  width: 100%;
+  max-width: 200px; /* Narrower for portrait orientation */
+  height: 300px; /* Taller for portrait orientation */
+  aspect-ratio: 2/3; /* Standard portrait aspect ratio */
+  border-radius: 0.5rem;
   overflow: hidden;
-  transition: box-shadow 0.2s, border-color 0.2s, transform 0.18s;
+  box-shadow: 0 2px 8px rgba(44, 95, 90, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #f8f4e6;
   cursor: pointer;
 }
 
@@ -114,35 +111,42 @@
 }
 
 /* Media type icon in overlay */
-.media-type-icon {
+.media-type-icon-link,
+.media-type-icon-container {
   position: absolute;
   top: 1px;
   left: 1px;
+  z-index: 3;
+  display: block;
   width: 32px;
   height: 32px;
-  z-index: 3;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  text-decoration: none;
 }
+
 
 /* Hover overlay */
 .media-overlay {
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(44, 95, 90, 0.87);
-  color: #fff;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(34, 85, 80, 0.98) 0%, rgba(34, 85, 80, 0.92) 100%);
+  color: white;
+  padding: 0; /* Remove padding from container */
   opacity: 0;
-  z-index: 2;
+  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.7em 0.5em;
-  text-decoration: none;
-  transition: opacity 0.22s cubic-bezier(.4,0,.2,1);
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden; /* Change to hidden to prevent scrolling */
+  z-index: 10;
+  box-sizing: border-box;
+  pointer-events: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .media-card:hover .media-overlay,
@@ -151,15 +155,30 @@
   pointer-events: auto;
 }
 
-.media-overlay-title {
-  font-size: 1.07em;
-  font-weight: bold;
-  margin: 1.5em 0 0.42em 0;
-  padding-top: 0.5em;
-  letter-spacing: 0.01em;
-  line-height: 1.18;
+.media-overlay-content {
+  padding: 1.2rem 1rem;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.media-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem 0;
+  padding: 0.5rem 0;
+  line-height: 1.2;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(44,95,90,0.18);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  word-break: break-word;
+  pointer-events: auto;
+  position: sticky;
+  top: 0;
+  background: rgba(34, 85, 80, 0.98);
+  z-index: 2;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .media-overlay-thumbs {
   position: absolute;
@@ -173,14 +192,39 @@
   font-weight: 400;
   color: #e8dcc0;
   line-height: 1.22;
-  word-break: break-word;
   margin-bottom: 0.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit to 4 lines */
+  line-clamp: 4; /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 6em; /* line-height * number of lines */
 }
 
-.media-overlay-meta {
-  font-size: 0.75em;
+.media-author {
+  font-size: 0.8rem;
+  margin: 0 0 0.6rem 0;
   color: #e8dcc0;
-  opacity: 0.8;
+  font-weight: 500;
+  width: 100%;
+  pointer-events: auto;
+  opacity: 0.9;
+}
+
+.media-description {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  color: #f0f0f0;
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  pointer-events: auto;
 }
 
 /* Rating logos in overlay */

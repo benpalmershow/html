@@ -1,317 +1,247 @@
-// Unified media page JavaScript - creates uniform cards with cover images and hover overlays
-
-let allMediaItems = [];
-let filteredItems = [];
-
-// DOM elements
-const mediaCardsContainer = document.getElementById('media-cards');
-const typeFilter = document.getElementById('filter-type');
-const thumbsFilter = document.getElementById('filter-thumbs');
-const categoryFilter = document.getElementById('filter-category');
-
-// Load all media data
-async function loadAllMedia() {
-  try {
-    const mediaResponse = await fetch('json/media.json');
-    allMediaItems = await mediaResponse.json();
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const mediaContainer = document.getElementById('media-cards-container');
+    const filterType = document.getElementById('filter-type');
+    const sortBy = document.getElementById('sort-by');
     
-    // Sort all items by most recent date/year
-    sortByMostRecent();
+    let mediaItems = [];
     
-    // Populate category filter
-    populateCategoryFilter();
-    
-    // Initial render
-    filteredItems = [...allMediaItems];
-    renderMediaCards();
-    
-  } catch (error) {
-    console.error('Error loading media data:', error);
-    mediaCardsContainer.innerHTML = '<p>Error loading media content.</p>';
-  }
-}
-
-// Determine media type based on content structure
-function getMediaType(item) {
-  if (item.embedUrl) return 'watch';
-  if (item.links && Array.isArray(item.links)) return 'listen';
-  return 'read'; // default to read for books
-}
-
-// Sort all media items by most recent date
-function sortByMostRecent() {
-  allMediaItems.sort((a, b) => {
-    // Extract year from date field
-    const getYear = (item) => {
-      if (item.date) {
-        // Handle new object format {month, year} or legacy string format
-        if (typeof item.date === 'object' && item.date.year) {
-          return item.date.year;
-        } else if (typeof item.date === 'string') {
-          // Handle legacy string formats (YYYY, YYYY-MM-DD, etc.)
-          const yearMatch = item.date.toString().match(/\d{4}/);
-          return yearMatch ? parseInt(yearMatch[0]) : 0;
-        }
-      }
-      return 0;
-    };
-    
-    const yearA = getYear(a);
-    const yearB = getYear(b);
-    
-    // Sort by year descending (most recent first)
-    return yearB - yearA;
-  });
-}
-
-// Populate category filter with unique categories
-function populateCategoryFilter() {
-  const categories = new Set();
-  
-  allMediaItems.forEach(item => {
-    if (item.genre) categories.add(item.genre);
-    if (item.category) categories.add(item.category);
-  });
-  
-  // Clear existing options except "All"
-  categoryFilter.innerHTML = '<option value="all">All</option>';
-  
-  // Add sorted categories
-  [...categories].sort().forEach(category => {
-    const option = document.createElement('option');
-    option.value = category;
-    option.textContent = category;
-    categoryFilter.appendChild(option);
-  });
-}
-
-// Generate YouTube thumbnail from embed URL
-function getYouTubeThumbnail(embedUrl) {
-  const videoIdMatch = embedUrl.match(/embed\/([^?]+)/);
-  if (videoIdMatch) {
-    return `https://img.youtube.com/vi/${videoIdMatch[1]}/maxresdefault.jpg`;
-  }
-  return null;
-}
-
-// Generate cover image for different media types
-function generateCoverImage(item) {
-  const mediaType = getMediaType(item);
-  switch (mediaType) {
-    case 'read':
-      return item.cover || null;
-    case 'watch':
-      return getYouTubeThumbnail(item.embedUrl) || null;
-    case 'listen':
-      // For listen items, we'll use a placeholder with icon
-      return null;
-    default:
-      return null;
-  }
-}
-
-// Get placeholder icon for media type
-function getPlaceholderIcon(item) {
-  // Return empty string to show no placeholder text/icons
-  return '';
-}
-
-// Format date for display
-function formatDate(dateObj) {
-  if (!dateObj) return '';
-  
-  // Handle new object format {month, year}
-  if (typeof dateObj === 'object' && dateObj.year) {
-    return dateObj.month ? `${dateObj.month} ${dateObj.year}` : dateObj.year.toString();
-  }
-  
-  // Handle legacy string format
-  if (typeof dateObj === 'string') {
-    return dateObj;
-  }
-  
-  return '';
-}
-
-// Get YouTube watch URL from embed URL
-function getYouTubeWatchUrl(embedUrl) {
-  const videoIdMatch = embedUrl.match(/embed\/([^?]+)/);
-  if (videoIdMatch) {
-    return `https://www.youtube.com/watch?v=${videoIdMatch[1]}`;
-  }
-  return embedUrl;
-}
-
-// Create uniform media card HTML
-function createMediaCard(item) {
-  const thumbsIcon = item.thumbs === 'up' ? '👍' : item.thumbs === 'neutral' ? '😐' : '';
-  const coverImage = generateCoverImage(item);
-  const placeholderIcon = getPlaceholderIcon(item);
-  const category = item.genre || item.category || '';
-  const mediaType = getMediaType(item);
-  
-  // Create overlay content based on media type
-  let overlayContent = '';
-  let cardClickHandler = '';
-  const mediaTypeIcon = mediaType ? `<img src="images/${mediaType}.png" alt="${mediaType}" class="media-type-icon">` : '';
-  
-  switch (mediaType) {
-    case 'read':
-      overlayContent = `
-        ${mediaTypeIcon}
-        ${thumbsIcon ? `<div class="media-overlay-thumbs">${thumbsIcon}</div>` : ''}
-        <div class="media-overlay-title">${item.title}</div>
-        <div class="media-overlay-desc">${item.description || ''}</div>
-        <div class="media-overlay-meta">
-          ${item.author ? `By ${item.author} • ` : ''}
-          ${item.date ? `${formatDate(item.date)}` : ''}
-          ${category ? ` • ${category}` : ''}
-        </div>
-      `;
-      break;
-    case 'watch':
-      const youtubeUrl = getYouTubeWatchUrl(item.embedUrl);
-      cardClickHandler = `onclick="window.open('${youtubeUrl}', '_blank')" style="cursor: pointer;"`;
-      // Prepare rating logos
-      const rtLogo = item.ratings?.rt ? 
-        `<a href="${item.ratings.rt.url || '#'}" target="_blank" class="rating-logo rt-logo" title="View on Rotten Tomatoes">
-          <span class="rt-tomato">🍅</span>
-          <span class="score">${item.ratings.rt.score}</span>
-        </a>` : '';
-      
-      const imdbLogo = item.ratings?.imdb ? 
-        `<a href="${item.ratings.imdb.url || '#'}" target="_blank" class="rating-logo imdb-logo" title="View on IMDb">
-          <span class="imdb-icon">IMDb</span>
-          <span class="score">${item.ratings.imdb.score}</span>
-        </a>` : '';
-      
-      overlayContent = `
-        ${mediaTypeIcon}
-        ${thumbsIcon ? `<div class="media-overlay-thumbs">${thumbsIcon}</div>` : ''}
-        <div class="media-overlay-title">${item.title}</div>
-        <div class="media-overlay-desc">${item.description || ''}</div>
-        <div class="media-overlay-meta">
-          ${item.date ? `${formatDate(item.date)}` : ''}
-          ${category ? ` • ${category}` : ''}
-        </div>
-        <div class="rating-logos">
-          ${rtLogo}
-          ${imdbLogo}
-        </div>
-      `;
-      break;
-    case 'listen':
-      // Generate listen links with Font Awesome icons
-      let listenLinks = '';
-      if (item.links && item.links.length > 0) {
-        listenLinks = '<div class="listen-links">';
-        item.links.forEach(link => {
-          const platform = link.label.toLowerCase();
-          let iconClass = 'fas fa-link';
-          
-          // Match icons to those used in listen.html
-          if (platform.includes('apple') || platform.includes('podcast')) {
-            iconClass = 'fab fa-apple';
-          } else if (platform.includes('spotify')) {
-            iconClass = 'fab fa-spotify';
-          } else if (platform.includes('youtube')) {
-            iconClass = 'fab fa-youtube';
-          } else if (platform.includes('amazon')) {
-            iconClass = 'fab fa-amazon';
-          } else if (platform.includes('soundcloud')) {
-            iconClass = 'fab fa-soundcloud';
-          } else if (platform.includes('google') || platform.includes('play')) {
-            iconClass = 'fab fa-google-play';
-          } else if (platform.includes('rss') || platform.includes('feed')) {
-            iconClass = 'fas fa-rss';
-          }
-          
-          listenLinks += `
-            <a href="${link.url}" target="_blank" rel="noopener" class="listen-link">
-              <i class="${iconClass}"></i>
-            </a>`;
+    // Get all unique media types from the items
+    function getUniqueMediaTypes(items) {
+        const types = new Set();
+        items.forEach(item => {
+            if (item.mediaType) {
+                types.add(item.mediaType);
+            }
         });
-        listenLinks += '</div>';
+        return Array.from(types).sort();
+    }
+
+    // Populate the filter dropdown with media types
+    function populateFilterDropdown(types) {
+        const filterType = document.getElementById('filter-type');
         
-        // Make card clickable to first link
-        cardClickHandler = `onclick="window.open('${item.links[0].url}', '_blank')" style="cursor: pointer;"`;
-      }
-      
-      overlayContent = `
-        ${mediaTypeIcon}
-        ${thumbsIcon ? `<div class="media-overlay-thumbs">${thumbsIcon}</div>` : ''}
-        <div class="media-overlay-title">${item.title}</div>
-        <div class="media-overlay-desc">${item.description || ''}</div>
-        <div class="media-overlay-meta">
-          ${category || ''}
-        </div>
-        ${listenLinks}
-      `;
-      break;
-  }
-  
-  return `
-    <div class="media-card" data-type="${mediaType}" data-thumbs="${item.thumbs || ''}" data-category="${category}" ${cardClickHandler}>
-      ${coverImage ? 
-        `<img src="${coverImage}" alt="${item.title}" class="media-cover" loading="lazy">` :
-        `<div class="media-placeholder">${placeholderIcon}</div>`
-      }
-      
-      ${item.featured ? '<div class="featured-badge">Featured</div>' : ''}
-      
-      <div class="media-overlay">
-        ${overlayContent}
-      </div>
-    </div>
-  `;
-}
-
-// Render all media cards
-function renderMediaCards() {
-  if (filteredItems.length === 0) {
-    mediaCardsContainer.innerHTML = '<p style="text-align: center; color: #666; width: 100%;">No items match the current filters.</p>';
-    return;
-  }
-
-  const cardsHTML = filteredItems.map(item => createMediaCard(item)).join('');
-  mediaCardsContainer.innerHTML = cardsHTML;
-}
-
-// Filter media items
-function filterMedia() {
-  const typeValue = typeFilter.value;
-  const thumbsValue = thumbsFilter.value;
-  const categoryValue = categoryFilter.value;
-
-  filteredItems = allMediaItems.filter(item => {
-    // Type filter
-    if (typeValue !== 'all' && getMediaType(item) !== typeValue) {
-      return false;
+        // Keep the 'All Media' option
+        while (filterType.options.length > 1) {
+            filterType.remove(1);
+        }
+        
+        // Add each media type as an option
+        types.forEach(type => {
+            const option = document.createElement('option');
+            option.value = type;
+            // Capitalize first letter of each word for display
+            option.textContent = type.charAt(0).toUpperCase() + type.slice(1) + 's';
+            filterType.appendChild(option);
+        });
     }
 
-    // Thumbs filter
-    if (thumbsValue !== 'all' && item.thumbs !== thumbsValue) {
-      return false;
+    // Fetch media data
+    async function fetchMediaData() {
+        try {
+            const response = await fetch('/json/media.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch media data');
+            }
+            mediaItems = await response.json();
+            
+            // Get unique media types and populate filter
+            const mediaTypes = getUniqueMediaTypes(mediaItems);
+            populateFilterDropdown(mediaTypes);
+            
+            // Initial render
+            renderMediaCards(mediaItems);
+        } catch (error) {
+            console.error('Error loading media data:', error);
+            mediaContainer.innerHTML = '<p>Error loading media. Please try again later.</p>';
+        }
     }
-
-    // Category filter
-    if (categoryValue !== 'all') {
-      const itemCategory = item.genre || item.category || '';
-      if (itemCategory !== categoryValue) {
-        return false;
-      }
+    
+    // Render media cards
+    function renderMediaCards(items) {
+        // Clear existing cards
+        mediaContainer.innerHTML = '';
+        
+        if (items.length === 0) {
+            mediaContainer.innerHTML = '<p>No media items found.</p>';
+            return;
+        }
+        
+        items.forEach(item => {
+            const card = createMediaCard(item);
+            mediaContainer.appendChild(card);
+        });
     }
-
-    return true;
-  });
-
-  renderMediaCards();
-}
-
-// Event listeners
-typeFilter.addEventListener('change', filterMedia);
-thumbsFilter.addEventListener('change', filterMedia);
-categoryFilter.addEventListener('change', filterMedia);
-
-// Initialize the page
-document.addEventListener('DOMContentLoaded', loadAllMedia);
+    
+    // Create a single media card with hover effect
+    function createMediaCard(item) {
+        const card = document.createElement('div');
+        card.className = 'media-card';
+        
+        // Create cover container with type badge
+        const coverContainer = document.createElement('div');
+        coverContainer.className = 'media-cover-container';
+        
+        // Add cover image
+        const coverImg = document.createElement('img');
+        coverImg.className = 'media-cover';
+        coverImg.src = item.cover || 'https://via.placeholder.com/300x200/2C5F5A/FFFFFF?text=No+Image';
+        coverImg.alt = item.title;
+        coverImg.loading = 'lazy';
+        
+        // Add media type badge
+        const typeBadge = document.createElement('div');
+        typeBadge.className = 'media-type';
+        typeBadge.innerHTML = `<i class="${getMediaTypeIcon(item.mediaType)}"></i> ${item.mediaType || 'media'}`;
+        
+        // Add featured badge if applicable
+        if (item.featured) {
+            const featuredBadge = document.createElement('div');
+            featuredBadge.className = 'media-featured';
+            featuredBadge.textContent = item.featured;
+            coverContainer.appendChild(featuredBadge);
+        }
+        
+        // Create overlay for hover effect
+        const overlay = document.createElement('div');
+        overlay.className = 'media-overlay';
+        
+        // Create content wrapper for overlay
+        const overlayContent = document.createElement('div');
+        overlayContent.className = 'media-overlay-content';
+        
+        // Add title (moved to be first element in overlay)
+        const title = document.createElement('h3');
+        title.className = 'media-title';
+        title.textContent = item.title;
+        overlayContent.appendChild(title);
+        
+        // Add author if exists
+        if (item.author) {
+            const author = document.createElement('div');
+            author.className = 'media-author';
+            author.textContent = item.author;
+            overlayContent.appendChild(author);
+        }
+        
+        // Add description if exists
+        if (item.description) {
+            const description = document.createElement('div');
+            description.className = 'media-description';
+            description.textContent = item.description;
+            overlayContent.appendChild(description);
+        }
+        
+        // Add rating if exists (moved to bottom)
+        if (item.rating) {
+            const rating = document.createElement('div');
+            rating.className = 'media-rating';
+            rating.innerHTML = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
+            overlayContent.appendChild(rating);
+        }
+        
+        // Add links if they exist
+        if (item.links && item.links.length > 0) {
+            const linksContainer = document.createElement('div');
+            linksContainer.className = 'media-links';
+            
+            item.links.forEach(link => {
+                const linkEl = document.createElement('a');
+                linkEl.href = link.url;
+                linkEl.className = 'media-link';
+                linkEl.target = '_blank';
+                linkEl.rel = 'noopener noreferrer';
+                linkEl.innerHTML = link.icon ? 
+                    `<i class="${link.icon}"></i> ${link.label}` : 
+                    link.label;
+                linksContainer.appendChild(linkEl);
+            });
+            
+            overlayContent.appendChild(linksContainer);
+        }
+        
+        // Assemble the overlay
+        overlay.appendChild(overlayContent);
+        
+        // Add all elements to the card
+        coverContainer.appendChild(coverImg);
+        coverContainer.appendChild(typeBadge);
+        card.appendChild(coverContainer);
+        card.appendChild(overlay);
+        
+        // Debug: Log card structure
+        console.log('Card created:', {
+            hasTitle: !!title,
+            hasOverlay: !!overlay,
+            hasCover: !!coverImg,
+            item: { title: item.title, type: item.mediaType }
+        });
+        
+        return card;
+    }
+    
+    // Helper function to get appropriate icon for media type
+    function getMediaTypeIcon(mediaType) {
+        const icons = {
+            'podcast': 'fas fa-podcast',
+            'playlist': 'fas fa-music',
+            'book': 'fas fa-book',
+            'song': 'fas fa-music',
+            'video': 'fas fa-video',
+            'article': 'fas fa-newspaper'
+        };
+        return icons[mediaType] || 'fas fa-file-alt';
+    }
+    
+    // Helper function to format date
+    function formatDate(dateString) {
+        if (!dateString) return '';
+        
+        // Try to parse the date
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return dateString; // Return as is if can't parse
+        }
+        
+        // Format as Month YYYY (e.g., January 2023)
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    }
+    
+    // Filter and sort functions
+    function filterAndSortMedia() {
+        const typeFilter = filterType.value;
+        const sortValue = sortBy.value;
+        
+        let filtered = [...mediaItems];
+        
+        // Apply type filter
+        if (typeFilter !== 'all') {
+            filtered = filtered.filter(item => item.mediaType === typeFilter);
+        }
+        
+        // Apply sorting
+        filtered.sort((a, b) => {
+            switch (sortValue) {
+                case 'date-asc':
+                    return new Date(a.date || 0) - new Date(b.date || 0);
+                case 'date-desc':
+                    return new Date(b.date || 0) - new Date(a.date || 0);
+                case 'title-asc':
+                    return (a.title || '').localeCompare(b.title || '');
+                case 'title-desc':
+                    return (b.title || '').localeCompare(a.title || '');
+                default:
+                    return 0;
+            }
+        });
+        
+        renderMediaCards(filtered);
+    }
+    
+    // Event listeners
+    filterType.addEventListener('change', filterAndSortMedia);
+    sortBy.addEventListener('change', filterAndSortMedia);
+    
+    // Initialize
+    fetchMediaData();
+});

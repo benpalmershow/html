@@ -4,7 +4,7 @@
   background: #f8f4e6;
   border: 1px solid #e8dcc0;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(44,95,90,0.10);
+  box-shadow: 0 2px 8px rgba(44, 95, 90, 0.10);
   padding: 1.1rem 1.5rem 1rem 1.5rem;
   margin: 2rem auto 0 auto;
   max-width: 1200px;
@@ -53,9 +53,12 @@
 .media-card {
   position: relative;
   width: 100%;
-  max-width: 200px; /* Narrower for portrait orientation */
-  height: 300px; /* Taller for portrait orientation */
-  aspect-ratio: 2/3; /* Standard portrait aspect ratio */
+  max-width: 200px;
+  /* Narrower for portrait orientation */
+  height: 300px;
+  /* Taller for portrait orientation */
+  aspect-ratio: 2/3;
+  /* Standard portrait aspect ratio */
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(44, 95, 90, 0.1);
@@ -64,9 +67,10 @@
   cursor: pointer;
 }
 
-.media-card:hover, .media-card:focus-within {
+.media-card:hover,
+.media-card:focus-within {
   border-color: #d4822a;
-  box-shadow: 0 4px 16px rgba(44,95,90,0.13);
+  box-shadow: 0 4px 16px rgba(44, 95, 90, 0.13);
   transform: translateY(-2px) scale(1.025);
 }
 
@@ -74,13 +78,17 @@
   display: none;
 }
 
-/* Cover image for all card types */
+/* Cover image for all card types - fills entire card */
 .media-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0.4em;
+  border-radius: 0.5rem;
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-position: center;
 }
 
 /* Thumbs indicator */
@@ -92,22 +100,40 @@
   z-index: 3;
   user-select: none;
   pointer-events: none;
-  text-shadow: 0 2px 8px rgba(44,95,90,0.18), 0 0 2px #fff;
+  text-shadow: 0 2px 8px rgba(44, 95, 90, 0.18), 0 0 2px #fff;
 }
 
-/* Media type badge */
-.media-type-badge {
+/* Media type badge - icon only style without background */
+.media-type {
   position: absolute;
-  top: 0.5em;
-  left: 0.5em;
-  background: rgba(44, 95, 90, 0.9);
+  top: 0.7em;
+  left: 0.7em;
   color: white;
-  padding: 0.2em 0.5em;
-  border-radius: 12px;
-  font-size: 0.7em;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-size: 1.2em;
   z-index: 3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.media-type:hover {
+  transform: scale(1.1);
+}
+
+/* Media type specific colors */
+.media-card[data-media-type="movie"] .media-type {
+  color: white;
+}
+
+.media-card[data-media-type="playlist"] .media-type {
+  color: white;
+}
+
+.media-card[data-media-type="podcast"] .media-type {
+  color: white;
+}
+
+.media-card[data-media-type="book"] .media-type {
+  color: white;
 }
 
 /* Media type icon in overlay */
@@ -131,22 +157,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(34, 85, 80, 0.98) 0%, rgba(34, 85, 80, 0.92) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.9) 100%);
   color: white;
-  padding: 0; /* Remove padding from container */
+  padding: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow: hidden; /* Change to hidden to prevent scrolling */
+  overflow: hidden;
   z-index: 10;
   box-sizing: border-box;
   pointer-events: none;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  border-radius: 0.5rem;
 }
 
 .media-card:hover .media-overlay,
@@ -156,11 +180,14 @@
 }
 
 .media-overlay-content {
-  padding: 1.2rem 1rem;
+  padding: 1.2rem 1rem 3rem 1rem;
+  /* Added extra bottom padding for date */
   width: 100%;
   height: 100%;
   overflow-y: auto;
   box-sizing: border-box;
+  position: relative;
+  /* For absolute positioning of date */
 }
 
 .media-title {
@@ -170,16 +197,17 @@
   padding: 0.5rem 0;
   line-height: 1.2;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   width: 100%;
   word-break: break-word;
   pointer-events: auto;
   position: sticky;
   top: 0;
-  background: rgba(34, 85, 80, 0.98);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 2;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
+
 .media-overlay-thumbs {
   position: absolute;
   top: .1px;
@@ -194,22 +222,51 @@
   line-height: 1.22;
   margin-bottom: 0.5em;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Limit to 4 lines */
-  line-clamp: 4; /* Standard property for compatibility */
+  -webkit-line-clamp: 4;
+  /* Limit to 4 lines */
+  line-clamp: 4;
+  /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 6em; /* line-height * number of lines */
+  max-height: 6em;
+  /* line-height * number of lines */
 }
 
 .media-author {
-  font-size: 0.8rem;
-  margin: 0 0 0.6rem 0;
-  color: #e8dcc0;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem 0;
+  color: #f5c518;
   font-weight: 500;
   width: 100%;
   pointer-events: auto;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+/* Date at the bottom of the overlay - fixed position */
+.media-date-bottom {
+  font-size: 0.7rem;
+  color: #ecf6eb;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  pointer-events: auto;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 4px;
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0;
+  right: 0;
+  padding: 0.5rem .5rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.media-date-bottom i {
+  font-size: 0.75rem;
+  opacity: 0.7;
 }
 
 .media-description {
@@ -223,36 +280,152 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 5;
+  line-clamp: 5;
+  /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   pointer-events: auto;
 }
 
+/* Trailer container and button */
+.trailer-container {
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  position: relative;
+}
+
+.trailer-button {
+  background-color: #FF0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.trailer-button:hover {
+  background-color: #cc0000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.trailer-button.playlist-button {
+  background-color: #1DB954;
+  /* Spotify green */
+}
+
+.trailer-button.playlist-button:hover {
+  background-color: #1aa34a;
+}
+
+.trailer-button i {
+  font-size: 1.1em;
+}
+
+.trailer-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9 aspect ratio */
+  margin: 10px 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.trailer-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Platform badges for playlists */
+.platform-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.platform-badge {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  opacity: 0.9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.platform-badge:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.platform-badge i {
+  margin-right: 6px;
+  font-size: 1.1em;
+}
+
+.spotify-badge {
+  background-color: #1DB954;
+}
+
+.apple-badge {
+  background-color: #A2AAAD;
+}
+
+.youtube-badge {
+  background-color: #FF0000;
+}
+
+.soundcloud-badge {
+  background-color: #FF5500;
+}
+
 /* Rating logos in overlay */
 .rating-logos {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  position: relative;
   display: flex;
   gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   z-index: 3;
 }
 
 .rating-logo {
   display: flex;
   align-items: center;
-  padding: 3px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
   text-decoration: none;
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-weight: bold;
   transition: transform 0.15s ease, opacity 0.15s ease;
-  opacity: 0.85;
+  opacity: 0.9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .rating-logo:hover {
   transform: scale(1.05);
   opacity: 1;
   text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .rt-logo {
@@ -261,7 +434,8 @@
 }
 
 .rt-logo .rt-tomato {
-  margin-right: 3px;
+  margin-right: 5px;
+  font-size: 1.1em;
 }
 
 .imdb-logo {
@@ -274,7 +448,7 @@
   font-weight: bold;
   font-size: 0.9em;
   letter-spacing: 0.5px;
-  margin-right: 3px;
+  margin-right: 5px;
 }
 
 .rating-logo .score {
@@ -282,7 +456,8 @@
 }
 
 /* Click action indicators */
-.click-to-watch, .click-to-listen {
+.click-to-watch,
+.click-to-listen {
   font-size: 0.8em;
   color: #d4822a;
   font-weight: 500;
@@ -304,6 +479,84 @@
 
 .media-card[onclick]:active {
   transform: translateY(-1px) scale(1.01);
+}
+
+/* Song and podcast links with Font Awesome icons - icon only style */
+.song-links,
+.podcast-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.song-link,
+.podcast-link {
+  font-size: 1.6em;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.song-link:hover,
+.podcast-link:hover {
+  opacity: 1;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+/* Podcast links specific styling */
+.podcast-links {
+  margin-top: 1.5rem;
+}
+
+.podcast-link {
+  font-size: 1.7em;
+}
+
+/* Platform-specific colors for song and podcast links */
+.spotify-link {
+  background-color: #1DB954;
+  color: white;
+}
+
+.apple-link {
+  background-color: #A2AAAD;
+  color: white;
+}
+
+.youtube-link {
+  background-color: #FF0000;
+  color: white;
+}
+
+.soundcloud-link {
+  background-color: #FF5500;
+  color: white;
+}
+
+.amazon-link {
+  background-color: #FF9900;
+  color: white;
+}
+
+.google-link {
+  background-color: #4285F4;
+  color: white;
+}
+
+.rss-link {
+  background-color: #FFA500;
+  color: white;
 }
 
 /* Listen links with Font Awesome icons */
@@ -342,16 +595,36 @@
 }
 
 /* Platform-specific colors */
-.listen-link .fa-apple { color: #a3aaae; }
-.listen-link .fa-spotify { color: #1DB954; }
-.listen-link .fa-youtube { color: #FF0000; }
-.listen-link .fa-soundcloud { color: #FF5500; }
-.listen-link .fa-google-play { color: #4285F4; }
-.listen-link .fa-amazon { color: #FF9900; }
-.listen-link .fa-rss { color: #FFA500; }
+.listen-link .fa-apple {
+  color: #a3aaae;
+}
 
-/* Featured badge for listen items */
-.featured-badge {
+.listen-link .fa-spotify {
+  color: #1DB954;
+}
+
+.listen-link .fa-youtube {
+  color: #FF0000;
+}
+
+.listen-link .fa-soundcloud {
+  color: #FF5500;
+}
+
+.listen-link .fa-google-play {
+  color: #4285F4;
+}
+
+.listen-link .fa-amazon {
+  color: #FF9900;
+}
+
+.listen-link .fa-rss {
+  color: #FFA500;
+}
+
+/* Featured badge for items */
+.media-featured {
   position: absolute;
   top: 0.5em;
   right: 0.5em;
@@ -388,7 +661,7 @@
     gap: 1rem;
     margin: 1rem auto;
   }
-  
+
   .media-card {
     width: 130px;
     height: 180px;

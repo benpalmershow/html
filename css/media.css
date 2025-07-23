@@ -180,14 +180,15 @@
 }
 
 .media-overlay-content {
-  padding: 1.2rem 1rem 3rem 1rem;
-  /* Added extra bottom padding for date */
+  padding: 1.2rem 1rem 2.2rem 1rem; /* Reduced bottom padding */
   width: 100%;
   height: 100%;
   overflow-y: auto;
   box-sizing: border-box;
-  position: relative;
-  /* For absolute positioning of date */
+  position: relative; /* For absolute positioning of date */
+  /* Ensure content doesn't overlap with date at bottom */
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
 }
 
 .media-title {
@@ -245,27 +246,24 @@
 
 /* Date at the bottom of the overlay - fixed position */
 .media-date-bottom {
-  font-size: 0.7rem;
-  color: #ecf6eb;
+  font-size: 0.75rem;
   font-weight: 400;
   width: 100%;
   text-align: center;
   pointer-events: auto;
-  opacity: 0.7;
   display: flex;
   align-items: center;
-  justify-content: right;
-  gap: 4px;
+  justify-content: center;
+  gap: 3px;
   position: absolute;
-  bottom: 0.3rem;
+  bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.5rem .5rem;
-  background: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 0;
 }
 
 .media-date-bottom i {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   opacity: 0.7;
 }
 
@@ -279,9 +277,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
-  line-clamp: 5;
-  /* Standard property for compatibility */
+  -webkit-line-clamp: 4; /* Reduced from 5 to 4 lines to prevent overlap */
+  line-clamp: 4; /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   pointer-events: auto;
 }
@@ -665,5 +662,51 @@
   .media-card {
     width: 130px;
     height: 180px;
+  }
+  
+  /* Smaller font sizes for mobile */
+  .media-title {
+    font-size: 0.95rem;
+    margin: 0 0 0.6rem 0;
+    padding: 0.4rem 0;
+  }
+  
+  .media-author {
+    font-size: 0.8rem;
+    margin: 0 0 0.4rem 0;
+  }
+  
+  .media-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    -webkit-line-clamp: 3; /* Even fewer lines on mobile */
+    line-clamp: 3;
+  }
+  
+  .media-date-bottom {
+    font-size: 0.6rem;
+    padding: 0.25rem 0;
+  }
+}
+
+/* Extra small screens like iPhone SE */
+@media (max-width: 375px) {
+  .media-card {
+    width: 120px;
+    height: 170px;
+  }
+  
+  .media-overlay-content {
+    padding: 1rem 0.8rem 2rem 0.8rem;
+  }
+  
+  .media-title {
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .media-description {
+    -webkit-line-clamp: 2; /* Only 2 lines on very small screens */
+    line-clamp: 2;
   }
 }

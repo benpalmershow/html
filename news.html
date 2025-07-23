@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
   <title>News</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/news.css?v=1.0.0">
+  <link rel="stylesheet" href="css/news.css">
 </head>
+
 <body>
   <header class="site-header">
     <div class="logo-container">
@@ -18,747 +20,771 @@
     </div>
   </header>
   <nav class="nav-links" id="main-nav"></nav>
-      <h1 class="page-title">News</h1>
-      <br>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-07-22" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">July 22, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;"><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">IPO - FIG</a></h1>
-            <div class="card-tags">
-              <span class="tag">Finance</span>
-              <span class="tag">IPO</span>
-              <span class="tag">Tech</span>
-            </div>
-          </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <div class="ipo-details" style="margin: 15px 0;">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-                <div>
-                  <div style="font-size: 0.9em; color: var(--text-muted);">Ticker</div>
-                  <div style="font-weight: 500;">FIG</div>
-                </div>
-                <div>
-                  <div style="font-size: 0.9em; color: var(--text-muted);">Exchange</div>
-                  <div style="font-weight: 500;">NYSE</div>
-                </div>
-                <div>
-                  <div style="font-size: 0.9em; color: var(--text-muted);">Price Range</div>
-                  <div style="font-weight: 500;">$25 - $28</div>
-                </div>
-                <div>
-                  <div style="font-size: 0.9em; color: var(--text-muted);">Shares</div>
-                  <div style="font-weight: 500;">36.9M</div>
-                </div>
-                <div>
-                  <div style="font-size: 0.9em; color: var(--text-muted);">Raise</div>
-                  <div style="font-weight: 500;">~$1B</div>
-                </div>
-                <div>
-                  <div style="font-size: 0.9em; color: var(--text-muted);">Valuation</div>
-                  <div style="font-weight: 500;">$13.65B</div>
-                </div>
-              </div>
-              <div style="text-align: center; margin: 20px 0;">
-                <span style="background: #f0f7ff; color: #0066cc; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 500;">Upcoming</span>
-              </div>
-              
-              <!-- Equity Research Summary -->
-              <div class="equity-research">
-                <h2>Figma Equity Research Report</h2>
-                <p class="report-meta">Date: July 22, 2025 | Prepared by: Comprehensive Equity Research (ChatGPT)</p>
+  <h1 class="page-title">News</h1>
 
-                <div class="executive-summary">
-                  <h3>1. Executive Summary</h3>
-                  <ul>
-                    <li><strong>Ticker:</strong> FIG (anticipated IPO symbol)</li>
-                    <li><strong>Recommendation:</strong> <span class="buy-text">Buy</span></li>
-                    <li><strong>Target Valuation:</strong> ~$16-18B, implying EV/Sales of ~25x FY24E revenue</li>
-                    <li><strong>Investment Thesis:</strong> Figma is redefining collaborative design with AI integration, strong viral adoption, and a scalable SaaS model; market leadership is underpinned by high switching costs and network effects.</li>
-                  </ul>
-                </div>
-
-                <div class="financial-section">
-                  <h3>2. Financial Analysis</h3>
-                  <div class="table-container">
-                    <table class="financial-table">
-                      <thead>
-                        <tr>
-                          <th>Metric</th>
-                          <th>FY22A</th>
-                          <th>FY23A</th>
-                          <th>FY24E</th>
-                          <th>Comments</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Revenue ($M)</td>
-                          <td>~400</td>
-                          <td>~520</td>
-                          <td>~650</td>
-                          <td>~25% YoY growth, decelerating but robust</td>
-                        </tr>
-                        <tr>
-                          <td>Gross Margin (%)</td>
-                          <td>~88%</td>
-                          <td>~89%</td>
-                          <td>~89%</td>
-                          <td>High due to SaaS delivery model</td>
-                        </tr>
-                        <tr>
-                          <td>Operating Margin (%)</td>
-                          <td>-20%</td>
-                          <td>-12%</td>
-                          <td>-5%</td>
-                          <td>Improving with scale and disciplined OPEX</td>
-                        </tr>
-                        <tr>
-                          <td>Free Cash Flow ($M)</td>
-                          <td colspan="3">Positive</td>
-                          <td>Uncommon for growth-stage SaaS peers</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h4>Valuation Multiples (Pre-IPO)</h4>
-                  <ul>
-                    <li><strong>EV/Revenue:</strong> ~25x FY24E (premium to peers at ~10–15x)</li>
-                    <li><strong>EV/EBITDA:</strong> NMF (not meaningful) due to negative EBITDA</li>
-                    <li><strong>Comparable Transactions:</strong> Adobe's attempted $20B acquisition (blocked) implied ~50x sales, suggesting current IPO valuation remains competitive.</li>
-                  </ul>
-                </div>
-
-                <div class="thesis-validation">
-                  <h3>3. Thesis Validation</h3>
-                  <div class="supporting-factors">
-                    <h4>Supporting Factors</h4>
-                    <ul>
-                      <li>AI integration (Figma Make) enhances productivity and defensibility.</li>
-                      <li>Network effects from collaborative design tools increase switching costs.</li>
-                      <li>Market expansion with IDC projecting >1B new apps requiring design integration.</li>
-                      <li>Positive free cash flow reduces funding risk amid high growth.</li>
-                    </ul>
-                  </div>
-
-                  <div class="risks-section">
-                    <h4>Risks & Mitigants</h4>
-                    <div class="table-container">
-                      <table class="financial-table">
-                        <thead>
-                          <tr>
-                            <th>Risk</th>
-                            <th>Mitigant</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Intense competition (Adobe, Canva)</td>
-                            <td>Figma's collaborative-first architecture and AI roadmap differentiate product</td>
-                          </tr>
-                          <tr>
-                            <td>Regulatory uncertainty (AI dataset use)</td>
-                            <td>Developing proprietary datasets to reduce exposure</td>
-                          </tr>
-                          <tr>
-                            <td>Valuation premium risk</td>
-                            <td>Justified by growth, FCF, and strategic positioning; monitor execution</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="sector-outlook">
-                  <h3>4. Sector & Strategic Outlook</h3>
-                  <div class="sector-view">
-                    <h4>Sector View</h4>
-                    <ul>
-                      <li>Design software TAM expanding at ~10–15% CAGR (IDC, Gartner).</li>
-                      <li>Shift to cloud-native, collaborative, and AI-augmented tools creates long-term growth tailwinds.</li>
-                    </ul>
-                  </div>
-
-                  <div class="strategic-positioning">
-                    <h4>Strategic Positioning</h4>
-                    <ul>
-                      <li>First-mover advantage in browser-based design collaboration.</li>
-                      <li>AI features drive upsell opportunities and deepen enterprise penetration.</li>
-                      <li>Adobe acquisition block by DOJ enhances Figma's independent narrative.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="management-section">
-                  <h3>5. Management Assessment</h3>
-                  <ul>
-                    <li>CEO Dylan Field retains significant ownership; founder-led culture emphasizing product velocity.</li>
-                    <li>Board includes experienced SaaS operators, enhancing governance.</li>
-                  </ul>
-                </div>
-
-                <div class="catalyst-section">
-                  <h3>6. Catalyst Watch</h3>
-                  <ul class="catalyst-list">
-                    <li><strong>Short-Term:</strong> IPO pricing, Q3 earnings release, AI feature adoption metrics.</li>
-                    <li><strong>Medium-Term:</strong> Enterprise sales expansion, international localization rollouts.</li>
-                    <li><strong>Long-Term:</strong> Potential M&A activity or revisited acquisition by larger software conglomerates.</li>
-                  </ul>
-                </div>
-
-                <div class="valuation-section">
-                  <h3>7. Valuation & Recommendation</h3>
-                  <div class="recommendation-box">
-                    <p><strong>Recommendation:</strong> <span class="buy-text">Buy</span></p>
-                    <p><strong>Target Price Range:</strong> $16-18B valuation ($45-50/share post-IPO)</p>
-                    <p><strong>Time Horizon:</strong> 12–18 months</p>
-                    <p><strong>Confidence Level:</strong> Medium – Execution and market conditions are key variables.</p>
-                    <p><strong>Key Risks:</strong> Competitive pressures, execution missteps, and market volatility.</p>
-                  </div>
-
-                  <div class="kpi-section">
-                    <h4>Key Performance Indicators (KPIs) to Monitor</h4>
-                    <ul class="kpi-list">
-                      <li><strong>Net Dollar Retention (NDR):</strong> Track for stability above 120%.</li>
-                      <li><strong>Enterprise Adoption:</strong> Growth in $100K+ customers indicates enterprise traction.</li>
-                      <li><strong>AI Feature Uptake:</strong> Adoption rates of Figma Make features.</li>
-                      <li><strong>International Expansion:</strong> Non-US revenue growth as a % of total.</li>
-                    </ul>
-                  </div>
-
-                  <div class="disclaimer">
-                    <p>This research report is for informational purposes only and does not constitute investment advice. The information contained herein is based on sources believed to be reliable but is not guaranteed as to accuracy or completeness. The opinions expressed are subject to change without notice. Past performance is not indicative of future results. Please consult with a qualified financial advisor before making any investment decisions.</p>
-                    <p>Prepared by: Comprehensive Equity Research | Date: July 22, 2025</p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Equity Research Summary -->
-              
-            </div>
-          </div>
+  <!-- FIG IPO Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-07-22">July 22, 2025</time>
+    <h1><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener">IPO - FIG</a></h1>
+    <div class="card-tags">
+      <span class="tag">Finance</span>
+      <span class="tag">IPO</span>
+      <span class="tag">Tech</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="ipo-details">
+        <div class="ipo-grid">
+          <div><span>Ticker</span><strong>FIG</strong></div>
+          <div><span>Price Range</span><strong>$25 - $28</strong></div>
+          <div><span>Shares</span><strong>36.9M</strong></div>
+          <div><span>Raise</span><strong>~$1B</strong></div>
+          <div><span>Valuation</span><strong>$13.65B</strong></div>
         </div>
       </div>
 
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-07-07" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">July 7, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;">Why Mamdani public grocery stores don't work</h1>
-            <div class="card-tags">
-              <span class="tag">Policy</span>
-              <span class="tag">Socialism</span>
-              <span class="tag">Nonprofit</span>
-              <span class="tag">Financial Disclosure</span>
-            </div>
-          </div>
-          <span class="expand-icon">+</span>
+      <div class="section">
+        <h3>1. Executive Summary</h3>
+        <ul>
+          <li><strong>Ticker:</strong> FIG (anticipated IPO symbol)</li>
+          <li><strong>Recommendation:</strong> <span class="buy-text">Buy</span></li>
+          <li><strong>Target Valuation:</strong> ~$16-18B, implying EV/Sales of ~25x FY24E revenue</li>
+          <li><strong>Investment Thesis:</strong> Figma is redefining collaborative design with AI integration, strong
+            viral adoption, and a scalable SaaS model; market leadership is underpinned by high switching costs and
+            network effects.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>2. Financial Analysis</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>FY22A</th>
+                <th>FY23A</th>
+                <th>FY24E</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Revenue ($M)</td>
+                <td>~400</td>
+                <td>~520</td>
+                <td>~650</td>
+                <td>~25% YoY growth, decelerating but robust</td>
+              </tr>
+              <tr>
+                <td>Gross Margin (%)</td>
+                <td>~88%</td>
+                <td>~89%</td>
+                <td>~89%</td>
+                <td>High due to SaaS delivery model</td>
+              </tr>
+              <tr>
+                <td>Operating Margin (%)</td>
+                <td>-20%</td>
+                <td>-12%</td>
+                <td>-5%</td>
+                <td>Improving with scale and disciplined OPEX</td>
+              </tr>
+              <tr>
+                <td>Free Cash Flow ($M)</td>
+                <td colspan="3">Positive</td>
+                <td>Uncommon for growth-stage SaaS peers</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <section class="section">
-              <div class="highlights">
-                <p><strong></strong></p>
-                <p>The <strong>Boston Public Market Association</strong> released its <a href="https://bostonpublicmarket.org/wp-content/uploads/2025/06/Audit.2024.FinancialStatements.Final_.pdf" target="_blank" rel="noopener">2024 audited financial statements</a>, highlighting key financial metrics and the organization's ongoing commitment to food access and local agriculture. Below is a summary of the main figures and context from the report.</p>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Key Financial Metrics</h2>
-              <div class="highlights">
-                <div class="table-wrapper">
-                  <table>
-                    <tr>
-                      <th>Key Metric</th>
-                      <th>Amount</th>
-                    </tr>
-                    <tr>
-                      <td>SNAP & MA Healthy Incentives Program Sales</td>
-                      <td>$5 million +</td>
-                    </tr>
-                    <tr>
-                      <td>Total Operating Revenue</td>
-                      <td>$1.29 million</td>
-                    </tr>
-                    <tr>
-                      <td>Total Expenses</td>
-                      <td>~$2.85 million</td>
-                    </tr>
-                    <tr>
-                      <td>Net Change in Assets (Loss)</td>
-                      <td style="color:red;">–$456,657</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Context & Impact</h2>
-              <div class="highlights">
-                <ul>
-                  <li><strong>Food Access:</strong> Over $5 million in SNAP and Healthy Incentives Program sales supported local families and farmers.</li>
-                  <li><strong>Financial Challenge:</strong> The market operated at a net loss in 2024, reflecting increased expenses and ongoing recovery from pandemic impacts.</li>
-                  <li><strong>Community Role:</strong> Despite financial headwinds, the Market continued to provide vital access to fresh, local food and support for small businesses.</li>
-                </ul>
-              </div>
-            </section>
-          </div>
+        <h4>Valuation Multiples (Pre-IPO)</h4>
+        <ul>
+          <li><strong>EV/Revenue:</strong> ~25x FY24E (premium to peers at ~10–15x)</li>
+          <li><strong>EV/EBITDA:</strong> NMF (not meaningful) due to negative EBITDA</li>
+          <li><strong>Comparable Transactions:</strong> Adobe's attempted $20B acquisition (blocked) implied ~50x
+            sales, suggesting current IPO valuation remains competitive.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>3. Thesis Validation</h3>
+        <h4>Supporting Factors</h4>
+        <ul>
+          <li>AI integration (Figma Make) enhances productivity and defensibility.</li>
+          <li>Network effects from collaborative design tools increase switching costs.</li>
+          <li>Market expansion with IDC projecting >1B new apps requiring design integration.</li>
+          <li>Positive free cash flow reduces funding risk amid high growth.</li>
+        </ul>
+        <h4>Risks & Mitigants</h4>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Risk</th>
+                <th>Mitigant</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Intense competition (Adobe, Canva)</td>
+                <td>Figma's collaborative-first architecture and AI roadmap differentiate product</td>
+              </tr>
+              <tr>
+                <td>Regulatory uncertainty (AI dataset use)</td>
+                <td>Developing proprietary datasets to reduce exposure</td>
+              </tr>
+              <tr>
+                <td>Valuation premium risk</td>
+                <td>Justified by growth, FCF, and strategic positioning; monitor execution</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-07-02" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">July 2, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;">Latest on Big Beautiful Bill</h1>
-             <div class="card-tags">
-          <span class="tag">Immigration</span>
-          <span class="tag">Congress</span>
-          <span class="tag">Budget</span>
-          <span class="tag">Homeland Security</span>
+
+      <div class="section">
+        <h3>4. Sector & Strategic Outlook</h3>
+        <h4>Sector View</h4>
+        <ul>
+          <li>Design software TAM expanding at ~10–15% CAGR (IDC, Gartner).</li>
+          <li>Shift to cloud-native, collaborative, and AI-augmented tools creates long-term growth tailwinds.</li>
+        </ul>
+        <h4>Strategic Positioning</h4>
+        <ul>
+          <li>First-mover advantage in browser-based design collaboration.</li>
+          <li>AI features drive upsell opportunities and deepen enterprise penetration.</li>
+          <li>Adobe acquisition block by DOJ enhances Figma's independent narrative.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>5. Management Assessment</h3>
+        <ul>
+          <li>CEO Dylan Field retains significant ownership; founder-led culture emphasizing product velocity.</li>
+          <li>Board includes experienced SaaS operators, enhancing governance.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>6. Catalyst Watch</h3>
+        <ul>
+          <li><strong>Short-Term:</strong> IPO pricing, Q3 earnings release, AI feature adoption metrics.</li>
+          <li><strong>Medium-Term:</strong> Enterprise sales expansion, international localization rollouts.</li>
+          <li><strong>Long-Term:</strong> Potential M&A activity or revisited acquisition by larger software
+            conglomerates.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>7. Valuation & Recommendation</h3>
+        <div class="highlights">
+          <p><strong>Recommendation:</strong> <span class="buy-text">Buy</span></p>
+          <p><strong>Target Price Range:</strong> $16-18B valuation ($45-50/share post-IPO)</p>
+          <p><strong>Time Horizon:</strong> 12–18 months</p>
+          <p><strong>Confidence Level:</strong> Medium – Execution and market conditions are key variables.</p>
+          <p><strong>Key Risks:</strong> Competitive pressures, execution missteps, and market volatility.</p>
+        </div>
+        <h4>Key Performance Indicators (KPIs) to Monitor</h4>
+        <ul>
+          <li><strong>Net Dollar Retention (NDR):</strong> Track for stability above 120%.</li>
+          <li><strong>Enterprise Adoption:</strong> Growth in $100K+ customers indicates enterprise traction.</li>
+          <li><strong>AI Feature Uptake:</strong> Adoption rates of Figma Make features.</li>
+          <li><strong>International Expansion:</strong> Non-US revenue growth as a % of total.</li>
+        </ul>
+        <p><em>This research report is for informational purposes only and does not constitute investment advice.
+            Prepared by: Comprehensive Equity Research | Date: July 22, 2025</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boston Public Market Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-07-07">July 7, 2025</time>
+    <h1>Why Mamdani public grocery stores don't work</h1>
+    <div class="card-tags">
+      <span class="tag">Policy</span>
+      <span class="tag">Socialism</span>
+      <span class="tag">Nonprofit</span>
+      <span class="tag">Financial Disclosure</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <div class="highlights">
+          <p>The <strong>Boston Public Market Association</strong> released its <a
+              href="https://bostonpublicmarket.org/wp-content/uploads/2025/06/Audit.2024.FinancialStatements.Final_.pdf"
+              target="_blank" rel="noopener">2024 audited financial statements</a>, highlighting key financial metrics
+            and the organization's ongoing commitment to food access and local agriculture. Below is a summary of the
+            main figures and context from the report.</p>
         </div>
       </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <section class="section">
-              <div class="highlights">
-                <p><strong>Posted on July 2, 2025</strong></p>
-                <p>The <strong>One Big Beautiful Bill Act (OBBBA)</strong>, or H.R. 1, passed the U.S. House on May 22, 2025, by a 215-214 vote and the Senate on July 1, 2025, by a 51-50 vote, with Vice President JD Vance casting the tie-breaking vote. This budget reconciliation package allocates significant funds for homeland security and immigration enforcement, prioritizing border security and mass deportation. Below is an overview of the key funding allocations based on the latest information.</p>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Key Funding Allocations</h2>
-              <div class="highlights">
-                <ul>
-                  <li><strong>Border Security and Infrastructure</strong>: $46.5 billion for an integrated border barrier system (border wall, fencing, water barriers, access roads, and sensors), $5 billion for U.S. Customs and Border Protection (CBP) facilities, and $4.1 billion to hire over 8,000 new CBP and Border Patrol agents.</li>
-                  <li><strong>Immigration Enforcement and Detention</strong>: $45 billion to expand Immigration and Customs Enforcement (ICE) detention capacity to over 100,000 beds daily, including family residential centers. $29.9 billion supports ICE enforcement operations, such as community arrests and state/local law enforcement cooperation, with $14.4 billion for transportation and removal of up to one million individuals annually.</li>
-                  <li><strong>Personnel Expansion</strong>: $10 billion to hire 10,000 additional ICE officers and support staff by 2029, including $858 million for retention bonuses and $600 million for recruitment.</li>
-                  <li><strong>Immigration Courts</strong>: $3.3 billion to the Department of Justice, with a portion for the Executive Office for Immigration Review (EOIR) to address court backlogs, though limited to 800 immigration judges.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Impact and Concerns</h2>
-              <div class="highlights">
-                <p>The OBBBA allocates approximately <strong>$170 billion</strong> for homeland security and immigration enforcement over four years, a significant increase from prior budgets. Supporters argue it strengthens border security and enforces immigration laws, aligning with the administration's priorities. Critics, including immigration advocates, warn that the focus on enforcement over adjudication could exacerbate court backlogs (currently over 3.6 million cases) and raise humanitarian concerns due to expanded detention and deportation. The bill's passage remains contentious, with the House needing to approve the Senate's version, facing potential opposition from fiscal hawks over the bill's $3.3 trillion deficit increase over 10 years.</p>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Sources</h2>
-              <div class="highlights">
-                <p>Read more about the bill here:</p>
-                <ul>
-                  <li><a href="https://www.congress.gov/bill/119th-congress/house-bill/1" target="_blank" rel="noopener">H.R. 1 - One Big Beautiful Bill Act</a></li>
-                  <li><a href="https://www.americanimmigrationcouncil.org/news/whats-2025-reconciliation-bill-so-far" target="_blank" rel="noopener">American Immigration Council: 2025 Reconciliation Bill</a></li>
-                  <li><a href="https://www.pbs.org/newshour/politics/4-ways-trumps-big-bill-could-change-the-u-s-immigration-system" target="_blank" rel="noopener">PBS News: Trump's Big Bill and Immigration</a></li>
-                </ul>
-              </div>
-            </section>
-          </div>
+      <div class="section">
+        <h3>Key Financial Metrics</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Key Metric</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SNAP & MA Healthy Incentives Program Sales</td>
+                <td>$5 million +</td>
+              </tr>
+              <tr>
+                <td>Total Operating Revenue</td>
+                <td>$1.29 million</td>
+              </tr>
+              <tr>
+                <td>Total Expenses</td>
+                <td>~$2.85 million</td>
+              </tr>
+              <tr>
+                <td>Net Change in Assets (Loss)</td>
+                <td style="color:red;">–$456,657</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-07-02" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">July 2, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;">CA CEQA Reforms </h1>
-             <div class="card-tags">
-          <span class="tag">California</span>
-          <span class="tag">Housing</span>
-          <span class="tag">Legislation</span>
-        </div>
-          </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <section class="section">
-              <div class="highlights">
-                <p><strong>Posted on July 2, 2025</strong></p>
-                <p>On June 30, 2025, Governor Gavin Newsom signed two landmark bills, <strong>Assembly Bill (AB) 130</strong> and <strong>Senate Bill (SB) 131</strong>, reforming the <strong>California Environmental Quality Act (CEQA)</strong> to tackle the state's housing crisis and accelerate development. Below is a concise look at how these laws reshape CEQA.</p>
-              </div>
-            </section>
-            <section class="section">
-              <h2>AB 130: Streamlining Infill Housing</h2>
-              <div class="highlights">
-                <ul>
-                  <li>Exempts most <strong>infill housing projects</strong> (built in already-developed urban areas) from CEQA's environmental review process, provided they comply with local zoning and planning standards.</li>
-                  <li>Imposes a <strong>30-day deadline</strong> for agencies to approve or deny qualifying projects, speeding up housing construction.</li>
-                  <li>Applies to projects under 85 feet, with no requirements for affordable housing or labor mandates.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>SB 131: Broadening CEQA Exemptions</h2>
-              <div class="highlights">
-                <ul>
-                  <li>Expands exemptions to include projects like <strong>high-speed rail</strong>, <strong>wildfire mitigation</strong>, <strong>broadband</strong>, and <strong>advanced manufacturing</strong> (e.g., semiconductor plants).</li>
-                  <li>For housing projects missing CEQA exemptions due to a single condition, limits environmental reviews to only that specific issue, reducing delays and costs.</li>
-                  <li>Exempts rezoning for state-approved housing plans.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Impact and Controversy</h2>
-              <div class="highlights">
-                <p>These reforms aim to cut bureaucratic red tape, lower housing costs, and promote climate-friendly urban development. However, environmental groups argue they may weaken protections for wildlife, air, and water quality. Both laws took effect immediately, signaling a bold shift in balancing development and environmental oversight in California.</p>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Sources</h2>
-              <div class="highlights">
-                <p>Read the full text of the bills here:</p>
-                <ul>
-                  <li><a href="http://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB130" target="_blank" rel="noopener">California Assembly Bill (AB) 130</a></li>
-                  <li><a href="http://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB131" target="_blank" rel="noopener">California Senate Bill (SB) 131</a></li>
-                </ul>
-              </div>
-            </section>
-          </div>
+      <div class="section">
+        <h3>Context & Impact</h3>
+        <ul>
+          <li><strong>Food Access:</strong> Over $5 million in SNAP and Healthy Incentives Program sales supported
+            local families and farmers.</li>
+          <li><strong>Financial Challenge:</strong> The market operated at a net loss in 2024, reflecting increased
+            expenses and ongoing recovery from pandemic impacts.</li>
+          <li><strong>Community Role:</strong> Despite financial headwinds, the Market continued to provide vital
+            access to fresh, local food and support for small businesses.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Big Beautiful Bill Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-07-02">July 2, 2025</time>
+    <h1>Latest on Big Beautiful Bill</h1>
+    <div class="card-tags">
+      <span class="tag">Immigration</span>
+      <span class="tag">Congress</span>
+      <span class="tag">Budget</span>
+      <span class="tag">Homeland Security</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <div class="highlights">
+          <p><strong>Posted on July 2, 2025</strong></p>
+          <p>The <strong>One Big Beautiful Bill Act (OBBBA)</strong>, or H.R. 1, passed the U.S. House on May 22,
+            2025, by a 215-214 vote and the Senate on July 1, 2025, by a 51-50 vote, with Vice President JD Vance
+            casting the tie-breaking vote. This budget reconciliation package allocates significant funds for homeland
+            security and immigration enforcement, prioritizing border security and mass deportation. Below is an
+            overview of the key funding allocations based on the latest information.</p>
         </div>
       </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-06-13" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">June 13, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;"><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">IPO - AIRO</a></h1>
-             <div class="card-tags">
-          <span class="tag">IPO</span>
-          <span class="tag">Aerospace</span>
+      <div class="section">
+        <h3>Key Funding Allocations</h3>
+        <ul>
+          <li><strong>Border Security and Infrastructure</strong>: $46.5 billion for an integrated border barrier
+            system (border wall, fencing, water barriers, access roads, and sensors), $5 billion for U.S. Customs and
+            Border Protection (CBP) facilities, and $4.1 billion to hire over 8,000 new CBP and Border Patrol agents.
+          </li>
+          <li><strong>Immigration Enforcement and Detention</strong>: $45 billion to expand Immigration and Customs
+            Enforcement (ICE) detention capacity to over 100,000 beds daily, including family residential centers.
+            $29.9 billion supports ICE enforcement operations, such as community arrests and state/local law
+            enforcement cooperation, with $14.4 billion for transportation and removal of up to one million
+            individuals annually.</li>
+          <li><strong>Personnel Expansion</strong>: $10 billion to hire 10,000 additional ICE officers and support
+            staff by 2029, including $858 million for retention bonuses and $600 million for recruitment.</li>
+          <li><strong>Immigration Courts</strong>: $3.3 billion to the Department of Justice, with a portion for the
+            Executive Office for Immigration Review (EOIR) to address court backlogs, though limited to 800
+            immigration judges.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Impact and Concerns</h3>
+        <p>The OBBBA allocates approximately <strong>$170 billion</strong> for homeland security and immigration
+          enforcement over four years, a significant increase from prior budgets. Supporters argue it strengthens
+          border security and enforces immigration laws, aligning with the administration's priorities. Critics,
+          including immigration advocates, warn that the focus on enforcement over adjudication could exacerbate court
+          backlogs (currently over 3.6 million cases) and raise humanitarian concerns due to expanded detention and
+          deportation. The bill's passage remains contentious, with the House needing to approve the Senate's version,
+          facing potential opposition from fiscal hawks over the bill's $3.3 trillion deficit increase over 10 years.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>Sources</h3>
+        <p>Read more about the bill here:</p>
+        <ul>
+          <li><a href="https://www.congress.gov/bill/119th-congress/house-bill/1" target="_blank" rel="noopener">H.R.
+              1 - One Big Beautiful Bill Act</a></li>
+          <li><a href="https://www.americanimmigrationcouncil.org/news/whats-2025-reconciliation-bill-so-far"
+              target="_blank" rel="noopener">American Immigration Council: 2025 Reconciliation Bill</a></li>
+          <li><a
+              href="https://www.pbs.org/newshour/politics/4-ways-trumps-big-bill-could-change-the-u-s-immigration-system"
+              target="_blank" rel="noopener">PBS News: Trump's Big Bill and Immigration</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- CA CEQA Reforms Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-07-02">July 2, 2025</time>
+    <h1>CA CEQA Reforms</h1>
+    <div class="card-tags">
+      <span class="tag">California</span>
+      <span class="tag">Housing</span>
+      <span class="tag">Legislation</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <div class="highlights">
+          <p><strong>Posted on July 2, 2025</strong></p>
+          <p>On June 30, 2025, Governor Gavin Newsom signed two landmark bills, <strong>Assembly Bill (AB)
+              130</strong> and <strong>Senate Bill (SB) 131</strong>, reforming the <strong>California Environmental
+              Quality Act (CEQA)</strong> to tackle the state's housing crisis and accelerate development. Below is a
+            concise look at how these laws reshape CEQA.</p>
         </div>
       </div>
-          <span class="expand-icon">+</span>
+      <div class="section">
+        <h3>AB 130: Streamlining Infill Housing</h3>
+        <ul>
+          <li>Exempts most <strong>infill housing projects</strong> (built in already-developed urban areas) from
+            CEQA's environmental review process, provided they comply with local zoning and planning standards.</li>
+          <li>Imposes a <strong>30-day deadline</strong> for agencies to approve or deny qualifying projects, speeding
+            up housing construction.</li>
+          <li>Applies to projects under 85 feet, with no requirements for affordable housing or labor mandates.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>SB 131: Broadening CEQA Exemptions</h3>
+        <ul>
+          <li>Expands exemptions to include projects like <strong>high-speed rail</strong>, <strong>wildfire
+              mitigation</strong>, <strong>broadband</strong>, and <strong>advanced manufacturing</strong> (e.g.,
+            semiconductor plants).</li>
+          <li>For housing projects missing CEQA exemptions due to a single condition, limits environmental reviews to
+            only that specific issue, reducing delays and costs.</li>
+          <li>Exempts rezoning for state-approved housing plans.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Impact and Controversy</h3>
+        <p>These reforms aim to cut bureaucratic red tape, lower housing costs, and promote climate-friendly urban
+          development. However, environmental groups argue they may weaken protections for wildlife, air, and water
+          quality. Both laws took effect immediately, signaling a bold shift in balancing development and
+          environmental oversight in California.</p>
+      </div>
+
+      <div class="section">
+        <h3>Sources</h3>
+        <p>Read the full text of the bills here:</p>
+        <ul>
+          <li><a href="http://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB130"
+              target="_blank" rel="noopener">California Assembly Bill (AB) 130</a></li>
+          <li><a href="http://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB131"
+              target="_blank" rel="noopener">California Senate Bill (SB) 131</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- AIRO IPO Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-06-13">June 13, 2025</time>
+    <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a></h1>
+    <div class="card-tags">
+      <span class="tag">IPO</span>
+      <span class="tag">Aerospace</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="highlights"
+        style="background:linear-gradient(135deg,#1e3a8a 0%,#059669 100%);color:white;padding:1rem;border-radius:6px;margin:1rem 0;text-align:center;font-weight:bold;">
+        IPO Performance: Priced at $10.00 • Opened at $12.90 • Surged 140% on debut</div>
+      <div class="section">
+        <h3>Company Overview</h3>
+        <p>AIRO Group Holdings, Inc. is a Delaware corporation formed on August 30, 2021, specializing in advanced
+          aerospace and defense technologies. The company operates across multiple sectors including
+          <strong>drones</strong>, <strong>avionics</strong>, <strong>training</strong>, and <strong>electric vertical
+            takeoff and landing (eVTOL)</strong> aircraft. AIRO's mission is to design, manufacture, integrate, and
+          operate sector-leading solutions that equip clients with best-in-class aerospace, urban air mobility, and
+          autonomy technologies, enabling them to work more efficiently, precisely, cleanly, and safely.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>Business Model and Strategy</h3>
+        <p>AIRO was formed as a holding company for the purpose of acquiring and integrating various companies engaged
+          in the aerospace and defense industry. The company focuses on providing comprehensive solutions across the
+          aerospace value chain, from component manufacturing to complete system integration. Key business areas
+          include:</p>
+        <ul>
+          <li><strong>Drone Technology</strong>: Advanced unmanned aerial systems for defense and commercial
+            applications</li>
+          <li><strong>Urban Air Mobility</strong>: eVTOL aircraft development for next-generation transportation</li>
+          <li><strong>Avionics Systems</strong>: Advanced flight control and navigation technologies</li>
+          <li><strong>Training Services</strong>: Comprehensive aerospace training and support programs</li>
+          <li><strong>Defense Solutions</strong>: Specialized aerospace technologies for defense applications</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Financial Performance</h3>
+        <p><strong>2024 Financial Highlights:</strong></p>
+        <ul>
+          <li>Revenue: $86.94 million (100.99% increase from 2023's $43.25 million)</li>
+          <li>Net Loss: -$38.69 million (19.2% increase in losses from 2023)</li>
+          <li>Rapid revenue growth demonstrates strong market demand</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>IPO Details</h3>
+        <p>AIRO completed its initial public offering on June 13, 2025, trading under ticker symbol
+          <strong>"AIRO"</strong> on NASDAQ. Key IPO metrics:
+        </p>
+        <ul>
+          <li><strong>Shares Offered</strong>: 6,000,000 shares of common stock</li>
+          <li><strong>IPO Price</strong>: $10.00 per share</li>
+          <li><strong>Gross Proceeds</strong>: $60 million</li>
+          <li><strong>Market Cap at IPO</strong>: Approximately $373 million</li>
+          <li><strong>First Day Performance</strong>: Opened at $12.90, surged 140% during debut trading</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Market Outlook</h3>
+        <p>AIRO is positioned in several high-growth aerospace segments, including the emerging urban air mobility
+          market and expanding drone/UAV applications in both defense and commercial sectors. The company's integrated
+          approach across multiple aerospace verticals provides diversification while leveraging synergies between
+          business units.</p>
+        <p><strong>Recent Performance:</strong> AIRO's explosive 140% surge on its trading debut reflects strong
+          investor enthusiasm for aerospace and defense technology companies, particularly those focused on
+          next-generation solutions like eVTOL aircraft and advanced drone systems.</p>
+        <p>This summary is based on publicly available information. For complete details, investors should refer to
+          AIRO's SEC filings and prospectus. <a
+            href="https://www.sec.gov/Archives/edgar/data/1927958/000164117225015147/form424b4.htm" target="_blank"
+            rel="noopener">SEC filing</a>.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- CRCL IPO Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-06-10">June 10, 2025</time>
+    <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a></h1>
+    <div class="card-tags">
+      <span class="tag">IPO</span>
+      <span class="tag">Stablecoin</span>
+      <span class="tag">USDC</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <h3>Company Overview</h3>
+        <p>Circle's mission is to enhance global economic prosperity through seamless value exchange, leveraging
+          blockchain technology to build a new internet financial system. Founded in 2013 by Jeremy Allaire and Sean
+          Neville, Circle focuses on its stablecoin, <strong>USDC</strong>, a digital dollar fully backed by liquid
+          reserves, redeemable 1:1 for U.S. dollars. As of March 31, 2025, USDC had $60 billion in circulation, with
+          over $25 trillion in lifetime onchain transaction volume. Circle also issues <strong>EURC</strong>, a
+          euro-denominated stablecoin, and operates the Circle stablecoin network, supporting over 500 partners and
+          400+ smart contracts across 20 blockchains.</p>
+      </div>
+
+      <div class="section">
+        <h3>Business Model and Strategy</h3>
+        <p>Circle's platform empowers developers to create compliant, transparent, and near-instant payment solutions
+          using USDC. The company emphasizes a regulatory-first approach, engaging with global regulators to foster
+          trust and compliance. Key strategies include expanding the Circle stablecoin network through partnerships
+          with major firms like Grab, Mercado Libre, Nubank, and Coinbase, and simplifying blockchain technology for
+          developers and end-users to drive adoption. Circle's revenue grew from $15.4 million in 2020 to $1.7 billion
+          in 2024, with $155.7 million in net income and $284.9 million in Adjusted EBITDA in 2024.</p>
+      </div>
+
+      <div class="section">
+        <h3>Use of Proceeds</h3>
+        <p>Circle intends to use IPO proceeds for general corporate purposes, including product development,
+          infrastructure enhancements, and potential acquisitions. The company reported $1.1 billion in liquidity as
+          of March 31, 2025.</p>
+        <p>For full details, refer to the <a
+            href="https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm" target="_blank"
+            rel="noopener">SEC filing</a>.</ trust and compliance. Key strategies include expanding the Circle
+            stablecoin network through partnerships with major firms like Grab, Mercado Libre, Nubank, and Coinbase, and
+            simplifying blockchain technology for developers and end-users to drive adoption. Circle's revenue grew from
+            $15.4 million in 2020 to $1.7 billion in 2024, with $155.7 million in net income and $284.9 million in
+            Adjusted EBITDA in 2024.</p>
+      </div>
+      <div class="section">
+        <h2>Use of Proceeds</h2>
+        <p>Circle intends to use IPO proceeds for general corporate purposes, including product development,
+          infrastructure enhancements, and potential acquisitions. The company reported $1.1 billion in liquidity as
+          of March 31, 2025.</p>
+        <p>For full details, refer to the <a
+            href="https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm" target="_blank"
+            rel="noopener">SEC filing</a>.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Justice Gorsuch Financial Disclosures Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-06-07">June 7, 2025</time>
+    <h1>Financial Disclosures: Justice Gorsuch</h1>
+    <div class="card-tags">
+      <span class="tag">Supreme Court</span>
+      <span class="tag">Financial Disclosure</span>
+      <span class="tag">Gorsuch</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <h2>Annual Income Summary</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HarperCollins Publishers LLC</td>
+                <td>Royalties</td>
+                <td>$250,000.00</td>
+              </tr>
+              <tr>
+                <td>George Mason University</td>
+                <td>Teaching</td>
+                <td>$30,379.91</td>
+              </tr>
+              <tr>
+                <td>Princeton University Press</td>
+                <td>Royalties</td>
+                <td>$259.95</td>
+              </tr>
+              <tr>
+                <td>Investment Dividends</td>
+                <td>Investment Income</td>
+                <td>~$50,000 - $100,000</td>
+              </tr>
+              <tr>
+                <td>Bank Interest / CDs</td>
+                <td>Investment Income</td>
+                <td>~$1,000 - $2,500</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-     
-        <div class="card-content">
-          <div class="card-inner">
-            <div class="performance-highlight" style="background:linear-gradient(135deg,#1e3a8a 0%,#059669 100%);color:white;padding:1rem;border-radius:6px;margin:1rem 0;text-align:center;font-weight:bold;">IPO Performance: Priced at $10.00 • Opened at $12.90 • Surged 140% on debut</div>
-            <h2>Company Overview</h2>
-            <p>AIRO Group Holdings, Inc. is a Delaware corporation formed on August 30, 2021, specializing in advanced aerospace and defense technologies. The company operates across multiple sectors including <strong>drones</strong>, <strong>avionics</strong>, <strong>training</strong>, and <strong>electric vertical takeoff and landing (eVTOL)</strong> aircraft. AIRO's mission is to design, manufacture, integrate, and operate sector-leading solutions that equip clients with best-in-class aerospace, urban air mobility, and autonomy technologies, enabling them to work more efficiently, precisely, cleanly, and safely.</p>
-            <h2>Business Model and Strategy</h2>
-            <p>AIRO was formed as a holding company for the purpose of acquiring and integrating various companies engaged in the aerospace and defense industry. The company focuses on providing comprehensive solutions across the aerospace value chain, from component manufacturing to complete system integration. Key business areas include:</p>
-            <ul>
-              <li><strong>Drone Technology</strong>: Advanced unmanned aerial systems for defense and commercial applications</li>
-              <li><strong>Urban Air Mobility</strong>: eVTOL aircraft development for next-generation transportation</li>
-              <li><strong>Avionics Systems</strong>: Advanced flight control and navigation technologies</li>
-              <li><strong>Training Services</strong>: Comprehensive aerospace training and support programs</li>
-              <li><strong>Defense Solutions</strong>: Specialized aerospace technologies for defense applications</li>
-            </ul>
-            <h2>Financial Performance</h2>
-            <p><strong>2024 Financial Highlights:</strong></p>
-            <ul>
-              <li>Revenue: $86.94 million (100.99% increase from 2023's $43.25 million)</li>
-              <li>Net Loss: -$38.69 million (19.2% increase in losses from 2023)</li>
-              <li>Rapid revenue growth demonstrates strong market demand</li>
-            </ul>
-            <h2>IPO Details</h2>
-            <p>AIRO completed its initial public offering on June 13, 2025, trading under ticker symbol <strong>"AIRO"</strong> on NASDAQ. Key IPO metrics:</p>
-            <ul>
-              <li><strong>Shares Offered</strong>: 6,000,000 shares of common stock</li>
-              <li><strong>IPO Price</strong>: $10.00 per share</li>
-              <li><strong>Gross Proceeds</strong>: $60 million</li>
-              <li><strong>Market Cap at IPO</strong>: Approximately $373 million</li>
-              <li><strong>First Day Performance</strong>: Opened at $12.90, surged 140% during debut trading</li>
-            </ul>
-            <h2>Underwriting Syndicate</h2>
-            <p>The IPO was managed by a syndicate of investment banks, with <strong>Latham & Watkins</strong> serving as legal counsel to the underwriters. The strong investor demand was evidenced by the significant first-day price appreciation.</p>
-            <h2>Risk Factors</h2>
-            <ul>
-              <li><strong>Regulatory Environment</strong>: Aerospace and defense industries face extensive regulatory oversight from agencies like FAA and DoD</li>
-              <li><strong>Technology Risks</strong>: Rapidly evolving technology landscape in drones and eVTOL aircraft</li>
-              <li><strong>Market Competition</strong>: Intense competition from established aerospace manufacturers and emerging startups</li>
-              <li><strong>Customer Concentration</strong>: Potential dependence on government contracts and defense spending</li>
-              <li><strong>Capital Requirements</strong>: High capital needs for R&D and manufacturing in aerospace sector</li>
-              <li><strong>Supply Chain Risks</strong>: Complex global supply chains subject to disruption</li>
-              <li><strong>Profitability</strong>: Company currently operating at a loss while scaling operations</li>
-            </ul>
-            <h2>Use of Proceeds</h2>
-            <p>AIRO intends to use the $60 million in gross proceeds from the IPO for general corporate purposes, including:</p>
-            <ul>
-              <li>Research and development of advanced aerospace technologies</li>
-              <li>Manufacturing capacity expansion</li>
-              <li>Strategic acquisitions and integrations</li>
-              <li>Working capital and general corporate purposes</li>
-              <li>Investment in urban air mobility and eVTOL development</li>
-            </ul>
-            <h2>Market Outlook</h2>
-            <p>AIRO is positioned in several high-growth aerospace segments, including the emerging urban air mobility market and expanding drone/UAV applications in both defense and commercial sectors. The company's integrated approach across multiple aerospace verticals provides diversification while leveraging synergies between business units.</p>
-            <p><strong>Recent Performance:</strong> AIRO's explosive 140% surge on its trading debut reflects strong investor enthusiasm for aerospace and defense technology companies, particularly those focused on next-generation solutions like eVTOL aircraft and advanced drone systems.</p>
-            <p>This summary is based on publicly available information. For complete details, investors should refer to AIRO's SEC filings and prospectus. <a href="https://www.sec.gov/Archives/edgar/data/1927958/000164117225015147/form424b4.htm" target="_blank" rel="noopener">SEC filing</a>.</p>
-          </div>
+        <div class="highlights">Estimated Total Annual Income: $330,000 - $380,000</div>
+      </div>
+      <div class="section">
+        <h3>Assets Summary</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Asset Type</th>
+                <th>Inferred Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
+                <td>$1M - $25M+</td>
+              </tr>
+              <tr>
+                <td>Retirement Accounts (IRAs)</td>
+                <td>$1M - $25M</td>
+              </tr>
+              <tr>
+                <td>529 Education Savings Plans</td>
+                <td>&lt;$50,000</td>
+              </tr>
+              <tr>
+                <td>Bank / Cash Accounts</td>
+                <td>&lt;$250,000</td>
+              </tr>
+              <tr>
+                <td>CDs / Money Market Funds</td>
+                <td>&lt;$250,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlights">Total Assets (Estimate): $6 million – $25+ million</div>
+      </div>
+      <div class="section">
+        <h3>Investments & Trust Highlights</h3>
+        <div class="highlights">
+          <ul>
+            <li>Diversified holdings across large-cap, small-cap, international, bond, REIT, and commodity ETFs.</li>
+            <li>Four brokerage accounts, multiple IRAs, CDs, money markets, and bank accounts.</li>
+            <li>Frequent portfolio activity: multiple buy/sell transactions throughout 2024.</li>
+            <li>529 plans for education savings with modest balances.</li>
+            <li>No liabilities, no gifts reported.</li>
+          </ul>
         </div>
       </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-06-10" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">June 10, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;"><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">IPO - CRCL</a></h1>
-           <div class="card-tags">
-          <span class="tag">IPO</span>
-          <span class="tag">Stablecoin</span>
-          <span class="tag">USDC</span>
-        </div>
-       </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <h2>Company Overview</h2>
-            <p>Circle's mission is to enhance global economic prosperity through seamless value exchange, leveraging blockchain technology to build a new internet financial system. Founded in 2013 by Jeremy Allaire and Sean Neville, Circle focuses on its stablecoin, <strong>USDC</strong>, a digital dollar fully backed by liquid reserves, redeemable 1:1 for U.S. dollars. As of March 31, 2025, USDC had $60 billion in circulation, with over $25 trillion in lifetime onchain transaction volume. Circle also issues <strong>EURC</strong>, a euro-denominated stablecoin, and operates the Circle stablecoin network, supporting over 500 partners and 400+ smart contracts across 20 blockchains.</p>
-            <h2>Business Model and Strategy</h2>
-            <p>Circle's platform empowers developers to create compliant, transparent, and near-instant payment solutions using USDC. The company emphasizes a regulatory-first approach, engaging with global regulators to foster trust and compliance. Key strategies include expanding the Circle stablecoin network through partnerships with major firms like Grab, Mercado Libre, Nubank, and Coinbase, and simplifying blockchain technology for developers and end-users to drive adoption. Circle's revenue grew from $15.4 million in 2020 to $1.7 billion in 2024, with $155.7 million in net income and $284.9 million in Adjusted EBITDA in 2024.</p>
-            <h2>Capital Structure</h2>
-            <p>Post-IPO, Circle will have three classes of common stock:</p>
-            <ul>
-              <li><strong>Class A</strong>: one vote per share</li>
-              <li><strong>Class B</strong>: five votes per share, capped at 30% of total voting power</li>
-              <li><strong>Class C</strong>: non-voting</li>
-            </ul>
-            <p>Founders Allaire and Neville will hold Class B shares, controlling 30% of voting power. Circle will not be a "controlled company" under NYSE rules.</p>
-            <h2>Risk Factors</h2>
-            <ul>
-              <li><strong>Regulatory Uncertainty</strong>: The evolving regulatory landscape for digital assets could lead to fines, license revocations, or operational restrictions.</li>
-              <li><strong>Market Volatility</strong>: Digital asset price fluctuations could impact Circle's financials.</li>
-              <li><strong>Compliance Costs</strong>: Extensive compliance with AML, sanctions, and data privacy laws (e.g., GDPR, CCPA) increases operational costs.</li>
-              <li><strong>Tax and Accounting Challenges</strong>: Uncertainties in tax treatment and accounting standards for digital assets may affect financial reporting.</li>
-              <li><strong>Capital Needs</strong>: Future growth may require additional capital, potentially diluting shareholders or restricting operations.</li>
-              <li><strong>Data Privacy and Cybersecurity</strong>: Mishandling customer data or failing to comply with privacy laws could result in fines and reputational harm.</li>
-            </ul>
-            <h2>Use of Proceeds</h2>
-            <p>Circle intends to use IPO proceeds for general corporate purposes, including product development, infrastructure enhancements, and potential acquisitions. The company reported $1.1 billion in liquidity as of March 31, 2025.</p>
-            <h2>Underwriting and Market Data</h2>
-            <p>Led by J.P. Morgan, Citigroup, and Goldman Sachs, the underwriting syndicate includes several firms. ARK Investment Management indicated interest in purchasing up to $150 million in shares. Circle relies on third-party market data, noting potential inaccuracies due to data collection challenges.</p>
-            <p>For full details, refer to the <a href="https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm" target="_blank" rel="noopener">SEC filing</a>.</p>
-          </div>
-        </div>
-      </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-06-07" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">June 7, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;">Financial Disclosures: Justice Gorsuch</h1>
-           <div class="card-tags">
-          <span class="tag">Supreme Court</span>
-          <span class="tag">Financial Disclosure</span>
-          <span class="tag">Gorsuch</span>
-        </div>
-      </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <section class="section">
-              <div class="financial-grid">
-                <div class="financial-column">
-                  <h2>Annual Income Summary</h2>
-                  <div class="table-wrapper">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Source</th>
-                          <th>Type</th>
-                          <th>Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>HarperCollins Publishers LLC</td>
-                          <td>Royalties</td>
-                          <td class="number">$250,000.00</td>
-                        </tr>
-                        <tr>
-                          <td>George Mason University</td>
-                          <td>Teaching</td>
-                          <td class="number">$30,379.91</td>
-                        </tr>
-                        <tr>
-                          <td>Princeton University Press</td>
-                          <td>Royalties</td>
-                          <td class="number">$259.95</td>
-                        </tr>
-                        <tr>
-                          <td>Investment Dividends</td>
-                          <td>Investment Income</td>
-                          <td class="number">~$50,000 - $100,000</td>
-                        </tr>
-                        <tr>
-                          <td>Bank Interest / CDs</td>
-                          <td>Investment Income</td>
-                          <td class="number">~$1,000 - $2,500</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="total-summary">Estimated Total Annual Income: $330,000 - $380,000</div>
-                </div>
-                <div class="financial-column">
-                  <h2>Assets Summary</h2>
-                  <div class="table-wrapper">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Asset Type</th>
-                          <th>Inferred Range</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Brokerage Accounts (ETFs, Bonds, Stocks)</td>
-                          <td class="number">$1M - $25M+</td>
-                        </tr>
-                        <tr>
-                          <td>Retirement Accounts (IRAs)</td>
-                          <td class="number">$1M - $25M</td>
-                        </tr>
-                        <tr>
-                          <td>529 Education Savings Plans</td>
-                          <td class="number"><$50,000</td>
-                        </tr>
-                        <tr>
-                          <td>Bank / Cash Accounts</td>
-                          <td class="number"><$250,000</td>
-                        </tr>
-                        <tr>
-                          <td>CDs / Money Market Funds</td>
-                          <td class="number"><$250,000</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="total-summary">Total Assets (Estimate): $6 million – $25+ million</div>
-                </div>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Investments & Trust Highlights</h2>
-              <div class="highlights">
-                <ul>
-                  <li>Diversified holdings across large-cap, small-cap, international, bond, REIT, and commodity ETFs.</li>
-                  <li>Four brokerage accounts, multiple IRAs, CDs, money markets, and bank accounts.</li>
-                  <li>Frequent portfolio activity: multiple buy/sell transactions throughout 2024.</li>
-                  <li>529 plans for education savings with modest balances.</li>
-                  <li>No liabilities, no gifts reported.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Asset Allocation Pie Chart</h2>
-              <div class="chart-container">
-                <canvas id="gorsuchChart"></canvas>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-06-01" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">June 1, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;">Supreme Court Case: Trump v. CASA, Inc.</h1>
-             <div class="card-tags">
-          <span class="tag">Supreme Court</span>
-          <span class="tag">Universal Injunction</span>
-          <span class="tag">Trump</span>
-          <span class="tag">Immigration</span>
-        </div>
-      </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <section class="section">
-              <h2>Case Summary</h2>
-              <div class="highlights">
-                <ul>
-                  <li><strong>Issue:</strong> Judicial authority to issue nationwide (universal) injunctions against federal policies.</li>
-                  <li><strong>Key Question:</strong> Can federal courts block federal policies for all, or only for the parties before them?</li>
-                  <li><strong>Context:</strong> Emerged from litigation over Trump administration immigration policies; over 55 nationwide injunctions issued during this period.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Key Legal Issues</h2>
-              <div class="highlights">
-                <ul>
-                  <li><strong>Universal Injunctions:</strong> Allow a single court to enjoin the government nationwide, not just for plaintiffs.</li>
-                  <li><strong>Arguments For:</strong> Ensure uniform law, prevent widespread constitutional violations, provide complete relief.</li>
-                  <li><strong>Arguments Against:</strong> Exceed judicial authority, encourage forum shopping, prevent legal issue percolation.</li>
-                  <li><strong>Article III Limits:</strong> "Case or controversy" requirement restricts courts to resolving disputes between specific parties.</li>
-                  <li><strong>Standing & Remedial Principles:</strong> Relief should be no broader than necessary for plaintiffs; universal injunctions may go beyond this.</li>
-                  <li><strong>Separation of Powers:</strong> Universal injunctions risk courts acting like legislators.</li>
-                  <li><strong>Class Actions (Rule 23):</strong> Provide procedural safeguards for broad relief; universal injunctions may bypass these.</li>
-                  <li><strong>Historical Equity:</strong> Bills of peace and Equity Rule 48 allowed some broad relief, but with limits and procedural protections.</li>
-                  <li><strong>Administrative Uniformity:</strong> Piecemeal injunctions complicate federal policy implementation; universal injunctions simplify but may overreach.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Scholarly Resources & Further Reading</h2>
-              <div class="highlights">
-                <ul>
-                  <li><a href="https://harvardlawreview.org/print/vol-131/multiple-chancellors-reforming-the-national-injunction/" target="_blank" rel="noopener">Samuel L. Bray: "Multiple Chancellors: Reforming the National Injunction"</a> – Argues nationwide injunctions exceed traditional equity and constitutional powers.</li>
-                  <li><a href="https://harvardlawreview.org/print/vol-133/the-lost-history-of-the-universal-injunction/" target="_blank" rel="noopener">Mila Sohoni: "The Lost History of the 'Universal' Injunction"</a> – Identifies historical cases supporting broader relief.</li>
-                  <li><a href="https://www.theatlantic.com/ideas/archive/2018/10/end-nationwide-injunctions/574471/" target="_blank" rel="noopener">Bagley & Bray: "Judges Shouldn't Have the Power to Halt Laws Nationwide"</a> – Explains constitutional and practical concerns.</li>
-                  <li><a href="https://www.nyulawreview.org/issues/volume-93-number-5/in-defense-of-nationwide-injunctions/" target="_blank" rel="noopener">Amanda Frost: "In Defense of Nationwide Injunctions"</a> – Argues for their necessity in the modern state.</li>
-                  <li><a href="https://www.supremecourt.gov/opinions/17pdf/17-965_h315.pdf" target="_blank" rel="noopener">Justice Thomas's Concurrence in Trump v. Hawaii</a> – Skeptical of universal injunctions, questions their constitutional basis.</li>
-                </ul>
-              </div>
-            </section>
-            <section class="section">
-              <h2>Executive Summary: Key Insights</h2>
-              <div class="highlights">
-                <ul>
-                  <li>Universal injunctions raise fundamental questions about judicial power limits under Article III, balancing effective remedies and separation of powers.</li>
-                  <li>Class actions (Rule 23) offer due process safeguards; universal injunctions provide expedient but less protected remedies.</li>
-                  <li>Historical equity practices provide competing narratives about legitimacy of broad injunctions.</li>
-                  <li>Practical concerns about uniform federal policy implementation must be balanced against constitutional limits.</li>
-                  <li>The Supreme Court is increasingly skeptical, suggesting future restrictions on universal injunctions.</li>
-                </ul>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-      <div class="justice-card">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;position:relative;">
-            <time datetime="2025-05-07" style="font-size:0.75em;color:var(--text-muted);font-style:italic;position:absolute;left:0;top:0;">May 7, 2025</time>
-            <h1 style="margin-bottom:0;margin-top:1.2em;">FOMC Minutes</h1>
-               <div class="card-tags">
-          <span class="tag">FOMC</span>
-          <span class="tag">Federal Reserve</span>
-          <span class="tag">Monetary Policy</span>
-          <span class="tag">Inflation</span>
-        </div>
-          </div>
-          <span class="expand-icon">+</span>
-        </div>
-        <div class="card-content">
-          <div class="card-inner">
-            <p><em>Federal Open Market Committee Meeting: May 6-7, 2025</em></p>
-            <h2>Monetary Policy Review</h2>
-            <p>The Federal Open Market Committee (FOMC) held a joint meeting with the Board of Governors of the Federal Reserve System on May 6-7, 2025. During this meeting, they thoroughly reviewed their monetary policy strategy, tools, and communication approaches.</p>
-            <p>A key outcome was the reaffirmation of their commitment to a <strong>2 percent longer-run inflation objective</strong>. Participants emphasized the critical importance of maintaining anchored longer-term inflation expectations to ensure economic stability. Discussions also compared flexible average inflation targeting with flexible inflation targeting, concluding that the latter represents a more robust and adaptable policy strategy for current economic conditions.</p>
-            <h2>Financial Market Developments</h2>
-            <p>The manager's review of financial market developments highlighted significant volatility. Key observations included a rise in longer-maturity Treasury yields and a depreciating U.S. dollar. Market participants adjusted their forecasts, lowering GDP projections while raising inflation expectations.</p>
-            <p>The Treasury yield curve steepened, and measures of Treasury market liquidity showed deterioration. While short-horizon inflation expectations increased modestly, longer-horizon expectations remained notably stable, indicating a degree of confidence in long-term price stability.</p>
-            <h2>Committee Actions & Economic Situation</h2>
-            <p>The Committee took several actions, including voting to renew dollar and foreign currency liquidity swap arrangements and reciprocal currency arrangements with various central banks. They also ratified the Desk's domestic transactions, ensuring smooth market operations.</p>
-            <p>Staff analysis of the economic situation indicated that consumer price inflation remained somewhat elevated, even as the unemployment rate stabilized at a low level. Real GDP growth experienced a step down in the first quarter of 2025, though labor market conditions continued to be solid overall.</p>
-            <h2>Financial System Vulnerabilities</h2>
-            <p>The manager also noted extreme volatility in prices of risky assets, with corporate bond and leveraged loan spreads widening. The dollar's depreciation against several advanced foreign economy (AFE) currencies was also observed. Despite these shifts, conditions in U.S. short-term funding markets remained orderly, though most borrowing costs for businesses, households, and municipalities increased.</p>
-            <p>Participants engaged in discussions about vulnerabilities within the financial system. They acknowledged that markets had continued to function despite lower measures of liquidity. A notable point of discussion was a change in typical asset price correlations, leading to questions among participants about whether current asset prices accurately reflected fundamental valuations.</p>
-            <h2>Monetary Policy Considerations</h2>
-            <p>In their overall consideration of monetary policy, participants consistently noted that inflation remained somewhat elevated. Concurrently, economic activity had continued to expand at a solid pace.</p>
-          </div>
+      <div class="section">
+        <h3>Asset Allocation Pie Chart</h3>
+        <div class="chart-container">
+          <canvas id="gorsuchChart"></canvas>
         </div>
       </div>
     </div>
   </div>
+  </div>
+
+  <!-- Supreme Court Case Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-06-01">June 1, 2025</time>
+    <h1>Supreme Court Case: Trump v. CASA, Inc.</h1>
+    <div class="card-tags">
+      <span class="tag">Supreme Court</span>
+      <span class="tag">Universal Injunction</span>
+      <span class="tag">Trump</span>
+      <span class="tag">Immigration</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <h3>Case Summary</h3>
+        <div class="highlights">
+          <ul>
+            <li><strong>Issue:</strong> Judicial authority to issue nationwide (universal) injunctions against federal
+              policies.</li>
+            <li><strong>Key Question:</strong> Can federal courts block federal policies for all, or only for the
+              parties before them?</li>
+            <li><strong>Context:</strong> Emerged from litigation over Trump administration immigration policies; over
+              55 nationwide injunctions issued during this period.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <h3>Key Legal Issues</h3>
+        <div class="highlights">
+          <ul>
+            <li><strong>Universal Injunctions:</strong> Allow a single court to enjoin the government nationwide, not
+              just for plaintiffs.</li>
+            <li><strong>Arguments For:</strong> Ensure uniform law, prevent widespread constitutional violations,
+              provide complete relief.</li>
+            <li><strong>Arguments Against:</strong> Exceed judicial authority, encourage forum shopping, prevent legal
+              issue percolation.</li>
+            <li><strong>Article III Limits:</strong> "Case or controversy" requirement restricts courts to resolving
+              disputes between specific parties.</li>
+            <li><strong>Standing & Remedial Principles:</strong> Relief should be no broader than necessary for
+              plaintiffs; universal injunctions may go beyond this.</li>
+            <li><strong>Separation of Powers:</strong> Universal injunctions risk courts acting like legislators.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <h3>Executive Summary: Key Insights</h3>
+        <div class="highlights">
+          <ul>
+            <li>Universal injunctions raise fundamental questions about judicial power limits under Article III,
+              balancing effective remedies and separation of powers.</li>
+            <li>Class actions (Rule 23) offer due process safeguards; universal injunctions provide expedient but less
+              protected remedies.</li>
+            <li>Historical equity practices provide competing narratives about legitimacy of broad injunctions.</li>
+            <li>Practical concerns about uniform federal policy implementation must be balanced against constitutional
+              limits.</li>
+            <li>The Supreme Court is increasingly skeptical, suggesting future restrictions on universal injunctions.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- FOMC Minutes Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-05-07">May 7, 2025</time>
+    <h1>FOMC Minutes</h1>
+    <div class="card-tags">
+      <span class="tag">FOMC</span>
+      <span class="tag">Federal Reserve</span>
+      <span class="tag">Monetary Policy</span>
+      <span class="tag">Inflation</span>
+    </div>
+    <span class="expand-icon">+</span>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <p><em>Federal Open Market Committee Meeting: May 6-7, 2025</em></p>
+      <div class="section">
+        <h3>Monetary Policy Review</h3>
+        <p>The Federal Open Market Committee (FOMC) held a joint meeting with the Board of Governors of the Federal
+          Reserve System on May 6-7, 2025. During this meeting, they thoroughly reviewed their monetary policy
+          strategy, tools, and communication approaches.</p>
+        <p>A key outcome was the reaffirmation of their commitment to a <strong>2 percent longer-run inflation
+            objective</strong>. Participants emphasized the critical importance of maintaining anchored longer-term
+          inflation expectations to ensure economic stability. Discussions also compared flexible average inflation
+          targeting with flexible inflation targeting, concluding that the latter represents a more robust and
+          adaptable policy strategy for current economic conditions.</p>
+      </div>
+      <div class="section">
+        <h3>Financial Market Developments</h3>
+        <p>The manager's review of financial market developments highlighted significant volatility. Key observations
+          included a rise in longer-maturity Treasury yields and a depreciating U.S. dollar. Market participants
+          adjusted their forecasts, lowering GDP projections while raising inflation expectations.</p>
+        <p>The Treasury yield curve steepened, and measures of Treasury market liquidity showed deterioration. While
+          short-horizon inflation expectations increased modestly, longer-horizon expectations remained notably
+          stable, indicating a degree of confidence in long-term price stability.</p>
+      </div>
+      <div class="section">
+        <h3>Committee Actions & Economic Situation</h3>
+        <p>The Committee took several actions, including voting to renew dollar and foreign currency liquidity swap
+          arrangements and reciprocal currency arrangements with various central banks. They also ratified the Desk's
+          domestic transactions, ensuring smooth market operations.</p>
+        <p>Staff analysis of the economic situation indicated that consumer price inflation remained somewhat
+          elevated, even as the unemployment rate stabilized at a low level. Real GDP growth experienced a step down
+          in the first quarter of 2025, though labor market conditions continued to be solid overall.</p>
+      </div>
+      <div class="section">
+        <h3>Monetary Policy Considerations</h3>
+        <p>In their overall consideration of monetary policy, participants consistently noted that inflation remained
+          somewhat elevated. Concurrently, economic activity had continued to expand at a solid pace.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
   <script>
     function toggleCard(header) {
       const content = header.nextElementSibling;
@@ -773,42 +799,47 @@
         icon.style.transform = 'rotate(180deg)';
       }
     }
-    window.addEventListener('load', function() {
-      const ctx = document.getElementById('gorsuchChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: [
-            'Brokerage Accounts (ETFs, stocks, bonds)',
-            'Retirement Accounts (IRAs)',
-            '529 Plans (Education Savings)',
-            'Bank / Cash Accounts',
-            'CDs / Money Markets'
-          ],
-          datasets: [{
-            data: [50, 30, 2, 10, 8],
-            backgroundColor: ['#2c5f5a', '#87c5be', '#d4822a', '#e8955d', '#f8f4e6']
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'bottom' },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  let label = context.label || '';
-                  let value = context.raw;
-                  return `${label}: ${value}%`;
+
+    window.addEventListener('load', function () {
+      const chartElement = document.getElementById('gorsuchChart');
+      if (chartElement) {
+        const ctx = chartElement.getContext('2d');
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: [
+              'Brokerage Accounts (ETFs, stocks, bonds)',
+              'Retirement Accounts (IRAs)',
+              '529 Plans (Education Savings)',
+              'Bank / Cash Accounts',
+              'CDs / Money Markets'
+            ],
+            datasets: [{
+              data: [50, 30, 2, 10, 8],
+              backgroundColor: ['#2c5f5a', '#87c5be', '#d4822a', '#e8955d', '#f8f4e6']
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom' },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    let label = context.label || '';
+                    let value = context.raw;
+                    return `${label}: ${value}%`;
+                  }
                 }
               }
             }
           }
-        }
-      });
+        });
+      }
     });
   </script>
   <script src="/js/nav.js?v=20250717" defer></script>
 </body>
+
 </html>

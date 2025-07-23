@@ -1,12 +1,10 @@
 !function(){const navItems=[
     { text: "Home", href: "index.html", icon: "🏠", image: "" },
-    { text: "Listen", href: "listen.html", icon: "📻", image: "images/listen.png" },
+    { text: "Media", href: "media.html", icon: "", image: "images/read.png" },
     { text: "Numbers", href: "financials.html", icon: "📊", image: "" },
     { text: "Announcements", href: "read.html", icon: "", image: "images/announcements.png" },
     { text: "News", href: "news.html", icon: "📰", image: "" },
-    { text: "Books", href: "books.html", icon: "📚", image: "" },
-    { text: "Journal", href: "journal.html", icon: "✍️", image: "" },
-    { text: "Watch", href: "watch.html", icon: "🎥", image: "images/watch.png" }
+    { text: "Journal", href: "journal.html", icon: "✍️", image: "" }
 ];
 
     function renderNav(){

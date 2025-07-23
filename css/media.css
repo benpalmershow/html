@@ -180,31 +180,31 @@
 }
 
 .media-overlay-content {
-  padding: 1.2rem 1rem 2.2rem 1rem; /* Reduced bottom padding */
+  padding: 0.6rem 1rem 0.4rem 1rem; /* Reduced padding */
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
   box-sizing: border-box;
-  position: relative; /* For absolute positioning of date */
-  /* Ensure content doesn't overlap with date at bottom */
-  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Add padding at the bottom for the date */
+  padding-bottom: 0.5rem;
 }
 
 .media-title {
   font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.8rem 0;
-  padding: 0.5rem 0;
+  margin: 0 0 0.3rem 0; /* Reduced bottom margin */
+  padding: 0.3rem 0; /* Reduced padding */
   line-height: 1.2;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   width: 100%;
   word-break: break-word;
   pointer-events: auto;
-  position: sticky;
-  top: 0;
-  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+  background: transparent;
   z-index: 2;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -236,7 +236,7 @@
 
 .media-author {
   font-size: 0.85rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0; /* Reduced bottom margin */
   color: #f5c518;
   font-weight: 500;
   width: 100%;
@@ -246,7 +246,7 @@
 
 /* Date at the bottom of the overlay - fixed position */
 .media-date-bottom {
-  font-size: 0.75rem;
+  font-size: 0.72rem; /* Slightly smaller font */
   font-weight: 400;
   width: 100%;
   text-align: center;
@@ -259,7 +259,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0; /* Reduced padding */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.9) 50%, transparent 100%);
+  z-index: 2;
+  backdrop-filter: blur(2px); /* Slight blur for better readability */
 }
 
 .media-date-bottom i {
@@ -268,19 +271,41 @@
 }
 
 .media-description {
-  font-size: 0.85rem;
+  font-size: 0.82rem; /* Slightly smaller font */
   line-height: 1.5;
-  margin: 0 0 1rem 0;
+  margin: 0.3rem 0 0.5rem 0; /* Reduced margins */
   color: #f0f0f0;
   width: 100%;
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* Reduced from 5 to 4 lines to prevent overlap */
-  line-clamp: 4; /* Standard property for compatibility */
-  -webkit-box-orient: vertical;
+  flex: 1;
+  overflow-y: auto;
   pointer-events: auto;
+  scroll-behavior: smooth;
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  /* More subtle gradient for scroll indicator */
+  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  padding: 0.3rem 0.2rem 1.2rem 0; /* Reduced padding */
+  max-height: none; /* Allow natural height */
+  -webkit-line-clamp: none; /* Remove line clamp */
+  line-clamp: none;
+  display: block; /* Override any flex display */
+  overflow: visible; /* Show all content */
+}
+
+/* Webkit scrollbar styling */
+.media-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.media-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.media-description::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 /* Trailer container and button */
@@ -399,10 +424,12 @@
 .rating-logos {
   position: relative;
   display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  gap: 6px; /* Reduced gap */
+  margin: 5px 0 10px 0; /* Reduced margins */
+  padding: 0 0 8px 0; /* Reduced padding */
   z-index: 3;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 .rating-logo {

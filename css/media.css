@@ -1,42 +1,100 @@
 /* Media page specific styles - uniform card design like books.html */
 
+/* Media filters container */
 .media-filters {
   background: #f8f4e6;
   border: 1px solid #e8dcc0;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(44, 95, 90, 0.10);
-  padding: 1.1rem 1.5rem 1rem 1.5rem;
-  margin: 2rem auto 0 auto;
-  max-width: 1200px;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 12px rgba(44, 95, 90, 0.12);
+  padding: 1.2rem 1.8rem;
+  margin: 2rem auto 0;
+  max-width: 1000px;
+  width: calc(100% - 2rem);
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2em;
+  gap: 1.5rem;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .media-filters label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #2c5f5a;
-  margin-right: 0.7em;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .media-filters select {
-  font-size: 1rem;
-  padding: 0.2em 0.7em;
-  border-radius: 0.3em;
-  border: 1px solid #e8dcc0;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid #d4c9b1;
   background: #fff;
-  color: #333;
-  margin-left: 0.5em;
+  color: #2c5f5a;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c5f5a%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  background-size: 0.65em auto;
+  padding-right: 2.5em;
 }
 
+.media-filters select:focus {
+  outline: none;
+  border-color: #2c5f5a;
+  box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.2);
+}
+
+.media-filters select:hover {
+  border-color: #b3a98c;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
   .media-filters {
+    padding: 1rem 1.2rem;
+    margin: 1rem auto 0;
     gap: 1rem;
-    margin: 1rem auto 0 auto;
     flex-direction: column;
     align-items: stretch;
+    width: calc(100% - 1.5rem);
+  }
+  
+  .media-filters label {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .media-filters select {
+    margin-top: 0.3rem;
+    width: 100%;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .media-filters {
+    border-radius: 0.6rem;
+    padding: 0.9rem 1rem;
+  }
+  
+  .media-filters label {
+    font-size: 0.9rem;
+  }
+  
+  .media-filters select {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
   }
 }
 
@@ -683,8 +741,5 @@
     margin: 0 0 0.5rem 0;
   }
   
-  .media-description {
-    -webkit-line-clamp: 2; /* Only 2 lines on very small screens */
-    line-clamp: 2;
-  }
+
 }

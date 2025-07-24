@@ -409,11 +409,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 case 'date-asc':
                     const dateA = parseDateString(a.date) || new Date(0);
                     const dateB = parseDateString(b.date) || new Date(0);
+                    // For ascending: older dates first
                     return dateA - dateB;
                 case 'date-desc':
                     const dateC = parseDateString(a.date) || new Date(0);
                     const dateD = parseDateString(b.date) || new Date(0);
-                    return dateD - dateC;
+                    // For descending: newer dates first (July 2025 before June 2025)
+                    return dateD.getTime() - dateC.getTime();
                 case 'title-asc':
                     return (a.title || '').localeCompare(b.title || '');
                 case 'title-desc':

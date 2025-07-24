@@ -26,7 +26,7 @@
     "thumbs": "",
     "cover": "https://i.scdn.co/image/ab67656300005f1f43cdff5b4695d3c9cd9400c7",
     "url": "https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289",
-    "featured": "Latest Episode"
+    "status": "latest episode"
   },
   {
     "title": "JulCara",
@@ -1410,6 +1410,17 @@
     "tag": "",
     "thumbs": "",
     "cover": "https://covers.openlibrary.org/b/id/5071137-L.jpg"
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Programming",
+    "mediaType": "book",
+    "description": "A handbook of agile software craftsmanship that teaches how to write clean, maintainable code.",
+    "date": "2008",
+    "icon": "fas fa-book",
+    "status": "reading now",
+    "cover": "https://www.syndetics.com/index.aspx?isbn=0132350882&issn=/LC.JPG&client=sfpl&type=xw12"
   },
   {
     "title": "The Pragmatic Programmer",

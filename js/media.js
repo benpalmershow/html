@@ -94,6 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const typeBadge = document.createElement('div');
         typeBadge.className = 'media-type';
         typeBadge.innerHTML = `<i class="${getMediaTypeIcon(item.mediaType)}"></i>`;
+        
+        // Add reading now badge if status is 'reading now'
+        if (item.status && item.status.toLowerCase() === 'reading now') {
+            const readingNowBadge = document.createElement('div');
+            readingNowBadge.className = 'reading-now-badge';
+            readingNowBadge.textContent = 'Reading Now';
+            coverContainer.appendChild(readingNowBadge);
+        }
 
         // Add featured badge if applicable
         if (item.featured) {

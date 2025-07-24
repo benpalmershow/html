@@ -54,17 +54,15 @@
   position: relative;
   width: 100%;
   max-width: 200px;
-  /* Narrower for portrait orientation */
   height: 300px;
-  /* Taller for portrait orientation */
-  aspect-ratio: 2/3;
-  /* Standard portrait aspect ratio */
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(44, 95, 90, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: #f8f4e6;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .media-card:hover,
@@ -78,17 +76,43 @@
   display: none;
 }
 
+/* Cover image container */
+.media-cover-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0; /* Allows the container to shrink below content size */
+}
+
 /* Cover image for all card types - fills entire card */
 .media-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0.5rem;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
   object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Reading now badge - container is now defined above */
+
+.reading-now-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #2C5F5A;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 /* Thumbs indicator */

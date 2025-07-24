@@ -346,10 +346,7 @@
             
             return `
                 <div class="indicator">
-                    <div class="indicator-name tooltip" data-tooltip="${explanation.replace(/"/g, '&quot;')}">
-                        ${indicator.name}
-                        <span class="tooltip-text">${explanation}</span>
-                    </div>
+                    <div class="indicator-name" title="${explanation.replace(/"/g, '&quot;')}">${indicator.name}</div>
                     <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
                     ${dataRows}
                     <div class="change-indicators">

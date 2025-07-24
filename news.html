@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
 </head>
 
 <body>
@@ -25,8 +26,9 @@
   <!-- FIG IPO Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-22">July 22, 2025</time>
+    <i data-lucide="trending-up" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener">IPO - FIG</a></h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -198,8 +200,9 @@
   <!-- Boston Public Market Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-07">July 7, 2025</time>
+    <i data-lucide="store" class="card-icon"></i>
     <h1>Why Mamdani public grocery stores don't work</h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -262,8 +265,9 @@
   <!-- Big Beautiful Bill Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-02">July 2, 2025</time>
+    <i data-lucide="newspaper" class="card-icon"></i>
     <h1>Latest on Big Beautiful Bill</h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -329,8 +333,9 @@
   <!-- CA CEQA Reforms Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-02">July 2, 2025</time>
+    <i data-lucide="newspaper" class="card-icon"></i>
     <h1>CA CEQA Reforms</h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -390,9 +395,10 @@
 
   <!-- AIRO IPO Card -->
   <div class="card-header" onclick="toggleCard(this)">
-    <time datetime="2025-06-13">June 13, 2025</time>
+    <time datetime="2025-06-25">June 25, 2025</time>
+    <i data-lucide="dollar-sign" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a></h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -470,9 +476,10 @@
 
   <!-- CRCL IPO Card -->
   <div class="card-header" onclick="toggleCard(this)">
-    <time datetime="2025-06-10">June 10, 2025</time>
+    <time datetime="2025-06-30">June 30, 2025</time>
+    <i data-lucide="briefcase" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a></h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -525,9 +532,10 @@
 
   <!-- Justice Gorsuch Financial Disclosures Card -->
   <div class="card-header" onclick="toggleCard(this)">
-    <time datetime="2025-06-07">June 7, 2025</time>
+    <time datetime="2025-06-05">June 5, 2025</time>
+    <i data-lucide="gavel" class="card-icon"></i>
     <h1>Financial Disclosures: Justice Gorsuch</h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -634,8 +642,9 @@
   <!-- Supreme Court Case Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-06-01">June 1, 2025</time>
+    <i data-lucide="gavel" class="card-icon"></i>
     <h1>Supreme Court Case: Trump v. CASA, Inc.</h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -692,9 +701,10 @@
 
   <!-- FOMC Minutes Card -->
   <div class="card-header" onclick="toggleCard(this)">
-    <time datetime="2025-05-07">May 7, 2025</time>
+    <time datetime="2025-05-31">May 31, 2025</time>
+    <i data-lucide="landmark" class="card-icon"></i>
     <h1>FOMC Minutes</h1>
-    <span class="expand-icon">+</span>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
     <div class="card-inner">
@@ -740,15 +750,12 @@
   <script>
     function toggleCard(header) {
       const content = header.nextElementSibling;
-      const icon = header.querySelector('.expand-icon');
       if (content.classList.contains('expanded')) {
         content.classList.remove('expanded');
-        icon.textContent = '+';
-        icon.style.transform = 'rotate(0deg)';
+        header.classList.remove('expanded');
       } else {
         content.classList.add('expanded');
-        icon.textContent = '−';
-        icon.style.transform = 'rotate(180deg)';
+        header.classList.add('expanded');
       }
     }
 
@@ -789,6 +796,14 @@
           }
         });
       }
+    });
+  </script>
+  <!-- Initialize Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    // Initialize Lucide icons when the document is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
     });
   </script>
   <script src="/js/nav.js?v=20250723" defer></script>

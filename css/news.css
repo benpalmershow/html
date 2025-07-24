@@ -14,7 +14,7 @@
 .card-header {
   cursor: pointer;
   display: flex;
-  align-items: left;
+  align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.6rem;
   margin: 0.25rem 0 0.1rem 0;
@@ -22,6 +22,14 @@
   border: 1px solid transparent;
   border-radius: .375rem;
   transition: all 0.3s ease;
+}
+
+/* Card Icons */
+.card-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--logo-orange);
+  flex-shrink: 0;
 }
 
 .card-header:hover {
@@ -63,12 +71,16 @@
 }
 
 .expand-icon {
-  font-size: 1rem;
+  width: 16px;
+  height: 16px;
   color: var(--logo-orange);
   transition: transform 0.3s ease;
-  font-weight: bold;
   flex-shrink: 0;
   margin-left: auto;
+}
+
+.card-header.expanded .expand-icon {
+  transform: rotate(180deg);
 }
 
 .card-content {

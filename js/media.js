@@ -203,34 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
             overlayContent.appendChild(rating);
         }
 
-        // Add platform badges for playlists
-        if (item.mediaType === 'playlist' && item.links && item.links.length > 0) {
-            const platformsContainer = document.createElement('div');
-            platformsContainer.className = 'platform-badges';
-
-            item.links.forEach(link => {
-                if (link.icon) {
-                    const platformBadge = document.createElement('a');
-                    platformBadge.href = link.url;
-                    platformBadge.className = 'platform-badge';
-                    platformBadge.target = '_blank';
-                    platformBadge.rel = 'noopener noreferrer';
-
-                    // Determine platform class based on icon
-                    let platformClass = '';
-                    if (link.icon.includes('spotify')) platformClass = 'spotify-badge';
-                    else if (link.icon.includes('apple')) platformClass = 'apple-badge';
-                    else if (link.icon.includes('youtube')) platformClass = 'youtube-badge';
-                    else if (link.icon.includes('soundcloud')) platformClass = 'soundcloud-badge';
-
-                    platformBadge.classList.add(platformClass);
-                    platformBadge.innerHTML = `<i class="${link.icon}"></i> <span>${link.label}</span>`;
-                    platformsContainer.appendChild(platformBadge);
-                }
-            });
-
-            overlayContent.appendChild(platformsContainer);
-        }
+        // Platform links for playlists are now handled in the main links section below
 
         // Add IMDB and Rotten Tomatoes ratings for movies
         if (item.mediaType === 'movie' && item.ratings) {
@@ -262,12 +235,12 @@ document.addEventListener('DOMContentLoaded', function () {
             overlayContent.appendChild(ratingsContainer);
         }
 
-        // Add links if they exist (except for playlists which have platform badges)
-        if (item.links && item.links.length > 0 && item.mediaType !== 'playlist') {
+        // Add links if they exist
+        if (item.links && item.links.length > 0) {
             const linksContainer = document.createElement('div');
 
-            // For songs and podcasts, use icon-only links with their respective colors
-            if (item.mediaType === 'song' || item.mediaType === 'podcast') {
+            // For songs, podcasts, and playlists, use icon-only links with their respective colors
+            if (item.mediaType === 'song' || item.mediaType === 'podcast' || item.mediaType === 'playlist') {
                 // Use appropriate class name based on media type
                 linksContainer.className = item.mediaType === 'song' ? 'song-links' : 'podcast-links';
 

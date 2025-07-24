@@ -124,10 +124,6 @@
   color: white;
 }
 
-.media-card[data-media-type="playlist"] .media-type {
-  color: white;
-}
-
 .media-card[data-media-type="podcast"] .media-type {
   color: white;
 }
@@ -337,14 +333,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-.trailer-button.playlist-button {
-  background-color: #1DB954;
-  /* Spotify green */
-}
 
-.trailer-button.playlist-button:hover {
-  background-color: #1aa34a;
-}
 
 .trailer-button i {
   font-size: 1.1em;
@@ -370,55 +359,13 @@
   border: none;
 }
 
-/* Platform badges for playlists */
-.platform-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0;
-}
 
-.platform-badge {
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.85em;
-  font-weight: 500;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-  opacity: 0.9;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  color: white;
-}
 
-.platform-badge:hover {
-  transform: scale(1.05);
-  opacity: 1;
-  text-decoration: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
 
-.platform-badge i {
-  margin-right: 6px;
-  font-size: 1.1em;
-}
 
-.spotify-badge {
-  background-color: #1DB954;
-}
 
-.apple-badge {
-  background-color: #A2AAAD;
-}
 
-.youtube-badge {
-  background-color: #FF0000;
-}
 
-.soundcloud-badge {
-  background-color: #FF5500;
-}
 
 /* Rating logos in overlay */
 .rating-logos {
@@ -505,81 +452,74 @@
   transform: translateY(-1px) scale(1.01);
 }
 
-/* Song and podcast links with Font Awesome icons - icon only style */
+/* Platform links with Font Awesome icons - standardized icon-only style */
 .song-links,
 .podcast-links {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   margin: 1rem 0;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .song-link,
 .podcast-link {
-  font-size: 1.6em;
+  font-size: 1.5em;
   opacity: 0.9;
   transition: all 0.2s ease;
   text-decoration: none;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
 .song-link:hover,
 .podcast-link:hover {
   opacity: 1;
-  transform: translateY(-3px) scale(1.1);
+  transform: translateY(-2px) scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   text-decoration: none;
+  z-index: 1;
 }
 
-/* Podcast links specific styling */
+/* Remove specific podcast link styles to make them consistent with song links */
 .podcast-links {
-  margin-top: 1.5rem;
-}
-
-.podcast-link {
-  font-size: 1.7em;
+  margin-top: 1rem;
 }
 
 /* Platform-specific colors for song and podcast links */
 .spotify-link {
-  background-color: #1DB954;
   color: white;
 }
 
 .apple-link {
-  background-color: #A2AAAD;
   color: white;
 }
 
 .youtube-link {
-  background-color: #FF0000;
   color: white;
 }
 
 .soundcloud-link {
-  background-color: #FF5500;
   color: white;
 }
 
 .amazon-link {
-  background-color: #FF9900;
   color: white;
 }
 
 .google-link {
-  background-color: #4285F4;
   color: white;
 }
 
 .rss-link {
-  background-color: #FFA500;
   color: white;
 }
 
@@ -647,19 +587,6 @@
   color: #FFA500;
 }
 
-/* Featured badge for items */
-.media-featured {
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  background: #d4822a;
-  color: white;
-  padding: 0.2em 0.5em;
-  border-radius: 12px;
-  font-size: 0.6em;
-  font-weight: 500;
-  z-index: 3;
-}
 
 /* Default placeholder for missing covers */
 .media-placeholder {

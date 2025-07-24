@@ -17,17 +17,30 @@
 * {
   box-sizing: border-box
 }
-body,
 html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
   margin: 0;
   padding: 0;
   font-family: Georgia,'Times New Roman',serif;
   line-height: 1.6;
   background: var(--bg-primary);
   color: var(--text-secondary);
-  transition: background-color .3s,color .3s;
+  transition: background-color .3s, color .3s;
   font-size: clamp(.9rem, 2.5vw, 1rem);
-  overflow-x: hidden
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure content takes up available space */
+main {
+  flex: 1;
 }
 .content {
   padding: var(--content-padding);

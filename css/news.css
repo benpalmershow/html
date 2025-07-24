@@ -14,7 +14,7 @@
 .card-header {
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: left;
   gap: 0.4rem;
   padding: 0.4rem 0.6rem;
   margin: 0.25rem 0 0.1rem 0;
@@ -22,10 +22,6 @@
   border: 1px solid transparent;
   border-radius: .375rem;
   transition: all 0.3s ease;
-}
-
-.card-header:first-of-type {
-  margin-top: 0;
 }
 
 .card-header:hover {

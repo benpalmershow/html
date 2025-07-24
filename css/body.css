@@ -38,10 +38,6 @@ body {
   flex-direction: column;
 }
 
-/* Ensure content takes up available space */
-main {
-  flex: 1;
-}
 .content {
   padding: var(--content-padding);
   margin: 0;

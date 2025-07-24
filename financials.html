@@ -263,7 +263,13 @@
             'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.',
             'Case-Shiller National Home Price Index': 'Tracks changes in U.S. residential housing prices.',
             'Copper Futures': 'Price of U.S. copper futures per pound. Used as a benchmark for industrial demand and economic activity.',
-            'FOMC July Rate Decision (BPS)': 'Market-implied probabilities for Federal Reserve rate decisions. BPS = basis points (1 BPS = 0.01%). Higher probabilities indicate market expectations for that outcome.'
+            'FOMC July Rate Decision (BPS)': 'Market-implied probabilities for Federal Reserve rate decisions. BPS = basis points (1 BPS = 0.01%). Higher probabilities indicate market expectations for that outcome.',
+            'Leading Economic Indicator': 'Composite index of leading economic indicators designed to predict future economic activity.',
+            'Jobs Added (thousand)': 'Net number of jobs added to the economy, in thousands.',
+            'Jobless Claims (thousand)': 'Number of people filing for unemployment benefits for the first time, in thousands.',
+            'New Home Sales (thousand)': 'Number of newly constructed homes sold, in thousands.',
+            'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
+            'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.'
         };
 
         function createIndicatorCard(indicator) {
@@ -340,7 +346,10 @@
             
             return `
                 <div class="indicator">
-                    <div class="indicator-name" title="${explanation.replace(/"/g, '&quot;')}">${indicator.name}</div>
+                    <div class="indicator-name tooltip" data-tooltip="${explanation.replace(/"/g, '&quot;')}">
+                        ${indicator.name}
+                        <span class="tooltip-text">${explanation}</span>
+                    </div>
                     <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
                     ${dataRows}
                     <div class="change-indicators">

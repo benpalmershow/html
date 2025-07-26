@@ -457,19 +457,6 @@
       "change": "+1.35"
     },
     {
-      "category": "Financial Markets",
-      "agency": "FRED",
-      "name": "S&P 500",
-      "releaseDay": 0,
-      "url": "https://fred.stlouisfed.org/series/SP500",
-      "march": "103.74",
-      "april": "103.82",
-      "may": "103.59",
-      "june": "TBD 7/16",
-      "july": "TBD 7/16",
-      "change": "-0.22"
-    },
-    {
       "category": "Housing Market",
       "agency": "S&P",
       "name": "Case-Shiller National Home Price Index",
@@ -481,19 +468,6 @@
       "june": "TBD 8/27",
       "july": "TBD 7/30",
       "change": "+0.62"
-    },
-    {
-      "category": "Financial Markets",
-      "agency": "CBOE",
-      "name": "VIX Index",
-      "releaseDay": 0,
-      "url": "https://www.cboe.com/tradable_products/vix/",
-      "march": "17.4",
-      "april": "17.4",
-      "may": "17.4",
-      "june": "TBD",
-      "july": "TBD",
-      "change": ""
     },
     {
       "category": "Commodities",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-24T14:00:00Z",
+  "lastUpdated": "2025-07-25T14:00:00Z",
   "indices": [
     {
       "category": "Business Indicators",
@@ -134,6 +134,18 @@
       "change": ""
     },
     {
+      "category": "Housing Market",
+      "agency": "NAR",
+      "name": "Median Home Price",
+      "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
+      "march": "$403,700",
+      "april": "$414,000",
+      "may": "$432,700",
+      "june": "$435,300",
+      "july": "",
+      "change": ""
+    },
+    {
       "category": "Interest Rates",
       "agency": "FRED",
       "name": "30-yr Mortgage Rate",
@@ -155,6 +167,18 @@
       "may": "4.42",
       "june": "4.41",
       "july": "4.43",
+      "change": ""
+    },
+    {
+      "category": "Business Indicators",
+      "agency": "S&P Global",
+      "name": "Composite PMI (Flash)",
+      "url": "https://www.pmi.spglobal.com/Public",
+      "march": "",
+      "april": "",
+      "may": "",
+      "june": "52.7",
+      "july": "54.6",
       "change": ""
     },
     {
@@ -256,7 +280,7 @@
     {
       "category": "Consumer Indicators",
       "agency": "FRED",
-      "name": "PCE",
+      "name": "Personal Consumption Expenditures (PCE)",
       "url": "https://fred.stlouisfed.org/series/PCE",
       "march": "20,578.5B",
       "april": "20,662B",
@@ -464,18 +488,6 @@
       "june": "45",
       "july": "",
       "change": ""
-    },
-    {
-      "category": "Commodities",
-      "agency": "Freightos/Goodhope",
-      "name": "Shipping Container Rate (China-US 40ft)",
-      "url": "https://goodhopefreight.com/shipping-to-usa/2025/fcl.html",
-      "march": "$3,800",
-      "april": "$4,200",
-      "may": "$5,650",
-      "june": "$6,100",
-      "july": "TBD",
-      "change": "+8.0%"
     },
     {
       "category": "Trade & Tariffs",

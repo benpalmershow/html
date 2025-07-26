@@ -478,6 +478,16 @@ a:hover {
   font-style: italic;
 }
 
+/* Post Icons */
+.post-icon {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  color: var(--accent-primary);
+  stroke-width: 1.5;
+}
+
 .audio-card {
   position: relative;
   overflow: hidden;

@@ -15,8 +15,10 @@
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/financials.css">
+    <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
+    <script src="https://unpkg.com/lucide"></script>
 
 </head>
 <body>
@@ -226,6 +228,7 @@
         // Explanations for indicators by name
         const indicatorExplanations = {
             'Manufacturing PMI': 'Above 50 = expansion; below 50 = contraction in manufacturing sector.',
+            'Composite PMI (Flash)': 'Combined measure of manufacturing and services activity; above 50 = expansion, below 50 = contraction (S&P Global).',
             'CPI': 'Consumer Price Index: measures average change in prices paid by consumers.',
             'CPI (YoY)': 'Year-over-year change in Consumer Price Index.',
             'PPI': 'Producer Price Index: measures average change in selling prices received by domestic producers.',
@@ -237,6 +240,7 @@
             'New Home Sales': 'Number of newly constructed homes sold.',
             'Affordability Index': 'Higher = more affordable housing; lower = less affordable.',
             'HMI': 'Homebuilder sentiment: above 50 = positive outlook, below 50 = negative.',
+            'Median Home Price': 'National median price for existing single-family homes (NAR data).',
             '30-yr Mortgage Rate': 'Average interest rate for 30-year fixed-rate mortgages.',
             '10-yr Treasury Yield': 'Yield on 10-year U.S. Treasury bonds.',
             'Lagging Economic Index': 'Composite index of lagging economic indicators.',
@@ -356,19 +360,19 @@
             `;
         }
 
-        // Category icons mapping
+        // Category icons mapping with Lucide icons
         const categoryIcons = {
-            'Inflation Measures': '📊',
-            'Employment Indicators': '👥',
-            'Housing Market': '🏠',
-            'Interest Rates': '💰',
-            'Business Indicators': '🏢',
-            'Consumer Indicators': '🛒',
-            'Trade & Tariffs': '🚢',
-            'Travel & Tourism': '✈️',
-            'Government Finance': '🏛️',
-            'Commodities': '📦',
-            'Prediction Markets': '🎯'
+            'Inflation Measures': '<i data-lucide="bar-chart-2"></i>',
+            'Employment Indicators': '<i data-lucide="users"></i>',
+            'Housing Market': '<i data-lucide="home"></i>',
+            'Interest Rates': '<i data-lucide="percent"></i>',
+            'Business Indicators': '<i data-lucide="briefcase"></i>',
+            'Consumer Indicators': '<i data-lucide="shopping-cart"></i>',
+            'Trade & Tariffs': '<i data-lucide="ship"></i>',
+            'Travel & Tourism': '<i data-lucide="plane"></i>',
+            'Government Finance': '<i data-lucide="landmark"></i>',
+            'Commodities': '<i data-lucide="package"></i>',
+            'Prediction Markets': '<i data-lucide="target"></i>'
         };
 
         function renderDashboard(filterCategory = 'all') {
@@ -381,13 +385,13 @@
                 if (filterCategory !== 'all' && category !== filterCategory) return;
                 
                 const categoryIndicators = financialData.indices.filter(item => item.category === category);
-                const icon = categoryIcons[category] || '📈';
+                const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
                 
                 html += `
                     <div class="category" data-category="${category}">
                         <h2 class="category-title">
                             <span class="category-icon">${icon}</span>
-                            ${category}
+                            <span class="category-name">${category}</span>
                         </h2>
                         <div class="indicators-grid">
                             ${categoryIndicators.map(indicator => createIndicatorCard(indicator)).join('')}
@@ -397,28 +401,47 @@
             });
             
             categoriesContainer.innerHTML = html;
+            
+            // Re-initialize Lucide icons after updating the content
+            lucide.createIcons();
         }
 
         function setupFilters() {
             const filtersContainer = document.getElementById('filters');
             const categories = [...new Set(financialData.indices.map(item => item.category))];
             
+            // Clear existing filter buttons
+            filtersContainer.innerHTML = '';
+            
+            // Create the 'All Categories' button
+            const allButton = document.createElement('button');
+            allButton.className = 'filter-btn active';
+            allButton.innerHTML = '<i data-lucide="list"></i> All Categories';
+            allButton.dataset.category = 'all';
+            filtersContainer.appendChild(allButton);
+            
+            // Create category filter buttons
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.className = 'filter-btn';
-                const icon = categoryIcons[category] || '📈';
+                const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
                 button.innerHTML = `<span class="filter-icon">${icon}</span> ${category}`;
                 button.dataset.category = category;
                 filtersContainer.appendChild(button);
             });
 
+            // Add click event listener for filter buttons
             filtersContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('filter-btn')) {
+                const button = e.target.closest('.filter-btn');
+                if (button) {
                     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                    e.target.classList.add('active');
-                    renderDashboard(e.target.dataset.category);
+                    button.classList.add('active');
+                    renderDashboard(button.dataset.category);
                 }
             });
+            
+            // Initialize Lucide icons after creating filter buttons
+            lucide.createIcons();
         }
 
         function initializeDashboard() {
@@ -433,6 +456,10 @@
     <script src="/js/portfolio.js" defer></script>
     <script src="/js/nav.js?v=20250723" defer></script>
     <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
-    <script src="js/last-updated.js"></script>
+    <script src="js/financials.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>

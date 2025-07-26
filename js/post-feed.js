@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="content">${post.content}</div>
             `).join('');
+            
+            // Initialize Lucide icons after content is loaded
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         })
         .catch(error => {
             console.error('Error loading posts:', error);

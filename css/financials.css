@@ -274,6 +274,18 @@ body {
     white-space: nowrap;
 }
 
+.arrow-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 3px;
+}
+
+.arrow-icon i {
+    width: 1em;
+    height: 1em;
+    stroke-width: 2.5px;
+}
+
 .change-positive {
     background: rgba(44, 95, 90, 0.08);
     color: var(--logo-teal);
@@ -289,5 +301,4 @@ body {
     color: var(--text-muted);
 }
 
-.arrow-up::before { content: '↗'; font-size: 1.1em; }
-.arrow-down::before { content: '↘'; font-size: 1.1em; }
+/* Arrow styles are now handled in the HTML with explicit Unicode characters */

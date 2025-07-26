@@ -331,9 +331,10 @@
                     changeText += ` (${changeSign}${formattedNumber})`;
                 }
                 
+                const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
                 changeIndicators += `
-                    <div class="change-indicator ${getChangeClass(momFormatted)} ${getArrowClass(momFormatted)}" title="Month-over-Month (MoM) change calculated from available data.">
-                        ${changeText}
+                    <div class="change-indicator ${getChangeClass(momFormatted)}" title="Month-over-Month (MoM) change calculated from available data.">
+                        <span class="arrow-icon">${arrowIcon}</span> ${changeText}
                     </div>
                 `;
             }
@@ -341,9 +342,10 @@
             // YoY change (placeholder for future implementation)
             if (yoyChange !== null) {
                 const yoyFormatted = formatChange(yoyChange);
+                const yoyArrowIcon = yoyChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
                 changeIndicators += `
-                    <div class="change-indicator ${getChangeClass(yoyFormatted)} ${getArrowClass(yoyFormatted)}" title="Year-over-Year (YoY) change.">
-                        YoY: ${yoyFormatted}
+                    <div class="change-indicator ${getChangeClass(yoyFormatted)}" title="Year-over-Year (YoY) change.">
+                        <span class="arrow-icon">${yoyArrowIcon}</span> YoY: ${yoyFormatted}
                     </div>
                 `;
             }

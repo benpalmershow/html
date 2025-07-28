@@ -415,21 +415,82 @@
             // Clear existing filter buttons
             filtersContainer.innerHTML = '';
             
-            // Create the 'All Categories' button
+            // Create the 'All Categories' button (icon only, with tooltip)
             const allButton = document.createElement('button');
             allButton.className = 'filter-btn active';
-            allButton.innerHTML = '<i data-lucide="list"></i> All Categories';
+            allButton.innerHTML = '<i data-lucide="list"></i>';
             allButton.dataset.category = 'all';
+            allButton.setAttribute('aria-label', 'All Categories');
+            allButton.setAttribute('data-tooltip', 'All Categories');
             filtersContainer.appendChild(allButton);
-            
-            // Create category filter buttons
+
+            // Create category filter buttons (icon only, with tooltip)
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.className = 'filter-btn';
                 const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-                button.innerHTML = `<span class="filter-icon">${icon}</span> ${category}`;
+                button.innerHTML = `<span class="filter-icon">${icon}</span>`;
                 button.dataset.category = category;
+                button.setAttribute('aria-label', category);
+                button.setAttribute('data-tooltip', category);
                 filtersContainer.appendChild(button);
+            });
+
+            // Tooltip logic for hover and mobile/touch
+            let tooltip = document.getElementById('filter-tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.id = 'filter-tooltip';
+                tooltip.style.position = 'fixed';
+                tooltip.style.pointerEvents = 'none';
+                tooltip.style.zIndex = '9999';
+                tooltip.style.background = 'rgba(44,95,90,0.97)';
+                tooltip.style.color = '#fff';
+                tooltip.style.padding = '6px 14px';
+                tooltip.style.borderRadius = '6px';
+                tooltip.style.fontSize = '0.95em';
+                tooltip.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
+                tooltip.style.transition = 'opacity 0.18s';
+                tooltip.style.opacity = '0';
+                tooltip.style.display = 'none';
+                document.body.appendChild(tooltip);
+            }
+
+            function showTooltip(text, x, y) {
+                tooltip.textContent = text;
+                tooltip.style.left = x + 'px';
+                tooltip.style.top = y + 'px';
+                tooltip.style.opacity = '1';
+                tooltip.style.display = 'block';
+            }
+            function hideTooltip() {
+                tooltip.style.opacity = '0';
+                tooltip.style.display = 'none';
+            }
+
+            // Desktop hover
+            filtersContainer.addEventListener('mouseover', function(e) {
+                const btn = e.target.closest('.filter-btn');
+                if (btn && btn.dataset.tooltip) {
+                    const rect = btn.getBoundingClientRect();
+                    showTooltip(btn.dataset.tooltip, rect.left + rect.width/2, rect.top - 10);
+                }
+            });
+            filtersContainer.addEventListener('mouseout', function(e) {
+                hideTooltip();
+            });
+
+            // Touch/mobile: show tooltip on touchstart/click
+            filtersContainer.addEventListener('touchstart', function(e) {
+                const btn = e.target.closest('.filter-btn');
+                if (btn && btn.dataset.tooltip) {
+                    const rect = btn.getBoundingClientRect();
+                    showTooltip(btn.dataset.tooltip, rect.left + rect.width/2, rect.top - 10);
+                    setTimeout(hideTooltip, 1800); // Hide after 1.8s
+                }
+            }, {passive: true});
+            filtersContainer.addEventListener('click', function(e) {
+                hideTooltip();
             });
 
             // Add click event listener for filter buttons

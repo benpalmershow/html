@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 iframe.height = '100%';
                 iframe.src = item.embedUrl;
                 iframe.title = `${item.title} Trailer`;
-                iframe.frameBorder = '0';
+                iframe.setAttribute('frameborder', '0');
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
                 iframe.allowFullscreen = true;
 

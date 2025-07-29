@@ -78,23 +78,26 @@ document.addEventListener('DOMContentLoaded', function () {
         const card = document.createElement('div');
         card.className = 'media-card';
         card.setAttribute('data-media-type', item.mediaType || 'unknown');
-
         // Create cover container with type badge
         const coverContainer = document.createElement('div');
         coverContainer.className = 'media-cover-container';
 
-        // Add cover image
+        // Add cover image with alt text validation
         const coverImg = document.createElement('img');
         coverImg.className = 'media-cover';
         coverImg.src = item.cover || 'https://via.placeholder.com/300x200/2C5F5A/FFFFFF?text=No+Image';
-        coverImg.alt = item.title;
+        // Ensure meaningful alt text
+        const altText = item.title ? `Cover image for ${item.title}` : 'Media cover image';
+        coverImg.alt = altText;
         coverImg.loading = 'lazy';
 
-        // Add media type badge (icon only, no text)
+        // Add media type badge (icon only, no text) - using createElement for security
         const typeBadge = document.createElement('div');
         typeBadge.className = 'media-type';
-        typeBadge.innerHTML = `<i class="${getMediaTypeIcon(item.mediaType)}"></i>`;
-        
+        const typeIcon = document.createElement('i');
+        typeIcon.className = getMediaTypeIcon(item.mediaType);
+        typeBadge.appendChild(typeIcon);
+
         // Add reading now badge if status is 'reading now'
         if (item.status && item.status.toLowerCase() === 'reading now') {
             const readingNowBadge = document.createElement('div');
@@ -153,16 +156,24 @@ document.addEventListener('DOMContentLoaded', function () {
             const trailerContainer = document.createElement('div');
             trailerContainer.className = 'trailer-container';
 
-            // Create button with YouTube icon (different text based on media type)
+            // Create button with YouTube icon (different text based on media type) - using createElement for security
             const trailerButton = document.createElement('button');
             trailerButton.className = 'trailer-button';
 
+            const buttonIcon = document.createElement('i');
+            buttonIcon.className = 'fab fa-youtube';
+            const buttonText = document.createElement('span');
+
             if (item.mediaType === 'movie') {
-                trailerButton.innerHTML = '<i class="fab fa-youtube"></i> Watch Trailer';
+                buttonText.textContent = ' Watch Trailer';
+                trailerButton.classList.add('playlist-button');
             } else if (item.mediaType === 'playlist') {
-                trailerButton.innerHTML = '<i class="fab fa-youtube"></i> Preview Playlist';
+                buttonText.textContent = ' Preview Playlist';
                 trailerButton.classList.add('playlist-button');
             }
+
+            trailerButton.appendChild(buttonIcon);
+            trailerButton.appendChild(buttonText);
 
             // Add click event to show trailer
             trailerButton.addEventListener('click', function (e) {
@@ -172,42 +183,59 @@ document.addEventListener('DOMContentLoaded', function () {
                 const existingTrailer = trailerContainer.querySelector('.trailer-embed');
                 if (existingTrailer) {
                     trailerContainer.removeChild(existingTrailer);
+                    // Reset button to original state - using createElement for security
+                    trailerButton.innerHTML = '';
+                    const resetIcon = document.createElement('i');
+                    resetIcon.className = 'fab fa-youtube';
+                    const resetText = document.createElement('span');
+
                     if (item.mediaType === 'movie') {
-                        trailerButton.innerHTML = '<i class="fab fa-youtube"></i> Watch Trailer';
+                        resetText.textContent = ' Watch Trailer';
                     } else if (item.mediaType === 'playlist') {
-                        trailerButton.innerHTML = '<i class="fab fa-youtube"></i> Preview Playlist';
+                        resetText.textContent = ' Preview Playlist';
                     }
+
+                    trailerButton.appendChild(resetIcon);
+                    trailerButton.appendChild(resetText);
                     return;
                 }
 
-                // Create iframe for trailer
+                // Create iframe for trailer - using createElement for security
                 const trailerEmbed = document.createElement('div');
                 trailerEmbed.className = 'trailer-embed';
-                trailerEmbed.innerHTML = `
-                    <iframe 
-                        width="100%" 
-                        height="100%" 
-                        src="${item.embedUrl}" 
-                        title="${item.title} Trailer"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                `;
 
+                const iframe = document.createElement('iframe');
+                iframe.width = '100%';
+                iframe.height = '100%';
+                iframe.src = item.embedUrl;
+                iframe.title = `${item.title} Trailer`;
+                iframe.frameBorder = '0';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                iframe.allowFullscreen = true;
+
+                trailerEmbed.appendChild(iframe);
                 trailerContainer.appendChild(trailerEmbed);
-                trailerButton.innerHTML = '<i class="fas fa-times"></i> Close Trailer';
+
+                // Update button to close state - using createElement for security
+                trailerButton.innerHTML = '';
+                const closeIcon = document.createElement('i');
+                closeIcon.className = 'fas fa-times';
+                const closeText = document.createElement('span');
+                closeText.textContent = ' Close Trailer';
+                trailerButton.appendChild(closeIcon);
+                trailerButton.appendChild(closeText);
             });
 
             trailerContainer.appendChild(trailerButton);
             overlayContent.appendChild(trailerContainer);
         }
 
-        // Add rating if exists (moved to bottom)
+        // Add rating if exists (moved to bottom) - using textContent for security
         if (item.rating) {
             const rating = document.createElement('div');
             rating.className = 'media-rating';
-            rating.innerHTML = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
+            const stars = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
+            rating.textContent = stars;
             overlayContent.appendChild(rating);
         }
 
@@ -218,25 +246,47 @@ document.addEventListener('DOMContentLoaded', function () {
             const ratingsContainer = document.createElement('div');
             ratingsContainer.className = 'rating-logos';
 
-            // Add Rotten Tomatoes rating if available
+            // Add Rotten Tomatoes rating if available - using createElement for security
             if (item.ratings.rt) {
                 const rtLink = document.createElement('a');
                 rtLink.href = item.ratings.rt.url;
                 rtLink.className = 'rating-logo rt-logo';
                 rtLink.target = '_blank';
                 rtLink.rel = 'noopener noreferrer';
-                rtLink.innerHTML = `<span class="rt-tomato">🍅</span> <span class="score">${item.ratings.rt.score}</span>`;
+
+                const tomatoSpan = document.createElement('span');
+                tomatoSpan.className = 'rt-tomato';
+                tomatoSpan.textContent = '🍅';
+
+                const scoreSpan = document.createElement('span');
+                scoreSpan.className = 'score';
+                scoreSpan.textContent = item.ratings.rt.score;
+
+                rtLink.appendChild(tomatoSpan);
+                rtLink.appendChild(document.createTextNode(' '));
+                rtLink.appendChild(scoreSpan);
                 ratingsContainer.appendChild(rtLink);
             }
 
-            // Add IMDB rating if available
+            // Add IMDB rating if available - using createElement for security
             if (item.ratings.imdb) {
                 const imdbLink = document.createElement('a');
                 imdbLink.href = item.ratings.imdb.url;
                 imdbLink.className = 'rating-logo imdb-logo';
                 imdbLink.target = '_blank';
                 imdbLink.rel = 'noopener noreferrer';
-                imdbLink.innerHTML = `<span class="imdb-icon">IMDb</span> <span class="score">${item.ratings.imdb.score}</span>`;
+
+                const imdbSpan = document.createElement('span');
+                imdbSpan.className = 'imdb-icon';
+                imdbSpan.textContent = 'IMDb';
+
+                const scoreSpan = document.createElement('span');
+                scoreSpan.className = 'score';
+                scoreSpan.textContent = item.ratings.imdb.score;
+
+                imdbLink.appendChild(imdbSpan);
+                imdbLink.appendChild(document.createTextNode(' '));
+                imdbLink.appendChild(scoreSpan);
                 ratingsContainer.appendChild(imdbLink);
             }
 
@@ -270,7 +320,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         else if (link.icon.includes('google')) linkEl.classList.add('google-link');
                         else if (link.icon.includes('rss')) linkEl.classList.add('rss-link');
 
-                        linkEl.innerHTML = `<i class="${link.icon}"></i>`;
+                        const linkIcon = document.createElement('i');
+                        linkIcon.className = link.icon;
+                        linkEl.appendChild(linkIcon);
                         linksContainer.appendChild(linkEl);
                     }
                 });
@@ -284,9 +336,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     linkEl.className = 'media-link';
                     linkEl.target = '_blank';
                     linkEl.rel = 'noopener noreferrer';
-                    linkEl.innerHTML = link.icon ?
-                        `<i class="${link.icon}"></i> ${link.label}` :
-                        link.label;
+                    if (link.icon) {
+                        const linkIcon = document.createElement('i');
+                        linkIcon.className = link.icon;
+                        linkEl.appendChild(linkIcon);
+                        linkEl.appendChild(document.createTextNode(' ' + link.label));
+                    } else {
+                        linkEl.textContent = link.label;
+                    }
                     linksContainer.appendChild(linkEl);
                 });
             }
@@ -299,9 +356,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const date = document.createElement('div');
             date.className = 'media-date-bottom';
 
-            // Format the date if it's a valid date string, otherwise use as is
+            // Format the date if it's a valid date string, otherwise use as is - using createElement for security
             const formattedDate = formatDate(item.date);
-            date.innerHTML = `<i class="far fa-calendar-alt"></i> ${formattedDate}`;
+            const dateIcon = document.createElement('i');
+            dateIcon.className = 'far fa-calendar-alt';
+            date.appendChild(dateIcon);
+            date.appendChild(document.createTextNode(' ' + formattedDate));
 
             // Append to overlay content for consistent positioning
             overlayContent.appendChild(date);
@@ -316,29 +376,25 @@ document.addEventListener('DOMContentLoaded', function () {
         card.appendChild(coverContainer);
         card.appendChild(overlay);
 
-        // Debug: Log card structure
-        console.log('Card created:', {
-            hasTitle: !!title,
-            hasOverlay: !!overlay,
-            hasCover: !!coverImg,
-            item: { title: item.title, type: item.mediaType }
-        });
+
 
         return card;
     }
 
+    // Media type icons constant for easier maintenance
+    const MEDIA_TYPE_ICONS = {
+        'podcast': 'fas fa-podcast',
+        'playlist': 'fas fa-music',
+        'book': 'fas fa-book',
+        'song': 'fas fa-music',
+        'video': 'fas fa-video',
+        'movie': 'fas fa-film',
+        'article': 'fas fa-newspaper'
+    };
+
     // Helper function to get appropriate icon for media type
     function getMediaTypeIcon(mediaType) {
-        const icons = {
-            'podcast': 'fas fa-podcast',
-            'playlist': 'fas fa-music',
-            'book': 'fas fa-book',
-            'song': 'fas fa-music',
-            'video': 'fas fa-video',
-            'movie': 'fas fa-film',
-            'article': 'fas fa-newspaper'
-        };
-        return icons[mediaType] || 'fas fa-file-alt';
+        return MEDIA_TYPE_ICONS[mediaType] || 'fas fa-file-alt';
     }
 
     // Helper function to format date for display
@@ -428,9 +484,25 @@ document.addEventListener('DOMContentLoaded', function () {
         renderMediaCards(filtered);
     }
 
-    // Event listeners
-    filterType.addEventListener('change', filterAndSortMedia);
-    sortBy.addEventListener('change', filterAndSortMedia);
+    // Debounce function to prevent rapid-fire re-renders
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Create debounced version of filter and sort function
+    const debouncedFilterAndSort = debounce(filterAndSortMedia, 300);
+
+    // Event listeners with debouncing
+    filterType.addEventListener('change', debouncedFilterAndSort);
+    sortBy.addEventListener('change', debouncedFilterAndSort);
 
     // Initialize
     fetchMediaData();

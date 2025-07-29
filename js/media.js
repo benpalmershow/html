@@ -154,27 +154,133 @@ document.addEventListener('DOMContentLoaded', function () {
             overlayContent.appendChild(description);
         }
 
-        // Add YouTube trailer for movies or playlist preview if embedUrl exists
-        if ((item.mediaType === 'movie' || item.mediaType === 'playlist') && item.embedUrl) {
+        // For movies, combine ratings and trailer button on the same line
+        if (item.mediaType === 'movie') {
+            const movieActionsContainer = document.createElement('div');
+            movieActionsContainer.className = 'movie-actions-container';
+
+            // Add IMDB and Rotten Tomatoes ratings
+            if (item.ratings) {
+                // Add Rotten Tomatoes rating if available - using createElement for security
+                if (item.ratings.rt) {
+                    const rtLink = document.createElement('a');
+                    rtLink.href = item.ratings.rt.url;
+                    rtLink.className = 'rating-logo rt-logo';
+                    rtLink.target = '_blank';
+                    rtLink.rel = 'noopener noreferrer';
+
+                    const tomatoSpan = document.createElement('span');
+                    tomatoSpan.className = 'rt-tomato';
+                    tomatoSpan.textContent = '🍅';
+
+                    const scoreSpan = document.createElement('span');
+                    scoreSpan.className = 'score';
+                    scoreSpan.textContent = item.ratings.rt.score;
+
+                    rtLink.appendChild(tomatoSpan);
+                    rtLink.appendChild(document.createTextNode(' '));
+                    rtLink.appendChild(scoreSpan);
+                    movieActionsContainer.appendChild(rtLink);
+                }
+
+                // Add IMDB rating if available - using createElement for security
+                if (item.ratings.imdb) {
+                    const imdbLink = document.createElement('a');
+                    imdbLink.href = item.ratings.imdb.url;
+                    imdbLink.className = 'rating-logo imdb-logo';
+                    imdbLink.target = '_blank';
+                    imdbLink.rel = 'noopener noreferrer';
+
+                    const imdbSpan = document.createElement('span');
+                    imdbSpan.className = 'imdb-icon';
+                    imdbSpan.textContent = 'IMDb';
+
+                    const scoreSpan = document.createElement('span');
+                    scoreSpan.className = 'score';
+                    scoreSpan.textContent = item.ratings.imdb.score;
+
+                    imdbLink.appendChild(imdbSpan);
+                    imdbLink.appendChild(document.createTextNode(' '));
+                    imdbLink.appendChild(scoreSpan);
+                    movieActionsContainer.appendChild(imdbLink);
+                }
+            }
+
+            // Add YouTube trailer button if embedUrl exists
+            if (item.embedUrl) {
+                const trailerContainer = document.createElement('div');
+                trailerContainer.className = 'trailer-container-inline';
+
+                // Create button with YouTube icon - using createElement for security
+                const trailerButton = document.createElement('button');
+                trailerButton.className = 'trailer-button-inline';
+                trailerButton.setAttribute('title', 'Watch Trailer');
+
+                const buttonIcon = document.createElement('i');
+                buttonIcon.className = 'fab fa-youtube';
+                trailerButton.appendChild(buttonIcon);
+
+                // Add click event to show trailer
+                trailerButton.addEventListener('click', function (e) {
+                    e.stopPropagation(); // Prevent card click event
+
+                    // Check if trailer is already open
+                    const existingTrailer = overlayContent.querySelector('.trailer-embed');
+                    if (existingTrailer) {
+                        overlayContent.removeChild(existingTrailer);
+                        // Reset button to original state - using createElement for security
+                        trailerButton.innerHTML = '';
+                        const resetIcon = document.createElement('i');
+                        resetIcon.className = 'fab fa-youtube';
+                        trailerButton.setAttribute('title', 'Watch Trailer');
+                        trailerButton.appendChild(resetIcon);
+                        return;
+                    }
+
+                    // Create iframe for trailer - using createElement for security
+                    const trailerEmbed = document.createElement('div');
+                    trailerEmbed.className = 'trailer-embed';
+
+                    const iframe = document.createElement('iframe');
+                    iframe.width = '100%';
+                    iframe.height = '100%';
+                    iframe.src = item.embedUrl;
+                    iframe.title = `${item.title} Trailer`;
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowFullscreen = true;
+
+                    trailerEmbed.appendChild(iframe);
+                    overlayContent.appendChild(trailerEmbed);
+
+                    // Update button to close state - using createElement for security
+                    trailerButton.innerHTML = '';
+                    const closeIcon = document.createElement('i');
+                    closeIcon.className = 'fas fa-times';
+                    trailerButton.setAttribute('title', 'Close Trailer');
+                    trailerButton.appendChild(closeIcon);
+                });
+
+                trailerContainer.appendChild(trailerButton);
+                movieActionsContainer.appendChild(trailerContainer);
+            }
+
+            overlayContent.appendChild(movieActionsContainer);
+        }
+
+        // Add YouTube trailer for playlists (separate handling)
+        if (item.mediaType === 'playlist' && item.embedUrl) {
             const trailerContainer = document.createElement('div');
             trailerContainer.className = 'trailer-container';
 
-            // Create button with YouTube icon (different text based on media type) - using createElement for security
+            // Create button with YouTube icon - using createElement for security
             const trailerButton = document.createElement('button');
             trailerButton.className = 'trailer-button';
+            trailerButton.setAttribute('title', 'Preview Playlist');
+            trailerButton.classList.add('playlist-button');
 
             const buttonIcon = document.createElement('i');
             buttonIcon.className = 'fab fa-youtube';
-
-            // Set title attribute for accessibility
-            if (item.mediaType === 'movie') {
-                trailerButton.setAttribute('title', 'Watch Trailer');
-                trailerButton.classList.add('playlist-button');
-            } else if (item.mediaType === 'playlist') {
-                trailerButton.setAttribute('title', 'Preview Playlist');
-                trailerButton.classList.add('playlist-button');
-            }
-
             trailerButton.appendChild(buttonIcon);
 
             // Add click event to show trailer
@@ -189,14 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     trailerButton.innerHTML = '';
                     const resetIcon = document.createElement('i');
                     resetIcon.className = 'fab fa-youtube';
-
-                    // Reset title attribute
-                    if (item.mediaType === 'movie') {
-                        trailerButton.setAttribute('title', 'Watch Trailer');
-                    } else if (item.mediaType === 'playlist') {
-                        trailerButton.setAttribute('title', 'Preview Playlist');
-                    }
-
+                    trailerButton.setAttribute('title', 'Preview Playlist');
                     trailerButton.appendChild(resetIcon);
                     return;
                 }
@@ -236,60 +335,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const stars = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
             rating.textContent = stars;
             overlayContent.appendChild(rating);
-        }
-
-        // Platform links for playlists are now handled in the main links section below
-
-        // Add IMDB and Rotten Tomatoes ratings for movies
-        if (item.mediaType === 'movie' && item.ratings) {
-            const ratingsContainer = document.createElement('div');
-            ratingsContainer.className = 'rating-logos';
-
-            // Add Rotten Tomatoes rating if available - using createElement for security
-            if (item.ratings.rt) {
-                const rtLink = document.createElement('a');
-                rtLink.href = item.ratings.rt.url;
-                rtLink.className = 'rating-logo rt-logo';
-                rtLink.target = '_blank';
-                rtLink.rel = 'noopener noreferrer';
-
-                const tomatoSpan = document.createElement('span');
-                tomatoSpan.className = 'rt-tomato';
-                tomatoSpan.textContent = '🍅';
-
-                const scoreSpan = document.createElement('span');
-                scoreSpan.className = 'score';
-                scoreSpan.textContent = item.ratings.rt.score;
-
-                rtLink.appendChild(tomatoSpan);
-                rtLink.appendChild(document.createTextNode(' '));
-                rtLink.appendChild(scoreSpan);
-                ratingsContainer.appendChild(rtLink);
-            }
-
-            // Add IMDB rating if available - using createElement for security
-            if (item.ratings.imdb) {
-                const imdbLink = document.createElement('a');
-                imdbLink.href = item.ratings.imdb.url;
-                imdbLink.className = 'rating-logo imdb-logo';
-                imdbLink.target = '_blank';
-                imdbLink.rel = 'noopener noreferrer';
-
-                const imdbSpan = document.createElement('span');
-                imdbSpan.className = 'imdb-icon';
-                imdbSpan.textContent = 'IMDb';
-
-                const scoreSpan = document.createElement('span');
-                scoreSpan.className = 'score';
-                scoreSpan.textContent = item.ratings.imdb.score;
-
-                imdbLink.appendChild(imdbSpan);
-                imdbLink.appendChild(document.createTextNode(' '));
-                imdbLink.appendChild(scoreSpan);
-                ratingsContainer.appendChild(imdbLink);
-            }
-
-            overlayContent.appendChild(ratingsContainer);
         }
 
         // Add links if they exist

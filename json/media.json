@@ -870,18 +870,19 @@
     "genre": ["Drama"],
     "language": ["Hindi"],
     "runtime": "102 min",
-    "imdb": {
-      "score": "7.1",
-      "url": "https://www.imdb.com/title/tt5997928/"
+    "ratings": {
+      "imdb": {
+        "score": "7.1",
+        "url": "https://www.imdb.com/title/tt5997928/"
+      },
+      "rt": {
+        "score": "100%",
+        "url": "https://www.rottentomatoes.com/m/hotel_salvation"
+      }
     },
-    "rt": {
-      "score": "100%",
-      "url": "https://www.rottentomatoes.com/m/hotel_salvation"
-    },
-    "youtube_trailer": "https://www.youtube.com/watch?v=-Fm8t03hufk&pp=0gcJCfwAo7VqN5tD",
+    "embedUrl": "https://www.youtube.com/embed/-Fm8t03hufk",
     "cover": "https://m.media-amazon.com/images/M/MV5BNzcyMjg1NjQtMTRlOC00ZjRlLWE5NWYtNDlmMmMwMmFjMDU5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "status": "watched"
-
   },
   {
     "title": "The Anxious Investor",

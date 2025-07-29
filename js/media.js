@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const mediaTypes = getUniqueMediaTypes(mediaItems);
             populateFilterDropdown(mediaTypes);
 
-            // Initial render
-            renderMediaCards(mediaItems);
+            // Initial render with default sorting (newest first)
+            filterAndSortMedia();
         } catch (error) {
             console.error('Error loading media data:', error);
             mediaContainer.innerHTML = '<p>Error loading media. Please try again later.</p>';
@@ -162,18 +162,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const buttonIcon = document.createElement('i');
             buttonIcon.className = 'fab fa-youtube';
-            const buttonText = document.createElement('span');
-
+            
+            // Set title attribute for accessibility
             if (item.mediaType === 'movie') {
-                buttonText.textContent = ' Watch Trailer';
+                trailerButton.setAttribute('title', 'Watch Trailer');
                 trailerButton.classList.add('playlist-button');
             } else if (item.mediaType === 'playlist') {
-                buttonText.textContent = ' Preview Playlist';
+                trailerButton.setAttribute('title', 'Preview Playlist');
                 trailerButton.classList.add('playlist-button');
             }
 
             trailerButton.appendChild(buttonIcon);
-            trailerButton.appendChild(buttonText);
 
             // Add click event to show trailer
             trailerButton.addEventListener('click', function (e) {
@@ -187,16 +186,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     trailerButton.innerHTML = '';
                     const resetIcon = document.createElement('i');
                     resetIcon.className = 'fab fa-youtube';
-                    const resetText = document.createElement('span');
-
+                    
+                    // Reset title attribute
                     if (item.mediaType === 'movie') {
-                        resetText.textContent = ' Watch Trailer';
+                        trailerButton.setAttribute('title', 'Watch Trailer');
                     } else if (item.mediaType === 'playlist') {
-                        resetText.textContent = ' Preview Playlist';
+                        trailerButton.setAttribute('title', 'Preview Playlist');
                     }
 
                     trailerButton.appendChild(resetIcon);
-                    trailerButton.appendChild(resetText);
                     return;
                 }
 
@@ -220,10 +218,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 trailerButton.innerHTML = '';
                 const closeIcon = document.createElement('i');
                 closeIcon.className = 'fas fa-times';
-                const closeText = document.createElement('span');
-                closeText.textContent = ' Close Trailer';
+                trailerButton.setAttribute('title', 'Close Trailer');
                 trailerButton.appendChild(closeIcon);
-                trailerButton.appendChild(closeText);
             });
 
             trailerContainer.appendChild(trailerButton);
@@ -415,13 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function parseDateString(dateString) {
         if (!dateString) return null;
 
-        // Try standard date parsing first
-        let date = new Date(dateString);
-        if (!isNaN(date.getTime())) {
-            return date;
-        }
-
-        // Try to parse "Month YYYY" format (e.g., "January 2023" or "Jan 2023")
+        // Try to parse "Month YYYY" format first (e.g., "January 2023" or "Jan 2023")
         const monthYearRegex = /^([A-Za-z]+)\s+(\d{4})$/;
         const match = dateString.match(monthYearRegex);
         if (match) {
@@ -442,6 +432,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (monthIndex !== -1) {
                 return new Date(year, monthIndex, 1);
             }
+        }
+
+        // Try standard date parsing as fallback
+        let date = new Date(dateString);
+        if (!isNaN(date.getTime())) {
+            return date;
         }
 
         return null;
@@ -466,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const dateA = parseDateString(a.date) || new Date(0);
                     const dateB = parseDateString(b.date) || new Date(0);
                     // For ascending: older dates first
-                    return dateA - dateB;
+                    return dateA.getTime() - dateB.getTime();
                 case 'date-desc':
                     const dateC = parseDateString(a.date) || new Date(0);
                     const dateD = parseDateString(b.date) || new Date(0);

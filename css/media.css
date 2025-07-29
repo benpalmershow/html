@@ -69,12 +69,12 @@
     align-items: stretch;
     width: calc(100% - 1.5rem);
   }
-  
+
   .media-filters label {
     width: 100%;
     margin: 0;
   }
-  
+
   .media-filters select {
     margin-top: 0.3rem;
     width: 100%;
@@ -87,11 +87,11 @@
     border-radius: 0.6rem;
     padding: 0.9rem 1rem;
   }
-  
+
   .media-filters label {
     font-size: 0.9rem;
   }
-  
+
   .media-filters select {
     font-size: 0.9rem;
     padding: 0.5rem 0.7rem;
@@ -141,7 +141,8 @@
   height: 100%;
   overflow: hidden;
   flex: 1;
-  min-height: 0; /* Allows the container to shrink below content size */
+  min-height: 0;
+  /* Allows the container to shrink below content size */
 }
 
 /* Cover image for all card types - fills entire card */
@@ -258,7 +259,8 @@
 }
 
 .media-overlay-content {
-  padding: 0.6rem 1rem 0.4rem 1rem; /* Reduced padding */
+  padding: 0.6rem 1rem 0.4rem 1rem;
+  /* Reduced padding */
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -273,8 +275,10 @@
 .media-title {
   font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.3rem 0; /* Reduced bottom margin */
-  padding: 0.3rem 0; /* Reduced padding */
+  margin: 0 0 0.3rem 0;
+  /* Reduced bottom margin */
+  padding: 0.3rem 0;
+  /* Reduced padding */
   line-height: 1.2;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -314,7 +318,8 @@
 
 .media-author {
   font-size: 0.85rem;
-  margin: 0 0 0.3rem 0; /* Reduced bottom margin */
+  margin: 0 0 0.3rem 0;
+  /* Reduced bottom margin */
   color: #f5c518;
   font-weight: 500;
   width: 100%;
@@ -324,7 +329,8 @@
 
 /* Date at the bottom of the overlay - fixed position */
 .media-date-bottom {
-  font-size: 0.72rem; /* Slightly smaller font */
+  font-size: 0.72rem;
+  /* Slightly smaller font */
   font-weight: 400;
   width: 100%;
   text-align: center;
@@ -337,10 +343,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.4rem 0; /* Reduced padding */
+  padding: 0.4rem 0;
+  /* Reduced padding */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.9) 50%, transparent 100%);
   z-index: 2;
-  backdrop-filter: blur(2px); /* Slight blur for better readability */
+  backdrop-filter: blur(2px);
+  /* Slight blur for better readability */
 }
 
 .media-date-bottom i {
@@ -349,27 +357,16 @@
 }
 
 .media-description {
-  font-size: 0.82rem; /* Slightly smaller font */
+  font-size: 0.82rem;
+  /* Slightly smaller font */
   line-height: 1.5;
-  margin: 0.3rem 0 0.5rem 0; /* Reduced margins */
   color: #f0f0f0;
   width: 100%;
   flex: 1;
   overflow-y: auto;
   pointer-events: auto;
   scroll-behavior: smooth;
-  /* Custom scrollbar styling */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-  /* More subtle gradient for scroll indicator */
-  mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
-  padding: 0.3rem 0.2rem 1.2rem 0; /* Reduced padding */
-  max-height: none; /* Allow natural height */
-  -webkit-line-clamp: none; /* Remove line clamp */
-  line-clamp: none;
-  display: block; /* Override any flex display */
-  overflow: visible; /* Show all content */
+
 }
 
 /* Webkit scrollbar styling */
@@ -386,40 +383,28 @@
   border-radius: 4px;
 }
 
-/* Trailer container and button */
-.trailer-container {
-  width: 100%;
-  margin: 0.5rem 0 1rem 0;
-  position: relative;
-}
+
 
 .trailer-button {
-  background-color: #FF0000;
-  color: white;
+  background: none;
+  color: #FF0000;
   border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 1.5em;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .trailer-button:hover {
-  background-color: #cc0000;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  color: #cc0000;
+  transform: translateY(-2px) scale(1.1);
 }
 
-
-
-.trailer-button i {
-  font-size: 1.1em;
-}
 
 .trailer-embed {
   position: relative;
@@ -453,12 +438,16 @@
 .rating-logos {
   position: relative;
   display: flex;
-  gap: 6px; /* Reduced gap */
-  margin: 5px 0 10px 0; /* Reduced margins */
-  padding: 0 0 8px 0; /* Reduced padding */
+  gap: 6px;
+  /* Reduced gap */
+  margin: 5px 0 10px 0;
+  /* Reduced margins */
+  padding: 0 0 8px 0;
+  /* Reduced padding */
   z-index: 3;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  flex-wrap: wrap;
+  /* Allow wrapping on small screens */
 }
 
 .rating-logo {
@@ -553,12 +542,9 @@
   text-decoration: none;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  background-color: rgba(0, 0, 0, 0.2);
   color: white;
 }
 
@@ -626,8 +612,6 @@
   text-decoration: none;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -636,7 +620,6 @@
 .listen-link:hover {
   opacity: 1;
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.2);
   text-decoration: none;
 }
 
@@ -699,26 +682,27 @@
     width: 130px;
     height: 180px;
   }
-  
+
   /* Smaller font sizes for mobile */
   .media-title {
     font-size: 0.95rem;
     margin: 0 0 0.6rem 0;
     padding: 0.4rem 0;
   }
-  
+
   .media-author {
     font-size: 0.8rem;
     margin: 0 0 0.4rem 0;
   }
-  
+
   .media-description {
     font-size: 0.8rem;
     line-height: 1.4;
-    -webkit-line-clamp: 3; /* Even fewer lines on mobile */
+    -webkit-line-clamp: 3;
+    /* Even fewer lines on mobile */
     line-clamp: 3;
   }
-  
+
   .media-date-bottom {
     font-size: 0.6rem;
     padding: 0.25rem 0;
@@ -731,15 +715,15 @@
     width: 120px;
     height: 170px;
   }
-  
+
   .media-overlay-content {
     padding: 1rem 0.8rem 2rem 0.8rem;
   }
-  
+
   .media-title {
     font-size: 0.9rem;
     margin: 0 0 0.5rem 0;
   }
-  
+
 
 }

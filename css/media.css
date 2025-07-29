@@ -263,13 +263,16 @@
   /* Reduced padding */
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   /* Add padding at the bottom for the date */
   padding-bottom: 0.5rem;
+  /* Enable smooth scrolling */
+  scroll-behavior: smooth;
 }
 
 .media-title {
@@ -461,8 +464,13 @@
   font-size: 0.85em;
   font-weight: bold;
   transition: transform 0.15s ease, opacity 0.15s ease;
-  opacity: 0.9;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  /* Ensure minimum touch target size */
+  min-height: 24px;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .rating-logo:hover {

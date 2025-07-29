@@ -49,7 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const mediaTypes = getUniqueMediaTypes(mediaItems);
             populateFilterDropdown(mediaTypes);
 
-            // Initial render with default sorting (newest first)
+            // Set default sort to newest by date (descending)
+            if (sortBy) {
+                sortBy.value = 'date-desc';
+            }
             filterAndSortMedia();
         } catch (error) {
             console.error('Error loading media data:', error);

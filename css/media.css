@@ -448,6 +448,8 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   flex-wrap: wrap;
   /* Allow wrapping on small screens */
+  width: 100%;
+  /* Ensure full width usage */
 }
 
 .rating-logo {
@@ -686,26 +688,59 @@
   /* Smaller font sizes for mobile */
   .media-title {
     font-size: 0.95rem;
-    margin: 0 0 0.6rem 0;
-    padding: 0.4rem 0;
+    margin: 0 0 0.4rem 0;
+    padding: 0.3rem 0;
   }
 
   .media-author {
     font-size: 0.8rem;
-    margin: 0 0 0.4rem 0;
+    margin: 0 0 0.3rem 0;
   }
 
   .media-description {
     font-size: 0.8rem;
     line-height: 1.4;
-    -webkit-line-clamp: 3;
-    /* Even fewer lines on mobile */
-    line-clamp: 3;
+    -webkit-line-clamp: 2;
+    /* Fewer lines on mobile to make room for ratings */
+    line-clamp: 2;
+    max-height: 3.2em;
   }
 
   .media-date-bottom {
     font-size: 0.6rem;
     padding: 0.25rem 0;
+  }
+
+  /* Ensure rating logos are visible and properly sized on mobile */
+  .rating-logos {
+    gap: 4px;
+    margin: 4px 0 8px 0;
+    padding: 0 0 6px 0;
+    flex-wrap: wrap;
+  }
+
+  .rating-logo {
+    padding: 3px 6px;
+    font-size: 0.75em;
+    min-width: auto;
+    flex-shrink: 0;
+  }
+
+  .rating-logo .score {
+    font-size: 0.9em;
+  }
+
+  /* Adjust overlay content padding for mobile */
+  .media-overlay-content {
+    padding: 0.5rem 0.8rem 2.5rem 0.8rem;
+    overflow-y: auto;
+  }
+
+  /* Ensure trailer buttons are accessible on mobile */
+  .trailer-button {
+    font-size: 1.3em;
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -717,13 +752,106 @@
   }
 
   .media-overlay-content {
-    padding: 1rem 0.8rem 2rem 0.8rem;
+    padding: 0.4rem 0.7rem 2.2rem 0.7rem;
+    overflow-y: auto;
   }
 
   .media-title {
-    font-size: 0.9rem;
-    margin: 0 0 0.5rem 0;
+    font-size: 0.85rem;
+    margin: 0 0 0.3rem 0;
+    padding: 0.2rem 0;
+    line-height: 1.1;
   }
 
+  .media-author {
+    font-size: 0.75rem;
+    margin: 0 0 0.2rem 0;
+  }
 
+  .media-description {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    max-height: 2.6em;
+  }
+
+  /* Make rating logos even more compact on very small screens */
+  .rating-logos {
+    gap: 3px;
+    margin: 3px 0 6px 0;
+    padding: 0 0 4px 0;
+  }
+
+  .rating-logo {
+    padding: 2px 4px;
+    font-size: 0.7em;
+    border-radius: 3px;
+  }
+
+  .rating-logo .score {
+    font-size: 0.85em;
+  }
+
+  .rt-logo .rt-tomato {
+    margin-right: 3px;
+    font-size: 1em;
+  }
+
+  .imdb-logo .imdb-icon {
+    font-size: 0.8em;
+    margin-right: 3px;
+  }
+
+  /* Adjust date positioning for very small screens */
+  .media-date-bottom {
+    font-size: 0.55rem;
+    padding: 0.2rem 0;
+  }
+
+  /* Ensure trailer buttons remain accessible */
+  .trailer-button {
+    font-size: 1.2em;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* iPhone specific optimizations */
+@media (max-width: 390px) and (max-height: 844px) {
+  .media-overlay-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  /* Ensure rating logos are always visible */
+  .rating-logos {
+    flex-shrink: 0;
+    order: 2; /* Place after title and author */
+    margin: 2px 0 6px 0;
+    padding: 0 0 4px 0;
+  }
+
+  .media-title {
+    order: 1;
+    flex-shrink: 0;
+  }
+
+  .media-author {
+    order: 1;
+    flex-shrink: 0;
+  }
+
+  .media-description {
+    order: 3;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .media-date-bottom {
+    order: 4;
+    flex-shrink: 0;
+  }
 }

@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const buttonIcon = document.createElement('i');
             buttonIcon.className = 'fab fa-youtube';
-            
+
             // Set title attribute for accessibility
             if (item.mediaType === 'movie') {
                 trailerButton.setAttribute('title', 'Watch Trailer');
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     trailerButton.innerHTML = '';
                     const resetIcon = document.createElement('i');
                     resetIcon.className = 'fab fa-youtube';
-                    
+
                     // Reset title attribute
                     if (item.mediaType === 'movie') {
                         trailerButton.setAttribute('title', 'Watch Trailer');
@@ -350,8 +350,8 @@ document.addEventListener('DOMContentLoaded', function () {
             overlayContent.appendChild(linksContainer);
         }
 
-        // Add date at the bottom if exists (fixed position)
-        if (item.date) {
+        // Add date at the bottom if exists (fixed position) - but not for movies
+        if (item.date && item.mediaType !== 'movie') {
             const date = document.createElement('div');
             date.className = 'media-date-bottom';
 

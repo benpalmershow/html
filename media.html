@@ -48,15 +48,25 @@
   <h1 class="page-title">Media</h1>
 
   <div class="media-filters">
+    <label>Search:
+      <div class="search-input-container">
+        <input type="text" id="search-input" placeholder="Search titles, authors, genres, categories..." aria-label="Search media">
+        <button type="button" id="clear-search" class="clear-search-btn" aria-label="Clear search" title="Clear search">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <small class="search-help">Try: "Economics", "Psychology", "movie", "podcast", or any author name</small>
+    </label>
+
     <label>Filter by type:
-      <select id="filter-type">
+      <select id="filter-type" aria-label="Filter by media type">
         <option value="all">All</option>
         <!-- Options will be populated by JavaScript -->
       </select>
     </label>
 
     <label>Sort by:
-      <select id="sort-by">
+      <select id="sort-by" aria-label="Sort media">
         <option value="date-desc">Newest by Date Added</option>
         <option value="date-asc">Oldest by Date Added</option>
         <option value="title-asc">Title (A-Z)</option>

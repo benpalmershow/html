@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const mediaContainer = document.getElementById('media-cards-container');
     const filterType = document.getElementById('filter-type');
     const sortBy = document.getElementById('sort-by');
+    const searchInput = document.getElementById('search-input');
+    const clearSearchBtn = document.getElementById('clear-search');
 
     let mediaItems = [];
+    let searchTerm = '';
 
     // Get all unique media types from the items
     function getUniqueMediaTypes(items) {
@@ -30,34 +33,99 @@ document.addEventListener('DOMContentLoaded', function () {
         types.forEach(type => {
             const option = document.createElement('option');
             option.value = type;
+            option.setAttribute('aria-label', `Filter by ${type}`);
             // Capitalize first letter of each word for display
             option.textContent = type.charAt(0).toUpperCase() + type.slice(1) + 's';
             filterType.appendChild(option);
         });
     }
 
-    // Fetch media data
+    // Cache configuration
+    const CACHE_KEY = 'media-data-cache';
+    const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+    // Fetch media data with caching and improved error handling
     async function fetchMediaData() {
+        // Show loading state
+        mediaContainer.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading media...</div>';
+
         try {
-            const response = await fetch('/json/media.json');
-            if (!response.ok) {
-                throw new Error('Failed to fetch media data');
+            // Check cache first
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const { data, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < CACHE_DURATION) {
+                    mediaItems = data;
+                    initializeMediaDisplay();
+                    return;
+                }
             }
+
+            const response = await fetch('/json/media.json');
+            
+            if (!response.ok) {
+                if (response.status === 404) {
+                    throw new Error('Media data file not found');
+                } else if (response.status >= 500) {
+                    throw new Error('Server error occurred');
+                } else {
+                    throw new Error(`Failed to fetch media data (${response.status})`);
+                }
+            }
+
             mediaItems = await response.json();
 
-            // Get unique media types and populate filter
-            const mediaTypes = getUniqueMediaTypes(mediaItems);
-            populateFilterDropdown(mediaTypes);
+            // Validate and filter media items
+            mediaItems = mediaItems.filter(validateMediaItem);
 
-            // Set default sort to newest by date (descending)
-            if (sortBy) {
-                sortBy.value = 'date-desc';
-            }
-            filterAndSortMedia();
+            // Cache the data
+            localStorage.setItem(CACHE_KEY, JSON.stringify({
+                data: mediaItems,
+                timestamp: Date.now()
+            }));
+
+            initializeMediaDisplay();
+
         } catch (error) {
             console.error('Error loading media data:', error);
-            mediaContainer.innerHTML = '<p>Error loading media. Please try again later.</p>';
+            
+            let errorMessage = 'Error loading media. ';
+            if (error.name === 'TypeError') {
+                errorMessage += 'Please check your internet connection.';
+            } else {
+                errorMessage += error.message;
+            }
+            
+            mediaContainer.innerHTML = `
+                <div class="error-state">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>${errorMessage}</p>
+                    <button onclick="location.reload()" class="retry-button">Try Again</button>
+                </div>
+            `;
         }
+    }
+
+    // Initialize media display after data is loaded
+    function initializeMediaDisplay() {
+        // Get unique media types and populate filter
+        const mediaTypes = getUniqueMediaTypes(mediaItems);
+        populateFilterDropdown(mediaTypes);
+
+        // Set default sort to newest by date (descending)
+        if (sortBy) {
+            sortBy.value = 'date-desc';
+        }
+        filterAndSortMedia();
+    }
+
+    // Validate media item structure
+    function validateMediaItem(item) {
+        const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'song', 'video', 'article'];
+        return item && 
+               item.title && 
+               item.mediaType && 
+               VALID_MEDIA_TYPES.includes(item.mediaType);
     }
 
     // Render media cards
@@ -81,6 +149,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const card = document.createElement('div');
         card.className = 'media-card';
         card.setAttribute('data-media-type', item.mediaType || 'unknown');
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-label', `${item.title} - ${item.mediaType}`);
+        card.setAttribute('tabindex', '0');
         // Create cover container with type badge
         const coverContainer = document.createElement('div');
         coverContainer.className = 'media-cover-container';
@@ -414,13 +485,21 @@ document.addEventListener('DOMContentLoaded', function () {
         // Assemble the overlay
         overlay.appendChild(overlayContent);
 
+        // Add keyboard navigation
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                // Trigger hover effect or click action if any
+                card.classList.add('keyboard-focus');
+                setTimeout(() => card.classList.remove('keyboard-focus'), 200);
+            }
+        });
+
         // Add all elements to the card
         coverContainer.appendChild(coverImg);
         coverContainer.appendChild(typeBadge);
         card.appendChild(coverContainer);
         card.appendChild(overlay);
-
-
 
         return card;
     }
@@ -491,12 +570,32 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
 
+    // Enhanced search function - searches across multiple fields
+    function searchMedia(items, searchTerm) {
+        if (!searchTerm.trim()) return items;
+        
+        const term = searchTerm.toLowerCase().trim();
+        return items.filter(item => {
+            return (item.title && item.title.toLowerCase().includes(term)) ||
+                   (item.author && item.author.toLowerCase().includes(term)) ||
+                   (item.description && item.description.toLowerCase().includes(term)) ||
+                   (item.genre && item.genre.toLowerCase().includes(term)) ||
+                   (item.category && item.category.toLowerCase().includes(term)) ||
+                   (item.mediaType && item.mediaType.toLowerCase().includes(term)) ||
+                   (item.tag && item.tag.toLowerCase().includes(term));
+        });
+    }
+
     // Filter and sort functions
     function filterAndSortMedia() {
         const typeFilter = filterType.value;
         const sortValue = sortBy.value;
+        searchTerm = searchInput.value;
 
         let filtered = [...mediaItems];
+
+        // Apply search filter
+        filtered = searchMedia(filtered, searchTerm);
 
         // Apply type filter
         if (typeFilter !== 'all') {
@@ -526,6 +625,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         renderMediaCards(filtered);
+        updateResultsCount(filtered.length, mediaItems.length);
+    }
+
+    // Update results count display
+    function updateResultsCount(filteredCount, totalCount) {
+        let existingCount = document.querySelector('.results-count');
+        if (existingCount) {
+            existingCount.remove();
+        }
+
+        if (filteredCount !== totalCount || searchTerm.trim()) {
+            const countDisplay = document.createElement('div');
+            countDisplay.className = 'results-count';
+            
+            let countText = `Showing ${filteredCount} of ${totalCount} items`;
+            
+            // Add search context if there's an active search
+            if (searchTerm.trim()) {
+                countText += ` matching "${searchTerm.trim()}"`;
+            }
+            
+            // Add filter context if there's an active filter
+            const activeFilter = filterType.value;
+            if (activeFilter !== 'all') {
+                const filterText = activeFilter.charAt(0).toUpperCase() + activeFilter.slice(1) + 's';
+                countText += ` in ${filterText}`;
+            }
+            
+            countDisplay.textContent = countText;
+            
+            const filtersContainer = document.querySelector('.media-filters');
+            filtersContainer.insertAdjacentElement('afterend', countDisplay);
+        }
     }
 
     // Debounce function to prevent rapid-fire re-renders
@@ -544,9 +676,47 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create debounced version of filter and sort function
     const debouncedFilterAndSort = debounce(filterAndSortMedia, 300);
 
+    // Clear search functionality
+    function clearSearch() {
+        searchInput.value = '';
+        searchInput.focus();
+        filterAndSortMedia();
+        updateClearButtonVisibility();
+    }
+
+    // Update clear button visibility
+    function updateClearButtonVisibility() {
+        if (searchInput.value.trim()) {
+            clearSearchBtn.classList.add('show');
+        } else {
+            clearSearchBtn.classList.remove('show');
+        }
+    }
+
     // Event listeners with debouncing
-    filterType.addEventListener('change', debouncedFilterAndSort);
-    sortBy.addEventListener('change', debouncedFilterAndSort);
+    filterType.addEventListener('change', filterAndSortMedia);
+    sortBy.addEventListener('change', filterAndSortMedia);
+    searchInput.addEventListener('input', function() {
+        debouncedFilterAndSort();
+        updateClearButtonVisibility();
+    });
+    clearSearchBtn.addEventListener('click', clearSearch);
+
+    // Keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        // Focus search on Ctrl/Cmd + F
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+            e.preventDefault();
+            searchInput.focus();
+        }
+        
+        // Clear search on Escape
+        if (e.key === 'Escape' && document.activeElement === searchInput) {
+            searchInput.value = '';
+            searchInput.blur();
+            filterAndSortMedia();
+        }
+    });
 
     // Initialize
     fetchMediaData();

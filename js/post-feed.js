@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            const response = await fetch('/json/posts.json');
+            const response = await fetch('/json/posts.min.json');
             
             if (!response.ok) {
                 if (response.status === 404) {

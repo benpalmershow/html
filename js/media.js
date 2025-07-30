@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            const response = await fetch('/json/media.json');
+            const response = await fetch('/json/media.min.json');
             
             if (!response.ok) {
                 if (response.status === 404) {

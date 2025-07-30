@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numbers - Howdy, Stranger</title>
-    
+
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
-    
+
     <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/financials.css">
@@ -21,6 +22,7 @@
     <script src="https://unpkg.com/lucide"></script>
 
 </head>
+
 <body>
     <!-- Logo Header -->
     <header class="site-header">
@@ -31,326 +33,330 @@
         </div>
     </header>
     <nav class="nav-links" id="main-nav"></nav>
-            <h1 class="page-title">Numbers</h1>
-            <div id="lastUpdated" class="last-updated" style="text-align:center;"></div>
-            <div class="container">
-                <div class="collapsible-container">
-        <!-- Interactive Dashboard Section -->
-        <div class="collapsible-section">
-            <div class="collapsible-header" onclick="toggleCollapse('interactive-dashboard')">
-                <h2>Macro</h2>
-                <span class="collapse-toggle" id="interactive-dashboard-toggle">▼</span>
-            </div>
-            <div class="collapsible-content" id="interactive-dashboard-content">
-                <div class="filters" id="filters">
-                    <button class="filter-btn active" data-category="all">All Categories</button>
+    <h1 class="page-title">Numbers</h1>
+    <div id="lastUpdated" class="last-updated" style="text-align:center;"></div>
+    <div class="container">
+        <div class="collapsible-container">
+            <!-- Interactive Dashboard Section -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('interactive-dashboard')">
+                    <h2>Macro</h2>
+                    <span class="collapse-toggle" id="interactive-dashboard-toggle">▼</span>
                 </div>
-                
-                <div class="categories" id="categories"></div>
-            </div>
-        </div>
+                <div class="collapsible-content" id="interactive-dashboard-content">
+                    <div class="filters" id="filters">
+                        <button class="filter-btn active" data-category="all">All Categories</button>
+                    </div>
 
-        <!-- GPT Portfolio Section -->
-        <div class="collapsible-section">
-            <div class="collapsible-header" onclick="toggleCollapse('gpt-portfolio')">
-                <h2>Micro</h2>
-                <span class="collapse-toggle" id="gpt-portfolio-toggle">▼</span>
-            </div>
-            <div class="collapsible-content" id="gpt-portfolio-content">
-                <div class="table-wrapper">
-                    <div id="loading-message" class="loading-state">Loading portfolio data...</div>
-                    <div id="error-message" class="error-state" style="display: none;"></div>
-                    <div id="portfolio-table-container" class="table-container"></div>
+                    <div class="categories" id="categories"></div>
                 </div>
-                <div class="data-notes">
-                    
-                    <h3>Portfolio Notes & Information</h3>
-                    <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-                        This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for current market data and analysis.
-                    </p>
-                    <div id="last-updated-portfolio" style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-                        Portfolio data refreshed automatically
+            </div>
+
+            <!-- GPT Portfolio Section -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('gpt-portfolio')">
+                    <h2>Micro</h2>
+                    <span class="collapse-toggle" id="gpt-portfolio-toggle">▼</span>
+                </div>
+                <div class="collapsible-content" id="gpt-portfolio-content">
+                    <div class="table-wrapper">
+                        <div id="loading-message" class="loading-state">Loading portfolio data...</div>
+                        <div id="error-message" class="error-state" style="display: none;"></div>
+                        <div id="portfolio-table-container" class="table-container"></div>
+                    </div>
+                    <div class="data-notes">
+
+                        <h3>Portfolio Notes & Information</h3>
+                        <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
+                            This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell
+                            automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for
+                            current market data and analysis.
+                        </p>
+                        <div id="last-updated-portfolio"
+                            style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
+                            Portfolio data refreshed automatically
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
+        <script>
+            let financialData = null;
 
-    <script>
-        let financialData = null;
+            // Collapsible functionality
+            function toggleCollapse(sectionId) {
+                const content = document.getElementById(sectionId + '-content');
+                const toggle = document.getElementById(sectionId + '-toggle');
 
-        // Collapsible functionality
-        function toggleCollapse(sectionId) {
-            const content = document.getElementById(sectionId + '-content');
-            const toggle = document.getElementById(sectionId + '-toggle');
-            
-            if (content.classList.contains('collapsed')) {
-                content.classList.remove('collapsed');
-                toggle.classList.remove('collapsed');
-                toggle.textContent = '▼';
-            } else {
-                content.classList.add('collapsed');
-                toggle.classList.add('collapsed');
-                toggle.textContent = '▲';
-            }
-        }
-
-        async function fetchFinancialData() {
-            const paths = [
-                './json/financials-data.json',
-                './financials-data.json',
-                'json/financials-data.json',
-                '/json/financials-data.json',
-                '../json/financials-data.json'
-            ];
-
-            for (const path of paths) {
-                try {
-                    const response = await fetch(path);
-                    if (!response.ok) continue;
-                    financialData = await response.json();
-                    initializeDashboard();
-                    return;
-                } catch (error) {
-                    console.error(`Error loading from ${path}:`, error);
-                    continue;
+                if (content.classList.contains('collapsed')) {
+                    content.classList.remove('collapsed');
+                    toggle.classList.remove('collapsed');
+                    toggle.textContent = '▼';
+                } else {
+                    content.classList.add('collapsed');
+                    toggle.classList.add('collapsed');
+                    toggle.textContent = '▲';
                 }
             }
 
-            // If we get here, none of the paths worked
-            console.error('Could not load financial data from any path');
-            document.getElementById('categories').innerHTML = 
-                '<div class="error">Error loading financial data. Please try again later.</div>';
-        }
+            async function fetchFinancialData() {
+                const paths = [
+                    './json/financials-data.json',
+                    './financials-data.json',
+                    'json/financials-data.json',
+                    '/json/financials-data.json',
+                    '../json/financials-data.json'
+                ];
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-        }
-
-        function getChangeClass(change) {
-            if (change === "—" || change === "0" || change === "0.00") return 'change-neutral';
-            if (change.startsWith('+')) return 'change-positive';
-            if (change.startsWith('-')) return 'change-negative';
-            return 'change-neutral';
-        }
-
-        function getArrowClass(change) {
-            if (change === "—" || change === "0" || change === "0.00") return '';
-            if (change.startsWith('+')) return 'arrow-up';
-            if (change.startsWith('-')) return 'arrow-down';
-            return '';
-        }
-
-        // Helper function to extract numeric value from string
-        function extractNumericValue(value) {
-            if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
-            
-            // Remove common prefixes and suffixes
-            let cleanValue = value.toString()
-                .replace(/[$,%]/g, '') // Remove $ and %
-                .replace(/[+\-]/g, '') // Remove + and - signs
-                .replace(/[A-Za-z]/g, '') // Remove letters (M, B, etc.)
-                .trim();
-            
-            // Handle special cases like "134,391M" -> "134391"
-            if (value.includes('M')) {
-                cleanValue = cleanValue.replace(/M$/, '');
-            }
-            if (value.includes('B')) {
-                cleanValue = cleanValue.replace(/B$/, '');
-            }
-            
-            const num = parseFloat(cleanValue);
-            return isNaN(num) ? null : num;
-        }
-
-        // Calculate Month-over-Month (MoM) change
-        function calculateMoMChange(indicator) {
-            const months = ['march', 'april', 'may', 'june', 'july', 'august'];
-            let currentValue = null;
-            let previousValue = null;
-            let currentRawValue = '';
-            
-            // Find the latest available value and the previous one
-            for (let i = months.length - 1; i >= 0; i--) {
-                const month = months[i];
-                const value = indicator[month];
-                
-                if (value && value !== '' && !value.startsWith('TBD')) {
-                    if (currentValue === null) {
-                        currentValue = extractNumericValue(value);
-                        currentRawValue = value;
-                    } else if (previousValue === null) {
-                        previousValue = extractNumericValue(value);
-                        break;
+                for (const path of paths) {
+                    try {
+                        const response = await fetch(path);
+                        if (!response.ok) continue;
+                        financialData = await response.json();
+                        initializeDashboard();
+                        return;
+                    } catch (error) {
+                        console.error(`Error loading from ${path}:`, error);
+                        continue;
                     }
                 }
+
+                // If we get here, none of the paths worked
+                console.error('Could not load financial data from any path');
+                document.getElementById('categories').innerHTML =
+                    '<div class="error">Error loading financial data. Please try again later.</div>';
             }
-            
-            if (currentValue === null || previousValue === null || previousValue === 0) {
+
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            function getChangeClass(change) {
+                if (change === "—" || change === "0" || change === "0.00") return 'change-neutral';
+                if (change.startsWith('+')) return 'change-positive';
+                if (change.startsWith('-')) return 'change-negative';
+                return 'change-neutral';
+            }
+
+            function getArrowClass(change) {
+                if (change === "—" || change === "0" || change === "0.00") return '';
+                if (change.startsWith('+')) return 'arrow-up';
+                if (change.startsWith('-')) return 'arrow-down';
+                return '';
+            }
+
+            // Helper function to extract numeric value from string
+            function extractNumericValue(value) {
+                if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
+
+                // Remove common prefixes and suffixes
+                let cleanValue = value.toString()
+                    .replace(/[$,%]/g, '') // Remove $ and %
+                    .replace(/[+\-]/g, '') // Remove + and - signs
+                    .replace(/[A-Za-z]/g, '') // Remove letters (M, B, etc.)
+                    .trim();
+
+                // Handle special cases like "134,391M" -> "134391"
+                if (value.includes('M')) {
+                    cleanValue = cleanValue.replace(/M$/, '');
+                }
+                if (value.includes('B')) {
+                    cleanValue = cleanValue.replace(/B$/, '');
+                }
+
+                const num = parseFloat(cleanValue);
+                return isNaN(num) ? null : num;
+            }
+
+            // Calculate Month-over-Month (MoM) change
+            function calculateMoMChange(indicator) {
+                const months = ['march', 'april', 'may', 'june', 'july', 'august'];
+                let currentValue = null;
+                let previousValue = null;
+                let currentRawValue = '';
+
+                // Find the latest available value and the previous one
+                for (let i = months.length - 1; i >= 0; i--) {
+                    const month = months[i];
+                    const value = indicator[month];
+
+                    if (value && value !== '' && !value.startsWith('TBD')) {
+                        if (currentValue === null) {
+                            currentValue = extractNumericValue(value);
+                            currentRawValue = value;
+                        } else if (previousValue === null) {
+                            previousValue = extractNumericValue(value);
+                            break;
+                        }
+                    }
+                }
+
+                if (currentValue === null || previousValue === null || previousValue === 0) {
+                    return null;
+                }
+
+                const change = ((currentValue - previousValue) / previousValue) * 100;
+                const numberChange = currentValue - previousValue;
+
+                // Return both percentage change and number change
+                return {
+                    percentChange: change,
+                    numberChange: numberChange,
+                    currentRawValue: currentRawValue
+                };
+            }
+
+            // Calculate Year-over-Year (YoY) change (comparing to same month last year)
+            // For now, we'll use a simplified approach since we don't have last year's data
+            function calculateYoYChange(indicator) {
+                // This would require historical data from previous years
+                // For now, return null to indicate no YoY data available
                 return null;
             }
-            
-            const change = ((currentValue - previousValue) / previousValue) * 100;
-            const numberChange = currentValue - previousValue;
-            
-            // Return both percentage change and number change
-            return {
-                percentChange: change,
-                numberChange: numberChange,
-                currentRawValue: currentRawValue
+
+            // Format change percentage
+            function formatChange(change) {
+                if (change === null) return '—';
+                const sign = change >= 0 ? '+' : '';
+                return `${sign}${change.toFixed(2)}%`;
+            }
+
+            // Explanations for indicators by name
+            const indicatorExplanations = {
+                'Manufacturing PMI': 'Above 50 = expansion; below 50 = contraction in manufacturing sector.',
+                'Composite PMI (Flash)': 'Combined measure of manufacturing and services activity; above 50 = expansion, below 50 = contraction (S&P Global).',
+                'CPI': 'Consumer Price Index: measures average change in prices paid by consumers.',
+                'CPI (YoY)': 'Year-over-year change in Consumer Price Index.',
+                'PPI': 'Producer Price Index: measures average change in selling prices received by domestic producers.',
+                'Jobs Added': 'Net number of jobs added to the economy for the month.',
+                'Jobless Claims': 'Number of people filing for unemployment benefits for the first time.',
+                'Job Openings': 'Total number of open job positions at month end.',
+                'Private Employment': 'Total private sector employment (ADP payrolls).',
+                'Housing Starts': 'New residential construction projects begun in a month.',
+                'New Home Sales': 'Number of newly constructed homes sold.',
+                'Affordability Index': 'Higher = more affordable housing; lower = less affordable.',
+                'HMI': 'Homebuilder sentiment: above 50 = positive outlook, below 50 = negative.',
+                'Median Home Price': 'National median price for existing single-family homes (NAR data).',
+                '30-yr Mortgage Rate': 'Average interest rate for 30-year fixed-rate mortgages.',
+                '10-yr Treasury Yield': 'Yield on 10-year U.S. Treasury bonds.',
+                'Lagging Economic Index': 'Composite index of lagging economic indicators.',
+                'New Orders': 'Value of new purchase orders placed with manufacturers.',
+                'Construction Spending': 'Total spending on construction projects.',
+                'Monthly Retail Sales': 'Total sales at retail stores for the month.',
+                'Consumer Sentiment': 'Survey-based measure of consumer confidence (University of Michigan).',
+                'Consumer Confidence': 'Survey-based measure of consumer confidence (Conference Board).',
+                'Used Vehicle Value Index': 'Tracks prices of used vehicles (Manheim index).',
+                'PCE': 'Personal Consumption Expenditures: measure of consumer spending.',
+                'Dollar Value Index': 'Relative value of the U.S. dollar against other major currencies.',
+                'Duties Recovered': 'Tariffs and duties collected by U.S. Customs.',
+                'Tariff Revenue': 'Total revenue from tariffs on imports.',
+                'Trade Balance': 'Difference between exports and imports of goods/services.',
+                'Trade Deficit': 'When imports exceed exports; negative value = deficit.',
+                'Passenger Arrivals': 'Number of international passenger arrivals.',
+                'International Air Travelers': 'Number of international air travelers entering the U.S.',
+                'Southern Border Encounters': 'Number of encounters at the southern U.S. border.',
+                'Sea Port Arrivals': 'Number of arrivals at U.S. sea ports.',
+                'Treasury Debt Level': 'Total outstanding U.S. government debt.',
+                'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
+                'Tax Revenue': 'Total tax revenue collected by the U.S. government.',
+                'Interest on Debt': 'Monthly interest paid on U.S. government debt.',
+                'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.',
+                'Case-Shiller National Home Price Index': 'Tracks changes in U.S. residential housing prices.',
+                'Copper Futures': 'Price of U.S. copper futures per pound. Used as a benchmark for industrial demand and economic activity.',
+                'FOMC July Rate Decision (BPS)': 'Market-implied probabilities for Federal Reserve rate decisions. BPS = basis points (1 BPS = 0.01%). Higher probabilities indicate market expectations for that outcome.',
+                'FOMC September Rate Decision (BPS)': 'Market-implied probabilities for Federal Reserve rate decisions. BPS = basis points (1 BPS = 0.01%). Higher probabilities indicate market expectations for that outcome.',
+                'Leading Economic Indicator': 'Composite index of leading economic indicators designed to predict future economic activity.',
+                'Jobs Added (thousand)': 'Net number of jobs added to the economy, in thousands.',
+                'Jobless Claims (thousand)': 'Number of people filing for unemployment benefits for the first time, in thousands.',
+                'New Home Sales (thousand)': 'Number of newly constructed homes sold, in thousands.',
+                'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
+                'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.'
             };
-        }
 
-        // Calculate Year-over-Year (YoY) change (comparing to same month last year)
-        // For now, we'll use a simplified approach since we don't have last year's data
-        function calculateYoYChange(indicator) {
-            // This would require historical data from previous years
-            // For now, return null to indicate no YoY data available
-            return null;
-        }
+            function createIndicatorCard(indicator) {
+                const months = ['march', 'april', 'may', 'june', 'july', 'august'];
+                const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+                let dataRows = '';
 
-        // Format change percentage
-        function formatChange(change) {
-            if (change === null) return '—';
-            const sign = change >= 0 ? '+' : '';
-            return `${sign}${change.toFixed(2)}%`;
-        }
+                // Calculate MoM and YoY changes
+                const momChange = calculateMoMChange(indicator);
+                const yoyChange = calculateYoYChange(indicator);
 
-        // Explanations for indicators by name
-        const indicatorExplanations = {
-            'Manufacturing PMI': 'Above 50 = expansion; below 50 = contraction in manufacturing sector.',
-            'Composite PMI (Flash)': 'Combined measure of manufacturing and services activity; above 50 = expansion, below 50 = contraction (S&P Global).',
-            'CPI': 'Consumer Price Index: measures average change in prices paid by consumers.',
-            'CPI (YoY)': 'Year-over-year change in Consumer Price Index.',
-            'PPI': 'Producer Price Index: measures average change in selling prices received by domestic producers.',
-            'Jobs Added': 'Net number of jobs added to the economy for the month.',
-            'Jobless Claims': 'Number of people filing for unemployment benefits for the first time.',
-            'Job Openings': 'Total number of open job positions at month end.',
-            'Private Employment': 'Total private sector employment (ADP payrolls).',
-            'Housing Starts': 'New residential construction projects begun in a month.',
-            'New Home Sales': 'Number of newly constructed homes sold.',
-            'Affordability Index': 'Higher = more affordable housing; lower = less affordable.',
-            'HMI': 'Homebuilder sentiment: above 50 = positive outlook, below 50 = negative.',
-            'Median Home Price': 'National median price for existing single-family homes (NAR data).',
-            '30-yr Mortgage Rate': 'Average interest rate for 30-year fixed-rate mortgages.',
-            '10-yr Treasury Yield': 'Yield on 10-year U.S. Treasury bonds.',
-            'Lagging Economic Index': 'Composite index of lagging economic indicators.',
-            'New Orders': 'Value of new purchase orders placed with manufacturers.',
-            'Construction Spending': 'Total spending on construction projects.',
-            'Monthly Retail Sales': 'Total sales at retail stores for the month.',
-            'Consumer Sentiment': 'Survey-based measure of consumer confidence (University of Michigan).',
-            'Consumer Confidence': 'Survey-based measure of consumer confidence (Conference Board).',
-            'Used Vehicle Value Index': 'Tracks prices of used vehicles (Manheim index).',
-            'PCE': 'Personal Consumption Expenditures: measure of consumer spending.',
-            'Dollar Value Index': 'Relative value of the U.S. dollar against other major currencies.',
-            'Duties Recovered': 'Tariffs and duties collected by U.S. Customs.',
-            'Tariff Revenue': 'Total revenue from tariffs on imports.',
-            'Trade Balance': 'Difference between exports and imports of goods/services.',
-            'Trade Deficit': 'When imports exceed exports; negative value = deficit.',
-            'Passenger Arrivals': 'Number of international passenger arrivals.',
-            'International Air Travelers': 'Number of international air travelers entering the U.S.',
-            'Southern Border Encounters': 'Number of encounters at the southern U.S. border.',
-            'Sea Port Arrivals': 'Number of arrivals at U.S. sea ports.',
-            'Treasury Debt Level': 'Total outstanding U.S. government debt.',
-            'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
-            'Tax Revenue': 'Total tax revenue collected by the U.S. government.',
-            'Interest on Debt': 'Monthly interest paid on U.S. government debt.',
-            'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.',
-            'Case-Shiller National Home Price Index': 'Tracks changes in U.S. residential housing prices.',
-            'Copper Futures': 'Price of U.S. copper futures per pound. Used as a benchmark for industrial demand and economic activity.',
-            'FOMC July Rate Decision (BPS)': 'Market-implied probabilities for Federal Reserve rate decisions. BPS = basis points (1 BPS = 0.01%). Higher probabilities indicate market expectations for that outcome.',
-            'Leading Economic Indicator': 'Composite index of leading economic indicators designed to predict future economic activity.',
-            'Jobs Added (thousand)': 'Net number of jobs added to the economy, in thousands.',
-            'Jobless Claims (thousand)': 'Number of people filing for unemployment benefits for the first time, in thousands.',
-            'New Home Sales (thousand)': 'Number of newly constructed homes sold, in thousands.',
-            'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
-            'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.'
-        };
-
-        function createIndicatorCard(indicator) {
-            const months = ['march', 'april', 'may', 'june', 'july', 'august'];
-            const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
-            let dataRows = '';
-            
-            // Calculate MoM and YoY changes
-            const momChange = calculateMoMChange(indicator);
-            const yoyChange = calculateYoYChange(indicator);
-            
-            // Special handling for Polymarket FOMC BPS indicator
-            if (indicator.name === 'FOMC July Rate Decision (BPS)' && indicator.bps_probabilities) {
-                dataRows += `<div class="data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
-                Object.entries(indicator.bps_probabilities).forEach(([bps, prob]) => {
-                    if (prob && prob !== '') {
-                        dataRows += `
+                // Special handling for Polymarket FOMC BPS indicator
+                if (indicator.name.includes('FOMC') && indicator.name.includes('Rate Decision (BPS)') && indicator.bps_probabilities) {
+                    dataRows += `<div class="data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
+                    Object.entries(indicator.bps_probabilities).forEach(([bps, prob]) => {
+                        if (prob && prob !== '') {
+                            dataRows += `
                             <div class="data-row">
                                 <span class="month-label">${bps}:</span>
                                 <span class="month-value">${prob}</span>
                             </div>
                         `;
-                    }
-                });
-            } else {
-                months.forEach((month, index) => {
-                    const value = indicator[month];
-                    if (value && value !== '') {
-                        dataRows += `
+                        }
+                    });
+                } else {
+                    months.forEach((month, index) => {
+                        const value = indicator[month];
+                        if (value && value !== '') {
+                            dataRows += `
                             <div class="data-row">
                                 <span class="month-label">${monthLabels[index]}:</span>
                                 <span class="month-value">${value}</span>
                             </div>
                         `;
-                    }
-                });
-            }
-            
-            const url = indicator.url || '#';
-            const explanation = indicatorExplanations[indicator.name] || '';
-            
-            // Create change indicators section
-            let changeIndicators = '';
-            
-            // MoM change
-            if (momChange !== null) {
-                const momFormatted = formatChange(momChange.percentChange);
-                let changeText = `MoM: ${momFormatted}`;
-                
-                // Add number change for ADP Private Employment
-                if (indicator.name === 'Private Employment' && indicator.agency === 'ADP') {
-                    const numberChange = momChange.numberChange;
-                    const changeSign = numberChange >= 0 ? '+' : '';
-                    const formattedNumber = numberChange.toLocaleString();
-                    changeText += ` (${changeSign}${formattedNumber})`;
+                        }
+                    });
                 }
-                
-                const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
-                changeIndicators += `
+
+                const url = indicator.url || '#';
+                const explanation = indicatorExplanations[indicator.name] || '';
+
+                // Create change indicators section
+                let changeIndicators = '';
+
+                // MoM change
+                if (momChange !== null) {
+                    const momFormatted = formatChange(momChange.percentChange);
+                    let changeText = `MoM: ${momFormatted}`;
+
+                    // Add number change for ADP Private Employment
+                    if (indicator.name === 'Private Employment' && indicator.agency === 'ADP') {
+                        const numberChange = momChange.numberChange;
+                        const changeSign = numberChange >= 0 ? '+' : '';
+                        const formattedNumber = numberChange.toLocaleString();
+                        changeText += ` (${changeSign}${formattedNumber})`;
+                    }
+
+                    const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
+                    changeIndicators += `
                     <div class="change-indicator ${getChangeClass(momFormatted)}" title="Month-over-Month (MoM) change calculated from available data.">
                         <span class="arrow-icon">${arrowIcon}</span> ${changeText}
                     </div>
                 `;
-            }
-            
-            // YoY change (placeholder for future implementation)
-            if (yoyChange !== null) {
-                const yoyFormatted = formatChange(yoyChange);
-                const yoyArrowIcon = yoyChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
-                changeIndicators += `
+                }
+
+                // YoY change (placeholder for future implementation)
+                if (yoyChange !== null) {
+                    const yoyFormatted = formatChange(yoyChange);
+                    const yoyArrowIcon = yoyChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
+                    changeIndicators += `
                     <div class="change-indicator ${getChangeClass(yoyFormatted)}" title="Year-over-Year (YoY) change.">
                         <span class="arrow-icon">${yoyArrowIcon}</span> YoY: ${yoyFormatted}
                     </div>
                 `;
-            }
-            
-            return `
+                }
+
+                return `
                 <div class="indicator">
                     <div class="indicator-name" title="${explanation.replace(/"/g, '&quot;')}">${indicator.name}</div>
                     <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
@@ -360,36 +366,36 @@
                     </div>
                 </div>
             `;
-        }
+            }
 
-        // Category icons mapping with Lucide icons
-        const categoryIcons = {
-            'Inflation Measures': '<i data-lucide="bar-chart-2"></i>',
-            'Employment Indicators': '<i data-lucide="users"></i>',
-            'Housing Market': '<i data-lucide="home"></i>',
-            'Interest Rates': '<i data-lucide="percent"></i>',
-            'Business Indicators': '<i data-lucide="briefcase"></i>',
-            'Consumer Indicators': '<i data-lucide="shopping-cart"></i>',
-            'Trade & Tariffs': '<i data-lucide="ship"></i>',
-            'Travel & Tourism': '<i data-lucide="plane"></i>',
-            'Government Finance': '<i data-lucide="landmark"></i>',
-            'Commodities': '<i data-lucide="package"></i>',
-            'Prediction Markets': '<i data-lucide="target"></i>'
-        };
+            // Category icons mapping with Lucide icons
+            const categoryIcons = {
+                'Inflation Measures': '<i data-lucide="bar-chart-2"></i>',
+                'Employment Indicators': '<i data-lucide="users"></i>',
+                'Housing Market': '<i data-lucide="home"></i>',
+                'Interest Rates': '<i data-lucide="percent"></i>',
+                'Business Indicators': '<i data-lucide="briefcase"></i>',
+                'Consumer Indicators': '<i data-lucide="shopping-cart"></i>',
+                'Trade & Tariffs': '<i data-lucide="ship"></i>',
+                'Travel & Tourism': '<i data-lucide="plane"></i>',
+                'Government Finance': '<i data-lucide="landmark"></i>',
+                'Commodities': '<i data-lucide="package"></i>',
+                'Prediction Markets': '<i data-lucide="target"></i>'
+            };
 
-        function renderDashboard(filterCategory = 'all') {
-            const categoriesContainer = document.getElementById('categories');
-            const categories = [...new Set(financialData.indices.map(item => item.category))];
-            
-            let html = '';
-            
-            categories.forEach(category => {
-                if (filterCategory !== 'all' && category !== filterCategory) return;
-                
-                const categoryIndicators = financialData.indices.filter(item => item.category === category);
-                const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-                
-                html += `
+            function renderDashboard(filterCategory = 'all') {
+                const categoriesContainer = document.getElementById('categories');
+                const categories = [...new Set(financialData.indices.map(item => item.category))];
+
+                let html = '';
+
+                categories.forEach(category => {
+                    if (filterCategory !== 'all' && category !== filterCategory) return;
+
+                    const categoryIndicators = financialData.indices.filter(item => item.category === category);
+                    const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
+
+                    html += `
                     <div class="category" data-category="${category}">
                         <h2 class="category-title">
                             <span class="category-icon">${icon}</span>
@@ -400,129 +406,130 @@
                         </div>
                     </div>
                 `;
-            });
-            
-            categoriesContainer.innerHTML = html;
-            
-            // Re-initialize Lucide icons after updating the content
+                });
+
+                categoriesContainer.innerHTML = html;
+
+                // Re-initialize Lucide icons after updating the content
+                lucide.createIcons();
+            }
+
+            function setupFilters() {
+                const filtersContainer = document.getElementById('filters');
+                const categories = [...new Set(financialData.indices.map(item => item.category))];
+
+                // Clear existing filter buttons
+                filtersContainer.innerHTML = '';
+
+                // Create the 'All Categories' button (icon only, with tooltip)
+                const allButton = document.createElement('button');
+                allButton.className = 'filter-btn active';
+                allButton.innerHTML = '<i data-lucide="list"></i>';
+                allButton.dataset.category = 'all';
+                allButton.setAttribute('aria-label', 'All Categories');
+                allButton.setAttribute('data-tooltip', 'All Categories');
+                filtersContainer.appendChild(allButton);
+
+                // Create category filter buttons (icon only, with tooltip)
+                categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.className = 'filter-btn';
+                    const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
+                    button.innerHTML = `<span class="filter-icon">${icon}</span>`;
+                    button.dataset.category = category;
+                    button.setAttribute('aria-label', category);
+                    button.setAttribute('data-tooltip', category);
+                    filtersContainer.appendChild(button);
+                });
+
+                // Tooltip logic for hover and mobile/touch
+                let tooltip = document.getElementById('filter-tooltip');
+                if (!tooltip) {
+                    tooltip = document.createElement('div');
+                    tooltip.id = 'filter-tooltip';
+                    tooltip.style.position = 'fixed';
+                    tooltip.style.pointerEvents = 'none';
+                    tooltip.style.zIndex = '9999';
+                    tooltip.style.background = 'rgba(44,95,90,0.97)';
+                    tooltip.style.color = '#fff';
+                    tooltip.style.padding = '6px 14px';
+                    tooltip.style.borderRadius = '6px';
+                    tooltip.style.fontSize = '0.95em';
+                    tooltip.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
+                    tooltip.style.transition = 'opacity 0.18s';
+                    tooltip.style.opacity = '0';
+                    tooltip.style.display = 'none';
+                    document.body.appendChild(tooltip);
+                }
+
+                function showTooltip(text, x, y) {
+                    tooltip.textContent = text;
+                    tooltip.style.left = x + 'px';
+                    tooltip.style.top = y + 'px';
+                    tooltip.style.opacity = '1';
+                    tooltip.style.display = 'block';
+                }
+                function hideTooltip() {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.display = 'none';
+                }
+
+                // Desktop hover
+                filtersContainer.addEventListener('mouseover', function (e) {
+                    const btn = e.target.closest('.filter-btn');
+                    if (btn && btn.dataset.tooltip) {
+                        const rect = btn.getBoundingClientRect();
+                        showTooltip(btn.dataset.tooltip, rect.left + rect.width / 2, rect.top - 10);
+                    }
+                });
+                filtersContainer.addEventListener('mouseout', function (e) {
+                    hideTooltip();
+                });
+
+                // Touch/mobile: show tooltip on touchstart/click
+                filtersContainer.addEventListener('touchstart', function (e) {
+                    const btn = e.target.closest('.filter-btn');
+                    if (btn && btn.dataset.tooltip) {
+                        const rect = btn.getBoundingClientRect();
+                        showTooltip(btn.dataset.tooltip, rect.left + rect.width / 2, rect.top - 10);
+                        setTimeout(hideTooltip, 1800); // Hide after 1.8s
+                    }
+                }, { passive: true });
+                filtersContainer.addEventListener('click', function (e) {
+                    hideTooltip();
+                });
+
+                // Add click event listener for filter buttons
+                filtersContainer.addEventListener('click', (e) => {
+                    const button = e.target.closest('.filter-btn');
+                    if (button) {
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        renderDashboard(button.dataset.category);
+                    }
+                });
+
+                // Initialize Lucide icons after creating filter buttons
+                lucide.createIcons();
+            }
+
+            function initializeDashboard() {
+                document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+                setupFilters();
+                renderDashboard();
+            }
+
+            // Initialize dashboard
+            document.addEventListener('DOMContentLoaded', fetchFinancialData);
+        </script>
+        <script src="/js/portfolio.js" defer></script>
+        <script src="/js/nav.js?v=20250723" defer></script>
+        <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
+        <script src="js/financials.js"></script>
+        <script>
+            // Initialize Lucide icons
             lucide.createIcons();
-        }
-
-        function setupFilters() {
-            const filtersContainer = document.getElementById('filters');
-            const categories = [...new Set(financialData.indices.map(item => item.category))];
-            
-            // Clear existing filter buttons
-            filtersContainer.innerHTML = '';
-            
-            // Create the 'All Categories' button (icon only, with tooltip)
-            const allButton = document.createElement('button');
-            allButton.className = 'filter-btn active';
-            allButton.innerHTML = '<i data-lucide="list"></i>';
-            allButton.dataset.category = 'all';
-            allButton.setAttribute('aria-label', 'All Categories');
-            allButton.setAttribute('data-tooltip', 'All Categories');
-            filtersContainer.appendChild(allButton);
-
-            // Create category filter buttons (icon only, with tooltip)
-            categories.forEach(category => {
-                const button = document.createElement('button');
-                button.className = 'filter-btn';
-                const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-                button.innerHTML = `<span class="filter-icon">${icon}</span>`;
-                button.dataset.category = category;
-                button.setAttribute('aria-label', category);
-                button.setAttribute('data-tooltip', category);
-                filtersContainer.appendChild(button);
-            });
-
-            // Tooltip logic for hover and mobile/touch
-            let tooltip = document.getElementById('filter-tooltip');
-            if (!tooltip) {
-                tooltip = document.createElement('div');
-                tooltip.id = 'filter-tooltip';
-                tooltip.style.position = 'fixed';
-                tooltip.style.pointerEvents = 'none';
-                tooltip.style.zIndex = '9999';
-                tooltip.style.background = 'rgba(44,95,90,0.97)';
-                tooltip.style.color = '#fff';
-                tooltip.style.padding = '6px 14px';
-                tooltip.style.borderRadius = '6px';
-                tooltip.style.fontSize = '0.95em';
-                tooltip.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
-                tooltip.style.transition = 'opacity 0.18s';
-                tooltip.style.opacity = '0';
-                tooltip.style.display = 'none';
-                document.body.appendChild(tooltip);
-            }
-
-            function showTooltip(text, x, y) {
-                tooltip.textContent = text;
-                tooltip.style.left = x + 'px';
-                tooltip.style.top = y + 'px';
-                tooltip.style.opacity = '1';
-                tooltip.style.display = 'block';
-            }
-            function hideTooltip() {
-                tooltip.style.opacity = '0';
-                tooltip.style.display = 'none';
-            }
-
-            // Desktop hover
-            filtersContainer.addEventListener('mouseover', function(e) {
-                const btn = e.target.closest('.filter-btn');
-                if (btn && btn.dataset.tooltip) {
-                    const rect = btn.getBoundingClientRect();
-                    showTooltip(btn.dataset.tooltip, rect.left + rect.width/2, rect.top - 10);
-                }
-            });
-            filtersContainer.addEventListener('mouseout', function(e) {
-                hideTooltip();
-            });
-
-            // Touch/mobile: show tooltip on touchstart/click
-            filtersContainer.addEventListener('touchstart', function(e) {
-                const btn = e.target.closest('.filter-btn');
-                if (btn && btn.dataset.tooltip) {
-                    const rect = btn.getBoundingClientRect();
-                    showTooltip(btn.dataset.tooltip, rect.left + rect.width/2, rect.top - 10);
-                    setTimeout(hideTooltip, 1800); // Hide after 1.8s
-                }
-            }, {passive: true});
-            filtersContainer.addEventListener('click', function(e) {
-                hideTooltip();
-            });
-
-            // Add click event listener for filter buttons
-            filtersContainer.addEventListener('click', (e) => {
-                const button = e.target.closest('.filter-btn');
-                if (button) {
-                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    renderDashboard(button.dataset.category);
-                }
-            });
-            
-            // Initialize Lucide icons after creating filter buttons
-            lucide.createIcons();
-        }
-
-        function initializeDashboard() {
-            document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
-            setupFilters();
-            renderDashboard();
-        }
-
-        // Initialize dashboard
-        document.addEventListener('DOMContentLoaded', fetchFinancialData);
-    </script>
-    <script src="/js/portfolio.js" defer></script>
-    <script src="/js/nav.js?v=20250723" defer></script>
-    <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
-    <script src="js/financials.js"></script>
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
+        </script>
 </body>
+
 </html>

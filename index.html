@@ -25,8 +25,8 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <link rel="preload" href="css/body.css" as="style">
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="preload" href="css/body.min.css" as="style">
+    <link rel="stylesheet" href="css/body.min.css">
     
     <title>Howdy, Stranger</title>
    
@@ -68,7 +68,17 @@
       }
     }
   </style>
-  <script src="/js/nav.js?v=20250723" defer></script>
-  <script src="/js/socials.js?v=20250723" defer></script>
+  <script src="/js/nav.min.js?v=20250723" defer></script>
+  <script src="/js/socials.min.js?v=20250723" defer></script>
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => console.log('SW registered'))
+          .catch(error => console.log('SW registration failed'));
+      });
+    }
+  </script>
 </body>
 </html>

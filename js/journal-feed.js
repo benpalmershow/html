@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/json/journal.json')
+            fetch('/json/journal.min.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load journal entries: ${response.status} ${response.statusText}`);

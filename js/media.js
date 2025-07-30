@@ -3,11 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mediaContainer = document.getElementById('media-cards-container');
     const filterType = document.getElementById('filter-type');
     const sortBy = document.getElementById('sort-by');
-    const searchInput = document.getElementById('search-input');
-    const clearSearchBtn = document.getElementById('clear-search');
 
     let mediaItems = [];
-    let searchTerm = '';
 
     // Get all unique media types from the items
     function getUniqueMediaTypes(items) {
@@ -570,32 +567,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
 
-    // Enhanced search function - searches across multiple fields
-    function searchMedia(items, searchTerm) {
-        if (!searchTerm.trim()) return items;
-        
-        const term = searchTerm.toLowerCase().trim();
-        return items.filter(item => {
-            return (item.title && item.title.toLowerCase().includes(term)) ||
-                   (item.author && item.author.toLowerCase().includes(term)) ||
-                   (item.description && item.description.toLowerCase().includes(term)) ||
-                   (item.genre && item.genre.toLowerCase().includes(term)) ||
-                   (item.category && item.category.toLowerCase().includes(term)) ||
-                   (item.mediaType && item.mediaType.toLowerCase().includes(term)) ||
-                   (item.tag && item.tag.toLowerCase().includes(term));
-        });
-    }
 
     // Filter and sort functions
     function filterAndSortMedia() {
         const typeFilter = filterType.value;
         const sortValue = sortBy.value;
-        searchTerm = searchInput.value;
 
         let filtered = [...mediaItems];
-
-        // Apply search filter
-        filtered = searchMedia(filtered, searchTerm);
 
         // Apply type filter
         if (typeFilter !== 'all') {
@@ -635,88 +613,25 @@ document.addEventListener('DOMContentLoaded', function () {
             existingCount.remove();
         }
 
-        if (filteredCount !== totalCount || searchTerm.trim()) {
+        if (filteredCount !== totalCount) {
             const countDisplay = document.createElement('div');
             countDisplay.className = 'results-count';
-            
             let countText = `Showing ${filteredCount} of ${totalCount} items`;
-            
-            // Add search context if there's an active search
-            if (searchTerm.trim()) {
-                countText += ` matching "${searchTerm.trim()}"`;
-            }
-            
             // Add filter context if there's an active filter
             const activeFilter = filterType.value;
             if (activeFilter !== 'all') {
                 const filterText = activeFilter.charAt(0).toUpperCase() + activeFilter.slice(1) + 's';
                 countText += ` in ${filterText}`;
             }
-            
             countDisplay.textContent = countText;
-            
             const filtersContainer = document.querySelector('.media-filters');
             filtersContainer.insertAdjacentElement('afterend', countDisplay);
         }
     }
 
-    // Debounce function to prevent rapid-fire re-renders
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // Create debounced version of filter and sort function
-    const debouncedFilterAndSort = debounce(filterAndSortMedia, 300);
-
-    // Clear search functionality
-    function clearSearch() {
-        searchInput.value = '';
-        searchInput.focus();
-        filterAndSortMedia();
-        updateClearButtonVisibility();
-    }
-
-    // Update clear button visibility
-    function updateClearButtonVisibility() {
-        if (searchInput.value.trim()) {
-            clearSearchBtn.classList.add('show');
-        } else {
-            clearSearchBtn.classList.remove('show');
-        }
-    }
-
-    // Event listeners with debouncing
+    // Event listeners
     filterType.addEventListener('change', filterAndSortMedia);
     sortBy.addEventListener('change', filterAndSortMedia);
-    searchInput.addEventListener('input', function() {
-        debouncedFilterAndSort();
-        updateClearButtonVisibility();
-    });
-    clearSearchBtn.addEventListener('click', clearSearch);
-
-    // Keyboard navigation support
-    document.addEventListener('keydown', function(e) {
-        // Focus search on Ctrl/Cmd + F
-        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-            e.preventDefault();
-            searchInput.focus();
-        }
-        
-        // Clear search on Escape
-        if (e.key === 'Escape' && document.activeElement === searchInput) {
-            searchInput.value = '';
-            searchInput.blur();
-            filterAndSortMedia();
-        }
-    });
 
     // Initialize
     fetchMediaData();

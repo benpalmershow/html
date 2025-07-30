@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-29T14:00:00Z",
+  "lastUpdated": "2025-07-30T14:00:00Z",
   "indices": [
     {
       "category": "Business Indicators",
@@ -24,7 +24,8 @@
       "april": "320.8",
       "may": "321.465",
       "june": "322.561",
-      "july": "TBD",
+      "july": "323.2",
+      "august": "TBD",
       "change": ""
     },
     {
@@ -339,7 +340,6 @@
       "july": "TBD",
       "change": "-2.14"
     },
-  
     {
       "category": "Trade & Tariffs",
       "agency": "Census",
@@ -353,31 +353,20 @@
       "july": "TBD 7/28",
       "change": "+2.38"
     },
+
     {
       "category": "Trade & Tariffs",
       "agency": "Census",
-      "name": "Goods and Services Deficit",
+      "name": "Trade Deficit (Advance Report)",
       "releaseDay": 5,
-      "url": "https://www.census.gov/foreign-trade/statistics/historical/index.html",
-      "march": "-$68.2B",
-      "april": "-$67.8B",
-      "may": "-$67.5B",
-      "june": "TBD",
+      "url": "https://www.census.gov/econ/indicators/advance_report.pdf",
+      "march": "",
+      "april": "",
+      "may": "$96.4B",
+      "june": "$86B",
       "july": "TBD",
-      "change": "-0.44"
-    },
-    {
-      "category": "Trade & Tariffs",
-      "agency": "BEA",
-      "name": "Trade Deficit",
-      "releaseDay": 0,
-      "url": "https://www.bea.gov/data/intl-trade-investment/international-trade-goods-and-services",
-      "march": "-138.3",
-      "april": "-61.6", 
-      "may": "-71.5",
-      "june": "TBD 8/6",
-      "july": "TBD 9/6",
-      "change": "+18.7"
+      "august": "TBD",
+      "change": ""
     },
     {
       "category": "Travel & Tourism",
@@ -468,25 +457,39 @@
       "may": "5.08",
       "june": "5.54",
       "july": "5.55",
-      "august":"4.51",
+      "august": "4.51",
+      "change": ""
+    },
+    {
+      "category": "Commodities",
+      "agency": "Google Finance",
+      "name": "Lumber Futures",
+      "releaseDay": 0,
+      "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
+      "march": "683",
+      "april": "669",
+      "may": "584",
+      "june": "592",
+      "july": "667",
+      "august": "690.50",
       "change": ""
     },
     {
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "FOMC July Rate Decision (BPS)",
+      "name": "FOMC September Rate Decision (BPS)",
       "releaseDay": 29,
-      "url": "https://polymarket.com/event/fed-decision-in-july?tid=1752095808940",
+      "url": "https://polymarket.com/event/fed-decision-in-september?tid=1753906169966",
       "march": "",
       "april": "",
       "may": "",
       "june": "",
       "july": "",
-      "next_meeting": "July 29, 2025",
+      "next_meeting": "September 17, 2025",
       "bps_probabilities": {
-        "25BP Decrease": "",
-        "50+BP Decrease": "",
-        "No Change": "100%"
+        "25BP Decrease": "44%",
+        "50+BP Decrease": "1%",
+        "No Change": "55%"
       },
       "change": ""
     },

@@ -174,7 +174,7 @@
 
         // Calculate Month-over-Month (MoM) change
         function calculateMoMChange(indicator) {
-            const months = ['march', 'april', 'may', 'june', 'july'];
+            const months = ['march', 'april', 'may', 'june', 'july', 'august'];
             let currentValue = null;
             let previousValue = null;
             let currentRawValue = '';
@@ -277,8 +277,8 @@
         };
 
         function createIndicatorCard(indicator) {
-            const months = ['march', 'april', 'may', 'june', 'july'];
-            const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
+            const months = ['march', 'april', 'may', 'june', 'july', 'august'];
+            const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
             let dataRows = '';
             
             // Calculate MoM and YoY changes

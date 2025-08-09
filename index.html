@@ -42,6 +42,28 @@
       </section>
     </main>
    <style>
+    @keyframes pulse {
+      0% { 
+        transform: scale(0.99);
+        opacity: 0.95;
+      }
+      33% {
+        transform: scale(2.01);
+        opacity: 1;
+      }
+      66% {
+        transform: scale(0.995);
+      }
+      100% { 
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .hero-logo {
+      animation: pulse 5s ease-in-out 1;
+    }
+    
     .hero {
       min-height: calc(100vh - var(--nav-offset));
       padding: clamp(1rem, 4vw, 2rem) 1rem;

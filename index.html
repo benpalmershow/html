@@ -27,47 +27,84 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preload" href="css/body.min.css" as="style">
     <link rel="stylesheet" href="css/body.min.css">
+    <link rel="stylesheet" href="css/nav-float.css">
     
     <title>Howdy, Stranger</title>
    
   </head>
   <body>
-    <!-- Logo Header -->
-    <header class="site-header" role="banner">
-      <div class="logo-container">
-        <a href="index.html" aria-label="Ben Palmer Show Home">
-          <img src="images/logo.png" alt="Howdy Stranger" class="logo" loading="lazy">
-        </a>
-      </div>
-    </header>
     <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
     <main id="main-content" tabindex="-1">
-      <div class="container">
-        <div class="content">
-          <h2 class="animated-title" style="margin-bottom: 0.4em;">Howdy, Stranger</h2>
-          <p style="margin-top: 0; margin-bottom: 1em; font-size: 1em;">
-            This is a human curated hub with independent commentary, interesting news, and insightful economic analysis to be healthy, wealthy, and wise.
-          </p>
-        </div>
-      </div>
+      <section class="hero" aria-label="Homepage hero">
+        <img src="images/logo.png" alt="Howdy Stranger" class="hero-logo" loading="eager" />
+        <p class="hero-subtitle">Human‑curated commentary, news, and economic insights to be healthy, wealthy, and wise.</p>
+      
+      </section>
     </main>
    <style>
-   
-    .animated-title {
-      animation: fadeInSlideDown 5.5s cubic-bezier(0.23, 1, 0.32, 1);
-      opacity: 1;
+    .hero {
+      min-height: calc(100vh - var(--nav-offset));
+      padding: clamp(1rem, 4vw, 2rem) 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: clamp(0.5rem, 2vw, 1rem);
     }
-    @keyframes fadeInSlideDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .hero-logo {
+      width: clamp(180px, 32vw, 360px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: drop-shadow(0 6px 16px var(--shadow-color));
+      user-select: none;
     }
-  </style>
+    .hero-title {
+      margin: 0.2em 0 0.1em;
+      color: var(--logo-teal);
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      text-shadow: 1px 1px 2px var(--shadow-color);
+    }
+    .hero-subtitle {
+      margin: 0 0 0.5rem;
+      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+      color: var(--text-secondary);
+      max-width: 60ch;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: clamp(0.5rem, 2vw, 1rem);
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.25rem;
+    }
+    .hero-ctas .cta {
+      text-decoration: none;
+      color: var(--logo-orange);
+      font-weight: 600;
+      background: rgba(212, 130, 42, 0.08);
+      border: 1px solid var(--logo-orange);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-ctas .cta:hover,
+    .hero-ctas .cta:focus {
+      color: #fff;
+      background: var(--logo-orange);
+      outline: none;
+      box-shadow: 0 4px 12px rgba(212,130,42,0.3);
+      transform: translateY(-1px);
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero-subtitle { color: var(--text-muted); }
+    }
+   </style>
   <script src="/js/nav.min.js?v=20250723" defer></script>
   <script src="/js/socials.min.js?v=20250723" defer></script>
   <script>

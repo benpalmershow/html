@@ -73,6 +73,17 @@
   <script src="/js/nav.min.js?v=20250723" defer></script>
   <script src="js/media.min.js?v=20250723" defer></script>
 
+  <script>
+    // Ensure default sort is newest-first after scripts load
+    window.addEventListener('DOMContentLoaded', () => {
+      const sortSelect = document.getElementById('sort-by');
+      if (sortSelect) {
+        sortSelect.value = 'date-desc';
+        sortSelect.dispatchEvent(new Event('change'));
+      }
+    });
+  </script>
+
 </body>
 
 </html>

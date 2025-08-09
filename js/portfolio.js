@@ -107,59 +107,14 @@ class EnhancedPortfolio {
 
     updateSummaryMetrics() {
         if (this.portfolioData.length === 0) return;
-
-        const headers = Object.keys(this.portfolioData[0]);
         let totalValue = 0;
-        let bestPerformer = { symbol: '-', change: 0 };
-        let dailyPnL = 0;
-
-        // Calculate metrics from portfolio data
         this.portfolioData.forEach(row => {
-            const symbol = row[headers[0]];
-            
-            // Find value columns
-            Object.entries(row).forEach(([key, value]) => {
-                if (typeof value === 'string' && value.includes('$')) {
-                    const numValue = parseFloat(value.replace(/[$,]/g, ''));
-                    if (!isNaN(numValue) && numValue > 0) {
-                        totalValue += numValue;
-                    }
-                }
-                
-                // Look for percentage changes
-                if (typeof value === 'string' && value.includes('%')) {
-                    const percentValue = parseFloat(value.replace(/[%+]/g, ''));
-                    if (!isNaN(percentValue) && Math.abs(percentValue) > Math.abs(bestPerformer.change)) {
-                        bestPerformer = { symbol, change: percentValue };
-                    }
-                }
-            });
+            const price = parseFloat((row['Current Price'] || '').replace(/[$,]/g, ''));
+            if (!isNaN(price)) {
+                totalValue += price;
+            }
         });
-
-        // Simulate daily P&L (in real app, this would come from actual data)
-        dailyPnL = totalValue * (Math.random() - 0.5) * 0.02; // ±1% random
-        const dailyPercent = totalValue > 0 ? (dailyPnL / totalValue) * 100 : 0;
-
-        // Update UI
         document.getElementById('total-value').textContent = this.formatCurrency(totalValue);
-        document.getElementById('position-count').textContent = this.portfolioData.length;
-        document.getElementById('best-performer').textContent = bestPerformer.symbol;
-        document.getElementById('best-performer-change').textContent = `${bestPerformer.change >= 0 ? '+' : ''}${bestPerformer.change.toFixed(2)}%`;
-        
-        document.getElementById('daily-pnl').textContent = this.formatCurrency(dailyPnL);
-        document.getElementById('daily-pnl-percent').textContent = `${dailyPercent >= 0 ? '+' : ''}${dailyPercent.toFixed(2)}%`;
-
-        // Apply color classes
-        const dailyPnLEl = document.getElementById('daily-pnl');
-        const dailyPercentEl = document.getElementById('daily-pnl-percent');
-        const performerChangeEl = document.getElementById('best-performer-change');
-        
-        const pnlClass = dailyPnL >= 0 ? 'positive' : 'negative';
-        const performerClass = bestPerformer.change >= 0 ? 'positive' : 'negative';
-        
-        dailyPnLEl.className = `metric-value ${pnlClass}`;
-        dailyPercentEl.className = `metric-change ${pnlClass}`;
-        performerChangeEl.className = `metric-change ${performerClass}`;
     }
 
     renderPortfolio() {
@@ -172,72 +127,28 @@ class EnhancedPortfolio {
 
     renderGridView() {
         const container = document.getElementById('portfolio-grid');
-        
         if (this.filteredData.length === 0) {
             container.innerHTML = '<div class="loading-state">No positions found matching your search.</div>';
             return;
         }
-
         const headers = Object.keys(this.filteredData[0]);
-        
-        container.innerHTML = this.filteredData.map(position => {
-            const symbol = position[headers[0]] || 'N/A';
-            const isValidSymbol = symbol.length <= 5 && symbol.match(/^[A-Z]+$/);
-            
-            // Generate mock data for enhanced display
-            const mockPrice = (Math.random() * 200 + 50).toFixed(2);
-            const mockChange = ((Math.random() - 0.5) * 10).toFixed(2);
-            const mockShares = Math.floor(Math.random() * 100 + 10);
-            const mockValue = (mockPrice * mockShares).toFixed(2);
-            
+        container.innerHTML = this.filteredData.map(row => {
             return `
                 <div class="position-card fade-in">
                     <div class="position-header">
-                        ${isValidSymbol ? 
-                            `<a href="https://finance.yahoo.com/quote/${symbol}" target="_blank" class="position-symbol">${symbol}</a>` :
-                            `<span class="position-symbol">${symbol}</span>`
-                        }
-                        <span class="position-type">Stock</span>
+                        <span class="position-symbol">${row[headers[0]] || ''}</span>
                     </div>
-                    
                     <div class="position-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Price</span>
-                            <span class="detail-value">$${mockPrice}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Shares</span>
-                            <span class="detail-value">${mockShares}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Market Value</span>
-                            <span class="detail-value">$${mockValue}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Weight</span>
-                            <span class="detail-value">${(Math.random() * 15 + 1).toFixed(1)}%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="position-performance">
-                        <div class="performance-metric">
-                            <div class="performance-label">Day Change</div>
-                            <div class="performance-value ${mockChange >= 0 ? 'positive' : 'negative'}">
-                                ${mockChange >= 0 ? '+' : ''}${mockChange}%
+                        ${headers.slice(1).map(h => `
+                            <div class="detail-item">
+                                <span class="detail-label">${h}</span>
+                                <span class="detail-value">${row[h]}</span>
                             </div>
-                        </div>
-                        <div class="performance-metric">
-                            <div class="performance-label">Total Return</div>
-                            <div class="performance-value ${Math.random() > 0.5 ? 'positive' : 'negative'}">
-                                ${Math.random() > 0.5 ? '+' : ''}${((Math.random() - 0.5) * 50).toFixed(1)}%
-                            </div>
-                        </div>
+                        `).join('')}
                     </div>
                 </div>
             `;
         }).join('');
-
-        // Re-initialize Lucide icons
         lucide.createIcons();
     }
 

@@ -30,12 +30,7 @@
     <div id="lastUpdated" class="last-updated" style="text-align:center;"></div>
     <div class="container">
         <div class="collapsible-container">
-            <!-- Interactive Dashboard Section -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapse('interactive-dashboard')">
-                    <h2>Macro</h2>
-                    <span class="collapse-toggle" id="interactive-dashboard-toggle">▼</span>
-                </div>
+          
                 <div class="collapsible-content" id="interactive-dashboard-content">
                     <div class="filters" id="filters">
                         <button class="filter-btn active" data-category="all">All Categories</button>
@@ -45,35 +40,7 @@
                 </div>
             </div>
 
-            <!-- GPT Portfolio Section -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapse('gpt-portfolio')">
-                    <h2>Micro</h2>
-                    <span class="collapse-toggle" id="gpt-portfolio-toggle">▼</span>
-                </div>
-                <div class="collapsible-content" id="gpt-portfolio-content">
-                    <div class="table-wrapper">
-                        <div id="loading-message" class="loading-state">Loading portfolio data...</div>
-                        <div id="error-message" class="error-state" style="display: none;"></div>
-                        <div id="portfolio-table-container" class="table-container"></div>
-                    </div>
-                    <div class="data-notes">
-
-                        <h3>Portfolio Notes & Information</h3>
-                        <p style="font-size: 0.9em; color: var(--text-secondary, #666); margin-top: 1.5em;">
-                            This portfolio was created by Autopilot with a $1,000 allocation without the Buy/Sell
-                            automation for $30/quarter. Holdings are linked to their respective Yahoo Finance pages for
-                            current market data and analysis.
-                        </p>
-                        <div id="last-updated-portfolio"
-                            style="font-size: 0.8em; color: var(--text-secondary, #888); margin-top: 1em; text-align: center;">
-                            Portfolio data refreshed automatically
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+     
 
         <script>
             let financialData = null;

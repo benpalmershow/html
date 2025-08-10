@@ -1,0 +1,16 @@
+{
+  "name": "vanilla-static-site",
+  "version": "1.0.0",
+  "description": "Vanilla HTML/CSS/JS site with automated cache-busting build",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "python -m http.server 3000",
+    "clean": "rm -rf dist",
+    "rebuild": "npm run clean && npm run build",
+    "deploy": "npm run build && vercel --prod"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <link rel="stylesheet" href="css/body.min.css?v=37e6d715">
+    <link rel="stylesheet" href="css/portfolio.css?v=891198ac">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
+    <main id="main-content" tabindex="-1">
+      <div class="container">
+        <div class="content">
+          <!-- Enhanced Portfolio Section -->
+        <div class="portfolio-section">
+            <!-- Section Header with Summary -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-icon">
+                        <i data-lucide="pie-chart"></i>
+                    </span>
+                    Portfolio
+                </h2>
+                
+                <div class="portfolio-summary" id="portfolio-summary">
+                    <div class="summary-metric">
+                        <div class="metric-label">Total Value</div>
+                        <div class="metric-value" id="total-value">$0.00</div>
+                        <div class="metric-change neutral" id="total-change">+$0.00 (0.00%)</div>
+                    </div>
+                    <div class="summary-metric">
+                        <div class="metric-label">Today's P&L</div>
+                        <div class="metric-value neutral" id="daily-pnl">$0.00</div>
+                        <div class="metric-change neutral" id="daily-pnl-percent">0.00%</div>
+                    </div>
+                    <div class="summary-metric">
+                        <div class="metric-label">Positions</div>
+                        <div class="metric-value" id="position-count">0</div>
+                        <div class="metric-change neutral">Holdings</div>
+                    </div>
+                    <div class="summary-metric">
+                        <div class="metric-label">Best Performer</div>
+                        <div class="metric-value" id="best-performer">-</div>
+                        <div class="metric-change neutral" id="best-performer-change">0.00%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Controls -->
+            <div class="portfolio-controls">
+                <div class="search-filter-group">
+                    <input type="text" class="search-box" placeholder="Search positions, symbols, or sectors..." id="portfolio-search">
+                </div>
+                
+                <div class="view-toggle" id="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i data-lucide="grid-3x3"></i>
+                        Cards
+                    </button>
+                    <button class="view-btn" data-view="table">
+                        <i data-lucide="table"></i>
+                        Table
+                    </button>
+                </div>
+
+                <button class="refresh-btn" onclick="refreshPortfolioData()">
+                    <i data-lucide="refresh-cw"></i>
+                    Refresh
+                </button>
+            </div>
+
+            <!-- Loading/Error States -->
+            <div id="loading-message" class="loading-state">
+                <i data-lucide="loader-2" style="animation: spin 1s linear infinite; margin-right: 10px;"></i>
+                Loading portfolio data...
+            </div>
+            <div id="error-message" class="error-state hidden"></div>
+
+            <!-- Portfolio Grid View -->
+            <div class="portfolio-grid" id="portfolio-grid"></div>
+
+            <!-- Portfolio Table View -->
+            <div class="portfolio-table hidden" id="portfolio-table">
+                <div class="table-container">
+                    <table class="enhanced-table" id="enhanced-table">
+                        <thead id="table-header"></thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Data Notes -->
+            <div class="data-notes">
+                <div id="last-updated-portfolio" 
+                    Portfolio data refreshed automatically
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    <script src="js/nav.min.js?v=5bfc608a" defer></script>
+    <script src="js/portfolio.js?v=406206a8" defer></script>
+</body>
+</html>

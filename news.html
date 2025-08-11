@@ -10,16 +10,53 @@
   <link rel="stylesheet" href="css/body.min.css">
   <link rel="stylesheet" href="css/news.min.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
-</head>
+<style>
+  .category-badge {
+    display: inline-block;
+    font-size: 0.85em;
+    font-weight: bold;
+    padding: 0.2em 0.7em;
+    border-radius: 1em;
+    margin-right: 0.7em;
+    margin-bottom: 0.2em;
+    vertical-align: middle;
+    letter-spacing: 0.03em;
+  }
+  .category-badge.ipo { background: #1e88e5; color: #fff; }
+  .category-badge.earnings { background: #43a047; color: #fff; }
+  .category-badge.policy { background: #fbc02d; color: #222; }
+  .category-badge.legal { background: #8e24aa; color: #fff; }
 
+
+  .filter-btn {
+    display: inline-block;
+    margin: 0 0.3em 0.5em 0.3em;
+    padding: 0.4em 1.2em;
+    border: none;
+    border-radius: 1.2em;
+    background: #e0e0e0;
+    color: #222;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .filter-btn.active, .filter-btn.ipo.active { background: #1e88e5; color: #fff; }
+  .filter-btn.earnings.active { background: #43a047; color: #fff; }
+  .filter-btn.policy.active { background: #fbc02d; color: #222; }
+  .filter-btn.legal.active { background: #8e24aa; color: #fff; }
+</style>
+</head>
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <h1 class="page-title">News</h1>
+
   <!-- Bullish IPO Card -->
 <div class="card-header" onclick="toggleCard(this)">
   <time datetime="2025-08-04">August 4, 2025</time>
   <i data-lucide="dollar-sign" class="card-icon"></i>
   <h1><a href="https://www.reuters.com/business/crypto-firm-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/" target="_blank" rel="noopener">Bullish Launches IPO Filing</a></h1>
+  <h1><a href="https://www.reuters.com/business/crypto-firm-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/" target="_blank" rel="noopener">Bullish Launches IPO Filing</a> <span class="category-badge ipo">IPO</span></h1>
   <i data-lucide="chevron-down" class="expand-icon"></i>
 </div>
 <div class="card-content">
@@ -105,6 +142,7 @@
     <time datetime="2025-08-01">August 1, 2025</time>
     <i data-lucide="message-circle" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/RDDT" target="_blank" rel="noopener">Reddit Q2 2025 Earnings: Strong Growth & Profitability</a></h1>
+  <h1><a href="https://finance.yahoo.com/quote/RDDT" target="_blank" rel="noopener">Reddit Q2 2025 Earnings: Strong Growth & Profitability</a> <span class="category-badge earnings">Earnings</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -240,6 +278,7 @@
     <time datetime="2025-07-30">July 30, 2025</time>
     <i data-lucide="trending-up" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/PTON" target="_blank" rel="noopener">Peloton Stock Rallies on UBS Upgrade</a></h1>
+  <h1><a href="https://finance.yahoo.com/quote/PTON" target="_blank" rel="noopener">Peloton Stock Rallies on UBS Upgrade</a> <span class="category-badge earnings">Earnings</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -284,6 +323,7 @@
     <time datetime="2025-07-22">July 22, 2025</time>
     <i data-lucide="trending-up" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener">IPO - FIG</a></h1>
+  <h1><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener">IPO - FIG</a> <span class="category-badge ipo">IPO</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -458,6 +498,7 @@
     <time datetime="2025-07-07">July 7, 2025</time>
     <i data-lucide="store" class="card-icon"></i>
     <h1>Why Mamdani public grocery stores don't work</h1>
+  <h1>Why Mamdani public grocery stores don't work <span class="category-badge policy">Policy</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -523,6 +564,7 @@
     <time datetime="2025-07-02">July 2, 2025</time>
     <i data-lucide="newspaper" class="card-icon"></i>
     <h1>Latest on Big Beautiful Bill</h1>
+  <h1>Latest on Big Beautiful Bill <span class="category-badge policy">Policy</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -591,6 +633,7 @@
     <time datetime="2025-07-02">July 2, 2025</time>
     <i data-lucide="newspaper" class="card-icon"></i>
     <h1>CA CEQA Reforms</h1>
+  <h1>CA CEQA Reforms <span class="category-badge policy">Policy</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -654,6 +697,7 @@
     <time datetime="2025-06-25">June 25, 2025</time>
     <i data-lucide="dollar-sign" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a></h1>
+  <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a> <span class="category-badge ipo">IPO</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -735,6 +779,7 @@
     <time datetime="2025-06-30">June 30, 2025</time>
     <i data-lucide="briefcase" class="card-icon"></i>
     <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a></h1>
+  <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a> <span class="category-badge ipo">IPO</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -790,6 +835,7 @@
     <time datetime="2025-06-01">June 1, 2025</time>
     <i data-lucide="gavel" class="card-icon"></i>
     <h1>Supreme Court Case: Trump v. CASA, Inc.</h1>
+  <h1>Supreme Court Case: Trump v. CASA, Inc. <span class="category-badge legal">Legal</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -845,6 +891,39 @@
   </div>
   </div>
   <script>
+    // Category filter logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cardHeaders = document.querySelectorAll('.card-header');
+      function getCategoryFromHeader(header) {
+        const h1 = header.querySelector('h1');
+        if (!h1) return '';
+        const badge = h1.querySelector('.category-badge');
+        return badge ? badge.classList[1] : '';
+      }
+      function filterCards(category) {
+        cardHeaders.forEach(header => {
+          const card = header.nextElementSibling;
+          const cat = getCategoryFromHeader(header);
+          if (category === 'all' || cat === category) {
+            header.style.display = '';
+            if (card) card.style.display = '';
+          } else {
+            header.style.display = 'none';
+            if (card) card.style.display = 'none';
+          }
+        });
+      }
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          filterCards(this.dataset.category);
+        });
+      });
+      // Set default to All
+      filterBtns[0].classList.add('active');
+    });
     function toggleCard(header) {
       const content = header.nextElementSibling;
       if (content.classList.contains('expanded')) {

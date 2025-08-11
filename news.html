@@ -14,6 +14,14 @@
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <h1 class="page-title">News</h1>
+  
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn ipo" data-category="ipo">IPO</button>
+    <button class="filter-btn earnings" data-category="earnings">Earnings</button>
+    <button class="filter-btn policy" data-category="policy">Policy</button>
+    <button class="filter-btn legal" data-category="legal">Legal</button>
+  </div>
 
   <!-- Bullish IPO Card -->
 <div class="card-header" onclick="toggleCard(this)">
@@ -937,6 +945,32 @@
     });
   </script>
   <script src="js/nav.min.js?v=20250723" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const newsCards = document.querySelectorAll('.card-header');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Update active state
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          const category = this.dataset.category;
+          
+          // Filter cards
+          newsCards.forEach(card => {
+            const cardCategory = card.querySelector('.category-badge')?.textContent?.toLowerCase() || '';
+            if (category === 'all' || cardCategory === category) {
+              card.closest('.card-header').style.display = '';
+            } else {
+              card.closest('.card-header').style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

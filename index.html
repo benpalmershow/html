@@ -63,6 +63,12 @@
     
     .hero-logo {
       animation: pulse 5s ease-in-out 1;
+      animation-fill-mode: forwards;
+    }
+
+    /* Remove shadow after animation ends */
+    .hero-logo:not(.animating) {
+      filter: none !important;
     }
     
     .hero {

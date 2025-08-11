@@ -132,19 +132,48 @@ class EnhancedPortfolio {
             return;
         }
         const headers = Object.keys(this.filteredData[0]);
+        // Define the fields to show
+        const fields = [
+            { key: headers[0], label: 'Ticker' },
+            { key: 'Company Name', label: 'Name' },
+            { key: 'Description', label: 'Description' },
+            { key: 'Current Price', label: 'Price' },
+            { key: 'Price Chg.', label: 'Price Chg.' },
+            { key: 'Price % Chg.', label: 'Price % Chg.' },
+            { key: 'Volume (000)', label: 'Volume (000)' },
+            { key: 'Volume % Chg.', label: 'Volume % Chg.' },
+            { key: 'EPS % Chg (Latest Qtr)', label: 'EPS % Chg (Latest Qtr)' },
+            { key: 'EPS % Chg (Prior Qtr)', label: 'EPS % Chg (Prior Qtr)' },
+            { key: 'Sale % Chg (Last Qtr)', label: 'Sale % Chg (Last Qtr)' },
+            { key: 'EPS Est % Chg (Currrent Qtr)', label: 'EPS Est % Chg (Current Qtr)' },
+            { key: 'EPS Est % Chg (Current Yr)', label: 'EPS Est % Chg (Current Yr)' },
+            { key: 'Composite Rating', label: 'Composite' },
+            { key: 'EPS Rating', label: 'EPS Rating' },
+            { key: 'RS Rating', label: 'RS Rating' },
+            { key: 'SMR Rating', label: 'SMR' },
+            { key: 'Acc/Dis Rating', label: 'Acc/Dis' },
+            { key: 'Group Rel Str Rating', label: 'Group Rel Str' },
+        ];
         container.innerHTML = this.filteredData.map(row => {
+            const ticker = row[headers[0]] || '';
+            let irLink = row['Investor Relations'] && row['Investor Relations'].startsWith('http')
+                ? row['Investor Relations']
+                : `https://finance.yahoo.com/quote/${ticker}`;
             return `
-                <div class="position-card fade-in">
+                <div class="position-card fade-in small-card">
                     <div class="position-header">
-                        <span class="position-symbol">${row[headers[0]] || ''}</span>
+                        <span class="position-symbol">${ticker}</span>
+                        <a class="mini-ir-link" href="${irLink}" target="_blank" rel="noopener" style="margin-left:8px;">IR <i data-lucide="external-link"></i></a>
                     </div>
-                    <div class="position-details">
-                        ${headers.slice(1).map(h => `
-                            <div class="detail-item">
-                                <span class="detail-label">${h}</span>
-                                <span class="detail-value">${row[h]}</span>
-                            </div>
-                        `).join('')}
+                    <div class="mini-details" style="flex-direction:column;align-items:flex-start;gap:2px;">
+                        ${fields.slice(1).map(f => {
+                            const val = row[f.key] || '';
+                            if (!val) return '';
+                            if (f.key === 'Description') {
+                                return `<div class="mini-desc" style="font-size:0.92rem;color:var(--text-muted);margin-bottom:2px;">${val}</div>`;
+                            }
+                            return `<div class="mini-row"><span class="mini-label" style="font-size:0.89rem;color:var(--text-muted);">${f.label}:</span> <span class="mini-value" style="font-size:0.95rem;color:var(--text-primary);font-weight:500;">${val}</span></div>`;
+                        }).join('')}
                     </div>
                 </div>
             `;

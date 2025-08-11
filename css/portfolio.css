@@ -181,10 +181,11 @@ body {
 /* Portfolio Grid View */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
 }
 
+/* Default card */
 .position-card {
     background: var(--bg-secondary);
     backdrop-filter: blur(10px);
@@ -195,6 +196,20 @@ body {
     border: 1px solid var(--border-color);
 }
 
+/* Small card for minimal view */
+.position-card.small-card {
+    padding: 6px 8px;
+    min-height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    border-radius: 9px;
+    margin: 0;
+}
+
 .position-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px var(--shadow-color);
@@ -202,17 +217,20 @@ body {
 
 .position-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0;
+    min-height: 22px;
 }
 
 .position-symbol {
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--logo-teal);
     text-decoration: none;
     transition: color 0.3s ease;
+    letter-spacing: 0.2px;
+    line-height: 1.1;
 }
 
 .position-symbol:hover {
@@ -228,11 +246,37 @@ body {
     font-weight: 600;
 }
 
-.position-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 15px;
+
+/* Minimal details for small card */
+.mini-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0;
+    min-height: 22px;
+}
+.mini-price {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.1;
+}
+.mini-ir-link {
+    font-size: 0.93rem;
+    color: var(--logo-orange);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 0 2px;
+    line-height: 1.1;
+}
+.mini-ir-link:hover {
+    color: var(--logo-teal);
+    text-decoration: underline;
 }
 
 .detail-item {

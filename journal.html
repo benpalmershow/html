@@ -19,7 +19,9 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
       <link rel="preload" href="css/body.min.css" as="style">
-  <link rel="stylesheet" href="css/body.min.css">
+    <link rel="stylesheet" href="css/body.min.css">
+    <link rel="stylesheet" href="css/nav-float.css">
+    <link rel="stylesheet" href="css/swipe-navigation.css">
       <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -31,14 +33,21 @@
   <body>
    
     <nav class="nav-links" id="main-nav"></nav>
-    <h1 class="page-title">Journal</h1>
-    <div class="container">
-      <div class="content">
-        <div id="journal-feed"></div>
+    <div id="swipe-container">
+      <div class="swipe-wrapper">
+        <div class="swipe-page active" data-page="journal">
+          <h1 class="page-title">Journal</h1>
+          <div class="container">
+            <div class="content">
+              <div id="journal-feed"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <script src="/js/nav.min.js?v=20250723" defer></script>
-    <script src="/js/journal-feed.min.js?v=20250810" defer></script>
+    <script src="/js/nav.min.js" defer></script>
+    <script src="/js/swipe-navigation.js" defer></script>
+    <script src="/js/journal-feed.min.js" defer></script>
 </body>
 </html>

@@ -20,6 +20,8 @@
     <script defer src="@vercel/speed-insights/script.js"></script>
       <link rel="preload" href="css/body.min.css" as="style">
     <link rel="stylesheet" href="css/body.min.css">
+    <link rel="stylesheet" href="css/nav-float.css">
+    <link rel="stylesheet" href="css/swipe-navigation.css">
     <link rel="stylesheet" href="css/read.min.css">
       <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -32,7 +34,10 @@
   </head>
   <body>
     <nav class="nav-links" id="main-nav"></nav>
-    <h1 class="page-title">Announcements</h1>
+    <div id="swipe-container">
+      <div class="swipe-wrapper">
+        <div class="swipe-page active" data-page="read">
+          <h1 class="page-title">Announcements</h1>
     <div class="container">
       <div class="content">
         <div id="post-feed" class="announcements-grid">
@@ -41,7 +46,11 @@
       </div>
     </div>
 
-    <script src="/js/nav.min.js?v=20250723" defer></script>
-    <script src="/js/posts-loader.js" defer></script>
+        </div>
+      </div>
+    </div>
+    <script src="js/nav.min.js"></script>
+    <script src="js/swipe-navigation.js" defer></script>
+    <script src="js/posts-loader.js"></script>
 </body>
 </html>

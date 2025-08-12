@@ -22,6 +22,8 @@
   <script defer src="@vercel/speed-insights/script.js"></script>
   <link rel="preload" href="css/body.min.css" as="style">
   <link rel="stylesheet" href="css/body.min.css">
+  <link rel="stylesheet" href="css/nav-float.css">
+  <link rel="stylesheet" href="css/swipe-navigation.css">
   <link rel="stylesheet" href="css/media.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Favicon and App Icons -->
@@ -39,8 +41,11 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-
-  <h1 class="page-title">Media</h1>
+  
+  <div id="swipe-container">
+    <div class="swipe-wrapper">
+      <div class="swipe-page active" data-page="media">
+        <h1 class="page-title">Media</h1>
 
   <div class="media-filters">
 
@@ -63,8 +68,12 @@
     <!-- Media cards will be inserted here by JavaScript -->
   </div>
 
-  <script src="/js/nav.min.js?v=20250723" defer></script>
-  <script src="js/media.min.js?v=20250723" defer></script>
+      </div>
+    </div>
+  </div>
+  <script src="js/nav.min.js"></script>
+  <script src="js/swipe-navigation.js" defer></script>
+  <script src="js/media.min.js" defer></script>
 
   <script>
     // Ensure default sort is newest-first after scripts load

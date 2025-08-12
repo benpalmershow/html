@@ -28,19 +28,24 @@
     <link rel="preload" href="css/body.min.css" as="style">
     <link rel="stylesheet" href="css/body.min.css">
     <link rel="stylesheet" href="css/nav-float.css">
+    <link rel="stylesheet" href="css/swipe-navigation.css">
     
     <title>Howdy, Stranger</title>
    
   </head>
   <body>
     <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
-    <main id="main-content" tabindex="-1">
-      <section class="hero" aria-label="Homepage hero">
+    <div id="swipe-container">
+      <div class="swipe-wrapper">
+        <main id="main-content" class="swipe-page active" data-page="home" tabindex="-1">
+          <section class="hero" aria-label="Homepage hero">
         <img src="images/logo.png" alt="Howdy Stranger" class="hero-logo" loading="eager" />
         <p class="hero-subtitle">Human‑curated content, independent commentary, news, and economic insights.</p>
       
-      </section>
-    </main>
+          </section>
+        </main>
+      </div>
+    </div>
    <style>
     @keyframes pulse {
       0% { 
@@ -138,7 +143,8 @@
       .hero-subtitle { color: var(--text-muted); }
     }
    </style>
-  <script src="/js/nav.min.js?v=20250723" defer></script>
+    <script src="js/nav.min.js"></script>
+    <script src="js/swipe-navigation.js" defer></script>
   <script src="/js/socials.min.js?v=20250723" defer></script>
  
 </body>

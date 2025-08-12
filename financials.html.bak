@@ -14,9 +14,7 @@
     <meta name="theme-color" content="#2C5F5A">
 
       <link rel="preload" href="css/body.min.css" as="style">
-    <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/body.min.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/financials.min.css">
     <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
     <script defer src="/_vercel/insights/script.js"></script>
@@ -483,7 +481,6 @@
         </script>
                   <script src="/js/portfolio.min.js" defer></script>
           <script src="/js/nav.min.js?v=20250723" defer></script>
-    <script src="/js/dark-mode.js" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
         <script src="js/portfolio.min.js"></script>
         <script>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Dashboard</title>
     <link rel="stylesheet" href="css/body.min.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
     <link rel="stylesheet" href="css/portfolio.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
@@ -102,7 +101,6 @@
     </div>
     </main>
     <script src="js/nav.min.js" defer></script>
-    <script src="/js/dark-mode.js" defer></script>
     <script src="js/portfolio.js" defer></script>
 </body>
 </html>

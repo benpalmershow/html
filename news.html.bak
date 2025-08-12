@@ -8,7 +8,6 @@
   <title>News</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/body.min.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/news.min.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
 </head>
@@ -123,7 +122,7 @@
           <h2>Reddit Delivers Exceptional Q2 2025 Performance</h2>
           <p>Reddit (RDDT) reported outstanding Q2 2025 results for the quarter ended June 30, 2025, demonstrating robust user growth and a successful return to profitability with strong margins across all key metrics.</p>
           
-          <div class="highlights" style="background-color: var(--card-background); color: var(--card-text-color); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+          <div class="highlights" style="background: #ff4500; color: white; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
             <h3>Key Highlights:</h3>
             <ul>
               <li><strong>Profitability Return:</strong> Net income of $89 million vs. -$10 million loss in Q2 2024</li>
@@ -232,7 +231,7 @@
             <li><strong>International Users:</strong> Driving significant growth with 32% increase in DAUs</li>
           </ul>
 
-          <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #ff4500;">
+          <div class="highlights" style="background: #f0f7ff; padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #ff4500;">
             <h4>Q3 2025 Guidance</h4>
             <p><strong>Revenue:</strong> $535M - $545M<br>
             <strong>Adjusted EBITDA:</strong> $185M - $195M<br>
@@ -258,7 +257,7 @@
           <h2>UBS Upgrade Spurs Peloton Stock Rally Ahead of Earnings</h2>
           <p>UBS's upgrade of Peloton stock from Neutral to Buy, issued on July 30, 2025, has triggered a significant rally in Peloton shares just days ahead of its Q4 2025 earnings report scheduled for August 7, 2025.</p>
           
-          <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+          <div class="highlights" style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
             <h3>Key Points:</h3>
             <ul>
               <li><strong>Stock Performance:</strong> Jumped 8% in premarket trading and soared as much as 12.1% intraday, with trading volume reaching 8.8 million shares.</li>
@@ -275,7 +274,7 @@
           <h3>Market Sentiment</h3>
           <p>While some analysts remain wary of the company's heavy year-to-date losses and negative forward PE ratio (-14.7x), UBS views the current valuation as "undemanding" and sees upside for patient investors.</p>
           
-          <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #1e88e5;">
+          <div class="highlights" style="background: #f0f7ff; padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #1e88e5;">
             <h4>Earnings Call Details</h4>
             <p><strong>When:</strong> Thursday, August 7, 2025, 8:30 a.m. ET<br>
             <strong>Webcast:</strong> <a href="https://investor.onepeloton.com" target="_blank" rel="noopener">Peloton Investor Relations</a><br>
@@ -946,7 +945,6 @@
     });
   </script>
   <script src="js/nav.min.js?v=20250723" defer></script>
-    <script src="/js/dark-mode.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const filterBtns = document.querySelectorAll('.filter-btn');

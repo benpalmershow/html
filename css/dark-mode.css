@@ -110,49 +110,12 @@
   border-color: rgba(232, 149, 93, 0.15);
 }
 
-/* Improve readability for key points and earnings sections */
-[data-theme="dark"] .card,
-[data-theme="dark"] .announcements-grid .card,
-[data-theme="dark"] .news-card {
-  background-color: #1e2625;
-  border-color: #2a3635;
+/* Ensure H1 elements use the teal color in dark mode */
+[data-theme="dark"] h1 {
+  color: #87c5be;
 }
 
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] .key-points h3,
-[data-theme="dark"] .earnings-details h4 {
-  color: var(--accent-secondary);
-  border-bottom: 1px solid rgba(232, 149, 93, 0.3);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-}
 
-[data-theme="dark"] .key-points,
-[data-theme="dark"] .earnings-details {
-  background-color: #1a2322;
-  border-radius: 8px;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
-  border-left: 4px solid var(--accent-secondary);
-}
-
-[data-theme="dark"] .key-points ul,
-[data-theme="dark"] .earnings-details ul {
-  padding-left: 1.25rem;
-}
-
-[data-theme="dark"] .key-points li,
-[data-theme="dark"] .earnings-details li {
-  margin-bottom: 0.75rem;
-  color: #e1e5e9;
-  line-height: 1.6;
-}
-
-[data-theme="dark"] .key-points strong,
-[data-theme="dark"] .earnings-details strong {
-  color: var(--accent-primary);
-}
 
 /* Improve category badges */
 [data-theme="dark"] .category-badge {

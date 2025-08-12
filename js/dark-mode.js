@@ -38,13 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navLinks && navLinks.children.length > 0) {
       clearInterval(checkNav);
       
-      // Add theme indicator/toggle based on page type
-      const themeToggle = document.createElement('div');
-      themeToggle.className = 'theme-indicator';
-      
+          // Only add theme toggle on index page
       if (isIndexPage) {
-        // On index page, show interactive toggle
+        const themeToggle = document.createElement('a');
         themeToggle.className = 'nav-link theme-toggle';
+        themeToggle.href = '#';
         themeToggle.setAttribute('role', 'button');
         themeToggle.setAttribute('aria-label', 'Toggle dark mode');
         themeToggle.title = 'Toggle dark/light mode';
@@ -53,21 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <i class="fas fa-moon"></i>
             <i class="fas fa-sun" style="display: none;"></i>
           </span>
-          <span class="theme-toggle-label">Theme</span>
         `;
-      } else {
-        // On other pages, show non-interactive indicator
-        themeToggle.className = 'nav-link theme-indicator';
-        themeToggle.setAttribute('aria-label', 'Current theme');
-        themeToggle.innerHTML = `
-          <span class="theme-indicator-icon">
-            <i class="fas ${getCurrentTheme() === 'dark' ? 'fa-moon' : 'fa-sun'}"></i>
-          </span>
-        `;
+        
+        // Add to navigation
+        navLinks.appendChild(themeToggle);
       }
-      
-      // Add to navigation
-      navLinks.appendChild(themeToggle);
 
       // Check for saved user preference, if any
       const savedTheme = localStorage.getItem('theme') || 'light';
@@ -106,24 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
               sunIcon.style.display = 'none';
             }
             
-            // Update any theme indicators on the page
-            updateThemeIndicators(newTheme);
+            // Update the theme toggle
+            updateThemeToggle(newTheme);
           });
         }
       }
 
-      // Update all theme indicators on the page
-      const updateThemeIndicators = (theme) => {
-        // Update indicators on non-index pages
-        const indicators = document.querySelectorAll('.theme-indicator');
-        indicators.forEach(indicator => {
-          const icon = indicator.querySelector('i');
-          if (icon) {
-            icon.className = `fas ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}`;
-          }
-        });
-        
-        // Update toggle on index page
+      // Update the theme toggle on the index page
+      const updateThemeToggle = (theme) => {
         if (isIndexPage) {
           const toggle = document.querySelector('.theme-toggle');
           if (toggle) {
@@ -148,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!localStorage.getItem('theme')) {  // Only auto-apply if user hasn't set a preference
           const theme = e.matches ? 'dark' : 'light';
           setTheme(theme);
-          updateThemeIndicators(theme);
+          updateThemeToggle(theme);
         }
       };
       

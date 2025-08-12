@@ -15,8 +15,6 @@
 
       <link rel="preload" href="css/body.min.css" as="style">
   <link rel="stylesheet" href="css/body.min.css">
-  <link rel="stylesheet" href="css/nav-float.css">
-  <link rel="stylesheet" href="css/swipe-navigation.css">
   <link rel="stylesheet" href="css/financials.min.css">
     <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
     <script defer src="/_vercel/insights/script.js"></script>
@@ -28,10 +26,7 @@
 <body>
   
     <nav class="nav-links" id="main-nav"></nav>
-    <div id="swipe-container">
-      <div class="swipe-wrapper">
-        <div class="swipe-page active" data-page="financials">
-          <h1 class="page-title">Numbers</h1>
+    <h1 class="page-title">Numbers</h1>
     <div id="lastUpdated" class="last-updated" style="text-align:center;"></div>
     <div class="container">
         <div class="collapsible-container">
@@ -484,12 +479,14 @@
             // Initialize dashboard
             document.addEventListener('DOMContentLoaded', fetchFinancialData);
         </script>
-        </div>
-      </div>
-    </div>
-    <script src="js/nav.min.js"></script>
-    <script src="js/swipe-navigation.js" defer></script>
-    <script src="js/portfolio.min.js" defer></script>
+                  <script src="/js/portfolio.min.js" defer></script>
+          <script src="/js/nav.min.js?v=20250723" defer></script>
+        <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
+        <script src="js/portfolio.min.js"></script>
+        <script>
+            // Initialize Lucide icons
+            lucide.createIcons();
+        </script>
 </body>
 
 </html>

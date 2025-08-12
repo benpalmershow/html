@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Check if we're on the index page
+  const isIndexPage = window.location.pathname.endsWith('index.html') || 
+                     window.location.pathname === '/' || 
+                     window.location.pathname.endsWith('/');
+  
+  // Get current theme from localStorage or default to light
+  const getCurrentTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) return savedTheme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+  
+  // Set theme on document element
+  const setTheme = (theme) => {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  };
+  
+  // Initialize theme
+  setTheme(getCurrentTheme());
+
   // Add Font Awesome for the icons if not already loaded
   if (!document.querySelector('#font-awesome')) {
     const fontAwesome = document.createElement('link');
@@ -14,53 +38,117 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navLinks && navLinks.children.length > 0) {
       clearInterval(checkNav);
       
-      // Create the theme toggle button
-      const themeToggle = document.createElement('a');
-      themeToggle.className = 'nav-link theme-toggle';
-      themeToggle.href = '#';
-      themeToggle.setAttribute('aria-label', 'Toggle dark mode');
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      // Add theme indicator/toggle based on page type
+      const themeToggle = document.createElement('div');
+      themeToggle.className = 'theme-indicator';
       
-      // Add the theme toggle to the navigation
+      if (isIndexPage) {
+        // On index page, show interactive toggle
+        themeToggle.className = 'nav-link theme-toggle';
+        themeToggle.setAttribute('role', 'button');
+        themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        themeToggle.title = 'Toggle dark/light mode';
+        themeToggle.innerHTML = `
+          <span class="theme-toggle-icon">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun" style="display: none;"></i>
+          </span>
+          <span class="theme-toggle-label">Theme</span>
+        `;
+      } else {
+        // On other pages, show non-interactive indicator
+        themeToggle.className = 'nav-link theme-indicator';
+        themeToggle.setAttribute('aria-label', 'Current theme');
+        themeToggle.innerHTML = `
+          <span class="theme-indicator-icon">
+            <i class="fas ${getCurrentTheme() === 'dark' ? 'fa-moon' : 'fa-sun'}"></i>
+          </span>
+        `;
+      }
+      
+      // Add to navigation
       navLinks.appendChild(themeToggle);
 
       // Check for saved user preference, if any
       const savedTheme = localStorage.getItem('theme') || 'light';
       if (savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        if (isIndexPage) {
+          const toggleButton = document.querySelector('.theme-toggle');
+          if (toggleButton) {
+            toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+          }
+        }
       }
 
-      // Add click event listener to the theme toggle button
-      themeToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        
-        if (currentTheme === 'dark') {
-          // Switch to light theme
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.setItem('theme', 'light');
-          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        } else {
-          // Switch to dark theme
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      // Add click event listener to the theme toggle if on index page
+      if (isIndexPage) {
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+          themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Update theme
+            setTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update toggle icon
+            const moonIcon = themeToggle.querySelector('.fa-moon');
+            const sunIcon = themeToggle.querySelector('.fa-sun');
+            
+            if (newTheme === 'dark') {
+              moonIcon.style.display = 'none';
+              sunIcon.style.display = 'inline-block';
+            } else {
+              moonIcon.style.display = 'inline-block';
+              sunIcon.style.display = 'none';
+            }
+            
+            // Update any theme indicators on the page
+            updateThemeIndicators(newTheme);
+          });
         }
-      });
+      }
 
+      // Update all theme indicators on the page
+      const updateThemeIndicators = (theme) => {
+        // Update indicators on non-index pages
+        const indicators = document.querySelectorAll('.theme-indicator');
+        indicators.forEach(indicator => {
+          const icon = indicator.querySelector('i');
+          if (icon) {
+            icon.className = `fas ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}`;
+          }
+        });
+        
+        // Update toggle on index page
+        if (isIndexPage) {
+          const toggle = document.querySelector('.theme-toggle');
+          if (toggle) {
+            const moonIcon = toggle.querySelector('.fa-moon');
+            const sunIcon = toggle.querySelector('.fa-sun');
+            
+            if (theme === 'dark') {
+              moonIcon.style.display = 'none';
+              sunIcon.style.display = 'inline-block';
+            } else {
+              moonIcon.style.display = 'inline-block';
+              sunIcon.style.display = 'none';
+            }
+          }
+        }
+      };
+      
       // Listen for system preference changes
       const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
       
       const setThemeFromSystemPreference = (e) => {
         if (!localStorage.getItem('theme')) {  // Only auto-apply if user hasn't set a preference
-          if (e.matches) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          } else {
-            document.documentElement.removeAttribute('data-theme');
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-          }
+          const theme = e.matches ? 'dark' : 'light';
+          setTheme(theme);
+          updateThemeIndicators(theme);
         }
       };
       

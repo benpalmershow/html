@@ -1,4 +1,4 @@
-/* Dark mode toggle button */
+/* Theme toggle and indicator styles */
 .nav-links {
   position: relative;
   display: flex;
@@ -11,61 +11,113 @@
   padding: 0.75rem 0;
 }
 
+/* Theme toggle (on index page) */
 .nav-links .theme-toggle {
   position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 80px;
+  min-height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
   text-decoration: none;
-  background: transparent;
-  border: 1px solid transparent;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   z-index: 1;
 }
 
-.nav-links .theme-toggle i {
-  font-size: 1.2rem;
-  color: var(--logo-teal);
-  transition: color 0.2s ease;
+.theme-toggle-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
 }
 
+.theme-toggle-icon i {
+  position: absolute;
+  font-size: 1.1rem;
+  color: var(--logo-teal);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+/* Theme indicator (on non-index pages) */
+.nav-links .theme-indicator {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.theme-indicator i {
+  font-size: 1.1rem;
+  color: var(--logo-teal);
+}
+
+/* Hover and focus states */
 .nav-links .theme-toggle:hover {
-  background-color: var(--bg-secondary);
-  transform: translateY(calc(-50% - 1px));
-  border-color: rgba(44, 95, 90, 0.2);
+  background: var(--bg-secondary);
+  transform: translateY(calc(-50% - 2px));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .nav-links .theme-toggle:focus {
   outline: 2px solid var(--logo-orange);
   outline-offset: 2px;
-  background-color: rgba(253, 246, 232, 0.2);
-  border-color: rgba(212, 130, 42, 0.3);
+  background-color: var(--bg-secondary);
   transform: translateY(-50%);
 }
 
-[data-theme="dark"] .nav-links .theme-toggle i {
-  color: var(--accent-primary);
+/* Dark theme overrides */
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .theme-indicator {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
 }
 
-[data-theme="dark"] .nav-links .theme-toggle:hover {
-  background-color: rgba(37, 43, 42, 0.3);
+[data-theme="dark"] .theme-toggle:hover {
+  background: #2a3332;
   border-color: rgba(232, 149, 93, 0.2);
 }
 
-[data-theme="dark"] .nav-links .theme-toggle:focus {
-  background-color: rgba(37, 43, 42, 0.2);
+[data-theme="dark"] .theme-toggle:focus {
+  background-color: #2a3332;
   border-color: rgba(232, 149, 93, 0.3);
 }
 
+[data-theme="dark"] .theme-toggle i,
+[data-theme="dark"] .theme-indicator i {
+  color: var(--accent-primary);
+}
+
 /* Ensure navigation items stay centered */
-.nav-links > a:not(.theme-toggle) {
+.nav-links > a:not(.theme-toggle):not(.theme-indicator) {
   position: relative;
   z-index: 0;
 }

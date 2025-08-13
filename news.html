@@ -8,7 +8,7 @@
   <title>News</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/body.min.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/news.min.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
 </head>
@@ -593,7 +593,6 @@
       </div>
     </div>
   </div>
-
   <!-- Boston Public Market Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-07">July 7, 2025</time>
@@ -865,7 +864,11 @@
         <p>This summary is based on publicly available information. For complete details, investors should refer to
           AIRO's SEC filings and prospectus. <a
             href="https://www.sec.gov/Archives/edgar/data/1927958/000164117225015147/form424b4.htm" target="_blank"
-            rel="noopener">SEC filing</a>.</p>
+            rel="noopener">SEC filing</a>.</ trust and compliance. Key strategies include expanding the Circle
+            stablecoin network through partnerships with major firms like Grab, Mercado Libre, Nubank, and Coinbase, and
+            simplifying blockchain technology for developers and end-users to drive adoption. Circle's revenue grew from
+            $15.4 million in 2020 to $1.7 billion in 2024, with $155.7 million in net income and $284.9 million in
+            Adjusted EBITDA in 2024.</p>
       </div>
     </div>
   </div>
@@ -985,53 +988,6 @@
     </div>
   </div>
   </div>
-  <script>
-    // Category filter logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cardHeaders = document.querySelectorAll('.card-header');
-      function getCategoryFromHeader(header) {
-        const h1 = header.querySelector('h1');
-        if (!h1) return '';
-        const badge = h1.querySelector('.category-badge');
-        return badge ? badge.classList[1] : '';
-      }
-      function filterCards(category) {
-        cardHeaders.forEach(header => {
-          const card = header.nextElementSibling;
-          const cat = getCategoryFromHeader(header);
-          if (category === 'all' || cat === category) {
-            header.style.display = '';
-            if (card) card.style.display = '';
-          } else {
-            header.style.display = 'none';
-            if (card) card.style.display = 'none';
-          }
-        });
-      }
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          filterCards(this.dataset.category);
-        });
-      });
-      // Set default to All
-      filterBtns[0].classList.add('active');
-    });
-    function toggleCard(header) {
-      const content = header.nextElementSibling;
-      if (content.classList.contains('expanded')) {
-        content.classList.remove('expanded');
-        header.classList.remove('expanded');
-      } else {
-        content.classList.add('expanded');
-        header.classList.add('expanded');
-      }
-    }
-
-    window.addEventListener('load', function () {
-      const chartElement = document.getElementById('gorsuchChart');
       if (chartElement) {
         const ctx = chartElement.getContext('2d');
         new Chart(ctx, {
@@ -1076,35 +1032,29 @@
     document.addEventListener('DOMContentLoaded', function() {
       lucide.createIcons();
     });
+
+    // Toggle card expansion
+    function toggleCard(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.expand-icon');
+      
+      // Toggle expanded class on content
+      content.classList.toggle('expanded');
+      
+      // Toggle chevron icon
+      if (content.classList.contains('expanded')) {
+        icon.setAttribute('data-lucide', 'chevron-up');
+      } else {
+        icon.setAttribute('data-lucide', 'chevron-down');
+      }
+      
+      // Update the icon
+      lucide.createIcons();
+    }
   </script>
   <script src="js/nav.min.js?v=20250723" defer></script>
   <script src="/js/dark-mode.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const newsCards = document.querySelectorAll('.card-header');
-      
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // Update active state
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          
-          const category = this.dataset.category;
-          
-          // Filter cards
-          newsCards.forEach(card => {
-            const cardCategory = card.querySelector('.category-badge')?.textContent?.toLowerCase() || '';
-            if (category === 'all' || cardCategory === category) {
-              card.closest('.card-header').style.display = '';
-            } else {
-              card.closest('.card-header').style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
+  <script src="js/news-filter.min.js"></script>
 </body>
 
 </html>

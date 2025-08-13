@@ -71,3 +71,6 @@
   /* Ensure inline light highlight boxes remain readable in dark mode */
   .card-content .highlights{background:rgba(232,149,93,0.08) !important;border-color:var(--border-color) !important}
 }
+
+/* Responsive table styles */
+.responsive-table{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0;border-radius:6px;border:1px solid var(--border-color)}.responsive-table table{width:100%;min-width:600px;border-collapse:collapse;font-size:0.9em}.responsive-table th,.responsive-table td{padding:0.75rem 0.5rem;text-align:left;border:1px solid var(--border-color);white-space:nowrap}.responsive-table th{background-color:var(--logo-teal);color:#fff;font-weight:500;position:sticky;top:0}.responsive-table tr:nth-child(even){background-color:var(--bg-secondary)}.responsive-table tr:hover{background-color:var(--bg-tertiary)}.responsive-table .pos{color:#43a047;font-weight:500}@media (max-width:768px){.responsive-table{font-size:0.85em}.responsive-table th,.responsive-table td{padding:0.5rem 0.4rem}}@media (max-width:480px){.responsive-table{font-size:0.8em;margin:0.75rem -1rem;width:calc(100% + 2rem)}.responsive-table th,.responsive-table td{padding:0.4rem 0.3rem}}

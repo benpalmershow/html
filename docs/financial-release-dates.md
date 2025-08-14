@@ -13,7 +13,7 @@
 | **Weekly** | • **Jobless Claims** (FRED) |
 | **Scheduled** | • **FOMC Rate Decision** (Next: Sep 17, 2025) |
 
-## 📊 Detailed Release Schedule
+##  Detailed Release Schedule
 
 ### By Release Date
 

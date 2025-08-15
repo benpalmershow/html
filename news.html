@@ -8,14 +8,15 @@
   <title>News</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/body.min.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/news.min.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
 </head>
+
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <h1 class="page-title">News</h1>
-  
+
   <div class="filter-buttons">
     <button class="filter-btn active" data-category="all">All</button>
     <button class="filter-btn ipo" data-category="ipo">IPO</button>
@@ -23,228 +24,466 @@
     <button class="filter-btn policy" data-category="policy">Policy</button>
     <button class="filter-btn legal" data-category="legal">Legal</button>
   </div>
-<!-- Local Bounti Q2 2025 Card -->
-<div class="card-header" onclick="toggleCard(this)">
-  <time datetime="2025-08-13">Aug 13, 2025</time>
-  <i data-lucide="bar-chart-3" class="card-icon"></i>
-  <h1>Local Bounti — Q2 2025 Earnings <span class="category-badge earnings">Earnings</span></h1>
-  <i data-lucide="chevron-down" class="expand-icon"></i>
-</div>
-<div class="card-content">
-  <div class="card-inner">
-    <div class="table-container">
-      <h3>📊 Key Metrics</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Metric</th>
-            <th>Q2 2025</th>
-            <th>Q2 2024</th>
-            <th>YoY Change</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Revenue</strong></td>
-            <td>$12.1M</td>
-            <td>$9.4M</td>
-            <td class="pos">+28%</td>
-            <td>Growth from GA facility & new TX/WA facilities</td>
-          </tr>
-          <tr>
-            <td><strong>Gross Profit</strong></td>
-            <td>$1.5M</td>
-            <td>$1.35M</td>
-            <td class="pos">+9%</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Adj. Gross Margin %</strong></td>
-            <td>30%</td>
-            <td>29%</td>
-            <td class="pos">+1 pp</td>
-            <td>Excludes D&A, SBC, non-core items</td>
-          </tr>
-          <tr>
-            <td><strong>G&A Expense</strong></td>
-            <td>$8.0M</td>
-            <td>$8.6M</td>
-            <td class="pos">-7%</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Adj. G&A Expense</strong></td>
-            <td>$4.3M</td>
-            <td>$6.0M</td>
-            <td class="pos">-28%</td>
-            <td>Cost reduction initiatives</td>
-          </tr>
-          <tr>
-            <td><strong>Net Loss</strong></td>
-            <td>$(21.6)M</td>
-            <td>$(25.3)M</td>
-            <td class="pos">Improved</td>
-            <td>Lower interest expense after restructuring</td>
-          </tr>
-          <tr>
-            <td><strong>Adj. EBITDA</strong></td>
-            <td>$(6.5)M</td>
-            <td>$(8.3)M</td>
-            <td class="pos">+22%</td>
-            <td>Sequential improvement vs. Q1 2025 ($(8.8)M)</td>
-          </tr>
-          <tr>
-            <td><strong>Stock-based Compensation</strong></td>
-            <td>$2.26M</td>
-            <td>$1.65M</td>
-            <td class="neg">+37%</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Depreciation &amp; Amortization</strong></td>
-            <td>$5.86M</td>
-            <td>$3.89M</td>
-            <td class="neg">+51%</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Cash &amp; Equivalents</strong></td>
-            <td>$13.2M</td>
-            <td>N/A</td>
-            <td>—</td>
-            <td>As of Jun 30, 2025</td>
-          </tr>
-          <tr>
-            <td><strong>Long-term Debt</strong></td>
-            <td>$478.3M</td>
-            <td>$416.6M (Dec 31, 2024)</td>
-            <td class="neg">+15%</td>
-            <td>Post debt restructuring</td>
-          </tr>
-          <tr>
-            <td><strong>Shares Outstanding</strong></td>
-            <td>21.8M</td>
-            <td>8.66M (Dec 31, 2024)</td>
-            <td>—</td>
-            <td>Fully diluted ~31.4M shares</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section">
-      <h3>📌 Guidance & Outlook</h3>
-      <ul>
-        <li>Modest Q3 growth expected, acceleration in Q4 2025.</li>
-        <li>Positive adjusted EBITDA targeted for early 2026.</li>
-        <li>$2.5–$3M in additional cost savings planned for H2 2025.</li>
-        <li>Focus on yield improvements, cost reductions, and expanded retail distribution (Walmart, private-label deals).</li>
-      </ul>
-    </div>
-
-    <p style="font-style:italic; font-size:13px; color:var(--muted);">
-      Source: Company press release, Q2 2025.
-    </p>
+  <!-- Robinhood Q2 2025 Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-08-14">Aug 14, 2025</time>
+    <i data-lucide="bar-chart-3" class="card-icon"></i>
+    <h1><a href="https://investors.robinhood.com/static-files/96125635-9736-40ed-a873-eb0cf735b079" target="_blank"
+        rel="noopener">Robinhood — Q2 2025 Earnings</a> <span class="category-badge earnings">Earnings</span></h1>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
-</div>
-
-<style>
-  /* Positive and negative change styling */
-  .pos { color: #22c55e; font-weight: 600; }
-  .neg { color: #ef4444; font-weight: 600; }
-</style>
-
-  <!-- Bullish IPO Card -->
-<div class="card-header" onclick="toggleCard(this)">
-  <time datetime="2025-08-04">August 4, 2025</time>
-  <i data-lucide="dollar-sign" class="card-icon"></i>
-  <h1><a href="https://www.reuters.com/business/crypto-firm-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/" target="_blank" rel="noopener">Bullish Launches IPO Filing</a> <span class="category-badge ipo">IPO</span></h1>
-  <i data-lucide="chevron-down" class="expand-icon"></i>
-</div>
-<div class="card-content">
-  <div class="card-inner">
-    <div class="section">
-      <div class="highlights">
-        <p><strong>Date:</strong> August 4, 2025</p>
-        <p><strong>Ticker:</strong> <em>BLSH</em> (NYSE)</p>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="table-container">
+        <h3>📊 Key Metrics</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Q2 2025</th>
+              <th>Q2 2024</th>
+              <th>YoY Change</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Net Revenues</strong></td>
+              <td>$682M</td>
+              <td>$318M</td>
+              <td class="pos">+115%</td>
+              <td>Record quarterly revenue</td>
+            </tr>
+            <tr>
+              <td><strong>Transaction-based Revenues</strong></td>
+              <td>$327M</td>
+              <td>$181M</td>
+              <td class="pos">+81%</td>
+              <td>Crypto +161%, Equities +69%</td>
+            </tr>
+            <tr>
+              <td><strong>Net Interest Revenues</strong></td>
+              <td>$355M</td>
+              <td>$137M</td>
+              <td class="pos">+159%</td>
+              <td>Driven by higher interest rates</td>
+            </tr>
+            <tr>
+              <td><strong>Net Income</strong></td>
+              <td>$157M</td>
+              <td>$(102)M</td>
+              <td class="pos">Profitable</td>
+              <td>Fourth consecutive profitable quarter</td>
+            </tr>
+            <tr>
+              <td><strong>Adjusted EBITDA</strong></td>
+              <td>$267M</td>
+              <td>$(57)M</td>
+              <td class="pos">+568%</td>
+              <td>39% adjusted EBITDA margin</td>
+            </tr>
+            <tr>
+              <td><strong>Assets Under Custody</strong></td>
+              <td>$152.2B</td>
+              <td>$102.9B</td>
+              <td class="pos">+48%</td>
+              <td>Record high AUC</td>
+            </tr>
+            <tr>
+              <td><strong>Funded Accounts</strong></td>
+              <td>24.9M</td>
+              <td>23.4M</td>
+              <td class="pos">+6%</td>
+              <td>Net account additions of 1M</td>
+            </tr>
+            <tr>
+              <td><strong>Monthly Active Users</strong></td>
+              <td>11.8M</td>
+              <td>10.8M</td>
+              <td class="pos">+9%</td>
+              <td>Strong user engagement</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <div class="section">
-      <h3>📈 IPO Highlights</h3>
-      <ul>
-        <li>
-          Targeting to raise up to <strong>$629.3M</strong> by selling ~20.3M shares at $28–31 apiece.
-          <a href="https://www.reuters.com/business/crypto-firm-bullish-aims-raise-up-629-million-us-ipo-2025-08-04/" target="_blank" rel="noopener">(Reuters)</a>
-        </li>
-        <li>
-          Potential valuation: up to <strong>$4.23B</strong>.
-          <a href="https://www.reuters.com/business/peter-thiel-backed-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/" target="_blank" rel="noopener">(Reuters)</a>
-        </li>
-        <li>
-          Underwriters include J.P. Morgan, Jefferies, Citi, Cantor, Deutsche Bank, Société Générale.
-          <a href="https://www.renaissancecapital.com/IPO-Center/News/112536/Digital-asset-platform-Bullish-sets-terms-for-%24599-million-US-IPO" target="_blank" rel="noopener">(Renaissance Capital)</a>
-        </li>
-        <li>
-          3.045M additional shares offered via over‑allotment option.
-          <a href="https://www.investopedia.com/peter-thiel-backed-crypto-firm-bullish-aims-to-raise-usd629m-in-ipo-11784949" target="_blank" rel="noopener">(Investopedia)</a>
-        </li>
-        <li>
-          Anchor investors include BlackRock and ARK, committing ~$200M.
-          <a href="https://www.coindesk.com/business/2025/08/04/crypto-exchange-bullish-seeks-to-raise-up-to-usd629m-in-new-york-share-sale" target="_blank" rel="noopener">(CoinDesk)</a>
-        </li>
-      </ul>
-    </div>
+      <div class="section">
+        <h3>📌 Key Highlights</h3>
+        <ul>
+          <li>Record quarterly net revenues of $682M, up 115% year-over-year</li>
+          <li>Fourth consecutive quarter of GAAP profitability with $157M net income</li>
+          <li>Strong crypto trading momentum with 161% growth in crypto revenues</li>
+          <li>Assets under custody reached record high of $152.2B</li>
+          <li>Continued expansion in retirement offerings and credit card products</li>
+        </ul>
+      </div>
 
-    <div class="section">
-      <h3>📊 Business & Financial Snapshot</h3>
-      <ul>
-        <li>
-          Institutional crypto exchange with licenses in U.S., Germany, Hong Kong, Gibraltar.
-          <a href="https://www.reuters.com/business/peter-thiel-backed-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/" target="_blank" rel="noopener">(Reuters)</a>
-        </li>
-        <li>
-          Owns CoinDesk, acquired in 2023.
-          <a href="https://bullish.com/news-insights/news/bullish-launches-initial-public-offering/" target="_blank" rel="noopener">(Bullish.com)</a>
-        </li>
-        <li>
-          Q1 2025: $2.55B average daily trading volume (↑78% YoY).
-          <a href="https://www.reuters.com/business/crypto-exchange-bullishs-us-ipo-filing-reveals-quarterly-loss-2025-07-18/" target="_blank" rel="noopener">(Reuters)</a>
-        </li>
-        <li>
-          Net loss: –$348.6M in Q1 2025 (vs. +$104.8M Q1 2024).
-          <a href="https://www.reuters.com/business/crypto-exchange-bullishs-us-ipo-filing-reveals-quarterly-loss-2025-07-18/" target="_blank" rel="noopener">(Reuters)</a>
-        </li>
-        <li>
-          FY Revenue (TTM): ~$167M on $1.25T+ trading volume.
-          <a href="https://www.renaissancecapital.com/IPO-Center/News/112536/Digital-asset-platform-Bullish-sets-terms-for-%24599-million-US-IPO" target="_blank" rel="noopener">(Renaissance Capital)</a>
-        </li>
-        <li>
-          Holds $3B+ in assets: 24K BTC, 12.6K ETH, $418M cash/stablecoins.
-          <a href="https://www.coindesk.com/business/2025/08/04/crypto-exchange-bullish-seeks-to-raise-up-to-usd629m-in-new-york-share-sale/" target="_blank" rel="noopener">(CoinDesk)</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h3>⚠️ Market Context</h3>
-      <p>
-        Bullish is entering public markets during a favorable cycle for crypto IPOs, aided by regulatory tailwinds and institutional adoption.
-        <a href="https://www.barrons.com/articles/ipo-stock-figma-circle-coreweave-3ddfcfbd" target="_blank" rel="noopener">(Barron’s)</a>
+      <p style="font-style:italic; font-size:13px; color:var(--muted);">
+        Source: <a href="https://investors.robinhood.com/static-files/96125635-9736-40ed-a873-eb0cf735b079"
+          target="_blank" rel="noopener">Robinhood Q2 2025 Earnings Report</a>
       </p>
     </div>
-
-    <p style="font-style: italic; text-align: center; margin-top: 2rem;">
-      Sources: Reuters, Renaissance Capital, Investopedia, CoinDesk, Bullish.com, Barron’s
-    </p>
   </div>
-</div>
-<!-- Reddit Q2 2025 Earnings Card -->
+
+  <!-- Twilio Q2 2025 Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-08-14">Aug 14, 2025</time>
+    <i data-lucide="bar-chart-3" class="card-icon"></i>
+    <h1><a
+        href="https://investors.twilio.com/news-releases/news-release-details/twilio-announces-second-quarter-2025-results"
+        target="_blank" rel="noopener">Twilio — Q2 2025 Earnings</a> <span
+        class="category-badge earnings">Earnings</span></h1>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="table-container">
+        <h3>📊 Key Metrics</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Q2 2025</th>
+              <th>Q2 2024</th>
+              <th>YoY Change</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Total Revenue</strong></td>
+              <td>$1.05B</td>
+              <td>$1.01B</td>
+              <td class="pos">+4%</td>
+              <td>Communications +5%, Segment -1%</td>
+            </tr>
+            <tr>
+              <td><strong>Communications Revenue</strong></td>
+              <td>$898M</td>
+              <td>$859M</td>
+              <td class="pos">+5%</td>
+              <td>Messaging +6%, Voice +2%</td>
+            </tr>
+            <tr>
+              <td><strong>Segment Revenue</strong></td>
+              <td>$156M</td>
+              <td>$157M</td>
+              <td class="neg">-1%</td>
+              <td>Continued headwinds in CDP</td>
+            </tr>
+            <tr>
+              <td><strong>Gross Profit</strong></td>
+              <td>$598M</td>
+              <td>$571M</td>
+              <td class="pos">+5%</td>
+              <td>57% gross margin</td>
+            </tr>
+            <tr>
+              <td><strong>Operating Income</strong></td>
+              <td>$54M</td>
+              <td>$19M</td>
+              <td class="pos">+184%</td>
+              <td>5% operating margin</td>
+            </tr>
+            <tr>
+              <td><strong>Net Income</strong></td>
+              <td>$87M</td>
+              <td>$41M</td>
+              <td class="pos">+112%</td>
+              <td>$0.46 diluted EPS</td>
+            </tr>
+            <tr>
+              <td><strong>Adjusted EBITDA</strong></td>
+              <td>$239M</td>
+              <td>$213M</td>
+              <td class="pos">+12%</td>
+              <td>23% adjusted EBITDA margin</td>
+            </tr>
+            <tr>
+              <td><strong>Free Cash Flow</strong></td>
+              <td>$181M</td>
+              <td>$158M</td>
+              <td class="pos">+15%</td>
+              <td>Strong cash generation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>📌 Key Highlights</h3>
+        <ul>
+          <li>Total revenue of $1.05B, up 4% year-over-year with strong Communications growth</li>
+          <li>Operating income increased 184% to $54M with improved operational efficiency</li>
+          <li>Free cash flow of $181M, up 15% year-over-year</li>
+          <li>Communications revenue grew 5% driven by messaging and voice products</li>
+          <li>Continued focus on AI-powered customer engagement solutions</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>📌 Guidance & Outlook</h3>
+        <ul>
+          <li>Q3 2025 revenue guidance: $1.04B - $1.06B</li>
+          <li>Full year 2025 revenue guidance: $4.15B - $4.20B</li>
+          <li>Continued investment in AI and automation capabilities</li>
+          <li>Focus on expanding customer engagement platform</li>
+        </ul>
+      </div>
+
+      <p style="font-style:italic; font-size:13px; color:var(--muted);">
+        Source: <a
+          href="https://investors.twilio.com/news-releases/news-release-details/twilio-announces-second-quarter-2025-results"
+          target="_blank" rel="noopener">Twilio Q2 2025 Earnings Report</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Local Bounti Q2 2025 Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-08-13">Aug 13, 2025</time>
+    <i data-lucide="bar-chart-3" class="card-icon"></i>
+    <h1>Local Bounti — Q2 2025 Earnings <span class="category-badge earnings">Earnings</span></h1>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="table-container">
+        <h3>📊 Key Metrics</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Q2 2025</th>
+              <th>Q2 2024</th>
+              <th>YoY Change</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Revenue</strong></td>
+              <td>$12.1M</td>
+              <td>$9.4M</td>
+              <td class="pos">+28%</td>
+              <td>Growth from GA facility & new TX/WA facilities</td>
+            </tr>
+            <tr>
+              <td><strong>Gross Profit</strong></td>
+              <td>$1.5M</td>
+              <td>$1.35M</td>
+              <td class="pos">+9%</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Adj. Gross Margin %</strong></td>
+              <td>30%</td>
+              <td>29%</td>
+              <td class="pos">+1 pp</td>
+              <td>Excludes D&A, SBC, non-core items</td>
+            </tr>
+            <tr>
+              <td><strong>G&A Expense</strong></td>
+              <td>$8.0M</td>
+              <td>$8.6M</td>
+              <td class="pos">-7%</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Adj. G&A Expense</strong></td>
+              <td>$4.3M</td>
+              <td>$6.0M</td>
+              <td class="pos">-28%</td>
+              <td>Cost reduction initiatives</td>
+            </tr>
+            <tr>
+              <td><strong>Net Loss</strong></td>
+              <td>$(21.6)M</td>
+              <td>$(25.3)M</td>
+              <td class="pos">Improved</td>
+              <td>Lower interest expense after restructuring</td>
+            </tr>
+            <tr>
+              <td><strong>Adj. EBITDA</strong></td>
+              <td>$(6.5)M</td>
+              <td>$(8.3)M</td>
+              <td class="pos">+22%</td>
+              <td>Sequential improvement vs. Q1 2025 ($(8.8)M)</td>
+            </tr>
+            <tr>
+              <td><strong>Stock-based Compensation</strong></td>
+              <td>$2.26M</td>
+              <td>$1.65M</td>
+              <td class="neg">+37%</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Depreciation &amp; Amortization</strong></td>
+              <td>$5.86M</td>
+              <td>$3.89M</td>
+              <td class="neg">+51%</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Cash &amp; Equivalents</strong></td>
+              <td>$13.2M</td>
+              <td>N/A</td>
+              <td>—</td>
+              <td>As of Jun 30, 2025</td>
+            </tr>
+            <tr>
+              <td><strong>Long-term Debt</strong></td>
+              <td>$478.3M</td>
+              <td>$416.6M (Dec 31, 2024)</td>
+              <td class="neg">+15%</td>
+              <td>Post debt restructuring</td>
+            </tr>
+            <tr>
+              <td><strong>Shares Outstanding</strong></td>
+              <td>21.8M</td>
+              <td>8.66M (Dec 31, 2024)</td>
+              <td>—</td>
+              <td>Fully diluted ~31.4M shares</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>📌 Guidance & Outlook</h3>
+        <ul>
+          <li>Modest Q3 growth expected, acceleration in Q4 2025.</li>
+          <li>Positive adjusted EBITDA targeted for early 2026.</li>
+          <li>$2.5–$3M in additional cost savings planned for H2 2025.</li>
+          <li>Focus on yield improvements, cost reductions, and expanded retail distribution (Walmart, private-label
+            deals).</li>
+        </ul>
+      </div>
+
+      <p style="font-style:italic; font-size:13px; color:var(--muted);">
+        Source: Company press release, Q2 2025.
+      </p>
+    </div>
+  </div>
+
+  <style>
+    /* Positive and negative change styling */
+    .pos {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .neg {
+      color: #ef4444;
+      font-weight: 600;
+    }
+  </style>
+
+  <!-- Bullish IPO Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-08-04">August 4, 2025</time>
+    <i data-lucide="dollar-sign" class="card-icon"></i>
+    <h1><a href="https://www.reuters.com/business/crypto-firm-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/"
+        target="_blank" rel="noopener">Bullish Launches IPO Filing</a> <span class="category-badge ipo">IPO</span></h1>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <div class="highlights">
+          <p><strong>Date:</strong> August 4, 2025</p>
+          <p><strong>Ticker:</strong> <em>BLSH</em> (NYSE)</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>📈 IPO Highlights</h3>
+        <ul>
+          <li>
+            Targeting to raise up to <strong>$629.3M</strong> by selling ~20.3M shares at $28–31 apiece.
+            <a href="https://www.reuters.com/business/crypto-firm-bullish-aims-raise-up-629-million-us-ipo-2025-08-04/"
+              target="_blank" rel="noopener">(Reuters)</a>
+          </li>
+          <li>
+            Potential valuation: up to <strong>$4.23B</strong>.
+            <a href="https://www.reuters.com/business/peter-thiel-backed-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/"
+              target="_blank" rel="noopener">(Reuters)</a>
+          </li>
+          <li>
+            Underwriters include J.P. Morgan, Jefferies, Citi, Cantor, Deutsche Bank, Société Générale.
+            <a href="https://www.renaissancecapital.com/IPO-Center/News/112536/Digital-asset-platform-Bullish-sets-terms-for-%24599-million-US-IPO"
+              target="_blank" rel="noopener">(Renaissance Capital)</a>
+          </li>
+          <li>
+            3.045M additional shares offered via over‑allotment option.
+            <a href="https://www.investopedia.com/peter-thiel-backed-crypto-firm-bullish-aims-to-raise-usd629m-in-ipo-11784949"
+              target="_blank" rel="noopener">(Investopedia)</a>
+          </li>
+          <li>
+            Anchor investors include BlackRock and ARK, committing ~$200M.
+            <a href="https://www.coindesk.com/business/2025/08/04/crypto-exchange-bullish-seeks-to-raise-up-to-usd629m-in-new-york-share-sale"
+              target="_blank" rel="noopener">(CoinDesk)</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>📊 Business & Financial Snapshot</h3>
+        <ul>
+          <li>
+            Institutional crypto exchange with licenses in U.S., Germany, Hong Kong, Gibraltar.
+            <a href="https://www.reuters.com/business/peter-thiel-backed-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/"
+              target="_blank" rel="noopener">(Reuters)</a>
+          </li>
+          <li>
+            Owns CoinDesk, acquired in 2023.
+            <a href="https://bullish.com/news-insights/news/bullish-launches-initial-public-offering/" target="_blank"
+              rel="noopener">(Bullish.com)</a>
+          </li>
+          <li>
+            Q1 2025: $2.55B average daily trading volume (↑78% YoY).
+            <a href="https://www.reuters.com/business/crypto-exchange-bullishs-us-ipo-filing-reveals-quarterly-loss-2025-07-18/"
+              target="_blank" rel="noopener">(Reuters)</a>
+          </li>
+          <li>
+            Net loss: –$348.6M in Q1 2025 (vs. +$104.8M Q1 2024).
+            <a href="https://www.reuters.com/business/crypto-exchange-bullishs-us-ipo-filing-reveals-quarterly-loss-2025-07-18/"
+              target="_blank" rel="noopener">(Reuters)</a>
+          </li>
+          <li>
+            FY Revenue (TTM): ~$167M on $1.25T+ trading volume.
+            <a href="https://www.renaissancecapital.com/IPO-Center/News/112536/Digital-asset-platform-Bullish-sets-terms-for-%24599-million-US-IPO"
+              target="_blank" rel="noopener">(Renaissance Capital)</a>
+          </li>
+          <li>
+            Holds $3B+ in assets: 24K BTC, 12.6K ETH, $418M cash/stablecoins.
+            <a href="https://www.coindesk.com/business/2025/08/04/crypto-exchange-bullish-seeks-to-raise-up-to-usd629m-in-new-york-share-sale/"
+              target="_blank" rel="noopener">(CoinDesk)</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>⚠️ Market Context</h3>
+        <p>
+          Bullish is entering public markets during a favorable cycle for crypto IPOs, aided by regulatory tailwinds and
+          institutional adoption.
+          <a href="https://www.barrons.com/articles/ipo-stock-figma-circle-coreweave-3ddfcfbd" target="_blank"
+            rel="noopener">(Barron’s)</a>
+        </p>
+      </div>
+
+      <p style="font-style: italic; text-align: center; margin-top: 2rem;">
+        Sources: Reuters, Renaissance Capital, Investopedia, CoinDesk, Bullish.com, Barron’s
+      </p>
+    </div>
+  </div>
+  <!-- Reddit Q2 2025 Earnings Card -->
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-08-01">August 1, 2025</time>
     <i data-lucide="message-circle" class="card-icon"></i>
-    <h1><a href="https://finance.yahoo.com/quote/RDDT" target="_blank" rel="noopener">Reddit Q2 2025 Earnings</a> <span class="category-badge earnings">Earnings</span></h1>
+    <h1><a href="https://finance.yahoo.com/quote/RDDT" target="_blank" rel="noopener">Reddit Q2 2025 Earnings</a> <span
+        class="category-badge earnings">Earnings</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -252,14 +491,18 @@
       <div class="section">
         <div class="highlights" style="margin-bottom: 1.5rem;">
           <h2>Reddit Delivers Exceptional Q2 2025 Performance</h2>
-          <p>Reddit (RDDT) reported outstanding Q2 2025 results for the quarter ended June 30, 2025, demonstrating robust user growth and a successful return to profitability with strong margins across all key metrics.</p>
-          
-          <div class="highlights" style="background-color: var(--card-background); color: var(--card-text-color); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+          <p>Reddit (RDDT) reported outstanding Q2 2025 results for the quarter ended June 30, 2025, demonstrating
+            robust user growth and a successful return to profitability with strong margins across all key metrics.</p>
+
+          <div class="highlights"
+            style="background-color: var(--card-background); color: var(--card-text-color); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
             <h3>Key Highlights:</h3>
             <ul>
               <li><strong>Profitability Return:</strong> Net income of $89 million vs. -$10 million loss in Q2 2024</li>
-              <li><strong>User Growth:</strong> 110.4M daily active users (+21% YoY), with international growth of +32%</li>
-              <li><strong>Revenue Surge:</strong> $499.6M total revenue (+78% YoY), driven by 84% advertising growth</li>
+              <li><strong>User Growth:</strong> 110.4M daily active users (+21% YoY), with international growth of +32%
+              </li>
+              <li><strong>Revenue Surge:</strong> $499.6M total revenue (+78% YoY), driven by 84% advertising growth
+              </li>
               <li><strong>Strong Margins:</strong> 90.8% gross margin and 33.4% adjusted EBITDA margin</li>
               <li><strong>Cash Generation:</strong> $111M in operating and free cash flow</li>
             </ul>
@@ -363,14 +606,17 @@
             <li><strong>International Users:</strong> Driving significant growth with 32% increase in DAUs</li>
           </ul>
 
-          <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #ff4500;">
+          <div class="highlights"
+            style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #ff4500;">
             <h4>Q3 2025 Guidance</h4>
             <p><strong>Revenue:</strong> $535M - $545M<br>
-            <strong>Adjusted EBITDA:</strong> $185M - $195M<br>
-            <strong>Cash Position:</strong> $2.06B in cash and marketable securities</p>
+              <strong>Adjusted EBITDA:</strong> $185M - $195M<br>
+              <strong>Cash Position:</strong> $2.06B in cash and marketable securities
+            </p>
           </div>
-          
-          <p style="font-style: italic; text-align: center; margin-top: 2rem;">Source: Reddit Investor Relations & TipRanks Analysis</p>
+
+          <p style="font-style: italic; text-align: center; margin-top: 2rem;">Source: Reddit Investor Relations &
+            TipRanks Analysis</p>
         </div>
       </div>
     </div>
@@ -379,7 +625,8 @@
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-30">July 30, 2025</time>
     <i data-lucide="trending-up" class="card-icon"></i>
-    <h1><a href="https://finance.yahoo.com/quote/PTON" target="_blank" rel="noopener">Peloton Stock Rallies on UBS Upgrade</a> <span class="category-badge earnings">Earnings</span></h1>
+    <h1><a href="https://finance.yahoo.com/quote/PTON" target="_blank" rel="noopener">Peloton Stock Rallies on UBS
+        Upgrade</a> <span class="category-badge earnings">Earnings</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -387,33 +634,46 @@
       <div class="section">
         <div class="highlights" style="margin-bottom: 1.5rem;">
           <h2>UBS Upgrade Spurs Peloton Stock Rally Ahead of Earnings</h2>
-          <p>UBS's upgrade of Peloton stock from Neutral to Buy, issued on July 30, 2025, has triggered a significant rally in Peloton shares just days ahead of its Q4 2025 earnings report scheduled for August 7, 2025.</p>
-          
-          <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+          <p>UBS's upgrade of Peloton stock from Neutral to Buy, issued on July 30, 2025, has triggered a significant
+            rally in Peloton shares just days ahead of its Q4 2025 earnings report scheduled for August 7, 2025.</p>
+
+          <div class="highlights"
+            style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
             <h3>Key Points:</h3>
             <ul>
-              <li><strong>Stock Performance:</strong> Jumped 8% in premarket trading and soared as much as 12.1% intraday, with trading volume reaching 8.8 million shares.</li>
-              <li><strong>Price Movement:</strong> Moved from $6.59 to $7.04 during the rally, despite a 95% year-to-date decline in share price.</li>
-              <li><strong>New Price Target:</strong> UBS analyst Arpine Kocharyan set an $11 price target (formerly $7.50), suggesting upside potential of nearly 80%.</li>
-              <li><strong>Cost Savings:</strong> Projected to save $200M+ by fiscal 2026, with $90-100M in annualized revenue gains from subscription price hikes.</li>
+              <li><strong>Stock Performance:</strong> Jumped 8% in premarket trading and soared as much as 12.1%
+                intraday, with trading volume reaching 8.8 million shares.</li>
+              <li><strong>Price Movement:</strong> Moved from $6.59 to $7.04 during the rally, despite a 95%
+                year-to-date decline in share price.</li>
+              <li><strong>New Price Target:</strong> UBS analyst Arpine Kocharyan set an $11 price target (formerly
+                $7.50), suggesting upside potential of nearly 80%.</li>
+              <li><strong>Cost Savings:</strong> Projected to save $200M+ by fiscal 2026, with $90-100M in annualized
+                revenue gains from subscription price hikes.</li>
               <li><strong>Earnings Call:</strong> Scheduled for August 7, 2025, at 8:30 a.m. ET.</li>
             </ul>
           </div>
 
           <h3>Analyst Outlook</h3>
-          <p>UBS anticipates Peloton could guide toward fiscal 2026 EBITDA between $400 million and $450 million, well above current consensus. The upgrade is built on expectations of stabilizing subscriber metrics, improving web traffic, and significant cost-cutting measures.</p>
-          
+          <p>UBS anticipates Peloton could guide toward fiscal 2026 EBITDA between $400 million and $450 million, well
+            above current consensus. The upgrade is built on expectations of stabilizing subscriber metrics, improving
+            web traffic, and significant cost-cutting measures.</p>
+
           <h3>Market Sentiment</h3>
-          <p>While some analysts remain wary of the company's heavy year-to-date losses and negative forward PE ratio (-14.7x), UBS views the current valuation as "undemanding" and sees upside for patient investors.</p>
-          
-          <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #1e88e5;">
+          <p>While some analysts remain wary of the company's heavy year-to-date losses and negative forward PE ratio
+            (-14.7x), UBS views the current valuation as "undemanding" and sees upside for patient investors.</p>
+
+          <div class="highlights"
+            style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #1e88e5;">
             <h4>Earnings Call Details</h4>
             <p><strong>When:</strong> Thursday, August 7, 2025, 8:30 a.m. ET<br>
-            <strong>Webcast:</strong> <a href="https://investor.onepeloton.com" target="_blank" rel="noopener">Peloton Investor Relations</a><br>
-            Management will address business updates and selected questions from retail and institutional investors.</p>
+              <strong>Webcast:</strong> <a href="https://investor.onepeloton.com" target="_blank" rel="noopener">Peloton
+                Investor Relations</a><br>
+              Management will address business updates and selected questions from retail and institutional investors.
+            </p>
           </div>
-          
-          <p style="font-style: italic; text-align: center; margin-top: 2rem;">Source: Multiple financial reports and Peloton Investor Relations</p>
+
+          <p style="font-style: italic; text-align: center; margin-top: 2rem;">Source: Multiple financial reports and
+            Peloton Investor Relations</p>
         </div>
       </div>
     </div>
@@ -423,7 +683,8 @@
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-07-22">July 22, 2025</time>
     <i data-lucide="trending-up" class="card-icon"></i>
-    <h1><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener">IPO - FIG</a> <span class="category-badge ipo">IPO</span></h1>
+    <h1><a href="https://finance.yahoo.com/quote/FIG" target="_blank" rel="noopener">IPO - FIG</a> <span
+        class="category-badge ipo">IPO</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -574,7 +835,7 @@
       <div class="section">
         <h3>7. Valuation & Recommendation</h3>
         <div class="highlights">
- 
+
           <p><strong>Target Price Range:</strong> $16-18B valuation ($45-50/share post-IPO)</p>
           <p><strong>Time Horizon:</strong> 12–18 months</p>
           <p><strong>Confidence Level:</strong> Medium – Execution and market conditions are key variables.</p>
@@ -793,7 +1054,8 @@
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-06-25">June 25, 2025</time>
     <i data-lucide="dollar-sign" class="card-icon"></i>
-    <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a> <span class="category-badge ipo">IPO</span></h1>
+    <h1><a href="https://finance.yahoo.com/quote/AIRO" target="_blank" rel="noopener">IPO - AIRO</a> <span
+        class="category-badge ipo">IPO</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -874,7 +1136,8 @@
   <div class="card-header" onclick="toggleCard(this)">
     <time datetime="2025-06-30">June 30, 2025</time>
     <i data-lucide="briefcase" class="card-icon"></i>
-    <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a> <span class="category-badge ipo">IPO</span></h1>
+    <h1><a href="https://finance.yahoo.com/quote/CRCL" target="_blank" rel="noopener">IPO - CRCL</a> <span
+        class="category-badge ipo">IPO</span></h1>
     <i data-lucide="chevron-down" class="expand-icon"></i>
   </div>
   <div class="card-content">
@@ -986,7 +1249,7 @@
   </div>
   <script>
     // Category filter logic
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const cardHeaders = document.querySelectorAll('.card-header');
       function getCategoryFromHeader(header) {
@@ -1009,7 +1272,7 @@
         });
       }
       filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
           filterBtns.forEach(b => b.classList.remove('active'));
           this.classList.add('active');
           filterCards(this.dataset.category);
@@ -1072,25 +1335,25 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     // Initialize Lucide icons when the document is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       lucide.createIcons();
     });
   </script>
   <script src="js/nav.min.js?v=20250723" defer></script>
   <script src="/js/dark-mode.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const newsCards = document.querySelectorAll('.card-header');
-      
+
       filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
           // Update active state
           filterBtns.forEach(b => b.classList.remove('active'));
           this.classList.add('active');
-          
+
           const category = this.dataset.category;
-          
+
           // Filter cards
           newsCards.forEach(card => {
             const cardCategory = card.querySelector('.category-badge')?.textContent?.toLowerCase() || '';

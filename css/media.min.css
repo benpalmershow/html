@@ -470,6 +470,8 @@
     word-break: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    order: 3; /* Ensure it appears before links */
+    margin-bottom: 0.5rem;
 }
 
 .media-description::-webkit-scrollbar {
@@ -565,11 +567,24 @@
 .song-links,
 .podcast-links {
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 12px;
-    margin: 1rem 0;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+    overflow-x: auto;
     width: 100%;
-    flex-wrap: wrap;
+    padding: 0.8rem 10px;
+    margin: 1rem 0 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    order: 4; /* Ensure it appears after description */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Chrome/Safari/Edge */
+.podcast-links::-webkit-scrollbar {
+    display: none;
 }
 
 .song-link,

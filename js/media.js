@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         else if (link.icon.includes('amazon')) linkEl.classList.add('amazon-link');
                         else if (link.icon.includes('google')) linkEl.classList.add('google-link');
                         else if (link.icon.includes('rss')) linkEl.classList.add('rss-link');
-                        else if (link.icon.includes('x-twitter')) linkEl.classList.add('x-link');
+                        else if (link.icon.includes('x')) linkEl.classList.add('x-link');
 
                         const linkIcon = document.createElement('i');
                         linkIcon.className = link.icon;

@@ -13,36 +13,35 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
 
-      <link rel="preload" href="css/body.min.css" as="style">
+    <link rel="preload" href="css/body.min.css" as="style">
     <link rel="stylesheet" href="css/dark-mode.css">
-  <link rel="stylesheet" href="css/body.min.css">
+    <link rel="stylesheet" href="css/body.min.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-  <link rel="stylesheet" href="css/financials.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
+    <link rel="stylesheet" href="css/financials.min.css">
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
-    <script src="https://unpkg.com/lucide"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
 </head>
 
 <body>
-  
+
     <nav class="nav-links" id="main-nav"></nav>
     <h1 class="page-title">Numbers</h1>
     <div id="lastUpdated" class="last-updated" style="text-align:center;"></div>
     <div class="container">
         <div class="collapsible-container">
-          
-                <div class="collapsible-content" id="interactive-dashboard-content">
-                    <div class="filters" id="filters">
-                        <button class="filter-btn active" data-category="all">All Categories</button>
-                    </div>
 
-                    <div class="categories" id="categories"></div>
+            <div class="collapsible-content" id="interactive-dashboard-content">
+                <div class="filters" id="filters">
+                    <button class="filter-btn active" data-category="all">All Categories</button>
                 </div>
-            </div>
 
-     
+                <div class="categories" id="categories"></div>
+            </div>
+        </div>
+
+
 
         <script>
             let financialData = null;
@@ -65,7 +64,7 @@
 
             async function fetchFinancialData() {
                 const paths = [
-            
+
                     '/json/financials-data.min.json',
                 ];
 
@@ -223,7 +222,7 @@
                 'Duties Recovered': 'Tariffs and duties collected by U.S. Customs.',
                 'Tariff Revenue': 'Total revenue from tariffs on imports.',
                 'Trade Balance': 'Difference between exports and imports of goods/services.',
-                'Trade Deficit': 'When imports exceed exports; negative value = deficit.',
+                'Trade Deficit': 'Difference between imports and exports; positive value = deficit (imports > exports).',
                 'Passenger Arrivals': 'Number of international passenger arrivals.',
                 'International Air Travelers': 'Number of international air travelers entering the U.S.',
                 'Southern Border Encounters': 'Number of encounters at the southern U.S. border.',
@@ -242,7 +241,16 @@
                 'Jobless Claims (thousand)': 'Number of people filing for unemployment benefits for the first time, in thousands.',
                 'New Home Sales (thousand)': 'Number of newly constructed homes sold, in thousands.',
                 'Monthly Budget Deficit': 'Monthly difference between government spending (outlays) and revenue (receipts).',
-                'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.'
+                'Industrial Production Index': 'Measures real output of manufacturing, mining, and utilities.',
+                'Employment Trends Index': 'Composite measure of employment conditions and labor market trends.',
+                'Housing Market Index': 'Composite measure of housing market conditions including sales, prices, and inventory.',
+                'Pending Home Sales': 'Number of homes under contract but not yet closed; leading indicator of existing home sales.',
+                'Existing Home Sales': 'Number of previously owned homes sold, including single-family, condos, and co-ops.',
+                'Number of Days on Market (Median)': 'Median number of days homes stay on the market before selling; lower = faster sales.',
+                'Personal Consumption Expenditures (PCE)': 'Total consumer spending on goods and services; broader measure than retail sales.',
+                'Shipping Container Rate (China-US 40ft)': 'Cost to ship a 40-foot container from China to US ports; indicator of trade costs and demand.',
+                'Tariff Revenue (Customs Duties)': 'Revenue collected by US Customs from tariffs and duties on imported goods.',
+                'Lumber Futures': 'Price of lumber futures contracts; indicator of construction costs and housing market demand.'
             };
 
             function createIndicatorCard(indicator) {
@@ -321,12 +329,16 @@
 
                 return `
                 <div class="indicator">
-                    <div class="indicator-name" title="${explanation.replace(/"/g, '&quot;')}">${indicator.name}</div>
+                    <div class="indicator-name">
+                        ${indicator.name}
+                        ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" style="margin-left: 8px; width: 16px; height: 16px; color: var(--text-muted); cursor: pointer;"></i>` : ''}
+                    </div>
                     <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
                     ${dataRows}
                     <div class="change-indicators">
                         ${changeIndicators}
                     </div>
+                    <div class="explanation-text" style="display: none; margin-top: 8px; padding: 8px; background: var(--bg-secondary, #f5f5f5); border-radius: 4px; font-size: 0.9em; color: var(--text-secondary, #666);"></div>
                 </div>
             `;
             }
@@ -345,6 +357,28 @@
                 'Commodities': '<i data-lucide="package"></i>',
                 'Prediction Markets': '<i data-lucide="target"></i>'
             };
+
+            function setupInfoIconHandlers() {
+                document.querySelectorAll('.info-icon').forEach(icon => {
+                    icon.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const indicator = this.closest('.indicator');
+                        const explanationDiv = indicator.querySelector('.explanation-text');
+                        const explanation = this.dataset.explanation;
+
+                        if (explanationDiv.style.display === 'none') {
+                            explanationDiv.textContent = explanation;
+                            explanationDiv.style.display = 'block';
+                            this.style.color = 'var(--primary-color, #2C5F5A)';
+                        } else {
+                            explanationDiv.style.display = 'none';
+                            this.style.color = 'var(--text-muted)';
+                        }
+                    });
+                });
+            }
 
             function renderDashboard(filterCategory = 'all') {
                 const categoriesContainer = document.getElementById('categories');
@@ -374,7 +408,12 @@
                 categoriesContainer.innerHTML = html;
 
                 // Re-initialize Lucide icons after updating the content
-                lucide.createIcons();
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+
+                // Add click event listeners for info icons
+                setupInfoIconHandlers();
             }
 
             function setupFilters() {
@@ -415,65 +454,82 @@
                     tooltip.style.zIndex = '9999';
                     tooltip.style.background = 'rgba(44,95,90,0.97)';
                     tooltip.style.color = '#fff';
-                    tooltip.style.padding = '6px 14px';
+                    tooltip.style.padding = '8px 12px';
                     tooltip.style.borderRadius = '6px';
-                    tooltip.style.fontSize = '0.95em';
-                    tooltip.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
-                    tooltip.style.transition = 'opacity 0.18s';
+                    tooltip.style.fontSize = '0.9em';
+                    tooltip.style.fontWeight = '500';
+                    tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)';
+                    tooltip.style.transition = 'opacity 0.2s ease';
                     tooltip.style.opacity = '0';
                     tooltip.style.display = 'none';
+                    tooltip.style.whiteSpace = 'nowrap';
+                    tooltip.style.maxWidth = '200px';
+                    tooltip.style.textAlign = 'center';
                     document.body.appendChild(tooltip);
                 }
 
                 function showTooltip(text, x, y) {
                     tooltip.textContent = text;
-                    tooltip.style.left = x + 'px';
-                    tooltip.style.top = y + 'px';
-                    tooltip.style.opacity = '1';
                     tooltip.style.display = 'block';
+
+                    // Get actual tooltip dimensions after setting text
+                    const tooltipRect = tooltip.getBoundingClientRect();
+                    const tooltipWidth = tooltipRect.width;
+
+                    // Center the tooltip horizontally and position it above the button
+                    tooltip.style.left = Math.max(10, x - tooltipWidth / 2) + 'px';
+                    tooltip.style.top = (y - 40) + 'px';
+                    tooltip.style.opacity = '1';
                 }
                 function hideTooltip() {
                     tooltip.style.opacity = '0';
                     tooltip.style.display = 'none';
+                    tooltip.dataset.activeButton = '';
                 }
 
-                // Desktop hover
-                filtersContainer.addEventListener('mouseover', function (e) {
-                    const btn = e.target.closest('.filter-btn');
-                    if (btn && btn.dataset.tooltip) {
-                        const rect = btn.getBoundingClientRect();
-                        showTooltip(btn.dataset.tooltip, rect.left + rect.width / 2, rect.top - 10);
-                    }
-                });
-                filtersContainer.addEventListener('mouseout', function (e) {
-                    hideTooltip();
-                });
-
-                // Touch/mobile: show tooltip on touchstart/click
-                filtersContainer.addEventListener('touchstart', function (e) {
-                    const btn = e.target.closest('.filter-btn');
-                    if (btn && btn.dataset.tooltip) {
-                        const rect = btn.getBoundingClientRect();
-                        showTooltip(btn.dataset.tooltip, rect.left + rect.width / 2, rect.top - 10);
-                        setTimeout(hideTooltip, 1800); // Hide after 1.8s
-                    }
-                }, { passive: true });
+                // Combined click handler for filter buttons and tooltips
                 filtersContainer.addEventListener('click', function (e) {
-                    hideTooltip();
+                    const btn = e.target.closest('.filter-btn');
+                    if (btn) {
+                        // Handle tooltip toggle on double-click or long press
+                        if (e.detail === 2 && btn.dataset.tooltip) { // Double-click
+                            const rect = btn.getBoundingClientRect();
+                            tooltip.dataset.activeButton = btn.dataset.category;
+
+                            requestAnimationFrame(() => {
+                                showTooltip(btn.dataset.tooltip, rect.left + rect.width / 2, rect.top);
+                            });
+
+                            // Auto-hide after 3 seconds
+                            setTimeout(() => {
+                                if (tooltip.dataset.activeButton === btn.dataset.category) {
+                                    hideTooltip();
+                                }
+                            }, 3000);
+                            return;
+                        }
+
+                        // Handle filter change (single click)
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                        btn.classList.add('active');
+                        renderDashboard(btn.dataset.category);
+
+                        // Hide any existing tooltip
+                        hideTooltip();
+                    }
                 });
 
-                // Add click event listener for filter buttons
-                filtersContainer.addEventListener('click', (e) => {
-                    const button = e.target.closest('.filter-btn');
-                    if (button) {
-                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-                        renderDashboard(button.dataset.category);
+                // Hide tooltip when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!filtersContainer.contains(e.target)) {
+                        hideTooltip();
                     }
                 });
 
                 // Initialize Lucide icons after creating filter buttons
-                lucide.createIcons();
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
             }
 
             function initializeDashboard() {
@@ -483,16 +539,24 @@
             }
 
             // Initialize dashboard
-            document.addEventListener('DOMContentLoaded', fetchFinancialData);
+            document.addEventListener('DOMContentLoaded', function () {
+                fetchFinancialData();
+                // Initialize Lucide icons when DOM is ready
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
         </script>
         <script src="/js/dark-mode.js" defer></script>
         <script src="/js/portfolio.min.js" defer></script>
-          <script src="/js/nav.min.js?v=20250723" defer></script>
+        <script src="/js/nav.min.js?v=20250723" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
         <script src="js/portfolio.min.js"></script>
         <script>
             // Initialize Lucide icons
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         </script>
 </body>
 

@@ -358,55 +358,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (item.links && item.links.length > 0) {
             const linksContainer = document.createElement('div');
-            
-            if (item.mediaType === 'song' || item.mediaType === 'podcast' || item.mediaType === 'playlist') {
-                linksContainer.className = item.mediaType === 'song' ? 'song-links' : 'podcast-links';
-                
-                item.links.forEach(link => {
-                    if (link.icon) {
-                        const linkEl = document.createElement('a');
-                        linkEl.href = link.url;
-                        linkEl.className = item.mediaType === 'song' ? 'song-link' : 'podcast-link';
-                        linkEl.target = '_blank';
-                        linkEl.rel = 'noopener noreferrer';
-                        linkEl.setAttribute('title', link.label || link.name);
-
-                        // Add platform-specific CSS classes
-                        if (link.icon.includes('spotify')) linkEl.classList.add('spotify-link');
-                        else if (link.icon.includes('apple')) linkEl.classList.add('apple-link');
-                        else if (link.icon.includes('youtube')) linkEl.classList.add('youtube-link');
-                        else if (link.icon.includes('soundcloud')) linkEl.classList.add('soundcloud-link');
-                        else if (link.icon.includes('amazon')) linkEl.classList.add('amazon-link');
-                        else if (link.icon.includes('google')) linkEl.classList.add('google-link');
-                        else if (link.icon.includes('rss')) linkEl.classList.add('rss-link');
-                        else if (link.icon.includes('x')) linkEl.classList.add('x-link');
-
-                        const linkIcon = document.createElement('i');
-                        linkIcon.className = link.icon;
-                        linkEl.appendChild(linkIcon);
-                        linksContainer.appendChild(linkEl);
-                    }
-                });
-            } else {
-                linksContainer.className = 'media-links';
-                item.links.forEach(link => {
-                    const linkEl = document.createElement('a');
-                    linkEl.href = link.url;
-                    linkEl.className = 'media-link';
-                    linkEl.target = '_blank';
-                    linkEl.rel = 'noopener noreferrer';
-
-                    if (link.icon) {
-                        const linkIcon = document.createElement('i');
-                        linkIcon.className = link.icon;
-                        linkEl.appendChild(linkIcon);
-                        linkEl.appendChild(document.createTextNode(' ' + (link.label || link.name)));
-                    } else {
-                        linkEl.textContent = link.label || link.name;
-                    }
-                    linksContainer.appendChild(linkEl);
-                });
-            }
+            // Use the same logic for all media types
+            linksContainer.className =
+                item.mediaType === 'song' ? 'song-links'
+                : item.mediaType === 'podcast' || item.mediaType === 'playlist' ? 'podcast-links'
+                : 'media-links';
+            item.links.forEach(link => {
+                const isXLink = (link.name && link.name.toLowerCase() === 'x') || (link.label && link.label.toLowerCase() === 'x');
+                const isXIcon = link.icon && (link.icon === 'fab fa-x-twitter' || link.icon === 'fab fa-twitter');
+                const linkEl = document.createElement('a');
+                linkEl.href = link.url;
+                linkEl.target = '_blank';
+                linkEl.rel = 'noopener noreferrer';
+                linkEl.setAttribute('title', link.label || link.name || '');
+                // Platform-specific classes
+                if (link.icon && link.icon.includes('spotify')) linkEl.className = 'spotify-link';
+                else if (link.icon && link.icon.includes('apple')) linkEl.className = 'apple-link';
+                else if (link.icon && link.icon.includes('youtube')) linkEl.className = 'youtube-link';
+                else if (link.icon && link.icon.includes('soundcloud')) linkEl.className = 'soundcloud-link';
+                else if (link.icon && link.icon.includes('amazon')) linkEl.className = 'amazon-link';
+                else if (link.icon && link.icon.includes('google')) linkEl.className = 'google-link';
+                else if (link.icon && link.icon.includes('rss')) linkEl.className = 'rss-link';
+                else if (isXLink) linkEl.className = 'x-link';
+                else linkEl.className = 'media-link';
+                // Render SVG fallback for X
+                if (isXLink) {
+                    linkEl.innerHTML = `<svg viewBox="0 0 120 120" width="1.5em" height="1.5em" fill="white" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.5em;height:1.5em;"><rect width="120" height="120" rx="24" fill="black"/><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
+                } else if (link.icon) {
+                    const linkIcon = document.createElement('i');
+                    linkIcon.className = link.icon;
+                    linkEl.appendChild(linkIcon);
+                }
+                linksContainer.appendChild(linkEl);
+            });
             overlayContent.appendChild(linksContainer);
         }
 

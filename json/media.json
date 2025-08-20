@@ -23,7 +23,7 @@
       {
         "name": "X",
         "url": "https://x.com/theallinpod",
-        "icon": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"
+        "icon": "fab fa-twitter"
       },
       {
         "name": "Apple Podcasts",
@@ -175,7 +175,7 @@
     "author": "Yoni Appelbaum",
     "category": "Economics",
     "mediaType": "book",
-    "description": "Examines how America’s elite have shaped the country’s economic and social systems, leading to stagnation and reduced opportunity.",
+    "description": "Examines how America's elite have shaped the country's economic and social systems, leading to stagnation and reduced opportunity.",
     "date": "January 2024",
     "genre": "Economics",
     "titleColor": "#e3523c",
@@ -213,7 +213,7 @@
     "author": "Bartle Bull",
     "category": "History",
     "mediaType": "book",
-    "description": "Panoptic, fearless, and beautifully written, this book covers the epic, five-millennia history of the region between the Tigris and Euphrates Rivers, the birthplace of civilization and a crucial crossroads between East and West. It explores Iraq’s rich and turbulent past, from its earliest civilizations to modern times.",
+    "description": "Panoptic, fearless, and beautifully written, this book covers the epic, five-millennia history of the region between the Tigris and Euphrates Rivers, the birthplace of civilization and a crucial crossroads between East and West. It explores Iraq's rich and turbulent past, from its earliest civilizations to modern times.",
     "date": "January 2024",
     "genre": "History",
     "cover": "https://www.syndetics.com/index.aspx?isbn=9780802162502&issn=/LC.JPG&client=sfpl&type=xw12&oclc=1418829660",
@@ -1897,5 +1897,21 @@
     "cover": "https://tuckercarlson.com/cdn-cgi/image/width=3840,format=auto,quality=75/https://assets.tuckercarlson.com/3aabf518bdd7f441d9a6d39db7b59ea436306292755a5f398027f547c9affa9d.jpg",
     "url": "https://podcasts.apple.com/us/podcast/the-tucker-carlson-show/id1719657632?i=1000720932381",
     "dateAdded": "2025-08-06"
+  },
+  {
+    "title": "Hozier at Outside Lands (Full Set 2025)",
+    "author": "Hozier",
+    "mediaType": "video",
+    "description": "Full set performance by Hozier at Outside Lands 2025.",
+    "date": "2025-08-11",
+    "cover": "https://img.youtube.com/vi/8eZ6jXQdv4g/maxresdefault.jpg",
+    "links": [
+      {
+        "label": "YouTube",
+        "icon": "fab fa-youtube",
+        "url": "https://youtu.be/8eZ6jXQdv4g?si=k6hGMArHCPO-fchq"
+      }
+    ],
+    "dateAdded": "2025-08-20"
   }
 ]

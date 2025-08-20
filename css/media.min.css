@@ -561,6 +561,68 @@
     color: white;
 }
 
+.youtube-link,
+.spotify-link,
+.apple-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link {
+  font-size: 1.5em;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none !important;
+  opacity: 0.9;
+  transition: all var(--transition-medium);
+  box-shadow: none;
+  border: none;
+  background: none;
+}
+
+.youtube-link i,
+.spotify-link i,
+.apple-link i,
+.soundcloud-link i,
+.amazon-link i,
+.google-link i,
+.rss-link i,
+.x-link i {
+  font-size: 1.5em;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.youtube-link:hover,
+.youtube-link:focus,
+.spotify-link:hover,
+.spotify-link:focus,
+.apple-link:hover,
+.apple-link:focus,
+.soundcloud-link:hover,
+.soundcloud-link:focus,
+.amazon-link:hover,
+.amazon-link:focus,
+.google-link:hover,
+.google-link:focus,
+.rss-link:hover,
+.rss-link:focus,
+.x-link:hover,
+.x-link:focus {
+  opacity: 1;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  text-decoration: none !important;
+  z-index: 1;
+}
+
 /* ==========================================================================
    LOADING & ERROR STATES
    ========================================================================== */

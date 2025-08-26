@@ -1,4 +1,22 @@
 .tag{display:inline-block;background:var(--logo-orange);color:white;padding:0.15rem 0.5rem;border-radius:12px;font-size:0.7rem;margin:0.15rem 0.15rem 0 0;font-weight:500}
+
+/* Tooltip styles */
+.tooltip{position:relative;display:inline-block;border-bottom:1px solid #4a90e2;color:#2c5282;cursor:help;white-space:nowrap;transition:all 0.2s ease;vertical-align:middle}
+.tooltip:hover{border-bottom-color:#2b6cb0;color:#2b6cb0}
+.tooltip .tooltiptext{visibility:hidden;width:220px;max-width:90vw;background-color:#2d3748;color:#f7fafc;text-align:left;border-radius:4px;padding:10px 12px;position:absolute;z-index:1000;bottom:100%;left:0;opacity:0;transition:all 0.2s ease;font-size:0.85em;line-height:1.5;box-shadow:0 3px 6px rgba(0,0,0,0.16);pointer-events:none;border:1px solid #1a202c;white-space:normal;word-wrap:break-word;margin-bottom:8px}
+.tooltip:hover .tooltiptext{visibility:visible;opacity:0.95}
+.tooltip .tooltiptext::after{content:"";position:absolute;top:100%;left:12px;border-width:5px;border-style:solid;border-color:#2d3748 transparent transparent transparent}
+.financial-highlights-note{font-size:0.7em;font-weight:normal;color:#666;margin-left:0.5em}
+.stock-info{background:#f0f7ff;padding:0.5rem 1rem;border-radius:6px;border-left:3px solid #00a9e0;margin-bottom:1rem}
+.stock-info p{margin:0}
+.stock-info p:last-child{margin-top:0.25rem;font-size:0.9em}
+.guidance-box{background-color:#f8f9fa;border-left:3px solid #00a9e0;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 4px 4px 0}
+.guidance-box p:last-child{margin-bottom:0}
+.guidance-box em{display:block;margin-top:0.5rem;font-size:0.9em;color:#666}
+.stock-info-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.stock-up{color:#059669;font-weight:bold}
+.market-cap{font-size:0.9em;color:#666}
+.stock-details{margin:0.25rem 0 0 0;font-size:0.9em}
 .category-badge{display:inline-block;font-size:0.85em;font-weight:bold;padding:0.2em 0.7em;border-radius:1em;margin-right:0.7em;margin-bottom:0.2em;vertical-align:middle;letter-spacing:0.03em}.category-badge.ipo{background:#1e88e5;color:#fff}.category-badge.earnings{background:#43a047;color:#fff}.category-badge.policy{background:#fbc02d;color:#222}.category-badge.legal{background:#8e24aa;color:#fff}
 .category-badge.corrections{background:#e53935;color:#fff}
 .filter-buttons {

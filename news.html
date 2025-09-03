@@ -22,6 +22,7 @@
     <button class="filter-btn ipo" data-category="ipo">IPO</button>
     <button class="filter-btn earnings" data-category="earnings">Earnings</button>
     <button class="filter-btn policy" data-category="policy">Policy</button>
+    <button class="filter-btn healthcare" data-category="healthcare">Healthcare</button>
     <button class="filter-btn legal" data-category="legal">Legal</button>
     <button class="filter-btn corrections" data-category="corrections">Corrections</button>
   </div>
@@ -165,6 +166,59 @@
     </div>
     </div>
     
+  </div>
+
+  <!-- Healthcare Costs Article Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-08-22">August 22, 2025</time>
+    <i data-lucide="heart-pulse" class="card-icon"></i>
+    <h1><a href="article/health.html" target="_blank" rel="noopener">The Hidden Costs of Healthcare: A Broken System</a> <span class="category-badge healthcare">Healthcare</span></h1>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <div class="highlights">
+          <p><strong>Published: August 22, 2025</strong></p>
+          <p>A deep dive into the hidden costs and systemic issues within the American healthcare system, revealing how insurance billing practices can inflate costs while creating a false sense of affordability for patients.</p>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h3>Key Insights</h3>
+        <ul>
+          <li><strong>Cost Disparity:</strong> Blood work costs 3.8x more when billed through insurance ($964.46) vs. private market ($255)</li>
+          <li><strong>Hidden Inflation:</strong> Low out-of-pocket costs mask true healthcare expenses and discourage cost-conscious decisions</li>
+          <li><strong>Systemic Issues:</strong> Healthcare providers prioritize documentation and liability over patient convenience</li>
+          <li><strong>Privacy Concerns:</strong> Insurance incentives may compromise patient data security</li>
+          <li><strong>Transparency Gap:</strong> Lack of clear pricing information contributes to inflated healthcare costs</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Cost Breakdown Example</h3>
+        <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #ef4444;">
+          <h4>Blood Work Cost Comparison</h4>
+          <p><strong>Private Market Total:</strong> $255<br>
+          <strong>Insurance Billed Total:</strong> $964.46<br>
+          <strong>Patient Out-of-Pocket:</strong> $11.18<br>
+          <strong>Cost Multiplier:</strong> 3.8x higher through insurance</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Why This Matters</h3>
+        <p>This analysis reveals how the current healthcare system creates perverse incentives that drive up costs while making patients feel like they're getting a good deal. The system's opacity makes it difficult for consumers to make informed decisions about their healthcare spending, ultimately contributing to the broader issue of rising healthcare costs in America.</p>
+      </div>
+
+      <div class="section">
+        <h3>Read the Full Article</h3>
+        <p>Explore the complete analysis including detailed cost breakdowns, system incentives, and potential solutions in the full article:</p>
+        <p style="text-align: center; margin-top: 1rem;">
+          <a href="article/health.html" target="_blank" rel="noopener" style="display: inline-block; background: var(--accent-color, #2C5F5A); color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 600; transition: background 0.2s;">Read Full Article</a>
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- Correction Notice Card -->
@@ -436,6 +490,25 @@
     .neg {
       color: #ef4444;
       font-weight: 600;
+    }
+
+    /* Healthcare filter button styling - left edge color only */
+    .filter-btn.healthcare {
+      border-left: 4px solid #3b82f6;
+    }
+
+    .filter-btn.healthcare:hover {
+      border-left-color: #2563eb;
+    }
+
+    .filter-btn.healthcare.active {
+      border-left-color: #1d4ed8;
+    }
+
+    /* Healthcare badge styling - unique color */
+    .category-badge.healthcare {
+      background: #06b6d4;
+      color: #fff;
     }
   </style>
 

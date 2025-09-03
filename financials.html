@@ -21,6 +21,27 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Infogram Embed Script -->
+    <script>
+        !function(e,n,i,s){
+            var d="InfogramEmbeds";
+            var o=e.getElementsByTagName(n)[0];
+            if(window[d]&&window[d].initialized)
+                window[d].process&&window[d].process();
+            else if(!e.getElementById(i)){
+                var r=e.createElement(n);
+                r.async=1,
+                r.id=i,
+                r.src=s,
+                o.parentNode.insertBefore(r,o)
+            }
+        }(document,"script","infogram-async",
+          "https://e.infogram.com/js/dist/embed-loader-min.js");
+    </script>
+    
+    <!-- Financials Chart JavaScript -->
+    <script src="js/financials-chart.js"></script>
 
 </head>
 
@@ -38,6 +59,30 @@
                 </div>
 
                 <div class="categories" id="categories"></div>
+                
+                <!-- Chart Modal Popup -->
+                <div id="chartModal" class="chart-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+                    <div class="chart-modal-content" style="background-color: var(--bg-primary, #fff); margin: 5% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; position: relative;">
+                        <div class="chart-modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color, #e0e0e0); padding-bottom: 10px;">
+                            <h3 style="margin: 0; color: var(--text-primary, #333); font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i data-lucide="trending-up" style="width: 24px; height: 24px; color: var(--accent-color, #2C5F5A);"></i>
+                                Freightos Baltic Index (FBX) - Interactive Chart
+                            </h3>
+                            <button id="closeChartModal" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-muted, #666); padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">&times;</button>
+                        </div>
+                        <div class="chart-modal-body">
+                            <p style="margin: 0 0 20px 0; color: var(--text-secondary, #666); font-size: 0.95rem; line-height: 1.5;">
+                                Interactive chart showing real-time shipping container rates from China to the US West Coast. Updated daily by Freightos. Click and drag to zoom, hover for detailed values.
+                            </p>
+                            <div class="infogram-embed" 
+                                 data-id="_/iWaVJnijhUTxyFOJszmw" 
+                                 data-type="interactive" 
+                                 data-title="Embeddable FBX Chart (FBX01)"
+                                 style="width: 100%; height: 500px; border: none; border-radius: 4px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -269,6 +314,7 @@
                     <div class="indicator-name">
                         ${indicator.name}
                         ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" style="margin-left: 8px; width: 16px; height: 16px; color: var(--text-muted); cursor: pointer;"></i>` : ''}
+                        ${indicator.name === 'Shipping Container Rate (China-US 40ft)' ? `<i data-lucide="bar-chart-3" class="chart-icon" style="margin-left: 8px; width: 16px; height: 16px; color: var(--accent-color, #2C5F5A); cursor: pointer;" title="View Interactive Chart"></i>` : ''}
                     </div>
                     <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
                     ${dataRows}
@@ -282,17 +328,13 @@
 
             // Category icons mapping with Lucide icons
             const categoryIcons = {
-                'Inflation Measures': '<i data-lucide="bar-chart-2"></i>',
                 'Employment Indicators': '<i data-lucide="users"></i>',
                 'Housing Market': '<i data-lucide="home"></i>',
-                'Interest Rates': '<i data-lucide="percent"></i>',
                 'Business Indicators': '<i data-lucide="briefcase"></i>',
                 'Consumer Indicators': '<i data-lucide="shopping-cart"></i>',
                 'Trade & Tariffs': '<i data-lucide="ship"></i>',
-                'Travel & Tourism': '<i data-lucide="plane"></i>',
                 'Government': '<i data-lucide="landmark"></i>',
-                'Commodities': '<i data-lucide="package"></i>',
-                'Prediction Markets': '<i data-lucide="target"></i>'
+                'Commodities': '<i data-lucide="package"></i>'
             };
 
             function setupInfoIconHandlers() {
@@ -316,6 +358,8 @@
                     });
                 });
             }
+
+
 
             function renderDashboard(filterCategory = 'all') {
                 const categoriesContainer = document.getElementById('categories');
@@ -351,6 +395,7 @@
 
                 // Add click event listeners for info icons
                 setupInfoIconHandlers();
+                setupChartIconHandlers();
             }
 
             function setupFilters() {
@@ -473,6 +518,7 @@
                 document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
                 setupFilters();
                 renderDashboard();
+                setupModalHandlers();
             }
 
             // Initialize dashboard

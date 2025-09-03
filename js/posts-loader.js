@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(posts => {
       const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
-      valid.sort((a, b) => new Date(b.date) - new Date(a.date));
       feed.innerHTML = valid.map(p => `
         <article class="post-item" role="article">
           <div class="card-title"><time datetime="${p.date}">${p.date}</time></div>

@@ -26,6 +26,58 @@
     <button class="filter-btn legal" data-category="legal">Legal</button>
     <button class="filter-btn corrections" data-category="corrections">Corrections</button>
   </div>
+
+  <!-- Fiber Supplement Scam Article Card -->
+  <div class="card-header" onclick="toggleCard(this)">
+    <time datetime="2025-09-02">Sept 2, 2025</time>
+    <i data-lucide="leaf" class="card-icon"></i>
+    <h1><a href="article/fiber.html" target="_blank" rel="noopener">The Fiber Supplement Scam: How Capitalism Commodifies Basic Nutrition</a> <span class="category-badge healthcare">Healthcare</span></h1>
+    <i data-lucide="chevron-down" class="expand-icon"></i>
+  </div>
+  <div class="card-content">
+    <div class="card-inner">
+      <div class="section">
+        <div class="highlights">
+          <p><strong>Published: September 2, 2025</strong></p>
+          <p>A deep dive into how the supplement industry has turned basic nutrition into a $4 billion market, revealing the perverse incentives that drive companies to profit from our health problems while selling us 'solutions' that often make things worse.</p>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h3>Key Insights</h3>
+        <ul>
+          <li><strong>Cost Disparity:</strong> Fiber supplements cost 7.2x more than natural alternatives ($143.95 vs. $19.95)</li>
+          <li><strong>Market Scale:</strong> The supplement industry has grown to $4 billion by commodifying basic nutrition</li>
+          <li><strong>Systemic Issues:</strong> Companies create problems (poor diet), sell solutions (supplements), then profit from side effects</li>
+          <li><strong>Natural Alternatives:</strong> Real food provides complete nutritional packages that supplements can't replicate</li>
+          <li><strong>Simple Solution:</strong> Eat more vegetables, fruits, legumes, and whole grains instead of processed supplements</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Cost Breakdown Example</h3>
+        <div class="highlights" style="background-color: var(--card-background); padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #10b981;">
+          <h4>Supplement vs. Natural Food Cost Comparison</h4>
+          <p><strong>Fiber Powder (30 servings):</strong> $24.99 vs. <strong>1 lb Black Beans:</strong> $1.99<br>
+          <strong>Fiber Gummies (60 count):</strong> $19.99 vs. <strong>1 lb Raspberries:</strong> $4.99<br>
+          <strong>Fiber Drink (12 bottles):</strong> $34.99 vs. <strong>1 lb Broccoli:</strong> $2.99<br>
+          <strong>Total Supplement Cost:</strong> $143.95 vs. <strong>Natural Alternatives:</strong> $19.95</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Why This Matters</h3>
+        <p>This analysis reveals how capitalism has commodified basic nutrition, turning simple dietary needs into complex, expensive products that often cause more problems than they solve. The system rewards complexity over simplicity, profit over health, and perpetual consumption over actual wellness.</p>
+      </div>
+
+      <div class="section">
+        <p style="text-align: center; margin-top: 1rem;">
+          <a href="article/fiber.html" target="_blank" rel="noopener" style="display: inline-block; background: var(--accent-color, #2C5F5A); color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 600; transition: background 0.2s;">Read Full Article</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- Okta Q2 FY2026 Earnings Card -->
 <div class="card-header" onclick="toggleCard(this)">
   <time datetime="2025-08-26">Aug 26, 2025</time>
@@ -509,6 +561,69 @@
     .category-badge.healthcare {
       background: #06b6d4;
       color: #fff;
+    }
+
+    /* Stock information styling for better dark mode readability */
+    .stock-info {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+    }
+
+    .stock-info p {
+      color: #333;
+      margin: 0.5rem 0;
+    }
+
+    .stock-info-header p {
+      color: #333;
+      margin: 0.5rem 0;
+    }
+
+    .stock-details {
+      color: #666 !important;
+      font-size: 0.9em;
+    }
+
+    /* Ensure stock price and market cap are readable */
+    .stock-info strong {
+      color: #333;
+    }
+
+    .market-cap {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    /* Stock change indicators */
+    .stock-up {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .stock-down {
+      color: #ef4444;
+      font-weight: 600;
+    }
+
+    /* Dark mode overrides */
+    @media (prefers-color-scheme: dark) {
+      .stock-info {
+        background-color: #2d3748;
+        border-color: #4a5568;
+      }
+      
+      .stock-info p,
+      .stock-info-header p,
+      .stock-info strong {
+        color: #e2e8f0;
+      }
+      
+      .stock-details,
+      .market-cap {
+        color: #a0aec0 !important;
+      }
     }
   </style>
 

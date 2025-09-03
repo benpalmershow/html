@@ -18,9 +18,356 @@
     <link rel="stylesheet" href="css/body.min.css">
     <link rel="stylesheet" href="css/dark-mode.css">
     <link rel="stylesheet" href="css/financials.min.css">
+    
+    <!-- Chart Modal Styles -->
+    <style>
+        .chart-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .chart-modal-content {
+            background-color: var(--bg-primary, #fff);
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color, #e0e0e0);
+        }
+        
+        .chart-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color, #2C5F5A);
+            padding-bottom: 15px;
+        }
+        
+        .chart-modal-header h3 {
+            margin: 0;
+            color: var(--text-primary, #333);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .chart-modal-header h3 i {
+            width: 28px;
+            height: 28px;
+            color: var(--accent-color, #2C5F5A);
+        }
+        
+        #closeChartModal {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text-muted, #666);
+            padding: 0;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        #closeChartModal:hover {
+            background-color: var(--bg-secondary, #f5f5f5);
+            color: var(--text-primary, #333);
+        }
+        
+        .chart-modal-body p {
+            margin: 0 0 20px 0;
+            color: var(--text-secondary, #666);
+            font-size: 1rem;
+            line-height: 1.6;
+            padding: 15px;
+            background: var(--bg-secondary, #f8f9fa);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color, #2C5F5A);
+        }
+        
+        .chart-icon {
+            transition: all 0.2s ease;
+        }
+        
+        .chart-icon:hover {
+            transform: scale(1.1);
+            color: var(--logo-orange, #D4822A) !important;
+        }
+        
+        /* Real-time Controls Styling */
+        .real-time-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: auto;
+        }
+        
+        .real-time-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .real-time-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary, #666);
+            font-weight: 500;
+        }
+        
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--accent-color, #2C5F5A);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* Update Frequency Selector */
+        .update-frequency select {
+            padding: 6px 12px;
+            border: 1px solid var(--border-color, #e0e0e0);
+            border-radius: 6px;
+            background: var(--bg-primary, #fff);
+            color: var(--text-primary, #333);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .update-frequency select:hover {
+            border-color: var(--accent-color, #2C5F5A);
+        }
+        
+        .update-frequency select:focus {
+            outline: none;
+            border-color: var(--accent-color, #2C5F5A);
+            box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.2);
+        }
+        
+        /* Last Update Time */
+        .last-update-time {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 500;
+            padding: 4px 8px;
+            background: var(--bg-secondary, #f8f9fa);
+            border-radius: 4px;
+            border: 1px solid var(--border-color, #e0e0e0);
+            transition: color 0.3s ease;
+        }
+        
+        /* Real-time Indicator */
+        .real-time-indicator {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #2C5F5A, #87C5BE);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(44, 95, 90, 0.3);
+            animation: slideInDown 0.5s ease;
+        }
+        
+        /* Data Error Indicator */
+        .data-error-indicator {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #dc3545, #e74c3c);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+            animation: slideInDown 0.5s ease;
+        }
+        
+        .error-icon {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .retry-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .retry-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .retry-btn:active {
+            transform: translateY(0);
+        }
+        
+        .real-time-pulse {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+        
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Live Data Point Styling */
+        .chart-modal-body canvas {
+            position: relative;
+        }
+        
+        /* Responsive adjustments for real-time controls */
+        @media (max-width: 768px) {
+            .real-time-controls {
+                flex-direction: column;
+                gap: 15px;
+                margin-left: 0;
+                margin-top: 15px;
+                align-items: flex-start;
+            }
+            
+            .chart-modal-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .switch {
+                width: 44px;
+                height: 22px;
+            }
+            
+            .slider:before {
+                height: 16px;
+                width: 16px;
+            }
+            
+            input:checked + .slider:before {
+                transform: translateX(22px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .chart-modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .chart-modal-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .chart-modal-body p {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+    
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Infogram Embed Script -->
     <script>
@@ -61,25 +408,17 @@
                 <div class="categories" id="categories"></div>
                 
                 <!-- Chart Modal Popup -->
-                <div id="chartModal" class="chart-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-                    <div class="chart-modal-content" style="background-color: var(--bg-primary, #fff); margin: 5% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; position: relative;">
-                        <div class="chart-modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color, #e0e0e0); padding-bottom: 10px;">
-                            <h3 style="margin: 0; color: var(--text-primary, #333); font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;">
-                                <i data-lucide="trending-up" style="width: 24px; height: 24px; color: var(--accent-color, #2C5F5A);"></i>
-                                Freightos Baltic Index (FBX) - Interactive Chart
+                <div id="chartModal" class="chart-modal">
+                    <div class="chart-modal-content">
+                        <div class="chart-modal-header">
+                            <h3>
+                                <i data-lucide="trending-up"></i>
+                                Interactive Chart
                             </h3>
-                            <button id="closeChartModal" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-muted, #666); padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">&times;</button>
+                            <button id="closeChartModal">&times;</button>
                         </div>
                         <div class="chart-modal-body">
-                            <p style="margin: 0 0 20px 0; color: var(--text-secondary, #666); font-size: 0.95rem; line-height: 1.5;">
-                                Interactive chart showing real-time shipping container rates from China to the US West Coast. Updated daily by Freightos. Click and drag to zoom, hover for detailed values.
-                            </p>
-                            <div class="infogram-embed" 
-                                 data-id="_/iWaVJnijhUTxyFOJszmw" 
-                                 data-type="interactive" 
-                                 data-title="Embeddable FBX Chart (FBX01)"
-                                 style="width: 100%; height: 500px; border: none; border-radius: 4px;">
-                            </div>
+                            <p>Loading chart...</p>
                         </div>
                     </div>
                 </div>
@@ -314,7 +653,7 @@
                     <div class="indicator-name">
                         ${indicator.name}
                         ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" style="margin-left: 8px; width: 16px; height: 16px; color: var(--text-muted); cursor: pointer;"></i>` : ''}
-                        ${indicator.name === 'Shipping Container Rate (China-US 40ft)' ? `<i data-lucide="bar-chart-3" class="chart-icon" style="margin-left: 8px; width: 16px; height: 16px; color: var(--accent-color, #2C5F5A); cursor: pointer;" title="View Interactive Chart"></i>` : ''}
+                        ${['Shipping Container Rate (China-US 40ft)', 'CPI', 'PPI', 'Jobs Added', 'Housing Starts', 'New Home Sales', 'Industrial Production Index', 'Small Business Optimism Index', 'Jobless Claims', 'Job Openings', 'Private Employment', 'Affordability Index', 'Housing Market Index', 'Existing Home Sales', 'Number of Days on Market (Median)', 'Copper Futures', 'Lumber Futures', '20ft Equivalents (TEUs)'].includes(indicator.name) ? `<i data-lucide="bar-chart-3" class="chart-icon" style="margin-left: 8px; width: 16px; height: 16px; color: var(--accent-color, #2C5F5A); cursor: pointer;" title="View Interactive Chart"></i>` : ''}
                     </div>
                     <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a></div>
                     ${dataRows}

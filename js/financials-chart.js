@@ -803,19 +803,13 @@ function showChartModal(indicatorName) {
     const chartConfig = getChartConfig(indicatorName);
     
     if (chartConfig) {
-        // Update modal header
+        // Update modal header - remove title, keep only icon
         modalHeader.innerHTML = `
             <i data-lucide="${chartConfig.icon}" style="width: 24px; height: 24px; color: var(--accent-color, #2C5F5A);"></i>
-            ${chartConfig.title}
         `;
         
-        // Update modal body
-        modalBody.innerHTML = `
-            <p style="margin: 0 0 20px 0; color: var(--text-secondary, #666); font-size: 0.95rem; line-height: 1.5;">
-                ${chartConfig.description}
-            </p>
-            ${chartConfig.chartContent}
-        `;
+        // Update modal body - remove description, keep only chart content
+        modalBody.innerHTML = chartConfig.chartContent;
         
         // Show modal
         modal.style.display = 'block';
@@ -833,16 +827,12 @@ function showChartModal(indicatorName) {
             window.InfogramEmbeds.process();
         }
     } else {
-        // Fallback for indicators without chart configurations
+        // Fallback for indicators without chart configurations - remove header text and description
         modalHeader.innerHTML = `
             <i data-lucide="bar-chart-3" style="width: 24px; height: 24px; color: var(--accent-color, #2C5F5A);"></i>
-            ${indicatorName} - Chart
         `;
         
         modalBody.innerHTML = `
-            <p style="margin: 0 0 20px 0; color: var(--text-secondary, #666); font-size: 0.95rem; line-height: 1.5;">
-                Chart data for this indicator is not yet available. Check back later for interactive visualizations.
-            </p>
             <div style="text-align: center; padding: 40px; color: var(--text-muted);">
                 <i data-lucide="bar-chart-3" style="width: 64px; height: 64px; margin-bottom: 20px; opacity: 0.3;"></i>
                 <p>Chart coming soon...</p>

@@ -874,7 +874,7 @@ function getChartConfig(indicatorName) {
             title: 'Consumer Price Index (CPI) - Historical Trend',
             description: 'Interactive chart showing the historical trend of the Consumer Price Index, a key measure of inflation. Hover for detailed values and click legend items to toggle series.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
+                <div style="position: relative; height: 300px; width: 100%; margin: -10px 0;">
                     <canvas id="cpiChart" style="width: 100%; height: 100%;"></canvas>
                 </div>
             `,
@@ -1282,20 +1282,40 @@ function initializeChart(chartConfig) {
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
+                            layout: {
+                                padding: { top: 5, right: 5, bottom: 5, left: 5 }
+                            },
                             animation: {
-                                duration: 1000,
+                                duration: 800,
                                 easing: 'easeInOutQuart'
                             },
                             plugins: {
                                 legend: {
                                     position: 'top',
+                                    align: 'center',
                                     labels: {
                                         usePointStyle: true,
-                                        padding: 20,
+                                        padding: 8,
+                                        boxWidth: 6,
                                         font: {
-                                            size: 12
+                                            size: 10
                                         }
                                     }
+                                },
+                                title: {
+                                    display: true,
+                                    padding: { bottom: 5 }
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    padding: 8,
+                                    titleFont: { size: 10 },
+                                    bodyFont: { size: 10 },
+                                    boxPadding: 4
+                                },
+                                datalabels: {
+                                    display: false
                                 },
                                 tooltip: {
                                     mode: 'index',
@@ -1323,26 +1343,37 @@ function initializeChart(chartConfig) {
                                 }
                             },
                             scales: {
-                                y: {
-                                    beginAtZero: false,
+                                x: {
                                     grid: {
-                                        color: 'rgba(0, 0, 0, 0.1)'
+                                        display: false,
+                                        drawBorder: false
                                     },
                                     ticks: {
+                                        maxRotation: 0,
+                                        autoSkip: true,
+                                        maxTicksLimit: 6,
+                                        padding: 2,
                                         font: {
-                                            size: 11
+                                            size: 9
                                         }
                                     }
                                 },
-                                x: {
+                                y: {
+                                    beginAtZero: false,
                                     grid: {
-                                        color: 'rgba(0, 0, 0, 0.1)'
+                                        color: 'rgba(0, 0, 0, 0.03)',
+                                        drawBorder: false
                                     },
                                     ticks: {
+                                        padding: 2,
                                         font: {
-                                            size: 11
+                                            size: 9
+                                        },
+                                        callback: function(value) {
+                                            return value.toLocaleString();
                                         }
-                                    }
+                                    },
+                                    position: 'right'
                                 }
                             },
                             interaction: {

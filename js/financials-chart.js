@@ -527,8 +527,8 @@ class RealTimeChartManager {
                 datasets: [{
                     label: 'Container Rate ($K)',
                     data: [...baseValues, parseFloat(newValue.toFixed(2))],
-                    borderColor: '#2C5F5A',
-                    backgroundColor: 'rgba(44, 95, 90, 0.1)',
+                    borderColor: '#1D3F3B',
+                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -858,13 +858,11 @@ function getChartConfig(indicatorName) {
             type: 'infogram',
             icon: 'trending-up',
             title: 'Freightos Baltic Index (FBX) - Interactive Chart',
-            description: 'Interactive chart showing real-time shipping container rates from China to the US West Coast. Updated daily by Freightos. Click and drag to zoom, hover for detailed values.',
             chartContent: `
                 <div class="infogram-embed" 
                      data-id="_/iWaVJnijhUTxyFOJszmw" 
                      data-type="interactive" 
                      data-title="Embeddable FBX Chart (FBX01)"
-                     style="width: 100%; height: 500px; border: none; border-radius: 4px;">
                 </div>
             `
         },
@@ -872,10 +870,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'trending-up',
             title: 'Consumer Price Index (CPI) - Historical Trend',
-            description: 'Interactive chart showing the historical trend of the Consumer Price Index, a key measure of inflation. Hover for detailed values and click legend items to toggle series.',
             chartContent: `
-                <div style="position: relative; height: 300px; width: 100%; margin: -10px 0;">
-                    <canvas id="cpiChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="cpiChart"></canvas>
                 </div>
             `,
             data: {
@@ -883,8 +880,8 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'CPI Index',
                     data: [319.8, 320.8, 321.465, 322.561, 323.2, null],
-                    borderColor: '#2C5F5A',
-                    backgroundColor: 'rgba(44, 95, 90, 0.1)',
+                    borderColor: '#1D3F3B',
+                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -894,10 +891,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'trending-up',
             title: 'Producer Price Index (PPI) - Historical Trend',
-            description: 'Interactive chart showing the historical trend of the Producer Price Index, a leading indicator of consumer inflation. Hover for detailed values.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="ppiChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="ppiChart"></canvas>
                 </div>
             `,
             data: {
@@ -905,8 +901,8 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'PPI Index',
                     data: [148.061, 147.700, 148.228, 148.270, 149.671],
-                    borderColor: '#87C5BE',
-                    backgroundColor: 'rgba(135, 197, 190, 0.1)',
+                    borderColor: '#5A9D96',
+                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -916,10 +912,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'users',
             title: 'Monthly Jobs Added - Employment Growth',
-            description: 'Interactive chart showing monthly changes in nonfarm payroll employment. Positive values indicate job growth, negative values indicate job losses.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="jobsChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="jobsChart"></canvas>
                 </div>
             `,
             data: {
@@ -937,10 +932,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'home',
             title: 'Housing Starts - New Construction Activity',
-            description: 'Interactive chart showing monthly housing starts in millions of units. This leading indicator reflects housing market activity and economic health.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="housingChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="housingChart"></canvas>
                 </div>
             `,
             data: {
@@ -948,11 +942,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Housing Starts (Millions)',
                     data: [1.339, 1.392, 1.263, 1.321, 1.4],
-                    borderColor: '#D4822A',
-                    backgroundColor: 'rgba(212, 130, 42, 0.1)',
+                    borderColor: '#B56A18',
+                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#D4822A'
+                    pointBackgroundColor: '#B56A18'
                 }]
             }
         },
@@ -960,10 +954,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'home',
             title: 'New Home Sales - Monthly Trends',
-            description: 'Interactive chart showing monthly new home sales in thousands of units. Reflects consumer confidence and housing market demand.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="newHomeChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="newHomeChart"></canvas>
                 </div>
             `,
             data: {
@@ -983,10 +976,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'factory',
             title: 'Industrial Production Index - Manufacturing Activity',
-            description: 'Interactive chart showing the Industrial Production Index, a key measure of manufacturing and industrial capacity utilization.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="ipiChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="ipiChart"></canvas>
                 </div>
             `,
             data: {
@@ -994,11 +986,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'IPI Index',
                     data: [103.6, 103.7, 103.7, 104.1, 104.0],
-                    borderColor: '#2C5F5A',
-                    backgroundColor: 'rgba(44, 95, 90, 0.1)',
+                    borderColor: '#1D3F3B',
+                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#2C5F5A'
+                    pointBackgroundColor: '#1D3F3B'
                 }]
             }
         },
@@ -1006,10 +998,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'briefcase',
             title: 'Small Business Optimism Index - Business Confidence',
-            description: 'Interactive chart showing small business optimism levels. Values above 100 indicate expansion, below 100 suggest contraction.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="sboiChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="sboiChart"></canvas>
                 </div>
             `,
             data: {
@@ -1017,11 +1008,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Optimism Index',
                     data: [97.1, 98.6, 98.6, 98.6, 100.3],
-                    borderColor: '#87C5BE',
-                    backgroundColor: 'rgba(135, 197, 190, 0.1)',
+                    borderColor: '#5A9D96',
+                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#87C5BE'
+                    pointBackgroundColor: '#5A9D96'
                 }]
             }
         },
@@ -1029,10 +1020,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'users',
             title: 'Weekly Jobless Claims - Unemployment Trends',
-            description: 'Interactive chart showing weekly initial unemployment claims. Lower numbers indicate a stronger job market.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="joblessChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="joblessChart"></canvas>
                 </div>
             `,
             data: {
@@ -1040,11 +1030,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Jobless Claims (Thousands)',
                     data: [223.2, 226.0, 234.0, 241.25, 221.25, 228.5],
-                    borderColor: '#D4822A',
-                    backgroundColor: 'rgba(212, 130, 42, 0.1)',
+                    borderColor: '#B56A18',
+                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#D4822A'
+                    pointBackgroundColor: '#B56A18'
                 }]
             }
         },
@@ -1052,10 +1042,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'users',
             title: 'Job Openings (JOLTS) - Labor Market Demand',
-            description: 'Interactive chart showing monthly job openings, indicating labor market demand and tightness.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="openingsChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="openingsChart"></canvas>
                 </div>
             `,
             data: {
@@ -1074,10 +1063,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'users',
             title: 'ADP Private Employment - Monthly Changes',
-            description: 'Interactive chart showing monthly changes in private sector employment from ADP National Employment Report.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="adpChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="adpChart"></canvas>
                 </div>
             `,
             data: {
@@ -1085,11 +1073,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Private Employment (Millions)',
                     data: [134.391, 134.451, 134.480, 134.447, 134.561],
-                    borderColor: '#2C5F5A',
-                    backgroundColor: 'rgba(44, 95, 90, 0.1)',
+                    borderColor: '#1D3F3B',
+                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#2C5F5A'
+                    pointBackgroundColor: '#1D3F3B'
                 }]
             }
         },
@@ -1097,10 +1085,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'home',
             title: 'Housing Affordability Index - Market Conditions',
-            description: 'Interactive chart showing housing affordability trends. Values above 100 indicate greater affordability.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="affordabilityChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="affordabilityChart"></canvas>
                 </div>
             `,
             data: {
@@ -1120,10 +1107,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'home',
             title: 'NAHB Housing Market Index - Builder Confidence',
-            description: 'Interactive chart showing builder confidence in the housing market. Values above 50 indicate positive sentiment.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="hmiChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="hmiChart"></canvas>
                 </div>
             `,
             data: {
@@ -1131,11 +1117,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Housing Market Index',
                     data: [39, 40, 34, 32, 33, 32],
-                    borderColor: '#87C5BE',
-                    backgroundColor: 'rgba(135, 197, 190, 0.1)',
+                    borderColor: '#5A9D96',
+                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#87C5BE'
+                    pointBackgroundColor: '#5A9D96'
                 }]
             }
         },
@@ -1143,10 +1129,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'home',
             title: 'Existing Home Sales - Market Activity',
-            description: 'Interactive chart showing monthly existing home sales in millions of units.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="existingChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="existingChart"></canvas>
                 </div>
             `,
             data: {
@@ -1154,11 +1139,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Existing Home Sales (Millions)',
                     data: [3.99, 4.03, 3.93, 4.01],
-                    borderColor: '#D4822A',
-                    backgroundColor: 'rgba(212, 130, 42, 0.1)',
+                    borderColor: '#B56A18',
+                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#D4822A'
+                    pointBackgroundColor: '#B56A18'
                 }]
             }
         },
@@ -1166,10 +1151,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'home',
             title: 'Days on Market - Housing Market Speed',
-            description: 'Interactive chart showing median days homes stay on the market. Fewer days indicate a seller\'s market.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="domChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="domChart"></canvas>
                 </div>
             `,
             data: {
@@ -1189,10 +1173,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'package',
             title: 'Copper Futures - Industrial Metal Prices',
-            description: 'Interactive chart showing copper futures prices. Copper is often called "Dr. Copper" for its economic predictive value.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="copperChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="copperChart"></canvas>
                 </div>
             `,
             data: {
@@ -1200,11 +1183,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'Copper Price ($/lb)',
                     data: [4.25, 4.35, 4.65, 4.45, 4.55, 4.51],
-                    borderColor: '#D4822A',
-                    backgroundColor: 'rgba(212, 130, 42, 0.1)',
+                    borderColor: '#B56A18',
+                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#D4822A'
+                    pointBackgroundColor: '#B56A18'
                 }]
             }
         },
@@ -1212,10 +1195,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'package',
             title: 'Lumber Futures - Construction Material Costs',
-            description: 'Interactive chart showing lumber futures prices, a key indicator for housing and construction costs.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="lumberChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="lumberChart"></canvas>
                 </div>
             `,
             data: {
@@ -1235,10 +1217,9 @@ function getChartConfig(indicatorName) {
             type: 'chartjs',
             icon: 'ship',
             title: 'Port of LA/Long Beach TEUs - Trade Volume',
-            description: 'Interactive chart showing container volume at the busiest port complex in the Western Hemisphere.',
             chartContent: `
-                <div style="position: relative; height: 500px; width: 100%;">
-                    <canvas id="teusChart" style="width: 100%; height: 100%;"></canvas>
+                <div>
+                    <canvas id="teusChart"></canvas>
                 </div>
             `,
             data: {
@@ -1246,11 +1227,11 @@ function getChartConfig(indicatorName) {
                 datasets: [{
                     label: 'TEUs (Thousands)',
                     data: [778.4, 842.8, 716.6, 892.3, 1019.8],
-                    borderColor: '#87C5BE',
-                    backgroundColor: 'rgba(135, 197, 190, 0.1)',
+                    borderColor: '#5A9D96',
+                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#87C5BE'
+                    pointBackgroundColor: '#5A9D96'
                 }]
             }
         }

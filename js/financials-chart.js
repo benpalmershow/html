@@ -712,12 +712,34 @@ class RealTimeChartManager {
     }
     
     // Update chart with new real-time data
-    updateChartWithNewData(indicatorName, chartInstance, newData) {
-        if (!chartInstance || !newData) return;
+    async updateChartWithNewData(indicatorName, chartInstance, newData) {
+        if (!chartInstance) return;
         
         try {
-            // Update chart data
-            chartInstance.data = newData;
+            // For local JSON data, fetch latest
+            const jsonData = await fetchFinancialsData();
+            const indicatorData = getIndicatorData(jsonData, indicatorName);
+            
+            if (indicatorData) {
+                // Extract monthly data
+                const months = ['march', 'april', 'may', 'june', 'july', 'august'];
+                const data = months.map(month => {
+                    const value = indicatorData[month];
+                    return value ? parseFloat(value.replace(/[^0-9.-]/g, '')) : null;
+                }).filter(val => val !== null);
+                
+                const labels = months.slice(0, data.length).map(month => 
+                    month.charAt(0).toUpperCase() + month.slice(1, 3)
+                );
+                
+                // Update chart data
+                chartInstance.data.labels = labels;
+                chartInstance.data.datasets[0].data = data;
+            } else if (newData) {
+                // For external data sources (like market data)
+                chartInstance.data = newData;
+            }
+            
             chartInstance.update('none'); // Update without animation for real-time
             
             // Update last update time
@@ -794,13 +816,13 @@ class RealTimeChartManager {
 const realTimeManager = new RealTimeChartManager();
 
 // Dynamic chart modal content based on indicator
-function showChartModal(indicatorName) {
+async function showChartModal(indicatorName) {
     const modal = document.getElementById('chartModal');
     const modalHeader = modal.querySelector('.chart-modal-header h3');
     const modalBody = modal.querySelector('.chart-modal-body');
     
     // Get chart configuration for this indicator
-    const chartConfig = getChartConfig(indicatorName);
+    const chartConfig = await getChartConfig(indicatorName);
     
     if (chartConfig) {
         // Update modal header - remove title, keep only icon
@@ -851,8 +873,29 @@ function showChartModal(indicatorName) {
     realTimeManager.setupRealTimeControls();
 }
 
+// Fetch and parse JSON data
+async function fetchFinancialsData() {
+    try {
+        const response = await fetch('/json/financials-data.min.json');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching financials data:', error);
+        return null;
+    }
+}
+
+// Get data for specific indicator from JSON
+function getIndicatorData(jsonData, indicatorName) {
+    if (!jsonData || !jsonData.indices) return null;
+    return jsonData.indices.find(index => index.name === indicatorName);
+}
+
 // Chart configuration for different indicators
-function getChartConfig(indicatorName) {
+async function getChartConfig(indicatorName) {
+    // Fetch latest data
+    const jsonData = await fetchFinancialsData();
+    const indicatorData = getIndicatorData(jsonData, indicatorName);
+    
     const chartConfigs = {
         'Shipping Container Rate (China-US 40ft)': {
             type: 'infogram',
@@ -918,11 +961,11 @@ function getChartConfig(indicatorName) {
                 </div>
             `,
             data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
                 datasets: [{
                     label: 'Jobs Added (Thousands)',
-                    data: [120, 158, 19, 14, 73],
-                    backgroundColor: ['#2C5F5A', '#87C5BE', '#D4822A', '#E8955D', '#F8F4E6'],
+                    data: [120, 158, 19, 14, 73, 22],
+                    backgroundColor: ['#2C5F5A', '#87C5BE', '#D4822A', '#E8955D', '#F8F4E6', '#B56A18'],
                     borderColor: '#2C5F5A',
                     borderWidth: 2
                 }]

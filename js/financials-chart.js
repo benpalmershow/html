@@ -1124,6 +1124,28 @@ async function getChartConfig(indicatorName) {
                 }]
             }
         },
+        'Total Nonfarm Employment': {
+            type: 'chartjs',
+            icon: 'users',
+            title: 'Total Nonfarm Employment - Monthly Changes',
+            chartContent: `
+                <div>
+                    <canvas id="nonfarmChart"></canvas>
+                </div>
+            `,
+            data: {
+                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                datasets: [{
+                    label: 'Total Nonfarm Employment (Millions)',
+                    data: [159.275, 159.433, 159.452, 159.439, 159.518, 159.540],
+                    borderColor: '#2C5F5A',
+                    backgroundColor: 'rgba(44, 95, 90, 0.15)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#2C5F5A'
+                }]
+            }
+        },
         'Affordability Index': {
             type: 'chartjs',
             icon: 'home',

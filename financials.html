@@ -277,8 +277,9 @@
                     const momFormatted = formatChange(momChange.percentChange);
                     let changeText = `MoM: ${momFormatted}`;
 
-                    // Add number change for ADP Private Employment
-                    if (indicator.name === 'Private Employment' && indicator.agency === 'ADP') {
+                    // Add number change for ADP Private Employment and Total Nonfarm Employment
+                    if ((indicator.name === 'Private Employment' && indicator.agency === 'ADP') || 
+                        (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'BLS')) {
                         const numberChange = momChange.numberChange;
                         const changeSign = numberChange >= 0 ? '+' : '';
                         const formattedNumber = numberChange.toLocaleString();

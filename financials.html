@@ -19,32 +19,32 @@
     <link rel="stylesheet" href="css/dark-mode.css">
     <link rel="stylesheet" href="css/financials.min.css">
     <link rel="stylesheet" href="css/chart-modal.css">
-    
+
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
+
     <!-- Chart.js for interactive charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!-- Infogram Embed Script -->
     <script>
-        !function(e,n,i,s){
-            var d="InfogramEmbeds";
-            var o=e.getElementsByTagName(n)[0];
-            if(window[d]&&window[d].initialized)
-                window[d].process&&window[d].process();
-            else if(!e.getElementById(i)){
-                var r=e.createElement(n);
-                r.async=1,
-                r.id=i,
-                r.src=s,
-                o.parentNode.insertBefore(r,o)
+        ! function (e, n, i, s) {
+            var d = "InfogramEmbeds";
+            var o = e.getElementsByTagName(n)[0];
+            if (window[d] && window[d].initialized)
+                window[d].process && window[d].process();
+            else if (!e.getElementById(i)) {
+                var r = e.createElement(n);
+                r.async = 1,
+                    r.id = i,
+                    r.src = s,
+                    o.parentNode.insertBefore(r, o)
             }
-        }(document,"script","infogram-async",
-          "https://e.infogram.com/js/dist/embed-loader-min.js");
+        }(document, "script", "infogram-async",
+            "https://e.infogram.com/js/dist/embed-loader-min.js");
     </script>
-    
+
     <!-- Financials Chart JavaScript -->
     <script src="js/financials-chart.js"></script>
 
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="categories" id="categories"></div>
-                
+
                 <!-- Chart Modal Popup -->
                 <div id="chartModal" class="chart-modal">
                     <div class="chart-modal-content">
@@ -177,7 +177,9 @@
 
             // Calculate Month-over-Month (MoM) change
             function calculateMoMChange(indicator) {
-                const months = ['march', 'april', 'may', 'june', 'july', 'august'];
+                const months = ['february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october',
+                    'november', 'december'
+                ];
                 let currentValue = null;
                 let previousValue = null;
                 let currentRawValue = '';
@@ -213,6 +215,46 @@
                 };
             }
 
+            // Calculate all monthly changes for all indicators
+            function calculateAllMonthlyChanges(indicator) {
+                const months = ['february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october',
+                    'november', 'december'
+                ];
+                const changes = [];
+
+                for (let i = 1; i < months.length; i++) {
+                    const currentMonth = months[i];
+                    const previousMonth = months[i - 1];
+
+                    const currentValue = extractNumericValue(indicator[currentMonth]);
+                    const previousValue = extractNumericValue(indicator[previousMonth]);
+
+                    if (currentValue !== null && previousValue !== null) {
+                        const change = currentValue - previousValue;
+
+                        // Format the change based on the type of indicator
+                        let formattedChange;
+                        if (Math.abs(change) >= 1000) {
+                            // For large numbers (like employment), use thousands separator
+                            formattedChange = change >= 0 ? `+${change.toLocaleString()}` : change.toLocaleString();
+                        } else {
+                            // For smaller numbers, use decimal places if needed
+                            formattedChange = change >= 0 ? `+${change.toFixed(2)}` : change.toFixed(2);
+                            // Remove unnecessary .00
+                            formattedChange = formattedChange.replace('.00', '');
+                        }
+
+                        changes.push({
+                            month: currentMonth,
+                            change: change,
+                            formatted: formattedChange
+                        });
+                    }
+                }
+
+                return changes;
+            }
+
             // Calculate Year-over-Year (YoY) change (comparing to same month last year)
             // For now, we'll use a simplified approach since we don't have last year's data
             function calculateYoYChange(indicator) {
@@ -231,7 +273,9 @@
             // Indicator explanations are now loaded from financials-data.min.json
 
             function createIndicatorCard(indicator) {
-                const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+                const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november',
+                    'december'
+                ];
                 const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 let dataRows = '';
 
@@ -240,14 +284,73 @@
                 const yoyChange = calculateYoYChange(indicator);
 
                 // Special handling for Polymarket FOMC BPS indicator
-                if (indicator.name.includes('FOMC') && indicator.name.includes('Rate Decision (BPS)') && indicator.bps_probabilities) {
-                    dataRows += `<div class="data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
+                if (indicator.name.includes('FOMC') && indicator.name.includes('Rate Decision (BPS)') && indicator
+                    .bps_probabilities) {
+                    dataRows +=
+                        `<div class="data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
                     Object.entries(indicator.bps_probabilities).forEach(([bps, prob]) => {
                         if (prob && prob !== '') {
                             dataRows += `
                             <div class="data-row">
                                 <span class="month-label">${bps}:</span>
                                 <span class="month-value">${prob}</span>
+                            </div>
+                        `;
+                        }
+                    });
+                } else if (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') {
+                    // Special handling for Total Nonfarm Employment - show job changes inline
+                    const monthlyChanges = calculateAllMonthlyChanges(indicator);
+                    const changesMap = {};
+                    monthlyChanges.forEach(change => {
+                        changesMap[change.month] = change;
+                    });
+
+                    months.forEach((month, index) => {
+                        const value = indicator[month];
+                        if (value && value !== '') {
+                            let jobChangeText = '';
+
+                            const change = changesMap[month];
+                            if (change) {
+                                const changeClass = change.change >= 0 ? 'change-positive' :
+                                    'change-negative';
+                                const sign = change.change >= 0 ? '+' : '';
+                                jobChangeText =
+                                    ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${sign}${change.change.toLocaleString()}</span>`;
+                            }
+
+                            dataRows += `
+                            <div class="data-row">
+                                <span class="month-label">${monthLabels[index]}:</span>
+                                <span class="month-value">${value}${jobChangeText}</span>
+                            </div>
+                        `;
+                        }
+                    });
+                } else if (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') {
+                    // Special handling for Total Nonfarm Employment - show job changes inline
+                    const monthlyChanges = calculateAllMonthlyChanges(indicator);
+                    const changesMap = {};
+                    monthlyChanges.forEach(change => {
+                        changesMap[change.month] = change;
+                    });
+
+                    months.forEach((month, index) => {
+                        const value = indicator[month];
+                        if (value && value !== '') {
+                            let jobChangeText = '';
+
+                            const change = changesMap[month];
+                            if (change) {
+                                const changeClass = change.change >= 0 ? 'change-positive' : 'change-negative';
+                                jobChangeText = ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${change.formatted}</span>`;
+                            }
+
+                            dataRows += `
+                            <div class="data-row">
+                                <span class="month-label">${monthLabels[index]}:</span>
+                                <span class="month-value">${value}${jobChangeText}</span>
                             </div>
                         `;
                         }
@@ -277,18 +380,25 @@
                     const momFormatted = formatChange(momChange.percentChange);
                     let changeText = `MoM: ${momFormatted}`;
 
-                    // Add number change for ADP Private Employment and Total Nonfarm Employment
-                    if ((indicator.name === 'Private Employment' && indicator.agency === 'ADP') || 
-                        (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'BLS')) {
+                    // Add number change for employment indicators
+                    if ((indicator.name === 'Private Employment' && indicator.agency === 'ADP') ||
+                        (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED')) {
                         const numberChange = momChange.numberChange;
                         const changeSign = numberChange >= 0 ? '+' : '';
                         const formattedNumber = numberChange.toLocaleString();
+
+                        // Add number change for employment indicators
                         changeText += ` (${changeSign}${formattedNumber})`;
                     }
 
-                    const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
+                    const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' :
+                        '<i data-lucide="arrow-down-right"></i>';
+                    const title = indicator.name === 'Total Nonfarm Employment' ?
+                        "Latest monthly change in nonfarm payroll employment" :
+                        "Month-over-Month (MoM) change calculated from available data.";
+
                     changeIndicators += `
-                    <div class="change-indicator ${getChangeClass(momFormatted)}" title="Month-over-Month (MoM) change calculated from available data.">
+                    <div class="change-indicator ${getChangeClass(momFormatted)}" title="${title}">
                         <span class="arrow-icon">${arrowIcon}</span> ${changeText}
                     </div>
                 `;
@@ -297,7 +407,8 @@
                 // YoY change (placeholder for future implementation)
                 if (yoyChange !== null) {
                     const yoyFormatted = formatChange(yoyChange);
-                    const yoyArrowIcon = yoyChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
+                    const yoyArrowIcon = yoyChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' :
+                        '<i data-lucide="arrow-down-right"></i>';
                     changeIndicators += `
                     <div class="change-indicator ${getChangeClass(yoyFormatted)}" title="Year-over-Year (YoY) change.">
                         <span class="arrow-icon">${yoyArrowIcon}</span> YoY: ${yoyFormatted}
@@ -350,6 +461,86 @@
                         } else {
                             explanationDiv.style.display = 'none';
                             this.style.color = 'var(--text-muted)';
+                        }
+                    });
+                });
+            }
+
+            function setupJobsIconHandlers() {
+                document.querySelectorAll('.jobs-icon').forEach(icon => {
+                    icon.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const indicator = this.closest('.indicator');
+                        const dataRows = indicator.querySelectorAll('.data-row');
+
+                        // Check if job changes are already showing
+                        const isShowingChanges = indicator.dataset.showingJobChanges === 'true';
+
+                        if (!isShowingChanges) {
+                            // Find the indicator data
+                            const indicatorData = financialData.indices.find(item =>
+                                item.name === 'Total Nonfarm Employment' && item.agency === 'FRED'
+                            );
+
+                            if (indicatorData) {
+                                const monthlyChanges = calculateAllMonthlyChanges(indicatorData);
+                                const months = ['march', 'april', 'may', 'june', 'july', 'august'];
+                                const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+
+                                // Create a map of changes by month
+                                const changesMap = {};
+                                monthlyChanges.forEach(change => {
+                                    changesMap[change.month] = change;
+                                });
+
+                                // Add job changes to existing month rows
+                                dataRows.forEach(row => {
+                                    const monthLabel = row.querySelector('.month-label');
+                                    const monthValue = row.querySelector('.month-value');
+
+                                    if (monthLabel && monthValue) {
+                                        const monthText = monthLabel.textContent.trim().replace(
+                                            ':', '');
+                                        const monthIndex = monthLabels.indexOf(monthText);
+
+                                        if (monthIndex >= 0) {
+                                            const monthKey = months[monthIndex];
+                                            const change = changesMap[monthKey];
+
+                                            if (change) {
+                                                const changeClass = change.change >= 0 ?
+                                                    'change-positive' : 'change-negative';
+                                                const arrowIcon = change.change >= 0 ? '↗' :
+                                                    '↘';
+
+                                                // Add small job change text to the right
+                                                const jobChangeSpan = document.createElement(
+                                                    'span');
+                                                jobChangeSpan.className = 'job-change-inline';
+                                                jobChangeSpan.innerHTML =
+                                                    ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${arrowIcon}${change.formatted}</span>`;
+                                                monthValue.appendChild(jobChangeSpan);
+                                            }
+                                        }
+                                    }
+                                });
+
+                                indicator.dataset.showingJobChanges = 'true';
+                                this.style.color = 'var(--logo-orange, #D4822A)';
+                            }
+                        } else {
+                            // Remove job changes
+                            dataRows.forEach(row => {
+                                const jobChangeSpan = row.querySelector('.job-change-inline');
+                                if (jobChangeSpan) {
+                                    jobChangeSpan.remove();
+                                }
+                            });
+
+                            indicator.dataset.showingJobChanges = 'false';
+                            this.style.color = 'var(--logo-orange, #D4822A)';
                         }
                     });
                 });
@@ -459,6 +650,7 @@
                     tooltip.style.top = (y - 40) + 'px';
                     tooltip.style.opacity = '1';
                 }
+
                 function hideTooltip() {
                     tooltip.style.opacity = '0';
                     tooltip.style.display = 'none';
@@ -511,7 +703,8 @@
             }
 
             function initializeDashboard() {
-                document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+                document.getElementById('lastUpdated').textContent =
+                    `Last Updated: ${formatDate(financialData.lastUpdated)}`;
                 setupFilters();
                 renderDashboard();
                 setupModalHandlers();

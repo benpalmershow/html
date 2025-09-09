@@ -546,20 +546,23 @@
 
     /* Healthcare filter button styling - left edge color only */
     .filter-btn.healthcare {
-      border-left: 4px solid #3b82f6;
+      border-left: 4px solid #10b981;
     }
 
     .filter-btn.healthcare:hover {
-      border-left-color: #2563eb;
+      border-left-color: #10b981;
     }
 
+    /* Ensure healthcare filter button active state matches badge color */
     .filter-btn.healthcare.active {
-      border-left-color: #1d4ed8;
+      background: #10b981 !important;
+      border-color: #10b981 !important;
+      color: white !important;
     }
 
     /* Healthcare badge styling - unique color */
     .category-badge.healthcare {
-      background: #06b6d4;
+      background: #10b981;
       color: #fff;
     }
 
@@ -1496,39 +1499,9 @@
   </div>
   </div>
   <script>
-    // Category filter logic
-    document.addEventListener('DOMContentLoaded', function () {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cardHeaders = document.querySelectorAll('.card-header');
-      function getCategoryFromHeader(header) {
-        const h1 = header.querySelector('h1');
-        if (!h1) return '';
-        const badge = h1.querySelector('.category-badge');
-        return badge ? badge.classList[1] : '';
-      }
-      function filterCards(category) {
-        cardHeaders.forEach(header => {
-          const card = header.nextElementSibling;
-          const cat = getCategoryFromHeader(header);
-          if (category === 'all' || cat === category) {
-            header.style.display = '';
-            if (card) card.style.display = '';
-          } else {
-            header.style.display = 'none';
-            if (card) card.style.display = 'none';
-          }
-        });
-      }
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          filterCards(this.dataset.category);
-        });
-      });
-      // Set default to All
-      filterBtns[0].classList.add('active');
-    });
+    // Category filter logic - removed duplicate event listeners
+    // The filter functionality is now handled by the script at the end of the body
+
     function toggleCard(header) {
       const content = header.nextElementSibling;
       if (content.classList.contains('expanded')) {
@@ -1591,14 +1564,40 @@
   <script src="/js/dark-mode.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Remove any existing event listeners by cloning and replacing elements
+      const filterButtonsContainer = document.querySelector('.filter-buttons');
+      const newFilterButtonsContainer = filterButtonsContainer.cloneNode(true);
+      filterButtonsContainer.parentNode.replaceChild(newFilterButtonsContainer, filterButtonsContainer);
+      
       const filterBtns = document.querySelectorAll('.filter-btn');
       const newsCards = document.querySelectorAll('.card-header');
 
+      // Force reset all active states first
+      filterBtns.forEach(btn => btn.classList.remove('active'));
+      
+      // Set default active state to 'All'
+      const allButton = document.querySelector('.filter-btn[data-category="all"]');
+      if (allButton) allButton.classList.add('active');
+      
       filterBtns.forEach(btn => {
         btn.addEventListener('click', function () {
           // Update active state
-          filterBtns.forEach(b => b.classList.remove('active'));
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            // Force inline style reset
+            b.style.background = '';
+            b.style.borderColor = '';
+            b.style.color = '';
+          });
+          
           this.classList.add('active');
+          
+          // For healthcare button, force the correct styles
+          if (this.dataset.category === 'healthcare') {
+            this.style.background = '#10b981';
+            this.style.borderColor = '#10b981';
+            this.style.color = 'white';
+          }
 
           const category = this.dataset.category;
 

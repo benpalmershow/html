@@ -940,10 +940,10 @@ async function getChartConfig(indicatorName) {
                 </div>
             `,
             data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
                 datasets: [{
                     label: 'PPI Index',
-                    data: [148.061, 147.700, 148.228, 148.270, 149.671],
+                    data: [148.061, 147.686, 148.227, 148.303, 149.341, 149.160],
                     borderColor: '#5A9D96',
                     backgroundColor: 'rgba(90, 157, 150, 0.15)',
                     tension: 0.4,

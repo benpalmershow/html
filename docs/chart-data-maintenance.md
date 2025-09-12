@@ -2,10 +2,10 @@
 
 ## Monthly JSON Data Updates
 
-When `financials-data.min.json` is updated with new monthly data, the following steps must be taken to ensure chart synchronization:
+When `financials-data.json` is updated with new monthly data, the following steps must be taken to ensure chart synchronization:
 
 1. **Check JSON Updates**
-   - Open `json/financials-data.min.json`
+   - Open `json/financials-data.json`
    - Review all indicators for new monthly data
    - Note which indicators have new data points
 
@@ -53,5 +53,5 @@ When `financials-data.min.json` is updated with new monthly data, the following 
 
 ## Affected Files
 
-- `/json/financials-data.min.json` - Source of truth for data
+- `/json/financials-data.json` - Source of truth for data
 - `/js/financials-chart.js` - Chart configurations

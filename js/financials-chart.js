@@ -876,7 +876,7 @@ async function showChartModal(indicatorName) {
 // Fetch and parse JSON data
 async function fetchFinancialsData() {
     try {
-        const response = await fetch('/json/financials-data.min.json');
+        const response = await fetch('/json/financials-data.json');
         return await response.json();
     } catch (error) {
         console.error('Error fetching financials data:', error);

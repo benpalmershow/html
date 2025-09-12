@@ -13,11 +13,11 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
 
-    <link rel="preload" href="css/body.min.css" as="style">
+    <link rel="preload" href="css/body.css" as="style">
     <link rel="stylesheet" href="css/dark-mode.css">
-    <link rel="stylesheet" href="css/body.min.css">
+    <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-    <link rel="stylesheet" href="css/financials.min.css">
+    <link rel="stylesheet" href="css/financials.css">
     <link rel="stylesheet" href="css/chart-modal.css">
 
     <script defer src="/_vercel/insights/script.js"></script>
@@ -105,7 +105,7 @@
             async function fetchFinancialData() {
                 const paths = [
 
-                    '/json/financials-data.min.json',
+                    '/json/financials-data.json',
                 ];
 
                 for (const path of paths) {
@@ -270,7 +270,7 @@
                 return `${sign}${change.toFixed(2)}%`;
             }
 
-            // Indicator explanations are now loaded from financials-data.min.json
+            // Indicator explanations are now loaded from financials-data.json
 
             function createIndicatorCard(indicator) {
                 const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november',
@@ -720,10 +720,10 @@
             });
         </script>
         <script src="/js/dark-mode.js" defer></script>
-        <script src="/js/portfolio.min.js" defer></script>
-        <script src="/js/nav.min.js?v=20250723" defer></script>
+        <script src="/js/portfolio.js" defer></script>
+        <script src="/js/nav.js?v=20250723" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
-        <script src="js/portfolio.min.js"></script>
+        <script src="js/portfolio.js"></script>
         <script>
             // Initialize Lucide icons
             if (typeof lucide !== 'undefined') {

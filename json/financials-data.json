@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-09-11T14:00:00Z",
+    "lastUpdated": "2025-09-13T14:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -352,13 +352,14 @@
             "agency": "UMich",
             "name": "Consumer Sentiment",
             "releaseDay": 15,
-            "url": "https://data.sca.isr.umich.edu/",
+            "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
             "april": "52.2",
             "may": "52.2",
             "june": "60.7",
             "july": "61.7",
-            "august": "58.6",
+            "august": "58.2",
+            "september": "55.4",
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
         },

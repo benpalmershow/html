@@ -713,35 +713,13 @@ class RealTimeChartManager {
     
     // Update chart with new real-time data
     async updateChartWithNewData(indicatorName, chartInstance, newData) {
-        if (!chartInstance) return;
-        
+        if (!chartInstance || !newData) return;
+
         try {
-            // For local JSON data, fetch latest
-            const jsonData = await fetchFinancialsData();
-            const indicatorData = getIndicatorData(jsonData, indicatorName);
-            
-            if (indicatorData) {
-                // Extract monthly data
-                const months = ['march', 'april', 'may', 'june', 'july', 'august'];
-                const data = months.map(month => {
-                    const value = indicatorData[month];
-                    return value ? parseFloat(value.replace(/[^0-9.-]/g, '')) : null;
-                }).filter(val => val !== null);
-                
-                const labels = months.slice(0, data.length).map(month => 
-                    month.charAt(0).toUpperCase() + month.slice(1, 3)
-                );
-                
-                // Update chart data
-                chartInstance.data.labels = labels;
-                chartInstance.data.datasets[0].data = data;
-            } else if (newData) {
-                // For external data sources (like market data)
-                chartInstance.data = newData;
-            }
-            
+            // For external data sources (like market data)
+            chartInstance.data = newData;
             chartInstance.update('none'); // Update without animation for real-time
-            
+
             // Update last update time
             this.updateLastUpdateTime(indicatorName);
         } catch (error) {
@@ -895,7 +873,39 @@ async function getChartConfig(indicatorName) {
     // Fetch latest data
     const jsonData = await fetchFinancialsData();
     const indicatorData = getIndicatorData(jsonData, indicatorName);
-    
+
+    // Helper function to create chart data from indicator data
+    const createChartData = (indicatorData) => {
+        if (!indicatorData) return null;
+
+        const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september'];
+        const data = [];
+        const labels = [];
+
+        months.forEach(month => {
+            if (indicatorData[month]) {
+                const valueString = indicatorData[month].toString();
+                const value = parseFloat(valueString.replace(/[^0-9.-]/g, ''));
+                if (!isNaN(value)) {
+                    data.push(value);
+                    labels.push(month.charAt(0).toUpperCase() + month.slice(1, 3));
+                }
+            }
+        });
+
+        return {
+            labels: labels,
+            datasets: [{
+                label: indicatorName,
+                data: data,
+                borderColor: '#1D3F3B',
+                backgroundColor: 'rgba(29, 63, 59, 0.15)',
+                tension: 0.4,
+                fill: true
+            }]
+        };
+    };
+
     const chartConfigs = {
         'Shipping Container Rate (China-US 40ft)': {
             type: 'infogram',
@@ -917,18 +927,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="cpiChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'CPI Index',
-                    data: [319.8, 320.8, 321.465, 322.561, 323.2, null],
-                    borderColor: '#1D3F3B',
-                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            }
+            `
         },
         'PPI': {
             type: 'chartjs',
@@ -938,18 +937,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="ppiChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'PPI Index',
-                    data: [148.061, 147.686, 148.227, 148.303, 149.341, 149.160],
-                    borderColor: '#5A9D96',
-                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            }
+            `
         },
         'Jobs Added': {
             type: 'chartjs',
@@ -959,17 +947,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="jobsChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'Jobs Added (Thousands)',
-                    data: [120, 158, 19, 14, 73, 22],
-                    backgroundColor: ['#2C5F5A', '#87C5BE', '#D4822A', '#E8955D', '#F8F4E6', '#B56A18'],
-                    borderColor: '#2C5F5A',
-                    borderWidth: 2
-                }]
-            }
+            `
         },
         'Housing Starts': {
             type: 'chartjs',
@@ -979,19 +957,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="housingChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Housing Starts (Millions)',
-                    data: [1.339, 1.392, 1.263, 1.321, 1.4],
-                    borderColor: '#B56A18',
-                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#B56A18'
-                }]
-            }
+            `
         },
         'New Home Sales': {
             type: 'chartjs',
@@ -1001,19 +967,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="newHomeChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'New Home Sales (Thousands)',
-                    data: [660, 705, 623, 656, 652],
-                    borderColor: '#E8955D',
-                    backgroundColor: 'rgba(232, 149, 93, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#E8955D'
-                }]
-            }
+            `
         },
         'Industrial Production Index': {
             type: 'chartjs',
@@ -1023,19 +977,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="ipiChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'IPI Index',
-                    data: [103.6, 103.7, 103.7, 104.1, 104.0],
-                    borderColor: '#1D3F3B',
-                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#1D3F3B'
-                }]
-            }
+            `
         },
         'Small Business Optimism Index': {
             type: 'chartjs',
@@ -1045,19 +987,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="sboiChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Optimism Index',
-                    data: [97.1, 98.6, 98.6, 98.6, 100.3],
-                    borderColor: '#5A9D96',
-                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#5A9D96'
-                }]
-            }
+            `
         },
         'Jobless Claims': {
             type: 'chartjs',
@@ -1067,19 +997,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="joblessChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'Jobless Claims (Thousands)',
-                    data: [223.2, 226.0, 234.0, 241.25, 221.25, 228.5],
-                    borderColor: '#B56A18',
-                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#B56A18'
-                }]
-            }
+            `
         },
         'Job Openings': {
             type: 'chartjs',
@@ -1089,18 +1007,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="openingsChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Job Openings (Millions)',
-                    data: [7.2, 7.395, 7.712, 7.437],
-                    borderColor: '#E8955D',
-                    backgroundColor: 'rgba(232, 149, 93, 0.1)',
-                    fill: true,
-                    pointBackgroundColor: '#E8955D'
-                }]
-            }
+            `
         },
         'Private Employment': {
             type: 'chartjs',
@@ -1110,19 +1017,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="adpChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Private Employment (Millions)',
-                    data: [134.391, 134.451, 134.480, 134.447, 134.561],
-                    borderColor: '#1D3F3B',
-                    backgroundColor: 'rgba(29, 63, 59, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#1D3F3B'
-                }]
-            }
+            `
         },
         'Total Nonfarm Employment': {
             type: 'chartjs',
@@ -1132,19 +1027,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="nonfarmChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'Total Nonfarm Employment (Millions)',
-                    data: [159.275, 159.433, 159.452, 159.439, 159.518, 159.540],
-                    borderColor: '#2C5F5A',
-                    backgroundColor: 'rgba(44, 95, 90, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#2C5F5A'
-                }]
-            }
+            `
         },
         'Affordability Index': {
             type: 'chartjs',
@@ -1154,19 +1037,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="affordabilityChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Affordability Index',
-                    data: [103.4, 101.0, 97.2, 94.4],
-                    borderColor: '#F8F4E6',
-                    backgroundColor: 'rgba(248, 244, 230, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#F8F4E6'
-                }]
-            }
+            `
         },
         'Housing Market Index': {
             type: 'chartjs',
@@ -1176,19 +1047,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="hmiChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'Housing Market Index',
-                    data: [39, 40, 34, 32, 33, 32],
-                    borderColor: '#5A9D96',
-                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#5A9D96'
-                }]
-            }
+            `
         },
         'Existing Home Sales': {
             type: 'chartjs',
@@ -1198,19 +1057,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="existingChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Existing Home Sales (Millions)',
-                    data: [3.99, 4.03, 3.93, 4.01],
-                    borderColor: '#B56A18',
-                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#B56A18'
-                }]
-            }
+            `
         },
         'Number of Days on Market (Median)': {
             type: 'chartjs',
@@ -1220,19 +1067,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="domChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Days on Market',
-                    data: [60, 53, 47, 45, 47],
-                    borderColor: '#E8955D',
-                    backgroundColor: 'rgba(232, 149, 93, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#E8955D'
-                }]
-            }
+            `
         },
         'Copper Futures': {
             type: 'chartjs',
@@ -1242,19 +1077,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="copperChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'Copper Price ($/lb)',
-                    data: [4.25, 4.35, 4.65, 4.45, 4.55, 4.51],
-                    borderColor: '#B56A18',
-                    backgroundColor: 'rgba(181, 106, 24, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#B56A18'
-                }]
-            }
+            `
         },
         'Lumber Futures': {
             type: 'chartjs',
@@ -1264,19 +1087,7 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="lumberChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-                datasets: [{
-                    label: 'Lumber Price ($/1000 bf)',
-                    data: [683, 669, 584, 592, 667, 690.5],
-                    borderColor: '#E8955D',
-                    backgroundColor: 'rgba(232, 149, 93, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#E8955D'
-                }]
-            }
+            `
         },
         '20ft Equivalents (TEUs)': {
             type: 'chartjs',
@@ -1286,24 +1097,89 @@ async function getChartConfig(indicatorName) {
                 <div>
                     <canvas id="teusChart"></canvas>
                 </div>
-            `,
-            data: {
-                labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'TEUs (Thousands)',
-                    data: [778.4, 842.8, 716.6, 892.3, 1019.8],
-                    borderColor: '#5A9D96',
-                    backgroundColor: 'rgba(90, 157, 150, 0.15)',
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#5A9D96'
-                }]
-            }
+            `
         }
     };
     
-    return chartConfigs[indicatorName];
+    const config = chartConfigs[indicatorName];
+
+    if (config && config.type === 'chartjs') {
+        config.data = createChartData(indicatorData);
+        if (config.data) {
+             // Customize colors for specific charts
+            if (indicatorName === 'CPI') {
+                config.data.datasets[0].borderColor = '#1D3F3B';
+                config.data.datasets[0].backgroundColor = 'rgba(29, 63, 59, 0.15)';
+            } else if (indicatorName === 'PPI') {
+                config.data.datasets[0].borderColor = '#5A9D96';
+                config.data.datasets[0].backgroundColor = 'rgba(90, 157, 150, 0.15)';
+            } else if (indicatorName === 'Housing Starts') {
+                config.data.datasets[0].borderColor = '#B56A18';
+                config.data.datasets[0].backgroundColor = 'rgba(181, 106, 24, 0.15)';
+            } else if (indicatorName === 'New Home Sales') {
+                config.data.datasets[0].borderColor = '#E8955D';
+                config.data.datasets[0].backgroundColor = 'rgba(232, 149, 93, 0.1)';
+            } else if (indicatorName === 'Industrial Production Index') {
+                config.data.datasets[0].borderColor = '#1D3F3B';
+                config.data.datasets[0].backgroundColor = 'rgba(29, 63, 59, 0.15)';
+            } else if (indicatorName === 'Small Business Optimism Index') {
+                config.data.datasets[0].borderColor = '#5A9D96';
+                config.data.datasets[0].backgroundColor = 'rgba(90, 157, 150, 0.15)';
+            } else if (indicatorName === 'Jobless Claims') {
+                config.data.datasets[0].borderColor = '#B56A18';
+                config.data.datasets[0].backgroundColor = 'rgba(181, 106, 24, 0.15)';
+            } else if (indicatorName === 'Job Openings') {
+                config.data.datasets[0].borderColor = '#E8955D';
+                config.data.datasets[0].backgroundColor = 'rgba(232, 149, 93, 0.1)';
+            } else if (indicatorName === 'Private Employment') {
+                config.data.datasets[0].borderColor = '#1D3F3B';
+                config.data.datasets[0].backgroundColor = 'rgba(29, 63, 59, 0.15)';
+            } else if (indicatorName === 'Total Nonfarm Employment') {
+                config.data.datasets[0].borderColor = '#2C5F5A';
+                config.data.datasets[0].backgroundColor = 'rgba(44, 95, 90, 0.15)';
+            } else if (indicatorName === 'Affordability Index') {
+                config.data.datasets[0].borderColor = '#F8F4E6';
+                config.data.datasets[0].backgroundColor = 'rgba(248, 244, 230, 0.1)';
+            } else if (indicatorName === 'Housing Market Index') {
+                config.data.datasets[0].borderColor = '#5A9D96';
+                config.data.datasets[0].backgroundColor = 'rgba(90, 157, 150, 0.15)';
+            } else if (indicatorName === 'Existing Home Sales') {
+                config.data.datasets[0].borderColor = '#B56A18';
+                config.data.datasets[0].backgroundColor = 'rgba(181, 106, 24, 0.15)';
+            } else if (indicatorName === 'Number of Days on Market (Median)') {
+                config.data.datasets[0].borderColor = '#E8955D';
+                config.data.datasets[0].backgroundColor = 'rgba(232, 149, 93, 0.1)';
+            } else if (indicatorName === 'Copper Futures') {
+                config.data.datasets[0].borderColor = '#B56A18';
+                config.data.datasets[0].backgroundColor = 'rgba(181, 106, 24, 0.15)';
+            } else if (indicatorName === 'Lumber Futures') {
+                config.data.datasets[0].borderColor = '#E8955D';
+                config.data.datasets[0].backgroundColor = 'rgba(232, 149, 93, 0.1)';
+            } else if (indicatorName === '20ft Equivalents (TEUs)') {
+                config.data.datasets[0].borderColor = '#5A9D96';
+                config.data.datasets[0].backgroundColor = 'rgba(90, 157, 150, 0.15)';
+            }
+        }
+    }
+
+    // Special case for 'Jobs Added' which is a bar chart with specific colors and hardcoded data
+    if (indicatorName === 'Jobs Added') {
+        config.data = {
+            labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+            datasets: [{
+                label: 'Jobs Added (Thousands)',
+                data: [120, 158, 19, 14, 73, 22],
+                backgroundColor: ['#2C5F5A', '#87C5BE', '#D4822A', '#E8955D', '#F8F4E6', '#B56A18'],
+                borderColor: '#2C5F5A',
+                borderWidth: 2
+            }]
+        };
+    }
+
+
+    return config;
 }
+
 
 // Initialize Chart.js charts
 function initializeChart(chartConfig) {

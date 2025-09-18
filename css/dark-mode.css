@@ -1,33 +1,36 @@
-/* Theme toggle button in hero */
+/* Theme toggle button */
 .theme-toggle-btn {
-  display: inline-flex;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   background: var(--logo-teal);
   color: white;
   border: none;
-  border-radius: 20px;
-  padding: 10px 18px;
-  font-size: 1rem;
-  font-weight: 500;
   cursor: pointer;
-  margin-top: 1rem;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(44, 95, 90, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 0;
 }
 
 .theme-toggle-btn:hover {
   background: var(--logo-orange);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 130, 42, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .theme-toggle-btn:active {
-  transform: translateY(0);
+  transform: scale(0.95);
 }
 
 .theme-toggle-btn i {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* Dark mode specific styles */

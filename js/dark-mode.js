@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('theme-toggle');
     if (!toggleBtn) return;
     
+    const icon = toggleBtn.querySelector('i');
     if (theme === 'dark') {
-      toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+      icon.className = 'fas fa-sun';
       toggleBtn.setAttribute('aria-label', 'Switch to light mode');
       toggleBtn.title = 'Switch to light mode';
     } else {
-      toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+      icon.className = 'fas fa-moon';
       toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
       toggleBtn.title = 'Switch to dark mode';
     }

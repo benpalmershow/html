@@ -25,8 +25,18 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="images/logo.webp" as="image" type="image/webp">
     <link rel="preload" href="css/body.css" as="style">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/dark-mode.css">
     
@@ -37,7 +47,21 @@
     <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
     <main id="main-content" tabindex="-1">
       <section class="hero" aria-label="Homepage hero">
-        <img src="images/logo.png" alt="Howdy Stranger" class="hero-logo" loading="eager" />
+        <picture>
+          <!-- WebP with fallback to PNG -->
+          <source srcset="images/logo.webp" type="image/webp">
+          <source srcset="images/logo.png" type="image/png">
+          <img 
+            src="images/logo.png" 
+            alt="Howdy Stranger" 
+            class="hero-logo" 
+            width="360"
+            height="360"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <p class="hero-subtitle">Human‑curated content, independent commentary, news, and economic insight.</p>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
           <i class="fas fa-moon"></i>
@@ -67,6 +91,11 @@
     .hero-logo {
       animation: pulse 5s ease-in-out 1;
       animation-fill-mode: forwards;
+      /* Ensure image maintains aspect ratio */
+      height: auto;
+      max-width: 100%;
+      /* Optimize for LCP */
+      will-change: transform, opacity;
     }
 
     /* Remove shadow after animation ends */
@@ -86,11 +115,18 @@
     }
     .hero-logo {
       width: clamp(180px, 32vw, 360px);
+      height: auto;
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       object-fit: cover;
       filter: drop-shadow(0 6px 16px var(--shadow-color));
       user-select: none;
+      /* Optimize rendering */
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
     }
     .hero-title {
       margin: 0.2em 0 0.1em;

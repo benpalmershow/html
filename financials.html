@@ -344,7 +344,8 @@
                             const change = changesMap[month];
                             if (change) {
                                 const changeClass = change.change >= 0 ? 'change-positive' : 'change-negative';
-                                jobChangeText = ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${change.formatted}</span>`;
+                                jobChangeText =
+                                    ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${change.formatted}</span>`;
                             }
 
                             dataRows += `

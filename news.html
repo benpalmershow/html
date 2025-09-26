@@ -4,12 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Prevent Caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <title>News</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/body.css?v=20250926">
+  <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
+  <link rel="stylesheet" href="css/news.css?v=20250926">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
 </head>
 
@@ -1560,8 +1565,8 @@
       lucide.createIcons();
     });
   </script>
-  <script src="js/nav.js?v=20250723" defer></script>
-  <script src="/js/dark-mode.js" defer></script>
+  <script src="js/nav.js?v=20250926" defer></script>
+  <script src="/js/dark-mode.js?v=20250926" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Remove any existing event listeners by cloning and replacing elements

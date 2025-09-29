@@ -1,98 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DWEVPGLJDP');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-    <!-- Prevent Caching -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
 
-    <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
-    <!-- Favicon -->
-       <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#2C5F5A">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <!-- Preload critical resources -->
-    <link rel="preload" href="images/logo.webp" as="image" type="image/webp">
-    <link rel="preload" href="css/body.css" as="style">
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/body.css?v=20250926">
-    <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
-    
-    <title>Howdy, Stranger</title>
-   
-  </head>
-  <body>
-    <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
-    <main id="main-content" tabindex="-1">
-      <section class="hero" aria-label="Homepage hero">
-        <picture>
-          <!-- WebP with fallback to PNG -->
-          <source srcset="images/logo.webp" type="image/webp">
-          <source srcset="images/logo.png" type="image/png">
-          <img 
-            src="images/logo.png" 
-            alt="Howdy Stranger" 
-            class="hero-logo" 
-            width="360"
-            height="360"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
-        <p class="hero-subtitle">Human‑curated content, independent commentary, news, and economic insight.</p>
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
-          <i class="fas fa-moon"></i>
-        </button>
-      </section>
-    </main>
-   <style>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent Caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
+  <!-- Favicon -->
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#2C5F5A">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Preload critical resources -->
+  <link rel="preload" href="images/logo.webp" as="image" type="image/webp">
+  <link rel="preload" href="css/body.css" as="style">
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/body.css?v=20250926">
+  <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
+
+  <title>Howdy, Stranger</title>
+
+</head>
+
+<body>
+  <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-label="Homepage hero">
+      <picture>
+        <!-- WebP with fallback to PNG -->
+        <source srcset="images/logo.webp" type="image/webp">
+        <source srcset="images/logo.png" type="image/png">
+        <img src="images/logo.png" alt="Howdy Stranger" class="hero-logo" width="360" height="360" loading="eager"
+          fetchpriority="high" decoding="async" />
+      </picture>
+      <p class="hero-subtitle">Human‑curated content, independent commentary, news, and economic insight.</p>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <!-- Cache Clear Notice -->
+      <div class="cache-notice" id="cache-notice" style="display: none;">
+        <div class="cache-notice-content">
+          <i class="fas fa-info-circle"></i>
+          <div class="cache-text">
+            <strong>Not seeing latest version? Clear your browser cache:</strong>
+            <div class="cache-instructions">
+              <span><strong>Chrome/Edge:</strong> Ctrl+Shift+Delete</span>
+              <span><strong>Firefox:</strong> Ctrl+Shift+Delete</span>
+              <span><strong>Safari:</strong> Cmd+Option+E</span>
+            </div>
+          </div>
+          <button class="cache-close" onclick="dismissCacheNotice()">×</button>
+        </div>
+      </div>
+
+      <!-- First-time visitor hints -->
+      <div class="visitor-hints" id="visitor-hints">
+        <div class="hint-overlay"></div>
+        <div class="hint-content">
+          <h3>Welcome to Howdy, Stranger!</h3>
+          <div class="hint-steps">
+            <div class="hint-step">
+              <i class="fas fa-newspaper"></i>
+              <div>
+                <strong>News:</strong> Latest market updates, earnings, and policy analysis
+              </div>
+            </div>
+            <div class="hint-step">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <strong>Numbers:</strong> Economic indicators, financial data, and market trends
+              </div>
+            </div>
+            <div class="hint-step">
+              <i class="fas fa-play"></i>
+              <div>
+                <strong>Media:</strong> Curated books, films, and podcasts worth your time
+              </div>
+            </div>
+            <div class="hint-step">
+              <i class="fas fa-edit"></i>
+              <div>
+                <strong>Journal:</strong> Independent commentary and personal insights
+              </div>
+            </div>
+          </div>
+          <button class="hint-close" onclick="closeHints()">Got it, thanks!</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <style>
     @keyframes pulse {
-      0% { 
+      0% {
         transform: scale(0.99);
         opacity: 0.6;
       }
+
       33% {
         transform: scale(2.01);
         opacity: 0.8;
       }
+
       66% {
         transform: scale(0.995);
         opacity: 0.9;
       }
-      100% { 
+
+      100% {
         transform: scale(1);
         opacity: 1;
       }
     }
-    
+
     .hero-logo {
       animation: pulse 5s ease-in-out 1;
       animation-fill-mode: forwards;
@@ -107,7 +162,7 @@
     .hero-logo:not(.animating) {
       filter: none !important;
     }
-    
+
     .hero {
       min-height: calc(100vh - var(--nav-offset));
       padding: clamp(1rem, 4vw, 2rem) 1rem;
@@ -118,6 +173,7 @@
       text-align: center;
       gap: clamp(0.5rem, 2vw, 1rem);
     }
+
     .hero-logo {
       width: clamp(180px, 32vw, 360px);
       height: auto;
@@ -130,12 +186,14 @@
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
     }
+
     .hero-title {
       margin: 0.2em 0 0.1em;
       color: var(--logo-teal);
       font-size: clamp(1.6rem, 5vw, 2.8rem);
       text-shadow: 1px 1px 2px var(--shadow-color);
     }
+
     .hero-subtitle {
       margin: 0 0 0.5rem;
       font-size: clamp(0.85rem, 2vw, 1rem);
@@ -145,6 +203,7 @@
       letter-spacing: 0.01em;
       opacity: 0.9;
     }
+
     .hero-ctas {
       display: flex;
       gap: clamp(0.5rem, 2vw, 1rem);
@@ -153,6 +212,7 @@
       justify-content: center;
       margin-top: 0.25rem;
     }
+
     .hero-ctas .cta {
       text-decoration: none;
       color: var(--logo-orange);
@@ -166,20 +226,214 @@
       align-items: center;
       justify-content: center;
     }
+
     .hero-ctas .cta:hover,
     .hero-ctas .cta:focus {
       color: #fff;
       background: var(--logo-orange);
       outline: none;
-      box-shadow: 0 4px 12px rgba(212,130,42,0.3);
+      box-shadow: 0 4px 12px rgba(212, 130, 42, 0.3);
       transform: translateY(-1px);
     }
-    @media (prefers-color-scheme: dark) {
-      .hero-subtitle { color: var(--text-muted); }
+
+    /* Cache Notice Styles */
+    .cache-notice {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--bg-secondary);
+      border: 2px solid var(--logo-orange);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      z-index: 1000;
+      max-width: 320px;
+      font-size: 0.9rem;
     }
-   </style>
+
+    .cache-notice-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .cache-notice i {
+      color: var(--logo-orange);
+      font-size: 1.2rem;
+      margin-top: 0.1rem;
+    }
+
+    .cache-text strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .cache-instructions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .cache-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      margin-left: auto;
+      line-height: 1;
+    }
+
+    .cache-close:hover {
+      color: var(--logo-orange);
+    }
+
+    @media (max-width: 768px) {
+      .cache-notice {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+      }
+    }
+
+    /* Visitor Hints Styles */
+    .visitor-hints {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2000;
+      display: none;
+    }
+
+    .hint-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .hint-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg-primary);
+      border: 2px solid var(--logo-teal);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .hint-content h3 {
+      color: var(--logo-teal);
+      margin: 0 0 1.5rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .hint-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hint-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      border-left: 4px solid var(--logo-orange);
+    }
+
+    .hint-step i {
+      color: var(--logo-orange);
+      font-size: 1.5rem;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .hint-step strong {
+      color: var(--text-primary);
+    }
+
+    .hint-close {
+      background: var(--logo-teal);
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: background 0.2s;
+    }
+
+    .hint-close:hover {
+      background: var(--logo-orange);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .hero-subtitle {
+        color: var(--text-muted);
+      }
+    }
+  </style>
   <script src="js/nav.js?v=20250926" defer></script>
   <script src="js/socials.js?v=20250926" defer></script>
   <script src="js/dark-mode.js?v=20250926" defer></script>
+  <script>
+    // Cache notice management
+    const CACHE_NOTICE_VERSION = '1.0'; // Increment this to show notice again after updates
+    
+    function showCacheNotice() {
+      document.getElementById('cache-notice').style.display = 'block';
+    }
+
+    function dismissCacheNotice() {
+      document.getElementById('cache-notice').style.display = 'none';
+      localStorage.setItem('cacheNoticeShown', CACHE_NOTICE_VERSION);
+    }
+
+    // First-time visitor hints
+    function showHints() {
+      document.getElementById('visitor-hints').style.display = 'block';
+    }
+
+    function closeHints() {
+      document.getElementById('visitor-hints').style.display = 'none';
+      localStorage.setItem('hintsShown', 'true');
+    }
+
+    // Show cache notice and hints for appropriate visitors
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show cache notice only if not shown before or if version changed
+      const cacheNoticeShown = localStorage.getItem('cacheNoticeShown');
+      if (!cacheNoticeShown || cacheNoticeShown !== CACHE_NOTICE_VERSION) {
+        setTimeout(showCacheNotice, 2000); // Show after 2 seconds
+      }
+
+      // Show hints for first-time visitors
+      if (!localStorage.getItem('hintsShown')) {
+        setTimeout(showHints, 6000); // Show after logo animation completes
+      }
+    });
+  </script>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-09-26T14:00:00Z",
+    "lastUpdated": "2025-09-29T14:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -251,6 +251,7 @@
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
         },
+
         {
             "category": "Business Indicators",
             "agency": "FRED",
@@ -263,6 +264,7 @@
             "june": "4.38",
             "july": "4.39",
             "august": "4.27",
+            "september": "4.11",
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
         },
@@ -364,7 +366,7 @@
             "june": "60.7",
             "july": "61.7",
             "august": "58.2",
-            "september": "55.4",
+            "september": "55.1",
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
         },
@@ -410,6 +412,7 @@
             "may": "20,615B",
             "june": "20,685B",
             "july": "20,802B",
+            "august": "21,112B",
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
         },
@@ -574,24 +577,30 @@
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
         },
         {
-            "category": "Business Indicators",
-            "agency": "Polymarket",
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
             "name": "FOMC October Rate Decision (BPS)",
             "releaseDay": 29,
-            "url": "https://polymarket.com/event/fed-decision-in-october?tid=1758147117194",
+            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-25oct",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-october?tid=1758147117194",
             "march": "",
             "april": "",
             "may": "",
             "june": "",
             "july": "",
+            "august": "",
+            "september": "",
+            "october": "",
+            "november": "",
+            "december": "",
             "next_meeting": "October 29, 2025",
             "bps_probabilities": {
-                "25BP Decrease": "78%",
-                "50+BP Decrease": "8%",
-                "No Change": "15%"
+                "25BP Decrease": "81%",
+                "50+BP Decrease": "3%",
+                "No Change": "16%"
             },
             "change": "",
-            "explanation": "Market-implied probabilities of potential Federal Reserve interest rate actions at the upcoming Federal Open Market Committee (FOMC) meeting. The probabilities are derived from prediction markets on Polymarket, where participants trade contracts based on their expectations of the Fed's decision. The values represent the market's collective assessment of the likelihood of different policy outcomes, with basis points (BPS) indicating the potential size of rate changes (100 BPS = 1 percentage point). These predictions are closely watched by investors as they reflect market sentiment about future monetary policy, inflation expectations, and economic conditions. The actual FOMC decision can significantly impact financial markets, including stocks, bonds, and currency valuations."
+            "explanation": "Prediction market probabilities for Federal Reserve interest rate decisions at the October FOMC meeting. Data aggregated from both Kalshi and Polymarket platforms showing market consensus on potential rate changes measured in basis points (BPS)."
         },
         {
             "category": "Housing Market",
@@ -651,6 +660,40 @@
             "august": "958,355.15",
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Polymarket",
+            "name": "US Recession in 2025",
+            "releaseDay": 0,
+            "url": "https://polymarket.com/event/us-recession-in-2025?tid=1759178395896",
+            "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/recssnber-25",
+            "march": "",
+            "april": "",
+            "may": "",
+            "june": "",
+            "july": "",
+            "august": "",
+            "september": "",
+            "october": "",
+            "november": "",
+            "december": "",
+            "yes_probability": "7¢",
+            "no_probability": "94¢",
+            "change": "",
+            "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 94¢ (94%) chance of no recession vs 7¢ (7%) chance of recession."
+        },
+     
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "SF @ LA",
+            "game_title": "49ers @ Rams",
+            "game_time": "TNF",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct02sfla",
+            "polymarket_url": "https://polymarket.com/event/nfl-sf-la-2025-10-02",
+            "sf_win_odds": "32¢",
+            "la_win_odds": "68¢"  
         }
 
     ]

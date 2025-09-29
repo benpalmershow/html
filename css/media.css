@@ -965,3 +965,104 @@
         flex-shrink: 0;
     }
 }
+/* Sp
+ecial Analysis Section */
+.special-analysis {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.special-analysis h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.analysis-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.analysis-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.analysis-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--shadow-medium);
+}
+
+.analysis-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.analysis-content {
+    flex: 1;
+}
+
+.analysis-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.analysis-content p {
+    margin: 0 0 1rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.analysis-link {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background var(--transition-medium);
+}
+
+.analysis-link:hover {
+    background: #b8721f;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .analysis-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .analysis-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .analysis-icon {
+        margin-bottom: 0.5rem;
+    }
+}

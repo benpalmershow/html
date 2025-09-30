@@ -322,8 +322,15 @@
                             `<div class="data-row"><span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span></div>`;
                     }
                     if (indicator.game_time) {
-                        dataRows +=
-                            `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value">${indicator.game_time}</span></div>`;
+                        if (indicator.name === 'SF @ LA') {
+                            // For SF @ LA game, only show the countdown
+                            dataRows +=
+                                `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown"></span></span></div>`;
+                        } else {
+                            // For other games, show the game time as before
+                            dataRows +=
+                                `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value">${indicator.game_time}</span></div>`;
+                        }
                     }
                     if (indicator.week) {
                         dataRows +=
@@ -801,6 +808,7 @@
         <script src="/js/dark-mode.js?v=20250926" defer></script>
         <script src="/js/portfolio.js?v=20250926" defer></script>
         <script src="/js/nav.js?v=20250926" defer></script>
+        <script src="/js/countdown.js?v=20250926" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
         <script src="js/portfolio.js?v=20250926"></script>
         <script>

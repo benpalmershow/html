@@ -678,21 +678,27 @@
                 // Clear existing filter buttons
                 filtersContainer.innerHTML = '';
 
-                // Create the 'All Categories' button (icon only, with tooltip)
+                // Create the 'All Categories' button with icon and text
                 const allButton = document.createElement('button');
                 allButton.className = 'filter-btn active';
-                allButton.innerHTML = '<i data-lucide="list"></i>';
                 allButton.dataset.category = 'all';
                 allButton.setAttribute('aria-label', 'All Categories');
+                allButton.innerHTML = `
+                    <span class="filter-icon"><i data-lucide="list"></i></span>
+                    <span class="filter-text">All Categories</span>
+                `;
                 allButton.setAttribute('data-tooltip', 'All Categories');
                 filtersContainer.appendChild(allButton);
 
-                // Create category filter buttons (icon only, with tooltip)
+                // Create category filter buttons with icon and text (text shown on hover)
                 categories.forEach(category => {
                     const button = document.createElement('button');
                     button.className = 'filter-btn';
                     const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-                    button.innerHTML = `<span class="filter-icon">${icon}</span>`;
+                    button.innerHTML = `
+                        <span class="filter-icon">${icon}</span>
+                        <span class="filter-text">${category}</span>
+                    `;
                     button.dataset.category = category;
                     button.setAttribute('aria-label', category);
                     button.setAttribute('data-tooltip', category);

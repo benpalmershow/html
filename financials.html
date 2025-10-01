@@ -710,24 +710,35 @@
                 if (!tooltip) {
                     tooltip = document.createElement('div');
                     tooltip.id = 'filter-tooltip';
-                    tooltip.style.position = 'fixed';
-                    tooltip.style.pointerEvents = 'none';
-                    tooltip.style.zIndex = '2147483647'; // Maximum z-index value
-                    tooltip.style.background = 'rgba(44,95,90,0.97)';
-                    tooltip.style.color = '#fff';
-                    tooltip.style.padding = '8px 12px';
-                    tooltip.style.borderRadius = '6px';
-                    tooltip.style.fontSize = '0.9em';
-                    tooltip.style.fontWeight = '500';
-                    tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)';
-                    tooltip.style.transition = 'opacity 0.2s ease';
-                    tooltip.style.opacity = '0';
-                    tooltip.style.display = 'none';
-                    tooltip.style.whiteSpace = 'nowrap';
-                    tooltip.style.maxWidth = '200px';
-                    tooltip.style.textAlign = 'center';
-                    tooltip.style.isolation = 'isolate'; // Create new stacking context
-                    tooltip.style.transform = 'translateZ(0)'; // Force hardware acceleration
+                    
+                    // Apply all styles at once to ensure they stick
+                    Object.assign(tooltip.style, {
+                        position: 'fixed',
+                        pointerEvents: 'none',
+                        zIndex: '2147483647',
+                        background: 'rgba(44,95,90,0.97)',
+                        color: '#fff',
+                        padding: '8px 12px',
+                        borderRadius: '6px',
+                        fontSize: '0.9em',
+                        fontWeight: '500',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                        transition: 'opacity 0.2s ease',
+                        opacity: '0',
+                        display: 'none',
+                        whiteSpace: 'nowrap',
+                        maxWidth: '200px',
+                        textAlign: 'center',
+                        isolation: 'isolate',
+                        transform: 'translateZ(0)',
+                        willChange: 'transform, opacity',
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        WebkitTransform: 'translateZ(0)',
+                        WebkitPerspective: '1000',
+                        perspective: '1000px'
+                    });
+                    
                     document.body.appendChild(tooltip);
                 }
 
@@ -743,6 +754,13 @@
                     tooltip.style.left = Math.max(10, x - tooltipWidth / 2) + 'px';
                     tooltip.style.top = (y - 40) + 'px';
                     tooltip.style.opacity = '1';
+                    
+                    // Force reflow and ensure tooltip is on top
+                    tooltip.style.zIndex = '2147483647';
+                    tooltip.style.position = 'fixed';
+                    tooltip.style.pointerEvents = 'none';
+                    tooltip.style.isolation = 'isolate';
+                    tooltip.style.transform = 'translateZ(0)';
                 }
 
                 function hideTooltip() {

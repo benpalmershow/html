@@ -297,8 +297,6 @@
                         if (prob && prob !== '') {
                             dataRows += `
                             <div class="data-row">
-                                <span class="month-label">${bps}:</span>
-                                <span class="month-value">${prob}</span>
                             </div>
                         `;
                         }
@@ -349,8 +347,9 @@
                         dataRows +=
                             `<div class="data-row"><span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span></div>`;
                     }
-                } else if (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') {
-                    // Special handling for Total Nonfarm Employment - show job changes inline
+                } else if ((indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') ||
+                           (indicator.name === 'Job Openings')) {
+                    // Special handling for Total Nonfarm Employment and Job Openings - show job changes inline
                     const monthlyChanges = calculateAllMonthlyChanges(indicator);
                     const changesMap = {};
                     monthlyChanges.forEach(change => {
@@ -359,52 +358,26 @@
 
                     months.forEach((month, index) => {
                         const value = indicator[month];
+                        const label = monthLabels[index] || month;
                         if (value && value !== '') {
-                            let jobChangeText = '';
-
-                            const change = changesMap[month];
-                            if (change) {
-                                const changeClass = change.change >= 0 ? 'change-positive' :
-                                    'change-negative';
-                                const sign = change.change >= 0 ? '+' : '';
-                                jobChangeText =
-                                    ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${sign}${change.change.toLocaleString()}</span>`;
+                            // Determine formatted change (if available)
+                            const changeObj = changesMap[month];
+                            let changeHtml = '';
+                            if (changeObj) {
+                                // Use the formatted string from calculateAllMonthlyChanges
+                                const formatted = changeObj.formatted;
+                                // Style positive/negative
+                                const changeClass = (changeObj.change >= 0) ? 'change-positive' : 'change-negative';
+                                changeHtml = `<span class="month-change ${changeClass}" style="margin-left:8px; font-weight:600;">${formatted}</span>`;
                             }
 
+                            // Render the row with numeric value and right-aligned monthly change
                             dataRows += `
-                            <div class="data-row">
-                                <span class="month-label">${monthLabels[index]}:</span>
-                                <span class="month-value">${value}${jobChangeText}</span>
-                            </div>
-                        `;
-                        }
-                    });
-                } else if (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') {
-                    // Special handling for Total Nonfarm Employment - show job changes inline
-                    const monthlyChanges = calculateAllMonthlyChanges(indicator);
-                    const changesMap = {};
-                    monthlyChanges.forEach(change => {
-                        changesMap[change.month] = change;
-                    });
-
-                    months.forEach((month, index) => {
-                        const value = indicator[month];
-                        if (value && value !== '') {
-                            let jobChangeText = '';
-
-                            const change = changesMap[month];
-                            if (change) {
-                                const changeClass = change.change >= 0 ? 'change-positive' : 'change-negative';
-                                jobChangeText =
-                                    ` <span class="${changeClass}" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">${change.formatted}</span>`;
-                            }
-
-                            dataRows += `
-                            <div class="data-row">
-                                <span class="month-label">${monthLabels[index]}:</span>
-                                <span class="month-value">${value}${jobChangeText}</span>
-                            </div>
-                        `;
+                                <div class="data-row">
+                                    <span class="month-label">${label}:</span>
+                                    <span class="month-value">${value}${changeHtml}</span>
+                                </div>
+                            `;
                         }
                     });
                 } else if (indicator.name === 'CPI' && indicator.agency === 'BLS') {
@@ -420,32 +393,28 @@
 
                     months.forEach((month, index) => {
                         const value = indicator[month];
+                        const label = monthLabels[index] || month;
                         if (value && value !== '') {
-                            let yoyText = '';
-                            const yoyValue = cpiYoyData[month];
-                            if (yoyValue) {
-                                yoyText =
-                                    ` <span class="change-positive" style="font-size: 0.75em; margin-left: 8px; opacity: 0.8;">YoY: ${yoyValue}</span>`;
-                            }
-
+                            const yoy = cpiYoyData[month] ? `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[month]}</span>` : '';
                             dataRows += `
-                            <div class="data-row">
-                                <span class="month-label">${monthLabels[index]}:</span>
-                                <span class="month-value">${value}${yoyText}</span>
-                            </div>
-                        `;
+                                <div class="data-row">
+                                    <span class="month-label">${label}:</span>
+                                    <span class="month-value">${value}${yoy}</span>
+                                </div>
+                            `;
                         }
                     });
                 } else {
                     months.forEach((month, index) => {
                         const value = indicator[month];
+                        const label = monthLabels[index] || month;
                         if (value && value !== '') {
                             dataRows += `
-                            <div class="data-row">
-                                <span class="month-label">${monthLabels[index]}:</span>
-                                <span class="month-value">${value}</span>
-                            </div>
-                        `;
+                                <div class="data-row">
+                                    <span class="month-label">${label}:</span>
+                                    <span class="month-value">${value}</span>
+                                </div>
+                            `;
                         }
                     });
                 }
@@ -463,7 +432,8 @@
 
                     // Add number change for employment indicators
                     if ((indicator.name === 'Private Employment' && indicator.agency === 'ADP') ||
-                        (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED')) {
+                        (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') ||
+                        (indicator.name === 'Job Openings')) {
                         const numberChange = momChange.numberChange;
                         const changeSign = numberChange >= 0 ? '+' : '';
                         const formattedNumber = numberChange.toLocaleString();
@@ -596,8 +566,8 @@
                                             const change = changesMap[monthKey];
 
                                             if (change) {
-                                                const changeClass = change.change >= 0 ?
-                                                    'change-positive' : 'change-negative';
+                                                const changeClass = change.change >= 0 ? 'change-positive' :
+                                                    'change-negative';
                                                 const arrowIcon = change.change >= 0 ? '↗' :
                                                     '↘';
 

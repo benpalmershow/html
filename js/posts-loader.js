@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   feed.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>';
 
   // Optional cache-busting using meta[name="last-commit"] if present
-  const v = (document.querySelector('meta[name="last-commit"]') &&
-             document.querySelector('meta[name="last-commit"]').getAttribute('content')) || Date.now();
+  // Use the last-commit meta when available but always append a timestamp
+  // to ensure a fresh fetch of posts.json (prevents stale cached JSON when
+  // the meta isn't updated).
+  const metaCommit = (document.querySelector('meta[name="last-commit"]') &&
+                      document.querySelector('meta[name="last-commit"]').getAttribute('content')) || '';
+  const v = `${metaCommit}-${Date.now()}`;
 
   fetch(`/json/posts.json?v=${encodeURIComponent(v)}`)
     .then(res => {

@@ -712,7 +712,7 @@
                     tooltip.id = 'filter-tooltip';
                     tooltip.style.position = 'fixed';
                     tooltip.style.pointerEvents = 'none';
-                    tooltip.style.zIndex = '999999';
+                    tooltip.style.zIndex = '2147483647'; // Maximum z-index value
                     tooltip.style.background = 'rgba(44,95,90,0.97)';
                     tooltip.style.color = '#fff';
                     tooltip.style.padding = '8px 12px';
@@ -726,6 +726,8 @@
                     tooltip.style.whiteSpace = 'nowrap';
                     tooltip.style.maxWidth = '200px';
                     tooltip.style.textAlign = 'center';
+                    tooltip.style.isolation = 'isolate'; // Create new stacking context
+                    tooltip.style.transform = 'translateZ(0)'; // Force hardware acceleration
                     document.body.appendChild(tooltip);
                 }
 

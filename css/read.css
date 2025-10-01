@@ -12,7 +12,10 @@
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-left: 4px solid var(--logo-orange);
+  /* Removed bold orange left border for a cleaner, minimalist look */
+  border-left: none;
+  /* Subtle left inset shadow to preserve gentle separation */
+  box-shadow: inset 6px 0 8px -6px rgba(0,0,0,0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .post-item:hover {
@@ -58,7 +61,9 @@
 @media (prefers-color-scheme: dark) {
   .post-item {
     background: var(--bg-tertiary);
-    border-left-color: var(--accent-secondary);
+    /* No colored left border in dark mode either; keep subtle inset shadow */
+    border-left: none;
+    box-shadow: inset 6px 0 8px -6px rgba(255,255,255,0.02), 0 4px 12px rgba(0, 0, 0, 0.3);
   }
   
   .post-item:hover {
@@ -99,3 +104,20 @@
 .post-item {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* Top-right clickable badge for each post (uses existing lucide icons) */
+.post-item { position: relative; }
+.post-meta-badge { position: absolute; top: 8px; right: 8px; display: flex; align-items: center; gap: 6px; }
+.post-badge-link { display: inline-flex; align-items: center; gap: 6px; padding: 0.12rem 0.4rem; border-radius: 999px; text-decoration: none; background: rgba(0,0,0,0.03); color: inherit; }
+.post-badge-link i[data-lucide] { width: 18px; height: 18px; color: var(--text-muted); flex: 0 0 18px; }
+.post-badge-link .badge-label { font-size: 0.72rem; font-weight: 700; color: #fff; padding: 0 0.2rem; }
+.post-badge-link:focus { outline: 2px solid rgba(44,95,90,0.16); outline-offset: 3px; }
+
+@media (prefers-color-scheme: dark) {
+  .post-badge-link { background: rgba(255,255,255,0.03); }
+  .post-badge-link i[data-lucide] { color: #cfcfcf; }
+}
+
+/* Icon-only badge variant */
+.post-badge-icon-only { padding: 0.08rem; }
+.post-badge-icon-only .badge-label { display: none; }

@@ -145,8 +145,9 @@
             "april": "",
             "may": "",
             "june": "108.19",
-            "july": "107.55",
-            "change": "-0.59",
+            "july": "107.13",
+            "august": "106.41",
+            "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
         },
         {
@@ -297,6 +298,7 @@
             "june": "49",
             "july": "48",
             "august": "48.7",
+            "september": "49.1",
             "change": "",
             "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
         },
@@ -592,16 +594,7 @@
             "releaseDay": 29,
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-25oct",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-october?tid=1758147117194",
-            "march": "",
-            "april": "",
-            "may": "",
-            "june": "",
-            "july": "",
-            "august": "",
-            "september": "",
-            "october": "",
-            "november": "",
-            "december": "",
+
             "next_meeting": "October 29, 2025",
             "bps_probabilities": {
                 "25BP Decrease": "81%",

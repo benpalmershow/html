@@ -68,7 +68,7 @@
         <img src="images/logo.png" alt="Howdy Stranger" class="hero-logo" width="360" height="360" loading="eager"
           fetchpriority="high" decoding="async" />
       </picture>
-      <p class="hero-subtitle">Human‑curated content, independent commentary, news, and economic insight.</p>
+      <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news, and economic insight.</p>
       <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
         <i class="fas fa-moon"></i>
       </button>
@@ -133,7 +133,7 @@
       }
 
       33% {
-        transform: scale(2.01);
+        transform: scale(1.4);
         opacity: 0.8;
       }
 
@@ -386,6 +386,12 @@
 
     .hint-close:hover {
       background: var(--logo-orange);
+    }
+
+    .highlight-human {
+      color: var(--logo-orange);
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(212, 130, 42, 0.3);
     }
 
     @media (prefers-color-scheme: dark) {

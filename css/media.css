@@ -1,8 +1,8 @@
 /* ==========================================================================
    CSS VARIABLES & GLOBAL STYLES
    ========================================================================== */
-
 :root {
+    /* Color Palette */
     --primary-color: #2c5f5a;
     --secondary-color: #d4822a;
     --accent-color: #f5c518;
@@ -10,40 +10,127 @@
     --border-light: #e8dcc0;
     --text-dark: #2c5f5a;
     --text-light: #f0f0f0;
+    
+    /* Shadows */
     --shadow-light: rgba(44, 95, 90, 0.12);
     --shadow-medium: rgba(44, 95, 90, 0.2);
+    
+    /* Transitions */
     --transition-fast: 0.15s ease;
     --transition-medium: 0.2s ease;
     --transition-slow: 0.3s ease;
+    
+    /* Card */
+    --card-max-width: 200px;
+    --card-height: 300px;
+    --card-radius: 0.5rem;
+    --card-shadow: 0 2px 8px var(--shadow-light);
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    
+    /* Z-index layers */
+    --z-base: 1;
+    --z-overlay: 10;
+    --z-modal: 100;
 }
 
 /* ==========================================================================
-   MEDIA CARD COMPONENTS
+   MEDIA CARD
    ========================================================================== */
-
-/* Media Card Container */
 .media-card {
+    /* Layout */
     position: relative;
     width: 100%;
-    max-width: 200px;
-    height: 300px;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 2px 8px var(--shadow-light);
-    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
-    background: var(--background-light);
-    cursor: pointer;
+    max-width: var(--card-max-width);
+    height: var(--card-height);
     display: flex;
     flex-direction: column;
+    
+    /* Visual */
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    background: var(--background-light);
+    overflow: hidden;
+    
+    /* Interaction */
+    cursor: pointer;
+    transition: transform var(--transition-slow), 
+                box-shadow var(--transition-slow);
+    
+    /* Performance */
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    isolation: isolate;
+    
+    /* States */
+    &:focus-visible {
+        outline: 3px solid var(--accent-color);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px var(--background-light), 
+                   0 0 0 6px var(--accent-color);
+    }
+    
+    &:hover,
+    &:focus-within,
+    &:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 4px 16px rgba(44, 95, 90, 0.13);
+        transform: translateY(-2px) scale(1.025);
+        outline: none;
+    }
+    
+    &[onclick] {
+        transition: all var(--transition-medium);
+        
+        &:hover { transform: translateY(-3px) scale(1.03); }
+        &:active { transform: translateY(-1px) scale(1.01); }
+    }
+    
+    &.hidden { display: none; }
+    
+    &.keyboard-focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--shadow-medium);
+    }
 }
 
-.media-card:hover,
-.media-card:focus-within,
-.media-card:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 4px 16px rgba(44, 95, 90, 0.13);
-    transform: translateY(-2px) scale(1.025);
-    outline: none;
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .media-card,
+    .media-cover,
+    .media-overlay,
+    .rating-logo {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .media-card:hover,
+    .media-card:focus-within,
+    .media-card:focus {
+        transform: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+    .media-card {
+        border: 2px solid var(--primary-color);
+    }
+    
+    .media-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+    }
+    
+    .media-title {
+        text-shadow: 0 0 2px #000, 0 0 2px #000;
+    }
 }
 
 .media-card.keyboard-focus {
@@ -67,7 +154,7 @@
     transform: translateY(-1px) scale(1.01);
 }
 
-/* Media Cover */
+/* Media Card Elements */
 .media-cover-container {
     position: relative;
     width: 100%;
@@ -75,49 +162,52 @@
     overflow: hidden;
     flex: 1;
     min-height: 0;
-}
-
-.media-cover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transition: transform var(--transition-slow);
-}
-
-.media-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), #4a7c7a);
-    color: white;
-    font-size: 2em;
-}
-
-.media-placeholder i {
-    font-size: 2em;
-    color: white;
-}
-
-/* Media Type Icon */
-.media-type {
-    position: absolute;
-    top: 0.7em;
-    left: 0.7em;
-    color: white;
-    font-size: 1.2em;
-    z-index: 3;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
-    transition: all var(--transition-medium);
-}
-
-.media-card[data-media-type="movie"] .media-type,
-.media-card[data-media-type="podcast"] .media-type,
-.media-card[data-media-type="book"] .media-type {
-    color: white;
+    
+    .media-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform var(--transition-slow);
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    
+    .media-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary-color), #4a7c7a);
+        color: white;
+        font-size: 2em;
+        
+        i {
+            font-size: 2em;
+            color: white;
+        }
+    }
+    
+    .media-type {
+        position: absolute;
+        top: 0.7em;
+        left: 0.7em;
+        color: white;
+        font-size: 1.2em;
+        z-index: var(--z-overlay);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 
+                    0 0 5px rgba(0, 0, 0, 0.5);
+        transition: all var(--transition-medium);
+    }
+    
+    [data-media-type="movie"] &,
+    [data-media-type="podcast"] &,
+    [data-media-type="book"] & {
+        .media-type { color: white; }
+    }
 }
 
 /* ==========================================================================
@@ -145,6 +235,10 @@
     box-sizing: border-box;
     pointer-events: none;
     border-radius: 0.5rem;
+    will-change: opacity;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .media-card:hover .media-overlay,
@@ -193,10 +287,12 @@
     font-size: 0.85rem;
     margin: 0 0 0.3rem 0;
     color: var(--accent-color);
-    font-weight: 500;
+    font-weight: 600; /* Slightly bolder for better readability */
     width: 100%;
     pointer-events: auto;
-    opacity: 0.95;
+    opacity: 0.98; /* Slightly more opaque for better contrast */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
 }
 
 .media-overlay-desc {
@@ -223,141 +319,125 @@
     hyphens: auto;
     order: 3;
     margin-bottom: 0.5rem;
+    /* Improved contrast for better readability */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
-   RATING & ACTION COMPONENTS
+   RATING & ACTIONS
    ========================================================================== */
-
-/* Rating Logos Container */
-.rating-logos {
-    position: relative;
-    display: flex;
-    gap: 6px;
-    margin: 5px 0 10px 0;
-    padding: 0 0 8px 0;
-    z-index: 3;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-/* Individual Rating Logo */
-.rating-logo {
-    display: flex;
-    align-items: center;
-    padding: 4px 8px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.85em;
-    font-weight: bold;
-    transition: transform var(--transition-fast), opacity var(--transition-fast);
-    opacity: 0.95;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    min-height: 24px;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.rating-logo:hover {
-    transform: scale(1.05);
-    opacity: 1;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.rating-logo .score {
-    font-weight: bold;
-}
-
-/* Specific Rating Platforms */
-.rt-logo {
-    background-color: #f93a1e;
-    color: white;
-}
-
-.rt-logo .rt-tomato {
-    margin-right: 5px;
-    font-size: 1.1em;
-}
-
-.imdb-logo {
-    background-color: var(--accent-color);
-    color: #000;
-}
-
-.imdb-logo .imdb-icon {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    font-size: 0.9em;
-    letter-spacing: 0.5px;
-    margin-right: 5px;
-}
-
-/* Movie Actions Container */
+.rating-logos,
 .movie-actions-container {
     position: relative;
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 5px 0 10px 0;
-    padding: 0 0 8px 0;
-    z-index: 3;
+    gap: 0.5rem;
+    margin: 0.3rem 0 0.6rem;
+    padding: 0 0 0.5rem;
+    z-index: var(--z-overlay);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-wrap: wrap;
     width: 100%;
+    
+    .rating-logo {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        text-decoration: none;
+        font-size: 0.85em;
+        font-weight: bold;
+        transition: transform var(--transition-fast), 
+                   opacity var(--transition-fast);
+        opacity: 0.95;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        min-height: 1.5rem;
+        user-select: none;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        
+        &:hover {
+            transform: scale(1.05);
+            opacity: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .score { font-weight: bold; }
+        
+        /* Rating Platform Styles */
+        &.rt-logo {
+            background-color: #f93a1e;
+            color: white;
+            
+            .rt-tomato {
+                margin-right: 0.3rem;
+                font-size: 1.1em;
+            }
+        }
+        
+        &.imdb-logo {
+            background-color: var(--accent-color);
+            color: #000;
+            
+            .imdb-icon {
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                font-size: 0.9em;
+                letter-spacing: 0.5px;
+                margin-right: 0.3rem;
+            }
+        }
+    }
 }
 
 /* ==========================================================================
-   TRAILER COMPONENTS
+   TRAILER
    ========================================================================== */
-
-/* Trailer Button */
-.trailer-button-inline {
-    background: #FF0000;
-    color: white;
-    border: none;
-    font-size: 0.9em;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: all var(--transition-medium);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    min-height: 24px;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.trailer-button-inline:hover {
-    transform: translateY(-2px) scale(1.05);
-}
-
 .trailer-container-inline {
     display: flex;
     align-items: center;
-}
-
-/* Trailer Embed */
-.trailer-embed {
-    position: relative;
     width: 100%;
-    padding-top: 56.25%;
-    margin: 10px 0;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.trailer-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+    
+    .trailer-button-inline {
+        background: #FF0000;
+        color: white;
+        border: none;
+        font-size: 0.9em;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        transition: all var(--transition-medium);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        min-height: 1.5rem;
+        user-select: none;
+        text-decoration: none;
+        
+        &:hover {
+            transform: translateY(-2px) scale(1.05);
+            color: white;
+        }
+    }
+    
+    .trailer-embed {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        margin: 0.6rem 0;
+        border-radius: 0.25rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    }
 }
 
 /* ==========================================================================
@@ -366,20 +446,30 @@
 
 /* Filter Container */
 .media-filters {
+    /* Layout */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: flex-start;
+    width: min(100% - 2rem, 1000px);
+    margin: var(--space-xl) auto 0;
+    padding: 1.2rem 1.8rem;
+    
+    /* Visual */
     background: var(--background-light);
     border: 1px solid var(--border-light);
     border-radius: 0.8rem;
     box-shadow: 0 2px 12px var(--shadow-light);
-    padding: 1.2rem 1.8rem;
-    margin: 2rem auto 0;
-    max-width: 1000px;
-    width: calc(100% - 2rem);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: flex-start;
+    
+    /* Animation */
     transition: all var(--transition-slow);
+    
+    /* Modern CSS */
+    @supports (container-type: inline-size) {
+        container-type: inline-size;
+        container-name: filters;
+    }
 }
 
 .media-filters label {

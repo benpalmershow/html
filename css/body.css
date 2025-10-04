@@ -27,6 +27,62 @@
     max-width:var(--max-content-width);
     width:100%;
 }
+
+/* Footer social icons - consistent sizing */
+.social-links img,
+.social-links svg,
+footer .social-links img{
+    height:1.7em;
+    width:1.7em;
+    vertical-align:middle;
+    transition:filter .2s;
+}
+
+/* Buy Me A Coffee widget overrides: target common widget outputs (iframes, images, buttons)
+   and force the icon to match footer logos. Use attribute selectors to be resilient. */
+iframe[src*="buymeacoffee"],
+img[src*="buymeacoffee"],
+a[href*="buymeacoffee"] img,
+.bmc-wbtn img,
+.bmc-button img,
+.bmc-widget img{
+    width:1.7em !important;
+    height:1.7em !important;
+    max-width:2.2rem !important;
+    max-height:2.2rem !important;
+    display:inline-block !important;
+}
+
+/* If the widget injects a fixed container, tighten its sizing so the icon aligns with footer spacing */
+.bmc-wbtn,
+.bmc-button,
+.bmc-widget,
+iframe[src*="buymeacoffee"]{
+    width:auto !important;
+    height:auto !important;
+    min-width:1.7em !important;
+    min-height:1.7em !important;
+}
+
+/* Force Buy Me A Coffee widget icon to black to match other social logos */
+img[src*="buymeacoffee"],
+a[href*="buymeacoffee"] img,
+.bmc-wbtn img,
+.bmc-button img,
+.bmc-widget img,
+iframe[src*="buymeacoffee"]{
+    filter: none !important; /* clear any color filters */
+    -webkit-filter: none !important;
+    mix-blend-mode: normal !important;
+    /* If the widget uses colored SVG, force it to rendered in black using invert+sepia+saturate+hue-rotate trick */
+    /* This is a best-effort fallback when widget injects inline SVGs with fills. Prefer data-color change above. */
+    filter: grayscale(1) contrast(100%) brightness(0) !important;
+}
+
+/* In case the widget uses background images or SVG backgrounds, force container text color to black */
+.bmc-wbtn, .bmc-button, .bmc-widget {
+    color: #000 !important;
+}
 .card{
     background:var(--bg-secondary);
     border-radius:.5rem;

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-02T14:00:00Z",
+    "lastUpdated": "2025-10-04T14:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -689,13 +689,14 @@
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "SF @ LA",
-            "game_title": "49ers @ Rams",
-            "game_time": "TNF - Thu 10/02, 5:15 PM PDT",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct02sfla",
-            "polymarket_url": "https://polymarket.com/event/nfl-sf-la-2025-10-02",
-            "sf_win_odds": "28¢",
-            "la_win_odds": "72¢"  
+            "name": "NE @ BUF",
+            "game_title": "Patriots @ Bills",
+            "game_time": "Oct 5, 2025 8:20 PM ET",
+            "game_time_iso": "2025-10-05T20:20:00-04:00",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct05nebuf",
+            "polymarket_url": "https://polymarket.com/event/nfl-ne-buf-2025-10-05",
+            "BUF_win_odds": "79¢",
+            "NE_win_odds": "21¢"
         }
 
     ]

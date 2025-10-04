@@ -1,32 +1,53 @@
-// Countdown functionality for NFL games
-function updateCountdown() {
-    const countdownElement = document.querySelector('.game-countdown');
-    if (!countdownElement) return;
-
-    // Game time: October 2, 2025 17:15:00 PDT (5:15 PM PDT)
-    const gameTime = new Date('2025-10-02T17:15:00-07:00').getTime();
-    const now = new Date().getTime();
-    const distance = gameTime - now;
-
-    // If countdown is over
-    if (distance < 0) {
-        countdownElement.textContent = 'Game in progress';
-        return;
+// Countdown functionality for game elements. Supports multiple .game-countdown elements each with a data-game-time attribute (ISO 8601 preferred).
+function parseGameTime(value) {
+    if (!value) return null;
+    // If it looks like ISO or contains 'T', try Date parsing directly
+    if (value.includes('T') || value.match(/\d{4}-\d{2}-\d{2}/)) {
+        const t = Date.parse(value);
+        return isNaN(t) ? null : t;
     }
 
-    // Calculate time remaining
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Display the countdown
-    countdownElement.textContent = ` (${days}d ${hours}h ${minutes}m ${seconds}s)`;
+    // Try to parse common human-readable formats (e.g., 'October 2, 2025 17:15:00 -0700')
+    const t = Date.parse(value);
+    return isNaN(t) ? null : t;
 }
 
-// Initialize countdown when DOM is loaded
+function updateAllCountdowns() {
+    const elements = document.querySelectorAll('.game-countdown');
+    if (!elements || elements.length === 0) return;
+
+    const now = Date.now();
+    elements.forEach(el => {
+        const attr = el.getAttribute('data-game-time') || el.textContent || '';
+        const gameTimeMs = parseGameTime(attr.trim());
+
+        if (!gameTimeMs) {
+            // If no valid time available, leave as-is or clear
+            if (!el.dataset.placeholderSet) {
+                el.textContent = 'TBD';
+                el.dataset.placeholderSet = 'true';
+            }
+            return;
+        }
+
+        const distance = gameTimeMs - now;
+
+        if (distance <= 0) {
+            el.textContent = 'Game in progress';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        el.textContent = ` (${days}d ${hours}h ${minutes}m ${seconds}s)`;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Start countdown timer and update every second
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    // Run immediately and then every second
+    updateAllCountdowns();
+    setInterval(updateAllCountdowns, 1000);
 });

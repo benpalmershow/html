@@ -322,10 +322,11 @@
                             `<div class="data-row"><span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span></div>`;
                     }
                     if (indicator.game_time) {
-                        if (indicator.name === 'SF @ LA') {
-                            // For SF @ LA game, only show the countdown
+                        if (indicator.name === 'SF @ LA' || indicator.name === 'NE @ BUF') {
+                            // For SF @ LA and NE @ BUF games, show a countdown. Include the game time as a data attribute (prefer ISO datetime if available).
+                            const gameTimeAttr = indicator.game_time_iso || indicator.game_time || '';
                             dataRows +=
-                                `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown"></span></span></div>`;
+                                `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${gameTimeAttr}"></span></span></div>`;
                         } else {
                             // For other games, show the game time as before
                             dataRows +=

@@ -174,6 +174,13 @@
         transform: translateZ(0);
         backface-visibility: hidden;
     }
+
+    /* Playlist covers - make them smaller to fit in card */
+    .playlist-cover {
+        object-fit: contain;
+        background-color: var(--background-light);
+        border-radius: 0.25rem;
+    }
     
     .media-placeholder {
         width: 100%;
@@ -251,13 +258,14 @@
 .media-overlay-content {
     padding: 0.6rem 1rem 0.4rem 1rem;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 2rem);
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     padding-bottom: 0.5rem;
     scroll-behavior: smooth;
 }
@@ -321,6 +329,26 @@
     margin-bottom: 0.5rem;
     /* Improved contrast for better readability */
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Media Date Bottom */
+.media-date-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    padding: 0.3rem 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 0.5rem 0.5rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
+    z-index: 5;
 }
 
 /* ==========================================================================

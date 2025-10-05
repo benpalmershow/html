@@ -120,6 +120,11 @@ document.addEventListener('DOMContentLoaded', function() {
         coverImg.width = 300;
         coverImg.height = 200;
 
+        // Add specific class for playlist covers to apply contain styling
+        if (item.mediaType === 'playlist') {
+            coverImg.classList.add('playlist-cover');
+        }
+
         const altText = item.title ? `Cover image for ${item.title}` : 'Media cover image';
         coverImg.alt = altText;
 
@@ -191,6 +196,14 @@ document.addEventListener('DOMContentLoaded', function() {
             description.className = 'media-description';
             description.textContent = item.description;
             overlayContent.appendChild(description);
+        }
+
+        // Add date for playlist items
+        if (item.mediaType === 'playlist' && item.date) {
+            const dateElement = document.createElement('div');
+            dateElement.className = 'media-date-bottom';
+            dateElement.textContent = item.date;
+            overlayContent.appendChild(dateElement);
         }
 
         // Add media type specific content

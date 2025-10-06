@@ -643,7 +643,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin: 0.5rem 0;
     padding: 0.5rem 0;

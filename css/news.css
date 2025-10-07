@@ -17,7 +17,7 @@
 .stock-up{color:#059669;font-weight:bold}
 .market-cap{font-size:0.9em;color:#666}
 .stock-details{margin:0.25rem 0 0 0;font-size:0.9em}
-.category-badge{display:inline-block;font-size:0.75em;font-weight:bold;padding:0.15em 0.4em;border-radius:0.2em;margin-right:0.5em;margin-bottom:0.2em;vertical-align:middle;letter-spacing:0.03em}.category-badge.ipo{background:#1e88e5;color:#fff}.category-badge.earnings{background:#43a047;color:#fff}.category-badge.policy{background:#fbc02d;color:#222}.category-badge.healthcare{background:#10b981;color:#fff}.category-badge.legal{background:#8e24aa;color:#fff}
+.category-badge{display:inline-block;font-size:0.75em;font-weight:bold;padding:0.15em 0.4em;border-radius:0.2em;margin-right:0.5em;margin-bottom:0.2em;vertical-align:middle;letter-spacing:0.03em}.category-badge.ipo{background:#1e88e5;color:#fff}.category-badge.earnings{background:#43a047;color:#fff}.category-badge.policy{background:#fbc02d;color:#222}.category-badge.healthcare{background:#10b981;color:#fff}.category-badge.legal{background:#2c5f5a;color:#fff}
 .category-badge.corrections{background:#e53935;color:#fff}
 .filter-buttons {
   display: flex;
@@ -61,7 +61,7 @@
 .filter-btn.earnings { border-left: 3px solid #43a047; }
 .filter-btn.policy { border-left: 3px solid #fbc02d; }
 .filter-btn.healthcare { border-left: 3px solid #10b981; }
-.filter-btn.legal { border-left: 3px solid #8e24aa; }
+.filter-btn.legal { border-left: 3px solid #2c5f5a; }
 .filter-btn.corrections { border-left: 3px solid #e53935; }
 
 /* Responsive adjustments */
@@ -100,3 +100,6 @@
 
 /* Responsive table styles */
 .responsive-table{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0;border-radius:6px;border:1px solid var(--border-color)}.responsive-table table{width:100%;min-width:600px;border-collapse:collapse;font-size:0.9em}.responsive-table th,.responsive-table td{padding:0.75rem 0.5rem;text-align:left;border:1px solid var(--border-color);white-space:nowrap}.responsive-table th{background-color:var(--logo-teal);color:#fff;font-weight:500;position:sticky;top:0}.responsive-table tr:nth-child(even){background-color:var(--bg-secondary)}.responsive-table tr:hover{background-color:var(--bg-tertiary)}.responsive-table .pos{color:#43a047;font-weight:500}@media (max-width:768px){.responsive-table{font-size:0.85em}.responsive-table th,.responsive-table td{padding:0.5rem 0.4rem}}@media (max-width:480px){.responsive-table{font-size:0.8em;margin:0.75rem -1rem;width:calc(100% + 2rem)}.responsive-table th,.responsive-table td{padding:0.4rem 0.3rem}}
+
+/* Supreme Court Cases Styles */
+.court-cases{margin:1rem 0}.case-day{margin-bottom:1.5rem;padding:0.75rem;background:var(--bg-primary);border-radius:6px}.case-day h4{margin:0 0 0.75rem 0;font-size:1rem;font-weight:600;color:var(--text-primary);border-bottom:1px solid var(--border-color);padding-bottom:0.5rem}.case-item{margin-bottom:0.75rem;padding:0.5rem 0;border-bottom:1px solid rgba(0,0,0,0.05)}.case-item:last-child{margin-bottom:0;border-bottom:none}.case-header{margin-bottom:0.4rem}.case-header a{color:#2c5f5a;text-decoration:none;font-weight:500;font-size:0.95rem}.case-header a:hover{text-decoration:underline;color:#d4822a}.case-synopsis{font-size:0.85rem;color:var(--text-secondary);line-height:1.4;font-style:italic;margin-bottom:0.5rem}.case-questions{font-size:0.8rem;color:var(--text-muted);line-height:1.4;background:var(--bg-secondary);padding:0.6rem;border-radius:4px;margin-top:0.4rem}@media (max-width:768px){.court-cases{margin:0.75rem 0}.case-day{padding:0.6rem;margin-bottom:1.2rem}.case-day h4{font-size:0.95rem;margin-bottom:0.6rem}.case-item{padding:0.4rem 0;margin-bottom:0.6rem}.case-header a{font-size:0.9rem}.case-synopsis{font-size:0.8rem}.case-questions{font-size:0.75rem;padding:0.5rem}}@media (max-width:480px){.case-day{padding:0.5rem;margin-bottom:1rem}.case-day h4{font-size:0.9rem}.case-header a{font-size:0.85rem}.case-synopsis{font-size:0.75rem;line-height:1.3}.case-questions{font-size:0.7rem;padding:0.4rem;line-height:1.3}}@media (prefers-color-scheme:dark){.case-day{background:#2b3130}.case-day h4{color:var(--text-primary);border-bottom-color:#3a4241}.case-item{border-bottom-color:rgba(255,255,255,0.08)}.case-header a{color:#87c5be}.case-header a:hover{color:#e8955d}.case-synopsis{color:#b3bdcb}.case-questions{background:#222826;color:#9ca3af}}

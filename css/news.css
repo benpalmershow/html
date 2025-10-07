@@ -197,9 +197,9 @@
 }
 
 .read-more-btn {
-  background: var(--logo-orange);
-  color: white;
-  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
   padding: 0.375rem 0.75rem;
   border-radius: 0.25rem;
   font-size: 0.75rem;
@@ -212,7 +212,8 @@
 }
 
 .read-more-btn:hover {
-  background: #b8721f;
+  background: var(--bg-secondary);
+  border-color: var(--text-muted);
   transform: translateY(-1px);
 }
 

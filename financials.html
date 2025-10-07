@@ -475,7 +475,7 @@
                     <div class="indicator-name">
                         ${indicator.name}
                         ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" style="margin-left: 8px; width: 16px; height: 16px; color: var(--text-muted); cursor: pointer;"></i>` : ''}
-                        ${['Shipping Container Rate (China-US 40ft)', 'CPI', 'PPI', 'Jobs Added', 'Housing Starts', 'New Home Sales', 'Industrial Production Index', 'Small Business Optimism Index', 'Jobless Claims', 'Job Openings', 'Private Employment', 'Total Nonfarm Employment', 'Housing Market Index', 'Existing Home Sales', 'Number of Days on Market (Median)', 'Copper Futures', 'Lumber Futures', '20ft Equivalents (TEUs)'].includes(indicator.name) ? `<i data-lucide="bar-chart-3" class="chart-icon" style="margin-left: 8px; width: 16px; height: 16px; color: var(--accent-color, #2C5F5A); cursor: pointer;" title="View Interactive Chart"></i>` : ''}
+                        ${indicator.category !== 'Prediction Markets' ? `<i data-lucide="bar-chart-3" class="chart-icon" style="margin-left: 8px; width: 16px; height: 16px; color: var(--accent-color, #2C5F5A); cursor: pointer;" title="View Interactive Chart"></i>` : ''}
                     </div>
                     <div class="indicator-agency">
                         Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a>

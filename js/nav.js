@@ -1,1 +1,167 @@
-!function(){const navItems=[{text:"Home",href:"/index.html",icon:"🏠",image:""},{text:"Announcements",href:"/read.html",icon:"",image:"/images/announcements.png"},{text:"Numbers",href:"/financials.html",icon:"📊",image:""},{text:"News",href:"/news.html",icon:"📰",image:""},{text:"Media",href:"/media.html",icon:"",image:"/images/read.png"},{text:"Journal",href:"/journal.html",icon:"✍️",image:""}];function renderNav(){const currentPage=(function(){const t=window.location.pathname;return t.substring(t.lastIndexOf("/")+1)||"index.html";})();return navItems.map(item=>{const isActive=item.href===currentPage?" active":"";let iconHtml="";if(item.image){iconHtml=`<img src="${item.image}" alt="${item.text}" class="nav-icon">`;}else if(item.icon){iconHtml=`<span class="nav-emoji">${item.icon}</span>`;}return `<a class="nav-link${isActive}" href="${item.href}" title="${item.text}">${iconHtml}</a>`;}).join("");}function injectNav(){const navContainer=document.querySelector('.nav-links');if(navContainer){if(!document.querySelector('.nav-top-line')){const topLine=document.createElement('div');topLine.className='nav-top-line';navContainer.parentNode.insertBefore(topLine,navContainer);}navContainer.innerHTML=renderNav();if(!document.querySelector('#nav-bar-styles')){const style=document.createElement('style');style.id='nav-bar-styles';style.textContent=`.nav-links{display:flex;flex-direction:row;gap:12px;justify-content:center;padding:8px 20px;flex-wrap:wrap;align-items:center;}.nav-link{text-decoration:none;color:var(--text-primary);transition:transform 0.2s ease;display:flex;align-items:center;justify-content:center;font-size:1rem;width:44px;height:44px;border-radius:8px;background:none;border:none;position:relative;box-sizing:border-box;padding:0;}.nav-link:hover,.nav-link.active{background:var(--bg-secondary);transform:translateY(-2px);}.nav-icon{width:24px;height:24px;margin:0;vertical-align:middle;object-fit:cover;border-radius:2px;box-shadow:0 1px 2px var(--shadow-color);background:transparent;}.nav-emoji{font-size:1.4rem;margin-right:0;display:inline-block;vertical-align:middle;}.nav-home-label{font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;letter-spacing:0.03em;text-align:center;background:none;margin:0;}@media(max-width:768px){.nav-links{flex-direction:row;justify-content:center;width:100%;}}`;document.head.appendChild(style);const extraStyle=document.createElement('style');extraStyle.id='nav-extra-lines';extraStyle.textContent=`.nav-top-line,.logo-bottom-line{width:100%;height:1.5px;background:var(--border-color,#ccc);margin:0 0 12px 0;border:none;}.logo-bottom-line{margin:0 0 18px 0;}`;document.head.appendChild(extraStyle);const mainLogo=document.querySelector('.main-logo');if(mainLogo&&!document.querySelector('.logo-bottom-line')){const logoLine=document.createElement('div');logoLine.className='logo-bottom-line';mainLogo.parentNode.insertBefore(logoLine,mainLogo.nextSibling);}}}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",injectNav):injectNav();}();
+(function() {
+    const navItems = [{
+        text: "Home",
+        href: "/index.html",
+        icon: "🏠",
+        image: ""
+    }, {
+        text: "Announcements",
+        href: "/read.html",
+        icon: "",
+        image: "/images/announcements.png"
+    }, {
+        text: "Numbers",
+        href: "/financials.html",
+        icon: "📊",
+        image: ""
+    }, {
+        text: "News",
+        href: "/news.html",
+        icon: "📰",
+        image: ""
+    }, {
+        text: "Media",
+        href: "/media.html",
+        icon: "",
+        image: "/images/read.png"
+    }, {
+        text: "Journal",
+        href: "/journal.html",
+        icon: "✍️",
+        image: ""
+    }];
+
+    function createNavbar() {
+        const nav = document.createElement('nav');
+        nav.className = 'floating-nav';
+
+        const path = window.location.pathname;
+        const currentPage = path === '/' ? '/index.html' : path;
+
+        nav.innerHTML = navItems.map(item => {
+            const isActive = item.href === currentPage ? ' active' : '';
+            let iconHtml = '';
+            if (item.image) {
+                iconHtml = `<img src="${item.image}" alt="${item.text}" class="nav-icon">`;
+            } else if (item.icon) {
+                iconHtml = `<span class="nav-emoji">${item.icon}</span>`;
+            }
+
+            return `
+                <a href="${item.href}" class="nav-link${isActive}" title="${item.text}">
+                    ${iconHtml}
+                </a>
+            `;
+        }).join('');
+
+        return nav;
+    }
+
+    function injectNavbar() {
+        // Remove old nav elements if they exist to prevent conflicts
+        const oldNav = document.querySelector('.nav-links');
+        if (oldNav) {
+            const parent = oldNav.parentNode;
+            if(parent){
+                const topLine = parent.querySelector('.nav-top-line');
+                if(topLine) topLine.remove();
+            }
+            oldNav.remove();
+        }
+        const oldStyles = document.querySelector('#nav-bar-styles');
+        if (oldStyles) {
+            oldStyles.remove();
+        }
+        const oldExtraLines = document.querySelector('#nav-extra-lines');
+        if(oldExtraLines) {
+            oldExtraLines.remove();
+        }
+
+        const navbar = createNavbar();
+        document.body.prepend(navbar);
+
+        if (document.querySelector('#floating-nav-styles')) return;
+
+        const style = document.createElement('style');
+        style.id = 'floating-nav-styles';
+        style.textContent = `
+            :root {
+                --nav-height: 50px;
+                --nav-bg: rgba(255, 255, 255, 0.6);
+                --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                --nav-icon-size: 24px;
+            }
+
+            body {
+                /* Add padding to prevent content from being hidden by the floating nav */
+                padding-top: 80px;
+            }
+
+            .floating-nav {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                height: var(--nav-height);
+                padding: 0 15px;
+                border-radius: 25px;
+                background: var(--nav-bg);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-shadow: var(--nav-shadow);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                z-index: 1000;
+                transition: top 0.3s;
+            }
+
+            .floating-nav a.nav-link {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                color: var(--text-primary);
+            }
+
+            .floating-nav a.nav-link:hover {
+                background: rgba(0, 0, 0, 0.05);
+            }
+
+            .floating-nav a.nav-link.active {
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            .floating-nav .nav-icon,
+            .floating-nav .nav-emoji {
+                font-size: var(--nav-icon-size);
+                width: var(--nav-icon-size);
+                height: var(--nav-icon-size);
+                object-fit: cover;
+            }
+            
+            .floating-nav .nav-icon {
+                border-radius: 4px;
+            }
+
+            .floating-nav .nav-emoji {
+                line-height: 1;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", injectNavbar);
+    } else {
+        injectNavbar();
+    }
+})();

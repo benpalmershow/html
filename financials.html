@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/body.css?v=20250926">
     <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
     <link rel="stylesheet" href="css/financials.css?v=20_250926">
-    <link rel="stylesheet" href="css/chart-modal.css?v=20250926">
+    <link rel="stylesheet" href="css/chart-modal.css?v=20250107">
 
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="@vercel/speed-insights/script.js"></script>
@@ -351,7 +351,7 @@
                             `<div class="data-row"><span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span></div>`;
                     }
                 } else if ((indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') ||
-                           (indicator.name === 'Job Openings')) {
+                    (indicator.name === 'Job Openings')) {
                     // Special handling for Total Nonfarm Employment and Job Openings - show job changes inline
                     const monthlyChanges = calculateAllMonthlyChanges(indicator);
                     const changesMap = {};
@@ -370,8 +370,10 @@
                                 // Use the formatted string from calculateAllMonthlyChanges
                                 const formatted = changeObj.formatted;
                                 // Style positive/negative
-                                const changeClass = (changeObj.change >= 0) ? 'change-positive' : 'change-negative';
-                                changeHtml = `<span class="month-change ${changeClass}" style="margin-left:8px; font-weight:600;">${formatted}</span>`;
+                                const changeClass = (changeObj.change >= 0) ? 'change-positive' :
+                                    'change-negative';
+                                changeHtml =
+                                    `<span class="month-change ${changeClass}" style="margin-left:8px; font-weight:600;">${formatted}</span>`;
                             }
 
                             // Render the row with numeric value and right-aligned monthly change
@@ -398,7 +400,9 @@
                         const value = indicator[month];
                         const label = monthLabels[index] || month;
                         if (value && value !== '') {
-                            const yoy = cpiYoyData[month] ? `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[month]}</span>` : '';
+                            const yoy = cpiYoyData[month] ?
+                                `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[month]}</span>` :
+                                '';
                             dataRows += `
                                 <div class="data-row">
                                     <span class="month-label">${label}:</span>
@@ -474,8 +478,8 @@
                 <div class="indicator">
                     <div class="indicator-name">
                         ${indicator.name}
-                        ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" style="margin-left: 8px; width: 16px; height: 16px; color: var(--text-muted); cursor: pointer;"></i>` : ''}
-                        ${indicator.category !== 'Prediction Markets' ? `<i data-lucide="bar-chart-3" class="chart-icon" style="margin-left: 8px; width: 16px; height: 16px; color: var(--accent-color, #2C5F5A); cursor: pointer;" title="View Interactive Chart"></i>` : ''}
+                        ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" title="Show explanation"></i>` : ''}
+                        ${indicator.category !== 'Prediction Markets' ? `<i data-lucide="bar-chart-3" class="chart-icon" title="View Interactive Chart"></i>` : ''}
                     </div>
                     <div class="indicator-agency">
                         Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a>
@@ -569,7 +573,8 @@
                                             const change = changesMap[monthKey];
 
                                             if (change) {
-                                                const changeClass = change.change >= 0 ? 'change-positive' :
+                                                const changeClass = change.change >= 0 ?
+                                                    'change-positive' :
                                                     'change-negative';
                                                 const arrowIcon = change.change >= 0 ? '↗' :
                                                     '↘';
@@ -683,7 +688,7 @@
                 if (!tooltip) {
                     tooltip = document.createElement('div');
                     tooltip.id = 'filter-tooltip';
-                    
+
                     // Apply all styles at once to ensure they stick
                     Object.assign(tooltip.style, {
                         position: 'fixed',
@@ -711,7 +716,7 @@
                         WebkitPerspective: '1000',
                         perspective: '1000px'
                     });
-                    
+
                     document.body.appendChild(tooltip);
                 }
 
@@ -727,7 +732,7 @@
                     tooltip.style.left = Math.max(10, x - tooltipWidth / 2) + 'px';
                     tooltip.style.top = (y - 40) + 'px';
                     tooltip.style.opacity = '1';
-                    
+
                     // Force reflow and ensure tooltip is on top
                     tooltip.style.zIndex = '2147483647';
                     tooltip.style.position = 'fixed';

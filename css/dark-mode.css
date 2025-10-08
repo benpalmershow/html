@@ -219,7 +219,8 @@
 
 /* Improve blockquotes */
 [data-theme="dark"] blockquote {
-  border-left: 4px solid var(--accent-secondary);
+  border: 0.5px solid var(--accent-secondary);
+  border-radius: 4px;
   background-color: #1a2322;
   color: #e1e5e9;
   padding: 1rem 1.5rem;

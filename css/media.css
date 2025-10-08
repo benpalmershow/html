@@ -1090,7 +1090,7 @@ ecial Analysis Section */
     padding: 1.5rem;
     background: var(--background-light);
     border-radius: 8px;
-    border-left: 4px solid var(--secondary-color);
+    border: 0.5px solid var(--secondary-color);
 }
 
 .special-analysis h2 {

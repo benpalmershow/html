@@ -54,23 +54,29 @@
 }
 
 #closeChartModal {
-    background: none;
-    border: none;
-    font-size: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    font-size: 32px !important;
+    font-weight: bold;
     cursor: pointer;
-    color: var(--text-muted, #666);
-    padding: 0;
-    width: 24px;
-    height: 24px;
+    color: var(--text-primary, #333) !important;
+    padding: 8px;
+    width: 44px !important;
+    height: 44px !important;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: all 0.2s ease;
     flex-shrink: 0;
+    line-height: 1;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 #closeChartModal:hover {
-    background-color: var(--bg-secondary, #f5f5f5);
-    color: var(--text-primary, #333);
+    background-color: var(--logo-orange, #D4822A) !important;
+    color: white !important;
+    border-color: var(--logo-orange, #D4822A);
+    transform: scale(1.1);
 }

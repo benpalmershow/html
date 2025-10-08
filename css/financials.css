@@ -176,7 +176,8 @@
     opacity: 0.5;
 }
 
-/* Enhanced chart icon styling */
+/* Enhanced icon styling for info and chart icons */
+.info-icon,
 .chart-icon {
     transition: all 0.3s ease;
     cursor: pointer;
@@ -185,16 +186,23 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 20px !important;
+    height: 20px !important;
+    margin-left: 6px !important;
+    color: var(--text-muted, #6b7280) !important;
 }
 
+.info-icon:hover,
 .chart-icon:hover {
     background: var(--bg-secondary, #f3f4f6);
     transform: scale(1.1);
+    color: var(--accent-color, #2C5F5A) !important;
 }
 
+.info-icon.active,
 .chart-icon.active {
     background: var(--accent-color, #2C5F5A);
-    color: white;
+    color: white !important;
 }
 
 /* Ensure tooltip is always on top */

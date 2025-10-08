@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <title>Barrett v. United States - Legal Analysis</title>
+  <link rel="stylesheet" href="/css/body.css?v=20251008">
+  <link rel="stylesheet" href="/css/dark-mode.css?v=20251008">
+  <link rel="stylesheet" href="/css/article.css?v=20251008">
+  <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
+  <script src="/js/nav.js" defer></script>
+  <style>
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .article-header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+    .article-title {
+      font-size: 2.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    .article-subtitle {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .article-meta {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .article-content {
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+    .concept {
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    h3 {
+      margin-top: 2rem;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="barrett-tools" class="mt-10 border-t border-gray-300 pt-8">
+    <header class="mb-6">
+      <h2 class="text-2xl font-bold">Understanding Double Jeopardy: Tools and Timeline</h2>
+      <p class="text-gray-600">Interactive reference for <em>Barrett v. United States</em> and the doctrines shaping cumulative punishment analysis.</p>
+    </header>
+  
+    <!-- Toggle Explainer -->
+    <div class="bg-neutral-50 rounded-2xl shadow-sm p-6 mb-10">
+      <h3 class="text-xl font-semibold mb-4">Conviction vs. Punishment</h3>
+      <div class="flex gap-3 mb-4">
+        <button id="btnConviction" class="toggle-btn active bg-gray-800 text-white px-3 py-1.5 rounded-xl">Conviction</button>
+        <button id="btnPunishment" class="toggle-btn bg-gray-200 text-gray-800 px-3 py-1.5 rounded-xl">Punishment</button>
+      </div>
+      <div id="explanation" class="transition-all duration-300 text-gray-700 leading-relaxed">
+        <p><strong>Conviction:</strong> The <span class="concept">Blockburger</span> elements test asks whether each offense requires proof of a fact the other does not. If not, they are the same offense for double-jeopardy purposes. The focus is on <em>elements</em>, not on punishment.</p>
+      </div>
+    </div>
+  
+    <!-- Timeline -->
+    <div class="timeline space-y-4">
+      <h3 class="text-xl font-semibold mb-4">From <span class="concept">Blockburger</span> to <span class="concept">Barrett</span></h3>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+  
+        <div class="bg-white border rounded-2xl p-4">
+          <p class="text-sm text-gray-500">1932</p>
+          <h4 class="font-semibold">Blockburger v. United States</h4>
+          <p class="text-sm">Established the “same-elements” test: two offenses are distinct if each requires proof of a fact the other does not.</p>
+        </div>
+  
+        <div class="bg-white border rounded-2xl p-4">
+          <p class="text-sm text-gray-500">1983</p>
+          <h4 class="font-semibold">Whalen v. United States</h4>
+          <p class="text-sm">Held that cumulative punishment requires a clear indication of congressional intent.</p>
+        </div>
+  
+        <div class="bg-white border rounded-2xl p-4">
+          <p class="text-sm text-gray-500">2017</p>
+          <h4 class="font-semibold">Dean v. United States</h4>
+          <p class="text-sm">Recognized judicial discretion in sentencing alongside §924(c) mandatory minimums.</p>
+        </div>
+  
+        <div class="bg-white border rounded-2xl p-4">
+          <p class="text-sm text-gray-500">2023</p>
+          <h4 class="font-semibold">United States v. Lora</h4>
+          <p class="text-sm">Clarified that §924(j) sentences are not subject to §924(c)’s consecutive-sentence rule, signaling separate statutory design.</p>
+        </div>
+  
+        <div class="bg-white border rounded-2xl p-4">
+          <p class="text-sm text-gray-500">2025</p>
+          <h4 class="font-semibold">Barrett v. United States</h4>
+          <p class="text-sm">Tests whether §924(j) subsumes §924(c) and whether double punishment violates the Fifth Amendment’s double-jeopardy clause.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    // Toggle content for Conviction vs. Punishment
+    const btnConviction = document.getElementById('btnConviction');
+    const btnPunishment = document.getElementById('btnPunishment');
+    const explanation = document.getElementById('explanation');
+  
+    btnConviction.addEventListener('click', () => {
+      btnConviction.classList.add('bg-gray-800', 'text-white');
+      btnPunishment.classList.remove('bg-gray-800', 'text-white');
+      btnPunishment.classList.add('bg-gray-200', 'text-gray-800');
+      explanation.innerHTML = `<p><strong>Conviction:</strong> The <span class="concept">Blockburger</span> test compares statutory <em>elements</em>. Two statutes define the same offense if one does not require proof of any additional fact. This test governs whether separate convictions may stand without violating double jeopardy.</p>`;
+    });
+  
+    btnPunishment.addEventListener('click', () => {
+      btnPunishment.classList.add('bg-gray-800', 'text-white');
+      btnConviction.classList.remove('bg-gray-800', 'text-white');
+      btnConviction.classList.add('bg-gray-200', 'text-gray-800');
+      explanation.innerHTML = `<p><strong>Punishment:</strong> Even if two statutes survive the <span class="concept">Blockburger</span> test, multiple sentences still require a <em>clear statement</em> from Congress. Absent explicit authorization, courts presume only one punishment applies — and <span class="concept">lenity</span> resolves any remaining ambiguity in favor of the defendant.</p>`;
+    });
+  </script>
+  
+</body>
+</html>

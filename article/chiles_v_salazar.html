@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <title>Chiles v. Salazar</title>
+  <link rel="stylesheet" href="/css/body.css?v=20251008">
+  <link rel="stylesheet" href="/css/dark-mode.css?v=20251008">
+  <link rel="stylesheet" href="/css/article.css?v=20251008">
+  <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
+  <link rel="stylesheet" href="/css/news.css">
+  <style>
+    /* Article-specific styles that match site theme */
+    .concept {
+      font-weight: 600;
+      color: var(--logo-teal);
+      border-bottom: 1px dashed var(--logo-orange);
+      text-decoration: none;
+    }
+    
+    .prose {
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    }
+    
+    .prose p {
+      margin-bottom: 1.5em;
+    }
+    
+    .prose h3 {
+      margin: 2.5em 0 1em;
+      color: var(--logo-teal);
+      font-size: 1.4rem;
+      font-weight: 600;
+      line-height: 1.3;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5em;
+    }
+    
+    .prose ul, 
+    .prose ol {
+      margin-bottom: 1.5em;
+      padding-left: 1.5em;
+    }
+    
+    .prose li {
+      margin-bottom: 0.75em;
+      line-height: 1.7;
+    }
+    
+    .card {
+      background: var(--bg-secondary);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    
+    .guidance-box {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(248,244,230,0.5) 100%);
+      border-left: 4px solid var(--logo-orange);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .guidance-box h3 {
+      color: var(--logo-orange);
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .guidance-box p {
+      line-height: 1.7;
+      margin-bottom: 1em;
+    }
+    
+    .guidance-box blockquote {
+      font-style: italic;
+      color: var(--text-secondary);
+      border-left: 2px solid var(--logo-teal);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .btn-primary {
+      background: var(--logo-teal);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: var(--bg-primary);
+      color: var(--logo-teal);
+      border-color: var(--logo-teal);
+    }
+    
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    
+    .explanation-box {
+      background: var(--bg-secondary);
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    .timeline-container {
+      overflow-x: auto;
+      padding: 0.5rem 0 1.5rem;
+      margin: 0 -0.5rem;
+    }
+    
+    .timeline-scroll {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 1.25rem;
+      min-width: min-content;
+      padding: 0 0.5rem;
+    }
+    
+    .timeline-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--shadow-color);
+    }
+    
+    .timeline-year {
+      font-size: 0.85rem;
+      color: var(--logo-orange);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .timeline-card h4 {
+      color: var(--logo-teal);
+      font-weight: 600;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    
+    .timeline-desc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    
+    .section {
+      margin: 3rem 0;
+    }
+    
+    .section h2 {
+      color: var(--logo-teal);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    header.mb-10 {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    header h1 {
+      font-size: 2rem;
+      color: var(--logo-teal);
+      margin: 0 0 0.5rem;
+      line-height: 1.3;
+      text-align: center;
+    }
+    
+    header h2 {
+      font-size: 1.25rem;
+      color: var(--logo-orange);
+      margin: 0 0 1.5rem;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.5;
+    }
+    
+    .article-meta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 1rem 0 1.5rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .timeline-scroll {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+      }
+      
+      .card, .guidance-box {
+        padding: 1.25rem;
+      }
+      
+      header h1 {
+        font-size: 1.75rem;
+      }
+      
+      header h2 {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+      
+      .section {
+        margin: 2.5rem 0;
+      }
+      
+      .prose h3 {
+        font-size: 1.25rem;
+        margin: 2.25rem 0 1rem;
+      }
+      
+      .card, .guidance-box {
+        padding: 1.25rem;
+      }
+      
+      .timeline-scroll {
+        grid-template-columns: minmax(280px, 1fr);
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      header h2 {
+        font-size: 1.05rem;
+      }
+      
+      .prose h3 {
+        font-size: 1.15rem;
+      }
+      
+      .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+  <body>
+    <main class="container">
+      <!-- Article Header -->
+      <header class="mb-10">
+        <h1>Chiles v. Salazar</h1>
+        <h2>Speech, Conduct, and Viewpoint Discrimination in Professional Regulation</h2>
+        <div class="article-meta">
+          <span>Legal Analysis</span>
+          <span>•</span>
+          <time datetime="2025-10-07">October 7, 2025</time>
+        </div>
+        <p class="mt-4">
+          Analysis of the Supreme Court oral argument examining whether Colorado's ban on sexual orientation and gender identity change efforts is a <span class="concept">viewpoint-based speech restriction</span> or permissible regulation of harmful <span class="concept">medical conduct</span>.
+        </p>
+      </header>
+  
+      <!-- Key Takeaways -->
+      <section>
+        <h2 class="section-title">Key Takeaways from Oral Argument</h2>
+        <div class="takeaway-grid">
+          <div class="takeaway-card">
+            <h4>Petitioner's Position</h4>
+            <p>Colorado's statute is a content-and-viewpoint-based restriction on speech that "prophylactically bans voluntary conversations" and categorically prohibits certain counseling goals for minors, triggering strict scrutiny.</p>
+          </div>
+  
+          <div class="takeaway-card">
+            <h4>Government's Counter</h4>
+            <p>The law regulates medical or professional conduct (harmful treatment) rather than pure speech—a health-and-safety regulation aimed at harmful practices not subject to typical First Amendment strict scrutiny.</p>
+          </div>
+  
+          <div class="takeaway-card">
+            <h4>Solicitor General's Position</h4>
+            <p>The law is viewpoint-and-content-based and outside historical exceptions. The record lacks evidence showing non-aversive, licensed talk therapy to minors is harmful.</p>
+          </div>
+  
+          <div class="takeaway-card">
+            <h4>Judicial Fault Lines</h4>
+            <p>Multiple Justices probed whether therapy is <em>only speech</em> (protected) or <em>speech integral to medical conduct</em> (regulable), with repeated concerns about viewpoint discrimination.</p>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Main Analysis -->
+      <article class="card">
+        <section class="prose max-w-none">
+          <h3>Why Viewpoint Discrimination Matters</h3>
+          <p>
+            If the law is correctly characterized as <span class="concept">viewpoint-based censorship</span>—allowing counseling that advances one stance (gender-affirming) while forbidding counseling that advances the opposite stance (assistance aiming to reduce or alter sexual orientation or gender identity)—then it is subject to <strong>strict scrutiny</strong> and will survive only if narrowly tailored to a compelling state interest.
+          </p>
+          <p>
+            Multiple parts of the transcript frame the statute as literally producing that asymmetry. The government's framing—that the statute targets treatment/conduct because certain practices are medically harmful—would place the regulation under a different doctrinal lens: regulation of professional medical practice and patient safety, which historically gives states substantial regulatory room.
+          </p>
+  
+          <h3>The Speech vs. Conduct Distinction</h3>
+          <p>
+            The transcript revolves around a precise distinction:
+          </p>
+          <ul>
+            <li><strong>If medical conduct:</strong> The regulation can be upheld as a permissible professional-practice rule under the state's police powers to regulate healthcare and protect minors.</li>
+            
+            <li><strong>If speech:</strong> Classic First Amendment protections attach, and the state must satisfy strict scrutiny or show the speech is unprotected (e.g., fraud, incitement, or speech integral to unlawful conduct).</li>
+          </ul>
+          <p>
+            Colorado's counsel repeatedly distinguished "help me become straight" (banned) from "help me cope" (permitted), emphasizing the statute's focus on the <em>purpose</em> of changing identity or orientation rather than the content of conversations about identity.
+          </p>
+  
+          <h3>How States Justify These Bans</h3>
+          <p>
+            States rely on several overlapping justifications:
+          </p>
+          <ol>
+            <li><strong>Statutory framing:</strong> Many state bans prohibit "sexual orientation change efforts" (SOCE) or "gender identity change efforts" (GICE) for minors, defined broadly to include attempts to eliminate or reduce same-sex attraction or alter gender identity. States frame these as targeting harmful <em>treatment</em> rather than protected <em>speech</em>.</li>
+            
+            <li><strong>Regulatory authority:</strong> States invoke their police powers to regulate healthcare practice and protect minors from interventions deemed unsafe or ineffective. When characterized as medical treatment, courts have traditionally given states broad authority.</li>
+            
+            <li><strong>Evidentiary claim of harm:</strong> States cite epidemiological and survey studies associating conversion/GICE practices with adverse mental-health outcomes (suicidality, depression). Colorado's counsel pointed to such studies; petitioners and the SG disputed whether those studies isolate licensed, non-aversive talk therapy to minors.</li>
+            
+            <li><strong>Professional consensus:</strong> States rely on official positions from major professional organizations condemning these practices as ineffective and harmful.</li>
+          </ol>
+        </section>
+      </article>
+  
+      <!-- Professional Bodies Section -->
+      <section>
+        <h2 class="section-title">Professional Organizations' Positions</h2>
+        <p style="margin-bottom: 2rem; line-height: 1.7; color: var(--text-secondary, #4b5563);">
+          The professional consensus is that attempts to change sexual orientation or gender identity are not established, evidence-based treatments and are associated with harms. These official positions form the backbone of state regulatory justifications.
+        </p>
+        
+        <div class="professional-bodies">
+          <div class="professional-card">
+            <h4>American Psychological Association</h4>
+            <p class="org-name">APA (Psychology)</p>
+            <p>
+              Concludes there is <strong>insufficient evidence</strong> to support psychological interventions to change sexual orientation. The APA opposes SOCE and has determined such efforts "lack efficacy and pose risk of harm."
+            </p>
+            <a href="https://www.apa.org/about/policy/resolution-sexual-orientation-change-efforts.pdf" target="_blank" rel="noopener">View Official Resolution →</a>
+          </div>
+  
+          <div class="professional-card">
+            <h4>American Psychiatric Association</h4>
+            <p class="org-name">APA (Psychiatry)</p>
+            <p>
+              Opposes "reparative" or conversion therapies, emphasizing lack of evidence for efficacy and potential for harm. Frames such practices as inconsistent with accepted psychiatric care.
+            </p>
+            <a href="https://www.psychiatry.org/getattachment/3d23f2f4-1497-4537-b4de-fe32fe8761bf/Position-Conversion-Therapy.pdf" target="_blank" rel="noopener">View Position Statement →</a>
+          </div>
+  
+          <div class="professional-card">
+            <h4>American Academy of Child & Adolescent Psychiatry</h4>
+            <p class="org-name">AACAP</p>
+            <p>
+              Explicitly describes conversion therapy and gender identity change efforts as interventions intended to alter sexual orientation or gender expression. Warns against these practices for youth.
+            </p>
+            <a href="https://www.aacap.org/aacap/Policy_Statements/2018/Conversion_Therapy.aspx" target="_blank" rel="noopener">View Policy Statement →</a>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Doctrinal Pathways -->
+      <div class="guidance-box">
+        <h3>Practical Doctrinal Outcome Paths</h3>
+        <p>Three potential frameworks the Court may adopt:</p>
+        
+        <div class="doctrinal-path">
+          <h4>1. Viewpoint-Based Speech Restriction → Strict Scrutiny</h4>
+          <p>
+            If the Court treats the law as viewpoint-based speech restriction, the state must show a compelling interest and narrow tailoring. The transcript records skepticism that Colorado's evidentiary record meets that bar.
+          </p>
+        </div>
+  
+        <div class="doctrinal-path">
+          <h4>2. Regulation of Medical Conduct → Deferential Review</h4>
+          <p>
+            If the statute is categorized as professional-practice regulation aimed at preventing harmful treatments, the state has a much stronger path to uphold the ban. Colorado pressed this framing repeatedly.
+          </p>
+        </div>
+  
+        <div class="doctrinal-path">
+          <h4>3. Middle Path / Hybrid Approach</h4>
+          <p>
+            The Court could limit its ruling to the specific configuration before it (licensed talk therapy to minors) or adopt a test distinguishing speech-only counseling from speech-integrated medical procedures—a nuanced rule that would leave room for state regulation of medicalized care while protecting pure conversational therapies.
+          </p>
+        </div>
+      </div>
+  
+      <!-- How the Transcript Uses Professional Positions -->
+      <article class="card">
+        <section class="prose max-w-none">
+          <h3>How the Transcript Uses (and Contests) Professional Positions</h3>
+          
+          <div class="info-box">
+            <h4>Respondents' Reliance</h4>
+            <p>
+              Colorado's counsel invoked studies (Green; Turban; agency reports) and professional assessments to argue the statute targets harmful clinical practices, not protected speech.
+            </p>
+          </div>
+  
+          <div class="info-box">
+            <h4>Petitioner & SG Pushback</h4>
+            <p>
+              They argue the record lacks studies specifically about licensed, non-aversive talk therapy to minors—the exact conduct petitioner engages in. The evidentiary record does not prove the kind of direct causation required to survive strict scrutiny if the statute is treated as speech regulation.
+            </p>
+          </div>
+        </section>
+      </article>
+  
+      <!-- Summary -->
+      <div class="guidance-box">
+        <h3>Analytical Summary</h3>
+        <p>
+          The oral argument centers on a straightforward doctrinal hinge: <strong>is the Colorado ban policing medicine/healthcare conduct, which states may regulate, or is it policing speech and viewpoint inside the counseling room, which triggers strict First Amendment protection?</strong>
+        </p>
+        <p>
+          The transcript, the SG's briefing, and professional associations' statements supply competing pressures: professional bodies' consensus that SOCE/GICE are ineffective and harmful gives the state a policy rationale; but the absence (according to petitioner and the SG) of record-level evidence about non-aversive, licensed talk therapy to minors cuts against upholding a categorical speech ban under strict scrutiny.
+        </p>
+      </div>
+  
+      <!-- Citations -->
+      <div class="citation-box">
+        <h4 style="font-weight: 700; margin-bottom: 1rem; color: var(--citation-accent, #f59e0b);">Quick, Attributable Citations</h4>
+        <p><strong>Oral Argument:</strong> <em>Chiles v. Salazar</em>, No. 24-539, Supreme Court oral argument transcript (Oct. 7, 2025)</p>
+        <p><strong>APA (Psychology):</strong> Resolution on Sexual Orientation Change Efforts; Resolution on Gender Identity Change Efforts</p>
+        <p><strong>APA (Psychiatry):</strong> Position Statement on Conversion Therapy and LGBTQ+ Patients</p>
+        <p><strong>AACAP:</strong> Policy Statement on Conversion Therapy (2018)</p>
+      </div>
+    </main>
+  <script src="/js/nav.js"></script>
+</body>
+</html>

@@ -223,16 +223,16 @@
       color: var(--text-secondary, #4b5563);
     }
     
-    @media (max-width: 768px) {
-      .timeline-scroll {
-        grid-template-columns: repeat(5, minmax(280px, 1fr));
-      }
-      
-      .card {
+    @media (max-width: 1200px) {
+      .container {
         padding: 1.5rem;
       }
       
-      .guidance-box {
+      .timeline-scroll {
+        grid-template-columns: repeat(3, minmax(280px, 1fr));
+      }
+      
+      .card, .guidance-box {
         padding: 1.5rem;
       }
       
@@ -242,6 +242,84 @@
       
       header h2 {
         font-size: 1.25rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-scroll {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      
+      .card, .guidance-box {
+        padding: 1.25rem;
+        border-radius: 0.75rem;
+      }
+      
+      .section {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+      
+      header.mb-10 {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 1.75rem;
+      }
+      
+      header h2 {
+        font-size: 1.1rem;
+      }
+      
+      .prose h3 {
+        margin-top: 2rem;
+        font-size: 1.25rem;
+      }
+      
+      .prose p, .prose li {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .timeline-scroll {
+        grid-template-columns: 1fr;
+      }
+      
+      .card, .guidance-box {
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
+      
+      .section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      header h2 {
+        font-size: 1rem;
+      }
+      
+      .prose h3 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .prose ul, .prose ol {
+        padding-left: 1.25rem;
+      }
+      
+      .article-meta {
+        font-size: 0.85rem;
       }
     }
   </style>

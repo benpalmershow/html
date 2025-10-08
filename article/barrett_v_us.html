@@ -8,135 +8,538 @@
   <meta http-equiv="Expires" content="0">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <title>Barrett v. United States - Legal Analysis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/css/body.css?v=20251008">
   <link rel="stylesheet" href="/css/dark-mode.css?v=20251008">
   <link rel="stylesheet" href="/css/article.css?v=20251008">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
-  <script src="/js/nav.js" defer></script>
+  <link rel="stylesheet" href="/css/news.css">
   <style>
-    .article-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+    /* Navigation styles specific to article page */
+    .floating-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0.5rem 0;
+      flex-wrap: wrap;
     }
-    .article-header {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1rem;
-    }
-    .article-title {
-      font-size: 2.25rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-    .article-subtitle {
-      font-size: 1.5rem;
+
+    .floating-nav .nav-link {
+      background: transparent;
       color: var(--text-secondary);
+      padding: clamp(0.4rem, 1.5vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      white-space: nowrap;
+      min-height: clamp(36px, 8vw, 40px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .floating-nav .nav-link:hover {
+      color: var(--logo-orange);
+      background-color: rgba(248, 244, 230, 0.3);
+      transform: translateY(-1px);
+      border-color: rgba(212, 130, 42, 0.2);
+      box-shadow: 0 2px 4px rgba(44, 95, 90, 0.05);
+    }
+
+    .floating-nav .nav-link.active {
+      color: var(--logo-orange);
+      background-color: rgba(248, 244, 230, 0.2);
+      font-weight: 600;
+      border-color: rgba(212, 130, 42, 0.15);
+    }
+
+    .floating-nav .nav-icon {
+      max-width: 24px;
+      max-height: 24px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .floating-nav .nav-emoji {
+      font-size: 1.5em;
+      line-height: 1;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .concept {
+      font-weight: 600;
+      color: var(--text-primary, #1f2937);
+    }
+    
+    .prose {
+      line-height: 1.8;
+    }
+    
+    .prose p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .prose h3 {
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    .prose ul, .prose ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    
+    .prose li {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    
+    .card {
+      background: var(--card-bg, white);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .guidance-box {
+      background: var(--guidance-bg, #fafafa);
+      border-left: 4px solid var(--accent, #1f2937);
+      border-radius: 0 1rem 1rem 0;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .guidance-box h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-bottom: 1rem;
     }
+    
+    .guidance-box p {
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .guidance-box blockquote {
+      font-style: italic;
+      color: var(--text-secondary, #4b5563);
+      border-left: 2px solid var(--border, #d1d5db);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background: var(--primary, #1f2937);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: var(--secondary, #e5e7eb);
+      color: var(--text-primary, #1f2937);
+    }
+    
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
+    .explanation-box {
+      background: var(--explanation-bg, #f9fafb);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-top: 1rem;
+      line-height: 1.7;
+    }
+    
+    .timeline-container {
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    
+    .timeline-scroll {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(250px, 1fr));
+      gap: 1.5rem;
+      min-width: min-content;
+    }
+    
+    .timeline-card {
+      background: var(--card-bg, white);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+    
+    .timeline-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .timeline-year {
+      font-size: 0.875rem;
+      color: var(--text-muted, #6b7280);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-card h4 {
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      font-size: 1.125rem;
+    }
+    
+    .timeline-desc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-secondary, #4b5563);
+    }
+    
+    .section {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+    
+    .section header {
+      margin-bottom: 2rem;
+    }
+    
+    .section h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .text-muted {
+      color: var(--text-muted, #6b7280);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    
+    header.mb-10 {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border, #e5e7eb);
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    
+    header h2 {
+      font-size: 1.5rem;
+      color: var(--text-secondary, #4b5563);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+    
     .article-meta {
-      color: var(--text-muted);
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      color: var(--text-muted, #6b7280);
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
-    .article-content {
+    
+    header p {
       line-height: 1.7;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      color: var(--text-secondary, #4b5563);
     }
-    .concept {
-      font-weight: bold;
-      color: var(--accent-color);
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-    h3 {
-      margin-top: 2rem;
-      color: var(--text-primary);
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
+    
+    @media (max-width: 768px) {
+      .timeline-scroll {
+        grid-template-columns: repeat(5, minmax(280px, 1fr));
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .guidance-box {
+        padding: 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header h2 {
+        font-size: 1.25rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <section id="barrett-tools" class="mt-10 border-t border-gray-300 pt-8">
-    <header class="mb-6">
-      <h2 class="text-2xl font-bold">Understanding Double Jeopardy: Tools and Timeline</h2>
-      <p class="text-gray-600">Interactive reference for <em>Barrett v. United States</em> and the doctrines shaping cumulative punishment analysis.</p>
+  <main class="container">
+    <!-- Article Header -->
+    <header class="mb-10">
+      <h1>Barrett v. United States</h1>
+      <h2>Double Jeopardy, Cumulative Punishment, and Lenity</h2>
+      <div class="article-meta">
+        <span>Legal Analysis</span>
+        <span>•</span>
+        <time datetime="2025-10-08">October 8, 2025</time>
+      </div>
+      <p class="mt-4">
+        Focused notes: why cumulative punishment must be clear, how <span class="concept">Blockburger</span> is used, the distinction between conviction and punishment, and where <span class="concept">lenity</span> fits — prompted by questioning from Justice Gorsuch at oral argument.
+      </p>
     </header>
-  
-    <!-- Toggle Explainer -->
-    <div class="bg-neutral-50 rounded-2xl shadow-sm p-6 mb-10">
-      <h3 class="text-xl font-semibold mb-4">Conviction vs. Punishment</h3>
-      <div class="flex gap-3 mb-4">
-        <button id="btnConviction" class="toggle-btn active bg-gray-800 text-white px-3 py-1.5 rounded-xl">Conviction</button>
-        <button id="btnPunishment" class="toggle-btn bg-gray-200 text-gray-800 px-3 py-1.5 rounded-xl">Punishment</button>
+
+    <div class="w-full">
+      <!-- Main Content -->
+      <article class="card">
+        <section class="prose max-w-none">
+          <h3>1. The Core Issue: Cumulative Punishment Requires a Clear Statement</h3>
+          <p>
+            The controlling principle is simple: when two statutes overlap, Congress must <em>speak clearly</em> if it intends to authorize multiple punishments for the same underlying conduct.
+            Courts apply this rule as a form of statutory construction that protects defendants from unexpected exposure to stacked penalties.
+            Where the statutory text is ambiguous about cumulative sentencing, the Court will generally decline to infer that Congress intended to authorize both punishments.
+          </p>
+
+          <h3>2. Conviction vs. Punishment: Two Separate Questions</h3>
+          <p>
+            It is useful to separate two analytically distinct determinations:
+          </p>
+          <ul>
+            <li><strong>Conviction (elements):</strong> Does each statutory offense require proof of a fact the other does not? This is the core of the <span class="concept">Blockburger</span> test and controls whether two statutes are the same "offense" for double-jeopardy purposes.</li>
+            
+            <li><strong>Punishment (sentencing):</strong> Even if two statutes reach the same conduct (so one might be a lesser-included offense), Congress may sometimes clearly authorize cumulative sentences. That is a separate textual question: did Congress intend multiple punishments?</li>
+          </ul>
+          <p>
+            In practice, defendants press the Blockburger analysis to show the statutes are the same offense; they then invoke the presumption against multiple punishments to block cumulative sentencing unless Congress clearly provided otherwise.
+          </p>
+
+          <h3>3. Blockburger and "Cumulative Punishment"</h3>
+          <p>
+            <span class="concept">Blockburger v. United States</span> supplies the standard test: two statutory provisions constitute the same offense if each requires proof of the same element that the other does not. If each statute requires proof of an element the other does not, they are distinct offenses.
+            But Blockburger answers the <em>elements</em> question — not automatically the punishment question. When statutes overlap, courts use Blockburger first to decide sameness; if sameness is shown, the presumption against cumulative punishment comes into play unless a clear command from Congress says otherwise.
+          </p>
+
+          <h3>4. Double Jeopardy — The Constitutional Backstop</h3>
+          <p>
+            The Fifth Amendment's Double Jeopardy Clause bars multiple punishments for the same offense. Courts enforce this by combining Blockburger (the elements inquiry) with statutory construction rules (the clear-statement requirement).
+            Put another way: Blockburger identifies whether two charges are the same offense; if they are, double jeopardy forbids successive punishments unless Congress clearly authorized both.
+          </p>
+
+          <h3>5. Lenity and Justice Gorsuch's Line of Questioning</h3>
+          <p>
+            Justice Gorsuch's repeated references to <span class="concept">lenity</span> at argument highlight a discrete interpretive tool: when a criminal statute is ambiguous, courts resolve the ambiguity in favor of the defendant.
+            The lenity canon applies most naturally when (1) statutory language is genuinely ambiguous after traditional tools of construction are exhausted, and (2) the ambiguity concerns criminal punishment or the scope of criminal liability.
+            Here, if the text is unclear whether Congress intended cumulative sentencing under both §924(c) and §924(j), lenity reinforces the presumption against multiple punishments — unless Congress's design is unmistakable.
+          </p>
+
+          <h3>6. How These Doctrines Fit Together — A Short Roadmap</h3>
+          <ol>
+            <li><strong>Step 1 — Elements (Blockburger):</strong> Compare statutory elements. If each statute requires proof of an element not present in the other, they are distinct offenses; double jeopardy does not bar separate convictions on that basis alone.</li>
+            
+            <li><strong>Step 2 — Presumption Against Cumulative Punishment:</strong> If statutes overlap materially, ask whether Congress clearly intended cumulative punishments. Absence of clear text favors a single punishment.</li>
+            
+            <li><strong>Step 3 — Lenity:</strong> If ambiguity remains after textual and structural analysis, apply lenity to resolve ambiguity in the defendant's favor as to the scope of punishment.</li>
+            
+            <li><strong>Practical result:</strong> A defendant wins when the elements test shows sameness or when Congress did not unmistakably authorize stacking of penalties; justices skeptical of broad prosecutorial stacking will press both textual clarity and lenity.</li>
+          </ol>
+
+          <h3>7. Quick Examples (Illustrative)</h3>
+          <ul>
+            <li><strong>Same conduct, different labels:</strong> If §A punishes using a gun during a robbery and §B punishes causing death by that same gun use, Blockburger asks whether each provision requires an element the other does not.</li>
+            
+            <li><strong>Textual clarity controlling:</strong> A statute that explicitly says "in addition to any other penalty" supplies the clear statement needed to permit cumulative punishment; ambiguous silence does not.</li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- Enhanced Lenity Section -->
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 1.5rem; color: var(--primary, #1f2937);">
+            ⚖️
+          </div>
+          <h2 style="font-size: 1.5rem; font-weight: 700; margin: 0;">The Rule of Lenity</h2>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="padding: 1rem; background-color: #f9fafb; border-left: 4px solid var(--primary, #1f2937); border-radius: 0 0.5rem 0.5rem 0;">
+              <h3 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">Core Principle</h3>
+              <p style="color: var(--text-secondary, #4b5563); margin: 0; line-height: 1.6;">
+                Ambiguity in criminal statutes must be resolved in favor of the defendant. This principle ensures fair notice and prevents arbitrary punishment.
+              </p>
+            </div>
+            
+            <div style="padding: 1rem; background-color: #f9fafb; border-radius: 0.5rem;">
+              <h3 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">When It Applies</h3>
+              <ul style="list-style-type: disc; padding-left: 1.25rem; margin: 0; color: var(--text-secondary, #4b5563);">
+                <li style="margin-bottom: 0.5rem;">After exhausting traditional tools of statutory interpretation</li>
+                <li style="margin-bottom: 0.5rem;">When ambiguity concerns criminal liability or punishment</li>
+                <li>Particularly relevant in cases of overlapping statutes</li>
+              </ul>
+            </div>
+            
+            <div style="padding: 1rem; background-color: #f9fafb; border-radius: 0.5rem;">
+              <h3 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">Key Precedents</h3>
+              <ul style="margin: 0; padding: 0; list-style: none; color: var(--text-secondary, #4b5563);">
+                <li style="margin-bottom: 0.5rem;"><em>McBoyle v. United States</em> (1931) - Established the "fair warning" principle</li>
+                <li style="margin-bottom: 0.5rem;"><em>United States v. Bass</em> (1971) - Applied lenity to sentencing provisions</li>
+                <li><em>Moskal v. United States</em> (1990) - Clarified when ambiguity triggers lenity</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="padding: 1rem; background-color: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 0 0.5rem 0.5rem 0;">
+              <h3 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">In <em>Barrett v. United States</em></h3>
+              <p style="color: var(--text-secondary, #4b5563); margin: 0 0 0.75rem 0; line-height: 1.6;">
+                Justice Gorsuch's questioning highlighted that if Congress wants cumulative punishment under both § 924(c) and § 924(j), it must say so explicitly. The absence of clear authorization triggers lenity.
+              </p>
+              <blockquote style="margin: 0; padding-left: 1rem; border-left: 2px solid #d1d5db; font-style: italic; color: var(--text-muted, #6b7280);">
+                "If Congress wants cumulative punishment, it has to say so. We don't add years by guessing."
+                <div style="margin-top: 0.5rem; font-size: 0.875rem; font-style: normal;">— Justice Gorsuch, during oral argument in <em>Barrett v. United States</em> (Oct. 6 2025)</div>
+              </blockquote>
+            </div>
+            
+            <div style="padding: 1rem; background-color: #f9fafb; border-radius: 0.5rem;">
+              <h3 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">Practical Impact</h3>
+              <p style="color: var(--text-secondary, #4b5563); margin: 0; line-height: 1.6;">
+                In close cases where statutory interpretation leaves room for doubt, lenity serves as a tiebreaker that protects individual liberty by requiring Congress to speak clearly before imposing multiple punishments for the same conduct.
+              </p>
+            </div>
+            
+            <div style="padding: 1rem; background-color: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 0.5rem 0.5rem 0;">
+              <h3 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;">Key Takeaway</h3>
+              <p style="color: var(--text-secondary, #4b5563); margin: 0; line-height: 1.6;">
+                The rule of lenity is not just a tool of last resort—it's a constitutional safeguard ensuring that criminal laws provide fair notice and that punishments are authorized by clear legislative intent.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="explanation" class="transition-all duration-300 text-gray-700 leading-relaxed">
-        <p><strong>Conviction:</strong> The <span class="concept">Blockburger</span> elements test asks whether each offense requires proof of a fact the other does not. If not, they are the same offense for double-jeopardy purposes. The focus is on <em>elements</em>, not on punishment.</p>
+
+      <!-- Interactive Tools -->
+      <div class="card">
+        <h3 style="margin-top: 0; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Conviction vs. Punishment</h3>
+        <div class="button-group mb-4">
+          <button id="btnConviction" class="btn btn-primary active">Conviction</button>
+          <button id="btnPunishment" class="btn btn-secondary">Punishment</button>
+        </div>
+        <div id="explanation" class="explanation-box">
+          <p><strong>Conviction:</strong> The <span class="concept">Blockburger</span> elements test asks whether each offense requires proof of a fact the other does not. If not, they are the same offense for double-jeopardy purposes. The focus is on <em>elements</em>, not on punishment.</p>
+        </div>
       </div>
     </div>
-  
-    <!-- Timeline -->
-    <div class="timeline space-y-4">
-      <h3 class="text-xl font-semibold mb-4">From <span class="concept">Blockburger</span> to <span class="concept">Barrett</span></h3>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-  
-        <div class="bg-white border rounded-2xl p-4">
-          <p class="text-sm text-gray-500">1932</p>
-          <h4 class="font-semibold">Blockburger v. United States</h4>
-          <p class="text-sm">Established the “same-elements” test: two offenses are distinct if each requires proof of a fact the other does not.</p>
+
+    <!-- Timeline Section -->
+    <section class="section">
+      <header>
+        <h2>From <span class="concept">Blockburger</span> to <span class="concept">Barrett</span></h2>
+        <p class="text-muted">Key precedents shaping the double jeopardy and cumulative punishment doctrine</p>
+      </header>
+
+      <div class="timeline-container">
+        <div class="timeline-scroll">
+          <div class="timeline-card">
+            <p class="timeline-year">1932</p>
+            <h4>Blockburger v. United States</h4>
+            <p class="timeline-desc">Established the "same-elements" test: two offenses are distinct if each requires proof of a fact the other does not.</p>
+          </div>
+
+          <div class="timeline-card">
+            <p class="timeline-year">1983</p>
+            <h4>Whalen v. United States</h4>
+            <p class="timeline-desc">Held that cumulative punishment requires a clear indication of congressional intent.</p>
+          </div>
+
+          <div class="timeline-card">
+            <p class="timeline-year">2017</p>
+            <h4>Dean v. United States</h4>
+            <p class="timeline-desc">Recognized judicial discretion in sentencing alongside §924(c) mandatory minimums.</p>
+          </div>
+
+          <div class="timeline-card">
+            <p class="timeline-year">2023</p>
+            <h4>United States v. Lora</h4>
+            <p class="timeline-desc">Clarified that §924(j) sentences are not subject to §924(c)'s consecutive-sentence rule, signaling separate statutory design.</p>
+          </div>
+
+          <div class="timeline-card">
+            <p class="timeline-year">2025</p>
+            <h4>Barrett v. United States</h4>
+            <p class="timeline-desc">Tests whether §924(j) subsumes §924(c) and whether double punishment violates the Fifth Amendment's double-jeopardy clause.</p>
+          </div>
         </div>
-  
-        <div class="bg-white border rounded-2xl p-4">
-          <p class="text-sm text-gray-500">1983</p>
-          <h4 class="font-semibold">Whalen v. United States</h4>
-          <p class="text-sm">Held that cumulative punishment requires a clear indication of congressional intent.</p>
-        </div>
-  
-        <div class="bg-white border rounded-2xl p-4">
-          <p class="text-sm text-gray-500">2017</p>
-          <h4 class="font-semibold">Dean v. United States</h4>
-          <p class="text-sm">Recognized judicial discretion in sentencing alongside §924(c) mandatory minimums.</p>
-        </div>
-  
-        <div class="bg-white border rounded-2xl p-4">
-          <p class="text-sm text-gray-500">2023</p>
-          <h4 class="font-semibold">United States v. Lora</h4>
-          <p class="text-sm">Clarified that §924(j) sentences are not subject to §924(c)’s consecutive-sentence rule, signaling separate statutory design.</p>
-        </div>
-  
-        <div class="bg-white border rounded-2xl p-4">
-          <p class="text-sm text-gray-500">2025</p>
-          <h4 class="font-semibold">Barrett v. United States</h4>
-          <p class="text-sm">Tests whether §924(j) subsumes §924(c) and whether double punishment violates the Fifth Amendment’s double-jeopardy clause.</p>
-        </div>
-  
       </div>
-    </div>
-  </section>
-  
+    </section>
+  </main>
+
   <script>
     // Toggle content for Conviction vs. Punishment
-    const btnConviction = document.getElementById('btnConviction');
-    const btnPunishment = document.getElementById('btnPunishment');
-    const explanation = document.getElementById('explanation');
-  
-    btnConviction.addEventListener('click', () => {
-      btnConviction.classList.add('bg-gray-800', 'text-white');
-      btnPunishment.classList.remove('bg-gray-800', 'text-white');
-      btnPunishment.classList.add('bg-gray-200', 'text-gray-800');
-      explanation.innerHTML = `<p><strong>Conviction:</strong> The <span class="concept">Blockburger</span> test compares statutory <em>elements</em>. Two statutes define the same offense if one does not require proof of any additional fact. This test governs whether separate convictions may stand without violating double jeopardy.</p>`;
-    });
-  
-    btnPunishment.addEventListener('click', () => {
-      btnPunishment.classList.add('bg-gray-800', 'text-white');
-      btnConviction.classList.remove('bg-gray-800', 'text-white');
-      btnConviction.classList.add('bg-gray-200', 'text-gray-800');
-      explanation.innerHTML = `<p><strong>Punishment:</strong> Even if two statutes survive the <span class="concept">Blockburger</span> test, multiple sentences still require a <em>clear statement</em> from Congress. Absent explicit authorization, courts presume only one punishment applies — and <span class="concept">lenity</span> resolves any remaining ambiguity in favor of the defendant.</p>`;
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnConviction = document.getElementById('btnConviction');
+      const btnPunishment = document.getElementById('btnPunishment');
+      const explanation = document.getElementById('explanation');
+    
+      if (btnConviction && btnPunishment && explanation) {
+        btnConviction.addEventListener('click', () => {
+          btnConviction.classList.add('active', 'btn-primary');
+          btnConviction.classList.remove('btn-secondary');
+          btnPunishment.classList.remove('active', 'btn-primary');
+          btnPunishment.classList.add('btn-secondary');
+          explanation.innerHTML = `
+            <p><strong>Conviction:</strong> The <span class="concept">Blockburger</span> test compares statutory <em>elements</em>. 
+            Two statutes define the same offense if one does not require proof of any additional fact. 
+            This test governs whether separate convictions may stand without violating double jeopardy.</p>`;
+        });
+      
+        btnPunishment.addEventListener('click', () => {
+          btnPunishment.classList.add('active', 'btn-primary');
+          btnPunishment.classList.remove('btn-secondary');
+          btnConviction.classList.remove('active', 'btn-primary');
+          btnConviction.classList.add('btn-secondary');
+          explanation.innerHTML = `
+            <p><strong>Punishment:</strong> Even if two statutes survive the <span class="concept">Blockburger</span> test, 
+            multiple sentences still require a <em>clear statement</em> from Congress. 
+            Absent explicit authorization, courts presume only one punishment applies — 
+            and <span class="concept">lenity</span> resolves any remaining ambiguity in favor of the defendant.</p>`;
+        });
+      }
     });
   </script>
-  
+  <script src="/js/nav.js"></script>
 </body>
 </html>

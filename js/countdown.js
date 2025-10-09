@@ -35,7 +35,7 @@ function updateAllCountdowns() {
         if (distance <= 0) {
             // Calculate hours since game started
             const hoursSinceStart = Math.abs(Math.floor(distance / (1000 * 60 * 60)));
-            
+
             // If more than 4 hours have passed since the scheduled start time, the game is likely over
             if (hoursSinceStart >= 4) {
                 el.textContent = 'Game completed';
@@ -54,7 +54,7 @@ function updateAllCountdowns() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Run immediately and then every second
     updateAllCountdowns();
     setInterval(updateAllCountdowns, 1000);

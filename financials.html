@@ -322,13 +322,13 @@
                             `<div class="data-row"><span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span></div>`;
                     }
                     if (indicator.game_time) {
-                        if (indicator.name === 'SF @ LA' || indicator.name === 'NE @ BUF') {
-                            // For SF @ LA and NE @ BUF games, show a countdown. Include the game time as a data attribute (prefer ISO datetime if available).
-                            const gameTimeAttr = indicator.game_time_iso || indicator.game_time || '';
+                        if (indicator.game_time_iso) {
+                            // For games with ISO timestamp, show a countdown timer with fallback text
+                            const gameTimeAttr = indicator.game_time_iso;
                             dataRows +=
-                                `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${gameTimeAttr}"></span></span></div>`;
+                                `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${gameTimeAttr}">${indicator.game_time}</span></span></div>`;
                         } else {
-                            // For other games, show the game time as before
+                            // For games without ISO timestamp, show the game time as static text
                             dataRows +=
                                 `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value">${indicator.game_time}</span></div>`;
                         }
@@ -647,6 +647,11 @@
                 // Add click event listeners for info icons
                 setupInfoIconHandlers();
                 setupChartIconHandlers();
+                
+                // Initialize countdown timers after rendering
+                if (typeof updateAllCountdowns === 'function') {
+                    updateAllCountdowns();
+                }
             }
 
             function setupFilters() {
@@ -812,7 +817,7 @@
         <script src="/html/js/dark-mode.js?v=20250926" defer></script>
         <script src="/html/js/portfolio.js?v=20250926" defer></script>
         <script src="js/nav.js?v=20250926" defer></script>
-        <script src="/html/js/countdown.js?v=20250926" defer></script>
+        <script src="js/countdown.js?v=20250926" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
         <script>
             // Initialize Lucide icons

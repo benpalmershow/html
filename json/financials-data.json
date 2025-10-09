@@ -685,18 +685,19 @@
             "change": "",
             "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 94¢ (94%) chance of no recession vs 7¢ (7%) chance of recession."
         },
-     
+
+
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "NE @ BUF",
-            "game_title": "Patriots @ Bills",
-            "game_time": "Oct 5, 2025 8:20 PM ET",
-            "game_time_iso": "2025-10-05T20:20:00-04:00",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct05nebuf",
-            "polymarket_url": "https://polymarket.com/event/nfl-ne-buf-2025-10-05",
-            "BUF_win_odds": "79¢",
-            "NE_win_odds": "21¢"
+            "name": "PHI @ NY",
+            "game_title": "Eagles @ Giants",
+            "game_time": "Oct 9, 2025 8:15 PM ET",
+            "game_time_iso": "2025-10-09T20:15:00-04:00",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct09phinyg",
+            "polymarket_url": "https://polymarket.com/event/nfl-phi-nyg-2025-10-09",
+            "PHI_win_odds": "78¢",
+            "NYG_win_odds": "22¢"
         }
 
     ]

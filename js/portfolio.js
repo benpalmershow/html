@@ -1,328 +1,387 @@
-class EnhancedPortfolio {
+/**
+ * Portfolio Manager Class
+ * Handles loading and displaying portfolio data from JSON
+ */
+class PortfolioManager {
     constructor() {
-        this.portfolioData = [];
-        this.filteredData = [];
-        this.currentView = 'grid';
-        this.sortColumn = '';
-        this.sortDirection = 'asc';
-        this.init();
+        this.portfolioData = null;
+        this.currentSort = { column: null, direction: 'asc' };
+        this.initialize();
     }
 
-    async init() {
-        this.setupEventListeners();
-        await this.loadPortfolioData();
-    }
-
-    setupEventListeners() {
-        // Search functionality
-        const searchInput = document.getElementById('portfolio-search');
-        searchInput.addEventListener('input', (e) => {
-            this.filterData(e.target.value);
-        });
-
-        // View toggle
-        const viewToggle = document.getElementById('view-toggle');
-        viewToggle.addEventListener('click', (e) => {
-            const btn = e.target.closest('.view-btn');
-            if (btn) {
-                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.currentView = btn.dataset.view;
-                this.toggleView();
-            }
-        });
-    }
-
-    async loadPortfolioData() {
-        const loadingElement = document.getElementById('loading-message');
-        const errorElement = document.getElementById('error-message');
-        
-        loadingElement.classList.remove('hidden');
-        errorElement.classList.add('hidden');
-
+    /**
+     * Initialize the portfolio manager
+     */
+    async initialize() {
         try {
-            const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vT6z_p9IuSfz8-mFdOtKMNbmuqli7-EVaIDy9PiDkw-mneYgAmVroJEx5PGtUDEhYldcsnVyKLR5R2n/pub?gid=31137953&single=true&output=csv');
+            await this.loadPortfolioData();
+            this.renderPortfolioTable();
+            this.renderPortfolioSections();
+            this.setupEventListeners();
+            this.updateLastUpdated();
             
+            // Initialize Lucide icons after content is loaded
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        } catch (error) {
+            console.error('Error initializing portfolio:', error);
+            this.showError('Failed to load portfolio data. Please try again later.');
+        }
+    }
+
+    /**
+     * Show error message to the user
+     */
+    showError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative';
+        errorDiv.role = 'alert';
+        errorDiv.innerHTML = `
+            <strong class="font-bold">Error: </strong>
+            <span class="block sm:inline">${message}</span>
+        `;
+        
+        const mainContent = document.querySelector('main');
+        if (mainContent) {
+            mainContent.prepend(errorDiv);
+        }
+    }
+
+    /**
+     * Load portfolio data from JSON file
+     */
+    async loadPortfolioData() {
+        try {
+            const response = await fetch('/json/portfolio.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-
-            const csvText = await response.text();
-            this.portfolioData = this.parseCSV(csvText);
-            this.filteredData = [...this.portfolioData];
-            
-            this.updateSummaryMetrics();
-            this.renderPortfolio();
-            this.updateLastUpdated();
-            
-            loadingElement.classList.add('hidden');
-
+            this.portfolioData = await response.json();
         } catch (error) {
-            loadingElement.classList.add('hidden');
-            errorElement.textContent = 'Error loading portfolio data: ' + error.message;
-            errorElement.classList.remove('hidden');
+            console.error('Error loading portfolio data:', error);
+            throw error;
         }
     }
-
-    parseCSV(csvText) {
-        const lines = csvText.split('\n').filter(line => line.trim());
-        if (lines.length < 2) return [];
-
-        const headers = this.parseCSVLine(lines[0]);
-        const data = [];
-
-        for (let i = 1; i < lines.length; i++) {
-            const values = this.parseCSVLine(lines[i]);
-            if (values.length === headers.length && values[0] && values[0].trim()) {
-                const row = {};
-                headers.forEach((header, index) => {
-                    row[header] = values[index] || '';
-                });
-                data.push(row);
-            }
-        }
-
-        return data;
-    }
-
-    parseCSVLine(line) {
-        const values = [];
-        let current = '';
-        let inQuotes = false;
-
-        for (let i = 0; i < line.length; i++) {
-            const char = line[i];
-            if (char === '"') {
-                inQuotes = !inQuotes;
-            } else if (char === ',' && !inQuotes) {
-                values.push(current.trim().replace(/"/g, ''));
-                current = '';
-            } else {
-                current += char;
-            }
-        }
-        values.push(current.trim().replace(/"/g, ''));
-        return values;
-    }
-
-    updateSummaryMetrics() {
-        if (this.portfolioData.length === 0) return;
-        let totalValue = 0;
-        this.portfolioData.forEach(row => {
-            const price = parseFloat((row['Current Price'] || '').replace(/[$,]/g, ''));
-            if (!isNaN(price)) {
-                totalValue += price;
-            }
-        });
-        document.getElementById('total-value').textContent = this.formatCurrency(totalValue);
-    }
-
-    renderPortfolio() {
-        if (this.currentView === 'grid') {
-            this.renderGridView();
-        } else {
-            this.renderTableView();
-        }
-    }
-
-    renderGridView() {
-        const container = document.getElementById('portfolio-grid');
-        if (this.filteredData.length === 0) {
-            container.innerHTML = '<div class="loading-state">No positions found matching your search.</div>';
-            return;
-        }
-        const headers = Object.keys(this.filteredData[0]);
-        // Define the fields to show
-        const fields = [
-            { key: headers[0], label: 'Ticker' },
-            { key: 'Company Name', label: 'Name' },
-            { key: 'Description', label: 'Description' },
-            { key: 'Current Price', label: 'Price' },
-            { key: 'Price Chg.', label: 'Price Chg.' },
-            { key: 'Price % Chg.', label: 'Price % Chg.' },
-            { key: 'Volume (000)', label: 'Volume (000)' },
-            { key: 'Volume % Chg.', label: 'Volume % Chg.' },
-            { key: 'EPS % Chg (Latest Qtr)', label: 'EPS % Chg (Latest Qtr)' },
-            { key: 'EPS % Chg (Prior Qtr)', label: 'EPS % Chg (Prior Qtr)' },
-            { key: 'Sale % Chg (Last Qtr)', label: 'Sale % Chg (Last Qtr)' },
-            { key: 'EPS Est % Chg (Currrent Qtr)', label: 'EPS Est % Chg (Current Qtr)' },
-            { key: 'EPS Est % Chg (Current Yr)', label: 'EPS Est % Chg (Current Yr)' },
-            { key: 'Composite Rating', label: 'Composite' },
-            { key: 'EPS Rating', label: 'EPS Rating' },
-            { key: 'RS Rating', label: 'RS Rating' },
-            { key: 'SMR Rating', label: 'SMR' },
-            { key: 'Acc/Dis Rating', label: 'Acc/Dis' },
-            { key: 'Group Rel Str Rating', label: 'Group Rel Str' },
-        ];
-        container.innerHTML = this.filteredData.map(row => {
-            const ticker = row[headers[0]] || '';
-            let irLink = row['Investor Relations'] && row['Investor Relations'].startsWith('http')
-                ? row['Investor Relations']
-                : `https://finance.yahoo.com/quote/${ticker}`;
-            return `
-                <div class="position-card fade-in small-card">
-                    <div class="position-header">
-                        <span class="position-symbol">${ticker}</span>
-                        <a class="mini-ir-link" href="${irLink}" target="_blank" rel="noopener" style="margin-left:8px;">IR <i data-lucide="external-link"></i></a>
-                    </div>
-                    <div class="mini-details" style="flex-direction:column;align-items:flex-start;gap:2px;">
-                        ${fields.slice(1).map(f => {
-                            const val = row[f.key] || '';
-                            if (!val) return '';
-                            if (f.key === 'Description') {
-                                return `<div class="mini-desc" style="font-size:0.92rem;color:var(--text-muted);margin-bottom:2px;">${val}</div>`;
-                            }
-                            return `<div class="mini-row"><span class="mini-label" style="font-size:0.89rem;color:var(--text-muted);">${f.label}:</span> <span class="mini-value" style="font-size:0.95rem;color:var(--text-primary);font-weight:500;">${val}</span></div>`;
-                        }).join('')}
-                    </div>
-                </div>
-            `;
-        }).join('');
-        lucide.createIcons();
-    }
-
-    renderTableView() {
-        const tableHeader = document.getElementById('table-header');
-        const tableBody = document.getElementById('table-body');
-        
-        if (this.filteredData.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 40px;">No positions found matching your search.</td></tr>';
-            return;
-        }
-
-        const headers = Object.keys(this.filteredData[0]);
-        
-        // Create table header
-        tableHeader.innerHTML = `
-            <tr>
-                ${headers.map(header => `
-                    <th onclick="portfolio.sortTable('${header}')" class="tooltip" data-tooltip="Click to sort by ${header}">
-                        ${header}
-                        <span class="sort-indicator" id="sort-${header}"></span>
-                    </th>
-                `).join('')}
-                <th>Actions</th>
-            </tr>
-        `;
-
-        // Create table body
-        tableBody.innerHTML = this.filteredData.map(row => {
-            const symbol = row[headers[0]] || '';
-            const isValidSymbol = symbol.length <= 5 && symbol.match(/^[A-Z]+$/);
-            
-            return `
-                <tr>
-                    ${headers.map(header => {
-                        const value = row[header] || '';
-                        const isSymbol = header === headers[0];
-                        const isNumber = !isNaN(parseFloat(value.replace(/[$,%]/g, '')));
-                        
-                        return `
-                            <td class="${isSymbol ? 'symbol-cell' : isNumber ? 'number-cell' : ''}">
-                                ${isSymbol && isValidSymbol ? 
-                                    `<a href="https://finance.yahoo.com/quote/${value}" target="_blank">${value}</a>` :
-                                    value
-                                }
-                            </td>
-                        `;
-                    }).join('')}
-                    <td>
-                        <button class="view-btn" onclick="viewDetails('${symbol}')">
-                            <i data-lucide="eye"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
-        }).join('');
-
-        // Update sort indicators
-        if (this.sortColumn) {
-            const indicator = document.getElementById(`sort-${this.sortColumn}`);
-            if (indicator) {
-                indicator.textContent = this.sortDirection === 'asc' ? '↑' : '↓';
-            }
-        }
-
-        // Re-initialize Lucide icons
-        lucide.createIcons();
-    }
-
-    filterData(searchTerm) {
-        const term = searchTerm.toLowerCase();
-        this.filteredData = this.portfolioData.filter(row => {
-            return Object.values(row).some(value => 
-                value.toLowerCase().includes(term)
-            );
-        });
-        this.renderPortfolio();
-    }
-
-    sortTable(column) {
-        if (this.sortColumn === column) {
-            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            this.sortColumn = column;
-            this.sortDirection = 'asc';
-        }
-
-        this.filteredData.sort((a, b) => {
-            let valA = a[column] || '';
-            let valB = b[column] || '';
-
-            // Handle numeric values with $ or %
-            const isNumeric = valA.includes('$') || valA.includes('%');
-            if (isNumeric) {
-                valA = parseFloat(valA.replace(/[$,%]/g, '')) || 0;
-                valB = parseFloat(valB.replace(/[$,%]/g, '')) || 0;
-            }
-
-            if (valA < valB) return this.sortDirection === 'asc' ? -1 : 1;
-            if (valA > valB) return this.sortDirection === 'asc' ? 1 : -1;
-            return 0;
-        });
-
-        this.renderPortfolio();
-    }
-
-    toggleView() {
-        const gridView = document.getElementById('portfolio-grid');
-        const tableView = document.getElementById('portfolio-table');
-        
-        gridView.classList.toggle('hidden', this.currentView !== 'grid');
-        tableView.classList.toggle('hidden', this.currentView !== 'table');
-        
-        this.renderPortfolio();
-    }
-
-    formatCurrency(value) {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(value);
-    }
-
+    
+    /**
+     * Update the last updated timestamp
+     */
     updateLastUpdated() {
-        const lastUpdatedEl = document.getElementById('last-updated-portfolio');
-        const now = new Date();
-        lastUpdatedEl.textContent = `Portfolio data last updated: ${now.toLocaleString()}`;
+        if (this.portfolioData?.lastUpdated) {
+            const lastUpdatedEl = document.getElementById('last-updated');
+            if (lastUpdatedEl) {
+                const date = new Date(this.portfolioData.lastUpdated);
+                lastUpdatedEl.textContent = `Portfolio data last updated: ${date.toLocaleString()}`;
+            }
+        }
+    }
+
+    /**
+     * Render the portfolio table with data from JSON
+     */
+    renderPortfolioTable() {
+        if (!this.portfolioData?.portfolioComparison?.stocks?.length) return;
+        
+        const tableBody = document.querySelector('#portfolio-comparison-table tbody');
+        if (!tableBody) return;
+        
+        // Clear existing rows
+        tableBody.innerHTML = '';
+        
+        // Add rows for each stock
+        this.portfolioData.portfolioComparison.stocks.forEach(stock => {
+            const row = document.createElement('tr');
+            
+            // Add background color for highlighted stocks
+            row.classList.add(stock.highlight ? 'bg-blue-50' : 'bg-slate-50');
+            
+            const description = stock.description || {
+                title: stock.company,
+                short: '',
+                full: ''
+            };
+            
+            // Create ticker link
+            const tickerLink = `https://finance.yahoo.com/quote/${stock.ticker}`;
+            
+            row.innerHTML = `
+                <td class="px-3 py-2 whitespace-nowrap text-slate-700 overflow-hidden text-ellipsis">
+                    <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
+                        ${stock.company}
+                    </a>
+                </td>
+                <td class="px-3 py-2 whitespace-nowrap font-medium text-slate-900 overflow-hidden text-ellipsis">
+                    <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
+                        ${stock.ticker}
+                    </a>
+                </td>
+                <td class="px-3 py-2 whitespace-nowrap text-right font-medium text-slate-900">
+                    ${stock.october || '-'}
+                </td>
+                <td class="px-3 py-2 whitespace-nowrap text-right text-slate-500">
+                    ${stock.september || '-'}
+                </td>
+                <td class="px-3 py-2 whitespace-nowrap text-right text-slate-500">
+                    ${stock.august || '-'}
+                </td>
+                <td class="px-3 py-2 text-slate-600 text-xs overflow-hidden w-[52%]">
+                    <div class="truncate w-full group relative">
+                        <span class="font-medium">${description.title}</span> - ${description.short}
+                        ${description.full ? `
+                            <div class="hidden group-hover:block absolute z-10 w-96 p-3 mt-1 -ml-2 text-xs bg-white border border-slate-200 rounded shadow-lg">
+                                <div class="font-semibold mb-1">${description.title}</div>
+                                <div>${description.full}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    }
+
+    /**
+     * Render portfolio sections from the data
+     */
+    renderPortfolioSections() {
+        if (!this.portfolioData?.portfolioSections?.length) return;
+        
+        const sectionsContainer = document.getElementById('portfolio-sections');
+        if (!sectionsContainer) return;
+        
+        this.portfolioData.portfolioSections.forEach(section => {
+            const sectionElement = this.createPortfolioSection(section);
+            if (sectionElement) {
+                sectionsContainer.appendChild(sectionElement);
+            }
+        });
+    }
+    
+    /**
+     * Create a portfolio section element
+     */
+    createPortfolioSection(section) {
+        if (!section?.id || !section.title || !section.holdings?.length) return null;
+        
+        const sectionElement = document.createElement('div');
+        sectionElement.className = 'bg-white rounded-lg shadow-sm border border-slate-200 mb-6';
+        
+        // Create section header
+        const header = document.createElement('div');
+        header.className = 'p-6 border-b border-slate-200';
+        header.innerHTML = `
+            <h2 class="flex items-center justify-between text-lg font-medium text-slate-800 cursor-pointer select-none hover:text-slate-600 transition-colors" 
+                data-toggle="collapse" data-target="${section.id}-holdings-grid">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="${section.icon || 'briefcase'}" class="w-5 h-5 text-slate-500"></i>
+                    <span>${section.title}</span>
+                </div>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200"></i>
+            </h2>
+            ${section.subtitle ? `<p class="text-sm text-slate-500 mt-1">${section.subtitle}</p>` : ''}
+        `;
+        
+        // Create holdings grid
+        const grid = document.createElement('div');
+        grid.id = `${section.id}-holdings-grid`;
+        grid.className = 'p-6';
+        grid.style.display = 'none'; // Start collapsed
+        
+        const gridInner = document.createElement('div');
+        gridInner.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
+        
+        // Add holdings to grid
+        section.holdings.forEach(holding => {
+            const holdingElement = this.createHoldingCard(holding);
+            if (holdingElement) {
+                gridInner.appendChild(holdingElement);
+            }
+        });
+        
+        grid.appendChild(gridInner);
+        
+        sectionElement.appendChild(header);
+        sectionElement.appendChild(grid);
+        
+        return sectionElement;
+    }
+    
+    /**
+     * Create a holding card element
+     */
+    createHoldingCard(holding) {
+        if (!holding.ticker) return null;
+        
+        const card = document.createElement('div');
+        card.className = 'bg-slate-50 rounded-lg p-4 border border-slate-200 hover:shadow-sm hover:border-slate-300 transition-all duration-200';
+        
+        const tickerLink = `https://finance.yahoo.com/quote/${holding.ticker}`;
+        const allocation = holding.allocation ? `
+            <span class="bg-${holding.highlight ? 'blue' : 'slate'}-600 text-white px-2 py-1 rounded text-xs font-medium">
+                ${holding.allocation}
+            </span>
+        ` : '';
+        
+        card.innerHTML = `
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
+                <a href="${tickerLink}" target="_blank" class="text-base font-semibold text-slate-700 hover:text-blue-600 transition-colors no-underline">
+                    ${holding.ticker}
+                </a>
+                ${allocation}
+            </div>
+            ${holding.company ? `
+                <div class="text-sm text-slate-600 mb-2">
+                    <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
+                        ${holding.company}
+                    </a>
+                </div>
+            ` : ''}
+            ${holding.description ? `
+                <div class="text-xs text-slate-500 mb-2 line-clamp-2">
+                    ${holding.description}
+                </div>
+            ` : ''}
+            ${holding.notes ? `
+                <div class="mt-2 pt-2 border-t border-slate-100 text-xs text-slate-500">
+                    <div class="font-medium text-slate-600">Notes:</div>
+                    <div>${holding.notes}</div>
+                </div>
+            ` : ''}
+        `;
+        
+        return card;
+    }
+    
+    /**
+     * Set up event listeners for the portfolio page
+     */
+    setupEventListeners() {
+        // Add sort handlers to table headers
+        document.querySelectorAll('#portfolio-comparison-table th[data-sort]').forEach(th => {
+            const sortKey = th.getAttribute('data-sort');
+            if (sortKey) {
+                th.style.cursor = 'pointer';
+                th.addEventListener('click', () => this.sortTable(sortKey));
+            }
+        });
+
+        // Toggle collapsible sections
+        document.body.addEventListener('click', (e) => {
+            const toggleBtn = e.target.closest('[data-toggle="collapse"]');
+            if (toggleBtn) {
+                const targetId = toggleBtn.getAttribute('data-target');
+                const target = document.getElementById(targetId);
+                const icon = toggleBtn.querySelector('i[data-lucide]');
+                
+                if (target) {
+                    const isExpanding = target.style.display === 'none';
+                    target.style.display = isExpanding ? 'block' : 'none';
+                    
+                    if (icon) {
+                        // Rotate the chevron icon
+                        icon.style.transform = isExpanding ? 'rotate(180deg)' : '';
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * Parse a percentage value from a string
+     * @param {string} value - The percentage value to parse (e.g., "5%" or "-3.2%")
+     * @returns {number} The parsed number or -Infinity for '-' values
+     */
+    parsePercentage(value) {
+        if (value === '-' || value === undefined) return -Infinity;
+        const num = parseFloat(value);
+        return isNaN(num) ? -Infinity : num;
+    }
+
+    /**
+     * Update the sort indicators in the table header
+     * @param {string} sortKey - The key of the column being sorted
+     * @param {string} direction - The sort direction ('asc' or 'desc')
+     */
+    updateSortIndicators(sortKey, direction) {
+        // Remove all sort indicators and reset header text
+        document.querySelectorAll('th[data-sort]').forEach(header => {
+            // Get the original text from the data-original-text attribute or the header's text content
+            const originalText = header.getAttribute('data-original-text') || header.textContent.trim();
+            header.textContent = originalText; // Reset to original text
+            header.setAttribute('data-original-text', originalText); // Ensure we have the original text saved
+        });
+
+        // Add sort indicator to current column
+        const header = document.querySelector(`th[data-sort="${sortKey}"]`);
+        if (header) {
+            const originalText = header.getAttribute('data-original-text') || header.textContent.trim();
+            header.setAttribute('data-original-text', originalText);
+            header.innerHTML = `${originalText} <span class="ml-1">${direction === 'asc' ? '↑' : '↓'}</span>`;
+        }
+    }
+
+    /**
+     * Sort the portfolio table by the specified column
+     * @param {string} sortKey - The key of the column to sort by
+     */
+    sortTable(sortKey) {
+        if (!this.portfolioData?.portfolioComparison?.stocks?.length) return;
+
+        // Toggle direction if sorting the same column
+        const direction = this.currentSort.column === sortKey && 
+                         this.currentSort.direction === 'asc' ? 'desc' : 'asc';
+        
+        // Update the sort indicators
+        this.updateSortIndicators(sortKey, direction);
+        
+        // Define sort functions for different columns
+        const sortFunctions = {
+            company: (a, b) => a.company.localeCompare(b.company),
+            ticker: (a, b) => a.ticker.localeCompare(b.ticker),
+            october: (a, b) => this.parsePercentage(a.october) - this.parsePercentage(b.october),
+            september: (a, b) => this.parsePercentage(a.september) - this.parsePercentage(b.september),
+            august: (a, b) => this.parsePercentage(a.august) - this.parsePercentage(b.august)
+        };
+
+        // Get the appropriate sort function
+        const sortFunction = sortFunctions[sortKey];
+        if (!sortFunction) return;
+
+        // Sort the stocks
+        this.portfolioData.portfolioComparison.stocks.sort((a, b) => {
+            return direction === 'asc' ? sortFunction(a, b) : -sortFunction(a, b);
+        });
+        
+        // Update current sort state
+        this.currentSort = { column: sortKey, direction };
+        
+        // Re-render the table
+        this.renderPortfolioTable();
     }
 }
 
-// Initialize portfolio
-const portfolio = new EnhancedPortfolio();
-
-// Refresh portfolio data
-function refreshPortfolioData() {
-    portfolio.loadPortfolioData();
-}
-
-// View details placeholder
-function viewDetails(symbol) {
-    alert(`Viewing details for ${symbol}`);
-}
-
-// Initialize Lucide icons
-
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    // Initialize the portfolio manager
+    window.portfolio = new PortfolioManager();
+
+    // Helper function to toggle grid display
+    function toggleGrid(gridId) {
+        const grid = document.getElementById(gridId);
+        if (grid) {
+            grid.style.display = grid.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+    // Expose functions to global scope for HTML onclick handlers
+    window.toggleGptPortfolio = () => toggleGrid('gpt-holdings-grid');
+    window.toggleSeptemberPortfolio = () => toggleGrid('september-holdings-grid');
+    window.toggleOctoberPortfolio = () => toggleGrid('october-holdings-grid');
 });

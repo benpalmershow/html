@@ -112,9 +112,7 @@ class PortfolioManager {
                     </a>
                 </td>
                 <td class="px-3 py-2 whitespace-nowrap font-medium text-slate-900 overflow-hidden text-ellipsis">
-                    <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
-                        ${stock.ticker}
-                    </a>
+                    ${stock.ticker}
                 </td>
                 <td class="px-3 py-2 whitespace-nowrap text-right font-medium text-slate-900">
                     ${stock.october || '-'}

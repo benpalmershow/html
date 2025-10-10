@@ -83,14 +83,14 @@
     - Ensure hover and focus states use consistent color patterns
     - _Requirements: 2.4, 3.4_
 
-- [ ] 7. Consolidate colors in remaining CSS files
-  - [ ] 7.1 Update dark-mode.css color references
+- [x] 7. Consolidate colors in remaining CSS files
+  - [x] 7.1 Update dark-mode.css color references
     - Replace hardcoded rgba values with standardized variables
     - Ensure dark theme colors work with consolidated color system
     - Update theme toggle styling for consistency
     - _Requirements: 2.1, 3.4_
 
-  - [ ] 7.2 Update read.css and chart-modal.css
+  - [x] 7.2 Update read.css and chart-modal.css
     - Consolidate post item shadow and background colors
     - Update modal overlay and background colors
     - Replace hardcoded rgba values with standardized variables

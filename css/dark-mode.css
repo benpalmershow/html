@@ -89,7 +89,7 @@
 .nav-links .theme-toggle:hover {
   background-color: var(--bg-secondary);
   transform: translateY(calc(-50% - 1px));
-  border-color: rgba(44, 95, 90, 0.2);
+  border-color: var(--color-primary-bg);
 }
 
 .nav-links .theme-toggle:focus {
@@ -105,13 +105,13 @@
 }
 
 [data-theme="dark"] .theme-toggle:hover {
-  background-color: rgba(37, 43, 42, 0.3);
-  border-color: rgba(232, 149, 93, 0.2);
+  background-color: var(--color-neutral-bg);
+  border-color: var(--color-secondary-bg);
 }
 
 [data-theme="dark"] .theme-toggle:focus {
-  background-color: rgba(37, 43, 42, 0.2);
-  border-color: rgba(232, 149, 93, 0.3);
+  background-color: var(--color-neutral-bg);
+  border-color: var(--color-secondary-bg);
 }
 
 /* Ensure navigation items stay centered */
@@ -140,7 +140,7 @@
   --bg-secondary: #252b2a;
   --accent-primary: #87c5be;
   --accent-secondary: #e8955d;
-  --border-color: #404040;
+  --border-color: var(--color-gray-600);
   --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -150,14 +150,14 @@
 
 [data-theme="dark"] .nav-links a:hover {
   color: var(--accent-secondary);
-  background-color: rgba(37, 43, 42, 0.3);
-  border-color: rgba(232, 149, 93, 0.2);
+  background-color: var(--color-neutral-bg);
+  border-color: var(--color-secondary-bg);
 }
 
 [data-theme="dark"] .nav-links a.active {
   color: var(--accent-secondary);
-  background-color: rgba(37, 43, 42, 0.2);
-  border-color: rgba(232, 149, 93, 0.15);
+  background-color: var(--color-neutral-bg);
+  border-color: var(--color-secondary-bg);
 }
 
 /* Ensure H1 elements use the teal color in dark mode */
@@ -169,59 +169,59 @@
 
 /* Improve category badges */
 [data-theme="dark"] .category-badge {
-  color: #fff !important;
+  color: var(--color-white) !important;
   opacity: 0.9;
 }
 
 [data-theme="dark"] .category-badge.earnings {
-  background: #2e7d32 !important;
+  background: var(--color-success) !important;
 }
 
 /* Improve tables and data */
 [data-theme="dark"] table {
-  border-color: #2a3635;
+  border-color: var(--color-gray-600);
 }
 
 [data-theme="dark"] th {
-  background-color: #1a2322;
+  background-color: var(--color-gray-700);
   color: var(--accent-primary);
-  border-color: #2a3635;
+  border-color: var(--color-gray-600);
 }
 
 [data-theme="dark"] td {
-  border-color: #2a3635;
+  border-color: var(--color-gray-600);
   color: #e1e5e9;
 }
 
 [data-theme="dark"] tr:hover {
-  background-color: #1e2625;
+  background-color: var(--color-gray-700);
 }
 
 /* Improve links in dark mode */
 [data-theme="dark"] a:not(.nav-link) {
-  color: #4db6ac;
+  color: var(--accent-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 [data-theme="dark"] a:not(.nav-link):hover {
-  color: #80cbc4;
+  color: var(--accent-secondary);
   text-decoration: underline;
 }
 
 /* Improve code and pre-formatted text */
 [data-theme="dark"] code,
 [data-theme="dark"] pre {
-  background-color: #1a2322;
+  background-color: var(--color-gray-700);
   color: #e1e5e9;
-  border: 1px solid #2a3635;
+  border: 1px solid var(--color-gray-600);
 }
 
 /* Improve blockquotes */
 [data-theme="dark"] blockquote {
   border: 0.5px solid var(--accent-secondary);
   border-radius: 4px;
-  background-color: #1a2322;
+  background-color: var(--color-gray-700);
   color: #e1e5e9;
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
@@ -232,8 +232,8 @@
 [data-theme="dark"] input,
 [data-theme="dark"] select,
 [data-theme="dark"] textarea {
-  background-color: #1a2322;
-  border: 1px solid #2a3635;
+  background-color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-600);
   color: #e1e5e9;
 }
 
@@ -241,5 +241,5 @@
 [data-theme="dark"] select:focus,
 [data-theme="dark"] textarea:focus {
   border-color: var(--accent-secondary);
-  box-shadow: 0 0 0 2px rgba(232, 149, 93, 0.3);
+  box-shadow: 0 0 0 2px var(--color-secondary-bg);
 }

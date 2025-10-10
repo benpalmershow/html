@@ -34,7 +34,7 @@
     --color-success: #43a047; /* Green - success states, positive indicators */
     --color-warning: #fbc02d; /* Yellow - warning states, caution */
     --color-error: #e53935; /* Red - error states, negative indicators */
-    --color-info: #1e88e5; /* Blue - informational states, neutral info */
+    --color-info: #2c5f5a; /* Teal - informational states, neutral info */
     
     /* ========================================
        TRANSPARENT BACKGROUND COLORS
@@ -48,7 +48,7 @@
        CATEGORY-SPECIFIC COLORS
        Colors for news categories and content types
        ======================================== */
-    --color-category-ipo: #1e88e5; /* IPO category - blue */
+    --color-category-ipo: #2c5f5a; /* IPO category - teal */
     --color-category-earnings: #43a047; /* Earnings category - green */
     --color-category-policy: #fbc02d; /* Policy category - yellow */
     --color-category-healthcare: #10b981; /* Healthcare category - teal-green */

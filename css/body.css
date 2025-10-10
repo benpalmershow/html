@@ -25,16 +25,13 @@
        ======================================== */
     --color-primary: #2c5f5a; /* Primary teal - main brand color */
     --color-secondary: #d4822a; /* Secondary orange - accent brand color */
-    --color-accent: #e8955d; /* Lighter orange - subtle accents */
     
     /* ========================================
        SEMANTIC COLORS
        Colors with specific meaning and purpose
        ======================================== */
     --color-success: #43a047; /* Green - success states, positive indicators */
-    --color-warning: #fbc02d; /* Yellow - warning states, caution */
     --color-error: #e53935; /* Red - error states, negative indicators */
-    --color-info: #2c5f5a; /* Teal - informational states, neutral info */
     
     /* ========================================
        TRANSPARENT BACKGROUND COLORS
@@ -60,10 +57,6 @@
        Brand colors for external platforms and services
        ======================================== */
     --color-youtube: #FF0000; /* YouTube brand red */
-    --color-spotify: #1DB954; /* Spotify brand green */
-    --color-apple: #000000; /* Apple brand black */
-    --color-amazon: #FF9900; /* Amazon brand orange */
-    --color-google: #4285F4; /* Google brand blue */
     
     /* ========================================
        THEME VARIABLES

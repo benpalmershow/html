@@ -19,14 +19,14 @@
     - Ensure proper fallback values are provided
     - _Requirements: 3.1, 3.3_
 
-- [ ] 3. Consolidate colors in body.css
-  - [ ] 3.1 Replace hardcoded white variants with standardized variables
+- [x] 3. Consolidate colors in body.css
+  - [x] 3.1 Replace hardcoded white variants with standardized variables
     - Replace #fff and #ffffff with var(--color-white)
     - Replace light gray variants (#f7fafc, #f8fafc) with appropriate gray scale variables
     - Update all white color references to use consistent variables
     - _Requirements: 1.3, 2.1, 3.4_
 
-  - [ ] 3.2 Consolidate gray color variants
+  - [x] 3.2 Consolidate gray color variants
     - Replace #666 and similar grays with var(--color-gray-500)
     - Replace #6b7280 and similar muted colors with standardized gray variables
     - Update all gray color references throughout the file

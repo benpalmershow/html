@@ -70,14 +70,14 @@
     - Maintain semantic meaning of green/red for positive/negative changes
     - _Requirements: 1.3, 2.1, 2.3_
 
-- [ ] 6. Consolidate colors in media.css
-  - [ ] 6.1 Update media card and overlay colors
+- [x] 6. Consolidate colors in media.css
+  - [x] 6.1 Update media card and overlay colors
     - Replace hardcoded shadow colors with standardized rgba variables
     - Consolidate overlay gradient colors for consistency
     - Update rating logo and platform link colors
     - _Requirements: 1.3, 2.4, 3.4_
 
-  - [ ] 6.2 Preserve platform branding while consolidating
+  - [x] 6.2 Preserve platform branding while consolidating
     - Maintain YouTube red (#FF0000), Spotify green colors for platform links
     - Convert platform colors to CSS variables for easier maintenance
     - Ensure hover and focus states use consistent color patterns

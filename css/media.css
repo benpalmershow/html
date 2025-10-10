@@ -12,8 +12,22 @@
     --text-light: #f0f0f0;
     
     /* Shadows */
-    --shadow-light: rgba(44, 95, 90, 0.12);
-    --shadow-medium: rgba(44, 95, 90, 0.2);
+    --shadow-light: var(--color-primary-bg, rgba(44, 95, 90, 0.08));
+    --shadow-medium: rgba(44, 95, 90, 0.15);
+    --shadow-dark: rgba(44, 95, 90, 0.25);
+    
+    /* Overlay Colors */
+    --overlay-light: rgba(0, 0, 0, 0.75);
+    --overlay-dark: rgba(0, 0, 0, 0.9);
+    --overlay-medium: rgba(0, 0, 0, 0.8);
+    
+    /* Platform Brand Colors */
+    --color-rotten-tomatoes: #f93a1e;
+    
+    /* Hover States */
+    --color-secondary-dark: #b8721f;
+    --color-primary-dark: #1e4540;
+    --color-primary-light: #4a7c7a;
     
     /* Transitions */
     --transition-fast: 0.15s ease;
@@ -81,7 +95,7 @@
     &:focus-within,
     &:focus {
         border-color: var(--secondary-color);
-        box-shadow: 0 4px 16px rgba(44, 95, 90, 0.13);
+        box-shadow: 0 4px 16px var(--shadow-medium);
         transform: translateY(-2px) scale(1.025);
         outline: none;
     }
@@ -96,7 +110,7 @@
     &.hidden { display: none; }
     
     &.keyboard-focus {
-        border-color: var(--primary-color);
+        border-color: var(--color-primary, var(--primary-color));
         box-shadow: 0 0 0 3px var(--shadow-medium);
     }
 }
@@ -129,12 +143,12 @@
     }
     
     .media-title {
-        text-shadow: 0 0 2px #000, 0 0 2px #000;
+        text-shadow: 0 0 2px var(--color-black, #000), 0 0 2px var(--color-black, #000);
     }
 }
 
 .media-card.keyboard-focus {
-    border-color: var(--primary-color);
+    border-color: var(--color-primary, var(--primary-color));
     box-shadow: 0 0 0 3px var(--shadow-medium);
 }
 
@@ -188,7 +202,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, var(--primary-color), #4a7c7a);
+        background: linear-gradient(135deg, var(--color-primary, var(--primary-color)), var(--color-primary-light, #4a7c7a));
         color: white;
         font-size: 2em;
         
@@ -228,7 +242,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.9) 100%);
+    background: linear-gradient(to bottom, var(--overlay-light) 0%, var(--overlay-dark) 100%);
     color: white;
     padding: 0;
     opacity: 0;
@@ -277,7 +291,7 @@
     margin: 0 0 0.3rem 0;
     padding: 0.3rem 0;
     line-height: 1.2;
-    color: #fff;
+    color: var(--color-white, #fff);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     width: 100%;
     word-wrap: break-word;
@@ -306,7 +320,7 @@
 .media-overlay-desc {
     font-size: 0.87em;
     font-weight: 400;
-    color: #e8dcc0;
+    color: var(--border-light, #e8dcc0);
     line-height: 1.22;
     margin-bottom: 0.5em;
     overflow-y: auto;
@@ -342,7 +356,7 @@
     font-weight: 500;
     padding: 0.3rem 0;
     text-align: center;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--overlay-medium);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0 0 0.5rem 0.5rem;
     opacity: 0.9;
@@ -393,7 +407,7 @@
         
         /* Rating Platform Styles */
         &.rt-logo {
-            background-color: #f93a1e;
+            background-color: var(--color-rotten-tomatoes, #f93a1e);
             color: white;
             
             .rt-tomato {
@@ -404,7 +418,7 @@
         
         &.imdb-logo {
             background-color: var(--accent-color);
-            color: #000;
+            color: var(--color-black, #000);
             
             .imdb-icon {
                 font-family: Arial, sans-serif;
@@ -426,7 +440,7 @@
     width: 100%;
     
     .trailer-button-inline {
-        background: #FF0000;
+        background: var(--color-youtube, #FF0000);
         color: white;
         border: none;
         font-size: 0.9em;
@@ -513,11 +527,11 @@
 
 /* Filter Select Dropdown */
 .media-filters select {
-    --border-color: #d4c9b1;
+    --border-color: var(--border-light, #d4c9b1);
     --color: var(--text-dark);
     --padding: 0.5rem 0.8rem;
     --radius: 0.4rem;
-    --background: #fff;
+    --background: var(--color-white, #fff);
     --icon-size: 0.65em;
     --icon-color: var(--color);
     --icon-position: right 0.7em top 50%;
@@ -542,12 +556,12 @@
 
 .media-filters select:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--color-primary, var(--primary-color));
     box-shadow: 0 0 0 2px var(--shadow-medium);
 }
 
 .media-filters select:hover {
-    border-color: #b3a98c;
+    border-color: var(--color-gray-400, #b3a98c);
 }
 
 /* Filter Text Input */
@@ -555,8 +569,8 @@
     font-size: 0.95rem;
     padding: 0.5rem 2.5rem 0.5rem 0.8rem;
     border-radius: 0.4rem;
-    border: 1px solid #d4c9b1;
-    background: #fff;
+    border: 1px solid var(--border-light, #d4c9b1);
+    background: var(--color-white, #fff);
     color: var(--text-dark);
     width: 100%;
     cursor: text;
@@ -565,16 +579,16 @@
 
 .media-filters input[type="text"]:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--color-primary, var(--primary-color));
     box-shadow: 0 0 0 2px var(--shadow-medium);
 }
 
 .media-filters input[type="text"]:hover {
-    border-color: #b3a98c;
+    border-color: var(--color-gray-400, #b3a98c);
 }
 
 .media-filters input[type="text"]::placeholder {
-    color: #8a8a8a;
+    color: var(--color-gray-500, #8a8a8a);
     opacity: 0.8;
 }
 
@@ -582,7 +596,7 @@
 .search-help {
     display: block;
     font-size: 0.8rem;
-    color: #6b7280;
+    color: var(--color-gray-500, #6b7280);
     margin-top: 0.25rem;
     font-style: italic;
     line-height: 1.3;
@@ -810,7 +824,7 @@
 }
 
 .retry-button:hover {
-    background: #1e4540;
+    background: var(--color-primary-dark, #1e4540);
 }
 
 /* ==========================================================================
@@ -1148,7 +1162,7 @@ ecial Analysis Section */
 
 .analysis-content p {
     margin: 0 0 1rem 0;
-    color: #666;
+    color: var(--color-gray-500, #666);
     font-size: 0.9rem;
     line-height: 1.4;
 }
@@ -1166,7 +1180,7 @@ ecial Analysis Section */
 }
 
 .analysis-link:hover {
-    background: #b8721f;
+    background: var(--color-secondary-dark, #b8721f);
     color: white;
 }
 

@@ -1,0 +1,2289 @@
+{
+  "timestamp": "2025-10-10T00:01:00.297Z",
+  "summary": {
+    "totalColors": 115,
+    "filesAnalyzed": 7,
+    "files": [
+      "body.css",
+      "chart-modal.css",
+      "dark-mode.css",
+      "financials.css",
+      "media.css",
+      "news.css",
+      "read.css"
+    ]
+  },
+  "colors": {
+    "#2c5f5a": {
+      "original": "#2c5f5a",
+      "count": 11,
+      "files": [
+        "body.css",
+        "financials.css",
+        "media.css",
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#333333": {
+      "original": "#333",
+      "count": 3,
+      "files": [
+        "body.css",
+        "chart-modal.css"
+      ],
+      "category": "hex"
+    },
+    "#666666": {
+      "original": "#666",
+      "count": 3,
+      "files": [
+        "body.css",
+        "media.css",
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#fdf6e8": {
+      "original": "#fdf6e8",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "hex"
+    },
+    "#f8f4e6": {
+      "original": "#f8f4e6",
+      "count": 2,
+      "files": [
+        "body.css",
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#d4822a": {
+      "original": "#d4822a",
+      "count": 5,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#e8dcc0": {
+      "original": "#e8dcc0",
+      "count": 3,
+      "files": [
+        "body.css",
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#000000": {
+      "original": "#000",
+      "count": 10,
+      "files": [
+        "body.css",
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#ffffff": {
+      "original": "#fff",
+      "count": 50,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "dark-mode.css",
+        "financials.css",
+        "media.css",
+        "news.css",
+        "read.css"
+      ],
+      "category": "hex"
+    },
+    "#dc3545": {
+      "original": "#dc3545",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "hex"
+    },
+    "#f8d7da": {
+      "original": "#f8d7da",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "hex"
+    },
+    "#f5c6cb": {
+      "original": "#f5c6cb",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "hex"
+    },
+    "#87c5be": {
+      "original": "#87c5be",
+      "count": 6,
+      "files": [
+        "body.css",
+        "dark-mode.css",
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#e1e5e9": {
+      "original": "#e1e5e9",
+      "count": 6,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#a0a9b8": {
+      "original": "#a0a9b8",
+      "count": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#1a1f1e": {
+      "original": "#1a1f1e",
+      "count": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#252b2a": {
+      "original": "#252b2a",
+      "count": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#e8955d": {
+      "original": "#e8955d",
+      "count": 3,
+      "files": [
+        "body.css",
+        "dark-mode.css",
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#404040": {
+      "original": "#404040",
+      "count": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#1db954": {
+      "original": "#1DB954",
+      "count": 2,
+      "files": [
+        "body.css"
+      ],
+      "category": "hex"
+    },
+    "#ff0000": {
+      "original": "#FF0000",
+      "count": 3,
+      "files": [
+        "body.css",
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(44,95,90,0.1)": {
+      "original": "rgba(44,95,90,0.1)",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0,0,0,0.3)": {
+      "original": "rgba(0,0,0,0.3)",
+      "count": 3,
+      "files": [
+        "body.css",
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(212,130,42,0.05)": {
+      "original": "rgba(212,130,42,0.05)",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(212,130,42,0.08)": {
+      "original": "rgba(212,130,42,0.08)",
+      "count": 2,
+      "files": [
+        "body.css",
+        "financials.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(212,130,42,0.3)": {
+      "original": "rgba(212,130,42,0.3)",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(29,185,84,0.3)": {
+      "original": "rgba(29,185,84,0.3)",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(255,0,0,0.3)": {
+      "original": "rgba(255,0,0,0.3)",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(37,43,42,0.8)": {
+      "original": "rgba(37,43,42,0.8)",
+      "count": 1,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(232,149,93,0.1)": {
+      "original": "rgba(232,149,93,0.1)",
+      "count": 2,
+      "files": [
+        "body.css"
+      ],
+      "category": "rgb"
+    },
+    "#ffa500": {
+      "original": "orange",
+      "count": 48,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "dark-mode.css",
+        "financials.css",
+        "news.css",
+        "read.css"
+      ],
+      "category": "hex"
+    },
+    "transparent": {
+      "original": "transparent",
+      "count": 10,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "dark-mode.css",
+        "media.css",
+        "news.css"
+      ],
+      "category": "transparent"
+    },
+    "#f5f5f5": {
+      "original": "#f5f5f5",
+      "count": 1,
+      "files": [
+        "chart-modal.css"
+      ],
+      "category": "hex"
+    },
+    "#d0d0d0": {
+      "original": "#d0d0d0",
+      "count": 1,
+      "files": [
+        "chart-modal.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(0, 0, 0, 0.5)": {
+      "original": "rgba(0, 0, 0, 0.5)",
+      "count": 4,
+      "files": [
+        "chart-modal.css",
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.3)": {
+      "original": "rgba(0, 0, 0, 0.3)",
+      "count": 10,
+      "files": [
+        "chart-modal.css",
+        "dark-mode.css",
+        "media.css",
+        "read.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.1)": {
+      "original": "rgba(0, 0, 0, 0.1)",
+      "count": 3,
+      "files": [
+        "chart-modal.css",
+        "news.css",
+        "read.css"
+      ],
+      "category": "rgb"
+    },
+    "#2e7d32": {
+      "original": "#2e7d32",
+      "count": 1,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#2a3635": {
+      "original": "#2a3635",
+      "count": 5,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#1a2322": {
+      "original": "#1a2322",
+      "count": 4,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#1e2625": {
+      "original": "#1e2625",
+      "count": 1,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#4db6ac": {
+      "original": "#4db6ac",
+      "count": 1,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "#80cbc4": {
+      "original": "#80cbc4",
+      "count": 1,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(44, 95, 90, 0.2)": {
+      "original": "rgba(44, 95, 90, 0.2)",
+      "count": 2,
+      "files": [
+        "dark-mode.css",
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(37, 43, 42, 0.3)": {
+      "original": "rgba(37, 43, 42, 0.3)",
+      "count": 2,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(232, 149, 93, 0.2)": {
+      "original": "rgba(232, 149, 93, 0.2)",
+      "count": 2,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(37, 43, 42, 0.2)": {
+      "original": "rgba(37, 43, 42, 0.2)",
+      "count": 2,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(232, 149, 93, 0.3)": {
+      "original": "rgba(232, 149, 93, 0.3)",
+      "count": 2,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(232, 149, 93, 0.15)": {
+      "original": "rgba(232, 149, 93, 0.15)",
+      "count": 1,
+      "files": [
+        "dark-mode.css"
+      ],
+      "category": "rgb"
+    },
+    "#e9ecef": {
+      "original": "#e9ecef",
+      "count": 1,
+      "files": [
+        "financials.css"
+      ],
+      "category": "hex"
+    },
+    "#e5e7eb": {
+      "original": "#e5e7eb",
+      "count": 3,
+      "files": [
+        "financials.css"
+      ],
+      "category": "hex"
+    },
+    "#f8fafc": {
+      "original": "#f8fafc",
+      "count": 1,
+      "files": [
+        "financials.css"
+      ],
+      "category": "hex"
+    },
+    "#1f2937": {
+      "original": "#1f2937",
+      "count": 2,
+      "files": [
+        "financials.css"
+      ],
+      "category": "hex"
+    },
+    "#6b7280": {
+      "original": "#6b7280",
+      "count": 5,
+      "files": [
+        "financials.css",
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#f3f4f6": {
+      "original": "#f3f4f6",
+      "count": 2,
+      "files": [
+        "financials.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(44,95,90,0.08)": {
+      "original": "rgba(44,95,90,0.08)",
+      "count": 1,
+      "files": [
+        "financials.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(107,114,128,0.08)": {
+      "original": "rgba(107,114,128,0.08)",
+      "count": 1,
+      "files": [
+        "financials.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.12)": {
+      "original": "rgba(0, 0, 0, 0.12)",
+      "count": 1,
+      "files": [
+        "financials.css"
+      ],
+      "category": "rgb"
+    },
+    "#f5c518": {
+      "original": "#f5c518",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#f0f0f0": {
+      "original": "#f0f0f0",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#4a7c7a": {
+      "original": "#4a7c7a",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#f93a1e": {
+      "original": "#f93a1e",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#d4c9b1": {
+      "original": "#d4c9b1",
+      "count": 2,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#b3a98c": {
+      "original": "#b3a98c",
+      "count": 2,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#8a8a8a": {
+      "original": "#8a8a8a",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#1e4540": {
+      "original": "#1e4540",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "#b8721f": {
+      "original": "#b8721f",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(44, 95, 90, 0.12)": {
+      "original": "rgba(44, 95, 90, 0.12)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(44, 95, 90, 0.13)": {
+      "original": "rgba(44, 95, 90, 0.13)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.9)": {
+      "original": "rgba(0, 0, 0, 0.9)",
+      "count": 2,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.95)": {
+      "original": "rgba(0, 0, 0, 0.95)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.8)": {
+      "original": "rgba(0, 0, 0, 0.8)",
+      "count": 2,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.75)": {
+      "original": "rgba(0, 0, 0, 0.75)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(255, 255, 255, 0.15)": {
+      "original": "rgba(255, 255, 255, 0.15)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(255, 255, 255, 0.1)": {
+      "original": "rgba(255, 255, 255, 0.1)",
+      "count": 2,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0, 0, 0, 0.4)": {
+      "original": "rgba(0, 0, 0, 0.4)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(44, 95, 90, 0.05)": {
+      "original": "rgba(44, 95, 90, 0.05)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(212, 130, 42, 0.2)": {
+      "original": "rgba(212, 130, 42, 0.2)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(212, 130, 42, 0.4)": {
+      "original": "rgba(212, 130, 42, 0.4)",
+      "count": 1,
+      "files": [
+        "media.css"
+      ],
+      "category": "rgb"
+    },
+    "#4a90e2": {
+      "original": "#4a90e2",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#2c5282": {
+      "original": "#2c5282",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#2b6cb0": {
+      "original": "#2b6cb0",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#2d3748": {
+      "original": "#2d3748",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#f7fafc": {
+      "original": "#f7fafc",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#1a202c": {
+      "original": "#1a202c",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#059669": {
+      "original": "#059669",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#1e88e5": {
+      "original": "#1e88e5",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#43a047": {
+      "original": "#43a047",
+      "count": 3,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#fbc02d": {
+      "original": "#fbc02d",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#222222": {
+      "original": "#222",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#10b981": {
+      "original": "#10b981",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#e53935": {
+      "original": "#e53935",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#dddddd": {
+      "original": "#ddd",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#28a745": {
+      "original": "#28a745",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#2b3130": {
+      "original": "#2b3130",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#3a4241": {
+      "original": "#3a4241",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#303635": {
+      "original": "#303635",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#b3bdcb": {
+      "original": "#b3bdcb",
+      "count": 2,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "#222826": {
+      "original": "#222826",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(0,0,0,0.16)": {
+      "original": "rgba(0,0,0,0.16)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(30, 136, 229, 0.3)": {
+      "original": "rgba(30, 136, 229, 0.3)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(67, 160, 71, 0.3)": {
+      "original": "rgba(67, 160, 71, 0.3)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(251, 192, 45, 0.3)": {
+      "original": "rgba(251, 192, 45, 0.3)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(16, 185, 129, 0.3)": {
+      "original": "rgba(16, 185, 129, 0.3)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(44, 95, 90, 0.3)": {
+      "original": "rgba(44, 95, 90, 0.3)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(229, 57, 53, 0.3)": {
+      "original": "rgba(229, 57, 53, 0.3)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(232,149,93,0.08)": {
+      "original": "rgba(232,149,93,0.08)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0,0,0,0.05)": {
+      "original": "rgba(0,0,0,0.05)",
+      "count": 1,
+      "files": [
+        "news.css"
+      ],
+      "category": "rgb"
+    },
+    "#e67e22": {
+      "original": "#e67e22",
+      "count": 1,
+      "files": [
+        "read.css"
+      ],
+      "category": "hex"
+    },
+    "#ff9d4d": {
+      "original": "#ff9d4d",
+      "count": 1,
+      "files": [
+        "read.css"
+      ],
+      "category": "hex"
+    },
+    "#cfcfcf": {
+      "original": "#cfcfcf",
+      "count": 1,
+      "files": [
+        "read.css"
+      ],
+      "category": "hex"
+    },
+    "rgba(0, 0, 0, 0.05)": {
+      "original": "rgba(0, 0, 0, 0.05)",
+      "count": 2,
+      "files": [
+        "read.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(0,0,0,0.03)": {
+      "original": "rgba(0,0,0,0.03)",
+      "count": 1,
+      "files": [
+        "read.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(255,255,255,0.02)": {
+      "original": "rgba(255,255,255,0.02)",
+      "count": 1,
+      "files": [
+        "read.css"
+      ],
+      "category": "rgb"
+    },
+    "rgba(44,95,90,0.16)": {
+      "original": "rgba(44,95,90,0.16)",
+      "count": 1,
+      "files": [
+        "read.css"
+      ],
+      "category": "rgb"
+    }
+  },
+  "fileColors": {
+    "body.css": [
+      "#2c5f5a",
+      "#333333",
+      "#666666",
+      "#fdf6e8",
+      "#f8f4e6",
+      "#d4822a",
+      "#e8dcc0",
+      "#000000",
+      "#ffffff",
+      "#dc3545",
+      "#f8d7da",
+      "#f5c6cb",
+      "#87c5be",
+      "#e1e5e9",
+      "#a0a9b8",
+      "#1a1f1e",
+      "#252b2a",
+      "#e8955d",
+      "#404040",
+      "#1db954",
+      "#ff0000",
+      "rgba(44,95,90,0.1)",
+      "rgba(0,0,0,0.3)",
+      "rgba(212,130,42,0.05)",
+      "rgba(212,130,42,0.08)",
+      "rgba(212,130,42,0.3)",
+      "rgba(29,185,84,0.3)",
+      "rgba(255,0,0,0.3)",
+      "rgba(37,43,42,0.8)",
+      "rgba(232,149,93,0.1)",
+      "#ffa500",
+      "transparent"
+    ],
+    "chart-modal.css": [
+      "#f5f5f5",
+      "#d0d0d0",
+      "#333333",
+      "#ffffff",
+      "#d4822a",
+      "rgba(0, 0, 0, 0.5)",
+      "rgba(0, 0, 0, 0.3)",
+      "rgba(0, 0, 0, 0.1)",
+      "transparent",
+      "#ffa500"
+    ],
+    "dark-mode.css": [
+      "#87c5be",
+      "#e1e5e9",
+      "#a0a9b8",
+      "#1a1f1e",
+      "#252b2a",
+      "#e8955d",
+      "#404040",
+      "#ffffff",
+      "#2e7d32",
+      "#2a3635",
+      "#1a2322",
+      "#1e2625",
+      "#4db6ac",
+      "#80cbc4",
+      "rgba(44, 95, 90, 0.2)",
+      "rgba(37, 43, 42, 0.3)",
+      "rgba(232, 149, 93, 0.2)",
+      "rgba(37, 43, 42, 0.2)",
+      "rgba(232, 149, 93, 0.3)",
+      "rgba(0, 0, 0, 0.3)",
+      "rgba(232, 149, 93, 0.15)",
+      "transparent",
+      "#ffa500"
+    ],
+    "financials.css": [
+      "#e9ecef",
+      "#ffffff",
+      "#e5e7eb",
+      "#f8fafc",
+      "#1f2937",
+      "#2c5f5a",
+      "#6b7280",
+      "#f3f4f6",
+      "rgba(44,95,90,0.08)",
+      "rgba(212,130,42,0.08)",
+      "rgba(107,114,128,0.08)",
+      "rgba(0, 0, 0, 0.12)",
+      "#ffa500"
+    ],
+    "media.css": [
+      "#2c5f5a",
+      "#d4822a",
+      "#f5c518",
+      "#f8f4e6",
+      "#e8dcc0",
+      "#f0f0f0",
+      "#000000",
+      "#4a7c7a",
+      "#ffffff",
+      "#f93a1e",
+      "#ff0000",
+      "#d4c9b1",
+      "#b3a98c",
+      "#8a8a8a",
+      "#6b7280",
+      "#1e4540",
+      "#666666",
+      "#b8721f",
+      "rgba(44, 95, 90, 0.12)",
+      "rgba(44, 95, 90, 0.2)",
+      "rgba(44, 95, 90, 0.13)",
+      "rgba(0, 0, 0, 0.9)",
+      "rgba(0, 0, 0, 0.95)",
+      "rgba(0, 0, 0, 0.8)",
+      "rgba(0, 0, 0, 0.5)",
+      "rgba(0, 0, 0, 0.75)",
+      "rgba(255, 255, 255, 0.15)",
+      "rgba(0, 0, 0, 0.3)",
+      "rgba(255, 255, 255, 0.1)",
+      "rgba(0, 0, 0, 0.4)",
+      "rgba(44, 95, 90, 0.05)",
+      "rgba(212, 130, 42, 0.2)",
+      "rgba(212, 130, 42, 0.4)",
+      "rgba(0,0,0,0.3)",
+      "transparent"
+    ],
+    "news.css": [
+      "#4a90e2",
+      "#2c5282",
+      "#2b6cb0",
+      "#2d3748",
+      "#f7fafc",
+      "#1a202c",
+      "#059669",
+      "#666666",
+      "#1e88e5",
+      "#ffffff",
+      "#43a047",
+      "#fbc02d",
+      "#222222",
+      "#10b981",
+      "#2c5f5a",
+      "#e53935",
+      "#dddddd",
+      "#28a745",
+      "#2b3130",
+      "#3a4241",
+      "#303635",
+      "#b3bdcb",
+      "#222826",
+      "#87c5be",
+      "#e8955d",
+      "rgba(0,0,0,0.16)",
+      "rgba(0, 0, 0, 0.1)",
+      "rgba(30, 136, 229, 0.3)",
+      "rgba(67, 160, 71, 0.3)",
+      "rgba(251, 192, 45, 0.3)",
+      "rgba(16, 185, 129, 0.3)",
+      "rgba(44, 95, 90, 0.3)",
+      "rgba(229, 57, 53, 0.3)",
+      "rgba(232,149,93,0.08)",
+      "rgba(0,0,0,0.05)",
+      "#ffa500",
+      "transparent"
+    ],
+    "read.css": [
+      "#e67e22",
+      "#ff9d4d",
+      "#ffffff",
+      "#cfcfcf",
+      "rgba(0, 0, 0, 0.05)",
+      "rgba(0,0,0,0.03)",
+      "rgba(0, 0, 0, 0.1)",
+      "rgba(255,255,255,0.02)",
+      "rgba(0, 0, 0, 0.3)",
+      "rgba(44,95,90,0.16)",
+      "#ffa500"
+    ]
+  },
+  "consolidationGroups": {
+    "#2c5f5a": {
+      "representative": "#2c5f5a",
+      "colors": [
+        "#2c5f5a"
+      ],
+      "totalCount": 11,
+      "files": [
+        "body.css",
+        "financials.css",
+        "media.css",
+        "news.css"
+      ]
+    },
+    "#333333": {
+      "representative": "#333333",
+      "colors": [
+        "#333333"
+      ],
+      "totalCount": 3,
+      "files": [
+        "body.css",
+        "chart-modal.css"
+      ]
+    },
+    "#666666": {
+      "representative": "#666666",
+      "colors": [
+        "#666666",
+        "#6b7280",
+        "#8a8a8a",
+        "#cfcfcf"
+      ],
+      "totalCount": 10,
+      "files": [
+        "body.css",
+        "media.css",
+        "news.css",
+        "financials.css",
+        "read.css"
+      ]
+    },
+    "#fdf6e8": {
+      "representative": "#fdf6e8",
+      "colors": [
+        "#fdf6e8"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "#f8f4e6": {
+      "representative": "#f8f4e6",
+      "colors": [
+        "#f8f4e6"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css",
+        "media.css"
+      ]
+    },
+    "#d4822a": {
+      "representative": "#d4822a",
+      "colors": [
+        "#d4822a"
+      ],
+      "totalCount": 5,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "media.css"
+      ]
+    },
+    "#e8dcc0": {
+      "representative": "#e8dcc0",
+      "colors": [
+        "#e8dcc0"
+      ],
+      "totalCount": 3,
+      "files": [
+        "body.css",
+        "media.css"
+      ]
+    },
+    "#000000": {
+      "representative": "#000000",
+      "colors": [
+        "#000000"
+      ],
+      "totalCount": 10,
+      "files": [
+        "body.css",
+        "media.css"
+      ]
+    },
+    "#ffffff": {
+      "representative": "#ffffff",
+      "colors": [
+        "#ffffff",
+        "#f8fafc",
+        "#f3f4f6",
+        "#f7fafc"
+      ],
+      "totalCount": 54,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "dark-mode.css",
+        "financials.css",
+        "media.css",
+        "news.css",
+        "read.css"
+      ]
+    },
+    "#dc3545": {
+      "representative": "#dc3545",
+      "colors": [
+        "#dc3545"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "#f8d7da": {
+      "representative": "#f8d7da",
+      "colors": [
+        "#f8d7da"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "#f5c6cb": {
+      "representative": "#f5c6cb",
+      "colors": [
+        "#f5c6cb"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "#87c5be": {
+      "representative": "#87c5be",
+      "colors": [
+        "#87c5be"
+      ],
+      "totalCount": 6,
+      "files": [
+        "body.css",
+        "dark-mode.css",
+        "news.css"
+      ]
+    },
+    "#e1e5e9": {
+      "representative": "#e1e5e9",
+      "colors": [
+        "#e1e5e9"
+      ],
+      "totalCount": 6,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ]
+    },
+    "#a0a9b8": {
+      "representative": "#a0a9b8",
+      "colors": [
+        "#a0a9b8"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ]
+    },
+    "#1a1f1e": {
+      "representative": "#1a1f1e",
+      "colors": [
+        "#1a1f1e"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ]
+    },
+    "#252b2a": {
+      "representative": "#252b2a",
+      "colors": [
+        "#252b2a"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ]
+    },
+    "#e8955d": {
+      "representative": "#e8955d",
+      "colors": [
+        "#e8955d"
+      ],
+      "totalCount": 3,
+      "files": [
+        "body.css",
+        "dark-mode.css",
+        "news.css"
+      ]
+    },
+    "#404040": {
+      "representative": "#404040",
+      "colors": [
+        "#404040"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css",
+        "dark-mode.css"
+      ]
+    },
+    "#1db954": {
+      "representative": "#1db954",
+      "colors": [
+        "#1db954"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css"
+      ]
+    },
+    "#ff0000": {
+      "representative": "#ff0000",
+      "colors": [
+        "#ff0000"
+      ],
+      "totalCount": 3,
+      "files": [
+        "body.css",
+        "media.css"
+      ]
+    },
+    "rgba(44,95,90,0.1)": {
+      "representative": "rgba(44,95,90,0.1)",
+      "colors": [
+        "rgba(44,95,90,0.1)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "rgba(0,0,0,0.3)": {
+      "representative": "rgba(0,0,0,0.3)",
+      "colors": [
+        "rgba(0,0,0,0.3)"
+      ],
+      "totalCount": 3,
+      "files": [
+        "body.css",
+        "media.css"
+      ]
+    },
+    "rgba(212,130,42,0.05)": {
+      "representative": "rgba(212,130,42,0.05)",
+      "colors": [
+        "rgba(212,130,42,0.05)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "rgba(212,130,42,0.08)": {
+      "representative": "rgba(212,130,42,0.08)",
+      "colors": [
+        "rgba(212,130,42,0.08)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css",
+        "financials.css"
+      ]
+    },
+    "rgba(212,130,42,0.3)": {
+      "representative": "rgba(212,130,42,0.3)",
+      "colors": [
+        "rgba(212,130,42,0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "rgba(29,185,84,0.3)": {
+      "representative": "rgba(29,185,84,0.3)",
+      "colors": [
+        "rgba(29,185,84,0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "rgba(255,0,0,0.3)": {
+      "representative": "rgba(255,0,0,0.3)",
+      "colors": [
+        "rgba(255,0,0,0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "rgba(37,43,42,0.8)": {
+      "representative": "rgba(37,43,42,0.8)",
+      "colors": [
+        "rgba(37,43,42,0.8)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "body.css"
+      ]
+    },
+    "rgba(232,149,93,0.1)": {
+      "representative": "rgba(232,149,93,0.1)",
+      "colors": [
+        "rgba(232,149,93,0.1)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "body.css"
+      ]
+    },
+    "#ffa500": {
+      "representative": "#ffa500",
+      "colors": [
+        "#ffa500"
+      ],
+      "totalCount": 48,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "dark-mode.css",
+        "financials.css",
+        "news.css",
+        "read.css"
+      ]
+    },
+    "transparent": {
+      "representative": "transparent",
+      "colors": [
+        "transparent"
+      ],
+      "totalCount": 10,
+      "files": [
+        "body.css",
+        "chart-modal.css",
+        "dark-mode.css",
+        "media.css",
+        "news.css"
+      ]
+    },
+    "#f5f5f5": {
+      "representative": "#f5f5f5",
+      "colors": [
+        "#f5f5f5"
+      ],
+      "totalCount": 1,
+      "files": [
+        "chart-modal.css"
+      ]
+    },
+    "#d0d0d0": {
+      "representative": "#d0d0d0",
+      "colors": [
+        "#d0d0d0"
+      ],
+      "totalCount": 1,
+      "files": [
+        "chart-modal.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.5)": {
+      "representative": "rgba(0, 0, 0, 0.5)",
+      "colors": [
+        "rgba(0, 0, 0, 0.5)"
+      ],
+      "totalCount": 4,
+      "files": [
+        "chart-modal.css",
+        "media.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.3)": {
+      "representative": "rgba(0, 0, 0, 0.3)",
+      "colors": [
+        "rgba(0, 0, 0, 0.3)"
+      ],
+      "totalCount": 10,
+      "files": [
+        "chart-modal.css",
+        "dark-mode.css",
+        "media.css",
+        "read.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.1)": {
+      "representative": "rgba(0, 0, 0, 0.1)",
+      "colors": [
+        "rgba(0, 0, 0, 0.1)"
+      ],
+      "totalCount": 3,
+      "files": [
+        "chart-modal.css",
+        "news.css",
+        "read.css"
+      ]
+    },
+    "#2e7d32": {
+      "representative": "#2e7d32",
+      "colors": [
+        "#2e7d32"
+      ],
+      "totalCount": 1,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "#2a3635": {
+      "representative": "#2a3635",
+      "colors": [
+        "#2a3635"
+      ],
+      "totalCount": 5,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "#1a2322": {
+      "representative": "#1a2322",
+      "colors": [
+        "#1a2322"
+      ],
+      "totalCount": 4,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "#1e2625": {
+      "representative": "#1e2625",
+      "colors": [
+        "#1e2625"
+      ],
+      "totalCount": 1,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "#4db6ac": {
+      "representative": "#4db6ac",
+      "colors": [
+        "#4db6ac"
+      ],
+      "totalCount": 1,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "#80cbc4": {
+      "representative": "#80cbc4",
+      "colors": [
+        "#80cbc4"
+      ],
+      "totalCount": 1,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "rgba(44, 95, 90, 0.2)": {
+      "representative": "rgba(44, 95, 90, 0.2)",
+      "colors": [
+        "rgba(44, 95, 90, 0.2)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "dark-mode.css",
+        "media.css"
+      ]
+    },
+    "rgba(37, 43, 42, 0.3)": {
+      "representative": "rgba(37, 43, 42, 0.3)",
+      "colors": [
+        "rgba(37, 43, 42, 0.3)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "rgba(232, 149, 93, 0.2)": {
+      "representative": "rgba(232, 149, 93, 0.2)",
+      "colors": [
+        "rgba(232, 149, 93, 0.2)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "rgba(37, 43, 42, 0.2)": {
+      "representative": "rgba(37, 43, 42, 0.2)",
+      "colors": [
+        "rgba(37, 43, 42, 0.2)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "rgba(232, 149, 93, 0.3)": {
+      "representative": "rgba(232, 149, 93, 0.3)",
+      "colors": [
+        "rgba(232, 149, 93, 0.3)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "rgba(232, 149, 93, 0.15)": {
+      "representative": "rgba(232, 149, 93, 0.15)",
+      "colors": [
+        "rgba(232, 149, 93, 0.15)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "dark-mode.css"
+      ]
+    },
+    "#e9ecef": {
+      "representative": "#e9ecef",
+      "colors": [
+        "#e9ecef"
+      ],
+      "totalCount": 1,
+      "files": [
+        "financials.css"
+      ]
+    },
+    "#e5e7eb": {
+      "representative": "#e5e7eb",
+      "colors": [
+        "#e5e7eb"
+      ],
+      "totalCount": 3,
+      "files": [
+        "financials.css"
+      ]
+    },
+    "#1f2937": {
+      "representative": "#1f2937",
+      "colors": [
+        "#1f2937",
+        "#2d3748",
+        "#1a202c"
+      ],
+      "totalCount": 5,
+      "files": [
+        "financials.css",
+        "news.css"
+      ]
+    },
+    "rgba(44,95,90,0.08)": {
+      "representative": "rgba(44,95,90,0.08)",
+      "colors": [
+        "rgba(44,95,90,0.08)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "financials.css"
+      ]
+    },
+    "rgba(107,114,128,0.08)": {
+      "representative": "rgba(107,114,128,0.08)",
+      "colors": [
+        "rgba(107,114,128,0.08)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "financials.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.12)": {
+      "representative": "rgba(0, 0, 0, 0.12)",
+      "colors": [
+        "rgba(0, 0, 0, 0.12)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "financials.css"
+      ]
+    },
+    "#f5c518": {
+      "representative": "#f5c518",
+      "colors": [
+        "#f5c518"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#f0f0f0": {
+      "representative": "#f0f0f0",
+      "colors": [
+        "#f0f0f0"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#4a7c7a": {
+      "representative": "#4a7c7a",
+      "colors": [
+        "#4a7c7a"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#f93a1e": {
+      "representative": "#f93a1e",
+      "colors": [
+        "#f93a1e"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#d4c9b1": {
+      "representative": "#d4c9b1",
+      "colors": [
+        "#d4c9b1"
+      ],
+      "totalCount": 2,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#b3a98c": {
+      "representative": "#b3a98c",
+      "colors": [
+        "#b3a98c"
+      ],
+      "totalCount": 2,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#1e4540": {
+      "representative": "#1e4540",
+      "colors": [
+        "#1e4540"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#b8721f": {
+      "representative": "#b8721f",
+      "colors": [
+        "#b8721f"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(44, 95, 90, 0.12)": {
+      "representative": "rgba(44, 95, 90, 0.12)",
+      "colors": [
+        "rgba(44, 95, 90, 0.12)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(44, 95, 90, 0.13)": {
+      "representative": "rgba(44, 95, 90, 0.13)",
+      "colors": [
+        "rgba(44, 95, 90, 0.13)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.9)": {
+      "representative": "rgba(0, 0, 0, 0.9)",
+      "colors": [
+        "rgba(0, 0, 0, 0.9)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.95)": {
+      "representative": "rgba(0, 0, 0, 0.95)",
+      "colors": [
+        "rgba(0, 0, 0, 0.95)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.8)": {
+      "representative": "rgba(0, 0, 0, 0.8)",
+      "colors": [
+        "rgba(0, 0, 0, 0.8)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.75)": {
+      "representative": "rgba(0, 0, 0, 0.75)",
+      "colors": [
+        "rgba(0, 0, 0, 0.75)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(255, 255, 255, 0.15)": {
+      "representative": "rgba(255, 255, 255, 0.15)",
+      "colors": [
+        "rgba(255, 255, 255, 0.15)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(255, 255, 255, 0.1)": {
+      "representative": "rgba(255, 255, 255, 0.1)",
+      "colors": [
+        "rgba(255, 255, 255, 0.1)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.4)": {
+      "representative": "rgba(0, 0, 0, 0.4)",
+      "colors": [
+        "rgba(0, 0, 0, 0.4)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(44, 95, 90, 0.05)": {
+      "representative": "rgba(44, 95, 90, 0.05)",
+      "colors": [
+        "rgba(44, 95, 90, 0.05)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(212, 130, 42, 0.2)": {
+      "representative": "rgba(212, 130, 42, 0.2)",
+      "colors": [
+        "rgba(212, 130, 42, 0.2)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "rgba(212, 130, 42, 0.4)": {
+      "representative": "rgba(212, 130, 42, 0.4)",
+      "colors": [
+        "rgba(212, 130, 42, 0.4)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "media.css"
+      ]
+    },
+    "#4a90e2": {
+      "representative": "#4a90e2",
+      "colors": [
+        "#4a90e2"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#2c5282": {
+      "representative": "#2c5282",
+      "colors": [
+        "#2c5282"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#2b6cb0": {
+      "representative": "#2b6cb0",
+      "colors": [
+        "#2b6cb0"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#059669": {
+      "representative": "#059669",
+      "colors": [
+        "#059669"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#1e88e5": {
+      "representative": "#1e88e5",
+      "colors": [
+        "#1e88e5"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#43a047": {
+      "representative": "#43a047",
+      "colors": [
+        "#43a047"
+      ],
+      "totalCount": 3,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#fbc02d": {
+      "representative": "#fbc02d",
+      "colors": [
+        "#fbc02d"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#222222": {
+      "representative": "#222222",
+      "colors": [
+        "#222222"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#10b981": {
+      "representative": "#10b981",
+      "colors": [
+        "#10b981"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#e53935": {
+      "representative": "#e53935",
+      "colors": [
+        "#e53935"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#dddddd": {
+      "representative": "#dddddd",
+      "colors": [
+        "#dddddd"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#28a745": {
+      "representative": "#28a745",
+      "colors": [
+        "#28a745"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#2b3130": {
+      "representative": "#2b3130",
+      "colors": [
+        "#2b3130"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#3a4241": {
+      "representative": "#3a4241",
+      "colors": [
+        "#3a4241"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#303635": {
+      "representative": "#303635",
+      "colors": [
+        "#303635"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#b3bdcb": {
+      "representative": "#b3bdcb",
+      "colors": [
+        "#b3bdcb"
+      ],
+      "totalCount": 2,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#222826": {
+      "representative": "#222826",
+      "colors": [
+        "#222826"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(0,0,0,0.16)": {
+      "representative": "rgba(0,0,0,0.16)",
+      "colors": [
+        "rgba(0,0,0,0.16)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(30, 136, 229, 0.3)": {
+      "representative": "rgba(30, 136, 229, 0.3)",
+      "colors": [
+        "rgba(30, 136, 229, 0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(67, 160, 71, 0.3)": {
+      "representative": "rgba(67, 160, 71, 0.3)",
+      "colors": [
+        "rgba(67, 160, 71, 0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(251, 192, 45, 0.3)": {
+      "representative": "rgba(251, 192, 45, 0.3)",
+      "colors": [
+        "rgba(251, 192, 45, 0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(16, 185, 129, 0.3)": {
+      "representative": "rgba(16, 185, 129, 0.3)",
+      "colors": [
+        "rgba(16, 185, 129, 0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(44, 95, 90, 0.3)": {
+      "representative": "rgba(44, 95, 90, 0.3)",
+      "colors": [
+        "rgba(44, 95, 90, 0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(229, 57, 53, 0.3)": {
+      "representative": "rgba(229, 57, 53, 0.3)",
+      "colors": [
+        "rgba(229, 57, 53, 0.3)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(232,149,93,0.08)": {
+      "representative": "rgba(232,149,93,0.08)",
+      "colors": [
+        "rgba(232,149,93,0.08)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "rgba(0,0,0,0.05)": {
+      "representative": "rgba(0,0,0,0.05)",
+      "colors": [
+        "rgba(0,0,0,0.05)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "news.css"
+      ]
+    },
+    "#e67e22": {
+      "representative": "#e67e22",
+      "colors": [
+        "#e67e22"
+      ],
+      "totalCount": 1,
+      "files": [
+        "read.css"
+      ]
+    },
+    "#ff9d4d": {
+      "representative": "#ff9d4d",
+      "colors": [
+        "#ff9d4d"
+      ],
+      "totalCount": 1,
+      "files": [
+        "read.css"
+      ]
+    },
+    "rgba(0, 0, 0, 0.05)": {
+      "representative": "rgba(0, 0, 0, 0.05)",
+      "colors": [
+        "rgba(0, 0, 0, 0.05)"
+      ],
+      "totalCount": 2,
+      "files": [
+        "read.css"
+      ]
+    },
+    "rgba(0,0,0,0.03)": {
+      "representative": "rgba(0,0,0,0.03)",
+      "colors": [
+        "rgba(0,0,0,0.03)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "read.css"
+      ]
+    },
+    "rgba(255,255,255,0.02)": {
+      "representative": "rgba(255,255,255,0.02)",
+      "colors": [
+        "rgba(255,255,255,0.02)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "read.css"
+      ]
+    },
+    "rgba(44,95,90,0.16)": {
+      "representative": "rgba(44,95,90,0.16)",
+      "colors": [
+        "rgba(44,95,90,0.16)"
+      ],
+      "totalCount": 1,
+      "files": [
+        "read.css"
+      ]
+    }
+  }
+}

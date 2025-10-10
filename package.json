@@ -1,0 +1,12 @@
+{
+  "name": "color-consolidation-project",
+  "version": "1.0.0",
+  "description": "Color consolidation analysis and implementation",
+  "scripts": {
+    "analyze-colors": "node scripts/color-analysis.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["css", "colors", "consolidation"],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,245 @@
+/* Theme toggle button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle-btn i {
+  font-size: 1rem;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .theme-toggle-btn {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+/* Theme toggle in navigation */
+.nav-links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  margin: 1rem 0 2rem;
+  padding: 0.75rem 0;
+}
+
+/* Theme toggle button */
+.nav-links .theme-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid transparent;
+  z-index: 1;
+}
+
+.theme-toggle-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.theme-toggle-icon i {
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--logo-teal);
+  transition: color 0.2s ease;
+}
+
+/* Hover and focus states */
+.nav-links .theme-toggle:hover {
+  background-color: var(--bg-secondary);
+  transform: translateY(calc(-50% - 1px));
+  border-color: rgba(44, 95, 90, 0.2);
+}
+
+.nav-links .theme-toggle:focus {
+  outline: 2px solid var(--logo-orange);
+  outline-offset: 2px;
+  background-color: var(--bg-secondary);
+  transform: translateY(-50%);
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] .theme-toggle i {
+  color: var(--accent-primary);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(37, 43, 42, 0.3);
+  border-color: rgba(232, 149, 93, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle:focus {
+  background-color: rgba(37, 43, 42, 0.2);
+  border-color: rgba(232, 149, 93, 0.3);
+}
+
+/* Ensure navigation items stay centered */
+.nav-links > a:not(.theme-toggle) {
+  position: relative;
+  z-index: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-links {
+    padding-right: 60px; /* Make space for the toggle */
+  }
+  
+  .nav-links .theme-toggle {
+    right: 0.5rem;
+  }
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --text-primary: #87c5be;
+  --text-secondary: #e1e5e9;
+  --text-muted: #a0a9b8;
+  --bg-primary: #1a1f1e;
+  --bg-secondary: #252b2a;
+  --accent-primary: #87c5be;
+  --accent-secondary: #e8955d;
+  --border-color: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .nav-links a {
+  color: var(--accent-primary);
+}
+
+[data-theme="dark"] .nav-links a:hover {
+  color: var(--accent-secondary);
+  background-color: rgba(37, 43, 42, 0.3);
+  border-color: rgba(232, 149, 93, 0.2);
+}
+
+[data-theme="dark"] .nav-links a.active {
+  color: var(--accent-secondary);
+  background-color: rgba(37, 43, 42, 0.2);
+  border-color: rgba(232, 149, 93, 0.15);
+}
+
+/* Ensure H1 elements use the teal color in dark mode */
+[data-theme="dark"] h1 {
+  color: #87c5be;
+}
+
+
+
+/* Improve category badges */
+[data-theme="dark"] .category-badge {
+  color: #fff !important;
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .category-badge.earnings {
+  background: #2e7d32 !important;
+}
+
+/* Improve tables and data */
+[data-theme="dark"] table {
+  border-color: #2a3635;
+}
+
+[data-theme="dark"] th {
+  background-color: #1a2322;
+  color: var(--accent-primary);
+  border-color: #2a3635;
+}
+
+[data-theme="dark"] td {
+  border-color: #2a3635;
+  color: #e1e5e9;
+}
+
+[data-theme="dark"] tr:hover {
+  background-color: #1e2625;
+}
+
+/* Improve links in dark mode */
+[data-theme="dark"] a:not(.nav-link) {
+  color: #4db6ac;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+[data-theme="dark"] a:not(.nav-link):hover {
+  color: #80cbc4;
+  text-decoration: underline;
+}
+
+/* Improve code and pre-formatted text */
+[data-theme="dark"] code,
+[data-theme="dark"] pre {
+  background-color: #1a2322;
+  color: #e1e5e9;
+  border: 1px solid #2a3635;
+}
+
+/* Improve blockquotes */
+[data-theme="dark"] blockquote {
+  border: 0.5px solid var(--accent-secondary);
+  border-radius: 4px;
+  background-color: #1a2322;
+  color: #e1e5e9;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Improve form elements */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background-color: #1a2322;
+  border: 1px solid #2a3635;
+  color: #e1e5e9;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 0 2px rgba(232, 149, 93, 0.3);
+}

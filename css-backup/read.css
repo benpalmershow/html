@@ -1,0 +1,122 @@
+/* Announcements Page Styles */
+#post-feed {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.post-item {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Removed bold orange left border for a cleaner, minimalist look */
+  border-left: none;
+  /* Subtle left inset shadow to preserve gentle separation */
+  box-shadow: inset 6px 0 8px -6px rgba(0,0,0,0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.post-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-item time {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.post-item .post-content {
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0.5rem 0 0;
+}
+
+.post-item .post-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  color: var(--logo-orange);
+}
+
+.post-item a {
+  color: var(--logo-orange);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.post-item a:hover {
+  color: #e67e22;
+  text-decoration: underline;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .post-item {
+    background: var(--bg-tertiary);
+    /* No colored left border in dark mode either; keep subtle inset shadow */
+    border-left: none;
+    box-shadow: inset 6px 0 8px -6px rgba(255,255,255,0.02), 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .post-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .post-item a {
+    color: var(--accent-primary);
+  }
+  
+  .post-item a:hover {
+    color: #ff9d4d;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .post-item {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .post-item time {
+    font-size: 0.85rem;
+  }
+  
+  .post-item .post-content {
+    font-size: 0.95rem;
+  }
+}
+
+/* Animation for new posts */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.post-item {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Top-right clickable badge for each post (uses existing lucide icons) */
+.post-item { position: relative; }
+.post-meta-badge { position: absolute; top: 8px; right: 8px; display: flex; align-items: center; gap: 6px; }
+.post-badge-link { display: inline-flex; align-items: center; gap: 6px; padding: 0.12rem 0.4rem; border-radius: 999px; text-decoration: none; color: inherit; }
+.post-badge-link i[data-lucide] { width: 18px; height: 18px; color: var(--text-muted); flex: 0 0 18px; }
+.post-badge-link .badge-label { font-size: 0.72rem; font-weight: 700; color: #fff; padding: 0 0.2rem; }
+.post-badge-link:focus { outline: 2px solid rgba(44,95,90,0.16); outline-offset: 3px; }
+
+@media (prefers-color-scheme: dark) {
+  .post-badge-link i[data-lucide] { color: #cfcfcf; }
+}
+
+/* Icon-only badge variant */
+.post-badge-icon-only { padding: 0.08rem; }
+.post-badge-icon-only .badge-label { display: none; }

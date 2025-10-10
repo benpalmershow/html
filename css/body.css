@@ -37,6 +37,17 @@
     --color-info: #1e88e5; /* Blue - informational states, neutral info */
     
     /* ========================================
+       CATEGORY-SPECIFIC COLORS
+       Colors for news categories and content types
+       ======================================== */
+    --color-category-ipo: #1e88e5; /* IPO category - blue */
+    --color-category-earnings: #43a047; /* Earnings category - green */
+    --color-category-policy: #fbc02d; /* Policy category - yellow */
+    --color-category-healthcare: #10b981; /* Healthcare category - teal-green */
+    --color-category-legal: #2c5f5a; /* Legal category - brand teal */
+    --color-category-corrections: #e53935; /* Corrections category - red */
+    
+    /* ========================================
        PLATFORM-SPECIFIC COLORS
        Brand colors for external platforms and services
        ======================================== */

@@ -38,14 +38,14 @@
     - Validate dark mode compatibility
     - _Requirements: 2.1, 2.3_
 
-- [ ] 4. Consolidate colors in news.css
-  - [ ] 4.1 Update tooltip and UI element colors
+- [x] 4. Consolidate colors in news.css
+  - [x] 4.1 Update tooltip and UI element colors
     - Replace hardcoded tooltip colors (#2d3748, #f7fafc) with standardized variables
     - Consolidate border colors (#4a90e2, #2b6cb0) with semantic color variables
     - Update category badge colors while preserving distinct visual identity
     - _Requirements: 1.3, 2.2, 2.4_
 
-  - [ ] 4.2 Preserve platform-specific and category colors
+  - [x] 4.2 Preserve platform-specific and category colors
     - Maintain distinct colors for IPO (#1e88e5), earnings (#43a047), policy (#fbc02d) badges
     - Ensure healthcare (#10b981), legal (#2c5f5a), corrections (#e53935) colors remain distinct
     - Convert to CSS variables while preserving visual distinction

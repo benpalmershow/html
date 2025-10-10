@@ -1,25 +1,96 @@
 :root{
-    --text-primary:#2c5f5a;
-    --text-secondary:#333;
-    --text-muted:#666;
-    --bg-primary:#fdf6e8;
-    --bg-secondary:#f8f4e6;
-    --accent-primary:#2c5f5a;
-    --accent-secondary:#d4822a;
-    --border-color:#e8dcc0;
-    --shadow-color:rgba(44,95,90,0.1);
-    --logo-teal:#2c5f5a;
-    --logo-orange:#d4822a;
-    --max-content-width:1440px;
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 0.75rem;
-    --spacing-md: 1.25rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --content-padding:var(--spacing-md);
-    --mobile-padding:var(--spacing-sm);
-    --section-spacing:var(--spacing-xl);
-    --component-spacing:var(--spacing-md);
+    /* ========================================
+       BASE COLORS
+       Core color values used throughout the system
+       ======================================== */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    
+    /* ========================================
+       GRAYSCALE PALETTE
+       Standardized gray scale for consistent UI elements
+       ======================================== */
+    --color-gray-100: #f8f9fa; /* Lightest gray - subtle backgrounds */
+    --color-gray-200: #e9ecef; /* Light gray - borders, dividers */
+    --color-gray-300: #dee2e6; /* Medium-light gray - inactive elements */
+    --color-gray-400: #ced4da; /* Medium gray - placeholders */
+    --color-gray-500: #6c757d; /* Base gray - secondary text */
+    --color-gray-600: #495057; /* Medium-dark gray - body text */
+    --color-gray-700: #343a40; /* Dark gray - headings */
+    --color-gray-800: #212529; /* Darkest gray - primary text */
+    
+    /* ========================================
+       BRAND COLORS
+       Primary brand identity colors
+       ======================================== */
+    --color-primary: #2c5f5a; /* Primary teal - main brand color */
+    --color-secondary: #d4822a; /* Secondary orange - accent brand color */
+    --color-accent: #e8955d; /* Lighter orange - subtle accents */
+    
+    /* ========================================
+       SEMANTIC COLORS
+       Colors with specific meaning and purpose
+       ======================================== */
+    --color-success: #43a047; /* Green - success states, positive indicators */
+    --color-warning: #fbc02d; /* Yellow - warning states, caution */
+    --color-error: #e53935; /* Red - error states, negative indicators */
+    --color-info: #1e88e5; /* Blue - informational states, neutral info */
+    
+    /* ========================================
+       PLATFORM-SPECIFIC COLORS
+       Brand colors for external platforms and services
+       ======================================== */
+    --color-youtube: #FF0000; /* YouTube brand red */
+    --color-spotify: #1DB954; /* Spotify brand green */
+    --color-apple: #000000; /* Apple brand black */
+    --color-amazon: #FF9900; /* Amazon brand orange */
+    --color-google: #4285F4; /* Google brand blue */
+    
+    /* ========================================
+       THEME VARIABLES
+       Current theme system (maintained for compatibility)
+       Will be gradually migrated to use standardized colors above
+       ======================================== */
+    
+    /* Text Colors */
+    --text-primary: var(--color-primary, #2c5f5a); /* Primary text - uses brand teal */
+    --text-secondary: var(--color-gray-700, #333); /* Secondary text - dark gray */
+    --text-muted: var(--color-gray-500, #666); /* Muted text - medium gray */
+    
+    /* Background Colors */
+    --bg-primary: #fdf6e8; /* Primary background - warm cream */
+    --bg-secondary: #f8f4e6; /* Secondary background - lighter cream */
+    
+    /* Accent Colors */
+    --accent-primary: var(--color-primary, #2c5f5a); /* Primary accent - brand teal */
+    --accent-secondary: var(--color-secondary, #d4822a); /* Secondary accent - brand orange */
+    
+    /* UI Element Colors */
+    --border-color: #e8dcc0; /* Border color - warm beige */
+    --shadow-color: rgba(44,95,90,0.1); /* Shadow color - teal with transparency */
+    
+    /* Logo Colors (legacy - use brand colors instead) */
+    --logo-teal: var(--color-primary, #2c5f5a); /* Logo teal - same as primary */
+    --logo-orange: var(--color-secondary, #d4822a); /* Logo orange - same as secondary */
+    
+    /* ========================================
+       LAYOUT VARIABLES
+       Spacing, sizing, and layout properties
+       ======================================== */
+    --max-content-width: 1440px;
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;   /* 8px - tight spacing */
+    --spacing-sm: 0.75rem;  /* 12px - small spacing */
+    --spacing-md: 1.25rem;  /* 20px - medium spacing */
+    --spacing-lg: 2rem;     /* 32px - large spacing */
+    --spacing-xl: 3rem;     /* 48px - extra large spacing */
+    
+    /* Layout Spacing */
+    --content-padding: var(--spacing-md);
+    --mobile-padding: var(--spacing-sm);
+    --section-spacing: var(--spacing-xl);
+    --component-spacing: var(--spacing-md);
 }*{box-sizing:border-box}html{height:100%;margin:0;padding:0;overflow-x:hidden}body{min-height:100%;margin:0;padding:0;font-family:Georgia,'Times New Roman',serif;line-height:1.6;background:var(--bg-primary);color:var(--text-secondary);transition:background-color .3s,color .3s;font-size:clamp(.9rem,2.5vw,1rem);display:flex;flex-direction:column}.content{
     padding:var(--content-padding);
     margin:0 auto;

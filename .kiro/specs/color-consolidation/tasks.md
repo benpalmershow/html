@@ -6,14 +6,14 @@
   - Generate a color usage report showing all unique colors and their frequencies
   - _Requirements: 1.1, 1.2_
 
-- [ ] 2. Extend CSS custom properties system
-  - [ ] 2.1 Add comprehensive color variables to body.css :root selector
+- [x] 2. Extend CSS custom properties system
+  - [x] 2.1 Add comprehensive color variables to body.css :root selector
     - Add standardized grayscale variables (--color-gray-100 through --color-gray-800)
     - Add semantic color variables (--color-success, --color-warning, --color-error, --color-info)
     - Add platform-specific color variables (--color-youtube, --color-spotify, etc.)
     - _Requirements: 3.1, 3.2, 3.3_
 
-  - [ ] 2.2 Organize existing color variables for better consistency
+  - [x] 2.2 Organize existing color variables for better consistency
     - Group related colors together in logical sections
     - Add comments to document color usage and purpose
     - Ensure proper fallback values are provided

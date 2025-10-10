@@ -57,14 +57,14 @@
     - Validate filter button styling consistency
     - _Requirements: 2.1, 2.2_
 
-- [ ] 5. Consolidate colors in financials.css
-  - [ ] 5.1 Update chart and overlay colors
+- [x] 5. Consolidate colors in financials.css
+  - [x] 5.1 Update chart and overlay colors
     - Replace hardcoded overlay backgrounds with standardized variables
     - Consolidate border colors (#e5e7eb, #d0d0d0) with consistent gray variables
     - Update chart modal colors for consistency
     - _Requirements: 1.3, 2.1, 3.4_
 
-  - [ ] 5.2 Standardize indicator and change colors
+  - [x] 5.2 Standardize indicator and change colors
     - Consolidate positive/negative change indicator backgrounds (rgba values)
     - Update filter button colors to use standardized variables
     - Maintain semantic meaning of green/red for positive/negative changes

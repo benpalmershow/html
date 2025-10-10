@@ -37,6 +37,14 @@
     --color-info: #1e88e5; /* Blue - informational states, neutral info */
     
     /* ========================================
+       TRANSPARENT BACKGROUND COLORS
+       Semi-transparent colors for overlays and indicators
+       ======================================== */
+    --color-primary-bg: rgba(44, 95, 90, 0.08); /* Primary teal background - 8% opacity */
+    --color-secondary-bg: rgba(212, 130, 42, 0.08); /* Secondary orange background - 8% opacity */
+    --color-neutral-bg: rgba(107, 114, 128, 0.08); /* Neutral gray background - 8% opacity */
+    
+    /* ========================================
        CATEGORY-SPECIFIC COLORS
        Colors for news categories and content types
        ======================================== */

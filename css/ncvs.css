@@ -283,7 +283,11 @@
 }
 
 [data-theme="dark"] .card-content p {
- color: var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .card > p {
+  color: var(--text-secondary);
 }
 
 [data-theme="dark"] .chart-caption {

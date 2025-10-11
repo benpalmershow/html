@@ -1,0 +1,268 @@
+.ncvs-section {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.ncvs-header {
+  margin-bottom: 2rem;
+}
+
+.ncvs-header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.ncvs-header p {
+  color: #4a5568;
+  max-width: 42rem;
+  line-height: 1.6;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.card.bg-gradient-to-tr {
+    background-image: linear-gradient(to top right, #fff, #f9fafb);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content p {
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: #2d3748;
+  border-color: #e2e8f0;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e0;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: #4a5568;
+}
+
+.btn-ghost:hover {
+    background-color: #f7fafc;
+}
+
+.card-header {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.card-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.chart-container {
+  height: 20rem;
+  position: relative;
+}
+
+.chart-caption {
+  font-size: 0.75rem;
+  color: #718096;
+  margin-top: 0.5rem;
+}
+
+.ncvs-footer {
+  margin-top: 2.5rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.5rem;
+}
+
+.attribution-section {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.attribution-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #2c5f5a;
+  padding-bottom: 0.5rem;
+}
+
+.source-links p {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.source-links a {
+  color: #2c5f5a;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.source-links a:hover {
+  color: #d4822a;
+  border-bottom-color: #d4822a;
+  text-decoration: none;
+}
+
+.source-links a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.disclaimer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  color: #718096;
+  font-style: italic;
+}
+
+/* Enhanced card styles */
+.highlight-card {
+  border-left: 4px solid #d4822a;
+}
+
+.chart-card {
+  position: relative;
+}
+
+.policy-card {
+  border-left: 4px solid #2c5f5a;
+}
+
+.impact-card {
+  border-left: 4px solid #e53935;
+}
+
+/* Card header icons */
+.card-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-header h2 i {
+  color: #d4822a;
+  font-size: 1.1em;
+}
+
+/* Enhanced content sections */
+.finding-highlight,
+.impact-highlight {
+  background-color: #fdf6e8;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid #d4822a;
+}
+
+.lead-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+/* Action buttons */
+.action-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #2c5f5a;
+  color: white;
+  border-color: #2c5f5a;
+}
+
+.btn-primary:hover {
+  background-color: #1a3f3a;
+  border-color: #1a3f3a;
+  color: white;
+}
+
+/* Chart info section */
+.chart-info {
+  margin-top: 1rem;
+}
+
+.chart-caption {
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.data-source {
+  font-size: 0.8rem;
+  color: #718096;
+  margin-bottom: 0;
+}
+
+.data-source a {
+  color: #2c5f5a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.data-source a:hover {
+  color: #d4822a;
+  text-decoration: underline;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .attribution-section {
+    padding: 1rem;
+  }
+
+  .finding-highlight,
+  .impact-highlight {
+    padding: 0.75rem;
+  }
+}

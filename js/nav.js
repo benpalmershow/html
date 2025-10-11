@@ -1,32 +1,32 @@
 (function() {
     const navItems = [{
         text: "Home",
-        href: "/index.html",
+        href: "../index.html",
         icon: "🏠",
         image: ""
     }, {
         text: "Announcements",
-        href: "/read.html",
+        href: "../read.html",
         icon: "",
-        image: "/images/announcements.png"
+        image: "../images/announcements.png"
     }, {
         text: "Numbers",
-        href: "/financials.html",
+        href: "../financials.html",
         icon: "📊",
         image: ""
     }, {
         text: "News",
-        href: "/news.html",
+        href: "../news.html",
         icon: "📰",
         image: ""
     }, {
         text: "Media",
-        href: "/media.html",
+        href: "../media.html",
         icon: "",
-        image: "/images/read.png"
+        image: "../images/read.png"
     }, {
         text: "Journal",
-        href: "/journal.html",
+        href: "../journal.html",
         icon: "✍️",
         image: ""
     }];

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent Caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <meta name="description" content="The Ben Palmer Show hosted by HowdyStranger.">
+  <!-- Favicon -->
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#2C5F5A">
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Preload critical resources -->
+  <link rel="preload" href="../images/logo.webp" as="image" type="image/webp">
+  <link rel="preload" href="../css/body.css" as="style">
+  <link rel="preload" href="../css/ncvs.css" as="style">
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../css/body.css?v=20250926">
+  <link rel="stylesheet" href="../css/dark-mode.css?v=20250926">
+  <link rel="stylesheet" href="../css/ncvs.css?v=20250926">
+
+  <title>Urban Crime Trends - Howdy, Stranger</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+  <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
+  <main id="main-content" tabindex="-1">
+    <section class="ncvs-section">
+      <header class="ncvs-header">
+        <h1>NCVS Crime Trends</h1>
+      </header>
+
+      <div class="card bg-gradient-to-tr highlight-card">
+        <div class="card-header">
+        </div>
+                <p>The government’s own data shows it plainly: violent crime in American cities has surged nearly 50% since 2020. Rural areas stayed more or less steady, but metro streets tell a different story — robbery, assault, and random violence are all up. The post-pandemic normalization some promised never came.</p>
+
+        <div class="card-content">
+          <div class="finding-highlight">
+            <p class="lead-text">Between 2020 and 2024, the Bureau of Justice Statistics recorded an <strong>urban violent crime rate jump from 18.2 to 26.8 per 1,000 residents</strong> — a 47% increase.</p>
+          </div>
+          <p>That’s not statistical noise — it’s a structural shift. Rural areas ticked down slightly, widening the urban-rural gap to a record 13 points. The story is robbery and assault: stranger violence and opportunistic attacks climbed, concentrated in dense population zones where enforcement thinned and public behavior shifted.</p>
+          <p>This isn’t about a single city or a bad summer. It’s a sustained national trend. People are adjusting — avoiding public spaces, skipping transit, reconsidering nightlife — and the data reflects it.</p>
+          <div class="action-buttons">
+            <a href="https://bjs.ojp.gov/document/cv24.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-download"></i> Download Full Report
+            </a>
+            <a href="https://bjs.ojp.gov/data-collection/ncvs" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-chart-bar"></i> View NCVS Dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card chart-card">
+        <div class="card-header">
+          <h2><i class="fas fa-chart-area"></i> Urban vs. Rural Violent Crime Rates, 2020–2024</h2>
+        </div>
+        <div class="card-content">
+          <div class="chart-container">
+            <canvas id="ncvsChart"></canvas>
+          </div>
+          <div class="chart-info">
+            <p class="chart-caption">Urban violent crime victimization rates per 1,000 residents, 2020–2024. Urban areas show a sustained 47% increase while rural rates remained stable.</p>
+            <p class="data-source"><strong>Data Source:</strong> <a href="https://bjs.ojp.gov/document/cv24.pdf" target="_blank" rel="noopener noreferrer">Bureau of Justice Statistics - Criminal Victimization, 2024</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card policy-card">
+        <div class="card-header">
+          <h2><i class="fas fa-gavel"></i> Federal Response to Crime Trends</h2>
+        </div>
+        <div class="card-content">
+          <p>The federal government has stepped into local crime crises before — not as a political gesture, but as a recurring response when cities felt overwhelmed. In the late 1960s and early 1990s, spikes in violent crime led to national law enforcement initiatives and funding surges. These moments shaped modern policing and federal–local cooperation on crime prevention.</p>
+          <p>The recent rise in urban victimization renews that debate. When violence reaches a visible threshold — disrupting commerce, tourism, and public trust — it typically triggers calls for stronger federal presence. Each era balances public safety against civil autonomy, often redefining how far national leaders should go in domestic enforcement.</p>
+          <p>Today’s data suggests we’re back at one of those inflection points. Federal involvement in urban crime remains controversial, but history shows it’s part of a long pattern — when local systems struggle, Washington takes notice.</p>
+        </div>
+      </div>
+
+      <div class="card impact-card">
+        <div class="card-header">
+          <h2><i class="fas fa-exclamation-triangle"></i> Impact & Analysis</h2>
+        </div>
+        <div class="card-content">
+          <div class="impact-highlight">
+            <p><strong>Why it matters:</strong> The increase isn’t just perception. It’s quantifiable and persistent, showing up across demographics. Many departments attribute ongoing staffing shortages to a mix of retirements, budget reallocations, and public pressure during the 2020–2021 policing reform debates.</p>
+          </div>
+          <p>Recruiting slowed as agencies faced reputational challenges, shifting expectations, and expanded oversight — conditions that lingered well into 2024. The jump is steepest among young men, dense metro counties, and areas with heavy nightlife recovery post-COVID. Police departments in several major metros are still 10–20% below pre-pandemic staffing levels — a gap that shows up clearly in these numbers.</p>
+          <p>Meanwhile, rural America looks almost frozen in time. Property crime there actually fell, and violent crime barely budged.</p>
+        </div>
+      </div>
+
+      <footer class="ncvs-footer">
+        <div class="attribution-section">
+          <h3>Data Sources & Attribution</h3>
+          <div class="source-links">
+            <p><strong>2024 Criminal Victimization Report:</strong> <a href="https://bjs.ojp.gov/document/cv24.pdf" target="_blank" rel="noopener noreferrer">Criminal Victimization, 2024 (PDF)</a></p>
+            <p><strong>Historical Data Archive:</strong> <a href="https://bjs.ojp.gov/data-collection/ncvs" target="_blank" rel="noopener noreferrer">NCVS Data Collections & Archives</a></p>
+          </div>
+          <div class="disclaimer">
+            <p><em>Crime statistics are derived from the National Crime Victimization Survey, an annual data collection measuring the frequency, characteristics, and consequences of criminal victimization in the United States.</em></p>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="../js/nav.js?v=20250926" defer></script>
+  <script src="../js/socials.js?v=20250926" defer></script>
+  <script src="../js/dark-mode.js?v=20250926" defer></script>
+  <script src="../js/ncvs-chart.js?v=20250926" defer></script>
+
+</body>
+
+</html>

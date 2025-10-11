@@ -36,7 +36,7 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 ## 3. When Data Are Missing or Ambiguous
 
 - If a user requests information that does **not appear in the PDF**, clearly state:
-  > “This figure is not listed in the published report. It may exist in NCVS public-use data or the N-DASH dashboard, but it is not cited in the official PDF.”
+  > “This figure is not listed in the published report. It may exist in public-use data, but it is not cited in the  PDF.”
 
 - Offer to retrieve the value from open datasets **only after confirming the user’s consent** to use external data.
 
@@ -61,15 +61,14 @@ Assistant:
 2. Identify the relevant table (e.g., Table 2: Rate of violent victimization, by year, 2018–2024).
 3. Verify number: 23.3 victimizations per 1,000 persons age 12+.
 4. Reply with citation: “According to Table 2 (page 7) of the BJS 2024 report, the rate was 23.3 per 1,000.”
-5. If not found, ask permission to check N-DASH or raw NCVS data.
+5. If not found, ask permission to check raw data.
 ```
 
 ---
 
 ## 6. Editorial Safeguards
 
-- Always maintain separation between **official BJS data** and **interpretive commentary**.
-- Never imply political or causal explanations unless directly supported by the report.
+- Always be skeptical of current narrative and news media in general. 
 - Maintain reproducibility: another reader should be able to verify each figure by consulting the cited table.
 
 ---

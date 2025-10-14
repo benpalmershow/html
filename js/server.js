@@ -1,6 +1,6 @@
 import { serve } from "bun";
 import { join } from "path";
-import { existsSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
 
 // MIME type mapping for better content type handling
 const mimeTypes = {
@@ -69,6 +69,16 @@ serve({
       }
       
       return new Response(file, { headers });
+    } else if (path === "api/update-journal") {
+      // Handle journal update API
+      if (req.method === "POST") {
+        return handleJournalUpdate(req);
+      }
+    } else if (path === "api/update-post") {
+      // Handle post update API
+      if (req.method === "POST") {
+        return handlePostUpdate(req);
+      }
     } else {
       console.log(`File not found: ${filePath}`);
       return new Response("File not found", { 
@@ -86,5 +96,91 @@ serve({
     });
   }
 });
+
+// Handle journal update API
+async function handleJournalUpdate(req) {
+  try {
+    const data = await req.json();
+    const { date, title, content } = data;
+    
+    if (!date || !title || !content) {
+      return new Response(JSON.stringify({ error: "Missing required fields" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+    
+    // Read the existing journal.json file
+    const journalPath = "/Users/benjaminpalmer/TBPS/html/html/json/journal.json";
+    const journalData = JSON.parse(readFileSync(journalPath, "utf-8"));
+    
+    // Check if there's already an entry for this date
+    let dateEntry = journalData.find(entry => entry.date === date);
+    
+    if (dateEntry) {
+      // Add to existing date entry
+      dateEntry.entries.unshift({ title, content });
+    } else {
+      // Create new date entry
+      journalData.unshift({
+        date,
+        entries: [{ title, content }]
+      });
+    }
+    
+    // Write the updated data back to the file
+    writeFileSync(journalPath, JSON.stringify(journalData, null, 2));
+    
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
+  } catch (error) {
+    console.error("Error updating journal:", error);
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+}
+
+// Handle post update API
+async function handlePostUpdate(req) {
+  try {
+    const data = await req.json();
+    const { date, content } = data;
+    
+    if (!date || !content) {
+      return new Response(JSON.stringify({ error: "Missing required fields" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+    
+    // Read the existing posts.json file
+    const postsPath = "/Users/benjaminpalmer/TBPS/html/html/json/posts.json";
+    const postsData = JSON.parse(readFileSync(postsPath, "utf-8"));
+    
+    // Add new post at the beginning of the array
+    postsData.unshift({
+      date,
+      content
+    });
+    
+    // Write the updated data back to the file
+    writeFileSync(postsPath, JSON.stringify(postsData, null, 2));
+    
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
+  } catch (error) {
+    console.error("Error updating posts:", error);
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+}
 
 console.log("Server running at http://localhost:8000");

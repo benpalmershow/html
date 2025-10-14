@@ -34,8 +34,24 @@
   <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/dark-mode.css">
-  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/media.css?v=20250723">
+  <link rel="stylesheet" href="css/newspaper-titles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    /* Page Title Styling */
+    .page-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      text-align: center;
+      margin: 0.5rem 0 1.5rem 0;
+      opacity: 0.6;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+  </style>
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -50,10 +66,9 @@
 
 <body>
 
-  <nav class="nav-links" id="main-nav"></nav>
-
-  <h1 class="page-title">Media</h1>
-
+<nav class="nav-links" id="main-nav"></nav>
+<div class="page-title" aria-label="Page title">Media</div>
+<main id="main-content" tabindex="-1">
   <div class="media-filters">
 
     <label>Filter by type:
@@ -74,10 +89,11 @@
   <div class="media-cards" id="media-cards-container">
     <!-- Media cards will be inserted here by JavaScript -->
   </div>
+  </main>
 
   <script src="/js/nav.js?v=20250723" defer></script>
-  <script src="/js/dark-mode.js" defer></script>
-  <script src="js/media.js" defer></script>
+  <script src="/js/dark-mode.js?v=20250723" defer></script>
+  <script src="js/media.js?v=20250723" defer></script>
 
 </body>
 

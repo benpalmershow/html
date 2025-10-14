@@ -1,28 +1,68 @@
-t <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP');
+  </script>
   <meta charset="UTF-8">
+  <meta name="last-commit" content="2025-06-12 15:53:59 -0700">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Prevent Caching -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <title>News</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="css/body.css?v=20250926">
-  <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
+  <meta name="description" content="Breaking news and latest headlines - The Ben Palmer Show hosted by HowdyStranger.">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="@vercel/speed-insights/script.js"></script>
+  <link rel="preload" href="css/body.css" as="style">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
   <link rel="stylesheet" href="css/news.css?v=20250926">
+  <link rel="stylesheet" href="css/newspaper-titles.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
+  <style>
+    /* Page Title Styling */
+    .page-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      text-align: center;
+      margin: 0.5rem 0 1.5rem 0;
+      opacity: 0.6;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+  </style>
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#2C5F5A">
+  <title>News - Howdy, Stranger</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-  <nav class="nav-links" id="main-nav"></nav>
-  <h1 class="page-title">News</h1>
-
-  <div class="filter-buttons">
+<nav class="nav-links" id="main-nav"></nav>
+<main id="main-content" tabindex="-1">
+<div class="page-title" aria-label="Page title">News</div>
+<div class="container">
+    <div class="content">
+      <div class="filter-buttons">
     <button class="filter-btn active" data-category="all">All</button>
     <button class="filter-btn ipo" data-category="ipo">IPO</button>
     <button class="filter-btn earnings" data-category="earnings">Earnings</button>
@@ -2421,6 +2461,8 @@ t <!DOCTYPE html>
       </div>
     </div>
   </div>
+    </div>
+  </div>
   <script>
     // Category filter logic - removed duplicate event listeners
     // The filter functionality is now handled by the script at the end of the body
@@ -2485,8 +2527,8 @@ t <!DOCTYPE html>
       lucide.createIcons();
     });
   </script>
-  <script src="js/nav.js?v=20250926" defer></script>
-  <script src="/js/dark-mode.js?v=20250926" defer></script>
+  <script src="/js/nav.js?v=20250723" defer></script>
+  <script src="/js/dark-mode.js?v=20250723" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Remove any existing event listeners by cloning and replacing elements

@@ -78,6 +78,19 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+      /* Page Title Styling */
+      .page-title {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+        text-align: center;
+        margin: 0.5rem 0 1.5rem 0;
+        opacity: 0.6;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+      }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
@@ -133,6 +146,7 @@
     </nav>
 
     <main id="main-content" tabindex="-1" class="flex-grow pt-20">
+        <div class="page-title" aria-label="Page title">Portfolio</div>
         <div class="w-full max-w-full px-0 py-4">
             <div class="space-y-6 px-4">
                 <!-- Page Header -->

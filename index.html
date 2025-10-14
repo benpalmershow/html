@@ -58,8 +58,8 @@
 </head>
 
 <body>
-  <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
-  <main id="main-content" tabindex="-1">
+<nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
+<main id="main-content" tabindex="-1">
     <section class="hero" aria-label="Homepage hero">
       <picture>
         <!-- WebP with fallback to PNG -->
@@ -274,6 +274,20 @@
       color: var(--logo-orange);
       font-weight: 700;
       text-shadow: 0 0 8px rgba(212, 130, 42, 0.3);
+    }
+
+    /* Page Title Styling */
+    .page-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      text-align: center;
+      margin: 0.5rem 0 1.5rem 0;
+      opacity: 0.6;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
     }
 
     @media (prefers-color-scheme: dark) {

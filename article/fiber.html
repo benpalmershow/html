@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="/css/body.css">
     <link rel="stylesheet" href="/css/dark-mode.css">
     <style>
+      /* Page Title Styling */
+      .page-title {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+        text-align: center;
+        margin: 0.5rem 0 1.5rem 0;
+        opacity: 0.6;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+      }
         :root {
             --accent-rgb: 59, 130, 246; /* This should match your accent color in RGB format */
         }
@@ -121,6 +134,7 @@
 </head>
 <body>
     <nav class="nav-links" id="main-nav"></nav>
+    <div class="page-title" aria-label="Page title">Article</div>
     <div class="container">
         <div class="content">
             <header class="article-header">

@@ -113,23 +113,25 @@
                     '/json/financials-data.json',
                 ];
 
-                for (const path of paths) {
-                    try {
-                        const response = await fetch(path);
-                        if (!response.ok) continue;
-                        financialData = await response.json();
-                        initializeDashboard();
-                        return;
-                    } catch (error) {
-                        console.error(`Error loading from ${path}:`, error);
-                        continue;
-                    }
+                // Use Promise.any for better performance - returns first successful fetch
+                try {
+                    const fetchPromises = paths.map(async path => {
+                        const response = await fetch(path, { 
+                            headers: { 'Accept': 'application/json' },
+                            cache: 'no-cache' 
+                        });
+                        if (!response.ok) throw new Error(`Failed to fetch from ${path}`);
+                        return response.json();
+                    });
+                    
+                    financialData = await Promise.any(fetchPromises);
+                    initializeDashboard();
+                } catch (error) {
+                    // If all promises were rejected
+                    console.error('Could not load financial data from any path:', error);
+                    document.getElementById('categories').innerHTML =
+                        '<div class="error">Error loading financial data. Please try again later.</div>';
                 }
-
-                // If we get here, none of the paths worked
-                console.error('Could not load financial data from any path');
-                document.getElementById('categories').innerHTML =
-                    '<div class="error">Error loading financial data. Please try again later.</div>';
             }
 
             function formatDate(dateString) {

@@ -24,6 +24,41 @@ serve({
   port: 8000,
   development: process.env.NODE_ENV !== "production",
   fetch(req) {
+    // Basic Auth helpers
+    function isAuthorized(request) {
+      const auth = request.headers.get("Authorization") || "";
+      if (!auth.startsWith("Basic ")) return false;
+      try {
+        const token = auth.slice(6);
+        const decoded = Buffer.from(token, "base64").toString("utf8");
+        const [user, pass] = decoded.split(":");
+        const expectedUser = process.env.BASIC_AUTH_USER || "admin";
+        const expectedPass = process.env.BASIC_AUTH_PASS || "admin";
+        return user === expectedUser && pass === expectedPass;
+      } catch {
+        return false;
+      }
+    }
+
+    function unauthorizedResponse() {
+      return new Response("Unauthorized", {
+        status: 401,
+        headers: {
+          "Content-Type": "text/plain",
+          "WWW-Authenticate": "Basic realm=Private"
+        }
+      });
+    }
+
+    function unauthorizedResponseJson() {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "WWW-Authenticate": "Basic realm=Private"
+        }
+      });
+    }
     const url = new URL(req.url);
     let path = url.pathname;
     
@@ -57,6 +92,12 @@ serve({
       const headers = {
         "Content-Type": contentType
       };
+
+      // Protect private editor page with Basic Auth and discourage indexing
+      if (path === "post-creator.html") {
+        if (!isAuthorized(req)) return unauthorizedResponse();
+        headers["X-Robots-Tag"] = "noindex, nofollow";
+      }
       
       if (process.env.NODE_ENV === "production") {
         // Cache static assets for 1 week in production
@@ -71,11 +112,13 @@ serve({
       return new Response(file, { headers });
     } else if (path === "api/update-journal") {
       // Handle journal update API
+      if (!isAuthorized(req)) return unauthorizedResponseJson();
       if (req.method === "POST") {
         return handleJournalUpdate(req);
       }
     } else if (path === "api/update-post") {
       // Handle post update API
+      if (!isAuthorized(req)) return unauthorizedResponseJson();
       if (req.method === "POST") {
         return handlePostUpdate(req);
       }

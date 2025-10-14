@@ -44,6 +44,10 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 
 ## 4. Tone and Communication
 
+- When clear patterns are apparent, use graphs and charts. 
+- Tell a story where a trend exists. Don't be superflous so if something is not interesting, leave it out.
+- Be consise and don't add language just to fill a page. Be interesting, poignant. 
+- Use storyful approach with compelling narrative that hooks and keeps reader engaged. 
 - Use direct, factual language. Avoid AI disclaimers or formulaic phrasing (“Key Takeaways,” “In summary”).
 - Focus on **verifiable facts** and **document-based sourcing**, not on interpretation unless explicitly requested.
 - If inference is necessary, first show the raw data and then state:
@@ -72,6 +76,11 @@ Assistant:
 - Maintain reproducibility: another reader should be able to verify each figure by consulting the cited table.
 
 ---
+
+## 7> Style
+- No color. 
+- Use color infrequently. Don't use red, blue, yellow, green. Use infographics and other aestheitc embelishments only when they further the story.
+
 
 **Summary:**
 When in doubt, stop at the document boundary. Do not extrapolate or fill gaps silently. Transparency and reproducibility are non-negotiable.

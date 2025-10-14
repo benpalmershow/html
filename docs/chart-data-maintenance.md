@@ -14,9 +14,8 @@ When `financials-data.json` is updated with new monthly data, the following step
    - For each indicator with new data:
      - Locate the chart configuration object
      - Update the `labels` array to include the new month
-     - Update the `data` array with the new value
+     - Update the `data` array with any new values
      - Verify all historical values match exactly with the JSON file
-     - Ensure data arrays and label arrays have matching lengths
 
 3. **Example**
    ```javascript
@@ -46,7 +45,6 @@ When `financials-data.json` is updated with new monthly data, the following step
 
 ## Important Notes
 
-- Always maintain exact precision from JSON file (don't round numbers)
 - Keep consistent formatting (e.g., 'Mar', 'Apr', etc. for month labels)
 - Charts auto-update when opened, but configurations must be manually updated
 - The `RealTimeChartManager` class handles real-time updates but relies on correct chart configurations

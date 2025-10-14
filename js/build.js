@@ -9,9 +9,16 @@ await build({
     "./html/js/financials-chart.js"
   ],
   outdir: "./html/dist",
-  minify: true,
+  minify: {
+    whitespace: true,
+    identifiers: true,
+    syntax: true
+  },
   naming: "[dir]/[name].[hash].[ext]",
-  sourcemap: "external"
+  sourcemap: "external",
+  target: "browser",
+  splitting: true,
+  plugins: []
 });
 
 console.log("Build completed! Files output to ./html/dist");

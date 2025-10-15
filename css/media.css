@@ -307,6 +307,7 @@
     background: transparent;
     z-index: 2;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    order: 1;
 }
 
 .media-author {
@@ -321,6 +322,7 @@
     /* Slightly more opaque for better contrast */
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.02em;
+    order: 2;
 }
 
 .media-overlay-desc {
@@ -369,6 +371,7 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.02em;
     z-index: 5;
+    order: 6;
 }
 
 /* ==========================================================================
@@ -379,12 +382,15 @@
     position: relative;
     display: flex;
     gap: 0.5rem;
-    margin: 0.3rem 0 0.6rem;
-    padding: 0 0 0.5rem;
+    margin: 0.5rem 0 0.3rem;
+    padding: 0.5rem 0 0;
     z-index: var(--z-overlay);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     flex-wrap: wrap;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    order: 4;
 
     .rating-logo {
         display: inline-flex;
@@ -669,6 +675,8 @@
     align-items: center;
     margin: 0.5rem 0;
     padding: 0.5rem 0;
+    width: 100%;
+    order: 5;
 }
 
 .podcast-links::-webkit-scrollbar {
@@ -684,7 +692,7 @@
     text-decoration: none;
     width: 40px;
     height: 40px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: white;
@@ -727,7 +735,7 @@
     font-size: 1.5em;
     width: 40px;
     height: 40px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: white;
@@ -897,9 +905,12 @@
     .movie-actions-container,
     .rating-logos {
         gap: 4px;
-        margin: 4px 0 8px 0;
-        padding: 0 0 6px 0;
+        margin: 6px 0 4px 0;
+        padding: 6px 0 0 0;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        order: 4;
     }
 
     .rating-logo {
@@ -1007,8 +1018,11 @@
     .movie-actions-container,
     .rating-logos {
         gap: 3px;
-        margin: 3px 0 6px 0;
-        padding: 0 0 4px 0;
+        margin: 6px 0 3px 0;
+        padding: 4px 0 0 0;
+        justify-content: center;
+        align-items: center;
+        order: 4;
     }
 
     .rating-logo {
@@ -1083,9 +1097,11 @@
 
     .rating-logos {
         flex-shrink: 0;
-        order: 2;
-        margin: 2px 0 6px 0;
-        padding: 0 0 4px 0;
+        order: 4;
+        margin: 6px 0 2px 0;
+        padding: 4px 0 0 0;
+        justify-content: center;
+        align-items: center;
     }
 
     .media-description {
@@ -1206,6 +1222,150 @@ ecial Analysis Section */
     .analysis-icon {
         margin-bottom: 0.5rem;
     }
+}
+
+/* ==========================================================================
+   TRAILER BUTTON FIXES
+   ========================================================================== */
+
+/* Ensure all trailer/YouTube buttons are centered */
+.trailer-button,
+.youtube-button,
+.watch-trailer,
+.trailer-link,
+[class*="trailer"],
+[class*="youtube"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Fix any button containers that might be left-aligned */
+.button-container,
+.action-buttons,
+.media-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Force center alignment for any button text or icons */
+button,
+.btn,
+[role="button"],
+a[href*="youtube"],
+a[href*="trailer"] {
+    text-align: center !important;
+}
+
+button i,
+.btn i,
+[role="button"] i,
+a[href*="youtube"] i,
+a[href*="trailer"] i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+   TRAILER & WATCH BUTTONS
+   ========================================================================== */
+
+/* YouTube Trailer Button */
+.trailer-button,
+.watch-button,
+.play-button,
+[class*="trailer"],
+[class*="watch"],
+[class*="play"],
+button[onclick*="youtube"],
+a[href*="youtube"],
+.youtube-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    text-decoration: none !important;
+}
+
+/* Ensure YouTube icons are centered */
+.trailer-button i,
+.watch-button i,
+.play-button i,
+[class*="trailer"] i,
+[class*="watch"] i,
+[class*="play"] i,
+button[onclick*="youtube"] i,
+a[href*="youtube"] i,
+.youtube-button i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+}
+
+.trailer-button:hover,
+.watch-button:hover,
+.play-button:hover,
+[class*="trailer"]:hover,
+[class*="watch"]:hover,
+[class*="play"]:hover {
+    text-decoration: none !important;
+}
+
+/* ==========================================================================
+   HYPERLINK UNDERLINE REMOVAL
+   ========================================================================== */
+
+/* Remove underlines on all hyperlinks in media overlays */
+.media-overlay a,
+.media-overlay a:hover,
+.media-overlay a:focus,
+.media-overlay a:active,
+.media-overlay a:visited {
+    text-decoration: none !important;
+}
+
+/* Remove underlines on all media links */
+.song-link,
+.podcast-link,
+.media-link,
+.youtube-link,
+.spotify-link,
+.apple-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link {
+    text-decoration: none !important;
+}
+
+.song-link:hover,
+.podcast-link:hover,
+.media-link:hover,
+.youtube-link:hover,
+.spotify-link:hover,
+.apple-link:hover,
+.soundcloud-link:hover,
+.amazon-link:hover,
+.google-link:hover,
+.rss-link:hover,
+.x-link:hover {
+    text-decoration: none !important;
+}
+
+/* Remove underlines on rating logos */
+.rating-logo,
+.rating-logo:hover,
+.rating-logo:focus,
+.rating-logo:active {
+    text-decoration: none !important;
 }
 
 /* ==========================================================================

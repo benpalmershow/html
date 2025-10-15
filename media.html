@@ -66,29 +66,29 @@
 
 <body>
 
-<nav class="nav-links" id="main-nav"></nav>
-<div class="page-title" aria-label="Page title">Media</div>
-<main id="main-content" tabindex="-1">
-  <div class="media-filters">
+  <nav class="nav-links" id="main-nav"></nav>
+  <div class="page-title" aria-label="Page title">Media</div>
+  <main id="main-content" tabindex="-1">
+    <div class="media-filters">
 
-    <label>Filter by type:
-      <select id="filter-type" aria-label="Filter by media type">
-        <option value="all">All</option>
-        <!-- Options will be populated by JavaScript -->
-      </select>
-    </label>
+      <label>Filter by type:
+        <select id="filter-type" aria-label="Filter by media type">
+          <option value="all">All</option>
+          <!-- Options will be populated by JavaScript -->
+        </select>
+      </label>
 
-    <label>Sort by:
-      <select id="sort-by" aria-label="Sort media">
-        <option value="date-desc">Newest by Date Added</option>
-        <option value="title-asc">Title (A-Z)</option>
-      </select>
-    </label>
-  </div>
+      <label>Sort by:
+        <select id="sort-by" aria-label="Sort media">
+          <option value="date-desc">Newest by Date Added</option>
+          <option value="title-asc">Title (A-Z)</option>
+        </select>
+      </label>
+    </div>
 
-  <div class="media-cards" id="media-cards-container">
-    <!-- Media cards will be inserted here by JavaScript -->
-  </div>
+    <div class="media-cards" id="media-cards-container">
+      <!-- Media cards will be inserted here by JavaScript -->
+    </div>
   </main>
 
   <script src="/js/nav.js?v=20250723" defer></script>

@@ -12,15 +12,18 @@
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 4px var(--shadow-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  /* Removed bold orange left border for a cleaner, minimalist look */
   border-left: none;
-  /* Subtle left inset shadow to preserve gentle separation */
-  box-shadow: inset 6px 0 8px -6px var(--shadow-color), 0 2px 4px var(--shadow-color);
 }
 
 .post-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.post-item:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .post-item time {
@@ -61,9 +64,8 @@
 @media (prefers-color-scheme: dark) {
   .post-item {
     background: var(--bg-tertiary);
-    /* No colored left border in dark mode either; keep subtle inset shadow */
     border-left: none;
-    box-shadow: inset 6px 0 8px -6px var(--color-gray-200), 0 4px 12px var(--shadow-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
   }
   
   .post-item:hover {

@@ -1803,7 +1803,7 @@ function initializeChart(chartConfig) {
     if (chartConfig.type === 'chartjs' && chartConfig.data) {
         // Wait for DOM to be ready
         setTimeout(() => {
-            const canvasId = chartConfig.chartContent.match(/id="([^"]+)"/) ?. [1];
+            const canvasId = chartConfig.chartContent.match(/id="([^"]+)"/)?.[1];
             if (canvasId) {
                 const canvas = document.getElementById(canvasId);
                 if (canvas) {

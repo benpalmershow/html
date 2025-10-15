@@ -32,38 +32,38 @@
     }];
 
     function createNavbar() {
-        const nav = document.createElement('nav');
-        nav.className = 'floating-nav';
+    const nav = document.createElement('nav');
+    nav.className = 'floating-nav';
 
-        const path = window.location.pathname;
+    const path = window.location.pathname;
         const currentPage = path === '/' ? '/index.html' : path;
 
-        nav.innerHTML = navItems.map(item => {
+    nav.innerHTML = navItems.map(item => {
             // Better active page detection
-            const itemPath = item.href.replace('../', '/').replace('./', '/');
-            const normalizedCurrent = currentPage.endsWith('/') ? currentPage : currentPage + '/';
-            const normalizedItem = itemPath.endsWith('/') ? itemPath : itemPath + '/';
+        const itemPath = item.href.replace('../', '/').replace('./', '/');
+    const normalizedCurrent = currentPage.endsWith('/') ? currentPage : currentPage + '/';
+    const normalizedItem = itemPath.endsWith('/') ? itemPath : itemPath + '/';
 
-            const isActive = normalizedCurrent.includes(itemPath.split('/').pop().replace('.html', '')) ||
+    const isActive = normalizedCurrent.includes(itemPath.split('/').pop().replace('.html', '')) ||
                 itemPath === currentPage ||
-                (currentPage === '/' && itemPath.includes('index.html')) ||
-                (currentPage.includes('index.html') && itemPath.includes('index.html'));
+        (currentPage === '/' && itemPath.includes('index.html')) ||
+    (currentPage.includes('index.html') && itemPath.includes('index.html'));
 
-            let iconHtml = '';
+    let iconHtml = '';
             if (item.image) {
-                iconHtml = `<img src="${item.image}" alt="${item.text}" class="nav-icon">`;
-            } else if (item.icon) {
-                iconHtml = `<span class="nav-emoji">${item.icon}</span>`;
-            }
+        iconHtml = `<img src="${item.image}" alt="${item.text}" class="nav-icon">`;
+    } else if (item.icon) {
+    iconHtml = `<span class="nav-emoji">${item.icon}</span>`;
+    }
 
-            return `
+    return `
                 <a href="${item.href}" class="nav-link${isActive ? ' active' : ''}" title="${item.text}">
-                    ${iconHtml}
-                </a>
-            `;
-        }).join('');
+            ${iconHtml}
+    </a>
+    `;
+    }).join('');
 
-        return nav;
+    return nav;
     }
 
     function injectNavbar() {
@@ -141,9 +141,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 40px;
-                height: 40px;
-                border-radius: 20px;
+                width: 44px;
+                height: 44px;
+                border-radius: 22px;
                 transition: all 0.3s ease;
                 text-decoration: none;
                 color: #666;
@@ -202,17 +202,17 @@
                     padding: 0 15px;
                     gap: 4px;
                 }
-                
+
                 .floating-nav a.nav-link {
                     min-width: 45px;
                     height: 40px;
                     padding: 2px 6px;
                 }
-                
+
                 .floating-nav .nav-text {
                     font-size: 9px;
                 }
-                
+
                 :root {
                     --nav-icon-size: 18px;
                 }

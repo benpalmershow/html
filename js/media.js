@@ -98,10 +98,37 @@ document.addEventListener('DOMContentLoaded', function() {
             mediaContainer.innerHTML = '<p>No media items found.</p>';
             return;
         }
+
+        // Generate schemas for all media items
+        const mediaSchemas = [];
+
         items.forEach(item => {
             const card = createMediaCard(item);
             mediaContainer.appendChild(card);
+
+            // Generate MediaObject schema for this item
+            if (window.contentSchemaGenerator) {
+                const mediaSchema = window.contentSchemaGenerator.generateMediaItemSchema(item);
+                mediaSchemas.push(mediaSchema);
+            }
         });
+
+        // Inject MediaObject schemas for all items
+        if (window.contentSchemaGenerator && mediaSchemas.length > 0) {
+            const mediaContainerSchema = {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": "Media Collection",
+                "numberOfItems": mediaSchemas.length,
+                "itemListElement": mediaSchemas.map((schema, index) => ({
+                    "@type": "ListItem",
+                    "position": index + 1,
+                    "item": schema
+                }))
+            };
+
+            window.contentSchemaGenerator.injectSchema(mediaContainerSchema, 'media-collection');
+        }
     }
 
     function createMediaCard(item) {

@@ -508,21 +508,33 @@
   </style>
   <!-- SEO Enhancement Scripts -->
   <script type="module">
-    // Initialize SEO enhancements
-    import { initializeHomepageSEO } from './seo/meta-optimization/index.js';
-    import { initializePerformanceOptimizations } from './seo/performance/index.js';
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize homepage-specific SEO
-      initializeHomepageSEO();
-      
-      // Initialize performance optimizations
-      initializePerformanceOptimizations({
-        enableLazyLoading: true,
-        enableImageOptimization: true,
-        enableResourcePreloading: true
-      });
-    });
+  // Initialize SEO enhancements
+  import { initializeHomepageSEO } from './seo/meta-optimization/index.js';
+  import { initializePerformanceOptimizations } from './seo/performance/index.js';
+  import './seo/analytics/index.js'; // Initialize SEO analytics
+  import './seo/search-console/index.js'; // Initialize Search Console integration
+  import './seo/monitoring/index.js'; // Initialize SEO monitoring
+  import './seo/content-schema/index.js'; // Initialize content schema generator
+  import './seo/seo-config/index.js'; // Initialize unified SEO configuration
+
+  document.addEventListener('DOMContentLoaded', () => {
+  // Initialize homepage-specific SEO
+  initializeHomepageSEO();
+
+  // Initialize performance optimizations
+  initializePerformanceOptimizations({
+  enableLazyLoading: true,
+  enableImageOptimization: true,
+    enableResourcePreloading: true
+  });
+
+  // Apply unified SEO configuration
+  if (window.seoConfig) {
+  window.seoConfig.applyToPage();
+  }
+
+    // SEO Analytics, Search Console integration, monitoring, content schema, and configuration are initialized automatically via the modules
+  });
   </script>
   
   <script src="js/nav.js?v=20250926" defer></script>

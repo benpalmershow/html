@@ -840,10 +840,19 @@
         <script src="js/countdown.js?v=20250926" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
         <script>
-            // Initialize Lucide icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+        }
+        </script>
+
+        <!-- SEO Enhancement Scripts -->
+        <script type="module">
+          // Initialize SEO enhancements for financials page
+          import './seo/analytics/index.js'; // Initialize SEO analytics
+          import './seo/search-console/index.js'; // Initialize Search Console integration
+          import './seo/monitoring/index.js'; // Initialize SEO monitoring
+          import './seo/content-schema/index.js'; // Initialize content schema generator
         </script>
 </body>
 

@@ -25,7 +25,7 @@
         icon: "",
         image: "../images/read.png"
     }, {
-        text: "Journal",
+        text: "Tweets",
         href: "../journal.html",
         icon: "✍️",
         image: ""

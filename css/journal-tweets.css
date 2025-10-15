@@ -36,12 +36,13 @@
 .journal-entry {
   background: var(--tweet-bg);
   border: 1px solid var(--tweet-border);
-  border-radius: 8px;
+  border-radius: 16px;
   margin: 0 0 16px 0;
   padding: 0;
   box-shadow: 0 1px 3px var(--tweet-shadow);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .journal-entry:hover {
@@ -127,12 +128,29 @@
 
 /* Remove all card styling from journal entries */
 .journal-entry .card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
+  background: var(--tweet-bg) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+/* Override any inherited card styles specifically for journal */
+#journal-feed .card,
+#journal-feed .card:hover {
+  background: var(--tweet-bg) !important;
+  background-color: var(--tweet-bg) !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#journal-feed .journal-entry:hover .card {
+  background: var(--tweet-bg-hover) !important;
+  background-color: var(--tweet-bg-hover) !important;
 }
 
 /* Page title styling - minimal */
@@ -215,10 +233,42 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Remove any background gradients or heavy styling */
+/* Remove any background gradients or heavy styling - force transparent backgrounds */
 .journal-entry,
 .journal-entry .content,
+.journal-entry .card,
+.journal-entry .card-title,
 .entry {
-  background: transparent !important;
+  background: var(--tweet-bg) !important;
   background-image: none !important;
+  background-color: var(--tweet-bg) !important;
+}
+
+/* Ensure hover states work properly */
+.journal-entry:hover,
+.journal-entry:hover .content,
+.journal-entry:hover .card,
+.journal-entry:hover .card-title,
+.journal-entry:hover .entry {
+  background: var(--tweet-bg-hover) !important;
+  background-color: var(--tweet-bg-hover) !important;
+}
+
+/* Ensure dark mode is properly applied */
+[data-theme="dark"] .journal-entry,
+[data-theme="dark"] .journal-entry .content,
+[data-theme="dark"] .journal-entry .card,
+[data-theme="dark"] .journal-entry .card-title,
+[data-theme="dark"] .entry {
+  background: var(--tweet-bg) !important;
+  background-color: var(--tweet-bg) !important;
+}
+
+[data-theme="dark"] .journal-entry:hover,
+[data-theme="dark"] .journal-entry:hover .content,
+[data-theme="dark"] .journal-entry:hover .card,
+[data-theme="dark"] .journal-entry:hover .card-title,
+[data-theme="dark"] .journal-entry:hover .entry {
+  background: var(--tweet-bg-hover) !important;
+  background-color: var(--tweet-bg-hover) !important;
 }

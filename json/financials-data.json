@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-04T14:00:00Z",
+    "lastUpdated": "2025-10-14T14:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -635,22 +635,6 @@
         },
         {
             "category": "Trade & Tariffs",
-            "agency": "Freightos",
-            "name": "Shipping Container Rate (China-US 40ft)",
-            "url": "https://www.freightos.com/freight-resources/freightos-baltic-index/",
-            "releaseDay": 0,
-            "march": "$5,200",
-            "april": "$5,450",
-            "may": "$5,600",
-            "june": "$5,750",
-            "july": "$6,100",
-            "august": "$5,800",
-            "september": "$1,802",
-            "change": "",
-            "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs."
-        },
-        {
-            "category": "Trade & Tariffs",
             "agency": "Port of LA/Long Beach",
             "name": "20ft Equivalents (TEUs)",
             "url": "https://www.portoflosangeles.org/business/statistics/container-statistics",
@@ -699,6 +683,22 @@
             "polymarket_url": "https://polymarket.com/event/nfl-phi-nyg-2025-10-09",
             "PHI_win_odds": "78¢",
             "NYG_win_odds": "22¢"
+        },
+        {
+            "category": "Trade & Tariffs",
+            "agency": "Freightos",
+            "name": "Shipping Container Rate (China-US 40ft)",
+            "url": "https://www.freightos.com/freight-resources/freightos-baltic-index/",
+            "releaseDay": 0,
+            "march": "$5,200",
+            "april": "$5,450",
+            "may": "$5,600",
+            "june": "$5,750",
+            "july": "$6,100",
+            "august": "$5,800",
+            "september": "$1,802",
+            "change": "",
+            "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs."
         }
 
     ]

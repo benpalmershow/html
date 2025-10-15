@@ -184,7 +184,12 @@ function initializeChartInOverlay(chartConfig, canvas) {
             responsive: true,
             maintainAspectRatio: false,
             layout: {
-                padding: { top: 5, right: 5, bottom: 5, left: 5 }
+                padding: {
+                    top: 5,
+                    right: 5,
+                    bottom: 5,
+                    left: 5
+                }
             },
             animation: {
                 duration: 600,
@@ -206,11 +211,15 @@ function initializeChartInOverlay(chartConfig, canvas) {
                     borderColor: '#2C5F5A',
                     borderWidth: 1,
                     padding: 8,
-                    titleFont: { size: 11 },
-                    bodyFont: { size: 11 },
+                    titleFont: {
+                        size: 11
+                    },
+                    bodyFont: {
+                        size: 11
+                    },
                     boxPadding: 4,
                     callbacks: {
-                        label: function(context) {
+                        label: function (context) {
                             let label = context.dataset.label || '';
                             if (label) label += ': ';
                             if (context.parsed.y !== null) {
@@ -236,7 +245,9 @@ function initializeChartInOverlay(chartConfig, canvas) {
                         autoSkip: true,
                         maxTicksLimit: 4,
                         padding: 2,
-                        font: { size: 9 }
+                        font: {
+                            size: 9
+                        }
                     }
                 },
                 y: {
@@ -248,8 +259,10 @@ function initializeChartInOverlay(chartConfig, canvas) {
                     },
                     ticks: {
                         padding: 2,
-                        font: { size: 9 },
-                        callback: function(value) {
+                        font: {
+                            size: 9
+                        },
+                        callback: function (value) {
                             if (value >= 1000) {
                                 return (value / 1000).toFixed(1) + 'K';
                             }
@@ -279,11 +292,11 @@ class RealTimeChartManager {
         this.dataSources = new Map(); // Store data source configurations
         this.isRealTimeEnabled = true; // Global real-time toggle
         this.updateFrequency = 30000; // Default: 30 seconds
-        
+
         this.initializeDataSources();
         this.setupRealTimeControls();
     }
-    
+
     // Initialize data sources for different indicators
     initializeDataSources() {
         this.dataSources = new Map([
@@ -403,20 +416,20 @@ class RealTimeChartManager {
             }]
         ]);
     }
-    
+
     // Setup real-time controls in the modal
     setupRealTimeControls() {
         // Real-time controls removed - charts update automatically based on data source intervals
         // This method is kept for future extensibility but no longer adds UI controls
     }
-    
+
     // Start real-time updates for active charts
     startRealTimeUpdates() {
         this.activeCharts.forEach((chartInstance, indicatorName) => {
             this.startChartUpdates(indicatorName, chartInstance);
         });
     }
-    
+
     // Stop real-time updates
     stopRealTimeUpdates() {
         this.updateIntervals.forEach((interval) => {
@@ -424,7 +437,7 @@ class RealTimeChartManager {
         });
         this.updateIntervals.clear();
     }
-    
+
     // Restart real-time updates with new frequency
     restartRealTimeUpdates() {
         this.stopRealTimeUpdates();
@@ -432,36 +445,36 @@ class RealTimeChartManager {
             this.startRealTimeUpdates();
         }
     }
-    
+
     // Start updates for a specific chart
     startChartUpdates(indicatorName, chartInstance) {
         const dataSource = this.dataSources.get(indicatorName);
         if (!dataSource) return;
-        
+
         // Clear existing interval
         if (this.updateIntervals.has(indicatorName)) {
             clearInterval(this.updateIntervals.get(indicatorName));
         }
-        
+
         // Start new update interval
         const interval = setInterval(() => {
             this.updateChartData(indicatorName, chartInstance);
         }, dataSource.updateInterval || this.updateFrequency);
-        
+
         this.updateIntervals.set(indicatorName, interval);
-        
+
         // Initial update
         this.updateChartData(indicatorName, chartInstance);
     }
-    
+
     // Update chart data from real-time sources
     async updateChartData(indicatorName, chartInstance) {
         const dataSource = this.dataSources.get(indicatorName);
         if (!dataSource) return;
-        
+
         try {
             let newData = null;
-            
+
             switch (dataSource.type) {
                 case 'market':
                     newData = await this.fetchMarketData(indicatorName);
@@ -487,7 +500,7 @@ class RealTimeChartManager {
                 default:
                     newData = await this.fetchGenericData(dataSource.url);
             }
-            
+
             if (newData) {
                 this.updateChartWithNewData(indicatorName, chartInstance, newData);
                 this.updateLastUpdateTime(indicatorName);
@@ -497,12 +510,12 @@ class RealTimeChartManager {
             this.handleDataError(indicatorName, error);
         }
     }
-    
+
     // Handle data fetching errors gracefully
     handleDataError(indicatorName, error) {
         const modal = document.getElementById('chartModal');
         if (!modal) return;
-        
+
         let errorIndicator = modal.querySelector('.data-error-indicator');
         if (!errorIndicator) {
             errorIndicator = document.createElement('div');
@@ -512,11 +525,11 @@ class RealTimeChartManager {
                 <span>Data temporarily unavailable</span>
                 <button class="retry-btn">Retry</button>
             `;
-            
+
             const modalBody = modal.querySelector('.chart-modal-body');
             if (modalBody) {
                 modalBody.insertBefore(errorIndicator, modalBody.firstChild);
-                
+
                 // Add retry functionality
                 const retryBtn = errorIndicator.querySelector('.retry-btn');
                 retryBtn.addEventListener('click', () => {
@@ -525,15 +538,15 @@ class RealTimeChartManager {
                 });
             }
         }
-        
+
         errorIndicator.style.display = 'flex';
-        
+
         // Auto-hide after 10 seconds
         setTimeout(() => {
             errorIndicator.style.display = 'none';
         }, 10000);
     }
-    
+
     // Retry data fetch for a specific indicator
     async retryDataFetch(indicatorName) {
         const chartInstance = this.activeCharts.get(indicatorName);
@@ -541,7 +554,7 @@ class RealTimeChartManager {
             await this.updateChartData(indicatorName, chartInstance);
         }
     }
-    
+
     // Fetch real market data from Yahoo Finance API
     async fetchMarketData(indicatorName) {
         const symbols = {
@@ -551,37 +564,40 @@ class RealTimeChartManager {
             'Silver Futures': 'SI=F', // Silver Futures
             'Oil Futures': 'CL=F' // Crude Oil Futures
         };
-        
+
         const symbol = symbols[indicatorName];
         if (!symbol) return null;
-        
+
         try {
             // Use Yahoo Finance API (free, no key required)
             const response = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1m&range=1d`);
             const data = await response.json();
-            
+
             if (data.chart && data.chart.result && data.chart.result[0]) {
                 const result = data.chart.result[0];
                 const timestamps = result.timestamp;
                 const prices = result.indicators.quote[0].close;
-                
+
                 // Get last 6 data points for chart
                 const recentData = prices.slice(-6).filter(price => price !== null);
                 const recentTimestamps = timestamps.slice(-6).filter((_, i) => prices[prices.length - 6 + i] !== null);
-                
+
                 // Convert timestamps to readable labels
                 const labels = recentTimestamps.map(timestamp => {
                     const date = new Date(timestamp * 1000);
-                    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    return date.toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
                 });
-                
+
                 // Add current live price
                 const currentPrice = prices[prices.length - 1];
                 if (currentPrice !== null) {
                     labels.push('Live');
                     recentData.push(currentPrice);
                 }
-                
+
                 return {
                     labels: labels,
                     datasets: [{
@@ -599,33 +615,33 @@ class RealTimeChartManager {
             console.error(`Error fetching ${indicatorName} data:`, error);
             throw error;
         }
-        
+
         return null;
     }
-    
+
     // Fetch real BLS data using their public API
     async fetchBLSData(seriesId) {
         try {
             // BLS public API (free, no key required for limited usage)
             const response = await fetch(`https://api.bls.gov/publicAPI/v2/timeseries/data/${seriesId}?startyear=2024&endyear=2024`);
             const data = await response.json();
-            
+
             if (data.Results && data.Results.series && data.Results.series[0]) {
                 const series = data.Results.series[0].data;
                 const chartData = series.slice(0, 6).reverse(); // Get last 6 months
-                
+
                 const labels = chartData.map(item => {
                     const month = parseInt(item.period);
                     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                     return monthNames[month - 1];
                 });
-                
+
                 const values = chartData.map(item => parseFloat(item.value));
-                
+
                 // Add current month as "Live" if available
                 const currentMonth = new Date().getMonth();
                 const currentMonthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][currentMonth];
-                
+
                 if (!labels.includes(currentMonthName)) {
                     labels.push('Live');
                     // For demo, add a small variation to last known value
@@ -633,7 +649,7 @@ class RealTimeChartManager {
                     const variation = (Math.random() - 0.5) * 0.02; // ±1% variation
                     values.push(parseFloat((lastValue * (1 + variation)).toFixed(2)));
                 }
-                
+
                 return {
                     labels: labels,
                     datasets: [{
@@ -650,10 +666,10 @@ class RealTimeChartManager {
             console.error(`Error fetching BLS data for ${seriesId}:`, error);
             throw error;
         }
-        
+
         return null;
     }
-    
+
     // Fetch Federal Reserve data
     async fetchFedData(indicatorName) {
         try {
@@ -663,33 +679,37 @@ class RealTimeChartManager {
                 'Federal Funds Rate': 'FEDFUNDS',
                 'Unemployment Rate': 'UNRATE'
             };
-            
+
             const seriesId = seriesIds[indicatorName];
             if (!seriesId) return null;
-            
+
             // Use FRED API (free, no key required for limited usage)
             const response = await fetch(`https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=free&file_type=json&limit=6&sort_order=desc`);
             const data = await response.json();
-            
+
             if (data.observations && data.observations.length > 0) {
                 const observations = data.observations.slice(0, 6).reverse();
-                
+
                 const labels = observations.map(obs => {
                     const date = new Date(obs.date);
-                    return date.toLocaleDateString('en-US', { month: 'short' });
+                    return date.toLocaleDateString('en-US', {
+                        month: 'short'
+                    });
                 });
-                
+
                 const values = observations.map(obs => parseFloat(obs.value));
-                
+
                 // Add current month as "Live" if available
-                const currentMonth = new Date().toLocaleDateString('en-US', { month: 'short' });
+                const currentMonth = new Date().toLocaleDateString('en-US', {
+                    month: 'short'
+                });
                 if (!labels.includes(currentMonth)) {
                     labels.push('Live');
                     const lastValue = values[values.length - 1];
                     const variation = (Math.random() - 0.5) * 0.01; // ±0.5% variation
                     values.push(parseFloat((lastValue * (1 + variation)).toFixed(2)));
                 }
-                
+
                 return {
                     labels: labels,
                     datasets: [{
@@ -706,10 +726,10 @@ class RealTimeChartManager {
             console.error(`Error fetching Fed data for ${indicatorName}:`, error);
             throw error;
         }
-        
+
         return null;
     }
-    
+
     // Fetch Census Bureau data
     async fetchCensusData(indicatorName) {
         try {
@@ -718,24 +738,24 @@ class RealTimeChartManager {
                 'Housing Starts': 'https://api.census.gov/data/timeseries/construction/housing?get=cell_value,time_slot_id,time_slot_name&for=us:*&time=2024',
                 'New Home Sales': 'https://api.census.gov/data/timeseries/construction/sales?get=cell_value,time_slot_id,time_slot_name&for=us:*&time=2024'
             };
-            
+
             const endpoint = endpoints[indicatorName];
             if (!endpoint) return null;
-            
+
             const response = await fetch(endpoint);
             const data = await response.json();
-            
+
             if (data && data.length > 1) {
                 // Parse Census data (skip header row)
                 const observations = data.slice(1).slice(0, 6);
-                
+
                 const labels = observations.map(obs => {
                     const timeSlot = obs[2]; // time_slot_name
                     return timeSlot;
                 });
-                
+
                 const values = observations.map(obs => parseFloat(obs[0])); // cell_value
-                
+
                 // Add current period as "Live" if available
                 const currentPeriod = this.getCurrentCensusPeriod();
                 if (!labels.includes(currentPeriod)) {
@@ -744,7 +764,7 @@ class RealTimeChartManager {
                     const variation = (Math.random() - 0.5) * 0.05; // ±2.5% variation
                     values.push(parseFloat((lastValue * (1 + variation)).toFixed(3)));
                 }
-                
+
                 return {
                     labels: labels,
                     datasets: [{
@@ -761,24 +781,24 @@ class RealTimeChartManager {
             console.error(`Error fetching Census data for ${indicatorName}:`, error);
             throw error;
         }
-        
+
         return null;
     }
-    
+
     // Fetch Freightos shipping data
     async fetchFreightosData() {
         try {
             // Freightos doesn't have a public API, so we'll use web scraping simulation
             // In production, you would need to partner with Freightos or use their data feeds
-            
+
             // For now, we'll simulate with realistic variations based on market conditions
             const baseValues = [5.2, 5.45, 5.6, 5.75, 6.1, 5.8];
-            
+
             // Simulate realistic market variations based on supply/demand factors
             const marketFactors = this.getShippingMarketFactors();
             const variation = (marketFactors.demand - marketFactors.supply) * 0.1;
             const newValue = baseValues[baseValues.length - 1] * (1 + variation);
-            
+
             return {
                 labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Live'],
                 datasets: [{
@@ -795,33 +815,37 @@ class RealTimeChartManager {
             throw error;
         }
     }
-    
+
     // Fetch FRED data (Federal Reserve Economic Data)
     async fetchFREDData(seriesId) {
         try {
             // FRED API (free, no key required for limited usage)
             const response = await fetch(`https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=free&file_type=json&limit=6&sort_order=desc`);
             const data = await response.json();
-            
+
             if (data.observations && data.observations.length > 0) {
                 const observations = data.observations.slice(0, 6).reverse();
-                
+
                 const labels = observations.map(obs => {
                     const date = new Date(obs.date);
-                    return date.toLocaleDateString('en-US', { month: 'short' });
+                    return date.toLocaleDateString('en-US', {
+                        month: 'short'
+                    });
                 });
-                
+
                 const values = observations.map(obs => parseFloat(obs.value));
-                
+
                 // Add current period as "Live"
-                const currentPeriod = new Date().toLocaleDateString('en-US', { month: 'short' });
+                const currentPeriod = new Date().toLocaleDateString('en-US', {
+                    month: 'short'
+                });
                 if (!labels.includes(currentPeriod)) {
                     labels.push('Live');
                     const lastValue = values[values.length - 1];
                     const variation = (Math.random() - 0.5) * 0.02; // ±1% variation
                     values.push(parseFloat((lastValue * (1 + variation)).toFixed(2)));
                 }
-                
+
                 return {
                     labels: labels,
                     datasets: [{
@@ -838,39 +862,42 @@ class RealTimeChartManager {
             console.error(`Error fetching FRED data for ${seriesId}:`, error);
             throw error;
         }
-        
+
         return null;
     }
-    
+
     // Fetch Yahoo Finance data for additional market instruments
     async fetchYahooFinanceData(symbol) {
         try {
             // Use Yahoo Finance API (free, no key required)
             const response = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1m&range=1d`);
             const data = await response.json();
-            
+
             if (data.chart && data.chart.result && data.chart.result[0]) {
                 const result = data.chart.result[0];
                 const timestamps = result.timestamp;
                 const prices = result.indicators.quote[0].close;
-                
+
                 // Get last 6 data points for chart
                 const recentData = prices.slice(-6).filter(price => price !== null);
                 const recentTimestamps = timestamps.slice(-6).filter((_, i) => prices[prices.length - 6 + i] !== null);
-                
+
                 // Convert timestamps to readable labels
                 const labels = recentTimestamps.map(timestamp => {
                     const date = new Date(timestamp * 1000);
-                    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    return date.toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
                 });
-                
+
                 // Add current live price
                 const currentPrice = prices[prices.length - 1];
                 if (currentPrice !== null) {
                     labels.push('Live');
                     recentData.push(currentPrice);
                 }
-                
+
                 // Get symbol name for label
                 const symbolNames = {
                     'GC=F': 'Gold Futures',
@@ -879,9 +906,9 @@ class RealTimeChartManager {
                     'HG=F': 'Copper Futures',
                     'LBS=F': 'Lumber Futures'
                 };
-                
+
                 const symbolName = symbolNames[symbol] || symbol;
-                
+
                 return {
                     labels: labels,
                     datasets: [{
@@ -899,10 +926,10 @@ class RealTimeChartManager {
             console.error(`Error fetching Yahoo Finance data for ${symbol}:`, error);
             throw error;
         }
-        
+
         return null;
     }
-    
+
     // Helper methods for data processing
     getChartColor(indicatorName, alpha = 1) {
         const colors = {
@@ -912,14 +939,14 @@ class RealTimeChartManager {
             'Silver Futures': '#C0C0C0',
             'Oil Futures': '#000000'
         };
-        
+
         const color = colors[indicatorName] || '#2C5F5A';
         if (alpha < 1) {
             return color.replace('#', `rgba(${parseInt(color.slice(1,3), 16)}, ${parseInt(color.slice(3,5), 16)}, ${parseInt(color.slice(5,7), 16)}, ${alpha})`);
         }
         return color;
     }
-    
+
     getBLSLabel(seriesId) {
         const labels = {
             'CUUR0000SA0': 'CPI Index',
@@ -930,7 +957,7 @@ class RealTimeChartManager {
         };
         return labels[seriesId] || 'BLS Data';
     }
-    
+
     getFREDLabel(seriesId) {
         const labels = {
             'GDP': 'Gross Domestic Product',
@@ -941,33 +968,36 @@ class RealTimeChartManager {
         };
         return labels[seriesId] || 'FRED Data';
     }
-    
+
     getCurrentCensusPeriod() {
         const now = new Date();
         const month = now.getMonth();
         const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return monthNames[month];
     }
-    
+
     getShippingMarketFactors() {
         // Simulate realistic market factors for shipping
         const now = new Date();
         const hour = now.getHours();
-        
+
         // Simulate demand patterns (higher during business hours)
         const demand = hour >= 9 && hour <= 17 ? 0.8 : 0.3;
-        
+
         // Simulate supply patterns (more volatile)
         const supply = 0.5 + Math.sin(now.getTime() / 1000000) * 0.3;
-        
-        return { demand, supply };
+
+        return {
+            demand,
+            supply
+        };
     }
-    
+
     async fetchGenericData(url) {
         // Generic data fetching (placeholder for real implementation)
         return null;
     }
-    
+
     // Update chart with new real-time data
     async updateChartWithNewData(indicatorName, chartInstance, newData) {
         if (!chartInstance || !newData) return;
@@ -983,12 +1013,12 @@ class RealTimeChartManager {
             console.warn(`Failed to update chart for ${indicatorName}:`, error);
         }
     }
-    
+
     // Add real-time indicator to chart
     addRealTimeIndicator(indicatorName) {
         const modal = document.getElementById('chartModal');
         if (!modal) return;
-        
+
         let indicator = modal.querySelector('.real-time-indicator');
         if (!indicator) {
             indicator = document.createElement('div');
@@ -997,20 +1027,20 @@ class RealTimeChartManager {
                 <div class="real-time-pulse"></div>
                 <span>Live Data</span>
             `;
-            
+
             const modalBody = modal.querySelector('.chart-modal-body');
             if (modalBody) {
                 modalBody.insertBefore(indicator, modalBody.firstChild);
             }
         }
-        
+
         // Show indicator briefly
         indicator.style.display = 'flex';
         setTimeout(() => {
             indicator.style.display = 'none';
         }, 2000);
     }
-    
+
     // Update last update time display
     updateLastUpdateTime(indicatorName) {
         const lastUpdateElement = document.getElementById('lastUpdateTime');
@@ -1019,27 +1049,27 @@ class RealTimeChartManager {
             const timeString = now.toLocaleTimeString();
             lastUpdateElement.textContent = `Last: ${timeString}`;
             lastUpdateElement.style.color = '#2C5F5A';
-            
+
             // Fade out after 5 seconds
             setTimeout(() => {
                 lastUpdateElement.style.color = '#666';
             }, 5000);
         }
     }
-    
+
     // Register an active chart
     registerChart(indicatorName, chartInstance) {
         this.activeCharts.set(indicatorName, chartInstance);
-        
+
         if (this.isRealTimeEnabled) {
             this.startChartUpdates(indicatorName, chartInstance);
         }
     }
-    
+
     // Unregister a chart
     unregisterChart(indicatorName) {
         this.activeCharts.delete(indicatorName);
-        
+
         if (this.updateIntervals.has(indicatorName)) {
             clearInterval(this.updateIntervals.get(indicatorName));
             this.updateIntervals.delete(indicatorName);
@@ -1055,30 +1085,30 @@ async function showChartModal(indicatorName) {
     const modal = document.getElementById('chartModal');
     const modalHeader = modal.querySelector('.chart-modal-header h3');
     const modalBody = modal.querySelector('.chart-modal-body');
-    
+
     // Get chart configuration for this indicator
     const chartConfig = await getChartConfig(indicatorName);
-    
+
     if (chartConfig) {
         // Update modal header - remove title, keep only icon
         modalHeader.innerHTML = `
             <i data-lucide="${chartConfig.icon}" style="width: 24px; height: 24px; color: var(--accent-color, #2C5F5A);"></i>
         `;
-        
+
         // Update modal body - remove description, keep only chart content
         modalBody.innerHTML = chartConfig.chartContent;
-        
+
         // Show modal
         modal.style.display = 'block';
-        
+
         // Initialize chart based on type
         const chartInstance = initializeChart(chartConfig);
-        
+
         // Register chart for real-time updates
         if (chartInstance && chartConfig.type === 'chartjs') {
             realTimeManager.registerChart(indicatorName, chartInstance);
         }
-        
+
         // Process Infogram embeds if needed
         if (chartConfig.type === 'infogram' && window.InfogramEmbeds && window.InfogramEmbeds.process) {
             window.InfogramEmbeds.process();
@@ -1088,22 +1118,22 @@ async function showChartModal(indicatorName) {
         modalHeader.innerHTML = `
             <i data-lucide="bar-chart-3" style="width: 24px; height: 24px; color: var(--accent-color, #2C5F5A);"></i>
         `;
-        
+
         modalBody.innerHTML = `
             <div style="text-align: center; padding: 40px; color: var(--text-muted);">
                 <i data-lucide="bar-chart-3" style="width: 64px; height: 64px; margin-bottom: 20px; opacity: 0.3;"></i>
                 <p>Chart coming soon...</p>
             </div>
         `;
-        
+
         modal.style.display = 'block';
-        
+
         // Initialize Lucide icons for the fallback
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
     }
-    
+
     // Setup real-time controls if not already done
     realTimeManager.setupRealTimeControls();
 }
@@ -1135,7 +1165,7 @@ async function getChartConfig(indicatorName) {
     const createChartData = (indicatorData) => {
         if (!indicatorData) return null;
 
-        const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september'];
+        const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september', 'october'];
         const data = [];
         const labels = [];
 
@@ -1165,14 +1195,12 @@ async function getChartConfig(indicatorName) {
 
     const chartConfigs = {
         'Shipping Container Rate (China-US 40ft)': {
-            type: 'infogram',
+            type: 'chartjs',
             icon: 'trending-up',
-            title: 'Freightos Baltic Index (FBX) - Interactive Chart',
+            title: 'Freightos Baltic Index (FBX) - Container Shipping Rates',
             chartContent: `
-                <div class="infogram-embed" 
-                     data-id="_/iWaVJnijhUTxyFOJszmw" 
-                     data-type="interactive" 
-                     data-title="Embeddable FBX Chart (FBX01)"
+                <div>
+                    <canvas id="shippingChart"></canvas>
                 </div>
             `
         },
@@ -1607,13 +1635,13 @@ async function getChartConfig(indicatorName) {
             `
         }
     };
-    
+
     const config = chartConfigs[indicatorName];
 
     if (config && config.type === 'chartjs') {
         config.data = createChartData(indicatorData);
         if (config.data) {
-             // Customize colors for specific charts
+            // Customize colors for specific charts
             if (indicatorName === 'CPI') {
                 config.data.datasets[0].borderColor = '#1D3F3B';
                 config.data.datasets[0].backgroundColor = 'rgba(29, 63, 59, 0.15)';
@@ -1764,6 +1792,8 @@ async function getChartConfig(indicatorName) {
     }
 
 
+
+
     return config;
 }
 
@@ -1773,17 +1803,17 @@ function initializeChart(chartConfig) {
     if (chartConfig.type === 'chartjs' && chartConfig.data) {
         // Wait for DOM to be ready
         setTimeout(() => {
-            const canvasId = chartConfig.chartContent.match(/id="([^"]+)"/)?.[1];
+            const canvasId = chartConfig.chartContent.match(/id="([^"]+)"/) ?. [1];
             if (canvasId) {
                 const canvas = document.getElementById(canvasId);
                 if (canvas) {
                     const ctx = canvas.getContext('2d');
-                    
+
                     // Destroy existing chart if it exists
                     if (window[canvasId + 'Chart']) {
                         window[canvasId + 'Chart'].destroy();
                     }
-                    
+
                     // Create new chart
                     const chartInstance = new Chart(ctx, {
                         type: 'line',
@@ -1792,7 +1822,12 @@ function initializeChart(chartConfig) {
                             responsive: true,
                             maintainAspectRatio: false,
                             layout: {
-                                padding: { top: 5, right: 5, bottom: 5, left: 5 }
+                                padding: {
+                                    top: 5,
+                                    right: 5,
+                                    bottom: 5,
+                                    left: 5
+                                }
                             },
                             animation: {
                                 duration: 800,
@@ -1813,14 +1848,20 @@ function initializeChart(chartConfig) {
                                 },
                                 title: {
                                     display: true,
-                                    padding: { bottom: 5 }
+                                    padding: {
+                                        bottom: 5
+                                    }
                                 },
                                 tooltip: {
                                     mode: 'index',
                                     intersect: false,
                                     padding: 8,
-                                    titleFont: { size: 10 },
-                                    bodyFont: { size: 10 },
+                                    titleFont: {
+                                        size: 10
+                                    },
+                                    bodyFont: {
+                                        size: 10
+                                    },
                                     boxPadding: 4
                                 },
                                 datalabels: {
@@ -1835,7 +1876,7 @@ function initializeChart(chartConfig) {
                                     borderColor: '#2C5F5A',
                                     borderWidth: 1,
                                     callbacks: {
-                                        label: function(context) {
+                                        label: function (context) {
                                             let label = context.dataset.label || '';
                                             if (label) {
                                                 label += ': ';
@@ -1878,7 +1919,7 @@ function initializeChart(chartConfig) {
                                         font: {
                                             size: 9
                                         },
-                                        callback: function(value) {
+                                        callback: function (value) {
                                             return value.toLocaleString();
                                         }
                                     },
@@ -1892,7 +1933,7 @@ function initializeChart(chartConfig) {
                             }
                         }
                     });
-                    
+
                     window[canvasId + 'Chart'] = chartInstance;
                     return chartInstance;
                 }
@@ -1906,34 +1947,34 @@ function initializeChart(chartConfig) {
 function setupModalHandlers() {
     const modal = document.getElementById('chartModal');
     const closeBtn = document.getElementById('closeChartModal');
-    
+
     // Close button click
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
         modal.style.display = 'none';
-        
+
         // Unregister charts when modal is closed
         realTimeManager.activeCharts.forEach((chartInstance, indicatorName) => {
             realTimeManager.unregisterChart(indicatorName);
         });
     });
-    
+
     // Click outside modal to close
-    modal.addEventListener('click', function(e) {
+    modal.addEventListener('click', function (e) {
         if (e.target === modal) {
             modal.style.display = 'none';
-            
+
             // Unregister charts when modal is closed
             realTimeManager.activeCharts.forEach((chartInstance, indicatorName) => {
                 realTimeManager.unregisterChart(indicatorName);
             });
         }
     });
-    
+
     // ESC key to close
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             modal.style.display = 'none';
-            
+
             // Unregister charts when modal is closed
             realTimeManager.activeCharts.forEach((chartInstance, indicatorName) => {
                 realTimeManager.unregisterChart(indicatorName);

@@ -12,7 +12,12 @@ class SEOConfig {
       logo: '/images/logo.png',
       author: 'Ben Palmer',
       social: {
-        twitter: '@docriter'
+        twitter: '@DocRiter',
+        youtube: 'https://www.youtube.com/@BenPalmerShow',
+        substack: 'https://benpalmershow.substack.com',
+        spotify: 'https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ',
+        applePodcasts: 'https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4',
+        buyMeACoffee: 'https://www.buymeacoffee.com/howdystranger'
       }
     };
 

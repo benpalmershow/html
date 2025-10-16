@@ -45,6 +45,90 @@
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.5rem;
     }
+
+    /* Improved Layout Enhancements */
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Better spacing between cards */
+    .card-header {
+      margin-bottom: 0.75rem !important;
+    }
+
+    /* Enhanced Supreme Court grid with better spacing */
+    .court-cases-grid {
+      gap: 1.5rem !important;
+      margin: 2rem 0 !important;
+    }
+
+    .case-card {
+      padding: 1.25rem !important;
+      border-radius: 10px !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* Section separators */
+    .section + .section {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* Improved filter buttons layout */
+    .filter-buttons {
+      margin: 1.5rem 0 2rem !important;
+      padding: 0.75rem 0.5rem !important;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      justify-content: center;
+    }
+
+    /* Add subtle fade-in animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-header, .case-card {
+      animation: fadeInUp 0.6s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .card-header:nth-child(1) { animation-delay: 0.1s; }
+    .card-header:nth-child(2) { animation-delay: 0.2s; }
+    .card-header:nth-child(3) { animation-delay: 0.3s; }
+    .case-card:nth-child(1) { animation-delay: 0.4s; }
+    .case-card:nth-child(2) { animation-delay: 0.5s; }
+    /* Add more delays as needed */
+
+    /* Better mobile spacing */
+    @media (max-width: 768px) {
+      .content {
+        gap: 1.5rem;
+      }
+
+      .court-cases-grid {
+        gap: 1rem !important;
+      }
+
+      .filter-buttons {
+        margin: 1rem 0 1.5rem !important;
+      }
+    }
   </style>
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -574,8 +658,6 @@
           <div class="case-card-actions"></div>
           <span class="case-card-number">24-724</span>
           <span class="podcast-link" style="color: var(--text-muted);">Coming Soon</span>
-          </additional_metadata>
-          USDA Organic Foods Production Act provides the exclusive remedy for disputes over organic labeling compliance.
         </div>
 
 
@@ -1503,12 +1585,6 @@
     }
 
 
-
-    /* Healthcare badge styling - unique color */
-    .category-badge.healthcare {
-      background: #10b981;
-      color: #fff;
-    }
 
     /* Stock information styling for better dark mode readability */
     .stock-info {

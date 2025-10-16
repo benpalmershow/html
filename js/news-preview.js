@@ -3,21 +3,34 @@
  * Handles preview text truncation and Read More/Read Less functionality
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+// Dummy function to prevent errors from old onclick handlers
+function toggleCard() {
+    // Cards are now converted to new format, this function is obsolete
+}
+
+// Initialize immediately if DOM is ready, otherwise wait for DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        initializePreviewCards();
+    });
+} else {
     initializePreviewCards();
-});
+}
 
 function initializePreviewCards() {
     // Convert existing cards to preview format
     const existingCards = document.querySelectorAll('.card-header[onclick*="toggleCard"]');
-    
+
     existingCards.forEach(convertToPreviewCard);
-    
+
     // Initialize Read More buttons
     const readMoreBtns = document.querySelectorAll('.read-more-btn');
     readMoreBtns.forEach(btn => {
         btn.addEventListener('click', handleReadMoreClick);
     });
+
+// Initialize filter functionality after conversion
+updateFilterFunctionality();
 }
 
 function convertToPreviewCard(cardHeader) {
@@ -184,5 +197,4 @@ function updateFilterFunctionality() {
     });
 }
 
-// Initialize filter functionality after cards are converted
-setTimeout(updateFilterFunctionality, 100);
+// Filter functionality is now initialized in initializePreviewCards after conversion

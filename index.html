@@ -63,6 +63,7 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Preload critical resources -->
   <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="images/logo.png" as="image" type="image/png" fetchpriority="high">
@@ -234,7 +235,20 @@
       </div>
     </section>
   </main>
-  <style>
+
+   <!-- Announcements Sidebar -->
+   <div id="announcements-sidebar">
+     <div class="sidebar-header">
+       <img src="images/announcements.png" alt="Announcements" class="sidebar-logo">
+       <h3 class="sidebar-title">Announcements</h3>
+     </div>
+     <div id="sidebar-posts" class="sidebar-posts"></div>
+   </div>
+   <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle announcements sidebar">
+     <img src="images/announcements.png" alt="Announcements" class="toggle-logo">
+   </button>
+
+   <style>
     @keyframes pulse {
       0% {
         transform: scale(0.99);
@@ -505,6 +519,132 @@
         color: var(--text-muted);
       }
     }
+
+    /* Announcements Sidebar */
+    #announcements-sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--bg-primary);
+      border-left: 1px solid var(--border-color);
+      overflow-y: auto;
+      z-index: 1000;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    #announcements-sidebar.collapsed {
+      transform: translateX(100%);
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+      gap: 10px;
+    }
+
+    .sidebar-logo {
+      width: 50px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .sidebar-title {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .sidebar-posts {
+      padding: 0 10px 20px;
+    }
+
+    .sidebar-posts .post-item {
+      font-size: 0.75rem;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .sidebar-posts .post-item time {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .sidebar-posts .post-item .content {
+      font-size: 0.75rem;
+    }
+
+    .sidebar-posts .post-item a {
+      color: var(--logo-orange);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    .sidebar-posts .post-item a:hover {
+      text-decoration: underline;
+    }
+
+    .sidebar-toggle {
+      position: fixed;
+      right: 290px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1001;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 5px 8px;
+      cursor: pointer;
+      transition: right 0.3s ease;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .toggle-logo {
+      width: 40px;
+      height: auto;
+      display: block;
+    }
+
+    .toggle-text {
+      font-size: 0.7rem;
+      color: var(--text-primary);
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    #announcements-sidebar.collapsed + .sidebar-toggle {
+      right: 10px;
+    }
+
+    /* Hover arrow hint for toggle */
+    .sidebar-toggle:hover::after {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%) translateX(15px);
+      border: 5px solid transparent;
+      border-left-color: var(--logo-teal);
+      z-index: 1002;
+    }
+
+    @media (max-width: 768px) {
+      #announcements-sidebar,
+      .sidebar-toggle {
+        display: none;
+      }
+    }
   </style>
   <!-- SEO Enhancement Scripts -->
   <script type="module">
@@ -558,7 +698,50 @@
         setTimeout(showHints, 6000); // Show after logo animation completes
       }
     });
-  </script>
-</body>
+    </script>
 
-</html>
+   <!-- Sidebar Posts Loader -->
+   <script>
+   document.addEventListener('DOMContentLoaded', () => {
+   const sidebarPosts = document.getElementById('sidebar-posts');
+   if (!sidebarPosts) return;
+
+   const v = Date.now();
+
+   fetch(`/json/posts.json?v=${v}`)
+   .then(r => {
+   if (!r.ok) throw new Error('Failed to load posts');
+   return r.json();
+   })
+   .then(posts => {
+   const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
+
+   sidebarPosts.innerHTML = valid.map(p => `
+   <div class="post-item">
+   <time>${p.date}</time>
+   <div class="content">${p.content}</div>
+   </div>
+   `).join('');
+
+   if (window.lucide) window.lucide.createIcons();
+   })
+   .catch(err => {
+   console.error('Error loading sidebar posts:', err);
+   sidebarPosts.innerHTML = '<div class="error-state">Error loading posts.</div>';
+   });
+
+       // Sidebar toggle functionality
+       const toggle = document.getElementById('sidebar-toggle');
+       const sidebar = document.getElementById('announcements-sidebar');
+
+       // Load collapsed by default
+       sidebar.classList.add('collapsed');
+
+       toggle.addEventListener('click', () => {
+         sidebar.classList.toggle('collapsed');
+       });
+     });
+   </script>
+ </body>
+
+ </html>

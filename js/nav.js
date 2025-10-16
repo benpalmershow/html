@@ -166,19 +166,17 @@
 
 
 
-            .floating-nav .nav-icon,
-            .floating-nav .nav-emoji {
-                font-size: var(--nav-icon-size);
-                width: var(--nav-icon-size);
-                height: var(--nav-icon-size);
-                object-fit: cover;
-            }
-            
             .floating-nav .nav-icon {
+                width: 30px;
+                height: 30px;
+                object-fit: cover;
                 border-radius: 3px;
             }
 
             .floating-nav .nav-emoji {
+                font-size: var(--nav-icon-size);
+                width: var(--nav-icon-size);
+                height: var(--nav-icon-size);
                 line-height: 1;
             }
 

@@ -69,6 +69,8 @@ blockquote.guidance-box {
   color: white;
   font-weight: 600;
   transform: translateY(-1px);
+  background: var(--logo-teal);
+  box-shadow: 0 2px 8px rgba(44, 95, 90, 0.3);
 }
 
 /* Category-specific active backgrounds matching badge colors */

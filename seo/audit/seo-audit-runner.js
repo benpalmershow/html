@@ -73,36 +73,46 @@ class SEOAuditRunner {
         technical.metrics.httpStatus = '200'; // Assume OK for client-side audit
 
         // Check title tag
-        const title = document.title;
-        if (!title) {
+        try {
+            const title = document.title || '';
+            if (!title.trim()) {
+                technical.score -= 25;
+                technical.issues.push('Missing title tag');
+            } else if (title.length < 30) {
+                technical.score -= 10;
+                technical.warnings.push(`Title tag too short (${title.length} < 30 characters)`);
+            } else if (title.length > 60) {
+                technical.score -= 5;
+                technical.warnings.push(`Title tag too long (${title.length} > 60 characters)`);
+            } else {
+                technical.passed.push(`Title tag length optimal (${title.length} characters)`);
+            }
+        } catch (e) {
             technical.score -= 25;
-            technical.issues.push('Missing title tag');
-        } else if (title.length < 30) {
-            technical.score -= 10;
-            technical.warnings.push('Title tag too short (< 30 characters)');
-        } else if (title.length > 60) {
-            technical.score -= 5;
-            technical.warnings.push('Title tag too long (> 60 characters)');
-        } else {
-            technical.passed.push('Title tag length optimal');
+            technical.issues.push('Error checking title tag');
         }
 
         // Check meta description
+        try {
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (!metaDesc) {
+            if (!metaDesc) {
             technical.score -= 20;
-            technical.issues.push('Missing meta description');
-        } else {
-            const desc = metaDesc.getAttribute('content') || '';
-            if (desc.length < 120) {
-                technical.score -= 10;
-                technical.warnings.push('Meta description too short (< 120 characters)');
-            } else if (desc.length > 160) {
-                technical.score -= 5;
-                technical.warnings.push('Meta description too long (> 160 characters)');
+        technical.issues.push('Missing meta description');
             } else {
-                technical.passed.push('Meta description length optimal');
-            }
+            const desc = metaDesc.getAttribute('content') || '';
+                if (desc.length < 120) {
+                technical.score -= 10;
+            technical.warnings.push(`Meta description too short (${desc.length} < 120 characters)`);
+                } else if (desc.length > 160) {
+                technical.score -= 5;
+            technical.warnings.push(`Meta description too long (${desc.length} > 160 characters)`);
+                } else {
+            technical.passed.push(`Meta description length optimal (${desc.length} characters)`);
+        }
+        }
+        } catch (e) {
+        technical.score -= 20;
+        technical.issues.push('Error checking meta description');
         }
 
         // Check canonical URL
@@ -327,15 +337,22 @@ class SEOAuditRunner {
             mobile.passed.push('All touch targets meet minimum size');
         }
 
-        // Check font sizes
-        const textElements = document.querySelectorAll('*');
+        // Check font sizes (optimized: sample instead of all elements)
+        const textElements = document.querySelectorAll('p, span, div, h1, h2, h3, h4, h5, h6, li, td, th');
         let smallText = 0;
-        textElements.forEach(el => {
-            const fontSize = parseFloat(window.getComputedStyle(el).fontSize);
-            if (fontSize > 0 && fontSize < 14 && el.textContent.trim()) {
-                smallText++;
+        const sampleSize = Math.min(textElements.length, 100); // Limit to prevent performance issues
+        for (let i = 0; i < sampleSize; i++) {
+            const el = textElements[i];
+            try {
+                const fontSize = parseFloat(window.getComputedStyle(el).fontSize);
+                if (fontSize > 0 && fontSize < 14 && el.textContent.trim()) {
+                    smallText++;
+                }
+            } catch (e) {
+                // Skip elements that cause errors (e.g., detached elements)
+                continue;
             }
-        });
+        }
         if (smallText > 10) {
             mobile.score -= 10;
             mobile.warnings.push('Some text may be too small for mobile');

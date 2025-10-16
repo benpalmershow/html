@@ -610,6 +610,10 @@
       align-items: center;
     }
 
+    #announcements-sidebar.collapsed + .sidebar-toggle {
+      right: 10px;
+    }
+
     .toggle-logo {
       width: 40px;
       height: auto;
@@ -641,10 +645,10 @@
 
     @media (max-width: 768px) {
       #announcements-sidebar {
-        display: none;
+        width: 250px;
       }
-      .sidebar-toggle {
-        right: 10px;
+      #announcements-sidebar:not(.collapsed) + .sidebar-toggle {
+        right: 260px;
       }
     }
   </style>

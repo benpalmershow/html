@@ -44,6 +44,15 @@
       opacity: 0.6;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .page-icon {
+      width: 20px;
+      height: 20px;
     }
 
     /* Improved Layout Enhancements */
@@ -143,7 +152,7 @@
 <body>
 <nav class="nav-links" id="main-nav"></nav>
 <main id="main-content" tabindex="-1">
-<div class="page-title" aria-label="Page title">News</div>
+<div class="page-title" aria-label="Page title"><i data-lucide="newspaper" class="page-icon"></i>News</div>
 <div class="container">
     <div class="content">
       <div class="filter-buttons">

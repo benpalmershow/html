@@ -23,12 +23,12 @@
         text: "Media",
         href: "../media.html",
         icon: "",
-        image: "../images/read.png"
+        image: "../images/media.png"
     }, {
         text: "Tweets",
         href: "../journal.html",
-        icon: "✍️",
-        image: ""
+        icon: "",
+        image: "../images/read.png"
     }];
 
     function createNavbar() {

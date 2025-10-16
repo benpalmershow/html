@@ -24,6 +24,14 @@
             opacity: 0.6;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .page-icon {
+            width: 20px;
+            height: 20px;
         }
     </style>
     <!-- Favicon and App Icons -->
@@ -73,7 +81,7 @@
 <body>
 
     <nav class="nav-links" id="main-nav"></nav>
-    <div class="page-title" aria-label="Page title">Numbers</div>
+    <div class="page-title" aria-label="Page title"><i data-lucide="bar-chart-3" class="page-icon"></i>Numbers</div>
     <div class="container">
         <div class="collapsible-container">
 

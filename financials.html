@@ -41,11 +41,11 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#2C5F5A">
 
-    <link rel="preload" href="css/body.css?v=20250926" as="style">
-    <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
-    <link rel="stylesheet" href="css/body.css?v=20250926">
-    <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
-    <link rel="stylesheet" href="css/financials.css?v=20_250926">
+    <link rel="preload" href="css/body.css?v=20250927" as="style">
+    <link rel="stylesheet" href="css/dark-mode.css?v=20250927">
+    <link rel="stylesheet" href="css/body.css?v=20250927">
+    <link rel="stylesheet" href="css/dark-mode.css?v=20250927">
+    <link rel="stylesheet" href="css/financials.css?v=20_250927">
     <link rel="stylesheet" href="css/chart-modal.css?v=20250107">
 
     <script defer src="/_vercel/insights/script.js"></script>
@@ -87,7 +87,7 @@
 
             <div class="collapsible-content" id="interactive-dashboard-content">
                 <div class="filters" id="filters">
-                    <button class="filter-btn active" data-category="all">All Categories</button>
+                    <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span></button>
                 </div>
 
                 <div id="lastUpdated" class="last-updated"></div>
@@ -526,14 +526,14 @@
 
             // Category icons mapping with Lucide icons
             const categoryIcons = {
-                'Employment Indicators': '<i data-lucide="users"></i>',
-                'Housing Market': '<i data-lucide="home"></i>',
-                'Business Indicators': '<i data-lucide="briefcase"></i>',
-                'Consumer Indicators': '<i data-lucide="shopping-cart"></i>',
-                'Trade & Tariffs': '<i data-lucide="ship"></i>',
-                'Government': '<i data-lucide="landmark"></i>',
-                'Commodities': '<i data-lucide="package"></i>',
-                'Prediction Markets': '<i data-lucide="trending-up"></i>'
+                'Employment Indicators': '<i data-lucide="users" class="filter-icon"></i>',
+                'Housing Market': '<i data-lucide="home" class="filter-icon"></i>',
+                'Business Indicators': '<i data-lucide="briefcase" class="filter-icon"></i>',
+                'Consumer Indicators': '<i data-lucide="shopping-cart" class="filter-icon"></i>',
+                'Trade & Tariffs': '<i data-lucide="ship" class="filter-icon"></i>',
+                'Government': '<i data-lucide="landmark" class="filter-icon"></i>',
+                'Commodities': '<i data-lucide="package" class="filter-icon"></i>',
+                'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>'
             };
 
             function setupInfoIconHandlers() {
@@ -690,16 +690,16 @@
                 // Clear existing filter buttons
                 filtersContainer.innerHTML = '';
 
-                // Create the 'All Categories' button with icon and text
+                // Create the 'All' button with icon and text
                 const allButton = document.createElement('button');
                 allButton.className = 'filter-btn active';
                 allButton.dataset.category = 'all';
-                allButton.setAttribute('aria-label', 'All Categories');
+                allButton.setAttribute('aria-label', 'All');
                 allButton.innerHTML = `
-                    <span class="filter-icon"><i data-lucide="list"></i></span>
-                    <span class="filter-text">All Categories</span>
+                    <i data-lucide="list" class="filter-icon"></i>
+                    <span class="filter-text">All</span>
                 `;
-                allButton.setAttribute('data-tooltip', 'All Categories');
+                allButton.setAttribute('data-tooltip', 'All');
                 filtersContainer.appendChild(allButton);
 
                 // Create category filter buttons with icon and text (text shown on hover)

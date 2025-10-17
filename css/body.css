@@ -65,7 +65,7 @@
        ======================================== */
     
     /* Text Colors */
-    --text-primary: var(--color-primary, #2c5f5a); /* Primary text - uses brand teal */
+    --text-primary: var(--color-black, #000000); /* Primary text - black in light mode */
     --text-secondary: var(--color-gray-700, #343a40); /* Secondary text - dark gray */
     --text-muted: var(--color-gray-500, #6c757d); /* Muted text - medium gray */
     

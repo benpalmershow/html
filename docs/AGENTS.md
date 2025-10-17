@@ -57,6 +57,9 @@
 - Media queries for responsive design
 - CSS animations and transitions
 - Dark mode support with CSS variables
+- Always ensure new features work in both light and dark modes
+- Avoid color contrast issues: prevent light text on light backgrounds and dark text on dark backgrounds by using theme-aware CSS variables
+- Text colors should be black in light mode and white in dark mode
 
 **Naming Conventions:**
 - kebab-case for file names (e.g., `dark-mode.js`, `financials-chart.js`)

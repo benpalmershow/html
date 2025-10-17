@@ -45,12 +45,12 @@
        CATEGORY-SPECIFIC COLORS
        Colors for news categories and content types
        ======================================== */
-    --color-category-ipo: #6c757d; /* All categories - medium gray */
-    --color-category-earnings: #6c757d; /* All categories - medium gray */
-    --color-category-policy: #6c757d; /* All categories - medium gray */
-    --color-category-healthcare: #6c757d; /* All categories - medium gray */
-    --color-category-legal: #6c757d; /* All categories - medium gray */
-    --color-category-corrections: #6c757d; /* All categories - medium gray */
+    --color-category-ipo: #1e88e5; /* IPO - blue */
+    --color-category-earnings: #43a047; /* Earnings - green */
+    --color-category-policy: #fb8c00; /* Policy - orange */
+    --color-category-healthcare: #10b981; /* Healthcare - emerald */
+    --color-category-legal: #2c5f5a; /* Legal - teal */
+    --color-category-corrections: #e53935; /* Corrections - red */
     
     /* ========================================
        PLATFORM-SPECIFIC COLORS

@@ -212,3 +212,17 @@
     perspective: 1000px !important;
     pointer-events: none !important;
 }
+
+/* Mobile responsiveness for filters */
+@media (max-width: 768px) {
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -3,12 +3,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    padding: 0.5rem;
+    padding: 0.6rem;
     border: none;
     border-radius: 1.5rem;
     background: var(--bg-secondary);
     color: var(--text-primary);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -33,7 +33,7 @@
 }
 
 .filter-btn.active {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     color: white;
     font-weight: 600;
     transform: translateY(-1px);
@@ -224,5 +224,15 @@
 
   .filters::-webkit-scrollbar {
     display: none;
+  }
+
+  .filter-btn {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .filter-btn.active {
+    padding: 0.5rem 1rem;
   }
 }

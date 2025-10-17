@@ -44,6 +44,9 @@ blockquote.guidance-box {
   margin: 1rem 0 1.5rem;
   padding: 0 0.5rem;
   justify-content: center;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
 }
 
 .filter-btn {

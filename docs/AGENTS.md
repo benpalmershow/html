@@ -75,3 +75,10 @@
 - Relative imports within the project
 - CDN imports for external libraries (Chart.js, Font Awesome)
 - Module imports for internal SEO system components
+
+## Content Update Guidelines
+
+**Posts in posts.json:**
+- When creating new posts, include the latest updates from financials-data.json or other relevant data sources (e.g., prediction markets, news).
+- Use the most recently updated monthly numbers.
+- Use current month data available in JSON files; avoid missing recent monthly updates that have been saved.

@@ -1,6 +1,6 @@
-# Data Fetching and Citation Standards for Howdy Stranger Crime Reports
+# Data Fetching and Citation Standards for Journalistic Integrity in News Stories
 
-This markdown file outlines the editorial and technical standards for sourcing, verifying, and publishing quantitative content drawn from government crime data (e.g., the **Bureau of Justice Statistics' Criminal Victimization** series).
+This markdown file outlines the editorial and technical standards for sourcing, verifying, and publishing quantitative content in news stories, emphasizing journalistic integrity across all topics.
 
 ---
 
@@ -9,27 +9,29 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 - **Use only verifiable data.** All numbers, rates, and trends must come directly from published PDFs or official data tables — not summaries, dashboards, or media articles.
 - **No placeholders.** If specific values are unavailable, state this clearly rather than estimating.
 - **Transparency first.** If a URL, dataset, or API endpoint is inaccessible, disclose that to the user before inferring or approximating values.
-- **Version control.** Always cite the publication year, NCJ number, and release date of the report used (e.g., *Criminal Victimization, 2024 – NCJ 310547*).
+- **Version control.** Always cite the publication year, identifier (e.g., report number), and release date of the source used (e.g., *Economic Indicators, 2024 – Report ID 12345*).
+- **Define your source for financial data:** corporate sources, Nasdaq, Pitchbook, etc.
+- **n/a required rather than a speculation when data is not available.**
 
 ---
 
 ## 2. Procedure for Fetching Correct Data
 
 1. **Locate the Source Document:**
-   - Use official URLs (e.g., `https://bjs.ojp.gov/document/cv24.pdf`) and verify that the PDF is accessible.
-   - If it cannot be accessed, prompt the user to upload the document directly.
+- Use official URLs (e.g., government or reputable organization websites) and verify that the document or data is accessible.
+- If it cannot be accessed, prompt the user to provide or upload the source directly.
 
 2. **Search Within the Document:**
-   - Use exact queries like `violent victimization per 1,000` or `percent reported to police` to identify relevant tables.
-   - Confirm table titles match the description (e.g., *Table 5: Percent and rate of violent victimizations reported to police*).
+- Use exact queries like specific terms related to the data (e.g., `unemployment rate` or `inflation percentage`) to identify relevant tables or sections.
+- Confirm table titles or section headers match the description (e.g., *Table 3: Quarterly Economic Indicators*).
 
 3. **Extract the Numbers:**
-   - Record values exactly as they appear (e.g., `23.3 victimizations per 1,000 persons age 12 or older`).
-   - Capture both the rate and the associated population base or timeframe.
+- Record values exactly as they appear (e.g., `4.2% unemployment rate for Q3 2024`).
+- Capture both the metric and the associated context, such as timeframe or population.
 
 4. **Cite Precisely:**
-   - Include the **table number, page number**, and **variable label** when referencing a statistic.
-   - Example citation: “BJS, *Criminal Victimization, 2024* (Table 5, p. 9).”
+   - Include the **source name, table/section number, page number**, and **data description** when referencing a statistic.
+   - Example citation: “Bureau of Labor Statistics, *Employment Situation Summary, 2024* (Table A-1, p. 5).”
 
 ---
 
@@ -58,13 +60,13 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 ## 5. Example Workflow
 
 ```text
-User: Show me the violent crime rate for 2024.
+User: Show me the unemployment rate for Q3 2024.
 
 Assistant:
-1. Search the PDF for “violent victimization rate 2024.”
-2. Identify the relevant table (e.g., Table 2: Rate of violent victimization, by year, 2018–2024).
-3. Verify number: 23.3 victimizations per 1,000 persons age 12+.
-4. Reply with citation: “According to Table 2 (page 7) of the BJS 2024 report, the rate was 23.3 per 1,000.”
+1. Search the document for “unemployment rate Q3 2024.”
+2. Identify the relevant table (e.g., Table A-1: Employment status of the civilian noninstitutional population).
+3. Verify number: 4.2% unemployment rate.
+4. Reply with citation: “According to Table A-1 (page 5) of the Bureau of Labor Statistics 2024 report, the rate was 4.2%.”
 5. If not found, ask permission to check raw data.
 ```
 
@@ -76,10 +78,6 @@ Assistant:
 - Maintain reproducibility: another reader should be able to verify each figure by consulting the cited table.
 
 ---
-
-## 7> Style
-- No color. 
-- Use color infrequently. Don't use red, blue, yellow, green. Use infographics and other aestheitc embelishments only when they further the story.
 
 
 **Summary:**

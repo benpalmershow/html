@@ -640,6 +640,19 @@
       }
     }
 
+    /* Rock Show Text Pop-ups */
+    .rock-popup {
+      position: fixed;
+      z-index: 999; /* Below sidebar */
+      font-family: 'Courier New', 'Courier', monospace;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
 
   </style>
   <!-- SEO Enhancement Scripts -->
@@ -739,50 +752,7 @@
        });
        </script>
 
-    <!-- Rock Show Text Pop-ups Script -->
-         <script>
-      let popupTexts = [];
-      let popupIndex = 0;
-
-      // Load popup texts from JSON
-      fetch('/json/popup-texts.json?v=' + Date.now())
-        .then(response => response.json())
-        .then(data => {
-          popupTexts = data;
-          // Start showing popups after page load
-          setTimeout(startPopups, 2000);
-        })
-        .catch(err => console.error('Error loading popup texts:', err));
-
-      function startPopups() {
-        // Start the popup cycle
-        showRandomPopup();
-      }
-
-      function showRandomPopup() {
-        if (popupTexts.length === 0) return;
-
-        const text = popupTexts[Math.floor(Math.random() * popupTexts.length)];
-        const popup = document.createElement('div');
-        popup.className = 'rock-popup';
-        popup.textContent = text;
-        const sidebarWidth = window.innerWidth > 768 ? 280 : 250;
-        popup.style.left = Math.random() * (window.innerWidth - sidebarWidth - 20) + 'px'; // Leave some margin
-        popup.style.top = Math.random() * (window.innerHeight - 100) + 'px';
-
-        document.body.appendChild(popup);
-
-        // Remove popup after animation ends
-        setTimeout(() => {
-          if (popup.parentNode) {
-            popup.parentNode.removeChild(popup);
-          }
-        }, 3000);
-
-        // Schedule next popup randomly between 5-15 seconds
-        setTimeout(showRandomPopup, Math.random() * 10000 + 5000);
-      }
-    </script>
+ 
   </body>
 
   </html>

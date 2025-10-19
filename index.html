@@ -271,20 +271,7 @@
       }
     }
 
-    .hero-logo {
-      animation: pulse 5s ease-in-out 1;
-      animation-fill-mode: forwards;
-      /* Ensure image maintains aspect ratio */
-      height: auto;
-      max-width: 100%;
-      /* Optimize for LCP */
-      will-change: transform, opacity;
-    }
 
-    /* Remove shadow after animation ends */
-    .hero-logo:not(.animating) {
-      filter: none !important;
-    }
 
     .hero {
       min-height: calc(100vh - var(--nav-offset));

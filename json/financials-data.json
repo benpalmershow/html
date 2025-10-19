@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-14T14:00:00Z",
+    "lastUpdated": "2025-10-19T20:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -670,14 +670,28 @@
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "PHI @ NY",
-            "game_title": "Eagles @ Giants",
-            "game_time": "Oct 9, 2025 8:15 PM ET",
-            "game_time_iso": "2025-10-09T20:15:00-04:00",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct09phinyg",
-            "polymarket_url": "https://polymarket.com/event/nfl-phi-nyg-2025-10-09",
-            "PHI_win_odds": "78¢",
-            "NYG_win_odds": "22¢"
+            "name": "NYG @ DEN",
+            "game_title": "Giants @ Broncos",
+            "game_time": "Oct 19, 2025 4:05 PM ET",
+            "game_time_iso": "2025-10-19T16:05:00-04:00",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct19nygden",
+            "polymarket_url": "https://polymarket.com/event/nfl-nyg-den-2025-10-19",
+            "NYG_win_odds": "22¢",
+            "DEN_win_odds": "78¢",
+            "explanation": "NFL game prediction market showing the probability of the Giants covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "ATL @ SF",
+            "game_title": "Falcons @ 49ers",
+            "game_time": "Oct 19, 2025 8:20 PM ET",
+            "game_time_iso": "2025-10-19T20:20:00-04:00",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct19atlsf",
+            "polymarket_url": "https://polymarket.com/event/nfl-atl-sf-2025-10-19",
+            "ATL_win_odds": "49¢",
+            "SF_win_odds": "51¢",
+            "explanation": "NFL game prediction market showing the probability of the Falcons covering the spread against the 49ers. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
         },
         {
             "category": "Trade & Tariffs",

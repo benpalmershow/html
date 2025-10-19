@@ -652,6 +652,82 @@
         right: 260px;
       }
     }
+
+    /* Rock Show Text Pop-ups */
+    .rock-popup {
+      position: fixed;
+      z-index: 3000;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #fff;
+      text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000,
+        0 0 40px #ff0000,
+        2px 2px 0px #000;
+      animation: rockFlicker 0.15s infinite alternate, rockFloat 3s ease-out forwards;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+      transform: scale(0.5) rotate(-10deg);
+    }
+
+    @keyframes rockFlicker {
+      0% {
+        opacity: 0.3;
+        filter: hue-rotate(0deg) saturate(1) brightness(1);
+      }
+      50% {
+        opacity: 1;
+        filter: hue-rotate(90deg) saturate(2) brightness(1.5);
+      }
+      100% {
+        opacity: 0.8;
+        filter: hue-rotate(180deg) saturate(1.5) brightness(1.2);
+      }
+    }
+
+    @keyframes rockFloat {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg) translateY(50px);
+      }
+      10% {
+        opacity: 1;
+        transform: scale(1.2) rotate(5deg) translateY(0);
+      }
+      90% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg) translateY(-20px);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8) rotate(10deg) translateY(-100px);
+      }
+    }
+
+    .rock-popup:nth-child(odd) {
+      color: #ff4500;
+      text-shadow:
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 30px #00ff00,
+        0 0 40px #00ff00,
+        2px 2px 0px #000;
+    }
+
+    .rock-popup:nth-child(3n) {
+      color: #00ffff;
+      text-shadow:
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff,
+        0 0 40px #ff00ff,
+        2px 2px 0px #000;
+    }
   </style>
   <!-- SEO Enhancement Scripts -->
   <script type="module">
@@ -747,8 +823,52 @@
        toggle.addEventListener('click', () => {
          sidebar.classList.toggle('collapsed');
        });
-     });
-   </script>
- </body>
+       });
+       </script>
 
- </html>
+    <!-- Rock Show Text Pop-ups Script -->
+         <script>
+      let popupTexts = [];
+      let popupIndex = 0;
+
+      // Load popup texts from JSON
+      fetch('/json/popup-texts.json?v=' + Date.now())
+        .then(response => response.json())
+        .then(data => {
+          popupTexts = data;
+          // Start showing popups after page load
+          setTimeout(startPopups, 2000);
+        })
+        .catch(err => console.error('Error loading popup texts:', err));
+
+      function startPopups() {
+        // Start the popup cycle
+        showRandomPopup();
+      }
+
+      function showRandomPopup() {
+        if (popupTexts.length === 0) return;
+
+        const text = popupTexts[Math.floor(Math.random() * popupTexts.length)];
+        const popup = document.createElement('div');
+        popup.className = 'rock-popup';
+        popup.textContent = text;
+        popup.style.left = Math.random() * (window.innerWidth - 300) + 'px';
+        popup.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+
+        document.body.appendChild(popup);
+
+        // Remove popup after animation ends
+        setTimeout(() => {
+          if (popup.parentNode) {
+            popup.parentNode.removeChild(popup);
+          }
+        }, 3000);
+
+        // Schedule next popup randomly between 5-15 seconds
+        setTimeout(showRandomPopup, Math.random() * 10000 + 5000);
+      }
+    </script>
+  </body>
+
+  </html>

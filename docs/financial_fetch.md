@@ -237,6 +237,31 @@ const categoryIcons = {
 
 ---
 
+## Posts.json Update Protocol
+
+### Data Accuracy Requirements
+**CRITICAL: All posts to posts.json referencing financial data MUST use actual values from financials-data.json. Do NOT use made-up, approximated, or outdated numbers. Always cross-reference with the current financials-data.json before publishing posts.**
+
+**Steps for Financial Data Posts:**
+1. Review the latest data in `financials-data.json` for the relevant indicator
+2. Extract the most recent month values (e.g., for Consumer Sentiment: August 58.2, September 55.1)
+3. Calculate accurate changes (e.g., September decrease from 58.2 to 55.1 = -5.5%)
+4. Include links to `financials.html` for full details
+5. Use precise numbers - avoid rounding or approximations unless specified in the data
+
+**Example Accurate Post:**
+"Consumer Sentiment decreased to 55.1 in September (from 58.2 in August), as seen in Consumer Indicators in <a href=\"financials.html\"><b>Financials</b></a>."
+
+**Example Inaccurate Post (DO NOT USE):**
+"Consumer Sentiment decreased -4.81% MoM to 55.4 in September, as seen in Consumer Indicators in <a href=\"financials.html\"><b>Financials</b></a>."
+
+### Quality Verification for Posts
+- [ ] All numbers match exactly with financials-data.json
+- [ ] Calculations are accurate (MoM/YOY changes)
+- [ ] Data is current (use most recent available month)
+- [ ] No fabricated or approximated values
+- [ ] Links point to correct pages
+
 ## Example NFL Prediction Update
 
 **User Input:**
@@ -252,16 +277,16 @@ Update financials with new NFL game: Chiefs vs Bills on October 20
 ```json
 {
      "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "NYG @ DEN",
-            "game_title": "Giants @ Broncos",
-            "game_time": "Oct 19, 2025 4:05 PM ET",
-            "game_time_iso": "2025-10-19T16:05:00-04:00",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct19nygden",
-            "polymarket_url": "https://polymarket.com/event/nfl-nyg-den-2025-10-19",
-            "NYG_win_odds": "22¢",
-            "DEN_win_odds": "78¢",
-            "explanation": "NFL game prediction market showing the probability of the Giants covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+             "agency": "Kalshi",
+             "name": "NYG @ DEN",
+             "game_title": "Giants @ Broncos",
+             "game_time": "Oct 19, 2025 4:05 PM ET",
+             "game_time_iso": "2025-10-19T16:05:00-04:00",
+             "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct19nygden",
+             "polymarket_url": "https://polymarket.com/event/nfl-nyg-den-2025-10-19",
+             "NYG_win_odds": "22¢",
+             "DEN_win_odds": "78¢",
+             "explanation": "NFL game prediction market showing the probability of the Giants covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
         },
 ```
 

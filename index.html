@@ -643,18 +643,17 @@
     /* Rock Show Text Pop-ups */
     .rock-popup {
       position: fixed;
-      z-index: 3000;
-      font-size: clamp(2rem, 5vw, 4rem);
+      z-index: 999; /* Below sidebar */
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
       font-weight: bold;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.1em;
       color: #fff;
       text-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 30px #ff0000,
-        0 0 40px #ff0000,
-        2px 2px 0px #000;
+        0 0 6px #ff0000,
+        0 0 12px #ff0000,
+        0 0 18px #ff0000,
+        1px 1px 0px #000;
       animation: rockFlicker 0.15s infinite alternate, rockFloat 3s ease-out forwards;
       pointer-events: none;
       user-select: none;
@@ -840,7 +839,8 @@
         const popup = document.createElement('div');
         popup.className = 'rock-popup';
         popup.textContent = text;
-        popup.style.left = Math.random() * (window.innerWidth - 300) + 'px';
+        const sidebarWidth = window.innerWidth > 768 ? 280 : 250;
+        popup.style.left = Math.random() * (window.innerWidth - sidebarWidth - 20) + 'px'; // Leave some margin
         popup.style.top = Math.random() * (window.innerHeight - 100) + 'px';
 
         document.body.appendChild(popup);

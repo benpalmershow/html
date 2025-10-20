@@ -457,6 +457,7 @@ If you cannot verify the cover image is correct:
 - Factual, not promotional
 - Focus on content/subject matter
 - Avoid superlatives
+- Point out hidden assumptions, biases, and unspoken insights that readers would overlook but experts would notice
 
 **Description Writing Style by Type:**
 - **Academic/scholarly:** Focus on thesis, scope, and methodology

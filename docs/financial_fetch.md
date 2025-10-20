@@ -12,6 +12,7 @@ When user prompts related to financial data updates:
 - **"add new prediction market"**
 - **"update economic indicator [NAME]"**
 - **"refresh financial data"**
+- **"update NFL games"**
 
 ---
 
@@ -27,8 +28,8 @@ When user prompts related to financial data updates:
 
 #### Step 2: Research New Games
 **Data Sources (in priority order):**
-1. **Kalshi** - `kalshi_url` for NFL game odds
-2. **Polymarket** - `polymarket_url` for NFL predictions
+1. **Kalshi** - `kalshi_url` for NFL game odds (Note: Markets may not be available for games more than 2-3 weeks in advance)
+2. **Polymarket** - `polymarket_url` for NFL predictions (Note: Markets may not be available for games more than 2-3 weeks in advance)
 3. **ESPN/NFL.com** for upcoming game schedules
 
 **Required Data for New Game:**
@@ -65,23 +66,27 @@ When user prompts related to financial data updates:
 {
     "category": "Prediction Markets",
     "agency": "Kalshi",
-    "name": "[AWAY_TEAM] vs [HOME_TEAM] - [DATE]",
+    "name": "[AWAY_TEAM] @ [HOME_TEAM]",
+    "game_title": "[AWAY_TEAM_FULL] @ [HOME_TEAM_FULL]",
+    "game_time": "[Month Day, Year Time ET]",
+    "game_time_iso": "[YYYY-MM-DDTHH:MM:SS-04:00]",
     "url": "[KALSHI_GAME_URL]",
-    "kalshi_url": "[KALSHI_URL]",
     "polymarket_url": "[POLYMARKET_URL]",
-    "current": "[CURRENT_ODDS]%",
-    "change": "",
-    "explanation": "NFL game prediction market showing the probability of [AWAY_TEAM] covering the spread against [HOME_TEAM]. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+    "[AWAY_TEAM]_win_odds": "[ODDS]¢",
+    "[HOME_TEAM]_win_odds": "[ODDS]¢",
+    "explanation": "NFL game prediction market showing the probability of the [AWAY_TEAM_FULL] covering the spread against the [HOME_TEAM_FULL]. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
 }
 ```
 
 **Field Requirements:**
-- `name`: Format "[AWAY] vs [HOME] - [Month Day]"
-- `current`: Most recent odds percentage (e.g., "52.3%")
-- `url`: Primary market URL (prefer Kalshi)
-- `kalshi_url`: Direct Kalshi market link
+- `name`: Format "[AWAY] @ [HOME]" (e.g., "BAL @ MIA")
+- `game_title`: Full team names (e.g., "Ravens @ Dolphins")
+- `game_time`: Human-readable format (e.g., "Oct 26, 2025 1:00 PM ET")
+- `game_time_iso`: ISO 8601 format for programmatic use
+- `url`: Primary Kalshi market URL (format: kxnflgame-YYMMDD[AWAY][HOME] without dashes between team codes)
 - `polymarket_url`: Direct Polymarket link
-- `explanation`: Standard template with team names filled in
+- `[TEAM]_win_odds`: Odds in cents format (e.g., "60¢")
+- `explanation`: Standard template with full team names filled in
 
 #### Step 4: Replace Completed Games
 **Process:**
@@ -266,8 +271,10 @@ const categoryIcons = {
 
 **User Input:**
 ```
-Update financials with new NFL game: Chiefs vs Bills on October 20
+Update financials with new NFL game: Dolphins @ Falcons on October 26
 ```
+
+**Note:** Use game dates within 1-2 weeks of the current date to ensure Kalshi/Polymarket markets are active and avoid "Page not found" errors.
 
 **Process:**
 1. Check existing NFL predictions in JSON
@@ -277,17 +284,17 @@ Update financials with new NFL game: Chiefs vs Bills on October 20
 ```json
 {
      "category": "Prediction Markets",
-             "agency": "Kalshi",
-             "name": "NYG @ DEN",
-             "game_title": "Giants @ Broncos",
-             "game_time": "Oct 19, 2025 4:05 PM ET",
-             "game_time_iso": "2025-10-19T16:05:00-04:00",
-             "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct19nygden",
-             "polymarket_url": "https://polymarket.com/event/nfl-nyg-den-2025-10-19",
-             "NYG_win_odds": "22¢",
-             "DEN_win_odds": "78¢",
-             "explanation": "NFL game prediction market showing the probability of the Giants covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-        },
+     "agency": "Kalshi",
+     "name": "MIA @ ATL",
+     "game_title": "Dolphins @ Falcons",
+     "game_time": "Oct 26, 2025 1:00 PM ET",
+     "game_time_iso": "2025-10-26T13:00:00-04:00",
+     "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct26miaatl",
+     "polymarket_url": "https://polymarket.com/event/nfl-mia-atl-2025-10-26",
+     "MIA_win_odds": "55¢",
+     "ATL_win_odds": "45¢",
+     "explanation": "NFL game prediction market showing the probability of the Dolphins covering the spread against the Falcons. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+}
 ```
 
 5. Update `lastUpdated` timestamp

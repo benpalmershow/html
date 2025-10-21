@@ -547,15 +547,15 @@ From S-1 filing, proceeds will fund:
 
 Navan represents a **high-risk, high-reward opportunity** in the corporate spend management space. The company has:
 
-✅ **Strong product** - Clear differentiation vs. legacy tools  
-✅ **AI advantage** - Proprietary technology driving margin expansion  
-✅ **Market opportunity** - Large TAM, fragmented competition  
-✅ **Execution track record** - Survived COVID, pivoted successfully  
+**Strong product** - Clear differentiation vs. legacy tools
+**AI advantage** - Proprietary technology driving margin expansion
+**Market opportunity** - Large TAM, fragmented competition
+**Execution track record** - Survived COVID, pivoted successfully
 
-❌ **Still unprofitable** - Needs multiple years to break even  
-❌ **Economic sensitivity** - Corporate travel crushed in recessions  
-❌ **Valuation risk** - 10x P/S is high for unprofitable company  
-❌ **Governance concerns** - Dual-class structure limits shareholder power  
+**Still unprofitable** - Needs multiple years to break even
+**Economic sensitivity** - Corporate travel crushed in recessions
+**Valuation risk** - 10x P/S is high for unprofitable company
+**Governance concerns** - Dual-class structure limits shareholder power  
 
 ### For Investors Considering Navan IPO:
 

@@ -32,6 +32,8 @@ Despite filing during a federal government shutdown, Navan is proceeding under n
 | **Ticker Symbol** | NAVN |
 | **Target Valuation** | $6.21B (at $25 midpoint) |
 
+*(Navan S-1/A Filing, October 10, 2025, Cover Page and Prospectus Summary)*
+
 ### Key Dates
 
 - **Confidential Filing:** June 20, 2025
@@ -93,6 +95,8 @@ Traditional corporate travel management relies on:
 | **Fiscal 2025** | $537M | **+33%** |
 | **TTM (ended July 31, 2025)** | $613M | **+32%** |
 
+*(Navan S-1/A Filing, October 10, 2025, Prospectus Summary)*
+
 ### Key Metrics
 
 | Metric | Value |
@@ -102,6 +106,8 @@ Traditional corporate travel management relies on:
 | **Usage Yield** | ~7% |
 | **Subscription Revenue** | ~10% of total revenue |
 | **Payment Volume** | Growing via co-branded cards |
+
+*(Navan S-1/A Filing, October 10, 2025, Prospectus Summary and Glossary)*
 
 ### Profitability
 
@@ -113,6 +119,8 @@ Traditional corporate travel management relies on:
 
 **Progress:** Loss improved by **45% year-over-year**, showing path to profitability.
 
+*(Navan S-1/A Filing, October 10, 2025, Prospectus Summary)*
+
 ### Gross Margin
 
 | Period | Gross Margin |
@@ -121,6 +129,8 @@ Traditional corporate travel management relies on:
 | **Fiscal 2025** | 68% |
 
 **+10% improvement in 18 months** driven by AI customer support leverage and operational efficiency.
+
+*(Navan S-1/A Filing, October 10, 2025, Prospectus Summary)*
 
 ---
 
@@ -150,6 +160,8 @@ Traditional corporate travel management relies on:
 2. **Delight** users with superior experience
 3. **Expand** to Payments, Expense, VIP, Meetings & Events
 4. **Cross-sell:** As of January 31, 2025, **36% of customers** use 3+ offerings
+
+*(Navan S-1/A Filing, October 10, 2025, Business section and Prospectus Summary)*
 
 ---
 

@@ -32,7 +32,7 @@ Despite filing during a federal government shutdown, Navan is proceeding under n
 | **Ticker Symbol** | NAVN |
 | **Target Valuation** | $6.21B (at $25 midpoint) |
 
-*(Navan S-1/A Filing, October 10, 2025, Cover Page and Prospectus Summary)*
+*(Navan S-1/A Filing, October 10, 2025, Cover Page (shares offered: 36,924,406; price range: $24.00 - $26.00) and Prospectus Summary (valuation calculation at $25 midpoint: $6.21B; gross proceeds calculation: 36,924,406 shares × $26 = $963M))*
 
 ### Key Dates
 

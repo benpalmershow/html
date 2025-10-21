@@ -44,7 +44,13 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 
 ---
 
-## 4. Tone and Communication
+## 4. Cite Precisely (Updated)
+
+- Include the **source name, table/section number, page number**, and **data description** when referencing a statistic.
+- Example citation: "Bureau of Labor Statistics, *Employment Situation Summary, 2024* (Table A-1, p. 5)."
+- For SEC filings and other HTML documents: Cite the filing date, section name, and paragraph or table reference if pages are not numbered (e.g., "Navan S-1/A Filing, October 10, 2025, Prospectus Summary, Offering Structure table").
+
+## 5. Tone and Communication
 
 - When clear patterns are apparent, use graphs and charts. 
 - Tell a story where a trend exists. Don't be superflous so if something is not interesting, leave it out.
@@ -57,7 +63,7 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 
 ---
 
-## 5. Example Workflow
+## 6. Example Workflow
 
 ```text
 User: Show me the unemployment rate for Q3 2024.
@@ -72,7 +78,7 @@ Assistant:
 
 ---
 
-## 6. Editorial Safeguards
+## 7. Editorial Safeguards
 
 - Always be skeptical of current narrative and news media in general. 
 - Maintain reproducibility: another reader should be able to verify each figure by consulting the cited table.

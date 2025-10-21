@@ -84,6 +84,11 @@
     /* Logo Colors (legacy - use brand colors instead) */
     --logo-teal: var(--color-primary, #2c5f5a); /* Logo teal - same as primary */
     --logo-orange: var(--color-secondary, #d4822a); /* Logo orange - same as secondary */
+
+     /* Legacy variables for compatibility */
+     --card-background: var(--bg-secondary);
+     --accent-color: var(--accent-primary);
+     --accent-color-dark: var(--accent-secondary);
     
     /* ========================================
        LAYOUT VARIABLES

@@ -67,31 +67,12 @@
       margin-bottom: 0.75rem !important;
     }
 
-    /* Enhanced Supreme Court grid with better spacing */
-    .court-cases-grid {
-      gap: 1.5rem !important;
-      margin: 2rem 0 !important;
-    }
-
-    .case-card {
-      padding: 1.25rem !important;
-      border-radius: 10px !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-
-    .case-card:hover {
-      transform: translateY(-4px) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-    }
-
     /* Section separators */
     .section + .section {
       margin-top: 2rem;
       padding-top: 2rem;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
-
-
 
     /* Add subtle fade-in animation */
     @keyframes fadeInUp {
@@ -105,7 +86,7 @@
       }
     }
 
-    .card-header, .case-card {
+    .card-header {
       animation: fadeInUp 0.6s ease-out;
       animation-fill-mode: both;
     }
@@ -113,18 +94,13 @@
     .card-header:nth-child(1) { animation-delay: 0.1s; }
     .card-header:nth-child(2) { animation-delay: 0.2s; }
     .card-header:nth-child(3) { animation-delay: 0.3s; }
-    .case-card:nth-child(1) { animation-delay: 0.4s; }
-    .case-card:nth-child(2) { animation-delay: 0.5s; }
-    /* Add more delays as needed */
+    .card-header:nth-child(4) { animation-delay: 0.4s; }
+    .card-header:nth-child(5) { animation-delay: 0.5s; }
 
     /* Better mobile spacing */
     @media (max-width: 768px) {
       .content {
         gap: 1.5rem;
-      }
-
-      .court-cases-grid {
-        gap: 1rem !important;
       }
 
       .filter-buttons {
@@ -134,7 +110,7 @@
 
     /* Article rendering styles */
     .article-content {
-      max-width: 800px;
+      max-width: 900px;
       margin: 2rem auto;
       padding: 2rem;
       background: var(--card-background);
@@ -153,6 +129,8 @@
       margin-top: 2rem;
       margin-bottom: 1rem;
       color: var(--text-primary);
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
     }
 
     .article-content h3 {
@@ -164,6 +142,7 @@
 
     .article-content p {
       margin-bottom: 1rem;
+      color: var(--text-primary);
     }
 
     .article-content ul, .article-content ol {
@@ -172,6 +151,7 @@
 
     .article-content li {
       margin-bottom: 0.5rem;
+      color: var(--text-primary);
     }
 
     .article-content code {
@@ -179,6 +159,7 @@
       padding: 0.2rem 0.4rem;
       border-radius: 3px;
       font-family: 'Courier New', monospace;
+      font-size: 0.9em;
     }
 
     .article-content pre {
@@ -194,6 +175,43 @@
       margin: 1rem 0;
       font-style: italic;
       color: var(--text-secondary);
+    }
+
+    /* Table styling for earnings reports */
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .article-content th {
+      background: var(--accent-color);
+      color: white;
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    /* Dark mode table headers for better contrast */
+    [data-theme="dark"] .article-content th {
+      background: var(--color-gray-700);
+      color: var(--text-secondary);
+    }
+
+    .article-content td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .article-content tbody tr:hover {
+      background: var(--bg-secondary);
+    }
+
+    /* Color-code growth/decline in tables */
+    .article-content strong {
+      font-weight: 600;
     }
 
     .article-meta {
@@ -228,6 +246,15 @@
       padding: 4rem;
       color: var(--text-muted);
     }
+
+    .error-message {
+      text-align: center;
+      padding: 2rem;
+      color: #ef4444;
+      background: #fee;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
   </style>
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -236,7 +263,6 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#2C5F5A">
   <title>News - Howdy, Stranger</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <nav class="nav-links" id="main-nav"></nav>
@@ -255,14 +281,14 @@
     <div id="news-feed-view">
       <div class="content">
         <div class="filter-buttons">
-    <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span></button>
-    <button class="filter-btn ipo" data-category="ipo"><i data-lucide="trending-up" class="filter-icon"></i><span class="filter-text">IPO</span></button>
-    <button class="filter-btn earnings" data-category="earnings"><i data-lucide="bar-chart-3" class="filter-icon"></i><span class="filter-text">Earnings</span></button>
-    <button class="filter-btn policy" data-category="policy"><i data-lucide="shield" class="filter-icon"></i><span class="filter-text">Policy</span></button>
-    <button class="filter-btn healthcare" data-category="healthcare"><i data-lucide="heart" class="filter-icon"></i><span class="filter-text">Healthcare</span></button>
-    <button class="filter-btn legal" data-category="legal"><i data-lucide="gavel" class="filter-icon"></i><span class="filter-text">Legal</span></button>
-    <button class="filter-btn corrections" data-category="corrections"><i data-lucide="edit-3" class="filter-icon"></i><span class="filter-text">Corrections</span></button>
-  </div>
+          <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span></button>
+          <button class="filter-btn ipo" data-category="ipo"><i data-lucide="trending-up" class="filter-icon"></i><span class="filter-text">IPO</span></button>
+          <button class="filter-btn earnings" data-category="earnings"><i data-lucide="bar-chart-3" class="filter-icon"></i><span class="filter-text">Earnings</span></button>
+          <button class="filter-btn policy" data-category="policy"><i data-lucide="shield" class="filter-icon"></i><span class="filter-text">Policy</span></button>
+          <button class="filter-btn healthcare" data-category="healthcare"><i data-lucide="heart" class="filter-icon"></i><span class="filter-text">Healthcare</span></button>
+          <button class="filter-btn legal" data-category="legal"><i data-lucide="gavel" class="filter-icon"></i><span class="filter-text">Legal</span></button>
+          <button class="filter-btn corrections" data-category="corrections"><i data-lucide="edit-3" class="filter-icon"></i><span class="filter-text">Corrections</span></button>
+        </div>
         <div id="articles-container">
           <div class="loading">Loading articles...</div>
         </div>
@@ -275,6 +301,15 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   
   <script type="module">
+    // List of all articles (add new articles here)
+    const ARTICLES = [
+      'reddit',
+      'urban_crime_2020',
+      'chiles-v-salazar',
+      'barrett-v-us',
+      'reddit-q2-2025-earnings'
+    ];
+
     // Parse frontmatter from markdown
     function parseFrontmatter(markdown) {
       const match = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -298,7 +333,7 @@
     // Load article from markdown file
     async function loadArticle(filename) {
       try {
-        const response = await fetch(`article/${filename}`);
+        const response = await fetch(`article/${filename}.md`);
         if (!response.ok) throw new Error('Article not found');
 
         const markdown = await response.text();
@@ -354,19 +389,20 @@
       container.innerHTML = '<div class="loading">Loading article...</div>';
       
       // Load article
-      const article = await loadArticle(`${articleId}.md`);
+      const article = await loadArticle(articleId);
       
       if (!article) {
-        container.innerHTML = '<p>Article not found.</p>';
+        container.innerHTML = '<div class="error-message">Article not found. <a href="neww2.html">Return to news feed</a></div>';
         return;
       }
       
       container.innerHTML = `
         <div class="article-meta">
-          <span><i data-lucide="calendar"></i> ${article.metadata.date}</span>
+          <span><i data-lucide="calendar"></i> ${formatDate(article.metadata.date)}</span>
           <span class="category-badge ${article.metadata.category}">
             ${article.metadata.category}
           </span>
+          ${article.metadata.ticker ? `<span><strong>Ticker:</strong> ${article.metadata.ticker}</span>` : ''}
         </div>
         ${article.html}
       `;
@@ -384,25 +420,30 @@
       feedView.style.display = 'block';
       articleView.style.display = 'none';
 
-      // Load articles index
-      const articlesIndex = [
-        { id: 'urban_crime_2020', file: 'urban_crime_2020.md' },
-        { id: 'chiles-v-salazar', file: 'chiles-v-salazar.md' }
-      ];
-
       // Load metadata for each article
       const articles = await Promise.all(
-        articlesIndex.map(async (item) => {
-          const article = await loadArticle(item.file);
+        ARTICLES.map(async (id) => {
+          const article = await loadArticle(id);
+          if (!article) return null;
           return {
-            id: item.id,
+            id,
             ...article.metadata
           };
         })
       );
 
+      // Filter out failed loads and sort by date (newest first)
+      const validArticles = articles
+        .filter(a => a !== null)
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      if (validArticles.length === 0) {
+        container.innerHTML = '<div class="error-message">No articles found. Please check that your markdown files are in the article/ folder.</div>';
+        return;
+      }
+
       // Render cards
-      container.innerHTML = articles.map(renderArticleCard).join('');
+      container.innerHTML = validArticles.map(renderArticleCard).join('');
 
       // Reinitialize Lucide icons
       lucide.createIcons();
@@ -453,10 +494,17 @@
           const cards = document.querySelectorAll('.card-header');
           
           cards.forEach(card => {
+            const cardParent = card.parentElement;
             if (category === 'all' || card.dataset.category === category) {
               card.style.display = '';
+              if (card.nextElementSibling) {
+                card.nextElementSibling.style.display = '';
+              }
             } else {
               card.style.display = 'none';
+              if (card.nextElementSibling) {
+                card.nextElementSibling.style.display = 'none';
+              }
             }
           });
         });
@@ -472,6 +520,14 @@
 
     // Handle browser back/forward
     window.addEventListener('popstate', initRouter);
+  </script>
+  
+  <!-- Initialize Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      lucide.createIcons();
+    });
   </script>
   
   <script src="js/nav.js" defer></script>

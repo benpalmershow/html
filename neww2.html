@@ -241,6 +241,28 @@
       background: var(--accent-color-dark);
     }
 
+    .back-to-top {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .back-to-top a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent-color);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .back-to-top a:hover {
+      background: var(--accent-color-dark);
+    }
+
     .loading {
       text-align: center;
       padding: 4rem;
@@ -306,7 +328,8 @@
       'urban_crime_2020',
       'chiles-v-salazar',
       'barrett-v-us',
-      'reddit-q2-2025-earnings'
+      'reddit-q2-2025-earnings',
+      'navan-ipo',
     ];
 
     // Parse frontmatter from markdown
@@ -396,15 +419,18 @@
       }
       
       container.innerHTML = `
-        <div class="article-meta">
-          <span><i data-lucide="calendar"></i> ${formatDate(article.metadata.date)}</span>
-          <span class="category-badge ${article.metadata.category}">
-            ${article.metadata.category}
-          </span>
-          ${article.metadata.ticker ? `<span><strong>Ticker:</strong> ${article.metadata.ticker}</span>` : ''}
+      <div class="article-meta">
+      <span><i data-lucide="calendar"></i> ${formatDate(article.metadata.date)}</span>
+      <span class="category-badge ${article.metadata.category}">
+      ${article.metadata.category}
+      </span>
+      ${article.metadata.ticker ? `<span><strong>Ticker:</strong> ${article.metadata.ticker}</span>` : ''}
+      </div>
+      ${article.html}
+        <div class="back-to-top">
+        <a href="#">Back to Top</a>
         </div>
-        ${article.html}
-      `;
+        `;
       
       // Reinitialize Lucide icons
       lucide.createIcons();
@@ -460,12 +486,9 @@
 
     // Format date
     function formatDate(dateStr) {
-      const date = new Date(dateStr);
-      return date.toLocaleDateString('en-US', { 
-        month: 'short', 
-        day: 'numeric', 
-        year: 'numeric' 
-      });
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const [year, month, day] = dateStr.split('-');
+      return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
     }
 
     // Router - check URL for article parameter

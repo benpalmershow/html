@@ -56,9 +56,9 @@ Figma is targeting an initial public offering (IPO) that would value the collabo
 
 | Metric | FY22A | FY23A | FY24E | Trend |
 |--------|-------|-------|-------|-------|
-| **Gross Margin** | ~88% | ~89% | ~89% | ✅ Stable, best-in-class |
-| **Operating Margin** | -20% | -12% | -5% | ✅ Improving with scale |
-| **Free Cash Flow** | Positive | Positive | Positive | ✅ Strong unit economics |
+| **Gross Margin** | ~88% | ~89% | ~89% | Stable, best-in-class |
+| **Operating Margin** | -20% | -12% | -5% | Improving with scale |
+| **Free Cash Flow** | Positive | Positive | Positive | Strong unit economics |
 
 ### Valuation Multiples (Pre-IPO)
 
@@ -69,9 +69,9 @@ Figma is targeting an initial public offering (IPO) that would value the collabo
 | **Adobe Attempted Acquisition** | ~50x sales | IPO valuation is competitive |
 
 **Assessment:** Current IPO valuation (~25x sales) is:
-- ✅ **50% discount** from Adobe's $20B offer (~50x sales)
-- ⚠️ **2-3x premium** vs. mature SaaS peers (10-15x)
-- ✅ **Justified by** 25%+ growth + positive FCF + AI tailwinds
+- **50% discount** from Adobe's $20B offer (~50x sales)
+- **2-3x premium** vs. mature SaaS peers (10-15x)
+- **Justified by** 25%+ growth + positive FCF + AI tailwinds
 
 ---
 
@@ -89,18 +89,18 @@ Figma is a **browser-based collaborative design platform** that enables teams to
 ### The Problem Figma Solves
 
 **Traditional Design Tools (Adobe Illustrator, Sketch):**
-- ❌ Desktop-only (no collaboration)
-- ❌ File-based versioning (conflicts, confusion)
-- ❌ Slow designer-developer handoff
-- ❌ Expensive per-seat licensing
-- ❌ No real-time feedback
+- Desktop-only (no collaboration)
+- File-based versioning (conflicts, confusion)
+- Slow designer-developer handoff
+- Expensive per-seat licensing
+- No real-time feedback
 
 **Figma's Solution:**
-- ✅ Browser-based (works anywhere)
-- ✅ Real-time collaboration (multiplayer design)
-- ✅ Single source of truth (no version conflicts)
-- ✅ Developer-friendly (inspect code, export assets)
-- ✅ Freemium model (viral adoption)
+- Browser-based (works anywhere)
+- Real-time collaboration (multiplayer design)
+- Single source of truth (no version conflicts)
+- Developer-friendly (inspect code, export assets)
+- Freemium model (viral adoption)
 
 ### Revenue Model
 

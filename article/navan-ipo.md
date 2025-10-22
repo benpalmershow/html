@@ -336,9 +336,9 @@ At **$25 midpoint** pricing:
 | **Navan (IPO)** | $6.21B | $613M | **10.1x** | High growth, improving margins |
 
 **Assessment:** Navan's 10x P/S is:
-- ✅ Premium to struggling Expensify
-- ✅ In line with Concur (but faster growth)
-- ✅ Discount to hyper-growth fintech (Brex)
+- Premium to struggling Expensify
+- In line with Concur (but faster growth)
+- Discount to hyper-growth fintech (Brex)
 
 ### Bull Case: $10B+ Valuation Potential
 

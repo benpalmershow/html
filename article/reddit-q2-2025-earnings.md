@@ -20,13 +20,13 @@ Reddit (RDDT) reported outstanding Q2 2025 results for the quarter ended June 30
 **Quarter Ended:** June 30, 2025  
 **Report Date:** August 1, 2025
 
-## Key Highlights
+## Highlights
 
-- ✅ **Return to Profitability:** Net income of $89M vs. -$10M loss in Q2 2024
-- ✅ **User Growth:** 110.4M daily active users (+21% YoY), with international growth of +32%
-- ✅ **Revenue Surge:** $499.6M total revenue (+78% YoY), driven by 84% advertising growth
-- ✅ **Strong Margins:** 90.8% gross margin and 33.4% adjusted EBITDA margin
-- ✅ **Cash Generation:** $111M in operating and free cash flow
+- **Return to Profitability:** Net income of $89M vs. -$10M loss in Q2 2024
+- **User Growth:** 110.4M daily active users (+21% YoY), with international growth of +32%
+- **Revenue Surge:** $499.6M total revenue (+78% YoY), driven by 84% advertising growth
+- **Strong Margins:** 90.8% gross margin and 33.4% adjusted EBITDA margin
+- **Cash Generation:** $111M in operating and free cash flow
 
 ---
 
@@ -230,7 +230,7 @@ Reddit provided optimistic guidance for Q3 2025:
 
 ---
 
-## Key Takeaways for Investors
+## Outlook
 
 1. **Profitability Achieved:** Reddit has successfully transitioned to profitable operations while maintaining strong growth
 

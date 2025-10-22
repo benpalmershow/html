@@ -27,7 +27,7 @@ link: https://investors.robinhood.com/static-files/96125635-9736-40ed-a873-eb0cf
 
 ---
 
-## Key Highlights
+## Highlights
 
 - Record quarterly net revenues of $989M, up 45% year-over-year
 - Fourth consecutive quarter of GAAP profitability with $386M net income

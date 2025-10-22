@@ -47,8 +47,9 @@
 <div class="container">
     <!-- Full Article View (shown when ?article=id in URL) -->
     <div id="full-article-view" style="display: none;">
-      <a href="news.html" class="back-button">
-        <i data-lucide="arrow-left"></i> Back to News
+      <a href="news.html" class="back-button" aria-label="Back to News" title="Back to News">
+        <i data-lucide="arrow-left"></i>
+        <span class="button-hint">Back</span>
       </a>
       <div id="article-container" class="article-content"></div>
     </div>
@@ -165,12 +166,10 @@
     <div class="card-inner">
     <div class="highlights">
     <p>${article.summary}</p>
-    </div>
-    <p style="text-align: center; margin-top: 1rem;">
-    <a href="?article=${article.id}" class="read-full-article-btn">
-    Read Full Article
+    <a href="?article=${article.id}" class="read-full-article-btn" aria-label="Read Full Article" title="Read Full Article">
+    <span class="button-hint">Read Full Article</span>
     </a>
-    </p>
+    </div>
     </div>
     </div>
     `;

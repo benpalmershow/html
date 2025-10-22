@@ -620,3 +620,117 @@ blockquote.guidance-box {
     margin-bottom: 0.25rem;
   }
 }
+
+/* Page Title Styling */
+.page-title {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-align: center;
+  margin: 0.5rem 0 1.5rem 0;
+  opacity: 0.6;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.page-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Better mobile spacing */
+@media (max-width: 768px) {
+  .content {
+    gap: 1.5rem;
+  }
+
+  .filter-buttons {
+    margin: 1rem 0 1.5rem !important;
+  }
+}
+
+/* Position badges in upper right corner for full articles */
+.article-content {
+  position: relative;
+}
+
+.article-content .category-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* Table styling for earnings reports */
+
+/* Article metadata styling */
+.article-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+/* Read Full Article button styling */
+.read-full-article-btn {
+  display: inline-block;
+  background: var(--logo-teal);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.read-full-article-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Back to Top button styling */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--logo-teal);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background: var(--logo-orange);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top i {
+  width: 1.25rem;
+  height: 1.25rem;
+}

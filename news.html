@@ -31,265 +31,7 @@
   <link rel="stylesheet" href="css/news.css?v=20250927">
   <link rel="stylesheet" href="css/newspaper-titles.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest">
-  <style>
-    /* Page Title Styling */
-    .page-title {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 500;
-      text-align: center;
-      margin: 0.5rem 0 1.5rem 0;
-      opacity: 0.6;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .page-icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Improved Layout Enhancements */
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* Better spacing between cards */
-    .card-header {
-      margin-bottom: 0.75rem !important;
-    }
-
-    /* Section separators */
-    .section + .section {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    /* Add subtle fade-in animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .card-header {
-      animation: fadeInUp 0.6s ease-out;
-      animation-fill-mode: both;
-    }
-
-    .card-header:nth-child(1) { animation-delay: 0.1s; }
-    .card-header:nth-child(2) { animation-delay: 0.2s; }
-    .card-header:nth-child(3) { animation-delay: 0.3s; }
-    .card-header:nth-child(4) { animation-delay: 0.4s; }
-    .card-header:nth-child(5) { animation-delay: 0.5s; }
-
-    /* Better mobile spacing */
-    @media (max-width: 768px) {
-      .content {
-        gap: 1.5rem;
-      }
-
-      .filter-buttons {
-        margin: 1rem 0 1.5rem !important;
-      }
-    }
-
-    /* Position badges in upper right corner for full articles */
-    .article-content {
-      position: relative;
-    }
-
-    .article-content .category-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 10;
-    }
-
-    /* Article rendering styles */
-    .article-content {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: var(--card-background);
-      border-radius: 8px;
-      line-height: 1.6;
-    }
-
-    .article-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-    }
-
-    .article-content h2 {
-      font-size: 1.8rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0.5rem;
-    }
-
-    .article-content h3 {
-      font-size: 1.4rem;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      color: var(--text-secondary);
-    }
-
-    .article-content p {
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-    }
-
-    .article-content ul, .article-content ol {
-      margin: 1rem 0 1rem 2rem;
-    }
-
-    .article-content li {
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    .article-content code {
-      background: var(--bg-secondary);
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-    }
-
-    .article-content pre {
-      background: var(--bg-secondary);
-      padding: 1rem;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-
-    .article-content blockquote {
-      border-left: 4px solid var(--accent-color);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-      color: var(--text-secondary);
-    }
-
-    /* Table styling for earnings reports */
-    .article-content table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.9rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    .article-content th {
-      background: var(--accent-color);
-      color: white;
-      padding: 0.75rem;
-      text-align: left;
-      font-weight: 600;
-    }
-
-    /* Dark mode table headers for better contrast */
-    [data-theme="dark"] .article-content th {
-      background: var(--color-gray-700);
-      color: var(--text-secondary);
-    }
-
-    .article-content td {
-      padding: 0.75rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .article-content tbody tr:hover {
-      background: var(--bg-secondary);
-    }
-
-    /* Color-code growth/decline in tables */
-    .article-content strong {
-      font-weight: 600;
-    }
-
-    .article-meta {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--accent-color);
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-bottom: 1rem;
-      transition: background 0.2s;
-    }
-
-    .back-button:hover {
-      background: var(--accent-color-dark);
-    }
-
-    .back-to-top {
-      text-align: center;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .back-to-top a {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent-color);
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .back-to-top a:hover {
-      background: var(--accent-color-dark);
-    }
-
-    .loading {
-      text-align: center;
-      padding: 4rem;
-      color: var(--text-muted);
-    }
-
-    .error-message {
-      text-align: center;
-      padding: 2rem;
-      color: #ef4444;
-      background: #fee;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
-  </style>
+ 
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -329,6 +71,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" style="display: none;">
+    <i data-lucide="arrow-up"></i>
+  </button>
 </main>
 
   <!-- Import marked.js from CDN -->
@@ -420,8 +167,7 @@
     <p>${article.summary}</p>
     </div>
     <p style="text-align: center; margin-top: 1rem;">
-    <a href="?article=${article.id}"
-    style="display: inline-block; background: var(--accent-color); color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 600;">
+    <a href="?article=${article.id}" class="read-full-article-btn">
     Read Full Article
     </a>
     </p>
@@ -458,10 +204,7 @@
       ${article.metadata.category}
       </span>
       ${article.html}
-        <div class="back-to-top">
-        <a href="#">Back to Top</a>
-        </div>
-        `;
+      `;
       
       // Reinitialize Lucide icons
       lucide.createIcons();
@@ -573,6 +316,26 @@
 
     // Handle browser back/forward
     window.addEventListener('popstate', initRouter);
+
+    // Back to Top functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.style.display = 'flex';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+
+    // Scroll to top when clicked
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
   </script>
   
   <!-- Initialize Lucide Icons -->

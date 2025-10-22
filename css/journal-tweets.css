@@ -116,8 +116,9 @@
 .entry-content iframe,
 .entry-content video {
     max-width: 100%;
-    height: auto;
     width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 /* Links in entries */
@@ -233,8 +234,9 @@
     .entry-content iframe,
     .entry-content video {
         max-width: 100%;
-        height: auto;
         width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
     }
 }
 

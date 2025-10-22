@@ -15,6 +15,8 @@ Navan, Inc. (formerly TripActions), the Palo Alto-based corporate travel and exp
 
 Despite filing during a federal government shutdown, Navan is proceeding under new SEC rules that allow automatic effectiveness after 20 days without staff review—a bold move to capture a strong IPO market.
 
+*Automatic effectiveness: A provision in SEC rules allowing IPO registration statements to become effective automatically after 20 calendar days during a government shutdown, bypassing the need for staff review while still permitting SEC intervention if issues arise.*
+
 ---
 
 ## IPO Details
@@ -416,7 +418,7 @@ At **$25 midpoint** pricing:
 **5. Intense Competition**
 - SAP Concur has 10x revenue
 - Brex/Ramp well-funded and expanding
-- Airlines/hotels could disintermediate
+- Airlines/hotels could disintermediate (though businesses might increasingly develop or adopt their own AI technologies for internal travel management, reducing reliance on third-party platforms)
 
 ---
 
@@ -527,7 +529,7 @@ From S-1 filing, proceeds will fund:
 
 **Strong:**
 - Vertical integration = high switching costs
-- Proprietary AI = hard to replicate
+- Proprietary AI = potentially hard to replicate (though competitors with ample resources and AI talent could catch up)
 - Network effects from platform adoption
 
 **Weak:**

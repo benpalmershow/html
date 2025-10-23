@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-20T00:00:00Z",
+    "lastUpdated": "2025-10-23T00:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -206,6 +206,7 @@
             "july": "33",
             "august": "32",
             "september": "32",
+            "october": "37",
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."
         },
@@ -221,6 +222,7 @@
             "june": "$435,300",
             "july": "$422,400",
             "august": "$422,600",
+            "september": "$415,200",
             "change": "",
             "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
         },
@@ -252,6 +254,7 @@
             "july": "6.72",
             "august": "6.59",
             "september": "6.28",
+            "october": "6.18",
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
         },
@@ -623,6 +626,8 @@
             "june": "3.93M",
             "july": "4.01M",
             "august": "4.00M",
+            "september": "4.06M",
+
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
         },
@@ -633,9 +638,11 @@
             "url": "https://www.zillow.com/research/data/",
             "march": "60",
             "april": "53",
-            "may": "47",
-            "june": "45",
+            "may": "48",
+            "june": "46",
             "july": "47",
+            "august": "50",
+            "september": "54",
             "change": "",
             "explanation": "The median number of days that homes listed on Zillow remain on the market before going under contract. This metric is a key indicator of housing market conditions, with fewer days typically indicating a seller's market and more days suggesting a buyer's market. The data is based on Zillow's database of for-sale listings and is not seasonally adjusted. The metric can vary significantly by location, price point, and property type. A declining trend in days on market often signals increasing demand or limited inventory, while an increasing trend may indicate softening demand or growing inventory. This indicator is closely watched by real estate professionals, homebuyers, and sellers to gauge market competitiveness and pricing strategies."
         },

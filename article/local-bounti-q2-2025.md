@@ -4,6 +4,7 @@ date: 2025-08-13
 category: earnings
 icon: bar-chart-3
 summary: Local Bounti reports Q2 2025 earnings with revenue growth from new facilities, improving margins, and cost reduction initiatives
+ticker: LOCL
 ---
 
 # Local Bounti Q2 2025 Earnings

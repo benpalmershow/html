@@ -830,7 +830,17 @@
                 document.getElementById('lastUpdated').textContent =
                     `Last Updated: ${formatDate(financialData.lastUpdated)}`;
                 setupFilters();
-                renderDashboard();
+                const urlParams = new URLSearchParams(window.location.search);
+                const initialFilter = urlParams.get('filter') || 'all';
+                // Set active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if (btn.dataset.category === initialFilter) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                renderDashboard(initialFilter);
                 setupModalHandlers();
             }
 

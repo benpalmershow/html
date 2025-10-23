@@ -85,4 +85,4 @@ Let's shift the debate. Not *robots vs. jobs*. Not *efficiency vs. public goods.
 
 > **How do we all get a piece of the pie when the pie gets bigger?**
 
-[^1]: See [employment trends](financials.html) showing nonfarm payroll growth slowing from +120k in March to just +22k in August 2025, per FRED data.
+[^1]: See [employment trends](financials.html?filter=Employment%20Indicators) showing nonfarm payroll growth slowing from +120k in March to just +22k in August 2025, per FRED data.

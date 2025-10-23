@@ -1633,6 +1633,16 @@ async function getChartConfig(indicatorName) {
                     <canvas id="vehicleChart"></canvas>
                 </div>
             `
+        },
+        'Chicago Fed Survey of Economic Conditions': {
+            type: 'chartjs',
+            icon: 'briefcase',
+            title: 'Chicago Fed Survey of Economic Conditions - Regional Business Activity',
+            chartContent: `
+                <div>
+                    <canvas id="cfsecChart"></canvas>
+                </div>
+            `
         }
     };
 
@@ -1768,6 +1778,9 @@ async function getChartConfig(indicatorName) {
             } else if (indicatorName === 'Used Vehicle Value Index') {
                 config.data.datasets[0].borderColor = '#B56A18';
                 config.data.datasets[0].backgroundColor = 'rgba(181, 106, 24, 0.15)';
+            } else if (indicatorName === 'Chicago Fed Survey of Economic Conditions') {
+                config.data.datasets[0].borderColor = '#2C5F5A';
+                config.data.datasets[0].backgroundColor = 'rgba(44, 95, 90, 0.15)';
             }
         }
     }

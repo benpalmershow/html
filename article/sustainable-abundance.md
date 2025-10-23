@@ -40,7 +40,7 @@ Tesla's ambition now goes beyond electric vehicles and renewable energy. With pr
 
 ## Amazon's Automation Challenge
 
-Meanwhile, Amazon is preparing for massive automation in its fulfillment operations. Reports suggest Amazon could **avoid hiring 600,000 U.S. jobs** by automating large parts of its operations by around 2033.
+Meanwhile, Amazon is preparing for massive automation in its fulfillment operations. Reports suggest Amazon could **avoid hiring 600,000 employees** by automating large parts of its operations by around 2033.
 
 This isn't just about eliminating jobs — it's about automating role after role so that output rises, costs drop, but the *human share of the value chain shrinks*.
 

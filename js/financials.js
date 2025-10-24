@@ -1,4 +1,4 @@
-// Financials Dashboard Module - Simplified
+// Financials Dashboard Module - Streamlined
 // Main dashboard functionality with chart overlays
 
 let financialData = null;
@@ -163,75 +163,48 @@ function createIndicatorCard(indicator) {
 
     const momChange = calculateMoMChange(indicator);
 
-    // Special handling for different indicator types
-    if (indicator.name.includes('FOMC') && indicator.name.includes('Rate Decision') && indicator.bps_probabilities) {
+    // Handle special indicator types
+    if (indicator.name.includes('FOMC') && indicator.bps_probabilities) {
         dataRows += `<div class="data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
         Object.entries(indicator.bps_probabilities).forEach(([bps, prob]) => {
-            if (prob && prob !== '') {
-                dataRows += `<div class="data-row"><span class="month-label">${bps}:</span> <span class="month-value">${prob}</span></div>`;
-            }
+            if (prob) dataRows += `<div class="data-row"><span class="month-label">${bps}:</span> <span class="month-value">${prob}</span></div>`;
         });
     } else if (indicator.name.includes('Recession')) {
-        if (indicator.yes_probability) {
-            dataRows += `<div class="data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-        }
-        if (indicator.no_probability) {
-            dataRows += `<div class="data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
-        }
+        if (indicator.yes_probability) dataRows += `<div class="data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
+        if (indicator.no_probability) dataRows += `<div class="data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
     } else if (indicator.name.includes('@')) {
-        if (indicator.game_title) {
-            dataRows += `<div class="data-row"><span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span></div>`;
-        }
-        if (indicator.game_time) {
-            const gameTimeAttr = indicator.game_time_iso;
-            dataRows += `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${gameTimeAttr}">${indicator.game_time}</span></span></div>`;
-        }
-        if (indicator.week) {
-            dataRows += `<div class="data-row"><span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span></div>`;
-        }
-        const teamKeys = Object.keys(indicator).filter(key => key.endsWith('_win_odds'));
-        teamKeys.forEach(key => {
+        if (indicator.game_title) dataRows += `<div class="data-row"><span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span></div>`;
+        if (indicator.game_time) dataRows += `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span></div>`;
+        if (indicator.week) dataRows += `<div class="data-row"><span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span></div>`;
+        Object.keys(indicator).filter(key => key.endsWith('_win_odds')).forEach(key => {
             const teamName = key.replace('_win_odds', '').toUpperCase();
             dataRows += `<div class="data-row"><span class="month-label">${teamName} Win:</span> <span class="month-value">${indicator[key]}</span></div>`;
         });
-        if (indicator.total_points) {
-            dataRows += `<div class="data-row"><span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span></div>`;
-        }
-    } else if ((indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') || indicator.name === 'Job Openings') {
-        const monthlyChanges = calculateAllMonthlyChanges(indicator);
+        if (indicator.total_points) dataRows += `<div class="data-row"><span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span></div>`;
+    } else if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings') {
         const changesMap = {};
-        monthlyChanges.forEach(change => changesMap[change.month] = change);
-
+        calculateAllMonthlyChanges(indicator).forEach(change => changesMap[change.month] = change);
         months.forEach((month, index) => {
             const value = indicator[month];
-            const label = monthLabels[index] || month;
-            if (value && value !== '') {
+            if (value) {
                 const changeObj = changesMap[month];
-                let changeHtml = '';
-                if (changeObj) {
-                    const changeClass = changeObj.change >= 0 ? 'change-positive' : 'change-negative';
-                    changeHtml = `<span class="month-change ${changeClass}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
-                }
-                dataRows += `<div class="data-row"><span class="month-label">${label}:</span><span class="month-value">${value}${changeHtml}</span></div>`;
+                const changeHtml = changeObj ? `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>` : '';
+                dataRows += `<div class="data-row"><span class="month-label">${monthLabels[index]}:</span><span class="month-value">${value}${changeHtml}</span></div>`;
             }
         });
-    } else if (indicator.name === 'CPI' && indicator.agency === 'BLS') {
-        const cpiYoyData = { 'march': '3.2%', 'april': '3.4%', 'may': '3.3%', 'june': '3.0%', 'july': '2.9%', 'august': '2.5%' };
+    } else if (indicator.name === 'CPI') {
+        const cpiYoyData = { march: '3.2%', april: '3.4%', may: '3.3%', june: '3.0%', july: '2.9%', august: '2.5%' };
         months.forEach((month, index) => {
             const value = indicator[month];
-            const label = monthLabels[index] || month;
-            if (value && value !== '') {
+            if (value) {
                 const yoy = cpiYoyData[month] ? `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[month]}</span>` : '';
-                dataRows += `<div class="data-row"><span class="month-label">${label}:</span><span class="month-value">${value}${yoy}</span></div>`;
+                dataRows += `<div class="data-row"><span class="month-label">${monthLabels[index]}:</span><span class="month-value">${value}${yoy}</span></div>`;
             }
         });
     } else {
         months.forEach((month, index) => {
             const value = indicator[month];
-            const label = monthLabels[index] || month;
-            if (value && value !== '') {
-                dataRows += `<div class="data-row"><span class="month-label">${label}:</span><span class="month-value">${value}</span></div>`;
-            }
+            if (value) dataRows += `<div class="data-row"><span class="month-label">${monthLabels[index]}:</span><span class="month-value">${value}</span></div>`;
         });
     }
 
@@ -243,13 +216,9 @@ function createIndicatorCard(indicator) {
         const momFormatted = formatChange(momChange.percentChange);
         let changeText = `MoM: ${momFormatted}`;
 
-        if ((indicator.name === 'Private Employment' && indicator.agency === 'ADP') ||
-            (indicator.name === 'Total Nonfarm Employment' && indicator.agency === 'FRED') ||
-            indicator.name === 'Job Openings') {
+        if (['Private Employment', 'Total Nonfarm Employment', 'Job Openings'].includes(indicator.name)) {
             const numberChange = momChange.numberChange;
-            const changeSign = numberChange >= 0 ? '+' : '';
-            const formattedNumber = numberChange.toLocaleString();
-            changeText += ` (${changeSign}${formattedNumber})`;
+            changeText += ` (${numberChange >= 0 ? '+' : ''}${numberChange.toLocaleString()})`;
         }
 
         const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
@@ -417,9 +386,7 @@ function setupFilters() {
     const allButton = document.createElement('button');
     allButton.className = 'filter-btn active';
     allButton.dataset.category = 'all';
-    allButton.setAttribute('aria-label', 'All');
-    allButton.innerHTML = `<i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span>`;
-    allButton.setAttribute('data-tooltip', 'All');
+    allButton.innerHTML = '<i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span>';
     filtersContainer.appendChild(allButton);
 
     categories.forEach(category => {
@@ -428,71 +395,16 @@ function setupFilters() {
         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
         button.innerHTML = `<span class="filter-icon">${icon}</span><span class="filter-text">${category}</span>`;
         button.dataset.category = category;
-        button.setAttribute('aria-label', category);
-        button.setAttribute('data-tooltip', category);
         filtersContainer.appendChild(button);
     });
-
-    let tooltip = document.getElementById('filter-tooltip');
-    if (!tooltip) {
-        tooltip = document.createElement('div');
-        tooltip.id = 'filter-tooltip';
-        Object.assign(tooltip.style, {
-            position: 'fixed', pointerEvents: 'none', zIndex: '2147483647',
-            background: 'rgba(44,95,90,0.97)', color: '#fff', padding: '8px 12px',
-            borderRadius: '6px', fontSize: '0.9em', fontWeight: '500',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.25)', transition: 'opacity 0.2s ease',
-            opacity: '0', display: 'none', whiteSpace: 'nowrap', maxWidth: '200px', textAlign: 'center',
-            isolation: 'isolate', transform: 'translateZ(0)', willChange: 'transform, opacity',
-            backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-            WebkitTransform: 'translateZ(0)', WebkitPerspective: '1000', perspective: '1000px'
-        });
-        document.body.appendChild(tooltip);
-    }
-
-    function showTooltip(text, x, y) {
-        tooltip.textContent = text;
-        tooltip.style.display = 'block';
-        const tooltipRect = tooltip.getBoundingClientRect();
-        const tooltipWidth = tooltipRect.width;
-        tooltip.style.left = Math.max(10, x - tooltipWidth / 2) + 'px';
-        tooltip.style.top = (y - 40) + 'px';
-        tooltip.style.opacity = '1';
-        tooltip.style.zIndex = '2147483647';
-        tooltip.style.position = 'fixed';
-        tooltip.style.pointerEvents = 'none';
-        tooltip.style.isolation = 'isolate';
-        tooltip.style.transform = 'translateZ(0)';
-    }
-
-    function hideTooltip() {
-        tooltip.style.opacity = '0';
-        tooltip.style.display = 'none';
-        tooltip.dataset.activeButton = '';
-    }
 
     filtersContainer.addEventListener('click', function (e) {
         const btn = e.target.closest('.filter-btn');
         if (btn) {
-            if (e.detail === 2 && btn.dataset.tooltip) {
-                const rect = btn.getBoundingClientRect();
-                tooltip.dataset.activeButton = btn.dataset.category;
-                requestAnimationFrame(() => showTooltip(btn.dataset.tooltip, rect.left + rect.width / 2, rect.top));
-                setTimeout(() => {
-                    if (tooltip.dataset.activeButton === btn.dataset.category) hideTooltip();
-                }, 3000);
-                return;
-            }
-
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             renderDashboard(btn.dataset.category);
-            hideTooltip();
         }
-    });
-
-    document.addEventListener('click', function (e) {
-        if (!filtersContainer.contains(e.target)) hideTooltip();
     });
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
@@ -667,22 +579,8 @@ function initializeChartInOverlay(chartConfig, canvas) {
                 }
             },
             scales: {
-                x: {
-                    display: true, grid: { display: false, drawBorder: false },
-                    ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 4, padding: 2, font: { size: 9 } }
-                },
-                y: {
-                    display: true, beginAtZero: false,
-                    grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-                    ticks: {
-                        padding: 2, font: { size: 9 },
-                        callback: function (value) {
-                            if (value >= 1000) return (value / 1000).toFixed(1) + 'K';
-                            return value.toLocaleString();
-                        }
-                    },
-                    position: 'right'
-                }
+                x: { display: true, grid: { display: false, drawBorder: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 4, padding: 2, font: { size: 9 } } },
+                y: { display: true, beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { padding: 2, font: { size: 9 }, callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } }, position: 'right' }
             },
             interaction: { mode: 'nearest', axis: 'x', intersect: false }
         }
@@ -692,13 +590,12 @@ function initializeChartInOverlay(chartConfig, canvas) {
     return chartInstance;
 }
 
-// Chart configuration - single color for all charts
 function getChartConfig(indicatorName) {
     const indicatorData = financialData.indices.find(item => item.name.trim().toLowerCase() === indicatorName.trim().toLowerCase());
     if (!indicatorData) return null;
 
-    const months = ['march', 'april', 'may', 'june', 'july', 'august'];
-    const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+    const months = ['march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    const monthLabels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const labels = [];
     const values = [];
@@ -714,16 +611,6 @@ function getChartConfig(indicatorName) {
         }
     });
 
-    const currentMonth = new Date().toLocaleDateString('en-US', { month: 'short' });
-    if (!labels.includes(currentMonth)) {
-        labels.push('Live');
-        const lastValue = values[values.length - 1];
-        if (lastValue) {
-            const variation = (Math.random() - 0.5) * 0.02;
-            values.push(parseFloat((lastValue * (1 + variation)).toFixed(2)));
-        }
-    }
-
     const data = {
         labels: labels,
         datasets: [{
@@ -735,15 +622,6 @@ function getChartConfig(indicatorName) {
             fill: true
         }]
     };
-
-    if (indicatorName === 'Jobs Added') {
-        data.labels = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
-        data.datasets[0].data = [120, 158, 19, 14, 73, 22];
-        data.datasets[0].pointBackgroundColor = '#2C5F5A';
-        data.datasets[0].pointBorderColor = '#2C5F5A';
-        data.datasets[0].pointBorderWidth = 2;
-        data.datasets[0].pointRadius = 4;
-    }
 
     return { type: 'chartjs', data: data };
 }

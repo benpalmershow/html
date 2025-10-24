@@ -260,7 +260,7 @@
         },
 
         {
-            "category": "Business Indicators",
+            "category": "Financial Markets",
             "agency": "FRED",
             "name": "10-yr Treasury Yield",
             "releaseDay": 0,
@@ -276,7 +276,7 @@
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
         },
         {
-            "category": "Business Indicators",
+            "category": "Financial Markets",
             "agency": "S&P Global",
             "name": "Composite PMI (Flash)",
             "releaseDay": 22,
@@ -293,7 +293,7 @@
             "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations."
         },
         {
-            "category": "Business Indicators",
+            "category": "Financial Markets",
             "agency": "ISM",
             "name": "Manufacturing PMI",
             "releaseDay": 1,
@@ -447,16 +447,18 @@
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
         },
         {
-            "category": "Consumer Indicators",
+            "category": "Financial Markets",
             "agency": "FRED",
             "name": "Dollar Value Index",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
-            "april": "124",
+            "april": "124.4",
             "may": "122.68",
             "june": "120.97",
             "july": "120.52",
+            "august": "120.98",
+            "september": "120.45",
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk sentiment. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
         },

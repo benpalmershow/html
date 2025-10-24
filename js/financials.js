@@ -254,7 +254,8 @@ const categoryIcons = {
     'Trade & Tariffs': '<i data-lucide="ship" class="filter-icon"></i>',
     'Government': '<i data-lucide="landmark" class="filter-icon"></i>',
     'Commodities': '<i data-lucide="package" class="filter-icon"></i>',
-    'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>'
+    'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>',
+    'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>'
 };
 
 function setupInfoIconHandlers() {

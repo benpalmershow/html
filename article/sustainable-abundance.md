@@ -59,7 +59,7 @@ If automation makes goods and services **cheaper**, great. But if only a small s
 
 **Growth + concentrated ownership** → Wealth polarization, social strain
 
-**No inclusive growth** → Political backlash, populism, push for socialism (Mandami) or protectionism (Trump)
+**No inclusive growth** → Political backlash, populism, push for socialism (Mamdani) or protectionism (Trump)
 
 The left worries about job loss; the right celebrates efficiency. But the real issue is how the *productivity dividend* is distributed.
 

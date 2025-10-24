@@ -27,11 +27,16 @@
 
 .theme-toggle-btn i {
   font-size: 1rem;
+  mix-blend-mode: overlay;
 }
 
 /* Dark mode specific styles */
 [data-theme="dark"] .theme-toggle-btn {
   color: var(--text-color);
+}
+
+[data-theme="dark"] .theme-toggle-btn i {
+  mix-blend-mode: screen;
 }
 
 [data-theme="dark"] .theme-toggle-btn:hover {
@@ -85,6 +90,7 @@
   font-size: 1.2rem;
   color: var(--logo-teal);
   transition: color 0.2s ease;
+  mix-blend-mode: overlay;
 }
 
 /* Hover and focus states */
@@ -104,6 +110,7 @@
 /* Dark theme overrides */
 [data-theme="dark"] .theme-toggle i {
   color: var(--accent-primary);
+  mix-blend-mode: screen;
 }
 
 [data-theme="dark"] .theme-toggle:hover {

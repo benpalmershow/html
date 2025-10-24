@@ -73,10 +73,10 @@ function extractNumericValue(value) {
     if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
 
     let cleanValue = value.toString()
-        .replace(/[$,%]/g, '')
-        .replace(/[+\-]/g, '')
-        .replace(/[A-Za-z]/g, '')
-        .trim();
+    .replace(/[$,%]/g, '')
+    .replace(/^\+/g, '')
+    .replace(/[A-Za-z]/g, '')
+    .trim();
 
     if (value.includes('M')) cleanValue = cleanValue.replace(/M$/, '');
     if (value.includes('B')) cleanValue = cleanValue.replace(/B$/, '');
@@ -108,7 +108,7 @@ function calculateMoMChange(indicator) {
 
     if (currentValue === null || previousValue === null || previousValue === 0) return null;
 
-    const change = ((currentValue - previousValue) / previousValue) * 100;
+    const change = ((currentValue - previousValue) / Math.abs(previousValue)) * 100;
     const numberChange = currentValue - previousValue;
 
     return {
@@ -221,7 +221,7 @@ function createIndicatorCard(indicator) {
             changeText += ` (${numberChange >= 0 ? '+' : ''}${numberChange.toLocaleString()})`;
         }
 
-        const arrowIcon = momChange.percentChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
+        const arrowIcon = momChange.numberChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
         const title = indicator.name === 'Total Nonfarm Employment' ? "Latest monthly change in nonfarm payroll employment" : "Month-over-Month (MoM) change calculated from available data.";
 
         changeIndicators += `<div class="change-indicator ${getChangeClass(momFormatted)}" title="${title}"><span class="arrow-icon">${arrowIcon}</span> ${changeText}</div>`;

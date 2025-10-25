@@ -1,5 +1,5 @@
 ---
-title: Chiles v. Salazar - Legal Analysis
+title: Chiles v. Salazar
 date: 2025-10-08
 category: legal
 icon: scale

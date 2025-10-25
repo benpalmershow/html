@@ -1,5 +1,5 @@
 ---
-title: Local Bounti Q2 2025 Earnings
+title: Local Bounti Q2 2025
 date: 2025-08-13
 category: earnings
 icon: bar-chart-3

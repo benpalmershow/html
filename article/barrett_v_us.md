@@ -1,5 +1,5 @@
 ---
-title: Barrett v. United States - Legal Analysis
+title: Barrett v. United States
 date: 2025-10-08
 category: legal
 icon: scale

@@ -1,5 +1,5 @@
 ---
-title: Figma IPO - Design Platform Targets $16-18B Valuation
+title: Figma
 date: 2025-07-22
 category: ipo
 icon: figma

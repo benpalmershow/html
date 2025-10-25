@@ -1,5 +1,5 @@
 ---
-title: AIRO IPO - Aerospace and Defense Technologies
+title: AIRO
 date: 2025-06-25
 category: ipo
 icon: dollar-sign

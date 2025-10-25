@@ -1,5 +1,5 @@
 ---
-title: Reddit Q2 2025 Earnings
+title: Reddit Q2 2025
 date: 2025-08-01
 category: earnings
 icon: message-circle

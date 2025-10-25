@@ -1,5 +1,5 @@
 ---
-title: Bullish Launches IPO Filing
+title: Bullish
 date: 2025-08-04
 category: ipo
 icon: dollar-sign

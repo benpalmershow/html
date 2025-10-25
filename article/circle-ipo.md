@@ -1,5 +1,5 @@
 ---
-title: Circle IPO Filing
+title: Circle
 date: 2025-06-30
 category: ipo
 icon: briefcase

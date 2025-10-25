@@ -1,5 +1,5 @@
 ---
-title: Supreme Court Case - Trump v. CASA, Inc.
+title: Trump v. CASA, Inc.
 date: 2025-06-01
 category: legal
 icon: gavel

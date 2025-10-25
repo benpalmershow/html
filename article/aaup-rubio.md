@@ -1,5 +1,5 @@
 ---
-title: Federal Court Rules on Non-Citizens' First Amendment Rights
+title: Non-Citizens' First Amendment Rights
 date: 2025-09-30
 category: legal
 icon: gavel

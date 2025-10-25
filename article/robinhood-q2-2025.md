@@ -1,5 +1,5 @@
 ---
-title: Robinhood Q2 2025 Earnings
+title: Robinhood Q2 2025
 date: 2025-08-14
 category: earnings
 icon: bar-chart-3

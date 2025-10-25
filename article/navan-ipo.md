@@ -1,5 +1,5 @@
 ---
-title: Navan IPO - Corporate Travel Platform Goes Public
+title: Navan
 date: 2025-10-21
 category: ipo
 icon: plane

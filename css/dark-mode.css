@@ -8,7 +8,7 @@
   width: 44px;
   height: 44px;
   background: none;
-  color: var(--text-color);
+  color: var(--text-primary);
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -32,7 +32,7 @@
 
 /* Dark mode specific styles */
 [data-theme="dark"] .theme-toggle-btn {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 [data-theme="dark"] .theme-toggle-btn i {
@@ -44,30 +44,14 @@
 }
 
 /* Theme toggle in navigation */
-.nav-links {
+.floating-nav .theme-toggle {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
-  margin: 1rem 0 2rem;
-  padding: 0.75rem 0;
-}
-
-/* Theme toggle button */
-.nav-links .theme-toggle {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 32px;
+  min-height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-radius: 4px;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -94,31 +78,31 @@
 }
 
 /* Hover and focus states */
-.nav-links .theme-toggle:hover {
+.floating-nav .theme-toggle:hover {
   background-color: var(--bg-secondary);
-  transform: translateY(calc(-50% - 1px));
+  transform: translateY(-1px);
   border-color: var(--color-primary-bg);
 }
 
-.nav-links .theme-toggle:focus {
+.floating-nav .theme-toggle:focus {
   outline: 2px solid var(--logo-orange);
   outline-offset: 2px;
   background-color: var(--bg-secondary);
-  transform: translateY(-50%);
+  transform: translateY(-1px);
 }
 
 /* Dark theme overrides */
-[data-theme="dark"] .theme-toggle i {
+[data-theme="dark"] .floating-nav .theme-toggle i {
   color: var(--accent-primary);
   mix-blend-mode: screen;
 }
 
-[data-theme="dark"] .theme-toggle:hover {
+[data-theme="dark"] .floating-nav .theme-toggle:hover {
   background-color: var(--color-neutral-bg);
   border-color: var(--color-secondary-bg);
 }
 
-[data-theme="dark"] .theme-toggle:focus {
+[data-theme="dark"] .floating-nav .theme-toggle:focus {
   background-color: var(--color-neutral-bg);
   border-color: var(--color-secondary-bg);
 }
@@ -131,12 +115,14 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .nav-links {
-    padding-right: 60px; /* Make space for the toggle */
+  .floating-nav .theme-toggle {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0.4rem;
   }
-  
-  .nav-links .theme-toggle {
-    right: 0.5rem;
+
+  .floating-nav .theme-toggle .theme-toggle-icon i {
+    font-size: 1rem;
   }
 }
 

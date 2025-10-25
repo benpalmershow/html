@@ -39,26 +39,26 @@
         const currentPage = path === '/' ? '/index.html' : path;
 
     nav.innerHTML = navItems.map(item => {
-            // Better active page detection
-        const itemPath = item.href.replace('../', '/').replace('./', '/');
+    // Better active page detection
+    const itemPath = item.href.replace('../', '/').replace('./', '/');
     const normalizedCurrent = currentPage.endsWith('/') ? currentPage : currentPage + '/';
     const normalizedItem = itemPath.endsWith('/') ? itemPath : itemPath + '/';
 
     const isActive = normalizedCurrent.includes(itemPath.split('/').pop().replace('.html', '')) ||
-                itemPath === currentPage ||
-        (currentPage === '/' && itemPath.includes('index.html')) ||
+    itemPath === currentPage ||
+    (currentPage === '/' && itemPath.includes('index.html')) ||
     (currentPage.includes('index.html') && itemPath.includes('index.html'));
 
     let iconHtml = '';
-            if (item.image) {
-        iconHtml = `<img src="${item.image}" alt="${item.text}" class="nav-icon">`;
+    if (item.image) {
+    iconHtml = `<img src="${item.image}" alt="${item.text}" class="nav-icon">`;
     } else if (item.icon) {
     iconHtml = `<span class="nav-emoji">${item.icon}</span>`;
     }
 
     return `
-                <a href="${item.href}" class="nav-link${isActive ? ' active' : ''}" title="${item.text}">
-            ${iconHtml}
+    <a href="${item.href}" class="nav-link${isActive ? ' active' : ''}" title="${item.text}">
+    ${iconHtml}
     </a>
     `;
     }).join('');
@@ -88,6 +88,19 @@
 
         const navbar = createNavbar();
         document.body.prepend(navbar);
+
+        // Add theme toggle as separate fixed element
+        const toggle = document.createElement('button');
+        toggle.id = 'theme-toggle';
+        toggle.className = 'theme-toggle-fixed';
+        toggle.setAttribute('aria-label', 'Toggle dark mode');
+        toggle.title = 'Toggle dark/light mode';
+        toggle.innerHTML = `
+            <div class="theme-toggle-icon">
+                <i class="fas fa-moon"></i>
+            </div>
+        `;
+        document.body.appendChild(toggle);
 
         if (document.querySelector('#floating-nav-styles')) return;
 
@@ -194,6 +207,79 @@
                 font-weight: 600;
             }
 
+            .floating-nav .theme-toggle {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 22px;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                color: #666;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                overflow: hidden;
+            }
+
+            .floating-nav .theme-toggle:hover {
+                background: var(--nav-hover-color);
+                color: var(--nav-active-color);
+                transform: translateY(-1px);
+            }
+
+            .floating-nav .theme-toggle .theme-toggle-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 20px;
+            }
+
+            .floating-nav .theme-toggle .theme-toggle-icon i {
+                font-size: 0.9rem;
+            }
+
+            .theme-toggle-fixed {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                min-width: 32px;
+                min-height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.3rem;
+                border-radius: 4px;
+                transition: all 0.2s ease;
+                text-decoration: none;
+                background: transparent;
+                border: 1px solid transparent;
+                z-index: 1001;
+                cursor: pointer;
+                color: #666;
+            }
+
+            .theme-toggle-fixed:hover {
+                background: rgba(74, 85, 104, 0.1);
+                color: #4A5568;
+                transform: translateY(-1px);
+            }
+
+            .theme-toggle-fixed .theme-toggle-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 20px;
+            }
+
+            .theme-toggle-fixed .theme-toggle-icon i {
+                font-size: 0.9rem;
+            }
+
             /* Responsive adjustments */
             @media (max-width: 768px) {
                 .floating-nav {
@@ -209,6 +295,23 @@
 
                 .floating-nav .nav-text {
                     font-size: 9px;
+                }
+
+                .theme-toggle-fixed {
+                    top: 15px;
+                    right: 15px;
+                    min-width: 30px;
+                    min-height: 30px;
+                    padding: 0.25rem;
+                }
+
+                .theme-toggle-fixed .theme-toggle-icon {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                .theme-toggle-fixed .theme-toggle-icon i {
+                    font-size: 0.8rem;
                 }
 
                 :root {

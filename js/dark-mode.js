@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateThemeToggle = (theme) => {
     const toggleBtn = document.getElementById('theme-toggle');
     if (!toggleBtn) return;
-    
-    const icon = toggleBtn.querySelector('i');
+
+    const icon = toggleBtn.querySelector('.theme-toggle-icon i');
     if (theme === 'dark') {
       icon.className = 'fas fa-sun';
       toggleBtn.setAttribute('aria-label', 'Switch to light mode');

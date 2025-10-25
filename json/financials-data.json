@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-23T00:00:00Z",
+    "lastUpdated": "2025-10-25T19:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -49,12 +49,13 @@
             "name": "CPI",
             "releaseDay": 11,
             "url": "https://www.bls.gov/cpi/data.htm",
-            "march": "319.8",
-            "april": "320.8",
+            "march": "319.799",
+            "april": "320.795",
             "may": "321.465",
             "june": "322.561",
             "july": "323.048",
             "august": "323.976",
+            "september": "324.800",
             "change": "",
             "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."
         },

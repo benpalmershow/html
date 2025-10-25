@@ -23,7 +23,7 @@ html {
 
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(0, 0, 0, 0.02) 100%);
+    background: var(--bg-primary);
     min-height: 100vh;
     color: var(--text-secondary);
     width: 100%;

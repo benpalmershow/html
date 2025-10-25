@@ -193,7 +193,7 @@ function createIndicatorCard(indicator) {
             }
         });
     } else if (indicator.name === 'CPI') {
-        const cpiYoyData = { march: '3.2%', april: '3.4%', may: '3.3%', june: '3.0%', july: '2.9%', august: '2.5%' };
+        const cpiYoyData = { march: '2.4%', april: '2.3%', may: '2.4%', june: '2.7%', july: '2.7%', august: '2.9%', september: '3.0%' };
         months.forEach((month, index) => {
             const value = indicator[month];
             if (value) {

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const CACHE_KEY = 'media-data-cache-v2';
+    const CACHE_KEY = 'media-data-cache-v3';
     const CACHE_DURATION = 5 * 60 * 1000;
 
     async function fetchMediaData() {

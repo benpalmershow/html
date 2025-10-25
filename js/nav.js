@@ -102,6 +102,32 @@
         `;
         document.body.appendChild(toggle);
 
+        // Inactivity detection
+        let inactivityTimer;
+        const inactivityDelay = 5000; // 5 seconds
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                navbar.classList.add('hidden');
+                toggle.classList.add('hidden');
+            }, inactivityDelay);
+        }
+
+        function showNav() {
+            navbar.classList.remove('hidden');
+            toggle.classList.remove('hidden');
+            resetInactivityTimer();
+        }
+
+        // Add event listeners for activity
+        ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(event => {
+            document.addEventListener(event, showNav, true);
+        });
+
+        // Start the timer initially
+        resetInactivityTimer();
+
         if (document.querySelector('#floating-nav-styles')) return;
 
         const style = document.createElement('style');
@@ -278,6 +304,18 @@
 
             .theme-toggle-fixed .theme-toggle-icon i {
                 font-size: 0.9rem;
+            }
+
+            .floating-nav.hidden {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .theme-toggle-fixed.hidden {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
             }
 
             /* Responsive adjustments */

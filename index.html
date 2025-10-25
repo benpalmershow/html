@@ -515,7 +515,7 @@
       background: var(--bg-primary);
       border-left: 1px solid var(--border-color);
       overflow-y: auto;
-      z-index: 1000;
+      z-index: 1002;
       box-shadow: -2px 0 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
@@ -585,7 +585,7 @@
       right: 290px;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 1001;
+      z-index: 1003;
       background: var(--bg-primary);
       border: 1px solid var(--border-color);
       padding: 5px 8px;
@@ -626,7 +626,7 @@
       transform: translateY(-50%) translateX(15px);
       border: 5px solid transparent;
       border-left-color: var(--logo-teal);
-      z-index: 1002;
+      z-index: 1004;
     }
 
     @media (max-width: 768px) {
@@ -650,6 +650,12 @@
       pointer-events: none;
       user-select: none;
       white-space: nowrap;
+    }
+
+    .sidebar-toggle.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
 
   </style>
@@ -745,9 +751,33 @@
        sidebar.classList.add('collapsed');
 
        toggle.addEventListener('click', () => {
-         sidebar.classList.toggle('collapsed');
+       sidebar.classList.toggle('collapsed');
        });
-       });
+
+        // Inactivity detection for sidebar toggle
+        let sidebarInactivityTimer;
+        const sidebarInactivityDelay = 5000; // 5 seconds
+
+        function resetSidebarInactivityTimer() {
+          clearTimeout(sidebarInactivityTimer);
+          sidebarInactivityTimer = setTimeout(() => {
+            toggle.classList.add('hidden');
+          }, sidebarInactivityDelay);
+        }
+
+        function showSidebarToggle() {
+          toggle.classList.remove('hidden');
+          resetSidebarInactivityTimer();
+        }
+
+        // Add event listeners for activity
+        ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(event => {
+          document.addEventListener(event, showSidebarToggle, true);
+        });
+
+        // Start the timer initially
+        resetSidebarInactivityTimer();
+        });
        </script>
 
  

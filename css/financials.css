@@ -380,22 +380,29 @@ body {
 }
 
 /* Card Chart Overlay Styles */
+/* Chart overlay for modal-like display of charts */
 .chart-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(0, 0, 0, 0.05) 100%);
+    background: var(--bg-primary);
+    /* Use CSS variable for consistency and maintainability */
     border-radius: var(--border-radius);
     display: none;
     z-index: 100;
     opacity: 0;
     transform: scale(0.95);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Optimized transition for smooth performance */
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid var(--color-gray-200);
     overflow: hidden;
+    /* Fallback for older browsers */
+    -webkit-border-radius: var(--border-radius);
+    /* Ensure hardware acceleration for better performance */
+    will-change: opacity, transform;
 }
 
 .chart-overlay.show {

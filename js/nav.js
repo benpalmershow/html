@@ -272,13 +272,13 @@
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                min-width: 32px;
-                min-height: 32px;
+                width: 32px;
+                height: 32px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 padding: 0.3rem;
-                border-radius: 4px;
+                border-radius: 50%;
                 transition: all 0.2s ease;
                 text-decoration: none;
                 background: transparent;
@@ -338,7 +338,7 @@
                 .theme-toggle-fixed {
                     top: 15px;
                     right: 15px;
-                    min-width: 30px;
+                    width: 30px;
                     min-height: 30px;
                     padding: 0.25rem;
                 }

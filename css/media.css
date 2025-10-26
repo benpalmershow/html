@@ -447,8 +447,12 @@
 }
 
 /* ==========================================================================
-   TRAILER
-   ========================================================================== */
+TRAILER
+========================================================================== */
+.trailer-container {
+    order: 4;
+}
+
 .trailer-container-inline {
     display: flex;
     align-items: center;
@@ -1095,7 +1099,8 @@
         overflow-y: auto;
     }
 
-    .rating-logos {
+    .rating-logos,
+    .movie-actions-container {
         flex-shrink: 0;
         order: 4;
         margin: 6px 0 2px 0;
@@ -1106,8 +1111,7 @@
 
     .media-description {
         order: 3;
-        flex: 1;
-        min-height: 0;
+        flex-shrink: 0;
     }
 
     .media-title,
@@ -1117,7 +1121,7 @@
     }
 
     .media-date-bottom {
-        order: 4;
+        order: 6;
         flex-shrink: 0;
     }
 }
@@ -1319,8 +1323,18 @@ a[href*="youtube"] i,
 }
 
 /* ==========================================================================
-   HYPERLINK UNDERLINE REMOVAL
-   ========================================================================== */
+MEDIA LINKS ORDER
+========================================================================== */
+
+.song-links,
+.podcast-links,
+.media-links {
+    order: 5;
+}
+
+/* ==========================================================================
+    HYPERLINK UNDERLINE REMOVAL
+    ========================================================================== */
 
 /* Remove underlines on all hyperlinks in media overlays */
 .media-overlay a,

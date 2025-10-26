@@ -126,7 +126,8 @@ body {
     overflow: visible;
     position: relative;
     z-index: 1;
-    margin-left: 20px
+    width: 100vw;
+    margin-left: calc(-50vw + 50%)
 }
 
 .filter-btn {
@@ -555,6 +556,8 @@ body {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        margin-left: 0;
+        padding-left: 20px;
     }
 
     .filters::-webkit-scrollbar {

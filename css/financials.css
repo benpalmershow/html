@@ -126,8 +126,7 @@ body {
     overflow: visible;
     position: relative;
     z-index: 1;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%)
+    margin-left: 20px
 }
 
 .filter-btn {

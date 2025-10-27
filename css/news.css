@@ -743,36 +743,4 @@ blockquote.guidance-box {
   text-align: center;
 }
 
-/* Back to Top button styling */
-.back-to-top {
-  position: fixed;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--logo-teal);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  opacity: 0.8;
-}
 
-.back-to-top:hover {
-  background: var(--logo-orange);
-  transform: translateX(-50%) translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  opacity: 1;
-}
-
-.back-to-top i {
-  width: 1rem;
-  height: 1rem;
-}

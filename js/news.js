@@ -246,31 +246,4 @@
     // Handle browser back/forward
     window.addEventListener('popstate', initRouter);
 
-    // Back to Top functionality
-    const backToTopBtn = document.getElementById('back-to-top');
-    let lastScrollTop = 0;
 
-    // Show/hide button based on scroll position and direction
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.pageYOffset;
-      if (scrollTop > lastScrollTop) {
-        // Scrolling down, hide button
-        backToTopBtn.style.display = 'none';
-      } else {
-        // Scrolling up, show button if scrolled enough
-        if (scrollTop > 300) {
-          backToTopBtn.style.display = 'flex';
-        } else {
-          backToTopBtn.style.display = 'none';
-        }
-      }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-
-    // Scroll to top when clicked
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });

@@ -123,6 +123,59 @@
         // Start the timer initially
         resetInactivityTimer();
 
+        // Get or create back to top button
+        const backToTopBtn = document.getElementById('back-to-top') || (() => {
+            const btn = document.createElement('button');
+            btn.id = 'back-to-top';
+            btn.className = 'back-to-top';
+            btn.setAttribute('aria-label', 'Back to top');
+            btn.innerHTML = '<i data-lucide="arrow-up" style="width: 1rem; height: 1rem;"></i>';
+            document.body.appendChild(btn);
+            return btn;
+        })();
+
+        // Ensure icons are created
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Back to top functionality
+        let lastScrollTop = 0;
+        let inactivityTimerBackToTop;
+
+        function resetInactivityTimerBackToTop() {
+            clearTimeout(inactivityTimerBackToTop);
+            inactivityTimerBackToTop = setTimeout(() => {
+                backToTopBtn.classList.remove('show');
+            }, inactivityDelay);
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const isScrollingDown = scrollTop > lastScrollTop;
+            if (isScrollingDown && scrollTop > 300) {
+                backToTopBtn.classList.remove('show');
+            } else if (!isScrollingDown && scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+                resetInactivityTimerBackToTop();
+            } else if (scrollTop <= 300) {
+                backToTopBtn.classList.remove('show');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Inactivity detection for back to top
+        ['mousemove', 'keydown', 'click', 'touchstart'].forEach(event => {
+            document.addEventListener(event, resetInactivityTimerBackToTop, true);
+        });
+
         if (document.querySelector('#floating-nav-styles')) return;
 
         const style = document.createElement('style');
@@ -311,6 +364,35 @@
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s ease;
+            }
+
+            .back-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--logo-teal);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 200;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .back-to-top.show {
+                display: flex;
+            }
+
+            .back-to-top:hover {
+                background: var(--logo-orange);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
             }
 
             /* Responsive adjustments */

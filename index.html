@@ -553,38 +553,7 @@
       transform: scale(1.05);
     }
 
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;
-      bottom: 60px; /* Closer to bottom, above socials */
-      right: 20px;
-      background: var(--logo-teal);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 200;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
 
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .back-to-top:hover {
-      background: var(--logo-orange);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
 
     /* Rock Show Text Pop-ups */
     .rock-popup {
@@ -662,38 +631,9 @@
     });
     </script>
 
- <!-- Back to Top Button -->
- <button id="back-to-top" class="back-to-top" aria-label="Back to top">
- <i data-lucide="arrow-up" style="width: 1rem; height: 1rem;"></i>
- </button>
+ 
 
-    <script>
-      // Back to Top functionality
-      const backToTopBtn = document.getElementById('back-to-top');
-      let lastScrollTop = 0;
 
-      window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const isScrollingDown = scrollTop > lastScrollTop;
-
-        if (isScrollingDown && scrollTop > 300) {
-          backToTopBtn.classList.remove('show');
-        } else if (!isScrollingDown && scrollTop > 300) {
-          backToTopBtn.classList.add('show');
-        } else if (scrollTop <= 300) {
-          backToTopBtn.classList.remove('show');
-        }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-      });
-
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    </script>
 
   </body>
 

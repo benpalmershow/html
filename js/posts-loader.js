@@ -1,13 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const feed = document.getElementById('post-feed');
+  const feed = document.getElementById('announcements-container');
   if (!feed) return;
 
   feed.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>';
 
+  const POSTS_CACHE_KEY = 'posts-data-cache';
+  const POSTS_CACHE_DURATION = 3 * 60 * 1000; // 3 minutes
+
+  function renderPosts(posts, financials = null) {
+    // Build a lookup of indicator name -> category when financials data is available
+    const indicatorLookup = {};
+    if (financials && Array.isArray(financials.indices)) {
+      financials.indices.forEach(ind => {
+        if (ind && ind.name && ind.category) indicatorLookup[ind.name.toLowerCase()] = ind.category;
+      });
+    }
+
+    const categoryIcons = {
+      'Employment Indicators': 'users',
+      'Housing Market': 'home',
+      'Business Indicators': 'briefcase',
+      'Consumer Indicators': 'shopping-cart',
+      'Trade & Tariffs': 'ship',
+      'Government': 'landmark',
+      'Commodities': 'package',
+      'Prediction Markets': 'trending-up',
+      'Markets': 'trending-up'
+    };
+
+    feed.innerHTML = posts.map(p => {
+      let content = p.content || '';
+      const contentLower = content.toLowerCase();
+      let foundCategory = null;
+      // First try exact indicator names
+      for (const name in indicatorLookup) {
+        if (Object.prototype.hasOwnProperty.call(indicatorLookup, name)) {
+          if (contentLower.includes(name)) { foundCategory = indicatorLookup[name]; break; }
+        }
+      }
+      // If not found, try common agency mentions
+      if (!foundCategory) {
+        if (contentLower.includes('adp')) foundCategory = 'Employment Indicators';
+        else if (contentLower.includes('bls')) foundCategory = 'Consumer Indicators';
+        else if (contentLower.includes('fred')) foundCategory = 'Employment Indicators';
+        else if (contentLower.includes('treasury')) foundCategory = 'Government';
+        else if (contentLower.includes('kalshi') || contentLower.includes('polymarket')) foundCategory = 'Prediction Markets';
+        else if (contentLower.includes('debt') || contentLower.includes('deficit') || contentLower.includes('national debt')) foundCategory = 'Government';
+        else if (contentLower.includes('nfl') || contentLower.includes('odds') || /\b(49ers|rams|patriots|cowboys|vikings|chiefs)\b/.test(contentLower)) foundCategory = 'Prediction Markets';
+      }
+
+      const icon = foundCategory ? categoryIcons[foundCategory] || 'file-text' : '';
+      let iconHtml = icon ? `<i data-lucide="${icon}"></i> ` : '';
+      if (feed.classList.contains('announcements-grid')) {
+        iconHtml = '';
+      }
+
+      // Remove any existing leading icons from content to avoid duplicates
+      content = content.replace(/^<i[^>]*data-lucide[^>]*><\/i>\s*/, '');
+
+      return `
+        <div class="announcement-card">
+          <time>${p.date}</time>
+          <div class="content">${iconHtml}${content}</div>
+        </div>
+      `;
+    }).join('') || '<div class="empty-state">No posts available.</div>';
+
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  // Check cache first
+  const cached = localStorage.getItem(POSTS_CACHE_KEY);
+  if (cached) {
+    const { data, timestamp } = JSON.parse(cached);
+    if (Date.now() - timestamp < POSTS_CACHE_DURATION) {
+      renderPosts(data);
+      return;
+    }
+  }
+
   // Optional cache-busting using meta[name="last-commit"] if present
-  // Use the last-commit meta when available but always append a timestamp
-  // to ensure a fresh fetch of posts.json (prevents stale cached JSON when
-  // the meta isn't updated).
   const metaCommit = (document.querySelector('meta[name="last-commit"]') &&
                       document.querySelector('meta[name="last-commit"]').getAttribute('content')) || '';
   const v = `${metaCommit}-${Date.now()}`;
@@ -18,109 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(`/json/financials-data.json?v=${encodeURIComponent(v)}`).then(r => { if (!r.ok) return null; return r.json(); }).catch(() => null)
   ])
     .then(([posts, financials]) => {
-      const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
+    const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
 
-      // Build a lookup of indicator name -> category when financials data is available
-      const indicatorLookup = {};
-      if (financials && Array.isArray(financials.indices)) {
-        financials.indices.forEach(ind => {
-          if (ind && ind.name && ind.category) indicatorLookup[ind.name.toLowerCase()] = ind.category;
-        });
-      }
+    // Sort posts by date descending (latest first)
+    valid.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      // category -> lucide icon mapping (reuse icons used on financials page)
-      const categoryIcons = {
-        'Employment Indicators': 'users',
-        'Housing Market': 'home',
-        'Business Indicators': 'briefcase',
-        'Consumer Indicators': 'shopping-cart',
-        'Trade & Tariffs': 'ship',
-        'Trade & Tariffs': 'ship',
-        'Government': 'landmark',
-        'Commodities': 'package',
-        'Prediction Markets': 'trending-up',
-        // fallback categories
-        'Markets': 'trending-up'
-      };
+    // Cache the data
+    localStorage.setItem(POSTS_CACHE_KEY, JSON.stringify({ data: valid, timestamp: Date.now() }));
 
-      // Generate container for all article schemas
-      const articlesSchemas = [];
-
-      // For each post, try to find an indicator name or agency mentioned in its content
-      feed.innerHTML = valid.map((p, index) => {
-        const contentLower = (p.content || '').toLowerCase();
-        let foundCategory = null;
-        // First try exact indicator names
-        for (const name in indicatorLookup) {
-          if (Object.prototype.hasOwnProperty.call(indicatorLookup, name)) {
-            if (contentLower.includes(name)) { foundCategory = indicatorLookup[name]; break; }
-          }
-        }
-        // If not found, try common agency mentions (ADP, BLS, FRED, Treasury, Kalshi, Polymarket)
-        if (!foundCategory) {
-          if (contentLower.includes('adp')) foundCategory = 'Employment Indicators';
-          else if (contentLower.includes('bls')) foundCategory = 'Consumer Indicators';
-          else if (contentLower.includes('fred')) foundCategory = 'Employment Indicators';
-          else if (contentLower.includes('treasury')) foundCategory = 'Government';
-          else if (contentLower.includes('kalshi') || contentLower.includes('polymarket')) foundCategory = 'Prediction Markets';
-
-          // Fallbacks for keywords that didn't match indicator names:
-          // debt / deficit -> Government (National Debt, Budget Deficit updates)
-          else if (contentLower.includes('debt') || contentLower.includes('deficit') || contentLower.includes('national debt')) foundCategory = 'Government';
-
-          // sports-related odds -> Prediction Markets (e.g., NFL Week 5: 49ers @ Rams Odds Update)
-          else if (contentLower.includes('nfl') || contentLower.includes('odds') || /\b(49ers|rams|patriots|cowboys|vikings|chiefs)\b/.test(contentLower)) foundCategory = 'Prediction Markets';
-        }
-
-        const icon = foundCategory ? categoryIcons[foundCategory] || 'file-text' : '';
-        let iconHtml = icon ? `<i data-lucide="${icon}"></i> ` : '';
-        // Remove icons for announcements page
-        if (feed.classList.contains('announcements-grid')) {
-          iconHtml = '';
-        }
-
-        
-
-        // Generate Article schema for this post
-        if (window.contentSchemaGenerator) {
-          const postSchema = window.contentSchemaGenerator.generatePostSchema(p, foundCategory);
-          articlesSchemas.push(postSchema);
-        }
-
-        const html = `
-          <article class="post-item" role="article" itemscope itemtype="https://schema.org/Article">
-            <div class="card-title">${iconHtml}<time datetime="${p.date}" itemprop="datePublished">${p.date}</time></div>
-            <div class="content" itemprop="articleBody">${p.content}</div>
-            <meta itemprop="headline" content="News Update - ${p.date}" />
-            <meta itemprop="author" content="Ben Palmer" />
-            <meta itemprop="publisher" content="Howdy, Stranger" />
-          </article>
-        `;
-
-        return html;
-      }).join('') || '<div class="empty-state">No posts available.</div>';
-
-
-
-      // Inject Article schemas for all posts
-      if (window.contentSchemaGenerator && articlesSchemas.length > 0) {
-        // Create a container schema for multiple articles
-        const articlesContainerSchema = {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "Latest News Updates",
-          "numberOfItems": articlesSchemas.length,
-          "itemListElement": articlesSchemas.map((schema, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "item": schema
-          }))
-        };
-
-        window.contentSchemaGenerator.injectSchema(articlesContainerSchema, 'posts-articles');
-      }
-
-      if (window.lucide) window.lucide.createIcons();
+        renderPosts(valid, financials);
     })
     .catch(err => {
       console.error('Error loading posts:', err);
@@ -132,7 +110,4 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
     });
-        // if we found a category, render an icon-only badge
-        // NOTE: Editors can override this by adding a `badge` object to a post in json/posts.json
-        // e.g. "badge": { "icon": "landmark", "href": "/financials.html", "type": "icon-only" }
 });

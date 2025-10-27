@@ -2,11 +2,6 @@
     const navItems = [{
         text: "Home",
         href: "../index.html",
-        icon: "🏠",
-        image: ""
-    }, {
-        text: "Announcements",
-        href: "../read.html",
         icon: "",
         image: "../images/announcements.png"
     }, {
@@ -209,7 +204,7 @@
                 width: 30px;
                 height: 30px;
                 object-fit: cover;
-                border-radius: 3px;
+                border-radius: 50%;
             }
 
             .floating-nav .nav-emoji {

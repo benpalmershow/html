@@ -71,6 +71,7 @@
   <link rel="preload" href="css/dark-mode.css" as="style">
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/dark-mode.js" as="script">
+   <link rel="preload" href="js/posts-loader.js" as="script">
 
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -183,14 +184,7 @@
   <main id="main-content" tabindex="-1">
     <section class="hero" aria-label="Homepage hero">
       <header class="hero-header">
-        <picture>
-          <!-- WebP with fallback to PNG -->
-          <source srcset="images/logo.webp" type="image/webp">
-          <source srcset="images/logo.png" type="image/png">
-          <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" width="360" height="360" loading="eager"
-            fetchpriority="high" decoding="async" />
-        </picture>
-        <h1 class="visually-hidden">Howdy, Stranger - Independent Commentary & Economic Insight</h1>
+        <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo">
         <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
           and economic insight.</p>
       </header>
@@ -210,7 +204,7 @@
               </div>
             </div>
             <div class="hint-step">
-              <i data-lucide="hash" style="width: 2rem; height: 2rem;"></i>
+              <i data-lucide="bar-chart-3" style="width: 2rem; height: 2rem;"></i>
               <div>
                 <strong>Numbers:</strong> Economic indicators, financial data, and market trends
               </div>
@@ -238,42 +232,19 @@
         </div>
       </div>
     </section>
+
+    <!-- Announcements Section -->
+    <div class="page-title" aria-label="Page title"><img src="images/announcements.png" alt="Announcements logo" class="page-icon">Announcements</div>
+     <section class="announcements" aria-label="Latest announcements">
+     <div class="announcements-container" id="announcements-container"></div>
+    </section>
   </main>
 
-   <!-- Announcements Sidebar -->
-   <div id="announcements-sidebar">
-     <div class="sidebar-header">
-       <img src="images/announcements.png" alt="Announcements" class="sidebar-logo">
-       <h3 class="sidebar-title">Announcements</h3>
-     </div>
-     <div id="sidebar-posts" class="sidebar-posts"></div>
-   </div>
-   <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle announcements sidebar">
-     <img src="images/announcements.png" alt="Announcements" class="toggle-logo">
-   </button>
+
+
 
    <style>
-    @keyframes pulse {
-      0% {
-        transform: scale(0.99);
-        opacity: 0.6;
-      }
 
-      33% {
-        transform: scale(1.4);
-        opacity: 0.8;
-      }
-
-      66% {
-        transform: scale(0.995);
-        opacity: 0.9;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
 
 
 
@@ -503,6 +474,14 @@
       opacity: 0.6;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .page-icon {
+      width: 20px;
+      height: 20px;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -511,137 +490,100 @@
       }
     }
 
-    /* Announcements Sidebar */
-    #announcements-sidebar {
-      position: fixed;
-      right: 0;
-      top: 0;
-      width: 280px;
-      height: 100vh;
+
+
+    /* Announcements Section */
+    .announcements {
+      padding: 0.5rem 0 2rem;
       background: var(--bg-primary);
-      border-left: 1px solid var(--border-color);
-      overflow-y: auto;
-      z-index: 1002;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
     }
 
-    #announcements-sidebar.collapsed {
-      transform: translateX(100%);
+    .announcements-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
-    .sidebar-header {
-      display: flex;
-      align-items: center;
-      margin: 10px;
-      gap: 10px;
+    .announcement-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .sidebar-logo {
-      width: 50px;
-      height: auto;
-      flex-shrink: 0;
-    }
-
-    .sidebar-title {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--logo-teal);
-    }
-
-    .sidebar-posts {
-      padding: 0 10px 20px;
-    }
-
-    .sidebar-posts .post-item {
-      font-size: 0.75rem;
-      line-height: 1.5;
-      margin-bottom: 15px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 10px;
-      color: var(--text-secondary);
-    }
-
-    .sidebar-posts .post-item time {
-      font-size: 0.7rem;
+    .announcement-card time {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 5px;
+      margin-bottom: 0.5rem;
       display: block;
     }
 
-    .sidebar-posts .post-item .content {
-      font-size: 0.75rem;
+    .announcement-card .content {
+      font-size: 0.9rem;
+      line-height: 1.5;
       color: var(--text-secondary);
     }
 
-    .sidebar-posts .post-item a {
+    .announcement-card a {
       color: var(--logo-orange);
       text-decoration: none;
-      font-size: 0.7rem;
       font-weight: 500;
     }
 
-    .sidebar-posts .post-item a:hover {
+    .announcement-card a:hover {
       text-decoration: underline;
     }
 
-    .sidebar-toggle {
+    .brand-logo {
       position: fixed;
-      right: 290px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1003;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      padding: 5px 8px;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 1002;
       cursor: pointer;
-      transition: right 0.3s ease;
-      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 60px; /* Closer to bottom, above socials */
+      right: 20px;
+      background: var(--logo-teal);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 200;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    #announcements-sidebar.collapsed + .sidebar-toggle {
-      right: 10px;
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .toggle-logo {
-      width: 40px;
-      height: auto;
-      display: block;
-    }
-
-    .toggle-text {
-      font-size: 0.7rem;
-      color: var(--text-primary);
-      margin-left: 5px;
-      vertical-align: middle;
-    }
-
-    #announcements-sidebar.collapsed + .sidebar-toggle {
-      right: 10px;
-    }
-
-    /* Hover arrow hint for toggle */
-    .sidebar-toggle:hover::after {
-      content: "";
-      position: absolute;
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%) translateX(15px);
-      border: 5px solid transparent;
-      border-left-color: var(--logo-teal);
-      z-index: 1004;
-    }
-
-    @media (max-width: 768px) {
-      #announcements-sidebar {
-        width: 250px;
-      }
-      #announcements-sidebar:not(.collapsed) + .sidebar-toggle {
-        right: 260px;
-      }
+    .back-to-top:hover {
+      background: var(--logo-orange);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
 
     /* Rock Show Text Pop-ups */
@@ -699,6 +641,7 @@
   <script src="js/nav.js?v=20250926" defer></script>
   <script src="js/socials.js?v=20250926" defer></script>
   <script src="js/dark-mode.js?v=20250926" defer></script>
+   <script src="js/posts-loader.js?v=20250926" defer></script>
   <script>
     // First-time visitor hints
     function showHints() {
@@ -719,74 +662,39 @@
     });
     </script>
 
-   <!-- Sidebar Posts Loader -->
-   <script>
-   document.addEventListener('DOMContentLoaded', () => {
-   const sidebarPosts = document.getElementById('sidebar-posts');
-   if (!sidebarPosts) return;
+ <!-- Back to Top Button -->
+ <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+ <i data-lucide="arrow-up" style="width: 1rem; height: 1rem;"></i>
+ </button>
 
-   const v = Date.now();
+    <script>
+      // Back to Top functionality
+      const backToTopBtn = document.getElementById('back-to-top');
+      let lastScrollTop = 0;
 
-   fetch(`/json/posts.json?v=${v}`)
-   .then(r => {
-   if (!r.ok) throw new Error('Failed to load posts');
-   return r.json();
-   })
-   .then(posts => {
-   const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const isScrollingDown = scrollTop > lastScrollTop;
 
-   sidebarPosts.innerHTML = valid.map(p => `
-   <div class="post-item">
-   <time>${p.date}</time>
-   <div class="content">${p.content}</div>
-   </div>
-   `).join('');
-
-   if (window.lucide) window.lucide.createIcons();
-   })
-   .catch(err => {
-   console.error('Error loading sidebar posts:', err);
-   sidebarPosts.innerHTML = '<div class="error-state">Error loading posts.</div>';
-   });
-
-       // Sidebar toggle functionality
-       const toggle = document.getElementById('sidebar-toggle');
-       const sidebar = document.getElementById('announcements-sidebar');
-
-       // Load collapsed by default
-       sidebar.classList.add('collapsed');
-
-       toggle.addEventListener('click', () => {
-       sidebar.classList.toggle('collapsed');
-       });
-
-        // Inactivity detection for sidebar toggle
-        let sidebarInactivityTimer;
-        const sidebarInactivityDelay = 5000; // 5 seconds
-
-        function resetSidebarInactivityTimer() {
-          clearTimeout(sidebarInactivityTimer);
-          sidebarInactivityTimer = setTimeout(() => {
-            toggle.classList.add('hidden');
-          }, sidebarInactivityDelay);
+        if (isScrollingDown && scrollTop > 300) {
+          backToTopBtn.classList.remove('show');
+        } else if (!isScrollingDown && scrollTop > 300) {
+          backToTopBtn.classList.add('show');
+        } else if (scrollTop <= 300) {
+          backToTopBtn.classList.remove('show');
         }
 
-        function showSidebarToggle() {
-          toggle.classList.remove('hidden');
-          resetSidebarInactivityTimer();
-        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+      });
 
-        // Add event listeners for activity
-        ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(event => {
-          document.addEventListener(event, showSidebarToggle, true);
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
+      });
+    </script>
 
-        // Start the timer initially
-        resetSidebarInactivityTimer();
-        });
-       </script>
-
- 
   </body>
 
   </html>

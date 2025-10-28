@@ -29,44 +29,49 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     feed.innerHTML = posts.map(p => {
-      let content = p.content || '';
-      const contentLower = content.toLowerCase();
-      let foundCategory = null;
-      // First try exact indicator names
-      for (const name in indicatorLookup) {
-        if (Object.prototype.hasOwnProperty.call(indicatorLookup, name)) {
-          if (contentLower.includes(name)) { foundCategory = indicatorLookup[name]; break; }
-        }
-      }
-      // If not found, try common agency mentions
-      if (!foundCategory) {
-        if (contentLower.includes('adp')) foundCategory = 'Employment Indicators';
-        else if (contentLower.includes('bls')) foundCategory = 'Consumer Indicators';
-        else if (contentLower.includes('fred')) foundCategory = 'Employment Indicators';
-        else if (contentLower.includes('treasury')) foundCategory = 'Government';
-        else if (contentLower.includes('kalshi') || contentLower.includes('polymarket')) foundCategory = 'Prediction Markets';
-        else if (contentLower.includes('debt') || contentLower.includes('deficit') || contentLower.includes('national debt')) foundCategory = 'Government';
-        else if (contentLower.includes('nfl') || contentLower.includes('odds') || /\b(49ers|rams|patriots|cowboys|vikings|chiefs)\b/.test(contentLower)) foundCategory = 'Prediction Markets';
-      }
+    let content = p.content || '';
+    const contentLower = content.toLowerCase();
+    let foundCategory = null;
+    // First try exact indicator names
+    for (const name in indicatorLookup) {
+    if (Object.prototype.hasOwnProperty.call(indicatorLookup, name)) {
+    if (contentLower.includes(name)) { foundCategory = indicatorLookup[name]; break; }
+    }
+    }
+    // If not found, try common agency mentions
+    if (!foundCategory) {
+    if (contentLower.includes('adp')) foundCategory = 'Employment Indicators';
+    else if (contentLower.includes('bls')) foundCategory = 'Consumer Indicators';
+    else if (contentLower.includes('fred')) foundCategory = 'Employment Indicators';
+    else if (contentLower.includes('treasury')) foundCategory = 'Government';
+    else if (contentLower.includes('kalshi') || contentLower.includes('polymarket')) foundCategory = 'Prediction Markets';
+    else if (contentLower.includes('debt') || contentLower.includes('deficit') || contentLower.includes('national debt')) foundCategory = 'Government';
+    else if (contentLower.includes('nfl') || contentLower.includes('odds') || /\b(49ers|rams|patriots|cowboys|vikings|chiefs)\b/.test(contentLower)) foundCategory = 'Prediction Markets';
+    }
 
-      const icon = foundCategory ? categoryIcons[foundCategory] || 'file-text' : '';
-      let iconHtml = icon ? `<i data-lucide="${icon}"></i> ` : '';
-      if (feed.classList.contains('announcements-grid')) {
-        iconHtml = '';
-      }
+    const icon = foundCategory ? categoryIcons[foundCategory] || 'file-text' : '';
+    let iconHtml = icon ? `<i data-lucide="${icon}"></i> ` : '';
+    if (feed.classList.contains('announcements-grid')) {
+    iconHtml = '';
+    }
 
-      // Remove any existing leading icons from content to avoid duplicates
-      content = content.replace(/^<i[^>]*data-lucide[^>]*><\/i>\s*/, '');
+    // Remove any existing leading icons from content to avoid duplicates
+    content = content.replace(/^<i[^>]*data-lucide[^>]*><\/i>\s*/, '');
 
-      return `
-        <div class="announcement-card">
-          <time>${p.date}</time>
-          <div class="content">${iconHtml}${content}</div>
-        </div>
-      `;
+    return `
+    <div class="announcement-card" style="opacity: 0; transform: translateY(20px);">
+    <time>${p.date}</time>
+    <div class="content">${iconHtml}${content}</div>
+    </div>
+    `;
     }).join('') || '<div class="empty-state">No posts available.</div>';
 
     if (window.lucide) window.lucide.createIcons();
+
+    // Animate the announcement cards
+    if (window.Motion && Motion.animate && Motion.stagger) {
+      Motion.animate('.announcement-card', { opacity: 1, y: 0 }, { delay: Motion.stagger(0.1), duration: 0.6, ease: 'easeOut' });
+    }
   }
 
   // Check cache first

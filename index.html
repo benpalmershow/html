@@ -502,6 +502,11 @@
       max-width: 600px;
       margin: 0 auto;
       padding: 0 1rem;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
     }
 
     .announcement-card {
@@ -511,6 +516,23 @@
       padding: 1rem;
       margin-bottom: 1rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      width: 100%;
+      scroll-snap-align: start;
+    }
+
+    @media (min-width: 768px) {
+      .announcements-container {
+        flex-direction: column;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        gap: 0;
+      }
+
+      .announcement-card {
+        width: auto;
+        margin-bottom: 1rem;
+      }
     }
 
     .announcement-card time {
@@ -607,6 +629,7 @@
   });
   </script>
   
+  <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
   <script src="js/nav.js?v=20250926" defer></script>
   <script src="js/socials.js?v=20250926" defer></script>
   <script src="js/dark-mode.js?v=20250926" defer></script>

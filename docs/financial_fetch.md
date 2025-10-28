@@ -267,6 +267,7 @@ const categoryIcons = {
 
 ### Quality Verification for Posts
 - [ ] All numbers match exactly with financials-data.json
+- [ ] Numbers in posts.json match the display values in financials.html
 - [ ] Calculations are accurate (MoM/YOY changes)
 - [ ] Data is current (use most recent available month)
 - [ ] No fabricated or approximated values

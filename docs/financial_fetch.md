@@ -211,6 +211,7 @@ const categoryIcons = {
 - [ ] Chart modals open for applicable indicators
 - [ ] Mobile responsive design intact
 - [ ] Last updated timestamp is current
+- [ ] Verify changes with `git diff` to confirm only intended data was added/modified
 
 ### Error Handling
 **If data source unavailable:**
@@ -261,6 +262,8 @@ const categoryIcons = {
 
 **Example Inaccurate Post (DO NOT USE):**
 "Consumer Sentiment decreased -4.81% MoM to 55.4 in September, as seen in Consumer Indicators in <a href=\"financials.html\"><b>Financials</b></a>."
+
+**Consolidated Post Rule:** When updating multiple financial indicators in a single session, create just one comprehensive post that summarizes all new Added/Updated Data Points, rather than separate posts for each indicator.
 
 ### Quality Verification for Posts
 - [ ] All numbers match exactly with financials-data.json

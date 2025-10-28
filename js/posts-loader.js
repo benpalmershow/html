@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   feed.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>';
 
   const POSTS_CACHE_KEY = 'posts-data-cache';
-  const POSTS_CACHE_DURATION = 3 * 60 * 1000; // 3 minutes
+  const POSTS_CACHE_DURATION = 0; // disabled for live updates
 
   function renderPosts(posts, financials = null) {
     // Build a lookup of indicator name -> category when financials data is available

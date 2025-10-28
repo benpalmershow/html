@@ -740,5 +740,16 @@
             "october": "$1,751",
             "change": "",
             "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs."
-        } ] 
+        },
+        {
+            "category": "Employment Indicators",
+            "agency": "Chicago Fed",
+            "name": "Real-Time Unemployment Rate Forecast",
+            "releaseDay": 0,
+            "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
+            "september":"4.34",
+            "october": "4.35",
+            "change": "",
+            "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
+        } ]
 }

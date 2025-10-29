@@ -53,7 +53,7 @@ class PortfolioManager {
      */
     async loadPortfolioData() {
         try {
-            const response = await fetch('/json/portfolio.json');
+            const response = await fetch('json/portfolio.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -106,31 +106,34 @@ class PortfolioManager {
             const tickerLink = `https://finance.yahoo.com/quote/${stock.ticker}`;
             
             row.innerHTML = `
-                <td class="px-3 py-2 whitespace-nowrap text-slate-700 overflow-hidden text-ellipsis">
-                    <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
-                        ${stock.company}
-                    </a>
-                </td>
-                <td class="px-3 py-2 whitespace-nowrap font-medium text-slate-900 overflow-hidden text-ellipsis">
-                    ${stock.ticker}
-                </td>
-                <td class="px-3 py-2 whitespace-nowrap text-right font-medium text-slate-900">
-                    ${stock.october || '-'}
-                </td>
-                <td class="px-3 py-2 whitespace-nowrap text-right text-slate-500">
-                    ${stock.september || '-'}
-                </td>
-                <td class="px-3 py-2 whitespace-nowrap text-right text-slate-500">
-                    ${stock.august || '-'}
-                </td>
-                <td class="px-3 py-2 text-slate-600 text-xs overflow-hidden w-[52%]">
-                    <div class="truncate w-full group relative">
-                        <span class="font-medium">${description.title}</span> - ${description.short}
-                        ${description.full ? `
-                            <div class="hidden group-hover:block absolute z-10 w-96 p-3 mt-1 -ml-2 text-xs bg-white border border-slate-200 rounded shadow-lg">
-                                <div class="font-semibold mb-1">${description.title}</div>
-                                <div>${description.full}</div>
-                            </div>
+            <td class="px-3 py-2 whitespace-nowrap text-slate-700 overflow-hidden text-ellipsis">
+            <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
+            ${stock.company}
+            </a>
+            </td>
+            <td class="px-3 py-2 whitespace-nowrap font-medium text-slate-900 overflow-hidden text-ellipsis">
+            ${stock.ticker}
+            </td>
+            <td class="px-3 py-2 whitespace-nowrap text-right font-medium text-slate-900">
+            ${stock.currentPrice || '-'}
+            </td>
+            <td class="px-3 py-2 whitespace-nowrap text-right font-medium text-slate-900">
+            ${stock.october || '-'}
+            </td>
+            <td class="px-3 py-2 whitespace-nowrap text-right text-slate-500">
+            ${stock.september || '-'}
+            </td>
+            <td class="px-3 py-2 whitespace-nowrap text-right text-slate-500">
+            ${stock.august || '-'}
+            </td>
+            <td class="px-3 py-2 text-slate-600 text-xs overflow-hidden w-[52%]">
+            <div class="truncate w-full group relative">
+            <span class="font-medium">${description.title}</span> - ${description.short}
+            ${description.full ? `
+            <div class="hidden group-hover:block absolute z-10 w-96 p-3 mt-1 -ml-2 text-xs bg-white border border-slate-200 rounded shadow-lg">
+                    <div class="font-semibold mb-1">${description.title}</div>
+                        <div>${description.full}</div>
+                        </div>
                         ` : ''}
                     </div>
                 </td>
@@ -298,6 +301,18 @@ class PortfolioManager {
     }
 
     /**
+     * Parse a price value from a string
+     * @param {string} value - The price value to parse (e.g., "$123.45" or "123.45")
+     * @returns {number} The parsed number or -Infinity for '-' values
+     */
+    parsePrice(value) {
+        if (value === '-' || value === undefined) return -Infinity;
+        const cleanValue = value.replace('$', '').replace(',', '');
+        const num = parseFloat(cleanValue);
+        return isNaN(num) ? -Infinity : num;
+    }
+
+    /**
      * Update the sort indicators in the table header
      * @param {string} sortKey - The key of the column being sorted
      * @param {string} direction - The sort direction ('asc' or 'desc')
@@ -338,6 +353,7 @@ class PortfolioManager {
         const sortFunctions = {
             company: (a, b) => a.company.localeCompare(b.company),
             ticker: (a, b) => a.ticker.localeCompare(b.ticker),
+            currentPrice: (a, b) => this.parsePrice(a.currentPrice) - this.parsePrice(b.currentPrice),
             october: (a, b) => this.parsePercentage(a.october) - this.parsePercentage(b.october),
             september: (a, b) => this.parsePercentage(a.september) - this.parsePercentage(b.september),
             august: (a, b) => this.parsePercentage(a.august) - this.parsePercentage(b.august)

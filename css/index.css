@@ -71,7 +71,6 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
 }
 
 .hint-content {
@@ -224,7 +223,6 @@
   text-align: center;
   margin: 0.5rem 0 1.5rem 0;
   opacity: 0.6;
-  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -308,22 +306,43 @@
   text-decoration: underline;
 }
 
-.brand-logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 1002;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.link-icon {
+  font-size: 0.8rem;
+  margin-right: 0.25rem;
+  color: var(--logo-orange);
 }
 
-.brand-logo:hover {
-  transform: scale(1.05);
+/* Update item styles for improved post layout */
+.update-item {
+  margin-bottom: 1rem;
 }
+
+.update-text {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.update-media {
+  margin-bottom: 0.5rem;
+}
+
+.update-media img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.update-action a {
+  color: var(--logo-orange);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.update-action a:hover {
+  text-decoration: underline;
+}
+
+
 
 /* Rock Show Text Pop-ups */
 .rock-popup {

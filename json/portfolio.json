@@ -1,209 +1,226 @@
 {
     "lastUpdated": "2023-10-09T13:30:00-07:00",
     "portfolioComparison": {
-        "title": "Portfolio Comparison",
-        "description": "Ticker allocations across different months",
-        "columns": ["Company", "Ticker", "October", "September", "August", "Description"],
+    "title": "Portfolio Comparison",
+    "description": "Ticker allocations across different months",
+    "columns": ["Company", "Ticker", "Current Price", "October", "September", "August", "Description"],
         "stocks": [
             {
-                "company": "iShares Bitcoin Trust",
-                "ticker": "IBIT",
-                "october": "12%",
-                "september": "-",
-                "august": "-",
-                "description": {
-                    "title": "Bitcoin ETF",
-                    "short": "Leading spot Bitcoin ETF providing exposure to Bitcoin price movements. Institutional adoption continues to grow.",
-                    "full": "Leading spot Bitcoin ETF providing exposure to Bitcoin price movements. Institutional adoption of Bitcoin as a store of value and inflation hedge continues to grow. First-mover advantage among spot Bitcoin ETFs with strong liquidity. Regulatory scrutiny and Bitcoin price volatility remain key risks."
-                },
+            "company": "iShares Bitcoin Trust",
+            "ticker": "IBIT",
+            "currentPrice": "$35.50",
+            "october": "12%",
+            "september": "-",
+            "august": "-",
+            "description": {
+            "title": "Bitcoin ETF",
+            "short": "Leading spot Bitcoin ETF providing exposure to Bitcoin price movements. Institutional adoption continues to grow.",
+                "full": "Leading spot Bitcoin ETF providing exposure to Bitcoin price movements. Institutional adoption of Bitcoin as a store of value and inflation hedge continues to grow. First-mover advantage among spot Bitcoin ETFs with strong liquidity. Regulatory scrutiny and Bitcoin price volatility remain key risks."
+            },
                 "highlight": true
             },
             {
-                "company": "NVIDIA Corporation",
-                "ticker": "NVDA",
-                "october": "11%",
-                "september": "12%",
-                "august": "15%",
-                "description": {
-                    "title": "AI & Graphics Leader",
-                    "short": "Dominant in AI GPUs. Strong growth in data center and gaming. Leader in AI infrastructure.",
-                    "full": "Leading designer of graphics processing units (GPUs) for gaming and professional markets. Dominant position in AI and machine learning hardware. Strong growth in data center and automotive segments. Significant investments in AI and deep learning technologies. High valuation multiples reflect growth expectations."
-                },
+            "company": "NVIDIA Corporation",
+            "ticker": "NVDA",
+            "currentPrice": "$450.23",
+            "october": "11%",
+            "september": "12%",
+            "august": "15%",
+            "description": {
+            "title": "AI & Graphics Leader",
+            "short": "Dominant in AI GPUs. Strong growth in data center and gaming. Leader in AI infrastructure.",
+                "full": "Leading designer of graphics processing units (GPUs) for gaming and professional markets. Dominant position in AI and machine learning hardware. Strong growth in data center and automotive segments. Significant investments in AI and deep learning technologies. High valuation multiples reflect growth expectations."
+            },
                 "highlight": true
             },
             {
-                "company": "SPDR Bloomberg 1-3 Month T-Bill ETF",
-                "ticker": "BIL",
-                "october": "0%",
-                "september": "11%",
-                "august": "10%",
-                "description": {
-                    "title": "Treasury Bill ETF",
-                    "short": "Ultra-short duration Treasury exposure. Provides liquidity and capital preservation.",
-                    "full": "ETF that invests in Treasury bills with maturities between 1 and 3 months. Provides exposure to short-term US government debt. Low risk and high liquidity. Used for cash management and as a safe haven during market volatility. Yields closely follow the Federal Funds rate."
+            "company": "SPDR Bloomberg 1-3 Month T-Bill ETF",
+            "ticker": "BIL",
+            "currentPrice": "$91.52",
+            "october": "0%",
+            "september": "11%",
+            "august": "10%",
+            "description": {
+            "title": "Treasury Bill ETF",
+                "short": "Ultra-short duration Treasury exposure. Provides liquidity and capital preservation.",
+                "full": "ETF that invests in Treasury bills with maturities between 1 and 3 months. Provides exposure to short-term US government debt. Low risk and high liquidity. Used for cash management and as a safe haven during market volatility. Yields closely follow the Federal Funds rate."
                 },
                 "highlight": false
             },
             {
-                "company": "VanEck Semiconductor ETF",
-                "ticker": "SMH",
-                "october": "0%",
-                "september": "16%",
-                "august": "12%",
-                "description": {
-                    "title": "Semiconductor ETF",
-                    "short": "Diversified exposure to semiconductor industry. Benefits from tech growth and AI demand.",
+            "company": "VanEck Semiconductor ETF",
+            "ticker": "SMH",
+            "currentPrice": "$130.45",
+            "october": "0%",
+            "september": "16%",
+            "august": "12%",
+            "description": {
+                "title": "Semiconductor ETF",
+                "short": "Diversified exposure to semiconductor industry. Benefits from tech growth and AI demand.",
                     "full": "ETF that tracks the performance of companies in the semiconductor industry. Provides diversified exposure to semiconductor manufacturers, equipment makers, and related companies. Beneficiary of growth in AI, 5G, IoT, and cloud computing. Lower risk than individual stocks but still subject to industry cycles."
                 },
-                "highlight": false
+            "highlight": false
             },
             {
-                "company": "Micron Technology, Inc.",
-                "ticker": "MU",
-                "october": "9%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
+            "company": "Micron Technology, Inc.",
+            "ticker": "MU",
+            "currentPrice": "$70.12",
+            "october": "9%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
                     "title": "Memory Leader",
                     "short": "Strong in DRAM/NAND markets. Benefits from AI/data center growth. Watch for memory pricing cycles.",
                     "full": "Leading manufacturer of memory and storage solutions including DRAM, NAND flash, and 3D XPoint memory. Strong position in high-growth memory markets. Beneficiary of AI and data center demand. Cyclical industry with pricing volatility. Significant R&D investments in next-gen memory technologies."
                 }
             },
             {
-                "company": "Microsoft Corporation",
-                "ticker": "MSFT",
-                "october": "8%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Tech Titan",
-                    "short": "Cloud leader with Azure/Office 365. Strong in enterprise software. Major AI investments driving growth.",
-                    "full": "Technology leader with dominant positions in cloud computing (Azure), productivity software (Office 365), and enterprise services. Strong growth in cloud and AI businesses. Consistent revenue growth and profitability. Significant investments in AI and gaming. Mature but still growing cash cow with strong competitive advantages."
+            "company": "Microsoft Corporation",
+            "ticker": "MSFT",
+            "currentPrice": "$330.45",
+            "october": "8%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
+            "title": "Tech Titan",
+            "short": "Cloud leader with Azure/Office 365. Strong in enterprise software. Major AI investments driving growth.",
+                "full": "Technology leader with dominant positions in cloud computing (Azure), productivity software (Office 365), and enterprise services. Strong growth in cloud and AI businesses. Consistent revenue growth and profitability. Significant investments in AI and gaming. Mature but still growing cash cow with strong competitive advantages."
                 }
             },
             {
-                "company": "Eli Lilly and Company",
-                "ticker": "LLY",
-                "october": "6%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Pharma Giant",
-                    "short": "Leader in diabetes/obesity treatments. Strong pipeline with Mounjaro. Watch pricing pressures in key markets.",
+            "company": "Eli Lilly and Company",
+            "ticker": "LLY",
+            "currentPrice": "$550.23",
+            "october": "6%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
+            "title": "Pharma Giant",
+                "short": "Leader in diabetes/obesity treatments. Strong pipeline with Mounjaro. Watch pricing pressures in key markets.",
                     "full": "Pharmaceutical company with leading positions in diabetes, obesity, and Alzheimer's treatments. Strong pipeline including Mounjaro and donanemab. Pricing pressures and competition in diabetes market. Significant R&D investments in neuroscience and immunology. Attractive dividend yield with consistent growth."
                 }
             },
             {
-                "company": "Newmont Corporation",
-                "ticker": "NEM",
-                "october": "5%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Gold Mining",
+            "company": "Newmont Corporation",
+            "ticker": "NEM",
+            "currentPrice": "$45.67",
+            "october": "5%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
+                "title": "Gold Mining",
                     "short": "Largest gold miner. Benefits from gold price appreciation. Focus on operational efficiency.",
                     "full": "World's largest gold mining company with operations across the Americas, Africa, and Australia. Strong balance sheet and dividend yield. Exposure to gold prices as a hedge against inflation and economic uncertainty. Focus on operational efficiency and cost control. Environmental and regulatory considerations are key risks."
-                }
+            }
             },
             {
-                "company": "Gilead Sciences, Inc.",
-                "ticker": "GILD",
-                "october": "4%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
+            "company": "Gilead Sciences, Inc.",
+            "ticker": "GILD",
+            "currentPrice": "$75.12",
+            "october": "4%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
                     "title": "Biopharmaceutical",
                     "short": "HIV and HCV treatments. Pipeline potential in oncology. Attractive valuation with strong cash flow.",
-                    "full": "Biopharmaceutical company focused on therapies for HIV/AIDS, liver diseases, and cancer. Strong portfolio of antiretroviral drugs. Pipeline includes promising candidates in oncology and inflammation. Generates significant cash flow but faces patent expirations. Attractive dividend yield with potential for growth."
-                }
+                "full": "Biopharmaceutical company focused on therapies for HIV/AIDS, liver diseases, and cancer. Strong portfolio of antiretroviral drugs. Pipeline includes promising candidates in oncology and inflammation. Generates significant cash flow but faces patent expirations. Attractive dividend yield with potential for growth."
+            }
             },
             {
-                "company": "AngloGold Ashanti Limited",
-                "ticker": "AU",
-                "october": "3%",
-                "september": "0%",
-                "august": "0%",
+            "company": "AngloGold Ashanti Limited",
+            "ticker": "AU",
+            "currentPrice": "$20.34",
+            "october": "3%",
+            "september": "0%",
+            "august": "0%",
                 "description": {
                     "title": "Gold Miner",
-                    "short": "Global gold producer. Strong balance sheet. Leveraged to gold prices.",
-                    "full": "Global gold mining company with operations in Africa, Australia, and the Americas. Strong production profile with long mine life. Focus on operational efficiency and cost control. Exposure to gold prices as a hedge against inflation and economic uncertainty. Committed to sustainable and responsible mining practices."
-                }
+                "short": "Global gold producer. Strong balance sheet. Leveraged to gold prices.",
+                "full": "Global gold mining company with operations in Africa, Australia, and the Americas. Strong production profile with long mine life. Focus on operational efficiency and cost control. Exposure to gold prices as a hedge against inflation and economic uncertainty. Committed to sustainable and responsible mining practices."
+            }
             },
             {
-                "company": "Amazon.com, Inc.",
-                "ticker": "AMZN",
-                "october": "6%",
-                "september": "8%",
+            "company": "Amazon.com, Inc.",
+            "ticker": "AMZN",
+            "currentPrice": "$130.78",
+            "october": "6%",
+            "september": "8%",
                 "august": "8%",
                 "description": {
-                    "title": "E-commerce & Cloud",
-                    "short": "Leader in e-commerce and cloud computing. Strong AWS growth. Improving retail margins.",
-                    "full": "Global leader in e-commerce, cloud computing, digital streaming, and artificial intelligence. Amazon Web Services (AWS) is the market leader in cloud infrastructure. Strong growth in advertising and third-party seller services. Focus on cost optimization and improving retail margins. Significant investments in AI and logistics."
-                }
+                "title": "E-commerce & Cloud",
+                "short": "Leader in e-commerce and cloud computing. Strong AWS growth. Improving retail margins.",
+                "full": "Global leader in e-commerce, cloud computing, digital streaming, and artificial intelligence. Amazon Web Services (AWS) is the market leader in cloud infrastructure. Strong growth in advertising and third-party seller services. Focus on cost optimization and improving retail margins. Significant investments in AI and logistics."
+            }
             },
             {
-                "company": "Super Micro Computer, Inc.",
-                "ticker": "SMCI",
-                "october": "7%",
+            "company": "Super Micro Computer, Inc.",
+            "ticker": "SMCI",
+            "currentPrice": "$300.45",
+            "october": "7%",
                 "september": "0%",
                 "august": "0%",
-                "description": {
-                    "title": "AI Server Manufacturer",
-                    "short": "Specialized in high-performance computing. Benefits from AI infrastructure buildout.",
-                    "full": "Leading provider of high-performance server and storage solutions. Strong position in AI and machine learning infrastructure. Beneficiary of data center expansion and cloud computing growth. Custom solutions for enterprise and hyperscale customers. Higher volatility than larger tech companies."
-                }
+            "description": {
+                "title": "AI Server Manufacturer",
+                "short": "Specialized in high-performance computing. Benefits from AI infrastructure buildout.",
+                "full": "Leading provider of high-performance server and storage solutions. Strong position in AI and machine learning infrastructure. Beneficiary of data center expansion and cloud computing growth. Custom solutions for enterprise and hyperscale customers. Higher volatility than larger tech companies."
+            }
             },
             {
-                "company": "Broadcom Inc.",
-                "ticker": "AVGO",
+            "company": "Broadcom Inc.",
+            "ticker": "AVGO",
+            "currentPrice": "$950.67",
                 "october": "8%",
                 "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Semiconductor & Infrastructure",
-                    "short": "Diversified semiconductor company with strong positions in networking and enterprise software.",
-                    "full": "Leading designer, developer and global supplier of a broad range of semiconductor and infrastructure software solutions. Strong positions in networking, broadband, wireless, and storage. Significant exposure to cloud data centers and enterprise software. Known for consistent dividend growth and strong cash flow generation."
-                }
+            "august": "0%",
+            "description": {
+                "title": "Semiconductor & Infrastructure",
+                "short": "Diversified semiconductor company with strong positions in networking and enterprise software.",
+                "full": "Leading designer, developer and global supplier of a broad range of semiconductor and infrastructure software solutions. Strong positions in networking, broadband, wireless, and storage. Significant exposure to cloud data centers and enterprise software. Known for consistent dividend growth and strong cash flow generation."
+            }
             },
             {
-                "company": "CME Group Inc.",
-                "ticker": "CME",
+            "company": "CME Group Inc.",
+            "ticker": "CME",
+                "currentPrice": "$200.12",
                 "october": "6%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Financial Derivatives Exchange",
-                    "short": "World's leading derivatives marketplace. Benefits from market volatility and interest rate changes.",
-                    "full": "World's leading and most diverse derivatives marketplace, handling 3 billion contracts worth approximately $1 quadrillion annually. Operates major exchanges including CME, CBOT, NYMEX, and COMEX. Strong moat with high barriers to entry. Revenue tied to trading volumes, which increase during periods of market volatility. Consistent dividend payer with strong cash flows."
-                }
+            "september": "0%",
+            "august": "0%",
+            "description": {
+                "title": "Financial Derivatives Exchange",
+                "short": "World's leading derivatives marketplace. Benefits from market volatility and interest rate changes.",
+                "full": "World's leading and most diverse derivatives marketplace, handling 3 billion contracts worth approximately $1 quadrillion annually. Operates major exchanges including CME, CBOT, NYMEX, and COMEX. Strong moat with high barriers to entry. Revenue tied to trading volumes, which increase during periods of market volatility. Consistent dividend payer with strong cash flows."
+            }
             },
             {
-                "company": "Merck & Co., Inc.",
+            "company": "Merck & Co., Inc.",
                 "ticker": "MRK",
-                "october": "5%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Pharmaceutical Leader",
-                    "short": "Diversified healthcare company with strong oncology and vaccine franchises.",
-                    "full": "Global healthcare company that delivers innovative health solutions through its prescription medicines, vaccines, biologic therapies, and animal health products. Strong portfolio including blockbuster drugs Keytruda and Gardasil. Focus on oncology, vaccines, and animal health. Consistent R&D investment with promising pipeline. Attractive dividend yield with potential for growth."
-                }
+                "currentPrice": "$105.23",
+            "october": "5%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
+                "title": "Pharmaceutical Leader",
+                "short": "Diversified healthcare company with strong oncology and vaccine franchises.",
+            "full": "Global healthcare company that delivers innovative health solutions through its prescription medicines, vaccines, biologic therapies, and animal health products. Strong portfolio including blockbuster drugs Keytruda and Gardasil. Focus on oncology, vaccines, and animal health. Consistent R&D investment with promising pipeline. Attractive dividend yield with potential for growth."
+            }
             },
             {
                 "company": "L3Harris Technologies, Inc.",
                 "ticker": "LHX",
-                "october": "4%",
-                "september": "0%",
-                "august": "0%",
-                "description": {
-                    "title": "Defense & Aerospace",
-                    "short": "Defense technology company with focus on communication systems and electronic warfare.",
-                    "full": "Technology company that provides mission-critical solutions for space and airborne platforms, including communication, electronic, and sensor systems. Serves defense, intelligence, and commercial markets. Benefits from increased defense spending and modernization programs. Strong backlog and cash flow generation. Positioned well in growing defense technology segments."
-                }
+            "currentPrice": "$170.89",
+            "october": "4%",
+            "september": "0%",
+            "august": "0%",
+            "description": {
+                "title": "Defense & Aerospace",
+            "short": "Defense technology company with focus on communication systems and electronic warfare.",
+            "full": "Technology company that provides mission-critical solutions for space and airborne platforms, including communication, electronic, and sensor systems. Serves defense, intelligence, and commercial markets. Benefits from increased defense spending and modernization programs. Strong backlog and cash flow generation. Positioned well in growing defense technology segments."
+            }
             },
             {
                 "company": "Applied Materials, Inc.",
                 "ticker": "AMAT",
+                "currentPrice": "$120.45",
                 "october": "7%",
                 "september": "9%",
                 "august": "0%",

@@ -35,7 +35,7 @@ blockquote.guidance-box {
 .stock-up{color:var(--color-success);font-weight:bold}
 .market-cap{font-size:0.9em;color:var(--color-gray-500)}
 .stock-details{margin:0.25rem 0 0 0;font-size:0.9em}
-.category-badge{display:inline-block;font-size:0.75em;font-weight:bold;padding:0.15em 0.4em;border-radius:0.2em;margin-right:0.5em;margin-bottom:0.2em;vertical-align:middle;letter-spacing:0.03em}.category-badge.ipo{background:var(--color-category-ipo);color:var(--color-white)}.category-badge.earnings{background:var(--color-category-earnings);color:var(--color-white)}.category-badge.policy{background:var(--color-category-policy);color:var(--color-gray-800)}.category-badge.healthcare{background:var(--color-category-healthcare);color:var(--color-white)}.category-badge.legal{background:var(--color-category-legal);color:var(--color-white)}
+.category-badge{display:inline-block;font-size:0.75em;font-weight:bold;padding:0.15em 0.4em;border-radius:0.2em;margin-right:0.5em;margin-bottom:0.2em;vertical-align:middle;letter-spacing:0.03em}.category-badge.ipo{background:var(--color-category-ipo);color:var(--color-white)}.category-badge.earnings{background:var(--color-category-earnings);color:var(--color-white)}.category-badge.policy{background:var(--color-category-policy);color:var(--color-gray-800)}.category-badge.healthcare{background:var(--color-category-healthcare);color:var(--color-white)}.category-badge.legal{background:var(--color-category-legal);color:var(--color-white)}.category-badge.political{background:var(--color-category-political);color:var(--color-white)}
 .category-badge.corrections{background:var(--color-category-corrections);color:var(--color-white)}
 .filter-buttons {
   display: flex;
@@ -121,6 +121,11 @@ blockquote.guidance-box {
 .filter-btn.legal.active {
   background: var(--color-category-legal);
   box-shadow: 0 2px 8px rgba(44, 95, 90, 0.3);
+}
+
+.filter-btn.political.active {
+  background: var(--color-category-political);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
 }
 
 .filter-btn.corrections.active {
@@ -742,5 +747,7 @@ blockquote.guidance-box {
   font-weight: 500;
   text-align: center;
 }
+
+
 
 

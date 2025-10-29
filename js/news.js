@@ -1,5 +1,7 @@
+(function() {
     // List of all articles (add new articles here)
     const ARTICLES = [
+    'oversight-committee-report',
     'urban_crime_2020',
     'chiles-v-salazar',
     'barrett_v_us',
@@ -24,7 +26,8 @@
       'circle-ipo',
       'big-beautiful-bill',
       'corrections-hood-twlo',
-      'sustainable-abundance'
+      'sustainable-abundance',
+      'oregon-kei-trucks-sb1213'
     ];
 
     // Parse frontmatter from markdown
@@ -46,6 +49,8 @@
       
       return { metadata, content };
     }
+
+    
 
     // Load article from markdown file
     async function loadArticle(filename) {
@@ -93,41 +98,44 @@
 
     // Render full article view
     async function renderFullArticle(articleId) {
-      const feedView = document.getElementById('news-feed-view');
-      const articleView = document.getElementById('full-article-view');
-      const container = document.getElementById('article-container');
-      
-      feedView.style.display = 'none';
-      articleView.style.display = 'block';
-      
-      container.innerHTML = '<div class="loading">Loading article...</div>';
-      
-      // Load article
-      const article = await loadArticle(articleId);
-      
-      if (!article) {
-        container.innerHTML = '<div class="error-message">Article not found. <a href="news.html">Return to news feed</a></div>';
-        return;
-      }
-      
-      container.innerHTML = `
-      ${article.html}
-      `;
+    const feedView = document.getElementById('news-feed-view');
+    const articleView = document.getElementById('full-article-view');
+    const container = document.getElementById('article-container');
 
-      const backButton = document.querySelector('.back-button');
-      let metaEl = backButton.nextElementSibling;
-      if (metaEl && metaEl.classList.contains('article-meta-header')) {
-        metaEl.remove();
-      }
-      metaEl = document.createElement('div');
-      metaEl.classList.add('article-meta-header');
-      metaEl.style.display = 'flex';
-      metaEl.style.alignItems = 'center';
-      metaEl.style.gap = '10px';
-      metaEl.style.fontSize = '0.9em';
-      metaEl.style.color = '#888';
-      metaEl.style.marginBottom = '10px';
-      let metaHtml = `<span>${formatDate(article.metadata.date)}</span>`;
+    feedView.style.display = 'none';
+    articleView.style.display = 'block';
+
+    container.innerHTML = '<div class="loading">Loading article...</div>';
+
+    // Load article
+    const article = await loadArticle(articleId);
+
+    if (!article) {
+    container.innerHTML = '<div class="error-message">Article not found. <a href="news.html">Return to news feed</a></div>';
+    return;
+    }
+
+    // Article content is processed as-is without price replacements
+    let processedHtml = article.html;
+
+    container.innerHTML = `
+    ${processedHtml}
+    `;
+
+    const backButton = document.querySelector('.back-button');
+    let metaEl = backButton.nextElementSibling;
+    if (metaEl && metaEl.classList.contains('article-meta-header')) {
+      metaEl.remove();
+    }
+    metaEl = document.createElement('div');
+    metaEl.classList.add('article-meta-header');
+    metaEl.style.display = 'flex';
+    metaEl.style.alignItems = 'center';
+    metaEl.style.gap = '10px';
+    metaEl.style.fontSize = '0.9em';
+    metaEl.style.color = '#888';
+    metaEl.style.marginBottom = '10px';
+    let metaHtml = `<span>${formatDate(article.metadata.date)}</span>`;
       if (article.metadata.ticker) {
         metaHtml += `<span><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
       }
@@ -245,5 +253,7 @@
 
     // Handle browser back/forward
     window.addEventListener('popstate', initRouter);
+
+})();
 
 

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-25T19:00:00Z",
+    "lastUpdated": "2025-10-29T20:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -588,11 +588,12 @@
             "name": "Case-Shiller National Home Price Index",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
-            "march": "327.745",
-            "april": "329.911",
-            "may": "331.446",
-            "june": "331.671",
-            "july": "331.127",
+            "march": "327.747",
+            "april": "329.917",
+            "may": "331.458",
+            "june": "331.685",
+            "july": "331.003",
+            "august":"330.022",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },
@@ -713,15 +714,15 @@
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "MIA @ ATL",
-            "game_title": "Dolphins @ Falcons",
-            "game_time": "Oct 26, 2025 1:00 PM ET",
-            "game_time_iso": "2025-10-26T13:00:00-04:00",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct26miaatl",
-            "polymarket_url": "https://polymarket.com/event/nfl-mia-atl-2025-10-26",
-            "MIA_win_odds": "24¢",
-            "ATL_win_odds": "76¢",
-            "explanation": "NFL game prediction market showing the probability of the Dolphins covering the spread against the Falcons. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+            "name": "ATL @ NE",
+            "game_title": "Falcons @ Patriots",
+            "game_time": "Nov 2, 2025 1:00 PM ET",
+            "game_time_iso": "2025-11-02T13:00:00-05:00",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25nov02atlne",
+            "polymarket_url": "https://polymarket.com/event/nfl-atl-ne-2025-11-02",
+            "ATL_win_odds": "31¢",
+            "NE_win_odds": "69¢",
+            "explanation": "NFL game prediction market showing the probability of the Falcons covering the spread against the Patriots. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
         },
     
         {

@@ -42,6 +42,14 @@ When user prompts related to financial data updates:
 **CRITICAL: Always verify actual odds from live market data before updating JSON**
 **ABSOLUTELY DO NOT enter odds without first verifying from the actual market URLs. Use live data only, not cached or old information. Double-check that odds are current and accurate before committing to JSON.**
 
+**For NFL Prediction Markets Specifically:**
+1. Visit the Kalshi URL and note the current "Yes" probability for each team's outcome
+2. Visit the Polymarket URL and cross-reference the odds
+3. Use the most recent odds from Kalshi as primary, Polymarket as backup
+4. If odds differ by more than 5¢ between platforms, investigate or use the more recent update
+5. Record the exact odds as they appear (e.g., if Kalshi shows 69¢ for Patriots win, use "69¢")
+6. Do not approximate or estimate - use the live numbers only
+
 **Kalshi Odds Verification:**
 1. Visit the Kalshi URL (e.g., `https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct19nygden`)
 2. Look for the "Yes" probability for each team outcome
@@ -285,8 +293,8 @@ Update financials with new NFL game: Dolphins @ Falcons on October 26
 **Process:**
 1. Check existing NFL predictions in JSON
 2. Remove oldest completed game
-3. Research current odds on Kalshi/Polymarket
-4. Create new indicator object:
+3. Visit the Kalshi and Polymarket URLs to verify current odds
+4. Create new indicator object (replace odds with verified values):
 ```json
 {
      "category": "Prediction Markets",
@@ -297,11 +305,13 @@ Update financials with new NFL game: Dolphins @ Falcons on October 26
      "game_time_iso": "2025-10-26T13:00:00-04:00",
      "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25oct26miaatl",
      "polymarket_url": "https://polymarket.com/event/nfl-mia-atl-2025-10-26",
-     "MIA_win_odds": "55¢",
-     "ATL_win_odds": "45¢",
+     "MIA_win_odds": "[VERIFIED_ODDS_FROM_KALSHI]¢",
+     "ATL_win_odds": "[VERIFIED_ODDS_FROM_KALSHI]¢",
      "explanation": "NFL game prediction market showing the probability of the Dolphins covering the spread against the Falcons. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
 }
 ```
+
+**Important:** Replace `[VERIFIED_ODDS_FROM_KALSHI]` with the exact odds from the live Kalshi market URL. Do not use estimated or old odds.
 
 5. Update `lastUpdated` timestamp
 6. Validate JSON and test page display

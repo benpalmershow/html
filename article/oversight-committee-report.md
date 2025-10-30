@@ -3,6 +3,7 @@ title: How to Plead the 5th
 date: 2025-10-29
 category: political
 icon: hand
+thumbnail: https://img.youtube.com/vi/Q7pfBiM_9Bc/0.jpg
 summary: United States House Committee on Oversight and Government Reform releases report on the Biden Autopen Presidency
 ---
 

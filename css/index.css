@@ -419,4 +419,159 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Phase 1: Micro-Animations */
+
+/* Enhanced card hover lift effects */
+.announcement-card,
+.card {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  will-change: transform;
+}
+
+.announcement-card:hover,
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(44, 95, 90, 0.15);
+}
+
+/* Glassmorphism card design */
+.announcement-card {
+  background: rgba(248, 244, 230, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(232, 220, 192, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .announcement-card {
+    background: rgba(37, 43, 42, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(107, 114, 128, 0.3);
+  }
+}
+
+/* Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .announcement-card,
+  .card {
+    transition: none;
+    will-change: auto;
+  }
+  
+  .announcement-card:hover,
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Phase 3: Visual Hierarchy & Design */
+
+/* Gradient overlays for backgrounds */
+.hero {
+  background: linear-gradient(135deg, 
+    var(--bg-primary) 0%, 
+    var(--bg-secondary) 50%, 
+    var(--bg-primary) 100%);
+}
+
+.announcements {
+  background: linear-gradient(180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: linear-gradient(135deg,
+      var(--bg-primary) 0%,
+      rgba(37, 43, 42, 0.8) 50%,
+      var(--bg-primary) 100%);
+  }
+  
+  .announcements {
+    background: linear-gradient(180deg,
+      var(--bg-primary) 0%,
+      rgba(37, 43, 42, 0.6) 100%);
+  }
+}
+
+/* Custom scrollbar - Branded teal/orange theme */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--logo-teal) 0%, var(--logo-orange) 100%);
+  border-radius: 6px;
+  border: 2px solid var(--bg-secondary);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--logo-orange) 0%, var(--logo-teal) 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-secondary);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--logo-teal) var(--bg-secondary);
+}
+
+/* Enhanced button states with micro-animations */
+button,
+.hint-close,
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+button::before,
+.hint-close::before,
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:active::before,
+.hint-close:active::before,
+.cta-button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:hover,
+.hint-close:hover,
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(44, 95, 90, 0.25);
+}
+
+button:active,
+.hint-close:active,
+.cta-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
 

@@ -35,8 +35,71 @@ blockquote.guidance-box {
 .stock-up{color:var(--color-success);font-weight:bold}
 .market-cap{font-size:0.9em;color:var(--color-gray-500)}
 .stock-details{margin:0.25rem 0 0 0;font-size:0.9em}
-.category-badge{display:inline-block;font-size:0.75em;font-weight:bold;padding:0.15em 0.4em;border-radius:0.2em;margin-right:0.5em;margin-bottom:0.2em;vertical-align:middle;letter-spacing:0.03em}.category-badge.ipo{background:var(--color-category-ipo);color:var(--color-white)}.category-badge.earnings{background:var(--color-category-earnings);color:var(--color-white)}.category-badge.policy{background:var(--color-category-policy);color:var(--color-gray-800)}.category-badge.healthcare{background:var(--color-category-healthcare);color:var(--color-white)}.category-badge.legal{background:var(--color-category-legal);color:var(--color-white)}.category-badge.political{background:var(--color-category-political);color:var(--color-white)}
-.category-badge.corrections{background:var(--color-category-corrections);color:var(--color-white)}
+/* Phase 3: Animated pill-style category badges */
+.category-badge {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 0.25em 0.65em;
+  border-radius: 12px;
+  margin-right: 0.5em;
+  margin-bottom: 0.2em;
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+.category-badge:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.category-badge.ipo {
+  background: linear-gradient(135deg, var(--color-category-ipo) 0%, #1565c0 100%);
+  color: var(--color-white);
+}
+
+.category-badge.earnings {
+  background: linear-gradient(135deg, var(--color-category-earnings) 0%, #2e7d32 100%);
+  color: var(--color-white);
+}
+
+.category-badge.policy {
+  background: linear-gradient(135deg, var(--color-category-policy) 0%, #e65100 100%);
+  color: var(--color-white);
+}
+
+.category-badge.healthcare {
+  background: linear-gradient(135deg, var(--color-category-healthcare) 0%, #059669 100%);
+  color: var(--color-white);
+}
+
+.category-badge.legal {
+  background: linear-gradient(135deg, var(--color-category-legal) 0%, #1e4d48 100%);
+  color: var(--color-white);
+}
+
+.category-badge.political {
+  background: linear-gradient(135deg, var(--color-category-political) 0%, #7c3aed 100%);
+  color: var(--color-white);
+}
+
+.category-badge.corrections {
+  background: linear-gradient(135deg, var(--color-category-corrections) 0%, #c62828 100%);
+  color: var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-badge {
+    transition: none;
+  }
+  
+  .category-badge:hover {
+    transform: none;
+  }
+}
 .filter-buttons {
   display: flex;
   flex-wrap: wrap;

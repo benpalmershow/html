@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-10-29T20:00:00Z",
+    "lastUpdated": "2025-10-30T12:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -633,23 +633,6 @@
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
         },
         {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "FOMC October Rate Decision (BPS)",
-            "releaseDay": 29,
-            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-25oct",
-            "polymarket_url": "https://polymarket.com/event/fed-decision-in-october?tid=1758147117194",
-
-            "next_meeting": "October 29, 2025",
-            "bps_probabilities": {
-                "25BP Decrease": "91%",
-                "50+BP Decrease": "4%",
-                "No Change": "7%"
-            },
-            "change": "",
-            "explanation": "Prediction market probabilities for Federal Reserve interest rate decisions at the October FOMC meeting. Data aggregated from both Kalshi and Polymarket platforms showing market consensus on potential rate changes measured in basis points (BPS)."
-        },
-        {
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Existing Home Sales",
@@ -752,5 +735,23 @@
             "october": "4.35",
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
+        },
+
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "FOMC December Rate Decision (BPS)",
+            "releaseDay": 10,
+            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-25dec",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-december",
+            "next_meeting": "December 10, 2025",
+            "bps_probabilities": {
+                "25BP Decrease": "71%",
+                "No Change": "27%",
+                "50+BP Decrease": "2%",
+                "25+BP Increase": "1%"
+            },
+            "change": "",
+            "explanation": "Prediction market probabilities for Federal Reserve interest rate decisions at the December FOMC meeting. Data aggregated from both Kalshi and Polymarket platforms showing market consensus on potential rate changes measured in basis points (BPS)."
         } ]
 }

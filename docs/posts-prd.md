@@ -336,13 +336,164 @@ When improving a post, follow this checklist:
 - **Prompt**: "now scan all of @json/posts.json for cover images missing. use / update @docs/posts-prd.md to ensure none are missing"
 - **Change**: Ensured 100% coverage of cover images for all media posts (books, films, music, events) across the entire posts.json file. This provides visual consistency and enhances user engagement throughout the post timeline.
 
-## Future Enhancements
+## Post Standardization Complete: New Post Requirements
 
-- Rich media embeds (images, videos)
-- Post categories/tags
-- Search functionality
-- Social sharing features
-- Automated posting from data sources</content>
+All posts must meet these requirements. This checklist consolidates all improvements and serves as the definitive standard for post creation.
+
+### Required Elements Checklist
+
+#### 1. Icon (REQUIRED)
+- [ ] Every post starts with a Lucide icon: `<i data-lucide='icon-name' class='post-icon'></i>`
+- [ ] Icon matches content type (see icon guide in Categories section)
+- [ ] Multi-topic posts have separate icons for each section
+
+#### 2. Title (REQUIRED)
+- [ ] Bold title immediately follows icon: `<b>Title Here</b>`
+- [ ] Title is clear, specific, and engaging
+- [ ] For multi-topic posts, each section has its own title
+
+#### 3. Description (REQUIRED)
+- [ ] 2-3 sentences maximum
+- [ ] Engaging and narrative-driven (not dry analysis)
+- [ ] Creates intrigue with action verbs, conflict, or human interest
+- [ ] AVOID formulaic patterns like "Analysis of X" or "Explores Y"
+- [ ] Examples of good descriptions:
+  - ✓ "Learn from senior WH aides on how to invoke 5th amendment"
+  - ✓ "Oregon's fighting to legalize these compact Japanese workhorses while other states ban them"
+  - ✗ "Analysis of Oregon's SB1213 regarding kei trucks"
+
+#### 4. Cover Images for Media Content (REQUIRED)
+- [ ] All media posts (books, films, music, podcasts) include cover images
+- [ ] Images pulled from media.json cover field
+- [ ] Standard styling: `width: 60px; height: auto; float: left; margin-right: 10px;`
+- [ ] Music covers use circular spinning record style: `border-radius: 50%; object-fit: cover; height: 60px; animation: spin 3s linear infinite`
+- [ ] Images wrapped in anchor tags linking to media.html#slug
+- [ ] Multi-book posts use `<br style="clear: both;">` between entries
+
+**Example:**
+```html
+<a href="media.html#book-slug"><img src="https://..." alt="Book Title" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>
+```
+
+#### 5. Links (REQUIRED)
+- [ ] End with relevant navigation link(s)
+- [ ] Use specific anchors, not generic page links:
+  - Media: `media.html#slug-name`
+  - News articles: `news.html?article=article-slug`
+  - Journal entries: `journal.html#entry-slug`
+  - Filters: `financials.html?filter=Category%20Name`
+- [ ] Stock tickers link to Yahoo Finance: `<a href="https://finance.yahoo.com/quote/TICKER" target="_blank" rel="noopener">TICKER</a>`
+- [ ] External links include `target="_blank"` and `rel="noopener"`
+- [ ] Link text is bold and action-oriented: `<b>View in Media</b>`, `<b>Read full analysis</b>`
+
+#### 6. Multi-Topic Posts
+- [ ] Separate topics with distinct sections
+- [ ] Each section has its own icon and title
+- [ ] Clear visual separation with `<br><br>` between sections
+- [ ] Each topic links to its specific destination
+
+**Example:**
+```html
+<i data-lucide='trending-up' class='post-icon'></i> <b>First Topic</b><br><br>Description...<br><br><a href="..."><b>Link</b></a><br><br><i data-lucide='newspaper' class='post-icon'></i> <b>Second Topic</b><br><br>Description...<br><br><a href="..."><b>Link</b></a>
+```
+
+#### 7. Formatting Standards
+- [ ] No emojis (use Lucide icons instead)
+- [ ] Line breaks: `<br><br>` for spacing between sections
+- [ ] Bullet points: Use `•` or structured HTML bullets
+- [ ] Stock tickers: Always link to Yahoo Finance
+- [ ] Dates: MM/DD/YY format
+- [ ] Numbers: Include context (MoM, YoY, percentages)
+
+#### 8. Content Quality
+- [ ] Factually accurate data from latest sources
+- [ ] Specific numbers/dates when relevant
+- [ ] Proper attribution (source citations)
+- [ ] Concise and focused messaging
+- [ ] Professional tone (no informal language)
+
+#### 9. Accessibility & Mobile
+- [ ] All images have alt text
+- [ ] Links have descriptive anchor text
+- [ ] Color contrast works in both light and dark modes
+- [ ] Images sized appropriately (60px standard)
+- [ ] Layout works on mobile (floated images, clear breaks)
+
+#### 10. Validation Before Publishing
+- [ ] All links tested and functional
+- [ ] Cover images load correctly
+- [ ] HTML is valid and properly escaped in JSON
+- [ ] Icons render correctly (test in browser)
+- [ ] Ticker links go to correct Yahoo Finance pages
+- [ ] Multi-topic sections visually separate
+- [ ] Tested on both desktop and mobile
+
+### Post Type Templates
+
+#### Financial Data Update
+```json
+{
+  "date": "MM/DD/YY",
+  "content": "<i data-lucide='trending-up' class='post-icon'></i> <b>Indicator Name Update</b><br><br>• <b>Month</b>: Value (change from previous)<br>• <b>Trend</b>: Description<br>• <b>Context</b>: What it means<br><br><a href=\"financials.html?filter=Category\"><b>View all indicators</b></a>"
+}
+```
+
+#### Media Addition (Film/Book)
+```json
+{
+  "date": "MM/DD/YY",
+  "content": "<i data-lucide='film' class='post-icon'></i> <a href=\"media.html#slug\"><img src=\"COVER_URL\" alt=\"Title\" style=\"width: 60px; height: auto; float: left; margin-right: 10px;\"></a> <b>Title</b><br><br>Engaging description creating intrigue (not dry analysis). 2-3 sentences max.<br><br><a href=\"media.html#slug\"><b>View in Media</b></a>"
+}
+```
+
+#### Music Addition
+```json
+{
+  "date": "MM/DD/YY",
+  "content": "<i data-lucide='music' class='post-icon'></i> <a href=\"media.html#slug\"><img src=\"COVER_URL\" alt=\"Title\" style=\"width: 60px; height: 60px; border-radius: 50%; object-fit: cover; float: left; margin-right: 10px; animation: spin 3s linear infinite;\"></a> <b>Song Title by Artist</b><br><br>Brief description.<br><br><a href=\"media.html#slug\"><b>Listen Now</b></a>"
+}
+```
+
+#### News/IPO Announcement
+```json
+{
+  "date": "MM/DD/YY",
+  "content": "<i data-lucide='dollar-sign' class='post-icon'></i> <b>Company IPO</b><br><br>Engaging summary with key details. Link ticker: <a href=\"https://finance.yahoo.com/quote/TICKER\" target=\"_blank\" rel=\"noopener\">TICKER</a>.<br><br><a href=\"news.html?article=slug\"><b>Read full analysis</b></a>"
+}
+```
+
+### Common Mistakes to Avoid
+
+❌ **DON'T:**
+- Use dry, academic descriptions ("Analysis of X", "Explores Y")
+- Link to generic pages without anchors
+- Omit cover images for media content
+- Use emojis instead of Lucide icons
+- Create wall-of-text descriptions (keep to 2-3 sentences)
+- Forget to link stock tickers to Yahoo Finance
+- Mix multiple topics without visual separation
+- Use informal language or excessive exclamation points
+
+✓ **DO:**
+- Write engaging, story-driven descriptions
+- Link to specific positions on pages (#anchors, ?article=, ?filter=)
+- Include cover images for all media
+- Use appropriate Lucide icons
+- Keep descriptions concise and compelling
+- Link all tickers with target="_blank" and rel="noopener"
+- Separate multi-topic posts with distinct sections
+- Maintain professional, direct tone
+
+### Quality Standards Summary
+
+Every post represents the site's brand and quality. Posts should:
+1. **Inform** - Provide accurate, timely information
+2. **Engage** - Create intrigue with compelling descriptions
+3. **Navigate** - Link precisely to relevant content
+4. **Delight** - Present visually with proper images and icons
+5. **Perform** - Work flawlessly on all devices
+
+This standardization work is complete. All future posts must meet these requirements without exception.</content>
 </xai:function_call">The Posts PRD has been created at `/Users/benjaminpalmer/TBPS/html/html/docs/posts-prd.md` with comprehensive guidelines for structure, formatting, categories, and best practices based on the existing posts pattern. This should serve as your implementation guide for improving and maintaining the posts system. Let me know if you'd like to adjust any sections or add more details. 
 
 Next post to improve? (The oldest ones like 5/24, 5/25, 5/28, 6/3, etc. appear to need similar formatting updates.) 

@@ -1414,3 +1414,13 @@ MEDIA LINKS ORDER
 [data-theme="dark"] .media-overlay .podcast-link i {
     color: white !important;
 }
+
+/* Record spinning animation for music post images */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

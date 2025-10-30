@@ -84,6 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (sortBy) {
             sortBy.value = 'date-desc';
         }
+
+        // Check for URL filter parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialFilter = urlParams.get('filter');
+        if (initialFilter && mediaTypes.includes(initialFilter)) {
+            filterType.value = initialFilter;
+        }
+
         filterAndSortMedia();
     }
 
@@ -134,6 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function createMediaCard(item) {
         const card = document.createElement('div');
         card.className = 'media-card';
+        // Create a URL-safe ID from the title
+        const cardId = item.title.toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/-+/g, '-') // Replace multiple hyphens with single
+            .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+        card.id = cardId;
         card.setAttribute('data-media-type', item.mediaType || 'unknown');
         card.setAttribute('role', 'article');
         card.setAttribute('aria-label', `${item.title} - ${item.mediaType}`);

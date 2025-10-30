@@ -36,7 +36,8 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;
-  filter: drop-shadow(0 6px 16px var(--shadow-color));
+  clip-path: circle(50%);
+  filter: none;
   user-select: none;
   /* Optimize rendering */
   backface-visibility: hidden;

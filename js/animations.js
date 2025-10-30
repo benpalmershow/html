@@ -19,21 +19,25 @@ function animateLogo() {
 
 // 2. Enhanced word-by-word reveal for subtitle text (Phase 2)
 function animateSubtitle() {
-  const subtitle = document.querySelector('.hero-subtitle');
-  if (!subtitle) return;
+const subtitle = document.querySelector('.hero-subtitle');
+if (!subtitle) return;
 
-  const text = subtitle.textContent.trim().replace(/\s+/g, ' ');
-  const words = text.split(' ').filter(word => word.length > 0);
-  
-  subtitle.innerHTML = words.map((word, index) => {
-    const delay = 600 + (index * 80);
-    return `<span class="word" style="opacity: 0; display: inline-block; transform: translateY(10px) scale(0.95);">${word}</span>`;
-  }).join(' ');
-  
-  const wordElements = subtitle.querySelectorAll('.word');
-  wordElements.forEach((word, index) => {
-    setTimeout(() => {
-      word.style.transition = 'opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+const text = subtitle.textContent.trim().replace(/\s+/g, ' ');
+const words = text.split(' ').filter(word => word.length > 0);
+
+subtitle.innerHTML = words.map((word, index) => {
+const delay = 600 + (index * 80);
+let content = word;
+  if (index === 0 && word === 'Human‑curated') {
+    content = '<span class="highlight-human">Human</span>‑curated';
+  }
+  return `<span class="word" style="opacity: 0; display: inline-block; transform: translateY(10px) scale(0.95);">${content}</span>`;
+}).join(' ');
+
+const wordElements = subtitle.querySelectorAll('.word');
+wordElements.forEach((word, index) => {
+setTimeout(() => {
+    word.style.transition = 'opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
       word.style.opacity = '0.9';
       word.style.transform = 'translateY(0) scale(1)';
     }, 600 + (index * 80));

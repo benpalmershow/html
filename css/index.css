@@ -461,10 +461,19 @@
     transition: none;
     will-change: auto;
   }
-  
+
   .announcement-card:hover,
   .card:hover {
     transform: none;
+  }
+}
+
+/* Disable hover animations on mobile */
+@media (max-width: 767px) {
+  .announcement-card:hover,
+  .card:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 }
 

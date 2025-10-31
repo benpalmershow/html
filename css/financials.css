@@ -11,27 +11,6 @@
     --change-neutral-color: var(--text-muted)
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-}
-
-html {
-    scroll-behavior: smooth
-}
-
-body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background: var(--bg-primary);
-    min-height: 100vh;
-    color: var(--text-secondary);
-    width: 100%;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden
-}
-
 .container {
     width: 100%;
     max-width: 1200px;

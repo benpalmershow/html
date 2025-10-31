@@ -2,16 +2,11 @@
    CSS VARIABLES & GLOBAL STYLES
    ========================================================================== */
 :root {
-    /* Color Palette */
-    --primary-color: #2c5f5a;
-    --secondary-color: #d4822a;
-    --accent-color: #f5c518;
-    --background-light: #f8f4e6;
-    --border-light: #e8dcc0;
-    --text-dark: #2c5f5a;
-    --text-light: #f0f0f0;
+/* Color Palette */
+--accent-color: #f5c518;
+--text-light: #f0f0f0;
 
-    /* Shadows */
+/* Shadows */
     --shadow-light: var(--color-primary-bg, rgba(44, 95, 90, 0.08));
     --shadow-medium: rgba(44, 95, 90, 0.15);
 
@@ -62,7 +57,7 @@
     /* Visual */
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
-    background: var(--background-light);
+    background: var(--bg-secondary);
     overflow: hidden;
 
     /* Interaction */
@@ -81,14 +76,14 @@
     &:focus-visible {
         outline: 3px solid var(--accent-color);
         outline-offset: 2px;
-        box-shadow: 0 0 0 3px var(--background-light),
+        box-shadow: 0 0 0 3px var(--bg-secondary),
             0 0 0 6px var(--accent-color);
     }
 
     &:hover,
     &:focus-within,
     &:focus {
-        border-color: var(--secondary-color);
+        border-color: var(--logo-orange);
         box-shadow: 0 4px 16px var(--shadow-medium);
         transform: translateY(-2px) scale(1.025);
         outline: none;
@@ -111,7 +106,7 @@
     }
 
     &.keyboard-focus {
-        border-color: var(--color-primary, var(--primary-color));
+        border-color: var(--color-primary, var(--logo-teal));
         box-shadow: 0 0 0 3px var(--shadow-medium);
     }
 }
@@ -137,7 +132,7 @@
 /* High contrast mode */
 @media (prefers-contrast: more) {
     .media-card {
-        border: 2px solid var(--primary-color);
+        border: 2px solid var(--logo-teal);
     }
 
     .media-overlay {
@@ -150,7 +145,7 @@
 }
 
 .media-card.keyboard-focus {
-    border-color: var(--color-primary, var(--primary-color));
+    border-color: var(--color-primary, var(--logo-teal));
     box-shadow: 0 0 0 3px var(--shadow-medium);
 }
 
@@ -194,7 +189,7 @@
     /* Playlist covers - make them smaller to fit in card */
     .playlist-cover {
         object-fit: contain;
-        background-color: var(--background-light);
+        background-color: var(--bg-secondary);
         border-radius: 0.25rem;
     }
 
@@ -204,7 +199,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, var(--color-primary, var(--primary-color)), var(--color-primary-light, #4a7c7a));
+        background: linear-gradient(135deg, var(--color-primary, var(--logo-teal)), var(--color-primary-light, #4a7c7a));
         color: white;
         font-size: 2em;
 
@@ -518,8 +513,8 @@ TRAILER
     padding: 1.2rem 1.8rem;
 
     /* Visual */
-    background: var(--background-light);
-    border: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 0.8rem;
     box-shadow: 0 2px 12px var(--shadow-light);
 
@@ -535,7 +530,7 @@ TRAILER
 
 .media-filters label {
     font-size: 0.95rem;
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-weight: 500;
     display: flex;
     flex-direction: column;
@@ -546,7 +541,7 @@ TRAILER
 
 /* Filter Select Dropdown */
 .media-filters select {
-    --color: var(--text-dark);
+    --color: var(--text-primary);
     --padding: 0.5rem 0.8rem;
     --radius: 0.4rem;
     --background: var(--color-white, #fff);
@@ -574,7 +569,7 @@ TRAILER
 
 .media-filters select:focus {
     outline: none;
-    border-color: var(--color-primary, var(--primary-color));
+    border-color: var(--color-primary, var(--logo-teal));
     box-shadow: 0 0 0 2px var(--shadow-medium);
 }
 
@@ -589,7 +584,7 @@ TRAILER
     border-radius: 0.4rem;
     border: 1px solid var(--border-light, #d4c9b1);
     background: var(--color-white, #fff);
-    color: var(--text-dark);
+    color: var(--text-primary);
     width: 100%;
     cursor: text;
     transition: all var(--transition-medium);
@@ -597,7 +592,7 @@ TRAILER
 
 .media-filters input[type="text"]:focus {
     outline: none;
-    border-color: var(--color-primary, var(--primary-color));
+    border-color: var(--color-primary, var(--logo-teal));
     box-shadow: 0 0 0 2px var(--shadow-medium);
 }
 
@@ -623,7 +618,7 @@ TRAILER
 /* Results Count */
 .results-count {
     text-align: center;
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-size: 0.9rem;
     margin: 1rem auto 0;
     padding: 0.5rem;
@@ -655,7 +650,7 @@ TRAILER
 .click-to-watch,
 .click-to-listen {
     font-size: 0.8em;
-    color: var(--secondary-color);
+    color: var(--logo-orange);
     font-weight: 500;
     margin-top: 0.5em;
     padding: 0.3em 0.6em;
@@ -809,21 +804,21 @@ TRAILER
     justify-content: center;
     padding: 3rem 2rem;
     text-align: center;
-    color: var(--text-dark);
+    color: var(--text-primary);
     min-height: 200px;
 }
 
 .loading-state i {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--logo-teal);
 }
 
 /* Error State */
 .error-state i {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--logo-orange);
 }
 
 .error-state p {
@@ -833,7 +828,7 @@ TRAILER
 
 /* Retry Button */
 .retry-button {
-    background: var(--primary-color);
+    background: var(--logo-teal);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -1131,13 +1126,13 @@ ecial Analysis Section */
 .special-analysis {
     margin: 2rem 0;
     padding: 1.5rem;
-    background: var(--background-light);
+    background: var(--bg-secondary);
     border-radius: 8px;
-    border: 0.5px solid var(--secondary-color);
+    border: 0.5px solid var(--logo-orange);
 }
 
 .special-analysis h2 {
-    color: var(--primary-color);
+    color: var(--logo-teal);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -1169,7 +1164,7 @@ ecial Analysis Section */
 .analysis-icon {
     width: 60px;
     height: 60px;
-    background: var(--primary-color);
+    background: var(--logo-teal);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1185,7 +1180,7 @@ ecial Analysis Section */
 
 .analysis-content h3 {
     margin: 0 0 0.5rem 0;
-    color: var(--primary-color);
+    color: var(--logo-teal);
     font-size: 1.1rem;
 }
 
@@ -1198,7 +1193,7 @@ ecial Analysis Section */
 
 .analysis-link {
     display: inline-block;
-    background: var(--secondary-color);
+    background: var(--logo-orange);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 4px;

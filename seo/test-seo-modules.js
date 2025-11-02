@@ -97,7 +97,7 @@ async function runTests() {
     // Test 2: Load and test SEO Config
     let seoConfig;
     try {
-        const configModule = await import('./seo/seo-config.js');
+        const configModule = await import('./seo-config.js');
         seoConfig = new configModule.default();
         global.window.seoConfig = seoConfig;
 
@@ -113,7 +113,7 @@ async function runTests() {
     // Test 3: Load and test SEO Analytics
     let seoAnalytics;
     try {
-        const analyticsModule = await import('./seo/analytics/seo-analytics.js');
+        const analyticsModule = await import('./analytics/seo-analytics.js');
         seoAnalytics = new analyticsModule.default();
         global.window.seoAnalytics = seoAnalytics;
 
@@ -127,7 +127,7 @@ async function runTests() {
     // Test 4: Load and test SEO Monitor
     let seoMonitor;
     try {
-        const monitorModule = await import('./seo/monitoring/seo-monitor.js');
+        const monitorModule = await import('./monitoring/seo-monitor.js');
         seoMonitor = new monitorModule.default();
         global.window.seoMonitor = seoMonitor;
 

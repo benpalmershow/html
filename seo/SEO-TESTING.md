@@ -8,11 +8,9 @@ Your comprehensive SEO system is working correctly! Here's how to test it proper
 
 ### Option 1: Use the Startup Script (Recommended)
 ```bash
-# Linux/Mac
+# From seo/ directory
+cd seo
 ./start-server.sh
-
-# Windows
-start-server.bat
 ```
 
 ### Option 2: Manual Server Start
@@ -29,7 +27,7 @@ node server.js
 ## 🧪 Testing Your SEO System
 
 1. **Start the web server** using one of the methods above
-2. **Open your browser** and visit: `http://localhost:8080/test-seo.html`
+2. **Open your browser** and visit: `http://localhost:8080/seo/test-seo.html`
 3. **Click the test buttons** to verify functionality:
    - 🔍 **Run Full Diagnostic** - Complete system check
    - 🏥 **Run Health Audit** - SEO health scoring

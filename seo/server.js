@@ -73,7 +73,7 @@ const server = http.createServer((req, res) => {
 const PORT = process.argv[2] || 3001;
 server.listen(PORT, '127.0.0.1', () => {
     console.log(`🚀 SEO Test Server running at http://localhost:${PORT}`);
-    console.log(`📊 Test your SEO system at: http://localhost:${PORT}/test-seo`);
+    console.log(`📊 Test your SEO system at: http://localhost:${PORT}/seo/test-seo.html`);
     console.log(`🏠 Main site: http://localhost:${PORT}/index.html`);
     console.log(`Press Ctrl+C to stop the server`);
 });

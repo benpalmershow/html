@@ -34,10 +34,10 @@
         <p><strong>Issue:</strong> Browser CORS prevents testing from <code>file://</code> URLs. Here's how to test properly:</p>
 
         <h4>Step 1: Start Web Server</h4>
-        <div class="command">cd /Users/benjaminpalmer/TBPS/html/html && python3 -m http.server 8080</div>
+        <div class="command">cd seo && ./start-server.sh</div>
 
         <h4>Step 2: Open Test Page</h4>
-        <div class="command">Visit: http://localhost:8080/test-seo.html</div>
+        <div class="command">Visit: http://localhost:8080/seo/test-seo.html</div>
 
         <h4>Step 3: Test Your SEO Modules</h4>
         <p>Click the buttons below to run comprehensive tests of your SEO system.</p>
@@ -99,7 +99,7 @@
                 <li>✅ Event Tracking: Working</li>
             </ul>
 
-            <p><strong>To run browser tests:</strong> Start a web server and visit this page at <code>http://localhost:8080/test-seo.html</code></p>
+            <p><strong>To run browser tests:</strong> Start a web server and visit this page at <code>http://localhost:8080/seo/test-seo.html</code></p>
         </div>
     </div>
 
@@ -113,12 +113,12 @@
 
         async function loadModules() {
             const moduleList = [
-                { name: 'SEO Config', path: './seo/seo-config/index.js', global: 'seoConfig', element: moduleStatus.children[0] },
-                { name: 'SEO Analytics', path: './seo/analytics/index.js', global: 'seoAnalytics', element: moduleStatus.children[1] },
-                { name: 'SEO Monitor', path: './seo/monitoring/index.js', global: 'seoMonitor', element: moduleStatus.children[2] },
-                { name: 'Search Console', path: './seo/search-console/index.js', global: 'searchConsoleIntegration', element: moduleStatus.children[3] },
-                { name: 'Content Schema', path: './seo/content-schema/index.js', global: 'contentSchemaGenerator', element: moduleStatus.children[4] },
-                { name: 'Mobile Optimizer', path: './seo/mobile-seo/index.js', global: 'mobileSEOOptimizer', element: moduleStatus.children[5] }
+                { name: 'SEO Config', path: './seo-config/index.js', global: 'seoConfig', element: moduleStatus.children[0] },
+                { name: 'SEO Analytics', path: './analytics/index.js', global: 'seoAnalytics', element: moduleStatus.children[1] },
+                { name: 'SEO Monitor', path: './monitoring/index.js', global: 'seoMonitor', element: moduleStatus.children[2] },
+                { name: 'Search Console', path: './search-console/index.js', global: 'searchConsoleIntegration', element: moduleStatus.children[3] },
+                { name: 'Content Schema', path: './content-schema/index.js', global: 'contentSchemaGenerator', element: moduleStatus.children[4] },
+                { name: 'Mobile Optimizer', path: './mobile-seo/index.js', global: 'mobileSEOOptimizer', element: moduleStatus.children[5] }
             ];
 
             let loadedCount = 0;
@@ -383,7 +383,7 @@
 
     <!-- Load test suite -->
     <script type="module">
-        import('./seo/tests/monitoring-analytics-tests.js').catch(() => {
+        import('./tests/monitoring-analytics-tests.js').catch(() => {
             console.warn('Test suite not available - this is normal for file:// URLs');
         });
     </script>

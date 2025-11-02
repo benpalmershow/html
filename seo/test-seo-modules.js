@@ -75,22 +75,22 @@ async function runTests() {
 
     // Test 1: Check if module files exist
     testModule('SEO Config File', () => {
-        const configPath = path.join(__dirname, 'seo/seo-config.js');
+        const configPath = path.join(__dirname, 'seo-config.js');
         return fs.existsSync(configPath);
     });
 
     testModule('SEO Analytics File', () => {
-        const analyticsPath = path.join(__dirname, 'seo/analytics/seo-analytics.js');
+        const analyticsPath = path.join(__dirname, 'analytics/seo-analytics.js');
         return fs.existsSync(analyticsPath);
     });
 
     testModule('SEO Monitor File', () => {
-        const monitorPath = path.join(__dirname, 'seo/monitoring/seo-monitor.js');
+        const monitorPath = path.join(__dirname, 'monitoring/seo-monitor.js');
         return fs.existsSync(monitorPath);
     });
 
     testModule('Search Console File', () => {
-        const searchConsolePath = path.join(__dirname, 'seo/search-console/index.js');
+        const searchConsolePath = path.join(__dirname, 'search-console/index.js');
         return fs.existsSync(searchConsolePath);
     });
 

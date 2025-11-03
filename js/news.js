@@ -27,7 +27,8 @@
       'big-beautiful-bill',
       'corrections-hood-twlo',
       'sustainable-abundance',
-      'oregon-kei-trucks-sb1213'
+      'oregon-kei-trucks-sb1213',
+       'doc-riter-trump-interview'
     ];
 
     // Parse frontmatter from markdown
@@ -42,7 +43,10 @@
         const colonIndex = line.indexOf(':');
         if (colonIndex > -1) {
           const key = line.substring(0, colonIndex).trim();
-          const value = line.substring(colonIndex + 1).trim();
+          let value = line.substring(colonIndex + 1).trim();
+          if (value.startsWith('"') && value.endsWith('"')) {
+            value = value.slice(1, -1);
+          }
           metadata[key] = value;
         }
       });

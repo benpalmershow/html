@@ -84,8 +84,37 @@ Assistant:
 
 ## 7. Editorial Safeguards
 
-- Always be skeptical of current narrative and news media in general. 
+- Always be skeptical of current narrative and news media in general.
 - Maintain reproducibility: another reader should be able to verify each figure by consulting the cited table.
+
+---
+
+## 8. Quoting Standards
+
+- Use direct quotes only from verified transcripts or official sources; avoid paraphrased or fabricated quotes.
+- Clearly label paraphrases as such to distinguish from direct quotations.
+- Cite the source for all quotes, including transcript links for full context.
+
+---
+
+## 9. Broadcast Interviews: Transcription & Image Use
+
+- Transcripts:
+  - Prefer the broadcaster’s official transcript page (e.g., CBS News) as the primary source of record.
+  - If quoting verbatim, mark quotes as excerpts and link to the full transcript. Do not elide content in a way that changes meaning; use ellipses only where content is actually omitted.
+  - For timing or segment context, reference the anchor/interviewee and section if available.
+
+- Quantitative claims made in interviews:
+  - Do not restate specific numbers unless you also provide the official table release and date. Instead, link readers to the live dashboard or original table.
+  - If a number is disputed or time-sensitive, note that verification is pending and provide the authoritative source you will check.
+
+- Images from broadcasts:
+  - Use images only with clear rights: your own assets, broadcaster-provided press images with usage permission, or appropriately licensed images (e.g., Wikimedia Commons with attribution and license).
+  - When using third-party images, include attribution (creator, source URL), license, and a caption describing what the image depicts. Host locally only if license allows; otherwise link to the source page.
+  - Avoid hotlinking if license terms prohibit it.
+
+- Map/context links:
+  - Provide map links for geographic orientation but do not use maps to imply conflict status or outcomes. Clearly label them as context-only.
 
 ---
 

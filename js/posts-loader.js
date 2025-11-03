@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) window.lucide.createIcons();
   }
 
-  fetch('/json/posts.json')
+  fetch('json/posts.json?v=' + Date.now())
     .then(r => {
       if (!r.ok) throw new Error('Failed to load posts');
       return r.json();
@@ -24,7 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
 
       // Sort posts by date descending (latest first)
-      valid.sort((a, b) => new Date(b.date) - new Date(a.date));
+      valid.sort((a, b) => {
+        const [monthA, dayA, yearA] = a.date.split('/').map(Number);
+        const [monthB, dayB, yearB] = b.date.split('/').map(Number);
+        const dateA = new Date(2000 + yearA, monthA - 1, dayA);
+        const dateB = new Date(2000 + yearB, monthB - 1, dayB);
+        return dateB - dateA;
+      });
 
       renderPosts(valid);
     })

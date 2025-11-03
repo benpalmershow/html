@@ -33,9 +33,9 @@ Then, try answering to Norah O'Donnell:
 
 **Trump:** I created billions of new dollars in government revenue from tariffs. (we'll be takin' in hundreds of billions of dollars-- in the form of tariffs.)
 
-**Norah:** But what about the soybean farmers? (This trade war, though, was hurting Americans. I mean, our soybean farmers. )
+**Norah:** But what about the soybean farmers? (This trade war, though, was hurting Americans. I mean, our soybean farmers.)
 
-**Trump:** I killed drug dealers.(And every one of those boats that you see shot down-- and I agree, it's a terrible thing-- but every one of those boats kills 25,000 Americans.)
+**Trump:** I killed drug dealers. (And every one of those boats that you see shot down-- and I agree, it's a terrible thing-- but every one of those boats kills 25,000 Americans.)
 
 **Norah:** But what about their civil rights to deal drugs? (There have been at least eight boats in the Caribbean destroyed by the U.S. military--)
 

@@ -19,7 +19,7 @@ Then, try answering to Norah O'Donnell:
 [Full CBS Transcript (official)](https://www.cbsnews.com/news/read-full-transcript-norah-odonnell-60-minutes-interview-with-president-trump/)
 
 
-**Trump:** I solved eight conflicts and saved millions of lives. (we had nine wars on our planet. I solved eight of 'em.)
+**Trump:** I solved eight conflicts and saved (how many?) lives. (we had nine wars on our planet. I solved eight of 'em.)
 
 **Norah:** But what about Russia? (Who's tougher to deal with, Vladimir Putin or Xi Jinping?)
 

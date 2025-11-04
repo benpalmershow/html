@@ -398,7 +398,6 @@
             /* Responsive adjustments */
             @media (max-width: 768px) {
                 .floating-nav {
-                    padding: 0 15px;
                     gap: 4px;
                 }
 

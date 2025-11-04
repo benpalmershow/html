@@ -28,7 +28,8 @@
       'corrections-hood-twlo',
       'sustainable-abundance',
       'oregon-kei-trucks-sb1213',
-       'doc-riter-trump-interview'
+       'doc-riter-trump-interview',
+       'scotus-nov-2025'
     ];
 
     // Parse frontmatter from markdown

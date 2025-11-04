@@ -31,7 +31,7 @@ Then, try answering to Norah O'Donnell:
 
 **Norah:** But what about the brutality of ICE raids? (Have some of these raids gone too far?)
 
-**Trump:** I created billions of new dollars in government revenue from tariffs. (we'll be takin' in hundreds of billions of dollars-- in the form of tariffs.)
+**Trump:** I created billions of new dollars in government revenue from tariffs. (we'll be takin' in hundreds of billions of dollars-- in the form of tariffs.) 
 
 **Norah:** But what about the soybean farmers? (This trade war, though, was hurting Americans. I mean, our soybean farmers.)
 
@@ -47,7 +47,7 @@ Then, try answering to Norah O'Donnell:
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
   <figure style="margin: 0; text-align: center;">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cambodia_location_map.svg" alt="Cambodia-Thailand border" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
-    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>1. Cambodia–Thailand</strong><br>Border disputes<br><em>U.S. State Department mediation efforts under Trump administration helped resolve long-standing border tensions along the Mekong River.</em></figcaption>
+    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>1. Cambodia–Thailand</strong><br>Border disputes<br><em>U.S. State Department mediation efforts under Trump administration helped resolve long-standing border tensions along the Mekong River. <a href="https://en.wikipedia.org/wiki/Cambodia%E2%80%93Thailand_border">Wikipedia</a></em></figcaption>
   </figure>
 
   <figure style="margin: 0; text-align: center;">
@@ -57,17 +57,17 @@ Then, try answering to Norah O'Donnell:
 
   <figure style="margin: 0; text-align: center;">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Democratic_Republic_of_the_Congo_location_map.svg" alt="DRC-Rwanda region" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
-    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>3. Congo–Rwanda</strong><br>DRC and Rwanda<br><em>U.S. diplomatic efforts contributed to reduced tensions and improved cooperation between DRC and Rwanda governments.</em></figcaption>
+    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>3. Congo–Rwanda</strong><br>DRC and Rwanda<br><em>U.S. diplomatic efforts contributed to reduced tensions and improved cooperation between DRC and Rwanda governments. <a href="https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo%E2%80%93Rwanda_relations">Wikipedia</a></em></figcaption>
   </figure>
 
   <figure style="margin: 0; text-align: center;">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Middle_East_(orthographic_projection).svg" alt="Israel-Iran region" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
-    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>4. Israel–Iran</strong><br>Middle East tensions<br><em>Abraham Accords: Israel-UAE, Israel-Bahrain, Israel-Morocco, Israel-Sudan normalization. <a href="https://2017-2021.state.gov/the-abraham-accords/">State Dept</a></em></figcaption>
+    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>4. Israel–Iran</strong><br>Middle East tensions<br><em>Abraham Accords: Israel-UAE, Israel-Bahrain, Israel-Morocco, Israel-Sudan normalization. <a href="https://en.wikipedia.org/wiki/Abraham_Accords">Wikipedia</a></em></figcaption>
   </figure>
 
   <figure style="margin: 0; text-align: center;">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nile_basin_countries.png" alt="Egypt-Ethiopia Nile basin" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
-    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>5. Egypt–Ethiopia</strong><br>Nile basin (GERD)<br><em>U.S. mediation helped facilitate agreements between Egypt and Ethiopia on the Grand Ethiopian Renaissance Dam.</em></figcaption>
+    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>5. Egypt–Ethiopia</strong><br>Nile basin (GERD)<br><em>U.S. mediation helped facilitate agreements between Egypt and Ethiopia on the Grand Ethiopian Renaissance Dam. <a href="https://en.wikipedia.org/wiki/Grand_Ethiopian_Renaissance_Dam">Wikipedia</a></em></figcaption>
   </figure>
 
   <figure style="margin: 0; text-align: center;">

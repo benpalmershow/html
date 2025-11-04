@@ -9,7 +9,11 @@ Standard operating procedure for adding new media entries (books, movies, podcas
 When user prompts: **"add new book, title: [TITLE]"** or similar variations:
 - "add new movie, title: [TITLE]"
 - "add new podcast, title: [TITLE]"
+- "add new album, title: [TITLE]"
+- "add new song, title: [TITLE]"
 - "add book: [TITLE]"
+- "add album: [TITLE]"
+- "add song: [TITLE]"
 - **Multiple items:** "add books: [TITLE1], [TITLE2], [TITLE3]"
 
 ---
@@ -53,11 +57,11 @@ Proceed with adding all entries? Or would you like to adjust any?
 ### Step 1: Information Gathering
 **Required fields to collect:**
 1. Title (provided by user)
-2. Author/Creator
+2. Author/Creator/Artist
 3. Publication/Release date
 4. Category/Genre
 5. Description (concise, 1-2 sentences)
-6. mediaType (book, movie, podcast, video, song, playlist)
+6. mediaType (book, movie, podcast, video, song, album, playlist)
 
 **Optional fields:**
 - ISBN (for books)

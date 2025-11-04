@@ -126,10 +126,25 @@
     ${processedHtml}
     `;
 
+    // Execute scripts in the article content
+    const scripts = container.querySelectorAll('script');
+    scripts.forEach(script => {
+    const newScript = document.createElement('script');
+      if (script.src) {
+        newScript.src = script.src;
+        newScript.async = false; // Ensure scripts run in order
+        document.head.appendChild(newScript);
+      } else {
+        newScript.textContent = script.textContent;
+        document.head.appendChild(newScript);
+      }
+      script.remove(); // Remove the original script tag
+    });
+
     const backButton = document.querySelector('.back-button');
     let metaEl = backButton.nextElementSibling;
     if (metaEl && metaEl.classList.contains('article-meta-header')) {
-      metaEl.remove();
+    metaEl.remove();
     }
     metaEl = document.createElement('div');
     metaEl.classList.add('article-meta-header');

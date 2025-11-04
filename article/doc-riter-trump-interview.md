@@ -31,7 +31,72 @@ Then, try answering to Norah O'Donnell:
 
 **Norah:** But what about the brutality of ICE raids? (Have some of these raids gone too far?)
 
-**Trump:** I created billions of new dollars in government revenue from tariffs. (we'll be takin' in hundreds of billions of dollars-- in the form of tariffs.) 
+**Trump:** I created billions of new dollars in government revenue from tariffs. (we'll be takin' in hundreds of billions of dollars-- in the form of tariffs.)
+
+<a href="../financials.html?filter=Trade%20%26%20Tariffs" style="text-decoration: none;">
+    <canvas id="tariff-revenue-chart" width="200" height="200" style="float: right; margin-left: 15px; margin-bottom: 10px;"></canvas>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+function initTariffChart() {
+    console.log('initTariffChart called');
+    if (typeof Chart === 'undefined') {
+        console.log('Chart not loaded yet, retrying');
+        setTimeout(initTariffChart, 100);
+        return;
+    }
+    const ctx = document.getElementById('tariff-revenue-chart');
+    if (!ctx) {
+        console.log('Canvas not found');
+        return;
+    }
+    console.log('Creating chart');
+    const chartCtx = ctx.getContext('2d');
+    new Chart(chartCtx, {
+        type: 'line',
+        data: {
+            labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [{
+                label: 'Tariff Revenue',
+                data: [8.2, 16, 22, 27, 28, 30, 30, 34],
+                borderColor: '#2C5F5A',
+                backgroundColor: 'rgba(44, 95, 90, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: false,
+            plugins: {
+                legend: { display: false },
+                title: { display: false },
+                tooltip: {
+                    mode: 'index', intersect: false,
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)', titleColor: '#fff', bodyColor: '#fff',
+                    borderColor: '#2C5F5A', borderWidth: 1, padding: 8,
+                    titleFont: { size: 11 }, bodyFont: { size: 11 }, boxPadding: 4,
+                    callbacks: {
+                        label: function (context) {
+                            let label = context.dataset.label || '';
+                            if (label) label += ': ';
+                            if (context.parsed.y !== null) {
+                                label += '$' + context.parsed.y + 'B';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { display: true, grid: { display: false, drawBorder: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 4, padding: 2, font: { size: 9 } } },
+                y: { display: true, beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { padding: 2, font: { size: 9 }, callback: function (value) { return '$' + value + 'B'; } }, position: 'right' }
+            },
+            interaction: { mode: 'nearest', axis: 'x', intersect: false }
+        }
+    });
+}
+initTariffChart();
+</script>
 
 **Norah:** But what about the soybean farmers? (This trade war, though, was hurting Americans. I mean, our soybean farmers.)
 

@@ -97,24 +97,119 @@ Assistant:
 
 ---
 
-## 9. Broadcast Interviews: Transcription & Image Use
+## 9. Images and Maps: Embedding Requirements
 
-- Transcripts:
-  - Prefer the broadcaster’s official transcript page (e.g., CBS News) as the primary source of record.
+**CRITICAL: Always embed actual images, never just describe them or write about them.**
+
+### Image Embedding Standards
+
+- **Always use `<img>` tags with actual `src` URLs** — Do not write "Photo: [description]" or "Map available at [link]". Embed the image directly in the article.
+- **Use working image URLs** — Prefer stable, reliable sources:
+  - **Wikimedia Commons**: Use `Special:FilePath` URLs for guaranteed access: `https://commons.wikimedia.org/wiki/Special:FilePath/Filename.ext`
+  - **Direct image URLs**: For broadcaster images, use direct image URLs (e.g., CBS News image URLs from their CDN)
+  - **Test URLs**: Ensure images load before including them
+
+### Image Sizing and Layout
+
+- **Single images (event photos, main illustrations)**:
+  - Use `style="max-width: 100%; height: auto;"` for responsive full-width images
+  - Example: `<img src="[url]" alt="[description]" style="max-width: 100%; height: auto;">`
+
+- **Thumbnail grids (multiple maps, conflict regions, etc.)**:
+  - Use fixed square dimensions: `width: 120px; height: 120px;` for thumbnails
+  - Use CSS Grid layout for responsive grids: `display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;`
+  - Example thumbnail structure:
+    ```html
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+      <figure style="margin: 0; text-align: center;">
+        <img src="[url]" alt="[description]" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
+        <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>Title</strong><br>Description</figcaption>
+      </figure>
+    </div>
+    ```
+
+### Finding Wikimedia Commons Images
+
+- **Search strategy**: Use Wikimedia Commons search for conflict names, location names, or map types
+- **Common file patterns**:
+  - Location maps: `[Country]_location_map.svg`
+  - Conflict maps: `[Conflict_name]_map.png` or `[Conflict_name]_conflict_map.png`
+  - Regional maps: `[Region]_orthographic_projection.svg`
+- **Always verify the file exists** using the Special:FilePath URL before including
+
+### Image Attribution
+
+- **Wikimedia Commons images**: Include attribution in caption: "via Wikimedia Commons" or "(via Wikimedia Commons)"
+- **Broadcaster images**: Credit the source: "Credit: [Broadcaster Name]" or "(CBS News)"
+- **Always include alt text** for accessibility: `alt="[descriptive text]"`
+
+### Map-Specific Guidelines
+
+- **Conflict maps**: When article mentions multiple conflicts/regions, create a thumbnail grid with one map per conflict
+- **Map sizing**: Use 120px x 120px for thumbnail grids, full-width for single featured maps
+- **Map captions**: Include conflict name, region description, and brief context if needed
+- **Do not imply outcomes**: Maps are for geographic orientation only; clearly state this in captions or disclaimers
+
+### Common Image Sources
+
+- **Wikimedia Commons** (preferred for maps and historical images):
+  - Format: `https://commons.wikimedia.org/wiki/Special:FilePath/[Filename]`
+  - Search at: https://commons.wikimedia.org/
+  - Verify license allows reuse
+
+- **Broadcaster images** (interviews, events):
+  - Use direct image URLs from broadcaster CDNs
+  - Include proper attribution in caption
+
+- **Google Maps** (avoid direct embedding):
+  - Provide as links only if no suitable Commons map exists
+  - Prefer Commons alternatives when available
+
+### Example: Complete Image Section
+
+```html
+## Event Photo
+
+<figure>
+  <img src="https://www.cbsnews.com/pictures/donald-trump-interview/image.jpg" alt="Interview setting" style="max-width: 100%; height: auto;">
+  <figcaption>Interview setting (CBS News).</figcaption>
+</figure>
+
+## Conflict Maps (Thumbnail Grid)
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+  <figure style="margin: 0; text-align: center;">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kosovo_location_map.svg" alt="Kosovo region" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
+    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>1. Kosovo–Serbia</strong><br>Region map</figcaption>
+  </figure>
+  <!-- Repeat for each conflict -->
+</div>
+```
+
+---
+
+## 10. Broadcast Interviews: Transcription & Image Use
+
+- **Transcripts**:
+  - Prefer the broadcaster's official transcript page (e.g., CBS News) as the primary source of record.
   - If quoting verbatim, mark quotes as excerpts and link to the full transcript. Do not elide content in a way that changes meaning; use ellipses only where content is actually omitted.
   - For timing or segment context, reference the anchor/interviewee and section if available.
 
-- Quantitative claims made in interviews:
+- **Quantitative claims made in interviews**:
   - Do not restate specific numbers unless you also provide the official table release and date. Instead, link readers to the live dashboard or original table.
   - If a number is disputed or time-sensitive, note that verification is pending and provide the authoritative source you will check.
 
-- Images from broadcasts:
-  - Use images only with clear rights: your own assets, broadcaster-provided press images with usage permission, or appropriately licensed images (e.g., Wikimedia Commons with attribution and license).
-  - When using third-party images, include attribution (creator, source URL), license, and a caption describing what the image depicts. Host locally only if license allows; otherwise link to the source page.
-  - Avoid hotlinking if license terms prohibit it.
+- **Event photos from broadcasts**:
+  - **ALWAYS embed the actual image** using `<img>` tags with direct image URLs
+  - Use broadcaster-provided press images or CDN URLs when available
+  - Include proper attribution: "Credit: [Broadcaster]" or "(CBS News)"
+  - Size appropriately: full-width for event photos, thumbnails for galleries
 
-- Map/context links:
-  - Provide map links for geographic orientation but do not use maps to imply conflict status or outcomes. Clearly label them as context-only.
+- **Map/context for interview topics**:
+  - **ALWAYS embed maps inline** as thumbnails in a grid layout when multiple regions are discussed
+  - Use Wikimedia Commons Special:FilePath URLs for reliable map access
+  - Size maps as 120px x 120px thumbnails in grid layouts
+  - Provide geographic orientation only; do not use maps to imply conflict status or outcomes
 
 ---
 

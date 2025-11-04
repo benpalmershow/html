@@ -575,6 +575,14 @@ add new book, title: The Power of Money
 - Link to specific episode when applicable
 - Include multiple platform links (Apple, Spotify, YouTube)
 
+### Playlists
+- Use consistent cover image (e.g., "images/listen.png" for monthly music playlists)
+- Include platform-specific links (YouTube Music, Spotify)
+- Description often empty for thematic collections
+- Follow naming convention like "MonthCara" for monthly releases
+- mediaType: "playlist"
+- Icon: "fas fa-podcast" (consistent with audio content)
+
 ---
 
 ## Maintenance Notes

@@ -1,6 +1,6 @@
-# Data Fetching and Citation Standards for Journalistic Integrity in News Stories
+# Data Fetching and Citation Standards
 
-This markdown file outlines the editorial and technical standards for sourcing, verifying, and publishing quantitative content in news stories, emphasizing journalistic integrity across all topics.
+This markdown file outlines the editorial and technical standards for sourcing, verifying, and publishing quantitative content across all website articles, emphasizing accuracy and integrity in data presentation.
 
 ---
 
@@ -44,7 +44,7 @@ This markdown file outlines the editorial and technical standards for sourcing, 
 
 ---
 
-## 4. Cite Precisely (Updated)
+## 4. Cite Precisely
 
 - Include the **source name, table/section number, page number**, and **data description** when referencing a statistic.
 - Example citation: "Bureau of Labor Statistics, *Employment Situation Summary, 2024* (Table A-1, p. 5)."
@@ -84,7 +84,7 @@ Assistant:
 
 ## 7. Editorial Safeguards
 
-- Always be skeptical of current narrative and news media in general.
+- Always be skeptical of current narratives and media sources in general.
 - Maintain reproducibility: another reader should be able to verify each figure by consulting the cited table.
 
 ---
@@ -156,53 +156,21 @@ Assistant:
   - Format: `https://commons.wikimedia.org/wiki/Special:FilePath/[Filename]`
   - Search at: https://commons.wikimedia.org/
   - Verify license allows reuse
-
-- **Broadcaster images** (interviews, events):
-  - Use direct image URLs from broadcaster CDNs
-  - Include proper attribution in caption
-
-- **Google Maps** (avoid direct embedding):
-  - Provide as links only if no suitable Commons map exists
-  - Prefer Commons alternatives when available
-
-### Example: Complete Image Section
-
-```html
-## Event Photo
-
-<figure>
-  <img src="https://www.cbsnews.com/pictures/donald-trump-interview/image.jpg" alt="Interview setting" style="max-width: 100%; height: auto;">
-  <figcaption>Interview setting (CBS News).</figcaption>
-</figure>
-
-## Conflict Maps (Thumbnail Grid)
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
-  <figure style="margin: 0; text-align: center;">
-    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kosovo_location_map.svg" alt="Kosovo region" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
-    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>1. Kosovo–Serbia</strong><br>Region map</figcaption>
-  </figure>
-  <!-- Repeat for each conflict -->
-</div>
 ```
 
 ---
 
-## 10. Broadcast Interviews: Transcription & Image Use
+## 10. Interviews and Source Material: Transcription & Image Use
 
-- **Transcripts**:
-  - Prefer the broadcaster's official transcript page (e.g., CBS News) as the primary source of record.
-  - If quoting verbatim, mark quotes as excerpts and link to the full transcript. Do not elide content in a way that changes meaning; use ellipses only where content is actually omitted.
-  - For timing or segment context, reference the anchor/interviewee and section if available.
 
 - **Quantitative claims made in interviews**:
   - Do not restate specific numbers unless you also provide the official table release and date. Instead, link readers to the live dashboard or original table.
   - If a number is disputed or time-sensitive, note that verification is pending and provide the authoritative source you will check.
 
-- **Event photos from broadcasts**:
+- **Event photos from sources**:
   - **ALWAYS embed the actual image** using `<img>` tags with direct image URLs
-  - Use broadcaster-provided press images or CDN URLs when available
-  - Include proper attribution: "Credit: [Broadcaster]" or "(CBS News)"
+  - Use source-provided press images or CDN URLs when available
+  - Include proper attribution: "Credit: [Source]" or "(Source Name)"
   - Size appropriately: full-width for event photos, thumbnails for galleries
 
 - **Map/context for interview topics**:

@@ -2,54 +2,33 @@
 
 ## Monthly JSON Data Updates
 
-When `financials-data.json` is updated with new monthly data, the following steps must be taken to ensure chart synchronization:
+The charts are now automatically generated from the JSON data. No manual configuration updates are required.
+
+When `financials-data.json` is updated with new monthly data:
 
 1. **Check JSON Updates**
    - Open `json/financials-data.json`
    - Review all indicators for new monthly data
-   - Note which indicators have new data points
+   - Ensure data is in the correct format with month keys (e.g., "march", "april", etc.)
 
-2. **Update Chart Configurations**
-   - Open `js/financials-chart.js`
-   - For each indicator with new data:
-     - Locate the chart configuration object
-     - Update the `labels` array to include the new month
-     - Update the `data` array with any new values
-     - Verify all historical values match exactly with the JSON file
+2. **Automatic Chart Generation**
+   - Charts are dynamically created using the `getChartConfig()` function in `js/financials.js`
+   - No manual updates needed - charts pull data directly from the JSON file
 
-3. **Example**
-   ```javascript
-   // Before update
-   data: {
-       labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
-       datasets: [{
-           data: [148.061, 147.686, 148.227, 148.303, 149.341],
-       }]
-   }
-
-   // After update (with August data)
-   data: {
-       labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-       datasets: [{
-           data: [148.061, 147.686, 148.227, 148.303, 149.341, 149.160],
-       }]
-   }
-   ```
-
-4. **Testing**
-   - After updates, test each modified chart by:
+3. **Testing**
+   - After updates, test each chart by:
      - Opening the financials page
-     - Clicking each updated chart icon
+     - Clicking each chart icon
      - Verifying the latest data point is visible
      - Confirming historical data matches JSON file
 
 ## Important Notes
 
-- Keep consistent formatting (e.g., 'Mar', 'Apr', etc. for month labels)
-- Charts auto-update when opened, but configurations must be manually updated
-- The `RealTimeChartManager` class handles real-time updates but relies on correct chart configurations
+- Keep consistent formatting in JSON (month keys in lowercase, e.g., "march", "april")
+- Charts auto-update when opened - no manual synchronization required
+- Chart labels are automatically generated as abbreviated months ('Mar', 'Apr', etc.)
 
 ## Affected Files
 
 - `/json/financials-data.json` - Source of truth for data
-- `/js/financials-chart.js` - Chart configurations
+- `/js/financials.js` - Contains chart generation logic

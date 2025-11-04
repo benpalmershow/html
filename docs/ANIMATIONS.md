@@ -1,14 +1,14 @@
 # Animation System Documentation
 
 ## Overview
-The Howdy, Stranger website now features a comprehensive micro-animation system powered by Motion One library.
+The Howdy, Stranger website features a custom micro-animation system implemented in vanilla JavaScript.
 
 ## Features Implemented
 
 ### 1. **Logo Entrance Animation**
-- Smooth bounce effect with scale and blur transitions
-- Custom easing: `cubic-bezier(0.34, 1.56, 0.64, 1)`
-- Duration: 1.2s
+- Smooth bounce effect with scale, rotation, and blur transitions
+- Custom cubic-bezier easing
+- Duration: 1.5s
 
 ### 2. **Card Hover Micro-Animations**
 - Lift effect on hover (translateY: -4px, scale: 1.02)
@@ -16,34 +16,34 @@ The Howdy, Stranger website now features a comprehensive micro-animation system 
 - Applied to: `.card`, `.announcement-card`, `.audio-card`
 
 ### 3. **Icon Animations**
-- Staggered entrance with rotation effect
-- All Lucide icons animate on page load
-- Delay: 50ms per icon
+- Selective icon animations for hint steps
+- Scale and rotation effects on hover
+- Respects `prefers-reduced-motion` setting
 
 ### 4. **Subtitle Reveal**
-- Fade in from bottom with delayed entrance
+- Word-by-word reveal with staggered timing
+- Fade in from bottom with scale effect
 - Coordinates with logo animation
 
-### 5. **Enhanced Loading States**
-- Dual-layer shimmer effect
-- Smooth gradient animation
-- Optimized for performance
+### 5. **Parallax Scroll**
+- Logo movement on hero section scroll
+- Performance optimized with reduced motion support
 
-### 6. **Navigation Link Micro-Interactions**
-- Subtle lift on hover (translateY: -2px)
-- Quick 200ms transitions
+### 6. **Custom Cursor Interactions**
+- Pointer cursor for interactive elements
+- Touch device detection to avoid unnecessary processing
 
 ## Configuration
 
-All animations are centralized in `/js/motion-system.js`. To customize:
+All animations are centralized in `/js/animations.js`. Key functions:
 
-```javascript
-MotionSystem.presets.logoEntrance = {
-  initial: { opacity: 0, scale: 0.8, filter: 'blur(10px)' },
-  animate: { opacity: 1, scale: 1, filter: 'blur(0px)' },
-  transition: { duration: 1.2, easing: [0.34, 1.56, 0.64, 1] }
-}
-```
+- `animateLogo()` - Logo entrance animation
+- `animateSubtitle()` - Word-by-word subtitle reveal
+- `initParallax()` - Parallax scroll effects
+- `initCustomCursor()` - Custom cursor interactions
+- `initIconAnimations()` - Icon hover effects
+
+To customize timing or effects, modify the CSS transitions and transforms within these functions.
 
 ## Performance
 

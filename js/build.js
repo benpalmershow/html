@@ -2,13 +2,13 @@ import { build } from "bun";
 
 await build({
   entrypoints: [
-    "./html/js/countdown.js", 
-    "./html/js/portfolio.js", 
-    "./html/js/nav.js",
-    "./html/js/dark-mode.js",
-    "./html/js/financials-chart.js"
+    "./js/countdown.js",
+    "./js/portfolio.js",
+    "./js/nav.js",
+    "./js/dark-mode.js",
+    "./js/financials.js"
   ],
-  outdir: "./html/dist",
+  outdir: "./dist",
   minify: {
     whitespace: true,
     identifiers: true,

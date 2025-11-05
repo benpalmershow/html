@@ -23,15 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(posts => {
       const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
 
-      // Sort posts by date descending (latest first)
-      valid.sort((a, b) => {
-        const [monthA, dayA, yearA] = a.date.split('/').map(Number);
-        const [monthB, dayB, yearB] = b.date.split('/').map(Number);
-        const dateA = new Date(2000 + yearA, monthA - 1, dayA);
-        const dateB = new Date(2000 + yearB, monthB - 1, dayB);
-        return dateB - dateA;
-      });
-
+      // Posts are already sorted in the JSON (latest first)
       renderPosts(valid);
     })
     .catch(err => {

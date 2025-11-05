@@ -136,7 +136,8 @@
             "june": "134,457,000",
             "july": "134,561,000",
             "august": "134,558,000",
-            "september": "134,526,000",
+            "september": "134,529,000",
+            "october":"134,571,000",
             "change": "",
             "explanation": "The monthly change in private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
         },
@@ -278,7 +279,8 @@
             "june": "4.38",
             "july": "4.39",
             "august": "4.27",
-            "september": "4.149",
+            "september": "4.15",
+            "october":"4.06",
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
         },
@@ -748,8 +750,8 @@
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-december",
             "next_meeting": "December 10, 2025",
             "bps_probabilities": {
-                "25BP Decrease": "71%",
-                "No Change": "27%",
+                "25BP Decrease": "65%",
+                "No Change": "32%",
                 "50+BP Decrease": "2%",
                 "25+BP Increase": "1%"
             },

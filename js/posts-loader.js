@@ -64,14 +64,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetch('json/posts.json?v=' + Date.now())
     .then(r => {
-      if (!r.ok) throw new Error('Failed to load posts');
+      if (!r.ok) throw new Error('Failed to load posts JSON');
       return r.json();
     })
     .then(posts => {
-      const valid = (Array.isArray(posts) ? posts : []).filter(p => p && p.date && p.content);
+      // For each post, if it has file, fetch and parse
+      const promises = posts.map(post => {
+        if (post.file) {
+          return fetch(post.file + '?v=' + Date.now())
+            .then(r => {
+              if (!r.ok) throw new Error('Failed to load ' + post.file);
+              return r.text();
+            })
+            .then(md => {
+              // Parse markdown
+              const parts = md.split(/^---$/m);
+              let contentMd;
+              if (parts.length >= 3) {
+                // Has frontmatter
+                contentMd = parts.slice(2).join('---').trim();
+              } else {
+                contentMd = md.trim();
+              }
+              const contentHtml = marked.parse(contentMd);
+              return { ...post, content: contentHtml };
+            })
+            .catch(err => {
+              console.warn('Failed to load ' + post.file, err);
+              return post; // keep as is
+            });
+        } else {
+          return Promise.resolve(post);
+        }
+      });
 
-      // Posts are already sorted in the JSON (latest first)
-      renderPosts(valid);
+      return Promise.all(promises);
+    })
+    .then(validPosts => {
+      renderPosts(validPosts.filter(p => p && p.date && p.content));
     })
     .catch(err => {
       console.error('Error loading posts:', err);

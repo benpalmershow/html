@@ -147,6 +147,6 @@ initTariffChart();
 
   <figure style="margin: 0; text-align: center;">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gaza_Strip_location_map.svg" alt="Israel-Hamas Gaza" style="width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 4px;">
-    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>8. Israel–Hamas</strong><br>Gaza Strip<br><em>Trump administration brokered 2025 ceasefire ending Israel-Hamas war and securing release of all hostages. <a href="https://en.wikipedia.org/wiki/Israel%E2%80%93Hamas_war">Wikipedia</a></em></figcaption>
+    <figcaption style="font-size: 0.9em; margin-top: 8px;"><strong>8. Israel–Hamas</strong><br>Gaza Strip<br><em>Trump administration brokered 2025 ceasefire ending Israel-Hamas war and securing release of all hostages. The U.S. is seeking a 2-Year Mandate from UN Sec. Council for a Gaza Stabilization Unit administered by Israel and Egypt. <a href="https://en.wikipedia.org/wiki/Israel%E2%80%93Hamas_war">Wikipedia</a></em></figcaption>
   </figure>
 </div>

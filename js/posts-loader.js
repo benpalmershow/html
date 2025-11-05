@@ -4,10 +4,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   feed.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>';
 
+  function formatTimeAgo(timestamp) {
+  const now = new Date();
+  const postDate = new Date(timestamp);
+  const diffMs = now - postDate;
+  const diffMins = Math.floor(diffMs / 60000);
+  if (diffMins < 60) {
+    return diffMins === 1 ? '1 minute ago' : `${diffMins} minutes ago`;
+    }
+  const diffHours = Math.floor(diffMins / 60);
+    if (diffHours < 24) {
+      return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`;
+    }
+    const diffDays = Math.floor(diffHours / 24);
+    if (diffDays < 30) {
+      return diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+    }
+    const diffMonths = Math.floor(diffDays / 30);
+    return diffMonths === 1 ? '1 month ago' : `${diffMonths} months ago`;
+  }
+
   function renderPosts(posts) {
     feed.innerHTML = posts.map(p => `
       <div class="announcement-card">
-        <time>${p.date}</time>
+        <time>${formatTimeAgo(p.date)}</time>
         <div class="content">${p.content || ''}</div>
       </div>
     `).join('') || '<div class="empty-state">No posts available.</div>';

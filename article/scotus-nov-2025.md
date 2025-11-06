@@ -10,33 +10,37 @@ summary: Supreme Court oral arguments schedule for November 2025 term with case 
 
 ---
 
-## Monday, November 3
+## Wednesday, November 5
 
-### RICO v. UNITED STATES (24-1056)
+### CONEY ISLAND AUTO PARTS v. BURTON (24-808)
 
 **Question Presented:**
 
-Whether the fugitive-tolling doctrine applies in the context of supervised release.
+Well-settled legal principles dictate that a judgment entered in the absence of personal jurisdiction is void. Federal Rule of Civil Procedure 60(b)(4) authorizes federal courts to vacate a judgment when it is void. A motion seeking vacatur, however, "must be made within a reasonable time." Fed. R. Civ. P. 60(c)(1).
 
-**Cert. Granted:** 6/30/2025
+Each of the United States Courts of Appeals other than the Sixth Circuit holds that there is effectively no time limit for moving to vacate a judgment, notwithstanding Rule 60(c)(1)'s "reasonable time" requirement, when the judgment is obtained in the absence of personal jurisdiction. The common thinking among these circuits is that a judgment entered without personal jurisdiction is void ab initio.
 
-**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000735135713) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-1056.html)
+The United States Court of Appeals for the Sixth Circuit is the sole outlier. In this case, it held that Rule 60(c)(1) governs the timing of a motion seeking vacatur of a void judgment pursuant to Rule 60(b)(4).
+
+Whether Federal Rule of Civil Procedure 60(c)(1) imposes any time limit to set aside a void default judgment for lack of personal jurisdiction.
+
+**Cert. Granted:** 6/6/2025
+
+**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000735266421) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-808.html)
 
 ---
 
-### HENCELY v. FLUOR CORP. (24-924)
+### LEARNING RESOURCES ET AL. v. TRUMP / TRUMP v. V.O.S. SELECTIONS ET AL. (24-1287 / 25-250)
 
 **Question Presented:**
 
-Former U.S. Army Specialist Winston T. Hencely was critically and permanently injured by a suicide bomber inside Bagram Airfield in Afghanistan. The bomber, Ahmad Nayeb, worked on base for a government contractor. An Army investigation found that the attack's primary contributing factor was the contractor's actions in breach of its Army contract and in violation of the military's instructions to supervise Nayeb. Hencely sued the government contractor for negligence under South Carolina law. He did not sue the military under the Federal Tort Claims Act.
+1. Whether the International Emergency Economic Powers Act (IEEPA), Pub. L. No. 95-223, Tit. II, 91 Stat. 1626, 50 U.S.C. § 1701 et seq., authorizes the President to impose tariffs.
 
-Even so, the Fourth Circuit held that Hencely's state claims are preempted by unspoken "federal interests" emanating from an FTCA exception. Invoking Boyle v. United Technologies Corp., 487 U.S. 500 (1988), the court of appeals held that the FTCA's exception immunizing the government for "[a]ny claim arising out of the combatant activities of the military or naval forces ... during time of war," 28 U.S.C. §2680(j), barred Hencely's South Carolina claims against the contractor. The decision below reaffirmed a 3-1-1 split among the Second, Third, Fourth, Ninth and D.C. Circuits over Boyle's reach when contractors defend against state tort claims by invoking §2680(j).
+2. Whether IEEPA’s delegation of authority to the President to impose tariffs violates the nondelegation doctrine.
 
-Should Boyle be extended to allow federal interests emanating from the FTCA's combatant-activities exception to preempt state tort claims against a government contractor for conduct that breached its contract and violated military orders?
+**Cert. Granted:** 9/9/2025
 
-**Cert. Granted:** 6/2/2025
-
-**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000735134837) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-924.html)
+**Audio:** [<i data-lucide='mic'></i>](https://www.supremecourt.gov/oral_arguments/audio/2025/24-1287) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-1287.html)
 
 ---
 
@@ -79,34 +83,30 @@ Evaluating multiple IQ scores is "complicated," and "this Court has not specifie
 
 ---
 
-## Wednesday, November 5
+## Monday, November 3
 
-### CONEY ISLAND AUTO PARTS v. BURTON (24-808)
+### RICO v. UNITED STATES (24-1056)
 
 **Question Presented:**
 
-Well-settled legal principles dictate that a judgment entered in the absence of personal jurisdiction is void. Federal Rule of Civil Procedure 60(b)(4) authorizes federal courts to vacate a judgment when it is void. A motion seeking vacatur, however, "must be made within a reasonable time." Fed. R. Civ. P. 60(c)(1).
+Whether the fugitive-tolling doctrine applies in the context of supervised release.
 
-Each of the United States Courts of Appeals other than the Sixth Circuit holds that there is effectively no time limit for moving to vacate a judgment, notwithstanding Rule 60(c)(1)'s "reasonable time" requirement, when the judgment is obtained in the absence of personal jurisdiction. The common thinking among these circuits is that a judgment entered without personal jurisdiction is void ab initio.
+**Cert. Granted:** 6/30/2025
 
-The United States Court of Appeals for the Sixth Circuit is the sole outlier. In this case, it held that Rule 60(c)(1) governs the timing of a motion seeking vacatur of a void judgment pursuant to Rule 60(b)(4).
-
-Whether Federal Rule of Civil Procedure 60(c)(1) imposes any time limit to set aside a void default judgment for lack of personal jurisdiction.
-
-**Cert. Granted:** 6/6/2025
-
-**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000735266421) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-808.html)
+**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000735135713) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-1056.html)
 
 ---
 
-### DONALD J. TRUMP, PRESIDENT OF THE UNITED STATES, ET AL. v. V.O.S. SELECTIONS, INC., ET AL. (25-250)
+### HENCELY v. FLUOR CORP. (24-924)
 
 **Question Presented:**
 
-1. Whether the International Emergency Economic Powers Act (IEEPA), Pub. L. No. 95-223, Tit. II, 91 Stat. 1626, 50 U.S.C. § 1701 et seq., authorizes the President to impose tariffs.
+Former U.S. Army Specialist Winston T. Hencely was critically and permanently injured by a suicide bomber inside Bagram Airfield in Afghanistan. The bomber, Ahmad Nayeb, worked on base for a government contractor. An Army investigation found that the attack's primary contributing factor was the contractor's actions in breach of its Army contract and in violation of the military's instructions to supervise Nayeb. Hencely sued the government contractor for negligence under South Carolina law. He did not sue the military under the Federal Tort Claims Act.
 
-2. Whether IEEPA’s delegation of authority to the President to impose tariffs violates the nondelegation doctrine.
+Even so, the Fourth Circuit held that Hencely's state claims are preempted by unspoken "federal interests" emanating from an FTCA exception. Invoking Boyle v. United Technologies Corp., 487 U.S. 500 (1988), the court of appeals held that the FTCA's exception immunizing the government for "[a]ny claim arising out of the combatant activities of the military or naval forces ... during time of war," 28 U.S.C. §2680(j), barred Hencely's South Carolina claims against the contractor. The decision below reaffirmed a 3-1-1 split among the Second, Third, Fourth, Ninth and D.C. Circuits over Boyle's reach when contractors defend against state tort claims by invoking §2680(j).
 
-**Cert. Granted:** 9/9/2025
+Should Boyle be extended to allow federal interests emanating from the FTCA's combatant-activities exception to preempt state tort claims against a government contractor for conduct that breached its contract and violated military orders?
 
-**Audio:** Coming Soon | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/25-250.html)
+**Cert. Granted:** 6/2/2025
+
+**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000735134837) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-924.html)

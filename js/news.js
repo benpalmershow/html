@@ -29,7 +29,8 @@
       'sustainable-abundance',
       'oregon-kei-trucks-sb1213',
        'doc-riter-trump-interview',
-       'scotus-nov-2025'
+       'scotus-nov-2025',
+       'trump-v-vos-selections'
     ];
 
     // Parse frontmatter from markdown

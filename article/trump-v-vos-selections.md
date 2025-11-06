@@ -1,37 +1,128 @@
 ---
-title: Supreme Court Oral Arguments: Tariff Powers and Presidential Authority
-date: 2025-11-05
+title: Trump’s IEEPA Tariff Authority
+date: 2025-11-06
 category: legal
 icon: gavel
-summary: Analysis of the tariff case before the Supreme Court examining presidential authority under trade statutes
+summary: Justices question whether the International Emergency Economic Powers Act allows presidential tariffs without clear congressional authorization under Article I.
+link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
 ---
 
-# Supreme Court Oral Arguments: Tariff Powers and Presidential Authority
+# Trump’s IEEPA Tariff Authority
 
-Today's Supreme Court oral arguments in Trump v. V.O.S. Selections center on the constitutional limits of presidential authority to impose tariffs under various statutes. The case examines whether President Trump's use of Section 232, Section 301, and Section 201 of the Trade Expansion Act of 1962 constitutes an impermissible delegation of Congress's taxing power to the executive branch. At issue are competing visions of executive authority in foreign trade policy, pitting non-delegation principles against presidential flexibility in national security matters.
+**Cases:** *Learning Resources et al. v. Trump* (No. 24-1287) and *Trump v. V.O.S. Selections et al.* (No. 25-250)  
+**Argued:** November 5, 2025  
 
-## Key Constitutional Concepts
+---
 
-**Tariffs**: Import duties levied on foreign goods to protect domestic industries, raise revenue, or retaliate against unfair trade practices. Under Article I, Section 8 of the Constitution, Congress holds the exclusive power "To lay and collect Taxes, Duties, Imposts and Excises," which includes tariff authority. This power is explicitly delegated to Congress as part of its taxing authority from the people.
+## At Issue
 
-**Non-Delegation Doctrine vs. Major Questions Doctrine**: The non-delegation doctrine prohibits Congress from transferring its legislative powers to other branches without providing an "intelligible principle" to guide executive discretion. The major questions doctrine, a modern application, requires clear congressional authorization for significant executive actions that implicate fundamental policy issues. The Court must determine whether statutes like Sections 232, 301, and 201 provide sufficiently explicit guidance for presidential tariff impositions.
+Whether the **International Emergency Economic Powers Act of 1977 (IEEPA)** authorizes the President to impose tariffs based on language allowing him to “regulate importation.” The statute—passed to *limit* emergency economic powers after the abuses of the Trading With the Enemy Act—contains no mention of tariffs, duties, or taxes.
 
-**Explicit (Narrow) vs. Implicit (Broad) Delegation**: Explicit delegation occurs when Congress clearly outlines the scope and limits of executive authority, while implicit delegation relies on broader statutory language that could be interpreted expansively. Trump's administration argues that national security threats from trade deficits implicitly authorize tariff actions under broad delegations in trade law, whereas challengers contend this constitutes impermissible implicit delegation violating the major questions doctrine.
+The Trump administration argues that persistent bilateral trade deficits and “lack of reciprocity” in trade relationships constitute an “unusual and extraordinary threat” to national security, thereby justifying tariffs under IEEPA.
 
-**Congressional Taxation Power (Article I)**: Article I vests Congress with the power to tax and spend, deriving directly from the people through elected representatives. This creates tension with Article II's executive foreign policy authority, as tariff decisions blend fiscal policy (taxation) with foreign affairs (diplomacy and national security).
+---
 
-**Executive Foreign Policy Authority (Article II)**: The President serves as Commander-in-Chief and chief diplomat, with broad authority over foreign affairs. This includes negotiating trade agreements and responding to national security threats. The administration claims this Article II authority supports presidential tariff actions when trade imbalances threaten economic security.
+## Constitutional Fault Lines
 
-## Statutory Framework
+The case sits at the intersection of four major constitutional doctrines:
 
-**Article I, Section 8**: Enumerates Congress's powers, including taxation and regulation of foreign commerce. This constitutional foundation underlies the Court's analysis of whether tariff authority can be delegated.
+### **1. Article I — Taxation from the People**
 
-**Emergency Economic Powers Act of 1977**: Provides broad emergency powers to the President during declared emergencies, but notably does not mention tariffs. This absence strengthens arguments that Congress has not delegated tariff authority in emergency contexts.
+- Tariffs are a form of **taxation**, and Article I, Section 8 vests the taxing power in **Congress**.  
+- Under the Constitution’s structure, taxation requires both Houses and the President to act jointly.  
+- The question: can Congress delegate that taxing authority implicitly, or must it do so explicitly?
 
-**Section 232, Section 301, Section 201**: These provisions of the Trade Expansion Act of 1962 authorize presidential action on national security (232), unfair trade practices (301), and market disruptions (201). The administration's argument hinges on interpreting these as broad delegations allowing tariff impositions when trade deficits indicate "unusual and extraordinary threats" to national security.
+### **2. Nondelegation vs. Major Questions Doctrine**
 
-**Trump's National Security Argument**: The administration contends that persistent U.S. goods trade deficits represent reciprocity failures in bilateral relationships, constituting threats to national security and the economy. This interpretation extends traditional national security concerns beyond military threats to include economic imbalances.
+- **Nondelegation** asks whether Congress supplied an “intelligible principle” when it authorized the President to act.  
+- The **Major Questions Doctrine** asks whether Congress *clearly* authorized an action of such sweeping economic and political significance.  
+- Together, they test whether “regulate importation” can support what would be one of the broadest delegations of taxing power in U.S. history.
 
-**Trade Promotion Authority (TPA)**: Authorizes the President to negotiate trade agreements and adjust tariffs, but only to reduce barriers. TPA has never been used to increase tariffs, creating asymmetry in presidential authority. The case questions whether this reflects intentional congressional limits or merely historical practice.
+### **3. Explicit (Narrow) vs. Implicit (Broad) Delegation**
 
-The outcome could redefine the balance between congressional control over fiscal policy and presidential authority in trade matters, with implications for future administrations' ability to respond to economic threats through tariff actions.
+- Every recognized tariff statute—**Section 232 (national security), Section 301 (unfair trade), Section 201 (safeguards)**—uses explicit language (“duties,” “tariffs,” “taxes”) with clear limits and procedures.  
+- IEEPA’s verbs (“block,” “nullify,” “prohibit”) describe embargo-style controls, not taxation.  
+- Reading “regulate importation” to include tariffs transforms a narrow emergency power into an open-ended fiscal tool.
+
+### **4. Article II — Executive Foreign Policy Authority**
+
+- The government argues for deference in foreign affairs, where the President traditionally acts with greater independence.  
+- Respondents counter that **foreign affairs deference** does not override Article I’s textual allocation of taxing power.  
+- Even the Solicitor General conceded the President holds **no inherent Article II tariff authority in peacetime**.
+
+---
+
+## Government’s Argument
+
+**Solicitor General Sauer** defended the tariffs by invoking historical and textual continuity:
+
+- “Regulate importation” historically encompassed tariff authority, from *Gibbons v. Ogden* through the Trading With the Enemy Act (TWEA).  
+- President Nixon’s 1971 tariffs under TWEA’s identical language were upheld in *United States v. Yoshida International*, and Congress carried that same language forward in IEEPA.  
+- The Court’s *Algonquin* decision held “adjust imports” includes monetary exactions; “regulate” is broader still.  
+- Tariffs imposed under IEEPA are **regulatory**, not **revenue-raising**—they aim to deter foreign conduct, not collect funds.  
+- In foreign affairs, **major questions and nondelegation** concerns carry less force given Article II’s inherent powers.
+
+---
+
+## Respondents’ Argument
+
+**Neal Katyal** and **Benjamin Gutman** argued for a narrow reading:
+
+- Congress **always** uses explicit language when delegating tariff authority—IEEPA’s silence is decisive.  
+- IEEPA’s structure and legislative history confirm it was meant to **constrain**, not **expand**, presidential emergency powers.  
+- Allowing an implicit delegation would invert Article I’s structure—letting a single branch tax citizens without bicameral approval.  
+- They cited the Solicitor General’s concession that the President has **no independent tariff power**, making reliance on IEEPA textually and constitutionally unsound.  
+- As a matter of statutory design, if “regulate importation” sufficed, the procedural and percentage limits of Sections 232, 301, and 201 would be meaningless.
+
+---
+
+## The Bench Reacts
+
+- **Justice Gorsuch** described delegation as a “one-way ratchet”: Congress can transfer power by simple majority but can reclaim it only with a supermajority override. He pressed the government on the lack of inherent tariff authority.  
+- **Justice Sotomayor** underscored that tariffs are taxes—revenue-generating by definition—and asked why “regulate” should be read as “tax” when Congress never uses the term that way.  
+- **Justice Kagan** observed that every tariff statute in Title 19 has meaningful constraints—IEEPA has none.  
+- **Justice Kavanaugh** flagged a potential “donut hole”: the President could ban all trade but not impose a 1% tariff—a distinction that might make little policy sense.  
+- **Justice Barrett** asked whether any other statute uses “regulate importation” to grant tariff authority; the government cited only TWEA and IEEPA.
+
+---
+
+## Nixon’s 1971 Tariffs Revisited
+
+A flashpoint was the Nixon-era precedent:
+
+- **Government View:** Nixon’s 10% tariffs under TWEA’s “regulate importation” were upheld, and Congress effectively ratified that authority when reenacting the language in IEEPA.  
+- **Respondents:** Nixon initially relied on inherent powers, invoking TWEA only later. *Yoshida* upheld his action narrowly and explicitly tied future tariffs to the 1974 Trade Act (Section 122) with a 15% cap and 150-day limit.  
+- When Congress enacted IEEPA in 1977, it was reacting to executive overreach, not endorsing it.
+
+---
+
+## Broader Implications
+
+- **Trade Policy:** Upholding the government’s view would let any President invoke emergency powers to reshape trade relationships unilaterally.  
+- **Separation of Powers:** It would mark one of the most sweeping transfers of taxing authority from Congress to the Executive in U.S. history.  
+- **Economic Impact:** With billions already collected, trillions could hinge on the outcome.  
+- **Legislative Consequence:** Congress’s ability to reclaim delegated power would be severely constrained.
+
+---
+
+## Context in Broader Trade Law
+
+- **Trade Promotion Authority (TPA)** grants the President discretion to *reduce* tariffs within negotiated agreements but has never been used to *increase* them.  
+- Reading IEEPA to authorize tariff hikes by emergency declaration would invert that structure—transforming a limited foreign policy tool into a perpetual fiscal power.  
+
+---
+
+## What Comes Next
+
+A decision expected by mid-2026 will determine:
+
+- Whether implicit statutory language can authorize taxation;  
+- How *nondelegation* and *major questions* doctrines apply in foreign-affairs contexts;  
+- The scope of presidential economic emergency powers; and  
+- Whether Article I’s taxation clause demands explicit delegation.
+
+The Court appears divided—torn between flexibility in foreign policy and the constitutional design that keeps the power to tax squarely with Congress.
+
+---
+
+*Full transcript: [U.S. Supreme Court Oral Argument, 24-1287](https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf).*

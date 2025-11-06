@@ -30,7 +30,7 @@ Whether Federal Rule of Civil Procedure 60(c)(1) imposes any time limit to set a
 
 ---
 
-### LEARNING RESOURCES ET AL. v. TRUMP / TRUMP v. V.O.S. SELECTIONS ET AL. (24-1287 / 25-250)
+### LEARNING RESOURCES ET AL. v. TRUMP (24-1287 / 25-250)
 
 **Question Presented:**
 

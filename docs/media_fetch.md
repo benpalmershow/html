@@ -681,3 +681,51 @@ I've prepared the following entry for "The Power of Money" by Paul Sheard:
 
 Would you like me to proceed with adding this to media.json, or would you like to adjust any fields?
 ```
+
+---
+
+## Post Integration (Optional)
+
+If the user requests to post in a `article/posts/YYYY-MM-DD.md` announcment in `index.html`:
+
+1. **Add section to relevant post:** Create a new "## New Book/Movie/etc.: [Title]" section in the current day's post (e.g., `article/posts/YYYY-MM-DD.md`)
+2. **Include thumbnail:** Add cover image floated to the right with border styling
+3. **Add brief description:** Concise summary matching the media.json entry
+4. **Include media link:** Add link to `media.html` with custom icon if available (e.g., `images/media.png`)
+5. **Follow post formatting:** Use existing HTML structure with `<p class="section-links">` and `<div style="clear: both;"></div>`
+
+**Example post addition:**
+```markdown
+## New Book: Land Power
+<img src="https://publisher-site.com/cover.jpg" alt="Land Power cover" style="width: 100px; height: auto; float: right; margin-left: 10px; border: 2px solid #ddd; border-radius: 4px;">
+Added "Land Power" by Michael Albertus to the media collection. The book examines how land ownership shapes societal outcomes, from inequality and development to environmental sustainability.
+
+<p class="section-links">
+<a href="media.html" title="View media collection"><img src="images/media.png" alt="Media" style="width: 1.2em; height: auto;"> Media</a>
+</p>
+<div style="clear: both;"></div>
+```
+
+---
+
+## Lessons Learned & Process Improvements
+
+### Recent Execution (Land Power by Michael Albertus, 2025)
+
+**Successful elements:**
+- Used web_search for initial metadata gathering (effective for new releases)
+- Publisher direct cover URL worked reliably (add to priority list as tested method)
+- Browser tools enabled verification of image URLs without visual access
+- Post integration added value for immediate visibility
+
+**Improvements implemented:**
+- **Verification protocol:** When visual verification isn't possible (AI context), use browser navigation to confirm URL loads and matches context (publisher site confirmation)
+- **Cover sourcing:** Prioritize publisher's official image uploads for new releases (e.g., WordPress uploads on publisher sites)
+- **Post updates:** Added optional workflow for announcment mentions to increase engagement
+- **Date consistency:** Ensured dateAdded uses current date (2025-11-06) in ISO format
+
+**Potential future enhancements:**
+- Integrate Goodreads/Amazon ratings automatically via API
+- Add batch post updates for multiple entries
+- Implement image download for local hosting if hotlinking becomes unreliable
+- Expand category validation against existing entries to prevent inconsistencies

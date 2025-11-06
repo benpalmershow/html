@@ -52,12 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderPosts(posts) {
-    feed.innerHTML = posts.map(p => `
-      <div class="announcement-card">
-        <time>${formatTimeAgo(p.date)}</time>
-        <div class="content">${p.content || ''}</div>
-      </div>
-    `).join('') || '<div class="empty-state">No posts available.</div>';
+  feed.innerHTML = posts.map(p => `
+  <div class="announcement-card">
+  <time>${formatTimeAgo(p.date)}</time>
+  <div class="content">${p.content || ''}</div>
+  </div>
+  `).join('') || '<div class="empty-state">No posts available.</div>';
+
+  // Execute scripts in the content
+    const cards = feed.querySelectorAll('.announcement-card');
+    cards.forEach(card => {
+      const scripts = card.querySelectorAll('script');
+      scripts.forEach(script => {
+        const newScript = document.createElement('script');
+        if (script.src) {
+          newScript.src = script.src;
+        } else {
+          newScript.textContent = script.textContent;
+        }
+        document.body.appendChild(newScript);
+        // Remove the original script tag
+        script.remove();
+      });
+    });
 
     if (window.lucide) window.lucide.createIcons();
   }

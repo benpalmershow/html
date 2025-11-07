@@ -168,7 +168,7 @@
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
             // Hide nav when at top to make toggle visible on small screens
-            if (scrollTop === 0) {
+            if (window.innerWidth <= 768 && scrollTop === 0) {
                 navbarElement.classList.add('at-top');
             } else {
                 navbarElement.classList.remove('at-top');

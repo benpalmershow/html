@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const feed = document.getElementById('announcements-container');
   if (!feed) return;
 
+  // Check for session-based deduplication
+  const lastFetch = sessionStorage.getItem('postsLastFetch');
+  const now = Date.now();
+  if (lastFetch && (now - parseInt(lastFetch)) < 30000) { // 30 seconds
+    return; // Skip fetch if done recently in this session
+  }
+
   feed.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>';
 
   function parseDate(dateStr) {
@@ -85,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return r.json();
     })
     .then(posts => {
+      sessionStorage.setItem('postsLastFetch', Date.now().toString());
       // For each post, if it has file, fetch and parse
       const promises = posts.map(post => {
         if (post.file) {
@@ -94,17 +102,35 @@ document.addEventListener('DOMContentLoaded', () => {
               return r.text();
             })
             .then(md => {
-              // Parse markdown
-              const parts = md.split(/^---$/m);
-              let contentMd;
-              if (parts.length >= 3) {
-                // Has frontmatter
-                contentMd = parts.slice(2).join('---').trim();
-              } else {
-                contentMd = md.trim();
-              }
-              const contentHtml = marked.parse(contentMd);
-              return { ...post, content: contentHtml };
+              // Parse markdown with idle callback for non-blocking processing
+              return new Promise((resolve) => {
+                if ('requestIdleCallback' in window) {
+                  requestIdleCallback(() => {
+                    const parts = md.split(/^---$/m);
+                    let contentMd;
+                    if (parts.length >= 3) {
+                      contentMd = parts.slice(2).join('---').trim();
+                    } else {
+                      contentMd = md.trim();
+                    }
+                    const contentHtml = marked.parse(contentMd);
+                    resolve({ ...post, content: contentHtml });
+                  });
+                } else {
+                  // Fallback for browsers without requestIdleCallback
+                  setTimeout(() => {
+                    const parts = md.split(/^---$/m);
+                    let contentMd;
+                    if (parts.length >= 3) {
+                      contentMd = parts.slice(2).join('---').trim();
+                    } else {
+                      contentMd = md.trim();
+                    }
+                    const contentHtml = marked.parse(contentMd);
+                    resolve({ ...post, content: contentHtml });
+                  }, 0);
+                }
+              });
             })
             .catch(err => {
               console.warn('Failed to load ' + post.file, err);

@@ -100,16 +100,17 @@ blockquote.guidance-box {
     transform: none;
   }
 }
-.filter-buttons {
+.filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0 1.5rem;
-  padding: 0 0.5rem;
   justify-content: center;
+  gap: var(--grid-gap);
+  margin-bottom: 30px;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  position: relative;
 }
 
 .filter-btn {
@@ -142,20 +143,6 @@ blockquote.guidance-box {
   display: none;
 }
 
-.filter-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.filter-btn:hover::before {
-  left: 100%;
-}
 
 .filter-btn:hover {
   background: var(--bg-tertiary);
@@ -217,31 +204,31 @@ blockquote.guidance-box {
 
 
 
-/* Responsive adjustments */
+/* Mobile responsiveness for filters */
 @media (max-width: 768px) {
-  .filter-buttons {
-    gap: 0.4rem;
-    margin: 0.8rem 0 1.2rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex-wrap: nowrap;
-  }
+    .filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        padding-left: 1rem;
+        gap: 0;
+    }
 
-  .filter-buttons::-webkit-scrollbar {
-    display: none;
-  }
+    .filters::-webkit-scrollbar {
+        display: none;
+    }
 
-  .filter-btn {
-    padding: 0.4rem;
-    font-size: 0.8rem;
-    flex-shrink: 0;
-  }
+    .filter-btn {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
 
-  .filter-btn.active {
-    padding: 0.4rem 0.8rem;
-  }
+    .filter-btn.active {
+        padding: 0.5rem 1rem;
+    }
 }
 
 /* Accordion Card Layout */
@@ -249,7 +236,6 @@ blockquote.guidance-box {
   position: relative;
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   border-radius: 8px;
-  border: 1px solid var(--color-gray-200);
   margin: 0.5rem 0;
   box-shadow: 0 1px 8px var(--shadow-color);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -511,7 +497,7 @@ blockquote.guidance-box {
   .news-card:hover {
     transform: none !important;
   }
-}
+
 
 /* Mobile responsiveness for accordion cards */
 @media (max-width: 768px) {

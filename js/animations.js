@@ -48,18 +48,26 @@ setTimeout(() => {
 function initParallax() {
   const hero = document.querySelector('.hero');
   const logo = document.querySelector('.hero-logo');
-  
+
   if (!hero || !logo) return;
+
+  let ticking = false;
 
   window.addEventListener('scroll', () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    
-    const scrolled = window.pageYOffset;
-    const heroHeight = hero.offsetHeight;
-    
-    if (scrolled < heroHeight) {
-      const parallaxOffset = scrolled * 0.3;
-      logo.style.transform = `translateY(${parallaxOffset}px) scale(1)`;
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const heroHeight = hero.offsetHeight;
+
+        if (scrolled < heroHeight) {
+          const parallaxOffset = scrolled * 0.3;
+          logo.style.transform = `translateY(${parallaxOffset}px) scale(1)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   });
 }

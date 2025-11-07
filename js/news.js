@@ -323,7 +323,7 @@
 
     // Category filter with performance optimizations
     function initFilters() {
-      const filterContainer = document.querySelector('.filter-buttons');
+      const filterContainer = document.querySelector('.filters');
       if (!filterContainer) return;
 
       // Use event delegation for better performance

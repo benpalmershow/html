@@ -543,6 +543,8 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         justify-content: flex-start;
+        padding-left: 1rem;
+        gap: 0;
     }
 
     .filters::-webkit-scrollbar {

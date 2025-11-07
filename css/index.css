@@ -237,6 +237,12 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 1rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.announcements-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 .announcement-card {
@@ -456,6 +462,11 @@
   .card:hover {
     transform: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .announcement-card {
+    max-height: 300px;
+    overflow-y: auto;
   }
 }
 

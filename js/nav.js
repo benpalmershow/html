@@ -413,6 +413,9 @@
 
             /* Responsive adjustments */
             @media (max-width: 768px) {
+                body {
+                    padding-top: 60px;
+                }
                 .floating-nav {
                     gap: 4px;
                 }

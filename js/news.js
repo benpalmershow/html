@@ -77,29 +77,57 @@
       }
     }
 
-    // Render article card
+    // Render article card (accordion style)
     function renderArticleCard(article) {
+
     return `
-    <div class="card-header" data-category="${article.category}">
-    <time datetime="${article.date}">${formatDate(article.date)}</time>
-    <i data-lucide="${article.icon || 'file-text'}" class="card-icon"></i>
-    <h1>
-    <a href="?article=${article.id}">${article.title}</a>
-      <span class="category-badge ${article.category}">${article.category}</span>
-    </h1>
-    <i data-lucide="chevron-down" class="expand-icon"></i>
+    <div class="accordion-card" data-category="${article.category}">
+    <div class="accordion-header">
+    <div class="accordion-title-section">
+    <button class="filter-badge ${article.category}" aria-label="${article.category} category">
+    <i data-lucide="${getCategoryIcon(article.category)}" class="filter-icon"></i>
+    </button>
+    <h2 class="accordion-title">
+    ${article.title}
+    </h2>
     </div>
-    <div class="card-content">
-    <div class="card-inner">
-    <div class="highlights">
-    <p>${article.summary}</p>
-    <a href="?article=${article.id}" class="read-full-article-btn" aria-label="Read Full Article" title="Read Full Article">
-    <span class="button-hint">Read Full Article</span>
-    </a>
+
+    <div class="accordion-meta">
+    <i data-lucide="chevron-down" class="expand-icon" aria-label="Expand article details"></i>
     </div>
     </div>
+
+      <div class="accordion-content">
+      <div class="accordion-expanded-header">
+      <time class="accordion-expanded-date" datetime="${article.date}">${formatDate(article.date)}</time>
+      </div>
+        <div class="accordion-full-preview">
+        <p>${article.summary}</p>
+      </div>
+
+      <div class="accordion-full-actions">
+      <a href="?article=${article.id}" class="read-full-btn primary">
+          <span>Read Full Article</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
     </div>
     `;
+    }
+
+    // Get category icon (matches filter button icons)
+    function getCategoryIcon(category) {
+      const icons = {
+        'ipo': 'trending-up',
+        'earnings': 'bar-chart-3',
+        'policy': 'shield',
+        'healthcare': 'heart',
+        'legal': 'gavel',
+        'political': 'vote',
+        'corrections': 'edit-3'
+      };
+      return icons[category] || 'file-text';
     }
 
     // Render full article view
@@ -205,15 +233,73 @@
       // Reinitialize Lucide icons
       lucide.createIcons();
 
-      // Setup expand/collapse
-      document.querySelectorAll('.card-header').forEach(header => {
-        header.addEventListener('click', (e) => {
-          if (e.target.tagName === 'A') return; // Don't toggle if clicking link
-          header.classList.toggle('expanded');
-          const content = header.nextElementSibling;
-          content.classList.toggle('expanded');
+      // Setup accordion functionality
+      setupAccordion();
+    }
+
+    // Setup accordion expand/collapse functionality with performance optimizations
+    function setupAccordion() {
+      // Use event delegation for better performance
+      const container = document.querySelector('.content');
+      if (!container) return;
+
+      // Remove existing listeners to prevent accumulation
+      const existingHandler = container._accordionHandler;
+      if (existingHandler) {
+        container.removeEventListener('click', existingHandler);
+      }
+
+      // Create single event handler for all accordion interactions
+      const handleAccordionClick = function(e) {
+        const header = e.target.closest('.accordion-header');
+        if (!header) return;
+
+        // Don't expand if clicking on filter badge
+        if (e.target.closest('.filter-badge')) {
+          return;
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const card = header.closest('.accordion-card');
+        const content = card.querySelector('.accordion-content');
+        const icon = header.querySelector('.expand-icon');
+
+        // Use requestAnimationFrame for smoother animations
+        requestAnimationFrame(() => {
+          // Close other expanded cards
+          document.querySelectorAll('.accordion-card.expanded').forEach(expandedCard => {
+            if (expandedCard !== card) {
+              const expandedContent = expandedCard.querySelector('.accordion-content');
+              const expandedIcon = expandedCard.querySelector('.expand-icon');
+
+              expandedCard.classList.remove('expanded');
+              expandedContent.style.maxHeight = '0';
+              expandedIcon.style.transform = 'rotate(0deg)';
+            }
+          });
+
+          // Toggle current card
+          const isExpanded = card.classList.contains('expanded');
+          card.classList.toggle('expanded');
+
+          if (isExpanded) {
+            content.style.maxHeight = '0';
+            icon.style.transform = 'rotate(0deg)';
+          } else {
+            // Use a small delay to ensure DOM has updated
+            setTimeout(() => {
+              content.style.maxHeight = content.scrollHeight + 'px';
+              icon.style.transform = 'rotate(180deg)';
+            }, 10);
+          }
         });
-      });
+      };
+
+      // Store handler reference for cleanup
+      container._accordionHandler = handleAccordionClick;
+      container.addEventListener('click', handleAccordionClick);
     }
 
     // Format date
@@ -235,34 +321,53 @@
       }
     }
 
-    // Category filter
+    // Category filter with performance optimizations
     function initFilters() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          
-          const category = this.dataset.category;
-          const cards = document.querySelectorAll('.card-header');
-          
+      const filterContainer = document.querySelector('.filter-buttons');
+      if (!filterContainer) return;
+
+      // Use event delegation for better performance
+      const existingFilterHandler = filterContainer._filterHandler;
+      if (existingFilterHandler) {
+        filterContainer.removeEventListener('click', existingFilterHandler);
+      }
+
+      const handleFilterClick = function(e) {
+        const filterBtn = e.target.closest('.filter-btn');
+        if (!filterBtn) return;
+
+        e.preventDefault();
+
+        // Update active state
+        filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        filterBtn.classList.add('active');
+
+        const category = filterBtn.dataset.category;
+
+        // Use requestAnimationFrame for smoother filtering
+        requestAnimationFrame(() => {
+          const cards = document.querySelectorAll('.accordion-card');
           cards.forEach(card => {
-            const cardParent = card.parentElement;
-            if (category === 'all' || card.dataset.category === category) {
-              card.style.display = '';
-              if (card.nextElementSibling) {
-                card.nextElementSibling.style.display = '';
-              }
-            } else {
-              card.style.display = 'none';
-              if (card.nextElementSibling) {
-                card.nextElementSibling.style.display = 'none';
-              }
+            const shouldShow = category === 'all' || card.dataset.category === category;
+            card.style.display = shouldShow ? '' : 'none';
+
+            // Close expanded cards when filtering
+            if (!shouldShow && card.classList.contains('expanded')) {
+              const content = card.querySelector('.accordion-content');
+              const icon = card.querySelector('.expand-icon');
+              card.classList.remove('expanded');
+              content.style.maxHeight = '0';
+              icon.style.transform = 'rotate(0deg)';
             }
           });
         });
-      });
+      };
+
+      // Store handler reference for cleanup
+      filterContainer._filterHandler = handleFilterClick;
+      filterContainer.addEventListener('click', handleFilterClick);
     }
 
     // Initialize

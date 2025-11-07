@@ -84,6 +84,7 @@
     
     /* Logo Colors (legacy - use brand colors instead) */
     --logo-teal: var(--color-primary, #2c5f5a); /* Logo teal - same as primary */
+    --logo-teal-dark: #1e4d48; /* Darker teal for hover states */
     --logo-orange: var(--color-secondary, #d4822a); /* Logo orange - same as secondary */
 
      /* Legacy variables for compatibility */

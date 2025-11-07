@@ -249,7 +249,6 @@ blockquote.guidance-box {
   position: relative;
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   border-radius: 8px;
-  border: 1px solid var(--color-gray-200);
   margin: 0.5rem 0;
   box-shadow: 0 1px 8px var(--shadow-color);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -511,7 +510,7 @@ blockquote.guidance-box {
   .news-card:hover {
     transform: none !important;
   }
-}
+
 
 /* Mobile responsiveness for accordion cards */
 @media (max-width: 768px) {

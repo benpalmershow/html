@@ -125,9 +125,22 @@
             "september": "238,000",
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data is seasonally adjusted and includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
-        },
-        {
+            },
+            {
             "category": "Employment Indicators",
+             "agency": "Challenger Gray & Christmas",
+             "name": "Job Cuts Report",
+             "releaseDay": 6,
+             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
+             "july":"62,075",
+             "august":"85,979",
+             "september": "54,064",
+             "october": "153,074",
+             "change": "",
+             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
+         },
+         {
+             "category": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
             "releaseDay": 0,
@@ -422,6 +435,7 @@
             "august": "58.2",
             "september": "55.1",
             "october": "53.6",
+            "november": "50.3",
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
         },

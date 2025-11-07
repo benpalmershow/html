@@ -166,6 +166,13 @@
                 backToTopBtn.classList.remove('show');
             }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+            // Hide nav when at top to make toggle visible on small screens
+            if (scrollTop === 0) {
+                navbarElement.classList.add('at-top');
+            } else {
+                navbarElement.classList.remove('at-top');
+            }
         });
 
         backToTopBtn.addEventListener('click', () => {
@@ -220,6 +227,10 @@
                 gap: 4px;
                 z-index: 1000;
                 transition: all 0.3s ease;
+            }
+
+            .floating-nav.at-top {
+                top: -70px;
             }
 
             .floating-nav:hover {

@@ -249,6 +249,7 @@
   flex-shrink: 0;
   width: 100%;
   scroll-snap-align: start;
+  contain: layout style paint;
 }
 
 @media (min-width: 768px) {

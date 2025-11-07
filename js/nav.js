@@ -97,6 +97,10 @@
         `;
         document.body.appendChild(toggle);
 
+        // Cache DOM references
+        const navbarElement = navbar;
+        const toggleElement = toggle;
+
         // Inactivity detection
         let inactivityTimer;
         const inactivityDelay = 5000; // 5 seconds
@@ -104,14 +108,14 @@
         function resetInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
-                navbar.classList.add('hidden');
-                toggle.classList.add('hidden');
+                navbarElement.classList.add('hidden');
+                toggleElement.classList.add('hidden');
             }, inactivityDelay);
         }
 
         function showNav() {
-            navbar.classList.remove('hidden');
-            toggle.classList.remove('hidden');
+            navbarElement.classList.remove('hidden');
+            toggleElement.classList.remove('hidden');
             resetInactivityTimer();
         }
 

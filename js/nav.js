@@ -231,6 +231,7 @@
 
             .floating-nav.at-top {
                 top: -70px;
+                box-shadow: none;
             }
 
             .floating-nav:hover {

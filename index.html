@@ -64,10 +64,10 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Preload critical resources -->
   <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="images/logo.png" as="image" type="image/png" fetchpriority="high">
@@ -89,10 +89,10 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Main CSS -->
-  <link rel="stylesheet" href="css/body.css?v=20251107">
-  <link rel="stylesheet" href="css/dark-mode.css?v=20251107">
+  <link rel="stylesheet" href="css/body.css?v=20250926">
+  <link rel="stylesheet" href="css/dark-mode.css?v=20250926">
   <link rel="stylesheet" href="css/page-titles.css">
-  <link rel="stylesheet" href="css/index.css?v=20251107">
+  <link rel="stylesheet" href="css/index.css?v=20250926">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
@@ -197,7 +197,17 @@
   }
   </script>
 
-
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/js/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
   </script>
 
 </head>
@@ -301,12 +311,12 @@
   }
   </script>
   
-  <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
-  <script src="js/animations.js?v=20251107" defer></script>
-  <script src="js/nav.js" defer></script>
-  <script src="js/socials.js?v=20251107" defer></script>
-  <script src="js/dark-mode.js?v=20251107" defer></script>
-   <script src="js/posts-loader.js?v=20251107" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+  <script src="js/animations.js?v=20250926" defer></script>
+  <script src="js/nav.js?v=20250926" defer></script>
+  <script src="js/socials.js?v=20250926" defer></script>
+  <script src="js/dark-mode.js?v=20250926" defer></script>
+   <script src="js/posts-loader.js?v=20250926" defer></script>
   <script>
     // First-time visitor hints
     function showHints() {

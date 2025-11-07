@@ -97,10 +97,6 @@
         `;
         document.body.appendChild(toggle);
 
-        // Cache DOM references
-        const navbarElement = navbar;
-        const toggleElement = toggle;
-
         // Inactivity detection
         let inactivityTimer;
         const inactivityDelay = 5000; // 5 seconds
@@ -108,14 +104,14 @@
         function resetInactivityTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
-                navbarElement.classList.add('hidden');
-                toggleElement.classList.add('hidden');
+                navbar.classList.add('hidden');
+                toggle.classList.add('hidden');
             }, inactivityDelay);
         }
 
         function showNav() {
-            navbarElement.classList.remove('hidden');
-            toggleElement.classList.remove('hidden');
+            navbar.classList.remove('hidden');
+            toggle.classList.remove('hidden');
             resetInactivityTimer();
         }
 
@@ -166,13 +162,6 @@
                 backToTopBtn.classList.remove('show');
             }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-
-            // Hide nav when at top to make toggle visible on small screens where nav overlaps toggle
-            if (window.innerWidth <= 342 && scrollTop === 0) {
-                navbarElement.classList.add('at-top');
-            } else {
-                navbarElement.classList.remove('at-top');
-            }
         });
 
         backToTopBtn.addEventListener('click', () => {
@@ -227,11 +216,6 @@
                 gap: 4px;
                 z-index: 1000;
                 transition: all 0.3s ease;
-            }
-
-            .floating-nav.at-top {
-                top: -70px;
-                box-shadow: none;
             }
 
             .floating-nav:hover {
@@ -413,9 +397,6 @@
 
             /* Responsive adjustments */
             @media (max-width: 768px) {
-                body {
-                    padding-top: 60px;
-                }
                 .floating-nav {
                     gap: 4px;
                 }

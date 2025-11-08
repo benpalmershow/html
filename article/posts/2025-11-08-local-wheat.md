@@ -8,3 +8,5 @@ The data shows wheat prices have declined from 2022's peak of $10.90/bu, but the
 - [View 2% MoM decreases for Soybeans and Wheat.](financials.html?filter=Commodities)
 
 ### [<img src="images/read.png" alt="Read" width="30" height="30">](journal.html)
+🌾 Local Wheat
+

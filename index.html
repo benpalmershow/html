@@ -63,7 +63,6 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <script type="module" src="js/speed-insights.js"></script>
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
@@ -75,8 +74,6 @@
   <link rel="preload" href="css/dark-mode.css" as="style">
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/dark-mode.js" as="script">
-   <link rel="preload" href="js/posts-loader.js" as="script">
-
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -266,47 +263,14 @@
      </section>
   </main>
 
-  <!-- SEO Enhancement Scripts -->
-  <script type="module">
-  // Initialize SEO enhancements with error handling
-  try {
-    const { initializeHomepageSEO } = await import('./seo/meta-optimization/index.js').catch(() => ({}));
-    const { initializePerformanceOptimizations } = await import('./seo/performance/index.js').catch(() => ({}));
-    await import('./seo/analytics/index.js').catch(() => {});
-    await import('./seo/search-console/index.js').catch(() => {});
-    await import('./seo/monitoring/index.js').catch(() => {});
-    await import('./seo/content-schema/index.js').catch(() => {});
-    await import('./seo/seo-config/index.js').catch(() => {});
 
-  document.addEventListener('DOMContentLoaded', () => {
-  // Initialize homepage-specific SEO
-  initializeHomepageSEO();
-
-  // Initialize performance optimizations
-  initializePerformanceOptimizations({
-  enableLazyLoading: true,
-  enableImageOptimization: true,
-    enableResourcePreloading: true
-  });
-
-  // Apply unified SEO configuration
-  if (window.seoConfig) {
-  window.seoConfig.applyToPage();
-  }
-
-    // SEO Analytics, Search Console integration, monitoring, content schema, and configuration are initialized automatically via the modules
-  });
-  } catch (error) {
-    console.warn('SEO module loading failed:', error);
-  }
-  </script>
   
   <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
   <script src="js/animations.js?v=20251107" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/socials.js?v=20251107" defer></script>
   <script src="js/dark-mode.js?v=20251107" defer></script>
-   <script src="js/posts-loader.js?v=20251107" defer></script>
+  <script src="js/posts-loader.js" defer></script>
   <script>
     // First-time visitor hints
     function showHints() {

@@ -2,152 +2,97 @@ document.addEventListener('DOMContentLoaded', () => {
   const feed = document.getElementById('announcements-container');
   if (!feed) return;
 
-  // Check for session-based deduplication
-  const lastFetch = sessionStorage.getItem('postsLastFetch');
-  const now = Date.now();
-  if (lastFetch && (now - parseInt(lastFetch)) < 30000) { // 30 seconds
-    return; // Skip fetch if done recently in this session
-  }
+  feed.innerHTML = '';
 
-  feed.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>';
-
-  function parseDate(dateStr) {
-    // Parse date in format "MM/DD/YY" or "MM/DD/YY HH:MM AM/PM"
-    const matchWithTime = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}) (\d{1,2}):(\d{2}) (AM|PM)$/);
-    if (matchWithTime) {
-      let [, month, day, year, hour, minute, ampm] = matchWithTime;
-      month = parseInt(month) - 1; // JS months are 0-based
-      day = parseInt(day);
-      year = 2000 + parseInt(year); // assume 20xx
-      hour = parseInt(hour);
-      minute = parseInt(minute);
-
-      if (ampm === 'PM' && hour !== 12) hour += 12;
-      if (ampm === 'AM' && hour === 12) hour = 0;
-
-      return new Date(year, month, day, hour, minute);
-    }
-
-    // Try date only: "MM/DD/YY"
-    const matchDateOnly = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2})$/);
-    if (matchDateOnly) {
-      let [, month, day, year] = matchDateOnly;
-      month = parseInt(month) - 1;
-      day = parseInt(day);
-      year = 2000 + parseInt(year);
-      return new Date(year, month, day); // midnight
-    }
-
-    // Fallback
-    return new Date(dateStr);
-  }
-
-  function formatTimeAgo(timestamp) {
+  function formatTimeAgo(dateString) {
+    const postDate = new Date(dateString);
+    if (isNaN(postDate)) return 'recently';
+    
     const now = new Date();
-    const postDate = parseDate(timestamp);
     const diffMs = now - postDate;
     const diffMins = Math.floor(diffMs / 60000);
-    if (diffMins < 60) {
-      return diffMins === 1 ? '1 minute ago' : `${diffMins} minutes ago`;
-    }
+    
+    if (diffMins < 1) return 'just now';
+    if (diffMins < 60) return diffMins === 1 ? '1 minute ago' : `${diffMins} minutes ago`;
+    
     const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) {
-      return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`;
-    }
+    if (diffHours < 24) return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`;
+    
     const diffDays = Math.floor(diffHours / 24);
     return diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
   }
 
   function renderPosts(posts) {
+  if (!posts || posts.length === 0) {
+  feed.innerHTML = '<div class="empty-state">No announcements yet.</div>';
+  return;
+  }
+
   feed.innerHTML = posts.map(p => `
   <div class="announcement-card">
   <time>${formatTimeAgo(p.date)}</time>
   <div class="content">${p.content || ''}</div>
   </div>
-  `).join('') || '<div class="empty-state">No posts available.</div>';
+  `).join('');
 
-  // Execute scripts in the content
-    const cards = feed.querySelectorAll('.announcement-card');
-    cards.forEach(card => {
-      const scripts = card.querySelectorAll('script');
-      scripts.forEach(script => {
+  // Execute embedded scripts in content
+  const cards = feed.querySelectorAll('.announcement-card');
+  cards.forEach(card => {
+    const scripts = card.querySelectorAll('script');
+      scripts.forEach(oldScript => {
         const newScript = document.createElement('script');
-        if (script.src) {
-          newScript.src = script.src;
-        } else {
-          newScript.textContent = script.textContent;
-        }
+        newScript.textContent = oldScript.textContent;
+        if (oldScript.src) newScript.src = oldScript.src;
         document.body.appendChild(newScript);
-        // Remove the original script tag
-        script.remove();
       });
     });
 
-    if (window.lucide) window.lucide.createIcons();
+    // Reinitialize lucide icons
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
   fetch('json/posts.json?v=' + Date.now())
     .then(r => {
-      if (!r.ok) throw new Error('Failed to load posts JSON');
+      if (!r.ok) throw new Error('Failed to load posts');
       return r.json();
     })
     .then(posts => {
-      sessionStorage.setItem('postsLastFetch', Date.now().toString());
-      // For each post, if it has file, fetch and parse
+      if (!Array.isArray(posts)) throw new Error('Invalid posts format');
+      
+      // For posts with files, fetch and parse markdown
       const promises = posts.map(post => {
         if (post.file) {
           return fetch(post.file + '?v=' + Date.now())
-            .then(r => {
-              if (!r.ok) throw new Error('Failed to load ' + post.file);
-              return r.text();
-            })
+            .then(r => r.text())
             .then(md => {
-              // Parse markdown with idle callback for non-blocking processing
-              return new Promise((resolve) => {
-                if ('requestIdleCallback' in window) {
-                  requestIdleCallback(() => {
-                    const parts = md.split(/^---$/m);
-                    let contentMd;
-                    if (parts.length >= 3) {
-                      contentMd = parts.slice(2).join('---').trim();
-                    } else {
-                      contentMd = md.trim();
-                    }
-                    const contentHtml = marked.parse(contentMd);
-                    resolve({ ...post, content: contentHtml });
-                  });
-                } else {
-                  // Fallback for browsers without requestIdleCallback
-                  setTimeout(() => {
-                    const parts = md.split(/^---$/m);
-                    let contentMd;
-                    if (parts.length >= 3) {
-                      contentMd = parts.slice(2).join('---').trim();
-                    } else {
-                      contentMd = md.trim();
-                    }
-                    const contentHtml = marked.parse(contentMd);
-                    resolve({ ...post, content: contentHtml });
-                  }, 0);
-                }
-              });
+              const parts = md.split(/^---$/m);
+              const contentMd = parts.length >= 3 ? parts.slice(2).join('---').trim() : md.trim();
+              try {
+                const contentHtml = window.marked?.parse?.(contentMd) || contentMd;
+                return { ...post, content: contentHtml };
+              } catch (e) {
+                console.warn('Failed to parse markdown for', post.file, e);
+                return post;
+              }
             })
             .catch(err => {
-              console.warn('Failed to load ' + post.file, err);
-              return post; // keep as is
+              console.warn('Failed to fetch', post.file);
+              return post;
             });
-        } else {
-          return Promise.resolve(post);
         }
+        return Promise.resolve(post);
       });
 
       return Promise.all(promises);
     })
-    .then(validPosts => {
-      renderPosts(validPosts.filter(p => p && p.date && p.content));
+    .then(posts => {
+      const validPosts = posts.filter(p => p?.date && (p.content || p.file));
+      renderPosts(validPosts);
     })
     .catch(err => {
       console.error('Error loading posts:', err);
-      feed.innerHTML = '<div class="error-state">Error loading posts.</div>';
+      feed.innerHTML = '<div class="error-state">Unable to load announcements.</div>';
     });
 });

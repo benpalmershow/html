@@ -86,6 +86,15 @@
   max-width: 500px;
   width: 90%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 480px) {
+  .hint-content {
+    padding: 1rem;
+    max-height: 90vh;
+  }
 }
 
 .hint-content h3 {
@@ -233,17 +242,10 @@
   margin: 0 auto;
   padding: 0 1rem;
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-.announcements-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  flex-direction: column;
+  overflow-x: visible;
+  scroll-snap-type: none;
+  gap: 0;
 }
 
 .announcement-card {
@@ -253,10 +255,6 @@
   padding: 0.75rem;
   margin-bottom: 0.75rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-  width: 100%;
-  scroll-snap-align: start;
-  contain: layout style paint;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -268,19 +266,6 @@
 }
 
 
-@media (min-width: 768px) {
-  .announcements-container {
-    flex-direction: column;
-    overflow-x: visible;
-    scroll-snap-type: none;
-    gap: 0;
-  }
-
-  .announcement-card {
-    width: auto;
-    margin-bottom: 0.75rem;
-  }
-}
 
 .announcement-card time {
   font-size: 0.75rem;
@@ -567,11 +552,6 @@
   .card:hover {
     transform: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .announcement-card {
-    max-height: 300px;
-    overflow-y: auto;
   }
 }
 

@@ -23,22 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderPosts(posts) {
-  if (!posts || posts.length === 0) {
-  feed.innerHTML = '<div class="empty-state">No announcements yet.</div>';
-  return;
-  }
+    if (!posts || posts.length === 0) {
+      feed.innerHTML = '<div class="empty-state">No announcements yet.</div>';
+      return;
+    }
 
-  feed.innerHTML = posts.map(p => `
-  <div class="announcement-card">
-  <time>${formatTimeAgo(p.date)}</time>
-  <div class="content">${p.content || ''}</div>
-  </div>
-  `).join('');
+    feed.innerHTML = posts.map(p => `
+      <div class="announcement-card" data-date="${p.date}">
+        <time class="post-time">${formatTimeAgo(p.date)}</time>
+        <div class="content">${p.content || ''}</div>
+      </div>
+    `).join('');
 
-  // Execute embedded scripts in content
-  const cards = feed.querySelectorAll('.announcement-card');
-  cards.forEach(card => {
-    const scripts = card.querySelectorAll('script');
+    // Execute embedded scripts in content
+    const cards = feed.querySelectorAll('.announcement-card');
+    cards.forEach(card => {
+      const scripts = card.querySelectorAll('script');
       scripts.forEach(oldScript => {
         const newScript = document.createElement('script');
         newScript.textContent = oldScript.textContent;
@@ -51,6 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) {
       window.lucide.createIcons();
     }
+
+    // Update times every minute
+    setInterval(() => {
+      document.querySelectorAll('.announcement-card').forEach(card => {
+        const dateStr = card.getAttribute('data-date');
+        if (dateStr) {
+          card.querySelector('.post-time').textContent = formatTimeAgo(dateStr);
+        }
+      });
+    }, 60000);
   }
 
   fetch('json/posts.json?v=' + Date.now())

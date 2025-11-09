@@ -30,7 +30,8 @@
       'oregon-kei-trucks-sb1213',
        'doc-riter-trump-interview',
        'scotus-nov-2025',
-       'trump-v-vos-selections'
+       'trump-v-vos-selections',
+       'trump-v-vos-update'
     ];
 
     // Parse frontmatter from markdown

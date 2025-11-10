@@ -1,5 +1,5 @@
 (function() {
-    // List of all articles (add new articles here)
+    // List of all articles (add new articles here) - v2
     const ARTICLES = [
     'oversight-committee-report',
     'urban_crime_2020',
@@ -31,7 +31,8 @@
        'doc-riter-trump-interview',
        'scotus-nov-2025',
        'trump-v-vos-selections',
-       'trump-v-vos-update'
+       'trump-v-vos-update',
+       'trump-v-vos-sauer'
     ];
 
     // Parse frontmatter from markdown

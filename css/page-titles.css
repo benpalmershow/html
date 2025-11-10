@@ -8,13 +8,13 @@
   letter-spacing: 0.05em;
   font-weight: 500;
   text-align: center;
-  margin: 3rem 0 0 0;
+  margin: var(--spacing-xl) 0 0 0;
   opacity: 0.6;
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--spacing-xs);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 .page-icon {
@@ -30,11 +30,10 @@
 /* Journal page title (different theme) */
 .page-title--journal {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--tweet-text);
   text-align: center;
-  margin: 1rem 0 2rem 0;
-  text-shadow: none;
+  margin: var(--spacing-md) 0 var(--spacing-lg) 0;
   padding: 0;
   text-transform: none;
   letter-spacing: normal;
@@ -44,6 +43,6 @@
 @media (max-width: 768px) {
   .page-title--journal {
     font-size: 1.25rem;
-    margin: 0.75rem 0 1.5rem 0;
+    margin: var(--spacing-sm) 0 1.5rem 0;
   }
 }

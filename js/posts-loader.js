@@ -78,7 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(r => r.text())
             .then(md => {
               const parts = md.split(/^---$/m);
-              const contentMd = parts.length >= 3 ? parts.slice(2).join('---').trim() : md.trim();
+              let contentMd = md.trim();
+              
+              // Skip frontmatter if it exists (content between first and second ---)
+              if (parts.length >= 3) {
+                contentMd = parts.slice(2).join('---').trim();
+              } else if (parts.length === 2 && !md.trimStart().startsWith('---')) {
+                // If we have a split but frontmatter isn't at the start, use original
+                contentMd = md.trim();
+              }
+              
               try {
                 const contentHtml = window.marked?.parse?.(contentMd) || contentMd;
                 return { ...post, content: contentHtml };

@@ -31,29 +31,4 @@ outdir: "./dist/js",
   plugins: []
 });
 
-// Build CSS files
-await build({
-  entrypoints: [
-    "./css/body.css",
-    "./css/dark-mode.css",
-    "./css/page-titles.css",
-    "./css/index.css",
-    "./css/news.css",
-    "./css/journal-tweets.css",
-    "./css/media.css",
-    "./css/financials.css",
-    "./css/read.css",
-    "./css/chart-modal.css",
-    "./css/newspaper-titles.css"
-  ],
-  outdir: "./dist/css",
-  minify: {
-    whitespace: true,
-    identifiers: true,
-    syntax: true
-  },
-  naming: "[name].[hash].[ext]",
-  target: "browser"
-});
-
-console.log("Build completed! Files output to ./dist");
+console.log("Build completed! JS files output to ./dist/js");

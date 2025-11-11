@@ -134,9 +134,9 @@ blockquote.guidance-box {
 }
 
 .filter-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
 }
 
 .filter-text {
@@ -228,11 +228,6 @@ blockquote.guidance-box {
 
     .filter-btn.active {
         padding: 0.75rem 1.25rem;
-    }
-
-    .filter-icon {
-        width: 18px;
-        height: 18px;
     }
 }
 
@@ -450,6 +445,12 @@ blockquote.guidance-box {
   color: var(--color-category-corrections);
 }
 
+/* Make badge icons same size as button icons */
+.filter-badge .filter-icon {
+  width: 16px;
+  height: 16px;
+}
+
 /* Accordion Content (expandable) */
 .accordion-content {
   max-height: 0;
@@ -526,11 +527,6 @@ blockquote.guidance-box {
     margin-top: 0.1rem;
   }
 
-  .filter-icon {
-    width: 12px;
-    height: 12px;
-  }
-
   .accordion-title {
     font-size: 0.95rem;
   }
@@ -579,11 +575,6 @@ blockquote.guidance-box {
   .filter-badge {
     padding: 0.15rem;
     margin-top: 0.075rem;
-  }
-
-  .filter-icon {
-    width: 10px;
-    height: 10px;
   }
 
   .accordion-title {

@@ -164,20 +164,68 @@ Assistant:
 
 
 - **Quantitative claims made in interviews**:
-  - Do not restate specific numbers unless you also provide the official table release and date. Instead, link readers to the live dashboard or original table.
-  - If a number is disputed or time-sensitive, note that verification is pending and provide the authoritative source you will check.
+- Do not restate specific numbers unless you also provide the official table release and date. Instead, link readers to the live dashboard or original table.
+- If a number is disputed or time-sensitive, note that verification is pending and provide the authoritative source you will check.
 
 - **Event photos from sources**:
-  - **ALWAYS embed the actual image** using `<img>` tags with direct image URLs
-  - Use source-provided press images or CDN URLs when available
-  - Include proper attribution: "Credit: [Source]" or "(Source Name)"
-  - Size appropriately: full-width for event photos, thumbnails for galleries
+- **ALWAYS embed the actual image** using `<img>` tags with direct image URLs
+- Use source-provided press images or CDN URLs when available
+- Include proper attribution: "Credit: [Source]" or "(Source Name)"
+- Size appropriately: full-width for event photos, thumbnails for galleries
 
 - **Map/context for interview topics**:
-  - **ALWAYS embed maps inline** as thumbnails in a grid layout when multiple regions are discussed
-  - Use Wikimedia Commons Special:FilePath URLs for reliable map access
-  - Size maps as 120px x 120px thumbnails in grid layouts
-  - Provide geographic orientation only; do not use maps to imply conflict status or outcomes
+- **ALWAYS embed maps inline** as thumbnails in a grid layout when multiple regions are discussed
+- Use Wikimedia Commons Special:FilePath URLs for reliable map access
+- Size maps as 120px x 120px thumbnails in grid layouts
+- Provide geographic orientation only; do not use maps to imply conflict status or outcomes
+
+---
+
+## 11. Emerging Topics & Regulatory Claims: Special Guidelines
+
+**When sourcing claims about professional standards, regulatory changes, or emerging legal interpretations:**
+
+- **Bar associations and professional rules**: Do not state that a rule "requires" AI adoption without citing the specific rule text, amendment date, or published guidance. Example violation:
+  - ❌ "Bar associations are signaling that refusing to use AI may constitute negligence"
+  - ✅ "The ABA Model Rule Comment [X] (effective [date]) states..." with link to official source
+  
+- **Efficiency claims (10x faster, 40-60% cost reduction)**: These require:
+  - Published case studies or peer-reviewed research, OR
+  - Named firms/consultancies publishing benchmarks
+  - Do not cite generic claims without a primary source
+  - If unavailable, label as "estimated by industry analysts" with source citation
+
+- **International regulatory claims (BBC license fee, media taxes)**:
+  - **Fee structure**: Cite the specific statute, regulation number, and verified current rates from official government or broadcaster sources
+  - **Enforcement penalties**: Link to criminal code or published enforcement statistics
+  - **Household burden calculations**: Show the math. Do not round or estimate percentages without stating the assumption
+  - Example: "At median UK household income of £33,000, the £159 annual fee represents 0.48% of gross income (assuming 50 weeks paid work at £12.60/hr). This figure assumes [specific parameters]."
+
+- **Editorial malfeasance claims**: Require either:
+  - Named investigations by reputable outlets with links to original reporting
+  - Court documents or regulatory findings
+  - Named whistleblowers on record
+  - Do NOT use vague language like "Recent investigations reveal" without source attribution
+
+- **When data is not yet "official"**: State this clearly:
+  - ❌ "The fee costs UK households $175 annually"
+  - ✅ "The BBC license fee is £159/year (~$175 USD at current exchange rates); actual household burden varies by income level"
+
+---
+
+## 12. Lessons Learned: Common Pitfalls to Avoid
+
+1. **Speculative regulatory trends**: Do not infer future rule changes without citing specific published guidance. Use conditional language: "If adopted, this would require..." not "This now requires..."
+
+2. **Cross-border financial conversions**: Always cite the exchange rate used and date of conversion. Mark currency conversions with (~) and provide both figures. Do not round for dramatic effect.
+
+3. **"Industry standard" claims without source**: If you cannot name the firm, researcher, or study, it's too vague. Acceptable: "According to a 2024 McKinsey study on legal tech, document review costs fell 45%..." Unacceptable: "Industry studies show document review costs fell 45%..."
+
+4. **Systemic issues without data**: Claims about "perverse incentive structures" or "media capture" require supporting evidence. Show the mechanism, not just assert it.
+
+5. **Talent exodus and staff misconduct**: These are newsworthy but require named sources or published investigations. General claims ("Top journalists leaving," "Staff misconduct covered up") need documentation.
+
+6. **Comparative analysis across countries**: When comparing systems (e.g., BBC vs. subscription models), cite specific examples. Do not generalize from theory.
 
 ---
 

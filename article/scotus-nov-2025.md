@@ -1,12 +1,38 @@
 ---
 title: Supreme Court Oral Arguments Schedule
-date: 2025-11-04
+date: 2025-11-11
 category: legal
 icon: gavel
 summary: Supreme Court oral arguments schedule for November 2025 term with case summaries and podcast links
 ---
 
 # Supreme Court Oral Arguments Schedule
+
+---
+
+## Monday, November 10
+
+### LANDOR v. LOUISIANA DEPARTMENT OF CORRECTIONS (23-1197)
+
+**Question Presented:**
+
+Whether the Religious Land Use and Institutionalized Persons Act (RLUIPA) and the First Amendment's Free Exercise Clause protect religious practices and beliefs in institutional settings.
+
+**Cert. Granted:** 2025
+
+**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000736157803) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/23-1197.html)
+
+---
+
+### GEO GROUP INC. v. MENOCAL (24-758)
+
+**Question Presented:**
+
+Whether a government contractor's claim of derivative sovereign immunity under the Yearsley doctrine qualifies for immediate appeal under the collateral-order doctrine.
+
+**Cert. Granted:** 6/2/2025
+
+**Audio:** [<i data-lucide='mic'></i>](https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i=1000736158616) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-758.html)
 
 ---
 
@@ -41,6 +67,9 @@ Whether Federal Rule of Civil Procedure 60(c)(1) imposes any time limit to set a
 **Cert. Granted:** 9/9/2025
 
 **Audio:** [<i data-lucide='mic'></i>](https://www.supremecourt.gov/oral_arguments/audio/2025/24-1287) | [Supreme Court Docket](https://www.supremecourt.gov/docket/docketfiles/html/public/24-1287.html)
+
+---
+
 
 ---
 

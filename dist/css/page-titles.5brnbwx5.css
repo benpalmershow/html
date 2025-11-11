@@ -1,0 +1,44 @@
+/* css/page-titles.css */
+.page-title {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: center;
+  margin: var(--spacing-xl) 0 0 0;
+  opacity: .6;
+  padding-bottom: var(--spacing-xs);
+  display: flex;
+  justify-content: center;
+  align-items:  center;
+  gap: var(--spacing-xs);
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.page-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.page-title--bordered {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title--journal {
+  color: var(--tweet-text);
+  text-align: center;
+  margin: var(--spacing-md) 0 var(--spacing-lg) 0;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 1;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .page-title--journal {
+    margin: var(--spacing-sm) 0 1.5rem 0;
+    font-size: 1.25rem;
+  }
+}

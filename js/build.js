@@ -31,7 +31,7 @@ outdir: "./dist/js",
   plugins: []
 });
 
-// Build CSS files
+// Build CSS files (no minification)
 await build({
   entrypoints: [
     "./css/body.css",
@@ -47,11 +47,6 @@ await build({
     "./css/newspaper-titles.css"
   ],
   outdir: "./dist/css",
-  minify: {
-    whitespace: true,
-    identifiers: true,
-    syntax: true
-  },
   naming: "[name].[hash].[ext]",
   target: "browser"
 });

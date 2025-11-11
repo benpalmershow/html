@@ -393,37 +393,6 @@
     portfolioManager.init();
     });
     </script>
-
-    <!-- SEO Enhancement Scripts -->
-    <script type="module">
-    // Initialize SEO enhancements for portfolio page with error handling
-    try {
-      const { initializePerformanceOptimizations } = await import('./seo/performance/index.js').catch(() => ({}));
-      await import('./seo/analytics/index.js').catch(() => {});
-      await import('./seo/search-console/index.js').catch(() => {});
-      await import('./seo/monitoring/index.js').catch(() => {});
-      await import('./seo/content-schema/index.js').catch(() => {});
-      await import('./seo/seo-config/index.js').catch(() => {});
-
-      document.addEventListener('DOMContentLoaded', () => {
-        // Initialize performance optimizations
-        initializePerformanceOptimizations({
-          enableLazyLoading: true,
-          enableImageOptimization: true,
-          enableResourcePreloading: true
-        });
-
-        // Apply unified SEO configuration
-        if (window.seoConfig) {
-          window.seoConfig.applyToPage();
-        }
-
-        // SEO Analytics, Search Console integration, monitoring, content schema, and configuration are initialized automatically via the modules
-      });
-    } catch (error) {
-      console.warn('SEO module loading failed:', error);
-    }
-    </script>
 </body>
 
 </html>

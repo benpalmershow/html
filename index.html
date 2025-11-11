@@ -70,8 +70,8 @@
   <!-- Preload critical resources -->
   <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="images/logo.png" as="image" type="image/png" fetchpriority="high">
-  <link rel="preload" href="dist/css/body.t22s7742.css" as="style">
-  <link rel="preload" href="dist/css/dark-mode.fw12b7np.css" as="style">
+  <link rel="preload" href="css/body.css" as="style">
+  <link rel="preload" href="css/dark-mode.css" as="style">
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/dark-mode.js" as="script">
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/marked/marked.min.js" as="script">
@@ -89,11 +89,11 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
 
   <!-- Main CSS - Critical path -->
-  <link rel="stylesheet" href="dist/css/body.t22s7742.css">
+  <link rel="stylesheet" href="css/body.css?v=20251107">
   <!-- Non-critical CSS loaded asynchronously -->
-  <link rel="stylesheet" href="dist/css/dark-mode.fw12b7np.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="dist/css/page-titles.5brnbwx5.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="dist/css/index.rb9zsjtm.css">
+  <link rel="stylesheet" href="css/dark-mode.css?v=20251107" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/page-titles.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/index.css?v=20251107">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
@@ -245,11 +245,7 @@
   <main id="main-content" tabindex="-1">
     <section class="hero" aria-label="Homepage hero">
       <header class="hero-header">
-        <picture>
-          <source srcset="images/logo.webp" type="image/webp">
-          <source srcset="images/logo.avif" type="image/avif">
-          <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" width="360" height="360">
-        </picture>
+        <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" width="360" height="360">
         <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
         and economic insight.</p>
       </header>
@@ -312,11 +308,11 @@
   
   <!-- Deferred scripts for non-blocking loading -->
   <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
-  <script src="dist/js/animations.rrjnhvv0.js" defer></script>
-  <script src="dist/js/nav.kehtsbrc.js" defer></script>
-  <script src="dist/js/socials.k7wdaa40.js" defer></script>
-  <script src="dist/js/dark-mode.rxtdzbvd.js" defer></script>
-  <script src="dist/js/posts-loader.esn4c4ew.js" defer></script>
+  <script src="js/animations.js?v=20251107" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/socials.js?v=20251107" defer></script>
+  <script src="js/dark-mode.js?v=20251107" defer></script>
+  <script src="js/posts-loader.js" defer></script>
   <script>
     // First-time visitor hints
     function showHints() {

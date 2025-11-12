@@ -493,7 +493,134 @@ Every post represents the site's brand and quality. Posts should:
 4. **Delight** - Present visually with proper images and icons
 5. **Perform** - Work flawlessly on all devices
 
-This standardization work is complete. All future posts must meet these requirements without exception.</content>
+This standardization work is complete. All future posts must meet these requirements without exception.
+
+## Charts and Data Visualization in Posts
+
+### When to Include Charts
+
+Financial indicator posts benefit from inline sparkline charts that show trend context without requiring a page click. Include charts when:
+
+- Post covers a multi-month indicator trend (3+ months of data)
+- Visual trend adds meaningful context (upward vs downward trajectory)
+- Space allows without breaking layout on mobile
+- Data is simple enough to render clearly in compact format
+
+### Chart Implementation
+
+#### SVG Sparklines (Recommended)
+
+Lightweight, responsive SVG charts that render instantly without JavaScript dependencies.
+
+**Usage:**
+- Plot 6-12 months of data points
+- Show expansion threshold (e.g., 100 for NFIB, 50 for PMI)
+- Use red (#ef4444) for declining indicators, green for rising
+- Max height 180px, responsive width
+- Include month labels and reference lines
+
+**Template:**
+```html
+<svg width="100%" height="180" viewBox="0 0 300 180" style="max-width: 300px; margin: 12px 0;">
+  <defs>
+    <style>
+      .chart-line { stroke: #ef4444; stroke-width: 2; fill: none; }
+      .chart-grid { stroke: #e5e7eb; stroke-width: 0.5; }
+      .chart-text { font-size: 11px; fill: #666; }
+      .chart-threshold { stroke: #9ca3af; stroke-width: 1; stroke-dasharray: 2,2; }
+    </style>
+  </defs>
+  
+  <!-- Grid lines -->
+  <line x1="30" y1="135" x2="290" y2="135" class="chart-grid"/>
+  <line x1="30" y1="35" x2="290" y2="35" class="chart-threshold"/>
+  
+  <!-- Axis labels -->
+  <text x="5" y="140" class="chart-text">MIN</text>
+  <text x="5" y="40" class="chart-text">MAX</text>
+  
+  <!-- Data line -->
+  <polyline class="chart-line" points="30,Y1 70,Y2 110,Y3 ..."/>
+  
+  <!-- Month labels -->
+  <text x="25" y="165" class="chart-text">Jan</text>
+  ...
+</svg>
+```
+
+**Styling Notes:**
+- Red (#ef4444) for negative/declining trends
+- Green (#10b981) for positive/rising trends  
+- Gray grid (#e5e7eb) for reference
+- Responsive: `width="100%"` with `max-width: 300px`
+- Margin: `12px 0` for breathing room
+
+#### Chart Data Extraction
+
+**Steps:**
+1. Review indicator data in `financials-data.json`
+2. Extract month values from applicable fields (march, april, may, etc.)
+3. Calculate Y-axis scale based on min/max values plus 10% padding
+4. Map data points to SVG coordinate space (0-300px width, 0-180px height)
+5. Include expansion/contraction threshold line (dashed gray)
+
+**Example - NFIB October 2025:**
+- Data: Mar 97.4, Apr 95.8, May 98.8, Jun 98.6, Jul 100.3, Aug 100.8, Sep 98.8, Oct 98.2
+- Y-axis: 90-105 range (threshold at 100)
+- Color: Red (declining trend Sep→Oct)
+- Points: Calculate proportional Y positions and create polyline
+
+#### Chart Placement
+
+- Position after description, before link
+- Separate with `<br>` above and below
+- Works alongside or without accompanying text
+- Does not interfere with mobile layout (responsive SVG)
+
+**Example:**
+```html
+<i data-lucide='trending-down' class='post-icon'></i> <b>Indicator Name</b><br><br>
+• <b>Month</b>: Value (change)<br><br>
+[SVG CHART HERE]<br><br>
+<a href="financials.html?filter=Category"><b>View all indicators</b></a>
+```
+
+### Chart Type Selection
+
+| Data Type | Chart Type | Example |
+|-----------|-----------|---------|
+| Single metric, 6-12 months | Sparkline | NFIB, PMI, Sentiment |
+| Threshold-based indicator | Sparkline + ref line | NFIB (100), Manufacturing PMI (50) |
+| Multi-series data | Skip chart, use text | Multiple indicators in one post |
+| Highly volatile data | Skip chart | Weekly claims, daily markets |
+| Real-time/daily data | Link to financials.html | Current market odds |
+
+### Accessibility & Performance
+
+- SVG charts are lightweight (no external dependencies)
+- Alt text not needed (data explained in surrounding text)
+- Render instantly (no JavaScript required)
+- Work in both light and dark modes (use neutral grays)
+- Mobile responsive (viewBox scaling)
+
+### Common Chart Mistakes to Avoid
+
+❌ **DON'T:**
+- Embed raster image charts (use SVG instead)
+- Make charts taller than 200px (disproportionate to text)
+- Plot more than 12 months (becomes too wide on mobile)
+- Use color alone to convey meaning (add threshold lines)
+- Include charts for single-month posts (no trend to show)
+- Overcomplicate with multiple series (stay simple)
+
+✓ **DO:**
+- Use SVG for responsiveness and file size
+- Keep aspect ratio wide but not excessively tall
+- Label axes clearly with min/max values
+- Include threshold/expansion line where relevant
+- Use consistent red/green colors across all charts
+- Test on mobile (responsive width scaling)
+- Verify data accuracy against source JSON</content>
 </xai:function_call">The Posts PRD has been created at `/Users/benjaminpalmer/TBPS/html/html/docs/posts-prd.md` with comprehensive guidelines for structure, formatting, categories, and best practices based on the existing posts pattern. This should serve as your implementation guide for improving and maintaining the posts system. Let me know if you'd like to adjust any sections or add more details. 
 
 Next post to improve? (The oldest ones like 5/24, 5/25, 5/28, 6/3, etc. appear to need similar formatting updates.) 

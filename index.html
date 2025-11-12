@@ -61,7 +61,6 @@
       (window.vaq = window.vaq || []).push(arguments);
     };
   </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 
   <!-- External Libraries -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -70,8 +69,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <!-- Preload critical resources -->
   <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="preload" href="images/logo.png" as="image" type="image/png" fetchpriority="high">
-  <link rel="preload" href="css/body.css" as="style">
+  <link rel="preload" href="css/body.css?v=20251107" as="style">
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/marked/marked.min.js" as="script">
   <!-- Preconnect to external domains -->
@@ -89,7 +87,6 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="css/body.css?v=20251107">
-  <link rel="stylesheet" href="css/page-titles.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/index.css?v=20251107">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
@@ -205,10 +202,13 @@
   <main id="main-content" tabindex="-1">
     <section class="hero" aria-label="Homepage hero">
       <header class="hero-header">
-        <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" width="360" height="360">
-        <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
-        and economic insight.</p>
-      </header>
+         <picture>
+           <source srcset="images/logo.webp" type="image/webp">
+           <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" width="360" height="360">
+         </picture>
+         <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
+         and economic insight.</p>
+       </header>
 
 
 

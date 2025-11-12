@@ -21,7 +21,6 @@ function toggleCollapse(sectionId) {
 
 async function fetchFinancialData() {
     const paths = [
-        '/html/json/financials-data.json',
         '/json/financials-data.json',
     ];
 

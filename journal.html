@@ -69,7 +69,15 @@
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    // Only load Vercel scripts in production
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  </script>
   <script type="module" src="js/speed-insights.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
@@ -135,9 +143,9 @@
       lucide.createIcons();
     });
   </script>
-  <script src="dist/js/nav.kehtsbrc.js" defer></script>
+  <script src="js/nav.js" defer></script>
   <script src="js/journal-feed.js?v=20250810" defer></script>
-  <script src="dist/js/socials.k7wdaa40.js" defer></script>
+  <script src="js/socials.js" defer></script>
 </body>
 
 </html>

@@ -10,41 +10,39 @@
        GRAYSCALE PALETTE
        Standardized gray scale for consistent UI elements
        ======================================== */
-    --color-gray-100: #f8f9fa; /* Lightest gray - subtle backgrounds */
-    --color-gray-200: #e9ecef; /* Light gray - borders, dividers */
-    --color-gray-300: #dee2e6; /* Medium-light gray - inactive elements */
-    --color-gray-400: #ced4da; /* Medium gray - placeholders */
     --color-gray-500: #6c757d; /* Base gray - secondary text */
     --color-gray-600: #495057; /* Medium-dark gray - body text */
     --color-gray-700: #343a40; /* Dark gray - headings */
     --color-gray-800: #212529; /* Darkest gray - primary text */
-    
+    --color-gray-500: #6c757d; /* Base gray - secondary text */
+    --color-gray-600: #495057; /* Medium-dark gray - body text */
+    --color-gray-700: #343a40; /* Dark gray - headings */
+    --color-gray-800: #212529; /* Darkest gray - primary text */
+
     /* ========================================
-       BRAND COLORS
-       Primary brand identity colors
-       ======================================== */
+        BRAND COLORS
+        Primary brand identity colors
+        ======================================== */
     --color-primary: #2c5f5a; /* Primary teal - main brand color */
     --color-secondary: #d4822a; /* Secondary orange - accent brand color */
-    
+
     /* ========================================
-       SEMANTIC COLORS
-       Colors with specific meaning and purpose
-       ======================================== */
+        SEMANTIC COLORS
+        Colors with specific meaning and purpose
+        ======================================== */
     --color-success: #43a047; /* Green - success states, positive indicators */
-    --color-error: #e53935; /* Red - error states, negative indicators */
-    
+
     /* ========================================
-       TRANSPARENT BACKGROUND COLORS
-       Semi-transparent colors for overlays and indicators
-       ======================================== */
+        TRANSPARENT BACKGROUND COLORS
+        Semi-transparent colors for overlays and indicators
+        ======================================== */
     --color-primary-bg: rgba(44, 95, 90, 0.08); /* Primary teal background - 8% opacity */
     --color-secondary-bg: rgba(212, 130, 42, 0.08); /* Secondary orange background - 8% opacity */
-    --color-neutral-bg: rgba(107, 114, 128, 0.08); /* Neutral gray background - 8% opacity */
-    
+
     /* ========================================
-       CATEGORY-SPECIFIC COLORS
-       Colors for news categories and content types
-       ======================================== */
+        CATEGORY-SPECIFIC COLORS
+        Colors for news categories and content types
+        ======================================== */
     --color-category-ipo: #1e88e5; /* IPO - blue */
 --color-category-earnings: #43a047; /* Earnings - green */
 --color-category-policy: #fb8c00; /* Policy - orange */
@@ -52,19 +50,19 @@
 --color-category-legal: #2c5f5a; /* Legal - teal */
 --color-category-political: #8b5cf6; /* Political - purple */
 --color-category-corrections: #e53935; /* Corrections - red */
-    
+
     /* ========================================
-       PLATFORM-SPECIFIC COLORS
-       Brand colors for external platforms and services
-       ======================================== */
+        PLATFORM-SPECIFIC COLORS
+        Brand colors for external platforms and services
+        ======================================== */
     --color-youtube: #FF0000; /* YouTube brand red */
     --color-spotify: #1DB954; /* Spotify brand green */
     --color-apple: #000000; /* Apple brand black */
-    
+
     /* ========================================
-       DARK MODE COLORS
-       Color overrides for dark mode
-       ======================================== */
+        DARK MODE COLORS
+        Color overrides for dark mode
+        ======================================== */
     --color-dark-text-primary: #87c5be; /* Light teal for primary text in dark mode */
     --color-dark-text-secondary: #e1e5e9; /* Light gray for secondary text in dark mode */
     --color-dark-text-muted: #a0a9b8; /* Muted gray for tertiary text in dark mode */
@@ -139,51 +137,6 @@ footer .social-links img{
     transition:filter 0.2s ease;
 }
 
-/* Buy Me A Coffee widget overrides: target common widget outputs (iframes, images, buttons)
-   and force the icon to match footer logos. Use attribute selectors to be resilient. */
-iframe[src*="buymeacoffee"],
-img[src*="buymeacoffee"],
-a[href*="buymeacoffee"] img,
-.bmc-wbtn img,
-.bmc-button img,
-.bmc-widget img{
-    width:1.7em !important;
-    height:1.7em !important;
-    max-width:2.2rem !important;
-    max-height:2.2rem !important;
-    display:inline-block !important;
-}
-
-/* If the widget injects a fixed container, tighten its sizing so the icon aligns with footer spacing */
-.bmc-wbtn,
-.bmc-button,
-.bmc-widget,
-iframe[src*="buymeacoffee"]{
-    width:auto !important;
-    height:auto !important;
-    min-width:1.7em !important;
-    min-height:1.7em !important;
-}
-
-/* Force Buy Me A Coffee widget icon to black to match other social logos */
-img[src*="buymeacoffee"],
-a[href*="buymeacoffee"] img,
-.bmc-wbtn img,
-.bmc-button img,
-.bmc-widget img,
-iframe[src*="buymeacoffee"]{
-    filter: none !important; /* clear any color filters */
-    -webkit-filter: none !important;
-    mix-blend-mode: normal !important;
-    /* If the widget uses colored SVG, force it to rendered in black using invert+sepia+saturate+hue-rotate trick */
-    /* This is a best-effort fallback when widget injects inline SVGs with fills. Prefer data-color change above. */
-    filter: grayscale(1) contrast(100%) brightness(0) !important;
-}
-
-/* In case the widget uses background images or SVG backgrounds, force container text color to black */
-.bmc-wbtn, .bmc-button, .bmc-widget {
-    color: var(--color-black) !important;
-}
 /* ========================================
     SHARED COMPONENT CLASSES
     Reusable styles for consistency
@@ -310,18 +263,6 @@ h3,h4{
         --content-padding:var(--spacing-lg);
         --section-spacing:var(--spacing-xl);
         --component-spacing:var(--spacing-lg)
-    }
-    .content{
-        padding:var(--content-padding);
-        margin-left:auto;
-        margin-right:auto
-    }
-}
-@media (min-width:1800px){
-    :root{
-        --content-padding:var(--spacing-xl);
-        --section-spacing:calc(var(--spacing-xl) * 1.5);
-        --component-spacing:var(--spacing-xl)
     }
     .content{
         padding:var(--content-padding);

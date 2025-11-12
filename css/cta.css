@@ -7,8 +7,10 @@
   padding: var(--spacing-md); /* 1.25rem */
   margin: var(--spacing-lg) auto 0; /* 2rem */
   max-width: 650px;
+  min-height: 120px;
   box-shadow: 0 2px 8px var(--shadow-color);
   transition: border-color 0.2s ease, transform 0.2s ease;
+  contain: layout style;
 }
 
 .cta-container:hover {

@@ -11,7 +11,10 @@
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
-    gtag('config', 'G-DWEVPGLJDP');
+    gtag('config', 'G-DWEVPGLJDP', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -33,7 +36,7 @@
   <meta property="og:description" content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
   <meta property="og:url" content="https://howdystranger.net/">
   <meta property="og:site_name" content="Howdy, Stranger">
-  <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.png?v=1">
+  <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta property="og:image:alt" content="Howdy, Stranger - Independent Economic Commentary">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -44,7 +47,7 @@
   <meta name="twitter:creator" content="@DocRiter">
   <meta name="twitter:title" content="Howdy, Stranger - Independent Commentary & Economic Insight">
   <meta name="twitter:description" content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
-  <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.png?v=1">
+  <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta name="twitter:image:alt" content="Howdy, Stranger - Independent Economic Commentary">
   
   <!-- Canonical URL -->
@@ -52,27 +55,24 @@
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
   <link rel="manifest" href="site.webmanifest">
-  <!-- Analytics & Monitoring -->
+  <!-- Analytics & Monitoring (production only) -->
   <script>
-    window.va = window.va || function () {
-      (window.vaq = window.vaq || []).push(arguments);
-    };
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      window.va = window.va || function () {
+        (window.vaq = window.vaq || []).push(arguments);
+      };
+    }
   </script>
 
-  <!-- External Libraries -->
+  <!-- External Libraries - Defer non-critical -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <!-- Preload critical resources -->
-  <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high" importance="high">
+  <link rel="preload" href="images/logo-360x360.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="css/body.css?v=20251107" as="style">
   <link rel="preload" href="css/index.css?v=20251107" as="style">
-  <link rel="preload" href="js/nav.js" as="script">
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/marked/marked.min.js" as="script">
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -81,17 +81,166 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Font Awesome - Async loading with swap font-display -->
+  <!-- Font Awesome - Load asynchronously -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="(prefers-color-scheme)" onload="this.media='all'" />
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="css/body.css?v=20251107">
+  <!-- Critical CSS for index page -->
   <link rel="stylesheet" href="css/index.css?v=20251107">
-  <link rel="stylesheet" href="css/cta.css?v=20251112">
+  <!-- Deferred non-critical styles used by other pages -->
+  <link rel="stylesheet" href="css/body.css?v=20251107" media="print" onload="this.media='all'"  />
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
+
+  <!-- Critical inline CSS for above-the-fold content -->
+  <style>
+    :root {
+      --bg-primary: #fdf6e8;
+      --bg-secondary: #f8f4e6;
+      --text-primary: #000000;
+      --text-secondary: #343a40;
+      --text-muted: #6c757d;
+      --color-secondary: #d4822a;
+      --color-primary: #2c5f5a;
+      --spacing-md: 1.25rem;
+      --spacing-lg: 2rem;
+      --spacing-xs: 0.5rem;
+    }
+    * { box-sizing: border-box; }
+    html { height: 100%; margin: 0; padding: 0; overflow-x: hidden; background: var(--bg-primary); }
+    body {
+      min-height: 100%;
+      margin: 0;
+      padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.6;
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-size: clamp(.9rem, 2.5vw, 1rem);
+      display: flex;
+      flex-direction: column;
+      content-visibility: auto;
+    }
+    .hero {
+      min-height: 100vh;
+      padding: clamp(var(--spacing-md), 4vw, var(--spacing-lg)) var(--spacing-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: clamp(var(--spacing-md), 3vw, var(--spacing-lg));
+      contain: layout style;
+    }
+    .hero-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(var(--spacing-xs), 2vw, var(--spacing-md));
+    }
+    .hero-logo {
+      width: clamp(180px, 32vw, 360px);
+      height: auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      clip-path: circle(50%);
+      filter: none;
+      user-select: none;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      content-visibility: auto;
+    }
+    .hero-subtitle {
+      margin: 0 0 var(--spacing-xs);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--text-secondary);
+      max-width: 60ch;
+      letter-spacing: 0.01em;
+      opacity: 0.9;
+    }
+    .highlight-human {
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+  </style>
+
+  <!-- Inline CTA styles to eliminate render-blocking -->
+  <style>
+    .cta-container {
+      background: var(--bg-secondary);
+      position: relative;
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: var(--spacing-md);
+      margin: var(--spacing-lg) auto 0;
+      max-width: 650px;
+      min-height: 120px;
+      box-shadow: 0 2px 8px var(--shadow-color);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      contain: layout style;
+    }
+    .cta-container:hover {
+      border-color: var(--accent-secondary);
+      transform: translateY(-2px);
+    }
+    .cta-button {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      text-align: left;
+      color: var(--text-primary);
+    }
+    .cta-button i[data-lucide] {
+      width: 2rem;
+      height: 2rem;
+      stroke-width: 2.5;
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+    }
+    .cta-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+    .cta-text-wrapper span:first-child {
+      font-family: 'Georgia', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .cta-subtext {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .cta-close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 50%;
+      transition: background-color 0.2s, color 0.2s;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cta-close-btn:hover {
+      background-color: var(--border-color);
+      color: var(--text-primary);
+    }
+  </style>
 
   <!-- Structured Data - Organization Schema -->
   <script type="application/ld+json">
@@ -102,7 +251,7 @@
     "url": "https://howdystranger.net",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://howdystranger.net/images/logo.png",
+      "url": "https://howdystranger.net/images/logo.webp",
       "width": 360,
       "height": 360
     },
@@ -205,8 +354,8 @@
     <section class="hero" aria-label="Homepage hero">
       <header class="hero-header">
          <picture>
-           <source srcset="images/logo.webp" type="image/webp">
-           <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" importance="high" decoding="async" width="360" height="360">
+           <source srcset="images/logo-360x360.webp 360w, images/logo.webp 1024w" type="image/webp" sizes="(max-width: 768px) 32vw, 360px">
+           <img src="images/logo-360x360.webp" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" decoding="async" width="360" height="360">
          </picture>
          <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
          and economic insight.</p>
@@ -215,7 +364,7 @@
 
 
       <!-- First-time visitor hints -->
-      <div class="visitor-hints" id="visitor-hints">
+      <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
         <div class="hint-overlay"></div>
         <div class="hint-content" aria-describedby="hint-title">
           <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
@@ -233,19 +382,28 @@
               </div>
             </div>
             <div class="hint-step">
-              <img src="images/media.png" alt="Media" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
-              <div>
-                <strong>Media:</strong> Curated books, films, and podcasts worth your time
+              <picture>
+                <source srcset="images/media.webp" type="image/webp">
+                <img src="images/media.webp" alt="Media" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              </picture>
+               <div>
+                 <strong>Media:</strong> Curated books, films, and podcasts worth your time
+               </div>
               </div>
-            </div>
-            <div class="hint-step">
-              <img src="images/read.png" alt="Journal" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
-              <div>
-                <strong>Journal:</strong> Independent commentary and personal insights
+              <div class="hint-step">
+               <picture>
+                <source srcset="images/read.webp" type="image/webp">
+                <img src="images/read.webp" alt="Journal" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              </picture>
+               <div>
+                 <strong>Journal:</strong> Independent commentary and personal insights
+               </div>
               </div>
-            </div>
-            <div class="hint-step">
-              <img src="images/apple-touch-icon.png" alt="Add to Home Screen" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              <div class="hint-step">
+               <picture>
+                 <source srcset="images/apple-touch-icon.webp" type="image/webp">
+                 <img src="images/apple-touch-icon.webp" alt="Add to Home Screen" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+               </picture>
               <div>
                 <strong>Add to Home Screen:</strong> Tap the share icon and select "Add to Home Screen" for quick access
               </div>
@@ -269,7 +427,7 @@
     </section>
  
     <!-- Announcements Section -->
-    <div class="page-title" aria-label="Page title"><img src="images/announcements.png" alt="Announcements logo" class="page-icon" loading="lazy">Announcements</div>
+    <div class="page-title" aria-label="Page title"><picture><source srcset="images/announcements.webp" type="image/webp"><img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20" loading="lazy"></picture>Announcements</div>
      <section class="announcements" aria-label="Latest announcements">
      <div class="announcements-container" id="announcements-container">
         <div class="loading-skeleton"></div>
@@ -281,9 +439,12 @@
 
   
   <!-- Deferred Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
-  <script src="js/animations.js?v=20251107" defer></script>
+  <script src="js/bfcache-compat.js" defer></script>
   <script src="js/nav.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="js/animations.js?v=20251107" defer></script>
   <script src="js/socials.js?v=20251107" defer></script>
   <script src="js/posts-loader.js" defer></script>
   <script>

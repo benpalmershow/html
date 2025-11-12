@@ -9,6 +9,7 @@
   justify-content: center;
   text-align: center;
   gap: clamp(var(--spacing-md), 3vw, var(--spacing-lg));
+  contain: layout style;
 }
 
 .hero-header {
@@ -42,6 +43,7 @@
   /* Optimize rendering */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  content-visibility: auto;
 }
 
 .hero-subtitle {
@@ -63,6 +65,7 @@
   bottom: 0;
   z-index: 2000;
   display: none;
+  contain: layout style paint;
 }
 
 .hint-overlay {
@@ -159,6 +162,8 @@
 .announcements {
   padding: 0;
   background: var(--bg-primary);
+  contain: layout style;
+  min-height: 250px;
 }
 
 .announcements-container {
@@ -170,6 +175,8 @@
   overflow-x: visible;
   scroll-snap-type: none;
   gap: 0;
+  contain: layout style;
+  min-height: 250px;
 }
 
 .announcement-card {
@@ -276,10 +283,11 @@
 .loading-skeleton {
   background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-primary) 50%, var(--bg-secondary) 75%);
   background-size: 200% 100%;
-  animation: loading 1.5s infinite;
+  animation: loading 1s infinite;
   border-radius: 8px;
   margin-bottom: var(--spacing-md);
   height: 100px;
+  will-change: background-position;
 }
 
 @keyframes loading {

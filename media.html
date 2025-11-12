@@ -61,9 +61,22 @@
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
   <!-- Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  
+  <!-- Font Display Optimization -->
+  <style>
+    @font-face {
+      font-family: 'FontAwesome';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'FontAwesome Brands';
+      font-display: swap;
+    }
+  </style>
 
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -78,7 +91,7 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/media.css">
@@ -133,7 +146,7 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="page-title page-title--bordered" aria-label="Page title"><picture><source srcset="images/media.webp" type="image/webp"><img src="images/media.webp" alt="Media icon" class="page-icon" width="20" height="20"></picture>Media</div>
+  <div class="page-title page-title--bordered" aria-label="Page title"><picture><source srcset="images/media-60x60.webp" type="image/webp"><img src="images/media-60x60.webp" alt="Media icon" class="page-icon" width="40" height="40"></picture>Media</div>
   <main id="main-content" tabindex="-1">
     <div class="media-filters">
 
@@ -165,7 +178,6 @@
     </div>
   </main>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       lucide.createIcons();

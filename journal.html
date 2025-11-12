@@ -61,10 +61,10 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome - Deferred for non-critical loading -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
 
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -79,10 +79,10 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script async src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
   <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/journal-tweets.css">
+  <link rel="stylesheet" href="css/journal-tweets.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="css/journal-tweets.css"></noscript>
 
   <title>Journal - Howdy, Stranger</title>
 
@@ -136,11 +136,13 @@
   <div class="content">
     <div id="journal-feed"></div>
   </div>
+  <footer id="social-footer"><div class="social-links"></div><p class="footer-text">© 2025 Howdy, Stranger.</p></footer>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      lucide.createIcons();
+      if (window.lucide) {
+        lucide.createIcons();
+      }
     });
   </script>
   <script src="js/nav.js" defer></script>

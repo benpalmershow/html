@@ -721,18 +721,29 @@ main {
   letter-spacing: 0.05em;
   font-weight: 500;
   text-align: center;
-  margin: var(--spacing-xl) 0 0 0;
+  margin: var(--spacing-xl) 0 var(--spacing-md) 0;
   opacity: 0.6;
   padding-bottom: var(--spacing-xs);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
+  min-height: 20px;
+}
+
+/* Footer space reservation to prevent layout shift */
+#social-footer {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-icon {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 }
 
 .page-title--bordered {

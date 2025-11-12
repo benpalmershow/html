@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Generate schemas for all media items
         const mediaSchemas = [];
 
-        items.forEach(item => {
-            const card = createMediaCard(item);
+        items.forEach((item, index) => {
+            const card = createMediaCard(item, index === 0);
             mediaContainer.appendChild(card);
 
             // Generate MediaObject schema for this item
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function createMediaCard(item) {
+    function createMediaCard(item, isFirst = false) {
         const card = document.createElement('div');
         card.className = 'media-card';
         // Create a URL-safe ID from the title
@@ -161,6 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
         coverImg.className = 'media-cover';
         coverImg.width = 300;
         coverImg.height = 200;
+        if (isFirst) {
+            coverImg.setAttribute('fetchpriority', 'high');
+        }
 
         // Add specific class for playlist covers to apply contain styling
         if (item.mediaType === 'playlist') {
@@ -170,18 +173,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const altText = item.title ? `Cover image for ${item.title}` : 'Media cover image';
         coverImg.alt = altText;
 
-        // Use a placeholder initially
-        coverImg.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0Q4RDhEOCIvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Mb2FkaW5nLi4uPC90ZXh0Pgo8L3N2Zz4=';
-
-        // Load the actual image
+        // Load the actual image immediately
         if (item.cover) {
-            const img = new Image();
-            img.src = item.cover;
-            img.onload = function() {
-                coverImg.src = item.cover;
+            coverImg.src = item.cover;
+            coverImg.onload = function() {
                 coverImg.classList.add('loaded');
             };
-            img.onerror = function() {
+            coverImg.onerror = function() {
                 coverImg.src = 'https://via.placeholder.com/300x200/2C5F5A/FFFFFF?text=No+Image';
             };
         } else {

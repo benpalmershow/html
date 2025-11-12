@@ -88,6 +88,7 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="css/body.css?v=20251107">
   <link rel="stylesheet" href="css/index.css?v=20251107">
+  <link rel="stylesheet" href="css/cta.css?v=20251112">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
@@ -254,6 +255,18 @@
       </div>
     </section>
 
+    <!-- Call to Action Button -->
+    <section class="cta-container" id="cta-section" aria-label="Call to action">
+      <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
+      <div class="cta-button">
+        <i data-lucide="newspaper"></i>
+        <div class="cta-text-wrapper">
+          <span>Skip the Sauces, Get the Facts</span>
+          <p class="cta-subtext">You could go to NPR and learn about sauces and captions or you could come here and learn about things that actually affect your life.</p>
+        </div>
+      </div>
+    </section>
+ 
     <!-- Announcements Section -->
     <div class="page-title" aria-label="Page title"><img src="images/announcements.png" alt="Announcements logo" class="page-icon" loading="lazy">Announcements</div>
      <section class="announcements" aria-label="Latest announcements">
@@ -289,11 +302,22 @@
       if (!localStorage.getItem('hintsShown')) {
         setTimeout(showHints, 6000); // Show after logo animation completes
       }
+
+      // Show CTA for first-time visitors
+      const ctaSection = document.getElementById('cta-section');
+      if (ctaSection && localStorage.getItem('ctaDismissed')) {
+        ctaSection.style.display = 'none';
+      }
+
+      const ctaCloseBtn = ctaSection ? ctaSection.querySelector('.cta-close-btn') : null;
+      if (ctaCloseBtn) {
+        ctaCloseBtn.addEventListener('click', () => {
+          ctaSection.style.display = 'none';
+          localStorage.setItem('ctaDismissed', 'true');
+        });
+      }
     });
     </script>
-
- 
-
 
 
   </body>

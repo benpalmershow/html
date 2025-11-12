@@ -1,0 +1,78 @@
+/* CTA Button Styling */
+.cta-container {
+  background: var(--bg-secondary);
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem; /* 8px */
+  padding: var(--spacing-md); /* 1.25rem */
+  margin: var(--spacing-lg) auto 0; /* 2rem */
+  max-width: 650px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cta-container:hover {
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.cta-button i[data-lucide] {
+  width: 2rem;
+  height: 2rem;
+  stroke-width: 2.5;
+  color: var(--accent-secondary);
+  flex-shrink: 0;
+}
+
+.cta-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs); /* 0.5rem */
+}
+
+.cta-text-wrapper span:first-child {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cta-subtext {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.cta-close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-close-btn:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+}

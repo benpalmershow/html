@@ -247,10 +247,11 @@
 }
 
 /* ==========================================================================
-   RATING & ACTIONS
-   ========================================================================== */
+    RATING & ACTIONS (IMDB, ROTTEN TOMATOES, YOUTUBE TRAILER)
+    ========================================================================== */
 .rating-logos,
-.movie-actions-container {
+.movie-actions-container,
+.trailer-container {
     position: relative;
     display: flex;
     gap: 0.5rem;
@@ -263,95 +264,78 @@
     justify-content: center;
     align-items: center;
     order: 4;
+}
 
-    .rating-logo {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
+.rating-logo,
+.trailer-button-inline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+    transition: transform var(--transition-fast),
+        opacity var(--transition-fast);
+    opacity: 0.95;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    min-height: 1.5rem;
+    user-select: none;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-2px) scale(1.05);
+        opacity: 1;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         text-decoration: none;
-        font-size: 0.85em;
+    }
+
+    .score {
         font-weight: bold;
-        transition: transform var(--transition-fast),
-            opacity var(--transition-fast);
-        opacity: 0.95;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        min-height: 1.5rem;
-        user-select: none;
-        will-change: transform, opacity;
-        backface-visibility: hidden;
-
-        &:hover {
-            transform: translateY(-2px) scale(1.05);
-            opacity: 1;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-        }
-
-        .score {
-            font-weight: bold;
-        }
-
-        /* Rating Platform Styles */
-        &.rt-logo {
-            background-color: var(--color-rotten-tomatoes, #f93a1e);
-            color: white;
-
-            .rt-tomato {
-                margin-right: 0.3rem;
-                font-size: 1.1em;
-            }
-        }
-
-        &.imdb-logo {
-            background-color: var(--accent-color);
-            color: var(--color-black, #000);
-
-            .imdb-icon {
-                font-family: Arial, sans-serif;
-                font-weight: bold;
-                font-size: 0.9em;
-                letter-spacing: 0.5px;
-                margin-right: 0.3rem;
-            }
-        }
     }
 }
 
-/* ==========================================================================
-TRAILER
-========================================================================== */
-.trailer-container {
-    order: 4;
+/* Rotten Tomatoes */
+.rating-logo.rt-logo {
+    background-color: var(--color-rotten-tomatoes, #f93a1e);
+    color: white;
+
+    .rt-tomato {
+        margin-right: 0.3rem;
+        font-size: 1.1em;
+    }
+}
+
+/* IMDB */
+.rating-logo.imdb-logo {
+    background-color: var(--accent-color);
+    color: var(--color-black, #000);
+
+    .imdb-icon {
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 0.9em;
+        letter-spacing: 0.5px;
+        margin-right: 0.3rem;
+    }
+}
+
+/* YouTube Trailer */
+.trailer-button-inline {
+    background: var(--color-youtube, #FF0000);
+    color: white;
 }
 
 .trailer-container-inline {
-    display: flex;
-    align-items: center;
+    display: inherit;
+    flex-wrap: inherit;
+    gap: inherit;
+    justify-content: inherit;
+    align-items: inherit;
     width: 100%;
-
-    .trailer-button-inline {
-        background: var(--color-youtube, #FF0000);
-        color: white;
-        border: none;
-        font-size: 0.9em;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-        transition: all var(--transition-medium);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        min-height: 1.5rem;
-        user-select: none;
-        text-decoration: none;
-
-        &:hover {
-            transform: translateY(-2px) scale(1.05);
-            color: white;
-        }
-    }
 
     .trailer-embed {
         position: relative;

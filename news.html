@@ -62,9 +62,10 @@ gtag('config', 'G-DWEVPGLJDP');
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
   <!-- Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
 
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -79,10 +80,10 @@ gtag('config', 'G-DWEVPGLJDP');
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/news.css">
@@ -167,20 +168,15 @@ gtag('config', 'G-DWEVPGLJDP');
 
 
 </main>
-
-  <!-- Import marked.js from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-  <script src="js/news.js"></script>
+  <script async src="js/news.js"></script>
   <script type="module" src="js/speed-insights.js"></script>
 
   <!-- Initialize Lucide Icons -->
-   <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      lucide.createIcons();
-    });
-  </script>
+   <script>
+     document.addEventListener('DOMContentLoaded', function () {
+       lucide.createIcons();
+     });
+   </script>
   
   <script src="js/nav.js" defer></script>
   <script src="js/socials.js" defer></script>

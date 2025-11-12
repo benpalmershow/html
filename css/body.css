@@ -99,7 +99,13 @@
     --logo-teal-dark: #1e4d48; /* Darker teal for hover states */
     --logo-orange: var(--color-secondary, #d4822a); /* Logo orange - same as secondary */
 
-
+    /* Change indicator colors */
+    --change-positive-bg: rgba(67, 160, 71, 0.15);
+    --change-positive-color: #2e7d32;
+    --change-negative-bg: rgba(229, 57, 53, 0.15);
+    --change-negative-color: #c62828;
+    --change-neutral-bg: rgba(158, 158, 158, 0.15);
+    --change-neutral-color: #616161;
     
     /* ========================================
        LAYOUT VARIABLES
@@ -426,13 +432,21 @@ h3,h4{
     margin: 5% auto;
     padding: 0.5rem;
     border-radius: 6px;
-    width: 70%;
-    max-width: 400px;
-    max-height: 60vh;
+    width: clamp(85%, 90vw, 400px);
+    max-height: 70vh;
     overflow-y: auto;
     position: relative;
     box-shadow: 0 4px 16px var(--shadow-color);
     border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .chart-modal-content {
+        width: 90vw;
+        max-height: 80vh;
+        margin: 10% auto;
+        padding: 0.25rem;
+    }
 }
 
 .chart-modal-header {
@@ -482,6 +496,17 @@ h3,h4{
     line-height: 1;
     min-width: 44px;
     min-height: 44px;
+    touch-action: manipulation;
+}
+
+@media (max-width: 480px) {
+    #closeChartModal {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px;
+        min-height: 40px;
+        font-size: 24px !important;
+    }
 }
 
 #closeChartModal:hover {

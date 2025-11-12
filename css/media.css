@@ -802,8 +802,17 @@ MEDIA LINKS ORDER
 }
 
 /* ==========================================================================
-   DARK MODE OVERRIDES
-   ========================================================================== */
+    DARK MODE OVERRIDES
+    ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .media-filters { background: var(--bg-secondary); border-color: var(--border-color); }
+    .media-filters label { color: var(--text-secondary); }
+    .media-filters :is(select, input[type="text"]) { background: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); }
+    .media-filters :is(select, input[type="text"]):focus { border-color: var(--accent-primary); box-shadow: 0 0 0 2px rgba(135, 197, 190, 0.2); }
+    .media-filters input::placeholder, .search-help { color: var(--text-muted); }
+    .results-count { color: var(--text-secondary); background: rgba(135, 197, 190, 0.05); }
+}
 
 /* Ensure media overlay icons stay white in dark mode */
 [data-theme="dark"] .media-overlay .youtube-link,

@@ -209,11 +209,6 @@ iframe[src*="buymeacoffee"]{
     transform: translateY(-2px);
 }
 
-/* Announcement cards - hover without border color change */
-.announcement-card:hover {
-    box-shadow: 0 4px 16px var(--shadow-color);
-    transform: translateY(-2px);
-}
 
 /* Card title styling */
 .card-title {
@@ -237,13 +232,8 @@ iframe[src*="buymeacoffee"]{
 }
 
 .card a:focus,
-.card a:hover {
-    color: var(--color-white);
-    background: var(--logo-orange);
-    border-color: var(--logo-orange);
-    box-shadow: 0 2px 8px var(--shadow-color);
-    outline: 0;
-}.site-header{
+
+.site-header{
     text-align:center;
     padding:var(--spacing-lg) 0 var(--spacing-md);
     margin-bottom:var(--spacing-lg);
@@ -277,18 +267,7 @@ iframe[src*="buymeacoffee"]{
     margin:0;
     padding:var(--spacing-sm) 0;
     flex-wrap:wrap
-}.nav-link,.nav-links a{background:0 0;color:var(--text-secondary);padding:clamp(.4rem,1.5vw,.5rem) clamp(.6rem,2vw,1rem);border-radius:.375rem;text-decoration:none;font-weight:500;font-size:clamp(.8rem,2vw,.9rem);white-space:nowrap;min-height:clamp(36px,8vw,40px);display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s ease;border:1px solid transparent}.nav-link:hover,.nav-links a:hover{color:var(--logo-orange);background-color:var(--bg-secondary);text-decoration:none;transform:translateY(-1px);border-color:var(--color-secondary);box-shadow:0 2px 4px var(--shadow-color)}.nav-link:focus,.nav-links a:focus{outline:2px solid var(--logo-orange);outline-offset:2px;background-color:var(--bg-primary);border-color:var(--color-secondary);color:var(--logo-orange)}.nav-link.active,.nav-links a.active{color:var(--logo-orange);background-color:var(--bg-secondary);font-weight:600;border-color:var(--color-secondary)}h1,h2,h3,h4,h5,h6{color:var(--text-primary);margin:0 auto}h1{
-    text-align:center;
-    color:var(--logo-teal);
-    text-shadow:1px 1px 2px var(--shadow-color);
-    font-size:clamp(1.5rem,5vw,2.5rem);
-    margin:var(--spacing-lg) 0;
-    padding:0 var(--spacing-md);
-    word-wrap:break-word;
-    overflow-wrap:break-word;
-    max-width:100%;
-    box-sizing:border-box;
-    line-height:1.2
+
 }
 h2{
     color:var(--logo-orange);

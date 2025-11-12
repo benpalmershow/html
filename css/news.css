@@ -221,14 +221,12 @@ blockquote.guidance-box {
     }
 
     .filter-btn {
-        padding: 0.75rem;
+        padding: 0.5rem;
         font-size: 1rem;
         flex-shrink: 0;
     }
 
-    .filter-btn.active {
-        padding: 0.75rem 1.25rem;
-    }
+   
 }
 
 /* Accordion Card Layout */
@@ -1146,9 +1144,7 @@ blockquote.guidance-box {
     gap: 1.5rem;
   }
 
-  .filter-buttons {
-    margin: 1rem 0 1.5rem !important;
-  }
+
 }
 
 /* Position badges in upper right corner for full articles */

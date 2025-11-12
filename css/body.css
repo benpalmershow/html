@@ -10,10 +10,10 @@
        GRAYSCALE PALETTE
        Standardized gray scale for consistent UI elements
        ======================================== */
-    --color-gray-500: #6c757d; /* Base gray - secondary text */
-    --color-gray-600: #495057; /* Medium-dark gray - body text */
-    --color-gray-700: #343a40; /* Dark gray - headings */
-    --color-gray-800: #212529; /* Darkest gray - primary text */
+    --color-gray-100: #f8f9fa; /* Lightest gray - subtle backgrounds */
+    --color-gray-200: #e9ecef; /* Light gray - borders, dividers */
+    --color-gray-300: #dee2e6; /* Medium-light gray - inactive elements */
+    --color-gray-400: #ced4da; /* Medium gray - placeholders */
     --color-gray-500: #6c757d; /* Base gray - secondary text */
     --color-gray-600: #495057; /* Medium-dark gray - body text */
     --color-gray-700: #343a40; /* Dark gray - headings */
@@ -159,6 +159,34 @@ footer .social-links img{
     box-shadow: var(--card-shadow-hover);
     transform: translateY(-2px);
 }
+
+/* Media card variant */
+.media-card {
+    position: relative;
+    width: 100%;
+    max-width: var(--card-max-width);
+    height: var(--card-height);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+
+.media-card:hover,
+.media-card:focus-within,
+.media-card:focus {
+    border-color: var(--logo-orange);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+
+.media-card.hidden {
+    display: none;
+}
+
 
 /* ========================================
     CARD COMPONENT SYSTEM
@@ -319,3 +347,222 @@ h3,h4{
     letter-spacing:var(--spacing-xs);
     margin-left:var(--spacing-sm)
 }.card-links{display:flex;flex-wrap:wrap;gap:var(--spacing-xs)}.card-links a{display:inline-flex;align-items:center;gap:var(--spacing-xs);padding:var(--spacing-xs) var(--spacing-md);border-radius:0.5rem;transition:all 0.2s ease;text-decoration:none;border:1px solid var(--logo-orange);background:var(--color-secondary-bg);color:var(--logo-orange);font-weight:500}.card-links a:hover{background:var(--logo-orange);color:var(--color-white);transform:translateY(-2px);box-shadow:0 4px 12px var(--shadow-color)}.card-links a[href*="apple"]:hover{background:var(--color-apple);border-color:var(--color-apple);box-shadow:0 4px 12px var(--shadow-color)}.card-links a[href*="spotify"]:hover{background:var(--color-spotify);border-color:var(--color-spotify);box-shadow:0 4px 12px var(--shadow-color)}.card-links a[href*="youtube"]:hover{background:var(--color-youtube);border-color:var(--color-youtube);box-shadow:0 4px 12px var(--shadow-color)}@media (max-width:768px){.listen-intro{padding:var(--spacing-md);margin-bottom:var(--spacing-lg)}.card-header{flex-direction:column;align-items:flex-start;gap:var(--spacing-xs)}.featured-badge{margin-left:0;align-self:flex-start}.card-links{flex-direction:column}.card-links a{justify-content:center}}@media (prefers-color-scheme:dark){.listen-intro{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-secondary) 100%);border-color:var(--accent-secondary)}.audio-card.featured{background:linear-gradient(135deg,var(--bg-secondary) 0%,var(--color-secondary-bg) 100%);border-color:var(--accent-secondary)}.card-links a{background:var(--color-secondary-bg);border-color:var(--accent-secondary);color:var(--accent-secondary)}.card-links a:hover{background:var(--accent-secondary);color:var(--bg-primary)}}
+/* ========================================
+   UTILITY CLASSES
+   Common reusable patterns
+   ======================================== */
+
+/* Spacing utilities */
+.m-0 { margin: 0; }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* Layout utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; justify-content: flex-start; align-items: center; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Color utilities */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.bg-primary { background: var(--bg-primary); }
+.bg-secondary { background: var(--bg-secondary); }
+
+/* Border utilities */
+.border { border: 1px solid var(--border-color); }
+.border-top { border-top: 1px solid var(--border-color); }
+.border-bottom { border-bottom: 1px solid var(--border-color); }
+
+/* Display utilities */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+
+/* Position utilities */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+
+/* Font utilities */
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+/* ========================================
+   CHART MODAL STYLES
+   ======================================== */
+
+.chart-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--shadow-color);
+    backdrop-filter: blur(5px);
+}
+
+.chart-modal-content {
+    background-color: var(--bg-secondary);
+    margin: 5% auto;
+    padding: 0.5rem;
+    border-radius: 6px;
+    width: 70%;
+    max-width: 400px;
+    max-height: 60vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 16px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.chart-modal-header {
+    margin: 0;
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chart-modal-header h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+}
+
+.chart-modal-body {
+    background-color: var(--bg-primary);
+    border-radius: 4px;
+    padding: 1rem;
+    min-height: 200px;
+}
+
+#closeChartModal {
+    background: var(--color-neutral-bg);
+    border: 2px solid transparent;
+    font-size: 32px !important;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-primary) !important;
+    padding: 8px;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    line-height: 1;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+#closeChartModal:hover {
+    background-color: var(--logo-orange) !important;
+    color: var(--color-white) !important;
+    border-color: var(--logo-orange);
+}
+/* ========================================
+   PAGE TITLE STYLES
+   ======================================== */
+
+.page-title {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-align: center;
+  margin: var(--spacing-xl) 0 0 0;
+  opacity: 0.6;
+  padding-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.page-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.page-title--bordered {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title--journal {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--tweet-text);
+  text-align: center;
+  margin: var(--spacing-md) 0 var(--spacing-lg) 0;
+  padding: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .page-title--journal {
+    font-size: 1.25rem;
+    margin: var(--spacing-sm) 0 1.5rem 0;
+  }
+}
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-hover);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--bg-primary);
+  border-color: var(--color-secondary);
+  transform: translateY(-1px);
+}
+
+.btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

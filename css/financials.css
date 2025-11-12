@@ -1,15 +1,3 @@
-:root {
-    --border-radius: 12px;
-    --card-padding: 15px;
-    --grid-gap: 15px;
-    --transition: all 0.3s ease;
-    --change-positive-bg: var(--color-primary-bg);
-    --change-positive-color: var(--logo-teal);
-    --change-negative-bg: var(--color-secondary-bg);
-    --change-negative-color: var(--logo-orange);
-    --change-neutral-bg: var(--color-neutral-bg);
-    --change-neutral-color: var(--text-muted)
-}
 
 .container {
     width: 100%;
@@ -216,17 +204,17 @@
 .indicators-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--grid-gap);
+    gap: var(--spacing-sm);
     align-items: flex-start
 }
 
 .indicator {
     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-radius: var(--border-radius);
-    padding: var(--card-padding);
+    border-radius: 12px;
+    padding: var(--spacing-md);
     border: 1px solid var(--border-color);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
+    transition: var(--transition-hover);
     position: relative;
     flex: 0 0 300px;
     max-width: 300px
@@ -286,13 +274,11 @@
     align-items: center;
     gap: 5px;
     padding: 4px 8px;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     font-size: 0.9rem;
     font-weight: 600;
-    width: fit-content;
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1)
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15)
 }
 
 .arrow-icon {
@@ -333,8 +319,6 @@
     border: 2px solid var(--border-color);
     padding: 8px 16px;
     border-radius: 20px;
-    cursor: pointer;
-    transition: var(--transition);
     font-size: 0.9rem;
     font-weight: 500;
     display: inline-flex;
@@ -368,7 +352,7 @@
     bottom: 0;
     background: var(--bg-primary);
     /* Use CSS variable for consistency and maintainability */
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     display: none;
     z-index: 100;
     opacity: 0;
@@ -496,7 +480,7 @@
 
 /* Enhanced icon styling for info and chart icons */
 :is(.info-icon, .chart-icon) {
-    transition: var(--transition);
+    transition: var(--transition-hover);
     cursor: pointer;
     padding: 4px;
     border-radius: 6px;

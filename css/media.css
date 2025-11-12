@@ -28,11 +28,10 @@
     --transition-medium: 0.2s ease;
     --transition-slow: 0.3s ease;
 
-    /* Card */
+    /* Card - using shared variables from body.css */
     --card-max-width: 200px;
     --card-height: 300px;
     --card-radius: 0.5rem;
-    --card-shadow: 0 2px 8px var(--shadow-light);
 
     /* Spacing */
     --space-lg: 1.5rem;
@@ -84,7 +83,7 @@
     &:focus-within,
     &:focus {
         border-color: var(--logo-orange);
-        box-shadow: 0 4px 16px var(--shadow-medium);
+        box-shadow: var(--card-shadow-hover);
         transform: translateY(-2px) scale(1.025);
         outline: none;
     }

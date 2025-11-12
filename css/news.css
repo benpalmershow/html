@@ -250,7 +250,7 @@ blockquote.guidance-box {
 
 .accordion-card:hover {
   border-color: var(--color-secondary);
-  box-shadow: 0 4px 16px var(--shadow-color);
+  box-shadow: var(--card-shadow-hover);
   transform: translateY(-2px);
 }
 
@@ -859,7 +859,7 @@ blockquote.guidance-box {
 
 .news-card:hover {
   border-color: var(--logo-orange);
-  box-shadow: 0 4px 16px var(--shadow-color);
+  box-shadow: var(--card-shadow-hover);
   transform: translateY(-2px) scale(1.01);
 }
 

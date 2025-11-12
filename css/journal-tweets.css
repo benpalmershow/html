@@ -246,22 +246,3 @@
     background: var(--tweet-bg-hover) !important;
     background-color: var(--tweet-bg-hover) !important;
 }
-
-/* Ensure dark mode is properly applied */
-[data-theme="dark"] .journal-entry,
-[data-theme="dark"] .journal-entry .content,
-[data-theme="dark"] .journal-entry .card,
-[data-theme="dark"] .journal-entry .card-title,
-[data-theme="dark"] .entry {
-    background: var(--tweet-bg) !important;
-    background-color: var(--tweet-bg) !important;
-}
-
-[data-theme="dark"] .journal-entry:hover,
-[data-theme="dark"] .journal-entry:hover .content,
-[data-theme="dark"] .journal-entry:hover .card,
-[data-theme="dark"] .journal-entry:hover .card-title,
-[data-theme="dark"] .journal-entry:hover .entry {
-    background: var(--tweet-bg-hover) !important;
-    background-color: var(--tweet-bg-hover) !important;
-}

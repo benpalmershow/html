@@ -68,8 +68,9 @@
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <!-- Preload critical resources -->
-  <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="images/logo.webp" as="image" type="image/webp" fetchpriority="high" importance="high">
   <link rel="preload" href="css/body.css?v=20251107" as="style">
+  <link rel="preload" href="css/index.css?v=20251107" as="style">
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/marked/marked.min.js" as="script">
   <!-- Preconnect to external domains -->
@@ -205,7 +206,7 @@
       <header class="hero-header">
          <picture>
            <source srcset="images/logo.webp" type="image/webp">
-           <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" width="360" height="360">
+           <img src="images/logo.png" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" importance="high" decoding="async" width="360" height="360">
          </picture>
          <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
          and economic insight.</p>

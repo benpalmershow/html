@@ -12,19 +12,6 @@
     --tweet-shadow: rgba(0, 0, 0, 0.03);
 }
 
-/* Dark mode overrides */
-[data-theme="dark"] {
-    --tweet-bg: #000000;
-    --tweet-bg-hover: #16181c;
-    --tweet-text: #ffffff;
-    --tweet-text-secondary: #71767b;
-    --tweet-text-muted: #71767b;
-    --tweet-border: #2f3336;
-    --tweet-accent: #1d9bf0;
-    --tweet-accent-hover: #1a8cd8;
-    --tweet-shadow: rgba(255, 255, 255, 0.03);
-}
-
 /* Journal container - tweet-like feed */
 #journal-feed {
     max-width: 600px;

@@ -155,14 +155,6 @@
 }
 
 
-
-
-@media (prefers-color-scheme: dark) {
-  .hero-subtitle {
-    color: var(--text-muted);
-  }
-}
-
 /* Announcements Section */
 .announcements {
   padding: 0;

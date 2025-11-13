@@ -151,6 +151,7 @@
   width: 1.2rem;
   height: 1.2rem;
   color: var(--color-secondary, #d4822a);
+  stroke: var(--color-secondary, #d4822a);
   stroke-width: 2;
 }
 

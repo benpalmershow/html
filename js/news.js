@@ -1,39 +1,6 @@
 (function() {
-    // List of all articles (add new articles here) - v2
-    const ARTICLES = [
-    'oversight-committee-report',
-    'urban_crime_2020',
-    'chiles-v-salazar',
-    'barrett_v_us',
-    'reddit-q2-2025-earnings',
-    'navan-ipo',
-    'vaccine-policy',
-    'military-drones',
-    'healthcare-costs',
-    'okta-q2-2026',
-    'aaup-rubio',
-    'fiber-supplement',
-    'trump-v-casa',
-    'figma-ipo',
-    'ceqa-reforms',
-      'bullish-ipo',
-    'peloton-stock',
-      'local-bounti-q2-2025',
-      'scotus-oct-2025',
-      'airo-ipo',
-      'robinhood-q2-2025',
-      'boston-public-market',
-      'circle-ipo',
-      'big-beautiful-bill',
-      'corrections-hood-twlo',
-      'sustainable-abundance',
-      'oregon-kei-trucks-sb1213',
-       'doc-riter-trump-interview',
-       'scotus-nov-2025',
-       'trump-v-vos-selections',
-       'trump-v-vos-update',
-       'trump-v-vos-sauer'
-    ];
+    // Load article list from JSON
+    let ARTICLES = [];
 
     // Parse frontmatter from markdown
     function parseFrontmatter(markdown) {
@@ -60,11 +27,30 @@
 
     
 
+    // Load articles list from JSON
+    async function loadArticlesList() {
+      try {
+        const response = await fetch('/json/news.json');
+        if (!response.ok) throw new Error('Failed to load articles list');
+        const data = await response.json();
+        ARTICLES = data.map(article => article.id);
+        return data;
+      } catch (error) {
+        console.error('Error loading articles list:', error);
+        return [];
+      }
+    }
+
     // Load article from markdown file
     async function loadArticle(filename) {
       try {
-        const response = await fetch(`/article/${filename}.md`);
-        if (!response.ok) throw new Error('Article not found');
+        const url = `/article/${filename}.md`;
+        console.log('Fetching:', url);
+        const response = await fetch(url);
+        if (!response.ok) {
+          console.error(`Failed to load ${filename}: ${response.status} ${response.statusText}`);
+          throw new Error('Article not found');
+        }
 
         const markdown = await response.text();
         const { metadata, content } = parseFrontmatter(markdown);
@@ -74,7 +60,7 @@
 
         return { metadata, html };
       } catch (error) {
-        console.error('Error loading article:', error);
+        console.error('Error loading article:', filename, error);
         return null;
       }
     }
@@ -207,7 +193,8 @@
       feedView.style.display = 'block';
       articleView.style.display = 'none';
 
-      // Load metadata for each article
+      // Load articles list and metadata for each article
+      await loadArticlesList();
       const articles = await Promise.all(
         ARTICLES.map(async (id) => {
           const article = await loadArticle(id);

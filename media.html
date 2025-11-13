@@ -190,6 +190,13 @@
   <script src="js/media.js" defer></script>
   <script src="js/socials.js" defer></script>
   
+  <!-- Service Worker for external resource caching -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+  
   <!-- Load Lucide and initialize after interactive -->
   <script>
     if (document.readyState === 'loading') {

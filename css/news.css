@@ -221,12 +221,14 @@ blockquote.guidance-box {
     }
 
     .filter-btn {
-        padding: 0.5rem;
+        padding: 0.75rem;
         font-size: 1rem;
         flex-shrink: 0;
     }
 
-   
+    .filter-btn.active {
+        padding: 0.75rem 1.25rem;
+    }
 }
 
 /* Accordion Card Layout */
@@ -268,14 +270,13 @@ blockquote.guidance-box {
 }
 
 .accordion-header {
-   padding: 0.5rem 0.75rem;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   pointer-events: auto;
- }
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .accordion-meta {
   display: flex;
@@ -327,24 +328,23 @@ blockquote.guidance-box {
 
 
 .read-full-btn {
-   display: inline-flex;
-   align-items: center;
-   gap: 0.5rem;
-   padding: 0.5rem 1rem;
-   background: var(--logo-teal);
-   color: white;
-   border: none;
-   border-radius: 8px;
-   font-size: 0.8rem;
-   font-weight: 600;
-   cursor: pointer;
-   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-   text-decoration: none;
-   box-shadow: 0 2px 8px rgba(44, 95, 90, 0.3);
-   position: relative;
-   overflow: hidden;
-   pointer-events: auto;
- }
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--logo-teal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(44, 95, 90, 0.3);
+  position: relative;
+  overflow: hidden;
+}
 
 .read-full-btn::before {
   content: '';
@@ -453,13 +453,13 @@ blockquote.guidance-box {
 
 /* Accordion Content (expandable) */
 .accordion-content {
-   max-height: 0;
-   overflow: hidden;
-   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-   background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
-   will-change: max-height;
-   contain: layout style;
- }
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  will-change: max-height;
+  contain: layout style;
+}
 
 .accordion-expanded-header {
   padding: 1rem 1rem 0.5rem;
@@ -1146,7 +1146,9 @@ blockquote.guidance-box {
     gap: 1.5rem;
   }
 
-
+  .filter-buttons {
+    margin: 1rem 0 1.5rem !important;
+  }
 }
 
 /* Position badges in upper right corner for full articles */

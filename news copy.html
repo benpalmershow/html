@@ -30,7 +30,7 @@ gtag('config', 'G-DWEVPGLJDP');
 <meta property="og:description" content="Breaking news and latest headlines from The Ben Palmer Show. Independent analysis on markets, policy, and current events.">
 <meta property="og:url" content="https://howdystranger.net/news.html">
 <meta property="og:site_name" content="Howdy, Stranger">
-<meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.png?v=1">
+<meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
 <meta property="og:image:alt" content="Howdy, Stranger - News and Headlines">
 
   <!-- Twitter Card Meta Tags -->
@@ -39,16 +39,16 @@ gtag('config', 'G-DWEVPGLJDP');
 <meta name="twitter:creator" content="@DocRiter">
 <meta name="twitter:title" content="News - Howdy, Stranger">
 <meta name="twitter:description" content="Breaking news and latest headlines from The Ben Palmer Show. Independent analysis on markets, policy, and current events.">
-<meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.png?v=1">
+<meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
 <meta name="twitter:image:alt" content="Howdy, Stranger - News and Headlines">
 
   <!-- Canonical URL -->
 <link rel="canonical" href="https://howdystranger.net/news.html">
 
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+  <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
   <link rel="manifest" href="site.webmanifest">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
@@ -62,9 +62,12 @@ gtag('config', 'G-DWEVPGLJDP');
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
   <!-- Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  
+
 
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -79,10 +82,10 @@ gtag('config', 'G-DWEVPGLJDP');
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/news.css">
@@ -130,7 +133,6 @@ gtag('config', 'G-DWEVPGLJDP');
   }
   </script>
 </head>
-</head>
 <body>
 <nav class="nav-links" id="main-nav"></nav>
 <main id="main-content" tabindex="-1">
@@ -167,21 +169,162 @@ gtag('config', 'G-DWEVPGLJDP');
 
 
 </main>
-
-  <!-- Import marked.js from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-  <script src="js/news.js"></script>
-  <script type="module" src="js/speed-insights.js"></script>
-
-  <!-- Initialize Lucide Icons -->
-   <script src="https://unpkg.com/lucide@latest"></script>
+<footer id="social-footer">
+  <div class="social-links"></div>
+</footer>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    // Dynamic article loading from /article directory
+    const ARTICLE_BASE_PATH = 'article/';
+    const ARTICLE_FILES = [
+      'aaup-rubio.md',
+      'airo-ipo.md',
+      'barrett_v_us.md',
+      'big-beautiful-bill.md',
+      'boston-public-market.md',
+      'bullish-ipo.md',
+      'ceqa-reforms.md',
+      'chiles-v-salazar.md',
+      'circle-ipo.md',
+      'corrections-hood-twlo.md',
+      'doc-riter-trump-interview.md',
+      'fiber-supplement.md',
+      'figma-ipo.md',
+      'healthcare-costs.md',
+      'local-bounti-q2-2025.md',
+      'military-drones.md',
+      'navan-ipo.md',
+      'okta-q2-2026.md',
+      'oregon-kei-trucks-sb1213.md',
+      'oversight-committee-report.md',
+      'peloton-stock.md',
+      'reddit-q2-2025-earnings.md',
+      'robinhood-q2-2025.md',
+      'scotus-nov-2025.md',
+      'scotus-oct-2025.md',
+      'sustainable-abundance.md',
+      'trump-v-casa.md',
+      'trump-v-vos-sauer.md',
+      'trump-v-vos-selections.md',
+      'trump-v-vos-update.md',
+      'urban_crime_2020.md',
+      'vaccine-policy.md'
+    ];
+
+    async function loadArticles() {
+      const container = document.getElementById('articles-container');
+      const articles = [];
+
+      for (const file of ARTICLE_FILES) {
+        try {
+          const response = await fetch(ARTICLE_BASE_PATH + file);
+          const content = await response.text();
+          
+          // Parse frontmatter
+          const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)/);
+          let metadata = {};
+          let body = content;
+
+          if (frontmatterMatch) {
+            try {
+              metadata = jsyaml.load(frontmatterMatch[1]);
+              body = frontmatterMatch[2];
+            } catch (e) {
+              console.warn(`Failed to parse frontmatter for ${file}:`, e);
+            }
+          }
+
+          articles.push({
+            id: file.replace('.md', ''),
+            filename: file,
+            title: metadata.title || file.replace(/-/g, ' ').replace('.md', ''),
+            category: metadata.category || 'general',
+            date: metadata.date || new Date().toISOString().split('T')[0],
+            excerpt: metadata.excerpt || body.substring(0, 200) + '...',
+            content: body,
+            metadata: metadata
+          });
+        } catch (error) {
+          console.error(`Failed to load article ${file}:`, error);
+        }
+      }
+
+      // Sort by date (newest first)
+      articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Store globally for filtering
+      window.allArticles = articles;
+      renderArticles(articles);
+    }
+
+    function renderArticles(articles) {
+      const container = document.getElementById('articles-container');
+      const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+
+      let filtered = articles;
+      if (activeCategory !== 'all') {
+        filtered = articles.filter(a => a.category === activeCategory);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="no-articles">No articles found.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(article => `
+        <article class="news-item" data-category="${article.category}">
+          <div class="article-header">
+            <h2><a href="?article=${article.id}">${article.title}</a></h2>
+            <time datetime="${article.date}">${new Date(article.date).toLocaleDateString()}</time>
+          </div>
+          <p class="article-excerpt">${article.excerpt}</p>
+          <a href="?article=${article.id}" class="read-more">Read more →</a>
+        </article>
+      `).join('');
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderArticles(window.allArticles);
+      });
+    });
+
+    // Load article from URL parameter
+    function loadArticleFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const articleId = params.get('article');
+      
+      if (articleId && window.allArticles) {
+        const article = window.allArticles.find(a => a.id === articleId);
+        if (article) {
+          document.getElementById('news-feed-view').style.display = 'none';
+          document.getElementById('full-article-view').style.display = 'block';
+          
+          const container = document.getElementById('article-container');
+          const htmlContent = marked.parse(article.content);
+          container.innerHTML = `
+            <article class="full-article">
+              <header>
+                <h1>${article.title}</h1>
+                <time datetime="${article.date}">${new Date(article.date).toLocaleDateString()}</time>
+              </header>
+              <div class="article-body">
+                ${htmlContent}
+              </div>
+            </article>
+          `;
+        }
+      }
+    }
+
+    // Initialize
+    loadArticles().then(() => {
+      loadArticleFromURL();
       lucide.createIcons();
     });
   </script>
-  
   <script src="js/nav.js" defer></script>
   <script src="js/socials.js" defer></script>
 </body>

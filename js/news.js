@@ -60,19 +60,10 @@
 
     
 
-    // Load article from markdown file with cache busting
+    // Load article from markdown file
     async function loadArticle(filename) {
       try {
-        // Add timestamp to prevent caching
-        const cacheBuster = Date.now();
-        const response = await fetch(`article/${filename}.md?v=${cacheBuster}`, {
-          cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-          }
-        });
+        const response = await fetch(`article/${filename}.md`);
         if (!response.ok) throw new Error('Article not found');
 
         const markdown = await response.text();
@@ -392,3 +383,4 @@
     window.addEventListener('popstate', initRouter);
 
 })();
+

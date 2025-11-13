@@ -1,30 +1,30 @@
 (function () {
     const navItems = [{
-         text: "Home",
-         href: "../index.html",
-         icon: "",
-         image: "../images/announcements-60x60.webp"
-     }, {
-         text: "Numbers",
-         href: "../financials.html",
-         icon: "📊",
-         image: ""
-     }, {
-         text: "News",
-         href: "../news.html",
-         icon: "📰",
-         image: ""
-     }, {
-         text: "Media",
-         href: "../media.html",
-         icon: "",
-         image: "../images/media-60x60.webp"
-     }, {
-         text: "Tweets",
-         href: "../journal.html",
-         icon: "",
-         image: "../images/read-60x60.webp"
-     }];
+        text: "Home",
+        href: "../index.html",
+        icon: "",
+        image: "../images/announcements.png"
+    }, {
+        text: "Numbers",
+        href: "../financials.html",
+        icon: "📊",
+        image: ""
+    }, {
+        text: "News",
+        href: "../news.html",
+        icon: "📰",
+        image: ""
+    }, {
+        text: "Media",
+        href: "../media.html",
+        icon: "",
+        image: "../images/media.png"
+    }, {
+        text: "Tweets",
+        href: "../journal.html",
+        icon: "",
+        image: "../images/read.png"
+    }];
 
     function createNavbar() {
     const nav = document.createElement('nav');

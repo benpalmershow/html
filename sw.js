@@ -31,7 +31,9 @@ const EXTERNAL_DOMAINS = [
   'i.ytimg.com',
   'img.youtube.com',
   'pics.filmaffinity.com',
-  'assets.tuckercarlson.com'
+  'assets.tuckercarlson.com',
+  'hardlystrictlybluegrass.com',
+  'hachettebookgroup.com'
 ];
 
 self.addEventListener('install', event => {
@@ -41,6 +43,14 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(clients.claim());
 });
+
+// Helper to create optimized response via image proxy
+function getOptimizedImageUrl(originalUrl) {
+  // Use Imgproxy format: https://docs.imgproxy.net/
+  // Or Cloudflare Image Optimization: ?format=webp&fit=scale-down&width=1024
+  // For now, just use the original since we can't control external image servers
+  return originalUrl;
+}
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);

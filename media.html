@@ -2,13 +2,28 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+  <!-- Google tag (gtag.js) - deferred initialization -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-DWEVPGLJDP');
+    // Load gtag after page interactive
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-DWEVPGLJDP');
+      });
+    } else {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP');
+    }
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -61,6 +76,10 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
+  <!-- Preload Font Awesome fonts -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- Font Awesome (async) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -71,10 +90,14 @@
   <style>
     @font-face {
       font-family: 'FontAwesome';
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
+      font-weight: 900;
       font-display: swap;
     }
     @font-face {
       font-family: 'FontAwesome Brands';
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
+      font-weight: 400;
       font-display: swap;
     }
     /* Critical LCP styles - first media card */
@@ -98,9 +121,7 @@
   <script type="module" src="js/speed-insights.js"></script>
 
   <link rel="stylesheet" href="css/body.css">
-  <!-- Defer non-critical media styles -->
-  <link rel="stylesheet" href="css/media.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/media.css"></noscript>
+  <link rel="stylesheet" href="css/media.css">
 
   <title>Media - Howdy, Stranger</title>
 

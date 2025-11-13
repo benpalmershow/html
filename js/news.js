@@ -109,10 +109,10 @@
 
       <div class="accordion-full-actions">
        <a href="news.html?article=${article.id}" class="read-full-btn primary">
-          <span>Read Full Article</span>
-            <i data-lucide="arrow-right"></i>
-          </a>
-        </div>
+           <span>Read Full Article</span>
+             <i data-lucide="arrow-right"></i>
+           </a>
+         </div>
       </div>
     </div>
     `;
@@ -240,29 +240,33 @@
     }
 
     // Setup accordion expand/collapse functionality with performance optimizations
-    function setupAccordion() {
-      // Use event delegation for better performance
-      const container = document.getElementById('articles-container');
-      if (!container) return;
+     function setupAccordion() {
+       // Attach handler to each accordion card instead of container
+       const cards = document.querySelectorAll('.accordion-card');
+       
+       cards.forEach(card => {
+         // Remove existing listener
+         const existingHandler = card._accordionHandler;
+         if (existingHandler) {
+           card.removeEventListener('click', existingHandler);
+         }
 
-      // Remove existing listeners to prevent accumulation
-      const existingHandler = container._accordionHandler;
-      if (existingHandler) {
-        container.removeEventListener('click', existingHandler);
-      }
+         const handleAccordionClick = function(e) {
+           // Don't expand if clicking on read-full-btn
+           if (e.target.closest('.read-full-btn')) {
+             return;
+           }
 
-      // Create single event handler for all accordion interactions
-      const handleAccordionClick = function(e) {
-        const header = e.target.closest('.accordion-header');
-        if (!header) return;
+           const header = e.target.closest('.accordion-header');
+           if (!header) return;
 
-        // Don't expand if clicking on filter badge
-        if (e.target.closest('.filter-badge')) {
-          return;
-        }
+         // Don't expand if clicking on filter badge
+         if (e.target.closest('.filter-badge')) {
+           return;
+         }
 
-        e.preventDefault();
-        e.stopPropagation();
+         e.preventDefault();
+         e.stopPropagation();
 
         const card = header.closest('.accordion-card');
         const content = card.querySelector('.accordion-content');
@@ -295,14 +299,15 @@
               content.style.maxHeight = content.scrollHeight + 'px';
               icon.style.transform = 'rotate(180deg)';
             }, 10);
-          }
-        });
-      };
+               }
+             });
+             };
 
-      // Store handler reference for cleanup
-      container._accordionHandler = handleAccordionClick;
-      container.addEventListener('click', handleAccordionClick);
-    }
+             // Store handler reference for cleanup
+             card._accordionHandler = handleAccordionClick;
+             card.addEventListener('click', handleAccordionClick);
+            });
+            }
 
     // Format date
     function formatDate(dateStr) {

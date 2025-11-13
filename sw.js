@@ -41,7 +41,15 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(clients.claim());
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames
+          .filter(name => name !== CACHE_NAME)
+          .map(name => caches.delete(name))
+      );
+    }).then(() => clients.claim())
+  );
 });
 
 // Helper to create optimized response via image proxy
@@ -54,6 +62,16 @@ function getOptimizedImageUrl(originalUrl) {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+  
+  // Always fetch fresh JS and HTML from network
+  if (event.request.url.match(/\.(js|html)$/i)) {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-store' }).catch(() => {
+        return caches.match(event.request);
+      })
+    );
+    return;
+  }
   
   // Only cache external image/media requests
   const isExternalDomain = EXTERNAL_DOMAINS.some(domain => url.hostname.includes(domain));

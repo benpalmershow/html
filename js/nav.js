@@ -23,15 +23,99 @@ document.addEventListener('DOMContentLoaded', () => {
           return `<li><a href="${page.file}" class="nav-link ${isActive ? 'active' : ''}">${page.name}</a></li>`;
         }).join('')}
       </ul>
+      <div class="nav-right-section">
+        <!-- Compact CTA Button -->
+        <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
+          <i data-lucide="newspaper"></i>
+        </button>
+        <!-- Compact Hints Button -->
+        <button class="hints-icon-btn" id="hints-toggle" aria-label="Show welcome hints" title="Welcome guide">
+          <i data-lucide="help-circle"></i>
+        </button>
+      </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
+    <!-- Call to Action Section (modal) -->
+    <div class="cta-modal" id="cta-modal" aria-hidden="true">
+      <div class="cta-modal-overlay"></div>
+      <section class="cta-container" aria-label="Call to action">
+        <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
+        <div class="cta-button">
+          <i data-lucide="newspaper"></i>
+          <div class="cta-text-wrapper">
+            <span>Skip the Sauces, Get the Facts</span>
+            <p class="cta-subtext">You could go to NPR and learn about sauces and captions or you could come here and read about things that actually affect your life.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- First-time visitor hints -->
+    <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
+        <div class="hint-overlay"></div>
+        <div class="hint-content" aria-describedby="hint-title">
+          <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
+          <div class="hint-steps">
+            <div class="hint-step">
+              <i data-lucide="newspaper" style="width: 2rem; height: 2rem;"></i>
+              <div>
+                <strong>News:</strong> Latest market updates, earnings, and policy analysis
+              </div>
+            </div>
+            <div class="hint-step">
+              <i data-lucide="bar-chart-3" style="width: 2rem; height: 2rem;"></i>
+              <div>
+                <strong>Numbers:</strong> Economic indicators, financial data, and market trends
+              </div>
+            </div>
+            <div class="hint-step">
+              <picture>
+                <source srcset="images/media.webp" type="image/webp">
+                <img src="images/media.webp" alt="Media" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              </picture>
+               <div>
+                 <strong>Media:</strong> Curated books, films, and podcasts worth your time
+               </div>
+              </div>
+              <div class="hint-step">
+               <picture>
+                <source srcset="images/read.webp" type="image/webp">
+                <img src="images/read.webp" alt="Tweets" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              </picture>
+               <div>
+                 <strong>Tweets:</strong> Independent commentary and personal insights
+               </div>
+              </div>
+              <div class="hint-step">
+               <picture>
+                 <source srcset="images/apple-touch-icon.webp" type="image/webp">
+                 <img src="images/apple-touch-icon.webp" alt="Add to Home Screen" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+               </picture>
+              <div>
+                <strong>Add to Home Screen:</strong> Tap the share icon and select "Add to Home Screen" for quick access
+              </div>
+            </div>
+          </div>
+          <button class="hint-close" id="hint-close-btn">Got it, thanks!</button>
+          </div>
+          </div>
   `;
 
   navContainer.innerHTML = navHTML;
+
+  // Initialize Lucide icons for the navbar - wait for library if needed
+  function initializeLucideIcons() {
+    if (window.lucide && typeof lucide.createIcons === 'function') {
+      lucide.createIcons();
+    } else {
+      // Retry in 100ms if Lucide not yet loaded
+      setTimeout(initializeLucideIcons, 100);
+    }
+  }
+  initializeLucideIcons();
 
   // Mobile menu toggle
   const toggle = document.getElementById('nav-toggle');
@@ -50,5 +134,90 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.nav-list').classList.remove('active');
       });
     });
+  }
+
+  // CTA Modal toggle
+  const ctaToggle = document.getElementById('cta-toggle');
+  const ctaModal = document.getElementById('cta-modal');
+  if (ctaToggle && ctaModal) {
+    function positionCtaModal() {
+      const rect = ctaToggle.getBoundingClientRect();
+      const ctaContainer = ctaModal.querySelector('.cta-container');
+      if (ctaContainer) {
+        ctaContainer.style.top = (rect.bottom + 10) + 'px';
+      }
+    }
+
+    ctaToggle.addEventListener('click', () => {
+      const isOpen = ctaModal.style.display === 'block';
+      ctaModal.style.display = isOpen ? 'none' : 'block';
+      ctaModal.classList.toggle('active', !isOpen);
+      ctaModal.setAttribute('aria-hidden', isOpen);
+      if (!isOpen) {
+        positionCtaModal();
+      }
+    });
+
+    // Close CTA modal when overlay or close button is clicked
+    const ctaCloseBtn = ctaModal.querySelector('.cta-close-btn');
+    const ctaOverlay = ctaModal.querySelector('.cta-modal-overlay');
+    [ctaCloseBtn, ctaOverlay].forEach(el => {
+      if (el) {
+        el.addEventListener('click', () => {
+          ctaModal.style.display = 'none';
+          ctaModal.classList.remove('active');
+          ctaModal.setAttribute('aria-hidden', 'true');
+          localStorage.setItem('ctaDismissed', 'true');
+        });
+      }
+    });
+
+    // Reposition on scroll and resize
+    window.addEventListener('scroll', positionCtaModal);
+    window.addEventListener('resize', positionCtaModal);
+  }
+
+  // Hints toggle
+  const hintsToggle = document.getElementById('hints-toggle');
+  const visitorHints = document.getElementById('visitor-hints');
+  if (hintsToggle && visitorHints) {
+    function positionHints() {
+      const rect = hintsToggle.getBoundingClientRect();
+      const hintContent = visitorHints.querySelector('.hint-content');
+      if (hintContent) {
+        hintContent.style.top = (rect.bottom + 10) + 'px';
+      }
+    }
+
+    hintsToggle.addEventListener('click', () => {
+      if (visitorHints.style.display === 'none' || visitorHints.style.display === '') {
+        visitorHints.style.display = 'block';
+        visitorHints.classList.add('active');
+        visitorHints.setAttribute('aria-hidden', 'false');
+        positionHints();
+      } else {
+        visitorHints.style.display = 'none';
+        visitorHints.classList.remove('active');
+        visitorHints.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Close hints when overlay or close button is clicked
+    const hintOverlay = visitorHints.querySelector('.hint-overlay');
+    const hintCloseBtn = visitorHints.querySelector('#hint-close-btn');
+    [hintOverlay, hintCloseBtn].forEach(el => {
+      if (el) {
+        el.addEventListener('click', () => {
+          visitorHints.style.display = 'none';
+          visitorHints.classList.remove('active');
+          visitorHints.setAttribute('aria-hidden', 'true');
+          localStorage.setItem('hintsShown', 'true');
+        });
+      }
+    });
+
+    // Reposition on scroll and resize
+    window.addEventListener('scroll', positionHints);
+    window.addEventListener('resize', positionHints);
   }
 });

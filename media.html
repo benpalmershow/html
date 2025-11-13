@@ -122,6 +122,7 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/nav.css">
@@ -211,6 +212,18 @@
 
   <footer id="social-footer"><div class="social-links"></div></footer>
 
+  <script>
+    // Helper functions for hints (called from nav modal)
+    function closeHints() {
+      const visitorHints = document.getElementById('visitor-hints');
+      if (visitorHints) {
+        visitorHints.style.display = 'none';
+        visitorHints.classList.remove('active');
+        localStorage.setItem('hintsShown', 'true');
+      }
+    }
+  </script>
+
   <script src="js/nav.js" defer></script>
   <script src="js/media.js" defer></script>
   <script src="js/socials.js" defer></script>
@@ -222,36 +235,7 @@
     }
   </script>
   
-  <!-- Load Lucide and initialize after LCP to avoid CLS -->
-  <script>
-    // Wait for LCP to complete (roughly 2.5 seconds after load) before loading Lucide
-    if ('PerformanceObserver' in window) {
-      try {
-        const observer = new PerformanceObserver((list) => {
-          const lastEntry = list.getEntries()[list.getEntries().length - 1];
-          if (lastEntry.name === 'largest-contentful-paint') {
-            // Load Lucide ~500ms after LCP to avoid CLS
-            setTimeout(() => {
-              const script = document.createElement('script');
-              script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
-              script.onload = function () { if (window.lucide) lucide.createIcons(); };
-              document.body.appendChild(script);
-            }, 500);
-            observer.disconnect();
-          }
-        });
-        observer.observe({ entryTypes: ['largest-contentful-paint'] });
-      } catch (e) {
-        // Fallback if observer fails
-        setTimeout(() => {
-          const script = document.createElement('script');
-          script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
-          script.onload = function () { if (window.lucide) lucide.createIcons(); };
-          document.body.appendChild(script);
-        }, 3000);
-      }
-    }
-  </script>
+
 
 </body>
 

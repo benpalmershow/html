@@ -100,6 +100,18 @@
 
         <footer id="social-footer"><div class="social-links"></div></footer>
 
+        <script>
+          // Helper functions for hints (called from nav modal)
+          function closeHints() {
+            const visitorHints = document.getElementById('visitor-hints');
+            if (visitorHints) {
+              visitorHints.style.display = 'none';
+              visitorHints.classList.remove('active');
+              localStorage.setItem('hintsShown', 'true');
+            }
+          }
+        </script>
+
         <script src="js/nav.js" defer></script>
         <script src="js/countdown.js" defer></script>
         <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>

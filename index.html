@@ -169,81 +169,7 @@
 
   </style>
 
-  <!-- Inline CTA styles to eliminate render-blocking -->
-  <style>
-    .cta-container {
-      background: var(--bg-secondary);
-      position: relative;
-      border: 1px solid var(--border-color);
-      border-radius: 0.5rem;
-      padding: var(--spacing-md);
-      margin: var(--spacing-lg) auto 0;
-      max-width: 650px;
-      min-height: 120px;
-      box-shadow: 0 2px 8px var(--shadow-color);
-      transition: border-color 0.2s ease, transform 0.2s ease;
-      contain: layout style;
-    }
-    .cta-container:hover {
-      border-color: var(--accent-secondary);
-      transform: translateY(-2px);
-    }
-    .cta-button {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-md);
-      text-align: left;
-      color: var(--text-primary);
-    }
-    .cta-button i[data-lucide] {
-      width: 2rem;
-      height: 2rem;
-      stroke-width: 2.5;
-      color: var(--accent-secondary);
-      flex-shrink: 0;
-    }
-    .cta-text-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-xs);
-    }
-    .cta-text-wrapper span:first-child {
-      font-family: 'Georgia', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .cta-subtext {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      font-style: italic;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-    .cta-close-btn {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      line-height: 1;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 0.25rem 0.5rem;
-      border-radius: 50%;
-      transition: background-color 0.2s, color 0.2s;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cta-close-btn:hover {
-      background-color: var(--border-color);
-      color: var(--text-primary);
-    }
-  </style>
+
 
   <!-- Structured Data - Organization Schema -->
   <script type="application/ld+json">
@@ -363,67 +289,7 @@
      </div>
     </section>
 
-    <!-- First-time visitor hints -->
-    <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
-        <div class="hint-overlay"></div>
-        <div class="hint-content" aria-describedby="hint-title">
-          <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
-          <div class="hint-steps">
-            <div class="hint-step">
-              <i data-lucide="newspaper" style="width: 2rem; height: 2rem;"></i>
-              <div>
-                <strong>News:</strong> Latest market updates, earnings, and policy analysis
-              </div>
-            </div>
-            <div class="hint-step">
-              <i data-lucide="bar-chart-3" style="width: 2rem; height: 2rem;"></i>
-              <div>
-                <strong>Numbers:</strong> Economic indicators, financial data, and market trends
-              </div>
-            </div>
-            <div class="hint-step">
-              <picture>
-                <source srcset="images/media.webp" type="image/webp">
-                <img src="images/media.webp" alt="Media" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
-              </picture>
-               <div>
-                 <strong>Media:</strong> Curated books, films, and podcasts worth your time
-               </div>
-              </div>
-              <div class="hint-step">
-               <picture>
-                <source srcset="images/read.webp" type="image/webp">
-                <img src="images/read.webp" alt="Journal" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
-              </picture>
-               <div>
-                 <strong>Journal:</strong> Independent commentary and personal insights
-               </div>
-              </div>
-              <div class="hint-step">
-               <picture>
-                 <source srcset="images/apple-touch-icon.webp" type="image/webp">
-                 <img src="images/apple-touch-icon.webp" alt="Add to Home Screen" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
-               </picture>
-              <div>
-                <strong>Add to Home Screen:</strong> Tap the share icon and select "Add to Home Screen" for quick access
-              </div>
-            </div>
-          </div>
-          <button class="hint-close" onclick="closeHints()">Got it, thanks!</button>
-          </div>
-          </div>
 
-          <!-- Call to Action Button -->
-    <section class="cta-container" id="cta-section" aria-label="Call to action">
-      <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
-      <div class="cta-button">
-        <i data-lucide="newspaper"></i>
-        <div class="cta-text-wrapper">
-          <span>Skip the Sauces, Get the Facts</span>
-          <p class="cta-subtext">You could go to NPR and learn about sauces and captions or you could come here and read about things that actually affect your life.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer id="social-footer"><div class="social-links"></div></footer>
@@ -438,38 +304,16 @@
   <script src="js/socials.js" defer></script>
   <script src="js/posts-loader.js" defer></script>
   <script>
-    // First-time visitor hints
-    function showHints() {
-      document.getElementById('visitor-hints').style.display = 'block';
-    }
-
+    // Helper functions for hints (called from nav modal)
     function closeHints() {
-      document.getElementById('visitor-hints').style.display = 'none';
-      localStorage.setItem('hintsShown', 'true');
+      const visitorHints = document.getElementById('visitor-hints');
+      if (visitorHints) {
+        visitorHints.style.display = 'none';
+        visitorHints.classList.remove('active');
+        localStorage.setItem('hintsShown', 'true');
+      }
     }
-
-    // Show cache notice and hints for appropriate visitors
-    document.addEventListener('DOMContentLoaded', () => {
-      // Show hints for first-time visitors
-      if (!localStorage.getItem('hintsShown')) {
-        setTimeout(showHints, 6000); // Show after logo animation completes
-      }
-
-      // Show CTA for first-time visitors
-      const ctaSection = document.getElementById('cta-section');
-      if (ctaSection && localStorage.getItem('ctaDismissed')) {
-        ctaSection.style.display = 'none';
-      }
-
-      const ctaCloseBtn = ctaSection ? ctaSection.querySelector('.cta-close-btn') : null;
-      if (ctaCloseBtn) {
-        ctaCloseBtn.addEventListener('click', () => {
-          ctaSection.style.display = 'none';
-          localStorage.setItem('ctaDismissed', 'true');
-        });
-      }
-    });
-    </script>
+  </script>
 
 
   </body>

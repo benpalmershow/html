@@ -146,6 +146,17 @@
       }
     });
   </script>
+  <script>
+    // Helper functions for hints (called from nav modal)
+    function closeHints() {
+      const visitorHints = document.getElementById('visitor-hints');
+      if (visitorHints) {
+        visitorHints.style.display = 'none';
+        visitorHints.classList.remove('active');
+        localStorage.setItem('hintsShown', 'true');
+      }
+    }
+  </script>
   <script src="js/nav.js" defer></script>
   <script src="js/journal-feed.js" defer></script>
   <script src="js/socials.js" defer></script>

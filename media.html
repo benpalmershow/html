@@ -53,6 +53,7 @@
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
+  <link rel="preload" href="css/body.css" as="style">
 
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -60,11 +61,11 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Font Awesome -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome (async) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
   
   <!-- Font Display Optimization -->
   <style>
@@ -76,6 +77,10 @@
       font-family: 'FontAwesome Brands';
       font-display: swap;
     }
+    /* Critical LCP styles - first media card */
+    .media-card { max-width: 200px; width: 100%; border-radius: 0.5rem; }
+    .media-cover-container { position: relative; width: 100%; height: 300px; overflow: hidden; border-radius: 0.5rem; }
+    .media-cover { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0.5rem; }
   </style>
 
   <script>
@@ -91,10 +96,11 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/media.css">
+  <!-- Defer non-critical media styles -->
+  <link rel="stylesheet" href="css/media.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/media.css"></noscript>
 
   <title>Media - Howdy, Stranger</title>
 
@@ -180,14 +186,26 @@
 
   <footer id="social-footer"><div class="social-links"></div></footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      lucide.createIcons();
-    });
-  </script>
   <script src="js/nav.js" defer></script>
-  <script src="js/media.js?v=20250723" defer></script>
+  <script src="js/media.js" defer></script>
   <script src="js/socials.js" defer></script>
+  
+  <!-- Load Lucide and initialize after interactive -->
+  <script>
+    if (document.readyState === 'loading') {
+      window.addEventListener('load', function () {
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
+        script.onload = function () { lucide.createIcons(); };
+        document.body.appendChild(script);
+      });
+    } else {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
+      script.onload = function () { lucide.createIcons(); };
+      document.body.appendChild(script);
+    }
+  </script>
 
 </body>
 

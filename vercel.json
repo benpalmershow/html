@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     },
@@ -14,7 +14,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
+          "value": "public, max-age=604800, must-revalidate"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
+          "value": "public, max-age=604800, must-revalidate"
         }
       ]
     },
@@ -32,7 +32,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
+          "value": "public, max-age=3600, must-revalidate"
         }
       ]
     },
@@ -41,7 +41,16 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, immutable"
+          "value": "public, max-age=2592000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/site.webmanifest",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, immutable"
         }
       ]
     }

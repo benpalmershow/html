@@ -79,8 +79,24 @@
       }
     }
 
+    // Generate preview text from summary (truncate to reasonable length)
+    function generatePreviewText(summary) {
+      if (!summary) return 'Click to read more...';
+      let previewText = summary.trim().replace(/\s+/g, ' ');
+      if (previewText.length > 200) {
+        previewText = previewText.substring(0, 200).trim();
+        const lastSpace = previewText.lastIndexOf(' ');
+        if (lastSpace > 150) {
+          previewText = previewText.substring(0, lastSpace);
+        }
+        previewText += '...';
+      }
+      return previewText;
+    }
+
     // Render article card (accordion style)
     function renderArticleCard(article) {
+    const previewText = generatePreviewText(article.summary);
 
     return `
     <div class="accordion-card" data-category="${article.category}">
@@ -104,7 +120,7 @@
       <time class="accordion-expanded-date" datetime="${article.date}">${formatDate(article.date)}</time>
       </div>
         <div class="accordion-full-preview">
-        <p>${article.summary}</p>
+        <p>${previewText}</p>
       </div>
 
       <div class="accordion-full-actions">

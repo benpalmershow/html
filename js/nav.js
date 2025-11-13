@@ -87,30 +87,6 @@
         // Cache DOM references
         const navbarElement = navbar;
 
-        // Inactivity detection
-        let inactivityTimer;
-        const inactivityDelay = 5000; // 5 seconds
-
-        function resetInactivityTimer() {
-            clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(() => {
-                navbarElement.classList.add('hidden');
-            }, inactivityDelay);
-        }
-
-        function showNav() {
-            navbarElement.classList.remove('hidden');
-            resetInactivityTimer();
-        }
-
-        // Add event listeners for activity
-        ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(event => {
-            document.addEventListener(event, showNav, true);
-        });
-
-        // Start the timer initially
-        resetInactivityTimer();
-
         // Get or create back to top button
         const backToTopBtn = document.getElementById('back-to-top') || (() => {
             const btn = document.createElement('button');
@@ -192,11 +168,11 @@
             }
 
             .floating-nav {
-                position: fixed;
+                position: sticky;
                 top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: auto;
+                inset-inline: 0;
+                margin-inline: auto;
+                width: fit-content;
                 height: var(--nav-height);
                 padding: 0 8px;
                 border-radius: 25px;

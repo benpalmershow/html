@@ -242,7 +242,7 @@
     // Setup accordion expand/collapse functionality with performance optimizations
     function setupAccordion() {
       // Use event delegation for better performance
-      const container = document.querySelector('.content');
+      const container = document.getElementById('articles-container');
       if (!container) return;
 
       // Remove existing listeners to prevent accumulation
@@ -383,5 +383,3 @@
     window.addEventListener('popstate', initRouter);
 
 })();
-
-

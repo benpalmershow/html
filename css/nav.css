@@ -351,8 +351,8 @@
 }
 
 .hint-close {
-  background: var(--color-primary, #2c5f5a);
-  color: var(--bg-primary, #fdf6e8);
+  background: var(--color-secondary, #d4822a);
+  color: var(--color-white, #ffffff);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 0.25rem;
@@ -360,10 +360,11 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-weight: 600;
 }
 
 .hint-close:hover {
-  background: var(--color-secondary, #d4822a);
+  background: var(--color-primary, #2c5f5a);
 }
 
 /* Mobile Responsive */
@@ -440,5 +441,42 @@
 
   .hint-content {
     width: 95%;
+    max-height: 85vh;
+  }
+
+  .cta-modal .cta-container {
+    width: 90vw;
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-icon-btn,
+  .hints-icon-btn {
+    display: none;
+  }
+
+  .hint-content {
+    width: 95%;
+    max-height: 90vh;
+    padding: var(--spacing-md, 1.25rem);
+  }
+
+  .hint-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .cta-modal .cta-container {
+    width: 90vw;
+    max-width: 95%;
+    padding: var(--spacing-md, 1.25rem);
+  }
+
+  .cta-text-wrapper span:first-child {
+    font-size: 1rem;
+  }
+
+  .cta-subtext {
+    font-size: 0.8rem;
   }
 }

@@ -136,7 +136,7 @@
 }
 
 .hint-close {
-  background: var(--color-primary);
+  background: var(--color-secondary);
   color: white;
   border: none;
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -149,7 +149,7 @@
 }
 
 .hint-close:hover {
-  background: var(--color-secondary);
+  background: var(--color-primary);
 }
 
 .highlight-human {

@@ -166,6 +166,7 @@
       color: var(--color-secondary);
       font-weight: 700;
     }
+
   </style>
 
   <!-- Inline CTA styles to eliminate render-blocking -->
@@ -353,20 +354,17 @@
 <body>
   <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-label="Homepage hero">
-      <header class="hero-header">
-         <picture>
-           <source srcset="images/logo-360x360.webp 360w, images/logo.webp 1024w" type="image/webp" sizes="(max-width: 768px) 32vw, 360px">
-           <img src="images/logo-360x360.webp" alt="Howdy Stranger Logo - Independent Commentary & Economic Insight" class="hero-logo" loading="eager" fetchpriority="high" decoding="async" width="360" height="360">
-         </picture>
-         <p class="hero-subtitle"><span class="highlight-human">Human</span>‑curated content, independent commentary, news,
-         and economic insight.</p>
-       </header>
+    <!-- Announcements Section -->
+    <div class="page-title" aria-label="Page title"><picture><source srcset="images/announcements.webp" type="image/webp"><img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20" loading="lazy"></picture>Announcements</div>
+    <section class="announcements" aria-label="Latest announcements">
+    <div class="announcements-container" id="announcements-container">
+       <div class="loading-skeleton"></div>
+       <div class="loading-skeleton"></div>
+     </div>
+    </section>
 
-
-
-      <!-- First-time visitor hints -->
-      <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
+    <!-- First-time visitor hints -->
+    <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
         <div class="hint-overlay"></div>
         <div class="hint-content" aria-describedby="hint-title">
           <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
@@ -412,11 +410,10 @@
             </div>
           </div>
           <button class="hint-close" onclick="closeHints()">Got it, thanks!</button>
-        </div>
-      </div>
-    </section>
+          </div>
+          </div>
 
-    <!-- Call to Action Button -->
+          <!-- Call to Action Button -->
     <section class="cta-container" id="cta-section" aria-label="Call to action">
       <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
       <div class="cta-button">
@@ -427,15 +424,6 @@
         </div>
       </div>
     </section>
- 
-    <!-- Announcements Section -->
-    <div class="page-title" aria-label="Page title"><picture><source srcset="images/announcements.webp" type="image/webp"><img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20" loading="lazy"></picture>Announcements</div>
-     <section class="announcements" aria-label="Latest announcements">
-     <div class="announcements-container" id="announcements-container">
-        <div class="loading-skeleton"></div>
-        <div class="loading-skeleton"></div>
-      </div>
-     </section>
   </main>
 
   <footer id="social-footer"><div class="social-links"></div></footer>

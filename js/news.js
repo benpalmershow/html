@@ -174,6 +174,14 @@
     });
 
     const backButton = document.querySelector('.back-button');
+    
+    // Make back button toggle back to feed
+    backButton.onclick = (e) => {
+      e.preventDefault();
+      feedView.style.display = 'block';
+      articleView.style.display = 'none';
+    };
+    
     let metaEl = backButton.nextElementSibling;
     if (metaEl && metaEl.classList.contains('article-meta-header')) {
     metaEl.remove();
@@ -237,7 +245,7 @@
 
       // Setup accordion functionality
       setupAccordion();
-    }
+      }
 
     // Setup accordion expand/collapse functionality with performance optimizations
     function setupAccordion() {

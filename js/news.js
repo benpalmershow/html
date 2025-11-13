@@ -138,11 +138,8 @@
       });
 
       const backButton = document.querySelector('.back-button');
-      backButton.onclick = (e) => {
-        e.preventDefault();
-        feedView.style.display = 'block';
-        articleView.style.display = 'none';
-        initFilters();
+      backButton.onclick = () => {
+        window.history.back();
       };
       
       let metaEl = backButton.nextElementSibling;

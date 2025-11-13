@@ -142,6 +142,7 @@
         e.preventDefault();
         feedView.style.display = 'block';
         articleView.style.display = 'none';
+        initFilters();
       };
       
       let metaEl = backButton.nextElementSibling;

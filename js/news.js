@@ -63,7 +63,7 @@
     // Load article from markdown file
     async function loadArticle(filename) {
       try {
-        const response = await fetch(`article/${filename}.md`);
+        const response = await fetch(`/article/${filename}.md`);
         if (!response.ok) throw new Error('Article not found');
 
         const markdown = await response.text();

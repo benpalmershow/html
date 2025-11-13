@@ -63,7 +63,8 @@
     // Load article from markdown file
     async function loadArticle(filename) {
       try {
-        const response = await fetch(`article/${filename}.md`);
+        const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+        const response = await fetch(`${basePath}/article/${filename}.md`);
         if (!response.ok) throw new Error('Article not found');
 
         const markdown = await response.text();
@@ -108,7 +109,7 @@
       </div>
 
       <div class="accordion-full-actions">
-      <a href="?article=${article.id}" class="read-full-btn primary">
+       <a href="news.html?article=${article.id}" class="read-full-btn primary">
           <span>Read Full Article</span>
             <i data-lucide="arrow-right"></i>
           </a>

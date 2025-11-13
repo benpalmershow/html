@@ -93,16 +93,18 @@
       src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
       font-weight: 900;
       font-display: swap;
+      size-adjust: 95%;
     }
     @font-face {
       font-family: 'FontAwesome Brands';
       src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
       font-weight: 400;
       font-display: swap;
+      size-adjust: 95%;
     }
     /* Critical LCP styles - first media card */
-    .media-card { max-width: 200px; width: 100%; border-radius: 0.5rem; }
-    .media-cover-container { position: relative; width: 100%; height: 300px; overflow: hidden; border-radius: 0.5rem; }
+    .media-card { max-width: 200px; width: 100%; border-radius: 0.5rem; contain: layout; }
+    .media-cover-container { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 0.5rem; contain: layout; }
     .media-cover { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0.5rem; }
   </style>
 
@@ -218,20 +220,34 @@
     }
   </script>
   
-  <!-- Load Lucide and initialize after interactive -->
+  <!-- Load Lucide and initialize after LCP to avoid CLS -->
   <script>
-    if (document.readyState === 'loading') {
-      window.addEventListener('load', function () {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
-        script.onload = function () { lucide.createIcons(); };
-        document.body.appendChild(script);
-      });
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
-      script.onload = function () { lucide.createIcons(); };
-      document.body.appendChild(script);
+    // Wait for LCP to complete (roughly 2.5 seconds after load) before loading Lucide
+    if ('PerformanceObserver' in window) {
+      try {
+        const observer = new PerformanceObserver((list) => {
+          const lastEntry = list.getEntries()[list.getEntries().length - 1];
+          if (lastEntry.name === 'largest-contentful-paint') {
+            // Load Lucide ~500ms after LCP to avoid CLS
+            setTimeout(() => {
+              const script = document.createElement('script');
+              script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
+              script.onload = function () { if (window.lucide) lucide.createIcons(); };
+              document.body.appendChild(script);
+            }, 500);
+            observer.disconnect();
+          }
+        });
+        observer.observe({ entryTypes: ['largest-contentful-paint'] });
+      } catch (e) {
+        // Fallback if observer fails
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
+          script.onload = function () { if (window.lucide) lucide.createIcons(); };
+          document.body.appendChild(script);
+        }, 3000);
+      }
     }
   </script>
 

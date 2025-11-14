@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="nav-right-section">
         <!-- Compact CTA Button -->
         <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
-          <i data-lucide="newspaper"></i>
+          <i data-lucide="newspaper" style="width: 1.2rem; height: 1.2rem;"></i>
         </button>
         <!-- Compact Hints Button -->
         <button class="hints-icon-btn" id="hints-toggle" aria-label="Show welcome hints" title="Welcome guide">
-          <i data-lucide="help-circle"></i>
+          <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
         </button>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="cta-modal-overlay"></div>
       <section class="cta-container" aria-label="Call to action">
         <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
-        <div class="cta-button">
-          <i data-lucide="newspaper"></i>
+         <div class="cta-button">
+           <i data-lucide="newspaper" style="width: 2rem; height: 2rem;"></i>
           <div class="cta-text-wrapper">
             <span>Skip the Sauces, Get the Facts</span>
             <p class="cta-subtext">You could go to NPR and learn about sauces and captions or you could come here and read about things that actually affect your life.</p>

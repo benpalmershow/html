@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Prevent Caching -->
@@ -16,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
     <link rel="manifest" href="site.webmanifest">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <meta name="theme-color" content="#2C5F5A">
+    <meta name="theme-color" content="#1a1f1e">
 
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -36,10 +44,10 @@
          document.head.appendChild(script);
        }
      </script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <!-- Chart.js for interactive charts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
     <!-- Infogram Embed Script -->
     <script>

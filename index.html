@@ -67,7 +67,24 @@
     }
   </script>
 
-  <!-- External Libraries - Defer non-critical -->
+  <!-- Analytics & Monitoring (production only) -->
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script>
+    // Only load Vercel scripts in production
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  </script>
+  <script type="module" src="js/speed-insights.js"></script>
+
+  <!-- External Libraries -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <!-- Preload critical resources -->
   <link rel="preload" href="images/logo-360x360.webp" as="image" type="image/webp" fetchpriority="high">
@@ -81,92 +98,17 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Font Awesome - Load asynchronously -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="(prefers-color-scheme)" onload="this.media='all'" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
 
   <!-- Critical CSS for index page -->
-  <link rel="stylesheet" href="css/index.css?v=20251107">
-  <!-- Navigation styles -->
+  <link rel="stylesheet" href="css/body.css?v=20251107">
   <link rel="stylesheet" href="css/nav.css?v=20251107">
-  <!-- Deferred non-critical styles used by other pages -->
-  <link rel="stylesheet" href="css/body.css?v=20251107" media="print" onload="this.media='all'"  />
+  <link rel="stylesheet" href="css/index.css?v=20251107">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
-
-  <!-- Critical inline CSS for above-the-fold content -->
-  <style>
-    :root {
-      --bg-primary: #fdf6e8;
-      --bg-secondary: #f8f4e6;
-      --text-primary: #000000;
-      --text-secondary: #343a40;
-      --text-muted: #6c757d;
-      --color-secondary: #d4822a;
-      --color-primary: #2c5f5a;
-      --spacing-md: 1.25rem;
-      --spacing-lg: 2rem;
-      --spacing-xs: 0.5rem;
-    }
-    * { box-sizing: border-box; }
-    html { height: 100%; margin: 0; padding: 0; background: var(--bg-primary); }
-    body {
-      min-height: 100%;
-      margin: 0;
-      padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
-      font-family: Georgia, 'Times New Roman', serif;
-      line-height: 1.6;
-      background: var(--bg-primary);
-      color: var(--text-secondary);
-      font-size: clamp(.9rem, 2.5vw, 1rem);
-      display: flex;
-      flex-direction: column;
-    }
-    .hero {
-      min-height: 100vh;
-      padding: clamp(var(--spacing-md), 4vw, var(--spacing-lg)) var(--spacing-md);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: clamp(var(--spacing-md), 3vw, var(--spacing-lg));
-      contain: layout style;
-    }
-    .hero-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(var(--spacing-xs), 2vw, var(--spacing-md));
-    }
-    .hero-logo {
-      width: clamp(180px, 32vw, 360px);
-      height: auto;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      object-fit: cover;
-      clip-path: circle(50%);
-      filter: none;
-      user-select: none;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      content-visibility: auto;
-    }
-    .hero-subtitle {
-      margin: 0 0 var(--spacing-xs);
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      color: var(--text-secondary);
-      max-width: 60ch;
-      letter-spacing: 0.01em;
-      opacity: 0.9;
-    }
-    .highlight-human {
-      color: var(--color-secondary);
-      font-weight: 700;
-    }
-
-  </style>
 
 
 

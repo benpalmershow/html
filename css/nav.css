@@ -117,7 +117,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
+  color: var(--text-secondary, #343a40);
+  position: relative;
 }
 
 .cta-icon-btn i[data-lucide],

@@ -80,14 +80,21 @@
       document.head.appendChild(script);
     }
   </script>
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/read.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
   <script type="module" src="js/speed-insights.js"></script>
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
-  <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/nav.css">
 
   <title>Read - Howdy, Stranger</title>
 
@@ -131,49 +138,9 @@
     }]
   }
   </script>
-  <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/read.css">
-  <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-     crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <style>
-    /* Page Title Styling */
-    .page-title {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 500;
-      text-align: center;
-      margin: 0.5rem 0 1.5rem 0;
-      opacity: 0.6;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .page-icon {
-      width: 20px;
-      height: 20px;
-    }
 
-  </style>
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-  <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <meta name="theme-color" content="#2C5F5A">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script type="module" src="js/speed-insights.js"></script>
-  <title>Read - Howdy, Stranger</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </head>
 
 <body>
@@ -189,7 +156,7 @@
     </div>
   </main>
 
-  <footer id="social-footer"><div class="social-links"></div></footer>
+  <footer id="social-footer"><div class="social-links"></div><p class="footer-text">© 2025 Howdy, Stranger.</p></footer>
 
   <script src="js/nav.js" defer></script>
   <script src="js/posts-loader.js" defer></script>

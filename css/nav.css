@@ -31,10 +31,18 @@
   list-style: none;
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   gap: 2rem;
   flex: 1;
   justify-content: center;
   align-items: center;
+=======
+  gap: clamp(0.5rem, 3vw, 2rem);
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+>>>>>>> 7c574b9 (reconnect)
 }
 
 .nav-link {
@@ -98,36 +106,9 @@
    display: none;
 }
 
+/* Hamburger button - removed in favor of responsive text nav */
 .nav-toggle {
-  display: none;
-  flex-direction: column;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  gap: 5px;
-  padding: 0.5rem;
-  align-items: center;
-}
-
-.nav-toggle span {
-  width: 24px;
-  height: 2px;
-  background: var(--text-secondary, #343a40);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Mobile Menu Toggle Animation */
-.nav-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: rotate(45deg) translate(10px, 10px);
-}
-
-.nav-toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-
-.nav-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  display: none !important;
 }
 
 /* Compact Icon Buttons in Navbar */
@@ -395,6 +376,7 @@
 @media (max-width: 768px) {
   .nav-container {
     padding: 0.5rem var(--spacing-md, 1.25rem);
+<<<<<<< HEAD
   }
 
   .nav-toggle {
@@ -438,6 +420,20 @@
 
   .nav-link.active {
     background: var(--bg-secondary, #f8f4e6);
+=======
+    gap: 0.75rem;
+  }
+
+  .nav-list {
+    gap: clamp(0.25rem, 2vw, 1rem);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .nav-link {
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    padding: 0.25rem 0.5rem;
+>>>>>>> 7c574b9 (reconnect)
   }
 
   .nav-logo {
@@ -450,19 +446,34 @@
   }
 
   .nav-right-section {
+<<<<<<< HEAD
     display: none;
+=======
+    display: flex;
+    flex-shrink: 0;
+>>>>>>> 7c574b9 (reconnect)
   }
 
   .cta-icon-btn,
   .hints-icon-btn {
+<<<<<<< HEAD
     width: 40px;
     height: 40px;
+=======
+    width: 32px;
+    height: 32px;
+>>>>>>> 7c574b9 (reconnect)
   }
 
   .cta-icon-btn i[data-lucide],
   .hints-icon-btn i[data-lucide] {
+<<<<<<< HEAD
     width: 1.4rem;
     height: 1.4rem;
+=======
+    width: 1rem;
+    height: 1rem;
+>>>>>>> 7c574b9 (reconnect)
   }
 
   .hint-content {
@@ -477,11 +488,14 @@
 }
 
 @media (max-width: 480px) {
+<<<<<<< HEAD
   .cta-icon-btn,
   .hints-icon-btn {
     display: none;
   }
 
+=======
+>>>>>>> 7c574b9 (reconnect)
   .hint-content {
     width: 95%;
     max-height: 90vh;

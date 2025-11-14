@@ -33,11 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
         </button>
       </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
     <!-- Call to Action Section (modal) -->
     <div class="cta-modal" id="cta-modal" aria-hidden="true">
@@ -116,25 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   initializeLucideIcons();
-
-  // Mobile menu toggle
-  const toggle = document.getElementById('nav-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      const navList = document.querySelector('.nav-list');
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !isOpen);
-      navList.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        document.querySelector('.nav-list').classList.remove('active');
-      });
-    });
-  }
 
   // CTA Modal toggle
   const ctaToggle = document.getElementById('cta-toggle');

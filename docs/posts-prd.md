@@ -506,6 +506,19 @@ Financial indicator posts benefit from inline sparkline charts that show trend c
 - Space allows without breaking layout on mobile
 - Data is simple enough to render clearly in compact format
 
+**Chart Inclusion Rule:**
+Always include a chart for single-indicator financial posts with 6+ months of historical data. Examples:
+- **10-Year Treasury Yield**: Charts last 8 months (Mar-Nov) showing upward/downward trend
+- **NFIB Small Business Optimism Index**: Charts last 8 months showing threshold (100) crossing
+- **Consumer Sentiment**: Charts multi-month decline trend with context
+- **Manufacturing PMI**: Charts trend relative to 50-point expansion threshold
+
+**Do NOT include charts for:**
+- Posts with only 1-2 months of data (insufficient trend)
+- Multi-indicator posts mixing different scales
+- Weekly/daily data (too volatile, use link to financials.html instead)
+- Real-time prediction markets (odds change constantly)
+
 ### Chart Implementation
 
 #### SVG Sparklines (Recommended)

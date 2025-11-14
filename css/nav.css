@@ -211,10 +211,10 @@
 }
 
 .cta-text-wrapper span:first-child {
-  font-family: 'Georgia', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary, #000000);
+   font-family: 'Georgia', serif;
+   font-size: 1rem;
+   font-weight: 600;
+   color: var(--text-primary, #000000);
 }
 
 .cta-subtext {
@@ -277,34 +277,34 @@
 }
 
 .hint-content {
-  position: fixed;
-  background: var(--bg-primary, #fdf6e8);
-  padding: var(--spacing-lg, 2rem);
-  border-radius: 0.5rem;
-  max-width: 500px;
-  width: calc(100% - 2rem);
-  max-height: 80vh;
-  overflow-y: auto;
-  z-index: 2001;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  top: auto;
-  right: 1rem;
-  bottom: auto;
-  left: auto;
+   position: fixed;
+   background: var(--bg-primary, #fdf6e8);
+   padding: var(--spacing-md, 1.25rem);
+   border-radius: 0.5rem;
+   max-width: 500px;
+   width: calc(100% - 2rem);
+   max-height: 80vh;
+   overflow-y: auto;
+   z-index: 2001;
+   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+   top: auto;
+   right: 1rem;
+   bottom: auto;
+   left: auto;
 }
 
 .hint-content h3 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-md, 1.25rem);
-  font-size: 1.5rem;
-  color: var(--text-primary, #000000);
+   margin-top: 0;
+   margin-bottom: var(--spacing-md, 1.25rem);
+   font-size: 1rem;
+   color: var(--text-primary, #000000);
 }
 
 .hint-steps {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md, 1.25rem);
-  margin-bottom: var(--spacing-lg, 2rem);
+   display: flex;
+   flex-direction: column;
+   gap: var(--spacing-md, 1.25rem);
+   margin-bottom: var(--spacing-md, 1.25rem);
 }
 
 .hint-step {
@@ -320,11 +320,13 @@
 }
 
 .hint-step strong {
-  color: var(--text-primary, #000000);
+   color: var(--text-primary, #000000);
+   font-size: 0.9rem;
 }
 
 .hint-step div {
-  color: var(--text-secondary, #343a40);
+   color: var(--text-secondary, #343a40);
+   font-size: 0.85rem;
 }
 
 .hint-close {

@@ -53,11 +53,11 @@
 }
 
 .collapsible-header :is(h1, h2) {
-    font-size: 1.8rem;
-    color: var(--logo-orange);
-    margin: 0;
-    line-height: 1.2
-}
+     font-size: 1.8rem;
+     color: var(--color-secondary-dark);
+     margin: 0;
+     line-height: 1.2
+ }
 
 .collapse-toggle {
     font-size: 1.5rem;
@@ -163,15 +163,15 @@
 }
 
 .category-title {
-    font-size: clamp(1.2rem, 5vw, 1.6rem);
-    color: var(--logo-orange);
-    margin-bottom: 8px;
-    border-bottom: 2px solid var(--logo-teal);
-    padding-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px
-}
+     font-size: clamp(1.2rem, 5vw, 1.6rem);
+     color: var(--color-secondary-dark);
+     margin-bottom: 8px;
+     border-bottom: 2px solid var(--logo-teal);
+     padding-bottom: 8px;
+     display: flex;
+     align-items: center;
+     gap: 10px
+ }
 
 .category-icon {
     display: inline-flex;
@@ -402,18 +402,18 @@
 }
 
 .chart-overlay-close {
-    background: none;
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--text-muted);
-    transition: all 0.2s ease;
-}
+     background: none;
+     border: none;
+     width: 28px;
+     height: 28px;
+     border-radius: 6px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+     color: var(--text-secondary);
+     transition: all 0.2s ease;
+ }
 
 .chart-overlay-close:hover {
     background: var(--bg-secondary);
@@ -482,18 +482,18 @@
 
 /* Enhanced icon styling for info and chart icons */
 :is(.info-icon, .chart-icon) {
-    transition: var(--transition-hover);
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px !important;
-    height: 20px !important;
-    margin-left: 6px !important;
-    color: var(--text-muted) !important;
-}
+     transition: var(--transition-hover);
+     cursor: pointer;
+     padding: 4px;
+     border-radius: 6px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     width: 20px !important;
+     height: 20px !important;
+     margin-left: 6px !important;
+     color: var(--text-secondary) !important;
+ }
 
 :is(.info-icon, .chart-icon):hover {
     background: var(--bg-secondary);

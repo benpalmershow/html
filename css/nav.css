@@ -226,23 +226,23 @@
 }
 
 .cta-close-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: var(--text-muted, #6c757d);
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 50%;
-  transition: background-color 0.2s, color 0.2s;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   position: absolute;
+   top: 0.5rem;
+   right: 0.5rem;
+   background: transparent;
+   border: none;
+   font-size: 1.5rem;
+   line-height: 1;
+   color: var(--text-secondary, #343a40);
+   cursor: pointer;
+   padding: 0.25rem 0.5rem;
+   border-radius: 50%;
+   transition: background-color 0.2s, color 0.2s;
+   width: 32px;
+   height: 32px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .cta-close-btn:hover {
@@ -366,6 +366,51 @@
    .hints-icon-btn:hover {
       background: var(--bg-secondary, #252b2a);
       border-color: var(--accent-secondary, #d4822a);
+   }
+
+   /* CTA Modal dark mode text fixes */
+   .cta-modal .cta-container {
+      background: var(--bg-secondary);
+      border-color: var(--border-color);
+   }
+
+   .cta-button {
+      color: var(--text-secondary);
+   }
+
+   .cta-text-wrapper span:first-child {
+      color: var(--text-primary);
+   }
+
+   .cta-subtext {
+      color: var(--text-secondary);
+   }
+
+   /* Hint modal dark mode text fixes */
+   .hint-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+   }
+
+   .hint-content h3 {
+      color: var(--text-primary);
+   }
+
+   .hint-step strong {
+      color: var(--text-primary);
+   }
+
+   .hint-step div {
+      color: var(--text-secondary);
+   }
+
+   .hint-close {
+      background: var(--accent-secondary);
+      color: var(--bg-primary);
+   }
+
+   .hint-close:hover {
+      background: var(--accent-primary);
    }
 }
 

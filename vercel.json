@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "/:path(.*\\.(webp|jpg|png|gif|svg)$)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/:path(.*\\.js)$",
       "headers": [
         {

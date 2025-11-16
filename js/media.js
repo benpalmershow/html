@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const coverImg = document.createElement('img');
         coverImg.className = 'media-cover';
         coverImg.width = 300;
-        coverImg.height = 200;
+        coverImg.height = 300;
         if (isFirst) {
             coverImg.setAttribute('fetchpriority', 'high');
         }
@@ -174,16 +174,19 @@ document.addEventListener('DOMContentLoaded', function() {
         coverImg.alt = altText;
 
         // Load the actual image immediately
+        const placeholderSvg = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222C5F5A%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ENo Image%3C/text%3E%3C/svg%3E';
+        
         if (item.cover) {
             coverImg.src = item.cover;
             coverImg.onload = function() {
                 coverImg.classList.add('loaded');
             };
             coverImg.onerror = function() {
-                coverImg.src = 'https://via.placeholder.com/300x200/2C5F5A/FFFFFF?text=No+Image';
+                coverImg.src = placeholderSvg;
+                coverImg.classList.add('loaded');
             };
         } else {
-            coverImg.src = 'https://via.placeholder.com/300x200/2C5F5A/FFFFFF?text=No+Image';
+            coverImg.src = placeholderSvg;
             coverImg.classList.add('loaded');
         }
 

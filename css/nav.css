@@ -26,6 +26,9 @@
    gap: 0.5rem;
    margin-left: auto;
    flex-shrink: 0;
+   pointer-events: auto;
+   position: relative;
+   z-index: 1001;
 }
 
 .nav-list {
@@ -127,6 +130,8 @@
    transition: color 0.2s ease;
    color: var(--text-secondary, #343a40);
    position: relative;
+   pointer-events: auto;
+   touch-action: manipulation;
 }
 
 .cta-icon-btn i[data-lucide],

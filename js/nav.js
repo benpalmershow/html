@@ -201,36 +201,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', positionHints);
   }
 
-  // Dark mode toggle
-  const darkModeToggle = document.getElementById('dark-mode-toggle');
-  if (darkModeToggle) {
-    // Check for saved preference or system preference
-    const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
-                       (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark-mode');
-      // Update icon to sun if dark mode is enabled
-      const icon = darkModeToggle.querySelector('i[data-lucide]');
-      if (icon) {
-        icon.setAttribute('data-lucide', 'sun');
-      }
-    }
-
-    darkModeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark-mode');
-      const isDark = document.documentElement.classList.contains('dark-mode');
-      localStorage.setItem('darkMode', isDark);
-      
-      // Update the icon
-      const icon = darkModeToggle.querySelector('i[data-lucide]');
-      if (icon) {
-        icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-        // Reinitialize Lucide icons to render the new icon
-        if (window.lucide && typeof lucide.createIcons === 'function') {
-          lucide.createIcons();
-        }
-      }
-    });
-  }
+  // Dark mode toggle is now handled by dark-mode.js to ensure it works on all pages
 });

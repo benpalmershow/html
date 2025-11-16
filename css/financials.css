@@ -131,12 +131,12 @@
 }
 
 .filter-btn.active {
-    padding: 0.6rem 1.2rem;
-    color: white;
-    font-weight: 600;
-    transform: translateY(-1px);
-    background: var(--logo-teal);
-    box-shadow: 0 2px 8px rgba(44, 95, 90, 0.3);
+     padding: 0.5rem 1rem;
+     color: white;
+     font-weight: 600;
+     transform: translateY(-1px);
+     background: var(--logo-teal);
+     box-shadow: 0 2px 8px rgba(44, 95, 90, 0.3);
 }
 
 .filter-btn.active .filter-text {
@@ -149,13 +149,14 @@
 }
 
 .category {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease
-}
+     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%);
+     border-radius: 15px;
+     padding: clamp(1rem, 3vw, 1.5rem);
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     transition: transform 0.3s ease;
+     word-break: break-word
+ }
 
 .category:hover {
     transform: translateY(-5px);
@@ -202,24 +203,24 @@
 }
 
 .indicators-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: flex-start
-}
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+     gap: 1rem;
+     align-items: start
+ }
 
 .indicator {
-    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-radius: 12px;
-    padding: 1rem;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: var(--transition-hover);
-    position: relative;
-    flex: 1 1 100%;
-    min-width: 250px;
-    max-width: 300px
-}
+     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
+     border-radius: 12px;
+     padding: 1rem;
+     border: 1px solid var(--border-color);
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+     transition: var(--transition-hover);
+     position: relative;
+     flex: 0 1 calc(50% - 0.5rem);
+     min-width: 0;
+     max-width: none
+ }
 
 .indicator:hover {
     transform: translateY(-3px);
@@ -555,11 +556,14 @@
         padding: var(--mobile-padding);
     }
 
+    .indicators-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
+    }
+
     .indicator {
-        flex: 1 1 100%;
-        min-width: 100%;
-        max-width: 100%;
-        padding: var(--spacing-sm);
+        padding: 0.75rem;
+        border-radius: 10px;
     }
 
     .category-title {
@@ -580,27 +584,50 @@
     .month-value {
         font-size: 0.9rem;
     }
+
+    .data-row {
+        padding: 4px 0;
+    }
+
+    .change-indicator {
+        font-size: 0.8rem;
+        padding: 2px 4px;
+    }
 }
 
 @media (max-width: 480px) {
-    .header h1 {
-        font-size: 1.75rem;
-    }
+     .header h1 {
+         font-size: 1.75rem;
+     }
 
-    .collapsible-header :is(h1, h2) {
-        font-size: 1.3rem;
-    }
+     .collapsible-header :is(h1, h2) {
+         font-size: 1.3rem;
+     }
 
-    .indicator {
-        padding: var(--spacing-xs);
-    }
+     .indicators-grid {
+         grid-template-columns: 1fr;
+         gap: 0.5rem;
+     }
 
-    .filter-btn {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.7rem;
-    }
+     .indicator {
+         padding: 0.75rem;
+     }
 
-    .category {
-        padding: var(--spacing-sm);
-    }
-}
+     .filter-btn {
+         padding: 0.4rem 0.6rem;
+         font-size: 0.7rem;
+     }
+
+     .category {
+         padding: 1rem;
+     }
+
+     .indicator-name {
+         font-size: 0.95rem;
+     }
+
+     .month-label,
+     .month-value {
+         font-size: 0.85rem;
+     }
+ }

@@ -674,7 +674,209 @@ More post content...
 - Set Y-axis min/max with 5-10% padding for context
 - Test on mobile (responsive: true in Chart.js options)
 - Verify data accuracy against source JSON
-- Register post with file reference and timestamp in posts.json</content>
+- Register post with file reference and timestamp in posts.json
+
+### Embedded Chart Examples
+
+#### Example 1: Manufacturing PMI Trend
+
+**Post File Content:**
+```markdown
+---
+date: 2025-11-16T14:00:00
+---
+
+## Manufacturing PMI Rises Above 50
+
+Manufacturing activity expanded in November with PMI at 51.2, indicating continued growth in the sector. Strength in new orders and production offset employment declines.
+
+**Key Metrics:**
+- **November PMI**: 51.2 (above 50 expansion threshold)
+- **3-Month Trend**: Rising from 49.8 in September
+- **Context**: Sustained expansion after crossing back above 50 in October
+
+<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Business%20Indicators'">
+  <canvas id="manufacturing-pmi-chart" width="400" height="200"></canvas>
+</div>
+
+<script>
+const ctx = document.getElementById('manufacturing-pmi-chart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
+    datasets: [{
+      label: 'Manufacturing PMI',
+      data: [50.3, 50.8, 51.2, 50.9, 50.5, 49.9, 49.8, 50.6, 51.2],
+      borderColor: '#2C5F5A',
+      backgroundColor: 'rgba(44, 95, 90, 0.1)',
+      tension: 0.4,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { 
+      legend: { display: true },
+      annotation: {
+        annotations: {
+          expansion: {
+            type: 'line',
+            xMin: 0,
+            xMax: 8,
+            yMin: 50,
+            yMax: 50,
+            borderColor: 'rgba(44, 95, 90, 0.3)',
+            borderDash: [5, 5]
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 48,
+        max: 52,
+        ticks: {
+          callback: function(value) { return value.toFixed(1); }
+        }
+      }
+    }
+  }
+});
+</script>
+
+[View all Business Indicators](financials.html?filter=Business%20Indicators)
+```
+
+#### Example 2: Consumer Sentiment Decline
+
+**Post File Content:**
+```markdown
+---
+date: 2025-11-15T14:00:00
+---
+
+## Consumer Sentiment Index Hits 6-Month Low
+
+The Consumer Sentiment Index fell to 54.3 in November, the lowest level since May, as consumers express heightened concerns about inflation and employment outlook.
+
+**Trend Analysis:**
+- **November**: 54.3 (−2.8 from October)
+- **6-Month Change**: −3.9 points (from 58.2 in May)
+- **Interpretation**: Sustained deterioration in consumer confidence despite stable economic conditions
+
+<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Consumer%20Indicators'">
+  <canvas id="consumer-sentiment-chart" width="400" height="200"></canvas>
+</div>
+
+<script>
+const ctx = document.getElementById('consumer-sentiment-chart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['May', 'June', 'July', 'August', 'September', 'October', 'November'],
+    datasets: [{
+      label: 'Consumer Sentiment Index',
+      data: [58.2, 57.1, 56.5, 55.9, 57.1, 57.1, 54.3],
+      borderColor: '#2C5F5A',
+      backgroundColor: 'rgba(44, 95, 90, 0.1)',
+      tension: 0.4,
+      fill: true,
+      pointRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: true } },
+    scales: {
+      y: {
+        min: 52,
+        max: 60,
+        ticks: {
+          callback: function(value) { return value.toFixed(0); }
+        }
+      }
+    }
+  }
+});
+</script>
+
+[View all Consumer Indicators](financials.html?filter=Consumer%20Indicators)
+```
+
+#### Example 3: Employment Growth Acceleration
+
+**Post File Content:**
+```markdown
+---
+date: 2025-11-14T14:00:00
+---
+
+## Nonfarm Payroll Growth Accelerates to 227K in November
+
+Job creation rebounded in November with 227,000 new nonfarm payroll positions added, the strongest month since August. Wage growth remained solid at 0.3% MoM.
+
+**Employment Snapshot:**
+- **November Jobs Added**: 227,000 (vs. 150,000 estimate)
+- **Unemployment Rate**: 4.1% (unchanged)
+- **Wage Growth**: 0.3% MoM, 4.2% YoY
+
+<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Employment%20Indicators'">
+  <canvas id="nonfarm-payroll-chart" width="400" height="200"></canvas>
+</div>
+
+<script>
+const ctx = document.getElementById('nonfarm-payroll-chart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
+    datasets: [{
+      label: 'Nonfarm Payroll (thousands)',
+      data: [175, 203, 181, 192, 158, 172, 145, 185, 227],
+      borderColor: '#2C5F5A',
+      backgroundColor: 'rgba(44, 95, 90, 0.1)',
+      tension: 0.4,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: true } },
+    scales: {
+      y: {
+        min: 100,
+        max: 250,
+        ticks: {
+          callback: function(value) { return value.toFixed(0) + 'K'; }
+        }
+      }
+    }
+  }
+});
+</script>
+
+[View all Employment Indicators](financials.html?filter=Employment%20Indicators)
+```
+
+### Chart Implementation Checklist
+
+Before publishing any post with a chart:
+
+- [ ] Chart data verified against `financials-data.json`
+- [ ] Canvas element has unique ID (no duplicates across posts)
+- [ ] Chart uses site colors: `#2C5F5A` border, `rgba(44, 95, 90, 0.1)` fill
+- [ ] Y-axis min/max set with 5-10% padding
+- [ ] Y-axis ticks formatted appropriately (%, whole numbers, etc.)
+- [ ] Chart container is clickable with proper onclick handler
+- [ ] Post registered in `json/posts.json` with file path and date
+- [ ] Chart renders correctly on mobile (responsive: true)
+- [ ] Post contains 6+ months of data points
+- [ ] Title clearly explains trend direction (Rise, Decline, Acceleration, etc.)
+- [ ] Supporting text describes what chart shows and why it matters</content>
 </xai:function_call">The Posts PRD has been created at `/Users/benjaminpalmer/TBPS/html/html/docs/posts-prd.md` with comprehensive guidelines for structure, formatting, categories, and best practices based on the existing posts pattern. This should serve as your implementation guide for improving and maintaining the posts system. Let me know if you'd like to adjust any sections or add more details. 
 
 Next post to improve? (The oldest ones like 5/24, 5/25, 5/28, 6/3, etc. appear to need similar formatting updates.) 

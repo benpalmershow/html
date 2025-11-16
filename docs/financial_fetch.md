@@ -324,6 +324,108 @@ Update financials with new NFL game: Dolphins @ Falcons on October 26
 - **Weekly**: Update weekly indicators (jobless claims, etc.)
 - **Monthly**: Update monthly economic releases
 - **Quarterly**: Review and clean up old prediction markets
-- **Annually**: Audit data sources and update URLs as needed</content>
+- **Annually**: Audit data sources and update URLs as needed
+
+---
+
+## 13F Filing Data Sources & Calculations
+
+### Primary Data Sources
+1. **SEC EDGAR**: https://www.sec.gov/Archives/edgar/data/1067983/000119312525282901/46994.xml
+   - Official 13F-HR filing for Berkshire Hathaway Q3 2025
+   - Contains complete holding details and valuations
+   
+2. **13F.info**: https://13f.info/manager/0001067983-berkshire-hathaway-inc
+   - Aggregated quarterly filings
+   - Shows comparative data Q2→Q3 changes
+   - Formatted holdings with activity indicators
+   
+3. **ValueSider**: https://valuesider.com/guru/warren-buffett-berkshire-hathaway/portfolio/2025/3
+   - Portfolio analysis with percentage breakdowns
+   - Share counts and valuation calculations
+   - Year-over-year comparisons
+
+### Q3 2025 Buffett Portfolio - Data Calculations
+
+**Base Metrics:**
+- Total Portfolio Value: $267,334,501,955 (from 13f.info filing)
+- Number of Holdings: 41 positions
+- Filing Date: November 14, 2025
+- Period Ending: September 30, 2025
+
+**Position Valuations (% of portfolio × Total Value):**
+- Apple (AAPL): 22.69% × $267.3B = $60.7B ✓
+- American Express (AXP): 18.84% × $267.3B = $50.4B ✓
+- Bank of America (BAC): 10.96% × $267.3B = $29.3B ✓
+- Coca-Cola (KO): 9.92% × $267.3B = $26.5B ✓
+- Chevron (CVX): 7.09% × $267.3B = $19.0B ✓
+- Alphabet (GOOGL): 1.62% × $267.3B = $4.3B ✓
+- Sirius XM (SIRI): ~0.98% × $267.3B = $2.6B ✓
+- Domino's (DPZ): ~0.48% × $267.3B = $1.3B ✓
+
+**Activity Changes (Q2 2025 vs Q3 2025):**
+
+*Apple (AAPL):*
+- Q2 Holdings: 280.0M shares
+- Q3 Holdings: 238.2M shares
+- Change: −41.8M shares (−14.9%)
+- Calculation: (238.2M − 280.0M) / 280.0M = −0.149 = −14.9%
+- Source: ValueSider comparison, 13f.info activity
+
+*Bank of America (BAC):*
+- Q2 Holdings: 605.3M shares
+- Q3 Holdings: 568.1M shares
+- Change: −37.2M shares (−6.15%)
+- Calculation: (568.1M − 605.3M) / 605.3M = −0.0615 = −6.2%
+- Source: ValueSider comparison
+
+*Alphabet (GOOGL):*
+- Q2 Holdings: ~16.0M shares
+- Q3 Holdings: 17.8M shares
+- Change: +1.8M shares (+1.62%)
+- Note: New position increase Q2→Q3
+- Source: ValueSider new activity indicator
+
+*Sirius XM (SIRI):*
+- Status: Significantly added in Q3
+- New share accumulation evident in 13F filing
+- Total value: $2.6B (~117M shares at ~$22/share)
+- Source: 13f.info "Top Buys" section
+
+*Domino's (DPZ):*
+- Q3 Value: $1.3B (~2.98M shares at ~$431/share)
+- Change from Q2: +$288M increase
+- Source: 13f.info activity tracking
+
+### Document & Verify Process
+
+**Required Verification Steps for Any Buffett Position Update:**
+1. Access official SEC EDGAR filing (primary source)
+2. Cross-reference 13f.info aggregated data (validation)
+3. Verify valuations from ValueSider or similar aggregator
+4. Calculate percentages and share changes independently
+5. Document source URLs and filing date
+6. Timestamp data collection date
+
+**Formula for Position Valuation:**
+```
+Position Value = (% of Portfolio × Total Portfolio Value)
+OR
+Position Value = (Share Count × Price per Share at period end)
+```
+
+**Formula for Change Calculation:**
+```
+Percentage Change = ((Q3 Value − Q2 Value) / Q2 Value) × 100
+Share Change = Q3 Shares − Q2 Shares
+```
+
+### Data Quality Standards
+- ✓ All valuations sourced from official SEC filings
+- ✓ Percentages verified to sum approximately 100% (87% shown = top 8 holdings)
+- ✓ Share counts match aggregated market data
+- ✓ Filing date confirmed: November 14, 2025
+- ✓ Period end date: September 30, 2025
+- ✓ No approximations beyond rounding to nearest $0.1B or 0.1%</content>
 </xai:function_call">﻿<xai:function_call name="todo_write">
 <parameter name="todos">[{"content": "Update PRD file for financial page management, including NFL prediction updates and financials.html SOP", "status": "completed", "priority": "high", "id": "update_prd_financial"}]

@@ -32,10 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
          <button class="hints-icon-btn" id="hints-toggle" aria-label="Show welcome hints" title="Welcome guide">
            <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
          </button>
-         <!-- Dark Mode Toggle Button -->
-         <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode" title="Dark mode">
-           <i data-lucide="moon" style="width: 1.2rem; height: 1.2rem;"></i>
-         </button>
        </div>
     </div>
     <!-- Call to Action Section (modal) -->
@@ -200,6 +196,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', positionHints);
     window.addEventListener('resize', positionHints);
   }
-
-  // Dark mode toggle is now handled by dark-mode.js to ensure it works on all pages
 });

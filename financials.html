@@ -83,7 +83,19 @@
 
             <div class="collapsible-content" id="interactive-dashboard-content">
                 <div class="filters" id="filters">
-                    <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span></button>
+                    <div class="filters-wrapper">
+                        <div class="filter-group">
+                            <button class="filter-btn filter-category-btn" id="categoryBtn">
+                                <i data-lucide="list" class="filter-icon"></i>
+                                <span class="filter-text">Filter By</span>
+                                <i data-lucide="chevron-down" class="filter-dropdown-icon"></i>
+                            </button>
+                            <div class="filter-dropdown" id="categoryDropdown">
+                                <button class="dropdown-item active" data-category="all"><i data-lucide="list"></i>All</button>
+                                <button class="dropdown-item" data-sort="latest"><i data-lucide="clock"></i>Latest</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="lastUpdated" class="last-updated"></div>

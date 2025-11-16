@@ -84,6 +84,17 @@ function extractNumericValue(value) {
     return isNaN(num) ? null : num;
 }
 
+function getLatestMonthForIndicator(indicator) {
+    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    for (let i = months.length - 1; i >= 0; i--) {
+        const month = months[i];
+        if (indicator[month] && indicator[month] !== '' && !indicator[month].startsWith('TBD')) {
+            return i; // return month index (0-11)
+        }
+    }
+    return -1; // no data found
+}
+
 function calculateMoMChange(indicator) {
     const months = ['february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
     let currentValue = null;
@@ -342,30 +353,53 @@ function setupJobsIconHandlers() {
     });
 }
 
-function renderDashboard(filterCategory = 'all') {
+function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     const categoriesContainer = document.getElementById('categories');
-    const categories = [...new Set(financialData.indices.map(item => item.category))];
+    let categories = [...new Set(financialData.indices.map(item => item.category))];
 
     let html = '';
 
-    categories.forEach(category => {
-        if (filterCategory !== 'all' && category !== filterCategory) return;
-
-        const categoryIndicators = financialData.indices.filter(item => item.category === category);
-        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
+    if (sortByLatest) {
+        // Sort all indicators by latest data and display in single "Latest Updates" section
+        const allIndicators = financialData.indices.slice(); // copy array
+        allIndicators.sort((a, b) => {
+            const aLatest = getLatestMonthForIndicator(a);
+            const bLatest = getLatestMonthForIndicator(b);
+            return bLatest - aLatest; // descending order (most recent first)
+        });
 
         html += `
-            <div class="category" data-category="${category}">
+            <div class="category" data-category="latest-updates">
                 <h2 class="category-title">
-                    <span class="category-icon">${icon}</span>
-                    <span class="category-name">${category}</span>
+                    <span class="category-icon"><i data-lucide="clock"></i></span>
+                    <span class="category-name">Latest Updates</span>
                 </h2>
                 <div class="indicators-grid">
-                    ${categoryIndicators.map(indicator => createIndicatorCard(indicator)).join('')}
+                    ${allIndicators.map(indicator => createIndicatorCard(indicator)).join('')}
                 </div>
             </div>
         `;
-    });
+    } else {
+        // Original category-based rendering
+        categories.forEach(category => {
+            if (filterCategory !== 'all' && category !== filterCategory) return;
+
+            const categoryIndicators = financialData.indices.filter(item => item.category === category);
+            const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
+
+            html += `
+                <div class="category" data-category="${category}">
+                    <h2 class="category-title">
+                        <span class="category-icon">${icon}</span>
+                        <span class="category-name">${category}</span>
+                    </h2>
+                    <div class="indicators-grid">
+                        ${categoryIndicators.map(indicator => createIndicatorCard(indicator)).join('')}
+                    </div>
+                </div>
+            `;
+        });
+    }
 
     categoriesContainer.innerHTML = html;
 
@@ -378,37 +412,71 @@ function renderDashboard(filterCategory = 'all') {
 }
 
 function setupFilters() {
-    const filtersContainer = document.getElementById('filters');
     const categories = [...new Set(financialData.indices.map(item => item.category))];
+    const categoryDropdown = document.getElementById('categoryDropdown');
 
-    filtersContainer.innerHTML = '';
-
-    const allButton = document.createElement('button');
-    allButton.className = 'filter-btn active';
-    allButton.dataset.category = 'all';
-    allButton.innerHTML = '<i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span>';
-    filtersContainer.appendChild(allButton);
-
+    // Populate category dropdown
+    categoryDropdown.innerHTML = '<button class="dropdown-item active" data-category="all"><i data-lucide="list"></i>All</button><button class="dropdown-item" data-sort="latest"><i data-lucide="clock"></i>Latest</button>';
     categories.forEach(category => {
         const button = document.createElement('button');
-        button.className = 'filter-btn';
-        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-        button.innerHTML = `<span class="filter-icon">${icon}</span><span class="filter-text">${category}</span>`;
+        button.className = 'dropdown-item';
         button.dataset.category = category;
-        filtersContainer.appendChild(button);
+        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
+        button.innerHTML = `${icon}<span>${category}</span>`;
+        categoryDropdown.appendChild(button);
     });
 
-    filtersContainer.addEventListener('click', function (e) {
-        const btn = e.target.closest('.filter-btn');
-        if (btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderDashboard(btn.dataset.category);
+    // Setup dropdown toggle functionality
+    setupDropdownToggle('categoryBtn', 'categoryDropdown');
+
+    // Setup dropdown item clicks
+    document.getElementById('categoryDropdown').addEventListener('click', function (e) {
+        const item = e.target.closest('.dropdown-item');
+        if (item) {
+            document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            
+            if (item.dataset.sort === 'latest') {
+                currentCategory = 'all';
+                renderDashboard('all', true);
+            } else {
+                currentCategory = item.dataset.category || 'all';
+                renderDashboard(currentCategory, false);
+            }
+            
+            closeAllDropdowns();
+        }
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.filter-group') && !e.target.closest('.filter-dropdown')) {
+            closeAllDropdowns();
         }
     });
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
+
+function setupDropdownToggle(btnId, dropdownId) {
+    const btn = document.getElementById(btnId);
+    const dropdown = document.getElementById(dropdownId);
+    const group = btn.closest('.filter-group');
+
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeAllDropdowns();
+        dropdown.classList.add('open');
+        group.classList.add('open');
+    });
+}
+
+function closeAllDropdowns() {
+    document.querySelectorAll('.filter-dropdown').forEach(d => d.classList.remove('open'));
+    document.querySelectorAll('.filter-group').forEach(g => g.classList.remove('open'));
+}
+
+let currentCategory = 'all';
 
 function initializeDashboard() {
     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;

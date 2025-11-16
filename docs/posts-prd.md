@@ -513,127 +513,168 @@ Always include a chart for single-indicator financial posts with 6+ months of hi
 - **Consumer Sentiment**: Charts multi-month decline trend with context
 - **Manufacturing PMI**: Charts trend relative to 50-point expansion threshold
 
-**Do NOT include charts for:**
-- Posts with only 1-2 months of data (insufficient trend)
-- Multi-indicator posts mixing different scales
-- Weekly/daily data (too volatile, use link to financials.html instead)
-- Real-time prediction markets (odds change constantly)
-
 ### Chart Implementation
 
-#### SVG Sparklines (Recommended)
+#### Chart.js Canvas Charts (Required Approach)
 
-Lightweight, responsive SVG charts that render instantly without JavaScript dependencies.
+The site uses Chart.js for financial indicator charts embedded in posts. This approach provides better rendering consistency and interactive features compared to SVG.
 
-**Usage:**
-- Plot 6-12 months of data points
-- Show expansion threshold (e.g., 100 for NFIB, 50 for PMI)
-- Use red (#ef4444) for declining indicators, green for rising
-- Max height 180px, responsive width
-- Include month labels and reference lines
+**Implementation Pattern:**
 
-**Template:**
-```html
-<svg width="100%" height="180" viewBox="0 0 300 180" style="max-width: 300px; margin: 12px 0;">
-  <defs>
-    <style>
-      .chart-line { stroke: #ef4444; stroke-width: 2; fill: none; }
-      .chart-grid { stroke: #e5e7eb; stroke-width: 0.5; }
-      .chart-text { font-size: 11px; fill: #666; }
-      .chart-threshold { stroke: #9ca3af; stroke-width: 1; stroke-dasharray: 2,2; }
-    </style>
-  </defs>
-  
-  <!-- Grid lines -->
-  <line x1="30" y1="135" x2="290" y2="135" class="chart-grid"/>
-  <line x1="30" y1="35" x2="290" y2="35" class="chart-threshold"/>
-  
-  <!-- Axis labels -->
-  <text x="5" y="140" class="chart-text">MIN</text>
-  <text x="5" y="40" class="chart-text">MAX</text>
-  
-  <!-- Data line -->
-  <polyline class="chart-line" points="30,Y1 70,Y2 110,Y3 ..."/>
-  
-  <!-- Month labels -->
-  <text x="25" y="165" class="chart-text">Jan</text>
-  ...
-</svg>
+Charts are embedded directly in post markdown files with Canvas elements and JavaScript initialization. Post files are stored in `article/posts/` with YAML frontmatter, markdown content, and embedded JavaScript.
+
+**Post File Structure:**
+```markdown
+--- 
+date: 2025-11-14T14:00:00
+---
+
+## Post Title
+
+Post content in markdown...
+
+<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Category'">
+  <canvas id="unique-chart-id" width="400" height="200"></canvas>
+</div>
+
+<script>
+const ctx = document.getElementById('unique-chart-id').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Month1', 'Month2', ...],
+    datasets: [{
+      label: 'Indicator Name',
+      data: [value1, value2, ...],
+      borderColor: '#2C5F5A',
+      backgroundColor: 'rgba(44, 95, 90, 0.1)',
+      tension: 0.4,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: true } },
+    scales: {
+      y: {
+        min: minValue,
+        max: maxValue,
+        ticks: {
+          callback: function(value) { return value.toFixed(2) + '%'; }
+        }
+      }
+    }
+  }
+});
+</script>
+
+More post content...
+
+<a href="financials.html?filter=Category"><b>View all indicators</b></a>
 ```
 
-**Styling Notes:**
-- Red (#ef4444) for negative/declining trends
-- Green (#10b981) for positive/rising trends  
-- Gray grid (#e5e7eb) for reference
-- Responsive: `width="100%"` with `max-width: 300px`
-- Margin: `12px 0` for breathing room
+**Key Requirements:**
+- Use Chart.js library (already loaded on site)
+- Canvas element must have unique `id` attribute
+- Chart container should be clickable (points to relevant financials filter)
+- Always register post in `json/posts.json` with file reference and timestamp
+- Make charts responsive with `responsive: true` and `maintainAspectRatio: false`
 
-#### Chart Data Extraction
+**Color Scheme (REQUIRED):**
+- Border color: `#2C5F5A` (primary site color)
+- Fill color: `rgba(44, 95, 90, 0.1)` (transparent primary color)
+- Do NOT use custom colors (#ef4444, #10b981, etc.)
+- Colors must work in both light and dark modes
+
+**Chart Configuration:**
+- `type: 'line'` for financial trends
+- `tension: 0.4` for smooth curves
+- `fill: true` for filled area under line
+- Y-axis should include min/max bounds with 5-10% padding
+- Y-axis ticks should format appropriately (% for rates, whole numbers for indices)
+
+**Lessons Learned:**
+
+❌ **What NOT to do:** Inline SVG charts do not render properly in the post system. Do not attempt SVG sparklines as an alternative.
+
+✓ **What works:** Canvas-based charts using Chart.js library, following existing post examples like `2025-11-12.md`.
+
+#### Data Extraction for Charts
 
 **Steps:**
 1. Review indicator data in `financials-data.json`
 2. Extract month values from applicable fields (march, april, may, etc.)
 3. Calculate Y-axis scale based on min/max values plus 10% padding
-4. Map data points to SVG coordinate space (0-300px width, 0-180px height)
-5. Include expansion/contraction threshold line (dashed gray)
+4. Format data arrays matching month labels
+5. Include appropriate y-axis tick formatting
 
-**Example - NFIB October 2025:**
-- Data: Mar 97.4, Apr 95.8, May 98.8, Jun 98.6, Jul 100.3, Aug 100.8, Sep 98.8, Oct 98.2
-- Y-axis: 90-105 range (threshold at 100)
-- Color: Red (declining trend Sep→Oct)
-- Points: Calculate proportional Y positions and create polyline
+**Example - 10-Year Treasury Yield:**
+- Data: Mar 4.28, Apr 4.28, May 4.42, Jun 4.38, Jul 4.39, Aug 4.27, Sep 4.15, Oct 4.06, Nov 4.13
+- Y-axis: min 3.9, max 4.6 (with padding)
+- Y-axis format: `.toFixed(2) + '%'`
+- Color: Site primary (#2C5F5A)
 
 #### Chart Placement
 
-- Position after description, before link
-- Separate with `<br>` above and below
-- Works alongside or without accompanying text
-- Does not interfere with mobile layout (responsive SVG)
+- Position after main description and key data points
+- Wrap in `<div class="chart-container">` for styling
+- Make container clickable to navigate to financials page with relevant filter
+- Use canvas sizing: `width="400" height="200"` as default
+- Responsive configuration allows charts to adapt to mobile screens
 
 **Example:**
 ```html
-<i data-lucide='trending-down' class='post-icon'></i> <b>Indicator Name</b><br><br>
-• <b>Month</b>: Value (change)<br><br>
-[SVG CHART HERE]<br><br>
-<a href="financials.html?filter=Category"><b>View all indicators</b></a>
+<i data-lucide='trending-up' class='post-icon'></i> <b>Treasury Yield Update</b><br><br>
+• <b>November</b>: 4.13% (up from October)<br><br>
+<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Financial%20Markets'">
+  <canvas id="treasury-chart" width="400" height="200"></canvas>
+</div>
+<script>
+// Chart.js initialization...
+</script><br><br>
+<a href="financials.html?filter=Financial%20Markets"><b>View all indicators</b></a>
 ```
 
 ### Chart Type Selection
 
 | Data Type | Chart Type | Example |
 |-----------|-----------|---------|
-| Single metric, 6-12 months | Sparkline | NFIB, PMI, Sentiment |
-| Threshold-based indicator | Sparkline + ref line | NFIB (100), Manufacturing PMI (50) |
-| Multi-series data | Skip chart, use text | Multiple indicators in one post |
-| Highly volatile data | Skip chart | Weekly claims, daily markets |
-| Real-time/daily data | Link to financials.html | Current market odds |
+| Single metric, 6+ months | Chart.js line chart | 10-Year Treasury, NFIB, Manufacturing PMI |
+| Single metric, less data | Skip chart, use text | Posts with only 1-2 months of data |
+| Multi-series data | Skip chart, use text | Multiple indicators in one post (different scales) |
+| Highly volatile data | Skip chart | Weekly claims, daily market data |
+| Real-time/daily data | Link to financials.html | Prediction markets with constantly changing odds |
 
 ### Accessibility & Performance
 
-- SVG charts are lightweight (no external dependencies)
+- Chart.js charts use canvas rendering (built on site infrastructure)
 - Alt text not needed (data explained in surrounding text)
-- Render instantly (no JavaScript required)
-- Work in both light and dark modes (use neutral grays)
-- Mobile responsive (viewBox scaling)
+- Responsive design adapts to mobile screens via Chart.js options
+- Work in both light and dark modes (use site color scheme #2C5F5A)
+- Clickable container provides accessibility and navigation
+- Minimal performance impact (Canvas rendering is optimized)
 
 ### Common Chart Mistakes to Avoid
 
 ❌ **DON'T:**
-- Embed raster image charts (use SVG instead)
-- Make charts taller than 200px (disproportionate to text)
-- Plot more than 12 months (becomes too wide on mobile)
-- Use color alone to convey meaning (add threshold lines)
-- Include charts for single-month posts (no trend to show)
-- Overcomplicate with multiple series (stay simple)
+- Use SVG sparklines (do not render properly in post system)
+- Use custom colors (must use site primary #2C5F5A)
+- Create charts without the clickable container (reduces interactivity)
+- Include charts for posts with less than 6 months of data (insufficient trend)
+- Mix multi-indicator charts with different scales (confusing visualization)
+- Forget to register the post in json/posts.json
+- Overcomplicate with multiple data series (keep to single metric)
 
 ✓ **DO:**
-- Use SVG for responsiveness and file size
-- Keep aspect ratio wide but not excessively tall
-- Label axes clearly with min/max values
-- Include threshold/expansion line where relevant
-- Use consistent red/green colors across all charts
-- Test on mobile (responsive width scaling)
-- Verify data accuracy against source JSON</content>
+- Use Chart.js canvas charts matching existing post patterns (e.g., 2025-11-12.md)
+- Always use site color scheme: border `#2C5F5A`, fill `rgba(44, 95, 90, 0.1)`
+- Make chart container clickable, pointing to relevant financials filter
+- Include 6+ months of data for meaningful trend visualization
+- Set Y-axis min/max with 5-10% padding for context
+- Test on mobile (responsive: true in Chart.js options)
+- Verify data accuracy against source JSON
+- Register post with file reference and timestamp in posts.json</content>
 </xai:function_call">The Posts PRD has been created at `/Users/benjaminpalmer/TBPS/html/html/docs/posts-prd.md` with comprehensive guidelines for structure, formatting, categories, and best practices based on the existing posts pattern. This should serve as your implementation guide for improving and maintaining the posts system. Let me know if you'd like to adjust any sections or add more details. 
 
 Next post to improve? (The oldest ones like 5/24, 5/25, 5/28, 6/3, etc. appear to need similar formatting updates.) 

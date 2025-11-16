@@ -71,8 +71,10 @@
    content: '';
    position: absolute;
    bottom: 0;
-   left: 0;
-   right: 0;
+   left: 50%;
+   transform: translateX(-50%);
+   width: fit-content;
+   padding: 0 0.75rem;
    height: 2px;
    background: var(--color-secondary, #d4822a);
 }
@@ -133,8 +135,7 @@
 
 .cta-icon-btn:hover,
 .hints-icon-btn:hover {
-  border-color: var(--color-secondary, #d4822a);
-  background: var(--bg-secondary, #f8f4e6);
+   background: var(--bg-secondary, #f8f4e6);
 }
 
 /* CTA Modal - Anchored to navbar */
@@ -351,7 +352,6 @@
    .cta-icon-btn,
    .hints-icon-btn {
       background: var(--bg-secondary, #252b2a);
-      border-color: var(--accent-secondary, #d4822a);
    }
 
    .cta-icon-btn i[data-lucide],
@@ -365,7 +365,6 @@
    .cta-icon-btn:hover,
    .hints-icon-btn:hover {
       background: var(--bg-secondary, #252b2a);
-      border-color: var(--accent-secondary, #d4822a);
    }
 
    /* CTA Modal dark mode text fixes */
@@ -425,10 +424,11 @@
     gap: clamp(0.25rem, 2vw, 1rem);
     flex: 1;
     min-width: 0;
+    flex-wrap: nowrap;
   }
 
   .nav-link {
-    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    font-size: clamp(0.8rem, 2vw, 1rem);
     padding: 0.25rem 0.5rem;
   }
 
@@ -477,10 +477,11 @@
 
   .nav-list {
     gap: clamp(0.1rem, 1.5vw, 0.5rem);
+    flex-wrap: nowrap;
   }
 
   .nav-link {
-    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     padding: 0.2rem 0.3rem;
   }
 

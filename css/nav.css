@@ -108,34 +108,37 @@
 
 /* Compact Icon Buttons in Navbar */
 .cta-icon-btn,
-.hints-icon-btn {
-  background: transparent;
-  border: 1px solid var(--border-color, #e0dcc4);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: color 0.2s ease;
-  color: var(--text-secondary, #343a40);
-  position: relative;
+.hints-icon-btn,
+.dark-mode-toggle {
+   background: transparent;
+   border: 1px solid var(--border-color, #e0dcc4);
+   border-radius: 50%;
+   width: 32px;
+   height: 32px;
+   padding: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   transition: color 0.2s ease;
+   color: var(--text-secondary, #343a40);
+   position: relative;
 }
 
 .cta-icon-btn i[data-lucide],
-.hints-icon-btn i[data-lucide] {
-  width: 1.2rem;
-  height: 1.2rem;
-  color: var(--color-secondary, #d4822a);
-  stroke: var(--color-secondary, #d4822a);
-  stroke-width: 2;
+.hints-icon-btn i[data-lucide],
+.dark-mode-toggle i[data-lucide] {
+   width: 1.2rem;
+   height: 1.2rem;
+   color: var(--color-secondary, #d4822a);
+   stroke: var(--color-secondary, #d4822a);
+   stroke-width: 2;
 }
 
 .cta-icon-btn:hover,
-.hints-icon-btn:hover {
-   background: var(--bg-secondary, #f8f4e6);
+.hints-icon-btn:hover,
+.dark-mode-toggle:hover {
+    background: var(--bg-secondary, #f8f4e6);
 }
 
 /* CTA Modal - Anchored to navbar */
@@ -349,23 +352,26 @@
 
 /* Dark mode icon visibility */
 @media (prefers-color-scheme: dark) {
-   .cta-icon-btn,
-   .hints-icon-btn {
-      background: var(--bg-secondary, #252b2a);
-   }
+    .cta-icon-btn,
+    .hints-icon-btn,
+    .dark-mode-toggle {
+       background: var(--bg-secondary, #252b2a);
+    }
 
-   .cta-icon-btn i[data-lucide],
-   .hints-icon-btn i[data-lucide],
-   .cta-button i[data-lucide],
-   .hint-step i[data-lucide] {
-      color: var(--accent-secondary, #d4822a) !important;
-      stroke: var(--accent-secondary, #d4822a) !important;
-   }
+    .cta-icon-btn i[data-lucide],
+    .hints-icon-btn i[data-lucide],
+    .dark-mode-toggle i[data-lucide],
+    .cta-button i[data-lucide],
+    .hint-step i[data-lucide] {
+       color: var(--accent-secondary, #d4822a) !important;
+       stroke: var(--accent-secondary, #d4822a) !important;
+    }
 
-   .cta-icon-btn:hover,
-   .hints-icon-btn:hover {
-      background: var(--bg-secondary, #252b2a);
-   }
+    .cta-icon-btn:hover,
+    .hints-icon-btn:hover,
+    .dark-mode-toggle:hover {
+       background: var(--bg-secondary, #252b2a);
+    }
 
    /* CTA Modal dark mode text fixes */
    .cta-modal .cta-container {
@@ -447,13 +453,15 @@
   }
 
   .cta-icon-btn,
-  .hints-icon-btn {
+  .hints-icon-btn,
+  .dark-mode-toggle {
     width: 32px;
     height: 32px;
   }
 
   .cta-icon-btn i[data-lucide],
-  .hints-icon-btn i[data-lucide] {
+  .hints-icon-btn i[data-lucide],
+  .dark-mode-toggle i[data-lucide] {
     width: 1rem;
     height: 1rem;
   }

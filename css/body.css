@@ -420,19 +420,32 @@ a:hover {
     text-decoration: underline
 }
 
+html.dark-mode {
+    --text-primary: #e1e5e9;
+    --text-secondary: #e1e5e9;
+    --text-muted: #a0a9b8;
+    --bg-primary: #1a1f1e;
+    --bg-secondary: #252b2a;
+    --accent-primary: #87c5be;
+    --accent-secondary: #d4822a;
+    --border-color: #495057;
+    --shadow-color: #000000;
+    --color-secondary-dark: #f0a854;
+}
+
 @media (prefers-color-scheme:dark) {
-    :root {
-         --text-primary: var(--color-dark-text-primary);
-         --text-secondary: var(--color-dark-text-secondary);
-         --text-muted: var(--color-dark-text-muted);
-         --bg-primary: var(--color-dark-bg-primary);
-         --bg-secondary: var(--color-dark-bg-secondary);
-         --accent-primary: var(--color-dark-accent-primary);
-         --accent-secondary: var(--color-dark-accent-secondary);
-         --border-color: var(--color-gray-600);
-         --shadow-color: var(--color-black);
-         --color-secondary-dark: #f0a854; /* Lighter orange for dark mode */
-     }
+     :root {
+          --text-primary: var(--color-dark-text-primary);
+          --text-secondary: var(--color-dark-text-secondary);
+          --text-muted: var(--color-dark-text-muted);
+          --bg-primary: var(--color-dark-bg-primary);
+          --bg-secondary: var(--color-dark-bg-secondary);
+          --accent-primary: var(--color-dark-accent-primary);
+          --accent-secondary: var(--color-dark-accent-secondary);
+          --border-color: var(--color-gray-600);
+          --shadow-color: var(--color-black);
+          --color-secondary-dark: #f0a854; /* Lighter orange for dark mode */
+      }
 
     body {
         background: var(--bg-primary)

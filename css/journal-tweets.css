@@ -12,6 +12,16 @@
     --tweet-shadow: rgba(0, 0, 0, 0.03);
 }
 
+html.dark-mode {
+    --tweet-bg: var(--color-dark-bg-primary);
+    --tweet-bg-hover: var(--color-dark-bg-secondary);
+    --tweet-text: var(--color-dark-text-secondary);
+    --tweet-text-secondary: var(--color-dark-text-muted);
+    --tweet-text-muted: var(--color-dark-text-muted);
+    --tweet-border: #3a4442;
+    --tweet-shadow: rgba(0, 0, 0, 0.3);
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --tweet-bg: var(--color-dark-bg-primary);

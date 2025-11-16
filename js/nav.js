@@ -24,15 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('')}
       </ul>
       <div class="nav-right-section">
-        <!-- Compact CTA Button -->
-        <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
-          <i data-lucide="newspaper" style="width: 1.2rem; height: 1.2rem;"></i>
-        </button>
-        <!-- Compact Hints Button -->
-        <button class="hints-icon-btn" id="hints-toggle" aria-label="Show welcome hints" title="Welcome guide">
-          <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
-        </button>
-      </div>
+         <!-- Compact CTA Button -->
+         <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
+           <i data-lucide="newspaper" style="width: 1.2rem; height: 1.2rem;"></i>
+         </button>
+         <!-- Compact Hints Button -->
+         <button class="hints-icon-btn" id="hints-toggle" aria-label="Show welcome hints" title="Welcome guide">
+           <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
+         </button>
+         <!-- Dark Mode Toggle Button -->
+         <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode" title="Dark mode">
+           <i data-lucide="moon" style="width: 1.2rem; height: 1.2rem;"></i>
+         </button>
+       </div>
     </div>
     <!-- Call to Action Section (modal) -->
     <div class="cta-modal" id="cta-modal" aria-hidden="true">
@@ -195,5 +199,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reposition on scroll and resize
     window.addEventListener('scroll', positionHints);
     window.addEventListener('resize', positionHints);
+  }
+
+  // Dark mode toggle
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  if (darkModeToggle) {
+    // Check for saved preference or system preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+                       (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark-mode');
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      const isDark = document.documentElement.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+    });
   }
 });

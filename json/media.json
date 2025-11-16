@@ -221,7 +221,7 @@
         "icon": "fab fa-youtube"
       },
       {
-      "name": "Spotify",
+        "name": "Spotify",
         "url": "https://open.spotify.com/episode/4FnWtLSpSnzyDwsyYubVqm?si=4wveVMhJRHCWgnjFuT9CRQ",
         "icon": "fab fa-spotify"
       },
@@ -282,7 +282,7 @@
     "url": "",
     "dateAdded": "2025-08-01"
   },
-    {
+  {
     "title": "OctCara",
     "author": "TBPS",
     "mediaType": "playlist",
@@ -302,104 +302,113 @@
       }
     ],
     "cover": "images/listen.webp",
-    "dateAdded": "2025-10-01"
-    },
-    {
-     "title": "SeptCara",
-     "author": "TBPS",
-     "mediaType": "playlist",
-     "description": "",
-     "date": "September 2025",
-     "icon": "fas fa-podcast",
-     "links": [
-       {
-         "label": "YouTube Music",
-         "icon": "fab fa-youtube",
-         "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBcyYrEsTxiOOuGy9lem8CZB&si=-FG_ackxtfQHT8Tl"
-       },
-       {
-         "label": "Spotify",
-         "icon": "fab fa-spotify",
-         "url": "https://open.spotify.com/playlist/0fsNDbD93L3ShSpqt8pYHH"
-       }
-     ],
-     "cover": "images/listen.webp",
-     "dateAdded": "2025-09-11"
-    },
-    {
-     "title": "AugCara",
-     "author": "TBPS",
-     "mediaType": "playlist",
-     "description": "",
-     "date": "August 2025",
-     "icon": "fas fa-podcast",
-     "links": [
-       {
-         "label": "YouTube Music",
-         "icon": "fab fa-youtube",
-         "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBdfTaakOh73VjBAc3wS48XW&si=BR4da5U1snKA84DW"
-       },
-       {
-         "label": "Spotify",
-         "icon": "fab fa-spotify",
-         "url": "https://open.spotify.com/playlist/7CCUbJr4j1glERVAG8HQCl"
-       }
-     ],
-    
-     "cover": "images/listen.webp",
-     "embedUrl": "",
-     "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBdfTaakOh73VjBAc3wS48XW&si=BR4da5U1snKA84DW",
-     "dateAdded": "2025-08-11"
-    },
-    {
-     "title": "JulCara",
-     "author": "TBPS",
-     "mediaType": "playlist",
-     "description": "",
-     "date": "July 2025",
-     "icon": "fas fa-podcast",
-     "links": [
-       {
-         "label": "YouTube Music",
-         "icon": "fab fa-youtube",
-         "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBcMObZ71kTeyZzTr7NzgTuC&si=rhjMceC6osgrD4A8"
-       },
-       {
-         "label": "Spotify",
-         "icon": "fab fa-spotify",
-         "url": "https://open.spotify.com/playlist/1bl4KjShzZoNbj4hGwPIzR"
-       }
-     ],
-     "thumbs": "",
-     "cover": "images/listen.webp",
-     "embedUrl": "",
-     "url": "https://music.youtube.com/playlist",
-     "dateAdded": "2025-08-10"
-    },
-    {
-     "title": "JunCara",
-     "author": "TBPS",
-     "mediaType": "playlist",
-     "description": "",
-     "date": "June 2025",
-     "icon": "fas fa-podcast",
-     "links": [
-       {
-         "label": "YouTube Music",
-         "icon": "fab fa-youtube",
-         "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBfkXW0-RYSFbLhWwOh6djrZ&si=M4HWaOd3NM1oSJ6m"
-       },
-       {
-         "label": "Spotify",
-         "icon": "fab fa-spotify",
-         "url": "https://open.spotify.com/playlist/58NTPUGlSN7xz2VFbafBES"
-       }
-     ],
-     "thumbs": "",
-     "cover": "images/listen.webp",
+    "dateAdded": "2025-10-01",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
+    "title": "SeptCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "September 2025",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBcyYrEsTxiOOuGy9lem8CZB&si=-FG_ackxtfQHT8Tl"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/0fsNDbD93L3ShSpqt8pYHH"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "dateAdded": "2025-09-11",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
+    "title": "AugCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "August 2025",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBdfTaakOh73VjBAc3wS48XW&si=BR4da5U1snKA84DW"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/7CCUbJr4j1glERVAG8HQCl"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "embedUrl": "",
+    "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBdfTaakOh73VjBAc3wS48XW&si=BR4da5U1snKA84DW",
+    "dateAdded": "2025-08-11",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
+    "title": "JulCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "July 2025",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBcMObZ71kTeyZzTr7NzgTuC&si=rhjMceC6osgrD4A8"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/1bl4KjShzZoNbj4hGwPIzR"
+      }
+    ],
+    "thumbs": "",
+    "cover": "images/listen.webp",
     "embedUrl": "",
     "url": "https://music.youtube.com/playlist",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-10",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
+    "title": "JunCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "June 2025",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBfkXW0-RYSFbLhWwOh6djrZ&si=M4HWaOd3NM1oSJ6m"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/58NTPUGlSN7xz2VFbafBES"
+      }
+    ],
+    "thumbs": "",
+    "cover": "images/listen.webp",
+    "embedUrl": "",
+    "url": "https://music.youtube.com/playlist",
+    "dateAdded": "2025-08-01",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
   },
   {
     "title": "Empty Vessel",
@@ -1215,7 +1224,6 @@
     "dateAdded": "2025-08-26",
     "embedUrl": "https://www.youtube.com/embed/nbKLGsf1Syg?si=UVygD9yWY6i4m90P",
     "url": "https://www.youtube.com/watch",
-
     "ratings": {
       "rt": {
         "score": "97%",
@@ -1251,7 +1259,7 @@
   },
   {
     "title": "Jeanne du Barry",
-    "author": "Maïwenn",
+    "author": "Ma\u00efwenn",
     "mediaType": "movie",
     "description": "A historical drama about the famous courtesan.",
     "date": "January 2023",
@@ -1397,7 +1405,7 @@
   },
   {
     "title": "Trust",
-    "author": "Hernán Díaz",
+    "author": "Hern\u00e1n D\u00edaz",
     "category": "Fiction",
     "mediaType": "book",
     "description": "A novel exploring wealth, power, and truth in America.",
@@ -1656,7 +1664,7 @@
   },
   {
     "title": "Capitalism",
-    "author": "Jürgen Kocka",
+    "author": "J\u00fcrgen Kocka",
     "category": "Economics",
     "mediaType": "book",
     "description": "A concise history of capitalism and its evolution.",
@@ -2249,7 +2257,7 @@
     "tag": "Coming Soon",
     "thumbs": "",
     "cover": "https://hardlystrictlybluegrass.com/wp-content/uploads/2025/08/hsb-site-header-2-1.png",
-      "links": [
+    "links": [
       {
         "label": "Horseshoe Hill Stage",
         "icon": "fa-solid fa-magnet",
@@ -2265,7 +2273,7 @@
         "icon": "fa-solid fa-crow",
         "url": "https://hardlystrictlybluegrass.vhx.tv/hardly-strictly-bluegrass-2025-livestreams/events/rooster-stage"
       },
-       {
+      {
         "label": "Arrow Stage",
         "icon": "fa-solid fa-arrow-right",
         "url": "https://hardlystrictlybluegrass.vhx.tv/hardly-strictly-bluegrass-2025-livestreams/events/arrow"
@@ -2275,12 +2283,11 @@
         "icon": "fa-solid fa-tower-observation",
         "url": "https://hardlystrictlybluegrass.vhx.tv/hardly-strictly-bluegrass-2025-livestreams/events/towers-of-gold"
       },
-       {
+      {
         "label": "Swan Stage",
         "icon": "fa-solid fa-dragon",
         "url": "https://hardlystrictlybluegrass.vhx.tv/hardly-strictly-bluegrass-2025-livestreams/events/swan-1"
       }
-    
     ],
     "embedUrl": "",
     "url": "",
@@ -2299,7 +2306,6 @@
     "thumbs": "",
     "cover": "https://i0.wp.com/blogs.cfainstitute.org/investor/files/2023/07/Book-Review-The-Power-of-Money.png?resize=940%2C575&ssl=1",
     "embedUrl": "",
-
     "dateAdded": "2025-10-08"
   },
   {
@@ -2395,7 +2401,7 @@
       }
     },
     "dateAdded": "2025-11-01"
-    },
+  },
   {
     "title": "NovCara",
     "author": "TBPS",
@@ -2445,20 +2451,22 @@
       "Baby Blue (feat. Norwill Simmonds) - Daniel Caesar",
       "City - Marlon Funaki"
     ],
-    "dateAdded": "2025-11-03"
-    },
+    "dateAdded": "2025-11-03",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
   {
-    "title": "Land Power",
-    "author": "Michael Albertus",
-    "category": "History",
-    "mediaType": "book",
-    "description": "Examines how land ownership determines societal outcomes, from equality and development to environmental sustainability, through historical land reallocations worldwide.",
-    "date": "2025",
-    "genre": "Non-fiction, History, Political Science",
-    "titleColor": "#ffffff",
-    "tag": "",
-    "thumbs": "",
-    "cover": "https://www.hachettebookgroup.com/wp-content/uploads/2024/05/9781541604810.jpg",
+     "title": "Land Power",
+     "author": "Michael Albertus",
+     "category": "History",
+     "mediaType": "book",
+     "description": "Examines how land ownership determines societal outcomes, from equality and development to environmental sustainability, through historical land reallocations worldwide.",
+     "date": "2025",
+     "genre": "Non-fiction, History, Political Science",
+     "titleColor": "#ffffff",
+     "tag": "",
+     "thumbs": "",
+     "cover": "images/land-power.webp",
     "amazon": "https://www.amazon.com/Land-Power-Doesnt-Determines-Societies/dp/1541604814",
     "goodreads": "",
     "embedUrl": "",

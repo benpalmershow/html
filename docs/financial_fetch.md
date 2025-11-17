@@ -32,11 +32,30 @@ When user prompts related to financial data updates:
 2. **Polymarket** - `polymarket_url` for NFL predictions (Note: Markets may not be available for games more than 2-3 weeks in advance)
 3. **ESPN/NFL.com** for upcoming game schedules
 
+**CRITICAL: Home vs Away Team Verification**
+- Format is ALWAYS: `[AWAY_TEAM] @ [HOME_TEAM]`
+- The @ symbol means "at" (away team playing AT home team's stadium)
+- Example: "DAL @ LV" means Dallas Cowboys are visiting Las Vegas Raiders in Las Vegas
+- Verify from Kalshi/Polymarket market title which team is home/away
+- Cross-reference with ESPN schedule to confirm home team location
+
 **Required Data for New Game:**
-- Home team vs Away team
+- Home team vs Away team (verified from market source)
+- Team abbreviation to full name mapping verification
 - Game date (YYYY-MM-DD format)
 - Current odds/percentages from prediction markets
 - Kalshi and Polymarket URLs
+
+**Team Abbreviation Verification:**
+Always verify team abbreviations match correct team names:
+- ARI=Cardinals, ATL=Falcons, BAL=Ravens, BUF=Bills
+- CAR=Panthers, CHI=Bears, CIN=Bengals, CLE=Browns
+- DAL=Cowboys, DEN=Broncos, DET=Lions, GB=Packers
+- HOU=Texans, IND=Colts, JAX=Jaguars, KC=Chiefs
+- LAC=Chargers, LAR=Rams, LV=Raiders, MIA=Dolphins
+- MIN=Vikings, NE=Patriots, NO=Saints, NYG=Giants
+- NYJ=Jets, PHI=Eagles, PIT=Steelers, SEA=Seahawks
+- SF=49ers, TB=Buccaneers, TEN=Titans, WAS=Commanders
 
 #### Step 2.5: Verify Win Odds from Market Sources
 **CRITICAL: Always verify actual odds from live market data before updating JSON**
@@ -108,9 +127,13 @@ When user prompts related to financial data updates:
 - [ ] Odds verified from live market sources and match current probabilities
 - [ ] Odds percentages are current (within 24 hours)
 - [ ] Game dates are in future
+- [ ] **Home/away designation correct (AWAY @ HOME format verified)**
+- [ ] **Team abbreviations match correct team names (e.g., LV=Raiders NOT Texans)**
+- [ ] **Full team names in game_title match abbreviations in name field**
 - [ ] Team names spelled correctly
 - [ ] JSON syntax valid
 - [ ] No duplicate games
+- [ ] Cross-reference market URL title with entered team data
 
 ---
 

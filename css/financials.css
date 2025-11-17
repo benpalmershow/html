@@ -166,10 +166,11 @@
 }
 
 .filter-dropdown.open {
-    max-height: 400px;
+    max-height: min(70vh, 600px);
     opacity: 1;
     transform: translateY(0) scaleY(1);
     pointer-events: auto;
+    overflow-y: auto;
 }
 
 .filter-group.open .filter-dropdown-icon {

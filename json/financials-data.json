@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-11-16T19:00:00Z",
+    "lastUpdated": "2025-11-17T19:00:00Z",
     "indices": [{
             "category": "Business Indicators",
             "agency": "Federal Reserve",
@@ -765,25 +765,25 @@
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-recession-in-2025?tid=1759178395896",
             "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/recssnber-25",
-            "yes_probability": "6¢",
+            "yes_probability": "5¢",
             "no_probability": "95¢",
             "change": "",
-            "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 94¢ (94%) chance of no recession vs 7¢ (7%) chance of recession."
+            "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 95¢ (95%) chance of no recession vs 5¢ (5%) chance of recession."
         },
 
 
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "ATL @ NE",
-            "game_title": "Falcons @ Patriots",
-            "game_time": "Nov 2, 2025 1:00 PM ET",
-            "game_time_iso": "2025-11-02T13:00:00-05:00",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25nov02atlne",
-            "polymarket_url": "https://polymarket.com/event/nfl-atl-ne-2025-11-02",
-            "ATL_win_odds": "31¢",
-            "NE_win_odds": "69¢",
-            "explanation": "NFL game prediction market showing the probability of the Falcons covering the spread against the Patriots. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+            "name": "DAL @ LV",
+            "game_title": "Cowboys @ Raiders",
+            "game_time": "Nov 17, 2025 8:15 PM ET",
+            "game_time_iso": "2025-11-17T20:15:00-05:00",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25nov17dallv",
+            "polymarket_url": "https://polymarket.com/event/nfl-dal-lv-2025-11-17",
+            "LV_win_odds": "37¢",
+            "DAL_win_odds": "64¢",
+            "explanation": "NFL game prediction market showing the probability of the Raiders covering the spread against the Cowboys. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
         },
     
         {
@@ -824,9 +824,9 @@
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-december",
             "next_meeting": "December 10, 2025",
             "bps_probabilities": {
-                "25BP Decrease": "65%",
-                "No Change": "32%",
-                "50+BP Decrease": "2%",
+                "25BP Decrease": "42%",
+                "No Change": "56%",
+                "50+BP Decrease": "3%",
                 "25+BP Increase": "1%"
             },
             "change": "",

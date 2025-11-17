@@ -525,13 +525,9 @@ Charts are embedded directly in post markdown files with Canvas elements and Jav
 
 **Post File Structure:**
 ```markdown
---- 
-date: 2025-11-14T14:00:00
----
+<i data-lucide='icon-name' class='post-icon'></i> **Post Title**
 
-## Post Title
-
-Post content in markdown...
+Brief description (1 sentence max). Let the chart tell the story.
 
 <div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Category'">
   <canvas id="unique-chart-id" width="400" height="200"></canvas>
@@ -569,17 +565,17 @@ new Chart(ctx, {
 });
 </script>
 
-More post content...
-
-<a href="financials.html?filter=Category"><b>View all indicators</b></a>
+[**View all indicators**](financials.html?filter=Category)
 ```
 
 **Key Requirements:**
+- **NO YAML frontmatter** - dates are managed in `json/posts.json` only
 - Use Chart.js library (already loaded on site)
 - Canvas element must have unique `id` attribute
 - Chart container should be clickable (points to relevant financials filter)
 - Always register post in `json/posts.json` with file reference and timestamp
 - Make charts responsive with `responsive: true` and `maintainAspectRatio: false`
+- Keep text minimal - let visuals do the work
 
 **Color Scheme (REQUIRED):**
 - Border color: `#2C5F5A` (primary site color)

@@ -41,7 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const scripts = card.querySelectorAll('script');
       scripts.forEach(oldScript => {
         const newScript = document.createElement('script');
-        newScript.textContent = oldScript.textContent;
+        // Wrap inline scripts in IIFE to prevent variable collisions
+        if (oldScript.textContent && !oldScript.src) {
+          newScript.textContent = `(function(){${oldScript.textContent}})();`;
+        } else {
+          newScript.textContent = oldScript.textContent;
+        }
         if (oldScript.src) newScript.src = oldScript.src;
         document.body.appendChild(newScript);
       });

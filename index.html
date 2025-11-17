@@ -2,27 +2,27 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) - Async to avoid blocking -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+  <!-- Google tag (gtag.js) - Deferred for performance -->
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-DWEVPGLJDP', {
       'anonymize_ip': true,
       'cookie_flags': 'SameSite=None;Secure'
     });
+    
+    // Load gtag.js after page load
+    window.addEventListener('load', function() {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    });
   </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=5.0">
 
-  <!-- Prevent Caching -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
 
   <meta name="description" content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
   <meta name="keywords" content="economic analysis, independent commentary, financial news, market insights, Ben Palmer Show, economic commentary, financial analysis, market trends, investment insights, policy analysis">
@@ -58,210 +58,69 @@
   <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
   <link rel="manifest" href="site.webmanifest">
-  <!-- Analytics & Monitoring (production only) -->
-  <script>
-    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      window.va = window.va || function () {
-        (window.vaq = window.vaq || []).push(arguments);
-      };
-    }
-  </script>
 
-  <!-- Analytics & Monitoring (production only) -->
-  <script>
-    window.va = window.va || function () {
-      (window.vaq = window.vaq || []).push(arguments);
-    };
-  </script>
-  <script>
-    // Only load Vercel scripts in production
-    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      const script = document.createElement('script');
-      script.src = '/_vercel/insights/script.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    }
-  </script>
-  <script type="module" src="js/speed-insights.js"></script>
-
-  <!-- External Libraries -->
-  <script src="https://unpkg.com/lucide@latest" defer></script>
   <!-- Preload critical resources -->
-  <link rel="preload" href="images/logo-360x360.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="css/body.css?v=20251107" as="style">
+  <link rel="preload" href="css/nav.css?v=20251107" as="style">
   <link rel="preload" href="css/index.css?v=20251107" as="style">
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preload" href="images/announcements.webp" as="image" type="image/webp" fetchpriority="high">
+  
+  <!-- Preconnect to critical external domains -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <!-- Font Awesome - Completely deferred -->
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <!-- Critical CSS for index page -->
   <link rel="stylesheet" href="css/body.css?v=20251107">
   <link rel="stylesheet" href="css/nav.css?v=20251107">
   <link rel="stylesheet" href="css/index.css?v=20251107">
-
+  
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
 
 
-  <!-- Structured Data - Organization Schema -->
+
+  <!-- Structured Data - Combined Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Howdy, Stranger",
-    "url": "https://howdystranger.net",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://howdystranger.net/images/logo.webp",
-      "width": 360,
-      "height": 360
-    },
-    "description": "Independent commentary, news, and economic insight",
-    "founder": {
-      "@type": "Person",
-      "name": "Ben Palmer"
-    },
-    "sameAs": [
-      "https://twitter.com/DocRiter",
-      "https://www.youtube.com/@BenPalmerShow",
-      "https://benpalmershow.substack.com",
-      "https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ",
-      "https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4",
-      "https://www.buymeacoffee.com/howdystranger"
-    ]
-  }
-  </script>
-
-  <!-- Structured Data - Website Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Howdy, Stranger",
-    "url": "https://howdystranger.net",
-    "description": "Independent commentary, news, and economic insight",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Howdy, Stranger",
-      "url": "https://howdystranger.net"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://howdystranger.net/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    },
-    "inLanguage": "en-US",
-    "copyrightYear": 2024,
-    "copyrightHolder": {
-      "@type": "Organization",
-      "name": "Howdy, Stranger"
-    }
-  }
-  </script>
-
-  <!-- Structured Data - Person Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ben Palmer",
-    "url": "https://howdystranger.net",
-    "description": "Independent commentator and economic analyst",
-    "jobTitle": "Independent Commentator",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Howdy, Stranger",
-      "url": "https://howdystranger.net"
-    },
-    "sameAs": [
-      "https://twitter.com/DocRiter",
-      "https://www.youtube.com/@BenPalmerShow",
-      "https://benpalmershow.substack.com"
-    ],
-    "knowsAbout": [
-      "Economic Analysis",
-      "Financial Markets",
-      "Independent Commentary",
-      "Market Research"
-    ]
-  }
-  </script>
-
-  <!-- Structured Data - Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://howdystranger.net/"
-    }]
-  }
-  </script>
-
-
+  [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://howdystranger.net/search?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"en-US","copyrightYear":2024,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
   </script>
 
 </head>
 
 <body>
-  <nav class="nav-links" id="main-nav" aria-label="Main navigation"></nav>
+  <nav class="nav-links" id="main-nav" aria-label="Main navigation" style="min-height: 57px;"></nav>
   <main id="main-content" tabindex="-1">
     <!-- Announcements Section -->
-    <div class="page-title" aria-label="Page title"><picture><source srcset="images/announcements.webp" type="image/webp"><img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20" loading="lazy"></picture>Announcements</div>
+    <div class="page-title" aria-label="Page title">
+      <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20" loading="eager" decoding="async">
+      Announcements
+    </div>
     <section class="announcements" aria-label="Latest announcements">
-    <div class="announcements-container" id="announcements-container">
-       <div class="loading-skeleton"></div>
-       <div class="loading-skeleton"></div>
-     </div>
+      <div class="announcements-container" id="announcements-container">
+        <div class="loading-skeleton"></div>
+        <div class="loading-skeleton"></div>
+        <div class="loading-skeleton"></div>
+      </div>
     </section>
 
 
   </main>
 
-  <footer id="social-footer"><div class="social-links"></div><p class="footer-text">© 2025 Howdy, Stranger.</p></footer>
+  <footer id="social-footer">
+    <div class="social-links"></div>
+    <p class="footer-text">© 2025 Howdy, Stranger.</p>
+  </footer>
 
-  <!-- Deferred Scripts -->
+  <!-- Critical Scripts -->
   <script src="js/bfcache-compat.js" defer></script>
   <script src="js/nav.js" defer></script>
-  <!-- Initialize Lucide Icons -->
-  <script>
-   document.addEventListener('DOMContentLoaded', function () {
-     lucide.createIcons();
-   });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  <script src="js/animations.js" defer></script>
-  <script src="js/socials.js" defer></script>
   <script src="js/posts-loader.js" defer></script>
+  <script src="js/socials.js" defer></script>
+  
   <script>
-    // Helper functions for hints (called from nav modal)
-    function closeHints() {
-      const visitorHints = document.getElementById('visitor-hints');
-      if (visitorHints) {
-        visitorHints.style.display = 'none';
-        visitorHints.classList.remove('active');
-        localStorage.setItem('hintsShown', 'true');
-      }
-    }
+    (function(){const libs={marked:'https://cdn.jsdelivr.net/npm/marked/marked.min.js',lucide:'https://unpkg.com/lucide@latest',chartjs:'https://cdn.jsdelivr.net/npm/chart.js',yaml:'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',fontawesome:'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',animations:'js/animations.js',socials:'js/socials.js'};function loadScript(src,callback){const script=document.createElement('script');script.src=src;script.async=true;script.onload=callback;script.onerror=()=>console.warn('Failed to load:',src);document.head.appendChild(script)}function loadCSS(href){const link=document.createElement('link');link.rel='stylesheet';link.href=href;link.media='print';link.onload=function(){this.media='all'};document.head.appendChild(link)}const loadLibs=()=>{loadScript(libs.marked);loadScript(libs.lucide,()=>window.lucide?.createIcons());loadCSS(libs.fontawesome);setTimeout(()=>{loadScript(libs.animations);loadScript(libs.socials)},1000)};if('requestIdleCallback'in window){requestIdleCallback(loadLibs,{timeout:1000})}else{setTimeout(loadLibs,1000)}window.loadChartJS=()=>new Promise(resolve=>{if(window.Chart)return resolve(window.Chart);loadScript(libs.chartjs,()=>resolve(window.Chart))});window.loadJsYaml=()=>new Promise(resolve=>{if(window.jsyaml)return resolve(window.jsyaml);loadScript(libs.yaml,()=>resolve(window.jsyaml))})})();window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};if(window.location.hostname!=='localhost'&&window.location.hostname!=='127.0.0.1'){window.addEventListener('load',()=>{const s=document.createElement('script');s.src='/_vercel/insights/script.js';s.defer=true;document.head.appendChild(s);const i=document.createElement('script');i.type='module';i.src='js/speed-insights.js';document.head.appendChild(i)})}
   </script>
-
 
   </body>
 

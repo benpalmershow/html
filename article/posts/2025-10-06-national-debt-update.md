@@ -1,0 +1,1 @@
+<i data-lucide='trending-up' class='post-icon'></i>  <b>National Debt Update</b><br><br>▪ <b>Total Debt</b>: $37.5T (up $495B in Sep)<br>▪ <b>2025 Growth</b>: +$1.28T YTD<br>▪ <b>Monthly Avg</b>: +$213B (last 6 months)<br><br><a href="financials.html"><b>View all indicators</b></a>

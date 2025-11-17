@@ -1,0 +1,1 @@
+<i data-lucide='dollar-sign' class='post-icon'></i> <b>IPOs to Watch</b><br><br>• <a href="https://finance.yahoo.com/quote/FIGR" target="_blank" rel="noopener">FIGR</a> - Figma design platform<br>• <a href="https://finance.yahoo.com/quote/KLAR" target="_blank" rel="noopener">KLAR</a> - Klar financial services<br><br><a href="news.html"><b>View IPO news</b></a>

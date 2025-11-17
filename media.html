@@ -2,22 +2,10 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) - deferred initialization -->
-  <script defer>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    document.addEventListener('DOMContentLoaded', function() {
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-      document.head.appendChild(script);
-      gtag('js', new Date());
-      gtag('config', 'G-DWEVPGLJDP');
-    });
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <!-- Prevent Caching -->
+  
+  <!-- Prevent HTML caching only -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -56,31 +44,34 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
-  <!-- Preload critical resources -->
-  <link rel="preload" href="js/nav.js" as="script">
+  <!-- Preconnect to external domains - CRITICAL for performance -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://d28hgpri8am2if.cloudfront.net">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+  <!-- Preload CRITICAL resources only -->
   <link rel="preload" href="css/body.css" as="style">
   <link rel="preload" href="css/nav.css" as="style">
-  <!-- Preload first LCP image -->
-  <link rel="preload" as="image" href="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781668001875/anointed-9781668001875_lg.jpg">
-
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
+  <link rel="preload" href="css/media.css" as="style">
+  
   <!-- Preload Font Awesome fonts -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Font Awesome (async) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
-  
-  <!-- Font Display Optimization -->
+  <!-- Inline critical CSS for LCP -->
   <style>
+    /* Critical styles for first paint */
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1f1e; color: #fff; }
+    .media-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem; }
+    .media-card { max-width: 200px; width: 100%; border-radius: 0.5rem; contain: layout style paint; }
+    .media-cover-container { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 0.5rem; contain: layout; background: #2C5F5A; }
+    .media-cover { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0.5rem; }
+    .loading-state { text-align: center; padding: 3rem; font-size: 1.2rem; }
+    .fa-spinner { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    /* Font optimization */
     @font-face {
       font-family: 'FontAwesome';
       src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
@@ -95,30 +86,18 @@
       font-display: swap;
       size-adjust: 95%;
     }
-    /* Critical LCP styles - first media card */
-    .media-card { max-width: 200px; width: 100%; border-radius: 0.5rem; contain: layout; }
-    .media-cover-container { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 0.5rem; contain: layout; }
-    .media-cover { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0.5rem; }
   </style>
 
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer>
-    // Only load Vercel scripts in production
-    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      const script = document.createElement('script');
-      script.src = '/_vercel/insights/script.js';
-      script.async = true;
-      document.head.appendChild(script);
-    }
-  </script>
-  <script type="module" defer src="js/speed-insights.js"></script>
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-
+  <!-- Load CSS -->
   <link rel="stylesheet" href="css/body.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/media.css">
+
+  <!-- Font Awesome - load async -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 
   <title>Media - Howdy, Stranger</title>
 
@@ -163,21 +142,88 @@
   }
   </script>
 
+  <!-- Google Analytics - deferred -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    // Load GA after page interactive
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-DWEVPGLJDP');
+      });
+    } else {
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-DWEVPGLJDP');
+      }, 3000);
+    }
+  </script>
 
+  <!-- Vercel Analytics - deferred -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script>
+    // Load Vercel scripts after idle
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const loadVercel = () => {
+        const script = document.createElement('script');
+        script.src = '/_vercel/insights/script.js';
+        script.async = true;
+        document.head.appendChild(script);
+      };
+      
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadVercel);
+      } else {
+        setTimeout(loadVercel, 2000);
+      }
+    }
+  </script>
 
- </head>
+  <!-- Lucide - load after interaction -->
+  <script>
+    const loadLucide = () => {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/lucide@latest';
+      script.defer = true;
+      document.head.appendChild(script);
+    };
+    
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadLucide);
+    } else {
+      window.addEventListener('load', () => setTimeout(loadLucide, 1000));
+    }
+  </script>
+</head>
 
 <body>
-
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="page-title page-title--bordered" aria-label="Page title"><picture><source srcset="images/media-60x60.webp" type="image/webp"><img src="images/media-60x60.webp" alt="Media icon" class="page-icon" width="40" height="40"></picture>Media</div>
+  
+  <div class="page-title page-title--bordered" aria-label="Page title">
+    <picture>
+      <source srcset="images/media-60x60.webp" type="image/webp">
+      <img src="images/media-60x60.webp" alt="Media icon" class="page-icon" width="40" height="40" loading="eager">
+    </picture>
+    Media
+  </div>
+
   <main id="main-content" tabindex="-1">
     <div class="media-filters">
-
       <label>Filter by type:
         <select id="filter-type" aria-label="Filter by media type">
           <option value="all">All</option>
-          <!-- Options will be populated by JavaScript -->
         </select>
       </label>
 
@@ -193,7 +239,6 @@
       <!-- Media cards will be inserted here by JavaScript -->
     </div>
 
-    <!-- Overlay for playlist songs -->
     <div id="playlist-overlay" class="playlist-overlay" style="display: none;">
       <div class="playlist-overlay-content">
         <h2 id="overlay-title"></h2>
@@ -202,10 +247,12 @@
     </div>
   </main>
 
-  <footer id="social-footer"><div class="social-links"></div><p class="footer-text">© 2025 Howdy, Stranger.</p></footer>
+  <footer id="social-footer">
+    <div class="social-links"></div>
+    <p class="footer-text">© 2025 Howdy, Stranger.</p>
+  </footer>
 
   <script>
-    // Helper functions for hints (called from nav modal)
     function closeHints() {
       const visitorHints = document.getElementById('visitor-hints');
       if (visitorHints) {
@@ -216,19 +263,36 @@
     }
   </script>
 
+  <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
   <script src="js/nav.js" defer></script>
-  <script src="js/media.js" defer></script>
   <script src="js/socials.js" defer></script>
+  <script src="js/media.js"></script>
+  
+  <!-- Load non-critical analytics after idle -->
+  <script>
+    const loadNonCriticalScripts = () => {
+      const speedInsights = document.createElement('script');
+      speedInsights.src = 'js/speed-insights.js';
+      speedInsights.type = 'module';
+      speedInsights.defer = true;
+      document.body.appendChild(speedInsights);
+    };
+    
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadNonCriticalScripts);
+    } else {
+      window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
+    }
+  </script>
   
   <!-- Service Worker for external resource caching -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
     }
   </script>
-  
-
-
 </body>
 
 </html>

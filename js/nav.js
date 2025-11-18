@@ -116,22 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctaToggle = document.getElementById('cta-toggle');
   const ctaModal = document.getElementById('cta-modal');
   if (ctaToggle && ctaModal) {
-    function positionCtaModal() {
-      const rect = ctaToggle.getBoundingClientRect();
-      const ctaContainer = ctaModal.querySelector('.cta-container');
-      if (ctaContainer) {
-        ctaContainer.style.top = (rect.bottom + 10) + 'px';
-      }
-    }
-
     ctaToggle.addEventListener('click', () => {
       const isOpen = ctaModal.style.display === 'block';
       ctaModal.style.display = isOpen ? 'none' : 'block';
       ctaModal.classList.toggle('active', !isOpen);
       ctaModal.setAttribute('aria-hidden', isOpen);
-      if (!isOpen) {
-        positionCtaModal();
-      }
     });
 
     // Close CTA modal when overlay or close button is clicked
@@ -147,30 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-
-    // Reposition on scroll and resize
-    window.addEventListener('scroll', positionCtaModal);
-    window.addEventListener('resize', positionCtaModal);
   }
 
   // Hints toggle
   const hintsToggle = document.getElementById('hints-toggle');
   const visitorHints = document.getElementById('visitor-hints');
   if (hintsToggle && visitorHints) {
-    function positionHints() {
-      const rect = hintsToggle.getBoundingClientRect();
-      const hintContent = visitorHints.querySelector('.hint-content');
-      if (hintContent) {
-        hintContent.style.top = (rect.bottom + 10) + 'px';
-      }
-    }
-
     hintsToggle.addEventListener('click', () => {
       if (visitorHints.style.display === 'none' || visitorHints.style.display === '') {
         visitorHints.style.display = 'block';
         visitorHints.classList.add('active');
         visitorHints.setAttribute('aria-hidden', 'false');
-        positionHints();
       } else {
         visitorHints.style.display = 'none';
         visitorHints.classList.remove('active');
@@ -191,9 +167,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-
-    // Reposition on scroll and resize
-    window.addEventListener('scroll', positionHints);
-    window.addEventListener('resize', positionHints);
   }
 });

@@ -872,7 +872,58 @@ Before publishing any post with a chart:
 - [ ] Chart renders correctly on mobile (responsive: true)
 - [ ] Post contains 6+ months of data points
 - [ ] Title clearly explains trend direction (Rise, Decline, Acceleration, etc.)
-- [ ] Supporting text describes what chart shows and why it matters</content>
+- [ ] Supporting text describes what chart shows and why it matters
+
+## Multi-Topic Posts with Charts
+
+Posts can effectively combine multiple topics with different visualization approaches.
+
+### Example: Sports + Multi-Financial Post (2025-11-18)
+
+The Patriots @ Bengals post demonstrates best practices for combining three distinct content types:
+
+**Structure:**
+- **First Topic**: NFL game with prediction market odds
+  - Icon: `football`
+  - One sentence description with game time, odds, and context
+  - Link to Prediction Markets filter
+  
+- **Second Topic**: Financial commodity data with chart
+  - Icon: `trending-down`
+  - Key metric: October value with YTD change percentage
+  - Chart.js visualization showing 10-month trend (Jan-Oct)
+  - Link to Commodities filter
+
+- **Third Topic**: Construction spending data with trend chart
+  - Icon: `hammer`
+  - Latest month value with MoM change and brief context
+  - Chart.js visualization showing 6-month trend (Mar-Aug)
+  - Link to Business Indicators filter
+
+**Key Patterns for Multi-Topic Posts:**
+1. Use multiple icon + bold title combos for distinct sections
+2. Separate topics with `<br><br>` for visual clarity
+3. Include charts for financial indicators with 6+ months of data
+4. Link each section to appropriate page filters
+5. Keep descriptions concise (1-2 sentences per section)
+6. Use consistent formatting and icon placement
+7. Ensure charts take center stage for complex data
+8. Provide navigation links after each major section
+9. Maximum 3 distinct topics per post (avoid overwhelming readers)
+10. Order topics logically (sports first, then financial/business)
+
+**Chart Configuration Standards:**
+- Canvas IDs must be unique per chart (e.g., `wti-oil-chart`, `construction-chart`)
+- Y-axis bounds: Calculate min/max from data with 5-10% padding
+- Y-axis formatting: Use appropriate units ($, %, B, M, etc.)
+- Data labels: Include month abbreviations or time periods
+- Responsive: Always include `responsive: true` and `maintainAspectRatio: false`
+
+**Color Consistency:**
+- Chart border color: `#2C5F5A` (site primary)
+- Chart fill color: `rgba(44, 95, 90, 0.1)` (transparent primary)
+- Works in both light and dark modes automatically
+- Do not use custom colors per financial indicator</content>
 </xai:function_call">The Posts PRD has been created at `/Users/benjaminpalmer/TBPS/html/html/docs/posts-prd.md` with comprehensive guidelines for structure, formatting, categories, and best practices based on the existing posts pattern. This should serve as your implementation guide for improving and maintaining the posts system. Let me know if you'd like to adjust any sections or add more details. 
 
 Next post to improve? (The oldest ones like 5/24, 5/25, 5/28, 6/3, etc. appear to need similar formatting updates.) 

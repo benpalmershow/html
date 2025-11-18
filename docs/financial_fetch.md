@@ -20,6 +20,13 @@ When user prompts related to financial data updates:
 
 ### NFL Game Prediction Updates
 
+#### Step 0: Look Up Game Date
+**Process:**
+1. If user provides only teams (e.g., "Patriots @ Bengals"), search for the game date using web search
+2. Verify the date format is YYYY-MM-DD
+3. Confirm the game date is within 1-2 weeks of current date to ensure prediction markets are active
+4. Proceed with Steps 1-5 once date is confirmed
+
 #### Step 1: Identify Completed Games
 **Process:**
 1. Review current NFL games in `financials-data.json` under "Prediction Markets" category
@@ -28,8 +35,8 @@ When user prompts related to financial data updates:
 
 #### Step 2: Research New Games
 **Data Sources (in priority order):**
-1. **Kalshi** - `kalshi_url` for NFL game odds (Note: Markets may not be available for games more than 2-3 weeks in advance)
-2. **Polymarket** - `polymarket_url` for NFL predictions (Note: Markets may not be available for games more than 2-3 weeks in advance)
+1. **Kalshi** - `kalshi_url` for NFL game odds (Note: Markets may not be available for games more than 2-3 weeks in advance; link may return 404 if market not yet active)
+2. **Polymarket** - `polymarket_url` for NFL predictions (Note: Markets may not be available for games more than 2-3 weeks in advance; more reliably available than Kalshi)
 3. **ESPN/NFL.com** for upcoming game schedules
 
 **CRITICAL: Home vs Away Team Verification**
@@ -110,7 +117,7 @@ Always verify team abbreviations match correct team names:
 - `game_title`: Full team names (e.g., "Ravens @ Dolphins")
 - `game_time`: Human-readable format (e.g., "Oct 26, 2025 1:00 PM ET")
 - `game_time_iso`: ISO 8601 format for programmatic use
-- `url`: Primary Kalshi market URL (format: kxnflgame-YYMMDD[AWAY][HOME] without dashes between team codes)
+- `url`: Primary Kalshi market URL (format: kxnflgame-YYMMDD[AWAY][HOME] without dashes between team codes, e.g., `kxnflgame-25nov23necin` for NE @ CIN on Nov 23)
 - `polymarket_url`: Direct Polymarket link
 - `[TEAM]_win_odds`: Odds in cents format (e.g., "60¢")
 - `explanation`: Standard template with full team names filled in
@@ -150,6 +157,8 @@ Always verify team abbreviations match correct team names:
 - **Census**: Housing Starts, New Home Sales
 - **ADP**: Private Employment
 - **FRED**: Various economic series
+- **EIA**: Oil prices, energy commodities
+- **NYMEX/CME**: Oil futures, commodities pricing
 
 #### Step 2: Update Frequency
 - **Monthly**: Most economic indicators (CPI, PPI, Employment, etc.)
@@ -175,6 +184,7 @@ The financials.html page organizes indicators into these categories:
 - **Consumer Indicators**: Spending, confidence, inflation
 - **Employment Indicators**: Jobs, wages, labor market
 - **Housing Market**: Starts, sales, prices, affordability
+- **Commodities**: Oil prices, energy costs, commodity futures
 - **Prediction Markets**: NFL games, elections, other predictions
 
 ### Adding New Indicators
@@ -217,6 +227,7 @@ const categoryIcons = {
     'Housing Market': 'home',
     'Business Indicators': 'briefcase',
     'Consumer Indicators': 'shopping-cart',
+    'Commodities': 'droplet',
     'Prediction Markets': 'trending-up'
 };
 ```

@@ -152,11 +152,10 @@
 
 /* CTA Modal - Anchored to navbar */
 .cta-modal {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
   display: none;
   z-index: 1500;
   pointer-events: none;
@@ -178,22 +177,20 @@
 
 /* CTA Container in Modal - Anchored popover */
 .cta-modal .cta-container {
-  position: fixed;
+  position: relative;
   background: var(--bg-secondary, #f8f4e6);
   border: 1px solid var(--border-color, #e0dcc4);
   border-radius: 0.5rem;
   padding: var(--spacing-md, 1.25rem);
   max-width: 500px;
   width: calc(100% - 2rem);
+  margin-left: auto;
+  margin-right: 1rem;
   min-height: auto;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
   contain: layout style;
   z-index: 1501;
-  top: auto;
-  right: 1rem;
-  bottom: auto;
-  left: auto;
 }
 
 .cta-container:hover {
@@ -265,11 +262,10 @@
 
 /* Visitor Hints - Anchored to navbar */
 .visitor-hints {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
   display: none;
   z-index: 2000;
   pointer-events: none;
@@ -290,20 +286,18 @@
 }
 
 .hint-content {
-   position: fixed;
-   background: var(--bg-primary, #fdf6e8);
-   padding: var(--spacing-md, 1.25rem);
-   border-radius: 0.5rem;
-   max-width: 500px;
-   width: calc(100% - 2rem);
-   max-height: 80vh;
-   overflow-y: auto;
-   z-index: 2001;
-   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-   top: auto;
-   right: 1rem;
-   bottom: auto;
-   left: auto;
+    position: relative;
+    background: var(--bg-primary, #fdf6e8);
+    padding: var(--spacing-md, 1.25rem);
+    border-radius: 0.5rem;
+    max-width: 500px;
+    width: calc(100% - 2rem);
+    margin-left: auto;
+    margin-right: 1rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 2001;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .hint-content h3 {

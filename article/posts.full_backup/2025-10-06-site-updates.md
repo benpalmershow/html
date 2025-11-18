@@ -1,0 +1,1 @@
+<i data-lucide='zap' class='post-icon'></i>  <b>Site Updates</b><br><br>▪ <b>Prediction Markets</b>: Added separate Kalshi & Polymarket cards for NFL Week 5<br>▪ <b>Military Drone Analysis</b>:  <a href="news.html"><b>News</b></a><br>

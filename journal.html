@@ -135,7 +135,7 @@
   }
   </script>
 
-  <!-- Deferred Font Awesome loader -->
+  <!-- Deferred Font Awesome and Marked loader -->
   <script>
     window.addEventListener('load', function() {
       const link = document.createElement('link');
@@ -144,9 +144,14 @@
       link.crossOrigin = 'anonymous';
       link.referrerPolicy = 'no-referrer';
       document.head.appendChild(link);
+      
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+      script.async = true;
+      document.head.appendChild(script);
     });
   </script>
-</head>
+  </head>
 
 <body>
 

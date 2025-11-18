@@ -340,13 +340,60 @@ function getJusticeImageTag(name, description = '') {
 - [ ] Local server testing for HTTPS images
 - [ ] Cache invalidation for updated content
 
+### Current Implementation Examples
+
+#### Financial Commodity Charts in Posts
+- **WTI Crude Oil Post** (`2025-11-18-patriots-bengals.md`)
+- Uses Chart.js canvas with 10-month historical data (Jan-Oct 2025)
+- Display: Embedded within multi-topic post combining sports + financial data
+- Chart styling: Site primary color (#2C5F5A) with transparent fill
+- Interactivity: Chart container is clickable, links to Commodities filter
+- Data source: `json/financials-data.json` WTI field
+- Performance: Lightweight canvas rendering, responsive mobile design
+
+#### Integration Pattern: Multi-Topic Posts
+Posts can now combine multiple content types:
+1. **Text sections** with icons and metadata
+2. **Chart visualizations** for financial trends
+3. **Navigation links** to related content pages
+
+This pattern is established in `2025-11-18-patriots-bengals.md`:
+- NFL prediction market (sports content)
+- WTI crude oil trend (financial with chart)
+- Each section independently linkable to relevant filters
+
 ### Next Steps (Phase 2)
 1. Integrate image-fetch.js with content loading
 2. Add lazy loading for below-the-fold images
 3. Implement API integrations (TMDB, Spotify)
 4. Add image optimization and compression
 5. Expand to news articles and financial content
-6. **NEW**: Create justice image automation tool
-7. **NEW**: Build URL validation and bulk update utilities
+6. **NOW**: Create justice image automation tool
+7. **NOW**: Build URL validation and bulk update utilities
+8. **NOW**: Leverage Chart.js for post data visualization
+
+### Implementation Notes for Developers
+
+**For Chart Posts:**
+- Canvas IDs must be unique per post (e.g., `wti-oil-chart`, `treasury-chart`)
+- Always use site colors: `#2C5F5A` (border), `rgba(44, 95, 90, 0.1)` (fill)
+- Set Y-axis min/max with 5-10% padding for readability
+- Make chart containers clickable with onclick handlers
+- Test responsive behavior on mobile (Chart.js handles this automatically)
+- Include 6+ months of data for trend visualization to be meaningful
+
+**For Image Sourcing:**
+- Verify HTTPS URLs work before deployment
+- Test image URLs on local HTTP server (issues with file:// protocol)
+- Add proper alt text for accessibility
+- Maintain consistent image dimensions per use case
+- Cache images when appropriate using localStorage
+
+**For Multi-Topic Posts:**
+- Separate distinct topics with `<br><br>` for visual hierarchy
+- Use different icons for each topic section
+- Provide navigation links after each major section
+- Keep individual descriptions concise (1-2 sentences)
+- Test layout on both desktop and mobile devices
 
 This PRD establishes the foundation for a robust online image fetching and display system that will significantly enhance the visual appeal and user experience of the website.

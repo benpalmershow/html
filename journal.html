@@ -2,13 +2,22 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP"></script>
+  <!-- Google tag (gtag.js) - Deferred for performance -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-DWEVPGLJDP');
+    gtag('config', 'G-DWEVPGLJDP', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+    
+    window.addEventListener('load', function() {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    });
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -61,10 +70,8 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Font Awesome - Deferred for non-critical loading -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <!-- Font Awesome - Deferred -->
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -126,6 +133,18 @@
       "item": "https://howdystranger.net/journal.html"
     }]
   }
+  </script>
+
+  <!-- Deferred Font Awesome loader -->
+  <script>
+    window.addEventListener('load', function() {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      link.crossOrigin = 'anonymous';
+      link.referrerPolicy = 'no-referrer';
+      document.head.appendChild(link);
+    });
   </script>
 </head>
 

@@ -81,6 +81,22 @@
 
 
 
+  <script>
+    // Start fetching posts immediately
+    window.postsPromise = fetch('json/posts.json?v=' + Date.now())
+      .then(r => {
+        if (!r.ok) throw new Error('Failed to load posts');
+        return r.json();
+      })
+      .catch(err => {
+        console.warn('Pre-fetch failed', err);
+        return null;
+      });
+  </script>
+  
+  <!-- Marked.js - Critical for content rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
   <!-- Structured Data - Combined Schema -->
   <script type="application/ld+json">
   [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://howdystranger.net/search?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"en-US","copyrightYear":2024,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
@@ -107,11 +123,6 @@
 
   </main>
 
-  <footer id="social-footer">
-    <div class="social-links"></div>
-    <p class="footer-text">© 2025 Howdy, Stranger.</p>
-  </footer>
-
   <!-- Critical Scripts -->
   <script src="js/bfcache-compat.js" defer></script>
   <script src="js/nav.js" defer></script>
@@ -119,7 +130,78 @@
   <script src="js/socials.js" defer></script>
   
   <script>
-    (function(){const libs={marked:'https://cdn.jsdelivr.net/npm/marked/marked.min.js',lucide:'https://unpkg.com/lucide@latest',chartjs:'https://cdn.jsdelivr.net/npm/chart.js',yaml:'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',fontawesome:'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',animations:'js/animations.js',socials:'js/socials.js'};function loadScript(src,callback){const script=document.createElement('script');script.src=src;script.async=true;script.onload=callback;script.onerror=()=>console.warn('Failed to load:',src);document.head.appendChild(script)}function loadCSS(href){const link=document.createElement('link');link.rel='stylesheet';link.href=href;link.media='print';link.onload=function(){this.media='all'};document.head.appendChild(link)}const loadLibs=()=>{loadScript(libs.marked);loadScript(libs.lucide,()=>window.lucide?.createIcons());loadCSS(libs.fontawesome);setTimeout(()=>{loadScript(libs.animations);loadScript(libs.socials)},1000)};if('requestIdleCallback'in window){requestIdleCallback(loadLibs,{timeout:1000})}else{setTimeout(loadLibs,1000)}window.loadChartJS=()=>new Promise(resolve=>{if(window.Chart)return resolve(window.Chart);loadScript(libs.chartjs,()=>resolve(window.Chart))});window.loadJsYaml=()=>new Promise(resolve=>{if(window.jsyaml)return resolve(window.jsyaml);loadScript(libs.yaml,()=>resolve(window.jsyaml))})})();window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};if(window.location.hostname!=='localhost'&&window.location.hostname!=='127.0.0.1'){window.addEventListener('load',()=>{const s=document.createElement('script');s.src='/_vercel/insights/script.js';s.defer=true;document.head.appendChild(s);const i=document.createElement('script');i.type='module';i.src='js/speed-insights.js';document.head.appendChild(i)})}
+    (function(){
+      const libs = {
+        // marked moved to static script tag for LCP
+        lucide: 'https://unpkg.com/lucide@latest',
+        chartjs: 'https://cdn.jsdelivr.net/npm/chart.js',
+        yaml: 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',
+        fontawesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        animations: 'js/animations.js',
+        socials: 'js/socials.js'
+      };
+
+      function loadScript(src, callback) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = callback;
+        script.onerror = () => console.warn('Failed to load:', src);
+        document.head.appendChild(script);
+      }
+
+      function loadCSS(href) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.media = 'print';
+        link.onload = function() { this.media = 'all' };
+        document.head.appendChild(link);
+      }
+
+      const loadLibs = () => {
+        // lucide is needed for icons in posts
+        loadScript(libs.lucide, () => window.lucide?.createIcons());
+        loadCSS(libs.fontawesome);
+        
+        setTimeout(() => {
+          loadScript(libs.animations);
+          loadScript(libs.socials);
+        }, 1000);
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLibs, { timeout: 1000 });
+      } else {
+        setTimeout(loadLibs, 1000);
+      }
+
+      window.loadChartJS = () => new Promise(resolve => {
+        if (window.Chart) return resolve(window.Chart);
+        loadScript(libs.chartjs, () => resolve(window.Chart));
+      });
+
+      window.loadJsYaml = () => new Promise(resolve => {
+        if (window.jsyaml) return resolve(window.jsyaml);
+        loadScript(libs.yaml, () => resolve(window.jsyaml));
+      });
+    })();
+
+    window.va = window.va || function() { (window.vaq = window.vaq || []).push(arguments) };
+    
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      window.addEventListener('load', () => {
+        const s = document.createElement('script');
+        s.src = '/_vercel/insights/script.js';
+        s.defer = true;
+        document.head.appendChild(s);
+        
+        const i = document.createElement('script');
+        i.type = 'module';
+        i.src = 'js/speed-insights.js';
+        document.head.appendChild(i);
+      });
+    }
   </script>
 
   </body>

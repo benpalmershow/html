@@ -207,11 +207,13 @@ async function initPosts() {
     }
   }
 
-  fetch('json/posts.json?v=' + Date.now())
+  const fetchPosts = () => window.postsPromise || fetch('json/posts.json?v=' + Date.now())
     .then(r => {
       if (!r.ok) throw new Error('Failed to load posts');
       return r.json();
-    })
+    });
+
+  fetchPosts()
     .then(posts => {
       if (!Array.isArray(posts)) throw new Error('Invalid posts format');
       
@@ -460,13 +462,9 @@ function getChartConfig(indicator, labels, dataPoints) {
   return baseConfig;
 }
 
-// Use requestIdleCallback for better performance
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(() => {
-    initPosts();
-  }, { timeout: 2000 });
+// Start initialization immediately for better LCP
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPosts);
 } else {
-  document.addEventListener('DOMContentLoaded', () => {
-    initPosts();
-  });
+  initPosts();
 }

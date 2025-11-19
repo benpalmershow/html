@@ -5,6 +5,11 @@
     padding: 0 var(--content-padding);
 }
 
+.page-title {
+    margin-top: var(--spacing-md) !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
 .header {
     text-align: center;
     color: var(--text-primary);
@@ -25,7 +30,7 @@
     opacity: 0.5;
     color: var(--text-muted);
     text-align: center;
-    margin: 10px 0 20px
+    margin: 5px 0 10px
 }
 
 .collapsible-section {
@@ -84,7 +89,7 @@
 }
 
 .filters {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     overflow: visible;
     position: relative;
     z-index: 1;
@@ -143,6 +148,38 @@
     background: var(--bg-tertiary);
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.filter-btn.active {
+    background: var(--logo-teal);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(44, 95, 90, 0.3);
+}
+
+.filter-btn.active .filter-icon {
+    color: #ffffff;
+}
+
+.desktop-filters {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.mobile-filters {
+    display: inline-block;
+}
+
+@media (min-width: 769px) {
+    .mobile-filters {
+        display: none;
+    }
+
+    .desktop-filters {
+        display: flex;
+    }
 }
 
 .filter-dropdown {
@@ -220,13 +257,13 @@
 
 .categories {
     display: grid;
-    gap: 20px
+    gap: 15px
 }
 
 .category {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-radius: 15px;
-    padding: clamp(1rem, 3vw, 1.5rem);
+    padding: 0.5rem clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
@@ -241,6 +278,7 @@
 .category-title {
     font-size: clamp(1.2rem, 5vw, 1.6rem);
     color: var(--color-secondary-dark);
+    margin-top: 0;
     margin-bottom: 8px;
     border-bottom: 2px solid var(--logo-teal);
     padding-bottom: 8px;
@@ -279,7 +317,7 @@
 
 .indicators-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
     align-items: start
 }
@@ -287,15 +325,15 @@
 .indicator {
     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
     border-radius: 12px;
-    padding: 0.85rem;
+    padding: 0.65rem;
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    overflow: hidden;
+    gap: 0.35rem;
+    overflow: visible;
 }
 
 .indicator:hover {
@@ -312,11 +350,14 @@
 }
 
 .indicator-name {
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.3;
+    line-height: 1.2;
     flex: 1;
+    min-width: 0;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .indicator-actions {
@@ -326,7 +367,7 @@
 }
 
 .indicator-agency {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
     font-weight: 500;
     margin-top: 2px;
@@ -344,7 +385,8 @@
 .indicator-content {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
+    overflow: visible;
 }
 
 .data-rows-container {
@@ -363,7 +405,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0;
+    padding: 2px 0;
     border-bottom: 1px solid transparent;
 }
 
@@ -377,8 +419,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0;
-    font-size: 0.9rem;
+    padding: 2px 0;
+    font-size: 0.8rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+}
+
+.latest-data-row~.data-row {
+    /* Data rows that are visible in collapsed state (siblings of latest-data-row) */
     border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
 }
 
@@ -389,35 +436,44 @@
 .month-label {
     font-weight: 500;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    word-break: keep-all;
+    hyphens: none;
 }
 
 .month-value {
     font-weight: 600;
     color: var(--text-secondary);
     text-align: right;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .month-change,
 .job-change-inline {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     opacity: 0.8;
     font-weight: 600;
 }
 
 .change-indicators {
-    margin-top: 4px;
+    margin: 4px 0 2px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .change-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     padding: 2px 6px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     white-space: nowrap;
     background: var(--bg-secondary);
 }
@@ -428,9 +484,9 @@
 }
 
 .arrow-icon i {
-    width: 14px;
-    height: 14px;
-    stroke-width: 2.5px;
+    width: 12px;
+    height: 12px;
+    stroke-width: 2px;
 }
 
 .change-positive {
@@ -448,20 +504,35 @@
     background: rgba(0, 0, 0, 0.05);
 }
 
+.mom-label {
+    font-size: 0.6rem;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+.mom-value {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.mom-number {
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
 .expand-toggle {
-    width: 100%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 6px;
-    margin-top: 4px;
+    padding: 4px;
     background: transparent;
     border: none;
     color: var(--text-muted);
-    font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.2s ease;
     border-radius: 6px;
+    width: 24px;
+    height: 24px;
 }
 
 .expand-toggle:hover {
@@ -513,14 +584,59 @@
     display: none !important
 }
 
+/* Keep Prediction Markets cards always expanded */
+.category[data-category="Prediction Markets"] .indicator .data-rows-container {
+    max-height: 500px;
+    margin-top: 8px;
+}
+
+
+.category[data-category="Prediction Markets"] .indicator .latest-data-row {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+}
+
+.category[data-category="Prediction Markets"] .indicator .indicator-agency {
+    display: block;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category[data-category="Prediction Markets"] .expand-toggle {
+    display: none;
+}
+
+/* Ensure Financial Markets cards are narrow like the rest */
+.category[data-category="Financial Markets"] .indicators-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.category[data-category="Financial Markets"] .indicator {
+    max-width: 100%;
+    min-width: 0;
+}
+
+.category[data-category="Financial Markets"] .indicator-name {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 0.8rem;
+}
+
+.category[data-category="Financial Markets"] .month-value {
+    font-size: 0.75rem;
+}
+
+
 /* Card Chart Overlay Styles */
 /* Chart overlay for modal-like display of charts */
 .chart-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
     background: var(--bg-primary);
     /* Use CSS variable for consistency and maintainability */
     border-radius: 12px;
@@ -531,7 +647,7 @@
     /* Optimized transition for smooth performance */
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--color-gray-200);
+    border: 1px solid var(--border-color);
     overflow: hidden;
     /* Fallback for older browsers */
     -webkit-border-radius: var(--border-radius);
@@ -549,18 +665,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
+    padding: 8px 12px;
     border-bottom: 1px solid var(--color-gray-200);
     background: var(--bg-secondary);
 }
 
 .chart-overlay-title {
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin: 0;
 }
 
@@ -570,35 +686,57 @@
     color: var(--color-primary);
 }
 
+.chart-overlay-title-floating {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .chart-overlay-close {
-    background: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.8);
     border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: var(--text-secondary);
     transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .chart-overlay-close:hover {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
+    background: var(--logo-teal);
+    color: var(--color-white);
 }
 
 .chart-overlay-body {
-    padding: 16px;
-    height: calc(100% - 60px);
+    padding: 0;
+    height: 100%;
     position: relative;
 }
 
 .chart-overlay-canvas {
     width: 100% !important;
     height: 100% !important;
-    border-radius: 8px;
+    border-radius: 12px;
     background: var(--bg-primary);
 }
 

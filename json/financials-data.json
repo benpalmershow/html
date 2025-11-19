@@ -1,6 +1,7 @@
 {
-    "lastUpdated": "2025-11-18T21:00:00Z",
-    "indices": [{
+    "lastUpdated": "2025-11-19T21:00:00Z",
+    "indices": [
+        {
             "category": "Business Indicators",
             "agency": "Federal Reserve",
             "name": "Industrial Production Index",
@@ -16,24 +17,24 @@
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
         },
         {
-        "category": "Business Indicators",
-             "agency": "ISM",
-             "name": "Services PMI",
-             "releaseDay": 5,
-             "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/services/october/",
-             "march": "",
-             "april": "",
-             "may": "",
-             "june": "",
-             "july": "",
-             "august": "",
-             "september": "50",
-             "october": "52.4",
-             "change": "",
-             "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
-         },
-         {
-             "category": "Business Indicators",
+            "category": "Business Indicators",
+            "agency": "ISM",
+            "name": "Services PMI",
+            "releaseDay": 5,
+            "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/services/october/",
+            "march": "",
+            "april": "",
+            "may": "",
+            "june": "",
+            "july": "",
+            "august": "",
+            "september": "50",
+            "october": "52.4",
+            "change": "",
+            "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
+        },
+        {
+            "category": "Business Indicators",
             "agency": "NFIB",
             "name": "Small Business Optimism Index",
             "releaseDay": 12,
@@ -45,8 +46,8 @@
             "july": "100.3",
             "august": "100.8",
             "september": "98.8",
-            "october":"98.2",
-            "change":"", 
+            "october": "98.2",
+            "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."
         },
         {
@@ -126,28 +127,28 @@
             "september": "238,000",
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data is seasonally adjusted and includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
-            },
-            {
+        },
+        {
             "category": "Employment Indicators",
-             "agency": "Challenger Gray & Christmas",
-             "name": "Job Cuts Report",
-             "releaseDay": 6,
-             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
-             "january": "49,795",
-             "february": "172,017",
-             "march": "275,240",
-             "april": "105,441",
-             "may": "93,816",
-             "june": "47,999",
-             "july":"62,075",
-             "august":"85,979",
-             "september": "54,064",
-             "october": "153,074",
-             "change": "",
-             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
-         },
-         {
-             "category": "Employment Indicators",
+            "agency": "Challenger Gray & Christmas",
+            "name": "Job Cuts Report",
+            "releaseDay": 6,
+            "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
+            "january": "49,795",
+            "february": "172,017",
+            "march": "275,240",
+            "april": "105,441",
+            "may": "93,816",
+            "june": "47,999",
+            "july": "62,075",
+            "august": "85,979",
+            "september": "54,064",
+            "october": "153,074",
+            "change": "",
+            "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
+        },
+        {
+            "category": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
             "releaseDay": 0,
@@ -174,7 +175,7 @@
             "july": "134,561,000",
             "august": "134,558,000",
             "september": "134,529,000",
-            "october":"134,571,000",
+            "october": "134,571,000",
             "change": "",
             "explanation": "The monthly change in private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
         },
@@ -220,7 +221,6 @@
             "june": "676,000",
             "july": "664,000",
             "august": "800,000",
-
             "change": "",
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
         },
@@ -303,9 +303,8 @@
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
         },
-
         {
-            "category": "Financial Markets",
+            "category": "Business Indicators",
             "agency": "FRED",
             "name": "10-yr Treasury Yield",
             "releaseDay": 0,
@@ -317,8 +316,8 @@
             "july": "4.39",
             "august": "4.27",
             "september": "4.15",
-            "october":"4.06",
-            "november":"4.13",
+            "october": "4.06",
+            "november": "4.13",
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
         },
@@ -342,7 +341,7 @@
         {
             "category": "Business Indicators",
             "agency": "ISM",
-            "name": "Manufacturing PMI",
+            "name": "Manufact... PMI",
             "releaseDay": 1,
             "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/october/",
             "march": "49",
@@ -352,7 +351,7 @@
             "july": "48",
             "august": "48.7",
             "september": "49.1",
-            "october":"48.7",
+            "october": "48.7",
             "change": "",
             "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
         },
@@ -375,6 +374,7 @@
             "category": "Business Indicators",
             "agency": "Commerce",
             "name": "New Orders",
+            "lastUpdated": "2025-11-19T13:10:00Z",
             "releaseDay": 3,
             "url": "https://www.census.gov/economic-indicators/",
             "march": "$617.4B",
@@ -480,7 +480,6 @@
             "august": "207.4",
             "september": "207",
             "october": "203.6",
-
             "change": "",
             "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."
         },
@@ -500,7 +499,7 @@
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
         },
         {
-            "category": "Financial Markets",
+            "category": "Trade & Tariffs",
             "agency": "FRED",
             "name": "Dollar Value Index",
             "releaseDay": 0,
@@ -519,6 +518,7 @@
             "category": "Trade & Tariffs",
             "agency": "Treasury",
             "name": "Tariff Revenue",
+            "lastUpdated": "2025-11-19T13:10:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
             "march": "$8.2B",
@@ -528,7 +528,7 @@
             "july": "$28B",
             "august": "$30B",
             "september": "$30B",
-            "october":"$34B",
+            "october": "$34B",
             "change": "",
             "explanation": "Monthly customs duties collected by the U.S. government on imported goods. Tariffs are taxes imposed on specific categories of imports, often used as a tool of trade policy. Revenue from tariffs goes directly to the U.S. Treasury and can be used to fund government operations. Changes in tariff revenue can reflect shifts in trade volumes, tariff rates, or the composition of imports. Tariff revenue typically increases with new or increased tariffs but may decrease if the tariffs reduce overall trade volumes. This metric is closely watched in trade policy discussions and budget analysis."
         },
@@ -536,6 +536,7 @@
             "category": "Trade & Tariffs",
             "agency": "Census",
             "name": "Trade Deficit",
+            "lastUpdated": "2025-11-19T13:10:00Z",
             "releaseDay": 5,
             "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
             "march": "$136.4B",
@@ -638,7 +639,7 @@
             "may": "331.458",
             "june": "331.685",
             "july": "331.003",
-            "august":"330.022",
+            "august": "330.022",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },
@@ -660,77 +661,76 @@
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
         },
         {
-        "category": "Commodities",
-        "agency": "Google Finance",
-        "name": "Lumber Futures",
-        "releaseDay": 0,
-        "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
-        "march": "683",
-        "april": "669",
-        "may": "584",
-        "june": "592",
-        "july": "667",
-        "august": "690",
-        "september": "579",
-        "october": "609",
-        "november":"560",
-
-        "change": "",
-        "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
+            "category": "Commodities",
+            "agency": "Google Finance",
+            "name": "Lumber Futures",
+            "releaseDay": 0,
+            "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
+            "march": "683",
+            "april": "669",
+            "may": "584",
+            "june": "592",
+            "july": "667",
+            "august": "690",
+            "september": "579",
+            "october": "609",
+            "november": "560",
+            "change": "",
+            "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
         },
-         {
-             "category": "Commodities",
-             "agency": "USDA NASS",
-             "name": "Soybean Prices",
-             "releaseDay": 0,
-             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
-             "january": "10.00",
-             "february": "10.20",
-             "march": "10.20",
-             "april": "10.20",
-             "may": "10.40",
-             "june": "10.40",
-             "july": "10.20",
-             "august": "10.00",
-             "change": "",
-             "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
-         },
-         {
-             "category": "Commodities",
-             "agency": "USDA NASS",
-             "name": "Wheat Prices",
-             "releaseDay": 0,
-             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
-             "january": "5.52",
-             "february": "5.59",
-             "march": "5.71",
-             "april": "5.61",
-             "may": "5.58",
-             "june": "5.28",
-             "july": "4.94",
-             "august": "4.84",
-             "change": "",
-             "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
-         },
-         {
-             "category": "Commodities",
-             "agency": "EIA",
-             "name": "WTI Crude Oil",
-             "releaseDay": 0,
-             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
-             "january": "75.74",
-             "february": "71.53",
-             "march": "68.24",
-             "april": "63.54",
-             "may": "62.17",
-             "june": "68.17",
-             "july": "68.39",
-             "august": "64.86",
-             "september": "63.96",
-             "october": "60.89",
-             "change": "",
-             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
-         },
+        {
+            "category": "Commodities",
+            "agency": "USDA NASS",
+            "name": "Soybean Prices",
+            "releaseDay": 0,
+            "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
+            "january": "10.00",
+            "february": "10.20",
+            "march": "10.20",
+            "april": "10.20",
+            "may": "10.40",
+            "june": "10.40",
+            "july": "10.20",
+            "august": "10.00",
+            "change": "",
+            "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
+        },
+        {
+            "category": "Commodities",
+            "agency": "USDA NASS",
+            "name": "Wheat Prices",
+            "releaseDay": 0,
+            "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
+            "january": "5.52",
+            "february": "5.59",
+            "march": "5.71",
+            "april": "5.61",
+            "may": "5.58",
+            "june": "5.28",
+            "july": "4.94",
+            "august": "4.84",
+            "change": "",
+            "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
+        },
+        {
+            "category": "Commodities",
+            "agency": "EIA",
+            "name": "WTI Crude Oil",
+            "releaseDay": 0,
+            "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
+            "january": "75.74",
+            "february": "71.53",
+            "march": "68.24",
+            "april": "63.54",
+            "may": "62.17",
+            "june": "68.17",
+            "july": "68.39",
+            "august": "64.86",
+            "september": "63.96",
+            "october": "60.89",
+            "change": "",
+            "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
+        },
         {
             "category": "Housing Market",
             "agency": "NAR",
@@ -744,7 +744,6 @@
             "july": "4.01M",
             "august": "4.00M",
             "september": "4.06M",
-
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
         },
@@ -791,8 +790,6 @@
             "change": "",
             "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 95¢ (95%) chance of no recession vs 5¢ (5%) chance of recession."
         },
-
-
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
@@ -819,7 +816,6 @@
             "DAL_win_odds": "64¢",
             "explanation": "NFL game prediction market showing the probability of the Raiders covering the spread against the Cowboys. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
         },
-    
         {
             "category": "Trade & Tariffs",
             "agency": "Freightos",
@@ -843,12 +839,11 @@
             "name": "Real-Time Unemployment Rate Forecast",
             "releaseDay": 0,
             "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
-            "september":"4.34",
+            "september": "4.34",
             "october": "4.35",
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
         },
-
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
@@ -865,5 +860,6 @@
             },
             "change": "",
             "explanation": "Prediction market probabilities for Federal Reserve interest rate decisions at the December FOMC meeting. Data aggregated from both Kalshi and Polymarket platforms showing market consensus on potential rate changes measured in basis points (BPS)."
-        } ]
+        }
+    ]
 }

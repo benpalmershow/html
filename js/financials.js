@@ -84,6 +84,28 @@ function extractNumericValue(value) {
     return isNaN(num) ? null : num;
 }
 
+function formatCompactNumber(num) {
+    if (num === null || num === undefined) return '—';
+
+    const absNum = Math.abs(num);
+
+    // For numbers >= 1000, use K suffix
+    if (absNum >= 1000) {
+        const kValue = num / 1000;
+        // Show 1 decimal place for values under 100K, no decimals for 100K+
+        if (absNum < 100000) {
+            return (num >= 0 ? '+' : '') + kValue.toFixed(1) + 'K';
+        } else {
+            return (num >= 0 ? '+' : '') + Math.round(kValue) + 'K';
+        }
+    }
+
+    // For smaller numbers, show as-is
+    const formatted = num.toFixed(2).replace('.00', '');
+    return num >= 0 ? '+' + formatted : formatted;
+}
+
+
 function getLatestMonthForIndicator(indicator) {
     const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 
@@ -174,13 +196,7 @@ function calculateAllMonthlyChanges(indicator) {
 
         if (currentValue !== null && previousValue !== null) {
             const change = currentValue - previousValue;
-            let formattedChange;
-            if (Math.abs(change) >= 1000) {
-                formattedChange = change >= 0 ? `+${change.toLocaleString()}` : change.toLocaleString();
-            } else {
-                formattedChange = change >= 0 ? `+${change.toFixed(2)}` : change.toFixed(2);
-                formattedChange = formattedChange.replace('.00', '');
-            }
+            const formattedChange = formatCompactNumber(change);
 
             changes.push({
                 month: currentMonth,
@@ -257,6 +273,8 @@ function createIndicatorCard(indicator) {
             let extraHtml = '';
 
             // Special handling for specific indicators
+            const cpiYoyData = { march: '2.4%', april: '2.3%', may: '2.4%', june: '2.7%', july: '2.7%', august: '2.9%', september: '3.0%' };
+
             if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings') {
                 const changesMap = {};
                 calculateAllMonthlyChanges(indicator).forEach(change => changesMap[change.month] = change);
@@ -265,7 +283,6 @@ function createIndicatorCard(indicator) {
                     extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
                 }
             } else if (indicator.name === 'CPI') {
-                const cpiYoyData = { march: '2.4%', april: '2.3%', may: '2.4%', june: '2.7%', july: '2.7%', august: '2.9%', september: '3.0%' }; // This should ideally come from data
                 if (cpiYoyData[latest.month]) {
                     extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[latest.month]}</span>`;
                 }
@@ -273,9 +290,13 @@ function createIndicatorCard(indicator) {
 
             latestDataHtml = `<div class="latest-data-row"><span class="month-label">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
 
-            // History data
+            // Show next 2 months as visible (collapsed state shows 3 total)
+            let visibleHistoryHtml = '';
+
+            // History data - split into visible (next 2 months) and expandable (rest)
             if (availableData.length > 1) {
-                hasHistory = true;
+                hasHistory = availableData.length > 3; // Only show expand button if more than 3 months
+
                 for (let i = 1; i < availableData.length; i++) {
                     const item = availableData[i];
                     let historyExtraHtml = '';
@@ -287,11 +308,25 @@ function createIndicatorCard(indicator) {
                         if (changeObj) {
                             historyExtraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
                         }
+                    } else if (indicator.name === 'CPI') {
+                        if (cpiYoyData[item.month]) {
+                            historyExtraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[item.month]}</span>`;
+                        }
                     }
 
-                    historyDataHtml += `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
+                    const rowHtml = `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
+
+                    // First 2 items (index 1 and 2) go to visible, rest go to expandable
+                    if (i <= 2) {
+                        visibleHistoryHtml += rowHtml;
+                    } else {
+                        historyDataHtml += rowHtml;
+                    }
                 }
             }
+
+            // Add visible history to latest data
+            latestDataHtml += visibleHistoryHtml;
         } else {
             latestDataHtml = `<div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>`;
         }
@@ -303,11 +338,12 @@ function createIndicatorCard(indicator) {
 
     if (momChange !== null) {
         const momFormatted = formatChange(momChange.percentChange);
-        let changeText = `MoM: ${momFormatted}`;
+        let changeText = `<span class="mom-label">MoM:</span> <span class="mom-value">${momFormatted}</span>`;
 
         if (['Private Employment', 'Total Nonfarm Employment', 'Job Openings'].includes(indicator.name)) {
             const numberChange = momChange.numberChange;
-            changeText += ` (${numberChange >= 0 ? '+' : ''}${numberChange.toLocaleString()})`;
+            const compactChange = formatCompactNumber(numberChange).replace(/^\+/, ''); // Remove leading + since we add it in parentheses
+            changeText += ` <span class="mom-number">(${numberChange >= 0 ? '+' : ''}${compactChange})</span>`;
         }
 
         const arrowIcon = momChange.numberChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
@@ -325,8 +361,11 @@ function createIndicatorCard(indicator) {
                 <div class="indicator-actions">
                     ${explanation ? `<i data-lucide="info" class="info-icon" data-explanation="${explanation.replace(/"/g, '&quot;')}" title="Show explanation"></i>` : ''}
                     ${indicator.category !== 'Prediction Markets' ? `<i data-lucide="bar-chart-3" class="chart-icon" title="View Interactive Chart"></i>` : ''}
+                    ${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}
                 </div>
             </div>
+            
+            ${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}
             
             <div class="indicator-agency">
                 Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a>
@@ -336,7 +375,6 @@ function createIndicatorCard(indicator) {
 
             <div class="indicator-content">
                 ${latestDataHtml}
-                <div class="change-indicators">${changeIndicators}</div>
                 
                 <div class="explanation-text" style="display: none; margin-top: 8px; padding: 8px; background: var(--bg-secondary, #f5f5f5); border-radius: 4px; font-size: 0.9em; color: var(--text-secondary, #666);"></div>
 
@@ -344,9 +382,6 @@ function createIndicatorCard(indicator) {
                     <div class="data-rows-container">
                         ${historyDataHtml}
                     </div>
-                    <button class="expand-toggle" aria-label="Toggle history">
-                        <i data-lucide="chevron-down"></i>
-                    </button>
                 ` : ''}
             </div>
         </div>
@@ -408,18 +443,23 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     if (sortByLatest) {
         // Sort all indicators by latest data and display in single "Latest Updates" section
         const allIndicators = financialData.indices.slice(); // copy array
-        allIndicators.sort((a, b) => {
-            const aInfo = getLatestMonthForIndicator(a);
-            const bInfo = getLatestMonthForIndicator(b);
+        // Primary sort: by explicit lastUpdated timestamp (descending)
+        if (a.lastUpdated || b.lastUpdated) {
+            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+            if (dateA !== dateB) return dateB - dateA;
+        }
 
-            // Primary sort: by days old (ascending - freshest first)
-            if (aInfo.daysOld !== bInfo.daysOld) {
-                return aInfo.daysOld - bInfo.daysOld;
-            }
+        const aInfo = getLatestMonthForIndicator(a);
+        const bInfo = getLatestMonthForIndicator(b);
 
-            // Secondary sort: by indicator name (alphabetical)
-            return a.name.localeCompare(b.name);
-        });
+        // Secondary sort: by days old (ascending - freshest first)
+        if (aInfo.daysOld !== bInfo.daysOld) {
+            return aInfo.daysOld - bInfo.daysOld;
+        }
+
+        // Tertiary sort: by indicator name (alphabetical)
+        return a.name.localeCompare(b.name);
 
         html += `
             <div class="category" data-category="latest-updates">
@@ -468,16 +508,41 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 function setupFilters() {
     const categories = [...new Set(financialData.indices.map(item => item.category))];
     const categoryDropdown = document.getElementById('categoryDropdown');
+    const desktopFilters = document.getElementById('desktopFilters');
 
-    // Populate category dropdown
-    categoryDropdown.innerHTML = '<button class="dropdown-item active" data-category="all"><i data-lucide="list"></i>All</button><button class="dropdown-item" data-sort="latest"><i data-lucide="clock"></i>Latest</button>';
+    // Populate category dropdown and desktop filters
+    // Reset content
+    categoryDropdown.innerHTML = '';
+    desktopFilters.innerHTML = '';
+
+    // Helper to create filter elements
+    const createFilterElements = (id, iconClass, text, isLatest = false) => {
+        // Dropdown item
+        const dropItem = document.createElement('button');
+        dropItem.className = 'dropdown-item';
+        if (id === 'all') dropItem.classList.add('active');
+        if (isLatest) dropItem.dataset.sort = 'latest';
+        else dropItem.dataset.category = id;
+        dropItem.innerHTML = `${iconClass}<span>${text}</span>`;
+        categoryDropdown.appendChild(dropItem);
+
+        // Desktop button
+        const deskBtn = document.createElement('button');
+        deskBtn.className = 'filter-btn desktop-filter-btn';
+        if (id === 'all') deskBtn.classList.add('active');
+        if (isLatest) deskBtn.dataset.sort = 'latest';
+        else deskBtn.dataset.category = id;
+        deskBtn.innerHTML = `${iconClass}<span>${text}</span>`;
+        desktopFilters.appendChild(deskBtn);
+    };
+
+    // Add "All"
+    createFilterElements('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
+
+    // Add Categories
     categories.forEach(category => {
-        const button = document.createElement('button');
-        button.className = 'dropdown-item';
-        button.dataset.category = category;
-        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-        button.innerHTML = `${icon}<span>${category}</span>`;
-        categoryDropdown.appendChild(button);
+        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
+        createFilterElements(category, icon, category);
     });
 
     // Setup dropdown toggle functionality
@@ -487,18 +552,16 @@ function setupFilters() {
     document.getElementById('categoryDropdown').addEventListener('click', function (e) {
         const item = e.target.closest('.dropdown-item');
         if (item) {
-            document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-
-            if (item.dataset.sort === 'latest') {
-                currentCategory = 'all';
-                renderDashboard('all', true);
-            } else {
-                currentCategory = item.dataset.category || 'all';
-                renderDashboard(currentCategory, false);
-            }
-
+            handleFilterClick(item, 'dropdown');
             closeAllDropdowns();
+        }
+    });
+
+    // Setup desktop button clicks
+    desktopFilters.addEventListener('click', function (e) {
+        const btn = e.target.closest('.filter-btn');
+        if (btn) {
+            handleFilterClick(btn, 'desktop');
         }
     });
 
@@ -510,6 +573,27 @@ function setupFilters() {
     });
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function handleFilterClick(element, source) {
+    // Update active state in both places
+    const category = element.dataset.category;
+
+    // Update dropdown items
+    document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => {
+        i.classList.remove('active');
+        if (i.dataset.category === category) i.classList.add('active');
+    });
+
+    // Update desktop buttons
+    document.querySelectorAll('#desktopFilters .filter-btn').forEach(b => {
+        b.classList.remove('active');
+        if (b.dataset.category === category) b.classList.add('active');
+    });
+
+    // Render
+    currentCategory = category || 'all';
+    renderDashboard(currentCategory);
 }
 
 function setupDropdownToggle(btnId, dropdownId) {
@@ -538,10 +622,18 @@ function initializeDashboard() {
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'all';
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+    // Set active state for desktop buttons
+    document.querySelectorAll('.desktop-filter-btn').forEach(btn => {
         if (btn.dataset.category === initialFilter) btn.classList.add('active');
         else btn.classList.remove('active');
     });
+
+    // Set active state for dropdown items
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        if (item.dataset.category === initialFilter) item.classList.add('active');
+        else item.classList.remove('active');
+    });
+
     renderDashboard(initialFilter);
     setupModalHandlers();
 }
@@ -575,13 +667,8 @@ function createChartOverlay(indicator, indicatorName) {
     const overlay = document.createElement('div');
     overlay.className = 'chart-overlay';
     overlay.innerHTML = `
-        <div class="chart-overlay-header">
-            <h4 class="chart-overlay-title">
-                <i data-lucide="bar-chart-3"></i>
-                ${indicatorName}
-            </h4>
-            <button class="chart-overlay-close">&times;</button>
-        </div>
+        <h4 class="chart-overlay-title-floating">${indicatorName}</h4>
+        <button class="chart-overlay-close">&times;</button>
         <div class="chart-overlay-body">
             <div class="chart-overlay-loading">
                 <div class="chart-overlay-loading-spinner"></div>
@@ -678,7 +765,7 @@ function initializeChartInOverlay(chartConfig, canvas) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            layout: { padding: { top: 5, right: 5, bottom: 5, left: 5 } },
+            layout: { padding: { top: 15, right: 0, bottom: 25, left: 10 } },
             animation: { duration: 600, easing: 'easeInOutQuart' },
             plugins: {
                 legend: { display: false },

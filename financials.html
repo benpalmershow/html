@@ -2,166 +2,175 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) - Deferred for performance -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DWEVPGLJDP', {
-        'anonymize_ip': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
-      
-      window.addEventListener('load', function() {
-        const script = document.createElement('script');
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-        script.async = true;
-        document.head.appendChild(script);
-      });
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Prevent Caching -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+  <!-- Google tag (gtag.js) - Deferred for performance -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
 
-    <title>Financials - Howdy, Stranger</title>
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-    <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <meta name="theme-color" content="#1a1f1e">
+    window.addEventListener('load', function () {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    });
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Prevent Caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
-    <link rel="stylesheet" href="css/body.css?v=20251117">
-    <link rel="stylesheet" href="css/nav.css?v=20251117">
-    <link rel="stylesheet" href="css/financials.css?v=20251117">
+  <title>Financials - Howdy, Stranger</title>
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+  <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <meta name="theme-color" content="#1a1f1e">
 
-    <!-- Font Awesome - Deferred -->
-     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+  <link rel="stylesheet" href="css/body.css?v=20251117">
+  <link rel="stylesheet" href="css/nav.css?v=20251117">
+  <link rel="stylesheet" href="css/financials.css?v=20251117">
 
-     <script>
-       // Only load Vercel scripts in production
-       if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-         const script = document.createElement('script');
-         script.src = '/_vercel/insights/script.js';
-         script.defer = true;
-         document.head.appendChild(script);
-       }
-     </script>
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+  <!-- Font Awesome - Deferred -->
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+  </noscript>
 
-    <!-- Chart.js for interactive charts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script>
+    // Only load Vercel scripts in production
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
-    <!-- Infogram Embed Script -->
-    <script>
-        ! function (e, n, i, s) {
-            var d = "InfogramEmbeds";
-            var o = e.getElementsByTagName(n)[0];
-            if (window[d] && window[d].initialized)
-                window[d].process && window[d].process();
-            else if (!e.getElementById(i)) {
-                var r = e.createElement(n);
-                r.async = 1,
-                    r.id = i,
-                    r.src = s,
-                    o.parentNode.insertBefore(r, o)
-            }
-        }(document, "script", "infogram-async",
-            "https://e.infogram.com/js/dist/embed-loader-min.js");
-    </script>
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
-    <!-- Financials Module -->
-    <script type="module" src="js/financials.js"></script>
-    <script type="module" src="js/speed-insights.js"></script>
+  <!-- Infogram Embed Script -->
+  <script>
+    ! function (e, n, i, s) {
+      var d = "InfogramEmbeds";
+      var o = e.getElementsByTagName(n)[0];
+      if (window[d] && window[d].initialized)
+        window[d].process && window[d].process();
+      else if (!e.getElementById(i)) {
+        var r = e.createElement(n);
+        r.async = 1,
+          r.id = i,
+          r.src = s,
+          o.parentNode.insertBefore(r, o)
+      }
+    }(document, "script", "infogram-async",
+      "https://e.infogram.com/js/dist/embed-loader-min.js");
+  </script>
 
-    <!-- Deferred Font Awesome loader -->
-    <script>
-      window.addEventListener('load', function() {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-        link.crossOrigin = 'anonymous';
-        link.referrerPolicy = 'no-referrer';
-        document.head.appendChild(link);
-      });
-    </script>
+  <!-- Financials Module -->
+  <script type="module" src="js/financials.js"></script>
+  <script type="module" src="js/speed-insights.js"></script>
+
+  <!-- Deferred Font Awesome loader -->
+  <script>
+    window.addEventListener('load', function () {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      link.crossOrigin = 'anonymous';
+      link.referrerPolicy = 'no-referrer';
+      document.head.appendChild(link);
+    });
+  </script>
 
 </head>
 
 <body>
 
-    <nav class="nav-links" id="main-nav"></nav>
-    <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="bar-chart-3" class="page-icon"></i>Numbers</div>
-    <div class="container">
-        <div class="collapsible-container">
+  <nav class="nav-links" id="main-nav"></nav>
+  <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="bar-chart-3"
+      class="page-icon"></i>Numbers</div>
+  <div class="container">
+    <div class="collapsible-container">
 
-            <div class="collapsible-content" id="interactive-dashboard-content">
-                <div class="filters" id="filters">
-                    <div class="filters-wrapper">
-                        <div class="filter-group">
-                            <button class="filter-btn filter-category-btn" id="categoryBtn">
-                                <i data-lucide="list" class="filter-icon"></i>
-                                <span class="filter-text">Filter By</span>
-                                <i data-lucide="chevron-down" class="filter-dropdown-icon"></i>
-                            </button>
-                            <div class="filter-dropdown" id="categoryDropdown">
-                                <button class="dropdown-item active" data-category="all"><i data-lucide="list"></i>All</button>
-                                <button class="dropdown-item" data-sort="latest"><i data-lucide="clock"></i>Latest</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="lastUpdated" class="last-updated"></div>
-
-                <div class="categories" id="categories"></div>
-
-                <!-- Chart Modal Popup -->
-                <div id="chartModal" class="chart-modal">
-                    <div class="chart-modal-content">
-                        <div class="chart-modal-header">
-                            <h3>
-                                <i data-lucide="trending-up"></i>
-                            </h3>
-                            <button id="closeChartModal">&times;</button>
-                        </div>
-                        <div class="chart-modal-body">
-                        </div>
-                    </div>
-                </div>
+      <div class="collapsible-content" id="interactive-dashboard-content">
+        <div class="filters" id="filters">
+          <div class="filters-wrapper">
+            <div class="filter-group mobile-filters">
+              <button class="filter-btn filter-category-btn" id="categoryBtn">
+                <i data-lucide="list" class="filter-icon"></i>
+                <span class="filter-text">Filter By</span>
+                <i data-lucide="chevron-down" class="filter-dropdown-icon"></i>
+              </button>
+              <div class="filter-dropdown" id="categoryDropdown">
+                <button class="dropdown-item active" data-category="all"><i data-lucide="list"></i>All</button>
+              </div>
             </div>
+            <div class="desktop-filters" id="desktopFilters">
+              <!-- Desktop buttons will be injected here -->
+            </div>
+          </div>
         </div>
-        </main>
 
-        <footer id="social-footer"><div class="social-links"></div><p class="footer-text">© 2025 Howdy, Stranger.</p></footer>
+        <div id="lastUpdated" class="last-updated"></div>
 
-        <script>
-          // Helper functions for hints (called from nav modal)
-          function closeHints() {
-            const visitorHints = document.getElementById('visitor-hints');
-            if (visitorHints) {
-              visitorHints.style.display = 'none';
-              visitorHints.classList.remove('active');
-              localStorage.setItem('hintsShown', 'true');
-            }
-          }
-        </script>
+        <div class="categories" id="categories"></div>
 
-        <script src="js/nav.js" defer></script>
-        <script src="js/countdown.js" defer></script>
-        <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
-        <script>
-        // Initialize Lucide icons
-        if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
+        <!-- Chart Modal Popup -->
+        <div id="chartModal" class="chart-modal">
+          <div class="chart-modal-content">
+            <div class="chart-modal-header">
+              <h3>
+                <i data-lucide="trending-up"></i>
+              </h3>
+              <button id="closeChartModal">&times;</button>
+            </div>
+            <div class="chart-modal-body">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+    <footer id="social-footer">
+      <div class="social-links"></div>
+      <p class="footer-text">© 2025 Howdy, Stranger.</p>
+    </footer>
+
+    <script>
+      // Helper functions for hints (called from nav modal)
+      function closeHints() {
+        const visitorHints = document.getElementById('visitor-hints');
+        if (visitorHints) {
+          visitorHints.style.display = 'none';
+          visitorHints.classList.remove('active');
+          localStorage.setItem('hintsShown', 'true');
         }
-        </script>
+      }
+    </script>
 
-        <script src="js/socials.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <div id="last-updated" style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9em;"></div>
+    <script>
+      // Initialize Lucide icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    </script>
+
+    <script src="js/socials.js" defer></script>
 </body>
 
 </html>

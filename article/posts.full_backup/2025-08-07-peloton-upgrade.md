@@ -1,1 +1,0 @@
-<i data-lucide='trending-up' class='post-icon'></i> <b>Peloton Stock Upgrade</b><br><br>Peloton surges 12% on UBS upgrade to Buy with $11 price target.<br><br><a href="news.html?article=peloton-upgrade"><b>View Analysis</b></a>

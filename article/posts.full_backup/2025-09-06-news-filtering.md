@@ -1,1 +1,0 @@
-<i data-lucide='filter' class='post-icon'></i> <b>New Feature: News Filtering</b><br><br>Category filters added to the News page. Now you can easily sort and filter by IPO, Earnings, Policy, and Legal news.<br><br><a href="news.html"><b>Try it out</b></a>

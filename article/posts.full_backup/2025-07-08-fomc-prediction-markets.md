@@ -1,1 +1,0 @@
-<i data-lucide='trending-up' class='post-icon'></i> <b>FOMC Prediction Markets</b><br><br>81% chance FOMC rates remain unchanged in July per prediction markets.<br><br><a href="financials.html"><b>View prediction markets</b></a>

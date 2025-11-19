@@ -1,1 +1,0 @@
-<i data-lucide='trending-down' class='post-icon'></i>  <b>Budget Deficit Update</b><br><br>▪ <b>August Deficit</b>: -$344.8B (largest since May)<br>▪ <b>YTD Trend</b>: 4 of last 6 months in deficit<br>▪ <b>July-August</b>: -$635.9B combined shortfall<br><br><a href="financials.html"><b>View all indicators</b></a>

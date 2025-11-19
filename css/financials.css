@@ -1,4 +1,3 @@
-
 .container {
     width: 100%;
     max-width: 1200px;
@@ -53,11 +52,11 @@
 }
 
 .collapsible-header :is(h1, h2) {
-     font-size: 1.8rem;
-     color: var(--color-secondary-dark);
-     margin: 0;
-     line-height: 1.2
- }
+    font-size: 1.8rem;
+    color: var(--color-secondary-dark);
+    margin: 0;
+    line-height: 1.2
+}
 
 .collapse-toggle {
     font-size: 1.5rem;
@@ -225,14 +224,14 @@
 }
 
 .category {
-     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%);
-     border-radius: 15px;
-     padding: clamp(1rem, 3vw, 1.5rem);
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-     backdrop-filter: blur(10px);
-     transition: transform 0.3s ease;
-     word-break: break-word
- }
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 15px;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+    word-break: break-word
+}
 
 .category:hover {
     transform: translateY(-5px);
@@ -240,15 +239,15 @@
 }
 
 .category-title {
-     font-size: clamp(1.2rem, 5vw, 1.6rem);
-     color: var(--color-secondary-dark);
-     margin-bottom: 8px;
-     border-bottom: 2px solid var(--logo-teal);
-     padding-bottom: 8px;
-     display: flex;
-     align-items: center;
-     gap: 10px
- }
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    color: var(--color-secondary-dark);
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--logo-teal);
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
 
 .category-icon {
     display: inline-flex;
@@ -279,112 +278,205 @@
 }
 
 .indicators-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-     gap: 1rem;
-     align-items: start
- }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    align-items: start
+}
 
 .indicator {
-     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
-     border-radius: 12px;
-     padding: 1rem;
-     border: 1px solid var(--border-color);
-     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-     transition: var(--transition-hover);
-     position: relative;
-     flex: 0 1 calc(50% - 0.5rem);
-     min-width: 0;
-     max-width: none
- }
+    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-radius: 12px;
+    padding: 0.85rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+}
 
 .indicator:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), 0 4px 15px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08)
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--logo-teal);
+}
+
+.indicator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .indicator-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    color: var(--text-primary)
+    color: var(--text-primary);
+    line-height: 1.3;
+    flex: 1;
+}
+
+.indicator-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
 }
 
 .indicator-agency {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
-    font-weight: 500
+    font-weight: 500;
+    margin-top: 2px;
+    display: none;
+    /* Hidden by default in compact view */
+}
+
+.indicator.expanded .indicator-agency {
+    display: block;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.indicator-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.data-rows-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator.expanded .data-rows-container {
+    max-height: 500px;
+    /* Arbitrary large height */
+    margin-top: 8px;
+}
+
+.latest-data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.indicator.expanded .latest-data-row {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .data-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0
+    padding: 4px 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+}
+
+.data-row:last-child {
+    border-bottom: none;
 }
 
 .month-label {
     font-weight: 500;
-    color: var(--text-muted)
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }
 
 .month-value {
     font-weight: 600;
     color: var(--text-secondary);
-    text-align: right
+    text-align: right;
+    font-size: 0.9rem;
 }
 
 .month-change,
 .job-change-inline {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    font-weight: 500
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 600;
 }
 
 .change-indicators {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px
+    margin-top: 4px;
 }
 
 .change-indicator {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 3px 6px;
-    border-radius: 12px;
-    font-size: 0.9rem;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 0.8rem;
     font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    width: fit-content
+    background: var(--bg-secondary);
 }
 
 .arrow-icon {
     display: inline-flex;
     align-items: center;
-    margin-right: 3px
 }
 
 .arrow-icon i {
-    width: 1em;
-    height: 1em;
-    stroke-width: 2.5px
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5px;
 }
 
 .change-positive {
-    background: var(--change-positive-bg);
-    color: var(--change-positive-color)
+    color: var(--success-color, #10b981);
+    background: rgba(16, 185, 129, 0.1);
 }
 
 .change-negative {
-    background: var(--change-negative-bg);
-    color: var(--change-negative-color)
+    color: var(--danger-color, #ef4444);
+    background: rgba(239, 68, 68, 0.1);
 }
 
 .change-neutral {
-    background: var(--change-neutral-bg);
-    color: var(--change-neutral-color)
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.expand-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    margin-top: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.expand-toggle:hover {
+    background: var(--bg-secondary);
+    color: var(--logo-teal);
+}
+
+.expand-toggle i {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.indicator.expanded .expand-toggle i {
+    transform: rotate(180deg);
 }
 
 .prediction-toggle-container {
@@ -479,18 +571,18 @@
 }
 
 .chart-overlay-close {
-     background: none;
-     border: none;
-     width: 28px;
-     height: 28px;
-     border-radius: 6px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     cursor: pointer;
-     color: var(--text-secondary);
-     transition: all 0.2s ease;
- }
+    background: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
 
 .chart-overlay-close:hover {
     background: var(--bg-secondary);
@@ -559,27 +651,25 @@
 
 /* Enhanced icon styling for info and chart icons */
 :is(.info-icon, .chart-icon) {
-     transition: var(--transition-hover);
-     cursor: pointer;
-     padding: 4px;
-     border-radius: 6px;
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     width: 20px !important;
-     height: 20px !important;
-     margin-left: 6px !important;
-     color: var(--text-secondary) !important;
- }
+    transition: var(--transition-hover);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px !important;
+    height: 24px !important;
+    color: var(--text-muted) !important;
+}
 
 :is(.info-icon, .chart-icon):hover {
     background: var(--bg-secondary);
-    transform: scale(1.1);
-    color: var(--color-primary) !important;
+    color: var(--logo-teal) !important;
 }
 
 :is(.info-icon, .chart-icon).active {
-    background: var(--color-primary);
+    background: var(--logo-teal);
     color: var(--color-white) !important;
 }
 
@@ -651,12 +741,12 @@
     }
 
     .indicator-name {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .month-label,
     .month-value {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .data-row {
@@ -664,44 +754,44 @@
     }
 
     .change-indicator {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         padding: 2px 4px;
     }
 }
 
 @media (max-width: 480px) {
-     .header h1 {
-         font-size: 1.75rem;
-     }
+    .header h1 {
+        font-size: 1.75rem;
+    }
 
-     .collapsible-header :is(h1, h2) {
-         font-size: 1.3rem;
-     }
+    .collapsible-header :is(h1, h2) {
+        font-size: 1.3rem;
+    }
 
-     .indicators-grid {
-         grid-template-columns: 1fr;
-         gap: 0.5rem;
-     }
+    .indicators-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
 
-     .indicator {
-         padding: 0.75rem;
-     }
+    .indicator {
+        padding: 0.75rem;
+    }
 
-     .filter-btn {
-         padding: 0.4rem 0.6rem;
-         font-size: 0.7rem;
-     }
+    .filter-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
 
-     .category {
-         padding: 1rem;
-     }
+    .category {
+        padding: 1rem;
+    }
 
-     .indicator-name {
-         font-size: 0.95rem;
-     }
+    .indicator-name {
+        font-size: 0.95rem;
+    }
 
-     .month-label,
-     .month-value {
-         font-size: 0.85rem;
-     }
- }
+    .month-label,
+    .month-value {
+        font-size: 0.85rem;
+    }
+}

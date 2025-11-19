@@ -1,1 +1,0 @@
-<i data-lucide='gavel' class='post-icon'></i> <b>Supreme Court Financial Disclosures</b><br><br>2024 financial disclosures for Supreme Court justices now available.<br><br><a href="news.html"><b>View Disclosures</b></a>

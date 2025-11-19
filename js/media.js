@@ -179,12 +179,8 @@
                 fragment.appendChild(card);
             }
 
-            if (currentIndex === 0) {
-                // Append first batch immediately for faster LCP
-                mediaContainer.appendChild(fragment.cloneNode(true));
-            } else {
-                mediaContainer.appendChild(fragment);
-            }
+            // Append batch to container
+            mediaContainer.appendChild(fragment);
 
             currentIndex = endIndex;
 

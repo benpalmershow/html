@@ -353,7 +353,7 @@ function createIndicatorCard(indicator) {
     }
 
     return `
-        <div class="indicator" data-indicator-name="${indicator.name.replace(/"/g, '&quot;')}">
+        <div class="indicator ${indicator.category === 'Prediction Markets' ? 'expanded' : ''}" data-indicator-name="${indicator.name.replace(/"/g, '&quot;')}">
             <div class="indicator-header">
                 <div class="indicator-name">
                     ${indicator.name}
@@ -444,22 +444,31 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         // Sort all indicators by latest data and display in single "Latest Updates" section
         const allIndicators = financialData.indices.slice(); // copy array
         // Primary sort: by explicit lastUpdated timestamp (descending)
-        if (a.lastUpdated || b.lastUpdated) {
+        allIndicators.sort((a, b) => {
             const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
             const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
-            if (dateA !== dateB) return dateB - dateA;
-        }
+            
+            // Both have lastUpdated - sort by timestamp
+            if (dateA > 0 && dateB > 0) {
+                return dateB - dateA; // newest first
+            }
+            
+            // Only one has lastUpdated - prioritize it
+            if (dateA > 0) return -1;
+            if (dateB > 0) return 1;
 
-        const aInfo = getLatestMonthForIndicator(a);
-        const bInfo = getLatestMonthForIndicator(b);
+            // Neither has lastUpdated - fall back to month-based sorting
+            const aInfo = getLatestMonthForIndicator(a);
+            const bInfo = getLatestMonthForIndicator(b);
 
-        // Secondary sort: by days old (ascending - freshest first)
-        if (aInfo.daysOld !== bInfo.daysOld) {
-            return aInfo.daysOld - bInfo.daysOld;
-        }
+            // Secondary sort: by days old (ascending - freshest first)
+            if (aInfo.daysOld !== bInfo.daysOld) {
+                return aInfo.daysOld - bInfo.daysOld;
+            }
 
-        // Tertiary sort: by indicator name (alphabetical)
-        return a.name.localeCompare(b.name);
+            // Tertiary sort: by indicator name (alphabetical)
+            return a.name.localeCompare(b.name);
+        });
 
         html += `
             <div class="category" data-category="latest-updates">
@@ -521,8 +530,12 @@ function setupFilters() {
         const dropItem = document.createElement('button');
         dropItem.className = 'dropdown-item';
         if (id === 'all') dropItem.classList.add('active');
-        if (isLatest) dropItem.dataset.sort = 'latest';
-        else dropItem.dataset.category = id;
+        if (isLatest) {
+            dropItem.dataset.sort = 'latest';
+            dropItem.dataset.isLatest = 'true';
+        } else {
+            dropItem.dataset.category = id;
+        }
         dropItem.innerHTML = `${iconClass}<span>${text}</span>`;
         categoryDropdown.appendChild(dropItem);
 
@@ -530,14 +543,21 @@ function setupFilters() {
         const deskBtn = document.createElement('button');
         deskBtn.className = 'filter-btn desktop-filter-btn';
         if (id === 'all') deskBtn.classList.add('active');
-        if (isLatest) deskBtn.dataset.sort = 'latest';
-        else deskBtn.dataset.category = id;
+        if (isLatest) {
+            deskBtn.dataset.sort = 'latest';
+            deskBtn.dataset.isLatest = 'true';
+        } else {
+            deskBtn.dataset.category = id;
+        }
         deskBtn.innerHTML = `${iconClass}<span>${text}</span>`;
         desktopFilters.appendChild(deskBtn);
     };
 
     // Add "All"
     createFilterElements('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
+
+    // Add "Latest"
+    createFilterElements('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
 
     // Add Categories
     categories.forEach(category => {
@@ -576,24 +596,32 @@ function setupFilters() {
 }
 
 function handleFilterClick(element, source) {
-    // Update active state in both places
     const category = element.dataset.category;
+    const isLatest = element.dataset.isLatest === 'true';
 
     // Update dropdown items
     document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => {
         i.classList.remove('active');
-        if (i.dataset.category === category) i.classList.add('active');
+        if ((isLatest && i.dataset.isLatest === 'true') || (!isLatest && i.dataset.category === category)) {
+            i.classList.add('active');
+        }
     });
 
     // Update desktop buttons
     document.querySelectorAll('#desktopFilters .filter-btn').forEach(b => {
         b.classList.remove('active');
-        if (b.dataset.category === category) b.classList.add('active');
+        if ((isLatest && b.dataset.isLatest === 'true') || (!isLatest && b.dataset.category === category)) {
+            b.classList.add('active');
+        }
     });
 
     // Render
-    currentCategory = category || 'all';
-    renderDashboard(currentCategory);
+    if (isLatest) {
+        renderDashboard('all', true);
+    } else {
+        currentCategory = category || 'all';
+        renderDashboard(currentCategory, false);
+    }
 }
 
 function setupDropdownToggle(btnId, dropdownId) {

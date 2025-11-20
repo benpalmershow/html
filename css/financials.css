@@ -471,7 +471,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     flex-shrink: 0;
-    background: var(--bg-secondary);
+    background: transparent;
     color: inherit;
     line-height: 1;
 }
@@ -496,17 +496,17 @@
 }
 
 .change-positive .change-arrow-button {
-    background: rgba(16, 185, 129, 0.15);
+    background: transparent;
     color: var(--success-color, #10b981);
 }
 
 .change-negative .change-arrow-button {
-    background: rgba(239, 68, 68, 0.15);
+    background: transparent;
     color: var(--danger-color, #ef4444);
 }
 
 .change-neutral .change-arrow-button {
-    background: rgba(0, 0, 0, 0.08);
+    background: transparent;
     color: var(--text-muted);
 }
 

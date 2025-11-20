@@ -462,6 +462,42 @@ All posts must meet these requirements. This checklist consolidates all improvem
 }
 ```
 
+#### Multi-Topic Post (Markdown)
+```markdown
+<i data-lucide='football' class='post-icon'></i> **Topic 1 Title**
+
+Brief description of first topic. Link to relevant section.
+
+[View details](financials.html?filter=Category%201)
+
+---
+
+<i data-lucide='home' class='post-icon'></i> **Topic 2 Title**
+
+Topic description (1-2 sentences max).
+
+**Latest Data:**
+• **Data Point 1**: Value (+X% MoM)  
+• **Data Point 2**: Value (+X% MoM)  
+• **Data Point 3**: Value (+X% MoM)  
+
+**Synopsis**: Key insight about what the data means and market context (1-2 sentences).
+
+**Latest Revisions**: Any adjustments to prior month figures (if none, note "All figures stable").
+
+[View details](financials.html?filter=Category%202)
+```
+
+**Key Features:**
+- Use `---` (horizontal rule) to separate distinct topics visually
+- Each topic gets its own icon for quick visual scanning
+- Start with 1-2 sentence description capturing narrative
+- **Latest Data:** section with MoM % changes for each metric
+- **Synopsis:** brief insight into what the numbers mean
+- **Latest Revisions:** note any adjustments to prior periods
+- Link each section to relevant page filters
+- Consolidates related updates in single post (reduces feed clutter)
+
 ### Common Mistakes to Avoid
 
 ❌ **DON'T:**
@@ -471,8 +507,9 @@ All posts must meet these requirements. This checklist consolidates all improvem
 - Use emojis instead of Lucide icons
 - Create wall-of-text descriptions (keep to 2-3 sentences)
 - Forget to link stock tickers to Yahoo Finance
-- Mix multiple topics without visual separation
+- Mix multiple topics without visual separation using horizontal rules
 - Use informal language or excessive exclamation points
+- Create separate posts for related updates that can be combined
 
 ✓ **DO:**
 - Write engaging, story-driven descriptions
@@ -481,8 +518,9 @@ All posts must meet these requirements. This checklist consolidates all improvem
 - Use appropriate Lucide icons
 - Keep descriptions concise and compelling
 - Link all tickers with target="_blank" and rel="noopener"
-- Separate multi-topic posts with distinct sections
+- Separate multi-topic posts with `---` (horizontal rule) and distinct icons
 - Maintain professional, direct tone
+- Consolidate related updates (financial + housing, multiple indicators, etc.) in single posts with clear sections
 
 ### Quality Standards Summary
 
@@ -495,40 +533,195 @@ Every post represents the site's brand and quality. Posts should:
 
 This standardization work is complete. All future posts must meet these requirements without exception.
 
+## Data Metrics, Synopsis, and Revisions in Posts
+
+### MoM (Month-over-Month) Percentages
+
+All financial indicator posts should include month-over-month percentage changes alongside absolute values:
+
+**Format Requirements:**
+- Calculate: `((Current Month - Previous Month) / Previous Month) × 100`
+- Display as: `Value (+X.X% MoM)` or `Value (-X.X% MoM)`
+- Round to one decimal place
+- Always include sign (+ or -)
+- Place immediately after data point value
+
+**Examples:**
+- ✓ `Median Home Price: October $415,200 (+0.7% MoM from $411,700)`
+- ✓ `Existing Home Sales: September 4.06M SAAR (+0.2% MoM from 4.05M)`
+- ✓ `Consumer Sentiment: November 50.3 (-6.1% MoM from 53.6)`
+- ✗ `Median Home Price: October $415,200` (missing MoM %)
+
+**When to Include MoM %:**
+- Single-month indicator releases (employment, housing, economic data)
+- Multi-topic posts with economic data
+- Sports odds and prediction markets (show price change if applicable)
+- Always preferred over YoY for timeliness and relevance
+
+### Synopsis Section
+
+The Synopsis provides narrative context that explains what the data means and why it matters:
+
+**Requirements:**
+- 1-2 sentences maximum
+- Answer the question: "What do these numbers tell us?"
+- Avoid repetition of data (assume reader saw the metrics)
+- Connect to broader economic theme or market context
+- Use accessible language, not technical jargon
+
+**Examples:**
+- ✓ "Housing market displays resilience in sales activity but limited momentum. Stable median prices and flat pending sales suggest buyer caution despite slightly higher existing home sales."
+- ✓ "Consumer sentiment continues declining as economic uncertainty dampens optimism. Concerns about inflation and employment outlook weigh on household purchasing power."
+- ✗ "October saw a median home price increase and pending sales remained unchanged." (just repeats data)
+- ✗ "This data suggests housing dynamics are complex and multifaceted." (too vague)
+
+### Latest Revisions Section
+
+The Latest Revisions section documents any adjustments to previously reported figures:
+
+**Requirements:**
+- Include all revisions to prior month data
+- Specify which months were revised and the direction
+- If no revisions occurred, explicitly state "All figures stable"
+- Include revision amounts if significant (±10,000 or ±0.5%)
+- Place after Synopsis section
+
+**Examples:**
+- ✓ "Existing home sales September figure adjusted up 0.1M from preliminary; all other months stable."
+- ✓ "Consumer Confidence October revised down 0.3 points from initial estimate; August and September unchanged."
+- ✓ "All figures stable—no revisions to prior months."
+- ✗ "Some revisions may have occurred." (too vague)
+- ✗ "No revisions." (doesn't follow template language)
+
+**When Revisions Occur:**
+- Always mention the revised month specifically
+- Note the old vs. new figure if material
+- Document the direction (revised up/down) and magnitude
+- Place before the navigation link for visibility
+
+### Data Post Structure (Complete Template)
+
+Putting it all together, a complete financial data post includes:
+
+```markdown
+### <i data-lucide='icon' class='post-icon'></i> **Catchy, Narrative Title**
+
+1-2 sentence description capturing the story.
+
+**Latest Data:**
+• **Metric 1**: October Value (+X.X% MoM)
+• **Metric 2**: September Value (-X.X% MoM)
+• **Metric 3**: August Value (+X.X% MoM)
+
+**Synopsis**: What these numbers mean in 1-2 sentences. Include broader context or market implications.
+
+**Latest Revisions**: Any adjustments to prior periods, or "All figures stable."
+
+[View all indicators](financials.html?filter=Category)
+```
+
 ## Charts and Data Visualization in Posts
 
 ### When to Include Charts
 
-Financial indicator posts benefit from inline sparkline charts that show trend context without requiring a page click. Include charts when:
+Financial indicator posts benefit from inline Chart.js visualizations that show trend context. Include charts when:
 
-- Post covers a multi-month indicator trend (3+ months of data)
-- Visual trend adds meaningful context (upward vs downward trajectory)
+- Post covers a single indicator with 6+ months of historical data
+- Visual trend adds meaningful context beyond text (expansion/contraction, peak/trough, threshold crossing)
+- Chart follows the data post template (Narrative Title → Latest Data → Synopsis → Chart → Link)
 - Space allows without breaking layout on mobile
-- Data is simple enough to render clearly in compact format
 
 **Chart Inclusion Rule:**
-Always include a chart for single-indicator financial posts with 6+ months of historical data. Examples:
-- **10-Year Treasury Yield**: Charts last 8 months (Mar-Nov) showing upward/downward trend
-- **NFIB Small Business Optimism Index**: Charts last 8 months showing threshold (100) crossing
-- **Consumer Sentiment**: Charts multi-month decline trend with context
-- **Manufacturing PMI**: Charts trend relative to 50-point expansion threshold
+Include a chart for all single-indicator financial posts with 6+ months of data. Multi-metric or multi-topic posts skip charts unless all metrics share the same scale and category.
+
+**Examples for Chart Inclusion:**
+- ✓ **10-Year Treasury Yield**: 9 months (Mar-Nov) showing yield level and trend
+- ✓ **Consumer Sentiment**: 6+ months showing decline into weak territory
+- ✓ **Manufacturing PMI**: 6+ months showing expansion (above 50) or contraction (below 50)
+- ✓ **NFIB Small Business Optimism**: 8 months showing threshold (100) crossing
+- ✗ **Housing Update**: Multiple unrelated metrics (median price, pending sales, existing sales) with different scales
+- ✗ **Prediction Markets**: Real-time data that changes daily, not suited for monthly chart
 
 ### Chart Implementation
 
-#### Chart.js Canvas Charts (Required Approach)
+#### Template Syntax (Recommended Approach)
 
-The site uses Chart.js for financial indicator charts embedded in posts. This approach provides better rendering consistency and interactive features compared to SVG.
+The preferred method for embedding charts is the simple template syntax, which automatically renders charts from `financials-data.json` data:
 
-**Implementation Pattern:**
-
-Charts are embedded directly in post markdown files with Canvas elements and JavaScript initialization. Post files are stored in `article/posts/` with YAML frontmatter, markdown content, and embedded JavaScript.
-
-**Post File Structure:**
 ```markdown
-<i data-lucide='icon-name' class='post-icon'></i> **Post Title**
+{{chart:Indicator Name}}
+```
 
-Brief description (1 sentence max). Let the chart tell the story.
+**How It Works:**
+- The `{{chart:IndicatorName}}` placeholder is processed during site rendering
+- Chart data is automatically extracted from `financials-data.json` using the indicator's `name` field
+- Matches existing Chart.js styling and colors automatically
+- Responsive and mobile-friendly out of the box
+- No manual data extraction or canvas configuration needed
 
+**Chart Template Syntax Examples:**
+```markdown
+### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize**
+
+August hit $612B after summer's decline. Manufacturing stabilization is critical—when orders stop, layoffs follow.
+
+{{chart:New Orders}}
+
+---
+
+### <i data-lucide='ship' class='post-icon'></i> **Trade Deficit Down 23.8%**
+
+August fell to $59.6B from July's $78.2B. Prior months revised lower across the board.
+
+{{chart:Trade Deficit}}
+```
+
+**Complete Data Post with Chart Template:**
+```markdown
+---
+date: 2025-11-19T14:00:00
+---
+
+### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize: 1.4% MoM**
+
+August recovered to $612B after May's $642.5B peak. Stabilization signals manufacturing won't cascade into widespread layoffs.
+
+**Latest Data:**
+• **New Orders**: August $612B (+1.4% MoM from $603.6B)
+• **Previous High**: May $642.5B
+• **Trend**: Declining through summer, stabilizing in August
+
+**Synopsis**: Manufacturing orders stopped bleeding and stabilized in August after summer's painful 5% decline. When manufacturers halt orders, layoffs typically follow, so stabilization is encouraging for employment outlook.
+
+**Latest Revisions**: All prior months stable; no revisions.
+
+{{chart:New Orders}}
+
+[View all business indicators](financials.html?filter=Business%20Indicators)
+```
+
+**Key Requirements for Template Syntax:**
+- Indicator name must exactly match the `name` field in `financials-data.json`
+- Chart renders with site colors automatically (#2C5F5A border, transparent fill)
+- No manual canvas configuration needed
+- Post must have YAML frontmatter with `date` field
+- Place chart after Synopsis and Latest Revisions sections
+- Chart container is clickable and navigates to relevant filter
+
+**Advantages Over Manual Canvas:**
+- ✓ No manual data extraction required
+- ✓ Automatic updates when `financials-data.json` changes
+- ✓ Consistent styling across all posts
+- ✓ Responsive and mobile-friendly
+- ✓ Reduces code duplication
+- ✓ Easier to maintain
+
+#### Manual Canvas Charts (Alternative)
+
+If the template syntax cannot be used, manual Canvas-based charts can be embedded using Chart.js. This approach provides full control but requires more code:
+
+**Manual Implementation Pattern:**
+```markdown
 <div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Category'">
   <canvas id="unique-chart-id" width="400" height="200"></canvas>
 </div>
@@ -564,23 +757,17 @@ new Chart(ctx, {
   }
 });
 </script>
-
-[**View all indicators**](financials.html?filter=Category)
 ```
 
-**Key Requirements:**
-- **NO YAML frontmatter** - dates are managed in `json/posts.json` only
-- Use Chart.js library (already loaded on site)
-- Canvas element must have unique `id` attribute
-- Chart container should be clickable (points to relevant financials filter)
-- Always register post in `json/posts.json` with file reference and timestamp
-- Make charts responsive with `responsive: true` and `maintainAspectRatio: false`
-- Keep text minimal - let visuals do the work
+**Use Manual Canvas When:**
+- Template syntax doesn't work (custom calculations, multi-metric display)
+- Need specific chart styling beyond standard
+- Testing or prototyping new visualization approaches
 
 **Color Scheme (REQUIRED):**
 - Border color: `#2C5F5A` (primary site color)
 - Fill color: `rgba(44, 95, 90, 0.1)` (transparent primary color)
-- Do NOT use custom colors (#ef4444, #10b981, etc.)
+- Do NOT use custom colors
 - Colors must work in both light and dark modes
 
 **Chart Configuration:**
@@ -590,46 +777,21 @@ new Chart(ctx, {
 - Y-axis should include min/max bounds with 5-10% padding
 - Y-axis ticks should format appropriately (% for rates, whole numbers for indices)
 
-**Lessons Learned:**
-
-❌ **What NOT to do:** Inline SVG charts do not render properly in the post system. Do not attempt SVG sparklines as an alternative.
-
-✓ **What works:** Canvas-based charts using Chart.js library, following existing post examples like `2025-11-12.md`.
-
-#### Data Extraction for Charts
-
-**Steps:**
-1. Review indicator data in `financials-data.json`
-2. Extract month values from applicable fields (march, april, may, etc.)
-3. Calculate Y-axis scale based on min/max values plus 10% padding
-4. Format data arrays matching month labels
-5. Include appropriate y-axis tick formatting
-
-**Example - 10-Year Treasury Yield:**
-- Data: Mar 4.28, Apr 4.28, May 4.42, Jun 4.38, Jul 4.39, Aug 4.27, Sep 4.15, Oct 4.06, Nov 4.13
-- Y-axis: min 3.9, max 4.6 (with padding)
-- Y-axis format: `.toFixed(2) + '%'`
-- Color: Site primary (#2C5F5A)
-
 #### Chart Placement
 
-- Position after main description and key data points
-- Wrap in `<div class="chart-container">` for styling
-- Make container clickable to navigate to financials page with relevant filter
-- Use canvas sizing: `width="400" height="200"` as default
-- Responsive configuration allows charts to adapt to mobile screens
+When using template syntax:
+- Position after Synopsis and Latest Revisions sections
+- Place before the final navigation link
+- Chart automatically renders with proper spacing and responsive sizing
+- Container is clickable and links to relevant filter
 
-**Example:**
-```html
-<i data-lucide='trending-up' class='post-icon'></i> <b>Treasury Yield Update</b><br><br>
-• <b>November</b>: 4.13% (up from October)<br><br>
-<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Financial%20Markets'">
-  <canvas id="treasury-chart" width="400" height="200"></canvas>
-</div>
-<script>
-// Chart.js initialization...
-</script><br><br>
-<a href="financials.html?filter=Financial%20Markets"><b>View all indicators</b></a>
+**Placement Pattern:**
+```markdown
+**Latest Revisions**: Description of any revisions.
+
+{{chart:Indicator Name}}
+
+[View all indicators](financials.html?filter=Category)
 ```
 
 ### Chart Type Selection
@@ -674,78 +836,67 @@ new Chart(ctx, {
 
 ### Embedded Chart Examples
 
-#### Example 1: Manufacturing PMI Trend
+#### Example 1: Manufacturing Orders (Template Syntax)
 
 **Post File Content:**
 ```markdown
 ---
-date: 2025-11-16T14:00:00
+date: 2025-11-19T14:00:00
 ---
 
-## Manufacturing PMI Rises Above 50
+### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize: 1.4% MoM**
 
-Manufacturing activity expanded in November with PMI at 51.2, indicating continued growth in the sector. Strength in new orders and production offset employment declines.
+August hit $612B after summer's painful decline from $642.5B in May. Manufacturing stabilization is critical—when orders stop, layoffs follow.
 
-**Key Metrics:**
-- **November PMI**: 51.2 (above 50 expansion threshold)
-- **3-Month Trend**: Rising from 49.8 in September
-- **Context**: Sustained expansion after crossing back above 50 in October
+**Latest Data:**
+• **New Orders**: August $612B (+1.4% MoM from $603.6B)
+• **Previous High**: May $642.5B (+5.9% above current level)
+• **Summer Decline**: Lost $30.5B (-4.7%) from May to July
 
-<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Business%20Indicators'">
-  <canvas id="manufacturing-pmi-chart" width="400" height="200"></canvas>
-</div>
+**Synopsis**: Manufacturing orders stopped bleeding and stabilized in August after summer's painful 5% decline. When manufacturers halt orders, layoffs typically follow, so stabilization is encouraging for employment outlook.
 
-<script>
-const ctx = document.getElementById('manufacturing-pmi-chart').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    datasets: [{
-      label: 'Manufacturing PMI',
-      data: [50.3, 50.8, 51.2, 50.9, 50.5, 49.9, 49.8, 50.6, 51.2],
-      borderColor: '#2C5F5A',
-      backgroundColor: 'rgba(44, 95, 90, 0.1)',
-      tension: 0.4,
-      fill: true
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { 
-      legend: { display: true },
-      annotation: {
-        annotations: {
-          expansion: {
-            type: 'line',
-            xMin: 0,
-            xMax: 8,
-            yMin: 50,
-            yMax: 50,
-            borderColor: 'rgba(44, 95, 90, 0.3)',
-            borderDash: [5, 5]
-          }
-        }
-      }
-    },
-    scales: {
-      y: {
-        min: 48,
-        max: 52,
-        ticks: {
-          callback: function(value) { return value.toFixed(1); }
-        }
-      }
-    }
-  }
-});
-</script>
+**Latest Revisions**: All prior months stable; no revisions.
 
-[View all Business Indicators](financials.html?filter=Business%20Indicators)
+{{chart:New Orders}}
+
+[View all business indicators](financials.html?filter=Business%20Indicators)
 ```
 
-#### Example 2: Consumer Sentiment Decline
+#### Example 2: Multi-Indicator Post with Charts (Template Syntax)
+
+**Post File Content:**
+```markdown
+---
+date: 2025-11-19T14:00:00
+---
+
+### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize**
+
+August recovered to $612B. Manufacturing stabilization is critical—when orders stop, layoffs follow.
+
+{{chart:New Orders}}
+
+---
+
+### <i data-lucide='ship' class='post-icon'></i> **Trade Deficit Down 23.8%: $59.6B in August**
+
+August plummeted from July's $78.2B to $59.6B. Prior months revised lower across the board (March -3.0%, April -2.3%, May -0.6%). The March spike suggests tariff rush-ahead and inventory buildup. August's drop signals cooling import demand.
+
+**Latest Data:**
+• **Trade Deficit**: August $59.6B (-23.8% MoM from $78.2B)
+• **July High**: $78.2B (peak of recent trend)
+• **Prior Revisions**: March -$4.1B, April -$1.4B, May -$0.4B
+
+**Synopsis**: Trade deficit fell sharply as import demand cooled following earlier tariff-driven rush purchases. Revisions to prior months confirm tariff-forward buying inflated spring numbers; August's decline reflects normalization.
+
+**Latest Revisions**: March revised down $4.1B, April down $1.4B, May down $0.4B—all reflecting tariff timing adjustments.
+
+{{chart:Trade Deficit}}
+
+[View all trade indicators](financials.html?filter=Trade%20Tariffs)
+```
+
+#### Example 3: Consumer Sentiment with Template Syntax
 
 **Post File Content:**
 ```markdown
@@ -753,115 +904,40 @@ new Chart(ctx, {
 date: 2025-11-15T14:00:00
 ---
 
-## Consumer Sentiment Index Hits 6-Month Low
+### <i data-lucide='trending-down' class='post-icon'></i> **Consumer Sentiment Hits 6-Month Low**
 
-The Consumer Sentiment Index fell to 54.3 in November, the lowest level since May, as consumers express heightened concerns about inflation and employment outlook.
+Consumer sentiment fell sharply in November as economic uncertainty weighs on household confidence and purchasing power.
 
-**Trend Analysis:**
-- **November**: 54.3 (−2.8 from October)
-- **6-Month Change**: −3.9 points (from 58.2 in May)
-- **Interpretation**: Sustained deterioration in consumer confidence despite stable economic conditions
+**Latest Data:**
+• **Consumer Sentiment Index**: November 50.3 (-6.1% MoM from 53.6)
+• **6-Month Low**: Down from May's 52.2 to November's 50.3
+• **Trend**: Sustained deterioration despite stable employment
 
-<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Consumer%20Indicators'">
-  <canvas id="consumer-sentiment-chart" width="400" height="200"></canvas>
-</div>
+**Synopsis**: Consumer sentiment continues its downward trajectory as households express heightened concerns about inflation and employment outlook. The 6-month decline signals sustained erosion of confidence even as labor market remains relatively solid.
 
-<script>
-const ctx = document.getElementById('consumer-sentiment-chart').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    datasets: [{
-      label: 'Consumer Sentiment Index',
-      data: [58.2, 57.1, 56.5, 55.9, 57.1, 57.1, 54.3],
-      borderColor: '#2C5F5A',
-      backgroundColor: 'rgba(44, 95, 90, 0.1)',
-      tension: 0.4,
-      fill: true,
-      pointRadius: 4
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { legend: { display: true } },
-    scales: {
-      y: {
-        min: 52,
-        max: 60,
-        ticks: {
-          callback: function(value) { return value.toFixed(0); }
-        }
-      }
-    }
-  }
-});
-</script>
+**Latest Revisions**: October revised down 0.5 points from initial estimate; August and September unchanged.
 
-[View all Consumer Indicators](financials.html?filter=Consumer%20Indicators)
-```
+{{chart:Consumer Sentiment}}
 
-#### Example 3: Employment Growth Acceleration
-
-**Post File Content:**
-```markdown
----
-date: 2025-11-14T14:00:00
----
-
-## Nonfarm Payroll Growth Accelerates to 227K in November
-
-Job creation rebounded in November with 227,000 new nonfarm payroll positions added, the strongest month since August. Wage growth remained solid at 0.3% MoM.
-
-**Employment Snapshot:**
-- **November Jobs Added**: 227,000 (vs. 150,000 estimate)
-- **Unemployment Rate**: 4.1% (unchanged)
-- **Wage Growth**: 0.3% MoM, 4.2% YoY
-
-<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Employment%20Indicators'">
-  <canvas id="nonfarm-payroll-chart" width="400" height="200"></canvas>
-</div>
-
-<script>
-const ctx = document.getElementById('nonfarm-payroll-chart').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    datasets: [{
-      label: 'Nonfarm Payroll (thousands)',
-      data: [175, 203, 181, 192, 158, 172, 145, 185, 227],
-      borderColor: '#2C5F5A',
-      backgroundColor: 'rgba(44, 95, 90, 0.1)',
-      tension: 0.4,
-      fill: true
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { legend: { display: true } },
-    scales: {
-      y: {
-        min: 100,
-        max: 250,
-        ticks: {
-          callback: function(value) { return value.toFixed(0) + 'K'; }
-        }
-      }
-    }
-  }
-});
-</script>
-
-[View all Employment Indicators](financials.html?filter=Employment%20Indicators)
+[View all consumer indicators](financials.html?filter=Consumer%20Indicators)
 ```
 
 ### Chart Implementation Checklist
 
 Before publishing any post with a chart:
 
+**Using Template Syntax ({{chart:Indicator Name}}):**
+- [ ] Indicator name exactly matches `name` field in `financials-data.json`
+- [ ] Post has YAML frontmatter with `date` field
+- [ ] Chart placed after Synopsis and Latest Revisions sections
+- [ ] Chart placed before final navigation link
+- [ ] Post contains 6+ months of historical data
+- [ ] Title clearly explains trend direction (Rise, Decline, Stabilization, etc.)
+- [ ] Latest Data section includes MoM % changes
+- [ ] Synopsis explains what the trend means (1-2 sentences)
+- [ ] Latest Revisions documents any prior-month adjustments
+
+**Using Manual Canvas (if template syntax not available):**
 - [ ] Chart data verified against `financials-data.json`
 - [ ] Canvas element has unique ID (no duplicates across posts)
 - [ ] Chart uses site colors: `#2C5F5A` border, `rgba(44, 95, 90, 0.1)` fill
@@ -870,13 +946,48 @@ Before publishing any post with a chart:
 - [ ] Chart container is clickable with proper onclick handler
 - [ ] Post registered in `json/posts.json` with file path and date
 - [ ] Chart renders correctly on mobile (responsive: true)
-- [ ] Post contains 6+ months of data points
-- [ ] Title clearly explains trend direction (Rise, Decline, Acceleration, etc.)
-- [ ] Supporting text describes what chart shows and why it matters
+
+## Multi-Topic Posts with Data & Revisions
+
+Posts can effectively combine multiple topics with data-driven content following the new template structure.
+
+### Template for Multi-Topic Data Posts (e.g., Sports + Housing)
+
+When combining sports odds with economic data, follow this structure:
+
+```markdown
+### <i data-lucide='football' class='post-icon'></i> **Topic 1 Title**
+
+Brief description.
+
+[View details](link)
+
+---
+
+### <i data-lucide='home' class='post-icon'></i> **Topic 2 Title**
+
+1-2 sentence description.
+
+**Latest Data:**
+• **Metric 1**: Value (+X% MoM)
+• **Metric 2**: Value (+X% MoM)
+
+**Synopsis**: Narrative insight (1-2 sentences).
+
+**Latest Revisions**: Details about prior month adjustments.
+
+[View details](link)
+```
+
+**Key Structure:**
+- Topic 1: Sports/odds (no MoM % needed)
+- Separator: `---` (horizontal rule)
+- Topic 2: Economic data (includes Latest Data, Synopsis, Latest Revisions sections)
+- Each topic has its own icon and navigation link
 
 ## Multi-Topic Posts with Charts
 
-Posts can effectively combine multiple topics with different visualization approaches.
+Posts can effectively combine multiple topics with different visualization approaches (generally reserved for single-indicator chart posts).
 
 ### Example: Sports + Multi-Financial Post (2025-11-18)
 

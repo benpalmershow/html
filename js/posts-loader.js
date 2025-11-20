@@ -376,7 +376,12 @@ async function renderFinancialCharts() {
       
       // Determine chart config based on indicator
       const chartConfig = getChartConfig(indicator, labels, dataPoints);
-      
+
+      if (!chartConfig) {
+        console.warn('Failed to generate chart config for', indicatorName);
+        return;
+      }
+
       try {
         const ctx = canvas.getContext('2d');
         new window.Chart(ctx, chartConfig);
@@ -396,38 +401,100 @@ async function renderFinancialCharts() {
 }
 
 function getChartConfig(indicator, labels, dataPoints) {
+  // Constants for chart styling
+  const CHART_COLORS = {
+    PRIMARY: '#2C5F5A',
+    PRIMARY_FILL: 'rgba(44, 95, 90, 0.1)', // Semi-transparent for fill
+    SECONDARY: '#666',
+    ACCENT: '#D4822A',
+    ERROR: '#8B0000'
+  };
+
+  const CHART_CONFIG = {
+    TENSION: 0.4,
+    BORDER_WIDTH: 2
+  };
+
+  // Input validation
+  if (!Array.isArray(dataPoints) || dataPoints.length === 0) {
+    console.warn('Invalid or empty dataPoints provided to getChartConfig');
+    return null;
+  }
+
+  if (!Array.isArray(labels) || labels.length !== dataPoints.length) {
+    console.warn('Labels array must match dataPoints length');
+    return null;
+  }
+
+  // Validate data points are numbers
+  const validDataPoints = dataPoints.map(point => {
+    const num = parseFloat(point);
+    return isNaN(num) ? 0 : num; // Default to 0 for invalid values
+  });
+
   const baseConfig = {
     type: 'line',
     data: {
       labels: labels,
       datasets: [{
-        label: indicator.name,
-        data: dataPoints,
-        borderColor: '#2C5F5A',
-        backgroundColor: 'rgba(44, 95, 90, 0.1)',
-        tension: 0.4,
-        fill: true
+        label: indicator.name || 'Data',
+        data: validDataPoints,
+        borderColor: CHART_COLORS.PRIMARY,
+        backgroundColor: CHART_COLORS.PRIMARY_FILL,
+        borderWidth: CHART_CONFIG.BORDER_WIDTH,
+        tension: CHART_CONFIG.TENSION,
+        fill: true,
+        pointBackgroundColor: CHART_COLORS.PRIMARY,
+        pointBorderColor: CHART_COLORS.PRIMARY,
+        pointRadius: 4,
+        pointHoverRadius: 6
       }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { display: true } },
+      layout: {
+        padding: {
+          bottom: 20
+        }
+      },
+      plugins: {
+        legend: { display: true },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: function(context) {
+              let label = context.dataset.label || '';
+              if (label) {
+                label += ': ';
+              }
+              label += context.parsed.y.toLocaleString();
+              return label;
+            }
+          }
+        }
+      },
       scales: {
         y: {
           ticks: {
             callback: function(value) {
               // Format based on indicator type
-              if (indicator.name.includes('Rate') || indicator.name.includes('Yield')) {
+              if (indicator.name && (indicator.name.includes('Rate') || indicator.name.includes('Yield'))) {
                 return value.toFixed(2) + '%';
               }
-              if (indicator.name.includes('Price') || indicator.name.includes('Revenue')) {
+              if (indicator.name && (indicator.name.includes('Price') || indicator.name.includes('Revenue'))) {
                 return '$' + value.toLocaleString();
               }
               return value.toLocaleString();
             }
           }
         }
+      },
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
       }
     }
   };
@@ -447,13 +514,23 @@ function getChartConfig(indicator, labels, dataPoints) {
   if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities) {
     baseConfig.type = 'bar';
     baseConfig.data = {
-      labels: Object.keys(indicator.bps_probabilities || {}),
+      labels: labels,
       datasets: [{
         label: 'Probability (%)',
-        data: Object.values(indicator.bps_probabilities || {}).map(v => parseFloat(v)),
-        backgroundColor: ['#2C5F5A', '#666', '#D4822A', '#8B0000'],
-        borderColor: ['#2C5F5A', '#666', '#D4822A', '#8B0000'],
-        borderWidth: 1
+        data: validDataPoints,
+        backgroundColor: [
+          CHART_COLORS.PRIMARY,
+          CHART_COLORS.SECONDARY,
+          CHART_COLORS.ACCENT,
+          CHART_COLORS.ERROR
+        ],
+        borderColor: [
+          CHART_COLORS.PRIMARY,
+          CHART_COLORS.SECONDARY,
+          CHART_COLORS.ACCENT,
+          CHART_COLORS.ERROR
+        ],
+        borderWidth: CHART_CONFIG.BORDER_WIDTH
       }]
     };
     baseConfig.options.scales.y.beginAtZero = true;

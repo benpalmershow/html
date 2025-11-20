@@ -123,6 +123,17 @@
 
   </main>
 
+  <footer id="social-footer">
+    <div class="footer-container">
+        <div class="social-links"></div>
+        <div class="divider"></div>
+        <div class="footer-info">
+            <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+           
+        </div>
+    </div>
+  </footer>
+
   <!-- Critical Scripts -->
   <script src="js/bfcache-compat.js" defer></script>
   <script src="js/nav.js" defer></script>
@@ -137,8 +148,7 @@
         chartjs: 'https://cdn.jsdelivr.net/npm/chart.js',
         yaml: 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',
         fontawesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-        animations: 'js/animations.js',
-        socials: 'js/socials.js'
+        animations: 'js/animations.js'
       };
 
       function loadScript(src, callback) {
@@ -166,7 +176,6 @@
         
         setTimeout(() => {
           loadScript(libs.animations);
-          loadScript(libs.socials);
         }, 1000);
       };
 

@@ -349,7 +349,7 @@ function createIndicatorCard(indicator) {
         const arrowIcon = momChange.numberChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
         const title = indicator.name === 'Total Nonfarm Employment' ? "Latest monthly change in nonfarm payroll employment" : "Month-over-Month (MoM) change calculated from available data.";
 
-        changeIndicators += `<div class="change-indicator ${getChangeClass(momFormatted)}" title="${title}"><span class="arrow-icon">${arrowIcon}</span> ${changeText}</div>`;
+        changeIndicators += `<div class="change-indicator ${getChangeClass(momFormatted)}" title="${title}"><button class="change-arrow-button" aria-label="Change direction"><span class="arrow-icon">${arrowIcon}</span></button><div class="change-text">${changeText}</div></div>`;
     }
 
     return `
@@ -365,13 +365,13 @@ function createIndicatorCard(indicator) {
                 </div>
             </div>
             
-            ${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}
-            
             <div class="indicator-agency">
                 Source: <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">${indicator.agency}</a>
                 ${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Kalshi</a>` : ''}
                 ${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Polymarket</a>` : ''}
             </div>
+            
+            ${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}
 
             <div class="indicator-content">
                 ${latestDataHtml}
@@ -776,13 +776,17 @@ function initializeChartInOverlay(chartConfig, canvas) {
                     borderColor: '#2C5F5A', borderWidth: 1, padding: 8,
                     titleFont: { size: 11 }, bodyFont: { size: 11 }, boxPadding: 4,
                     callbacks: {
-                        label: function (context) {
-                            let label = context.dataset.label || '';
-                            if (label) label += ': ';
-                            if (context.parsed.y !== null) {
-                                label += new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(context.parsed.y);
+                        title: function (context) {
+                            if (context.length > 0) {
+                                return context[0].label;
                             }
-                            return label;
+                            return '';
+                        },
+                        label: function (context) {
+                            if (context.parsed.y !== null) {
+                                return new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(context.parsed.y);
+                            }
+                            return '';
                         }
                     }
                 }

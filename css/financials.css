@@ -371,15 +371,12 @@
     color: var(--text-muted);
     font-weight: 500;
     margin-top: 2px;
-    display: none;
-    /* Hidden by default in compact view */
+    margin-bottom: 6px;
+    display: block;
 }
 
 .indicator.expanded .indicator-agency {
-    display: block;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 6px;
 }
 
 .indicator-content {
@@ -398,39 +395,24 @@
 .indicator.expanded .data-rows-container {
     max-height: 500px;
     /* Arbitrary large height */
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 .latest-data-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2px 0;
-    border-bottom: 1px solid transparent;
-}
-
-.indicator.expanded .latest-data-row {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 8px;
-    margin-bottom: 4px;
+    padding: 4px 0;
+    margin-bottom: 0;
 }
 
 .data-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2px 0;
+    padding: 4px 0;
     font-size: 0.8rem;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
-}
-
-.latest-data-row~.data-row {
-    /* Data rows that are visible in collapsed state (siblings of latest-data-row) */
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
-}
-
-.data-row:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .month-label {
@@ -459,23 +441,43 @@
 }
 
 .change-indicators {
-    margin: 4px 0 2px 0;
+    margin: 4px 0 6px 0;
+    padding-bottom: 6px;
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .change-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
-    padding: 2px 6px;
-    border-radius: 4px;
+    gap: 6px;
     font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     white-space: nowrap;
+}
+
+.change-arrow-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
     background: var(--bg-secondary);
+    color: inherit;
+    line-height: 1;
+}
+
+.change-arrow-button:hover {
+    transform: scale(1.1);
 }
 
 .arrow-icon {
@@ -484,24 +486,28 @@
 }
 
 .arrow-icon i {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     stroke-width: 2px;
 }
 
-.change-positive {
+.change-text {
+    color: var(--text-primary);
+}
+
+.change-positive .change-arrow-button {
+    background: rgba(16, 185, 129, 0.15);
     color: var(--success-color, #10b981);
-    background: rgba(16, 185, 129, 0.1);
 }
 
-.change-negative {
+.change-negative .change-arrow-button {
+    background: rgba(239, 68, 68, 0.15);
     color: var(--danger-color, #ef4444);
-    background: rgba(239, 68, 68, 0.1);
 }
 
-.change-neutral {
+.change-neutral .change-arrow-button {
+    background: rgba(0, 0, 0, 0.08);
     color: var(--text-muted);
-    background: rgba(0, 0, 0, 0.05);
 }
 
 .mom-label {
@@ -587,21 +593,17 @@
 /* Keep Prediction Markets cards always expanded */
 .category[data-category="Prediction Markets"] .indicator .data-rows-container {
     max-height: 500px;
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 
 .category[data-category="Prediction Markets"] .indicator .latest-data-row {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 8px;
-    margin-bottom: 4px;
+    padding: 4px 0;
+    margin-bottom: 0;
 }
 
 .category[data-category="Prediction Markets"] .indicator .indicator-agency {
-    display: block;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 6px;
 }
 
 .category[data-category="Prediction Markets"] .expand-toggle {
@@ -893,7 +895,6 @@
 
     .change-indicator {
         font-size: 0.75rem;
-        padding: 2px 4px;
     }
 }
 

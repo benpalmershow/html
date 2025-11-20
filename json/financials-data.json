@@ -131,16 +131,16 @@
             "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "FOMC December Rate Decision (BPS)",
-            "lastUpdated": "2025-11-19T14:00:00Z",
+            "lastUpdated": "2025-11-20T14:00:00Z",
             "releaseDay": 10,
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-25dec",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-december",
             "next_meeting": "December 10, 2025",
             "bps_probabilities": {
-                "25BP Decrease": "42%",
-                "No Change": "56%",
-                "50+BP Decrease": "3%",
-                "25+BP Increase": "1%"
+                "25BP Decrease": "35%",
+                "No Change": "63%",
+                "50+BP Decrease": "2%",
+                "25+BP Increase": "<1%"
             },
             "change": "",
             "explanation": "Prediction market probabilities for Federal Reserve interest rate decisions at the December FOMC meeting. Data aggregated from both Kalshi and Polymarket platforms showing market consensus on potential rate changes measured in basis points (BPS)."

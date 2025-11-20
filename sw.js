@@ -1,4 +1,4 @@
-const CACHE_NAME = 'media-cache-v2';
+const CACHE_NAME = 'media-cache-v3';
 const EXTERNAL_DOMAINS = [
   'upload.wikimedia.org',
   'photos.airmail.news',
@@ -114,7 +114,6 @@ self.addEventListener('fetch', event => {
             return response;
           })
           .catch(err => {
-            console.warn('SW: Image fetch failed:', event.request.url);
             // Return a 404 so the img tag receives an error and triggers onerror
             return new Response('Image fetch failed', { status: 404, statusText: 'Not Found' });
           });

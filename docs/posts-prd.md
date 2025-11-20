@@ -200,6 +200,26 @@ When improving a post, follow this checklist:
 
 ## Updates and Changes
 
+### 11/20/25 Chart Syntax Standardization
+- **Updated**: Complete rewrite of chart implementation section to reflect template syntax as primary method
+- **Change**: Removed all references to manual canvas HTML; template syntax `{{chart:Indicator Name}}` is now the only recommended approach
+- **Rationale**: Simplifies documentation, eliminates outdated code patterns, ensures consistency across all posts
+- **What's New**:
+  - Clear "PRIMARY METHOD" designation for template syntax
+  - Removed 200+ lines of manual canvas documentation and examples
+  - Simplified chart placement rules
+  - Updated multi-topic post examples to use template syntax
+  - Streamlined implementation checklist (removed manual canvas options)
+  - Updated chart type selection table to show template syntax
+  - Removed manual color scheme requirements (applied automatically)
+
+### 11/20/25 Total Nonfarm Employment Post
+- **Date**: November 20, 2025
+- **Post**: Total Nonfarm Employment Gains (September)
+- **Data**: 159.626M (+0.1% MoM, +119K jobs)
+- **Format**: Markdown with trending-up icon, metric breakdown, context, and link to employment indicators filter
+- **Change**: First employment data post following markdown format standardization with MoM percentage calculations
+
 ### 5/15/25 Post Improvement
 - **Original**: Basic text with long description
 - **Updated**: Added film icon, bold title, condensed description to 2 sentences, standardized link format
@@ -634,19 +654,11 @@ Financial indicator posts benefit from inline Chart.js visualizations that show 
 **Chart Inclusion Rule:**
 Include a chart for all single-indicator financial posts with 6+ months of data. Multi-metric or multi-topic posts skip charts unless all metrics share the same scale and category.
 
-**Examples for Chart Inclusion:**
-- ✓ **10-Year Treasury Yield**: 9 months (Mar-Nov) showing yield level and trend
-- ✓ **Consumer Sentiment**: 6+ months showing decline into weak territory
-- ✓ **Manufacturing PMI**: 6+ months showing expansion (above 50) or contraction (below 50)
-- ✓ **NFIB Small Business Optimism**: 8 months showing threshold (100) crossing
-- ✗ **Housing Update**: Multiple unrelated metrics (median price, pending sales, existing sales) with different scales
-- ✗ **Prediction Markets**: Real-time data that changes daily, not suited for monthly chart
-
 ### Chart Implementation
 
-#### Template Syntax (Recommended Approach)
+#### Template Syntax (PRIMARY METHOD)
 
-The preferred method for embedding charts is the simple template syntax, which automatically renders charts from `financials-data.json` data:
+The standard and required method for embedding charts is the simple template syntax:
 
 ```markdown
 {{chart:Indicator Name}}
@@ -655,137 +667,74 @@ The preferred method for embedding charts is the simple template syntax, which a
 **How It Works:**
 - The `{{chart:IndicatorName}}` placeholder is processed during site rendering
 - Chart data is automatically extracted from `financials-data.json` using the indicator's `name` field
-- Matches existing Chart.js styling and colors automatically
+- Matches existing Chart.js styling and colors automatically (#2C5F5A border, transparent fill)
 - Responsive and mobile-friendly out of the box
 - No manual data extraction or canvas configuration needed
 
-**Chart Template Syntax Examples:**
-```markdown
-### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize**
-
-August hit $612B after summer's decline. Manufacturing stabilization is critical—when orders stop, layoffs follow.
-
-{{chart:New Orders}}
-
----
-
-### <i data-lucide='ship' class='post-icon'></i> **Trade Deficit Down 23.8%**
-
-August fell to $59.6B from July's $78.2B. Prior months revised lower across the board.
-
-{{chart:Trade Deficit}}
-```
-
-**Complete Data Post with Chart Template:**
-```markdown
----
-date: 2025-11-19T14:00:00
----
-
-### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize: 1.4% MoM**
-
-August recovered to $612B after May's $642.5B peak. Stabilization signals manufacturing won't cascade into widespread layoffs.
-
-**Latest Data:**
-• **New Orders**: August $612B (+1.4% MoM from $603.6B)
-• **Previous High**: May $642.5B
-• **Trend**: Declining through summer, stabilizing in August
-
-**Synopsis**: Manufacturing orders stopped bleeding and stabilized in August after summer's painful 5% decline. When manufacturers halt orders, layoffs typically follow, so stabilization is encouraging for employment outlook.
-
-**Latest Revisions**: All prior months stable; no revisions.
-
-{{chart:New Orders}}
-
-[View all business indicators](financials.html?filter=Business%20Indicators)
-```
-
-**Key Requirements for Template Syntax:**
+**Key Requirements:**
 - Indicator name must exactly match the `name` field in `financials-data.json`
-- Chart renders with site colors automatically (#2C5F5A border, transparent fill)
-- No manual canvas configuration needed
 - Post must have YAML frontmatter with `date` field
 - Place chart after Synopsis and Latest Revisions sections
 - Chart container is clickable and navigates to relevant filter
 
-**Advantages Over Manual Canvas:**
+**Examples of Chart Syntax:**
+```markdown
+{{chart:Total Nonfarm Employment}}
+{{chart:10-Year Treasury Yield}}
+{{chart:Consumer Sentiment}}
+{{chart:WTI Crude Oil}}
+{{chart:Construction Spending}}
+{{chart:New Orders}}
+{{chart:Trade Deficit}}
+```
+
+**Examples for Chart Inclusion:**
+- ✓ **10-Year Treasury Yield**: 9 months showing yield level and trend
+- ✓ **Consumer Sentiment**: 6+ months showing decline into weak territory
+- ✓ **Manufacturing PMI**: 6+ months showing expansion (above 50) or contraction (below 50)
+- ✓ **NFIB Small Business Optimism**: 8 months showing threshold (100) crossing
+- ✓ **Total Nonfarm Employment**: 8 months showing steady job growth
+- ✓ **WTI Crude Oil**: Multiple months showing price trends
+- ✗ **Housing Update**: Multiple unrelated metrics (median price, pending sales, existing sales) with different scales
+- ✗ **Prediction Markets**: Real-time data that changes daily, not suited for monthly chart
+
+**Complete Data Post with Chart Template:**
+```markdown
+---
+date: 2025-11-20T14:00:00
+---
+
+## <i data-lucide='users' class='post-icon'></i> **Employment Gains Strong in September**
+
+September saw 119,000 new nonfarm jobs, bringing total employment to 159.626M (+0.1% MoM). The labor market continues steady expansion despite economic uncertainty.
+
+**Latest Data:**
+• **Total Nonfarm Employment**: September 159.626M (+0.1% MoM)
+• **Monthly Gain**: 119,000 jobs
+• **Year-to-Date**: Consistent growth across health care, food services, and social assistance
+
+**Synopsis**: Consistent job growth maintains labor market resilience, though monthly gains remain moderate. Sustained employment supports consumer spending despite declining sentiment.
+
+**Latest Revisions**: All figures stable; no revisions to prior months.
+
+{{chart:Total Nonfarm Employment}}
+
+[View all employment indicators](financials.html?filter=Employment%20Indicators)
+```
+
+**Advantages of Template Syntax:**
 - ✓ No manual data extraction required
 - ✓ Automatic updates when `financials-data.json` changes
 - ✓ Consistent styling across all posts
 - ✓ Responsive and mobile-friendly
 - ✓ Reduces code duplication
 - ✓ Easier to maintain
-
-#### Manual Canvas Charts (Alternative)
-
-If the template syntax cannot be used, manual Canvas-based charts can be embedded using Chart.js. This approach provides full control but requires more code:
-
-**Manual Implementation Pattern:**
-```markdown
-<div class="chart-container" style="cursor: pointer;" onclick="window.location.href='financials.html?filter=Category'">
-  <canvas id="unique-chart-id" width="400" height="200"></canvas>
-</div>
-
-<script>
-const ctx = document.getElementById('unique-chart-id').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Month1', 'Month2', ...],
-    datasets: [{
-      label: 'Indicator Name',
-      data: [value1, value2, ...],
-      borderColor: '#2C5F5A',
-      backgroundColor: 'rgba(44, 95, 90, 0.1)',
-      tension: 0.4,
-      fill: true
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { legend: { display: true } },
-    scales: {
-      y: {
-        min: minValue,
-        max: maxValue,
-        ticks: {
-          callback: function(value) { return value.toFixed(2) + '%'; }
-        }
-      }
-    }
-  }
-});
-</script>
-```
-
-**Use Manual Canvas When:**
-- Template syntax doesn't work (custom calculations, multi-metric display)
-- Need specific chart styling beyond standard
-- Testing or prototyping new visualization approaches
-
-**Color Scheme (REQUIRED):**
-- Border color: `#2C5F5A` (primary site color)
-- Fill color: `rgba(44, 95, 90, 0.1)` (transparent primary color)
-- Do NOT use custom colors
-- Colors must work in both light and dark modes
-
-**Chart Configuration:**
-- `type: 'line'` for financial trends
-- `tension: 0.4` for smooth curves
-- `fill: true` for filled area under line
-- Y-axis should include min/max bounds with 5-10% padding
-- Y-axis ticks should format appropriately (% for rates, whole numbers for indices)
+- ✓ All new posts should use this method
 
 #### Chart Placement
 
-When using template syntax:
-- Position after Synopsis and Latest Revisions sections
-- Place before the final navigation link
-- Chart automatically renders with proper spacing and responsive sizing
-- Container is clickable and links to relevant filter
+Position the chart as follows:
 
-**Placement Pattern:**
 ```markdown
 **Latest Revisions**: Description of any revisions.
 
@@ -794,139 +743,44 @@ When using template syntax:
 [View all indicators](financials.html?filter=Category)
 ```
 
+Key placement rules:
+- Place after Synopsis and Latest Revisions sections
+- Place before the final navigation link
+- Chart automatically renders with proper spacing and responsive sizing
+- Container is clickable and links to relevant filter
+
 ### Chart Type Selection
 
 | Data Type | Chart Type | Example |
 |-----------|-----------|---------|
-| Single metric, 6+ months | Chart.js line chart | 10-Year Treasury, NFIB, Manufacturing PMI |
+| Single metric, 6+ months | {{chart:Indicator Name}} | 10-Year Treasury, NFIB, Manufacturing PMI |
 | Single metric, less data | Skip chart, use text | Posts with only 1-2 months of data |
 | Multi-series data | Skip chart, use text | Multiple indicators in one post (different scales) |
 | Highly volatile data | Skip chart | Weekly claims, daily market data |
 | Real-time/daily data | Link to financials.html | Prediction markets with constantly changing odds |
 
-### Accessibility & Performance
-
-- Chart.js charts use canvas rendering (built on site infrastructure)
-- Alt text not needed (data explained in surrounding text)
-- Responsive design adapts to mobile screens via Chart.js options
-- Work in both light and dark modes (use site color scheme #2C5F5A)
-- Clickable container provides accessibility and navigation
-- Minimal performance impact (Canvas rendering is optimized)
-
 ### Common Chart Mistakes to Avoid
 
 ❌ **DON'T:**
-- Use SVG sparklines (do not render properly in post system)
-- Use custom colors (must use site primary #2C5F5A)
-- Create charts without the clickable container (reduces interactivity)
+- Use manual canvas HTML (use template syntax instead)
+- Use custom colors (site colors are applied automatically)
 - Include charts for posts with less than 6 months of data (insufficient trend)
 - Mix multi-indicator charts with different scales (confusing visualization)
 - Forget to register the post in json/posts.json
 - Overcomplicate with multiple data series (keep to single metric)
 
 ✓ **DO:**
-- Use Chart.js canvas charts matching existing post patterns (e.g., 2025-11-12.md)
-- Always use site color scheme: border `#2C5F5A`, fill `rgba(44, 95, 90, 0.1)`
-- Make chart container clickable, pointing to relevant financials filter
+- Use template syntax: `{{chart:Indicator Name}}`
+- Verify indicator name exactly matches `financials-data.json`
 - Include 6+ months of data for meaningful trend visualization
-- Set Y-axis min/max with 5-10% padding for context
-- Test on mobile (responsive: true in Chart.js options)
-- Verify data accuracy against source JSON
+- Post must have YAML frontmatter with `date` field
 - Register post with file reference and timestamp in posts.json
-
-### Embedded Chart Examples
-
-#### Example 1: Manufacturing Orders (Template Syntax)
-
-**Post File Content:**
-```markdown
----
-date: 2025-11-19T14:00:00
----
-
-### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize: 1.4% MoM**
-
-August hit $612B after summer's painful decline from $642.5B in May. Manufacturing stabilization is critical—when orders stop, layoffs follow.
-
-**Latest Data:**
-• **New Orders**: August $612B (+1.4% MoM from $603.6B)
-• **Previous High**: May $642.5B (+5.9% above current level)
-• **Summer Decline**: Lost $30.5B (-4.7%) from May to July
-
-**Synopsis**: Manufacturing orders stopped bleeding and stabilized in August after summer's painful 5% decline. When manufacturers halt orders, layoffs typically follow, so stabilization is encouraging for employment outlook.
-
-**Latest Revisions**: All prior months stable; no revisions.
-
-{{chart:New Orders}}
-
-[View all business indicators](financials.html?filter=Business%20Indicators)
-```
-
-#### Example 2: Multi-Indicator Post with Charts (Template Syntax)
-
-**Post File Content:**
-```markdown
----
-date: 2025-11-19T14:00:00
----
-
-### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Orders Stabilize**
-
-August recovered to $612B. Manufacturing stabilization is critical—when orders stop, layoffs follow.
-
-{{chart:New Orders}}
-
----
-
-### <i data-lucide='ship' class='post-icon'></i> **Trade Deficit Down 23.8%: $59.6B in August**
-
-August plummeted from July's $78.2B to $59.6B. Prior months revised lower across the board (March -3.0%, April -2.3%, May -0.6%). The March spike suggests tariff rush-ahead and inventory buildup. August's drop signals cooling import demand.
-
-**Latest Data:**
-• **Trade Deficit**: August $59.6B (-23.8% MoM from $78.2B)
-• **July High**: $78.2B (peak of recent trend)
-• **Prior Revisions**: March -$4.1B, April -$1.4B, May -$0.4B
-
-**Synopsis**: Trade deficit fell sharply as import demand cooled following earlier tariff-driven rush purchases. Revisions to prior months confirm tariff-forward buying inflated spring numbers; August's decline reflects normalization.
-
-**Latest Revisions**: March revised down $4.1B, April down $1.4B, May down $0.4B—all reflecting tariff timing adjustments.
-
-{{chart:Trade Deficit}}
-
-[View all trade indicators](financials.html?filter=Trade%20Tariffs)
-```
-
-#### Example 3: Consumer Sentiment with Template Syntax
-
-**Post File Content:**
-```markdown
----
-date: 2025-11-15T14:00:00
----
-
-### <i data-lucide='trending-down' class='post-icon'></i> **Consumer Sentiment Hits 6-Month Low**
-
-Consumer sentiment fell sharply in November as economic uncertainty weighs on household confidence and purchasing power.
-
-**Latest Data:**
-• **Consumer Sentiment Index**: November 50.3 (-6.1% MoM from 53.6)
-• **6-Month Low**: Down from May's 52.2 to November's 50.3
-• **Trend**: Sustained deterioration despite stable employment
-
-**Synopsis**: Consumer sentiment continues its downward trajectory as households express heightened concerns about inflation and employment outlook. The 6-month decline signals sustained erosion of confidence even as labor market remains relatively solid.
-
-**Latest Revisions**: October revised down 0.5 points from initial estimate; August and September unchanged.
-
-{{chart:Consumer Sentiment}}
-
-[View all consumer indicators](financials.html?filter=Consumer%20Indicators)
-```
+- Test charts on mobile (responsive by default)
 
 ### Chart Implementation Checklist
 
 Before publishing any post with a chart:
 
-**Using Template Syntax ({{chart:Indicator Name}}):**
 - [ ] Indicator name exactly matches `name` field in `financials-data.json`
 - [ ] Post has YAML frontmatter with `date` field
 - [ ] Chart placed after Synopsis and Latest Revisions sections
@@ -936,16 +790,8 @@ Before publishing any post with a chart:
 - [ ] Latest Data section includes MoM % changes
 - [ ] Synopsis explains what the trend means (1-2 sentences)
 - [ ] Latest Revisions documents any prior-month adjustments
-
-**Using Manual Canvas (if template syntax not available):**
-- [ ] Chart data verified against `financials-data.json`
-- [ ] Canvas element has unique ID (no duplicates across posts)
-- [ ] Chart uses site colors: `#2C5F5A` border, `rgba(44, 95, 90, 0.1)` fill
-- [ ] Y-axis min/max set with 5-10% padding
-- [ ] Y-axis ticks formatted appropriately (%, whole numbers, etc.)
-- [ ] Chart container is clickable with proper onclick handler
+- [ ] Chart renders correctly on mobile
 - [ ] Post registered in `json/posts.json` with file path and date
-- [ ] Chart renders correctly on mobile (responsive: true)
 
 ## Multi-Topic Posts with Data & Revisions
 
@@ -1002,19 +848,19 @@ The Patriots @ Bengals post demonstrates best practices for combining three dist
 - **Second Topic**: Financial commodity data with chart
   - Icon: `trending-down`
   - Key metric: October value with YTD change percentage
-  - Chart.js visualization showing 10-month trend (Jan-Oct)
+  - `{{chart:WTI Crude Oil}}` template syntax for visualization
   - Link to Commodities filter
 
 - **Third Topic**: Construction spending data with trend chart
   - Icon: `hammer`
   - Latest month value with MoM change and brief context
-  - Chart.js visualization showing 6-month trend (Mar-Aug)
+  - `{{chart:Construction Spending}}` template syntax
   - Link to Business Indicators filter
 
 **Key Patterns for Multi-Topic Posts:**
 1. Use multiple icon + bold title combos for distinct sections
-2. Separate topics with `<br><br>` for visual clarity
-3. Include charts for financial indicators with 6+ months of data
+2. Separate topics with `---` (horizontal rule) for visual clarity
+3. Include charts for financial indicators with 6+ months of data using template syntax
 4. Link each section to appropriate page filters
 5. Keep descriptions concise (1-2 sentences per section)
 6. Use consistent formatting and icon placement
@@ -1023,18 +869,16 @@ The Patriots @ Bengals post demonstrates best practices for combining three dist
 9. Maximum 3 distinct topics per post (avoid overwhelming readers)
 10. Order topics logically (sports first, then financial/business)
 
-**Chart Configuration Standards:**
-- Canvas IDs must be unique per chart (e.g., `wti-oil-chart`, `construction-chart`)
-- Y-axis bounds: Calculate min/max from data with 5-10% padding
-- Y-axis formatting: Use appropriate units ($, %, B, M, etc.)
-- Data labels: Include month abbreviations or time periods
-- Responsive: Always include `responsive: true` and `maintainAspectRatio: false`
+**Chart Syntax Standards:**
+- Use `{{chart:Indicator Name}}` for all charts
+- Indicator name must exactly match `financials-data.json`
+- Site colors applied automatically (#2C5F5A border, transparent fill)
+- Responsive layout by default
 
 **Color Consistency:**
-- Chart border color: `#2C5F5A` (site primary)
-- Chart fill color: `rgba(44, 95, 90, 0.1)` (transparent primary)
-- Works in both light and dark modes automatically
-- Do not use custom colors per financial indicator</content>
+- Chart colors are applied automatically by template system
+- Works in both light and dark modes without modification
+- All financial indicator charts use site primary color scheme</content>
 </xai:function_call">The Posts PRD has been created at `/Users/benjaminpalmer/TBPS/html/html/docs/posts-prd.md` with comprehensive guidelines for structure, formatting, categories, and best practices based on the existing posts pattern. This should serve as your implementation guide for improving and maintaining the posts system. Let me know if you'd like to adjust any sections or add more details. 
 
 Next post to improve? (The oldest ones like 5/24, 5/25, 5/28, 6/3, etc. appear to need similar formatting updates.) 

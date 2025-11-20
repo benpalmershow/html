@@ -168,7 +168,7 @@
   margin: var(--spacing-xs) 0;
   box-shadow: 0 2px 8px var(--shadow-color);
   background: var(--bg-primary);
-  border: 1px solid var(--border-color);
+  border: none;
 }
 
 .announcement-card .chart-container {

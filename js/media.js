@@ -262,6 +262,12 @@
         
         if (item.cover) {
             coverImg.src = item.cover;
+            if (item.coverSrcset) {
+                coverImg.srcset = item.coverSrcset;
+            }
+            if (item.coverSizes) {
+                coverImg.sizes = item.coverSizes;
+            }
             coverImg.onload = () => coverImg.classList.add('loaded');
             coverImg.onerror = () => {
                 coverImg.src = placeholderSvg;

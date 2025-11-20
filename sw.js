@@ -1,4 +1,4 @@
-const CACHE_NAME = 'media-cache-v1';
+const CACHE_NAME = 'media-cache-v2';
 const EXTERNAL_DOMAINS = [
   'upload.wikimedia.org',
   'photos.airmail.news',
@@ -66,9 +66,26 @@ self.addEventListener('fetch', event => {
   // Always fetch fresh JS and HTML from network
   if (event.request.url.match(/\.(js|html)$/i)) {
     event.respondWith(
-      fetch(event.request, { cache: 'no-store' }).catch(() => {
-        return caches.match(event.request);
-      })
+      fetch(event.request, { cache: 'no-store' })
+        .then(response => {
+          // Update cache with fresh version
+          if (response && response.status === 200 && response.type !== 'error') {
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return response;
+        })
+        .catch(() => {
+          // Fallback to cache
+          return caches.match(event.request).then(response => {
+            if (response) return response;
+            // If not in cache and network failed, throw to let browser handle failure
+            // instead of returning undefined which causes TypeError
+            throw new Error('Network failure and no cache available');
+          });
+        })
     );
     return;
   }
@@ -86,17 +103,21 @@ self.addEventListener('fetch', event => {
           return response;
         }
         
-        return fetch(event.request, { credentials: 'omit' }).then(response => {
-          if (!response || response.status !== 200 || response.type === 'error') {
+        return fetch(event.request, { credentials: 'omit' })
+          .then(response => {
+            if (!response || response.status !== 200 || response.type === 'error') {
+              return response;
+            }
+            
+            const responseClone = response.clone();
+            cache.put(event.request, responseClone);
             return response;
-          }
-          
-          const responseClone = response.clone();
-          cache.put(event.request, responseClone);
-          return response;
-        }).catch(() => {
-          return caches.match(event.request);
-        });
+          })
+          .catch(err => {
+            console.warn('SW: Image fetch failed:', event.request.url);
+            // Return a 404 so the img tag receives an error and triggers onerror
+            return new Response('Image fetch failed', { status: 404, statusText: 'Not Found' });
+          });
       });
     })
   );

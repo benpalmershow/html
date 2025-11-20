@@ -425,21 +425,21 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
    .nav-container {
-     padding: 0.5rem var(--spacing-md, 1.25rem);
-     gap: 0.5rem;
+     padding: 0.6rem var(--spacing-md, 1.25rem);
+     gap: 0.75rem;
      min-height: 0;
    }
 
    .nav-list {
-     gap: clamp(0.25rem, 1.5vw, 0.75rem);
+     gap: clamp(0.4rem, 2vw, 1rem);
      flex: 1;
      min-width: 0;
      flex-wrap: nowrap;
    }
 
   .nav-link {
-    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-    padding: 0.25rem 0.3rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    padding: 0.4rem 0.4rem;
     flex-shrink: 0;
   }
 
@@ -449,28 +449,29 @@
   }
 
   .nav-logo img {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .nav-right-section {
     display: flex;
     flex-shrink: 0;
+    gap: 0.75rem;
   }
 
   .cta-icon-btn,
   .hints-icon-btn,
   .dark-mode-toggle {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
   }
 
   .cta-icon-btn i[data-lucide],
   .hints-icon-btn i[data-lucide],
   .dark-mode-toggle i[data-lucide] {
-    width: 1rem;
-    height: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .hint-content {
@@ -478,30 +479,79 @@
     max-height: 85vh;
   }
 
+  .hint-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .hint-step strong {
+    font-size: 1rem;
+  }
+
+  .hint-step div {
+    font-size: 0.95rem;
+  }
+
   .cta-modal .cta-container {
     width: 90vw;
     max-width: 95%;
+  }
+
+  .cta-button i[data-lucide] {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .cta-text-wrapper span:first-child {
+    font-size: 1.1rem;
+  }
+
+  .cta-subtext {
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
    .nav-container {
-     padding: 0.4rem 0.6rem;
-     gap: 0.3rem;
+     padding: 0.5rem 0.75rem;
+     gap: 0.5rem;
      min-height: 0;
    }
 
    .nav-list {
-     gap: clamp(0.15rem, 1.2vw, 0.4rem);
+     gap: clamp(0.3rem, 1.8vw, 0.6rem);
      flex-wrap: nowrap;
      flex-shrink: 1;
    }
 
    .nav-link {
-     font-size: clamp(0.7rem, 1.5vw, 0.85rem);
-     padding: 0.2rem 0.2rem;
+     font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+     padding: 0.3rem 0.3rem;
      flex-shrink: 0;
    }
+
+  .nav-logo img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nav-right-section {
+    gap: 0.5rem;
+  }
+
+  .cta-icon-btn,
+  .hints-icon-btn,
+  .dark-mode-toggle {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .cta-icon-btn i[data-lucide],
+  .hints-icon-btn i[data-lucide],
+  .dark-mode-toggle i[data-lucide] {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
 
   .hint-content {
     width: 95%;
@@ -510,7 +560,15 @@
   }
 
   .hint-content h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .hint-step strong {
+    font-size: 1rem;
+  }
+
+  .hint-step div {
+    font-size: 0.95rem;
   }
 
   .cta-modal .cta-container {
@@ -519,31 +577,16 @@
     padding: var(--spacing-md, 1.25rem);
   }
 
+  .cta-button i[data-lucide] {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
   .cta-text-wrapper span:first-child {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .cta-subtext {
-    font-size: 0.8rem;
-  }
-
-  .nav-logo {
-    padding: 0.2rem !important;
-    flex-shrink: 0;
-  }
-
-  .cta-icon-btn,
-  .hints-icon-btn,
-  .dark-mode-toggle {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-  }
-
-  .cta-icon-btn i[data-lucide],
-  .hints-icon-btn i[data-lucide],
-  .dark-mode-toggle i[data-lucide] {
-    width: 0.9rem;
-    height: 0.9rem;
+    font-size: 0.95rem;
   }
 }

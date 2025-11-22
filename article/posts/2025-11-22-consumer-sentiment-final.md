@@ -13,3 +13,11 @@ Consumer Sentiment final reading for November released at 51, slightly higher th
 Despite the modest upward revision, the index remains weak, down from 53.6 in October, signaling persistent consumer pessimism amid economic uncertainty.
 
 {{chart:Consumer Sentiment}}
+
+### <a href="media.html#the-taste-of-things"><img src="https://media.themoviedb.org/t/p/original/gZsXtzwI3CgCvKF5TkgHVhhbEg1.jpg" alt="The Taste of Things" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a> **The Taste of Things (2023)**
+
+A 1889-set French romance between Eugenie, an esteemed cook, and Dodin, the gourmet chef she works for. Over 20 years of culinary mastery and unspoken devotion, their relationship deepens through exquisitely prepared meals and shared passion for the art of cooking. Dir. Tran Anh Hung.
+
+**Ratings:** Rotten Tomatoes 97% | IMDb 7.4/10
+
+<a href="media.html#the-taste-of-things"><b>View in Media</b></a>

@@ -52,6 +52,36 @@ Proceed with adding all entries? Or would you like to adjust any?
 
 ---
 
+## Local Image Hosting (Optional)
+
+For media entries with unreliable hotlinks or frequent access failures, consider hosting images locally in the `images/` directory using WebP format for optimal performance.
+
+**When to use local hosting:**
+- Cover URLs consistently fail to load (403, CORS errors, broken links)
+- Movie posters from slow external sources (non-CDN providers)
+- Reducing external dependencies for faster, more reliable site performance
+
+**Implementation:**
+1. Download image from verified hotlink source
+2. Convert to WebP format: `ffmpeg -i cover.jpg -c:v libwebp cover.webp`
+3. Save to `images/media-title.webp` (kebab-case filename)
+4. Update media.json: `"cover": "images/media-title.webp"`
+5. Optional: Add srcset for responsive images
+   - `"coverSrcset": "images/media-title-240.webp 240w, images/media-title-360.webp 360w"`
+   - Generate smaller variants using ffmpeg or ImageMagick
+
+**Benefits:**
+- No CORS issues, guaranteed availability
+- WebP format: 30-40% smaller than JPEG, lossless quality
+- CDN-ready if hosted on Vercel or similar
+- No external dependency tracking needed
+
+**Examples from media.json:**
+- "Replaceable You": `"cover": "images/replaceable-you.webp"`
+- "Land Power": `"cover": "images/land-power.webp"`
+
+---
+
 ## Automated Workflow
 
 ### Step 1: Information Gathering
@@ -177,10 +207,20 @@ Proceed with adding all entries? Or would you like to adjust any?
     - May require verification
 
 13. **TMDB (for movies ONLY)**
-    ```
-    https://media.themoviedb.org/t/p/original/[PATH].jpg
-    https://www.themoviedb.org/t/p/w1280/[PATH].jpg
-    ```
+     ```
+     https://media.themoviedb.org/t/p/w500/[PATH].jpg (recommended - fast load)
+     https://media.themoviedb.org/t/p/w780/[PATH].jpg (higher quality, still fast)
+     https://media.themoviedb.org/t/p/original/[PATH].jpg (avoid - slow)
+     ```
+     
+     **IMPORTANT: Use `media.themoviedb.org` (not `www.themoviedb.org`) to avoid CORS issues**
+     
+     **Size guidance:**
+     - `w500`: Recommended for web - 500px width, ~50KB, fast load
+     - `w780`: High quality, ~100KB, acceptable for featured items
+     - `original`: Only for local hosting, avoid hotlinking (slow, large file)
+     
+     **Common sizes available:** w92, w154, w185, w342, w500, w780, original
 
 14. **Wikipedia/Wikimedia Commons**
     ```
@@ -239,19 +279,34 @@ When in doubt, cross-reference against multiple sources:
 - Be aware: Same title can have multiple ISBNs (hardcover, paperback, ebook, international editions)
 - When ISBNs conflict, prefer the edition most commonly available
 
-**Step 2.4: Fallback Process**
+**Step 2.4: Hotlink Reliability & CORS Issues**
+
+**Reliable hotlink sources (recommended):**
+- `media.themoviedb.org` - CORS-friendly, CDN-backed, fast delivery
+- `covers.openlibrary.org` - Reliable for books, public domain
+- `syndetics.com` via SFPL - Professional library service, requires ISBN
+- Amazon images (specific formats) - Stable URLs for book covers
+
+**Avoid or use with caution:**
+- External publisher websites - May block hotlinking or change URLs frequently
+- `pics.filmaffinity.com` - May have CORS restrictions
+- Personal/small sites - High failure rate, no CDN support
+- `www.themoviedb.org/t/p/...` - Use `media.themoviedb.org` instead (CORS)
+
+**Step 2.5: Fallback Process**
 If primary source URL shows wrong cover:
 
 1. **DO NOT USE IT** - Wrong cover is worse than no cover
-2. Try next source in priority list (Open Library → Google Books → Internet Archive)
+2. Try next source in priority list, prioritizing CORS-friendly sources
 3. Cross-reference with Amazon product page
 4. Check publisher website for official cover
 5. Try Goodreads image extraction
 6. If all automated sources fail: Search Google Images for "[title] [author] book cover"
-7. If still no verified match: Note "verified cover image unavailable via hotlink"
-8. Consider requesting user to provide correct cover URL
+7. **Consider local hosting** if hotlink sources are unreliable (see Local Image Hosting below)
+8. If still no verified match: Note "verified cover image unavailable via hotlink"
+9. Consider requesting user to provide correct cover URL
 
-**Step 2.5: Documentation**
+**Step 2.6: Documentation**
 When cover source is verified:
 - Note which source provided correct image
 - Document any ISBN issues encountered
@@ -605,6 +660,12 @@ add new book, title: The Power of Money
 ---
 
 ## Error Handling
+
+**If YouTube trailer/embed unavailable:**
+1. For movies with unavailable YouTube trailers, set `"embedUrl": ""` (empty string)
+2. Trailer is optional - presence of cover and metadata is sufficient
+3. Check alternative trailer sources (IMDB, Rotten Tomatoes) but do not embed
+4. Reference existing movie entries for best practices (e.g., "All We Imagine as Light", "Presence", "The Bare Necessity")
 
 **If cover image unavailable:**
 1. Try all sources listed in priority order

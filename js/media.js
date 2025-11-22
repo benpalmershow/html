@@ -279,8 +279,17 @@
 
         const coverImg = document.createElement('img');
         coverImg.className = 'media-cover';
-        coverImg.width = 300;
-        coverImg.height = 300;
+
+        // Set proper aspect ratios based on media type to prevent CLS
+        if (item.mediaType === 'movie') {
+            // Movie posters: 2:3 aspect ratio
+            coverImg.width = 300;
+            coverImg.height = 450;
+        } else {
+            // Square aspect ratio for other media types
+            coverImg.width = 300;
+            coverImg.height = 300;
+        }
 
         // Set alt text for accessibility
         coverImg.alt = `${item.title} cover${item.author ? ` by ${item.author}` : ''}`;
@@ -289,7 +298,7 @@
         coverImg.addEventListener('error', () => {
             coverImg.classList.add('image-error');
             coverImg.alt = `Cover image unavailable for ${item.title}`;
-            console.warn(`Failed to load cover for: ${item.title}`);
+            console.error(`Failed to load cover for: ${item.title}`);
         });
 
         if (isFirst) {

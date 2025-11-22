@@ -64,6 +64,9 @@
   <link rel="preload" href="css/nav.css?v=20251117" as="style">
   <link rel="preload" href="css/index.css?v=20251117" as="style">
   <link rel="preload" href="images/announcements.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="js/posts-loader.js" as="script">
+  <link rel="preload" href="js/nav.js" as="script">
+  <link rel="preload" href="js/socials.js" as="script">
   
   <!-- Preconnect to critical external domains -->
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -144,7 +147,7 @@
     (function(){
       const libs = {
         // marked moved to static script tag for LCP
-        lucide: 'https://unpkg.com/lucide@latest',
+        lucide: 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js',
         chartjs: 'https://cdn.jsdelivr.net/npm/chart.js',
         yaml: 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',
         fontawesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
@@ -156,7 +159,7 @@
         script.src = src;
         script.async = true;
         script.onload = callback;
-        script.onerror = () => console.warn('Failed to load:', src);
+        script.onerror = () => console.error('Failed to load script:', src);
         document.head.appendChild(script);
       }
 
@@ -165,7 +168,8 @@
         link.rel = 'stylesheet';
         link.href = href;
         link.media = 'print';
-        link.onload = function() { this.media = 'all' };
+        link.onload = function() { this.media = 'all'; };
+        link.onerror = () => console.error('Failed to load CSS:', href);
         document.head.appendChild(link);
       }
 

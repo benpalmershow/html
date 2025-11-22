@@ -56,10 +56,15 @@
   <link rel="preload" href="css/body.css?v=20251117" as="style">
   <link rel="preload" href="css/nav.css?v=20251117" as="style">
   <link rel="preload" href="css/media.css?v=20251117" as="style">
-  
+
   <!-- Preload Font Awesome fonts -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Preload critical scripts -->
+  <link rel="preload" href="js/nav.js" as="script">
+  <link rel="preload" href="js/socials.js" as="script">
+  <link rel="preload" href="js/media.js" as="script">
 
   <!-- Inline critical CSS for LCP -->
   <style>
@@ -197,11 +202,12 @@
   <script>
     const loadLucide = () => {
       const script = document.createElement('script');
-      script.src = 'https://unpkg.com/lucide@latest';
+      script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
       script.defer = true;
+      script.onerror = () => console.error('Failed to load Lucide');
       document.head.appendChild(script);
     };
-    
+
     if ('requestIdleCallback' in window) {
       requestIdleCallback(loadLucide);
     } else {

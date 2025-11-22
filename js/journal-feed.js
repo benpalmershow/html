@@ -17,7 +17,7 @@ function waitForMarked() {
         resolve();
       } else if (attempts >= 50) {
         clearInterval(checkInterval);
-        console.warn('Marked.js not loaded');
+        console.error('Marked.js not loaded');
         resolve();
       }
     }, 100);
@@ -54,22 +54,22 @@ async function loadJournalEntries() {
     // Load all entries, handling both inline content and file references
     const articlesHTML = await Promise.all(journals.map(async (journal) => {
       if (!journal || !journal.date) {
-        console.warn('Invalid journal entry - missing date:', journal);
+        console.error('Invalid journal entry - missing date:', journal);
         return '';
       }
       if (!journal.entries || !Array.isArray(journal.entries)) {
-        console.warn('Invalid journal entry - missing or invalid entries:', journal);
+        console.error('Invalid journal entry - missing or invalid entries:', journal);
         return '';
       }
       
       const entriesHTML = await Promise.all(journal.entries.map(async (entry) => {
         if (!entry || typeof entry.title !== 'string') {
-          console.warn('Invalid entry:', entry);
+          console.error('Invalid entry:', entry);
           return '';
         }
-        
+
         if (!entry.content && !entry.file) {
-          console.warn('Entry missing content and file:', entry);
+          console.error('Entry missing content and file:', entry);
           return '';
         }
         
@@ -92,7 +92,7 @@ async function loadJournalEntries() {
               try {
                 htmlContent = window.marked.parse(content);
               } catch (e) {
-                console.warn('Failed to parse markdown, using raw content:', e);
+                console.error('Failed to parse markdown, using raw content:', e);
               }
             }
             contentHtml = `<div id="${entryId}" class="entry"><div class="entry-title">${entry.title}</div><div class="entry-content">${htmlContent}</div></div>`;
@@ -156,7 +156,7 @@ function formatDate(dateString) {
   try {
     const date = parseDate(dateString);
     if (isNaN(date.getTime()) || date.getTime() === 0) {
-      console.warn('Using original date string due to parsing failure:', dateString);
+      console.error('Using original date string due to parsing failure:', dateString);
       return dateString;
     }
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -170,7 +170,7 @@ function formatDateForDateTime(dateString) {
   try {
     const date = parseDate(dateString);
     if (isNaN(date.getTime()) || date.getTime() === 0) {
-      console.warn('Using original date string for datetime attribute:', dateString);
+      console.error('Using original date string for datetime attribute:', dateString);
       return dateString;
     }
     return date.toISOString().split('T')[0];

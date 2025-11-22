@@ -80,6 +80,45 @@ async function initPosts() {
       window.lucide.createIcons();
     }
 
+    // Handle image errors and ensure proper sizing
+    feed.querySelectorAll('img').forEach(img => {
+      if (!img.onerror) {
+        img.onerror = () => {
+          console.error('Image failed to load:', img.src);
+          img.style.display = 'none';
+        };
+      }
+
+      // For TMDB images, optimize to w500 size and set proper aspect ratio FIRST
+      if (img.src.includes('themoviedb.org') || img.src.includes('tmdb.org')) {
+        // Only optimize if not already optimized
+        if (img.src.includes('/original/')) {
+          img.src = img.src.replace('/original/', '/w500/');
+          console.log('Optimized TMDB image:', img.src);
+        }
+        // Set 2:3 aspect ratio for movie posters
+        img.width = 300;
+        img.height = 450;
+      }
+
+      // Ensure images have proper dimensions to prevent CLS
+      if (!img.hasAttribute('width') || !img.hasAttribute('height')) {
+        // Set default dimensions if not specified
+        if (!img.hasAttribute('width')) img.width = 400;
+        if (!img.hasAttribute('height')) img.height = 300;
+      }
+
+      // Add loading="lazy" for non-critical images
+      if (!img.hasAttribute('loading')) {
+        img.loading = 'lazy';
+      }
+
+      // Add decoding="async" to prevent layout jank
+      if (!img.hasAttribute('decoding')) {
+        img.decoding = 'async';
+      }
+    });
+
     // Update times every minute (only set once)
     if (loadedCount === posts.length) {
       setInterval(() => {

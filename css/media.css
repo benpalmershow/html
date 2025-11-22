@@ -732,7 +732,9 @@ RESPONSIVE DESIGN - TABLET & MOBILE
     .media-card {
         max-width: 100%;
         width: 140px;
-        height: 200px;
+        /* Height adjusted proportionally for aspect ratios */
+        height: auto;
+        aspect-ratio: 7/10; /* Approximate for movie posters, JS will override */
     }
 
     .media-cover-container {
@@ -774,7 +776,9 @@ RESPONSIVE DESIGN - TABLET & MOBILE
 @media (max-width: 480px) {
     .media-card {
         width: 110px;
-        height: 160px;
+        /* Height adjusted proportionally for aspect ratios */
+        height: auto;
+        aspect-ratio: 11/16; /* Approximate for movie posters, JS will override */
     }
 
     .media-cards {

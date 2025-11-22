@@ -166,11 +166,11 @@
     position: relative;
     width: 100%;
     max-width: var(--card-max-width);
-    height: var(--card-height);
     display: flex;
     flex-direction: column;
     cursor: pointer;
     transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    /* Height is set dynamically by JS based on media type for proper aspect ratios */
 }
 
 .media-card:hover,

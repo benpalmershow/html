@@ -549,6 +549,95 @@ function getChartConfig(indicator, labels, dataPoints) {
     baseConfig.options.scales.y.max = 65;
   }
   
+  // Mixed chart for Trade Deficit with imports/exports
+  if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) {
+    const importValues = [];
+    const exportValues = [];
+    const deficitValues = [];
+    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    
+    months.forEach((month, index) => {
+      const importValue = indicator.imports[month];
+      const exportValue = indicator.exports[month];
+      const deficitValue = indicator[month];
+
+      if (importValue && exportValue && deficitValue && 
+          !importValue.startsWith('TBD') && !exportValue.startsWith('TBD') && !deficitValue.startsWith('TBD')) {
+        const numImport = parseFloat(importValue.replace(/[^0-9.-]/g, ''));
+        const numExport = parseFloat(exportValue.replace(/[^0-9.-]/g, ''));
+        const numDeficit = parseFloat(deficitValue.replace(/[^0-9.-]/g, ''));
+
+        if (!isNaN(numImport) && !isNaN(numExport) && !isNaN(numDeficit)) {
+          importValues.push(numImport);
+          exportValues.push(numExport);
+          deficitValues.push(numDeficit);
+          labels[labels.length - 1] = months[index].charAt(0).toUpperCase() + months[index].slice(1, 3);
+        }
+      }
+    });
+
+    baseConfig.type = 'bar';
+    baseConfig.data = {
+      labels: labels,
+      datasets: [
+        {
+          type: 'bar',
+          label: 'Imports',
+          data: importValues,
+          backgroundColor: 'rgba(255, 107, 107, 0.7)',
+          borderColor: '#FF6B6B',
+          borderWidth: 1,
+          yAxisID: 'y'
+        },
+        {
+          type: 'bar',
+          label: 'Exports',
+          data: exportValues,
+          backgroundColor: 'rgba(81, 207, 102, 0.7)',
+          borderColor: '#51CF66',
+          borderWidth: 1,
+          yAxisID: 'y'
+        },
+        {
+          type: 'line',
+          label: 'Trade Deficit',
+          data: deficitValues,
+          borderColor: '#2C5F5A',
+          backgroundColor: 'transparent',
+          borderWidth: 2.5,
+          tension: 0.4,
+          fill: false,
+          yAxisID: 'y1',
+          pointBackgroundColor: '#2C5F5A',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 1.5,
+          pointRadius: 4
+        }
+      ]
+    };
+    baseConfig.options.scales = {
+      x: { display: true, grid: { display: false, drawBorder: false } },
+      y: {
+        display: true,
+        beginAtZero: false,
+        grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
+        ticks: { callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } },
+        position: 'left',
+        title: { display: true, text: 'Imports / Exports (Billions)' }
+      },
+      y1: {
+        display: true,
+        beginAtZero: false,
+        grid: { display: false },
+        ticks: { callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } },
+        position: 'right',
+        title: { display: true, text: 'Trade Deficit (Billions)' }
+      }
+    };
+    baseConfig.options.plugins.legend = { display: true, position: 'top' };
+    return baseConfig;
+  }
+  
   // Bar chart for prediction markets
   if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities) {
     baseConfig.type = 'bar';

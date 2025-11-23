@@ -787,8 +787,46 @@ function initializeChartInOverlay(chartConfig, canvas) {
 
     if (window[canvas.id + 'Chart']) window[canvas.id + 'Chart'].destroy();
 
+    // Determine chart type based on config
+    const isMixedChart = chartConfig.type === 'chartjs-mixed';
+    const chartType = isMixedChart ? 'bar' : 'line';
+
+    // Build scales based on chart type
+    const scales = {
+        x: { display: true, grid: { display: false, drawBorder: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 4, padding: 2, font: { size: 9 } } }
+    };
+
+    if (isMixedChart) {
+        // Dual Y-axes for mixed chart
+        scales.y = {
+            display: true,
+            beginAtZero: false,
+            grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
+            ticks: { padding: 2, font: { size: 9 }, callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } },
+            position: 'left',
+            title: { display: true, text: 'Imports / Exports (Billions)', font: { size: 10, weight: 'bold' } }
+        };
+        scales.y1 = {
+            display: true,
+            beginAtZero: false,
+            grid: { display: false },
+            ticks: { padding: 2, font: { size: 9 }, callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } },
+            position: 'right',
+            title: { display: true, text: 'Trade Deficit (Billions)', font: { size: 10, weight: 'bold' } }
+        };
+    } else {
+        // Single Y-axis for standard line chart
+        scales.y = {
+            display: true,
+            beginAtZero: false,
+            grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
+            ticks: { padding: 2, font: { size: 9 }, callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } },
+            position: 'right'
+        };
+    }
+
     const chartInstance = new Chart(ctx, {
-        type: 'line',
+        type: chartType,
         data: chartConfig.data,
         options: {
             responsive: true,
@@ -796,7 +834,7 @@ function initializeChartInOverlay(chartConfig, canvas) {
             layout: { padding: { top: 15, right: 0, bottom: 25, left: 10 } },
             animation: { duration: 600, easing: 'easeInOutQuart' },
             plugins: {
-                legend: { display: false },
+                legend: { display: true, position: 'top', labels: { font: { size: 10 }, padding: 10, boxWidth: 12 } },
                 title: { display: false },
                 tooltip: {
                     mode: 'index', intersect: false,
@@ -812,17 +850,14 @@ function initializeChartInOverlay(chartConfig, canvas) {
                         },
                         label: function (context) {
                             if (context.parsed.y !== null) {
-                                return new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(context.parsed.y);
+                                return context.dataset.label + ': ' + new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(context.parsed.y) + 'B';
                             }
                             return '';
                         }
                     }
                 }
             },
-            scales: {
-                x: { display: true, grid: { display: false, drawBorder: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 4, padding: 2, font: { size: 9 } } },
-                y: { display: true, beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { padding: 2, font: { size: 9 }, callback: function (value) { if (value >= 1000) return (value / 1000).toFixed(1) + 'K'; return value.toLocaleString(); } }, position: 'right' }
-            },
+            scales: scales,
             interaction: { mode: 'nearest', axis: 'x', intersect: false }
         }
     });
@@ -841,6 +876,75 @@ function getChartConfig(indicatorName) {
     const labels = [];
     const values = [];
 
+    // Check if this is Trade Deficit with imports/exports data
+    if (indicatorName === 'Trade Deficit' && indicatorData.imports && indicatorData.exports) {
+        const importValues = [];
+        const exportValues = [];
+        const deficitValues = [];
+
+        months.forEach((month, index) => {
+            const importValue = indicatorData.imports[month];
+            const exportValue = indicatorData.exports[month];
+            const deficitValue = indicatorData[month];
+
+            if (importValue && exportValue && deficitValue && 
+                !importValue.startsWith('TBD') && !exportValue.startsWith('TBD') && !deficitValue.startsWith('TBD')) {
+                const numImport = extractNumericValue(importValue);
+                const numExport = extractNumericValue(exportValue);
+                const numDeficit = extractNumericValue(deficitValue);
+
+                if (numImport !== null && numExport !== null && numDeficit !== null) {
+                    labels.push(monthLabels[index]);
+                    importValues.push(numImport);
+                    exportValues.push(numExport);
+                    deficitValues.push(numDeficit);
+                }
+            }
+        });
+
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Imports',
+                    data: importValues,
+                    type: 'bar',
+                    backgroundColor: 'rgba(255, 107, 107, 0.7)',
+                    borderColor: '#FF6B6B',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Exports',
+                    data: exportValues,
+                    type: 'bar',
+                    backgroundColor: 'rgba(81, 207, 102, 0.7)',
+                    borderColor: '#51CF66',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Trade Deficit',
+                    data: deficitValues,
+                    type: 'line',
+                    borderColor: '#2C5F5A',
+                    backgroundColor: 'transparent',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: false,
+                    yAxisID: 'y1',
+                    pointBackgroundColor: '#2C5F5A',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 4
+                }
+            ]
+        };
+
+        return { type: 'chartjs-mixed', data: data };
+    }
+
+    // Standard single-line chart
     months.forEach((month, index) => {
         const value = indicatorData[month];
         if (value && value !== '' && !value.startsWith('TBD')) {

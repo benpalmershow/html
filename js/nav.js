@@ -168,4 +168,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Navbar hide/show on scroll
+  let lastScrollTop = 0;
+  const navbar = document.getElementById('main-nav');
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+      // Scrolling down and past threshold
+      navbar.classList.add('nav-hidden');
+    } else {
+      // Scrolling up
+      navbar.classList.remove('nav-hidden');
+    }
+    
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }, false);
 });

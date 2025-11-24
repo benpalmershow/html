@@ -6,6 +6,12 @@
   border-bottom: 1px solid var(--border-color, #e0dcc4);
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+}
+
+#main-nav.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .nav-container {
@@ -90,6 +96,7 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   vertical-align: middle;
    text-decoration: none;
    padding: 0 !important;
    transition: all 0.2s ease;
@@ -614,4 +621,4 @@
    .cta-subtext {
       font-size: 0.65rem;
    }
-}
+   }

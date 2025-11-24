@@ -235,7 +235,7 @@ blockquote.guidance-box {
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   border-radius: 8px;
   margin: 0.5rem 0;
-  box-shadow: 0 1px 8px var(--shadow-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   will-change: transform;
@@ -248,12 +248,13 @@ blockquote.guidance-box {
 
 .accordion-card:hover {
   border-color: var(--color-secondary);
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
 }
 
 .accordion-card.expanded {
-  box-shadow: 0 6px 20px var(--shadow-color);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 @keyframes slideInUp {
@@ -461,7 +462,6 @@ blockquote.guidance-box {
 
 .accordion-expanded-header {
   padding: 1rem 1rem 0.5rem;
-  border-bottom: 1px solid var(--color-gray-200);
 }
 
 .accordion-expanded-date {
@@ -1247,4 +1247,37 @@ blockquote.guidance-box {
     font-size: 0.4em;
     margin-top: 0.05em;
   }
+}
+
+/* Auto height transition with CSS Grid */
+.accordion-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.accordion-container.expanded {
+  grid-template-rows: 1fr;
+}
+
+.accordion-container > * {
+  overflow: hidden;
+}
+
+/* Border radius transforms */
+.accordion-card {
+  transition: border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+.accordion-card.expanded {
+  border-radius: 1.5rem;
+}
+
+.accordion-card:has(+ .accordion-card.expanded) {
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }

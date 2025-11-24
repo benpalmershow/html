@@ -3,12 +3,11 @@
 ## Build/Lint/Test Commands
 
 **Build Commands:**
-- `bun run js/build.js` - Build JavaScript bundles with minification and sourcemaps to `dist/` directory
-- No traditional package.json build scripts - uses standalone Bun build configuration
+- No automated build process - static HTML/CSS/JS site
+- No traditional package.json build scripts
 
 **Testing:**
 - No formal test runner configured
-- SEO system includes test modules in `seo/tests/` directory
 - Manual testing via browser console for functionality
 
 **Linting:**
@@ -20,19 +19,16 @@
 **Project Type:** Static HTML website for independent economic commentary and news
 
 **Key Directories:**
-- `article/` - Article content and templates
-- `css/` - Stylesheets (body.css, dark-mode.css, page-specific styles)
-- `dist/` - Built JavaScript bundles (output from build process)
-- `docs/` - Documentation (chart maintenance, media fetching, news fetching)
-- `images/` - Static assets (logos, favicons, media)
-- `js/` - JavaScript modules (navigation, charts, dark mode, feeds)
-- `json/` - Data files
-- `seo/` - Comprehensive SEO system with analytics, monitoring, structured data
+- `article/` - Markdown and HTML article content files
+- `css/` - Stylesheets (body.css, nav.css, index.css, news.css, financials.css, media.css, journal-tweets.css)
+- `docs/` - Documentation
+- `images/` - Static image assets (logos, favicons, webp images)
+- `js/` - JavaScript modules (nav, posts-loader, socials, financials, journal-feed, media, news, portfolio, countdown, animations, bfcache-compat, speed-insights, news-preview)
+- `json/` - Data files (posts, articles, media, journal, portfolio, financials-data)
 
 **Subprojects/APIs:**
-- **SEO System** (`seo/`): Modular system with analytics, monitoring, search console integration, content schema generation, mobile optimization, and build optimization
-- **Chart System**: Financial charts using Chart.js for interactive data visualization
-- **Content Management**: Post loading, journal feeds, media curation
+- **Content Management**: Post loading via posts-loader.js, journal feeds, media curation, portfolio management
+- **Dynamic Pages**: Financial data, news aggregation, media feeds, portfolio display, countdown timers
 
 **No databases** - static site with JSON data files
 
@@ -62,7 +58,7 @@
 - Text colors should be black in light mode and white in dark mode
 
 **Naming Conventions:**
-- kebab-case for file names (e.g., `dark-mode.js`, `financials-chart.js`)
+- kebab-case for file names (e.g., `posts-loader.js`, `journal-tweets.css`)
 - camelCase for JavaScript variables and functions
 - CSS classes use descriptive names with hyphens
 
@@ -73,8 +69,8 @@
 
 **Imports:**
 - Relative imports within the project
-- CDN imports for external libraries (Chart.js, Font Awesome)
-- Module imports for internal SEO system components
+- CDN imports for external libraries (Chart.js, marked.js, Font Awesome, lucide)
+- Deferred and async loading for non-critical scripts
 
 ## Content Update Guidelines
 

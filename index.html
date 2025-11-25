@@ -69,10 +69,6 @@
   <link rel="preload" href="js/socials.js" as="script">
   
   <!-- Preconnect to critical external domains -->
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-  <!-- Font Awesome - Completely deferred -->
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <!-- Critical CSS for index page -->
   <link rel="stylesheet" href="css/body.css?v=20251117">
@@ -193,15 +189,8 @@
         if (window.Chart) return resolve(window.Chart);
         loadScript(libs.chartjs, () => resolve(window.Chart));
       });
-
-      window.loadJsYaml = () => new Promise(resolve => {
-        if (window.jsyaml) return resolve(window.jsyaml);
-        loadScript(libs.yaml, () => resolve(window.jsyaml));
-      });
     })();
 
-    window.va = window.va || function() { (window.vaq = window.vaq || []).push(arguments) };
-    
     if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
       window.addEventListener('load', () => {
         const s = document.createElement('script');

@@ -67,21 +67,7 @@
 
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Font Awesome - Deferred -->
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin="anonymous" referrerpolicy="no-referrer">
-  </noscript>
-
-
-
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
   <script>
     // Only load Vercel scripts in production
     if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
@@ -102,59 +88,7 @@
 
   <title>News - Howdy, Stranger</title>
 
-  <!-- Structured Data - WebPage Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "News",
-    "url": "https://howdystranger.net/news.html",
-    "description": "Breaking news and latest headlines from The Ben Palmer Show",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Howdy, Stranger",
-      "url": "https://howdystranger.net"
-    },
-    "inLanguage": "en-US",
-    "copyrightYear": 2024,
-    "copyrightHolder": {
-      "@type": "Organization",
-      "name": "Howdy, Stranger"
-    }
-  }
-  </script>
-
-  <!-- Structured Data - Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://howdystranger.net/"
-    },{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "News",
-      "item": "https://howdystranger.net/news.html"
-    }]
-  }
-  </script>
-
-  <!-- Deferred Font Awesome loader -->
-  <script>
-    window.addEventListener('load', function () {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-      link.crossOrigin = 'anonymous';
-      link.referrerPolicy = 'no-referrer';
-      document.head.appendChild(link);
-    });
-  </script>
-</head>
+  </head>
 
 <body>
   <nav class="nav-links" id="main-nav"></nav>
@@ -212,18 +146,6 @@
   </footer>
   <script defer src="js/news.js"></script>
   <script type="module" src="js/speed-insights.js"></script>
-
-  <script>
-    // Helper functions for hints (called from nav modal)
-    function closeHints() {
-      const visitorHints = document.getElementById('visitor-hints');
-      if (visitorHints) {
-        visitorHints.style.display = 'none';
-        visitorHints.classList.remove('active');
-        localStorage.setItem('hintsShown', 'true');
-      }
-    }
-  </script>
 
   <script src="js/nav.js" defer></script>
   <script src="js/socials.js" defer></script>

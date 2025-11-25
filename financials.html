@@ -21,10 +21,6 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Prevent Caching -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
 
   <title>Financials - Howdy, Stranger</title>
   <!-- Favicon and App Icons -->
@@ -42,12 +38,6 @@
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/countdown.js" as="script">
   <link rel="preload" href="js/socials.js" as="script">
-
-  <!-- Font Awesome - Deferred -->
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin="anonymous" referrerpolicy="no-referrer">
-  </noscript>
 
   <script>
     // Only load Vercel scripts in production
@@ -85,17 +75,7 @@
   <script type="module" src="js/financials.js"></script>
   <script type="module" src="js/speed-insights.js"></script>
 
-  <!-- Deferred Font Awesome loader -->
-  <script>
-    window.addEventListener('load', function () {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-      link.crossOrigin = 'anonymous';
-      link.referrerPolicy = 'no-referrer';
-      document.head.appendChild(link);
-    });
-  </script>
+
 
 </head>
 
@@ -156,18 +136,6 @@
           </div>
       </div>
     </footer>
-
-    <script>
-      // Helper functions for hints (called from nav modal)
-      function closeHints() {
-        const visitorHints = document.getElementById('visitor-hints');
-        if (visitorHints) {
-          visitorHints.style.display = 'none';
-          visitorHints.classList.remove('active');
-          localStorage.setItem('hintsShown', 'true');
-        }
-      }
-    </script>
 
     <script src="js/nav.js" defer></script>
     <script src="js/countdown.js" defer></script>

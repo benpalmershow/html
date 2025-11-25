@@ -618,6 +618,22 @@ Added "Land Power" by Michael Albertus to the media collection. The book examine
 - Test at least 3-4 sources before declaring cover unavailable
 - Document which source worked for similar books
 
+### TMDB Poster Format Standardization (Critical Lesson)
+**From "La Haine" correction:**
+- Original issue: Cover URL used `https://www.themoviedb.org/t/p/w1280/...`
+- Problem: Wrong domain (www vs media) and wrong size (w1280 vs w500)
+- Fix: Changed to `https://media.themoviedb.org/t/p/w500/[PATH].jpg`
+- **Prevention:** Always use `media.themoviedb.org` CDN (CORS-friendly) with `w500` size (~50KB, optimal for mobile)
+- Never use `www.themoviedb.org` or oversized variants (w780, w1280, original)
+
+### Movie Trailer Embedding
+**From "La Haine" implementation:**
+- embedUrl field enables YouTube trailer button in media overlay
+- Format: `https://www.youtube.com/embed/[VIDEO_ID]?si=[SESSION_ID]`
+- Trailer button appears inline on movie cards with ratings
+- Optional field—cover + metadata sufficient without trailer
+- Use BFI or official studio uploads for reliability over fan-uploaded trailers
+
 ### Future Enhancements
 - Integrate Goodreads/Amazon ratings automatically via API
 - Implement batch post updates

@@ -63,10 +63,12 @@ Always include a relevant Lucide icon at start with `class='post-icon'`:
 - **Bullet points**: Use `•` for lists
 
 ### Images (Media Posts)
+- **Source**: Use cover URL directly from `media.json` entry for consistency
 - **Standard**: `width: 60px; height: auto; float: left; margin-right: 10px;`
 - **Music**: `border-radius: 50%; object-fit: cover; height: 60px; animation: spin 3s linear infinite`
-- Always include `alt` text
-- Wrap in anchor tags linking to `media.html#slug`
+- Always include `alt` text matching media title
+- Wrap in anchor tags linking to `media.html#slug` for navigation
+
 
 ### Links
 - **Media**: `media.html#slug-name`

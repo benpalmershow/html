@@ -1,4 +1,10 @@
 function waitForMarked() {
+    // Try to load marked via the dynamic loader if available
+    if (window.loadMarked && typeof window.loadMarked === 'function') {
+        return window.loadMarked();
+    }
+    
+    // Fallback: wait for marked to load naturally
     return new Promise((resolve) => {
         if (window.marked) {
             resolve();
@@ -6,7 +12,7 @@ function waitForMarked() {
         }
 
         let attempts = 0;
-        const maxAttempts = 50;
+        const maxAttempts = 100;
 
         const checkInterval = setInterval(() => {
             attempts++;
@@ -18,7 +24,7 @@ function waitForMarked() {
                 console.warn('Marked.js not loaded, using raw content');
                 resolve();
             }
-        }, 100);
+        }, 50);
     });
 }
 

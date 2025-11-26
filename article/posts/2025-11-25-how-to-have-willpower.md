@@ -2,7 +2,7 @@
 date: 2025-11-25T00:00:00
 ---
 
-### <i data-lucide='book' class='post-icon'></i> **How to Have Willpower: An Ancient Guide to Not Giving In**
+### **How to Have Willpower: An Ancient Guide to Not Giving In**
 
 <a href="media.html#how-to-have-willpower"><img src="https://pup-assets.imgix.net/onix/images/9780691220345.jpg" alt="How to Have Willpower" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>
 

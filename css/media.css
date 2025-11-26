@@ -523,6 +523,15 @@
     max-width: 1200px;
 }
 
+/* Desktop Styles (769px and above) */
+@media (min-width: 769px) {
+    .media-card {
+        width: 200px;
+        height: auto;
+        aspect-ratio: 7/10; /* Maintain proper aspect ratio for desktop */
+    }
+}
+
 /* ==========================================================================
    INTERACTIVE ELEMENTS
    ========================================================================== */

@@ -133,10 +133,7 @@
     display: none;
 }
 
-/* Hamburger button - removed in favor of responsive text nav */
-.nav-toggle {
-    display: none !important;
-}
+
 
 /* Compact Icon Buttons in Navbar */
 .cta-icon-btn,

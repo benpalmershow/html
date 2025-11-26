@@ -2,7 +2,7 @@
 date: 2025-11-22T10:50:00
 ---
 
-### **Consumer Sentiment: Final November Data**
+### **Consumer Sentiment**
 
 Consumer Sentiment final reading for November released at 51, slightly higher than the preliminary 50.3 reported 14 days ago.
 

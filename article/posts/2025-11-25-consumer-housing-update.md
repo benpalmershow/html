@@ -2,7 +2,7 @@
 date: 2025-11-25T14:00:00
 ---
 
-### **Consumer Confidence Slips in November**
+### **Consumer Confidence**
 
 Consumer Confidence fell to 88.7, down **7.1% MoM** from 95.5. The sharp decline reflects mounting uncertainty about employment and business conditions, though the index remains well above recessionary warning levels (below 80).
 

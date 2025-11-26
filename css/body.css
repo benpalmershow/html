@@ -650,30 +650,7 @@ main {
     }
 }
 
-.listen-intro {
-    text-align: center;
-    margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-lg);
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-    border-radius: 1rem;
-    border: 2px solid var(--logo-orange)
-}
 
-.listen-intro h1 {
-    margin-bottom: var(--spacing-xs);
-    color: var(--logo-teal)
-}
-
-.listen-intro h1 i {
-    margin-right: var(--spacing-xs);
-    color: var(--logo-orange)
-}
-
-.listen-description {
-    color: var(--text-secondary);
-    margin: 0;
-    font-style: italic
-}
 
 .post-icon {
     width: 1.1em;

@@ -2,329 +2,369 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) - Deferred for performance -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-DWEVPGLJDP', {
-          'anonymize_ip': true,
-          'cookie_flags': 'SameSite=None;Secure'
-        });
-        
-        window.addEventListener('load', function() {
-          const script = document.createElement('script');
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-          script.async = true;
-          document.head.appendChild(script);
-        });
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Portfolio dashboard with investment tracking and analysis from The Ben Palmer Show. Monitor your financial portfolio.">
-    <meta name="keywords" content="portfolio, dashboard, investments, tracking, financial analysis, Ben Palmer Show">
-    <meta name="author" content="Ben Palmer">
-    <meta name="robots" content="index,follow">
-    <meta name="theme-color" content="#1a1f1e">
+  <!-- Google tag (gtag.js) - Deferred for performance -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Portfolio - Howdy, Stranger">
-    <meta property="og:description" content="Portfolio dashboard with investment tracking and analysis from The Ben Palmer Show. Monitor your financial portfolio.">
-    <meta property="og:url" content="https://howdystranger.net/portfolio.html">
-    <meta property="og:site_name" content="Howdy, Stranger">
-    <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
-    <meta property="og:image:alt" content="Howdy, Stranger - Portfolio Dashboard">
+    window.addEventListener('load', function () {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    });
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description"
+    content="Portfolio dashboard with investment tracking and analysis from The Ben Palmer Show. Monitor your financial portfolio.">
+  <meta name="keywords" content="portfolio, dashboard, investments, tracking, financial analysis, Ben Palmer Show">
+  <meta name="author" content="Ben Palmer">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#1a1f1e">
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@DocRiter">
-    <meta name="twitter:creator" content="@DocRiter">
-    <meta name="twitter:title" content="Portfolio - Howdy, Stranger">
-    <meta name="twitter:description" content="Portfolio dashboard with investment tracking and analysis from The Ben Palmer Show. Monitor your financial portfolio.">
-    <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
-    <meta name="twitter:image:alt" content="Howdy, Stranger - Portfolio Dashboard">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfolio - Howdy, Stranger">
+  <meta property="og:description"
+    content="Portfolio dashboard with investment tracking and analysis from The Ben Palmer Show. Monitor your financial portfolio.">
+  <meta property="og:url" content="https://howdystranger.net/portfolio.html">
+  <meta property="og:site_name" content="Howdy, Stranger">
+  <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
+  <meta property="og:image:alt" content="Howdy, Stranger - Portfolio Dashboard">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://howdystranger.net/portfolio.html">
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@DocRiter">
+  <meta name="twitter:creator" content="@DocRiter">
+  <meta name="twitter:title" content="Portfolio - Howdy, Stranger">
+  <meta name="twitter:description"
+    content="Portfolio dashboard with investment tracking and analysis from The Ben Palmer Show. Monitor your financial portfolio.">
+  <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
+  <meta name="twitter:image:alt" content="Howdy, Stranger - Portfolio Dashboard">
 
-    <title>Portfolio - Howdy, Stranger</title>
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://howdystranger.net/portfolio.html">
 
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-    <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <title>Portfolio - Howdy, Stranger</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Navigation CSS -->
-    <link rel="stylesheet" href="css/nav.css?v=20251117">
-    <!-- Font Awesome -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'teal': {
-                            '50': '#f0f7f6',
-                            '100': '#d9eeec',
-                            '200': '#b7deda',
-                            '300': '#87c5be',
-                            '400': '#5ba8a0',
-                            '500': '#2c5f5a',
-                            '600': '#1e4d48',
-                            '700': '#1a403c',
-                            '800': '#193734',
-                            '900': '#0f2725',
-                        },
-                        'orange': {
-                            '50': '#fef8f2',
-                            '100': '#fdeedf',
-                            '200': '#fad8b9',
-                            '300': '#f7bb89',
-                            '400': '#f3924a',
-                            '500': '#d4822a',
-                            '600': '#b66a20',
-                            '700': '#93511e',
-                            '800': '#7a4220',
-                            '900': '#663820',
-                        },
-                        'background': {
-                            'primary': '#fdf6e8',
-                            'secondary': '#f8f4e6',
-                        },
-                        'text': {
-                            'primary': '#2c5f5a',
-                            'secondary': '#333',
-                            'muted': '#666',
-                        },
-                        'border': {
-                            'default': '#e8dcc0',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Georgia', 'Times New Roman', 'serif'],
-                    },
-                    boxShadow: {
-                        'card': '0 2px 8px rgba(44, 95, 90, 0.1)',
-                        'hover': '0 4px 12px rgba(44, 95, 90, 0.15)',
-                    }
-                }
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+  <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Navigation CSS -->
+  <link rel="stylesheet" href="css/nav.css?v=20251117">
+  <!-- Font Awesome -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'teal': {
+              '50': '#f0f7f6',
+              '100': '#d9eeec',
+              '200': '#b7deda',
+              '300': '#87c5be',
+              '400': '#5ba8a0',
+              '500': '#2c5f5a',
+              '600': '#1e4d48',
+              '700': '#1a403c',
+              '800': '#193734',
+              '900': '#0f2725',
+            },
+            'orange': {
+              '50': '#fef8f2',
+              '100': '#fdeedf',
+              '200': '#fad8b9',
+              '300': '#f7bb89',
+              '400': '#f3924a',
+              '500': '#d4822a',
+              '600': '#b66a20',
+              '700': '#93511e',
+              '800': '#7a4220',
+              '900': '#663820',
+            },
+            'background': {
+              'primary': '#fdf6e8',
+              'secondary': '#f8f4e6',
+            },
+            'text': {
+              'primary': '#2c5f5a',
+              'secondary': '#333',
+              'muted': '#666',
+            },
+            'border': {
+              'default': '#e8dcc0',
             }
+          },
+          fontFamily: {
+            serif: ['Georgia', 'Times New Roman', 'serif'],
+          },
+          boxShadow: {
+            'card': '0 2px 8px rgba(44, 95, 90, 0.1)',
+            'hover': '0 4px 12px rgba(44, 95, 90, 0.15)',
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <!-- Lucide Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js"></script>
 
-    <style>
-        /* Table header styles */
-        #portfolio-comparison-table th {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+  <style>
+    /* Table header styles */
+    #portfolio-comparison-table th {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        /* Ensure sortable headers keep icon on same line */
-        .sortable {
-            display: inline-flex;
-            align-items: center;
-            white-space: nowrap;
-            gap: 0.25rem;
-            max-width: 100%;
-        }
-        </style>
-        <script type="module" src="js/speed-insights.js"></script>
+    /* Ensure sortable headers keep icon on same line */
+    .sortable {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: 0.25rem;
+      max-width: 100%;
+    }
+  </style>
+  <script type="module" src="js/speed-insights.js"></script>
 
 
 </head>
+
 <body>
-<nav class="nav-links" id="main-nav"></nav>
-<main id="main-content" tabindex="-1">
-<div class="page-title" aria-label="Page title">Portfolio</div>
-      
-                <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {
-      "proName": "NASDAQ:IBIT",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:NVDA",
-      "title": ""
-    },
-    {
-      "proName": "AMEX:BIL",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:SMH",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:MU",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:MSFT",
-      "title": ""
-    },
-    {
-      "proName": "NYSE:LLY",
-      "title": ""
-    },
-    {
-      "proName": "NYSE:NEM",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:GILD",
-      "title": ""
-    },
-    {
-      "proName": "NYSE:AU",
-      "title": ""
-    },
-    {
-      "proName": "BME:AMEN",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:SMCI",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:AVGO",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:CME",
-      "title": ""
-    },
-    {
-      "proName": "NYSE:MRK",
-      "title": ""
-    },
-    {
-      "proName": "LSE:THX",
-      "title": ""
-    },
-    {
-      "proName": "NASDAQ:AMAT",
-      "title": ""
-    }
-  ],
-  "colorTheme": "light",
-  "locale": "en",
-  "largeChartUrl": "",
-  "isTransparent": true,
-  "showSymbolLogo": true,
-  "displayMode": "adaptive"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
+  <nav class="nav-links" id="main-nav"></nav>
+  <main id="main-content" tabindex="-1">
+    <div class="page-title" aria-label="Page title">Portfolio</div>
 
-                <!-- Portfolio Comparison Table -->
-                <div class="bg-white dark:bg-gray-800 border border-border-default">
-                    <div class="px-6 py-4 border-b border-border-default bg-teal-50 dark:bg-teal-900/30">
-                        <h2 class="text-xl font-semibold text-teal-700 dark:text-teal-400 flex items-center">
-                            <i data-lucide="line-chart" class="w-5 h-5 mr-2"></i>
-                            <span id="portfolio-table-title">GPT Portfolio</span>
-                        </h2>
-                    </div>
-                    <div class="w-full">
-                        <table id="portfolio-comparison-table" class="w-full">
-                            <thead class="bg-background-secondary dark:bg-gray-700/50">
-                                <tr class="text-sm">
-                                <th class="px-6 py-3 text-left font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[20%]"
-                                data-sort="company">Company</th>
-                                <th class="px-4 py-3 text-center font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[8%]"
-                                data-sort="ticker">Ticker</th>
-                                <th class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
-                                data-sort="currentPrice">Current Price</th>
-                                <th class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
-                                data-sort="october">OCT</th>
-                                <th class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
-                                data-sort="september">SEP</th>
-                                <th class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
-                                data-sort="august">AUG</th>
-                                <th
-                                        class="px-6 py-3 text-left font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider">
-                                         Description</th>
-                                 </tr>
-                            </thead>
-                            <tbody class="divide-y divide-border-default text-sm">
-                                <style>
-                                    #portfolio-comparison-table td {
-                                        vertical-align: top;
-                                        padding-top: 0.75rem;
-                                        padding-bottom: 0.75rem;
-                                    }
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+        async>
+          {
+            "symbols": [
+              {
+                "proName": "NASDAQ:IBIT",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:NVDA",
+                "title": ""
+              },
+              {
+                "proName": "AMEX:BIL",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:SMH",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:MU",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:MSFT",
+                "title": ""
+              },
+              {
+                "proName": "NYSE:LLY",
+                "title": ""
+              },
+              {
+                "proName": "NYSE:NEM",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:GILD",
+                "title": ""
+              },
+              {
+                "proName": "NYSE:AU",
+                "title": ""
+              },
+              {
+                "proName": "BME:AMEN",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:SMCI",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:AVGO",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:CME",
+                "title": ""
+              },
+              {
+                "proName": "NYSE:MRK",
+                "title": ""
+              },
+              {
+                "proName": "LSE:THX",
+                "title": ""
+              },
+              {
+                "proName": "NASDAQ:AMAT",
+                "title": ""
+              }
+            ],
+              "colorTheme": "light",
+                "locale": "en",
+                  "largeChartUrl": "",
+                    "isTransparent": true,
+                      "showSymbolLogo": true,
+                        "displayMode": "adaptive"
+          }
+        </script>
+    </div>
+    <!-- TradingView Widget END -->
 
-                                    #portfolio-comparison-table td:not(:last-child) {
-                                        white-space: nowrap;
-                                    }
+    <!-- Portfolio Comparison Table -->
+    <div class="bg-white dark:bg-gray-800 border border-border-default">
+      <div class="px-6 py-4 border-b border-border-default bg-teal-50 dark:bg-teal-900/30">
+        <h2 class="text-xl font-semibold text-teal-700 dark:text-teal-400 flex items-center">
+          <i data-lucide="line-chart" class="w-5 h-5 mr-2"></i>
+          <span id="portfolio-table-title">GPT Portfolio</span>
+        </h2>
+      </div>
+      <div class="w-full">
+        <table id="portfolio-comparison-table" class="w-full">
+          <thead class="bg-background-secondary dark:bg-gray-700/50">
+            <tr class="text-sm">
+              <th
+                class="px-6 py-3 text-left font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[20%]"
+                data-sort="company">Company</th>
+              <th
+                class="px-4 py-3 text-center font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[8%]"
+                data-sort="ticker">Ticker</th>
+              <th
+                class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
+                data-sort="currentPrice">Current Price</th>
+              <th
+                class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
+                data-sort="october">OCT</th>
+              <th
+                class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
+                data-sort="september">SEP</th>
+              <th
+                class="px-4 py-3 text-right font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider w-[10%]"
+                data-sort="august">AUG</th>
+              <th class="px-6 py-3 text-left font-medium text-teal-700 dark:text-teal-400 uppercase tracking-wider">
+                Description</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border-default text-sm">
+            <style>
+              #portfolio-comparison-table td {
+                vertical-align: top;
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+              }
 
-                                    #portfolio-comparison-table td:last-child {
-                                        white-space: normal;
-                                        word-wrap: break-word;
-                                        min-width: 200px;
-                                    }
-                                </style>
-                                <!-- Portfolio data will be loaded here by portfolio.js -->
-                                <tr id="loading-row" class="bg-white dark:bg-gray-800">
-                                <td colspan="7" class="px-4 py-8 text-center text-text-muted">
-                                <div class="flex flex-col items-center justify-center space-y-3">
-                                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-teal-500">
-                                </div>
-                                <p class="mt-2 text-sm">Loading portfolio data...</p>
-                                </div>
-                                </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+              #portfolio-comparison-table td:not(:last-child) {
+                white-space: nowrap;
+              }
 
-                <!-- Portfolio Sections -->
-                <div id="portfolio-sections" class="space-y-8">
-                    <!-- Portfolio sections will be loaded here by portfolio.js -->
-                </div>
-            </div>
-            </div>
-            </main>
-
-            <footer id="social-footer">
-              <div class="footer-container">
-                  <div class="social-links"></div>
-                  <div class="divider"></div>
-                  <div class="footer-info">
-                      <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+              #portfolio-comparison-table td:last-child {
+                white-space: normal;
+                word-wrap: break-word;
+                min-width: 200px;
+              }
+            </style>
+            <!-- Portfolio data will be loaded here by portfolio.js -->
+            <tr id="loading-row" class="bg-white dark:bg-gray-800">
+              <td colspan="7" class="px-4 py-8 text-center text-text-muted">
+                <div class="flex flex-col items-center justify-center space-y-3">
+                  <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-teal-500">
                   </div>
-              </div>
-            </footer>
+                  <p class="mt-2 text-sm">Loading portfolio data...</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-            <!-- Load JavaScript -->
-    <script src="js/nav.js" defer></script>
-    <script src="js/portfolio.js"></script>
-    <script src="js/socials.js" defer></script>
-    <script>
+    <!-- Portfolio Sections -->
+    <div id="portfolio-sections" class="space-y-8">
+      <!-- Portfolio sections will be loaded here by portfolio.js -->
+    </div>
+    </div>
+    </div>
+  </main>
+
+  <footer id="social-footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+          title="X (Twitter)">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter) logo" width="24"
+            height="24" loading="lazy">
+        </a>
+        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+          title="YouTube">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"
+          title="Substack">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
+          aria-label="Spotify" title="Spotify">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
+          rel="noopener noreferrer" aria-label="Apple Podcasts" title="Apple Podcasts">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg"
+            alt="Apple Podcasts logo" width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
+          aria-label="Buy Me A Coffee" title="Buy Me A Coffee">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg"
+            alt="Buy Me A Coffee logo" width="24" height="24" loading="lazy">
+        </a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-info">
+        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load JavaScript -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/portfolio.js"></script>
+  <script>
     // Initialize Lucide Icons
     lucide.createIcons();
 
     // Initialize Portfolio Manager
     document.addEventListener('DOMContentLoaded', () => {
-    const portfolioManager = new PortfolioManager();
-    portfolioManager.init();
+      const portfolioManager = new PortfolioManager();
+      portfolioManager.init();
     });
-    </script>
+  </script>
 </body>
 
 </html>

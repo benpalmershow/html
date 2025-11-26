@@ -5,15 +5,15 @@
   <!-- Google tag (gtag.js) - Deferred for performance -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-DWEVPGLJDP', {
       'anonymize_ip': true,
       'cookie_flags': 'SameSite=None;Secure'
     });
-    
+
     // Load gtag.js after page load
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       const script = document.createElement('script');
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
       script.async = true;
@@ -21,38 +21,43 @@
     });
   </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=5.0">
 
 
-  <meta name="description" content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
-  <meta name="keywords" content="economic analysis, independent commentary, financial news, market insights, Ben Palmer Show, economic commentary, financial analysis, market trends, investment insights, policy analysis">
+  <meta name="description"
+    content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
+  <meta name="keywords"
+    content="economic analysis, independent commentary, financial news, market insights, Ben Palmer Show, economic commentary, financial analysis, market trends, investment insights, policy analysis">
   <meta name="author" content="Ben Palmer">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#1a1f1e">
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Howdy, Stranger - Independent Commentary & Economic Insight">
-  <meta property="og:description" content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
+  <meta property="og:description"
+    content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
   <meta property="og:url" content="https://howdystranger.net/">
   <meta property="og:site_name" content="Howdy, Stranger">
   <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta property="og:image:alt" content="Howdy, Stranger - Independent Economic Commentary">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  
+
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@DocRiter">
   <meta name="twitter:creator" content="@DocRiter">
   <meta name="twitter:title" content="Howdy, Stranger - Independent Commentary & Economic Insight">
-  <meta name="twitter:description" content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
+  <meta name="twitter:description"
+    content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
   <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta name="twitter:image:alt" content="Howdy, Stranger - Independent Economic Commentary">
-  
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://howdystranger.net/">
-  
+
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
@@ -66,20 +71,22 @@
   <link rel="preload" href="images/announcements.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="js/posts-loader.js" as="script">
   <link rel="preload" href="js/nav.js" as="script">
-  <link rel="preload" href="js/socials.js" as="script">
-  
+
+
   <!-- Preconnect to critical external domains -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+
   <!-- Typography System Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
 
   <!-- Critical CSS for index page -->
   <link rel="stylesheet" href="css/body.css?v=20251117">
   <link rel="stylesheet" href="css/nav.css?v=20251117">
   <link rel="stylesheet" href="css/index.css?v=20251117">
-  
+
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
 
@@ -97,7 +104,7 @@
         return null;
       });
   </script>
-  
+
   <!-- Marked.js - Critical for content rendering -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 
@@ -113,7 +120,8 @@
   <main id="main-content" tabindex="-1">
     <!-- Announcements Section -->
     <div class="page-title" aria-label="Page title">
-      <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20" loading="eager" decoding="async">
+      <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
+        loading="eager" decoding="async">
       Announcements
     </div>
     <section class="announcements" aria-label="Latest announcements">
@@ -129,12 +137,43 @@
 
   <footer id="social-footer">
     <div class="footer-container">
-        <div class="social-links"></div>
-        <div class="divider"></div>
-        <div class="footer-info">
-            <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
-           
-        </div>
+      <div class="social-links">
+        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+          title="X (Twitter)">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter) logo" width="24"
+            height="24" loading="lazy">
+        </a>
+        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+          title="YouTube">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"
+          title="Substack">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
+          aria-label="Spotify" title="Spotify">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
+          rel="noopener noreferrer" aria-label="Apple Podcasts" title="Apple Podcasts">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg"
+            alt="Apple Podcasts logo" width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
+          aria-label="Buy Me A Coffee" title="Buy Me A Coffee">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg"
+            alt="Buy Me A Coffee logo" width="24" height="24" loading="lazy">
+        </a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-info">
+        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+
+      </div>
     </div>
   </footer>
 
@@ -142,10 +181,10 @@
   <script src="js/bfcache-compat.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/posts-loader.js" defer></script>
-  <script src="js/socials.js" defer></script>
-  
+
+
   <script>
-    (function(){
+    (function () {
       const libs = {
         // marked moved to static script tag for LCP
         lucide: 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js',
@@ -169,7 +208,7 @@
         link.rel = 'stylesheet';
         link.href = href;
         link.media = 'print';
-        link.onload = function() { this.media = 'all'; };
+        link.onload = function () { this.media = 'all'; };
         link.onerror = () => console.error('Failed to load CSS:', href);
         document.head.appendChild(link);
       }
@@ -178,7 +217,7 @@
         // lucide is needed for icons in posts
         loadScript(libs.lucide, () => window.lucide?.createIcons());
         loadCSS(libs.fontawesome);
-        
+
         setTimeout(() => {
           loadScript(libs.animations);
         }, 1000);
@@ -202,7 +241,7 @@
         s.src = '/_vercel/insights/script.js';
         s.defer = true;
         document.head.appendChild(s);
-        
+
         const i = document.createElement('script');
         i.type = 'module';
         i.src = 'js/speed-insights.js';
@@ -211,6 +250,6 @@
     }
   </script>
 
-  </body>
+</body>
 
-  </html>
+</html>

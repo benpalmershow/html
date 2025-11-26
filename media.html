@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  
-  <meta name="description" content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
+
+  <meta name="description"
+    content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
   <meta name="keywords" content="media, books, films, podcasts, recommendations, Ben Palmer Show, curated content">
   <meta name="author" content="Ben Palmer">
   <meta name="robots" content="index,follow">
@@ -16,7 +17,8 @@
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Media - Howdy, Stranger">
-  <meta property="og:description" content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
+  <meta property="og:description"
+    content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
   <meta property="og:url" content="https://howdystranger.net/media.html">
   <meta property="og:site_name" content="Howdy, Stranger">
   <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
@@ -27,7 +29,8 @@
   <meta name="twitter:site" content="@DocRiter">
   <meta name="twitter:creator" content="@DocRiter">
   <meta name="twitter:title" content="Media - Howdy, Stranger">
-  <meta name="twitter:description" content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
+  <meta name="twitter:description"
+    content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
   <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta name="twitter:image:alt" content="Howdy, Stranger - Curated Media Recommendations">
 
@@ -51,26 +54,74 @@
   <link rel="preload" href="css/media.css?v=20251117" as="style">
 
   <!-- Preload Font Awesome fonts -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2"
+    as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2"
+    as="font" type="font/woff2" crossorigin>
 
   <!-- Preload critical scripts -->
   <link rel="preload" href="js/nav.js" as="script">
-  <link rel="preload" href="js/socials.js" as="script">
+
   <link rel="preload" href="js/media.js" as="script">
 
   <!-- Inline critical CSS for LCP -->
   <style>
     /* Critical styles for first paint */
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1f1e; color: #fff; }
-    .media-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem; }
-    .media-card { max-width: 200px; width: 100%; border-radius: 0.5rem; contain: layout style paint; }
-    .media-cover-container { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 0.5rem; contain: layout; background: #2C5F5A; }
-    .media-cover { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0.5rem; }
-    .loading-state { text-align: center; padding: 3rem; font-size: 1.2rem; }
-    .fa-spinner { animation: spin 1s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1a1f1e;
+      color: #fff;
+    }
+
+    .media-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .media-card {
+      max-width: 200px;
+      width: 100%;
+      border-radius: 0.5rem;
+      contain: layout style paint;
+    }
+
+    .media-cover-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      contain: layout;
+      background: #2C5F5A;
+    }
+
+    .media-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0.5rem;
+    }
+
+    .loading-state {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.2rem;
+    }
+
+    .fa-spinner {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     /* Font optimization */
     @font-face {
       font-family: 'FontAwesome';
@@ -79,6 +130,7 @@
       font-display: swap;
       size-adjust: 95%;
     }
+
     @font-face {
       font-family: 'FontAwesome Brands';
       src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
@@ -103,8 +155,8 @@
   <!-- Google Analytics - deferred -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    
+    function gtag() { dataLayer.push(arguments); }
+
     // Load GA after page interactive
     if ('requestIdleCallback' in window) {
       requestIdleCallback(() => {
@@ -137,7 +189,7 @@
         script.async = true;
         document.head.appendChild(script);
       };
-      
+
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadVercel);
       } else {
@@ -151,7 +203,7 @@
 
 <body>
   <nav class="nav-links" id="main-nav"></nav>
-  
+
   <div class="page-title page-title--bordered" aria-label="Page title">
     <picture>
       <source srcset="images/media-60x60.webp" type="image/webp">
@@ -190,22 +242,53 @@
 
   <footer id="social-footer">
     <div class="footer-container">
-        <div class="social-links"></div>
-        <div class="divider"></div>
-        <div class="footer-info">
-            <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
-        </div>
+      <div class="social-links">
+        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+          title="X (Twitter)">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter) logo" width="24"
+            height="24" loading="lazy">
+        </a>
+        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+          title="YouTube">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"
+          title="Substack">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
+          aria-label="Spotify" title="Spotify">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
+          rel="noopener noreferrer" aria-label="Apple Podcasts" title="Apple Podcasts">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg"
+            alt="Apple Podcasts logo" width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
+          aria-label="Buy Me A Coffee" title="Buy Me A Coffee">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg"
+            alt="Buy Me A Coffee logo" width="24" height="24" loading="lazy">
+        </a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-info">
+        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
   <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
   <script src="js/nav.js" defer></script>
-  <script src="js/socials.js" defer></script>
+
   <script src="js/media.js"></script>
-  
+
   <!-- Load lucide icons for CTA and hint elements -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
-  
+
   <!-- Load non-critical analytics after idle -->
   <script>
     const loadNonCriticalScripts = () => {
@@ -215,19 +298,19 @@
       speedInsights.defer = true;
       document.body.appendChild(speedInsights);
     };
-    
+
     if ('requestIdleCallback' in window) {
       requestIdleCallback(loadNonCriticalScripts);
     } else {
       window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
     }
   </script>
-  
+
   <!-- Service Worker for external resource caching -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => {});
+        navigator.serviceWorker.register('/sw.js').catch(() => { });
       });
     }
   </script>

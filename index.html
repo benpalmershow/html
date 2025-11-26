@@ -24,6 +24,21 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=5.0">
 
+  <!-- Critical CSS for above-the-fold content -->
+  <style>
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;min-height:100vh;background:#0f1211;color:#e8e6e3;font-family:system-ui,-apple-system,sans-serif;line-height:1.5}
+  nav{height:60px;position:sticky;top:0;z-index:100;background:#1a1f1e;border-bottom:1px solid #2c3734}
+  main{padding-top:1rem;min-height:calc(100vh - 60px)}
+  .announcements{padding:1rem 0;min-height:600px}
+  .announcements-container{max-width:600px;margin:0 auto;padding:0 1rem;min-height:500px}
+  .loading-skeleton{background:linear-gradient(90deg,#1a1f1e 25%,#0f1211 50%,#1a1f1e 75%);background-size:200% 100%;animation:loading 1.5s ease-in-out infinite;border-radius:8px;margin-bottom:0.75rem;height:100px;will-change:background-position}
+  @keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .page-title{font-size:1.25rem;font-weight:700;margin:1.5rem auto;padding:0 1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:0.5rem;height:40px}
+  .page-icon{width:20px;height:20px;flex-shrink:0}
+  .announcement-card{background:#1a1f1e;border:1px solid #2c3734;border-radius:8px;padding:1rem;margin-bottom:1rem;min-height:100px}
+  footer{min-height:100px;background:#1a1f1e;padding:2rem 1rem;text-align:center;border-top:1px solid #2c3734}
+  </style>
 
   <meta name="description"
     content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
@@ -77,15 +92,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Typography System Fonts -->
+  <!-- Typography System Fonts - Deferred -->
   <link
     href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
+    rel="preload" as="style" onload="this.rel='stylesheet'">
 
-  <!-- Critical CSS for index page -->
-  <link rel="stylesheet" href="css/body.css?v=20251117">
-  <link rel="stylesheet" href="css/nav.css?v=20251117">
-  <link rel="stylesheet" href="css/index.css?v=20251117">
+  <!-- Deferred non-critical CSS -->
+  <link rel="preload" href="css/body.css?v=20251117" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20251117" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/index.css?v=20251117" as="style" onload="this.rel='stylesheet'">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
@@ -127,25 +142,25 @@
 
 <body>
   <nav class="nav-links" id="main-nav"></nav>
-  <main id="main-content" tabindex="-1">
+  <main id="main-content" tabindex="-1" style="min-height:calc(100vh - 60px)">
     <!-- Announcements Section -->
     <div class="page-title" aria-label="Page title">
       <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
         loading="eager" decoding="async">
       Announcements
     </div>
-    <section class="announcements" aria-label="Latest announcements">
-      <div class="announcements-container" id="announcements-container">
-        <div class="loading-skeleton"></div>
-        <div class="loading-skeleton"></div>
-        <div class="loading-skeleton"></div>
+    <section class="announcements" aria-label="Latest announcements" style="min-height:600px">
+      <div class="announcements-container" id="announcements-container" style="min-height:500px">
+        <div class="loading-skeleton" style="height:100px"></div>
+        <div class="loading-skeleton" style="height:100px"></div>
+        <div class="loading-skeleton" style="height:100px"></div>
       </div>
     </section>
 
 
   </main>
 
-  <footer id="social-footer">
+  <footer id="social-footer" style="min-height:100px">
     <div class="footer-container">
       <div class="social-links">
         <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
@@ -253,6 +268,11 @@
         loadScript(libs.chartjs, () => resolve(window.Chart));
       });
     })();
+
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
 
     if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
       window.addEventListener('load', () => {

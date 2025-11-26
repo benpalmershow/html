@@ -30,6 +30,17 @@ async function initPosts() {
   let allPosts = [];
   let loadedCount = 0;
   
+  // Add expand/collapse functionality with event delegation (attach once, works for all cards)
+  feed.addEventListener('click', (e) => {
+    const card = e.target.closest('.announcement-card');
+    if (!card) return;
+    
+    // Don't expand if clicking a link or button
+    if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+    
+    card.classList.toggle('expanded');
+  });
+  
   await waitForMarked();
   
   // Clear loading skeletons after marked loads
@@ -118,7 +129,7 @@ async function initPosts() {
         img.decoding = 'async';
       }
     });
-
+    
     // Update times every minute (only set once)
     if (loadedCount === posts.length) {
       setInterval(() => {
@@ -235,7 +246,7 @@ async function initPosts() {
             const validPosts = loadedPosts.filter(p => p?.date && p?.content);
       
       if (validPosts.length > 0) {
-        renderPosts(validPosts);
+       renderPosts(validPosts);
       }
     } catch (error) {
       console.error('Error loading more posts:', error);

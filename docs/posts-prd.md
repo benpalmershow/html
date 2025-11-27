@@ -25,7 +25,7 @@ date: 2025-11-22T10:50:00
 
 ### Content Structure
 ```markdown
-### <i data-lucide='icon-name' class='post-icon'></i> **Bold Title**
+### **Bold Title**
 
 1-2 sentence description capturing the story/narrative.
 
@@ -36,23 +36,6 @@ date: 2025-11-22T10:50:00
 
 ---
 
-## Icons by Category
-
-Always include a relevant Lucide icon at start with `class='post-icon'`:
-
-- **Business Indicators**: `bar-chart-3`, `trending-up`, `trending-down`
-- **Consumer Indicators**: `shopping-cart`, `users`, `wallet`
-- **Housing Market**: `home`, `building`
-- **Trade & Tariffs**: `ship`, `package`
-- **Employment**: `users`, `briefcase`
-- **News**: `newspaper`
-- **Media**: `film` (movies), `book` (books), `music` (music)
-- **Sports**: `football`, `trophy`
-- **Technology**: `cpu`, `zap`
-- **Legal**: `gavel`
-- **Prediction Markets**: `bar-chart-3`, `trending-up`
-
----
 
 ## Formatting Standards
 
@@ -60,7 +43,6 @@ Always include a relevant Lucide icon at start with `class='post-icon'`:
 - **Descriptions**: 2-3 sentences max. Narrative-driven, not dry analysis. Avoid "Analysis of X" patterns.
 - **Emphasis**: Use `<b>` for bold, **not** emojis
 - **Line breaks**: `<br><br>` for spacing between sections
-- **Bullet points**: Use `•` for lists
 
 ### Images (Media Posts)
 - **Source**: Use cover URL directly from `media.json` entry for consistency
@@ -110,12 +92,9 @@ Include these sections for indicator releases:
 1-2 sentence narrative opening.
 
 **Latest Data:**
-• **Metric 1**: October Value (+X.X% MoM)
-• **Metric 2**: September Value (-X.X% MoM)
-
-**Synopsis**: What the numbers mean in 1-2 sentences. Include broader context.
-
-**Latest Revisions**: Any adjustments to prior months, or "All figures stable."
+- **Metric 1**: October Value (+X.X% MoM)
+- **Metric 2**: September Value (-X.X% MoM)
+What the numbers mean in 1-2 sentences. Include broader context.
 
 {{chart:Indicator Name}}
 
@@ -133,18 +112,12 @@ Calculate and display month-over-month changes:
 - Connect to broader economic theme or market context
 - Avoid repeating raw data
 
-### Latest Revisions
-- Document any adjustments to prior-month figures
-- Specify month and direction (up/down) with magnitude
-- If none: "All figures stable"
-
 ---
 
 ## Charts
 
 ### When to Include
-Include charts for single-indicator posts with 6+ months of historical data showing meaningful trends.
-
+Include charts always
 ### Implementation
 Use template syntax only:
 ```markdown
@@ -161,9 +134,6 @@ Use template syntax only:
 - ✓ 10-Year Treasury Yield (9 months)
 - ✓ Consumer Sentiment (6+ months showing decline)
 - ✓ Manufacturing PMI (6+ months)
-- ✗ Housing Update (multiple unrelated metrics)
-- ✗ Prediction Markets (real-time, changes daily)
-
 ---
 
 ## Examples
@@ -187,7 +157,7 @@ Despite the modest upward revision, the index remains weak, down from 53.6 in Oc
 
 ### Media (Film)
 ```markdown
-### <i data-lucide='film' class='post-icon'></i> **Holy Spider**
+### **Holy Spider**
 
 <a href="media.html#holy-spider"><img src="https://..." alt="Holy Spider" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>
 
@@ -198,7 +168,7 @@ A female journalist investigates a serial killer in Iran. Based on true events, 
 
 ### Music
 ```markdown
-### <i data-lucide='music' class='post-icon'></i> **A Father's Song by Allen Stone**
+###  **A Father's Song by Allen Stone**
 
 <a href="media.html#a-fathers-song"><img src="https://..." alt="A Father's Song" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; float: left; margin-right: 10px; animation: spin 3s linear infinite;"></a>
 
@@ -209,13 +179,13 @@ A touching ballad about fatherhood and family bonds.
 
 ### Multi-Topic (Sports + Housing)
 ```markdown
-### <i data-lucide='football' class='post-icon'></i> **Bills @ Texans Thursday Night**
+### **Bills @ Texans Thursday Night**
 
 Bills favored at 72¢ over Texans at 28¢. Game time: Nov 20, 8:15 PM ET.
 
 ---
 
-### <i data-lucide='home' class='post-icon'></i> **Existing Home Sales Flat**
+### **Existing Home Sales Flat**
 
 Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continues sideways movement with modest inventory levels.
 

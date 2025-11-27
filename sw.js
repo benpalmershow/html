@@ -63,6 +63,11 @@ function getOptimizedImageUrl(originalUrl) {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   
+  // Ignore non-HTTP(S) schemes (chrome-extension, etc.)
+  if (!url.protocol.startsWith('http')) {
+    return;
+  }
+  
   // Always fetch fresh JS and HTML from network
   if (event.request.url.match(/\.(js|html)$/i)) {
     event.respondWith(

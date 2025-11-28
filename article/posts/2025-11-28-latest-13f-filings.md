@@ -12,4 +12,4 @@ While everyone's chasing discounts on stuff that loses value, five major investm
 - **NVDA** – Strategic Advocates' $17.2M conviction play
 - **AMZN** – Lantern Wealth's $9.6M position
 
-[Explore the interactive Latest 13F Filings dashboard →](../financials.html#latest-13f-filings)
+[Explore the interactive Latest 13F Filings dashboard →](../financials.html#latest-13f-filings-anchor)

@@ -76,15 +76,16 @@
       "https://e.infogram.com/js/dist/embed-loader-min.js");
   </script>
 
-  <!-- Financials Module - Utility and Module Scripts (no module type for proper global access) -->
+  <!-- Financials Module Scripts (loaded in dependency order) -->
   <script src="js/utils.js" defer></script>
   <script src="js/indicators.js" defer></script>
   <script src="js/charts.js" defer></script>
   <script src="js/filters.js" defer></script>
   <script src="js/13f-holdings.js" defer></script>
-  <!-- Main financials script -->
   <script src="js/financials.js" defer></script>
-  <script type="module" src="js/speed-insights.js"></script>
+  
+  <!-- Performance monitoring -->
+  <script src="js/speed-insights.js" defer></script>
 
 
 
@@ -95,7 +96,7 @@
   <nav class="nav-links" id="main-nav"></nav>
   <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="bar-chart-3"
       class="page-icon"></i>Numbers</div>
-  <div class="container">
+  <main class="container">
     <div class="collapsible-container">
 
       <div class="collapsible-content" id="interactive-dashboard-content">
@@ -148,7 +149,7 @@
         </div>
       </div>
     </div>
-    </main>
+  </main>
 
     <footer id="social-footer">
       <div class="footer-container">

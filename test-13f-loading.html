@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>13F Loading Test</title>
+</head>
+<body>
+    <h1>13F Data Loading Test</h1>
+    <div id="firmCardsContainer"></div>
+    
+    <script>
+        // Test data loading
+        let firmData = null;
+        let allHoldings = [];
+        let firmShortNames = [];
+
+        async function load13FData() {
+            try {
+                const response = await fetch('/json/13f-holdings.json');
+                if (!response.ok) throw new Error(`Failed to load: ${response.status}`);
+                const data = await response.json();
+                firmData = data.firms;
+                allHoldings = data.holdings;
+                firmShortNames = data.firms.map(f => f.shortName);
+                console.log('✓ 13F data loaded successfully');
+                console.log('Firms:', firmShortNames);
+                console.log('Holdings count:', allHoldings.length);
+                return true;
+            } catch (error) {
+                console.error('✗ Failed to load 13F data:', error);
+                return false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const success = await load13FData();
+            const result = document.createElement('div');
+            result.innerHTML = success 
+                ? `<p style="color: green;">✓ Successfully loaded ${allHoldings.length} holdings from ${firmShortNames.length} firms</p>`
+                : `<p style="color: red;">✗ Failed to load 13F data</p>`;
+            document.body.appendChild(result);
+        });
+    </script>
+</body>
+</html>

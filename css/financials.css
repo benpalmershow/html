@@ -809,11 +809,36 @@
 }
 
 :is(.info-icon, .chart-icon).active {
-    background: var(--logo-teal);
-    color: var(--color-white) !important;
-}
+     background: var(--logo-teal);
+     color: var(--color-white) !important;
+ }
 
-/* Ensure tooltip is always on top */
+ .info-btn,
+ .chart-btn {
+     background: none;
+     border: none;
+     padding: 4px;
+     cursor: pointer;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 6px;
+     transition: var(--transition-hover);
+ }
+
+ .info-btn:hover .info-icon,
+ .chart-btn:hover .chart-icon {
+     background: var(--bg-secondary);
+     color: var(--logo-teal) !important;
+ }
+
+ .info-btn.active .info-icon,
+ .chart-btn.active .chart-icon {
+     background: var(--logo-teal);
+     color: var(--color-white) !important;
+ }
+
+ /* Ensure tooltip is always on top */
 #filter-tooltip {
     position: fixed !important;
     z-index: 2147483647 !important;

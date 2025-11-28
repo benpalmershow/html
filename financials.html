@@ -34,7 +34,12 @@
   <link rel="stylesheet" href="css/body.css?v=20251117">
   <link rel="stylesheet" href="css/nav.css?v=20251117">
   <link rel="stylesheet" href="css/financials.css?v=20251117">
-  <link rel="preload" href="js/financials.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="js/utils.js" as="script">
+  <link rel="preload" href="js/indicators.js" as="script">
+  <link rel="preload" href="js/charts.js" as="script">
+  <link rel="preload" href="js/filters.js" as="script">
+  <link rel="preload" href="js/13f-holdings.js" as="script">
+  <link rel="preload" href="js/financials.js" as="script">
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/countdown.js" as="script">
 
@@ -71,8 +76,14 @@
       "https://e.infogram.com/js/dist/embed-loader-min.js");
   </script>
 
-  <!-- Financials Module -->
-  <script type="module" src="js/financials.js"></script>
+  <!-- Financials Module - Utility and Module Scripts (no module type for proper global access) -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/indicators.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/filters.js" defer></script>
+  <script src="js/13f-holdings.js" defer></script>
+  <!-- Main financials script -->
+  <script src="js/financials.js" defer></script>
   <script type="module" src="js/speed-insights.js"></script>
 
 

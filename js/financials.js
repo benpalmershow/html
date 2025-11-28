@@ -1123,6 +1123,10 @@ function initializeFirmCards() {
                     </button>
                 </div>
             </div>
+            <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; font-size: 0.75rem; color: var(--text-muted); padding: 0 0.5rem;">
+                <div>AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
+                <div>Filed: 11/26</div>
+            </div>
             <div class="indicator-content">
                 <div style="display: flex; gap: 0.75rem; margin-bottom: 0.75rem; padding: 0.5rem; background: var(--bg-secondary); border-radius: 4px; font-size: 0.7rem; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 0.3rem;">
@@ -1146,7 +1150,6 @@ function initializeFirmCards() {
                         <span style="color: var(--text-muted);">8%+</span>
                     </div>
                 </div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem;">AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
                 <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
                     <div style="display: flex; flex-direction: column; gap: 2px; width: 100px;">
                         ${firmHoldings.slice(0, 5).map(h => `

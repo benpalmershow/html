@@ -1031,7 +1031,7 @@ const allHoldings = [
     { ticker: "NFLX", name: "NETFLIX INC", value: 119892000, pct: 27.2, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
     { ticker: "PARA", name: "PARAMOUNT SKYDANCE CORP", value: 21561232, pct: 4.9, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
     { ticker: "K", name: "KELLANOV", value: 21546654, pct: 4.9, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
-    { ticker: "ETNB", name: "89BIO INC", value: 7527870, pct: 1.7, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "RHHBY", name: "89BIO INC", value: 7527870, pct: 1.7, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
     { ticker: "EA", name: "ELECTRONIC ARTS INC", value: 4397060, pct: 1.0, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
     { ticker: "SIRI", name: "SIRIUSXM HOLDINGS INC", value: 1713506, pct: 0.4, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
     { ticker: "KBDC", name: "KAYNE ANDERSON BDC INC", value: 1625013, pct: 0.4, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
@@ -1083,7 +1083,7 @@ const firmNames = ['EQUITEC PROPRIETARY MARKETS, LLC', 'Lantern Wealth Advisors,
 const firmShortNames = ['EQUITEC', 'Lantern', 'Strategic Advocates', 'Vermillion & White', 'XXEC'];
 
 const firmDescriptions = {
-    0: "EQUITEC PROPRIETARY MARKETS, LLC is an investment management firm specializing in equity markets with a diversified portfolio approach. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#equitec-proprietary-markets-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
+     0: "EQUITEC PROPRIETARY MARKETS, LLC is an investment management firm specializing in equity markets with a diversified portfolio approach. The holdings shown are based on their most recent 13F filing with the SEC. <em style='font-size: 0.85rem; color: var(--text-muted);'>Note: 89 Bio was acquired by Roche (RHHBY) in 2025.</em> <a href='../article/posts/latest_13f_filings_week.md#equitec-proprietary-markets-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
     1: "Lantern Wealth Advisors, LLC provides comprehensive wealth management services with a focus on strategic asset allocation and diversified ETF-based portfolios. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#lantern-wealth-advisors-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
     2: "Strategic Advocates LLC is an institutional investment manager offering strategic investment advisory services across multiple asset classes. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#strategic-advocates-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
     3: "Vermillion & White Wealth Management Group, LLC specializes in wealth management with emphasis on dimensional fund investments and core equity strategies. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#vermillion--white-wealth-management-group-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
@@ -1091,30 +1091,45 @@ const firmDescriptions = {
 };
 
 function getColorByValue(percentage) {
-    let hue, saturation, lightness;
-    
-    if (percentage >= 8) {
-        hue = 0;
-        saturation = 100;
-        lightness = 40;
-    } else if (percentage >= 5) {
-        hue = 30;
-        saturation = 90;
-        lightness = 45;
-    } else if (percentage >= 3) {
-        hue = 60;
-        saturation = 80;
-        lightness = 50;
-    } else if (percentage >= 1.5) {
-        hue = 120;
-        saturation = 70;
-        lightness = 50;
-    } else {
-        hue = 240;
-        saturation = 60;
-        lightness = 55;
-    }
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+     let hue, saturation, lightness;
+     
+     if (percentage >= 8) {
+         hue = 0;
+         saturation = 100;
+         lightness = 40;
+     } else if (percentage >= 5) {
+         hue = 30;
+         saturation = 90;
+         lightness = 45;
+     } else if (percentage >= 3) {
+         hue = 60;
+         saturation = 80;
+         lightness = 50;
+     } else if (percentage >= 1.5) {
+         hue = 120;
+         saturation = 70;
+         lightness = 50;
+     } else {
+         hue = 240;
+         saturation = 60;
+         lightness = 55;
+     }
+     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+function isETF(holding) {
+     const name = holding.name.toUpperCase();
+     // ETF indicators - check these first
+     const etfIndicators = ['ETF', 'TRUST', 'FUND', 'INDEX', 'SPDR', 'ISHARES', 'VANGUARD', 'INVESCO', 'DIMENSIONAL'];
+     if (etfIndicators.some(indicator => name.includes(indicator))) {
+         return true;
+     }
+     // Stock indicators - if it contains these, it's a stock
+     const stockIndicators = ['INC', 'CORP', 'CLASS A', 'CLASS B', 'A S F'];
+     if (stockIndicators.some(indicator => name.includes(indicator))) {
+         return false;
+     }
+     return false;
 }
 
 function initializeFirmCards() {
@@ -1129,58 +1144,41 @@ function initializeFirmCards() {
         const totalValue = firmHoldings.reduce((sum, h) => sum + h.value, 0);
 
         const card = document.createElement('div');
-        card.className = 'indicator';
-        card.innerHTML = `
-            <div class="indicator-header">
-                <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">${firmShortNames[firmIdx]}</div>
-                <div class="indicator-actions">
-                    <button class="expand-toggle firm-expand-${firmIdx}" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; cursor: pointer; background: transparent; border: none; padding: 0; color: var(--text-muted); transition: all 0.2s;">
-                        <i data-lucide="info" style="width: 16px; height: 16px;"></i>
-                    </button>
-                </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; font-size: 0.75rem; color: var(--text-muted); padding: 0 0.5rem;">
-                <div>AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
-                <div>Filed: 11/26</div>
-            </div>
+         card.className = 'indicator';
+         card.innerHTML = `
+             <div class="indicator-header">
+                 <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">${firmShortNames[firmIdx]}</div>
+                 <div class="indicator-actions">
+                     <button class="expand-toggle firm-expand-${firmIdx}" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; cursor: pointer; background: transparent; border: none; padding: 0; color: var(--text-muted); transition: all 0.2s;">
+                         <i data-lucide="info" style="width: 16px; height: 16px;"></i>
+                     </button>
+                 </div>
+             </div>
+             <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--text-muted); padding: 0 0.5rem;">
+                 <div>AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
+                 <div>Filed: 11/26</div>
+             </div>
+             <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; padding: 0 0.5rem; flex-wrap: wrap; font-size: 0.75rem;">
+                 <button class="firm-filter-btn firm-filter-${firmIdx}-all" data-firm="${firmIdx}" data-filter="all" style="padding: 4px 8px; background: var(--accent-primary); color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.75rem; font-weight: 500;">All</button>
+                 <button class="firm-filter-btn firm-filter-${firmIdx}-etf" data-firm="${firmIdx}" data-filter="etf" style="padding: 4px 8px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 3px; cursor: pointer; font-size: 0.75rem;">ETF</button>
+                 <button class="firm-filter-btn firm-filter-${firmIdx}-stock" data-firm="${firmIdx}" data-filter="stock" style="padding: 4px 8px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 3px; cursor: pointer; font-size: 0.75rem;">Stock</button>
+             </div>
             <div class="indicator-content">
-                <div style="display: flex; gap: 0.75rem; margin-bottom: 0.75rem; padding: 0.5rem; background: var(--bg-secondary); border-radius: 4px; font-size: 0.7rem; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 0.3rem;">
-                        <div style="width: 8px; height: 8px; background: hsl(240, 60%, 55%); border-radius: 1px;"></div>
-                        <span style="color: var(--text-muted);">&lt;1.5%</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.3rem;">
-                        <div style="width: 8px; height: 8px; background: hsl(120, 70%, 50%); border-radius: 1px;"></div>
-                        <span style="color: var(--text-muted);">1.5–3%</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.3rem;">
-                        <div style="width: 8px; height: 8px; background: hsl(60, 80%, 50%); border-radius: 1px;"></div>
-                        <span style="color: var(--text-muted);">3–5%</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.3rem;">
-                        <div style="width: 8px; height: 8px; background: hsl(30, 90%, 45%); border-radius: 1px;"></div>
-                        <span style="color: var(--text-muted);">5–8%</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.3rem;">
-                        <div style="width: 8px; height: 8px; background: hsl(0, 100%, 40%); border-radius: 1px;"></div>
-                        <span style="color: var(--text-muted);">8%+</span>
-                    </div>
-                </div>
                 <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
-                    <div style="display: flex; flex-direction: column; gap: 2px; width: 100px;">
-                        ${firmHoldings.slice(0, 5).map(h => `
-                            <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 2px 4px; border-radius: 2px; font-size: 8px;">
-                                <div style="font-weight: 600; color: var(--text-primary); font-size: 9px;">${h.ticker}</div>
-                                <div style="color: var(--text-muted); font-size: 7px;">${h.pct}% of portfolio</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div style="position: relative; height: 150px; width: 150px;">
-                        <canvas id="chart-${firmIdx}"></canvas>
-                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 3px; width: 110px;" data-firm-holdings="${firmIdx}">
+                         ${firmHoldings.slice(0, 5).map(h => `
+                             <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px;">
+                                 <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                                 <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                             </div>
+                         `).join('')}
+                     </div>
+                    <div style="position: relative; height: 150px; width: 100%; max-width: 180px; flex: 1; min-width: 150px;">
+                         <canvas id="chart-${firmIdx}"></canvas>
+                     </div>
                 </div>
                 <div class="data-rows-container firm-description-${firmIdx}">
-                    <div style="padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                    <div style="padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
                         ${firmDescriptions[firmIdx]}
                     </div>
                 </div>
@@ -1188,7 +1186,68 @@ function initializeFirmCards() {
         `;
         container.appendChild(card);
 
-        setTimeout(() => {
+         // Store state for this firm
+         const firmState = {
+             filter: 'all'
+         };
+
+         // Update display function
+         function updateFirmDisplay() {
+             let displayHoldings = [...firmHoldings];
+             
+             // Apply filter
+             if (firmState.filter === 'etf') {
+                 displayHoldings = displayHoldings.filter(h => isETF(h));
+             } else if (firmState.filter === 'stock') {
+                 displayHoldings = displayHoldings.filter(h => !isETF(h));
+             }
+             
+             // Sort by value (descending)
+             displayHoldings.sort((a, b) => b.value - a.value);
+             
+             // Update holdings list
+             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
+             if (holdingsList) {
+                 holdingsList.innerHTML = displayHoldings.slice(0, 5).map(h => `
+                     <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">
+                         <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; hover: opacity 0.8;">
+                             <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                             <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                         </div>
+                     </a>
+                 `).join('');
+             }
+             
+             // Update chart
+             const chartCanvas = document.getElementById(`chart-${firmIdx}`);
+             if (chartCanvas && window[`chart-${firmIdx}Chart`]) {
+                 const chartInstance = window[`chart-${firmIdx}Chart`];
+                 const chartData = displayHoldings.slice(0, 10);
+                 chartInstance.data.labels = chartData.map(h => h.ticker);
+                 chartInstance.data.datasets[0].data = chartData.map(h => h.value / 1000000);
+                 chartInstance.data.datasets[0].backgroundColor = chartData.map(h => getColorByValue(h.pct));
+                 chartInstance.update();
+             }
+             
+             // Update button states
+             card.querySelectorAll('.firm-filter-btn').forEach(btn => {
+                 const isActive = btn.dataset.filter === firmState.filter;
+                 btn.style.background = isActive ? 'var(--accent-primary)' : 'transparent';
+                 btn.style.color = isActive ? 'white' : 'var(--text-muted)';
+                 btn.style.border = isActive ? 'none' : '1px solid var(--border-color)';
+                 btn.style.fontWeight = isActive ? '500' : 'normal';
+             });
+         }
+
+         // Setup button handlers
+         card.querySelectorAll('.firm-filter-btn').forEach(btn => {
+             btn.addEventListener('click', () => {
+                 firmState.filter = btn.dataset.filter;
+                 updateFirmDisplay();
+             });
+         });
+
+         setTimeout(() => {
             const ctx = document.getElementById(`chart-${firmIdx}`);
             if (ctx && typeof Chart !== 'undefined') {
                 const chartData = firmHoldings.slice(0, 10);

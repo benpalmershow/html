@@ -560,10 +560,13 @@ function setupFilters() {
     createFilterElements('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
 
     // Add Categories
-    categories.forEach(category => {
-        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
-        createFilterElements(category, icon, category);
-    });
+     categories.forEach(category => {
+         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
+         createFilterElements(category, icon, category);
+     });
+
+     // Add 13F Holdings button
+     createFilterElements('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
 
     // Setup dropdown toggle functionality
     setupDropdownToggle('categoryBtn', 'categoryDropdown');
@@ -596,32 +599,44 @@ function setupFilters() {
 }
 
 function handleFilterClick(element, source) {
-    const category = element.dataset.category;
-    const isLatest = element.dataset.isLatest === 'true';
+     const category = element.dataset.category;
+     const isLatest = element.dataset.isLatest === 'true';
 
-    // Update dropdown items
-    document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => {
-        i.classList.remove('active');
-        if ((isLatest && i.dataset.isLatest === 'true') || (!isLatest && i.dataset.category === category)) {
-            i.classList.add('active');
-        }
-    });
+     // Update dropdown items
+     document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => {
+         i.classList.remove('active');
+         if ((isLatest && i.dataset.isLatest === 'true') || (!isLatest && i.dataset.category === category)) {
+             i.classList.add('active');
+         }
+     });
 
-    // Update desktop buttons
-    document.querySelectorAll('#desktopFilters .filter-btn').forEach(b => {
-        b.classList.remove('active');
-        if ((isLatest && b.dataset.isLatest === 'true') || (!isLatest && b.dataset.category === category)) {
-            b.classList.add('active');
-        }
-    });
+     // Update desktop buttons
+     document.querySelectorAll('#desktopFilters .filter-btn').forEach(b => {
+         b.classList.remove('active');
+         if ((isLatest && b.dataset.isLatest === 'true') || (!isLatest && b.dataset.category === category)) {
+             b.classList.add('active');
+         }
+     });
 
-    // Render
-    if (isLatest) {
-        renderDashboard('all', true);
-    } else {
-        currentCategory = category || 'all';
-        renderDashboard(currentCategory, false);
-    }
+     // Handle 13F Holdings button
+     if (category === '13F Holdings') {
+         document.getElementById('categories').style.display = 'none';
+         document.getElementById('latest-13f-filings').style.display = 'block';
+         currentCategory = '13F Holdings';
+         return;
+     }
+
+     // Show categories and hide 13F section for other filters
+     document.getElementById('categories').style.display = 'block';
+     document.getElementById('latest-13f-filings').style.display = 'none';
+
+     // Render
+     if (isLatest) {
+         renderDashboard('all', true);
+     } else {
+         currentCategory = category || 'all';
+         renderDashboard(currentCategory, false);
+     }
 }
 
 function setupDropdownToggle(btnId, dropdownId) {
@@ -645,25 +660,25 @@ function closeAllDropdowns() {
 let currentCategory = 'all';
 
 function initializeDashboard() {
-    document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
-    setupFilters();
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('filter') || 'all';
+     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+     setupFilters();
+     const urlParams = new URLSearchParams(window.location.search);
+     const initialFilter = urlParams.get('filter') || 'all';
 
-    // Set active state for desktop buttons
-    document.querySelectorAll('.desktop-filter-btn').forEach(btn => {
-        if (btn.dataset.category === initialFilter) btn.classList.add('active');
-        else btn.classList.remove('active');
-    });
+     // Set active state for desktop buttons
+     document.querySelectorAll('.desktop-filter-btn').forEach(btn => {
+         if (btn.dataset.category === initialFilter) btn.classList.add('active');
+         else btn.classList.remove('active');
+     });
 
-    // Set active state for dropdown items
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-        if (item.dataset.category === initialFilter) item.classList.add('active');
-        else item.classList.remove('active');
-    });
+     // Set active state for dropdown items
+     document.querySelectorAll('.dropdown-item').forEach(item => {
+         if (item.dataset.category === initialFilter) item.classList.add('active');
+         else item.classList.remove('active');
+     });
 
-    renderDashboard(initialFilter);
-    setupModalHandlers();
+     renderDashboard(initialFilter);
+     setupModalHandlers();
 }
 
 // Chart overlay functionality
@@ -994,6 +1009,223 @@ function setupModalHandlers() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
-    fetchFinancialData();
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    // 13F Holdings Data and Initialization
+const allHoldings = [
+    { ticker: "SPY", name: "SPDR S&P 500 ETF TR", value: 250485012, pct: 56.9, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "NFLX", name: "NETFLIX INC", value: 119892000, pct: 27.2, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "PARA", name: "PARAMOUNT SKYDANCE CORP", value: 21561232, pct: 4.9, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "K", name: "KELLANOV", value: 21546654, pct: 4.9, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "ETNB", name: "89BIO INC", value: 7527870, pct: 1.7, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "EA", name: "ELECTRONIC ARTS INC", value: 4397060, pct: 1.0, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "SIRI", name: "SIRIUSXM HOLDINGS INC", value: 1713506, pct: 0.4, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "KBDC", name: "KAYNE ANDERSON BDC INC", value: 1625013, pct: 0.4, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "WBD", name: "WARNER BROS DISCOVERY INC", value: 1240155, pct: 0.3, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "WES", name: "WESTERN MIDSTREAM PARTNERS L", value: 1206203, pct: 0.3, firm: "EQUITEC PROPRIETARY MARKETS, LLC", firmIndex: 0 },
+    { ticker: "IVV", name: "ISHARES TR", value: 18735024, pct: 9.9, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "SCHB", name: "AMERICAN CENTY ETF TR", value: 15360599, pct: 8.1, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "AAPL", name: "APPLE INC", value: 10003188, pct: 5.3, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "AMZN", name: "AMAZON COM INC", value: 9621777, pct: 5.1, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "VTV", name: "INVESCO EXCHANGE TRADED FD T", value: 7931686, pct: 4.2, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "SCHW", name: "SCHWAB CHARLES CORP", value: 5728577, pct: 3.0, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "BX", name: "BLACKSTONE INC", value: 5713224, pct: 3.0, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "GOOGL", name: "ALPHABET INC", value: 5593867, pct: 3.0, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "VTI", name: "VANGUARD INDEX FDS", value: 5350695, pct: 2.8, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "BND", name: "VANGUARD BD INDEX FDS", value: 4740046, pct: 2.5, firm: "Lantern Wealth Advisors, LLC", firmIndex: 1 },
+    { ticker: "XKEF", name: "STATE STREET SPDR S&P KENSHO NEW ECONOMI", value: 35502630, pct: 9.2, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "QQQ", name: "INVESCO QQQ TRUST SERIES I", value: 34012475, pct: 8.9, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "BIV", name: "VANGUARD INTERMEDIATE-TERM BOND ETF", value: 28414069, pct: 7.4, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "RPV", name: "INVESCO S&P 500 PURE VALUE ETF", value: 27441069, pct: 7.1, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "IEMG", name: "ISHARES CORE MSCI EMERGING MARKETS ETF", value: 20296866, pct: 5.3, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "SPTL", name: "STATE STREET SPDR PORTFOLIO LONG TERM CO", value: 19946547, pct: 5.2, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "VBK", name: "VANGUARD S&P SMALL-CAP 600 GROWTH ETF", value: 18189617, pct: 4.7, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "IGSB", name: "ISHARES 1-5 YEAR INVESTMENT GRADE CORPOR", value: 17863653, pct: 4.7, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "NVDA", name: "NVIDIA CORPORATION COM", value: 17231692, pct: 4.5, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "AAPL", name: "APPLE INC COM", value: 9157102, pct: 2.4, firm: "Strategic Advocates LLC", firmIndex: 2 },
+    { ticker: "IVV", name: "ISHARES CORE S&P 500 ETF", value: 38307414, pct: 21.8, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "DIEM", name: "DIMENSIONAL INTERN CORE EQT MKT ETF", value: 17219248, pct: 9.8, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "DFIF", name: "DIMENSIONAL CORE FIXED INCOME ETF", value: 16331142, pct: 9.3, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "AQGA", name: "ASTORIA US QUALITY GROWTH KINGS ETF", value: 15233506, pct: 8.7, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "AQWE", name: "ASTORIA US EQUAL WT QLT KINGS ETF", value: 9224325, pct: 5.2, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "DEMG", name: "DIMENSIONAL EMERG CORE EQY MRKT ETF", value: 6906647, pct: 3.9, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "DXFI", name: "DIMENSIONAL SHRT DRT FXDINCM ETF", value: 6581781, pct: 3.7, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "ITR", name: "SPDR PORT INTER TRM TRSRY ETF", value: 5879127, pct: 3.3, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "AQDU", name: "EA ASTORIA DYNMC CRE US FXD INCM ETF", value: 5832725, pct: 3.3, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "KBWB", name: "INVSC KBW BANK ETF", value: 3912377, pct: 2.2, firm: "Vermillion & White Wealth Management Group, LLC", firmIndex: 3 },
+    { ticker: "MA", name: "MASTERCARD INC CLASS A", value: 11353448, pct: 9.6, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "MSFT", name: "MICROSOFT CORP", value: 10031138, pct: 8.5, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "INTU", name: "INTUIT", value: 9160555, pct: 7.7, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "TER", name: "TERADYNE INC", value: 8697334, pct: 7.3, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "GNTX", name: "GENTEX CORP", value: 8500414, pct: 7.2, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "V", name: "VISA INC CLASS A", value: 8247399, pct: 7.0, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "NDSN", name: "NORDSON CORP", value: 8139789, pct: 6.9, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "OLED", name: "UNIVERSAL DISPLAY CORP", value: 7475367, pct: 6.3, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "MCO", name: "MOODYS CORP", value: 6361961, pct: 5.4, firm: "XXEC, Inc.", firmIndex: 4 },
+    { ticker: "NVO", name: "NOVO-NORDISK A S F", value: 5497672, pct: 4.6, firm: "XXEC, Inc.", firmIndex: 4 }
+];
+
+const firmNames = ['EQUITEC PROPRIETARY MARKETS, LLC', 'Lantern Wealth Advisors, LLC', 'Strategic Advocates LLC', 'Vermillion & White Wealth Management Group, LLC', 'XXEC, Inc.'];
+const firmShortNames = ['EQUITEC', 'Lantern', 'Strategic Advocates', 'Vermillion & White', 'XXEC'];
+
+const firmDescriptions = {
+    0: "EQUITEC PROPRIETARY MARKETS, LLC is an investment management firm specializing in equity markets with a diversified portfolio approach. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#equitec-proprietary-markets-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
+    1: "Lantern Wealth Advisors, LLC provides comprehensive wealth management services with a focus on strategic asset allocation and diversified ETF-based portfolios. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#lantern-wealth-advisors-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
+    2: "Strategic Advocates LLC is an institutional investment manager offering strategic investment advisory services across multiple asset classes. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#strategic-advocates-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
+    3: "Vermillion & White Wealth Management Group, LLC specializes in wealth management with emphasis on dimensional fund investments and core equity strategies. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#vermillion--white-wealth-management-group-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>",
+    4: "XXEC, Inc. is an investment management firm focused on quality equities and emerging market strategies for institutional clients. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#xxec-inc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
+};
+
+function getColorByValue(percentage) {
+    let hue, saturation, lightness;
+    
+    if (percentage >= 8) {
+        hue = 0;
+        saturation = 100;
+        lightness = 40;
+    } else if (percentage >= 5) {
+        hue = 30;
+        saturation = 90;
+        lightness = 45;
+    } else if (percentage >= 3) {
+        hue = 60;
+        saturation = 80;
+        lightness = 50;
+    } else if (percentage >= 1.5) {
+        hue = 120;
+        saturation = 70;
+        lightness = 50;
+    } else {
+        hue = 240;
+        saturation = 60;
+        lightness = 55;
+    }
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+function initializeFirmCards() {
+    const container = document.getElementById('firmCardsContainer');
+    if (!container) return;
+
+    for (let firmIdx = 0; firmIdx < 5; firmIdx++) {
+        const firmHoldings = allHoldings.filter(h => h.firmIndex === firmIdx).sort((a, b) => b.value - a.value);
+        
+        if (firmHoldings.length === 0) continue;
+
+        const totalValue = firmHoldings.reduce((sum, h) => sum + h.value, 0);
+
+        const card = document.createElement('div');
+        card.className = 'indicator';
+        card.innerHTML = `
+            <div class="indicator-header">
+                <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">${firmShortNames[firmIdx]}</div>
+                <div class="indicator-actions">
+                    <button class="expand-toggle firm-expand-${firmIdx}" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; cursor: pointer; background: transparent; border: none; padding: 0; color: var(--text-muted); transition: all 0.2s;">
+                        <i data-lucide="info" style="width: 16px; height: 16px;"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="indicator-content">
+                <div style="display: flex; gap: 0.75rem; margin-bottom: 0.75rem; padding: 0.5rem; background: var(--bg-secondary); border-radius: 4px; font-size: 0.7rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.3rem;">
+                        <div style="width: 8px; height: 8px; background: hsl(240, 60%, 55%); border-radius: 1px;"></div>
+                        <span style="color: var(--text-muted);">&lt;1.5%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.3rem;">
+                        <div style="width: 8px; height: 8px; background: hsl(120, 70%, 50%); border-radius: 1px;"></div>
+                        <span style="color: var(--text-muted);">1.5–3%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.3rem;">
+                        <div style="width: 8px; height: 8px; background: hsl(60, 80%, 50%); border-radius: 1px;"></div>
+                        <span style="color: var(--text-muted);">3–5%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.3rem;">
+                        <div style="width: 8px; height: 8px; background: hsl(30, 90%, 45%); border-radius: 1px;"></div>
+                        <span style="color: var(--text-muted);">5–8%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.3rem;">
+                        <div style="width: 8px; height: 8px; background: hsl(0, 100%, 40%); border-radius: 1px;"></div>
+                        <span style="color: var(--text-muted);">8%+</span>
+                    </div>
+                </div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem;">AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
+                <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="display: flex; flex-direction: column; gap: 2px; width: 100px;">
+                        ${firmHoldings.slice(0, 5).map(h => `
+                            <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 2px 4px; border-radius: 2px; font-size: 8px;">
+                                <div style="font-weight: 600; color: var(--text-primary); font-size: 9px;">${h.ticker}</div>
+                                <div style="color: var(--text-muted); font-size: 7px;">${h.pct}% of portfolio</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="position: relative; height: 150px; width: 150px;">
+                        <canvas id="chart-${firmIdx}"></canvas>
+                    </div>
+                </div>
+                <div class="data-rows-container firm-description-${firmIdx}">
+                    <div style="padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                        ${firmDescriptions[firmIdx]}
+                    </div>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+
+        setTimeout(() => {
+            const ctx = document.getElementById(`chart-${firmIdx}`);
+            if (ctx && typeof Chart !== 'undefined') {
+                const chartData = firmHoldings.slice(0, 10);
+                const chartInstance = new Chart(ctx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: chartData.map(h => h.ticker),
+                        datasets: [{
+                            data: chartData.map(h => h.value / 1000000),
+                            backgroundColor: chartData.map(h => getColorByValue(h.pct)),
+                            borderColor: '#fdf6e8',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `$${context.parsed.toFixed(1)}M`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                ctx.onclick = function(evt) {
+                    const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                    if (points.length > 0) {
+                        const ticker = chartData[points[0].index].ticker;
+                        window.open('https://finance.yahoo.com/quote/' + ticker, '_blank');
+                    }
+                };
+                ctx.style.cursor = 'pointer';
+            }
+        }, 0);
+    }
+
+    document.addEventListener('click', function(e) {
+        const expandBtn = e.target.closest('.expand-toggle');
+        if (expandBtn) {
+            const card = expandBtn.closest('.indicator');
+            card.classList.toggle('expanded');
+        }
+    });
+
+    if (typeof lucide !== 'undefined') {
+        setTimeout(() => lucide.createIcons(), 100);
+    }
+}
+
+fetchFinancialData();
+initializeFirmCards();
+if (typeof lucide !== 'undefined') lucide.createIcons();
 });

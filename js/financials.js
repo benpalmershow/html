@@ -665,20 +665,36 @@ function initializeDashboard() {
      const urlParams = new URLSearchParams(window.location.search);
      const initialFilter = urlParams.get('filter') || 'all';
 
-     // Set active state for desktop buttons
-     document.querySelectorAll('.desktop-filter-btn').forEach(btn => {
-         if (btn.dataset.category === initialFilter) btn.classList.add('active');
-         else btn.classList.remove('active');
-     });
+     // Check if navigated to 13F anchor
+     if (window.location.hash === '#latest-13f-filings-anchor') {
+         document.getElementById('categories').style.display = 'none';
+         document.getElementById('latest-13f-filings').style.display = 'block';
+         
+         // Activate 13F Holdings button
+         document.querySelectorAll('.desktop-filter-btn, .dropdown-item').forEach(btn => {
+             if (btn.dataset.category === '13F Holdings') {
+                 btn.classList.add('active');
+             } else {
+                 btn.classList.remove('active');
+             }
+         });
+         currentCategory = '13F Holdings';
+     } else {
+         // Set active state for desktop buttons
+         document.querySelectorAll('.desktop-filter-btn').forEach(btn => {
+             if (btn.dataset.category === initialFilter) btn.classList.add('active');
+             else btn.classList.remove('active');
+         });
 
-     // Set active state for dropdown items
-     document.querySelectorAll('.dropdown-item').forEach(item => {
-         if (item.dataset.category === initialFilter) item.classList.add('active');
-         else item.classList.remove('active');
-     });
+         // Set active state for dropdown items
+         document.querySelectorAll('.dropdown-item').forEach(item => {
+             if (item.dataset.category === initialFilter) item.classList.add('active');
+             else item.classList.remove('active');
+         });
 
-     renderDashboard(initialFilter);
-     setupModalHandlers();
+         renderDashboard(initialFilter);
+         setupModalHandlers();
+     }
 }
 
 // Chart overlay functionality

@@ -84,17 +84,12 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
                 <div style="display: flex; flex-direction: column; gap: 3px; width: 110px;" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 5).map(h => `
-                        <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                            <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
-                                <div>
-                                    <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                                    <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
-                                </div>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--text-muted); flex-shrink: 0;" title="View on Yahoo Finance">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" opacity="0.7"/>
-                                </svg>
+                        <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                                <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
                             </div>
-                        </a>
+                        </div>
                     `).join('')}
                 </div>
                 <div style="position: relative; height: 150px; width: 100%; max-width: 180px; flex: 1; min-width: 150px;">
@@ -150,17 +145,12 @@ function initializeFirmCards() {
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 5).map((h, idx) => `
-                    <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">
-                        <div class="holding-item" data-holding-index="${idx}" style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
-                            <div>
-                                <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                                <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
-                            </div>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--text-muted); flex-shrink: 0;" title="View on Yahoo Finance">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" opacity="0.7"/>
-                            </svg>
+                    <div class="holding-item" data-holding-index="${idx}" style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                            <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
                         </div>
-                    </a>
+                    </div>
                 `).join('');
 
                 // Add click handlers for holdings
@@ -224,8 +214,8 @@ function initializeFirmCards() {
                         datasets: [{
                             data: chartData.map(h => h.value / 1000000),
                             backgroundColor: chartData.map(h => getColorByValue(h.pct)),
-                            borderColor: '#fdf6e8',
-                            borderWidth: 2
+                            borderColor: '#000000',
+                            borderWidth: 0
                         }]
                     },
                     options: {

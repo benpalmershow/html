@@ -127,9 +127,13 @@ function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
         return;
     }
 
-    // Show categories and hide 13F section for other filters
+    // Show categories (and 13F section if "all" is selected)
     document.getElementById('categories').style.display = 'block';
-    document.getElementById('latest-13f-filings').style.display = 'none';
+    if (category === 'all') {
+        document.getElementById('latest-13f-filings').style.display = 'block';
+    } else {
+        document.getElementById('latest-13f-filings').style.display = 'none';
+    }
 
     // Render
     if (isLatest) {

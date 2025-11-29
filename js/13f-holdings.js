@@ -139,17 +139,22 @@ function initializeFirmCards() {
             // Sort by value (descending)
             displayHoldings.sort((a, b) => b.value - a.value);
 
-            // Update holdings list
+            // Update holdings list (no links on mobile to prevent accidental navigation)
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
-                holdingsList.innerHTML = displayHoldings.slice(0, 5).map(h => `
-                    <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">
-                        <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; hover: opacity 0.8;">
-                            <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                            <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
-                        </div>
-                    </a>
-                `).join('');
+                const isMobile = window.innerWidth < 769;
+                holdingsList.innerHTML = displayHoldings.slice(0, 5).map(h => {
+                    const holdingHtml = `<div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; hover: opacity 0.8;">
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                        <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                    </div>`;
+                    
+                    if (isMobile) {
+                        return holdingHtml;
+                    } else {
+                        return `<a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">${holdingHtml}</a>`;
+                    }
+                }).join('');
             }
 
             // Update chart

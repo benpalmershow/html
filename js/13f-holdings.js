@@ -212,7 +212,32 @@ function initializeFirmCards() {
                     }
                 });
 
+                // Handle chart interactions: touch requires 500ms hold to prevent accidental redirects
+                // while allowing tooltip to display. Desktop clicks work immediately.
+                let isTouchDevice = false;
+                let touchStartTime = 0;
+
+                ctx.addEventListener('touchstart', () => {
+                    isTouchDevice = true;
+                    touchStartTime = Date.now();
+                }, { passive: true });
+
+                ctx.addEventListener('touchend', (evt) => {
+                    // Only navigate if user held tap for longer than 500ms (intentional tap, not hover)
+                    // This prevents accidental redirects on mobile while viewing tooltip text
+                    if (Date.now() - touchStartTime > 500) {
+                        const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                        if (points.length > 0) {
+                            const ticker = chartData[points[0].index].ticker;
+                            window.open('https://finance.yahoo.com/quote/' + ticker, '_blank');
+                        }
+                    }
+                    isTouchDevice = false;
+                }, { passive: true });
+
                 ctx.onclick = function (evt) {
+                    // Skip click if it's from a touch device (use touchend instead)
+                    if (isTouchDevice) return;
                     const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
                     if (points.length > 0) {
                         const ticker = chartData[points[0].index].ticker;

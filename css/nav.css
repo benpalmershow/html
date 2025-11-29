@@ -307,39 +307,39 @@
 }
 
 .hint-content {
-    position: relative;
-    background: var(--bg-primary, #fdf6e8);
-    padding: var(--spacing-md, 1.25rem);
-    border-radius: 0.5rem;
-    max-width: 500px;
-    width: calc(100% - 2rem);
-    margin-left: auto;
-    margin-right: 1rem;
-    max-height: 80vh;
-    overflow-y: auto;
-    z-index: 2001;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
+     position: relative;
+     background: var(--bg-primary, #fdf6e8);
+     padding: 1rem;
+     border-radius: 0.5rem;
+     max-width: 450px;
+     width: calc(100% - 2rem);
+     margin-left: auto;
+     margin-right: 1rem;
+     max-height: 80vh;
+     overflow-y: auto;
+     z-index: 2001;
+     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+ }
 
-.hint-content h3 {
-    margin-top: 0;
-    margin-bottom: var(--spacing-md, 1.25rem);
-    font-size: 1rem;
-    color: var(--text-primary, #000000);
-}
+ .hint-content h3 {
+     margin-top: 0;
+     margin-bottom: 0.75rem;
+     font-size: 0.95rem;
+     color: var(--text-primary, #000000);
+ }
 
-.hint-steps {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md, 1.25rem);
-    margin-bottom: var(--spacing-md, 1.25rem);
-}
+ .hint-steps {
+     display: flex;
+     flex-direction: column;
+     gap: 0.75rem;
+     margin-bottom: 1rem;
+ }
 
-.hint-step {
-    display: flex;
-    gap: var(--spacing-md, 1.25rem);
-    align-items: flex-start;
-}
+ .hint-step {
+     display: flex;
+     gap: 0.75rem;
+     align-items: flex-start;
+ }
 
 .hint-step i[data-lucide],
 .hint-step img {
@@ -357,22 +357,51 @@
     font-size: 0.85rem;
 }
 
-.hint-close {
-    background: var(--color-secondary, #d4822a);
-    color: var(--color-white, #ffffff);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.25rem;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-weight: 600;
-}
+.hint-close-btn {
+     position: absolute;
+     top: 0.5rem;
+     right: 0.5rem;
+     background: transparent;
+     border: none;
+     font-size: 1.5rem;
+     line-height: 1;
+     color: var(--text-secondary, #343a40);
+     cursor: pointer;
+     padding: 0.25rem 0.5rem;
+     border-radius: 50%;
+     transition: background-color 0.2s, color 0.2s;
+     width: 32px;
+     height: 32px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
 
-.hint-close:hover {
-    background: var(--color-primary, #2c5f5a);
-}
+ .hint-close-btn:hover {
+     background-color: var(--border-color, #e0dcc4);
+     color: var(--text-primary, #000000);
+ }
+
+ .hint-close-btn-action {
+     background: var(--accent-secondary, #d4822a);
+     color: var(--color-white, #ffffff);
+     border: none;
+     padding: 0.5rem 1rem;
+     border-radius: 0.25rem;
+     font-family: Georgia, 'Times New Roman', serif;
+     font-size: 0.85rem;
+     cursor: pointer;
+     transition: background-color 0.2s ease;
+     font-weight: 600;
+     display: block;
+     margin-top: 0.5rem;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .hint-close-btn-action:hover {
+     background: var(--accent-primary, #2c5f5a);
+ }
 
 /* Dark mode icon visibility */
 @media (prefers-color-scheme: dark) {
@@ -405,7 +434,7 @@
     }
 
     .cta-button {
-        color: var(--text-secondary);
+        color: var(--text-primary);
     }
 
     .cta-text-wrapper span:first-child {
@@ -418,31 +447,40 @@
 
     /* Hint modal dark mode text fixes */
     .hint-content {
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
+       background: var(--bg-secondary);
+       border: 1px solid var(--border-color);
     }
 
     .hint-content h3 {
-        color: var(--text-primary);
+       color: var(--text-primary);
     }
 
     .hint-step strong {
-        color: var(--text-primary);
+       color: var(--text-primary);
     }
 
     .hint-step div {
-        color: var(--text-secondary);
+       color: var(--text-primary);
     }
 
-    .hint-close {
-        background: var(--accent-secondary);
-        color: var(--bg-primary);
+    .hint-close-btn {
+       color: var(--text-secondary);
     }
 
-    .hint-close:hover {
-        background: var(--accent-primary);
+    .hint-close-btn:hover {
+       background-color: var(--border-color);
+       color: var(--text-primary);
     }
-}
+
+    .hint-close-btn-action {
+       background: var(--accent-secondary);
+       color: var(--text-primary);
+    }
+
+    .hint-close-btn-action:hover {
+       background: var(--accent-primary);
+    }
+    }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

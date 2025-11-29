@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
         <div class="hint-overlay"></div>
         <div class="hint-content" aria-describedby="hint-title">
+          <button class="hint-close-btn" aria-label="Close this message" title="Close">&times;</button>
           <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
           <div class="hint-steps">
             <div class="hint-step">
@@ -92,11 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
               <div>
                 <strong>Add to Home Screen:</strong> Tap the share icon and select "Add to Home Screen" for quick access
               </div>
-            </div>
-          </div>
-          <button class="hint-close" id="hint-close-btn">Got it, thanks!</button>
-          </div>
-          </div>
+              </div>
+              <button class="hint-close-btn-action" id="hint-close-btn">Got it, thanks!</button>
+              </div>
+              </div>
   `;
 
   navContainer.innerHTML = navHTML;
@@ -154,10 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close hints when overlay or close button is clicked
+    // Close hints when overlay or close buttons are clicked
     const hintOverlay = visitorHints.querySelector('.hint-overlay');
+    const hintCloseX = visitorHints.querySelector('.hint-close-btn');
     const hintCloseBtn = visitorHints.querySelector('#hint-close-btn');
-    [hintOverlay, hintCloseBtn].forEach(el => {
+    [hintOverlay, hintCloseX, hintCloseBtn].forEach(el => {
       if (el) {
         el.addEventListener('click', () => {
           visitorHints.style.display = 'none';

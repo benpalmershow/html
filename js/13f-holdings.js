@@ -84,10 +84,17 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
                 <div style="display: flex; flex-direction: column; gap: 3px; width: 110px;" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 5).map(h => `
-                        <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px;">
-                            <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                            <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
-                        </div>
+                        <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                                    <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                                </div>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--text-muted); flex-shrink: 0;" title="View on Yahoo Finance">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" opacity="0.7"/>
+                                </svg>
+                            </div>
+                        </a>
                     `).join('')}
                 </div>
                 <div style="position: relative; height: 150px; width: 100%; max-width: 180px; flex: 1; min-width: 150px;">
@@ -142,14 +149,39 @@ function initializeFirmCards() {
             // Update holdings list
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
-                holdingsList.innerHTML = displayHoldings.slice(0, 5).map(h => `
+                holdingsList.innerHTML = displayHoldings.slice(0, 5).map((h, idx) => `
                     <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">
-                        <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; hover: opacity 0.8;">
-                            <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                            <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                        <div class="holding-item" data-holding-index="${idx}" style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                                <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--text-muted); flex-shrink: 0;" title="View on Yahoo Finance">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" opacity="0.7"/>
+                            </svg>
                         </div>
                     </a>
                 `).join('');
+
+                // Add click handlers for holdings
+                holdingsList.querySelectorAll('.holding-item').forEach((item) => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const holdingIndex = parseInt(item.dataset.holdingIndex);
+                        const chartInstance = window[`chart-${firmIdx}Chart`];
+                        if (chartInstance) {
+                            // Reset all segments to full opacity
+                            chartInstance.data.datasets[0].backgroundColor = displayHoldings.slice(0, 10).map(h => getColorByValue(h.pct));
+                            // Highlight clicked segment with increased opacity/brightness
+                            const colors = displayHoldings.slice(0, 10).map((h, i) => {
+                                if (i === holdingIndex) return getColorByValue(h.pct);
+                                return getColorByValue(h.pct).replace(')', ', 0.3)').replace('hsl(', 'hsla(');
+                            });
+                            chartInstance.data.datasets[0].backgroundColor = colors;
+                            chartInstance.update();
+                        }
+                    });
+                });
             }
 
             // Update chart
@@ -199,6 +231,13 @@ function initializeFirmCards() {
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                const holdingItem = card.querySelector(`[data-holding-index="${index}"]`);
+                                if (holdingItem) holdingItem.click();
+                            }
+                        },
                         plugins: {
                             legend: { display: false },
                             tooltip: {
@@ -211,7 +250,7 @@ function initializeFirmCards() {
                         }
                     }
                 });
-
+                window[`chart-${firmIdx}Chart`] = chartInstance;
 
             }
         }, 0);

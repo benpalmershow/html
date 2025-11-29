@@ -139,22 +139,17 @@ function initializeFirmCards() {
             // Sort by value (descending)
             displayHoldings.sort((a, b) => b.value - a.value);
 
-            // Update holdings list (no links on mobile to prevent accidental navigation)
+            // Update holdings list
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
-                const isMobile = window.innerWidth < 769;
-                holdingsList.innerHTML = displayHoldings.slice(0, 5).map(h => {
-                    const holdingHtml = `<div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; hover: opacity 0.8;">
-                        <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                        <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
-                    </div>`;
-                    
-                    if (isMobile) {
-                        return holdingHtml;
-                    } else {
-                        return `<a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">${holdingHtml}</a>`;
-                    }
-                }).join('');
+                holdingsList.innerHTML = displayHoldings.slice(0, 5).map(h => `
+                    <a href="https://finance.yahoo.com/quote/${h.ticker}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; cursor: pointer;">
+                        <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; hover: opacity 0.8;">
+                            <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                            <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                        </div>
+                    </a>
+                `).join('');
             }
 
             // Update chart
@@ -217,18 +212,29 @@ function initializeFirmCards() {
                     }
                 });
 
-                // Handle chart interactions: mobile shows tooltip only, desktop click navigates
-                let lastTouchTime = 0;
+                let isTouchDevice = false;
+                let touchStartTime = 0;
 
                 ctx.addEventListener('touchstart', () => {
-                    lastTouchTime = Date.now();
+                    isTouchDevice = true;
+                    touchStartTime = Date.now();
                 }, { passive: true });
 
-                // Desktop only: click to navigate
+                ctx.addEventListener('touchend', (evt) => {
+                    // Only navigate if user held tap for longer than 500ms (intentional tap, not hover)
+                    if (Date.now() - touchStartTime > 500) {
+                        const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                        if (points.length > 0) {
+                            const ticker = chartData[points[0].index].ticker;
+                            window.open('https://finance.yahoo.com/quote/' + ticker, '_blank');
+                        }
+                    }
+                    isTouchDevice = false;
+                }, { passive: true });
+
                 ctx.onclick = function (evt) {
-                    // Prevent navigation if click came from touch (within 500ms of last touch)
-                    if (Date.now() - lastTouchTime < 500) return;
-                    
+                    // Skip click if it's from a touch device (use touchend instead)
+                    if (isTouchDevice) return;
                     const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
                     if (points.length > 0) {
                         const ticker = chartData[points[0].index].ticker;

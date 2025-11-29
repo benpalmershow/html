@@ -212,30 +212,19 @@ function initializeFirmCards() {
                     }
                 });
 
-                // Handle chart interactions: tap shows tooltip, hold (500ms+) navigates to Yahoo
+                // Handle chart interactions: touch shows tooltip, desktop click navigates
                 let isTouchDevice = false;
-                let touchStartTime = 0;
 
                 ctx.addEventListener('touchstart', () => {
                     isTouchDevice = true;
-                    touchStartTime = Date.now();
                 }, { passive: true });
 
-                ctx.addEventListener('touchend', (evt) => {
-                    // Quick tap: show tooltip only (Chart.js handles this automatically)
-                    // Hold 500ms+: navigate to Yahoo Finance
-                    if (Date.now() - touchStartTime >= 500) {
-                        const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
-                        if (points.length > 0) {
-                            const ticker = chartData[points[0].index].ticker;
-                            window.open('https://finance.yahoo.com/quote/' + ticker, '_blank');
-                        }
-                    }
+                ctx.addEventListener('touchend', () => {
                     isTouchDevice = false;
                 }, { passive: true });
 
                 ctx.onclick = function (evt) {
-                    // Skip click if it's from a touch device (use touchend instead)
+                    // Only navigate on desktop click, not touch
                     if (isTouchDevice) return;
                     const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
                     if (points.length > 0) {

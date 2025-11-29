@@ -212,8 +212,7 @@ function initializeFirmCards() {
                     }
                 });
 
-                // Handle chart interactions: touch requires 500ms hold to prevent accidental redirects
-                // while allowing tooltip to display. Desktop clicks work immediately.
+                // Handle chart interactions: tap shows tooltip, hold (500ms+) navigates to Yahoo
                 let isTouchDevice = false;
                 let touchStartTime = 0;
 
@@ -223,9 +222,9 @@ function initializeFirmCards() {
                 }, { passive: true });
 
                 ctx.addEventListener('touchend', (evt) => {
-                    // Only navigate if user held tap for longer than 500ms (intentional tap, not hover)
-                    // This prevents accidental redirects on mobile while viewing tooltip text
-                    if (Date.now() - touchStartTime > 500) {
+                    // Quick tap: show tooltip only (Chart.js handles this automatically)
+                    // Hold 500ms+: navigate to Yahoo Finance
+                    if (Date.now() - touchStartTime >= 500) {
                         const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
                         if (points.length > 0) {
                             const ticker = chartData[points[0].index].ticker;

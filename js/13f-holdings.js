@@ -27,23 +27,23 @@ function getColorByValue(percentage) {
     if (percentage >= 8) {
         hue = 0;
         saturation = 100;
-        lightness = 40;
+        lightness = 32;
     } else if (percentage >= 5) {
-        hue = 30;
+        hue = 25;
+        saturation = 100;
+        lightness = 40;
+    } else if (percentage >= 3) {
+        hue = 55;
         saturation = 90;
         lightness = 45;
-    } else if (percentage >= 3) {
-        hue = 60;
-        saturation = 80;
-        lightness = 50;
     } else if (percentage >= 1.5) {
-        hue = 120;
-        saturation = 70;
-        lightness = 50;
+        hue = 130;
+        saturation = 80;
+        lightness = 42;
     } else {
-        hue = 240;
-        saturation = 60;
-        lightness = 55;
+        hue = 200;
+        saturation = 75;
+        lightness = 48;
     }
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
@@ -214,8 +214,8 @@ function initializeFirmCards() {
                         datasets: [{
                             data: chartData.map(h => h.value / 1000000),
                             backgroundColor: chartData.map(h => getColorByValue(h.pct)),
-                            borderColor: '#000000',
-                            borderWidth: 0
+                            borderColor: '#1a1f1e',
+                            borderWidth: 2
                         }]
                     },
                     options: {

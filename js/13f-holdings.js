@@ -212,20 +212,18 @@ function initializeFirmCards() {
                     }
                 });
 
-                // Handle chart interactions: touch shows tooltip, desktop click navigates
-                let isTouchDevice = false;
+                // Handle chart interactions: mobile shows tooltip only, desktop click navigates
+                let lastTouchTime = 0;
 
                 ctx.addEventListener('touchstart', () => {
-                    isTouchDevice = true;
+                    lastTouchTime = Date.now();
                 }, { passive: true });
 
-                ctx.addEventListener('touchend', () => {
-                    isTouchDevice = false;
-                }, { passive: true });
-
+                // Desktop only: click to navigate
                 ctx.onclick = function (evt) {
-                    // Only navigate on desktop click, not touch
-                    if (isTouchDevice) return;
+                    // Prevent navigation if click came from touch (within 500ms of last touch)
+                    if (Date.now() - lastTouchTime < 500) return;
+                    
                     const points = chartInstance.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
                     if (points.length > 0) {
                         const ticker = chartData[points[0].index].ticker;

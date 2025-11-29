@@ -84,7 +84,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
                 <div style="display: flex; flex-direction: column; gap: 3px; width: 110px;" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 5).map(h => `
-                        <div style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
                             <div>
                                 <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
                                 <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
@@ -145,7 +145,7 @@ function initializeFirmCards() {
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 5).map((h, idx) => `
-                    <div class="holding-item" data-holding-index="${idx}" style="background: var(--bg-secondary); border-left: 3px solid ${getColorByValue(h.pct)}; padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
                         <div>
                             <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
                             <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
@@ -158,6 +158,33 @@ function initializeFirmCards() {
                     item.addEventListener('click', (e) => {
                         e.preventDefault();
                         const holdingIndex = parseInt(item.dataset.holdingIndex);
+                        
+                        // Highlight the holding item in the list
+                        holdingsList.querySelectorAll('.holding-item').forEach(h => {
+                            h.style.background = 'var(--bg-secondary)';
+                            h.style.borderLeft = 'none';
+                            h.style.opacity = '1';
+                            h.querySelectorAll('div').forEach(div => {
+                                if (div.style.fontWeight === '600') {
+                                    div.style.color = 'var(--text-primary)';
+                                } else if (div.style.fontSize === '9px') {
+                                    div.style.color = 'var(--text-muted)';
+                                }
+                            });
+                        });
+                        const pct = item.dataset.pct;
+                        item.style.background = 'var(--accent-primary)';
+                        item.style.borderLeft = '3px solid';
+                        item.style.borderImage = `linear-gradient(to top, ${getColorByValue(pct)} 0%, ${getColorByValue(pct)} ${Math.min(pct * 10, 100)}%, var(--border-color) ${Math.min(pct * 10, 100)}%, var(--border-color) 100%) 0 0 0 1`;
+                        item.style.opacity = '1';
+                        item.querySelectorAll('div').forEach(div => {
+                            if (div.style.fontWeight === '600') {
+                                div.style.color = 'white';
+                            } else if (div.style.fontSize === '9px') {
+                                div.style.color = 'rgba(255, 255, 255, 0.8)';
+                            }
+                        });
+                        
                         const chartInstance = window[`chart-${firmIdx}Chart`];
                         if (chartInstance) {
                             // Reset all segments to full opacity
@@ -202,6 +229,9 @@ function initializeFirmCards() {
                 updateFirmDisplay();
             });
         });
+
+        // Initialize display with event handlers
+        updateFirmDisplay();
 
         setTimeout(() => {
             const ctx = document.getElementById(`chart-${firmIdx}`);

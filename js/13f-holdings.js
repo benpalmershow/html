@@ -82,8 +82,8 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         </div>
         <div class="indicator-content">
             <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
-                <div style="display: flex; flex-direction: column; gap: 3px; width: 110px;" data-firm-holdings="${firmIdx}">
-                    ${firmHoldings.slice(0, 5).map(h => `
+                <div style="display: flex; flex-direction: column; gap: 3px; width: 110px; max-height: 150px; overflow-y: auto;" data-firm-holdings="${firmIdx}">
+                    ${firmHoldings.slice(0, 10).map(h => `
                         <div style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
                             <div>
                                 <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
@@ -144,7 +144,7 @@ function initializeFirmCards() {
             // Update holdings list
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
-                holdingsList.innerHTML = displayHoldings.slice(0, 5).map((h, idx) => `
+                holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
                     <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
                         <div>
                             <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
@@ -173,15 +173,15 @@ function initializeFirmCards() {
                             });
                         });
                         const pct = item.dataset.pct;
-                        item.style.background = 'var(--accent-primary)';
+                        item.style.background = 'var(--bg-secondary)';
                         item.style.borderLeft = '3px solid';
                         item.style.borderImage = `linear-gradient(to top, ${getColorByValue(pct)} 0%, ${getColorByValue(pct)} ${Math.min(pct * 10, 100)}%, var(--border-color) ${Math.min(pct * 10, 100)}%, var(--border-color) 100%) 0 0 0 1`;
                         item.style.opacity = '1';
                         item.querySelectorAll('div').forEach(div => {
                             if (div.style.fontWeight === '600') {
-                                div.style.color = 'white';
+                                div.style.color = 'var(--text-primary)';
                             } else if (div.style.fontSize === '9px') {
-                                div.style.color = 'rgba(255, 255, 255, 0.8)';
+                                div.style.color = 'var(--text-muted)';
                             }
                         });
                         
@@ -209,6 +209,7 @@ function initializeFirmCards() {
                 chartInstance.data.labels = chartData.map(h => h.ticker);
                 chartInstance.data.datasets[0].data = chartData.map(h => h.value / 1000000);
                 chartInstance.data.datasets[0].backgroundColor = chartData.map(h => getColorByValue(h.pct));
+                chartInstance.data.datasets[0].spacing = 4;
                 chartInstance.update();
             }
 
@@ -244,8 +245,9 @@ function initializeFirmCards() {
                         datasets: [{
                             data: chartData.map(h => h.value / 1000000),
                             backgroundColor: chartData.map(h => getColorByValue(h.pct)),
-                            borderColor: '#1a1f1e',
-                            borderWidth: 2
+                            borderColor: 'transparent',
+                            borderWidth: 2,
+                            spacing: 4
                         }]
                     },
                     options: {

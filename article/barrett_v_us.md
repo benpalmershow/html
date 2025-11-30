@@ -6,6 +6,8 @@ icon: scale
 summary: Focused analysis on double jeopardy, cumulative punishment, and lenity doctrine prompted by Justice Gorsuch's questioning at oral argument
 ---
 
+<div class="article-wrapper">
+
 # Barrett v. United States: Legal Analysis
 
 ## Case Information
@@ -270,3 +272,5 @@ The case tests textualist methodology: Does statutory structure ("in the course 
 ---
 
 **Stakes:** This case will clarify when Congress has authorized multiple punishments for overlapping federal offenses and may strengthen the rule of lenity in criminal cases—with significant implications for federal sentencing nationwide.
+
+</div>

@@ -8,6 +8,8 @@ ticker: HOOD
 link: https://investors.robinhood.com/static-files/96125635-9736-40ed-a873-eb0cf735b079
 ---
 
+<div class="article-wrapper">
+
 # Robinhood Q2 2025 Earnings
 
 ---

@@ -7,6 +7,8 @@ summary: A deep dive into the hidden costs and systemic issues within the Americ
 link: article/healthcare-costs.md
 ---
 
+<div class="article-wrapper">
+
 # The Hidden Costs of Healthcare: A Broken System
 
 **Published: August 22, 2025**

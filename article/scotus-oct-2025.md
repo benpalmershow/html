@@ -6,6 +6,8 @@ icon: gavel
 summary: Supreme Court oral arguments schedule for October-November 2025 term with case summaries and podcast links
 ---
 
+<div class="article-wrapper">
+
 # Supreme Court Oral Arguments Schedule
 
 ---

@@ -7,6 +7,8 @@ summary: SCOTUS oral arguments reveal deep skepticism. Can the President impose 
 link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
 ---
 
+<div class="article-wrapper">
+
 # Update to Tariff SCOTUS Case
 
 ### 1. Wartime Power Delegation and Historical Use
@@ -101,3 +103,5 @@ This reinforces the **Article I, Section 8** concern: the power to tax and colle
 ---
 
 *Source: [Supreme Court Oral Argument Transcript, 24-1287, Nov. 5, 2025](https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf)*
+
+</div>

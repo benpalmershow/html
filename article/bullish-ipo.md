@@ -8,6 +8,8 @@ ticker: BLSH
 link: https://www.reuters.com/business/crypto-firm-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/
 ---
 
+<div class="article-wrapper">
+
 # Bullish Launches IPO Filing
 
 **Date:** August 4, 2025  
@@ -52,3 +54,5 @@ Bullish is entering public markets during a favorable cycle for crypto IPOs, aid
 ---
 
 *Sources: Reuters, Renaissance Capital, Investopedia, CoinDesk, Bullish.com, Barron's*
+
+</div>

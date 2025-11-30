@@ -7,6 +7,8 @@ summary: Circle files for IPO as USDC stablecoin issuer targets public markets w
 ticker: CRCL
 ---
 
+<div class="article-wrapper">
+
 # Circle IPO Filing
 
 ---
@@ -28,3 +30,5 @@ Circle's platform empowers developers to create compliant, transparent, and near
 Circle intends to use IPO proceeds for general corporate purposes, including product development, infrastructure enhancements, and potential acquisitions. The company reported $1.1 billion in liquidity as of March 31, 2025.
 
 For full details, refer to the [SEC filing](https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm).
+
+</div>

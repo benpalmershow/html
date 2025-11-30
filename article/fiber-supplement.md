@@ -7,6 +7,8 @@ summary: A deep dive into how the supplement industry has turned basic nutrition
 link: article/fiber-supplement.md
 ---
 
+<div class="article-wrapper">
+
 # The Fiber Supplement Scam: How Capitalism Commodifies Basic Nutrition
 
 **Published: September 2, 2025**

@@ -6,6 +6,8 @@ icon: newspaper
 summary: Governor Newsom signs AB 130 and SB 131 reforming California Environmental Quality Act to accelerate housing development and infrastructure projects
 ---
 
+<div class="article-wrapper">
+
 # CA CEQA Reforms
 
 **Posted on July 2, 2025**
@@ -46,3 +48,5 @@ Read the full text of the bills here:
 
 - [California Assembly Bill (AB) 130](http://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB130)
 - [California Senate Bill (SB) 131](http://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB131)
+
+</div>

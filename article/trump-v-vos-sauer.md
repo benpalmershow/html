@@ -7,6 +7,8 @@ summary: Solicitor General Sauer defended IEEPA tariffs as non-revenue regulator
 link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
 ---
 
+<div class="article-wrapper">
+
 # The $2000 Tariff Rebate
 
 Solicitor General **Sauer** advanced a sharp reframing of what tariffs represent under IEEPA. He argued that when imposed under emergency authority, tariffs are **regulatory**, not **revenue-raising**, and therefore fall within the President's delegated powers to "regulate importation."

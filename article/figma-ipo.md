@@ -7,6 +7,8 @@ summary: Figma targets $16-18B IPO valuation with $1B raise, betting on AI-power
 ticker: FIG
 ---
 
+<div class="article-wrapper">
+
 # Figma IPO: Comprehensive Investment Analysis
 
 ## Executive Summary

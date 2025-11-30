@@ -7,6 +7,8 @@ summary: Tesla's new sustainable abundance mission and Amazon's plan to replace 
 author: Ben Palmer
 ---
 
+<div class="article-wrapper">
+
 # Sustainable Abundance
 
 On one side, the political left frames the rise of AI and robotics as a **job-destroying threat**. On the other, the right, CEOs, and markets hail it as a source of **efficiency, wealth, and abundance**.

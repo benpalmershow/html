@@ -7,6 +7,8 @@ summary: Reddit delivers exceptional Q2 2025 performance with return to profitab
 ticker: RDDT
 ---
 
+<div class="article-wrapper">
+
 # Reddit Q2 2025 Earnings Report
 
 ## Executive Summary
@@ -269,3 +271,5 @@ Reddit provided optimistic guidance for Q3 2025:
 ---
 
 *This earnings analysis is for informational purposes only and should not be considered investment advice. All financial metrics are reported on a non-GAAP basis unless otherwise noted. Please refer to Reddit's official SEC filings for complete GAAP reconciliations and detailed financial information.*
+
+</div>

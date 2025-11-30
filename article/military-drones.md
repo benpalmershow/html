@@ -6,6 +6,8 @@ icon: shield
 summary: Cost vs performance comparison of modern military drone systems
 ---
 
+<div class="article-wrapper">
+
 | System | Country | Cost | Class | Features | Application |
 |--------|---------|------|-------|----------|-------------|
 | SkyShark | 🇬🇧 | ~$2.5M¹ | HALE | Stealth, AI autonomy, swarm | ISR, sustained surveillance |

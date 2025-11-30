@@ -6,6 +6,8 @@ icon: alert-triangle
 summary: Previously reported numbers were wildly inaccurate. $HOOD numbers have been updated. $TWLO deleted until confident posting.
 ---
 
+<div class="article-wrapper">
+
 # $HOOD (updated) and $TWLO (deleted)
 
 Previously reported numbers were wildly inaccurate. $HOOD numbers have been updated. $TWLO deleted until I can post confidently.
@@ -34,3 +36,5 @@ See transcript below of Kiro's response. Notice her pesky sychophantic tone!
 - Use placeholder language - If creating templates, I should use obvious placeholders like "[REVENUE]" or "[YoY%]" rather than fake numbers
 
 This was a clear case where I should have been honest about my limitations rather than fabricating data. Thanks for the correction - it's a good reminder to always prioritize accuracy over appearing capable.
+
+</div>

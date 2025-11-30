@@ -6,6 +6,8 @@ icon: newspaper
 summary: The One Big Beautiful Bill Act passed Senate 51-50 with VP JD Vance casting tie-breaking vote, allocating $170B for homeland security and immigration enforcement
 ---
 
+<div class="article-wrapper">
+
 # Latest on Big Beautiful Bill
 
 **Posted on July 2, 2025**
@@ -39,3 +41,5 @@ Read more about the bill here:
 - [H.R. 1 - One Big Beautiful Bill Act](https://www.congress.gov/bill/119th-congress/house-bill/1)
 - [American Immigration Council: 2025 Reconciliation Bill](https://www.americanimmigrationcouncil.org/news/whats-2025-reconciliation-bill-so-far)
 - [PBS News: Trump's Big Bill and Immigration](https://www.pbs.org/newshour/politics/4-ways-trumps-big-bill-could-change-the-u-s-immigration-system)
+
+</div>

@@ -142,21 +142,18 @@
         window.history.back();
       };
       
+      // Remove existing meta element if present
       let metaEl = backButton.nextElementSibling;
       if (metaEl && metaEl.classList.contains('article-meta-header')) {
         metaEl.remove();
       }
+      
+      // Create and insert meta header with proper styling
       metaEl = document.createElement('div');
       metaEl.classList.add('article-meta-header');
-      metaEl.style.display = 'flex';
-      metaEl.style.alignItems = 'center';
-      metaEl.style.gap = '10px';
-      metaEl.style.fontSize = '0.9em';
-      metaEl.style.color = '#888';
-      metaEl.style.marginBottom = '10px';
-      let metaHtml = `<span>${formatDate(article.metadata.date)}</span>`;
+      let metaHtml = `<span class="article-date">${formatDate(article.metadata.date)}</span>`;
       if (article.metadata.ticker) {
-        metaHtml += `<span><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
+        metaHtml += `<span class="article-ticker"><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
       }
       metaHtml += `<span class="category-badge ${article.metadata.category}">${article.metadata.category}</span>`;
       metaEl.innerHTML = metaHtml;

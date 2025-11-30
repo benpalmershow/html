@@ -6,6 +6,8 @@ icon: gavel
 summary: Supreme Court examines judicial authority to issue nationwide injunctions against federal policies
 ---
 
+<div class="article-wrapper">
+
 # Supreme Court Case: Trump v. CASA, Inc.
 
 ---

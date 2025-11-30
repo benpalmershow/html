@@ -7,6 +7,8 @@ thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Suzuki_Carr
 summary: Oregon Senate Bill 1213 aims to legalize the registration and on-road use of Kei trucks, making Oregon the 31st state to permit these efficient, affordable utility vehicles. The bipartisan bill addresses demand from small businesses and farmers for practical transportation options.
 ---
 
+<div class="article-wrapper">
+
 # Nimble Kei Trucks
 
 <div style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Suzuki_Carry_Truck_KC_4WD_DA16T.JPG/330px-Suzuki_Carry_Truck_KC_4WD_DA16T.JPG" alt="Suzuki Carry Kei Truck" style="border: 1px solid #ddd; border-radius: 4px;"></div>

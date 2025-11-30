@@ -8,6 +8,8 @@ ticker: AIRO
 link: https://finance.yahoo.com/quote/AIRO
 ---
 
+<div class="article-wrapper">
+
 # AIRO Group Holdings IPO
 
 **IPO Performance:** Priced at $10.00 | Opened at $12.90 | Surged 140% on debut
@@ -71,3 +73,5 @@ AIRO is positioned in several high-growth aerospace segments, including the emer
 **Recent Performance:** AIRO's explosive 140% surge on its trading debut reflects strong investor enthusiasm for aerospace and defense technology companies, particularly those focused on next-generation solutions like eVTOL aircraft and advanced drone systems.
 
 This summary is based on publicly available information. For complete details, investors should refer to AIRO's [SEC filing](https://www.sec.gov/Archives/edgar/data/1927958/000164117225015147/form424b4.htm).
+
+</div>

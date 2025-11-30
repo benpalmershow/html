@@ -8,6 +8,8 @@ ticker: PTON
 link: https://finance.yahoo.com/quote/PTON
 ---
 
+<div class="article-wrapper">
+
 # Peloton Stock Rallies on UBS Upgrade
 
 UBS's upgrade of Peloton stock from Neutral to Buy, issued on July 30, 2025, has triggered a significant rally in Peloton shares just days ahead of its Q4 2025 earnings report scheduled for August 7, 2025.

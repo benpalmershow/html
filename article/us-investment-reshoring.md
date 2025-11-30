@@ -6,6 +6,8 @@ icon: factory
 summary: Trump tariff threats forcing multinationals to shift manufacturing to U.S., with GE Appliances, Nokia, and Saudi Arabia's PIF leading $100B+ reshoring commitment
 ---
 
+<div class="article-wrapper">
+
 # Trump Tariffs Spark Reshoring Wave
 
 Trump's tariff threat is working. Multinationals are committing tens of billions to U.S. manufacturing to avoid import duties and secure market access.

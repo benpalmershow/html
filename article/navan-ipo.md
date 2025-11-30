@@ -7,6 +7,8 @@ summary: Navan (NAVN) files for $963M IPO, targeting $6.2B valuation as corporat
 ticker: NAVN
 ---
 
+<div class="article-wrapper">
+
 # Navan IPO: Travel & Expense Super App Targets $6.2B Valuation
 
 ## Executive Summary

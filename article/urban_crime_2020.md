@@ -7,6 +7,8 @@ summary: 58% of violent crimes in urban areas never get reported to police. Youn
 link: article/urban_crime_2020.html
 ---
 
+<div class="article-wrapper">
+
 # Hidden Urban Crime Analysis
 
 ## Key Findings

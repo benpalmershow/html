@@ -7,6 +7,8 @@ summary: Trump administration officials violated First Amendment rights of non-c
 link: https://storage.courtlistener.com/recap/gov.uscourts.mad.282460/gov.uscourts.mad.282460.261.0.pdf
 ---
 
+<div class="article-wrapper">
+
 # Federal Court Rules on Non-Citizens' First Amendment Rights
 
 **Case:** AAUP v. Rubio, No. 25-10685-WGY (D. Mass. Sept. 30, 2025)  
@@ -110,3 +112,5 @@ This represents one of the first successful challenges to Trump administration p
 ---
 
 [Read Full 161-Page Opinion (PDF)](https://storage.courtlistener.com/recap/gov.uscourts.mad.282460/gov.uscourts.mad.282460.261.0.pdf)
+
+</div>

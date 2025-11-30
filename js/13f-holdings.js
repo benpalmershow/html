@@ -21,31 +21,29 @@ async function load13FData() {
     }
 }
 
-function getColorByValue(percentage) {
-    let hue, saturation, lightness;
+function getBgColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim();
+}
 
+function hexToRgba(hex, alpha = 1) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function getColorByValue(percentage) {
     if (percentage >= 8) {
-        hue = 0;
-        saturation = 100;
-        lightness = 32;
+        return '#E63946';
     } else if (percentage >= 5) {
-        hue = 25;
-        saturation = 100;
-        lightness = 40;
+        return '#FF8C42';
     } else if (percentage >= 3) {
-        hue = 55;
-        saturation = 90;
-        lightness = 45;
+        return '#FACC15';
     } else if (percentage >= 1.5) {
-        hue = 130;
-        saturation = 80;
-        lightness = 42;
+        return '#33AA66';
     } else {
-        hue = 200;
-        saturation = 75;
-        lightness = 48;
+        return '#3399CC';
     }
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
 function isETF(holding) {
@@ -192,7 +190,7 @@ function initializeFirmCards() {
                             // Highlight clicked segment with increased opacity/brightness
                             const colors = displayHoldings.slice(0, 10).map((h, i) => {
                                 if (i === holdingIndex) return getColorByValue(h.pct);
-                                return getColorByValue(h.pct).replace(')', ', 0.3)').replace('hsl(', 'hsla(');
+                                return hexToRgba(getColorByValue(h.pct), 0.3);
                             });
                             chartInstance.data.datasets[0].backgroundColor = colors;
                             chartInstance.update();
@@ -209,7 +207,8 @@ function initializeFirmCards() {
                 chartInstance.data.labels = chartData.map(h => h.ticker);
                 chartInstance.data.datasets[0].data = chartData.map(h => h.value / 1000000);
                 chartInstance.data.datasets[0].backgroundColor = chartData.map(h => getColorByValue(h.pct));
-                chartInstance.data.datasets[0].spacing = 4;
+                chartInstance.data.datasets[0].borderWidth = 1;
+                chartInstance.data.datasets[0].borderColor = getBgColor();
                 chartInstance.update();
             }
 
@@ -245,9 +244,8 @@ function initializeFirmCards() {
                         datasets: [{
                             data: chartData.map(h => h.value / 1000000),
                             backgroundColor: chartData.map(h => getColorByValue(h.pct)),
-                            borderColor: 'transparent',
-                            borderWidth: 2,
-                            spacing: 4
+                            borderColor: getBgColor(),
+                            borderWidth: 1
                         }]
                     },
                     options: {

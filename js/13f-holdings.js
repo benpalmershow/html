@@ -84,7 +84,8 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                     ${firmHoldings.slice(0, 10).map(h => `
                         <div style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
                             <div>
-                                <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
+                                <div style="font-weight: 600; color: var(--text-primary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.ticker}</div>
+                                <div style="font-weight: 500; color: var(--text-secondary); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.name}</div>
                                 <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
                             </div>
                         </div>
@@ -144,11 +145,12 @@ function initializeFirmCards() {
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
                     <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
-                        <div>
-                            <div style="font-weight: 600; color: var(--text-primary); font-size: 12px;">${h.ticker}</div>
-                            <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
-                        </div>
-                    </div>
+                         <div>
+                             <div style="font-weight: 600; color: var(--text-primary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.ticker}</div>
+                             <div style="font-weight: 500; color: var(--text-secondary); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.name}</div>
+                             <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                         </div>
+                     </div>
                 `).join('');
 
                 // Add click handlers for holdings

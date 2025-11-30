@@ -141,6 +141,33 @@
       backButton.onclick = () => {
         window.history.back();
       };
+
+      // Create and setup back-to-top button
+      let backToTopBtn = document.querySelector('.back-to-top-btn');
+      if (!backToTopBtn) {
+        backToTopBtn = document.createElement('button');
+        backToTopBtn.className = 'back-to-top-btn';
+        backToTopBtn.setAttribute('aria-label', 'Back to top');
+        backToTopBtn.setAttribute('title', 'Back to top');
+        backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
+        document.body.appendChild(backToTopBtn);
+        lucide.createIcons();
+      }
+
+      const handleBackToTopVisibility = () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      };
+
+      backToTopBtn.onclick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      window.addEventListener('scroll', handleBackToTopVisibility);
+      handleBackToTopVisibility();
       
       // Remove existing meta element if present
       let metaEl = backButton.nextElementSibling;

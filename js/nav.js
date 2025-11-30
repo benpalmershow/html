@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <ul class="nav-list">
         ${pages.map(page => {
           const isActive = currentPage === page.file || (currentPage === '' && page.file === 'index.html');
-          if (page.file === 'index.html') {
-            return `<li><a href="${page.file}" class="nav-link nav-logo ${isActive ? 'active' : ''}" title="Home"><picture><source srcset="images/logo-360x360.webp" type="image/webp"><img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" width="32" height="32" loading="lazy"></picture></a></li>`;
+           if (page.file === 'index.html') {
+             return `<li><a href="${page.file}" class="nav-link nav-logo" title="Home"><picture><source srcset="images/logo-360x360.webp" type="image/webp"><img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" width="32" height="32" loading="lazy"></picture></a></li>`;
           }
           return `<li><a href="${page.file}" class="nav-link ${isActive ? 'active' : ''}">${page.name}</a></li>`;
         }).join('')}

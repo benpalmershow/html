@@ -96,7 +96,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                 </div>
             </div>
             <div class="data-rows-container firm-description-${firmIdx}">
-                <div style="padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                <div style="padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word;">
                     ${description || ''}
                 </div>
             </div>
@@ -281,8 +281,13 @@ function initializeFirmCards() {
     document.addEventListener('click', function (e) {
         const expandBtn = e.target.closest('.expand-toggle');
         if (expandBtn) {
+            e.preventDefault();
+            e.stopPropagation();
             const card = expandBtn.closest('.indicator');
-            card.classList.toggle('expanded');
+            if (card) {
+                card.classList.toggle('expanded');
+                console.log('Toggled expanded state:', card.classList.contains('expanded'));
+            }
         }
     });
 

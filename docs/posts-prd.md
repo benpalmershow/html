@@ -54,11 +54,13 @@ date: 2025-11-22T10:50:00
 
 ### Links
 - **Media**: `media.html#slug-name`
-- **News articles**: `news.html?article=slug`
+- **News articles & Analysis**: `news.html?article=slug` (for full articles in `article/` folder)
 - **Journal**: `journal.html#entry-slug`
 - **Filters**: `financials.html?filter=Category%20Name`
 - **Tickers**: `https://finance.yahoo.com/quote/TICKER` with `target="_blank" rel="noopener"`
 - **External**: Always include `target="_blank" rel="noopener"`
+
+Link text for articles should be: `[Read the full analysis](news.html?article=slug)`
 
 ### Multi-Topic Posts
 Separate distinct sections with `---` (horizontal rule) and give each its own icon/title:

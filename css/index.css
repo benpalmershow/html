@@ -60,6 +60,7 @@
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
     animation: cardSlideIn var(--duration-base) var(--ease-out-cubic) backwards;
     border-radius: 8px;
+    font-family: var(--font-body);
 }
 
 /* Stagger animation for each card */
@@ -161,9 +162,9 @@
 }
 
 .announcement-card .content {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
 }
 

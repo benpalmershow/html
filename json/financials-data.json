@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-11-26T17:56:00Z",
+    "lastUpdated": "2025-12-02T17:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -114,7 +114,7 @@
             "category": "Trade & Tariffs",
             "agency": "Port of LA/Long Beach",
             "name": "20ft Equivalents (TEUs)",
-            "lastUpdated": "2025-10-15T14:00:00Z",
+            "lastUpdated": "2025-12-02T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.portoflosangeles.org/business/statistics/container-statistics",
             "march": "778,405.70",
@@ -124,6 +124,7 @@
             "july": "1,019,837.30",
             "august": "958,355.15",
             "september": "883,053.25",
+            "october":"848,424.25",
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
         },
@@ -850,7 +851,7 @@
             "category": "Business Indicators",
             "agency": "ISM",
             "name": "Manufact... PMI",
-            "lastUpdated": "2025-10-01T14:00:00Z",
+            "lastUpdated": "2025-12-02T14:00:00Z",
             "releaseDay": 1,
             "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/october/",
             "march": "49",
@@ -861,6 +862,7 @@
             "august": "48.7",
             "september": "49.1",
             "october": "48.7",
+            "november":"48.2",
             "change": "",
             "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
         },

@@ -141,13 +141,23 @@
 
     .media-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 1.5rem;
       padding: 2rem;
     }
 
+    @media (max-width: 768px) {
+      .media-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .media-card {
+        max-width: none;
+      }
+    }
+
     .media-card {
-      max-width: 90px;
+      max-width: 150px;
       width: 100%;
       border-radius: 0.5rem;
       contain: layout style paint;

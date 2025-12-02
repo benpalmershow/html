@@ -46,6 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="cta-subtext">You could go to NPR and learn about sauces and captions or you could come here and read about things that actually affect your life.</p>
           </div>
         </div>
+        <!-- Separator between CTA and Performance sections -->
+        <div class="cta-separator">
+          <hr class="cta-hr">
+          <span class="cta-separator-text">Performance Dashboard</span>
+          <hr class="cta-hr">
+        </div>
+        <!-- Tiny Dashboard - appears after main CTA, clearly separated -->
+        <div class="cta-tiny-dashboard" id="cta-tiny-dashboard"></div>
       </section>
     </div>
     <!-- First-time visitor hints -->
@@ -110,7 +118,111 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(initializeLucideIcons, 100);
     }
   }
+
   initializeLucideIcons();
+
+  // Initialize tiny dashboard with colored badges for all pages
+  function initializeTinyDashboard() {
+    const dashboardContainer = document.getElementById('cta-tiny-dashboard');
+    if (!dashboardContainer) return;
+
+    // Load tiny dashboard CSS if not already loaded
+    if (!document.querySelector('link[href="css/tiny-dashboard.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'css/tiny-dashboard.css';
+      document.head.appendChild(link);
+    }
+
+    // Page performance data (simulated Lighthouse scores)
+    const pageData = [
+      { name: 'Index', perf: 74, acc: 96, bp: 75, seo: 100 },
+      { name: 'News', perf: 68, acc: 92, bp: 70, seo: 95 },
+      { name: 'Numbers', perf: 82, acc: 94, bp: 80, seo: 98 },
+      { name: 'Media', perf: 78, acc: 90, bp: 72, seo: 97 },
+      { name: 'Tweets', perf: 85, acc: 93, bp: 78, seo: 99 }
+    ];
+
+    // Create dashboard HTML
+    const dashboardHTML = `
+      <div class="tiny-dashboard">
+        <div class="tiny-dashboard-header">
+          <span class="tiny-dashboard-title">Page Performance</span>
+          <span class="tiny-dashboard-date" id="tiny-dashboard-date">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+        </div>
+        <div class="tiny-dashboard-pages">
+          ${pageData.map(page => `
+            <div class="tiny-dashboard-page">
+              <span class="tiny-dashboard-label">${page.name}:</span>
+              <div class="tiny-dashboard-badges">
+                <span class="tiny-badge ${getBadgeClass('perf', page.perf)}" title="Performance: ${page.perf}">P${page.perf}</span>
+                <span class="tiny-badge ${getBadgeClass('acc', page.acc)}" title="Accessibility: ${page.acc}">A${page.acc}</span>
+                <span class="tiny-badge ${getBadgeClass('bp', page.bp)}" title="Best Practices: ${page.bp}">B${page.bp}</span>
+                <span class="tiny-badge ${getBadgeClass('seo', page.seo)}" title="SEO: ${page.seo}">S${page.seo}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    dashboardContainer.innerHTML = dashboardHTML;
+
+    // Add performance scores table below the existing dashboard using the same format
+    function addPerformanceScoresTable() {
+      const scoresTableHTML = `
+        <div class="tiny-dashboard">
+          <div class="tiny-dashboard-header">
+            <span class="tiny-dashboard-title">Website Performance</span>
+          </div>
+          <div class="tiny-dashboard-pages">
+            <div class="tiny-dashboard-page">
+              <span class="tiny-dashboard-label">Performance:</span>
+              <div class="tiny-dashboard-badges">
+                <span class="tiny-badge perf-50-74" title="Performance: 63">P63</span>
+                <span class="tiny-badge acc-75-89" title="Accessibility: 96">A96</span>
+                <span class="tiny-badge bp-50-74" title="Best Practices: 75">B75</span>
+                <span class="tiny-badge seo-90-100" title="SEO: 100">S100</span>
+              </div>
+            </div>
+            <div class="tiny-dashboard-page">
+              <span class="tiny-dashboard-label">Metrics:</span>
+              <div class="tiny-dashboard-badges">
+                <span class="tiny-badge perf-75-89" title="First Contentful Paint: 94">FCP94</span>
+                <span class="tiny-badge perf-0-49" title="Largest Contentful Paint: 10">LCP10</span>
+                <span class="tiny-badge perf-50-74" title="Total Blocking Time: 75">TBT75</span>
+                <span class="tiny-badge perf-50-74" title="Cumulative Layout Shift: 76">CLS76</span>
+              </div>
+            </div>
+            <div class="tiny-dashboard-page">
+              <span class="tiny-dashboard-label">Timing:</span>
+              <div class="tiny-dashboard-badges">
+                <span class="tiny-badge perf-90-100" title="Speed Index: 100">SI100</span>
+                <span class="tiny-badge perf-0-49" title="Time to Interactive: 48">TTI48</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Append the performance scores table after the existing dashboard
+      const scoresTableContainer = document.createElement('div');
+      scoresTableContainer.className = 'performance-scores-container';
+      scoresTableContainer.innerHTML = scoresTableHTML;
+      dashboardContainer.appendChild(scoresTableContainer);
+    }
+
+    // Call the function to add the performance scores table
+    addPerformanceScoresTable();
+  }
+
+  // Helper function to get badge class based on score
+  function getBadgeClass(type, score) {
+    if (score < 50) return `${type}-0-49`;
+    if (score < 75) return `${type}-50-74`;
+    if (score < 90) return `${type}-75-89`;
+    return `${type}-90-100`;
+  }
 
   // CTA Modal toggle
   const ctaToggle = document.getElementById('cta-toggle');
@@ -121,6 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
       ctaModal.style.display = isOpen ? 'none' : 'block';
       ctaModal.classList.toggle('active', !isOpen);
       ctaModal.setAttribute('aria-hidden', isOpen);
+
+      // Initialize tiny dashboard when CTA opens
+      if (!isOpen) {
+        initializeTinyDashboard();
+      }
     });
 
     // Close CTA modal when overlay or close button is clicked

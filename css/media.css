@@ -828,6 +828,88 @@ RESPONSIVE DESIGN - TABLET & MOBILE
     }
 }
 
+/* Extra Small Mobile Styles (414px and below) - iPhone 12/13 mini, etc. */
+@media (max-width: 414px) {
+    .media-card {
+        width: 90px;
+        /* Height adjusted proportionally for aspect ratios */
+        height: auto;
+        aspect-ratio: 9/14; /* Adjusted for better mobile display */
+    }
+
+    .media-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.5rem;
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+        justify-content: center;
+        width: calc(100% - 1rem);
+    }
+
+    .media-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.4rem 0.6rem;
+        gap: 0.3rem;
+        width: calc(100% - 1.2rem);
+    }
+
+    .media-filters label {
+        font-size: 0.65rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        white-space: normal;
+        flex: 1 1 100%;
+    }
+
+    .media-filters select {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.35rem;
+        width: 100%;
+    }
+
+    .media-title {
+        font-size: 0.8rem;
+        line-height: 1.1;
+    }
+
+    .media-description {
+        font-size: 0.65rem;
+        line-height: 1.2;
+    }
+
+    .media-author {
+        font-size: 0.65rem;
+    }
+
+    .media-date-bottom {
+        font-size: 0.6rem;
+        padding: 0.15rem 0;
+    }
+
+    .rating-logos,
+    .movie-actions-container {
+        gap: 0.2rem;
+        padding: 0.2rem 0;
+    }
+
+    .rating-logo,
+    .trailer-button-inline {
+        padding: 0.15rem 0.3rem;
+        font-size: 0.6em;
+    }
+
+    .song-link,
+    .podcast-link,
+    .media-link {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+    }
+}
+
 
 
 

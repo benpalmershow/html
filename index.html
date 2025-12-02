@@ -2,61 +2,26 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) - Deferred for performance -->
+  <!-- Common Meta Tags Component -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-DWEVPGLJDP', {
-      'anonymize_ip': true,
-      'cookie_flags': 'SameSite=None;Secure'
-    });
-
-    // Load gtag.js after page load
-    window.addEventListener('load', function () {
-      const script = document.createElement('script');
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-      script.async = true;
-      document.head.appendChild(script);
-    });
+    fetch('components/head-meta.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const metaElements = tempDiv.querySelectorAll('meta, link');
+        metaElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Meta tags load error:', error));
   </script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16914260010">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'AW-16914260010');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=5.0">
-
-  <!-- Critical CSS for above-the-fold content -->
-  <style>
-  *{box-sizing:border-box}
-  body{margin:0;padding:0;min-height:100vh;background:#fdf6e8;color:#343a40;line-height:1.5}
-  nav{height:60px;position:sticky;top:0;z-index:100;background:#fdf6e8;border-bottom:1px solid #e8dcc0}
-  main{padding-top:1rem;min-height:calc(100vh - 60px)}
-  .announcements{padding:1rem 0;min-height:600px}
-  .announcements-container{max-width:600px;margin:0 auto;padding:0 1rem;min-height:500px}
-  .loading-skeleton{background:linear-gradient(90deg,#f8f4e6 25%,#fdf6e8 50%,#f8f4e6 75%);background-size:200% 100%;animation:loading 1.5s ease-in-out infinite;border-radius:8px;margin-bottom:0.75rem;height:100px;will-change:background-position}
-  @keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
-  .page-title{font-size:1.25rem;font-weight:700;margin:1.5rem auto;padding:0 1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:0.5rem;height:40px}
-  .page-icon{width:20px;height:20px;flex-shrink:0}
-  .announcement-card{background:#f8f4e6;border:1px solid #e8dcc0;border-radius:8px;padding:1rem;margin-bottom:1rem;min-height:100px}
-  footer{min-height:100px;background:#fdf6e8;padding:2rem 1rem;text-align:center;border-top:1px solid #e8dcc0}
-  </style>
-
+  <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
   <meta name="keywords"
     content="economic analysis, independent commentary, financial news, market insights, Ben Palmer Show, economic commentary, financial analysis, market trends, investment insights, policy analysis">
-  <meta name="author" content="Ben Palmer">
-  <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#1a1f1e">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
@@ -83,20 +48,20 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://howdystranger.net/">
 
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
-  <link rel="manifest" href="site.webmanifest">
-
-  <!-- Preconnect to critical external domains -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Typography System Fonts - Deferred -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-    rel="preload" as="style" onload="this.rel='stylesheet'">
+  <!-- Typography System Fonts Component -->
+  <script>
+    fetch('components/fonts.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const linkElements = tempDiv.querySelectorAll('link');
+        linkElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Fonts load error:', error));
+  </script>
 
   <!-- Critical CSS -->
   <link rel="preload" href="css/body.css?v=20251117" as="style" onload="this.rel='stylesheet'">
@@ -106,15 +71,28 @@
   <!-- Preload critical resources -->
   <link rel="preload" href="images/announcements.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="js/posts-loader.js" as="script">
-  <link rel="preload" href="js/nav.js" as="script">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
-
-
-
+  <!-- Analytics Component -->
   <script>
-    // Start fetching posts immediately
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Analytics load error:', error));
+  </script>
+
+  <!-- Pre-fetch posts data -->
+  <script>
     window.postsPromise = fetch('json/posts.json?v=' + Date.now())
       .then(r => {
         if (!r.ok) throw new Error('Failed to load posts');
@@ -126,10 +104,8 @@
       });
   </script>
 
-  <!-- Marked.js - Deferred (not blocking critical path) -->
-  <!-- Loaded dynamically via posts-loader.js when needed -->
+  <!-- Preload Marked.js -->
   <script>
-    // Preload marked but don't block rendering
     (function() {
       const link = document.createElement('link');
       link.rel = 'preload';
@@ -139,7 +115,7 @@
     })();
   </script>
 
-  <!-- Structured Data - Combined Schema -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://howdystranger.net/search?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"en-US","copyrightYear":2024,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
   </script>
@@ -149,7 +125,7 @@
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1" style="min-height:calc(100vh - 60px)">
-    <!-- Announcements Section -->
+    <!-- Announcements Section Component with fallback -->
     <div class="page-title" aria-label="Page title">
       <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
         loading="eager" decoding="async">
@@ -163,59 +139,64 @@
       </div>
     </section>
 
-
+    <script>
+      // Load announcements section component
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('components/announcements-section.html')
+          .then(response => response.text())
+          .then(html => {
+            // Only replace if component loaded successfully
+            document.getElementById('announcements-container').innerHTML = html;
+          })
+          .catch(error => {
+            console.error('Announcements section load error:', error);
+            // Fallback content already in place
+          });
+      });
+    </script>
   </main>
 
-  <footer id="social-footer" style="min-height:100px">
-    <div class="footer-container">
-      <div class="social-links">
-        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
-          title="X (Twitter)">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter) logo" width="24"
-            height="24" loading="lazy">
-        </a>
-        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-          title="YouTube">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube logo"
-            width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"
-          title="Substack">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo"
-            width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
-          aria-label="Spotify" title="Spotify">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo"
-            width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
-          rel="noopener noreferrer" aria-label="Apple Podcasts" title="Apple Podcasts">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg"
-            alt="Apple Podcasts logo" width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
-          aria-label="Buy Me A Coffee" title="Buy Me A Coffee">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg"
-            alt="Buy Me A Coffee logo" width="24" height="24" loading="lazy">
-        </a>
-      </div>
-      <div class="divider"></div>
-      <div class="footer-info">
-        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+  <!-- Footer Component -->
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
 
-      </div>
-    </div>
-  </footer>
+  <!-- Unified Scripts Component -->
+  <script>
+    fetch('components/scripts-unified.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Scripts load error:', error));
+  </script>
 
-  <!-- Critical Scripts - High priority -->
-  <script src="js/bfcache-compat.js" defer></script>
+  <!-- Navigation script - critical for navbar -->
   <script src="js/nav.js" defer></script>
-  <!-- Posts loader - lower priority, doesn't block LCP -->
+
+  <!-- Posts loader -->
   <script src="js/posts-loader.js" defer></script>
 
 
-  <script>
+    <script>
+    // Library loader
     (function () {
       const libs = {
         marked: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
@@ -231,7 +212,10 @@
         script.src = src;
         script.async = true;
         script.onload = callback;
-        script.onerror = () => console.error('Failed to load script:', src);
+        script.onerror = () => {
+          console.error('Failed to load script:', src);
+          showSimpleError(`Failed to load ${src.split('/').pop()}`);
+        };
         document.head.appendChild(script);
       }
 
@@ -241,28 +225,27 @@
         link.href = href;
         link.media = 'print';
         link.onload = function () { this.media = 'all'; };
-        link.onerror = () => console.error('Failed to load CSS:', href);
+        link.onerror = () => {
+          console.error('Failed to load CSS:', href);
+          showSimpleError('Failed to load styles');
+        };
         document.head.appendChild(link);
       }
 
-      // Load marked on demand when posts-loader needs it
       window.loadMarked = () => new Promise(resolve => {
         if (window.marked) return resolve(window.marked);
         loadScript(libs.marked, () => resolve(window.marked));
       });
 
       const loadLibs = () => {
-        // lucide is needed for icons in posts
         loadScript(libs.lucide, () => window.lucide?.createIcons());
         loadCSS(libs.fontawesome);
 
-        // Don't load animations immediately, do it after a delay
         setTimeout(() => {
           loadScript(libs.animations);
         }, 2000);
       };
 
-      // Defer non-critical lib loading to idle callback or longer timeout
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadLibs, { timeout: 2000 });
       } else {
@@ -274,26 +257,7 @@
         loadScript(libs.chartjs, () => resolve(window.Chart));
       });
     })();
-
-    // Register service worker for PWA
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
-
-    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      window.addEventListener('load', () => {
-        const s = document.createElement('script');
-        s.src = '/_vercel/insights/script.js';
-        s.defer = true;
-        document.head.appendChild(s);
-
-        const i = document.createElement('script');
-        i.type = 'module';
-        i.src = 'js/speed-insights.js';
-        document.head.appendChild(i);
-      });
-    }
-  </script>
+    </script>
 
 </body>
 

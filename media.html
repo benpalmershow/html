@@ -2,15 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Common Meta Tags Component -->
+  <script>
+    fetch('components/head-meta.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const metaElements = tempDiv.querySelectorAll('meta, link');
+        metaElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Meta tags load error:', error));
+  </script>
 
+  <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Curated books, films, and podcasts worth your time from The Ben Palmer Show. Independent media recommendations.">
   <meta name="keywords" content="media, books, films, podcasts, recommendations, Ben Palmer Show, curated content">
-  <meta name="author" content="Ben Palmer">
-  <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#1a1f1e">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -37,16 +47,24 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://howdystranger.net/media.html">
 
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-  <link rel="icon" type="image/webp" sizes="16x16" href="images/favicon-16x16.webp">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-
   <!-- Preconnect to external domains - CRITICAL for performance -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://d28hgpri8am2if.cloudfront.net">
+
+  <!-- Typography System Fonts Component -->
+  <script>
+    fetch('components/fonts.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const linkElements = tempDiv.querySelectorAll('link');
+        linkElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Fonts load error:', error));
+  </script>
 
   <!-- Preload CRITICAL resources only -->
   <link rel="preload" href="css/body.css?v=20251117" as="style">
@@ -61,8 +79,56 @@
 
   <!-- Preload critical scripts -->
   <link rel="preload" href="js/nav.js" as="script">
-
   <link rel="preload" href="js/media.js" as="script">
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="css/body.css?v=20251117">
+  <link rel="stylesheet" href="css/nav.css?v=20251117">
+  <link rel="stylesheet" href="css/media.css?v=20251117">
+
+  <!-- Font Awesome - load async -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+
+  <title>Media - Howdy, Stranger</title>
+
+  <!-- Analytics Component -->
+  <script>
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Analytics load error:', error));
+  </script>
+
+
+
+  <!-- Error Handling Component -->
+  <script>
+    fetch('components/error-handling.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Error Handling load error:', error));
+  </script>
+
 
   <!-- Inline critical CSS for LCP -->
   <style>
@@ -70,19 +136,18 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #1a1f1e;
       color: #fff;
     }
 
     .media-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
       gap: 1.5rem;
       padding: 2rem;
     }
 
     .media-card {
-      max-width: 200px;
+      max-width: 90px;
       width: 100%;
       border-radius: 0.5rem;
       contain: layout style paint;
@@ -140,64 +205,8 @@
     }
   </style>
 
-  <!-- Load CSS -->
-  <link rel="stylesheet" href="css/body.css?v=20251117">
-  <link rel="stylesheet" href="css/nav.css?v=20251117">
-  <link rel="stylesheet" href="css/media.css?v=20251117">
-
-  <!-- Font Awesome - load async -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
-
-  <title>Media - Howdy, Stranger</title>
-
-  <!-- Google Analytics - deferred -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-
-    // Load GA after page interactive
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-        document.head.appendChild(script);
-        gtag('js', new Date());
-        gtag('config', 'G-DWEVPGLJDP');
-      });
-    } else {
-      setTimeout(() => {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-        document.head.appendChild(script);
-        gtag('js', new Date());
-        gtag('config', 'G-DWEVPGLJDP');
-      }, 3000);
-    }
-  </script>
-
-  <!-- Vercel Analytics - deferred -->
-  <script>
-    // Load Vercel scripts after idle
-    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      const loadVercel = () => {
-        const script = document.createElement('script');
-        script.src = '/_vercel/insights/script.js';
-        script.async = true;
-        document.head.appendChild(script);
-      };
-
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadVercel);
-      } else {
-        setTimeout(loadVercel, 2000);
-      }
-    }
-  </script>
-
+  <!-- Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
 
 </head>
 
@@ -240,46 +249,37 @@
     </div>
   </main>
 
-  <footer id="social-footer">
-    <div class="footer-container">
-      <div class="social-links">
-        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
-          title="X (Twitter)">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter) logo" width="24"
-            height="24" loading="lazy">
-        </a>
-        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-          title="YouTube">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube logo"
-            width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"
-          title="Substack">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo"
-            width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
-          aria-label="Spotify" title="Spotify">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo"
-            width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
-          rel="noopener noreferrer" aria-label="Apple Podcasts" title="Apple Podcasts">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg"
-            alt="Apple Podcasts logo" width="24" height="24" loading="lazy">
-        </a>
-        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
-          aria-label="Buy Me A Coffee" title="Buy Me A Coffee">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg"
-            alt="Buy Me A Coffee logo" width="24" height="24" loading="lazy">
-        </a>
-      </div>
-      <div class="divider"></div>
-      <div class="footer-info">
-        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer Component -->
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
+
+  <!-- Unified Scripts Component -->
+  <script>
+    fetch('components/scripts-unified.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Scripts load error:', error));
+  </script>
 
   <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
   <script src="js/nav.js" defer></script>
@@ -306,14 +306,7 @@
     }
   </script>
 
-  <!-- Service Worker for external resource caching -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => { });
-      });
-    }
-  </script>
+
 </body>
 
 </html>

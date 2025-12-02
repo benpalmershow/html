@@ -1,0 +1,42 @@
+<!-- Unified Scripts Component -->
+<script src="js/bfcache-compat.js" defer></script>
+<script src="js/nav.js" defer></script>
+
+<!-- Vercel Insights - Production only -->
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    function loadVercelScripts() {
+      // Load Vercel Insights
+      const s = document.createElement('script');
+      s.src = '/_vercel/insights/script.js';
+      s.defer = true;
+      s.onerror = () => console.error('Failed to load Vercel insights');
+      document.head.appendChild(s);
+
+      // Load Speed Insights
+      const i = document.createElement('script');
+      i.type = 'module';
+      i.src = 'js/speed-insights.js';
+      i.onerror = () => console.error('Failed to load speed insights');
+      document.head.appendChild(i);
+    }
+
+    // Use requestIdleCallback if available, otherwise fallback to setTimeout
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadVercelScripts);
+    } else {
+      setTimeout(loadVercelScripts, 2000);
+    }
+  }
+</script>
+
+<!-- Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(error => {
+        console.error('Service worker registration failed:', error);
+      });
+    });
+  }
+</script>

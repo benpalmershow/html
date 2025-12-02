@@ -1,0 +1,21 @@
+<!-- Error Handling Component -->
+<script>
+  window.addEventListener('error', (event) => {
+    console.error('Global Error:', event.error);
+    if (event.message && event.message.includes('Failed to fetch')) {
+      showSimpleError('Some content failed to load. Please refresh.');
+    }
+  });
+
+  function showSimpleError(message) {
+    const errorEl = document.createElement('div');
+    errorEl.style.cssText = `
+      position: fixed; top: 20px; right: 20px; z-index: 1000;
+      background: white; padding: 10px; border: 1px solid #ddd;
+      border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    `;
+    errorEl.textContent = `⚠️ ${message}`;
+    document.body.appendChild(errorEl);
+    setTimeout(() => errorEl.remove(), 5000);
+  }
+</script>

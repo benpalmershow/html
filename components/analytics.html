@@ -1,0 +1,31 @@
+<!-- Unified Analytics Component -->
+<script>
+  // Initialize dataLayer and gtag function
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  // Main Google Analytics configuration
+  gtag('config', 'G-DWEVPGLJDP', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+
+  // Additional Google Ads configuration
+  gtag('config', 'AW-16914260010');
+
+  // Load gtag.js after page load with idle callback fallback
+  function loadGtagScript() {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  // Use requestIdleCallback if available, otherwise fallback to setTimeout
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadGtagScript);
+  } else {
+    setTimeout(loadGtagScript, 3000);
+  }
+</script>

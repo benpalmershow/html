@@ -3,27 +3,62 @@
     {
       "name": "EQUITEC PROPRIETARY MARKETS, LLC",
       "shortName": "EQUITEC",
+      "filingDate": "2025-11-26",
       "description": "EQUITEC PROPRIETARY MARKETS, LLC is an investment management firm specializing in equity markets with a diversified portfolio approach. The holdings shown are based on their most recent 13F filing with the SEC. <em style='font-size: 0.85rem; color: var(--text-muted);'>Note: 89 Bio was acquired by Roche (RHHBY) in 2025.</em> <a href='../article/posts/latest_13f_filings_week.md#equitec-proprietary-markets-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
     },
     {
       "name": "Lantern Wealth Advisors, LLC",
       "shortName": "Lantern",
+      "filingDate": "2025-11-26",
       "description": "Lantern Wealth Advisors, LLC provides comprehensive wealth management services with a focus on strategic asset allocation and diversified ETF-based portfolios. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#lantern-wealth-advisors-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
     },
     {
       "name": "Strategic Advocates LLC",
       "shortName": "Strategic Advocates",
+      "filingDate": "2025-11-26",
       "description": "Strategic Advocates LLC is an institutional investment manager offering strategic investment advisory services across multiple asset classes. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#strategic-advocates-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
     },
     {
       "name": "Vermillion & White Wealth Management Group, LLC",
       "shortName": "Vermillion & White",
+      "filingDate": "2025-11-26",
       "description": "Vermillion & White Wealth Management Group, LLC specializes in wealth management with emphasis on dimensional fund investments and core equity strategies. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#vermillion--white-wealth-management-group-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
     },
     {
       "name": "XXEC, Inc.",
       "shortName": "XXEC",
+      "filingDate": "2025-11-26",
       "description": "XXEC, Inc. is an investment management firm focused on quality equities and emerging market strategies for institutional clients. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#xxec-inc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
+    },
+    {
+      "name": "Allworth Financial LP",
+      "shortName": "Allworth",
+      "filingDate": "2025-12-02",
+      "description": "Allworth Financial LP is a comprehensive financial advisory firm offering wealth management and investment services. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#allworth-financial-lp' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
+    },
+    {
+      "name": "FLAGSHIP HARBOR ADVISORS, LLC",
+      "shortName": "Flagship Harbor",
+      "filingDate": "2025-12-02",
+      "description": "FLAGSHIP HARBOR ADVISORS, LLC provides investment advisory services with a focus on diversified portfolio management. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#flagship-harbor-advisors-llc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
+    },
+    {
+      "name": "Gilbert Capital Group, Inc.",
+      "shortName": "Gilbert Capital",
+      "filingDate": "2025-12-02",
+      "description": "Gilbert Capital Group, Inc. is an investment management firm specializing in strategic asset allocation and wealth preservation strategies. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#gilbert-capital-group-inc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
+    },
+    {
+      "name": "IFP Advisors, Inc",
+      "shortName": "IFP Advisors",
+      "filingDate": "2025-12-02",
+      "description": "IFP Advisors, Inc is a financial advisory firm offering comprehensive investment management and retirement planning services. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#ifp-advisors-inc' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
+    },
+    {
+      "name": "Innova Wealth Partners",
+      "shortName": "Innova Wealth",
+      "filingDate": "2025-12-02",
+      "description": "Innova Wealth Partners provides personalized wealth management and investment advisory services for high-net-worth individuals. The holdings shown are based on their most recent 13F filing with the SEC. <a href='../article/posts/latest_13f_filings_week.md#innova-wealth-partners' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View full filing →</a>"
     }
   ],
   "holdings": [
@@ -76,6 +111,56 @@
     { "ticker": "NDSN", "name": "NORDSON CORP", "value": 8139789, "pct": 6.9, "firm": "XXEC, Inc.", "firmIndex": 4 },
     { "ticker": "OLED", "name": "UNIVERSAL DISPLAY CORP", "value": 7475367, "pct": 6.3, "firm": "XXEC, Inc.", "firmIndex": 4 },
     { "ticker": "MCO", "name": "MOODYS CORP", "value": 6361961, "pct": 5.4, "firm": "XXEC, Inc.", "firmIndex": 4 },
-    { "ticker": "NVO", "name": "NOVO-NORDISK A S F", "value": 5497672, "pct": 4.6, "firm": "XXEC, Inc.", "firmIndex": 4 }
+    { "ticker": "NVO", "name": "NOVO-NORDISK A S F", "value": 5497672, "pct": 4.6, "firm": "XXEC, Inc.", "firmIndex": 4 },
+    { "ticker": "TXG", "name": "10X GENOMICS INC", "value": 26700, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "SRCE", "name": "1ST SOURCE CORP", "value": 862, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "TWET", "name": "2023 ETF SERIES TRUST", "value": 17035, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "TWET2", "name": "2023 ETF SERIES TRUST II", "value": 299151673, "pct": 1.3, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "TWTC", "name": "22ND CENTY GROUP INC", "value": 2, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "DDD", "name": "3-D SYS CORP DEL", "value": 5612, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "MMM", "name": "3M CO", "value": 5382726, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "FDMT", "name": "4D MOLECULAR THERAPEUTICS IN", "value": 3416, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "BIO", "name": "89BIO INC", "value": 1676, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "EGHT", "name": "8X8 INC NEW", "value": 4794, "pct": 0.0, "firm": "Allworth Financial LP", "firmIndex": 5 },
+    { "ticker": "MMM", "name": "3M CO", "value": 484748, "pct": 0.0, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ABE", "name": "AB ACTIVE ETFS INC", "value": 2546868, "pct": 0.2, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ABT", "name": "ABBOTT LABS", "value": 1566565, "pct": 0.1, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ABBV", "name": "ABBVIE INC", "value": 5753582, "pct": 0.3, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ABDN", "name": "ABRDN LIFE SCIENCES INVESTOR", "value": 4284149, "pct": 0.3, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ABDN2", "name": "ABRDN PRECIOUS METALS BASKET", "value": 227588, "pct": 0.0, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ACAC", "name": "ACACIA RESH CORP", "value": 200400, "pct": 0.0, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ACN", "name": "ACCENTURE PLC IRELAND", "value": 1007640, "pct": 0.1, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ADBE", "name": "ADOBE INC", "value": 4559417, "pct": 0.3, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "AMD", "name": "ADVANCED MICRO DEVICES INC", "value": 3380298, "pct": 0.2, "firm": "FLAGSHIP HARBOR ADVISORS, LLC", "firmIndex": 6 },
+    { "ticker": "ABT", "name": "ABBOTT LABS", "value": 512187, "pct": 0.4, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "ABBV", "name": "ABBVIE INC", "value": 885409, "pct": 0.7, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "GOOGL", "name": "ALPHABET INC", "value": 483283, "pct": 0.4, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "AAPL", "name": "APPLE INC", "value": 1333243, "pct": 1.0, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "BK", "name": "BANK NEW YORK MELLON CORP", "value": 631423, "pct": 0.5, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "BLK", "name": "BLACKROCK ETF TRUST", "value": 7063448, "pct": 5.5, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "AVGO", "name": "BROADCOM INC", "value": 920449, "pct": 0.7, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "CLX", "name": "CLOROX CO DEL", "value": 209610, "pct": 0.2, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "EXPD", "name": "EXPEDITORS INTL WASH INC", "value": 502619, "pct": 0.4, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "XOM", "name": "EXXON MOBIL CORP", "value": 515606, "pct": 0.4, "firm": "Gilbert Capital Group, Inc.", "firmIndex": 7 },
+    { "ticker": "AAN", "name": "AAON INC", "value": 91197, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "AIR", "name": "AAR CORP", "value": 33088, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ABD", "name": "ACCO BRANDS CORP", "value": 5849, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ACNB", "name": "ACNB CORP", "value": 881, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ADMA", "name": "ADMA BIOLOGICS INC", "value": 10732, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ADT", "name": "ADT INC DEL", "value": 34814, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ACVA", "name": "ACV AUCTIONS INC", "value": 423475, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ABM", "name": "ABM INDS INC", "value": 3873, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "AFL", "name": "AFLAC INC", "value": 975895, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "AGCO", "name": "AGCO CORP", "value": 64721, "pct": 0.0, "firm": "IFP Advisors, Inc", "firmIndex": 8 },
+    { "ticker": "ABBV", "name": "ABBVIE INC", "value": 1376142, "pct": 0.7, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "AGNC", "name": "AGNC INVT CORP", "value": 776645, "pct": 0.4, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "ALL", "name": "ALLSTATE CORP", "value": 247059, "pct": 0.1, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "GOOGL", "name": "ALPHABET INC", "value": 512312, "pct": 0.3, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "AMZN", "name": "AMAZON COM INC", "value": 890102, "pct": 0.5, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "AEP", "name": "AMERICAN ELEC PWR CO INC", "value": 315500, "pct": 0.2, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "AAPL", "name": "APPLE INC", "value": 2844294, "pct": 1.5, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "ADP", "name": "AUTOMATIC DATA PROCESSING IN", "value": 237735, "pct": 0.1, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "BRK.B", "name": "BERKSHIRE HATHAWAY INC DEL", "value": 428837, "pct": 0.2, "firm": "Innova Wealth Partners", "firmIndex": 9 },
+    { "ticker": "BMY", "name": "BRISTOL-MYERS SQUIBB CO", "value": 248553, "pct": 0.1, "firm": "Innova Wealth Partners", "firmIndex": 9 }
   ]
 }

@@ -45,6 +45,16 @@ function getColorByValue(percentage) {
         return '#3399CC';
     }
 }
+function getFilingDate(firmIdx) {
+    // Extract filing date from firm data or use default
+    if (firmData && firmData[firmIdx] && firmData[firmIdx].filingDate) {
+        const date = new Date(firmData[firmIdx].filingDate);
+        return (date.getMonth() + 1) + '/' + date.getDate();
+    }
+    // Default for older firms
+    return '11/26';
+}
+
 
 function isETF(holding) {
     const name = holding.name.toUpperCase();
@@ -71,7 +81,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         </div>
         <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--text-muted); padding: 0 0.5rem;">
             <div>AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
-            <div>Filed: 11/26</div>
+            <div>Filed: ${getFilingDate(firmIdx)}</div>
         </div>
         <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; padding: 0 0.5rem; flex-wrap: wrap; font-size: 0.75rem;">
             <button class="firm-filter-btn firm-filter-${firmIdx}-all" data-firm="${firmIdx}" data-filter="all" style="padding: 4px 8px; background: var(--accent-primary); color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.75rem; font-weight: 500;">All</button>
@@ -108,7 +118,18 @@ function initializeFirmCards() {
     const container = document.getElementById('firmCardsContainer');
     if (!container) return;
 
-    for (let firmIdx = 0; firmIdx < 5; firmIdx++) {
+    // Sort firms by filing date (newest first), then by name for consistency
+    const sortedFirmIndices = firmData.map((firm, index) => index)
+        .sort((a, b) => {
+            // Get filing dates or use default for comparison
+            const dateA = firmData[a].filingDate ? new Date(firmData[a].filingDate) : new Date('2025-11-26');
+            const dateB = firmData[b].filingDate ? new Date(firmData[b].filingDate) : new Date('2025-11-26');
+            // Sort by date descending (newest first)
+            return dateB - dateA;
+        });
+
+    for (let sortIdx = 0; sortIdx < sortedFirmIndices.length; sortIdx++) {
+        const firmIdx = sortedFirmIndices[sortIdx];
         const firmHoldings = allHoldings.filter(h => h.firmIndex === firmIdx).sort((a, b) => b.value - a.value);
 
         if (firmHoldings.length === 0) continue;

@@ -74,7 +74,7 @@ Description.
 
 ---
 
-### <i data-lucide='home' class='post-icon'></i> **Topic 2**
+###  **Topic 2**
 
 Description with data if applicable.
 
@@ -89,7 +89,7 @@ Include these sections for indicator releases:
 
 ### Template
 ```markdown
-### <i data-lucide='icon' class='post-icon'></i> **Catchy Title**
+###  **Catchy Title**
 
 1-2 sentence narrative opening.
 
@@ -113,6 +113,39 @@ Calculate and display month-over-month changes:
 - 1-2 sentences explaining what the data means
 - Connect to broader economic theme or market context
 - Avoid repeating raw data
+
+### 13F Filings Updates
+For posts announcing new 13F filing data:
+
+```markdown
+### 13F Holdings Updates
+
+**Latest 13F Filings Now Available:**
+
+- **New Firms Added**: [List new firms]
+- **Total Firms**: [Total count] investment management firms now tracked
+- **Latest Filing Date**: [Most recent date]
+- **Total Holdings**: [Total positions] across all firms
+
+**Key Features:**
+- Dynamic sorting by filing date (newest on top)
+- Interactive charts showing portfolio composition
+- ETF/Stock filtering capabilities
+- Detailed holdings breakdown for each firm
+
+**Data Highlights:**
+- [Firm Name]: $[AUM] AUM, [holdings_count] holdings
+- [Firm Name]: $[AUM] AUM, [holdings_count] holdings
+
+**Technical Improvements:**
+- [Brief description of technical changes]
+- [Performance enhancements]
+- [UI/UX improvements]
+
+[View all 13F holdings](financials.html#latest-13f-filings)
+```
+
+---
 
 ---
 
@@ -204,6 +237,7 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] All links work and point to correct locations
 - [ ] Media posts include cover images with proper styling
 - [ ] Financial posts include MoM % calculations
+- [ ] 13F posts include firm counts, AUM totals, and filing dates
 - [ ] Charts use template syntax `{{chart:Name}}`
 - [ ] Chart indicator name exactly matches financials-data.json
 - [ ] No emojis (use Lucide icons instead)
@@ -222,6 +256,7 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - Use template syntax for charts: `{{chart:Name}}`
 - Keep professional, direct tone
 - Consolidate related updates in single posts with distinct sections
+- For 13F updates: include firm counts, AUM totals, filing dates, and technical improvements
 
 ❌ **DON'T:**
 - Use dry, academic descriptions

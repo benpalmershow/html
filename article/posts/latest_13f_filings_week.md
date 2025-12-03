@@ -105,3 +105,136 @@
 
 ---
 
+
+# Latest 13F Filings - December 1, 2025
+
+
+
+
+# Latest 13F Filings - December 2025
+
+## Allworth Financial LP
+
+**Report Period:** 2025-09-30
+
+**Filing Date:** 2025-12-02
+
+**Total Value:** $22,676,994,422
+
+**Total Holdings:** 4916
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | 10X GENOMICS INC | $26,700 | 0.0% |
+| 2 | 1ST SOURCE CORP | $862 | 0.0% |
+| 3 | 2023 ETF SERIES TRUST | $17,035 | 0.0% |
+| 4 | 2023 ETF SERIES TRUST II | $299,151,673 | 1.3% |
+| 5 | 22ND CENTY GROUP INC | $2 | 0.0% |
+| 6 | 3-D SYS CORP DEL | $5,612 | 0.0% |
+| 7 | 3M CO | $5,382,726 | 0.0% |
+| 8 | 4D MOLECULAR THERAPEUTICS IN | $3,416 | 0.0% |
+| 9 | 89BIO INC | $1,676 | 0.0% |
+| 10 | 8X8 INC NEW | $4,794 | 0.0% |
+
+---
+
+## FLAGSHIP HARBOR ADVISORS, LLC
+
+**Report Period:** 2024-06-30
+
+**Filing Date:** 2025-12-02
+
+**Total Value:** $1,663,637,489
+
+**Total Holdings:** 691
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | 3M CO | $484,748 | 0.0% |
+| 2 | AB ACTIVE ETFS INC | $2,546,868 | 0.2% |
+| 3 | ABBOTT LABS | $1,566,565 | 0.1% |
+| 4 | ABBVIE INC | $5,753,582 | 0.3% |
+| 5 | ABRDN LIFE SCIENCES INVESTOR | $4,284,149 | 0.3% |
+| 6 | ABRDN PRECIOUS METALS BASKET | $227,588 | 0.0% |
+| 7 | ACACIA RESH CORP | $200,400 | 0.0% |
+| 8 | ACCENTURE PLC IRELAND | $1,007,640 | 0.1% |
+| 9 | ADOBE INC | $4,559,417 | 0.3% |
+| 10 | ADVANCED MICRO DEVICES INC | $3,380,298 | 0.2% |
+
+---
+
+## Gilbert Capital Group, Inc.
+
+**Report Period:** 2025-09-30
+
+**Filing Date:** 2025-12-02
+
+**Total Value:** $129,289,412
+
+**Total Holdings:** 51
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | ABBOTT LABS | $512,187 | 0.4% |
+| 2 | ABBVIE INC | $885,409 | 0.7% |
+| 3 | ALPHABET INC | $483,283 | 0.4% |
+| 4 | APPLE INC | $1,333,243 | 1.0% |
+| 5 | BANK NEW YORK MELLON CORP | $631,423 | 0.5% |
+| 6 | BLACKROCK ETF TRUST | $7,063,448 | 5.5% |
+| 7 | BROADCOM INC | $920,449 | 0.7% |
+| 8 | CLOROX CO DEL | $209,610 | 0.2% |
+| 9 | EXPEDITORS INTL WASH INC | $502,619 | 0.4% |
+| 10 | EXXON MOBIL CORP | $515,606 | 0.4% |
+
+---
+
+## IFP Advisors, Inc
+
+**Report Period:** 2025-09-30
+
+**Filing Date:** 2025-12-02
+
+**Total Value:** $3,877,855,324
+
+**Total Holdings:** 5107
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | AAON INC | $91,197 | 0.0% |
+| 2 | AAR CORP | $33,088 | 0.0% |
+| 3 | ACCO BRANDS CORP | $5,849 | 0.0% |
+| 4 | ACNB CORP | $881 | 0.0% |
+| 5 | ADMA BIOLOGICS INC | $10,732 | 0.0% |
+| 6 | ADT INC DEL | $34,814 | 0.0% |
+| 7 | ACV AUCTIONS INC | $423,475 | 0.0% |
+| 8 | ABM INDS INC | $3,873 | 0.0% |
+| 9 | AFLAC INC | $975,895 | 0.0% |
+| 10 | AGCO CORP | $64,721 | 0.0% |
+
+---
+
+## Innova Wealth Partners
+
+**Report Period:** 2025-09-30
+
+**Filing Date:** 2025-12-02
+
+**Total Value:** $185,154,652
+
+**Total Holdings:** 129
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | ABBVIE INC | $1,376,142 | 0.7% |
+| 2 | AGNC INVT CORP | $776,645 | 0.4% |
+| 3 | ALLSTATE CORP | $247,059 | 0.1% |
+| 4 | ALPHABET INC | $512,312 | 0.3% |
+| 5 | AMAZON COM INC | $890,102 | 0.5% |
+| 6 | AMERICAN ELEC PWR CO INC | $315,500 | 0.2% |
+| 7 | APPLE INC | $2,844,294 | 1.5% |
+| 8 | AUTOMATIC DATA PROCESSING IN | $237,735 | 0.1% |
+| 9 | BERKSHIRE HATHAWAY INC DEL | $428,837 | 0.2% |
+| 10 | BRISTOL-MYERS SQUIBB CO | $248,553 | 0.1% |
+
+---
+

@@ -70,27 +70,18 @@ async function initPosts() {
         return diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
     }
 
-    function extractIconFromContent(content) {
-        // Match lucide icons in the format: data-lucide='iconname' or data-lucide="iconname"
-        const iconMatch = content.match(/data-lucide=["']([^"']+)["']/);
-        return iconMatch ? iconMatch[1] : null;
-    }
 
     function renderPosts(posts) {
         if (!posts || posts.length === 0) {
             feed.innerHTML = '<div class="empty-state">No announcements yet.</div>';
             return;
         }
-
+    
         const postsHTML = posts.map(p => {
-            const icon = extractIconFromContent(p.content || '');
-            const iconHTML = icon ? `<i data-lucide="${icon}" class="card-icon"></i>` : '';
-
             return `
       <div class="announcement-card" data-date="${p.date}">
         <div class="card-header-row">
           <time class="post-time">${formatTimeAgo(p.date)}</time>
-          ${iconHTML}
         </div>
         <div class="content">${p.content || ''}</div>
       </div>

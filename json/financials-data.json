@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-02T17:56:00Z",
+    "lastUpdated": "2025-12-03T17:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -709,7 +709,7 @@
             "category": "Employment Indicators",
             "agency": "ADP",
             "name": "Private Employment",
-            "lastUpdated": "2025-10-15T14:00:00Z",
+            "lastUpdated": "2025-12-03T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.adpresearch.com",
             "march": "134,391,000",
@@ -719,7 +719,8 @@
             "july": "134,561,000",
             "august": "134,558,000",
             "september": "134,529,000",
-            "october": "134,571,000",
+            "october": "134,576,000",
+            "november": "134,544,000",
             "change": "",
             "explanation": "The monthly change in private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
         },
@@ -922,7 +923,7 @@
             "category": "Business Indicators",
             "agency": "ISM",
             "name": "Services PMI",
-            "lastUpdated": "2025-10-05T14:00:00Z",
+            "lastUpdated": "2025-12-03T14:00:00Z",
             "releaseDay": 5,
             "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/services/october/",
             "march": "",
@@ -933,6 +934,7 @@
             "august": "",
             "september": "50",
             "october": "52.4",
+            "november": "52.6",
             "change": "",
             "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
         },
@@ -940,15 +942,15 @@
             "category": "Business Indicators",
             "agency": "Federal Reserve",
             "name": "Industrial Production Index",
-            "lastUpdated": "2025-08-15T14:00:00Z",
+            "lastUpdated": "2025-12-03T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.federalreserve.gov/releases/g17/current/",
-            "march": "103.5",
-            "april": "103.6",
-            "may": "103.7",
-            "june": "104.2",
-            "july": "103.8",
-            "august": "103.9",
+            "april": "101.1",
+            "may": "101",
+            "june": "101.4",
+            "july": "101.6",
+            "august": "101.3",
+            "september": "101.4",
             "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
         }

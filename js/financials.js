@@ -110,7 +110,26 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         categories.forEach(category => {
             if (filterCategory !== 'all' && category !== filterCategory) return;
 
-            const categoryIndicators = financialData.indices.filter(item => item.category === category);
+            let categoryIndicators = financialData.indices.filter(item => item.category === category);
+
+            // Sort indicators within each category by lastUpdated date (newest first)
+            categoryIndicators.sort((a, b) => {
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+
+                // Both have lastUpdated - sort by timestamp (newest first)
+                if (dateA > 0 && dateB > 0) {
+                    return dateB - dateA;
+                }
+
+                // Only one has lastUpdated - prioritize it
+                if (dateA > 0) return -1;
+                if (dateB > 0) return 1;
+
+                // Neither has lastUpdated - fall back to alphabetical sorting
+                return a.name.localeCompare(b.name);
+            });
+
             const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
 
             html += `

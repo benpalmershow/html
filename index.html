@@ -3,18 +3,9 @@
 
 <head>
   <!-- Common Meta Tags Component -->
-  <script>
-    fetch('components/head-meta.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const metaElements = tempDiv.querySelectorAll('meta, link');
-        metaElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Meta tags load error:', error));
+  <script type="module">
+    import { loadComponent } from './js/component-loader.js';
+    loadComponent('components/head-meta.html', 'head', { type: 'meta' });
   </script>
 
   <!-- Page-specific Meta Tags -->
@@ -49,18 +40,9 @@
   <link rel="canonical" href="https://howdystranger.net/">
 
   <!-- Typography System Fonts Component -->
-  <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
+  <script type="module">
+    import { loadComponent } from './js/component-loader.js';
+    loadComponent('components/fonts.html', 'head', { type: 'link' });
   </script>
 
   <!-- Critical CSS -->
@@ -74,20 +56,9 @@
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics Component -->
-  <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
+  <script type="module">
+    import { loadComponent } from './js/component-loader.js';
+    loadComponent('components/analytics.html', 'head', { type: 'script' });
   </script>
 
   <!-- Pre-fetch posts data -->
@@ -138,54 +109,25 @@
       </div>
     </section>
 
-    <script>
+    <script type="module">
+      import { loadComponent } from './js/component-loader.js';
       // Load announcements section component
-      document.addEventListener('DOMContentLoaded', function() {
-        fetch('components/announcements-section.html')
-          .then(response => response.text())
-          .then(html => {
-            // Only replace if component loaded successfully
-            document.getElementById('announcements-container').innerHTML = html;
-          })
-          .catch(error => {
-            console.error('Announcements section load error:', error);
-            // Fallback content already in place
-          });
+      document.addEventListener('DOMContentLoaded', () => {
+        loadComponent('components/announcements-section.html', '#announcements-container');
       });
     </script>
   </main>
 
   <!-- Footer Component -->
   <div id="footer-container"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
+  <script type="module">
+    import { loadComponent } from './js/component-loader.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      loadComponent('components/footer.html', '#footer-container');
     });
   </script>
 
-  <!-- Unified Scripts Component -->
-  <script>
-    fetch('components/scripts-unified.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Scripts load error:', error));
-  </script>
+
 
   <!-- Navigation script - critical for navbar -->
   <script src="js/nav.js" defer></script>
@@ -194,7 +136,13 @@
   <script type="module" src="js/posts-loader.js" defer></script>
 
 
-    <script>
+  <!-- Unified Scripts Component -->
+  <script type="module">
+    import { loadComponent } from './js/component-loader.js';
+    loadComponent('components/scripts-unified.html', 'head', { type: 'script' });
+  </script>
+
+  <script defer>
     // Library loader
     (function () {
       const libs = {

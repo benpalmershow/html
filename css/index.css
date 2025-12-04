@@ -435,3 +435,53 @@
     scrollbar-width: thin;
     scrollbar-color: var(--color-primary) var(--bg-secondary);
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .announcement-card h1,
+    .announcement-card h2,
+    .announcement-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .announcement-card .content {
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .announcement-card h1,
+    .announcement-card h2,
+    .announcement-card h3 {
+        font-size: 1.05rem;
+    }
+
+    .announcement-card .content {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .announcement-card {
+        padding: 0.6rem var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+    }
+}
+
+/* Extra small mobile (414px and below) */
+@media (max-width: 414px) {
+    .announcement-card h1,
+    .announcement-card h2,
+    .announcement-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .announcement-card .content {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+}

@@ -127,259 +127,8 @@
     }
 }
 
-/* ==========================================================================
-   MEDIA OVERLAY & CONTENT
-   ========================================================================== */
-
-/* Overlay Container */
-.media-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, var(--overlay-light) 0%, var(--overlay-dark) 100%);
-    color: white;
-    padding: 0;
-    opacity: 0;
-    transition: opacity var(--transition-slow);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow: hidden;
-    z-index: 10;
-    box-sizing: border-box;
-    pointer-events: none;
-    border-radius: 0.5rem;
-    will-change: opacity;
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.media-card:hover .media-overlay,
-.media-card:focus-within .media-overlay {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Overlay Content */
-.media-overlay-content {
-    padding: 0.6rem 1rem 0.4rem 1rem;
-    width: 100%;
-    height: calc(100% - 2rem);
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-bottom: 0.5rem;
-    scroll-behavior: smooth;
-}
-
-/* Media Text Content */
-.media-title {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin: 0 0 0.3rem 0;
-    padding: 0.3rem 0;
-    line-height: 1.3;
-    color: var(--color-white, #fff);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    word-wrap: break-word;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    pointer-events: auto;
-    position: relative;
-    background: transparent;
-    z-index: 2;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    order: 1;
-    font-family: Georgia, 'Times New Roman', serif;
-}
-
-.media-author {
-    font-size: 1rem;
-    margin: 0 0 0.3rem 0;
-    color: var(--accent-color);
-    font-weight: 600;
-    /* Slightly bolder for better readability */
-    width: 100%;
-    pointer-events: auto;
-    opacity: 0.98;
-    /* Slightly more opaque for better contrast */
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.02em;
-    order: 2;
-    font-family: Georgia, 'Times New Roman', serif;
-}
-
-.media-overlay-desc {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--border-light, #e8dcc0);
-    line-height: 1.4;
-    margin-bottom: 0.5em;
-    overflow-y: auto;
-    overflow-x: hidden;
-    font-family: Georgia, 'Times New Roman', serif;
-}
-
-.media-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-light);
-    width: 100%;
-    flex: 1;
-    text-align: left;
-    pointer-events: auto;
-    scroll-behavior: smooth;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    order: 3;
-    margin-bottom: 0.5rem;
-    /* Improved contrast for better readability */
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    font-family: Georgia, 'Times New Roman', serif;
-}
-
-/* Media Date Bottom */
-.media-date-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 0.75rem;
-    color: var(--accent-color);
-    font-weight: 500;
-    padding: 0.3rem 0;
-    text-align: center;
-    background: var(--overlay-medium);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0 0 0.5rem 0.5rem;
-    opacity: 0.9;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.02em;
-    z-index: 5;
-    order: 6;
-}
-
-/* ==========================================================================
-    RATING & ACTIONS (IMDB, ROTTEN TOMATOES, YOUTUBE TRAILER)
-    ========================================================================== */
-.rating-logos,
-.movie-actions-container,
-.trailer-container {
-    position: relative;
-    display: flex;
-    gap: 0.5rem;
-    margin: 0.5rem 0 0.3rem;
-    padding: 0.5rem 0 0;
-    z-index: var(--z-overlay);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    order: 4;
-}
-
-.rating-logo,
-.trailer-button-inline {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    text-decoration: none;
-    font-size: 0.85em;
-    font-weight: bold;
-    transition: transform var(--transition-fast),
-        opacity var(--transition-fast);
-    opacity: 0.95;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    min-height: 1.5rem;
-    user-select: none;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-        transform: translateY(-2px) scale(1.05);
-        opacity: 1;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-    }
-
-    .score {
-        font-weight: bold;
-    }
-}
-
-/* Rotten Tomatoes */
-.rating-logo.rt-logo {
-    background-color: var(--color-rotten-tomatoes, #f93a1e);
-    color: white;
-
-    .rt-tomato {
-        margin-right: 0.3rem;
-        font-size: 1.1em;
-    }
-}
-
-/* IMDB */
-.rating-logo.imdb-logo {
-    background-color: var(--accent-color);
-    color: var(--color-black, #000);
-
-    .imdb-icon {
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        font-size: 0.9em;
-        letter-spacing: 0.5px;
-        margin-right: 0.3rem;
-    }
-}
-
-/* YouTube Trailer */
-.trailer-button-inline {
-    background: var(--color-youtube, #FF0000);
-    color: white;
-}
-
-.trailer-container-inline {
-    display: inherit;
-    flex-wrap: inherit;
-    gap: inherit;
-    justify-content: inherit;
-    align-items: inherit;
-    width: 100%;
-
-    .trailer-embed {
-        position: relative;
-        width: 100%;
-        padding-top: 56.25%;
-        margin: 0.6rem 0;
-        border-radius: 0.25rem;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    }
-}
+/* Overlay styles moved to media-overlay.css for better organization */
+@import url('media-overlay.css');
 
 /* ==========================================================================
    MEDIA FILTERS & SEARCH
@@ -826,8 +575,13 @@ RESPONSIVE DESIGN - TABLET & MOBILE
         font-size: 1rem;
     }
 
+    .media-overlay-desc {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
     .media-description {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         line-height: 1.4;
     }
 }
@@ -879,9 +633,14 @@ RESPONSIVE DESIGN - TABLET & MOBILE
         line-height: 1.1;
     }
 
+    .media-overlay-desc {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
     .media-description {
-        font-size: 0.65rem;
-        line-height: 1.2;
+        font-size: 0.75rem;
+        line-height: 1.3;
     }
 
     .media-author {

@@ -3,12 +3,19 @@ function linkify(text) {
   return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
 }
 
-function waitForMarked() {
+// Reuse marked loader from posts-loader if available, otherwise use local version
+async function waitForMarked() {
+  if (window.marked) {
+    return;
+  }
+
+  // Try using the preloaded loader from posts-loader module
+  if (window.loadMarked && typeof window.loadMarked === 'function') {
+    return window.loadMarked();
+  }
+
+  // Fallback: polling
   return new Promise((resolve) => {
-    if (window.marked) {
-      resolve();
-      return;
-    }
     let attempts = 0;
     const checkInterval = setInterval(() => {
       attempts++;
@@ -24,13 +31,11 @@ function waitForMarked() {
   });
 }
 
-const __v = (document.querySelector('meta[name="last-commit"]') && document.querySelector('meta[name="last-commit"]').getAttribute('content')) || Date.now();
-
 async function loadJournalEntries() {
   try {
     await waitForMarked();
     
-    const response = await fetch(`/json/journal.json?v=${encodeURIComponent(__v)}`);
+    const response = await fetch('/json/journal.json');
     if (!response.ok) {
       throw new Error(`Failed to load journal entries: ${response.status} ${response.statusText}`);
     }
@@ -79,7 +84,7 @@ async function loadJournalEntries() {
         
         if (entry.file) {
           try {
-            const fileResponse = await fetch(entry.file + '?v=' + encodeURIComponent(__v));
+            const fileResponse = await fetch(entry.file);
             const md = await fileResponse.text();
             const parts = md.split(/^---$/m);
             let content = md.trim();

@@ -217,7 +217,7 @@
 
     // Load articles index from JSON
     function loadArticlesIndex() {
-      return fetch('json/articles.json?v=' + Date.now())
+      return fetch('json/articles.json')
         .then(r => {
           if (!r.ok) throw new Error('Failed to load articles index');
           return r.json();

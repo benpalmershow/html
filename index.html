@@ -70,7 +70,6 @@
 
   <!-- Preload critical resources -->
   <link rel="preload" href="images/announcements.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="preload" href="js/posts-loader.js" as="script">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
@@ -191,8 +190,8 @@
   <!-- Navigation script - critical for navbar -->
   <script src="js/nav.js" defer></script>
 
-  <!-- Posts loader -->
-  <script src="js/posts-loader.js" defer></script>
+  <!-- Posts loader (refactored with modules) -->
+  <script type="module" src="js/posts-loader.js" defer></script>
 
 
     <script>

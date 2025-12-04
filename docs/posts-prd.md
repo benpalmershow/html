@@ -63,12 +63,14 @@ date: 2025-11-22T10:50:00
 Link text for articles should be: `[Read the full analysis](news.html?article=slug)`
 
 ### Multi-Topic Posts
-Separate distinct sections with `---` (horizontal rule) and give each its own icon/title:
+Separate distinct sections with `---` (horizontal rule) and give each its own icon/title. Include charts for each financial/data-driven section:
 
 ```markdown
 ### <i data-lucide='football' class='post-icon'></i> **Topic 1**
 
 Description.
+
+{{chart:Indicator Name 1}}
 
 [View](link1)
 
@@ -77,6 +79,8 @@ Description.
 ###  **Topic 2**
 
 Description with data if applicable.
+
+{{chart:Indicator Name 2}}
 
 [View](link2)
 ```

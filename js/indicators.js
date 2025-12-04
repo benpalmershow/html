@@ -91,24 +91,24 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 }
 
 function buildExtraHtml(indicator, dataItem, MONTHS) {
-    const cpiYoyData = { march: '2.4%', april: '2.3%', may: '2.4%', june: '2.7%', july: '2.7%', august: '2.9%', september: '3.0%' };
-    let extraHtml = '';
-
-    if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings') {
-        const changesMap = {};
-        calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
-        const changeObj = changesMap[dataItem.month];
-        if (changeObj) {
-            extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
-        }
-    } else if (indicator.name === 'CPI') {
-        if (cpiYoyData[dataItem.month]) {
-            extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[dataItem.month]}</span>`;
-        }
-    }
-
-    return extraHtml;
-}
+     const cpiYoyData = { march: '2.4%', april: '2.3%', may: '2.4%', june: '2.7%', july: '2.7%', august: '2.9%', september: '3.0%' };
+     let extraHtml = '';
+ 
+     if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
+         const changesMap = {};
+         calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
+         const changeObj = changesMap[dataItem.month];
+         if (changeObj) {
+             extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
+         }
+     } else if (indicator.name === 'CPI') {
+         if (cpiYoyData[dataItem.month]) {
+             extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[dataItem.month]}</span>`;
+         }
+     }
+ 
+     return extraHtml;
+ }
 
 function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     const momChange = calculateMoMChange(indicator, MONTHS);

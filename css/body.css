@@ -585,6 +585,19 @@ html.dark-mode {
     }
 }
 
+@media (max-width:360px) {
+    :root {
+        --type-base: clamp(1rem, 2.5vw, 1.05rem);
+    }
+}
+
+@media (max-width:480px) {
+    button, a, .filter-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
 @media (max-width:768px) {
     :root {
         --content-padding: var(--mobile-padding);

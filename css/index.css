@@ -3,25 +3,50 @@
 
 
 
-/* Announcements Section */
+/* Announcements Section - Enhanced Visual Design */
 .announcements {
     padding: var(--spacing-xl) 0;
-    background: var(--bg-primary);
+    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(248, 244, 230, 0.8) 100%);
     contain: layout style;
     min-height: 250px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Subtle separator line above announcements */
+/* Enhanced separator with texture */
 .announcements::before {
     content: '';
     position: absolute;
     top: 0;
     left: 5%;
     right: 5%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(212, 130, 42, 0.3) 25%,
+        rgba(44, 95, 90, 0.2) 50%,
+        rgba(212, 130, 42, 0.3) 75%,
+        transparent 100%);
+    background-size: 200% 100%;
 }
+
+/* Subtle texture overlay */
+.announcements::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 90% 80%, rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 0;
+}
+
 
 .announcements-container {
     max-width: 600px;
@@ -50,8 +75,8 @@
 
 .announcement-card {
     /* Base styles inherited from body.css */
-    padding: 0.75rem var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
+    padding: 1.25rem var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -59,8 +84,12 @@
     max-height: 200px;
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
     animation: cardSlideIn var(--duration-base) var(--ease-out-cubic) backwards;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: var(--font-body);
+    box-shadow: 0 4px 12px rgba(44, 95, 90, 0.08);
+    border: 1px solid rgba(212, 130, 42, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 /* Stagger animation for each card */
@@ -101,14 +130,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
     gap: var(--spacing-sm);
+    position: relative;
+    z-index: 2;
 }
 
 .announcement-card time {
     font-size: 0.75rem;
     color: var(--text-muted);
     white-space: nowrap;
+    background: linear-gradient(90deg, rgba(212, 130, 42, 0.1) 0%, rgba(44, 95, 90, 0.1) 100%);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
 .card-icon {
@@ -125,7 +161,10 @@
 .announcement-card h4,
 .announcement-card h5,
 .announcement-card h6 {
-    color: var(--text-secondary);
+    color: var(--color-secondary-dark);
+    margin-top: 0 !important;
+    position: relative;
+    padding-bottom: 0.25rem;
 }
 
 .announcement-card h1,
@@ -142,6 +181,34 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
     line-height: 1.3;
+}
+
+.announcement-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    color: var(--color-secondary-dark);
+    position: relative;
+    padding-bottom: 0.3rem;
+    display: inline-block;
+}
+
+.announcement-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--color-secondary) 25%,
+        var(--color-primary) 50%,
+        var(--color-secondary) 75%,
+        transparent 100%);
+    border-radius: 0.5px;
+    opacity: 0.8;
 }
 
 .announcement-card h2 {
@@ -166,10 +233,15 @@
     line-height: 1.6;
     color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
+    position: relative;
+    z-index: 2;
 }
 
 .announcement-card .content p {
-    margin: 0 0 var(--spacing-xs) 0;
+    margin: 0 0 var(--spacing-sm) 0;
+    position: relative;
+    padding-left: 8px;
+    border-left: 2px solid rgba(212, 130, 42, 0.2);
 }
 
 .announcement-card .content p:last-child {
@@ -229,10 +301,280 @@
 .announcement-card img {
     max-width: 100%;
     height: auto;
-    border-radius: 6px;
-    margin: var(--spacing-xs) 0;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    transition: transform 0.3s ease;
+    border-radius: 8px;
+    margin: var(--spacing-sm) auto;
+    box-shadow: 0 4px 16px rgba(44, 95, 90, 0.12);
+    transition: all 0.3s ease;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+/* Image classes for different layouts */
+.announcement-card .img-left {
+    width: 120px;
+    float: left;
+    margin: 0 var(--spacing-md) var(--spacing-sm) 0;
+    shape-outside: margin-box;
+}
+
+.announcement-card .img-right {
+    width: 120px;
+    float: right;
+    margin: 0 0 var(--spacing-sm) var(--spacing-md);
+    shape-outside: margin-box;
+}
+
+.announcement-card .img-full {
+    width: 100%;
+    max-width: 400px;
+    margin: var(--spacing-md) auto;
+    display: block;
+}
+
+/* Image caption styling */
+.announcement-card .img-caption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: left;
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+    clear: both;
+    display: block;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Ensure text wraps properly around floated images */
+.announcement-card .content p {
+    overflow: hidden;
+    display: flow-root;
+}
+
+/* Cover image styling for left-aligned images */
+.announcement-card .cover-image {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 var(--spacing-md) var(--spacing-sm) 0;
+    box-shadow: 0 4px 12px rgba(212, 130, 42, 0.15);
+    transition: all 0.3s ease;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 130, 42, 0.1);
+    float: left;
+    shape-outside: margin-box;
+    clear: none;
+}
+
+/* Ensure text wraps properly around floated image */
+.announcement-card .content p {
+    overflow: hidden;
+    display: flow-root;
+}
+
+/* Image caption styling */
+.announcement-card .image-caption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: left;
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+    padding: 0 var(--spacing-sm);
+    clear: both;
+    display: block;
+}
+
+/* Drop cap styling for first letter */
+.announcement-card .content p:first-of-type::first-letter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-secondary-dark);
+    float: left;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    line-height: 0.8;
+    font-family: var(--font-display);
+    position: relative;
+}
+
+/* Drop cap with background */
+.announcement-card .content p:first-of-type::first-letter::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+/* Clear floats */
+.announcement-card .content::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* Cover image styling for left-aligned images */
+.announcement-card .cover-image {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 var(--spacing-md) 0 0;
+    box-shadow: 0 4px 12px rgba(212, 130, 42, 0.15);
+    transition: all 0.3s ease;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 130, 42, 0.1);
+    float: left;
+    shape-outside: margin-box;
+}
+
+/* Image caption styling */
+.announcement-card .image-caption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: left;
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+    padding: 0 var(--spacing-sm);
+    clear: both;
+    display: block;
+}
+
+/* Drop cap styling for first letter */
+.announcement-card .content p:first-of-type::first-letter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-secondary-dark);
+    float: left;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    line-height: 0.8;
+    font-family: var(--font-display);
+    position: relative;
+}
+
+/* Drop cap with background */
+.announcement-card .content p:first-of-type::first-letter::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+/* Clear floats */
+.announcement-card .content::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* Image hover effects */
+.announcement-card img:hover,
+.announcement-card .cover-image:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(212, 130, 42, 0.2);
+}
+
+/* Image overlay for depth */
+.announcement-card .cover-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.2) 100%);
+    pointer-events: none;
+    border-radius: 8px;
+    opacity: 0.7;
+}
+
+/* Responsive image sizing */
+@media (max-width: 480px) {
+    .announcement-card .cover-image {
+        width: 80px;
+        margin: 0 var(--spacing-sm) var(--spacing-sm) 0;
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .announcement-card .content p:first-of-type::first-letter {
+        font-size: 1.8rem;
+        margin-right: 0.3rem;
+    }
+}
+
+/* Cover image styling for nested images */
+.announcement-card .cover-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin: var(--spacing-md) auto;
+    box-shadow: 0 8px 24px rgba(212, 130, 42, 0.15);
+    transition: all 0.3s ease;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 130, 42, 0.1);
+}
+
+/* Image caption styling */
+.announcement-card .image-caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Image hover effects */
+.announcement-card img:hover,
+.announcement-card .cover-image:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(212, 130, 42, 0.2);
+}
+
+/* Image overlay for depth */
+.announcement-card .cover-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.2) 100%);
+    pointer-events: none;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+/* Responsive image sizing */
+@media (max-width: 480px) {
+    .announcement-card .cover-image {
+        max-width: 100%;
+        margin: var(--spacing-sm) auto;
+    }
 }
 
 .announcement-card img:hover {
@@ -317,6 +659,170 @@
     font-size: 0.8rem;
     margin-right: 0.25rem;
     color: var(--color-secondary);
+}
+
+/* Enhanced link styling */
+.announcement-card a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(90deg, rgba(212, 130, 42, 0.1) 0%, rgba(44, 95, 90, 0.1) 100%);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Link hover effects */
+.announcement-card a:hover {
+    background: linear-gradient(90deg, rgba(212, 130, 42, 0.2) 0%, rgba(44, 95, 90, 0.2) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(212, 130, 42, 0.15);
+}
+
+/* Enhanced gradient backgrounds */
+.announcement-card:nth-child(4n+1) {
+    background: linear-gradient(135deg,
+        rgba(44, 95, 90, 0.08) 0%,
+        rgba(212, 130, 42, 0.04) 50%,
+        rgba(44, 95, 90, 0.02) 100%),
+        var(--bg-secondary);
+    border-color: rgba(44, 95, 90, 0.15);
+}
+
+.announcement-card:nth-child(4n+2) {
+    background: linear-gradient(135deg,
+        rgba(212, 130, 42, 0.08) 0%,
+        rgba(44, 95, 90, 0.04) 50%,
+        rgba(212, 130, 42, 0.02) 100%),
+        var(--bg-secondary);
+    border-color: rgba(212, 130, 42, 0.15);
+}
+
+.announcement-card:nth-child(4n+3) {
+    background: linear-gradient(135deg,
+        rgba(100, 150, 150, 0.08) 0%,
+        rgba(44, 95, 90, 0.04) 50%,
+        rgba(100, 150, 150, 0.02) 100%),
+        var(--bg-secondary);
+    border-color: rgba(100, 150, 150, 0.15);
+}
+
+.announcement-card:nth-child(4n+4) {
+    background: linear-gradient(135deg,
+        rgba(150, 100, 150, 0.08) 0%,
+        rgba(44, 95, 90, 0.04) 50%,
+        rgba(150, 100, 150, 0.02) 100%),
+        var(--bg-secondary);
+    border-color: rgba(150, 100, 150, 0.15);
+}
+
+/* Enhanced hover effects */
+.announcement-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 16px 40px rgba(212, 130, 42, 0.15);
+    border-color: rgba(212, 130, 42, 0.25);
+    z-index: 10;
+}
+
+/* Expanded state styling */
+.announcement-card.expanded {
+    max-height: none;
+    box-shadow: 0 20px 50px rgba(44, 95, 90, 0.12);
+}
+
+/* Enhanced gradient overlay for depth */
+.announcement-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.15) 100%);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.announcement-card.expanded::after {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Enhanced bullet points */
+.announcement-card ul,
+.announcement-card ol {
+    padding-left: 1.25rem;
+    margin: var(--spacing-sm) 0;
+}
+
+.announcement-card li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 8px;
+}
+
+.announcement-card li::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 10px;
+    width: 3px;
+    height: 3px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(212, 130, 42, 0.3);
+}
+
+/* Enhanced blockquote styling */
+.announcement-card blockquote {
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 1rem;
+    margin: var(--spacing-sm) 0;
+    color: var(--color-secondary-dark);
+    font-style: italic;
+    background: rgba(212, 130, 42, 0.03);
+    border-radius: 0 4px 4px 0;
+}
+
+/* Enhanced code styling */
+.announcement-card code {
+    background: rgba(44, 95, 90, 0.08);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    border: 1px solid rgba(212, 130, 42, 0.1);
+}
+
+/* Enhanced strong/text emphasis */
+.announcement-card strong {
+    color: var(--color-secondary-dark);
+    font-weight: 600;
+    position: relative;
+}
+
+.announcement-card strong::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 0.5px;
+    background: linear-gradient(90deg,
+        transparent 5%,
+        var(--color-secondary) 25%,
+        var(--color-primary) 50%,
+        var(--color-secondary) 75%,
+        transparent 95%);
+    opacity: 0.2;
 }
 
 

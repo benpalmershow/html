@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements Test - Final</title>
+    <style>
+        :root {
+            --color-primary: #2c5f5a;
+            --color-secondary: #d4822a;
+            --color-secondary-dark: #a0611a;
+            --bg-primary: #fdf6e8;
+            --bg-secondary: #f8f4e6;
+            --text-primary: #000000;
+            --text-secondary: #343a40;
+            --text-muted: #6c757d;
+            --border-color: #e8dcc0;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1.25rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --duration-base: 300ms;
+            --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+            --font-body: Georgia, 'Times New Roman', 'Cormorant Garamond', serif;
+            --font-display: 'Crimson Pro', 'Playfair Display', Georgia, serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            padding: var(--spacing-xl);
+        }
+
+        .announcements-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .announcement-card {
+            padding: 1.25rem var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            box-shadow: 0 4px 12px rgba(44, 95, 90, 0.08);
+            border: 1px solid rgba(212, 130, 42, 0.1);
+        }
+
+        .announcement-card .content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Cover image styling for left-aligned images */
+        .announcement-card .cover-image {
+            width: 120px;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 var(--spacing-md) var(--spacing-sm) 0;
+            box-shadow: 0 4px 12px rgba(212, 130, 42, 0.15);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 130, 42, 0.1);
+            float: left;
+            shape-outside: margin-box;
+        }
+
+        /* Image caption styling */
+        .announcement-card .image-caption {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: left;
+            margin-top: var(--spacing-xs);
+            font-style: italic;
+            clear: both;
+            display: block;
+        }
+
+        /* Drop cap styling for first letter */
+        .announcement-card .content p:first-of-type::first-letter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-secondary-dark);
+            float: left;
+            margin-right: 0.5rem;
+            margin-top: 0.2rem;
+            line-height: 0.8;
+            font-family: var(--font-display);
+        }
+
+        /* Ensure text wraps properly around floated elements */
+        .announcement-card .content p {
+            overflow: hidden;
+        }
+
+        .announcement-card strong {
+            color: var(--color-secondary-dark);
+            font-weight: 600;
+        }
+
+        .announcement-card a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="announcements-container">
+        <div class="announcement-card">
+            <h3>13F Holdings Updates</h3>
+            <div class="content">
+                <!-- Cover image nested in text - left aligned within paragraph -->
+                <p>
+                    <img src="https://via.placeholder.com/120x120/2c5f5a/d4822a?text=Chart" alt="Market Analysis" class="cover-image">
+                    Five new investment firms have filed their 13F holdings: <strong>Allworth Financial LP</strong>, <strong>FLAGSHIP HARBOR ADVISORS</strong>, and others. Together they manage <strong>$28.3 billion</strong> across <strong>10,201 securities</strong>.
+                    <span class="image-caption">Latest 13F Holdings Distribution</span>
+                </p>
+
+                <p><strong>Their Top Plays:</strong></p>
+                <ul>
+                    <li><strong>BLK</strong> – BlackRock ETF Trust with $7.1M conviction</li>
+                    <li><strong>AAPL</strong> – Appears in 3 of 5 new portfolios</li>
+                    <li><strong>ABBV</strong> – AbbVie's $1.4M position</li>
+                </ul>
+                <p><a href="#">View all 13F holdings</a></p>
+            </div>
+        </div>
+
+        <div class="announcement-card">
+            <h3>Market Analysis Update</h3>
+            <div class="content">
+                <p>The latest market trends show <strong>positive momentum</strong> in tech sectors, with <strong>NASDAQ up 1.2%</strong> and <strong>S&P 500 gaining 0.8%</strong>.</p>
+                <p>Key factors driving growth:</p>
+                <blockquote>Innovation in AI and cloud computing continues to be the primary catalyst for market expansion.</blockquote>
+                <p><a href="#">Read full analysis</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

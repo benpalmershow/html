@@ -182,11 +182,11 @@
 
 /* Media Text Content */
 .media-title {
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     font-weight: 700;
     margin: 0 0 0.3rem 0;
     padding: 0.3rem 0;
-    line-height: 1.2;
+    line-height: 1.3;
     color: var(--color-white, #fff);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -200,10 +200,11 @@
     z-index: 2;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     order: 1;
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 .media-author {
-    font-size: 0.85rem;
+    font-size: 1rem;
     margin: 0 0 0.3rem 0;
     color: var(--accent-color);
     font-weight: 600;
@@ -215,21 +216,23 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.02em;
     order: 2;
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 .media-overlay-desc {
-    font-size: 0.87em;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--border-light, #e8dcc0);
-    line-height: 1.22;
+    line-height: 1.4;
     margin-bottom: 0.5em;
     overflow-y: auto;
     overflow-x: hidden;
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 .media-description {
-    font-size: 0.82rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--text-light);
     width: 100%;
     flex: 1;
@@ -243,6 +246,7 @@
     margin-bottom: 0.5rem;
     /* Improved contrast for better readability */
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 /* Media Date Bottom */

@@ -3,16 +3,16 @@
        TYPOGRAPHY SYSTEM
        Intentional font pairings (not Inter/system)
        ======================================== */
-    --font-display: 'Crimson Pro', 'Playfair Display', serif;
+    --font-display: 'Crimson Pro', 'Playfair Display', Georgia, serif;
     /* Bold editorial headings */
-    --font-body: 'Cormorant Garamond', Georgia, serif;
+    --font-body: Georgia, 'Times New Roman', 'Cormorant Garamond', serif;
     /* Elegant body text */
     --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
     /* Technical elements */
 
     --type-scale-ratio: 1.25;
     /* Perfect fourth */
-    --type-base: clamp(0.95rem, 2vw, 1.05rem);
+    --type-base: clamp(1.05rem, 2.2vw, 1.15rem);
 
     /* ========================================
        BASE COLORS

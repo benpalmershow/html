@@ -199,16 +199,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 25%;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        var(--color-secondary) 25%,
-        var(--color-primary) 50%,
-        var(--color-secondary) 75%,
-        transparent 100%);
-    border-radius: 0.5px;
-    opacity: 0.8;
+    width: 40%;
+    height: 2px;
+    background: var(--color-secondary);
+    border-radius: 1px;
+    opacity: 0.7;
 }
 
 .announcement-card h2 {
@@ -239,6 +234,9 @@
 
 .announcement-card .content p {
     margin: 0 0 var(--spacing-sm) 0;
+}
+
+.announcement-card .content p:not(:has(> a:only-child)) {
     position: relative;
     padding-left: 8px;
     border-left: 2px solid rgba(212, 130, 42, 0.2);
@@ -666,9 +664,6 @@
     color: var(--color-secondary);
     text-decoration: none;
     font-weight: 600;
-    background: linear-gradient(90deg, rgba(212, 130, 42, 0.1) 0%, rgba(44, 95, 90, 0.1) 100%);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
@@ -733,22 +728,23 @@
     box-shadow: 0 20px 50px rgba(44, 95, 90, 0.12);
 }
 
-/* Enhanced gradient overlay for depth */
+/* Enhanced gradient overlay for depth - Expandable indicator */
 .announcement-card::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 80px;
     background: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0.15) 100%);
+        rgba(248, 244, 230, 0) 0%,
+        rgba(248, 244, 230, 0.3) 60%,
+        rgba(248, 244, 230, 0.7) 100%);
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.3s ease;
     z-index: 1;
+    box-shadow: inset 0 -40px 30px -20px rgba(212, 130, 42, 0.15);
 }
 
 .announcement-card.expanded::after {
@@ -783,13 +779,13 @@
 
 /* Enhanced blockquote styling */
 .announcement-card blockquote {
-    border-left: 3px solid var(--color-secondary);
-    padding-left: 1rem;
+    border-left: none;
+    padding-left: 0;
     margin: var(--spacing-sm) 0;
     color: var(--color-secondary-dark);
     font-style: italic;
-    background: rgba(212, 130, 42, 0.03);
-    border-radius: 0 4px 4px 0;
+    background: transparent;
+    border-radius: 0;
 }
 
 /* Enhanced code styling */

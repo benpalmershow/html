@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-03T17:56:00Z",
+    "lastUpdated": "2025-12-05T17:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -434,15 +434,16 @@
             "category": "Business Indicators",
             "agency": "Commerce",
             "name": "New Orders",
-            "lastUpdated": "2025-11-20T13:10:00Z",
+            "lastUpdated": "2025-12-05T13:10:00Z",
             "releaseDay": 3,
             "url": "https://www.census.gov/economic-indicators/",
             "march": "$617.4B",
             "april": "$593.5B",
             "may": "$642.5B",
-            "june": "$611.7B",
+            "june": "$611.5B",
             "july": "$603.6B",
-            "august": "$612B",
+            "august": "$611.5B",
+            "september":"$612.6B",
             "change": "",
             "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity."
         },

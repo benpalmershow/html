@@ -1,3 +1,6 @@
+/* Overlay styles moved to media-overlay.css for better organization */
+@import url('media-overlay.css');
+
 /* ==========================================================================
     CSS VARIABLES & GLOBAL STYLES
     ========================================================================== */
@@ -127,12 +130,9 @@
     }
 }
 
-/* Overlay styles moved to media-overlay.css for better organization */
-@import url('media-overlay.css');
-
 /* ==========================================================================
-   MEDIA FILTERS & SEARCH
-   ========================================================================== */
+    MEDIA FILTERS & SEARCH
+    ========================================================================== */
 
 /* Filter Container */
 .media-filters {

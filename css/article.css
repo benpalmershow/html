@@ -9,7 +9,7 @@
 .article-wrapper {
   max-width: 500px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
 }
 
 /* Article metadata header - date, ticker, category */
@@ -128,11 +128,27 @@
   font-family: Georgia, 'Times New Roman', serif;
 }
 
+
+
 .article-content li {
   margin-bottom: 0.5rem;
   color: var(--text-primary);
   font-size: 1.05rem;
   font-family: Georgia, 'Times New Roman', serif;
+  position: relative;
+  padding-left: 8px;
+}
+
+.article-content li::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 10px;
+  width: 3px;
+  height: 3px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(212, 130, 42, 0.3);
 }
 
 .article-content ul ul,
@@ -159,8 +175,25 @@
 
 /* Strong and emphasis */
 .article-content strong {
+  color: var(--color-secondary-dark);
   font-weight: 600;
-  color: var(--text-primary);
+  position: relative;
+}
+
+.article-content strong::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background: linear-gradient(90deg,
+      transparent 5%,
+      var(--color-secondary) 25%,
+      var(--color-primary) 50%,
+      var(--color-secondary) 75%,
+      transparent 95%);
+  opacity: 0.2;
 }
 
 .article-content em {
@@ -170,27 +203,24 @@
 
 /* Blockquotes */
 .article-content blockquote {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--color-secondary);
+  padding-left: 1rem;
   margin: 1.5rem 0;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--color-primary);
+  color: var(--color-secondary-dark);
   font-style: italic;
-  line-height: 1.8;
-  font-size: 1.05rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  background: rgba(212, 130, 42, 0.03);
+  border-radius: 0 4px 4px 0;
+  padding: 1rem 1.25rem;
 }
 
 /* Code blocks */
 .article-content code {
-  background-color: var(--bg-tertiary);
-  color: var(--color-success);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9em;
+  background: rgba(44, 95, 90, 0.08);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  border: 1px solid rgba(212, 130, 42, 0.1);
 }
 
 .article-content pre {
@@ -431,7 +461,6 @@
   margin: 1.5rem 0;
   border-radius: 6px;
   color: var(--text-primary);
-  border-left: 4px solid var(--color-primary);
 }
 
 .guidance-box p {

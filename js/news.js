@@ -120,7 +120,7 @@
         return;
       }
 
-      container.innerHTML = article.html;
+      container.innerHTML = `<div class="article-wrapper">${article.html}</div>`;
 
       // Execute scripts in article content
       const scripts = container.querySelectorAll('script');

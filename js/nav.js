@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
        </div>
     </div>
     <!-- Call to Action Section (modal) -->
-    <div class="cta-modal" id="cta-modal" aria-hidden="true">
+    <div class="cta-modal" id="cta-modal" inert>
       <div class="cta-modal-overlay"></div>
       <section class="cta-container" aria-label="Call to action">
         <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </section>
     </div>
     <!-- First-time visitor hints -->
-    <div class="visitor-hints" id="visitor-hints" aria-hidden="true">
+    <div class="visitor-hints" id="visitor-hints" inert>
         <div class="hint-overlay"></div>
         <div class="hint-content" aria-describedby="hint-title">
           <button class="hint-close-btn" aria-label="Close this message" title="Close">&times;</button>
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = ctaModal.style.display === 'block';
             ctaModal.style.display = isOpen ? 'none' : 'block';
             ctaModal.classList.toggle('active', !isOpen);
-            ctaModal.setAttribute('aria-hidden', String(isOpen));
+            ctaModal.toggleAttribute('inert', isOpen);
 
             if (!isOpen) {
                 initializeTinyDashboard();
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeCtaModal = () => {
             ctaModal.style.display = 'none';
             ctaModal.classList.remove('active');
-            ctaModal.setAttribute('aria-hidden', 'true');
+            ctaModal.setAttribute('inert', '');
             localStorage.setItem('ctaDismissed', 'true');
         };
 
@@ -269,14 +269,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeHints = () => {
             visitorHints.style.display = 'none';
             visitorHints.classList.remove('active');
-            visitorHints.setAttribute('aria-hidden', 'true');
+            visitorHints.setAttribute('inert', '');
             localStorage.setItem('hintsShown', 'true');
         };
 
         const openHints = () => {
             visitorHints.style.display = 'block';
             visitorHints.classList.add('active');
-            visitorHints.setAttribute('aria-hidden', 'false');
+            visitorHints.removeAttribute('inert');
         };
 
         hintsToggle.addEventListener('click', () => {

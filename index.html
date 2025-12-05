@@ -111,9 +111,28 @@
 
     <script type="module">
       import { loadComponent } from './js/component-loader.js';
-      // Load announcements section component
-      document.addEventListener('DOMContentLoaded', () => {
-        loadComponent('components/announcements-section.html', '#announcements-container');
+      
+      function loadAnnouncements() {
+        const container = document.querySelector('#announcements-container');
+        if (container) {
+          loadComponent('components/announcements-section.html', '#announcements-container')
+            .catch(err => console.error('Failed to load announcements:', err));
+        }
+      }
+      
+      // Initial load on page ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadAnnouncements);
+      } else {
+        loadAnnouncements();
+      }
+      
+      // Reload on back/forward navigation
+      window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+          console.log('Page restored from cache, reloading announcements');
+          loadAnnouncements();
+        }
       });
     </script>
   </main>

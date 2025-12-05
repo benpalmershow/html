@@ -7,17 +7,19 @@ The historic Kennedy family compound in Hyannis, Massachusetts is on the market 
 
 [View listing](https://www.zillow.com/homedetails/151-155-Irving-Ave-Hyannis-MA-02601/453457953_zpid/?utm_campaign=zillowwebmessage&utm_medium=referral&utm_source=txtshare)
 
-###  **All Power Resides with the People**
+#  **All Power Resides with the People**
 
-Massachusetts' 1780 Declaration of Rights, penned by John Adams, establishes an unmistakable principle: <b>"All power residing originally in the people, and being derived from them, the several magistrates and officers of government, vested with authority, whether legislative, executive, or judicial, are their substitutes and agents, and are at all times accountable to them."</b>
+Massachusetts' 1780 Declaration of Rights, penned by John Adams, establishes an unmistakable principle:
 
-###  **Deportation Statistics**
+>All power residing originally in the people, and being derived from them, the several magistrates and officers of government, vested with authority, whether legislative, executive, or judicial, are their substitutes and agents, and are at all times accountable to them.
+
+#  **Deportation Statistics**
 
 Latest enforcement data on immigration removals and detention. Updated statistics tracking government immigration enforcement actions.
 
 [View data](https://deportationdata.org/data/ice.html)
 
-###  **Pipe Bomber Identified**
+#  **Pipe Bomber Identified**
 
 On January 5, 2021, pipe bombs were placed at the RNC and DNC headquarters in Washington, D.C. The FBI identified <b>Brian J. Cole, Jr.</b>, a 30-year-old bail bondsman's office worker from Woodbridge, Virginia, through surveillance footage, financial records, and cell phone data.
 
@@ -26,7 +28,7 @@ Video shows the perpetrator placing the DNC bomb at 7:54 p.m. and RNC bomb at 8:
 
 [View full affidavit](https://www.justice.gov/usao-dc/media/1420196/dl?inline)
 
-### **2,919 Billionaires**
+# **2,919 Billionaires**
 
 UBS analysis reveals 2,919 billionaires globally with USD 15.8 trillion in combined wealth—a 13% increase year-over-year.
 
@@ -34,7 +36,7 @@ UBS analysis reveals 2,919 billionaires globally with USD 15.8 trillion in combi
 record USD 15.8 trillion, up 13% in 12 months and
 marking the second-highest annual increase after 2021.
 
-**Notable New & Rising Billionaires (2025):**
+## **Notable New & Rising Billionaires (2025):**
 
 - **Elon Musk** (SpaceX, Tesla) — Americas; captured 40.7% of industrials sector gains
 - **Ben Lamm** (Colossal, genetics/bioscience) — US
@@ -59,7 +61,7 @@ marking the second-highest annual increase after 2021.
 
 [Read full report](https://www.ubs.com/us/en/wealth-management/our-solutions/private-wealth-management/insights/billionaires-ambition-report/_jcr_content/root/pagehead/button1.0623665255.file/PS9jb250ZW50L2RhbS9hc3NldHMvd21hL3VzL3B3bS9kb2N1bWVudHMvYmlsbGlvbmFpcmVzLWFtYml0aW9uLXJlcG9ydC5wZGY=/billionaires-ambition-report.pdf)
 
-###  **Manufacturing Orders Tick Up Slightly**
+#  **Manufacturing Orders Tick Up Slightly**
 
 New orders for manufactured goods rose modestly in September, signaling continued but cautious business investment despite broader economic uncertainty.
 

@@ -26,5 +26,5 @@ The Trump administration is withholding federal SNAP administrative funding from
 [View details](https://www.reuters.com/legal/government/trump-halt-some-food-aid-support-democratic-led-states-over-data-fight-2025-12-02/)
 
 
-Meanwhile, here's the<a href="journal.html">the USDA website</a>built with your tax dollars. AI could rebuild it for a fraction of what the government spent.
+Meanwhile, here's the <a href="journal.html"> USDA website</a> built with your tax dollars. AI could rebuild it for a fraction of what the government spent.
 

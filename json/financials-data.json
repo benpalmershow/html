@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-05T17:56:00Z",
+    "lastUpdated": "2025-12-06T17:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -24,7 +24,7 @@
             "category": "Consumer Indicators",
             "agency": "UMich",
             "name": "Consumer Sentiment",
-            "lastUpdated": "2025-11-22T15:00:00Z",
+            "lastUpdated": "2025-12-06T15:00:00Z",
             "releaseDay": 15,
             "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
@@ -36,6 +36,7 @@
             "september": "55.1",
             "october": "53.6",
             "november": "51",
+            "december":"53.3",
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
         },
@@ -488,15 +489,16 @@
             "category": "Consumer Indicators",
             "agency": "FRED",
             "name": "Personal Consumption Expenditures (PCE)",
-            "lastUpdated": "2025-08-15T14:00:00Z",
+            "lastUpdated": "2025-12-06T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/PCE",
-            "march": "20,578.5B",
-            "april": "20,662B",
-            "may": "20,615B",
-            "june": "20,685B",
-            "july": "20,802B",
-            "august": "21,112B",
+            "march": "20,683B",
+            "april": "20,746.4B",
+            "may": "20,755B",
+            "june": "20,868.4B",
+            "july": "20,981.2B",
+            "august": "21,087.1B",
+            "september":"$21,152.2B",
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
         },

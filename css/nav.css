@@ -1,6 +1,5 @@
 /* Sticky Navigation Bar */
 :root {
-    --nav-z-index: 1000;
     --nav-overlay-z-index: 1500;
     --nav-modal-z-index: 2000;
     --nav-transition-duration: 0.3s;

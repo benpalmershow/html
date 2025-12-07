@@ -6,7 +6,6 @@
 import { waitForMarked } from './modules/marked-loader.js';
 import { parseMarkdownFile, processCharts } from './modules/markdown-parser.js';
 import { formatTimeAgo, startTimeUpdates } from './modules/time-formatter.js';
-import { optimizeImages } from './modules/image-optimizer.js';
 import { renderFinancialCharts } from './modules/chart-renderer.js';
 
 const CONFIG = {
@@ -144,9 +143,6 @@ function renderPosts(posts) {
     } else {
         state.feed.insertAdjacentHTML('beforeend', postsHTML);
     }
-
-    // Optimize images in new content
-    optimizeImages(state.feed);
 
     // Reinitialize lucide icons if available
     if (window.lucide) {

@@ -38,7 +38,7 @@ As autonomous robotaxis expand, city councils in Boston, Minneapolis, and Washin
 
 ### <i data-lucide='trophy' class='post-icon'></i> **Eagles @ Chargers Tonight**
 
-Eagles favored at 57¢ over Chargers at 45¢. Game time: Dec 8, 2025 8:15 PM ET. Prediction markets showing Philadelphia slight edge on road in San Diego.
+Eagles favored at 57¢ over Chargers at 45¢. Game time: Dec 8, 2025 8:15 PM ET. 
 
 [View all games](financials.html?filter=Prediction%20Markets)
 

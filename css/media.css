@@ -5,13 +5,13 @@
     CSS VARIABLES & GLOBAL STYLES
     ========================================================================== */
 :root {
-/* Color Palette */
---accent-color: #f5c518;
---text-light: #f0f0f0;
+    /* Color Palette */
+    --accent-color: #f5c518;
+    --text-light: #f0f0f0;
 
-/* Shadows */
-    --shadow-light: var(--color-primary-bg, rgba(44, 95, 90, 0.08));
-    --shadow-medium: rgba(44, 95, 90, 0.15);
+    /* Shadows */
+    --shadow-light: var(--color-primary-bg, rgba(var(--accent-primary-rgb), 0.08));
+    --shadow-medium: rgba(var(--accent-primary-rgb), 0.15);
 
     /* Overlay Colors */
     --overlay-light: rgba(0, 0, 0, 0.75);
@@ -22,7 +22,7 @@
     --color-rotten-tomatoes: #f93a1e;
 
     /* Hover States */
-    --color-secondary-dark: #b8721f;
+    /* Removed secondary-dark */
     --color-primary-dark: #1e4540;
     --color-primary-light: #4a7c7a;
 
@@ -74,13 +74,14 @@
 
     .media-cover.image-error {
         opacity: 0.8;
-        background: linear-gradient(135deg, #2c5f5a 0%, #1e4540 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--logo-teal-dark) 100%);
     }
 
     @keyframes fadeIn {
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
@@ -256,7 +257,7 @@
     font-size: 0.9rem;
     margin: 1rem auto 0;
     padding: 0.5rem;
-    background: rgba(44, 95, 90, 0.05);
+    background: rgba(var(--accent-primary-rgb), 0.05);
     border-radius: 0.4rem;
     max-width: 1000px;
     width: calc(100% - 2rem);
@@ -281,7 +282,8 @@
     .media-card {
         width: 200px;
         height: auto;
-        aspect-ratio: 7/10; /* Maintain proper aspect ratio for desktop */
+        aspect-ratio: 7/10;
+        /* Maintain proper aspect ratio for desktop */
     }
 }
 
@@ -496,7 +498,8 @@ RESPONSIVE DESIGN - TABLET & MOBILE
         width: 140px;
         /* Height adjusted proportionally for aspect ratios */
         height: auto;
-        aspect-ratio: 7/10; /* Approximate for movie posters, JS will override */
+        aspect-ratio: 7/10;
+        /* Approximate for movie posters, JS will override */
     }
 
     .media-cover-container {
@@ -540,7 +543,8 @@ RESPONSIVE DESIGN - TABLET & MOBILE
         width: 110px;
         /* Height adjusted proportionally for aspect ratios */
         height: auto;
-        aspect-ratio: 11/16; /* Approximate for movie posters, JS will override */
+        aspect-ratio: 11/16;
+        /* Approximate for movie posters, JS will override */
     }
 
     .media-cards {
@@ -592,7 +596,8 @@ RESPONSIVE DESIGN - TABLET & MOBILE
         width: 90px;
         /* Height adjusted proportionally for aspect ratios */
         height: auto;
-        aspect-ratio: 9/14; /* Adjusted for better mobile display */
+        aspect-ratio: 9/14;
+        /* Adjusted for better mobile display */
     }
 
     .media-cards {
@@ -743,12 +748,35 @@ MEDIA LINKS ORDER
     ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-    .media-filters { background: var(--bg-secondary); border-color: var(--border-color); }
-    .media-filters label { color: var(--text-secondary); }
-    .media-filters :is(select, input[type="text"]) { background: var(--bg-primary); color: var(--text-primary); border-color: var(--border-color); }
-    .media-filters :is(select, input[type="text"]):focus { border-color: var(--accent-primary); box-shadow: 0 0 0 2px rgba(135, 197, 190, 0.2); }
-    .media-filters input::placeholder, .search-help { color: var(--text-muted); }
-    .results-count { color: var(--text-secondary); background: rgba(135, 197, 190, 0.05); }
+    .media-filters {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .media-filters label {
+        color: var(--text-secondary);
+    }
+
+    .media-filters :is(select, input[type="text"]) {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    .media-filters :is(select, input[type="text"]):focus {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 2px rgba(135, 197, 190, 0.2);
+    }
+
+    .media-filters input::placeholder,
+    .search-help {
+        color: var(--text-muted);
+    }
+
+    .results-count {
+        color: var(--text-secondary);
+        background: rgba(135, 197, 190, 0.05);
+    }
 }
 
 /* Ensure media overlay icons stay white in dark mode */
@@ -785,6 +813,7 @@ MEDIA LINKS ORDER
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }

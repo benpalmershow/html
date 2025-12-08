@@ -9,10 +9,10 @@
 #main-nav {
     position: sticky;
     top: 0;
-    background: var(--bg-primary, #fdf6e8);
-    border-bottom: 1px solid var(--border-color, #e0dcc4);
-    z-index: var(--nav-z-index);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: rgba(var(--bg-primary-rgb), 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.3);
+    box-shadow: 0 2px 8px rgba(var(--color-black-rgb), 0.08);
     transition: transform var(--nav-transition-duration) ease;
 }
 
@@ -124,11 +124,11 @@
     width: 40px;
     height: 40px;
     transition: box-shadow var(--duration-fast) var(--ease-out-cubic), transform var(--duration-fast) var(--ease-out-cubic);
-    box-shadow: 0 2px 8px rgba(44, 95, 90, 0.1);
+    box-shadow: 0 2px 8px rgba(var(--accent-primary-rgb), 0.1);
 }
 
 .nav-logo:hover img {
-    box-shadow: 0 4px 16px rgba(44, 95, 90, 0.15);
+    box-shadow: 0 4px 16px rgba(var(--accent-primary-rgb), 0.15);
     transform: scale(1.05);
 }
 
@@ -206,15 +206,15 @@
 /* CTA Container in Modal - Anchored popover */
 .cta-modal .cta-container {
     position: relative;
-    background: var(--bg-secondary, #f8f4e6);
-    border: 1px solid var(--border-color, #e0dcc4);
+    background: var(--color-black, #000000);
+    border: 1px solid var(--color-gray-800, #333);
     border-radius: 0.5rem;
-    padding: var(--spacing-md, 1.25rem);
-    max-width: 500px;
+    padding: 1rem;
+    max-width: 450px;
     width: calc(100% - 2rem);
     margin-left: auto;
     margin-right: 1rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.2);
     transition: border-color 0.2s ease, transform 0.2s ease;
     contain: layout style;
     z-index: calc(var(--nav-overlay-z-index) + 1);
@@ -251,12 +251,12 @@
     font-family: 'Georgia', serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-primary, #000000);
+    color: var(--color-white, #ffffff);
 }
 
 .cta-subtext {
     font-size: 0.85rem;
-    color: var(--text-secondary, #343a40);
+    color: var(--color-gray-300, #dee2e6);
     font-style: italic;
     font-weight: 400;
     line-height: 1.4;
@@ -323,7 +323,7 @@
     max-height: 80vh;
     overflow-y: auto;
     z-index: calc(var(--nav-modal-z-index) + 1);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.2);
 }
 
 .hint-content h3 {
@@ -415,6 +415,13 @@
         background: var(--bg-secondary, #252b2a);
     }
 
+    /* Remove navbar shading in dark mode */
+    #main-nav {
+        background: var(--bg-primary);
+        border-bottom-color: transparent;
+        box-shadow: none;
+    }
+
     .cta-icon-btn i[data-lucide],
     .hints-icon-btn i[data-lucide],
     .dark-mode-toggle i[data-lucide],
@@ -427,25 +434,7 @@
     .cta-icon-btn:hover,
     .hints-icon-btn:hover,
     .dark-mode-toggle:hover {
-        background: var(--bg-secondary, #252b2a);
-    }
-
-    /* CTA Modal dark mode text fixes */
-    .cta-modal .cta-container {
         background: var(--bg-secondary);
-        border-color: var(--border-color);
-    }
-
-    .cta-button {
-        color: var(--text-primary);
-    }
-
-    .cta-text-wrapper span:first-child {
-        color: var(--text-primary);
-    }
-
-    .cta-subtext {
-        color: var(--text-secondary);
     }
 
     /* Hint modal dark mode text fixes */
@@ -455,15 +444,15 @@
     }
 
     .hint-content h3 {
-        color: var(--text-primary);
+        color: var(--color-white);
     }
 
     .hint-step strong {
-        color: var(--text-primary);
+        color: var(--color-white);
     }
 
     .hint-step div {
-        color: var(--text-primary);
+        color: var(--color-white);
     }
 
     .hint-close-btn {
@@ -477,7 +466,7 @@
 
     .hint-close-btn-action {
         background: var(--accent-secondary);
-        color: var(--text-primary);
+        color: var(--color-white);
     }
 
     .hint-close-btn-action:hover {
@@ -610,68 +599,98 @@
     .nav-right-section {
         gap: 0.5rem;
     }
+}
 
-    .cta-icon-btn,
-    .hints-icon-btn,
-    .dark-mode-toggle {
-        width: auto;
-        height: auto;
-        flex-shrink: 0;
-        border: none;
-        background: transparent;
-        padding: 0;
-    }
+/* Manual Dark Mode Toggle Support for Visitor Hints */
+html.dark-mode .hint-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
 
-    .cta-icon-btn i[data-lucide],
-    .hints-icon-btn i[data-lucide],
-    .dark-mode-toggle i[data-lucide] {
-        width: 1.1rem;
-        height: 1.1rem;
-    }
+html.dark-mode .hint-content h3 {
+    color: var(--color-white);
+}
 
-    .hint-content {
-        width: 95%;
-        max-height: 90vh;
-        padding: var(--spacing-xs, 0.5rem);
-    }
+html.dark-mode .hint-step strong {
+    color: var(--color-white);
+}
 
-    .hint-content h3 {
-        font-size: 0.8rem;
-    }
+html.dark-mode .hint-step div {
+    color: var(--color-white);
+}
 
-    .hint-step {
-        gap: var(--spacing-xs, 0.5rem);
-    }
+html.dark-mode .hint-close-btn {
+    color: var(--text-secondary);
+}
 
-    .hint-step strong {
-        font-size: 0.75rem;
-    }
+html.dark-mode .hint-close-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
 
-    .hint-step div {
-        font-size: 0.7rem;
-    }
+html.dark-mode .hint-close-btn-action {
+    background: var(--accent-secondary);
+    color: var(--color-white);
+}
 
-    .hint-close {
-        padding: 0.35rem 0.75rem;
-        font-size: 0.8rem;
-    }
+html.dark-mode .hint-close-btn-action:hover {
+    background: var(--accent-primary);
+}
 
-    .cta-modal .cta-container {
-        width: 90vw;
-        max-width: 95%;
-        padding: var(--spacing-xs, 0.5rem);
-    }
 
-    .cta-button i[data-lucide] {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
 
-    .cta-text-wrapper span:first-child {
-        font-size: 0.8rem;
-    }
 
-    .cta-subtext {
-        font-size: 0.65rem;
-    }
+.cta-icon-btn i[data-lucide],
+.hints-icon-btn i[data-lucide],
+.dark-mode-toggle i[data-lucide] {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.hint-content {
+    width: 95%;
+    max-height: 90vh;
+    padding: var(--spacing-xs, 0.5rem);
+}
+
+.hint-content h3 {
+    font-size: 0.8rem;
+}
+
+.hint-step {
+    gap: var(--spacing-xs, 0.5rem);
+}
+
+.hint-step strong {
+    font-size: 0.75rem;
+}
+
+.hint-step div {
+    font-size: 0.7rem;
+}
+
+.hint-close {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.cta-modal .cta-container {
+    width: 90vw;
+    max-width: 95%;
+    padding: var(--spacing-xs, 0.5rem);
+}
+
+.cta-button i[data-lucide] {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.cta-text-wrapper span:first-child {
+    font-size: 0.8rem;
+}
+
+.cta-subtext {
+    font-size: 0.65rem;
+}
+}
 }

@@ -3,12 +3,12 @@
        TYPOGRAPHY SYSTEM
        Intentional font pairings (not Inter/system)
        ======================================== */
-    --font-display: 'Crimson Pro', 'Playfair Display', Georgia, serif;
-    /* Bold editorial headings */
-    --font-body: Georgia, 'Times New Roman', 'Cormorant Garamond', serif;
-    /* Elegant body text */
-    --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
-    /* Technical elements */
+    --font-display: Georgia, 'Times New Roman', serif;
+    /* Classic editorial headings */
+    --font-body: Georgia, 'Times New Roman', serif;
+    /* Classic body text */
+    --font-mono: 'Courier New', Courier, monospace;
+    /* Classic mono */
 
     --type-scale-ratio: 1.25;
     /* Perfect fourth */
@@ -19,7 +19,10 @@
        Core color values used throughout the system
        ======================================== */
     --color-white: #ffffff;
+    --color-white-rgb: 255, 255, 255;
+
     --color-black: #000000;
+    --color-black-rgb: 0, 0, 0;
 
     /* ========================================
        GRAYSCALE PALETTE
@@ -48,8 +51,13 @@
         ======================================== */
     --color-primary: #2c5f5a;
     /* Primary teal - main brand color */
+    --color-primary-rgb: 44, 95, 90;
+    /* Primary teal RGB components */
+
     --color-secondary: #d4822a;
     /* Secondary orange - accent brand color */
+    --color-secondary-rgb: 212, 130, 42;
+    /* Secondary orange RGB components */
 
     /* ========================================
         SEMANTIC COLORS
@@ -108,7 +116,10 @@
     --color-dark-bg-primary: #1a1f1e;
     /* Dark background primary */
     --color-dark-bg-secondary: #252b2a;
-   
+    --color-dark-accent-primary: #87c5be;
+    --color-dark-accent-primary-rgb: 135, 197, 190;
+    --color-dark-accent-secondary: #d4822a;
+
 
     /* ========================================
        THEME VARIABLES
@@ -127,11 +138,15 @@
     /* Background Colors */
     --bg-primary: #fdf6e8;
     /* Primary background - warm cream */
+    --bg-primary-rgb: 253, 246, 232;
+
     --bg-secondary: #f8f4e6;
     /* Secondary background - lighter cream */
+    --bg-secondary-rgb: 248, 244, 230;
 
     /* Accent Colors */
     --accent-primary: var(--color-primary, #2c5f5a);
+    --accent-primary-rgb: 44, 95, 90;
     /* Primary accent - brand teal */
     --accent-secondary: var(--color-secondary, #d4822a);
     /* Secondary accent - brand orange */
@@ -139,18 +154,19 @@
     /* UI Element Colors */
     --border-color: #e8dcc0;
     /* Border color - warm beige */
+    --border-color-rgb: 232, 220, 192;
+
     --shadow-color: rgba(44, 95, 90, 0.1);
     /* Shadow color - teal with transparency */
 
     /* Logo Colors (legacy - use brand colors instead) */
-    --logo-teal: var(--color-primary, #2c5f5a);
+    --logo-teal: var(--accent-primary);
     /* Logo teal - same as primary */
     --logo-teal-dark: #1e4d48;
     /* Darker teal for hover states */
     --logo-orange: var(--color-secondary, #d4822a);
     /* Logo orange - same as secondary */
-    --color-secondary-dark: #a0611a;
-    /* Darker orange for text/headings - improves contrast */
+    /* Logo orange - same as secondary */
 
     /* Change indicator colors */
     --change-positive-color: #2e7d32;
@@ -340,7 +356,7 @@ body {
 }
 
 h2 {
-    color: var(--color-secondary-dark);
+    color: var(--color-primary);
     border-bottom: 2px solid var(--logo-orange);
     padding-bottom: var(--spacing-xs);
     margin: var(--section-spacing) 0 var(--spacing-md);
@@ -525,10 +541,15 @@ html.dark-mode {
     --bg-primary: #1a1f1e;
     --bg-secondary: #252b2a;
     --accent-primary: #87c5be;
+    --accent-primary-rgb: 135, 197, 190;
     --accent-secondary: #d4822a;
     --border-color: #495057;
     --shadow-color: #000000;
-    --color-secondary-dark: #f0a854;
+    --shadow-color: #000000;
+}
+
+html.dark-mode h2 {
+    color: var(--accent-primary);
 }
 
 @media (prefers-color-scheme:dark) {
@@ -539,11 +560,16 @@ html.dark-mode {
         --bg-primary: var(--color-dark-bg-primary);
         --bg-secondary: var(--color-dark-bg-secondary);
         --accent-primary: var(--color-dark-accent-primary);
+        --accent-primary-rgb: var(--color-dark-accent-primary-rgb);
         --accent-secondary: var(--color-dark-accent-secondary);
         --border-color: var(--color-gray-600);
         --shadow-color: var(--color-black);
-        --color-secondary-dark: #f0a854;
+        --shadow-color: var(--color-black);
         /* Lighter orange for dark mode */
+    }
+
+    h2 {
+        color: var(--accent-primary);
     }
 
     body {
@@ -592,7 +618,10 @@ html.dark-mode {
 }
 
 @media (max-width:480px) {
-    button, a, .filter-btn {
+
+    button,
+    a,
+    .filter-btn {
         min-height: 44px;
         min-width: 44px;
     }

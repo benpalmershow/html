@@ -3,10 +3,23 @@
 
 <head>
   <!-- Common Meta Tags Component -->
-  <script type="module">
-    import { loadComponent } from './js/component-loader.js';
-    loadComponent('components/head-meta.html', 'head', { type: 'meta' });
-  </script>
+  <!-- Common Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="author" content="Ben Palmer">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#1a1f1e">
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -40,10 +53,10 @@
   <link rel="canonical" href="https://howdystranger.net/">
 
   <!-- Typography System Fonts Component -->
-  <script type="module">
-    import { loadComponent } from './js/component-loader.js';
-    loadComponent('components/fonts.html', 'head', { type: 'link' });
-  </script>
+  <!-- Typography System Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="preload" as="style" onload="this.rel='stylesheet'">
 
   <!-- Critical CSS -->
   <link rel="preload" href="css/body.css?v=20251117" as="style" onload="this.rel='stylesheet'">
@@ -56,9 +69,22 @@
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics Component -->
-  <script type="module">
-    import { loadComponent } from './js/component-loader.js';
-    loadComponent('components/analytics.html', 'head', { type: 'script' });
+  <!-- Unified Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+    gtag('config', 'AW-16914260010');
+
+    function loadGtagScript() {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    if ('requestIdleCallback' in window) requestIdleCallback(loadGtagScript);
+    else setTimeout(loadGtagScript, 3000);
   </script>
 
   <!-- Pre-fetch posts data -->
@@ -76,7 +102,7 @@
 
   <!-- Preload Marked.js -->
   <script>
-    (function() {
+    (function () {
       const link = document.createElement('link');
       link.rel = 'preload';
       link.as = 'script';
@@ -109,46 +135,46 @@
       </div>
     </section>
 
-    <script type="module">
-      import { loadComponent } from './js/component-loader.js';
-      
-      function loadAnnouncements() {
-        const container = document.querySelector('#announcements-container');
-        if (container) {
-          loadComponent('components/announcements-section.html', '#announcements-container')
-            .catch(err => console.error('Failed to load announcements:', err));
-        }
-      }
-      
-      // Initial load on page ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadAnnouncements);
-      } else {
-        loadAnnouncements();
-      }
-      
-      // Reload on back/forward navigation
-      let pageRestored = false;
-      window.addEventListener('pageshow', (event) => {
-        if (event.persisted && !pageRestored) {
-          pageRestored = true;
-          console.log('Page restored from cache, reloading announcements');
-          const container = document.querySelector('#announcements-container');
-          container.innerHTML = ''; // Clear before reload
-          loadAnnouncements();
-        }
-      });
-    </script>
+    <!-- Announcements are populated by posts-loader.js directly into #announcements-container -->
   </main>
 
-  <!-- Footer Component -->
-  <div id="footer-container"></div>
-  <script type="module">
-    import { loadComponent } from './js/component-loader.js';
-    document.addEventListener('DOMContentLoaded', () => {
-      loadComponent('components/footer.html', '#footer-container');
-    });
-  </script>
+  <!-- Reusable Footer -->
+  <footer id="social-footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" width="24" height="24">
+        </a>
+        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="24"
+            height="24">
+        </a>
+        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack" width="24"
+            height="24">
+        </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
+          aria-label="Spotify">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify" width="24"
+            height="24">
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
+          rel="noopener noreferrer" aria-label="Apple Podcasts">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" alt="Apple Podcasts"
+            width="24" height="24">
+        </a>
+        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
+          aria-label="Buy Me A Coffee">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg" alt="BMC" width="24"
+            height="24">
+        </a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-info">
+        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 
 
@@ -156,13 +182,14 @@
   <script src="js/nav.js" defer></script>
 
   <!-- Posts loader (refactored with modules) -->
-  <script type="module" src="js/posts-loader.js" defer></script>
+  <!-- Posts loader (simplified) -->
+  <script src="js/posts-loader.js" defer></script>
 
-
-  <!-- Unified Scripts Component -->
-  <script type="module">
-    import { loadComponent } from './js/component-loader.js';
-    loadComponent('components/scripts-unified.html', 'head', { type: 'script' });
+  <!-- Unified Scripts -->
+  <script src="js/bfcache-compat.js" defer></script>
+  <script>
+    // Vercel Insights & Service Worker would go here if needed.
+    // Retaining clean simple structure as requested.
   </script>
 
   <script defer>
@@ -173,8 +200,7 @@
         lucide: 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js',
         chartjs: 'https://cdn.jsdelivr.net/npm/chart.js',
         yaml: 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',
-        fontawesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-        animations: 'js/animations.js'
+        fontawesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
       };
 
       function loadScript(src, callback) {
@@ -210,10 +236,6 @@
       const loadLibs = () => {
         loadScript(libs.lucide, () => window.lucide?.createIcons());
         loadCSS(libs.fontawesome);
-
-        setTimeout(() => {
-          loadScript(libs.animations);
-        }, 2000);
       };
 
       if ('requestIdleCallback' in window) {
@@ -227,7 +249,7 @@
         loadScript(libs.chartjs, () => resolve(window.Chart));
       });
     })();
-    </script>
+  </script>
 
 </body>
 

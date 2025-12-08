@@ -3,39 +3,17 @@
 /* Announcements Section */
 .announcements {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(248, 244, 230, 0.8) 100%);
+    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(var(--bg-secondary-rgb), 0.8) 100%);
     contain: layout style;
     min-height: 250px;
     position: relative;
     overflow: hidden;
 }
 
-.announcements::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(212, 130, 42, 0.3) 25%,
-        rgba(44, 95, 90, 0.2) 50%,
-        rgba(212, 130, 42, 0.3) 75%,
-        transparent 100%);
-}
-
+/* Background Elements Removed for Classic Look */
+.announcements::before,
 .announcements::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0.5px, transparent 0.5px),
-        radial-gradient(circle at 90% 80%, rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    opacity: 0.3;
-    z-index: 0;
+    display: none;
 }
 
 .announcements-container {
@@ -53,6 +31,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -70,45 +49,53 @@
     animation: cardSlideIn var(--duration-base) var(--ease-out-cubic) backwards;
     border-radius: 12px;
     font-family: var(--font-body);
-    box-shadow: 0 4px 12px rgba(44, 95, 90, 0.08);
-    border: 1px solid rgba(212, 130, 42, 0.1);
+    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.08);
+    border: 1px solid rgba(var(--color-secondary-rgb), 0.1);
     z-index: 1;
 }
 
-.announcement-card:nth-child(1) { animation-delay: 0ms; }
-.announcement-card:nth-child(2) { animation-delay: 60ms; }
-.announcement-card:nth-child(3) { animation-delay: 120ms; }
+.announcement-card:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.announcement-card:nth-child(2) {
+    animation-delay: 60ms;
+}
+
+.announcement-card:nth-child(3) {
+    animation-delay: 120ms;
+}
 
 .announcement-card.expanded {
     max-height: none;
-    box-shadow: 0 20px 50px rgba(44, 95, 90, 0.12);
+    box-shadow: 0 20px 50px rgba(var(--accent-primary-rgb), 0.12);
 }
 
 /* Card background gradients */
 .announcement-card:nth-child(4n+1) {
-    background: linear-gradient(135deg, rgba(44, 95, 90, 0.08) 0%, rgba(212, 130, 42, 0.04) 50%, rgba(44, 95, 90, 0.02) 100%), var(--bg-secondary);
-    border-color: rgba(44, 95, 90, 0.15);
+    background: linear-gradient(135deg, rgba(var(--accent-primary-rgb), 0.08) 0%, rgba(var(--color-secondary-rgb), 0.04) 50%, rgba(var(--accent-primary-rgb), 0.02) 100%), var(--bg-secondary);
+    border-color: rgba(var(--accent-primary-rgb), 0.15);
 }
 
 .announcement-card:nth-child(4n+2) {
-    background: linear-gradient(135deg, rgba(212, 130, 42, 0.08) 0%, rgba(44, 95, 90, 0.04) 50%, rgba(212, 130, 42, 0.02) 100%), var(--bg-secondary);
-    border-color: rgba(212, 130, 42, 0.15);
+    background: linear-gradient(135deg, rgba(var(--color-secondary-rgb), 0.08) 0%, rgba(var(--accent-primary-rgb), 0.04) 50%, rgba(var(--color-secondary-rgb), 0.02) 100%), var(--bg-secondary);
+    border-color: rgba(var(--color-secondary-rgb), 0.15);
 }
 
 .announcement-card:nth-child(4n+3) {
-    background: linear-gradient(135deg, rgba(100, 150, 150, 0.08) 0%, rgba(44, 95, 90, 0.04) 50%, rgba(100, 150, 150, 0.02) 100%), var(--bg-secondary);
-    border-color: rgba(100, 150, 150, 0.15);
+    background: linear-gradient(135deg, rgba(var(--accent-primary-rgb), 0.08) 0%, rgba(var(--color-secondary-rgb), 0.04) 50%, rgba(var(--accent-primary-rgb), 0.02) 100%), var(--bg-secondary);
+    border-color: rgba(var(--accent-primary-rgb), 0.15);
 }
 
 .announcement-card:nth-child(4n+4) {
-    background: linear-gradient(135deg, rgba(150, 100, 150, 0.08) 0%, rgba(44, 95, 90, 0.04) 50%, rgba(150, 100, 150, 0.02) 100%), var(--bg-secondary);
-    border-color: rgba(150, 100, 150, 0.15);
+    background: linear-gradient(135deg, rgba(var(--color-secondary-rgb), 0.08) 0%, rgba(var(--accent-primary-rgb), 0.04) 50%, rgba(var(--color-secondary-rgb), 0.02) 100%), var(--bg-secondary);
+    border-color: rgba(var(--color-secondary-rgb), 0.15);
 }
 
 .announcement-card:hover {
     transform: translateY(-6px) scale(1.01);
-    border-color: rgba(212, 130, 42, 0.25);
-    box-shadow: 0 16px 40px rgba(212, 130, 42, 0.15);
+    border-color: rgba(var(--color-secondary-rgb), 0.25);
+    box-shadow: 0 16px 40px rgba(var(--color-secondary-rgb), 0.15);
     z-index: 10;
 }
 
@@ -121,12 +108,12 @@
     right: 0;
     height: 80px;
     background: linear-gradient(to bottom,
-        rgba(248, 244, 230, 0) 0%,
-        rgba(248, 244, 230, 0.3) 60%,
-        rgba(248, 244, 230, 0.7) 100%);
+            rgba(var(--bg-secondary-rgb), 0) 0%,
+            rgba(var(--bg-secondary-rgb), 0.3) 60%,
+            rgba(var(--bg-secondary-rgb), 0.7) 100%);
     pointer-events: none;
     z-index: 1;
-    box-shadow: inset 0 -40px 30px -20px rgba(212, 130, 42, 0.15);
+    box-shadow: inset 0 -40px 30px -20px rgba(var(--color-secondary-rgb), 0.15);
     transition: opacity 0.3s ease;
 }
 
@@ -158,7 +145,7 @@
     font-size: 0.75rem;
     color: var(--text-muted);
     white-space: nowrap;
-    background: linear-gradient(90deg, rgba(212, 130, 42, 0.1) 0%, rgba(44, 95, 90, 0.1) 100%);
+    background: linear-gradient(90deg, rgba(var(--color-secondary-rgb), 0.1) 0%, rgba(var(--accent-primary-rgb), 0.1) 100%);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-weight: 500;
@@ -172,7 +159,7 @@
 .announcement-card h4,
 .announcement-card h5,
 .announcement-card h6 {
-    color: var(--color-secondary-dark);
+    color: var(--accent-primary);
     margin-top: 0 !important;
     position: relative;
     padding-bottom: 0.25rem;
@@ -224,7 +211,7 @@
 
 .announcement-card .content p:not(:has(> a:only-child)) {
     padding-left: 8px;
-    border-left: 2px solid rgba(212, 130, 42, 0.2);
+    border-left: 2px solid rgba(var(--color-secondary-rgb), 0.2);
 }
 
 .announcement-card .content p:last-child {
@@ -235,7 +222,7 @@
 .announcement-card .content p:first-of-type::first-letter {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--color-secondary-dark);
+    color: var(--accent-primary);
     float: left;
     margin-right: 0.5rem;
     margin-top: 0.2rem;
@@ -295,7 +282,7 @@
     height: auto;
     border-radius: 8px;
     margin: var(--spacing-sm) auto;
-    box-shadow: 0 4px 16px rgba(44, 95, 90, 0.12);
+    box-shadow: 0 4px 16px rgba(var(--accent-primary-rgb), 0.12);
     transition: all 0.3s ease;
     display: block;
     position: relative;
@@ -305,14 +292,14 @@
 .announcement-card .cover-image {
     max-width: 400px;
     border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(212, 130, 42, 0.15);
-    border: 1px solid rgba(212, 130, 42, 0.1);
+    box-shadow: 0 8px 24px rgba(var(--color-secondary-rgb), 0.15);
+    border: 1px solid rgba(var(--color-secondary-rgb), 0.1);
 }
 
 .announcement-card img:hover,
 .announcement-card .cover-image:hover {
     transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 12px 32px rgba(212, 130, 42, 0.2);
+    box-shadow: 0 12px 32px rgba(var(--color-secondary-rgb), 0.2);
 }
 
 .announcement-card .cover-image::after {
@@ -320,9 +307,9 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.2) 100%);
+            rgba(var(--color-white-rgb), 0) 0%,
+            rgba(var(--color-white-rgb), 0.1) 50%,
+            rgba(var(--color-white-rgb), 0.2) 100%);
     pointer-events: none;
     border-radius: 10px;
     opacity: 0.8;
@@ -407,16 +394,16 @@
 }
 
 .announcement-card code {
-    background: rgba(44, 95, 90, 0.08);
+    background: rgba(var(--accent-primary-rgb), 0.08);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     font-family: var(--font-mono);
     font-size: 0.85em;
-    border: 1px solid rgba(212, 130, 42, 0.1);
+    border: 1px solid rgba(var(--color-secondary-rgb), 0.1);
 }
 
 .announcement-card strong {
-    color: var(--color-secondary-dark);
+    color: var(--accent-primary);
     font-weight: 600;
     position: relative;
 }
@@ -429,11 +416,11 @@
     right: 0;
     height: 0.5px;
     background: linear-gradient(90deg,
-        transparent 5%,
-        var(--color-secondary) 25%,
-        var(--color-primary) 50%,
-        var(--color-secondary) 75%,
-        transparent 95%);
+            transparent 5%,
+            var(--color-secondary) 25%,
+            var(--color-primary) 50%,
+            var(--color-secondary) 75%,
+            transparent 95%);
     opacity: 0.2;
 }
 
@@ -449,7 +436,7 @@
 }
 
 .announcement-card a:hover {
-    color: var(--color-primary);
+    color: var(--accent-primary);
     transform: translateY(-1px);
     filter: brightness(1.1);
 }
@@ -462,15 +449,20 @@
 
 /* Loading States */
 @keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
 }
 
 .loading-skeleton {
     background: linear-gradient(90deg,
-        var(--bg-secondary) 0%,
-        rgba(212, 130, 42, 0.08) 50%,
-        var(--bg-secondary) 100%);
+            var(--bg-secondary) 0%,
+            rgba(var(--color-secondary-rgb), 0.08) 50%,
+            var(--bg-secondary) 100%);
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
     border-radius: 8px;
@@ -502,7 +494,7 @@
     border-color: var(--color-secondary);
     color: var(--color-secondary);
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(212, 130, 42, 0.15);
+    box-shadow: 0 8px 24px rgba(var(--color-secondary-rgb), 0.15);
 }
 
 .load-more-btn:active {
@@ -560,6 +552,7 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+
     .announcement-card h1,
     .announcement-card h2,
     .announcement-card h3 {
@@ -572,6 +565,7 @@
 }
 
 @media (max-width: 480px) {
+
     .announcement-card h1,
     .announcement-card h2,
     .announcement-card h3 {
@@ -613,6 +607,7 @@
 }
 
 @media (max-width: 414px) {
+
     .announcement-card h1,
     .announcement-card h2,
     .announcement-card h3 {

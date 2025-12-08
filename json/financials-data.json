@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-06T17:56:00Z",
+    "lastUpdated": "2025-12-08T21:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -133,15 +133,15 @@
             "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "FOMC December Rate Decision (BPS)",
-            "lastUpdated": "2025-11-26T14:00:00Z",
+            "lastUpdated": "2025-12-08T14:00:00Z",
             "releaseDay": 10,
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-25dec",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-december",
             "next_meeting": "December 10, 2025",
             "bps_probabilities": {
-                "25BP Decrease": "85%",
-                "No Change": "15%",
-                "50+BP Decrease": "2%",
+                "25BP Decrease": "94%",
+                "No Change": "6%",
+                "50+BP Decrease": "1%",
                 "25+BP Increase": "<1%"
             },
             "change": "",
@@ -159,44 +159,31 @@
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
         },
+    
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "BUF @ HOU",
-            "game_title": "Bills @ Texans",
-            "game_time": "Nov 20, 2025 8:15 PM ET",
-            "game_time_iso": "2025-11-20T20:15:00-05:00",
-            "lastUpdated": "2025-11-20T14:00:00Z",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25nov20bufhou",
-            "polymarket_url": "https://polymarket.com/event/nfl-buf-hou-2025-11-20",
-            "BUF_win_odds": "72¢",
-            "HOU_win_odds": "29¢",
-            "explanation": "NFL game prediction market showing the probability of the Bills covering the spread against the Texans. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-        },
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "NE @ CIN",
-            "game_title": "Patriots @ Bengals",
-            "game_time": "Nov 23, 2025 1:00 PM ET",
-            "game_time_iso": "2025-11-23T13:00:00-05:00",
-            "lastUpdated": "2025-11-19T14:00:00Z",
-            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25nov23necin",
-            "polymarket_url": "https://polymarket.com/event/nfl-ne-cin-2025-11-23",
-            "NE_win_odds": "79¢",
-            "CIN_win_odds": "22¢",
-            "explanation": "NFL game prediction market showing the probability of the Patriots covering the spread against the Bengals. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+            "name": "PHI @ LAC",
+            "game_title": "Eagles @ Chargers",
+            "game_time": "Dec 8, 2025 8:15 PM ET",
+            "game_time_iso": "2025-12-08T20:15:00-05:00",
+            "lastUpdated": "2025-12-08T17:56:00Z",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-25dec08philac",
+            "polymarket_url": "https://polymarket.com/event/nfl-phi-lac-2025-12-08",
+            "PHI_win_odds": "57¢",
+            "LAC_win_odds": "45¢",
+            "explanation": "NFL game prediction market showing the probability of the Eagles covering the spread against the Chargers. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
         },
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
             "name": "US Recession in 2025",
-            "lastUpdated": "2025-10-15T14:00:00Z",
+            "lastUpdated": "2025-12-08T14:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-recession-in-2025?tid=1759178395896",
             "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/recssnber-25",
-            "yes_probability": "5¢",
-            "no_probability": "95¢",
+            "yes_probability": "2¢",
+            "no_probability": "98¢",
             "change": "",
             "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 95¢ (95%) chance of no recession vs 5¢ (5%) chance of recession."
         },
@@ -223,7 +210,7 @@
         {
             "category": "Commodities",
             "agency": "USDA NASS",
-            "name": "Wheat Prices",
+            "name": "Wheat",
             "lastUpdated": "2025-08-15T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
@@ -241,7 +228,7 @@
         {
             "category": "Commodities",
             "agency": "USDA NASS",
-            "name": "Soybean Prices",
+            "name": "Soybeans",
             "lastUpdated": "2025-08-15T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
@@ -255,6 +242,24 @@
             "august": "10.00",
             "change": "",
             "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
+        },
+        {
+            "category": "Commodities",
+            "agency": "USDA NASS",
+            "name": "Beef",
+            "lastUpdated": "2025-12-08T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
+            "january": "199.00",
+            "february": "203.00",
+            "march": "202.00",
+            "april": "208.00",
+            "may": "219.00",
+            "june": "228.00",
+            "july": "229.00",
+            "august": "236.00",
+            "change": "",
+            "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers."
         },
         {
             "category": "Commodities",

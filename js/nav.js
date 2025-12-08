@@ -1,26 +1,26 @@
 // Generate sticky navbar with links to all pages
 document.addEventListener('DOMContentLoaded', () => {
-    const navContainer = document.getElementById('main-nav');
+  const navContainer = document.getElementById('main-nav');
 
-    const PAGES = [
-        { name: 'Home', file: 'index.html' },
-        { name: 'News', file: 'news.html' },
-        { name: 'Numbers', file: 'financials.html' },
-        { name: 'Media', file: 'media.html' },
-        { name: 'Tweets', file: 'journal.html' }
-    ];
+  const PAGES = [
+    { name: 'Home', file: 'index.html' },
+    { name: 'News', file: 'news.html' },
+    { name: 'Numbers', file: 'financials.html' },
+    { name: 'Media', file: 'media.html' },
+    { name: 'Tweets', file: 'journal.html' }
+  ];
 
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    const renderNavLink = (page) => {
-        const isActive = currentPage === page.file || (currentPage === '' && page.file === 'index.html');
-        if (page.file === 'index.html') {
-            return `<li><a href="${page.file}" class="nav-link nav-logo" title="Home"><picture><source srcset="images/logo-360x360.webp" type="image/webp"><img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" width="32" height="32" loading="lazy"></picture></a></li>`;
-        }
-        return `<li><a href="${page.file}" class="nav-link ${isActive ? 'active' : ''}">${page.name}</a></li>`;
-    };
+  const renderNavLink = (page) => {
+    const isActive = currentPage === page.file || (currentPage === '' && page.file === 'index.html');
+    if (page.file === 'index.html') {
+      return `<li><a href="${page.file}" class="nav-link nav-logo" title="Home"><picture><source srcset="images/logo-360x360.webp" type="image/webp"><img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" width="32" height="32" loading="lazy"></picture></a></li>`;
+    }
+    return `<li><a href="${page.file}" class="nav-link ${isActive ? 'active' : ''}">${page.name}</a></li>`;
+  };
 
-    const navHTML = `
+  const navHTML = `
     <div class="nav-container">
       <ul class="nav-list">
         ${PAGES.map(renderNavLink).join('')}
@@ -48,14 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="cta-subtext">You could go to NPR and learn about sauces, captions, and uncertainty, or you could come here and read about things that actually affect your life.</p>
           </div>
         </div>
-        <!-- Separator between CTA and Performance sections -->
-        <div class="cta-separator">
-          <hr class="cta-hr">
-          <span class="cta-separator-text">Performance Dashboard</span>
-          <hr class="cta-hr">
         </div>
-        <!-- Tiny Dashboard - appears after main CTA, clearly separated -->
-        <div class="cta-tiny-dashboard" id="cta-tiny-dashboard"></div>
       </section>
     </div>
     <!-- First-time visitor hints -->
@@ -109,209 +102,110 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
   `;
 
-    navContainer.innerHTML = navHTML;
+  navContainer.innerHTML = navHTML;
 
-    // Initialize Lucide icons for the navbar - wait for library if needed
-    const initializeLucideIcons = () => {
-        if (window.lucide?.createIcons) {
-            lucide.createIcons();
-        } else {
-            setTimeout(initializeLucideIcons, 100);
-        }
+  // Initialize Lucide icons for the navbar - wait for library if needed
+  window.initializeLucideIcons = () => {
+    if (window.lucide?.createIcons) {
+      lucide.createIcons();
+    } else {
+      setTimeout(window.initializeLucideIcons, 100);
+    }
+  };
+
+  window.initializeLucideIcons();
+
+  // Helper function to get badge class based on score
+  const getBadgeClass = (type, score) => {
+    if (score < 50) return `${type}-0-49`;
+    if (score < 75) return `${type}-50-74`;
+    if (score < 90) return `${type}-75-89`;
+    return `${type}-90-100`;
+  };
+
+  // CTA Modal toggle
+  const setupCtaModal = () => {
+    const ctaToggle = document.getElementById('cta-toggle');
+    const ctaModal = document.getElementById('cta-modal');
+    if (!ctaToggle || !ctaModal) return;
+
+    ctaToggle.addEventListener('click', () => {
+      const isOpen = ctaModal.style.display === 'block';
+      ctaModal.style.display = isOpen ? 'none' : 'block';
+      ctaModal.classList.toggle('active', !isOpen);
+      ctaModal.toggleAttribute('inert', isOpen);
+
+      if (!isOpen) {
+        // initializeTinyDashboard removed
+      }
+    });
+
+    const closeCtaModal = () => {
+      ctaModal.style.display = 'none';
+      ctaModal.classList.remove('active');
+      ctaModal.setAttribute('inert', '');
+      localStorage.setItem('ctaDismissed', 'true');
     };
 
-    initializeLucideIcons();
+    const ctaCloseBtn = ctaModal.querySelector('.cta-close-btn');
+    const ctaOverlay = ctaModal.querySelector('.cta-modal-overlay');
+    [ctaCloseBtn, ctaOverlay].forEach(el => el?.addEventListener('click', closeCtaModal));
+  };
 
-    // Initialize tiny dashboard with colored badges for all pages
-    const initializeTinyDashboard = () => {
-        const dashboardContainer = document.getElementById('cta-tiny-dashboard');
-        if (!dashboardContainer) return;
+  setupCtaModal();
 
-        // Load tiny dashboard CSS if not already loaded
-        if (!document.querySelector('link[href="css/tiny-dashboard.css"]')) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'css/tiny-dashboard.css';
-            document.head.appendChild(link);
-        }
+  // Hints toggle
+  const setupHintsModal = () => {
+    const hintsToggle = document.getElementById('hints-toggle');
+    const visitorHints = document.getElementById('visitor-hints');
+    if (!hintsToggle || !visitorHints) return;
 
-        // Page performance data (simulated Lighthouse scores)
-        const PAGE_DATA = [
-            { name: 'Index', perf: 74, acc: 96, bp: 75, seo: 100 },
-            { name: 'News', perf: 68, acc: 92, bp: 70, seo: 95 },
-            { name: 'Numbers', perf: 82, acc: 94, bp: 80, seo: 98 },
-            { name: 'Media', perf: 78, acc: 90, bp: 72, seo: 97 },
-            { name: 'Tweets', perf: 85, acc: 93, bp: 78, seo: 99 }
-        ];
-
-        const renderPageBadges = (page) => `
-      <div class="tiny-dashboard-page">
-        <span class="tiny-dashboard-label">${page.name}:</span>
-        <div class="tiny-dashboard-badges">
-          <span class="tiny-badge ${getBadgeClass('perf', page.perf)}" title="Performance: ${page.perf}">P${page.perf}</span>
-          <span class="tiny-badge ${getBadgeClass('acc', page.acc)}" title="Accessibility: ${page.acc}">A${page.acc}</span>
-          <span class="tiny-badge ${getBadgeClass('bp', page.bp)}" title="Best Practices: ${page.bp}">B${page.bp}</span>
-          <span class="tiny-badge ${getBadgeClass('seo', page.seo)}" title="SEO: ${page.seo}">S${page.seo}</span>
-        </div>
-      </div>
-    `;
-
-        const formatDate = () => new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-        // Create dashboard HTML
-        const dashboardHTML = `
-      <div class="tiny-dashboard">
-        <div class="tiny-dashboard-header">
-          <span class="tiny-dashboard-title">Page Performance</span>
-          <span class="tiny-dashboard-date">${formatDate()}</span>
-        </div>
-        <div class="tiny-dashboard-pages">
-          ${PAGE_DATA.map(renderPageBadges).join('')}
-        </div>
-      </div>
-    `;
-
-        dashboardContainer.innerHTML = dashboardHTML;
-
-        // Add performance scores table below the existing dashboard using the same format
-        const addPerformanceScoresTable = () => {
-            const scoresTableHTML = `
-        <div class="tiny-dashboard">
-          <div class="tiny-dashboard-header">
-            <span class="tiny-dashboard-title">Website Performance</span>
-          </div>
-          <div class="tiny-dashboard-pages">
-            <div class="tiny-dashboard-page">
-              <span class="tiny-dashboard-label">Performance:</span>
-              <div class="tiny-dashboard-badges">
-                <span class="tiny-badge perf-50-74" title="Performance: 63">P63</span>
-                <span class="tiny-badge acc-75-89" title="Accessibility: 96">A96</span>
-                <span class="tiny-badge bp-50-74" title="Best Practices: 75">B75</span>
-                <span class="tiny-badge seo-90-100" title="SEO: 100">S100</span>
-              </div>
-            </div>
-            <div class="tiny-dashboard-page">
-              <span class="tiny-dashboard-label">Metrics:</span>
-              <div class="tiny-dashboard-badges">
-                <span class="tiny-badge perf-75-89" title="First Contentful Paint: 94">FCP94</span>
-                <span class="tiny-badge perf-0-49" title="Largest Contentful Paint: 10">LCP10</span>
-                <span class="tiny-badge perf-50-74" title="Total Blocking Time: 75">TBT75</span>
-                <span class="tiny-badge perf-50-74" title="Cumulative Layout Shift: 76">CLS76</span>
-              </div>
-            </div>
-            <div class="tiny-dashboard-page">
-              <span class="tiny-dashboard-label">Timing:</span>
-              <div class="tiny-dashboard-badges">
-                <span class="tiny-badge perf-90-100" title="Speed Index: 100">SI100</span>
-                <span class="tiny-badge perf-0-49" title="Time to Interactive: 48">TTI48</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-
-            // Append the performance scores table after the existing dashboard
-            const scoresTableContainer = document.createElement('div');
-            scoresTableContainer.className = 'performance-scores-container';
-            scoresTableContainer.innerHTML = scoresTableHTML;
-            dashboardContainer.appendChild(scoresTableContainer);
-        };
-
-        // Call the function to add the performance scores table
-        addPerformanceScoresTable();
+    const closeHints = () => {
+      visitorHints.style.display = 'none';
+      visitorHints.classList.remove('active');
+      visitorHints.setAttribute('inert', '');
+      localStorage.setItem('hintsShown', 'true');
     };
 
-    // Helper function to get badge class based on score
-    const getBadgeClass = (type, score) => {
-        if (score < 50) return `${type}-0-49`;
-        if (score < 75) return `${type}-50-74`;
-        if (score < 90) return `${type}-75-89`;
-        return `${type}-90-100`;
+    const openHints = () => {
+      visitorHints.style.display = 'block';
+      visitorHints.classList.add('active');
+      visitorHints.removeAttribute('inert');
     };
 
-    // CTA Modal toggle
-    const setupCtaModal = () => {
-        const ctaToggle = document.getElementById('cta-toggle');
-        const ctaModal = document.getElementById('cta-modal');
-        if (!ctaToggle || !ctaModal) return;
+    hintsToggle.addEventListener('click', () => {
+      const isHidden = visitorHints.style.display === 'none' || visitorHints.style.display === '';
+      isHidden ? openHints() : closeHints();
+    });
 
-        ctaToggle.addEventListener('click', () => {
-            const isOpen = ctaModal.style.display === 'block';
-            ctaModal.style.display = isOpen ? 'none' : 'block';
-            ctaModal.classList.toggle('active', !isOpen);
-            ctaModal.toggleAttribute('inert', isOpen);
+    const hintOverlay = visitorHints.querySelector('.hint-overlay');
+    const hintCloseX = visitorHints.querySelector('.hint-close-btn');
+    const hintCloseBtn = visitorHints.querySelector('#hint-close-btn');
+    [hintOverlay, hintCloseX, hintCloseBtn].forEach(el => el?.addEventListener('click', closeHints));
+  };
 
-            if (!isOpen) {
-                initializeTinyDashboard();
-            }
-        });
+  setupHintsModal();
 
-        const closeCtaModal = () => {
-            ctaModal.style.display = 'none';
-            ctaModal.classList.remove('active');
-            ctaModal.setAttribute('inert', '');
-            localStorage.setItem('ctaDismissed', 'true');
-        };
+  // Navbar hide/show on scroll
+  const setupNavbarScroll = () => {
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('main-nav');
+    const SCROLL_THRESHOLD = 100;
 
-        const ctaCloseBtn = ctaModal.querySelector('.cta-close-btn');
-        const ctaOverlay = ctaModal.querySelector('.cta-modal-overlay');
-        [ctaCloseBtn, ctaOverlay].forEach(el => el?.addEventListener('click', closeCtaModal));
-    };
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const isScrollingDown = currentScroll > lastScrollTop;
+      const isPastThreshold = currentScroll > SCROLL_THRESHOLD;
 
-    setupCtaModal();
+      if (isScrollingDown && isPastThreshold) {
+        navbar.classList.add('nav-hidden');
+      } else {
+        navbar.classList.remove('nav-hidden');
+      }
 
-    // Hints toggle
-    const setupHintsModal = () => {
-        const hintsToggle = document.getElementById('hints-toggle');
-        const visitorHints = document.getElementById('visitor-hints');
-        if (!hintsToggle || !visitorHints) return;
+      lastScrollTop = Math.max(0, currentScroll);
+    });
+  };
 
-        const closeHints = () => {
-            visitorHints.style.display = 'none';
-            visitorHints.classList.remove('active');
-            visitorHints.setAttribute('inert', '');
-            localStorage.setItem('hintsShown', 'true');
-        };
-
-        const openHints = () => {
-            visitorHints.style.display = 'block';
-            visitorHints.classList.add('active');
-            visitorHints.removeAttribute('inert');
-        };
-
-        hintsToggle.addEventListener('click', () => {
-            const isHidden = visitorHints.style.display === 'none' || visitorHints.style.display === '';
-            isHidden ? openHints() : closeHints();
-        });
-
-        const hintOverlay = visitorHints.querySelector('.hint-overlay');
-        const hintCloseX = visitorHints.querySelector('.hint-close-btn');
-        const hintCloseBtn = visitorHints.querySelector('#hint-close-btn');
-        [hintOverlay, hintCloseX, hintCloseBtn].forEach(el => el?.addEventListener('click', closeHints));
-    };
-
-    setupHintsModal();
-
-    // Navbar hide/show on scroll
-    const setupNavbarScroll = () => {
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('main-nav');
-        const SCROLL_THRESHOLD = 100;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            const isScrollingDown = currentScroll > lastScrollTop;
-            const isPastThreshold = currentScroll > SCROLL_THRESHOLD;
-
-            if (isScrollingDown && isPastThreshold) {
-                navbar.classList.add('nav-hidden');
-            } else {
-                navbar.classList.remove('nav-hidden');
-            }
-
-            lastScrollTop = Math.max(0, currentScroll);
-        });
-    };
-
-    setupNavbarScroll();
+  setupNavbarScroll();
 });

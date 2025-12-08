@@ -128,9 +128,13 @@
       }
       
       // Reload on back/forward navigation
+      let pageRestored = false;
       window.addEventListener('pageshow', (event) => {
-        if (event.persisted) {
+        if (event.persisted && !pageRestored) {
+          pageRestored = true;
           console.log('Page restored from cache, reloading announcements');
+          const container = document.querySelector('#announcements-container');
+          container.innerHTML = ''; // Clear before reload
           loadAnnouncements();
         }
       });

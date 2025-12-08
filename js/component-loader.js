@@ -33,6 +33,11 @@ export async function loadComponent(url, targetSelector, options = {}) {
         appendScriptElements(tempDiv, target);
         break;
       default:
+        // Remove old event listeners before replacing content
+        const oldElements = target.querySelectorAll('*');
+        oldElements.forEach(el => {
+          el.replaceWith(el.cloneNode(false));
+        });
         target.innerHTML = html;
     }
   } catch (error) {

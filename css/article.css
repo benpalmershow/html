@@ -491,8 +491,61 @@
   font-weight: 500;
 }
 
+/* Justices grid layout */
+.justices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.justice-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.justice-card:hover {
+  border-color: var(--logo-orange);
+  box-shadow: 0 4px 12px rgba(212, 130, 42, 0.1);
+  transform: translateY(-2px);
+}
+
+.justice-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  margin-top: 0 !important;
+}
+
+.justice-card h3 {
+  margin-top: 0 !important;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+  .justices-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .justice-card {
+    padding: 1rem;
+  }
+
+  .justice-image {
+    max-height: 250px;
+  }
+
   .article-wrapper {
     padding: 0 15px;
   }

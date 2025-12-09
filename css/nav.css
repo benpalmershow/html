@@ -207,8 +207,8 @@
 /* CTA Container in Modal - Anchored popover */
 .cta-modal .cta-container {
     position: relative;
-    background: var(--color-black, #000000);
-    border: 1px solid var(--color-gray-800, #333);
+    background: var(--bg-primary, #fdf6e8);
+    border: 1px solid var(--border-color, #e0dcc4);
     border-radius: 0.5rem;
     padding: 1rem;
     max-width: 450px;
@@ -252,12 +252,12 @@
     font-family: 'Georgia', serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-white, #ffffff);
+    color: var(--text-primary, #000000);
 }
 
 .cta-subtext {
     font-size: 0.85rem;
-    color: var(--color-gray-300, #dee2e6);
+    color: var(--text-secondary, #343a40);
     font-style: italic;
     font-weight: 400;
     line-height: 1.4;
@@ -473,6 +473,29 @@
     .hint-close-btn-action:hover {
         background: var(--accent-primary);
     }
+
+    /* CTA modal dark mode */
+    .cta-modal .cta-container {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+    }
+
+    .cta-text-wrapper span:first-child {
+        color: var(--color-white);
+    }
+
+    .cta-subtext {
+        color: var(--text-secondary);
+    }
+
+    .cta-close-btn {
+        color: var(--text-secondary);
+    }
+
+    .cta-close-btn:hover {
+        background-color: var(--border-color);
+        color: var(--text-primary);
+    }
 }
 
 /* Mobile Responsive */
@@ -600,6 +623,59 @@
     .nav-right-section {
         gap: 0.5rem;
     }
+
+    .cta-icon-btn i[data-lucide],
+    .hints-icon-btn i[data-lucide],
+    .dark-mode-toggle i[data-lucide] {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .hint-content {
+        width: 95%;
+        max-height: 90vh;
+        padding: var(--spacing-xs, 0.5rem);
+    }
+
+    .hint-content h3 {
+        font-size: 0.8rem;
+    }
+
+    .hint-step {
+        gap: var(--spacing-xs, 0.5rem);
+    }
+
+    .hint-step strong {
+        font-size: 0.75rem;
+    }
+
+    .hint-step div {
+        font-size: 0.7rem;
+    }
+
+    .hint-close {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .cta-modal .cta-container {
+        width: 90vw;
+        max-width: 95%;
+        padding: var(--spacing-xs, 0.5rem);
+    }
+
+    .cta-button i[data-lucide] {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .cta-text-wrapper span:first-child {
+        font-size: 0.8rem;
+    }
+
+    .cta-subtext {
+        font-size: 0.65rem;
+    }
 }
 
 /* Manual Dark Mode Toggle Support for Visitor Hints */
@@ -638,58 +714,25 @@ html.dark-mode .hint-close-btn-action:hover {
     background: var(--accent-primary);
 }
 
-
-
-
-.cta-icon-btn i[data-lucide],
-.hints-icon-btn i[data-lucide],
-.dark-mode-toggle i[data-lucide] {
-    width: 1.1rem;
-    height: 1.1rem;
+/* Manual Dark Mode Toggle Support for CTA Modal */
+html.dark-mode .cta-modal .cta-container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
 }
 
-.hint-content {
-    width: 95%;
-    max-height: 90vh;
-    padding: var(--spacing-xs, 0.5rem);
+html.dark-mode .cta-text-wrapper span:first-child {
+    color: var(--color-white);
 }
 
-.hint-content h3 {
-    font-size: 0.8rem;
+html.dark-mode .cta-subtext {
+    color: var(--text-secondary);
 }
 
-.hint-step {
-    gap: var(--spacing-xs, 0.5rem);
+html.dark-mode .cta-close-btn {
+    color: var(--text-secondary);
 }
 
-.hint-step strong {
-    font-size: 0.75rem;
-}
-
-.hint-step div {
-    font-size: 0.7rem;
-}
-
-.hint-close {
-    padding: 0.35rem 0.75rem;
-    font-size: 0.8rem;
-}
-
-.cta-modal .cta-container {
-    width: 90vw;
-    max-width: 95%;
-    padding: var(--spacing-xs, 0.5rem);
-}
-
-.cta-button i[data-lucide] {
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.cta-text-wrapper span:first-child {
-    font-size: 0.8rem;
-}
-
-.cta-subtext {
-    font-size: 0.65rem;
+html.dark-mode .cta-close-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
 }

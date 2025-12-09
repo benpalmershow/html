@@ -1,25 +1,67 @@
 (function() {
     let articlesIndex = [];
 
-    // Parse frontmatter from markdown
+    // Parse frontmatter from markdown (including YAML arrays)
     function parseFrontmatter(markdown) {
       const match = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
       if (!match) return { metadata: {}, content: markdown };
       
       const [, frontmatter, content] = match;
       const metadata = {};
+      const lines = frontmatter.split('\n');
       
-      frontmatter.split('\n').forEach(line => {
+      let i = 0;
+      while (i < lines.length) {
+        const line = lines[i];
         const colonIndex = line.indexOf(':');
+        
         if (colonIndex > -1) {
           const key = line.substring(0, colonIndex).trim();
           let value = line.substring(colonIndex + 1).trim();
+          
+          // Handle arrays (resources, etc.)
+          if (key === 'resources' && value === '') {
+            const resources = [];
+            i++;
+            while (i < lines.length && lines[i].startsWith('  - ')) {
+              const resourceLines = [];
+              resourceLines.push(lines[i]);
+              i++;
+              while (i < lines.length && lines[i].startsWith('    ') && !lines[i].startsWith('  - ')) {
+                resourceLines.push(lines[i]);
+                i++;
+              }
+              
+              const resource = {};
+              resourceLines.forEach(resLine => {
+                let trimmedLine = resLine.trim();
+                // Remove leading '- ' from first array item
+                if (trimmedLine.startsWith('- ')) {
+                  trimmedLine = trimmedLine.substring(2);
+                }
+                const resParts = trimmedLine.split(':');
+                if (resParts.length >= 2) {
+                  const resKey = resParts[0].trim();
+                  let resValue = resParts.slice(1).join(':').trim();
+                  if (resValue.startsWith('"') && resValue.endsWith('"')) {
+                    resValue = resValue.slice(1, -1);
+                  }
+                  resource[resKey] = resValue;
+                }
+              });
+              if (Object.keys(resource).length > 0) resources.push(resource);
+            }
+            metadata[key] = resources;
+            continue;
+          }
+          
           if (value.startsWith('"') && value.endsWith('"')) {
             value = value.slice(1, -1);
           }
           metadata[key] = value;
         }
-      });
+        i++;
+      }
       
       return { metadata, content };
     }
@@ -59,6 +101,18 @@
     // Render article card
     function renderArticleCard(article) {
       const previewText = generatePreviewText(article.summary);
+      let resourceLinksHtml = '';
+      
+      // Add resource links if present
+      if (article.resources && Array.isArray(article.resources) && article.resources.length > 0) {
+        resourceLinksHtml = '<div class="card-resources">';
+        article.resources.forEach(resource => {
+          const iconName = resource.icon || 'link';
+          resourceLinksHtml += `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link" title="${resource.title}"><i data-lucide="${iconName}" class="resource-icon"></i></a>`;
+        });
+        resourceLinksHtml += '</div>';
+      }
+      
       return `
         <div class="accordion-card" data-category="${article.category}">
           <div class="accordion-header">
@@ -69,6 +123,7 @@
               <h2 class="accordion-title">${article.title}</h2>
             </div>
             <div class="accordion-meta">
+              ${resourceLinksHtml}
               <i data-lucide="chevron-down" class="expand-icon" aria-label="Expand article details"></i>
             </div>
           </div>
@@ -183,6 +238,17 @@
         metaHtml += `<span class="article-ticker"><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
       }
       metaHtml += `<span class="category-badge ${article.metadata.category}">${article.metadata.category}</span>`;
+      
+      // Add resource links if present
+      if (article.metadata.resources && Array.isArray(article.metadata.resources) && article.metadata.resources.length > 0) {
+        metaHtml += '<div class="article-resources">';
+        article.metadata.resources.forEach(resource => {
+          const iconName = resource.icon || 'link';
+          metaHtml += `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link" title="${resource.title}"><i data-lucide="${iconName}" class="resource-icon"></i></a>`;
+        });
+        metaHtml += '</div>';
+      }
+      
       metaEl.innerHTML = metaHtml;
       backButton.insertAdjacentElement('afterend', metaEl);
 

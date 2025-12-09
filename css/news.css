@@ -400,7 +400,14 @@ blockquote.guidance-box {
 .accordion-meta {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+}
+
+/* Card resources section */
+.card-resources {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .accordion-header:hover {
@@ -1487,6 +1494,7 @@ table td {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--border-color);
@@ -1515,6 +1523,44 @@ table td {
 .article-ticker a:hover {
   color: var(--logo-teal-dark);
   text-decoration: underline;
+}
+
+/* Article resources section */
+.article-resources {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  padding: 0;
+}
+
+.resource-link:hover {
+  background: var(--logo-teal);
+  color: white;
+  border-color: var(--logo-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resource-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* Position badges in upper right corner for full articles */
@@ -1681,11 +1727,18 @@ table td {
   }
 
   .article-meta-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
     padding: 0.75rem 0;
     font-size: 0.85em;
+    justify-content: flex-start;
+  }
+
+  .article-resources {
+    margin-left: auto;
+    margin-top: 0;
   }
 
   .article-content {

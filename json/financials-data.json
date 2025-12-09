@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-08T21:56:00Z",
+    "lastUpdated": "2025-12-09T21:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -476,7 +476,7 @@
             "category": "Consumer Indicators",
             "agency": "Manheim",
             "name": "Used Vehicle Value Index",
-            "lastUpdated": "2025-10-07T14:00:00Z",
+            "lastUpdated": "2025-12-09T21:56:00Z",
             "releaseDay": 7,
             "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
             "march": "202.6",
@@ -486,7 +486,8 @@
             "july": "207.4",
             "august": "207.4",
             "september": "207",
-            "october": "203.6",
+            "october": "202.9",
+            "november": "205.4",
             "change": "",
             "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."
         },
@@ -736,7 +737,7 @@
             "category": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2025-08-15T14:00:00Z",
+            "lastUpdated": "2025-12-09T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
             "march": "7,200,000",
@@ -745,6 +746,8 @@
             "june": "7,357,000",
             "july": "7,208,000",
             "august": "7,227,000",
+            "september":"7,658,000",
+            "october":"7,670,000",
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."
         },
@@ -913,7 +916,7 @@
             "category": "Business Indicators",
             "agency": "NFIB",
             "name": "Small Business Optimism Index",
-            "lastUpdated": "2025-10-12T14:00:00Z",
+            "lastUpdated": "2025-12-09T14:00:00Z",
             "releaseDay": 12,
             "url": "https://www.nfib.com/news/monthly_report/sbet/",
             "march": "97.4",
@@ -924,6 +927,7 @@
             "august": "100.8",
             "september": "98.8",
             "october": "98.2",
+            "november":"99",
             "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."
         },

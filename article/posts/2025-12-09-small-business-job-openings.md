@@ -28,6 +28,17 @@ The modest monthly gain reflects improved sentiment heading into year-end, with 
 
 ---
 
+### <i data-lucide='car' class='post-icon'></i> **Used Vehicles**
+
+
+- **Manheim Used Vehicle Value Index**: November 205.4 (+1.2% MoM)
+
+{{chart:Used Vehicle Value Index}}
+
+[View consumer indicators](financials.html?filter=Consumer%20Indicators)
+
+---
+
 ### <i data-lucide='gavel' class='post-icon'></i> **You're Fired!**
 
 Supreme Court oral arguments revealed a likely majority ready to expand presidential authority to remove FTC commissioners without cause, potentially reshaping oversight of independent agencies nationwide.

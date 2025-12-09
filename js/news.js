@@ -123,13 +123,13 @@
               <h2 class="accordion-title">${article.title}</h2>
             </div>
             <div class="accordion-meta">
-              ${resourceLinksHtml}
               <i data-lucide="chevron-down" class="expand-icon" aria-label="Expand article details"></i>
             </div>
           </div>
           <div class="accordion-content">
             <div class="accordion-expanded-header">
               <time class="accordion-expanded-date" datetime="${article.date}">${formatDate(article.date)}</time>
+              ${resourceLinksHtml}
             </div>
             <div class="accordion-full-preview">
               <p>${previewText}</p>
@@ -238,16 +238,6 @@
         metaHtml += `<span class="article-ticker"><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
       }
       metaHtml += `<span class="category-badge ${article.metadata.category}">${article.metadata.category}</span>`;
-      
-      // Add resource links if present
-      if (article.metadata.resources && Array.isArray(article.metadata.resources) && article.metadata.resources.length > 0) {
-        metaHtml += '<div class="article-resources">';
-        article.metadata.resources.forEach(resource => {
-          const iconName = resource.icon || 'link';
-          metaHtml += `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link" title="${resource.title}"><i data-lucide="${iconName}" class="resource-icon"></i></a>`;
-        });
-        metaHtml += '</div>';
-      }
       
       metaEl.innerHTML = metaHtml;
       backButton.insertAdjacentElement('afterend', metaEl);

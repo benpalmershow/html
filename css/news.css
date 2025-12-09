@@ -408,6 +408,37 @@ blockquote.guidance-box {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+  margin-bottom: -0.25rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.card-resources::-webkit-scrollbar {
+  display: none;
+}
+
+.card-resources .resource-link {
+  flex-shrink: 0;
+}
+
+/* Ensure expand icon has proper spacing */
+.accordion-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expand-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-gray-500);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
 }
 
 .accordion-header:hover {
@@ -589,6 +620,11 @@ blockquote.guidance-box {
 
 .accordion-expanded-header {
   padding: 1rem 1rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .accordion-expanded-date {
@@ -677,6 +713,28 @@ blockquote.guidance-box {
   .accordion-expanded-header {
     padding: 0.875rem 0.875rem 0.375rem;
     border-bottom-color: var(--color-gray-200);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .accordion-expanded-header .card-resources {
+    margin-left: auto;
+    max-width: 100%;
+    flex: 0 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+    min-width: 0;
+  }
+
+  .accordion-expanded-header .card-resources::-webkit-scrollbar {
+    display: none;
+  }
+
+  .accordion-expanded-header .resource-link {
+    flex-shrink: 0;
   }
 
   .accordion-expanded-date {
@@ -735,6 +793,7 @@ blockquote.guidance-box {
     padding: 0.375rem 0.75rem 0.75rem;
   }
 }
+
 
 /* Table styles remain the same */
 .table-wrapper table th,

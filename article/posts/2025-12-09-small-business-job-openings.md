@@ -39,7 +39,7 @@ The modest monthly gain reflects improved sentiment heading into year-end, with 
 
 ---
 
-### <i data-lucide='gavel' class='post-icon'></i> **Is the water warm General?**
+### <i data-lucide='gavel' class='post-icon'></i> **Is the water warm, General?**
 
 Supreme Court oral arguments revealed a likely majority ready to expand presidential authority to remove FTC commissioners without cause, potentially reshaping oversight of independent agencies nationwide.
 

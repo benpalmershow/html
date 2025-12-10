@@ -353,7 +353,7 @@ blockquote.guidance-box {
   position: relative;
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   border-radius: 8px;
-  margin: 0.5rem 0;
+  margin: 0.5rem auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
@@ -363,6 +363,7 @@ blockquote.guidance-box {
   animation: slideInUp 0.4s ease-out;
   animation-fill-mode: both;
   contain: layout style;
+  max-width: 500px;
 }
 
 .accordion-card:hover {
@@ -673,6 +674,7 @@ blockquote.guidance-box {
     border-radius: 8px;
     border-color: var(--color-gray-200);
     box-shadow: 0 1px 8px var(--shadow-color);
+    max-width: 100%;
   }
 
   .accordion-header {
@@ -1237,7 +1239,7 @@ table td {
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
   padding: 0;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
   box-shadow: 0 2px 8px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
@@ -1245,6 +1247,7 @@ table td {
   transform: translateZ(0);
   backface-visibility: hidden;
   isolation: isolate;
+  max-width: 800px;
 }
 
 .news-card:hover {
@@ -1427,6 +1430,7 @@ table td {
   .news-card {
     margin: 1rem 0;
     position: relative;
+    max-width: 100%;
   }
 
   .news-card-header {

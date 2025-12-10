@@ -6,7 +6,7 @@ date: 2025-12-10T11:00:00
 
 <a href="https://yieldgiving.com/essays/we-are-the-ones-we-ve-been-waiting-for/" target="_blank" rel="noopener">MacKenzie Scott</a> distributes $7.2 billion (<a href="https://en.wikipedia.org/wiki/Jeff_Bezos" target="_blank" rel="noopener">of Bezos'</a> money) to organizations globally.
 
----
+
 ### <i data-lucide='gavel' class='post-icon'></i> **Accountable to the People**
 
 Oral arguments concluded on the FTC removal case. A clear majority of justices appeared ready to rule the President has unfettered removal power over independent agency commissioners. The stakes extend far beyond the FTC—potential implications for Federal Reserve, NLRB, SEC, and dozens of institutions built on removal protections over 90 years. 
@@ -15,7 +15,7 @@ Oral arguments concluded on the FTC removal case. A clear majority of justices a
 
 [Read the full analysis](news.html?article=slaughter-v-trump)
 
----
+
 
 ### <i data-lucide='trending-down' class='post-icon'></i> **FOMC Cuts 25BPS**
 

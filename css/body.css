@@ -617,15 +617,6 @@ html.dark-mode h2 {
     }
 }
 
-@media (max-width:480px) {
-
-    button,
-    a,
-    .filter-btn {
-        min-height: 44px;
-        min-width: 44px;
-    }
-}
 
 @media (max-width:768px) {
     :root {

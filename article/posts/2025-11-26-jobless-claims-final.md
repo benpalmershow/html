@@ -12,7 +12,7 @@ Claims below 300,000 typically indicate a resilient job market. The recent decli
 
 ---
 
-### **Climate Denial**
+### **Conformity Bias**
 
 <b>Nature</b> retracted a flawed climate study (Kotz et al.) that had been widely used in global financial regulation and policy, including by the Federal Reserve's stress tests. The retraction highlights the importance of rigorous methodology in informing major policy decisions affecting economic growth and interest rates. A single country's erroneous data—Uzbekistan—inflated the study's projections: when removed, global GDP damage estimates fell from 62% to 23% by 2100. Without climate skeptics scrutinizing research, studies like this would proceed unchecked, compromising the integrity of science itself.
 

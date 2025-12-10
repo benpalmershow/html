@@ -1,4 +1,4 @@
-/* Sticky Navigation Bar */
+/* Navigation Styles - Consolidated */
 :root {
     --nav-z-index: 1000;
     --nav-overlay-z-index: 1500;
@@ -7,28 +7,23 @@
     --nav-scroll-threshold: 100px;
 }
 
+/* Base Navigation */
 #main-nav {
     position: sticky;
     top: 0;
-    background: rgba(var(--bg-primary-rgb), 0.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.3);
-    box-shadow: 0 2px 8px rgba(var(--color-black-rgb), 0.08);
     transition: transform var(--nav-transition-duration) ease;
 }
 
-#main-nav.nav-hidden {
-    transform: translateY(-100%);
-}
+#main-nav.nav-hidden { transform: translateY(-100%); }
 
 .nav-container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0.75rem var(--spacing-md, 1.25rem);
+    padding: 0.5rem 0.75rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 0.5rem;
     flex-wrap: nowrap;
     min-width: 0;
 }
@@ -49,7 +44,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: clamp(0.5rem, 3vw, 2rem);
+    gap: clamp(0.3rem, 1.8vw, 0.6rem);
     flex: 1;
     justify-content: center;
     align-items: center;
@@ -61,53 +56,25 @@
 .nav-link {
     color: var(--text-secondary, #343a40);
     text-decoration: none;
-    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 2.2vw, 0.95rem);
     font-family: var(--font-body, Georgia, 'Times New Roman', serif);
     transition: color var(--duration-fast) var(--ease-out-cubic);
-    position: relative;
-    padding: 0.5rem 0;
+    padding: 0.3rem;
     white-space: nowrap;
     letter-spacing: 0.3px;
+    flex-shrink: 0;
 }
 
-.nav-link:visited {
-    color: var(--text-secondary, #343a40) !important;
-}
-
-.nav-link:focus {
-    outline: none;
-}
-
-.nav-link:hover {
-    color: var(--color-secondary, #d4822a);
-    text-decoration: none;
-}
-
+.nav-link:visited { color: var(--text-secondary, #343a40) !important; }
+.nav-link:focus { outline: none; }
+.nav-link:hover { color: var(--color-secondary, #d4822a); text-decoration: none; }
 .nav-link.active {
     color: var(--color-primary, #2c5f5a);
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: fit-content;
-    padding: 0 0.75rem;
-    height: 2px;
-    background: var(--color-secondary, #d4822a);
-    animation: slideInUnderline var(--duration-base) var(--ease-out-cubic);
-}
-
-@keyframes slideInUnderline {
-    from {
-        transform: translateX(-50%) scaleX(0);
-    }
-
-    to {
-        transform: translateX(-50%) scaleX(1);
-    }
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-secondary, #d4822a);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
 }
 
 .nav-logo {
@@ -117,39 +84,22 @@
     vertical-align: middle;
     text-decoration: none;
     padding: 0 !important;
-    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .nav-logo img {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    transition: box-shadow var(--duration-fast) var(--ease-out-cubic), transform var(--duration-fast) var(--ease-out-cubic);
-    box-shadow: 0 2px 8px rgba(var(--accent-primary-rgb), 0.1);
+    width: 34px;
+    height: 34px;
 }
 
-.nav-logo:hover img {
-    box-shadow: 0 4px 16px rgba(var(--accent-primary-rgb), 0.15);
-    transform: scale(1.05);
-}
-
-
-
-.nav-logo.active::after {
-    display: none;
-}
-
-
-
-/* Compact Icon Buttons in Navbar */
-.cta-icon-btn,
-.hints-icon-btn,
-.dark-mode-toggle {
+/* Icon Buttons */
+.cta-icon-btn, .hints-icon-btn, .dark-mode-toggle {
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+    border: none;
     background: transparent;
-    border: 1px solid var(--border-color, #e0dcc4);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
     padding: 0;
     display: flex;
     align-items: center;
@@ -159,27 +109,41 @@
     position: relative;
     pointer-events: auto;
     touch-action: manipulation;
-    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.cta-icon-btn i[data-lucide],
-.hints-icon-btn i[data-lucide],
-.dark-mode-toggle i[data-lucide] {
-    width: 1.2rem;
-    height: 1.2rem;
+.cta-icon-btn i[data-lucide], .hints-icon-btn i[data-lucide], .dark-mode-toggle i[data-lucide] {
+    width: 1.1rem;
+    height: 1.1rem;
     color: var(--color-secondary, #d4822a);
     stroke: var(--color-secondary, #d4822a);
     stroke-width: 2;
-    transition: inherit;
 }
 
-.cta-icon-btn:hover,
-.hints-icon-btn:hover,
-.dark-mode-toggle:hover {
-    background: var(--bg-secondary, #f8f4e6);
+/* Responsive Enhancements */
+@media (min-width: 768px) {
+    .nav-container { padding: 0.6rem var(--spacing-md, 1.25rem); gap: 0.75rem; }
+    .nav-list { gap: clamp(0.4rem, 2vw, 1rem); }
+    .nav-link { font-size: clamp(0.85rem, 2.5vw, 1rem); padding: 0.4rem; }
+    .nav-logo { padding: 0.25rem !important; }
+    .nav-logo img { width: 36px; height: 36px; }
+    .cta-icon-btn, .hints-icon-btn, .dark-mode-toggle {
+        width: 32px; height: 32px;
+        border: 1px solid var(--border-color, #e0dcc4);
+        border-radius: 50%;
+    }
+    .cta-icon-btn i[data-lucide], .hints-icon-btn i[data-lucide], .dark-mode-toggle i[data-lucide] {
+        width: 1.2rem; height: 1.2rem;
+    }
 }
 
-/* CTA Modal - Anchored to navbar */
+@media (min-width: 1024px) {
+    .nav-container { padding: 0.75rem var(--spacing-md, 1.25rem); gap: 1.5rem; }
+    .nav-list { gap: clamp(0.5rem, 3vw, 2rem); }
+    .nav-link { font-size: clamp(0.8rem, 2vw, 1rem); padding: 0.5rem 0; }
+    .nav-logo img { width: 40px; height: 40px; }
+}
+
+/* CTA Modal */
 .cta-modal {
     position: sticky;
     top: 0;
@@ -190,9 +154,7 @@
     pointer-events: none;
 }
 
-.cta-modal.active {
-    pointer-events: auto;
-}
+.cta-modal.active { pointer-events: auto; }
 
 .cta-modal-overlay {
     position: absolute;
@@ -204,7 +166,6 @@
     cursor: pointer;
 }
 
-/* CTA Container in Modal - Anchored popover */
 .cta-modal .cta-container {
     position: relative;
     background: var(--bg-primary, #fdf6e8);
@@ -231,7 +192,7 @@
     align-items: center;
     gap: var(--spacing-md, 1.25rem);
     text-align: left;
-    color: var(--text-primary, #000000);
+    color: var(--text-primary);
 }
 
 .cta-button i[data-lucide] {
@@ -252,7 +213,7 @@
     font-family: 'Georgia', serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-primary, #000000);
+    color: var(--text-primary);
 }
 
 .cta-subtext {
@@ -285,10 +246,10 @@
 
 .cta-close-btn:hover {
     background-color: var(--border-color, #e0dcc4);
-    color: var(--text-primary, #000000);
+    color: var(--text-primary);
 }
 
-/* Visitor Hints - Anchored to navbar */
+/* Visitor Hints */
 .visitor-hints {
     position: sticky;
     top: 0;
@@ -299,9 +260,7 @@
     pointer-events: none;
 }
 
-.visitor-hints.active {
-    pointer-events: auto;
-}
+.visitor-hints.active { pointer-events: auto; }
 
 .hint-overlay {
     position: absolute;
@@ -331,7 +290,7 @@
     margin-top: 0;
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
-    color: var(--text-primary, #000000);
+    color: var(--text-primary);
 }
 
 .hint-steps {
@@ -347,14 +306,13 @@
     align-items: flex-start;
 }
 
-.hint-step i[data-lucide],
-.hint-step img {
+.hint-step i[data-lucide], .hint-step img {
     flex-shrink: 0;
     color: var(--color-secondary, #d4822a);
 }
 
 .hint-step strong {
-    color: var(--text-primary, #000000);
+    color: var(--text-primary);
     font-size: 0.9rem;
 }
 
@@ -385,7 +343,7 @@
 
 .hint-close-btn:hover {
     background-color: var(--border-color, #e0dcc4);
-    color: var(--text-primary, #000000);
+    color: var(--text-primary);
 }
 
 .hint-close-btn-action {
@@ -403,336 +361,4 @@
     transition: background-color 0.2s ease;
 }
 
-.hint-close-btn-action:hover {
-    background: var(--accent-primary, #2c5f5a);
-}
-
-/* Dark mode icon visibility */
-@media (prefers-color-scheme: dark) {
-
-    .cta-icon-btn,
-    .hints-icon-btn,
-    .dark-mode-toggle {
-        background: var(--bg-secondary, #252b2a);
-    }
-
-    /* Remove navbar shading in dark mode */
-    #main-nav {
-        background: var(--bg-primary);
-        border-bottom-color: transparent;
-        box-shadow: none;
-    }
-
-    .cta-icon-btn i[data-lucide],
-    .hints-icon-btn i[data-lucide],
-    .dark-mode-toggle i[data-lucide],
-    .cta-button i[data-lucide],
-    .hint-step i[data-lucide] {
-        color: var(--accent-secondary, #d4822a) !important;
-        stroke: var(--accent-secondary, #d4822a) !important;
-    }
-
-    .cta-icon-btn:hover,
-    .hints-icon-btn:hover,
-    .dark-mode-toggle:hover {
-        background: var(--bg-secondary);
-    }
-
-    /* Hint modal dark mode text fixes */
-    .hint-content {
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
-    }
-
-    .hint-content h3 {
-        color: var(--color-white);
-    }
-
-    .hint-step strong {
-        color: var(--color-white);
-    }
-
-    .hint-step div {
-        color: var(--color-white);
-    }
-
-    .hint-close-btn {
-        color: var(--text-secondary);
-    }
-
-    .hint-close-btn:hover {
-        background-color: var(--border-color);
-        color: var(--text-primary);
-    }
-
-    .hint-close-btn-action {
-        background: var(--accent-secondary);
-        color: var(--color-white);
-    }
-
-    .hint-close-btn-action:hover {
-        background: var(--accent-primary);
-    }
-
-    /* CTA modal dark mode */
-    .cta-modal .cta-container {
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
-    }
-
-    .cta-text-wrapper span:first-child {
-        color: var(--color-white);
-    }
-
-    .cta-subtext {
-        color: var(--text-secondary);
-    }
-
-    .cta-close-btn {
-        color: var(--text-secondary);
-    }
-
-    .cta-close-btn:hover {
-        background-color: var(--border-color);
-        color: var(--text-primary);
-    }
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .nav-container {
-        padding: 0.6rem var(--spacing-md, 1.25rem);
-        gap: 0.75rem;
-    }
-
-    .nav-list {
-        gap: clamp(0.4rem, 2vw, 1rem);
-        flex: 1;
-        min-width: 0;
-        flex-wrap: nowrap;
-    }
-
-    .nav-link {
-        font-size: clamp(0.85rem, 2.5vw, 1rem);
-        padding: 0.4rem;
-        flex-shrink: 0;
-    }
-
-    .nav-logo {
-        padding: 0.25rem !important;
-        flex-shrink: 0;
-    }
-
-    .nav-logo img {
-        width: 36px;
-        height: 36px;
-    }
-
-    .nav-right-section {
-        flex-shrink: 0;
-        gap: 0.75rem;
-    }
-
-    .cta-icon-btn,
-    .hints-icon-btn,
-    .dark-mode-toggle {
-        width: auto;
-        height: auto;
-        flex-shrink: 0;
-        border: none;
-        background: transparent;
-        padding: 0;
-    }
-
-    .cta-icon-btn i[data-lucide],
-    .hints-icon-btn i[data-lucide],
-    .dark-mode-toggle i[data-lucide] {
-        width: 1.1rem;
-        height: 1.1rem;
-    }
-
-    .hint-content {
-        width: 95%;
-        max-height: 85vh;
-        padding: var(--spacing-sm, 0.75rem);
-    }
-
-    .hint-content h3 {
-        font-size: 0.85rem;
-    }
-
-    .hint-step {
-        gap: var(--spacing-xs, 0.5rem);
-    }
-
-    .hint-step strong {
-        font-size: 0.8rem;
-    }
-
-    .hint-step div {
-        font-size: 0.75rem;
-    }
-
-    .hint-close {
-        padding: 0.45rem 0.9rem;
-        font-size: 0.85rem;
-    }
-
-    .cta-modal .cta-container {
-        width: 90vw;
-        max-width: 95%;
-        padding: var(--spacing-sm, 0.75rem);
-    }
-
-    .cta-button i[data-lucide] {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-
-    .cta-text-wrapper span:first-child {
-        font-size: 0.9rem;
-    }
-
-    .cta-subtext {
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 0.5rem 0.75rem;
-        gap: 0.5rem;
-    }
-
-    .nav-list {
-        gap: clamp(0.3rem, 1.8vw, 0.6rem);
-        flex-wrap: nowrap;
-    }
-
-    .nav-link {
-        font-size: clamp(0.8rem, 2.2vw, 0.95rem);
-        padding: 0.3rem;
-        flex-shrink: 0;
-    }
-
-    .nav-logo img {
-        width: 34px;
-        height: 34px;
-    }
-
-    .nav-right-section {
-        gap: 0.5rem;
-    }
-
-    .cta-icon-btn i[data-lucide],
-    .hints-icon-btn i[data-lucide],
-    .dark-mode-toggle i[data-lucide] {
-        width: 1.1rem;
-        height: 1.1rem;
-    }
-
-    .hint-content {
-        width: 95%;
-        max-height: 90vh;
-        padding: var(--spacing-xs, 0.5rem);
-    }
-
-    .hint-content h3 {
-        font-size: 0.8rem;
-    }
-
-    .hint-step {
-        gap: var(--spacing-xs, 0.5rem);
-    }
-
-    .hint-step strong {
-        font-size: 0.75rem;
-    }
-
-    .hint-step div {
-        font-size: 0.7rem;
-    }
-
-    .hint-close {
-        padding: 0.35rem 0.75rem;
-        font-size: 0.8rem;
-    }
-
-    .cta-modal .cta-container {
-        width: 90vw;
-        max-width: 95%;
-        padding: var(--spacing-xs, 0.5rem);
-    }
-
-    .cta-button i[data-lucide] {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-
-    .cta-text-wrapper span:first-child {
-        font-size: 0.8rem;
-    }
-
-    .cta-subtext {
-        font-size: 0.65rem;
-    }
-}
-
-/* Manual Dark Mode Toggle Support for Visitor Hints */
-html.dark-mode .hint-content {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-}
-
-html.dark-mode .hint-content h3 {
-    color: var(--color-white);
-}
-
-html.dark-mode .hint-step strong {
-    color: var(--color-white);
-}
-
-html.dark-mode .hint-step div {
-    color: var(--color-white);
-}
-
-html.dark-mode .hint-close-btn {
-    color: var(--text-secondary);
-}
-
-html.dark-mode .hint-close-btn:hover {
-    background-color: var(--border-color);
-    color: var(--text-primary);
-}
-
-html.dark-mode .hint-close-btn-action {
-    background: var(--accent-secondary);
-    color: var(--color-white);
-}
-
-html.dark-mode .hint-close-btn-action:hover {
-    background: var(--accent-primary);
-}
-
-/* Manual Dark Mode Toggle Support for CTA Modal */
-html.dark-mode .cta-modal .cta-container {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-}
-
-html.dark-mode .cta-text-wrapper span:first-child {
-    color: var(--color-white);
-}
-
-html.dark-mode .cta-subtext {
-    color: var(--text-secondary);
-}
-
-html.dark-mode .cta-close-btn {
-    color: var(--text-secondary);
-}
-
-html.dark-mode .cta-close-btn:hover {
-    background-color: var(--border-color);
-    color: var(--text-primary);
-}
+.hint-close-btn-action:hover { background: var(--accent-primary, #2c5f5a); }

@@ -46,7 +46,7 @@ Eagles favored at 57¢ over Chargers at 45¢. Game time: Dec 8, 2025 8:15 PM ET.
 
 ### <i data-lucide='trending-up' class='post-icon'></i> **Rate Cut**
 
-Prediction markets have swung back to 94% probability of a 25 basis point rate decrease Thursday. This marks renewed confidence in accommodative policy following recent economic data, a significant shift from earlier expectations.
+Prediction markets have swung back to 94% probability of a 25 basis point rate decrease Wednesday. This marks renewed confidence in accommodative policy following recent economic data, a significant shift from earlier expectations.
 
 {{chart:FOMC December Rate Decision (BPS)}}
 

@@ -59,14 +59,14 @@ Trump nominated Jatinder Slaughter to the FTC during his first term; Biden renom
 
 **Likely for Trump:**
 - **Chief Justice Roberts:** Called *Humphrey's Executor* a "dried husk" (Tr. p. 141, l. 15)
-- **Justice Gorsuch:** Deemed it "poorly reasoned"
+- **Justice Gorsuch:** Deemed it "poorly reasoned"; suggested reinvigorating the non-delegation doctrine, asking "Is the water warm, General?" (Tr. p. 45, ll. 7-8)
 - **Justice Kavanaugh:** Proposed a narrow holding affecting the FTC but preserving Federal Reserve protections (Tr. p. 23, ll. 1-15)
 - **Justice Barrett:** Questioned whether independent agencies became "something that Congress didn't intend"
 
 **Likely for Slaughter:**
 - **Justice Kagan:** Resisted carve-outs, arguing constitutional logic "drives you there" regardless of footnotes (Tr. p. 27, ll. 14-24)
 - **Justice Sotomayor:** Pressed Sauer to name other 90-year-old precedents overruled while "fundamentally alter[ing] the structure of government"
-- **Justice Jackson:** Proposed letting Congress decide the issue, questioning whether the President is more "democratically accountable" than Congress (Tr. p. 28, ll. 10-19)
+- **Justice Jackson:** Proposed letting Congress decide the issue, questioning the government's democratic accountability argument. "I'm trying to understand why you think that Congress is somehow less democratically accountable for the way in which it constructs these agencies and determines the term of office of the officers" (Tr. p. 29, ll. 7-11)
 
 **Assessment:** A clear majority appeared ready to rule Trump has removal power. Less certain: whether the Court would formally overrule *Humphrey's Executor* or craft a narrow holding.
 

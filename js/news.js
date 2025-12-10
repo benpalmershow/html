@@ -1,416 +1,385 @@
-(function() {
+(function () {
     let articlesIndex = [];
 
     // Parse frontmatter from markdown (including YAML arrays)
     function parseFrontmatter(markdown) {
-      const match = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-      if (!match) return { metadata: {}, content: markdown };
-      
-      const [, frontmatter, content] = match;
-      const metadata = {};
-      const lines = frontmatter.split('\n');
-      
-      let i = 0;
-      while (i < lines.length) {
-        const line = lines[i];
-        const colonIndex = line.indexOf(':');
-        
-        if (colonIndex > -1) {
-          const key = line.substring(0, colonIndex).trim();
-          let value = line.substring(colonIndex + 1).trim();
-          
-          // Handle arrays (resources, etc.)
-          if (key === 'resources' && value === '') {
-            const resources = [];
-            i++;
-            while (i < lines.length && lines[i].startsWith('  - ')) {
-              const resourceLines = [];
-              resourceLines.push(lines[i]);
-              i++;
-              while (i < lines.length && lines[i].startsWith('    ') && !lines[i].startsWith('  - ')) {
-                resourceLines.push(lines[i]);
-                i++;
-              }
-              
-              const resource = {};
-              resourceLines.forEach(resLine => {
-                let trimmedLine = resLine.trim();
-                // Remove leading '- ' from first array item
-                if (trimmedLine.startsWith('- ')) {
-                  trimmedLine = trimmedLine.substring(2);
+        const match = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        if (!match) return { metadata: {}, content: markdown };
+
+        const [, frontmatter, content] = match;
+        const metadata = {};
+        const lines = frontmatter.split('\n');
+
+        let i = 0;
+        while (i < lines.length) {
+            const line = lines[i];
+            const colonIndex = line.indexOf(':');
+
+            if (colonIndex > -1) {
+                const key = line.substring(0, colonIndex).trim();
+                let value = line.substring(colonIndex + 1).trim();
+
+                // Handle arrays (resources, etc.)
+                if (key === 'resources' && value === '') {
+                    const resources = [];
+                    i++;
+                    while (i < lines.length && lines[i].startsWith('  - ')) {
+                        const resourceLines = [];
+                        resourceLines.push(lines[i]);
+                        i++;
+                        while (i < lines.length && lines[i].startsWith('    ') && !lines[i].startsWith('  - ')) {
+                            resourceLines.push(lines[i]);
+                            i++;
+                        }
+
+                        const resource = {};
+                        resourceLines.forEach(resLine => {
+                            let trimmedLine = resLine.trim();
+                            // Remove leading '- ' from first array item
+                            if (trimmedLine.startsWith('- ')) {
+                                trimmedLine = trimmedLine.substring(2);
+                            }
+                            const resParts = trimmedLine.split(':');
+                            if (resParts.length >= 2) {
+                                const resKey = resParts[0].trim();
+                                let resValue = resParts.slice(1).join(':').trim();
+                                if (resValue.startsWith('"') && resValue.endsWith('"')) {
+                                    resValue = resValue.slice(1, -1);
+                                }
+                                resource[resKey] = resValue;
+                            }
+                        });
+                        if (Object.keys(resource).length > 0) resources.push(resource);
+                    }
+                    metadata[key] = resources;
+                    continue;
                 }
-                const resParts = trimmedLine.split(':');
-                if (resParts.length >= 2) {
-                  const resKey = resParts[0].trim();
-                  let resValue = resParts.slice(1).join(':').trim();
-                  if (resValue.startsWith('"') && resValue.endsWith('"')) {
-                    resValue = resValue.slice(1, -1);
-                  }
-                  resource[resKey] = resValue;
+
+                if (value.startsWith('"') && value.endsWith('"')) {
+                    value = value.slice(1, -1);
                 }
-              });
-              if (Object.keys(resource).length > 0) resources.push(resource);
+                metadata[key] = value;
             }
-            metadata[key] = resources;
-            continue;
-          }
-          
-          if (value.startsWith('"') && value.endsWith('"')) {
-            value = value.slice(1, -1);
-          }
-          metadata[key] = value;
+            i++;
         }
-        i++;
-      }
-      
-      return { metadata, content };
+
+        return { metadata, content };
     }
 
     // Load single article from markdown file
     async function loadArticle(filename) {
-      try {
-        const response = await fetch(`article/${filename}.md`);
-        if (!response.ok) throw new Error('Article not found');
+        try {
+            const response = await fetch(`article/${filename}.md`);
+            if (!response.ok) throw new Error('Article not found');
 
-        const markdown = await response.text();
-        const { metadata, content } = parseFrontmatter(markdown);
-        const html = marked.parse(content);
+            const markdown = await response.text();
+            const { metadata, content } = parseFrontmatter(markdown);
+            const html = marked.parse(content);
 
-        return { metadata, html };
-      } catch (error) {
-        console.error('Error loading article:', error);
-        return null;
-      }
+            return { metadata, html };
+        } catch (error) {
+            console.error('Error loading article:', error);
+            return null;
+        }
     }
 
     // Generate preview text from summary
     function generatePreviewText(summary) {
-      if (!summary) return 'Click to read more...';
-      let previewText = summary.trim().replace(/\s+/g, ' ');
-      if (previewText.length > 200) {
-        previewText = previewText.substring(0, 200).trim();
-        const lastSpace = previewText.lastIndexOf(' ');
-        if (lastSpace > 150) {
-          previewText = previewText.substring(0, lastSpace);
+        if (!summary) return 'Click to read more...';
+        let previewText = summary.trim().replace(/\s+/g, ' ');
+        if (previewText.length > 200) {
+            previewText = previewText.substring(0, 200).trim();
+            const lastSpace = previewText.lastIndexOf(' ');
+            if (lastSpace > 150) {
+                previewText = previewText.substring(0, lastSpace);
+            }
+            previewText += '...';
         }
-        previewText += '...';
-      }
-      return previewText;
+        return previewText;
     }
 
-    // Render article card
+    // Render article card as details disclosure
     function renderArticleCard(article) {
-      const previewText = generatePreviewText(article.summary);
-      let resourceLinksHtml = '';
-      
-      // Add resource links if present
-      if (article.resources && Array.isArray(article.resources) && article.resources.length > 0) {
-        resourceLinksHtml = '<div class="card-resources">';
-        article.resources.forEach(resource => {
-          const iconName = resource.icon || 'link';
-          resourceLinksHtml += `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link" title="${resource.title}"><i data-lucide="${iconName}" class="resource-icon"></i></a>`;
-        });
-        resourceLinksHtml += '</div>';
-      }
-      
-      return `
-        <div class="accordion-card" data-category="${article.category}">
-          <div class="accordion-header">
-            <div class="accordion-title-section">
-              <button class="filter-badge ${article.category}" aria-label="${article.category} category">
-                <i data-lucide="${getCategoryIcon(article.category)}" class="filter-icon"></i>
-              </button>
-              <h2 class="accordion-title">${article.title}</h2>
-            </div>
-            <div class="accordion-meta">
-              <i data-lucide="chevron-down" class="expand-icon" aria-label="Expand article details"></i>
-            </div>
-          </div>
-          <div class="accordion-content">
-            <div class="accordion-expanded-header">
-              <time class="accordion-expanded-date" datetime="${article.date}">${formatDate(article.date)}</time>
+        const previewText = generatePreviewText(article.summary);
+        let resourceLinksHtml = '';
+
+        // Add resource links if present
+        if (article.resources && Array.isArray(article.resources) && article.resources.length > 0) {
+            resourceLinksHtml = '<div class="card-resources">';
+            article.resources.forEach(resource => {
+                const iconName = resource.icon || 'link';
+                resourceLinksHtml += `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="resource-link" title="${resource.title}"><i data-lucide="${iconName}" class="resource-icon"></i></a>`;
+            });
+            resourceLinksHtml += '</div>';
+        }
+
+        return `
+        <details class="article-disclosure" data-category="${article.category}">
+          <summary>
+            <span class="category-icon" aria-label="${article.category} category">
+              <i data-lucide="${getCategoryIcon(article.category)}"></i>
+            </span>
+            <span class="article-title">${article.title}</span>
+            <span class="expand-icon">
+              <i data-lucide="plus"></i>
+            </span>
+          </summary>
+          <div class="disclosure-content">
+            <div class="article-meta-section">
+              <time class="article-date" datetime="${article.date}">${formatDate(article.date)}</time>
               ${resourceLinksHtml}
             </div>
-            <div class="accordion-full-preview">
+            <div class="article-preview">
               <p>${previewText}</p>
             </div>
-            <div class="accordion-full-actions">
-              <a href="?article=${article.id}" class="read-full-btn primary">
-                <span>Read Full Article</span>
+            <div class="article-actions">
+              <a href="?article=${article.id}" class="read-full-btn">
+                Read Full Article
                 <i data-lucide="arrow-right"></i>
               </a>
             </div>
           </div>
-        </div>
+        </details>
       `;
     }
 
     // Get category icon
     function getCategoryIcon(category) {
-      const icons = {
-        'ipo': 'trending-up',
-        'earnings': 'bar-chart-3',
-        'policy': 'shield',
-        'healthcare': 'heart',
-        'legal': 'gavel',
-        'political': 'vote',
-        'corrections': 'edit-3'
-      };
-      return icons[category] || 'file-text';
+        const icons = {
+            'ipo': 'trending-up',
+            'earnings': 'bar-chart-3',
+            'policy': 'shield',
+            'healthcare': 'heart',
+            'legal': 'gavel',
+            'political': 'vote',
+            'corrections': 'edit-3'
+        };
+        return icons[category] || 'file-text';
     }
 
     // Render full article view
     async function renderFullArticle(articleId) {
-      const feedView = document.getElementById('news-feed-view');
-      const articleView = document.getElementById('full-article-view');
-      const container = document.getElementById('article-container');
+        const feedView = document.getElementById('news-feed-view');
+        const articleView = document.getElementById('full-article-view');
+        const container = document.getElementById('article-container');
 
-      feedView.style.display = 'none';
-      articleView.style.display = 'block';
-      container.innerHTML = '<div class="loading">Loading article...</div>';
+        feedView.style.display = 'none';
+        articleView.style.display = 'block';
+        container.innerHTML = '<div class="loading">Loading article...</div>';
 
-      const article = await loadArticle(articleId);
-      if (!article) {
-        container.innerHTML = '<div class="error-message">Article not found. <a href="news.html">Return to news feed</a></div>';
-        return;
-      }
-
-      container.innerHTML = `<div class="article-wrapper">${article.html}</div>`;
-
-      // Execute scripts in article content
-      const scripts = container.querySelectorAll('script');
-      scripts.forEach(script => {
-        const newScript = document.createElement('script');
-        if (script.src) {
-          newScript.src = script.src;
-          newScript.async = false;
-          document.head.appendChild(newScript);
-        } else {
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
+        const article = await loadArticle(articleId);
+        if (!article) {
+            container.innerHTML = '<div class="error-message">Article not found. <a href="news.html">Return to news feed</a></div>';
+            return;
         }
-        script.remove();
-      });
 
-      const backButton = document.querySelector('.back-button');
-      backButton.onclick = () => {
-        window.history.back();
-      };
+        container.innerHTML = `<div class="article-wrapper">${article.html}</div>`;
 
-      // Create and setup back-to-top button
-      let backToTopBtn = document.querySelector('.back-to-top-btn');
-      if (!backToTopBtn) {
-        backToTopBtn = document.createElement('button');
-        backToTopBtn.className = 'back-to-top-btn';
-        backToTopBtn.setAttribute('aria-label', 'Back to top');
-        backToTopBtn.setAttribute('title', 'Back to top');
-        backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
-        document.body.appendChild(backToTopBtn);
+        // Execute scripts in article content
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            if (script.src) {
+                newScript.src = script.src;
+                newScript.async = false;
+                document.head.appendChild(newScript);
+            } else {
+                newScript.textContent = script.textContent;
+                document.head.appendChild(newScript);
+            }
+            script.remove();
+        });
+
+        const backButton = document.querySelector('.back-button');
+        backButton.onclick = () => {
+            window.history.back();
+        };
+
+        // Create and setup back-to-top button
+        let backToTopBtn = document.querySelector('.back-to-top-btn');
+        if (!backToTopBtn) {
+            backToTopBtn = document.createElement('button');
+            backToTopBtn.className = 'back-to-top-btn';
+            backToTopBtn.setAttribute('aria-label', 'Back to top');
+            backToTopBtn.setAttribute('title', 'Back to top');
+            backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
+            document.body.appendChild(backToTopBtn);
+            lucide.createIcons();
+        }
+
+        const handleBackToTopVisibility = () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+
+        backToTopBtn.onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.addEventListener('scroll', handleBackToTopVisibility);
+        handleBackToTopVisibility();
+
+        // Remove existing meta element if present
+        let metaEl = backButton.nextElementSibling;
+        if (metaEl && metaEl.classList.contains('article-meta-header')) {
+            metaEl.remove();
+        }
+
+        // Create and insert meta header with proper styling
+        metaEl = document.createElement('div');
+        metaEl.classList.add('article-meta-header');
+        let metaHtml = `<span class="article-date">${formatDate(article.metadata.date)}</span>`;
+        if (article.metadata.ticker) {
+            metaHtml += `<span class="article-ticker"><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
+        }
+        metaHtml += `<span class="category-badge ${article.metadata.category}">${article.metadata.category}</span>`;
+
+        metaEl.innerHTML = metaHtml;
+        backButton.insertAdjacentElement('afterend', metaEl);
+
         lucide.createIcons();
-      }
-
-      const handleBackToTopVisibility = () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.classList.add('visible');
-        } else {
-          backToTopBtn.classList.remove('visible');
-        }
-      };
-
-      backToTopBtn.onclick = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      };
-
-      window.addEventListener('scroll', handleBackToTopVisibility);
-      handleBackToTopVisibility();
-      
-      // Remove existing meta element if present
-      let metaEl = backButton.nextElementSibling;
-      if (metaEl && metaEl.classList.contains('article-meta-header')) {
-        metaEl.remove();
-      }
-      
-      // Create and insert meta header with proper styling
-      metaEl = document.createElement('div');
-      metaEl.classList.add('article-meta-header');
-      let metaHtml = `<span class="article-date">${formatDate(article.metadata.date)}</span>`;
-      if (article.metadata.ticker) {
-        metaHtml += `<span class="article-ticker"><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
-      }
-      metaHtml += `<span class="category-badge ${article.metadata.category}">${article.metadata.category}</span>`;
-      
-      metaEl.innerHTML = metaHtml;
-      backButton.insertAdjacentElement('afterend', metaEl);
-
-      lucide.createIcons();
     }
 
     // Render news feed
     function renderNewsFeed() {
-      const container = document.getElementById('articles-container');
-      const feedView = document.getElementById('news-feed-view');
-      const articleView = document.getElementById('full-article-view');
+        const container = document.getElementById('articles-container');
+        const feedView = document.getElementById('news-feed-view');
+        const articleView = document.getElementById('full-article-view');
 
-      feedView.style.display = 'block';
-      articleView.style.display = 'none';
+        feedView.style.display = 'block';
+        articleView.style.display = 'none';
 
-      if (articlesIndex.length === 0) {
-        container.innerHTML = '<div class="error-message">No articles found.</div>';
-        return;
-      }
+        if (articlesIndex.length === 0) {
+            container.innerHTML = '<div class="error-message">No articles found.</div>';
+            return;
+        }
 
-      // Sort by date (newest first)
-      const sortedArticles = [...articlesIndex].sort((a, b) => 
-        new Date(b.date) - new Date(a.date)
-      );
+        // Sort by date (newest first)
+        const sortedArticles = [...articlesIndex].sort((a, b) =>
+            new Date(b.date) - new Date(a.date)
+        );
 
-      // Render cards directly from index
-      container.innerHTML = sortedArticles.map(renderArticleCard).join('');
+        // Render cards directly from index
+        container.innerHTML = sortedArticles.map(renderArticleCard).join('');
 
-      lucide.createIcons();
-      setupAccordion();
+        lucide.createIcons();
+        setupDisclosures();
     }
 
     // Load articles index from JSON
     function loadArticlesIndex() {
-      return fetch('json/articles.json')
-        .then(r => {
-          if (!r.ok) throw new Error('Failed to load articles index');
-          return r.json();
-        })
-        .then(articles => {
-          if (!Array.isArray(articles)) throw new Error('Invalid articles format');
-          articlesIndex = articles;
-          renderNewsFeed();
-        })
-        .catch(err => {
-          console.error('Error loading articles index:', err);
-          const container = document.getElementById('articles-container');
-          if (container) {
-            container.innerHTML = '<div class="error-message">Failed to load articles. Please refresh the page.</div>';
-          }
-        });
+        return fetch('json/articles.json')
+            .then(r => {
+                if (!r.ok) throw new Error('Failed to load articles index');
+                return r.json();
+            })
+            .then(articles => {
+                if (!Array.isArray(articles)) throw new Error('Invalid articles format');
+                articlesIndex = articles;
+                renderNewsFeed();
+            })
+            .catch(err => {
+                console.error('Error loading articles index:', err);
+                const container = document.getElementById('articles-container');
+                if (container) {
+                    container.innerHTML = '<div class="error-message">Failed to load articles. Please refresh the page.</div>';
+                }
+            });
     }
 
-    // Setup accordion functionality
-    function setupAccordion() {
-      const container = document.querySelector('.content');
-      if (!container) return;
-
-      const existingHandler = container._accordionHandler;
-      if (existingHandler) {
-        container.removeEventListener('click', existingHandler);
-      }
-
-      const handleAccordionClick = function(e) {
-        const header = e.target.closest('.accordion-header');
-        if (!header) return;
-        if (e.target.closest('.filter-badge')) return;
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        const card = header.closest('.accordion-card');
-        const content = card.querySelector('.accordion-content');
-        const icon = header.querySelector('.expand-icon');
-
-        requestAnimationFrame(() => {
-          document.querySelectorAll('.accordion-card.expanded').forEach(expandedCard => {
-            if (expandedCard !== card) {
-              const expandedContent = expandedCard.querySelector('.accordion-content');
-              const expandedIcon = expandedCard.querySelector('.expand-icon');
-              expandedCard.classList.remove('expanded');
-              expandedContent.style.maxHeight = '0';
-              expandedIcon.style.transform = 'rotate(0deg)';
+    // Setup disclosure height measurements (native details element)
+    function setupDisclosures() {
+        const details = document.querySelectorAll('.article-disclosure');
+        details.forEach(detail => {
+            const content = detail.querySelector('.disclosure-content');
+            if (content) {
+                // Temporarily show to measure full height
+                const wasOpen = detail.hasAttribute('open');
+                if (!wasOpen) {
+                    detail.setAttribute('open', '');
+                    // Force reflow
+                    detail.offsetHeight;
+                }
+                
+                // Measure full content height including padding
+                const height = content.scrollHeight;
+                detail.style.setProperty('--content-height', `${height}px`);
+                
+                // Restore original state
+                if (!wasOpen) {
+                    detail.removeAttribute('open');
+                }
             }
-          });
-
-          const isExpanded = card.classList.contains('expanded');
-          card.classList.toggle('expanded');
-
-          if (isExpanded) {
-            content.style.maxHeight = '0';
-            icon.style.transform = 'rotate(0deg)';
-          } else {
-            setTimeout(() => {
-              content.style.maxHeight = content.scrollHeight + 'px';
-              icon.style.transform = 'rotate(180deg)';
-            }, 10);
-          }
         });
-      };
-
-      container._accordionHandler = handleAccordionClick;
-      container.addEventListener('click', handleAccordionClick);
     }
 
     // Format date
     function formatDate(dateStr) {
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      const [year, month, day] = dateStr.split('-');
-      return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const [year, month, day] = dateStr.split('-');
+        return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
     }
 
     // Router
     function initRouter() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const articleId = urlParams.get('article');
-      
-      if (articleId) {
-        renderFullArticle(articleId);
-      } else {
-        loadArticlesIndex();
-      }
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('article');
+
+        if (articleId) {
+            renderFullArticle(articleId);
+        } else {
+            loadArticlesIndex();
+        }
     }
 
     // Category filter
     function initFilters() {
-      const filterContainer = document.querySelector('.filters');
-      if (!filterContainer) return;
+        const filterContainer = document.querySelector('.filters');
+        if (!filterContainer) return;
 
-      const existingFilterHandler = filterContainer._filterHandler;
-      if (existingFilterHandler) {
-        filterContainer.removeEventListener('click', existingFilterHandler);
-      }
+        const existingFilterHandler = filterContainer._filterHandler;
+        if (existingFilterHandler) {
+            filterContainer.removeEventListener('click', existingFilterHandler);
+        }
 
-      const handleFilterClick = function(e) {
-        const filterBtn = e.target.closest('.filter-btn');
-        if (!filterBtn) return;
-        e.preventDefault();
+        const handleFilterClick = function (e) {
+            const filterBtn = e.target.closest('.filter-btn');
+            if (!filterBtn) return;
+            e.preventDefault();
 
-        filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
-          btn.classList.remove('active');
-        });
-        filterBtn.classList.add('active');
+            filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            filterBtn.classList.add('active');
 
-        const category = filterBtn.dataset.category;
+            const category = filterBtn.dataset.category;
 
-        requestAnimationFrame(() => {
-          const cards = document.querySelectorAll('.accordion-card');
-          cards.forEach(card => {
-            const shouldShow = category === 'all' || card.dataset.category === category;
-            card.style.display = shouldShow ? '' : 'none';
+            requestAnimationFrame(() => {
+                const details = document.querySelectorAll('.article-disclosure');
+                details.forEach(detail => {
+                    const shouldShow = category === 'all' || detail.dataset.category === category;
+                    detail.style.display = shouldShow ? '' : 'none';
 
-            if (!shouldShow && card.classList.contains('expanded')) {
-              const content = card.querySelector('.accordion-content');
-              const icon = card.querySelector('.expand-icon');
-              card.classList.remove('expanded');
-              content.style.maxHeight = '0';
-              icon.style.transform = 'rotate(0deg)';
-            }
-          });
-        });
-      };
+                    // Close any open details that are being hidden
+                    if (!shouldShow && detail.hasAttribute('open')) {
+                        detail.removeAttribute('open');
+                    }
+                });
+            });
+        };
 
-      filterContainer._filterHandler = handleFilterClick;
-      filterContainer.addEventListener('click', handleFilterClick);
+        filterContainer._filterHandler = handleFilterClick;
+        filterContainer.addEventListener('click', handleFilterClick);
     }
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
-      initRouter();
-      initFilters();
-      lucide.createIcons();
+        initRouter();
+        initFilters();
+        lucide.createIcons();
     });
 
     // Handle browser back/forward

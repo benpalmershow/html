@@ -43,7 +43,27 @@ Whether the President has the power to remove Federal Trade Commission (FTC) com
 
 Trump nominated Jatinder Slaughter to the FTC during his first term; Biden renominated her in 2023 for a second seven-year term (expiring 2029). In March 2025, Trump fired her via email, citing only that her continued service would be "inconsistent with [the] Administration's priorities." A federal judge ordered her reinstatement; the D.C. Circuit declined to stay that order.
 
-**Stakes:** The ruling will determine whether the President can control independent agencies and potentially expose removal restrictions at NLRB, NRC, Federal Reserve, SEC, CFTC, and other agencies to constitutional challenge.
+**Stakes:** The ruling will determine whether the President can control independent agencies. The *Seila Law* (2020) decision identified approximately two dozen multimember independent agencies with similar removal protections, potentially exposing the following to constitutional challenge:
+
+1. [Federal Trade Commission](https://www.ftc.gov/) (FTC)
+2. [Federal Reserve](https://www.federalreserve.gov/) (Fed)
+3. [Securities and Exchange Commission](https://www.sec.gov/) (SEC)
+4. [Commodity Futures Trading Commission](https://www.cftc.gov/) (CFTC)
+5. [National Labor Relations Board](https://www.nlrb.gov/) (NLRB)
+6. [Nuclear Regulatory Commission](https://www.nrc.gov/) (NRC)
+7. [Federal Deposit Insurance Corporation](https://www.fdic.gov/) (FDIC)
+8. [Federal Energy Regulatory Commission](https://www.ferc.gov/) (FERC)
+9. [Federal Communications Commission](https://www.fcc.gov/) (FCC)
+10. [Merit Systems Protection Board](https://www.mspb.gov/) (MSPB)
+11. [Postal Service Board of Governors](https://www.usps.com/) (USPS)
+12. [Social Security Administration](https://www.ssa.gov/) (SSA)
+13. [Federal Housing Finance Agency](https://www.fhfa.gov/) (FHFA)
+14. [Consumer Product Safety Commission](https://www.cpsc.gov/) (CPSC)
+15. [Commission on Civil Rights](https://www.usccr.gov/) (CCR)
+16. [Occupational Safety and Health Review Commission](https://www.oshrc.gov/) (OSHRC)
+17. [U.S. Sentencing Commission](https://www.ussc.gov/) (USSC)
+18. [Office of Special Counsel](https://www.osc.gov/) (OSC)
+19. [Securities Investor Protection Corporation](https://www.sipc.org/) (SIPC)
 
 ---
 

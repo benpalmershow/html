@@ -298,17 +298,21 @@
             if (content) {
                 // Temporarily show to measure full height
                 const wasOpen = detail.hasAttribute('open');
-                if (!wasOpen) {
-                    detail.setAttribute('open', '');
-                    // Force reflow
-                    detail.offsetHeight;
-                }
+                detail.setAttribute('open', '');
+                // Force two reflows to ensure accurate measurement
+                detail.offsetHeight;
                 
-                // Measure full content height including padding
+                // Measure full content height
                 const height = content.scrollHeight;
-                detail.style.setProperty('--content-height', `${height}px`);
+                const style = window.getComputedStyle(content);
+                const paddingTop = parseFloat(style.paddingTop) || 0;
+                const paddingBottom = parseFloat(style.paddingBottom) || 0;
+                // Add 20px buffer to ensure button and content aren't clipped
+                const totalHeight = height + paddingTop + paddingBottom + 20;
                 
-                // Restore original state
+                detail.style.setProperty('--content-height', `${totalHeight}px`);
+                
+                // Restore original state if it wasn't open
                 if (!wasOpen) {
                     detail.removeAttribute('open');
                 }

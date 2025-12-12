@@ -11,15 +11,22 @@ function formatYAxisTick(value) {
     return value.toLocaleString();
 }
 
-function formatDate(dateString) {
+function formatDate(dateString, formatType = 'full') {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    });
+    if (formatType === 'short') {
+        return date.toLocaleDateString('en-US', {
+            month: 'numeric',
+            day: 'numeric'
+        });
+    } else {
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
 }
 
 function formatChangeIndicator(percentChange) {

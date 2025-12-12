@@ -159,7 +159,7 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
 // Initialize dashboard on page load
 function initializeDashboard() {
-    document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated)}`;
+    document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
     setupFilters(financialData, SELECTORS, DATA_ATTRS);
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'all';

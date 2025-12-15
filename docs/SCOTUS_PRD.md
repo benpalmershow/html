@@ -139,6 +139,27 @@ A comprehensive tracking and analysis system for Supreme Court oral arguments, c
 
 ---
 
+### 8. Resources
+**Purpose:** Compile authoritative links and reference materials for each case
+
+**Standard Resources to Include:**
+- Supreme Court Docket (official case page)
+- Oral Argument Transcript (PDF)
+- Oral Argument Audio (MP3 from supremecourt.gov)
+- Oral Argument Podcast (Apple Podcasts - Supreme Court Official Podcast)
+- SCOTUS Blog Analysis and coverage
+- Lower court opinion(s)
+- Briefs on the merits (petitioner and respondent)
+- Amicus briefs (key filings)
+
+**Data Format:**
+- Resource title
+- URL
+- Icon/type identifier
+- Availability status
+
+---
+
 ## Data Collection Standards
 
 ### Format Requirements
@@ -157,6 +178,16 @@ A comprehensive tracking and analysis system for Supreme Court oral arguments, c
 - No interpretation bias in factual data
 - Clear distinction between facts and analysis
 - Complete coverage of proceedings
+- Verify transcript URLs against Supreme Court official source (multiple versions may exist with different identifiers; check docket page for correct identifier)
+- Verify podcast episode IDs on Apple Podcasts Supreme Court Official Podcast feed
+- Test all resource links before publishing
+
+### Resource Link Guidelines
+- **Transcript PDF:** Navigate to official docket page, locate correct transcript identifier (often appended as _xxxx.pdf)
+- **Podcast URL:** Format: `https://podcasts.apple.com/us/podcast/oral-arguments-for-the-supreme-court-of-the-united-states/id1187748137?i={episodeID}`
+  - Episode IDs vary by case; verify on Apple Podcasts
+- **Ensure consistent ordering:** Docket → Transcript → Audio MP3 → Podcast → Analysis/Commentary
+- **Update both:** Markdown article frontmatter AND json/articles.json must include same resources for consistency
 
 ---
 

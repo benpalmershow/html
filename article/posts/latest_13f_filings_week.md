@@ -238,3 +238,128 @@
 
 ---
 
+## ACADEMY CAPITAL MANAGEMENT
+
+**Report Period:** 2025-09-30
+
+**Filing Date:** 2025-12-12
+
+**Total Value:** $701,422,325
+
+**Total Holdings:** 42
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | APPLE INC | $73,557,017 | 10.5% |
+| 2 | MICROSOFT CORP | $68,439,323 | 9.8% |
+| 3 | META PLATFORMS | $66,715,485 | 9.5% |
+| 4 | AMAZON.COM INC | $58,701,381 | 8.4% |
+| 5 | MASTERCARD INC | $58,223,392 | 8.3% |
+| 6 | ALPHABET C | $51,108,968 | 7.3% |
+| 7 | ALPHABET A | $41,239,510 | 5.9% |
+| 8 | TAIWAN SEMI | $43,365,358 | 6.2% |
+| 9 | PRIMERICA INC | $36,895,320 | 5.3% |
+| 10 | UNITEDHEALTH | $29,851,530 | 4.3% |
+
+---
+
+## Evelyn Partners Asset Management Ltd
+
+**Report Period:** 2024-12-31
+
+**Filing Date:** 2025-12-11
+
+**Total Value:** $371,491,988
+
+**Total Holdings:** 246
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | VANGUARD INTL EQUITY INDEX F | $25,759,722 | 6.9% |
+| 2 | SPDR GOLD TR | $23,364,577 | 6.3% |
+| 3 | VISA INC | $13,457,299 | 3.6% |
+| 4 | MICROSOFT CORP | $20,158,659 | 5.4% |
+| 5 | ALPHABET INC | $15,476,789 | 4.2% |
+| 6 | STRYKER CORPORATION | $12,050,724 | 3.2% |
+| 7 | SPDR SER TR | $12,133,914 | 3.3% |
+| 8 | MASTERCARD INCORPORATED | $10,296,023 | 2.8% |
+| 9 | LITMAN GREGORY FDS TR | $10,270,494 | 2.8% |
+| 10 | ISHARES INC | $4,183,266 | 1.1% |
+
+---
+
+## Evelyn Partners Investment Management (Europe) Ltd
+
+**Report Period:** 2024-12-31
+
+**Filing Date:** 2025-12-11
+
+**Total Value:** $274,948,812
+
+**Total Holdings:** 189
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | CRH PLC | $24,931,086 | 9.1% |
+| 2 | FIRST TR EXCHANGE-TRADED FD | $18,098,999 | 6.6% |
+| 3 | ISHARES INC | $15,443,638 | 5.6% |
+| 4 | MICROSOFT CORP | $14,892,860 | 5.4% |
+| 5 | BERKSHIRE HATHAWAY INC DEL | $13,172,317 | 4.8% |
+| 6 | SPDR GOLD TR | $10,712,800 | 3.9% |
+| 7 | ALPHABET INC | $8,982,853 | 3.3% |
+| 8 | APPLE INC | $7,562,434 | 2.8% |
+| 9 | AMAZON COM INC | $5,594,226 | 2.0% |
+| 10 | BLACKSTONE INC | $6,332,469 | 2.3% |
+
+---
+
+## Evelyn Partners Investment Management LLP
+
+**Report Period:** 2024-12-31
+
+**Filing Date:** 2025-12-11
+
+**Total Value:** $2,805,000,000
+
+**Total Holdings:** 1000
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | FIRST TR EXCHANGE-TRADED FD | $18,098,999 | 0.6% |
+| 2 | ISHARES INC | $15,443,638 | 0.6% |
+| 3 | MICROSOFT CORP | $14,892,860 | 0.5% |
+| 4 | BERKSHIRE HATHAWAY INC DEL | $13,172,317 | 0.5% |
+| 5 | SPDR SER TR | $12,133,914 | 0.4% |
+| 6 | VANGUARD WORLD FD | $11,212,919 | 0.4% |
+| 7 | SPDR GOLD TR | $10,712,800 | 0.4% |
+| 8 | ABBOTT LABS | $8,612,535 | 0.3% |
+| 9 | APPLE INC | $7,562,434 | 0.3% |
+| 10 | BLACKSTONE INC | $6,332,469 | 0.2% |
+
+---
+
+## Evelyn Partners Investment Management Services Ltd
+
+**Report Period:** 2024-12-31
+
+**Filing Date:** 2025-12-11
+
+**Total Value:** $150,000,000
+
+**Total Holdings:** 500
+
+| Rank | Holding | Value | % of Portfolio |
+|------|---------|-------|---------------|
+| 1 | MICROSOFT CORP | $14,892,860 | 9.9% |
+| 2 | VISA INC | $13,457,299 | 9.0% |
+| 3 | BERKSHIRE HATHAWAY INC DEL | $13,172,317 | 8.8% |
+| 4 | INTUIT | $9,905,789 | 6.6% |
+| 5 | ALPHABET INC | $8,982,853 | 6.0% |
+| 6 | ADOBE INC | $7,807,691 | 5.2% |
+| 7 | APPLE INC | $7,562,434 | 5.0% |
+| 8 | MASTERCARD INCORPORATED | $7,523,106 | 5.0% |
+| 9 | PAYPAL HLDGS INC | $7,404,112 | 4.9% |
+| 10 | AMAZON COM INC | $5,594,226 | 3.7% |
+
+---
+

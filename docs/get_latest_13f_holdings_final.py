@@ -2,7 +2,9 @@
 
 # Script to get latest 13F-HR filings with holdings using edgartools
 from edgar import *
+from decimal import Decimal
 import pandas as pd
+import json
 
 # Set identity as required by SEC regulations
 set_identity("benp8400@gmail.com")
@@ -17,6 +19,9 @@ print(f"📊 Found {len(filings_13f_hr)} 13F-HR filings")
 
 print("\n📋 Latest 13F-HR Filings with Holdings:")
 print("=" * 80)
+
+# List to store holdings data for JSON export
+all_holdings_data = []
 
 # Get the 5 most recent filings by iterating through the collection
 count = 0
@@ -47,11 +52,32 @@ for filing in filings_13f_hr:
                 for idx, holding in top_holdings.iterrows():
                     issuer = holding['Issuer']
                     ticker = holding['Ticker'] if pd.notna(holding['Ticker']) else 'N/A'
-                    value = holding['Value']
-                    shares = holding['SharesPrnAmount']
+                    value = pd.to_numeric(holding['Value'], errors='coerce')
+                    shares = pd.to_numeric(holding['SharesPrnAmount'], errors='coerce')
                     share_type = holding['Type'] if pd.notna(holding['Type']) else 'Shares'
                     print(f"      {idx+1}. {issuer} ({ticker})")
                     print(f"         ${value:,.0f} - {shares:,.0f} {share_type}")
+
+                # Convert Decimal objects to strings for JSON serialization
+                infotable_copy = infotable.copy()
+                for column in infotable_copy.columns:
+                    if infotable_copy[column].dtype == 'object':
+                        infotable_copy[column] = infotable_copy[column].apply(
+                            lambda x: str(x) if isinstance(x, Decimal) else (None if pd.isna(x) else x)
+                        )
+
+                # Store holdings data for JSON export
+                holdings_data = {
+                    "company": filing.company,
+                    "cik": filing.cik,
+                    "filing_date": str(filing.filing_date),
+                    "accession_no": filing.accession_no,
+                    "total_holdings": thirteen_f.total_holdings,
+                    "total_value": str(thirteen_f.total_value),
+                    "report_period": str(thirteen_f.report_period),
+                    "holdings": infotable_copy.to_dict(orient='records')
+                }
+                all_holdings_data.append(holdings_data)
             else:
                 print(f"   📊 No holdings data in infotable")
         else:
@@ -65,3 +91,10 @@ for filing in filings_13f_hr:
 
 print(f"\n✅ Successfully retrieved and analyzed {count} most recent 13F-HR filings with holdings")
 print(f"   Total 13F-HR filings available: {len(filings_13f_hr)}")
+
+# Save holdings data to JSON file
+if all_holdings_data:
+    json_filename = "latest_13f_holdings.json"
+    with open(json_filename, 'w') as json_file:
+        json.dump(all_holdings_data, json_file, indent=2)
+    print(f"\n💾 Holdings data saved to {json_filename}")

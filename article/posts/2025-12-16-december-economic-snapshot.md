@@ -4,9 +4,9 @@ date: 2025-12-16T18:30:00Z
 
 ### **What do the Numbers Say?**
 
-Wheat, soybeans, beef, and crude oil all declining. Shipping container rates from China collapsed 33.7% to $1,964. Housing market showing buyer advantage as days on market increased 5.4% to 59 days while builder confidence ticked up slightly to 39. Unemployment holding steady at 4.44%. Retail sales flat at $732.6B. Government tax revenue dropped 16.8% to $336B while debt hit $38.34 trillion.
+Wheat, soybeans, beef, and crude oil all declining. Shipping container rates from China collapsed 33.7% to $1,964 while tariff revenue dropped 8.8% to $31B. Housing market showing buyer advantage as days on market increased 5.4% to 59 days while builder confidence ticked up slightly to 39. Unemployment holding steady at 4.44%. Retail sales flat at $732.6B. Government tax revenue dropped 16.8% to $336B while debt hit $38.34 trillion.
 
-#### Commodities
+#### <i data-lucide='package' class='post-icon'></i> Commodities
 
 **Wheat** — October $4.73/bu (-0.8% MoM)
 {{chart:Wheat}}
@@ -22,14 +22,17 @@ Wheat, soybeans, beef, and crude oil all declining. Shipping container rates fro
 
 [View all commodities](financials.html?filter=Commodities)
 
-#### Trade & Tariffs
+#### <i data-lucide='ship' class='post-icon'></i> Trade & Tariffs
 
 **Shipping Container Rate** — December $1,964/40ft (-33.7% MoM)
 {{chart:Shipping Container Rate (China-US 40ft)}}
 
+**Tariff Revenue** — November $31B (-8.8% MoM)
+{{chart:Tariff Revenue}}
+
 [View trade & tariffs](financials.html?filter=Trade%20%26%20Tariffs)
 
-#### Housing Market
+#### <i data-lucide='home' class='post-icon'></i> Housing Market
 
 **Days on Market** — November 59 days (+5.4% MoM)
 {{chart:Number of Days on Market (Median)}}
@@ -39,21 +42,21 @@ Wheat, soybeans, beef, and crude oil all declining. Shipping container rates fro
 
 [View housing market](financials.html?filter=Housing%20Market)
 
-#### Employment Indicators
+#### <i data-lucide='users' class='post-icon'></i> Employment Indicators
 
 **Unemployment Forecast** — November 4.44% (-0.5% MoM)
 {{chart:Real-Time Unemployment Rate Forecast}}
 
 [View employment indicators](financials.html?filter=Employment%20Indicators)
 
-#### Consumer Indicators
+#### <i data-lucide='shopping-cart' class='post-icon'></i> Consumer Indicators
 
 **Monthly Retail Sales** — October $732.6B (+0.03% MoM)
 {{chart:Monthly Retail Sales}}
 
 [View consumer indicators](financials.html?filter=Consumer%20Indicators)
 
-#### Government Finances
+#### <i data-lucide='landmark' class='post-icon'></i> Government
 
 **Interest on Debt** — November $88B (-3.3% MoM)
 {{chart:Interest on Debt}}

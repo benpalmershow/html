@@ -58,13 +58,13 @@ function getFilingDate(firmIdx) {
 
 function isETF(holding) {
     const name = holding.name.toUpperCase();
-    const etfIndicators = ['ETF', 'TRUST', 'FUND', 'INDEX', 'SPDR', 'ISHARES', 'VANGUARD', 'INVESCO', 'DIMENSIONAL'];
-    if (etfIndicators.some(indicator => name.includes(indicator))) {
-        return true;
-    }
     const stockIndicators = ['INC', 'CORP', 'CLASS A', 'CLASS B', 'A S F'];
     if (stockIndicators.some(indicator => name.includes(indicator))) {
         return false;
+    }
+    const etfIndicators = ['ETF', 'TRUST', 'FUND', 'INDEX', 'SPDR', 'ISHARES', 'VANGUARD', 'INVESCO', 'DIMENSIONAL'];
+    if (etfIndicators.some(indicator => name.includes(indicator))) {
+        return true;
     }
     return false;
 }

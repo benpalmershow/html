@@ -67,11 +67,7 @@ Wheat, soybeans, beef, and crude oil all declining. Shipping container rates fro
 **Treasury Debt Level** — December $38.34 trillion (-0.06% MoM)
 {{chart:Treasury Debt Level}}
 
-[View government finances](financials.html?filter=Government)
-
-#### Border Activity
-
 **Southern Border Encounters** — November 10,960 (-6.4% MoM)
 {{chart:Southern Border Encounters}}
 
-[View border data](financials.html?filter=Government)
+[View Government](financials.html?filter=Government)

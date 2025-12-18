@@ -2,7 +2,7 @@
 date: 2025-12-15T15:00:00
 ---
 
-#    **Hamm v. Smith**
+#    **69 Is Retarded**
 
 Hamm v. Smith examines whether courts must consider adaptive functioning and cognitive evidence alongside IQ scores when determining if a death row inmate qualifies for Eighth Amendment protection from execution. The case hinges on whether states can apply rigid numerical thresholds or must weigh comprehensive evidence of intellectual disability.
 

@@ -1,8 +1,8 @@
 /* Navigation Styles - Consolidated */
 :root {
-    --nav-z-index: 1000;
-    --nav-overlay-z-index: 1500;
-    --nav-modal-z-index: 2000;
+    --nav-z-index: 5000;
+    --nav-overlay-z-index: 5500;
+    --nav-modal-z-index: 6000;
     --nav-transition-duration: 0.3s;
     --nav-scroll-threshold: 100px;
 }
@@ -11,6 +11,9 @@
 #main-nav {
     position: sticky;
     top: 0;
+    z-index: var(--nav-z-index);
+    background: var(--bg-primary, #fdf6e8);
+    isolation: isolate;
     transition: transform var(--nav-transition-duration) ease;
 }
 

@@ -7,7 +7,7 @@
 
 /* Article wrapper - replaces inline max-width, margin, padding */
 .article-wrapper {
-    max-width: 500px;
+    max-width: 980px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -239,13 +239,12 @@
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    font-size: 0.95rem;
-    display: block;
-    overflow-x: auto;
+    font-size: 0.85rem;
+    table-layout: fixed;
 }
 
 .article-content table {
-    min-width: 100%;
+    min-width: 0;
 }
 
 .article-content table th {
@@ -255,12 +254,19 @@
     text-align: left;
     font-weight: 600;
     border: 1px solid var(--border-color);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .article-content table td {
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    vertical-align: top;
 }
 
 .article-content table tbody tr:nth-child(odd) {
@@ -650,14 +656,17 @@
     }
 
     .article-content table {
-        font-size: 0.85rem;
-        min-width: max-content;
+        font-size: 0.8rem;
+        table-layout: fixed;
+        min-width: 0;
     }
 
     .article-content table th,
     .article-content table td {
         padding: 0.5rem;
-        white-space: nowrap;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     .button-hint {
@@ -718,14 +727,17 @@
     }
 
     .article-content table {
-        font-size: 0.75rem;
-        min-width: max-content;
+        font-size: 0.72rem;
+        table-layout: fixed;
+        min-width: 0;
     }
 
     .article-content table th,
     .article-content table td {
         padding: 0.35rem;
-        white-space: nowrap;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     .back-button {

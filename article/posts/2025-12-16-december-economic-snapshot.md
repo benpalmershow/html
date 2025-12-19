@@ -4,7 +4,7 @@ date: 2025-12-16T18:30:00Z
 
 ### **What do the Numbers Say?**
 
-Wheat, soybeans, beef, and crude oil all declining. Shipping container rates from China collapsed 33.7% to $1,964 while tariff revenue dropped 8.8% to $31B. Housing market showing buyer advantage as days on market increased 5.4% to 59 days while builder confidence ticked up slightly to 39. Unemployment holding steady at 4.44%. Retail sales flat at $732.6B. Government tax revenue dropped 16.8% to $336B while debt hit $38.34 trillion.
+Wheat, soybeans, beef, and crude oil all declining. Shipping container rates from China collapsed 33.7% to $1,964 while tariff revenue dropped 8.8% to $31B. Housing market showing buyer advantage as days on market increased 5.4% to 59 days while builder confidence ticked up slightly to 39. Unemployment forecast at 4.44% for November. Retail sales flat at $732.6B. Government tax revenue dropped 16.8% to $336B while debt hit $38.34 trillion.
 
 #### <i data-lucide='package' class='post-icon'></i> Commodities
 
@@ -50,6 +50,12 @@ Wheat, soybeans, beef, and crude oil all declining. Shipping container rates fro
 [View employment indicators](financials.html?filter=Employment%20Indicators)
 
 #### <i data-lucide='shopping-cart' class='post-icon'></i> Consumer Indicators
+
+**Consumer Sentiment** — December 52.9 (+3.7% MoM)
+{{chart:Consumer Sentiment}}
+
+**CPI** — November 324.122 (-0.2% MoM)
+{{chart:CPI}}
 
 **Monthly Retail Sales** — October $732.6B (+0.03% MoM)
 {{chart:Monthly Retail Sales}}

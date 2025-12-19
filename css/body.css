@@ -12,7 +12,7 @@
 
     --type-scale-ratio: 1.25;
     /* Perfect fourth */
-    --type-base: clamp(1.05rem, 3.5vw, 1.15rem);
+    --type-base: clamp(1.15rem, 3.5vw, 1.15rem);
 
     /* ========================================
        BASE COLORS

@@ -147,21 +147,18 @@
 
 /* Links in articles */
 .article-content a {
-    color: var(--logo-orange);
-    text-decoration: none;
+    color: inherit;
+    text-decoration: underline;
     transition: all 0.2s ease;
     border-bottom: 1px solid transparent;
 }
 
 .article-content a:hover {
-    color: var(--logo-orange);
-    border-bottom-color: var(--logo-orange);
     opacity: 0.8;
 }
 
 /* Strong and emphasis */
 .article-content strong {
-    color: var(--accent-primary);
     font-weight: 600;
     position: relative;
 }
@@ -173,18 +170,11 @@
     left: 0;
     right: 0;
     height: 0.5px;
-    background: linear-gradient(90deg,
-            transparent 5%,
-            var(--color-secondary) 25%,
-            var(--accent-primary) 50%,
-            var(--color-secondary) 75%,
-            transparent 95%);
     opacity: 0.2;
 }
 
 .article-content em {
     font-style: italic;
-    color: var(--text-primary);
 }
 
 /* Blockquotes */

@@ -23,14 +23,30 @@ Sources:
 - [SF.gov report page: African American Reparations Advisory Committee Final Report (July 7, 2023)](https://www.sf.gov/reports--july-2023--african-american-reparations-advisory-committee-final-report)
 - [PDF: African American Reparations Advisory Committee Final Report - July 7, 2023](https://media.api.sf.gov/documents/AARAC_Reparations_Final_Report_July_7_2023.pdf)
 
-## Sponsors
+## Legislative Action
 
-- Shamann Walton
-- Chyanne Chen
-- Rafael Mandelman
-- Connie Chan
-- Jackie Fielder
-- Bilal Mahmood
+### Sponsors
+
+- [Shamann Walton](https://sfbos.org/supervisor-walton-district-10)
+- [Chyanne Chen](https://sfbos.org/supervisor-chen-district-11)
+- [Rafael Mandelman](https://sfbos.org/supervisor-mandelman-district-8)
+- [Connie Chan](https://sfbos.org/supervisor-chan-district-1)
+- [Jackie Fielder](https://sfbos.org/supervisor-fielder-district-9)
+- [Bilal Mahmood](https://sfbos.org/supervisor-mahmood-district-5)
+
+### Ayes (11)
+
+- [Connie Chan](https://sfbos.org/supervisor-chan-district-1)
+- [Chyanne Chen](https://sfbos.org/supervisor-chen-district-11)
+- [Matt Dorsey](https://sfbos.org/supervisor-dorsey-district-6)
+- [Jackie Fielder](https://sfbos.org/supervisor-fielder-district-9)
+- [Bilal Mahmood](https://sfbos.org/supervisor-mahmood-district-5)
+- [Rafael Mandelman](https://sfbos.org/supervisor-mandelman-district-8)
+- [Myrna Melgar](https://sfbos.org/supervisor-melgar-district-7)
+- [Danny Sauter](https://sfbos.org/supervisor-sauter-district-3)
+- [Stephen Sherrill](https://sfbos.org/supervisor-sherrill-district-2)
+- [Shamann Walton](https://sfbos.org/supervisor-walton-district-10)
+- [Alan Wong](https://sfbos.org/supervisor-wong-district-4)
 
 ---
 

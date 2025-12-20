@@ -55,9 +55,10 @@
   rel="preload" as="style" onload="this.rel='stylesheet'">
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/body.css?v=20251220">
-  <link rel="stylesheet" href="css/nav.css?v=20251220">
-  <link rel="stylesheet" href="css/journal-tweets.css?v=20251220" media="print" onload="this.media='all'">
+  <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/journal-tweets.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/body.css?v=20251220"><link rel="stylesheet" href="css/nav.css?v=20251220"><link rel="stylesheet" href="css/journal-tweets.css?v=20251220"></noscript>
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
@@ -128,14 +129,16 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="page-title page-title" aria-label="Page title">
+  <div class="page-title page-title">
     <picture>
       <source srcset="images/read.webp" type="image/webp"><img src="images/read.webp" alt="Read icon" class="page-icon"
         width="20" height="20">
     </picture>Tweets
   </div>
   <div class="content">
-    <div id="journal-feed"></div>
+    <div id="journal-feed">
+      <div class="loading">Loading journal entries...</div>
+    </div>
   </div>
 
   <!-- Reusable Footer Component -->

@@ -74,6 +74,9 @@ async function buildHtmlFile(filePath) {
         content = content.replace(placeholder, newContent);
     }
 
+    // Remove any remaining component comments
+    content = content.replace(/<!--\s*COMPONENT:\s*.*?-->/g, '');
+
     const distFilePath = path.join(distDir, path.basename(filePath));
     await fs.writeFile(distFilePath, content, 'utf8');
     console.log(`Built: ${distFilePath}`);

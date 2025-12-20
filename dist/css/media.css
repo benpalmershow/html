@@ -1,0 +1,820 @@
+/* Overlay styles moved to media-overlay.css for better organization */
+@import url('media-overlay.css');
+
+/* ==========================================================================
+    CSS VARIABLES & GLOBAL STYLES
+    ========================================================================== */
+:root {
+    /* Color Palette */
+    --accent-color: #f5c518;
+    --text-light: #f0f0f0;
+
+    /* Shadows */
+    --shadow-light: var(--color-primary-bg, rgba(var(--accent-primary-rgb), 0.08));
+    --shadow-medium: rgba(var(--accent-primary-rgb), 0.15);
+
+    /* Overlay Colors */
+    --overlay-light: rgba(0, 0, 0, 0.75);
+    --overlay-dark: rgba(0, 0, 0, 0.9);
+    --overlay-medium: rgba(0, 0, 0, 0.8);
+
+    /* Platform Brand Colors */
+    --color-rotten-tomatoes: #f93a1e;
+
+    /* Hover States */
+    /* Removed secondary-dark */
+    --color-primary-dark: #1e4540;
+    --color-primary-light: #4a7c7a;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-medium: 0.2s ease;
+    --transition-slow: 0.3s ease;
+
+    /* Card - using shared variables from body.css */
+    --card-max-width: 200px;
+    --card-height: 300px;
+    --card-radius: 0.5rem;
+
+    /* Spacing */
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    /* Z-index layers */
+    --z-overlay: 10;
+}
+
+
+/* Media Card Elements */
+.media-cover-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+    border-radius: var(--card-radius);
+
+    .media-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform var(--transition-slow);
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        border-radius: var(--card-radius);
+    }
+
+    .media-cover.loaded {
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    .media-cover.image-error {
+        opacity: 0.8;
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--logo-teal-dark) 100%);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Playlist covers - make them smaller to fit in card */
+    .playlist-cover {
+        object-fit: contain;
+        background-color: var(--bg-secondary);
+        border-radius: 0.25rem;
+    }
+
+    .media-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--color-primary, var(--logo-teal)), var(--color-primary-light, #4a7c7a));
+        color: white;
+        font-size: 2em;
+
+        i {
+            font-size: 2em;
+            color: white;
+        }
+    }
+
+    .media-type {
+        position: absolute;
+        top: 0.7em;
+        left: 0.7em;
+        color: white;
+        font-size: 1.2em;
+        z-index: var(--z-overlay);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8),
+            0 0 5px rgba(0, 0, 0, 0.5);
+        transition: all var(--transition-medium);
+    }
+
+    [data-media-type="movie"] &,
+    [data-media-type="podcast"] &,
+    [data-media-type="book"] & {
+        .media-type {
+            color: white;
+        }
+    }
+}
+
+/* ==========================================================================
+    MEDIA FILTERS & SEARCH
+    ========================================================================== */
+
+/* Filter Container */
+.media-filters {
+    /* Layout */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: flex-start;
+    width: min(100% - 2rem, 1000px);
+    margin: 0.5rem auto 0;
+    padding: 1.2rem 1.8rem;
+
+    /* Visual */
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 12px var(--shadow-light);
+
+    /* Animation */
+    transition: all var(--transition-slow);
+
+    /* Modern CSS */
+    @supports (container-type: inline-size) {
+        container-type: inline-size;
+        container-name: filters;
+    }
+}
+
+.media-filters label {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+/* Filter Select Dropdown */
+.media-filters select {
+    --color: var(--text-primary);
+    --padding: 0.5rem 0.8rem;
+    --radius: 0.4rem;
+    --background: var(--color-white, #fff);
+    --icon-size: 0.65em;
+    --icon-color: var(--color);
+    --icon-position: right 0.7em top 50%;
+    font-size: 0.95rem;
+    padding: var(--padding);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    background: var(--background);
+    color: var(--color);
+    width: 100%;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22var(--icon-size)%22%20height%3D%22var(--icon-size)%22%3E%3Cpath%20fill%3D%22var(--icon-color)%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: var(--icon-position);
+    background-size: var(--icon-size);
+    padding-right: calc(var(--icon-size) + 0.7em);
+}
+
+.media-filters select:focus {
+    outline: none;
+    border-color: var(--color-primary, var(--logo-teal));
+    box-shadow: 0 0 0 2px var(--shadow-medium);
+}
+
+.media-filters select:hover {
+    border-color: var(--color-gray-400, #b3a98c);
+}
+
+/* Filter Text Input */
+.media-filters input[type="text"] {
+    font-size: 0.95rem;
+    padding: 0.5rem 2.5rem 0.5rem 0.8rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--border-light, #d4c9b1);
+    background: var(--color-white, #fff);
+    color: var(--text-primary);
+    width: 100%;
+    cursor: text;
+    transition: all var(--transition-medium);
+}
+
+.media-filters input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primary, var(--logo-teal));
+    box-shadow: 0 0 0 2px var(--shadow-medium);
+}
+
+.media-filters input[type="text"]:hover {
+    border-color: var(--color-gray-400, #b3a98c);
+}
+
+.media-filters input[type="text"]::placeholder {
+    color: var(--color-gray-500, #8a8a8a);
+    opacity: 0.8;
+}
+
+/* Search Help Text */
+.search-help {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gray-500, #6b7280);
+    margin-top: 0.25rem;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+/* Results Count */
+.results-count {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    margin: 1rem auto 0;
+    padding: 0.5rem;
+    background: rgba(var(--accent-primary-rgb), 0.05);
+    border-radius: 0.4rem;
+    max-width: 1000px;
+    width: calc(100% - 2rem);
+}
+
+/* ==========================================================================
+   MEDIA CARDS LAYOUT
+   ========================================================================== */
+
+/* Cards Container */
+.media-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+/* Desktop Styles (769px and above) */
+@media (min-width: 769px) {
+    .media-card {
+        width: 200px;
+        height: auto;
+        aspect-ratio: 7/10;
+        /* Maintain proper aspect ratio for desktop */
+    }
+}
+
+/* ==========================================================================
+   INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/* Click Actions */
+.click-to-watch,
+.click-to-listen {
+    font-size: 0.8em;
+    color: var(--logo-orange);
+    font-weight: 500;
+    margin-top: 0.5em;
+    padding: 0.3em 0.6em;
+    background: rgba(212, 130, 42, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 130, 42, 0.4);
+}
+
+/* ==========================================================================
+   MEDIA LINKS & PLATFORMS
+   ========================================================================== */
+
+/* Song and Podcast Links Container */
+.song-links,
+.podcast-links,
+.media-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    width: 100%;
+    order: 5;
+}
+
+.podcast-links::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Platform Links */
+.song-link,
+.podcast-link {
+    font-size: 1.5em;
+    opacity: 0.9;
+    transition: all var(--transition-medium);
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.song-link:hover,
+.podcast-link:hover {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    z-index: 1;
+}
+
+/* Platform-Specific Styling */
+.spotify-link,
+.apple-link,
+.youtube-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link,
+.media-link {
+    color: white;
+}
+
+.youtube-link,
+.spotify-link,
+.apple-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link,
+.media-link {
+    font-size: 1.5em;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none !important;
+    opacity: 0.9;
+    transition: all var(--transition-medium);
+    box-shadow: none;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.youtube-link i,
+.spotify-link i,
+.apple-link i,
+.soundcloud-link i,
+.amazon-link i,
+.google-link i,
+.rss-link i,
+.x-link i,
+.media-link i {
+    font-size: 1.5em;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.youtube-link:hover,
+.youtube-link:focus,
+.spotify-link:hover,
+.spotify-link:focus,
+.apple-link:hover,
+.apple-link:focus,
+.soundcloud-link:hover,
+.soundcloud-link:focus,
+.amazon-link:hover,
+.amazon-link:focus,
+.google-link:hover,
+.google-link:focus,
+.rss-link:hover,
+.rss-link:focus,
+.x-link:hover,
+.x-link:focus,
+.media-link:hover,
+.media-link:focus {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none !important;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   LOADING & ERROR STATES
+   ========================================================================== */
+
+/* Loading State */
+.loading-state,
+.error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-primary);
+    min-height: 200px;
+}
+
+.loading-state i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--logo-teal);
+}
+
+/* Error State */
+.error-state i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--logo-orange);
+}
+
+.error-state p {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+}
+
+/* Retry Button */
+.retry-button {
+    background: var(--logo-teal);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.4rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background var(--transition-medium);
+}
+
+.retry-button:hover {
+    background: var(--color-primary-dark, #1e4540);
+}
+
+/* ==========================================================================
+RESPONSIVE DESIGN - TABLET & MOBILE
+========================================================================== */
+
+/* Tablet Styles (768px and below) */
+@media (max-width: 768px) {
+    .media-card {
+        max-width: 100%;
+        width: 140px;
+        /* Height adjusted proportionally for aspect ratios */
+        height: auto;
+        aspect-ratio: 7/10;
+        /* Approximate for movie posters, JS will override */
+    }
+
+    .media-cover-container {
+        height: 100%;
+        min-height: 0;
+    }
+
+    .media-cards {
+        gap: 1rem;
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .media-filters {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        width: calc(100% - 2rem);
+        justify-content: center;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .media-filters label {
+        font-size: 0.85rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.4rem;
+        white-space: nowrap;
+        flex: 1 1 auto;
+    }
+
+    .media-filters select {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* Small Mobile Styles (480px and below) */
+@media (max-width: 480px) {
+    .media-card {
+        width: 110px;
+        /* Height adjusted proportionally for aspect ratios */
+        height: auto;
+        aspect-ratio: 11/16;
+        /* Approximate for movie posters, JS will override */
+    }
+
+    .media-cards {
+        gap: 0.75rem;
+        margin: 0.75rem auto;
+        padding: 0.75rem;
+    }
+
+    .media-filters {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 0.6rem 0.8rem;
+        gap: 0.3rem;
+        width: calc(100% - 1.6rem);
+    }
+
+    .media-filters label {
+        font-size: 0.75rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.3rem;
+        white-space: nowrap;
+        flex: 1 1 auto;
+    }
+
+    .media-filters select {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.5rem;
+    }
+
+    .media-title {
+        font-size: 1rem;
+    }
+
+    .media-overlay-desc {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .media-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+}
+
+/* Extra Small Mobile Styles (414px and below) - iPhone 12/13 mini, etc. */
+@media (max-width: 414px) {
+    .media-card {
+        width: 90px;
+        /* Height adjusted proportionally for aspect ratios */
+        height: auto;
+        aspect-ratio: 9/14;
+        /* Adjusted for better mobile display */
+    }
+
+    .media-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.5rem;
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+        justify-content: center;
+        width: calc(100% - 1rem);
+    }
+
+    .media-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.4rem 0.6rem;
+        gap: 0.3rem;
+        width: calc(100% - 1.2rem);
+    }
+
+    .media-filters label {
+        font-size: 0.65rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        white-space: normal;
+        flex: 1 1 100%;
+    }
+
+    .media-filters select {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.35rem;
+        width: 100%;
+    }
+
+    .media-title {
+        font-size: 0.8rem;
+        line-height: 1.1;
+    }
+
+    .media-overlay-desc {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .media-description {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .media-author {
+        font-size: 0.65rem;
+    }
+
+    .media-date-bottom {
+        font-size: 0.6rem;
+        padding: 0.15rem 0;
+    }
+
+    .rating-logos,
+    .movie-actions-container {
+        gap: 0.2rem;
+        padding: 0.2rem 0;
+    }
+
+    .rating-logo,
+    .trailer-button-inline {
+        padding: 0.15rem 0.3rem;
+        font-size: 0.6em;
+    }
+
+    .song-link,
+    .podcast-link,
+    .media-link {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+    }
+}
+
+
+
+
+
+
+/* ==========================================================================
+MEDIA LINKS ORDER
+========================================================================== */
+
+.song-links,
+.podcast-links,
+.media-links {
+    order: 5;
+}
+
+/* ==========================================================================
+    HYPERLINK UNDERLINE REMOVAL
+    ========================================================================== */
+
+/* Remove underlines on all hyperlinks in media overlays */
+.media-overlay a,
+.media-overlay a:hover,
+.media-overlay a:focus,
+.media-overlay a:active,
+.media-overlay a:visited {
+    text-decoration: none !important;
+}
+
+/* Remove underlines on all media links */
+.song-link,
+.podcast-link,
+.media-link,
+.youtube-link,
+.spotify-link,
+.apple-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link {
+    text-decoration: none !important;
+}
+
+.song-link:hover,
+.podcast-link:hover,
+.media-link:hover,
+.youtube-link:hover,
+.spotify-link:hover,
+.apple-link:hover,
+.soundcloud-link:hover,
+.amazon-link:hover,
+.google-link:hover,
+.rss-link:hover,
+.x-link:hover {
+    text-decoration: none !important;
+}
+
+/* Remove underlines on rating logos */
+.rating-logo,
+.rating-logo:hover,
+.rating-logo:focus,
+.rating-logo:active {
+    text-decoration: none !important;
+}
+
+/* ==========================================================================
+    DARK MODE OVERRIDES
+    ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .media-filters {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .media-filters label {
+        color: var(--text-secondary);
+    }
+
+    .media-filters :is(select, input[type="text"]) {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    .media-filters :is(select, input[type="text"]):focus {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 2px rgba(135, 197, 190, 0.2);
+    }
+
+    .media-filters input::placeholder,
+    .search-help {
+        color: var(--text-muted);
+    }
+
+    .results-count {
+        color: var(--text-secondary);
+        background: rgba(135, 197, 190, 0.05);
+    }
+}
+
+/* Ensure media overlay icons stay white in dark mode */
+[data-theme="dark"] .media-overlay .youtube-link,
+[data-theme="dark"] .media-overlay .spotify-link,
+[data-theme="dark"] .media-overlay .apple-link,
+[data-theme="dark"] .media-overlay .soundcloud-link,
+[data-theme="dark"] .media-overlay .amazon-link,
+[data-theme="dark"] .media-overlay .google-link,
+[data-theme="dark"] .media-overlay .rss-link,
+[data-theme="dark"] .media-overlay .x-link,
+[data-theme="dark"] .media-overlay .media-link,
+[data-theme="dark"] .media-overlay .song-link,
+[data-theme="dark"] .media-overlay .podcast-link {
+    color: white !important;
+}
+
+[data-theme="dark"] .media-overlay .youtube-link i,
+[data-theme="dark"] .media-overlay .spotify-link i,
+[data-theme="dark"] .media-overlay .apple-link i,
+[data-theme="dark"] .media-overlay .soundcloud-link i,
+[data-theme="dark"] .media-overlay .amazon-link i,
+[data-theme="dark"] .media-overlay .google-link i,
+[data-theme="dark"] .media-overlay .rss-link i,
+[data-theme="dark"] .media-overlay .x-link i,
+[data-theme="dark"] .media-overlay .media-link i,
+[data-theme="dark"] .media-overlay .song-link i,
+[data-theme="dark"] .media-overlay .podcast-link i {
+    color: white !important;
+}
+
+/* Record spinning animation for music post images */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

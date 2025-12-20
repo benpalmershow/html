@@ -2,45 +2,19 @@
 <html lang="en">
 
 <head>
-  <!-- Common Meta Tags Component -->
-  <script>
-    fetch('components/head-meta.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const metaElements = tempDiv.querySelectorAll('meta, link');
-        metaElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Meta tags load error:', error));
-  </script>
+  <!-- COMPONENT: components/head-meta.html -->
 
   <!-- Page-specific Meta Tags -->
-  <meta name="theme-color" content="#1a1f1e">
+  <title>Financial Data & Market Indicators - Howdy, Stranger</title>
+  <meta name="description" content="Real-time financial data, market indicators, and 13F holdings analysis from The Ben Palmer Show.">
 
-  <title>Financials - Howdy, Stranger</title>
-
-  <!-- Typography System Fonts Component -->
-  <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
-  </script>
+  <!-- COMPONENT: components/fonts.html -->
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/body.css?v=20251220">
-  <link rel="stylesheet" href="css/nav.css?v=20251220">
-  <link rel="stylesheet" href="css/financials.css?v=20251220">
+  <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/financials.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/body.css?v=20251220"><link rel="stylesheet" href="css/nav.css?v=20251220"><link rel="stylesheet" href="css/financials.css?v=20251220"></noscript>
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/utils.js" as="script">
@@ -52,22 +26,7 @@
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/countdown.js" as="script">
 
-  <!-- Analytics Component -->
-  <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
-  </script>
+  <!-- COMPONENT: components/analytics.html -->
 
   <!-- Vercel Insights - Production only -->
   <script>
@@ -111,7 +70,7 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="bar-chart-3"
+  <div class="page-title page-title--bordered"><i data-lucide="bar-chart-3" aria-hidden="true"
       class="page-icon"></i>Numbers</div>
   <main class="container">
     <div class="collapsible-container">
@@ -121,9 +80,9 @@
           <div class="filters-wrapper">
             <div class="filter-group mobile-filters">
               <button class="filter-btn filter-category-btn" id="categoryBtn">
-                <i data-lucide="list" class="filter-icon"></i>
+                <i data-lucide="list" class="filter-icon" aria-hidden="true"></i>
                 <span class="filter-text">Filter By</span>
-                <i data-lucide="chevron-down" class="filter-dropdown-icon"></i>
+                <i data-lucide="chevron-down" class="filter-dropdown-icon" aria-hidden="true"></i>
               </button>
               <div class="filter-dropdown" id="categoryDropdown">
                 <!-- Populated by JavaScript -->
@@ -140,10 +99,9 @@
         <div class="categories" id="categories"></div>
 
         <!-- 13F Holdings Section -->
-         <div id="latest-13f-filings-anchor" style="position: absolute; pointer-events: none;"></div>
-         <div class="category" id="latest-13f-filings" data-category="13F Holdings" style="margin-top: 2rem;">
+         <div class="category" id="latest-13f-filings" data-category="13F Holdings" style="margin-top: 2rem; scroll-margin-top: 60px;">
            <h2 class="category-title">
-             <span class="category-icon"><i data-lucide="building-2"></i></span>
+             <span class="category-icon"><i data-lucide="building-2" aria-hidden="true"></i></span>
              <span class="category-name">13F Holdings</span>
            </h2>
           <div class="indicators-grid" id="firmCardsContainer">
@@ -151,13 +109,13 @@
         </div>
 
         <!-- Chart Modal Popup -->
-        <div id="chartModal" class="chart-modal">
+        <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <div class="chart-modal-content">
             <div class="chart-modal-header">
-              <h3>
-                <i data-lucide="trending-up"></i>
+              <h3 id="modal-title">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
               </h3>
-              <button id="closeChartModal">&times;</button>
+              <button id="closeChartModal" aria-label="Close">&times;</button>
             </div>
             <div class="chart-modal-body">
             </div>
@@ -167,54 +125,9 @@
     </div>
   </main>
 
-  <!-- Footer Component -->
-  <div id="footer-container"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
-    });
-  </script>
-
-  <!-- Error Handling Component -->
-  <script>
-    fetch('components/error-handling.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Error Handling load error:', error));
-  </script>
-
-  <!-- Unified Scripts Component -->
-  <script>
-    fetch('components/scripts-unified.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Scripts load error:', error));
-  </script>
+  <!-- COMPONENT: components/footer.html -->
+  <!-- COMPONENT: components/error-handling.html -->
+  <!-- COMPONENT: components/scripts-unified.html -->
 
   <!-- Financials Module Scripts (loaded in dependency order) -->
   <script src="js/utils.js" defer></script>

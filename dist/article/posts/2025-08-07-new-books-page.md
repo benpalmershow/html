@@ -1,0 +1,1 @@
+<i data-lucide='book' class='post-icon'></i> <b>New Books Page</b><br><br>Browse our curated collection of books across economics, technology, and more.<br><br><a href="media.html?filter=book"><b>View books</b></a>

@@ -1,0 +1,1 @@
+<i data-lucide='trending-up' class='post-icon'></i>  <b>Manufacturing PMI Update</b><br><br>▪ <b>September</b>: 49.1 (+0.4 pts from Aug)<br>▪ <b>Status</b>: Still in contraction (below 50) but improving<br>▪ <b>Context</b>: Highest reading since June, signaling potential stabilization<br><br><a href="financials.html"><b>View all indicators</b></a>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Common Meta Tags Component -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="author" content="Ben Palmer">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1a1f1e">
+
+<!-- Favicon and App Icons -->
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Preconnect to critical external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Page-specific Meta Tags -->
+  <title>Financial Data & Market Indicators - Howdy, Stranger</title>
+  <meta name="description" content="Real-time financial data, market indicators, and 13F holdings analysis from The Ben Palmer Show.">
+
+  <!-- Typography System Fonts Component -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wdth,wght@75..100,100..900&family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+  rel="preload" as="style" onload="this.rel='stylesheet'">
+
+  <!-- Critical CSS -->
+  <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/financials.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/body.css?v=20251220"><link rel="stylesheet" href="css/nav.css?v=20251220"><link rel="stylesheet" href="css/financials.css?v=20251220"></noscript>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="js/utils.js" as="script">
+  <link rel="preload" href="js/indicators.js" as="script">
+  <link rel="preload" href="js/charts.js" as="script">
+  <link rel="preload" href="js/filters.js" as="script">
+  <link rel="preload" href="js/13f-holdings.js" as="script">
+  <link rel="preload" href="js/financials.js" as="script">
+  <link rel="preload" href="js/nav.js" as="script">
+  <link rel="preload" href="js/countdown.js" as="script">
+
+  <!-- Unified Analytics Component -->
+<script>
+  // Initialize dataLayer and gtag function
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  // Main Google Analytics configuration
+  gtag('config', 'G-DWEVPGLJDP', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+
+  // Additional Google Ads configuration
+  gtag('config', 'AW-16914260010');
+
+  // Load gtag.js after page load with idle callback fallback
+  function loadGtagScript() {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  // Use requestIdleCallback if available, otherwise fallback to setTimeout
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadGtagScript);
+  } else {
+    setTimeout(loadGtagScript, 3000);
+  }
+</script>
+
+  <!-- Vercel Insights - Production only -->
+  <script>
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  </script>
+
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+  <!-- Infogram Embed Script -->
+  <script>
+    ! function (e, n, i, s) {
+      var d = "InfogramEmbeds";
+      var o = e.getElementsByTagName(n)[0];
+      if (window[d] && window[d].initialized)
+        window[d].process && window[d].process();
+      else if (!e.getElementById(i)) {
+        var r = e.createElement(n);
+        r.async = 1,
+          r.id = i,
+          r.src = s,
+          o.parentNode.insertBefore(r, o)
+      }
+    }(document, "script", "infogram-async",
+      "https://e.infogram.com/js/dist/embed-loader-min.js");
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
+
+  <!-- Performance monitoring -->
+  <script src="js/speed-insights.js" defer></script>
+
+</head>
+
+<body>
+
+  <nav class="nav-links" id="main-nav"></nav>
+  <div class="page-title page-title--bordered"><i data-lucide="bar-chart-3" aria-hidden="true"
+      class="page-icon"></i>Numbers</div>
+  <main class="container">
+    <div class="collapsible-container">
+
+      <div class="collapsible-content" id="interactive-dashboard-content">
+        <div class="filters" id="filters">
+          <div class="filters-wrapper">
+            <div class="filter-group mobile-filters">
+              <button class="filter-btn filter-category-btn" id="categoryBtn">
+                <i data-lucide="list" class="filter-icon" aria-hidden="true"></i>
+                <span class="filter-text">Filter By</span>
+                <i data-lucide="chevron-down" class="filter-dropdown-icon" aria-hidden="true"></i>
+              </button>
+              <div class="filter-dropdown" id="categoryDropdown">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+            <div class="desktop-filters" id="desktopFilters">
+              <!-- Desktop buttons will be injected here -->
+            </div>
+          </div>
+        </div>
+
+        <div id="lastUpdated" class="last-updated"></div>
+
+        <div class="categories" id="categories"></div>
+
+        <!-- 13F Holdings Section -->
+         <div class="category" id="latest-13f-filings" data-category="13F Holdings" style="margin-top: 2rem; scroll-margin-top: 60px;">
+           <h2 class="category-title">
+             <span class="category-icon"><i data-lucide="building-2" aria-hidden="true"></i></span>
+             <span class="category-name">13F Holdings</span>
+           </h2>
+          <div class="indicators-grid" id="firmCardsContainer">
+          </div>
+        </div>
+
+        <!-- Chart Modal Popup -->
+        <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div class="chart-modal-content">
+            <div class="chart-modal-header">
+              <h3 id="modal-title">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
+              </h3>
+              <button id="closeChartModal" aria-label="Close">&times;</button>
+            </div>
+            <div class="chart-modal-body">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Reusable Footer Component -->
+    <footer id="social-footer">
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+                    title="X (Twitter)">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter) logo" width="24"
+                        height="24" loading="lazy">
+                </a>
+                <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                    title="YouTube">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube logo"
+                        width="24" height="24" loading="lazy">
+                </a>
+                <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack"
+                    title="Substack">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack logo"
+                        width="24" height="24" loading="lazy">
+                </a>
+                <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
+                    aria-label="Spotify" title="Spotify">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify logo"
+                        width="24" height="24" loading="lazy">
+                </a>
+                <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
+                    rel="noopener noreferrer" aria-label="Apple Podcasts" title="Apple Podcasts">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg"
+                        alt="Apple Podcasts logo" width="24" height="24" loading="lazy">
+                </a>
+                <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
+                    aria-label="Buy Me A Coffee" title="Buy Me A Coffee">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg"
+                        alt="Buy Me A Coffee logo" width="24" height="24" loading="lazy">
+                </a>
+            </div>
+            <div class="divider"></div>
+            <div class="footer-info">
+                <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+  <!-- Error Handling Component -->
+<script>
+  window.addEventListener('error', (event) => {
+    console.error('Global Error:', event.error);
+    if (event.message && event.message.includes('Failed to fetch')) {
+      showSimpleError('Some content failed to load. Please refresh.');
+    }
+  });
+
+  function showSimpleError(message) {
+    const errorEl = document.createElement('div');
+    errorEl.style.cssText = `
+      position: fixed; top: 20px; right: 20px; z-index: 1000;
+      background: white; padding: 10px; border: 1px solid #ddd;
+      border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    `;
+    errorEl.textContent = `⚠️ ${message}`;
+    document.body.appendChild(errorEl);
+    setTimeout(() => errorEl.remove(), 5000);
+  }
+</script>
+  <!-- Unified Scripts Component -->
+<script src="js/bfcache-compat.js" defer></script>
+<script src="js/nav.js" defer></script>
+
+<!-- Vercel Insights - Production only -->
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    function loadVercelScripts() {
+      // Load Vercel Insights
+      const s = document.createElement('script');
+      s.src = '/_vercel/insights/script.js';
+      s.defer = true;
+      s.onerror = () => console.error('Failed to load Vercel insights');
+      document.head.appendChild(s);
+
+      // Load Speed Insights
+      const i = document.createElement('script');
+      i.type = 'module';
+      i.src = 'js/speed-insights.js';
+      i.onerror = () => console.error('Failed to load speed insights');
+      document.head.appendChild(i);
+    }
+
+    // Use requestIdleCallback if available, otherwise fallback to setTimeout
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadVercelScripts);
+    } else {
+      setTimeout(loadVercelScripts, 2000);
+    }
+  }
+</script>
+
+<!-- Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(error => {
+        console.error('Service worker registration failed:', error);
+      });
+    });
+  }
+</script>
+
+  <!-- Financials Module Scripts (loaded in dependency order) -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/indicators.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/filters.js" defer></script>
+  <script src="js/13f-holdings.js" defer></script>
+  <script src="js/financials.js" defer></script>
+
+  <!-- Navigation script -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/countdown.js" defer></script>
+
+</body>
+
+</html>

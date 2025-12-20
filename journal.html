@@ -2,20 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Common Meta Tags Component -->
-  <script>
-    fetch('components/head-meta.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const metaElements = tempDiv.querySelectorAll('meta, link');
-        metaElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Meta tags load error:', error));
-  </script>
+  <!-- COMPONENT: components/head-meta.html -->
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -46,20 +33,7 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://howdystranger.net/journal.html">
 
-  <!-- Typography System Fonts Component -->
-  <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
-  </script>
+  <!-- COMPONENT: components/fonts.html -->
 
   <!-- Critical CSS -->
   <link rel="stylesheet" href="css/body.css?v=20251220">
@@ -75,22 +49,7 @@
 
   <title>Journal - Howdy, Stranger</title>
 
-  <!-- Analytics Component -->
-  <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
-  </script>
+  <!-- COMPONENT: components/analytics.html -->
 
   <!-- Preload Marked.js -->
   <script>
@@ -130,54 +89,9 @@
     <div id="journal-feed"></div>
   </div>
 
-  <!-- Footer Component -->
-  <div id="footer-container"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
-    });
-  </script>
-
-  <!-- Error Handling Component -->
-  <script>
-    fetch('components/error-handling.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Error Handling load error:', error));
-  </script>
-
-  <!-- Unified Scripts Component -->
-  <script>
-    fetch('components/scripts-unified.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Scripts load error:', error));
-  </script>
+  <!-- COMPONENT: components/footer.html -->
+  <!-- COMPONENT: components/error-handling.html -->
+  <!-- COMPONENT: components/scripts-unified.html -->
 
   <!-- Lucide Icons Initialization -->
   <script>

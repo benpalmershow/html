@@ -2,20 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Common Meta Tags Component -->
-  <script>
-    fetch('components/head-meta.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const metaElements = tempDiv.querySelectorAll('meta, link');
-        metaElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Meta tags load error:', error));
-  </script>
+  <!-- COMPONENT: components/head-meta.html -->
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -48,20 +35,7 @@
 
   <title>Portfolio - Howdy, Stranger</title>
 
-  <!-- Typography System Fonts Component -->
-  <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
-  </script>
+  <!-- COMPONENT: components/fonts.html -->
 
   <!-- Navigation CSS -->
   <link rel="stylesheet" href="css/nav.css?v=20251220">

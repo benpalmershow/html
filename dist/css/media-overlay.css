@@ -1,0 +1,574 @@
+/* ==========================================================================
+    MEDIA OVERLAY & CONTENT - Separated for better code organization
+    ========================================================================== */
+
+/* Overlay Container */
+.media-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, var(--overlay-light) 0%, var(--overlay-dark) 100%);
+    color: white;
+    padding: 0;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    z-index: 10;
+    box-sizing: border-box;
+    pointer-events: none;
+    border-radius: 0.5rem;
+    will-change: opacity;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.media-card:hover .media-overlay,
+.media-card:focus-within .media-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Overlay Content */
+.media-overlay-content {
+    padding: 0.6rem 1rem 4rem 1rem;
+    width: 100%;
+    height: calc(100% - 2rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+}
+
+/* Media Text Content */
+.media-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem 0;
+    padding: 0.3rem 0;
+    line-height: 1.3;
+    color: var(--color-white, #fff);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    pointer-events: auto;
+    position: relative;
+    background: transparent;
+    z-index: 2;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    order: 1;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.media-author {
+    font-size: 1rem;
+    margin: 0 0 0.3rem 0;
+    color: var(--accent-color);
+    font-weight: 600;
+    width: 100%;
+    pointer-events: auto;
+    opacity: 0.98;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
+    order: 2;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.media-overlay-desc {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--border-light, #e8dcc0);
+    line-height: 1.4;
+    margin-bottom: 0.5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.media-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    width: 100%;
+    flex: 1;
+    text-align: left;
+    pointer-events: auto;
+    scroll-behavior: smooth;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    order: 3;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Media Date Bottom */
+.media-date-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    text-align: center;
+    background: var(--overlay-medium);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 0.5rem 0.5rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
+    z-index: 5;
+    order: 6;
+}
+
+/* ==========================================================================
+    RATING & ACTIONS (IMDB, ROTTEN TOMATOES, YOUTUBE TRAILER)
+    ========================================================================== */
+.rating-logos,
+.movie-actions-container,
+.trailer-container {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.5rem 0 0.3rem;
+    padding: 0.5rem 0 0;
+    z-index: var(--z-overlay);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    order: 4;
+}
+
+.rating-logo,
+.trailer-button-inline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+    transition: transform var(--transition-fast),
+        opacity var(--transition-fast);
+    opacity: 0.95;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    min-height: 1.5rem;
+    user-select: none;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.rating-logo:hover,
+.trailer-button-inline:hover {
+    transform: translateY(-2px) scale(1.05);
+    opacity: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.rating-logo .score {
+    font-weight: bold;
+}
+
+/* Rotten Tomatoes */
+.rating-logo.rt-logo {
+    background-color: var(--color-rotten-tomatoes, #f93a1e);
+    color: white;
+}
+
+.rating-logo.rt-logo .rt-tomato {
+    margin-right: 0.3rem;
+    font-size: 1.1em;
+}
+
+/* IMDB */
+.rating-logo.imdb-logo {
+    background-color: var(--accent-color);
+    color: var(--color-black, #000);
+}
+
+.rating-logo.imdb-logo .imdb-icon {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    margin-right: 0.3rem;
+}
+
+/* YouTube Trailer */
+.trailer-button-inline {
+    background: var(--color-youtube, #FF0000);
+    color: white;
+}
+
+.trailer-container-inline {
+    display: inherit;
+    flex-wrap: inherit;
+    gap: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    width: 100%;
+}
+
+.trailer-container-inline .trailer-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    margin: 0.6rem 0;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.trailer-container-inline .trailer-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ==========================================================================
+    MEDIA LINKS & PLATFORMS
+    ========================================================================== */
+
+/* Song and Podcast Links Container */
+.song-links,
+.podcast-links,
+.media-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    width: 100%;
+    order: 5;
+    position: relative;
+    z-index: 6;
+}
+
+.podcast-links::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Platform Links */
+.song-link,
+.podcast-link {
+    font-size: 1.5em;
+    opacity: 0.9;
+    transition: all var(--transition-medium);
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.song-link:hover,
+.podcast-link:hover {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    z-index: 1;
+}
+
+/* Platform-Specific Styling */
+.spotify-link,
+.apple-link,
+.youtube-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link,
+.media-link {
+    color: white;
+}
+
+.youtube-link,
+.spotify-link,
+.apple-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link,
+.media-link {
+    font-size: 1.5em;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none !important;
+    opacity: 0.9;
+    transition: all var(--transition-medium);
+    box-shadow: none;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.youtube-link i,
+.spotify-link i,
+.apple-link i,
+.soundcloud-link i,
+.amazon-link i,
+.google-link i,
+.rss-link i,
+.x-link i,
+.media-link i {
+    font-size: 1.5em;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.youtube-link:hover,
+.youtube-link:focus,
+.spotify-link:hover,
+.spotify-link:focus,
+.apple-link:hover,
+.apple-link:focus,
+.soundcloud-link:hover,
+.soundcloud-link:focus,
+.amazon-link:hover,
+.amazon-link:focus,
+.google-link:hover,
+.google-link:focus,
+.rss-link:hover,
+.rss-link:focus,
+.x-link:hover,
+.x-link:focus,
+.media-link:hover,
+.media-link:focus {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none !important;
+    z-index: 1;
+}
+
+/* ==========================================================================
+    MOBILE RESPONSIVE - OVERLAY ADJUSTMENTS
+    ========================================================================== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .media-overlay-desc {
+        font-size: 0.95rem;
+    }
+
+    .media-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .media-title {
+        font-size: 1.1rem;
+    }
+
+    .media-overlay-desc {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .media-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .media-author {
+        font-size: 0.9rem;
+    }
+
+    .media-date-bottom {
+        font-size: 0.65rem;
+    }
+
+    .rating-logos,
+    .movie-actions-container {
+        gap: 0.3rem;
+        padding: 0.3rem 0;
+    }
+
+    .rating-logo,
+    .trailer-button-inline {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75em;
+    }
+
+    .song-link,
+    .podcast-link,
+    .media-link {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2em;
+    }
+}
+
+/* Extra small (414px and below) */
+@media (max-width: 414px) {
+    .media-title {
+        font-size: 1rem;
+    }
+
+    .media-overlay-desc {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .media-description {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .media-author {
+        font-size: 0.8rem;
+    }
+
+    .media-date-bottom {
+        font-size: 0.6rem;
+        padding: 0.15rem 0;
+    }
+
+    .rating-logos,
+    .movie-actions-container {
+        gap: 0.2rem;
+        padding: 0.2rem 0;
+        margin: 0.3rem 0 0.2rem;
+    }
+
+    .rating-logo,
+    .trailer-button-inline {
+        padding: 0.15rem 0.3rem;
+        font-size: 0.6em;
+    }
+
+    .song-link,
+    .podcast-link,
+    .media-link {
+        width: 28px;
+        height: 28px;
+        font-size: 1em;
+    }
+}
+
+/* ==========================================================================
+    DARK MODE - OVERLAY OVERRIDES
+    ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .media-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.95) 100%);
+    }
+}
+
+/* Ensure media overlay icons stay white in dark mode */
+[data-theme="dark"] .media-overlay .youtube-link,
+[data-theme="dark"] .media-overlay .spotify-link,
+[data-theme="dark"] .media-overlay .apple-link,
+[data-theme="dark"] .media-overlay .soundcloud-link,
+[data-theme="dark"] .media-overlay .amazon-link,
+[data-theme="dark"] .media-overlay .google-link,
+[data-theme="dark"] .media-overlay .rss-link,
+[data-theme="dark"] .media-overlay .x-link,
+[data-theme="dark"] .media-overlay .media-link,
+[data-theme="dark"] .media-overlay .song-link,
+[data-theme="dark"] .media-overlay .podcast-link {
+    color: white !important;
+}
+
+[data-theme="dark"] .media-overlay .youtube-link i,
+[data-theme="dark"] .media-overlay .spotify-link i,
+[data-theme="dark"] .media-overlay .apple-link i,
+[data-theme="dark"] .media-overlay .soundcloud-link i,
+[data-theme="dark"] .media-overlay .amazon-link i,
+[data-theme="dark"] .media-overlay .google-link i,
+[data-theme="dark"] .media-overlay .rss-link i,
+[data-theme="dark"] .media-overlay .x-link i,
+[data-theme="dark"] .media-overlay .media-link i,
+[data-theme="dark"] .media-overlay .song-link i,
+[data-theme="dark"] .media-overlay .podcast-link i {
+    color: white !important;
+}
+
+/* Remove underlines on all hyperlinks in media overlays */
+.media-overlay a,
+.media-overlay a:hover,
+.media-overlay a:focus,
+.media-overlay a:active,
+.media-overlay a:visited {
+    text-decoration: none !important;
+}
+
+/* Remove underlines on all media links */
+.song-link,
+.podcast-link,
+.media-link,
+.youtube-link,
+.spotify-link,
+.apple-link,
+.soundcloud-link,
+.amazon-link,
+.google-link,
+.rss-link,
+.x-link {
+    text-decoration: none !important;
+}
+
+.song-link:hover,
+.podcast-link:hover,
+.media-link:hover,
+.youtube-link:hover,
+.spotify-link:hover,
+.apple-link:hover,
+.soundcloud-link:hover,
+.amazon-link:hover,
+.google-link:hover,
+.rss-link:hover,
+.x-link:hover {
+    text-decoration: none !important;
+}
+
+/* Remove underlines on rating logos */
+.rating-logo,
+.rating-logo:hover,
+.rating-logo:focus,
+.rating-logo:active {
+    text-decoration: none !important;
+}

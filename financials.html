@@ -17,6 +17,7 @@
   <noscript><link rel="stylesheet" href="css/body.css?v=20251220"><link rel="stylesheet" href="css/nav.css?v=20251220"><link rel="stylesheet" href="css/financials.css?v=20251220"></noscript>
 
   <!-- Preload critical resources -->
+  <link rel="preload" href="js/task-scheduler.js" as="script">
   <link rel="preload" href="js/utils.js" as="script">
   <link rel="preload" href="js/indicators.js" as="script">
   <link rel="preload" href="js/charts.js" as="script">
@@ -38,11 +39,19 @@
     }
   </script>
 
-  <!-- Chart.js for interactive charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
-  <!-- Infogram Embed Script -->
+  <!-- Chart.js for interactive charts (loaded asynchronously after page content) -->
   <script>
+    // Load Chart.js asynchronously to avoid blocking main thread
+    window.addEventListener('load', () => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+      script.async = true;
+      document.head.appendChild(script);
+    });
+  </script>
+
+  <!-- Infogram Embed Script (deferred) -->
+  <script defer>
     ! function (e, n, i, s) {
       var d = "InfogramEmbeds";
       var o = e.getElementsByTagName(n)[0];
@@ -60,7 +69,7 @@
   </script>
 
   <!-- Lucide Icons -->
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" async></script>
 
   <!-- Performance monitoring -->
   <script src="js/speed-insights.js" defer></script>
@@ -130,6 +139,7 @@
   <!-- COMPONENT: components/scripts-unified.html -->
 
   <!-- Financials Module Scripts (loaded in dependency order) -->
+  <script src="js/task-scheduler.js" defer></script>
   <script src="js/utils.js" defer></script>
   <script src="js/indicators.js" defer></script>
   <script src="js/charts.js" defer></script>

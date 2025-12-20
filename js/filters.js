@@ -14,7 +14,7 @@ const categoryIcons = {
     'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>'
 };
 
-function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
+async function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
     const categories = [...new Set(financialData.indices.map(item => item.category))];
     const categoryDropdown = document.getElementById('categoryDropdown');
     const desktopFilters = document.getElementById('desktopFilters');
@@ -58,11 +58,17 @@ function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
     // Add "Latest"
     createFilterElements('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
 
-    // Add Categories
-    categories.forEach(category => {
+    // Add Categories with yielding
+    for (let i = 0; i < categories.length; i++) {
+        const category = categories[i];
         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
         createFilterElements(category, icon, category);
-    });
+        
+        // Yield every 5 categories to avoid blocking
+        if ((i + 1) % 5 === 0 && i < categories.length - 1) {
+            await yieldToMain();
+        }
+    }
 
     // Add 13F Holdings button
     createFilterElements('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
@@ -103,7 +109,7 @@ function updateActiveElements(selector, predicate) {
     });
 }
 
-function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
+async function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
     const category = element.getAttribute(DATA_ATTRS.CATEGORY);
     const isLatest = element.getAttribute(DATA_ATTRS.IS_LATEST) === 'true';
 
@@ -137,10 +143,10 @@ function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
 
     // Render
     if (isLatest) {
-        renderDashboard('all', true);
+        await renderDashboard('all', true);
     } else {
         currentCategory = category || 'all';
-        renderDashboard(currentCategory, false);
+        await renderDashboard(currentCategory, false);
     }
 }
 

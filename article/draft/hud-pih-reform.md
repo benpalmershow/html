@@ -8,7 +8,7 @@ published: false
 
 The federal role in housing should be limited. The optimization of a $50 trillion residential real estate market where 67% of American families hold their life savings should not fall under the purview of bureaucrats. Historical efforts to enact incremental reforms at PIH (Housing Opportunity through Modernization Act of 2016, ARRA, QHWRA, HOTMA, etc.) have only increased the size of the Federal Register; they have not produced results for the American public.
 
-Shelter costs increased 4.4% YoY and account for a third of the Consumer Price Index (CPI). Home sales are at their lowest in 30 years. 170,000 Californians are unhoused. These metrics demonstrate the failure of the current bureaucratic approach to housing policy.
+[Shelter costs increased 4.4% YoY](financials.html?filter=Consumer%20Indicators) and account for a third of the [Consumer Price Index (CPI)](posts/2025-12-19-sentiment-cpi-update.html). [Home sales are at their lowest in 30 years.](posts/2025-12-20-home-sales-employment-trends.html) 170,000 Californians are unhoused. These metrics demonstrate the failure of the current bureaucratic approach to housing policy.
 
 ## De-Proceduralization
 
@@ -29,6 +29,8 @@ Limit eligibility to qualified families under 50% of Area Median Income. Elderly
 ## Step 2: Leverage Modern Technology for Data-Proven Cash Transfers
 
 Leverage modern technology to support data-proven cash transfers that ameliorate poverty in the U.S. Ensure robust ID verification, eliminate self-certification, employ agentic AI and blockchain to incorporate dynamic real-time feedback. Restore public trust with full data transparency.
+
+See [fraud detection in federal assistance programs](../posts/2025-11-26-jobless-claims-final.html) for a real-world example of how data verification can strengthen program integrity.
 
 **Cost Savings:** $5,367,000,000 in current unreported income. $11,382,059.26 in debts owed to PHAs (that's just 1 out of 10 regions). $1,900,000,000 in annual HUD S&E.
 
@@ -68,3 +70,12 @@ MTW agencies sit on $1,089,604,001 in unused reserves and use it as their retire
 | **Total** | **$142,444,182,135** |
 
 *Note: Unreported income likely uncollectable, but avoidable with robust validation technology.
+
+## Sources
+
+- **HCV Administrative Costs**: [HUD PIH Notice 2024-33](https://www.hud.gov/program_offices/public_indian_housing/programs/ph/phr/about/dh/)
+- **Unreported Income & Program Fraud**: [HUD Office of Inspector General Audit Reports](https://www.hudoig.gov/reports-publications)
+- **MTW Agency Data**: [HUD Moving To Work Agencies](https://www.hud.gov/program_offices/public_indian_housing/programs/ph/mtw/about)
+- **Public Housing Capital Needs**: [HUD Capital Needs Assessment](https://www.hud.gov/program_offices/public_indian_housing)
+- **Federal Housing Finance Data**: [FHFA Home Price Index](https://www.fhfa.gov/)
+- **California Homelessness Data**: [Cal ICH Homeless Data Integration System](https://bcsh.ca.gov/calich/hdis.html)

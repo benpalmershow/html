@@ -42,9 +42,23 @@ html.dark-mode {
 
 /* Journal container - tweet-like feed */
 #journal-feed {
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 480px) {
+    #journal-feed {
+        max-width: 100% !important;
+        padding: 0 var(--spacing-sm) !important;
+    }
+}
+
+@media (max-width: 414px) {
+    #journal-feed {
+        max-width: 100% !important;
+        padding: 0 var(--spacing-sm) !important;
+    }
 }
 
 /* Journal entry - individual tweet */

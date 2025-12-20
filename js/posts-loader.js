@@ -370,7 +370,7 @@ async function loadAndRenderPosts(posts) {
             btn.onclick = loadMorePosts;
             document.querySelector('.announcements')?.appendChild(btn);
         }
-        btn.textContent = `Load More`;
+        btn.textContent = `Dopamine`;
         btn.style.display = 'block';
     }
 
@@ -390,7 +390,7 @@ async function loadMorePosts() {
 
     btn.disabled = false;
     if (state.loadedCount >= state.allPosts.length) btn.style.display = 'none';
-    else btn.textContent = 'Load More';
+    else btn.textContent = 'Dopamine';
 }
 
 // Init

@@ -63,7 +63,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Existing Home Sales",
-            "lastUpdated": "2025-11-20T14:00:00Z",
+            "lastUpdated": "2025-12-20T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.nar.realtor/newsroom/existing-home-sales-edged-lower-by-0-5-in-april",
             "march": "",
@@ -73,8 +73,9 @@
             "july": "4.01M",
             "august": "4.00M",
             "september": "4.05M",
-            "october": "4.10M",
-            "change": "",
+            "october": "4.11M",
+            "november":"$4.13M",
+            "change": "",   
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
         },
         {
@@ -730,7 +731,7 @@
             "category": "Employment Indicators",
             "agency": "The Conference Board",
             "name": "Employment Trends Index",
-            "lastUpdated": "2025-11-25T14:00:00Z",
+            "lastUpdated": "2025-12-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.conference-board.org/topics/employment-trends-index",
             "march": "",
@@ -739,8 +740,10 @@
             "june": "108.19",
             "july": "107.13",
             "august": "106.68",
-            "september":"106.84",
+            "september":"106.24",
+            "october":"105.8",
             "change": "",
+        
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
         },
         {

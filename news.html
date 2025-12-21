@@ -66,10 +66,10 @@
   </script>
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/body.css?v=20251220">
-  <link rel="stylesheet" href="css/nav.css?v=20251220">
-  <link rel="stylesheet" href="css/news.css?v=20251220">
-  <link rel="stylesheet" href="css/article.css?v=20251220">
+  <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/news.css?v=20251220" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/article.css?v=20251220" as="style" onload="this.rel='stylesheet'">
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
@@ -81,20 +81,38 @@
   <title>News - Howdy, Stranger</title>
 
   <!-- Analytics Component -->
+  <!-- Deferred GTM loading -->
   <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    let gaLoaded = false;
+    const loadGA = () => {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+      gtag('config', 'AW-16914260010');
+      
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    };
+
+    // Load after 10 seconds or on first interaction
+    let gaTimeout = setTimeout(loadGA, 10000);
+    
+    const loadOnInteraction = () => {
+      clearTimeout(gaTimeout);
+      loadGA();
+      document.removeEventListener('click', loadOnInteraction);
+      document.removeEventListener('scroll', loadOnInteraction);
+      document.removeEventListener('keydown', loadOnInteraction);
+    };
+    document.addEventListener('click', loadOnInteraction, { passive: true, once: true });
+    document.addEventListener('scroll', loadOnInteraction, { passive: true, once: true });
+    document.addEventListener('keydown', loadOnInteraction, { passive: true, once: true });
   </script>
 
   <!-- Vercel Insights - Production only -->
@@ -107,9 +125,47 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  
+  <!-- On-demand library loaders -->
+  <script defer>
+    (function () {
+      function loadScript(src, callback) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = callback;
+        script.onerror = () => console.error('Failed to load script:', src);
+        document.head.appendChild(script);
+      }
+
+      // Load lucide after idle or on first interaction
+      const loadLucide = () => {
+        loadScript('https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js', () => {
+          setTimeout(() => window.lucide?.createIcons(), 0);
+        });
+        document.removeEventListener('click', loadLucide);
+        document.removeEventListener('scroll', loadLucide);
+      };
+      
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        document.addEventListener('click', loadLucide, { passive: true, once: true });
+        document.addEventListener('scroll', loadLucide, { passive: true, once: true });
+      }
+
+      // On-demand loaders for libraries used only on specific pages
+      window.loadMarked = () => new Promise(resolve => {
+        if (window.marked) return resolve(window.marked);
+        loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js', () => resolve(window.marked));
+      });
+
+      window.loadYAML = () => new Promise(resolve => {
+        if (window.jsyaml) return resolve(window.jsyaml);
+        loadScript('https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js', () => resolve(window.jsyaml));
+      });
+    })();
+  </script>
 
 </head>
 
@@ -134,19 +190,19 @@
           <div class="filters">
             <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span
                 class="filter-text">All</span></button>
-            <button class="filter-btn political" data-category="political"><i data-lucide="vote"
+            <button class="filter-btn political" data-category="political" aria-label="Political news"><i data-lucide="vote"
                 class="filter-icon"></i><span class="filter-text">Political</span></button>
-            <button class="filter-btn ipo" data-category="ipo"><i data-lucide="trending-up"
+            <button class="filter-btn ipo" data-category="ipo" aria-label="IPO news"><i data-lucide="trending-up"
                 class="filter-icon"></i><span class="filter-text">IPO</span></button>
-            <button class="filter-btn earnings" data-category="earnings"><i data-lucide="bar-chart-3"
+            <button class="filter-btn earnings" data-category="earnings" aria-label="Earnings news"><i data-lucide="bar-chart-3"
                 class="filter-icon"></i><span class="filter-text">Earnings</span></button>
-            <button class="filter-btn policy" data-category="policy"><i data-lucide="shield"
+            <button class="filter-btn policy" data-category="policy" aria-label="Policy news"><i data-lucide="shield"
                 class="filter-icon"></i><span class="filter-text">Policy</span></button>
-            <button class="filter-btn healthcare" data-category="healthcare"><i data-lucide="heart"
+            <button class="filter-btn healthcare" data-category="healthcare" aria-label="Healthcare news"><i data-lucide="heart"
                 class="filter-icon"></i><span class="filter-text">Healthcare</span></button>
-            <button class="filter-btn legal" data-category="legal"><i data-lucide="gavel" class="filter-icon"></i><span
+            <button class="filter-btn legal" data-category="legal" aria-label="Legal news"><i data-lucide="gavel" class="filter-icon"></i><span
                 class="filter-text">Legal</span></button>
-            <button class="filter-btn corrections" data-category="corrections"><i data-lucide="edit-3"
+            <button class="filter-btn corrections" data-category="corrections" aria-label="Corrections"><i data-lucide="edit-3"
                 class="filter-icon"></i><span class="filter-text">Corrections</span></button>
           </div>
           <div class="morphing-disclosure" id="articles-container">

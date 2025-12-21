@@ -249,6 +249,23 @@ async function renderFinancialCharts() {
     const containers = document.querySelectorAll('[data-indicator]:not([data-rendered])');
     if (containers.length === 0) return;
 
+    // Lazy load charts using IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(async (entry) => {
+            if (entry.isIntersecting) {
+                const container = entry.target;
+                observer.unobserve(container);
+                await renderSingleChart(container);
+            }
+        });
+    }, { rootMargin: '50px' });
+
+    containers.forEach(container => observer.observe(container));
+}
+
+async function renderSingleChart(container) {
+    if (container.dataset.rendered) return;
+
     if (!window.Chart) {
         if (window.loadChartJS) {
             await window.loadChartJS();
@@ -258,42 +275,44 @@ async function renderFinancialCharts() {
     }
 
     try {
-        const response = await fetch('json/financials-data.json');
-        if (!response.ok) return;
-        const data = await response.json();
+        // Cache the data fetch
+        if (!window._financialsData) {
+            const response = await fetch('json/financials-data.json');
+            if (!response.ok) return;
+            window._financialsData = await response.json();
+        }
+        const data = window._financialsData;
 
-        containers.forEach(container => {
-            const canvasId = container.getAttribute('data-chart-id');
-            const indicatorName = container.getAttribute('data-indicator');
-            const canvas = document.getElementById(canvasId);
-            const indicator = data.indices?.find(i => i.name === indicatorName);
+        const canvasId = container.getAttribute('data-chart-id');
+        const indicatorName = container.getAttribute('data-indicator');
+        const canvas = document.getElementById(canvasId);
+        const indicator = data.indices?.find(i => i.name === indicatorName);
 
-            if (canvas && indicator) {
-                // Simplified extraction
-                let dataPoints = [], labels = [];
-                if (indicator.bps_probabilities) {
-                    labels = Object.keys(indicator.bps_probabilities);
-                    dataPoints = Object.values(indicator.bps_probabilities).map(v => parseFloat(v));
-                } else {
-                    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-                    months.forEach(m => {
-                        if (indicator[m]) {
-                            const val = parseFloat(indicator[m].replace(/[^0-9.-]/g, ''));
-                            if (!isNaN(val)) {
-                                dataPoints.push(val);
-                                labels.push(m.slice(0, 3));
-                            }
+        if (canvas && indicator) {
+            // Simplified extraction
+            let dataPoints = [], labels = [];
+            if (indicator.bps_probabilities) {
+                labels = Object.keys(indicator.bps_probabilities);
+                dataPoints = Object.values(indicator.bps_probabilities).map(v => parseFloat(v));
+            } else {
+                const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+                months.forEach(m => {
+                    if (indicator[m]) {
+                        const val = parseFloat(indicator[m].replace(/[^0-9.-]/g, ''));
+                        if (!isNaN(val)) {
+                            dataPoints.push(val);
+                            labels.push(m.slice(0, 3));
                         }
-                    });
-                }
-
-                const config = getChartConfig(indicator, labels, dataPoints);
-                if (config) {
-                    new window.Chart(canvas.getContext('2d'), config);
-                    container.dataset.rendered = 'true';
-                }
+                    }
+                });
             }
-        });
+
+            const config = getChartConfig(indicator, labels, dataPoints);
+            if (config) {
+                new window.Chart(canvas.getContext('2d'), config);
+                container.dataset.rendered = 'true';
+            }
+        }
     } catch (e) { console.error(e); }
 }
 

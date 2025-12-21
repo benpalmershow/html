@@ -74,6 +74,9 @@
 
             const markdown = await response.text();
             const { metadata, content } = parseFrontmatter(markdown);
+            
+            // Ensure marked is loaded
+            await window.loadMarked();
             const html = marked.parse(content);
 
             return { metadata, html };
@@ -196,16 +199,16 @@
         };
 
         // Create and setup back-to-top button
-        let backToTopBtn = document.querySelector('.back-to-top-btn');
-        if (!backToTopBtn) {
-            backToTopBtn = document.createElement('button');
-            backToTopBtn.className = 'back-to-top-btn';
-            backToTopBtn.setAttribute('aria-label', 'Back to top');
-            backToTopBtn.setAttribute('title', 'Back to top');
-            backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
-            document.body.appendChild(backToTopBtn);
-            lucide.createIcons();
-        }
+         let backToTopBtn = document.querySelector('.back-to-top-btn');
+         if (!backToTopBtn) {
+             backToTopBtn = document.createElement('button');
+             backToTopBtn.className = 'back-to-top-btn';
+             backToTopBtn.setAttribute('aria-label', 'Back to top');
+             backToTopBtn.setAttribute('title', 'Back to top');
+             backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
+             document.body.appendChild(backToTopBtn);
+             if (window.lucide) lucide.createIcons();
+         }
 
         const handleBackToTopVisibility = () => {
             if (window.scrollY > 300) {
@@ -238,10 +241,10 @@
         metaHtml += `<span class="category-badge ${article.metadata.category}">${article.metadata.category}</span>`;
 
         metaEl.innerHTML = metaHtml;
-        backButton.insertAdjacentElement('afterend', metaEl);
+         backButton.insertAdjacentElement('afterend', metaEl);
 
-        lucide.createIcons();
-    }
+         if (window.lucide) lucide.createIcons();
+        }
 
     // Render news feed
     function renderNewsFeed() {
@@ -263,11 +266,11 @@
         );
 
         // Render cards directly from index
-        container.innerHTML = sortedArticles.map(renderArticleCard).join('');
+         container.innerHTML = sortedArticles.map(renderArticleCard).join('');
 
-        lucide.createIcons();
-        setupDisclosures();
-    }
+         if (window.lucide) lucide.createIcons();
+         setupDisclosures();
+        }
 
     // Load articles index from JSON
     function loadArticlesIndex() {
@@ -380,11 +383,11 @@
     }
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-        initRouter();
-        initFilters();
-        lucide.createIcons();
-    });
+     document.addEventListener('DOMContentLoaded', () => {
+         initRouter();
+         initFilters();
+         if (window.lucide) lucide.createIcons();
+     });
 
     // Handle browser back/forward
     window.addEventListener('popstate', initRouter);

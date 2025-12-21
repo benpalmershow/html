@@ -69,22 +69,38 @@
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics Component -->
-  <!-- Unified Analytics -->
+  <!-- Deferred GTM loading -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
-    gtag('config', 'AW-16914260010');
 
-    function loadGtagScript() {
+    let gaLoaded = false;
+    const loadGA = () => {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      gtag('js', new Date());
+      gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+      gtag('config', 'AW-16914260010');
+      
       const script = document.createElement('script');
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
       script.async = true;
       document.head.appendChild(script);
-    }
-    if ('requestIdleCallback' in window) requestIdleCallback(loadGtagScript);
-    else setTimeout(loadGtagScript, 3000);
+    };
+
+    // Load after 10 seconds or on first interaction
+    let gaTimeout = setTimeout(loadGA, 10000);
+    
+    const loadOnInteraction = () => {
+      clearTimeout(gaTimeout);
+      loadGA();
+      document.removeEventListener('click', loadOnInteraction);
+      document.removeEventListener('scroll', loadOnInteraction);
+      document.removeEventListener('keydown', loadOnInteraction);
+    };
+    document.addEventListener('click', loadOnInteraction, { passive: true, once: true });
+    document.addEventListener('scroll', loadOnInteraction, { passive: true, once: true });
+    document.addEventListener('keydown', loadOnInteraction, { passive: true, once: true });
   </script>
 
   <!-- Pre-fetch posts data -->
@@ -195,59 +211,40 @@
   <script defer>
     // Library loader
     (function () {
-      const libs = {
-        marked: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
-        lucide: 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js',
-        chartjs: 'https://cdn.jsdelivr.net/npm/chart.js',
-        yaml: 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js',
-        fontawesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-      };
-
       function loadScript(src, callback) {
         const script = document.createElement('script');
         script.src = src;
         script.async = true;
         script.onload = callback;
-        script.onerror = () => {
-          console.error('Failed to load script:', src);
-          showSimpleError(`Failed to load ${src.split('/').pop()}`);
-        };
+        script.onerror = () => console.error('Failed to load script:', src);
         document.head.appendChild(script);
       }
 
-      function loadCSS(href) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = href;
-        link.media = 'print';
-        link.onload = function () { this.media = 'all'; };
-        link.onerror = () => {
-          console.error('Failed to load CSS:', href);
-          showSimpleError('Failed to load styles');
-        };
-        document.head.appendChild(link);
+      // Load lucide after idle or on first interaction
+      const loadLucide = () => {
+        loadScript('https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js', () => {
+          setTimeout(() => window.lucide?.createIcons(), 0);
+        });
+        document.removeEventListener('click', loadLucide);
+        document.removeEventListener('scroll', loadLucide);
+      };
+      
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        document.addEventListener('click', loadLucide, { passive: true, once: true });
+        document.addEventListener('scroll', loadLucide, { passive: true, once: true });
       }
 
+      // On-demand loaders for libraries used only on specific pages
       window.loadMarked = () => new Promise(resolve => {
         if (window.marked) return resolve(window.marked);
-        loadScript(libs.marked, () => resolve(window.marked));
+        loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js', () => resolve(window.marked));
       });
-
-      const loadLibs = () => {
-        loadScript(libs.lucide, () => window.lucide?.createIcons());
-        // FontAwesome not needed on index page
-        // loadCSS(libs.fontawesome);
-      };
-
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadLibs, { timeout: 2000 });
-      } else {
-        setTimeout(loadLibs, 1500);
-      }
 
       window.loadChartJS = () => new Promise(resolve => {
         if (window.Chart) return resolve(window.Chart);
-        loadScript(libs.chartjs, () => resolve(window.Chart));
+        loadScript('https://cdn.jsdelivr.net/npm/chart.js', () => resolve(window.Chart));
       });
     })();
   </script>

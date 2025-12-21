@@ -112,6 +112,14 @@ function processCharts(html) {
     });
 }
 
+function wrapImagesInLinks(html) {
+    const imgRegex = /<img([^>]*?)src="([^"]+)"([^>]*?)alt="([^"]+)"([^>]*?)>/g;
+    return html.replace(imgRegex, (match, before, src, after, alt, end) => {
+        const slug = alt.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        return `<a href="media.html#${slug}"><img${before}src="${src}"${after}alt="${alt}"${end}></a>`;
+    });
+}
+
 function waitForMarked() {
     return new Promise(resolve => {
         if (window.marked) return resolve();
@@ -360,6 +368,7 @@ async function loadAndRenderPosts(posts) {
         if (!post.file) return null;
         let content = await parseMarkdownFile(post.file);
         if (content.includes('{{chart:')) content = processCharts(content);
+        content = wrapImagesInLinks(content);
         return { ...post, content };
     }));
 

@@ -3,7 +3,19 @@
 
 <head>
   <!-- Common Meta Tags Component -->
-  <!-- COMPONENT: components/head-meta.html -->
+  <script>
+    fetch('components/head-meta.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const content = doc.body.innerHTML;
+        if (content) {
+          document.head.insertAdjacentHTML('afterbegin', content);
+        }
+      })
+      .catch(error => console.error('head-meta load error:', error));
+  </script>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -53,7 +65,29 @@
   <title>The Ben Palmer Show - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics Component -->
-  <!-- COMPONENT: components/analytics.html -->
+  <script>
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const scripts = doc.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.textContent) {
+            newScript.textContent = script.textContent;
+          }
+          if (script.src) {
+            newScript.src = script.src;
+          }
+          if (script.type) {
+            newScript.type = script.type;
+          }
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('analytics load error:', error));
+  </script>
 
   <!-- Pre-fetch posts data -->
   <script>
@@ -107,6 +141,19 @@
   </main>
 
   <!-- COMPONENT: components/footer.html -->
+  <script>
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const footer = doc.querySelector('footer');
+        if (footer) {
+          document.body.appendChild(footer);
+        }
+      })
+      .catch(error => console.error('Footer load error:', error));
+  </script>
 
 
 

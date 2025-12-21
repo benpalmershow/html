@@ -3,6 +3,19 @@
 
 <head>
   <!-- COMPONENT: components/head-meta.html -->
+  <script>
+    fetch('components/head-meta.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const content = doc.body.innerHTML;
+        if (content) {
+          document.head.insertAdjacentHTML('afterbegin', content);
+        }
+      })
+      .catch(error => console.error('head-meta load error:', error));
+  </script>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -38,6 +51,24 @@
   <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
 
   <!-- COMPONENT: components/fonts.html -->
+  <script>
+    fetch('components/fonts.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = doc.querySelectorAll('link');
+        links.forEach(link => {
+          const newLink = document.createElement('link');
+          newLink.rel = link.rel;
+          newLink.href = link.href;
+          if (link.as) newLink.as = link.as;
+          if (link.onload) newLink.onload = link.onload;
+          document.head.appendChild(newLink);
+        });
+      })
+      .catch(error => console.error('fonts load error:', error));
+  </script>
 
   <!-- Critical CSS -->
   <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
@@ -56,6 +87,29 @@
   <title>News - Howdy, Stranger</title>
 
   <!-- COMPONENT: components/analytics.html -->
+  <script>
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const scripts = doc.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.textContent) {
+            newScript.textContent = script.textContent;
+          }
+          if (script.src) {
+            newScript.src = script.src;
+          }
+          if (script.type) {
+            newScript.type = script.type;
+          }
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('analytics load error:', error));
+  </script>
 
   <!-- Vercel Insights - Production only -->
   <script>
@@ -119,8 +173,70 @@
   </main>
 
   <!-- COMPONENT: components/footer.html -->
+  <script>
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const footer = doc.querySelector('footer');
+        if (footer) {
+          document.body.appendChild(footer);
+        }
+      })
+      .catch(error => console.error('Footer load error:', error));
+  </script>
+
   <!-- COMPONENT: components/error-handling.html -->
+  <script>
+    fetch('components/error-handling.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const scripts = doc.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.textContent) {
+            newScript.textContent = script.textContent;
+          }
+          if (script.src) {
+            newScript.src = script.src;
+          }
+          if (script.type) {
+            newScript.type = script.type;
+          }
+          document.body.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('error-handling load error:', error));
+  </script>
+
   <!-- COMPONENT: components/scripts-unified.html -->
+  <script>
+    fetch('components/scripts-unified.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const scripts = doc.querySelectorAll('script');
+        scripts.forEach(script => {
+          const newScript = document.createElement('script');
+          if (script.textContent) {
+            newScript.textContent = script.textContent;
+          }
+          if (script.src) {
+            newScript.src = script.src;
+            if (script.hasAttribute('defer')) newScript.defer = true;
+          }
+          if (script.type) {
+            newScript.type = script.type;
+          }
+          document.body.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('scripts-unified load error:', error));
+  </script>
 
   <!-- Page-specific scripts -->
   <script defer src="js/news.js"></script>

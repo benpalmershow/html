@@ -1,1 +1,0 @@
-<i data-lucide='trending-down' class='post-icon'></i>  <b>Private Employment Update</b><br><br>▪ <b>September</b>: 134.53M (-32K MoM from Aug)<br>▪ <b>Trend</b>: Down 35K from July peak of 134.56M<br>▪ <b>Context</b>: ADP data shows softening in private sector hiring<br><br><a href="financials.html"><b>View all indicators</b></a>

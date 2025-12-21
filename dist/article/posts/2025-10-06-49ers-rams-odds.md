@@ -1,1 +1,0 @@
-<i data-lucide='trophy' class='post-icon'></i> <b>NFL Week 5: 49ers @ Rams Odds Update</b><br><br>▪ <b>Market Movement</b>: 49ers odds drop to 28¢ (from 30¢)<br>▪ <b>Current Line</b>: Rams -4.5 (72% implied probability)<br>▪ <b>Game</b>: Thursday Night Football, 10/02, 5:15 PM PDT<br><br><a href="financials.html"><b>View all prediction markets</b></a>

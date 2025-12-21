@@ -1,1 +1,0 @@
-<i data-lucide='star' class='post-icon'></i> <b>New Feature: Movie Ratings</b><br><br>Rotten Tomatoes and IMDb scores now displayed for all movies on the media page.<br><br><a href="media.html?filter=movie"><b>Browse Movies</b></a>

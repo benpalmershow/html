@@ -1,1 +1,0 @@
-<i data-lucide='trending-up' class='post-icon'></i>  <b>Border Update</b><br><br>▪ <b>Southern Border Encounters</b>: 9,740 in Aug (+24.5% MoM)<br>▪ After two months of decline, encounters rose sharply in August<br>▪ Current levels remain below May's peak of 12,451<br><br><a href="financials.html"><b>View all indicators</b></a>

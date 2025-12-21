@@ -1,6 +1,4 @@
 {
-  "buildCommand": "node scripts/build.js",
-  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)(webp|jpg|png|gif|svg)",

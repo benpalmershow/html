@@ -1,9 +1,3 @@
-/* Override global link underlines for financials content */
-.container a {
-    border-bottom: none;
-    text-decoration: none;
-}
-
 .container {
     width: 100%;
     max-width: 1200px;

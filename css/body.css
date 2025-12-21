@@ -3,10 +3,10 @@
        TYPOGRAPHY SYSTEM
        Intentional font pairings (not Inter/system)
        ======================================== */
-    --font-display: 'Google Sans Flex', sans-serif;
-    /* Google Sans Flex - expressive variable font */
-    --font-body: 'Google Sans Flex', sans-serif;
-    /* Google Sans Flex for all body text */
+    --font-display: Georgia, 'Times New Roman', serif;
+    /* Classic editorial headings */
+    --font-body: Georgia, 'Times New Roman', serif;
+    /* Classic body text */
     --font-mono: 'Courier New', Courier, monospace;
     /* Classic mono */
 
@@ -301,33 +301,28 @@ body {
 
 
 
-a {
-    color: inherit;
+/* Card title styling */
+.card-title {
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+/* Card link styling */
+.card a {
     text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    transition: opacity 0.2s ease;
+    color: var(--logo-orange);
+    font-weight: 600;
+    background: var(--color-secondary-bg);
+    border: 1px solid var(--logo-orange);
+    border-radius: 6px;
+    padding: 0.18em 0.85em;
+    margin: 0.15em 0.25em 0.15em 0;
+    transition: all 0.2s ease;
+    display: inline-block;
 }
 
-a:hover {
-    opacity: 0.7;
-}
-
-a:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
-
-/* Exclude nav links, buttons, and icon links from underlines */
-.nav-link,
-.nav-logo,
-.cta-icon-btn,
-.hints-icon-btn,
-.dark-mode-toggle,
-.btn,
-.social-links a,
-.footer-links a {
-    border-bottom: none !important;
-}
+.card a:focus,
 
 .site-header {
     text-align: center;
@@ -380,6 +375,14 @@ h4 {
     font-weight: 600;
     margin: var(--spacing-lg) 0 var(--spacing-sm);
     line-height: 1.3
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: left
 }
 
 table {
@@ -517,6 +520,18 @@ img[alt="Watch Image"] {
     height: auto;
     margin: clamp(6px, 1.5vw, 10px) 0 0 clamp(6px, 1.5vw, 10px);
     display: block
+}
+
+a {
+    color: var(--logo-orange);
+    text-decoration: underline;
+    transition: color 0.2s ease
+}
+
+a:focus,
+a:hover {
+    color: var(--logo-teal);
+    text-decoration: underline
 }
 
 html.dark-mode {
@@ -748,7 +763,12 @@ main {
     gap: var(--spacing-xs);
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
     border: 1px solid var(--logo-orange);
+    background: var(--color-secondary-bg);
+    color: var(--logo-orange);
+    font-weight: 500
 }
 
 .card-links a:hover {

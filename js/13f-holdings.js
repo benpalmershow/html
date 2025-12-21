@@ -114,7 +114,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
     `;
 }
 
-async function initializeFirmCards() {
+function initializeFirmCards() {
     const container = document.getElementById('firmCardsContainer');
     if (!container) return;
 
@@ -128,7 +128,6 @@ async function initializeFirmCards() {
             return dateB - dateA;
         });
 
-    // Process each firm card with yielding
     for (let sortIdx = 0; sortIdx < sortedFirmIndices.length; sortIdx++) {
         const firmIdx = sortedFirmIndices[sortIdx];
         const firmHoldings = allHoldings.filter(h => h.firmIndex === firmIdx).sort((a, b) => b.value - a.value);
@@ -298,11 +297,6 @@ async function initializeFirmCards() {
 
             }
         }, 0);
-
-        // Yield to main thread after each firm to allow browser to handle interactions
-        if (sortIdx < sortedFirmIndices.length - 1) {
-            await yieldToMain();
-        }
     }
 
     document.addEventListener('click', function (e) {

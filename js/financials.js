@@ -59,7 +59,7 @@ async function fetchFinancialData() {
 }
 
 // Render dashboard with indicators
-async function renderDashboard(filterCategory = 'all', sortByLatest = false) {
+function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     const categoriesContainer = document.getElementById('categories');
     let categories = [...new Set(financialData.indices.map(item => item.category))];
 
@@ -94,17 +94,6 @@ async function renderDashboard(filterCategory = 'all', sortByLatest = false) {
             return a.name.localeCompare(b.name);
         });
 
-        // Build cards in chunks to avoid blocking main thread
-        let cardHtml = '';
-        for (let i = 0; i < allIndicators.length; i++) {
-            cardHtml += createIndicatorCard(allIndicators[i], MONTHS, MONTH_LABELS, DATA_ATTRS);
-            
-            // Yield every 5 indicators
-            if ((i + 1) % 5 === 0 && i < allIndicators.length - 1) {
-                await yieldToMain();
-            }
-        }
-
         html += `
             <div class="category" data-category="latest-updates">
                 <h2 class="category-title">
@@ -112,14 +101,14 @@ async function renderDashboard(filterCategory = 'all', sortByLatest = false) {
                     <span class="category-name">Latest Updates</span>
                 </h2>
                 <div class="indicators-grid">
-                    ${cardHtml}
+                    ${allIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
                 </div>
             </div>
         `;
     } else {
         // Original category-based rendering
-        for (const category of categories) {
-            if (filterCategory !== 'all' && category !== filterCategory) continue;
+        categories.forEach(category => {
+            if (filterCategory !== 'all' && category !== filterCategory) return;
 
             let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
@@ -143,16 +132,6 @@ async function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
             const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
 
-            let categoryCardHtml = '';
-            for (let i = 0; i < categoryIndicators.length; i++) {
-                categoryCardHtml += createIndicatorCard(categoryIndicators[i], MONTHS, MONTH_LABELS, DATA_ATTRS);
-                
-                // Yield every 5 indicators
-                if ((i + 1) % 5 === 0 && i < categoryIndicators.length - 1) {
-                    await yieldToMain();
-                }
-            }
-
             html += `
                 <div class="category" data-category="${category}">
                     <h2 class="category-title">
@@ -160,14 +139,11 @@ async function renderDashboard(filterCategory = 'all', sortByLatest = false) {
                         <span class="category-name">${category}</span>
                     </h2>
                     <div class="indicators-grid">
-                        ${categoryCardHtml}
+                        ${categoryIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
                     </div>
                 </div>
             `;
-
-            // Yield between categories
-            await yieldToMain();
-        }
+        });
     }
 
     categoriesContainer.innerHTML = html;
@@ -182,9 +158,9 @@ async function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 }
 
 // Initialize dashboard on page load
-async function initializeDashboard() {
+function initializeDashboard() {
     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
-    await setupFilters(financialData, SELECTORS, DATA_ATTRS);
+    setupFilters(financialData, SELECTORS, DATA_ATTRS);
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'all';
 
@@ -206,7 +182,7 @@ async function initializeDashboard() {
             (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
         );
 
-        await renderDashboard(initialFilter);
+        renderDashboard(initialFilter);
         setupModalHandlers();
     }
 }

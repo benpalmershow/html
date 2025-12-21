@@ -14,7 +14,7 @@ const categoryIcons = {
     'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>'
 };
 
-async function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
+function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
     const categories = [...new Set(financialData.indices.map(item => item.category))];
     const categoryDropdown = document.getElementById('categoryDropdown');
     const desktopFilters = document.getElementById('desktopFilters');
@@ -58,17 +58,11 @@ async function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
     // Add "Latest"
     createFilterElements('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
 
-    // Add Categories with yielding
-    for (let i = 0; i < categories.length; i++) {
-        const category = categories[i];
+    // Add Categories
+    categories.forEach(category => {
         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
         createFilterElements(category, icon, category);
-        
-        // Yield every 5 categories to avoid blocking
-        if ((i + 1) % 5 === 0 && i < categories.length - 1) {
-            await yieldToMain();
-        }
-    }
+    });
 
     // Add 13F Holdings button
     createFilterElements('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
@@ -109,7 +103,7 @@ function updateActiveElements(selector, predicate) {
     });
 }
 
-async function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
+function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
     const category = element.getAttribute(DATA_ATTRS.CATEGORY);
     const isLatest = element.getAttribute(DATA_ATTRS.IS_LATEST) === 'true';
 
@@ -143,10 +137,10 @@ async function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
 
     // Render
     if (isLatest) {
-        await renderDashboard('all', true);
+        renderDashboard('all', true);
     } else {
         currentCategory = category || 'all';
-        await renderDashboard(currentCategory, false);
+        renderDashboard(currentCategory, false);
     }
 }
 

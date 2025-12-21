@@ -2,7 +2,20 @@
 <html lang="en">
 
 <head>
-  <!-- COMPONENT: components/head-meta.html -->
+  <!-- Common Meta Tags Component -->
+  <script>
+    fetch('components/head-meta.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const metaElements = tempDiv.querySelectorAll('meta, link');
+        metaElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Meta tags load error:', error));
+  </script>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -37,14 +50,26 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
 
-  <!-- COMPONENT: components/fonts.html -->
+  <!-- Typography System Fonts Component -->
+  <script>
+    fetch('components/fonts.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const linkElements = tempDiv.querySelectorAll('link');
+        linkElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Fonts load error:', error));
+  </script>
 
   <!-- Critical CSS -->
-  <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/news.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/article.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/body.css?v=20251220"><link rel="stylesheet" href="css/nav.css?v=20251220"><link rel="stylesheet" href="css/news.css?v=20251220"><link rel="stylesheet" href="css/article.css?v=20251220"></noscript>
+  <link rel="stylesheet" href="css/body.css?v=20251220">
+  <link rel="stylesheet" href="css/nav.css?v=20251220">
+  <link rel="stylesheet" href="css/news.css?v=20251220">
+  <link rel="stylesheet" href="css/article.css?v=20251220">
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
@@ -55,7 +80,22 @@
 
   <title>News - Howdy, Stranger</title>
 
-  <!-- COMPONENT: components/analytics.html -->
+  <!-- Analytics Component -->
+  <script>
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Analytics load error:', error));
+  </script>
 
   <!-- Vercel Insights - Production only -->
   <script>
@@ -76,7 +116,7 @@
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1">
-    <div class="page-title page-title--bordered"><i data-lucide="newspaper"
+    <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="newspaper"
         class="page-icon"></i>News</div>
     <div class="container">
       <!-- Full Article View (shown when ?article=id in URL) -->
@@ -92,23 +132,23 @@
       <div id="news-feed-view">
         <div class="content">
           <div class="filters">
-             <button class="filter-btn active" data-category="all" aria-label="Filter by All"><i data-lucide="list" class="filter-icon" aria-hidden="true"></i><span
-                 class="filter-text">All</span></button>
-             <button class="filter-btn political" data-category="political" aria-label="Filter by Political"><i data-lucide="vote"
-                 class="filter-icon" aria-hidden="true"></i><span class="filter-text">Political</span></button>
-             <button class="filter-btn ipo" data-category="ipo" aria-label="Filter by IPO"><i data-lucide="trending-up"
-                 class="filter-icon" aria-hidden="true"></i><span class="filter-text">IPO</span></button>
-             <button class="filter-btn earnings" data-category="earnings" aria-label="Filter by Earnings"><i data-lucide="bar-chart-3"
-                 class="filter-icon" aria-hidden="true"></i><span class="filter-text">Earnings</span></button>
-             <button class="filter-btn policy" data-category="policy" aria-label="Filter by Policy"><i data-lucide="shield"
-                 class="filter-icon" aria-hidden="true"></i><span class="filter-text">Policy</span></button>
-             <button class="filter-btn healthcare" data-category="healthcare" aria-label="Filter by Healthcare"><i data-lucide="heart"
-                 class="filter-icon" aria-hidden="true"></i><span class="filter-text">Healthcare</span></button>
-             <button class="filter-btn legal" data-category="legal" aria-label="Filter by Legal"><i data-lucide="gavel" class="filter-icon" aria-hidden="true"></i><span
-                 class="filter-text">Legal</span></button>
-             <button class="filter-btn corrections" data-category="corrections" aria-label="Filter by Corrections"><i data-lucide="edit-3"
-                 class="filter-icon" aria-hidden="true"></i><span class="filter-text">Corrections</span></button>
-           </div>
+            <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span
+                class="filter-text">All</span></button>
+            <button class="filter-btn political" data-category="political"><i data-lucide="vote"
+                class="filter-icon"></i><span class="filter-text">Political</span></button>
+            <button class="filter-btn ipo" data-category="ipo"><i data-lucide="trending-up"
+                class="filter-icon"></i><span class="filter-text">IPO</span></button>
+            <button class="filter-btn earnings" data-category="earnings"><i data-lucide="bar-chart-3"
+                class="filter-icon"></i><span class="filter-text">Earnings</span></button>
+            <button class="filter-btn policy" data-category="policy"><i data-lucide="shield"
+                class="filter-icon"></i><span class="filter-text">Policy</span></button>
+            <button class="filter-btn healthcare" data-category="healthcare"><i data-lucide="heart"
+                class="filter-icon"></i><span class="filter-text">Healthcare</span></button>
+            <button class="filter-btn legal" data-category="legal"><i data-lucide="gavel" class="filter-icon"></i><span
+                class="filter-text">Legal</span></button>
+            <button class="filter-btn corrections" data-category="corrections"><i data-lucide="edit-3"
+                class="filter-icon"></i><span class="filter-text">Corrections</span></button>
+          </div>
           <div class="morphing-disclosure" id="articles-container">
             <div class="loading">Loading articles...</div>
           </div>
@@ -118,11 +158,54 @@
 
   </main>
 
-  <!-- COMPONENT: components/footer.html -->
+  <!-- Footer Component -->
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
 
-  <!-- COMPONENT: components/error-handling.html -->
+  <!-- Error Handling Component -->
+  <script>
+    fetch('components/error-handling.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Error Handling load error:', error));
+  </script>
 
-  <!-- COMPONENT: components/scripts-unified.html -->
+  <!-- Unified Scripts Component -->
+  <script>
+    fetch('components/scripts-unified.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Scripts load error:', error));
+  </script>
 
   <!-- Page-specific scripts -->
   <script defer src="js/news.js"></script>

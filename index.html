@@ -2,7 +2,24 @@
 <html lang="en">
 
 <head>
-  <!-- COMPONENT: components/head-meta.html -->
+  <!-- Common Meta Tags Component -->
+  <!-- Common Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="author" content="Ben Palmer">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#1a1f1e">
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -12,11 +29,11 @@
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Ben Palmer Show - Independent Commentary & Economic Insight">
+  <meta property="og:title" content="Howdy, Stranger - Independent Commentary & Economic Insight">
   <meta property="og:description"
     content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
-  <meta property="og:url" content="https://tbps.xyz/">
-  <meta property="og:site_name" content="The Ben Palmer Show">
+  <meta property="og:url" content="https://howdystranger.net/">
+  <meta property="og:site_name" content="Howdy, Stranger">
   <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta property="og:image:alt" content="Howdy, Stranger - Independent Economic Commentary">
   <meta property="og:image:width" content="1200">
@@ -38,7 +55,7 @@
   <!-- Typography System Fonts Component -->
   <!-- Typography System Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wdth,wght@75..100,100..900&family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
     rel="preload" as="style" onload="this.rel='stylesheet'">
 
   <!-- Critical CSS -->
@@ -49,13 +66,30 @@
   <!-- Preload critical resources -->
   <link rel="preload" href="images/announcements.webp" as="image" type="image/webp" fetchpriority="high">
 
-  <title>The Ben Palmer Show - Independent Commentary & Economic Insight</title>
+  <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
-  <!-- COMPONENT: components/analytics.html -->
+  <!-- Analytics Component -->
+  <!-- Unified Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
+    gtag('config', 'AW-16914260010');
+
+    function loadGtagScript() {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    if ('requestIdleCallback' in window) requestIdleCallback(loadGtagScript);
+    else setTimeout(loadGtagScript, 3000);
+  </script>
 
   <!-- Pre-fetch posts data -->
   <script>
-    window.postsPromise = fetch('json/posts.json?v=20251220')
+    window.postsPromise = fetch('json/posts.json?v=' + Date.now())
       .then(r => {
         if (!r.ok) throw new Error('Failed to load posts');
         return r.json();
@@ -88,13 +122,13 @@
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1" style="min-height:calc(100vh - 60px)">
     <!-- Announcements Section Component with fallback -->
-    <div class="page-title">
+    <div class="page-title" aria-label="Page title">
       <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
         loading="eager" decoding="async">
       Announcements
     </div>
     <section class="announcements" aria-label="Latest announcements" style="min-height:600px">
-      <div class="announcements-container" id="announcements-container" style="min-height:500px" aria-busy="true">
+      <div class="announcements-container" id="announcements-container" style="min-height:500px">
         <div class="loading-skeleton" style="height:100px"></div>
         <div class="loading-skeleton" style="height:100px"></div>
         <div class="loading-skeleton" style="height:100px"></div>
@@ -104,7 +138,43 @@
     <!-- Announcements are populated by posts-loader.js directly into #announcements-container -->
   </main>
 
-  <!-- COMPONENT: components/footer.html -->
+  <!-- Reusable Footer -->
+  <footer id="social-footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="24"
+            height="24" loading="lazy">
+        </a>
+        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack" width="24"
+            height="24" loading="lazy">
+        </a>
+        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer"
+          aria-label="Spotify">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify" width="24"
+            height="24" loading="lazy">
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank"
+          rel="noopener noreferrer" aria-label="Apple Podcasts">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" alt="Apple Podcasts"
+            width="24" height="24" loading="lazy">
+        </a>
+        <a href="https://buymeacoffee.com/howdystranger" target="_blank" rel="noopener noreferrer"
+          aria-label="Buy Me A Coffee">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/buymeacoffee.svg" alt="BMC" width="24"
+            height="24" loading="lazy">
+        </a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-info">
+        <p class="footer-text">&copy; 2025 Howdy Stranger. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 
 

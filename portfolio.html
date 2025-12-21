@@ -2,7 +2,20 @@
 <html lang="en">
 
 <head>
-  <!-- COMPONENT: components/head-meta.html -->
+  <!-- Common Meta Tags Component -->
+  <script>
+    fetch('components/head-meta.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const metaElements = tempDiv.querySelectorAll('meta, link');
+        metaElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Meta tags load error:', error));
+  </script>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -35,7 +48,20 @@
 
   <title>Portfolio - Howdy, Stranger</title>
 
-  <!-- COMPONENT: components/fonts.html -->
+  <!-- Typography System Fonts Component -->
+  <script>
+    fetch('components/fonts.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const linkElements = tempDiv.querySelectorAll('link');
+        linkElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Fonts load error:', error));
+  </script>
 
   <!-- Navigation CSS -->
   <link rel="stylesheet" href="css/nav.css?v=20251220">
@@ -46,7 +72,22 @@
   <!-- Lucide Icons -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js"></script>
 
-  <!-- COMPONENT: components/analytics.html -->
+  <!-- Analytics Component -->
+  <script>
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Analytics load error:', error));
+  </script>
 
 
   <!-- Performance monitoring -->
@@ -295,9 +336,37 @@
     </div>
   </main>
 
-  <!-- COMPONENT: components/footer.html -->
+  <!-- Footer Component -->
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
 
-  <!-- COMPONENT: components/scripts-unified.html -->
+  <!-- Unified Scripts Component -->
+  <script>
+    fetch('components/scripts-unified.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Scripts load error:', error));
+  </script>
 
   <!-- Load JavaScript -->
   <script src="js/nav.js" defer></script>

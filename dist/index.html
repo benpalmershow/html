@@ -3,7 +3,6 @@
 
 <head>
   <!-- Common Meta Tags Component -->
-  <!-- Common Meta Tags Component -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="author" content="Ben Palmer">
@@ -68,7 +67,6 @@
 
   <title>The Ben Palmer Show - Independent Commentary & Economic Insight</title>
 
-  <!-- Analytics Component -->
   <!-- Unified Analytics Component -->
 <script>
   // Initialize dataLayer and gtag function
@@ -193,19 +191,6 @@
             </div>
         </div>
     </footer>
-  <script>
-    fetch('components/footer.html')
-      .then(response => response.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const footer = doc.querySelector('footer');
-        if (footer) {
-          document.body.appendChild(footer);
-        }
-      })
-      .catch(error => console.error('Footer load error:', error));
-  </script>
 
 
 

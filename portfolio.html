@@ -46,22 +46,7 @@
   <!-- Lucide Icons -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js"></script>
 
-  <!-- Analytics Component -->
-  <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
-  </script>
+  <!-- COMPONENT: components/analytics.html -->
 
 
   <!-- Performance monitoring -->
@@ -310,37 +295,9 @@
     </div>
   </main>
 
-  <!-- Footer Component -->
-  <div id="footer-container"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
-    });
-  </script>
+  <!-- COMPONENT: components/footer.html -->
 
-  <!-- Unified Scripts Component -->
-  <script>
-    fetch('components/scripts-unified.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Scripts load error:', error));
-  </script>
+  <!-- COMPONENT: components/scripts-unified.html -->
 
   <!-- Load JavaScript -->
   <script src="js/nav.js" defer></script>

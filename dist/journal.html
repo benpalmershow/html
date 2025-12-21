@@ -19,6 +19,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Common Meta Tags Component -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="author" content="Ben Palmer">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1a1f1e">
+
+<!-- Favicon and App Icons -->
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Preconnect to critical external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
@@ -53,6 +70,10 @@
 <link
   href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wdth,wght@75..100,100..900&family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
   rel="preload" as="style" onload="this.rel='stylesheet'">
+  <!-- Typography System Fonts Component -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wdth,wght@75..100,100..900&family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+  rel="preload" as="style" onload="this.rel='stylesheet'">
 
   <!-- Critical CSS -->
   <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
@@ -69,6 +90,37 @@
 
   <title>Journal - Howdy, Stranger</title>
 
+  <!-- Unified Analytics Component -->
+<script>
+  // Initialize dataLayer and gtag function
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  // Main Google Analytics configuration
+  gtag('config', 'G-DWEVPGLJDP', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+
+  // Additional Google Ads configuration
+  gtag('config', 'AW-16914260010');
+
+  // Load gtag.js after page load with idle callback fallback
+  function loadGtagScript() {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  // Use requestIdleCallback if available, otherwise fallback to setTimeout
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadGtagScript);
+  } else {
+    setTimeout(loadGtagScript, 3000);
+  }
+</script>
   <!-- Unified Analytics Component -->
 <script>
   // Initialize dataLayer and gtag function
@@ -182,6 +234,20 @@
             </div>
         </div>
     </footer>
+  <script>
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const footer = doc.querySelector('footer');
+        if (footer) {
+          document.body.appendChild(footer);
+        }
+      })
+      .catch(error => console.error('Footer load error:', error));
+  </script>
+
   <!-- Error Handling Component -->
 <script>
   window.addEventListener('error', (event) => {
@@ -201,6 +267,70 @@
     errorEl.textContent = `⚠️ ${message}`;
     document.body.appendChild(errorEl);
     setTimeout(() => errorEl.remove(), 5000);
+  }
+</script>
+  <!-- Error Handling Component -->
+<script>
+  window.addEventListener('error', (event) => {
+    console.error('Global Error:', event.error);
+    if (event.message && event.message.includes('Failed to fetch')) {
+      showSimpleError('Some content failed to load. Please refresh.');
+    }
+  });
+
+  function showSimpleError(message) {
+    const errorEl = document.createElement('div');
+    errorEl.style.cssText = `
+      position: fixed; top: 20px; right: 20px; z-index: 1000;
+      background: white; padding: 10px; border: 1px solid #ddd;
+      border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    `;
+    errorEl.textContent = `⚠️ ${message}`;
+    document.body.appendChild(errorEl);
+    setTimeout(() => errorEl.remove(), 5000);
+  }
+</script>
+
+  <!-- Unified Scripts Component -->
+<script src="js/bfcache-compat.js" defer></script>
+<script src="js/nav.js" defer></script>
+
+<!-- Vercel Insights - Production only -->
+<script>
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    function loadVercelScripts() {
+      // Load Vercel Insights
+      const s = document.createElement('script');
+      s.src = '/_vercel/insights/script.js';
+      s.defer = true;
+      s.onerror = () => console.error('Failed to load Vercel insights');
+      document.head.appendChild(s);
+
+      // Load Speed Insights
+      const i = document.createElement('script');
+      i.type = 'module';
+      i.src = 'js/speed-insights.js';
+      i.onerror = () => console.error('Failed to load speed insights');
+      document.head.appendChild(i);
+    }
+
+    // Use requestIdleCallback if available, otherwise fallback to setTimeout
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadVercelScripts);
+    } else {
+      setTimeout(loadVercelScripts, 2000);
+    }
+  }
+</script>
+
+<!-- Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(error => {
+        console.error('Service worker registration failed:', error);
+      });
+    });
   }
 </script>
   <!-- Unified Scripts Component -->

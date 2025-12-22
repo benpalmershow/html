@@ -220,20 +220,17 @@
         document.head.appendChild(script);
       }
 
-      // Load lucide after idle or on first interaction
+      // Load lucide after idle
       const loadLucide = () => {
         loadScript('https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js', () => {
           setTimeout(() => window.lucide?.createIcons(), 0);
         });
-        document.removeEventListener('click', loadLucide);
-        document.removeEventListener('scroll', loadLucide);
       };
       
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadLucide, { timeout: 3000 });
       } else {
-        document.addEventListener('click', loadLucide, { passive: true, once: true });
-        document.addEventListener('scroll', loadLucide, { passive: true, once: true });
+        setTimeout(loadLucide, 100);
       }
 
       // On-demand loaders for libraries used only on specific pages

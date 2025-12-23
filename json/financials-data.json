@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-20T17:56:00Z",
+    "lastUpdated": "2025-12-23T17:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -482,7 +482,7 @@
             "category": "Consumer Indicators",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2025-11-25T14:00:00Z",
+            "lastUpdated": "2025-12-23T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -493,7 +493,8 @@
             "august": "97.8",
             "september": "95.6",
             "october": "95.5",
-            "november":"88.7",
+            "november":"92.9",
+            "december":"89.1",
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
         },

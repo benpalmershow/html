@@ -6,7 +6,7 @@ date: 2025-12-26T10:00:00
 
 From: <a href="media.html#against-the-machine">Against the Machine</a> by Paul Kingsnorth
 
->"The will to power, to wellbeing, to wealth, triumphs over the will to holiness and to genius. ... Spirituality is on the wane, [in] a time of bourgeois ascendancy. The knight and the monk, the philosopher and the poet, have been superseded by a new type the greedy bourgeois conqueror, organizer, and trader ... In the new machine-made industrial-capitalist civilization of Europe and America, the spiritual culture ... based on a sacred symbolism and sacred tradi-tion, is being irrevocably annihilated." - **Nikolai Berdyaev**, *The Bourgeois Mind and Other Essays* (The Stanhope Press, 1934)
+>"The will to power, to wellbeing, to wealth, triumphs over the will to holiness and to genius. ... Spirituality is on the wane, [in] a time of bourgeois ascendancy. The knight and the monk, the philosopher and the poet, have been superseded by a new type the greedy bourgeois conqueror, organizer, and trader ... In the new machine-made industrial-capitalist civilization of Europe and America, the spiritual culture ... based on a sacred symbolism and sacred tradition, is being irrevocably annihilated." - **Nikolai Berdyaev**, *The Bourgeois Mind and Other Essays* (The Stanhope Press, 1934)
 
 **The Annihilation of Tradition**
 

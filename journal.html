@@ -120,20 +120,29 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="page-title page-title" aria-label="Page title">
-    <picture>
-      <source srcset="images/read.webp" type="image/webp"><img src="images/read.webp" alt="Read icon" class="page-icon"
-        width="20" height="20">
-    </picture>Tweets
-  </div>
-  <div class="content">
-    <div id="journal-feed"></div>
-  </div>
+  <main id="main-content" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><span>Tweets</span></li>
+      </ol>
+    </nav>
+    <h1 class="page-title page-title--bordered" aria-label="Page title">
+      <picture>
+        <source srcset="images/read.webp" type="image/webp">
+        <img src="images/read.webp" alt="Read icon" class="page-icon" width="20" height="20">
+      </picture>
+      Tweets
+    </h1>
+    <div class="content">
+      <div id="journal-feed"></div>
+    </div>
+  </main>
 
   <!-- Footer Component -->
   <div id="footer-container"></div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       fetch('components/footer.html')
         .then(response => response.text())
         .then(html => {

@@ -111,9 +111,17 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-  <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="bar-chart-3"
-      class="page-icon"></i>Numbers</div>
   <main class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><span>Numbers</span></li>
+      </ol>
+    </nav>
+    <h1 class="page-title page-title--bordered" aria-label="Page title">
+      <i data-lucide="bar-chart-3" class="page-icon"></i>
+      Numbers
+    </h1>
     <div class="collapsible-container">
 
       <div class="collapsible-content" id="interactive-dashboard-content">
@@ -140,12 +148,12 @@
         <div class="categories" id="categories"></div>
 
         <!-- 13F Holdings Section -->
-         <div id="latest-13f-filings-anchor" style="position: absolute; pointer-events: none;"></div>
-         <div class="category" id="latest-13f-filings" data-category="13F Holdings" style="margin-top: 2rem;">
-           <h2 class="category-title">
-             <span class="category-icon"><i data-lucide="building-2"></i></span>
-             <span class="category-name">13F Holdings</span>
-           </h2>
+        <div id="latest-13f-filings-anchor" style="position: absolute; pointer-events: none;"></div>
+        <div class="category" id="latest-13f-filings" data-category="13F Holdings" style="margin-top: 2rem;">
+          <h2 class="category-title">
+            <span class="category-icon"><i data-lucide="building-2"></i></span>
+            <span class="category-name">13F Holdings</span>
+          </h2>
           <div class="indicators-grid" id="firmCardsContainer">
           </div>
         </div>
@@ -170,7 +178,7 @@
   <!-- Footer Component -->
   <div id="footer-container"></div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       fetch('components/footer.html')
         .then(response => response.text())
         .then(html => {

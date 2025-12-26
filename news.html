@@ -93,7 +93,7 @@
       gtag('js', new Date());
       gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
       gtag('config', 'AW-16914260010');
-      
+
       const script = document.createElement('script');
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
       script.async = true;
@@ -102,7 +102,7 @@
 
     // Load after 10 seconds or on first interaction
     let gaTimeout = setTimeout(loadGA, 10000);
-    
+
     const loadOnInteraction = () => {
       clearTimeout(gaTimeout);
       loadGA();
@@ -125,7 +125,7 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  
+
   <!-- On-demand library loaders -->
   <script defer>
     (function () {
@@ -144,7 +144,7 @@
           setTimeout(() => window.lucide?.createIcons(), 0);
         });
       };
-      
+
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadLucide, { timeout: 3000 });
       } else {
@@ -169,8 +169,14 @@
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1">
-    <div class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="newspaper"
-        class="page-icon"></i>News</div>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><span>News</span></li>
+      </ol>
+    </nav>
+    <h1 class="page-title page-title--bordered" aria-label="Page title"><i data-lucide="newspaper"
+        class="page-icon"></i>News</h1>
     <div class="container">
       <!-- Full Article View (shown when ?article=id in URL) -->
       <div id="full-article-view" style="display: none;">
@@ -187,20 +193,20 @@
           <div class="filters">
             <button class="filter-btn active" data-category="all"><i data-lucide="list" class="filter-icon"></i><span
                 class="filter-text">All</span></button>
-            <button class="filter-btn political" data-category="political" aria-label="Political news"><i data-lucide="vote"
-                class="filter-icon"></i><span class="filter-text">Political</span></button>
+            <button class="filter-btn political" data-category="political" aria-label="Political news"><i
+                data-lucide="vote" class="filter-icon"></i><span class="filter-text">Political</span></button>
             <button class="filter-btn ipo" data-category="ipo" aria-label="IPO news"><i data-lucide="trending-up"
                 class="filter-icon"></i><span class="filter-text">IPO</span></button>
-            <button class="filter-btn earnings" data-category="earnings" aria-label="Earnings news"><i data-lucide="bar-chart-3"
-                class="filter-icon"></i><span class="filter-text">Earnings</span></button>
+            <button class="filter-btn earnings" data-category="earnings" aria-label="Earnings news"><i
+                data-lucide="bar-chart-3" class="filter-icon"></i><span class="filter-text">Earnings</span></button>
             <button class="filter-btn policy" data-category="policy" aria-label="Policy news"><i data-lucide="shield"
                 class="filter-icon"></i><span class="filter-text">Policy</span></button>
-            <button class="filter-btn healthcare" data-category="healthcare" aria-label="Healthcare news"><i data-lucide="heart"
-                class="filter-icon"></i><span class="filter-text">Healthcare</span></button>
-            <button class="filter-btn legal" data-category="legal" aria-label="Legal news"><i data-lucide="gavel" class="filter-icon"></i><span
-                class="filter-text">Legal</span></button>
-            <button class="filter-btn corrections" data-category="corrections" aria-label="Corrections"><i data-lucide="edit-3"
-                class="filter-icon"></i><span class="filter-text">Corrections</span></button>
+            <button class="filter-btn healthcare" data-category="healthcare" aria-label="Healthcare news"><i
+                data-lucide="heart" class="filter-icon"></i><span class="filter-text">Healthcare</span></button>
+            <button class="filter-btn legal" data-category="legal" aria-label="Legal news"><i data-lucide="gavel"
+                class="filter-icon"></i><span class="filter-text">Legal</span></button>
+            <button class="filter-btn corrections" data-category="corrections" aria-label="Corrections"><i
+                data-lucide="edit-3" class="filter-icon"></i><span class="filter-text">Corrections</span></button>
           </div>
           <div class="morphing-disclosure" id="articles-container">
             <div class="loading">Loading articles...</div>
@@ -214,7 +220,7 @@
   <!-- Footer Component -->
   <div id="footer-container"></div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       fetch('components/footer.html')
         .then(response => response.text())
         .then(html => {

@@ -115,7 +115,7 @@
     }
 
     async function fetchMediaData() {
-        mediaContainer.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i>Loading media...</div>';
+        mediaContainer.innerHTML = Array(12).fill('<div class="media-card-skeleton skeleton"></div>').join('');
 
         try {
             // Check cache asynchronously
@@ -168,16 +168,32 @@
     function initializeMediaDisplay() {
         const mediaTypes = getUniqueMediaTypes(mediaItems);
         populateFilterDropdown(mediaTypes);
+
+        // Default values
         if (sortBy) sortBy.value = 'date-desc';
 
-        // Check for URL filter parameter
+        // Check for URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const initialFilter = urlParams.get('filter');
+
+        // Handle filter type
+        const initialFilter = urlParams.get('type') || urlParams.get('filter'); // Support both
         if (initialFilter && mediaTypes.includes(initialFilter)) {
             filterType.value = initialFilter;
         }
 
-        filterAndSortMedia();
+        // Handle sort
+        const initialSort = urlParams.get('sort');
+        if (initialSort && sortBy.querySelector(`option[value="${initialSort}"]`)) {
+            sortBy.value = initialSort;
+        }
+
+        // Handle search
+        const initialSearch = urlParams.get('q');
+        if (initialSearch && searchInput) {
+            searchInput.value = initialSearch;
+        }
+
+        filterAndSortMedia(false); // Pass false to avoid redundant URL update on load
     }
 
     function validateMediaItem(item) {
@@ -200,7 +216,30 @@
         mediaContainer.innerHTML = '';
 
         if (items.length === 0) {
-            mediaContainer.innerHTML = '<p>No media items found.</p>';
+            const hasFilter = filterType.value !== 'all';
+            const hasSearch = searchInput?.value.trim() !== '';
+
+            mediaContainer.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas ${hasSearch ? 'fa-search' : 'fa-filter'}"></i>
+                    </div>
+                    <h2 class="empty-state-title">No results found</h2>
+                    <p class="empty-state-text">
+                        We couldn't find any media items matching your ${hasSearch && hasFilter ? 'search and filter' : hasSearch ? 'search' : 'filter'} criteria. Try adjusting your filters or search terms.
+                    </p>
+                    <div class="empty-state-actions">
+                        <button class="clear-filters-btn" id="clear-filters-btn">Clear All Filters</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('clear-filters-btn')?.addEventListener('click', () => {
+                if (filterType) filterType.value = 'all';
+                if (searchInput) searchInput.value = '';
+                filterAndSortMedia();
+            });
+
             isRendering = false;
             return;
         }
@@ -388,7 +427,7 @@
         const overlayContent = document.createElement('div');
         overlayContent.className = 'media-overlay-content';
 
-        const title = document.createElement('h3');
+        const title = document.createElement('h2');
         title.className = 'media-title';
         title.textContent = item.title;
         overlayContent.appendChild(title);
@@ -596,9 +635,34 @@
         return !isNaN(date.getTime()) ? date : null;
     }
 
-    function filterAndSortMedia() {
+    function updateURLParams() {
+        if (!filterType) return;
+        const params = new URLSearchParams(window.location.search);
+        const type = filterType.value;
+        const sort = sortBy?.value || 'date-desc';
+        const q = searchInput?.value.trim() || '';
+
+        if (type !== 'all') params.set('type', type);
+        else params.delete('type');
+
+        if (sort !== 'date-desc') params.set('sort', sort);
+        else params.delete('sort');
+
+        if (q) params.set('q', q);
+        else params.delete('q');
+
+        // Remove old 'filter' param if it exists
+        params.delete('filter');
+
+        const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        window.history.replaceState({ path: newURL }, '', newURL);
+    }
+
+    function filterAndSortMedia(shouldUpdateURL = true) {
+        if (shouldUpdateURL) updateURLParams();
+
         const typeFilter = filterType.value;
-        const sortValue = sortBy.value;
+        const sortValue = sortBy?.value || 'date-desc';
         const searchQuery = searchInput?.value.trim().toLowerCase() || '';
 
         let filtered = typeFilter === 'all'
@@ -611,9 +675,9 @@
                 const title = (item.title || '').toLowerCase();
                 const author = (item.author || '').toLowerCase();
                 const description = (item.description || '').toLowerCase();
-                return title.includes(searchQuery) || 
-                       author.includes(searchQuery) || 
-                       description.includes(searchQuery);
+                return title.includes(searchQuery) ||
+                    author.includes(searchQuery) ||
+                    description.includes(searchQuery);
             });
         }
 
@@ -656,7 +720,7 @@
             countDisplay.className = 'results-count';
 
             let countText = `Showing ${filteredCount} of ${totalCount} item${totalCount !== 1 ? 's' : ''}`;
-            
+
             if (hasSearch && hasFilter) {
                 countText += ` matching "${searchQuery}" in ${capitalizeWord(activeFilter)}s`;
             } else if (hasSearch) {
@@ -673,7 +737,7 @@
     // Use passive event listeners for better scroll performance
     if (filterType) filterType.addEventListener('change', filterAndSortMedia, { passive: true });
     if (sortBy) sortBy.addEventListener('change', filterAndSortMedia, { passive: true });
-    
+
     // Add search functionality with debouncing for performance
     let searchTimeout;
     if (searchInput) {
@@ -683,7 +747,7 @@
                 filterAndSortMedia();
             }, 300); // Debounce search by 300ms
         }, { passive: true });
-        
+
         // Also trigger on Enter key for immediate search
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
@@ -694,10 +758,41 @@
         }, { passive: false });
     }
 
+    function setupBackToTop() {
+        let backToTopBtn = document.querySelector('.back-to-top-btn');
+        if (!backToTopBtn) {
+            backToTopBtn = document.createElement('button');
+            backToTopBtn.className = 'back-to-top-btn';
+            backToTopBtn.setAttribute('aria-label', 'Back to top');
+            backToTopBtn.setAttribute('title', 'Back to top');
+            backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i><span class="button-hint">Top</span>';
+            document.body.appendChild(backToTopBtn);
+        }
+
+        const handleScroll = () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+    }
+
     // Start loading immediately when script executes
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', fetchMediaData);
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchMediaData();
+            setupBackToTop();
+        });
     } else {
         fetchMediaData();
+        setupBackToTop();
     }
 })();

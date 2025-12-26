@@ -62,7 +62,7 @@
   <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/announcement-cards.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-  
+
   <!-- Christmas 2025 Theme (remove entire line to disable) -->
   <link rel="stylesheet" href="css/christmas.css?v=20251220">
 
@@ -84,7 +84,7 @@
       gtag('js', new Date());
       gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
       gtag('config', 'AW-16914260010');
-      
+
       const script = document.createElement('script');
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
       script.async = true;
@@ -93,7 +93,7 @@
 
     // Load after 10 seconds or on first interaction
     let gaTimeout = setTimeout(loadGA, 10000);
-    
+
     const loadOnInteraction = () => {
       clearTimeout(gaTimeout);
       loadGA();
@@ -140,12 +140,14 @@
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1" style="min-height:calc(100vh - 60px)">
+
+
     <!-- Announcements Section Component with fallback -->
-    <div class="page-title" aria-label="Page title">
+    <h1 class="page-title page-title--bordered" aria-label="Page title">
       <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
         loading="eager" decoding="async">
       Announcements
-    </div>
+    </h1>
     <section class="announcements" aria-label="Latest announcements" style="min-height:600px">
       <div class="announcements-container" id="announcements-container" style="min-height:500px">
         <div class="loading-skeleton" style="height:100px"></div>
@@ -155,12 +157,12 @@
     </section>
 
     <!-- Announcements are populated by posts-loader.js directly into #announcements-container -->
-    </main>
+  </main>
 
   <!-- Footer Component -->
   <div id="footer-container"></div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       fetch('components/footer.html')
         .then(response => response.text())
         .then(html => {
@@ -206,7 +208,7 @@
           setTimeout(() => window.lucide?.createIcons(), 0);
         });
       };
-      
+
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadLucide, { timeout: 3000 });
       } else {

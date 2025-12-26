@@ -19,7 +19,8 @@ class PortfolioManager {
             this.renderPortfolioSections();
             this.setupEventListeners();
             this.updateLastUpdated();
-            
+            this.setupBackToTop();
+
             // Initialize Lucide icons after content is loaded
             if (window.lucide) {
                 lucide.createIcons();
@@ -41,7 +42,7 @@ class PortfolioManager {
             <strong class="font-bold">Error: </strong>
             <span class="block sm:inline">${message}</span>
         `;
-        
+
         const mainContent = document.querySelector('main');
         if (mainContent) {
             mainContent.prepend(errorDiv);
@@ -63,7 +64,7 @@ class PortfolioManager {
             throw error;
         }
     }
-    
+
     /**
      * Update the last updated timestamp
      */
@@ -82,29 +83,29 @@ class PortfolioManager {
      */
     renderPortfolioTable() {
         if (!this.portfolioData?.portfolioComparison?.stocks?.length) return;
-        
+
         const tableBody = document.querySelector('#portfolio-comparison-table tbody');
         if (!tableBody) return;
-        
-        // Clear existing rows
+
+        // Clear existing rows and skeletons
         tableBody.innerHTML = '';
-        
+
         // Add rows for each stock
         this.portfolioData.portfolioComparison.stocks.forEach(stock => {
             const row = document.createElement('tr');
-            
+
             // Add background color for highlighted stocks
             row.classList.add(stock.highlight ? 'bg-blue-50' : 'bg-slate-50');
-            
+
             const description = stock.description || {
                 title: stock.company,
                 short: '',
                 full: ''
             };
-            
+
             // Create ticker link
             const tickerLink = `https://finance.yahoo.com/quote/${stock.ticker}`;
-            
+
             row.innerHTML = `
             <td class="px-3 py-2 whitespace-nowrap text-slate-700 overflow-hidden text-ellipsis">
             <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 hover:underline">
@@ -138,7 +139,7 @@ class PortfolioManager {
                     </div>
                 </td>
             `;
-            
+
             tableBody.appendChild(row);
         });
     }
@@ -148,10 +149,10 @@ class PortfolioManager {
      */
     renderPortfolioSections() {
         if (!this.portfolioData?.portfolioSections?.length) return;
-        
+
         const sectionsContainer = document.getElementById('portfolio-sections');
         if (!sectionsContainer) return;
-        
+
         this.portfolioData.portfolioSections.forEach(section => {
             const sectionElement = this.createPortfolioSection(section);
             if (sectionElement) {
@@ -159,16 +160,16 @@ class PortfolioManager {
             }
         });
     }
-    
+
     /**
      * Create a portfolio section element
      */
     createPortfolioSection(section) {
         if (!section?.id || !section.title || !section.holdings?.length) return null;
-        
+
         const sectionElement = document.createElement('div');
         sectionElement.className = 'bg-white rounded-lg shadow-sm border border-slate-200 mb-6';
-        
+
         // Create section header
         const header = document.createElement('div');
         header.className = 'p-6 border-b border-slate-200';
@@ -183,16 +184,16 @@ class PortfolioManager {
             </h2>
             ${section.subtitle ? `<p class="text-sm text-slate-500 mt-1">${section.subtitle}</p>` : ''}
         `;
-        
+
         // Create holdings grid
         const grid = document.createElement('div');
         grid.id = `${section.id}-holdings-grid`;
         grid.className = 'p-6';
         grid.style.display = 'none'; // Start collapsed
-        
+
         const gridInner = document.createElement('div');
         gridInner.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
-        
+
         // Add holdings to grid
         section.holdings.forEach(holding => {
             const holdingElement = this.createHoldingCard(holding);
@@ -200,36 +201,38 @@ class PortfolioManager {
                 gridInner.appendChild(holdingElement);
             }
         });
-        
+
         grid.appendChild(gridInner);
-        
+
         sectionElement.appendChild(header);
         sectionElement.appendChild(grid);
-        
+
         return sectionElement;
     }
-    
+
     /**
      * Create a holding card element
      */
     createHoldingCard(holding) {
         if (!holding.ticker) return null;
-        
+
         const card = document.createElement('div');
         card.className = 'bg-slate-50 rounded-lg p-4 border border-slate-200 hover:shadow-sm hover:border-slate-300 transition-all duration-200';
-        
+
         const tickerLink = `https://finance.yahoo.com/quote/${holding.ticker}`;
         const allocation = holding.allocation ? `
             <span class="bg-${holding.highlight ? 'blue' : 'slate'}-600 text-white px-2 py-1 rounded text-xs font-medium">
                 ${holding.allocation}
             </span>
         ` : '';
-        
+
         card.innerHTML = `
             <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-                <a href="${tickerLink}" target="_blank" class="text-base font-semibold text-slate-700 hover:text-blue-600 transition-colors no-underline">
-                    ${holding.ticker}
-                </a>
+                <h3 class="text-base font-semibold text-slate-700 hover:text-blue-600 transition-colors no-underline m-0">
+                    <a href="${tickerLink}" target="_blank" class="hover:text-blue-600 no-underline color-inherit">
+                        ${holding.ticker}
+                    </a>
+                </h3>
                 ${allocation}
             </div>
             ${holding.company ? `
@@ -251,10 +254,10 @@ class PortfolioManager {
                 </div>
             ` : ''}
         `;
-        
+
         return card;
     }
-    
+
     /**
      * Set up event listeners for the portfolio page
      */
@@ -275,11 +278,11 @@ class PortfolioManager {
                 const targetId = toggleBtn.getAttribute('data-target');
                 const target = document.getElementById(targetId);
                 const icon = toggleBtn.querySelector('i[data-lucide]');
-                
+
                 if (target) {
                     const isExpanding = target.style.display === 'none';
                     target.style.display = isExpanding ? 'block' : 'none';
-                    
+
                     if (icon) {
                         // Rotate the chevron icon
                         icon.style.transform = isExpanding ? 'rotate(180deg)' : '';
@@ -343,12 +346,12 @@ class PortfolioManager {
         if (!this.portfolioData?.portfolioComparison?.stocks?.length) return;
 
         // Toggle direction if sorting the same column
-        const direction = this.currentSort.column === sortKey && 
-                         this.currentSort.direction === 'asc' ? 'desc' : 'asc';
-        
+        const direction = this.currentSort.column === sortKey &&
+            this.currentSort.direction === 'asc' ? 'desc' : 'asc';
+
         // Update the sort indicators
         this.updateSortIndicators(sortKey, direction);
-        
+
         // Define sort functions for different columns
         const sortFunctions = {
             company: (a, b) => a.company.localeCompare(b.company),
@@ -367,12 +370,43 @@ class PortfolioManager {
         this.portfolioData.portfolioComparison.stocks.sort((a, b) => {
             return direction === 'asc' ? sortFunction(a, b) : -sortFunction(a, b);
         });
-        
+
         // Update current sort state
         this.currentSort = { column: sortKey, direction };
-        
+
         // Re-render the table
         this.renderPortfolioTable();
+    }
+
+    /**
+     * Set up "Back to Top" button
+     */
+    setupBackToTop() {
+        let backToTopBtn = document.querySelector('.back-to-top-btn');
+        if (!backToTopBtn) {
+            backToTopBtn = document.createElement('button');
+            backToTopBtn.className = 'back-to-top-btn';
+            backToTopBtn.setAttribute('aria-label', 'Back to top');
+            backToTopBtn.setAttribute('title', 'Back to top');
+            backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
+            document.body.appendChild(backToTopBtn);
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        const handleScroll = () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
     }
 }
 

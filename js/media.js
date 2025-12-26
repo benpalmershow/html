@@ -25,7 +25,6 @@
     const mediaContainer = document.getElementById('media-cards-container');
     const filterType = document.getElementById('filter-type');
     const sortBy = document.getElementById('sort-by');
-    const searchInput = document.getElementById('search-input');
     let mediaItems = [];
     let isRendering = false;
 
@@ -187,12 +186,6 @@
             sortBy.value = initialSort;
         }
 
-        // Handle search
-        const initialSearch = urlParams.get('q');
-        if (initialSearch && searchInput) {
-            searchInput.value = initialSearch;
-        }
-
         filterAndSortMedia(false); // Pass false to avoid redundant URL update on load
     }
 
@@ -217,16 +210,15 @@
 
         if (items.length === 0) {
             const hasFilter = filterType.value !== 'all';
-            const hasSearch = searchInput?.value.trim() !== '';
 
             mediaContainer.innerHTML = `
                 <div class="empty-state">
                     <div class="empty-state-icon">
-                        <i class="fas ${hasSearch ? 'fa-search' : 'fa-filter'}"></i>
+                        <i class="fas fa-filter"></i>
                     </div>
                     <h2 class="empty-state-title">No results found</h2>
                     <p class="empty-state-text">
-                        We couldn't find any media items matching your ${hasSearch && hasFilter ? 'search and filter' : hasSearch ? 'search' : 'filter'} criteria. Try adjusting your filters or search terms.
+                        We couldn't find any media items matching your filter criteria. Try adjusting your filters.
                     </p>
                     <div class="empty-state-actions">
                         <button class="clear-filters-btn" id="clear-filters-btn">Clear All Filters</button>
@@ -236,7 +228,6 @@
 
             document.getElementById('clear-filters-btn')?.addEventListener('click', () => {
                 if (filterType) filterType.value = 'all';
-                if (searchInput) searchInput.value = '';
                 filterAndSortMedia();
             });
 
@@ -640,7 +631,6 @@
         const params = new URLSearchParams(window.location.search);
         const type = filterType.value;
         const sort = sortBy?.value || 'date-desc';
-        const q = searchInput?.value.trim() || '';
 
         if (type !== 'all') params.set('type', type);
         else params.delete('type');
@@ -648,11 +638,9 @@
         if (sort !== 'date-desc') params.set('sort', sort);
         else params.delete('sort');
 
-        if (q) params.set('q', q);
-        else params.delete('q');
-
-        // Remove old 'filter' param if it exists
+        // Remove old 'filter' and 'q' params if they exist
         params.delete('filter');
+        params.delete('q');
 
         const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
         window.history.replaceState({ path: newURL }, '', newURL);
@@ -663,23 +651,10 @@
 
         const typeFilter = filterType.value;
         const sortValue = sortBy?.value || 'date-desc';
-        const searchQuery = searchInput?.value.trim().toLowerCase() || '';
 
         let filtered = typeFilter === 'all'
             ? [...mediaItems]
             : mediaItems.filter(item => item.mediaType === typeFilter);
-
-        // Apply search filter if query exists
-        if (searchQuery) {
-            filtered = filtered.filter(item => {
-                const title = (item.title || '').toLowerCase();
-                const author = (item.author || '').toLowerCase();
-                const description = (item.description || '').toLowerCase();
-                return title.includes(searchQuery) ||
-                    author.includes(searchQuery) ||
-                    description.includes(searchQuery);
-            });
-        }
 
         filtered.sort((a, b) => {
             switch (sortValue) {
@@ -709,23 +684,17 @@
         const existingCount = document.querySelector('.results-count');
         existingCount?.remove();
 
-        const searchQuery = searchInput?.value.trim() || '';
         const activeFilter = filterType?.value;
         const hasFilter = activeFilter && activeFilter !== 'all';
-        const hasSearch = searchQuery.length > 0;
 
-        // Show count if filtered, searched, or different from total
-        if (filteredCount !== totalCount || hasSearch) {
+        // Show count if filtered or different from total
+        if (filteredCount !== totalCount || hasFilter) {
             const countDisplay = document.createElement('div');
             countDisplay.className = 'results-count';
 
             let countText = `Showing ${filteredCount} of ${totalCount} item${totalCount !== 1 ? 's' : ''}`;
 
-            if (hasSearch && hasFilter) {
-                countText += ` matching "${searchQuery}" in ${capitalizeWord(activeFilter)}s`;
-            } else if (hasSearch) {
-                countText += ` matching "${searchQuery}"`;
-            } else if (hasFilter) {
+            if (hasFilter) {
                 countText += ` in ${capitalizeWord(activeFilter)}s`;
             }
 
@@ -737,26 +706,6 @@
     // Use passive event listeners for better scroll performance
     if (filterType) filterType.addEventListener('change', filterAndSortMedia, { passive: true });
     if (sortBy) sortBy.addEventListener('change', filterAndSortMedia, { passive: true });
-
-    // Add search functionality with debouncing for performance
-    let searchTimeout;
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                filterAndSortMedia();
-            }, 300); // Debounce search by 300ms
-        }, { passive: true });
-
-        // Also trigger on Enter key for immediate search
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                clearTimeout(searchTimeout);
-                filterAndSortMedia();
-            }
-        }, { passive: false });
-    }
 
     function setupBackToTop() {
         let backToTopBtn = document.querySelector('.back-to-top-btn');

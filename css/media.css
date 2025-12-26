@@ -212,65 +212,7 @@
     border-color: var(--color-gray-400, #b3a98c);
 }
 
-/* Filter Text Input */
-.media-filters input[type="text"],
-.media-filters #search-input {
-    font-size: 0.95rem;
-    padding: 0.5rem 2.5rem 0.5rem 0.8rem;
-    border-radius: 0.4rem;
-    border: 1px solid var(--border-light, #d4c9b1);
-    background: var(--color-white, #fff);
-    color: var(--text-primary);
-    width: 100%;
-    cursor: text;
-    transition: all var(--transition-medium);
-    box-sizing: border-box;
-}
 
-.search-label {
-    position: relative;
-    width: 100%;
-    min-width: 200px;
-    flex: 1 1 auto;
-}
-
-.search-icon {
-    position: absolute;
-    right: 0.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-gray-500, #6c757d);
-    pointer-events: none;
-    font-size: 0.9rem;
-}
-
-.media-filters input[type="text"]:focus,
-.media-filters #search-input:focus {
-    outline: none;
-    border-color: var(--color-primary, var(--logo-teal));
-    box-shadow: 0 0 0 2px var(--shadow-medium);
-}
-
-.media-filters input[type="text"]:hover,
-.media-filters #search-input:hover {
-    border-color: var(--color-gray-400, #b3a98c);
-}
-
-.media-filters input[type="text"]::placeholder,
-.media-filters #search-input::placeholder {
-    color: var(--color-gray-500, #8a8a8a);
-    opacity: 0.8;
-}
-
-/* Search Help Text */
-.search-help {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--color-gray-500, #6b7280);
-    margin-top: 0.25rem;
-    font-style: italic;
-    line-height: 1.3;
-}
 
 /* Results Count */
 .results-count {
@@ -790,10 +732,7 @@ MEDIA LINKS ORDER
         box-shadow: 0 0 0 2px rgba(135, 197, 190, 0.2);
     }
 
-    .media-filters input::placeholder,
-    .search-help {
-        color: var(--text-muted);
-    }
+
 
     .results-count {
         color: var(--text-secondary);

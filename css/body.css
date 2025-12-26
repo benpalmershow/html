@@ -1154,9 +1154,7 @@ h1.page-title {
     object-fit: contain;
 }
 
-.page-title--bordered {
-    border-bottom: 2px solid var(--logo-teal);
-}
+
 
 @media (max-width: 768px) {
     h1.page-title {

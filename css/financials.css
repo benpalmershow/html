@@ -120,7 +120,7 @@
     border-radius: 8px;
     background: var(--bg-secondary);
     color: var(--text-primary);
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -224,7 +224,7 @@
     background: none;
     color: var(--text-primary);
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.15s ease;
 }
@@ -351,7 +351,7 @@
 }
 
 .indicator-name {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-primary);
     line-height: 1.2;
@@ -368,7 +368,7 @@
 }
 
 .indicator-agency {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     font-weight: 500;
     margin-top: 2px;
@@ -412,14 +412,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 4px 0;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-bottom: 0;
 }
 
 .month-label {
     font-weight: 500;
     color: var(--text-muted);
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     word-break: keep-all;
     hyphens: none;
 }
@@ -428,7 +428,7 @@
     font-weight: 600;
     color: var(--text-secondary);
     text-align: right;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -436,7 +436,7 @@
 
 .month-change,
 .job-change-inline {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     opacity: 0.8;
     font-weight: 600;
 }
@@ -454,7 +454,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     white-space: nowrap;
@@ -512,18 +512,18 @@
 }
 
 .mom-label {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     opacity: 0.85;
     font-weight: 400;
 }
 
 .mom-value {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 .mom-number {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 

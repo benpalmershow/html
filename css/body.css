@@ -12,7 +12,7 @@
 
     --type-scale-ratio: 1.25;
     /* Perfect fourth */
-    --type-base: clamp(0.875rem, 3.5vw, 1.25rem);
+    --type-base: clamp(1rem, 3.5vw, 1.25rem);
 
     /* ========================================
        BASE COLORS
@@ -388,7 +388,7 @@ h6 {
 table {
     border-collapse: collapse;
     margin-bottom: var(--spacing-md);
-    font-size: clamp(.8rem, 2vw, .9rem);
+    font-size: clamp(.9rem, 2vw, 1rem);
     table-layout: auto
 }
 
@@ -613,7 +613,7 @@ html.dark-mode h2 {
 
 @media (max-width:360px) {
     :root {
-        --type-base: clamp(1rem, 2.5vw, 1.05rem);
+        --type-base: 1rem;
     }
 }
 

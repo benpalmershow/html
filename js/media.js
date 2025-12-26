@@ -25,6 +25,7 @@
     const mediaContainer = document.getElementById('media-cards-container');
     const filterType = document.getElementById('filter-type');
     const sortBy = document.getElementById('sort-by');
+    const searchInput = document.getElementById('search-input');
     let mediaItems = [];
     let isRendering = false;
 
@@ -598,10 +599,23 @@
     function filterAndSortMedia() {
         const typeFilter = filterType.value;
         const sortValue = sortBy.value;
+        const searchQuery = searchInput?.value.trim().toLowerCase() || '';
 
         let filtered = typeFilter === 'all'
             ? [...mediaItems]
             : mediaItems.filter(item => item.mediaType === typeFilter);
+
+        // Apply search filter if query exists
+        if (searchQuery) {
+            filtered = filtered.filter(item => {
+                const title = (item.title || '').toLowerCase();
+                const author = (item.author || '').toLowerCase();
+                const description = (item.description || '').toLowerCase();
+                return title.includes(searchQuery) || 
+                       author.includes(searchQuery) || 
+                       description.includes(searchQuery);
+            });
+        }
 
         filtered.sort((a, b) => {
             switch (sortValue) {
@@ -631,13 +645,23 @@
         const existingCount = document.querySelector('.results-count');
         existingCount?.remove();
 
-        if (filteredCount !== totalCount) {
+        const searchQuery = searchInput?.value.trim() || '';
+        const activeFilter = filterType?.value;
+        const hasFilter = activeFilter && activeFilter !== 'all';
+        const hasSearch = searchQuery.length > 0;
+
+        // Show count if filtered, searched, or different from total
+        if (filteredCount !== totalCount || hasSearch) {
             const countDisplay = document.createElement('div');
             countDisplay.className = 'results-count';
 
-            let countText = `Showing ${filteredCount} of ${totalCount} items`;
-            const activeFilter = filterType?.value;
-            if (activeFilter && activeFilter !== 'all') {
+            let countText = `Showing ${filteredCount} of ${totalCount} item${totalCount !== 1 ? 's' : ''}`;
+            
+            if (hasSearch && hasFilter) {
+                countText += ` matching "${searchQuery}" in ${capitalizeWord(activeFilter)}s`;
+            } else if (hasSearch) {
+                countText += ` matching "${searchQuery}"`;
+            } else if (hasFilter) {
                 countText += ` in ${capitalizeWord(activeFilter)}s`;
             }
 
@@ -649,6 +673,26 @@
     // Use passive event listeners for better scroll performance
     if (filterType) filterType.addEventListener('change', filterAndSortMedia, { passive: true });
     if (sortBy) sortBy.addEventListener('change', filterAndSortMedia, { passive: true });
+    
+    // Add search functionality with debouncing for performance
+    let searchTimeout;
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                filterAndSortMedia();
+            }, 300); // Debounce search by 300ms
+        }, { passive: true });
+        
+        // Also trigger on Enter key for immediate search
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                clearTimeout(searchTimeout);
+                filterAndSortMedia();
+            }
+        }, { passive: false });
+    }
 
     // Start loading immediately when script executes
     if (document.readyState === 'loading') {

@@ -47,6 +47,13 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://howdystranger.net/media.html">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2c5f5a">
+
   <!-- Preconnect to external domains - CRITICAL for performance -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://d28hgpri8am2if.cloudfront.net">
@@ -140,6 +147,23 @@
       color: #fff;
     }
 
+    /* Skip to main content link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary, #2c5f5a);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      z-index: 100;
+      border-radius: 0 0 4px 0;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     .media-cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -198,6 +222,37 @@
       }
     }
 
+    /* Search input styles */
+    .search-label {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-label input {
+      padding-right: 2.5rem;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-gray-500, #6c757d);
+      pointer-events: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
     /* Font optimization */
     @font-face {
       font-family: 'FontAwesome';
@@ -216,12 +271,10 @@
     }
   </style>
 
-  <!-- Lucide Icons -->
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
-
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
 
   <div class="page-title page-title--bordered" aria-label="Page title">
@@ -234,6 +287,17 @@
 
   <main id="main-content" tabindex="-1">
     <div class="media-filters">
+      <label for="search-input" class="search-label">
+        <span class="sr-only">Search media</span>
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search by title, author, or description..." 
+          aria-label="Search media items"
+          autocomplete="off">
+        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+      </label>
+
       <label>Filter by type:
         <select id="filter-type" aria-label="Filter by media type">
           <option value="all">All</option>
@@ -252,10 +316,10 @@
       <!-- Media cards will be inserted here by JavaScript -->
     </div>
 
-    <div id="playlist-overlay" class="playlist-overlay" style="display: none;">
+    <div id="playlist-overlay" class="playlist-overlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
       <div class="playlist-overlay-content">
         <h2 id="overlay-title"></h2>
-        <ul id="overlay-songs" class="overlay-songs"></ul>
+        <ul id="overlay-songs" class="overlay-songs" role="list"></ul>
       </div>
     </div>
   </main>
@@ -297,8 +361,25 @@
 
   <script src="js/media.js"></script>
 
-  <!-- Load lucide icons for CTA and hint elements -->
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
+  <!-- Load Lucide icons on-demand after page load -->
+  <script>
+    (function () {
+      const loadLucide = () => {
+        if (window.lucide) return;
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
+        script.defer = true;
+        script.onload = () => window.lucide?.createIcons();
+        document.head.appendChild(script);
+      };
+      
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        setTimeout(loadLucide, 100);
+      }
+    })();
+  </script>
 
   <!-- Load non-critical analytics after idle -->
   <script>

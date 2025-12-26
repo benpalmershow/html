@@ -97,7 +97,7 @@
 
 .article-title {
     text-align: left;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: -0.01em;
 }
@@ -149,12 +149,12 @@
     align-items: center;
     margin-bottom: 0.75rem;
     flex-wrap: wrap;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
 }
 
 .article-date {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
 }
 
@@ -203,7 +203,7 @@
 .article-preview p {
     margin: 0;
     line-height: 1.6;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
@@ -222,7 +222,7 @@
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
@@ -254,7 +254,7 @@
     }
 
     .article-title {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .disclosure-content {
@@ -289,7 +289,7 @@
     }
 
     .article-title {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .expand-icon {
@@ -722,7 +722,7 @@
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1948,7 +1948,7 @@ table td {
 }
 
 .button-hint {
-    font-size: 0.65em;
+    font-size: 0.75em;
     margin-top: 0.15em;
     opacity: 0.7;
     font-weight: 500;

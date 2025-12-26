@@ -30,14 +30,14 @@
     display: block;
     font-weight: 600;
     color: var(--text-primary);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .article-ticker {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-primary);
 }
 
@@ -110,7 +110,7 @@
     margin-bottom: 1rem;
     line-height: 1.8;
     color: var(--text-primary);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-family: Georgia, 'Times New Roman', serif;
 }
 
@@ -229,7 +229,7 @@
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     table-layout: fixed;
 }
 
@@ -321,7 +321,7 @@
 }
 
 .button-hint {
-    font-size: 0.65em;
+    font-size: 0.75em;
     margin-top: 0.15em;
     opacity: 0.8;
     font-weight: 500;
@@ -482,7 +482,7 @@
     color: white;
     padding: 0.15rem 0.5rem;
     border-radius: 12px;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     margin: 0.15rem 0.15rem 0 0;
     font-weight: 500;
 }
@@ -619,7 +619,7 @@
     }
 
     .article-content h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         margin-bottom: 0.75rem;
     }
 
@@ -632,7 +632,7 @@
     }
 
     .article-content p {
-        font-size: 0.95rem;
+        font-size: 1.05rem;
         line-height: 1.6;
     }
 
@@ -646,7 +646,7 @@
     }
 
     .article-content table {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         table-layout: fixed;
         min-width: 0;
     }
@@ -660,7 +660,7 @@
     }
 
     .button-hint {
-        font-size: 0.5em;
+        font-size: 0.75em;
         margin-top: 0.08em;
     }
 }
@@ -684,7 +684,7 @@
     }
 
     .article-content h1 {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
         margin-bottom: 0.5rem;
     }
 
@@ -697,7 +697,7 @@
     }
 
     .article-content p {
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.5;
     }
 
@@ -717,7 +717,7 @@
     }
 
     .article-content table {
-        font-size: 0.72rem;
+        font-size: 0.85rem;
         table-layout: fixed;
         min-width: 0;
     }
@@ -735,7 +735,7 @@
     }
 
     .button-hint {
-        font-size: 0.4em;
+        font-size: 0.7em;
         margin-top: 0.05em;
     }
 

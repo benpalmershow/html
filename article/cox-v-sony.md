@@ -76,7 +76,7 @@ Justice Elena Jackson posed the hardest case: a customer directly tells Cox "I a
 
 Rosenkranz acknowledged it "pushes the envelope" but held his ground: Cox would bear no liability even in that scenario. Direct infringement suits against the customer remain available.
 
-Justice Jackson followed with a common law question: Would ordinary aiding-and-abetting principles suffice? Rosenkranz said no—common law, like copyright, requires "a culpable act."
+Justice Jackson followed with a common law question: Would ordinary aiding-and-abetting principles suffice? Rosenkranz said no, common law, like copyright, requires "a culpable act."
 
 ---
 

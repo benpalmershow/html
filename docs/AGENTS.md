@@ -78,3 +78,29 @@
 - When creating new posts, include the latest updates from financials-data.json or other relevant data sources (e.g., prediction markets, news).
 - Use the most recently updated monthly numbers.
 - Use current month data available in JSON files; avoid missing recent monthly updates that have been saved.
+
+## No AI Red Flags
+
+**Avoid these patterns that signal AI-written content:**
+
+1. **Em dashes in prose** - Replace em dashes (—) with regular hyphens (-) in sentence structure
+   - Don't: "Survival in West Texas isn't noble—it's brutal."
+   - Do: "Survival in West Texas isn't noble - it's brutal."
+   - Exception: Em dashes in markdown tables (structural `| — |`) and list attribution are acceptable
+
+2. **"It's not X, it's Y" inversion pattern** - This is a dead giveaway for AI writing
+   - Don't: "The tariff isn't the objective—it's the deterrent."
+   - Do: Restructure the sentence or use different phrasing
+   - Alternative: "The tariff functions as a deterrent, not the objective."
+   - Alternative: "What matters is deterrence, not the tariff itself."
+
+**Where to check:**
+- All article markdown files in `article/` directory
+- All post files in `article/posts/` directory
+- Summaries and frontmatter in YAML headers
+- Body text and quoted passages
+
+**Why this matters:**
+- Em dashes and "It's not X—it's Y" patterns are distinctive markers of AI-generated text
+- This site is for human-written economic commentary, not AI-generated content
+- Maintaining authentic voice requires avoiding these recognizable patterns

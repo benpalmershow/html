@@ -13,7 +13,7 @@ author: Ben Palmer
 
 On one side, the political left frames the rise of AI and robotics as a **job-destroying threat**. On the other, the right, CEOs, and markets hail it as a source of **efficiency, wealth, and abundance**.
 
-But the real question isn't simply *how many jobs are lost or gained* — it's *what happens after automation makes everything cheaper*, when most people no longer own the means of production.
+But the real question isn't simply *how many jobs are lost or gained* - it's *what happens after automation makes everything cheaper*, when most people no longer own the means of production.
 
 Who benefits? And what happens when the gains don't trickle down?
 
@@ -23,7 +23,7 @@ Who benefits? And what happens when the gains don't trickle down?
 
 **Right-wing:** "Robots and AI drive productivity, lower costs, raise output, create new markets, and uphold free-market growth."
 
-Both perspectives miss a deeper point: productivity gains are inevitable — but the **distribution** of those gains is what's at stake. 
+Both perspectives miss a deeper point: productivity gains are inevitable - but the **distribution** of those gains is what's at stake. 
 
 
 ## Tesla's Mission Shift
@@ -44,7 +44,7 @@ Tesla's ambition now goes beyond electric vehicles and renewable energy. With pr
 
 Meanwhile, Amazon is preparing for massive automation in its fulfillment operations. Reports suggest Amazon could **avoid hiring 600,000 employees** by automating large parts of its operations by around 2033.
 
-This isn't just about eliminating jobs — it's about automating role after role so that output rises, costs drop, but the *human share of the value chain shrinks*.
+This isn't just about eliminating jobs - it's about automating role after role so that output rises, costs drop, but the *human share of the value chain shrinks*.
 
 > Lower prices may benefit consumers, but what happens to the livelihoods of displaced workers?
 
@@ -67,13 +67,13 @@ The left worries about job loss; the right celebrates efficiency. But the real i
 
 The trick is getting everyone a stake via equity, ownership, or new social dividends.
 
-Automation and "efficiency" sound like good things — until *your* job disappears. Then "cheaper goods" don't feel like progress; they feel like a hollow promise.
+Automation and "efficiency" sound like good things - until *your* job disappears. Then "cheaper goods" don't feel like progress; they feel like a hollow promise.
 
-> The backlash won't come from anti-tech activists. It'll come from emotional ex-employees and overlooked communities — people left behind by automation's quiet revolution.
+> The backlash won't come from anti-tech activists. It'll come from emotional ex-employees and overlooked communities - people left behind by automation's quiet revolution.
 
-If productivity gains don't trickle down — or aren't perceived to — voters will reject capitalism as they are doing in NYC.
+If productivity gains don't trickle down - or aren't perceived to - voters will reject capitalism as they are doing in NYC.
 
-Without broad-based stakes in productivity growth, voters will turn toward systems that promise fairness — even if it means sacrificing efficiency.
+Without broad-based stakes in productivity growth, voters will turn toward systems that promise fairness - even if it means sacrificing efficiency.
 
 ---
 

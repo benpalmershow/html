@@ -3,7 +3,7 @@ title: Sauer's Argument: Tariffs as Regulatory Leverage, Not Taxation
 date: 2025-11-10
 category: legal
 icon: gavel
-summary: Solicitor General Sauer defended IEEPA tariffs as non-revenue regulatory measures—tools of foreign policy leverage rather than exercises of Congress's taxing power.
+summary: Solicitor General Sauer defended IEEPA tariffs as non-revenue regulatory measures - tools of foreign policy leverage rather than exercises of Congress's taxing power.
 link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
 ---
 
@@ -37,7 +37,7 @@ Sauer drew parallels to **Section 232 of the Trade Expansion Act** and **the Alg
 
 ## 3. Breadth of Delegation
 
-Sauer characterized IEEPA as a **broad delegation**—an instrument Congress designed to give the President flexibility in emergencies.  
+Sauer characterized IEEPA as a **broad delegation** - an instrument Congress designed to give the President flexibility in emergencies.  
 He emphasized that the Act authorizes the President to:
 
 > "Investigate, block, prohibit, or otherwise regulate importation."
@@ -64,7 +64,7 @@ Thus, he argued, **IEEPA sits within the zone of concurrent Article I and Articl
 
 ## 5. The "Regulatory Tariff" Concept
 
-Sauer coined the phrase **"regulatory tariff"** to describe this hybrid mechanism—a monetary measure not designed to raise revenue but to shape international conduct.  
+Sauer coined the phrase **"regulatory tariff"** to describe this hybrid mechanism - a monetary measure not designed to raise revenue but to shape international conduct.  
 He analogized it to **sanctions, export controls, or asset freezes**, which can have fiscal impact but are understood as regulatory.
 
 > "A successful tariff collects nothing," he said. "Its success is measured in changed behavior, not receipts."

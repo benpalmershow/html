@@ -480,8 +480,6 @@ Navan is among the first companies to use the **SEC's new shutdown workaround**:
 - Automatically effective after 20 days
 - No staff review required (but SEC can still intervene)
 
-**Quote from source:**
-> "They know the market's strong — it's not them; it's the market that's hungry. They don't want to let a good market go to waste."
 
 ---
 

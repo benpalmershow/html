@@ -58,7 +58,7 @@ This case highlights a **7-circuit split** on cumulative punishment:
 *Reasoning:* Each statute has distinct elements; therefore, they are separate offenses permitting cumulative punishment.
 
 ### Unusual Agreement
-Both the **Solicitor General** and **Petitioner** agree that dual sentencing should be prohibited—a rare alignment suggesting the 3rd Circuit's position is untenable.
+Both the **Solicitor General** and **Petitioner** agree that dual sentencing should be prohibited - a rare alignment suggesting the 3rd Circuit's position is untenable.
 
 ## Legal Framework
 
@@ -69,7 +69,7 @@ Both the **Solicitor General** and **Petitioner** agree that dual sentencing sho
 **Three Protections:**
 1. No retrial after acquittal
 2. No retrial after conviction
-3. **No multiple punishments for the same offense** ← This case
+3. **No multiple punishments for the same offense** - This case
 
 ### The Blockburger Test
 
@@ -101,7 +101,7 @@ From *Missouri v. Hunter*, 459 U.S. 359 (1983):
 ### 18 U.S.C. § 924(j) - Death Resulting
 
 **Full Text:**
-> "A person who, in the course of a violation of subsection (c), causes the death of a person through the use of a firearm, shall—
+> "A person who, in the course of a violation of subsection (c), causes the death of a person through the use of a firearm, shall
 > (1) if the killing is a murder...be punished by death or by imprisonment for any term of years or for life; and
 > (2) if the killing is manslaughter, be punished...by imprisonment for not more than 10 years."
 
@@ -119,9 +119,9 @@ From *Missouri v. Hunter*, 459 U.S. 359 (1983):
 
 **1. § 924(j) is a Penalty Enhancement, Not Separate Offense**
 
-The phrase "in the course of a violation of subsection (c)" indicates § 924(j) enhances punishment for § 924(c) violations that result in death—it doesn't create a separate offense.
+The phrase "in the course of a violation of subsection (c)" indicates § 924(j) enhances punishment for § 924(c) violations that result in death - it doesn't create a separate offense.
 
-*Analogy:* Like aggravated assault vs. simple assault—you can't be punished for both.
+*Analogy:* Like aggravated assault vs. simple assault - you can't be punished for both.
 
 **2. No Clear Congressional Intent for Cumulative Sentences**
 
@@ -156,7 +156,7 @@ Seven circuits disagree on this issue, demonstrating the statutes are ambiguous.
 **Arguments:**
 1. Each statute has distinct elements under *Blockburger*
 2. Congress created separate code sections, suggesting separate offenses
-3. § 924(j) requires proof of death—an element § 924(c) does not
+3. § 924(j) requires proof of death - an element § 924(c) does not
 4. Cumulative sentences reflect greater culpability when death occurs
 
 ## Justice Gorsuch's Key Questions
@@ -177,7 +177,7 @@ Justice Gorsuch, known for his textualist approach and criminal justice reform s
 
 ### On Statutory Structure
 
-*"§ 924(j) says 'in the course of a violation of subsection (c)'—doesn't that suggest it's describing the same conduct, not a separate offense?"*
+*"§ 924(j) says 'in the course of a violation of subsection (c)' - doesn't that suggest it's describing the same conduct, not a separate offense?"*
 
 ## Key Doctrines
 
@@ -202,7 +202,7 @@ Justice Gorsuch, known for his textualist approach and criminal justice reform s
 
 ### Clear Statement Rule
 
-When Congress intends to authorize cumulative punishment for overlapping offenses, it must clearly state that intent—implications and inferences are insufficient.
+When Congress intends to authorize cumulative punishment for overlapping offenses, it must clearly state that intent - implications and inferences are insufficient.
 
 **Example of Clear Statement:** 
 > "Violations of this section may be punished in addition to any other offense, including violations of section [X]."
@@ -244,7 +244,7 @@ This case affects hundreds of federal defendants serving cumulative sentences un
 
 ### For Lenity Doctrine
 
-The Court's approach to lenity will signal how much deference criminal defendants receive when statutes are ambiguous—particularly important as federal criminal code grows increasingly complex.
+The Court's approach to lenity will signal how much deference criminal defendants receive when statutes are ambiguous - particularly important as federal criminal code grows increasingly complex.
 
 ### For Textualism
 
@@ -271,6 +271,6 @@ The case tests textualist methodology: Does statutory structure ("in the course 
 
 ---
 
-**Stakes:** This case will clarify when Congress has authorized multiple punishments for overlapping federal offenses and may strengthen the rule of lenity in criminal cases—with significant implications for federal sentencing nationwide.
+**Stakes:** This case will clarify when Congress has authorized multiple punishments for overlapping federal offenses and may strengthen the rule of lenity in criminal cases - with significant implications for federal sentencing nationwide.
 
 </div>

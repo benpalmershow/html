@@ -3,7 +3,7 @@ title: Why Real Estate Innovators Beat Liberal Think Tanks on Housing
 date: 2025-11-30
 category: policy
 author: Ben Palmer
-summary: Real estate entrepreneurs like Realer Estate solve affordability problems through market innovation—while liberal think tanks waste time bribing homeowners and creating new regulations.
+summary: Real estate entrepreneurs like Realer Estate solve affordability problems through market innovation - while liberal think tanks waste time bribing homeowners and creating new regulations.
 ---
 
 <div class="article-wrapper">

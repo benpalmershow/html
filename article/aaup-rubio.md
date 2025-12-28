@@ -21,7 +21,7 @@ link: https://storage.courtlistener.com/recap/gov.uscourts.mad.282460/gov.uscour
 
 ### Why Non-Citizens Have First Amendment Rights
 
-**Plain Text:** First Amendment states "Congress shall make no law...abridging the freedom of speech" — draws no distinction between citizens and non-citizens
+**Plain Text:** First Amendment states "Congress shall make no law...abridging the freedom of speech" - draws no distinction between citizens and non-citizens
 
 **Supreme Court Precedent:** *Bridges v. Wixon* (1945) held "freedom of speech...is accorded aliens residing in this country"
 
@@ -31,7 +31,7 @@ link: https://storage.courtlistener.com/recap/gov.uscourts.mad.282460/gov.uscour
 
 > "No law means no law. The First Amendment does not draw President Trump's invidious distinction and it is not to be found in our history or jurisprudence."
 >
-> **— Judge Young**
+> **- Judge Young**
 
 ---
 
@@ -72,13 +72,13 @@ The court documented widespread self-censorship by plaintiff members:
 
 ## Legal Violations Found
 
-**Count I — First Amendment Viewpoint Discrimination:** GRANTED  
+**Count I - First Amendment Viewpoint Discrimination:** GRANTED  
 *Officials intentionally targeted specific viewpoints to chill speech*
 
-**Count II — Campaign of Coercive Threats:** MIXED  
+**Count II - Campaign of Coercive Threats:** MIXED  
 *Threats proved intentional chill but lacked specific targeting of plaintiffs*
 
-**Count IV — Administrative Procedure Act:** GRANTED  
+**Count IV - Administrative Procedure Act:** GRANTED  
 *Policy was contrary to constitutional right, arbitrary/capricious, and based on unprecedented statutory interpretation*
 
 ---

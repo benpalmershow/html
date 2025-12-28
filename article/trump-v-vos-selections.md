@@ -28,7 +28,7 @@ The Trump administration argues that persistent bilateral trade deficits and "la
 
 The case sits at the intersection of four major constitutional doctrines:
 
-### **1. Article I — Taxation from the People**
+### **1. Article I - Taxation from the People**
 
 - Tariffs are a form of **taxation**, and Article I, Section 8 vests the taxing power in **Congress**.  
 - Under the Constitution's structure, taxation requires both Houses and the President to act jointly.  
@@ -46,7 +46,7 @@ The case sits at the intersection of four major constitutional doctrines:
 - IEEPA's verbs ("block," "nullify," "prohibit") describe embargo-style controls, not taxation.  
 - Reading "regulate importation" to include tariffs transforms a narrow emergency power into an open-ended fiscal tool.
 
-### **4. Article II — Executive Foreign Policy Authority**
+### **4. Article II - Executive Foreign Policy Authority**
 
 - The government argues for deference in foreign affairs, where the President traditionally acts with greater independence.  
 - Respondents counter that **foreign affairs deference** does not override Article I's textual allocation of taxing power.  
@@ -61,7 +61,7 @@ The case sits at the intersection of four major constitutional doctrines:
 - "Regulate importation" historically encompassed tariff authority, from *Gibbons v. Ogden* through the Trading With the Enemy Act (TWEA).  
 - President Nixon's 1971 tariffs under TWEA's identical language were upheld in *United States v. Yoshida International*, and Congress carried that same language forward in IEEPA.  
 - The Court's *Algonquin* decision held "adjust imports" includes monetary exactions; "regulate" is broader still.  
-- Tariffs imposed under IEEPA are **regulatory**, not **revenue-raising**—they aim to deter foreign conduct, not collect funds.  
+- Tariffs imposed under IEEPA are **regulatory**, not **revenue-raising** - they aim to deter foreign conduct, not collect funds.  
 - In foreign affairs, **major questions and nondelegation** concerns carry less force given Article II's inherent powers.
 
 ---
@@ -70,9 +70,9 @@ The case sits at the intersection of four major constitutional doctrines:
 
 **Neal Katyal** and **Benjamin Gutman** argued for a narrow reading:
 
-- Congress **always** uses explicit language when delegating tariff authority—IEEPA's silence is decisive.  
+- Congress **always** uses explicit language when delegating tariff authority - IEEPA's silence is decisive.  
 - IEEPA's structure and legislative history confirm it was meant to **constrain**, not **expand**, presidential emergency powers.  
-- Allowing an implicit delegation would invert Article I's structure—letting a single branch tax citizens without bicameral approval.  
+- Allowing an implicit delegation would invert Article I's structure - letting a single branch tax citizens without bicameral approval.  
 - They cited the Solicitor General's concession that the President has **no independent tariff power**, making reliance on IEEPA textually and constitutionally unsound.  
 - As a matter of statutory design, if "regulate importation" sufficed, the procedural and percentage limits of Sections 232, 301, and 201 would be meaningless.
 
@@ -81,9 +81,9 @@ The case sits at the intersection of four major constitutional doctrines:
 ## The Bench Reacts
 
 - **Justice Gorsuch** described delegation as a "one-way ratchet": Congress can transfer power by simple majority but can reclaim it only with a supermajority override. He pressed the government on the lack of inherent tariff authority.  
-- **Justice Sotomayor** underscored that tariffs are taxes—revenue-generating by definition—and asked why "regulate" should be read as "tax" when Congress never uses the term that way.  
-- **Justice Kagan** observed that every tariff statute in Title 19 has meaningful constraints—IEEPA has none.  
-- **Justice Kavanaugh** flagged a potential "donut hole": the President could ban all trade but not impose a 1% tariff—a distinction that might make little policy sense.  
+- **Justice Sotomayor** underscored that tariffs are taxes - revenue-generating by definition - and asked why "regulate" should be read as "tax" when Congress never uses the term that way.  
+- **Justice Kagan** observed that every tariff statute in Title 19 has meaningful constraints - IEEPA has none.  
+- **Justice Kavanaugh** flagged a potential "donut hole": the President could ban all trade but not impose a 1% tariff - a distinction that might make little policy sense.  
 - **Justice Barrett** asked whether any other statute uses "regulate importation" to grant tariff authority; the government cited only TWEA and IEEPA.
 
 ---
@@ -110,7 +110,7 @@ A flashpoint was the Nixon-era precedent:
 ## Context in Broader Trade Law
 
 - **Trade Promotion Authority (TPA)** grants the President discretion to *reduce* tariffs within negotiated agreements but has never been used to *increase* them.  
-- Reading IEEPA to authorize tariff hikes by emergency declaration would invert that structure—transforming a limited foreign policy tool into a perpetual fiscal power.  
+- Reading IEEPA to authorize tariff hikes by emergency declaration would invert that structure - transforming a limited foreign policy tool into a perpetual fiscal power.  
 
 ---
 
@@ -123,7 +123,7 @@ A decision expected by mid-2026 will determine:
 - The scope of presidential economic emergency powers; and  
 - Whether Article I's taxation clause demands explicit delegation.
 
-The Court appears divided—torn between flexibility in foreign policy and the constitutional design that keeps the power to tax squarely with Congress.
+The Court appears divided - torn between flexibility in foreign policy and the constitutional design that keeps the power to tax squarely with Congress.
 
 ---
 

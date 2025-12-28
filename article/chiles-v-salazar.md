@@ -106,7 +106,7 @@ Ninth Circuit upheld California's ban on SOGIE therapy for minors, treating it a
 
 ### Petitioner's Arguments (Chiles)
 
-1. **Pure Speech**: Counseling consists entirely of talking—paradigmatic speech protected by First Amendment
+1. **Pure Speech**: Counseling consists entirely of talking - paradigmatic speech protected by First Amendment
 
 2. **Viewpoint Discrimination**: Law permits pro-LGBTQ+ counseling while banning counseling based on religious beliefs about sexuality and gender
 
@@ -122,7 +122,7 @@ Ninth Circuit upheld California's ban on SOGIE therapy for minors, treating it a
 
 2. **Harm Prevention**: SOGIE therapy causes documented psychological harm to minors
 
-3. **Not Viewpoint Discrimination**: Law regulates a harmful practice, not a viewpoint—counselors can still hold and express their beliefs outside the treatment context
+3. **Not Viewpoint Discrimination**: Law regulates a harmful practice, not a viewpoint - counselors can still hold and express their beliefs outside the treatment context
 
 4. **State Interest**: Protecting vulnerable minors from harmful practices is compelling state interest
 

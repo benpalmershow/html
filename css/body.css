@@ -521,14 +521,14 @@ img[alt="Watch Image"] {
 }
 
 a {
-    color: var(--logo-orange);
+    color: inherit;
     text-decoration: underline;
-    transition: color 0.2s ease
+    transition: opacity 0.2s ease
 }
 
 a:focus,
 a:hover {
-    color: var(--logo-teal);
+    opacity: 0.7;
     text-decoration: underline
 }
 

@@ -42,16 +42,15 @@
 }
 
 .article-ticker a {
-    color: var(--logo-orange);
-    text-decoration: none;
+    color: inherit;
+    text-decoration: underline;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .article-ticker a:hover {
     text-decoration: underline;
-    color: var(--logo-orange);
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* Category badge positioned in article header */
@@ -155,6 +154,28 @@
 
 .article-content a:hover {
     opacity: 0.8;
+}
+
+/* Superscript (footnote links) */
+.article-content sup {
+    font-size: 0.85em;
+}
+
+/* Footnote links in paragraphs - smaller */
+.article-content p sup {
+    font-size: 0.85em;
+}
+
+/* Superscript small tags - even smaller footnotes */
+.article-content sup small {
+    font-size: 0.855em;
+}
+
+/* Footnotes section - last h2 and following content */
+.article-content h2:last-of-type,
+.article-content h2:last-of-type ~ * {
+    font-size: 0.85em;
+    color: #666;
 }
 
 /* Strong and emphasis */

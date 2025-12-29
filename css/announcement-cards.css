@@ -105,8 +105,8 @@
 }
 
 .announcement-card a {
-    color: var(--color-secondary);
-    text-decoration: none;
+    color: inherit;
+    text-decoration: underline;
     font-weight: 600;
 }
 

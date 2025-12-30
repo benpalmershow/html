@@ -543,6 +543,17 @@
                 overlayContent.appendChild(embed);
                 button.innerHTML = `<i class="fas fa-times"></i>`;
                 button.title = 'Close Trailer';
+                
+                // Scroll card into view so user sees the video
+                const mediaCard = overlayContent.closest('.media-card');
+                if (mediaCard) {
+                    mediaCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Scroll overlay content to show video at top
+                setTimeout(() => {
+                    overlayContent.scrollTop = 0;
+                }, 300);
             }
         }, { passive: false });
 

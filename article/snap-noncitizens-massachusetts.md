@@ -9,7 +9,7 @@ In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusett
 
 ### Citizenship Status (National)
 
-**Noncitizens** are defined as "lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals" (FY 2023 SNAP Characteristics Report, p. 43).[^7] Naturalized citizens are U.S. citizens and are not counted as noncitizens.
+**Noncitizen** (FY 2023 SNAP Characteristics Report, p. 43): Individuals residing in the United States who are not natural-born or naturalized citizens. These include lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals. Lawfully present noncitizens are subject to additional nonfinancial eligibility criteria. Undocumented individuals are not eligible to receive SNAP benefits, but may be nonparticipating members of SNAP households.
 
 | Category | Percentage | Number |
 |----------|-----------|--------|
@@ -71,5 +71,3 @@ Federal law restricts SNAP eligibility to naturalized citizens, refugees, asylee
 [^5]: *Ibid.* (Table B.17, p. 110).
 
 [^6]: *Ibid.* (pp. 110-112).
-
-[^7]: Full definition from FY 2023 SNAP Characteristics Report (p. 43): "Noncitizen. Individuals residing in the United States who are not natural-born or naturalized citizens. These include lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals. Lawfully present noncitizens are subject to additional nonfinancial eligibility criteria (see Chapter 2). Undocumented individuals are not eligible to receive SNAP benefits, but may be nonparticipating members of SNAP households."

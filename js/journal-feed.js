@@ -116,14 +116,26 @@ async function loadJournalEntries() {
     }));
     
     journalFeed.innerHTML = articlesHTML.join('');
-  } catch (error) {
+    
+    // Handle anchor scroll after content is loaded
+    const hash = window.location.hash.slice(1); // Remove the '#'
+    if (hash) {
+      // Small delay to ensure DOM is fully rendered
+      setTimeout(() => {
+        const targetElement = document.getElementById(hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+    } catch (error) {
     console.error('Error loading journal entries:', error);
     const journalFeed = document.getElementById('journal-feed');
     if (journalFeed) {
       journalFeed.innerHTML = '<div class="error-state">Error loading journal entries. Please try again later.</div>';
     }
-  }
-}
+    }
+    }
 
 function parseDate(dateString) {
   try {

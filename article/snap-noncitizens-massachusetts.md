@@ -3,13 +3,13 @@ date: 2025-12-29T12:00:00
 category: policy
 ---
 
-## Noncitizen SNAP Participation: Massachusetts Overview
+## Noncitizen SNAP Participation
 
-In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusetts—6.27% of the state's total SNAP population. Nationally, eligible noncitizens (refugees, asylees, and other lawfully present noncitizens) represent 4.4% of all SNAP participants, while an additional 6.2% are naturalized citizens.
+In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusetts—6.27% of the state's total SNAP population.[^1][^2] Nationally, eligible noncitizens (refugees, asylees, and other lawfully present noncitizens) represent 4.4% of all SNAP participants, while an additional 6.2% are naturalized citizens.[^3]
 
-### Citizenship Status (National)
+### Citizenship Status
 
-**Noncitizen** (FY 2023 SNAP Characteristics Report, p. 43): Individuals residing in the United States who are not natural-born or naturalized citizens. These include lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals. Lawfully present noncitizens are subject to additional nonfinancial eligibility criteria. Undocumented individuals are not eligible to receive SNAP benefits, but may be nonparticipating members of SNAP households.
+**Noncitizen** (FY 2023 SNAP Characteristics Report, p. 43):[^4] Individuals residing in the United States who are not natural-born or naturalized citizens. These include lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals. Lawfully present noncitizens are subject to additional nonfinancial eligibility criteria. Undocumented individuals are not eligible to receive SNAP benefits, but may be nonparticipating members of SNAP households.
 
 | Category | Percentage | Number |
 |----------|-----------|--------|
@@ -17,7 +17,7 @@ In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusett
 | Other Eligible Noncitizens | 3.3% | 1.33M |
 | **Total Eligible Noncitizens** | **4.4%** | **1.76M** |
 
-*Note: Undocumented immigrants are ineligible for SNAP. Citizen children of noncitizens comprise an additional 6.2% of participants. Naturalized citizens (6.2%, 2.47M) are separate—they are U.S. citizens.*
+*Note: Undocumented immigrants are ineligible for SNAP. Citizen children of noncitizens comprise an additional 6.2% of participants. Naturalized citizens (6.2%, 2.47M) are separate—they are U.S. citizens.*[^5]
 
 ### Age Distribution
 
@@ -26,7 +26,7 @@ In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusett
 | Elderly (60+) | 38.2% | 19.5% |
 | Children (under 18) | 17.2% | 38.9% |
 
-Noncitizen participants skew significantly older than the general SNAP population.
+Noncitizen participants skew significantly older than the general SNAP population.[^6]
 
 ### State Rankings: Noncitizen SNAP Participation
 
@@ -37,9 +37,9 @@ Noncitizen participants skew significantly older than the general SNAP populatio
 | **Massachusetts** | **68,000** |
 | Illinois | 63,000 |
 
-Massachusetts ranks in the mid-to-upper tier, suggesting either higher immigration with eligible status or more accessible enrollment procedures.
+Massachusetts ranks in the mid-to-upper tier, suggesting either higher immigration with eligible status or more accessible enrollment procedures.[^6]
 
-### Payment Error Rates (FY 2024)
+### Payment Error Rates
 
 | State | Error Rate | Overpayments | Underpayments |
 |-------|-----------|--------------|----------------|
@@ -48,11 +48,11 @@ Massachusetts ranks in the mid-to-upper tier, suggesting either higher immigrati
 | **Massachusetts** | **14.10%** | **13.03%** | **1.07%** |
 | New York | 14.09% | — | — |
 
-Massachusetts's 14% error rate ranks among the worst nationally.[^8] Starting FY 2028, the One Big Beautiful Bill will penalize states exceeding 6% error rates, potentially costing Massachusetts 10-15% of its SNAP benefits.
+Massachusetts's 14% error rate ranks among the worst nationally.[^8] Starting FY 2028, the One Big Beautiful Bill will penalize states exceeding 6% error rates, potentially costing Massachusetts 10-15% of its SNAP benefits.[^7]
 
-### Policy Context
+### One Big Beautiful Bill
 
-Federal law restricts SNAP eligibility to naturalized citizens, refugees, asylees, and five-year+ lawful permanent residents. States retain latitude in outreach and enrollment procedures. Massachusetts's high noncitizen caseload combined with elevated payment errors raises questions about balancing accessibility versus administrative accuracy.
+The One Big Beautiful Bill (OBBB) has eliminated standalone eligibility for refugees and asylees. Only lawful permanent residents (LPR), Cuban and Haitian entrants (CHE), and Compact of Free Association (COFA) citizens qualify.[^9] Refugees and asylees retain eligibility only if they have adjusted to LPR status. This change could affect hundreds of thousands of current beneficiaries nationwide.
 
 **See also:** [Journal entry on SNAP Media Coverage](../journal.html#marxist-advocacy-masquerading-as-journalism)
 
@@ -72,4 +72,8 @@ Federal law restricts SNAP eligibility to naturalized citizens, refugees, asylee
 
 [^6]: *Ibid.* (pp. 110-112).
 
+[^7]: USDA Food and Nutrition Service, [*SNAP Provisions of the One Big Beautiful Bill Act of 2025 – Information Memorandum*](https://www.fns.usda.gov/snap/obbb-implementation), "Sec. 10105 Matching Funds Requirements" (September 4, 2025). States with error rates of 6–<8% pay 5%; 8–<10% pay 10%; ≥10% pay 15% of SNAP benefits beginning FY 2028.
+
 [^8]: USDA Food and Nutrition Service, [*FY 2024 SNAP Quality Control Payment Error Rates*](https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy24QC-PER.pdf) (June 30, 2025).
+
+[^9]: USDA Food and Nutrition Service, [*SNAP Alien Eligibility Questions & Answers*](https://www.fns.usda.gov/snap/obbb-alien-eligibility-qas1).

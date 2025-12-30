@@ -133,6 +133,9 @@
 
 .card-expanded-content>.content-wrapper {
     min-height: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .announcement-card.expanded .card-expanded-content {
@@ -232,6 +235,16 @@
     .card-title {
         font-size: 1.25rem;
         margin-top: var(--spacing-sm);
+    }
+
+    .announcement-card.expanded .card-expanded-content {
+        padding: var(--spacing-md);
+        margin-top: var(--spacing-md);
+    }
+
+    .card-expanded-content>.content-wrapper {
+        padding: 0;
+        min-width: 0;
     }
 }
 

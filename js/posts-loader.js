@@ -317,7 +317,12 @@ async function renderSingleChart(container) {
 
             const config = getChartConfig(indicator, labels, dataPoints);
             if (config) {
-                new window.Chart(canvas.getContext('2d'), config);
+                // Destroy existing chart if present
+                if (canvas._chart instanceof window.Chart) {
+                    canvas._chart.destroy();
+                }
+                const chart = new window.Chart(canvas.getContext('2d'), config);
+                canvas._chart = chart;
                 container.dataset.rendered = 'true';
             }
         }
@@ -364,6 +369,10 @@ function extractCardData(html) {
     const temp = document.createElement('div');
     temp.innerHTML = html;
 
+    // Extract icon FIRST (before removing h3, in case icon is inside heading)
+    const lucideIcon = temp.querySelector('[data-lucide]');
+    const iconName = lucideIcon ? lucideIcon.getAttribute('data-lucide') : '';
+
     // Extract title (first h3 or strong/bold header)
     const h3 = temp.querySelector('h3, h1, h2, b, strong');
     let title = h3 ? h3.innerText.trim() : '';
@@ -372,12 +381,6 @@ function extractCardData(html) {
     // Extract image (first img)
     const img = temp.querySelector('img');
     const imageUrl = img ? img.src : '';
-    // We keep the image in content for expanded view, but we won't show it as "featured" in snippet if not needed
-    // Actually let's keep it for the teaser if it looks premium
-
-    // Extract icon (first lucide icon or emoji)
-    const lucideIcon = temp.querySelector('[data-lucide]');
-    const iconName = lucideIcon ? lucideIcon.getAttribute('data-lucide') : '';
 
     // Extract snippet (first paragraph text)
     const p = temp.querySelector('p');

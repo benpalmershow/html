@@ -246,33 +246,6 @@ body {
     width: 100%;
 }
 
-/* ========================================
-    SHARED COMPONENT CLASSES
-    Reusable styles for consistency
-    ======================================== */
-
-/* Base card class - shared across all card variants */
-.card-base,
-.card,
-.announcement-card {
-    background: var(--bg-secondary);
-    border-radius: 0.5rem;
-    border: 1px solid var(--border-color);
-    padding: var(--spacing-md);
-    box-shadow: var(--card-shadow);
-    margin: var(--component-spacing) 0;
-    box-sizing: border-box;
-    transition: var(--transition-hover);
-    content-visibility: auto;
-    contain: layout style;
-}
-
-.card-base:hover,
-.card:hover {
-    border-color: var(--color-secondary);
-    box-shadow: var(--card-shadow-hover);
-    transform: translateY(-2px);
-}
 
 /* Media card variant */
 .media-card {

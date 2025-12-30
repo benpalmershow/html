@@ -9,7 +9,7 @@ In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusett
 
 ### Citizenship Status
 
-**Noncitizen** (FY 2023 SNAP Characteristics Report, p. 43):[^4] Individuals residing in the United States who are not natural-born or naturalized citizens. These include lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals. Lawfully present noncitizens are subject to additional nonfinancial eligibility criteria. Undocumented individuals are not eligible to receive SNAP benefits, but may be nonparticipating members of SNAP households.
+**Noncitizen** : Individuals residing in the United States who are not natural-born or naturalized citizens. These include lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals. Lawfully present noncitizens are subject to additional nonfinancial eligibility criteria. Undocumented individuals are not eligible to receive SNAP benefits, but may be nonparticipating members of SNAP households.[^4]
 
 | Category | Percentage | Number |
 |----------|-----------|--------|
@@ -66,11 +66,11 @@ The One Big Beautiful Bill (OBBB) has eliminated standalone eligibility for refu
 
 [^3]: USDA Food and Nutrition Service, [*FY 2023 SNAP Characteristics Report*](https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-FY23-Characteristics-Report.pdf) (Table 3.6, p. 30).
 
-[^4]: *Ibid.*
+[^4]: *Ibid.* (FY 2023 SNAP Characteristics Report, p. 43).
 
 [^5]: *Ibid.* (Table B.17, p. 110).
 
-[^6]: *Ibid.* (pp. 110-112).
+[^6]: *Ibid.* (pp. 110-112). 
 
 [^7]: USDA Food and Nutrition Service, [*SNAP Provisions of the One Big Beautiful Bill Act of 2025 – Information Memorandum*](https://www.fns.usda.gov/snap/obbb-implementation), "Sec. 10105 Matching Funds Requirements" (September 4, 2025). States with error rates of 6–<8% pay 5%; 8–<10% pay 10%; ≥10% pay 15% of SNAP benefits beginning FY 2028.
 

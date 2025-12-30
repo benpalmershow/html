@@ -26,6 +26,6 @@ The Federal Reserve lowered its benchmark rate today per [**Prediction Markets**
 ## 📦 **You Are the Product**
 
 Grandpa fixed his car. Dad changed his oil...
-[Read more ](journal.html#entry-you-are-the-product)
+[Read more ](../../journal.html#you-are-the-product)
 
 

@@ -21,7 +21,7 @@ August plummeted from July's $78.2B to $59.6B. Prior months revised lower across
 
 Companies are securing additional supply chains from non-China-based suppliers.
 
-[View Journal insights](journal.html#tariff-squeeze)
+[View Journal insights](../../journal.html#tariff-squeeze)
 
 
 

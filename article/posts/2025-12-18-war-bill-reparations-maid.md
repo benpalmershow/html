@@ -20,4 +20,4 @@ San Francisco formally established a Reparations Fund—turning a political idea
 
 Euphemism often ends up in public policy. "Medical aid in dying" sanitizes what it's doing and we drift from suicide prevention to assisted suicide where fewer people stand up for our inconvenient life. 
 
-[Read the journal entry](journal.html#maid-in-america)
+[Read the journal entry](../../journal.html#maid-in-america)

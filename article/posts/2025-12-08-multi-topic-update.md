@@ -6,7 +6,7 @@ date: 2025-12-08T21:30:00Z
 
 While individual officers enjoy qualified immunity in civil suits, your municipality does not. A public liability fund can pay $30 million to settle when an officer kills on your behalf.
 
-[Read more on Qualified Immunity](journal.html#entry-qualified-immunity)
+[Read more on Qualified Immunity](../../journal.html#qualified-immunity)
 
 ---
 

@@ -14,4 +14,4 @@ The Machine doesn't just displace the sacred with the material. It replaces inqu
 
 The bourgeois mind, once purely materialist, has been supplanted by the ideological bourgeois—the wealthy donor class and their proxy intellectuals who demand "equitable" systems that benefit the poor while actually creating dependency and control. They've weaponized the language of compassion. Meanwhile, the actual worker—the one pulling three jobs—is erased from the conversation entirely.
 
-[See related journal entry](journal.html#entry-marxist-advocacy-masquerading-as-journalism)
+[See related journal entry](../../journal.html#marxist-advocacy-masquerading-as-journalism)

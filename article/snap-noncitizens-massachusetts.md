@@ -53,7 +53,7 @@ Massachusetts's 14% error rate ranks among the worst nationally. Starting FY 202
 
 Federal law restricts SNAP eligibility to naturalized citizens, refugees, asylees, and five-year+ lawful permanent residents. States retain latitude in outreach and enrollment procedures. Massachusetts's high noncitizen caseload combined with elevated payment errors raises questions about balancing accessibility versus administrative accuracy.
 
-**See also:** [Journal entry on SNAP Media Coverage](journal.html?date=12/26/25)
+**See also:** [Journal entry on SNAP Media Coverage](../journal.html#marxist-advocacy-masquerading-as-journalism)
 
 ---
 

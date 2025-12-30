@@ -48,7 +48,7 @@ Massachusetts ranks in the mid-to-upper tier, suggesting either higher immigrati
 | **Massachusetts** | **14.10%** | **13.03%** | **1.07%** |
 | New York | 14.09% | — | — |
 
-Massachusetts's 14% error rate ranks among the worst nationally. Starting FY 2028, the One Big Beautiful Bill will penalize states exceeding 6% error rates, potentially costing Massachusetts 10-15% of its SNAP benefits.
+Massachusetts's 14% error rate ranks among the worst nationally.[^8] Starting FY 2028, the One Big Beautiful Bill will penalize states exceeding 6% error rates, potentially costing Massachusetts 10-15% of its SNAP benefits.
 
 ### Policy Context
 
@@ -71,3 +71,5 @@ Federal law restricts SNAP eligibility to naturalized citizens, refugees, asylee
 [^5]: *Ibid.* (Table B.17, p. 110).
 
 [^6]: *Ibid.* (pp. 110-112).
+
+[^8]: USDA Food and Nutrition Service, [*FY 2024 SNAP Quality Control Payment Error Rates*](https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy24QC-PER.pdf) (June 30, 2025).

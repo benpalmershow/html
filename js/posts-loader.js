@@ -360,6 +360,39 @@ async function initPosts() {
     }
 }
 
+function extractCardData(html) {
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+
+    // Extract title (first h3 or strong/bold header)
+    const h3 = temp.querySelector('h3, h1, h2, b, strong');
+    let title = h3 ? h3.innerText.trim() : '';
+    if (h3) h3.remove();
+
+    // Extract image (first img)
+    const img = temp.querySelector('img');
+    const imageUrl = img ? img.src : '';
+    // We keep the image in content for expanded view, but we won't show it as "featured" in snippet if not needed
+    // Actually let's keep it for the teaser if it looks premium
+
+    // Extract icon (first lucide icon or emoji)
+    const lucideIcon = temp.querySelector('[data-lucide]');
+    const iconName = lucideIcon ? lucideIcon.getAttribute('data-lucide') : '';
+
+    // Extract snippet (first paragraph text)
+    const p = temp.querySelector('p');
+    let snippet = p ? p.innerText.trim() : '';
+    if (snippet.length > 160) snippet = snippet.substring(0, 157) + '...';
+
+    return {
+        title: title || 'Journal Update',
+        image: imageUrl,
+        icon: iconName,
+        snippet: snippet,
+        content: temp.innerHTML
+    };
+}
+
 async function loadAndRenderPosts(posts) {
     if (!posts.length) return;
 
@@ -369,19 +402,46 @@ async function loadAndRenderPosts(posts) {
         let content = await parseMarkdownFile(post.file);
         if (content.includes('{{chart:')) content = processCharts(content);
         content = wrapImagesInLinks(content);
-        return { ...post, content };
+        return { ...post, rawContent: content };
     }));
 
-    const valid = postsWithContent.filter(p => p && p.content);
+    const valid = postsWithContent.filter(p => p && p.rawContent);
 
-    const html = valid.map(p => `
-        <div class="announcement-card" data-date="${p.date}">
-            <div class="card-header-row">
-                <time class="post-time">${formatTimeAgo(p.date)}</time>
+    const html = valid.map(p => {
+        const data = extractCardData(p.rawContent);
+        const iconHtml = data.icon ? `<i data-lucide="${data.icon}" class="card-icon"></i>` :
+            `<i data-lucide="bookmark" class="card-icon"></i>`;
+
+        return `
+            <div class="announcement-card ${data.image ? 'has-image' : ''}" data-date="${p.date}">
+                <div class="card-header-row">
+                    <div class="card-meta">
+                        ${iconHtml}
+                        <time class="post-time">${formatTimeAgo(p.date)}</time>
+                    </div>
+                </div>
+                <div class="card-main">
+                    <div class="card-content-side">
+                        <h3 class="card-title">${data.title}</h3>
+                        <p class="card-snippet">${data.snippet}</p>
+                    </div>
+                    ${data.image ? `
+                        <div class="card-image-side">
+                            <img src="${data.image}" alt="${data.title}">
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="card-expanded-content">
+                    <div class="content-wrapper">
+                        <div class="content">${data.content}</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="read-more-btn">Read full update <i data-lucide="chevron-right"></i></span>
+                </div>
             </div>
-            <div class="content">${p.content}</div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
     if (state.loadedCount === 0) state.feed.innerHTML = html;
     else state.feed.insertAdjacentHTML('beforeend', html);
@@ -398,8 +458,8 @@ async function loadAndRenderPosts(posts) {
             btn.onclick = loadMorePosts;
             document.querySelector('.announcements')?.appendChild(btn);
         }
-        btn.textContent = `Dopamine`;
-        btn.style.display = 'block';
+        btn.innerHTML = `<i data-lucide="zap"></i> Dopamine`;
+        btn.style.display = 'flex';
     }
 
     renderFinancialCharts();

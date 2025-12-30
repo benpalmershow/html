@@ -5,18 +5,19 @@ category: policy
 
 ## Noncitizen SNAP Participation: Massachusetts Overview
 
-In FY 2023, **68,000 noncitizens** participated in SNAP in Massachusetts—6.27% of the state's total SNAP population. Nationally, noncitizens represent 10.6% of all SNAP participants.
+In FY 2023, **68,000 eligible noncitizens** participated in SNAP in Massachusetts—6.27% of the state's total SNAP population. Nationally, eligible noncitizens (refugees, asylees, and other lawfully present noncitizens) represent 4.4% of all SNAP participants, while an additional 6.2% are naturalized citizens.
 
 ### Citizenship Status (National)
 
+**Noncitizens** are defined as "lawful permanent residents, refugees, asylees, those granted a stay of deportation, and undocumented individuals" (FY 2023 SNAP Characteristics Report, p. 43). Naturalized citizens are U.S. citizens and are not counted as noncitizens.
+
 | Category | Percentage | Number |
 |----------|-----------|--------|
-| Naturalized Citizens | 6.2% | 2.47M |
 | Refugees & Asylees | 1.1% | 434k |
 | Other Eligible Noncitizens | 3.3% | 1.33M |
-| **Total Noncitizens** | **10.6%** | **4.23M** |
+| **Total Eligible Noncitizens** | **4.4%** | **1.76M** |
 
-*Note: Undocumented immigrants are ineligible. Citizen children of noncitizens comprise an additional 6.2% of participants.*
+*Note: Undocumented immigrants are ineligible for SNAP. Citizen children of noncitizens comprise an additional 6.2% of participants. Naturalized citizens (6.2%, 2.47M) are separate—they are U.S. citizens.*
 
 ### Age Distribution
 

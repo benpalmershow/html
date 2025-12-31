@@ -151,6 +151,8 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
+    padding-right: var(--spacing-sm);
+    box-sizing: border-box;
 }
 
 .announcement-card.expanded .card-expanded-content {
@@ -281,6 +283,8 @@
     .card-expanded-content>.content-wrapper {
         padding: 0;
         min-width: 0;
+        padding-right: var(--spacing-xs);
+        box-sizing: border-box;
     }
     
     .load-more-btn {

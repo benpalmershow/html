@@ -343,11 +343,28 @@ async function initPosts() {
     state.feed = document.getElementById('announcements-container');
     if (!state.feed) return;
 
-    // Card expansion logic
+    // Card expansion logic with enhanced UX
     state.feed.addEventListener('click', (e) => {
         const card = e.target.closest('.announcement-card');
         if (!card || e.target.closest('a, button')) return;
+        
+        // Close other cards for better focus
+        const allCards = state.feed.querySelectorAll('.announcement-card');
+        allCards.forEach(otherCard => {
+            if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                otherCard.classList.remove('expanded');
+            }
+        });
+        
+        // Toggle current card
         card.classList.toggle('expanded');
+        
+        // Smooth scroll to card if expanding
+        if (card.classList.contains('expanded')) {
+            setTimeout(() => {
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
     });
 
     await waitForMarked();
@@ -382,10 +399,12 @@ function extractCardData(html) {
     const img = temp.querySelector('img');
     const imageUrl = img ? img.src : '';
 
-    // Extract snippet (first paragraph text)
+    // Extract snippet (first paragraph text with improved truncation)
     const p = temp.querySelector('p');
     let snippet = p ? p.innerText.trim() : '';
-    if (snippet.length > 160) snippet = snippet.substring(0, 157) + '...';
+    if (snippet.length > 160) {
+        snippet = snippet.substring(0, 157).replace(/\s+\S*$/, '') + '...';
+    }
 
     return {
         title: title || 'Journal Update',
@@ -473,15 +492,27 @@ async function loadAndRenderPosts(posts) {
 async function loadMorePosts() {
     const btn = document.getElementById('load-more-btn');
     if (!btn) return;
+    
+    // Disable button and show loading state
     btn.disabled = true;
-    btn.textContent = 'Loading...';
+    btn.innerHTML = `<i data-lucide="loader-2" class="animate-spin"></i> Loading...`;
+    
+    // Re-render icons for loading state
+    if (window.initializeLucideIcons) window.initializeLucideIcons();
+    else if (window.lucide?.createIcons) window.lucide.createIcons();
 
     const next = state.allPosts.slice(state.loadedCount, state.loadedCount + CONFIG.BATCH_SIZE);
     await loadAndRenderPosts(next);
 
     btn.disabled = false;
-    if (state.loadedCount >= state.allPosts.length) btn.style.display = 'none';
-    else btn.textContent = 'Dopamine';
+    if (state.loadedCount >= state.allPosts.length) {
+        btn.style.display = 'none';
+    } else {
+        btn.innerHTML = `<i data-lucide="zap"></i> Dopamine`;
+        // Re-render icons after content load
+        if (window.initializeLucideIcons) window.initializeLucideIcons();
+        else if (window.lucide?.createIcons) window.lucide.createIcons();
+    }
 }
 
 // Init

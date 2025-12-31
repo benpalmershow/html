@@ -29,11 +29,17 @@
     position: relative;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.3);
-    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15);
+    padding: var(--spacing-lg) 0 var(--spacing-xl) 0;
     cursor: pointer;
-    transition: all 0.4s var(--ease-out-expo);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow: hidden;
+    border-radius: 0;
+}
+
+.announcement-card:hover {
+    transform: translateX(4px);
+    border-bottom-color: rgba(var(--accent-primary-rgb), 0.3);
 }
 
 .announcement-card:last-child {
@@ -78,38 +84,47 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin: 0 0 var(--spacing-xs) 0;
+    margin: 0 0 var(--spacing-sm) 0;
     line-height: 1.2;
-    transition: color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    letter-spacing: -0.02em;
 }
 
 .announcement-card:hover .card-title {
     color: var(--accent-primary);
+    transform: translateY(-1px);
 }
 
 .card-snippet {
     font-family: var(--font-body);
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--text-secondary);
     margin: 0;
-    opacity: 0.85;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.announcement-card:hover .card-snippet {
+    opacity: 1;
 }
 
 .card-image-side {
     width: 120px;
     height: 120px;
     flex-shrink: 0;
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
-    filter: grayscale(20%);
-    transition: all 0.5s var(--ease-out-expo);
+    filter: grayscale(10%);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background: var(--bg-secondary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .announcement-card:hover .card-image-side {
     filter: grayscale(0%);
-    transform: scale(1.02);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(var(--accent-primary-rgb), 0.15);
 }
 
 .card-image-side img {
@@ -155,14 +170,15 @@
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--accent-primary);
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
-    transition: gap 0.3s ease;
+    gap: 6px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
 }
 
 .announcement-card:hover .read-more-btn {
-    gap: 8px;
+    gap: 10px;
 }
 
 .announcement-card.expanded .read-more-btn {
@@ -223,18 +239,38 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+    .announcements {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .announcements-container {
+        padding: 0 var(--spacing-sm);
+        gap: var(--spacing-lg);
+    }
+
     .card-main {
         flex-direction: column-reverse;
+        gap: var(--spacing-md);
     }
 
     .card-image-side {
         width: 100%;
         height: 200px;
+        border-radius: 6px;
     }
 
     .card-title {
         font-size: 1.25rem;
         margin-top: var(--spacing-sm);
+    }
+
+    .card-snippet {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .announcement-card:hover {
+        transform: none; /* Remove horizontal slide on mobile */
     }
 
     .announcement-card.expanded .card-expanded-content {
@@ -245,6 +281,44 @@
     .card-expanded-content>.content-wrapper {
         padding: 0;
         min-width: 0;
+    }
+    
+    .load-more-btn {
+        margin: var(--spacing-lg) auto;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: 0.85rem;
+    }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .announcements {
+        max-width: 900px;
+    }
+    
+    .card-image-side {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .card-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .announcements {
+        max-width: 900px;
+    }
+    
+    .card-image-side {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .card-title {
+        font-size: 1.6rem;
     }
 }
 

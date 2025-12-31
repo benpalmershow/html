@@ -1,7 +1,19 @@
 ---
-date: 2025-12-29T12:00:00
+date: 2025-12-31T12:00:00
 category: policy
 ---
+
+**Updated: December 31, 2025**
+
+### New Soda Restrictions Effective January 1, 2026
+
+Starting tomorrow, January 1, 2026, new SNAP retailer compliance policies will implement stricter restrictions on soda purchases.[^10] The updated USDA Food and Nutrition Service guidelines prohibit the purchase of:
+
+- Carbonated soft drinks with added sugars
+- Energy drinks with added sweeteners
+- Sweetened bottled teas and fruit drinks
+
+Retailers must update point-of-sale systems to block these transactions, and states face increased compliance monitoring under the retailer compliance policies established in the latest guidance.[^10]
 
 ## Noncitizen SNAP Participation
 
@@ -68,12 +80,14 @@ The One Big Beautiful Bill (OBBB) has eliminated standalone eligibility for refu
 
 [^4]: *Ibid.* (FY 2023 SNAP Characteristics Report, p. 43).
 
-[^5]: *Ibid.* (Table B.17, p. 110).
+[^5]: *Ibid.* (Table 3.6, p. 30).
 
-[^6]: *Ibid.* (pp. 110-112). 
+[^6]: *Ibid.* (Table B.17, p. 110).
 
-[^7]: USDA Food and Nutrition Service, [*SNAP Provisions of the One Big Beautiful Bill Act of 2025 – Information Memorandum*](https://www.fns.usda.gov/snap/obbb-implementation), "Sec. 10105 Matching Funds Requirements" (September 4, 2025). States with error rates of 6–<8% pay 5%; 8–<10% pay 10%; ≥10% pay 15% of SNAP benefits beginning FY 2028.
+[^7]: One Big Beautiful Bill, H.R. 2, 118th Cong. § 101 (2023).
 
-[^8]: USDA Food and Nutrition Service, [*FY 2024 SNAP Quality Control Payment Error Rates*](https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy24QC-PER.pdf) (June 30, 2025).
+[^8]: USDA Food and Nutrition Service, [*FY 2023 SNAP State Activity Report*](https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-sar-fy23.pdf) (Table 4.1, p. 45).
 
-[^9]: USDA Food and Nutrition Service, [*SNAP Alien Eligibility Questions & Answers*](https://www.fns.usda.gov/snap/obbb-alien-eligibility-qas1).
+[^9]: One Big Beautiful Bill, H.R. 2, 118th Cong. §§ 102-103 (2023).
+
+[^10]: USDA Food and Nutrition Service, [*SNAP Food Restriction Waivers: Retailer Compliance Policies*](https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-foodrestrictionwaivers-retailer-compliance-policies.pdf) (December 31, 2025).

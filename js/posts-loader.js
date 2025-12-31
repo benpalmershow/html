@@ -165,7 +165,7 @@ function getChartConfig(indicator, labels, dataPoints) {
 function getBaseOptions(indicator) {
     return {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         layout: { padding: { bottom: 20 } },
         plugins: {
             legend: { display: true },

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2025-12-30T17:56:00Z",
+    "lastUpdated": "2025-12-31T17:56:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -298,16 +298,17 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Case-Shiller National Home Price Index",
-            "lastUpdated": "2025-11-25T14:00:00Z",
+            "lastUpdated": "2025-12-31T14:00:00Z",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
-            "march": "327.746",
-            "april": "329.909",
-            "may": "331.450",
-            "june": "331.671",
-            "july": "330.978",
-            "august": "329.822",
-            "september":"328.938",
+            "march": "327.747",
+            "april": "329.915",
+            "may": "331.439",
+            "june": "331.627",
+            "july": "330.986",
+            "august": "329.885",
+            "september":"328.978",
+            "october":"328.442",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },

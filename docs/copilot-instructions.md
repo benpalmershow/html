@@ -118,6 +118,7 @@ If you want, I can append a few real `json/financials-data.json` objects from th
 - Post format: markdown files in `article/posts/` must have YAML frontmatter with `date: YYYY-MM-DDTHH:MM:SS` (ISO) — `posts-loader.js` relies on that.
 - Component usage: reusable fragments live in `components/` and are referenced inline in HTML; prefer updating `components/*` for shared UI changes (header, footer, analytics snippets).
 - Assets & cache: critical CSS is preloaded in HTML (see `index.html`), and `sw.js` manages offline caching — be conservative changing cache keys.
+- **Internal linking to financials categories**: Use query parameter method: `financials.html?filter=CategoryName` (e.g., `financials.html?filter=Commodities`, `financials.html?filter=Housing%20Market`). Spaces encoded as `%20`, ampersands as `%26`. The page auto-filters and activates the filter button. **Prefer this over hash anchors**—it's the established pattern.
 
 **Integration Points & External Dependencies**
 - CDN libs: `marked`, `Chart.js`, `lucide` loaded via CDNs in HTML — script loaders in `index.html` and `js/*` expect them to be globally available.

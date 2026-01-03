@@ -6,7 +6,7 @@
    ========================================= */
 
 const CONFIG = {
-    INITIAL_LOAD: 3,
+    INITIAL_LOAD: 8,
     BATCH_SIZE: 10,
     POSTS_JSON_URL: 'json/posts.json'
 };

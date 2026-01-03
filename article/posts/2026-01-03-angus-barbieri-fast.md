@@ -2,7 +2,7 @@
 date: 2026-01-03T10:00:00
 ---
 
-### <i data-lucide='home' class='post-icon'></i> **The Longest Fast: Angus Barbieri's 382-Day Record**
+### <i data-lucide='pizza' class='post-icon'></i> **The Longest Fast: Angus Barbieri's 382-Day Record**
 
 In 1965, a Scottish man named Angus Barbieri checked into a hospital and stopped eating solid food for 382 consecutive days. Starting at 456 pounds, he survived on only vitamins, electrolytes, tea, coffee, and sparkling water before breaking his fast on July 11, 1966, with a boiled egg and buttered bread - a moment captured by newspaper photographers waiting to document the event.
 

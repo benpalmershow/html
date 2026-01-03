@@ -12,8 +12,11 @@ All 50 states receive first-year awards averaging $200 million to strengthen rur
 - **Average**: $200M per state
 
 **Sample State Awards:**
+- Alaska: $272.2M (second highest)
 - California: $233.6M
+- New York: $212.1M
 - Massachusetts: $162.0M
+- Rhode Island: $156.2M
 
 **Funding Applications:**
 - 50% distributed equally to all states ($5B)

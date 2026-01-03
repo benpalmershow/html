@@ -50,16 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <p class="cta-subtext">You could go to NPR and learn about sauces, captions, and uncertainty, or you could come here and read about things that actually affect your life.</p>
             </div>
           </div>
-          <div class="cta-button">
-             <a href="#bmc-link" class="cta-icon-wrapper">
-               <i data-lucide="coffee" style="width: 2rem; height: 2rem;"></i>
-             </a>
-            <div class="cta-text-wrapper">
-              <span>Help Keep This Site Running</span>
-              <p class="cta-subtext">Independent journalism requires support. Every dollar donated helps us continue delivering unfiltered analysis and cutting through the noise. Consider buying me a coffee in the footer—your contribution directly funds more quality content.</p>
-            </div>
+
           </div>
-         </div>
       </section>
     </div>
     <!-- First-time visitor hints -->

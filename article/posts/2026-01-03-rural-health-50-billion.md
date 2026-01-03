@@ -2,7 +2,7 @@
 date: 2026-01-03T10:00:00
 ---
 
-### <i data-lucide='building-2' class='post-icon'></i> **CMS Awards $50B Rural Health Transformation**
+### <i data-lucide='heart-handshake' class='post-icon'></i> **CMS Awards $50B Rural Health Transformation**
 
 All 50 states receive first-year awards averaging $200 million to strengthen rural healthcare access, workforce, and infrastructure. The five-year program distributes $10 billion annually through 2030.
 

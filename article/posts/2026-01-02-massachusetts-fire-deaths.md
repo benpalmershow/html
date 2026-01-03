@@ -2,7 +2,7 @@
 date: 2026-01-03T00:00:00
 ---
 
-### <i data-lucide='alert-circle' class='post-icon'></i> **Massachusetts Fire Deaths Drop 12% in 2025**
+### <i data-lucide='flame' class='post-icon'></i> **Massachusetts Fire Deaths Drop 12% in 2025**
 
 Massachusetts recorded 44 fire deaths in 2025, a decline from 50 in 2024. More than 90% of fatalities occurred at home, with seniors aged 65+ accounting for 55% of victims despite representing just 17% of the population.
 

@@ -4,7 +4,7 @@ date: 2025-12-18T23:30:00Z
 
 ###  **War, Reparations, and Dying**
 
-## <i data-lucide='shield' class='post-icon'></i> Build Ships
+## <i data-lucide='ship' class='post-icon'></i> Build Ships
 
 Congress's annual defense authorization includes $30.96 billion ($20.84 billion requested). The DDG–51 destroyer program receives $6.34 billion in hull construction plus $5.40 billion additional for "workforce and shipyard enhancements".
 

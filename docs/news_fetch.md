@@ -80,7 +80,24 @@ When a claim provides a numerator but not the denominator (e.g., "68,000 nonciti
 - Example citation: "Bureau of Labor Statistics, *Employment Situation Summary, 2024* (Table A-1, p. 5)."
 - For SEC filings and other HTML documents: Cite the filing date, section name, and paragraph or table reference if pages are not numbered (e.g., "Navan S-1/A Filing, October 10, 2025, Prospectus Summary, Offering Structure table").
 
-## 5. Tone and Communication
+## 5. Link Verification
+
+**Before publishing any article or post:**
+
+- **Test all links.** Do not include URLs that return 404, redirect to error pages, or require login without disclosure.
+- **Verify link accessibility.** If a government PDF, court opinion, or resource is linked, confirm it loads correctly.
+- **Disclose inaccessible sources.** If a source exists but is currently inaccessible, state: "This source is referenced in the complaint but the direct link is currently unavailable."
+- **Prefer primary sources.** Link directly to official PDFs (Supreme Court opinions, SEC filings, government reports) rather than secondary summaries.
+- **No broken links in publication.** If a link doesn't work, remove it or replace it with a working alternative.
+
+**Special note on Supreme Court opinions:**
+- Supreme Court PDFs at supremecourt.gov may not be immediately available or may use different URL patterns.
+- If linking to SCOTUS opinions, verify the link works before publishing. If unavailable, cite the case by name and citation (e.g., "Sheetz v. County of El Dorado, 601 U.S. 267 (2024)") without a link rather than including a broken URL.
+- Consider alternative sources like Google Scholar (scholar.google.com) for legal opinions, but only if they provide reliable, stable links.
+
+---
+
+## 6. Tone and Communication
 
 - No checkmarks (✅/❌).
 - No "Key Highlights" boxes.

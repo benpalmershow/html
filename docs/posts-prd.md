@@ -118,6 +118,41 @@ Calculate and display month-over-month changes:
 - Connect to broader economic theme or market context
 - Avoid repeating raw data
 
+### Legal and Constitutional Topics
+
+For posts covering legal disputes, constitutional questions, or court cases:
+
+```markdown
+### <i data-lucide='gavel' class='post-icon'></i> **Case Title: Core Question**
+
+1-2 sentence narrative describing the case and core constitutional issue.
+
+**The Legal Framework:**
+
+Relevant constitutional text and legal principles. Cite specific amendments or statutes. Explain the legal doctrine at stake (e.g., unconstitutional conditions doctrine, takings clause).
+
+**The Facts:**
+
+What the case is about. Who is suing whom. What specific ordinance or policy is challenged.
+
+**Why It Matters:**
+
+Implications for precedent, policy nationwide, property rights, or government power.
+
+**Resources:**
+
+- [Case complaint/filing](link) - Primary source
+- [Relevant statute or ordinance](link) - Text of challenged law
+- [Foundational case law](reference) - Cite by case name and citation if link unavailable
+```
+
+**Guidelines for Legal Posts:**
+- Always link to primary sources (complaints, ordinances, court filings)
+- Include constitutional text or statute citations with exact wording
+- Test all links to court documents and official sources before publishing
+- If Supreme Court opinion links are unavailable, cite by case name, citation number, and year rather than including broken links
+- Explain legal doctrines (nexus, proportionality, takings clause) in plain language
+
 ### 13F Filings Updates
 For posts announcing new 13F filing data:
 
@@ -238,7 +273,11 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] Icon matches content category
 - [ ] Title is clear and specific
 - [ ] Description is 2-3 sentences, narrative-driven
-- [ ] All links work and point to correct locations
+- [ ] **All links tested and working** - No 404s, broken redirects, or inaccessible URLs
+- [ ] If linking to court opinions/government docs, verify primary source is accessible
+- [ ] Legal posts include Resources section with primary sources (complaints, ordinances)
+- [ ] Legal posts cite constitutional text or statute with exact wording
+- [ ] Legal posts explain legal doctrines (nexus, proportionality, etc.) in plain language
 - [ ] Media posts include cover images with proper styling
 - [ ] Financial posts include MoM % calculations
 - [ ] 13F posts include firm counts, AUM totals, and filing dates

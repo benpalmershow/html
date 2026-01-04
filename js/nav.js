@@ -126,27 +126,143 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${type}-90-100`;
   };
 
-  // CTA Modal toggle
+  // Advanced popover management
+  class PopoverManager {
+    constructor(toggleBtn, popoverEl, options = {}) {
+      this.toggleBtn = toggleBtn;
+      this.popoverEl = popoverEl;
+      this.isOpen = false;
+      this.options = {
+        closeOnClickOutside: options.closeOnClickOutside !== false,
+        closeOnEscape: options.closeOnEscape !== false,
+        returnFocusOnClose: options.returnFocusOnClose !== false,
+        animationDuration: options.animationDuration || 300,
+        ...options
+      };
+      this.init();
+    }
+
+    init() {
+      // Setup ARIA attributes
+      this.toggleBtn.setAttribute('aria-haspopup', 'dialog');
+      this.toggleBtn.setAttribute('aria-expanded', 'false');
+      this.popoverEl.setAttribute('role', 'dialog');
+      this.popoverEl.setAttribute('aria-modal', 'true');
+
+      // Setup event listeners
+      this.toggleBtn.addEventListener('click', () => this.toggle());
+      
+      if (this.options.closeOnEscape) {
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && this.isOpen) {
+            this.close();
+          }
+        });
+      }
+
+      if (this.options.closeOnClickOutside) {
+        document.addEventListener('click', (e) => {
+          if (this.isOpen && 
+              !this.popoverEl.contains(e.target) && 
+              !this.toggleBtn.contains(e.target)) {
+            this.close();
+          }
+        });
+      }
+
+      // Trap focus within popover (Level 3)
+      this.popoverEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          this.handleTabKey(e);
+        }
+      });
+    }
+
+    handleTabKey(e) {
+      const focusableElements = this.popoverEl.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (e.shiftKey) {
+        if (activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+
+    open() {
+      if (this.isOpen) return;
+      
+      this.popoverEl.style.display = 'block';
+      
+      // Trigger animation via classList for smooth transitions
+      requestAnimationFrame(() => {
+        this.popoverEl.classList.add('popover-open');
+      });
+
+      this.toggleBtn.setAttribute('aria-expanded', 'true');
+      this.popoverEl.removeAttribute('inert');
+      this.isOpen = true;
+
+      // Focus first interactive element
+      const firstFocusable = this.popoverEl.querySelector(
+        'button:not(.popover-close), [href], input, select, textarea'
+      );
+      if (firstFocusable) {
+        requestAnimationFrame(() => firstFocusable.focus());
+      }
+    }
+
+    close() {
+      if (!this.isOpen) return;
+
+      this.popoverEl.classList.remove('popover-open');
+      
+      // Wait for animation to complete before hiding
+      setTimeout(() => {
+        this.popoverEl.style.display = 'none';
+        this.popoverEl.setAttribute('inert', '');
+      }, this.options.animationDuration);
+
+      this.toggleBtn.setAttribute('aria-expanded', 'false');
+      this.isOpen = false;
+
+      // Return focus to trigger button
+      if (this.options.returnFocusOnClose) {
+        this.toggleBtn.focus();
+      }
+    }
+
+    toggle() {
+      this.isOpen ? this.close() : this.open();
+    }
+  }
+
+  // CTA Modal toggle - enhanced with PopoverManager
   const setupCtaModal = () => {
     const ctaToggle = document.getElementById('cta-toggle');
     const ctaModal = document.getElementById('cta-modal');
     if (!ctaToggle || !ctaModal) return;
 
-    ctaToggle.addEventListener('click', () => {
-      const isOpen = ctaModal.style.display === 'block';
-      ctaModal.style.display = isOpen ? 'none' : 'block';
-      ctaModal.classList.toggle('active', !isOpen);
-      ctaModal.toggleAttribute('inert', isOpen);
-
-      if (!isOpen) {
-        // initializeTinyDashboard removed
-      }
+    const ctaPopover = new PopoverManager(ctaToggle, ctaModal, {
+      closeOnClickOutside: true,
+      closeOnEscape: true,
+      returnFocusOnClose: true
     });
 
     const closeCtaModal = () => {
-      ctaModal.style.display = 'none';
-      ctaModal.classList.remove('active');
-      ctaModal.setAttribute('inert', '');
+      ctaPopover.close();
       localStorage.setItem('ctaDismissed', 'true');
     };
 
@@ -157,29 +273,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupCtaModal();
 
-  // Hints toggle
+  // Hints toggle - enhanced with PopoverManager
   const setupHintsModal = () => {
     const hintsToggle = document.getElementById('hints-toggle');
     const visitorHints = document.getElementById('visitor-hints');
     if (!hintsToggle || !visitorHints) return;
 
+    const hintsPopover = new PopoverManager(hintsToggle, visitorHints, {
+      closeOnClickOutside: true,
+      closeOnEscape: true,
+      returnFocusOnClose: true
+    });
+
     const closeHints = () => {
-      visitorHints.style.display = 'none';
-      visitorHints.classList.remove('active');
-      visitorHints.setAttribute('inert', '');
+      hintsPopover.close();
       localStorage.setItem('hintsShown', 'true');
     };
-
-    const openHints = () => {
-      visitorHints.style.display = 'block';
-      visitorHints.classList.add('active');
-      visitorHints.removeAttribute('inert');
-    };
-
-    hintsToggle.addEventListener('click', () => {
-      const isHidden = visitorHints.style.display === 'none' || visitorHints.style.display === '';
-      isHidden ? openHints() : closeHints();
-    });
 
     const hintOverlay = visitorHints.querySelector('.hint-overlay');
     const hintCloseX = visitorHints.querySelector('.hint-close-btn');

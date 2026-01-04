@@ -3,6 +3,31 @@
     --nav-z-index: 5000;
     --nav-overlay-z-index: 5500;
     --nav-modal-z-index: 6000;
+    --popover-transition-duration: 300ms;
+    --popover-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Popover Animations */
+@keyframes popover-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes popover-fade-out {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(-8px);
+    }
 }
 
 /* Base Navigation */
@@ -116,7 +141,15 @@
     pointer-events: none;
 }
 
-.cta-modal.active { pointer-events: auto; }
+.cta-modal.popover-open { pointer-events: auto; }
+
+.cta-modal.popover-open .cta-container {
+    animation: popover-fade-in var(--popover-transition-duration) var(--popover-easing) forwards;
+}
+
+.cta-modal:not(.popover-open) .cta-container {
+    animation: popover-fade-out var(--popover-transition-duration) var(--popover-easing) forwards;
+}
 
 .cta-modal-overlay {
     position: absolute;
@@ -131,7 +164,7 @@
 .cta-modal .cta-container {
     position: relative;
     background: var(--bg-primary, #fdf6e8);
-    border: 1px solid var(--border-color, #e0dcc4);
+    border: none;
     border-radius: 0.5rem;
     padding: 1rem;
     max-width: 450px;
@@ -139,13 +172,12 @@
     margin-left: auto;
     margin-right: 1rem;
     box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.2);
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: transform 0.2s ease;
     contain: layout style;
     z-index: calc(var(--nav-overlay-z-index) + 1);
 }
 
 .cta-container:hover {
-    border-color: var(--color-secondary, #d4822a);
     transform: translateY(-2px);
 }
 
@@ -222,7 +254,15 @@
     pointer-events: none;
 }
 
-.visitor-hints.active { pointer-events: auto; }
+.visitor-hints.popover-open { pointer-events: auto; }
+
+.visitor-hints.popover-open .hint-content {
+    animation: popover-fade-in var(--popover-transition-duration) var(--popover-easing) forwards;
+}
+
+.visitor-hints:not(.popover-open) .hint-content {
+    animation: popover-fade-out var(--popover-transition-duration) var(--popover-easing) forwards;
+}
 
 .hint-overlay {
     position: absolute;
@@ -324,3 +364,23 @@
 }
 
 .hint-close-btn-action:hover { background: var(--accent-primary, #2c5f5a); }
+
+/* Popover Accessibility */
+.cta-modal[role="dialog"]:focus-within .cta-container,
+.visitor-hints[role="dialog"]:focus-within .hint-content {
+    box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.2), 
+                0 0 0 3px var(--color-primary, #2c5f5a);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--color-primary, #2c5f5a);
+    outline-offset: 2px;
+}
+
+/* Enhanced button focus for icon buttons */
+.cta-icon-btn:focus-visible, 
+.hints-icon-btn:focus-visible {
+    outline: 2px solid var(--color-primary, #2c5f5a);
+    outline-offset: 2px;
+    border-color: var(--color-primary, #2c5f5a);
+}

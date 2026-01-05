@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-01-01T17:56:00Z",
+    "lastUpdated": "2026-01-05T14:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -180,6 +180,28 @@
             "PHI_win_odds": "57¢",
             "LAC_win_odds": "45¢",
             "explanation": "NFL game prediction market showing the probability of the Eagles covering the spread against the Chargers. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "Venezuela Head of State 2026",
+            "lastUpdated": "2026-01-05T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://kalshi.com/markets/kxvenezuelaleader/who-will-be-the-head-of-state-of-venezuela-on-date/kxvenezuelaleader-26dec31",
+            "polymarket_url": "https://polymarket.com/event/venezuela-leader-end-of-2026?tid=1767649814502",
+            "candidates": {
+                "Delcy Rodríguez": "42¢",
+                "Edmundo González": "22¢",
+                "María Corina Machado": "18¢",
+                "Vladimir Padrino López": "6¢",
+                "Nicolás Maduro": "5¢",
+                "No Head of State": "3¢",
+                "Diosdado Cabello Rondón": "1¢",
+                "Donald Trump": "1¢",
+                "Jorge Rodríguez": "1¢"
+            },
+            "change": "",
+            "explanation": "Prediction market odds for who will be the head of state of Venezuela on December 31, 2026. The market includes various Venezuelan political figures as potential leaders. Market resolves to Yes if the specified individual officially holds the position of head of state at the close of markets. Data aggregated from Kalshi and Polymarket platforms."
         },
         {
             "category": "Prediction Markets",

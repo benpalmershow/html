@@ -4,6 +4,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('FOMC') && indicator.bps_probabilities) return 'fomc';
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
+    if (indicator.name.includes('Venezuela') && indicator.candidates) return 'venezuela';
     return 'standard';
 }
 
@@ -37,6 +38,19 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
             });
             if (indicator.total_points) historyDataHtml += `<div class="data-row"><span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span></div>`;
             hasHistory = true;
+            break;
+
+        case 'venezuela':
+            if (indicator.candidates && typeof indicator.candidates === 'object') {
+                const candidateEntries = Object.entries(indicator.candidates);
+                if (candidateEntries.length > 0) {
+                    latestDataHtml += `<div class="latest-data-row"><span class="month-label">${candidateEntries[0][0]}:</span> <span class="month-value">${candidateEntries[0][1]}</span></div>`;
+                    for (let i = 1; i < candidateEntries.length; i++) {
+                        historyDataHtml += `<div class="data-row"><span class="month-label">${candidateEntries[i][0]}:</span> <span class="month-value">${candidateEntries[i][1]}</span></div>`;
+                    }
+                    hasHistory = candidateEntries.length > 1;
+                }
+            }
             break;
 
         case 'standard': {

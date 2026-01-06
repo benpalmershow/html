@@ -83,7 +83,7 @@ Always verify team abbreviations match correct team names:
 4. Ensure probabilities sum to approximately 100¢ (accounting for market fees)
 
 **Polymarket Odds Verification:**
-1. Visit the Polymarket URL (e.g., `https://polymarket.com/event/nfl-nyg-den-2025-10-19`)
+1. Visit the Polymarket URL (e.g., `https://polymarket.com/sports/nfl/games/week/1/nfl-nyg-den-2025-01-12`)
 2. Check the moneyline or spread probabilities
 3. Cross-reference with Kalshi odds for consistency
 4. Use Polymarket as backup if Kalshi data is unavailable
@@ -141,6 +141,102 @@ Always verify team abbreviations match correct team names:
 - [ ] JSON syntax valid
 - [ ] No duplicate games
 - [ ] Cross-reference market URL title with entered team data
+
+---
+
+### FOMC Rate Decision Prediction Updates
+
+#### Step 0: Identify Next FOMC Meeting Date
+**Process:**
+1. Visit Federal Reserve calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendar.htm
+2. Identify next scheduled FOMC meeting date (typically every 6-8 weeks)
+3. Confirm meeting date is within 2-8 weeks for active prediction markets
+4. Note the decision announcement date (usually 2:00 PM ET on final day of meeting)
+
+#### Step 1: Research FOMC Decision Markets
+**Data Sources (in priority order):**
+1. **Kalshi** - FOMC rate decision markets with probability of rate cuts/hikes
+   - Markets typically available 6-8 weeks before meeting
+   - Format: `kxfomc-[DATE][DECISION]` (e.g., `kxfomc-25jan29cut`)
+2. **Polymarket** - FOMC prediction markets with alternative outcome probabilities
+   - Cross-reference probabilities with Kalshi
+   - More reliably available than specialized sites
+3. **Federal Reserve websites** - Official meeting schedules and historical decisions
+
+**Rate Decision Options:**
+- Rate Cut (e.g., 0.25% cut)
+- Rate Hold (no change)
+- Rate Hike (e.g., 0.25% increase)
+- Markets may split outcomes by basis point increments
+
+#### Step 2: Verify FOMC Decision Probabilities
+**CRITICAL: Always verify actual odds from live market data before updating JSON**
+
+**Kalshi FOMC Verification:**
+1. Visit the Kalshi FOMC market URL
+2. Check probability percentages for each outcome (Cut/Hold/Hike)
+3. Record exact probabilities as they appear (e.g., "68¢" for 68% probability)
+4. Verify probabilities roughly sum to 100¢
+
+**Polymarket FOMC Verification:**
+1. Visit the Polymarket FOMC event page
+2. Cross-reference outcome probabilities
+3. Use as backup if Kalshi data unavailable
+4. Document any significant probability divergences (>5¢)
+
+**Odds Update Timing:**
+- Update probabilities 2-4 weeks before FOMC meeting
+- Re-check within 7 days of meeting for significant changes
+- Lock odds 24 hours before announcement
+
+#### Step 3: Update JSON Structure
+**FOMC Prediction Market Template:**
+```json
+{
+    "category": "Prediction Markets",
+    "agency": "Kalshi",
+    "name": "FOMC Rate Decision - [DATE]",
+    "meeting_date": "[Month Day, Year]",
+    "announcement_time": "2:00 PM ET",
+    "announcement_time_iso": "[YYYY-MM-DDTHH:MM:SS-04:00]",
+    "url": "[KALSHI_FOMC_URL]",
+    "polymarket_url": "[POLYMARKET_FOMC_URL]",
+    "rate_cut_odds": "[ODDS]¢",
+    "rate_hold_odds": "[ODDS]¢",
+    "rate_hike_odds": "[ODDS]¢",
+    "explanation": "Federal Reserve interest rate decision prediction market. Odds reflect market probability of the FOMC cutting, holding, or raising the federal funds rate at the [DATE] meeting. Market expectations incorporate inflation data, employment reports, and Fed forward guidance."
+}
+```
+
+**Field Requirements:**
+- `name`: Format "FOMC Rate Decision - [MONTH YEAR]" (e.g., "FOMC Rate Decision - January 2026")
+- `meeting_date`: Human-readable format (e.g., "Jan 28-29, 2026")
+- `announcement_time`: Standard 2:00 PM ET for FOMC announcements
+- `announcement_time_iso`: ISO 8601 format with correct date/time
+- `url`: Kalshi FOMC market URL
+- `polymarket_url`: Direct Polymarket FOMC event link
+- `rate_cut_odds`, `rate_hold_odds`, `rate_hike_odds`: Probabilities in cents format (e.g., "65¢")
+- `explanation`: Standard template with specific meeting date and rate context
+
+#### Step 4: Replace Expired FOMC Markets
+**Process:**
+1. Identify FOMC meetings that have already occurred (announcement_time_iso < current date)
+2. Remove completed FOMC decision markets
+3. Add new upcoming FOMC market with verified odds
+4. Update `lastUpdated` timestamp
+
+#### Step 5: Quality Verification
+**Before committing:**
+- [ ] Kalshi and Polymarket URLs functional
+- [ ] Probabilities verified from live market sources
+- [ ] Probabilities current (within 24 hours for imminent meetings)
+- [ ] Meeting date is in future
+- [ ] FOMC announcement time correct (2:00 PM ET)
+- [ ] Date format consistent with other markets
+- [ ] Outcome probabilities roughly sum to 100¢
+- [ ] JSON syntax valid
+- [ ] No duplicate FOMC entries
+- [ ] Explanation mentions correct meeting date
 
 ---
 

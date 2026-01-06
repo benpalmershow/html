@@ -1,7 +1,7 @@
 // Indicator card creation and rendering
 
 function detectIndicatorType(indicator) {
-    if (indicator.name.includes('FOMC') && indicator.bps_probabilities) return 'fomc';
+    if (indicator.name.includes('FOMC') || (indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds)) return 'fomc';
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.name.includes('Venezuela') && indicator.candidates) return 'venezuela';
@@ -15,11 +15,11 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 
     switch (type) {
         case 'fomc':
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label">Next Meeting:</span> <span class="month-value">${indicator.next_meeting || ''}</span></div>`;
-            Object.entries(indicator.bps_probabilities).forEach(([bps, prob]) => {
-                if (prob) historyDataHtml += `<div class="data-row"><span class="month-label">${bps}:</span> <span class="month-value">${prob}</span></div>`;
-            });
-            hasHistory = true;
+            if (indicator.meeting_date) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span></div>`;
+            if (indicator.rate_hold_odds) historyDataHtml += `<div class="data-row"><span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span></div>`;
+            if (indicator.rate_cut_odds) historyDataHtml += `<div class="data-row"><span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span></div>`;
+            if (indicator.rate_hike_odds) historyDataHtml += `<div class="data-row"><span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span></div>`;
+            hasHistory = !!(indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds);
             break;
 
         case 'recession':

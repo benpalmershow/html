@@ -326,6 +326,9 @@
     }
 }
 
+/* Table responsiveness - removed from announcement-cards to avoid conflicts */
+/* Tables are now styled in article.css with proper mobile responsiveness */
+
 /* Dark Mode Overrides for Translucency */
 html.dark-mode .announcement-card {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -334,4 +337,12 @@ html.dark-mode .announcement-card {
 html.dark-mode .load-more-btn {
     background: rgba(var(--color-dark-accent-primary-rgb), 0.05);
     border-color: rgba(var(--color-dark-accent-primary-rgb), 0.1);
+}
+
+html.dark-mode .table-wrapper {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .table-wrapper th {
+    background: rgba(255, 255, 255, 0.05);
 }

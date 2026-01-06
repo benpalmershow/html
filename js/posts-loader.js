@@ -120,6 +120,14 @@ function wrapImagesInLinks(html) {
     });
 }
 
+function wrapTablesForMobile(html) {
+    // Wrap all tables in a responsive wrapper div
+    const tableRegex = /<table([^>]*)>([\s\S]*?)<\/table>/g;
+    return html.replace(tableRegex, (match) => {
+        return `<div class="table-wrapper">${match}</div>`;
+    });
+}
+
 function waitForMarked() {
     return new Promise(resolve => {
         if (window.marked) return resolve();
@@ -424,6 +432,7 @@ async function loadAndRenderPosts(posts) {
         let content = await parseMarkdownFile(post.file);
         if (content.includes('{{chart:')) content = processCharts(content);
         content = wrapImagesInLinks(content);
+        content = wrapTablesForMobile(content);
         return { ...post, rawContent: content };
     }));
 

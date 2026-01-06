@@ -21,6 +21,23 @@ The 72-injection figure for 2024 includes multiple recurring doses: annual influ
 | Meningococcal B/ACWY | ~1-2 | 0 |
 | **Total** | **~72** | **~36** |
 
+*Note: The 2026 total of ~36 represents only the core routine vaccines. Non-core vaccines (influenza, COVID-19, etc.) remain available but are no longer routinely recommended, reducing the standard schedule by approximately 50% while maintaining access for individual clinical decisions.*
+
+**Core Vaccine Dose Breakdown (2026 Schedule):**
+
+The 11 core vaccines require multiple doses over childhood:
+
+- **DTaP (Diphtheria/Tetanus/Pertussis)**: 5 doses
+- **Hib (Haemophilus influenzae type b)**: 4 doses
+- **Pneumococcal**: 4 doses
+- **Polio (IPV)**: 4 doses
+- **MMR (Measles/Mumps/Rubella)**: 2 doses
+- **Varicella (Chickenpox)**: 2 doses
+- **HPV (Human Papillomavirus)**: 1 dose
+- **Total: ~22 core doses**
+
+The ~36 figure includes slight scheduling variations and potential catch-up doses.
+
 **Schedule Comparison:**
 
 | # | Disease/Vaccine | 2024 | 2026 |

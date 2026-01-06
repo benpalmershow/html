@@ -46,7 +46,7 @@ The January meeting comes after December's 25-basis-point cut, with policymakers
 
 ---
 
-### <i data-lucide='football' class='post-icon'></i> **NFL Playoff Odds**
+### <i data-lucide='trophy' class='post-icon'></i> **NFL Playoff Odds**
 
 Early playoff prediction markets show mixed confidence across six key games, from heavy favorites to statistical tossups.
 

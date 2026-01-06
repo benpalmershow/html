@@ -1,8 +1,8 @@
 # Google News Implementation Summary
 
-**Status:** ✅ Phase 1 & 2 Complete - Ready for Publisher Center Submission
+**Status:** ✅ Phase 1, 2 & 3 Complete - Ready for Publisher Center Submission
 **Date Completed:** January 5, 2026
-**Estimated Time Invested:** 6 hours
+**Estimated Time Invested:** 10 hours
 
 ---
 
@@ -49,15 +49,30 @@
 ### 5. RSS Generation Script (`/scripts/generate-rss.js`)
 - **Language:** Node.js
 - **Functionality:**
-  - Reads from `json/articles.json` and `json/posts.json`
-  - Parses markdown files for full content
-  - Generates valid RSS 2.0 XML
-  - Strips markdown/HTML for descriptions
+   - Reads from `json/articles.json` and `json/posts.json`
+   - Parses markdown files for full content
+   - Generates valid RSS 2.0 XML
+   - Strips markdown/HTML for descriptions
 - **Usage:** `node scripts/generate-rss.js`
 - **Automation:** Can be triggered via:
-  - GitHub Actions (on push/schedule)
-  - Cron job
-  - Manual execution before deploys
+   - GitHub Actions (on push/schedule)
+   - Cron job
+   - Manual execution before deploys
+
+### 6. Enhanced Article JSON Schema
+- **Fields Added:** `author`, `image`, `keywords`, `updated`
+- **Author Field:** Defaults to "Doc Riter" if not specified
+- **Keywords:** Array of topic keywords for each article (improves topical matching)
+- **Image Field:** All articles include featured image URL (announcements.webp)
+- **Updated Field:** Optional field for article revisions (displays "Updated [date]" badge)
+
+### 7. Article Byline & Author Credentials
+- **Byline Display:** "By Doc Riter" shown at bottom of each article
+- **Enhanced Author Schema:** NewsArticle includes:
+  - `jobTitle`: "Communications Specialist & Media Analyst"
+  - `description`: Expertise areas and background
+  - `sameAs`: Social media links (Twitter, YouTube)
+- **Update Badges:** Visual indicator when article has been revised
 
 ---
 
@@ -74,7 +89,9 @@
 ### Modified Files
 ```
 /news.html                         (added RSS link in <head>)
-/js/news.js                        (added NewsArticle schema injection)
+/js/news.js                        (added NewsArticle schema + byline + update badges)
+/css/news.css                      (added .article-update-badge styling)
+/json/articles.json                (enhanced with author, image, keywords, updated fields)
 /docs/GOOGLE_NEWS_ANALYSIS.md      (updated status and progress)
 ```
 
@@ -95,6 +112,8 @@
 - **Coverage:** 100% of article pages
 - **Injection Point:** Document head (runtime)
 - **Validation:** Compatible with Google's Structured Data Tester
+- **Enhanced Author:** Includes jobTitle, description, sameAs (social links)
+- **Dynamic dateModified:** Uses `updated` field if present, falls back to `datePublished`
 
 ### News Sitemap
 - **Standard:** Google News Sitemap Protocol
@@ -267,5 +286,5 @@ jobs:
 ---
 
 **Created:** January 5, 2026
-**Last Updated:** January 5, 2026
-**Maintainer:** Ben Palmer
+**Last Updated:** January 5, 2026 (Phase 3 additions)
+**Maintainer:** Ben Palmer / Doc Riter

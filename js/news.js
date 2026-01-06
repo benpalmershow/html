@@ -187,11 +187,17 @@
             "description": article.metadata.summary || "",
             "image": article.metadata.image || "https://howdystranger.net/images/logo-1200x630.webp",
             "datePublished": article.metadata.date ? new Date(article.metadata.date).toISOString() : new Date().toISOString(),
-            "dateModified": article.metadata.updated ? new Date(article.metadata.updated).toISOString() : new Date(article.metadata.date).toISOString(),
+            "dateModified": article.metadata.updated ? new Date(article.metadata.updated).toISOString() : (article.metadata.date ? new Date(article.metadata.date).toISOString() : new Date().toISOString()),
             "author": {
                 "@type": "Person",
                 "name": "Doc Riter",
-                "url": "https://howdystranger.net"
+                "url": "https://howdystranger.net",
+                "jobTitle": "Communications Specialist & Media Analyst",
+                "description": "Communications specialist with expertise in legal analysis, policy research, and financial markets",
+                "sameAs": [
+                    "https://twitter.com/DocRiter",
+                    "https://www.youtube.com/@benpalmershow"
+                ]
             },
             "publisher": {
                 "@type": "Organization",
@@ -266,7 +272,11 @@
         // Create and insert meta header with proper styling
         metaEl = document.createElement('div');
         metaEl.classList.add('article-meta-header');
-        let metaHtml = `<span class="article-date">${formatDate(article.metadata.date)}</span>`;
+        let metaHtml = `<span class="article-date">${formatDate(article.metadata.date)}`;
+        if (article.metadata.updated && article.metadata.updated !== article.metadata.date) {
+            metaHtml += ` <span class="article-update-badge">Updated ${formatDate(article.metadata.updated)}</span>`;
+        }
+        metaHtml += `</span>`;
         if (article.metadata.ticker) {
             metaHtml += `<span class="article-ticker"><strong>Ticker:</strong> <a href="https://www.perplexity.ai/finance/${article.metadata.ticker}" target="_blank">${article.metadata.ticker}</a></span>`;
         }

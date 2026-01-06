@@ -1807,6 +1807,18 @@ table td {
     font-weight: 500;
 }
 
+.article-update-badge {
+    display: inline-block;
+    margin-left: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--logo-teal);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.75em;
+    font-weight: 600;
+    font-style: normal;
+}
+
 .article-ticker {
     color: var(--text-secondary);
     display: flex;

@@ -27,13 +27,13 @@ The 72-injection figure for 2024 includes multiple recurring doses: annual influ
 
 The 11 core vaccines require multiple doses over childhood:
 
-- **DTaP (Diphtheria/Tetanus/Pertussis)**: 5 doses
-- **Hib (Haemophilus influenzae type b)**: 4 doses
-- **Pneumococcal**: 4 doses
-- **Polio (IPV)**: 4 doses
-- **MMR (Measles/Mumps/Rubella)**: 2 doses
-- **Varicella (Chickenpox)**: 2 doses
-- **HPV (Human Papillomavirus)**: 1 dose
+- **[DTaP (Diphtheria/Tetanus/Pertussis)](https://en.wikipedia.org/wiki/DTaP_vaccine)**: 5 doses
+- **[Hib (Haemophilus influenzae type b)](https://en.wikipedia.org/wiki/Haemophilus_influenzae_vaccine)**: 4 doses
+- **[Pneumococcal](https://en.wikipedia.org/wiki/Pneumococcal_vaccine)**: 4 doses
+- **[Polio (IPV)](https://en.wikipedia.org/wiki/Polio_vaccine)**: 4 doses
+- **[MMR (Measles/Mumps/Rubella)](https://en.wikipedia.org/wiki/MMR_vaccine)**: 2 doses
+- **[Varicella (Chickenpox)](https://en.wikipedia.org/wiki/Varicella_vaccine)**: 2 doses
+- **[HPV (Human Papillomavirus)](https://en.wikipedia.org/wiki/HPV_vaccine)**: 1 dose
 - **Total: ~22 core doses**
 
 The ~36 figure includes slight scheduling variations and potential catch-up doses.

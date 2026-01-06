@@ -22,9 +22,9 @@ Prediction markets see near-certainty the Federal Reserve holds rates steady at 
     </div>
     <div style="display: flex; align-items: center; margin-bottom: 2px;">
       <span style="width: 60px; font-weight: 500;">Cut</span>
-      <div style="flex: 1; background: #2a4a3a; height: 24px; border-radius: 3px; margin: 0 8px; overflow: hidden;">
+      <div style="flex: 1; background: #2a4a3a; height: 24px; border-radius: 3px; margin: 0 8px; overflow: visible;">
         <div style="background: #6b8cdb; height: 100%; width: 11%; display: flex; align-items: center; padding-right: 4px; justify-content: flex-end;">
-          <span style="color: white; font-weight: 600; font-size: 12px;">11%</span>
+          <span style="color: white; font-weight: 600; font-size: 12px; white-space: nowrap;">11%</span>
         </div>
       </div>
     </div>

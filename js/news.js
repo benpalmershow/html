@@ -176,7 +176,8 @@
             return;
         }
 
-        container.innerHTML = `<div class="article-wrapper">${article.html}</div>`;
+        const authorByline = `<div class="article-author-byline">By ${article.metadata.author || 'Doc Riter'}</div>`;
+        container.innerHTML = `<div class="article-wrapper">${article.html}${authorByline}</div>`;
 
         // Inject NewsArticle schema for Google News
         const newsArticleSchema = {
@@ -189,7 +190,7 @@
             "dateModified": article.metadata.updated ? new Date(article.metadata.updated).toISOString() : new Date(article.metadata.date).toISOString(),
             "author": {
                 "@type": "Person",
-                "name": "Ben Palmer",
+                "name": "Doc Riter",
                 "url": "https://howdystranger.net"
             },
             "publisher": {

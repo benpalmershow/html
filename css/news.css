@@ -1792,6 +1792,15 @@ table td {
     font-size: 0.9em;
 }
 
+.article-author-byline {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
 .article-date {
     color: var(--text-muted);
     font-style: italic;

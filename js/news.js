@@ -178,6 +178,37 @@
 
         container.innerHTML = `<div class="article-wrapper">${article.html}</div>`;
 
+        // Inject NewsArticle schema for Google News
+        const newsArticleSchema = {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "headline": article.metadata.title || "Article",
+            "description": article.metadata.summary || "",
+            "image": article.metadata.image || "https://howdystranger.net/images/logo-1200x630.webp",
+            "datePublished": article.metadata.date ? new Date(article.metadata.date).toISOString() : new Date().toISOString(),
+            "dateModified": article.metadata.updated ? new Date(article.metadata.updated).toISOString() : new Date(article.metadata.date).toISOString(),
+            "author": {
+                "@type": "Person",
+                "name": "Ben Palmer",
+                "url": "https://howdystranger.net"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Howdy, Stranger",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://howdystranger.net/images/logo-1200x630.webp"
+                }
+            },
+            "articleSection": article.metadata.category || "General",
+            "articleBody": article.metadata.summary || ""
+        };
+
+        const schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.textContent = JSON.stringify(newsArticleSchema);
+        document.head.appendChild(schemaScript);
+
         // Execute scripts in article content
         const scripts = container.querySelectorAll('script');
         scripts.forEach(script => {

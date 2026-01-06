@@ -56,11 +56,16 @@ date: 2025-11-22T10:50:00
 - **Media**: `media.html#slug-name`
 - **News articles & Analysis**: `news.html?article=slug` (for full articles in `article/` folder)
 - **Journal**: `journal.html#entry-slug`
-- **Filters**: `financials.html?filter=Category%20Name`
+- **Financials with category filter**: `financials.html?filter=Category%20Name` - Activates the category filter when page loads
+  - Examples: `financials.html?filter=Prediction%20Markets`, `financials.html?filter=Consumer%20Indicators`, `financials.html?filter=Employment%20Indicators`, `financials.html?filter=Housing%20Market`
+- **Financials with anchor**: `financials.html#latest-13f-filings` - Links to specific section (e.g., 13F Holdings)
 - **Tickers**: `https://finance.yahoo.com/quote/TICKER` with `target="_blank" rel="noopener"`
 - **External**: Always include `target="_blank" rel="noopener"`
 
 Link text for articles should be: `[Read the full analysis](news.html?article=slug)`
+
+**Financials Links Best Practice:**
+Always use `?filter=Category%20Name` to activate category filtering on page load, making the relevant indicators immediately visible without user interaction. Replace spaces with `%20`. Common categories: Prediction Markets, Consumer Indicators, Employment Indicators, Business Indicators, Housing Market, Trade & Tariffs, Commodities.
 
 ### Multi-Topic Posts
 Separate distinct sections with `---` (horizontal rule) and give each its own icon/title. Include charts for each financial/data-driven section:

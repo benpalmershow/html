@@ -22,9 +22,7 @@ This represents a fundamental shift in utility pricing philosophy - from market-
 
 December private employment reached 134,588,000, representing continued stability in the private job market as the year closed.
 
-**Latest Data:**
-- **December Private Employment**: 134,588,000
-- **November**: 134,547,000 (+41,000 MoM)
+- **December**: 134,588,000 (+41,000 MoM)
 
 {{chart:Private Employment}}
 
@@ -39,9 +37,7 @@ The steady addition reflects ongoing business hiring despite economic uncertaint
 
 Job openings fell to 7,146,000 in November, reflecting a tightening in available positions as employers moderate hiring demands.
 
-**Latest Data:**
-- **November Job Openings**: 7,146,000
-- **October**: 7,449,000 (-303,000 MoM, -4.1%)
+- **November**: 7,146,000 (-303,000 MoM, -4.1%)
 
 {{chart:Job Openings}}
 
@@ -56,10 +52,7 @@ The decline suggests employers are becoming more selective in filling positions.
 
 December Services PMI surged to 54.4, marking the strongest reading since October and signaling robust expansion in the services sector as year-end activity accelerated.
 
-**Latest Data:**
-- **December Services PMI**: 54.4
-- **November**: 52.6 (+1.8 points MoM)
-- **October**: 52.4
+- **December**: 54.4 (+1.8 points MoM)
 
 {{chart:Services PMI}}
 

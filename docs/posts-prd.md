@@ -105,9 +105,8 @@ Include these sections for indicator releases:
 
 1-2 sentence narrative opening.
 
-**Latest Data:**
-- **Metric 1**: October Value (+X.X% MoM)
-- **Metric 2**: September Value (-X.X% MoM)
+- **Month**: Value (+X.X% MoM)
+
 What the numbers mean in 1-2 sentences. Include broader context.
 
 {{chart:Indicator Name}}

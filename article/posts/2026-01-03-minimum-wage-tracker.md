@@ -31,6 +31,9 @@ Alaska, Arizona, Colorado, Connecticut, Florida, Maine, Michigan, Minnesota, Mon
 | Massachusetts | $15.00 |
 | Maine | $15.10 |
 | Vermont | $14.42 |
+| Seattle | $21.30 |
+
+
 
 68 localities - concentrated in California, New York, and Washington - have set their own minimum wages, creating a patchwork that mirrors regional cost-of-living differences. From Seattle and San Francisco to New York City, local floors climb well above state minimums, reflecting regional cost-of-living pressures.
 

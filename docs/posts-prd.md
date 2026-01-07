@@ -4,38 +4,41 @@
 
 Posts provide a chronological feed of updates across the site. Each post is a markdown file with YAML frontmatter in `article/posts/`, registered in `json/posts.json`.
 
-**Structure:**
-```json
-{
-  "date": "2025-11-22T10:50:00",
-  "file": "article/posts/2025-11-22-consumer-sentiment-final.md"
-}
-```
-
 ---
 
-## Post Format
+## Required Elements (ALL Posts)
 
-### Frontmatter
-```markdown
+Every post must have:
+
+1. **YAML Frontmatter** - Date in ISO format
+   ```markdown
+   ---
+   date: 2025-11-22T10:50:00
+   ---
+   ```
+
+2. **Icon + Title** - Lucide icon and descriptive title
+   ```markdown
+   ### <i data-lucide='icon-name' class='post-icon'></i> **Title**
+   ```
+
+3. **Description** - 1-2 sentences, narrative-driven (not dry analysis)
+
+4. **Data/Sections** - Relevant information with proper formatting
+
+5. **Chart** - If post contains metrics, indicators, or quantitative data (see Charts section)
+
+6. **Navigation Link** - Link to relevant page with proper anchor/filter
+
+7. **Registration** - Entry in `json/posts.json` with correct date and file path
+   ```json
+   {
+     "date": "2025-11-22T10:50:00",
+     "file": "article/posts/2025-11-22-consumer-sentiment-final.md"
+   }
+   ```
+
 ---
-date: 2025-11-22T10:50:00
----
-```
-
-### Content Structure
-```markdown
-### **Bold Title**
-
-1-2 sentence description capturing the story/narrative.
-
-[Optional sections with data/links]
-
-[View details](link)
-```
-
----
-
 
 ## Formatting Standards
 
@@ -196,7 +199,18 @@ For posts announcing new 13F filing data:
 ## Charts
 
 ### When to Include
-Include charts always
+
+**MANDATORY for all updates.** Every post section that references data, metrics, or indicators must include a chart.
+
+Examples:
+- Employment data (ADP, JOLTS, unemployment, etc.)
+- Economic indicators (PMI, sentiment, housing, commodities)
+- Market data (Treasury yields, inflation, GDP, etc.)
+- Budget/fiscal data (tax revenue, deficit, debt levels)
+- Any quantitative metric or indicator
+
+Do not publish posts without charts for data-driven content.
+
 ### Implementation
 Use template syntax only:
 ```markdown
@@ -206,13 +220,17 @@ Use template syntax only:
 **Requirements:**
 - Indicator name must exactly match `name` field in `financials-data.json`
 - Post must have YAML frontmatter with `date` field
-- Place chart after Synopsis and Latest Revisions
+- Place chart after data section and synopsis
 - Place chart before final navigation link
+- One chart per section in multi-topic posts
 
 ### Valid Chart Examples
 - ✓ 10-Year Treasury Yield (9 months)
 - ✓ Consumer Sentiment (6+ months showing decline)
 - ✓ Manufacturing PMI (6+ months)
+- ✓ Private Employment
+- ✓ Job Openings
+- ✓ Services PMI
 ---
 
 ## Examples
@@ -275,23 +293,46 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 
 ## Checklist Before Publishing
 
-- [ ] Icon matches content category
-- [ ] Title is clear and specific
-- [ ] Description is 2-3 sentences, narrative-driven
-- [ ] **All links tested and working** - No 404s, broken redirects, or inaccessible URLs
-- [ ] If linking to court opinions/government docs, verify primary source is accessible
-- [ ] Legal posts include Resources section with primary sources (complaints, ordinances)
-- [ ] Legal posts cite constitutional text or statute with exact wording
-- [ ] Legal posts explain legal doctrines (nexus, proportionality, etc.) in plain language
-- [ ] Media posts include cover images with proper styling
-- [ ] Financial posts include MoM % calculations
-- [ ] 13F posts include firm counts, AUM totals, and filing dates
-- [ ] Charts use template syntax `{{chart:Name}}`
-- [ ] Chart indicator name exactly matches financials-data.json
+### Required Elements
+- [ ] YAML frontmatter with ISO date
+- [ ] Lucide icon with `post-icon` class
+- [ ] Clear, specific title
+- [ ] Description: 1-2 sentences, narrative-driven (not "Analysis of X")
+- [ ] Relevant data/sections with proper formatting
+- [ ] Chart with template syntax `{{chart:Name}}` (if data-driven)
+- [ ] Navigation link with proper anchor/filter
+- [ ] Post registered in json/posts.json
+
+### Content Quality
 - [ ] No emojis (use Lucide icons instead)
-- [ ] Post registered in json/posts.json with correct date/file
+- [ ] All links tested and working (no 404s, redirects, or inaccessible URLs)
 - [ ] HTML is valid and properly formatted
 - [ ] Tested on mobile
+- [ ] No em dashes (—) in prose; use hyphens (-) instead
+- [ ] Avoid "It's not X, it's Y" inversion pattern
+
+### Type-Specific Requirements
+
+**Financial/Economic Posts:**
+- [ ] Chart indicator name exactly matches `name` field in financials-data.json
+- [ ] MoM % calculations included
+- [ ] Synopsis explains what numbers mean
+
+**Media Posts:**
+- [ ] Cover images included with correct styling
+- [ ] Images float left with `margin-right: 10px`
+- [ ] Images wrapped in anchor tags to media.html#slug
+
+**Legal Posts:**
+- [ ] Resources section with primary sources (complaints, ordinances)
+- [ ] Constitutional text or statute citations with exact wording
+- [ ] Legal doctrines (nexus, proportionality) explained in plain language
+- [ ] Primary source links verified before publishing
+
+**13F Posts:**
+- [ ] Firm counts and AUM totals included
+- [ ] Filing dates included
+- [ ] Technical improvements described
 
 ---
 

@@ -354,7 +354,7 @@ async function initPosts() {
     // Card expansion logic with enhanced UX
     state.feed.addEventListener('click', (e) => {
         const card = e.target.closest('.announcement-card');
-        if (!card || e.target.closest('a, button')) return;
+        if (!card || e.target.closest('a, button, canvas, .card-expanded-content')) return;
         
         // Close other cards for better focus
         const allCards = state.feed.querySelectorAll('.announcement-card');

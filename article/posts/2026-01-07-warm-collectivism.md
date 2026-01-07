@@ -26,6 +26,9 @@ December private employment reached 134,588,000, representing continued stabilit
 - **December Private Employment**: 134,588,000
 - **November**: 134,547,000 (+41,000 MoM)
 
+{{chart:Private Employment}}
+
+
 The steady addition reflects ongoing business hiring despite economic uncertainty. Employment gains remain relatively flat month-to-month, suggesting a labor market at equilibrium without significant acceleration or deterioration.
 
 [View employment indicators](financials.html?filter=Employment%20Indicators)
@@ -39,6 +42,9 @@ Job openings fell to 7,146,000 in November, reflecting a tightening in available
 **Latest Data:**
 - **November Job Openings**: 7,146,000
 - **October**: 7,449,000 (-303,000 MoM, -4.1%)
+
+{{chart:Job Openings}}
+
 
 The decline suggests employers are becoming more selective in filling positions. Labor market tightness continues to ease, creating a more balanced dynamic between job seekers and available opportunities after years of intense worker shortages.
 
@@ -54,6 +60,9 @@ December Services PMI surged to 54.4, marking the strongest reading since Octobe
 - **December Services PMI**: 54.4
 - **November**: 52.6 (+1.8 points MoM)
 - **October**: 52.4
+
+{{chart:Services PMI}}
+
 
 The sharp uptick indicates strong business activity, new orders, and employment in services. A reading above 50 signals expansion, and December's level reflects healthy consumer spending and business confidence heading into 2026.
 

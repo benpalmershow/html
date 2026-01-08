@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-01-07T20:30:00Z",
+    "lastUpdated": "2026-01-08T20:30:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -479,6 +479,8 @@
             "october":"$38,040,093,786,521.02",
             "november":"$38,360,841,844,745.79",
             "december":"$38,339,541,810,902.33",
+            "january2026":"$38,430,410,089,259.84",
+
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."
         },
@@ -505,35 +507,39 @@
             "category": "Trade & Tariffs",
             "agency": "Census",
             "name": "Trade Deficit",
-            "lastUpdated": "2025-12-10T14:00:00Z",
-            "releaseDay": 5,
+            "lastUpdated": "2026-01-08T14:00:00Z",
+            "releaseDay": 8,
             "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
             "march": "$136.4B",
-            "april": "$60.2B",
-            "may": "$71.1B",
-            "june": "$59.1B",
-            "july": "$78.2B",
-            "august": "$59.3B",
-            "september":"$52.8B",
+            "april": "$60.574B",
+            "may": "$71.052B",
+            "june": "$58.185B",
+            "july": "$74.399B",
+            "august": "$55.629B",
+            "september":"$48.137B",
+            "october":"$29.350B",
             "change": "",
             "explanation": "The difference between the value of a country's imports and exports of goods and services. A trade deficit occurs when imports exceed exports. The U.S. has run persistent trade deficits since the 1970s, reflecting strong consumer demand and the dollar's role as the global reserve currency. The trade balance is influenced by exchange rates, economic growth differentials, and trade policies. While a trade deficit can indicate economic strength (strong consumer demand), persistent large deficits may raise concerns about domestic manufacturing and job losses in certain sectors.",
             "imports": {
                 "march": "$420.0B",
-                "april": "$352.0B",
-                "may": "$351.5B",
-                "june": "$338.7B",
-                "july": "$358.8B",
-                "august": "$340.2B",
-                "september":"$342.1B"
+                "april": "$352,083B",
+                "may": "$351,457B",
+                "june": "$338,704B",
+                "july": "$358,321B",
+                "august": "$339,690B",
+                "september":"$342,363B",
+                "october":"$331,366B"
+                
             },
             "exports": {
                 "march": "$283.6B",
-                "april": "$291.8B",
-                "may": "$280.4B",
-                "june": "$279.7B",
-                "july": "$281.6B",
-                "august": "$280.9B",
-                "september":"$289.3B"
+                "april": "$291,509B",
+                "may": "$280,405B",
+                "june": "$280,519B",
+                "july": "$283,923B",
+                "august": "$284,060B",
+                "september":"$294,225B",
+                "october":"$302,015B"
             }
         },
         {

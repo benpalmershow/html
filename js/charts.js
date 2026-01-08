@@ -184,102 +184,179 @@ function initializeChartInOverlay(chartConfig, canvas) {
 }
 
 function getChartConfig(indicatorName, indices) {
-    const indicatorData = indices.find(item => item.name.trim().toLowerCase() === indicatorName.trim().toLowerCase());
-    if (!indicatorData) return null;
+     const indicatorData = indices.find(item => item.name.trim().toLowerCase() === indicatorName.trim().toLowerCase());
+     if (!indicatorData) return null;
 
-    const labels = [];
-    const values = [];
+     // Find year-nested data (keys that are numeric/year-like)
+     const yearKeys = Object.keys(indicatorData)
+         .filter(key => /^\d{4}$/.test(key))
+         .map(key => parseInt(key))
+         .sort((a, b) => b - a); // Sort years descending
 
-    // Check if this is Trade Deficit with imports/exports data
-    if (indicatorName === 'Trade Deficit' && indicatorData.imports && indicatorData.exports) {
-        const importValues = [];
-        const exportValues = [];
-        const deficitValues = [];
+     const labels = [];
+     const values = [];
 
-        MONTHS.forEach((month, index) => {
-            const importValue = indicatorData.imports[month];
-            const exportValue = indicatorData.exports[month];
-            const deficitValue = indicatorData[month];
+     // Check if this is Trade Deficit with imports/exports data
+     if (indicatorName === 'Trade Deficit' && indicatorData.imports && indicatorData.exports) {
+         const importValues = [];
+         const exportValues = [];
+         const deficitValues = [];
 
-            if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-                const numImport = extractNumericValue(importValue);
-                const numExport = extractNumericValue(exportValue);
-                const numDeficit = extractNumericValue(deficitValue);
+         // Iterate through year-nested data first (in reverse chronological order)
+         for (const year of yearKeys) {
+             const yearData = indicatorData[year];
+             MONTHS.forEach((month, index) => {
+                 const importValue = yearData.imports && yearData.imports[month];
+                 const exportValue = yearData.exports && yearData.exports[month];
+                 const deficitValue = yearData[month];
 
-                if (numImport !== null && numExport !== null && numDeficit !== null) {
-                    labels.push(MONTH_LABELS[index]);
-                    importValues.push(numImport);
-                    exportValues.push(numExport);
-                    deficitValues.push(numDeficit);
-                }
-            }
-        });
+                 if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+                     const numImport = extractNumericValue(importValue);
+                     const numExport = extractNumericValue(exportValue);
+                     const numDeficit = extractNumericValue(deficitValue);
 
-        const data = {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Imports',
-                    data: importValues,
-                    type: 'bar',
-                    backgroundColor: 'rgba(255, 107, 107, 0.7)',
-                    borderColor: '#FF6B6B',
-                    borderWidth: 1,
-                    yAxisID: 'y'
-                },
-                {
-                    label: 'Exports',
-                    data: exportValues,
-                    type: 'bar',
-                    backgroundColor: 'rgba(81, 207, 102, 0.7)',
-                    borderColor: '#51CF66',
-                    borderWidth: 1,
-                    yAxisID: 'y'
-                },
-                {
-                    label: 'Trade Deficit',
-                    data: deficitValues,
-                    type: 'line',
-                    borderColor: '#2C5F5A',
-                    backgroundColor: 'transparent',
-                    borderWidth: 2.5,
-                    tension: 0.4,
-                    fill: false,
-                    yAxisID: 'y1',
-                    pointBackgroundColor: '#2C5F5A',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 1.5,
-                    pointRadius: 4
-                }
-            ]
-        };
+                     if (numImport !== null && numExport !== null && numDeficit !== null) {
+                         labels.push(MONTH_LABELS[index]);
+                         importValues.push(numImport);
+                         exportValues.push(numExport);
+                         deficitValues.push(numDeficit);
+                     }
+                 }
+             });
+         }
 
-        return { type: 'chartjs-mixed', data: data };
-    }
+         // Fall back to flat structure if no year-nested data
+         if (labels.length === 0) {
+             MONTHS.forEach((month, index) => {
+                 const importValue = indicatorData.imports[month];
+                 const exportValue = indicatorData.exports[month];
+                 const deficitValue = indicatorData[month];
 
-    // Standard single-line chart
-    MONTHS.forEach((month, index) => {
-        const value = indicatorData[month];
-        if (isValidData(value)) {
-            const numValue = extractNumericValue(value);
-            if (numValue !== null) {
-                labels.push(MONTH_LABELS[index]);
-                values.push(numValue);
-            }
-        }
-    });
+                 if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+                     const numImport = extractNumericValue(importValue);
+                     const numExport = extractNumericValue(exportValue);
+                     const numDeficit = extractNumericValue(deficitValue);
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: indicatorName,
-            data: values,
-            borderColor: '#2C5F5A',
-            backgroundColor: 'rgba(44, 95, 90, 0.1)',
-            tension: 0.4,
-            fill: true
-        }]
-    };
+                     if (numImport !== null && numExport !== null && numDeficit !== null) {
+                         labels.push(MONTH_LABELS[index]);
+                         importValues.push(numImport);
+                         exportValues.push(numExport);
+                         deficitValues.push(numDeficit);
+                     }
+                 }
+             });
+         }
 
-    return { type: 'chartjs', data: data };
-}
+         const data = {
+             labels: labels,
+             datasets: [
+                 {
+                     label: 'Imports',
+                     data: importValues,
+                     type: 'bar',
+                     backgroundColor: 'rgba(255, 107, 107, 0.7)',
+                     borderColor: '#FF6B6B',
+                     borderWidth: 1,
+                     yAxisID: 'y'
+                 },
+                 {
+                     label: 'Exports',
+                     data: exportValues,
+                     type: 'bar',
+                     backgroundColor: 'rgba(81, 207, 102, 0.7)',
+                     borderColor: '#51CF66',
+                     borderWidth: 1,
+                     yAxisID: 'y'
+                 },
+                 {
+                     label: 'Trade Deficit',
+                     data: deficitValues,
+                     type: 'line',
+                     borderColor: '#2C5F5A',
+                     backgroundColor: 'transparent',
+                     borderWidth: 2.5,
+                     tension: 0.4,
+                     fill: false,
+                     yAxisID: 'y1',
+                     pointBackgroundColor: '#2C5F5A',
+                     pointBorderColor: '#fff',
+                     pointBorderWidth: 1.5,
+                     pointRadius: 4
+                 }
+             ]
+         };
+
+         return { type: 'chartjs-mixed', data: data };
+     }
+
+     // Standard single-line chart
+     // Build map of all available data points (flat structure + year-nested)
+     const dataMap = {};
+     
+     // First add flat structure data
+     MONTHS.forEach((month, index) => {
+         const value = indicatorData[month];
+         if (isValidData(value)) {
+             const numValue = extractNumericValue(value);
+             if (numValue !== null) {
+                 dataMap[`${null}-${index}`] = {
+                     month: month,
+                     label: MONTH_LABELS[index],
+                     value: numValue,
+                     monthIndex: index,
+                     year: null
+                 };
+             }
+         }
+     });
+     
+     // Then add year-nested data (overwrites flat data for same month if present)
+     for (const year of yearKeys) {
+         const yearData = indicatorData[year];
+         MONTHS.forEach((month, index) => {
+             const value = yearData[month];
+             if (isValidData(value)) {
+                 const numValue = extractNumericValue(value);
+                 if (numValue !== null) {
+                     dataMap[`${year}-${index}`] = {
+                         month: month,
+                         label: MONTH_LABELS[index],
+                         value: numValue,
+                         monthIndex: index,
+                         year: year
+                     };
+                 }
+             }
+         });
+     }
+     
+     // Sort by year ascending (older first), then by month index ascending (chronological order)
+     const sortedData = Object.values(dataMap).sort((a, b) => {
+         if (a.year !== b.year) {
+             const yearA = a.year !== null ? a.year : 2025; // Treat null as 2025
+             const yearB = b.year !== null ? b.year : 2025;
+             return yearA - yearB;
+         }
+         return a.monthIndex - b.monthIndex;
+     });
+     
+     // Build final labels and values arrays
+     sortedData.forEach(item => {
+         labels.push(item.label);
+         values.push(item.value);
+     });
+
+     const data = {
+         labels: labels,
+         datasets: [{
+             label: indicatorName,
+             data: values,
+             borderColor: '#2C5F5A',
+             backgroundColor: 'rgba(44, 95, 90, 0.1)',
+             tension: 0.4,
+             fill: true
+         }]
+     };
+
+     return { type: 'chartjs', data: data };
+ }

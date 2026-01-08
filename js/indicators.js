@@ -55,22 +55,56 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 
         case 'standard': {
             const availableData = [];
+            
+            // Find year-nested data (keys that are numeric/year-like)
+            const yearKeys = Object.keys(indicator)
+                .filter(key => /^\d{4}$/.test(key))
+                .map(key => parseInt(key))
+                .sort((a, b) => b - a); // Sort years descending
 
             // Collect all available data points
             MONTHS.forEach((month, index) => {
-                const value = indicator[month];
+                let value = null;
+                let year = null;
+                
+                // First check year-nested data in descending year order (newest first)
+                for (const yr of yearKeys) {
+                    if (indicator[yr] && indicator[yr][month] !== undefined) {
+                        value = indicator[yr][month];
+                        year = yr;
+                        break;
+                    }
+                }
+                
+                // Fall back to flat structure (e.g., indicator["january"])
+                if (value === null) {
+                    value = indicator[month];
+                    year = null;
+                }
+                
                 if (isValidData(value)) {
                     availableData.push({
                         month: month,
                         label: MONTH_LABELS[index],
                         value: value,
-                        index: index
+                        index: index,
+                        year: year
                     });
                 }
             });
 
-            // Sort by month index descending (latest first)
-            availableData.sort((a, b) => b.index - a.index);
+            // Sort by year descending (latest first), then by month index descending
+            availableData.sort((a, b) => {
+                // If both have year data, sort by year first
+                if (a.year !== null && b.year !== null) {
+                    if (a.year !== b.year) return b.year - a.year;
+                }
+                // If only one has year data, prioritize it (newer)
+                if (a.year !== null && b.year === null) return -1;
+                if (a.year === null && b.year !== null) return 1;
+                // Otherwise sort by month index
+                return b.index - a.index;
+            });
 
             if (availableData.length > 0) {
                 const latest = availableData[0];

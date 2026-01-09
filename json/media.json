@@ -1,5 +1,29 @@
 [
   {
+    "title": "JanCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "January 2026",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBfGQuH_muZLo2w1cWzY1Ay6"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/7zgp5j45q5BTikviSLR56y?si=Q4MG5HGnQK2m-qU-KoZUbg"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "dateAdded": "2026-01-08",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
     "title": "Food Intelligence",
     "author": "Julia Belluz and Kevin Hall, PhD",
     "category": "Health",

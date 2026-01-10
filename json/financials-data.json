@@ -24,7 +24,7 @@
             "category": "Consumer Indicators",
             "agency": "UMich",
             "name": "Consumer Sentiment",
-            "lastUpdated": "2025-12-19T15:00:00Z",
+            "lastUpdated": "2026-01-10T15:00:00Z",
             "releaseDay": 15,
             "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
@@ -37,6 +37,9 @@
             "october": "53.6",
             "november": "51",
             "december":"52.9",
+             "2026":{
+            "january":"54"},
+
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
         },
@@ -934,7 +937,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Total Nonfarm Employment",
-            "lastUpdated": "2025-12-16T15:00:00Z",
+            "lastUpdated": "2026-01-10T15:00:00Z",
             "releaseDay": 5,
             "url": "https://fred.stlouisfed.org/series/PAYEMS",
             "february": "159,155,000",
@@ -945,8 +948,9 @@
             "july": "159,511,000",
             "august": "159,485,000",
             "september":"159,593,000",
-            "october":"159,488,000",
-            "november":"159,552,000",
+            "october":"159,420,000",
+            "november":"159,476,000",
+            "december":"159,526,000",
             "change": "",
             "explanation": "The monthly change in nonfarm payroll employment, representing the net number of jobs added to the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. A consistent monthly addition of 100,000-150,000 jobs is typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
         },

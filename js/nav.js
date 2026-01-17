@@ -100,6 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <strong>Add to Home Screen:</strong> Tap the share icon and select "Add to Home Screen" for quick access
               </div>
               </div>
+              <div class="hint-step">
+               <i data-lucide="message-circle" style="width: 2rem; height: 2rem;"></i>
+              <div>
+                <strong>Contact Us:</strong> <a href="sms:+12019725637">201-972-5637 (2019PALMER)</a>
+              </div>
+              </div>
               <button class="hint-close-btn-action" id="hint-close-btn">Got it, thanks!</button>
               </div>
               </div>

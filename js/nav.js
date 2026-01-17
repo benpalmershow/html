@@ -92,6 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
                </div>
               </div>
               <div class="hint-step">
+                <i data-lucide="hand" style="width: 2rem; height: 2rem;"></i>
+               <div>
+                 <strong>Mobile Navigation:</strong> Swipe left or right to navigate between pages
+               </div>
+               </div>
+              <div class="hint-step">
+                <i data-lucide="expand" style="width: 2rem; height: 2rem;"></i>
+               <div>
+                 <strong>Expand Cards:</strong> Press <kbd style="background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace;">Enter</kbd> or click to expand, <kbd style="background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace;">Esc</kbd> to close
+               </div>
+               </div>
+              <div class="hint-step">
                <picture>
                  <source srcset="images/apple-touch-icon.webp" type="image/webp">
                  <img src="images/apple-touch-icon.webp" alt="Add to Home Screen" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
@@ -100,13 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <strong>Add to Home Screen:</strong> Tap the share icon and select "Add to Home Screen" for quick access
               </div>
               </div>
-              <div class="hint-step">
-               <i data-lucide="message-circle" style="width: 2rem; height: 2rem;"></i>
-              <div>
-                <strong>Contact Us:</strong> <a href="sms:+12019725637">201-972-5637 (2019PALMER)</a>
-              </div>
-              </div>
-              <button class="hint-close-btn-action" id="hint-close-btn">Got it, thanks!</button>
+                <div class="hint-step">
+                 <i data-lucide="message-circle" style="width: 2rem; height: 2rem;"></i>
+                <div>
+                  <strong>Contact Us:</strong> <a href="sms:+12019725637">201-972-5637 (2019PALMER)</a>
+                </div>
+                </div>
+                <button class="hint-close-btn-action" id="hint-close-btn">Got it, thanks!</button>
               </div>
               </div>
   `;

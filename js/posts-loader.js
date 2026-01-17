@@ -589,13 +589,7 @@ async function loadAndRenderPosts(posts) {
     }).join('');
 
     if (state.loadedCount === 0) {
-        // Add keyboard hints on first load
-        const hints = `
-            <div class="keyboard-hints" style="margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: rgba(44, 95, 90, 0.05); border-radius: 0.5rem; font-size: 0.875rem; color: #666; border-left: 3px solid #2C5F5A;">
-                <strong>💡 Tip:</strong> Press <kbd>Enter</kbd> or click to expand, <kbd>Esc</kbd> to close
-            </div>
-        `;
-        state.feed.innerHTML = hints + html;
+        state.feed.innerHTML = html;
     } else {
         state.feed.insertAdjacentHTML('beforeend', html);
     }

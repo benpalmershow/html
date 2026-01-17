@@ -207,33 +207,94 @@ function getBaseOptions(indicator) {
 }
 
 function getLineChartConfig(indicator, labels, dataPoints) {
-    const config = {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: indicator.name || 'Data',
-                data: dataPoints,
-                borderColor: CHART_COLORS.PRIMARY,
-                backgroundColor: CHART_COLORS.PRIMARY_FILL,
-                borderWidth: CHART_CONFIG.BORDER_WIDTH,
-                tension: CHART_CONFIG.TENSION,
-                fill: true,
-                pointBackgroundColor: CHART_COLORS.PRIMARY,
-                pointBorderColor: CHART_COLORS.PRIMARY,
-                pointRadius: 4,
-                pointHoverRadius: 6
-            }]
-        },
-        options: getBaseOptions(indicator)
-    };
+     // Extract year-nested data if available
+     const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+     const yearKeys = Object.keys(indicator)
+         .filter(key => /^\d{4}$/.test(key))
+         .map(key => parseInt(key))
+         .sort((a, b) => b - a); // Sort years descending
 
-    if (INDICATOR_CONFIGS[indicator.name]) {
-        const cfg = INDICATOR_CONFIGS[indicator.name];
-        config.options.scales.y.min = cfg.yMin;
-        config.options.scales.y.max = cfg.yMax;
-    }
-    return config;
+     // If year-nested data exists, rebuild dataPoints to include it
+     if (yearKeys.length > 0) {
+         const dataMap = {};
+         
+         // First add flat structure data
+         months.forEach((month, index) => {
+             const value = indicator[month];
+             if (value && value.toString().trim()) {
+                 const numValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
+                 if (!isNaN(numValue)) {
+                     dataMap[`${null}-${index}`] = {
+                         month: month,
+                         monthIndex: index,
+                         value: numValue,
+                         year: null
+                     };
+                 }
+             }
+         });
+         
+         // Then add year-nested data (overwrites flat data for same month if present)
+         for (const year of yearKeys) {
+             const yearData = indicator[year];
+             months.forEach((month, index) => {
+                 const value = yearData[month];
+                 if (value && value.toString().trim()) {
+                     const numValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
+                     if (!isNaN(numValue)) {
+                         dataMap[`${year}-${index}`] = {
+                             month: month,
+                             monthIndex: index,
+                             value: numValue,
+                             year: year
+                         };
+                     }
+                 }
+             });
+         }
+         
+         // Sort by year ascending (older first), then by month index ascending
+         const sortedData = Object.values(dataMap).sort((a, b) => {
+             if (a.year !== b.year) {
+                 const yearA = a.year !== null ? a.year : 2025;
+                 const yearB = b.year !== null ? b.year : 2025;
+                 return yearA - yearB;
+             }
+             return a.monthIndex - b.monthIndex;
+         });
+         
+         // Rebuild labels and dataPoints
+         labels = sortedData.map(item => item.month.slice(0, 3));
+         dataPoints = sortedData.map(item => item.value);
+     }
+
+     const config = {
+         type: 'line',
+         data: {
+             labels: labels,
+             datasets: [{
+                 label: indicator.name || 'Data',
+                 data: dataPoints,
+                 borderColor: CHART_COLORS.PRIMARY,
+                 backgroundColor: CHART_COLORS.PRIMARY_FILL,
+                 borderWidth: CHART_CONFIG.BORDER_WIDTH,
+                 tension: CHART_CONFIG.TENSION,
+                 fill: true,
+                 pointBackgroundColor: CHART_COLORS.PRIMARY,
+                 pointBorderColor: CHART_COLORS.PRIMARY,
+                 pointRadius: 4,
+                 pointHoverRadius: 6
+             }]
+         },
+         options: getBaseOptions(indicator)
+     };
+
+     if (INDICATOR_CONFIGS[indicator.name]) {
+         const cfg = INDICATOR_CONFIGS[indicator.name];
+         config.options.scales.y.min = cfg.yMin;
+         config.options.scales.y.max = cfg.yMax;
+     }
+     return config;
 }
 
 function getTradeDeficitConfig(indicator, labels, dataPoints) {
@@ -344,34 +405,87 @@ async function renderSingleChart(container) {
 let state = {
     feed: null,
     allPosts: [],
-    loadedCount: 0
+    loadedCount: 0,
+    expandingCard: null
 };
+
+function toggleCardExpanded(card) {
+    const isExpanding = !card.classList.contains('expanded');
+    
+    if (isExpanding) {
+        // Close other expanded cards
+        state.feed.querySelectorAll('.announcement-card.expanded').forEach(otherCard => {
+            if (otherCard !== card) collapseCard(otherCard);
+        });
+        
+        expandCard(card);
+    } else {
+        collapseCard(card);
+    }
+}
+
+function expandCard(card) {
+    if (state.expandingCard) return; // Prevent overlapping animations
+    state.expandingCard = card;
+    
+    card.classList.add('expanded');
+    card.setAttribute('aria-expanded', 'true');
+    
+    // Smooth scroll after a tick to let CSS transitions start
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            state.expandingCard = null;
+        }, 50);
+    });
+}
+
+function collapseCard(card) {
+    card.classList.remove('expanded');
+    card.setAttribute('aria-expanded', 'false');
+}
 
 async function initPosts() {
     state.feed = document.getElementById('announcements-container');
     if (!state.feed) return;
 
-    // Card expansion logic with enhanced UX
+    // Card expansion logic with improved UX & accessibility
     state.feed.addEventListener('click', (e) => {
         const card = e.target.closest('.announcement-card');
-        if (!card || e.target.closest('a, button, canvas, .card-expanded-content')) return;
+        if (!card) return;
+
+        // Allow closing by clicking interactive elements (links, buttons) inside expanded content
+        const isInteractive = e.target.closest('a, button, canvas');
+        const isExpandedContent = e.target.closest('.card-expanded-content');
         
-        // Close other cards for better focus
-        const allCards = state.feed.querySelectorAll('.announcement-card');
-        allCards.forEach(otherCard => {
-            if (otherCard !== card && otherCard.classList.contains('expanded')) {
-                otherCard.classList.remove('expanded');
+        // If clicking an interactive element anywhere, don't toggle
+        if (isInteractive) return;
+        
+        // If card is expanded and clicking in expanded content area (non-interactive), close it
+        if (card.classList.contains('expanded') && isExpandedContent) {
+            toggleCardExpanded(card);
+            return;
+        }
+        
+        // If clicking card header/snippet area, toggle
+        if (!isExpandedContent) {
+            toggleCardExpanded(card);
+        }
+    });
+
+    // Keyboard support: Escape to close, Enter to expand focused card
+    state.feed.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            // Close all expanded cards
+            state.feed.querySelectorAll('.announcement-card.expanded').forEach(card => {
+                collapseCard(card);
+            });
+        } else if (e.key === 'Enter') {
+            const card = e.target.closest('.announcement-card');
+            if (card && !e.target.closest('a, button, textarea')) {
+                e.preventDefault();
+                toggleCardExpanded(card);
             }
-        });
-        
-        // Toggle current card
-        card.classList.toggle('expanded');
-        
-        // Smooth scroll to card if expanding
-        if (card.classList.contains('expanded')) {
-            setTimeout(() => {
-                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
         }
     });
 
@@ -444,7 +558,7 @@ async function loadAndRenderPosts(posts) {
             `<i data-lucide="bookmark" class="card-icon"></i>`;
 
         return `
-            <div class="announcement-card ${data.image ? 'has-image' : ''}" data-date="${p.date}">
+            <div class="announcement-card ${data.image ? 'has-image' : ''}" data-date="${p.date}" tabindex="0" aria-expanded="false" role="button" title="Press Enter or click to expand, Escape to close" aria-label="${data.title} - Press Enter to expand">
                 <div class="card-header-row">
                     <div class="card-meta">
                         ${iconHtml}
@@ -474,8 +588,17 @@ async function loadAndRenderPosts(posts) {
         `;
     }).join('');
 
-    if (state.loadedCount === 0) state.feed.innerHTML = html;
-    else state.feed.insertAdjacentHTML('beforeend', html);
+    if (state.loadedCount === 0) {
+        // Add keyboard hints on first load
+        const hints = `
+            <div class="keyboard-hints" style="margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: rgba(44, 95, 90, 0.05); border-radius: 0.5rem; font-size: 0.875rem; color: #666; border-left: 3px solid #2C5F5A;">
+                <strong>💡 Tip:</strong> Press <kbd>Enter</kbd> or click to expand, <kbd>Esc</kbd> to close
+            </div>
+        `;
+        state.feed.innerHTML = hints + html;
+    } else {
+        state.feed.insertAdjacentHTML('beforeend', html);
+    }
 
     state.loadedCount += valid.length;
 

@@ -41,6 +41,7 @@ Existing Home Sales held steady at 4.35M in December, reflecting modest but stab
 
 **Lumber Futures:** $609 per 1,000 board feet in January 2026, stabilizing after December's $544 reading. The rebound suggests some recovery in construction expectations as the year begins.
 
+{{chart:Lumber Futures}}
 
 <a href="financials.html?filter=Commodities" target="_blank">View commodity prices</a>
 

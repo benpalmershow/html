@@ -26,4 +26,7 @@ Some have lived in abject poverty where "irremediable illnesses and persistent i
 
 - [New York's MAID Law](https://www.governor.ny.gov/news/governor-hochul-reaches-agreement-state-legislature-pass-medical-aid-dying-act-new-york)
 - [Canada's Expanding MAID Criteria](https://www.canada.ca/en/health-canada/services/medical-assistance-dying.html)
-[Read the journal entry](journal.html)
+
+---
+
+- [Read the journal entry](journal.html)

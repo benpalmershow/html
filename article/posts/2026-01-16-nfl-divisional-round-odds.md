@@ -9,6 +9,8 @@ Markets and economic indicators across multiple categories have been updated fol
 
 The 10-year Treasury yield continues to hover near 4.14%, unchanged from December. This benchmark remains crucial for determining mortgage rates and corporate borrowing costs across the economy.
 
+{{chart:10-yr Treasury Yield}}
+
 <a href="financials.html?filter=Government" target="_blank">View Treasury data</a>
 
 ---
@@ -19,6 +21,10 @@ Housing inventory continues to shift as homes spend increasingly longer on the m
 
 Existing Home Sales held steady at 4.35M in December, reflecting modest but stable activity heading into the new year. Days on market metrics suggest buyer patience is increasing as sellers adjust expectations in the current environment.
 
+{{chart:Number of Days on Market (Median)}}
+
+{{chart:Existing Home Sales}}
+
 <a href="financials.html?filter=Housing%20Market" target="_blank">View housing indicators</a>
 
 ---
@@ -27,9 +33,14 @@ Existing Home Sales held steady at 4.35M in December, reflecting modest but stab
 
 **WTI Crude Oil:** $57.97 per barrel as of January 16, continuing its downward trajectory from the $75.74 peak in January 2025. The year-over-year decline reflects weaker global demand and oversupply concerns.
 
+{{chart:WTI Crude Oil}}
+
 **Copper Futures:** $5.84 per pound, up from $5.54 in December. The metal's price movement continues to signal market expectations for industrial activity, particularly in China where economic conditions drive global demand.
 
+{{chart:Copper Futures}}
+
 **Lumber Futures:** $609 per 1,000 board feet in January 2026, stabilizing after December's $544 reading. The rebound suggests some recovery in construction expectations as the year begins.
+
 
 <a href="financials.html?filter=Commodities" target="_blank">View commodity prices</a>
 
@@ -39,6 +50,8 @@ Existing Home Sales held steady at 4.35M in December, reflecting modest but stab
 
 The Chicago Fed's Real-Time Unemployment Rate Forecast shows 4.56% for December, unchanged from November. This real-time estimate provides an early signal of labor market conditions before official BLS releases.
 
+{{chart:Real-Time Unemployment Rate Forecast}}
+
 <a href="financials.html?filter=Employment%20Indicators" target="_blank">View employment indicators</a>
 
 ---
@@ -46,6 +59,8 @@ The Chicago Fed's Real-Time Unemployment Rate Forecast shows 4.56% for December,
 ### <i data-lucide='ship' class='post-icon'></i> **Trade & Port Activity**
 
 Port of LA/Long Beach container volumes (TEUs) reflect ongoing trade patterns, with 782,249 TEUs handled in November. Container activity remains a critical barometer for supply chain health and consumer demand for imported goods.
+
+{{chart:20ft Equivalents (TEUs)}}
 
 <a href="financials.html?filter=Trade%20%26%20Tariffs" target="_blank">View trade indicators</a>
 
@@ -55,9 +70,15 @@ Port of LA/Long Beach container volumes (TEUs) reflect ongoing trade patterns, w
 
 **Treasury Debt:** The total outstanding federal debt stands at $38,430,410,089,259.84 as of January 16, 2026 - a cumulative reflection of years of budget deficits and economic stimulus. 
 
+{{chart:Treasury Debt Level}}
+
 **Interest on Debt:** Monthly interest payments represent a growing share of federal spending, with volatility tied to both debt levels and prevailing interest rates.
 
+{{chart:Interest on Debt}}
+
 **Tax Revenue & Budget Deficit:** Government finances continue to operate under structural imbalances, with monthly deficits fluctuating based on seasonal tax receipt patterns and spending cycles.
+
+{{chart:Monthly Budget Deficit}}
 
 <a href="financials.html?filter=Government" target="_blank">View fiscal data</a>
 
@@ -66,6 +87,8 @@ Port of LA/Long Beach container volumes (TEUs) reflect ongoing trade patterns, w
 ### <i data-lucide='users' class='post-icon'></i> **Southern Border Encounters**
 
 December 2025 saw 10,000 encounters along the Southwest border, continuing the pattern of monthly variation driven by seasonal migration, weather, and policy implementation.
+
+{{chart:Southern Border Encounters}}
 
 <a href="financials.html?filter=Government" target="_blank">View border data</a>
 

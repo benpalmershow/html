@@ -79,6 +79,15 @@
 - Use the most recently updated monthly numbers.
 - Use current month data available in JSON files; avoid missing recent monthly updates that have been saved.
 
+**Calculating Month-over-Month (MoM) Percentages:**
+- **Formula**: `((Current - Previous) / Previous) × 100`
+- **Always verify calculations** before publishing. Use a calculator or verify step-by-step.
+- Example: If November = 79.2 and December = 71.8:
+  - Difference: 79.2 - 71.8 = 7.4
+  - Percentage: (7.4 / 79.2) × 100 = 9.34% (rounds to 9.3%, not 9.1%)
+- Round to one decimal place
+- Double-check the arithmetic, especially when writing posts
+
 ## No AI Red Flags
 
 **Avoid these patterns that signal AI-written content:**

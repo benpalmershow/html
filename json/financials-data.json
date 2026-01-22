@@ -633,7 +633,7 @@
             "category": "Consumer Indicators",
             "agency": "FRED",
             "name": "Personal Consumption Expenditures (PCE)",
-            "lastUpdated": "2025-12-06T14:00:00Z",
+            "lastUpdated": "2026-01-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/PCE",
             "march": "20,683B",
@@ -643,6 +643,12 @@
             "july": "20,981.2B",
             "august": "21,087.1B",
             "september":"$21,152.2B",
+            "october":"$21,301.0B",
+            "november":"$21,409.7B",
+            "december":"",
+            "2026":{
+            "january":""},
+
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
         },
@@ -726,7 +732,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Pending Home Sales Index",
-            "lastUpdated": "2025-12-30T14:00:00Z",
+            "lastUpdated": "2026-01-22T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
             "march": "76.1",
@@ -738,6 +744,9 @@
             "september": "74.9",
             "october":"76.7",
             "november":"79.2",
+            "december":"71.8",
+            "2026":{
+            "january":""},
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
         },

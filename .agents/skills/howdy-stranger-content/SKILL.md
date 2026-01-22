@@ -137,12 +137,56 @@ All economic indicators are centralized in `json/financials-data.json`.
 - `bps_probabilities` - For prediction markets (basis point odds)
 - `game_title`, `game_time_iso` - For sports markets
 
+### Calculating Month-over-Month Percentages
+
+When publishing posts with financial data, calculate and verify MoM changes:
+
+**Formula**: `((Current - Previous) / Previous) × 100`
+
+**Verification steps:**
+1. Identify current and previous month values from `financials-data.json`
+2. Calculate the difference: Current - Previous
+3. Divide by previous value: Difference / Previous
+4. Multiply by 100 to get percentage
+5. Round to one decimal place
+6. Always double-check using a calculator before publishing
+
+**Example:**
+- November value: 79.2
+- December value: 71.8
+- Difference: 79.2 - 71.8 = 7.4
+- Percentage: (7.4 / 79.2) × 100 = 9.34% → rounds to **9.3%**
+
+**Critical:** Arithmetic errors in financial posts damage credibility. Verify all calculations before publishing.
+
 ### Chart Types
 
 Charts are automatically selected based on indicator type:
 - **Line charts** - Most economic indicators (default)
 - **Bar charts** - Prediction markets (when `bps_probabilities` present)
 - **Trade deficit charts** - When indicator has `imports` and `exports` fields
+
+### Calculating Month-over-Month Percentages
+
+When publishing posts with financial data, calculate and verify MoM changes:
+
+**Formula**: `((Current - Previous) / Previous) × 100`
+
+**Verification steps:**
+1. Identify current and previous month values from `financials-data.json`
+2. Calculate the difference: Current - Previous
+3. Divide by previous value: Difference / Previous
+4. Multiply by 100 to get percentage
+5. Round to one decimal place
+6. Always double-check using a calculator before publishing
+
+**Example:**
+- November value: 79.2
+- December value: 71.8
+- Difference: 79.2 - 71.8 = 7.4
+- Percentage: (7.4 / 79.2) × 100 = 9.34% → rounds to **9.3%**
+
+**Critical:** Arithmetic errors in financial posts damage credibility. Verify all calculations before publishing.
 
 ### Embedding Charts in Posts
 

@@ -4,7 +4,7 @@ date: 2026-01-22T14:00:00Z
 
 ### <i data-lucide='home' class='post-icon'></i> **Pending Home Sales Slide While Consumers Keep Spending**
 
-Divergent signals from the housing and consumer sectors. Pending Home Sales fell sharply in December while consumer spending remained resilient, reflecting a bifurcated economic recovery.
+Divergent signals from the housing and consumer sectors. December's sharp decline in Pending Home Sales contrasts with November's resilient consumer spending—a timing gap that obscures whether momentum has shifted since the start of the year.
 
 ---
 
@@ -22,7 +22,7 @@ The decline underscores softening housing demand as homebuyers navigate affordab
 
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Spending Remains Steady**
 
-Personal Consumption Expenditures (PCE) rose to $21,409.7B in November, up 0.5% from October's $21,301.0B. Consumer spending continues to support economic growth despite headwinds in housing and tightening labor markets.
+Personal Consumption Expenditures (PCE) rose to $21,409.7B in November, up 0.5% from October's $21,301.0B. While this data trails December's pending home sales report, consumer spending continues to support economic growth despite headwinds in housing and tightening labor markets.
 
 {{chart:Personal Consumption Expenditures (PCE)}}
 

@@ -1043,8 +1043,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 15px 0;
-    font-size: 0.9em;
-    min-width: 600px
+    font-size: 0.9em
 }
 
 @media (max-width:768px) {
@@ -1247,7 +1246,6 @@ table td {
 
 .responsive-table table {
     width: 100%;
-    min-width: 600px;
     border-collapse: collapse;
     font-size: 0.9em
 }
@@ -1257,7 +1255,7 @@ table td {
     padding: 0.75rem 0.5rem;
     text-align: left;
     border: 1px solid var(--border-color);
-    white-space: nowrap
+    white-space: normal
 }
 
 .responsive-table th {

@@ -252,6 +252,8 @@
     margin: 1.5rem 0;
     font-size: 0.95rem;
     table-layout: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .article-content table th {
@@ -268,6 +270,8 @@
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .article-content table tbody tr:nth-child(odd) {

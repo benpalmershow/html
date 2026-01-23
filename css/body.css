@@ -368,7 +368,7 @@ th {
     padding: clamp(.25rem, 1.5vw, .75rem);
     text-align: left;
     border-bottom: 1px solid var(--border-color);
-    white-space: nowrap
+    white-space: normal
 }
 
 th {

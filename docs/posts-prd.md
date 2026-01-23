@@ -74,7 +74,7 @@ Always use `?filter=Category%20Name` to activate category filtering on page load
 Separate distinct sections with `---` (horizontal rule) and give each its own icon/title. Include charts for each financial/data-driven section:
 
 ```markdown
-### <i data-lucide='football' class='post-icon'></i> **Topic 1**
+### <i data-lucide='trophy' class='post-icon'></i> **Topic 1**
 
 Description.
 

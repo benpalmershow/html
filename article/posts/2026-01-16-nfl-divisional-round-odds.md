@@ -95,7 +95,7 @@ December 2025 saw 10,000 encounters along the Southwest border, continuing the p
 
 ---
 
-### <i data-lucide='football' class='post-icon'></i> **NFL Playoffs**
+### <i data-lucide='trophy' class='post-icon'></i> **NFL Playoffs**
 
 The 2026 NFL Divisional Round prediction markets are now live on Kalshi and Polymarket with odds for all four playoff matchups. The weekend features two NFC matchups and two AFC contests, with the Seahawks and Broncos favored as top seeds hosting their respective divisional opponents.
 

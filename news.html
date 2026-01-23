@@ -167,18 +167,24 @@
     })();
   </script>
 
-  <!-- Google News Subscribe with Google (SwG) -->
-  <script async type="application/javascript"
-        src="https://news.google.com/swg/js/v1/swg-basic.js"></script>
+  <!-- Google News Subscribe with Google (SwG) - Production only -->
   <script>
-    (self.SWG_BASIC = self.SWG_BASIC || []).push(basicSubscriptions => {
-      basicSubscriptions.init({
-        type: "NewsArticle",
-        isPartOfType: ["Product"],
-        isPartOfProductId: "CAowscreCw:openaccess",
-        clientOptions: { theme: "light", lang: "en" },
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const script = document.createElement('script');
+      script.src = 'https://news.google.com/swg/js/v1/swg-basic.js';
+      script.async = true;
+      script.onerror = () => console.warn('SwG failed to load');
+      document.head.appendChild(script);
+      
+      (self.SWG_BASIC = self.SWG_BASIC || []).push(basicSubscriptions => {
+        basicSubscriptions.init({
+          type: "NewsArticle",
+          isPartOfType: ["Product"],
+          isPartOfProductId: "CAowscreCw:openaccess",
+          clientOptions: { theme: "light", lang: "en" },
+        }).catch(err => console.warn('SwG init failed:', err));
       });
-    });
+    }
   </script>
 
 </head>

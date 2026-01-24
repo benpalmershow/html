@@ -1,0 +1,132 @@
+/* ========================================
+   THEME SYSTEM: Global Variables & Tokens
+   ======================================== */
+
+:root {
+    /* TYPOGRAPHY */
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-mono: Monaco, Menlo, 'Ubuntu Mono', 'Courier New', monospace;
+    
+    --type-base: clamp(1rem, 3.5vw, 1.25rem);
+    --type-scale-ratio: 1.25;
+
+    /* COLOR PALETTE: BASE */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-white-rgb: 255, 255, 255;
+    --color-black-rgb: 0, 0, 0;
+
+    /* GRAYSCALE */
+    --color-gray-100: #f8f9fa;
+    --color-gray-200: #e9ecef;
+    --color-gray-300: #dee2e6;
+    --color-gray-400: #ced4da;
+    --color-gray-500: #6c757d;
+    --color-gray-600: #495057;
+    --color-gray-700: #343a40;
+    --color-gray-800: #212529;
+
+    /* BRAND COLORS */
+    --color-primary: #2c5f5a;               /* Brand Teal */
+    --color-primary-rgb: 44, 95, 90;
+    --color-secondary: #d4822a;             /* Brand Orange */
+    --color-secondary-rgb: 212, 130, 42;
+    --color-teal-dark: #1e4d48;
+
+    /* CATEGORY COLORS */
+    --color-category-ipo: #1e88e5;
+    --color-category-earnings: #43a047;
+    --color-category-policy: #fb8c00;
+    --color-category-healthcare: #10b981;
+    --color-category-legal: #2c5f5a;
+    --color-category-political: #8b5cf6;
+    --color-category-corrections: #e53935;
+
+    /* PLATFORM COLORS */
+    --color-youtube: #FF0000;
+    --color-spotify: #1DB954;
+    --color-apple: #000000;
+
+    /* SEMANTIC COLORS */
+    --color-success: #43a047;
+    --color-error: #e53935;
+    --color-warning: #fb8c00;
+
+    /* THEME-SPECIFIC TOKENS (LIGHT MODE DEFAULT) */
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-gray-700);
+    --text-muted: var(--color-gray-500);
+    
+    --bg-primary: #fdf6e8;
+    --bg-primary-rgb: 253, 246, 232;
+    --bg-secondary: #f8f4e6;
+    --bg-secondary-rgb: 248, 244, 230;
+    --bg-tertiary: #e9e2d0;
+
+    --accent-primary: var(--color-primary);
+    --accent-primary-rgb: var(--color-primary-rgb);
+    --accent-secondary: var(--color-secondary);
+    
+    --border-color: #e8dcc0;
+    --shadow-color: rgba(var(--color-primary-rgb), 0.1);
+    
+    /* SPACING SYSTEM */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* LAYOUT TOKENS */
+    --max-content-width: 1440px;
+    --content-padding: var(--spacing-md);
+    --section-spacing: var(--spacing-xl);
+    
+    /* ANIMATION TOKENS */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* DARK MODE OVERRIDES */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #e1e5e9;
+        --text-secondary: #e1e5e9;
+        --text-muted: #a0a9b8;
+        
+        --bg-primary: #1a1f1e;
+        --bg-secondary: #252b2a;
+        --bg-tertiary: #2a3130;
+        
+        --accent-primary: #87c5be;
+        --accent-primary-rgb: 135, 197, 190;
+        --accent-secondary: #d4822a;
+        
+        --border-color: #495057;
+        --shadow-color: #000000;
+        
+        --color-apple: #ffffff;
+    }
+}
+
+/* Force dark mode via class */
+html.dark-mode {
+    --text-primary: #e1e5e9;
+    --text-secondary: #e1e5e9;
+    --text-muted: #a0a9b8;
+    
+    --bg-primary: #1a1f1e;
+    --bg-secondary: #252b2a;
+    --bg-tertiary: #2a3130;
+    
+    --accent-primary: #87c5be;
+    --accent-primary-rgb: 135, 197, 190;
+    --accent-secondary: #d4822a;
+    
+    --border-color: #495057;
+    --shadow-color: #000000;
+    
+    --color-apple: #ffffff;
+}

@@ -48,7 +48,8 @@
   <link rel="canonical" href="https://howdystranger.net/news.html">
 
   <!-- RSS Feed -->
-  <link rel="alternate" type="application/rss+xml" title="Howdy, Stranger - News Feed" href="https://howdystranger.net/news-feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Howdy, Stranger - News Feed"
+    href="https://howdystranger.net/news-feed.xml">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -70,6 +71,7 @@
   </script>
 
   <!-- Critical CSS -->
+  <link rel="preload" href="css/theme.css?v=20260123" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/news.css?v=20251220" as="style" onload="this.rel='stylesheet'">
@@ -176,7 +178,7 @@
       script.async = true;
       script.onerror = () => console.warn('SwG failed to load');
       document.head.appendChild(script);
-      
+
       (self.SWG_BASIC = self.SWG_BASIC || []).push(basicSubscriptions => {
         basicSubscriptions.init({
           type: "NewsArticle",
@@ -193,8 +195,7 @@
 <body>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1">
-    <h1 class="page-title" aria-label="Page title"><i data-lucide="newspaper"
-        class="page-icon"></i>News</h1>
+    <h1 class="page-title" aria-label="Page title"><i data-lucide="newspaper" class="page-icon"></i>News</h1>
     <div class="container">
       <!-- Full Article View (shown when ?article=id in URL) -->
       <div id="full-article-view" style="display: none;">

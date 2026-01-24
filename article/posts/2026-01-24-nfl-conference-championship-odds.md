@@ -6,29 +6,33 @@ date: 2026-01-24T18:00:00
 Prediction markets for the 2026 NFL Conference Championships are now live on Kalshi and Polymarket. The Sunday schedule features the Patriots visiting the top-seeded Broncos, followed by the Rams traveling to Seattle for the NFC title. 
 
 <div class="odds-grid">
-  <div class="odds-matchup">
-    <div class="matchup-time">Sunday, Jan 25 - 3:00 PM ET</div>
-    <div class="team-odds">
-      <span class="team-name">Patriots</span>
-      <span class="team-probability">69¢</span>
+  <a href="financials.html?filter=Prediction%20Markets" target="_blank" class="odds-matchup-link">
+    <div class="odds-matchup">
+      <div class="matchup-time">Sunday, Jan 25 - 3:00 PM ET</div>
+      <div class="team-odds">
+        <span class="team-name">Patriots</span>
+        <span class="team-probability">69¢</span>
+      </div>
+      <div class="team-odds">
+        <span class="team-name">Broncos</span>
+        <span class="team-probability">32¢</span>
+      </div>
     </div>
-    <div class="team-odds">
-      <span class="team-name">Broncos</span>
-      <span class="team-probability">32¢</span>
-    </div>
-  </div>
+  </a>
 
-  <div class="odds-matchup">
-    <div class="matchup-time">Sunday, Jan 25 - 6:30 PM ET</div>
-    <div class="team-odds">
-      <span class="team-name">Rams</span>
-      <span class="team-probability">42¢</span>
+  <a href="financials.html?filter=Prediction%20Markets" target="_blank" class="odds-matchup-link">
+    <div class="odds-matchup">
+      <div class="matchup-time">Sunday, Jan 25 - 6:30 PM ET</div>
+      <div class="team-odds">
+        <span class="team-name">Rams</span>
+        <span class="team-probability">42¢</span>
+      </div>
+      <div class="team-odds">
+        <span class="team-name">Seahawks</span>
+        <span class="team-probability">58¢</span>
+      </div>
     </div>
-    <div class="team-odds">
-      <span class="team-name">Seahawks</span>
-      <span class="team-probability">58¢</span>
-    </div>
-  </div>
+  </a>
 </div>
 
 **AFC Championship: Patriots @ Broncos**

@@ -422,6 +422,12 @@ html.dark-mode .table-wrapper th {
     margin: 1.5rem 0;
 }
 
+.odds-matchup-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .odds-matchup {
     background: var(--bg-secondary) !important;
     border: 1px solid var(--border-color) !important;

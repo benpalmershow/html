@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="hint-step">
                 <i data-lucide="expand" style="width: 2rem; height: 2rem;"></i>
                <div>
-                 <strong>Expand Cards:</strong> Press <kbd style="background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace;">Enter</kbd> or click to expand, <kbd style="background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace;">Esc</kbd> to close
+                 <strong>Expand Cards:</strong> Press <kbd class="hint-key">Enter</kbd> or click to expand, <kbd class="hint-key">Esc</kbd> to close
                </div>
                </div>
               <div class="hint-step">
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Setup event listeners
       this.toggleBtn.addEventListener('click', () => this.toggle());
-      
+
       if (this.options.closeOnEscape) {
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && this.isOpen) {
@@ -180,9 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (this.options.closeOnClickOutside) {
         document.addEventListener('click', (e) => {
-          if (this.isOpen && 
-              !this.popoverEl.contains(e.target) && 
-              !this.toggleBtn.contains(e.target)) {
+          if (this.isOpen &&
+            !this.popoverEl.contains(e.target) &&
+            !this.toggleBtn.contains(e.target)) {
             this.close();
           }
         });
@@ -221,9 +221,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     open() {
       if (this.isOpen) return;
-      
+
       this.popoverEl.style.display = 'block';
-      
+
       // Trigger animation via classList for smooth transitions
       requestAnimationFrame(() => {
         this.popoverEl.classList.add('popover-open');
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!this.isOpen) return;
 
       this.popoverEl.classList.remove('popover-open');
-      
+
       // Wait for animation to complete before hiding
       setTimeout(() => {
         this.popoverEl.style.display = 'none';

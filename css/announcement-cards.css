@@ -69,6 +69,11 @@
     color: var(--accent-primary);
 }
 
+.card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
 .card-main {
     display: flex;
     gap: var(--spacing-lg);
@@ -250,7 +255,7 @@
     .announcements {
         padding: var(--spacing-lg) 0;
     }
-    
+
     .announcements-container {
         padding: 0 var(--spacing-sm);
         gap: var(--spacing-lg);
@@ -278,7 +283,8 @@
     }
 
     .announcement-card:hover {
-        transform: none; /* Remove horizontal slide on mobile */
+        transform: none;
+        /* Remove horizontal slide on mobile */
     }
 
     .announcement-card.expanded .card-expanded-content {
@@ -293,7 +299,7 @@
         box-sizing: border-box;
     }
 
-    
+
     .load-more-btn {
         margin: var(--spacing-lg) auto;
         padding: var(--spacing-sm) var(--spacing-lg);
@@ -306,12 +312,12 @@
     .announcements {
         max-width: 900px;
     }
-    
+
     .card-image-side {
         width: 100px;
         height: 100px;
     }
-    
+
     .card-title {
         font-size: 1.4rem;
     }
@@ -322,12 +328,12 @@
     .announcements {
         max-width: 900px;
     }
-    
+
     .card-image-side {
         width: 140px;
         height: 140px;
     }
-    
+
     .card-title {
         font-size: 1.6rem;
     }
@@ -351,7 +357,8 @@ table {
     line-height: 1.4;
 }
 
-th, td {
+th,
+td {
     padding: var(--spacing-xs) var(--spacing-sm);
     text-align: left;
     border-bottom: 1px solid var(--border-color);
@@ -380,7 +387,8 @@ tbody tr:last-child td {
         font-size: 1rem;
     }
 
-    th, td {
+    th,
+    td {
         padding: var(--spacing-xs);
     }
 }
@@ -391,8 +399,8 @@ html.dark-mode .announcement-card {
 }
 
 html.dark-mode .load-more-btn {
-    background: rgba(var(--color-dark-accent-primary-rgb), 0.05);
-    border-color: rgba(var(--color-dark-accent-primary-rgb), 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 html.dark-mode .table-wrapper {
@@ -401,4 +409,98 @@ html.dark-mode .table-wrapper {
 
 html.dark-mode .table-wrapper th {
     background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   POST COMPONENTS: ODDS & PROBABILITIES
+   ======================================== */
+
+.odds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.odds-matchup {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 1.25rem !important;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    color: var(--text-primary) !important;
+}
+
+.odds-matchup:hover {
+    border-color: var(--accent-primary) !important;
+    transform: translateY(-2px);
+}
+
+.matchup-time {
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+    font-family: var(--font-mono) !important;
+    margin-bottom: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.team-odds {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.75rem 0 !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    background: transparent !important;
+}
+
+.team-odds:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+.team-odds:first-of-type {
+    border-top: none !important;
+    padding-top: 0 !important;
+}
+
+.team-name {
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-body) !important;
+    background: transparent !important;
+}
+
+.team-probability {
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: var(--accent-primary) !important;
+    background: transparent !important;
+}
+
+/* Probability Bars (Inline Style Overrides) */
+.probability-bar-container {
+    background: var(--bg-tertiary) !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+}
+
+.probability-bar-fill {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding-right: 8px !important;
+    color: var(--color-white) !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    font-family: var(--font-mono) !important;
+}
+
+/* Responsive Grid Adjustment */
+@media (max-width: 640px) {
+    .odds-grid {
+        grid-template-columns: 1fr !important;
+    }
 }

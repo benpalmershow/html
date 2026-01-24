@@ -99,70 +99,8 @@ December 2025 saw 10,000 encounters along the Southwest border, continuing the p
 
 The 2026 NFL Divisional Round prediction markets are now live on Kalshi and Polymarket with odds for all four playoff matchups. The weekend features two NFC matchups and two AFC contests, with the Seahawks and Broncos favored as top seeds hosting their respective divisional opponents.
 
-<style>
-  .odds-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 20px 0;
-  }
-  .odds-matchup {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    background: #f9f9f9;
-  }
-  .odds-matchup.dark-mode {
-    background: #2a2a2a;
-    border-color: #444;
-  }
-  .matchup-time {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 12px;
-  }
-  .matchup-time.dark-mode {
-    color: #aaa;
-  }
-  .team-odds {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  .team-odds.dark-mode {
-    border-bottom-color: #444;
-  }
-  .team-odds:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .team-name {
-    font-weight: 600;
-    flex: 1;
-  }
-  .team-probability {
-    font-weight: 700;
-    font-size: 16px;
-    min-width: 45px;
-    text-align: right;
-    color: #2c5aa0;
-  }
-  .team-probability.dark-mode {
-    color: #64b5f6;
-  }
-  @media (max-width: 640px) {
-    .odds-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
-
 <div class="odds-grid">
-  <div class="odds-matchup" id="buf-den-odds">
+  <div class="odds-matchup">
     <div class="matchup-time">Saturday, Jan 17 - 4:30 PM ET</div>
     <div class="team-odds">
       <span class="team-name">Bills</span>
@@ -174,7 +112,7 @@ The 2026 NFL Divisional Round prediction markets are now live on Kalshi and Poly
     </div>
   </div>
 
-  <div class="odds-matchup" id="sf-sea-odds">
+  <div class="odds-matchup">
     <div class="matchup-time">Saturday, Jan 17 - 8:00 PM ET</div>
     <div class="team-odds">
       <span class="team-name">49ers</span>
@@ -186,7 +124,7 @@ The 2026 NFL Divisional Round prediction markets are now live on Kalshi and Poly
     </div>
   </div>
 
-  <div class="odds-matchup" id="hou-ne-odds">
+  <div class="odds-matchup">
     <div class="matchup-time">Sunday, Jan 18 - 3:00 PM ET</div>
     <div class="team-odds">
       <span class="team-name">Texans</span>
@@ -198,7 +136,7 @@ The 2026 NFL Divisional Round prediction markets are now live on Kalshi and Poly
     </div>
   </div>
 
-  <div class="odds-matchup" id="lar-chi-odds">
+  <div class="odds-matchup">
     <div class="matchup-time">Sunday, Jan 18 - 6:30 PM ET</div>
     <div class="team-odds">
       <span class="team-name">Rams</span>
@@ -220,18 +158,5 @@ Seattle's dominant 2025 season earns them the top NFC seed and heavy favorites s
 New England's home playoff advantage favors the Patriots despite Houston's offensive firepower. The Patriots hold the edge in market expectations heading into Sunday's AFC divisional matchup.
 
 Matthew Stafford's league-leading arm talent and the Rams' high-octane offense command 63¢ odds against Caleb Williams' Bears at Soldier Field. Los Angeles travels to Chicago as road favorites with defensive vulnerabilities that Chicago's league-leading turnover generation may exploit.
-
-<script>
-  function applyDarkModeToOdds() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.querySelectorAll('.odds-matchup').forEach(el => el.classList.add('dark-mode'));
-      document.querySelectorAll('.matchup-time').forEach(el => el.classList.add('dark-mode'));
-      document.querySelectorAll('.team-odds').forEach(el => el.classList.add('dark-mode'));
-      document.querySelectorAll('.team-probability').forEach(el => el.classList.add('dark-mode'));
-    }
-  }
-  applyDarkModeToOdds();
-  window.matchMedia('(prefers-color-scheme: dark)').addListener(applyDarkModeToOdds);
-</script>
 
 <a href="financials.html?filter=Prediction%20Markets" target="_blank">View prediction markets</a>

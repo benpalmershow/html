@@ -11,12 +11,17 @@ const CONFIG = {
     POSTS_JSON_URL: 'json/posts.json'
 };
 
-const CHART_COLORS = {
-    PRIMARY: '#2C5F5A',
-    PRIMARY_FILL: 'rgba(44, 95, 90, 0.1)',
-    SECONDARY: '#666',
-    ACCENT: '#D4822A',
-    ERROR: '#8B0000'
+const getLiveChartColors = () => {
+    const isDark = document.documentElement.classList.contains('dark-mode');
+    return {
+        PRIMARY: isDark ? '#87c5be' : '#2C5F5A',
+        PRIMARY_FILL: isDark ? 'rgba(135, 197, 190, 0.1)' : 'rgba(44, 95, 90, 0.1)',
+        SECONDARY: isDark ? '#a0a9b8' : '#6c757d',
+        ACCENT: '#D4822A',
+        ERROR: '#e53935',
+        GRID: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)',
+        TEXT: isDark ? '#a0a9b8' : '#6c757d'
+    };
 };
 
 const CHART_CONFIG = {
@@ -171,15 +176,25 @@ function getChartConfig(indicator, labels, dataPoints) {
 }
 
 function getBaseOptions(indicator) {
+    const colors = getLiveChartColors();
     return {
         responsive: true,
         maintainAspectRatio: true,
         layout: { padding: { bottom: 20 } },
         plugins: {
-            legend: { display: true },
+            legend: { 
+                display: true,
+                labels: {
+                    color: colors.TEXT,
+                    font: { family: 'Georgia, serif', size: 12 }
+                }
+            },
             tooltip: {
                 mode: 'index',
                 intersect: false,
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
                 callbacks: {
                     label: function (context) {
                         let label = context.dataset.label || '';
@@ -191,8 +206,14 @@ function getBaseOptions(indicator) {
             }
         },
         scales: {
+            x: {
+                grid: { color: colors.GRID },
+                ticks: { color: colors.TEXT }
+            },
             y: {
+                grid: { color: colors.GRID },
                 ticks: {
+                    color: colors.TEXT,
                     callback: function (value) {
                         if (indicator.name && (indicator.name.includes('Rate') || indicator.name.includes('Yield'))) {
                             return value.toFixed(2) + '%';
@@ -268,6 +289,7 @@ function getLineChartConfig(indicator, labels, dataPoints) {
          dataPoints = sortedData.map(item => item.value);
      }
 
+     const colors = getLiveChartColors();
      const config = {
          type: 'line',
          data: {
@@ -275,13 +297,13 @@ function getLineChartConfig(indicator, labels, dataPoints) {
              datasets: [{
                  label: indicator.name || 'Data',
                  data: dataPoints,
-                 borderColor: CHART_COLORS.PRIMARY,
-                 backgroundColor: CHART_COLORS.PRIMARY_FILL,
+                 borderColor: colors.PRIMARY,
+                 backgroundColor: colors.PRIMARY_FILL,
                  borderWidth: CHART_CONFIG.BORDER_WIDTH,
                  tension: CHART_CONFIG.TENSION,
                  fill: true,
-                 pointBackgroundColor: CHART_COLORS.PRIMARY,
-                 pointBorderColor: CHART_COLORS.PRIMARY,
+                 pointBackgroundColor: colors.PRIMARY,
+                 pointBorderColor: colors.PRIMARY,
                  pointRadius: 4,
                  pointHoverRadius: 6
              }]
@@ -304,6 +326,7 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
 }
 
 function getPredictionMarketConfig(indicator, labels, dataPoints) {
+    const colors = getLiveChartColors();
     return {
         type: 'bar',
         data: {
@@ -311,7 +334,7 @@ function getPredictionMarketConfig(indicator, labels, dataPoints) {
             datasets: [{
                 label: 'Probability (%)',
                 data: dataPoints,
-                backgroundColor: [CHART_COLORS.PRIMARY, CHART_COLORS.SECONDARY, CHART_COLORS.ACCENT, CHART_COLORS.ERROR],
+                backgroundColor: [colors.PRIMARY, colors.SECONDARY, colors.ACCENT, colors.ERROR],
                 borderWidth: 1
             }]
         },

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-01-23T21:15:00Z",
+    "lastUpdated": "2026-01-24T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -17,9 +17,10 @@
             "september": "4.12",
             "october": "4.06",
             "november": "4.09",
-            "december":"4.14",
-            "2026":{
-            "january":""},
+            "december": "4.14",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
         },
@@ -39,10 +40,10 @@
             "september": "55.1",
             "october": "53.6",
             "november": "51",
-            "december":"52.9",
-             "2026":{
-            "january":"54"},
-
+            "december": "52.9",
+            "2026": {
+                "january": "54"
+            },
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
         },
@@ -84,9 +85,9 @@
             "august": "4.00M",
             "september": "4.05M",
             "october": "4.11M",
-            "november":"4.13M",
-            "december":"4.35M",
-            "change": "",   
+            "november": "4.13M",
+            "december": "4.35M",
+            "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
         },
         {
@@ -104,8 +105,8 @@
             "august": "$5,800",
             "september": "$1,802",
             "october": "$1,751",
-            "november":"$2,958",
-            "december":"$1,964",
+            "november": "$2,958",
+            "december": "$1,964",
             "change": "",
             "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs."
         },
@@ -122,9 +123,9 @@
             "july": "47",
             "august": "50",
             "september": "54",
-            "october":"56",
-            "november":"59",
-            "december":"65",
+            "october": "56",
+            "november": "59",
+            "december": "65",
             "change": "",
             "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."
         },
@@ -142,8 +143,8 @@
             "july": "1,019,837.30",
             "august": "958,355.15",
             "september": "883,053.25",
-            "october":"848,424.25",
-            "november":"782,249.00",
+            "october": "848,424.25",
+            "november": "782,249.00",
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
         },
@@ -172,70 +173,39 @@
             "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
             "september": "4.35",
             "october": "4.46",
-            "november":"4.56",
-            "december":"4.56",
-
-
+            "november": "4.56",
+            "december": "4.56",
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
         },
-    
         {
-             "category": "Prediction Markets",
-             "agency": "Kalshi",
-             "name": "BUF @ DEN",
-             "game_title": "Bills @ Broncos",
-             "game_time": "Jan 17, 2026 4:30 PM ET",
-             "game_time_iso": "2026-01-17T16:30:00-05:00",
-             "lastUpdated": "2026-01-16T20:30:00Z",
-             "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26jan17bufden",
-             "polymarket_url": "https://polymarket.com/sports/nfl/games/week/13/nfl-buf-den-2026-01-17",
-             "BUF_win_odds": "48¢",
-             "DEN_win_odds": "52¢",
-             "explanation": "NFL divisional playoff game prediction market showing the probability of the Bills covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-         },
-         {
-             "category": "Prediction Markets",
-             "agency": "Kalshi",
-             "name": "SF @ SEA",
-             "game_title": "49ers @ Seahawks",
-             "game_time": "Jan 17, 2026 8:00 PM ET",
-             "game_time_iso": "2026-01-17T20:00:00-05:00",
-             "lastUpdated": "2026-01-16T20:30:00Z",
-             "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26jan17sfsea",
-             "polymarket_url": "https://polymarket.com/sports/nfl/games/week/13/nfl-sf-sea-2026-01-17",
-             "SF_win_odds": "25¢",
-             "SEA_win_odds": "75¢",
-             "explanation": "NFL divisional playoff game prediction market showing the probability of the 49ers covering the spread against the Seahawks. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-         },
-         {
-             "category": "Prediction Markets",
-             "agency": "Kalshi",
-             "name": "HOU @ NE",
-             "game_title": "Texans @ Patriots",
-             "game_time": "Jan 18, 2026 3:00 PM ET",
-             "game_time_iso": "2026-01-18T15:00:00-05:00",
-             "lastUpdated": "2026-01-16T20:30:00Z",
-              "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26jan18houne",
-              "polymarket_url": "https://polymarket.com/sports/nfl/games/week/13/nfl-hou-ne-2026-01-18",
-              "HOU_win_odds": "38¢",
-              "NE_win_odds": "63¢",
-              "explanation": "NFL divisional playoff game prediction market showing the probability of the Texans covering the spread against the Patriots. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-             },
-             {
-              "category": "Prediction Markets",
-              "agency": "Kalshi",
-              "name": "LAR @ CHI",
-              "game_title": "Rams @ Bears",
-              "game_time": "Jan 18, 2026 6:30 PM ET",
-              "game_time_iso": "2026-01-18T18:30:00-05:00",
-              "lastUpdated": "2026-01-16T20:30:00Z",
-              "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26jan18larchi",
-              "polymarket_url": "https://polymarket.com/sports/nfl/games/week/13/nfl-lar-chi-2026-01-18",
-              "LAR_win_odds": "63¢",
-              "CHI_win_odds": "37¢",
-              "explanation": "NFL divisional playoff game prediction market showing the probability of the Rams covering the spread against the Bears. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-             },
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "NE @ DEN",
+            "game_title": "Patriots @ Broncos",
+            "game_time": "Jan 25, 2026 3:00 PM ET",
+            "game_time_iso": "2026-01-25T15:00:00-05:00",
+            "lastUpdated": "2026-01-24T18:00:00Z",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26jan25neden",
+            "polymarket_url": "https://polymarket.com/sports/nfl/games/week/14/nfl-ne-den-2026-01-25",
+            "NE_win_odds": "69¢",
+            "DEN_win_odds": "32¢",
+            "explanation": "AFC Championship game prediction market showing the probability of the Patriots covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries (Broncos QB Bo Nix reported out), and betting patterns."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "LAR @ SEA",
+            "game_title": "Rams @ Seahawks",
+            "game_time": "Jan 25, 2026 6:30 PM ET",
+            "game_time_iso": "2026-01-25T18:30:00-05:00",
+            "lastUpdated": "2026-01-24T18:00:00Z",
+            "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26jan25larsea",
+            "polymarket_url": "https://polymarket.com/sports/nfl/games/week/14/nfl-lar-sea-2026-01-25",
+            "LAR_win_odds": "42¢",
+            "SEA_win_odds": "58¢",
+            "explanation": "NFC Championship game prediction market showing the probability of the Rams covering the spread against the Seahawks. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+        },
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
@@ -288,10 +258,11 @@
             "august": "64.86",
             "september": "63.96",
             "october": "60.89",
-            "november":"60.06",
-            "december":"57.97",
-            "2026":{
-            "january":""},
+            "november": "60.06",
+            "december": "57.97",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
         },
@@ -310,9 +281,9 @@
             "june": "5.28",
             "july": "4.94",
             "august": "4.84",
-            "september":"4.77",
-            "october":"4.73",
-            "november":"4.88",
+            "september": "4.77",
+            "october": "4.73",
+            "november": "4.88",
             "change": "",
             "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
         },
@@ -331,9 +302,9 @@
             "june": "10.40",
             "july": "10.20",
             "august": "10.00",
-            "september":"9.85",
-            "october":"9.71",
-            "november":"10.50",
+            "september": "9.85",
+            "october": "9.71",
+            "november": "10.50",
             "change": "",
             "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
         },
@@ -352,9 +323,9 @@
             "june": "228.00",
             "july": "229.00",
             "august": "236.00",
-            "september":"238",
-            "october":"232",
-            "november":"226",
+            "september": "238",
+            "october": "232",
+            "november": "226",
             "change": "",
             "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers."
         },
@@ -373,11 +344,11 @@
             "august": "4.51",
             "september": "4.52",
             "october": "5.16",
-            "november":"5.35",
-            "december":"5.54",
-            "2026":{
-            "january":"5.84"
-        },
+            "november": "5.35",
+            "december": "5.54",
+            "2026": {
+                "january": "5.84"
+            },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
         },
@@ -394,8 +365,8 @@
             "june": "331.627",
             "july": "330.986",
             "august": "329.885",
-            "september":"328.978",
-            "october":"328.442",
+            "september": "328.978",
+            "october": "328.442",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },
@@ -413,11 +384,12 @@
             "july": "$92B",
             "august": "$93B",
             "september": "$37B",
-            "october":"$91B",
-            "november":"$88B",
-            "december":"$92B",
-            "2026":{
-            "january":""},
+            "october": "$91B",
+            "november": "$88B",
+            "december": "$92B",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time."
         },
@@ -435,11 +407,12 @@
             "july": "$338B",
             "august": "$344B",
             "september": "$544B",
-            "october":"$404B",
-            "november":"$336B",
-            "december":"$484B",
-            "2026":{
-            "january":""},
+            "october": "$404B",
+            "november": "$336B",
+            "december": "$484B",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The total amount of money collected by the federal government through various taxes, including individual income taxes, corporate taxes, payroll taxes, and other sources. Tax revenue typically follows a seasonal pattern, with higher collections in April (tax filing deadline) and quarterly estimated payments in January, April, June, and September. Revenue levels are influenced by economic conditions, tax laws, and enforcement. Individual income taxes are the largest source of federal revenue, followed by payroll taxes that fund Social Security and Medicare. Changes in tax revenue can indicate economic health and affect budget deficits."
         },
@@ -457,11 +430,12 @@
             "july": "-$291,143M",
             "august": "-$344,792M",
             "september": "+197,938M",
-            "october":"-284,350M",
-            "november":"-$173,277M",
-            "december":"-$144,749M",
-            "2026":{
-            "january":""},
+            "october": "-284,350M",
+            "november": "-$173,277M",
+            "december": "-$144,749M",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The difference between government spending and revenue in a given month. A negative value indicates a deficit (spending exceeds revenue), while a positive value indicates a surplus. Monthly deficits can vary significantly due to the timing of tax receipts and government payments. The U.S. typically runs deficits during economic expansions, with larger deficits during recessions due to decreased tax revenue and increased spending on safety net programs. The federal budget is influenced by fiscal policy decisions, economic conditions, and demographic trends. Persistent large deficits can lead to growing national debt and higher interest payments."
         },
@@ -479,12 +453,12 @@
             "july": "$36,214,482,241,911.14",
             "august": "$37,004,817,625,842.56",
             "september": "$37,499,704,495,767.33",
-            "october":"$38,040,093,786,521.02",
-            "november":"$38,360,841,844,745.79",
-            "december":"$38,339,541,810,902.33",
-            "2026":{
-            "january":"$38,430,410,089,259.84"},
-
+            "october": "$38,040,093,786,521.02",
+            "november": "$38,360,841,844,745.79",
+            "december": "$38,339,541,810,902.33",
+            "2026": {
+                "january": "$38,430,410,089,259.84"
+            },
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."
         },
@@ -502,11 +476,12 @@
             "july": "7,822",
             "august": "9,731",
             "september": "11,647",
-            "october":"11,705",
-            "november":"10,956",
-            "december":"10,000",
-            "2026":{
-            "january":""},
+            "october": "11,705",
+            "november": "10,956",
+            "december": "10,000",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."
         },
@@ -523,8 +498,8 @@
             "june": "$58.185B",
             "july": "$74.399B",
             "august": "$55.629B",
-            "september":"$48.137B",
-            "october":"$29.350B",
+            "september": "$48.137B",
+            "october": "$29.350B",
             "change": "",
             "explanation": "The difference between the value of a country's imports and exports of goods and services. A trade deficit occurs when imports exceed exports. The U.S. has run persistent trade deficits since the 1970s, reflecting strong consumer demand and the dollar's role as the global reserve currency. The trade balance is influenced by exchange rates, economic growth differentials, and trade policies. While a trade deficit can indicate economic strength (strong consumer demand), persistent large deficits may raise concerns about domestic manufacturing and job losses in certain sectors.",
             "imports": {
@@ -534,9 +509,8 @@
                 "june": "$338,704B",
                 "july": "$358,321B",
                 "august": "$339,690B",
-                "september":"$342,363B",
-                "october":"$331,366B"
-                
+                "september": "$342,363B",
+                "october": "$331,366B"
             },
             "exports": {
                 "march": "$283.6B",
@@ -545,8 +519,8 @@
                 "june": "$280,519B",
                 "july": "$283,923B",
                 "august": "$284,060B",
-                "september":"$294,225B",
-                "october":"$302,015B"
+                "september": "$294,225B",
+                "october": "$302,015B"
             }
         },
         {
@@ -564,10 +538,11 @@
             "august": "$30B",
             "september": "$30B",
             "october": "$34B",
-            "november":"$31B",
-            "december":"$28B",
-            "2026":{
-            "january":""},
+            "november": "$31B",
+            "december": "$28B",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "Monthly customs duties collected by the U.S. government on imported goods. Tariffs are taxes imposed on specific categories of imports, often used as a tool of trade policy. Revenue from tariffs goes directly to the U.S. Treasury and can be used to fund government operations. Changes in tariff revenue can reflect shifts in trade volumes, tariff rates, or the composition of imports. Tariff revenue typically increases with new or increased tariffs but may decrease if the tariffs reduce overall trade volumes. This metric is closely watched in trade policy discussions and budget analysis."
         },
@@ -584,8 +559,8 @@
             "june": "$611.5B",
             "july": "$603.6B",
             "august": "$611.5B",
-            "september":"$612.9B",
-            "october":"$604,792B",
+            "september": "$612.9B",
+            "october": "$604,792B",
             "change": "",
             "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity."
         },
@@ -604,8 +579,8 @@
             "august": "97.8",
             "september": "95.6",
             "october": "95.5",
-            "november":"92.9",
-            "december":"89.1",
+            "november": "92.9",
+            "december": "89.1",
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
         },
@@ -642,13 +617,13 @@
             "june": "20,868.4B",
             "july": "20,981.2B",
             "august": "21,087.1B",
-            "september":"$21,152.2B",
-            "october":"$21,301.0B",
-            "november":"$21,409.7B",
-            "december":"",
-            "2026":{
-            "january":""},
-
+            "september": "$21,152.2B",
+            "october": "$21,301.0B",
+            "november": "$21,409.7B",
+            "december": "",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
         },
@@ -704,12 +679,13 @@
             "june": "$723B",
             "july": "$727.4B",
             "august": "$732.1B",
-            "september":"$732.4B",
-            "october":"$731.4B",
-            "november":"$735.9B",
-            "december":"",
-            "2026":{
-            "january":""},
+            "september": "$732.4B",
+            "october": "$731.4B",
+            "november": "$735.9B",
+            "december": "",
+            "2026": {
+                "january": ""
+            },
             "change": ""
         },
         {
@@ -742,11 +718,12 @@
             "july": "71.8",
             "august": "74.8",
             "september": "74.9",
-            "october":"76.7",
-            "november":"79.2",
-            "december":"71.8",
-            "2026":{
-            "january":""},
+            "october": "76.7",
+            "november": "79.2",
+            "december": "71.8",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
         },
@@ -765,8 +742,8 @@
             "august": "$422,400",
             "september": "$412,300",
             "october": "$415,200",
-            "november":"$409,200",
-            "december":"$405,400",
+            "november": "$409,200",
+            "december": "$405,400",
             "change": "",
             "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
         },
@@ -785,10 +762,11 @@
             "august": "32",
             "september": "32",
             "october": "37",
-            "november":"38",
-            "december":"39",
-             "2026":{
-            "january":"37"},
+            "november": "38",
+            "december": "39",
+            "2026": {
+                "january": "37"
+            },
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."
         },
@@ -806,7 +784,7 @@
             "july": "98.8",
             "august": "100.6",
             "september": "104.5",
-            "october":"106.2",
+            "october": "106.2",
             "change": "",
             "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."
         },
@@ -825,8 +803,8 @@
             "august": "6.59",
             "september": "6.35",
             "october": "6.25",
-            "november":"6.24",
-            "december":"6.19",
+            "november": "6.24",
+            "december": "6.19",
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
         },
@@ -879,10 +857,9 @@
             "june": "108.19",
             "july": "107.13",
             "august": "106.68",
-            "september":"106.24",
-            "october":"105.8",
+            "september": "106.24",
+            "october": "105.8",
             "change": "",
-        
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
         },
         {
@@ -901,7 +878,7 @@
             "september": "134,529,000",
             "october": "134,576,000",
             "november": "134,547,000",
-            "december":"134,588,000",
+            "december": "134,588,000",
             "change": "",
             "explanation": "The monthly change in private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
         },
@@ -918,9 +895,9 @@
             "june": "7,357,000",
             "july": "7,208,000",
             "august": "7,227,000",
-            "september":"7,658,000",
-            "october":"7,449,000",
-            "november":"7,146,000",
+            "september": "7,658,000",
+            "october": "7,449,000",
+            "november": "7,146,000",
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."
         },
@@ -941,7 +918,7 @@
             "august": "85,979",
             "september": "54,064",
             "october": "153,074",
-            "november":"71,321",
+            "november": "71,321",
             "change": "",
             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
         },
@@ -960,9 +937,8 @@
             "august": "230,000",
             "september": "234,750",
             "october": "226,750",
-            "november":"217,600",
-            "december":"219,000",
-
+            "november": "217,600",
+            "december": "219,000",
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
         },
@@ -980,10 +956,10 @@
             "june": "159,439,000",
             "july": "159,511,000",
             "august": "159,485,000",
-            "september":"159,593,000",
-            "october":"159,420,000",
-            "november":"159,476,000",
-            "december":"159,526,000",
+            "september": "159,593,000",
+            "october": "159,420,000",
+            "november": "159,476,000",
+            "december": "159,526,000",
             "change": "",
             "explanation": "The monthly change in nonfarm payroll employment, representing the net number of jobs added to the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. A consistent monthly addition of 100,000-150,000 jobs is typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
         },
@@ -1000,9 +976,9 @@
             "june": "148.315",
             "july": "149.536",
             "august": "149.272",
-            "september":"150.157",
-            "october":"150.332",
-            "november":"150.705",
+            "september": "150.157",
+            "october": "150.332",
+            "november": "150.705",
             "change": "",
             "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. It's considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
         },
@@ -1020,8 +996,8 @@
             "july": "323.048",
             "august": "323.976",
             "september": "324.800",
-            "october":"324.800",
-            "november":"324.122",
+            "october": "324.800",
+            "november": "324.122",
             "change": "",
             "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."
         },
@@ -1038,7 +1014,7 @@
             "june": "119.9",
             "july": "119.4",
             "august": "119.5",
-            "september":"119.6",
+            "september": "119.6",
             "change": "",
             "explanation": "The Conference Board's Lagging Economic Index (LAG) is a composite of seven economic indicators that change after the economy as a whole changes. Components include the average duration of unemployment, the prime rate, and the ratio of consumer credit to personal income. The LAG helps confirm and assess the direction of the economy's movements over recent months. It's particularly useful for confirming that a turning point in the economy has actually occurred. The index is expressed relative to 2016=100 and is typically used in conjunction with the Leading and Coincident Economic Indexes to provide a comprehensive view of the business cycle."
         },
@@ -1057,8 +1033,8 @@
             "august": "48.7",
             "september": "49.1",
             "october": "48.7",
-            "november":"48.2",
-            "december":"47.9",
+            "november": "48.2",
+            "december": "47.9",
             "change": "",
             "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
         },
@@ -1077,9 +1053,8 @@
             "august": "55.4",
             "september": "53.9",
             "october": "54.8",
-            "november":"54.2",
-            "december":"53",
-
+            "november": "54.2",
+            "december": "53",
             "change": "",
             "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations."
         },
@@ -1096,7 +1071,7 @@
             "june": "98.8",
             "july": "98.9",
             "august": "98.6",
-            "september":"98.3",
+            "september": "98.3",
             "change": "",
             "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle."
         },
@@ -1115,8 +1090,8 @@
             "august": "100.8",
             "september": "98.8",
             "october": "98.2",
-            "november":"99",
-            "december":"99.5",
+            "november": "99",
+            "december": "99.5",
             "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."
         },
@@ -1136,7 +1111,7 @@
             "september": "50",
             "october": "52.4",
             "november": "52.6",
-            "december":"54.4",
+            "december": "54.4",
             "change": "",
             "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
         },
@@ -1154,10 +1129,9 @@
             "august": "101.6",
             "september": "101.8",
             "october": "101.5",
-            "november":"102",
-            "december":"102.3",
-
-            "change":"",
+            "november": "102",
+            "december": "102.3",
+            "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
         }
     ]

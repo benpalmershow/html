@@ -3,7 +3,7 @@ date: 2026-01-23T17:00:00
 ---
 ### <i data-lucide='gavel' class='post-icon'></i> **All 12 FY2026 Appropriations Bills Complete**
 
-Congress finished all 12 fiscal year 2026 spending bills with $1.6 trillion in discretionary spending - $45 billion below FY2025 levels. The package includes DOGE-backed reforms cutting the federal workforce by 10% and rescinding $11.7 billion from IRS Inflation Reduction Act funds.
+Congress finished all 12 fiscal year 2026 spending bills with $1.639 trillion in net base discretionary spending, $38.6 billion above FY2025 levels. The package includes DOGE-backed reforms cutting the federal workforce by 10% and rescinding $11.7 billion from IRS Inflation Reduction Act funds.
 
 **Key Allocations:**
 - **Defense**: $882.5B (includes 3.8% military pay raise)

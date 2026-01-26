@@ -138,7 +138,6 @@
             <div class="article-actions">
               <a href="?article=${article.id}" class="read-full-btn">
                 Read Full Article
-                <i data-lucide="arrow-right"></i>
               </a>
             </div>
           </div>

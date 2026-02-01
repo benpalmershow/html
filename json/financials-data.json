@@ -568,7 +568,7 @@
             "category": "Consumer Indicators",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2025-12-23T14:00:00Z",
+            "lastUpdated": "2026-01-31T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -580,7 +580,13 @@
             "september": "95.6",
             "october": "95.5",
             "november": "92.9",
-            "december": "89.1",
+            "december": "94.2",
+            "2026": {
+                "january": "84.5"
+                
+            },
+
+            
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
         },
@@ -631,7 +637,7 @@
             "category": "Trade & Tariffs",
             "agency": "FRED",
             "name": "Dollar Value Index",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-01-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
@@ -644,6 +650,9 @@
             "october": "121.17",
             "november": "121.80",
             "december": "120.57",
+            "2026": {
+                "january": "119.28"
+            },
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk sentiment. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
         },

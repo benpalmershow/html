@@ -821,7 +821,7 @@
 
 :is(.info-icon, .chart-icon).active {
     background: var(--logo-teal);
-    color: var(--color-white) !important;
+    color: #000000 !important;
 }
 
 .info-btn,
@@ -846,7 +846,7 @@
 .info-btn.active .info-icon,
 .chart-btn.active .chart-icon {
     background: var(--logo-teal);
-    color: var(--color-white) !important;
+    color: #000000 !important;
 }
 
 /* Ensure tooltip is always on top */

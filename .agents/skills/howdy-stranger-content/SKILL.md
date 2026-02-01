@@ -202,6 +202,64 @@ The renderer will:
 3. Create appropriate chart type
 4. Render with responsive Chart.js
 
+## Prediction Market Updates
+
+### NFL Game Predictions
+
+NFL prediction markets are stored in `json/financials-data.json` under the "Prediction Markets" category and displayed on `financials.html`.
+
+**Typical workflow when updating NFL games:**
+
+1. **Identify completed games:** Review current NFL games and check dates against current date
+2. **Research new games:** 
+   - Look up game date using web search if only teams are provided
+   - Verify date is within 1-2 weeks (prediction markets only active for near-term games)
+   - Primary source: Kalshi (https://kalshi.com/markets/kxnflgame)
+   - Secondary source: Polymarket (https://polymarket.com/sports/nfl)
+
+3. **Verify home/away format:**
+   - Format is always `[AWAY_TEAM] @ [HOME_TEAM]`
+   - The @ means "at" (away team visiting home team's stadium)
+   - Example: "DAL @ LV" means Dallas visiting Las Vegas
+   - Verify from market title and ESPN schedule
+
+4. **Verify team abbreviations:**
+   - Each team code maps to one team only (e.g., LV=Raiders NOT Texans)
+   - Use consistent abbreviations throughout
+
+5. **Verify odds from live markets (CRITICAL):**
+   - Visit Kalshi market URL and record the "Yes" probability for each team
+   - Cross-reference with Polymarket odds
+   - Use odds exactly as they appear (e.g., "69¢" not "69%")
+   - Do not use estimated or cached odds - verify immediately before updating
+
+6. **Update JSON with template:**
+   ```json
+   {
+     "category": "Prediction Markets",
+     "agency": "Kalshi",
+     "name": "[AWAY] @ [HOME]",
+     "game_title": "[Away Full Name] @ [Home Full Name]",
+     "game_time": "[Month Day, Year Time ET]",
+     "game_time_iso": "[YYYY-MM-DDTHH:MM:SS-04:00]",
+     "url": "[KALSHI_URL]",
+     "polymarket_url": "[POLYMARKET_URL]",
+     "[AWAY]_win_odds": "[ODDS]¢",
+     "[HOME]_win_odds": "[ODDS]¢",
+     "explanation": "NFL game prediction market showing the probability of the [Away] covering the spread against the [Home]. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
+   }
+   ```
+
+7. **Quality checks:**
+   - Verify both URLs are functional and load correctly
+   - Confirm odds match live market data
+   - Verify game date is in future
+   - Check home/away format is correct (AWAY @ HOME)
+   - Verify team names in `game_title` match abbreviations in `name`
+   - Validate JSON syntax is correct
+
+**See `/docs/financial_fetch.md` for detailed NFL prediction update procedures.**
+
 ## Media Management
 
 Media items are stored in `json/media.json` and displayed on `media.html`.

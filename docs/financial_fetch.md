@@ -13,6 +13,8 @@ When user prompts related to financial data updates:
 - **"update economic indicator [NAME]"**
 - **"refresh financial data"**
 - **"update NFL games"**
+- **"add Super Bowl prediction"**
+- **"update Super Bowl odds"**
 
 ---
 
@@ -237,6 +239,123 @@ Always verify team abbreviations match correct team names:
 - [ ] JSON syntax valid
 - [ ] No duplicate FOMC entries
 - [ ] Explanation mentions correct meeting date
+
+---
+
+### Super Bowl Prediction Updates
+
+#### Step 0: Identify Super Bowl Date and Teams
+**Process:**
+1. Determine Super Bowl date (typically first or second Sunday in February)
+2. If playoff schedule not finalized, confirm with NFL.com or ESPN
+3. Super Bowl prediction markets typically activate 2-4 weeks before game
+4. Note conference championship dates to ensure playoff teams are determined
+
+#### Step 1: Research Super Bowl Markets
+**Data Sources (in priority order):**
+1. **Kalshi** - Super Bowl winner/team outcome markets
+   - Markets available 2-4 weeks before Super Bowl
+   - Multiple market types: Winner, Conference winner, spread coverage
+   - Format: `kxsuperbowl-[YEAR][MARKET]` (e.g., `kxsuperbowl-26winner`)
+2. **Polymarket** - Super Bowl prediction markets with alternative probabilities
+   - Cross-reference probabilities with Kalshi
+   - Sometimes more liquid for specific outcomes
+3. **ESPN Sports Book** - Consensus NFL odds for validation
+   - Use for verification only, not primary source
+
+**Market Types Available:**
+- **Super Bowl Winner**: Which team wins outright
+- **Conference Winner**: Which conference's team wins (AFC vs NFC)
+- **Spread Markets**: Point spread probability for favored vs underdog team
+- **Parlay Markets**: Combined outcome probabilities
+
+#### Step 2: Verify Team and Odds Data
+**CRITICAL: Always verify actual odds from live market data before updating JSON**
+
+**For Super Bowl Teams:**
+1. Confirm teams from NFL playoff results (not speculation on likely teams)
+2. Only add Super Bowl market AFTER playoff bracket is finalized
+3. Use official team names: Full name + city (e.g., "Kansas City Chiefs" not just "Chiefs")
+4. Verify team abbreviations match standard NFL codes
+
+**Kalshi Super Bowl Odds Verification:**
+1. Visit the Kalshi Super Bowl market URL
+2. Check probability for each team outcome
+3. Record exact probabilities as they appear (e.g., "38¢" for 38% probability)
+4. If multiple market types, capture primary "Winner" market
+5. Verify all team probabilities sum to approximately 100¢
+
+**Polymarket Super Bowl Verification:**
+1. Visit Polymarket Super Bowl event page
+2. Cross-reference team outcome probabilities
+3. Check if odds differ by more than 5¢ from Kalshi
+4. Document any significant divergences
+5. Use Polymarket as backup if Kalshi unavailable
+
+**Odds Update Timing:**
+- Update probabilities 3-4 weeks before Super Bowl (once teams confirmed)
+- Re-check odds weekly for major changes
+- Lock odds 24 hours before kickoff
+- Update if odds shift by more than 5¢ for any team
+
+#### Step 3: Update JSON Structure
+**Super Bowl Prediction Market Template:**
+```json
+{
+    "category": "Prediction Markets",
+    "agency": "Kalshi",
+    "name": "Super Bowl LIX Winner",
+    "event": "Super Bowl LIX",
+    "game_date": "[Month Day, Year]",
+    "game_time": "[Time ET]",
+    "game_time_iso": "[YYYY-MM-DDTHH:MM:SS-04:00]",
+    "url": "[KALSHI_SUPERBOWL_URL]",
+    "polymarket_url": "[POLYMARKET_SUPERBOWL_URL]",
+    "[TEAM1_ABBREV]_win_odds": "[ODDS]¢",
+    "[TEAM2_ABBREV]_win_odds": "[ODDS]¢",
+    "[TEAM3_ABBREV]_win_odds": "[ODDS]¢",
+    "[TEAM4_ABBREV]_win_odds": "[ODDS]¢",
+    "explanation": "Super Bowl LIX winner prediction market. Odds reflect the market probability of each team winning the championship. Market expectations incorporate team strength, key injuries, playoff seeding, and historical performance."
+}
+```
+
+**Field Requirements:**
+- `name`: "Super Bowl [ROMAN_NUMERAL] Winner" (e.g., "Super Bowl LIX Winner")
+- `event`: "Super Bowl [ROMAN_NUMERAL]"
+- `game_date`: Date of Super Bowl (e.g., "Feb 9, 2026")
+- `game_time`: Kickoff time (typically 6:30 PM ET)
+- `game_time_iso`: ISO 8601 format (e.g., "2026-02-09T18:30:00-05:00")
+- `url`: Kalshi Super Bowl market URL
+- `polymarket_url`: Polymarket Super Bowl event page
+- `[TEAM]_win_odds`: Odds for each playoff team in cents format (e.g., "22¢")
+- `explanation`: Standard template mentioning Super Bowl number and market context
+
+**Multi-Team Format Note:**
+- Super Bowl markets include 2-4 teams (conference winners or all finalists)
+- Only add entries for teams that have qualified for Super Bowl
+- Add one `[TEAM]_win_odds` field per team competing
+
+#### Step 4: Replace Expired Super Bowl Markets
+**Process:**
+1. Identify Super Bowl markets with game times in the past (game already played)
+2. Remove completed Super Bowl prediction from JSON
+3. Add new upcoming Super Bowl market (once playoff bracket finalized)
+4. Update `lastUpdated` timestamp
+
+#### Step 5: Quality Verification
+**Before committing:**
+- [ ] Both Kalshi and Polymarket URLs functional and load correctly
+- [ ] Probabilities verified from live market sources
+- [ ] All team probabilities sum to approximately 100¢
+- [ ] Super Bowl date is in future
+- [ ] Game time is accurate (typically 6:30 PM ET)
+- [ ] All competing teams are included with win odds
+- [ ] Team abbreviations and full names match NFL standards
+- [ ] Teams are confirmed playoff/Super Bowl participants (not speculative)
+- [ ] Date format consistent with other prediction markets
+- [ ] JSON syntax valid
+- [ ] No duplicate Super Bowl entries
+- [ ] Explanation accurately describes market type and context
 
 ---
 

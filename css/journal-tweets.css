@@ -7,8 +7,6 @@
     --tweet-text-secondary: #536471;
     --tweet-text-muted: #8b98a5;
     --tweet-border: #eff3f4;
-    --tweet-accent: #1d9bf0;
-    --tweet-accent-hover: #1a8cd8;
     --tweet-shadow: rgba(0, 0, 0, 0.03);
 }
 
@@ -48,13 +46,6 @@ html.dark-mode {
 }
 
 @media (max-width: 480px) {
-    #journal-feed {
-        max-width: 100% !important;
-        padding: 0 var(--spacing-sm) !important;
-    }
-}
-
-@media (max-width: 414px) {
     #journal-feed {
         max-width: 100% !important;
         padding: 0 var(--spacing-sm) !important;
@@ -257,14 +248,5 @@ html.dark-mode #curry-goat-warning {
     .entry-title,
     .entry-content {
         font-size: 0.95rem;
-    }
-
-    /* Responsive video embeds */
-    .entry-content iframe,
-    .entry-content video {
-        max-width: 100%;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        height: auto;
     }
 }

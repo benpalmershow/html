@@ -2,7 +2,7 @@
 
 ## Overview
 
-Posts provide a chronological feed of updates across the site. Each post is a markdown file with YAML frontmatter in `article/posts/`, registered in `json/posts.json`.
+Posts provide a chronological feed of updates across the site. Each post is a markdown file with YAML frontmatter in `article/posts/`, registered in `json/posts.json`. Filenames follow `YYYY-MM-DD-slug.md`; ensure the slug in the filename matches the `file` path entry.
 
 ---
 
@@ -10,14 +10,14 @@ Posts provide a chronological feed of updates across the site. Each post is a ma
 
 Every post must have:
 
-1. **YAML Frontmatter** - Date in ISO format
+1. **YAML Frontmatter** - Date in ISO 8601 with timezone (`Z`) to control ordering, even within the same day
    ```markdown
    ---
-   date: 2025-11-22T10:50:00
+   date: 2025-11-22T10:50:00Z
    ---
    ```
 
-2. **Icon + Title** - Lucide icon and descriptive title
+2. **Icon + Title** - Lucide icon in first heading with `post-icon` class and descriptive title
    ```markdown
    ### <i data-lucide='icon-name' class='post-icon'></i> **Title**
    ```
@@ -30,10 +30,10 @@ Every post must have:
 
 6. **Navigation Link** - Link to relevant page with proper anchor/filter
 
-7. **Registration** - Entry in `json/posts.json` with correct date and file path
+7. **Registration** - Entry in `json/posts.json` with correct date (ISO 8601 + `Z`) and file path; newest entries go first in the array
    ```json
    {
-     "date": "2025-11-22T10:50:00",
+     "date": "2025-11-22T10:50:00Z",
      "file": "article/posts/2025-11-22-consumer-sentiment-final.md"
    }
    ```
@@ -46,12 +46,14 @@ Every post must have:
 - **Descriptions**: 2-3 sentences max. Narrative-driven, not dry analysis. Avoid "Analysis of X" patterns.
 - **Emphasis**: Use `<b>` for bold, **not** emojis
 - **Line breaks**: `<br><br>` for spacing between sections
+- **Snippet**: First paragraph becomes the card snippet (aim ≤160 chars, no links). First image becomes the card preview.
+- **Icons**: Use a Lucide icon in the first heading with `post-icon`. Quick defaults: `book-open` (analysis), `music` (music), `clapperboard` (film), `line-chart` (markets), `gavel` (legal), `trophy` (sports).
 
 ### Images (Media Posts)
 - **Source**: Use cover URL directly from `media.json` entry for consistency
 - **Standard**: `width: 60px; height: auto; float: left; margin-right: 10px;`
 - **Music**: `border-radius: 50%; object-fit: cover; height: 60px; animation: spin 3s linear infinite`
-- Always include `alt` text matching media title
+- Always include `alt` text matching media title; no decorative-only images
 - Wrap in anchor tags linking to `media.html#slug` for navigation
 
 
@@ -64,6 +66,7 @@ Every post must have:
 - **Financials with anchor**: `financials.html#latest-13f-filings` - Links to specific section (e.g., 13F Holdings)
 - **Tickers**: `https://finance.yahoo.com/quote/TICKER` with `target="_blank" rel="noopener"`
 - **External**: Always include `target="_blank" rel="noopener"`
+- Link text must be descriptive (avoid “here” or bare URLs)
 
 Link text for articles should be: `[Read the full analysis](news.html?article=slug)`
 
@@ -118,7 +121,7 @@ What the numbers mean in 1-2 sentences. Include broader context.
 Calculate and display month-over-month changes:
 - Formula: `((Current - Previous) / Previous) × 100`
 - Format: `Value (+X.X% MoM)` or `Value (-X.X% MoM)`
-- Round to one decimal place
+- Round to one decimal place and verify with a calculator before publishing
 
 ### Synopsis
 - 1-2 sentences explaining what the data means
@@ -199,7 +202,7 @@ For posts announcing new 13F filing data:
 
 ### When to Include
 
-**MANDATORY for all updates.** Every post section that references data, metrics, or indicators must include a chart.
+**MANDATORY for all data-driven sections.** Every post section that references data, metrics, or indicators must include a chart. Media-only posts with no data are exempt.
 
 Examples:
 - Employment data (ADP, JOLTS, unemployment, etc.)
@@ -222,6 +225,8 @@ Use template syntax only:
 - Place chart after data section and synopsis
 - Place chart before final navigation link
 - One chart per section in multi-topic posts
+
+**Common chart pitfalls:** name mismatch with `financials-data.json`, missing chart in multi-topic sections, or chart placed after navigation link.
 
 ### Valid Chart Examples
 - ✓ 10-Year Treasury Yield (9 months)
@@ -301,6 +306,8 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] Chart with template syntax `{{chart:Name}}` (if data-driven)
 - [ ] Navigation link with proper anchor/filter
 - [ ] Post registered in json/posts.json
+- [ ] Filename matches slug and `file` entry; entry placed at top of `posts.json` array (newest first)
+- [ ] First paragraph usable as snippet (≤160 chars, no links); first image intentional for preview
 
 ### Content Quality
 - [ ] No emojis (use Lucide icons instead)
@@ -309,6 +316,8 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] Tested on mobile
 - [ ] No em dashes (—) in prose; use hyphens (-) instead
 - [ ] Avoid "It's not X, it's Y" inversion pattern
+- [ ] Alt text present and descriptive for every image; link text descriptive (no “here”)
+- [ ] Chart indicator names exactly match `financials-data.json`
 
 ### Type-Specific Requirements
 
@@ -316,6 +325,7 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] Chart indicator name exactly matches `name` field in financials-data.json
 - [ ] MoM % calculations included
 - [ ] Synopsis explains what numbers mean
+- [ ] MoM math double-checked with calculator; rounded to one decimal place
 
 **Media Posts:**
 - [ ] Cover images included with correct styling
@@ -332,6 +342,13 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] Firm counts and AUM totals included
 - [ ] Filing dates included
 - [ ] Technical improvements described
+
+### Common Pitfalls
+- Missing `Z` timezone in dates (frontmatter or posts.json)
+- Slug mismatch between filename and `file` path
+- Chart name typos vs. `financials-data.json`
+- Snippet too long or includes links
+- Navigation link missing filter or anchor
 
 ---
 

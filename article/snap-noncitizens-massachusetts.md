@@ -7,7 +7,7 @@ category: policy
 
 ### New Soda Restrictions Effective January 1, 2026
 
-Starting tomorrow, January 1, 2026, new SNAP retailer compliance policies will implement stricter restrictions on soda purchases.[^10] The updated USDA Food and Nutrition Service guidelines prohibit the purchase of:
+SNAP spending totaled $99.8 billion, with monthly benefits averaging $187.20 per participant. Starting January 1, 2026, new SNAP retailer compliance policies will implement stricter restrictions on soda purchases.[^10] The updated USDA Food and Nutrition Service guidelines prohibit the purchase of:
 
 - Carbonated soft drinks with added sugars
 - Energy drinks with added sweeteners

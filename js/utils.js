@@ -75,7 +75,10 @@ function formatCompactNumber(num) {
         const kValue = num / 1000;
         // Show 1 decimal place for values under 100K, no decimals for 100K+
         if (absNum < 100000) {
-            return (num >= 0 ? '+' : '') + kValue.toFixed(1) + 'K';
+            const formatted = kValue.toFixed(1);
+            // Remove .0 decimals
+            const clean = formatted.replace(/\.0$/, '');
+            return (num >= 0 ? '+' : '') + clean + 'K';
         } else {
             return (num >= 0 ? '+' : '') + Math.round(kValue) + 'K';
         }
@@ -230,28 +233,28 @@ function calculateAllMonthlyChanges(indicator, MONTHS) {
      const yearKeys = Object.keys(indicator)
          .filter(key => /^\d{4}$/.test(key))
          .map(key => parseInt(key))
-         .sort((a, b) => b - a); // Sort years descending
+         .sort((a, b) => a - b); // Sort years ascending (oldest first) for chronological order
 
      // Build list of all data points in chronological order
      const allValues = [];
      
-     // Add year-nested data first (in reverse chronological order by year, then by month)
+     // Add flat structure data first (legacy data, chronologically earlier)
+     for (let i = 0; i < MONTHS.length; i++) {
+         const month = MONTHS[i];
+         const value = extractNumericValue(indicator[month]);
+         if (value !== null) {
+             allValues.push({ value, month, year: null, monthIndex: i });
+         }
+     }
+     
+     // Add year-nested data in chronological order (ascending years)
      for (const year of yearKeys) {
          for (let i = 0; i < MONTHS.length; i++) {
              const month = MONTHS[i];
              const value = extractNumericValue(indicator[year][month]);
-             if (value !== null) {
+             if (value !== null && !allValues.some(v => v.month === month && v.year === year)) {
                  allValues.push({ value, month, year, monthIndex: i });
              }
-         }
-     }
-
-     // Add flat structure data (legacy support)
-     for (let i = 0; i < MONTHS.length; i++) {
-         const month = MONTHS[i];
-         const value = extractNumericValue(indicator[month]);
-         if (value !== null && !allValues.some(v => v.month === month && v.year === null)) {
-             allValues.push({ value, month, year: null, monthIndex: i });
          }
      }
 

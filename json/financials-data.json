@@ -953,7 +953,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Jobless Claims",
-            "lastUpdated": "2026-01-16T16:00:00Z",
+            "lastUpdated": "2026-02-05T16:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/ICSA",
             "march": "223,200",
@@ -966,6 +966,9 @@
             "october": "226,750",
             "november": "217,600",
             "december": "219,000",
+            "2026": {
+                "january": "211,200"
+            },
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
         },

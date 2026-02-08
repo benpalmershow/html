@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-02-05T18:00:00Z",
+    "lastUpdated": "2026-02-08T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -179,34 +179,8 @@
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
         },
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "NE @ DEN",
-            "game_title": "Patriots @ Broncos",
-            "game_time": "Jan 25, 2026 3:00 PM ET",
-            "game_time_iso": "2026-01-25T15:00:00-05:00",
-            "lastUpdated": "2026-01-24T18:00:00Z",
-            "url": "https://kalshi.com/markets/kxnflafcchamp/american-football-conference-champion/kxnflafcchamp-25",
-            "polymarket_url": "https://polymarket.com/sports/nfl/games/week/14/nfl-ne-den-2026-01-25",
-            "NE_win_odds": "69¢",
-            "DEN_win_odds": "32¢",
-            "explanation": "AFC Championship game prediction market showing the probability of the Patriots covering the spread against the Broncos. Odds reflect market expectations for game outcome based on team performance, injuries (Broncos QB Bo Nix reported out), and betting patterns."
-        },
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "LAR @ SEA",
-            "game_title": "Rams @ Seahawks",
-            "game_time": "Jan 25, 2026 6:30 PM ET",
-            "game_time_iso": "2026-01-25T18:30:00-05:00",
-            "lastUpdated": "2026-01-24T18:00:00Z",
-            "url": "https://kalshi.com/markets/kxnflnfcchamp/national-football-conference-champion/kxnflnfcchamp-25",
-            "polymarket_url": "https://polymarket.com/sports/nfl/games/week/14/nfl-lar-sea-2026-01-25",
-            "LAR_win_odds": "42¢",
-            "SEA_win_odds": "58¢",
-            "explanation": "NFC Championship game prediction market showing the probability of the Rams covering the spread against the Seahawks. Odds reflect market expectations for game outcome based on team performance, injuries, and betting patterns."
-        },
+    
+      
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
@@ -214,10 +188,10 @@
             "game_title": "Patriots @ Seahawks",
             "game_time": "Feb 8, 2026 6:30 PM ET",
             "game_time_iso": "2026-02-08T18:30:00-05:00",
-            "lastUpdated": "2026-01-31T18:00:00Z",
+            "lastUpdated": "2026-02-08T18:00:00Z",
             "url": "https://kalshi.com/markets/kxsb/super-bowl/kxsb-26",
             "polymarket_url": "https://polymarket.com/event/super-bowl-champion-2026-731",
-            "NE_win_odds": "31¢",
+            "NE_win_odds": "33¢",
             "SEA_win_odds": "68¢",
             "explanation": "Super Bowl LX prediction market showing the probability of the Patriots defeating the Seahawks. Odds reflect market expectations based on team performance, playoff momentum, and betting patterns. This is a rematch of Super Bowl XLIX from the 2014 season."
         },

@@ -123,11 +123,21 @@ html.dark-mode {
 /* Entry content - tweet text */
 .entry-content {
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.6;
     color: var(--tweet-text);
     margin: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+/* Paragraph styling within entry content */
+.entry-content p {
+    margin: 0 0 1.2em 0;
+    line-height: 1.6;
+}
+
+.entry-content p:last-child {
+    margin-bottom: 0;
 }
 
 /* Responsive video embeds */

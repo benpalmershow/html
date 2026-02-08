@@ -136,8 +136,17 @@ async function renderEntryFromFile(entry, entryId) {
 }
 
 function renderInlineEntry(entry, entryId) {
-  const content = entry.content.includes('<') ? entry.content : linkify(entry.content);
-  return `<div id="${entryId}" class="entry"><div class="entry-title">${entry.title}</div><div class="entry-content">${content}</div></div>`;
+   let content = entry.content.includes('<') ? entry.content : linkify(entry.content);
+   
+   // Handle paragraph breaks if content doesn't contain HTML
+   if (!entry.content.includes('<')) {
+     const paragraphs = content.split(/\n\n+/);
+     content = paragraphs
+       .map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`)
+       .join('');
+   }
+   
+   return `<div id="${entryId}" class="entry"><div class="entry-title">${entry.title}</div><div class="entry-content">${content}</div></div>`;
 }
 
 function scrollToHash() {

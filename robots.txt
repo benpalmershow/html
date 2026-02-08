@@ -1,2 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /*/$
+Disallow: /*.html$
+
+# Sitemap
+Sitemap: https://howdystranger.net/news-sitemap.xml

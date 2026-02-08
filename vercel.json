@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)/$",
+      "destination": "/$1",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!news-feed\\.xml|news-sitemap\\.xml|robots\\.txt|sitemap\\.xml|site\\.webmanifest|sw\\.js).*)\\.html$",
+      "destination": "/:path",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)(webp|jpg|png|gif|svg)",

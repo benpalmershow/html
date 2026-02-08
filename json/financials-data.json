@@ -28,7 +28,7 @@
             "category": "Consumer Indicators",
             "agency": "UMich",
             "name": "Consumer Sentiment",
-            "lastUpdated": "2026-01-24T15:00:00Z",
+            "lastUpdated": "2026-02-07T15:00:00Z",
             "releaseDay": 15,
             "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
@@ -42,7 +42,8 @@
             "november": "51",
             "december": "52.9",
             "2026": {
-                "january": "56.4"
+                "january": "56.4",
+                "february": "57.3"
             },
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
@@ -932,7 +933,7 @@
             "category": "Employment Indicators",
             "agency": "Challenger Gray & Christmas",
             "name": "Job Cuts Report",
-            "lastUpdated": "2025-12-10T14:00:00Z",
+            "lastUpdated": "2026-02-06T14:00:00Z",
             "releaseDay": 6,
             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
             "january": "49,795",
@@ -946,6 +947,10 @@
             "september": "54,064",
             "october": "153,074",
             "november": "71,321",
+            "december": "35,553",
+            "2026": {
+                "january": "108,435"
+            },
             "change": "",
             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
         },

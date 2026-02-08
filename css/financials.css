@@ -371,6 +371,28 @@
     overflow-wrap: normal;
 }
 
+.data-headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-header-left,
+.data-header-right {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.data-header-right {
+    text-align: right;
+}
+
 .indicator-actions {
     display: flex;
     gap: 4px;

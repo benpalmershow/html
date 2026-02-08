@@ -1029,7 +1029,7 @@
             "category": "Consumer Indicators",
             "agency": "BLS",
             "name": "CPI",
-            "lastUpdated": "2025-12-19T14:00:00Z",
+            "lastUpdated": "2026-02-07T14:00:00Z",
             "releaseDay": 11,
             "url": "https://www.bls.gov/cpi/data.htm",
             "march": "319.799",
@@ -1041,8 +1041,24 @@
             "september": "324.800",
             "october": "324.800",
             "november": "324.122",
+            "december": "324.054",
+            "2026": {
+                "january": ""
+            },
+            "yoy": {
+                "march": "2.4%",
+                "april": "2.3%",
+                "may": "2.4%",
+                "june": "2.7%",
+                "july": "2.7%",
+                "august": "2.9%",
+                "september": "3.0%",
+                "october": "n/a",
+                "november": "2.7%",
+                "december": "2.7%"
+            },
             "change": "",
-            "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."
+            "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments. Note: October 2025 data unavailable due to government shutdown affecting BLS data collection."
         },
         {
             "category": "Business Indicators",

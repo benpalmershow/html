@@ -139,7 +139,6 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 }
 
 function buildExtraHtml(indicator, dataItem, MONTHS) {
-     const cpiYoyData = { march: '2.4%', april: '2.3%', may: '2.4%', june: '2.7%', july: '2.7%', august: '2.9%', september: '3.0%' };
      let extraHtml = '';
  
      if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
@@ -150,8 +149,8 @@ function buildExtraHtml(indicator, dataItem, MONTHS) {
              extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
          }
      } else if (indicator.name === 'CPI') {
-         if (cpiYoyData[dataItem.month]) {
-             extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${cpiYoyData[dataItem.month]}</span>`;
+         if (indicator.yoy && indicator.yoy[dataItem.month]) {
+             extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${indicator.yoy[dataItem.month]}</span>`;
          }
      }
  
@@ -206,6 +205,12 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
             ${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}
 
             <div class="indicator-content">
+                ${indicator.name === 'CPI' ? `
+                    <div class="data-headers">
+                        <div class="data-header-left">Value</div>
+                        <div class="data-header-right">YoY%</div>
+                    </div>
+                ` : ''}
                 ${latestDataHtml}
                 
                 <div class="explanation-text" style="display: none; margin-top: 8px; padding: 8px; background: var(--bg-secondary, #f5f5f5); border-radius: 4px; font-size: 0.9em; color: var(--text-secondary, #666);"></div>

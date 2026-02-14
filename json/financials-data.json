@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-02-08T18:00:00Z",
+    "lastUpdated": "2026-02-14T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -75,7 +75,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Existing Home Sales",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-14T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.nar.realtor/newsroom/existing-home-sales-edged-lower-by-0-5-in-april",
             "march": "",
@@ -87,7 +87,10 @@
             "september": "4.05M",
             "october": "4.11M",
             "november": "4.13M",
-            "december": "4.35M",
+            "december": "4.27M",
+            "2026": {
+                "january": "3.91M"
+            },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
         },
@@ -732,7 +735,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Median Home Price",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-14T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
             "march": "$403,100",
@@ -742,9 +745,12 @@
             "july": "$425,700",
             "august": "$422,400",
             "september": "$412,300",
-            "october": "$415,200",
-            "november": "$409,200",
-            "december": "$405,400",
+            "october": "$414,900",
+            "november": "$410,000",
+            "december": "$405,010",
+            "2026": {
+                "january": "$396,800"
+            },
             "change": "",
             "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
         },
@@ -1006,7 +1012,7 @@
             "category": "Consumer Indicators",
             "agency": "BLS",
             "name": "CPI",
-            "lastUpdated": "2026-02-07T14:00:00Z",
+            "lastUpdated": "2026-02-14T14:00:00Z",
             "releaseDay": 11,
             "url": "https://www.bls.gov/cpi/data.htm",
             "march": "319.799",
@@ -1020,7 +1026,7 @@
             "november": "324.122",
             "december": "324.054",
             "2026": {
-                "january": ""
+                "january": "325.252"
             },
             "yoy": {
                 "march": "2.4%",
@@ -1032,7 +1038,10 @@
                 "september": "3.0%",
                 "october": "n/a",
                 "november": "2.7%",
-                "december": "2.7%"
+                "december": "2.7%",
+                "2026": {
+                    "january": "2.4%"
+                }
             },
             "change": "",
             "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments. Note: October 2025 data unavailable due to government shutdown affecting BLS data collection."

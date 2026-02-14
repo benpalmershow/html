@@ -149,8 +149,19 @@ function buildExtraHtml(indicator, dataItem, MONTHS) {
              extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
          }
      } else if (indicator.name === 'CPI') {
-         if (indicator.yoy && indicator.yoy[dataItem.month]) {
-             extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${indicator.yoy[dataItem.month]}</span>`;
+         let yoyValue = null;
+         
+         // Check for year-nested YoY data first (e.g., yoy.2026.january)
+         if (indicator.yoy && dataItem.year && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) {
+             yoyValue = indicator.yoy[dataItem.year][dataItem.month];
+         }
+         // Fall back to flat YoY structure (e.g., yoy.january)
+         else if (indicator.yoy && indicator.yoy[dataItem.month]) {
+             yoyValue = indicator.yoy[dataItem.month];
+         }
+         
+         if (yoyValue) {
+             extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${yoyValue}</span>`;
          }
      }
  

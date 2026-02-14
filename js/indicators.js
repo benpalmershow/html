@@ -218,7 +218,6 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
             <div class="indicator-content">
                 ${indicator.name === 'CPI' ? `
                     <div class="data-headers">
-                        <div class="data-header-left">Value</div>
                         <div class="data-header-right">YoY%</div>
                     </div>
                 ` : ''}

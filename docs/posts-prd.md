@@ -2,13 +2,15 @@
 
 ## Overview
 
-Posts provide a chronological feed of updates across the site. Each post is a markdown file with YAML frontmatter in `article/posts/`, registered in `json/posts.json`. Filenames follow `YYYY-MM-DD-slug.md`; ensure the slug in the filename matches the `file` path entry.
+Posts provide <b>concise, chart-driven updates</b> across the site. Each post is a markdown file with YAML frontmatter in `article/posts/`, registered in `json/posts.json`. Filenames follow `YYYY-MM-DD-slug.md`; ensure the slug in the filename matches the `file` path entry.
+
+<b>Core Principles:</b> Short, informative, visual, and properly linked.
 
 ---
 
 ## Required Elements (ALL Posts)
 
-Every post must have:
+Every post must be <b>concise and chart-driven</b> with:
 
 1. **YAML Frontmatter** - Date in ISO 8601 with timezone (`Z`) to control ordering, even within the same day
    ```markdown
@@ -22,13 +24,13 @@ Every post must have:
    ### <i data-lucide='icon-name' class='post-icon'></i> **Title**
    ```
 
-3. **Description** - 1-2 sentences, narrative-driven (not dry analysis)
+3. **Description** - <b>1-2 sentences maximum</b>, narrative-driven (not dry analysis)
 
-4. **Data/Sections** - Relevant information with proper formatting
+4. **Data/Sections** - <b>Essential information only</b>, minimal formatting
 
-5. **Chart** - If post contains metrics, indicators, or quantitative data (see Charts section)
+5. **Chart** - <b>MANDATORY</b> for all posts with any data/metrics (see Charts section)
 
-6. **Navigation Link** - Link to relevant page with proper anchor/filter
+6. **Navigation Link** - <b>REQUIRED</b> link to relevant page with proper anchor/filter
 
 7. **Registration** - Entry in `json/posts.json` with correct date (ISO 8601 + `Z`) and file path; newest entries go first in the array
    ```json
@@ -43,10 +45,11 @@ Every post must have:
 ## Formatting Standards
 
 ### Content Rules
-- **Descriptions**: 2-3 sentences max. Narrative-driven, not dry analysis. Avoid "Analysis of X" patterns.
+- **Descriptions**: <b>1-2 sentences maximum</b>. Narrative-driven, not dry analysis. Avoid "Analysis of X" patterns.
+- **Length**: <b>Keep posts under 150 words total</b> when possible. Focus on essential information only.
 - **Emphasis**: Use `<b>` for bold, **not** emojis
 - **Line breaks**: `<br><br>` for spacing between sections
-- **Snippet**: First paragraph becomes the card snippet (aim ≤160 chars, no links). First image becomes the card preview.
+- **Snippet**: First paragraph becomes the card snippet (aim ≤120 chars, no links). First image becomes the card preview.
 - **Icons**: Use a Lucide icon in the first heading with `post-icon`. Quick defaults: `book-open` (analysis), `music` (music), `clapperboard` (film), `chart-line` (markets), `fuel` (energy/oil), `gavel` (legal), `trophy` (sports).
 
 ### Images (Media Posts)
@@ -61,12 +64,15 @@ Every post must have:
 - **Media**: `media.html#slug-name`
 - **News articles & Analysis**: `news.html?article=slug` (for full articles in `article/` folder)
 - **Journal**: `journal.html#entry-slug`
-- **Financials with category filter**: `financials.html?filter=Category%20Name` - Activates the category filter when page loads
+- **Financials with category filter**: `financials.html?filter=Category%20Name` - <b>ALWAYS use filters for immediate visibility</b>
   - Examples: `financials.html?filter=Prediction%20Markets`, `financials.html?filter=Consumer%20Indicators`, `financials.html?filter=Employment%20Indicators`, `financials.html?filter=Housing%20Market`
 - **Financials with anchor**: `financials.html#latest-13f-filings` - Links to specific section (e.g., 13F Holdings)
 - **Tickers**: `https://finance.yahoo.com/quote/TICKER` with `target="_blank" rel="noopener"`
 - **External**: Always include `target="_blank" rel="noopener"`
-- Link text must be descriptive (avoid “here” or bare URLs)
+- Link text must be descriptive (avoid "here" or bare URLs)
+
+<b>Navigation Links Best Practice:</b>
+Every post MUST end with a navigation link that takes users directly to the relevant content. Use anchors and filters to ensure users see the specific information immediately without extra clicks.
 
 Link text for articles should be: `[Read the full analysis](news.html?article=slug)`
 
@@ -74,12 +80,12 @@ Link text for articles should be: `[Read the full analysis](news.html?article=sl
 Always use `?filter=Category%20Name` to activate category filtering on page load, making the relevant indicators immediately visible without user interaction. Replace spaces with `%20`. Common categories: Prediction Markets, Consumer Indicators, Employment Indicators, Business Indicators, Housing Market, Trade & Tariffs, Commodities.
 
 ### Multi-Topic Posts
-Separate distinct sections with `---` (horizontal rule) and give each its own icon/title. Include charts for each financial/data-driven section:
+<b>Keep multi-topic posts minimal</b>. Separate distinct sections with `---` and give each its own icon/title. <b>Each section MUST have a chart</b> for financial/data-driven content:
 
 ```markdown
 ### <i data-lucide='trophy' class='post-icon'></i> **Topic 1**
 
-Description.
+1-2 sentence description.
 
 {{chart:Indicator Name 1}}
 
@@ -87,9 +93,9 @@ Description.
 
 ---
 
-###  **Topic 2**
+### <i data-lucide='chart-line' class='post-icon'></i> **Topic 2**
 
-Description with data if applicable.
+1-2 sentence description with data.
 
 {{chart:Indicator Name 2}}
 
@@ -104,13 +110,13 @@ Include these sections for indicator releases:
 
 ### Template
 ```markdown
-###  **Catchy Title**
+### <i data-lucide='chart-line' class='post-icon'></i> **Catchy Title**
 
 1-2 sentence narrative opening.
 
 - **Month**: Value (+X.X% MoM)
 
-What the numbers mean in 1-2 sentences. Include broader context.
+1-2 sentence context.
 
 {{chart:Indicator Name}}
 
@@ -124,9 +130,10 @@ Calculate and display month-over-month changes:
 - Round to one decimal place and verify with a calculator before publishing
 
 ### Synopsis
-- 1-2 sentences explaining what the data means
+- <b>1-2 sentences maximum</b> explaining what the data means
 - Connect to broader economic theme or market context
 - Avoid repeating raw data
+- Focus on implications, not description
 
 ### Legal and Constitutional Topics
 
@@ -196,13 +203,60 @@ For posts announcing new 13F filing data:
 
 ---
 
+## Ultra-Concise Post Templates
+
+### Minimal Data Post (Under 100 words)
+```markdown
+### <i data-lucide='chart-line' class='post-icon'></i> **Indicator: Month Result**
+
+[Indicator] rose to [value] in [month], up [X.X%] from [previous month]. Key trend continues.
+
+**Month**: [value] ([+/-X.X% MoM])
+
+{{chart:Indicator Name}}
+
+[View all indicators](financials.html?filter=Category)
+```
+
+### Minimal Media Post (Under 50 words)
+```markdown
+### <i data-lucide='clapperboard' class='post-icon'></i> **Title**
+
+<a href="media.html#slug"><img src="image_url" alt="Title" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>
+
+One-sentence description.
+
+[View in Media](media.html#slug)
+```
+
+### Two-Topic Post (Each under 60 words)
+```markdown
+### <i data-lucide='trophy' class='post-icon'></i> **Topic 1**
+
+1-2 sentence summary with key data point.
+
+{{chart:Indicator 1}}
+
+[View](link1)
+
+---
+
+### <i data-lucide='chart-line' class='post-icon'></i> **Topic 2**
+
+1-2 sentence summary with key data point.
+
+{{chart:Indicator 2}}
+
+[View](link2)
+```
+
 ---
 
 ## Charts
 
-### When to Include
+### <b>MANDATORY CHART POLICY</b>
 
-**MANDATORY for all data-driven sections.** Every post section that references data, metrics, or indicators must include a chart. Media-only posts with no data are exempt.
+<b>ALL posts with ANY data, metrics, or indicators MUST include charts.</b> No exceptions.
 
 Examples:
 - Employment data (ADP, JOLTS, unemployment, etc.)
@@ -239,56 +293,56 @@ Use template syntax only:
 
 ## Examples
 
-### Financial Indicator
+### Financial Indicator (Concise Example)
 ```markdown
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Sentiment: Final November Data**
 
-Consumer Sentiment final reading for November released at 51, slightly higher than the preliminary 50.3 reported 14 days ago.
+Consumer sentiment final reading for November rose to 51, up from preliminary 50.3 but still below October's 53.6.
 
 **Preliminary (Nov 7):** 50.3  
 **Final (Nov 22):** 51  
 **Revision:** +0.7 points
-
-Despite the modest upward revision, the index remains weak, down from 53.6 in October, signaling persistent consumer pessimism amid economic uncertainty.
 
 {{chart:Consumer Sentiment}}
 
 [View all consumer indicators](financials.html?filter=Consumer%20Indicators)
 ```
 
-### Media (Film)
+### Media (Film - Ultra-Concise)
 ```markdown
-### **Holy Spider**
+### <i data-lucide='clapperboard' class='post-icon'></i> **Holy Spider**
 
 <a href="media.html#holy-spider"><img src="https://..." alt="Holy Spider" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>
 
-A female journalist investigates a serial killer in Iran. Based on true events, this crime thriller exposes vigilante justice dangers in a theocratic society.
+Female journalist investigates serial killer in Iran. Based on true events.
 
 [View in Media](media.html#holy-spider)
 ```
 
-### Music
+### Music (Ultra-Concise)
 ```markdown
-###  **A Father's Song by Allen Stone**
+### <i data-lucide='music' class='post-icon'></i> **A Father's Song by Allen Stone**
 
 <a href="media.html#a-fathers-song"><img src="https://..." alt="A Father's Song" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; float: left; margin-right: 10px; animation: spin 3s linear infinite;"></a>
 
-A touching ballad about fatherhood and family bonds.
+Touching ballad about fatherhood and family bonds.
 
 [Listen Now](media.html#a-fathers-song)
 ```
 
-### Multi-Topic (Sports + Housing)
+### Multi-Topic (Sports + Housing - Concise)
 ```markdown
-### **Bills @ Texans Thursday Night**
+### <i data-lucide='trophy' class='post-icon'></i> **Bills @ Texans Thursday Night**
 
 Bills favored at 72¢ over Texans at 28¢. Game time: Nov 20, 8:15 PM ET.
 
 ---
 
-### **Existing Home Sales Flat**
+### <i data-lucide='home' class='post-icon'></i> **Existing Home Sales Flat**
 
-Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continues sideways movement with modest inventory levels.
+Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continues sideways.
+
+{{chart:Existing Home Sales}}
 
 [View housing indicators](financials.html?filter=Housing%20Market)
 ```
@@ -301,13 +355,13 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 - [ ] YAML frontmatter with ISO date
 - [ ] Lucide icon with `post-icon` class
 - [ ] Clear, specific title
-- [ ] Description: 1-2 sentences, narrative-driven (not "Analysis of X")
-- [ ] Relevant data/sections with proper formatting
+- [ ] Description: <b>1-2 sentences maximum</b>, narrative-driven (not "Analysis of X")
+- [ ] <b>Post under 150 words total</b> when possible
 - [ ] Chart with template syntax `{{chart:Name}}` (if data-driven)
-- [ ] Navigation link with proper anchor/filter
+- [ ] <b>MANDATORY navigation link</b> with proper anchor/filter
 - [ ] Post registered in json/posts.json
 - [ ] Filename matches slug and `file` entry; entry placed at top of `posts.json` array (newest first)
-- [ ] First paragraph usable as snippet (≤160 chars, no links); first image intentional for preview
+- [ ] First paragraph usable as snippet (≤120 chars, no links); first image intentional for preview
 
 ### Content Quality
 - [ ] No emojis (use Lucide icons instead)
@@ -355,21 +409,25 @@ Existing home sales held steady at 4.10M in October (+0.0% MoM). Market continue
 ## Common Patterns to Follow
 
 ✓ **DO:**
-- Write engaging, story-driven descriptions
-- Link to specific positions on pages (#anchors, ?article=, ?filter=)
+- Write <b>ultra-concise, story-driven descriptions</b> (1-2 sentences max)
+- <b>Always include charts</b> for data-driven content
+- Link to <b>specific positions</b> on pages (#anchors, ?article=, ?filter=)
 - Include cover images for all media
 - Use template syntax for charts: `{{chart:Name}}`
 - Keep professional, direct tone
-- Consolidate related updates in single posts with distinct sections
+- <b>Keep posts under 150 words</b> when possible
 - For 13F updates: include firm counts, AUM totals, filing dates, and technical improvements
 
 ❌ **DON'T:**
-- Use dry, academic descriptions
+- Write long, verbose descriptions
+- Use dry, academic language
 - Link to generic pages without anchors
+- <b>Omit charts for data-driven content</b>
 - Omit cover images for media content
 - Mix multiple topics without visual separation
 - Use informal language or excessive exclamation points
 - Use manual canvas HTML for charts (template syntax only)
+- <b>Exceed 150 words per post</b>
 
 ---
 

@@ -45,7 +45,7 @@ The gap between current life satisfaction and future life expectations reveals d
 [Read the Gallup analysis](https://news.gallup.com/poll/702125/american-optimism-slumps-record-low.aspx)
 
 
-### <i data-lucide='oil' class='post-icon'></i> **Venezuela Oil: Trump Opens Door for Investment**
+### <i data-lucide='fuel' class='post-icon'></i> **Venezuela Oil: Trump Opens Door for Investment**
 
 The Trump administration issued new general licenses authorizing U.S. oil companies to rehabilitate and repair existing assets in Venezuela, following the capture of Nicolás Maduro in January and a <b>$2 billion oil supply deal</b>. Energy Secretary Chris Wright met with Venezuelan interim President Delcy Rodríguez this week as the U.S. pursues a <b>$100 billion reconstruction plan</b> for Venezuela's energy infrastructure.
 

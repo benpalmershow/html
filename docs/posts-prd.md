@@ -47,7 +47,7 @@ Every post must have:
 - **Emphasis**: Use `<b>` for bold, **not** emojis
 - **Line breaks**: `<br><br>` for spacing between sections
 - **Snippet**: First paragraph becomes the card snippet (aim ≤160 chars, no links). First image becomes the card preview.
-- **Icons**: Use a Lucide icon in the first heading with `post-icon`. Quick defaults: `book-open` (analysis), `music` (music), `clapperboard` (film), `line-chart` (markets), `gavel` (legal), `trophy` (sports).
+- **Icons**: Use a Lucide icon in the first heading with `post-icon`. Quick defaults: `book-open` (analysis), `music` (music), `clapperboard` (film), `chart-line` (markets), `fuel` (energy/oil), `gavel` (legal), `trophy` (sports).
 
 ### Images (Media Posts)
 - **Source**: Use cover URL directly from `media.json` entry for consistency

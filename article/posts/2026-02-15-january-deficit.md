@@ -14,4 +14,4 @@ The federal government collected $560 billion in tax revenue in January, up shar
 
 {{chart:Interest on Debt}}
 
-[View all fiscal indicators](financials.html?filter=Government)
+[View all Governmernt Indicators](financials.html?filter=Government)

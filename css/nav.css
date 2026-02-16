@@ -109,13 +109,15 @@
 .nav-logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0 !important;
+    line-height: 0;
 }
 
 .nav-logo img {
     border-radius: 50%;
-    width: clamp(36px, 6vw, 44px);
-    height: clamp(36px, 6vw, 44px);
+    width: clamp(44px, 8vw, 56px);
+    height: clamp(44px, 8vw, 56px);
 }
 
 /* Icon Buttons */

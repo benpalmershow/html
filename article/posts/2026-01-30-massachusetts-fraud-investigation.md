@@ -1,5 +1,5 @@
 ---
-date: 2026-02-16T24:00:00Z
+date: 2026-02-16T12:00:00Z
 ---
 
 ### <i data-lucide='shield-alert' class='post-icon'></i> **"Despite claims, massive SNAP fraud is rare"**
@@ -10,6 +10,6 @@ They say no fraud but Massachusetts auditor Diana DiZoglio's Bureau of Special I
 
 The bureau's work helped secure a guilty plea from a Hyannis woman for over $140,000 in welfare fraud and an admission of fraud from a Gloucester woman totaling $20,000. These cases illustrate the scale of individual benefit abuse and the state's commitment to protecting resources for eligible recipients.
 
-[Report public benefit fraud](https://www.mass.gov/how-to/report-public-benefit-fraud-to-the-office-of-the-state-auditor) 
+[Full BSI Report](https://www.mass.gov/news/auditor-dizoglios-bureau-of-special-investigations-identifies-nearly-12-million-in-public-benefit-fraud-in-fy25)
 
 [See 12/26 - 🚨 Marxist Advocacy Masquerading as Journalism](../../journal.html#marxist-advocacy-masquerading-as-journalism)

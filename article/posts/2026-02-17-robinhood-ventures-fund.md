@@ -1,7 +1,7 @@
-# Robinhood Ventures IPOs for $25
+# Robinhood Ventures IPOs for $25 on 2/26
 
 <i data-lucide="unlock"></i>
-Robinhood Ventures Fund I (RVI) fund includes seven private companies selected by Robinhood's investment team, with plans to add Stripe shares post-IPO. At launch, RVI offers features designed for retail accessibility:
+Robinhood Ventures Fund I (RVI) includes seven private companies selected by Robinhood's investment team, with plans to add Stripe shares post-IPO.
 
 1) [Databricks](https://databricks.com)
 2) [Mercor](https://www.mercor.io)
@@ -19,5 +19,7 @@ Robinhood Ventures Fund I (RVI) fund includes seven private companies selected b
 * 1% management fee for first six months (reduced from 2%)
 * No performance fees
 * Daily liquidity through NYSE trading
+* If extra cash, dividends to shareholders. 
+
 
 

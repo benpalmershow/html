@@ -429,85 +429,41 @@ let state = {
     feed: null,
     allPosts: [],
     loadedCount: 0,
-    expandingCard: null
+    expandingCard: null,
+    expandedCardIndex: null
 };
 
-function toggleCardExpanded(card) {
-    const isExpanding = !card.classList.contains('expanded');
-    
-    if (isExpanding) {
-        // Close other expanded cards
-        state.feed.querySelectorAll('.announcement-card.expanded').forEach(otherCard => {
-            if (otherCard !== card) collapseCard(otherCard);
-        });
-        
-        expandCard(card);
+function saveExpandedCardState(index) {
+    if (index !== null) {
+        sessionStorage.setItem('expandedCardIndex', index);
     } else {
-        collapseCard(card);
+        sessionStorage.removeItem('expandedCardIndex');
     }
 }
 
-function expandCard(card) {
-    if (state.expandingCard) return; // Prevent overlapping animations
-    state.expandingCard = card;
-    
-    card.classList.add('expanded');
-    card.setAttribute('aria-expanded', 'true');
-    
-    // Smooth scroll after a tick to let CSS transitions start
-    requestAnimationFrame(() => {
-        setTimeout(() => {
-            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            state.expandingCard = null;
-        }, 50);
-    });
+function getExpandedCardState() {
+    const index = sessionStorage.getItem('expandedCardIndex');
+    return index !== null ? parseInt(index) : null;
 }
 
-function collapseCard(card) {
-    card.classList.remove('expanded');
-    card.setAttribute('aria-expanded', 'false');
-}
+
 
 async function initPosts() {
     state.feed = document.getElementById('announcements-container');
     if (!state.feed) return;
 
-    // Card expansion logic with improved UX & accessibility
-    state.feed.addEventListener('click', (e) => {
-        const card = e.target.closest('.announcement-card');
-        if (!card) return;
-
-        // Allow closing by clicking interactive elements (links, buttons) inside expanded content
-        const isInteractive = e.target.closest('a, button, canvas');
-        const isExpandedContent = e.target.closest('.card-expanded-content');
-        
-        // If clicking an interactive element anywhere, don't toggle
-        if (isInteractive) return;
-        
-        // If card is expanded and clicking in expanded content area (non-interactive), close it
-        if (card.classList.contains('expanded') && isExpandedContent) {
-            toggleCardExpanded(card);
-            return;
-        }
-        
-        // If clicking card header/snippet area, toggle
-        if (!isExpandedContent) {
-            toggleCardExpanded(card);
-        }
-    });
-
-    // Keyboard support: Escape to close, Enter to expand focused card
-    state.feed.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            // Close all expanded cards
-            state.feed.querySelectorAll('.announcement-card.expanded').forEach(card => {
-                collapseCard(card);
-            });
-        } else if (e.key === 'Enter') {
-            const card = e.target.closest('.announcement-card');
-            if (card && !e.target.closest('a, button, textarea')) {
-                e.preventDefault();
-                toggleCardExpanded(card);
+    // Native details element handles expand/collapse automatically
+    // Track expanded state in sessionStorage
+    state.feed.addEventListener('toggle', (e) => {
+        if (e.target.classList.contains('announcement-card')) {
+            if (e.target.hasAttribute('open')) {
+                // Find the index of this card
+                const cards = Array.from(state.feed.querySelectorAll('.announcement-card'));
+                const cardIndex = cards.indexOf(e.target);
+                saveExpandedCardState(cardIndex);
+                e.target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                saveExpandedCardState(null);
             }
         }
     });
@@ -579,35 +535,41 @@ async function loadAndRenderPosts(posts) {
         const data = extractCardData(p.rawContent);
         const iconHtml = data.icon ? `<i data-lucide="${data.icon}" class="card-icon"></i>` :
             `<i data-lucide="bookmark" class="card-icon"></i>`;
+        
+        // Highlight Orhan Lamor post
+        const isOrhanPost = data.title.toLowerCase().includes('orhan') || p.file.includes('golden-ticket');
+        const highlightClass = isOrhanPost ? 'highlighted' : '';
 
         return `
-            <div class="announcement-card ${data.image ? 'has-image' : ''}" data-date="${p.date}" tabindex="0" aria-expanded="false" role="button" title="Press Enter or click to expand, Escape to close" aria-label="${data.title} - Press Enter to expand">
-                <div class="card-header-row">
-                    <div class="card-meta">
-                        ${iconHtml}
-                        <time class="post-time">${formatTimeAgo(p.date)}</time>
-                    </div>
-                </div>
-                <div class="card-main">
-                    <div class="card-content-side">
-                        <h3 class="card-title">${data.title}</h3>
-                        <p class="card-snippet">${data.snippet}</p>
-                    </div>
-                    ${data.image ? `
-                        <div class="card-image-side">
-                            <img src="${data.image}" alt="${data.title}">
+            <details class="announcement-card ${data.image ? 'has-image' : ''} ${highlightClass}" data-date="${p.date}">
+                <summary>
+                    <div class="card-header-row">
+                        <div class="card-meta">
+                            ${iconHtml}
+                            <time class="post-time">${formatTimeAgo(p.date)}</time>
                         </div>
-                    ` : ''}
-                </div>
+                    </div>
+                    <div class="card-main">
+                        <div class="card-content-side">
+                            <h3 class="card-title">${data.title}</h3>
+                            <p class="card-snippet">${data.snippet}</p>
+                        </div>
+                        ${data.image ? `
+                            <div class="card-image-side">
+                                <img src="${data.image}" alt="${data.title}">
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more-btn">Read full update <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </summary>
                 <div class="card-expanded-content">
                     <div class="content-wrapper">
                         <div class="content">${data.content}</div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <span class="read-more-btn">Read full update <i data-lucide="chevron-right"></i></span>
-                </div>
-            </div>
+            </details>
         `;
     }).join('');
 
@@ -636,11 +598,28 @@ async function loadAndRenderPosts(posts) {
     renderFinancialCharts();
     if (window.initializeLucideIcons) window.initializeLucideIcons();
     else if (window.lucide?.createIcons) window.lucide.createIcons();
+    
+    // Restore expanded card state if available
+    const expandedIndex = getExpandedCardState();
+    if (expandedIndex !== null) {
+        const cards = Array.from(state.feed.querySelectorAll('.announcement-card'));
+        const cardToExpand = cards[expandedIndex];
+        if (cardToExpand) {
+            // Use setTimeout to ensure rendering is complete
+            setTimeout(() => {
+                cardToExpand.setAttribute('open', '');
+                cardToExpand.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+            }, 100);
+        }
+    }
 }
 
 async function loadMorePosts() {
     const btn = document.getElementById('load-more-btn');
     if (!btn) return;
+    
+    // Clear expanded state since we're loading more posts
+    saveExpandedCardState(null);
     
     // Disable button and show loading state
     btn.disabled = true;

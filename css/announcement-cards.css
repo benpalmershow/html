@@ -33,8 +33,15 @@
     padding: var(--spacing-lg) 0 var(--spacing-xl) 0;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    overflow: hidden;
+    overflow: visible;
     border-radius: 0;
+    list-style: none;
+}
+
+.announcement-card summary {
+    display: block;
+    cursor: pointer;
+    user-select: none;
 }
 
 .announcement-card:hover {
@@ -44,6 +51,33 @@
 
 .announcement-card:last-child {
     border-bottom: none;
+}
+
+.announcement-card.highlighted {
+    background: linear-gradient(135deg, 
+        rgba(var(--accent-primary-rgb), 0.08) 0%,
+        rgba(var(--accent-primary-rgb), 0.04) 100%);
+    border-left: 3px solid var(--accent-primary);
+    padding-left: calc(var(--spacing-lg) - 3px);
+}
+
+.announcement-card.highlighted:hover {
+    border-bottom-color: var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.15);
+}
+
+.announcement-card.highlighted .card-title {
+    color: var(--accent-primary);
+}
+
+.announcement-card.highlighted .card-meta {
+    color: var(--accent-primary);
+}
+
+html.dark-mode .announcement-card.highlighted {
+    background: linear-gradient(135deg,
+        rgba(212, 130, 42, 0.12) 0%,
+        rgba(212, 130, 42, 0.06) 100%);
 }
 
 .card-header-row {
@@ -139,20 +173,15 @@
 }
 
 .card-expanded-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    opacity: 0;
-    overflow: hidden;
-    transition:
-        grid-template-rows 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.4s ease,
-        margin-top 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        padding 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    margin-top: 0;
+    display: none;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    animation: slideDown 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-expanded-content>.content-wrapper {
-    min-height: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
@@ -160,13 +189,19 @@
     box-sizing: border-box;
 }
 
-.announcement-card.expanded .card-expanded-content {
-    grid-template-rows: 1fr;
-    opacity: 1;
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-lg);
-    background: var(--bg-secondary);
-    border-radius: 8px;
+.announcement-card[open] .card-expanded-content {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .content {
@@ -194,7 +229,7 @@
     gap: 10px;
 }
 
-.announcement-card.expanded .read-more-btn {
+.announcement-card[open] .read-more-btn {
     display: none;
 }
 

@@ -505,6 +505,8 @@ const categoryIcons = {
 ### Data Accuracy Requirements
 **CRITICAL: All posts to posts.json referencing financial data MUST use actual values from financials-data.json. Do NOT use made-up, approximated, or outdated numbers. Always cross-reference with the current financials-data.json before publishing posts.**
 
+**LATEST DATA FIRST: When an indicator has both previous-year monthly data AND current-year data in a separate year object (e.g., "2025" monthly + "2026" object), ALWAYS use the current year object value as "latest." Example: WTI has "february": "71.53" (2025) but also "2026": {"february": "60.04"} - use 60.04 as the latest.**
+
 **ABSOLUTELY NO FABRICATED DATA: Never post financial data that doesn't exist in financials-data.json. If data for a specific month or period is missing from the JSON, do not create posts about it. Only use confirmed, existing data points. Do not extrapolate, estimate, or invent values for missing months.**
 
 **Steps for Financial Data Posts:**

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-02-14T18:00:00Z",
+    "lastUpdated": "2026-02-18T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -237,7 +237,7 @@
             "category": "Commodities",
             "agency": "EIA",
             "name": "WTI Crude Oil",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-18T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "january": "75.74",
@@ -253,7 +253,7 @@
             "november": "60.06",
             "december": "57.97",
             "2026": {
-                "january": ""
+                "january": "60.04"
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
@@ -758,7 +758,7 @@
             "category": "Housing Market",
             "agency": "NAHB",
             "name": "Housing Market Index",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-18T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
             "march": "39",
@@ -772,7 +772,8 @@
             "november": "38",
             "december": "39",
             "2026": {
-                "january": "37"
+                "january": "37",
+                "february": "36"
             },
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."

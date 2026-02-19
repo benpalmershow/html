@@ -76,7 +76,8 @@
 
 **Posts in posts.json:**
 - When creating new posts, include the latest updates from financials-data.json or other relevant data sources (e.g., prediction markets, news).
-- Use the most recently updated monthly numbers.
+- **CRITICAL: Use the latest available data point** - Always check the most recent year object in the JSON (e.g., `"2026"` object for current data), not previous year monthly data
+- Example: For WTI Crude Oil, use the value in `"2026": {"february": "60.04"}` not the `"february": "71.53"` from 2025 monthly data
 - Use current month data available in JSON files; avoid missing recent monthly updates that have been saved.
 
 **Calculating Month-over-Month (MoM) Percentages:**

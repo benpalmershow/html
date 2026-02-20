@@ -712,7 +712,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Pending Home Sales Index",
-            "lastUpdated": "2026-01-22T14:00:00Z",
+            "lastUpdated": "2026-02-19T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
             "march": "76.1",
@@ -724,9 +724,9 @@
             "september": "74.9",
             "october": "76.7",
             "november": "79.2",
-            "december": "71.8",
+            "december": "71.5",
             "2026": {
-                "january": ""
+                "january": "70.9"
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
@@ -836,23 +836,29 @@
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
         },
         {
-            "category": "Housing Market",
-            "agency": "Census",
-            "name": "Housing Starts",
-            "lastUpdated": "2026-01-16T14:00:00Z",
-            "releaseDay": 18,
-            "url": "https://www.census.gov/construction/nrc/current/index.html",
-            "march": "1.355M",
-            "april": "1.398M",
-            "may": "1.282M",
-            "june": "1.382M",
-            "july": "1.429M",
-            "august": "1.307M",
-            "september": "1.306M",
-            "october": "1.246M",
-            "change": "",
-            "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."
-        },
+             "category": "Housing Market",
+             "agency": "Census",
+             "name": "Housing Starts",
+             "lastUpdated": "2026-02-19T14:00:00Z",
+             "releaseDay": 18,
+             "url": "https://www.census.gov/construction/nrc/current/index.html",
+             "march": "1.355M",
+             "april": "1.398M",
+             "may": "1.282M",
+             "june": "1.382M",
+             "july": "1.429M",
+             "august": "1.307M",
+             "september": "1.328M",
+             "october": "1.272M",
+             "november": "1.322M",
+             "december": "1.404M",
+             "2026": {
+                 "january": "1.351M"
+             },
+             "change": "",
+             "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."
+         },
+    
         {
             "category": "Employment Indicators",
             "agency": "The Conference Board",

@@ -481,7 +481,7 @@
             "category": "Trade & Tariffs",
             "agency": "Census",
             "name": "Trade Deficit",
-            "lastUpdated": "2026-01-08T14:00:00Z",
+            "lastUpdated": "2026-02-21T14:00:00Z",
             "releaseDay": 8,
             "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
             "march": "$136.4B",
@@ -492,6 +492,11 @@
             "august": "$55.629B",
             "september": "$48.137B",
             "october": "$29.350B",
+            "november": "$56.8B",
+            "december": "$70.3B",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The difference between the value of a country's imports and exports of goods and services. A trade deficit occurs when imports exceed exports. The U.S. has run persistent trade deficits since the 1970s, reflecting strong consumer demand and the dollar's role as the global reserve currency. The trade balance is influenced by exchange rates, economic growth differentials, and trade policies. While a trade deficit can indicate economic strength (strong consumer demand), persistent large deficits may raise concerns about domestic manufacturing and job losses in certain sectors.",
             "imports": {
@@ -502,7 +507,9 @@
                 "july": "$358,321B",
                 "august": "$339,690B",
                 "september": "$342,363B",
-                "october": "$331,366B"
+                "october": "$331,366B",
+                "november": "$348.9B",
+                "december": "$357.6B"
             },
             "exports": {
                 "march": "$283.6B",
@@ -512,7 +519,9 @@
                 "july": "$283,923B",
                 "august": "$284,060B",
                 "september": "$294,225B",
-                "october": "$302,015B"
+                "october": "$302,015B",
+                "november": "$292.1B",
+                "december": "$287.3B"
             }
         },
         {
@@ -606,7 +615,7 @@
             "category": "Consumer Indicators",
             "agency": "FRED",
             "name": "Personal Consumption Expenditures (PCE)",
-            "lastUpdated": "2026-01-22T14:00:00Z",
+            "lastUpdated": "2026-02-21T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/PCE",
             "march": "20,683B",
@@ -616,9 +625,9 @@
             "july": "20,981.2B",
             "august": "21,087.1B",
             "september": "$21,152.2B",
-            "october": "$21,301.0B",
-            "november": "$21,409.7B",
-            "december": "",
+            "october": "$21,303.0B",
+            "november": "$21,383.9B",
+            "december": "$21,474.9B",
             "2026": {
                 "january": ""
             },
@@ -821,7 +830,7 @@
             "category": "Housing Market",
             "agency": "Census",
             "name": "New Home Sales",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-21T14:00:00Z",
             "releaseDay": 23,
             "url": "https://www.census.gov/construction/nrs/current/index.html#:~:text=New%20Home%20Sales,April%202024%20rate%20of%20719%2C000.",
             "march": "660,000",
@@ -831,7 +840,12 @@
             "july": "639,000",
             "august": "711,000",
             "september": "738,000",
-            "october": "737,000",
+            "october": "656,000",
+            "november": "758,000",
+            "december": "745,000",
+            "2026": {
+                "january": ""
+            },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
         },
@@ -949,7 +963,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Jobless Claims",
-            "lastUpdated": "2026-02-05T16:00:00Z",
+            "lastUpdated": "2026-02-21T16:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/ICSA",
             "march": "223,200",
@@ -963,7 +977,7 @@
             "november": "217,600",
             "december": "219,000",
             "2026": {
-                "january": "211,200"
+                "january": "211,400"
             },
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."

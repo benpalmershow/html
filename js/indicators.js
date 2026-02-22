@@ -168,8 +168,36 @@ function buildExtraHtml(indicator, dataItem, MONTHS) {
      return extraHtml;
  }
 
+function buildChangeMetricButton(label, changeInfo, title) {
+    const iconName = changeInfo.direction > 0
+        ? 'arrow-up-right'
+        : changeInfo.direction < 0
+            ? 'arrow-down-right'
+            : 'minus';
+
+    return `
+        <div class="change-metric-block">
+            <button
+                type="button"
+                class="change-metric-btn ${changeInfo.cssClass}"
+                title="${title.replace(/"/g, '&quot;')}"
+                aria-label="${label} ${changeInfo.formatted}"
+            >
+                <span class="change-metric-top">
+                    <span class="change-metric-title">${label}%</span>
+                    <span class="change-metric-title-icon ${changeInfo.cssClass}"><i data-lucide="${iconName}"></i></span>
+                </span>
+                <span class="change-metric-main">
+                    <span class="change-metric-value">${changeInfo.formatted}</span>
+                </span>
+            </button>
+        </div>
+    `;
+}
+
 function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     const momChange = calculateMoMChange(indicator, MONTHS);
+    const yoyChange = calculateYoYChange(indicator, MONTHS);
     const indicatorType = detectIndicatorType(indicator);
     const { latestDataHtml, historyDataHtml, hasHistory } = renderIndicatorData(indicator, indicatorType, MONTHS, MONTH_LABELS);
 
@@ -178,19 +206,20 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     let changeIndicators = '';
 
     if (momChange !== null) {
-        const changeInfo = formatChangeIndicator(momChange.percentChange);
-        let changeText = `<span class="mom-label">MoM:</span> <span class="mom-value">${changeInfo.formatted}</span>`;
+        const momInfo = formatChangeIndicator(momChange.percentChange);
+        const momTitle = indicator.name === 'Total Nonfarm Employment'
+            ? "Latest monthly change in nonfarm payroll employment."
+            : "Month-over-Month (MoM) change calculated from available data.";
+        changeIndicators += buildChangeMetricButton('MoM', momInfo, momTitle);
 
-        if (['Private Employment', 'Total Nonfarm Employment', 'Job Openings'].includes(indicator.name)) {
-            const numberChange = momChange.numberChange;
-            const compactChange = formatCompactNumber(numberChange).replace(/^\+/, ''); // Remove leading + since we add it in parentheses
-            changeText += ` <span class="mom-number">(${numberChange >= 0 ? '+' : ''}${compactChange})</span>`;
+        if (yoyChange !== null) {
+            const yoyInfo = formatChangeIndicator(yoyChange.percentChange);
+            changeIndicators += buildChangeMetricButton(
+                'YoY',
+                yoyInfo,
+                "Year-over-Year (YoY) change versus the same month in the prior year."
+            );
         }
-
-        const arrowIcon = momChange.numberChange >= 0 ? '<i data-lucide="arrow-up-right"></i>' : '<i data-lucide="arrow-down-right"></i>';
-        const title = indicator.name === 'Total Nonfarm Employment' ? "Latest monthly change in nonfarm payroll employment" : "Month-over-Month (MoM) change calculated from available data.";
-
-        changeIndicators += `<div class="change-indicator ${changeInfo.cssClass}" title="${title}"><button class="change-arrow-button" aria-label="Change direction"><span class="arrow-icon">${arrowIcon}</span></button><div class="change-text">${changeText}</div></div>`;
     }
 
     return `

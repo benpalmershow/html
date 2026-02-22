@@ -481,86 +481,147 @@
     margin: 4px 0 6px 0;
     padding-bottom: 6px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 4px;
+    justify-content: flex-start;
+    align-items: stretch;
     border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    min-width: 0;
 }
 
-.change-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
+.change-metric-block {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 2px;
+    min-width: 0;
+    flex: 0 0 auto;
 }
 
-.change-arrow-button {
+.change-metric-title {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    line-height: 1.1;
+    opacity: 0.58;
+}
+
+.change-metric-title-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    width: 10px;
+    height: 10px;
+}
+
+.change-metric-title-icon i {
+    width: 10px;
+    height: 10px;
+    stroke-width: 2.2px;
+}
+
+.change-metric-btn {
+    flex: 0 0 auto;
+    width: fit-content;
+    min-width: fit-content;
+    max-width: none;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03));
+    color: var(--text-primary);
+    padding: 2px 6px 1px 5px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 1px 2px rgba(0, 0, 0, 0.16),
+        0 3px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease, border-color 0.12s ease;
+}
+
+.change-metric-btn:hover {
+    filter: brightness(1.03);
+    border-color: rgba(0, 0, 0, 0.26);
+}
+
+.change-metric-btn:active {
+    transform: translateY(0.5px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.change-metric-btn:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--logo-teal) 60%, white);
+    outline-offset: 1px;
+}
+
+.change-metric-btn:only-child {
+    max-width: 100%;
+}
+
+.change-metric-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1px;
+    gap: 6px;
+}
+
+.change-metric-main {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+}
+
+.change-metric-value {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.005em;
     flex-shrink: 0;
-    background: transparent;
-    color: inherit;
     line-height: 1;
 }
 
-.change-arrow-button:hover {
-    transform: scale(1.1);
+.change-metric-btn.change-positive {
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.24), rgba(16, 185, 129, 0.09));
+    border-color: rgba(16, 185, 129, 0.5);
 }
 
-.arrow-icon {
-    display: inline-flex;
-    align-items: center;
+.change-metric-btn.change-negative {
+    background: linear-gradient(180deg, rgba(239, 68, 68, 0.24), rgba(239, 68, 68, 0.09));
+    border-color: rgba(239, 68, 68, 0.55);
 }
 
-.arrow-icon i {
-    width: 14px;
-    height: 14px;
-    stroke-width: 2px;
+.change-metric-btn.change-neutral {
+    background: linear-gradient(180deg, rgba(107, 114, 128, 0.18), rgba(107, 114, 128, 0.07));
+    border-color: rgba(107, 114, 128, 0.45);
 }
 
-.change-text {
-    color: var(--text-primary);
-}
-
-.change-positive .change-arrow-button {
-    background: transparent;
+.change-metric-title-icon.change-positive {
     color: var(--success-color, #10b981);
 }
 
-.change-negative .change-arrow-button {
-    background: transparent;
+.change-metric-title-icon.change-negative {
     color: var(--danger-color, #ef4444);
 }
 
-.change-neutral .change-arrow-button {
-    background: transparent;
-    color: var(--text-muted);
-}
-
-.mom-label {
-    font-size: 0.8rem;
-    opacity: 0.85;
-    font-weight: 400;
-}
-
-.mom-value {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.mom-number {
-    font-size: 0.8rem;
-    font-weight: 500;
+.change-metric-title-icon.change-neutral {
+    color: #d1d5db;
 }
 
 .expand-toggle {
@@ -955,8 +1016,26 @@
         padding: 4px 0;
     }
 
-    .change-indicator {
-        font-size: 0.75rem;
+    .change-indicators {
+        gap: 4px;
+    }
+
+    .change-metric-title {
+        font-size: 0.55rem;
+    }
+
+    .change-metric-title-icon,
+    .change-metric-title-icon i {
+        width: 9px;
+        height: 9px;
+    }
+
+    .change-metric-btn {
+        padding: 1px 5px 1px 4px;
+    }
+
+    .change-metric-value {
+        font-size: 0.66rem;
     }
 }
 

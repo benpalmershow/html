@@ -496,9 +496,8 @@ function extractCardData(html) {
     let title = h3 ? h3.innerText.trim() : '';
     if (h3) h3.remove();
 
-    // Extract image (first img)
-    const img = temp.querySelector('img');
-    const imageUrl = img ? img.src : '';
+    // Do not extract image - keep all images in post content
+    const imageUrl = '';
 
     // Extract snippet (first paragraph text with improved truncation)
     const p = temp.querySelector('p');

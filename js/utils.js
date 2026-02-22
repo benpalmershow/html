@@ -226,6 +226,66 @@ function calculateMoMChange(indicator, MONTHS) {
     };
 }
 
+function calculateYoYChange(indicator, MONTHS) {
+    const yearKeys = Object.keys(indicator)
+        .filter(key => /^\d{4}$/.test(key))
+        .map(key => parseInt(key, 10))
+        .sort((a, b) => b - a); // Newest year first
+
+    // Require roughly one year of monthly history before showing YoY.
+    let totalValidPoints = 0;
+    for (const month of MONTHS) {
+        if (isValidData(indicator[month]) && extractNumericValue(indicator[month]) !== null) {
+            totalValidPoints++;
+        }
+    }
+    for (const year of yearKeys) {
+        for (const month of MONTHS) {
+            const value = indicator[year] && indicator[year][month];
+            if (isValidData(value) && extractNumericValue(value) !== null) {
+                totalValidPoints++;
+            }
+        }
+    }
+    if (totalValidPoints < 12) return null;
+
+    let latest = null;
+    for (const year of yearKeys) {
+        for (let i = MONTHS.length - 1; i >= 0; i--) {
+            const month = MONTHS[i];
+            const value = indicator[year] && indicator[year][month];
+            const numeric = extractNumericValue(value);
+            if (isValidData(value) && numeric !== null) {
+                latest = { value, numeric, year, month, monthIndex: i };
+                break;
+            }
+        }
+        if (latest) break;
+    }
+
+    if (!latest) return null;
+
+    let yearBackValue = null;
+    const previousYearData = indicator[latest.year - 1];
+    if (previousYearData && previousYearData[latest.month] !== undefined) {
+        yearBackValue = previousYearData[latest.month];
+    } else if (indicator[latest.month] !== undefined) {
+        // Mixed schema support: flat month values represent the prior-year baseline.
+        yearBackValue = indicator[latest.month];
+    }
+
+    const yearBackNumeric = extractNumericValue(yearBackValue);
+    if (!isValidData(yearBackValue) || yearBackNumeric === null || yearBackNumeric === 0) return null;
+
+    const percentChange = ((latest.numeric - yearBackNumeric) / Math.abs(yearBackNumeric)) * 100;
+
+    return {
+        percentChange,
+        numberChange: latest.numeric - yearBackNumeric,
+        currentRawValue: latest.value
+    };
+}
+
 function calculateAllMonthlyChanges(indicator, MONTHS) {
      const changes = [];
 

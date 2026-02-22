@@ -28,9 +28,15 @@ date: 2026-02-22T18:30:00Z
 }
 </style>
 
+## February Economic Indicators
+
+
 ### <i data-lucide='bar-chart-3' class='post-icon'></i> **New Numbers**
 
 Broad snapshot: consumer resilience holds, housing cools, Treasury yields spike, employment index strengthens, commodities mixed. Container volumes and labor force both steady.
+
+[View all financial indicators](financials.html?filter=Latest)
+
 
 <i data-lucide="briefcase"></i> **Industrial Production Index**: 102.3 <span class="post-mom-badge change-positive">+0.69%</span> {{chart:Industrial Production Index}}
 
@@ -62,4 +68,4 @@ Broad snapshot: consumer resilience holds, housing cools, Treasury yields spike,
 
 <i data-lucide="ship"></i> **Port TEU Volume**: 812,000 <span class="post-mom-badge change-positive">+2.58%</span> {{chart:20ft Equivalents (TEUs)}}
 
-[View all financial indicators](financials.html?filter=Business%20Indicators)
+[View all financial indicators](financials.html?filter=Latest)

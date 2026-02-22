@@ -159,33 +159,40 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
 // Initialize dashboard on page load
 function initializeDashboard() {
-    document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
-    setupFilters(financialData, SELECTORS, DATA_ATTRS);
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('filter') || 'all';
+     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
+     setupFilters(financialData, SELECTORS, DATA_ATTRS);
+     const urlParams = new URLSearchParams(window.location.search);
+     const initialFilter = urlParams.get('filter') || 'all';
+     const isLatest = initialFilter.toLowerCase() === 'latest';
 
-    // Check if navigated to 13F anchor
-    if (window.location.hash === '#latest-13f-filings-anchor') {
-        document.getElementById('categories').style.display = 'none';
-        document.getElementById('latest-13f-filings').style.display = 'block';
+     // Check if navigated to 13F anchor
+     if (window.location.hash === '#latest-13f-filings-anchor') {
+         document.getElementById('categories').style.display = 'none';
+         document.getElementById('latest-13f-filings').style.display = 'block';
 
-        // Activate 13F Holdings button
-        const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-        updateActiveElements(allBtnsSelector,
-            (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
-        );
-        currentCategory = '13F Holdings';
-    } else {
-        // Set active state for desktop buttons and dropdown items
-        const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-        updateActiveElements(allBtnsSelector,
-            (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
-        );
-
-        renderDashboard(initialFilter);
-        setupModalHandlers();
-    }
-}
+         // Activate 13F Holdings button
+         const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
+         updateActiveElements(allBtnsSelector,
+             (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
+         );
+         currentCategory = '13F Holdings';
+     } else {
+         // Set active state for desktop buttons and dropdown items
+         const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
+         if (isLatest) {
+             updateActiveElements(allBtnsSelector,
+                 (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
+             );
+             renderDashboard('all', true);
+         } else {
+             updateActiveElements(allBtnsSelector,
+                 (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
+             );
+             renderDashboard(initialFilter, false);
+         }
+         setupModalHandlers();
+     }
+ }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {

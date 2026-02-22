@@ -120,6 +120,12 @@ function processCharts(html) {
 function wrapImagesInLinks(html) {
     const imgRegex = /<img([^>]*?)src="([^"]+)"([^>]*?)alt="([^"]+)"([^>]*?)>/g;
     return html.replace(imgRegex, (match, before, src, after, alt, end) => {
+        // Check if image is already wrapped in a link
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html.substring(Math.max(0, html.indexOf(match) - 100), html.indexOf(match) + match.length + 100);
+        const isWrapped = tempDiv.querySelector('a img');
+        if (isWrapped) return match; // Skip if already in a link
+        
         const slug = alt.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
         return `<a href="media.html#${slug}"><img${before}src="${src}"${after}alt="${alt}"${end}></a>`;
     });

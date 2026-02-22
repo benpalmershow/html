@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-02-21T18:00:00Z",
+    "lastUpdated": "2026-02-22T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -603,7 +603,7 @@
             "category": "Consumer Indicators",
             "agency": "Manheim",
             "name": "Used Vehicle Value Index",
-            "lastUpdated": "2026-01-16T21:56:00Z",
+            "lastUpdated": "2026-02-22T21:56:00Z",
             "releaseDay": 7,
             "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
             "march": "202.6",
@@ -616,6 +616,10 @@
             "october": "202.9",
             "november": "205.4",
             "december": "205.5",
+            "2026": {
+                "january": "210.5",
+                "february": "210"
+            },
             "change": "",
             "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."
         },

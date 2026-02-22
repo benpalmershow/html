@@ -184,8 +184,8 @@ function buildChangeMetricButton(label, changeInfo, title) {
                 aria-label="${label} ${changeInfo.formatted}"
             >
                 <span class="change-metric-top">
-                    <span class="change-metric-title">${label}%</span>
                     <span class="change-metric-title-icon ${changeInfo.cssClass}"><i data-lucide="${iconName}"></i></span>
+                    <span class="change-metric-title">${label}</span>
                 </span>
                 <span class="change-metric-main">
                     <span class="change-metric-value">${changeInfo.formatted}</span>

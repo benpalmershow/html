@@ -44,7 +44,7 @@ Broad snapshot: consumer resilience holds, housing cools, Treasury yields spike,
 
 <i data-lucide="home"></i> **Case-Shiller Home Price Index**: 328.149 <span class="post-mom-badge change-negative">-0.11% MoM</span> {{chart:Case-Shiller National Home Price Index}}
 
-<i data-lucide="home"></i> **Days on Market**: 71 days <span class="post-mom-badge change-negative">+9.23% MoM</span> {{chart:Number of Days on Market (Median)}}
+<i data-lucide="home"></i> **Days on Market**: 71 days <span class="post-mom-badge change-positive">+9.23% MoM</span> {{chart:Number of Days on Market (Median)}}
 
 <i data-lucide="package"></i> **Copper Futures**: $5.87/lb <span class="post-mom-badge change-positive">+0.51% MoM</span> {{chart:Copper Futures}}
 

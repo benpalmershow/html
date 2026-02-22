@@ -28,7 +28,7 @@ date: 2026-02-22T18:30:00Z
 }
 </style>
 
-### <i data-lucide='layers' class='post-icon'></i> **Financial Indicator Monthly updates**
+### <i data-lucide='bar-chart-3' class='post-icon'></i> **New Numbers**
 
 Broad snapshot: consumer resilience holds, housing cools, Treasury yields spike, employment index strengthens, commodities mixed. Container volumes and labor force both steady.
 

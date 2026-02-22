@@ -5,7 +5,7 @@
             "category": "Business Indicators",
             "agency": "FRED",
             "name": "10-yr Treasury Yield",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DGS10",
             "march": "4.28",
@@ -19,7 +19,7 @@
             "november": "4.09",
             "december": "4.14",
             "2026": {
-                "january": ""
+                "january": "4.21"
             },
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
@@ -52,7 +52,7 @@
             "category": "Commodities",
             "agency": "Google Finance",
             "name": "Lumber Futures",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
             "march": "683",
@@ -66,7 +66,9 @@
             "november": "560",
             "december": "544",
             "2026": {
-                "january": "609"
+                "january": "609",
+                "february": "576"
+
             },
             "change": "",
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
@@ -118,7 +120,7 @@
             "category": "Housing Market",
             "agency": "Zillow",
             "name": "Number of Days on Market (Median)",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "url": "https://www.zillow.com/research/data/",
             "march": "60",
             "april": "53",
@@ -128,8 +130,11 @@
             "august": "50",
             "september": "54",
             "october": "56",
-            "november": "59",
+            "november": "59",   
             "december": "65",
+            "2026": {
+                "january": "71"
+            },
             "change": "",
             "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."
         },
@@ -137,7 +142,7 @@
             "category": "Trade & Tariffs",
             "agency": "Port of LA/Long Beach",
             "name": "20ft Equivalents (TEUs)",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.portoflosangeles.org/business/statistics/container-statistics",
             "march": "778,405.70",
@@ -149,6 +154,10 @@
             "september": "883,053.25",
             "october": "848,424.25",
             "november": "782,249.00",
+            "december": "791,587.75",
+                "2026": {
+                    "january": "812,000.25"
+                },
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
         },
@@ -172,13 +181,16 @@
             "category": "Employment Indicators",
             "agency": "Chicago Fed",
             "name": "Real-Time Unemployment Rate Forecast",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
             "september": "4.35",
             "october": "4.46",
             "november": "4.56",
-            "december": "4.56",
+            "december": "4.38",
+                "2026": {
+                    "january": "4.36"
+                },
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
         },
@@ -328,7 +340,7 @@
             "category": "Commodities",
             "agency": "CME",
             "name": "Copper Futures",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
             "march": "4.56",
@@ -342,7 +354,9 @@
             "november": "5.35",
             "december": "5.54",
             "2026": {
-                "january": "5.84"
+                "january": "5.84",
+                "february": "5.87"
+
             },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
@@ -351,17 +365,20 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Case-Shiller National Home Price Index",
-            "lastUpdated": "2025-12-31T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
-            "march": "327.747",
+            "january": "323.667",
+            "february": "325.120",
+            "march": "327.739",
             "april": "329.915",
-            "may": "331.439",
-            "june": "331.627",
-            "july": "330.986",
-            "august": "329.885",
-            "september": "328.978",
-            "october": "328.442",
+            "may": "331.431",
+            "june": "331.619",
+            "july": "330.977",
+            "august": "329.877",
+            "september": "328.974",
+            "october": "328.506",
+            "november": "328.149",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },
@@ -461,7 +478,7 @@
             "category": "Government",
             "agency": "CBP",
             "name": "Southern Border Encounters",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
             "march": "11,011",
@@ -471,11 +488,11 @@
             "july": "7,822",
             "august": "9,731",
             "september": "11,647",
-            "october": "11,705",
-            "november": "10,956",
-            "december": "10,000",
+            "october": "11,704",
+            "november": "10,957",
+            "december": "9,991",
             "2026": {
-                "january": ""
+                "january": "9,726"
             },
             "change": "",
             "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."
@@ -673,17 +690,20 @@
             "category": "Business Indicators",
             "agency": "Chicago Fed",
             "name": "Chicago Fed Survey of Economic Conditions",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
-            "may": "3.79",
-            "june": "-1.32",
-            "july": "-17.56",
+            "may": "3.80",
+            "june": "-1.30",
+            "july": "-17.60",
             "august": "0",
             "september": "-8.20",
             "october": "17.30",
             "november": "-1.30",
-            "december": "-11.50",
+            "december": "-12.40",
+            "2026": {
+                "january": "+13.00"
+            },
             "change": "",
             "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."
         },
@@ -822,7 +842,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "30-yr Mortgage Rate",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
             "march": "6.65",
@@ -835,6 +855,11 @@
             "october": "6.25",
             "november": "6.24",
             "december": "6.19",
+            "2026": {
+                "january": "6.10",
+                "february": "6.07"
+
+            },
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
         },
@@ -889,7 +914,7 @@
             "category": "Employment Indicators",
             "agency": "The Conference Board",
             "name": "Employment Trends Index",
-            "lastUpdated": "2025-12-20T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.conference-board.org/topics/employment-trends-index",
             "march": "",
@@ -900,6 +925,11 @@
             "august": "106.68",
             "september": "106.24",
             "october": "105.8",
+            "november": "105.5",
+            "december": "104.51",
+            "2026": {
+                "january": "105.06"
+            },
             "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
         },
@@ -1178,9 +1208,9 @@
             "category": "Business Indicators",
             "agency": "ISM",
             "name": "Services PMI",
-            "lastUpdated": "2026-01-07T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 5,
-            "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/services/october/",
+            "url": "https://tradingeconomics.com/united-states/services-pmi",
             "march": "50.8",
             "april": "51.6",
             "may": "49.9",
@@ -1191,6 +1221,10 @@
             "october": "52.4",
             "november": "52.6",
             "december": "54.4",
+                "2026": {
+                    "january": "52.7",
+                    "february": "52.3"
+                },
             "change": "",
             "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
         },
@@ -1198,7 +1232,7 @@
             "category": "Business Indicators",
             "agency": "Federal Reserve",
             "name": "Industrial Production Index",
-            "lastUpdated": "2026-01-16T14:00:00Z",
+            "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.federalreserve.gov/releases/g17/current/",
             "april": "101.1",
@@ -1206,10 +1240,14 @@
             "june": "101.4",
             "july": "101.9",
             "august": "101.6",
-            "september": "101.8",
-            "october": "101.5",
-            "november": "102",
-            "december": "102.3",
+            "september": "101.7",
+            "october": "101.3",
+            "november": "101.4",
+            "december": "101.6",
+                "2026": {
+                    "january": "102.3"
+
+                },  
             "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
         }

@@ -182,6 +182,12 @@ function buildChangeMetricButton(label, changeInfo, title) {
                 </span>
             ` : '';
 
+    // Remove +/- prefix and display arrow icon instead
+    const valueWithoutSign = changeInfo.formatted.replace(/^[+\-]/, '');
+    const displayValue = changeInfo.direction === 0 
+        ? valueWithoutSign 
+        : `<i data-lucide="${iconName}" style="display: inline; width: 1em; height: 1em; vertical-align: -0.125em; margin-right: 4px;"></i>${valueWithoutSign}`;
+
     return `
         <div class="change-metric-block">
             <button
@@ -192,7 +198,7 @@ function buildChangeMetricButton(label, changeInfo, title) {
             >
                 ${topSection}
                 <span class="change-metric-main">
-                    <span class="change-metric-value">${changeInfo.formatted}</span>
+                    <span class="change-metric-value">${displayValue}</span>
                 </span>
             </button>
         </div>

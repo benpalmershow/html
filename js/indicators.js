@@ -175,18 +175,22 @@ function buildChangeMetricButton(label, changeInfo, title) {
             ? 'arrow-down-right'
             : 'minus';
 
+    const topSection = label ? `
+                <span class="change-metric-top">
+                    <span class="change-metric-title">${label}</span>
+                    <span class="change-metric-title-icon ${changeInfo.cssClass}"><i data-lucide="${iconName}"></i></span>
+                </span>
+            ` : '';
+
     return `
         <div class="change-metric-block">
             <button
                 type="button"
                 class="change-metric-btn ${changeInfo.cssClass}"
                 title="${title.replace(/"/g, '&quot;')}"
-                aria-label="${label} ${changeInfo.formatted}"
+                aria-label="${label ? label + ' ' : ''}${changeInfo.formatted}"
             >
-                <span class="change-metric-top">
-                    <span class="change-metric-title">${label}</span>
-                    <span class="change-metric-title-icon ${changeInfo.cssClass}"><i data-lucide="${iconName}"></i></span>
-                </span>
+                ${topSection}
                 <span class="change-metric-main">
                     <span class="change-metric-value">${changeInfo.formatted}</span>
                 </span>
@@ -194,6 +198,8 @@ function buildChangeMetricButton(label, changeInfo, title) {
         </div>
     `;
 }
+
+
 
 function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     const momChange = calculateMoMChange(indicator, MONTHS);
@@ -206,21 +212,14 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     let changeIndicators = '';
 
     if (momChange !== null) {
-        const momInfo = formatChangeIndicator(momChange.percentChange);
-        const momTitle = indicator.name === 'Total Nonfarm Employment'
-            ? "Latest monthly change in nonfarm payroll employment."
-            : "Month-over-Month (MoM) change calculated from available data.";
-        changeIndicators += buildChangeMetricButton('MoM', momInfo, momTitle);
+         const momInfo = formatChangeIndicator(momChange.percentChange);
+         changeIndicators += buildChangeMetricButton('', momInfo, 'Month over Month');
 
-        if (yoyChange !== null) {
-            const yoyInfo = formatChangeIndicator(yoyChange.percentChange);
-            changeIndicators += buildChangeMetricButton(
-                'YoY',
-                yoyInfo,
-                "Year-over-Year (YoY) change versus the same month in the prior year."
-            );
-        }
-    }
+         if (yoyChange !== null) {
+             const yoyInfo = formatChangeIndicator(yoyChange.percentChange);
+             changeIndicators += buildChangeMetricButton('', yoyInfo, 'Year over Year');
+         }
+     }
 
     return `
         <div class="indicator ${indicator.category === 'Prediction Markets' ? 'expanded' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}">

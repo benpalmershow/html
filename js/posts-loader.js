@@ -108,6 +108,123 @@ function parseMarkdownContent(md) {
     return contentMd;
 }
 
+async function processBadges(html) {
+    // Template: {{badge:Indicator Name}} - calculates MoM from financials-data
+    const badgeRegex = /\{\{badge:([^}]+)\}\}/g;
+    
+    // Load financial data if not cached
+    if (!window._financialsData) {
+        try {
+            const response = await fetch('json/financials-data.json');
+            if (response.ok) {
+                window._financialsData = await response.json();
+            }
+        } catch (e) {
+            console.error('Failed to load financials data for badges:', e);
+            return html;
+        }
+    }
+    
+    const data = window._financialsData;
+    if (!data || !data.indices) return html;
+    
+    return html.replace(badgeRegex, (match, indicatorName) => {
+        const name = indicatorName.trim();
+        const indicator = data.indices.find(i => i.name === name);
+        
+        if (!indicator) return match;
+        
+        const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yearKeys = Object.keys(indicator).filter(k => /^\d{4}$/.test(k)).sort((a,b) => b-a);
+        
+        let current = null, previous = null, currentMonth = -1, currentYear = null;
+        
+        // Find latest value - search from most recent year, going backwards through months
+        for (const year of yearKeys) {
+            if (!indicator[year] || typeof indicator[year] !== 'object') continue;
+            
+            for (let i = months.length - 1; i >= 0; i--) {
+                const month = months[i];
+                const rawVal = indicator[year][month];
+                if (!rawVal) continue;
+                const val = parseFloat(String(rawVal).replace(/[$,%KM]/g, ''));
+                if (!isNaN(val)) {
+                    current = val;
+                    currentMonth = i;
+                    currentYear = year;
+                    break;
+                }
+            }
+            if (current !== null) break; // Found latest value
+        }
+        
+        // If no nested year data found, check flat structure
+        if (current === null) {
+            for (let i = months.length - 1; i >= 0; i--) {
+                const month = months[i];
+                const rawVal = indicator[month];
+                if (!rawVal) continue;
+                const val = parseFloat(String(rawVal).replace(/[$,%KM]/g, ''));
+                if (!isNaN(val)) {
+                    current = val;
+                    currentMonth = i;
+                    currentYear = null; // Flat structure, no year
+                    break;
+                }
+            }
+        }
+        
+        // Find previous month value - go back one month from current
+        if (current !== null && currentMonth >= 0) {
+            if (currentYear === null) {
+                // Using flat structure - previous month is just the previous entry in flat keys
+                if (currentMonth > 0) {
+                    const prevMonth = months[currentMonth - 1];
+                    const rawVal = indicator[prevMonth];
+                    if (rawVal) {
+                        const val = parseFloat(String(rawVal).replace(/[$,%KM]/g, ''));
+                        if (!isNaN(val)) previous = val;
+                    }
+                }
+            } else {
+                // Using nested year structure
+                if (currentMonth > 0) {
+                    // Previous month is in same year
+                    const prevMonth = months[currentMonth - 1];
+                    const rawVal = indicator[currentYear][prevMonth];
+                    if (rawVal) {
+                        const val = parseFloat(String(rawVal).replace(/[$,%KM]/g, ''));
+                        if (!isNaN(val)) previous = val;
+                    }
+                } else if (currentMonth === 0) {
+                    // Previous month is December - check flat structure first (previous year's data)
+                    const rawVal = indicator['december'];
+                    if (rawVal) {
+                        const val = parseFloat(String(rawVal).replace(/[$,%KM]/g, ''));
+                        if (!isNaN(val)) previous = val;
+                    } else {
+                        // Fall back to December of previous year object
+                        const prevYear = String(parseInt(currentYear) - 1);
+                        if (indicator[prevYear] && indicator[prevYear]['december']) {
+                            const rawVal2 = indicator[prevYear]['december'];
+                            const val = parseFloat(String(rawVal2).replace(/[$,%KM]/g, ''));
+                            if (!isNaN(val)) previous = val;
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (current === null || previous === null || previous === 0) return match;
+        
+        const change = ((current - previous) / previous) * 100;
+        const cssClass = change > 0 ? 'change-positive' : change < 0 ? 'change-negative' : 'change-neutral';
+        const formatted = `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
+        
+        return `<span class="mom-badge ${cssClass}">${formatted}</span>`;
+    });
+}
+
 function processCharts(html) {
     const chartRegex = /\{\{chart:([^}]+)\}\}/g;
     return html.replace(chartRegex, (match, indicatorName) => {
@@ -454,7 +571,49 @@ function getExpandedCardState() {
 
 
 
+async function injectBadgeStyles() {
+    if (document.getElementById('badge-component-styles')) return; // Already injected
+    
+    const badgeStyles = `
+.mom-badge {
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03));
+  color: var(--text-primary);
+  padding: 2px 6px 1px 5px;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-left: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.14), 0 1px 2px rgba(0, 0, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mom-badge.change-positive {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.24), rgba(16, 185, 129, 0.09));
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.mom-badge.change-negative {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.24), rgba(239, 68, 68, 0.09));
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
+.mom-badge.change-neutral {
+  background: linear-gradient(180deg, rgba(107, 114, 128, 0.24), rgba(107, 114, 128, 0.09));
+  border-color: rgba(107, 114, 128, 0.5);
+}
+    `;
+    
+    const style = document.createElement('style');
+    style.id = 'badge-component-styles';
+    style.textContent = badgeStyles;
+    document.head.appendChild(style);
+}
+
 async function initPosts() {
+    await injectBadgeStyles();
+    
     state.feed = document.getElementById('announcements-container');
     if (!state.feed) return;
 
@@ -528,6 +687,7 @@ async function loadAndRenderPosts(posts) {
     const postsWithContent = await Promise.all(posts.map(async post => {
         if (!post.file) return null;
         let content = await parseMarkdownFile(post.file);
+        if (content.includes('{{badge:')) content = await processBadges(content);
         if (content.includes('{{chart:')) content = processCharts(content);
         content = wrapImagesInLinks(content);
         content = wrapTablesForMobile(content);

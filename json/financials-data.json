@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-02-22T18:00:00Z",
+    "lastUpdated": "2026-02-24T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -365,7 +365,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Case-Shiller National Home Price Index",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-02-25T14:00:00Z",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
             "january": "323.667",
@@ -379,6 +379,7 @@
             "september": "328.974",
             "october": "328.506",
             "november": "328.149",
+            "december":"327.455",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },

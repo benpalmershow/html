@@ -176,17 +176,12 @@ function buildChangeMetricButton(label, changeInfo, title) {
             : 'minus';
 
     const topSection = label ? `
-                <span class="change-metric-top">
-                    <span class="change-metric-title">${label}</span>
-                    <span class="change-metric-title-icon ${changeInfo.cssClass}"><i data-lucide="${iconName}"></i></span>
-                </span>
+                <span class="change-metric-title">${label}</span>
             ` : '';
 
-    // Remove +/- prefix and display arrow icon instead
+    // Remove +/- prefix
     const valueWithoutSign = changeInfo.formatted.replace(/^[+\-]/, '');
-    const displayValue = changeInfo.direction === 0 
-        ? valueWithoutSign 
-        : `<i data-lucide="${iconName}" style="display: inline; width: 1em; height: 1em; vertical-align: -0.125em; margin-right: 4px;"></i>${valueWithoutSign}`;
+    const valueWithIcon = `<i data-lucide="${iconName}" style="display: inline; width: 0.85em; height: 0.85em; vertical-align: -0.05em; margin-right: 2px;"></i>${valueWithoutSign}`;
 
     return `
         <div class="change-metric-block">
@@ -197,9 +192,7 @@ function buildChangeMetricButton(label, changeInfo, title) {
                 aria-label="${label ? label + ' ' : ''}${changeInfo.formatted}"
             >
                 ${topSection}
-                <span class="change-metric-main">
-                    <span class="change-metric-value">${displayValue}</span>
-                </span>
+                <span class="change-metric-value">${valueWithIcon}</span>
             </button>
         </div>
     `;
@@ -218,12 +211,16 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     let changeIndicators = '';
 
     if (momChange !== null) {
-         const momInfo = formatChangeIndicator(momChange.percentChange);
-         changeIndicators += buildChangeMetricButton('', momInfo, 'Month over Month');
+         // Invert sign for deficit/inverse indicators (lower is better)
+         const isDeficitIndicator = indicator.name.includes('Deficit') || indicator.name.includes('Unemployment');
+         const momChangeValue = isDeficitIndicator ? -momChange.percentChange : momChange.percentChange;
+         const momInfo = formatChangeIndicator(momChangeValue);
+         changeIndicators += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
 
          if (yoyChange !== null) {
-             const yoyInfo = formatChangeIndicator(yoyChange.percentChange);
-             changeIndicators += buildChangeMetricButton('', yoyInfo, 'Year over Year');
+             const yoyChangeValue = isDeficitIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
+             const yoyInfo = formatChangeIndicator(yoyChangeValue);
+             changeIndicators += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
          }
      }
 

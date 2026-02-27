@@ -2,7 +2,7 @@
 date: 2025-12-09T21:00:00Z
 ---
 
-### <i data-lucide='briefcase' class='post-icon'></i> **October JOLTS**
+### <i data-lucide='users' class='post-icon'></i> **October JOLTS**
 
 The Job Openings and Labor Turnover Survey (JOLTS) showed persistent employer demand, with 7.67 million openings in October signaling ongoing labor market tightness despite recent softening.
 
@@ -14,7 +14,7 @@ The Job Openings and Labor Turnover Survey (JOLTS) showed persistent employer de
 
 ---
 
-### <i data-lucide='trending-up' class='post-icon'></i> **Small Business Optimism**
+### <i data-lucide='briefcase' class='post-icon'></i> **Small Business Optimism**
 
 Small business confidence climbed in November, with the NFIB index signaling continued optimism about hiring plans and capital spending despite economic headwinds.
 
@@ -28,7 +28,7 @@ The modest monthly gain reflects improved sentiment heading into year-end, with 
 
 ---
 
-### <i data-lucide='car' class='post-icon'></i> **Used Vehicles**
+### <i data-lucide='shopping-cart' class='post-icon'></i> **Used Vehicles**
 
 
 - **Manheim Used Vehicle Value Index**: November 205.4 (+1.2% MoM)

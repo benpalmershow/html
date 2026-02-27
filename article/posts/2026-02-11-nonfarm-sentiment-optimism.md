@@ -2,7 +2,7 @@
 date: 2026-02-11T15:00:00Z
 ---
 
-### <i data-lucide='briefcase' class='post-icon'></i> **Jobs, Small Biz, Optimism, Oil, Scroll**
+### <i data-lucide='users' class='post-icon'></i> **Jobs, Small Biz, Optimism, Oil, Scroll**
 
 January saw payroll growth of 130,000 jobs, slightly above the 127,000 added in December. The labor market continues adding jobs at a steady pace despite broader economic uncertainty, driven by strength in leisure and hospitality services.
 
@@ -18,7 +18,7 @@ The consistent monthly additions keep the economy near full employment, though e
 
 ---
 
-### <i data-lucide='trending-down' class='post-icon'></i> **Small Business Optimism Slides to 99.3**
+### <i data-lucide='briefcase' class='post-icon'></i> **Small Business Optimism Slides to 99.3**
 
 The NFIB Small Business Optimism Index declined to 99.3 in January from 99.5 in December, signaling cautious business sentiment. Small business owners remain below the 100-point expansion threshold, reflecting concern about economic conditions and policy uncertainty.
 
@@ -62,5 +62,4 @@ Companies engineer addictive engagement because profit motive demands engagement
 How to advise without being sycophantic? How to engage without addiction? Until those questions shift corporate incentives, expect more addictive design, more lawsuits, and the same cycle repeating.
 
 [Read full entry](journal.html#infinite-scroll-is-nicotine)
-
 

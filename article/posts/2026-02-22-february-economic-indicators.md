@@ -5,7 +5,7 @@ date: 2026-02-22T18:30:00Z
 ## February Economic Indicators
 
 
-### <i data-lucide='bar-chart-3' class='post-icon'></i> **New Numbers**
+### <i data-lucide='briefcase' class='post-icon'></i> **New Numbers**
 
 Broad snapshot: consumer resilience holds, housing cools, Treasury yields spike, employment index strengthens, commodities mixed. Container volumes and labor force both steady.
 

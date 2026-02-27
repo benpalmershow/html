@@ -2,7 +2,7 @@
 title: Oil Price Slide, Builder Confidence Wanes
 ---
 
-### <i data-lucide='fuel' class='post-icon'></i> **Energy and Housing Sentiment Soften**
+### <i data-lucide='package' class='post-icon'></i> **Energy and Housing Sentiment Soften**
 
 Crude oil rebounded 3.6% in January while builder confidence slipped modestly.
 

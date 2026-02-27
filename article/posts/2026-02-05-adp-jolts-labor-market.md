@@ -2,7 +2,7 @@
 date: 2026-02-05T19:00:00Z
 ---
 
-### <i data-lucide='briefcase' class='post-icon'></i> **Labor Market Stalled Since September Collapse**
+### <i data-lucide='users' class='post-icon'></i> **Labor Market Stalled Since September Collapse**
 
 January added 22,000 jobs, consistent with a labor market that has essentially flatlined for five months.
 {{chart:Private Employment}}

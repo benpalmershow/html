@@ -2,7 +2,7 @@
 date: 2025-12-08T21:30:00Z
 ---
 
-### <i data-lucide='scale' class='post-icon'></i> **Your Tax Bill for Misconduct**
+### <i data-lucide='package' class='post-icon'></i> **Your Tax Bill for Misconduct**
 
 While individual officers enjoy qualified immunity in civil suits, your municipality does not. A public liability fund can pay $30 million to settle when an officer kills on your behalf.
 
@@ -10,7 +10,7 @@ While individual officers enjoy qualified immunity in civil suits, your municipa
 
 ---
 
-### <i data-lucide='truck' class='post-icon'></i> **August Beef**
+### <i data-lucide='package' class='post-icon'></i> **August Beef**
 
 For some reason, the USDA can't update August beef prices. Added Beef to Commodities Section in Numbers page. The NASS tracks the average price received by farmers for all beef cattle (steers, heifers, cows, and calves), quoted in dollars per hundredweight. Cattle prices are influenced by herd size, feed costs, consumer demand, and international trade. Rising prices impact ranching profitability and directly influence consumer beef costs which Americans ain't happy about!
 

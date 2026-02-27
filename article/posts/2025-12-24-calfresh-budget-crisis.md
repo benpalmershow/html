@@ -2,7 +2,7 @@
 date: 2025-12-24T12:00:00
 ---
 
-### <i data-lucide='alert-circle' class='post-icon'></i> **California Faces $2.5 Billion CalFresh Bill**
+### <i data-lucide='users' class='post-icon'></i> **California Faces $2.5 Billion CalFresh Bill**
 
 Federal legislation enacted in July 2025 just handed California a major fiscal problem. Starting in federal fiscal year 2028, states will shoulder part of SNAP benefits costs—determined by their payment error rate (PER). California's 11 percent error rate means the state will pay 15 percent of its CalFresh costs if it doesn't improve. At current spending levels, that's nearly $1.8 billion annually in new benefit costs, plus another $600 million in administrative expenses. Total estimated impact: $2.5 billion per year.
 
@@ -18,7 +18,7 @@ The OBBBA's cost-sharing formula takes effect in less than three years for feder
 
 ---
 
-### <i data-lucide='briefcase' class='post-icon'></i> **Jobless Claims Rise Modestly in December**
+### <i data-lucide='users' class='post-icon'></i> **Jobless Claims Rise Modestly in December**
 
 Initial jobless claims averaged 225,000 for December, a slight uptick from November's 217,600. The reading remains below the 300,000 threshold typically associated with labor market stress, but the trend bears watching as the year closes.
 

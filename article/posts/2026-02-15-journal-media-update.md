@@ -2,7 +2,7 @@
 date: 2026-02-14T18:00:00Z
 ---
 
-### <i data-lucide='trending-up' class='post-icon'></i> **Debt %, CPI, Housing Market, and Wagner**
+### <i data-lucide='landmark' class='post-icon'></i> **Debt %, CPI, Housing Market, and Wagner**
 
 ## Dept Interest
 The CBO's latest budget outlook projects a $1.9 trillion deficit this year. But interest costs tell the real story. Interest outlays hit $1.0 trillion in 2026 and will double to $2.1 trillion by 2036. For every dollar borrowed, 66 cents services debt. Interest will exceed defense spending every year and triple it by decade's end.

@@ -668,7 +668,7 @@
             "category": "Trade & Tariffs",
             "agency": "FRED",
             "name": "Dollar Value Index",
-            "lastUpdated": "2026-01-31T14:00:00Z",
+            "lastUpdated": "2026-02-27T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
@@ -682,7 +682,8 @@
             "november": "121.80",
             "december": "120.57",
             "2026": {
-                "january": "119.28"
+                "january": "119.28",
+                "february": "117.99"
             },
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk sentiment. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
@@ -844,7 +845,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "30-yr Mortgage Rate",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-02-27T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
             "march": "6.65",
@@ -859,7 +860,7 @@
             "december": "6.19",
             "2026": {
                 "january": "6.10",
-                "february": "6.07"
+                "february": "5.98"
 
             },
             "change": "",
@@ -1051,10 +1052,10 @@
             "explanation": "The monthly change in nonfarm payroll employment, representing the net number of jobs added to the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. A consistent monthly addition of 100,000-150,000 jobs is typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
         },
         {
-            "category": "Consumer Indicators",
+            "category": "Business Indicators",
             "agency": "BLS",
             "name": "PPI",
-            "lastUpdated": "2026-02-02T14:00:00Z",
+            "lastUpdated": "2026-02-27T14:00:00Z",
             "releaseDay": 14,
             "url": "https://www.bls.gov/ppi/data.htm",
             "march": "148.061",
@@ -1063,15 +1064,15 @@
             "june": "148.315",
             "july": "149.536",
             "august": "149.259",
-            "september": "150.241",
-            "october": "150.375",
-            "november": "150.733",
-            "december": "151.472",
+            "september": "150.245",
+            "october": "150.423",
+            "november": "150.797",
+            "december": "151.446",
             "2026": {
-                "january": ""
+                "january": "152.174"
             },
             "change": "",
-            "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. It's considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
+            "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3, \"Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
         },
         {
             "category": "Consumer Indicators",

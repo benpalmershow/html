@@ -2,7 +2,7 @@
 date: 2025-12-12T14:00:00Z
 ---
 
-# <i data-lucide='trending-up' class='post-icon'></i> **10-Year**
+# <i data-lucide='briefcase' class='post-icon'></i> **10-Year**
 
 Ten-year Treasury yield 4.13% today up from November avg. of 4.09%.
 {{chart:10-yr Treasury Yield}}

@@ -2,7 +2,7 @@
 date: 2026-01-07T10:00:00
 ---
 
-### <i data-lucide='scale' class='post-icon'></i> **Warm Collectivism**
+### <i data-lucide='users' class='post-icon'></i> **Warm Collectivism**
 
 PGE's new Base Services Charge decouples utility usage from service, matching energy bills to customer income levels and shifting cost burdens from low-income households. The policy rolls out March 2026.
 
@@ -18,7 +18,7 @@ This represents a fundamental shift in utility pricing philosophy - from market-
 
 ---
 
-### <i data-lucide='briefcase' class='post-icon'></i> **41,000 Jobs Added (ADP)**
+### <i data-lucide='users' class='post-icon'></i> **41,000 Jobs Added (ADP)**
 
 December private employment reached 134,588,000, representing continued stability in the private job market as the year closed.
 
@@ -33,7 +33,7 @@ The steady addition reflects ongoing business hiring despite economic uncertaint
 
 ---
 
-### <i data-lucide='bar-chart-3' class='post-icon'></i> **Job Openings Decline 4% (JOLTS)**
+### <i data-lucide='users' class='post-icon'></i> **Job Openings Decline 4% (JOLTS)**
 
 Job openings fell to 7,146,000 in November, reflecting a tightening in available positions as employers moderate hiring demands.
 
@@ -48,7 +48,7 @@ The decline suggests employers are becoming more selective in filling positions.
 
 ---
 
-### <i data-lucide='trending-up' class='post-icon'></i> **Services PMI Accelerates to 54.4**
+### <i data-lucide='briefcase' class='post-icon'></i> **Services PMI Accelerates to 54.4**
 
 December Services PMI surged to 54.4, marking the strongest reading since October and signaling robust expansion in the services sector as year-end activity accelerated.
 

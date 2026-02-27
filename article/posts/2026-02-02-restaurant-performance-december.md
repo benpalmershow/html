@@ -2,7 +2,7 @@
 date: 2026-02-02T10:00:00
 ---
 
-### <i data-lucide='utensils' class='post-icon'></i> **Restaurant Performance Index Slides to 99.3 in December**
+### <i data-lucide='shopping-cart' class='post-icon'></i> **Restaurant Performance Index Slides to 99.3 in December**
 
 The National Restaurant Association's monthly performance gauge fell 0.8% to 99.3 in December, marking the lowest reading since March and signaling softening demand across the restaurant industry. Both current conditions and future outlook weakened, as operators reported the first net decline in same-store sales in nine months.
 

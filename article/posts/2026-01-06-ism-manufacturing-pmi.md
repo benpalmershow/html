@@ -2,7 +2,7 @@
 date: 2026-01-06T12:00:00
 ---
 
-### <i data-lucide='trending-down' class='post-icon'></i> **Manufacturing Contraction**
+### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Contraction**
 
 December ISM Manufacturing PMI slipped to 47.9, extending the contraction that has persisted throughout 2025. The index remains firmly below 50, indicating sustained weakness in manufacturing activity and new orders.
 

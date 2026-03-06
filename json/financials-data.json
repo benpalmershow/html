@@ -249,7 +249,7 @@
             "category": "Commodities",
             "agency": "EIA",
             "name": "WTI Crude Oil",
-            "lastUpdated": "2026-02-18T14:00:00Z",
+            "lastUpdated": "2026-03-03T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "january": "75.74",
@@ -265,7 +265,9 @@
             "november": "60.06",
             "december": "57.97",
             "2026": {
-                "january": "60.04"
+                "january": "60.04",
+                "february": "64.51",
+                "march": "77.08"
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."

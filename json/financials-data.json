@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-02-24T18:00:00Z",
+    "lastUpdated": "2026-03-06T18:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -1033,7 +1033,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Total Nonfarm Employment",
-            "lastUpdated": "2026-02-11T15:00:00Z",
+            "lastUpdated": "2026-03-06T15:00:00Z",
             "releaseDay": 5,
             "url": "https://fred.stlouisfed.org/series/PAYEMS",
             "february": "158,310,000",
@@ -1048,7 +1048,9 @@
             "november": "158,449,000",
             "december": "158,497,000",
             "2026": {
-                "january": "158,627,000"
+                "january": "158,627,000",
+                "february": "158,466,000"
+
             },
             "change": "",
             "explanation": "The monthly change in nonfarm payroll employment, representing the net number of jobs added to the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. A consistent monthly addition of 100,000-150,000 jobs is typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."

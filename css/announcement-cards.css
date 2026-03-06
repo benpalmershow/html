@@ -36,7 +36,30 @@
     overflow: visible;
     border-radius: 0;
     list-style: none;
+    opacity: 0;
+    animation: cardSlideIn 0.5s ease-out forwards;
 }
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation delays for cards */
+.announcement-card:nth-child(1) { animation-delay: 0.05s; }
+.announcement-card:nth-child(2) { animation-delay: 0.1s; }
+.announcement-card:nth-child(3) { animation-delay: 0.15s; }
+.announcement-card:nth-child(4) { animation-delay: 0.2s; }
+.announcement-card:nth-child(5) { animation-delay: 0.25s; }
+.announcement-card:nth-child(6) { animation-delay: 0.3s; }
+.announcement-card:nth-child(7) { animation-delay: 0.35s; }
+.announcement-card:nth-child(8) { animation-delay: 0.4s; }
 
 .announcement-card summary {
     display: block;
@@ -47,6 +70,12 @@
 .announcement-card:hover {
     transform: translateX(4px);
     border-bottom-color: rgba(var(--accent-primary-rgb), 0.3);
+}
+
+.announcement-card:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 4px;
+    border-bottom-color: var(--accent-primary);
 }
 
 .announcement-card:last-child {
@@ -253,6 +282,13 @@ html.dark-mode .announcement-card.highlighted {
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .load-more-btn:hover {
@@ -260,6 +296,10 @@ html.dark-mode .announcement-card.highlighted {
     color: var(--bg-primary);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(var(--accent-primary-rgb), 0.2);
+}
+
+.load-more-btn:active {
+    transform: translateY(0);
 }
 
 /* Skeleton Pulse */

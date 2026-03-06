@@ -134,7 +134,7 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://howdystranger.net/search?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"en-US","copyrightYear":2024,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
+  [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://howdystranger.net/search?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"en-US","copyrightYear":2026,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
   </script>
 
   <!-- Google News Subscribe with Google (SwG) - Production only -->
@@ -156,19 +156,222 @@
       });
     }
   </script>
+  
+  <style>
+    /* Accessibility: Skip to content */
+    .skip-to-content {
+      position: absolute;
+      left: -9999px;
+      z-index: 9999;
+      padding: 0.5rem 1rem;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 0 0 4px 4px;
+    }
+    .skip-to-content:focus {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+
+    /* Homepage hero and quick navigation */
+    .home-hero {
+      max-width: 980px;
+      margin: 1.25rem auto 0;
+      padding: 1.5rem 1.25rem 1.6rem;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(var(--bg-secondary-rgb), 0.95), rgba(var(--bg-primary-rgb), 0.98));
+      box-shadow: 0 8px 28px rgba(var(--accent-primary-rgb), 0.08);
+      animation: heroFadeIn 0.6s ease-out;
+    }
+
+    @keyframes heroFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .home-kicker {
+      margin: 0 0 0.35rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .home-title {
+      margin: 0;
+      font-family: var(--font-display);
+      line-height: 1.15;
+      font-size: clamp(1.6rem, 5vw, 2.35rem);
+      color: var(--text-primary);
+    }
+
+    .home-subtitle {
+      margin: 0.6rem 0 1rem;
+      max-width: 62ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .home-link-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .home-link-card {
+      display: block;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--bg-primary);
+      padding: 0.75rem 0.7rem;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .home-link-card:hover,
+    .home-link-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 10px 24px rgba(var(--accent-primary-rgb), 0.18);
+      outline: none;
+    }
+
+    .home-link-card:nth-child(1) { animation: cardFadeIn 0.5s ease-out 0.1s both; }
+    .home-link-card:nth-child(2) { animation: cardFadeIn 0.5s ease-out 0.2s both; }
+    .home-link-card:nth-child(3) { animation: cardFadeIn 0.5s ease-out 0.3s both; }
+    .home-link-card:nth-child(4) { animation: cardFadeIn 0.5s ease-out 0.4s both; }
+
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .home-link-title {
+      display: block;
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .home-link-desc {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.3;
+    }
+
+    .page-title {
+      font-size: 0.85rem;
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-align: center;
+      margin: var(--spacing-xl) 0 var(--spacing-lg) 0;
+      padding-bottom: var(--spacing-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      min-height: 24px;
+      position: relative;
+    }
+
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+      border-radius: 1px;
+    }
+
+    .page-title .page-icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      flex-shrink: 0;
+      object-fit: contain;
+      margin-right: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .home-link-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .home-hero {
+        margin-top: 0.9rem;
+        padding: 1rem 0.8rem;
+      }
+
+      .home-link-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 0.8rem;
+        margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+      }
+    }
+  </style>
 
 </head>
 
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1" style="min-height:calc(100vh - 60px)">
+    <section class="home-hero" aria-labelledby="home-title">
+      <p class="home-kicker">Howdy, Stranger</p>
+      <h1 class="home-title" id="home-title">Independent commentary for people who want signal, not noise.</h1>
+      <p class="home-subtitle">
+        Quick access to economic indicators, market coverage, independent analysis, and curated media.
+      </p>
+      <div class="home-link-grid" aria-label="Primary sections">
+        <a class="home-link-card" href="news.html">
+          <span class="home-link-title">News</span>
+          <span class="home-link-desc">Latest commentary and policy updates</span>
+        </a>
+        <a class="home-link-card" href="financials.html">
+          <span class="home-link-title">Numbers</span>
+          <span class="home-link-desc">Economic indicators and market data</span>
+        </a>
+        <a class="home-link-card" href="journal.html">
+          <span class="home-link-title">Tweets</span>
+          <span class="home-link-desc">Short-form analysis and observations</span>
+        </a>
+        <a class="home-link-card" href="media.html">
+          <span class="home-link-title">Media</span>
+          <span class="home-link-desc">Books, films, and listening picks</span>
+        </a>
+      </div>
+    </section>
 
     <!-- Announcements Section Component with fallback -->
-    <h1 class="page-title" aria-label="Page title">
+    <h2 class="page-title" aria-label="Page title">
       <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
         loading="eager" decoding="async">
       Announcements
-    </h1>
+    </h2>
     <section class="announcements" aria-label="Latest announcements" style="min-height:600px">
       <div class="announcements-container" id="announcements-container" style="min-height:500px">
         <div class="loading-skeleton" style="height:100px"></div>
@@ -176,6 +379,12 @@
         <div class="loading-skeleton" style="height:100px"></div>
       </div>
     </section>
+    
+    <noscript>
+      <div style="padding: 2rem; text-align: center;">
+        <p>Please enable JavaScript to view the latest announcements and content.</p>
+      </div>
+    </noscript>
 
     <!-- Announcements are populated by posts-loader.js directly into #announcements-container -->
   </main>

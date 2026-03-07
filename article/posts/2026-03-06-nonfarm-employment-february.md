@@ -2,7 +2,7 @@
 date: 2026-03-06T15:30:00Z
 ---
 
-### <i data-lucide='users' class='post-icon'></i> **Nonfarm Employment: February Contraction**
+### <i data-lucide='users' class='post-icon'></i> **Jobs down 92k**
 
 Total nonfarm employment declined to 158.466 million in February, down 92,000 from January's revised 158.558 million.
 

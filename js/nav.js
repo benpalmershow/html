@@ -1,13 +1,14 @@
 // Generate sticky navbar with links to all pages
 document.addEventListener('DOMContentLoaded', () => {
   const navContainer = document.getElementById('main-nav');
+  const heroLinkGrid = document.getElementById('hero-link-grid');
 
   const PAGES = [
-    { name: 'Home', file: 'index.html' },
-    { name: 'News', file: 'news.html' },
-    { name: 'Numbers', file: 'financials.html' },
-    { name: 'Media', file: 'media.html' },
-    { name: 'Tweets', file: 'journal.html' }
+    { name: 'Home', file: 'index.html', desc: '', heroDesc: '', icon: '' },
+    { name: 'News', file: 'news.html', desc: 'Latest commentary and policy updates', heroDesc: 'Latest commentary and policy updates', icon: 'announcements.webp' },
+    { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', heroDesc: 'Economic indicators and market data', icon: 'federal-reserve.webp' },
+    { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', heroDesc: 'Books, films, and listening picks', icon: 'media.webp' },
+    { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', heroDesc: 'Short-form analysis and observations', icon: 'read.webp' }
   ];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -19,6 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return `<li><a href="${page.file}" class="nav-link ${isActive ? 'active' : ''}">${page.name}</a></li>`;
   };
+
+  // Render hero cards for non-home pages
+  const renderHeroCards = () => {
+    if (!heroLinkGrid) return;
+    
+    const nonHomePages = PAGES.filter(p => p.file !== 'index.html');
+    return nonHomePages.map(page => `
+      <a class="home-link-card" href="${page.file}">
+        <img src="images/${page.icon}" alt="${page.name}" class="home-link-icon" loading="lazy">
+        <span class="home-link-title">${page.name}</span>
+        <span class="home-link-desc">${page.heroDesc}</span>
+      </a>
+    `).join('');
+  };
+
+  // Populate hero cards if on homepage
+  if (heroLinkGrid) {
+    heroLinkGrid.innerHTML = renderHeroCards();
+  }
 
   const navHTML = `
     <div class="nav-container">

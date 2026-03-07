@@ -11,9 +11,9 @@
   <meta name="theme-color" content="#1a1f1e">
 
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/webp" sizes="32x32" href="favicon-32x32.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.webp">
   <link rel="manifest" href="site.webmanifest">
 
   <!-- Preconnect -->
@@ -53,6 +53,10 @@
   <link rel="canonical" href="https://howdystranger.net/">
   <!-- Alternate forms (for redirect handling) -->
   <link rel="alternate" href="https://howdystranger.net/index.html">
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Howdy, Stranger - News Feed" href="https://howdystranger.net/news-feed.xml">
+  <!-- XML Sitemap -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://howdystranger.net/sitemap.xml">
 
   <!-- Typography System Fonts Component -->
   <!-- Typography System Fonts -->
@@ -164,8 +168,8 @@
       left: -9999px;
       z-index: 9999;
       padding: 0.5rem 1rem;
-      background: #fff;
-      color: #000;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       text-decoration: none;
       border-radius: 0 0 4px 4px;
     }
@@ -182,7 +186,7 @@
       padding: 1.5rem 1.25rem 1.6rem;
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      background: linear-gradient(145deg, rgba(var(--bg-secondary-rgb), 0.95), rgba(var(--bg-primary-rgb), 0.98));
+      background: var(--bg-secondary);
       box-shadow: 0 8px 28px rgba(var(--accent-primary-rgb), 0.08);
       animation: heroFadeIn 0.6s ease-out;
     }
@@ -228,14 +232,35 @@
       gap: 0.65rem;
     }
 
+    /* Dark mode support for hero section */
+    @media (prefers-color-scheme: dark) {
+      .home-hero {
+        background: var(--bg-secondary);
+      }
+    }
+    html.dark-mode .home-hero {
+      background: var(--bg-secondary);
+    }
+
     .home-link-card {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       text-decoration: none;
       border: 1px solid var(--border-color);
       border-radius: 10px;
       background: var(--bg-primary);
       padding: 0.75rem 0.7rem;
       transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .home-link-icon {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
     }
 
     .home-link-card:hover,
@@ -346,23 +371,8 @@
       <p class="home-subtitle">
         Quick access to economic indicators, market coverage, independent analysis, and curated media.
       </p>
-      <div class="home-link-grid" aria-label="Primary sections">
-        <a class="home-link-card" href="news.html">
-          <span class="home-link-title">News</span>
-          <span class="home-link-desc">Latest commentary and policy updates</span>
-        </a>
-        <a class="home-link-card" href="financials.html">
-          <span class="home-link-title">Numbers</span>
-          <span class="home-link-desc">Economic indicators and market data</span>
-        </a>
-        <a class="home-link-card" href="journal.html">
-          <span class="home-link-title">Tweets</span>
-          <span class="home-link-desc">Short-form analysis and observations</span>
-        </a>
-        <a class="home-link-card" href="media.html">
-          <span class="home-link-title">Media</span>
-          <span class="home-link-desc">Books, films, and listening picks</span>
-        </a>
+      <div class="home-link-grid" id="hero-link-grid" aria-label="Primary sections">
+        <!-- Hero cards populated by js/nav.js -->
       </div>
     </section>
 

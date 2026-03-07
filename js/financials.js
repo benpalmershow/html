@@ -162,7 +162,8 @@ function initializeDashboard() {
      document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
      setupFilters(financialData, SELECTORS, DATA_ATTRS);
      const urlParams = new URLSearchParams(window.location.search);
-     const initialFilter = urlParams.get('filter') || 'all';
+     // default view should show latest updates instead of "all"
+     const initialFilter = urlParams.get('filter') || 'latest';
      const isLatest = initialFilter.toLowerCase() === 'latest';
 
      // Check if navigated to 13F anchor

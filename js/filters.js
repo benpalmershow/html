@@ -55,7 +55,7 @@ function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
     // Add "All"
     createFilterElements('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
 
-    // Add "Latest"
+    // Add "Latest" (we'll make this the default shown view)
     createFilterElements('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
 
     // Add Categories

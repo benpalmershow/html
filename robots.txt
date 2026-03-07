@@ -3,5 +3,6 @@ Allow: /
 Disallow: /*/$
 Disallow: /*.html$
 
-# Sitemap
+# Sitemaps
+Sitemap: https://howdystranger.net/sitemap.xml
 Sitemap: https://howdystranger.net/news-sitemap.xml

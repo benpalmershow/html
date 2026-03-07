@@ -8,14 +8,9 @@
   "theme_color": "#2C5F5A",
   "icons": [
     {
-      "src": "/images/favicon-32x32.png",
+      "src": "/favicon-32x32.webp",
       "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/images/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
       "src": "/images/apple-touch-icon.webp",
@@ -23,9 +18,9 @@
       "type": "image/webp"
     },
     {
-      "src": "/images/logo.png",
+      "src": "/images/logo-360x360.webp",
       "sizes": "360x360",
-      "type": "image/png"
+      "type": "image/webp"
     }
   ]
 }

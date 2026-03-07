@@ -169,8 +169,16 @@
     .filter-btn.active .filter-icon {
         color: #ffffff;
     }
-}
 
+    /* change-metric icons remain same colors in dark mode */
+    .change-metric-title-icon.change-positive {
+        color: #22c55e;
+    }
+
+    .change-metric-title-icon.change-negative {
+        color: #ef4444;
+    }
+}
 .desktop-filters {
     display: none;
     flex-wrap: wrap;
@@ -452,7 +460,7 @@
 .month-label {
     font-weight: 500;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* smaller than change indicators */
     word-break: keep-all;
     hyphens: none;
 }
@@ -461,7 +469,7 @@
     font-weight: 600;
     color: var(--text-secondary);
     text-align: right;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* ensure it's less than change-metric-font */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -604,16 +612,8 @@
     color: #ef4444;
 }
 
-.change-metric-btn.change-positive {
-    background: transparent;
-    border-color: transparent;
-}
-
-.change-metric-btn.change-negative {
-    background: transparent;
-    border-color: transparent;
-}
-
+.change-metric-btn.change-positive,
+.change-metric-btn.change-negative,
 .change-metric-btn.change-neutral {
     background: transparent;
     border-color: transparent;
@@ -631,15 +631,7 @@
     color: #d1d5db;
 }
 
-@media (prefers-color-scheme: dark) {
-    .change-metric-title-icon.change-positive {
-        color: #22c55e;
-    }
 
-    .change-metric-title-icon.change-negative {
-        color: #ef4444;
-    }
-}
 
 .expand-toggle {
     display: inline-flex;
@@ -1020,15 +1012,6 @@
         height: 1.25em;
     }
 
-    .indicator-name {
-        font-size: 0.95rem;
-    }
-
-    .month-label,
-    .month-value {
-        font-size: 0.85rem;
-    }
-
     .data-row {
         padding: 4px 0;
     }
@@ -1057,8 +1040,32 @@
         font-size: 1.75rem;
     }
 
+    .page-title {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
     .collapsible-header :is(h1, h2) {
         font-size: 1.3rem;
+    }
+
+    .collapsible-header {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .collapse-toggle {
+        font-size: 1.2rem;
+    }
+
+    .filters-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
     }
 
     .indicators-grid {
@@ -1066,26 +1073,43 @@
         gap: 0.5rem;
     }
 
-    .indicator {
-        padding: 0.75rem;
+
+    .category {
+        padding: 1rem 0.75rem;
     }
 
-    .filter-btn {
-        padding: 0.4rem 0.6rem;
+    .change-indicators {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .change-metric-btn {
         font-size: 0.7rem;
     }
 
-    .category {
-        padding: 1rem;
+    .change-metric-title,
+    .change-metric-value {
+        font-size: 0.6rem;
+    }
+}
+
+/* Extra tiny screens */
+@media (max-width: 360px) {
+    .page-title {
+        font-size: 1.4rem;
     }
 
     .indicator-name {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
-    .month-label,
-    .month-value {
-        font-size: 0.85rem;
+    .filter-btn {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .collapsible-header :is(h1, h2) {
+        font-size: 1.1rem;
     }
 }
 

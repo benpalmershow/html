@@ -556,6 +556,20 @@ let state = {
     expandedCardIndex: null
 };
 
+function sortPostsNewestFirst(posts) {
+    return [...posts].sort((a, b) => {
+        const aTime = Date.parse(a?.date || '');
+        const bTime = Date.parse(b?.date || '');
+        const aValid = Number.isFinite(aTime);
+        const bValid = Number.isFinite(bTime);
+
+        if (aValid && bValid) return bTime - aTime;
+        if (aValid) return -1;
+        if (bValid) return 1;
+        return 0;
+    });
+}
+
 function saveExpandedCardState(index) {
     if (index !== null) {
         sessionStorage.setItem('expandedCardIndex', index);
@@ -638,7 +652,7 @@ async function initPosts() {
 
     try {
         const json = window.postsPromise ? await window.postsPromise : await (await fetch(CONFIG.POSTS_JSON_URL)).json();
-        state.allPosts = Array.isArray(json) ? json : [];
+        state.allPosts = Array.isArray(json) ? sortPostsNewestFirst(json) : [];
         const initial = state.allPosts.slice(0, CONFIG.INITIAL_LOAD);
         await loadAndRenderPosts(initial);
         startTimeUpdates();

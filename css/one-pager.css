@@ -302,40 +302,62 @@
 @media print {
   @page {
     size: Letter portrait;
-    margin: 0.38in;
+    margin: 0.25in;
   }
 
+  html,
   body {
     background: #fff;
     color: #000;
-    font-size: 10.5pt;
+    font-size: 9.4pt;
+    line-height: 1.15;
+    margin: 0;
+    padding: 0;
+    content-visibility: visible !important;
+  }
+
+  body {
+    display: block !important;
+    min-height: auto !important;
   }
 
   #main-nav,
-  .print-btn,
-  .one-pager-footer {
+  .print-btn {
     display: none !important;
   }
 
   .one-pager-container {
+    width: 100%;
     max-width: none;
     margin: 0;
     padding: 0;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  main.one-pager-container {
+    contain: none !important;
+    content-visibility: visible !important;
+    min-height: 0 !important;
+    display: block !important;
   }
 
   .one-pager-header,
-  .section-card {
+  .section-card,
+  .one-pager-footer {
     background: #fff;
     box-shadow: none;
     border-color: #000;
   }
 
   .one-pager-header {
-    padding: 0.5rem 0.6rem;
+    padding: 0.4rem 0.5rem;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
 
   .one-pager-header h1 {
-    font-size: 13.5pt;
+    font-size: 12pt;
   }
 
   .title-logo {
@@ -350,7 +372,7 @@
   }
 
   .generated-at {
-    font-size: 8.7pt;
+    font-size: 8.1pt;
     margin-top: 0;
   }
 
@@ -366,25 +388,67 @@
 
   .updates-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.35rem;
-    margin-top: 0.35rem;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
     break-inside: avoid;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
 
   .section-card {
-    padding: 0.42rem 0.5rem;
+    padding: 0.3rem 0.36rem;
     break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .section-card h2 {
-    margin-bottom: 0.2rem;
-    font-size: 11pt;
+    margin-bottom: 0.14rem;
+    font-size: 9.8pt;
+  }
+
+  .one-pager-footer {
+    margin-top: 0.25rem;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem;
+    padding: 0.3rem 0.36rem;
+    break-inside: avoid;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .footer-title {
+    margin-bottom: 0.12rem;
+    font-size: 8.2pt;
+    color: #000;
+  }
+
+  .footer-social-list {
+    gap: 0.12rem 0.4rem;
+  }
+
+  .footer-qr-link,
+  .footer-qr-wrap,
+  .footer-qr-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .footer-qr-logo-badge {
+    width: 15px;
+    height: 15px;
+    border-color: #000;
+  }
+
+  .footer-qr-logo {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
   }
 
   .compact-list li {
-    margin-bottom: 0.14rem;
-    line-height: 1.18;
-    font-size: 9.7pt;
+    margin-bottom: 0.1rem;
+    line-height: 1.13;
+    font-size: 8.6pt;
   }
 
   .financial-bullet-icon {
@@ -394,16 +458,16 @@
   }
 
   .section-icon-link {
-    width: 19px;
-    height: 19px;
+    width: 16px;
+    height: 16px;
     border-color: #000;
     background: #fff;
     color: #000;
   }
 
   .section-link-image {
-    width: 11px;
-    height: 11px;
+    width: 9px;
+    height: 9px;
   }
 
   .mom-positive {

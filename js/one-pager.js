@@ -1,8 +1,8 @@
 const LIMITS = {
-  posts: 3,
-  journal: 4,
-  media: 3,
-  financials: 6
+  posts: 5,
+  journal: 6,
+  media: 5,
+  financials: 8
 };
 const PAGE_LOAD_VERSION = Date.now();
 

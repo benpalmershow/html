@@ -32,6 +32,18 @@ const DATA_ATTRS = {
 
 let financialData = null;
 
+function scrollToIndicatorByName(indicatorName) {
+    if (!indicatorName) return;
+
+    const cards = Array.from(document.querySelectorAll(SELECTORS.INDICATOR));
+    const target = cards.find(card => card.getAttribute(DATA_ATTRS.INDICATOR_NAME) === indicatorName);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    target.classList.add('indicator-deep-link');
+    setTimeout(() => target.classList.remove('indicator-deep-link'), 1800);
+}
+
 // Fetch financial data and initialize dashboard
 async function fetchFinancialData() {
     const paths = [
@@ -164,6 +176,7 @@ function initializeDashboard() {
      const urlParams = new URLSearchParams(window.location.search);
      // default view should show latest updates instead of "all"
      const initialFilter = urlParams.get('filter') || 'latest';
+     const indicatorParam = urlParams.get('indicator');
      const isLatest = initialFilter.toLowerCase() === 'latest';
 
      // Check if navigated to 13F anchor
@@ -185,11 +198,13 @@ function initializeDashboard() {
                  (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
              );
              renderDashboard('all', true);
+             scrollToIndicatorByName(indicatorParam);
          } else {
              updateActiveElements(allBtnsSelector,
                  (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
              );
              renderDashboard(initialFilter, false);
+             scrollToIndicatorByName(indicatorParam);
          }
          setupModalHandlers();
      }

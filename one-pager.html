@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Update - Howdy, Stranger</title>
+  <link rel="stylesheet" href="css/theme.css?v=20260123">
+  <link rel="stylesheet" href="css/body.css?v=20260107">
+  <link rel="stylesheet" href="css/nav.css?v=20260107">
+  <link rel="stylesheet" href="css/one-pager.css?v=20260308">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav-links" id="main-nav"></nav>
+
+  <main class="one-pager-container" id="main-content">
+    <header class="one-pager-header">
+      <div>
+        <p class="kicker">Howdy, Stranger</p>
+        <h1>
+          <img src="images/logo.webp" alt="Howdy, Stranger logo" class="title-logo" width="34" height="34">
+          Weekly Update
+        </h1>
+        <p class="generated-at" id="generated-at">Loading...</p>
+        <p class="header-footer-info" id="header-footer-info"></p>
+      </div>
+      <button id="print-btn" class="print-btn" type="button">Print</button>
+    </header>
+
+    <section class="updates-grid">
+      <article class="section-card">
+        <a class="section-icon-link" href="index.html" target="_blank" rel="noopener noreferrer" aria-label="Open Posts" title="Open Posts">
+          <img src="images/announcements.webp" alt="" class="section-link-image" width="13" height="13">
+        </a>
+        <h2>Latest Posts</h2>
+        <ul id="latest-posts" class="compact-list"></ul>
+      </article>
+
+      <article class="section-card">
+        <a class="section-icon-link" href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Journal" title="Open Journal">
+          <img src="images/read.webp" alt="" class="section-link-image" width="13" height="13">
+        </a>
+        <h2>Latest Journal</h2>
+        <ul id="latest-journal" class="compact-list"></ul>
+      </article>
+
+      <article class="section-card">
+        <a class="section-icon-link" href="media.html" target="_blank" rel="noopener noreferrer" aria-label="Open Media" title="Open Media">
+          <img src="images/media-60x60.webp" alt="" class="section-link-image" width="13" height="13">
+        </a>
+        <h2>Latest Media</h2>
+        <ul id="latest-media" class="compact-list"></ul>
+      </article>
+
+      <article class="section-card">
+        <a class="section-icon-link" href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer" aria-label="Open Latest Updates" title="Open Latest Updates">
+          <img src="images/federal-reserve.webp" alt="" class="section-link-image" width="13" height="13">
+        </a>
+        <h2>Latest Financial Updates</h2>
+        <ul id="latest-financials" class="compact-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
+  <script src="js/one-pager.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+</body>
+
+</html>

@@ -12,7 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-
+  const HELP_NEW_VERSION = '2026-03-print-weekly';
+  const HELP_NEW_STORAGE_KEY = 'help_new_seen_version';
+  let hasHelpNewItem = true;
+  try {
+    hasHelpNewItem = localStorage.getItem(HELP_NEW_STORAGE_KEY) !== HELP_NEW_VERSION;
+  } catch {
+    hasHelpNewItem = true;
+  }
   const renderNavLink = (page) => {
     const isActive = currentPage === page.file || (currentPage === '' && page.file === 'index.html');
     if (page.file === 'index.html') {
@@ -46,13 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ${PAGES.map(renderNavLink).join('')}
       </ul>
       <div class="nav-right-section">
-         <!-- Compact CTA Button -->
          <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
            <i data-lucide="newspaper" style="width: 1.2rem; height: 1.2rem;"></i>
          </button>
-         <!-- Compact Hints Button -->
-         <button class="hints-icon-btn" id="hints-toggle" aria-label="Show welcome hints" title="Welcome guide">
+         <button class="hints-icon-btn${hasHelpNewItem ? ' has-new' : ''}" id="hints-toggle" aria-label="${hasHelpNewItem ? 'Show welcome hints (1 new)' : 'Show welcome hints'}" title="Welcome guide">
            <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
+           ${hasHelpNewItem ? '<span class="hints-notification-badge" aria-hidden="true">1</span>' : ''}
          </button>
        </div>
     </div>
@@ -81,14 +87,26 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="hint-close-btn" aria-label="Close this message" title="Close">&times;</button>
           <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
           <div class="hint-steps">
+              <div class="hint-step hint-step-print">
+                <i data-lucide="printer" style="width: 2rem; height: 2rem;"></i>
+               <div>
+                 <strong>Print Weekly:</strong> Open <a href="one-pager.html?autoprint=1" target="_blank" rel="noopener noreferrer">Weekly Update</a> to print a one-page summary
+               </div>
+               </div>
             <div class="hint-step">
-              <i data-lucide="newspaper" style="width: 2rem; height: 2rem;"></i>
+              <picture>
+                <source srcset="images/announcements.webp" type="image/webp">
+                <img src="images/announcements.webp" alt="News" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              </picture>
               <div>
                 <strong>News:</strong> Latest market updates, earnings, and policy analysis
               </div>
             </div>
             <div class="hint-step">
-              <i data-lucide="bar-chart-3" style="width: 2rem; height: 2rem;"></i>
+              <picture>
+                <source srcset="images/federal-reserve.webp" type="image/webp">
+                <img src="images/federal-reserve.webp" alt="Numbers" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+              </picture>
               <div>
                 <strong>Numbers:</strong> Economic indicators, financial data, and market trends
               </div>
@@ -327,6 +345,34 @@ document.addEventListener('DOMContentLoaded', () => {
       hintsPopover.close();
       localStorage.setItem('hintsShown', 'true');
     };
+
+    const markHelpNewSeen = () => {
+      if (!hasHelpNewItem) return;
+      hasHelpNewItem = false;
+      try {
+        localStorage.setItem(HELP_NEW_STORAGE_KEY, HELP_NEW_VERSION);
+      } catch {
+        // noop
+      }
+      hintsToggle.classList.remove('has-new');
+      hintsToggle.setAttribute('aria-label', 'Show welcome hints');
+      const badge = hintsToggle.querySelector('.hints-notification-badge');
+      badge?.remove();
+    };
+
+    const spotlightPrintWeekly = () => {
+      const printHint = visitorHints.querySelector('.hint-step-print');
+      if (!printHint) return;
+      printHint.classList.remove('tour-focus');
+      void printHint.offsetWidth;
+      printHint.classList.add('tour-focus');
+      setTimeout(() => printHint.classList.remove('tour-focus'), 2200);
+    };
+
+    hintsToggle.addEventListener('click', () => {
+      markHelpNewSeen();
+      setTimeout(spotlightPrintWeekly, 280);
+    });
 
     const hintOverlay = visitorHints.querySelector('.hint-overlay');
     const hintCloseX = visitorHints.querySelector('.hint-close-btn');

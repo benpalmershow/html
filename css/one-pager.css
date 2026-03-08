@@ -137,6 +137,13 @@
   transition: transform 0.15s ease;
 }
 
+.footer-qr-wrap {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  display: inline-flex;
+}
+
 .footer-qr-link:hover,
 .footer-qr-link:focus-visible {
   transform: translateY(-1px);
@@ -147,6 +154,27 @@
   width: 84px;
   height: 84px;
   display: block;
+}
+
+.footer-qr-logo-badge {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-qr-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  object-fit: cover;
 }
 
 .section-card {
@@ -264,6 +292,7 @@
   }
 
   .footer-qr-link,
+  .footer-qr-wrap,
   .footer-qr-image {
     width: 76px;
     height: 76px;

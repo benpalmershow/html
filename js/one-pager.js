@@ -227,34 +227,6 @@ function setGeneratedAt() {
     dateStyle: 'medium',
     timeStyle: 'short'
   })}`;
-
-  const headerFooterInfo = document.getElementById('header-footer-info');
-  if (headerFooterInfo) {
-    headerFooterInfo.innerHTML = `
-      <span class="header-social-list">
-        <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="header-social-item">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" width="14" height="14">
-          <span class="header-social-handle">@DocRiter</span>
-        </a>
-        <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="header-social-item">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="14" height="14">
-          <span class="header-social-handle">@BenPalmerShow</span>
-        </a>
-        <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack" class="header-social-item">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack" width="14" height="14">
-          <span class="header-social-handle">benpalmershow.substack.com</span>
-        </a>
-        <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="header-social-item">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify" width="14" height="14">
-          <span class="header-social-handle">The Ben Palmer Show</span>
-        </a>
-        <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank" rel="noopener noreferrer" aria-label="Apple Podcasts" class="header-social-item">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" alt="Apple Podcasts" width="14" height="14">
-          <span class="header-social-handle">The Ben Palmer Show</span>
-        </a>
-      </span>
-    `;
-  }
 }
 
 function renderList(id, items) {

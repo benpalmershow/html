@@ -346,7 +346,8 @@ async function loadLatestFinancials() {
     const momHtml = `<span class="mom-pill ${momClass}">${escapeHtml(momText)}</span>`;
     const categoryText = cleanText(item.category || 'unknown category');
     const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
-    const categoryIconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
+    const categoryHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
+    const categoryIconHtml = `<a href="${categoryHref}" target="_blank" rel="noopener noreferrer" class="financial-bullet-link" aria-label="Open ${escapeHtml(categoryText)} in Financials" title="${escapeHtml(categoryText)}"><i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i></a>`;
     return `${categoryIconHtml} <strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)}${escapeHtml(employmentDelta)} | ${momHtml}`;
   });
   renderList('latest-financials', lines);

@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="hint-step hint-step-print">
                 <i data-lucide="printer" style="width: 2rem; height: 2rem;"></i>
                <div>
-                 <strong>Print Weekly:</strong> Open <a href="one-pager.html?autoprint=1" target="_blank" rel="noopener noreferrer">Weekly Update</a> to print a one-page summary
+                 <strong>Print Weekly:</strong> Open <a href="one-pager.html" target="_blank" rel="noopener noreferrer">Weekly Update</a> to print a one-page summary
                </div>
                </div>
             <div class="hint-step">

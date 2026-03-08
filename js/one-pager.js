@@ -4,6 +4,7 @@ const LIMITS = {
   media: 3,
   financials: 6
 };
+const PAGE_LOAD_VERSION = Date.now();
 
 const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
@@ -83,13 +84,17 @@ function isInternalHtmlPath(path) {
 }
 
 async function fetchJson(path) {
-  const response = await fetch(path);
+  const separator = path.includes('?') ? '&' : '?';
+  const cacheBustPath = `${path}${separator}v=${PAGE_LOAD_VERSION}`;
+  const response = await fetch(cacheBustPath, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Failed to fetch ${path}: ${response.status}`);
   return response.json();
 }
 
 async function fetchText(path) {
-  const response = await fetch(path);
+  const separator = path.includes('?') ? '&' : '?';
+  const cacheBustPath = `${path}${separator}v=${PAGE_LOAD_VERSION}`;
+  const response = await fetch(cacheBustPath, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Failed to fetch ${path}: ${response.status}`);
   return response.text();
 }

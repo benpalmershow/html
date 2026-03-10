@@ -920,7 +920,7 @@
             "category": "Employment Indicators",
             "agency": "The Conference Board",
             "name": "Employment Trends Index",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-10T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.conference-board.org/topics/employment-trends-index",
             "march": "",
@@ -934,7 +934,9 @@
             "november": "105.5",
             "december": "104.51",
             "2026": {
-                "january": "105.06"
+                "january": "105.18",
+                "february": "105.37"
+
             },
             "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."

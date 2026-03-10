@@ -340,9 +340,9 @@
 .rss-link,
 .x-link,
 .media-link {
-    font-size: 1.5em;
-    width: 40px;
-    height: 40px;
+    font-size: 1em;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -350,12 +350,13 @@
     text-decoration: none !important;
     opacity: 0.9;
     transition: all var(--transition-medium);
-    box-shadow: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     border: none;
-    background: none;
+    background: rgba(255, 255, 255, 0.1);
     margin: 0;
     padding: 0;
     flex-shrink: 0;
+    border-radius: 0.35rem;
 }
 
 .youtube-link i,
@@ -367,7 +368,7 @@
 .rss-link i,
 .x-link i,
 .media-link i {
-    font-size: 1.5em;
+    font-size: 1em;
     width: 1em;
     height: 1em;
     display: flex;

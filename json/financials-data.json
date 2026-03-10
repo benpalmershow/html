@@ -670,7 +670,7 @@
             "category": "Trade & Tariffs",
             "agency": "FRED",
             "name": "Dollar Value Index",
-            "lastUpdated": "2026-02-27T14:00:00Z",
+            "lastUpdated": "2026-03-09T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
@@ -685,7 +685,8 @@
             "december": "120.57",
             "2026": {
                 "january": "119.28",
-                "february": "117.99"
+                "february": "117.99",
+                "march": "119.49"
             },
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk sentiment. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."

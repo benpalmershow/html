@@ -634,6 +634,15 @@ Added "Land Power" by Michael Albertus to the media collection. The book examine
 - Optional field—cover + metadata sufficient without trailer
 - Use BFI or official studio uploads for reliability over fan-uploaded trailers
 
+### IMDb ID Only Requests and WAF Blocks
+**From "Asog (tt15138634)" implementation:**
+- Direct `imdb.com/title/...` fetches can return CloudFront WAF challenge responses (`x-amzn-waf-action: challenge`) and no usable HTML.
+- If user provides only IMDb ID, resolve identity first via ID-based metadata endpoints:
+  - `https://v3.sg.media-imdb.com/suggestion/t/[IMDB_ID].json` for title confirmation
+  - `https://v3-cinemeta.strem.io/meta/movie/[IMDB_ID].json` for structured metadata (director, genre, year, runtime, trailer source)
+- Do not invent unverifiable fields. If rating, year, or trailer cannot be confirmed from reliable endpoints, leave the field blank.
+- Treat conflicting year values as a verification issue. Prefer the structured ID metadata source used for the rest of the entry, and document the choice.
+
 ### Future Enhancements
 - Integrate Goodreads/Amazon ratings automatically via API
 - Implement batch post updates

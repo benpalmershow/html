@@ -4,6 +4,10 @@ const LIMITS = {
   media: 5,
   financials: 8
 };
+const EXCLUDED_POSTS = [
+  'article/posts/2026-03-10-reflect-orbital.md',
+  'article/posts/2026-03-10-asog.md'
+];
 const PAGE_LOAD_VERSION = Date.now();
 
 const MONTHS = [
@@ -111,10 +115,8 @@ function extractPostTitleAndSnippet(markdown, fallbackFileName) {
   const body = extractMarkdownBody(markdown);
   const headingMatch = body.match(/^#{1,3}\s+(.+)$/m);
   const title = cleanText(headingMatch?.[1]) || fallbackFileName;
-  const htmlAnchorMatches = Array.from(body.matchAll(/href=["']([^"']+\.html(?:[?#][^"']*)?)["']/ig)).map(m => m[1]);
-  const markdownLinkMatches = Array.from(body.matchAll(/\[[^\]]+\]\(([^)]+\.html(?:[?#][^)]+)?)\)/ig)).map(m => m[1]);
-  const internalLinks = [...htmlAnchorMatches, ...markdownLinkMatches].filter(isInternalHtmlPath);
-  const sourcePath = internalLinks[0] || `index.html#:~:text=${encodeURIComponent(title)}`;
+  // Always link to home instead of following links in the post
+  const sourcePath = `index.html#:~:text=${encodeURIComponent(title)}`;
 
   const lines = body
     .split('\n')
@@ -246,6 +248,7 @@ async function loadLatestPosts() {
   const posts = await fetchJson('json/posts.json');
   const sorted = posts
     .slice()
+    .filter(post => !EXCLUDED_POSTS.includes(post.file))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, LIMITS.posts);
 

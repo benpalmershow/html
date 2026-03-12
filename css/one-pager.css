@@ -72,6 +72,16 @@
   flex-shrink: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  .header-social-item img {
+    filter: invert(1);
+  }
+}
+
+html.dark-mode .header-social-item img {
+  filter: invert(1);
+}
+
 .header-social-handle {
   font-size: 0.7rem;
   line-height: 1.1;
@@ -242,11 +252,11 @@
 }
 
 .mom-positive {
-  color: var(--color-success);
+  color: #22c55e;
 }
 
 .mom-negative {
-  color: var(--color-error);
+  color: #ef4444;
 }
 
 .mom-neutral {
@@ -471,10 +481,10 @@
   }
 
   .mom-positive {
-    color: var(--color-success);
+    color: #22c55e;
   }
 
   .mom-negative {
-    color: var(--color-error);
+    color: #ef4444;
   }
 }

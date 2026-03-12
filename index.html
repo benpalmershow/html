@@ -452,11 +452,12 @@
         Quick access to economic indicators, market coverage, independent analysis, and curated media.
       </p>
       <p class="home-weekly-splash">
-        <a href="one-pager.html" id="weekly-help-splash" class="home-weekly-splash-btn" aria-label="Print weekly update" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="printer" class="home-weekly-splash-icon"></i>
+        <!-- link now includes autoprint flag so the new tab immediately triggers the print dialog -->
+        <a href="one-pager.html" id="weekly-help-splash" class="home-weekly-splash-btn" aria-label="Open weekly update and print" title="Open and print weekly update" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="printer" class="home-weekly-splash-icon" aria-hidden="true"></i>
           <span class="home-weekly-splash-copy">
             <span class="home-weekly-splash-title">Print Weekly</span>
-            <span class="home-weekly-splash-preview">Open Weekly Update to print a one-page summary</span>
+            <span class="home-weekly-splash-preview">Open and auto‑print the one‑page weekly summary</span>
           </span>
         </a>
       </p>

@@ -2,7 +2,7 @@
 date: 2025-12-30T12:00:00
 ---
 
-### <i data-lucide='home' class='post-icon'></i> **Pending Home Sales Surge to 79.2**
+### <i data-lucide='home' class='post-icon'></i> **Pending Sales up 3.3%**
 
 Pending home sales index jumped to 79.2 in November, the strongest reading since March and a 3.3% gain from October's 76.7. This leading indicator suggests existing home sales will continue gaining momentum through year-end.
 

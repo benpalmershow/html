@@ -5,7 +5,7 @@ date: 2025-11-18T14:00:00
 
 Patriots 79¢ win probability. [New England visits Cincinnati on Sunday 1:00 PM ET.](financials.html?filter=Prediction%20Markets)
 
-## **WTI Crude Oil Down 19.6% YTD, 5% MoM**
+## **WTI Oil down 19.6%**
 
 October: $60.89/bbl (from $75.74 in January).
 

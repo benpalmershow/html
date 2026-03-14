@@ -2,7 +2,7 @@
 date: 2025-12-16T18:00:00Z
 ---
 
-### <i data-lucide='users' class='post-icon'></i> Jobs: Down 105k, up 64k MoM
+### <i data-lucide='users' class='post-icon'></i> **Jobs: +64k, -105k**
 
 Total nonfarm payroll employment rose to 159,552,000 in November, adding 64,000 jobs from October's 159,488,000. Job gains remain solid but moderate, consistent with a cooling labor market. The unemployment rate continues to edge higher as slack builds into the labor force.
 - **November**: 159,552,000 (+64,000 MoM)

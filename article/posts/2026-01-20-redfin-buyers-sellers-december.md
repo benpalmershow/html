@@ -2,7 +2,7 @@
 date: 2026-01-20T10:00:00
 ---
 
-### <i data-lucide='home' class='post-icon'></i> **Buyers Gain Historic Leverage: Record 47% More Sellers Than Buyers**
+### <i data-lucide='home' class='post-icon'></i> **Buyers: 47% More Than Sellers**
 
 Home sellers outnumbered buyers by a record margin in December, marking a dramatic shift in market power toward home shoppers. With 631,535 more sellers than buyers, this 47.1% imbalance is the largest gap in over a decade - and it's accelerating.
 

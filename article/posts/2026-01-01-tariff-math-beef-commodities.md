@@ -8,7 +8,7 @@ The "news" chooses ad hominem over investigation and goes after a 23-year-old at
 
 [Read journal entry](journal.html#unauthorized-inquiry)
 
-### <i data-lucide='package' class='post-icon'></i> **Beef Down, Wheat Up, Soybeans Up**
+### <i data-lucide='package' class='post-icon'></i> **Beef Down, Wheat Up**
 
 China is imposing a 55% tariff on imported beef from Australia, Brazil, and the United States. Will the domestic beef prices fall while feed costs climb?
 

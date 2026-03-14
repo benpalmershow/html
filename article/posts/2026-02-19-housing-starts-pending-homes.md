@@ -2,7 +2,7 @@
 title: Housing Market Softens as Starts and Pending Sales Decline
 ---
 
-### <i data-lucide='home' class='post-icon'></i> **Construction Activity and Contract Signings Slip**
+### <i data-lucide='home' class='post-icon'></i> **Housing Starts down 3.8%**
 
 Housing starts fell 3.8% in January while pending home sales dropped to 70.9, signaling cooling demand and construction activity in the residential market.
 

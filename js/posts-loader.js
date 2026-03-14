@@ -851,6 +851,8 @@ function extractCardData(html) {
     if (snippet.length > 160) {
         snippet = snippet.substring(0, 157).replace(/\s+\S*$/, '') + '...';
     }
+    // Remove the first paragraph from content to avoid duplication in expanded view
+    if (p) p.remove();
 
     return {
         title: title || 'Journal Update',
@@ -954,7 +956,7 @@ async function loadAndRenderPosts(posts) {
             // Use setTimeout to ensure rendering is complete
             setTimeout(() => {
                 cardToExpand.setAttribute('open', '');
-                cardToExpand.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+                cardToExpand.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 100);
         }
     }

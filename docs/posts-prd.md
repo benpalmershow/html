@@ -50,13 +50,29 @@ Key economic indicators show [brief summary of overall trend].
 ```markdown
 ### <i data-lucide='chart-line' class='post-icon'></i> **Indicator: Month Result**
 
-[Indicator] rose to [value] in [month], up [X.X%] from [previous month].
+[Indicator] rose to [value] in [month], up [X.X%] from [previous month]. [Brief market context or interpretation].
 
 **Month**: [value] ([+/-X.X% MoM)
 
 {{chart:Indicator Name}}
 
 [View all indicators](financials.html?filter=Category)
+```
+
+### Detailed Indicator Analysis
+```markdown
+### <i data-lucide='construction' class='post-icon'></i> **Indicator: Month Year**
+
+[Indicator] [value] in [month], [change description] from [previous period]. [Additional analysis about what the data means for the broader market, sector, or economic implications].
+
+**Latest Data:**
+- **[Period]**: [value] ([+/-]% MoM)
+- **[Previous Period]**: [value]
+- **[Trend]**: [description]
+
+{{chart:Indicator Name}}
+
+[View indicators](financials.html?filter=Category)
 ```
 
 ### Media Content

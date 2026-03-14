@@ -774,7 +774,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: 4px 8px;
     border-bottom: 1px solid var(--color-gray-200);
     background: var(--bg-secondary);
 }
@@ -819,8 +819,8 @@
     z-index: 10;
     background: rgba(255, 255, 255, 0.8);
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -847,6 +847,16 @@
     height: 100% !important;
     border-radius: 12px;
     background: var(--bg-primary);
+}
+
+@media (max-width: 400px) {
+    .chart-overlay {
+        min-height: 200px;
+    }
+    
+    .chart-overlay-body {
+        min-height: 150px;
+    }
 }
 
 .chart-overlay-loading {

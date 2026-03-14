@@ -98,6 +98,10 @@ a {
         border-color: var(--accent-secondary);
     }
 
+    &.expanded {
+        padding: 0;
+    }
+
     a {
         text-decoration: none;
         color: var(--color-secondary);

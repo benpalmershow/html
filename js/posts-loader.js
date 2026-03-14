@@ -300,16 +300,17 @@ function getChartConfig(indicator, labels, dataPoints) {
 
 function getBaseOptions(indicator) {
     const colors = getLiveChartColors();
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 400;
     return {
         responsive: true,
         maintainAspectRatio: true,
-        layout: { padding: { bottom: 20 } },
+        layout: { padding: 0 },
         plugins: {
             legend: { 
-                display: true,
+                display: !isMobile,
                 labels: {
                     color: colors.TEXT,
-                    font: { family: 'Georgia, serif', size: 12 }
+                    font: { family: 'Georgia, serif', size: isMobile ? 10 : 12 }
                 }
             },
             tooltip: {
@@ -465,6 +466,9 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
     const deficitValues = [];
     const chartLabels = [];
     
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 400;
+    const pointRadius = isMobile ? 6 : 4;
+    
     // Helper function to extract numeric value (same as utils.js)
     function extractNumericValue(value) {
         if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
@@ -580,12 +584,14 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
                     pointBackgroundColor: '#2C5F5A',
                     pointBorderColor: '#fff',
                     pointBorderWidth: 1.5,
-                    pointRadius: 4
+                    pointRadius: pointRadius
                 }
             ]
         },
         options: {
             ...getBaseOptions(indicator),
+            maintainAspectRatio: false,
+            animation: typeof window !== 'undefined' && window.innerWidth <= 400 ? { duration: 300 } : true,
             scales: {
                 y: {
                     type: 'linear',
@@ -593,14 +599,16 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
                     position: 'left',
                     min: 280,
                     max: 420,
-                    title: { display: true, text: 'Imports/Exports (Billions)', font: { size: 10, weight: 'bold' } }
+                    title: { display: true, text: 'Imports/Exports (Billions)', font: { size: 9, weight: 'bold' } },
+                    ticks: { font: { size: 9 } }
                 },
                 y1: {
                     type: 'linear',
                     display: true,
                     position: 'right',
-                    title: { display: true, text: 'Trade Deficit (Billions)', font: { size: 10, weight: 'bold' } },
-                    grid: { drawOnChartArea: false }
+                    title: { display: true, text: 'Trade Deficit (Billions)', font: { size: 9, weight: 'bold' } },
+                    grid: { drawOnChartArea: false },
+                    ticks: { font: { size: 9 } }
                 }
             }
         }

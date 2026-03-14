@@ -53,10 +53,15 @@ function extractNumericValue(value) {
     if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
 
     let cleanValue = value.toString()
-        .replace(/[$,%]/g, '')
+        .replace(/\$/g, '')
         .replace(/^\+/g, '')
         .replace(/[A-Za-z]/g, '')
         .trim();
+
+    // Treat single comma as decimal separator (e.g. "352,083" -> 352.083) so scale is correct
+    if (/^\d+,\d+$/.test(cleanValue)) cleanValue = cleanValue.replace(',', '.');
+
+    cleanValue = cleanValue.replace(/[%,]/g, '');
 
     if (value.includes('M')) cleanValue = cleanValue.replace(/M$/, '');
     if (value.includes('B')) cleanValue = cleanValue.replace(/B$/, '');

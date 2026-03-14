@@ -118,6 +118,8 @@ function initializeChartInOverlay(chartConfig, canvas) {
         scales.y = {
             display: true,
             beginAtZero: false,
+            min: 280,
+            max: 420,
             grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
             ticks: { padding: 2, font: { size: 9 }, callback: formatYAxisTick },
             position: 'left',
@@ -202,50 +204,53 @@ function getChartConfig(indicatorName, indices) {
          const exportValues = [];
          const deficitValues = [];
 
-         // Iterate through year-nested data first (in reverse chronological order)
+         // Flat structure
+         MONTHS.forEach((month, index) => {
+             const importValue = indicatorData.imports[month];
+             const exportValue = indicatorData.exports[month];
+             const deficitValue = indicatorData[month];
+             if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+                 const numImport = extractNumericValue(importValue);
+                 const numExport = extractNumericValue(exportValue);
+                 const numDeficit = extractNumericValue(deficitValue);
+                 if (numImport !== null && numExport !== null && numDeficit !== null) {
+                     labels.push(MONTH_LABELS[index]);
+                     importValues.push(numImport);
+                     exportValues.push(numExport);
+                     deficitValues.push(numDeficit);
+                 }
+             }
+         });
+
+         // Add up to 2 latest months from year-nested (imports/exports have their own year keys)
+         const yearNestedPoints = [];
          for (const year of yearKeys) {
              const yearData = indicatorData[year];
+             if (!yearData || typeof yearData !== 'object') continue;
+             const importsYear = indicatorData.imports[year];
+             const exportsYear = indicatorData.exports[year];
+             if (!importsYear || !exportsYear) continue;
              MONTHS.forEach((month, index) => {
-                 const importValue = yearData.imports && yearData.imports[month];
-                 const exportValue = yearData.exports && yearData.exports[month];
+                 const importValue = importsYear[month];
+                 const exportValue = exportsYear[month];
                  const deficitValue = yearData[month];
-
                  if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
                      const numImport = extractNumericValue(importValue);
                      const numExport = extractNumericValue(exportValue);
                      const numDeficit = extractNumericValue(deficitValue);
-
                      if (numImport !== null && numExport !== null && numDeficit !== null) {
-                         labels.push(MONTH_LABELS[index]);
-                         importValues.push(numImport);
-                         exportValues.push(numExport);
-                         deficitValues.push(numDeficit);
+                         yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numImport, numExport, numDeficit });
                      }
                  }
              });
          }
-
-         // Fall back to flat structure if no year-nested data
-         if (labels.length === 0) {
-             MONTHS.forEach((month, index) => {
-                 const importValue = indicatorData.imports[month];
-                 const exportValue = indicatorData.exports[month];
-                 const deficitValue = indicatorData[month];
-
-                 if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-                     const numImport = extractNumericValue(importValue);
-                     const numExport = extractNumericValue(exportValue);
-                     const numDeficit = extractNumericValue(deficitValue);
-
-                     if (numImport !== null && numExport !== null && numDeficit !== null) {
-                         labels.push(MONTH_LABELS[index]);
-                         importValues.push(numImport);
-                         exportValues.push(numExport);
-                         deficitValues.push(numDeficit);
-                     }
-                 }
-             });
-         }
+         yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
+         yearNestedPoints.slice(0, 2).reverse().forEach(p => {
+             labels.push(p.label);
+             importValues.push(p.numImport);
+             exportValues.push(p.numExport);
+             deficitValues.push(p.numDeficit);
+         });
 
          const data = {
              labels: labels,

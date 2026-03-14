@@ -5,6 +5,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.name.includes('Venezuela') && indicator.candidates) return 'venezuela';
+    if (indicator.yes_probability && indicator.no_probability) return 'prediction';
     return 'standard';
 }
 
@@ -25,6 +26,12 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
         case 'recession':
             if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
             if (indicator.no_probability) historyDataHtml += `<div class="data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+            hasHistory = true;
+            break;
+
+        case 'prediction':
+            if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
+            if (indicator.no_probability) historyDataHtml += `<div class="data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
             hasHistory = true;
             break;
 
@@ -211,14 +218,14 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     let changeIndicators = '';
 
     if (momChange !== null) {
-         // Invert sign for deficit/inverse indicators (lower is better)
-         const isDeficitIndicator = indicator.name.includes('Deficit') || indicator.name.includes('Unemployment');
-         const momChangeValue = isDeficitIndicator ? -momChange.percentChange : momChange.percentChange;
+         // Invert sign only for unemployment (lower unemployment = improvement = show as positive)
+         const isUnemploymentIndicator = indicator.name.includes('Unemployment');
+         const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : momChange.percentChange;
          const momInfo = formatChangeIndicator(momChangeValue);
          changeIndicators += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
 
          if (yoyChange !== null) {
-             const yoyChangeValue = isDeficitIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
+             const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
              const yoyInfo = formatChangeIndicator(yoyChangeValue);
              changeIndicators += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
          }

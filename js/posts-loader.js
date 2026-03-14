@@ -443,9 +443,168 @@ function getLineChartConfig(indicator, labels, dataPoints) {
 }
 
 function getTradeDeficitConfig(indicator, labels, dataPoints) {
-    // Simplified specific logic for trade deficit
-    // Note: Re-implement full logic if critical, for now ensuring safely functional
-    return getLineChartConfig(indicator, labels, dataPoints);
+    // Trade Deficit chart with imports (red bars) and exports (green bars)
+    // Use the same extraction logic as charts.js for consistency
+    const colors = getLiveChartColors();
+    
+    // Parse imports and exports from the indicator data
+    const imports = indicator.imports;
+    const exports = indicator.exports;
+    
+    if (!imports || !exports) {
+        // Fallback to line chart if no imports/exports data
+        return getLineChartConfig(indicator, labels, dataPoints);
+    }
+    
+    // Extract values for each month - use same MONTHS order as charts.js
+    const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    const importValues = [];
+    const exportValues = [];
+    const deficitValues = [];
+    const chartLabels = [];
+    
+    // Helper function to extract numeric value (same as utils.js)
+    function extractNumericValue(value) {
+        if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
+        let cleanValue = value.toString()
+            .replace(/\$/g, '')
+            .replace(/^\+/g, '')
+            .replace(/[A-Za-z]/g, '')
+            .trim();
+        // Treat single comma as decimal separator (e.g. "352,083" -> 352.083) so scale is correct
+        if (/^\d+,\d+$/.test(cleanValue)) cleanValue = cleanValue.replace(',', '.');
+        cleanValue = cleanValue.replace(/[%,]/g, '');
+        if (value.includes('M')) cleanValue = cleanValue.replace(/M$/, '');
+        if (value.includes('B')) cleanValue = cleanValue.replace(/B$/, '');
+        const num = parseFloat(cleanValue);
+        return isNaN(num) ? null : num;
+    }
+    
+    // Helper function to check if data is valid
+    function isValidData(value) {
+        return value !== null && value !== undefined && value !== '' && value !== '—' && value !== 'TBD';
+    }
+    
+    // Extract from flat structure (months)
+    MONTHS.forEach((month, index) => {
+        const importValue = imports[month];
+        const exportValue = exports[month];
+        const deficitValue = indicator[month];
+        
+        if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+            const numImport = extractNumericValue(importValue);
+            const numExport = extractNumericValue(exportValue);
+            const numDeficit = extractNumericValue(deficitValue);
+            
+            if (numImport !== null && numExport !== null && numDeficit !== null) {
+                chartLabels.push(MONTH_LABELS[index]);
+                importValues.push(numImport);
+                exportValues.push(numExport);
+                deficitValues.push(numDeficit);
+            }
+        }
+    });
+    
+    // Add year-nested data (e.g., 2026 data)
+    const yearKeys = Object.keys(indicator).filter(k => k.match(/^20\d{2}$/));
+    const yearNestedPoints = [];
+    
+    for (const year of yearKeys) {
+        const yearData = indicator[year];
+        if (!yearData || typeof yearData !== 'object') continue;
+        const importsYear = imports[year];
+        const exportsYear = exports[year];
+        if (!importsYear || !exportsYear) continue;
+        
+        MONTHS.forEach((month, index) => {
+            const importValue = importsYear[month];
+            const exportValue = exportsYear[month];
+            const deficitValue = yearData[month];
+            
+            if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+                const numImport = extractNumericValue(importValue);
+                const numExport = extractNumericValue(exportValue);
+                const numDeficit = extractNumericValue(deficitValue);
+                
+                if (numImport !== null && numExport !== null && numDeficit !== null) {
+                    yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numImport, numExport, numDeficit });
+                }
+            }
+        });
+    }
+    
+    // Sort and add up to 2 latest year-nested points
+    yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
+    yearNestedPoints.slice(0, 2).reverse().forEach(p => {
+        chartLabels.push(p.label);
+        importValues.push(p.numImport);
+        exportValues.push(p.numExport);
+        deficitValues.push(p.numDeficit);
+    });
+    
+    return {
+        type: 'chartjs-mixed',
+        data: {
+            labels: chartLabels,
+            datasets: [
+                {
+                    label: 'Imports',
+                    data: importValues,
+                    type: 'bar',
+                    backgroundColor: 'rgba(255, 107, 107, 0.7)',
+                    borderColor: '#FF6B6B',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Exports',
+                    data: exportValues,
+                    type: 'bar',
+                    backgroundColor: 'rgba(81, 207, 102, 0.7)',
+                    borderColor: '#51CF66',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Trade Deficit',
+                    data: deficitValues,
+                    type: 'line',
+                    borderColor: '#2C5F5A',
+                    backgroundColor: 'transparent',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: false,
+                    yAxisID: 'y1',
+                    pointBackgroundColor: '#2C5F5A',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 4
+                }
+            ]
+        },
+        options: {
+            ...getBaseOptions(indicator),
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min: 280,
+                    max: 420,
+                    title: { display: true, text: 'Imports/Exports (Billions)', font: { size: 10, weight: 'bold' } }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    title: { display: true, text: 'Trade Deficit (Billions)', font: { size: 10, weight: 'bold' } },
+                    grid: { drawOnChartArea: false }
+                }
+            }
+        }
+    };
 }
 
 function getPredictionMarketConfig(indicator, labels, dataPoints) {

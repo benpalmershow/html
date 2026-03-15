@@ -20,7 +20,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    overflow: hidden;
+    overflow: visible;
     z-index: 10;
     box-sizing: border-box;
     pointer-events: none;
@@ -36,7 +36,7 @@
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
     will-change: transform;
     border-radius: 0.5rem;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .media-card:hover {
@@ -53,7 +53,7 @@
 
 /* Overlay Content */
 .media-overlay-content {
-    padding: 0.6rem 1rem 4rem 1rem;
+    padding: 2.5rem 1rem 4rem 1rem;
     width: 100%;
     height: calc(100% - 2rem);
     overflow-y: auto;
@@ -184,49 +184,59 @@
     RATING & ACTIONS (IMDB, ROTTEN TOMATOES, YOUTUBE TRAILER)
     ========================================================================== */
 
-.media-corner-actions {
+/* Bottom Actions Container */
+.media-bottom-actions {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    pointer-events: auto;
+    z-index: 50;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8) translateY(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+}
+
+.media-card:hover .media-bottom-actions {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(0);
+}
+
+/* Top Right Actions Container (for trailer button) */
+.media-top-right-actions {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Let clicks pass through to content */
-    z-index: 10;
-}
-
-.corner-action {
-    position: absolute;
-    padding: 0.5rem;
-    pointer-events: auto; /* Re-enable clicks for the buttons */
+    right: 0;
     display: flex;
-    z-index: 11;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    pointer-events: auto;
+    z-index: 50;
     opacity: 0;
-    transform: scale(0.8) translateY(10px);
+    transform: scale(0.8) translateY(-10px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
 }
 
-.media-card:hover .corner-action {
+.media-card:hover .media-top-right-actions {
     opacity: 1;
     transform: scale(1) translateY(0);
 }
 
-/* Stagger animations for a cascading pop-in effect */
-.media-card:hover .corner-action.top-right { transition-delay: 0.05s; }
-.media-card:hover .corner-action.bottom-right { transition-delay: 0.1s; }
-.media-card:hover .corner-action.bottom-left { transition-delay: 0.15s; }
-
-.corner-action.top-right { top: 0; right: 0; }
-.corner-action.top-left { top: 0; left: 0; }
-.corner-action.bottom-right { bottom: 0; right: 0; }
-.corner-action.bottom-left { bottom: 0; left: 0; }
-
 .action-btn {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 30px;
-    width: 30px;
-    border-radius: 15px;
+    height: 32px;
+    width: auto;
+    min-width: 40px;
+    padding: 4px 10px;
+    border-radius: 8px;
     font-size: 0.8em;
     font-weight: 700;
     text-decoration: none;
@@ -240,64 +250,107 @@
     cursor: pointer;
     position: relative;
     overflow: visible;
+    z-index: 50;
+    gap: 2px;
 }
 
-.action-btn i, .action-btn svg {
-    font-size: 1.15em;
+.action-btn i {
+    font-size: 1.1em;
     display: flex;
     align-items: center;
     justify-content: center;
     filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    margin-bottom: 1px;
 }
 
-.action-btn .score-badge {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    background: var(--color-primary, #2c5f5a);
+.action-btn .rating-text {
+    font-size: 0.7rem;
+    font-weight: 700;
     color: white;
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 3px 5px;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.2);
-    pointer-events: none;
     line-height: 1;
-    z-index: 10;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    width: 100%;
 }
 
-/* Specific Badge Placements for Corners to keep badges pointing inwards */
-.corner-action.top-left .action-btn .score-badge,
-.corner-action.bottom-left .action-btn .score-badge { right: -6px; left: auto; }
-
-.corner-action.top-right .action-btn .score-badge,
-.corner-action.bottom-right .action-btn .score-badge { left: -6px; right: auto; }
-
-.corner-action.bottom-left .action-btn .score-badge,
-.corner-action.bottom-right .action-btn .score-badge { top: auto; bottom: -6px; }
-
-/* Qualitative rating colors matching brand palettes */
-.action-btn.imdb-btn .score-badge { background: #f5c518; color: #111; border-color: rgba(245, 197, 24, 0.5); }
-.action-btn.rt-btn .score-badge { background: #fa3d21; }
-
-.action-btn:hover {
-    transform: scale(1.15);
-    opacity: 1;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.25);
-    z-index: 20;
+.action-btn .rating-label {
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1;
+    letter-spacing: 0.5px;
 }
 
-/* Specific button overrides */
-.trailer-btn:hover { background: linear-gradient(135deg, #ff0000, #c40000); border-color: rgba(255, 50, 50, 0.5); }
-.rt-btn { color: white; background: rgba(200, 30, 30, 0.3); }
-.rt-btn:hover { background: linear-gradient(135deg, #fa3d21, #d61600); border-color: rgba(255, 100, 100, 0.3); }
-.imdb-btn { color: #f5c518; background: rgba(0, 0, 0, 0.4); }
-.imdb-btn .fa-imdb { font-size: 1.35em; color: #f5c518; }
-.imdb-btn:hover { background: linear-gradient(135deg, #f5c518, #d1a50a); color: #111; border-color: rgba(245, 197, 24, 0.5); text-shadow: none; }
-.imdb-btn:hover .fa-imdb { color: #111; }
+.action-btn:hover .rating-text {
+    color: white;
+}
+
+/* Rating text colors */
+.imdb-btn { 
+    color: #f5c518; 
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 4px 8px;
+}
+.imdb-btn .rating-label { 
+    color: rgba(245, 197, 24, 0.8);
+}
+.imdb-btn .rating-text { 
+    color: #f5c518; 
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+.imdb-btn:hover { 
+    background: #f5c518; 
+    box-shadow: 0 0 15px rgba(245, 197, 24, 0.6);
+}
+.imdb-btn:hover .rating-label { 
+    color: #000;
+}
+.imdb-btn:hover .rating-text { 
+    color: #000; 
+}
+
+.rt-btn { 
+    color: #fa3d21; 
+    background: rgba(0, 0, 0, 0.5); 
+}
+.rt-btn .rating-label { 
+    color: rgba(250, 61, 33, 0.8);
+}
+.rt-btn .rating-text { 
+    color: #fa3d21; 
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+.rt-btn:hover { 
+    background: #fa3d21; 
+    box-shadow: 0 0 15px rgba(250, 61, 33, 0.6);
+}
+.rt-btn:hover .rating-label { 
+    color: white; 
+}
+.rt-btn:hover .rating-text { 
+    color: white; 
+}
+
+/* Trailer button */
+.trailer-btn { 
+    background: transparent;
+    padding: 2px 4px;
+    min-width: 24px;
+    height: 24px;
+}
+.trailer-btn .fa-youtube {
+    font-size: 0.9em;
+    color: #ff0000;
+}
+.trailer-btn:hover { 
+    background: #ff0000; 
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+.trailer-btn:hover .fa-youtube {
+    color: white;
+}
 
 .spotify-link-btn:hover { background: linear-gradient(135deg, #1DB954, #14803a); border-color: rgba(29, 185, 84, 0.5); }
 .apple-link-btn:hover { background: linear-gradient(135deg, #333333, #000000); border-color: rgba(100, 100, 100, 0.5); }
@@ -311,12 +364,12 @@
     position: relative;
     width: 100%;
     padding-top: 56.25%;
-    margin: 0.6rem 0;
+    margin: 0.6rem 0 0.6rem 0;
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    order: 6; /* after everything else */
+    order: 0;
 }
 
 .trailer-embed iframe {

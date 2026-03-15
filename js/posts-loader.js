@@ -472,18 +472,25 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
     // Helper function to extract numeric value (same as utils.js)
     function extractNumericValue(value) {
         if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
+
+        // First, determine the scale (M = millions, B = billions)
+        let scale = 1;
+        if (value.includes('M')) scale = 1000000;
+        else if (value.includes('B')) scale = 1000000000;
+
         let cleanValue = value.toString()
             .replace(/\$/g, '')
             .replace(/^\+/g, '')
             .replace(/[A-Za-z]/g, '')
             .trim();
-        // Treat single comma as decimal separator (e.g. "352,083" -> 352.083) so scale is correct
-        if (/^\d+,\d+$/.test(cleanValue)) cleanValue = cleanValue.replace(',', '.');
-        cleanValue = cleanValue.replace(/[%,]/g, '');
-        if (value.includes('M')) cleanValue = cleanValue.replace(/M$/, '');
-        if (value.includes('B')) cleanValue = cleanValue.replace(/B$/, '');
+
+        // Remove commas as thousand separators (not decimal separators)
+        cleanValue = cleanValue.replace(/,/g, '');
+
         const num = parseFloat(cleanValue);
-        return isNaN(num) ? null : num;
+        if (isNaN(num)) return null;
+        
+        return num * scale;
     }
     
     // Helper function to check if data is valid

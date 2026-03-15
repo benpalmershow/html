@@ -418,32 +418,18 @@
         const overlayContent = document.createElement('div');
         overlayContent.className = 'media-overlay-content';
 
-        const cornerActions = document.createElement('div');
-        cornerActions.className = 'media-corner-actions';
-
-        const topLeft = document.createElement('div');
-        topLeft.className = 'corner-action top-left';
-        const topRight = document.createElement('div');
-        topRight.className = 'corner-action top-right';
-        const bottomLeft = document.createElement('div');
-        bottomLeft.className = 'corner-action bottom-left';
-        const bottomRight = document.createElement('div');
-        bottomRight.className = 'corner-action bottom-right';
-
-        cornerActions.appendChild(topLeft);
-        cornerActions.appendChild(topRight);
-        cornerActions.appendChild(bottomLeft);
-        cornerActions.appendChild(bottomRight);
+        const topRightActions = document.createElement('div');
+        topRightActions.className = 'media-top-right-actions';
         
-        // Array of corner elements to populate in order, keeping top left clear
-        const availableCorners = [topRight, bottomRight, bottomLeft];
-        let cornerIndex = 0;
-
-        function addActionToCorner(btnElement) {
-            if (cornerIndex < availableCorners.length) {
-                availableCorners[cornerIndex].appendChild(btnElement);
-                cornerIndex++;
-            }
+        const bottomActions = document.createElement('div');
+        bottomActions.className = 'media-bottom-actions';
+        
+        function addActionToTop(btnElement) {
+            topRightActions.appendChild(btnElement);
+        }
+        
+        function addActionToBottom(btnElement) {
+            bottomActions.appendChild(btnElement);
         }
 
         if (item.embedUrl || (item.mediaType === 'movie' && item.embedUrl) || (item.mediaType === 'video' && item.embedUrl)) {
@@ -467,12 +453,10 @@
                     overlayContent.appendChild(embed);
                     trailerBtn.innerHTML = `<i class="fas fa-times"></i>`;
                     trailerBtn.title = 'Close Trailer';
-                    const mediaCard = overlayContent.closest('.media-card');
-                    if (mediaCard) mediaCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     setTimeout(() => overlayContent.scrollTop = 0, 300);
                 }
             }, { passive: false });
-            addActionToCorner(trailerBtn);
+            addActionToTop(trailerBtn);
         }
 
         if (item.ratings?.imdb) {
@@ -486,8 +470,8 @@
             const scoreNum = parseFloat(item.ratings.imdb.score);
             const scoreClass = 'med-rating'; // Fixed back to yellow by later CSS but keeping class logic
             
-            imdbLink.innerHTML = `<i class="fab fa-imdb"></i><span class="score-badge ${scoreClass}">${item.ratings.imdb.score}</span>`;
-            addActionToCorner(imdbLink);
+            imdbLink.innerHTML = `<span class="rating-label">IMDb</span><span class="rating-text">${item.ratings.imdb.score}</span>`;
+            addActionToBottom(imdbLink);
         }
         
         if (item.ratings?.rt) {
@@ -501,8 +485,8 @@
             const scoreNum = parseInt(item.ratings.rt.score);
             const scoreClass = 'med-rating'; // Using med for consistent color as requested
             
-            rtLink.innerHTML = `🍅<span class="score-badge ${scoreClass}">${item.ratings.rt.score}</span>`;
-            addActionToCorner(rtLink);
+            rtLink.innerHTML = `<span class="rating-label">RT</span><span class="rating-text">${item.ratings.rt.score}</span>`;
+            addActionToBottom(rtLink);
         }
 
         if (item.links?.length > 0) {
@@ -530,11 +514,12 @@
                 } else if (link.icon) {
                     linkEl.innerHTML = `<i class="${link.icon}"></i>`;
                 }
-                addActionToCorner(linkEl);
+                addActionToBottom(linkEl);
             });
         }
         
-        overlay.appendChild(cornerActions);
+        overlay.appendChild(topRightActions);
+        overlay.appendChild(bottomActions);
 
         const title = document.createElement('h2');
         title.className = 'media-title';

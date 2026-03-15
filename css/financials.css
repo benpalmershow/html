@@ -771,12 +771,7 @@
 }
 
 .chart-overlay-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 8px;
-    border-bottom: 1px solid var(--color-gray-200);
-    background: var(--bg-secondary);
+    display: none;
 }
 
 .chart-overlay-title {
@@ -838,14 +833,13 @@
 
 .chart-overlay-body {
     padding: 0;
-    height: 100%;
+    height: calc(100% - 30px);
     position: relative;
 }
 
 .chart-overlay-canvas {
     width: 100% !important;
     height: 100% !important;
-    border-radius: 12px;
     background: var(--bg-primary);
 }
 

@@ -243,18 +243,29 @@ html.dark-mode .announcement-card.highlighted {
 }
 
 .read-more-btn {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
     color: var(--accent-primary);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
+    padding: 0.4rem 1rem;
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+    border-radius: 20px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .announcement-card:hover .read-more-btn {
-    gap: 10px;
+    background: rgba(var(--accent-primary-rgb), 0.15);
+    border-color: rgba(var(--accent-primary-rgb), 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.15);
 }
 
 .announcement-card[open] .read-more-btn {

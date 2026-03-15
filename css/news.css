@@ -6,13 +6,13 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
 
-    .loading,
-    .error-message {
-        padding: 2rem;
-        text-align: center;
-        color: var(--text-secondary);
-    }
+.morphing-disclosure .loading,
+.morphing-disclosure .error-message {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
 }
 
 .article-disclosure {
@@ -22,89 +22,115 @@
     overflow: hidden;
     transition: all var(--transition-base);
     background-image: linear-gradient(135deg, transparent 0%, var(--category-color, transparent) 100%);
+    
+    /* Staggered entrance animation */
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeAndSlideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
 
-    &[data-category="ipo"] {
-        --category-color: rgba(var(--color-category-ipo-rgb, 30, 136, 229), 0.12);
+@keyframes fadeAndSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
-
-    &[data-category="earnings"] {
-        --category-color: rgba(var(--color-category-earnings-rgb, 67, 160, 71), 0.12);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    &[data-category="policy"] {
-        --category-color: rgba(var(--color-category-policy-rgb, 251, 140, 0), 0.12);
-    }
+/* Add staggered delays up to 10 items for smooth waterfall effect */
+.article-disclosure:nth-child(1) { animation-delay: 0.05s; }
+.article-disclosure:nth-child(2) { animation-delay: 0.1s; }
+.article-disclosure:nth-child(3) { animation-delay: 0.15s; }
+.article-disclosure:nth-child(4) { animation-delay: 0.2s; }
+.article-disclosure:nth-child(5) { animation-delay: 0.25s; }
+.article-disclosure:nth-child(6) { animation-delay: 0.3s; }
+.article-disclosure:nth-child(7) { animation-delay: 0.35s; }
+.article-disclosure:nth-child(8) { animation-delay: 0.4s; }
+.article-disclosure:nth-child(9) { animation-delay: 0.45s; }
+.article-disclosure:nth-child(n+10) { animation-delay: 0.5s; }
 
-    &[data-category="healthcare"] {
-        --category-color: rgba(var(--color-category-healthcare-rgb, 16, 185, 129), 0.12);
-    }
+.article-disclosure[data-category="ipo"] {
+    --category-color: rgba(30, 136, 229, 0.12);
+}
 
-    &[data-category="legal"] {
-        --category-color: rgba(var(--color-primary-rgb), 0.12);
-    }
+.article-disclosure[data-category="earnings"] {
+    --category-color: rgba(67, 160, 71, 0.12);
+}
 
-    &[data-category="political"] {
-        --category-color: rgba(var(--color-category-political-rgb, 139, 92, 246), 0.12);
-    }
+.article-disclosure[data-category="policy"] {
+    --category-color: rgba(251, 140, 0, 0.12);
+}
 
-    &[data-category="corrections"] {
-        --category-color: rgba(var(--color-category-corrections-rgb, 229, 57, 53), 0.12);
-    }
+.article-disclosure[data-category="healthcare"] {
+    --category-color: rgba(16, 185, 129, 0.12);
+}
 
-    summary {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        gap: 0.75rem;
-        align-items: center;
-        padding: 1rem;
-        cursor: pointer;
-        list-style: none;
-        color: var(--text-primary);
-        font-weight: 500;
-        transition: all var(--transition-base);
+.article-disclosure[data-category="legal"] {
+    --category-color: rgba(var(--color-primary-rgb), 0.12);
+}
 
-        &::-webkit-details-marker {
-            display: none;
-        }
+.article-disclosure[data-category="political"] {
+    --category-color: rgba(139, 92, 246, 0.12);
+}
 
-        .category-icon {
-            display: inline-flex;
-            opacity: 0.7;
-            transition: opacity var(--transition-base);
-        }
+.article-disclosure[data-category="corrections"] {
+    --category-color: rgba(229, 57, 53, 0.12);
+}
 
-        .article-title {
-            text-align: left;
-            font-size: 1rem;
-            font-weight: 600;
-        }
+.article-disclosure summary {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    list-style: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all var(--transition-base);
+}
 
-        .expand-icon {
-            transition: transform var(--transition-base);
-        }
-    }
+.article-disclosure summary::-webkit-details-marker {
+    display: none;
+}
 
-    &:hover summary {
-        background: rgba(var(--color-white-rgb), 0.05);
+.article-disclosure summary .category-icon {
+    display: inline-flex;
+    opacity: 0.7;
+    transition: opacity var(--transition-base);
+}
 
-        .category-icon {
-            opacity: 1;
-        }
-    }
+.article-disclosure summary .article-title {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+}
 
-    &[open] {
-        summary .expand-icon {
-            transform: rotate(45deg);
-        }
+.article-disclosure summary .expand-icon {
+    transition: transform var(--transition-base);
+}
 
-        .disclosure-content {
-            max-height: var(--content-height, 600px);
-            opacity: 1;
-            translate: 0 0;
-            filter: blur(0);
-            padding: 1rem 1rem 1.25rem;
-        }
-    }
+.article-disclosure:hover summary {
+    background: rgba(var(--color-white-rgb), 0.05);
+}
+
+.article-disclosure:hover summary .category-icon {
+    opacity: 1;
+}
+
+.article-disclosure[open] summary .expand-icon {
+    transform: rotate(45deg);
+}
+
+.article-disclosure[open] .disclosure-content {
+    max-height: var(--content-height, 600px);
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    padding: 1rem 1rem 1.25rem;
 }
 
 .disclosure-content {
@@ -112,7 +138,7 @@
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    translate: 0 1rem;
+    transform: translateY(1rem);
     filter: blur(10px);
     transition: all var(--transition-base);
     color: var(--text-secondary);
@@ -130,20 +156,20 @@
     padding: 1rem 0;
     border-bottom: 1px solid var(--border-color);
     font-size: 0.9em;
+}
 
-    .article-date {
-        color: var(--text-muted);
-        font-style: italic;
-    }
+.article-meta-header .article-date {
+    color: var(--text-muted);
+    font-style: italic;
+}
 
-    .article-ticker a {
-        color: var(--accent-primary);
-        text-decoration: none;
+.article-meta-header .article-ticker a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
 
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+.article-meta-header .article-ticker a:hover {
+    text-decoration: underline;
 }
 
 .category-badge {
@@ -154,46 +180,19 @@
     border-radius: 12px;
     transition: all 0.3s ease;
     cursor: default;
-
-    &:hover {
-        transform: translateY(-2px);
-    }
-
-    &.ipo {
-        background: var(--color-category-ipo);
-        color: white;
-    }
-
-    &.earnings {
-        background: var(--color-category-earnings);
-        color: white;
-    }
-
-    &.policy {
-        background: var(--color-category-policy);
-        color: white;
-    }
-
-    &.healthcare {
-        background: var(--color-category-healthcare);
-        color: white;
-    }
-
-    &.legal {
-        background: var(--color-category-legal);
-        color: white;
-    }
-
-    &.political {
-        background: var(--color-category-political);
-        color: white;
-    }
-
-    &.corrections {
-        background: var(--color-category-corrections);
-        color: white;
-    }
 }
+
+.category-badge:hover {
+    transform: translateY(-2px);
+}
+
+.category-badge.ipo { background: var(--color-category-ipo); color: white; }
+.category-badge.earnings { background: var(--color-category-earnings); color: white; }
+.category-badge.policy { background: var(--color-category-policy); color: white; }
+.category-badge.healthcare { background: var(--color-category-healthcare); color: white; }
+.category-badge.legal { background: var(--color-category-legal); color: white; }
+.category-badge.political { background: var(--color-category-political); color: white; }
+.category-badge.corrections { background: var(--color-category-corrections); color: white; }
 
 /* ========================================
    FILTERS
@@ -205,67 +204,50 @@
     justify-content: center;
     gap: 0.5rem;
     margin-bottom: 30px;
-
-    .filter-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 1.5rem;
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        font-size: 0.85rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-
-        .filter-icon {
-            flex-shrink: 0;
-        }
-
-        .filter-text {
-            display: none;
-        }
-
-        &:hover {
-            background: var(--bg-tertiary);
-            transform: translateY(-1px);
-        }
-
-        &.active {
-            background: var(--accent-primary);
-            color: white;
-
-            .filter-text {
-                display: inline;
-            }
-
-            &.ipo {
-                background: var(--color-category-ipo);
-            }
-
-            &.earnings {
-                background: var(--color-category-earnings);
-            }
-
-            &.policy {
-                background: var(--color-category-policy);
-            }
-
-            &.healthcare {
-                background: var(--color-category-healthcare);
-            }
-
-            &.political {
-                background: var(--color-category-political);
-            }
-
-            &.corrections {
-                background: var(--color-category-corrections);
-            }
-        }
-    }
 }
+
+.filters .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filters .filter-btn .filter-icon {
+    flex-shrink: 0;
+}
+
+.filters .filter-btn .filter-text {
+    display: none;
+}
+
+.filters .filter-btn:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-1px);
+}
+
+.filters .filter-btn.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.filters .filter-btn.active .filter-text {
+    display: inline;
+}
+
+.filters .filter-btn.active.ipo { background: var(--color-category-ipo); }
+.filters .filter-btn.active.earnings { background: var(--color-category-earnings); }
+.filters .filter-btn.active.policy { background: var(--color-category-policy); }
+.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); }
+.filters .filter-btn.active.political { background: var(--color-category-political); }
+.filters .filter-btn.active.corrections { background: var(--color-category-corrections); }
 
 /* ========================================
    RESPONSIVE
@@ -278,17 +260,17 @@
         justify-content: flex-start;
         padding: 0.5rem;
         scrollbar-width: none;
+    }
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    .filters::-webkit-scrollbar {
+        display: none;
     }
 
     .article-disclosure summary {
         padding: 0.75rem;
+    }
 
-        .article-title {
-            font-size: 0.95rem;
-        }
+    .article-disclosure summary .article-title {
+        font-size: 0.95rem;
     }
 }

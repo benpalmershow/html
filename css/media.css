@@ -129,6 +129,35 @@
             color: white;
         }
     }
+    
+    .reading-now-badge,
+    .media-featured {
+        position: absolute;
+        top: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+        background: rgba(29, 185, 84, 0.9); /* Spotify-style green for reading */
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.3);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        pointer-events: none;
+        white-space: nowrap;
+    }
+
+    .media-featured {
+        background: rgba(245, 197, 24, 0.95); /* IMDb-style gold for featured */
+        color: #111;
+        border-color: rgba(255, 255, 255, 0.5);
+    }
 }
 
 /* ==========================================================================

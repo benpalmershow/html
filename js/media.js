@@ -418,6 +418,124 @@
         const overlayContent = document.createElement('div');
         overlayContent.className = 'media-overlay-content';
 
+        const cornerActions = document.createElement('div');
+        cornerActions.className = 'media-corner-actions';
+
+        const topLeft = document.createElement('div');
+        topLeft.className = 'corner-action top-left';
+        const topRight = document.createElement('div');
+        topRight.className = 'corner-action top-right';
+        const bottomLeft = document.createElement('div');
+        bottomLeft.className = 'corner-action bottom-left';
+        const bottomRight = document.createElement('div');
+        bottomRight.className = 'corner-action bottom-right';
+
+        cornerActions.appendChild(topLeft);
+        cornerActions.appendChild(topRight);
+        cornerActions.appendChild(bottomLeft);
+        cornerActions.appendChild(bottomRight);
+        
+        // Array of corner elements to populate in order, keeping top left clear
+        const availableCorners = [topRight, bottomRight, bottomLeft];
+        let cornerIndex = 0;
+
+        function addActionToCorner(btnElement) {
+            if (cornerIndex < availableCorners.length) {
+                availableCorners[cornerIndex].appendChild(btnElement);
+                cornerIndex++;
+            }
+        }
+
+        if (item.embedUrl || (item.mediaType === 'movie' && item.embedUrl) || (item.mediaType === 'video' && item.embedUrl)) {
+            const trailerBtn = document.createElement('button');
+            trailerBtn.className = 'action-btn trailer-btn';
+            trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
+            trailerBtn.innerHTML = `<i class="fab fa-youtube"></i>`;
+            trailerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const existingEmbed = overlayContent.querySelector('.trailer-embed');
+                if (existingEmbed) {
+                    existingEmbed.remove();
+                    trailerBtn.innerHTML = `<i class="fab fa-youtube"></i>`;
+                    trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
+                } else {
+                    const embed = document.createElement('div');
+                    embed.className = 'trailer-embed';
+                    embed.innerHTML = `
+                        <iframe width="100%" height="100%" src="${item.embedUrl}" title="${item.title} Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    `;
+                    overlayContent.appendChild(embed);
+                    trailerBtn.innerHTML = `<i class="fas fa-times"></i>`;
+                    trailerBtn.title = 'Close Trailer';
+                    const mediaCard = overlayContent.closest('.media-card');
+                    if (mediaCard) mediaCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setTimeout(() => overlayContent.scrollTop = 0, 300);
+                }
+            }, { passive: false });
+            addActionToCorner(trailerBtn);
+        }
+
+        if (item.ratings?.imdb) {
+            const imdbLink = document.createElement('a');
+            imdbLink.href = item.ratings.imdb.url;
+            imdbLink.className = 'action-btn imdb-btn';
+            imdbLink.target = '_blank';
+            imdbLink.rel = 'noopener noreferrer';
+            imdbLink.title = `IMDb Score: ${item.ratings.imdb.score}`;
+            
+            const scoreNum = parseFloat(item.ratings.imdb.score);
+            const scoreClass = 'med-rating'; // Fixed back to yellow by later CSS but keeping class logic
+            
+            imdbLink.innerHTML = `<i class="fab fa-imdb"></i><span class="score-badge ${scoreClass}">${item.ratings.imdb.score}</span>`;
+            addActionToCorner(imdbLink);
+        }
+        
+        if (item.ratings?.rt) {
+            const rtLink = document.createElement('a');
+            rtLink.href = item.ratings.rt.url;
+            rtLink.className = 'action-btn rt-btn';
+            rtLink.target = '_blank';
+            rtLink.rel = 'noopener noreferrer';
+            rtLink.title = `Rotten Tomatoes: ${item.ratings.rt.score}`;
+            
+            const scoreNum = parseInt(item.ratings.rt.score);
+            const scoreClass = 'med-rating'; // Using med for consistent color as requested
+            
+            rtLink.innerHTML = `🍅<span class="score-badge ${scoreClass}">${item.ratings.rt.score}</span>`;
+            addActionToCorner(rtLink);
+        }
+
+        if (item.links?.length > 0) {
+            item.links.forEach(link => {
+                const isXLink = link.name?.toLowerCase() === 'x' || link.label?.toLowerCase() === 'x';
+                
+                if (item.embedUrl && link.url && item.embedUrl.includes(link.url.replace('watch?v=', 'embed/').split('&')[0])) return; 
+                if ((link.url.includes('youtube.com') || link.url.includes('youtu.be')) && item.embedUrl && item.embedUrl.includes('youtube.com/embed')) {
+                    let linkId = '';
+                    if (link.url.includes('youtu.be/')) linkId = link.url.split('youtu.be/')[1].split('?')[0];
+                    else if (link.url.includes('v=')) linkId = link.url.split('v=')[1].split('&')[0];
+                    let embedId = item.embedUrl.split('embed/')[1].split('?')[0];
+                    if (linkId && embedId && linkId === embedId) return;
+                }
+
+                const linkEl = document.createElement('a');
+                linkEl.href = link.url;
+                linkEl.target = '_blank';
+                linkEl.rel = 'noopener noreferrer';
+                linkEl.title = link.label || link.name || '';
+                linkEl.className = 'action-btn link-btn ' + (isXLink ? 'x-btn' : getPlatformClass(link) + '-btn');
+
+                if (isXLink) {
+                    linkEl.innerHTML = X_LINK_SVG;
+                } else if (link.icon) {
+                    linkEl.innerHTML = `<i class="${link.icon}"></i>`;
+                }
+                addActionToCorner(linkEl);
+            });
+        }
+        
+        overlay.appendChild(cornerActions);
+
         const title = document.createElement('h2');
         title.className = 'media-title';
         title.textContent = item.title;
@@ -426,11 +544,7 @@
         if (item.author) {
             const author = document.createElement('div');
             author.className = 'media-author';
-            author.textContent = item.mediaType === 'movie'
-                ? `Director: ${item.author}`
-                : item.mediaType === 'playlist'
-                    ? `Curator: ${item.author}`
-                    : item.author;
+            author.textContent = item.mediaType === 'movie' ? `Director: ${item.author}` : item.mediaType === 'playlist' ? `Curator: ${item.author}` : item.author;
             overlayContent.appendChild(author);
         }
 
@@ -448,14 +562,6 @@
             overlayContent.appendChild(dateElement);
         }
 
-        if (item.mediaType === 'movie') {
-            appendMovieActions(overlayContent, item);
-        }
-
-        if (item.mediaType === 'playlist' && item.embedUrl) {
-            appendPlaylistEmbed(overlayContent, item);
-        }
-
         if (item.rating) {
             const rating = document.createElement('div');
             rating.className = 'media-rating';
@@ -463,103 +569,10 @@
             overlayContent.appendChild(rating);
         }
 
-        if (item.links?.length > 0) {
-            appendLinks(overlayContent, item);
-        }
-
         overlay.appendChild(overlayContent);
         return overlay;
     }
 
-    function createRatingLink(ratingType, ratingData, isRT = false) {
-        const link = document.createElement('a');
-        link.href = ratingData.url;
-        link.className = `rating-logo ${isRT ? 'rt-logo' : 'imdb-logo'}`;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.innerHTML = isRT
-            ? `<span class="rt-tomato">🍅</span> <span class="score">${ratingData.score}</span>`
-            : `<span class="imdb-icon">IMDb</span> <span class="score">${ratingData.score}</span>`;
-        return link;
-    }
-
-    function appendMovieActions(overlayContent, item) {
-        const container = document.createElement('div');
-        container.className = 'movie-actions-container';
-
-        if (item.ratings?.rt) {
-            container.appendChild(createRatingLink('rt', item.ratings.rt, true));
-        }
-
-        if (item.ratings?.imdb) {
-            container.appendChild(createRatingLink('imdb', item.ratings.imdb, false));
-        }
-
-        if (item.embedUrl) {
-            const trailerBtn = createTrailerButton(overlayContent, item, 'trailer-button-inline');
-            container.appendChild(trailerBtn);
-        }
-
-        overlayContent.appendChild(container);
-    }
-
-    function appendPlaylistEmbed(overlayContent, item) {
-        const trailerBtn = createTrailerButton(overlayContent, item, 'trailer-button playlist-button');
-        overlayContent.appendChild(trailerBtn);
-    }
-
-    function createTrailerButton(overlayContent, item, className) {
-        const container = document.createElement('div');
-        container.className = className.includes('inline') ? 'trailer-container-inline' : 'trailer-container';
-
-        const button = document.createElement('button');
-        button.className = className;
-        button.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
-        button.innerHTML = `<i class="fab fa-youtube"></i>`;
-
-        button.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const existingEmbed = overlayContent.querySelector('.trailer-embed');
-
-            if (existingEmbed) {
-                existingEmbed.remove();
-                button.innerHTML = `<i class="fab fa-youtube"></i>`;
-                button.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
-            } else {
-                const embed = document.createElement('div');
-                embed.className = 'trailer-embed';
-                embed.innerHTML = `
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        src="${item.embedUrl}"
-                        title="${item.title} Trailer"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
-                `;
-                overlayContent.appendChild(embed);
-                button.innerHTML = `<i class="fas fa-times"></i>`;
-                button.title = 'Close Trailer';
-                
-                // Scroll card into view so user sees the video
-                const mediaCard = overlayContent.closest('.media-card');
-                if (mediaCard) {
-                    mediaCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-                
-                // Scroll overlay content to show video at top
-                setTimeout(() => {
-                    overlayContent.scrollTop = 0;
-                }, 300);
-            }
-        }, { passive: false });
-
-        container.appendChild(button);
-        return container;
-    }
 
     function getPlatformClass(link) {
         if (!link.icon) return 'media-link';
@@ -569,36 +582,7 @@
         return 'media-link';
     }
 
-    const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.5em" height="1.5em" fill="white" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.5em;height:1.5em;"><rect width="120" height="120" rx="24" fill="black"/><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
-
-    function appendLinks(overlayContent, item) {
-        const container = document.createElement('div');
-        container.className = item.mediaType === 'song'
-            ? 'song-links'
-            : (item.mediaType === 'podcast' || item.mediaType === 'playlist')
-                ? 'podcast-links'
-                : 'media-links';
-
-        item.links.forEach(link => {
-            const isXLink = link.name?.toLowerCase() === 'x' || link.label?.toLowerCase() === 'x';
-            const linkEl = document.createElement('a');
-            linkEl.href = link.url;
-            linkEl.target = '_blank';
-            linkEl.rel = 'noopener noreferrer';
-            linkEl.title = link.label || link.name || '';
-            linkEl.className = isXLink ? 'x-link' : getPlatformClass(link);
-
-            if (isXLink) {
-                linkEl.innerHTML = X_LINK_SVG;
-            } else if (link.icon) {
-                linkEl.innerHTML = `<i class="${link.icon}"></i>`;
-            }
-
-            container.appendChild(linkEl);
-        });
-
-        overlayContent.appendChild(container);
-    }
+    const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
 
     const MEDIA_TYPE_ICONS = {
         'podcast': 'fas fa-podcast',

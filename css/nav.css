@@ -37,7 +37,10 @@
     position: sticky;
     top: 0;
     z-index: var(--nav-z-index);
-    background: var(--bg-primary, #fdf6e8);
+    background: rgba(253, 246, 232, 0.85); /* Semi-transparent version of var(--bg-primary, #fdf6e8) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(224, 220, 196, 0.4);
     isolation: isolate;
     transition: transform 0.3s ease;
 }
@@ -522,4 +525,17 @@ button:focus-visible {
     outline: 2px solid var(--color-primary, #2c5f5a);
     outline-offset: 2px;
     border-color: var(--color-primary, #2c5f5a);
+}
+
+/* Dark Mode Overrides for Navigation */
+@media (prefers-color-scheme: dark) {
+    #main-nav {
+        background: rgba(43, 40, 38, 0.85); /* Semi-transparent version of var(--bg-primary, #2b2826) */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+html.dark-mode #main-nav {
+    background: rgba(43, 40, 38, 0.85); /* Semi-transparent version of var(--bg-primary, #2b2826) */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

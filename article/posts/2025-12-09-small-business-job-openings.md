@@ -1,5 +1,6 @@
 ---
 date: 2025-12-09T21:00:00Z
+category: employment
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **October JOLTS**

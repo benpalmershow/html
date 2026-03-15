@@ -1,5 +1,6 @@
 ---
 date: 2025-12-24T12:00:00
+category: policy
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **California Faces $2.5 Billion CalFresh Bill**

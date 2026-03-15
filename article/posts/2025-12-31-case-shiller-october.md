@@ -1,5 +1,6 @@
 ---
 date: 2025-12-31T11:00:00
+category: housing
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Case-Shiller down 0.2%**

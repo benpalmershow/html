@@ -1,5 +1,6 @@
 ---
 date: 2025-12-20T14:00:00Z
+category: housing
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Existing Home Sales Accelerate**

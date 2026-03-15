@@ -1,8 +1,8 @@
 const LIMITS = {
-  posts: 5,
-  journal: 6,
-  media: 5,
-  financials: 8
+  posts: 8,
+  journal: 10,
+  media: 8,
+  financials: 12
 };
 const EXCLUDED_POSTS = [
   'article/posts/2026-03-10-reflect-orbital.md',
@@ -73,7 +73,6 @@ function pageLabelFromPath(path) {
   if (clean.endsWith('media.html')) return 'Media';
   if (clean.endsWith('financials.html')) return 'Financials';
   if (clean.endsWith('journal.html')) return 'Journal';
-  if (clean.endsWith('news.html')) return 'News';
   if (clean.endsWith('index.html')) return 'Home';
   return 'Page';
 }

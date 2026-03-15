@@ -1,5 +1,6 @@
 ---
 date: 2026-01-10T16:00:00Z
+category: employment
 ---
 
 ### <i data-lucide="users" class="post-icon"></i> **+50k Jobs, Sentiment Recovers**

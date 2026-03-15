@@ -1,5 +1,6 @@
 ---
 date: 2025-12-23T11:00:00
+category: economic
 ---
 
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Confidence Down**

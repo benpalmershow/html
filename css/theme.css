@@ -42,6 +42,16 @@
     --color-category-legal: #2c5f5a;
     --color-category-political: #8b5cf6;
     --color-category-corrections: #e53935;
+    --color-category-economic: #0d9488;
+    --color-category-housing: #ca8a04;
+    --color-category-journal: #7c3aed;
+    --color-category-media: #e91e63;
+    --color-category-prediction: #ff5722;
+    --color-category-employment: #009688;
+    --color-category-consumer: #4caf50;
+    --color-category-government: #795548;
+    --color-category-business: #607d8b;
+    --color-category-trade: #9c27b0;
 
     /* PLATFORM COLORS */
     --color-youtube: #FF0000;

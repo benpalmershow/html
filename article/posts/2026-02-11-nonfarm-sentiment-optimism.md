@@ -1,5 +1,6 @@
 ---
 date: 2026-02-11T15:00:00Z
+category: employment
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **Jobs, Small Biz, Optimism, Oil, Scroll**

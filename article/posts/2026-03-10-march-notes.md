@@ -1,5 +1,6 @@
 ---
 date: 2026-03-10T18:00:00Z
+category: journal
 ---
 
 ## <i data-lucide='sun' class='post-icon'></i> **Space Sunlight: Reflect Orbital**

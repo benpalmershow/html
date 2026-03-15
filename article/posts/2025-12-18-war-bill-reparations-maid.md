@@ -1,5 +1,6 @@
 ---
 date: 2025-12-18T23:30:00Z
+category: healthcare
 ---
 
 ###  **War, Reparations, and Dying**

@@ -1,5 +1,6 @@
 ---
 date: 2026-03-06T15:30:00Z
+category: employment
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **Jobs: -92k**

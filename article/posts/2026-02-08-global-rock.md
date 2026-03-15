@@ -1,5 +1,6 @@
 ---
 date: 2026-02-08T00:00:00Z
+category: media
 ---
 
 ### <i data-lucide="globe" class="post-icon"></i> **Global Rock**

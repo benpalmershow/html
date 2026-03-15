@@ -1,6 +1,8 @@
 ---
 date: 2025-12-15T10:00:00
+category: economic
 ---
+
 ## Five new 13F Filings
 Academy Capital emphasizes mega-cap tech with concentrated positions in 
 - Apple ($73.6M)

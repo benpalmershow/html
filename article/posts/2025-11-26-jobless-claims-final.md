@@ -1,5 +1,6 @@
 ---
 date: 2025-12-04T14:00:00
+category: employment
 ---
 
 ### **Jobless Claims**

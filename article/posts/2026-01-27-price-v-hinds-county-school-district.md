@@ -1,5 +1,6 @@
 ---
 date: 2026-02-01T10:00:00
+category: legal
 ---
 
 ### <i data-lucide='book' class='post-icon'></i> **I Need a New Butt!**

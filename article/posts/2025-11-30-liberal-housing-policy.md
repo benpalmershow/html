@@ -1,5 +1,6 @@
 ---
 date: 2025-11-30T15:00:00
+category: policy
 ---
 
 ### **Innovation Beats Government Bribes**

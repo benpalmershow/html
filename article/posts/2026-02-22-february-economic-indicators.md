@@ -1,5 +1,6 @@
 ---
 date: 2026-02-22T18:30:00Z
+category: economic
 ---
 
 ## February Economic Indicators

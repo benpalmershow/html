@@ -123,6 +123,16 @@
         console.warn('Pre-fetch failed', err);
         return null;
       });
+    // Also prefetch articles.json
+    window.articlesPromise = fetch('json/articles.json?v=' + Date.now())
+      .then(r => {
+        if (!r.ok) throw new Error('Failed to load articles');
+        return r.json();
+      })
+      .catch(err => {
+        console.warn('Articles pre-fetch failed', err);
+        return null;
+      });
   </script>
 
   <!-- Preload Marked.js -->
@@ -230,86 +240,6 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0.65rem;
-    }
-
-    .home-weekly-splash {
-      margin: 0.15rem 0 0.95rem;
-    }
-
-    .home-weekly-splash-btn {
-      display: inline-flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      text-decoration: none;
-      padding: 0.62rem 0.78rem;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(var(--accent-primary-rgb), 0.08), rgba(var(--accent-primary-rgb), 0.03));
-      color: inherit;
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      max-width: 480px;
-    }
-
-    .home-weekly-splash-btn:hover,
-    .home-weekly-splash-btn:focus-visible {
-      transform: translateY(-1px);
-      border-color: var(--accent-secondary);
-      box-shadow: 0 8px 18px rgba(var(--accent-primary-rgb), 0.14);
-      outline: none;
-    }
-
-    .home-weekly-splash-icon {
-      width: 1.05rem;
-      height: 1.05rem;
-      color: var(--accent-secondary);
-      stroke: var(--accent-secondary);
-      stroke-width: 2.2;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
-
-    .home-weekly-splash-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      line-height: 1.2;
-    }
-
-    .home-weekly-splash-title {
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: 0.01em;
-    }
-
-    .home-weekly-splash-preview {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-
-    #main-nav .hints-icon-btn.splash-highlight {
-      border-color: var(--color-secondary);
-      box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.2);
-      transform: scale(1.06);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-      animation: splashHelpPulse 0.95s ease-in-out infinite;
-    }
-
-    @keyframes splashHelpPulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(var(--accent-primary-rgb), 0.36);
-      }
-      70% {
-        transform: scale(1.08);
-        box-shadow: 0 0 0 8px rgba(var(--accent-primary-rgb), 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(var(--accent-primary-rgb), 0);
-      }
     }
 
     /* Dark mode support for hero section */
@@ -451,27 +381,29 @@
       <p class="home-subtitle">
         Quick access to economic indicators, market coverage, independent analysis, and curated media.
       </p>
-      <p class="home-weekly-splash">
-        <!-- link now includes autoprint flag so the new tab immediately triggers the print dialog -->
-        <a href="one-pager.html" id="weekly-help-splash" class="home-weekly-splash-btn" aria-label="Open weekly update and print" title="Open and print weekly update" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="printer" class="home-weekly-splash-icon" aria-hidden="true"></i>
-          <span class="home-weekly-splash-copy">
-            <span class="home-weekly-splash-title">Print Weekly</span>
-            <span class="home-weekly-splash-preview">Open and auto‑print the one‑page weekly summary</span>
-          </span>
-        </a>
-      </p>
       <div class="home-link-grid" id="hero-link-grid" aria-label="Primary sections">
         <!-- Hero cards populated by js/nav.js -->
       </div>
     </section>
 
     <!-- Announcements Section Component with fallback -->
-    <h2 class="page-title" aria-label="Page title">
+    <h2 class="page-title" id="announcements" aria-label="Page title">
       <img src="images/announcements.webp" alt="Announcements logo" class="page-icon" width="20" height="20"
         loading="eager" decoding="async">
       Announcements
     </h2>
+    <div class="filters" id="index-filters" aria-label="Filter posts by category">
+        <button type="button" class="filter-btn active" data-category="all" aria-label="All posts"><i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span></button>
+        <button type="button" class="filter-btn" data-category="economic" aria-label="Economic"><i data-lucide="trending-up" class="filter-icon"></i><span class="filter-text">Economic</span></button>
+        <button type="button" class="filter-btn" data-category="employment" aria-label="Employment"><i data-lucide="briefcase" class="filter-icon"></i><span class="filter-text">Employment</span></button>
+        <button type="button" class="filter-btn" data-category="government" aria-label="Government"><i data-lucide="landmark" class="filter-icon"></i><span class="filter-text">Government</span></button>
+        <button type="button" class="filter-btn" data-category="prediction" aria-label="Prediction Markets"><i data-lucide="target" class="filter-icon"></i><span class="filter-text">Prediction</span></button>
+        <button type="button" class="filter-btn" data-category="housing" aria-label="Housing"><i data-lucide="home" class="filter-icon"></i><span class="filter-text">Housing</span></button>
+        <button type="button" class="filter-btn" data-category="journal" aria-label="Journal"><i data-lucide="book-open" class="filter-icon"></i><span class="filter-text">Journal</span></button>
+        <button type="button" class="filter-btn" data-category="policy" aria-label="Policy"><i data-lucide="shield" class="filter-icon"></i><span class="filter-text">Policy</span></button>
+        <button type="button" class="filter-btn" data-category="media" aria-label="Media"><i data-lucide="clapperboard" class="filter-icon"></i><span class="filter-text">Media</span></button>
+        <button type="button" class="filter-btn" data-category="legal" aria-label="Legal"><i data-lucide="gavel" class="filter-icon"></i><span class="filter-text">Legal</span></button>
+    </div>
     <section class="announcements" aria-label="Latest announcements" style="min-height:600px">
       <div class="announcements-container" id="announcements-container" style="min-height:500px">
         <div class="loading-skeleton" style="height:100px"></div>
@@ -513,7 +445,7 @@
   <script src="js/swipe-nav.js" defer></script>
 
   <!-- Posts loader (refactored with modules) -->
-  <!-- Posts loader (simplified) -->
+  <!-- Posts loader -->
   <script src="js/posts-loader.js" defer></script>
 
   <!-- Unified Scripts -->
@@ -523,23 +455,6 @@
     // Retaining clean simple structure as requested.
   </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const splash = document.getElementById('weekly-help-splash');
-      if (!splash) return;
-
-      const toggleHelpHighlight = (on) => {
-        const helpToggle = document.getElementById('hints-toggle');
-        if (!helpToggle) return;
-        helpToggle.classList.toggle('splash-highlight', on);
-      };
-
-      splash.addEventListener('mouseenter', () => toggleHelpHighlight(true));
-      splash.addEventListener('mouseleave', () => toggleHelpHighlight(false));
-      splash.addEventListener('focus', () => toggleHelpHighlight(true));
-      splash.addEventListener('blur', () => toggleHelpHighlight(false));
-    });
-  </script>
 
   <script defer>
     // Library loader

@@ -1,5 +1,6 @@
 ---
 date: 2025-12-01T00:00:00
+category: policy
 ---
 
 ### **Rent Control**

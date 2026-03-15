@@ -1,5 +1,6 @@
 ---
 date: 2026-03-14T10:00:00
+category: government
 ---
 
 ### Trade Deficit Chart Updated

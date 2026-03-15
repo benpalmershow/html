@@ -1,5 +1,6 @@
 ---
 date: 2026-02-27T15:00:00Z
+category: economic
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Construction Spending Edges Higher in December**

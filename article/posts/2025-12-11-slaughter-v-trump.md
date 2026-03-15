@@ -1,5 +1,6 @@
 ---
 date: 2025-12-11T12:30:00
+category: legal
 ---
 
 ## **Conclusive and Preclusive**

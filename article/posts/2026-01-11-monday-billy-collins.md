@@ -1,3 +1,7 @@
+---
+category: journal
+---
+
 <i data-lucide="book-open"></i>
 
 # Monday

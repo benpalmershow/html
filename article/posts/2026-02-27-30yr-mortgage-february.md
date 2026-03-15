@@ -1,5 +1,6 @@
 ---
 date: 2026-02-27T18:00:00Z
+category: housing
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **30yr Mortgage down 2.0%**

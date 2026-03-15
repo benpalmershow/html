@@ -1,3 +1,7 @@
+---
+category: economic
+---
+
 ## Soybean Surplus
  [<img src="images/read.webp" alt="Read" width="30" height="30">](../../journal.html#local-wheat)
 

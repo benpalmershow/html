@@ -1,5 +1,6 @@
 ---
 date: 2026-01-12T00:00:00
+category: journal
 ---
 
 ### <i data-lucide='zap' class='post-icon'></i> **Eating Expertise**

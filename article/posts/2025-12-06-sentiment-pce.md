@@ -1,5 +1,6 @@
 ---
 date: 2025-12-06T15:00:00
+category: consumer
 ---
 
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Spending**

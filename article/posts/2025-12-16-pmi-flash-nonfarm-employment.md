@@ -1,5 +1,6 @@
 ---
 date: 2025-12-16T18:00:00Z
+category: housing
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **Jobs: +64k, -105k**

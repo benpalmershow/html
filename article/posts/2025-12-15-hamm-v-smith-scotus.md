@@ -1,5 +1,6 @@
 ---
 date: 2025-12-15T15:00:00
+category: legal
 ---
 
 #    **69 Is Retarded**

@@ -1,5 +1,6 @@
 ---
 date: 2026-01-03T10:00:00
+category: journal
 ---
 
 ### <i data-lucide='timer' class='post-icon'></i> **The Longest Fast: Angus Barbieri's 382-Day Record**

@@ -1,5 +1,6 @@
 ---
 date: 2026-02-15T14:00:00Z
+category: government
 ---
 
 ### <i data-lucide='landmark' class='post-icon'></i> **January Deficit Down to $94.6B**

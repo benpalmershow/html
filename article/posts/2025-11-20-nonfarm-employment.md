@@ -1,3 +1,7 @@
+---
+category: employment
+---
+
 
 ### **BLS Employment Gains**
 

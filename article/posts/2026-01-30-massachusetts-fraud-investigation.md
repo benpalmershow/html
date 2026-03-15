@@ -1,5 +1,6 @@
 ---
 date: 2026-02-16T12:00:00Z
+category: legal
 ---
 
 ### <i data-lucide='shield-alert' class='post-icon'></i> **"Despite claims, massive SNAP fraud is rare"**

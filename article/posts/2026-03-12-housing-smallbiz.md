@@ -1,5 +1,6 @@
 ---
 date: 2026-03-12T20:00:00Z
+category: housing
 ---
 
 ## <i data-lucide='home' class='post-icon'></i> **Existing Home Sales Rise**

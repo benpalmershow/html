@@ -1,6 +1,8 @@
 ---
 date: 2026-01-24T18:00:00
+category: prediction
 ---
+
 ### <i data-lucide='trophy' class='post-icon'></i> **NFL Conference Championships**
 
 Prediction markets for the 2026 NFL Conference Championships are now live on Kalshi and Polymarket. The Sunday schedule features the Patriots visiting the top-seeded Broncos, followed by the Rams traveling to Seattle for the NFC title. 

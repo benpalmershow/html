@@ -1,5 +1,6 @@
 ---
 date: 2026-02-22T24:00:00Z
+category: journal
 ---
 
 ### <i data-lucide='hat-glasses' class='post-icon'></i> **Light on Evidence, Heavy on Rage**

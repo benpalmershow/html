@@ -1,5 +1,6 @@
 ---
 date: 2025-12-08T21:30:00Z
+category: economic
 ---
 
 ### <i data-lucide='package' class='post-icon'></i> **Your Tax Bill for Misconduct**

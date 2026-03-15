@@ -1,5 +1,6 @@
 ---
 date: 2026-01-03T10:00:00
+category: healthcare
 ---
 
 ### <i data-lucide='heart-handshake' class='post-icon'></i> **CMS Awards $50B Rural Health Transformation**

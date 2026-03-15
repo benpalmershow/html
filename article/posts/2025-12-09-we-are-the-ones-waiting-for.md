@@ -1,5 +1,6 @@
 ---
 date: 2025-12-10T11:00:00
+category: journal
 ---
 
 ### <i data-lucide='heart' class='post-icon'></i> **Divorce Money**

@@ -1,5 +1,6 @@
 ---
 date: 2026-03-07T18:00:00Z
+category: policy
 ---
 
 ### <i data-lucide='scale' class='post-icon'></i> **Section 8 Meet Amendment 4**

@@ -1,5 +1,6 @@
 ---
 date: 2025-12-26T10:00:00
+category: journal
 ---
 
 ### **The Sacred and the Profane**

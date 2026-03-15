@@ -1,5 +1,6 @@
 ---
 date: 2026-01-05T09:00:00
+category: policy
 ---
 
 ### <i data-lucide='camera' class='post-icon'></i> **ICE's Mobile Facial Recognition**

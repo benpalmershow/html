@@ -1,5 +1,6 @@
 ---
 date: 2025-11-26T09:30:00
+category: economic
 ---
 
 ### **U.S. Dollar**

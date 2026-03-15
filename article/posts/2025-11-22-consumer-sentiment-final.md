@@ -1,5 +1,6 @@
 ---
 date: 2025-11-22T10:50:00
+category: consumer
 ---
 
 ### **Consumer Sentiment**

@@ -1,5 +1,6 @@
 ---
 date: 2025-12-02T15:00:00
+category: business
 ---
 
 ### **Cox v. Sony Copyright Case**

@@ -1,5 +1,6 @@
 ---
 date: 2025-12-29T14:00:00
+category: legal
 ---
 
 ### **68,000 MA Noncitizen SNAP Participants**

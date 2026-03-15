@@ -1,5 +1,6 @@
 ---
 date: 2026-01-05T17:00:00
+category: prediction
 ---
 
 ### <i data-lucide='trophy' class='post-icon'></i> **NFL Playoff Odds**

@@ -1,5 +1,6 @@
 ---
 date: 2026-01-08T14:00:00Z
+category: government
 ---
 
 ### <i data-lucide='ship' class='post-icon'></i> **Trade Deficit Collapses to $29.4B**

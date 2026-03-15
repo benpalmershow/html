@@ -1,5 +1,6 @@
 ---
 date: 2026-01-24T20:30:00
+category: policy
 ---
 
 ### <i data-lucide='radio' class='post-icon'></i> **"Equal Time" Rule: An Artifact of the 1934 Communications Act**

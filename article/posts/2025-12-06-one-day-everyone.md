@@ -1,5 +1,6 @@
 ---
 date: 2025-12-06T14:00:00
+category: journal
 ---
 
 ### **One Day, Everyone Will Have Always Been Against This**

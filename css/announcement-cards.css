@@ -594,3 +594,79 @@ html.dark-mode .table-wrapper th {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* Index filter bar (matches news.html) */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.filters .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filters .filter-btn .filter-icon {
+    flex-shrink: 0;
+}
+
+.filters .filter-btn .filter-text {
+    display: none;
+}
+
+.filters .filter-btn:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-1px);
+}
+
+.filters .filter-btn.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.filters .filter-btn.active .filter-text {
+    display: inline;
+}
+
+.filters .filter-btn.active.ipo { background: var(--color-category-ipo); }
+.filters .filter-btn.active.earnings { background: var(--color-category-earnings); }
+.filters .filter-btn.active.policy { background: var(--color-category-policy); }
+.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); }
+.filters .filter-btn.active.political { background: var(--color-category-political); }
+.filters .filter-btn.active.legal { background: var(--color-category-legal); }
+.filters .filter-btn.active.corrections { background: var(--color-category-corrections); }
+.filters .filter-btn.active.economic { background: var(--color-category-economic); }
+.filters .filter-btn.active.housing { background: var(--color-category-housing); }
+.filters .filter-btn.active.journal { background: var(--color-category-journal); }
+.filters .filter-btn.active.media { background: var(--color-category-media); }
+.filters .filter-btn.active.prediction { background: var(--color-category-prediction); }
+.filters .filter-btn.active.employment { background: var(--color-category-employment); }
+.filters .filter-btn.active.consumer { background: var(--color-category-consumer); }
+.filters .filter-btn.active.government { background: var(--color-category-government); }
+.filters .filter-btn.active.business { background: var(--color-category-business); }
+.filters .filter-btn.active.trade { background: var(--color-category-trade); }
+
+@media (max-width: 768px) {
+    .filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0.5rem 0;
+        scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar {
+        display: none;
+    }
+}

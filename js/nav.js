@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const PAGES = [
     { name: 'Home', file: 'index.html', desc: '', heroDesc: '', icon: '' },
-    { name: 'News', file: 'news.html', desc: 'Latest commentary and policy updates', heroDesc: 'Latest commentary and policy updates', icon: 'announcements.webp' },
     { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', heroDesc: 'Economic indicators and market data', icon: 'federal-reserve.webp' },
     { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', heroDesc: 'Books, films, and listening picks', icon: 'media.webp' },
     { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', heroDesc: 'Short-form analysis and observations', icon: 'read.webp' }
@@ -32,12 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderHeroCards = () => {
     if (!heroLinkGrid) return;
     
-    const nonHomePages = PAGES.filter(p => p.file !== 'index.html');
-    return nonHomePages.map(page => `
+    const pages = [
+      { name: 'Announcements', file: 'index.html#announcements', desc: 'Latest market updates, earnings, and policy analysis', icon: 'announcements.webp' },
+      { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'federal-reserve.webp' },
+      { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', icon: 'media.webp' },
+      { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'read.webp' }
+    ];
+    return pages.map(page => `
       <a class="home-link-card" href="${page.file}">
         <img src="images/${page.icon}" alt="${page.name}" class="home-link-icon" loading="lazy">
         <span class="home-link-title">${page.name}</span>
-        <span class="home-link-desc">${page.heroDesc}</span>
+        <span class="home-link-desc">${page.desc}</span>
       </a>
     `).join('');
   };
@@ -53,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ${PAGES.map(renderNavLink).join('')}
       </ul>
       <div class="nav-right-section">
+         <a href="one-pager.html" target="_blank" rel="noopener noreferrer" class="cta-icon-btn" aria-label="Print Weekly" title="Print Weekly">
+           <i data-lucide="printer" style="width: 1.2rem; height: 1.2rem;"></i>
+         </a>
          <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
            <i data-lucide="newspaper" style="width: 1.2rem; height: 1.2rem;"></i>
          </button>
@@ -87,21 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="hint-close-btn" aria-label="Close this message" title="Close">&times;</button>
           <h3 id="hint-title">Welcome to Howdy, Stranger!</h3>
           <div class="hint-steps">
-              <div class="hint-step hint-step-print">
-                <i data-lucide="printer" style="width: 2rem; height: 2rem;"></i>
-               <div>
-                 <strong>Print Weekly:</strong> Open <a href="one-pager.html" target="_blank" rel="noopener noreferrer">Weekly Update</a> to print a one-page summary
-               </div>
-               </div>
-            <div class="hint-step">
-              <picture>
-                <source srcset="images/announcements.webp" type="image/webp">
-                <img src="images/announcements.webp" alt="News" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
-              </picture>
-              <div>
-                <strong>News:</strong> Latest market updates, earnings, and policy analysis
-              </div>
-            </div>
             <div class="hint-step">
               <picture>
                 <source srcset="images/federal-reserve.webp" type="image/webp">
@@ -361,17 +353,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const spotlightPrintWeekly = () => {
-      const printHint = visitorHints.querySelector('.hint-step-print');
-      if (!printHint) return;
-      printHint.classList.remove('tour-focus');
-      void printHint.offsetWidth;
-      printHint.classList.add('tour-focus');
-      setTimeout(() => printHint.classList.remove('tour-focus'), 2200);
+      // Removed - Print Weekly is now in nav-right-section
     };
 
     hintsToggle.addEventListener('click', () => {
       markHelpNewSeen();
-      setTimeout(spotlightPrintWeekly, 280);
     });
 
     const hintOverlay = visitorHints.querySelector('.hint-overlay');

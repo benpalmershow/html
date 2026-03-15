@@ -1,5 +1,6 @@
 ---
 date: 2025-12-01T110:00:00
+category: media
 ---
 
 ###  **The Kids Know**

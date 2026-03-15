@@ -1,5 +1,6 @@
 ---
 date: 2026-01-03T14:00:00
+category: employment
 ---
 
 ### <i data-lucide='dollar-sign' class='post-icon'></i> **Minimum Wage**

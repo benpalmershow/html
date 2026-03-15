@@ -1,5 +1,6 @@
 ---
 date: 2025-12-19T19:00:00Z
+category: consumer
 ---
 
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Sentiment Up, Inflation Down**

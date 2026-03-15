@@ -1,7 +1,7 @@
 ---
 date: 2025-12-05T13:00:00
+category: journal
 ---
-
 
 The historic Kennedy family compound in Hyannis, Massachusetts is on the market for $21.5M.
 

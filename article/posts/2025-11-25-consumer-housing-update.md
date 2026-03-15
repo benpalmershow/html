@@ -1,5 +1,6 @@
 ---
 date: 2025-11-25T14:00:00
+category: housing
 ---
 
 ### **Consumer Confidence**

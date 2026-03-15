@@ -361,7 +361,7 @@ html.dark-mode .header-social-item img {
   }
 
   .one-pager-header {
-    padding: 0.4rem 0.5rem;
+    padding: 0.6rem 0.7rem;
     break-inside: avoid-page;
     page-break-inside: avoid;
   }
@@ -398,37 +398,37 @@ html.dark-mode .header-social-item img {
 
   .updates-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.25rem;
-    margin-top: 0.25rem;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
     break-inside: avoid;
     break-inside: avoid-page;
     page-break-inside: avoid;
   }
 
   .section-card {
-    padding: 0.3rem 0.36rem;
+    padding: 0.6rem 0.65rem;
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   .section-card h2 {
-    margin-bottom: 0.14rem;
-    font-size: 9.8pt;
+    margin-bottom: 0.35rem;
+    font-size: 10.2pt;
   }
 
   .one-pager-footer {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
     grid-template-columns: 1fr auto;
-    gap: 0.25rem;
-    padding: 0.3rem 0.36rem;
+    gap: 0.4rem;
+    padding: 0.5rem 0.55rem;
     break-inside: avoid;
     break-inside: avoid-page;
     page-break-inside: avoid;
   }
 
   .footer-title {
-    margin-bottom: 0.12rem;
-    font-size: 8.2pt;
+    margin-bottom: 0.25rem;
+    font-size: 9pt;
     color: #000;
   }
 
@@ -456,9 +456,9 @@ html.dark-mode .header-social-item img {
   }
 
   .compact-list li {
-    margin-bottom: 0.1rem;
-    line-height: 1.13;
-    font-size: 8.6pt;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+    font-size: 9pt;
   }
 
   .financial-bullet-icon {

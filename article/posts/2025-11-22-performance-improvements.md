@@ -1,5 +1,6 @@
 ---
 date: 2025-11-22T23:50:00
+category: economic
 ---
 
 ## Performance Upgrade Complete

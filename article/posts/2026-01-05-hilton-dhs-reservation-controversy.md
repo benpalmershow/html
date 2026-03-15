@@ -1,5 +1,6 @@
 ---
 date: 2026-01-05T14:30:00
+category: legal
 ---
 
 ### <i data-lucide='building-2' class='post-icon'></i> **Kicking out the people who make the Bed**

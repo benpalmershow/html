@@ -1,5 +1,6 @@
 ---
 date: 2026-02-02T10:00:00
+category: economic
 ---
 
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Restaurant Performance Index Slides to 99.3 in December**

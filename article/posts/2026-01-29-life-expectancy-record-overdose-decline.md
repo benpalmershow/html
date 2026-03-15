@@ -1,5 +1,6 @@
 ---
 date: 2026-01-29T12:00:00Z
+category: healthcare
 ---
 
 ### <i data-lucide='briefcase' class='post-icon'></i> **Life Expectancy and Factory Activity Up**

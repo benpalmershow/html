@@ -1,5 +1,6 @@
 ---
 date: 2026-01-05T14:30:00
+category: political
 ---
 
 ### <i data-lucide='globe' class='post-icon'></i> **🇻🇪 Rodríguez, González, or Machado?**

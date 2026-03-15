@@ -1,5 +1,6 @@
 ---
 date: 2025-11-28T12:00:00
+category: economic
 ---
 
 ### **Buy Appreciation, Not Discounts**

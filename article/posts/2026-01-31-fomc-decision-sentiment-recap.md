@@ -1,5 +1,6 @@
 ---
 date: 2026-01-31T14:00:00
+category: prediction
 ---
 
 ### <i data-lucide='trending-up' class='post-icon'></i> **FOMC Holds as Predicted, Consumer Sentiment Rebounds**

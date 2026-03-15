@@ -1,5 +1,6 @@
 ---
 date: 2026-01-17T12:00:00Z
+category: healthcare
 ---
 
 ### <i data-lucide="heart-handshake" class="post-icon"></i> **Canada Affirms Despair**

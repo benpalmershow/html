@@ -1,6 +1,8 @@
 ---
 date: 2026-01-16T21:15:00
+category: prediction
 ---
+
 ### <i data-lucide='briefcase' class='post-icon'></i> **NFL Playoffs and Number updates**
 
 Markets and economic indicators across multiple categories have been updated following Thursday's close. Treasury yields, commodity prices, employment forecasts, and government fiscal data all reflect the latest available readings as the week approaches its conclusion.

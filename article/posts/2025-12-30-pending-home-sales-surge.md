@@ -1,5 +1,6 @@
 ---
 date: 2025-12-30T12:00:00
+category: housing
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Pending Sales up 3.3%**

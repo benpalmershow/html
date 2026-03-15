@@ -1,5 +1,6 @@
 ---
 date: 2026-02-05T19:00:00Z
+category: employment
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **Labor Market Stalled Since September Collapse**

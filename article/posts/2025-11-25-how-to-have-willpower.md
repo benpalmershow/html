@@ -1,5 +1,6 @@
 ---
 date: 2025-11-25T00:00:00
+category: journal
 ---
 
 ### **How to Have Willpower**

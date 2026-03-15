@@ -1,5 +1,6 @@
 ---
 date: 2026-01-07T10:00:00
+category: political
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **Warm Collectivism**

@@ -1,5 +1,6 @@
 ---
 date: 2026-02-27T18:30:00Z
+category: economic
 ---
 
 ### <i data-lucide='ship' class='post-icon'></i> **Dollar Value Index Softens in February**

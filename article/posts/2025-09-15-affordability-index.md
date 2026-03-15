@@ -1,5 +1,6 @@
 ---
 date: 2025-11-26T19:00:00
+category: housing
 ---
 
 ###  **Housing Affordability**

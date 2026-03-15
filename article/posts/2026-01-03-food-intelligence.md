@@ -1,5 +1,6 @@
 ---
 date: 2026-01-03T00:00:00
+category: economic
 ---
 
 ### <i data-lucide='book' class='post-icon'></i> **Food Intelligence**

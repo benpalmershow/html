@@ -1,5 +1,6 @@
 ---
 date: 2026-01-03T13:00:00
+category: policy
 ---
 
 ### <i data-lucide='search' class='post-icon'></i> **Know Your Source**

@@ -1,5 +1,6 @@
 ---
 date: 2025-11-27T11:00:00
+category: media
 ---
 
 ### **Vermiglio**

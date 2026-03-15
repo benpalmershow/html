@@ -1,5 +1,6 @@
 ---
 date: 2026-02-27T17:30:00Z
+category: economic
 ---
 
 ### <i data-lucide='briefcase' class='post-icon'></i> **PPI up 0.5%**

@@ -1,5 +1,6 @@
 ---
 date: 2026-01-16T18:00:00Z
+category: government
 ---
 
 ### <i data-lucide='alert-triangle' class='post-icon'></i> **NYC $10.4B Short**

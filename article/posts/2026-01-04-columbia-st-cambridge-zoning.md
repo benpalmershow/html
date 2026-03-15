@@ -1,5 +1,6 @@
 ---
 date: 2026-01-04T11:00:00
+category: policy
 ---
 
 ### <i data-lucide='gavel' class='post-icon'></i> **Inclusionary Housing**

@@ -1,5 +1,6 @@
 ---
 date: 2026-01-06T12:00:00
+category: business
 ---
 
 ### <i data-lucide='briefcase' class='post-icon'></i> **Manufacturing Contraction**

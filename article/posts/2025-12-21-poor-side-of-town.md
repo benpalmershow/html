@@ -1,5 +1,6 @@
 ---
 date: 2025-12-21T10:30:00
+category: media
 ---
 
 ### **The Poor Side of Town**

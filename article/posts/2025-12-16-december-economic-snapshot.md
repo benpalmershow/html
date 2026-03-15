@@ -1,5 +1,6 @@
 ---
 date: 2025-12-16T18:30:00Z
+category: economic
 ---
 
 ### **What do the Numbers Say?**

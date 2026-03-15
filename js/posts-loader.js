@@ -6,9 +6,10 @@
    ========================================= */
 
 const CONFIG = {
-    INITIAL_LOAD: 8,
+    INITIAL_LOAD: 9999,
     BATCH_SIZE: 10,
-    POSTS_JSON_URL: 'json/posts.json'
+    POSTS_JSON_URL: 'json/posts.json',
+    ARTICLES_JSON_URL: 'json/articles.json'
 };
 
 const getLiveChartColors = () => {
@@ -73,6 +74,23 @@ function startTimeUpdates() {
    3. MARKDOWN PARSER
    ========================================= */
 
+function parseFrontmatter(md) {
+    const metadata = {};
+    const match = md.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+    if (!match) return { metadata, contentMd: md.trim() };
+    const [, frontmatter, contentMd] = match;
+    frontmatter.split('\n').forEach(line => {
+        const colon = line.indexOf(':');
+        if (colon > -1) {
+            const key = line.slice(0, colon).trim();
+            let val = line.slice(colon + 1).trim();
+            if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
+            metadata[key] = val;
+        }
+    });
+    return { metadata, contentMd: contentMd.trim() };
+}
+
 async function parseMarkdownFile(fileUrl) {
     try {
         const response = await fetch(fileUrl);
@@ -81,31 +99,21 @@ async function parseMarkdownFile(fileUrl) {
         return parseMarkdownContent(md);
     } catch (err) {
         console.error('Failed to fetch', fileUrl, err);
-        return '';
+        return { content: '', metadata: {} };
     }
 }
 
 function parseMarkdownContent(md) {
-    // Extract content after frontmatter
-    const parts = md.split(/^---$/m);
-    let contentMd = md.trim();
-
-    if (parts.length >= 3) {
-        contentMd = parts.slice(2).join('---').trim();
-    } else if (parts.length === 2 && !md.trimStart().startsWith('---')) {
-        contentMd = md.trim();
-    }
-
-    // Use marked if available
+    const { metadata, contentMd } = parseFrontmatter(md);
+    let html = contentMd;
     if (window.marked && typeof window.marked.parse === 'function') {
         try {
-            return window.marked.parse(contentMd);
+            html = window.marked.parse(contentMd);
         } catch (e) {
             console.error('Markdown parse error:', e);
-            return contentMd;
         }
     }
-    return contentMd;
+    return { content: html, metadata };
 }
 
 async function processBadges(html) {
@@ -825,8 +833,29 @@ async function initPosts() {
     // state.feed.innerHTML = ''; // REMOVED: Prevent flicker by keeping skeletons until data is ready
 
     try {
-        const json = window.postsPromise ? await window.postsPromise : await (await fetch(CONFIG.POSTS_JSON_URL)).json();
-        state.allPosts = Array.isArray(json) ? sortPostsNewestFirst(json) : [];
+        // Load both posts.json and articles.json
+        const postsJson = window.postsPromise ? await window.postsPromise : await (await fetch(CONFIG.POSTS_JSON_URL)).json();
+        let posts = Array.isArray(postsJson) ? sortPostsNewestFirst(postsJson) : [];
+        
+        // Also load articles.json and merge
+        try {
+            const articlesJson = await (await fetch(CONFIG.ARTICLES_JSON_URL)).json();
+            if (Array.isArray(articlesJson)) {
+                // Convert articles to posts format - they use 'id' to reference 'article/{id}.md'
+                const articlesAsPosts = articlesJson.map(article => ({
+                    ...article,
+                    file: `article/${article.id}.md`,
+                    // Use summary as snippet if available
+                    snippet: article.summary || ''
+                }));
+                // Merge and sort by date
+                posts = sortPostsNewestFirst([...posts, ...articlesAsPosts]);
+            }
+        } catch (articlesErr) {
+            console.warn('Could not load articles.json:', articlesErr);
+        }
+        
+        state.allPosts = posts;
         const initial = state.allPosts.slice(0, CONFIG.INITIAL_LOAD);
         await loadAndRenderPosts(initial);
         startTimeUpdates();
@@ -834,6 +863,8 @@ async function initPosts() {
         console.error(err);
         state.feed.innerHTML = '<div class="error-state">Unable to load content.</div>';
     }
+
+    initIndexFilters();
 }
 
 function extractCardData(html) {
@@ -876,12 +907,21 @@ async function loadAndRenderPosts(posts) {
     // Fetch content
     const postsWithContent = await Promise.all(posts.map(async post => {
         if (!post.file) return null;
-        let content = await parseMarkdownFile(post.file);
+        const parsed = await parseMarkdownFile(post.file);
+        const raw = parsed && typeof parsed === 'object' && 'content' in parsed ? parsed.content : String(parsed);
+        let content = raw;
         if (content.includes('{{badge:')) content = await processBadges(content);
         if (content.includes('{{chart:')) content = processCharts(content);
         content = wrapImagesInLinks(content);
         content = wrapTablesForMobile(content);
-        return { ...post, rawContent: content };
+        const metadata = (parsed && typeof parsed === 'object' && parsed.metadata) ? parsed.metadata : {};
+        const category = (metadata.category || 'posts').toLowerCase().trim();
+        
+        // Update state.allPosts with category
+        const statePost = state.allPosts.find(p => p.file === post.file);
+        if (statePost) statePost.category = category;
+        
+        return { ...post, rawContent: content, category };
     }));
 
     const valid = postsWithContent.filter(p => p && p.rawContent);
@@ -896,7 +936,7 @@ async function loadAndRenderPosts(posts) {
         const highlightClass = isOrhanPost ? 'highlighted' : '';
 
         return `
-            <details class="announcement-card ${data.image ? 'has-image' : ''} ${highlightClass}" data-date="${p.date}">
+            <details class="announcement-card ${data.image ? 'has-image' : ''} ${highlightClass}" data-date="${p.date}" data-category="${p.category || 'posts'}">
                 <summary>
                     <div class="card-header-row">
                         <div class="card-meta">
@@ -936,24 +976,23 @@ async function loadAndRenderPosts(posts) {
 
     state.loadedCount += valid.length;
 
-    // Load More Button
-    if (state.loadedCount < state.allPosts.length) {
-        let btn = document.getElementById('load-more-btn');
-        if (!btn) {
-            btn = document.createElement('button');
-            btn.id = 'load-more-btn';
-            btn.className = 'load-more-btn';
-            btn.onclick = loadMorePosts;
-            document.querySelector('.announcements')?.appendChild(btn);
-        }
-        btn.innerHTML = `<i data-lucide="zap"></i> Dopamine`;
-        btn.style.display = 'flex';
-    }
-
     renderFinancialCharts();
     if (window.initializeLucideIcons) window.initializeLucideIcons();
     else if (window.lucide?.createIcons) window.lucide.createIcons();
     
+    // Re-apply index filter after load more so new cards respect current filter
+    const filterContainer = document.getElementById('index-filters');
+    if (filterContainer) {
+        const activeBtn = filterContainer.querySelector('.filter-btn.active');
+        const category = activeBtn ? activeBtn.dataset.category : 'all';
+        if (category !== 'all') {
+            state.feed.querySelectorAll('.announcement-card').forEach(card => {
+                const cardCategory = card.dataset.category || 'posts';
+                card.style.display = cardCategory === category ? '' : 'none';
+            });
+        }
+    }
+
     // Restore expanded card state if available
     const expandedIndex = getExpandedCardState();
     if (expandedIndex !== null) {
@@ -969,33 +1008,22 @@ async function loadAndRenderPosts(posts) {
     }
 }
 
-async function loadMorePosts() {
-    const btn = document.getElementById('load-more-btn');
-    if (!btn) return;
-    
-    // Clear expanded state since we're loading more posts
-    saveExpandedCardState(null);
-    
-    // Disable button and show loading state
-    btn.disabled = true;
-    btn.innerHTML = `<i data-lucide="loader-2" class="animate-spin"></i> Loading...`;
-    
-    // Re-render icons for loading state
-    if (window.initializeLucideIcons) window.initializeLucideIcons();
-    else if (window.lucide?.createIcons) window.lucide.createIcons();
-
-    const next = state.allPosts.slice(state.loadedCount, state.loadedCount + CONFIG.BATCH_SIZE);
-    await loadAndRenderPosts(next);
-
-    btn.disabled = false;
-    if (state.loadedCount >= state.allPosts.length) {
-        btn.style.display = 'none';
-    } else {
-        btn.innerHTML = `<i data-lucide="zap"></i> Dopamine`;
-        // Re-render icons after content load
-        if (window.initializeLucideIcons) window.initializeLucideIcons();
-        else if (window.lucide?.createIcons) window.lucide.createIcons();
-    }
+function initIndexFilters() {
+    const filterContainer = document.getElementById('index-filters');
+    if (!filterContainer || filterContainer._filterHandler) return;
+    filterContainer._filterHandler = true;
+    filterContainer.addEventListener('click', function (e) {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        e.preventDefault();
+        filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+        document.querySelectorAll('.announcement-card').forEach(card => {
+            const cardCategory = card.dataset.category || 'posts';
+            card.style.display = (category === 'all' || cardCategory === category) ? '' : 'none';
+        });
+    });
 }
 
 // Init

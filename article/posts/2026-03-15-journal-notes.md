@@ -1,5 +1,6 @@
 ---
 date: 2026-03-15T18:00:00Z
+category: journal
 ---
 
 ### <i data-lucide='book-open' class='post-icon'></i> **March 15 Journal Notes**

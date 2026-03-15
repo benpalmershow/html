@@ -1,1 +1,5 @@
+---
+category: business
+---
+
 <i data-lucide='trending-up' class='post-icon'></i>  **Indicators: Housing -8.5%**<br><br>▪ <b>TEUs (Port of LA/LB)</b>: 958,355.15 in Aug (-6.03% MoM)<br>▪ <b>Housing Starts</b>: 1.307M in Aug (-8.54% MoM)<br>▪ <b>Manufacturing PMI</b>: 48.7 in Aug (+1.46% MoM), still in contraction but improving<br>▪ <b>30-yr Mortgage Rate</b>: 6.28% in Sep (-4.70% MoM)<br><br><a href="financials.html"><b>View all indicators</b></a>

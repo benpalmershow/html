@@ -1,3 +1,7 @@
+---
+category: journal
+---
+
 
 If social media replaced infinite scroll with a 'load more' button, engagement would plummet. Young people would redirect that 4 hours/day toward developing actual social skills, critical thinking, and productive skills. But the adults in power lack imagination. They are too busy scrolling, themselves. 
 

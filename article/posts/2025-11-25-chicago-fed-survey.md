@@ -1,5 +1,6 @@
 ---
 date: 2025-11-25T16:56:00
+category: economic
 ---
 
 ### **Chicago Fed Survey**

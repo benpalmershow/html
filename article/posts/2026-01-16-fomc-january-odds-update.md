@@ -1,5 +1,6 @@
 ---
 date: 2026-01-16T16:00:00
+category: prediction
 ---
 
 ### <i data-lucide='users' class='post-icon'></i> **Shirley, FOMC, Jobless, Mortgage**

@@ -1,5 +1,6 @@
 ---
 date: 2025-11-30T19:00:00
+category: housing
 ---
 
 ###  **California's Fiscal Cliff**

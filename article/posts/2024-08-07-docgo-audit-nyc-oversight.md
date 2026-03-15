@@ -1,5 +1,6 @@
 ---
 date: 2024-08-07T12:00:00
+category: healthcare
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **NYC Audit Exposes $11M DocGo Asylum Housing Failure**

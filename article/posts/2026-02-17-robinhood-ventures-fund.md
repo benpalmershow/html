@@ -1,3 +1,7 @@
+---
+category: business
+---
+
 # Robinhood Ventures IPOs for $25 on 2/26
 
 <i data-lucide="unlock"></i>

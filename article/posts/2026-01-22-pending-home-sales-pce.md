@@ -1,5 +1,6 @@
 ---
 date: 2026-01-22T14:00:00Z
+category: housing
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Pending Home Sales Slide While Consumers Keep Spending**

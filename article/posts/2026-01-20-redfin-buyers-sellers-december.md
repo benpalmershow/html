@@ -1,5 +1,6 @@
 ---
 date: 2026-01-20T10:00:00
+category: housing
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Buyers: 47% More Than Sellers**

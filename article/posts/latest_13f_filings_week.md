@@ -1,3 +1,7 @@
+---
+category: economic
+---
+
 # Latest 13F Filings This Week
 
 ## EQUITEC PROPRIETARY MARKETS, LLC

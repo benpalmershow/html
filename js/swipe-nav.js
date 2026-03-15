@@ -3,7 +3,6 @@
   // Page order for swipe navigation
   const PAGES = [
     { name: 'Home', file: 'index.html' },
-    { name: 'News', file: 'news.html' },
     { name: 'Numbers', file: 'financials.html' },
     { name: 'Media', file: 'media.html' },
     { name: 'Tweets', file: 'journal.html' }

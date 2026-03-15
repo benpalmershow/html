@@ -1,5 +1,6 @@
 ---
 date: 2026-01-03T12:00:00Z
+category: political
 ---
 
 ### <i data-lucide='file-down' class='post-icon'></i> MAGA INC.

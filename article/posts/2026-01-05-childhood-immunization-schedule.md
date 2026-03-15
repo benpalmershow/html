@@ -1,5 +1,6 @@
 ---
 date: 2026-01-05T15:00:00
+category: healthcare
 ---
 
 ### <i data-lucide='syringe' class='post-icon'></i> **Childhood Immunization Schedule Revised**

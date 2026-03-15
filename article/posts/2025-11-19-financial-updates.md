@@ -1,6 +1,8 @@
 ---
 date: 2025-11-19T14:00:00
+category: economic
 ---
+
 ### **Manufacturing Orders**
 
 August hit $612B after summer's painful decline from $642.5B in May. Manufacturing has been bleeding orders, but August's recovery suggests stabilization rather than freefall. When manufacturers stop ordering, layoffs follow.

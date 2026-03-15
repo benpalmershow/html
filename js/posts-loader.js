@@ -856,14 +856,8 @@ async function initPosts() {
         }
         
         state.allPosts = posts;
-        const initial = state.allPosts.slice(0, CONFIG.INITIAL_LOAD);
-        await loadAndRenderPosts(initial);
+        await loadAndRenderPosts(state.allPosts);
         startTimeUpdates();
-        
-        // Show load more button if there are more posts to load
-        if (state.allPosts.length > CONFIG.INITIAL_LOAD) {
-            showLoadMoreButton();
-        }
     } catch (err) {
         console.error(err);
         state.feed.innerHTML = '<div class="error-state">Unable to load content.</div>';

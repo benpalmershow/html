@@ -108,9 +108,13 @@ function initializeChartInOverlay(chartConfig, canvas) {
     const isMixedChart = chartConfig.type === 'chartjs-mixed';
     const chartType = isMixedChart ? 'bar' : 'line';
 
-    // Build scales based on chart type
+    // Build scales based on chart type (tick labels hidden on x and y)
     const scales = {
-        x: { display: true, grid: { display: false, drawBorder: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 4, padding: 2, font: { size: 9 } } }
+        x: {
+            display: true,
+            grid: { display: false, drawBorder: false },
+            ticks: { display: false }
+        }
     };
 
     if (isMixedChart) {
@@ -121,17 +125,17 @@ function initializeChartInOverlay(chartConfig, canvas) {
             min: 280,
             max: 420,
             grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-            ticks: { padding: 2, font: { size: 9 }, callback: formatYAxisTick },
+            ticks: { display: false },
             position: 'left',
-            title: { display: true, text: 'Imports / Exports (Billions)', font: { size: 10, weight: 'bold' } }
+            title: { display: false }
         };
         scales.y1 = {
             display: true,
             beginAtZero: false,
             grid: { display: false },
-            ticks: { padding: 2, font: { size: 9 }, callback: formatYAxisTick },
+            ticks: { display: false },
             position: 'right',
-            title: { display: true, text: 'Trade Deficit (Billions)', font: { size: 10, weight: 'bold' } }
+            title: { display: false }
         };
     } else {
         // Single Y-axis for standard line chart
@@ -139,7 +143,7 @@ function initializeChartInOverlay(chartConfig, canvas) {
             display: true,
             beginAtZero: false,
             grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-            ticks: { padding: 2, font: { size: 9 }, callback: formatYAxisTick },
+            ticks: { display: false },
             position: 'right'
         };
     }
@@ -150,26 +154,45 @@ function initializeChartInOverlay(chartConfig, canvas) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            layout: { padding: { top: 15, right: 0, bottom: 25, left: 10 } },
+            layout: {
+                padding: 0,
+                autoPadding: false
+            },
             animation: { duration: 600, easing: 'easeInOutQuart' },
             plugins: {
-                legend: { display: true, position: 'top', labels: { font: { size: 10 }, padding: 10, boxWidth: 12 } },
+                legend: {
+                    display: true,
+                    position: isMixedChart ? 'bottom' : 'top',
+                    align: 'center',
+                    labels: {
+                        font: { size: isMixedChart ? 9 : 10 },
+                        padding: isMixedChart ? 6 : 12,
+                        boxWidth: isMixedChart ? 10 : 14,
+                        useBorderRadius: true,
+                        borderRadius: 4
+                    }
+                },
                 title: { display: false },
                 tooltip: {
-                    mode: 'index', intersect: false,
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)', titleColor: '#fff', bodyColor: '#fff',
-                    borderColor: '#2C5F5A', borderWidth: 1, padding: 8,
-                    titleFont: { size: 11 }, bodyFont: { size: 11 }, boxPadding: 4,
+                    mode: 'index',
+                    intersect: false,
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#2C5F5A',
+                    borderWidth: 1,
+                    padding: 10,
+                    titleFont: { size: 11 },
+                    bodyFont: { size: 11 },
+                    boxPadding: 5,
                     callbacks: {
                         title: function (context) {
-                            if (context.length > 0) {
-                                return context[0].label;
-                            }
+                            if (context.length > 0) return context[0].label;
                             return '';
                         },
                         label: function (context) {
                             if (context.parsed.y !== null) {
-                                return context.dataset.label + ': ' + new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(context.parsed.y) + 'B';
+                                return new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
                             }
                             return '';
                         }
@@ -274,7 +297,7 @@ function getChartConfig(indicatorName, indices) {
                      yAxisID: 'y'
                  },
                  {
-                     label: 'Trade Deficit',
+                     label: 'Deficit',
                      data: deficitValues,
                      type: 'line',
                      borderColor: '#2C5F5A',

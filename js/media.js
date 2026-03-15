@@ -683,86 +683,7 @@
         }
     }
 
-    const date = new Date(dateString);
-    return !isNaN(date.getTime()) ? date : null;
-}
-
-function updateURLParams() {
-    if (!filterType) return;
-    const params = new URLSearchParams(window.location.search);
-    const type = filterType.value;
-    const sort = sortBy?.value || 'date-desc';
-
-    if (type !== 'all') params.set('type', type);
-    else params.delete('type');
-
-    if (sort !== 'date-desc') params.set('sort', sort);
-    else params.delete('sort');
-
-    // Remove old 'filter' and 'q' params if they exist
-    params.delete('filter');
-    params.delete('q');
-
-    const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-    window.history.replaceState({ path: newURL }, '', newURL);
-}
-
-function filterAndSortMedia(shouldUpdateURL = true) {
-    if (shouldUpdateURL) updateURLParams();
-
-    const typeFilter = filterType.value;
-    const sortValue = sortBy?.value || 'date-desc';
-
-    let filtered = typeFilter === 'all'
-        ? [...mediaItems]
-        : mediaItems.filter(item => item.mediaType === typeFilter);
-
-    filtered.sort((a, b) => {
-        switch (sortValue) {
-            case 'date-asc':
-                return (parseDateString(a.dateAdded || a.date) || new Date(0)).getTime() -
-                    (parseDateString(b.dateAdded || b.date) || new Date(0)).getTime();
-            case 'date-desc':
-                return (parseDateString(b.dateAdded || b.date) || new Date(0)).getTime() -
-                    (parseDateString(a.dateAdded || a.date) || new Date(0)).getTime();
-            case 'newest-added':
-                return (parseDateString(b.dateAdded) || new Date(0)).getTime() -
-                    (parseDateString(a.dateAdded) || new Date(0)).getTime();
-            case 'title-asc':
-                return (a.title || '').localeCompare(b.title || '');
-            case 'title-desc':
-                return (b.title || '').localeCompare(a.title || '');
-            default:
-                return 0;
-        }
-    });
-
-    renderMediaCards(filtered);
-    updateResultsCount(filtered.length, mediaItems.length);
-}
-
-function updateResultsCount(filteredCount, totalCount) {
-    const existingCount = document.querySelector('.results-count');
-    existingCount?.remove();
-
-    const activeFilter = filterType?.value;
-    const hasFilter = activeFilter && activeFilter !== 'all';
-
-    // Show count if filtered or different from total
-    if (filteredCount !== totalCount || hasFilter) {
-        const countDisplay = document.createElement('div');
-        countDisplay.className = 'results-count';
-
-        let countText = `Showing ${filteredCount} of ${totalCount} item${totalCount !== 1 ? 's' : ''}`;
-
-        if (hasFilter) {
-            countText += ` in ${capitalizeWord(activeFilter)}s`;
-        }
-
-        countDisplay.textContent = countText;
-        document.querySelector('.media-filters')?.insertAdjacentElement('afterend', countDisplay);
-    }
-}
+    
 
 // Use passive event listeners for better scroll performance
 if (filterType) filterType.addEventListener('change', filterAndSortMedia, { passive: true });
@@ -777,3 +698,4 @@ if (document.readyState === 'loading') {
 } else {
     fetchMediaData();
 }
+})();

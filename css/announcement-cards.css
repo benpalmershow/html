@@ -312,6 +312,25 @@ html.dark-mode .announcement-card.highlighted {
     transform: translateY(0);
 }
 
+.load-more-btn .remaining-count {
+    opacity: 0.7;
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+.load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.load-more-btn:disabled:hover {
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    color: var(--accent-primary);
+    transform: none;
+    box-shadow: none;
+}
+
 /* Skeleton Pulse */
 .loading-skeleton {
     height: 100px;

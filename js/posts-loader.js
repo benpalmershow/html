@@ -6,7 +6,7 @@
    ========================================= */
 
 const CONFIG = {
-    INITIAL_LOAD: 9999,
+    INITIAL_LOAD: 10,
     BATCH_SIZE: 10,
     POSTS_JSON_URL: 'json/posts.json',
     ARTICLES_JSON_URL: 'json/articles.json'
@@ -859,6 +859,11 @@ async function initPosts() {
         const initial = state.allPosts.slice(0, CONFIG.INITIAL_LOAD);
         await loadAndRenderPosts(initial);
         startTimeUpdates();
+        
+        // Show load more button if there are more posts to load
+        if (state.allPosts.length > CONFIG.INITIAL_LOAD) {
+            showLoadMoreButton();
+        }
     } catch (err) {
         console.error(err);
         state.feed.innerHTML = '<div class="error-state">Unable to load content.</div>';
@@ -1005,6 +1010,66 @@ async function loadAndRenderPosts(posts) {
                 cardToExpand.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 100);
         }
+    }
+}
+
+function showLoadMoreButton() {
+    const remaining = state.allPosts.length - state.loadedCount;
+    if (remaining <= 0) return;
+    
+    const existingBtn = document.getElementById('load-more-btn');
+    if (existingBtn) existingBtn.remove();
+    
+    const btn = document.createElement('button');
+    btn.id = 'load-more-btn';
+    btn.className = 'load-more-btn';
+    btn.innerHTML = `
+        <span>Dopamine</span>
+        <i data-lucide="chevron-down"></i>
+        <span class="remaining-count">(${remaining} remaining)</span>
+    `;
+    btn.onclick = loadMorePosts;
+    
+    state.feed.insertAdjacentElement('afterend', btn);
+    
+    // Initialize Lucide icons for the new button
+    if (window.initializeLucideIcons) window.initializeLucideIcons();
+    else if (window.lucide?.createIcons) window.lucide.createIcons();
+}
+
+function hideLoadMoreButton() {
+    const btn = document.getElementById('load-more-btn');
+    if (btn) btn.remove();
+}
+
+async function loadMorePosts() {
+    const remaining = state.allPosts.length - state.loadedCount;
+    if (remaining <= 0) {
+        hideLoadMoreButton();
+        return;
+    }
+    
+    const btn = document.getElementById('load-more-btn');
+    if (btn) {
+        btn.innerHTML = `
+            <span>Loading...</span>
+            <i data-lucide="loader"></i>
+        `;
+        btn.disabled = true;
+        
+        // Re-initialize Lucide icons for the loading state
+        if (window.initializeLucideIcons) window.initializeLucideIcons();
+        else if (window.lucide?.createIcons) window.lucide.createIcons();
+    }
+    
+    const nextBatch = state.allPosts.slice(state.loadedCount, state.loadedCount + CONFIG.BATCH_SIZE);
+    await loadAndRenderPosts(nextBatch);
+    
+    const stillRemaining = state.allPosts.length - state.loadedCount;
+    if (stillRemaining > 0) {
+        showLoadMoreButton();
+    } else {
+        hideLoadMoreButton();
     }
 }
 

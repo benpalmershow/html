@@ -379,35 +379,8 @@ class PortfolioManager {
     }
 
     /**
-     * Set up "Back to Top" button
+     * Set up "Back to Top" button - handled by back-to-top.js
      */
-    setupBackToTop() {
-        let backToTopBtn = document.querySelector('.back-to-top-btn');
-        if (!backToTopBtn) {
-            backToTopBtn = document.createElement('button');
-            backToTopBtn.className = 'back-to-top-btn';
-            backToTopBtn.setAttribute('aria-label', 'Back to top');
-            backToTopBtn.setAttribute('title', 'Back to top');
-            backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i><span class="button-hint">Top</span>';
-            document.body.appendChild(backToTopBtn);
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-
-        const handleScroll = () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        };
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
-    }
 }
 
 // Initialize when DOM is loaded

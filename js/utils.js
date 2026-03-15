@@ -54,10 +54,12 @@ function formatChangeIndicator(percentChange) {
 function extractNumericValue(value) {
     if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
 
-    // First, determine the scale (M = millions, B = billions)
-    let scale = 1;
-    if (value.includes('M')) scale = 1000000;
-    else if (value.includes('B')) scale = 1000000000;
+    // Check if value already includes M or B suffix (e.g., "$20,683B" means 20,683 in billions)
+    // The suffix is just a label, not a multiplier to apply
+    let hasSuffix = false;
+    if (value.includes('M') || value.includes('B')) {
+        hasSuffix = true;
+    }
 
     let cleanValue = value.toString()
         .replace(/\$/g, '')
@@ -71,7 +73,9 @@ function extractNumericValue(value) {
     const num = parseFloat(cleanValue);
     if (isNaN(num)) return null;
     
-    return num * scale;
+    // If value had M or B suffix, it's already in millions/billions - just return as-is
+    // The suffix was just for display purposes
+    return num;
 }
 
 function formatCompactNumber(num) {

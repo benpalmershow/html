@@ -60,32 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
          <a href="one-pager.html" target="_blank" rel="noopener noreferrer" class="cta-icon-btn" aria-label="Print Weekly" title="Print Weekly">
            <i data-lucide="printer" style="width: 1.2rem; height: 1.2rem;"></i>
          </a>
-         <button class="cta-icon-btn" id="cta-toggle" aria-label="Show call to action" title="Skip the Sauces">
-           <i data-lucide="newspaper" style="width: 1.2rem; height: 1.2rem;"></i>
-         </button>
          <button class="hints-icon-btn${hasHelpNewItem ? ' has-new' : ''}" id="hints-toggle" aria-label="${hasHelpNewItem ? 'Show welcome hints (1 new)' : 'Show welcome hints'}" title="Welcome guide">
            <i data-lucide="help-circle" style="width: 1.2rem; height: 1.2rem;"></i>
            ${hasHelpNewItem ? '<span class="hints-notification-badge" aria-hidden="true">1</span>' : ''}
          </button>
        </div>
-    </div>
-    <!-- Call to Action Section (modal) -->
-    <div class="cta-modal" id="cta-modal" inert>
-      <div class="cta-modal-overlay"></div>
-      <section class="cta-container" aria-label="Call to action">
-        <button class="cta-close-btn" aria-label="Close this message" title="Close">&times;</button>
-         <div class="cta-button">
-            <div class="cta-icon-wrapper">
-              <i data-lucide="newspaper" style="width: 2rem; height: 2rem;"></i>
-            </div>
-            <div class="cta-text-wrapper">
-              <span>Skip the Sauces, Get the Facts</span>
-              <p class="cta-subtext">You could go to NPR and learn about sauces, captions, tea, and uncertainty, or you could come here and read about things that actually affect your life.</p>
-            </div>
-          </div>
-
-          </div>
-      </section>
     </div>
     <!-- First-time visitor hints -->
     <div class="visitor-hints" id="visitor-hints" inert>
@@ -296,30 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.isOpen ? this.close() : this.open();
     }
   }
-
-  // CTA Modal toggle - enhanced with PopoverManager
-  const setupCtaModal = () => {
-    const ctaToggle = document.getElementById('cta-toggle');
-    const ctaModal = document.getElementById('cta-modal');
-    if (!ctaToggle || !ctaModal) return;
-
-    const ctaPopover = new PopoverManager(ctaToggle, ctaModal, {
-      closeOnClickOutside: true,
-      closeOnEscape: true,
-      returnFocusOnClose: true
-    });
-
-    const closeCtaModal = () => {
-      ctaPopover.close();
-      localStorage.setItem('ctaDismissed', 'true');
-    };
-
-    const ctaCloseBtn = ctaModal.querySelector('.cta-close-btn');
-    const ctaOverlay = ctaModal.querySelector('.cta-modal-overlay');
-    [ctaCloseBtn, ctaOverlay].forEach(el => el?.addEventListener('click', closeCtaModal));
-  };
-
-  setupCtaModal();
 
   // Hints toggle - enhanced with PopoverManager
   const setupHintsModal = () => {

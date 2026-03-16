@@ -359,7 +359,27 @@
       }
 
       .home-link-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+
+      .home-link-card {
+        padding: 0.5rem 0.4rem;
+      }
+
+      .home-link-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.3rem;
+      }
+
+      .home-link-title {
+        font-size: 0.75rem;
+      }
+
+      .home-link-desc {
+        font-size: 0.65rem;
+        line-height: 1.3;
       }
 
       .page-title {

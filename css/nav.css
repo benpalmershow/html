@@ -125,7 +125,8 @@
 
 /* Icon Buttons */
 .hints-icon-btn,
-.dark-mode-toggle {
+.dark-mode-toggle,
+.cta-icon-btn {
     width: clamp(32px, 6vw, 40px);
     height: clamp(32px, 6vw, 40px);
     flex-shrink: 0;
@@ -139,6 +140,7 @@
     cursor: pointer;
     color: var(--text-secondary, #343a40);
     touch-action: manipulation;
+    text-decoration: none;
 }
 
 .hints-icon-btn {

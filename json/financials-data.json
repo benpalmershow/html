@@ -259,6 +259,18 @@
             "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 95¢ (95%) chance of no recession vs 5¢ (5%) chance of recession."
         },
         {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "More tech layoffs in 2026 than in 2025?",
+            "lastUpdated": "2026-03-14T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://kalshi.com/markets/kxlayoffsyinfo/tech-layoffs/kxlayoffsyinfo-26",
+            "yes_probability": "83.7¢",
+            "no_probability": "16.3¢",
+            "change": "",
+            "explanation": "Kalshi prediction market on whether major tech companies will announce more layoffs in 2026 compared to 2025. The market tracks expectations around workforce reductions at large technology companies, reflecting economic conditions, company performance, and sector-specific trends."
+        },
+        {
             "category": "Commodities",
             "agency": "EIA",
             "name": "WTI Crude Oil",

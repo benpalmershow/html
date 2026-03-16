@@ -458,9 +458,9 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
     
     // Parse imports and exports from the indicator data
     const imports = indicator.imports;
-    const exports = indicator.exports;
+    const exportsData = indicator.exports;
     
-    if (!imports || !exports) {
+    if (!imports || !exportsData) {
         // Fallback to line chart if no imports/exports data
         return getLineChartConfig(indicator, labels, dataPoints);
     }
@@ -473,9 +473,6 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
     const exportValues = [];
     const deficitValues = [];
     const chartLabels = [];
-    
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 400;
-    const pointRadius = isMobile ? 6 : 4;
     
     // Helper function to extract numeric value (same as utils.js)
     function extractNumericValue(value) {
@@ -509,7 +506,7 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
     // Extract from flat structure (months)
     MONTHS.forEach((month, index) => {
         const importValue = imports[month];
-        const exportValue = exports[month];
+        const exportValue = exportsData[month];
         const deficitValue = indicator[month];
         
         if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
@@ -534,7 +531,7 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
         const yearData = indicator[year];
         if (!yearData || typeof yearData !== 'object') continue;
         const importsYear = imports[year];
-        const exportsYear = exports[year];
+        const exportsYear = exportsData[year];
         if (!importsYear || !exportsYear) continue;
         
         MONTHS.forEach((month, index) => {
@@ -587,7 +584,7 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
                     yAxisID: 'y'
                 },
                 {
-                    label: 'Trade Deficit',
+                    label: 'Deficit',
                     data: deficitValues,
                     type: 'line',
                     borderColor: '#2C5F5A',
@@ -599,7 +596,7 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
                     pointBackgroundColor: '#2C5F5A',
                     pointBorderColor: '#fff',
                     pointBorderWidth: 1.5,
-                    pointRadius: pointRadius
+                    pointRadius: 4
                 }
             ]
         },
@@ -612,18 +609,21 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
                     type: 'linear',
                     display: true,
                     position: 'left',
+                    beginAtZero: false,
                     min: 280,
                     max: 420,
-                    title: { display: true, text: 'Imports/Exports (Billions)', font: { size: 9, weight: 'bold' } },
-                    ticks: { font: { size: 9 } }
+                    grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
+                    ticks: { display: false },
+                    title: { display: false }
                 },
                 y1: {
                     type: 'linear',
                     display: true,
                     position: 'right',
-                    title: { display: true, text: 'Trade Deficit (Billions)', font: { size: 9, weight: 'bold' } },
-                    grid: { drawOnChartArea: false },
-                    ticks: { font: { size: 9 } }
+                    beginAtZero: false,
+                    grid: { display: false },
+                    ticks: { display: false },
+                    title: { display: false }
                 }
             }
         }

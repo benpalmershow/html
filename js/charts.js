@@ -74,6 +74,18 @@ function loadChartInOverlay(indicator, indicatorName, overlay) {
             const loading = body.querySelector('.chart-overlay-loading');
             if (loading) loading.remove();
 
+            // Remove any existing canvas before creating a new one
+            const existingCanvas = body.querySelector('canvas');
+            if (existingCanvas) {
+                // Destroy the existing chart instance if it exists
+                const existingChartId = existingCanvas.id + 'Chart';
+                if (window[existingChartId]) {
+                    window[existingChartId].destroy();
+                    window[existingChartId] = null;
+                }
+                existingCanvas.remove();
+            }
+
             const canvas = document.createElement('canvas');
             canvas.className = 'chart-overlay-canvas';
             canvas.id = `overlay-${indicatorName.replace(/\s+/g, '-').toLowerCase()}-chart`;

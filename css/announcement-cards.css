@@ -10,6 +10,19 @@
     flex-direction: column;
 }
 
+/* Chart container styling */
+.chart-container {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    height: 200px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 /* Announcement Cards - Premium Editorial Refresh */
 .announcements {
     padding: var(--spacing-xl) 0;

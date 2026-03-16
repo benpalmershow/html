@@ -323,31 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupHintsModal();
 
-  // Handle coffee icon click - wait for footer to load
-  const setupCoffeeLink = () => {
-    const coffeeLink = navContainer.querySelector('.cta-icon-wrapper[href="#bmc-link"]');
-    if (!coffeeLink) return;
-
-    coffeeLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      const bmcLink = document.getElementById('bmc-link');
-      if (bmcLink) {
-        bmcLink.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        // Wait for footer to load
-        const checkFooter = setInterval(() => {
-          const bmcLink = document.getElementById('bmc-link');
-          if (bmcLink) {
-            clearInterval(checkFooter);
-            bmcLink.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-        setTimeout(() => clearInterval(checkFooter), 5000);
-      }
-    });
-  };
-
-  setupCoffeeLink();
 
   // Navbar hide/show on scroll
   const setupNavbarScroll = () => {

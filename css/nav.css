@@ -124,7 +124,6 @@
 }
 
 /* Icon Buttons */
-.cta-icon-btn,
 .hints-icon-btn,
 .dark-mode-toggle {
     width: clamp(32px, 6vw, 40px);
@@ -198,7 +197,6 @@
     }
 }
 
-.cta-icon-btn i[data-lucide],
 .hints-icon-btn i[data-lucide],
 .dark-mode-toggle i[data-lucide] {
     width: clamp(1rem, 3vw, 1.2rem);
@@ -206,121 +204,6 @@
     color: var(--color-secondary, #d4822a);
     stroke: var(--color-secondary, #d4822a);
     stroke-width: 2;
-}
-
-/* CTA Modal */
-.cta-modal {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: none;
-    z-index: var(--nav-overlay-z-index);
-    pointer-events: none;
-}
-
-.cta-modal.popover-open {
-    pointer-events: auto;
-}
-
-.cta-modal.popover-open .cta-container {
-    animation: popover-fade-in var(--popover-transition-duration) var(--popover-easing) forwards;
-}
-
-.cta-modal:not(.popover-open) .cta-container {
-    animation: popover-fade-out var(--popover-transition-duration) var(--popover-easing) forwards;
-}
-
-.cta-modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    cursor: pointer;
-}
-
-.cta-modal .cta-container {
-    position: relative;
-    background: var(--bg-primary, #fdf6e8);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    max-width: 450px;
-    width: calc(100% - 2rem);
-    margin-left: auto;
-    margin-right: 1rem;
-    box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.2);
-    transition: transform 0.2s ease;
-    contain: layout style;
-    z-index: calc(var(--nav-overlay-z-index) + 1);
-}
-
-.cta-container:hover {
-    transform: translateY(-2px);
-}
-
-.cta-button {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md, 1.25rem);
-    text-align: left;
-    color: var(--text-primary);
-}
-
-.cta-button i[data-lucide] {
-    width: 2rem;
-    height: 2rem;
-    stroke-width: 2.5;
-    color: var(--color-secondary, #d4822a);
-    flex-shrink: 0;
-}
-
-.cta-text-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs, 0.5rem);
-}
-
-.cta-text-wrapper span:first-child {
-    font-family: 'Georgia', serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.cta-subtext {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #343a40);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.4;
-}
-
-.cta-close-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    line-height: 1;
-    color: var(--text-secondary, #343a40);
-    cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.cta-close-btn:hover {
-    background-color: var(--border-color, #e0dcc4);
-    color: var(--text-primary);
 }
 
 /* Visitor Hints */
@@ -508,7 +391,6 @@
 }
 
 /* Popover Accessibility */
-.cta-modal[role="dialog"]:focus-within .cta-container,
 .visitor-hints[role="dialog"]:focus-within .hint-content {
     box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.2),
         0 0 0 3px var(--color-primary, #2c5f5a);
@@ -520,7 +402,6 @@ button:focus-visible {
 }
 
 /* Enhanced button focus for icon buttons */
-.cta-icon-btn:focus-visible,
 .hints-icon-btn:focus-visible {
     outline: 2px solid var(--color-primary, #2c5f5a);
     outline-offset: 2px;

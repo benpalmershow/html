@@ -300,7 +300,7 @@ function getChartConfig(indicator, labels, dataPoints) {
     if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) {
         return getTradeDeficitConfig(indicator, labels, dataPoints);
     }
-    if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities) {
+    if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) {
         return getPredictionMarketConfig(indicator, labels, dataPoints);
     }
     return getLineChartConfig(indicator, labels, dataPoints);
@@ -746,6 +746,21 @@ async function renderSingleChart(container) {
             if (indicator.bps_probabilities) {
                 labels = Object.keys(indicator.bps_probabilities);
                 dataPoints = Object.values(indicator.bps_probabilities).map(v => parseFloat(v));
+            } else if (indicator.candidates && typeof indicator.candidates === 'object') {
+                // Multi-candidate prediction market (e.g. Venezuela Head of State)
+                for (const [name, prob] of Object.entries(indicator.candidates)) {
+                    const val = parseFloat(String(prob).replace(/[^0-9.-]/g, ''));
+                    if (!isNaN(val)) {
+                        labels.push(name);
+                        dataPoints.push(val);
+                    }
+                }
+            } else if (indicator.yes_probability && indicator.no_probability) {
+                // Yes/No prediction market
+                const yesVal = parseFloat(String(indicator.yes_probability).replace(/[^0-9.-]/g, ''));
+                const noVal = parseFloat(String(indicator.no_probability).replace(/[^0-9.-]/g, ''));
+                if (!isNaN(yesVal)) { labels.push('Yes'); dataPoints.push(yesVal); }
+                if (!isNaN(noVal)) { labels.push('No'); dataPoints.push(noVal); }
             } else {
                 const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
                 months.forEach(m => {

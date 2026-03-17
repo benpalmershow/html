@@ -162,22 +162,7 @@
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
         },
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "FOMC Rate Decision - January 2026",
-            "lastUpdated": "2026-01-16T16:00:00Z",
-            "meeting_date": "Jan 27-28",
-            "announcement_time": "2:00 PM ET",
-            "announcement_time_iso": "2026-01-28T14:00:00-05:00",
-            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jan",
-            "polymarket_url": "https://polymarket.com/event/fed-decision-in-january",
-            "rate_hold_odds": "95¢",
-            "rate_cut_odds": "6¢",
-            "rate_hike_odds": "1¢",
-            "change": "",
-            "explanation": "Federal Reserve interest rate decision prediction market. Odds reflect market probability of the FOMC cutting, holding, or raising the federal funds rate at the January 27-28, 2026 meeting. Market expectations incorporate inflation data, employment reports, and Fed forward guidance."
-        },
+
         {
             "category": "Employment Indicators",
             "agency": "Chicago Fed",
@@ -197,38 +182,23 @@
         },
     
       
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "NE @ SEA",
-            "game_title": "Patriots @ Seahawks",
-            "game_time": "Feb 8, 2026 6:30 PM ET",
-            "game_time_iso": "2026-02-08T18:30:00-05:00",
-            "lastUpdated": "2026-02-08T18:00:00Z",
-            "url": "https://kalshi.com/markets/kxsb/super-bowl/kxsb-26",
-            "polymarket_url": "https://polymarket.com/event/super-bowl-champion-2026-731",
-            "NE_win_odds": "33¢",
-            "SEA_win_odds": "68¢",
-            "explanation": "Super Bowl LX prediction market showing the probability of the Patriots defeating the Seahawks. Odds reflect market expectations based on team performance, playoff momentum, and betting patterns. This is a rematch of Super Bowl XLIX from the 2014 season."
-        },
+
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "Venezuela Head of State 2026",
-            "lastUpdated": "2026-01-05T14:00:00Z",
+            "lastUpdated": "2026-03-16T14:00:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxvenezuelaleader/who-will-be-the-head-of-state-of-venezuela-on-date/kxvenezuelaleader-26dec31",
             "polymarket_url": "https://polymarket.com/event/venezuela-leader-end-of-2026?tid=1767649814502",
             "candidates": {
-                "Delcy Rodríguez": "42¢",
-                "Edmundo González": "22¢",
-                "María Corina Machado": "18¢",
-                "Vladimir Padrino López": "6¢",
-                "Nicolás Maduro": "5¢",
-                "No Head of State": "3¢",
+                "Delcy Rodríguez": "59¢",
+                "Nicolás Maduro": "16¢",
+                "María Corina Machado": "14¢",
+                "Edmundo González": "3¢",
                 "Diosdado Cabello Rondón": "1¢",
-                "Donald Trump": "1¢",
-                "Jorge Rodríguez": "1¢"
+                "Vladimir Padrino López": "1¢",
+                "Donald Trump": "1¢"
             },
             "change": "",
             "explanation": "Prediction market odds for who will be the head of state of Venezuela on December 31, 2026. The market includes various Venezuelan political figures as potential leaders. Market resolves to Yes if the specified individual officially holds the position of head of state at the close of markets. Data aggregated from Kalshi and Polymarket platforms."
@@ -242,21 +212,22 @@
             "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026/will-the-iranian-regime-fall-by-the-end-of-2026#cuqCMvFi",
             "yes_probability": "39%",
             "no_probability": "62%",
+            "kalshi_url": "https://kalshi.com/markets/kxiranregime",
             "change": "",
-            "explanation": "Prediction market on whether the Iranian regime will fall by the end of 2026. Market resolves to Yes if the current Iranian government is no longer in power by December 31, 2026. The market captures geopolitical risk and stability assessments for Iran."
+            "explanation": "Prediction market on whether the Iranian regime will fall by the end of 2026. Market resolves to Yes if the current Iranian government is no longer in power by December 31, 2026. The market captures geopolitical risk and stability assessments for Iran, heightened by the ongoing US-Iran military conflict."
         },
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
             "name": "US Recession in 2026",
-            "lastUpdated": "2026-01-05T14:00:00Z",
+            "lastUpdated": "2026-03-16T14:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-recession-by-end-of-2026?tid=1767667899869",
             "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
-            "yes_probability": "23¢",
-            "no_probability": "77¢",
+            "yes_probability": "31¢",
+            "no_probability": "69¢",
             "change": "",
-            "explanation": "Polymarket prediction on whether the U.S. will enter a recession in 2025, as defined by the National Bureau of Economic Research (NBER). Current odds show 95¢ (95%) chance of no recession vs 5¢ (5%) chance of recession."
+            "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds have risen significantly from 23% in January to 31%, reflecting economic uncertainty from geopolitical tensions and trade disruptions."
         },
         {
             "category": "Prediction Markets",
@@ -265,11 +236,78 @@
             "lastUpdated": "2026-03-14T14:00:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxlayoffsyinfo/tech-layoffs/kxlayoffsyinfo-26",
-            "yes_probability": "83.7¢",
-            "no_probability": "16.3¢",
+            "yes_probability": "87¢",
+            "no_probability": "13¢",
             "change": "",
             "explanation": "Kalshi prediction market on whether major tech companies will announce more layoffs in 2026 compared to 2025. The market tracks expectations around workforce reductions at large technology companies, reflecting economic conditions, company performance, and sector-specific trends."
         },
+        {
+            "category": "Prediction Markets",
+            "agency": "Polymarket",
+            "name": "US-Iran Ceasefire by...",
+            "lastUpdated": "2026-03-16T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://polymarket.com/event/us-x-iran-ceasefire-by",
+            "candidates": {
+                "March 31": "13¢",
+                "April 15": "28¢",
+                "April 30": "40¢",
+                "May 31": "51¢",
+                "June 30": "57¢",
+                "December 31": "73¢"
+            },
+            "change": "",
+            "explanation": "Prediction market on whether the U.S. and Iran will reach an official ceasefire agreement by the listed dates. Market resolves to Yes if a publicly announced and mutually agreed halt in direct military engagement is confirmed by both governments. Over $30M in trading volume reflects intense market interest in the conflict's trajectory."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Polymarket",
+            "name": "Crude Oil Price Targets (March 2026)",
+            "lastUpdated": "2026-03-16T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://polymarket.com/event/will-crude-oil-cl-hit-by-end-of-march",
+            "candidates": {
+                "↑ $105": "64¢",
+                "↑ $100": "79¢",
+                "↓ $80": "26¢",
+                "↓ $75": "17¢"
+            },
+            "change": "",
+            "explanation": "Prediction market on whether WTI crude oil futures will hit various price targets by end of March 2026. Markets reflect geopolitical tensions including the US-Iran conflict, Strait of Hormuz shipping disruptions, and global supply concerns. Over $35M in total trading volume."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "FOMC Rate Decision - March 2026",
+            "lastUpdated": "2026-03-16T14:00:00Z",
+            "meeting_date": "Mar 18-19",
+            "announcement_time": "2:00 PM ET",
+            "announcement_time_iso": "2026-03-19T14:00:00-04:00",
+            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26mar",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-march",
+            "rate_hold_odds": "99¢",
+            "rate_cut_odds": "1¢",
+            "rate_hike_odds": "1¢",
+            "change": "",
+            "explanation": "Federal Reserve interest rate decision prediction market for the March 18-19, 2026 FOMC meeting. Market overwhelmingly expects a rate hold with 99% probability. Over $446M in total volume on Polymarket reflects the centrality of monetary policy to current market conditions."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "2026 Midterms: Senate Control",
+            "lastUpdated": "2026-03-16T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://kalshi.com/markets/kxbalancepowercombo/congress-balance-of-power-combo/kxbalancepowercombo-27feb",
+            "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
+            "candidates": {
+                "Democratic Party": "51¢",
+                "Republican Party": "50¢"
+            },
+            "change": "",
+            "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. The race is essentially a tossup, reflecting competitive races in Alaska, Maine, North Carolina, Ohio, Texas, and Montana. Midterms are widely seen as a referendum on the first year of Trump's second term."
+        },
+
+
         {
             "category": "Commodities",
             "agency": "EIA",

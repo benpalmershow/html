@@ -4,7 +4,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('FOMC') || (indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds)) return 'fomc';
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
-    if (indicator.name.includes('Venezuela') && indicator.candidates) return 'venezuela';
+    if (indicator.candidates && typeof indicator.candidates === 'object') return 'venezuela';
     if (indicator.yes_probability && indicator.no_probability) return 'prediction';
     return 'standard';
 }

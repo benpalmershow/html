@@ -2,6 +2,39 @@
 
 let chartOverlayTimeout;
 
+// Crosshair plugin - draws a vertical line at the hovered x position
+const crosshairPlugin = {
+    id: 'crosshair',
+    afterDraw(chart) {
+        const tooltip = chart.tooltip;
+        if (!tooltip || !tooltip.opacity) return;
+
+        const ctx = chart.ctx;
+        const x = tooltip.caretX;
+        const topY = chart.scales.y.top;
+        const bottomY = chart.scales.y.bottom;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, topY);
+        ctx.lineTo(x, bottomY);
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(44, 95, 90, 0.3)';
+        ctx.setLineDash([4, 4]);
+        ctx.stroke();
+        ctx.restore();
+    }
+};
+
+// Close overlay on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.chart-overlay.show').forEach(overlay => {
+            hideChartOverlay(overlay);
+        });
+    }
+});
+
 function showChartOverlay(indicator, indicatorName, overlay) {
     document.querySelectorAll('.chart-overlay.show').forEach(otherOverlay => {
         if (otherOverlay !== overlay) hideChartOverlay(otherOverlay);
@@ -120,22 +153,25 @@ function initializeChartInOverlay(chartConfig, canvas) {
     const isMixedChart = chartConfig.type === 'chartjs-mixed';
     const chartType = isMixedChart ? 'bar' : 'line';
 
-    // Build scales based on chart type (tick labels hidden on x and y)
     const scales = {
         x: {
             display: true,
             grid: { display: false, drawBorder: false },
-            ticks: { display: false }
+            ticks: {
+                display: true,
+                font: { size: 9 },
+                color: 'rgba(0, 0, 0, 0.4)',
+                maxRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: 8
+            }
         }
     };
 
     if (isMixedChart) {
-        // Dual Y-axes for mixed chart
         scales.y = {
             display: true,
             beginAtZero: false,
-            min: 280,
-            max: 420,
             grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
             ticks: { display: false },
             position: 'left',
@@ -150,7 +186,6 @@ function initializeChartInOverlay(chartConfig, canvas) {
             title: { display: false }
         };
     } else {
-        // Single Y-axis for standard line chart
         scales.y = {
             display: true,
             beginAtZero: false,
@@ -163,6 +198,7 @@ function initializeChartInOverlay(chartConfig, canvas) {
     const chartInstance = new Chart(ctx, {
         type: chartType,
         data: chartConfig.data,
+        plugins: [crosshairPlugin],
         options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -173,8 +209,8 @@ function initializeChartInOverlay(chartConfig, canvas) {
             animation: { duration: 600, easing: 'easeInOutQuart' },
             plugins: {
                 legend: {
-                    display: true,
-                    position: isMixedChart ? 'bottom' : 'top',
+                    display: isMixedChart,
+                    position: 'bottom',
                     align: 'center',
                     labels: {
                         font: { size: isMixedChart ? 9 : 10 },
@@ -204,12 +240,14 @@ function initializeChartInOverlay(chartConfig, canvas) {
                         },
                         label: function (context) {
                             if (context.parsed.y !== null) {
-                                return new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
+                                const formatted = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
+                                return isMixedChart ? `${context.dataset.label}: ${formatted}` : formatted;
                             }
                             return '';
                         }
                     }
-                }
+                },
+                crosshair: false
             },
             scales: scales,
             interaction: { mode: 'nearest', axis: 'x', intersect: false }
@@ -394,7 +432,12 @@ function getChartConfig(indicatorName, indices) {
              borderColor: '#2C5F5A',
              backgroundColor: 'rgba(44, 95, 90, 0.1)',
              tension: 0.4,
-             fill: true
+             fill: true,
+             pointBackgroundColor: '#2C5F5A',
+             pointBorderColor: '#fff',
+             pointBorderWidth: 1.5,
+             pointRadius: 3,
+             pointHoverRadius: 5
          }]
      };
 

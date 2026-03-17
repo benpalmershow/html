@@ -15,48 +15,58 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
     let hasHistory = false;
 
     switch (type) {
-        case 'fomc':
-            if (indicator.meeting_date) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span></div>`;
-            if (indicator.rate_hold_odds) historyDataHtml += `<div class="data-row"><span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span></div>`;
-            if (indicator.rate_cut_odds) historyDataHtml += `<div class="data-row"><span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span></div>`;
-            if (indicator.rate_hike_odds) historyDataHtml += `<div class="data-row"><span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span></div>`;
-            hasHistory = !!(indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds);
+        case 'fomc': {
+            const fomcRows = [];
+            if (indicator.meeting_date) fomcRows.push(`<span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span>`);
+            if (indicator.rate_hold_odds) fomcRows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
+            if (indicator.rate_cut_odds) fomcRows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
+            if (indicator.rate_hike_odds) fomcRows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
+            fomcRows.forEach((row, i) => {
+                if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
+                else historyDataHtml += `<div class="data-row">${row}</div>`;
+            });
+            hasHistory = fomcRows.length > 2;
             break;
+        }
 
         case 'recession':
             if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-            if (indicator.no_probability) historyDataHtml += `<div class="data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
-            hasHistory = true;
+            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+            hasHistory = false;
             break;
 
         case 'prediction':
             if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-            if (indicator.no_probability) historyDataHtml += `<div class="data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
-            hasHistory = true;
+            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+            hasHistory = false;
             break;
 
-        case 'sports':
-            if (indicator.game_title) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span></div>`;
-            if (indicator.game_time) historyDataHtml += `<div class="data-row"><span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span></div>`;
-            if (indicator.week) historyDataHtml += `<div class="data-row"><span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span></div>`;
+        case 'sports': {
+            const sportsRows = [];
+            if (indicator.game_title) sportsRows.push(`<span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span>`);
+            if (indicator.game_time) sportsRows.push(`<span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span>`);
+            if (indicator.week) sportsRows.push(`<span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span>`);
             Object.keys(indicator).filter(key => key.endsWith('_win_odds')).forEach(key => {
                 const teamName = key.replace('_win_odds', '').toUpperCase();
-                historyDataHtml += `<div class="data-row"><span class="month-label">${teamName} Win:</span> <span class="month-value">${indicator[key]}</span></div>`;
+                sportsRows.push(`<span class="month-label">${teamName} Win:</span> <span class="month-value">${indicator[key]}</span>`);
             });
-            if (indicator.total_points) historyDataHtml += `<div class="data-row"><span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span></div>`;
-            hasHistory = true;
+            if (indicator.total_points) sportsRows.push(`<span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span>`);
+            sportsRows.forEach((row, i) => {
+                if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
+                else historyDataHtml += `<div class="data-row">${row}</div>`;
+            });
+            hasHistory = sportsRows.length > 2;
             break;
+        }
 
         case 'venezuela':
             if (indicator.candidates && typeof indicator.candidates === 'object') {
                 const candidateEntries = Object.entries(indicator.candidates);
-                if (candidateEntries.length > 0) {
-                    latestDataHtml += `<div class="latest-data-row"><span class="month-label">${candidateEntries[0][0]}:</span> <span class="month-value">${candidateEntries[0][1]}</span></div>`;
-                    for (let i = 1; i < candidateEntries.length; i++) {
-                        historyDataHtml += `<div class="data-row"><span class="month-label">${candidateEntries[i][0]}:</span> <span class="month-value">${candidateEntries[i][1]}</span></div>`;
-                    }
-                    hasHistory = candidateEntries.length > 1;
-                }
+                candidateEntries.forEach(([name, value], i) => {
+                    if (i < 2) latestDataHtml += `<div class="latest-data-row"><span class="month-label">${name}:</span> <span class="month-value">${value}</span></div>`;
+                    else historyDataHtml += `<div class="data-row"><span class="month-label">${name}:</span> <span class="month-value">${value}</span></div>`;
+                });
+                hasHistory = candidateEntries.length > 2;
             }
             break;
 
@@ -119,22 +129,18 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 
                 latestDataHtml = `<div class="latest-data-row"><span class="month-label">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
 
-                let visibleHistoryHtml = '';
                 if (availableData.length > 1) {
-                    hasHistory = availableData.length > 3;
+                    const second = availableData[1];
+                    const secondExtraHtml = buildExtraHtml(indicator, second, MONTHS);
+                    latestDataHtml += `<div class="latest-data-row"><span class="month-label">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
 
-                    for (let i = 1; i < availableData.length; i++) {
+                    hasHistory = availableData.length > 2;
+                    for (let i = 2; i < availableData.length; i++) {
                         const item = availableData[i];
                         const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
-                        const rowHtml = `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
-                        if (i <= 2) {
-                            visibleHistoryHtml += rowHtml;
-                        } else {
-                            historyDataHtml += rowHtml;
-                        }
+                        historyDataHtml += `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
                     }
                 }
-                latestDataHtml += visibleHistoryHtml;
             } else {
                 latestDataHtml = `<div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>`;
             }
@@ -232,7 +238,7 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
      }
 
     return `
-        <div class="indicator ${indicator.category === 'Prediction Markets' ? 'expanded' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}">
+        <div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}">
             <div class="indicator-header">
                 <div class="indicator-name">
                     ${indicator.name}

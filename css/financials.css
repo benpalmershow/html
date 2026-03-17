@@ -697,25 +697,7 @@
     display: none !important
 }
 
-/* Keep Prediction Markets cards always expanded */
-.category[data-category="Prediction Markets"] .indicator .data-rows-container {
-    max-height: 500px;
-    margin-top: 0;
-}
 
-
-.category[data-category="Prediction Markets"] .indicator .latest-data-row {
-    padding: 4px 0;
-    margin-bottom: 0;
-}
-
-.category[data-category="Prediction Markets"] .indicator .indicator-agency {
-    margin-bottom: 6px;
-}
-
-.category[data-category="Prediction Markets"] .expand-toggle {
-    display: none;
-}
 
 /* Ensure Financial Markets cards are narrow like the rest */
 .category[data-category="Financial Markets"] .indicators-grid {

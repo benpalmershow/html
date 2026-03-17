@@ -19,17 +19,6 @@ Massachusetts maintains a 14.10 percent payment error rate in SNAP administratio
 
 ---
 
-### <i data-lucide='film' class='post-icon'></i> **Locke**
-
-<a href="media.html#locke"><img src="https://media.themoviedb.org/t/p/w500/tTREq5tTyYwmSLDRMhybJ82zXcX.jpg" alt="Locke" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>
-
-A construction foreman's life unravels after he leaves a critical job to drive to London for the birth of a child from a one-night stand. Confined to his car, Ivan Locke conducts a series of phone conversations that dismantle everything he's built - revealing how a single decision can collapse a carefully constructed existence.
-
-[View in Media](media.html#locke)
-
-
----
-
 ### 🤖 **AI Encounters**
 
 [Journal entry on AI Encounters](../../journal.html#ai-encounters)

@@ -460,16 +460,16 @@
 .month-label {
     font-weight: 500;
     color: var(--text-muted);
-    font-size: 0.75rem; /* smaller than change indicators */
+    font-size: 0.7rem;
     word-break: keep-all;
     hyphens: none;
 }
 
 .month-value {
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-weight: 500;
+    color: var(--text-muted);
     text-align: right;
-    font-size: 0.8rem; /* ensure it's less than change-metric-font */
+    font-size: 0.75rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -486,8 +486,8 @@
 }
 
 .change-indicators {
-    margin: 4px 0 6px 0;
-    padding-bottom: 6px;
+    margin: 6px 0 8px 0;
+    padding-bottom: 8px;
     display: flex;
     flex-wrap: nowrap;
     gap: 12px;
@@ -506,12 +506,12 @@
 }
 
 .change-metric-title {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     color: var(--text-secondary);
     line-height: 1;
-    opacity: 0.58;
+    opacity: 0.7;
     flex-shrink: 0;
 }
 
@@ -596,7 +596,7 @@
 }
 
 .change-metric-value {
-    font-size: 0.78rem;
+    font-size: 0.92rem;
     font-weight: 700;
     letter-spacing: 0.005em;
     flex-shrink: 0;
@@ -1013,11 +1013,11 @@
     }
 
     .month-label {
-        font-size: 0.7rem;
+        font-size: 0.63rem;
     }
 
     .month-value {
-        font-size: 0.75rem;
+        font-size: 0.68rem;
         gap: 2px;
     }
 
@@ -1040,7 +1040,7 @@
     }
 
     .change-metric-title {
-        font-size: 0.55rem;
+        font-size: 0.58rem;
     }
 
     .change-metric-title-icon,
@@ -1050,7 +1050,7 @@
     }
 
     .change-metric-value {
-        font-size: 0.66rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -1125,11 +1125,11 @@
     }
 
     .month-label {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 
     .month-value {
-        font-size: 0.7rem;
+        font-size: 0.63rem;
         gap: 2px;
     }
 
@@ -1151,9 +1151,12 @@
         font-size: 0.7rem;
     }
 
-    .change-metric-title,
+    .change-metric-title {
+        font-size: 0.55rem;
+    }
+
     .change-metric-value {
-        font-size: 0.6rem;
+        font-size: 0.75rem;
     }
 }
 

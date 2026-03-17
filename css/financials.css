@@ -290,7 +290,7 @@
 }
 
 .category:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)
 }
 
@@ -385,7 +385,6 @@
     align-items: center;
     margin-bottom: 6px;
     padding-bottom: 4px;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .data-header-left,
@@ -413,8 +412,18 @@
     color: var(--text-muted);
     font-weight: 500;
     margin-top: 2px;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
     display: block;
+}
+
+.indicator-agency a {
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+
+.indicator-date {
+    color: var(--logo-teal);
+    font-weight: 600;
 }
 
 .indicator.expanded .indicator-agency {
@@ -453,7 +462,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 4px 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 0;
 }
 
@@ -486,8 +495,8 @@
 }
 
 .change-indicators {
-    margin: 6px 0 8px 0;
-    padding-bottom: 8px;
+    margin: 4px 0 6px 0;
+    padding-bottom: 6px;
     display: flex;
     flex-wrap: nowrap;
     gap: 12px;
@@ -596,7 +605,7 @@
 }
 
 .change-metric-value {
-    font-size: 0.92rem;
+    font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.005em;
     flex-shrink: 0;

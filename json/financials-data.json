@@ -829,21 +829,22 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Pending Home Sales Index",
-            "lastUpdated": "2026-02-19T14:00:00Z",
+            "lastUpdated": "2026-03-17T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
-            "march": "76.1",
-            "april": "71.3",
-            "may": "72.6",
-            "june": "72",
-            "july": "71.8",
-            "august": "74.8",
-            "september": "74.9",
-            "october": "76.7",
-            "november": "79.2",
+            "march": "74.5",
+            "april": "72.5",
+            "may": "73.3",
+            "june": "72.7",
+            "july": "72.8",
+            "august": "74.7",
+            "september": "74.4",
+            "october": "75.6",
+            "november": "77.2",
             "december": "71.5",
             "2026": {
-                "january": "70.9"
+                "january": "70.8",
+                "february": "72.1"
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
@@ -876,7 +877,7 @@
             "category": "Housing Market",
             "agency": "NAHB",
             "name": "Housing Market Index",
-            "lastUpdated": "2026-02-18T14:00:00Z",
+            "lastUpdated": "2026-03-17T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
             "march": "39",
@@ -891,7 +892,9 @@
             "december": "39",
             "2026": {
                 "january": "37",
-                "february": "36"
+                "february": "37",
+                "march": "38"
+            
             },
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."

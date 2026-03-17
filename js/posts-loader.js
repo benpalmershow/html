@@ -311,48 +311,68 @@ function getBaseOptions(indicator) {
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 400;
     return {
         responsive: true,
-        maintainAspectRatio: true,
-        layout: { padding: 0 },
+        maintainAspectRatio: false,
+        layout: { padding: 0, autoPadding: false },
+        animation: { duration: 600, easing: 'easeInOutQuart' },
         plugins: {
-            legend: { 
-                display: !isMobile,
+            legend: {
+                display: false,
                 labels: {
                     color: colors.TEXT,
-                    font: { family: 'Georgia, serif', size: isMobile ? 10 : 12 }
+                    font: { size: isMobile ? 9 : 10 },
+                    padding: 6,
+                    boxWidth: 10,
+                    useBorderRadius: true,
+                    borderRadius: 4
                 }
             },
+            title: { display: false },
             tooltip: {
                 mode: 'index',
                 intersect: false,
-                backgroundColor: 'rgba(0,0,0,0.8)',
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
                 titleColor: '#fff',
                 bodyColor: '#fff',
+                borderColor: colors.PRIMARY,
+                borderWidth: 1,
+                padding: 10,
+                titleFont: { size: 11 },
+                bodyFont: { size: 11 },
+                boxPadding: 5,
                 callbacks: {
+                    title: function (context) {
+                        if (context.length > 0) return context[0].label;
+                        return '';
+                    },
                     label: function (context) {
-                        let label = context.dataset.label || '';
-                        if (label) label += ': ';
-                        label += context.parsed.y.toLocaleString();
-                        return label;
+                        if (context.parsed.y !== null) {
+                            const formatted = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
+                            return context.dataset.label ? `${context.dataset.label}: ${formatted}` : formatted;
+                        }
+                        return '';
                     }
                 }
             }
         },
         scales: {
             x: {
-                grid: { color: colors.GRID },
-                ticks: { color: colors.TEXT }
+                display: true,
+                grid: { display: false, drawBorder: false },
+                ticks: {
+                    display: true,
+                    font: { size: 9 },
+                    color: colors.TEXT,
+                    maxRotation: 0,
+                    autoSkip: true,
+                    maxTicksLimit: 8
+                }
             },
             y: {
-                grid: { color: colors.GRID },
-                ticks: {
-                    color: colors.TEXT,
-                    callback: function (value) {
-                        if (indicator.name && (indicator.name.includes('Rate') || indicator.name.includes('Yield'))) {
-                            return value.toFixed(2) + '%';
-                        }
-                        return value.toLocaleString();
-                    }
-                }
+                display: true,
+                beginAtZero: false,
+                grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
+                ticks: { display: false },
+                position: 'right'
             }
         },
         interaction: { mode: 'nearest', axis: 'x', intersect: false }
@@ -435,9 +455,10 @@ function getLineChartConfig(indicator, labels, dataPoints) {
                  tension: CHART_CONFIG.TENSION,
                  fill: true,
                  pointBackgroundColor: colors.PRIMARY,
-                 pointBorderColor: colors.PRIMARY,
-                 pointRadius: 4,
-                 pointHoverRadius: 6
+                 pointBorderColor: '#fff',
+                 pointBorderWidth: 1.5,
+                 pointRadius: 3,
+                 pointHoverRadius: 5
              }]
          },
          options: getBaseOptions(indicator)
@@ -602,16 +623,39 @@ function getTradeDeficitConfig(indicator, labels, dataPoints) {
         },
         options: {
             ...getBaseOptions(indicator),
-            maintainAspectRatio: false,
-            animation: typeof window !== 'undefined' && window.innerWidth <= 400 ? { duration: 300 } : true,
+            plugins: {
+                ...getBaseOptions(indicator).plugins,
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    align: 'center',
+                    labels: {
+                        font: { size: 9 },
+                        padding: 6,
+                        boxWidth: 10,
+                        useBorderRadius: true,
+                        borderRadius: 4
+                    }
+                }
+            },
             scales: {
+                x: {
+                    display: true,
+                    grid: { display: false, drawBorder: false },
+                    ticks: {
+                        display: true,
+                        font: { size: 9 },
+                        color: 'rgba(0, 0, 0, 0.4)',
+                        maxRotation: 0,
+                        autoSkip: true,
+                        maxTicksLimit: 8
+                    }
+                },
                 y: {
                     type: 'linear',
                     display: true,
                     position: 'left',
                     beginAtZero: false,
-                    min: 280,
-                    max: 420,
                     grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
                     ticks: { display: false },
                     title: { display: false }
@@ -645,7 +689,10 @@ function getPredictionMarketConfig(indicator, labels, dataPoints) {
         },
         options: {
             ...getBaseOptions(indicator),
-            scales: { y: { beginAtZero: true } }
+            scales: {
+                ...getBaseOptions(indicator).scales,
+                y: { beginAtZero: true, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { display: false } }
+            }
         }
     };
 }

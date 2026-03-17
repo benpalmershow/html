@@ -3,7 +3,7 @@ date: 2026-03-10T18:00:00Z
 category: journal
 ---
 
-## <i data-lucide='sun' class='post-icon'></i> **Space Sunlight: Reflect Orbital**
+## <i data-lucide='sun' class='post-icon'></i> **Satellites Beaming Sunlight On Demand**
 
 **Reflect Orbital** is a startup building a **constellation of satellites** to deliver **reflected sunlight on-demand** to specific locations on Earth. Their **2026 plan** includes launching 2 satellites to provide a lighting service (0.1 lux brightness) and testing an energy service. Potential applications include **extending working hours** for industrial sites, **illuminating disaster zones**, **enhancing agricultural yields**, and reducing ground-based **light pollution**.
 

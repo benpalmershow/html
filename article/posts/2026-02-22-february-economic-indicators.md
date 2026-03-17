@@ -3,7 +3,7 @@ date: 2026-02-22T18:30:00Z
 category: economic
 ---
 
-## February Economic Indicators
+## Consumer Holds, Housing Cools, Yields Spike
 
 
 ### <i data-lucide='briefcase' class='post-icon'></i> **New Numbers**

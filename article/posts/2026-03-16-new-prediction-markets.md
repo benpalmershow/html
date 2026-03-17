@@ -2,7 +2,7 @@
 category: prediction
 ---
 
-<i data-lucide='bar-chart-3' class='post-icon'></i> <b>New Prediction Markets</b>
+<i data-lucide='bar-chart-3' class='post-icon'></i> <b>Iran Ceasefire, $100 Oil, Midterm Odds</b>
 
 <p>Six new prediction markets added to the financials tracker covering geopolitics, monetary policy, and midterm elections.</p>
 

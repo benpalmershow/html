@@ -6,32 +6,36 @@ category: media
 <i data-lucide='music' class='post-icon'></i> <b>🎧 New Playlists</b>
 
 <style>
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes orbit { from { transform: rotate(0deg) translateX(50px) rotate(0deg); } to { transform: rotate(360deg) translateX(50px) rotate(-360deg); } }
-.record { position: relative; width: 80px; height: 80px; margin: 12px; }
-.record img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-.record-icon { position: absolute; top: 50%; left: 50%; margin: -11px 0 0 -11px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; z-index: 2; animation: orbit 6s linear infinite; }
-.record-icon:hover { animation-play-state: paused; transform: scale(1.3); }
-.record-icon.ri2 { animation-delay: -3s; }
-.ri-spotify { background: #1DB954; box-shadow: 0 0 6px rgba(29,185,84,0.6); }
-.ri-youtube { background: #FF0000; box-shadow: 0 0 6px rgba(255,0,0,0.6); }
+@-webkit-keyframes rspin { from { -webkit-transform: rotate(0deg); transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes rspin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.rec { position: relative; display: inline-block; }
+.rec img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; -webkit-animation: rspin 4s linear infinite; animation: rspin 4s linear infinite; }
+.rec.rev img { -webkit-animation-direction: reverse; animation-direction: reverse; -webkit-animation-duration: 5s; animation-duration: 5s; }
+.rec-icons { position: absolute; bottom: -6px; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
+.rec-icons a { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; text-decoration: none; }
+.rec-icons .rs { background: #1DB954; }
+.rec-icons .ry { background: #FF0000; }
 </style>
 
 <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin: 1rem 0;">
 <div style="text-align: center;">
-<div class="record">
-<a href="media.html#marcara"><img src="images/listen.webp" alt="MarCara Playlist" style="animation: spin 4s linear infinite; box-shadow: 0 0 20px rgba(29,185,84,0.4), 0 0 60px rgba(29,185,84,0.15); border: 2px solid rgba(29,185,84,0.6);"></a>
-<a href="https://open.spotify.com/playlist/1WD427l10cPsKvAiLeA4sM" target="_blank" rel="noopener" class="record-icon ri-spotify" title="Spotify"><svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.3-.6.4-1 .2-2.7-1.6-6-2-10-1.1-.4.1-.7-.1-.8-.5-.1-.4.1-.7.5-.8 4.3-1 8.1-.6 11.1 1.2.3.2.4.7.2 1zm1.5-3.3c-.3.4-.8.5-1.2.3-3-1.9-7.7-2.4-11.3-1.3-.5.1-1-.1-1.1-.6-.1-.5.1-1 .6-1.1 4.1-1.3 9.2-.7 12.7 1.5.4.2.5.8.3 1.2zm.1-3.4c-3.7-2.2-9.7-2.4-13.2-1.3-.5.2-1.1-.1-1.3-.6-.2-.5.1-1.1.6-1.3 4-1.2 10.7-1 14.9 1.5.5.3.6.9.4 1.4-.3.5-.9.6-1.4.3z"/></svg></a>
-<a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJv2uzNAlgDZqojU0qlXFA8y" target="_blank" rel="noopener" class="record-icon ri2 ri-youtube" title="YouTube Music"><svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.54V8.46L16.2 12l-6.516 3.54z"/></svg></a>
+<div class="rec">
+<a href="media.html#marcara"><img src="images/listen.webp" alt="MarCara" style="box-shadow: 0 0 18px rgba(29,185,84,0.4); border: 2px solid rgba(29,185,84,0.6);"></a>
+<div class="rec-icons">
+<a href="https://open.spotify.com/playlist/1WD427l10cPsKvAiLeA4sM" target="_blank" rel="noopener" class="rs" title="Spotify"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path d="M16.94 16.5a.68.68 0 01-.93.23c-2.55-1.56-5.77-1.91-9.56-1.05a.68.68 0 01-.32-1.33c4.14-1 7.7-.57 10.58 1.22a.68.68 0 01.23.93zm1.16-2.72a.85.85 0 01-1.17.28c-2.92-1.8-7.37-2.32-10.83-1.27a.85.85 0 11-.5-1.63c3.96-1.2 8.88-.62 12.22 1.45a.85.85 0 01.28 1.17zm.1-2.83c-3.5-2.08-9.28-2.27-12.62-1.26a1.02 1.02 0 11-.59-1.95c3.84-1.16 10.22-.94 14.26 1.46a1.02 1.02 0 01-1.05 1.75z" fill="white"/></svg></a>
+<a href="https://music.youtube.com/playlist?list=PLw4uIEqgLTJv2uzNAlgDZqojU0qlXFA8y" target="_blank" rel="noopener" class="ry" title="YouTube Music"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="12" fill="#FF0000"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="white" stroke-width="1.5"/><polygon points="10.5,9 15.5,12 10.5,15" fill="white"/></svg></a>
 </div>
-<div style="margin-top: 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-primary);">MarCara</div>
+</div>
+<div style="margin-top: 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-primary);">MarCara</div>
 </div>
 <div style="text-align: center;">
-<div class="record">
-<a href="media.html#febcara"><img src="images/listen.webp" alt="FebCara Playlist" style="animation: spin 5s linear infinite reverse; box-shadow: 0 0 20px rgba(245,197,24,0.4), 0 0 60px rgba(245,197,24,0.15); border: 2px solid rgba(245,197,24,0.6);"></a>
-<a href="https://open.spotify.com/playlist/6gXLZVFel7dURs00gPtZXV" target="_blank" rel="noopener" class="record-icon ri-spotify" title="Spotify"><svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.3-.6.4-1 .2-2.7-1.6-6-2-10-1.1-.4.1-.7-.1-.8-.5-.1-.4.1-.7.5-.8 4.3-1 8.1-.6 11.1 1.2.3.2.4.7.2 1zm1.5-3.3c-.3.4-.8.5-1.2.3-3-1.9-7.7-2.4-11.3-1.3-.5.1-1-.1-1.1-.6-.1-.5.1-1 .6-1.1 4.1-1.3 9.2-.7 12.7 1.5.4.2.5.8.3 1.2zm.1-3.4c-3.7-2.2-9.7-2.4-13.2-1.3-.5.2-1.1-.1-1.3-.6-.2-.5.1-1.1.6-1.3 4-1.2 10.7-1 14.9 1.5.5.3.6.9.4 1.4-.3.5-.9.6-1.4.3z"/></svg></a>
-<a href="https://music.youtube.com/playlist?list=PLJzHo08oXQBf8uwaWJc0FP4RrC-j4eV3w" target="_blank" rel="noopener" class="record-icon ri2 ri-youtube" title="YouTube Music"><svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.54V8.46L16.2 12l-6.516 3.54z"/></svg></a>
+<div class="rec rev">
+<a href="media.html#febcara"><img src="images/listen.webp" alt="FebCara" style="box-shadow: 0 0 18px rgba(245,197,24,0.4); border: 2px solid rgba(245,197,24,0.6);"></a>
+<div class="rec-icons">
+<a href="https://open.spotify.com/playlist/6gXLZVFel7dURs00gPtZXV" target="_blank" rel="noopener" class="rs" title="Spotify"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path d="M16.94 16.5a.68.68 0 01-.93.23c-2.55-1.56-5.77-1.91-9.56-1.05a.68.68 0 01-.32-1.33c4.14-1 7.7-.57 10.58 1.22a.68.68 0 01.23.93zm1.16-2.72a.85.85 0 01-1.17.28c-2.92-1.8-7.37-2.32-10.83-1.27a.85.85 0 11-.5-1.63c3.96-1.2 8.88-.62 12.22 1.45a.85.85 0 01.28 1.17zm.1-2.83c-3.5-2.08-9.28-2.27-12.62-1.26a1.02 1.02 0 11-.59-1.95c3.84-1.16 10.22-.94 14.26 1.46a1.02 1.02 0 01-1.05 1.75z" fill="white"/></svg></a>
+<a href="https://music.youtube.com/playlist?list=PLJzHo08oXQBf8uwaWJc0FP4RrC-j4eV3w" target="_blank" rel="noopener" class="ry" title="YouTube Music"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><circle cx="12" cy="12" r="12" fill="#FF0000"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="white" stroke-width="1.5"/><polygon points="10.5,9 15.5,12 10.5,15" fill="white"/></svg></a>
 </div>
-<div style="margin-top: 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-primary);">FebCara</div>
+</div>
+<div style="margin-top: 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-primary);">FebCara</div>
 </div>
 </div>

@@ -68,6 +68,30 @@
     "dateAdded": "2026-02-14"
   },
   {
+    "title": "MarCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "March 2026",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLw4uIEqgLTJv2uzNAlgDZqojU0qlXFA8y"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/1WD427l10cPsKvAiLeA4sM"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "dateAdded": "2026-03-17",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
     "title": "FebCara",
     "author": "TBPS",
     "mediaType": "playlist",

@@ -68,6 +68,30 @@
     "dateAdded": "2026-02-14"
   },
   {
+    "title": "FebCara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "February 2026",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBf8uwaWJc0FP4RrC-j4eV3w"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/6gXLZVFel7dURs00gPtZXV"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "dateAdded": "2026-03-17",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
     "title": "JanCara",
     "author": "TBPS",
     "mediaType": "playlist",

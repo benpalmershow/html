@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const PAGES = [
     { name: 'Home', file: 'index.html', icon: '' },
-    { name: 'Announcements', file: 'index.html', desc: 'Latest posts and updates', icon: 'announcements.webp' },
     { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'federal-reserve.webp' },
     { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', icon: 'media.webp' },
     { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'read.webp' }

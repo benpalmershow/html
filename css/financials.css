@@ -796,7 +796,7 @@
 
 .chart-overlay-title-floating {
     position: absolute;
-    top: 6px;
+    bottom: 6px;
     left: 6px;
     right: 40px;
     margin: 0;
@@ -840,7 +840,7 @@
 .chart-overlay-range-picker {
     display: flex;
     gap: 4px;
-    padding: 4px 8px;
+    padding: 8px 8px 4px 8px;
     justify-content: flex-start;
 }
 
@@ -1245,6 +1245,7 @@
     border-bottom: 1px solid var(--border-color);
     background: var(--bg-secondary);
     flex-shrink: 0;
+    order: 1;
 }
 
 .chart-modal-header h3 {
@@ -1279,6 +1280,7 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    order: 3;
 }
 
 .chart-modal-body canvas {
@@ -1351,6 +1353,7 @@
     border-bottom: 1px solid var(--border-color);
     background: var(--bg-secondary);
     flex-shrink: 0;
+    order: 2;
 }
 
 .range-btn {

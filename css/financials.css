@@ -811,24 +811,17 @@
 }
 
 .chart-overlay-close {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    z-index: 11;
-    background: var(--bg-secondary);
+    padding: 2px 8px;
     border: 1px solid var(--border-color);
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    border-radius: 6px;
+    background: transparent;
     color: var(--text-muted);
-    font-size: 1.25rem;
+    font-size: 0.7rem;
+    font-weight: 500;
     line-height: 1;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
 }
 
 .chart-overlay-close:hover {
@@ -839,9 +832,14 @@
 
 .chart-overlay-range-picker {
     display: flex;
+    align-items: center;
     gap: 4px;
     padding: 8px 8px 4px 8px;
     justify-content: flex-start;
+}
+
+.chart-overlay-range-picker .chart-overlay-close {
+    margin-left: auto;
 }
 
 .chart-overlay-range-picker .range-btn {
@@ -1258,18 +1256,22 @@
 }
 
 #closeChartModal {
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     background: transparent;
-    border: none;
-    font-size: 2rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
     line-height: 1;
     cursor: pointer;
-    color: var(--text-muted);
-    transition: color 0.2s ease;
-    padding: 0;
+    transition: all 0.15s ease;
 }
 
 #closeChartModal:hover {
-    color: var(--logo-teal);
+    background: var(--logo-teal);
+    color: #fff;
+    border-color: var(--logo-teal);
 }
 
 .chart-modal-body {
@@ -1348,12 +1350,17 @@
 /* Chart modal date range picker */
 .chart-modal-range-picker {
     display: flex;
+    align-items: center;
     gap: 4px;
     padding: 0.5rem 1.5rem;
     border-bottom: 1px solid var(--border-color);
     background: var(--bg-secondary);
     flex-shrink: 0;
     order: 2;
+}
+
+.chart-modal-range-picker #closeChartModal {
+    margin-left: auto;
 }
 
 .range-btn {

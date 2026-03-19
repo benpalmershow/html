@@ -70,12 +70,11 @@ function createChartOverlay(indicator, indicatorName) {
     overlay.className = 'chart-overlay';
     overlay.innerHTML = `
         <h4 class="chart-overlay-title-floating">${indicatorName}</h4>
-        <button class="chart-overlay-close">&times;</button>
-        <div class="chart-overlay-range-picker" style="display: flex; gap: 4px; padding: 4px 8px; justify-content: flex-start;">
+        <div class="chart-overlay-range-picker">
             <button class="range-btn" data-range="3">3M</button>
             <button class="range-btn" data-range="6">6M</button>
-            <button class="range-btn" data-range="12">1Y</button>
-            <button class="range-btn active" data-range="all">All</button>
+            <button class="range-btn active" data-range="12">1Y</button>
+            <button class="chart-overlay-close">&times;</button>
         </div>
         <div class="chart-overlay-body">
             <div class="chart-overlay-loading">
@@ -154,12 +153,15 @@ function loadChartInOverlay(indicator, indicatorName, overlay) {
                 existingCanvas.remove();
             }
 
+            const activeBtn = overlay.querySelector('.range-btn.active');
+            const defaultRange = activeBtn ? activeBtn.dataset.range : '12';
+            const slicedConfig = sliceChartDataByRange(chartConfig, defaultRange);
             const canvas = document.createElement('canvas');
             canvas.className = 'chart-overlay-canvas';
             canvas.id = `overlay-${indicatorName.replace(/\s+/g, '-').toLowerCase()}-chart`;
             body.appendChild(canvas);
 
-            const chartInstance = initializeChartInOverlay(chartConfig, canvas);
+            const chartInstance = initializeChartInOverlay(slicedConfig, canvas);
             if (chartInstance) overlay._chartInstance = chartInstance;
         } else {
             showOverlayError(body, 'Chart data not available');

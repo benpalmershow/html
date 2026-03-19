@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="css/theme.css?v=20260123">
   <link rel="stylesheet" href="css/body.css?v=20260107">
   <link rel="stylesheet" href="css/nav.css?v=20260107">
-  <link rel="stylesheet" href="css/financials.css?v=20260318">
+  <link rel="stylesheet" href="css/financials.css?v=20260318d">
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/utils.js?v=20260222" as="script">
@@ -237,13 +237,12 @@
           <i data-lucide="trending-up"></i>
           <span id="chartModalTitle"></span>
         </h3>
-        <button id="closeChartModal">&times;</button>
       </div>
       <div class="chart-modal-range-picker" id="chartRangePicker">
         <button class="range-btn" data-range="3">3M</button>
         <button class="range-btn" data-range="6">6M</button>
-        <button class="range-btn" data-range="12">1Y</button>
-        <button class="range-btn active" data-range="all">All</button>
+        <button class="range-btn active" data-range="12">1Y</button>
+        <button id="closeChartModal">&times;</button>
       </div>
       <div class="chart-modal-body">
       </div>

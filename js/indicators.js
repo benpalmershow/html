@@ -237,6 +237,23 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
          }
      }
 
+    const sparklineValues = [];
+    if (indicatorType === 'standard') {
+        const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(k => parseInt(k)).sort();
+        MONTHS.forEach((month, index) => {
+            const flatVal = extractNumericValue(indicator[month]);
+            if (flatVal !== null) sparklineValues.push(flatVal);
+        });
+        yearKeys.forEach(year => {
+            MONTHS.forEach(month => {
+                if (indicator[year] && indicator[year][month] !== undefined) {
+                    const val = extractNumericValue(indicator[year][month]);
+                    if (val !== null) sparklineValues.push(val);
+                }
+            });
+        });
+    }
+
     return `
         <div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}">
             <div class="indicator-header">
@@ -270,6 +287,54 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
                     </div>
                 ` : ''}
             </div>
+            ${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}
         </div>
     `;
+}
+
+function renderSparklines() {
+    document.querySelectorAll('.sparkline-container canvas[data-sparkline]').forEach(canvas => {
+        if (canvas._sparklineRendered) return;
+        canvas._sparklineRendered = true;
+        try {
+            const values = JSON.parse(canvas.dataset.sparkline);
+            if (!values || values.length < 3) return;
+            const ctx = canvas.getContext('2d');
+            const minVal = Math.min(...values);
+            const maxVal = Math.max(...values);
+            const range = maxVal - minVal || 1;
+            const pad = range * 0.1;
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.parentElement.offsetHeight || 120);
+            gradient.addColorStop(0, 'rgba(44, 95, 90, 0.12)');
+            gradient.addColorStop(1, 'rgba(44, 95, 90, 0)');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: values.map((_, i) => i),
+                    datasets: [{
+                        data: values,
+                        borderColor: 'rgba(44, 95, 90, 0.18)',
+                        backgroundColor: gradient,
+                        borderWidth: 1.5,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHitRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false,
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                    scales: {
+                        x: { display: false },
+                        y: { display: false, min: minVal - pad, max: maxVal + pad }
+                    },
+                    layout: { padding: 0 },
+                    elements: { line: { borderCapStyle: 'round' } }
+                }
+            });
+        } catch (e) { /* skip broken sparklines */ }
+    });
 }

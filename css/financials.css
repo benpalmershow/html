@@ -92,8 +92,16 @@
 .filters {
     margin-bottom: 15px;
     overflow: visible;
-    position: relative;
-    z-index: 1;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+    padding: 10px 0;
+    transition: box-shadow 0.2s ease;
+}
+
+.filters.stuck {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .filters-wrapper {
@@ -366,11 +374,13 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 8px;
+    position: relative;
+    z-index: 1;
 }
 
 .indicator-name {
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     line-height: 1.2;
     flex: 1;
@@ -414,6 +424,8 @@
     margin-top: 2px;
     margin-bottom: 2px;
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .indicator-agency a {
@@ -435,6 +447,8 @@
     flex-direction: column;
     gap: 2px;
     overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .data-rows-container {
@@ -467,16 +481,16 @@
 }
 
 .month-label {
-    font-weight: 500;
-    color: var(--text-muted);
+    font-weight: 600;
+    color: var(--text-secondary);
     font-size: 0.7rem;
     word-break: keep-all;
     hyphens: none;
 }
 
 .month-value {
-    font-weight: 500;
-    color: var(--text-muted);
+    font-weight: 600;
+    color: var(--text-primary);
     text-align: right;
     font-size: 0.75rem;
     white-space: nowrap;
@@ -505,6 +519,8 @@
     border-bottom: 1px solid var(--border-color);
     overflow: visible;
     min-width: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .change-metric-block {
@@ -819,6 +835,18 @@
     background: var(--logo-teal);
     color: var(--color-white);
     border-color: var(--logo-teal);
+}
+
+.chart-overlay-range-picker {
+    display: flex;
+    gap: 4px;
+    padding: 4px 8px;
+    justify-content: flex-start;
+}
+
+.chart-overlay-range-picker .range-btn {
+    padding: 2px 8px;
+    font-size: 0.7rem;
 }
 
 .chart-overlay-body {
@@ -1258,4 +1286,127 @@
     min-height: 240px;
     width: 100% !important;
     height: 100% !important;
+}
+
+/* Search */
+.search-wrapper {
+    position: relative;
+    max-width: 280px;
+    margin: 10px auto 0;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.indicator-search {
+    width: 100%;
+    padding: 0.5rem 0.75rem 0.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.indicator-search:focus {
+    border-color: var(--logo-teal);
+    box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
+}
+
+.indicator-search::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.empty-state i {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    opacity: 0.4;
+}
+
+/* Chart modal date range picker */
+.chart-modal-range-picker {
+    display: flex;
+    gap: 4px;
+    padding: 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    flex-shrink: 0;
+}
+
+.range-btn {
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.range-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.range-btn.active {
+    background: var(--logo-teal);
+    color: #fff;
+    border-color: var(--logo-teal);
+}
+
+/* Sparkline - full card background */
+.sparkline-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.sparkline-container canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Indicator keyboard focus */
+.indicator:focus-visible {
+    outline: 2px solid var(--logo-teal);
+    outline-offset: 2px;
+}
+
+.indicator-deep-link {
+    outline: 2px solid var(--logo-teal);
+    outline-offset: 2px;
+    animation: deep-link-pulse 1.8s ease-out;
+}
+
+@keyframes deep-link-pulse {
+    0% { outline-color: var(--logo-teal); }
+    100% { outline-color: transparent; }
 }

@@ -123,6 +123,7 @@ function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
     if (category === '13F Holdings') {
         document.getElementById('categories').style.display = 'none';
         document.getElementById('latest-13f-filings').style.display = 'block';
+        if (typeof ensureLoad13F === 'function') ensureLoad13F();
         currentCategory = '13F Holdings';
         return;
     }
@@ -131,6 +132,7 @@ function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
     document.getElementById('categories').style.display = 'block';
     if (category === 'all') {
         document.getElementById('latest-13f-filings').style.display = 'block';
+        if (typeof ensureLoad13F === 'function') ensureLoad13F();
     } else {
         document.getElementById('latest-13f-filings').style.display = 'none';
     }
@@ -142,6 +144,18 @@ function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
         currentCategory = category || 'all';
         renderDashboard(currentCategory, false);
     }
+
+    // Sync filter to URL
+    const url = new URL(window.location);
+    if (isLatest) {
+        url.searchParams.set('filter', 'latest');
+    } else if (category === '13F Holdings') {
+        url.searchParams.set('filter', '13F Holdings');
+    } else {
+        url.searchParams.set('filter', category || 'all');
+    }
+    url.searchParams.delete('indicator');
+    history.replaceState(null, '', url);
 }
 
 function setupDropdownToggle(btnId, dropdownId) {
@@ -230,4 +244,57 @@ function toggleCollapse(sectionId) {
     content?.classList.toggle('collapsed');
     toggle?.classList.toggle('collapsed');
     if (toggle) toggle.textContent = content?.classList.contains('collapsed') ? '▲' : '▼';
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('indicatorSearch');
+    if (!searchInput) return;
+
+    let debounceTimer;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        const query = this.value.trim().toLowerCase();
+        debounceTimer = setTimeout(() => {
+            const indicators = document.querySelectorAll('.indicator');
+            const categories = document.querySelectorAll('.category');
+            
+            if (!query) {
+                indicators.forEach(el => el.style.display = '');
+                categories.forEach(el => el.style.display = '');
+                return;
+            }
+
+            indicators.forEach(indicator => {
+                const name = (indicator.getAttribute('data-indicator-name') || '').toLowerCase();
+                const agency = (indicator.querySelector('.indicator-agency')?.textContent || '').toLowerCase();
+                const matches = name.includes(query) || agency.includes(query);
+                indicator.style.display = matches ? '' : 'none';
+            });
+
+            // Hide categories where all indicators are hidden
+            categories.forEach(cat => {
+                const visibleIndicators = cat.querySelectorAll('.indicator:not([style*="display: none"])');
+                cat.style.display = visibleIndicators.length > 0 ? '' : 'none';
+            });
+        }, 200);
+    });
+}
+
+function setupStickyObserver() {
+    const filters = document.getElementById('filters');
+    if (!filters) return;
+    
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            filters.classList.toggle('stuck', !entry.isIntersecting);
+        },
+        { threshold: 1.0, rootMargin: '-1px 0px 0px 0px' }
+    );
+
+    // Create a sentinel element above the filters
+    const sentinel = document.createElement('div');
+    sentinel.style.height = '1px';
+    sentinel.style.marginBottom = '-1px';
+    filters.parentNode.insertBefore(sentinel, filters);
+    observer.observe(sentinel);
 }

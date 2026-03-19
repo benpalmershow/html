@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="css/theme.css?v=20260123">
   <link rel="stylesheet" href="css/body.css?v=20260107">
   <link rel="stylesheet" href="css/nav.css?v=20260107">
-  <link rel="stylesheet" href="css/financials.css?v=20260107">
+  <link rel="stylesheet" href="css/financials.css?v=20260318">
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/utils.js?v=20260222" as="script">
@@ -83,22 +83,24 @@
   <!-- Chart.js for interactive charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
-  <!-- Infogram Embed Script -->
-  <script>
-    ! function (e, n, i, s) {
-      var d = "InfogramEmbeds";
-      var o = e.getElementsByTagName(n)[0];
-      if (window[d] && window[d].initialized)
-        window[d].process && window[d].process();
-      else if (!e.getElementById(i)) {
-        var r = e.createElement(n);
-        r.async = 1,
-          r.id = i,
-          r.src = s,
-          o.parentNode.insertBefore(r, o)
-      }
-    }(document, "script", "infogram-async",
-      "https://e.infogram.com/js/dist/embed-loader-min.js");
+  <!-- Infogram Embed Script (deferred) -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      ! function (e, n, i, s) {
+        var d = "InfogramEmbeds";
+        var o = e.getElementsByTagName(n)[0];
+        if (window[d] && window[d].initialized)
+          window[d].process && window[d].process();
+        else if (!e.getElementById(i)) {
+          var r = e.createElement(n);
+          r.async = 1,
+            r.id = i,
+            r.src = s,
+            o.parentNode.insertBefore(r, o)
+        }
+      }(document, "script", "infogram-async",
+        "https://e.infogram.com/js/dist/embed-loader-min.js");
+    });
   </script>
 
   <!-- Lucide Icons -->
@@ -137,6 +139,10 @@
             <div class="desktop-filters" id="desktopFilters">
               <!-- Desktop buttons will be injected here -->
             </div>
+          </div>
+          <div class="search-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
           </div>
         </div>
 
@@ -229,8 +235,15 @@
       <div class="chart-modal-header">
         <h3>
           <i data-lucide="trending-up"></i>
+          <span id="chartModalTitle"></span>
         </h3>
         <button id="closeChartModal">&times;</button>
+      </div>
+      <div class="chart-modal-range-picker" id="chartRangePicker">
+        <button class="range-btn" data-range="3">3M</button>
+        <button class="range-btn" data-range="6">6M</button>
+        <button class="range-btn" data-range="12">1Y</button>
+        <button class="range-btn active" data-range="all">All</button>
       </div>
       <div class="chart-modal-body">
       </div>

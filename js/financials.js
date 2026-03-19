@@ -31,6 +31,7 @@ const DATA_ATTRS = {
 };
 
 let financialData = null;
+let has13FLoaded = false;
 
 function scrollToIndicatorByName(indicatorName) {
     if (!indicatorName) return;
@@ -167,6 +168,19 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     setupExpandHandlers(SELECTORS);
 
     if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
+    if (typeof renderSparklines === 'function') renderSparklines();
+
+    // Empty state check
+    const visibleCategories = categoriesContainer.querySelectorAll('.category');
+    if (visibleCategories.length === 0 && filterCategory !== 'all') {
+        categoriesContainer.innerHTML = '<div class="empty-state"><i data-lucide="search-x"></i><p>No indicators in this category.</p></div>';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    // Make indicator cards focusable for keyboard navigation
+    categoriesContainer.querySelectorAll('.indicator').forEach(card => {
+        card.setAttribute('tabindex', '0');
+    });
 }
 
 // Initialize dashboard on page load
@@ -190,6 +204,16 @@ function initializeDashboard() {
              (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
          );
          currentCategory = '13F Holdings';
+     } else if (initialFilter === '13F Holdings') {
+         document.getElementById('categories').style.display = 'none';
+         document.getElementById('latest-13f-filings').style.display = 'block';
+         ensureLoad13F();
+         const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
+         updateActiveElements(allBtnsSelector,
+             (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
+         );
+         currentCategory = '13F Holdings';
+         setupModalHandlers();
      } else {
          // Set active state for desktop buttons and dropdown items
          const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
@@ -200,6 +224,7 @@ function initializeDashboard() {
              renderDashboard('all', true);
              scrollToIndicatorByName(indicatorParam);
          } else {
+             if (initialFilter === 'all') ensureLoad13F();
              updateActiveElements(allBtnsSelector,
                  (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
              );
@@ -208,11 +233,56 @@ function initializeDashboard() {
          }
          setupModalHandlers();
      }
+
+     // Initialize search, sticky filter bar, and keyboard navigation
+     if (typeof setupSearch === 'function') setupSearch();
+     if (typeof setupStickyObserver === 'function') setupStickyObserver();
+     setupKeyboardNavigation();
  }
+
+// Lazy-load 13F data only when needed
+function ensureLoad13F() {
+    if (has13FLoaded) return;
+    has13FLoaded = true;
+    if (typeof load13FData === 'function') load13FData();
+}
+
+// Keyboard navigation between indicator cards
+function setupKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        const focused = document.activeElement;
+        if (!focused || !focused.classList.contains('indicator')) return;
+
+        const cards = Array.from(document.querySelectorAll('.indicator[tabindex="0"]:not([style*="display: none"])'));
+        const idx = cards.indexOf(focused);
+        if (idx === -1) return;
+
+        let next = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            next = cards[idx + 1];
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            next = cards[idx - 1];
+        } else if (e.key === 'Enter') {
+            const chartBtn = focused.querySelector('.chart-btn');
+            if (chartBtn) chartBtn.click();
+            e.preventDefault();
+            return;
+        }
+
+        if (next) {
+            e.preventDefault();
+            next.focus();
+            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+}
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     fetchFinancialData();
-    load13FData();
+    // 13F loads lazily when filter is selected, or eagerly if hash targets it
+    if (window.location.hash === '#latest-13f-filings-anchor') {
+        ensureLoad13F();
+    }
     if (typeof lucide !== 'undefined') lucide.createIcons();
 });

@@ -1,6 +1,8 @@
 // Chart configuration and initialization
 
 let chartOverlayTimeout;
+let currentChartIndicatorName = null;
+let currentChartFullConfig = null;
 
 // Crosshair plugin - draws a vertical line at the hovered x position
 const crosshairPlugin = {
@@ -40,6 +42,7 @@ function showChartOverlay(indicator, indicatorName, overlay) {
         if (otherOverlay !== overlay) hideChartOverlay(otherOverlay);
     });
     overlay.classList.add('show');
+    currentChartIndicatorName = indicatorName;
     loadChartInOverlay(indicator, indicatorName, overlay);
 }
 
@@ -68,6 +71,12 @@ function createChartOverlay(indicator, indicatorName) {
     overlay.innerHTML = `
         <h4 class="chart-overlay-title-floating">${indicatorName}</h4>
         <button class="chart-overlay-close">&times;</button>
+        <div class="chart-overlay-range-picker" style="display: flex; gap: 4px; padding: 4px 8px; justify-content: flex-start;">
+            <button class="range-btn" data-range="3">3M</button>
+            <button class="range-btn" data-range="6">6M</button>
+            <button class="range-btn" data-range="12">1Y</button>
+            <button class="range-btn active" data-range="all">All</button>
+        </div>
         <div class="chart-overlay-body">
             <div class="chart-overlay-loading">
                 <div class="chart-overlay-loading-spinner"></div>
@@ -87,6 +96,32 @@ function createChartOverlay(indicator, indicatorName) {
 
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) hideChartOverlay(overlay);
+    });
+
+    // Range picker buttons
+    overlay.querySelectorAll('.range-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            overlay.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Re-render chart with new range
+            if (overlay._chartInstance) {
+                overlay._chartInstance.destroy();
+                overlay._chartInstance = null;
+            }
+            const fullConfig = getChartConfig(indicatorName, window.financialData.indices);
+            const slicedConfig = sliceChartDataByRange(fullConfig, btn.dataset.range);
+            const body = overlay.querySelector('.chart-overlay-body');
+            body.innerHTML = '';
+            const canvas = document.createElement('canvas');
+            canvas.className = 'chart-overlay-canvas';
+            canvas.id = `overlay-${indicatorName.replace(/\s+/g, '-').toLowerCase()}-chart-${Date.now()}`;
+            body.appendChild(canvas);
+            const chartInstance = initializeChartInOverlay(slicedConfig, canvas);
+            if (chartInstance) overlay._chartInstance = chartInstance;
+        });
     });
 
     showChartOverlay(indicator, indicatorName, overlay);
@@ -256,6 +291,26 @@ function initializeChartInOverlay(chartConfig, canvas) {
 
     window[canvas.id + 'Chart'] = chartInstance;
     return chartInstance;
+}
+
+function sliceChartDataByRange(config, months) {
+    if (!config || !config.data || months === 'all') return config;
+    const count = parseInt(months);
+    if (isNaN(count)) return config;
+
+    const slicedConfig = JSON.parse(JSON.stringify(config));
+    const totalPoints = slicedConfig.data.labels.length;
+    const startIndex = Math.max(0, totalPoints - count);
+
+    slicedConfig.data.labels = slicedConfig.data.labels.slice(startIndex);
+    slicedConfig.data.datasets.forEach(ds => {
+        ds.data = ds.data.slice(startIndex);
+        if (ds.backgroundColor && Array.isArray(ds.backgroundColor)) {
+            ds.backgroundColor = ds.backgroundColor.slice(startIndex);
+        }
+    });
+
+    return slicedConfig;
 }
 
 function getChartConfig(indicatorName, indices) {

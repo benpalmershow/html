@@ -962,11 +962,14 @@ function extractCardData(html) {
     };
 }
 
-async function loadAndRenderPosts(posts) {
+async function loadAndRenderPosts(posts, isLoadMore = false) {
     if (!posts.length) return;
 
+    // For initial load, only process the first batch
+    const postsToProcess = isLoadMore ? posts : posts.slice(0, CONFIG.INITIAL_LOAD);
+
     // Fetch content
-    const postsWithContent = await Promise.all(posts.map(async post => {
+    const postsWithContent = await Promise.all(postsToProcess.map(async post => {
         if (!post.file) return null;
         const parsed = await parseMarkdownFile(post.file);
         const raw = parsed && typeof parsed === 'object' && 'content' in parsed ? parsed.content : String(parsed);
@@ -1053,6 +1056,16 @@ async function loadAndRenderPosts(posts) {
             });
         }
     }
+    
+    // Show load more button if there are more posts to load (only for 'All' filter)
+    const activeBtn = filterContainer?.querySelector('.filter-btn.active');
+    const currentCategory = activeBtn ? activeBtn.dataset.category : 'all';
+    if (currentCategory === 'all' && !isLoadMore) {
+        const remaining = state.allPosts.length - state.loadedCount;
+        if (remaining > 0) {
+            showLoadMoreButton();
+        }
+    }
 
     // Restore expanded card state if available
     const expandedIndex = getExpandedCardState();
@@ -1082,7 +1095,6 @@ function showLoadMoreButton() {
     btn.innerHTML = `
         <span>Dopamine</span>
         <i data-lucide="chevron-down"></i>
-        <span class="remaining-count">(${remaining} remaining)</span>
     `;
     btn.onclick = loadMorePosts;
     
@@ -1119,7 +1131,7 @@ async function loadMorePosts() {
     }
     
     const nextBatch = state.allPosts.slice(state.loadedCount, state.loadedCount + CONFIG.BATCH_SIZE);
-    await loadAndRenderPosts(nextBatch);
+    await loadAndRenderPosts(nextBatch, true); // Pass true for isLoadMore
     
     const stillRemaining = state.allPosts.length - state.loadedCount;
     if (stillRemaining > 0) {
@@ -1140,10 +1152,43 @@ function initIndexFilters() {
         filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const category = btn.dataset.category;
-        document.querySelectorAll('.announcement-card').forEach(card => {
-            const cardCategory = card.dataset.category || 'posts';
-            card.style.display = (category === 'all' || cardCategory === category) ? '' : 'none';
-        });
+        
+        // Hide or show load more button based on filter
+        if (category === 'all') {
+            // Show all cards and check if load more is needed
+            document.querySelectorAll('.announcement-card').forEach(card => {
+                card.style.display = '';
+            });
+            
+            // Show load more button if there are more posts to load
+            const remaining = state.allPosts.length - state.loadedCount;
+            if (remaining > 0) {
+                showLoadMoreButton();
+            } else {
+                hideLoadMoreButton();
+            }
+        } else {
+            // Hide load more button for filtered views
+            hideLoadMoreButton();
+            
+            // Load all posts for this filter if not already loaded
+            if (state.loadedCount < state.allPosts.length) {
+                // Load remaining posts and then filter
+                loadAndRenderPosts(state.allPosts.slice(state.loadedCount), true).then(() => {
+                    // Now filter all posts
+                    document.querySelectorAll('.announcement-card').forEach(card => {
+                        const cardCategory = card.dataset.category || 'posts';
+                        card.style.display = cardCategory === category ? '' : 'none';
+                    });
+                });
+            } else {
+                // All posts already loaded, just filter
+                document.querySelectorAll('.announcement-card').forEach(card => {
+                    const cardCategory = card.dataset.category || 'posts';
+                    card.style.display = cardCategory === category ? '' : 'none';
+                });
+            }
+        }
     });
 }
 

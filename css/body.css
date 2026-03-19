@@ -354,7 +354,8 @@ h1.page-title {
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* ========================================

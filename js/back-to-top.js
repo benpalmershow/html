@@ -30,8 +30,10 @@
 
     function handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPct = docHeight > 0 ? scrollTop / docHeight : 0;
         
-        if (scrollTop > scrollThreshold) {
+        if (scrollTop > scrollThreshold || scrollPct > 0.5) {
             backToTopButton.classList.add('visible');
         } else {
             backToTopButton.classList.remove('visible');

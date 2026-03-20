@@ -215,7 +215,7 @@
     height: 17px;
     padding: 0 4px;
     border-radius: 999px;
-    background: linear-gradient(135deg, var(--color-secondary, #d4822a), var(--accent-primary, #2c5f5a));
+    background: linear-gradient(135deg, var(--color-secondary, #d4822a), var(--color-primary, #2c5f5a));
     color: var(--color-white, #fff);
     border: 1.5px solid var(--bg-primary, #fdf6e8);
     font-size: 0.6rem;
@@ -223,8 +223,49 @@
     line-height: 15px;
     text-align: center;
     pointer-events: none;
-    box-shadow: 0 2px 8px rgba(var(--accent-primary-rgb), 0.3);
+    box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
     animation: helpBadgePulse 1.4s ease-in-out infinite;
+    z-index: 10;
+}
+
+/* Nav update badges - constrained to within icon circumference */
+.new-count-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 14px;
+    height: 14px;
+    padding: 0 3px;
+    border-radius: 999px;
+    background: var(--color-secondary, #d4822a);
+    color: var(--color-white, #fff);
+    border: 1.5px solid var(--bg-primary, #fdf6e8);
+    font-size: 0.5rem;
+    font-weight: 800;
+    font-family: var(--font-mono, monospace);
+    line-height: 1;
+    text-align: center;
+    pointer-events: none;
+    z-index: 5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    animation: badgeIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center;
+}
+
+.new-count-badge.nav-badge {
+    top: 1px;
+    right: 1px;
+    min-width: 15px;
+    height: 15px;
+    font-size: 0.52rem;
+}
+
+@keyframes badgeIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .hints-notification-badge::after {

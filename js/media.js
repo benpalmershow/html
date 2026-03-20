@@ -34,7 +34,7 @@
     const STORE_NAME = 'media-data';
     const CACHE_DURATION = 5 * 60 * 1000;
     const BATCH_SIZE = 12;
-    const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'song', 'video', 'article'];
+    const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video', 'article'];
     const PLATFORM_ICONS = {
         spotify: 'spotify-link',
         apple: 'apple-link',
@@ -353,7 +353,7 @@
             // TMDB optimization: Ensure w500 size for fast loads (50KB vs original)
             // media.themoviedb.org is CORS-friendly CDN, faster than www.themoviedb.org
             let optimizedCover = item.cover;
-            if (item.cover.includes('media.themoviedb.org')) {
+            if (item.cover.includes('themoviedb.org') || item.cover.includes('tmdb.org')) {
                 // Normalize any original/ references to w500/ for consistency
                 optimizedCover = item.cover.replace(/\/original\//, '/w500/');
             }
@@ -529,7 +529,7 @@
         if (item.author) {
             const author = document.createElement('div');
             author.className = 'media-author';
-            author.textContent = item.mediaType === 'movie' ? `Director: ${item.author}` : item.mediaType === 'playlist' ? `Curator: ${item.author}` : item.author;
+            author.textContent = item.mediaType === 'movie' ? `Director: ${item.author}` : item.mediaType === 'playlist' ? `Curator: ${item.author}` : item.mediaType === 'album' ? `Artist: ${item.author}` : item.author;
             overlayContent.appendChild(author);
         }
 
@@ -576,6 +576,7 @@
         'song': 'fas fa-music',
         'video': 'fas fa-video',
         'movie': 'fas fa-film',
+        'album': 'fas fa-music',
         'article': 'fas fa-newspaper'
     };
 

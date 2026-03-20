@@ -69,7 +69,6 @@ function createChartOverlay(indicator, indicatorName) {
     const overlay = document.createElement('div');
     overlay.className = 'chart-overlay';
     overlay.innerHTML = `
-        <h4 class="chart-overlay-title-floating">${indicatorName}</h4>
         <div class="chart-overlay-range-picker">
             <button class="range-btn" data-range="3">3M</button>
             <button class="range-btn" data-range="6">6M</button>

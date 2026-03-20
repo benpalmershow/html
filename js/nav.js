@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const PAGES = [
     { name: 'Home', file: 'index.html', icon: '' },
-    { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'federal-reserve.webp' },
+    { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'read.webp' },
     { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', icon: 'media.webp' },
-    { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'read.webp' }
+    { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'announcements.webp' }
   ];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hint-steps">
             <div class="hint-step">
               <picture>
-                <source srcset="images/federal-reserve.webp" type="image/webp">
-                <img src="images/federal-reserve.webp" alt="Numbers" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+                <source srcset="images/read.webp" type="image/webp">
+                <img src="images/read.webp" alt="Numbers" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
               </picture>
               <div>
                 <strong>Numbers:</strong> Economic indicators, financial data, and market trends
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
               <div class="hint-step">
                <picture>
-                <source srcset="images/read.webp" type="image/webp">
-                <img src="images/read.webp" alt="Tweets" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+                <source srcset="images/announcements.webp" type="image/webp">
+                <img src="images/announcements.webp" alt="Tweets" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
               </picture>
                <div>
                  <strong>Tweets:</strong> Independent commentary and personal insights
@@ -114,82 +114,84 @@ document.addEventListener('DOMContentLoaded', () => {
   navContainer.innerHTML = navHTML;
 
   // Badge system — show counts on nav links for new content
-  if (isHomepage) {
-    const FIRST_VISIT_KEY = 'new_badges_seeded';
-    const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
+  const FIRST_VISIT_KEY = 'new_badges_seeded';
+  const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
 
-    const addBadge = (file, count, storageKey, latestVal, label) => {
-      if (isFirstVisit) {
-        try { localStorage.setItem(storageKey, latestVal); } catch {}
-        return;
-      }
-      if (count <= 0 && !label) return;
-      const display = label || (count > 9 ? '9+' : String(count));
-
-      const navLink = navContainer.querySelector('a.nav-link:not(.nav-logo)[href="' + file + '"]');
-      if (!navLink) return;
-      navLink.parentElement.style.position = 'relative';
-      const badge = document.createElement('span');
-      badge.className = 'new-count-badge nav-badge';
-      badge.textContent = display;
-      badge.title = label || (count + ' new');
-      navLink.parentElement.appendChild(badge);
-      navLink.addEventListener('click', () => {
-        try { localStorage.setItem(storageKey, latestVal); } catch {}
-      });
-    };
-
-    const cache = Date.now();
-    // Numbers
-    fetch('json/financials-data.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
-      if (!data || !data.lastUpdated) return;
-      const key = 'new_seen_financials';
-      const seen = localStorage.getItem(key);
-      if (seen === data.lastUpdated) return;
-      const t = new Date(data.lastUpdated).getTime();
-      const diff = Date.now() - t;
-      if (diff > 2 * 86400000) return;
-      addBadge('financials.html', 1, key, data.lastUpdated);
-    }).catch(() => {});
-
-    // Media
-    fetch('json/media.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
-      if (!data || !data.length) return;
-      const key = 'new_seen_media';
-      const seen = localStorage.getItem(key);
-      const cutoff = Date.now() - 2 * 86400000;
-      const sorted = data.filter(m => m.dateAdded).sort((a, b) => b.dateAdded.localeCompare(a.dateAdded));
-      let count = 0;
-      for (const m of sorted) {
-        const t = new Date(m.dateAdded + 'T00:00:00').getTime();
-        if (t < cutoff) break;
-        if (seen && m.dateAdded === seen) break;
-        count++;
-      }
-      if (sorted.length) addBadge('media.html', count, key, sorted[0].dateAdded);
-    }).catch(() => {});
-
-    // Tweets
-    fetch('json/journal.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
-      if (!data || !data.length) return;
-      const key = 'new_seen_journal';
-      const seen = localStorage.getItem(key);
-      const cutoff = Date.now() - 2 * 86400000;
-      let count = 0;
-      for (const day of data) {
-        const [m, d, y] = day.date.split('/').map(Number);
-        if (new Date(2000 + y, m - 1, d).getTime() < cutoff) break;
-        if (seen && day.date === seen) break;
-        count += (day.entries ? day.entries.length : 0);
-      }
-      addBadge('journal.html', count, key, data[0].date);
-    }).catch(() => {});
-
+  const addBadge = (file, count, storageKey, latestVal, label) => {
     if (isFirstVisit) {
-      try { localStorage.setItem(FIRST_VISIT_KEY, '1'); } catch {}
+      try { localStorage.setItem(storageKey, latestVal); } catch {}
+      return;
     }
+    if (count <= 0 && !label) return;
+    const display = label || (count > 9 ? '9+' : String(count));
 
+    const navLink = navContainer.querySelector('a.nav-link:not(.nav-logo)[href="' + file + '"]');
+    if (!navLink) return;
 
+    // Check if badge already exists
+    if (navLink.querySelector('.new-count-badge')) return;
+
+    const badge = document.createElement('span');
+    badge.className = 'new-count-badge nav-badge';
+    badge.textContent = display;
+    badge.title = label || (count + ' new');
+    badge.setAttribute('aria-hidden', 'true');
+    
+    navLink.appendChild(badge);
+    
+    navLink.addEventListener('click', () => {
+      try { localStorage.setItem(storageKey, latestVal); } catch {}
+    });
+  };
+
+  const cache = Date.now();
+  // Numbers
+  fetch('json/financials-data.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
+    if (!data || !data.lastUpdated) return;
+    const key = 'new_seen_financials';
+    const seen = localStorage.getItem(key);
+    if (seen === data.lastUpdated) return;
+    const t = new Date(data.lastUpdated).getTime();
+    const diff = Date.now() - t;
+    if (diff > 2 * 86400000) return;
+    addBadge('financials.html', 1, key, data.lastUpdated);
+  }).catch(() => {});
+
+  // Media
+  fetch('json/media.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
+    if (!data || !data.length) return;
+    const key = 'new_seen_media';
+    const seen = localStorage.getItem(key);
+    const cutoff = Date.now() - 2 * 86400000;
+    const sorted = data.filter(m => m.dateAdded).sort((a, b) => b.dateAdded.localeCompare(a.dateAdded));
+    let count = 0;
+    for (const m of sorted) {
+      const t = new Date(m.dateAdded + 'T00:00:00').getTime();
+      if (t < cutoff) break;
+      if (seen && m.dateAdded === seen) break;
+      count++;
+    }
+    if (sorted.length && count > 0) addBadge('media.html', count, key, sorted[0].dateAdded);
+  }).catch(() => {});
+
+  // Tweets
+  fetch('json/journal.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
+    if (!data || !data.length) return;
+    const key = 'new_seen_journal';
+    const seen = localStorage.getItem(key);
+    const cutoff = Date.now() - 2 * 86400000;
+    let count = 0;
+    for (const day of data) {
+      const [m, d, y] = day.date.split('/').map(Number);
+      if (new Date(2000 + y, m - 1, d).getTime() < cutoff) break;
+      if (seen && day.date === seen) break;
+      count += (day.entries ? day.entries.length : 0);
+    }
+    if (count > 0) addBadge('journal.html', count, key, data[0].date);
+  }).catch(() => {});
+
+  if (isFirstVisit) {
+    try { localStorage.setItem(FIRST_VISIT_KEY, '1'); } catch {}
   }
 
   // Initialize Lucide icons for the navbar

@@ -188,10 +188,10 @@ Use 13-digit ISBN
 
 **10. TMDB (movies ONLY)**
 ```
-https://media.themoviedb.org/t/p/w500/[PATH].jpg (recommended)
-https://media.themoviedb.org/t/p/w780/[PATH].jpg (higher quality)
+https://image.tmdb.org/t/p/w500/[PATH].jpg (standard)
+https://media.themoviedb.org/t/p/w500/[PATH].jpg (alternative)
 ```
-**IMPORTANT:** Use `media.themoviedb.org` (NOT `www.themoviedb.org`) to avoid CORS issues.
+**IMPORTANT:** Use `image.tmdb.org` or `media.themoviedb.org` (NOT `www.themoviedb.org`) to avoid CORS issues. Our system automatically optimizes `original/` paths to `w500/`.
 
 **11. Wikipedia/Wikimedia Commons** (classic/notable books)
 ```
@@ -285,6 +285,27 @@ https://upload.wikimedia.org/wikipedia/en/[hash]/[hash]/[filename].jpg
   "description": "",
   "links": [],
   "thumbs": "",
+  "dateAdded": "YYYY-MM-DD"
+}
+```
+
+**Album Template:**
+```json
+{
+  "title": "",
+  "author": "",
+  "mediaType": "album",
+  "description": "",
+  "date": "YYYY",
+  "genre": "",
+  "titleColor": "#ffffff",
+  "tag": "",
+  "thumbs": "",
+  "cover": "",
+  "links": [
+    {"label": "YouTube Music", "icon": "fab fa-youtube", "url": ""},
+    {"label": "Spotify", "icon": "fab fa-spotify", "url": ""}
+  ],
   "dateAdded": "YYYY-MM-DD"
 }
 ```
@@ -642,6 +663,17 @@ Added "Land Power" by Michael Albertus to the media collection. The book examine
   - `https://v3-cinemeta.strem.io/meta/movie/[IMDB_ID].json` for structured metadata (director, genre, year, runtime, trailer source)
 - Do not invent unverifiable fields. If rating, year, or trailer cannot be confirmed from reliable endpoints, leave the field blank.
 - Treat conflicting year values as a verification issue. Prefer the structured ID metadata source used for the rest of the entry, and document the choice.
+
+### Artist vs Curator Labels
+**From "The Köln Concert" implementation:**
+- `mediaType: "album"` → Displays as **Artist: [Name]**
+- `mediaType: "playlist"` → Displays as **Curator: [Name]**
+- `mediaType: "movie"` → Displays as **Director: [Name]**
+- Always use `album` for artist-driven musical works and `playlist` for curated collections (e.g., "JanCara").
+
+### TMDB Domain Flexibility
+- The system now handles both `image.tmdb.org` and `media.themoviedb.org` automatically.
+- Both domains are optimized to `w500` size by the frontend to ensure fast loading.
 
 ### Future Enhancements
 - Integrate Goodreads/Amazon ratings automatically via API

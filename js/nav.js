@@ -1,6 +1,7 @@
 // Generate sticky navbar with links to all pages
 document.addEventListener('DOMContentLoaded', () => {
   const navContainer = document.getElementById('main-nav');
+  const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
 
   const PAGES = [
     { name: 'Home', file: 'index.html', icon: '' },
@@ -144,9 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const cache = Date.now();
+  const fetchJson = (path) => fetch(path + '?v=' + encodeURIComponent(siteDataVersion))
+    .then(r => r.ok ? r.json() : null);
+
   // Numbers
-  fetch('json/financials-data.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
+  fetchJson('json/financials-data.json').then(data => {
     if (!data || !data.lastUpdated) return;
     const key = 'new_seen_financials';
     const seen = localStorage.getItem(key);
@@ -158,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }).catch(() => {});
 
   // Media
-  fetch('json/media.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
+  fetchJson('json/media.json').then(data => {
     if (!data || !data.length) return;
     const key = 'new_seen_media';
     const seen = localStorage.getItem(key);
@@ -175,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }).catch(() => {});
 
   // Tweets
-  fetch('json/journal.json?v=' + cache).then(r => r.ok ? r.json() : null).then(data => {
+  fetchJson('json/journal.json').then(data => {
     if (!data || !data.length) return;
     const key = 'new_seen_journal';
     const seen = localStorage.getItem(key);

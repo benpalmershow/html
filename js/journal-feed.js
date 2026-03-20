@@ -1,3 +1,70 @@
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function sanitizeHtml(html) {
+  if (!html) return '';
+
+  if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
+    return window.DOMPurify.sanitize(html, {
+      USE_PROFILES: { html: true },
+      FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form']
+    });
+  }
+
+  const template = document.createElement('template');
+  template.innerHTML = html;
+
+  template.content.querySelectorAll('script, style, iframe, object, embed, form').forEach(node => node.remove());
+
+  template.content.querySelectorAll('*').forEach(node => {
+    Array.from(node.attributes).forEach(attr => {
+      const name = attr.name.toLowerCase();
+      const value = attr.value.trim();
+
+      if (name.startsWith('on')) {
+        node.removeAttribute(attr.name);
+        return;
+      }
+
+      if ((name === 'href' || name === 'src' || name === 'xlink:href') && /^javascript:/i.test(value)) {
+        node.removeAttribute(attr.name);
+      }
+    });
+  });
+
+  return template.innerHTML;
+}
+
+async function ensureHtmlSanitizer() {
+  if (window.DOMPurify) {
+    return;
+  }
+
+  if (window.loadDOMPurify && typeof window.loadDOMPurify === 'function') {
+    try {
+      await window.loadDOMPurify();
+      return;
+    } catch (error) {
+      console.warn('DOMPurify loader failed, using fallback sanitizer', error);
+    }
+  }
+
+  await new Promise(resolve => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js';
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.head.appendChild(script);
+  });
+}
+
 function linkify(text) {
   const urlRegex = /https?:\/\/[^\s]+/g;
   return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
@@ -32,6 +99,7 @@ async function waitForMarked() {
 
 async function loadJournalEntries() {
   const journalFeed = document.getElementById('journal-feed');
+  const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
   if (!journalFeed) {
     console.error('Journal feed element not found');
     return;
@@ -39,7 +107,8 @@ async function loadJournalEntries() {
 
   try {
     await waitForMarked();
-    const response = await fetch('/json/journal.json');
+    await ensureHtmlSanitizer();
+    const response = await fetch(`json/journal.json?v=${encodeURIComponent(siteDataVersion)}`);
     if (!response.ok) {
       throw new Error(`Failed to load journal entries: ${response.status} ${response.statusText}`);
     }
@@ -115,7 +184,7 @@ async function renderEntryFromFile(entry, entryId) {
     const md = await fileResponse.text();
     const parts = md.split(/^---$/m);
     let content = md.trim();
-    if (parts.length >= 3) {
+  if (parts.length >= 3) {
       content = parts.slice(2).join('---').trim();
     }
 
@@ -128,15 +197,19 @@ async function renderEntryFromFile(entry, entryId) {
       }
     }
 
-    return `<div id="${entryId}" class="entry"><div class="entry-title">${entry.title}</div><div class="entry-content">${htmlContent}</div></div>`;
+    const safeTitle = escapeHtml(entry.title);
+    const safeContent = sanitizeHtml(htmlContent);
+    return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
   } catch (err) {
     console.error('Failed to load file:', entry.file, err);
-    return `<div id="${entryId}" class="entry"><div class="entry-title">${entry.title}</div><div class="entry-content">Unable to load content.</div></div>`;
+    const safeTitle = escapeHtml(entry.title);
+    return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
   }
 }
 
 function renderInlineEntry(entry, entryId) {
-   let content = entry.content.includes('<') ? entry.content : linkify(entry.content);
+   const safeTitle = escapeHtml(entry.title);
+   let content = entry.content.includes('<') ? sanitizeHtml(entry.content) : linkify(escapeHtml(entry.content));
    
    // Handle paragraph breaks if content doesn't contain HTML
    if (!entry.content.includes('<')) {
@@ -146,7 +219,7 @@ function renderInlineEntry(entry, entryId) {
        .join('');
    }
    
-   return `<div id="${entryId}" class="entry"><div class="entry-title">${entry.title}</div><div class="entry-content">${content}</div></div>`;
+   return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">${content}</div></div>`;
 }
 
 function scrollToHash() {

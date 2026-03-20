@@ -220,7 +220,8 @@ function setupExpandHandlers(SELECTORS) {
 
 function setupModalHandlers() {
     const modal = document.getElementById('chartModal');
-    if (!modal) return;
+    if (!modal || modal.dataset.handlersBound === 'true') return;
+    modal.dataset.handlersBound = 'true';
 
     const closeBtn = document.getElementById('closeChartModal');
     if (closeBtn) {

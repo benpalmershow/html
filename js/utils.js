@@ -1,5 +1,7 @@
 // Utility functions for formatting and data manipulation
 
+const DEFAULT_MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
 // Helper: Check if a value contains valid data
 function isValidData(value) {
     return value && value !== '' && !value.startsWith('TBD');
@@ -102,7 +104,7 @@ function formatCompactNumber(num) {
     return (num >= 0 ? '+' : '') + formatted;
 }
 
-function getLatestMonthForIndicator(indicator, MONTHS) {
+function getLatestMonthForIndicator(indicator, MONTHS = DEFAULT_MONTHS) {
      // Find year-nested data (keys that are numeric/year-like)
      const yearKeys = Object.keys(indicator)
          .filter(key => /^\d{4}$/.test(key))

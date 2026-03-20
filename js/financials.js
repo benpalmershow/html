@@ -47,15 +47,15 @@ function scrollToIndicatorByName(indicatorName) {
 
 // Fetch financial data and initialize dashboard
 async function fetchFinancialData() {
+    const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
     const paths = [
-        '/json/financials-data.json',
+        `json/financials-data.json?v=${encodeURIComponent(siteDataVersion)}`,
     ];
 
     try {
         const fetchPromises = paths.map(async path => {
             const response = await fetch(path, {
-                headers: { 'Accept': 'application/json' },
-                cache: 'no-cache'
+                headers: { 'Accept': 'application/json' }
             });
             if (!response.ok) throw new Error(`Failed to fetch from ${path}`);
             return response.json();

@@ -125,9 +125,7 @@
                 return;
             }
 
-            // Get cache-busting version from meta tag or use timestamp
-            const metaTag = document.querySelector('meta[name="last-commit"]');
-            const version = metaTag?.content || Date.now();
+            const version = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
 
             const response = await fetch(`json/media.json?v=${encodeURIComponent(version)}`);
 

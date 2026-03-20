@@ -9,6 +9,7 @@
   <meta name="author" content="Ben Palmer">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#1a1f1e">
+  <meta name="site-data-version" content="20260320">
 
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -111,7 +112,10 @@
 
   <!-- Pre-fetch posts data -->
   <script>
-    window.postsPromise = fetch('json/posts.json?v=' + Date.now())
+    const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
+    window.siteDataVersion = siteDataVersion;
+
+    window.postsPromise = fetch('json/posts.json?v=' + encodeURIComponent(siteDataVersion))
       .then(r => {
         if (!r.ok) throw new Error('Failed to load posts');
         return r.json();
@@ -121,7 +125,7 @@
         return null;
       });
     // Also prefetch articles.json
-    window.articlesPromise = fetch('json/articles.json?v=' + Date.now())
+    window.articlesPromise = fetch('json/articles.json?v=' + encodeURIComponent(siteDataVersion))
       .then(r => {
         if (!r.ok) throw new Error('Failed to load articles');
         return r.json();
@@ -145,7 +149,7 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://howdystranger.net/search?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"en-US","copyrightYear":2026,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
+  [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"inLanguage":"en-US","copyrightYear":2026,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
   </script>
 
   <!-- Google News Subscribe with Google (SwG) - Production only -->
@@ -329,6 +333,11 @@
       window.loadMarked = () => new Promise(resolve => {
         if (window.marked) return resolve(window.marked);
         loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js', () => resolve(window.marked));
+      });
+
+      window.loadDOMPurify = () => new Promise(resolve => {
+        if (window.DOMPurify) return resolve(window.DOMPurify);
+        loadScript('https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js', () => resolve(window.DOMPurify || null));
       });
 
       window.loadChartJS = () => new Promise(resolve => {

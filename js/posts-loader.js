@@ -116,6 +116,40 @@ function parseMarkdownContent(md) {
     return { content: html, metadata };
 }
 
+function sanitizeHtml(html) {
+    if (!html) return '';
+
+    if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
+        return window.DOMPurify.sanitize(html, {
+            USE_PROFILES: { html: true },
+            FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form']
+        });
+    }
+
+    const template = document.createElement('template');
+    template.innerHTML = html;
+
+    template.content.querySelectorAll('script, style, iframe, object, embed, form').forEach(node => node.remove());
+
+    template.content.querySelectorAll('*').forEach(node => {
+        Array.from(node.attributes).forEach(attr => {
+            const name = attr.name.toLowerCase();
+            const value = attr.value.trim();
+
+            if (name.startsWith('on')) {
+                node.removeAttribute(attr.name);
+                return;
+            }
+
+            if ((name === 'href' || name === 'src' || name === 'xlink:href') && /^javascript:/i.test(value)) {
+                node.removeAttribute(attr.name);
+            }
+        });
+    });
+
+    return template.innerHTML;
+}
+
 async function processBadges(html) {
     // Template: {{badge:Indicator Name}} - calculates MoM from financials-data
     const badgeRegex = /\{\{badge:([^}]+)\}\}/g;
@@ -288,6 +322,18 @@ function waitForMarked() {
             resolve();
         }, 3000);
     });
+}
+
+async function ensureHtmlSanitizer() {
+    if (window.DOMPurify) return;
+
+    if (typeof window.loadDOMPurify === 'function') {
+        try {
+            await window.loadDOMPurify();
+        } catch (error) {
+            console.warn('DOMPurify load failed, using fallback sanitizer', error);
+        }
+    }
 }
 
 /* =========================================
@@ -892,6 +938,7 @@ async function initPosts() {
     });
 
     await waitForMarked();
+    await ensureHtmlSanitizer();
     // state.feed.innerHTML = ''; // REMOVED: Prevent flicker by keeping skeletons until data is ready
 
     try {
@@ -901,7 +948,7 @@ async function initPosts() {
         
         // Also load articles.json and merge
         try {
-            const articlesJson = await (await fetch(CONFIG.ARTICLES_JSON_URL)).json();
+            const articlesJson = window.articlesPromise ? await window.articlesPromise : await (await fetch(CONFIG.ARTICLES_JSON_URL)).json();
             if (Array.isArray(articlesJson)) {
                 // Convert articles to posts format - they use 'id' to reference 'article/{id}.md'
                 const articlesAsPosts = articlesJson.map(article => ({
@@ -973,7 +1020,7 @@ async function loadAndRenderPosts(posts, isLoadMore = false) {
         if (!post.file) return null;
         const parsed = await parseMarkdownFile(post.file);
         const raw = parsed && typeof parsed === 'object' && 'content' in parsed ? parsed.content : String(parsed);
-        let content = raw;
+        let content = sanitizeHtml(raw);
         if (content.includes('{{badge:')) content = await processBadges(content);
         if (content.includes('{{chart:')) content = processCharts(content);
         content = wrapImagesInLinks(content);

@@ -1,116 +1,101 @@
-# Agent Guidelines for Howdy, Stranger
+# AGENTS.md
 
-## Build/Lint/Test Commands
+This file provides guidance to WARP (warp.dev) when working with code in this repository.
 
-**Build Commands:**
-- No automated build process - static HTML/CSS/JS site
-- No traditional package.json build scripts
+## Local Development
 
-**Testing:**
-- No formal test runner configured
-- Manual testing via browser console for functionality
+No build step. Serve locally from the repo root:
+```bash
+python -m http.server 8000
+# or
+npx serve .
+```
+Then open `http://localhost:8000`. Visually verify charts render after any content or JS change.
 
-**Linting:**
-- No linting tools configured (no ESLint, Prettier, etc.)
-- Code style maintained through manual review
+## Architecture
 
-## Architecture & Codebase Structure
+**Howdy, Stranger** is a static HTML/CSS/JS site for independent economic commentary. There is no framework, no bundler, and no database - JSON files are the runtime data source, deployed to Vercel with no build step.
 
-**Project Type:** Static HTML website for independent economic commentary and news
+**Entry points** (`index.html`, `financials.html`, `news.html`, `journal.html`, `media.html`, `portfolio.html`) compose reusable HTML fragments from `components/` (header, footer, analytics, fonts, etc.) and pull runtime data from `json/`.
 
-**Key Directories:**
-- `article/` - Markdown and HTML article content files
-- `css/` - Stylesheets (body.css, nav.css, index.css, news.css, financials.css, media.css, journal-tweets.css)
-- `docs/` - Documentation
-- `images/` - Static image assets (logos, favicons, webp images)
-- `js/` - JavaScript modules (nav, posts-loader, socials, financials, journal-feed, media, news, portfolio, countdown, animations, bfcache-compat, speed-insights, news-preview)
-- `json/` - Data files (posts, articles, media, journal, portfolio, financials-data)
+**Content pipeline:**
+- Long-form articles live in `article/` (and `_/` for drafts/archive)
+- Short posts live in `article/posts/` as markdown with YAML frontmatter
+- `json/posts.json` is the post index, consumed by `js/posts-loader.js` (prefetched via `window.postsPromise` in `index.html`)
+- `js/posts-loader.js` parses markdown, extracts snippets, injects chart placeholders (`{{chart:Name}}`), and relies on `marked`, `Chart.js`, and `lucide` being available globally via CDN
 
-**Subprojects/APIs:**
-- **Content Management**: Post loading via posts-loader.js, journal feeds, media curation, portfolio management
-- **Dynamic Pages**: Financial data, news aggregation, media feeds, portfolio display, countdown timers
+**Financial data:** `json/financials-data.json` holds all indicators and prediction markets. Charts and the financials page render from this file via `js/charts.js` and `js/financials.js`.
 
-**No databases** - static site with JSON data files
+**Other data files:**
+- `json/media.json` - curated media
+- `json/journal.json` - journal/tweet feed
+- `json/portfolio.json` - investment portfolio
+- `json/13f-holdings.json` - 13F holdings (updated by `scripts/get_latest_13f_holdings_final.py`)
 
-## Code Style Guidelines
+**`scripts/`** contains utility scripts (RSS generation, Python data fetchers). See `docs/financial_fetch.md` for the full data update SOP.
 
-**JavaScript:**
-- ES6+ modules with import/export syntax
-- Async/await for asynchronous operations
-- DOM manipulation with modern APIs
-- Event listeners and dynamic content loading
-- Console logging for debugging (no formal logging framework)
+## Posts Workflow
 
-**HTML:**
-- Semantic HTML5 structure
-- Accessibility features (ARIA labels, alt text, proper heading hierarchy)
-- SEO-optimized meta tags and structured data (JSON-LD)
-- Responsive design with viewport meta tags
+See `docs/posts-prd.md` for full spec. Quick reference:
 
-**CSS:**
-- CSS custom properties (variables) for theming
-- Flexbox and CSS Grid for layouts
-- Media queries for responsive design
-- CSS animations and transitions
-- Dark mode support with CSS variables
-- Always ensure new features work in both light and dark modes
-- Avoid color contrast issues: prevent light text on light backgrounds and dark text on dark backgrounds by using theme-aware CSS variables
-- Text colors should be black in light mode and white in dark mode
+1. Create `article/posts/YYYY-MM-DD-slug.md` with YAML frontmatter:
+   ```markdown
+   ---
+   date: 2025-11-22T10:50:00Z
+   category: financials
+   ---
+   ```
+2. Add an entry to `json/posts.json` (newest first):
+   ```json
+   { "date": "2025-11-22T10:50:00Z", "file": "article/posts/2025-11-22-slug.md" }
+   ```
+3. Use `<p>` tags for paragraphs (not `<br><br>`) - snippet extraction depends on them.
+4. Use `{{chart:Indicator Name}}` to embed a chart; the name must exactly match the `name` field in `json/financials-data.json`.
+5. Use Lucide icons (`<i data-lucide='icon-name' class='post-icon'></i>`), not emojis.
+6. Keep posts under 150 words. Use `<b>` for bold, not `**markdown**`.
+7. Internal links to financials use query params: `financials.html?filter=Category%20Name` (not hash anchors).
 
-**Naming Conventions:**
-- kebab-case for file names (e.g., `posts-loader.js`, `journal-tweets.css`)
-- camelCase for JavaScript variables and functions
-- CSS classes use descriptive names with hyphens
+**MoM percentage formula:** `((Current - Previous) / Previous) × 100`, rounded to one decimal. Always verify arithmetic.
 
-**Error Handling:**
-- Try/catch blocks around async operations
-- Console.error for error logging
-- Graceful degradation for missing resources
+**Use the latest data:** In `financials-data.json`, always read the most recent year object (e.g., `"2026": {"february": "60.04"}`), not older monthly fields.
 
-**Imports:**
-- Relative imports within the project
-- CDN imports for external libraries (Chart.js, marked.js, Font Awesome, lucide)
-- Deferred and async loading for non-critical scripts
+## Financial Data Updates
 
-## Content Update Guidelines
+See `docs/financial_fetch.md` for the full SOP (NFL predictions, FOMC markets, economic indicators).
 
-**Posts in posts.json:**
-- When creating new posts, include the latest updates from financials-data.json or other relevant data sources (e.g., prediction markets, news).
-- **CRITICAL: Use the latest available data point** - Always check the most recent year object in the JSON (e.g., `"2026"` object for current data), not previous year monthly data
-- Example: For WTI Crude Oil, use the value in `"2026": {"february": "60.04"}` not the `"february": "71.53"` from 2025 monthly data
-- Use current month data available in JSON files; avoid missing recent monthly updates that have been saved.
+- **Never** enter market odds without verifying live from Kalshi/Polymarket URLs.
+- Always include `lastUpdated` (ISO timestamp) and source URLs in any JSON data change.
+- NFL format is always `AWAY @ HOME`.
 
-**Calculating Month-over-Month (MoM) Percentages:**
-- **Formula**: `((Current - Previous) / Previous) × 100`
-- **Always verify calculations** before publishing. Use a calculator or verify step-by-step.
-- Example: If November = 79.2 and December = 71.8:
-  - Difference: 79.2 - 71.8 = 7.4
-  - Percentage: (7.4 / 79.2) × 100 = 9.34% (rounds to 9.3%, not 9.1%)
-- Round to one decimal place
-- Double-check the arithmetic, especially when writing posts
+## CSS / Theming
 
-## No AI Red Flags
+- Use CSS custom properties for all colors - never hardcode values that would break dark mode.
+- Text must be black in light mode and white in dark mode; use theme-aware variables.
+- Always verify new UI works in both light and dark modes before committing.
 
-**Avoid these patterns that signal AI-written content:**
+## Code Conventions
 
-1. **Em dashes in prose** - Replace em dashes (—) with regular hyphens (-) in sentence structure
-   - Don't: "Survival in West Texas isn't noble—it's brutal."
-   - Do: "Survival in West Texas isn't noble - it's brutal."
-   - Exception: Em dashes in markdown tables (structural `| — |`) and list attribution are acceptable
+- File names: kebab-case. JS variables/functions: camelCase.
+- ES6+ modules, async/await, try/catch around async operations.
+- CDN libs (`marked`, `Chart.js`, `lucide`) are loaded globally in HTML - do not import them as modules.
+- Relative imports within the project.
+- Reusable UI changes (header, footer, analytics) belong in `components/`, not duplicated across HTML files.
 
-2. **"It's not X, it's Y" inversion pattern** - This is a dead giveaway for AI writing
-   - Don't: "The tariff isn't the objective—it's the deterrent."
-   - Do: Restructure the sentence or use different phrasing
-   - Alternative: "The tariff functions as a deterrent, not the objective."
-   - Alternative: "What matters is deterrence, not the tariff itself."
+## Do Not Change Without Approval
 
-**Where to check:**
-- All article markdown files in `article/` directory
-- All post files in `article/posts/` directory
-- Summaries and frontmatter in YAML headers
-- Body text and quoted passages
+- `sw.js` (cache strategy)
+- Google Analytics IDs
+- `vercel.json` routing
 
-**Why this matters:**
-- Em dashes and "It's not X—it's Y" patterns are distinctive markers of AI-generated text
-- This site is for human-written economic commentary, not AI-generated content
-- Maintaining authentic voice requires avoiding these recognizable patterns
+## Anti-AI Writing Patterns
+
+This site publishes human-written economic commentary. Avoid these AI tells in all article and post content:
+
+1. **Em dashes in prose** - use a regular hyphen with spaces instead.
+   - Wrong: "Survival in West Texas isn't noble—it's brutal."
+   - Right: "Survival in West Texas isn't noble - it's brutal."
+   - Exception: em dashes in markdown table structure are fine.
+
+2. **"It's not X, it's Y" inversion** - restructure instead.
+   - Wrong: "The tariff isn't the objective—it's the deterrent."
+   - Right: "The tariff functions as a deterrent, not the objective."

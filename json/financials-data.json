@@ -5,7 +5,7 @@
             "category": "Business Indicators",
             "agency": "FRED",
             "name": "10-yr Treasury Yield",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DGS10",
             "march": "4.28",
@@ -19,7 +19,8 @@
             "november": "4.09",
             "december": "4.14",
             "2026": {
-                "january": "4.21"
+                "january": "4.21",
+                "february": "4.13"
             },
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
@@ -28,7 +29,7 @@
             "category": "Consumer Indicators",
             "agency": "UMich",
             "name": "Consumer Sentiment",
-            "lastUpdated": "2026-02-21T15:00:00Z",
+            "lastUpdated": "2026-03-20T15:00:00Z",
             "releaseDay": 15,
             "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
@@ -43,7 +44,8 @@
             "december": "52.9",
             "2026": {
                 "january": "56.4",
-                "february": "56.6"
+                "february": "56.6",
+                "march": "55.5"
             },
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
@@ -126,7 +128,7 @@
             "category": "Housing Market",
             "agency": "Zillow",
             "name": "Number of Days on Market (Median)",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "url": "https://www.zillow.com/research/data/",
             "march": "60",
             "april": "53",
@@ -139,7 +141,8 @@
             "november": "59",
             "december": "65",
             "2026": {
-                "january": "71"
+                "january": "71",
+                "february": "73"
             },
             "change": "",
             "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."
@@ -148,7 +151,7 @@
             "category": "Trade & Tariffs",
             "agency": "Port of LA/Long Beach",
             "name": "20ft Equivalents (TEUs)",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.portoflosangeles.org/business/statistics/container-statistics",
             "march": "778,405.70",
@@ -162,7 +165,8 @@
             "november": "782,249.00",
             "december": "791,587.75",
             "2026": {
-                "january": "812,000.25"
+                "january": "812,000.25",
+                "february": "824,323.25"
             },
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
@@ -171,7 +175,7 @@
             "category": "Employment Indicators",
             "agency": "Chicago Fed",
             "name": "Real-Time Unemployment Rate Forecast",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
             "september": "4.35",
@@ -179,7 +183,8 @@
             "november": "4.56",
             "december": "4.38",
             "2026": {
-                "january": "4.36"
+                "january": "4.28",
+                "february": "4.27"
             },
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
@@ -213,7 +218,7 @@
             "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026/will-the-iranian-regime-fall-by-the-end-of-2026#cuqCMvFi",
             "yes_probability": "51%",
             "no_probability": "49%",
-            "kalshi_url": "https://kalshi.com/markets/kxiranregime",
+            "kalshi_url": "https://kalshi.com/markets/kxkhameneiout",
             "change": "",
             "explanation": "Prediction market on whether the Iranian regime will fall by the end of 2026. Market resolves to Yes if the current Iranian government is no longer in power by December 31, 2026. The market captures geopolitical risk and stability assessments for Iran, heightened by the ongoing US-Iran military conflict."
         },
@@ -459,7 +464,7 @@
             "category": "Government",
             "agency": "Treasury",
             "name": "Interest on Debt",
-            "lastUpdated": "2026-02-15T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
             "march": "$89B",
@@ -473,7 +478,8 @@
             "november": "$88B",
             "december": "$92B",
             "2026": {
-                "january": "$76B"
+                "january": "$76B",
+                "february": "$79B"
             },
             "change": "",
             "explanation": "The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time."
@@ -482,7 +488,7 @@
             "category": "Government",
             "agency": "Treasury",
             "name": "Tax Revenue",
-            "lastUpdated": "2026-02-15T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
             "march": "$368B",
@@ -496,7 +502,8 @@
             "november": "$336B",
             "december": "$484B",
             "2026": {
-                "january": "$560B"
+                "january": "$560B",
+                "february": "$313B"
             },
             "change": "",
             "explanation": "The total amount of money collected by the federal government through various taxes, including individual income taxes, corporate taxes, payroll taxes, and other sources. Tax revenue typically follows a seasonal pattern, with higher collections in April (tax filing deadline) and quarterly estimated payments in January, April, June, and September. Revenue levels are influenced by economic conditions, tax laws, and enforcement. Individual income taxes are the largest source of federal revenue, followed by payroll taxes that fund Social Security and Medicare. Changes in tax revenue can indicate economic health and affect budget deficits."
@@ -505,7 +512,7 @@
             "category": "Government",
             "agency": "Treasury",
             "name": "Monthly Budget Deficit",
-            "lastUpdated": "2026-02-15T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
             "march": "-$160,528M",
@@ -519,7 +526,8 @@
             "november": "-$173,277M",
             "december": "-$144,749M",
             "2026": {
-                "january": "-$94,615M"
+                "january": "-$94,615M",
+                "february": "-$307,501M"
             },
             "change": "",
             "explanation": "The difference between government spending and revenue in a given month. A negative value indicates a deficit (spending exceeds revenue), while a positive value indicates a surplus. Monthly deficits can vary significantly due to the timing of tax receipts and government payments. The U.S. typically runs deficits during economic expansions, with larger deficits during recessions due to decreased tax revenue and increased spending on safety net programs. The federal budget is influenced by fiscal policy decisions, economic conditions, and demographic trends. Persistent large deficits can lead to growing national debt and higher interest payments."
@@ -528,7 +536,7 @@
             "category": "Government",
             "agency": "Treasury",
             "name": "Treasury Debt Level",
-            "lastUpdated": "2026-01-08T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
             "march": "$36,216,627,186,278.78",
@@ -553,7 +561,7 @@
             "category": "Government",
             "agency": "CBP",
             "name": "Southern Border Encounters",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
             "march": "11,011",
@@ -564,10 +572,11 @@
             "august": "9,731",
             "september": "11,647",
             "october": "11,704",
-            "november": "10,957",
+            "november": "10,956",
             "december": "9,991",
             "2026": {
-                "january": "9,726"
+                "january": "9,729",
+                "february": "9,621"
             },
             "change": "",
             "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."
@@ -629,7 +638,7 @@
             "category": "Trade & Tariffs",
             "agency": "Treasury",
             "name": "Tariff Revenue",
-            "lastUpdated": "2026-02-15T13:10:00Z",
+            "lastUpdated": "2026-03-20T13:10:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
             "march": "$8.2B",
@@ -643,7 +652,8 @@
             "november": "$31B",
             "december": "$28B",
             "2026": {
-                "january": "$28B"
+                "january": "$28B",
+                "february": "$27B"
             },
             "change": "",
             "explanation": "Monthly customs duties collected by the U.S. government on imported goods. Tariffs are taxes imposed on specific categories of imports, often used as a tool of trade policy. Revenue from tariffs goes directly to the U.S. Treasury and can be used to fund government operations. Changes in tariff revenue can reflect shifts in trade volumes, tariff rates, or the composition of imports. Tariff revenue typically increases with new or increased tariffs but may decrease if the tariffs reduce overall trade volumes. This metric is closely watched in trade policy discussions and budget analysis."
@@ -652,7 +662,7 @@
             "category": "Business Indicators",
             "agency": "Commerce",
             "name": "New Orders",
-            "lastUpdated": "2026-02-02T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 3,
             "url": "https://www.census.gov/economic-indicators/",
             "march": "$617.4B",
@@ -663,10 +673,10 @@
             "august": "$611.5B",
             "september": "$612.9B",
             "october": "$605.4B",
-            "november": "$621.6B",
-            "december": "",
+            "november": "$621.9B",
+            "december": "$619.1B",
             "2026": {
-                "january": ""
+                "january": "$620.1B"
             },
             "change": "",
             "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity."
@@ -675,7 +685,7 @@
             "category": "Consumer Indicators",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2026-01-31T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -689,7 +699,8 @@
             "november": "92.9",
             "december": "94.2",
             "2026": {
-                "january": "84.5"
+                "january": "89",
+                "february": "91.2"
             },
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
@@ -698,7 +709,7 @@
             "category": "Consumer Indicators",
             "agency": "Manheim",
             "name": "Used Vehicle Value Index",
-            "lastUpdated": "2026-02-22T21:56:00Z",
+            "lastUpdated": "2026-03-20T21:56:00Z",
             "releaseDay": 7,
             "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
             "march": "202.6",
@@ -713,7 +724,8 @@
             "december": "205.5",
             "2026": {
                 "january": "210.5",
-                "february": "210"
+                "february": "210",
+                "march": "213.4"
             },
             "change": "",
             "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."
@@ -770,19 +782,20 @@
             "category": "Business Indicators",
             "agency": "Chicago Fed",
             "name": "Chicago Fed Survey of Economic Conditions",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
             "may": "3.80",
-            "june": "-1.30",
-            "july": "-17.60",
+            "june": "-2.60",
+            "july": "-18.80",
             "august": "0",
-            "september": "-8.20",
-            "october": "17.30",
-            "november": "-1.30",
-            "december": "-12.40",
+            "september": "-9.50",
+            "october": "15.90",
+            "november": "-2.60",
+            "december": "-13.60",
             "2026": {
-                "january": "+13.00"
+                "january": "+14.20",
+                "february": "+16.70"
             },
             "change": "",
             "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."
@@ -791,7 +804,7 @@
             "category": "Consumer Indicators",
             "agency": "Census",
             "name": "Monthly Retail Sales",
-            "lastUpdated": "2026-02-11T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.census.gov/retail/sales.html",
             "march": "",
@@ -806,7 +819,7 @@
             "november": "$735.1B",
             "december": "$735B",
             "2026": {
-                "january": ""
+                "january": "$733.5B"
             },
             "change": ""
         },
@@ -907,18 +920,23 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Affordability Index",
-            "lastUpdated": "2026-02-07T19:00:00Z",
+            "lastUpdated": "2026-03-20T19:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/FIXHAI",
-            "march": "103.5",
-            "april": "100.9",
-            "may": "97.1",
-            "june": "95.1",
-            "july": "97.9",
-            "august": "100.6",
+            "march": "104.2",
+            "april": "101.4",
+            "may": "97.5",
+            "june": "95.5",
+            "july": "98.3",
+            "august": "106.5",
             "september": "105.3",
-            "october": "106.3",
-            "november": "108.4",
+            "october": "107.1",
+            "november": "108.8",
+            "december": "111.6",
+            "2026": {
+                "january": "117.1",
+                "february": "117.6"
+            },
             "change": "",
             "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."
         },
@@ -1021,7 +1039,7 @@
             "category": "Employment Indicators",
             "agency": "ADP",
             "name": "Private Employment",
-            "lastUpdated": "2026-02-05T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.adpresearch.com",
             "march": "131,962,000",
@@ -1035,7 +1053,8 @@
             "november": "132,222,000",
             "december": "132,259,000",
             "2026": {
-                "january": "132,281,000"
+                "january": "132,270,000",
+                "february": "132,333,000"
             },
             "change": "",
             "explanation": "The monthly change in private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
@@ -1044,19 +1063,22 @@
             "category": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2026-02-05T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
-            "march": "7,200,000",
-            "april": "7,395,000",
-            "may": "7,712,000",
-            "june": "7,357,000",
-            "july": "7,208,000",
-            "august": "7,227,000",
-            "september": "7,658,000",
-            "october": "7,449,000",
-            "november": "6,928,000",
-            "december": "6,542,000",
+            "march": "6,952,000",
+            "april": "7,098,000",
+            "may": "7,310,000",
+            "june": "7,204,000",
+            "july": "7,089,000",
+            "august": "6,919,000",
+            "september": "7,169,000",
+            "october": "7,170,000",
+            "november": "6,849,000",
+            "december": "6,550,000",
+            "2026": {
+                "january": "6,946,000"
+            },
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."
         },
@@ -1064,7 +1086,7 @@
             "category": "Employment Indicators",
             "agency": "Challenger Gray & Christmas",
             "name": "Job Cuts Report",
-            "lastUpdated": "2026-02-06T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 6,
             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
             "january": "49,795",
@@ -1080,7 +1102,8 @@
             "november": "71,321",
             "december": "35,553",
             "2026": {
-                "january": "108,435"
+                "january": "108,435",
+                "february": "48,307"
             },
             "change": "",
             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
@@ -1188,7 +1211,7 @@
             "category": "Business Indicators",
             "agency": "The Conference Board",
             "name": "Lagging Economic Index",
-            "lastUpdated": "2026-02-07T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.conference-board.org/topics/us-leading-indicators",
             "march": "118.9",
@@ -1199,7 +1222,11 @@
             "august": "119.5",
             "september": "119.7",
             "october": "119.6",
-            "november": "119.7",
+            "november": "119.8",
+            "december": "119.6",
+            "2026": {
+                "january": "120.0"
+            },
             "change": "",
             "explanation": "The Conference Board's Lagging Economic Index (LAG) is a composite of seven economic indicators that change after the economy as a whole changes. Components include the average duration of unemployment, the prime rate, and the ratio of consumer credit to personal income. The LAG helps confirm and assess the direction of the economy's movements over recent months. It's particularly useful for confirming that a turning point in the economy has actually occurred. The index is expressed relative to 2016=100 and is typically used in conjunction with the Leading and Coincident Economic Indexes to provide a comprehensive view of the business cycle."
         },
@@ -1325,7 +1352,7 @@
             "category": "Business Indicators",
             "agency": "Federal Reserve",
             "name": "Industrial Production Index",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.federalreserve.gov/releases/g17/current/",
             "april": "101.1",
@@ -1334,11 +1361,12 @@
             "july": "101.9",
             "august": "101.6",
             "september": "101.7",
-            "october": "101.3",
+            "october": "101.2",
             "november": "101.4",
-            "december": "101.6",
+            "december": "101.7",
             "2026": {
-                "january": "102.3"
+                "january": "102.4",
+                "february": "102.6"
             },
             "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."

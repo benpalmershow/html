@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-03-19T23:59:59Z",
+    "lastUpdated": "2026-03-20T23:59:59Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -909,7 +909,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "30-yr Mortgage Rate",
-            "lastUpdated": "2026-02-27T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
             "march": "6.65",
@@ -924,7 +924,8 @@
             "december": "6.19",
             "2026": {
                 "january": "6.10",
-                "february": "5.98"
+                "february": "5.98",
+                "march": "6.22"
             },
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
@@ -933,7 +934,7 @@
             "category": "Housing Market",
             "agency": "Census",
             "name": "New Home Sales",
-            "lastUpdated": "2026-02-21T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 23,
             "url": "https://www.census.gov/construction/nrs/current/index.html#:~:text=New%20Home%20Sales,April%202024%20rate%20of%20719%2C000.",
             "march": "660,000",
@@ -941,13 +942,13 @@
             "may": "627,000",
             "june": "662,000",
             "july": "639,000",
-            "august": "711,000",
-            "september": "738,000",
-            "october": "656,000",
-            "november": "758,000",
-            "december": "745,000",
+            "august": "706,000",
+            "september": "719,000",
+            "october": "650,000",
+            "november": "764,000",
+            "december": "712,000",
             "2026": {
-                "january": ""
+                "january": "587,000"
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
@@ -1071,7 +1072,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Jobless Claims",
-            "lastUpdated": "2026-02-21T16:00:00Z",
+            "lastUpdated": "2026-03-20T16:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/ICSA",
             "march": "223,200",
@@ -1085,7 +1086,8 @@
             "november": "217,600",
             "december": "219,000",
             "2026": {
-                "january": "211,400"
+                "january": "211,400",
+                "february": "215,750"
             },
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
@@ -1235,7 +1237,7 @@
             "category": "Business Indicators",
             "agency": "The Conference Board",
             "name": "Leading Economic Indicator",
-            "lastUpdated": "2026-02-07T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.conference-board.org/topics/leading-economic-indicators",
             "march": "",
@@ -1247,6 +1249,10 @@
             "september": "98.3",
             "october": "98.2",
             "november": "97.9",
+            "december": "97.6",
+            "2026": {
+                "january": "97.5"
+            },
             "change": "",
             "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle."
         },

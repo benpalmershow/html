@@ -3,8 +3,21 @@ date: 2026-03-20T19:00:00Z
 category: journal
 ---
 
-### <i data-lucide='book-open' class='post-icon'></i> **NPR Deserts, Hurricane James & Afroman**
+<i data-lucide='book-open' class='post-icon'></i> <b>NPR Deserts, Hurricane James & Afroman</b>
 
-NPR's accusatory capital allocation lexicon, Letitia James' political hurricanes, Truth Social's practical utility, and Afroman's viral security footage. Today's journal entries examine the intersections of state action, individual choice, and creative resistance.
+<p>NPR's accusatory capital allocation lexicon, Letitia James' political hurricanes, Truth Social's practical utility, and Afroman's viral security footage. Today's journal entries examine the intersections of state action, individual choice, and creative resistance.</p>
 
-[Read the full journal thread](journal.html)
+<p><a href="journal.html"><b>tweets</b></a></p>
+
+3/20 Financials update
+
+30 yr
+{{chart:30-yr Mortgage Rate}}
+New Home Sales
+{{chart:New Home Sales}}
+Jobless Claims
+{{chart:Jobless Claims}}
+Leading Economic Indicator
+{{chart:Leading Economic Indicator}}
+
+<p><a href="financials.html"><b>View all indicators</b></a></p>

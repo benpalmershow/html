@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-03-18T23:59:59Z",
+    "lastUpdated": "2026-03-19T23:59:59Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -68,7 +68,6 @@
             "2026": {
                 "january": "609",
                 "february": "576"
-
             },
             "change": "",
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
@@ -131,7 +130,7 @@
             "august": "50",
             "september": "54",
             "october": "56",
-            "november": "59",   
+            "november": "59",
             "december": "65",
             "2026": {
                 "january": "71"
@@ -156,13 +155,12 @@
             "october": "848,424.25",
             "november": "782,249.00",
             "december": "791,587.75",
-                "2026": {
-                    "january": "812,000.25"
-                },
+            "2026": {
+                "january": "812,000.25"
+            },
             "change": "",
             "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
         },
-
         {
             "category": "Employment Indicators",
             "agency": "Chicago Fed",
@@ -174,15 +172,12 @@
             "october": "4.46",
             "november": "4.56",
             "december": "4.38",
-                "2026": {
-                    "january": "4.36"
-                },
+            "2026": {
+                "january": "4.36"
+            },
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
         },
-    
-      
-
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
@@ -306,8 +301,6 @@
             "change": "",
             "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. The race is essentially a tossup, reflecting competitive races in Alaska, Maine, North Carolina, Ohio, Texas, and Montana. Midterms are widely seen as a referendum on the first year of Trump's second term."
         },
-
-
         {
             "category": "Commodities",
             "agency": "EIA",
@@ -421,7 +414,6 @@
             "2026": {
                 "january": "5.84",
                 "february": "5.87"
-
             },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
@@ -444,7 +436,7 @@
             "september": "328.974",
             "october": "328.506",
             "november": "328.149",
-            "december":"327.455",
+            "december": "327.455",
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },
@@ -557,8 +549,7 @@
             "october": "11,704",
             "november": "10,957",
             "december": "9,991",
-            "2026": 
-            {
+            "2026": {
                 "january": "9,726"
             },
             "change": "",
@@ -682,10 +673,7 @@
             "december": "94.2",
             "2026": {
                 "january": "84.5"
-                
             },
-
-            
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
         },
@@ -894,7 +882,6 @@
                 "january": "37",
                 "february": "37",
                 "march": "38"
-            
             },
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."
@@ -938,7 +925,6 @@
             "2026": {
                 "january": "6.10",
                 "february": "5.98"
-
             },
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
@@ -967,29 +953,28 @@
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
         },
         {
-             "category": "Housing Market",
-             "agency": "Census",
-             "name": "Housing Starts",
-             "lastUpdated": "2026-03-14T14:00:00Z",
-             "releaseDay": 18,
-             "url": "https://www.census.gov/construction/nrc/current/index.html",
-             "march": "1.355M",
-             "april": "1.398M",
-             "may": "1.282M",
-             "june": "1.382M",
-             "july": "1.420M",
-             "august": "1.291M",
-             "september": "1.328M",
-             "october": "1.272M",
-             "november": "1.324M",
-             "december": "1.387M",
-             "2026": {
-                 "january": "1.487M"
-             },
-             "change": "",
-             "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."
-         },
-    
+            "category": "Housing Market",
+            "agency": "Census",
+            "name": "Housing Starts",
+            "lastUpdated": "2026-03-14T14:00:00Z",
+            "releaseDay": 18,
+            "url": "https://www.census.gov/construction/nrc/current/index.html",
+            "march": "1.355M",
+            "april": "1.398M",
+            "may": "1.282M",
+            "june": "1.382M",
+            "july": "1.420M",
+            "august": "1.291M",
+            "september": "1.328M",
+            "october": "1.272M",
+            "november": "1.324M",
+            "december": "1.387M",
+            "2026": {
+                "january": "1.487M"
+            },
+            "change": "",
+            "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."
+        },
         {
             "category": "Employment Indicators",
             "agency": "The Conference Board",
@@ -1010,7 +995,6 @@
             "2026": {
                 "january": "105.18",
                 "february": "105.37"
-
             },
             "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
@@ -1127,7 +1111,6 @@
             "2026": {
                 "january": "158,558,000",
                 "february": "158,466,000"
-
             },
             "change": "",
             "explanation": "The monthly change in nonfarm payroll employment, representing the net number of jobs added to the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. A consistent monthly addition of 100,000-150,000 jobs is typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
@@ -1136,8 +1119,8 @@
             "category": "Business Indicators",
             "agency": "BLS",
             "name": "PPI",
-            "lastUpdated": "2026-02-27T14:00:00Z",
-            "releaseDay": 14,
+            "lastUpdated": "2026-03-19T14:00:00Z",
+            "releaseDay": 13,
             "url": "https://www.bls.gov/ppi/data.htm",
             "march": "148.061",
             "april": "147.686",
@@ -1146,14 +1129,15 @@
             "july": "149.536",
             "august": "149.259",
             "september": "150.245",
-            "october": "150.423",
-            "november": "150.797",
-            "december": "151.446",
+            "october": "150.439",
+            "november": "150.819",
+            "december": "151.393",
             "2026": {
-                "january": "152.174"
+                "january": "152.190",
+                "february": "153.231"
             },
             "change": "",
-            "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3, \"Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
+            "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
         },
         {
             "category": "Consumer Indicators",
@@ -1162,8 +1146,8 @@
             "lastUpdated": "2026-03-12T14:00:00Z",
             "releaseDay": 11,
             "url": "https://www.bls.gov/cpi/data.htm",
-            "january":"317.671",
-            "february":"319.082",
+            "january": "317.671",
+            "february": "319.082",
             "march": "319.799",
             "april": "320.795",
             "may": "321.465",
@@ -1178,7 +1162,6 @@
                 "january": "325.252",
                 "february": "326.785"
             },
-    
             "change": "",
             "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments. Note: October 2025 data unavailable due to government shutdown affecting BLS data collection."
         },
@@ -1221,7 +1204,6 @@
             "2026": {
                 "january": "52.6",
                 "february": "52.4"
-
             },
             "change": "",
             "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
@@ -1287,7 +1269,7 @@
             "december": "99.5",
             "2026": {
                 "january": "99.3",
-                "february"  : "98.8"
+                "february": "98.8"
             },
             "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."
@@ -1309,10 +1291,10 @@
             "october": "52.4",
             "november": "52.6",
             "december": "54.4",
-                "2026": {
-                    "january": "52.7",
-                    "february": "52.3"
-                },
+            "2026": {
+                "january": "52.7",
+                "february": "52.3"
+            },
             "change": "",
             "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
         },
@@ -1332,10 +1314,9 @@
             "october": "101.3",
             "november": "101.4",
             "december": "101.6",
-                "2026": {
-                    "january": "102.3"
-
-                },  
+            "2026": {
+                "january": "102.3"
+            },
             "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
         }

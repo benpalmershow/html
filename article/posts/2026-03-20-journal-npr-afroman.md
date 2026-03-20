@@ -11,13 +11,13 @@ NPR's accusatory capital allocation lexicon, Letitia James' political hurricanes
 
 3/20 Financials update
 
-30 yr
+## 30 yr
 {{chart:30-yr Mortgage Rate}}
-New Home Sales
+## New Home Sales
 {{chart:New Home Sales}}
-Jobless Claims
+## Jobless Claims
 {{chart:Jobless Claims}}
-Leading Economic Indicator
+## Leading Economic Indicator
 {{chart:Leading Economic Indicator}}
 
 [**View all indicators**](financials.html)

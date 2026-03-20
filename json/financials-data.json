@@ -52,7 +52,7 @@
             "category": "Commodities",
             "agency": "Google Finance",
             "name": "Lumber Futures",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
             "march": "683",
@@ -67,7 +67,8 @@
             "december": "544",
             "2026": {
                 "january": "609",
-                "february": "576"
+                "february": "576",
+                "march": "608.50"
             },
             "change": "",
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
@@ -100,7 +101,7 @@
             "category": "Trade & Tariffs",
             "agency": "Freightos",
             "name": "Shipping Container Rate (China-US 40ft)",
-            "lastUpdated": "2025-12-16T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.freightos.com/freight-resources/freightos-baltic-index/",
             "march": "$5,200",
@@ -113,6 +114,11 @@
             "october": "$1,751",
             "november": "$2,958",
             "december": "$1,964",
+            "2026": {
+                "january": "$2,000",
+                "february": "$2,138",
+                "march": "$2,377"
+            },
             "change": "",
             "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs."
         },
@@ -331,7 +337,7 @@
             "category": "Commodities",
             "agency": "USDA NASS",
             "name": "Wheat",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
             "january": "5.52",
@@ -346,6 +352,9 @@
             "october": "4.73",
             "november": "4.88",
             "december": "4.95",
+            "2026": {
+                "january": "5.01"
+            },
             "change": "",
             "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
         },
@@ -353,7 +362,7 @@
             "category": "Commodities",
             "agency": "USDA NASS",
             "name": "Soybeans",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
             "january": "10.00",
@@ -368,6 +377,9 @@
             "october": "9.71",
             "november": "10.50",
             "december": "10.40",
+            "2026": {
+                "january": "10.30"
+            },
             "change": "",
             "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
         },
@@ -375,7 +387,7 @@
             "category": "Commodities",
             "agency": "USDA NASS",
             "name": "Beef",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
             "january": "199.00",
@@ -390,6 +402,9 @@
             "october": "232",
             "november": "226",
             "december": "221",
+            "2026": {
+                "january": "230"
+            },
             "change": "",
             "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers."
         },
@@ -397,7 +412,7 @@
             "category": "Commodities",
             "agency": "CME",
             "name": "Copper Futures",
-            "lastUpdated": "2026-02-22T14:00:00Z",
+            "lastUpdated": "2026-03-20T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
             "march": "4.56",
@@ -412,7 +427,8 @@
             "december": "5.54",
             "2026": {
                 "january": "5.84",
-                "february": "5.87"
+                "february": "5.87",
+                "march": "5.33"
             },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
@@ -526,7 +542,9 @@
             "november": "$38,360,841,844,745.79",
             "december": "$38,339,541,810,902.33",
             "2026": {
-                "january": "$38,430,410,089,259.84"
+                "january": "$38,473,375,474,319.00",
+                "february": "$38,743,577,500,254.48",
+                "march": "$38,976,827,976,841.63"
             },
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."

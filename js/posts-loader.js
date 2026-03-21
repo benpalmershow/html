@@ -950,8 +950,9 @@ async function initPosts() {
         try {
             const articlesJson = window.articlesPromise ? await window.articlesPromise : await (await fetch(CONFIG.ARTICLES_JSON_URL)).json();
             if (Array.isArray(articlesJson)) {
+                const homepageArticles = articlesJson.filter(article => article?.homepage !== false);
                 // Convert articles to posts format - they use 'id' to reference 'article/{id}.md'
-                const articlesAsPosts = articlesJson.map(article => ({
+                const articlesAsPosts = homepageArticles.map(article => ({
                     ...article,
                     file: `article/${article.id}.md`,
                     // Use summary as snippet if available

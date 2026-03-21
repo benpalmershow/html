@@ -96,6 +96,36 @@ function titleCaseCategory(category) {
   return category.charAt(0).toUpperCase() + category.slice(1);
 }
 
+function formatRelativeDate(dateString) {
+  if (!dateString) return '';
+
+  const parsedDate = new Date(`${dateString}T00:00:00`);
+  if (Number.isNaN(parsedDate.getTime())) return dateString;
+
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const articleDay = new Date(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate());
+  const diffDays = Math.round((articleDay.getTime() - today.getTime()) / 86400000);
+  const absDays = Math.abs(diffDays);
+
+  if (diffDays === 0) return 'today';
+  if (diffDays === -1) return '1 day ago';
+  if (diffDays === 1) return 'tomorrow';
+  if (absDays < 30) return diffDays < 0 ? `${absDays} days ago` : `in ${absDays} days`;
+
+  const diffMonths = (articleDay.getFullYear() - today.getFullYear()) * 12 + (articleDay.getMonth() - today.getMonth());
+  const absMonths = Math.abs(diffMonths);
+
+  if (absMonths < 12) {
+    if (absMonths === 0) return diffDays < 0 ? `${absDays} days ago` : `in ${absDays} days`;
+    return diffMonths < 0 ? `${absMonths} month${absMonths === 1 ? '' : 's'} ago` : `in ${absMonths} month${absMonths === 1 ? '' : 's'}`;
+  }
+
+  const diffYears = articleDay.getFullYear() - today.getFullYear();
+  const absYears = Math.abs(diffYears);
+  return diffYears < 0 ? `${absYears} year${absYears === 1 ? '' : 's'} ago` : `in ${absYears} year${absYears === 1 ? '' : 's'}`;
+}
+
 function wrapTables(container) {
   container.querySelectorAll('table').forEach(table => {
     if (table.parentElement?.classList.contains('table-wrapper')) return;
@@ -142,7 +172,7 @@ function renderMetaHeader(metadata) {
   const parts = [];
 
   if (metadata.date) {
-    parts.push(`<time class="article-date" datetime="${escapeHtml(metadata.date)}">${escapeHtml(metadata.date)}</time>`);
+    parts.push(`<time class="article-date" datetime="${escapeHtml(metadata.date)}">${escapeHtml(formatRelativeDate(metadata.date))}</time>`);
   }
 
   if (metadata.ticker && metadata.link) {
@@ -176,7 +206,6 @@ async function loadArticle() {
   const statusEl = document.getElementById('article-status');
   const readerEl = document.getElementById('article-reader');
   const contentEl = document.getElementById('article-content');
-  const shareLinkEl = document.getElementById('article-share-link');
 
   if (!slug) {
     renderError('No article specified.');
@@ -222,9 +251,6 @@ async function loadArticle() {
     if (pageTitle) {
       pageTitle.innerHTML = `<img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager"> ${escapeHtml(metadata.title || articleIndexEntry?.title || 'Article')}`;
     }
-
-    shareLinkEl.href = `news.html?article=${encodeURIComponent(slug)}`;
-    shareLinkEl.setAttribute('aria-label', `Permanent link for ${metadata.title || slug}`);
 
     statusEl.hidden = true;
     readerEl.hidden = false;

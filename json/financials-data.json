@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-03-20T19:30:00Z",
+    "lastUpdated": "2026-03-21T14:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -310,6 +310,36 @@
             },
             "change": "",
             "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. The race is essentially a tossup, reflecting competitive races in Alaska, Maine, North Carolina, Ohio, Texas, and Montana. Midterms are widely seen as a referendum on the first year of Trump's second term."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "Strait of Hormuz Traffic (Mar 9-15)",
+            "lastUpdated": "2026-03-21T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://kalshi.com/markets/kxhormuztrafficw/traffic-through-the-strait-of-hormuz/kxhormuztrafficw-26mar15",
+            "candidates": {
+                "Above 20": "51%",
+                "Above 30": "19%"
+            },
+            "change": "",
+            "explanation": "Kalshi market on whether ship traffic through the Strait of Hormuz reaches specified daily thresholds during the March 9-15, 2026 window. The visible contracts currently show 51% odds for traffic above 20 ships and 19% for traffic above 30, reflecting expectations for continuing disruption in one of the world's most important energy chokepoints."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Polymarket",
+            "name": "Strait of Hormuz Shipping Traffic (March 2026)",
+            "lastUpdated": "2026-03-21T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://polymarket.com/event/will-ships-transit-the-strait-of-hormuz-on-any-day-in-march",
+            "candidates": {
+                "20+": "19¢",
+                "40+": "9¢",
+                "60+": "5¢",
+                "80+": "4.1¢"
+            },
+            "change": "",
+            "explanation": "Polymarket market on whether IMF PortWatch will report Strait of Hormuz transit calls at or above selected daily thresholds at any point before March 31, 2026. Current pricing implies sharply lower odds as the threshold rises, underscoring market expectations for materially reduced shipping throughput through the strait."
         },
         {
             "category": "Commodities",

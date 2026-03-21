@@ -14,14 +14,97 @@ The key military question is no longer whether drones matter. It is whether a st
 
 Cheap one-way attack drones changed the arithmetic. A reusable UAV has to survive. A loitering munition only has to find a target once. That difference matters because modern air defense missiles, radars, and trained crews are expensive, while a mass-produced drone can be attritable by design.
 
-| System | Country | Role | Cost Profile | Endurance / Reach | What It Does Well |
-|---|---|---|---|---|---|
-| MQ-9 Reaper | United States | MALE ISR / strike | High | Long endurance, theater-scale employment | Persistent surveillance, precision strike, networked operations |
-| Bayraktar TB2 | Turkiye | Tactical MALE ISR / strike | Medium | Long endurance, lower operating burden than larger US systems | Exportable strike-recon package for states that cannot buy premium platforms |
-| Switchblade 600 | United States | Loitering munition | Medium | Shorter mission window than MALE UAVs, direct anti-armor use | Portable precision attack without committing a crewed aircraft |
-| Shahed-136 / Geran-type | Iran / Russia fielded variant | One-way attack drone | Low | Long range for its price band | Saturation attacks, infrastructure strikes, forcing defender cost exchange |
-| Lancet | Russia | Tactical loitering munition | Low to medium | Front-line employment | Hunting artillery, vehicles, and exposed air-defense assets |
-| Orlan-10 | Russia | Tactical ISR | Low | Battalion-to-brigade level persistence | Cheap reconnaissance and artillery spotting at scale |
+<div class="comparison-table-wrapper">
+<table class="comparison-table">
+  <thead>
+    <tr>
+      <th>Drone</th>
+      <th>Country</th>
+      <th>Type</th>
+      <th>Cost</th>
+      <th>Reach</th>
+      <th>Best Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MQ-9</strong></td>
+      <td>🇺🇸</td>
+      <td><span class="table-chip">🛰️ Reusable</span></td>
+      <td><span class="table-chip table-chip-cost high">$$$</span></td>
+      <td>27h / 1,850 km</td>
+      <td><span class="table-chip table-chip-use">ISR/Strike</span></td>
+    </tr>
+    <tr>
+      <td><strong>TB2</strong></td>
+      <td>🇹🇷</td>
+      <td><span class="table-chip">🛰️ Reusable</span></td>
+      <td><span class="table-chip table-chip-cost med">$$</span></td>
+      <td>27h / 150+ km</td>
+      <td><span class="table-chip table-chip-use">Strike-Recon</span></td>
+    </tr>
+    <tr>
+      <td><strong>Switchblade 600</strong></td>
+      <td>🇺🇸</td>
+      <td><span class="table-chip">💥 Loitering</span></td>
+      <td><span class="table-chip table-chip-cost med">$$</span></td>
+      <td>40m / 40 km</td>
+      <td><span class="table-chip table-chip-use">Anti-Armor</span></td>
+    </tr>
+    <tr>
+      <td><strong>Shahed-136</strong></td>
+      <td>🇮🇷 / 🇷🇺</td>
+      <td><span class="table-chip">🎯 One-way</span></td>
+      <td><span class="table-chip table-chip-cost low">$</span></td>
+      <td>2,000+ km</td>
+      <td><span class="table-chip table-chip-use">Saturation</span></td>
+    </tr>
+    <tr>
+      <td><strong>Lancet</strong></td>
+      <td>🇷🇺</td>
+      <td><span class="table-chip">💥 Loitering</span></td>
+      <td><span class="table-chip table-chip-cost lowmed">$/$$</span></td>
+      <td>40-70 km</td>
+      <td><span class="table-chip table-chip-use">Counter-Fires</span></td>
+    </tr>
+    <tr>
+      <td><strong>Orlan-10</strong></td>
+      <td>🇷🇺</td>
+      <td><span class="table-chip">👁️ ISR</span></td>
+      <td><span class="table-chip table-chip-cost low">$</span></td>
+      <td>16h / 120 km</td>
+      <td><span class="table-chip table-chip-use">Artillery Spotting</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="comparison-table-legend">
+  <div class="comparison-table-legend-row">
+    <strong class="comparison-table-legend-title">Legend</strong>
+  </div>
+  <div class="comparison-table-legend-row">
+    <span class="comparison-table-legend-label">Cost</span>
+    <span class="comparison-table-legend-content">
+      <span class="table-chip table-chip-cost low">$</span> = low
+      <span class="table-chip table-chip-cost med">$$</span> = medium
+      <span class="table-chip table-chip-cost high">$$$</span> = high
+      <span class="table-chip table-chip-cost lowmed">$/$$</span> = low to medium
+    </span>
+  </div>
+  <div class="comparison-table-legend-row">
+    <span class="comparison-table-legend-label">Terms</span>
+    <span class="comparison-table-legend-content">ISR = intelligence, surveillance, reconnaissance; SAMs = surface-to-air missile systems</span>
+  </div>
+  <div class="comparison-table-legend-row">
+    <span class="comparison-table-legend-label">Best Use</span>
+    <span class="comparison-table-legend-content">ISR/Strike = persistent surveillance plus precision attack; Strike-Recon = lighter reconnaissance with limited strike capacity; Anti-Armor = attacks on tanks and armored vehicles</span>
+  </div>
+  <div class="comparison-table-legend-row">
+    <span class="comparison-table-legend-label">Best Use</span>
+    <span class="comparison-table-legend-content">Saturation = mass attacks designed to overwhelm defenses; Counter-Fires = hunting artillery and launchers; Artillery Spotting = target detection and correction for indirect fire</span>
+  </div>
+</div>
 
 The useful distinction is not simply drone versus no drone. It is **reusable platform**, **loitering munition**, and **one-way attack drone**.
 

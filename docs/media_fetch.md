@@ -193,6 +193,8 @@ https://media.themoviedb.org/t/p/w500/[PATH].jpg (alternative)
 ```
 **IMPORTANT:** Use `image.tmdb.org` or `media.themoviedb.org` (NOT `www.themoviedb.org`) to avoid CORS issues. Our system automatically optimizes `original/` paths to `w500/`.
 
+**Movie title matching rule:** TMDB may file a movie under its original or international release title rather than the US title in `media.json`. If the first lookup fails, retry with alternate titles, translated titles, and franchise-less variants before concluding that no poster is available.
+
 **11. Wikipedia/Wikimedia Commons** (classic/notable books)
 ```
 https://upload.wikimedia.org/wikipedia/en/[hash]/[hash]/[filename].jpg
@@ -646,6 +648,14 @@ Added "Land Power" by Michael Albertus to the media collection. The book examine
 - Fix: Changed to `https://media.themoviedb.org/t/p/w500/[PATH].jpg`
 - **Prevention:** Always use `media.themoviedb.org` CDN (CORS-friendly) with `w500` size (~50KB, optimal for mobile)
 - Never use `www.themoviedb.org` or oversized variants (w780, w1280, original)
+
+### Alternate Movie Titles Matter
+**From "Return of the Dragon" correction:**
+- User-facing title: `Return of the Dragon`
+- TMDB canonical title: `The Way of the Dragon`
+- Problem: Poster lookup can fail when only the US release title is searched
+- Fix: Resolve the canonical TMDB record first, then store the CDN poster path from that record
+- **Prevention:** For movies with translated, regional, or rerelease titles, always check alternate titles before leaving `cover` blank
 
 ### Movie Trailer Embedding
 **From "La Haine" implementation:**

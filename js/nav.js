@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Home', file: 'index.html', icon: '' },
     { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'read.webp' },
     { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', icon: 'media.webp' },
-    { name: 'Tweets', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'announcements.webp' }
+    { name: 'Docs', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'announcements.webp' }
   ];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="hint-step">
                <picture>
                 <source srcset="images/announcements.webp" type="image/webp">
-                <img src="images/announcements.webp" alt="Tweets" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
+                <img src="images/announcements.webp" alt="Docs" width="32" height="32" style="width: 2rem; height: 2rem; object-fit: cover;" loading="lazy">
               </picture>
                <div>
-                 <strong>Tweets:</strong> Independent commentary and personal insights
+                 <strong>Docs:</strong> Independent commentary and personal insights
                </div>
               </div>
               <div class="hint-step">
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sorted.length && count > 0) addBadge('media.html', count, key, sorted[0].dateAdded);
   }).catch(() => {});
 
-  // Tweets
+  // Docs
   fetchJson('json/journal.json').then(data => {
     if (!data || !data.length) return;
     const key = 'new_seen_journal';

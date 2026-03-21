@@ -5,7 +5,7 @@
     { name: 'Home', file: 'index.html' },
     { name: 'Numbers', file: 'financials.html' },
     { name: 'Media', file: 'media.html' },
-    { name: 'Tweets', file: 'journal.html' }
+    { name: 'Docs', file: 'journal.html' }
   ];
 
   const SWIPE_THRESHOLD = 50; // Minimum swipe distance in pixels

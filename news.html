@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- Common Meta Tags Component -->
   <script>
     fetch('components/head-meta.html')
       .then(response => response.text())
@@ -17,37 +16,28 @@
       .catch(error => console.error('Meta tags load error:', error));
   </script>
 
-  <!-- Page-specific Meta Tags -->
-  <meta name="description"
-    content="Independent commentary and personal insights from Doc Riter.">
-  <meta name="keywords"
-    content="Doc Riter, Docs, commentary, insights, Ben Palmer Show, independent thoughts, personal reflections">
+  <meta name="description" content="Independent article and policy analysis from Howdy, Stranger.">
+  <meta name="keywords" content="news, article, policy analysis, economic commentary, Howdy Stranger">
   <meta name="site-data-version" content="20260320">
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Doc Riter - Howdy, Stranger">
-  <meta property="og:description"
-    content="Independent commentary and personal insights from Doc Riter.">
-  <meta property="og:url" content="https://howdystranger.net/journal.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Article - Howdy, Stranger">
+  <meta property="og:description" content="Independent article and policy analysis from Howdy, Stranger.">
+  <meta property="og:url" content="https://howdystranger.net/news.html">
   <meta property="og:site_name" content="Howdy, Stranger">
   <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
-  <meta property="og:image:alt" content="Howdy, Stranger - Doc Riter and Commentary">
+  <meta property="og:image:alt" content="Howdy, Stranger article">
 
-  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@DocRiter">
   <meta name="twitter:creator" content="@DocRiter">
-  <meta name="twitter:title" content="Doc Riter - Howdy, Stranger">
-  <meta name="twitter:description"
-    content="Independent commentary and personal insights from Doc Riter.">
+  <meta name="twitter:title" content="Article - Howdy, Stranger">
+  <meta name="twitter:description" content="Independent article and policy analysis from Howdy, Stranger.">
   <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
-  <meta name="twitter:image:alt" content="Howdy, Stranger - Doc Riter and Commentary">
+  <meta name="twitter:image:alt" content="Howdy, Stranger article">
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://howdystranger.net/journal.html">
+  <link rel="canonical" href="https://howdystranger.net/news.html">
 
-  <!-- Typography System Fonts Component -->
   <script>
     fetch('components/fonts.html')
       .then(response => response.text())
@@ -62,22 +52,126 @@
       .catch(error => console.error('Fonts load error:', error));
   </script>
 
-  <!-- Critical CSS -->
   <link rel="stylesheet" href="css/theme.css?v=20260123">
   <link rel="stylesheet" href="css/body.css?v=20251220">
   <link rel="stylesheet" href="css/nav.css?v=20251220">
-  <link rel="stylesheet" href="css/journal-tweets.css?v=20260309" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/article.css?v=20260321">
+  <link rel="stylesheet" href="css/news.css?v=20260321">
 
-  <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
-  <link rel="preload" href="js/journal-feed.js" as="script">
+  <link rel="preload" href="js/news-article.js" as="script">
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <title>Article - Howdy, Stranger</title>
 
-  <title>Doc Riter - Howdy, Stranger</title>
+  <style>
+    .skip-to-content {
+      position: absolute;
+      left: -9999px;
+      z-index: 9999;
+      padding: 0.5rem 1rem;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: 0 0 4px 4px;
+    }
 
-  <!-- Analytics Component -->
+    .skip-to-content:focus {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+
+    .page-header {
+      margin-top: 0.5rem;
+    }
+
+    .page-title {
+      font-size: 0.85rem;
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-align: center;
+      margin: 1.25rem 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      min-height: 24px;
+    }
+
+    .page-title .page-icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .article-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 var(--content-padding) var(--spacing-xl);
+    }
+
+    .article-reader-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .article-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .article-back-link,
+    .article-share-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .article-status,
+    .article-error {
+      max-width: 820px;
+      margin: 1rem auto 0;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+    }
+
+    .article-error a {
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .article-reader-card {
+        border-radius: 12px;
+        padding: 1rem;
+      }
+
+      .article-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+
   <script>
     fetch('components/analytics.html')
       .then(response => response.text())
@@ -94,7 +188,6 @@
       .catch(error => console.error('Analytics load error:', error));
   </script>
 
-  <!-- Preload Marked.js -->
   <script>
     window.addEventListener('load', function () {
       const script = document.createElement('script');
@@ -104,7 +197,6 @@
     });
   </script>
 
-  <!-- Vercel Insights - Production only -->
   <script>
     if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
       const script = document.createElement('script');
@@ -114,27 +206,44 @@
     }
   </script>
   <script type="module" src="js/speed-insights.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer
-    onerror="console.error('Failed to load Lucide')"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer onerror="console.error('Failed to load Lucide')"></script>
 </head>
 
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <nav class="nav-links" id="main-nav"></nav>
+
   <main id="main-content" tabindex="-1">
     <div class="page-header">
       <h1 class="page-title" aria-label="Page title">
         <img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager">
-        Doc Riter
+        Article
       </h1>
     </div>
-    <div class="content">
-      <div id="journal-feed"></div>
+
+    <div class="article-shell">
+      <div id="article-status" class="article-status">Loading article...</div>
+
+      <article id="article-reader" class="article-reader-card" hidden>
+        <div class="article-toolbar">
+          <a href="index.html" class="article-back-link">
+            <i data-lucide="arrow-left"></i>
+            Latest
+          </a>
+          <a id="article-share-link" href="" class="article-share-link">
+            <i data-lucide="link"></i>
+            Copyable URL
+          </a>
+        </div>
+
+        <div id="article-content" class="article-content"></div>
+      </article>
+
+      <div id="article-error" class="article-error" hidden></div>
     </div>
   </main>
 
-  <!-- Footer Component -->
   <div id="footer-container"></div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -149,7 +258,6 @@
     });
   </script>
 
-  <!-- Error Handling Component -->
   <script>
     fetch('components/error-handling.html')
       .then(response => response.text())
@@ -166,7 +274,6 @@
       .catch(error => console.error('Error Handling load error:', error));
   </script>
 
-  <!-- Unified Scripts Component -->
   <script>
     fetch('components/scripts-unified.html')
       .then(response => response.text())
@@ -183,21 +290,10 @@
       .catch(error => console.error('Scripts load error:', error));
   </script>
 
-  <!-- Lucide Icons Initialization -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.lucide) {
-        lucide.createIcons();
-      }
-    });
-  </script>
-
-  <!-- Page-specific scripts -->
   <script src="js/nav.js" defer></script>
   <script src="js/swipe-nav.js" defer></script>
-  <script src="js/journal-feed.js" defer></script>
+  <script src="js/news-article.js" defer></script>
   <script src="js/back-to-top.js" defer></script>
-
 </body>
 
 </html>

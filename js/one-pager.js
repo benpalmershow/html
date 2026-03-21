@@ -72,7 +72,7 @@ function pageLabelFromPath(path) {
   const clean = String(path || '').split('?')[0].split('#')[0].toLowerCase();
   if (clean.endsWith('media.html')) return 'Media';
   if (clean.endsWith('financials.html')) return 'Financials';
-  if (clean.endsWith('journal.html')) return 'Journal';
+  if (clean.endsWith('journal.html')) return 'Docs';
   if (clean.endsWith('index.html')) return 'Home';
   return 'Page';
 }

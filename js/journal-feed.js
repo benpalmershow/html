@@ -70,6 +70,77 @@ function linkify(text) {
   return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
 }
 
+function addTickerLinks(html) {
+  if (!html) return '';
+
+  const template = document.createElement('template');
+  template.innerHTML = html;
+
+  const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue || !node.nodeValue.includes('$')) {
+        return NodeFilter.FILTER_REJECT;
+      }
+
+      const parentTag = node.parentElement?.tagName;
+      if (parentTag && ['A', 'CODE', 'PRE', 'SCRIPT', 'STYLE', 'TEXTAREA'].includes(parentTag)) {
+        return NodeFilter.FILTER_REJECT;
+      }
+
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const textNodes = [];
+  let currentNode;
+  while ((currentNode = walker.nextNode())) {
+    textNodes.push(currentNode);
+  }
+
+  const tickerRegex = /(^|[^\w/])\$([A-Z][A-Z.\-]{0,9})(?![\w.])/g;
+
+  textNodes.forEach((node) => {
+    const text = node.nodeValue;
+    let match;
+    let lastIndex = 0;
+    const fragment = document.createDocumentFragment();
+    let hasMatch = false;
+
+    while ((match = tickerRegex.exec(text)) !== null) {
+      hasMatch = true;
+      const [fullMatch, prefix, ticker] = match;
+      const start = match.index;
+      const prefixLength = prefix.length;
+      const dollarIndex = start + prefixLength;
+
+      if (dollarIndex > lastIndex) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIndex, dollarIndex)));
+      }
+
+      const anchor = document.createElement('a');
+      anchor.href = `https://www.perplexity.ai/finance/${encodeURIComponent(ticker)}`;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      anchor.textContent = `$${ticker}`;
+      fragment.appendChild(anchor);
+
+      lastIndex = dollarIndex + ticker.length + 1;
+    }
+
+    if (!hasMatch) {
+      return;
+    }
+
+    if (lastIndex < text.length) {
+      fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+
+    node.parentNode.replaceChild(fragment, node);
+  });
+
+  return template.innerHTML;
+}
+
 async function waitForMarked() {
   if (window.marked) {
     return;
@@ -155,8 +226,8 @@ async function renderEntry(entry) {
     return '';
   }
 
-  if (!entry.content && !entry.file) {
-    console.error('Entry missing content and file:', entry);
+  if ((!entry.content || entry.content.trim() === '') && !entry.file && (!entry.title || entry.title.trim() === '')) {
+    console.error('Entry missing title, content, and file:', entry);
     return '';
   }
 
@@ -170,12 +241,18 @@ async function renderEntry(entry) {
 }
 
 function createEntryId(title) {
-  return title
+  const plainTitle = title.replace(/<[^>]*>/g, ' ');
+  return plainTitle
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
+}
+
+function renderTitle(title) {
+  const safeTitle = title.includes('<') ? sanitizeHtml(title) : escapeHtml(title);
+  return addTickerLinks(safeTitle);
 }
 
 async function renderEntryFromFile(entry, entryId) {
@@ -197,29 +274,33 @@ async function renderEntryFromFile(entry, entryId) {
       }
     }
 
-    const safeTitle = escapeHtml(entry.title);
-    const safeContent = sanitizeHtml(htmlContent);
+    const safeTitle = renderTitle(entry.title);
+    const safeContent = addTickerLinks(sanitizeHtml(htmlContent));
     return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
   } catch (err) {
     console.error('Failed to load file:', entry.file, err);
-    const safeTitle = escapeHtml(entry.title);
+    const safeTitle = renderTitle(entry.title);
     return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
   }
 }
 
 function renderInlineEntry(entry, entryId) {
-   const safeTitle = escapeHtml(entry.title);
-   let content = entry.content.includes('<') ? sanitizeHtml(entry.content) : linkify(escapeHtml(entry.content));
+   const safeTitle = renderTitle(entry.title);
+   const rawContent = typeof entry.content === 'string' ? entry.content : '';
+   let content = rawContent.includes('<') ? sanitizeHtml(rawContent) : linkify(escapeHtml(rawContent));
+   content = addTickerLinks(content);
    
    // Handle paragraph breaks if content doesn't contain HTML
-   if (!entry.content.includes('<')) {
+   if (!rawContent.includes('<')) {
      const paragraphs = content.split(/\n\n+/);
      content = paragraphs
+       .filter(para => para.trim() !== '')
        .map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`)
        .join('');
    }
    
-   return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">${content}</div></div>`;
+   const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
+   return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div>${contentHtml}</div>`;
 }
 
 function scrollToHash() {

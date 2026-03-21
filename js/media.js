@@ -32,6 +32,7 @@
     const DB_NAME = 'media-cache-db';
     const DB_VERSION = 1;
     const STORE_NAME = 'media-data';
+    const CACHE_KEY = 'media-data-v4';
     const CACHE_DURATION = 5 * 60 * 1000;
     const BATCH_SIZE = 12;
     const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video', 'article'];
@@ -65,7 +66,7 @@
             return new Promise((resolve, reject) => {
                 const transaction = db.transaction([STORE_NAME], 'readonly');
                 const store = transaction.objectStore(STORE_NAME);
-                const request = store.get('media-data-v3');
+                const request = store.get(CACHE_KEY);
                 request.onsuccess = () => resolve(request.result);
                 request.onerror = () => reject(request.error);
             });
@@ -79,7 +80,7 @@
             const db = await openDB();
             const transaction = db.transaction([STORE_NAME], 'readwrite');
             const store = transaction.objectStore(STORE_NAME);
-            store.put({ data, timestamp: Date.now() }, 'media-data-v3');
+            store.put({ data, timestamp: Date.now() }, CACHE_KEY);
         } catch (err) {
             console.warn('Cache write failed:', err);
         }

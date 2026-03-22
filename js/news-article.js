@@ -168,6 +168,22 @@ function updateDocumentMeta(slug, metadata, articleIndexEntry) {
   }
 }
 
+function updateIndexMeta() {
+  document.title = 'Essays - Howdy, Stranger';
+  setMeta('description', 'Independent essays and policy analysis from Howdy, Stranger.');
+  setMeta('keywords', 'essays, policy analysis, legal analysis, markets, Howdy Stranger');
+  setMeta('og:title', 'Essays - Howdy, Stranger', 'property');
+  setMeta('og:description', 'Independent essays and policy analysis from Howdy, Stranger.', 'property');
+  setMeta('og:url', 'https://howdystranger.net/news.html', 'property');
+  setMeta('twitter:title', 'Essays - Howdy, Stranger');
+  setMeta('twitter:description', 'Independent essays and policy analysis from Howdy, Stranger.');
+
+  const canonical = document.head.querySelector('link[rel="canonical"]');
+  if (canonical) {
+    canonical.href = 'https://howdystranger.net/news.html';
+  }
+}
+
 function renderMetaHeader(metadata) {
   const parts = [];
 
@@ -191,11 +207,145 @@ function renderError(message) {
   const statusEl = document.getElementById('article-status');
   const errorEl = document.getElementById('article-error');
   const readerEl = document.getElementById('article-reader');
+  const indexEl = document.getElementById('essay-index');
 
   statusEl.hidden = true;
   readerEl.hidden = true;
+  if (indexEl) indexEl.hidden = true;
   errorEl.hidden = false;
   errorEl.innerHTML = `${escapeHtml(message)} <a href="index.html">Return home</a>.`;
+}
+
+function getLatestArticleSlug(articles) {
+  if (!Array.isArray(articles)) return null;
+
+  const eligible = articles
+    .filter(article => article && article.id && article.homepage !== false)
+    .sort((a, b) => {
+      const aTime = Date.parse(a.date || '');
+      const bTime = Date.parse(b.date || '');
+      const aValid = Number.isFinite(aTime);
+      const bValid = Number.isFinite(bTime);
+
+      if (aValid && bValid) return bTime - aTime;
+      if (aValid) return -1;
+      if (bValid) return 1;
+      return 0;
+    });
+
+  return eligible[0]?.id || null;
+}
+
+function getSortedArticles(articles) {
+  if (!Array.isArray(articles)) return [];
+
+  return [...articles].sort((a, b) => {
+    const aTime = Date.parse(a?.date || '');
+    const bTime = Date.parse(b?.date || '');
+    const aValid = Number.isFinite(aTime);
+    const bValid = Number.isFinite(bTime);
+
+    if (aValid && bValid) return bTime - aTime;
+    if (aValid) return -1;
+    if (bValid) return 1;
+    return 0;
+  });
+}
+
+function getCategoryIcon(category) {
+  const iconMap = {
+    all: 'list',
+    policy: 'shield',
+    legal: 'gavel',
+    political: 'landmark',
+    earnings: 'briefcase',
+    ipo: 'rocket',
+    healthcare: 'heart-pulse',
+    corrections: 'badge-alert'
+  };
+
+  return iconMap[category] || 'file-text';
+}
+
+function renderEssayCards(articles, category = 'all') {
+  const resultsEl = document.getElementById('essay-results');
+  if (!resultsEl) return;
+
+  const filtered = category === 'all'
+    ? articles
+    : articles.filter(article => (article.category || 'uncategorized') === category);
+
+  if (!filtered.length) {
+    resultsEl.innerHTML = '<div class="essay-empty">No essays match this filter.</div>';
+    return;
+  }
+
+  resultsEl.innerHTML = filtered.map(article => `
+    <a class="essay-card" href="news.html?article=${encodeURIComponent(article.id)}" data-category="${escapeHtml(article.category || 'uncategorized')}">
+      <div class="essay-card-header">
+        <h2 class="essay-card-title">${escapeHtml(article.title || 'Untitled')}</h2>
+        ${article.category ? `<span class="category-badge ${escapeHtml(article.category)}">${escapeHtml(titleCaseCategory(article.category))}</span>` : ''}
+      </div>
+      <p class="essay-card-summary">${escapeHtml(article.summary || 'Read the essay.')}</p>
+      <div class="essay-card-meta">
+        ${article.date ? `<time class="essay-card-date" datetime="${escapeHtml(article.date)}">${escapeHtml(formatRelativeDate(article.date))}</time>` : ''}
+        <span class="essay-card-cta">Read essay <i data-lucide="arrow-right"></i></span>
+      </div>
+    </a>
+  `).join('');
+}
+
+function renderEssayFilters(articles) {
+  const filtersEl = document.getElementById('essay-filters');
+  if (!filtersEl) return;
+
+  const categories = ['all', ...new Set(articles.map(article => (article.category || 'uncategorized')).filter(Boolean))];
+
+  filtersEl.innerHTML = categories.map(category => `
+    <button type="button" class="filter-btn ${category === 'all' ? 'active' : ''}" data-category="${escapeHtml(category)}">
+      <i data-lucide="${getCategoryIcon(category)}" class="filter-icon"></i>
+      <span class="filter-text">${escapeHtml(category === 'all' ? 'All' : titleCaseCategory(category))}</span>
+    </button>
+  `).join('');
+
+  filtersEl.addEventListener('click', (event) => {
+    const button = event.target.closest('.filter-btn');
+    if (!button) return;
+
+    filtersEl.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    renderEssayCards(articles, button.dataset.category || 'all');
+    if (window.lucide?.createIcons) {
+      window.lucide.createIcons();
+    }
+  });
+}
+
+function renderEssayIndex(articles) {
+  const statusEl = document.getElementById('article-status');
+  const readerEl = document.getElementById('article-reader');
+  const errorEl = document.getElementById('article-error');
+  const indexEl = document.getElementById('essay-index');
+  const pageTitle = document.querySelector('.page-title');
+  const sorted = getSortedArticles(articles);
+
+  updateIndexMeta();
+
+  if (pageTitle) {
+    pageTitle.innerHTML = '<img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager"> Essays';
+  }
+
+  statusEl.hidden = true;
+  readerEl.hidden = true;
+  errorEl.hidden = true;
+  indexEl.hidden = false;
+
+  renderEssayFilters(sorted);
+  renderEssayCards(sorted, 'all');
+
+  if (window.lucide?.createIcons) {
+    window.lucide.createIcons();
+  }
 }
 
 async function loadArticle() {
@@ -206,27 +356,29 @@ async function loadArticle() {
   const statusEl = document.getElementById('article-status');
   const readerEl = document.getElementById('article-reader');
   const contentEl = document.getElementById('article-content');
-
-  if (!slug) {
-    renderError('No article specified.');
-    return;
-  }
+  const indexEl = document.getElementById('essay-index');
 
   try {
     await waitForMarked();
     await ensureHtmlSanitizer();
 
     let articleIndexEntry = null;
+    let articles = [];
     try {
       const articlesResponse = await fetch(`json/articles.json?v=${encodeURIComponent(version)}`);
       if (articlesResponse.ok) {
-        const articles = await articlesResponse.json();
+        articles = await articlesResponse.json();
         if (Array.isArray(articles)) {
           articleIndexEntry = articles.find(article => article.id === slug) || null;
         }
       }
     } catch (error) {
       console.warn('Could not load articles index', error);
+    }
+
+    if (!slug) {
+      renderEssayIndex(articles);
+      return;
     }
 
     const articlePath = `article/${encodeURIComponent(slug)}.md?v=${encodeURIComponent(version)}`;
@@ -253,6 +405,7 @@ async function loadArticle() {
     }
 
     statusEl.hidden = true;
+    if (indexEl) indexEl.hidden = true;
     readerEl.hidden = false;
 
     if (window.lucide?.createIcons) {

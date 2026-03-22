@@ -916,10 +916,10 @@ async function injectBadgeStyles() {
 }
 
 async function initPosts() {
-    await injectBadgeStyles();
-    
     state.feed = document.getElementById('announcements-container');
     if (!state.feed) return;
+
+    await injectBadgeStyles();
 
     // Native details element handles expand/collapse automatically
     // Track expanded state in sessionStorage

@@ -61,7 +61,7 @@
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/news-article.js" as="script">
 
-  <title>Article - Howdy, Stranger</title>
+  <title>Essays - Howdy, Stranger</title>
 
   <style>
     .skip-to-content {
@@ -217,18 +217,23 @@
     <div class="page-header">
       <h1 class="page-title" aria-label="Page title">
         <img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager">
-        Article
+        Essays
       </h1>
     </div>
 
     <div class="article-shell">
-      <div id="article-status" class="article-status">Loading article...</div>
+      <div id="article-status" class="article-status">Loading essays...</div>
+
+      <section id="essay-index" class="essay-index" hidden>
+        <div id="essay-filters" class="filters" aria-label="Filter essays by category"></div>
+        <div id="essay-results" class="essay-results" aria-live="polite"></div>
+      </section>
 
       <article id="article-reader" class="article-reader-card" hidden>
         <div class="article-toolbar">
-          <a href="index.html" class="article-back-link">
+          <a href="news.html" class="article-back-link">
             <i data-lucide="arrow-left"></i>
-            Latest
+            Essays
           </a>
         </div>
 

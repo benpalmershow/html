@@ -172,6 +172,92 @@
     text-decoration: underline;
 }
 
+.essay-index {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.essay-results {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.essay-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: var(--bg-primary);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.essay-card:hover,
+.essay-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(var(--accent-primary-rgb), 0.45);
+    box-shadow: 0 18px 40px rgba(var(--accent-primary-rgb), 0.08);
+}
+
+.essay-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.essay-card-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1.12;
+    color: var(--text-primary);
+}
+
+.essay-card-summary {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.essay-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.essay-card-date {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.essay-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.essay-empty {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
 .category-badge {
     display: inline-block;
     font-size: 0.75em;
@@ -272,5 +358,9 @@
 
     .article-disclosure summary .article-title {
         font-size: 0.95rem;
+    }
+
+    .essay-results {
+        grid-template-columns: 1fr;
     }
 }

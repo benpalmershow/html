@@ -69,10 +69,6 @@
   <link rel="preload" href="css/theme.css?v=20260123" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/body.css?v=20251220" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/nav.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/announcement-cards.css?v=20251220" as="style" onload="this.rel='stylesheet'">
-
-
-
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics Component -->
@@ -108,43 +104,6 @@
     document.addEventListener('click', loadOnInteraction, { passive: true, once: true });
     document.addEventListener('scroll', loadOnInteraction, { passive: true, once: true });
     document.addEventListener('keydown', loadOnInteraction, { passive: true, once: true });
-  </script>
-
-  <!-- Pre-fetch posts data -->
-  <script>
-    const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
-    window.siteDataVersion = siteDataVersion;
-
-    window.postsPromise = fetch('json/posts.json?v=' + encodeURIComponent(siteDataVersion))
-      .then(r => {
-        if (!r.ok) throw new Error('Failed to load posts');
-        return r.json();
-      })
-      .catch(err => {
-        console.warn('Pre-fetch failed', err);
-        return null;
-      });
-    // Also prefetch articles.json
-    window.articlesPromise = fetch('json/articles.json?v=' + encodeURIComponent(siteDataVersion))
-      .then(r => {
-        if (!r.ok) throw new Error('Failed to load articles');
-        return r.json();
-      })
-      .catch(err => {
-        console.warn('Articles pre-fetch failed', err);
-        return null;
-      });
-  </script>
-
-  <!-- Preload Marked.js -->
-  <script>
-    (function () {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'script';
-      link.href = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
-      document.head.appendChild(link);
-    })();
   </script>
 
   <!-- Structured Data -->
@@ -190,36 +149,161 @@
       top: 0;
     }
 
-    .page-title {
-      font-size: 0.85rem;
-      font-family: var(--font-display);
-      color: var(--text-muted);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      text-align: center;
-      margin: 1.25rem 0 0.5rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-sm);
-      min-height: 24px;
-      position: relative;
+    .home-shell {
+      width: min(1100px, calc(100vw - 2.5rem));
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(3rem, 7vw, 5rem);
     }
 
-    .page-title .page-icon {
-      width: 1.4rem;
-      height: 1.4rem;
+    .home-hero {
+      min-height: calc(100vh - 140px);
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(232, 220, 192, 0.55);
+      border-radius: 28px;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      background:
+        radial-gradient(circle at top left, rgba(var(--accent-primary-rgb), 0.18), transparent 34%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(245, 240, 232, 0.9));
+      box-shadow: 0 24px 60px rgba(17, 24, 39, 0.1);
+    }
+
+    html.dark-mode .hero-panel {
+      border-color: rgba(225, 229, 233, 0.2);
+      background:
+        radial-gradient(circle at top left, rgba(135, 197, 190, 0.2), transparent 32%),
+        linear-gradient(160deg, rgba(12, 16, 16, 0.96), rgba(24, 30, 29, 0.98));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.46);
+    }
+
+    .hero-kicker {
+      margin: 0 0 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+    }
+
+    .hero-title {
+      max-width: 12ch;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      color: #111111;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    html.dark-mode .hero-title {
+      color: #f7fafb;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-copy {
+      max-width: 52rem;
+      margin: 1.25rem 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+
+    html.dark-mode .hero-copy {
+      color: #f2f5f7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.75rem;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .hero-link-icon {
+      width: 1.1rem;
+      height: 1.1rem;
       flex-shrink: 0;
       object-fit: cover;
-      border-radius: 50%;
-      margin-right: 2px;
+      border-radius: 999px;
+    }
+
+    .hero-link.primary {
+      background: var(--accent-primary);
+      color: #10201f;
+      box-shadow: 0 12px 24px rgba(var(--accent-primary-rgb), 0.24);
+    }
+
+    .hero-link.secondary {
+      background: rgba(248, 244, 230, 0.82);
+      color: var(--text-primary);
+      border: 1px solid rgba(232, 220, 192, 0.75);
+    }
+
+    html.dark-mode .hero-link.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f4f7f8;
+      border-color: rgba(225, 229, 233, 0.24);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    html.dark-mode .hero-link.secondary:hover,
+    html.dark-mode .hero-link.secondary:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(135, 197, 190, 0.42);
+    }
+
+    html.dark-mode .hero-link.primary:hover,
+    html.dark-mode .hero-link.primary:focus-visible {
+      box-shadow: 0 14px 28px rgba(135, 197, 190, 0.3);
+    }
+
+    .hero-link:hover,
+    .hero-link:focus-visible {
+      transform: translateY(-1px);
     }
 
     @media (max-width: 640px) {
-      .page-title {
-        font-size: 0.8rem;
-        margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+      .home-shell {
+        width: min(100vw - 1.25rem, 1100px);
+        padding-top: 1rem;
+      }
+
+      .home-hero {
+        min-height: auto;
+      }
+
+      .hero-panel {
+        border-radius: 22px;
+        padding: 1.35rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-link {
+        justify-content: center;
+        width: 100%;
       }
     }
   </style>
@@ -230,39 +314,25 @@
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
   <main id="main-content" tabindex="-1" style="min-height:calc(100vh - 60px)">
-    <div class="page-header">
-      <h2 class="page-title" id="announcements" aria-label="Page title">
-        Announcements
-      </h2>
-      <div class="filters" id="index-filters" aria-label="Filter posts by category">
-          <button type="button" class="filter-btn active" data-category="all" aria-label="All posts"><i data-lucide="list" class="filter-icon"></i><span class="filter-text">All</span></button>
-          <button type="button" class="filter-btn" data-category="economic" aria-label="Economic"><i data-lucide="trending-up" class="filter-icon"></i><span class="filter-text">Economic</span></button>
-          <button type="button" class="filter-btn" data-category="employment" aria-label="Employment"><i data-lucide="briefcase" class="filter-icon"></i><span class="filter-text">Employment</span></button>
-          <button type="button" class="filter-btn" data-category="government" aria-label="Government"><i data-lucide="landmark" class="filter-icon"></i><span class="filter-text">Government</span></button>
-          <button type="button" class="filter-btn" data-category="prediction" aria-label="Prediction Markets"><i data-lucide="target" class="filter-icon"></i><span class="filter-text">Prediction</span></button>
-          <button type="button" class="filter-btn" data-category="housing" aria-label="Housing"><i data-lucide="home" class="filter-icon"></i><span class="filter-text">Housing</span></button>
-          <button type="button" class="filter-btn" data-category="journal" aria-label="Docs"><i data-lucide="book-open" class="filter-icon"></i><span class="filter-text">Docs</span></button>
-          <button type="button" class="filter-btn" data-category="policy" aria-label="Policy"><i data-lucide="shield" class="filter-icon"></i><span class="filter-text">Policy</span></button>
-          <button type="button" class="filter-btn" data-category="media" aria-label="Media"><i data-lucide="clapperboard" class="filter-icon"></i><span class="filter-text">Media</span></button>
-          <button type="button" class="filter-btn" data-category="legal" aria-label="Legal"><i data-lucide="gavel" class="filter-icon"></i><span class="filter-text">Legal</span></button>
-      </div>
+    <div class="home-shell">
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="hero-panel">
+          <p class="hero-kicker">Commentary from Doc Riter</p>
+          <h1 class="hero-title" id="home-title">Howdy, Stranger.</h1>
+          <p class="hero-copy">
+            Markets, policy, housing, media, and notebook-style reporting in one place.
+            
+          </p>
+
+          <div class="hero-actions" aria-label="Primary site sections">
+            <a class="hero-link primary" href="journal.html"><img src="images/read-60x60.webp" alt="" class="hero-link-icon" width="18" height="18" loading="eager"><span>Read the Docs</span></a>
+            <a class="hero-link secondary" href="financials.html"><img src="images/read.webp" alt="" class="hero-link-icon" width="18" height="18" loading="eager"><span>Track the Numbers</span></a>
+            <a class="hero-link secondary" href="news.html"><img src="images/announcements-60x60.webp" alt="" class="hero-link-icon" width="18" height="18" loading="eager"><span>Browse the Essays</span></a>
+            <a class="hero-link secondary" href="media.html"><img src="images/media-60x60.webp" alt="" class="hero-link-icon" width="18" height="18" loading="eager"><span>See the Media Picks</span></a>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <section class="announcements" aria-label="Latest announcements" style="min-height:600px">
-      <div class="announcements-container" id="announcements-container" style="min-height:500px">
-        <div class="loading-skeleton" style="height:100px"></div>
-        <div class="loading-skeleton" style="height:100px"></div>
-        <div class="loading-skeleton" style="height:100px"></div>
-      </div>
-    </section>
-    
-    <noscript>
-      <div style="padding: 2rem; text-align: center;">
-        <p>Please enable JavaScript to view the latest announcements and content.</p>
-      </div>
-    </noscript>
-
-    <!-- Announcements are populated by posts-loader.js directly into #announcements-container -->
   </main>
 
   <!-- Footer Component -->
@@ -287,10 +357,6 @@
 
   <!-- Swipe navigation for mobile -->
   <script src="js/swipe-nav.js" defer></script>
-
-  <!-- Posts loader (refactored with modules) -->
-  <!-- Posts loader -->
-  <script src="js/posts-loader.js" defer></script>
 
   <!-- Unified Scripts -->
   <script src="js/bfcache-compat.js" defer></script>
@@ -329,21 +395,6 @@
         setTimeout(loadLucide, 100);
       }
 
-      // On-demand loaders for libraries used only on specific pages
-      window.loadMarked = () => new Promise(resolve => {
-        if (window.marked) return resolve(window.marked);
-        loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js', () => resolve(window.marked));
-      });
-
-      window.loadDOMPurify = () => new Promise(resolve => {
-        if (window.DOMPurify) return resolve(window.DOMPurify);
-        loadScript('https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js', () => resolve(window.DOMPurify || null));
-      });
-
-      window.loadChartJS = () => new Promise(resolve => {
-        if (window.Chart) return resolve(window.Chart);
-        loadScript('https://cdn.jsdelivr.net/npm/chart.js', () => resolve(window.Chart));
-      });
     })();
   </script>
 

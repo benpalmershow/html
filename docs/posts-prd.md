@@ -2,107 +2,101 @@
 
 ## Overview
 
-Posts provide concise, visual updates across the site. Each post is a markdown file with YAML frontmatter in `article/posts/`, registered in `json/posts.json`. Filenames follow `YYYY-MM-DD-slug.md`.
+All future routine publishing starts in `json/journal.json`. The journal is now the primary feed for short commentary, links, reactions, and compact updates.
 
-**Core Principles:** Short, informative, visual, and properly linked.
+Standalone pages remain available for longer treatments, but they are secondary. When a topic needs more than a short journal entry, publish the longform page in `article/` and link to it from the relevant journal entry.
 
----
-
-## Required Elements (ALL Posts)
-
-1. **YAML Frontmatter** - Date in ISO 8601 with timezone (`Z`) and `category`
-2. **Icon** - Lucide icon (can be anywhere in content with `post-icon` or `card-icon` class)
-3. **Content** - Use `<p>` tags for paragraphs to enable proper snippet extraction
-4. **Navigation Link** - Link to relevant page with proper anchor/filter
-5. **Registration** - Entry in `json/posts.json` with correct date and file path; newest entries go first
+**Core principles:** journal first, concise by default, link outward only when length or structure requires it.
 
 ---
 
-## Formatting Standards
+## Default Publishing Workflow
 
-- **Length**: Keep posts under 150 words total
-- **Emphasis**: Use `<b>` for bold, **not** emojis
-- **Paragraphs**: Use `<p>` tags - do not use only `<br><br>` for paragraphs
-- **Links**: Use proper filters/anchors (`financials.html?filter=Category%20Name`, `media.html#slug`)
+1. Add the new item to the newest date block in `json/journal.json`, or create a new top level date block if needed.
+2. Write the entry as a compact journal note with a `title` and optional `content`.
+3. If the topic needs a full treatment, create a dedicated page in `article/` and link to it from the journal entry.
+4. Do not create a new `article/posts/` card or `json/posts.json` entry unless explicitly requested for a homepage card or legacy compatibility.
 
 ---
 
-## Post Templates
+## Journal Entry Requirements
 
-### Economic/Financial Indicator
-```markdown
----
-category: financials
----
+Each journal entry lives inside a dated object in `json/journal.json`:
 
-<i data-lucide='trending-up' class='post-icon'></i> <b>Indicator Name</b>
-
-<p>Key insight about the indicator value and trend.</p>
-
-▸ **Latest**: [value] ([+/-X.X%] MoM)
-
-{{chart:Indicator Name}}
-
-<a href="financials.html?filter=Category"><b>View all indicators</b></a>
+```json
+{
+  "date": "03/22/26",
+  "entries": [
+    {
+      "title": "📰 Title",
+      "content": "Short commentary with optional <a href='article/example.html'>link</a>."
+    }
+  ]
+}
 ```
 
-### Policy/News Update
-```markdown
+### Required elements
+
+1. `date` in `MM/DD/YY` format at the group level
+2. `title` for every entry
+3. Optional `content` for body copy, links, or context
+4. Valid HTML for any inline links
+
+### Formatting standards
+
+- Keep entries concise. One or two short paragraphs is the default.
+- HTML is allowed in `title` and `content`, but keep it simple.
+- External links must use `target='_blank'` and `rel='noopener noreferrer'`.
+- Internal links should point directly to the relevant page such as `news.html?article=slug`, `media.html#slug`, `financials.html?filter=Category`, or an `article/...` page.
+- Emojis are acceptable in journal titles because the journal feed already uses them extensively.
+- No em dashes in prose. Use a hyphen with spaces instead.
+
 ---
-category: policy
----
 
-<i data-lucide='users' class='post-icon'></i> <b>Title</b>
+## When To Create A Longer Page
 
-<p>Brief description of the news or update.</p>
+Create a dedicated page in `article/` when the item needs any of the following:
 
-▸ Point one
-▸ Point two
+- Multiple paragraphs of argument or reporting
+- Supporting images, charts, or embeds
+- A durable URL that should stand on its own
+- A topic likely to be linked or referenced later
 
-<a href="financials.html"><b>View related</b></a>
+In those cases, the journal entry becomes the distribution layer and the article page holds the full treatment.
+
+Example:
+
+```json
+{
+  "title": "🛸 <a href='news.html?article=military-drones'>Military Drones</a>",
+  "content": "Updated comparison of reusable UAVs, loitering munitions, and one-way attack drones through the lens of cost exchange and production scale."
+}
 ```
 
-### Media Content
-```markdown
----
-category: media
 ---
 
-<i data-lucide='clapperboard' class='post-icon'></i> <a href="media.html#slug"><img src="image_url" alt="Title" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a> <b>Title</b>
+## Legacy Post System
 
-<p>One-sentence description.</p>
-
-<a href="media.html#slug"><b>View in Media</b></a>
-```
-
----
-
-## Charts (Optional)
-
-For posts with data/metrics, use: `{{chart:Indicator Name}}`
-
-- Indicator name must exactly match `name` field in `financials-data.json`
-- Charts are optional but recommended for data-driven content
+`article/posts/` and `json/posts.json` still exist on the site, but they are no longer the default workflow for new content. Treat them as legacy or special purpose surfaces unless a task specifically calls for a homepage post card or a backwards-compatible post entry.
 
 ---
 
 ## Publishing Checklist
 
-- [ ] YAML frontmatter with ISO date (with `Z`) and category
-- [ ] Lucide icon with `post-icon` or `card-icon` class
-- [ ] Content uses `<p>` tags for paragraphs
-- [ ] Post under 150 words total
-- [ ] Navigation link with proper anchor/filter
-- [ ] Post registered in json/posts.json (newest first)
-- [ ] No emojis (use Lucide icons instead)
-- [ ] No em dashes (—) in prose; use hyphens (-) instead
+- [ ] Entry added to the correct date block in `json/journal.json`
+- [ ] `title` is present and reads cleanly in the feed
+- [ ] `content` is concise and valid HTML if used
+- [ ] Internal or external links point to the right destination
+- [ ] External links include `target='_blank'` and `rel='noopener noreferrer'`
+- [ ] No em dashes in prose
+- [ ] Longer page created in `article/` only if the topic genuinely needs it
 
 ---
 
 ## Common Pitfalls
 
-- Missing `Z` timezone in dates
-- Chart name typos vs. `financials-data.json`
-- Navigation link missing filter or anchor
-- Slug mismatch between filename and `file` path
-- Using `<br><br>` instead of `<p>` tags (breaks snippet extraction)
+- Adding new routine content to `article/posts/` instead of `json/journal.json`
+- Forgetting to create a new date block when publishing on a new day
+- Invalid inline HTML in `title` or `content`
+- Missing `rel='noopener noreferrer'` on external links
+- Turning a short journal item into a standalone page when a linkable note would do

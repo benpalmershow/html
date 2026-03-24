@@ -29,7 +29,7 @@ The Centers for Medicare and Medicaid Services recently estimated that Los Angel
 
 The Committee is requesting documents and communications regarding California's oversight and internal controls to detect and prevent fraud for its federally funded hospice programs.
 
-> **Related:** This investigation follows a pattern of federal scrutiny of state social service programs. See previous coverage: ["Despite claims, massive SNAP fraud is rare"](/journal.html) — an article from UC Berkeley that cited a legal welfare advocate who stated fraud is not "borne out by our experience" while Massachusetts refused to cooperate with federal USDA fraud investigations.
+> **Related:** This investigation follows a pattern of federal scrutiny of state social service programs. See previous coverage: ["Despite claims, massive SNAP fraud is rare"](/journal.html) — an article from The Boston Globe that cited a legal welfare advocate who stated fraud is not "borne out by our experience" while Massachusetts refused to cooperate with federal USDA fraud investigations.
 
 [Read the letter to Governor Newsom](https://oversight.house.gov/wp-content/uploads/2026/03/Ltr-to-Newsom-re-hospice-fraud.pdf).
 

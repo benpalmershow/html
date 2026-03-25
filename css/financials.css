@@ -1420,3 +1420,12 @@
     0% { outline-color: var(--logo-teal); }
     100% { outline-color: transparent; }
 }
+
+#latest-13f-filings-anchor {
+    position: absolute;
+    pointer-events: none;
+}
+
+#latest-13f-filings {
+    margin-top: 2rem;
+}

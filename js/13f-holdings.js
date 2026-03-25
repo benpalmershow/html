@@ -307,7 +307,6 @@ function initializeFirmCards() {
             const card = expandBtn.closest('.indicator');
             if (card) {
                 card.classList.toggle('expanded');
-                console.log('Toggled expanded state:', card.classList.contains('expanded'));
             }
         }
     });

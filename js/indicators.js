@@ -60,6 +60,17 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
         }
 
         case 'venezuela':
+            if (indicator.candidates && typeof indicator.candidates === 'object') {
+                const entries = Object.entries(indicator.candidates);
+                entries.forEach(([name, prob], i) => {
+                    if (i < 2) {
+                        latestDataHtml += `<div class="latest-data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
+                    } else {
+                        historyDataHtml += `<div class="data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
+                    }
+                });
+                hasHistory = entries.length > 2;
+            }
             break;
         case 'triple': {
             const availableData = [];

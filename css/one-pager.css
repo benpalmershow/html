@@ -105,8 +105,9 @@ html.dark-mode .header-social-item img {
 .updates-grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+  align-items: stretch;
 }
 
 .one-pager-footer {
@@ -192,6 +193,8 @@ html.dark-mode .header-social-item img {
   border-radius: 10px;
   padding: 0.7rem 0.8rem;
   background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
 }
 
 .section-card h2 {
@@ -205,7 +208,8 @@ html.dark-mode .header-social-item img {
 
 .compact-list {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 0;
+  list-style: none;
 }
 
 .compact-list li {
@@ -216,6 +220,14 @@ html.dark-mode .header-social-item img {
 
 .compact-list strong {
   color: var(--text-primary);
+}
+
+.journal-entry {
+  margin-bottom: 0.4rem;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none;
+  list-style: none;
 }
 
 .section-icon-link {
@@ -282,6 +294,21 @@ html.dark-mode .header-social-item img {
   color: var(--accent-secondary);
 }
 
+.media-bullet-icon {
+  width: 0.86rem;
+  height: 0.86rem;
+  vertical-align: -0.12em;
+  margin-right: 0.2rem;
+  color: var(--accent-primary);
+  stroke: currentColor;
+}
+
+@media (max-width: 900px) {
+  .updates-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 800px) {
   .one-pager-header {
     grid-template-columns: 1fr;
@@ -291,10 +318,6 @@ html.dark-mode .header-social-item img {
   .header-actions {
     margin-right: 0;
     align-items: flex-start;
-  }
-
-  .updates-grid {
-    grid-template-columns: 1fr;
   }
 
   .one-pager-footer {
@@ -397,7 +420,7 @@ html.dark-mode .header-social-item img {
   }
 
   .updates-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.5rem;
     margin-top: 0.5rem;
     break-inside: avoid;
@@ -462,6 +485,12 @@ html.dark-mode .header-social-item img {
   }
 
   .financial-bullet-icon {
+    width: 0.65rem;
+    height: 0.65rem;
+    margin-right: 0.12rem;
+  }
+
+  .media-bullet-icon {
     width: 0.65rem;
     height: 0.65rem;
     margin-right: 0.12rem;

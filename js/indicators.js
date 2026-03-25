@@ -60,14 +60,90 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
         }
 
         case 'venezuela':
-            if (indicator.candidates && typeof indicator.candidates === 'object') {
-                const candidateEntries = Object.entries(indicator.candidates);
-                candidateEntries.forEach(([name, value], i) => {
-                    if (i < 2) latestDataHtml += `<div class="latest-data-row"><span class="month-label">${name}:</span> <span class="month-value">${value}</span></div>`;
-                    else historyDataHtml += `<div class="data-row"><span class="month-label">${name}:</span> <span class="month-value">${value}</span></div>`;
-                });
-                hasHistory = candidateEntries.length > 2;
+            break;
+        case 'triple': {
+            const availableData = [];
+            
+            // Find year-nested data (keys that are numeric/year-like)
+            const yearKeys = Object.keys(indicator)
+                .filter(key => /^\d{4}$/.test(key))
+                .map(key => parseInt(key))
+                .sort((a, b) => b - a); // Sort years descending
+
+            // Collect all available data points
+            MONTHS.forEach((month, index) => {
+                let value = null;
+                let year = null;
+                
+                // First check year-nested data in descending year order (newest first)
+                for (const yr of yearKeys) {
+                    if (indicator[yr] && indicator[yr][month] !== undefined) {
+                        value = indicator[yr][month];
+                        year = yr;
+                        break;
+                    }
+                }
+                
+                // Fall back to flat structure (e.g., indicator["january"])
+                if (value === null) {
+                    value = indicator[month];
+                    year = null;
+                }
+                
+                if (isValidData(value)) {
+                    availableData.push({
+                        month: month,
+                        label: MONTH_LABELS[index],
+                        value: value,
+                        index: index,
+                        year: year
+                    });
+                }
+            });
+
+            // Sort by year descending (latest first), then by month index descending
+            availableData.sort((a, b) => {
+                // If both have year data, sort by year first
+                if (a.year !== null && b.year !== null) {
+                    if (a.year !== b.year) return b.year - a.year;
+                }
+                // If only one has year data, prioritize it (newer)
+                if (a.year !== null && b.year === null) return -1;
+                if (a.year === null && b.year !== null) return 1;
+                // Otherwise sort by month index
+                return b.index - a.index;
+            });
+
+            if (availableData.length > 0) {
+                const latestWTI = availableData[0];
+                // Build latestDataHtml: three rows (WTI, Brent, Crude Overlays)
+                latestDataHtml = `
+                    <div class="latest-data-row"><span class="month-label">WTI:</span><span class="month-value">$${latestWTI.value}</span></div>
+                    <div class="latest-data-row"><span class="month-label">Brent:</span><span class="month-value placeholder">Data not available</span></div>
+                    <div class="latest-data-row"><span class="month-label">Crude Overlays:</span><span class="month-value placeholder">Data not available</span></div>
+                `;
+
+                // Build historyDataHtml: for each additional WTI data point, show three rows (WTI, Brent, Crude Overlays)
+                if (availableData.length > 1) {
+                    hasHistory = true;
+                    for (let i = 1; i < availableData.length; i++) {
+                        const item = availableData[i];
+                        historyDataHtml += `
+                            <div class="data-row"><span class="month-label">WTI (${item.label}):</span><span class="month-value">$${item.value}</span></div>
+                            <div class="data-row"><span class="month-label">Brent:</span><span class="month-value placeholder">Data not available</span></div>
+                            <div class="data-row"><span class="month-label">Crude Overlays:</span><span class="month-value placeholder">Data not available</span></div>
+                        `;
+                    }
+                }
+            } else {
+                latestDataHtml = `
+                    <div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>
+                    <div class="latest-data-row"><span class="month-label">Brent:</span><span class="month-value placeholder">Data not available</span></div>
+                    <div class="latest-data-row"><span class="month-label">Crude Overlays:</span><span class="month-value placeholder">Data not available</span></div>
+                `;
             }
+            break;
+        }
             break;
 
         case 'standard': {

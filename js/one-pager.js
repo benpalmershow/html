@@ -1,13 +1,8 @@
 const LIMITS = {
-  posts: 8,
-  journal: 10,
+  journal: 5,
   media: 8,
-  financials: 12
+  financials: 10
 };
-const EXCLUDED_POSTS = [
-  'article/posts/2026-03-10-reflect-orbital.md',
-  'article/posts/2026-03-10-asog.md'
-];
 const PAGE_LOAD_VERSION = Date.now();
 
 const MONTHS = [
@@ -23,6 +18,16 @@ const FINANCIAL_CATEGORY_ICONS = {
   'Trade & Tariffs': 'ship',
   'Commodities': 'package',
   'Prediction Markets': 'trending-up'
+};
+
+const MEDIA_CATEGORY_ICONS = {
+  'podcast': 'mic',
+  'book': 'book-open',
+  'movie': 'film',
+  'album': 'music',
+  'song': 'music',
+  'video': 'play-circle',
+  'playlist': 'music'
 };
 
 function parseJournalDate(dateString) {
@@ -110,34 +115,6 @@ function extractMarkdownBody(markdown) {
   return markdown.trim();
 }
 
-function extractPostTitleAndSnippet(markdown, fallbackFileName) {
-  const body = extractMarkdownBody(markdown);
-  const headingMatch = body.match(/^#{1,3}\s+(.+)$/m);
-  const title = cleanText(headingMatch?.[1]) || fallbackFileName;
-  // Always link to home instead of following links in the post
-  const sourcePath = `index.html#:~:text=${encodeURIComponent(title)}`;
-
-  const lines = body
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line && !line.startsWith('#') && !line.startsWith('![') && !line.startsWith('{{'));
-
-  const synopsis = lines
-    .map(line => cleanText(line))
-    .find(text =>
-      text &&
-      text.length >= 40 &&
-      !/^view in media$/i.test(text) &&
-      !/^media$/i.test(text) &&
-      text.toLowerCase() !== title.toLowerCase()
-    ) || cleanText(body);
-
-  return {
-    title,
-    snippet: clip(synopsis, 170),
-    sourcePath
-  };
-}
 
 function parseNumericValue(raw) {
   if (raw === null || raw === undefined || raw === '') return null;
@@ -183,7 +160,7 @@ function getLatestIndicatorPoints(indicator) {
     if (/^\d{4}$/.test(key) && indicator[key] && typeof indicator[key] === 'object') {
       MONTHS.forEach((month, index) => {
         const rawValue = indicator[key][month];
-        if (!rawValue) return;
+        if (!rawValue || rawValue === '') return;
         points.push({
           stamp: new Date(Number.parseInt(key, 10), index, 1).getTime(),
           rawValue: String(rawValue),
@@ -196,11 +173,12 @@ function getLatestIndicatorPoints(indicator) {
 
   // Fallback for legacy flat month keys when nested year data is missing.
   MONTHS.forEach((month, index) => {
-    if (!indicator[month]) return;
+    const rawValue = indicator[month];
+    if (!rawValue || rawValue === '') return;
     points.push({
       stamp: new Date(2025, index, 1).getTime(),
-      rawValue: String(indicator[month]),
-      numericValue: parseNumericValue(indicator[month]),
+      rawValue: String(rawValue),
+      numericValue: parseNumericValue(rawValue),
       monthLabel: `${month.slice(0, 3)} 2025`
     });
   });
@@ -243,29 +221,6 @@ function renderList(id, items) {
   }
 }
 
-async function loadLatestPosts() {
-  const posts = await fetchJson('json/posts.json');
-  const sorted = posts
-    .slice()
-    .filter(post => !EXCLUDED_POSTS.includes(post.file))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, LIMITS.posts);
-
-  const lines = await Promise.all(sorted.map(async (post) => {
-    const fileName = post.file.split('/').pop().replace('.md', '');
-    try {
-      const markdown = await fetchText(post.file);
-      const extracted = extractPostTitleAndSnippet(markdown, fileName);
-      const readLink = `<a href="${escapeHtml(extracted.sourcePath)}" target="_blank" rel="noopener noreferrer">${pageLabelFromPath(extracted.sourcePath)}</a>`;
-      return `<strong>${escapeHtml(extracted.title)}</strong> (${readLink}): ${escapeHtml(extracted.snippet)}`;
-    } catch {
-      const readLink = `<a href="index.html" target="_blank" rel="noopener noreferrer">Home</a>`;
-      return `<strong>${escapeHtml(fileName)}</strong> (${readLink})`;
-    }
-  }));
-
-  renderList('latest-posts', lines);
-}
 
 async function loadLatestJournal() {
   const journals = await fetchJson('json/journal.json');
@@ -282,11 +237,36 @@ async function loadLatestJournal() {
     )
     .slice(0, LIMITS.journal);
 
-  const lines = flat.map(item => {
-    const sourceLink = `<a href="${escapeHtml(item.sourcePath)}" target="_blank" rel="noopener noreferrer">${pageLabelFromPath(item.sourcePath)}</a>`;
-    return `<strong>${escapeHtml(item.date)} | ${escapeHtml(item.title)}</strong> (${sourceLink}): ${escapeHtml(item.content)}`;
+  // Group entries by date but don't show date headers
+  const groupedByDate = {};
+  flat.forEach(item => {
+    if (!groupedByDate[item.date]) {
+      groupedByDate[item.date] = [];
+    }
+    groupedByDate[item.date].push(item);
   });
-  renderList('latest-journal', lines);
+
+  const lines = [];
+  Object.keys(groupedByDate).forEach(date => {
+    const entries = groupedByDate[date];
+    
+    // Add entries for this date without date header
+    entries.forEach(entry => {
+      lines.push(`<li class="journal-entry"><strong>${escapeHtml(entry.title)}</strong>: ${escapeHtml(entry.content)}</li>`);
+    });
+  });
+
+  // Render with custom HTML since we have mixed content
+  const target = document.getElementById('latest-journal');
+  if (!target) return;
+  if (!lines.length) {
+    target.innerHTML = '<li>No updates found.</li>';
+    return;
+  }
+  target.innerHTML = lines.join('');
+  if (window.lucide?.createIcons) {
+    window.lucide.createIcons();
+  }
 }
 
 async function loadLatestMedia() {
@@ -302,9 +282,14 @@ async function loadLatestMedia() {
 
   const lines = sorted.map(item => {
     const title = escapeHtml(cleanText(item.title));
-    const sourcePageLink = `<a href="media.html" target="_blank" rel="noopener noreferrer">Media</a>`;
     const subtitle = clip(item.description || item.genre || item.author || item.mediaType || '', 70);
-    return `<strong>${title}</strong> (${sourcePageLink}): ${escapeHtml(subtitle)}`;
+    
+    // Get icon for media type, fallback to item.icon if available, then default
+    const mediaType = (item.mediaType || '').toLowerCase();
+    const iconName = MEDIA_CATEGORY_ICONS[mediaType] || (item.icon ? item.icon.replace('fas fa-', '').replace('fab fa-', '') : 'play-circle');
+    const iconHtml = `<i data-lucide="${iconName}" class="media-bullet-icon"></i>`;
+    
+    return `${iconHtml} <strong>${title}</strong>: ${escapeHtml(subtitle)}`;
   });
   renderList('latest-media', lines);
 }
@@ -317,6 +302,43 @@ async function loadLatestFinancials() {
     .slice(0, LIMITS.financials);
 
   const lines = sorted.map(item => {
+    // Special handling for prediction markets with various data structures
+    if (item.rate_hold_odds || item.rate_cut_odds || item.rate_hike_odds) {
+      // FOMC Rate Decision format
+      const categoryText = cleanText(item.category || 'unknown category');
+      const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
+      const categoryHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
+      const categoryIconHtml = `<a href="${categoryHref}" target="_blank" rel="noopener noreferrer" class="financial-bullet-link" aria-label="Open ${escapeHtml(categoryText)} in Financials" title="${escapeHtml(categoryText)}"><i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i></a>`;
+      
+      const odds = [];
+      if (item.rate_hold_odds) odds.push(`Hold: ${item.rate_hold_odds}`);
+      if (item.rate_cut_odds) odds.push(`Cut: ${item.rate_cut_odds}`);
+      if (item.rate_hike_odds) odds.push(`Hike: ${item.rate_hike_odds}`);
+      
+      return `${categoryIconHtml} <strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(odds.join(' | '))}`;
+    }
+    
+    if (item.yes_probability || item.no_probability || (item.candidates && typeof item.candidates === 'object')) {
+      // Yes/No markets or candidates markets
+      const categoryText = cleanText(item.category || 'unknown category');
+      const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
+      const categoryHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
+      const categoryIconHtml = `<a href="${categoryHref}" target="_blank" rel="noopener noreferrer" class="financial-bullet-link" aria-label="Open ${escapeHtml(categoryText)} in Financials" title="${escapeHtml(categoryText)}"><i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i></a>`;
+      
+      let displayText = '';
+      if (item.yes_probability && item.no_probability) {
+        displayText = `Yes: ${item.yes_probability} | No: ${item.no_probability}`;
+      } else if (item.candidates && typeof item.candidates === 'object') {
+        const candidateList = Object.entries(item.candidates)
+          .slice(0, 3) // Show top 3 candidates
+          .map(([name, odds]) => `${name}: ${odds}`);
+        displayText = candidateList.join(' | ');
+      }
+      
+      return `${categoryIconHtml} <strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(displayText)}`;
+    }
+    
+    // Standard handling for numeric indicators
     const { latest, previous, mom } = getLatestIndicatorPoints(item);
     const value = latest ? formatDisplayValue(item.name, latest.rawValue) : 'n/a';
     const employmentDelta = formatEmploymentDelta(item.name, latest, previous);
@@ -343,7 +365,6 @@ async function initOnePager() {
   setupPrintButton();
 
   await Promise.allSettled([
-    loadLatestPosts(),
     loadLatestJournal(),
     loadLatestMedia(),
     loadLatestFinancials()

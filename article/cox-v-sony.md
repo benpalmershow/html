@@ -1,9 +1,9 @@
 ---
 title: Cox v. Sony Music Entertainment
-date: 2025-12-02
+date: 2026-03-25
 category: legal
 icon: gavel
-summary: Supreme Court examines secondary liability for ISPs that continue providing service to known copyright infringers
+summary: Supreme Court unanimously reverses billion-dollar judgment, holding ISPs cannot be held contributorily liable for customer infringement without proof of inducement or a service tailored to infringement
 ---
 
 <div class="article-wrapper">
@@ -12,7 +12,11 @@ summary: Supreme Court examines secondary liability for ISPs that continue provi
 
 **Case:** Cox Communications, Inc. v. Sony Music Entertainment, et al.  
 **Case Number:** 24-171  
-**Oral Argument Date:** December 1, 2025
+**Oral Argument Date:** December 1, 2025  
+**Decision Date:** March 25, 2026  
+**Vote:** 9–0, reversed and remanded  
+**Opinion Author:** Justice Thomas  
+**Concurrence:** Justice Sotomayor (joined by Justice Jackson)
 
 ---
 
@@ -39,6 +43,21 @@ Sony argues Cox's conduct crosses from passive to culpable. The company provided
 Counsel Paul D. Clement stated the distinction plainly: a "one-and-done sale of an item that can be used in a way to infringe but is generally used lawfully" differs fundamentally from providing service "to known infringers with substantial knowledge that what they themselves called habitual abusers would continue to infringe."
 
 Clement highlighted admissions in the record that Cox employees disregarded copyright law. He argued Cox's position would render the DMCA "a dead letter" if ISPs could "take tens of thousands of copyright notices and throw them in the trash" with no consequences.
+
+---
+
+## Secondary Liability: Judge-Made, Not Statutory
+
+The Copyright Act does not expressly create secondary liability. Section 501(a) provides that "[a]nyone who violates any of the exclusive rights of the copyright owner" is an infringer—but it says nothing about holding third parties liable for someone else's infringement.
+
+The two recognized categories of secondary copyright liability are entirely judicial creations:
+
+- **Contributory liability:** A party that knowingly induces or materially contributes to another's infringement. Developed through decades of lower-court decisions, notably *Gershwin Publishing Corp. v. Columbia Artists Management* (2d Cir. 1971).
+- **Vicarious liability:** A party that has the right and ability to supervise infringement and a direct financial interest in it. Rooted in agency and respondeat superior principles.
+
+The DMCA's safe harbor provisions in § 512 presuppose that some form of secondary liability exists—otherwise, as Clement argued, there would be nothing to limit. But the statute never codifies the standard. It merely conditions safe harbor protection on compliance with certain requirements (lack of knowledge, repeat infringer policy, response to takedown notices), assuming without stating that non-compliance could expose ISPs to liability.
+
+This gap between statutory text and judicial doctrine is where *Cox v. Sony* lives. The majority narrowed contributory liability to two express tracks—inducement and tailoring—while declining to recognize any broader statutory framework. The concurrence argued this leaves a vacuum where Congress intended ISPs to have incentives to cooperate with copyright holders.
 
 ---
 
@@ -82,17 +101,54 @@ Justice Jackson followed with a common law question: Would ordinary aiding-and-a
 
 ## Stakes
 
-This case will determine whether copyright law treats internet service as a commodity (with passive protection) or as a potential partner in infringement when knowledge and ongoing relationship are present.
+This case determined whether copyright law treats internet service as a commodity (with passive protection) or as a potential partner in infringement when knowledge and ongoing relationship are present.
 
-If Cox prevails, ISPs have broad legal room to ignore repeat infringement. If Sony prevails, ISPs must actively police customers or risk significant liability, potentially reshaping how internet service operates and costs scale.
+Cox prevailed. ISPs have broad legal room to provide generic service without policing customer conduct. The ruling significantly narrows secondary copyright liability for providers of general-purpose services.
+
+---
+
+## The Decision
+
+The Supreme Court unanimously reversed the Fourth Circuit's judgment holding Cox contributorily liable. Justice Thomas, writing for a 7-Justice majority, held that **a service provider is contributorily liable for a user's infringement only if it intended that the provided service be used for infringement**—and that intent can be shown in only two ways:
+
+### The Two-Track Framework for Secondary Liability
+
+1. **Inducement:** The provider actively encouraged infringement through specific acts—marketing the service as a tool for piracy or taking affirmative steps to promote illegal use. This track follows *Metro-Goldwyn-Mayer Studios v. Grokster* (2005).
+
+2. **Service Tailored to Infringement:** The provider offers a product incapable of "substantial" or "commercially significant" noninfringing uses. This track follows *Sony Corp. v. Universal City Studios* (1984)—the Betamax case.
+
+The majority held that there is **no third option**. "Knowledge plus material contribution"—or even "knowledge plus inaction"—cannot satisfy the standard. Thomas emphasized: "Under our precedents, a company is not liable as a copyright infringer for merely providing a service to the general public with knowledge that it will be used by some to infringe copyrights."
+
+### Applied to Cox
+
+The Court found neither track satisfied:
+
+- **No inducement:** Sony had "no evidence of marketing to promote infringement," and Cox repeatedly discouraged infringement in its terms of service and communications.
+- **No tailoring:** "Cox simply provided Internet access, which is used for many purposes other than copyright infringement." Generic internet service has abundant commercially significant noninfringing uses.
+
+The Court vacated the billion-dollar judgment and remanded for further proceedings.
+
+### The Sotomayor Concurrence
+
+Justice Sotomayor, joined by Justice Jackson, concurred only in the judgment. She argued the majority "unnecessarily limits secondary liability" and "dismantles the statutory incentive structure that Congress created" through the DMCA. Sotomayor would retain the "knowledge plus material contribution" test and argued that other common-law theories of secondary liability—such as aiding and abetting—remain available. Under her approach, Cox still wins, but only because Sony failed to prove enough affirmative conduct, not because the legal standard forecloses the theory entirely.
+
+---
+
+## The DMCA After Cox
+
+The majority dismissed Sony's argument that the DMCA's safe harbor provisions presuppose underlying contributory liability. Thomas wrote that Sony "overreads" the statute. The concurrence, however, highlighted the tension: if ISPs face no contributory liability for ignoring repeat infringement, the DMCA's repeat-infringer policy requirements and notice-and-takedown framework lose much of their practical force.
+
+As Clement argued at oral argument: "Why bother with a safe harbor? Why limit liability... if there's no liability to limit?"
 
 ---
 
 ## Resources
 
+- [Supreme Court Opinion (March 25, 2026)](https://www.supremecourt.gov/opinions/25pdf/24-171_bq7d.pdf)
 - [Supreme Court Docket 24-171](https://www.supremecourt.gov/docket/docketfiles/html/public/24-171.html)
 - [Oral Argument Audio](https://podcasts.apple.com/us/podcast/cox-communications-v-sony-music-entertainment/id1187748137?i=1000739194852)
 - [Oral Argument Transcript (December 1, 2025)](https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-171_ap6c.pdf)
-- [SCOTUSblog Analysis](https://www.scotusblog.com/2025/11/court-to-consider-billion-dollar-judgment-for-copyright-infringement/)
+- [SCOTUSblog: Court rejects billion-dollar judgment (March 26, 2026)](https://www.scotusblog.com/2026/03/court-rejects-billion-dollar-judgment-for-copyright-infringement-by-internet-service-provider/)
+- [SCOTUSblog Case Page](https://www.scotusblog.com/cases/case-files/cox-communications-inc-v-sony-music-entertainment/)
 
 </div>

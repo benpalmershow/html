@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-03-25T14:00:00Z",
+    "lastUpdated": "2026-03-28T14:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -487,13 +487,15 @@
         },
         {
             "category": "Commodities",
-            "agency": "CME",
-            "name": "Urea FOB Egypt",
+            "agency": "USDA",
+            "name": "Urea",
             "lastUpdated": "2026-03-28T14:00:00Z",
             "releaseDay": 0,
-            "url": "https://www.barchart.com/futures/quotes/JF*1",
+            "url": "https://www.ams.usda.gov/mnreports/ams_3621.pdf",
             "2026": {
-                "march": "730.00"
+                "january": "593.14",
+                "february": "592.43",
+                "march": "745.83"
             },
             "change": "",
             "explanation": "The price of granular urea futures contracts free on board (FOB) Egypt, traded on the Chicago Mercantile Exchange (CME). Urea is the most widely used nitrogen fertilizer globally, essential for agricultural crop production. Prices are quoted in US dollars per metric ton, with a contract size of 100 metric tons. Egypt is a major urea producer and exporter, making FOB Egypt a key global benchmark. Urea prices are influenced by natural gas costs (the primary feedstock), global agricultural demand, seasonal planting cycles, and trade policies. Rising urea prices increase input costs for farmers and can impact food prices, while falling prices provide relief to agricultural producers. The fertilizer market is closely watched for its implications on food security and agricultural commodity prices."
@@ -596,7 +598,7 @@
             "category": "Government",
             "agency": "Treasury",
             "name": "Treasury Debt Level",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-03-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
             "march": "$36,216,627,186,278.78",
@@ -612,7 +614,7 @@
             "2026": {
                 "january": "$38,473,375,474,319.00",
                 "february": "$38,743,577,500,254.48",
-                "march": "$38,976,827,976,841.63"
+                "march": "$38,990,389,667,489.38"
             },
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."

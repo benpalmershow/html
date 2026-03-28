@@ -18,7 +18,7 @@ Skill for managing all content updates and data maintenance on the static HTML s
 
 ## Post Creation Workflow
 
-Posts are stored as markdown files in `article/posts/` and referenced in `json/posts.json`.
+Posts are stored as markdown files in `article/posts/` and rendered on `journal.html` via entries in `json/journal.json`. The `json/posts.json` file and `js/posts-loader.js` are legacy and not wired to any active page.
 
 ### 1. Create Markdown Post File
 
@@ -30,39 +30,48 @@ Structure the markdown with optional YAML frontmatter:
 
 ```markdown
 ---
-title: Optional Frontmatter Title
+date: 2026-01-08T14:00:00Z
+category: government
 ---
 
-# Post Title
+### <i data-lucide='trending-down' class='post-icon'></i> **Post Title**
 
-Content with optional lucide icons like `<i data-lucide="chart-line"></i>`.
-
-## Structured Content
-
-- Support for markdown headers, lists, tables
-- Images: `![Alt text](path/to/image.webp)`
-- Links: `[text](url)`
+Content paragraph. Keep first paragraph short as it becomes the snippet.
 
 {{chart:Consumer Sentiment}}
+
+[View indicators](financials.html?filter=Category)
 ```
 
-### 2. Add Entry to posts.json
+### 2. Add Entry to journal.json
 
-Add a new object to the array in `json/posts.json`:
+Posts render on `journal.html` via `js/journal-feed.js`, which reads from `json/journal.json`. Add a new entry object at the **top** of the array:
 
 ```json
 {
-  "date": "2026-01-08T19:00:00Z",
-  "file": "article/posts/2026-01-08-trade-deficit-debt-snapshot.md"
+  "date": "03/28/26",
+  "entries": [
+    {
+      "title": "📉 Post Title Here",
+      "file": "article/posts/2026-03-28-slug-title.md",
+      "collapsed": true
+    }
+  ]
 }
 ```
 
-**Date format:** ISO 8601 with timezone (e.g., `2026-01-08T19:00:00Z` for UTC)
+**Date format:** `MM/DD/YY` (e.g., `03/28/26`)
+
+**Entry fields:**
+- `title` - Display title with optional emoji prefix
+- `file` - Path to markdown file relative to site root
+- `collapsed` (optional) - Set `true` to start collapsed (click to expand)
 
 **Key rules:**
-- Posts are displayed in reverse chronological order (newest first)
-- Times are used to order posts from the same day (earlier times appear after later times in the list)
-- Latest posts should be at the top of the array
+- Entries are displayed in reverse chronological order (newest first)
+- Multiple entries can share the same date block
+- Each entry in `entries[]` renders as a collapsible item within its date group
+- Inline entries (without `file`) use `content` field for short text instead
 
 ### 3. Content Guidelines
 
@@ -74,20 +83,20 @@ Add a new object to the array in `json/posts.json`:
 
 **Best Practices:**
 - Include lucide icon in first heading or markdown: `<i data-lucide="book-open"></i>`
-- First paragraph becomes the card snippet (max ~160 chars)
-- First image becomes the card preview image
+- First paragraph becomes the entry snippet (keep it short)
 - Include financial data references when relevant (check `financials-data.json` for latest data)
+- Use `{{chart:Indicator Name}}` to embed charts in journal entries
 
 ### 4. Post Rendering
 
-The `posts-loader.js` automatically:
-- Extracts title from first h1/h2/h3 or strong tag
-- Uses first image for card preview
-- Truncates first paragraph for snippet
-- Processes markdown via marked.js
-- Wraps tables for mobile responsiveness
-- Renders financial charts with `{{chart:Indicator Name}}`
-- Wraps images with links to media.html
+The `journal-feed.js` script on `journal.html`:
+- Loads entries from `json/journal.json`
+- Fetches and parses referenced markdown files via `marked.js`
+- Renders entries as collapsible items grouped by date
+- Supports inline entries (no `file`) with `content` field
+- Sanitizes HTML via DOMPurify
+
+**Note:** `posts-loader.js` and `posts.json` are legacy. Do not add entries to `posts.json` unless specifically requested.
 
 ## Financial Data Management
 
@@ -190,17 +199,17 @@ When publishing posts with financial data, calculate and verify MoM changes:
 
 ### Embedding Charts in Posts
 
-Use the chart syntax in markdown:
+Use the chart syntax in markdown. Charts render via `js/chart-renderer.js` which is loaded on `journal.html`:
 
 ```markdown
 {{chart:Consumer Sentiment}}
 ```
 
-The renderer will:
-1. Parse the indicator name from financials-data.json
-2. Extract monthly values
-3. Create appropriate chart type
-4. Render with responsive Chart.js
+The chart renderer will:
+1. Replace the `{{chart:...}}` placeholder with a canvas element
+2. Lazy-load Chart.js if not already loaded
+3. Fetch indicator data from `financials-data.json`
+4. Render the chart with IntersectionObserver (visible on scroll)
 
 ## Prediction Market Updates
 
@@ -288,14 +297,45 @@ Posts can link to media items: `<a href="media.html#slug">link text</a>`
 
 ## Journal/Feed Management
 
-Social media feeds and journal entries in `json/journal.json`:
+Journal entries and posts are stored in `json/journal.json` and rendered on `journal.html`.
 
+### Entry Types
+
+**File-based entries** (markdown posts):
 ```json
 {
-  "date": "2025-12-20",
-  "content": "Tweet or status update",
-  "source": "twitter|mastodon|custom",
-  "link": "https://example.com/status"
+  "date": "03/28/26",
+  "entries": [
+    {
+      "title": "📉 Post Title",
+      "file": "article/posts/2026-03-28-slug.md",
+      "collapsed": true
+    }
+  ]
+}
+```
+
+**Inline entries** (short text):
+```json
+{
+  "date": "03/25/26",
+  "entries": [
+    {
+      "title": "📱 Short Observation",
+      "content": "Brief text or HTML content here."
+    }
+  ]
+}
+```
+
+**Multiple entries per date block:**
+```json
+{
+  "date": "03/25/26",
+  "entries": [
+    { "title": "First item", "content": "..." },
+    { "title": "Second item", "file": "article/posts/file.md", "collapsed": true }
+  ]
 }
 ```
 
@@ -315,8 +355,9 @@ When publishing a data update (e.g., monthly economic indicators):
    - Embed chart with `{{chart:Indicator Name}}`
    - Link to `financials.html` if applicable
 
-3. **Add to posts.json:**
-   - Use correct ISO date/time
+3. **Add to journal.json:**
+   - Use `MM/DD/YY` date format
+   - Set `collapsed: true` for longer posts
    - Place at top of array for latest posts
 
 4. **Example:**
@@ -334,14 +375,20 @@ When publishing a data update (e.g., monthly economic indicators):
 
 ## Technical Notes
 
-### Posts Loader (`js/posts-loader.js`)
+### Journal Feed Loader (`js/journal-feed.js`)
 
-- Loads 8 posts initially (INITIAL_LOAD: 8)
-- "Load More" button loads 10 at a time (BATCH_SIZE: 10)
-- Uses `marked.js` for markdown parsing
-- Chart.js for financial visualizations
-- Lucide icons for illustrations
-- Real-time "X minutes ago" timestamps
+- Loads entries from `json/journal.json`
+- Groups entries by date, sorted newest first
+- Fetches and parses markdown files via `marked.js`
+- Supports collapsible entries (`collapsed: true`)
+- Inline entries render `content` field as HTML
+- DOMPurify sanitization for user-facing HTML
+
+### Legacy Posts Loader (`js/posts-loader.js`)
+
+- Not loaded by any page. Do not use for new content.
+- Previously loaded 8 posts initially, 10 at a time via "Load More"
+- Used `json/posts.json` as data source
 
 ### Color Scheme
 
@@ -361,13 +408,15 @@ When publishing a data update (e.g., monthly economic indicators):
 
 ## File Locations
 
-- **Posts:** `article/posts/*.md`
-- **Posts index:** `json/posts.json`
+- **Posts (markdown):** `article/posts/*.md`
+- **Journal index (active):** `json/journal.json` - renders on `journal.html`
+- **Posts index (legacy):** `json/posts.json` - not wired to any page
 - **Financial data:** `json/financials-data.json`
 - **Media:** `json/media.json` + `images/`
-- **Journal:** `json/journal.json`
-- **Post loader:** `js/posts-loader.js`
-- **HTML pages:** `index.html`, `financials.html`, `media.html`, etc.
+- **Journal loader:** `js/journal-feed.js` - active script on `journal.html`
+- **Chart renderer:** `js/chart-renderer.js` - handles `{{chart:...}}` syntax
+- **Posts loader (legacy):** `js/posts-loader.js` - not loaded by any page
+- **HTML pages:** `journal.html`, `financials.html`, `media.html`, etc.
 
 ## When to Use This Skill
 

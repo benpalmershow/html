@@ -154,6 +154,32 @@ html.dark-mode {
     box-shadow: none;
 }
 
+.entry--collapsed .entry-content {
+    display: none;
+}
+
+.entry--collapsed .entry-title::after {
+    content: ' ▸';
+    font-size: 1.1em;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+.entry:not(.entry--collapsed) .entry-title::after {
+    content: ' ▾';
+    font-size: 1.1em;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+[data-collapsible] .entry-title {
+    cursor: pointer;
+}
+
+[data-collapsible] .entry-title:hover {
+    opacity: 0.8;
+}
+
 .entry:last-child {
     margin-bottom: 0;
 }

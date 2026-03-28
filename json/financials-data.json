@@ -29,7 +29,7 @@
             "category": "Consumer Indicators",
             "agency": "UMich",
             "name": "Consumer Sentiment",
-            "lastUpdated": "2026-03-20T15:00:00Z",
+            "lastUpdated": "2026-03-28T15:00:00Z",
             "releaseDay": 15,
             "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
@@ -45,7 +45,8 @@
             "2026": {
                 "january": "56.4",
                 "february": "56.6",
-                "march": "55.5"
+                "march": "53.3"
+
             },
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
@@ -345,7 +346,7 @@
         {
             "category": "Commodities",
             "agency": "EIA",
-            "name": "Crude Oil",
+            "name": "Oil (WTI)",
             "lastUpdated": "2026-03-16T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -368,6 +369,21 @@
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending. This card shows WTI, Brent, and Crude overlays sections (Brent and Crude overlays data not available)."
+        },
+        {
+            "category": "Commodities",
+            "agency": "EIA",
+            "name": "Oil (Brent)",
+            "lastUpdated": "2026-03-23T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
+            "2026": {
+                "january": "66.60",
+                "february": "70.89",
+                "march": "103.79"
+            },
+            "change": "",
+            "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs."
         },
         {
             "category": "Commodities",
@@ -468,6 +484,19 @@
             },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
+        },
+        {
+            "category": "Commodities",
+            "agency": "CME",
+            "name": "Urea FOB Egypt",
+            "lastUpdated": "2026-03-28T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://www.barchart.com/futures/quotes/JF*1",
+            "2026": {
+                "march": "730.00"
+            },
+            "change": "",
+            "explanation": "The price of granular urea futures contracts free on board (FOB) Egypt, traded on the Chicago Mercantile Exchange (CME). Urea is the most widely used nitrogen fertilizer globally, essential for agricultural crop production. Prices are quoted in US dollars per metric ton, with a contract size of 100 metric tons. Egypt is a major urea producer and exporter, making FOB Egypt a key global benchmark. Urea prices are influenced by natural gas costs (the primary feedstock), global agricultural demand, seasonal planting cycles, and trade policies. Rising urea prices increase input costs for farmers and can impact food prices, while falling prices provide relief to agricultural producers. The fertilizer market is closely watched for its implications on food security and agricultural commodity prices."
         },
         {
             "category": "Housing Market",
@@ -734,7 +763,7 @@
                 "february": "91.2"
             },
             "change": "",
-            "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
+            "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive . The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
         },
         {
             "category": "Consumer Indicators",
@@ -807,7 +836,7 @@
                 "march": "119.49"
             },
             "change": "",
-            "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk sentiment. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
+            "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk . A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
         },
         {
             "category": "Business Indicators",

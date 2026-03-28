@@ -198,7 +198,13 @@ async function loadJournalEntries() {
     const articlesHTML = await Promise.all(journals.map(renderJournal));
     
     journalFeed.innerHTML = articlesHTML.join('');
-    
+
+    journalFeed.querySelectorAll('[data-collapsible]').forEach(el => {
+      el.querySelector('.entry-title').addEventListener('click', () => {
+        el.classList.toggle('entry--collapsed');
+      });
+    });
+
     scrollToHash();
   } catch (error) {
     console.error('Error loading journal entries:', error);
@@ -276,7 +282,9 @@ async function renderEntryFromFile(entry, entryId) {
 
     const safeTitle = renderTitle(entry.title);
     const safeContent = addTickerLinks(sanitizeHtml(htmlContent));
-    return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
+    const collapsedClass = entry.collapsed ? ' entry--collapsed' : '';
+    const toggleAttr = entry.collapsed ? ' data-collapsible="true"' : '';
+    return `<div id="${entryId}" class="entry${collapsedClass}"${toggleAttr}><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
   } catch (err) {
     console.error('Failed to load file:', entry.file, err);
     const safeTitle = renderTitle(entry.title);

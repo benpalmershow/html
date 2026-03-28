@@ -28,8 +28,6 @@ The lease model is the play: zero upfront capex, performance-guaranteed, no site
 
 Their product page lists the attributes: simple (no moving parts), stable (ambient temperature storage, non-reactive material), seamless (plugs into existing process), flexible (hourly to annual dispatch), rapid (1-2 day deployment), transportable (charge at point A, discharge at point B).
 
-This is the $CACHE thesis. Not electricity storage. Thermal storage for the 80% of global energy demand that is heat.
-
 ## Applications
 
 **District heating.** Store summer solar thermal. Discharge in winter for building heat. No battery, no grid dependency, no seasonal storage penalty.
@@ -50,4 +48,4 @@ The energy transition is mostly an electricity story. But electricity is 20% of 
 
 The cache is the point. You write energy to a chemical disk. It sits. You read it back when you need it. No self-discharge. No calendar aging. No supply chain dependency on cobalt, lithium, or rare earths. Just calcium, oxygen, and hydrogen — the three most abundant reactive elements on Earth.
 
-<a href='https://www.cache-energy.com' target='_blank' rel='noopener noreferrer'>Cache Energy</a> | <a href='https://www.cache-energy.com/product' target='_blank' rel='noopener noreferrer'>Product</a> | <a href='https://www.cache-energy.com/contact?intent=lease' target='_blank' rel='noopener noreferrer'>Lease</a>
+<a href='https://www.cache-energy.com' target='_blank' rel='noopener noreferrer'>Cache Energy</a> | <a href='https://www.cache-energy.com/product' target='_blank' rel='noopener noreferrer'>Product</a> 

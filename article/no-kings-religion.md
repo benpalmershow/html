@@ -20,7 +20,7 @@ But here is where it gets interesting. If religion was the first No Kings, then 
 
 The paradox is that the No Kings movement has itself become a kind of church. The $550 billion, up from $256 billion Walton family funded the No Kings protests. A billionaire funds the anti-authority movement. The funded movement manufactures consent. The consent produces a mandate. The mandate becomes authority. The circle closes.
 
-Billionaires donate to foundations which then fund nonprofit organizations and grassroots movements. These groups create the appearance of organic popular support while their funding sources remain obscured. The No Kings protest has a King. His name is Walton. His cathedral is a foundation. His tithe is tax-deductible.
+Billionaires donate to foundations which then fund nonprofit organizations and grassroots movements. These groups create the appearance of organic popular support while their funding sources remain obscured. The No Kings protest has a King. His name is the DNC. His cathedral is a non-profit foundation. His tithe is tax-deductible.
 
 "To be GOVERNED is to be watched, inspected, spied upon, directed, law-driven, numbered, regulated, enrolled, indoctrinated, preached at, controlled..." The list is exhaustive and exhausting. But notice: preached at. The secular state still preaches. It just calls its sermons policy.
 
@@ -30,7 +30,7 @@ The FFRF wants freedom *from* religion. But freedom from is always freedom towar
 
 The question is not whether atheists are right that religion has no place in governance. They are. The question is whether the project of removing authority ever terminates, or whether it simply replaces one priesthood with another. The Hebrews wanted a King. God gave them Saul. They got what they asked for.
 
-Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine. They want their King back whoever it may be.
+Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine. They want their King back whoever the nominee may be.
 
 The first No Kings was religion. The latest No Kings is funded by billionaires. Between those two facts lies the entire problem of human governance: you cannot remove authority without creating it.
 

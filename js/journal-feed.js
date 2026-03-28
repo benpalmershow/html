@@ -284,11 +284,11 @@ async function renderEntryFromFile(entry, entryId) {
     const safeContent = addTickerLinks(sanitizeHtml(htmlContent));
     const collapsedClass = entry.collapsed ? ' entry--collapsed' : '';
     const toggleAttr = entry.collapsed ? ' data-collapsible="true"' : '';
-    return `<div id="${entryId}" class="entry${collapsedClass}"${toggleAttr}><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
+    return `<div id="${entryId}" class="entry entry--file${collapsedClass}"${toggleAttr}><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
   } catch (err) {
     console.error('Failed to load file:', entry.file, err);
     const safeTitle = renderTitle(entry.title);
-    return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
+    return `<div id="${entryId}" class="entry entry--file"><div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
   }
 }
 

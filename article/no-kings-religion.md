@@ -30,7 +30,7 @@ The FFRF wants freedom *from* religion. But freedom from is always freedom towar
 
 The question is not whether atheists are right that religion has no place in governance. They are. The question is whether the project of removing authority ever terminates, or whether it simply replaces one priesthood with another. The Hebrews wanted a King. God gave them Saul. They got what they asked for.
 
-Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest produced a $550 billion check from a Walmart heir and the Democrat political machine.
+Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine.
 
 What do atheist liberals want?
 

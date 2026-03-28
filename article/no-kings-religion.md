@@ -30,12 +30,8 @@ The FFRF wants freedom *from* religion. But freedom from is always freedom towar
 
 The question is not whether atheists are right that religion has no place in governance. They are. The question is whether the project of removing authority ever terminates, or whether it simply replaces one priesthood with another. The Hebrews wanted a King. God gave them Saul. They got what they asked for.
 
-Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine.
+Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine. They want their King back whoever it may be.
 
-What do atheist liberals want?
+The first No Kings was religion. The latest No Kings is funded by billionaires. Between those two facts lies the entire problem of human governance: you cannot remove authority without creating it.
 
-The first No Kings was religion. The latest No Kings is funded by billionaires. Between those two facts lies the entire problem of human governance: you cannot remove authority without creating it. You can only hope the new one fears something higher than itself.
-
-For the religious, that something is God. For the secular, it is supposed to be the Constitution, the rule of law, the electorate. But constitutions can be reinterpreted. Laws can be circumvented. Electorates can be manufactured. What cannot be manufactured is a conscience that answers to nothing but its own integrity.
-
-Maybe that is what atheists actually want. Not the absence of God, but the presence of something the state cannot co-opt. A personal covenant with reason that no institution can tax, regulate, or preach at. The problem is that reason, unlike God, has no army. It has no cathedrals. It has no liturgy. It has no children singing hymns. It has Substack and the FFRF and a legal team in Madison, Wisconsin.
+For the religious, that something is God. For the Left, it is supposed to be the Constitution, the rule of law, and the electorate. But it only applies with <b>their</b> electorate in charge. 

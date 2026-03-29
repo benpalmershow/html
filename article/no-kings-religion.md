@@ -18,7 +18,7 @@ But here is where it gets interesting. If religion was the first No Kings, then 
 
 ## The Paradox
 
-The paradox is that the No Kings movement has itself become a kind of church. The $550 billion, up from $256 billion Walton family funded the No Kings protests. A billionaire funds the anti-authority movement. The funded movement manufactures consent. The consent produces a mandate. The mandate becomes authority. The circle closes.
+The paradox is that the No Kings movement has itself become a kind of church. The $550 billion, up from $256 billion Walton family funded the No Kings protests. A billionaire funds the anti-authority movement. The <a href='https://x.com/thecharlesdowns/status/2037955341883711488?s=61' target='_blank' rel='noopener noreferrer'>funded movement</a> manufactures consent. The consent produces a mandate. The mandate becomes authority. The circle closes.
 
 Billionaires donate to foundations which then fund nonprofit organizations and grassroots movements. These groups create the appearance of organic popular support while their funding sources remain obscured. The No Kings protest has a King. His name is the DNC. His cathedral is a non-profit foundation. His tithe is tax-deductible.
 

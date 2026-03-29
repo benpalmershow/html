@@ -22,7 +22,7 @@ The paradox is that the No Kings movement has itself become a kind of church. Th
 
 Billionaires donate to foundations which then fund nonprofit organizations and grassroots movements. These groups create the appearance of organic popular support while their funding sources remain obscured. The No Kings protest has a King. His name is the DNC. His cathedral is a non-profit foundation. His tithe is tax-deductible.
 
-"To be GOVERNED is to be watched, inspected, spied upon, directed, law-driven, numbered, regulated, enrolled, indoctrinated, preached at, controlled..." The list is exhaustive and exhausting. But notice: preached at. The secular state still preaches. It just calls its sermons policy.
+"To be GOVERNED is to be watched, inspected, spied upon, directed, law-driven, numbered, regulated, enrolled, indoctrinated, preached at, controlled..." The list is exhaustive and exhausting. But notice: <a href='https://x.com/themainewire/status/2037936365099471179?s=61' target='_blank' rel='noopener noreferrer'>preached at</a>. The secular state still preaches. It just calls its sermons policy.
 
 The FFRF wants freedom *from* religion. But freedom from is always freedom toward something else. Remove the cathedral and you get the TED talk. Remove the sermon and you get the policy brief. Remove the priest and you get the professor. The pulpit doesn't disappear; it changes clothes. <a href='https://x.com/considermedunn/status/2037967088778608725?s=61' target='_blank' rel='noopener noreferrer'>Boston Common</a>
 

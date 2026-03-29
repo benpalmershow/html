@@ -82,7 +82,7 @@
             "name": "Existing Home Sales",
             "lastUpdated": "2026-03-11T14:00:00Z",
             "releaseDay": 22,
-            "url": "https://www.nar.realtor/newsroom/existing-home-sales-edged-lower-by-0-5-in-april",
+            "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
             "march": "",
             "april": "4.00M",
             "may": "4.04M",
@@ -325,7 +325,7 @@
                 "Above 30": "17%"
             },
             "change": "",
-            "explanation": "Kalshi market on whether ship traffic through the Strait of Hormuz reaches specified daily thresholds during the March 9-15, 2026 window. The visible contracts currently show 51% odds for traffic above 20 ships and 19% for traffic above 30, reflecting expectations for continuing disruption in one of the world's most important energy chokepoints."
+            "explanation": "Kalshi market on whether ship traffic through the Strait of Hormuz reaches specified daily thresholds during the March 9-15, 2026 window. The visible contracts currently show 88% odds for traffic above 20 ships and 17% for traffic above 30, reflecting expectations for continuing disruption in one of the world's most important energy chokepoints."
         },
         {
             "category": "Prediction Markets",
@@ -368,7 +368,7 @@
                 "march": "93.39"
             },
             "change": "",
-            "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending. This card shows WTI, Brent, and Crude overlays sections (Brent and Crude overlays data not available)."
+            "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
         },
         {
             "category": "Commodities",
@@ -765,7 +765,7 @@
                 "february": "91.2"
             },
             "change": "",
-            "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive . The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
+            "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
         },
         {
             "category": "Consumer Indicators",
@@ -838,7 +838,7 @@
                 "march": "119.49"
             },
             "change": "",
-            "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk . A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
+            "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
         },
         {
             "category": "Business Indicators",
@@ -1123,7 +1123,7 @@
                 "february": "132,333,000"
             },
             "change": "",
-            "explanation": "The monthly change in private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
+            "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
         },
         {
             "category": "Employment Indicators",
@@ -1221,7 +1221,7 @@
                 "february": "158,466,000"
             },
             "change": "",
-            "explanation": "The monthly change in nonfarm payroll employment, representing the net number of jobs added to the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. A consistent monthly addition of 100,000-150,000 jobs is typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
+            "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
         },
         {
             "category": "Business Indicators",
@@ -1271,7 +1271,7 @@
                 "february": "326.785"
             },
             "change": "",
-            "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments. Note: October 2025 data unavailable due to government shutdown affecting BLS data collection."
+            "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."
         },
         {
             "category": "Business Indicators",
@@ -1302,7 +1302,7 @@
             "name": "Manufacturing PMI",
             "lastUpdated": "2026-03-06T14:00:00Z",
             "releaseDay": 1,
-            "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/october/",
+            "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/",
             "march": "49",
             "april": "48.7",
             "may": "48.5",
@@ -1399,7 +1399,7 @@
             "name": "Services PMI",
             "lastUpdated": "2026-02-22T14:00:00Z",
             "releaseDay": 5,
-            "url": "https://tradingeconomics.com/united-states/services-pmi",
+            "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/non-manufacturing/",
             "march": "50.8",
             "april": "51.6",
             "may": "49.9",

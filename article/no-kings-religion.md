@@ -24,14 +24,16 @@ Billionaires donate to foundations which then fund nonprofit organizations and g
 
 "To be GOVERNED is to be watched, inspected, spied upon, directed, law-driven, numbered, regulated, enrolled, indoctrinated, preached at, controlled..." The list is exhaustive and exhausting. But notice: preached at. The secular state still preaches. It just calls its sermons policy.
 
-The FFRF wants freedom *from* religion. But freedom from is always freedom toward something else. Remove the cathedral and you get the TED talk. Remove the sermon and you get the policy brief. Remove the priest and you get the professor. The pulpit doesn't disappear; it changes clothes.
+The FFRF wants freedom *from* religion. But freedom from is always freedom toward something else. Remove the cathedral and you get the TED talk. Remove the sermon and you get the policy brief. Remove the priest and you get the professor. The pulpit doesn't disappear; it changes clothes. <a href='https://x.com/considermedunn/status/2037967088778608725?s=61' target='_blank' rel='noopener noreferrer'>Boston Common</a>
 
 ## The Real Question
 
 The question is not whether atheists are right that religion has no place in governance. They are. The question is whether the project of removing authority ever terminates, or whether it simply replaces one priesthood with another. The Hebrews wanted a King. God gave them Saul. They got what they asked for.
 
-Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced Stalin. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine. They want their King back whoever the nominee may be.
+Every No Kings movement eventually produces a new King. The French Revolution produced Napoleon. The Russian Revolution produced <a href='https://x.com/gunthereagleman/status/2037994812335354122?s=61' target='_blank' rel='noopener noreferrer'>Stalin</a>. The American Revolution produced a presidency that now spends $1.5 trillion on national defense and $92 billion a month servicing debt. The No Kings protest is produced by the Democrat political machine. <a href='https://x.com/natefriedman97/status/2038029609799729370?s=61' target='_blank' rel='noopener noreferrer'>They want their King back whoever the nominee may be.</a>
 
 The first No Kings was religion. The latest No Kings is funded by billionaires. Between those two facts lies the entire problem of human governance: you cannot remove authority without creating it.
 
-For the religious, that something is God. For the Left, it is supposed to be the Constitution, the rule of law, and the electorate. But it only applies with <b>their</b> electorate in charge. 
+For the religious, that something is God. For the Left, it is supposed to be the Constitution, the rule of law, and the electorate. But it only applies with <b>their</b> electorate in charge.
+
+

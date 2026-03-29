@@ -215,24 +215,30 @@ function initializeDashboard() {
          currentCategory = '13F Holdings';
          setupModalHandlers();
      } else {
-         // Set active state for desktop buttons and dropdown items
-         const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-         if (isLatest) {
-             updateActiveElements(allBtnsSelector,
-                 (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
-             );
-             renderDashboard('all', true);
-             scrollToIndicatorByName(indicatorParam);
-         } else {
-             if (initialFilter === 'all') ensureLoad13F();
-             updateActiveElements(allBtnsSelector,
-                 (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
-             );
-             renderDashboard(initialFilter, false);
-             scrollToIndicatorByName(indicatorParam);
-         }
-         setupModalHandlers();
-     }
+          // Set active state for desktop buttons and dropdown items
+          const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
+          const show13F = isLatest || initialFilter === 'all';
+          document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
+              el.style.display = show13F ? '' : 'none';
+          });
+          if (isLatest) {
+              updateActiveElements(allBtnsSelector,
+                  (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
+              );
+              document.getElementById('latest-13f-filings').style.display = 'block';
+              renderDashboard('all', true);
+              scrollToIndicatorByName(indicatorParam);
+          } else {
+              if (initialFilter === 'all') ensureLoad13F();
+              document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
+              updateActiveElements(allBtnsSelector,
+                  (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
+              );
+              renderDashboard(initialFilter, false);
+              scrollToIndicatorByName(indicatorParam);
+          }
+          setupModalHandlers();
+      }
 
      // Initialize search, sticky filter bar, and keyboard navigation
      if (typeof setupSearch === 'function') setupSearch();

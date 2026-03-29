@@ -128,14 +128,14 @@ function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
         return;
     }
 
-    // Show categories (and 13F section if "all" is selected)
+    // Show categories (and 13F section/button if "all" or "latest" is selected)
     document.getElementById('categories').style.display = 'block';
-    if (category === 'all') {
-        document.getElementById('latest-13f-filings').style.display = 'block';
-        if (typeof ensureLoad13F === 'function') ensureLoad13F();
-    } else {
-        document.getElementById('latest-13f-filings').style.display = 'none';
-    }
+    const show13F = category === 'all' || isLatest;
+    document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
+    document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
+        el.style.display = show13F ? '' : 'none';
+    });
+    if (show13F && typeof ensureLoad13F === 'function') ensureLoad13F();
 
     // Render
     if (isLatest) {

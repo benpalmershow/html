@@ -34,6 +34,6 @@ Every No Kings movement eventually produces a new King. The French Revolution pr
 
 The first No Kings was religion. The latest No Kings is funded by billionaires. Between those two facts lies the entire problem of human governance: you cannot remove authority without creating it.
 
-For the religious, that something is God. For the Left, it is supposed to be the Constitution, the rule of law, and the electorate. But it only applies with <b>their</b> electorate in charge.
+For the religious, that something is God. For the Left, it is supposed to be the Constitution, the rule of law, and the <a href='https://x.com/milajoy/status/2037973514192671170?s=61' target='_blank' rel='noopener noreferrer'>electorate</a>. But it only applies with <b>their</b> electorate in charge.
 
 

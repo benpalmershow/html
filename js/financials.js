@@ -1,10 +1,14 @@
 // Financials Dashboard Module - Main entry point and core logic
+// SOLID: DIP - uses Services.dataService instead of direct fetch
+// SRP - initialization, rendering, and navigation are separated
 
-// Date constants
+/* =========================================
+   Constants & Configuration (SRP)
+   ========================================= */
+
 const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-// DOM selectors
 const SELECTORS = {
     DROPDOWN_ITEM: '.dropdown-item',
     FILTER_BTN: '.filter-btn',
@@ -22,7 +26,6 @@ const SELECTORS = {
     LATEST_13F: '#latest-13f-filings'
 };
 
-// Data attributes
 const DATA_ATTRS = {
     CATEGORY: 'data-category',
     IS_LATEST: 'data-isLatest',
@@ -30,8 +33,25 @@ const DATA_ATTRS = {
     EXPLANATION: 'data-explanation'
 };
 
-let financialData = null;
-let has13FLoaded = false;
+/* =========================================
+   Dashboard State (SRP: state management)
+   ========================================= */
+
+const DashboardState = (function () {
+    let financialData = null;
+    let has13FLoaded = false;
+
+    return {
+        getData: () => financialData,
+        setData: (data) => { financialData = data; window.financialData = data; },
+        is13FLoaded: () => has13FLoaded,
+        mark13FLoaded: () => { has13FLoaded = true; }
+    };
+})();
+
+/* =========================================
+   Dashboard Renderer (SRP: rendering only)
+   ========================================= */
 
 function scrollToIndicatorByName(indicatorName) {
     if (!indicatorName) return;
@@ -45,118 +65,17 @@ function scrollToIndicatorByName(indicatorName) {
     setTimeout(() => target.classList.remove('indicator-deep-link'), 1800);
 }
 
-// Fetch financial data and initialize dashboard
-async function fetchFinancialData() {
-    const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
-    const paths = [
-        `json/financials-data.json?v=${encodeURIComponent(siteDataVersion)}`,
-    ];
-
-    try {
-        const fetchPromises = paths.map(async path => {
-            const response = await fetch(path, {
-                headers: { 'Accept': 'application/json' }
-            });
-            if (!response.ok) throw new Error(`Failed to fetch from ${path}`);
-            return response.json();
-        });
-
-        financialData = await Promise.any(fetchPromises);
-        window.financialData = financialData; // Expose to global scope for chart functions
-        initializeDashboard();
-    } catch (error) {
-        console.error('Could not load financial data from any path:', error);
-        document.getElementById('categories').innerHTML =
-            '<div class="error">Error loading financial data. Please try again later.</div>';
-    }
-}
-
-// Render dashboard with indicators
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
+    const financialData = DashboardState.getData();
     const categoriesContainer = document.getElementById('categories');
     let categories = [...new Set(financialData.indices.map(item => item.category))];
 
     let html = '';
 
     if (sortByLatest) {
-        // Sort all indicators by latest data and display in single "Latest Updates" section
-        const allIndicators = financialData.indices.slice();
-        allIndicators.sort((a, b) => {
-            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
-
-            // Both have lastUpdated - sort by timestamp
-            if (dateA > 0 && dateB > 0) {
-                return dateB - dateA;
-            }
-
-            // Only one has lastUpdated - prioritize it
-            if (dateA > 0) return -1;
-            if (dateB > 0) return 1;
-
-            // Neither has lastUpdated - fall back to month-based sorting
-            const aInfo = getLatestMonthForIndicator(a);
-            const bInfo = getLatestMonthForIndicator(b);
-
-            // Secondary sort: by days old (ascending - freshest first)
-            if (aInfo.daysOld !== bInfo.daysOld) {
-                return aInfo.daysOld - bInfo.daysOld;
-            }
-
-            // Tertiary sort: by indicator name (alphabetical)
-            return a.name.localeCompare(b.name);
-        });
-
-        html += `
-            <div class="category" data-category="latest-updates">
-                <h2 class="category-title">
-                    <span class="category-icon"><i data-lucide="clock"></i></span>
-                    <span class="category-name">Latest Updates</span>
-                </h2>
-                <div class="indicators-grid">
-                    ${allIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
-                </div>
-            </div>
-        `;
+        html += renderLatestUpdatesView(financialData);
     } else {
-        // Original category-based rendering
-        categories.forEach(category => {
-            if (filterCategory !== 'all' && category !== filterCategory) return;
-
-            let categoryIndicators = financialData.indices.filter(item => item.category === category);
-
-            // Sort indicators within each category by lastUpdated date (newest first)
-            categoryIndicators.sort((a, b) => {
-                const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-                const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
-
-                // Both have lastUpdated - sort by timestamp (newest first)
-                if (dateA > 0 && dateB > 0) {
-                    return dateB - dateA;
-                }
-
-                // Only one has lastUpdated - prioritize it
-                if (dateA > 0) return -1;
-                if (dateB > 0) return 1;
-
-                // Neither has lastUpdated - fall back to alphabetical sorting
-                return a.name.localeCompare(b.name);
-            });
-
-            const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-
-            html += `
-                <div class="category" data-category="${category}">
-                    <h2 class="category-title">
-                        <span class="category-icon">${icon}</span>
-                        <span class="category-name">${category}</span>
-                    </h2>
-                    <div class="indicators-grid">
-                        ${categoryIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
-                    </div>
-                </div>
-            `;
-        });
+        html += renderCategoryView(financialData, categories, filterCategory);
     }
 
     categoriesContainer.innerHTML = html;
@@ -170,92 +89,189 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
     if (typeof renderSparklines === 'function') renderSparklines();
 
-    // Empty state check
-    const visibleCategories = categoriesContainer.querySelectorAll('.category');
+    handleEmptyState(categoriesContainer, filterCategory);
+    makeCardsFocusable(categoriesContainer);
+}
+
+function renderLatestUpdatesView(financialData) {
+    const allIndicators = financialData.indices.slice();
+    allIndicators.sort((a, b) => {
+        const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+        const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+
+        if (dateA > 0 && dateB > 0) return dateB - dateA;
+        if (dateA > 0) return -1;
+        if (dateB > 0) return 1;
+
+        const aInfo = getLatestMonthForIndicator(a);
+        const bInfo = getLatestMonthForIndicator(b);
+        if (aInfo.daysOld !== bInfo.daysOld) return aInfo.daysOld - bInfo.daysOld;
+        return a.name.localeCompare(b.name);
+    });
+
+    return `
+        <div class="category" data-category="latest-updates">
+            <h2 class="category-title">
+                <span class="category-icon"><i data-lucide="clock"></i></span>
+                <span class="category-name">Latest Updates</span>
+            </h2>
+            <div class="indicators-grid">
+                ${allIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function renderCategoryView(financialData, categories, filterCategory) {
+    let html = '';
+
+    categories.forEach(category => {
+        if (filterCategory !== 'all' && category !== filterCategory) return;
+
+        let categoryIndicators = financialData.indices.filter(item => item.category === category);
+
+        categoryIndicators.sort((a, b) => {
+            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+
+            if (dateA > 0 && dateB > 0) return dateB - dateA;
+            if (dateA > 0) return -1;
+            if (dateB > 0) return 1;
+            return a.name.localeCompare(b.name);
+        });
+
+        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
+
+        html += `
+            <div class="category" data-category="${category}">
+                <h2 class="category-title">
+                    <span class="category-icon">${icon}</span>
+                    <span class="category-name">${category}</span>
+                </h2>
+                <div class="indicators-grid">
+                    ${categoryIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
+                </div>
+            </div>
+        `;
+    });
+
+    return html;
+}
+
+function handleEmptyState(container, filterCategory) {
+    const visibleCategories = container.querySelectorAll('.category');
     if (visibleCategories.length === 0 && filterCategory !== 'all') {
-        categoriesContainer.innerHTML = '<div class="empty-state"><i data-lucide="search-x"></i><p>No indicators in this category.</p></div>';
+        container.innerHTML = '<div class="empty-state"><i data-lucide="search-x"></i><p>No indicators in this category.</p></div>';
         if (typeof lucide !== 'undefined') lucide.createIcons();
     }
+}
 
-    // Make indicator cards focusable for keyboard navigation
-    categoriesContainer.querySelectorAll('.indicator').forEach(card => {
+function makeCardsFocusable(container) {
+    container.querySelectorAll('.indicator').forEach(card => {
         card.setAttribute('tabindex', '0');
     });
 }
 
-// Initialize dashboard on page load
+/* =========================================
+   Data Fetching (DIP: uses Services.dataService)
+   ========================================= */
+
+async function fetchFinancialData() {
+    try {
+        const data = await Services.dataService.fetchAnyJSON(['json/financials-data.json']);
+        DashboardState.setData(data);
+        initializeDashboard();
+    } catch (error) {
+        console.error('Could not load financial data from any path:', error);
+        document.getElementById('categories').innerHTML =
+            '<div class="error">Error loading financial data. Please try again later.</div>';
+    }
+}
+
+/* =========================================
+   Dashboard Initialization (SRP: orchestrates setup)
+   ========================================= */
+
 function initializeDashboard() {
-     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
-     setupFilters(financialData, SELECTORS, DATA_ATTRS);
-     const urlParams = new URLSearchParams(window.location.search);
-     // default view should show latest updates instead of "all"
-     const initialFilter = urlParams.get('filter') || 'latest';
-     const indicatorParam = urlParams.get('indicator');
-     const isLatest = initialFilter.toLowerCase() === 'latest';
+    const financialData = DashboardState.getData();
 
-     // Check if navigated to 13F anchor
-     if (window.location.hash === '#latest-13f-filings-anchor') {
-         document.getElementById('categories').style.display = 'none';
-         document.getElementById('latest-13f-filings').style.display = 'block';
+    document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
+    setupFilters(financialData, SELECTORS, DATA_ATTRS);
 
-         // Activate 13F Holdings button
-         const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-         updateActiveElements(allBtnsSelector,
-             (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
-         );
-         currentCategory = '13F Holdings';
-     } else if (initialFilter === '13F Holdings') {
-         document.getElementById('categories').style.display = 'none';
-         document.getElementById('latest-13f-filings').style.display = 'block';
-         ensureLoad13F();
-         const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-         updateActiveElements(allBtnsSelector,
-             (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
-         );
-         currentCategory = '13F Holdings';
-         setupModalHandlers();
-     } else {
-          // Set active state for desktop buttons and dropdown items
-          const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-          const show13F = isLatest || initialFilter === 'all';
-          document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
-              el.style.display = show13F ? '' : 'none';
-          });
-          if (isLatest) {
-              updateActiveElements(allBtnsSelector,
-                  (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
-              );
-              document.getElementById('latest-13f-filings').style.display = 'block';
-              renderDashboard('all', true);
-              scrollToIndicatorByName(indicatorParam);
-          } else {
-              if (initialFilter === 'all') ensureLoad13F();
-              document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
-              updateActiveElements(allBtnsSelector,
-                  (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
-              );
-              renderDashboard(initialFilter, false);
-              scrollToIndicatorByName(indicatorParam);
-          }
-          setupModalHandlers();
-      }
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter') || 'latest';
+    const indicatorParam = urlParams.get('indicator');
+    const isLatest = initialFilter.toLowerCase() === 'latest';
 
-     // Initialize search, sticky filter bar, and keyboard navigation
-     if (typeof setupSearch === 'function') setupSearch();
-     if (typeof setupStickyObserver === 'function') setupStickyObserver();
-     setupKeyboardNavigation();
- }
+    if (window.location.hash === '#latest-13f-filings-anchor') {
+        initialize13FView();
+    } else if (initialFilter === '13F Holdings') {
+        initialize13FView();
+        ensureLoad13F();
+        setupModalHandlers();
+    } else {
+        initializeFilteredView(initialFilter, isLatest, indicatorParam);
+        setupModalHandlers();
+    }
 
-// Lazy-load 13F data only when needed
+    if (typeof setupSearch === 'function') setupSearch();
+    if (typeof setupStickyObserver === 'function') setupStickyObserver();
+    setupKeyboardNavigation();
+}
+
+function initialize13FView() {
+    document.getElementById('categories').style.display = 'none';
+    document.getElementById('latest-13f-filings').style.display = 'block';
+
+    const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
+    updateActiveElements(allBtnsSelector,
+        (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
+    );
+    currentCategory = '13F Holdings';
+}
+
+function initializeFilteredView(initialFilter, isLatest, indicatorParam) {
+    const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
+    const show13F = isLatest || initialFilter === 'all';
+
+    document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
+        el.style.display = show13F ? '' : 'none';
+    });
+
+    if (isLatest) {
+        updateActiveElements(allBtnsSelector,
+            (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
+        );
+        document.getElementById('latest-13f-filings').style.display = 'block';
+        renderDashboard('all', true);
+        scrollToIndicatorByName(indicatorParam);
+    } else {
+        if (initialFilter === 'all') ensureLoad13F();
+        document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
+        updateActiveElements(allBtnsSelector,
+            (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
+        );
+        renderDashboard(initialFilter, false);
+        scrollToIndicatorByName(indicatorParam);
+    }
+}
+
+/* =========================================
+   13F Lazy Loading (SRP)
+   ========================================= */
+
 function ensureLoad13F() {
-    if (has13FLoaded) return;
-    has13FLoaded = true;
+    if (DashboardState.is13FLoaded()) return;
+    DashboardState.mark13FLoaded();
     if (typeof load13FData === 'function') load13FData();
 }
 
-// Keyboard navigation between indicator cards
+/* =========================================
+   Keyboard Navigation (SRP)
+   ========================================= */
+
 function setupKeyboardNavigation() {
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         const focused = document.activeElement;
         if (!focused || !focused.classList.contains('indicator')) return;
 
@@ -283,10 +299,12 @@ function setupKeyboardNavigation() {
     });
 }
 
-// Initialize on page load
+/* =========================================
+   Entry Point
+   ========================================= */
+
 document.addEventListener('DOMContentLoaded', function () {
     fetchFinancialData();
-    // 13F loads lazily when filter is selected, or eagerly if hash targets it
     if (window.location.hash === '#latest-13f-filings-anchor') {
         ensureLoad13F();
     }

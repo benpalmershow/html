@@ -1,4 +1,196 @@
 // Indicator card creation and rendering
+// SOLID: Open/Closed via IndicatorTypeRegistry, Single Responsibility via extracted helpers
+
+const IndicatorRenderers = (function () {
+    'use strict';
+
+    const registry = new Services.Registry('IndicatorRenderers');
+
+    // --- Shared data extraction helpers (SRP) ---
+
+    function collectMonthlyData(indicator, MONTHS, MONTH_LABELS) {
+        const yearKeys = Object.keys(indicator)
+            .filter(key => /^\d{4}$/.test(key))
+            .map(key => parseInt(key))
+            .sort((a, b) => b - a);
+
+        const availableData = [];
+
+        MONTHS.forEach((month, index) => {
+            let value = null;
+            let year = null;
+
+            for (const yr of yearKeys) {
+                if (indicator[yr] && indicator[yr][month] !== undefined) {
+                    value = indicator[yr][month];
+                    year = yr;
+                    break;
+                }
+            }
+
+            if (value === null) {
+                value = indicator[month];
+                year = null;
+            }
+
+            if (isValidData(value)) {
+                availableData.push({ month, label: MONTH_LABELS[index], value, index, year });
+            }
+        });
+
+        availableData.sort((a, b) => {
+            if (a.year !== null && b.year !== null) {
+                if (a.year !== b.year) return b.year - a.year;
+            }
+            if (a.year !== null && b.year === null) return -1;
+            if (a.year === null && b.year !== null) return 1;
+            return b.index - a.index;
+        });
+
+        return availableData;
+    }
+
+    function collectSparklineValues(indicator, MONTHS) {
+        const sparklineValues = [];
+        const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(k => parseInt(k)).sort();
+
+        MONTHS.forEach(month => {
+            const flatVal = extractNumericValue(indicator[month]);
+            if (flatVal !== null) sparklineValues.push(flatVal);
+        });
+
+        yearKeys.forEach(year => {
+            MONTHS.forEach(month => {
+                if (indicator[year] && indicator[year][month] !== undefined) {
+                    const val = extractNumericValue(indicator[year][month]);
+                    if (val !== null) sparklineValues.push(val);
+                }
+            });
+        });
+
+        return sparklineValues;
+    }
+
+    // --- Individual Type Renderers (SRP: one responsibility each) ---
+
+    function renderFOMC(indicator) {
+        const rows = [];
+        if (indicator.meeting_date) rows.push(`<span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span>`);
+        if (indicator.rate_hold_odds) rows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
+        if (indicator.rate_cut_odds) rows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
+        if (indicator.rate_hike_odds) rows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
+
+        let latestDataHtml = '';
+        let historyDataHtml = '';
+        rows.forEach((row, i) => {
+            if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
+            else historyDataHtml += `<div class="data-row">${row}</div>`;
+        });
+
+        return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 2 };
+    }
+
+    function renderRecession(indicator) {
+        let latestDataHtml = '';
+        if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
+        if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+        return { latestDataHtml, historyDataHtml: '', hasHistory: false };
+    }
+
+    function renderPrediction(indicator) {
+        let latestDataHtml = '';
+        if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
+        if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+        return { latestDataHtml, historyDataHtml: '', hasHistory: false };
+    }
+
+    function renderSports(indicator) {
+        const rows = [];
+        if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span>`);
+        if (indicator.game_time) rows.push(`<span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span>`);
+        if (indicator.week) rows.push(`<span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span>`);
+        Object.keys(indicator).filter(key => key.endsWith('_win_odds')).forEach(key => {
+            const teamName = key.replace('_win_odds', '').toUpperCase();
+            rows.push(`<span class="month-label">${teamName} Win:</span> <span class="month-value">${indicator[key]}</span>`);
+        });
+        if (indicator.total_points) rows.push(`<span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span>`);
+
+        let latestDataHtml = '';
+        let historyDataHtml = '';
+        rows.forEach((row, i) => {
+            if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
+            else historyDataHtml += `<div class="data-row">${row}</div>`;
+        });
+
+        return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 2 };
+    }
+
+    function renderVenezuela(indicator) {
+        let latestDataHtml = '';
+        let historyDataHtml = '';
+        let hasHistory = false;
+
+        if (indicator.candidates && typeof indicator.candidates === 'object') {
+            const entries = Object.entries(indicator.candidates);
+            entries.forEach(([name, prob], i) => {
+                if (i < 2) {
+                    latestDataHtml += `<div class="latest-data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
+                } else {
+                    historyDataHtml += `<div class="data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
+                }
+            });
+            hasHistory = entries.length > 2;
+        }
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
+    }
+
+    function renderStandard(indicator, MONTHS, MONTH_LABELS) {
+        const availableData = collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
+        let latestDataHtml = '';
+        let historyDataHtml = '';
+        let hasHistory = false;
+
+        if (availableData.length > 0) {
+            const latest = availableData[0];
+            const extraHtml = buildExtraHtml(indicator, latest, MONTHS);
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
+
+            if (availableData.length > 1) {
+                const second = availableData[1];
+                const secondExtraHtml = buildExtraHtml(indicator, second, MONTHS);
+                latestDataHtml += `<div class="latest-data-row"><span class="month-label">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
+
+                hasHistory = availableData.length > 2;
+                for (let i = 2; i < availableData.length; i++) {
+                    const item = availableData[i];
+                    const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
+                    historyDataHtml += `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
+                }
+            }
+        } else {
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>`;
+        }
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
+    }
+
+    // --- Registry setup (OCP: extend by registering new types) ---
+
+    registry
+        .register('fomc', (indicator) => renderFOMC(indicator))
+        .register('recession', (indicator) => renderRecession(indicator))
+        .register('prediction', (indicator) => renderPrediction(indicator))
+        .register('sports', (indicator) => renderSports(indicator))
+        .register('venezuela', (indicator) => renderVenezuela(indicator))
+        .register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS))
+        .registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
+
+    return { registry, collectMonthlyData, collectSparklineValues };
+})();
+
+
+// --- Type Detection (SRP: separate from rendering) ---
 
 function detectIndicatorType(indicator) {
     if (indicator.name.includes('FOMC') || (indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds)) return 'fomc';
@@ -9,264 +201,46 @@ function detectIndicatorType(indicator) {
     return 'standard';
 }
 
+// --- Main rendering function (now delegates to registry) ---
+
 function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
-    let latestDataHtml = '';
-    let historyDataHtml = '';
-    let hasHistory = false;
+    const renderer = IndicatorRenderers.registry.get(type);
+    if (!renderer) {
+        return IndicatorRenderers.registry.resolve('standard', indicator, MONTHS, MONTH_LABELS);
+    }
+    return renderer(indicator, MONTHS, MONTH_LABELS);
+}
 
-    switch (type) {
-        case 'fomc': {
-            const fomcRows = [];
-            if (indicator.meeting_date) fomcRows.push(`<span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span>`);
-            if (indicator.rate_hold_odds) fomcRows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
-            if (indicator.rate_cut_odds) fomcRows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
-            if (indicator.rate_hike_odds) fomcRows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
-            fomcRows.forEach((row, i) => {
-                if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
-                else historyDataHtml += `<div class="data-row">${row}</div>`;
-            });
-            hasHistory = fomcRows.length > 2;
-            break;
+// --- Extra HTML builder (SRP) ---
+
+function buildExtraHtml(indicator, dataItem, MONTHS) {
+    let extraHtml = '';
+
+    if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
+        const changesMap = {};
+        calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
+        const changeObj = changesMap[dataItem.month];
+        if (changeObj) {
+            extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
+        }
+    } else if (indicator.name === 'CPI') {
+        let yoyValue = null;
+
+        if (indicator.yoy && dataItem.year && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) {
+            yoyValue = indicator.yoy[dataItem.year][dataItem.month];
+        } else if (indicator.yoy && indicator.yoy[dataItem.month]) {
+            yoyValue = indicator.yoy[dataItem.month];
         }
 
-        case 'recession':
-            if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
-            hasHistory = false;
-            break;
-
-        case 'prediction':
-            if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
-            hasHistory = false;
-            break;
-
-        case 'sports': {
-            const sportsRows = [];
-            if (indicator.game_title) sportsRows.push(`<span class="month-label">Game:</span> <span class="month-value">${indicator.game_title}</span>`);
-            if (indicator.game_time) sportsRows.push(`<span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span>`);
-            if (indicator.week) sportsRows.push(`<span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span>`);
-            Object.keys(indicator).filter(key => key.endsWith('_win_odds')).forEach(key => {
-                const teamName = key.replace('_win_odds', '').toUpperCase();
-                sportsRows.push(`<span class="month-label">${teamName} Win:</span> <span class="month-value">${indicator[key]}</span>`);
-            });
-            if (indicator.total_points) sportsRows.push(`<span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span>`);
-            sportsRows.forEach((row, i) => {
-                if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
-                else historyDataHtml += `<div class="data-row">${row}</div>`;
-            });
-            hasHistory = sportsRows.length > 2;
-            break;
-        }
-
-        case 'venezuela':
-            if (indicator.candidates && typeof indicator.candidates === 'object') {
-                const entries = Object.entries(indicator.candidates);
-                entries.forEach(([name, prob], i) => {
-                    if (i < 2) {
-                        latestDataHtml += `<div class="latest-data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
-                    } else {
-                        historyDataHtml += `<div class="data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
-                    }
-                });
-                hasHistory = entries.length > 2;
-            }
-            break;
-        case 'triple': {
-            const availableData = [];
-            
-            // Find year-nested data (keys that are numeric/year-like)
-            const yearKeys = Object.keys(indicator)
-                .filter(key => /^\d{4}$/.test(key))
-                .map(key => parseInt(key))
-                .sort((a, b) => b - a); // Sort years descending
-
-            // Collect all available data points
-            MONTHS.forEach((month, index) => {
-                let value = null;
-                let year = null;
-                
-                // First check year-nested data in descending year order (newest first)
-                for (const yr of yearKeys) {
-                    if (indicator[yr] && indicator[yr][month] !== undefined) {
-                        value = indicator[yr][month];
-                        year = yr;
-                        break;
-                    }
-                }
-                
-                // Fall back to flat structure (e.g., indicator["january"])
-                if (value === null) {
-                    value = indicator[month];
-                    year = null;
-                }
-                
-                if (isValidData(value)) {
-                    availableData.push({
-                        month: month,
-                        label: MONTH_LABELS[index],
-                        value: value,
-                        index: index,
-                        year: year
-                    });
-                }
-            });
-
-            // Sort by year descending (latest first), then by month index descending
-            availableData.sort((a, b) => {
-                // If both have year data, sort by year first
-                if (a.year !== null && b.year !== null) {
-                    if (a.year !== b.year) return b.year - a.year;
-                }
-                // If only one has year data, prioritize it (newer)
-                if (a.year !== null && b.year === null) return -1;
-                if (a.year === null && b.year !== null) return 1;
-                // Otherwise sort by month index
-                return b.index - a.index;
-            });
-
-            if (availableData.length > 0) {
-                const latestWTI = availableData[0];
-                // Build latestDataHtml: three rows (WTI, Brent, Crude Overlays)
-                latestDataHtml = `
-                    <div class="latest-data-row"><span class="month-label">WTI:</span><span class="month-value">$${latestWTI.value}</span></div>
-                    <div class="latest-data-row"><span class="month-label">Brent:</span><span class="month-value placeholder">Data not available</span></div>
-                    <div class="latest-data-row"><span class="month-label">Crude Overlays:</span><span class="month-value placeholder">Data not available</span></div>
-                `;
-
-                // Build historyDataHtml: for each additional WTI data point, show three rows (WTI, Brent, Crude Overlays)
-                if (availableData.length > 1) {
-                    hasHistory = true;
-                    for (let i = 1; i < availableData.length; i++) {
-                        const item = availableData[i];
-                        historyDataHtml += `
-                            <div class="data-row"><span class="month-label">WTI (${item.label}):</span><span class="month-value">$${item.value}</span></div>
-                            <div class="data-row"><span class="month-label">Brent:</span><span class="month-value placeholder">Data not available</span></div>
-                            <div class="data-row"><span class="month-label">Crude Overlays:</span><span class="month-value placeholder">Data not available</span></div>
-                        `;
-                    }
-                }
-            } else {
-                latestDataHtml = `
-                    <div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>
-                    <div class="latest-data-row"><span class="month-label">Brent:</span><span class="month-value placeholder">Data not available</span></div>
-                    <div class="latest-data-row"><span class="month-label">Crude Overlays:</span><span class="month-value placeholder">Data not available</span></div>
-                `;
-            }
-            break;
-        }
-            break;
-
-        case 'standard': {
-            const availableData = [];
-            
-            // Find year-nested data (keys that are numeric/year-like)
-            const yearKeys = Object.keys(indicator)
-                .filter(key => /^\d{4}$/.test(key))
-                .map(key => parseInt(key))
-                .sort((a, b) => b - a); // Sort years descending
-
-            // Collect all available data points
-            MONTHS.forEach((month, index) => {
-                let value = null;
-                let year = null;
-                
-                // First check year-nested data in descending year order (newest first)
-                for (const yr of yearKeys) {
-                    if (indicator[yr] && indicator[yr][month] !== undefined) {
-                        value = indicator[yr][month];
-                        year = yr;
-                        break;
-                    }
-                }
-                
-                // Fall back to flat structure (e.g., indicator["january"])
-                if (value === null) {
-                    value = indicator[month];
-                    year = null;
-                }
-                
-                if (isValidData(value)) {
-                    availableData.push({
-                        month: month,
-                        label: MONTH_LABELS[index],
-                        value: value,
-                        index: index,
-                        year: year
-                    });
-                }
-            });
-
-            // Sort by year descending (latest first), then by month index descending
-            availableData.sort((a, b) => {
-                // If both have year data, sort by year first
-                if (a.year !== null && b.year !== null) {
-                    if (a.year !== b.year) return b.year - a.year;
-                }
-                // If only one has year data, prioritize it (newer)
-                if (a.year !== null && b.year === null) return -1;
-                if (a.year === null && b.year !== null) return 1;
-                // Otherwise sort by month index
-                return b.index - a.index;
-            });
-
-            if (availableData.length > 0) {
-                const latest = availableData[0];
-                let extraHtml = buildExtraHtml(indicator, latest, MONTHS);
-
-                latestDataHtml = `<div class="latest-data-row"><span class="month-label">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
-
-                if (availableData.length > 1) {
-                    const second = availableData[1];
-                    const secondExtraHtml = buildExtraHtml(indicator, second, MONTHS);
-                    latestDataHtml += `<div class="latest-data-row"><span class="month-label">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
-
-                    hasHistory = availableData.length > 2;
-                    for (let i = 2; i < availableData.length; i++) {
-                        const item = availableData[i];
-                        const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
-                        historyDataHtml += `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
-                    }
-                }
-            } else {
-                latestDataHtml = `<div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>`;
-            }
-            break;
+        if (yoyValue) {
+            extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${yoyValue}</span>`;
         }
     }
 
-    return { latestDataHtml, historyDataHtml, hasHistory };
+    return extraHtml;
 }
 
-function buildExtraHtml(indicator, dataItem, MONTHS) {
-     let extraHtml = '';
- 
-     if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
-         const changesMap = {};
-         calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
-         const changeObj = changesMap[dataItem.month];
-         if (changeObj) {
-             extraHtml = `<span class="month-change ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}" style="margin-left:8px; font-weight:600;">${changeObj.formatted}</span>`;
-         }
-     } else if (indicator.name === 'CPI') {
-         let yoyValue = null;
-         
-         // Check for year-nested YoY data first (e.g., yoy.2026.january)
-         if (indicator.yoy && dataItem.year && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) {
-             yoyValue = indicator.yoy[dataItem.year][dataItem.month];
-         }
-         // Fall back to flat YoY structure (e.g., yoy.january)
-         else if (indicator.yoy && indicator.yoy[dataItem.month]) {
-             yoyValue = indicator.yoy[dataItem.month];
-         }
-         
-         if (yoyValue) {
-             extraHtml = `<span class="month-change" style="margin-left:8px; font-weight:600;">${yoyValue}</span>`;
-         }
-     }
- 
-     return extraHtml;
- }
+// --- Change Metric Button builder (SRP) ---
 
 function buildChangeMetricButton(label, changeInfo, title) {
     const iconName = changeInfo.direction > 0
@@ -275,11 +249,8 @@ function buildChangeMetricButton(label, changeInfo, title) {
             ? 'arrow-down-right'
             : 'minus';
 
-    const topSection = label ? `
-                <span class="change-metric-title">${label}</span>
-            ` : '';
+    const topSection = label ? `<span class="change-metric-title">${label}</span>` : '';
 
-    // Remove +/- prefix
     const valueWithoutSign = changeInfo.formatted.replace(/^[+\-]/, '');
     const valueWithIcon = `<i data-lucide="${iconName}" style="display: inline; width: 0.85em; height: 0.85em; vertical-align: -0.05em; margin-right: 2px;"></i>${valueWithoutSign}`;
 
@@ -298,7 +269,7 @@ function buildChangeMetricButton(label, changeInfo, title) {
     `;
 }
 
-
+// --- Card Creation (delegates to focused helpers) ---
 
 function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     const momChange = calculateMoMChange(indicator, MONTHS);
@@ -308,39 +279,45 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
 
     const url = indicator.url || '#';
     const explanation = indicator.explanation || '';
-    let changeIndicators = '';
+    const changeIndicators = buildChangeIndicators(momChange, yoyChange, indicator);
 
-    if (momChange !== null) {
-         // Invert sign only for unemployment (lower unemployment = improvement = show as positive)
-         const isUnemploymentIndicator = indicator.name.includes('Unemployment');
-         const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : momChange.percentChange;
-         const momInfo = formatChangeIndicator(momChangeValue);
-         changeIndicators += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
+    const sparklineValues = indicatorType === 'standard'
+        ? IndicatorRenderers.collectSparklineValues(indicator, MONTHS)
+        : [];
 
-         if (yoyChange !== null) {
-             const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
-             const yoyInfo = formatChangeIndicator(yoyChangeValue);
-             changeIndicators += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
-         }
-     }
+    return buildIndicatorCardHTML({
+        indicator,
+        DATA_ATTRS,
+        url,
+        explanation,
+        changeIndicators,
+        latestDataHtml,
+        historyDataHtml,
+        hasHistory,
+        sparklineValues
+    });
+}
 
-    const sparklineValues = [];
-    if (indicatorType === 'standard') {
-        const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(k => parseInt(k)).sort();
-        MONTHS.forEach((month, index) => {
-            const flatVal = extractNumericValue(indicator[month]);
-            if (flatVal !== null) sparklineValues.push(flatVal);
-        });
-        yearKeys.forEach(year => {
-            MONTHS.forEach(month => {
-                if (indicator[year] && indicator[year][month] !== undefined) {
-                    const val = extractNumericValue(indicator[year][month]);
-                    if (val !== null) sparklineValues.push(val);
-                }
-            });
-        });
+function buildChangeIndicators(momChange, yoyChange, indicator) {
+    if (momChange === null) return '';
+
+    const isUnemploymentIndicator = indicator.name.includes('Unemployment');
+    let result = '';
+
+    const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : momChange.percentChange;
+    const momInfo = formatChangeIndicator(momChangeValue);
+    result += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
+
+    if (yoyChange !== null) {
+        const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
+        const yoyInfo = formatChangeIndicator(yoyChangeValue);
+        result += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
     }
 
+    return result;
+}
+
+function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
     return `
         <div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}">
             <div class="indicator-header">
@@ -378,6 +355,8 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
         </div>
     `;
 }
+
+// --- Sparkline rendering (SRP) ---
 
 function renderSparklines() {
     document.querySelectorAll('.sparkline-container canvas[data-sparkline]').forEach(canvas => {

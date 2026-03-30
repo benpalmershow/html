@@ -1,4 +1,20 @@
 // Chart configuration and initialization
+// SOLID: Strategy pattern for chart configs (OCP), SRP for overlay management
+
+const ChartStrategies = (function () {
+    'use strict';
+
+    const registry = new Services.Registry('ChartStrategies');
+
+    function detectChartType(indicator) {
+        if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) return 'trade-deficit';
+        if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return 'prediction-market';
+        return 'line';
+    }
+
+    return { registry, detectChartType };
+})();
+
 
 let chartOverlayTimeout;
 let currentChartIndicatorName = null;
@@ -36,6 +52,10 @@ document.addEventListener('keydown', (e) => {
         });
     }
 });
+
+// =========================================
+// Overlay Management (SRP: one responsibility)
+// =========================================
 
 function showChartOverlay(indicator, indicatorName, overlay) {
     document.querySelectorAll('.chart-overlay.show').forEach(otherOverlay => {
@@ -96,7 +116,6 @@ function createChartOverlay(indicator, indicatorName) {
         if (e.target === overlay) hideChartOverlay(overlay);
     });
 
-    // Range picker buttons
     overlay.querySelectorAll('.range-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -104,7 +123,6 @@ function createChartOverlay(indicator, indicatorName) {
             overlay.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // Re-render chart with new range
             if (overlay._chartInstance) {
                 overlay._chartInstance.destroy();
                 overlay._chartInstance = null;
@@ -140,10 +158,8 @@ function loadChartInOverlay(indicator, indicatorName, overlay) {
             const loading = body.querySelector('.chart-overlay-loading');
             if (loading) loading.remove();
 
-            // Remove any existing canvas before creating a new one
             const existingCanvas = body.querySelector('canvas');
             if (existingCanvas) {
-                // Destroy the existing chart instance if it exists
                 const existingChartId = existingCanvas.id + 'Chart';
                 if (window[existingChartId]) {
                     window[existingChartId].destroy();
@@ -174,21 +190,44 @@ function loadChartInOverlay(indicator, indicatorName, overlay) {
 function showOverlayError(body, message) {
     const loading = body.querySelector('.chart-overlay-loading');
     if (loading) loading.remove();
-
     body.innerHTML = `<div class="chart-overlay-error"><div class="chart-overlay-error-icon">📊</div><p>${message}</p></div>`;
 }
+
+// =========================================
+// Chart Initialization (SRP)
+// =========================================
 
 function initializeChartInOverlay(chartConfig, canvas) {
     if (!chartConfig.data) return null;
 
     const ctx = canvas.getContext('2d');
-
     if (window[canvas.id + 'Chart']) window[canvas.id + 'Chart'].destroy();
 
-    // Determine chart type based on config
     const isMixedChart = chartConfig.type === 'chartjs-mixed';
     const chartType = isMixedChart ? 'bar' : 'line';
 
+    const scales = buildOverlayScales(isMixedChart);
+
+    const chartInstance = new Chart(ctx, {
+        type: chartType,
+        data: chartConfig.data,
+        plugins: [crosshairPlugin],
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            layout: { padding: 0, autoPadding: false },
+            animation: { duration: 600, easing: 'easeInOutQuart' },
+            plugins: buildOverlayPlugins(isMixedChart),
+            scales: scales,
+            interaction: { mode: 'nearest', axis: 'x', intersect: false }
+        }
+    });
+
+    window[canvas.id + 'Chart'] = chartInstance;
+    return chartInstance;
+}
+
+function buildOverlayScales(isMixedChart) {
     const scales = {
         x: {
             display: true,
@@ -206,93 +245,73 @@ function initializeChartInOverlay(chartConfig, canvas) {
 
     if (isMixedChart) {
         scales.y = {
-            display: true,
-            beginAtZero: false,
+            display: true, beginAtZero: false,
             grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-            ticks: { display: false },
-            position: 'left',
-            title: { display: false }
+            ticks: { display: false }, position: 'left', title: { display: false }
         };
         scales.y1 = {
-            display: true,
-            beginAtZero: false,
-            grid: { display: false },
-            ticks: { display: false },
-            position: 'right',
-            title: { display: false }
+            display: true, beginAtZero: false,
+            grid: { display: false }, ticks: { display: false },
+            position: 'right', title: { display: false }
         };
     } else {
         scales.y = {
-            display: true,
-            beginAtZero: false,
+            display: true, beginAtZero: false,
             grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-            ticks: { display: false },
-            position: 'right'
+            ticks: { display: false }, position: 'right'
         };
     }
 
-    const chartInstance = new Chart(ctx, {
-        type: chartType,
-        data: chartConfig.data,
-        plugins: [crosshairPlugin],
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            layout: {
-                padding: 0,
-                autoPadding: false
-            },
-            animation: { duration: 600, easing: 'easeInOutQuart' },
-            plugins: {
-                legend: {
-                    display: isMixedChart,
-                    position: 'bottom',
-                    align: 'center',
-                    labels: {
-                        font: { size: isMixedChart ? 9 : 10 },
-                        padding: isMixedChart ? 6 : 12,
-                        boxWidth: isMixedChart ? 10 : 14,
-                        useBorderRadius: true,
-                        borderRadius: 4
-                    }
-                },
-                title: { display: false },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false,
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                    titleColor: '#fff',
-                    bodyColor: '#fff',
-                    borderColor: '#2C5F5A',
-                    borderWidth: 1,
-                    padding: 10,
-                    titleFont: { size: 11 },
-                    bodyFont: { size: 11 },
-                    boxPadding: 5,
-                    callbacks: {
-                        title: function (context) {
-                            if (context.length > 0) return context[0].label;
-                            return '';
-                        },
-                        label: function (context) {
-                            if (context.parsed.y !== null) {
-                                const formatted = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
-                                return isMixedChart ? `${context.dataset.label}: ${formatted}` : formatted;
-                            }
-                            return '';
-                        }
-                    }
-                },
-                crosshair: false
-            },
-            scales: scales,
-            interaction: { mode: 'nearest', axis: 'x', intersect: false }
-        }
-    });
-
-    window[canvas.id + 'Chart'] = chartInstance;
-    return chartInstance;
+    return scales;
 }
+
+function buildOverlayPlugins(isMixedChart) {
+    return {
+        legend: {
+            display: isMixedChart,
+            position: 'bottom',
+            align: 'center',
+            labels: {
+                font: { size: isMixedChart ? 9 : 10 },
+                padding: isMixedChart ? 6 : 12,
+                boxWidth: isMixedChart ? 10 : 14,
+                useBorderRadius: true,
+                borderRadius: 4
+            }
+        },
+        title: { display: false },
+        tooltip: {
+            mode: 'index',
+            intersect: false,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            borderColor: '#2C5F5A',
+            borderWidth: 1,
+            padding: 10,
+            titleFont: { size: 11 },
+            bodyFont: { size: 11 },
+            boxPadding: 5,
+            callbacks: {
+                title: function (context) {
+                    return context.length > 0 ? context[0].label : '';
+                },
+                label: function (context) {
+                    if (context.parsed.y !== null) {
+                        const formatted = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
+                        return isMixedChart ? `${context.dataset.label}: ${formatted}` : formatted;
+                    }
+                    return '';
+                }
+            }
+        },
+        crosshair: false
+    };
+}
+
+// =========================================
+// Chart Data Slicing (SRP)
+// =========================================
 
 function sliceChartDataByRange(config, months) {
     if (!config || !config.data || months === 'all') return config;
@@ -314,188 +333,192 @@ function sliceChartDataByRange(config, months) {
     return slicedConfig;
 }
 
+// =========================================
+// Chart Config Resolver (Strategy Pattern - OCP)
+// =========================================
+
 function getChartConfig(indicatorName, indices) {
-     const indicatorData = indices.find(item => item.name.trim().toLowerCase() === indicatorName.trim().toLowerCase());
-     if (!indicatorData) return null;
+    const indicatorData = indices.find(item => item.name.trim().toLowerCase() === indicatorName.trim().toLowerCase());
+    if (!indicatorData) return null;
 
-     // Find year-nested data (keys that are numeric/year-like)
-     const yearKeys = Object.keys(indicatorData)
-         .filter(key => /^\d{4}$/.test(key))
-         .map(key => parseInt(key))
-         .sort((a, b) => b - a); // Sort years descending
+    const chartType = ChartStrategies.detectChartType(indicatorData);
+    return ChartStrategies.registry.resolve(chartType, indicatorName, indicatorData);
+}
 
-     const labels = [];
-     const values = [];
+// --- Standard Line Chart Strategy ---
 
-     // Check if this is Trade Deficit with imports/exports data
-     if (indicatorName === 'Trade Deficit' && indicatorData.imports && indicatorData.exports) {
-         const importValues = [];
-         const exportValues = [];
-         const deficitValues = [];
+function buildStandardLineChartConfig(indicatorName, indicatorData) {
+    const yearKeys = Object.keys(indicatorData)
+        .filter(key => /^\d{4}$/.test(key))
+        .map(key => parseInt(key))
+        .sort((a, b) => b - a);
 
-         // Flat structure
-         MONTHS.forEach((month, index) => {
-             const importValue = indicatorData.imports[month];
-             const exportValue = indicatorData.exports[month];
-             const deficitValue = indicatorData[month];
-             if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-                 const numImport = extractNumericValue(importValue);
-                 const numExport = extractNumericValue(exportValue);
-                 const numDeficit = extractNumericValue(deficitValue);
-                 if (numImport !== null && numExport !== null && numDeficit !== null) {
-                     labels.push(MONTH_LABELS[index]);
-                     importValues.push(numImport);
-                     exportValues.push(numExport);
-                     deficitValues.push(numDeficit);
-                 }
-             }
-         });
+    const labels = [];
+    const values = [];
+    const dataMap = {};
 
-         // Add up to 2 latest months from year-nested (imports/exports have their own year keys)
-         const yearNestedPoints = [];
-         for (const year of yearKeys) {
-             const yearData = indicatorData[year];
-             if (!yearData || typeof yearData !== 'object') continue;
-             const importsYear = indicatorData.imports[year];
-             const exportsYear = indicatorData.exports[year];
-             if (!importsYear || !exportsYear) continue;
-             MONTHS.forEach((month, index) => {
-                 const importValue = importsYear[month];
-                 const exportValue = exportsYear[month];
-                 const deficitValue = yearData[month];
-                 if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-                     const numImport = extractNumericValue(importValue);
-                     const numExport = extractNumericValue(exportValue);
-                     const numDeficit = extractNumericValue(deficitValue);
-                     if (numImport !== null && numExport !== null && numDeficit !== null) {
-                         yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numImport, numExport, numDeficit });
-                     }
-                 }
-             });
-         }
-         yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
-         yearNestedPoints.slice(0, 2).reverse().forEach(p => {
-             labels.push(p.label);
-             importValues.push(p.numImport);
-             exportValues.push(p.numExport);
-             deficitValues.push(p.numDeficit);
-         });
+    MONTHS.forEach((month, index) => {
+        const value = indicatorData[month];
+        if (isValidData(value)) {
+            const numValue = extractNumericValue(value);
+            if (numValue !== null) {
+                dataMap[`${null}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year: null };
+            }
+        }
+    });
 
-         const data = {
-             labels: labels,
-             datasets: [
-                 {
-                     label: 'Imports',
-                     data: importValues,
-                     type: 'bar',
-                     backgroundColor: 'rgba(255, 107, 107, 0.7)',
-                     borderColor: '#FF6B6B',
-                     borderWidth: 1,
-                     yAxisID: 'y'
-                 },
-                 {
-                     label: 'Exports',
-                     data: exportValues,
-                     type: 'bar',
-                     backgroundColor: 'rgba(81, 207, 102, 0.7)',
-                     borderColor: '#51CF66',
-                     borderWidth: 1,
-                     yAxisID: 'y'
-                 },
-                 {
-                     label: 'Deficit',
-                     data: deficitValues,
-                     type: 'line',
-                     borderColor: '#2C5F5A',
-                     backgroundColor: 'transparent',
-                     borderWidth: 2.5,
-                     tension: 0.4,
-                     fill: false,
-                     yAxisID: 'y1',
-                     pointBackgroundColor: '#2C5F5A',
-                     pointBorderColor: '#fff',
-                     pointBorderWidth: 1.5,
-                     pointRadius: 4
-                 }
-             ]
-         };
+    for (const year of yearKeys) {
+        const yearData = indicatorData[year];
+        MONTHS.forEach((month, index) => {
+            const value = yearData[month];
+            if (isValidData(value)) {
+                const numValue = extractNumericValue(value);
+                if (numValue !== null) {
+                    dataMap[`${year}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year };
+                }
+            }
+        });
+    }
 
-         return { type: 'chartjs-mixed', data: data };
-     }
+    const sortedData = Object.values(dataMap).sort((a, b) => {
+        if (a.year !== b.year) {
+            const yearA = a.year !== null ? a.year : 2025;
+            const yearB = b.year !== null ? b.year : 2025;
+            return yearA - yearB;
+        }
+        return a.monthIndex - b.monthIndex;
+    });
 
-     // Standard single-line chart
-     // Build map of all available data points (flat structure + year-nested)
-     const dataMap = {};
-     
-     // First add flat structure data
-     MONTHS.forEach((month, index) => {
-         const value = indicatorData[month];
-         if (isValidData(value)) {
-             const numValue = extractNumericValue(value);
-             if (numValue !== null) {
-                 dataMap[`${null}-${index}`] = {
-                     month: month,
-                     label: MONTH_LABELS[index],
-                     value: numValue,
-                     monthIndex: index,
-                     year: null
-                 };
-             }
-         }
-     });
-     
-     // Then add year-nested data (overwrites flat data for same month if present)
-     for (const year of yearKeys) {
-         const yearData = indicatorData[year];
-         MONTHS.forEach((month, index) => {
-             const value = yearData[month];
-             if (isValidData(value)) {
-                 const numValue = extractNumericValue(value);
-                 if (numValue !== null) {
-                     dataMap[`${year}-${index}`] = {
-                         month: month,
-                         label: MONTH_LABELS[index],
-                         value: numValue,
-                         monthIndex: index,
-                         year: year
-                     };
-                 }
-             }
-         });
-     }
-     
-     // Sort by year ascending (older first), then by month index ascending (chronological order)
-     const sortedData = Object.values(dataMap).sort((a, b) => {
-         if (a.year !== b.year) {
-             const yearA = a.year !== null ? a.year : 2025; // Treat null as 2025
-             const yearB = b.year !== null ? b.year : 2025;
-             return yearA - yearB;
-         }
-         return a.monthIndex - b.monthIndex;
-     });
-     
-     // Build final labels and values arrays
-     sortedData.forEach(item => {
-         labels.push(item.label);
-         values.push(item.value);
-     });
+    sortedData.forEach(item => {
+        labels.push(item.label);
+        values.push(item.value);
+    });
 
-     const data = {
-         labels: labels,
-         datasets: [{
-             label: indicatorName,
-             data: values,
-             borderColor: '#2C5F5A',
-             backgroundColor: 'rgba(44, 95, 90, 0.1)',
-             tension: 0.4,
-             fill: true,
-             pointBackgroundColor: '#2C5F5A',
-             pointBorderColor: '#fff',
-             pointBorderWidth: 1.5,
-             pointRadius: 3,
-             pointHoverRadius: 5
-         }]
-     };
+    return {
+        type: 'chartjs',
+        data: {
+            labels,
+            datasets: [{
+                label: indicatorName,
+                data: values,
+                borderColor: '#2C5F5A',
+                backgroundColor: 'rgba(44, 95, 90, 0.1)',
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: '#2C5F5A',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 1.5,
+                pointRadius: 3,
+                pointHoverRadius: 5
+            }]
+        }
+    };
+}
 
-     return { type: 'chartjs', data: data };
- }
+// --- Trade Deficit Chart Strategy ---
+
+function buildTradeDeficitChartConfig(indicatorName, indicatorData) {
+    const importValues = [];
+    const exportValues = [];
+    const deficitValues = [];
+    const labels = [];
+
+    const yearKeys = Object.keys(indicatorData)
+        .filter(key => /^\d{4}$/.test(key))
+        .map(key => parseInt(key))
+        .sort((a, b) => b - a);
+
+    MONTHS.forEach((month, index) => {
+        const importValue = indicatorData.imports[month];
+        const exportValue = indicatorData.exports[month];
+        const deficitValue = indicatorData[month];
+        if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+            const numImport = extractNumericValue(importValue);
+            const numExport = extractNumericValue(exportValue);
+            const numDeficit = extractNumericValue(deficitValue);
+            if (numImport !== null && numExport !== null && numDeficit !== null) {
+                labels.push(MONTH_LABELS[index]);
+                importValues.push(numImport);
+                exportValues.push(numExport);
+                deficitValues.push(numDeficit);
+            }
+        }
+    });
+
+    const yearNestedPoints = [];
+    for (const year of yearKeys) {
+        const yearData = indicatorData[year];
+        if (!yearData || typeof yearData !== 'object') continue;
+        const importsYear = indicatorData.imports[year];
+        const exportsYear = indicatorData.exports[year];
+        if (!importsYear || !exportsYear) continue;
+        MONTHS.forEach((month, index) => {
+            const importValue = importsYear[month];
+            const exportValue = exportsYear[month];
+            const deficitValue = yearData[month];
+            if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
+                const numImport = extractNumericValue(importValue);
+                const numExport = extractNumericValue(exportValue);
+                const numDeficit = extractNumericValue(deficitValue);
+                if (numImport !== null && numExport !== null && numDeficit !== null) {
+                    yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numImport, numExport, numDeficit });
+                }
+            }
+        });
+    }
+
+    yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
+    yearNestedPoints.slice(0, 2).reverse().forEach(p => {
+        labels.push(p.label);
+        importValues.push(p.numImport);
+        exportValues.push(p.numExport);
+        deficitValues.push(p.numDeficit);
+    });
+
+    return {
+        type: 'chartjs-mixed',
+        data: {
+            labels,
+            datasets: [
+                { label: 'Imports', data: importValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
+                { label: 'Exports', data: exportValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
+                { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
+            ]
+        }
+    };
+}
+
+// --- Prediction Market Chart Strategy ---
+
+function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
+    const labels = [];
+    const values = [];
+
+    if (indicatorData.bps_probabilities) {
+        Object.keys(indicatorData.bps_probabilities).forEach(key => {
+            labels.push(key);
+            values.push(parseFloat(indicatorData.bps_probabilities[key]));
+        });
+    } else if (indicatorData.candidates && typeof indicatorData.candidates === 'object') {
+        for (const [name, prob] of Object.entries(indicatorData.candidates)) {
+            const val = parseFloat(String(prob).replace(/[^0-9.-]/g, ''));
+            if (!isNaN(val)) { labels.push(name); values.push(val); }
+        }
+    } else if (indicatorData.yes_probability && indicatorData.no_probability) {
+        const yesVal = parseFloat(String(indicatorData.yes_probability).replace(/[^0-9.-]/g, ''));
+        const noVal = parseFloat(String(indicatorData.no_probability).replace(/[^0-9.-]/g, ''));
+        if (!isNaN(yesVal)) { labels.push('Yes'); values.push(yesVal); }
+        if (!isNaN(noVal)) { labels.push('No'); values.push(noVal); }
+    }
+
+    return {
+        type: 'chartjs-bar',
+        data: { labels, datasets: [{ label: indicatorName, data: values }] }
+    };
+}
+
+// Register chart strategies (OCP: add new chart types without modifying existing code)
+ChartStrategies.registry
+    .register('line', buildStandardLineChartConfig)
+    .register('trade-deficit', buildTradeDeficitChartConfig)
+    .register('prediction-market', buildPredictionMarketChartConfig);

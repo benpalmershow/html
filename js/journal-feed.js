@@ -205,6 +205,7 @@ async function loadJournalEntries() {
       });
     });
 
+    renderJournalCharts();
     scrollToHash();
   } catch (error) {
     console.error('Error loading journal entries:', error);
@@ -281,7 +282,8 @@ async function renderEntryFromFile(entry, entryId) {
     }
 
     const safeTitle = renderTitle(entry.title);
-    const safeContent = addTickerLinks(sanitizeHtml(htmlContent));
+    const processedContent = processChartPlaceholders(htmlContent);
+    const safeContent = addTickerLinks(sanitizeHtml(processedContent));
     const collapsedClass = entry.collapsed ? ' entry--collapsed' : '';
     const toggleAttr = entry.collapsed ? ' data-collapsible="true"' : '';
     return `<div id="${entryId}" class="entry entry--file${collapsedClass}"${toggleAttr}><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
@@ -375,6 +377,177 @@ function formatDateForDateTime(dateString) {
   }
 
   return date.toISOString().split('T')[0];
+}
+
+// --- Chart Processing ---
+
+function processChartPlaceholders(html) {
+  if (!html || !html.includes('{{chart:')) return html;
+  const chartRegex = /\{\{chart:([^}]+)\}\}/g;
+  return html.replace(chartRegex, (match, indicatorName) => {
+    const name = indicatorName.trim();
+    const canvasId = name.replace(/[^a-z0-9]/gi, '-').toLowerCase() + '-' + Date.now() + Math.floor(Math.random() * 1000);
+    return `<div class="chart-container" data-chart-id="${canvasId}" data-indicator="${name}"><canvas id="${canvasId}"></canvas></div>`;
+  });
+}
+
+async function ensureChartJs() {
+  if (window.Chart) return;
+  await new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+async function renderJournalCharts() {
+  const containers = document.querySelectorAll('[data-indicator]:not([data-rendered])');
+  if (containers.length === 0) return;
+
+  await ensureChartJs();
+
+  if (!window._financialsData) {
+    try {
+      const response = await fetch('json/financials-data.json');
+      if (response.ok) window._financialsData = await response.json();
+    } catch (e) {
+      console.error('Failed to load financials data:', e);
+      return;
+    }
+  }
+
+  const data = window._financialsData;
+  if (!data || !data.indices) return;
+
+  const isDark = document.documentElement.classList.contains('dark-mode');
+  const colors = {
+    PRIMARY: isDark ? '#87c5be' : '#2C5F5A',
+    PRIMARY_FILL: isDark ? 'rgba(135, 197, 190, 0.1)' : 'rgba(44, 95, 90, 0.1)',
+    SECONDARY: isDark ? '#a0a9b8' : '#6c757d',
+    ACCENT: '#D4822A',
+    GRID: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)',
+    TEXT: isDark ? '#a0a9b8' : '#6c757d'
+  };
+
+  function getBaseOptions() {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 600, easing: 'easeInOutQuart' },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: 'index', intersect: false,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)', titleColor: '#fff', bodyColor: '#fff',
+          borderColor: colors.PRIMARY, borderWidth: 1, padding: 10,
+          titleFont: { size: 11 }, bodyFont: { size: 11 }
+        }
+      },
+      scales: {
+        x: { display: true, grid: { display: false }, ticks: { display: true, font: { size: 9 }, color: colors.TEXT, maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } },
+        y: { display: true, beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)' }, ticks: { display: false }, position: 'right' }
+      },
+      interaction: { mode: 'nearest', axis: 'x', intersect: false }
+    };
+  }
+
+  const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+  containers.forEach(container => {
+    if (container.dataset.rendered) return;
+    const canvasId = container.getAttribute('data-chart-id');
+    const indicatorName = container.getAttribute('data-indicator');
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const indicator = data.indices.find(i => i.name === indicatorName);
+    if (!indicator) return;
+
+    let labels = [], dataPoints = [];
+
+    if (indicator.bps_probabilities) {
+      labels = Object.keys(indicator.bps_probabilities);
+      dataPoints = Object.values(indicator.bps_probabilities).map(v => parseFloat(v));
+    } else if (indicator.candidates && typeof indicator.candidates === 'object') {
+      for (const [name, prob] of Object.entries(indicator.candidates)) {
+        const val = parseFloat(String(prob).replace(/[^0-9.-]/g, ''));
+        if (!isNaN(val)) { labels.push(name); dataPoints.push(val); }
+      }
+    } else {
+      const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
+      if (yearKeys.length > 0) {
+        const dataMap = {};
+        months.forEach((month, index) => {
+          const value = indicator[month];
+          if (value && value.toString().trim()) {
+            const numValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
+            if (!isNaN(numValue)) dataMap[`${null}-${index}`] = { month, monthIndex: index, value: numValue, year: null };
+          }
+        });
+        for (const year of yearKeys) {
+          const yearData = indicator[year];
+          if (!yearData || typeof yearData !== 'object') continue;
+          months.forEach((month, index) => {
+            const value = yearData[month];
+            if (value && value.toString().trim()) {
+              const numValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
+              if (!isNaN(numValue)) dataMap[`${year}-${index}`] = { month, monthIndex: index, value: numValue, year };
+            }
+          });
+        }
+        const sortedData = Object.values(dataMap).sort((a, b) => {
+          if (a.year !== b.year) return (a.year || 2025) - (b.year || 2025);
+          return a.monthIndex - b.monthIndex;
+        });
+        labels = sortedData.map(item => item.month.slice(0, 3));
+        dataPoints = sortedData.map(item => item.value);
+      } else {
+        months.forEach(m => {
+          if (indicator[m]) {
+            const val = parseFloat(indicator[m].replace(/[^0-9.-]/g, ''));
+            if (!isNaN(val)) { dataPoints.push(val); labels.push(m.slice(0, 3)); }
+          }
+        });
+      }
+    }
+
+    if (dataPoints.length === 0) return;
+
+    const chartType = indicator.category === 'Prediction Markets' || indicator.bps_probabilities ? 'bar' : 'line';
+    const config = {
+      type: chartType,
+      data: {
+        labels,
+        datasets: [{
+          label: indicator.name || 'Data',
+          data: dataPoints,
+          borderColor: colors.PRIMARY,
+          backgroundColor: chartType === 'bar' ? [colors.PRIMARY, colors.SECONDARY, colors.ACCENT] : colors.PRIMARY_FILL,
+          borderWidth: 2,
+          tension: 0.4,
+          fill: chartType === 'line',
+          pointBackgroundColor: colors.PRIMARY,
+          pointBorderColor: '#fff',
+          pointBorderWidth: 1.5,
+          pointRadius: 3,
+          pointHoverRadius: 5
+        }]
+      },
+      options: getBaseOptions()
+    };
+
+    try {
+      if (canvas._chart instanceof window.Chart) canvas._chart.destroy();
+      const chart = new window.Chart(canvas.getContext('2d'), config);
+      canvas._chart = chart;
+      container.dataset.rendered = 'true';
+    } catch (e) {
+      console.error('Chart render error:', e);
+    }
+  });
 }
 
 // Load entries when DOM is ready

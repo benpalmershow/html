@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-03-28T14:00:00Z",
+    "lastUpdated": "2026-03-31T14:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -347,7 +347,7 @@
             "category": "Commodities",
             "agency": "EIA",
             "name": "Oil (WTI)",
-            "lastUpdated": "2026-03-16T19:30:00Z",
+            "lastUpdated": "2026-03-23T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "january": "75.74",
@@ -365,7 +365,7 @@
             "2026": {
                 "january": "60.04",
                 "february": "64.51",
-                "march": "93.39"
+                "march": "89.33"
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
@@ -374,7 +374,7 @@
             "category": "Commodities",
             "agency": "EIA",
             "name": "Oil (Brent)",
-            "lastUpdated": "2026-03-23T14:00:00Z",
+            "lastUpdated": "2026-03-26T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "2026": {
@@ -504,21 +504,25 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Case-Shiller National Home Price Index",
-            "lastUpdated": "2026-02-25T14:00:00Z",
+            "lastUpdated": "2026-3-31T14:00:00Z",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
-            "january": "323.667",
-            "february": "325.120",
-            "march": "327.739",
-            "april": "329.915",
-            "may": "331.431",
-            "june": "331.619",
-            "july": "330.977",
-            "august": "329.877",
-            "september": "328.974",
-            "october": "328.506",
-            "november": "328.149",
-            "december": "327.455",
+            "january": "323.666",
+            "february": "325.39",
+            "march": "327.752",
+            "april": "329.911",
+            "may": "331.426",
+            "june": "331.608",
+            "july": "330.950",
+            "august": "329.855",
+            "september": "328,811",
+            "october": "328,238",
+            "november": "327.807",
+            "december": "326.969",
+            "2026": {
+                "january": "326.612"
+             
+            },
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
         },
@@ -747,7 +751,7 @@
             "category": "Consumer Indicators",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-03-31T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -762,7 +766,8 @@
             "december": "94.2",
             "2026": {
                 "january": "89",
-                "february": "91.2"
+                "february": "91",
+                "march": "91.8"
             },
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
@@ -1129,7 +1134,7 @@
             "category": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-03-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
             "march": "6,952,000",
@@ -1140,10 +1145,11 @@
             "august": "6,919,000",
             "september": "7,169,000",
             "october": "7,170,000",
-            "november": "6,849,000",
+            "november": "6,846,000",
             "december": "6,550,000",
             "2026": {
-                "january": "6,946,000"
+                "january": "7,240,000",
+                "february": "6,882,000"
             },
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."
@@ -1202,7 +1208,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Total Nonfarm Employment",
-            "lastUpdated": "2026-03-06T15:00:00Z",
+            "lastUpdated": "2026-03-31T15:00:00Z",
             "releaseDay": 5,
             "url": "https://fred.stlouisfed.org/series/PAYEMS",
             "february": "158,310,000",

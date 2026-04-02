@@ -158,27 +158,58 @@ html.dark-mode {
     display: none;
 }
 
-.entry--file.entry--collapsed .entry-title::after {
-    content: ' ▸';
-    font-size: 1.1em;
-    opacity: 0.8;
+.entry-title::after {
+    transition: transform 0.2s ease;
+}
+
+.entry-title:hover::after {
+    transform: scale(1.2);
+}
+.entry--file .entry-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
     font-weight: 600;
+    color: var(--tweet-text);
+    background: rgba(var(--color-primary-rgb), 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 4px 0 12px 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.entry--file.entry--collapsed .entry-title {
+    margin-bottom: 0;
+}
+
+.entry--file:hover .entry-title {
+    background: var(--tweet-ticker-bg);
+    border-color: var(--tweet-ticker-border);
+    color: var(--tweet-ticker-text);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--tweet-shadow);
+}
+
+.entry--file.entry--collapsed .entry-title::after {
+    content: 'expand_more'; /* Using a conceptual name or character */
+    font-family: Arial, sans-serif; /* Fallback */
+    content: '▸';
+    font-size: 1.25rem;
+    color: var(--accent-primary);
+    transition: transform 0.2s ease;
 }
 
 .entry--file:not(.entry--collapsed) .entry-title::after {
-    content: ' ▾';
-    font-size: 1.1em;
-    opacity: 0.8;
-    font-weight: 600;
+    content: '▾';
+    font-size: 1.25rem;
+    color: var(--accent-primary);
+    transform: scale(1.2);
 }
 
 [data-collapsible] .entry-title {
     cursor: pointer;
-}
-
-.entry--file .entry-title {
-    font-size: 1.15rem;
-    font-weight: 600;
 }
 
 [data-collapsible] .entry-title:hover {
@@ -406,4 +437,94 @@ html.dark-mode #curry-goat-warning {
     .entry-content {
         font-size: 0.95rem;
     }
+}
+/* Entry Link Badge Styling */
+.entry--link .entry-title {
+    margin-bottom: 0;
+}
+
+.entry-title-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    color: var(--tweet-text) !important;
+    background: rgba(var(--color-primary-rgb), 0.03);
+    border: 1px solid var(--tweet-border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 4px 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+}
+
+.entry-title-link:hover {
+    background: var(--tweet-ticker-bg);
+    border-color: var(--tweet-ticker-border);
+    color: var(--tweet-ticker-text) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--tweet-shadow);
+    opacity: 1 !important;
+}
+
+.entry-link-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.entry-link-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.entry-link-content {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--tweet-text-secondary);
+    margin-top: 10px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.entry-link-icon,
+.entry-link-asset-icon {
+    flex-shrink: 0;
+    margin-left: 12px;
+    margin-top: 2px;
+}
+
+.entry-link-icon {
+    width: 1.1em;
+    height: 1.1em;
+    color: var(--accent-primary);
+    opacity: 0.8;
+    transition: transform 0.2s ease;
+}
+
+.entry-link-asset-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: opacity(0.7);
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.entry-title-link:hover .entry-link-icon,
+.entry-title-link:hover .entry-link-asset-icon {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.1);
+}
+
+/* Dark mode adjustments for badges */
+html.dark-mode .entry-title-link {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+html.dark-mode .entry-title-link:hover {
+    background: rgba(135, 197, 190, 0.1);
+    border-color: var(--accent-primary);
 }

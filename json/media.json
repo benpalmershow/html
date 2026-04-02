@@ -1,5 +1,30 @@
 [
   {
+    "title": "ApriCara",
+    "slug": "apricara",
+    "author": "TBPS",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "April 2026",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBdfz18qXLKvkFDG9ebO8W-7&si=TIYr1JzqZMDy1PNN"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/7lZj4O0RjcEwXh8P68O2eP?si=0QUI55roSM-xvaBWn6b1VA"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "dateAdded": "2026-04-02",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
+  },
+  {
     "title": "Trump v. Barbara",
     "author": "Supreme Court of the United States",
     "mediaType": "podcast",
@@ -730,7 +755,7 @@
       {
         "name": "X",
         "url": "https://x.com/theallinpod",
-        "icon": "fab fa-twitter"
+        "icon": "fab fa-x-twitter"
       },
       {
         "name": "Apple Podcasts",

@@ -207,6 +207,9 @@ async function loadJournalEntries() {
 
     renderJournalCharts();
     scrollToHash();
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   } catch (error) {
     console.error('Error loading journal entries:', error);
     journalFeed.innerHTML = '<div class="error-state">Error loading journal entries. Please try again later.</div>';
@@ -272,6 +275,9 @@ async function renderEntryFromFile(entry, entryId) {
       content = parts.slice(2).join('---').trim();
     }
 
+    // Strip the primary header from the markdown to prevent title duplication in expanded view
+    content = content.replace(/^#+\s+.*\n*/, '').trim();
+
     let htmlContent = content;
     if (window.marked) {
       try {
@@ -295,20 +301,48 @@ async function renderEntryFromFile(entry, entryId) {
 }
 
 function renderInlineEntry(entry, entryId) {
-   const safeTitle = renderTitle(entry.title);
    const rawContent = typeof entry.content === 'string' ? entry.content : '';
    let content = rawContent.includes('<') ? sanitizeHtml(rawContent) : linkify(escapeHtml(rawContent));
    content = addTickerLinks(content);
    
    // Handle paragraph breaks if content doesn't contain HTML
-   if (!rawContent.includes('<')) {
+   if (!rawContent.includes('<') && rawContent.trim() !== '') {
      const paragraphs = content.split(/\n\n+/);
      content = paragraphs
        .filter(para => para.trim() !== '')
        .map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`)
        .join('');
    }
-   
+
+   if (entry.link) {
+     let iconHtml = '';
+     let linkIcon = entry.linkIcon;
+     let linkAssetIcon = entry.linkAssetIcon;
+
+     // Auto-standardize icons based on destination if not explicitly provided
+     if (!linkIcon && !linkAssetIcon) {
+       if (entry.link.includes('media.html')) {
+         linkAssetIcon = 'images/media.webp';
+       } else if (entry.link.includes('financials.html')) {
+         linkAssetIcon = 'images/read.webp';
+       } else if (entry.link.includes('x.com')) {
+         linkIcon = 'x';
+       }
+     }
+
+     if (linkIcon) {
+       iconHtml = ` <i data-lucide="${linkIcon}" class="entry-link-icon"></i>`;
+     } else if (linkAssetIcon) {
+       iconHtml = ` <img src="${linkAssetIcon}" class="entry-link-asset-icon" alt="">`;
+     }
+
+     const contentPart = content ? `<div class="entry-link-content">${content}</div>` : '';
+     const innerHtml = `<div class="entry-link-header"><div class="entry-link-title">${entry.title}</div>${iconHtml}</div>${contentPart}`;
+     const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
+     return `<div id="${entryId}" class="entry entry--link"><div class="entry-title">${sanitizeHtml(linkedBadge)}</div></div>`;
+   }
+
+   const safeTitle = renderTitle(entry.title);
    const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
    return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div>${contentHtml}</div>`;
 }

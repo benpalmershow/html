@@ -60,6 +60,14 @@ Cheap one-way attack drones changed the arithmetic. A reusable UAV has to surviv
       <td><span class="table-chip table-chip-use">Saturation</span></td>
     </tr>
     <tr>
+      <td><strong>FLM 136 (LUCAS)</strong></td>
+      <td>🇺🇸</td>
+      <td><span class="table-chip">🎯 One-way</span></td>
+      <td><span class="table-chip table-chip-cost low">$</span></td>
+      <td>1,000+ km</td>
+      <td><span class="table-chip table-chip-use">Attritable Strike</span></td>
+    </tr>
+    <tr>
       <td><strong>Lancet</strong></td>
       <td>🇷🇺</td>
       <td><span class="table-chip">💥 Loitering</span></td>
@@ -134,6 +142,8 @@ The **Shahed-136** model matters because it makes strategic harassment cheap. It
 - spend expensive interceptors
 - accept damage
 - disperse and harden everything
+
+This philosophy has led to the development of systems like the **FLM 136**, or **LUCAS**, which was reverse-engineered by the U.S. from recovered Shahed platforms. Often described as the "Corolla of drones," the LUCAS is a cheap, mass-produced one-way system that prioritizes volume and cost-imposition over technical elegance.
 
 That is the real innovation. It is not elegance. It is cost imposition.
 

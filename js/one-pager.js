@@ -311,13 +311,20 @@ async function loadFeaturedPodcast() {
   const descText = clip(tbpsLatest.description || 'Listen to the latest episode of The Ben Palmer Show.', 180);
   
   const linksHtml = (tbpsLatest.links || []).map(link => {
-    let iconName = 'external-link';
     const labelLower = (link.label || link.name || '').toLowerCase();
-    if (labelLower.includes('apple')) iconName = 'podcast';
-    else if (labelLower.includes('spotify')) iconName = 'music';
-    else if (labelLower.includes('youtube')) iconName = 'youtube';
+    let iconHtml = '<i data-lucide="external-link"></i>';
     
-    return `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="podcast-link-pill"><i data-lucide="${iconName}"></i> ${escapeHtml(link.label || link.name)}</a>`;
+    if (labelLower.includes('spotify')) {
+      iconHtml = '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" class="pill-brand-icon" alt="Spotify">';
+    } else if (labelLower.includes('youtube')) {
+      iconHtml = '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="pill-brand-icon" alt="YouTube">';
+    } else if (labelLower.includes('apple')) {
+      iconHtml = '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" class="pill-brand-icon" alt="Apple Podcasts">';
+    } else {
+      iconHtml = '<i data-lucide="external-link"></i>';
+    }
+    
+    return `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="podcast-link-pill">${iconHtml} ${escapeHtml(link.label || link.name)}</a>`;
   }).join('');
 
   const coverImg = tbpsLatest.cover ? `<img src="${escapeHtml(tbpsLatest.cover)}" alt="Podcast Cover" class="featured-podcast-image">` : '';

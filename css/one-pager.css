@@ -205,9 +205,21 @@ html.dark-mode .header-social-item img {
   transform: translateY(-1px);
 }
 
-.podcast-link-pill i {
+.podcast-link-pill i,
+.pill-brand-icon {
   width: 1.1rem;
   height: 1.1rem;
+  flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pill-brand-icon {
+    filter: invert(1) brightness(0.8);
+  }
+}
+
+html.dark-mode .pill-brand-icon {
+  filter: invert(1) brightness(0.8);
 }
 
 .updates-grid {

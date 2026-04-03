@@ -1016,7 +1016,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "30-yr Mortgage Rate",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-04-03T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
             "march": "6.65",
@@ -1032,7 +1032,7 @@
             "2026": {
                 "january": "6.10",
                 "february": "5.98",
-                "march": "6.22"
+                "march": "6.46"
             },
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
@@ -1160,7 +1160,7 @@
             "category": "Employment Indicators",
             "agency": "Challenger Gray & Christmas",
             "name": "Job Cuts Report",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-04-03T14:00:00Z",
             "releaseDay": 6,
             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
             "january": "49,795",
@@ -1177,7 +1177,8 @@
             "december": "35,553",
             "2026": {
                 "january": "108,435",
-                "february": "48,307"
+                "february": "48,307",
+                "march": "60,620"
             },
             "change": "",
             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
@@ -1186,7 +1187,7 @@
             "category": "Employment Indicators",
             "agency": "FRED",
             "name": "Jobless Claims",
-            "lastUpdated": "2026-03-20T16:00:00Z",
+            "lastUpdated": "2026-04-03T16:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/ICSA",
             "march": "223,200",
@@ -1201,7 +1202,8 @@
             "december": "219,000",
             "2026": {
                 "january": "211,400",
-                "february": "215,750"
+                "february": "215,750",
+                "march": "207,750"
             },
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."

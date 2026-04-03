@@ -102,6 +102,114 @@ html.dark-mode .header-social-item img {
   filter: brightness(0.95);
 }
 
+.featured-podcast-card {
+  margin-top: 1rem;
+  border: 1px solid var(--accent-primary, #2c5f5a);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(var(--accent-primary-rgb, 44, 95, 90), 0.05);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-podcast-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.featured-podcast-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.featured-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-secondary, #d4822a);
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.featured-podcast-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-family: var(--font-display, inherit);
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.featured-podcast-description {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  max-width: 680px;
+}
+
+.featured-podcast-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.podcast-link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 99px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 600px) {
+  .featured-podcast-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .featured-podcast-image {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .featured-podcast-links {
+    justify-content: flex-start;
+  }
+}
+
+.podcast-link-pill:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(var(--accent-primary-rgb), 0.04);
+  transform: translateY(-1px);
+}
+
+.podcast-link-pill i {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 .updates-grid {
   margin-top: 1rem;
   display: grid;

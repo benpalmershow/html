@@ -105,7 +105,7 @@ html.dark-mode .header-social-item img {
 .updates-grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -303,7 +303,13 @@ html.dark-mode .header-social-item img {
   stroke: currentColor;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
+  .updates-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
   .updates-grid {
     grid-template-columns: 1fr;
   }
@@ -420,7 +426,7 @@ html.dark-mode .header-social-item img {
   }
 
   .updates-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.5rem;
     margin-top: 0.5rem;
     break-inside: avoid;

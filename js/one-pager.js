@@ -1,5 +1,6 @@
 const LIMITS = {
-  journal: 5,
+  journal: 10,
+  essays: 5,
   media: 8,
   financials: 10
 };
@@ -269,6 +270,26 @@ async function loadLatestJournal() {
   }
 }
 
+async function loadLatestEssays() {
+  const articles = await fetchJson('json/articles.json');
+  const sorted = articles
+    .slice()
+    .sort((a, b) => {
+      const dateA = new Date(a.date || 0).getTime();
+      const dateB = new Date(b.date || 0).getTime();
+      return dateB - dateA;
+    })
+    .slice(0, LIMITS.essays);
+
+  const lines = sorted.map(item => {
+    const title = escapeHtml(cleanText(item.title));
+    const summary = clip(item.summary || '', 100);
+    
+    return `<a href="news.html?article=${encodeURIComponent(item.id)}" style="text-decoration:none; color:inherit;"><strong>${title}</strong>: ${escapeHtml(summary)}</a>`;
+  });
+  renderList('latest-essays', lines);
+}
+
 async function loadLatestMedia() {
   const media = await fetchJson('json/media.json');
   const sorted = media
@@ -366,6 +387,7 @@ async function initOnePager() {
 
   await Promise.allSettled([
     loadLatestJournal(),
+    loadLatestEssays(),
     loadLatestMedia(),
     loadLatestFinancials()
   ]);

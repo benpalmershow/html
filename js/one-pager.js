@@ -290,63 +290,7 @@ async function loadLatestEssays() {
   renderList('latest-essays', lines);
 }
 
-async function loadFeaturedPodcast() {
-  const mediaItems = await fetchJson('json/media.json');
-  if (!mediaItems || !Array.isArray(mediaItems)) return;
 
-  const tbpsLatest = mediaItems
-    .filter(m => m.author === 'TBPS' && (m.mediaType === 'podcast' || m.icon?.includes('podcast')))
-    .sort((a, b) => {
-      const dateA = new Date(a.dateAdded || a.date || 0).getTime();
-      const dateB = new Date(b.dateAdded || b.date || 0).getTime();
-      return dateB - dateA;
-    })[0];
-
-  if (!tbpsLatest) return;
-
-  const target = document.getElementById('featured-podcast-container');
-  if (!target) return;
-
-  const titleText = cleanText(tbpsLatest.title);
-  const descText = clip(tbpsLatest.description || 'Listen to the latest episode of The Ben Palmer Show.', 180);
-  
-  const linksHtml = (tbpsLatest.links || []).map(link => {
-    const labelLower = (link.label || link.name || '').toLowerCase();
-    let iconHtml = '<i data-lucide="external-link"></i>';
-    
-    if (labelLower.includes('spotify')) {
-      iconHtml = '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" class="pill-brand-icon" alt="Spotify">';
-    } else if (labelLower.includes('youtube')) {
-      iconHtml = '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="pill-brand-icon" alt="YouTube">';
-    } else if (labelLower.includes('apple')) {
-      iconHtml = '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" class="pill-brand-icon" alt="Apple Podcasts">';
-    } else {
-      iconHtml = '<i data-lucide="external-link"></i>';
-    }
-    
-    return `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="podcast-link-pill">${iconHtml} ${escapeHtml(link.label || link.name)}</a>`;
-  }).join('');
-
-  const coverImg = tbpsLatest.cover ? `<img src="${escapeHtml(tbpsLatest.cover)}" alt="Podcast Cover" class="featured-podcast-image">` : '';
-
-  target.innerHTML = `
-    <article class="featured-podcast-card">
-      ${coverImg}
-      <div class="featured-podcast-content">
-        <div class="featured-kicker">Latest Episode</div>
-        <h2 class="featured-podcast-title">${escapeHtml(titleText)}</h2>
-        <p class="featured-podcast-description">${escapeHtml(descText)}</p>
-        <div class="featured-podcast-links">
-          ${linksHtml}
-        </div>
-      </div>
-    </article>
-  `;
-
-  if (window.lucide?.createIcons) {
-    window.lucide.createIcons();
-  }
-}
 
 async function loadLatestMedia() {
   const media = await fetchJson('json/media.json');
@@ -444,7 +388,6 @@ async function initOnePager() {
   setupPrintButton();
 
   await Promise.allSettled([
-    loadFeaturedPodcast(),
     loadLatestJournal(),
     loadLatestEssays(),
     loadLatestMedia(),

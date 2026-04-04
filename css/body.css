@@ -15,7 +15,7 @@ html {
 }
 
 body {
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     font-family: var(--font-body);
@@ -40,7 +40,8 @@ body {
 main {
     contain: layout style;
     content-visibility: auto;
-    min-height: calc(100vh - 60px);
+    flex: 1;
+    min-height: 0;
 }
 
 /* ========================================

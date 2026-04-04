@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
 
   const PAGES = [
-    { name: 'Home', file: 'index.html', icon: '' },
+    { name: 'Home', file: 'index.html', icon: 'logo-360x360.webp' },
     { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'read.webp' },
     { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', icon: 'media.webp' },
     { name: 'Docs', file: 'journal.html', desc: 'Short-form analysis and observations', icon: 'announcements.webp' }
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderNavLink = (page) => {
     const isActive = currentPage === page.file || (currentPage === '' && page.file === 'index.html');
-    if (page.file === 'index.html' && !page.icon) return '';
     if (page.icon) {
       return `<li><a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" title="${page.name}"><img src="images/${page.icon}" alt="${page.name}" class="nav-link-icon" width="24" height="24" loading="eager"></a></li>`;
     }
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const navHTML = `
     <div class="nav-container">
-      <a href="index.html" class="nav-link nav-logo" title="Home"><picture><source srcset="images/logo-360x360.webp" type="image/webp"><img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" width="40" height="40" loading="lazy"></picture></a>
       <ul class="nav-list">
         ${PAGES.map(renderNavLink).join('')}
       </ul>

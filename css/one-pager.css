@@ -1,7 +1,51 @@
 .one-pager-container {
   max-width: 980px;
-  margin: 1rem auto 2rem;
-  padding: 0 1rem 1rem;
+  margin: 0.5rem auto 1rem;
+  padding: 0 1rem 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-logo {
+  display: inline-block;
+  text-decoration: none;
+  animation: logoGentleFloat 4s ease-in-out infinite;
+}
+
+.hero-logo:hover {
+  animation: logoGentleFloat 2s ease-in-out infinite;
+  transform: scale(1.05);
+}
+
+.hero-logo-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hero-logo:hover .hero-logo-image {
+  transform: scale(1.05);
+}
+
+@keyframes logoGentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .one-pager-header {

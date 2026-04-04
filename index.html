@@ -115,43 +115,15 @@
   <nav class="nav-links" id="main-nav"></nav>
 
   <main class="one-pager-container" id="main-content" tabindex="-1">
-
-    <section class="updates-grid">
-      <article class="section-card">
-        <h2>
-          <img src="images/read.webp" alt="" class="section-link-image" width="24" height="24">
-          <a href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer">Latest Numbers</a>
-        </h2>
-        <ul id="latest-financials" class="compact-list"></ul>
-        <a href="financials.html" class="view-all-link">View All Numbers <i data-lucide="arrow-right"></i></a>
-      </article>
- 
-      <article class="section-card">
-        <h2>
-          <img src="images/media-60x60.webp" alt="" class="section-link-image" width="24" height="24">
-          <a href="media.html" target="_blank" rel="noopener noreferrer">Latest Media</a>
-        </h2>
-        <ul id="latest-media" class="compact-list"></ul>
-        <a href="media.html" class="view-all-link">View All Media <i data-lucide="arrow-right"></i></a>
-      </article>
- 
-      <article class="section-card">
-        <h2>
-          <img src="images/announcements.webp" alt="" class="section-link-image" width="24" height="24">
-          <a href="journal.html" target="_blank" rel="noopener noreferrer">Latest Docs</a>
-        </h2>
-        <ul id="latest-journal" class="compact-list"></ul>
-        <a href="journal.html" class="view-all-link">View All Docs <i data-lucide="arrow-right"></i></a>
-      </article>
- 
-      <article class="section-card">
-        <h2>
-          <a href="news.html" target="_blank" rel="noopener noreferrer">Latest Essays</a>
-        </h2>
-        <ul id="latest-essays" class="compact-list"></ul>
-        <a href="news.html" class="view-all-link">View All Essays <i data-lucide="arrow-right"></i></a>
-      </article>
-    </section>
+    <div class="hero-logo-container">
+      <a href="index.html" class="hero-logo" title="Home">
+        <picture>
+          <source srcset="images/logo-360x360.webp" type="image/webp">
+          <img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" class="hero-logo-image" width="180" height="180" loading="eager">
+        </picture>
+      </a>
+    </div>
+  </main>
 
   <!-- Footer Component -->
   <div id="footer-container"></div>
@@ -167,7 +139,6 @@
         });
     });
   </script>
-  </main>
 
   <script src="js/nav.js" defer></script>
   <script src="js/swipe-nav.js" defer></script>

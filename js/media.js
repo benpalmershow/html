@@ -432,29 +432,22 @@
         }
 
         if (item.embedUrl || (item.mediaType === 'movie' && item.embedUrl) || (item.mediaType === 'video' && item.embedUrl)) {
-            const trailerBtn = document.createElement('button');
+            const trailerBtn = document.createElement('a');
             trailerBtn.className = 'action-btn trailer-btn';
             trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
             trailerBtn.innerHTML = `<i class="fab fa-youtube"></i>`;
+            
+            let watchUrl = item.embedUrl;
+            if (watchUrl.includes('youtube.com/embed/')) {
+                watchUrl = watchUrl.replace('embed/', 'watch?v=');
+            }
+            trailerBtn.href = watchUrl;
+            trailerBtn.target = '_blank';
+            trailerBtn.rel = 'noopener noreferrer';
+            
             trailerBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const existingEmbed = overlayContent.querySelector('.trailer-embed');
-                if (existingEmbed) {
-                    existingEmbed.remove();
-                    trailerBtn.innerHTML = `<i class="fab fa-youtube"></i>`;
-                    trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
-                } else {
-                    const embed = document.createElement('div');
-                    embed.className = 'trailer-embed';
-                    embed.innerHTML = `
-                        <iframe width="100%" height="100%" src="${item.embedUrl}" title="${item.title} Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    `;
-                    overlayContent.appendChild(embed);
-                    trailerBtn.innerHTML = `<i class="fas fa-times"></i>`;
-                    trailerBtn.title = 'Close Trailer';
-                    setTimeout(() => overlayContent.scrollTop = 0, 300);
-                }
-            }, { passive: false });
+            }, { passive: true });
             addActionToTop(trailerBtn);
         }
 

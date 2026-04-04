@@ -37,12 +37,13 @@
     will-change: transform;
     border-radius: 0.5rem;
     overflow: visible;
+    z-index: 1;
 }
 
 .media-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    z-index: 5;
+    z-index: 100; /* Ensure hovered card is on top of neighbors */
 }
 
 .media-card:hover .media-overlay,
@@ -93,6 +94,11 @@
 .media-card:hover .media-overlay-content {
     transform: translateY(0);
     opacity: 1;
+    pointer-events: auto;
+}
+
+.trailer-embed {
+    pointer-events: auto !important;
 }
 
 /* Media Text Content */
@@ -227,6 +233,7 @@
 .media-card:hover .media-top-right-actions {
     opacity: 1;
     transform: scale(1) translateY(0);
+    pointer-events: auto;
 }
 
 .action-btn {
@@ -243,17 +250,18 @@
     font-weight: 700;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.5); /* Unified background */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    cursor: pointer !important;
     position: relative;
     overflow: visible;
     z-index: 50;
     gap: 1px;
+    pointer-events: auto !important;
 }
 
 .action-btn i {
@@ -367,6 +375,8 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
     order: 0;
+    pointer-events: auto !important;
+    z-index: 60;
 }
 
 .trailer-embed iframe {
@@ -376,6 +386,8 @@
     width: 100%;
     height: 100%;
     border: none;
+    pointer-events: auto !important;
+    z-index: 10;
 }
 /* ==========================================================================
     MOBILE RESPONSIVE - OVERLAY ADJUSTMENTS

@@ -169,8 +169,8 @@ html.dark-mode {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 400;
     color: var(--tweet-text);
     background: transparent;
     border: none;
@@ -475,8 +475,8 @@ html.dark-mode #curry-goat-warning {
 }
 
 .entry-link-title {
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 400;
+    font-size: 1rem;
     line-height: 1.3;
 }
 

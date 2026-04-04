@@ -553,6 +553,17 @@
   height: 34px;
   object-fit: cover;
   border-radius: 8px;
+  display: inline-block;
+}
+
+.one-pager-header h1 a {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.one-pager-header h1 a:hover .title-logo {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }
 
 .generated-at {

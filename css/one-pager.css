@@ -373,6 +373,143 @@
   }
 }
 
+.latest-episode-hero {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  margin-top: 1rem;
+}
+
+.latest-episode-cover {
+  flex-shrink: 0;
+}
+
+.latest-episode-cover img {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+.latest-episode-cover a {
+  display: block;
+}
+
+.latest-episode-cover a:hover img {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+}
+
+.latest-episode-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.latest-episode-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-secondary);
+  font-weight: 700;
+}
+
+.latest-episode-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.latest-episode-desc {
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.latest-episode-platforms {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.platform-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.platform-link:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.platform-link i {
+  font-size: 1.25rem;
+}
+
+.platform-link.spotify:hover {
+  color: #1DB954;
+  border-color: #1DB954;
+}
+
+.platform-link.youtube:hover {
+  color: #FF0000;
+  border-color: #FF0000;
+}
+
+.platform-link.amazon:hover {
+  color: #FF9900;
+  border-color: #FF9900;
+}
+
+.platform-link.apple:hover {
+  color: #000;
+  border-color: #000;
+}
+
+@media (max-width: 600px) {
+  .latest-episode-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .latest-episode-cover img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .latest-episode-title {
+    font-size: 1.25rem;
+  }
+
+  .platform-link {
+    width: 38px;
+    height: 38px;
+  }
+
+  .platform-link i {
+    font-size: 1rem;
+  }
+}
+
 .one-pager-header {
   position: relative;
   display: grid;

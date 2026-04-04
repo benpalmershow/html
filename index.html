@@ -68,6 +68,11 @@
   <link rel="stylesheet" href="css/body.css?v=20260322">
   <link rel="stylesheet" href="css/nav.css?v=20251220">
   <link rel="stylesheet" href="css/one-pager.css?v=20260308">
+  
+  <!-- Font Awesome for platform icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics -->
@@ -116,12 +121,54 @@
 
   <main class="one-pager-container" id="main-content" tabindex="-1">
     <div class="hero-logo-container">
-      <a href="one-pager.html" class="hero-logo" title="View One-Pager Dashboard">
-        <picture>
-          <source srcset="images/logo-360x360.webp" type="image/webp">
-          <img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" class="hero-logo-image" width="180" height="180" loading="eager">
-        </picture>
-      </a>
+      <div class="orbital-system">
+        <a href="one-pager.html" class="hero-logo" title="View One-Pager Dashboard">
+          <picture>
+            <source srcset="images/logo-360x360.webp" type="image/webp">
+            <img src="images/logo-360x360.webp" alt="Howdy, Stranger - Home" class="hero-logo-image" width="180" height="180" loading="eager">
+          </picture>
+        </a>
+        
+        <!-- Orbital Platform Logos -->
+        <div class="orbit amazon-orbit">
+          <a href="https://music.amazon.com/podcasts/1167b390-83bc-438f-8437-9441871a3bc5/episodes/9edb13a5-8ee3-4d78-b508-aad7283e9bac/saturday-april-4th" 
+             class="platform-logo amazon-logo" 
+             title="Play on Amazon Music"
+             target="_blank">
+            <i class="fab fa-amazon" style="color: #FF9900; font-size: 22px;"></i>
+          </a>
+        </div>
+        
+        <div class="orbit youtube-orbit">
+          <a href="https://youtu.be/bbnOQNRSWkM" 
+             class="platform-logo youtube-logo" 
+             title="Play on YouTube"
+             target="_blank">
+            <i class="fab fa-youtube" style="color: #FF0000; font-size: 22px;"></i>
+          </a>
+        </div>
+        
+        <div class="orbit spotify-orbit">
+          <a href="https://open.spotify.com/episode/75K7arEReSUH4JE7MdrbNb?si=pwnv7exsRkOgnRCLrgUUXg" 
+             class="platform-logo spotify-logo" 
+             title="Play on Spotify"
+             target="_blank">
+            <i class="fab fa-spotify" style="color: #1DB954; font-size: 22px;"></i>
+          </a>
+        </div>
+        
+        <div class="orbit apple-orbit">
+          <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4" 
+             class="platform-logo apple-logo" 
+             title="Play on Apple Podcasts"
+             target="_blank">
+            <i class="fab fa-apple" style="color: #000000; font-size: 22px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+   
     </div>
   </main>
 
@@ -144,7 +191,8 @@
   <script src="js/swipe-nav.js" defer></script>
   <script src="js/one-pager.js" defer></script>
   <script src="js/bfcache-compat.js" defer></script>
-  <script>
+  
+    <script>
     (function () {
       function loadScript(src, callback) {
         const script = document.createElement('script');

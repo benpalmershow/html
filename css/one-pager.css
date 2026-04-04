@@ -14,17 +14,58 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+}
+
+/* Orbital System */
+.orbital-system {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  max-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  margin: 0;
+  padding: 5vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Performance optimizations */
+  will-change: transform;
+  contain: layout style paint;
 }
 
 .hero-logo {
   display: inline-block;
   text-decoration: none;
-  animation: logoGentleFloat 4s ease-in-out infinite;
+  animation: logoSpin 20s linear infinite;
+  position: relative;
+  z-index: 10;
+  transform-style: preserve-3d;
+  border-radius: 50%;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(var(--accent-primary-rgb), 0.2),
+    inset -20px -20px 40px rgba(0, 0, 0, 0.3),
+    inset 20px 20px 40px rgba(255, 255, 255, 0.1);
+}
+
+.hero-logo::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0.1) 20%, 
+    transparent 50%);
+  pointer-events: none;
 }
 
 .hero-logo:hover {
-  animation: logoGentleFloat 2s ease-in-out infinite;
-  transform: scale(1.05);
+  animation: logoSpin 10s linear infinite;
 }
 
 .hero-logo-image {
@@ -33,18 +74,302 @@
   border-radius: 50%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  display: block;
+  box-shadow: 
+    inset -10px -10px 20px rgba(0, 0, 0, 0.4),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.2);
 }
 
 .hero-logo:hover .hero-logo-image {
   transform: scale(1.05);
 }
 
-@keyframes logoGentleFloat {
-  0%, 100% {
-    transform: translateY(0);
+/* Orbit Paths - Horizontal Perspective */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+  /* Performance optimizations */
+  will-change: transform;
+  contain: layout style paint;
+  /* Subtle orbit trail effect */
+  box-shadow: inset 0 0 1px rgba(var(--accent-primary-rgb), 0.1);
+}
+
+.amazon-orbit {
+  width: 20vw;
+  height: 20vw;
+  animation: rotateOrbit 25s linear infinite;
+  z-index: 5;
+}
+
+.youtube-orbit {
+  width: 28vw;
+  height: 28vw;
+  animation: rotateOrbitReverse 30s linear infinite;
+  z-index: 4;
+}
+
+.spotify-orbit {
+  width: 36vw;
+  height: 36vw;
+  animation: rotateOrbit 35s linear infinite;
+  z-index: 3;
+}
+
+.apple-orbit {
+  width: 44vw;
+  height: 44vw;
+  animation: rotateOrbitReverse 40s linear infinite;
+  z-index: 2;
+}
+
+/* Platform Logos - Horizontal Orbit */
+.platform-logo {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.4), 
+    inset 0 2px 6px rgba(255,255,255,0.2),
+    0 0 0 0 rgba(var(--accent-primary-rgb), 0.4);
+  top: -20px;
+  left: 50%;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+  /* Performance optimizations */
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+
+.platform-logo:hover {
+  box-shadow: 
+    0 10px 25px rgba(var(--accent-secondary-rgb), 0.6), 
+    inset 0 2px 6px rgba(255,255,255,0.4),
+    0 0 0 8px rgba(var(--accent-secondary-rgb), 0.1);
+  border-color: var(--accent-secondary);
+  transform: translateX(-50%) scale(1.1) translateZ(20px);
+}
+
+.amazon-orbit .platform-logo {
+  animation: counterRotate 25s linear infinite;
+}
+
+.youtube-orbit .platform-logo {
+  animation: counterRotateReverse 30s linear infinite;
+}
+
+.spotify-orbit .platform-logo {
+  animation: counterRotate 35s linear infinite;
+}
+
+.apple-orbit .platform-logo {
+  animation: counterRotateReverse 40s linear infinite;
+}
+
+.platform-logo-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Performance optimization */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.platform-logo:hover .platform-logo-img {
+  transform: scale(1.2) translateZ(10px) rotateY(10deg);
+}
+
+/* Animations */
+@keyframes rotateOrbit {
+  from {
+    transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg);
   }
-  50% {
-    transform: translateY(-8px);
+  to {
+    transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateOrbitReverse {
+  from {
+    transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg);
+  }
+}
+
+@keyframes counterRotate {
+  0% {
+    transform: translateX(-50%) rotateZ(0deg) rotateX(-70deg);
+  }
+  100% {
+    transform: translateX(-50%) rotateZ(-360deg) rotateX(-70deg);
+  }
+}
+
+@keyframes counterRotateReverse {
+  0% {
+    transform: translateX(-50%) rotateZ(-360deg) rotateX(-70deg);
+  }
+  100% {
+    transform: translateX(-50%) rotateZ(0deg) rotateX(-70deg);
+  }
+}
+
+@keyframes logoSpin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .orbital-system {
+    width: 100vw;
+    height: 70vh;
+    max-height: 500px;
+    perspective: 600px;
+    padding: 4vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* Reduce motion for better performance */
+    animation: none;
+  }
+  
+  .amazon-orbit {
+    width: 18vw;
+    height: 18vw;
+    animation-duration: 20s;
+  }
+  
+  .youtube-orbit {
+    width: 24vw;
+    height: 24vw;
+    animation-duration: 25s;
+  }
+  
+  .spotify-orbit {
+    width: 30vw;
+    height: 30vw;
+    animation-duration: 30s;
+  }
+  
+  .apple-orbit {
+    width: 36vw;
+    height: 36vw;
+    animation-duration: 35s;
+  }
+  
+  .platform-logo {
+    width: 28px;
+    height: 28px;
+    top: -14px;
+    /* Reduce motion on mobile */
+    transition: all 0.2s ease;
+  }
+  
+  .platform-logo:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 
+      0 6px 15px rgba(var(--accent-secondary-rgb), 0.4), 
+      inset 0 1px 3px rgba(255,255,255,0.3),
+      0 0 0 4px rgba(var(--accent-secondary-rgb), 0.1);
+  }
+  
+  .platform-logo-img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .platform-logo:hover .platform-logo-img {
+    transform: scale(1.1);
+  }
+  
+  .hero-logo-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .orbital-system {
+    width: 100vw;
+    height: 60vh;
+    max-height: 400px;
+    perspective: 500px;
+    padding: 3vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* Further reduce motion for very small screens */
+  }
+  
+  .amazon-orbit {
+    width: 16vw;
+    height: 16vw;
+    animation-duration: 15s;
+  }
+  
+  .youtube-orbit {
+    width: 20vw;
+    height: 20vw;
+    animation-duration: 20s;
+  }
+  
+  .spotify-orbit {
+    width: 24vw;
+    height: 24vw;
+    animation-duration: 25s;
+  }
+  
+  .apple-orbit {
+    width: 28vw;
+    height: 28vw;
+    animation-duration: 30s;
+  }
+  
+  .platform-logo {
+    width: 24px;
+    height: 24px;
+    top: -12px;
+    /* Minimal hover effects for touch devices */
+    transition: all 0.15s ease;
+  }
+  
+  .platform-logo:hover {
+    transform: translateX(-50%) scale(1.02);
+    box-shadow: 
+      0 4px 10px rgba(var(--accent-secondary-rgb), 0.3), 
+      inset 0 1px 2px rgba(255,255,255,0.3);
+  }
+  
+  .platform-logo-img {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .platform-logo:hover .platform-logo-img {
+    transform: scale(1.05);
+  }
+  
+  .hero-logo-image {
+    width: 100px;
+    height: 100px;
   }
 }
 

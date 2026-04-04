@@ -147,27 +147,43 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 5;
-        background: rgba(29, 185, 84, 0.9); /* Spotify-style green for reading */
-        color: white;
+        background: var(--accent-primary);
+        color: var(--color-white);
         padding: 0.3rem 0.8rem;
         border-radius: 20px;
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 700;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.3);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         pointer-events: none;
         white-space: nowrap;
     }
 
     .media-featured {
-        background: rgba(245, 197, 24, 0.95); /* IMDb-style gold for featured */
-        color: #111;
-        border-color: rgba(255, 255, 255, 0.5);
+        background: var(--accent-secondary);
+        color: var(--color-white);
     }
+}
+
+/* Card - enhanced shadow and transition */
+.media-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 0;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                border-color 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.media-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 12px 30px var(--shadow-medium);
 }
 
 /* ==========================================================================
@@ -176,79 +192,68 @@
 
 /* Filter Container */
 .media-filters {
-    /* Layout */
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-lg);
+    gap: 1.5rem;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: min(100% - 2rem, 1000px);
-    margin: 0.5rem auto 0;
-    padding: 1.2rem 1.8rem;
-
-    /* Visual */
+    margin: 1rem auto;
+    padding: 1.5rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 0.8rem;
-    box-shadow: 0 2px 12px var(--shadow-light);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    /* Animation */
-    transition: all var(--transition-slow);
-
-    /* Modern CSS */
-    @supports (container-type: inline-size) {
-        container-type: inline-size;
-        container-name: filters;
-    }
+.media-filters:hover {
+    box-shadow: 0 8px 32px var(--shadow-medium);
 }
 
 .media-filters label {
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    font-weight: 500;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    min-width: 0;
-    flex: 1 1 auto;
+    gap: 0.6rem;
+    flex: 1 1 200px;
+    max-width: 300px;
 }
 
 /* Filter Select Dropdown */
 .media-filters select {
-    --color: var(--text-primary);
-    --padding: 0.5rem 0.8rem;
-    --radius: 0.4rem;
-    --background: var(--color-white, #fff);
-    --icon-size: 0.65em;
-    --icon-color: var(--color);
-    --icon-position: right 0.7em top 50%;
-    font-size: 0.95rem;
-    padding: var(--padding);
-    border-radius: var(--radius);
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
     border: 1px solid var(--border-color);
-    background: var(--background);
-    color: var(--color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     width: 100%;
     cursor: pointer;
-    transition: all var(--transition-medium);
+    transition: all 0.2s ease;
     -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22var(--icon-size)%22%20height%3D%22var(--icon-size)%22%3E%3Cpath%20fill%3D%22var(--icon-color)%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22%232c5f5a%22%3E%3Cpath%20d%3D%22M6%209L1%204h10z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
-    background-position: var(--icon-position);
-    background-size: var(--icon-size);
-    padding-right: calc(var(--icon-size) + 0.7em);
+    background-position: right 1rem center;
+    background-size: 12px;
 }
 
 .media-filters select:focus {
     outline: none;
-    border-color: var(--color-primary, var(--logo-teal));
-    box-shadow: 0 0 0 2px var(--shadow-medium);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.15);
+    background-color: var(--color-white);
 }
 
 .media-filters select:hover {
-    border-color: var(--color-gray-400, #b3a98c);
+    border-color: var(--accent-primary);
 }
 
 

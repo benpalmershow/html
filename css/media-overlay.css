@@ -290,54 +290,48 @@
 /* Rating text colors */
 .imdb-btn { 
     color: #f5c518; 
-    background: rgba(0, 0, 0, 0.5); 
-    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.7); 
+    padding: 4px 10px;
+    border-color: rgba(245, 197, 24, 0.3);
 }
 .imdb-btn .rating-label { 
-    color: rgba(245, 197, 24, 0.8);
+    color: rgba(245, 197, 24, 0.9);
 }
 .imdb-btn .rating-text { 
     color: #f5c518; 
-    font-weight: 700;
-    font-size: 0.7rem;
 }
 .imdb-btn:hover { 
     background: #f5c518; 
-    box-shadow: 0 0 15px rgba(245, 197, 24, 0.6);
+    border-color: #f5c518;
+    box-shadow: 0 0 20px rgba(245, 197, 24, 0.4);
 }
-.imdb-btn:hover .rating-label { 
+.imdb-btn:hover :is(.rating-label, .rating-text) { 
     color: #000;
-}
-.imdb-btn:hover .rating-text { 
-    color: #000; 
 }
 
 .rt-btn { 
     color: #fa3d21; 
-    background: rgba(0, 0, 0, 0.5); 
+    background: rgba(0, 0, 0, 0.7); 
+    border-color: rgba(250, 61, 33, 0.3);
 }
 .rt-btn .rating-label { 
-    color: rgba(250, 61, 33, 0.8);
+    color: rgba(250, 61, 33, 0.9);
 }
 .rt-btn .rating-text { 
     color: #fa3d21; 
-    font-weight: 700;
-    font-size: 0.7rem;
 }
 .rt-btn:hover { 
     background: #fa3d21; 
-    box-shadow: 0 0 15px rgba(250, 61, 33, 0.6);
+    border-color: #fa3d21;
+    box-shadow: 0 0 20px rgba(250, 61, 33, 0.4);
 }
-.rt-btn:hover .rating-label { 
-    color: white; 
-}
-.rt-btn:hover .rating-text { 
+.rt-btn:hover :is(.rating-label, .rating-text) { 
     color: white; 
 }
 
 /* Trailer button */
 .trailer-btn { 
-    background: transparent;
+    background: rgba(0, 0, 0, 0.5);
     padding: 2px 4px;
     min-width: 24px;
     height: 24px;
@@ -348,19 +342,20 @@
 }
 .trailer-btn:hover { 
     background: #ff0000; 
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
 .trailer-btn:hover .fa-youtube {
     color: white;
 }
 
-.spotify-link-btn:hover { background: linear-gradient(135deg, #1DB954, #14803a); border-color: rgba(29, 185, 84, 0.5); }
-.apple-link-btn:hover { background: linear-gradient(135deg, #333333, #000000); border-color: rgba(100, 100, 100, 0.5); }
-.soundcloud-link-btn:hover { background: linear-gradient(135deg, #ff5500, #cc4400); border-color: rgba(255, 85, 0, 0.5); }
-.amazon-link-btn:hover { background: linear-gradient(135deg, #FF9900, #cc7a00); border-color: rgba(255, 153, 0, 0.5); }
-.x-btn:hover { background: linear-gradient(135deg, #1da1f2, #0d8bd9); border-color: rgba(29, 161, 242, 0.5); }
-.youtube-link-btn:hover { background: linear-gradient(135deg, #ff0000, #c40000); border-color: rgba(255, 50, 50, 0.5); }
-.rss-link-btn:hover { background: linear-gradient(135deg, #f26522, #c24505); border-color: rgba(242, 101, 34, 0.5); }
+.spotify-link-btn:hover { background: #1DB954; border-color: #1DB954; }
+.apple-link-btn:hover { background: #000000; border-color: #333; }
+.soundcloud-link-btn:hover { background: #ff5500; border-color: #ff5500; }
+.amazon-link-btn:hover { background: #FF9900; border-color: #FF9900; }
+.x-btn:hover { background: #000000; border-color: #333; }
+.youtube-link-btn:hover { background: #ff0000; border-color: #ff0000; }
+.rss-link-btn:hover { background: #f26522; border-color: #f26522; }
 
 .trailer-embed {
     position: relative;

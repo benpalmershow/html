@@ -8,10 +8,10 @@
     --tweet-text-muted: #8b98a5;
     --tweet-border: #eff3f4;
     --tweet-shadow: rgba(0, 0, 0, 0.03);
-    --tweet-ticker-bg: #eef6ff;
-    --tweet-ticker-border: #b8d6f4;
-    --tweet-ticker-text: #0b5cab;
-    --tweet-ticker-bg-hover: #deefff;
+    --tweet-ticker-bg: rgba(var(--color-primary-rgb), 0.05);
+    --tweet-ticker-border: rgba(var(--color-primary-rgb), 0.15);
+    --tweet-ticker-text: var(--color-primary);
+    --tweet-ticker-bg-hover: rgba(var(--color-primary-rgb), 0.1);
     /* Table colors */
     --table-header-bg: #e5e7eb;
     --table-border: #d1d5db;
@@ -56,10 +56,10 @@ html.dark-mode {
     --tweet-text-muted: var(--color-dark-text-muted);
     --tweet-border: #3a4442;
     --tweet-shadow: rgba(0, 0, 0, 0.3);
-    --tweet-ticker-bg: rgba(78, 168, 255, 0.14);
-    --tweet-ticker-border: rgba(78, 168, 255, 0.28);
-    --tweet-ticker-text: #8cc8ff;
-    --tweet-ticker-bg-hover: rgba(78, 168, 255, 0.22);
+    --tweet-ticker-bg: rgba(135, 197, 190, 0.14);
+    --tweet-ticker-border: rgba(135, 197, 190, 0.28);
+    --tweet-ticker-text: #87c5be;
+    --tweet-ticker-bg-hover: rgba(135, 197, 190, 0.22);
     /* Table colors */
     --table-header-bg: rgba(255, 255, 255, 0.1);
     --table-border: rgba(255, 255, 255, 0.15);
@@ -74,10 +74,10 @@ html.dark-mode {
         --tweet-text-muted: var(--color-dark-text-muted);
         --tweet-border: #3a4442;
         --tweet-shadow: rgba(0, 0, 0, 0.3);
-        --tweet-ticker-bg: rgba(78, 168, 255, 0.14);
-        --tweet-ticker-border: rgba(78, 168, 255, 0.28);
-        --tweet-ticker-text: #8cc8ff;
-        --tweet-ticker-bg-hover: rgba(78, 168, 255, 0.22);
+        --tweet-ticker-bg: rgba(135, 197, 190, 0.14);
+        --tweet-ticker-border: rgba(135, 197, 190, 0.28);
+        --tweet-ticker-text: #87c5be;
+        --tweet-ticker-bg-hover: rgba(135, 197, 190, 0.22);
     }
 }
 
@@ -172,12 +172,13 @@ html.dark-mode {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--tweet-text);
-    background: rgba(var(--color-primary-rgb), 0.03);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 14px 18px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     margin: 4px 0 12px 0;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.2s ease;
+    text-decoration: none;
 }
 
 .entry--file.entry--collapsed .entry-title {
@@ -185,11 +186,11 @@ html.dark-mode {
 }
 
 .entry--file:hover .entry-title {
-    background: var(--tweet-ticker-bg);
-    border-color: var(--tweet-ticker-border);
+    background: transparent;
+    border-color: transparent;
     color: var(--tweet-ticker-text);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--tweet-shadow);
+    transform: none;
+    box-shadow: none;
 }
 
 .entry--file.entry--collapsed .entry-title::after {
@@ -448,21 +449,21 @@ html.dark-mode #curry-goat-warning {
     flex-direction: column;
     text-decoration: none !important;
     color: var(--tweet-text) !important;
-    background: rgba(var(--color-primary-rgb), 0.03);
-    border: 1px solid var(--tweet-border);
-    border-radius: 12px;
-    padding: 14px 18px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     margin: 4px 0;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.2s ease;
     font-weight: 500;
 }
 
 .entry-title-link:hover {
-    background: var(--tweet-ticker-bg);
-    border-color: var(--tweet-ticker-border);
+    background: transparent;
+    border-color: transparent;
     color: var(--tweet-ticker-text) !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--tweet-shadow);
+    transform: none;
+    box-shadow: none;
     opacity: 1 !important;
 }
 
@@ -521,10 +522,10 @@ html.dark-mode #curry-goat-warning {
 
 /* Dark mode adjustments for badges */
 html.dark-mode .entry-title-link {
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
 }
 
 html.dark-mode .entry-title-link:hover {
-    background: rgba(135, 197, 190, 0.1);
-    border-color: var(--accent-primary);
+    background: transparent;
+    color: var(--accent-primary) !important;
 }

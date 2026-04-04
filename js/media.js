@@ -484,6 +484,7 @@
         if (item.links?.length > 0) {
             item.links.forEach(link => {
                 const isXLink = link.name?.toLowerCase() === 'x' || link.label?.toLowerCase() === 'x';
+                const isTrailerLink = link.label?.toLowerCase() === 'trailer' || link.name?.toLowerCase() === 'trailer';
                 
                 if (item.embedUrl && link.url && item.embedUrl.includes(link.url.replace('watch?v=', 'embed/').split('&')[0])) return; 
                 if ((link.url.includes('youtube.com') || link.url.includes('youtu.be')) && item.embedUrl && item.embedUrl.includes('youtube.com/embed')) {
@@ -506,7 +507,12 @@
                 } else if (link.icon) {
                     linkEl.innerHTML = `<i class="${link.icon}"></i>`;
                 }
-                addActionToBottom(linkEl);
+                
+                if (isTrailerLink && (item.mediaType === 'movie' || item.mediaType === 'video')) {
+                    addActionToTop(linkEl);
+                } else {
+                    addActionToBottom(linkEl);
+                }
             });
         }
         

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-03T14:00:00Z",
+    "lastUpdated": "2026-04-06T18:20:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -193,153 +193,106 @@
             "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "Venezuela Head of State 2026",
-            "lastUpdated": "2026-03-16T14:00:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxvenezuelaleader/who-will-be-the-head-of-state-of-venezuela-on-date/kxvenezuelaleader-26dec31",
-            "polymarket_url": "https://polymarket.com/event/venezuela-leader-end-of-2026?tid=1767649814502",
+            "polymarket_url": "https://polymarket.com/event/venezuela-leader-end-of-2026",
             "candidates": {
-                "Delcy Rodríguez": "59¢",
-                "Nicolás Maduro": "16¢",
+                "Delcy Rodríguez": "66¢",
+                "Nicolás Maduro": "14¢",
                 "María Corina Machado": "14¢",
-                "Edmundo González": "3¢",
                 "Diosdado Cabello Rondón": "1¢",
-                "Vladimir Padrino López": "1¢",
                 "Donald Trump": "1¢"
             },
             "change": "",
-            "explanation": "Prediction market odds for who will be the head of state of Venezuela on December 31, 2026. The market includes various Venezuelan political figures as potential leaders. Market resolves to Yes if the specified individual officially holds the position of head of state at the close of markets. Data aggregated from Kalshi and Polymarket platforms."
+            "explanation": "Prediction market odds for who will be the head of state of Venezuela on December 31, 2026. Delcy Rodríguez commands 66% after assuming interim presidency following US forces capturing Maduro in January 2026. Trump administration lifted sanctions on Rodríguez April 1, signaling diplomatic engagement. Over $80M in trading volume."
         },
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Iranian Regime Fall by End of 2026",
-            "lastUpdated": "2026-03-20T19:30:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "releaseDay": 0,
-            "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026/will-the-iranian-regime-fall-by-the-end-of-2026#cuqCMvFi",
-            "yes_probability": "51%",
-            "no_probability": "49%",
-            "kalshi_url": "https://kalshi.com/markets/kxkhameneiout",
+            "url": "https://polymarket.com/event/will-the-iranian-regime-fall-before-2027",
+            "polymarket_url": "https://polymarket.com/event/will-the-iranian-regime-fall-before-2027",
+            "yes_probability": "27¢",
+            "no_probability": "73¢",
             "change": "",
-            "explanation": "Prediction market on whether the Iranian regime will fall by the end of 2026. Market resolves to Yes if the current Iranian government is no longer in power by December 31, 2026. The market captures geopolitical risk and stability assessments for Iran, heightened by the ongoing US-Iran military conflict."
+            "explanation": "Polymarket prediction on whether the Iranian regime will fall by end of 2026. Market reflects 73% probability the regime endures despite nationwide protests since late 2025 and US-Israel airstrikes. IRGC has consolidated control following Supreme Leader Khamenei's death on February 28, 2026, brutally suppressing dissent while organizing pro-regime demonstrations."
         },
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
             "name": "US Recession in 2026",
-            "lastUpdated": "2026-03-16T14:00:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-recession-by-end-of-2026?tid=1767667899869",
             "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
-            "yes_probability": "31¢",
-            "no_probability": "69¢",
+            "yes_probability": "34¢",
+            "no_probability": "66¢",
             "change": "",
-            "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds have risen significantly from 23% in January to 31%, reflecting economic uncertainty from geopolitical tensions and trade disruptions."
+            "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds have risen from 31% to 34% as oil prices surged above $110/barrel earlier this month, prompting Goldman Sachs to lift recession risk to 30%. Traders cite services sector strength and fiscal tailwinds as counterweights."
         },
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "More tech layoffs in 2026 than in 2025?",
-            "lastUpdated": "2026-03-14T14:00:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxlayoffsyinfo/tech-layoffs/kxlayoffsyinfo-26",
-            "yes_probability": "87¢",
-            "no_probability": "13¢",
+            "polymarket_url": "https://polymarket.com/event/tech-layoffs-up-or-down-in-2026",
+            "yes_probability": "88¢",
+            "no_probability": "12¢",
             "change": "",
-            "explanation": "Kalshi prediction market on whether major tech companies will announce more layoffs in 2026 compared to 2025. The market tracks expectations around workforce reductions at large technology companies, reflecting economic conditions, company performance, and sector-specific trends."
+            "explanation": "Kalshi prediction market on whether major tech companies will announce more layoffs in 2026 compared to 2025. Polymarket shows 88% probability for 'Up', reflecting expectations that 2026 tech workforce reductions will exceed 2025 levels amid ongoing sector consolidation."
         },
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
             "name": "US-Iran Ceasefire by...",
-            "lastUpdated": "2026-03-20T19:30:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-x-iran-ceasefire-by",
             "candidates": {
-                "March 31": "5¢",
-                "April 30": "35¢",
-                "May 31": "54¢",
-                "June 30": "69¢",
-                "December 31": "70¢"
+                "April 7": "3¢",
+                "April 15": "14¢",
+                "April 30": "28¢",
+                "May 31": "46¢",
+                "June 30": "56¢",
+                "December 31": "76¢"
             },
             "change": "",
-            "explanation": "Prediction market on whether the U.S. and Iran will reach an official ceasefire agreement by the listed dates. Market resolves to Yes if a publicly announced and mutually agreed halt in direct military engagement is confirmed by both governments. Over $30M in trading volume reflects intense market interest in the conflict's trajectory."
+            "explanation": "Prediction market on whether the U.S. and Iran will reach an official ceasefire agreement by the listed dates. Mediators presented the 'Islamabad Accord' proposing a 45-day truce, but Tehran rejected it Sunday demanding permanent end to hostilities. President Trump vows escalation including full infrastructure targeting if no deal by his Tuesday deadline. Over $102M in trading volume."
         },
         {
-            "category": "Prediction Markets",
-            "agency": "Polymarket",
-            "name": "Crude Oil Price Targets (March 2026)",
-            "lastUpdated": "2026-03-20T19:30:00Z",
-            "releaseDay": 0,
-            "url": "https://polymarket.com/event/will-crude-oil-cl-hit-by-end-of-march",
-            "candidates": {
-                "↑ $105": "52¢",
-                "↑ $100": "82¢",
-                "↓ $80": "12¢",
-                "↓ $75": "8¢"
-            },
-            "change": "",
-            "explanation": "Prediction market on whether WTI crude oil futures will hit various price targets by end of March 2026. Markets reflect geopolitical tensions including the US-Iran conflict, Strait of Hormuz shipping disruptions, and global supply concerns. Over $35M in total trading volume."
-        },
-        {
-            "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "FOMC Rate Decision - April",
-            "lastUpdated": "2026-03-24T14:30:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "meeting_date": "Apr 28-29",
             "announcement_time": "2:00 PM ET",
             "announcement_time_iso": "2026-04-29T14:00:00-04:00",
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26apr",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-april",
-            "rate_hold_odds": "95¢",
+            "rate_hold_odds": "98¢",
             "rate_cut_odds": "1¢",
-            "rate_hike_odds": "4¢",
+            "rate_hike_odds": "1¢",
             "change": "",
-            "explanation": "Federal Reserve interest rate decision prediction market for the April 28-29, 2026 FOMC meeting. Market expects a rate hold with 95% probability as the Fed maintains its patient stance amid mixed economic signals. Oil prices have surged 41% year-to-date, with the Fed closely monitoring energy price increases for potential inflationary pressure."
+            "explanation": "Federal Reserve interest rate decision prediction market for the April 28-29, 2026 FOMC meeting. Market expects a rate hold with 98.2% probability as the Fed maintains its cautious stance. March nonfarm payrolls rebounded to 178,000 while unemployment held at 4.3%, signaling economic resilience amid elevated oil prices above $110/barrel."
         },
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
             "name": "2026 Midterms: Senate Control",
-            "lastUpdated": "2026-03-16T14:00:00Z",
+            "lastUpdated": "2026-04-06T18:20:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxbalancepowercombo/congress-balance-of-power-combo/kxbalancepowercombo-27feb",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
             "candidates": {
-                "Democratic Party": "51¢",
-                "Republican Party": "50¢"
+                "Democratic Party": "53¢",
+                "Republican Party": "48¢"
             },
             "change": "",
-            "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. The race is essentially a tossup, reflecting competitive races in Alaska, Maine, North Carolina, Ohio, Texas, and Montana. Midterms are widely seen as a referendum on the first year of Trump's second term."
-        },
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "Strait of Hormuz Traffic (Mar 9-15)",
-            "lastUpdated": "2026-03-24T14:00:00Z",
-            "releaseDay": 0,
-            "url": "https://kalshi.com/markets/kxhormuztrafficw/traffic-through-the-strait-of-hormuz/kxhormuztrafficw-26mar15",
-            "candidates": {
-                "Above 20": "88%",
-                "Above 30": "17%"
-            },
-            "change": "",
-            "explanation": "Kalshi market on whether ship traffic through the Strait of Hormuz reaches specified daily thresholds during the March 9-15, 2026 window. The visible contracts currently show 88% odds for traffic above 20 ships and 17% for traffic above 30, reflecting expectations for continuing disruption in one of the world's most important energy chokepoints."
-        },
-        {
-            "category": "Prediction Markets",
-            "agency": "Polymarket",
-            "name": "Strait of Hormuz Shipping Traffic (March 2026)",
-            "lastUpdated": "2026-03-24T14:00:00Z",
-            "releaseDay": 0,
-            "url": "https://polymarket.com/event/will-ships-transit-the-strait-of-hormuz-on-any-day-in-march",
-            "candidates": {
-                "20+": "23¢",
-                "40+": "13¢",
-                "60+": "9¢",
-                "80+": "8¢"
-            },
-            "change": "",
-            "explanation": "Polymarket market on whether IMF PortWatch will report Strait of Hormuz transit calls at or above selected daily thresholds at any point before March 31, 2026. Current pricing implies sharply lower odds as the threshold rises, underscoring market expectations for materially reduced shipping throughput through the strait."
+            "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a slim 53% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent polls show Cooper leading in North Carolina (49-41%)."
         },
         {
             "category": "Commodities",

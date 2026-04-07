@@ -155,6 +155,83 @@
         text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
+    /* Playlist custom cover: title as cover image */
+    .playlist-custom-cover {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(145deg, #1a3c39 0%, var(--color-primary, #2c5f5a) 50%, #0f2421 100%);
+        color: white;
+        text-align: center;
+        padding: 1rem 1rem 1rem 1rem;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--card-radius);
+        overflow: hidden;
+    }
+
+    .playlist-custom-cover::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.04) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .playlist-custom-title {
+        font-family: var(--font-display, inherit);
+        font-size: 1.4rem;
+        font-weight: 800;
+        line-height: 1.15;
+        color: #ffffff;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+        letter-spacing: -0.01em;
+        padding: 0 0.25rem;
+        word-break: break-word;
+        hyphens: auto;
+        z-index: 1;
+    }
+
+    .playlist-platform-logos {
+        position: absolute;
+        top: 0.55rem;
+        right: 0.55rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        z-index: 2;
+    }
+
+    .playlist-platform-icon {
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.85);
+        background: rgba(255,255,255,0.12);
+        border-radius: 5px;
+        text-decoration: none !important;
+        transition: background 0.15s ease, color 0.15s ease;
+        flex-shrink: 0;
+    }
+
+    .playlist-platform-icon:hover {
+        background: rgba(255,255,255,0.25);
+        color: #ffffff;
+    }
+
+    .playlist-platform-icon.yt-icon {
+        color: #ff4444;
+    }
+
+    .playlist-platform-icon.sp-icon {
+        color: #1ed760;
+    }
+
     .media-type {
         position: absolute;
         top: 0.7em;

@@ -425,6 +425,25 @@
             docRiterCover.appendChild(dpIcon);
             docRiterCover.appendChild(dpDate);
             coverContainer.appendChild(docRiterCover);
+        } else if (item.mediaType === 'playlist') {
+            // Playlist: title as cover, listen.webp icon in upper right
+            const plCover = document.createElement('div');
+            plCover.className = 'media-cover playlist-custom-cover';
+
+            // listen.webp icon (upper right)
+            const plIcon = document.createElement('img');
+            plIcon.src = 'images/listen.webp';
+            plIcon.className = 'doc-riter-custom-icon';
+            plIcon.alt = '';
+
+            // Title as cover text
+            const plTitle = document.createElement('div');
+            plTitle.className = 'playlist-custom-title';
+            plTitle.textContent = item.title;
+
+            plCover.appendChild(plIcon);
+            plCover.appendChild(plTitle);
+            coverContainer.appendChild(plCover);
         } else {
             coverContainer.appendChild(coverImg);
         }

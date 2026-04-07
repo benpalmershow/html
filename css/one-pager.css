@@ -8,6 +8,21 @@
   justify-content: center;
 }
 
+.time-ago {
+  font-size: 0.75rem;
+  color: var(--color-gray-500, #6c757d);
+  font-weight: 400;
+}
+
+#latest-journal a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#latest-journal a:hover {
+  text-decoration: underline;
+}
+
 .hero-logo-container {
   display: flex;
   flex-direction: column;

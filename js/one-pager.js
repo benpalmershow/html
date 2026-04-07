@@ -231,6 +231,7 @@ async function loadLatestJournal() {
     .flatMap(group =>
       (group.entries || []).map(entry => ({
         date: group.date,
+        time: entry.time,
         title: cleanText(entry.title),
         content: clip(entry.content, 135),
         sourcePath: `journal.html#${createEntryId(entry.title)}`
@@ -253,7 +254,18 @@ async function loadLatestJournal() {
     
     // Add entries for this date without date header
     entries.forEach(entry => {
-      lines.push(`<li class="journal-entry"><strong>${escapeHtml(entry.title)}</strong>: ${escapeHtml(entry.content)}</li>`);
+      let timeAgo = '';
+      if (entry.time) {
+        const now = new Date();
+        const [hours, minutes] = entry.time.split(':').map(Number);
+        const entryTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+        const diffMins = Math.floor((now - entryTime) / 60000);
+        if (diffMins < 60) timeAgo = `${diffMins}m`;
+        else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
+        else timeAgo = entry.time;
+      }
+      const entryId = createEntryId(entry.title);
+      lines.push(`<li class="journal-entry"><span class="time-ago">${timeAgo}</span> <a href="${entry.sourcePath}"><strong>${escapeHtml(entry.title)}</strong></a> ${escapeHtml(entry.content)}</li>`);
     });
   });
 

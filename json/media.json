@@ -64,33 +64,6 @@
     "dateAdded": "2026-04-06"
   },
   {
-    "title": "Sunday April 5th",
-    "author": "Doc Riter",
-    "mediaType": "podcast",
-    "description": "Latest from Doc Riter",
-    "date": "April 5, 2026",
-    "icon": "fas fa-podcast",
-    "links": [
-      {
-        "label": "Spotify",
-        "icon": "fab fa-spotify",
-        "url": "https://open.spotify.com/episode/6YNNP4WXnGEgKg6iXiMNia?si=fcbe870d5b1b4c70"
-      },
-      {
-        "label": "YouTube",
-        "icon": "fab fa-youtube",
-        "url": "https://youtu.be/wH8X2Tnc3jQ"
-      },
-      {
-        "label": "Apple Podcasts",
-        "icon": "fab fa-apple",
-        "url": "https://podcasts.apple.com/us/podcast/the-ben-palmer-show-tbps/id1529618289?i=1000759351220"
-      }
-    ],
-    "cover": "images/logo.webp",
-    "dateAdded": "2026-04-05"
-  },
-  {
     "title": "From Ground Zero",
     "author": "Various Palestinian Directors",
     "mediaType": "movie",
@@ -290,8 +263,14 @@
     "goodreads": "https://www.goodreads.com/book/show/34665527",
     "embedUrl": "",
     "ratings": {
-      "gr": {"score": "", "url": "https://www.goodreads.com/book/show/34665527"},
-      "amz": {"score": "", "url": "https://www.amazon.com/dp/1474605044"}
+      "gr": {
+        "score": "",
+        "url": "https://www.goodreads.com/book/show/34665527"
+      },
+      "amz": {
+        "score": "",
+        "url": "https://www.amazon.com/dp/1474605044"
+      }
     },
     "dateAdded": "2026-03-23"
   },
@@ -753,7 +732,7 @@
     "author": "Doc Riter",
     "mediaType": "podcast",
     "description": "Latest from Doc Riter",
-    "date": "June 2025",
+    "date": "September 2025",
     "icon": "fas fa-microphone",
     "links": [
       {
@@ -925,7 +904,7 @@
     "author": "Doc Riter",
     "mediaType": "podcast",
     "description": "Latest from Doc Riter",
-    "date": "June 2025",
+    "date": "August 2025",
     "icon": "fas fa-microphone",
     "links": [
       {

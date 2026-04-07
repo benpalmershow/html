@@ -120,6 +120,41 @@
         }
     }
 
+    .doc-riter-custom-cover {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--color-primary, var(--logo-teal)), #1a3c39);
+        color: white;
+        text-align: center;
+        padding: 1.5rem;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--card-radius);
+    }
+
+    .doc-riter-custom-icon {
+        position: absolute;
+        top: 0.7rem;
+        right: 0.7rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        flex-shrink: 0;
+    }
+
+    .doc-riter-custom-date {
+        font-family: var(--font-display, inherit);
+        font-size: 1.35rem;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
     .media-type {
         position: absolute;
         top: 0.7em;

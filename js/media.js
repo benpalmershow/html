@@ -402,7 +402,32 @@
             }
         }, { passive: true });
 
-        coverContainer.appendChild(coverImg);
+        if (item.mediaType === 'podcast' && item.author?.includes('Doc Riter')) {
+            const docRiterCover = document.createElement('div');
+            docRiterCover.className = 'media-cover doc-riter-custom-cover';
+            
+            const dpIcon = document.createElement('img');
+            dpIcon.src = 'images/logo.webp';
+            dpIcon.className = 'doc-riter-custom-icon';
+            dpIcon.alt = '';
+            
+            const dpDate = document.createElement('div');
+            dpDate.className = 'doc-riter-custom-date';
+            
+            // Try to use title if it looks like a date, fallback to item.date
+            let dateText = item.date || item.dateAdded || '';
+            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            if (item.title && months.some(m => item.title.includes(m))) {
+                dateText = item.title;
+            }
+            dpDate.textContent = dateText;
+            
+            docRiterCover.appendChild(dpIcon);
+            docRiterCover.appendChild(dpDate);
+            coverContainer.appendChild(docRiterCover);
+        } else {
+            coverContainer.appendChild(coverImg);
+        }
         coverContainer.appendChild(typeBadge);
         card.appendChild(coverContainer);
         card.appendChild(overlay);

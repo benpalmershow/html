@@ -265,6 +265,22 @@ function renderTitle(title) {
   return addTickerLinks(safeTitle);
 }
 
+function renderEntryTime(time) {
+  if (!time) return '';
+  const now = new Date();
+  const [hours, minutes] = time.split(':').map(Number);
+  const entryTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+  const diffMs = now - entryTime;
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMins / 60);
+  let ago;
+  if (diffMins < 1) ago = 'now';
+  else if (diffMins < 60) ago = `${diffMins}m`;
+  else if (diffHours < 24) ago = `${diffHours}h`;
+  else ago = time;
+  return `<time class="entry-time">${ago}</time>`;
+}
+
 async function renderEntryFromFile(entry, entryId) {
   try {
     const fileResponse = await fetch(entry.file);
@@ -292,11 +308,13 @@ async function renderEntryFromFile(entry, entryId) {
     const safeContent = addTickerLinks(sanitizeHtml(processedContent));
     const collapsedClass = entry.collapsed ? ' entry--collapsed' : '';
     const toggleAttr = entry.collapsed ? ' data-collapsible="true"' : '';
-    return `<div id="${entryId}" class="entry entry--file${collapsedClass}"${toggleAttr}><div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
+    const timeHtml = renderEntryTime(entry.time);
+    return `<div id="${entryId}" class="entry entry--file${collapsedClass}"${toggleAttr}>${timeHtml}<div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
   } catch (err) {
     console.error('Failed to load file:', entry.file, err);
     const safeTitle = renderTitle(entry.title);
-    return `<div id="${entryId}" class="entry entry--file"><div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
+    const timeHtml = renderEntryTime(entry.time);
+    return `<div id="${entryId}" class="entry entry--file">${timeHtml}<div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
   }
 }
 
@@ -338,13 +356,15 @@ function renderInlineEntry(entry, entryId) {
 
      const contentPart = content ? `<div class="entry-link-content">${content}</div>` : '';
      const innerHtml = `<div class="entry-link-header"><div class="entry-link-title">${entry.title}</div>${iconHtml}</div>${contentPart}`;
-     const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
-     return `<div id="${entryId}" class="entry entry--link"><div class="entry-title">${sanitizeHtml(linkedBadge)}</div></div>`;
-   }
+const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
+      const timeHtml = renderEntryTime(entry.time);
+      return `<div id="${entryId}" class="entry entry--link">${timeHtml}<div class="entry-title">${sanitizeHtml(linkedBadge)}</div></div>`;
+    }
 
-   const safeTitle = renderTitle(entry.title);
-   const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
-   return `<div id="${entryId}" class="entry"><div class="entry-title">${safeTitle}</div>${contentHtml}</div>`;
+    const safeTitle = renderTitle(entry.title);
+    const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
+    const timeHtml = renderEntryTime(entry.time);
+    return `<div id="${entryId}" class="entry">${timeHtml}<div class="entry-title">${safeTitle}</div>${contentHtml}</div>`;
 }
 
 function scrollToHash() {

@@ -158,6 +158,16 @@ html.dark-mode {
     display: none;
 }
 
+.entry-time {
+    float: left;
+    font-size: 0.75rem;
+    color: var(--tweet-text-muted);
+    margin-right: 8px;
+    margin-top: 2px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
 .entry-title::after {
     transition: transform 0.2s ease;
 }

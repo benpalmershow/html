@@ -255,12 +255,14 @@ async function loadLatestJournal() {
     // Add entries for this date without date header
     entries.forEach(entry => {
       let timeAgo = '';
-      if (entry.time) {
+      if (entry.time && entry.date) {
         const now = new Date();
+        const entryDate = parseJournalDate(entry.date);
         const [hours, minutes] = entry.time.split(':').map(Number);
-        const entryTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
-        const diffMins = Math.floor((now - entryTime) / 60000);
-        if (diffMins < 60) timeAgo = `${diffMins}m`;
+        const entryDateTime = new Date(entryDate.getFullYear(), entryDate.getMonth(), entryDate.getDate(), hours, minutes);
+        const diffMins = Math.floor((now - entryDateTime) / 60000);
+        if (diffMins < 1) timeAgo = 'now';
+        else if (diffMins < 60) timeAgo = `${diffMins}m`;
         else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
         else timeAgo = entry.time;
       }

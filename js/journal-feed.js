@@ -226,11 +226,11 @@ async function renderJournal(journal) {
     return '';
   }
 
-  const entriesHTML = await Promise.all(journal.entries.map(renderEntry));
+  const entriesHTML = await Promise.all(journal.entries.map(entry => renderEntry(entry, journal.date)));
   return `<article class="journal-entry"><div class="card-title"><time datetime="${formatDateForDateTime(journal.date)}">${formatDate(journal.date)}</time></div><div class="content">${entriesHTML.join('')}</div></article>`;
 }
 
-async function renderEntry(entry) {
+async function renderEntry(entry, journalDate) {
   if (!entry || typeof entry.title !== 'string') {
     console.error('Invalid entry:', entry);
     return '';
@@ -244,10 +244,10 @@ async function renderEntry(entry) {
   const entryId = createEntryId(entry.title);
 
   if (entry.file) {
-    return renderEntryFromFile(entry, entryId);
+    return renderEntryFromFile(entry, entryId, journalDate);
   }
 
-  return renderInlineEntry(entry, entryId);
+  return renderInlineEntry(entry, entryId, journalDate);
 }
 
 function createEntryId(title) {
@@ -265,11 +265,21 @@ function renderTitle(title) {
   return addTickerLinks(safeTitle);
 }
 
-function renderEntryTime(time) {
+function renderEntryTime(time, journalDate) {
   if (!time) return '';
   const now = new Date();
   const [hours, minutes] = time.split(':').map(Number);
-  const entryTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+  const entryDate = journalDate ? parseDate(journalDate) : new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const entryTime = new Date(entryDate.getFullYear(), entryDate.getMonth(), entryDate.getDate(), hours, minutes);
+  
+  const nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const diffDays = Math.floor((nowDate - entryDate) / (1000 * 60 * 60 * 24));
+  
+  if (diffDays >= 1) {
+    const formattedTime = formatTime12Hour(hours, minutes);
+    return `<time class="entry-time">yesterday ${formattedTime}</time>`;
+  }
+  
   const diffMs = now - entryTime;
   const diffMins = Math.floor(diffMs / 60000);
   const diffHours = Math.floor(diffMins / 60);
@@ -281,7 +291,14 @@ function renderEntryTime(time) {
   return `<time class="entry-time">${ago}</time>`;
 }
 
-async function renderEntryFromFile(entry, entryId) {
+function formatTime12Hour(hours, minutes) {
+  const period = hours >= 12 ? 'pm' : 'am';
+  const hour12 = hours % 12 || 12;
+  const minStr = minutes.toString().padStart(2, '0');
+  return `${hour12}:${minStr}${period}`;
+}
+
+async function renderEntryFromFile(entry, entryId, journalDate) {
   try {
     const fileResponse = await fetch(entry.file);
     const md = await fileResponse.text();
@@ -308,17 +325,17 @@ async function renderEntryFromFile(entry, entryId) {
     const safeContent = addTickerLinks(sanitizeHtml(processedContent));
     const collapsedClass = entry.collapsed ? ' entry--collapsed' : '';
     const toggleAttr = entry.collapsed ? ' data-collapsible="true"' : '';
-    const timeHtml = renderEntryTime(entry.time);
+    const timeHtml = renderEntryTime(entry.time, journalDate);
     return `<div id="${entryId}" class="entry entry--file${collapsedClass}"${toggleAttr}>${timeHtml}<div class="entry-title">${safeTitle}</div><div class="entry-content">${safeContent}</div></div>`;
   } catch (err) {
     console.error('Failed to load file:', entry.file, err);
     const safeTitle = renderTitle(entry.title);
-    const timeHtml = renderEntryTime(entry.time);
+    const timeHtml = renderEntryTime(entry.time, journalDate);
     return `<div id="${entryId}" class="entry entry--file">${timeHtml}<div class="entry-title">${safeTitle}</div><div class="entry-content">Unable to load content.</div></div>`;
   }
 }
 
-function renderInlineEntry(entry, entryId) {
+function renderInlineEntry(entry, entryId, journalDate) {
    const rawContent = typeof entry.content === 'string' ? entry.content : '';
    let content = rawContent.includes('<') ? sanitizeHtml(rawContent) : linkify(escapeHtml(rawContent));
    content = addTickerLinks(content);
@@ -357,13 +374,13 @@ function renderInlineEntry(entry, entryId) {
      const contentPart = content ? `<div class="entry-link-content">${content}</div>` : '';
      const innerHtml = `<div class="entry-link-header"><div class="entry-link-title">${entry.title}</div>${iconHtml}</div>${contentPart}`;
 const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
-      const timeHtml = renderEntryTime(entry.time);
+      const timeHtml = renderEntryTime(entry.time, journalDate);
       return `<div id="${entryId}" class="entry entry--link">${timeHtml}<div class="entry-title">${sanitizeHtml(linkedBadge)}</div></div>`;
     }
 
     const safeTitle = renderTitle(entry.title);
     const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
-    const timeHtml = renderEntryTime(entry.time);
+    const timeHtml = renderEntryTime(entry.time, journalDate);
     return `<div id="${entryId}" class="entry">${timeHtml}<div class="entry-title">${safeTitle}</div>${contentHtml}</div>`;
 }
 

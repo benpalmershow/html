@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-08T19:35:00Z",
+    "lastUpdated": "2026-04-09T07:52:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -193,13 +193,18 @@
             "category": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Strait of Hormuz Traffic Returns to Normal by April 30",
-            "lastUpdated": "2026-04-08T19:51:00Z",
+            "lastUpdated": "2026-04-09T07:52:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
-            "yes_probability": "26¢",
-            "no_probability": "76¢",
-            "previous_yes": "58¢",
-            "change": "-32¢",
+            "yes_probability": "23¢",
+            "no_probability": "78¢",
+            "previous_yes": "26¢",
+            "change": "-3¢",
+            "probabilities": {
+                "2026-04-07": {"yes": "16¢", "no": "84¢"},
+                "2026-04-08": {"yes": "26¢", "no": "76¢"},
+                "2026-04-09": {"yes": "23¢", "no": "78¢"}
+            },
             "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by end of April 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. Current traffic: ~8-10 daily transits, far below pre-crisis 100-138/day. Market reflects expectations traffic remains depressed amid ongoing US-Israel-Iran conflict, elevated war-risk insurance premiums, and vessel rerouting. Volume: $3.04M."
         },
         {

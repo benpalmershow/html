@@ -145,11 +145,27 @@ const IndicatorRenderers = (function () {
     }
 
     function renderPrediction(indicator) {
-        const yesProb = parseFloat(indicator.yes_probability);
-        const noProb = parseFloat(indicator.no_probability);
         let latestDataHtml = '';
 
-        if (indicator.yes_probability && indicator.no_probability) {
+        if (indicator.probabilities && typeof indicator.probabilities === 'object') {
+            latestDataHtml = `<div class="prediction-bar-container">`;
+            Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a)).forEach(([date, probs]) => {
+                const yesProb = parseFloat(probs.yes);
+                const noProb = parseFloat(probs.no);
+                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
+                latestDataHtml += `
+                    <div class="prediction-bar-row" style="margin-bottom: 4px;">
+                        <span class="prediction-bar-label" style="min-width: 50px; font-size: 12px;">${dateLabel}</span>
+                        <div class="prediction-bar-track" style="height: 20px; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; position: absolute; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: white;" title="Yes">${probs.yes}</div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: white;" title="No">${probs.no}</div>
+                        </div>
+                    </div>`;
+            });
+            latestDataHtml += `</div>`;
+        } else if (indicator.yes_probability && indicator.no_probability) {
+            const yesProb = parseFloat(indicator.yes_probability);
+            const noProb = parseFloat(indicator.no_probability);
             latestDataHtml = `
                 <div class="prediction-bar-container prediction-dual-bar">
                     <div class="prediction-bar-row">

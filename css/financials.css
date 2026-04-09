@@ -722,6 +722,125 @@
     display: none !important
 }
 
+.prediction-bar-container {
+    margin: 6px 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.prediction-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.prediction-bar-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 50px;
+    flex-shrink: 0;
+}
+
+.prediction-bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.prediction-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.prediction-bar-fill.yes-bar {
+    background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+}
+
+.prediction-bar-fill.no-bar {
+    background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+}
+
+.prediction-bar-value {
+    font-size: 0.75rem;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: right;
+}
+
+.prediction-bar-value.yes-value {
+    color: #22c55e;
+}
+
+.prediction-bar-value.no-value {
+    color: #ef4444;
+}
+
+.prediction-change {
+    font-size: 0.65rem;
+    margin-left: 4px;
+    font-weight: 600;
+}
+
+.prediction-change.positive {
+    color: #22c55e;
+}
+
+.prediction-change.negative {
+    color: #ef4444;
+}
+
+.prediction-dual-bar .prediction-bar-track {
+    display: flex;
+    flex-direction: row;
+    height: 12px;
+    position: relative;
+}
+
+.prediction-dual-bar .yes-bar {
+    border-radius: 4px 0 0 4px;
+    flex: 0 0 auto;
+}
+
+.prediction-dual-bar .no-bar {
+    border-radius: 0 4px 4px 0;
+    flex: 0 0 auto;
+}
+
+/* Special styling for dual bar value row */
+.prediction-dual-bar .prediction-bar-row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.prediction-yes-section,
+.prediction-no-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+}
+
+.prediction-bar-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.prediction-bar-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
 
 
 /* Ensure Financial Markets cards are narrow like the rest */

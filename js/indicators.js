@@ -76,31 +76,116 @@ const IndicatorRenderers = (function () {
     function renderFOMC(indicator) {
         const rows = [];
         if (indicator.meeting_date) rows.push(`<span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span>`);
-        if (indicator.rate_hold_odds) rows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
-        if (indicator.rate_cut_odds) rows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
-        if (indicator.rate_hike_odds) rows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
-
+        
         let latestDataHtml = '';
-        let historyDataHtml = '';
-        rows.forEach((row, i) => {
-            if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
-            else historyDataHtml += `<div class="data-row">${row}</div>`;
-        });
+        
+        if (indicator.rate_hold_odds && indicator.rate_cut_odds && indicator.rate_hike_odds) {
+            const holdProb = parseFloat(indicator.rate_hold_odds);
+            const cutProb = parseFloat(indicator.rate_cut_odds);
+            const hikeProb = parseFloat(indicator.rate_hike_odds);
+            
+            latestDataHtml = `
+                <div class="prediction-bar-container" style="margin-top: 4px;">
+                    <div class="prediction-bar-row">
+                        <span class="prediction-bar-label" style="min-width: 40px;">Hold</span>
+                        <div class="prediction-bar-track">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${holdProb}%; background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);"></div>
+                        </div>
+                        <span class="prediction-bar-value" style="color: #3b82f6;">${indicator.rate_hold_odds}</span>
+                    </div>
+                    <div class="prediction-bar-row">
+                        <span class="prediction-bar-label" style="min-width: 40px;">Cut</span>
+                        <div class="prediction-bar-track">
+                            <div class="prediction-bar-fill no-bar" style="width: ${cutProb}%"></div>
+                        </div>
+                        <span class="prediction-bar-value no-value">${indicator.rate_cut_odds}</span>
+                    </div>
+                    <div class="prediction-bar-row">
+                        <span class="prediction-bar-label" style="min-width: 40px;">Hike</span>
+                        <div class="prediction-bar-track">
+                            <div class="prediction-bar-fill no-bar" style="width: ${hikeProb}%; background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);"></div>
+                        </div>
+                        <span class="prediction-bar-value" style="color: #f59e0b;">${indicator.rate_hike_odds}</span>
+                    </div>
+                </div>`;
+        } else {
+            if (indicator.rate_hold_odds) rows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
+            if (indicator.rate_cut_odds) rows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
+            if (indicator.rate_hike_odds) rows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
 
-        return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 2 };
+            let historyDataHtml = '';
+            rows.forEach((row, i) => {
+                if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
+                else historyDataHtml += `<div class="data-row">${row}</div>`;
+            });
+            return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 2 };
+        }
+
+        return { latestDataHtml, historyDataHtml: '', hasHistory: false };
     }
 
     function renderRecession(indicator) {
         let latestDataHtml = '';
-        if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-        if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+
+        if (indicator.yes_probability && indicator.no_probability) {
+            const yesProb = parseFloat(indicator.yes_probability);
+            const noProb = parseFloat(indicator.no_probability);
+
+            latestDataHtml = `
+                <div class="prediction-bar-container prediction-dual-bar">
+                    <div class="prediction-bar-row">
+                        <div class="prediction-bar-track" style="height: 12px;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%"></div>
+                        </div>
+                    </div>
+                    <div class="prediction-bar-row">
+                        <div class="prediction-yes-section">
+                            <span class="prediction-bar-label">Yes</span>
+                            <span class="prediction-bar-value yes-value">${indicator.yes_probability}</span>
+                        </div>
+                        <div class="prediction-no-section">
+                            <span class="prediction-bar-label">No</span>
+                            <span class="prediction-bar-value no-value">${indicator.no_probability}</span>
+                        </div>
+                    </div>
+                </div>`;
+        } else if (indicator.yes_probability) {
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
+            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+        }
         return { latestDataHtml, historyDataHtml: '', hasHistory: false };
     }
 
     function renderPrediction(indicator) {
+        const yesProb = parseFloat(indicator.yes_probability);
+        const noProb = parseFloat(indicator.no_probability);
         let latestDataHtml = '';
-        if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-        if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+
+        if (indicator.yes_probability && indicator.no_probability) {
+            latestDataHtml = `
+                <div class="prediction-bar-container prediction-dual-bar">
+                    <div class="prediction-bar-row">
+                        <div class="prediction-bar-track" style="height: 12px;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%"></div>
+                        </div>
+                    </div>
+                    <div class="prediction-bar-row">
+                        <div class="prediction-yes-section">
+                            <span class="prediction-bar-label">Yes</span>
+                            <span class="prediction-bar-value yes-value">${indicator.yes_probability}</span>
+                        </div>
+                        <div class="prediction-no-section">
+                            <span class="prediction-bar-label">No</span>
+                            <span class="prediction-bar-value no-value">${indicator.no_probability}</span>
+                        </div>
+                    </div>
+                </div>`;
+        } else {
+            if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
+            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+        }
         return { latestDataHtml, historyDataHtml: '', hasHistory: false };
     }
 
@@ -131,14 +216,21 @@ const IndicatorRenderers = (function () {
         let hasHistory = false;
 
         if (indicator.candidates && typeof indicator.candidates === 'object') {
-            const entries = Object.entries(indicator.candidates);
+            const entries = Object.entries(indicator.candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
+            
+            latestDataHtml = `<div class="prediction-bar-container">`;
             entries.forEach(([name, prob], i) => {
-                if (i < 2) {
-                    latestDataHtml += `<div class="latest-data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
-                } else {
-                    historyDataHtml += `<div class="data-row"><span class="month-label">${name}:</span> <span class="month-value">${prob}</span></div>`;
-                }
+                const probValue = parseFloat(prob);
+                latestDataHtml += `
+                    <div class="prediction-bar-row">
+                        <span class="prediction-bar-label" style="min-width: 90px;">${name}</span>
+                        <div class="prediction-bar-track">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${probValue}%"></div>
+                        </div>
+                        <span class="prediction-bar-value yes-value">${prob}</span>
+                    </div>`;
             });
+            latestDataHtml += `</div>`;
             hasHistory = entries.length > 2;
         }
 

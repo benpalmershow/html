@@ -130,11 +130,13 @@ const IndicatorRenderers = (function () {
 
             latestDataHtml = `
                 <div class="prediction-bar-container prediction-dual-bar">
-                    <div class="prediction-bar-row">
-                        <div class="prediction-bar-track" style="height: 24px; position: relative;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; position: absolute; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="Yes">${indicator.yes_probability}</div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="No">${indicator.no_probability}</div>
+                    <div class="prediction-bar-row" style="display: flex; align-items: center;">
+                        <span style="font-size: 12px; margin-right: 4px; font-weight: bold;">${indicator.yes_probability}</span>
+                        <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${indicator.yes_probability} Yes"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${indicator.no_probability} No"></div>
                         </div>
+                        <span style="font-size: 12px; margin-left: 4px; font-weight: bold;">${indicator.no_probability}</span>
                     </div>
                 </div>`;
         } else if (indicator.yes_probability) {
@@ -154,12 +156,14 @@ const IndicatorRenderers = (function () {
                 const noProb = parseFloat(probs.no);
                 const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
                 latestDataHtml += `
-                    <div class="prediction-bar-row" style="margin-bottom: 4px;">
-                        <span class="prediction-bar-label" style="min-width: 50px; font-size: 12px;">${dateLabel}</span>
-                        <div class="prediction-bar-track" style="height: 20px; position: relative;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; position: absolute; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: white;" title="Yes">${probs.yes}</div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: white;" title="No">${probs.no}</div>
+                    <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
+                        <span class="prediction-bar-label" style="min-width: 70px; font-size: 12px;">${dateLabel}</span>
+                        <span style="font-size: 10px; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
+                        <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${probs.yes} Yes"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${probs.no} No"></div>
                         </div>
+                        <span style="font-size: 10px; margin-left: 4px; font-weight: bold;">${probs.no}</span>
                     </div>`;
             });
             latestDataHtml += `</div>`;
@@ -168,16 +172,15 @@ const IndicatorRenderers = (function () {
             const noProb = parseFloat(indicator.no_probability);
             latestDataHtml = `
                 <div class="prediction-bar-container prediction-dual-bar">
-                    <div class="prediction-bar-row">
-                        <div class="prediction-bar-track" style="height: 24px; position: relative;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; position: absolute; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="Yes">${indicator.yes_probability}</div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="No">${indicator.no_probability}</div>
+                    <div class="prediction-bar-row" style="display: flex; align-items: center;">
+                        <span style="font-size: 12px; margin-right: 4px; font-weight: bold;">${indicator.yes_probability}</span>
+                        <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${indicator.yes_probability} Yes"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${indicator.no_probability} No"></div>
                         </div>
+                        <span style="font-size: 12px; margin-left: 4px; font-weight: bold;">${indicator.no_probability}</span>
                     </div>
                 </div>`;
-        } else {
-            if (indicator.yes_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Yes:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
         }
         return { latestDataHtml, historyDataHtml: '', hasHistory: false };
     }

@@ -272,30 +272,15 @@ function renderEntryTime(time, journalDate) {
   const entryDate = journalDate ? parseDate(journalDate) : new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const entryTime = new Date(entryDate.getFullYear(), entryDate.getMonth(), entryDate.getDate(), hours, minutes);
   
-  const nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const diffDays = Math.floor((nowDate - entryDate) / (1000 * 60 * 60 * 24));
-  
-  if (diffDays >= 1) {
-    const formattedTime = formatTime12Hour(hours, minutes);
-    return `<time class="entry-time">yesterday ${formattedTime}</time>`;
-  }
-  
   const diffMs = now - entryTime;
   const diffMins = Math.floor(diffMs / 60000);
   const diffHours = Math.floor(diffMins / 60);
   let ago;
   if (diffMins < 1) ago = 'now';
   else if (diffMins < 60) ago = `${diffMins}m`;
-  else if (diffHours < 24) ago = `${diffHours}h`;
+  else if (diffHours <= 24) ago = `${diffHours}h`;
   else ago = time;
   return `<time class="entry-time">${ago}</time>`;
-}
-
-function formatTime12Hour(hours, minutes) {
-  const period = hours >= 12 ? 'pm' : 'am';
-  const hour12 = hours % 12 || 12;
-  const minStr = minutes.toString().padStart(2, '0');
-  return `${hour12}:${minStr}${period}`;
 }
 
 async function renderEntryFromFile(entry, entryId, journalDate) {

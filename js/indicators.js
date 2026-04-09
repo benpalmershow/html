@@ -83,29 +83,26 @@ const IndicatorRenderers = (function () {
             const holdProb = parseFloat(indicator.rate_hold_odds);
             const cutProb = parseFloat(indicator.rate_cut_odds);
             const hikeProb = parseFloat(indicator.rate_hike_odds);
-            
+
             latestDataHtml = `
                 <div class="prediction-bar-container" style="margin-top: 4px;">
                     <div class="prediction-bar-row">
                         <span class="prediction-bar-label" style="min-width: 40px;">Hold</span>
                         <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${holdProb}%; background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);"></div>
+                            <div class="prediction-bar-fill yes-bar" style="width: ${holdProb}%; background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%); display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold;">${indicator.rate_hold_odds}</div>
                         </div>
-                        <span class="prediction-bar-value" style="color: #3b82f6;">${indicator.rate_hold_odds}</span>
                     </div>
                     <div class="prediction-bar-row">
                         <span class="prediction-bar-label" style="min-width: 40px;">Cut</span>
                         <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill no-bar" style="width: ${cutProb}%"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${cutProb}%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: white; font-size: 12px; font-weight: bold;">${indicator.rate_cut_odds}</div>
                         </div>
-                        <span class="prediction-bar-value no-value">${indicator.rate_cut_odds}</span>
                     </div>
                     <div class="prediction-bar-row">
                         <span class="prediction-bar-label" style="min-width: 40px;">Hike</span>
                         <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill no-bar" style="width: ${hikeProb}%; background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${hikeProb}%; background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold;">${indicator.rate_hike_odds}</div>
                         </div>
-                        <span class="prediction-bar-value" style="color: #f59e0b;">${indicator.rate_hike_odds}</span>
                     </div>
                 </div>`;
         } else {
@@ -134,19 +131,9 @@ const IndicatorRenderers = (function () {
             latestDataHtml = `
                 <div class="prediction-bar-container prediction-dual-bar">
                     <div class="prediction-bar-row">
-                        <div class="prediction-bar-track" style="height: 12px;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%"></div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%"></div>
-                        </div>
-                    </div>
-                    <div class="prediction-bar-row">
-                        <div class="prediction-yes-section">
-                            <span class="prediction-bar-label">Yes</span>
-                            <span class="prediction-bar-value yes-value">${indicator.yes_probability}</span>
-                        </div>
-                        <div class="prediction-no-section">
-                            <span class="prediction-bar-label">No</span>
-                            <span class="prediction-bar-value no-value">${indicator.no_probability}</span>
+                        <div class="prediction-bar-track" style="height: 24px; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; position: absolute; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="Yes">${indicator.yes_probability}</div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="No">${indicator.no_probability}</div>
                         </div>
                     </div>
                 </div>`;
@@ -166,19 +153,9 @@ const IndicatorRenderers = (function () {
             latestDataHtml = `
                 <div class="prediction-bar-container prediction-dual-bar">
                     <div class="prediction-bar-row">
-                        <div class="prediction-bar-track" style="height: 12px;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%"></div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%"></div>
-                        </div>
-                    </div>
-                    <div class="prediction-bar-row">
-                        <div class="prediction-yes-section">
-                            <span class="prediction-bar-label">Yes</span>
-                            <span class="prediction-bar-value yes-value">${indicator.yes_probability}</span>
-                        </div>
-                        <div class="prediction-no-section">
-                            <span class="prediction-bar-label">No</span>
-                            <span class="prediction-bar-value no-value">${indicator.no_probability}</span>
+                        <div class="prediction-bar-track" style="height: 24px; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; position: absolute; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="Yes">${indicator.yes_probability}</div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;" title="No">${indicator.no_probability}</div>
                         </div>
                     </div>
                 </div>`;
@@ -225,9 +202,8 @@ const IndicatorRenderers = (function () {
                     <div class="prediction-bar-row">
                         <span class="prediction-bar-label" style="min-width: 90px;">${name}</span>
                         <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${probValue}%"></div>
+                            <div class="prediction-bar-fill yes-bar" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold;">${prob}</div>
                         </div>
-                        <span class="prediction-bar-value yes-value">${prob}</span>
                     </div>`;
             });
             latestDataHtml += `</div>`;

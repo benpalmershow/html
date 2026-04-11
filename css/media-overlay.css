@@ -472,3 +472,23 @@
 .media-overlay a:visited {
     text-decoration: none !important;
 }
+
+.media-highlights {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  order: 4;
+}
+
+.media-highlight-link {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.media-highlight-link:hover {
+  opacity: 1;
+}

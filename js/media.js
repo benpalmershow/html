@@ -558,6 +558,21 @@
             overlayContent.appendChild(description);
         }
 
+        if (item.highlights?.length > 0) {
+            const highlightsList = document.createElement('div');
+            highlightsList.className = 'media-highlights';
+            item.highlights.forEach(h => {
+                const a = document.createElement('a');
+                a.href = h.url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = h.label;
+                a.className = 'media-highlight-link';
+                highlightsList.appendChild(a);
+            });
+            overlayContent.appendChild(highlightsList);
+        }
+
         if (item.mediaType === 'playlist' && item.date) {
             const dateElement = document.createElement('div');
             dateElement.className = 'media-date-bottom';

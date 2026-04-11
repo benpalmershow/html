@@ -164,7 +164,7 @@
     "cover": "images/logo.webp",
     "dateAdded": "2026-04-07"
   },
-    {
+  {
     "title": "Monday April 6th",
     "author": "Doc Riter",
     "mediaType": "podcast",
@@ -487,7 +487,14 @@
         "url": "https://www.imdb.com/title/tt20414360/"
       }
     },
-    "dateAdded": "2026-03-19"
+    "dateAdded": "2026-03-19",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=j83Ps9SmpF8"
+      }
+    ]
   },
   {
     "title": "Give You Blue",
@@ -532,7 +539,14 @@
         "url": "https://www.imdb.com/title/tt15138634/"
       }
     },
-    "dateAdded": "2026-03-09"
+    "dateAdded": "2026-03-09",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=SJv5DKGcwq8"
+      }
+    ]
   },
   {
     "title": "The 100 BEST Knots in Life",
@@ -546,6 +560,11 @@
     "thumbs": "",
     "cover": "https://i.ytimg.com/vi/CP25cTGnVAk/hqdefault.jpg",
     "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=CP25cTGnVAk"
+      },
       {
         "label": "YouTube",
         "icon": "fab fa-youtube",
@@ -566,6 +585,11 @@
     "thumbs": "",
     "cover": "https://i.ytimg.com/vi/e8u-D2lqyWQ/hqdefault.jpg",
     "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=e8u-D2lqyWQ"
+      },
       {
         "label": "YouTube",
         "icon": "fab fa-youtube",
@@ -669,7 +693,14 @@
         "url": "https://www.imdb.com/title/tt0111341/"
       }
     },
-    "dateAdded": "2026-01-11"
+    "dateAdded": "2026-01-11",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=0LsFGHCAjqs"
+      }
+    ]
   },
   {
     "title": "The Trouble with Poetry and Other Poems",
@@ -748,7 +779,14 @@
         "url": "https://www.imdb.com/title/tt2692904/"
       }
     },
-    "dateAdded": "2025-12-29"
+    "dateAdded": "2025-12-29",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=TsBDYAYnQb0"
+      }
+    ]
   },
   {
     "title": "One Day, Everyone will have always been against this",
@@ -915,7 +953,14 @@
         "url": "https://www.imdb.com/title/tt32086077/?ref_=ext_shr_lnk"
       }
     },
-    "dateAdded": "2025-09-13"
+    "dateAdded": "2025-09-13",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=2mgQcpmYr_A"
+      }
+    ]
   },
   {
     "title": "Presence",
@@ -940,7 +985,14 @@
         "url": "https://www.imdb.com/title/tt28249919/"
       }
     },
-    "dateAdded": "2025-09-03"
+    "dateAdded": "2025-09-03",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=Ay4MJZH6_K8"
+      }
+    ]
   },
   {
     "title": "World History in Minutes",
@@ -2014,7 +2066,14 @@
         "score": "7.6",
         "url": "https://www.imdb.com/title/tt32178949/"
       }
-    }
+    },
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=nbKLGsf1Syg"
+      }
+    ]
   },
   {
     "title": "The Animal Kingdom",
@@ -2035,11 +2094,18 @@
     "thumbs": "up",
     "cover": "https://pics.filmaffinity.com/le_regne_animal-492752501-large.jpg",
     "url": "https://www.youtube.com/watch",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-01",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=GgB7smBkk4I"
+      }
+    ]
   },
   {
     "title": "Jeanne du Barry",
-    "author": "Ma\u00efwenn",
+    "author": "Maïwenn",
     "mediaType": "movie",
     "description": "A historical drama about the famous courtesan.",
     "date": "January 2023",
@@ -2056,7 +2122,14 @@
     "thumbs": "up",
     "cover": "https://pics.filmaffinity.com/jeanne_du_barry-449972562-large.jpg",
     "url": "https://www.youtube.com/watch",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-01",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=7vz6PE6fM-g"
+      }
+    ]
   },
   {
     "title": "Hotel Salvation",
@@ -2084,7 +2157,14 @@
     },
     "cover": "https://m.media-amazon.com/images/M/MV5BNzcyMjg1NjQtMTRlOC00ZjRlLWE5NWYtNDlmMmMwMmFjMDU5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "status": "watched",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-01",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=-Fm8t03hufk"
+      }
+    ]
   },
   {
     "title": "The Anxious Investor",
@@ -2183,7 +2263,7 @@
   },
   {
     "title": "Trust",
-    "author": "Hern\u00e1n D\u00edaz",
+    "author": "Hernán Díaz",
     "category": "Fiction",
     "mediaType": "book",
     "description": "A novel exploring wealth, power, and truth in America.",
@@ -2239,7 +2319,14 @@
     "thumbs": "up",
     "cover": "https://upload.wikimedia.org/wikipedia/en/1/1c/Holy_Spider.jpg",
     "url": "https://www.youtube.com/watch",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-01",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=27wZZ6O1IBc"
+      }
+    ]
   },
   {
     "title": "The Pact",
@@ -2260,7 +2347,14 @@
     "thumbs": "up",
     "cover": "https://pics.filmaffinity.com/pagten-262199368-large.jpg",
     "url": "https://www.youtube.com/watch",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-01",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=XFEjEo8T2E4"
+      }
+    ]
   },
   {
     "title": "Taber's Cyclopedic Medical Dictionary",
@@ -2295,7 +2389,14 @@
     "thumbs": "up",
     "cover": "https://pics.filmaffinity.com/vayehi_boker-561879612-large.jpg",
     "url": "https://www.youtube.com/watch",
-    "dateAdded": "2025-08-01"
+    "dateAdded": "2025-08-01",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=GBeb_ZUmiRQ"
+      }
+    ]
   },
   {
     "title": "Pharma",
@@ -2439,7 +2540,7 @@
   },
   {
     "title": "Capitalism",
-    "author": "J\u00fcrgen Kocka",
+    "author": "Jürgen Kocka",
     "category": "Economics",
     "mediaType": "book",
     "description": "A concise history of capitalism and its evolution.",
@@ -2960,7 +3061,14 @@
     "thumbs": "up",
     "cover": "https://variety.com/wp-content/uploads/2019/05/kj11104-4245101.jpg",
     "url": "https://www.youtube.com/watch",
-    "dateAdded": "2025-08-23"
+    "dateAdded": "2025-08-23",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=TZYSra8C0ZA"
+      }
+    ]
   },
   {
     "title": "Whistleblower Tony Aguilar",
@@ -3109,7 +3217,14 @@
         "url": "https://www.imdb.com/title/tt9569096/"
       }
     },
-    "dateAdded": "2025-10-20"
+    "dateAdded": "2025-10-20",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=ZjcfxQJcP7E"
+      }
+    ]
   },
   {
     "title": "Welcome",
@@ -3134,7 +3249,14 @@
         "url": "https://www.imdb.com/title/tt1314280/"
       }
     },
-    "dateAdded": "2025-10-29"
+    "dateAdded": "2025-10-29",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=TQIGBxjJE_w"
+      }
+    ]
   },
   {
     "title": "Joe Rogan Experience #2404 - Elon Musk",
@@ -3149,6 +3271,11 @@
     "thumbs": "",
     "cover": "https://img.youtube.com/vi/O4wBUysNe2k/hqdefault.jpg",
     "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=O4wBUysNe2k"
+      },
       {
         "label": "Apple Podcasts",
         "icon": "fab fa-apple",
@@ -3302,7 +3429,14 @@
         "url": "https://www.imdb.com/title/tt19760052/"
       }
     },
-    "dateAdded": "2025-11-22"
+    "dateAdded": "2025-11-22",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=cKKCGtoIOVY"
+      }
+    ]
   },
   {
     "title": "La Haine",
@@ -3327,7 +3461,14 @@
         "url": "https://www.imdb.com/title/tt0113247/"
       }
     },
-    "dateAdded": "2025-11-25"
+    "dateAdded": "2025-11-25",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=FKwcXt3JIaU"
+      }
+    ]
   },
   {
     "title": "How to Have Willpower: An Ancient Guide to Not Giving In",
@@ -3379,7 +3520,14 @@
         "url": "https://www.imdb.com/title/tt28618488/"
       }
     },
-    "dateAdded": "2025-11-27"
+    "dateAdded": "2025-11-27",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=8fBtOVTbIcY"
+      }
+    ]
   },
   {
     "title": "Sunset Song",
@@ -3404,7 +3552,14 @@
         "url": "https://www.imdb.com/title/tt2262161/"
       }
     },
-    "dateAdded": "2025-11-30"
+    "dateAdded": "2025-11-30",
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=6Be0zgCk6a8"
+      }
+    ]
   },
   {
     "title": "DecCara",

@@ -32,7 +32,7 @@
     const DB_NAME = 'media-cache-db';
     const DB_VERSION = 1;
     const STORE_NAME = 'media-data';
-    const CACHE_KEY = 'media-data-v4';
+    const CACHE_KEY = 'media-data-v5';
     const CACHE_DURATION = 5 * 60 * 1000;
     const BATCH_SIZE = 12;
     const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video', 'article'];
@@ -320,7 +320,7 @@
         if (item.mediaType === 'movie') {
             coverImg.width = 300;
             coverImg.height = 450;
-        } else if (item.mediaType === 'video') {
+        } else if (item.mediaType === 'video' || item.mediaType === 'song') {
             coverImg.width = 300;
             coverImg.height = 169;
         } else {
@@ -471,41 +471,10 @@
         const topRightActions = document.createElement('div');
         topRightActions.className = 'media-top-right-actions';
         
-        const bottomActions = document.createElement('div');
-        bottomActions.className = 'media-bottom-actions';
-        
         function addActionToTop(btnElement) {
             topRightActions.appendChild(btnElement);
         }
-        
-        function addActionToBottom(btnElement) {
-            bottomActions.appendChild(btnElement);
-        }
 
-        if (item.embedUrl || (item.mediaType === 'movie' && item.embedUrl) || (item.mediaType === 'video' && item.embedUrl)) {
-            const trailerBtn = document.createElement('a');
-            trailerBtn.className = 'action-btn trailer-btn';
-            trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
-            let trailerHtml = `<i class="fab fa-youtube"></i>`;
-            if (item.title?.toLowerCase().includes('coachella')) {
-                const typeInitial = item.title.split(' ')[0].charAt(0).toUpperCase();
-                trailerHtml += `<span class="link-label-initial">${typeInitial}</span>`;
-            }
-            trailerBtn.innerHTML = trailerHtml;
-            
-            let watchUrl = item.embedUrl;
-            if (watchUrl.includes('youtube.com/embed/')) {
-                watchUrl = watchUrl.replace('embed/', 'watch?v=');
-            }
-            trailerBtn.href = watchUrl;
-            trailerBtn.target = '_blank';
-            trailerBtn.rel = 'noopener noreferrer';
-            
-            trailerBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-            }, { passive: true });
-            addActionToTop(trailerBtn);
-        }
 
         if (item.ratings?.imdb) {
             const imdbLink = document.createElement('a');
@@ -519,7 +488,7 @@
             const scoreClass = 'med-rating'; // Fixed back to yellow by later CSS but keeping class logic
             
             imdbLink.innerHTML = `<span class="rating-label">IMDb</span><span class="rating-text">${item.ratings.imdb.score}</span>`;
-            addActionToBottom(imdbLink);
+            addActionToTop(imdbLink);
         }
         
         if (item.ratings?.rt) {
@@ -534,22 +503,13 @@
             const scoreClass = 'med-rating'; // Using med for consistent color as requested
             
             rtLink.innerHTML = `<span class="rating-label">RT</span><span class="rating-text">${item.ratings.rt.score}</span>`;
-            addActionToBottom(rtLink);
+            addActionToTop(rtLink);
         }
 
         if (item.links?.length > 0) {
             item.links.forEach(link => {
                 const isXLink = link.name?.toLowerCase() === 'x' || link.label?.toLowerCase() === 'x';
-                const isTrailerLink = link.label?.toLowerCase() === 'trailer' || link.name?.toLowerCase() === 'trailer';
-                
-                if (item.embedUrl && link.url && item.embedUrl.includes(link.url.replace('watch?v=', 'embed/').split('&')[0])) return; 
-                if ((link.url.includes('youtube.com') || link.url.includes('youtu.be')) && item.embedUrl && item.embedUrl.includes('youtube.com/embed')) {
-                    let linkId = '';
-                    if (link.url.includes('youtu.be/')) linkId = link.url.split('youtu.be/')[1].split('?')[0];
-                    else if (link.url.includes('v=')) linkId = link.url.split('v=')[1].split('&')[0];
-                    let embedId = item.embedUrl.split('embed/')[1].split('?')[0];
-                    if (linkId && embedId && linkId === embedId) return;
-                }
+                const isTrailerLink = link.label?.toLowerCase() === 'trailer';
 
                 const linkEl = document.createElement('a');
                 linkEl.href = link.url;
@@ -572,13 +532,12 @@
                 if (isTrailerLink && (item.mediaType === 'movie' || item.mediaType === 'video')) {
                     addActionToTop(linkEl);
                 } else {
-                    addActionToBottom(linkEl);
+                    addActionToTop(linkEl);
                 }
             });
         }
         
         overlay.appendChild(topRightActions);
-        overlay.appendChild(bottomActions);
 
         const title = document.createElement('h2');
         title.className = 'media-title';

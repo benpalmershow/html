@@ -94,13 +94,17 @@
         border-radius: 0.25rem;
     }
 
-    /* Podcast/album/song covers: contain with padding to show full logo */
+    /* Podcast/album covers: contain with padding to show full logo */
     [data-media-type="podcast"] & .media-cover,
-    [data-media-type="album"] & .media-cover,
-    [data-media-type="song"] & .media-cover {
+    [data-media-type="album"] & .media-cover {
         object-fit: contain;
         background-color: var(--bg-secondary);
         padding: 15%;
+    }
+
+    /* Song covers: YouTube thumbnails, treat like video */
+    [data-media-type="song"] & .media-cover {
+        object-fit: cover;
     }
 
     /* Video covers: fill the card */

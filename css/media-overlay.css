@@ -190,57 +190,29 @@
     RATING & ACTIONS (IMDB, ROTTEN TOMATOES, YOUTUBE TRAILER)
     ========================================================================== */
 
-/* Bottom Actions Container */
+/* Bottom Actions Container - now positioned at top row */
 .media-bottom-actions {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.2rem;
-    padding: 0.5rem;
-    pointer-events: auto;
-    z-index: 50;
-    opacity: 0;
-    transform: scale(0.8) translateY(10px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow-x: auto;
-    overflow-y: hidden;
-    max-width: 100%;
-    justify-content: flex-start;
-    height: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    display: none;
 }
 
-/* Webkit Scrollbar for Bottom Actions */
+/* Webkit Scrollbar for Bottom Actions - hidden */
 .media-bottom-actions::-webkit-scrollbar {
-    height: 4px;
-}
-.media-bottom-actions::-webkit-scrollbar-track {
-    background: transparent;
-}
-.media-bottom-actions::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-}
-.media-bottom-actions::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    display: none;
 }
 
 .media-card:hover .media-bottom-actions {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+    opacity: 0;
+    transform: scale(0);
 }
 
-/* Top Right Actions Container (for trailer button) */
+/* Top Right Actions Container (for all buttons) */
 .media-top-right-actions {
     position: absolute;
     top: 0;
     right: 0;
     display: flex;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.25rem;
     padding: 0.5rem;
     pointer-events: auto;
     z-index: 50;
@@ -248,6 +220,8 @@
     transform: scale(0.8) translateY(-10px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: visible;
+    max-width: 100%;
+    justify-content: flex-end;
 }
 
 .media-card:hover .media-top-right-actions {
@@ -261,12 +235,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 26px;
+    height: 22px;
     width: auto;
-    min-width: 28px;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 0.7em;
+    min-width: 24px;
+    padding: 2px 3px;
+    border-radius: 3px;
+    font-size: 0.6em;
     font-weight: 700;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -285,10 +259,10 @@
 }
 
 .video-card .action-btn {
-    height: 20px;
-    min-width: 24px;
+    height: 18px;
+    min-width: 20px;
     padding: 1px 2px;
-    font-size: 0.6em;
+    font-size: 0.55em;
 }
 
 .action-btn i {
@@ -324,7 +298,7 @@
 }
 
 .action-btn .rating-text {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 700;
     color: white;
     line-height: 1;
@@ -334,7 +308,7 @@
 }
 
 .action-btn .rating-label {
-    font-size: 0.5rem;
+    font-size: 0.45rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1;
@@ -390,9 +364,9 @@
 /* Trailer button */
 .trailer-btn { 
     background: rgba(0, 0, 0, 0.5);
-    padding: 2px 4px;
-    min-width: 24px;
-    height: 24px;
+    padding: 2px 3px;
+    min-width: 22px;
+    height: 20px;
 }
 .trailer-btn .fa-youtube {
     font-size: 0.9em;
@@ -463,8 +437,8 @@
     .media-date-bottom { font-size: 0.65rem; }
     
     .corner-action { padding: 0.35rem; }
-    .action-btn { height: 22px; min-width: 22px; padding: 1px 3px; border-radius: 3px; font-size: 0.65em;}
-    .media-bottom-actions { gap: 0.2rem; }
+    .action-btn { height: 20px; min-width: 20px; padding: 1px 2px; border-radius: 2px; font-size: 0.55em;}
+    .media-top-right-actions { gap: 0.2rem; }
 }
 
 /* Extra small (414px and below) */
@@ -476,8 +450,8 @@
     .media-date-bottom { font-size: 0.6rem; padding: 0.15rem 0; }
 
     .corner-action { padding: 0.25rem; }
-    .action-btn { height: 20px; min-width: 20px; padding: 1px 2px; border-radius: 2px; font-size: 0.6em;}
-    .media-bottom-actions { gap: 0.15rem; }
+    .action-btn { height: 18px; min-width: 18px; padding: 1px 2px; border-radius: 2px; font-size: 0.5em;}
+    .media-top-right-actions { gap: 0.15rem; }
 }
 
 /* ==========================================================================

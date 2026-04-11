@@ -318,11 +318,12 @@
 
         // Set proper aspect ratios based on media type to prevent CLS
         if (item.mediaType === 'movie') {
-            // Movie posters: 2:3 aspect ratio
             coverImg.width = 300;
             coverImg.height = 450;
+        } else if (item.mediaType === 'video') {
+            coverImg.width = 300;
+            coverImg.height = 169;
         } else {
-            // Square aspect ratio for other media types
             coverImg.width = 300;
             coverImg.height = 300;
         }
@@ -352,7 +353,7 @@
         // Optimize image decoding for performance (async prevents layout jank)
         coverImg.decoding = 'async';
 
-        const placeholderSvg = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222C5F5A%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ENo Image%3C/text%3E%3C/svg%3E';
+        const placeholderSvg = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222C5F5A%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ELand Unknown%3C/text%3E%3C/svg%3E';
 
         if (item.cover) {
             // TMDB optimization: Ensure w500 size for fast loads (50KB vs original)
@@ -555,7 +556,7 @@
                 if (isXLink) {
                     linkEl.innerHTML = X_LINK_SVG;
                 } else if (link.icon) {
-                    linkEl.innerHTML = `<i class="${link.icon}"></i><span class="rating-text">${link.label}</span>`;
+                    linkEl.innerHTML = `<i class="${link.icon}"></i>`;
                 }
                 
                 if (isTrailerLink && (item.mediaType === 'movie' || item.mediaType === 'video')) {

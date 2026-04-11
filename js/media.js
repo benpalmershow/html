@@ -486,8 +486,12 @@
             const trailerBtn = document.createElement('a');
             trailerBtn.className = 'action-btn trailer-btn';
             trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
-            const typeInitial = item.mediaType === 'movie' ? 'M' : item.mediaType === 'video' ? 'V' : 'P';
-            trailerBtn.innerHTML = `<i class="fab fa-youtube"></i><span class="link-label-initial">${typeInitial}</span>`;
+            let trailerHtml = `<i class="fab fa-youtube"></i>`;
+            if (item.title?.toLowerCase().includes('coachella')) {
+                const typeInitial = item.title.split(' ')[0].charAt(0).toUpperCase();
+                trailerHtml += `<span class="link-label-initial">${typeInitial}</span>`;
+            }
+            trailerBtn.innerHTML = trailerHtml;
             
             let watchUrl = item.embedUrl;
             if (watchUrl.includes('youtube.com/embed/')) {
@@ -558,7 +562,7 @@
                     linkEl.innerHTML = X_LINK_SVG;
                 } else if (link.icon) {
                     let iconHtml = `<i class="${link.icon}"></i>`;
-                    if (link.icon.includes('youtube') && link.label) {
+                    if (link.icon.includes('youtube') && link.label && item.title?.toLowerCase().includes('coachella')) {
                         const firstLetter = link.label.charAt(0).toUpperCase();
                         iconHtml += `<span class="link-label-initial">${firstLetter}</span>`;
                     }

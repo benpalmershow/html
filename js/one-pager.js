@@ -1,8 +1,8 @@
 const LIMITS = {
-  journal: 10,
-  essays: 5,
-  media: 8,
-  financials: 10
+  journal: Infinity,
+  essays: Infinity,
+  media: Infinity,
+  financials: Infinity
 };
 const PAGE_LOAD_VERSION = Date.now();
 

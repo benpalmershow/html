@@ -300,6 +300,29 @@
     margin-bottom: 1px;
 }
 
+.action-btn .link-label-initial {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #ff0000;
+    color: white;
+    font-size: 0.45em;
+    font-weight: 700;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.4);
+    z-index: 10;
+}
+
+.action-btn:hover .link-label-initial {
+    transform: scale(1.1);
+}
+
 .action-btn .rating-text {
     font-size: 0.7rem;
     font-weight: 700;
@@ -382,6 +405,11 @@
 }
 .trailer-btn:hover .fa-youtube {
     color: white;
+}
+.trailer-btn:hover .link-label-initial {
+    background: white;
+    color: #ff0000;
+    transform: scale(1.1);
 }
 
 .spotify-link-btn:hover { background: #1DB954; border-color: #1DB954; }

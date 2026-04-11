@@ -72,7 +72,7 @@ h4 {
 
 a {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
     transition: opacity 0.2s ease;
 
     &:hover,

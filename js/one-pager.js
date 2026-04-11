@@ -255,19 +255,31 @@ async function loadLatestJournal() {
     // Add entries for this date without date header
     entries.forEach(entry => {
       let timeAgo = '';
-      if (entry.time && entry.date) {
-        const now = new Date();
-        const entryDate = parseJournalDate(entry.date);
-        const [hours, minutes] = entry.time.split(':').map(Number);
-        const entryDateTime = new Date(entryDate.getFullYear(), entryDate.getMonth(), entryDate.getDate(), hours, minutes);
+      const now = new Date();
+      let entryDateTime;
+      
+      // Try to parse date from different possible sources
+      if (entry.date) {
+        entryDateTime = parseJournalDate(entry.date);
+        if (entry.time) {
+          const [hours, minutes] = entry.time.split(':').map(Number);
+          entryDateTime = new Date(entryDateTime.getFullYear(), entryDateTime.getMonth(), entryDateTime.getDate(), hours, minutes);
+        }
+      } else if (entry.timestamp) {
+        entryDateTime = new Date(entry.timestamp);
+      }
+      
+      if (entryDateTime && entryDateTime.getTime() > 0) {
         const diffMins = Math.floor((now - entryDateTime) / 60000);
         if (diffMins < 1) timeAgo = 'now';
         else if (diffMins < 60) timeAgo = `${diffMins}m`;
         else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
-        else timeAgo = entry.time;
+        else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
+        else timeAgo = entryDateTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       }
       const entryId = createEntryId(entry.title);
-      lines.push(`<li class="journal-entry"><span class="time-ago">${timeAgo}</span> <a href="${entry.sourcePath}"><strong>${escapeHtml(entry.title)}</strong></a> ${escapeHtml(entry.content)}</li>`);
+      const linkUrl = entry.url || entry.sourcePath;
+      lines.push(`<li class="journal-entry"><span class="time-ago">${timeAgo}</span> <a href="${linkUrl}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(entry.title)}</strong></a> ${escapeHtml(entry.content)}</li>`);
     });
   });
 
@@ -299,7 +311,17 @@ async function loadLatestEssays() {
     const title = escapeHtml(cleanText(item.title));
     const summary = clip(item.summary || '', 100);
     
-    return `<a href="news.html?article=${encodeURIComponent(item.id)}" style="text-decoration:none; color:inherit;"><strong>${title}</strong>: ${escapeHtml(summary)}</a>`;
+    // Calculate time ago
+    const itemDate = new Date(item.date || 0);
+    const diffMins = Math.floor((Date.now() - itemDate.getTime()) / 60000);
+    let timeAgo = '';
+    if (diffMins < 1) timeAgo = 'now';
+    else if (diffMins < 60) timeAgo = `${diffMins}m`;
+    else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
+    else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
+    else timeAgo = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    
+    return `<span class="time-ago">${timeAgo}</span> <a href="news.html?article=${encodeURIComponent(item.id)}" target="_blank" rel="noopener noreferrer"><strong>${title}</strong>: ${escapeHtml(summary)}</a>`;
   });
   renderList('latest-essays', lines);
 }
@@ -326,7 +348,19 @@ async function loadLatestMedia() {
     const iconName = MEDIA_CATEGORY_ICONS[mediaType] || (item.icon ? item.icon.replace('fas fa-', '').replace('fab fa-', '') : 'play-circle');
     const iconHtml = `<i data-lucide="${iconName}" class="media-bullet-icon"></i>`;
     
-    return `${iconHtml} <strong>${title}</strong>: ${escapeHtml(subtitle)}`;
+    // Calculate time ago
+    const itemDate = new Date(item.dateAdded || item.date || 0);
+    const diffMins = Math.floor((Date.now() - itemDate.getTime()) / 60000);
+    let timeAgo = '';
+    if (diffMins < 1) timeAgo = 'now';
+    else if (diffMins < 60) timeAgo = `${diffMins}m`;
+    else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
+    else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
+    else timeAgo = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    
+    // Link to media page with item ID
+    const mediaUrl = `media.html?item=${encodeURIComponent(item.id)}`;
+    return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${mediaUrl}" target="_blank" rel="noopener noreferrer"><strong>${title}</strong>: ${escapeHtml(subtitle)}</a>`;
   });
   renderList('latest-media', lines);
 }
@@ -339,28 +373,37 @@ async function loadLatestFinancials() {
     .slice(0, LIMITS.financials);
 
   const lines = sorted.map(item => {
+    const categoryText = cleanText(item.category || 'unknown category');
+    const itemHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
+    
+    // Calculate time ago
+    const itemDate = new Date(item.lastUpdated || 0);
+    const diffMins = Math.floor((Date.now() - itemDate.getTime()) / 60000);
+    let timeAgo = '';
+    if (diffMins < 1) timeAgo = 'now';
+    else if (diffMins < 60) timeAgo = `${diffMins}m`;
+    else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
+    else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
+    else timeAgo = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    
     // Special handling for prediction markets with various data structures
     if (item.rate_hold_odds || item.rate_cut_odds || item.rate_hike_odds) {
       // FOMC Rate Decision format
-      const categoryText = cleanText(item.category || 'unknown category');
       const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
-      const categoryHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
-      const categoryIconHtml = `<a href="${categoryHref}" target="_blank" rel="noopener noreferrer" class="financial-bullet-link" aria-label="Open ${escapeHtml(categoryText)} in Financials" title="${escapeHtml(categoryText)}"><i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i></a>`;
+      const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
       
       const odds = [];
       if (item.rate_hold_odds) odds.push(`Hold: ${item.rate_hold_odds}`);
       if (item.rate_cut_odds) odds.push(`Cut: ${item.rate_cut_odds}`);
       if (item.rate_hike_odds) odds.push(`Hike: ${item.rate_hike_odds}`);
       
-      return `${categoryIconHtml} <strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(odds.join(' | '))}`;
+      return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(odds.join(' | '))}</a>`;
     }
     
     if (item.yes_probability || item.no_probability || (item.candidates && typeof item.candidates === 'object')) {
       // Yes/No markets or candidates markets
-      const categoryText = cleanText(item.category || 'unknown category');
       const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
-      const categoryHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
-      const categoryIconHtml = `<a href="${categoryHref}" target="_blank" rel="noopener noreferrer" class="financial-bullet-link" aria-label="Open ${escapeHtml(categoryText)} in Financials" title="${escapeHtml(categoryText)}"><i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i></a>`;
+      const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
       
       let displayText = '';
       if (item.yes_probability && item.no_probability) {
@@ -372,7 +415,7 @@ async function loadLatestFinancials() {
         displayText = candidateList.join(' | ');
       }
       
-      return `${categoryIconHtml} <strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(displayText)}`;
+      return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(displayText)}</a>`;
     }
     
     // Standard handling for numeric indicators
@@ -382,11 +425,9 @@ async function loadLatestFinancials() {
     const momText = mom === null ? 'MoM n/a' : `MoM ${mom >= 0 ? '+' : ''}${mom.toFixed(1)}%`;
     const momClass = mom === null ? 'mom-neutral' : mom > 0 ? 'mom-positive' : mom < 0 ? 'mom-negative' : 'mom-neutral';
     const momHtml = `<span class="mom-pill ${momClass}">${escapeHtml(momText)}</span>`;
-    const categoryText = cleanText(item.category || 'unknown category');
     const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
-    const categoryHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
-    const categoryIconHtml = `<a href="${categoryHref}" target="_blank" rel="noopener noreferrer" class="financial-bullet-link" aria-label="Open ${escapeHtml(categoryText)} in Financials" title="${escapeHtml(categoryText)}"><i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i></a>`;
-    return `${categoryIconHtml} <strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)}${escapeHtml(employmentDelta)} | ${momHtml}`;
+    const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
+    return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)}${escapeHtml(employmentDelta)} | ${momHtml}</a>`;
   });
   renderList('latest-financials', lines);
 }

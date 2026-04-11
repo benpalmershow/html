@@ -486,7 +486,8 @@
             const trailerBtn = document.createElement('a');
             trailerBtn.className = 'action-btn trailer-btn';
             trailerBtn.title = item.mediaType === 'playlist' ? 'Preview Playlist' : 'Watch Trailer';
-            trailerBtn.innerHTML = `<i class="fab fa-youtube"></i>`;
+            const typeInitial = item.mediaType === 'movie' ? 'M' : item.mediaType === 'video' ? 'V' : 'P';
+            trailerBtn.innerHTML = `<i class="fab fa-youtube"></i><span class="link-label-initial">${typeInitial}</span>`;
             
             let watchUrl = item.embedUrl;
             if (watchUrl.includes('youtube.com/embed/')) {
@@ -556,7 +557,12 @@
                 if (isXLink) {
                     linkEl.innerHTML = X_LINK_SVG;
                 } else if (link.icon) {
-                    linkEl.innerHTML = `<i class="${link.icon}"></i>`;
+                    let iconHtml = `<i class="${link.icon}"></i>`;
+                    if (link.icon.includes('youtube') && link.label) {
+                        const firstLetter = link.label.charAt(0).toUpperCase();
+                        iconHtml += `<span class="link-label-initial">${firstLetter}</span>`;
+                    }
+                    linkEl.innerHTML = iconHtml;
                 }
                 
                 if (isTrailerLink && (item.mediaType === 'movie' || item.mediaType === 'video')) {

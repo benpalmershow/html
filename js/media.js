@@ -290,6 +290,12 @@
     function createMediaCard(item, isFirst = false) {
         const card = document.createElement('div');
         card.className = 'media-card';
+        if (item.mediaType === 'video') {
+            card.classList.add('video-card');
+        }
+        if (item.mediaType === 'movie') {
+            card.classList.add('movie-card');
+        }
 
         // Create URL-safe ID
         const cardId = item.title.toLowerCase()
@@ -549,7 +555,7 @@
                 if (isXLink) {
                     linkEl.innerHTML = X_LINK_SVG;
                 } else if (link.icon) {
-                    linkEl.innerHTML = `<i class="${link.icon}"></i>`;
+                    linkEl.innerHTML = `<i class="${link.icon}"></i><span class="rating-text">${link.label}</span>`;
                 }
                 
                 if (isTrailerLink && (item.mediaType === 'movie' || item.mediaType === 'video')) {

@@ -46,6 +46,21 @@
         rss: 'rss-link'
     };
 
+    const MEDIA_TYPE_ICONS = {
+        'podcast': 'fas fa-podcast',
+        'playlist': 'fas fa-music',
+        'book': 'fas fa-book',
+        'song': 'fas fa-music',
+        'video': 'fas fa-video',
+        'movie': 'fas fa-film',
+        'album': 'fas fa-music',
+        'article': 'fas fa-newspaper'
+    };
+
+    const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
+
+    const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222C5F5A%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ELand Unknown%3C/text%3E%3C/svg%3E';
+
     function openDB() {
         return new Promise((resolve, reject) => {
             const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -356,14 +371,9 @@
         // Optimize image decoding for performance (async prevents layout jank)
         coverImg.decoding = 'async';
 
-        const placeholderSvg = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222C5F5A%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ELand Unknown%3C/text%3E%3C/svg%3E';
-
         if (item.cover) {
-            // TMDB optimization: Ensure w500 size for fast loads (50KB vs original)
-            // media.themoviedb.org is CORS-friendly CDN, faster than www.themoviedb.org
             let optimizedCover = item.cover;
             if (item.cover.includes('themoviedb.org') || item.cover.includes('tmdb.org')) {
-                // Normalize any original/ references to w500/ for consistency
                 optimizedCover = item.cover.replace(/\/original\//, '/w500/');
             }
 
@@ -376,11 +386,11 @@
             }
             coverImg.onload = () => coverImg.classList.add('loaded');
             coverImg.onerror = () => {
-                coverImg.src = placeholderSvg;
+                coverImg.src = PLACEHOLDER_SVG;
                 coverImg.classList.add('loaded');
             };
         } else {
-            coverImg.src = placeholderSvg;
+            coverImg.src = PLACEHOLDER_SVG;
             coverImg.classList.add('loaded');
         }
 
@@ -413,47 +423,9 @@
         }, { passive: true });
 
         if (item.mediaType === 'podcast' && item.author?.includes('Doc Riter')) {
-            const docRiterCover = document.createElement('div');
-            docRiterCover.className = 'media-cover doc-riter-custom-cover';
-            
-            const dpIcon = document.createElement('img');
-            dpIcon.src = 'images/logo.webp';
-            dpIcon.className = 'doc-riter-custom-icon';
-            dpIcon.alt = '';
-            
-            const dpDate = document.createElement('div');
-            dpDate.className = 'doc-riter-custom-date';
-            
-            // Try to use title if it looks like a date, fallback to item.date
-            let dateText = item.date || item.dateAdded || '';
-            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            if (item.title && months.some(m => item.title.includes(m))) {
-                dateText = item.title;
-            }
-            dpDate.textContent = dateText;
-            
-            docRiterCover.appendChild(dpIcon);
-            docRiterCover.appendChild(dpDate);
-            coverContainer.appendChild(docRiterCover);
+            renderDocRiterCover(coverContainer, item);
         } else if (item.mediaType === 'playlist') {
-            // Playlist: title as cover, listen.webp icon in upper right
-            const plCover = document.createElement('div');
-            plCover.className = 'media-cover playlist-custom-cover';
-
-            // listen.webp icon (upper right)
-            const plIcon = document.createElement('img');
-            plIcon.src = 'images/listen.webp';
-            plIcon.className = 'doc-riter-custom-icon';
-            plIcon.alt = '';
-
-            // Title as cover text
-            const plTitle = document.createElement('div');
-            plTitle.className = 'playlist-custom-title';
-            plTitle.textContent = item.title;
-
-            plCover.appendChild(plIcon);
-            plCover.appendChild(plTitle);
-            coverContainer.appendChild(plCover);
+            renderPlaylistCover(coverContainer, item);
         } else {
             coverContainer.appendChild(coverImg);
         }
@@ -462,6 +434,48 @@
         card.appendChild(overlay);
 
         return card;
+    }
+
+    function renderDocRiterCover(container, item) {
+        const docRiterCover = document.createElement('div');
+        docRiterCover.className = 'media-cover doc-riter-custom-cover';
+        
+        const dpIcon = document.createElement('img');
+        dpIcon.src = 'images/logo.webp';
+        dpIcon.className = 'doc-riter-custom-icon';
+        dpIcon.alt = '';
+        
+        const dpDate = document.createElement('div');
+        dpDate.className = 'doc-riter-custom-date';
+        
+        let dateText = item.date || item.dateAdded || '';
+        const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        if (item.title && months.some(m => item.title.includes(m))) {
+            dateText = item.title;
+        }
+        dpDate.textContent = dateText;
+        
+        docRiterCover.appendChild(dpIcon);
+        docRiterCover.appendChild(dpDate);
+        container.appendChild(docRiterCover);
+    }
+
+    function renderPlaylistCover(container, item) {
+        const plCover = document.createElement('div');
+        plCover.className = 'media-cover playlist-custom-cover';
+
+        const plIcon = document.createElement('img');
+        plIcon.src = 'images/listen.webp';
+        plIcon.className = 'doc-riter-custom-icon';
+        plIcon.alt = '';
+
+        const plTitle = document.createElement('div');
+        plTitle.className = 'playlist-custom-title';
+        plTitle.textContent = item.title;
+
+        plCover.appendChild(plIcon);
+        plCover.appendChild(plTitle);
+        container.appendChild(plCover);
     }
 
     function createOverlay(item) {
@@ -478,42 +492,26 @@
             topRightActions.appendChild(btnElement);
         }
 
+        // Ratings
+        if (item.ratings?.imdb) addActionToTop(createRatingLink(item.ratings.imdb, 'IMDb'));
+        if (item.ratings?.rt) addActionToTop(createRatingLink(item.ratings.rt, 'RT'));
 
-        if (item.ratings?.imdb) {
-            const imdbLink = document.createElement('a');
-            imdbLink.href = item.ratings.imdb.url;
-            imdbLink.className = 'action-btn imdb-btn';
-            imdbLink.target = '_blank';
-            imdbLink.rel = 'noopener noreferrer';
-            imdbLink.title = `IMDb Score: ${item.ratings.imdb.score}`;
-            
-            const scoreNum = parseFloat(item.ratings.imdb.score);
-            const scoreClass = 'med-rating'; // Fixed back to yellow by later CSS but keeping class logic
-            
-            imdbLink.innerHTML = `<span class="rating-label">IMDb</span><span class="rating-text">${item.ratings.imdb.score}</span>`;
-            addActionToTop(imdbLink);
-        }
-        
-        if (item.ratings?.rt) {
-            const rtLink = document.createElement('a');
-            rtLink.href = item.ratings.rt.url;
-            rtLink.className = 'action-btn rt-btn';
-            rtLink.target = '_blank';
-            rtLink.rel = 'noopener noreferrer';
-            rtLink.title = `Rotten Tomatoes: ${item.ratings.rt.score}`;
-            
-            const scoreNum = parseInt(item.ratings.rt.score);
-            const scoreClass = 'med-rating'; // Using med for consistent color as requested
-            
-            rtLink.innerHTML = `<span class="rating-label">RT</span><span class="rating-text">${item.ratings.rt.score}</span>`;
-            addActionToTop(rtLink);
+        // Coachella Lineup
+        if (item.tag === 'coachella') {
+            const lineupBtn = document.createElement('a');
+            lineupBtn.href = 'https://coachella.com/lineup';
+            lineupBtn.className = 'action-btn lineup-btn';
+            lineupBtn.target = '_blank';
+            lineupBtn.rel = 'noopener noreferrer';
+            lineupBtn.title = 'Full Lineup';
+            lineupBtn.innerHTML = '<i class="fas fa-list-ul"></i>';
+            addActionToTop(lineupBtn);
         }
 
+        // Platform Links
         if (item.links?.length > 0) {
             item.links.forEach(link => {
                 const isXLink = link.name?.toLowerCase() === 'x' || link.label?.toLowerCase() === 'x';
-                const isTrailerLink = link.label?.toLowerCase() === 'trailer';
-
                 const linkEl = document.createElement('a');
                 linkEl.href = link.url;
                 linkEl.target = '_blank';
@@ -524,24 +522,16 @@
                 if (isXLink) {
                     linkEl.innerHTML = X_LINK_SVG;
                 } else if (link.icon) {
-                    let iconHtml = `<i class="${link.icon}"></i>`;
-                    if (link.icon.includes('youtube') && link.label && item.title?.toLowerCase().includes('coachella')) {
-                        const firstLetter = link.label.charAt(0).toUpperCase();
-                        iconHtml += `<span class="link-label-initial">${firstLetter}</span>`;
-                    }
-                    linkEl.innerHTML = iconHtml;
+                    linkEl.innerHTML = `<i class="${link.icon}"></i>`;
                 }
                 
-                if (isTrailerLink && (item.mediaType === 'movie' || item.mediaType === 'video')) {
-                    addActionToTop(linkEl);
-                } else {
-                    addActionToTop(linkEl);
-                }
+                addActionToTop(linkEl);
             });
         }
         
         overlay.appendChild(topRightActions);
 
+        // Title & Author
         const title = document.createElement('h2');
         title.className = 'media-title';
         title.textContent = item.title;
@@ -550,62 +540,35 @@
         if (item.author) {
             const author = document.createElement('div');
             author.className = 'media-author';
-            author.textContent = item.mediaType === 'movie' ? `Director: ${item.author}` : item.mediaType === 'playlist' ? `Curator: ${item.author}` : item.mediaType === 'album' ? `Artist: ${item.author}` : item.author;
+            author.textContent = getAuthorLabel(item);
             overlayContent.appendChild(author);
         }
 
+        // Description / Coachella Schedule
         if (item.description) {
             const description = document.createElement('div');
             description.className = 'media-description';
             
             if (item.tag === 'coachella') {
-                // Enhanced Coachella Header
-                const stageInfo = document.createElement('div');
-                stageInfo.className = 'coachella-stage-info';
-                
-                const stageName = document.createElement('h3');
-                stageName.className = 'coachella-stage-name';
-                // Extract stage name from title (e.g. "Coachella Stage - ...")
-                const nameParts = item.title.split(' - ');
-                stageName.textContent = nameParts[0];
-                
-                const stageDate = document.createElement('div');
-                stageDate.className = 'coachella-date';
-                stageDate.textContent = item.date || '';
-                
-                stageInfo.appendChild(stageName);
-                stageInfo.appendChild(stageDate);
-                overlayContent.appendChild(stageInfo);
-                
+                renderCoachellaHeader(overlayContent, item);
                 description.innerHTML = item.description;
-
-                // Add Full Lineup Link at the bottom
-                const lineupLinkContainer = document.createElement('div');
-                lineupLinkContainer.className = 'coachella-lineup-container';
-                const lineupLink = document.createElement('a');
-                lineupLink.href = 'https://coachella.com/lineup';
-                lineupLink.target = '_blank';
-                lineupLink.rel = 'noopener noreferrer';
-                lineupLink.className = 'coachella-lineup-link';
-                lineupLink.innerHTML = 'Full Lineup <i class="fas fa-external-link-alt"></i>';
-                lineupLinkContainer.appendChild(lineupLink);
-                overlayContent.appendChild(lineupLinkContainer);
             } else {
                 description.textContent = item.description;
             }
-
-
             overlayContent.appendChild(description);
         }
 
+        // Highlights
         if (item.highlights?.length > 0) {
             const highlightsList = document.createElement('div');
             highlightsList.className = 'media-highlights';
             item.highlights.forEach(h => {
                 const a = document.createElement('a');
-                a.href = h.url;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
+                a.href = h.url || '#';
+                if (h.url) {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                }
                 a.textContent = h.label;
                 a.className = 'media-highlight-link';
                 highlightsList.appendChild(a);
@@ -613,6 +576,7 @@
             overlayContent.appendChild(highlightsList);
         }
 
+        // Playlist Date
         if (item.mediaType === 'playlist' && item.date) {
             const dateElement = document.createElement('div');
             dateElement.className = 'media-date-bottom';
@@ -620,6 +584,7 @@
             overlayContent.appendChild(dateElement);
         }
 
+        // Stars Rating
         if (item.rating) {
             const rating = document.createElement('div');
             rating.className = 'media-rating';
@@ -631,27 +596,41 @@
         return overlay;
     }
 
-
-    function getPlatformClass(link) {
-        if (!link.icon) return 'media-link';
-        for (const [platform, className] of Object.entries(PLATFORM_ICONS)) {
-            if (link.icon.includes(platform)) return className;
-        }
-        return 'media-link';
+    function createRatingLink(ratingData, label) {
+        const link = document.createElement('a');
+        link.href = ratingData.url;
+        link.className = `action-btn ${label.toLowerCase()}-btn`;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.title = `${label} Score: ${ratingData.score}`;
+        link.innerHTML = `<span class="rating-label">${label}</span><span class="rating-text">${ratingData.score}</span>`;
+        return link;
     }
 
-    const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
+    function getAuthorLabel(item) {
+        if (item.mediaType === 'movie') return `Director: ${item.author}`;
+        if (item.mediaType === 'playlist') return `Curator: ${item.author}`;
+        if (item.mediaType === 'album') return `Artist: ${item.author}`;
+        return item.author;
+    }
 
-    const MEDIA_TYPE_ICONS = {
-        'podcast': 'fas fa-podcast',
-        'playlist': 'fas fa-music',
-        'book': 'fas fa-book',
-        'song': 'fas fa-music',
-        'video': 'fas fa-video',
-        'movie': 'fas fa-film',
-        'album': 'fas fa-music',
-        'article': 'fas fa-newspaper'
-    };
+    function renderCoachellaHeader(container, item) {
+        const stageInfo = document.createElement('div');
+        stageInfo.className = 'coachella-stage-info';
+        
+        const stageName = document.createElement('h3');
+        stageName.className = 'coachella-stage-name';
+        const nameParts = item.title.split(' - ');
+        stageName.textContent = nameParts[0];
+        
+        stageInfo.appendChild(stageName);
+        container.appendChild(stageInfo);
+    }
+    function getPlatformClass(link) {
+        if (!link.icon) return 'media-link';
+        const platform = Object.keys(PLATFORM_ICONS).find(p => link.icon.includes(p));
+        return platform ? PLATFORM_ICONS[platform] : 'media-link';
+    }
 
     function getMediaTypeIcon(mediaType) {
         return MEDIA_TYPE_ICONS[mediaType] || 'fas fa-file-alt';

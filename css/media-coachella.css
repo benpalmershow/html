@@ -78,95 +78,60 @@
 
 table.coachella-schedule {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 4px;
-    font-size: 0.8rem;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
 }
 
 table.coachella-schedule tr {
-    transition: background 0.2s ease;
-    border-radius: 4px;
-}
-
-table.coachella-schedule tr:hover {
-    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 table.coachella-schedule td {
-    padding: 0.4rem 0.3rem;
-    vertical-align: middle;
+    padding: 1px 0; /* Minimal vertical spacing */
+    margin: 0;
+    vertical-align: baseline;
+    border: none;
+    line-height: 1.2;
 }
 
 /* Time Column */
 table.coachella-schedule td:first-child {
-    width: 25%; /* Slightly narrowed to give more room to artists */
-    color: #ffb347;
-    font-weight: 700;
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    font-size: 0.7rem;
-    border-radius: 4px 0 0 4px;
-    opacity: 0.9;
-    white-space: nowrap; /* Keep time on 1 line */
+    width: 60px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    text-align: left;
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
 }
-
 
 /* Artist Column */
 table.coachella-schedule td:last-child {
-    width: 75%;
-    font-weight: 600;
-    color: #ffffff;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
     text-align: left;
-    padding-left: 0.6rem;
-    border-radius: 0 4px 4px 0;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
     overflow-wrap: break-word;
     hyphens: none;
 }
 
 
-.coachella-lineup-container {
-    margin-top: 1rem;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 0.75rem;
+
+.media-card[data-tag="coachella"]:hover {
+    transform: none;
+    box-shadow: none;
 }
 
-.coachella-lineup-link {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+.lineup-btn:hover i {
+    color: inherit;
 }
 
-.coachella-lineup-link:hover {
-    color: #ff6b35;
-    transform: translateY(-1px);
-}
-
-.coachella-lineup-link i {
-    font-size: 0.65rem;
-}
-
-
-
-
-
-/* Headliner / First Row Highlight */
-table.coachella-schedule tr:first-child td {
-    background: rgba(255, 107, 53, 0.2);
-}
-
-table.coachella-schedule tr:first-child td:last-child {
-    color: #ff6b35;
-    font-weight: 800;
-    font-size: 0.85rem;
-}
 
 /* Watch Live Button */
 @media (max-width: 768px) {

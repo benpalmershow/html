@@ -306,6 +306,9 @@
 
         card.id = cardId;
         card.dataset.mediaType = item.mediaType || 'unknown';
+        if (item.tag) {
+            card.dataset.tag = item.tag;
+        }
         card.setAttribute('role', 'article');
         card.setAttribute('aria-label', `${item.title} - ${item.mediaType}`);
         card.tabIndex = 0;
@@ -554,7 +557,12 @@
         if (item.description) {
             const description = document.createElement('div');
             description.className = 'media-description';
-            description.textContent = item.description;
+            // Use innerHTML for coachella cards to render the table
+            if (item.tag === 'coachella') {
+                description.innerHTML = item.description;
+            } else {
+                description.textContent = item.description;
+            }
             overlayContent.appendChild(description);
         }
 

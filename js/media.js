@@ -557,12 +557,51 @@
         if (item.description) {
             const description = document.createElement('div');
             description.className = 'media-description';
-            // Use innerHTML for coachella cards to render the table
+            
             if (item.tag === 'coachella') {
-                description.innerHTML = item.description;
+                // Enhanced Coachella Header
+                const stageInfo = document.createElement('div');
+                stageInfo.className = 'coachella-stage-info';
+                
+                const stageName = document.createElement('h3');
+                stageName.className = 'coachella-stage-name';
+                // Extract stage name from title (e.g. "Coachella Stage - ...")
+                const nameParts = item.title.split(' - ');
+                stageName.textContent = nameParts[0];
+                
+                const stageDate = document.createElement('div');
+                stageDate.className = 'coachella-date';
+                stageDate.textContent = item.date || '';
+                
+                stageInfo.appendChild(stageName);
+                stageInfo.appendChild(stageDate);
+                overlayContent.appendChild(stageInfo);
+                
+                // Parse the table HTML and add links to artists from highlights
+                const tempTableDiv = document.createElement('div');
+                tempTableDiv.innerHTML = item.description;
+                const rows = tempTableDiv.querySelectorAll('tr');
+                
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    if (cells.length >= 2) {
+                        const artistName = cells[1].textContent.trim();
+                        const artistHighlight = item.highlights?.find(h => 
+                            h.label?.toLowerCase() === artistName.toLowerCase() || 
+                            artistName.toLowerCase().includes(h.label?.toLowerCase())
+                        );
+                        
+                        if (artistHighlight && artistHighlight.url) {
+                            cells[1].innerHTML = `<a href="${artistHighlight.url}" target="_blank" rel="noopener noreferrer" class="artist-link">${artistName}</a>`;
+                        }
+                    }
+                });
+                
+                description.innerHTML = tempTableDiv.innerHTML;
             } else {
                 description.textContent = item.description;
             }
+
             overlayContent.appendChild(description);
         }
 

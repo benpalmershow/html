@@ -1,0 +1,188 @@
+/* ==========================================================================
+   COACHELLA SPECIAL STYLING
+   ========================================================================== */
+
+/* Coachella Card Base Overrides */
+.media-card[data-tag="coachella"] {
+    border-color: rgba(255, 107, 53, 0.3);
+    overflow: hidden;
+}
+
+.media-card[data-tag="coachella"]:hover {
+    border-color: #ff6b35;
+    box-shadow: 0 15px 35px rgba(255, 107, 53, 0.25);
+}
+
+/* Hide standard elements not needed for Coachella grid cards */
+.media-card[data-tag="coachella"] .media-title,
+.media-card[data-tag="coachella"] .media-author,
+.media-card[data-tag="coachella"] .media-highlights {
+    display: none;
+}
+
+/* Coachella Overlay Container */
+.media-card[data-tag="coachella"] .media-overlay {
+    background: linear-gradient(180deg, 
+        rgba(15, 12, 41, 0.85) 0%, 
+        rgba(48, 43, 99, 0.9) 50%, 
+        rgba(255, 107, 53, 0.95) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Content Layout */
+.media-card[data-tag="coachella"] .media-overlay-content {
+    padding: 1.5rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+/* Stage Header (extracted from title in JS or styled here) */
+.coachella-stage-info {
+    text-align: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.coachella-stage-name {
+    font-family: var(--font-display, 'Inter', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: linear-gradient(90deg, #fff, #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.coachella-date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+
+/* Schedule Table Styling */
+.media-card[data-tag="coachella"] .media-description {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+table.coachella-schedule {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    font-size: 0.8rem;
+}
+
+table.coachella-schedule tr {
+    transition: background 0.2s ease;
+    border-radius: 4px;
+}
+
+table.coachella-schedule tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+table.coachella-schedule td {
+    padding: 0.4rem 0.3rem;
+    vertical-align: middle;
+}
+
+/* Time Column */
+table.coachella-schedule td:first-child {
+    width: 25%; /* Slightly narrowed to give more room to artists */
+    color: #ffb347;
+    font-weight: 700;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.7rem;
+    border-radius: 4px 0 0 4px;
+    opacity: 0.9;
+    white-space: nowrap; /* Keep time on 1 line */
+}
+
+
+/* Artist Column */
+table.coachella-schedule td:last-child {
+    width: 75%;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 0.6rem;
+    border-radius: 0 4px 4px 0;
+    overflow-wrap: break-word;
+    hyphens: none;
+}
+
+
+.artist-link {
+    color: #ffb347; /* Match time column color for better discoverability */
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 179, 71, 0.3);
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+.artist-link:hover {
+    color: #ff6b35;
+    text-decoration-color: #ff6b35;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+}
+
+
+
+
+/* Headliner / First Row Highlight */
+table.coachella-schedule tr:first-child td {
+    background: rgba(255, 107, 53, 0.2);
+}
+
+table.coachella-schedule tr:first-child td:last-child {
+    color: #ff6b35;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+/* Watch Live Button */
+@media (max-width: 768px) {
+    .media-card[data-tag="coachella"] .media-overlay-content {
+        padding: 1rem 0.5rem;
+    }
+    
+    table.coachella-schedule {
+        font-size: 0.75rem;
+    }
+    
+    .coachella-stage-name {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    table.coachella-schedule {
+        font-size: 0.65rem;
+    }
+    
+    table.coachella-schedule td {
+        padding: 0.25rem 0.2rem;
+    }
+    
+    .coachella-stage-name {
+        font-size: 0.85rem;
+    }
+    
+    .coachella-watch-now {
+        padding: 0.4rem;
+        font-size: 0.65rem;
+    }
+}
+

@@ -722,21 +722,19 @@ RESPONSIVE DESIGN - TABLET & MOBILE
 /* Extra Small Mobile Styles (414px and below) - iPhone 12/13 mini, etc. */
 @media (max-width: 414px) {
     .media-card {
-        width: 90px;
-        /* Height adjusted proportionally for aspect ratios */
+        width: 140px;
         height: auto;
-        aspect-ratio: 9/14;
-        /* Adjusted for better mobile display */
+        aspect-ratio: 7/10;
     }
 
     .media-cards {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        gap: 0.5rem;
-        margin: 0.5rem auto;
-        padding: 0.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1.25rem;
+        margin: 1rem auto;
+        padding: 1rem;
         justify-content: center;
-        width: calc(100% - 1rem);
+        width: calc(100% - 1.5rem);
     }
 
     .media-filters {

@@ -1,18 +1,18 @@
-# Coachella viwers guide
+# Coachella viewers guide
 
-| Artist | Stage | Time | Good? |
+| Artist | Stage | Time | Rating |
 |--------|-------|------|--------|
-| Gabe Real | Coachella | 2:45pm | n/a |
-| Juicewon | Outdoor Theatre | 3:00pm | n/a |
-| Tijuana Panthers | Coachella | 3:40pm | no |
-| Model/Actriz | Sonora | 4:00pm | no |
-| Gigi Perez | Outdoor Theatre | 4:00pm | no |
-| Girl Math | Sahara | 4:00pm | no |
-| Jazzy | Quasar | 4:00pm | ok |
-| COBRAH | Gobi | 4:05pm | no |
-| Little Simz | Mojave | 4:25pm | no |
-| Wet Leg | Coachella | 4:45pm | no |
-| Jane Remover | Sonora | 4:45pm | no |
+| Gabe Real | Coachella | 2:45pm | - |
+| Juicewon | Outdoor Theatre | 3:00pm | - |
+| Tijuana Panthers | Coachella | 3:40pm | 🍺 |
+| Model/Actriz | Sonora | 4:00pm | 🍺 |
+| Gigi Perez | Outdoor Theatre | 4:00pm | 🍺 |
+| Girl Math | Sahara | 4:00pm | 🍺 |
+| Jazzy | Quasar | 4:00pm | 🍺🍺 |
+| COBRAH | Gobi | 4:05pm | 🍺 |
+| Little Simz | Mojave | 4:25pm | 🍺 |
+| Wet Leg | Coachella | 4:45pm | - |
+| Jane Remover | Sonora | 4:45pm | - |
 | BUNT. | Sahara | 5:05pm | - |
 | CLIPSE | Outdoor Theatre | 5:15pm | - |
 | Oklou | Gobi | 5:15pm | - |

@@ -124,19 +124,35 @@ table.coachella-schedule td:last-child {
 }
 
 
-.artist-link {
-    color: #ffb347; /* Match time column color for better discoverability */
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 179, 71, 0.3);
-    text-underline-offset: 2px;
-    transition: all 0.2s ease;
+.coachella-lineup-container {
+    margin-top: 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.75rem;
 }
 
-.artist-link:hover {
-    color: #ff6b35;
-    text-decoration-color: #ff6b35;
-    text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+.coachella-lineup-link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
 }
+
+.coachella-lineup-link:hover {
+    color: #ff6b35;
+    transform: translateY(-1px);
+}
+
+.coachella-lineup-link i {
+    font-size: 0.65rem;
+}
+
 
 
 

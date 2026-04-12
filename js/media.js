@@ -577,30 +577,23 @@
                 stageInfo.appendChild(stageDate);
                 overlayContent.appendChild(stageInfo);
                 
-                // Parse the table HTML and add links to artists from highlights
-                const tempTableDiv = document.createElement('div');
-                tempTableDiv.innerHTML = item.description;
-                const rows = tempTableDiv.querySelectorAll('tr');
-                
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length >= 2) {
-                        const artistName = cells[1].textContent.trim();
-                        const artistHighlight = item.highlights?.find(h => 
-                            h.label?.toLowerCase() === artistName.toLowerCase() || 
-                            artistName.toLowerCase().includes(h.label?.toLowerCase())
-                        );
-                        
-                        if (artistHighlight && artistHighlight.url) {
-                            cells[1].innerHTML = `<a href="${artistHighlight.url}" target="_blank" rel="noopener noreferrer" class="artist-link">${artistName}</a>`;
-                        }
-                    }
-                });
-                
-                description.innerHTML = tempTableDiv.innerHTML;
+                description.innerHTML = item.description;
+
+                // Add Full Lineup Link at the bottom
+                const lineupLinkContainer = document.createElement('div');
+                lineupLinkContainer.className = 'coachella-lineup-container';
+                const lineupLink = document.createElement('a');
+                lineupLink.href = 'https://coachella.com/lineup';
+                lineupLink.target = '_blank';
+                lineupLink.rel = 'noopener noreferrer';
+                lineupLink.className = 'coachella-lineup-link';
+                lineupLink.innerHTML = 'Full Lineup <i class="fas fa-external-link-alt"></i>';
+                lineupLinkContainer.appendChild(lineupLink);
+                overlayContent.appendChild(lineupLinkContainer);
             } else {
                 description.textContent = item.description;
             }
+
 
             overlayContent.appendChild(description);
         }

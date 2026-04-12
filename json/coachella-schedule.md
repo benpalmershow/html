@@ -11,8 +11,8 @@
 | Jazzy | Quasar | 4:00pm | 🍺🍺 |
 | COBRAH | Gobi | 4:05pm | 🍺 |
 | Little Simz | Mojave | 4:25pm | 🍺 |
-| Wet Leg | Coachella | 4:45pm | - |
-| Jane Remover | Sonora | 4:45pm | - |
+| Wet Leg | Coachella | 4:45pm | 🍺 |
+| Jane Remover | Sonora | 4:45pm | 🍺|
 | BUNT. | Sahara | 5:05pm | - |
 | CLIPSE | Outdoor Theatre | 5:15pm | - |
 | Oklou | Gobi | 5:15pm | - |

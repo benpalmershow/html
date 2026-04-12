@@ -2,7 +2,12 @@
    COACHELLA SPECIAL STYLING
    ========================================================================== */
 
-/* Coachella Card Base Overrides */
+/* Coachella Cards Container - use standard spacing */
+.media-cards:has([data-tag="coachella"]) {
+    gap: 1.5rem;
+}
+
+/* Coachella card - inherit sizing from regular cards */
 .media-card[data-tag="coachella"] {
     border-color: rgba(255, 107, 53, 0.3);
     overflow: hidden;
@@ -135,6 +140,10 @@ table.coachella-schedule td:last-child {
 
 /* Watch Live Button */
 @media (max-width: 768px) {
+    .media-cards:has([data-tag="coachella"]) {
+        gap: 1rem;
+    }
+
     .media-card[data-tag="coachella"] .media-overlay-content {
         padding: 1rem 0.5rem;
     }
@@ -149,6 +158,10 @@ table.coachella-schedule td:last-child {
 }
 
 @media (max-width: 480px) {
+    .media-cards:has([data-tag="coachella"]) {
+        gap: 0.75rem;
+    }
+
     table.coachella-schedule {
         font-size: 0.65rem;
     }
@@ -164,6 +177,12 @@ table.coachella-schedule td:last-child {
     .coachella-watch-now {
         padding: 0.4rem;
         font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 414px) {
+    .media-cards:has([data-tag="coachella"]) {
+        gap: 1.25rem;
     }
 }
 

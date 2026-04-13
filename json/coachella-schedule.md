@@ -15,8 +15,8 @@
 | Jane Remover | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 4:45pm | 🍺 |
 | <span title="30 yr old Levi Wijk - German folk DJ and record producer" style="border-bottom:1px dotted #666;cursor:help;">BUNT.</span> | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 5:05pm | 🍺🍺🍺 |
 | CLIPSE | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 5:15pm | 🍺 |
-| Oklou | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 5:15pm | 🍺🍺🍺 |
-| Los Retros | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 5:30pm | - |
+| <span title="Marylou Mayniel - French artist. Just had Tiny Desk with 8-piece choir, stripped electronics & autotune" style="border-bottom:1px dotted #666;cursor:help;">Oklou</span> | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 5:15pm | 🍺🍺🍺 |
+| Los Retros | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 5:30pm | 🍺🍺🍺 |
 | Suicidal Tendencies | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:35pm | - |
 | JOY (Anonymous) | [Quasar](https://youtube.com/live/1KANGsDaRvw) | 6:00pm | - |
 | Duke Dumont | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 6:10pm | - |

@@ -23,9 +23,9 @@
 | Major Lazer | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 6:10pm | 🍺| |
 | Black Flag | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 6:30pm | 🍺 | |
 | Samia | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 6:30pm | 🍺 | |
-| RØZ | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 6:40pm | - | |
-| Foster the People | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 6:45pm | - | |
-| Iggy Pop | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:10pm | - | |
+| RØZ | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 6:40pm | 🍺🍺 |Mexican electronic music DJ and producer duo consisting of Manolo Cabrera and Hugo Lara, known for blending Tropical House and Future Bass with over 30 million streams.  |
+| Foster the People | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 6:45pm | 🍺🍺🍺🍺 | |
+| Iggy Pop | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:10pm | - |78 year old Godfather of Punk, invented stage dive 🤿|
 | flowerovlove | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:10pm | - | |
 | Mochakk | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 7:25pm | - | |
 | TOMORA | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:45pm | - | |

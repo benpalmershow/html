@@ -19,10 +19,10 @@
 | Los Retros | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 5:30pm | 🍺🍺 |Steely Dan soft rock and christopher cross vibes | |
 | Suicidal Tendencies | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:35pm | 🍺 | |
 | JOY (Anonymous) | [Quasar](https://youtube.com/live/1KANGsDaRvw) | 6:00pm | 🍺 | |
-| Duke Dumont | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 6:10pm | - | |
-| Major Lazer | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 6:10pm | - | |
-| Black Flag | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 6:30pm | - | |
-| Samia | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 6:30pm | - | |
+| Duke Dumont | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 6:10pm | 🍺 | |
+| Major Lazer | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 6:10pm | 🍺| |
+| Black Flag | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 6:30pm | 🍺 | |
+| Samia | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 6:30pm | 🍺 | |
 | RØZ | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 6:40pm | - | |
 | Foster the People | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 6:45pm | - | |
 | Iggy Pop | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:10pm | - | |

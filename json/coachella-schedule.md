@@ -17,7 +17,7 @@
 | CLIPSE | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 5:15pm | 🍺 | |
 | Oklou | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 5:15pm | 🍺🍺🍺 | a couple of days before arriving for her Tiny Desk, Oklou’s Marylou Mayniel flew with her five-month old baby from their Paris home to New York, where she met for the first time with an eight-piece choir to rehearse completely reimagined versions of four songs. The goal was to strip away the electronics and often heavy autotune heard across Oklou’s beguiling debut album|
 | Los Retros | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 5:30pm | 🍺🍺 |Steely Dan soft rock and christopher cross vibes | |
-| Suicidal Tendencies | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:35pm | - | |
+| Suicidal Tendencies | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:35pm | 🍺 | |
 | JOY (Anonymous) | [Quasar](https://youtube.com/live/1KANGsDaRvw) | 6:00pm | - | |
 | Duke Dumont | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 6:10pm | - | |
 | Major Lazer | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 6:10pm | - | |

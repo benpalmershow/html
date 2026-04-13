@@ -30,9 +30,9 @@
 | Mochakk | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 7:25pm | 🍺 |
 | TOMORA | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:45pm | 🍺 |
 | Young Thug | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 7:50pm |🍺 |
-| Fatboy Slim | [Quasar](https://youtube.com/live/1KANGsDaRvw) | 8:00pm | - |
-| DRAIN | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 8:00pm | - |
-| Laufey | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 8:40pm | - |
+| Fatboy Slim | [Quasar](https://youtube.com/live/1KANGsDaRvw) | 8:00pm | 🍺🍺 |
+| DRAIN | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 8:00pm | 🍺 |
+| Laufey | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 8:40pm | 🍺 |
 | FKA twigs | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 8:45pm | - |
 | Subtronics | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 9:05pm | - |
 | The Rapture | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 9:05pm | - |

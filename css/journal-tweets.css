@@ -87,6 +87,25 @@
     background: var(--tweet-bg-hover);
 }
 
+@media (max-width: 600px) {
+    .entry-content .coachella-schedule {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .entry-content .coachella-schedule th:nth-child(5),
+    .entry-content .coachella-schedule td:nth-child(5) {
+        display: none;
+    }
+    
+    .entry-content .coachella-schedule th,
+    .entry-content .coachella-schedule td {
+        font-size: 0.6em;
+        padding: 1px 3px;
+    }
+}
+
 html.dark-mode {
     --tweet-bg: var(--color-dark-bg-primary);
     --tweet-bg-hover: var(--color-dark-bg-secondary);

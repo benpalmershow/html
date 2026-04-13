@@ -28,8 +28,8 @@
 | <span title="78yr old Godfather of Punk, invented stage dive" style="border-bottom:1px dotted #666;cursor:help;">Iggy Pop</span> | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:10pm | 🍺🍺 |
 | flowerovlove | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:10pm | 🍺 |
 | Mochakk | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 7:25pm | 🍺 |
-| TOMORA | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:45pm | 🍺🍺 |
-| Young Thug | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 7:50pm | - |
+| TOMORA | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:45pm | 🍺 |
+| Young Thug | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 7:50pm |🍺 |
 | Fatboy Slim | [Quasar](https://youtube.com/live/1KANGsDaRvw) | 8:00pm | - |
 | DRAIN | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 8:00pm | - |
 | Laufey | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 8:40pm | - |

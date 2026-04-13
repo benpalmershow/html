@@ -13,7 +13,7 @@
 | Little Simz | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 4:25pm | 🍺 |
 | Wet Leg | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 4:45pm | 🍺 |
 | Jane Remover | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 4:45pm | 🍺 |
-| BUNT. | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 5:05pm | 🍺🍺🍺 |
+| <span title="30 yr old Levi Wijk - German folk DJ and record producer" style="border-bottom:1px dotted #666;cursor:help;">BUNT.</span> | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 5:05pm | 🍺🍺🍺 |
 | CLIPSE | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 5:15pm | - |
 | Oklou | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 5:15pm | - |
 | Los Retros | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 5:30pm | - |

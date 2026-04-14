@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-13T07:52:00Z",
+    "lastUpdated": "2026-04-1T07:52:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -85,7 +85,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Existing Home Sales",
-            "lastUpdated": "2026-03-11T14:00:00Z",
+            "lastUpdated": "2026-04-14T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
             "march": "",
@@ -100,7 +100,8 @@
             "december": "4.27M",
             "2026": {
                 "january": "3.91M",
-                "february": "4.09M"
+                "february": "4.09M",
+                "march": "3.98M"
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
@@ -980,7 +981,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Median Home Price",
-            "lastUpdated": "2026-03-11T14:00:00Z",
+            "lastUpdated": "2026-04-14T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
             "march": "$403,100",
@@ -995,7 +996,8 @@
             "december": "$405,010",
             "2026": {
                 "january": "$396,800",
-                "february": "$398,000"
+                "february": "$398,000",
+                "march": "$408,800"
             },
             "change": "",
             "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
@@ -1275,7 +1277,7 @@
             "category": "Business Indicators",
             "agency": "BLS",
             "name": "PPI",
-            "lastUpdated": "2026-03-19T14:00:00Z",
+            "lastUpdated": "2026-04-14T14:00:00Z",
             "releaseDay": 13,
             "url": "https://www.bls.gov/ppi/data.htm",
             "march": "148.061",
@@ -1286,11 +1288,12 @@
             "august": "149.259",
             "september": "150.245",
             "october": "150.439",
-            "november": "150.819",
-            "december": "151.393",
+            "november": "151.054",
+            "december": "151.626",
             "2026": {
-                "january": "152.190",
-                "february": "153.231"
+                "january": "152.464",
+                "february": "153.221",
+                "march": "154.006"
             },
             "change": "",
             "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."

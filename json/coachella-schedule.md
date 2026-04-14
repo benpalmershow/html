@@ -45,6 +45,7 @@
 | BIGBANG | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 10:30pm | - |
 | Kaskade | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 10:45pm | - |
 
+
 ## Saturday, April 11
 
 | Artist | Stage | Time | Rating |
@@ -63,6 +64,7 @@
 | Giveon | Coachella | 7:00pm | 🍺🍺🍺🍺 |
 | Ninajirachi | Sahara | 7:10pm | - |
 | Taemin | Mojave | 7:30pm | - |
+| Sombr | Outdoor Theatre | 7:05pm |🍺🍺🍺🍺|
 | Labrinth | Outdoor Theatre | 8:30pm | 🍺🍺🍺 |
 | PinkPantheress | Mojave | 8:55pm | - |
 | The Strokes | Coachella | 9:00pm | 🍺🍺🍺🍺 |

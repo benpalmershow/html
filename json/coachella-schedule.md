@@ -1,5 +1,7 @@
 # Coachella viewers guide
 
+## Sunday, April 12
+
 | Artist | Stage | Time | Rating |
 |--------|-------|------|--------|
 | Gabe Real | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 2:45pm | - |
@@ -42,3 +44,32 @@
 | Glitterer | [Sonora](https://youtube.com/live/OGNPnQViI3g) | 10:15pm | - |
 | BIGBANG | [Outdoor Theatre](https://youtube.com/live/MdUBm8G41ZU) | 10:30pm | - |
 | Kaskade | [Sahara](https://youtube.com/live/NlrpPqb0vwo) | 10:45pm | - |
+
+## Saturday, April 11
+
+| Artist | Stage | Time | Rating |
+|--------|-------|------|--------|
+| Jack White | Mojave | 3:00pm | 🍺🍺 |
+| WHATMORE | Gobi | 4:05pm | - |
+| Fideles | Yuma | 4:30pm | - |
+| Fujii Kaze | Mojave | 4:30pm | - |
+| Jaqck Glam | Coachella | 4:15pm | - |
+| Noga Erez | Coachella | 4:35pm | - |
+| Royel Otis | Mojave | 5:50pm | 🍺🍺 |
+| Addison Rae | Coachella | 5:30pm | 🍺 |
+| HUGEL | Sahara | 5:05pm | 🍺🍺🍺 |
+| Marlon Hoffstadt | Sahara | 6:10pm | - |
+| Afrojack x Shimza | Quasar | 7:00pm | 🍺🍺🍺 |
+| Giveon | Coachella | 7:00pm | 🍺🍺🍺🍺 |
+| Ninajirachi | Sahara | 7:10pm | - |
+| Taemin | Mojave | 7:30pm | - |
+| Labrinth | Outdoor Theatre | 8:30pm | 🍺🍺🍺 |
+| PinkPantheress | Mojave | 8:55pm | - |
+| The Strokes | Coachella | 9:00pm | 🍺🍺🍺🍺 |
+| Adam Beyer | Yuma | 7:30pm | - |
+| David Guetta | Quasar | 9:00pm | 🍺🍺 |
+| Kaskade | Sahara | 10:15pm | - |
+| Interpol | Mojave | 10:15pm | 🍺🍺🍺🍺 |
+| Adriatique | Sahara | 10:35pm | 🍺🍺 |
+| David Byrne | Outdoor Theatre | 10:20pm | 🍺🍺🍺🍺 |
+| Justin Bieber | Coachella | 11:25pm | - |

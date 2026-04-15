@@ -486,6 +486,13 @@
     font-size: 0.7rem;
     word-break: keep-all;
     hyphens: none;
+    cursor: help;
+}
+
+.month-label[title] {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
 }
 
 .month-value {

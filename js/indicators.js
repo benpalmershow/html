@@ -232,6 +232,50 @@ const IndicatorRenderers = (function () {
         return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
+function renderHormuz(indicator) {
+        let latestDataHtml = '';
+        let historyDataHtml = '';
+
+        const april2026 = indicator['2026']?.april;
+        const march2026 = indicator['2026']?.march;
+        const feb2026 = indicator['2026']?.february;
+        const jan2026 = indicator['2026']?.january;
+
+        if (april2026) {
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label">Apr 2026:</span><span class="month-value" style="color: #dc2626; font-weight: 600;">${april2026}</span></div>`;
+        }
+
+        if (march2026) {
+            historyDataHtml += `<div class="data-row"><span class="month-label">Mar 2026:</span><span class="month-value" style="color: #dc2626;">${march2026}</span></div>`;
+        }
+        if (feb2026) {
+            historyDataHtml += `<div class="data-row"><span class="month-label">Feb 2026:</span><span class="month-value">${feb2026}</span></div>`;
+        }
+        if (jan2026) {
+            historyDataHtml += `<div class="data-row"><span class="month-label">Jan 2026:</span><span class="month-value">${jan2026}</span></div>`;
+        }
+
+        if (indicator.vesselsInGulf !== undefined) {
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total active vessels tracked in the Arabian Gulf">Vessels in Gulf:</span><span class="month-value">${indicator.vesselsInGulf}</span></div>`;
+        }
+
+        if (indicator.hormuzInbound !== undefined && indicator.hormuzOutbound !== undefined) {
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Daily ship transits through the Strait of Hormuz">Inbound / Outbound:</span><span class="month-value">${indicator.hormuzInbound} / ${indicator.hormuzOutbound}</span></div>`;
+        }
+
+        if (indicator.darkActivityEvents !== undefined) {
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="AIS-dark vessel activity events (potential smuggling or evasion)">Dark Activity:</span><span class="month-value">${indicator.darkActivityEvents} events</span></div>`;
+        }
+
+        if (indicator.vesselsAttacked !== undefined) {
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${indicator.vesselsAttacked}</span></div>`;
+        }
+
+        const hasHistory = !!(march2026 || feb2026 || jan2026);
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
+    }
+
     function renderStandard(indicator, MONTHS, MONTH_LABELS) {
         const availableData = collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
         let latestDataHtml = '';
@@ -270,6 +314,7 @@ const IndicatorRenderers = (function () {
         .register('prediction', (indicator) => renderPrediction(indicator))
         .register('sports', (indicator) => renderSports(indicator))
         .register('venezuela', (indicator) => renderVenezuela(indicator))
+        .register('hormuz', (indicator) => renderHormuz(indicator))
         .register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS))
         .registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
 
@@ -285,6 +330,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.candidates && typeof indicator.candidates === 'object') return 'venezuela';
     if (indicator.yes_probability && indicator.no_probability) return 'prediction';
+    if (indicator.name === 'Strait of Hormuz Daily Transits') return 'hormuz';
     return 'standard';
 }
 

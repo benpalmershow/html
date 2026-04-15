@@ -852,18 +852,24 @@
         },
         {
             "category": "Trade & Tariffs",
-            "agency": "IMF PortWatch",
+            "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-04-07T14:00:00Z",
+            "lastUpdated": "2026-04-15T14:00:00Z",
             "releaseDay": 0,
-            "url": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
+            "url": "https://insights.windward.ai/",
             "daily": {
                 "2026-04-01": 6,
                 "2026-04-02": 6,
                 "2026-04-03": 5,
                 "2026-04-04": 10,
-                "2026-04-05": 9
+                "2026-04-05": 9,
+                "2026-04-14": 19
             },
+            "vesselsInGulf": 810,
+            "hormuzInbound": 5,
+            "hormuzOutbound": 14,
+            "darkActivityEvents": 153,
+            "vesselsAttacked": 26,
             "march": "",
             "april": "",
             "may": "",
@@ -878,10 +884,10 @@
                 "january": "76",
                 "february": "98",
                 "march": "5",
-                "april": "7"
+                "april": "19"
             },
             "change": "",
-            "explanation": "Daily ship transits through the Strait of Hormuz, a critical chokepoint for global oil shipments. Data from IMF PortWatch. Pre-crisis normal was 100-138 transits/day. Current transits dropped dramatically from ~115/day in mid-February to single digits after February 28, 2026 due to US-Israel-Iran conflict, elevated war-risk insurance premiums, and vessel rerouting. The strait handles roughly 20% of global oil consumption."
+            "explanation": "Daily ship transits through the Strait of Hormuz, a critical chokepoint for global oil shipments. Data from Windward AI Maritime Intelligence Operations Center. Pre-crisis normal was 100-138 transits/day. Current transits dropped dramatically from ~115/day in mid-February to single digits after February 28, 2026 due to US-Israel-Iran conflict and U.S. maritime blockade. The strait handles roughly 20% of global oil consumption. On April 14, 2026 (Day 2 of U.S. blockade), 19 vessels transited: 5 inbound, 14 outbound. Outbound volume surged as Iran-linked tonnage cleared port ahead of enforcement tightening."
         },
         {
             "category": "Business Indicators",

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-15T14:00:00Z",
+    "lastUpdated": "2026-04-16T14:00:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -1030,7 +1030,7 @@
             "category": "Housing Market",
             "agency": "NAHB",
             "name": "Housing Market Index",
-            "lastUpdated": "2026-03-17T14:00:00Z",
+            "lastUpdated": "2026-04-16T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
             "march": "39",
@@ -1046,7 +1046,8 @@
             "2026": {
                 "january": "37",
                 "february": "37",
-                "march": "38"
+                "march": "38",
+                "april": "34"
             },
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."

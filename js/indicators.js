@@ -435,14 +435,15 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
     if (momChange === null) return '';
 
     const isUnemploymentIndicator = indicator.name.includes('Unemployment');
+    const isBudgetDeficitIndicator = indicator.name.includes('Budget') || indicator.name.includes('Deficit');
     let result = '';
 
-    const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : momChange.percentChange;
+    const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : (isBudgetDeficitIndicator ? -momChange.percentChange : momChange.percentChange);
     const momInfo = formatChangeIndicator(momChangeValue);
     result += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
 
     if (yoyChange !== null) {
-        const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
+        const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : (isBudgetDeficitIndicator ? -yoyChange.percentChange : yoyChange.percentChange);
         const yoyInfo = formatChangeIndicator(yoyChangeValue);
         result += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
     }

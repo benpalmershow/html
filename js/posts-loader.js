@@ -485,6 +485,7 @@ const PostChartRenderer = (function () {
     function getChartConfig(indicator, labels, dataPoints) {
         if (!Array.isArray(dataPoints) || dataPoints.length === 0) return null;
         if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) return getTradeDeficitConfig(indicator, labels, dataPoints);
+        if (indicator.name === 'Monthly Budget Deficit' && indicator.receipts && indicator.outlays) return getBudgetDeficitConfig(indicator, labels, dataPoints);
         if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return getPredictionMarketConfig(indicator, labels, dataPoints);
         return getLineChartConfig(indicator, labels, dataPoints);
     }
@@ -584,6 +585,69 @@ const PostChartRenderer = (function () {
                 datasets: [
                     { label: 'Imports', data: importValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
                     { label: 'Exports', data: exportValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
+                    { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
+                ]
+            },
+            options: { ...getBaseOptions(indicator), plugins: { ...getBaseOptions(indicator).plugins, legend: { display: true, position: 'bottom', align: 'center', labels: { font: { size: 9 }, padding: 6, boxWidth: 10, useBorderRadius: true, borderRadius: 4 } } }, scales: { x: { display: true, grid: { display: false, drawBorder: false }, ticks: { display: true, font: { size: 9 }, color: 'rgba(0, 0, 0, 0.4)', maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } }, y: { type: 'linear', display: true, position: 'left', beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { display: false }, title: { display: false } }, y1: { type: 'linear', display: true, position: 'right', beginAtZero: false, grid: { display: false }, ticks: { display: false }, title: { display: false } } } }
+        };
+    }
+
+    function getBudgetDeficitConfig(indicator, labels, dataPoints) {
+        const colors = getLiveChartColors();
+        const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        function extractNumericValue(value) {
+            if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
+            let cleanValue = value.toString().replace(/\$/g, '').replace(/^\+/g, '').replace(/[A-Za-z]/g, '').trim().replace(/,/g, '');
+            return parseFloat(cleanValue) || null;
+        }
+
+        function isValidData(value) { return value !== null && value !== undefined && value !== '' && value !== '—' && value !== 'TBD'; }
+
+        const receiptValues = [], outlayValues = [], deficitValues = [], chartLabels = [];
+
+        MONTHS.forEach((month, index) => {
+            if (isValidData(indicator.receipts[month]) && isValidData(indicator.outlays[month]) && isValidData(indicator[month])) {
+                const nR = extractNumericValue(indicator.receipts[month]);
+                const nO = extractNumericValue(indicator.outlays[month]);
+                const nD = extractNumericValue(indicator[month]);
+                if (nR !== null && nO !== null && nD !== null) {
+                    chartLabels.push(MONTH_LABELS[index]);
+                    receiptValues.push(nR); outlayValues.push(nO); deficitValues.push(nD);
+                }
+            }
+        });
+
+        const yearKeys = Object.keys(indicator).filter(k => k.match(/^20\d{2}$/));
+        const yearNestedPoints = [];
+        for (const year of yearKeys) {
+            const yearData = indicator[year];
+            if (!yearData || typeof yearData !== 'object') continue;
+            const receiptsYear = indicator.receipts[year];
+            const outlaysYear = indicator.outlays[year];
+            if (!receiptsYear || !outlaysYear) continue;
+            MONTHS.forEach((month, index) => {
+                if (isValidData(receiptsYear[month]) && isValidData(outlaysYear[month]) && isValidData(yearData[month])) {
+                    const nR = extractNumericValue(receiptsYear[month]);
+                    const nO = extractNumericValue(outlaysYear[month]);
+                    const nD = extractNumericValue(yearData[month]);
+                    if (nR !== null && nO !== null && nD !== null) yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], nR, nO, nD });
+                }
+            });
+        }
+        yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - b.monthIndex);
+        yearNestedPoints.slice(0, 2).reverse().forEach(p => {
+            chartLabels.push(p.label); receiptValues.push(p.nR); outlayValues.push(p.nO); deficitValues.push(p.nD);
+        });
+
+        return {
+            type: 'chartjs-mixed',
+            data: {
+                labels: chartLabels,
+                datasets: [
+                    { label: 'Receipts', data: receiptValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
+                    { label: 'Outlays', data: outlayValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
                     { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
                 ]
             },

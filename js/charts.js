@@ -8,6 +8,7 @@ const ChartStrategies = (function () {
 
     function detectChartType(indicator) {
         if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) return 'trade-deficit';
+        if (indicator.name === 'Monthly Budget Deficit' && indicator.receipts && indicator.outlays) return 'budget-deficit';
         if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return 'prediction-market';
         return 'line';
     }
@@ -488,6 +489,79 @@ function buildTradeDeficitChartConfig(indicatorName, indicatorData) {
     };
 }
 
+// --- Budget Deficit Chart Strategy ---
+
+function buildBudgetDeficitChartConfig(indicatorName, indicatorData) {
+    const receiptValues = [];
+    const outlayValues = [];
+    const deficitValues = [];
+    const labels = [];
+
+    const yearKeys = Object.keys(indicatorData)
+        .filter(key => /^\d{4}$/.test(key))
+        .map(key => parseInt(key))
+        .sort((a, b) => b - a);
+
+    MONTHS.forEach((month, index) => {
+        const receiptValue = indicatorData.receipts[month];
+        const outlayValue = indicatorData.outlays[month];
+        const deficitValue = indicatorData[month];
+        if (isValidData(receiptValue) && isValidData(outlayValue) && isValidData(deficitValue)) {
+            const numReceipt = extractNumericValue(receiptValue);
+            const numOutlay = extractNumericValue(outlayValue);
+            const numDeficit = extractNumericValue(deficitValue);
+            if (numReceipt !== null && numOutlay !== null && numDeficit !== null) {
+                labels.push(MONTH_LABELS[index]);
+                receiptValues.push(numReceipt);
+                outlayValues.push(numOutlay);
+                deficitValues.push(numDeficit);
+            }
+        }
+    });
+
+    const yearNestedPoints = [];
+    for (const year of yearKeys) {
+        const yearData = indicatorData[year];
+        if (!yearData || typeof yearData !== 'object') continue;
+        const receiptsYear = indicatorData.receipts[year];
+        const outlaysYear = indicatorData.outlays[year];
+        if (!receiptsYear || !outlaysYear) continue;
+        MONTHS.forEach((month, index) => {
+            const receiptValue = receiptsYear[month];
+            const outlayValue = outlaysYear[month];
+            const deficitValue = yearData[month];
+            if (isValidData(receiptValue) && isValidData(outlayValue) && isValidData(deficitValue)) {
+                const numReceipt = extractNumericValue(receiptValue);
+                const numOutlay = extractNumericValue(outlayValue);
+                const numDeficit = extractNumericValue(deficitValue);
+                if (numReceipt !== null && numOutlay !== null && numDeficit !== null) {
+                    yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numReceipt, numOutlay, numDeficit });
+                }
+            }
+        });
+    }
+
+    yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
+    yearNestedPoints.slice(0, 2).reverse().forEach(p => {
+        labels.push(p.label);
+        receiptValues.push(p.numReceipt);
+        outlayValues.push(p.numOutlay);
+        deficitValues.push(p.numDeficit);
+    });
+
+    return {
+        type: 'chartjs-mixed',
+        data: {
+            labels,
+            datasets: [
+                { label: 'Receipts', data: receiptValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
+                { label: 'Outlays', data: outlayValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
+                { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
+            ]
+        }
+    };
+}
+
 // --- Prediction Market Chart Strategy ---
 
 function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
@@ -521,4 +595,5 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
 ChartStrategies.registry
     .register('line', buildStandardLineChartConfig)
     .register('trade-deficit', buildTradeDeficitChartConfig)
+    .register('budget-deficit', buildBudgetDeficitChartConfig)
     .register('prediction-market', buildPredictionMarketChartConfig);

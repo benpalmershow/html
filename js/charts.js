@@ -473,7 +473,7 @@ function buildTradeDeficitChartConfig(indicatorName, indicatorData) {
         labels.push(p.label);
         importValues.push(p.numImport);
         exportValues.push(p.numExport);
-        deficitValues.push(p.numDeficit);
+        deficitValues.push(Math.abs(p.numDeficit));
     });
 
     return {
@@ -556,8 +556,40 @@ function buildBudgetDeficitChartConfig(indicatorName, indicatorData) {
             datasets: [
                 { label: 'Receipts', data: receiptValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
                 { label: 'Outlays', data: outlayValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
-                { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
+                { label: 'Deficit/Surplus', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'rgba(44, 95, 90, 0.2)', borderWidth: 2.5, tension: 0.4, fill: 'origin', yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
             ]
+        },
+        options: {
+            scales: {
+                y1: {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: false,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value >= 0 ? '+' + value : value;
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: { display: true },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const val = context.raw;
+                            return context.dataset.label + ': ' + (val >= 0 ? '+$' + val + 'M' : '-$' + Math.abs(val) + 'M');
+                        }
+                    }
+                },
+                chartAreaBorder: {
+                    borderColor: 'rgba(0, 0, 0, 0.3)',
+                    borderWidth: 1
+                }
+            }
         }
     };
 }

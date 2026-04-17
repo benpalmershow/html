@@ -477,7 +477,9 @@ html.dark-mode .announcement-card.highlighted {
 }
 
 table {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
+    margin-right: auto;
     border-collapse: collapse;
     font-family: var(--font-body);
     font-size: 1.1rem;
@@ -487,9 +489,10 @@ table {
 
 th,
 td {
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: 0.5rem 1rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
 }
 
 th {

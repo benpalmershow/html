@@ -4,11 +4,10 @@
 
 | Artist | Stage | Time | Rating |
 |--------|-------|------|--------|
-| Dabeull | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm | - |
+| Dabeull | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm |🍺🍺🍺 |
 | Newdad | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:00pm | - |
 | Jaqck Glam | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 4:10pm | - |
-| BINI | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:15pm | - |
-| ~~Fleshwater~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 4:50pm | - |
+| BINI | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:15pm | 🍺 |
 | Hugel | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:50pm | - |
 | Darco | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | - |
 | Rossi. x Chloé Caillet | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:00pm | - |

@@ -341,7 +341,7 @@
             "category": "Commodities",
             "agency": "EIA",
             "name": "Oil (WTI)",
-            "lastUpdated": "2026-04-06T19:30:00Z",
+            "lastUpdated": "2026-04-13T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "january": "75.74",
@@ -360,7 +360,7 @@
                 "january": "60.04",
                 "february": "64.51",
                 "march": "89.33",
-                "april": "114.01"
+                "april": "100.72"
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
@@ -369,14 +369,14 @@
             "category": "Commodities",
             "agency": "EIA",
             "name": "Oil (Brent)",
-            "lastUpdated": "2026-04-02T14:00:00Z",
+            "lastUpdated": "2026-04-13T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "2026": {
                 "january": "66.60",
                 "february": "70.89",
                 "march": "103.79",
-                "april": "127.61"
+                "april": "123.28"
             },
             "change": "",
             "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs."

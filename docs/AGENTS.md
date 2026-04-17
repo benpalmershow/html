@@ -99,3 +99,7 @@ This site publishes human-written economic commentary. Avoid these AI tells in a
 2. **"It's not X, it's Y" inversion** - restructure instead.
    - Wrong: "The tariff isn't the objective—it's the deterrent."
    - Right: "The tariff functions as a deterrent, not the objective."
+
+## Data File Preservation
+
+**Never delete existing entries from JSON data files (journal.json, media.json, posts.json, etc.) unless explicitly instructed.** New commits should only add new entries. If old entries need to be removed, this must be explicitly stated in the task description.

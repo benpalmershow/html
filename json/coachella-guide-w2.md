@@ -8,7 +8,6 @@
 | Groove Armada | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 3:45pm | 🍺🍺 |
 | Bob Baker Marionettes | [Gobi](https://youtube.com/live/OMImphySFJs) | 2:55pm | 🍺 |
 | Dabeull | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm |🍺🍺🍺 |
-| Jaqck Glam | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 4:10pm | - |
 | BINI | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:15pm | 🍺 |
 | Newdad | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:45pm | - |
 | Hugel | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:50pm | - |

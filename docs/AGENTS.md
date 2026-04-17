@@ -103,3 +103,10 @@ This site publishes human-written economic commentary. Avoid these AI tells in a
 ## Data File Preservation
 
 **Never delete existing entries from JSON data files (journal.json, media.json, posts.json, etc.) unless explicitly instructed.** New commits should only add new entries. If old entries need to be removed, this must be explicitly stated in the task description.
+
+## Journal Entry Format
+
+Every new entry in `json/journal.json` must include:
+- **timestamp** - ISO-style time (e.g., `"time": "08:30"`)
+- **title** - must include an emoji prefix
+- **content** - the entry body (can be omitted if using `file` or `link`)

@@ -4,6 +4,14 @@
 
 | Artist | Stage | Time | Rating |
 |--------|-------|------|--------|
+| El Ethos | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 2:00pm | - |
+| Slayyyter | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 3:00pm | - |
+| Bad Gal Gali | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 2:30pm | - |
+| Cahuilla Bird Singers | [Gobi](https://youtube.com/live/OMImphySFJs) | 2:15pm | - |
+| Youna | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 3:45pm | 🍺 |
+| Groove Armada | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 3:45pm | 🍺🍺 |
+| Bob Baker Marionettes | [Gobi](https://youtube.com/live/OMImphySFJs) | 2:55pm | 🍺 |
+| Jeremiah Red | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 2:50pm | - |
 | Dabeull | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm |🍺🍺🍺 |
 | Newdad | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:00pm | - |
 | Jaqck Glam | [Coachella](https://youtube.com/live/2NA7XUw51oo) | 4:10pm | - |

@@ -22,10 +22,10 @@
 | Kettama | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 6:15pm | 🍺🍺 |
 | Dijon | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 6:40pm | 🍺 |
 | Devo | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 6:45pm | 🍺🍺 |
-| **The xx** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | 🍺🍺🍺 |
+| **The xx** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | 🍺🍺🍺🍺 |
 | Franky Rizardo | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | 🍺🍺 |
 | Fakemink | [Gobi](https://youtube.com/live/OMImphySFJs) | 7:20pm | 🍺 |
-| Prospa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:30pm | - |
+| Prospa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:30pm | 🍺|
 | KATSEYE | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | - |
 | Turnstile | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:05pm | - |
 | Moby | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 8:10pm | - |

@@ -26,7 +26,7 @@
 | Franky Rizardo | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | 🍺🍺 |
 | Fakemink | [Gobi](https://youtube.com/live/OMImphySFJs) | 7:20pm | 🍺 |
 | Prospa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:30pm | 🍺|
-| KATSEYE | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | - |
+| KATSEYE | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | 🍺 |
 | Turnstile | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:05pm | - |
 | Moby | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 8:10pm | - |
 | Holly Humberstone | [Gobi](https://youtube.com/live/OMImphySFJs) | 8:25pm | - |

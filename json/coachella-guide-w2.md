@@ -28,7 +28,7 @@
 | Prospa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:30pm | 🍺|
 | KATSEYE | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | 🍺 |
 | Turnstile | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:05pm | 🍺🍺 |
-| Moby | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 8:10pm | 🍺🍺 |
+| Moby | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 8:10pm | 🍺🍺🍺 |
 | Holly Humberstone | [Gobi](https://youtube.com/live/OMImphySFJs) | 8:25pm | - |
 | Max Dean x Luke Dean | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 8:45pm | - |
 | Sabrina Carpenter | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 9:00pm | - |

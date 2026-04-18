@@ -10,9 +10,9 @@
 | Dabeull | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm |🍺🍺🍺 |
 | BINI | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:15pm | 🍺 |
 | Newdad | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:45pm | 🍺 |
-| Hugel | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:50pm | - |
-| Darco | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | - |
-| Rossi. x Chloé Caillet | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:00pm | - |
+| Hugel | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:50pm | 🍺🍺 |
+| Darco | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | 🍺🍺 |
+| Rossi. x Chloé Caillet | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:00pm | 🍺 |
 | Joyce Manor | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:10pm | - |
 | Lykke Li | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:20pm | - |
 | Teddy Swims | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 5:20pm | - |

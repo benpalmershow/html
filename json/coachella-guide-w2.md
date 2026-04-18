@@ -6,19 +6,11 @@
 
 | Artist | Stage | Time | Rating |
 |--------|-------|------|--------|
-| Yamagucci | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 1:00pm | - |
-| Fundido | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 2:00pm | - |
-| Genesi | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 2:00pm | - |
-| Noga Erez | [Gobi](https://youtube.com/live/OMImphySFJs) | 2:05pm | - |
-| Blondshell | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 2:40pm | - |
-| TEED | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 2:50pm | - |
-| Kacey Musgraves | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 3:00pm | - |
-| Riordan | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 3:00pm | - |
-| Los Hermanos Flores | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 3:55pm | - |
-| Whatmore | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:00pm | - |
-| Zulan | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:00pm | - |
-| Record Safari | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 4:10pm | - |
-| Mahmut Orhan | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 4:15pm | - |
+| Kacey Musgraves | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 3:00pm | 🍺🍺🍺 |
+| Los Hermanos Flores | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 3:55pm | 🍺 |
+| Whatmore | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:00pm | 🍺 |
+| Zulan | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:00pm | 🍺 |
+| Mahmut Orhan | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 4:15pm | 🍺 |
 | Fujii Kaze | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:30pm | - |
 | Devault | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | - |
 | Hamdi | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 5:00pm | - |

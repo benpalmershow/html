@@ -13,20 +13,18 @@
 | Hugel | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:50pm | 🍺🍺 |
 | Darco | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | 🍺🍺 |
 | Rossi. x Chloé Caillet | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:00pm | 🍺 |
-| Joyce Manor | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:10pm | - |
-| Lykke Li | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:20pm | - |
-| Teddy Swims | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 5:20pm | - |
-| Central Cee | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 5:30pm | - |
-| ~~The Two Lips~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 6:00pm | - |
-| CMAT | [Gobi](https://youtube.com/live/OMImphySFJs) | 6:15pm | - |
-| Marlon Hoffstadt | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:15pm | - |
-| Kettama | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 6:15pm | - |
-| Dijon | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 6:40pm | - |
-| Devo | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 6:45pm | - |
-| **The xx** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | - |
-| Franky Rizardo | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | - |
-| ~~Cachirula & Loojan~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 7:10pm | - |
-| Fakemink | [Gobi](https://youtube.com/live/OMImphySFJs) | 7:20pm | - |
+| Joyce Manor | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:10pm | 🍺🍺🍺 |
+| Lykke Li | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:20pm | 🍺🍺🍺 |
+| Teddy Swims | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 5:20pm | 🍺🍺🍺 |
+| Central Cee | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 5:30pm | 🍺 |
+| CMAT | [Gobi](https://youtube.com/live/OMImphySFJs) | 6:15pm | 🍺 |
+| Marlon Hoffstadt | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:15pm | 🍺 |
+| Kettama | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 6:15pm | 🍺🍺 |
+| Dijon | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 6:40pm | 🍺 |
+| Devo | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 6:45pm | 🍺🍺 |
+| **The xx** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | 🍺🍺🍺 |
+| Franky Rizardo | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | 🍺🍺 |
+| Fakemink | [Gobi](https://youtube.com/live/OMImphySFJs) | 7:20pm | 🍺 |
 | Prospa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:30pm | - |
 | KATSEYE | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | - |
 | Turnstile | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:05pm | - |

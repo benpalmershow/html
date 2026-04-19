@@ -22,9 +22,9 @@
 | Geese | [Gobi](https://youtube.com/live/OMImphySFJs) | 6:15pm | 🍺 |
 | ¥ØU$UK€ ¥UK1MAT$U | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:15pm | 🍺 |
 | Sosa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 6:45pm | 🍺 |
-| Madeon | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | - |
-| Giveon | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | - |
-| Sombr | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 7:05pm | - |
+| Madeon | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | 🍺🍺 |
+| Giveon | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | 🍺🍺🍺🍺 |
+| Sombr | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 7:05pm | 🍺🍺🍺🍺 |
 | Taemin | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:30pm | - |
 | Davido | [Gobi](https://youtube.com/live/OMImphySFJs) | 7:50pm | - |
 | Nine Inch Noize | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | - |

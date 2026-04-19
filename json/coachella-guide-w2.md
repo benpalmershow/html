@@ -25,16 +25,16 @@
 | Madeon | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | 🍺🍺 |
 | Giveon | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | 🍺🍺🍺🍺 |
 | Sombr | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 7:05pm | 🍺🍺🍺🍺 |
-| Taemin | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:30pm | - |
+| Taemin | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:30pm | 🍺 |
 | Davido | [Gobi](https://youtube.com/live/OMImphySFJs) | 7:50pm | - |
 | Nine Inch Noize | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 8:00pm | - |
 | Bedouin | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 8:15pm | - |
 | Dj Snake x RL Grime x Flosstradamus | [Quasar](https://youtube.com/live/iulgXa5S62A) | 8:15pm | - |
 | Labrinth | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:30pm | - |
 | PinkPantheress | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 8:55pm | - |
-| **The Strokes** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 9:00pm | - |
+| **The Strokes** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 9:00pm | 🍺🍺🍺🍺 |
 | Bia | [Gobi](https://youtube.com/live/OMImphySFJs) | 9:00pm | - |
-| Adriatique | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 9:15pm | - |
+| Adriatique | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 9:15pm | 🍺🍺 |
 | Dj Snake x Knock2 | [Quasar](https://youtube.com/live/iulgXa5S62A) | 9:45pm | - |
 | Boys Noize | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 9:45pm | - |
 | Morat | [Gobi](https://youtube.com/live/OMImphySFJs) | 10:10pm | - |

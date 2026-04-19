@@ -1,5 +1,45 @@
 # Coachella viewers guide - Weekend 2
 
+## Sunday, April 19
+
+| Artist | Stage | Time | Rating |
+|--------|-------|------|--------|
+| &Friends | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 3:00pm | 🍺 |
+| Girl Math | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 3:35pm |🍺|
+| Tijuana Panthers | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 3:40pm | 🍺🍺 |
+| Gigi Perez | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm | 🍺 |
+| Linska | [Quasar](https://youtube.com/live/iulgXa5S62A) | 4:00pm | 🍺 |
+| Cobrah | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:05pm | 🍺 |
+| Little Simz | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:25pm | - |
+| Mëstiza | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 4:15pm | - |
+| Wet Leg | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 4:45pm | - |
+| Bunt. | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:45pm | - |
+| Foster the People | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:15pm | - |
+| Oklou | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:15pm | - |
+| Suicidal Tendencies | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:35pm | - |
+| Carlita x Josh Baker | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:30pm | - |
+| LP Giobbi | [Quasar](https://youtube.com/live/iulgXa5S62A) | 6:00pm | - |
+| Major Lazer | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 6:10pm | - |
+| Duke Dumont | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:10pm | - |
+| Black Flag | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 6:30pm | - |
+| ~~Røz~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 6:40pm | - |
+| Röyksopp | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:00pm | - |
+| Iggy Pop | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:10pm | - |
+| Mochakk | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 7:25pm | - |
+| Tomora | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:45pm | - |
+| Young Thug | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:50pm | - |
+| Sara Landry's Blood Oath | [Quasar](https://youtube.com/live/iulgXa5S62A) | 8:00pm | - |
+| ~~Drain~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 8:00pm | - |
+| WhoMadeWho | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 8:30pm | - |
+| Laufey | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:45pm | - |
+| FKA Twigs | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 8:45pm | - |
+| The Rapture | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 9:05pm | - |
+| Subtronics | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 9:05pm | - |
+| ~~French Police~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 9:10pm | - |
+| Green Velvet x Aybbo | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 10:00pm | - |
+| **Karol G** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 10:10pm | - |
+| Bigbang | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 10:30pm | - |
+| Kaskade | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 10:50pm | - |
 
 
 ## Saturday, April 18
@@ -43,61 +83,6 @@
 | Worship | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 10:35pm | - |
 | Armin Van Buuren x Adam Beyer | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 11:00pm | - |
 | **Justin Bieber** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 11:25pm | - |
-
-## Sunday, April 19
-
-| Artist | Stage | Time | Rating |
-|--------|-------|------|--------|
-| ~~Bulletballet~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 1:00pm | - |
-| Le Yora | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 1:00pm | - |
-| ~~Glitterer~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 2:00pm | - |
-| Azecca | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 2:00pm | - |
-| Flowerovlove | [Gobi](https://youtube.com/live/OMImphySFJs) | 2:05pm | - |
-| Megatone | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 2:30pm | - |
-| Gingee | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 2:30pm | - |
-| Gabe Real | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 2:45pm | - |
-| Juicewon | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 3:00pm | - |
-| The Chats | [Gobi](https://youtube.com/live/OMImphySFJs) | 3:00pm | - |
-| &Friends | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 3:00pm | - |
-| ~~Model/Actriz~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 3:10pm | - |
-| Samia | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 3:15pm | - |
-| Girl Math | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 3:35pm | - |
-| Tijuana Panthers | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 3:40pm | - |
-| Gigi Perez | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 4:00pm | - |
-| Linska | [Quasar](https://youtube.com/live/iulgXa5S62A) | 4:00pm | - |
-| Cobrah | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:05pm | - |
-| ~~Jane Remover~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 4:20pm | - |
-| Little Simz | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:25pm | - |
-| Mëstiza | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 4:15pm | - |
-| Wet Leg | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 4:45pm | - |
-| Bunt. | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:45pm | - |
-| Foster the People | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:15pm | - |
-| Oklou | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:15pm | - |
-| ~~Los Retros~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 5:30pm | - |
-| Suicidal Tendencies | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:35pm | - |
-| Carlita x Josh Baker | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:30pm | - |
-| LP Giobbi | [Quasar](https://youtube.com/live/iulgXa5S62A) | 6:00pm | - |
-| Major Lazer | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 6:10pm | - |
-| Duke Dumont | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:10pm | - |
-| Black Flag | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 6:30pm | - |
-| ~~Røz~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 6:40pm | - |
-| Röyksopp | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 7:00pm | - |
-| Iggy Pop | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 7:10pm | - |
-| Mochakk | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 7:25pm | - |
-| Tomora | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 7:45pm | - |
-| Young Thug | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:50pm | - |
-| Sara Landry's Blood Oath | [Quasar](https://youtube.com/live/iulgXa5S62A) | 8:00pm | - |
-| ~~Drain~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 8:00pm | - |
-| WhoMadeWho | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 8:30pm | - |
-| Laufey | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 8:45pm | - |
-| FKA Twigs | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 8:45pm | - |
-| The Rapture | [Gobi](https://youtube.com/live/4C5p1tdRv6c) | 9:05pm | - |
-| Subtronics | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 9:05pm | - |
-| ~~French Police~~ | ~~[Sonora](https://youtube.com/live/OGNPnQViI3g)~~ | 9:10pm | - |
-| Green Velvet x Aybbo | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 10:00pm | - |
-| **Karol G** | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 10:10pm | - |
-| Bigbang | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 10:30pm | - |
-| Kaskade | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 10:50pm | - |
 
 ## Friday, April 17
 

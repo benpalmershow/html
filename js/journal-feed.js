@@ -10,35 +10,69 @@ function escapeHtml(text) {
 function sanitizeHtml(html) {
   if (!html) return '';
 
+  let cleanHtml;
+
   if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
-    return window.DOMPurify.sanitize(html, {
+    cleanHtml = window.DOMPurify.sanitize(html, {
       USE_PROFILES: { html: true },
-      FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form']
+      FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form'],
+      ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
     });
+  } else {
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    template.content.querySelectorAll('script, style, iframe, object, embed, form').forEach(node => node.remove());
+    cleanHtml = template.innerHTML;
   }
 
-  const template = document.createElement('template');
-  template.innerHTML = html;
+  // Apply image optimization to sanitized HTML
+  const outputTemplate = document.createElement('template');
+  outputTemplate.innerHTML = cleanHtml;
 
-  template.content.querySelectorAll('script, style, iframe, object, embed, form').forEach(node => node.remove());
-
-  template.content.querySelectorAll('*').forEach(node => {
-    Array.from(node.attributes).forEach(attr => {
-      const name = attr.name.toLowerCase();
-      const value = attr.value.trim();
-
-      if (name.startsWith('on')) {
-        node.removeAttribute(attr.name);
-        return;
+  // Optimize all images
+  outputTemplate.content.querySelectorAll('img').forEach(img => {
+    // Add lazy loading for images below the fold (except first image which gets high priority)
+    if (!img.hasAttribute('loading')) {
+      img.setAttribute('loading', 'lazy');
+    }
+    // Add decoding async for better performance
+    if (!img.hasAttribute('decoding')) {
+      img.setAttribute('decoding', 'async');
+    }
+    // Remove inline styles that conflict with CSS
+    if (img.hasAttribute('style')) {
+      const style = img.getAttribute('style').toLowerCase();
+      const cleaned = style
+        .replace(/max-width\s*:[^;]+;?/gi, '')
+        .replace(/height\s*:[^;]+;?/gi, '')
+        .replace(/border\s*:[^;]+;?/gi, '')
+        .replace(/box-shadow\s*:[^;]+;?/gi, '')
+        .replace(/margin\s*:[^;]+;?/gi, '')
+        .replace(/border-radius\s*:[^;]+;?/gi, '')
+        .replace(/transition\s*:[^;]+;?/gi, '')
+        .trim();
+      if (cleaned) {
+        img.setAttribute('style', cleaned);
+      } else {
+        img.removeAttribute('style');
       }
-
-      if ((name === 'href' || name === 'src' || name === 'xlink:href') && /^javascript:/i.test(value)) {
-        node.removeAttribute(attr.name);
+    }
+    // Ensure width/height for CLS prevention - add aspect-ratio for images without dimensions
+    if (!img.hasAttribute('width') && !img.hasAttribute('height')) {
+      const src = img.getAttribute('src') || '';
+      if (src.includes('nasa.gov') || src.includes('.gov/') || src.match(/\.(jpg|jpeg|png|webp|gif)$/i)) {
+        img.setAttribute('style', (img.getAttribute('style') || '') + ' aspect-ratio: 16/9;');
       }
-    });
+    }
   });
 
-  return template.innerHTML;
+  // Add fetchpriority="high" to first image for LCP optimization
+  const firstImg = outputTemplate.content.querySelector('img');
+  if (firstImg && !firstImg.closest('.entry-time')) {
+    firstImg.setAttribute('fetchpriority', 'high');
+  }
+
+  return outputTemplate.innerHTML;
 }
 
 async function ensureHtmlSanitizer() {
@@ -197,9 +231,17 @@ async function loadJournalEntries() {
     
     const articlesHTML = await Promise.all(journals.map(renderJournal));
     
-    journalFeed.innerHTML = articlesHTML.join('');
+     journalFeed.innerHTML = articlesHTML.join('');
 
-    journalFeed.querySelectorAll('[data-collapsible]').forEach(el => {
+     // Optimize first image for LCP: eager load the first image that appears in the viewport
+     const firstImage = journalFeed.querySelector('.journal-entry img');
+     if (firstImage) {
+       firstImage.setAttribute('loading', 'eager');
+       firstImage.setAttribute('fetchpriority', 'high');
+       firstImage.setAttribute('decoding', 'async');
+     }
+
+     journalFeed.querySelectorAll('[data-collapsible]').forEach(el => {
       el.querySelector('.entry-title').addEventListener('click', () => {
         el.classList.toggle('entry--collapsed');
       });

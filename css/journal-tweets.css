@@ -170,6 +170,7 @@ html.dark-mode {
     transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     position: relative;
     overflow: hidden;
+    content-visibility: auto;
 }
 
 .journal-entry:hover {
@@ -455,12 +456,42 @@ html.dark-mode #curry-goat-warning {
     }
 }
 
-/* Sons Hand - faint baby hand background */
-.journal-entry:has(#sons-hand) {
-    background-image: url('../images/baby-hand.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Responsive image styling in journal entries */
+.entry-content img,
+.entry-title img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--tweet-border);
+    box-shadow: 0 2px 8px var(--tweet-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry-content img:hover,
+.entry-title img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 16px var(--tweet-shadow);
+}
+
+/* Center images in link entries */
+.entry--link .entry-content img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Images within links (like external images) */
+.entry-content a img,
+.entry-title a img {
+    margin-top: 0.75rem;
+    cursor: zoom-in;
+}
+
+/* Dark mode image border */
+html.dark-mode .entry-content img,
+html.dark-mode .entry-title img {
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .journal-entry:has(#sons-hand):hover {
@@ -596,4 +627,17 @@ html.dark-mode .entry-title-link {
 html.dark-mode .entry-title-link:hover {
     background: transparent;
     color: var(--accent-primary) !important;
+}
+
+/* Change metric value styling */
+.change-metric-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.change-metric-value svg {
+    flex-shrink: 0;
 }

@@ -519,7 +519,7 @@
     margin: 4px 0 6px 0;
     padding-bottom: 6px;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 12px;
     justify-content: flex-start;
     align-items: center;

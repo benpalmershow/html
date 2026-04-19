@@ -241,10 +241,24 @@ function renderHormuz(indicator) {
         const feb2026 = indicator['2026']?.february;
         const jan2026 = indicator['2026']?.january;
 
-        if (april2026) {
-            latestDataHtml = `<div class="latest-data-row"><span class="month-label">Apr 2026:</span><span class="month-value" style="color: #dc2626; font-weight: 600;">${april2026}</span></div>`;
+        if (indicator.daily && typeof indicator.daily === 'object') {
+            const dailyEntries = Object.entries(indicator.daily);
+            const latestEntry = dailyEntries[dailyEntries.length - 1];
+            const previousEntry = dailyEntries[dailyEntries.length - 2];
+            
+            if (latestEntry) {
+                const [date, value] = latestEntry;
+                const formattedDate = new Date(date + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                latestDataHtml = `<div class="latest-data-row"><span class="month-label">${formattedDate}:</span><span class="month-value">${value}</span></div>`;
+            }
+            
+            if (previousEntry) {
+                const [prevDate, prevValue] = previousEntry;
+                const formattedPrevDate = new Date(prevDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                latestDataHtml += `<div class="latest-data-row"><span class="month-label">${formattedPrevDate}:</span><span class="month-value">${prevValue}</span></div>`;
+            }
         }
-
+        
         if (march2026) {
             historyDataHtml += `<div class="data-row"><span class="month-label">Mar 2026:</span><span class="month-value" style="color: #dc2626;">${march2026}</span></div>`;
         }
@@ -255,20 +269,33 @@ function renderHormuz(indicator) {
             historyDataHtml += `<div class="data-row"><span class="month-label">Jan 2026:</span><span class="month-value">${jan2026}</span></div>`;
         }
 
+        // Get previous values from propabilities if available
+        const propKeys = indicator.propabilities ? Object.keys(indicator.propabilities).sort() : [];
+        const currentPropKey = propKeys[propKeys.length - 1];
+        const previousPropKey = propKeys[propKeys.length - 2];
+        const currentProp = currentPropKey ? indicator.propabilities[currentPropKey] : null;
+        const previousProp = previousPropKey ? indicator.propabilities[previousPropKey] : null;
+
         if (indicator.vesselsInGulf !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total active vessels tracked in the Arabian Gulf">Vessels in Gulf:</span><span class="month-value">${indicator.vesselsInGulf}</span></div>`;
+            const prevValue = previousProp ? ` (${previousProp.vesselsInGulf})` : '';
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total active vessels tracked in the Arabian Gulf">Vessels in Gulf:</span><span class="month-value">${indicator.vesselsInGulf}${prevValue}</span></div>`;
         }
 
         if (indicator.hormuzInbound !== undefined && indicator.hormuzOutbound !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Daily ship transits through the Strait of Hormuz">Inbound / Outbound:</span><span class="month-value">${indicator.hormuzInbound} / ${indicator.hormuzOutbound}</span></div>`;
+            const prevInbound = previousProp ? previousProp.hormuzInbound : null;
+            const prevOutbound = previousProp ? previousProp.hormuzOutbound : null;
+            const prevValue = prevInbound !== null && prevOutbound !== null ? ` (${prevInbound} / ${prevOutbound})` : '';
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Daily ship transits through the Strait of Hormuz">Inbound / Outbound:</span><span class="month-value">${indicator.hormuzInbound} / ${indicator.hormuzOutbound}${prevValue}</span></div>`;
         }
 
         if (indicator.darkActivityEvents !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="AIS-dark vessel activity events (potential smuggling or evasion)">Dark Activity:</span><span class="month-value">${indicator.darkActivityEvents} events</span></div>`;
+            const prevValue = previousProp ? ` (${previousProp.darkActivityEvents})` : '';
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="AIS-dark vessel activity events (potential smuggling or evasion)">Dark Activity:</span><span class="month-value">${indicator.darkActivityEvents} events${prevValue}</span></div>`;
         }
 
         if (indicator.vesselsAttacked !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${indicator.vesselsAttacked}</span></div>`;
+            const prevValue = previousProp ? ` (${previousProp.vesselsAttacked})` : '';
+            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${indicator.vesselsAttacked}${prevValue}</span></div>`;
         }
 
         const hasHistory = !!(march2026 || feb2026 || jan2026);
@@ -432,11 +459,47 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
 }
 
 function buildChangeIndicators(momChange, yoyChange, indicator) {
+    let result = '';
+
+    // Special handling for hormuz indicator
+    if (indicator.name === 'Strait of Hormuz Daily Transits') {
+        if (indicator.daily && typeof indicator.daily === 'object') {
+            const dailyEntries = Object.entries(indicator.daily);
+            const latestEntry = dailyEntries[dailyEntries.length - 1];
+            const previousEntry = dailyEntries[dailyEntries.length - 2];
+            
+            if (latestEntry && previousEntry) {
+                const [prevDate, prevValue] = previousEntry;
+                const [date, currentValue] = latestEntry;
+                const change = currentValue - prevValue;
+                const percentChange = ((currentValue - prevValue) / prevValue) * 100;
+                
+                const dailyChangeInfo = {
+                    change: percentChange,
+                    direction: percentChange > 0 ? 1 : -1,
+                    cssClass: percentChange > 0 ? 'change-positive' : 'change-negative',
+                    formatted: `${change > 0 ? '+' : ''}${change} ${percentChange.toFixed(1)}%`
+                };
+                
+                result += buildChangeMetricButton('Daily', dailyChangeInfo, 'Daily change');
+            }
+        }
+        
+        // Add MoM if available
+        if (momChange !== null) {
+            const momChangeValue = momChange.percentChange;
+            const momInfo = formatChangeIndicator(momChangeValue);
+            result += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
+        }
+        
+        return result;
+    }
+
+    // Standard handling for other indicators
     if (momChange === null) return '';
 
     const isUnemploymentIndicator = indicator.name.includes('Unemployment');
     const isBudgetDeficitIndicator = indicator.name.includes('Budget') || indicator.name.includes('Deficit');
-    let result = '';
 
     const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : (isBudgetDeficitIndicator ? -momChange.percentChange : momChange.percentChange);
     const momInfo = formatChangeIndicator(momChangeValue);

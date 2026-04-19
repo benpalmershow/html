@@ -889,7 +889,7 @@
             "category": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-04-15T14:00:00Z",
+            "lastUpdated": "2026-04-19T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
               
@@ -914,6 +914,7 @@
             "darkActivityEvents": 142,
             "vesselsAttacked": 29,
             "propabilities": {
+                "2026-04-14": {"vesselsInGulf": 847, "hormuzInbound": 5, "hormuzOutbound": 14, "darkActivityEvents": 138, "vesselsAttacked": 27},
                 "2026-04-18": {"vesselsInGulf": 919, "hormuzInbound": 8, "hormuzOutbound": 27, "darkActivityEvents": 142, "vesselsAttacked": 29}
             },
          

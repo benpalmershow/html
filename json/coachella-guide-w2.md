@@ -11,17 +11,17 @@
 | Whatmore | [Gobi](https://youtube.com/live/OMImphySFJs) | 4:00pm | 🍺 |
 | Zulan | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 4:00pm | 🍺 |
 | Mahmut Orhan | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 4:15pm | 🍺 |
-| Fujii Kaze | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:30pm | - |
-| Devault | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | - |
-| Hamdi | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 5:00pm | - |
-| Alex G | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:10pm | - |
-| Luísa Sonza | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:10pm | - |
-| Addison Rae | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 5:25pm | - |
-| Ben Sterling | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:30pm | - |
-| Royel Otis | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:50pm | - |
-| Geese | [Gobi](https://youtube.com/live/OMImphySFJs) | 6:15pm | - |
-| ¥ØU$UK€ ¥UK1MAT$U | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:15pm | - |
-| Sosa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 6:45pm | - |
+| Fujii Kaze | [Mojave](https://youtube.com/live/cYT79Dp0Wuk) | 4:30pm | 🍺🍺 |
+| Devault | [Quasar](https://youtube.com/live/iulgXa5S62A) | 5:00pm | 🍺🍺 |
+| Hamdi | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 5:00pm | 🍺 |
+| Alex G | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 5:10pm |🍺🍺|
+| Luísa Sonza | [Gobi](https://youtube.com/live/OMImphySFJs) | 5:10pm | 🍺 |
+| Addison Rae | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 5:25pm | 🍺 |
+| Ben Sterling | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 5:30pm | 🍺 |
+| Royel Otis | [Mojave](https://youtube.com/live/HJVG2Ck3uuk) | 5:50pm | 🍺🍺 |
+| Geese | [Gobi](https://youtube.com/live/OMImphySFJs) | 6:15pm | 🍺 |
+| ¥ØU$UK€ ¥UK1MAT$U | [Sahara](https://youtube.com/live/bkCTPTwU7ls) | 6:15pm | 🍺 |
+| Sosa | [Yuma](https://youtube.com/live/s5A5Y93nmPI) | 6:45pm | 🍺 |
 | Madeon | [Quasar](https://youtube.com/live/iulgXa5S62A) | 7:00pm | - |
 | Giveon | [Main Stage](https://youtube.com/live/xIiSaqq10Yw) | 7:00pm | - |
 | Sombr | [Outdoor Theatre](https://www.youtube.com/live/CzAJcgiywFo?si=4yvoxqVSVRZlTAjo) | 7:05pm | - |

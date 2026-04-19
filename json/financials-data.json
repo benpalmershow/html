@@ -892,6 +892,13 @@
             "lastUpdated": "2026-04-15T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
+              
+            "2026": {
+                "january": "76",
+                "february": "98",
+                "march": "5",
+                "april": "19"
+            },
             "daily": {
                 "2026-04-01": 6,
                 "2026-04-02": 6,
@@ -906,13 +913,10 @@
             "hormuzOutbound": 27,
             "darkActivityEvents": 142,
             "vesselsAttacked": 29,
-           
-            "2026": {
-                "january": "76",
-                "february": "98",
-                "march": "5",
-                "april": "19"
+            "propabilities": {
+                "2026-04-18": {"vesselsInGulf": 919, "hormuzInbound": 8, "hormuzOutbound": 27, "darkActivityEvents": 142, "vesselsAttacked": 29}
             },
+         
             "change": "",
             "explanation": "Daily ship transits through the Strait of Hormuz, a critical chokepoint for global oil shipments. Data from Windward AI Maritime Intelligence Operations Center. Pre-crisis normal was 100-138 transits/day. Current transits dropped dramatically from ~115/day in mid-February to single digits after February 28, 2026 due to US-Israel-Iran conflict and U.S. maritime blockade. The strait handles roughly 20% of global oil consumption. On April 14, 2026 (Day 2 of U.S. blockade), 19 vessels transited: 5 inbound, 14 outbound. Outbound volume surged as Iran-linked tonnage cleared port ahead of enforcement tightening."
         },

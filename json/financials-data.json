@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-16T14:00:00Z",
+    "lastUpdated": "2026-04-19T08:33:00Z",
     "indices": [
         {
             "category": "Business Indicators",
@@ -208,7 +208,7 @@
             "yes_probability": "28¢",
             "no_probability": "72¢",
             "previous_yes": "23¢",
-            "change": "+5¢ (23→28)",
+            "change": "Up 5¢ (Yes)",
             "probabilities": {
                 "2026-04-15": {"yes": "22¢", "no": "78¢"},
                 "2026-04-17": {"yes": "25¢", "no": "75¢"},
@@ -244,7 +244,7 @@
             "polymarket_url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
             "yes_probability": "21¢",
             "no_probability": "79¢",
-            "change": "-6¢ (27→21)",
+            "change": " Down 6¢ (Yes)",
             "explanation": "Polymarket prediction on whether the Iranian regime will fall by end of 2026. Market reflects 79% probability the regime endures despite nationwide protests since late 2025 and US-Israel airstrikes. IRGC has consolidated control following Supreme Leader Khamenei's death on February 28, 2026, brutally suppressing dissent while organizing pro-regime demonstrations. Ceasefire with US reduces military pressure. Volume: $14.3M."
         },
         {
@@ -268,42 +268,12 @@
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxlayoffsyinfo/tech-layoffs/kxlayoffsyinfo-26",
             "polymarket_url": "https://polymarket.com/event/tech-layoffs-up-or-down-in-2026",
-            "yes_probability": "93¢",
-            "no_probability": "7¢",
-            "change": "",
+            "yes_probability": "82¢",
+            "no_probability": "18¢",
+            "change": "Down 13¢",
             "explanation": "Kalshi prediction market on whether major tech companies will announce more layoffs in 2026 compared to 2025. Polymarket shows 93% probability for 'Up', reflecting expectations that 2026 tech workforce reductions will exceed 2025 levels amid ongoing sector consolidation."
         },
-        {
-            "category": "Prediction Markets",
-            "agency": "Polymarket",
-            "name": "US-Iran Ceasefire Extended...",
-            "lastUpdated": "2026-04-19T08:00:00Z",
-            "releaseDay": 0,
-            "url": "https://polymarket.com/event/us-x-iran-ceasefire-extended-by",
-            "candidates": {
-                "April 18": "11¢",
-                "April 21": "78¢",
-                "Not Extended": "11¢"
-            },
-            "change": "",
-            "explanation": "Prediction market on whether the US-Iran ceasefire (announced April 7, 2026) will be extended beyond the initial two-week period. Ceasefire established April 7 after Trump deadline, with Iran agreeing to reopen Strait of Hormuz. Market expects 78% probability of extension to April 21. New market tracks whether ceasefire holds or is broken by April 21 (10% probability of break). Volume: $1.2M on extension market."
-        },
-        {
-            "category": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "FOMC Rate Decision - April",
-            "lastUpdated": "2026-04-19T08:00:00Z",
-            "meeting_date": "Apr 28-29",
-            "announcement_time": "2:00 PM ET",
-            "announcement_time_iso": "2026-04-29T14:00:00-04:00",
-            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26apr",
-            "polymarket_url": "https://polymarket.com/event/fed-decision-in-april",
-            "rate_hold_odds": "98¢",
-            "rate_cut_odds": "1¢",
-            "rate_hike_odds": "1¢",
-            "change": "",
-            "explanation": "Federal Reserve interest rate decision prediction market for the April 28-29, 2026 FOMC meeting. Market expects a rate hold with 98.2% probability as the Fed maintains its cautious stance. March nonfarm payrolls rebounded to 178,000 while unemployment held at 4.3%, signaling economic resilience amid elevated oil prices above $110/barrel."
-        },
+    
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
@@ -313,11 +283,27 @@
             "url": "https://kalshi.com/markets/kxbalancepowercombo/congress-balance-of-power-combo/kxbalancepowercombo-27feb",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
             "candidates": {
-                "Democratic Party": "51¢",
-                "Republican Party": "49¢"
+                "Democratic Party": "54¢",
+                "Republican Party": "46¢"
             },
-            "change": "",
+            "change": "Up 2¢ (Democrats)",
             "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a slim 51% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent polls show Cooper leading in North Carolina (49-41%)."
+        },
+        {
+            "category": "Prediction Markets",
+            "agency": "Kalshi",
+            "name": "FOMC Rate Decision - June",
+            "lastUpdated": "2026-04-19T08:00:00Z",
+            "meeting_date": "Jun 16-17",
+            "announcement_time": "2:00 PM ET",
+            "announcement_time_iso": "2026-06-17T14:00:00-04:00",
+            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jun",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-june-825",
+            "rate_hold_odds": "89¢",
+            "rate_cut_odds": "9¢",
+            "rate_hike_odds": "2¢",
+            "change": " Down 8¢ (Hold)",
+            "explanation": "Federal Reserve interest rate decision prediction market for the June 16-17, 2026 FOMC meeting. Market expects a rate hold with 98% probability as the Fed maintains its cautious stance. March nonfarm payrolls rebounded to 178,000 while unemployment held at 4.3%, signaling economic resilience amid elevated oil prices."
         },
         {
             "category": "Prediction Markets",
@@ -878,23 +864,15 @@
                 "2026-04-03": 5,
                 "2026-04-04": 10,
                 "2026-04-05": 9,
-                "2026-04-14": 19
+                "2026-04-14": 19,
+                "2026-04-18": 35
             },
-            "vesselsInGulf": 810,
-            "hormuzInbound": 5,
-            "hormuzOutbound": 14,
-            "darkActivityEvents": 153,
-            "vesselsAttacked": 26,
-            "march": "",
-            "april": "",
-            "may": "",
-            "june": "",
-            "july": "",
-            "august": "",
-            "september": "",
-            "october": "",
-            "november": "",
-            "december": "64",
+            "vesselsInGulf": 919,
+            "hormuzInbound": 8,
+            "hormuzOutbound": 27,
+            "darkActivityEvents": 142,
+            "vesselsAttacked": 29,
+           
             "2026": {
                 "january": "76",
                 "february": "98",

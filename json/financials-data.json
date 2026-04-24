@@ -291,7 +291,7 @@
             "category": "Housing Market",
             "agency": "Zillow",
             "name": "Number of Days on Market (Median)",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-04-20T14:00:00Z",
             "url": "https://www.zillow.com/research/data/",
             "march": "60",
             "april": "53",
@@ -305,7 +305,8 @@
             "december": "65",
             "2026": {
                 "january": "71",
-                "february": "73"
+                "february": "73",
+                "march": "68"
             },
             "change": "",
             "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."

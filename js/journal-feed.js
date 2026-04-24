@@ -1,3 +1,76 @@
+const MONTHS = [
+  'january', 'february', 'march', 'april', 'may', 'june',
+  'july', 'august', 'september', 'october', 'november', 'december'
+];
+
+const SCRIPT_COMPONENTS = ['components/analytics.html', 'components/error-handling.html', 'components/scripts-unified.html'];
+
+function cloneAndAppendScriptNode(script, target = document.head) {
+  const newScript = document.createElement('script');
+  if (script.src) {
+    newScript.src = script.src;
+  } else {
+    newScript.textContent = script.textContent;
+  }
+
+  ['type', 'async', 'defer', 'crossOrigin', 'integrity', 'referrerPolicy', 'noModule'].forEach((prop) => {
+    if (script[prop]) {
+      newScript[prop] = script[prop];
+    }
+  });
+
+  target.appendChild(newScript);
+}
+
+async function loadComponentHtml(path) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Failed to load component: ${path}`);
+  }
+  return response.text();
+}
+
+async function injectHeadNodes(path, selector) {
+  const html = await loadComponentHtml(path);
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  tempDiv.querySelectorAll(selector).forEach((el) => {
+    document.head.appendChild(el.cloneNode(true));
+  });
+}
+
+async function injectScriptComponent(path) {
+  const html = await loadComponentHtml(path);
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  tempDiv.querySelectorAll('script').forEach((script) => cloneAndAppendScriptNode(script));
+}
+
+async function injectFooter() {
+  const footerContainer = document.getElementById('footer-container');
+  if (!footerContainer) {
+    return;
+  }
+  footerContainer.innerHTML = await loadComponentHtml('components/footer.html');
+}
+
+function loadScriptOnce(src, options = {}) {
+  const existingScript = document.querySelector(`script[src="${src}"]`);
+  if (existingScript) {
+    return Promise.resolve(existingScript);
+  }
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = Boolean(options.async);
+    script.defer = Boolean(options.defer);
+    script.onload = () => resolve(script);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
 function escapeHtml(text) {
   return String(text)
     .replace(/&/g, '&amp;')
@@ -101,7 +174,7 @@ async function ensureHtmlSanitizer() {
 
 function linkify(text) {
   const urlRegex = /https?:\/\/[^\s]+/g;
-  return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
+  return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer" title="${url}">${url}</a>`);
 }
 
 function addTickerLinks(html) {
@@ -156,6 +229,7 @@ function addTickerLinks(html) {
       anchor.target = '_blank';
       anchor.rel = 'noopener noreferrer';
       anchor.textContent = `$${ticker}`;
+      anchor.title = anchor.href;
       fragment.appendChild(anchor);
 
       lastIndex = dollarIndex + ticker.length + 1;
@@ -175,31 +249,129 @@ function addTickerLinks(html) {
   return template.innerHTML;
 }
 
+function addLinkTooltips(html) {
+  if (!html || !html.includes('<a')) {
+    return html;
+  }
+
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  template.content.querySelectorAll('a[href]').forEach((anchor) => {
+    if (!anchor.getAttribute('title')) {
+      anchor.setAttribute('title', anchor.getAttribute('href') || '');
+    }
+  });
+  return template.innerHTML;
+}
+
 async function waitForMarked() {
   if (window.marked) {
     return;
   }
 
-  // Try using the preloaded loader from posts-loader module
   if (window.loadMarked && typeof window.loadMarked === 'function') {
-    return window.loadMarked();
+    await window.loadMarked();
+    return;
   }
 
-  // Fallback: polling
-  return new Promise((resolve) => {
-    let attempts = 0;
-    const checkInterval = setInterval(() => {
-      attempts++;
-      if (window.marked) {
-        clearInterval(checkInterval);
-        resolve();
-      } else if (attempts >= 50) {
-        clearInterval(checkInterval);
-        console.error('Marked.js not loaded');
-        resolve();
-      }
-    }, 100);
+  try {
+    await loadScriptOnce('https://cdn.jsdelivr.net/npm/marked/marked.min.js', { defer: true });
+  } catch (error) {
+    console.error('Marked.js not loaded', error);
+  }
+}
+
+function bindCollapsibleEntries(journalFeed) {
+  journalFeed.querySelectorAll('[data-collapsible]').forEach((el) => {
+    const title = el.querySelector('.entry-title');
+    if (!title) {
+      return;
+    }
+    title.addEventListener('click', () => {
+      el.classList.toggle('entry--collapsed');
+    });
   });
+}
+
+function parseNumericValue(value) {
+  const parsed = parseFloat(String(value).replace(/[^0-9.-]/g, ''));
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
+function getSeriesDataFromIndicator(indicator) {
+  if (indicator.bps_probabilities) {
+    return {
+      labels: Object.keys(indicator.bps_probabilities),
+      dataPoints: Object.values(indicator.bps_probabilities).map((value) => parseFloat(value))
+    };
+  }
+
+  if (indicator.candidates && typeof indicator.candidates === 'object') {
+    const labels = [];
+    const dataPoints = [];
+    Object.entries(indicator.candidates).forEach(([name, probability]) => {
+      const value = parseNumericValue(probability);
+      if (value !== null) {
+        labels.push(name);
+        dataPoints.push(value);
+      }
+    });
+    return { labels, dataPoints };
+  }
+
+  const yearKeys = Object.keys(indicator)
+    .filter((key) => /^\d{4}$/.test(key))
+    .map((key) => parseInt(key, 10))
+    .sort((a, b) => b - a);
+
+  if (yearKeys.length === 0) {
+    const labels = [];
+    const dataPoints = [];
+    MONTHS.forEach((month) => {
+      if (!indicator[month]) {
+        return;
+      }
+      const value = parseNumericValue(indicator[month]);
+      if (value !== null) {
+        labels.push(month.slice(0, 3));
+        dataPoints.push(value);
+      }
+    });
+    return { labels, dataPoints };
+  }
+
+  const dataMap = {};
+  MONTHS.forEach((month, index) => {
+    const value = parseNumericValue(indicator[month]);
+    if (value !== null) {
+      dataMap[`null-${index}`] = { month, monthIndex: index, value, year: null };
+    }
+  });
+
+  yearKeys.forEach((year) => {
+    const yearData = indicator[year];
+    if (!yearData || typeof yearData !== 'object') {
+      return;
+    }
+    MONTHS.forEach((month, index) => {
+      const value = parseNumericValue(yearData[month]);
+      if (value !== null) {
+        dataMap[`${year}-${index}`] = { month, monthIndex: index, value, year };
+      }
+    });
+  });
+
+  const sortedData = Object.values(dataMap).sort((a, b) => {
+    if (a.year !== b.year) {
+      return (a.year || 2025) - (b.year || 2025);
+    }
+    return a.monthIndex - b.monthIndex;
+  });
+
+  return {
+    labels: sortedData.map((item) => item.month.slice(0, 3)),
+    dataPoints: sortedData.map((item) => item.value)
+  };
 }
 
 async function loadJournalEntries() {
@@ -241,11 +413,7 @@ async function loadJournalEntries() {
        firstImage.setAttribute('decoding', 'async');
      }
 
-     journalFeed.querySelectorAll('[data-collapsible]').forEach(el => {
-      el.querySelector('.entry-title').addEventListener('click', () => {
-        el.classList.toggle('entry--collapsed');
-      });
-    });
+    bindCollapsibleEntries(journalFeed);
 
     renderJournalCharts();
     scrollToHash();
@@ -304,7 +472,7 @@ function createEntryId(title) {
 
 function renderTitle(title) {
   const safeTitle = title.includes('<') ? sanitizeHtml(title) : escapeHtml(title);
-  return addTickerLinks(safeTitle);
+  return addLinkTooltips(addTickerLinks(safeTitle));
 }
 
 function renderEntryTime(time, journalDate) {
@@ -349,7 +517,7 @@ async function renderEntryFromFile(entry, entryId, journalDate) {
 
     const safeTitle = renderTitle(entry.title);
     const processedContent = processChartPlaceholders(htmlContent);
-    const safeContent = addTickerLinks(sanitizeHtml(processedContent));
+    const safeContent = addLinkTooltips(addTickerLinks(sanitizeHtml(processedContent)));
     const collapsedClass = entry.collapsed ? ' entry--collapsed' : '';
     const toggleAttr = entry.collapsed ? ' data-collapsible="true"' : '';
     const timeHtml = renderEntryTime(entry.time, journalDate);
@@ -363,31 +531,29 @@ async function renderEntryFromFile(entry, entryId, journalDate) {
 }
 
 function renderInlineEntry(entry, entryId, journalDate) {
-   const rawContent = typeof entry.content === 'string' ? entry.content : '';
-   let content = rawContent.includes('<') ? sanitizeHtml(rawContent) : linkify(escapeHtml(rawContent));
-   content = addTickerLinks(content);
-   
-   // Handle paragraph breaks if content doesn't contain HTML
-   if (!rawContent.includes('<') && rawContent.trim() !== '') {
-     const paragraphs = content.split(/\n\n+/);
-     content = paragraphs
-       .filter(para => para.trim() !== '')
-       .map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`)
-       .join('');
-   }
+  const rawContent = typeof entry.content === 'string' ? entry.content : '';
+  let content = rawContent.includes('<') ? sanitizeHtml(rawContent) : linkify(escapeHtml(rawContent));
+  content = addLinkTooltips(addTickerLinks(content));
 
-    if (entry.link) {
-      const contentPart = content ? `<div class="entry-link-content">${content}</div>` : '';
-      const innerHtml = `<div class="entry-link-header"><div class="entry-link-title">${entry.title}</div></div>${contentPart}`;
-      const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
-      const timeHtml = renderEntryTime(entry.time, journalDate);
-      return `<div id="${entryId}" class="entry entry--link">${timeHtml}${linkedBadge}</div>`;
-    }
+  // Handle paragraph breaks if content doesn't contain HTML
+  if (!rawContent.includes('<') && rawContent.trim() !== '') {
+    const paragraphs = content.split(/\n\n+/);
+    content = paragraphs
+      .filter((para) => para.trim() !== '')
+      .map((para) => `<p>${para.replace(/\n/g, '<br>')}</p>`)
+      .join('');
+  }
 
-    const safeTitle = renderTitle(entry.title);
-    const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
-    const timeHtml = renderEntryTime(entry.time, journalDate);
-    return `<div id="${entryId}" class="entry">${timeHtml}<div class="entry-title">${safeTitle}</div>${contentHtml}</div>`;
+  const safeTitle = renderTitle(entry.title);
+  const safeLink = entry.link ? escapeHtml(entry.link) : '';
+  const titleHtml = entry.link
+    ? `<a href="${safeLink}" class="entry-title-link" title="${safeLink}">${safeTitle}</a>`
+    : safeTitle;
+  const contentHtml = content ? `<div class="entry-content">${content}</div>` : '';
+  const timeHtml = renderEntryTime(entry.time, journalDate);
+  const entryClass = entry.link ? 'entry entry--link' : 'entry';
+
+  return `<div id="${entryId}" class="${entryClass}">${timeHtml}<div class="entry-title">${titleHtml}</div>${contentHtml}</div>`;
 }
 
 function scrollToHash() {
@@ -531,8 +697,6 @@ async function renderJournalCharts() {
     };
   }
 
-  const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-
   containers.forEach(container => {
     if (container.dataset.rendered) return;
     const canvasId = container.getAttribute('data-chart-id');
@@ -543,53 +707,7 @@ async function renderJournalCharts() {
     const indicator = data.indices.find(i => i.name === indicatorName);
     if (!indicator) return;
 
-    let labels = [], dataPoints = [];
-
-    if (indicator.bps_probabilities) {
-      labels = Object.keys(indicator.bps_probabilities);
-      dataPoints = Object.values(indicator.bps_probabilities).map(v => parseFloat(v));
-    } else if (indicator.candidates && typeof indicator.candidates === 'object') {
-      for (const [name, prob] of Object.entries(indicator.candidates)) {
-        const val = parseFloat(String(prob).replace(/[^0-9.-]/g, ''));
-        if (!isNaN(val)) { labels.push(name); dataPoints.push(val); }
-      }
-    } else {
-      const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
-      if (yearKeys.length > 0) {
-        const dataMap = {};
-        months.forEach((month, index) => {
-          const value = indicator[month];
-          if (value && value.toString().trim()) {
-            const numValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
-            if (!isNaN(numValue)) dataMap[`${null}-${index}`] = { month, monthIndex: index, value: numValue, year: null };
-          }
-        });
-        for (const year of yearKeys) {
-          const yearData = indicator[year];
-          if (!yearData || typeof yearData !== 'object') continue;
-          months.forEach((month, index) => {
-            const value = yearData[month];
-            if (value && value.toString().trim()) {
-              const numValue = parseFloat(value.toString().replace(/[^0-9.-]/g, ''));
-              if (!isNaN(numValue)) dataMap[`${year}-${index}`] = { month, monthIndex: index, value: numValue, year };
-            }
-          });
-        }
-        const sortedData = Object.values(dataMap).sort((a, b) => {
-          if (a.year !== b.year) return (a.year || 2025) - (b.year || 2025);
-          return a.monthIndex - b.monthIndex;
-        });
-        labels = sortedData.map(item => item.month.slice(0, 3));
-        dataPoints = sortedData.map(item => item.value);
-      } else {
-        months.forEach(m => {
-          if (indicator[m]) {
-            const val = parseFloat(indicator[m].replace(/[^0-9.-]/g, ''));
-            if (!isNaN(val)) { dataPoints.push(val); labels.push(m.slice(0, 3)); }
-          }
-        });
-      }
-    }
+    const { labels, dataPoints } = getSeriesDataFromIndicator(indicator);
 
     if (dataPoints.length === 0) return;
 
@@ -627,9 +745,36 @@ async function renderJournalCharts() {
   });
 }
 
-// Load entries when DOM is ready
+async function initializeJournalPage() {
+  try {
+    await Promise.all([
+      injectHeadNodes('components/head-meta.html', 'meta, link'),
+      injectHeadNodes('components/fonts.html', 'link'),
+      ...SCRIPT_COMPONENTS.map((path) => injectScriptComponent(path)),
+      injectFooter()
+    ]);
+  } catch (error) {
+    console.error('Journal component bootstrap error:', error);
+  }
+
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    loadScriptOnce('/_vercel/insights/script.js', { defer: true }).catch((error) => {
+      console.error('Vercel insights load error:', error);
+    });
+  }
+
+  loadScriptOnce('https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js', { defer: true })
+    .catch((error) => console.error('Failed to load Lucide', error));
+
+  await loadJournalEntries();
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadJournalEntries);
+  document.addEventListener('DOMContentLoaded', initializeJournalPage);
 } else {
-  loadJournalEntries();
+  initializeJournalPage();
 }

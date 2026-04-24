@@ -1,5 +1,5 @@
 /* Journal Tweet-Style Layout */
-/* Minimal color palette - grayscale with single accent */
+/* Theme tokens */
 :root {
     --tweet-bg: #ffffff;
     --tweet-bg-hover: #f7f9fa;
@@ -17,13 +17,17 @@
     --table-border: #d1d5db;
 }
 
-/* Inline table styling in journal entries */
-.entry-content .ln-table {
+/* Tables inside journal entries */
+.entry-content .ln-table,
+.entry-content .coachella-schedule {
     border-collapse: collapse;
+    width: auto;
+}
+
+.entry-content .ln-table {
     font-size: 0.7em;
     line-height: 1.3;
     margin: 0.2rem 0 0 0;
-    width: auto;
     max-width: 100%;
 }
 
@@ -48,13 +52,10 @@
     background: var(--tweet-bg-hover);
 }
 
-/* Coachella schedule table in journal */
 .entry-content .coachella-schedule {
-    border-collapse: collapse;
     font-size: 0.65em;
     line-height: 1.2;
     margin: 0.3rem 0 0 0;
-    width: auto;
     table-layout: auto;
 }
 
@@ -75,7 +76,6 @@
 .entry-content .coachella-schedule th {
     background: var(--table-header-bg);
     font-weight: 600;
-    white-space: nowrap;
 }
 
 .entry-content .coachella-schedule th:last-child,
@@ -106,6 +106,7 @@
     }
 }
 
+/* Dark mode token overrides */
 html.dark-mode {
     --tweet-bg: var(--color-dark-bg-primary);
     --tweet-bg-hover: var(--color-dark-bg-secondary);
@@ -139,13 +140,13 @@ html.dark-mode {
     }
 }
 
-/* Shared typography */
+/* Base typography */
 .entry-title,
 .entry-content {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Journal container - tweet-like feed */
+/* Feed container */
 #journal-feed {
     max-width: 100%;
     margin: 0 auto;
@@ -159,7 +160,7 @@ html.dark-mode {
     }
 }
 
-/* Journal entry - individual tweet */
+/* Entry cards */
 .journal-entry {
     background: var(--tweet-bg);
     border: 1px solid var(--tweet-border);
@@ -179,7 +180,7 @@ html.dark-mode {
     box-shadow: 0 2px 8px var(--tweet-shadow);
 }
 
-/* Date header - tweet timestamp style */
+/* Entry card header */
 .journal-entry .card-title {
     background: transparent;
     border: none;
@@ -198,13 +199,13 @@ html.dark-mode {
     font-weight: 400;
 }
 
-/* Entry content container */
+/* Entry card body */
 .journal-entry .content {
     padding: 0 16px 16px 16px;
     margin: 0;
 }
 
-/* Individual entry - tweet content */
+/* Individual feed items */
 .entry {
     margin: 0 0 16px 0;
     padding: 0;
@@ -237,10 +238,6 @@ html.dark-mode {
 .entry-title::after {
     transition: transform 0.2s ease;
 }
-
-.entry-title:hover::after {
-    transform: scale(1.2);
-}
 .entry--file .entry-title {
     display: flex;
     justify-content: space-between;
@@ -270,8 +267,6 @@ html.dark-mode {
 }
 
 .entry--file.entry--collapsed .entry-title::after {
-    content: 'expand_more'; /* Using a conceptual name or character */
-    font-family: Arial, sans-serif; /* Fallback */
     content: '▸';
     font-size: 1.25rem;
     color: var(--accent-primary);
@@ -297,24 +292,13 @@ html.dark-mode {
     margin-bottom: 0;
 }
 
-/* Entry title - tweet text */
+/* Item title and content */
 .entry-title {
     font-size: 1.05rem;
     line-height: 1.45;
     color: var(--tweet-text);
     margin: 0 0 4px 0;
     font-weight: 500;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    overflow: hidden;
-}
-
-/* Entry content - tweet text */
-.entry-content {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--tweet-text-secondary);
-    margin: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
     overflow: hidden;
@@ -340,7 +324,7 @@ html.dark-mode {
     margin-bottom: 0;
 }
 
-/* Responsive video embeds */
+/* Embedded media */
 .entry-content iframe,
 .entry-content video {
     max-width: 100%;
@@ -353,14 +337,14 @@ html.dark-mode {
 .entry-content a,
 .entry-title a {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
 .entry-content a:hover,
 .entry-title a:hover {
     opacity: 0.7;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Ticker links get a compact chip treatment */
@@ -398,7 +382,7 @@ html.dark-mode {
     outline-offset: 2px;
 }
 
-/* Remove all card styling from journal entries */
+/* Legacy card overrides */
 #journal-feed .card,
 #journal-feed .card:hover {
     background: var(--tweet-bg) !important;
@@ -415,7 +399,7 @@ html.dark-mode {
 
 
 
-/* Container adjustments */
+/* Layout overrides */
 .container {
     max-width: 100%;
     padding: 0;
@@ -426,12 +410,12 @@ html.dark-mode {
     max-width: 100%;
 }
 
-/* Remove any remaining heavy styling */
+/* Prevent inherited heavy shadows */
 .journal-entry * {
     box-shadow: none !important;
 }
 
-/* Warning box styling for dark mode */
+/* Warning box */
 #curry-goat-warning {
     background: #fff3cd !important;
     border: 1px solid #ffc107 !important;
@@ -475,7 +459,7 @@ html.dark-mode #curry-goat-warning {
     }
 }
 
-/* Responsive image styling in journal entries */
+/* Images */
 .entry-content img,
 .entry-title img {
     max-width: 100%;
@@ -494,20 +478,17 @@ html.dark-mode #curry-goat-warning {
     box-shadow: 0 4px 16px var(--tweet-shadow);
 }
 
-/* Center images in link entries */
 .entry--link .entry-content img {
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Images within links (like external images) */
 .entry-content a img,
 .entry-title a img {
     margin-top: 0.75rem;
     cursor: zoom-in;
 }
 
-/* Dark mode image border */
 html.dark-mode .entry-content img,
 html.dark-mode .entry-title img {
     border-color: rgba(255, 255, 255, 0.15);
@@ -537,7 +518,7 @@ html.dark-mode .entry-title img {
     z-index: 1;
 }
 
-/* Mobile optimizations */
+/* Responsive */
 @media (max-width: 768px) {
     #journal-feed {
         max-width: 100%;
@@ -597,7 +578,6 @@ html.dark-mode .entry-title img {
     }
 }
 
-/* Extra small devices - prevent text overflow */
 @media (max-width: 420px) {
     .journal-entry {
         border-radius: 10px;
@@ -628,70 +608,20 @@ html.dark-mode .entry-title img {
         font-size: 0.85rem;
     }
 }
-
-    .journal-entry .card-title {
-        padding: 12px 12px 8px 12px;
-        font-size: 0.8rem;
-    }
-
-    .journal-entry .content {
-        padding: 0 12px 12px 12px;
-    }
-
-    .entry-title,
-    .entry-content {
-        font-size: 0.95rem;
-    }
-}
-/* Entry Link Badge Styling */
-.entry--link .entry-title {
-    margin-bottom: 0;
-}
-
 .entry-title-link {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none !important;
-    color: var(--tweet-text) !important;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 4px 0;
-    transition: color 0.2s ease;
-    font-weight: 500;
+    display: inline;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
 }
 
 .entry-title-link:hover {
     background: transparent;
     border-color: transparent;
-    color: var(--tweet-ticker-text) !important;
+    color: inherit;
     transform: none;
     box-shadow: none;
-    opacity: 1 !important;
-}
-
-.entry-link-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.entry-link-title {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.3;
-}
-
-.entry-link-content {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--tweet-text-secondary);
-    margin-top: 10px;
-    line-height: 1.5;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    opacity: 0.7;
 }
 
 .entry-link-icon,
@@ -724,17 +654,16 @@ html.dark-mode .entry-title img {
     transform: scale(1.1);
 }
 
-/* Dark mode adjustments for badges */
 html.dark-mode .entry-title-link {
     background: transparent;
 }
 
 html.dark-mode .entry-title-link:hover {
     background: transparent;
-    color: var(--accent-primary) !important;
+    color: inherit;
 }
 
-/* Change metric value styling */
+/* Inline change metric */
 .change-metric-value {
     display: inline-flex;
     align-items: center;

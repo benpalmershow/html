@@ -376,33 +376,12 @@ function renderInlineEntry(entry, entryId, journalDate) {
        .join('');
    }
 
-   if (entry.link) {
-     let iconHtml = '';
-     let linkIcon = entry.linkIcon;
-     let linkAssetIcon = entry.linkAssetIcon;
-
-     // Auto-standardize icons based on destination if not explicitly provided
-     if (!linkIcon && !linkAssetIcon) {
-       if (entry.link.includes('media.html')) {
-         linkAssetIcon = 'images/media.webp';
-       } else if (entry.link.includes('financials.html')) {
-         linkAssetIcon = 'images/read.webp';
-       } else if (entry.link.includes('x.com')) {
-         linkIcon = 'x';
-       }
-     }
-
-     if (linkIcon) {
-       iconHtml = ` <i data-lucide="${linkIcon}" class="entry-link-icon"></i>`;
-     } else if (linkAssetIcon) {
-       iconHtml = ` <img src="${linkAssetIcon}" class="entry-link-asset-icon" alt="">`;
-     }
-
-     const contentPart = content ? `<div class="entry-link-content">${content}</div>` : '';
-     const innerHtml = `<div class="entry-link-header"><div class="entry-link-title">${entry.title}</div>${iconHtml}</div>${contentPart}`;
-const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
+    if (entry.link) {
+      const contentPart = content ? `<div class="entry-link-content">${content}</div>` : '';
+      const innerHtml = `<div class="entry-link-header"><div class="entry-link-title">${entry.title}</div></div>${contentPart}`;
+      const linkedBadge = `<a href="${entry.link}" class="entry-title-link">${innerHtml}</a>`;
       const timeHtml = renderEntryTime(entry.time, journalDate);
-      return `<div id="${entryId}" class="entry entry--link">${timeHtml}<div class="entry-title">${sanitizeHtml(linkedBadge)}</div></div>`;
+      return `<div id="${entryId}" class="entry entry--link">${timeHtml}${linkedBadge}</div>`;
     }
 
     const safeTitle = renderTitle(entry.title);

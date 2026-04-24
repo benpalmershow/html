@@ -211,6 +211,13 @@ html.dark-mode {
     background: transparent;
     border: none;
     box-shadow: none;
+    overflow: hidden;
+}
+
+.entry::after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
 .entry--collapsed .entry-content {
@@ -292,13 +299,25 @@ html.dark-mode {
 
 /* Entry title - tweet text */
 .entry-title {
-    font-size: 1rem;
-    line-height: 1.4;
+    font-size: 1.05rem;
+    line-height: 1.45;
     color: var(--tweet-text);
-    margin: 0 0 8px 0;
-    font-weight: 400;
+    margin: 0 0 4px 0;
+    font-weight: 500;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+/* Entry content - tweet text */
+.entry-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--tweet-text-secondary);
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
 }
 
 /* Entry content - tweet text */
@@ -523,6 +542,92 @@ html.dark-mode .entry-title img {
     #journal-feed {
         max-width: 100%;
     }
+
+    .journal-entry {
+        margin: 0 0 12px 0;
+        border-radius: 12px;
+    }
+
+    .journal-entry .card-title {
+        padding: 10px 12px 4px 12px;
+        font-size: 0.8rem;
+    }
+
+    .journal-entry .content {
+        padding: 0 12px 10px 12px;
+    }
+
+    .entry {
+        margin: 0 0 8px 0;
+    }
+
+    .entry-title {
+        font-size: 1rem;
+        line-height: 1.4;
+        word-break: break-word;
+    }
+
+    .entry-content {
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+
+    .entry-link-title {
+        font-size: 1rem;
+    }
+
+    .entry-link-content {
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
+
+    .entry-link-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .entry-link-icon {
+        align-self: flex-start;
+        margin: 2px 0 0 0;
+    }
+
+    .entry-time {
+        font-size: 0.68rem;
+    }
+}
+
+/* Extra small devices - prevent text overflow */
+@media (max-width: 420px) {
+    .journal-entry {
+        border-radius: 10px;
+    }
+
+    .journal-entry .card-title {
+        padding: 8px 10px 3px 10px;
+        font-size: 0.75rem;
+    }
+
+    .journal-entry .content {
+        padding: 0 10px 8px 10px;
+    }
+
+    .entry-title {
+        font-size: 0.95rem;
+    }
+
+    .entry-content {
+        font-size: 0.85rem;
+    }
+
+    .entry-link-title {
+        font-size: 0.95rem;
+    }
+
+    .entry-link-content {
+        font-size: 0.85rem;
+    }
+}
 
     .journal-entry .card-title {
         padding: 12px 12px 8px 12px;

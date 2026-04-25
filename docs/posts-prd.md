@@ -12,7 +12,7 @@ Standalone pages remain available for longer treatments, but they are secondary.
 
 ## Default Publishing Workflow
 
-1. Add the new item to the newest date block in `json/journal.json`, or create a new top level date block if needed.
+1. Add the new item to the newest date block in `json/journal.json` **at the top of the file** (newest first), or create a new top level date block at the beginning if needed.
 2. Write the entry as a compact journal note with a `title` and optional `content`.
 3. If the topic needs a full treatment, create a dedicated page in `article/` and link to it from the journal entry.
 4. Do not create a new `article/posts/` card or `json/posts.json` entry unless explicitly requested for a homepage card or legacy compatibility.
@@ -21,26 +21,30 @@ Standalone pages remain available for longer treatments, but they are secondary.
 
 ## Journal Entry Requirements
 
-Each journal entry lives inside a dated object in `json/journal.json`:
+Journal entries are stored in `json/journal.json` as a JSON array sorted by date descending (newest first at the top of the file):
 
 ```json
-{
-  "date": "03/22/26",
-  "entries": [
-    {
-      "title": "📰 Title",
-      "content": "Short commentary with optional <a href='article/example.html'>link</a>."
-    }
-  ]
-}
+[
+  {
+    "date": "MM/DD/YY",
+    "entries": [
+      {
+        "title": "📰 Title",
+        "content": "Short commentary with optional <a href='article/example.html' target='_blank' rel='noopener noreferrer'>link</a>.",
+        "link": "https://external.url"  // optional
+      }
+    ]
+  }
+]
 ```
 
 ### Required elements
 
 1. `date` in `MM/DD/YY` format at the group level
-2. `title` for every entry
+2. `title` for every entry (include emoji prefix)
 3. Optional `content` for body copy, links, or context
 4. Valid HTML for any inline links
+5. Array sorted newest-first (newest date block at top of file)
 
 ### Formatting standards
 
@@ -83,8 +87,8 @@ Example:
 
 ## Publishing Checklist
 
-- [ ] Entry added to the correct date block in `json/journal.json`
-- [ ] `title` is present and reads cleanly in the feed
+- [ ] Entry added to the **top** of `json/journal.json` (newest first)
+- [ ] `title` is present and reads cleanly in the feed (with emoji prefix)
 - [ ] `content` is concise and valid HTML if used
 - [ ] Internal or external links point to the right destination
 - [ ] External links include `target='_blank'` and `rel='noopener noreferrer'`

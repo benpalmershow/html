@@ -110,3 +110,4 @@ Every new entry in `json/journal.json` must include:
 - **timestamp** - ISO-style time (e.g., `"time": "08:30"`)
 - **title** - must include an emoji prefix
 - **content** - the entry body (can be omitted if using `file` or `link`)
+- **link** - optional URL reference for external sources

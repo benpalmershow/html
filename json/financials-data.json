@@ -672,6 +672,42 @@
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."
         },
+         {
+             "category": "Government",
+             "agency": "USCIS",
+             "name": "TPS Applications Approved",
+             "lastUpdated": "2026-04-25T13:00:00Z",
+             "releaseDay": 0,
+             "url": "https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data",
+             "fiscalYear": "2025",
+             "reportingPeriod": "October 1, 2024 - September 30, 2025",
+             "source": "U.S. Citizenship and Immigration Services, Office of Performance and Quality (NPD, queried 10/2025, PAER0019078)",
+             "2026": {
+                 "september": "9,318 (Q4 FY2025)"
+             },
+             "2025": {
+                 "june": "35,943 (Q3 FY2025)",
+                 "march": "42,492 (Q2 FY2025)"
+             },
+             "2024": {
+                 "december": "234,060 (Q1 FY2025)"
+             },
+             "q1_approved": "234,060",
+             "q2_approved": "42,492",
+             "q3_approved": "35,943",
+             "q4_approved": "9,318",
+             "fiscal_year_total": "321,813",
+             "top_countries": {
+                 "Venezuela": "121,133",
+                 "Haiti": "117,028",
+                 "Ukraine": "46,685",
+                 "El Salvador": "13,727",
+                 "Honduras": "10,553"
+             },
+              "change": "Q3→Q4: -26,625 (-74.1%)",
+              "change_label": "QoQ",
+              "explanation": "Form I-821 applications for Temporary Protected Status (TPS) approved by USCIS during Fiscal Year 2025, broken down by quarter and by country of designation. TPS is a temporary immigration status granted to eligible nationals of designated countries who are already in the United States, allowing them to live and work legally while conditions in their home country prevent safe return. The program covers countries experiencing armed conflict, environmental disasters, or other extraordinary conditions. Venezuela and Haiti represented the largest cohorts of approved applications in FY2025, reflecting ongoing designations for those countries. Quarterly approvals show significant variance, with Q1 (Oct-Dec) typically seeing the highest volume and Q4 (Jul-Sep) the lowest, often reflecting processing backlogs and staffing patterns. This data is published quarterly by USCIS in the RADP (Refugee, Asylum, and Temporary Protected Status) data report."
+          },
         {
             "category": "Government",
             "agency": "CBP",

@@ -76,7 +76,7 @@
                 "2026-04-18": {"yes": "29¢", "no": "71¢"},
                 "2026-04-17": {"yes": "32¢", "no": "68¢"}
             },
-            "change": "",
+            "change": "0.0% MoM (latest daily used for April)",
             "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds at 29% as services sector strength and Fed rate cut expectations counterbalance Middle East-driven oil price spikes. Strong March jobs report (178K) and resilient consumer spending provide economic floor. Volume: $1.3M."
         },
         {
@@ -291,7 +291,7 @@
             "category": "Housing Market",
             "agency": "Zillow",
             "name": "Number of Days on Market (Median)",
-            "lastUpdated": "2026-04-20T14:00:00Z",
+            "lastUpdated": "2026-04-24T23:00:00Z",
             "url": "https://www.zillow.com/research/data/",
             "march": "60",
             "april": "53",
@@ -904,7 +904,7 @@
             "category": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-04-20T14:00:00Z",
+            "lastUpdated": "2026-04-23T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
               
@@ -912,7 +912,7 @@
                 "january": "76",
                 "february": "98",
                 "march": "5",
-                "april": "19"
+                "april": "5"
             },
             "daily": {
                 "2026-04-01": 6,
@@ -922,13 +922,14 @@
                 "2026-04-05": 9,
                 "2026-04-14": 19,
                 "2026-04-18": 35,
-                "2026-04-19": 3
+                "2026-04-19": 3,
+                "2026-04-23": 5
             },
-            "vesselsInGulf": 870,
+            "vesselsInGulf": 766,
             "hormuzInbound": 1,
-            "hormuzOutbound": 2,
-            "darkActivityEvents": 140,
-            "vesselsAttacked": 31,
+            "hormuzOutbound": 4,
+            "darkActivityEvents": 109,
+            "vesselsAttacked": 34,
             "propabilities": {
                 "2026-04-14": {"vesselsInGulf": 847, "hormuzInbound": 5, "hormuzOutbound": 14, "darkActivityEvents": 138, "vesselsAttacked": 27},
                 "2026-04-18": {"vesselsInGulf": 919, "hormuzInbound": 8, "hormuzOutbound": 27, "darkActivityEvents": 142, "vesselsAttacked": 29}

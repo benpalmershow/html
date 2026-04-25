@@ -257,6 +257,17 @@ function renderHormuz(indicator) {
                 const formattedPrevDate = new Date(prevDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
                 latestDataHtml += `<div class="latest-data-row"><span class="month-label">${formattedPrevDate}:</span><span class="month-value">${prevValue}</span></div>`;
             }
+
+            // On expand, show additional recent daily values (newest first).
+            const additionalDailyEntries = dailyEntries
+                .slice(0, Math.max(0, dailyEntries.length - 2))
+                .reverse()
+                .slice(0, 5);
+
+            additionalDailyEntries.forEach(([dailyDate, dailyValue]) => {
+                const formattedDailyDate = new Date(dailyDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                historyDataHtml += `<div class="data-row"><span class="month-label">${formattedDailyDate}:</span><span class="month-value">${dailyValue}</span></div>`;
+            });
         }
         
         if (march2026) {
@@ -298,7 +309,7 @@ function renderHormuz(indicator) {
             latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${indicator.vesselsAttacked}${prevValue}</span></div>`;
         }
 
-        const hasHistory = !!(march2026 || feb2026 || jan2026);
+        const hasHistory = historyDataHtml.trim().length > 0;
 
         return { latestDataHtml, historyDataHtml, hasHistory };
     }

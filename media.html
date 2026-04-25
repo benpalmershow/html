@@ -23,7 +23,7 @@
   <meta name="keywords" content="media, books, films, podcasts, recommendations, Doc Riter, curated content">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="site-data-version" content="20260424c">
+   <meta name="site-data-version" content="20260425">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
@@ -303,9 +303,36 @@
     </div>
     </div>
 
-    <div class="media-cards" id="media-cards-container">
-      <!-- Media cards will be inserted here by JavaScript -->
-    </div>
+     <div class="media-cards" id="media-cards-container">
+       <!-- Featured: Latest Doc Riter Podcast -->
+       <div class="featured-latest-section">
+         <h3 class="featured-label">Latest Episode</h3>
+         <div class="latest-episode-card">
+           <div class="latest-episode-cover">
+             <img src="images/logo.webp" alt="Doc Riter Podcast" width="120" height="120" loading="eager">
+           </div>
+           <div class="latest-episode-info">
+             <h4 class="latest-episode-title">Saturday April 25th</h4>
+             <p class="latest-episode-desc">Critical economic and geopolitical developments analysis.</p>
+             <div class="latest-platform-links">
+               <a href="https://open.spotify.com/episode/1PX0kRVRiPymSY27V080c2?si=a17125a387f4435a" target="_blank" rel="noopener noreferrer" class="action-link spotify-link" title="Listen on Spotify">
+                 <i class="fab fa-spotify"></i> Spotify
+               </a>
+               <a href="https://music.amazon.com/podcasts/1167b390-83bc-438f-8437-9441871a3bc5/episodes/353203f2-3958-4f94-ab04-68e317ad5920/doc-riter-saturday-april-25th" target="_blank" rel="noopener noreferrer" class="action-link amazon-link" title="Listen on Amazon Music">
+                 <i class="fab fa-amazon"></i> Amazon
+               </a>
+               <a href="https://podcasts.apple.com/us/podcast/saturday-april-25th/id1529618289?i=1000763591281" target="_blank" rel="noopener noreferrer" class="action-link apple-link" title="Listen on Apple Podcasts">
+                 <i class="fab fa-apple"></i> Apple
+               </a>
+               <a href="https://youtu.be/uFxsW5Myp7M" target="_blank" rel="noopener noreferrer" class="action-link youtube-link" title="Watch on YouTube">
+                 <i class="fab fa-youtube"></i> YouTube
+               </a>
+             </div>
+           </div>
+         </div>
+       </div>
+       <!-- Cards appended from media.json -->
+     </div>
 
     <div id="playlist-overlay" class="playlist-overlay" style="display: none;" role="dialog" aria-modal="true"
       aria-labelledby="overlay-title">

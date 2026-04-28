@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-25T15:36:00Z",
+    "lastUpdated": "2026-04-28T15:36:00Z",
     "indices": [
     
         {
@@ -537,7 +537,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Case-Shiller National Home Price Index",
-            "lastUpdated": "2026-03-31T14:00:00Z",
+            "lastUpdated": "2026-04-28T14:00:00Z",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
             "january": "323.666",
@@ -546,14 +546,15 @@
             "april": "329.911",
             "may": "331.426",
             "june": "331.608",
-            "july": "330.950",
-            "august": "329.855",
-            "september": "328.811",
-            "october": "328.238",
-            "november": "327.807",
-            "december": "326.969",
+            "july": "330.949",
+            "august": "329.857",
+            "september": "328.880",
+            "october": "328.235",
+            "november": "327.800",
+            "december": "326.957",
             "2026": {
-                "january": "326.612"
+                "january": "326.359",
+                "february": "327.311"
             },
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
@@ -841,7 +842,7 @@
             "category": "Consumer Indicators",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2026-03-31T14:00:00Z",
+            "lastUpdated": "2026-04-28T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -857,7 +858,8 @@
             "2026": {
                 "january": "89",
                 "february": "91",
-                "march": "91.8"
+                "march": "92.2",
+                "april": "92.8"
             },
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."

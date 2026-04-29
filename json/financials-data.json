@@ -893,21 +893,22 @@
             "category": "Consumer Indicators",
             "agency": "FRED",
             "name": "Personal Consumption Expenditures (PCE)",
-            "lastUpdated": "2026-03-13T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/PCE",
             "march": "$20,683B",
             "april": "$20,746.4B",
             "may": "$20,755B",
             "june": "$20,868.4B",
-            "july": "$20,981.2B",
-            "august": "$21,087.1B",
-            "september": "$21,152.2B",
-            "october": "$21,303.0B",
-            "november": "$21,383.9B",
-            "december": "$21,474.9B",
+            "july": "$20,007B",
+            "august": "$21,123B",
+            "september": "$21,202.4B",
+            "october": "$21,288.1B",
+            "november": "$21,356B",
+            "december": "$21,445.9B",
             "2026": {
-                "january": "$21,536.6B"
+                "january": "$21,511.8B",
+                "february": "21,615.1B"
             },
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
@@ -1197,7 +1198,7 @@
             "category": "Housing Market",
             "agency": "Census",
             "name": "Housing Starts",
-            "lastUpdated": "2026-03-14T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.census.gov/construction/nrc/current/index.html",
             "march": "1.355M",
@@ -1209,9 +1210,11 @@
             "september": "1.328M",
             "october": "1.272M",
             "november": "1.324M",
-            "december": "1.387M",
+            "december": "1.373M",
             "2026": {
-                "january": "1.487M"
+                "january": "1.398M",
+                "february": "1.356M",
+                "march": "1.502M"
             },
             "change": "",
             "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."

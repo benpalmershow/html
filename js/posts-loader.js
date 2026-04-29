@@ -42,6 +42,10 @@ const Sanitizer = (function () {
     function sanitize(html) {
         if (!html) return '';
 
+        if (window.HtmlUtils?.sanitizeHtml) {
+            return window.HtmlUtils.sanitizeHtml(html);
+        }
+
         if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
             return window.DOMPurify.sanitize(html, {
                 USE_PROFILES: { html: true },
@@ -82,6 +86,10 @@ const Sanitizer = (function () {
 
 const MarkdownParser = (function () {
     function parseFrontmatter(md) {
+        if (window.HtmlUtils?.parseFrontmatter) {
+            return window.HtmlUtils.parseFrontmatter(md);
+        }
+
         const metadata = {};
         const match = md.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
         if (!match) return { metadata, contentMd: md.trim() };

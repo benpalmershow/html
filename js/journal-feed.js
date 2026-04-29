@@ -72,6 +72,10 @@ function loadScriptOnce(src, options = {}) {
 }
 
 function escapeHtml(text) {
+  if (window.HtmlUtils?.escapeHtml) {
+    return window.HtmlUtils.escapeHtml(text);
+  }
+
   return String(text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -82,6 +86,14 @@ function escapeHtml(text) {
 
 function sanitizeHtml(html) {
   if (!html) return '';
+
+  if (window.HtmlUtils?.sanitizeHtml) {
+    return optimizeSanitizedHtml(window.HtmlUtils.sanitizeHtml(html, {
+      dompurify: {
+        ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
+      }
+    }));
+  }
 
   let cleanHtml;
 
@@ -98,7 +110,10 @@ function sanitizeHtml(html) {
     cleanHtml = template.innerHTML;
   }
 
-  // Apply image optimization to sanitized HTML
+  return optimizeSanitizedHtml(cleanHtml);
+}
+
+function optimizeSanitizedHtml(cleanHtml) {
   const outputTemplate = document.createElement('template');
   outputTemplate.innerHTML = cleanHtml;
 

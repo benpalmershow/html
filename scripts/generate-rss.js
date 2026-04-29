@@ -12,6 +12,7 @@ const path = require('path');
 // Configuration
 const SITE_URL = 'https://howdystranger.net';
 const FEED_FILE = path.join(__dirname, '../news-feed.xml');
+const NEWS_SITEMAP_FILE = path.join(__dirname, '../news-sitemap.xml');
 const ARTICLES_INDEX = path.join(__dirname, '../json/articles.json');
 const POSTS_INDEX = path.join(__dirname, '../json/posts.json');
 const ARTICLES_DIR = path.join(__dirname, '../article');
@@ -85,6 +86,33 @@ function stripMarkdown(text) {
     .replace(/\n+/g, ' ') // Newlines to spaces
     .trim()
     .substring(0, 500); // Limit to 500 chars
+}
+
+function buildNewsSitemap(articlesData) {
+  const urls = articlesData.map(article => {
+    const title = escapeXml(article.title);
+    const publicationDate = escapeXml(article.date);
+    const loc = `${SITE_URL}/news?article=${encodeURIComponent(article.id)}`;
+
+    return `  <url>
+    <loc>${loc}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Howdy, Stranger</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>${publicationDate}</news:publication_date>
+      <news:title>${title}</news:title>
+    </news:news>
+  </url>`;
+  }).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+${urls}
+</urlset>
+`;
 }
 
 /**
@@ -182,7 +210,9 @@ ${items}
 
     // Write to file
     fs.writeFileSync(FEED_FILE, rss, 'utf8');
+    fs.writeFileSync(NEWS_SITEMAP_FILE, buildNewsSitemap(articlesData), 'utf8');
     console.log(`✅ RSS feed generated: ${FEED_FILE}`);
+    console.log(`✅ News sitemap generated: ${NEWS_SITEMAP_FILE}`);
     console.log(`📰 Total articles: ${articlesData.length}`);
     console.log(`📝 Total posts: ${postsData.length}`);
     console.log(`📊 Combined items: ${articleItems.length + postItems.length}`);

@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "generate:rss": "node scripts/generate-rss.js",
+    "validate": "node scripts/validate-site.js"
+  },
+  "devDependencies": {}
+}

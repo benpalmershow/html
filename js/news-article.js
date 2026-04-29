@@ -1,6 +1,10 @@
 function sanitizeHtml(html) {
   if (!html) return '';
 
+  if (window.HtmlUtils?.sanitizeHtml) {
+    return window.HtmlUtils.sanitizeHtml(html);
+  }
+
   if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
     return window.DOMPurify.sanitize(html, {
       USE_PROFILES: { html: true },
@@ -64,6 +68,10 @@ async function waitForMarked() {
 }
 
 function parseFrontmatter(md) {
+  if (window.HtmlUtils?.parseFrontmatter) {
+    return window.HtmlUtils.parseFrontmatter(md);
+  }
+
   const metadata = {};
   const match = md.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
   if (!match) return { metadata, contentMd: md.trim() };
@@ -83,6 +91,10 @@ function parseFrontmatter(md) {
 }
 
 function escapeHtml(text) {
+  if (window.HtmlUtils?.escapeHtml) {
+    return window.HtmlUtils.escapeHtml(text);
+  }
+
   return String(text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')

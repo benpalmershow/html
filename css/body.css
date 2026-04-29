@@ -27,7 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     content-visibility: auto;
-    letter-spacing: 0.3px;
+    letter-spacing: 0;
 }
 
 .content {
@@ -54,7 +54,7 @@ h2 {
     font-size: clamp(1.2rem, 4vw, 1.5rem);
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: 0;
     line-height: 1.2;
     text-align: left;
 }
@@ -81,6 +81,12 @@ a {
     }
 }
 
+a:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
 /* ========================================
    COMPONENTS: CARDS
    ======================================== */
@@ -88,14 +94,15 @@ a {
 .card {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--card-radius);
     padding: var(--spacing-md);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 
     &:hover,
     &:focus {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px var(--shadow-color);
+        box-shadow: var(--shadow-card-hover);
         border-color: var(--accent-secondary);
     }
 
@@ -109,7 +116,7 @@ a {
         font-weight: 600;
         background: rgba(var(--color-secondary-rgb), 0.08);
         border: 1px solid var(--color-secondary);
-        border-radius: 6px;
+        border-radius: var(--control-radius);
         padding: 0.18em 0.85em;
         margin: 0.15em 0.25em 0.15em 0;
         display: inline-block;
@@ -259,24 +266,28 @@ table {
     text-align: center;
     padding: var(--spacing-lg);
     color: var(--text-muted);
-    font-style: italic;
+    font-style: normal;
+    min-height: 4rem;
+    display: grid;
+    place-items: center;
 }
 
 .error-state {
     text-align: center;
     padding: var(--spacing-lg);
     color: var(--color-error);
-    background-color: var(--color-gray-100);
-    border: 1px solid var(--color-gray-200);
-    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(var(--border-color-rgb), 0.9);
+    border-left: 3px solid var(--color-error);
+    border-radius: var(--card-radius);
     margin: var(--spacing-md) 0;
 }
 
 .skeleton {
-    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-color) 50%, var(--bg-secondary) 75%);
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, rgba(var(--border-color-rgb), 0.72) 50%, var(--bg-secondary) 75%);
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s infinite linear;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
 }
 
 @keyframes skeleton-loading {
@@ -336,14 +347,14 @@ table {
 
 h1.page-title {
     font-size: 0.85rem;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     text-align: center;
     margin: var(--spacing-lg) 0 var(--spacing-md) 0;
-    padding-bottom: var(--spacing-sm);
+    padding-bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,12 +362,19 @@ h1.page-title {
     min-height: 24px;
 }
 
+.page-header {
+    width: min(100%, 1080px);
+    margin-inline: auto;
+    padding-inline: var(--content-padding);
+}
+
 .page-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.35rem;
+    height: 1.35rem;
     flex-shrink: 0;
     object-fit: cover;
     border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(var(--border-color-rgb), 0.8);
 }
 
 /* ========================================
@@ -447,8 +465,8 @@ h1.page-title {
     }
 
     .page-icon {
-        width: 1.1rem;
-        height: 1.1rem;
+        width: 1.15rem;
+        height: 1.15rem;
     }
 
     .table-wrapper td:first-child,
@@ -456,6 +474,17 @@ h1.page-title {
         min-width: 80px;
         padding: var(--spacing-xs) calc(var(--spacing-xs) / 2);
         font-size: .8em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
@@ -552,7 +581,7 @@ html.dark-mode #social-footer .social-links img {
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    border-radius: 28px;
+    border-radius: var(--card-radius);
     padding: clamp(1.5rem, 4vw, 3rem);
     background:
         radial-gradient(circle at top left, rgba(var(--accent-primary-rgb), 0.18), transparent 34%),
@@ -593,7 +622,7 @@ html.dark-mode .hero-panel {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 6.2rem);
     line-height: 0.92;
-    letter-spacing: -0.05em;
+    letter-spacing: 0;
     color: var(--text-primary);
     text-shadow: 0 1px 0 rgba(var(--color-white-rgb), 0.35);
 }
@@ -706,7 +735,7 @@ html.dark-mode .hero-link.secondary:focus-visible {
     }
 
     .hero-panel {
-        border-radius: 22px;
+        border-radius: var(--card-radius);
         padding: 1.35rem;
     }
 

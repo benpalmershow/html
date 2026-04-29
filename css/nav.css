@@ -13,12 +13,12 @@
     position: sticky;
     top: 0;
     z-index: var(--nav-z-index);
-    background: rgba(253, 246, 232, 0.85); /* Semi-transparent version of var(--bg-primary, #fdf6e8) */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(224, 220, 196, 0.4);
+    background: rgba(var(--bg-primary-rgb), 0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.75);
     isolation: isolate;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-base), border-color var(--transition-base), background-color var(--transition-base);
     overflow: visible;
 }
 
@@ -52,27 +52,28 @@
 }
 
 .nav-link-icon {
-    width: clamp(28px, 6vw, 36px);
-    height: clamp(28px, 6vw, 36px);
+    width: clamp(30px, 6vw, 36px);
+    height: clamp(30px, 6vw, 36px);
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: 0 0 0 1px rgba(var(--border-color-rgb), 0.9);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-icon-link:hover .nav-link-icon {
-    transform: scale(1.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 2px rgba(var(--accent-primary-rgb), 0.25), var(--shadow-card);
 }
 
 .nav-icon-link.active .nav-link-icon {
-    box-shadow: 0 0 0 2px var(--color-secondary, #d4822a);
+    box-shadow: 0 0 0 2px var(--accent-secondary), 0 0 0 5px rgba(var(--color-secondary-rgb), 0.12);
 }
 
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(0.5rem, 2vw, 0.75rem);
+    padding: clamp(0.45rem, 2vw, 0.7rem);
     gap: clamp(0.5rem, 3vw, 1.5rem);
     flex-wrap: nowrap;
 }
@@ -98,20 +99,23 @@
     font-family: var(--font-body, Georgia, 'Times New Roman', serif);
     padding: 0.25rem;
     white-space: nowrap;
-    letter-spacing: 0.3px;
-    transition: color 0.2s ease;
+    letter-spacing: 0;
+    border-radius: var(--control-radius);
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .nav-link:visited {
     color: var(--text-secondary, #343a40) !important;
 }
 
-.nav-link:focus {
-    outline: none;
+.nav-link:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 4px;
 }
 
 .nav-link:hover {
     color: var(--color-secondary, #d4822a);
+    opacity: 1;
 }
 
 .nav-link.active:not(.nav-icon-link) {
@@ -221,12 +225,12 @@ button:focus-visible {
 /* Dark Mode Overrides for Navigation */
 @media (prefers-color-scheme: dark) {
     #main-nav {
-        background: rgba(43, 40, 38, 0.85); /* Semi-transparent version of var(--bg-primary, #2b2826) */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(26, 31, 30, 0.9);
+        border-bottom: 1px solid rgba(var(--border-color-rgb), 0.75);
     }
 }
 
 html.dark-mode #main-nav {
-    background: rgba(43, 40, 38, 0.85); /* Semi-transparent version of var(--bg-primary, #2b2826) */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(26, 31, 30, 0.9);
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.75);
 }

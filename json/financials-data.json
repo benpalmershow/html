@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-04-28T15:36:00Z",
+    "lastUpdated": "2026-04-29T15:36:00Z",
     "indices": [
     
         {
@@ -350,7 +350,8 @@
             "2026": {
                 "january": "4.28",
                 "february": "4.27",
-                "march": "4.49"
+                "march": "4.49",
+                "april": ""
             },
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
@@ -981,7 +982,7 @@
             "category": "Business Indicators",
             "agency": "Chicago Fed",
             "name": "Chicago Fed Survey of Economic Conditions",
-            "lastUpdated": "2026-03-24T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
             "may": "3.80",
@@ -990,12 +991,13 @@
             "august": "0",
             "september": "-9.50",
             "october": "15.90",
-            "november": "-3.90",
-            "december": "-14.90",
+            "november": "-2.60",
+            "december": "-16.30",
             "2026": {
-                "january": "+12.60",
-                "february": "+14.50",
-                "march": "+16.60"
+                "january": "+9.8",
+                "february": "+15.7",
+                "march": "+22",
+                    "april": "+16.7"
             },
             "change": "",
             "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."
@@ -1051,7 +1053,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Pending Home Sales Index",
-            "lastUpdated": "2026-03-17T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
             "march": "74.5",
@@ -1066,7 +1068,8 @@
             "december": "71.5",
             "2026": {
                 "january": "70.8",
-                "february": "72.1"
+                "february": "72.6",
+                "march": "73.7"
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
@@ -1126,7 +1129,7 @@
             "category": "Housing Market",
             "agency": "FRED",
             "name": "Affordability Index",
-            "lastUpdated": "2026-03-20T19:00:00Z",
+            "lastUpdated": "2026-04-29T19:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/FIXHAI",
             "march": "104.2",
@@ -1141,7 +1144,8 @@
             "december": "111.6",
             "2026": {
                 "january": "117.1",
-                "february": "117.6"
+                "february": "117.5",
+                "march": "113.7"
             },
             "change": "",
             "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."
@@ -1223,7 +1227,7 @@
             "category": "Employment Indicators",
             "agency": "The Conference Board",
             "name": "Employment Trends Index",
-            "lastUpdated": "2026-03-10T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.conference-board.org/topics/employment-trends-index",
             "march": "",
@@ -1238,7 +1242,8 @@
             "december": "104.51",
             "2026": {
                 "january": "105.18",
-                "february": "105.37"
+                "february": "105.84",
+                "march": "105.72"
             },
             "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
@@ -1522,7 +1527,7 @@
             "category": "Business Indicators",
             "agency": "NFIB",
             "name": "Small Business Optimism Index",
-            "lastUpdated": "2026-03-11T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 12,
             "url": "https://www.nfib.com/news/monthly_report/sbet/",
             "march": "97.4",
@@ -1537,7 +1542,8 @@
             "december": "99.5",
             "2026": {
                 "january": "99.3",
-                "february": "98.8"
+                "february": "98.8",
+                "march": "95.8"
             },
             "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."
@@ -1571,7 +1577,7 @@
             "category": "Business Indicators",
             "agency": "Federal Reserve",
             "name": "Industrial Production Index",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-04-29T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.federalreserve.gov/releases/g17/current/",
             "april": "101.1",
@@ -1581,11 +1587,12 @@
             "august": "101.6",
             "september": "101.7",
             "october": "101.2",
-            "november": "101.4",
-            "december": "101.7",
+            "november": "101.1",
+            "december": "101.6",
             "2026": {
-                "january": "102.4",
-                "february": "102.6"
+                "january": "102.6",
+                "february": "102.3",
+                "march": "101.8"
             },
             "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."

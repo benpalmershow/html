@@ -412,14 +412,16 @@
       document.body.appendChild(speedInsights);
     };
 
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadNonCriticalScripts);
-    } else {
-      window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
-    }
-  </script>
+     if ('requestIdleCallback' in window) {
+       requestIdleCallback(loadNonCriticalScripts);
+     } else {
+       window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
+     }
+   </script>
 
+   <!-- Back to top button -->
+   <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
 
+ 
 </body>
-
 </html>

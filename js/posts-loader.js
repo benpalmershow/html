@@ -444,8 +444,8 @@ const PostChartRenderer = (function () {
     function getLiveChartColors() {
         const isDark = document.documentElement.classList.contains('dark-mode');
         return {
-            PRIMARY: isDark ? '#87c5be' : '#2C5F5A',
-            PRIMARY_FILL: isDark ? 'rgba(135, 197, 190, 0.1)' : 'rgba(44, 95, 90, 0.1)',
+            PRIMARY: isDark ? '#ffffff' : '#2C5F5A',
+            PRIMARY_FILL: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(44, 95, 90, 0.1)',
             SECONDARY: isDark ? '#a0a9b8' : '#6c757d',
             ACCENT: '#D4822A',
             ERROR: '#e53935',

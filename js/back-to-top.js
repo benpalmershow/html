@@ -33,8 +33,9 @@
         padding: 0;
 
         /* Theme: inherits site CSS variables when available, falls back to safe defaults */
-        background: var(--accent-primary, #2C5F5A);
-        color: #fff;
+        background: var(--bg-tertiary, #2C5F5A);
+        color: var(--text-primary, #fff);
+        border: 1px solid var(--border-color, rgba(255,255,255,0.2));
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 
         opacity: 0;
@@ -50,7 +51,7 @@
       }
 
       #back-to-top-btn:hover {
-        background: var(--accent-hover, #3a7a74);
+        background: var(--bg-secondary, #3a7a74);
         transform: translateY(-2px) scale(1.05);
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
       }
@@ -60,7 +61,7 @@
       }
 
       #back-to-top-btn:focus-visible {
-        outline: 2px solid var(--accent-primary, #2C5F5A);
+        outline: 2px solid var(--text-primary, #fff);
         outline-offset: 3px;
       }
 

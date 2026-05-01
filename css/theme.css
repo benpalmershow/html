@@ -125,8 +125,8 @@
         --bg-secondary: #252b2a;
         --bg-tertiary: #2a3130;
         
-        --accent-primary: #87c5be;
-        --accent-primary-rgb: 135, 197, 190;
+        --accent-primary: #ffffff;
+        --accent-primary-rgb: 255, 255, 255;
         --accent-secondary: #d4822a;
         
         --border-color: #495057;
@@ -149,8 +149,8 @@ html.dark-mode {
     --bg-secondary: #252b2a;
     --bg-tertiary: #2a3130;
     
-    --accent-primary: #87c5be;
-    --accent-primary-rgb: 135, 197, 190;
+    --accent-primary: #ffffff;
+    --accent-primary-rgb: 255, 255, 255;
     --accent-secondary: #d4822a;
     
     --border-color: #495057;

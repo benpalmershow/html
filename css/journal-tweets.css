@@ -115,10 +115,10 @@ html.dark-mode {
     --tweet-text-muted: var(--color-dark-text-muted);
     --tweet-border: #3a4442;
     --tweet-shadow: rgba(0, 0, 0, 0.3);
-    --tweet-ticker-bg: rgba(135, 197, 190, 0.14);
-    --tweet-ticker-border: rgba(135, 197, 190, 0.28);
-    --tweet-ticker-text: #87c5be;
-    --tweet-ticker-bg-hover: rgba(135, 197, 190, 0.22);
+    --tweet-ticker-bg: rgba(255, 255, 255, 0.14);
+    --tweet-ticker-border: rgba(255, 255, 255, 0.28);
+    --tweet-ticker-text: #ffffff;
+    --tweet-ticker-bg-hover: rgba(255, 255, 255, 0.22);
     /* Table colors */
     --table-header-bg: rgba(255, 255, 255, 0.1);
     --table-border: rgba(255, 255, 255, 0.15);
@@ -133,10 +133,10 @@ html.dark-mode {
         --tweet-text-muted: var(--color-dark-text-muted);
         --tweet-border: #3a4442;
         --tweet-shadow: rgba(0, 0, 0, 0.3);
-        --tweet-ticker-bg: rgba(135, 197, 190, 0.14);
-        --tweet-ticker-border: rgba(135, 197, 190, 0.28);
-        --tweet-ticker-text: #87c5be;
-        --tweet-ticker-bg-hover: rgba(135, 197, 190, 0.22);
+        --tweet-ticker-bg: rgba(255, 255, 255, 0.14);
+        --tweet-ticker-border: rgba(255, 255, 255, 0.28);
+        --tweet-ticker-text: #ffffff;
+        --tweet-ticker-bg-hover: rgba(255, 255, 255, 0.22);
     }
 }
 

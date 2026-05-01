@@ -682,8 +682,8 @@ async function renderJournalCharts() {
 
   const isDark = document.documentElement.classList.contains('dark-mode');
   const colors = {
-    PRIMARY: isDark ? '#87c5be' : '#2C5F5A',
-    PRIMARY_FILL: isDark ? 'rgba(135, 197, 190, 0.1)' : 'rgba(44, 95, 90, 0.1)',
+    PRIMARY: isDark ? '#ffffff' : '#2C5F5A',
+    PRIMARY_FILL: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(44, 95, 90, 0.1)',
     SECONDARY: isDark ? '#a0a9b8' : '#6c757d',
     ACCENT: '#D4822A',
     GRID: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)',

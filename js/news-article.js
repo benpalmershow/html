@@ -1,52 +1,14 @@
+// Utility function wrappers (full implementations in html-utils.js)
 function sanitizeHtml(html) {
-  if (!html) return '';
-
-  if (window.HtmlUtils?.sanitizeHtml) {
-    return window.HtmlUtils.sanitizeHtml(html);
-  }
-
-  if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
-    return window.DOMPurify.sanitize(html, {
-      USE_PROFILES: { html: true },
-      FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form']
-    });
-  }
-
-  const template = document.createElement('template');
-  template.innerHTML = html;
-
-  template.content.querySelectorAll('script, style, iframe, object, embed, form').forEach(node => node.remove());
-
-  template.content.querySelectorAll('*').forEach(node => {
-    Array.from(node.attributes).forEach(attr => {
-      const name = attr.name.toLowerCase();
-      const value = attr.value.trim();
-
-      if (name.startsWith('on')) {
-        node.removeAttribute(attr.name);
-        return;
-      }
-
-      if ((name === 'href' || name === 'src' || name === 'xlink:href') && /^javascript:/i.test(value)) {
-        node.removeAttribute(attr.name);
-      }
-    });
-  });
-
-  return template.innerHTML;
+  return window.HtmlUtils?.sanitizeHtml
+    ? window.HtmlUtils.sanitizeHtml(html)
+    : html || '';
 }
 
 async function ensureHtmlSanitizer() {
-  if (window.DOMPurify) return;
-
-  await new Promise(resolve => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js';
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => resolve();
-    document.head.appendChild(script);
-  });
+  if (window.HtmlUtils?.ensureHtmlSanitizer) {
+    await window.HtmlUtils.ensureHtmlSanitizer();
+  }
 }
 
 async function waitForMarked() {
@@ -68,39 +30,20 @@ async function waitForMarked() {
 }
 
 function parseFrontmatter(md) {
-  if (window.HtmlUtils?.parseFrontmatter) {
-    return window.HtmlUtils.parseFrontmatter(md);
-  }
-
-  const metadata = {};
-  const match = md.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-  if (!match) return { metadata, contentMd: md.trim() };
-
-  const [, frontmatter, contentMd] = match;
-  frontmatter.split('\n').forEach(line => {
-    const colon = line.indexOf(':');
-    if (colon > -1) {
-      const key = line.slice(0, colon).trim();
-      let value = line.slice(colon + 1).trim();
-      if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
-      metadata[key] = value;
-    }
-  });
-
-  return { metadata, contentMd: contentMd.trim() };
+  return window.HtmlUtils?.parseFrontmatter
+    ? window.HtmlUtils.parseFrontmatter(md)
+    : { metadata: {}, contentMd: md || '' };
 }
 
 function escapeHtml(text) {
-  if (window.HtmlUtils?.escapeHtml) {
-    return window.HtmlUtils.escapeHtml(text);
-  }
-
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+  return window.HtmlUtils?.escapeHtml
+    ? window.HtmlUtils.escapeHtml(text)
+    : String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function titleCaseCategory(category) {
@@ -109,33 +52,9 @@ function titleCaseCategory(category) {
 }
 
 function formatRelativeDate(dateString) {
-  if (!dateString) return '';
-
-  const parsedDate = new Date(`${dateString}T00:00:00`);
-  if (Number.isNaN(parsedDate.getTime())) return dateString;
-
-  const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const articleDay = new Date(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate());
-  const diffDays = Math.round((articleDay.getTime() - today.getTime()) / 86400000);
-  const absDays = Math.abs(diffDays);
-
-  if (diffDays === 0) return 'today';
-  if (diffDays === -1) return '1 day ago';
-  if (diffDays === 1) return 'tomorrow';
-  if (absDays < 30) return diffDays < 0 ? `${absDays} days ago` : `in ${absDays} days`;
-
-  const diffMonths = (articleDay.getFullYear() - today.getFullYear()) * 12 + (articleDay.getMonth() - today.getMonth());
-  const absMonths = Math.abs(diffMonths);
-
-  if (absMonths < 12) {
-    if (absMonths === 0) return diffDays < 0 ? `${absDays} days ago` : `in ${absDays} days`;
-    return diffMonths < 0 ? `${absMonths} month${absMonths === 1 ? '' : 's'} ago` : `in ${absMonths} month${absMonths === 1 ? '' : 's'}`;
-  }
-
-  const diffYears = articleDay.getFullYear() - today.getFullYear();
-  const absYears = Math.abs(diffYears);
-  return diffYears < 0 ? `${absYears} year${absYears === 1 ? '' : 's'} ago` : `in ${absYears} year${absYears === 1 ? '' : 's'}`;
+  return window.HtmlUtils?.formatRelativeDate
+    ? window.HtmlUtils.formatRelativeDate(dateString)
+    : dateString || '';
 }
 
 function wrapTables(container) {
@@ -225,7 +144,8 @@ function renderError(message) {
   readerEl.hidden = true;
   if (indexEl) indexEl.hidden = true;
   errorEl.hidden = false;
-  errorEl.innerHTML = `${escapeHtml(message)} <a href="index.html">Return home</a>.`;
+  const baseUrl = getEssayBaseUrl();
+  errorEl.innerHTML = `${escapeHtml(message)} <a href="${baseUrl}">Back to Essays</a>.`;
 }
 
 function getLatestArticleSlug(articles) {
@@ -279,6 +199,14 @@ function getCategoryIcon(category) {
   return iconMap[category] || 'file-text';
 }
 
+function getEssayBaseUrl() {
+  // Use journal.html if on that page, otherwise use news.html
+  if (window.location.pathname.includes('journal.html')) {
+    return 'journal.html';
+  }
+  return 'news.html';
+}
+
 function renderEssayCards(articles, category = 'all') {
   const resultsEl = document.getElementById('essay-results');
   if (!resultsEl) return;
@@ -292,8 +220,9 @@ function renderEssayCards(articles, category = 'all') {
     return;
   }
 
+  const baseUrl = getEssayBaseUrl();
   resultsEl.innerHTML = filtered.map(article => `
-    <a class="essay-card" href="news.html?article=${encodeURIComponent(article.id)}" data-category="${escapeHtml(article.category || 'uncategorized')}">
+    <a class="essay-card" href="${baseUrl}?article=${encodeURIComponent(article.id)}" data-category="${escapeHtml(article.category || 'uncategorized')}">
       <div class="essay-card-header">
         <h2 class="essay-card-title">${escapeHtml(article.title || 'Untitled')}</h2>
         ${article.category ? `<span class="category-badge ${escapeHtml(article.category)}">${escapeHtml(titleCaseCategory(article.category))}</span>` : ''}
@@ -338,15 +267,11 @@ function renderEssayIndex(articles) {
   const readerEl = document.getElementById('article-reader');
   const errorEl = document.getElementById('article-error');
   const indexEl = document.getElementById('essay-index');
-  const pageTitle = document.querySelector('.page-title');
   const sorted = getSortedArticles(articles);
 
   updateIndexMeta();
 
-  if (pageTitle) {
-    pageTitle.innerHTML = '<img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager"> Essays';
-  }
-
+  // Toggle IS the page title - don't overwrite
   statusEl.hidden = true;
   readerEl.hidden = true;
   errorEl.hidden = true;
@@ -411,11 +336,7 @@ async function loadArticle() {
 
     updateDocumentMeta(slug, metadata, articleIndexEntry);
 
-    const pageTitle = document.querySelector('.page-title');
-    if (pageTitle) {
-      pageTitle.innerHTML = `<img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager"> ${escapeHtml(metadata.title || articleIndexEntry?.title || 'Article')}`;
-    }
-
+    // Toggle IS the page title - don't overwrite
     statusEl.hidden = true;
     if (indexEl) indexEl.hidden = true;
     readerEl.hidden = false;
@@ -429,8 +350,11 @@ async function loadArticle() {
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadArticle);
-} else {
-  loadArticle();
+// Only auto-initialize if not on journal.html (journal.html manages its own initialization)
+if (!window.location.pathname.includes('journal.html')) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadArticle);
+  } else {
+    loadArticle();
+  }
 }

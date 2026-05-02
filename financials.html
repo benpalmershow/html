@@ -108,8 +108,9 @@
   <!-- Lucide Icons -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
 
-  <!-- Performance monitoring -->
-  <script src="js/speed-insights.js" defer></script>
+   <!-- Performance monitoring -->
+   <script src="js/speed-insights.js" defer></script>
+   <meta name="robots" content="noindex, nofollow">
 
 </head>
 
@@ -126,26 +127,11 @@
     <div class="collapsible-container">
 
       <div class="collapsible-content" id="interactive-dashboard-content">
-        <div class="filters" id="filters">
-          <div class="filters-wrapper">
-            <div class="filter-group mobile-filters">
-              <button class="filter-btn filter-category-btn" id="categoryBtn">
-                <i data-lucide="list" class="filter-icon"></i>
-                <span class="filter-text">Filter By</span>
-                <i data-lucide="chevron-down" class="filter-dropdown-icon"></i>
-              </button>
-              <div class="filter-dropdown" id="categoryDropdown">
-                <!-- Populated by JavaScript -->
-              </div>
-            </div>
-            <div class="desktop-filters" id="desktopFilters">
-              <!-- Desktop buttons will be injected here -->
-            </div>
-          </div>
-          <div class="search-wrapper">
-            <i data-lucide="search" class="search-icon"></i>
-            <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
-          </div>
+        <div id="essay-filters" class="filters" aria-label="Filter indicators by category"></div>
+
+        <div class="search-wrapper">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
         </div>
 
         <div id="lastUpdated" class="last-updated"></div>
@@ -164,7 +150,6 @@
         </div>
 
       </div>
-    </div>
     </div>
   </main>
 

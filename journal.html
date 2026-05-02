@@ -36,11 +36,58 @@
   <link rel="stylesheet" href="css/theme.css?v=20260429">
   <link rel="stylesheet" href="css/body.css?v=20260429">
   <link rel="stylesheet" href="css/nav.css?v=20260429">
+  <link rel="stylesheet" href="css/article.css?v=20260321" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/news.css?v=20260429" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/journal-tweets.css?v=20260321" media="print" onload="this.media='all'">
+  <style>
+    /* Source toggle - matches h1.page-title */
+    .source-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .source-toggle-btn {
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font: inherit;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .source-toggle-btn:hover {
+      color: var(--text-secondary);
+    }
+
+    .source-toggle-btn.active {
+      color: var(--text-primary);
+    }
+
+    .source-toggle-btn + .source-toggle-btn::before {
+      content: '|';
+      margin-right: var(--spacing-xs);
+      color: var(--text-muted);
+      opacity: 0.4;
+    }
+  </style>
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
   <link rel="preload" href="js/journal-feed.js" as="script">
+  <link rel="preload" href="js/news-article.js" as="script">
 
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -48,6 +95,7 @@
   <title>Doc Riter - Howdy, Stranger</title>
 
   <script type="module" src="js/speed-insights.js"></script>
+  <meta name="robots" content="noindex, nofollow">
 
 </head>
 
@@ -57,12 +105,41 @@
   <main id="main-content" tabindex="-1">
     <div class="page-header">
       <h1 class="page-title" aria-label="Page title">
-        <img src="images/announcements.webp" alt="" class="page-icon" width="20" height="20" loading="eager">
-        Doc Riter
+        <div class="source-toggle" id="journal-filters" aria-label="Filter by source">
+          <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
+          <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
+        </div>
       </h1>
     </div>
+<div class="filters" id="journal-category-filters" aria-label="Filter essays by category">
+</div>
     <div class="content">
+      <!-- Journal entries feed -->
       <div id="journal-feed"></div>
+      
+      <!-- Essay reader container (shown when viewing essays) -->
+      <div id="essay-reader-container" style="display: none;">
+        <div class="article-shell">
+          <div id="article-status" class="article-status">Loading essays...</div>
+          
+          <section id="essay-index" class="essay-index" hidden>
+            <div id="essay-filters" class="filters" aria-label="Filter essays by category"></div>
+            <div id="essay-results" class="essay-results" aria-live="polite"></div>
+          </section>
+          
+          <article id="article-reader" class="article-reader-card" hidden>
+            <div class="article-toolbar">
+              <button type="button" class="article-back-link" id="article-back-btn">
+                <i data-lucide="arrow-left"></i>
+                <span>Essays</span>
+              </button>
+            </div>
+            <div id="article-content" class="article-content"></div>
+          </article>
+          
+          <div id="article-error" class="article-error" hidden></div>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -73,6 +150,7 @@
    <script src="js/html-utils.js" defer></script>
    <script src="js/nav.js" defer></script>
    <script src="js/swipe-nav.js" defer></script>
+   <script src="js/news-article.js" defer></script>
    <script src="js/journal-feed.js" defer></script>
 
    <!-- Back to top button -->

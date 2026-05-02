@@ -25,8 +25,10 @@
     const mediaContainer = document.getElementById('media-cards-container');
     const filterType = document.getElementById('filter-type');
     const sortBy = document.getElementById('sort-by');
+    const mediaFilters = document.getElementById('media-filters');
     let mediaItems = [];
     let isRendering = false;
+    let currentMediaType = 'all';
 
     // Use IndexedDB instead of localStorage for non-blocking storage
     const DB_NAME = 'media-cache-db';
@@ -99,6 +101,66 @@
         } catch (err) {
             console.warn('Cache write failed:', err);
         }
+    }
+
+    function setupMediaFilters() {
+        if (!mediaFilters) return;
+
+        const typeIcons = {
+            'all': '<i class="fas fa-th filter-icon"></i>',
+            'movie': '<i class="fas fa-film filter-icon"></i>',
+            'book': '<i class="fas fa-book filter-icon"></i>',
+            'podcast': '<i class="fas fa-podcast filter-icon"></i>',
+            'playlist': '<i class="fas fa-music filter-icon"></i>',
+            'album': '<i class="fas fa-music filter-icon"></i>',
+            'song': '<i class="fas fa-music filter-icon"></i>',
+            'video': '<i class="fas fa-video filter-icon"></i>',
+            'article': '<i class="fas fa-newspaper filter-icon"></i>'
+        };
+
+        const typeLabel = {
+            'all': 'All',
+            'movie': 'Movies',
+            'book': 'Books',
+            'podcast': 'Podcasts',
+            'playlist': 'Playlists',
+            'album': 'Albums',
+            'song': 'Songs',
+            'video': 'Videos',
+            'article': 'Articles'
+        };
+
+        mediaFilters.innerHTML = '';
+
+        // Create "All" button
+        const allBtn = document.createElement('button');
+        allBtn.type = 'button';
+        allBtn.className = 'filter-btn active';
+        allBtn.dataset.type = 'all';
+        allBtn.innerHTML = `${typeIcons['all']}<span class="filter-text">${typeLabel['all']}</span>`;
+        mediaFilters.appendChild(allBtn);
+
+        // Create type buttons
+        VALID_MEDIA_TYPES.forEach(type => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'filter-btn';
+            btn.dataset.type = type;
+            btn.innerHTML = `${typeIcons[type] || typeIcons['all']}<span class="filter-text">${typeLabel[type] || type}</span>`;
+            mediaFilters.appendChild(btn);
+        });
+
+        mediaFilters.addEventListener('click', function(e) {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+
+            mediaFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            currentMediaType = btn.dataset.type;
+            if (filterType) filterType.value = currentMediaType;
+            filterAndSortMedia();
+        });
     }
 
     function getUniqueMediaTypes(items) {
@@ -180,7 +242,7 @@
 
     function initializeMediaDisplay() {
         const mediaTypes = getUniqueMediaTypes(mediaItems);
-        populateFilterDropdown(mediaTypes);
+        setupMediaFilters();
 
         // Default values
         if (sortBy) sortBy.value = 'date-desc';
@@ -188,10 +250,17 @@
         // Check for URL parameters
         const urlParams = new URLSearchParams(window.location.search);
 
-        // Handle filter type
-        const initialFilter = urlParams.get('type') || urlParams.get('filter'); // Support both
-        if (initialFilter && mediaTypes.includes(initialFilter)) {
-            filterType.value = initialFilter;
+        // Handle filter type - support both 'type' and 'filter' params
+        const initialFilter = urlParams.get('type') || urlParams.get('filter');
+        if (initialFilter && VALID_MEDIA_TYPES.includes(initialFilter)) {
+            currentMediaType = initialFilter;
+            if (filterType) filterType.value = initialFilter;
+            // Update active button
+            const activeBtn = mediaFilters?.querySelector(`[data-type="${initialFilter}"]`);
+            if (activeBtn) {
+                mediaFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                activeBtn.classList.add('active');
+            }
         }
 
         // Handle sort
@@ -223,7 +292,6 @@
         mediaContainer.innerHTML = '';
 
         if (items.length === 0) {
-            const hasFilter = filterType.value !== 'all';
 
             mediaContainer.innerHTML = `
                 <div class="empty-state">
@@ -241,7 +309,13 @@
             `;
 
             document.getElementById('clear-filters-btn')?.addEventListener('click', () => {
+                currentMediaType = 'all';
                 if (filterType) filterType.value = 'all';
+                if (mediaFilters) {
+                    mediaFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    const allBtn = mediaFilters.querySelector('[data-type="all"]');
+                    if (allBtn) allBtn.classList.add('active');
+                }
                 filterAndSortMedia();
             });
 
@@ -660,9 +734,8 @@
     }
 
     function updateURLParams() {
-        if (!filterType) return;
         const params = new URLSearchParams(window.location.search);
-        const type = filterType.value;
+        const type = currentMediaType;
         const sort = sortBy?.value || 'date-desc';
 
         if (type !== 'all') params.set('type', type);
@@ -682,7 +755,7 @@
     function filterAndSortMedia(shouldUpdateURL = true) {
         if (shouldUpdateURL) updateURLParams();
 
-        const typeFilter = filterType.value;
+        const typeFilter = currentMediaType;
         const sortValue = sortBy?.value || 'date-desc';
 
         let filtered = typeFilter === 'all'
@@ -717,7 +790,7 @@
         const existingCount = document.querySelector('.results-count');
         existingCount?.remove();
 
-        const activeFilter = filterType?.value;
+        const activeFilter = currentMediaType;
         const hasFilter = activeFilter && activeFilter !== 'all';
 
         // Show count if filtered or different from total
@@ -739,7 +812,6 @@
     
 
 // Use passive event listeners for better scroll performance
-if (filterType) filterType.addEventListener('change', filterAndSortMedia, { passive: true });
 if (sortBy) sortBy.addEventListener('change', filterAndSortMedia, { passive: true });
 
 // Back to top functionality is handled by back-to-top.js

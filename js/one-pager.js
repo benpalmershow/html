@@ -57,12 +57,14 @@ function clip(input, max = 160) {
 }
 
 function escapeHtml(input) {
-  return String(input)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+  return window.HtmlUtils?.escapeHtml
+    ? window.HtmlUtils.escapeHtml(input)
+    : String(input ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function createEntryId(title) {

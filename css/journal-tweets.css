@@ -1,12 +1,12 @@
 /* Journal Tweet-Style Layout */
 /* Theme tokens */
 :root {
-    --tweet-bg: #ffffff;
-    --tweet-bg-hover: #f7f9fa;
-    --tweet-text: #0f1419;
-    --tweet-text-secondary: #536471;
-    --tweet-text-muted: #8b98a5;
-    --tweet-border: #eff3f4;
+    --tweet-bg: var(--bg-primary);
+    --tweet-bg-hover: var(--bg-secondary);
+    --tweet-text: var(--text-primary);
+    --tweet-text-secondary: var(--text-secondary);
+    --tweet-text-muted: var(--text-muted);
+    --tweet-border: var(--border-color);
     --tweet-shadow: rgba(0, 0, 0, 0.03);
     --tweet-ticker-bg: rgba(var(--color-primary-rgb), 0.05);
     --tweet-ticker-border: rgba(var(--color-primary-rgb), 0.15);
@@ -14,7 +14,13 @@
     --tweet-ticker-bg-hover: rgba(var(--color-primary-rgb), 0.1);
     /* Table colors */
     --table-header-bg: #e5e7eb;
-    --table-border: #d1d5db;
+    --table-border: var(--border-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --table-header-bg: #374151;
+    }
 }
 
 /* Tables inside journal entries */
@@ -518,96 +524,6 @@ html.dark-mode .entry-title img {
     z-index: 1;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    #journal-feed {
-        max-width: 100%;
-    }
-
-    .journal-entry {
-        margin: 0 0 12px 0;
-        border-radius: 12px;
-    }
-
-    .journal-entry .card-title {
-        padding: 10px 12px 4px 12px;
-        font-size: 0.8rem;
-    }
-
-    .journal-entry .content {
-        padding: 0 12px 10px 12px;
-    }
-
-    .entry {
-        margin: 0 0 8px 0;
-    }
-
-    .entry-title {
-        font-size: 1rem;
-        line-height: 1.4;
-        word-break: break-word;
-    }
-
-    .entry-content {
-        font-size: 0.9rem;
-        line-height: 1.55;
-    }
-
-    .entry-link-title {
-        font-size: 1rem;
-    }
-
-    .entry-link-content {
-        font-size: 0.9rem;
-        margin-top: 4px;
-    }
-
-    .entry-link-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-
-    .entry-link-icon {
-        align-self: flex-start;
-        margin: 2px 0 0 0;
-    }
-
-    .entry-time {
-        font-size: 0.68rem;
-    }
-}
-
-@media (max-width: 420px) {
-    .journal-entry {
-        border-radius: 10px;
-    }
-
-    .journal-entry .card-title {
-        padding: 8px 10px 3px 10px;
-        font-size: 0.75rem;
-    }
-
-    .journal-entry .content {
-        padding: 0 10px 8px 10px;
-    }
-
-    .entry-title {
-        font-size: 0.95rem;
-    }
-
-    .entry-content {
-        font-size: 0.85rem;
-    }
-
-    .entry-link-title {
-        font-size: 0.95rem;
-    }
-
-    .entry-link-content {
-        font-size: 0.85rem;
-    }
-}
 .entry-title-link {
     display: inline;
     text-decoration: none;
@@ -675,3 +591,31 @@ html.dark-mode .entry-title-link:hover {
 .change-metric-value svg {
     flex-shrink: 0;
 }
+
+/* Category badges for essay cards */
+.category-badge {
+    display: inline-block;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0.25em 0.6em;
+    border-radius: 999px;
+    margin-left: 0.5em;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease;
+    cursor: default;
+}
+
+.category-badge:hover {
+    transform: translateY(-2px);
+}
+
+.category-badge.ipo { background: var(--color-category-ipo, #6366f1); color: white; }
+.category-badge.earnings { background: var(--color-category-earnings, #10b981); color: white; }
+.category-badge.policy { background: var(--color-category-policy, #f59e0b); color: white; }
+.category-badge.healthcare { background: var(--color-category-healthcare, #ec4899); color: white; }
+.category-badge.legal { background: var(--color-category-legal, #8b5cf6); color: white; }
+.category-badge.political { background: var(--color-category-political, #ef4444); color: white; }
+.category-badge.corrections { background: var(--color-category-corrections, #6b7280); color: white; }
+.category-badge.uncategorized { background: var(--color-category-uncategorized, #9ca3af); color: white; }

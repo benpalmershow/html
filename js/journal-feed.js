@@ -5,6 +5,41 @@ const MONTHS = [
 
 const SCRIPT_COMPONENTS = ['components/analytics.html', 'components/error-handling.html', 'components/scripts-unified.html'];
 
+// Utility function wrappers (full implementations in html-utils.js)
+function formatRelativeDate(dateString) {
+  return window.HtmlUtils?.formatRelativeDate
+    ? window.HtmlUtils.formatRelativeDate(dateString)
+    : dateString || '';
+}
+
+function escapeHtml(text) {
+  return window.HtmlUtils?.escapeHtml
+    ? window.HtmlUtils.escapeHtml(text)
+    : String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function sanitizeHtml(html) {
+  if (window.HtmlUtils?.sanitizeHtml) {
+    return optimizeSanitizedHtml(window.HtmlUtils.sanitizeHtml(html, {
+      dompurify: {
+        ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
+      }
+    }));
+  }
+  return html || '';
+}
+
+async function ensureHtmlSanitizer() {
+  if (window.HtmlUtils?.ensureHtmlSanitizer) {
+    await window.HtmlUtils.ensureHtmlSanitizer();
+  }
+}
+
 function cloneAndAppendScriptNode(script, target = document.head) {
   const newScript = document.createElement('script');
   if (script.src) {
@@ -71,48 +106,6 @@ function loadScriptOnce(src, options = {}) {
   });
 }
 
-function escapeHtml(text) {
-  if (window.HtmlUtils?.escapeHtml) {
-    return window.HtmlUtils.escapeHtml(text);
-  }
-
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-function sanitizeHtml(html) {
-  if (!html) return '';
-
-  if (window.HtmlUtils?.sanitizeHtml) {
-    return optimizeSanitizedHtml(window.HtmlUtils.sanitizeHtml(html, {
-      dompurify: {
-        ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
-      }
-    }));
-  }
-
-  let cleanHtml;
-
-  if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
-    cleanHtml = window.DOMPurify.sanitize(html, {
-      USE_PROFILES: { html: true },
-      FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form'],
-      ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
-    });
-  } else {
-    const template = document.createElement('template');
-    template.innerHTML = html;
-    template.content.querySelectorAll('script, style, iframe, object, embed, form').forEach(node => node.remove());
-    cleanHtml = template.innerHTML;
-  }
-
-  return optimizeSanitizedHtml(cleanHtml);
-}
-
 function optimizeSanitizedHtml(cleanHtml) {
   const outputTemplate = document.createElement('template');
   outputTemplate.innerHTML = cleanHtml;
@@ -161,30 +154,6 @@ function optimizeSanitizedHtml(cleanHtml) {
   }
 
   return outputTemplate.innerHTML;
-}
-
-async function ensureHtmlSanitizer() {
-  if (window.DOMPurify) {
-    return;
-  }
-
-  if (window.loadDOMPurify && typeof window.loadDOMPurify === 'function') {
-    try {
-      await window.loadDOMPurify();
-      return;
-    } catch (error) {
-      console.warn('DOMPurify loader failed, using fallback sanitizer', error);
-    }
-  }
-
-  await new Promise(resolve => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js';
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => resolve();
-    document.head.appendChild(script);
-  });
 }
 
 function linkify(text) {
@@ -389,6 +358,28 @@ function getSeriesDataFromIndicator(indicator) {
   };
 }
 
+function toggleEssayReaderView(showReader) {
+  const journalFeed = document.getElementById('journal-feed');
+  const essayReaderContainer = document.getElementById('essay-reader-container');
+  const categoryFilters = document.getElementById('journal-category-filters');
+
+  if (journalFeed) {
+    journalFeed.style.display = showReader ? 'none' : 'block';
+  }
+  if (essayReaderContainer) {
+    essayReaderContainer.style.display = showReader ? 'block' : 'none';
+  }
+  if (categoryFilters) {
+    categoryFilters.style.display = showReader ? 'none' : 'flex';
+  }
+}
+
+function updateJournalPageTitle(source) {
+  // Toggle IS the page title now - just update browser tab
+  const titleText = source === 'journal' ? 'Docs' : 'Essays';
+  document.title = `${titleText} - Howdy, Stranger`;
+}
+
 async function loadJournalEntries() {
   const journalFeed = document.getElementById('journal-feed');
   const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
@@ -400,45 +391,148 @@ async function loadJournalEntries() {
   try {
     await waitForMarked();
     await ensureHtmlSanitizer();
-    const response = await fetch(`json/journal.json?v=${encodeURIComponent(siteDataVersion)}`);
-    if (!response.ok) {
-      throw new Error(`Failed to load journal entries: ${response.status} ${response.statusText}`);
+
+    // Determine current filter
+    const filterContainer = document.getElementById('journal-filters');
+    const activeBtn = filterContainer?.querySelector('.source-toggle-btn.active, .filter-btn.active');
+    const currentSource = activeBtn?.dataset.source || 'journal';
+
+    // Update page title based on active filter
+    updateJournalPageTitle(currentSource);
+
+    if (currentSource === 'journal') {
+      toggleEssayReaderView(false);
+      await loadJournalData(journalFeed, siteDataVersion);
+    } else {
+      toggleEssayReaderView(true);
+      // Use news-article.js to load the essay reader
+      if (typeof loadArticle === 'function') {
+        await loadArticle();
+      }
     }
-    const journals = await response.json();
-    
-    if (!Array.isArray(journals)) {
-      throw new Error('Journal data is not an array');
-    }
-    
-    journals.sort((a, b) => {
-      const dateA = parseDate(a.date);
-      const dateB = parseDate(b.date);
-      return dateB - dateA;
-    });
-    
-    const articlesHTML = await Promise.all(journals.map(renderJournal));
-    
-     journalFeed.innerHTML = articlesHTML.join('');
 
-     // Optimize first image for LCP: eager load the first image that appears in the viewport
-     const firstImage = journalFeed.querySelector('.journal-entry img');
-     if (firstImage) {
-       firstImage.setAttribute('loading', 'eager');
-       firstImage.setAttribute('fetchpriority', 'high');
-       firstImage.setAttribute('decoding', 'async');
-     }
-
-    bindCollapsibleEntries(journalFeed);
-
-    renderJournalCharts();
-    scrollToHash();
     if (window.lucide) {
       window.lucide.createIcons();
     }
   } catch (error) {
-    console.error('Error loading journal entries:', error);
-    journalFeed.innerHTML = '<div class="error-state">Error loading journal entries. Please try again later.</div>';
+    console.error('Error loading feed:', error);
+    journalFeed.innerHTML = '<div class="error-state">Error loading content. Please try again later.</div>';
   }
+}
+
+async function loadJournalData(journalFeed, siteDataVersion) {
+  const response = await fetch(`json/journal.json?v=${encodeURIComponent(siteDataVersion)}`);
+  if (!response.ok) {
+    throw new Error(`Failed to load journal entries: ${response.status} ${response.statusText}`);
+  }
+  const journals = await response.json();
+  
+  if (!Array.isArray(journals)) {
+    throw new Error('Journal data is not an array');
+  }
+  
+  journals.sort((a, b) => {
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+    return dateB - dateA;
+  });
+  
+  const articlesHTML = await Promise.all(journals.map(renderJournal));
+  
+  journalFeed.innerHTML = articlesHTML.join('');
+
+  // Optimize first image for LCP
+  const firstImage = journalFeed.querySelector('.journal-entry img');
+  if (firstImage) {
+    firstImage.setAttribute('loading', 'eager');
+    firstImage.setAttribute('fetchpriority', 'high');
+    firstImage.setAttribute('decoding', 'async');
+  }
+
+  bindCollapsibleEntries(journalFeed);
+  renderJournalCharts();
+  scrollToHash();
+}
+
+async function loadNewsData(journalFeed, siteDataVersion) {
+  const response = await fetch(`json/articles.json?v=${encodeURIComponent(siteDataVersion)}`);
+  if (!response.ok) {
+    throw new Error(`Failed to load news articles: ${response.status} ${response.statusText}`);
+  }
+  const articles = await response.json();
+  
+  if (!Array.isArray(articles)) {
+    throw new Error('Articles data is not an array');
+  }
+
+  const articlesHTML = renderNewsArticles(articles);
+  journalFeed.innerHTML = articlesHTML;
+  
+  // Optimize first image for LCP
+  const firstImage = journalFeed.querySelector('.journal-entry img');
+  if (firstImage) {
+    firstImage.setAttribute('loading', 'eager');
+    firstImage.setAttribute('fetchpriority', 'high');
+    firstImage.setAttribute('decoding', 'async');
+  }
+}
+
+function renderNewsArticles(articles) {
+  const sortedArticles = [...articles].sort((a, b) => {
+    const aTime = Date.parse(a.date || '');
+    const bTime = Date.parse(b.date || '');
+    const aValid = Number.isFinite(aTime);
+    const bValid = Number.isFinite(bTime);
+    if (aValid && bValid) return bTime - aTime;
+    if (aValid) return -1;
+    if (bValid) return 1;
+    return 0;
+  });
+
+  return sortedArticles.map(article => {
+    const articleUrl = `news.html?article=${encodeURIComponent(article.id)}`;
+    const category = article.category || 'uncategorized';
+    const categoryLabel = titleCaseCategory(category);
+    const dateStr = article.date ? formatRelativeDate(article.date) : '';
+    
+    return `
+      <article class="journal-entry">
+        <div class="card-title">
+          <time datetime="${escapeHtml(article.date || '')}">
+            ${escapeHtml(dateStr)}
+          </time>
+        </div>
+        <div class="content">
+          <a class="entry-title-link" href="${articleUrl}" data-category="${escapeHtml(category)}">
+            <h2 class="entry-title">
+              ${escapeHtml(article.title || 'Untitled')}
+              <span class="category-badge ${escapeHtml(category)}">
+                ${escapeHtml(categoryLabel)}
+              </span>
+            </h2>
+            <p class="entry-content">${escapeHtml(article.summary || 'Read the article.')}</p>
+          </a>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function escapeHtml(text) {
+  if (window.HtmlUtils?.escapeHtml) {
+    return window.HtmlUtils.escapeHtml(text);
+  }
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function titleCaseCategory(category) {
+  if (!category) return '';
+  return category.charAt(0).toUpperCase() + category.slice(1);
 }
 
 async function renderJournal(journal) {
@@ -780,6 +874,80 @@ async function initializeJournalPage() {
 
   loadScriptOnce('https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js', { defer: true })
     .catch((error) => console.error('Failed to load Lucide', error));
+
+  // Check URL for article param or hash to set initial filter
+  const urlParams = new URLSearchParams(window.location.search);
+  const hasArticle = urlParams.has('article');
+  const hash = window.location.hash;
+
+  const filterContainer = document.getElementById('journal-filters');
+  if (filterContainer) {
+    // Default to Essays if article param present, otherwise use hash or default
+    if (hasArticle) {
+      filterContainer.querySelectorAll('.source-toggle-btn, .filter-btn').forEach(b => b.classList.remove('active'));
+      const essaysBtn = filterContainer.querySelector('[data-source="news"]');
+      if (essaysBtn) essaysBtn.classList.add('active');
+    } else if (hash === '#docs') {
+      filterContainer.querySelectorAll('.source-toggle-btn, .filter-btn').forEach(b => b.classList.remove('active'));
+      const docsBtn = filterContainer.querySelector('[data-source="journal"]');
+      if (docsBtn) docsBtn.classList.add('active');
+    }
+  }
+
+  await loadJournalEntries();
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  // Filter toggle handler (filterContainer already declared above)
+  if (filterContainer) {
+    filterContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.source-toggle-btn, .filter-btn');
+      if (!btn) return;
+
+      filterContainer.querySelectorAll('.source-toggle-btn, .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update URL hash for direct linking
+      const source = btn.dataset.source || 'news';
+      if (source === 'journal') {
+        history.pushState(null, '', window.location.pathname + '#docs');
+      } else {
+        history.pushState(null, '', window.location.pathname);
+      }
+
+      // Reload entries with selected filter
+      loadJournalEntries();
+    });
+  }
+
+  // Back button handler for essay reader
+  const backBtn = document.getElementById('article-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      // Hide article reader, show essay index
+      const articleReader = document.getElementById('article-reader');
+      const essayIndex = document.getElementById('essay-index');
+      const articleStatus = document.getElementById('article-status');
+
+      if (articleReader) articleReader.hidden = true;
+      if (articleStatus) articleStatus.hidden = true;
+      if (essayIndex) {
+        essayIndex.hidden = false;
+        // Re-render the essay index
+        loadArticle();
+      }
+
+      // Update browser tab title back to Essays
+      document.title = 'Essays - Howdy, Stranger';
+
+      // Remove article param from URL
+      const url = new URL(window.location.href);
+      url.searchParams.delete('article');
+      history.pushState(null, '', url.toString());
+    });
+  }
 
   await loadJournalEntries();
 

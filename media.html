@@ -287,20 +287,18 @@
         <img src="images/media.webp" alt="" class="page-icon" width="20" height="20" loading="eager">
         Media
       </h1>
-      <div class="media-filters">
-      <label data-short="Type:">
-        <select id="filter-type" aria-label="Filter by media type">
-          <option value="all">All</option>
-        </select>
-      </label>
-
+    </div>
+    <div class="filters" id="media-filters" aria-label="Filter media by type"></div>
+    <div class="media-filters" style="display: none;">
+      <select id="filter-type" aria-label="Filter by media type">
+        <option value="all">All</option>
+      </select>
       <label data-short="Sort:">
         <select id="sort-by" aria-label="Sort media">
           <option value="date-desc">Newest</option>
           <option value="title-asc">A-Z</option>
         </select>
       </label>
-    </div>
     </div>
 
      <div class="media-cards" id="media-cards-container">

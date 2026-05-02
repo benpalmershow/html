@@ -66,9 +66,54 @@
     return { metadata, contentMd: contentMd.trim() };
   }
 
+  function formatRelativeDate(dateString) {
+    if (!dateString) return '';
+
+    const parsedDate = new Date(`${dateString}T00:00:00`);
+    if (Number.isNaN(parsedDate.getTime())) return dateString;
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const articleDay = new Date(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate());
+    const diffDays = Math.round((articleDay.getTime() - today.getTime()) / 86400000);
+    const absDays = Math.abs(diffDays);
+
+    if (diffDays === 0) return 'today';
+    if (diffDays === -1) return '1 day ago';
+    if (diffDays === 1) return 'tomorrow';
+    if (absDays < 30) return diffDays < 0 ? `${absDays} days ago` : `in ${absDays} days`;
+
+    const diffMonths = (articleDay.getFullYear() - today.getFullYear()) * 12 + (articleDay.getMonth() - today.getMonth());
+    const absMonths = Math.abs(diffMonths);
+
+    if (absMonths < 12) {
+      if (absMonths === 0) return diffDays < 0 ? `${absDays} days ago` : `in ${absDays} days`;
+      return diffMonths < 0 ? `${absMonths} month${absMonths === 1 ? '' : 's'} ago` : `in ${absMonths} month${absMonths === 1 ? '' : 's'}`;
+    }
+
+    const diffYears = articleDay.getFullYear() - today.getFullYear();
+    const absYears = Math.abs(diffYears);
+    return diffYears < 0 ? `${absYears} year${absYears === 1 ? '' : 's'} ago` : `in ${absYears} year${absYears === 1 ? '' : 's'}`;
+  }
+
+  async function ensureHtmlSanitizer() {
+    if (window.DOMPurify) return;
+
+    await new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js';
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => resolve();
+      document.head.appendChild(script);
+    });
+  }
+
   window.HtmlUtils = {
     escapeHtml,
     sanitizeHtml,
-    parseFrontmatter
+    parseFrontmatter,
+    formatRelativeDate,
+    ensureHtmlSanitizer
   };
 })();

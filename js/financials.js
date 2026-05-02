@@ -10,13 +10,11 @@ const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const SELECTORS = {
-    DROPDOWN_ITEM: '.dropdown-item',
     FILTER_BTN: '.filter-btn',
-    DESKTOP_FILTER_BTN: '.desktop-filter-btn',
-    CATEGORY_DROPDOWN: '#categoryDropdown',
-    DESKTOP_FILTERS: '#desktopFilters',
-    FILTER_DROPDOWN: '.filter-dropdown',
-    FILTER_GROUP: '.filter-group',
+    CATEGORY_DROPDOWN: '#essay-filters',
+    DESKTOP_FILTERS: '#essay-filters',
+    FILTER_DROPDOWN: '.filters',
+    FILTER_GROUP: '.filters',
     CHART_BTN: '.chart-btn',
     INFO_BTN: '.info-btn',
     EXPAND_TOGGLE: '.expand-toggle',
@@ -196,7 +194,7 @@ function initializeDashboard() {
     const financialData = DashboardState.getData();
 
     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
-    setupFilters(financialData, SELECTORS, DATA_ATTRS);
+    setupFilters(financialData);
 
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'latest';
@@ -223,34 +221,38 @@ function initialize13FView() {
     document.getElementById('categories').style.display = 'none';
     document.getElementById('latest-13f-filings').style.display = 'block';
 
-    const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
-    updateActiveElements(allBtnsSelector,
-        (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === '13F Holdings'
-    );
+    const filterContainer = document.getElementById('essay-filters');
+    filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.category === '13F Holdings') {
+            btn.classList.add('active');
+        }
+    });
     currentCategory = '13F Holdings';
 }
 
 function initializeFilteredView(initialFilter, isLatest, indicatorParam) {
-    const allBtnsSelector = `${SELECTORS.DESKTOP_FILTER_BTN}, ${SELECTORS.DROPDOWN_ITEM}`;
     const show13F = isLatest || initialFilter === 'all';
 
     document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
         el.style.display = show13F ? '' : 'none';
     });
 
+    const filterContainer = document.getElementById('essay-filters');
+    filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.category === initialFilter || (isLatest && btn.dataset.isLatest === 'true')) {
+            btn.classList.add('active');
+        }
+    });
+
     if (isLatest) {
-        updateActiveElements(allBtnsSelector,
-            (btn) => btn.getAttribute(DATA_ATTRS.IS_LATEST) === 'true'
-        );
         document.getElementById('latest-13f-filings').style.display = 'block';
         renderDashboard('all', true);
         scrollToIndicatorByName(indicatorParam);
     } else {
         if (initialFilter === 'all') ensureLoad13F();
         document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
-        updateActiveElements(allBtnsSelector,
-            (btn) => btn.getAttribute(DATA_ATTRS.CATEGORY) === initialFilter
-        );
         renderDashboard(initialFilter, false);
         scrollToIndicatorByName(indicatorParam);
     }

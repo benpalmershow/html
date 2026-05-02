@@ -1,6 +1,5 @@
-// Filter and UI handler logic
+// Filter and UI handler logic - Simple filter bar (like news.html)
 // SOLID: SRP - each module has one responsibility
-// DIP - modules receive dependencies via parameters instead of globals
 
 let currentCategory = 'all';
 
@@ -17,39 +16,6 @@ const categoryIcons = {
 };
 
 /* =========================================
-   Filter Builder (SRP: creates filter UI elements)
-   ========================================= */
-
-const FilterBuilder = (function () {
-    function createFilterElements(container, desktopContainer, SELECTORS, DATA_ATTRS, id, iconClass, text, isLatest = false) {
-        const dropItem = document.createElement('button');
-        dropItem.className = SELECTORS.DROPDOWN_ITEM.slice(1);
-        if (id === 'all') dropItem.classList.add('active');
-        setFilterAttributes(dropItem, DATA_ATTRS, id, isLatest);
-        dropItem.innerHTML = `${iconClass}<span>${text}</span>`;
-        container.appendChild(dropItem);
-
-        const deskBtn = document.createElement('button');
-        deskBtn.className = `${SELECTORS.FILTER_BTN.slice(1)} ${SELECTORS.DESKTOP_FILTER_BTN.slice(1)}`;
-        if (id === 'all') deskBtn.classList.add('active');
-        setFilterAttributes(deskBtn, DATA_ATTRS, id, isLatest);
-        deskBtn.innerHTML = `${iconClass}<span>${text}</span>`;
-        desktopContainer.appendChild(deskBtn);
-    }
-
-    function setFilterAttributes(element, DATA_ATTRS, id, isLatest) {
-        if (isLatest) {
-            element.dataset.sort = 'latest';
-            element.setAttribute(DATA_ATTRS.IS_LATEST, 'true');
-        } else {
-            element.setAttribute(DATA_ATTRS.CATEGORY, id);
-        }
-    }
-
-    return { createFilterElements };
-})();
-
-/* =========================================
    Filter Click Handler (SRP: filter state management)
    ========================================= */
 
@@ -60,41 +26,22 @@ function updateActiveElements(selector, predicate) {
     });
 }
 
-function handleFilterClick(element, source, SELECTORS, DATA_ATTRS) {
-    const category = element.getAttribute(DATA_ATTRS.CATEGORY);
-    const isLatest = element.getAttribute(DATA_ATTRS.IS_LATEST) === 'true';
-
-    const dropdownSelector = `${SELECTORS.CATEGORY_DROPDOWN} ${SELECTORS.DROPDOWN_ITEM}`;
-    updateActiveElements(dropdownSelector, (i) =>
-        (isLatest && i.getAttribute(DATA_ATTRS.IS_LATEST) === 'true') || (!isLatest && i.getAttribute(DATA_ATTRS.CATEGORY) === category)
-    );
-
-    const desktopSelector = `${SELECTORS.DESKTOP_FILTERS} ${SELECTORS.FILTER_BTN}`;
-    updateActiveElements(desktopSelector, (b) =>
-        (isLatest && b.getAttribute(DATA_ATTRS.IS_LATEST) === 'true') || (!isLatest && b.getAttribute(DATA_ATTRS.CATEGORY) === category)
-    );
-
+function handleFilterClick(element, category, isLatest = false) {
     if (category === '13F Holdings') {
         document.getElementById('categories').style.display = 'none';
         document.getElementById('latest-13f-filings').style.display = 'block';
         if (typeof ensureLoad13F === 'function') ensureLoad13F();
         currentCategory = '13F Holdings';
-        return;
-    }
-
-    document.getElementById('categories').style.display = 'block';
-    const show13F = category === 'all' || isLatest;
-    document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
-    document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
-        el.style.display = show13F ? '' : 'none';
-    });
-    if (show13F && typeof ensureLoad13F === 'function') ensureLoad13F();
-
-    if (isLatest) {
-        renderDashboard('all', true);
     } else {
+        document.getElementById('categories').style.display = 'block';
+        const show13F = category === 'all' || isLatest;
+        document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
+        document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
+            el.style.display = show13F ? '' : 'none';
+        });
+        if (show13F && typeof ensureLoad13F === 'function') ensureLoad13F();
+
         currentCategory = category || 'all';
-        renderDashboard(currentCategory, false);
     }
 
     syncFilterToURL(category, isLatest);
@@ -117,70 +64,59 @@ function syncFilterToURL(category, isLatest) {
    Main Filter Setup (delegates to focused modules)
    ========================================= */
 
-function setupFilters(financialData, SELECTORS, DATA_ATTRS) {
+function setupFilters(financialData) {
     const categories = [...new Set(financialData.indices.map(item => item.category))];
-    const categoryDropdown = document.getElementById('categoryDropdown');
-    const desktopFilters = document.getElementById('desktopFilters');
+    const filtersContainer = document.getElementById('essay-filters');
 
-    categoryDropdown.innerHTML = '';
-    desktopFilters.innerHTML = '';
+    if (!filtersContainer) return;
 
-    FilterBuilder.createFilterElements(categoryDropdown, desktopFilters, SELECTORS, DATA_ATTRS,
-        'all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
+    filtersContainer.innerHTML = '';
 
-    FilterBuilder.createFilterElements(categoryDropdown, desktopFilters, SELECTORS, DATA_ATTRS,
-        'latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
+    const createFilterBtn = (id, icon, text, isLatest = false) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `filter-btn ${id === 'all' ? 'active' : ''}`;
+        btn.dataset.category = id;
+        if (isLatest) btn.dataset.isLatest = 'true';
+        btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
+        return btn;
+    };
+
+    const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
+    filtersContainer.appendChild(allBtn);
+
+    const latestBtn = createFilterBtn('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
+    filtersContainer.appendChild(latestBtn);
 
     categories.forEach(category => {
         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
-        FilterBuilder.createFilterElements(categoryDropdown, desktopFilters, SELECTORS, DATA_ATTRS,
-            category, icon, category);
+        const btn = createFilterBtn(category, icon, category);
+        filtersContainer.appendChild(btn);
     });
 
-    FilterBuilder.createFilterElements(categoryDropdown, desktopFilters, SELECTORS, DATA_ATTRS,
-        '13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
+    const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
+    filtersContainer.appendChild(th13fBtn);
 
-    setupDropdownToggle('categoryBtn', 'categoryDropdown');
+    filtersContainer.addEventListener('click', function (e) {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
 
-    document.getElementById('categoryDropdown').addEventListener('click', function (e) {
-        const btn = e.target.closest(SELECTORS.DROPDOWN_ITEM);
-        if (btn) { handleFilterClick(btn, 'filter', SELECTORS, DATA_ATTRS); closeAllDropdowns(SELECTORS); }
-    });
+        filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    desktopFilters.addEventListener('click', function (e) {
-        const btn = e.target.closest(SELECTORS.FILTER_BTN);
-        if (btn) handleFilterClick(btn, 'filter', SELECTORS, DATA_ATTRS);
-    });
+        const category = btn.dataset.category;
+        const isLatest = btn.dataset.isLatest === 'true';
 
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.filter-group') && !e.target.closest('.filter-dropdown')) {
-            closeAllDropdowns(SELECTORS);
+        handleFilterClick(btn, category, isLatest);
+
+        if (isLatest) {
+            renderDashboard('all', true);
+        } else {
+            renderDashboard(category, false);
         }
     });
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
-}
-
-/* =========================================
-   Dropdown Toggle (SRP)
-   ========================================= */
-
-function setupDropdownToggle(btnId, dropdownId) {
-    const btn = document.getElementById(btnId);
-    const dropdown = document.getElementById(dropdownId);
-    const group = btn.closest('.filter-group');
-
-    btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        closeAllDropdowns({ FILTER_DROPDOWN: '.filter-dropdown', FILTER_GROUP: '.filter-group' });
-        dropdown.classList.add('open');
-        group.classList.add('open');
-    });
-}
-
-function closeAllDropdowns(SELECTORS) {
-    document.querySelectorAll(SELECTORS.FILTER_DROPDOWN).forEach(el => el.classList.remove('open'));
-    document.querySelectorAll(SELECTORS.FILTER_GROUP).forEach(el => el.classList.remove('open'));
 }
 
 /* =========================================
@@ -291,7 +227,7 @@ function setupSearch() {
 }
 
 function setupStickyObserver() {
-    const filters = document.getElementById('filters');
+    const filters = document.getElementById('essay-filters');
     if (!filters) return;
 
     const observer = new IntersectionObserver(

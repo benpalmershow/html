@@ -2,6 +2,8 @@
 
 .announcements {
     padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .announcements-container {
@@ -9,6 +11,125 @@
     display: flex;
     flex-direction: column;
 }
+
+/* Carousel Continuous Scroll Animation */
+.carousel-track {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    animation: carouselScroll var(--carousel-duration, 40s) linear infinite;
+    will-change: transform;
+}
+
+.carousel-track.paused {
+    animation-play-state: paused;
+}
+
+@keyframes carouselScroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+    );
+}
+
+.carousel-container::before,
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+}
+
+.carousel-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
+}
+
+.carousel-pause-btn {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.carousel-pause-btn:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.carousel-container:hover .carousel-pause-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carousel-pause-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.carousel-pause-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Staggered entrance for carousel items */
+.carousel-track .announcement-card {
+    opacity: 0;
+    animation: cardSlideIn 0.5s ease-out forwards;
+}
+
+.carousel-track .announcement-card:nth-child(1) { animation-delay: 0.05s; }
+.carousel-track .announcement-card:nth-child(2) { animation-delay: 0.1s; }
+.carousel-track .announcement-card:nth-child(3) { animation-delay: 0.15s; }
+.carousel-track .announcement-card:nth-child(4) { animation-delay: 0.2s; }
+.carousel-track .announcement-card:nth-child(5) { animation-delay: 0.25s; }
+.carousel-track .announcement-card:nth-child(6) { animation-delay: 0.3s; }
+.carousel-track .announcement-card:nth-child(7) { animation-delay: 0.35s; }
+.carousel-track .announcement-card:nth-child(8) { animation-delay: 0.4s; }
 
 /* Chart container styling - matches financials.html chart overlays */
 .chart-container {
@@ -642,78 +763,36 @@ html.dark-mode .table-wrapper th {
     }
 }
 
-/* Index filter bar (matches news.html) */
+/* ========================================
+   FILTERS (Base styles in body.css)
+   ======================================== */
+
+/* Remove default margin for index layout */
 .filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
     margin-bottom: 0;
 }
 
-.filters .filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: var(--control-radius);
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.filters .filter-btn .filter-icon {
-    flex-shrink: 0;
-}
-
-.filters .filter-btn .filter-text {
-    display: none;
-}
-
-.filters .filter-btn:hover {
-    background: var(--bg-tertiary);
-    transform: translateY(-1px);
-}
-
-.filters .filter-btn.active {
-    background: var(--accent-primary);
-    color: white;
-}
-
-.filters .filter-btn.active .filter-text {
-    display: inline;
-}
-
-.filters .filter-btn.active.ipo { background: var(--color-category-ipo); }
-.filters .filter-btn.active.earnings { background: var(--color-category-earnings); }
-.filters .filter-btn.active.policy { background: var(--color-category-policy); }
-.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); }
-.filters .filter-btn.active.political { background: var(--color-category-political); }
-.filters .filter-btn.active.legal { background: var(--color-category-legal); }
-.filters .filter-btn.active.corrections { background: var(--color-category-corrections); }
-.filters .filter-btn.active.economic { background: var(--color-category-economic); }
-.filters .filter-btn.active.housing { background: var(--color-category-housing); }
-.filters .filter-btn.active.journal { background: var(--color-category-journal); }
-.filters .filter-btn.active.media { background: var(--color-category-media); }
-.filters .filter-btn.active.prediction { background: var(--color-category-prediction); }
-.filters .filter-btn.active.employment { background: var(--color-category-employment); }
-.filters .filter-btn.active.consumer { background: var(--color-category-consumer); }
-.filters .filter-btn.active.government { background: var(--color-category-government); }
-.filters .filter-btn.active.business { background: var(--color-category-business); }
-.filters .filter-btn.active.trade { background: var(--color-category-trade); }
+/* Category-specific active states */
+.filters .filter-btn.active.ipo { background: var(--color-category-ipo); color: white; }
+.filters .filter-btn.active.earnings { background: var(--color-category-earnings); color: white; }
+.filters .filter-btn.active.policy { background: var(--color-category-policy); color: white; }
+.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); color: white; }
+.filters .filter-btn.active.political { background: var(--color-category-political); color: white; }
+.filters .filter-btn.active.legal { background: var(--color-category-legal); color: white; }
+.filters .filter-btn.active.corrections { background: var(--color-category-corrections); color: white; }
+.filters .filter-btn.active.economic { background: var(--color-category-economic); color: white; }
+.filters .filter-btn.active.housing { background: var(--color-category-housing); color: white; }
+.filters .filter-btn.active.journal { background: var(--color-category-journal); color: white; }
+.filters .filter-btn.active.media { background: var(--color-category-media); color: white; }
+.filters .filter-btn.active.prediction { background: var(--color-category-prediction); color: white; }
+.filters .filter-btn.active.employment { background: var(--color-category-employment); color: white; }
+.filters .filter-btn.active.consumer { background: var(--color-category-consumer); color: white; }
+.filters .filter-btn.active.government { background: var(--color-category-government); color: white; }
+.filters .filter-btn.active.business { background: var(--color-category-business); color: white; }
+.filters .filter-btn.active.trade { background: var(--color-category-trade); color: white; }
 
 @media (max-width: 768px) {
     .filters {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
         padding: 0.5rem 0;
-        scrollbar-width: none;
-    }
-    .filters::-webkit-scrollbar {
-        display: none;
     }
 }

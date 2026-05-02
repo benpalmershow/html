@@ -477,6 +477,21 @@
 }
 
 /* ==========================================================================
+    MEDIA FILTER BAR (Base styles in body.css)
+    ========================================================================== */
+
+/* Tighter margin for media page */
+.filters {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .filters {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ==========================================================================
     MEDIA FILTERS & SEARCH
     ========================================================================== */
 
@@ -529,7 +544,7 @@
     transition: all 0.2s ease;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22%232c5f5a%22%3E%3Cpath%20d%3D%22M6%209L1%204h10z%22%2F%3E%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22%23a0a9b8%22%3E%3Cpath%20d%3D%22M6%209L1%204h10z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 12px;

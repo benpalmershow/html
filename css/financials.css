@@ -89,198 +89,28 @@
     opacity: 0
 }
 
-.filters {
-    margin-bottom: 15px;
-    overflow: visible;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--bg-primary);
-    padding: 10px 0;
-    transition: box-shadow 0.2s ease;
-}
+/* ========================================
+   FILTERS (Base styles in body.css)
+   ======================================== */
 
-.filters.stuck {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-}
-
-.filters-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-}
-
-.filter-group {
-    position: relative;
-    display: inline-block;
-}
-
-.filter-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1rem;
-    border: none;
-    border-radius: var(--control-radius);
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    box-shadow: var(--shadow-card);
-}
-
-.filter-icon {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-}
-
-.filter-dropdown-icon {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-}
-
-.filter-text {
-    display: inline;
-}
-
-.filter-btn:hover {
-    background: var(--bg-tertiary);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-card-hover);
-}
-
-.filter-btn.active {
-    background: var(--accent-primary);
-    color: var(--bg-primary);
-    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.3);
-}
-
-.filter-btn.active .filter-icon {
-    color: var(--bg-primary);
-}
-
-@media (prefers-color-scheme: dark) {
-    .filter-btn.active {
-        color: #ffffff;
-    }
-
-    .filter-btn.active .filter-icon {
-        color: #ffffff;
-    }
-
-    /* change-metric icons remain same colors in dark mode */
-    .change-metric-title-icon.change-positive {
-        color: #22c55e;
-    }
-
-    .change-metric-title-icon.change-negative {
-        color: #ef4444;
-    }
-}
-.desktop-filters {
-    display: none;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    width: 100%;
-}
-
-.mobile-filters {
-    display: inline-block;
-}
-
-@media (min-width: 769px) {
-    .mobile-filters {
-        display: none;
-    }
-
-    .desktop-filters {
-        display: flex;
-    }
-}
-
-.filter-dropdown {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    min-width: 160px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-8px) scaleY(0.95);
-    transform-origin: top left;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-    z-index: 1000;
-}
-
-.filter-dropdown.open {
-    max-height: min(70vh, 600px);
-    opacity: 1;
-    transform: translateY(0) scaleY(1);
-    pointer-events: auto;
-    overflow-y: auto;
-}
-
-.filter-group.open .filter-dropdown-icon {
-    transform: rotate(180deg);
-}
-
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 10px 16px;
-    border: none;
-    background: none;
-    color: var(--text-primary);
-    text-align: left;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.dropdown-item i {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-}
-
-.dropdown-item:hover {
-    background: var(--bg-secondary);
-    color: var(--logo-teal);
-}
-
-.dropdown-item:hover i {
-    color: var(--logo-teal);
-}
-
-.dropdown-item.active {
-    background: var(--bg-secondary);
-    color: var(--logo-teal);
-    font-weight: 600;
-}
-
-.dropdown-item.active i {
-    color: var(--logo-teal);
-}
-
-
+/* Category-specific active states */
+.filters .filter-btn[data-category="employment indicators"].active,
+.filters .filter-btn[data-category="employment"].active { background: var(--color-category-employment); color: white; }
+.filters .filter-btn[data-category="housing market"].active,
+.filters .filter-btn[data-category="housing"].active { background: var(--color-category-housing); color: white; }
+.filters .filter-btn[data-category="business indicators"].active,
+.filters .filter-btn[data-category="business"].active { background: var(--color-category-business); color: white; }
+.filters .filter-btn[data-category="consumer indicators"].active,
+.filters .filter-btn[data-category="consumer"].active { background: var(--color-category-consumer); color: white; }
+.filters .filter-btn[data-category="trade & tariffs"].active,
+.filters .filter-btn[data-category="trade"].active { background: var(--color-category-trade); color: white; }
+.filters .filter-btn[data-category="government"].active { background: var(--color-category-government); color: white; }
+.filters .filter-btn[data-category="commodities"].active { background: var(--color-category-economic); color: white; }
+.filters .filter-btn[data-category="healthcare"].active { background: var(--color-category-healthcare); color: white; }
+.filters .filter-btn[data-category="prediction markets"].active,
+.filters .filter-btn[data-category="prediction"].active { background: var(--color-category-prediction); color: white; }
+.filters .filter-btn[data-category="financial markets"].active,
+.filters .filter-btn[data-category="financial"].active { background: var(--color-category-economic); color: white; }
 
 .categories {
     display: grid;

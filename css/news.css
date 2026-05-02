@@ -281,78 +281,22 @@
 .category-badge.corrections { background: var(--color-category-corrections); color: white; }
 
 /* ========================================
-   FILTERS
+   FILTERS (Base styles in body.css)
    ======================================== */
 
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 30px;
-}
-
-.filters .filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: var(--control-radius);
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.filters .filter-btn .filter-icon {
-    flex-shrink: 0;
-}
-
-.filters .filter-btn .filter-text {
-    display: none;
-}
-
-.filters .filter-btn:hover {
-    background: var(--bg-tertiary);
-    transform: translateY(-1px);
-    opacity: 1;
-}
-
-.filters .filter-btn.active {
-    background: var(--accent-primary);
-    color: white;
-}
-
-.filters .filter-btn.active .filter-text {
-    display: inline;
-}
-
-.filters .filter-btn.active.ipo { background: var(--color-category-ipo); }
-.filters .filter-btn.active.earnings { background: var(--color-category-earnings); }
-.filters .filter-btn.active.policy { background: var(--color-category-policy); }
-.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); }
-.filters .filter-btn.active.political { background: var(--color-category-political); }
-.filters .filter-btn.active.corrections { background: var(--color-category-corrections); }
+/* Category-specific active states */
+.filters .filter-btn.active.ipo { background: var(--color-category-ipo); color: white; }
+.filters .filter-btn.active.earnings { background: var(--color-category-earnings); color: white; }
+.filters .filter-btn.active.policy { background: var(--color-category-policy); color: white; }
+.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); color: white; }
+.filters .filter-btn.active.political { background: var(--color-category-political); color: white; }
+.filters .filter-btn.active.corrections { background: var(--color-category-corrections); color: white; }
 
 /* ========================================
    RESPONSIVE
    ======================================== */
 
 @media (max-width: 768px) {
-    .filters {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 0.5rem;
-        scrollbar-width: none;
-    }
-
-    .filters::-webkit-scrollbar {
-        display: none;
-    }
-
     .article-disclosure summary {
         padding: 0.75rem;
     }

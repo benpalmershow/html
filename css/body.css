@@ -354,28 +354,14 @@ h1.page-title {
     letter-spacing: 0.08em;
     text-align: center;
     margin: var(--spacing-lg) 0 var(--spacing-md) 0;
-    padding-bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-xs);
-    min-height: 24px;
 }
 
 .page-header {
-    width: min(100%, 1080px);
+    width: min(100%, var(--content-standard));
     margin-inline: auto;
     padding-inline: var(--content-padding);
 }
 
-.page-icon {
-    width: 1.35rem;
-    height: 1.35rem;
-    flex-shrink: 0;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(var(--border-color-rgb), 0.8);
-}
 
 /* ========================================
    FOOTER
@@ -462,11 +448,6 @@ h1.page-title {
     h1.page-title {
         font-size: 0.8rem;
         margin: var(--spacing-md) 0 var(--spacing-sm) 0;
-    }
-
-    .page-icon {
-        width: 1.15rem;
-        height: 1.15rem;
     }
 
     .table-wrapper td:first-child,
@@ -570,8 +551,14 @@ html.dark-mode #social-footer .social-links img {
     white-space: nowrap;
 }
 
-.filters .filter-btn .filter-icon {
+.filters .filter-btn .filter-icon,
+.filters .filter-btn .filter-icon i,
+.filters .filter-btn i.fas,
+.filters .filter-btn i.fab {
     flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
 }
 
 .filters .filter-btn .filter-text {
@@ -614,7 +601,7 @@ html.dark-mode #social-footer .social-links img {
     }
 }
 
-/* Dark mode filter overrides */
+/* Dark mode filter overrides - theme.css handles html.dark-mode via CSS variables */
 @media (prefers-color-scheme: dark) {
     .filters .filter-btn {
         background: var(--color-dark-bg-secondary, #374151);
@@ -629,20 +616,6 @@ html.dark-mode #social-footer .social-links img {
         background: var(--logo-teal, #2c5f5a);
         color: white;
     }
-}
-
-html.dark-mode .filters .filter-btn {
-    background: var(--color-dark-bg-secondary, #374151);
-    color: var(--color-dark-text-secondary, #d1d5db);
-}
-
-html.dark-mode .filters .filter-btn:hover {
-    background: var(--color-dark-bg-primary, #1f2937);
-}
-
-html.dark-mode .filters .filter-btn.active {
-    background: var(--logo-teal, #2c5f5a);
-    color: white;
 }
 
 /* ========================================

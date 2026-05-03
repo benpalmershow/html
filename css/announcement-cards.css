@@ -767,10 +767,6 @@ html.dark-mode .table-wrapper th {
    FILTERS (Base styles in body.css)
    ======================================== */
 
-/* Remove default margin for index layout */
-.filters {
-    margin-bottom: 0;
-}
 
 /* Category-specific active states */
 .filters .filter-btn.active.ipo { background: var(--color-category-ipo); color: white; }
@@ -791,8 +787,3 @@ html.dark-mode .table-wrapper th {
 .filters .filter-btn.active.business { background: var(--color-category-business); color: white; }
 .filters .filter-btn.active.trade { background: var(--color-category-trade); color: white; }
 
-@media (max-width: 768px) {
-    .filters {
-        padding: 0.5rem 0;
-    }
-}

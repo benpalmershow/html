@@ -281,18 +281,6 @@
 .category-badge.corrections { background: var(--color-category-corrections); color: white; }
 
 /* ========================================
-   FILTERS (Base styles in body.css)
-   ======================================== */
-
-/* Category-specific active states */
-.filters .filter-btn.active.ipo { background: var(--color-category-ipo); color: white; }
-.filters .filter-btn.active.earnings { background: var(--color-category-earnings); color: white; }
-.filters .filter-btn.active.policy { background: var(--color-category-policy); color: white; }
-.filters .filter-btn.active.healthcare { background: var(--color-category-healthcare); color: white; }
-.filters .filter-btn.active.political { background: var(--color-category-political); color: white; }
-.filters .filter-btn.active.corrections { background: var(--color-category-corrections); color: white; }
-
-/* ========================================
    RESPONSIVE
    ======================================== */
 

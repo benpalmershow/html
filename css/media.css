@@ -480,16 +480,6 @@
     MEDIA FILTER BAR (Base styles in body.css)
     ========================================================================== */
 
-/* Tighter margin for media page */
-.filters {
-    margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-    .filters {
-        margin-bottom: 0.5rem;
-    }
-}
 
 /* ==========================================================================
     MEDIA FILTERS & SEARCH

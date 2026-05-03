@@ -144,22 +144,6 @@
   <!-- Inline critical CSS for LCP -->
   <style>
     /* Critical styles for first paint */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--color-primary, #2c5f5a);
-      color: white;
-      padding: 8px 16px;
-      text-decoration: none;
-      z-index: 100;
-      border-radius: 0 0 4px 0;
-    }
-
-    .skip-link:focus {
-      top: 0;
-    }
-
     .media-cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -278,15 +262,12 @@
 </head>
 
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
 
   <main id="main-content" tabindex="-1">
     <div class="page-header">
-      <h1 class="page-title" aria-label="Page title">
-        <img src="images/media.webp" alt="" class="page-icon" width="20" height="20" loading="eager">
-        Media
-      </h1>
+      <h1 class="page-title" aria-label="Page title">Media</h1>
     </div>
     <div class="filters" id="media-filters" aria-label="Filter media by type"></div>
     <div class="media-filters" style="display: none;">

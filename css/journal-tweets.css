@@ -112,7 +112,7 @@
     }
 }
 
-/* Dark mode token overrides */
+/* Dark mode token overrides - consolidated for html.dark-mode and prefers-color-scheme */
 html.dark-mode {
     --tweet-bg: var(--color-dark-bg-primary);
     --tweet-bg-hover: var(--color-dark-bg-secondary);
@@ -143,6 +143,9 @@ html.dark-mode {
         --tweet-ticker-border: rgba(255, 255, 255, 0.28);
         --tweet-ticker-text: #ffffff;
         --tweet-ticker-bg-hover: rgba(255, 255, 255, 0.22);
+        /* Table colors */
+        --table-header-bg: rgba(255, 255, 255, 0.1);
+        --table-border: rgba(255, 255, 255, 0.15);
     }
 }
 

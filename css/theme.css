@@ -105,6 +105,9 @@
 
     /* LAYOUT TOKENS */
     --max-content-width: 1440px;
+    --content-narrow: 980px;
+    --content-standard: 1080px;
+    --content-wide: 1200px;
     --content-padding: var(--spacing-md);
     --section-spacing: var(--spacing-xl);
     

@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--content-wide);
     margin: 0 auto;
     padding: 0 var(--content-padding);
 }
@@ -1135,9 +1135,6 @@
 
 /* Extra tiny screens */
 @media (max-width: 360px) {
-    .page-title {
-        font-size: 1.4rem;
-    }
 
     .indicator-name {
         font-size: 0.8rem;

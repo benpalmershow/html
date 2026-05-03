@@ -619,6 +619,66 @@ html.dark-mode #social-footer .social-links img {
 }
 
 /* ========================================
+   SEARCH
+   ======================================== */
+
+.search-wrapper {
+    position: relative;
+    max-width: 280px;
+    margin: 10px auto 0;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.search-wrapper .indicator-search,
+.search-wrapper .search-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem 0.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-wrapper .indicator-search:focus,
+.search-wrapper .search-input:focus {
+    border-color: var(--logo-teal);
+    box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
+}
+
+.search-wrapper .indicator-search::placeholder,
+.search-wrapper .search-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Responsive search */
+@media (max-width: 768px) {
+    .search-wrapper {
+        max-width: 100%;
+        margin: 8px 0 0;
+    }
+
+    .search-wrapper .indicator-search,
+    .search-wrapper .search-input {
+        font-size: 0.85rem;
+        padding: 0.45rem 0.75rem 0.45rem 2rem;
+    }
+}
+
+/* ========================================
    ACCESSIBILITY: SKIP LINK
    ======================================== */
 

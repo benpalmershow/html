@@ -173,12 +173,18 @@
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
-  <main id="main-content" tabindex="-1">
-    <div class="page-header">
-      <h1 class="page-title" aria-label="Page title">Portfolio</h1>
-    </div>
+   <main id="main-content" tabindex="-1">
+     <div class="page-header">
+       <h1 class="page-title" aria-label="Page title">Portfolio</h1>
+     </div>
 
-    <!-- TradingView Widget BEGIN -->
+     <!-- Search Bar -->
+     <div class="search-wrapper">
+       <i data-lucide="search" class="search-icon"></i>
+       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search portfolio..." autocomplete="off">
+     </div>
+
+     <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -330,10 +336,11 @@
       .catch(error => console.error('Scripts load error:', error));
   </script>
 
-   <!-- Load JavaScript -->
-   <script src="js/nav.js" defer></script>
-   <script src="js/portfolio.js"></script>
-   <script>
+    <!-- Load JavaScript -->
+    <script src="js/nav.js" defer></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/search.js" defer></script>
+    <script>
      // Initialize Lucide Icons
      lucide.createIcons();
    </script>

@@ -102,15 +102,22 @@
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
-  <main id="main-content" tabindex="-1">
-    <div class="page-header">
-      <h1 class="page-title" aria-label="Page title">
-        <div class="source-toggle" id="journal-filters" aria-label="Filter by source">
-          <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
-          <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
-        </div>
-      </h1>
-    </div>
+   <main id="main-content" tabindex="-1">
+     <div class="page-header">
+       <h1 class="page-title" aria-label="Page title">
+         <div class="source-toggle" id="journal-filters" aria-label="Filter by source">
+           <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
+           <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
+         </div>
+       </h1>
+     </div>
+
+     <!-- Search Bar -->
+     <div class="search-wrapper">
+       <i data-lucide="search" class="search-icon"></i>
+       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
+     </div>
+
 <div class="filters" id="journal-category-filters" aria-label="Filter essays by category">
 </div>
     <div class="content">
@@ -146,14 +153,15 @@
   <!-- Footer Component -->
   <div id="footer-container"></div>
 
-   <!-- Page-specific scripts -->
-   <script src="js/html-utils.js" defer></script>
-   <script src="js/nav.js" defer></script>
-   <script src="js/swipe-nav.js" defer></script>
-   <script src="js/news-article.js" defer></script>
-   <script src="js/journal-feed.js" defer></script>
+    <!-- Page-specific scripts -->
+    <script src="js/html-utils.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/swipe-nav.js" defer></script>
+    <script src="js/news-article.js" defer></script>
+    <script src="js/journal-feed.js" defer></script>
+    <script src="js/search.js" defer></script>
 
-   <!-- Back to top button -->
+    <!-- Back to top button -->
    <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
  </body>
 </html>

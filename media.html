@@ -265,12 +265,19 @@
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
 
-  <main id="main-content" tabindex="-1">
-    <div class="page-header">
-      <h1 class="page-title" aria-label="Page title">Media</h1>
-    </div>
-    <div class="filters" id="media-filters" aria-label="Filter media by type"></div>
-    <div class="media-filters" style="display: none;">
+   <main id="main-content" tabindex="-1">
+     <div class="page-header">
+       <h1 class="page-title" aria-label="Page title">Media</h1>
+     </div>
+     <div class="filters" id="media-filters" aria-label="Filter media by type"></div>
+
+     <!-- Search Bar -->
+     <div class="search-wrapper">
+       <i data-lucide="search" class="search-icon"></i>
+       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search media..." autocomplete="off">
+     </div>
+
+     <div class="media-filters" style="display: none;">
       <select id="filter-type" aria-label="Filter by media type">
         <option value="all">All</option>
       </select>
@@ -355,13 +362,14 @@
   </script>
 
   <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
-  <script src="js/html-utils.js" defer></script>
-  <script src="js/nav.js" defer></script>
-  <script src="js/swipe-nav.js" defer></script>
+   <script src="js/html-utils.js" defer></script>
+   <script src="js/nav.js" defer></script>
+   <script src="js/swipe-nav.js" defer></script>
 
-  <script src="js/media.js"></script>
+   <script src="js/media.js"></script>
+   <script src="js/search.js" defer></script>
 
-  <!-- Load Lucide icons on-demand after page load -->
+   <!-- Load Lucide icons on-demand after page load -->
   <script>
     (function () {
       const loadLucide = () => {

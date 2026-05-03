@@ -29,9 +29,15 @@
       <div class="header-actions">
         <button id="print-btn" class="print-btn" type="button">Print</button>
       </div>
-    </header>
+     </header>
 
-    <section class="updates-grid">
+     <!-- Search Bar -->
+     <div class="search-wrapper">
+       <i data-lucide="search" class="search-icon"></i>
+       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search..." autocomplete="off">
+     </div>
+
+     <section class="updates-grid">
       
       <article class="section-card">
         <h2>
@@ -108,10 +114,11 @@
 
   </main>
 
-   <script src="js/nav.js" defer></script>
-   <script src="js/swipe-nav.js" defer></script>
-   <script src="js/one-pager.js" defer></script>
-   <script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/swipe-nav.js" defer></script>
+    <script src="js/one-pager.js" defer></script>
+    <script src="js/search.js" defer></script>
+    <script>
      document.addEventListener('DOMContentLoaded', function () {
        if (window.lucide) window.lucide.createIcons();
      });

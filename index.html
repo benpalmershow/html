@@ -148,10 +148,16 @@
            <i class="fab fa-apple"></i>
          </a>
        </div>
-     </div>
-   </section>
+      </div>
+    </section>
 
-  <section class="updates-grid">
+    <!-- Search Bar -->
+    <div class="search-wrapper">
+      <i data-lucide="search" class="search-icon"></i>
+      <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search..." autocomplete="off">
+    </div>
+
+   <section class="updates-grid">
     <article class="section-card section-docs">
       <h2>
         <img src="images/announcements.webp" alt="" class="section-link-image" width="24" height="24">
@@ -199,13 +205,14 @@
   });
 </script>
 
-  <script src="js/html-utils.js" defer></script>
-  <script src="js/nav.js" defer></script>
-  <script src="js/swipe-nav.js" defer></script>
-  <script src="js/one-pager.js" defer></script>
-  <script src="js/bfcache-compat.js" defer></script>
-  
-    <script>
+   <script src="js/html-utils.js" defer></script>
+   <script src="js/nav.js" defer></script>
+   <script src="js/swipe-nav.js" defer></script>
+   <script src="js/one-pager.js" defer></script>
+   <script src="js/bfcache-compat.js" defer></script>
+   <script src="js/search.js" defer></script>
+   
+     <script>
     (function () {
       function loadScript(src, callback) {
         const script = document.createElement('script');

@@ -210,38 +210,47 @@
       }
     }
 
-    /* Search input styles */
-    .search-label {
-      position: relative;
-      width: 100%;
-    }
+     /* Search input styles - matching body.css */
+     .search-wrapper {
+         position: relative;
+         max-width: 280px;
+         margin: 10px auto 0;
+     }
 
-    .search-label input {
-      padding-right: 2.5rem;
-    }
+     .search-icon {
+         position: absolute;
+         left: 10px;
+         top: 50%;
+         transform: translateY(-50%);
+         width: 16px;
+         height: 16px;
+         color: var(--text-muted, #6c757d);
+         pointer-events: none;
+     }
 
-    .search-icon {
-      position: absolute;
-      right: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--color-gray-500, #6c757d);
-      pointer-events: none;
-    }
+     .indicator-search {
+         width: 100%;
+         padding: 0.5rem 0.75rem 0.5rem 2rem;
+         border: 1px solid var(--border-color, #e5e7eb);
+         border-radius: 8px;
+         background: var(--bg-secondary, #f9fafb);
+         color: var(--text-primary, #111827);
+         font-size: 0.9rem;
+         outline: none;
+         transition: border-color 0.2s ease, box-shadow 0.2s ease;
+     }
 
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
+     .indicator-search:focus {
+         border-color: var(--logo-teal, #2c5f5a);
+         box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
+     }
 
-    /* Font optimization */
+     .indicator-search::placeholder {
+         color: var(--text-muted, #6c757d);
+         opacity: 0.6;
+     }
+
+     /* Font optimization */
     @font-face {
       font-family: 'FontAwesome';
       src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');

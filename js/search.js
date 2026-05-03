@@ -1,5 +1,4 @@
 // Search functionality - standalone for use across pages
-// This module provides search functionality for filtering content
 // SRP: Single responsibility - handle search/filter operations
 
 function setupIndicatorSearch() {
@@ -63,7 +62,6 @@ function setupMediaSearch() {
                 if (show) anyVisible = true;
             });
 
-            // Hide featured section if no results anywhere
             if (featuredSection) {
                 featuredSection.style.display = anyVisible ? 'none' : '';
             }
@@ -102,24 +100,29 @@ function setupJournalSearch() {
     const searchInput = document.getElementById('indicatorSearch');
     if (!searchInput) return;
 
+    const journalFeed = document.getElementById('journal-feed');
+    const essayReader = document.getElementById('essay-reader-container');
+
     let debounceTimer;
     searchInput.addEventListener('input', function () {
         clearTimeout(debounceTimer);
         const query = this.value.trim().toLowerCase();
         debounceTimer = setTimeout(() => {
-            const entries = document.querySelectorAll('.journal-entry, .entry');
+            const journalEntries = journalFeed ? journalFeed.querySelectorAll('.journal-entry, .entry') : [];
+            const essayCards = essayReader ? essayReader.querySelectorAll('.essay-card') : [];
+            const allItems = [...journalEntries, ...essayCards];
 
             if (!query) {
-                entries.forEach(entry => entry.style.display = '');
+                allItems.forEach(item => item.style.display = '');
                 return;
             }
 
-            entries.forEach(entry => {
-                const titleEl = entry.querySelector('.entry-title, .journal-entry-title');
-                const contentEl = entry.querySelector('.entry-content, .journal-entry-content');
+            allItems.forEach(item => {
+                const titleEl = item.querySelector('.entry-title, .journal-entry-title, .essay-card-title');
+                const contentEl = item.querySelector('.entry-content, .journal-entry-content, .essay-card-summary');
                 const title = (titleEl?.textContent || '').toLowerCase();
                 const content = (contentEl?.textContent || '').toLowerCase();
-                entry.style.display = (title.includes(query) || content.includes(query)) ? '' : 'none';
+                item.style.display = (title.includes(query) || content.includes(query)) ? '' : 'none';
             });
         }, 200);
     });
@@ -167,52 +170,34 @@ function setupPortfolioSearch() {
     });
 }
 
-// Auto-detect page type and initialize appropriate search
+// Auto-detect page type by URL
 function initSearchForPage() {
     const searchInput = document.getElementById('indicatorSearch');
     if (!searchInput) return;
 
-    // Portfolio page
-    if (document.getElementById('portfolio-comparison-table')) {
-        setupPortfolioSearch();
-        return;
-    }
+    const path = window.location.pathname;
+    let pageType = '';
 
-    // Financials page (indicators with categories)
-    if (document.querySelector('.category .indicator')) {
-        setupIndicatorSearch();
-        return;
-    }
+    if (path.endsWith('financials.html') || path.endsWith('/')) pageType = 'financials';
+    else if (path.endsWith('portfolio.html')) pageType = 'portfolio';
+    else if (path.endsWith('media.html')) pageType = 'media';
+    else if (path.endsWith('news.html')) pageType = 'essays';
+    else if (path.endsWith('journal.html')) pageType = 'journal';
+    else if (path.endsWith('one-pager.html')) pageType = 'latest';
+    else if (path === '' || path.endsWith('index.html')) pageType = 'latest';
+    else pageType = 'financials';
 
-    // Media page
-    if (document.querySelector('.media-card')) {
-        setupMediaSearch();
-        return;
+    switch (pageType) {
+        case 'portfolio': setupPortfolioSearch(); break;
+        case 'financials': setupIndicatorSearch(); break;
+        case 'media': setupMediaSearch(); break;
+        case 'essays': setupEssaySearch(); break;
+        case 'journal': setupJournalSearch(); break;
+        case 'latest': setupLatestItemsSearch(); break;
+        default: setupIndicatorSearch();
     }
-
-    // Essays/News page (essay cards)
-    if (document.querySelector('.essay-card')) {
-        setupEssaySearch();
-        return;
-    }
-
-    // Journal page (journal entries)
-    if (document.querySelector('.journal-entry, .entry')) {
-        setupJournalSearch();
-        return;
-    }
-
-    // Index or One-pager (latest items lists)
-    if (document.querySelector('#latest-journal, #latest-essays, #latest-media, #latest-financials')) {
-        setupLatestItemsSearch();
-        return;
-    }
-
-    // Fallback to indicator search (no-op if no indicators)
-    setupIndicatorSearch();
 }
 
-// Auto-initialize on load
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSearchForPage);
 } else {

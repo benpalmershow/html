@@ -1601,7 +1601,23 @@
                 "march": "101.8"
             },
             "change": "",
-            "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
-        }
-    ]
-}
+             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
+         },
+         {
+             "category": "Business Indicators",
+             "agency": "Robotaxi Tracker",
+             "name": "Waymo Trips per Week",
+             "lastUpdated": "2026-05-05T00:00:00Z",
+             "releaseDay": 0,
+             "url": "https://robotaxitracker.com/vehicles?provider=waymo&area=bay-area-waymo",
+             "2025": {
+                 "december": "10000"
+             },
+             "2026": {
+                 "march": "500000"
+             },
+             "change": "Up 50x",
+             "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
+         }
+     ]
+ }

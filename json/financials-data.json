@@ -5,18 +5,17 @@
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
-            "name": "Strait of Hormuz Traffic Returns to Normal by April 30",
-            "lastUpdated": "2026-04-19T08:00:00Z",
+            "name": "Strait of Hormuz Traffic Returns to Normal by May 31, 2026",
+            "lastUpdated": "2026-05-05T17:51:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
-            "yes_probability": "28¢",
-            "no_probability": "72¢",
-            "previous_yes": "23¢",
-            "change": "Up 5¢ (Yes)",
+            "yes_probability": "17¢",
+            "no_probability": "83¢",
+            "previous_yes": "28¢",
+            "change": "Up 2¢ (Yes)",
             "probabilities": {
-                "2026-04-15": {"yes": "22¢", "no": "78¢"},
-                "2026-04-17": {"yes": "25¢", "no": "75¢"},
-                "2026-04-19": {"yes": "28¢", "no": "72¢"}
+       
+                "2026-05-05": {"yes": "17¢", "no": "83¢"}
             },
             "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by end of April 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. Current traffic: ~8-10 daily transits, far below pre-crisis 100-138/day. Despite US-Iran ceasefire announced April 7, market expects traffic remains depressed amid ongoing mine-clearing operations and vessel rerouting. Volume: $10.8M."
         },
@@ -947,7 +946,7 @@
             "category": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-04-30T14:00:00Z",
+            "lastUpdated": "2026-05-05T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
               
@@ -955,25 +954,17 @@
                 "january": "76",
                 "february": "98",
                 "march": "5",
-                "april": "20"
+                "april": "20",
+                "may": "11"
             },
             "daily": {
-                "2026-04-01": 6,
-                "2026-04-02": 6,
-                "2026-04-03": 5,
-                "2026-04-04": 10,
-                "2026-04-05": 9,
-                "2026-04-14": 19,
-                "2026-04-18": 35,
-                "2026-04-19": 3,
-                "2026-04-23": 5,
-                "2026-04-29": 20
+                "2026-05-05": "11"
             },
-            "vesselsInGulf": 902,
-            "hormuzInbound": 6,
-            "hormuzOutbound": 14,
-            "darkActivityEvents": 170,
-            "vesselsAttacked": 34,
+            "vesselsInGulf": 941,
+            "hormuzInbound": 5,
+            "hormuzOutbound": 6,
+            "darkActivityEvents": 162,
+            "vesselsAttacked": 36,
             "propabilities": {
                 "2026-04-14": {"vesselsInGulf": 847, "hormuzInbound": 5, "hormuzOutbound": 14, "darkActivityEvents": 138, "vesselsAttacked": 27},
                 "2026-04-18": {"vesselsInGulf": 919, "hormuzInbound": 8, "hormuzOutbound": 27, "darkActivityEvents": 142, "vesselsAttacked": 29}

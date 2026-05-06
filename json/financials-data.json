@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-05T15:36:00Z",
+    "lastUpdated": "2026-05-06T15:36:00Z",
     "indices": [
     
         {
@@ -1259,7 +1259,7 @@
             "category": "Employment Indicators",
             "agency": "ADP",
             "name": "Private Employment",
-            "lastUpdated": "2026-04-02T14:00:00Z",
+            "lastUpdated": "2026-05-06T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.adpresearch.com",
             "march": "131,962,000",
@@ -1275,7 +1275,8 @@
             "2026": {
                 "january": "132,270,000",
                 "february": "132,336,000",
-                "march": "132,398,000"
+                "march": "132,397,000",
+                "april": "132,506,000"
             },
             "change": "",
             "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
@@ -1284,7 +1285,7 @@
             "category": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2026-03-31T14:00:00Z",
+            "lastUpdated": "2026-05-06T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
             "march": "6,952,000",
@@ -1299,7 +1300,8 @@
             "december": "6,550,000",
             "2026": {
                 "january": "7,240,000",
-                "february": "6,882,000"
+                "february": "6,922,000",
+                "march": "6,866,000"
             },
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."
@@ -1461,7 +1463,7 @@
             "category": "Business Indicators",
             "agency": "ISM",
             "name": "Manufacturing PMI",
-            "lastUpdated": "2026-04-02T14:00:00Z",
+            "lastUpdated": "2026-05-06T14:00:00Z",
             "releaseDay": 1,
             "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports",
             "march": "49",
@@ -1477,7 +1479,8 @@
             "2026": {
                 "january": "52.6",
                 "february": "52.4",
-                "march": "52.7"
+                "march": "52.7",
+                "april": "52.7"
             },
             "change": "",
             "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
@@ -1564,18 +1567,19 @@
             "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/non-manufacturing/",
             "march": "50.8",
             "april": "51.6",
-            "may": "49.9",
+            "may": "50.2",
             "june": "50.8",
-            "july": "50.1",
-            "august": "52",
-            "september": "50",
-            "october": "52.4",
-            "november": "52.6",
-            "december": "54.4",
+            "july": "50.5",
+            "august": "51.9",
+            "september": "50.3",
+            "october": "52",
+            "november": "52.4",
+            "december": "53.8",
             "2026": {
-                "january": "52.7",
+                "january": "53.8",
                 "february": "56.1",
-                "march": "54"
+                "march": "54",
+                    "april": "53.6"
             },
             "change": "",
             "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."

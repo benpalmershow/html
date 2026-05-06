@@ -242,9 +242,9 @@ function renderHormuz(indicator) {
         const jan2026 = indicator['2026']?.january;
 
         if (indicator.daily && typeof indicator.daily === 'object') {
-            const dailyEntries = Object.entries(indicator.daily);
-            const latestEntry = dailyEntries[dailyEntries.length - 1];
-            const previousEntry = dailyEntries[dailyEntries.length - 2];
+            const dailyEntries = Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a));
+            const latestEntry = dailyEntries[0];
+            const previousEntry = dailyEntries[1];
             
             if (latestEntry) {
                 const [date, value] = latestEntry;
@@ -259,10 +259,7 @@ function renderHormuz(indicator) {
             }
 
             // On expand, show additional recent daily values (newest first).
-            const additionalDailyEntries = dailyEntries
-                .slice(0, Math.max(0, dailyEntries.length - 2))
-                .reverse()
-                .slice(0, 5);
+            const additionalDailyEntries = dailyEntries.slice(2).slice(0, 5);
 
             additionalDailyEntries.forEach(([dailyDate, dailyValue]) => {
                 const formattedDailyDate = new Date(dailyDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
@@ -289,27 +286,27 @@ function renderHormuz(indicator) {
 
         if (indicator.vesselsInGulf !== undefined) {
             const prevValue = previousProp ? ` (${previousProp.vesselsInGulf})` : '';
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total active vessels tracked in the Arabian Gulf">Vessels in Gulf:</span><span class="month-value">${indicator.vesselsInGulf}${prevValue}</span></div>`;
+            historyDataHtml += `<div class="data-row"><span class="month-label" title="Total active vessels tracked in the Arabian Gulf">Vessels in Gulf:</span><span class="month-value">${indicator.vesselsInGulf}${prevValue}</span></div>`;
         }
 
         if (indicator.hormuzInbound !== undefined && indicator.hormuzOutbound !== undefined) {
             const prevInbound = previousProp ? previousProp.hormuzInbound : null;
             const prevOutbound = previousProp ? previousProp.hormuzOutbound : null;
             const prevValue = prevInbound !== null && prevOutbound !== null ? ` (${prevInbound} / ${prevOutbound})` : '';
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Daily ship transits through the Strait of Hormuz">Inbound / Outbound:</span><span class="month-value">${indicator.hormuzInbound} / ${indicator.hormuzOutbound}${prevValue}</span></div>`;
+            historyDataHtml += `<div class="data-row"><span class="month-label" title="Daily ship transits through the Strait of Hormuz">Inbound / Outbound:</span><span class="month-value">${indicator.hormuzInbound} / ${indicator.hormuzOutbound}${prevValue}</span></div>`;
         }
 
         if (indicator.darkActivityEvents !== undefined) {
             const prevValue = previousProp ? ` (${previousProp.darkActivityEvents})` : '';
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="AIS-dark vessel activity events (potential smuggling or evasion)">Dark Activity:</span><span class="month-value">${indicator.darkActivityEvents} events${prevValue}</span></div>`;
+            historyDataHtml += `<div class="data-row"><span class="month-label" title="AIS-dark vessel activity events (potential smuggling or evasion)">Dark Activity:</span><span class="month-value">${indicator.darkActivityEvents} events${prevValue}</span></div>`;
         }
 
         if (indicator.vesselsAttacked !== undefined) {
             const prevValue = previousProp ? ` (${previousProp.vesselsAttacked})` : '';
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${indicator.vesselsAttacked}${prevValue}</span></div>`;
+            historyDataHtml += `<div class="data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${indicator.vesselsAttacked}${prevValue}</span></div>`;
         }
 
-        const hasHistory = historyDataHtml.trim().length > 0;
+        const hasHistory = historyDataHtml.trim().length > 0 || indicator.daily && Object.keys(indicator.daily).length > 2;
 
         return { latestDataHtml, historyDataHtml, hasHistory };
     }
@@ -475,9 +472,9 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
     // Special handling for hormuz indicator
     if (indicator.name === 'Strait of Hormuz Daily Transits') {
         if (indicator.daily && typeof indicator.daily === 'object') {
-            const dailyEntries = Object.entries(indicator.daily);
-            const latestEntry = dailyEntries[dailyEntries.length - 1];
-            const previousEntry = dailyEntries[dailyEntries.length - 2];
+            const sortedEntries = Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a));
+            const latestEntry = sortedEntries[0];
+            const previousEntry = sortedEntries[1];
             
             if (latestEntry && previousEntry) {
                 const [prevDate, prevValue] = previousEntry;

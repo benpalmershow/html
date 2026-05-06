@@ -509,8 +509,8 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
     // Standard handling for other indicators
     if (momChange === null) return '';
 
-    const isUnemploymentIndicator = indicator.name.includes('Unemployment');
-    const isBudgetDeficitIndicator = indicator.name.includes('Budget') || indicator.name.includes('Deficit');
+const isUnemploymentIndicator = indicator.name.includes('Unemployment');
+     const isBudgetDeficitIndicator = indicator.name.includes('Budget Deficit');
 
     const momChangeValue = isUnemploymentIndicator ? -momChange.percentChange : (isBudgetDeficitIndicator ? -momChange.percentChange : momChange.percentChange);
     const momInfo = formatChangeIndicator(momChangeValue);

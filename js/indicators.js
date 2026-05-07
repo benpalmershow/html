@@ -146,27 +146,40 @@ const IndicatorRenderers = (function () {
         return { latestDataHtml, historyDataHtml: '', hasHistory: false };
     }
 
-    function renderPrediction(indicator) {
+     function renderPrediction(indicator) {
         let latestDataHtml = '';
+        let historyDataHtml = '';
+        let hasHistory = false;
 
         if (indicator.probabilities && typeof indicator.probabilities === 'object') {
-            latestDataHtml = `<div class="prediction-bar-container">`;
-            Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a)).forEach(([date, probs]) => {
+            const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+
+            const buildProbBar = ([date, probs], large) => {
                 const yesProb = parseFloat(probs.yes);
                 const noProb = parseFloat(probs.no);
                 const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
-                latestDataHtml += `
+                const fontSize = large ? '12px' : '10px';
+                const labelWidth = large ? '70px' : '70px';
+                return `
                     <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
-                        <span class="prediction-bar-label" style="min-width: 70px; font-size: 12px;">${dateLabel}</span>
-                        <span style="font-size: 10px; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
+                        <span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${dateLabel}</span>
+                        <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
                         <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
                             <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${probs.yes} Yes"></div>
                             <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${probs.no} No"></div>
                         </div>
-                        <span style="font-size: 10px; margin-left: 4px; font-weight: bold;">${probs.no}</span>
+                        <span style="font-size: ${fontSize}; margin-left: 4px; font-weight: bold;">${probs.no}</span>
                     </div>`;
-            });
-            latestDataHtml += `</div>`;
+            };
+
+            if (sorted.length > 0) {
+                latestDataHtml = `<div class="prediction-bar-container">${buildProbBar(sorted[0], true)}</div>`;
+            }
+
+            if (sorted.length > 1) {
+                hasHistory = true;
+                historyDataHtml = sorted.slice(1).map(entry => buildProbBar(entry, false)).join('');
+            }
         } else if (indicator.yes_probability && indicator.no_probability) {
             const yesProb = parseFloat(indicator.yes_probability);
             const noProb = parseFloat(indicator.no_probability);
@@ -182,7 +195,7 @@ const IndicatorRenderers = (function () {
                     </div>
                 </div>`;
         }
-        return { latestDataHtml, historyDataHtml: '', hasHistory: false };
+        return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
     function renderSports(indicator) {
@@ -233,83 +246,96 @@ const IndicatorRenderers = (function () {
     }
 
 function renderHormuz(indicator) {
-        let latestDataHtml = '';
+        const PRECRISIS_NORMAL = 115; // pre-crisis daily transit baseline (~mid of 100-138/day)
+
+        // --- Collect daily entries sorted newest first ---
+        const dailyEntries = indicator.daily && typeof indicator.daily === 'object'
+            ? Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a))
+            : [];
+
+        const latestEntry   = dailyEntries[0];
+        const previousEntry = dailyEntries[1];
+
+        const latestCount   = latestEntry   ? parseInt(latestEntry[1],   10) : null;
+        const prevCount     = previousEntry ? parseInt(previousEntry[1],  10) : null;
+        const latestDateStr = latestEntry   ? new Date(latestEntry[0]   + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '\u2014';
+        const prevDateStr   = previousEntry ? new Date(previousEntry[0]  + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '\u2014';
+
+        const capacityPct   = latestCount !== null ? Math.min(Math.round((latestCount / PRECRISIS_NORMAL) * 100), 100) : 0;
+
+        // --- Current snapshot (most recent probabilities entry) ---
+        const propKeys          = indicator.probabilities ? Object.keys(indicator.probabilities).sort() : [];
+        const currentPropKey    = propKeys[propKeys.length - 1];
+        const currentProp       = currentPropKey ? indicator.probabilities[currentPropKey] : null;
+        const historicalPropKeys = propKeys.slice(0, propKeys.length - 1).reverse();
+
+        // --- COLLAPSED: compact 2-row layout matching other indicator cards ---
+        const latestDataHtml = `
+            <div class="hormuz-card">
+                <div class="hormuz-compact-row">
+                    <div class="hormuz-compact-left">
+                        <span class="hormuz-count-num">${latestCount !== null ? latestCount : '\u2014'}</span>
+                        <span class="hormuz-count-unit">transits / day</span>
+                    </div>
+                    <span class="hormuz-status-badge">&#9888; Blockade</span>
+                </div>
+                <div class="hormuz-capacity-wrap" title="vs pre-crisis baseline of ~${PRECRISIS_NORMAL}/day">
+                    <div class="hormuz-capacity-track">
+                        <div class="hormuz-capacity-fill" style="width: ${capacityPct}%"></div>
+                    </div>
+                    <span class="hormuz-capacity-label">${capacityPct}% of normal &middot; ${latestDateStr}</span>
+                </div>
+            </div>`;
+
+        // --- EXPANDED: metrics grid + recent daily history + snapshots + monthly avgs ---
         let historyDataHtml = '';
 
-        const march2026 = indicator['2026']?.march;
-        const feb2026 = indicator['2026']?.february;
-        const jan2026 = indicator['2026']?.january;
+        if (prevCount !== null) {
+            historyDataHtml += `<div class="data-row"><span class="month-label">prev (${prevDateStr}):</span><span class="month-value">${prevCount} transits</span></div>`;
+        }
 
-        // --- Daily transit rows (always visible: 2 most recent) ---
-        if (indicator.daily && typeof indicator.daily === 'object') {
-            const dailyEntries = Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a));
-            const latestEntry = dailyEntries[0];
-            const previousEntry = dailyEntries[1];
+        if (currentProp) {
+            const inOut = (currentProp.hormuzInbound !== undefined && currentProp.hormuzOutbound !== undefined) ? `${currentProp.hormuzInbound}&#8595; / ${currentProp.hormuzOutbound}&#8593;` : null;
+            const metrics = [
+                currentProp.vesselsInGulf !== undefined ? `<div class="hormuz-metric" title="Total active vessels tracked in the Arabian Gulf"><span class="hormuz-metric-val">${currentProp.vesselsInGulf.toLocaleString()}</span><span class="hormuz-metric-lbl">vessels in gulf</span></div>` : '',
+                inOut ? `<div class="hormuz-metric" title="Strait transits: inbound into Gulf / outbound"><span class="hormuz-metric-val">${inOut}</span><span class="hormuz-metric-lbl">strait in / out</span></div>` : '',
+                currentProp.darkActivityEvents !== undefined ? `<div class="hormuz-metric" title="AIS-dark vessel activity events (potential smuggling or sanctions evasion)"><span class="hormuz-metric-val">${currentProp.darkActivityEvents}</span><span class="hormuz-metric-lbl">dark events</span></div>` : '',
+                currentProp.vesselsAttacked !== undefined ? `<div class="hormuz-metric hormuz-metric--danger" title="Total vessels attacked or near-miss incidents since conflict began"><span class="hormuz-metric-val">${currentProp.vesselsAttacked}</span><span class="hormuz-metric-lbl">attacked</span></div>` : ''
+            ].filter(Boolean).join('');
+            historyDataHtml += metrics ? `<div class="hormuz-metrics-grid">${metrics}</div>` : '';
+        }
 
-            if (latestEntry) {
-                const [date, value] = latestEntry;
-                const formattedDate = new Date(date + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-                latestDataHtml = `<div class="latest-data-row"><span class="month-label">${formattedDate}:</span><span class="month-value">${value} transits</span></div>`;
-            }
+        const shownDates = new Set([latestEntry ? latestEntry[0] : null, previousEntry ? previousEntry[0] : null]);
+        const historyMap = {};
+        dailyEntries.slice(2).forEach(([dateKey, val]) => { if (!historyMap[dateKey]) historyMap[dateKey] = {}; historyMap[dateKey].count = parseInt(val, 10); });
+        historicalPropKeys.forEach(key => { if (!shownDates.has(key)) { if (!historyMap[key]) historyMap[key] = {}; historyMap[key].snap = indicator.probabilities[key]; } });
+        const sortedHistoryKeys = Object.keys(historyMap).sort((a, b) => new Date(b) - new Date(a));
+        const months2026 = [{ key: 'may', label: 'May avg', sortKey: '2026-05-01', red: true }, { key: 'april', label: 'Apr avg', sortKey: '2026-04-01', red: true }, { key: 'march', label: 'Mar avg', sortKey: '2026-03-01', red: true }, { key: 'february', label: 'Feb avg', sortKey: '2026-02-01', red: false }, { key: 'january', label: 'Jan avg', sortKey: '2026-01-01', red: false }];
+        const monthRows = months2026.filter(({ key }) => indicator['2026']?.[key]);
 
-            if (previousEntry) {
-                const [prevDate, prevValue] = previousEntry;
-                const formattedPrevDate = new Date(prevDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-                latestDataHtml += `<div class="latest-data-row"><span class="month-label">${formattedPrevDate}:</span><span class="month-value">${prevValue} transits</span></div>`;
-            }
-
-            // On expand: additional recent daily values (newest first)
-            dailyEntries.slice(2, 7).forEach(([dailyDate, dailyValue]) => {
-                const formattedDailyDate = new Date(dailyDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-                historyDataHtml += `<div class="data-row"><span class="month-label">${formattedDailyDate}:</span><span class="month-value">${dailyValue} transits</span></div>`;
+        if (sortedHistoryKeys.length > 0 || monthRows.length > 0) {
+            historyDataHtml += `<div class="hormuz-history-label">History</div>`;
+            const allItems = [...sortedHistoryKeys.map(dateKey => ({ sortKey: dateKey, type: 'entry', dateKey })), ...monthRows.map(m => ({ sortKey: m.sortKey, type: 'month', ...m }))].sort((a, b) => new Date(b.sortKey) - new Date(a.sortKey));
+            allItems.forEach(item => {
+                if (item.type === 'month') {
+                    historyDataHtml += `<div class="data-row hormuz-history-row hormuz-avg-row"><span class="month-label">${item.label}:</span><span class="month-value hormuz-avg-val"${item.red ? ' style="color:#dc2626;"' : ''}>${indicator['2026'][item.key]}/day</span></div>`;
+                } else {
+                    const { count, snap } = historyMap[item.dateKey];
+                    const fd = new Date(item.dateKey + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const parts = [count !== undefined ? `${count} transits` : null];
+                    let attackedHtml = '';
+                    if (snap) {
+                        if (snap.vesselsInGulf !== undefined) parts.push(`${snap.vesselsInGulf.toLocaleString()} vessels`);
+                        if (snap.hormuzInbound !== undefined && snap.hormuzOutbound !== undefined) parts.push(`${snap.hormuzInbound}↓/${snap.hormuzOutbound}↑`);
+                        if (snap.darkActivityEvents !== undefined) parts.push(`${snap.darkActivityEvents} dark`);
+                        if (snap.vesselsAttacked !== undefined) attackedHtml = ` (${snap.vesselsAttacked} attacked)`;
+                    }
+                    historyDataHtml += `<div class="data-row hormuz-history-row">${fd}: ${parts.filter(Boolean).join(' · ')}${attackedHtml}</div>`;
+                }
             });
         }
 
-        // --- Current snapshot metrics (always visible) ---
-        // Use the most recent probabilities snapshot (2026-05-05) as the current reference;
-        // earlier snapshots (04-18, 04-14) become historical rows in the expand section.
-        const propKeys = indicator.probabilities ? Object.keys(indicator.probabilities).sort() : [];
-        const currentPropKey = propKeys[propKeys.length - 1];
-        const currentProp = currentPropKey ? indicator.probabilities[currentPropKey] : null;
-        const historicalPropKeys = propKeys.slice(0, propKeys.length - 1).reverse(); // newest-first within history
-
-        if (currentProp?.vesselsInGulf !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total active vessels tracked in the Arabian Gulf">Vessels in Gulf:</span><span class="month-value">${currentProp.vesselsInGulf.toLocaleString()}</span></div>`;
-        }
-
-        if (currentProp?.hormuzInbound !== undefined && currentProp?.hormuzOutbound !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Ship transits: inbound into Gulf / outbound">↓ In / ↑ Out:</span><span class="month-value">${currentProp.hormuzInbound} / ${currentProp.hormuzOutbound}</span></div>`;
-        }
-
-        if (currentProp?.darkActivityEvents !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="AIS-dark vessel activity events (potential smuggling or sanctions evasion)">Dark Activity:</span><span class="month-value">${currentProp.darkActivityEvents} events</span></div>`;
-        }
-
-        if (currentProp?.vesselsAttacked !== undefined) {
-            latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="Total vessels attacked or near-miss incidents since conflict began">Vessels Attacked:</span><span class="month-value" style="color: #dc2626;">${currentProp.vesselsAttacked}</span></div>`;
-        }
-
-        // --- Earlier snapshots as historical rows (expand only, newest first) ---
-        historicalPropKeys.forEach(key => {
-            const snap = indicator.probabilities[key];
-            const snapDate = new Date(key + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-            historyDataHtml += `<div class="data-row hormuz-snapshot-row"><span class="month-label hormuz-snapshot-date">${snapDate}:</span><span class="month-value" style="font-size: 0.9em;">${snap.vesselsInGulf?.toLocaleString() ?? '—'} vessels &nbsp;·&nbsp; ${snap.hormuzInbound ?? '—'}↓ / ${snap.hormuzOutbound ?? '—'}↑ &nbsp;·&nbsp; <span style="color:#dc2626;">${snap.vesselsAttacked ?? '—'} attacked</span></span></div>`;
-        });
-
-        // --- Monthly averages (expand only) ---
-        if (march2026) {
-            historyDataHtml += `<div class="data-row"><span class="month-label">Mar 2026 avg:</span><span class="month-value" style="color: #dc2626;">${march2026}/day</span></div>`;
-        }
-        if (feb2026) {
-            historyDataHtml += `<div class="data-row"><span class="month-label">Feb 2026 avg:</span><span class="month-value">${feb2026}/day</span></div>`;
-        }
-        if (jan2026) {
-            historyDataHtml += `<div class="data-row"><span class="month-label">Jan 2026 avg:</span><span class="month-value">${jan2026}/day</span></div>`;
-        }
-
-        const hasHistory = historyDataHtml.trim().length > 0;
-
-        return { latestDataHtml, historyDataHtml, hasHistory };
+        return { latestDataHtml, historyDataHtml, hasHistory: true };
     }
 
     function renderStandard(indicator, MONTHS, MONTH_LABELS) {

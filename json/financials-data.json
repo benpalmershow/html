@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-06T15:36:00Z",
+    "lastUpdated": "2026-05-07T15:36:00Z",
     "indices": [
     
         {
@@ -972,12 +972,9 @@
                 "2026-04-02": 6,
                 "2026-04-01": 6
             },
-            "vesselsInGulf": 941,
-            "hormuzInbound": 5,
-            "hormuzOutbound": 6,
-            "darkActivityEvents": 162,
-            "vesselsAttacked": 36,
+        
             "probabilities": {
+                "2026-05-06": {"vesselsInGulf": 762, "hormuzInbound": 5, "hormuzOutbound": 2, "darkActivityEvents": 271, "vesselsAttacked": 37},
                 "2026-05-05": {"vesselsInGulf": 895, "hormuzInbound": 3, "hormuzOutbound": 2, "darkActivityEvents": 286, "vesselsAttacked": 37},
                 "2026-04-18": {"vesselsInGulf": 919, "hormuzInbound": 8, "hormuzOutbound": 27, "darkActivityEvents": 142, "vesselsAttacked": 29},
                 "2026-04-14": {"vesselsInGulf": 847, "hormuzInbound": 5, "hormuzOutbound": 14, "darkActivityEvents": 138, "vesselsAttacked": 27}

@@ -62,8 +62,6 @@ The group's [board and "angels"](https://baby2baby.org/our-board-angels/) consis
 
 ## Why This Pattern Persists
 
-State-administered voucher programs don't generate gala revenue. They don't create donor recognition opportunities. They don't employ COs at $240,000. They simply transfer purchasing power to families.
-
 Outsourcing to a nonprofit solves the political problem of "handing out cash" while creating an administrative ecosystem that requires:
 - Contract management
 - Reporting requirements
@@ -98,9 +96,9 @@ Every stakeholder except the one who actually needs the diaper.
 - **Choice:** Zero — families receive what Baby2Baby provides
 - **Transparency:** Budget documents obscure real unit costs
 
-The state could have achieved better outcomes at lower cost through direct transfer. It chose administration instead.
+The state could have achieved better outcomes by putting that money back in YOUR pocket. It chose ITS pocket instead.
 
-That's not charity. It's a grift — and the families getting the diapers are the last ones to benefit from the money spent in their name.
+It's a grift. The families getting the diapers are the last ones to benefit from the money spent in THEIR name.
 
 ---
 

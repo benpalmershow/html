@@ -107,5 +107,6 @@ It's a grift. The families getting the diapers are the last ones to benefit from
 - [Baby2Baby board and angels](https://baby2baby.org/our-board-angels/)
 - [Baby2Baby nonprofit filing (ProPublica Nonprofit Explorer)](https://projects.propublica.org/nonprofits/organizations/464503539/202543219349326759/full)
 - [Amazon: Pampers Swaddlers 108-count, $45.99](https://amzn.to/3Jk2TzB)
-- [Free Affordablilty](https://x.com/CAgovernor/status/2052823379057799516/video/1?s=61)
+- [Problem-Free Affordablilty](https://x.com/CAgovernor/status/2052823379057799516/video/1?s=61)
+- [Solution](https://x.com/SteveHiltonx/status/2053491232580538571/video/1?s=61)
 </div>

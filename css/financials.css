@@ -1342,195 +1342,221 @@
 }
 
 /* ========================================
-   HORMUZ CRISIS CARD
+   HORMUZ CRISIS CARD - MINIMAL
    ======================================== */
 
 .hormuz-card {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
-/* Compact top row: big number left, badge right */
-.hormuz-compact-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.hormuz-compact-left {
+/* Top row: number + unit + badge in one line */
+.hormuz-top-row {
     display: flex;
     align-items: baseline;
-    gap: 5px;
-    min-width: 0;
-}
-
-.hormuz-status-badge {
-    font-size: 0.56rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    background: rgba(220, 38, 38, 0.1);
-    color: #dc2626;
-    border: 1px solid rgba(220, 38, 38, 0.25);
-    border-radius: 3px;
-    padding: 2px 5px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.hormuz-count-num {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: #dc2626;
-    letter-spacing: -0.02em;
+    gap: 4px;
     line-height: 1;
 }
 
-.hormuz-count-unit {
-    font-size: 0.68rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    white-space: nowrap;
+.hormuz-count-num {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #dc2626;
+    letter-spacing: -0.02em;
 }
 
-/* Capacity bar: current vs pre-crisis baseline */
-.hormuz-capacity-wrap {
+.hormuz-count-unit {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.hormuz-status-badge {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 3px;
+    padding: 1px 4px;
+    margin-left: auto;
+}
+
+/* Capacity row: bar + text inline */
+.hormuz-capacity-row {
     display: flex;
     align-items: center;
     gap: 6px;
-    cursor: help;
 }
 
 .hormuz-capacity-track {
     flex: 1;
     height: 4px;
-    background: rgba(var(--color-primary-rgb), 0.12);
-    border-radius: 3px;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-radius: 2px;
     overflow: hidden;
 }
 
 .hormuz-capacity-fill {
     height: 100%;
-    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
-    border-radius: 3px;
+    border-radius: 2px;
     transition: width 0.5s ease;
     min-width: 2px;
 }
 
-.hormuz-capacity-label {
-    font-size: 0.58rem;
+.hormuz-capacity--critical {
+    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+}
+
+.hormuz-capacity--low {
+    background: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
+}
+
+.hormuz-capacity--normal {
+    background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+}
+
+.hormuz-capacity-text {
+    font-size: 0.6rem;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 500;
     white-space: nowrap;
 }
 
-/* 2×2 metrics grid — shown only in expanded state */
+/* 2×2 metrics grid */
 .hormuz-metrics-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4px;
-    margin-bottom: 4px;
+    margin: 6px 0;
 }
 
 .hormuz-metric {
-    background: rgba(var(--color-primary-rgb), 0.04);
+    background: rgba(var(--color-primary-rgb), 0.05);
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    padding: 4px 7px;
+    padding: 5px 8px;
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 2px;
 }
 
 .hormuz-metric--danger {
-    background: rgba(220, 38, 38, 0.06);
-    border-color: rgba(220, 38, 38, 0.22);
+    background: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.25);
 }
 
 .hormuz-metric-val {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-primary);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    line-height: 1.1;
 }
 
 .hormuz-metric--danger .hormuz-metric-val {
     color: #dc2626;
 }
 
-.hormuz-metric-arrow {
-    font-size: 0.75em;
-    opacity: 0.7;
-}
-
 .hormuz-metric-lbl {
     font-size: 0.55rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     font-weight: 600;
 }
 
-/* Hormuz expanded section - compact single line format */
-.hormuz-history-label {
-    font-size: 0.65rem;
+/* Section labels */
+.hormuz-section-label {
+    font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--text-muted);
     margin-top: 8px;
     margin-bottom: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.hormuz-history-row {
-    font-size: 0.72rem;
-    padding: 2px 0;
-    line-height: 1.3;
-    white-space: normal;
+/* Daily history list */
+.hormuz-daily-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.hormuz-history-row .month-label {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    min-width: unset;
+.hormuz-daily-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
 }
 
-.hormuz-history-row .month-value {
-    display: inline;
-    font-size: inherit;
-    color: inherit;
+.hormuz-daily-item:hover {
+    background: rgba(var(--color-primary-rgb), 0.05);
 }
 
-.hormuz-hist-count {
-    font-size: 0.72rem;
-    font-weight: 600;
+.hormuz-daily--low {
+    background: rgba(220, 38, 38, 0.06);
+}
+
+.hormuz-daily--low .hormuz-daily-count {
     color: #dc2626;
+    font-weight: 700;
 }
 
-.hormuz-hist-detail {
-    font-size: 0.68rem;
+.hormuz-daily-date {
     color: var(--text-muted);
-    white-space: nowrap;
+    min-width: 50px;
+    font-weight: 500;
 }
 
-.hormuz-hist-detail + .hormuz-hist-detail::before {
-    content: ' · ';
-    margin-right: 2px;
-    color: var(--border-color);
+.hormuz-daily-count {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 24px;
 }
 
-.hormuz-hist-danger {
-    color: #dc2626 !important;
+.hormuz-daily-badge {
+    font-size: 0.6rem;
+    color: #dc2626;
+    font-weight: 600;
+    margin-left: auto;
 }
 
-/* Monthly average row */
-.hormuz-avg-val {
-    font-size: 0.78rem;
-    font-style: italic;
+/* Monthly averages grid */
+.hormuz-monthly-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.hormuz-monthly-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.hormuz-monthly-name {
+    font-size: 0.6rem;
     color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.hormuz-monthly-val {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.hormuz-monthly--low {
+    color: #dc2626;
 }
 
 /* Sparkline - full card background */

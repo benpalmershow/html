@@ -3749,5 +3749,29 @@
     "goodreads": "https://www.goodreads.com/book/show/43827144-lifespan",
     "embedUrl": "",
     "dateAdded": "2026-04-24"
+  },
+  {
+    "title": "MayCara",
+    "author": "Doc Riter",
+    "mediaType": "playlist",
+    "description": "",
+    "date": "May 2026",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "YouTube Music",
+        "icon": "fab fa-youtube",
+        "url": "https://music.youtube.com/playlist?list=PLJzHo08oXQBffOLcv4g0T8qZ-sGsOeslh&si=gFclApHFuYPwh29O"
+      },
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/playlist/6o58csFj3Zj8uqaVaLdBoY?si=9L923OX1TX-p1_ADFA5m_Q"
+      }
+    ],
+    "cover": "images/listen.webp",
+    "dateAdded": "2026-05-10",
+    "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
+    "coverSizes": "240px"
   }
 ]

@@ -37,7 +37,7 @@
     const CACHE_KEY = 'media-data-v5';
     const CACHE_DURATION = 5 * 60 * 1000;
     const BATCH_SIZE = 12;
-    const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video', 'article'];
+    const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video'];
     const PLATFORM_ICONS = {
         spotify: 'spotify-link',
         apple: 'apple-link',
@@ -50,13 +50,12 @@
 
     const MEDIA_TYPE_ICONS = {
         'podcast': 'fas fa-podcast',
-        'playlist': 'fas fa-music',
+        'playlist': 'fas fa-list',
         'book': 'fas fa-book',
         'song': 'fas fa-music',
         'video': 'fas fa-video',
         'movie': 'fas fa-film',
-        'album': 'fas fa-music',
-        'article': 'fas fa-newspaper'
+        'album': 'fas fa-compact-disc'
     };
 
     const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
@@ -111,11 +110,10 @@
             'movie': '<i class="fas fa-film filter-icon"></i>',
             'book': '<i class="fas fa-book filter-icon"></i>',
             'podcast': '<i class="fas fa-podcast filter-icon"></i>',
-            'playlist': '<i class="fas fa-music filter-icon"></i>',
-            'album': '<i class="fas fa-music filter-icon"></i>',
+            'playlist': '<i class="fas fa-list filter-icon"></i>',
+            'album': '<i class="fas fa-compact-disc filter-icon"></i>',
             'song': '<i class="fas fa-music filter-icon"></i>',
-            'video': '<i class="fas fa-video filter-icon"></i>',
-            'article': '<i class="fas fa-newspaper filter-icon"></i>'
+            'video': '<i class="fas fa-video filter-icon"></i>'
         };
 
         const typeLabel = {
@@ -126,8 +124,7 @@
             'playlist': 'Playlists',
             'album': 'Albums',
             'song': 'Songs',
-            'video': 'Videos',
-            'article': 'Articles'
+            'video': 'Videos'
         };
 
         mediaFilters.innerHTML = '';

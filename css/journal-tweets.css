@@ -251,8 +251,8 @@ html.dark-mode {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--tweet-text);
     background: transparent;
     border: none;
@@ -547,7 +547,7 @@ html.dark-mode .entry-title img {
 .entry-link-asset-icon {
     flex-shrink: 0;
     margin-left: 12px;
-    margin-top: 2px;
+    margin-top: 0;
 }
 
 .entry-link-icon {

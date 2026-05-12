@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-10T15:36:00Z",
+    "lastUpdated": "2026-05-12T15:36:00Z",
     "indices": [
     
         {
@@ -242,7 +242,7 @@
             "category": "Housing Market",
             "agency": "NAR",
             "name": "Existing Home Sales",
-            "lastUpdated": "2026-04-14T14:00:00Z",
+            "lastUpdated": "2026-05-12T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
             "march": "",
@@ -258,7 +258,8 @@
             "2026": {
                 "january": "3.91M",
                 "february": "4.13M",
-                "march": "3.98M"
+                "march": "3.98M",
+                "april":"4.02M"
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
@@ -1108,7 +1109,8 @@
             "2026": {
                 "january": "$396,800",
                 "february": "$398,000",
-                "march": "$408,800"
+                "march": "$408,800",
+                "april":"$417,700"
             },
             "change": "",
             "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
@@ -1243,7 +1245,7 @@
             "category": "Employment Indicators",
             "agency": "The Conference Board",
             "name": "Employment Trends Index",
-            "lastUpdated": "2026-04-29T14:00:00Z",
+            "lastUpdated": "2026-05-12T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.conference-board.org/topics/employment-trends-index",
             "march": "",
@@ -1259,7 +1261,8 @@
             "2026": {
                 "january": "105.18",
                 "february": "105.84",
-                "march": "105.72"
+                "march": "105.52",
+                "april":"105.77"
             },
             "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
@@ -1424,7 +1427,7 @@
             "category": "Consumer Indicators",
             "agency": "BLS",
             "name": "CPI",
-            "lastUpdated": "2026-04-10T14:00:00Z",
+            "lastUpdated": "2026-05-12T14:00:00Z",
             "releaseDay": 11,
             "url": "https://www.bls.gov/cpi/data.htm",
             "january": "317.671",
@@ -1442,7 +1445,8 @@
             "2026": {
                 "january": "325.252",
                 "february": "326.785",
-                "march": "330.213"
+                "march": "330.213",
+                "april":"333.020"
             },
             "change": "",
             "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."
@@ -1548,7 +1552,7 @@
             "category": "Business Indicators",
             "agency": "NFIB",
             "name": "Small Business Optimism Index",
-            "lastUpdated": "2026-04-29T14:00:00Z",
+            "lastUpdated": "2026-05-12T14:00:00Z",
             "releaseDay": 12,
             "url": "https://www.nfib.com/news/monthly_report/sbet/",
             "march": "97.4",
@@ -1564,7 +1568,8 @@
             "2026": {
                 "january": "99.3",
                 "february": "98.8",
-                "march": "95.8"
+                "march": "95.8",
+                "april":"95.9"
             },
             "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."

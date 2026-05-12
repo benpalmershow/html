@@ -2,6 +2,12 @@
 
 ## Latest Numbers
 
+- **Inflation Pressure**: CPI shows strong inflationary pressure both month-over-month (+0.85%) and year-over-year (+3.81%)
+- **Business Sentiment**: Small Business Optimism remains weak year-over-year (-2.34%) despite slight monthly improvement
+- **Labor Market**: Employment Trends are essentially flat year-over-year (-0.03%) with minimal monthly change
+- **Housing Market**: Mixed signals - sales volume down YoY (-2.19%) but prices up slightly YoY (+0.68%)
+- **Price Momentum**: Median home prices show strongest monthly momentum at +2.18%
+
 ### Consumer Price Index (CPI)
 - **April 2026**: 333.020
 - **March 2026**: 330.213
@@ -37,10 +43,6 @@
 - **MoM Change**: +2.18%
 - **YoY Change**: +0.68%
 
-- **Inflation Pressure**: CPI shows strong inflationary pressure both month-over-month (+0.85%) and year-over-year (+3.81%)
-- **Business Sentiment**: Small Business Optimism remains weak year-over-year (-2.34%) despite slight monthly improvement
-- **Labor Market**: Employment Trends are essentially flat year-over-year (-0.03%) with minimal monthly change
-- **Housing Market**: Mixed signals - sales volume down YoY (-2.19%) but prices up slightly YoY (+0.68%)
-- **Price Momentum**: Median home prices show strongest monthly momentum at +2.18%
+
 
 *Data source: [Numbers](../financials.html)*

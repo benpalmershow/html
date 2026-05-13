@@ -168,7 +168,9 @@ function getLatestIndicatorPoints(indicator) {
           stamp: new Date(Number.parseInt(key, 10), index, 1).getTime(),
           rawValue: String(rawValue),
           numericValue: parseNumericValue(rawValue),
-          monthLabel: `${month.slice(0, 3)} ${key}`
+          monthLabel: `${month.slice(0, 3)} ${key}`,
+          year: Number.parseInt(key, 10),
+          monthIndex: index
         });
       });
     }
@@ -182,14 +184,16 @@ function getLatestIndicatorPoints(indicator) {
       stamp: new Date(2025, index, 1).getTime(),
       rawValue: String(rawValue),
       numericValue: parseNumericValue(rawValue),
-      monthLabel: `${month.slice(0, 3)} 2025`
+      monthLabel: `${month.slice(0, 3)} 2025`,
+      year: 2025,
+      monthIndex: index
     });
   });
 
   points.sort((a, b) => b.stamp - a.stamp);
 
   if (!points.length) {
-    return { latest: null, previous: null, mom: null };
+    return { latest: null, previous: null, mom: null, yoyPrevious: null, yoy: null };
   }
 
   const latest = points[0];
@@ -199,7 +203,16 @@ function getLatestIndicatorPoints(indicator) {
     mom = ((latest.numericValue - previous.numericValue) / previous.numericValue) * 100;
   }
 
-  return { latest, previous, mom };
+  // Find YoY: same month, previous year
+  const targetYear = latest.year - 1;
+  const targetMonth = latest.monthIndex;
+  const yoyPrevious = points.find(p => p.year === targetYear && p.monthIndex === targetMonth) || null;
+  let yoy = null;
+  if (latest && yoyPrevious && latest.numericValue !== null && yoyPrevious.numericValue !== null && yoyPrevious.numericValue !== 0) {
+    yoy = ((latest.numericValue - yoyPrevious.numericValue) / yoyPrevious.numericValue) * 100;
+  }
+
+  return { latest, previous, mom, yoyPrevious, yoy };
 }
 
 function setGeneratedAt() {
@@ -421,15 +434,18 @@ async function loadLatestFinancials() {
     }
     
     // Standard handling for numeric indicators
-    const { latest, previous, mom } = getLatestIndicatorPoints(item);
+    const { latest, previous, mom, yoy } = getLatestIndicatorPoints(item);
     const value = latest ? formatDisplayValue(item.name, latest.rawValue) : 'n/a';
     const employmentDelta = formatEmploymentDelta(item.name, latest, previous);
     const momText = mom === null ? 'MoM n/a' : `MoM ${mom >= 0 ? '+' : ''}${mom.toFixed(1)}%`;
     const momClass = mom === null ? 'mom-neutral' : mom > 0 ? 'mom-positive' : mom < 0 ? 'mom-negative' : 'mom-neutral';
     const momHtml = `<span class="mom-pill ${momClass}">${escapeHtml(momText)}</span>`;
+    const yoyText = yoy === null ? 'YoY n/a' : `YoY ${yoy >= 0 ? '+' : ''}${yoy.toFixed(1)}%`;
+    const yoyClass = yoy === null ? 'mom-neutral' : yoy > 0 ? 'mom-positive' : yoy < 0 ? 'mom-negative' : 'mom-neutral';
+    const yoyHtml = `<span class="mom-pill ${yoyClass}">${escapeHtml(yoyText)}</span>`;
     const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
     const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
-    return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)}${escapeHtml(employmentDelta)} | ${momHtml}</a>`;
+    return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)}${escapeHtml(employmentDelta)} | ${momHtml} | ${yoyHtml}</a>`;
   });
   renderList('latest-financials', lines);
 }

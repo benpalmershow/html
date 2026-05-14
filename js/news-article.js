@@ -1,61 +1,11 @@
 // Utility function wrappers (full implementations in html-utils.js)
-function sanitizeHtml(html) {
-  return window.HtmlUtils?.sanitizeHtml
-    ? window.HtmlUtils.sanitizeHtml(html)
-    : html || '';
-}
-
-async function ensureHtmlSanitizer() {
-  if (window.HtmlUtils?.ensureHtmlSanitizer) {
-    await window.HtmlUtils.ensureHtmlSanitizer();
-  }
-}
-
-async function waitForMarked() {
-  if (window.marked) return;
-
-  await new Promise(resolve => {
-    let attempts = 0;
-    const checkInterval = setInterval(() => {
-      attempts++;
-      if (window.marked) {
-        clearInterval(checkInterval);
-        resolve();
-      } else if (attempts >= 50) {
-        clearInterval(checkInterval);
-        resolve();
-      }
-    }, 100);
-  });
-}
-
-function parseFrontmatter(md) {
-  return window.HtmlUtils?.parseFrontmatter
-    ? window.HtmlUtils.parseFrontmatter(md)
-    : { metadata: {}, contentMd: md || '' };
-}
-
-function escapeHtml(text) {
-  return window.HtmlUtils?.escapeHtml
-    ? window.HtmlUtils.escapeHtml(text)
-    : String(text ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
-
-function titleCaseCategory(category) {
-  if (!category) return '';
-  return category.charAt(0).toUpperCase() + category.slice(1);
-}
-
-function formatRelativeDate(dateString) {
-  return window.HtmlUtils?.formatRelativeDate
-    ? window.HtmlUtils.formatRelativeDate(dateString)
-    : dateString || '';
-}
+function sanitizeHtml(html) { return window.HtmlUtils.sanitizeHtml(html); }
+async function ensureHtmlSanitizer() { return window.HtmlUtils.ensureHtmlSanitizer(); }
+async function waitForMarked() { return window.HtmlUtils.waitForMarked(); }
+function parseFrontmatter(md) { return window.HtmlUtils.parseFrontmatter(md); }
+function escapeHtml(text) { return window.HtmlUtils.escapeHtml(text); }
+function titleCaseCategory(category) { return window.HtmlUtils.titleCaseCategory(category); }
+function formatRelativeDate(dateString) { return window.HtmlUtils.formatRelativeDate(dateString); }
 
 function wrapTables(container) {
   container.querySelectorAll('table').forEach(table => {

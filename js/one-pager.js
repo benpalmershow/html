@@ -56,16 +56,7 @@ function clip(input, max = 160) {
   return `${text.slice(0, max - 1).trim()}...`;
 }
 
-function escapeHtml(input) {
-  return window.HtmlUtils?.escapeHtml
-    ? window.HtmlUtils.escapeHtml(input)
-    : String(input ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
+function escapeHtml(input) { return window.HtmlUtils.escapeHtml(input); }
 
 function createEntryId(title) {
   return String(title || '')
@@ -120,20 +111,7 @@ function extractMarkdownBody(markdown) {
 
 
 function parseNumericValue(raw) {
-  if (raw === null || raw === undefined || raw === '') return null;
-  const text = String(raw).trim().replace(/,/g, '');
-  const match = text.match(/[-+]?\d*\.?\d+/);
-  if (!match) return null;
-
-  let num = Number.parseFloat(match[0]);
-  if (Number.isNaN(num)) return null;
-
-  const suffix = text.slice((match.index || 0) + match[0].length).trim().charAt(0).toUpperCase();
-  if (suffix === 'K') num *= 1_000;
-  if (suffix === 'M') num *= 1_000_000;
-  if (suffix === 'B') num *= 1_000_000_000;
-
-  return num;
+  return window.HtmlUtils.parseNumericValue(raw);
 }
 
 function formatDisplayValue(indicatorName, rawValue) {
@@ -294,7 +272,7 @@ async function loadLatestJournal() {
       }
       const entryId = createEntryId(entry.title);
       const linkUrl = entry.url || entry.sourcePath;
-      lines.push(`<li class="journal-entry"><span class="time-ago">${timeAgo}</span> <a href="${linkUrl}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(entry.title)}</strong></a> ${escapeHtml(entry.content)}</li>`);
+      lines.push(`<li class="compact-entry"><span class="time-ago">${timeAgo}</span> <a href="${linkUrl}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(entry.title)}</strong></a> ${escapeHtml(entry.content)}</li>`);
     });
   });
 

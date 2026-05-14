@@ -109,11 +109,65 @@
     });
   }
 
+  function titleCaseCategory(category) {
+    if (!category) return '';
+    return category.charAt(0).toUpperCase() + category.slice(1);
+  }
+
+  function formatDate(dateString, formatType = 'full') {
+    const date = new Date(dateString);
+    if (formatType === 'short') {
+      return date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' });
+    }
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
+
+  function parseNumericValue(value) {
+    if (value === null || value === undefined || value === '') return null;
+    const text = String(value).trim().replace(/,/g, '');
+    const match = text.match(/[-+]?\d*\.?\d+/);
+    if (!match) return null;
+    let num = Number.parseFloat(match[0]);
+    if (Number.isNaN(num)) return null;
+    const suffix = text.slice((match.index || 0) + match[0].length).trim().charAt(0).toUpperCase();
+    if (suffix === 'K') num *= 1_000;
+    if (suffix === 'M') num *= 1_000_000;
+    if (suffix === 'B') num *= 1_000_000_000;
+    return num;
+  }
+
+  async function waitForMarked() {
+    if (window.marked) return;
+
+    if (window.loadMarked && typeof window.loadMarked === 'function') {
+      await window.loadMarked();
+      return;
+    }
+
+    await new Promise(resolve => {
+      let attempts = 0;
+      const checkInterval = setInterval(() => {
+        attempts++;
+        if (window.marked || attempts >= 50) {
+          clearInterval(checkInterval);
+          resolve();
+        }
+      }, 100);
+    });
+  }
+
   window.HtmlUtils = {
     escapeHtml,
     sanitizeHtml,
     parseFrontmatter,
     formatRelativeDate,
-    ensureHtmlSanitizer
+    ensureHtmlSanitizer,
+    titleCaseCategory,
+    formatDate,
+    parseNumericValue,
+    waitForMarked
   };
 })();

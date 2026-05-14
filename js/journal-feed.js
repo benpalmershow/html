@@ -6,38 +6,16 @@ const MONTHS = [
 const SCRIPT_COMPONENTS = ['components/analytics.html', 'components/error-handling.html', 'components/scripts-unified.html'];
 
 // Utility function wrappers (full implementations in html-utils.js)
-function formatRelativeDate(dateString) {
-  return window.HtmlUtils?.formatRelativeDate
-    ? window.HtmlUtils.formatRelativeDate(dateString)
-    : dateString || '';
-}
-
-function escapeHtml(text) {
-  return window.HtmlUtils?.escapeHtml
-    ? window.HtmlUtils.escapeHtml(text)
-    : String(text ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
+function formatRelativeDate(dateString) { return window.HtmlUtils.formatRelativeDate(dateString); }
+function escapeHtml(text) { return window.HtmlUtils.escapeHtml(text); }
+function ensureHtmlSanitizer() { return window.HtmlUtils.ensureHtmlSanitizer(); }
 
 function sanitizeHtml(html) {
-  if (window.HtmlUtils?.sanitizeHtml) {
-    return optimizeSanitizedHtml(window.HtmlUtils.sanitizeHtml(html, {
-      dompurify: {
-        ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
-      }
-    }));
-  }
-  return html || '';
-}
-
-async function ensureHtmlSanitizer() {
-  if (window.HtmlUtils?.ensureHtmlSanitizer) {
-    await window.HtmlUtils.ensureHtmlSanitizer();
-  }
+  return optimizeSanitizedHtml(window.HtmlUtils.sanitizeHtml(html, {
+    dompurify: {
+      ADD_ATTR: ['loading', 'decoding', 'fetchpriority']
+    }
+  }));
 }
 
 function cloneAndAppendScriptNode(script, target = document.head) {
@@ -278,8 +256,7 @@ function bindCollapsibleEntries(journalFeed) {
 }
 
 function parseNumericValue(value) {
-  const parsed = parseFloat(String(value).replace(/[^0-9.-]/g, ''));
-  return Number.isNaN(parsed) ? null : parsed;
+  return window.HtmlUtils.parseNumericValue(value);
 }
 
 function getSeriesDataFromIndicator(indicator) {
@@ -518,21 +495,8 @@ function renderNewsArticles(articles) {
   }).join('');
 }
 
-function escapeHtml(text) {
-  if (window.HtmlUtils?.escapeHtml) {
-    return window.HtmlUtils.escapeHtml(text);
-  }
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
 function titleCaseCategory(category) {
-  if (!category) return '';
-  return category.charAt(0).toUpperCase() + category.slice(1);
+  return window.HtmlUtils.titleCaseCategory(category);
 }
 
 async function renderJournal(journal) {

@@ -1,22 +1,22 @@
 {
-    "lastUpdated": "2026-05-13T15:36:00Z",
+    "lastUpdated": "2026-05-14T15:36:00Z",
     "indices": [
     
         {
             "category": "Prediction Markets",
             "agency": "Polymarket",
-            "name": "Strait of Hormuz Traffic Returns to Normal by May 31, 2026",
-            "lastUpdated": "2026-05-09T17:51:00Z",
+            "name": "Strait of Hormuz Traffic Returns to Normal by July 31, 2026",
+            "lastUpdated": "2026-05-14T17:51:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
-            "yes_probability": "36¢",
-            "no_probability": "65¢",
-            "previous_yes": "17¢",
+            "yes_probability": "46¢",
+            "no_probability": "55¢",
+            "previous_yes": "58¢",
             "change": "",
             "probabilities": {
-                "2026-05-08": {"yes": "24¢", "no": "77¢"},
-       "2026-05-07": {"yes": "36¢", "no": "65¢"},
-                "2026-05-05": {"yes": "17¢", "no": "83¢"}
+                "2026-05-08": {"yes": "", "no": ""},
+       "2026-05-07": {"yes": "", "no": ""},
+                "2026-05-05": {"yes": "", "no": ""}
             },
             "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by end of April 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. Current traffic: ~8-10 daily transits, far below pre-crisis 100-138/day. Despite US-Iran ceasefire announced April 7, market expects traffic remains depressed amid ongoing mine-clearing operations and vessel rerouting. Volume: $10.8M."
         },
@@ -120,16 +120,15 @@
         {
             "category": "Prediction Markets",
             "agency": "Kalshi",
-            "name": "FOMC Rate Decision - June",
-            "lastUpdated": "2026-04-19T08:00:00Z",
-            "meeting_date": "Jun 16-17",
+            "name": "FOMC Rate Decision - July",
+            "lastUpdated": "2026-05-14T08:00:00Z",
             "announcement_time": "2:00 PM ET",
-            "announcement_time_iso": "2026-06-17T14:00:00-04:00",
+            "announcement_time_iso": "2026-07-17T14:00:00-04:00",
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jun",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-june-825",
-            "rate_hold_odds": "89¢",
-            "rate_cut_odds": "9¢",
-            "rate_hike_odds": "2¢",
+            "rate_hold_odds": "91¢",
+            "rate_cut_odds": "5¢",
+            "rate_hike_odds": "5¢",
             "propabilities":{
                 "2026-04-19": {"rate_hold_odds": "89¢", "rate_cut_odds": "9¢", "rate_hike_odds": "2¢"},
                 "2026-04-18": {"rate_hold_odds": "90¢", "rate_cut_odds": "8¢", "rate_hike_odds": "2¢"},

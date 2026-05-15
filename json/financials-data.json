@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-14T15:36:00Z",
+    "lastUpdated": "2026-05-15T15:36:00Z",
     "indices": [
     
         {
@@ -1030,7 +1030,7 @@
             "category": "Consumer Indicators",
             "agency": "Census",
             "name": "Monthly Retail Sales",
-            "lastUpdated": "2026-04-02T14:00:00Z",
+            "lastUpdated": "2026-05-15T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.census.gov/retail/sales.html",
             "march": "",
@@ -1046,7 +1046,9 @@
             "december": "$735B",
             "2026": {
                 "january": "$734B",
-                "february": "$738.4B"
+                "february": "$741.3B",
+                "march": "$753.4B",
+                "april": "$757.1B"
             },
             "change": ""
         },

@@ -72,41 +72,43 @@ function isETF(holding) {
 function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, description) {
     return `
         <div class="indicator-header">
-            <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">${firmName}</div>
+            <div class="firm-card-title">${firmName}</div>
             <div class="indicator-actions">
-                <button class="expand-toggle firm-expand-${firmIdx}" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; cursor: pointer; background: transparent; border: none; padding: 0; color: var(--text-muted); transition: all 0.2s;">
+                <button class="expand-toggle firm-expand-${firmIdx}">
                     <i data-lucide="info" style="width: 16px; height: 16px;"></i>
                 </button>
             </div>
         </div>
-        <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--text-muted); padding: 0 0.5rem;">
+        <div class="firm-card-info">
             <div>AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
             <div>Filed: ${getFilingDate(firmIdx)}</div>
         </div>
-        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; padding: 0 0.5rem; flex-wrap: wrap; font-size: 0.75rem;">
-            <button class="firm-filter-btn firm-filter-${firmIdx}-all" data-firm="${firmIdx}" data-filter="all" style="padding: 4px 8px; background: var(--accent-primary); color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.75rem; font-weight: 500;">All</button>
-            <button class="firm-filter-btn firm-filter-${firmIdx}-etf" data-firm="${firmIdx}" data-filter="etf" style="padding: 4px 8px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 3px; cursor: pointer; font-size: 0.75rem;">ETF</button>
-            <button class="firm-filter-btn firm-filter-${firmIdx}-stock" data-firm="${firmIdx}" data-filter="stock" style="padding: 4px 8px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 3px; cursor: pointer; font-size: 0.75rem;">Stock</button>
+        <div class="firm-filter-buttons">
+            <button class="firm-filter-btn firm-filter-${firmIdx}-all active" data-firm="${firmIdx}" data-filter="all">All</button>
+            <button class="firm-filter-btn firm-filter-${firmIdx}-etf" data-firm="${firmIdx}" data-filter="etf">ETF</button>
+            <button class="firm-filter-btn firm-filter-${firmIdx}-stock" data-firm="${firmIdx}" data-filter="stock">Stock</button>
         </div>
         <div class="indicator-content">
-            <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">
-                <div style="display: flex; flex-direction: column; gap: 3px; width: 110px; max-height: 150px; overflow-y: auto;" data-firm-holdings="${firmIdx}">
+            <div class="firm-chart-container">
+                <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 10).map(h => `
-                        <div style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; display: flex; align-items: center; justify-content: space-between;">
+                        <div class="holding-item">
                             <div>
-                                <div style="font-weight: 600; color: var(--text-primary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.ticker}</div>
-                                <div style="font-weight: 500; color: var(--text-secondary); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.name}</div>
-                                <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                                <div class="holding-ticker">${h.ticker}</div>
+                                <div class="holding-name">${h.name}</div>
+                                <div class="holding-pct">${h.pct}% of portfolio</div>
                             </div>
                         </div>
                     `).join('')}
                 </div>
-                <div style="position: relative; height: 150px; width: 100%; max-width: 180px; flex: 1; min-width: 150px;">
-                    <canvas id="chart-${firmIdx}"></canvas>
+                <div class="firm-chart-wrapper">
+                    <div class="firm-chart-inner">
+                        <canvas id="chart-${firmIdx}" class="firm-chart-canvas"></canvas>
+                    </div>
                 </div>
             </div>
             <div class="data-rows-container firm-description-${firmIdx}">
-                <div style="padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word;">
+                <div class="firm-description">
                     ${description || ''}
                 </div>
             </div>
@@ -165,11 +167,11 @@ function initializeFirmCards() {
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
-                    <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="background: var(--bg-secondary); padding: 4px 6px; border-radius: 2px; font-size: 11px; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}">
                          <div>
-                             <div style="font-weight: 600; color: var(--text-primary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.ticker}</div>
-                             <div style="font-weight: 500; color: var(--text-secondary); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 95px;">${h.name}</div>
-                             <div style="color: var(--text-muted); font-size: 9px;">${h.pct}% of portfolio</div>
+                             <div class="holding-ticker">${h.ticker}</div>
+                             <div class="holding-name">${h.name}</div>
+                             <div class="holding-pct">${h.pct}% of portfolio</div>
                          </div>
                      </div>
                 `).join('');
@@ -182,29 +184,13 @@ function initializeFirmCards() {
                         
                         // Highlight the holding item in the list
                         holdingsList.querySelectorAll('.holding-item').forEach(h => {
-                            h.style.background = 'var(--bg-secondary)';
-                            h.style.borderLeft = 'none';
-                            h.style.opacity = '1';
-                            h.querySelectorAll('div').forEach(div => {
-                                if (div.style.fontWeight === '600') {
-                                    div.style.color = 'var(--text-primary)';
-                                } else if (div.style.fontSize === '9px') {
-                                    div.style.color = 'var(--text-muted)';
-                                }
-                            });
+                            h.classList.remove('highlighted');
+                            h.style.borderLeft = '';
+                            h.style.borderImage = '';
                         });
                         const pct = item.dataset.pct;
-                        item.style.background = 'var(--bg-secondary)';
-                        item.style.borderLeft = '3px solid';
-                        item.style.borderImage = `linear-gradient(to top, ${getColorByValue(pct)} 0%, ${getColorByValue(pct)} ${Math.min(pct * 10, 100)}%, var(--border-color) ${Math.min(pct * 10, 100)}%, var(--border-color) 100%) 0 0 0 1`;
-                        item.style.opacity = '1';
-                        item.querySelectorAll('div').forEach(div => {
-                            if (div.style.fontWeight === '600') {
-                                div.style.color = 'var(--text-primary)';
-                            } else if (div.style.fontSize === '9px') {
-                                div.style.color = 'var(--text-muted)';
-                            }
-                        });
+                        item.classList.add('highlighted');
+                        item.style.borderLeft = `3px solid ${getColorByValue(pct)}`;
                         
                         const chartInstance = window[`chart-${firmIdx}Chart`];
                         if (chartInstance) {
@@ -238,10 +224,7 @@ function initializeFirmCards() {
             // Update button states
             card.querySelectorAll('.firm-filter-btn').forEach(btn => {
                 const isActive = btn.dataset.filter === firmState.filter;
-                btn.style.background = isActive ? 'var(--accent-primary)' : 'transparent';
-                btn.style.color = isActive ? 'white' : 'var(--text-muted)';
-                btn.style.border = isActive ? 'none' : '1px solid var(--border-color)';
-                btn.style.fontWeight = isActive ? '500' : 'normal';
+                btn.classList.toggle('active', isActive);
             });
         }
 

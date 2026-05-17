@@ -566,6 +566,46 @@
         },
         {
             "category": "Government",
+            "agency": "Kalshi",
+            "name": "2026 Midterms: House Control",
+            "lastUpdated": "2026-05-16T08:00:00Z",
+            "releaseDay": 0,
+            "url": "https://kalshi.com/markets/kxbalancepowercombo/congress-balance-of-power-combo/kxbalancepowercombo-27feb",
+            "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
+            "candidates": {
+                "Democratic Party": "52¢",
+                "Republican Party": "48¢"
+            },
+            "propabilities":{
+                "2026-05-16": {"Democratic Party": "52¢", "Republican Party": "48¢"},
+                "2026-05-15": {"Democratic Party": "51¢", "Republican Party": "49¢"},
+                "2026-05-14": {"Democratic Party": "50¢", "Republican Party": "50¢"},
+                "2026-05-12": {"Democratic Party": "49¢", "Republican Party": "51¢"}
+            },
+            "change": "Up 1¢ (Democrats)",
+            "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Democrats hold a slight edge as they need to flip 9 seats to gain control, with competitive races in FL-1, CA-22, AZ-6, and other districts. Republicans defend 15 vulnerable seats including open seats from the Senate. Recent polling averages show Democrats leading in key generic ballot surveys ahead of the summer convention season."
+        },
+        {
+            "category": "Government",
+            "agency": "RealClearPolling",
+            "name": "KY-04 Massie v. Gallrein",
+            "lastUpdated": "2026-05-17T10:00:00Z",
+            "releaseDay": 0,
+            "url": "https://www.realclearpolling.com/latest-polls/house",
+            "game_title": "Kentucky 4th District",
+            "massie_win_odds": "",
+            "gallrein_win_odds": "",
+            "propabilities": {
+               
+                "2026-05-15": {"Massie": "42%", "Gallrein": "49%"},
+                "2026-05-14": {"Massie": "51%", "Gallrein": "49%"},
+                "2026-05-12": {"Massie": "45%", "Gallrein": "53%"}
+            },
+            "change": "Massie +2",
+            "explanation": "Polling from Kentucky's 4th Congressional District race. Republican incumbent Massie leads Democrat Gallrein 51-49% on 5/17. District voted for both Trump and McConnell in recent cycles."
+        },
+        {
+            "category": "Government",
             "agency": "Treasury",
             "name": "Interest on Debt",
             "lastUpdated": "2026-05-12T14:00:00Z",

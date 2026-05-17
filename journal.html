@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Independent commentary and personal insights from Doc Riter.">
@@ -83,6 +85,8 @@
       color: var(--text-muted);
       opacity: 0.4;
     }
+    /* Utility hidden class to avoid inline styles */
+    .hidden { display: none !important; }
   </style>
 
   <!-- Preload critical resources -->
@@ -134,7 +138,7 @@
       <div id="journal-feed"></div>
       
       <!-- Essay reader container (shown when viewing essays) -->
-      <div id="essay-reader-container" style="display: none;">
+      <div id="essay-reader-container" class="hidden">
         <div class="article-shell">
           <div id="article-status" class="article-status">Loading essays...</div>
           

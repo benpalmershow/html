@@ -245,6 +245,62 @@ const IndicatorRenderers = (function () {
         return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
+    function renderPoliticalPoll(indicator) {
+        let latestDataHtml = '';
+        let historyDataHtml = '';
+        let hasHistory = false;
+
+        if (indicator.probabilities && typeof indicator.probabilities === 'object') {
+            const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+
+            const buildProbBar = ([date, probs], large) => {
+                // Get the two candidates (assuming exactly two for now)
+                const candidates = Object.entries(probs);
+                if (candidates.length !== 2) return '';
+                
+                const [candidate1Name, candidate1Prob] = candidates[0];
+                const [candidate2Name, candidate2Prob] = candidates[1];
+                
+                const prob1 = parseFloat(candidate1Prob);
+                const prob2 = parseFloat(candidate2Prob);
+                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
+                const fontSize = large ? '12px' : '10px';
+                const labelWidth = large ? '90px' : '90px';
+                return `
+                    <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
+                        <span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${dateLabel}</span>
+                        <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${candidate1Prob}</span>
+                        <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${prob1}%; height: 100%;" title="${candidate1Prob} ${candidate1Name}"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${prob2}%; position: absolute; right: 0; height: 100%;" title="${candidate2Prob} ${candidate2Name}"></div>
+                        </div>
+                        <span style="font-size: ${fontSize}; margin-left: 4px; font-weight: bold;">${candidate2Prob}</span>
+                    </div>`;
+            };
+
+            if (sorted.length > 0) {
+                latestDataHtml = `<div class="prediction-bar-container">${buildProbBar(sorted[0], true)}</div>`;
+            }
+
+            if (sorted.length > 1) {
+                hasHistory = true;
+                historyDataHtml = sorted.slice(1).map(entry => buildProbBar(entry, false)).join('');
+            }
+        }
+        
+        // Add election title if available
+        if (indicator.election_title) {
+            const electionTitleHtml = `<span class="month-label">Election:</span> <span class="month-value">${indicator.election_title}</span>`;
+            if (latestDataHtml) {
+                latestDataHtml = `<div class="latest-data-row">${electionTitleHtml}</div>${latestDataHtml}`;
+            } else {
+                latestDataHtml = `<div class="latest-data-row">${electionTitleHtml}</div>`;
+            }
+        }
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
+    }
+
 function renderHormuz(indicator) {
         const PRECRISIS_NORMAL = 115; // pre-crisis daily transit baseline (~mid of 100-138/day)
 
@@ -387,6 +443,7 @@ function renderHormuz(indicator) {
         .register('sports', (indicator) => renderSports(indicator))
         .register('venezuela', (indicator) => renderVenezuela(indicator))
         .register('hormuz', (indicator) => renderHormuz(indicator))
+        .register('politicalPoll', (indicator) => renderPoliticalPoll(indicator))
         .register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS))
         .registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
 
@@ -401,6 +458,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.candidates && typeof indicator.candidates === 'object') return 'venezuela';
+    if (indicator.name === 'KY-04 Massie v. Gallrein') return 'politicalPoll';
     if (indicator.yes_probability && indicator.no_probability) return 'prediction';
     if (indicator.name === 'Strait of Hormuz Daily Transits') return 'hormuz';
     return 'standard';

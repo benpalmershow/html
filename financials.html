@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Common Meta Tags Component -->
   <script>
     fetch('components/head-meta.html')
@@ -18,7 +20,7 @@
   </script>
 
   <!-- Page-specific Meta Tags -->
-  <meta name="theme-color" content="#1a1f1e">
+  <meta name="color-scheme" content="dark">
   <meta name="site-data-version" content="20260320">
 
   <title>Financials - Howdy, Stranger</title>
@@ -149,8 +151,18 @@
             <span class="category-name">13F Holdings</span>
           </h2>
           <div class="indicators-grid" id="firmCardsContainer">
-          </div>
-        </div>
+           </div>
+         </div>
+
+
+       <div class="category" id="government-indicators" data-category="Government">
+         <h2 class="category-title">
+           <span class="category-icon"><i data-lucide="building-2"></i></span>
+           <span class="category-name">Government</span>
+         </h2>
+         <div class="indicators-grid" id="governmentCardsContainer">
+         </div>
+       </div>
 
       </div>
     </div>

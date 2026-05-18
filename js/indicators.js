@@ -253,48 +253,48 @@ const IndicatorRenderers = (function () {
         if (indicator.probabilities && typeof indicator.probabilities === 'object') {
             const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
 
-            const buildProbBar = ([date, probs], large) => {
-                // Get the two candidates (assuming exactly two for now)
-                const candidates = Object.entries(probs);
-                if (candidates.length !== 2) return '';
-                
-                const [candidate1Name, candidate1Prob] = candidates[0];
-                const [candidate2Name, candidate2Prob] = candidates[1];
-                
-                const prob1 = parseFloat(candidate1Prob);
-                const prob2 = parseFloat(candidate2Prob);
-                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
-                const fontSize = large ? '12px' : '10px';
-                const labelWidth = large ? '90px' : '90px';
-                return `
-                    <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
-                        <span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${dateLabel}</span>
-                        <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${candidate1Prob}</span>
-                        <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${prob1}%; height: 100%;" title="${candidate1Prob} ${candidate1Name}"></div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${prob2}%; position: absolute; right: 0; height: 100%;" title="${candidate2Prob} ${candidate2Name}"></div>
-                        </div>
-                        <span style="font-size: ${fontSize}; margin-left: 4px; font-weight: bold;">${candidate2Prob}</span>
-                    </div>`;
-            };
-
+            // Simple table layout for latest data
             if (sorted.length > 0) {
-                latestDataHtml = `<div class="prediction-bar-container">${buildProbBar(sorted[0], true)}</div>`;
+                const [latestDate, latestProbs] = sorted[0];
+                const candidates = Object.entries(latestProbs);
+                if (candidates.length === 2) {
+                    const [candidate1Name, candidate1Prob] = candidates[0];
+                    const [candidate2Name, candidate2Prob] = candidates[1];
+                    const dateLabel = new Date(latestDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+                    latestDataHtml = `
+                        <div class="poll-table-container">
+                            <div class="poll-table-header">
+                                <span class="poll-date">${dateLabel}</span>
+                            </div>
+                            <div class="poll-table-row">
+                                <span class="poll-candidate">${candidate1Name}</span>
+                                <span class="poll-prob">${candidate1Prob}</span>
+                            </div>
+                            <div class="poll-table-row">
+                                <span class="poll-candidate">${candidate2Name}</span>
+                                <span class="poll-prob">${candidate2Prob}</span>
+                            </div>
+                        </div>`;
+                }
             }
 
+            // History as simple rows
             if (sorted.length > 1) {
                 hasHistory = true;
-                historyDataHtml = sorted.slice(1).map(entry => buildProbBar(entry, false)).join('');
-            }
-        }
-        
-        // Add election title if available
-        if (indicator.election_title) {
-            const electionTitleHtml = `<span class="month-label">Election:</span> <span class="month-value">${indicator.election_title}</span>`;
-            if (latestDataHtml) {
-                latestDataHtml = `<div class="latest-data-row">${electionTitleHtml}</div>${latestDataHtml}`;
-            } else {
-                latestDataHtml = `<div class="latest-data-row">${electionTitleHtml}</div>`;
+                historyDataHtml = sorted.slice(1).map(([date, probs]) => {
+                    const candidates = Object.entries(probs);
+                    if (candidates.length !== 2) return '';
+                    const [candidate1Name, candidate1Prob] = candidates[0];
+                    const [candidate2Name, candidate2Prob] = candidates[1];
+                    const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    return `
+                        <div class="poll-history-row">
+                            <span class="poll-history-date">${dateLabel}</span>
+                            <span class="poll-history-prob">${candidate1Prob}</span>
+                            <span class="poll-history-prob">${candidate2Prob}</span>
+                        </div>`;
+                }).join('');
             }
         }
 

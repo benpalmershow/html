@@ -9,6 +9,7 @@ const ChartStrategies = (function () {
     function detectChartType(indicator) {
         if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) return 'trade-deficit';
         if (indicator.name === 'Monthly Budget Deficit' && indicator.receipts && indicator.outlays) return 'budget-deficit';
+        if (indicator.name === 'KY-04 Massie v. Gallrein') return 'political-poll';
         if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return 'prediction-market';
         return 'line';
     }
@@ -623,9 +624,80 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
     };
 }
 
+// --- Political Poll Chart Strategy ---
+
+function buildPoliticalPollChartConfig(indicatorName, indicatorData) {
+    const labels = [];
+    const candidate1Values = [];
+    const candidate2Values = [];
+
+    if (indicatorData.probabilities && typeof indicatorData.probabilities === 'object') {
+        const sortedDates = Object.keys(indicatorData.probabilities).sort((a, b) => new Date(a) - new Date(b));
+
+        sortedDates.forEach(date => {
+            const probs = indicatorData.probabilities[date];
+            const candidates = Object.entries(probs);
+
+            if (candidates.length >= 2) {
+                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                labels.push(dateLabel);
+
+                const [candidate1Name, candidate1Prob] = candidates[0];
+                const [candidate2Name, candidate2Prob] = candidates[1];
+
+                const prob1 = parseFloat(String(candidate1Prob).replace(/[^0-9.-]/g, ''));
+                const prob2 = parseFloat(String(candidate2Prob).replace(/[^0-9.-]/g, ''));
+
+                candidate1Values.push(prob1);
+                candidate2Values.push(prob2);
+            }
+        });
+    }
+
+    return {
+        type: 'chartjs-mixed',
+        data: {
+            labels,
+            datasets: [
+                {
+                    label: 'Massie',
+                    data: candidate1Values,
+                    type: 'line',
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#3498db',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Gallrein',
+                    data: candidate2Values,
+                    type: 'line',
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#e74c3c',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
+            ]
+        }
+    };
+}
+
 // Register chart strategies (OCP: add new chart types without modifying existing code)
 ChartStrategies.registry
     .register('line', buildStandardLineChartConfig)
     .register('trade-deficit', buildTradeDeficitChartConfig)
     .register('budget-deficit', buildBudgetDeficitChartConfig)
-    .register('prediction-market', buildPredictionMarketChartConfig);
+    .register('prediction-market', buildPredictionMarketChartConfig)
+    .register('political-poll', buildPoliticalPollChartConfig);

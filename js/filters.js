@@ -131,6 +131,16 @@ function setupIconHandlers(selector, handler) {
             handler.call(this);
         });
     });
+
+    // Also add event delegation for icons that might be inside buttons
+    document.addEventListener('click', function (e) {
+        const icon = e.target.closest(selector);
+        if (icon) {
+            e.preventDefault();
+            e.stopPropagation();
+            handler.call(icon);
+        }
+    });
 }
 
 function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {

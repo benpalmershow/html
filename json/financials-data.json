@@ -854,7 +854,7 @@
             "displayOrder": 27,
             "icon": "fa-vote-yea",
             "color": "#3498db",
-            "units": "percent",
+            "units": "",
             "region": "us",
             "parentCategory": "Government",
             "agency": "RealClearPolling",
@@ -866,12 +866,12 @@
             "gallrein_win_odds": "",
              "probabilities": {
                 
-                "2026-05-15": {"Massie": "42%", "Gallrein": "49%"},
-                "2026-05-14": {"Massie": "51%", "Gallrein": "49%"},
-                "2026-05-12": {"Massie": "45%", "Gallrein": "53%"}
+                "2026-05-15": {"Massie": "42", "Gallrein": "49"},
+                "2026-05-14": {"Massie": "51", "Gallrein": "49"},
+                "2026-05-12": {"Massie": "45", "Gallrein": "53"}
             },
-            "change": "Massie +2",
-            "explanation": "Polling from Kentucky's 4th Congressional District race. Republican incumbent Massie leads Democrat Gallrein 51-49% on 5/17. District voted for both Trump and McConnell in recent cycles."
+            "change": "",
+            "explanation": "Polling from Kentucky's 4th Congressional District race."
         },
         {
             "id": "interest-on-debt",

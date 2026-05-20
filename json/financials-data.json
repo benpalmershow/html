@@ -597,12 +597,13 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "U.S. Petroleum Exports",
-            "lastUpdated": "2026-04-17T14:00:00Z",
+            "lastUpdated": "2026-05-19T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
             "2026": {
                 "march": "11,670",
-                "april": "12,881"
+                "april": "12,881",
+                "may": "13,137"
             },
             "change": "",
             "explanation": "Weekly U.S. petroleum exports from EIA (Total Crude Oil and Products), reported in thousand barrels per day. This indicator uses the latest weekly readings shown in the source table, not monthly averages. Current values shown are March 2026: 11,670 and April 2026: 12,881, tracking outbound U.S. crude and refined product flows."
@@ -848,7 +849,7 @@
         {
             "id": "ky04-massie-gallrein",
             "category": "Government",
-            "type": "government",
+            "type": "polling",
             "isActive": true,
             "tags": ["politics", "elections", "kentucky"],
             "displayOrder": 27,
@@ -1579,7 +1580,7 @@
                 "january": "70.8",
                 "february": "72.6",
                 "march": "73.8",
-                "april": "74.3"
+                "april": "74.8"
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."

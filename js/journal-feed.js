@@ -344,7 +344,11 @@ function toggleEssayReaderView(showReader) {
     journalFeed.style.display = showReader ? 'none' : 'block';
   }
   if (essayReaderContainer) {
-    essayReaderContainer.style.display = showReader ? 'block' : 'none';
+    if (showReader) {
+      essayReaderContainer.classList.remove('hidden');
+    } else {
+      essayReaderContainer.classList.add('hidden');
+    }
   }
   if (categoryFilters) {
     categoryFilters.style.display = showReader ? 'none' : 'flex';
@@ -860,10 +864,6 @@ async function initializeJournalPage() {
 
   await loadJournalEntries();
 
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-
   // Filter toggle handler (filterContainer already declared above)
   if (filterContainer) {
     filterContainer.addEventListener('click', (e) => {
@@ -914,10 +914,6 @@ async function initializeJournalPage() {
   }
 
   await loadJournalEntries();
-
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
 }
 
 if (document.readyState === 'loading') {

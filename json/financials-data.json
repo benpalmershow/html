@@ -846,36 +846,7 @@
             "change": "",
             "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Democrats hold a slight edge as they need to flip 9 seats to gain control, with competitive races in FL-1, CA-22, AZ-6, and other districts. Republicans defend 15 vulnerable seats including open seats from the Senate. Recent polling averages show Democrats leading in key generic ballot surveys ahead of the summer convention season."
         },
-        {
-            "id": "ky04-massie-gallrein",
-            "category": "Government",
-            "type": "polling",
-            "isActive": true,
-            "tags": ["politics", "elections", "kentucky"],
-            "displayOrder": 27,
-            "icon": "fa-vote-yea",
-            "color": "#3498db",
-            "units": "",
-            "region": "us",
-            "parentCategory": "Government",
-            "agency": "RealClearPolling",
-            "name": "KY-04 Massie v. Gallrein",
-            "lastUpdated": "2026-05-18T10:00:00Z",
-            "releaseDay": 0,
-            "url": "https://www.realclearpolling.com/latest-polls/house",
-            "massie_win_odds": "",
-            "gallrein_win_odds": "",
-             "probabilities": {
-                
-                 "2026-05-17": {"Massie": "44", "Gallrein": "51"},
-              "2026-05-16": {"Massie": "50", "Gallrein": "50"},
-                "2026-05-15": {"Massie": "42", "Gallrein": "49"},
-                "2026-05-14": {"Massie": "51", "Gallrein": "49"},
-                "2026-05-12": {"Massie": "45", "Gallrein": "53"}
-            },
-            "change": "",
-            "explanation": "Polling from Kentucky's 4th Congressional District race."
-        },
+       
         {
             "id": "interest-on-debt",
             "category": "Government",

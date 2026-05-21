@@ -159,6 +159,62 @@
     });
   }
 
+  async function loadComponentHtml(path) {
+    const response = await fetch(path);
+    if (!response.ok) {
+      throw new Error(`Failed to load component: ${path}`);
+    }
+    return response.text();
+  }
+
+  async function loadComponentToElement(path, selector) {
+    try {
+      const html = await loadComponentHtml(path);
+      const element = typeof selector === 'string' ? document.querySelector(selector) : selector;
+      if (element) {
+        element.innerHTML = html;
+      }
+    } catch (error) {
+      console.error(`Failed to load component ${path}:`, error);
+    }
+  }
+
+  async function injectHeadElements(path) {
+    try {
+      const html = await loadComponentHtml(path);
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const elements = tempDiv.querySelectorAll('meta, link');
+      elements.forEach(element => {
+        document.head.appendChild(element.cloneNode(true));
+      });
+    } catch (error) {
+      console.error(`Failed to load head elements from ${path}:`, error);
+    }
+  }
+
+  async function injectScriptsFromComponent(path) {
+    try {
+      const html = await loadComponentHtml(path);
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const scriptElements = tempDiv.querySelectorAll('script');
+      scriptElements.forEach(script => {
+        const newScript = document.createElement('script');
+        newScript.textContent = script.textContent;
+        Object.keys(script.attributes).forEach(attrName => {
+          const attr = script.attributes[attrName];
+          if (attr.name !== 'type' || attr.value !== 'module') {
+            newScript.setAttribute(attr.name, attr.value);
+          }
+        });
+        document.head.appendChild(newScript);
+      });
+    } catch (error) {
+      console.error(`Failed to load scripts from component ${path}:`, error);
+    }
+  }
+
   window.HtmlUtils = {
     escapeHtml,
     sanitizeHtml,
@@ -168,6 +224,10 @@
     titleCaseCategory,
     formatDate,
     parseNumericValue,
-    waitForMarked
+    waitForMarked,
+    loadComponentHtml,
+    loadComponentToElement,
+    injectHeadElements,
+    injectScriptsFromComponent
   };
 })();

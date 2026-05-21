@@ -2,19 +2,16 @@
 <html lang="en">
 
 <head>
+  <!-- Load HtmlUtils first - required for component loading -->
+  <script src="js/html-utils.js"></script>
+
   <!-- Common Meta Tags Component -->
   <script>
-    fetch('components/head-meta.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const metaElements = tempDiv.querySelectorAll('meta, link');
-        metaElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Meta tags load error:', error));
+    if (!window.HtmlUtils) {
+      console.error('HtmlUtils not loaded');
+    } else {
+      window.HtmlUtils.injectHeadElements('components/head-meta.html');
+    }
   </script>
 
   <!-- Page-specific Meta Tags -->
@@ -61,17 +58,7 @@
 
   <!-- Typography System Fonts Component -->
   <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
+    window.HtmlUtils?.injectHeadElements('components/fonts.html');
   </script>
 
   <!-- Preload CRITICAL resources only -->
@@ -107,38 +94,14 @@
 
   <!-- Analytics Component -->
   <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
+    window.HtmlUtils?.injectScriptsFromComponent('components/analytics.html');
   </script>
 
 
 
   <!-- Error Handling Component -->
   <script>
-    fetch('components/error-handling.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Error Handling load error:', error));
+    window.HtmlUtils?.injectScriptsFromComponent('components/error-handling.html');
   </script>
 
 
@@ -348,32 +311,13 @@
   <div id="footer-container"></div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
+      window.HtmlUtils?.loadComponentToElement('components/footer.html', '#footer-container');
     });
   </script>
 
   <!-- Unified Scripts Component -->
   <script>
-    fetch('components/scripts-unified.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Scripts load error:', error));
+    window.HtmlUtils?.injectScriptsFromComponent('components/scripts-unified.html');
   </script>
 
   <!-- Load scripts - nav and socials defer but load quickly for header/footer -->

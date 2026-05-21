@@ -31,11 +31,11 @@ When user prompts:
 
 ## Quick Start
 
-1. **Gather metadata:** Title, author/creator, publication date, category, description
-2. **Source cover image:** Use priority order (Syndetics → Open Library → others)
-3. **Verify cover visually:** Title + author on cover must match exactly
-4. **Format JSON:** Use correct template (book/movie/podcast)
-5. **Present for confirmation:** Show entry and ask before adding
+1. **Gather metadata:** Title, author/creator, publication date, category, description, IMDB URL
+2. **Source cover image:** Use priority order — cinemeta → TMDB → Metahub → official-film-site
+3. **Verify cover:** Title match is mandatory — same name ≠ same film; cross-check `moviedb_id` from cinemeta against TMDB resolved record before using any poster
+4. **Format JSON:** Use the correct template (book/movie/podcast)
+5. **Present for confirmation:** Show complete entry with verified fields and note any caveats
 6. **Insert atomically:** Add all entries at once
 
 ---
@@ -54,7 +54,8 @@ When user prompts:
 
 **Optional fields:**
 - ISBN (for books)
-- Ratings (Goodreads, Amazon, Rotten Tomatoes, IMDB)
+- IMDB URL — full canonical URL, never bare ID (`ttXXXXXXX` alone is insufficient)
+- Ratings (IMDB, Rotten Tomatoes, Goodreads, Amazon)
 - External links
 - Tags (use sparingly)
 - Thumbs rating (up, neutral, down, or empty)
@@ -86,7 +87,8 @@ When user prompts:
 | ✅ RELIABLE | Publisher official | All (most current) |
 | ✅ RELIABLE | Amazon/B&N | Books (stable URLs) |
 | ⚠️ MEDIUM | Google Books API | Books (may change) |
-| ⚠️ MEDIUM | TMDB | Movies only |
+| ⚠️ MEDIUM | TMDB | Movies only (must verify `moviedb_id` for title collisions) |
+| ⚠️ MEDIUM | Metahub | Poster fallback when TMDB has no record; poster identity cannot be verified against canonical source |
 | ❌ AVOID | Blog/review articles | Temporary links |
 | ❌ AVOID | URLs with query params | Cache-busting (temporary) |
 | ❌ AVOID | `i0.wp.com`, `cdn.*.com/temp/` | Unreliable subdomains |
@@ -191,11 +193,29 @@ Use 13-digit ISBN
 https://image.tmdb.org/t/p/w500/[PATH].jpg (standard)
 https://media.themoviedb.org/t/p/w500/[PATH].jpg (alternative)
 ```
+Verify the poster path against the TMDB record whose `moviedb_id` was resolved from the target IMDB ID (see IMDb ID Only workflow). Do not reuse a `[PATH].jpg` found for a different film with a similar or identical title — it will display the wrong cover.
+
 **IMPORTANT:** Use `image.tmdb.org` or `media.themoviedb.org` (NOT `www.themoviedb.org`) to avoid CORS issues. Our system automatically optimizes `original/` paths to `w500/`.
 
-**Movie title matching rule:** TMDB may file a movie under its original or international release title rather than the US title in `media.json`. If the first lookup fails, retry with alternate titles, translated titles, and franchise-less variants before concluding that no poster is available.
+**Movie title matching rule:** TMDB may file a movie under its original or international release title rather than the US title in `media.json`. If the first lookup fails, retry with alternate titles, translated titles, and franchise-less variants before concluding that no poster is available. Query the cinemeta endpoint first:
+```
+https://v3-cinemeta.strem.io/meta/movie/[IMDB_ID].json
+```
+Extract `moviedb_id` from the response, then verify the TMDB record before using any poster path. Two distinct films can share a surface title and appear under different TMDB IDs; do not confuse one for the other.
 
-**11. Wikipedia/Wikimedia Commons** (classic/notable books)
+**11. Metahub (poster fallback for films absent from TMDB)**
+```
+https://live.metahub.space/poster/small/[IMDB_ID]/img
+```
+Works when TMDB has no record for the film. Returns an image resolved from the IMDB ID, but poster identity cannot be verified against a canonical source. Use only when no other reliable poster URL is available, and note the limitation in the entry audit.
+
+**11. Metahub (poster fallback for films not in TMDB)**
+```
+https://live.metahub.space/poster/small/[IMDB_ID]/img
+```
+Works when TMDB has no record for the film. Returns an image whose path is resolved by the metahub service. Trade-off: poster identity cannot be verified against a canonical source, so use only when no other reliable poster URL is available and note the limitation in the entry audit.
+
+**12. Wikipedia/Wikimedia Commons** (classic/notable books)
 ```
 https://upload.wikimedia.org/wikipedia/en/[hash]/[hash]/[filename].jpg
 ```
@@ -242,16 +262,27 @@ https://upload.wikimedia.org/wikipedia/en/[hash]/[hash]/[filename].jpg
   "tag": "",
   "thumbs": "",
   "cover": "",
-  "imdb": "",
-  "rottenTomatoes": "",
-  "embedUrl": "",
+  "imdb": "https://www.imdb.com/title/ttXXXXXXX/",
+  "rottenTomatoes": "https://www.rottentomatoes.com/m/film_slug",
+  "embedUrl": "https://www.youtube.com/embed/VIDEO_ID?si=SESSION_ID",
   "ratings": {
-    "rt": {"score": "", "url": ""},
-    "imdb": {"score": "", "url": ""}
+    "rt": {"score": "85%", "url": "https://www.rottentomatoes.com/m/film_slug"},
+    "imdb": {"score": "7.1", "url": "https://www.imdb.com/title/ttXXXXXXX/"}
   },
+  "links": [
+    {"label": "Trailer", "icon": "fab fa-youtube", "url": "https://youtu.be/VIDEO_ID"}
+  ],
   "dateAdded": "YYYY-MM-DD"
 }
 ```
+
+**Movie field notes:**
+- `imdb` — full canonical IMDB title URL, not just the numeric ID
+- `rottenTomatoes` — always use the `/m/[slug]` form. The bare root URL (`https://www.rottentomatoes.com`) does not resolve to a film page; verify the full slug before writing the field.
+- `ratings.imdb.score` — decimal format (e.g. `"7.1"`), confirmed from `v3-cinemeta.strem.io` or IMDB when WAF is active
+- `ratings.rt.score` — include the percent sign (`"85%"`)
+- `links[].label` — use `"Trailer"` (not `"YouTube"` etc.) so the media overlay can identify and render the trailer button
+- `links[].url` — must be a direct YouTube URL (`youtu.be/...` or `youtube.com/watch?v=...`), **not** an IMDB page URL
 
 **Podcast Template:**
 ```json
@@ -365,14 +396,18 @@ https://upload.wikimedia.org/wikipedia/en/[hash]/[hash]/[filename].jpg
 
 Before finalizing, verify:
 - [ ] All required fields populated
-- [ ] **Cover VISUALLY VERIFIED to match title and author**
+- [ ] **Cover VISUALLY VERIFIED to match title and author** (or explicitly note "cover could not be verified" with reason)
 - [ ] Cover URL tested (not 404, loads successfully)
-- [ ] Cover shows correct book (not different edition/collected works)
-- [ ] Date format consistent with existing entries
+- [ ] Cover shows correct film/book (not different edition/collected works/title collision)
+- [ ] TMDB `moviedb_id` matches the target IMDB ID; same-title films do not share poster paths
+- [ ] Rotten Tomatoes URL uses `/m/[slug]` format, not bare domain root
+- [ ] `links[].label` for trailer is exactly `"Trailer"`; `links[].url` is a direct YouTube URL, not an IMDB page
+- [ ] `ratings.imdb.score` is in decimal format (e.g. `"7.1"`) with no percent sign
+- [ ] Date format consistent with existing entries (Movies: `YYYY`, Podcasts: `Month YYYY`)
 - [ ] Category from established list (see Category Reference)
 - [ ] Description concise and informative
 - [ ] JSON syntax valid (no trailing commas)
-- [ ] dateAdded is current date (ISO format)
+- [ ] dateAdded is current date (ISO 8601 format)
 - [ ] ISBN matches specific edition
 - [ ] Rating/link URLs functional (if provided)
 
@@ -512,12 +547,12 @@ Economics, Finance, History, Biography, Memoir, Political Science, Psychology, T
 
 **STOP immediately—do not use mismatched cover.**
 
-1. Document mismatch (e.g., "Syndetics shows 'Collected Writings' but book is 'Common Sense'")
-2. Try alternate ISBN sources
-3. Verify ISBN accuracy against retailers
-4. Check if ISBN was reused or references different edition
-5. If no verified match: Leave cover field empty
-6. Alert user + provide ISBN for manual check
+1. Document mismatch (e.g., "TMDB poster `oMeg1capgysYPHVOnZq7HfoIXzE.jpg` belongs to tt12801374, not tt32543911")
+2. Confirm the correct IMDB ID resolves to the correct `moviedb_id` via cinemeta
+3. Verify the TMDB record: same `moviedb_id` → same poster; different `moviedb_id` → different film entirely
+4. Try alternate sources from Cover Source Priority List
+5. Check for TMDB title collision: different films can share a surface title ("Under the Open Sky" = 2020 drama + 2024 documentary)
+6. If no verified match: Leave cover field empty; note the cause in the entry audit trail
 
 **Common causes:**
 - ISBN reuse by publisher
@@ -526,13 +561,16 @@ Economics, Finance, History, Biography, Memoir, Political Science, Psychology, T
 - Collected works vs. individual title
 - Regional edition differences (UK vs. US)
 - Out-of-print editions
+- **TMDB/Metahub title collision — same title, different `moviedb_id`; poster resolved for wrong film**
+- **IMDB WAF returning a cached or redirected page instead of the correct title body**
 
 ### YouTube Trailer Unavailable
 
 1. Set `"embedUrl": ""` (empty string)
-2. Trailer is optional—cover + metadata sufficient
-3. Don't embed from IMDB/Rotten Tomatoes
-4. Reference existing entries for best practices
+2. Trailer is optional—cover + metadata sufficient without it
+3. If a `links` trailer-style entry exists but has a wrong or broken URL, remove it from `links` completely; do not leave a dead IMDB or RT URL in the `links` array
+4. `links[].label` must be the exact string `"Trailer"` so the media overlay can identify the trailer button
+5. `links[].url` must be a direct YouTube watch URL; an IMDB page URL is not a valid trailer address
 
 ### Critical Metadata Missing
 
@@ -542,10 +580,14 @@ Economics, Finance, History, Biography, Memoir, Political Science, Psychology, T
 
 ### Duplicate Entry Suspected
 
-- Check existing entries by title
-- Verify author/date to confirm uniqueness
-- Alert user to potential duplicate
-- Add edition info if different version
+**Same surface title — but different IMDB ID or different `moviedb_id`:**
+1. Treat each as a separate entry; do not merge.
+2. Verify each title against its own IMDB ID and `v3-cinemeta.strem.io` record (genre, director, country, runtime).
+3. Add edition / year / country disambiguation to the `description` or `tag` field if confusion is likely.
+
+**Same IMDB ID (duplicate IMDB URL in existing entries):**
+1. Do not add again — it is the same film.
+2. If `moviedb_id` is missing from the existing entry, enrich it using cinemeta; do not create a new entry.
 
 ---
 
@@ -684,6 +726,50 @@ Added "Land Power" by Michael Albertus to the media collection. The book examine
 ### TMDB Domain Flexibility
 - The system now handles both `image.tmdb.org` and `media.themoviedb.org` automatically.
 - Both domains are optimized to `w500` size by the frontend to ensure fast loading.
+
+### Metahub Poster Fallback
+**From "Under the Open Sky (tt32543911)" implementation:**
+- `image.tmdb.org` returned a `t/p/w500/oMeg1capgysYPHVOnZq7HfoIXzE.jpg` path that belonged to a *different* film of the same name (tt12801374) — the 2020 Japanese yakuza drama, not the 2024 UK/India documentary.
+- TMDB host-movie collision: two distinct films can share a surface title ("Under the Open Sky") but occupy separate TMDB IDs (728882 vs 1399750). A poster path found for one is **wrong** for the other.
+- Recovery: query `v3-cinemeta.strem.io/meta/movie/[IMDB_ID].json` first. It returns the correct `moviedb_id` for *this* IMDB ID. Cross-reference that TMDB ID before using any `image.tmdb.org` poster.
+- When no verified TMDB poster exists: leave `cover` empty and note `"Cover image could not be verified — no reliable poster URL"`. Alternatively, if the film has an official site with a usable cover art image, document the source and verify it shows the correct film.
+- `live.metahub.space` serves poster images resolved by IMDB ID but does not expose the source TMDB record; it cannot be used to confirm which film the poster belongs to. Use only as a last resort with a caveat note.
+
+### IMDB WAF and Structured Metadata Sources
+**From "Under the Open Sky (tt32543911)" implementation:**
+- `imdb.com/title/tt32543911/` returned a CloudFront WAF challenge page; the HTML contained no usable metadata.
+- `v3.sg.media-imdb.com/suggestion/t/tt32543911.json` returns a title confirmation (name, year) but **no** poster, rating, or director.
+- `v3-cinemeta.strem.io/meta/movie/tt32543911.json` returned complete metadata: name, description, genres, runtime, country, `director` array, **and** `imdbRating` (`"9.3"`). Use this as the single structured source when the WAF blocks IMDB directly.
+- Populate `ratings.imdb.score` from the `imdbRating` field in the cinemeta response, and `ratings.rt.score` separately from Rotten Tomatoes. Do not copy an unverified rating from IMDB into the `ratings.imdb` object.
+
+### IMDB Rating Format
+- IMDB ratings are always a **decimal number**, e.g. `"7.1"`, `"9.3"`. Never append a percent sign.
+- The cinemeta `imdbRating` field is unreliable when the film has too few ratings; it can return `"9.3"` with only 1,028 votes when the film is obscure. Treat this as a tentative score and prefer a cross-check from IMDB proper (French/Spanish locale pages bypass the WAF challenge and show the rating prominently, e.g. `9,4/1028`).
+- Populate the `ratings.imdb` object even without `embedUrl` or a verified cover; the IMDb URL + score are independently useful fields.
+
+### Rotten Tomatoes URL Must Include Film Slug
+**From "Under the Open Sky" implementation:**
+- Correct: `https://www.rottentomatoes.com/m/under_the_open_sky`
+- Calling the bare home page or attempting `https://www.rottentomatoes.com/m/` returns the login page when not signed in. Always construct the full `/m/[slug]` URL before writing the `rottenTomatoes` field.
+- If the RT slug is unknown, search `site:rottentomatoes.com "[Title] [Year]"` to find the canonical film URL.
+
+### Movie Trailer `label` Must Be "Trailer"
+**From "Under the Open Sky" implementation:**
+- The `links` array label for a YouTube trailer must be the literal string `"Trailer"`, not `"YouTube"`, `"Watch"`, etc.
+- The media overlay identifies trailer buttons by label during rendering; wrong labels silently disable the trailer panel.
+- The URL must be a direct YouTube watch URL (`https://youtu.be/VIDEO_ID` or `https://www.youtube.com/watch?v=VIDEO_ID`). An IMDB page URL (`https://www.imdb.com/title/ttXXXXXXX/`) is not a valid trailer URL; it renders as a broken link in the embedded player.
+- If no verified YouTube trailer can be found, set `embedUrl` to `""` and omit the `links` trailer entry entirely.
+
+### Year Disambiguation for Films With Same Title
+**From "Under the Open Sky" case:**
+- Two films share the title "Under the Open Sky":
+  - `tt12801374` — 2020 Japanese yakuza drama (director Miwa Nishikawa, starring Koji Yakusho)
+  - `tt32543911` — 2024 UK/India documentary (director Sonum Sumaria, camel-herders of Kutch)
+- Always cross-check genre, director, release country, and runtime against the structured metadata source before committing to an IMDB ID.
+- When a second film with the same title is discovered mid-entry, re-verify all fields and restart the cover-sourcing cycle from the correct TMDB record.
+
+### TMDB Poster Path Is Film-Specific
+- TMDB poster paths look like `oMeg1capgysYPHVOnZq7HfoIXzE.jpg`. They are **not** globally unique — two films can have a poster file picked up by different services under the same filename path. Always verify the poster path comes from the TMDB record whose `moviedb_id` was resolved from the target IMDB ID.
 
 ### Future Enhancements
 - Integrate Goodreads/Amazon ratings automatically via API

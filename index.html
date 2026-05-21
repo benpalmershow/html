@@ -2,30 +2,26 @@
 <html lang="en">
 
 <head>
-  <!-- Common Meta Tags -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="author" content="Ben Palmer">
-  <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#1a1f1e">
-   <meta name="site-data-version" content="20260425a">
+  <!-- Load HtmlUtils first - required for component loading -->
+  <script src="js/html-utils.js"></script>
 
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/webp" sizes="32x32" href="images/favicon-32x32.webp">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.webp">
-  <link rel="manifest" href="site.webmanifest">
-
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Common Meta Tags Component -->
+  <script>
+    if (!window.HtmlUtils) {
+      console.error('HtmlUtils not loaded');
+    } else {
+      window.HtmlUtils.injectHeadElements('components/head-meta.html');
+    }
+  </script>
 
   <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Human-curated content, independent commentary, news, and economic insight from The Ben Palmer Show. Get unbiased analysis on markets, policy, and current events.">
   <meta name="keywords"
     content="economic analysis, independent commentary, financial news, market insights, Ben Palmer Show, economic commentary, financial analysis, market trends, investment insights, policy analysis">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="site-data-version" content="20260425a">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
@@ -58,62 +54,120 @@
   <!-- XML Sitemap -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://howdystranger.net/sitemap.xml">
 
-  <!-- Typography System Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
+  <!-- Resource Hints for Navigation -->
+  <link rel="prefetch" href="https://howdystranger.net/journal.html">
+  <link rel="prefetch" href="https://howdystranger.net/media.html">
+  <link rel="prefetch" href="https://howdystranger.net/financials.html">
+  <link rel="prefetch" href="https://howdystranger.net/news.html">
 
-  <!-- Stylesheets -->
+  <!-- Preconnect to external domains - CRITICAL for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Typography System Fonts Component -->
+  <script>
+    window.HtmlUtils?.injectHeadElements('components/fonts.html');
+  </script>
+
+  <!-- Preload CRITICAL resources only -->
+  <link rel="preload" href="css/body.css?v=20260429" as="style">
+  <link rel="preload" href="css/nav.css?v=20260429" as="style">
+  <link rel="preload" href="css/one-pager.css?v=20260308" as="style">
+
+  <!-- Preload Font Awesome fonts -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2"
+    as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2"
+    as="font" type="font/woff2" crossorigin>
+
+  <!-- Preload critical scripts -->
+  <link rel="preload" href="js/nav.js" as="script">
+  <link rel="preload" href="js/one-pager.js" as="script">
+
+  <!-- Critical CSS -->
   <link rel="stylesheet" href="css/theme.css?v=20260429">
   <link rel="stylesheet" href="css/body.css?v=20260429">
   <link rel="stylesheet" href="css/nav.css?v=20260429">
-<link rel="stylesheet" href="css/one-pager.css?v=20260308">
-  
-  <!-- Font Awesome for platform icons -->
+  <link rel="stylesheet" href="css/one-pager.css?v=20260308">
+  <link rel="stylesheet" href="css/page-branding.css?v=20260510">
+
+  <!-- Font Awesome - load async -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
-  <!-- Analytics -->
+  <!-- Analytics Component -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-
-    let gaLoaded = false;
-    const loadGA = () => {
-      if (gaLoaded) return;
-      gaLoaded = true;
-      gtag('js', new Date());
-      gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=None;Secure' });
-      gtag('config', 'AW-16914260010');
-
-      const script = document.createElement('script');
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-      script.async = true;
-      document.head.appendChild(script);
-    };
-
-    // Load after 10 seconds or on first interaction
-    let gaTimeout = setTimeout(loadGA, 10000);
-
-    const loadOnInteraction = () => {
-      clearTimeout(gaTimeout);
-      loadGA();
-      document.removeEventListener('click', loadOnInteraction);
-      document.removeEventListener('scroll', loadOnInteraction);
-      document.removeEventListener('keydown', loadOnInteraction);
-    };
-    document.addEventListener('click', loadOnInteraction, { passive: true, once: true });
-    document.addEventListener('scroll', loadOnInteraction, { passive: true, once: true });
-    document.addEventListener('keydown', loadOnInteraction, { passive: true, once: true });
+    window.HtmlUtils?.injectScriptsFromComponent('components/analytics.html');
   </script>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  [{"@context":"https://schema.org","@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net","logo":{"@type":"ImageObject","url":"https://howdystranger.net/images/logo.webp","width":360,"height":360},"description":"Independent commentary, news, and economic insight","founder":{"@type":"Person","name":"Ben Palmer"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com","https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ","https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289?uo=4","https://www.buymeacoffee.com/howdystranger"]},{"@context":"https://schema.org","@type":"WebSite","name":"Howdy, Stranger","url":"https://howdystranger.net","description":"Independent commentary, news, and economic insight","publisher":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"inLanguage":"en-US","copyrightYear":2026,"copyrightHolder":{"@type":"Organization","name":"Howdy, Stranger"}},{"@context":"https://schema.org","@type":"Person","name":"Ben Palmer","url":"https://howdystranger.net","description":"Independent commentator and economic analyst","jobTitle":"Independent Commentator","worksFor":{"@type":"Organization","name":"Howdy, Stranger","url":"https://howdystranger.net"},"sameAs":["https://twitter.com/DocRiter","https://www.youtube.com/@BenPalmerShow","https://benpalmershow.substack.com"],"knowsAbout":["Economic Analysis","Financial Markets","Independent Commentary","Market Research"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://howdystranger.net/"}]}]
+  <!-- Error Handling Component -->
+  <script>
+    window.HtmlUtils?.injectScriptsFromComponent('components/error-handling.html');
   </script>
+
+  <!-- Inline critical CSS for LCP -->
+  <style>
+    /* Search input styles - matching body.css */
+    .search-wrapper {
+        position: relative;
+        max-width: 280px;
+        margin: 10px auto 0;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        color: var(--text-muted, #6c757d);
+        pointer-events: none;
+    }
+
+    .indicator-search {
+        width: 100%;
+        padding: 0.5rem 0.75rem 0.5rem 2rem;
+        border: 1px solid var(--border-color, #e5e7eb);
+        border-radius: 8px;
+        background: var(--bg-secondary, #f9fafb);
+        color: var(--text-primary, #111827);
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .indicator-search:focus {
+        border-color: var(--logo-teal, #2c5f5a);
+        box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
+    }
+
+    .indicator-search::placeholder {
+        color: var(--text-muted, #6c757d);
+        opacity: 0.6;
+    }
+
+    /* Font optimization */
+    @font-face {
+      font-family: 'FontAwesome';
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
+      font-weight: 900;
+      font-display: swap;
+      size-adjust: 95%;
+    }
+
+    @font-face {
+      font-family: 'FontAwesome Brands';
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+      size-adjust: 95%;
+    }
+  </style>
 </head>
 
 <body>
@@ -156,85 +210,99 @@
     </div>
 
    <section class="updates-grid">
-    <article class="section-card section-docs">
-      <h2>
-        <img src="images/announcements.webp" alt="" class="section-link-image" width="24" height="24">
-        <a href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Journal" title="Open Journal">Latest Docs</a>
-      </h2>
-      <ul id="latest-journal" class="compact-list"></ul>
-    </article>
+     <article class="section-card section-docs">
+       <h2>
+         <img src="images/announcements.webp" alt="" class="section-link-image" width="24" height="24">
+         <a href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Journal" title="Open Journal">Latest Docs</a>
+       </h2>
+       <ul id="latest-journal" class="compact-list"></ul>
+     </article>
 
-    <article class="section-card section-essays">
-      <h2>
-        <a href="news.html" target="_blank" rel="noopener noreferrer" aria-label="Open Essays" title="Open Essays">Latest Essays</a>
-      </h2>
-      <ul id="latest-essays" class="compact-list"></ul>
-    </article>
+     <article class="section-card section-essays">
+       <h2>
+         <a href="news.html" target="_blank" rel="noopener noreferrer" aria-label="Open Essays" title="Open Essays">Latest Essays</a>
+       </h2>
+       <ul id="latest-essays" class="compact-list"></ul>
+     </article>
 
-    <article class="section-card section-media">
-      <h2>
-        <img src="images/media-60x60.webp" alt="" class="section-link-image" width="24" height="24">
-        <a href="media.html" target="_blank" rel="noopener noreferrer" aria-label="Open Media" title="Open Media">Latest Media</a>
-      </h2>
-      <ul id="latest-media" class="compact-list"></ul>
-    </article>
+     <article class="section-card section-media">
+       <h2>
+         <img src="images/media-60x60.webp" alt="" class="section-link-image" width="24" height="24">
+         <a href="media.html" target="_blank" rel="noopener noreferrer" aria-label="Open Media" title="Open Media">Latest Media</a>
+       </h2>
+       <ul id="latest-media" class="compact-list"></ul>
+     </article>
 
-    <article class="section-card section-numbers">
-      <h2>
-        <img src="images/read.webp" alt="" class="section-link-image" width="24" height="24">
-        <a href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer" aria-label="Open Latest Updates" title="Open Latest Updates">Latest Numbers</a>
-      </h2>
-      <ul id="latest-financials" class="compact-list"></ul>
-    </article>
-  </section>
-</main>
+     <article class="section-card section-numbers">
+       <h2>
+         <img src="images/read.webp" alt="" class="section-link-image" width="24" height="24">
+         <a href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer" aria-label="Open Latest Updates" title="Open Latest Updates">Latest Numbers</a>
+       </h2>
+       <ul id="latest-financials" class="compact-list"></ul>
+     </article>
+   </section>
+ </main>
 
-<div id="footer-container"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    fetch('components/footer.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-      })
-      .catch(error => {
-        console.error('Footer load error:', error);
-      });
-  });
-</script>
+ <!-- Footer Component -->
+ <div id="footer-container"></div>
+ <script>
+   document.addEventListener('DOMContentLoaded', function () {
+     window.HtmlUtils?.loadComponentToElement('components/footer.html', '#footer-container');
+   });
+ </script>
 
-   <script src="js/html-utils.js" defer></script>
-   <script src="js/nav.js" defer></script>
-   <script src="js/swipe-nav.js" defer></script>
-   <script src="js/one-pager.js" defer></script>
-   <script src="js/bfcache-compat.js" defer></script>
-   <script src="js/search.js" defer></script>
-   
-     <script>
+ <!-- Unified Scripts Component -->
+ <script>
+   window.HtmlUtils?.injectScriptsFromComponent('components/scripts-unified.html');
+ </script>
+
+ <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
+  <script src="js/html-utils.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
+  <script src="js/one-pager.js" defer></script>
+  <script src="js/bfcache-compat.js" defer></script>
+  <script src="js/search.js" defer></script>
+
+  <!-- Load Lucide icons on-demand after page load -->
+  <script>
     (function () {
-      function loadScript(src, callback) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        script.onload = callback;
-        script.onerror = () => console.error('Failed to load script:', src);
-        document.head.appendChild(script);
-      }
       const loadLucide = () => {
-        loadScript('https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js', () => {
-          setTimeout(() => window.lucide?.createIcons(), 0);
-        });
+        if (window.lucide) return;
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
+        script.defer = true;
+        script.onload = () => window.lucide?.createIcons();
+        document.head.appendChild(script);
       };
+
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadLucide, { timeout: 3000 });
       } else {
         setTimeout(loadLucide, 100);
       }
-     })();
+    })();
+  </script>
+
+  <!-- Load non-critical analytics after idle -->
+  <script>
+    const loadNonCriticalScripts = () => {
+      const speedInsights = document.createElement('script');
+      speedInsights.src = 'js/speed-insights.js';
+      speedInsights.type = 'module';
+      speedInsights.defer = true;
+      document.body.appendChild(speedInsights);
+    };
+
+     if ('requestIdleCallback' in window) {
+       requestIdleCallback(loadNonCriticalScripts);
+     } else {
+       window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
+     }
    </script>
 
-   <!-- Back to top button -->
-   <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+  <!-- Back to top button -->
+  <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
 
- </body>
+</body>
 </html>

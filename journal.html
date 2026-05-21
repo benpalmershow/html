@@ -2,14 +2,26 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Load HtmlUtils first - required for component loading -->
+  <script src="js/html-utils.js"></script>
+
+  <!-- Common Meta Tags Component -->
+  <script>
+    if (!window.HtmlUtils) {
+      console.error('HtmlUtils not loaded');
+    } else {
+      window.HtmlUtils.injectHeadElements('components/head-meta.html');
+    }
+  </script>
+
   <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Independent commentary and personal insights from Doc Riter.">
   <meta name="keywords"
     content="Doc Riter, independent thoughts">
-   <meta name="site-data-version" content="20260419">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="site-data-version" content="20260419">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
@@ -34,6 +46,30 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://howdystranger.net/journal.html">
 
+  <!-- Resource Hints for Navigation -->
+  <link rel="prefetch" href="https://howdystranger.net/index.html">
+  <link rel="prefetch" href="https://howdystranger.net/media.html">
+  <link rel="prefetch" href="https://howdystranger.net/financials.html">
+
+  <!-- Preconnect to external domains - CRITICAL for performance -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Typography System Fonts Component -->
+  <script>
+    window.HtmlUtils?.injectHeadElements('components/fonts.html');
+  </script>
+
+  <!-- Preload CRITICAL resources only -->
+  <link rel="preload" href="css/body.css?v=20260429" as="style">
+  <link rel="preload" href="css/nav.css?v=20260429" as="style">
+  <link rel="preload" href="css/article.css?v=20260321" as="style">
+  <link rel="preload" href="css/news.css?v=20260429" as="style">
+
+  <!-- Preload critical scripts -->
+  <link rel="preload" href="js/nav.js" as="script">
+  <link rel="preload" href="js/journal-feed.js" as="script">
+  <link rel="preload" href="js/news-article.js" as="script">
+
   <!-- Critical CSS -->
   <link rel="stylesheet" href="css/theme.css?v=20260429">
   <link rel="stylesheet" href="css/body.css?v=20260429">
@@ -42,6 +78,20 @@
   <link rel="stylesheet" href="css/news.css?v=20260429" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/journal-tweets.css?v=20260321" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/page-branding.css?v=20260510">
+
+  <title>Doc Riter - Howdy, Stranger</title>
+
+  <!-- Analytics Component -->
+  <script>
+    window.HtmlUtils?.injectScriptsFromComponent('components/analytics.html');
+  </script>
+
+  <!-- Error Handling Component -->
+  <script>
+    window.HtmlUtils?.injectScriptsFromComponent('components/error-handling.html');
+  </script>
+
+  <!-- Inline critical CSS for LCP -->
   <style>
     /* Source toggle - matches h1.page-title */
     .source-toggle {
@@ -85,54 +135,81 @@
       color: var(--text-muted);
       opacity: 0.4;
     }
+
     /* Utility hidden class to avoid inline styles */
     .hidden { display: none !important; }
+
+    /* Search input styles - matching body.css */
+    .search-wrapper {
+        position: relative;
+        max-width: 280px;
+        margin: 10px auto 0;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        color: var(--text-muted, #6c757d);
+        pointer-events: none;
+    }
+
+    .indicator-search {
+        width: 100%;
+        padding: 0.5rem 0.75rem 0.5rem 2rem;
+        border: 1px solid var(--border-color, #e5e7eb);
+        border-radius: 8px;
+        background: var(--bg-secondary, #f9fafb);
+        color: var(--text-primary, #111827);
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .indicator-search:focus {
+        border-color: var(--logo-teal, #2c5f5a);
+        box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
+    }
+
+    .indicator-search::placeholder {
+        color: var(--text-muted, #6c757d);
+        opacity: 0.6;
+    }
   </style>
-
-  <!-- Preload critical resources -->
-  <link rel="preload" href="js/nav.js" as="script">
-  <link rel="preload" href="js/journal-feed.js" as="script">
-  <link rel="preload" href="js/news-article.js" as="script">
-
-   <!-- Preconnect to external domains -->
-   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-   <!-- Lucide Icons -->
-   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
-
-   <title>Doc Riter - Howdy, Stranger</title>
 
   <script type="module" src="js/speed-insights.js"></script>
   <meta name="robots" content="noindex, nofollow">
-
 </head>
 
 <body>
-
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
-   <div class="page-left-accent">
-     <img src="images/announcements.webp" alt="" width="32" height="32">
-   </div>
+  <div class="page-left-accent">
+    <img src="images/announcements.webp" alt="" width="32" height="32">
+  </div>
 
-   <main id="main-content" tabindex="-1">
-     <div class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
-       <img src="images/announcements.webp" alt="" width="32" height="32" class="page-brand-icon character-herald entrance-herald">
-       <h1 class="page-title" aria-label="Page title">
-         <div class="source-toggle" id="journal-filters" aria-label="Filter by source">
-           <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
-           <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
-         </div>
-       </h1>
-     </div>
+  <main id="main-content" tabindex="-1">
+    <div class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
+      <img src="images/announcements.webp" alt="" width="32" height="32" class="page-brand-icon character-herald entrance-herald">
+      <h1 class="page-title" aria-label="Page title">
+        <div class="source-toggle" id="journal-filters" aria-label="Filter by source">
+          <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
+          <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
+        </div>
+      </h1>
+    </div>
 
-     <!-- Search Bar -->
-     <div class="search-wrapper">
-       <i data-lucide="search" class="search-icon"></i>
-       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
-     </div>
+    <!-- Search Bar -->
+    <div class="search-wrapper">
+      <i data-lucide="search" class="search-icon"></i>
+      <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
+    </div>
 
-<div class="filters" id="journal-category-filters" aria-label="Filter essays by category">
-</div>
+    <div class="filters" id="journal-category-filters" aria-label="Filter essays by category">
+    </div>
     <div class="content">
       <!-- Journal entries feed -->
       <div id="journal-feed"></div>
@@ -165,16 +242,64 @@
 
   <!-- Footer Component -->
   <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      window.HtmlUtils?.loadComponentToElement('components/footer.html', '#footer-container');
+    });
+  </script>
 
-    <!-- Page-specific scripts -->
-    <script src="js/html-utils.js" defer></script>
-    <script src="js/nav.js" defer></script>
-    <script src="js/swipe-nav.js" defer></script>
-    <script src="js/news-article.js" defer></script>
-    <script src="js/journal-feed.js" defer></script>
-    <script src="js/search.js" defer></script>
+  <!-- Unified Scripts Component -->
+  <script>
+    window.HtmlUtils?.injectScriptsFromComponent('components/scripts-unified.html');
+  </script>
 
-    <!-- Back to top button -->
-   <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
- </body>
+  <!-- Page-specific scripts -->
+  <script src="js/html-utils.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
+  <script src="js/bfcache-compat.js" defer></script>
+  <script src="js/news-article.js" defer></script>
+  <script src="js/journal-feed.js" defer></script>
+  <script src="js/search.js" defer></script>
+
+  <!-- Load Lucide icons on-demand after page load -->
+  <script>
+    (function () {
+      const loadLucide = () => {
+        if (window.lucide) return;
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
+        script.defer = true;
+        script.onload = () => window.lucide?.createIcons();
+        document.head.appendChild(script);
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        setTimeout(loadLucide, 100);
+      }
+    })();
+  </script>
+
+  <!-- Load non-critical analytics after idle -->
+  <script>
+    const loadNonCriticalScripts = () => {
+      const speedInsights = document.createElement('script');
+      speedInsights.src = 'js/speed-insights.js';
+      speedInsights.type = 'module';
+      speedInsights.defer = true;
+      document.body.appendChild(speedInsights);
+    };
+
+     if ('requestIdleCallback' in window) {
+       requestIdleCallback(loadNonCriticalScripts);
+     } else {
+       window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
+     }
+   </script>
+
+  <!-- Back to top button -->
+  <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+</body>
 </html>

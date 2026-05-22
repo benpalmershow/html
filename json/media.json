@@ -1,5 +1,5 @@
 [
- {
+  {
     "title": "Saturday May 16th",
     "author": "Doc Riter",
     "mediaType": "podcast",
@@ -31,7 +31,7 @@
     "cover": "images/logo.webp",
     "dateAdded": "2026-05-16"
   },
-   {
+  {
     "title": "Bodies Bodies Bodies",
     "author": "Halina Reijn",
     "mediaType": "movie",
@@ -46,8 +46,14 @@
     "rottenTomatoes": "https://www.rottentomatoes.com/m/bodies_bodies_bodies",
     "embedUrl": "",
     "ratings": {
-      "rt": {"score": "85%", "url": "https://www.rottentomatoes.com/m/bodies_bodies_bodies"},
-      "imdb": {"score": "6.1", "url": "https://www.imdb.com/title/tt8110652/"}
+      "rt": {
+        "score": "85%",
+        "url": "https://www.rottentomatoes.com/m/bodies_bodies_bodies"
+      },
+      "imdb": {
+        "score": "6.1",
+        "url": "https://www.imdb.com/title/tt8110652/"
+      }
     },
     "links": [
       {
@@ -189,7 +195,7 @@
     ],
     "dateAdded": "2026-04-11"
   },
- {
+  {
     "title": "Saturday April 4th",
     "author": "Doc Riter",
     "mediaType": "podcast",
@@ -285,7 +291,6 @@
     "cover": "images/logo.webp",
     "dateAdded": "2026-05-09"
   },
-  
   {
     "title": "Diaper Grift",
     "author": "Doc Riter",
@@ -299,62 +304,62 @@
         "icon": "fab fa-spotify",
         "url": "https://open.spotify.com/episode/1aBfLdREuzUHMsPl4PO3Eo?si=bda65f49d4a14a1c"
       },
-         {
-           "label": "YouTube",
-           "icon": "fab fa-youtube",
-           "url": "https://youtu.be/BeAUxSChkOw"
-         },
-         {
-           "label": "Amazon Music",
-           "icon": "fab fa-amazon",
-           "url": "https://music.amazon.com/podcasts/1167b390-83bc-438f-8437-9441871a3bc5/episodes/a64e9dea-6d27-4c25-98f1-d515bc823a4f/doc-riter-diaper-grift"
-         },
-         {
-           "label": "Apple Podcasts",
-           "icon": "fab fa-apple",
-           "url": "https://podcasts.apple.com/us/podcast/diaper-grift/id1529618289?i=1000766975019"
-         }
-       ],
-       "cover": "images/logo.webp",
-       "dateAdded": "2026-05-09"
-     },
-     {
-       "title": "Saturday April 25th",
-       "author": "Doc Riter",
-       "mediaType": "podcast",
-       "description": "Latest episode covering critical economic and geopolitical developments, including analysis of current market trends, policy updates, and international affairs.",
-       "date": "April 25, 2026",
-       "icon": "fas fa-podcast",
-       "links": [
-         {
-           "label": "Spotify",
-           "icon": "fab fa-spotify",
-           "url": "https://open.spotify.com/episode/1PX0kRVRiPymSY27V080c2?si=a17125a387f4435a"
-         },
-         {
-           "label": "YouTube",
-           "icon": "fab fa-youtube",
-           "url": "https://youtu.be/uFxsW5Myp7M"
-         },
-         {
-           "label": "Amazon Music",
-           "icon": "fab fa-amazon",
-           "url": "https://music.amazon.com/podcasts/1167b390-83bc-438f-8437-9441871a3bc5/episodes/353203f2-3958-4f94-ab04-68e317ad5920/doc-riter-saturday-april-25th"
-         },
-         {
-           "label": "Apple Podcasts",
-           "icon": "fab fa-apple",
-           "url": "https://podcasts.apple.com/us/podcast/saturday-april-25th/id1529618289?i=1000763591281"
-         }
-       ],
-       "cover": "images/logo.webp",
-       "dateAdded": "2026-04-25"
-     },
-    {
-      "title": "Monday April 6th",
-     "author": "Doc Riter",
-     "mediaType": "podcast",
-     "description": "Crude, Poly and Kalshi Hormuz ships odds, The Middle Class Is Shrinking Because of a Booming Upper-Middle Class per American Enterprise Institute, BNY has partnered with Robinhood which will serve as brokerage and initial trustee for Trump Accounts, A visual guide to Iran's coastline and strategic islands",
+      {
+        "label": "YouTube",
+        "icon": "fab fa-youtube",
+        "url": "https://youtu.be/BeAUxSChkOw"
+      },
+      {
+        "label": "Amazon Music",
+        "icon": "fab fa-amazon",
+        "url": "https://music.amazon.com/podcasts/1167b390-83bc-438f-8437-9441871a3bc5/episodes/a64e9dea-6d27-4c25-98f1-d515bc823a4f/doc-riter-diaper-grift"
+      },
+      {
+        "label": "Apple Podcasts",
+        "icon": "fab fa-apple",
+        "url": "https://podcasts.apple.com/us/podcast/diaper-grift/id1529618289?i=1000766975019"
+      }
+    ],
+    "cover": "images/logo.webp",
+    "dateAdded": "2026-05-09"
+  },
+  {
+    "title": "Saturday April 25th",
+    "author": "Doc Riter",
+    "mediaType": "podcast",
+    "description": "Latest episode covering critical economic and geopolitical developments, including analysis of current market trends, policy updates, and international affairs.",
+    "date": "April 25, 2026",
+    "icon": "fas fa-podcast",
+    "links": [
+      {
+        "label": "Spotify",
+        "icon": "fab fa-spotify",
+        "url": "https://open.spotify.com/episode/1PX0kRVRiPymSY27V080c2?si=a17125a387f4435a"
+      },
+      {
+        "label": "YouTube",
+        "icon": "fab fa-youtube",
+        "url": "https://youtu.be/uFxsW5Myp7M"
+      },
+      {
+        "label": "Amazon Music",
+        "icon": "fab fa-amazon",
+        "url": "https://music.amazon.com/podcasts/1167b390-83bc-438f-8437-9441871a3bc5/episodes/353203f2-3958-4f94-ab04-68e317ad5920/doc-riter-saturday-april-25th"
+      },
+      {
+        "label": "Apple Podcasts",
+        "icon": "fab fa-apple",
+        "url": "https://podcasts.apple.com/us/podcast/saturday-april-25th/id1529618289?i=1000763591281"
+      }
+    ],
+    "cover": "images/logo.webp",
+    "dateAdded": "2026-04-25"
+  },
+  {
+    "title": "Monday April 6th",
+    "author": "Doc Riter",
+    "mediaType": "podcast",
+    "description": "Crude, Poly and Kalshi Hormuz ships odds, The Middle Class Is Shrinking Because of a Booming Upper-Middle Class per American Enterprise Institute, BNY has partnered with Robinhood which will serve as brokerage and initial trustee for Trump Accounts, A visual guide to Iran's coastline and strategic islands",
     "date": "April 6, 2026",
     "icon": "fas fa-podcast",
     "links": [
@@ -3870,5 +3875,38 @@
     "dateAdded": "2026-05-10",
     "coverSrcset": "images/listen-240.webp 240w, images/listen-360.webp 360w, images/listen-480.webp 480w",
     "coverSizes": "240px"
+  },
+  {
+    "title": "The Vanishing",
+    "author": "George Sluizer",
+    "mediaType": "movie",
+    "description": "Rex and Saskia, a young couple in love, are on vacation when they stop at a busy service station. Saskia is abducted in broad daylight and three years pass with no answers or closure surrounding her disappearance. Rex has nearly given up all hope when he suddenly begins receiving letters from her abductor.",
+    "date": "1988",
+    "genre": "Mystery, Thriller",
+    "titleColor": "#ffffff",
+    "tag": "",
+    "thumbs": "",
+    "cover": "https://media.themoviedb.org/t/p/w500/gcXbxHjkUwLV4HrE2oJcbP7UGTA.jpg",
+    "imdb": "https://www.imdb.com/title/tt0096163/",
+    "rottenTomatoes": "",
+    "embedUrl": "https://www.youtube.com/embed/KlO2oIieI44",
+    "ratings": {
+      "rt": {
+        "score": "96%",
+        "url": "https://www.rottentomatoes.com/m/the_vanishing"
+      },
+      "imdb": {
+        "score": "7.6",
+        "url": "https://www.imdb.com/title/tt0096163/"
+      }
+    },
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=KlO2oIieI44"
+      }
+    ],
+    "dateAdded": "2026-05-21"
   }
 ]

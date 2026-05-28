@@ -151,8 +151,9 @@ const IndicatorRenderers = (function () {
         let historyDataHtml = '';
         let hasHistory = false;
 
-        if (indicator.probabilities && typeof indicator.probabilities === 'object') {
-            const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+        const probabilities = indicator.probabilities || indicator.propabilities;
+        if (probabilities && typeof probabilities === 'object') {
+            const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
 
             const buildProbBar = ([date, probs], large) => {
                 const yesProb = parseFloat(probs.yes);
@@ -453,8 +454,15 @@ function renderHormuz(indicator) {
 
 // --- Type Detection (SRP: separate from rendering) ---
 
+function hasYesNoProbabilities(indicator) {
+    const probs = indicator.probabilities || indicator.propabilities;
+    if (!probs || typeof probs !== 'object') return false;
+    return Object.values(probs).some(entry => entry && entry.yes !== undefined && entry.no !== undefined);
+}
+
 function detectIndicatorType(indicator) {
     if (indicator.name.includes('FOMC') || (indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds)) return 'fomc';
+    if (hasYesNoProbabilities(indicator)) return 'prediction';
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.candidates && typeof indicator.candidates === 'object') return 'venezuela';

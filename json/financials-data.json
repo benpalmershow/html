@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-27T15:36:00Z",
+    "lastUpdated": "2026-05-28T15:36:00Z",
     "indices": [
     
         {
@@ -16,7 +16,7 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Strait of Hormuz Traffic Returns to Normal by July 31, 2026",
-            "lastUpdated": "2026-05-14T17:51:00Z",
+            "lastUpdated": "2026-05-28T17:51:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
             "yes_probability": "46¢",
@@ -24,6 +24,7 @@
             "previous_yes": "58¢",
             "change": "",
             "probabilities": {
+                "2026-05-28": {"yes": "60¢", "no": "41¢"},
                 "2026-05-11": {"yes": "46¢", "no": "55¢"},
                 "2026-05-08": {"yes": "58¢", "no": "42¢"},
                 "2026-05-07": {"yes": "48¢", "no": "52¢"},
@@ -78,13 +79,14 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Iranian Regime Fall by End of 2026",
-            "lastUpdated": "2026-04-19T08:00:00Z",
+            "lastUpdated": "2026-05-28T08:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
             "polymarket_url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
             "yes_probability": "21¢",
             "no_probability": "79¢",
-            "propabilities":{
+            "probabilities":{
+                "2026-05-28": {"yes": "15¢", "no": "87¢"},
                 "2026-04-19": {"yes": "21¢", "no": "79¢"},
                 "2026-04-18": {"yes": "27¢", "no": "73¢"},
                 "2026-04-17": {"yes": "33¢", "no": "67¢"}
@@ -106,13 +108,14 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "US Recession in 2026",
-            "lastUpdated": "2026-04-19T08:00:00Z",
+            "lastUpdated": "2026-05-28T08:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
             "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
             "yes_probability": "26¢",
             "no_probability": "75¢",
-            "propabilities":{
+            "probabilities":{
+                "2026-05-28": {"yes": "20¢", "no": "81¢"},
                 "2026-04-19": {"yes": "26¢", "no": "75¢"},
                 "2026-04-18": {"yes": "29¢", "no": "71¢"},
                 "2026-04-17": {"yes": "32¢", "no": "68¢"}
@@ -134,13 +137,14 @@
             "parentCategory": "Prediction Markets",
             "agency": "Kalshi",
             "name": "More tech layoffs in 2026 than in 2025?",
-            "lastUpdated": "2026-04-19T08:00:00Z",
+            "lastUpdated": "2026-05-28T08:00:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxlayoffsyinfo/tech-layoffs/kxlayoffsyinfo-26",
             "polymarket_url": "https://polymarket.com/event/tech-layoffs-up-or-down-in-2026",
             "yes_probability": "82¢",
             "no_probability": "18¢",
             "propabilities":{
+                "2026-05-28": {"yes": "91¢", "no": "9¢"},
                 "2026-04-19": {"yes": "82¢", "no": "18¢"},
                 "2026-04-18": {"yes": "85¢", "no": "15¢"},
                 "2026-04-17": {"yes": "88¢", "no": "12¢"}
@@ -533,7 +537,7 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "Oil (WTI)",
-            "lastUpdated": "2026-04-20T19:30:00Z",
+            "lastUpdated": "2026-05-18T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "january": "75.74",
@@ -552,7 +556,8 @@
                 "january": "60.04",
                 "february": "64.51",
                 "march": "89.33",
-                "april": "91.06"
+                "april": "91.06",
+                "may": "112.25"
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
@@ -571,14 +576,16 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "Oil (Brent)",
-            "lastUpdated": "2026-04-20T14:00:00Z",
+            "lastUpdated": "2026-05-18T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "2026": {
                 "january": "66.60",
                 "february": "70.89",
                 "march": "103.79",
-                "april": "103.40"
+                "april": "103.40",
+                "may": "116.73"
+
             },
             "change": "",
             "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs."
@@ -622,7 +629,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Wheat",
-            "lastUpdated": "2026-04-13T14:00:00Z",
+            "lastUpdated": "2026-05-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
             "january": "5.52",
@@ -639,7 +646,8 @@
             "december": "4.95",
             "2026": {
                 "january": "5.01",
-                "february": "5.12"
+                "february": "5.12",
+                "march": "5.52"
             },
             "change": "",
             "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
@@ -675,7 +683,8 @@
             "december": "10.40",
             "2026": {
                 "january": "10.30",
-                "february": "10.60"
+                "february": "10.60",
+                "march": "11.10"
             },
             "change": "",
             "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
@@ -694,7 +703,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Beef",
-            "lastUpdated": "2026-04-13T14:00:00Z",
+            "lastUpdated": "2026-05-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
             "january": "199.00",
@@ -711,7 +720,8 @@
             "december": "221",
             "2026": {
                 "january": "230",
-                "february": "239"
+                "february": "239",
+                "march": "236.00"
             },
             "change": "",
             "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers."
@@ -730,7 +740,7 @@
             "parentCategory": "Commodities",
             "agency": "CME",
             "name": "Copper Futures",
-            "lastUpdated": "2026-05-13T14:00:00Z",
+            "lastUpdated": "2026-05-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
             "march": "4.56",
@@ -748,7 +758,7 @@
                 "february": "5.87",
                 "march": "5.33",
                 "april": "6.00",
-                "may":"6.6840"
+                "may":"6.3885"
             },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
@@ -767,14 +777,15 @@
             "parentCategory": "Commodities",
             "agency": "USDA",
             "name": "Urea",
-            "lastUpdated": "2026-04-13T14:00:00Z",
+            "lastUpdated": "2026-05-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.ams.usda.gov/mnreports/ams_3621.pdf",
             "2026": {
                 "january": "593.14",
                 "february": "592.43",
                 "march": "745.83",
-                "april": "796.40"
+                "april": "796.40",
+                "may": "873.57"
             },
             "change": "",
             "explanation": "The average retail price of granular urea, the most widely used nitrogen fertilizer globally, as reported by the USDA Agricultural Marketing Service in their weekly national fertilizer review. Urea contains 46% nitrogen and is essential for agricultural crop production across all major grain, oilseed, and commodity crops. Prices are quoted in US dollars per short ton. Urea prices are heavily influenced by natural gas costs (the primary feedstock for production), global agricultural demand, seasonal planting cycles, and trade policies. Rising urea prices increase input costs for farmers and can pressure food prices higher, while falling prices provide relief to agricultural producers. The fertilizer market is closely watched for its implications on food security and agricultural commodity prices."

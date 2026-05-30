@@ -238,8 +238,6 @@ function renderEssayIndex(articles) {
 async function loadArticle() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('article');
-  const version = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
-
   const statusEl = document.getElementById('article-status');
   const readerEl = document.getElementById('article-reader');
   const contentEl = document.getElementById('article-content');
@@ -252,12 +250,9 @@ async function loadArticle() {
     let articleIndexEntry = null;
     let articles = [];
     try {
-      const articlesResponse = await fetch(`json/articles.json?v=${encodeURIComponent(version)}`);
-      if (articlesResponse.ok) {
-        articles = await articlesResponse.json();
-        if (Array.isArray(articles)) {
-          articleIndexEntry = articles.find(article => article.id === slug) || null;
-        }
+      articles = await Services.dataService.fetchJSON('json/articles.json');
+      if (Array.isArray(articles)) {
+        articleIndexEntry = articles.find(article => article.id === slug) || null;
       }
     } catch (error) {
       console.warn('Could not load articles index', error);
@@ -268,13 +263,13 @@ async function loadArticle() {
       return;
     }
 
-    const articlePath = `article/${encodeURIComponent(slug)}.md?v=${encodeURIComponent(version)}`;
-    const articleResponse = await fetch(articlePath);
-    if (!articleResponse.ok) {
+    const articlePath = `article/${encodeURIComponent(slug)}.md`;
+    let md;
+    try {
+      md = await Services.dataService.fetchText(articlePath);
+    } catch (error) {
       throw new Error(`File not found: ${slug}`);
     }
-
-    const md = await articleResponse.text();
     const { metadata, contentMd } = parseFrontmatter(md);
     const parsedHtml = window.marked && typeof window.marked.parse === 'function'
       ? window.marked.parse(contentMd)

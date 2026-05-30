@@ -26,6 +26,8 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 
 **Financial data:** `json/financials-data.json` holds all indicators and prediction markets. Charts and the financials page render from this file via `js/charts.js` and `js/financials.js`.
 
+**JSON fetching:** Load `js/services.js` before page scripts. Fetch runtime JSON via `Services.dataService.fetchJSON(path)` (cache-busted with `meta[name="site-data-version"]`). Bump that meta when deploying data changes.
+
 **Other data files:**
 - `json/media.json` - curated media
 - `json/journal.json` - journal/tweet feed

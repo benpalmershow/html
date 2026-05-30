@@ -363,7 +363,6 @@ function updateJournalPageTitle(source) {
 
 async function loadJournalEntries() {
   const journalFeed = document.getElementById('journal-feed');
-  const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
   if (!journalFeed) {
     console.error('Journal feed element not found');
     return;
@@ -383,7 +382,7 @@ async function loadJournalEntries() {
 
     if (currentSource === 'journal') {
       toggleEssayReaderView(false);
-      await loadJournalData(journalFeed, siteDataVersion);
+      await loadJournalData(journalFeed);
     } else {
       toggleEssayReaderView(true);
       // Use news-article.js to load the essay reader
@@ -401,12 +400,8 @@ async function loadJournalEntries() {
   }
 }
 
-async function loadJournalData(journalFeed, siteDataVersion) {
-  const response = await fetch(`json/journal.json?v=${encodeURIComponent(siteDataVersion)}`);
-  if (!response.ok) {
-    throw new Error(`Failed to load journal entries: ${response.status} ${response.statusText}`);
-  }
-  const journals = await response.json();
+async function loadJournalData(journalFeed) {
+  const journals = await Services.dataService.fetchJSON('json/journal.json');
   
   if (!Array.isArray(journals)) {
     throw new Error('Journal data is not an array');
@@ -435,12 +430,8 @@ async function loadJournalData(journalFeed, siteDataVersion) {
   scrollToHash();
 }
 
-async function loadNewsData(journalFeed, siteDataVersion) {
-  const response = await fetch(`json/articles.json?v=${encodeURIComponent(siteDataVersion)}`);
-  if (!response.ok) {
-    throw new Error(`Failed to load news articles: ${response.status} ${response.statusText}`);
-  }
-  const articles = await response.json();
+async function loadNewsData(journalFeed) {
+  const articles = await Services.dataService.fetchJSON('json/articles.json');
   
   if (!Array.isArray(articles)) {
     throw new Error('Articles data is not an array');
@@ -731,8 +722,7 @@ async function renderJournalCharts() {
 
   if (!window._financialsData) {
     try {
-      const response = await fetch('json/financials-data.json');
-      if (response.ok) window._financialsData = await response.json();
+      window._financialsData = await Services.dataService.fetchJSON('json/financials-data.json');
     } catch (e) {
       console.error('Failed to load financials data:', e);
       return;

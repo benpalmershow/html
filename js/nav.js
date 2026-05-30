@@ -1,7 +1,7 @@
 // Generate sticky navbar with links to all pages
 document.addEventListener('DOMContentLoaded', () => {
   const navContainer = document.getElementById('main-nav');
-  const siteDataVersion = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
+  const dataService = window.Services?.dataService;
 
   const PAGES = [
     { name: 'Home', file: 'index.html', icon: 'logo-360x360.webp' },
@@ -62,8 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const fetchJson = (path) => fetch(path + '?v=' + encodeURIComponent(siteDataVersion))
-    .then(r => r.ok ? r.json() : null);
+  const fetchJson = (path) => {
+    if (!dataService) return Promise.resolve(null);
+    return dataService.fetchJSON(path).catch(() => null);
+  };
 
   // Numbers
   fetchJson('json/financials-data.json').then(data => {

@@ -54,11 +54,7 @@ class PortfolioManager {
      */
     async loadPortfolioData() {
         try {
-            const response = await fetch('json/portfolio.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            this.portfolioData = await response.json();
+            this.portfolioData = await Services.dataService.fetchJSON('json/portfolio.json');
         } catch (error) {
             console.error('Error loading portfolio data:', error);
             throw error;

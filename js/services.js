@@ -49,10 +49,17 @@ const Services = (function () {
             return Promise.any(fetchPromises);
         }
 
-        async fetchText(path) {
-            const response = await fetch(path);
+        async fetchText(path, options = {}) {
+            const cacheKey = this._cacheKey(path);
+            if (this._cache.has(cacheKey) && !options.bustCache) {
+                return this._cache.get(cacheKey);
+            }
+
+            const response = await fetch(cacheKey, options);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return response.text();
+            const text = await response.text();
+            this._cache.set(cacheKey, text);
+            return text;
         }
 
         clearCache() {

@@ -6,12 +6,7 @@ let firmShortNames = [];
 
 async function load13FData() {
     try {
-        const response = await fetch('/json/13f-holdings.json', {
-            headers: { 'Accept': 'application/json' },
-            cache: 'no-cache'
-        });
-        if (!response.ok) throw new Error('Failed to load 13F data');
-        const data = await response.json();
+        const data = await Services.dataService.fetchJSON('json/13f-holdings.json');
         firmData = data.firms;
         allHoldings = data.holdings;
         firmShortNames = data.firms.map(f => f.shortName);

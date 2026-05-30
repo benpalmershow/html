@@ -200,21 +200,7 @@
                 return;
             }
 
-            const version = document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
-
-            const response = await fetch(`json/media.json?v=${encodeURIComponent(version)}`);
-
-            if (!response.ok) {
-                throw new Error(
-                    response.status === 404
-                        ? 'Media data file not found'
-                        : response.status >= 500
-                            ? 'Server error occurred'
-                            : `Failed to fetch media data (${response.status})`
-                );
-            }
-
-            mediaItems = await response.json();
+            mediaItems = await Services.dataService.fetchJSON('json/media.json');
             mediaItems = mediaItems.filter(validateMediaItem);
 
             // Save to cache asynchronously without blocking

@@ -11,12 +11,7 @@
         if (!titleEl || !platformsEl) return;
 
         try {
-            const version = document.querySelector('meta[name="site-data-version"]')?.content || 'latest';
-            const response = await fetch(`json/media.json?v=${encodeURIComponent(version)}`);
-
-            if (!response.ok) throw new Error('Failed to fetch media.json');
-
-            const items = await response.json();
+            const items = await Services.dataService.fetchJSON('json/media.json');
 
             // Find the first podcast entry
             const featured = items.find(item => item.mediaType === 'podcast');

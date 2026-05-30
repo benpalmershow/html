@@ -4,8 +4,6 @@ const LIMITS = {
   media: Infinity,
   financials: Infinity
 };
-const PAGE_LOAD_VERSION = Date.now();
-
 const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
   'july', 'august', 'september', 'october', 'november', 'december'
@@ -83,22 +81,6 @@ function isInternalHtmlPath(path) {
     return /https?:\/\/(www\.)?howdystranger\.net\//i.test(value) && /\.html([?#].*)?$/i.test(value);
   }
   return /\.html([?#].*)?$/i.test(value);
-}
-
-async function fetchJson(path) {
-  const separator = path.includes('?') ? '&' : '?';
-  const cacheBustPath = `${path}${separator}v=${PAGE_LOAD_VERSION}`;
-  const response = await fetch(cacheBustPath, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Failed to fetch ${path}: ${response.status}`);
-  return response.json();
-}
-
-async function fetchText(path) {
-  const separator = path.includes('?') ? '&' : '?';
-  const cacheBustPath = `${path}${separator}v=${PAGE_LOAD_VERSION}`;
-  const response = await fetch(cacheBustPath, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Failed to fetch ${path}: ${response.status}`);
-  return response.text();
 }
 
 function extractMarkdownBody(markdown) {
@@ -217,7 +199,7 @@ function renderList(id, items) {
 
 
 async function loadLatestJournal() {
-  const journals = await fetchJson('json/journal.json');
+  const journals = await Services.dataService.fetchJSON('json/journal.json');
   const flat = journals
     .slice()
     .sort((a, b) => parseJournalDate(b.date).getTime() - parseJournalDate(a.date).getTime())
@@ -290,7 +272,7 @@ async function loadLatestJournal() {
 }
 
 async function loadLatestEssays() {
-  const articles = await fetchJson('json/articles.json');
+  const articles = await Services.dataService.fetchJSON('json/articles.json');
   const sorted = articles
     .slice()
     .sort((a, b) => {
@@ -322,7 +304,7 @@ async function loadLatestEssays() {
 
 
 async function loadLatestMedia() {
-  const media = await fetchJson('json/media.json');
+  const media = await Services.dataService.fetchJSON('json/media.json');
   const sorted = media
     .slice()
     .sort((a, b) => {
@@ -359,7 +341,7 @@ async function loadLatestMedia() {
 }
 
 async function loadLatestFinancials() {
-  const data = await fetchJson('json/financials-data.json');
+  const data = await Services.dataService.fetchJSON('json/financials-data.json');
   const sorted = (data.indices || [])
     .slice()
     .sort((a, b) => new Date(b.lastUpdated || 0).getTime() - new Date(a.lastUpdated || 0).getTime())

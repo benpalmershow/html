@@ -83,6 +83,8 @@ Example:
 
 `article/posts/` and `json/posts.json` still exist on the site, but they are no longer the default workflow for new content. Treat them as legacy or special purpose surfaces unless a task specifically calls for a homepage post card or a backwards-compatible post entry.
 
+**RSS:** `npm run generate:rss` builds `news-feed.xml` from `json/articles.json` (essays) and journal entries in `json/journal.json` that include a `file` path to markdown. It does not read `json/posts.json`.
+
 ---
 
 ## Publishing Checklist

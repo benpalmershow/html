@@ -63,19 +63,33 @@ function validateJson() {
 }
 
 function validateContentIndexes() {
-  const postsPath = path.join(ROOT, 'json/posts.json');
+  const journalPath = path.join(ROOT, 'json/journal.json');
   const articlesPath = path.join(ROOT, 'json/articles.json');
 
-  if (fs.existsSync(postsPath)) {
-    const posts = JSON.parse(read(postsPath));
-    posts.forEach((post, index) => {
-      if (!post.file) {
-        fail(`json/posts.json entry ${index} is missing file`);
-        return;
-      }
-      if (!exists(post.file)) fail(`json/posts.json references missing file: ${post.file}`);
-      if (!post.date) warn(`json/posts.json entry ${post.file} is missing date`);
-    });
+  if (fs.existsSync(journalPath)) {
+    const journal = JSON.parse(read(journalPath));
+    if (!Array.isArray(journal)) {
+      fail('json/journal.json must be an array');
+    } else {
+      journal.forEach((day, dayIndex) => {
+        if (!day.date) fail(`json/journal.json day ${dayIndex} is missing date`);
+        if (!Array.isArray(day.entries)) {
+          fail(`json/journal.json day ${day.date || dayIndex} is missing entries array`);
+          return;
+        }
+        day.entries.forEach((entry, entryIndex) => {
+          if (!entry.title) {
+            fail(`json/journal.json ${day.date} entry ${entryIndex} is missing title`);
+          }
+          if (entry.file && !exists(entry.file)) {
+            fail(`json/journal.json references missing file: ${entry.file}`);
+          }
+          if (!entry.file && !entry.content && !entry.link) {
+            warn(`json/journal.json ${day.date} entry ${entryIndex} has no file, content, or link`);
+          }
+        });
+      });
+    }
   }
 
   if (fs.existsSync(articlesPath)) {

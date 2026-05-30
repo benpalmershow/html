@@ -21,7 +21,7 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 **Content pipeline:**
 - Long-form articles live in `article/` (and `_/` for drafts/archive)
 - Short posts live in `article/posts/` as markdown with YAML frontmatter
-- `json/posts.json` is the post index, consumed by `js/posts-loader.js` (prefetched via `window.postsPromise` in `index.html`)
+- `json/posts.json` is legacy (RSS no longer uses it; see `scripts/generate-rss.js`)
 - `js/posts-loader.js` parses markdown, extracts snippets, injects chart placeholders (`{{chart:Name}}`), and relies on `marked`, `Chart.js`, and `lucide` being available globally via CDN
 
 **Financial data:** `json/financials-data.json` holds all indicators and prediction markets. Charts and the financials page render from this file via `js/charts.js` and `js/financials.js`.
@@ -47,15 +47,13 @@ See `docs/posts-prd.md` for full spec. Quick reference:
    category: financials
    ---
    ```
-2. Add an entry to `json/posts.json` (newest first):
-   ```json
-   { "date": "2025-11-22T10:50:00Z", "file": "article/posts/2025-11-22-slug.md" }
-   ```
-3. Use `<p>` tags for paragraphs (not `<br><br>`) - snippet extraction depends on them.
-4. Use `{{chart:Indicator Name}}` to embed a chart; the name must exactly match the `name` field in `json/financials-data.json`.
-5. Use Lucide icons (`<i data-lucide='icon-name' class='post-icon'></i>`), not emojis.
-6. Keep posts under 150 words. Use `<b>` for bold, not `**markdown**`.
-7. Internal links to financials use query params: `financials.html?filter=Category%20Name` (not hash anchors).
+2. Add an entry to `json/journal.json` (see skill / `docs/posts-prd.md`). Do not add to `json/posts.json` unless explicitly requested.
+3. Regenerate RSS after publishing markdown journal posts: `npm run generate:rss`
+4. Use `<p>` tags for paragraphs (not `<br><br>`) - snippet extraction depends on them.
+5. Use `{{chart:Indicator Name}}` to embed a chart; the name must exactly match the `name` field in `json/financials-data.json`.
+6. Use Lucide icons (`<i data-lucide='icon-name' class='post-icon'></i>`), not emojis.
+7. Keep posts under 150 words. Use `<b>` for bold, not `**markdown**`.
+8. Internal links to financials use query params: `financials.html?filter=Category%20Name` (not hash anchors).
 
 **MoM percentage formula:** `((Current - Previous) / Previous) × 100`, rounded to one decimal. Always verify arithmetic.
 

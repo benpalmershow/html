@@ -70,7 +70,7 @@ function setupFilters(financialData) {
 
     if (!filtersContainer) return;
 
-    filtersContainer.innerHTML = '';
+    filtersContainer.querySelectorAll('.filter-btn').forEach(btn => btn.remove());
 
     const createFilterBtn = (id, icon, text, isLatest = false) => {
         const btn = document.createElement('button');

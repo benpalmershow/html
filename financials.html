@@ -124,20 +124,23 @@
     <img src="images/read.webp" alt="" width="32" height="32">
   </div>
 
-  <main class="container">
-    <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
+   <main class="container">
+     <div id="lastUpdated" class="last-updated"></div>
+     <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
       <img src="images/read.webp" alt="" width="32" height="32" class="page-brand-icon character-scholar entrance-slide">
       <h1 class="page-title" aria-label="Page title">Numbers</h1>
     </div>
     <div class="collapsible-container">
 
-      <div class="collapsible-content" id="interactive-dashboard-content">
-        <div id="essay-filters" class="filters" aria-label="Filter indicators by category"></div>
-
-        <div class="search-wrapper">
-          <i data-lucide="search" class="search-icon"></i>
-          <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
-        </div>
+        <div class="collapsible-content" id="interactive-dashboard-content">
+          <div id="essay-filters" class="filters" aria-label="Filter indicators by category">
+            <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <div class="filter-bar-search" id="filterBarSearch">
+              <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
+            </div>
+          </div>
 
         <div id="lastUpdated" class="last-updated"></div>
 

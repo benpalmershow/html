@@ -762,11 +762,14 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
 }
 
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
+    const accent = indicator.color || 'var(--logo-teal)';
+    const isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
     return `
-        <div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}">
+        <div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};">
             <div class="indicator-header">
                 <div class="indicator-name">
                     ${indicator.name}
+                    ${isNew ? '<span class="new-badge">New</span>' : ''}
                 </div>
                 <div class="indicator-actions">
                     ${explanation ? `<button class="info-btn" title="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}

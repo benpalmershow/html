@@ -195,6 +195,7 @@ function initializeDashboard() {
 
     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
     setupFilters(financialData);
+    setupSearchToggle();
 
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'latest';
@@ -297,6 +298,25 @@ function setupKeyboardNavigation() {
             e.preventDefault();
             next.focus();
             next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+}
+
+function setupSearchToggle() {
+    const toggle = document.getElementById('searchToggle');
+    const filters = document.getElementById('essay-filters');
+    const searchInput = document.getElementById('indicatorSearch');
+
+    if (!toggle || !filters || !searchInput) return;
+
+    toggle.addEventListener('click', () => {
+        filters.classList.add('search-open');
+        setTimeout(() => searchInput.focus(), 80);
+    });
+
+    searchInput.addEventListener('blur', () => {
+        if (!searchInput.value.trim()) {
+            filters.classList.remove('search-open');
         }
     });
 }

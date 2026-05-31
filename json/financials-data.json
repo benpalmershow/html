@@ -16,7 +16,7 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Strait of Hormuz Traffic Returns to Normal by July 31, 2026",
-            "lastUpdated": "2026-05-28T17:51:00Z",
+            "lastUpdated": "2026-05-31T17:51:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
             "yes_probability": "46¢",
@@ -24,6 +24,7 @@
             "previous_yes": "58¢",
             "change": "",
             "probabilities": {
+                "2026-05-31": {"yes": "48¢", "no": "53¢"},
                 "2026-05-28": {"yes": "60¢", "no": "41¢"},
                 "2026-05-11": {"yes": "46¢", "no": "55¢"},
                 "2026-05-08": {"yes": "58¢", "no": "42¢"},
@@ -46,23 +47,18 @@
             "parentCategory": "Prediction Markets",
             "agency": "Kalshi",
             "name": "Venezuela Head of State 2026",
-            "lastUpdated": "2026-04-19T08:00:00Z",
+            "lastUpdated": "2026-05-31T08:00:00Z",
             "releaseDay": 0,
             "url": "https://kalshi.com/markets/kxvenezuelaleader/who-will-be-the-head-of-state-of-venezuela-on-date/kxvenezuelaleader-26dec31",
             "polymarket_url": "https://polymarket.com/event/venezuela-leader-end-of-2026",
-            "candidates": {
-                "Delcy Rodríguez": "65¢",
-                "Nicolás Maduro": "17¢",
-                "María Corina Machado": "14¢",
-                "Diosdado Cabello Rondón": "1¢",
-                "Edmundo González": "1¢"
-            },
-            "propabilities": {
+         
+            "probabilities": {
+                "2026-05-31": {"Delcy Rodríguez": "21¢", "Nicolás Maduro": "67¢", "María Corina Machado": "6¢", "Diosdado Cabello Rondón": "1¢", "Edmundo González": "1¢"},
                 "2026-04-15": {"Delcy Rodríguez": "60¢", "Nicolás Maduro": "20¢", "María Corina Machado": "15¢", "Diosdado Cabello Rondón": "3¢", "Edmundo González": "2¢"},
                 "2026-04-17": {"Delcy Rodríguez": "62¢", "Nicolás Maduro": "18¢", "María Corina Machado": "14¢", "Diosdado Cabello Rondón": "3¢", "Edmundo González": "3¢"},
                 "2026-04-19": {"Delcy Rodríguez": "65¢", "Nicolás Maduro": "17¢", "María Corina Machado": "14¢", "Diosdado Cabello Rondón": "1¢", "Edmundo González": "1¢"}
             },
-            "change": "Down 3¢ (Rodríguez)",
+            "change": "",
             "explanation": "Prediction market odds for who will be the head of state of Venezuela on December 31, 2026. Delcy Rodríguez commands 65% after assuming interim presidency following US forces capturing Maduro in January 2026. She consolidated power by replacing senior military commanders March 20. Trump administration lifted sanctions on Rodríguez April 1, signaling diplomatic engagement. Over $78M in trading volume."
         },
         {
@@ -70,7 +66,7 @@
             "category": "Prediction Markets",
             "type": "prediction-market",
             "isActive": true,
-            "tags": ["geopolitics", "iran", "regime-change"],
+            "tags": ["geopolitics", "iran"],
             "displayOrder": 3,
             "icon": "fa-fire",
             "color": "#e74c3c",
@@ -79,19 +75,20 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Iranian Regime Fall by End of 2026",
-            "lastUpdated": "2026-05-28T08:00:00Z",
+            "lastUpdated": "2026-05-31T08:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
             "polymarket_url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
             "yes_probability": "21¢",
             "no_probability": "79¢",
             "probabilities":{
+                "2026-05-31": {"yes": "14¢", "no": "87¢"},
                 "2026-05-28": {"yes": "15¢", "no": "87¢"},
                 "2026-04-19": {"yes": "21¢", "no": "79¢"},
                 "2026-04-18": {"yes": "27¢", "no": "73¢"},
                 "2026-04-17": {"yes": "33¢", "no": "67¢"}
             },
-            "change": " Down 6¢ (Yes)",
+            "change": "",
             "explanation": "Polymarket prediction on whether the Iranian regime will fall by end of 2026. Market reflects 79% probability the regime endures despite nationwide protests since late 2025 and US-Israel airstrikes. IRGC has consolidated control following Supreme Leader Khamenei's death on February 28, 2026, brutally suppressing dissent while organizing pro-regime demonstrations. Ceasefire with US reduces military pressure. Volume: $14.3M."
         },
         {
@@ -196,21 +193,22 @@
             "parentCategory": "Prediction Markets",
             "agency": "Kalshi",
             "name": "FOMC Rate Decision - July",
-            "lastUpdated": "2026-05-14T08:00:00Z",
-            "announcement_time": "2:00 PM ET",
-            "announcement_time_iso": "2026-07-17T14:00:00-04:00",
-            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jun",
-            "polymarket_url": "https://polymarket.com/event/fed-decision-in-june-825",
-            "rate_hold_odds": "91¢",
-            "rate_cut_odds": "5¢",
+            "lastUpdated": "2026-05-31T08:00:00Z",
+            "meeting_date": "July 28-29, 2026",
+            "rate_hold_odds": "92¢",
+            "rate_cut_odds": "3¢",
             "rate_hike_odds": "5¢",
-            "propabilities":{
-                "2026-04-19": {"rate_hold_odds": "89¢", "rate_cut_odds": "9¢", "rate_hike_odds": "2¢"},
-                "2026-04-18": {"rate_hold_odds": "90¢", "rate_cut_odds": "8¢", "rate_hike_odds": "2¢"},
-                "2026-04-17": {"rate_hold_odds": "92¢", "rate_cut_odds": "6¢", "rate_hike_odds": "2¢"}
+            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jul",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-july-825",
+            "probabilities":{
+                "2026-05-31": {"rate_hold_odds": "92¢", "rate_cut_odds": "3¢", "rate_hike_odds": "5¢"},
+                "2026-05-14": {"rate_hold_odds": "89¢", "rate_cut_odds": "9¢", "rate_hike_odds": "2¢"},
+                "2026-04-19": {"rate_hold_odds": "90¢", "rate_cut_odds": "8¢", "rate_hike_odds": "2¢"},
+                "2026-04-18": {"rate_hold_odds": "92¢", "rate_cut_odds": "6¢", "rate_hike_odds": "2¢"},
+                "2026-04-17": {"rate_hold_odds": "94¢", "rate_cut_odds": "4¢", "rate_hike_odds": "2¢"}
             },
-            "change": " Down 8¢ (Hold)",
-            "explanation": "Federal Reserve interest rate decision prediction market for the June 16-17, 2026 FOMC meeting. Market expects a rate hold with 98% probability as the Fed maintains its cautious stance. March nonfarm payrolls rebounded to 178,000 while unemployment held at 4.3%, signaling economic resilience amid elevated oil prices."
+            "change": "Down 8¢ (Hold)",
+            "explanation": "Federal Reserve interest rate decision prediction market for the July 28-29, 2026 FOMC meeting. Market expects a rate hold with 92% probability as the Fed maintains its cautious stance amid elevated oil prices from Middle East tensions. March nonfarm payrolls rebounded to 178,000 while unemployment held at 4.3%, signaling economic resilience. Volume: $8.2M."
         },
         {
             "id": "trump-impeachment",
@@ -1401,6 +1399,7 @@
                 "may": "11"
             },
             "daily": {
+                "2026-05-31": "6",
                 "2026-05-11":"18",
                 "2026-05-09": "10",
                 "2026-05-07": "2",
@@ -1420,7 +1419,7 @@
             },
         
             "probabilities": {
-
+                "2026-05-31": {"vesselsInGulf": 8, "hormuzInbound": 589, "hormuzOutbound": 3, "darkActivityEvents": 107, "vesselsAttacked": 39},
                 "2026-05-11": {"vesselsInGulf": 809, "hormuzInbound": 8, "hormuzOutbound": 10, "darkActivityEvents": 108, "vesselsAttacked": 37},
                 "2026-05-09": {"vesselsInGulf": 701, "hormuzInbound": 7, "hormuzOutbound": 3, "darkActivityEvents": 118, "vesselsAttacked": 37},
                 "2026-05-07": {"vesselsInGulf": 496, "hormuzInbound": 2, "hormuzOutbound": 0, "darkActivityEvents": 73, "vesselsAttacked": 37},

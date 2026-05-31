@@ -116,64 +116,92 @@ function formatEmploymentDelta(indicatorName, latestPoint, previousPoint) {
   return ` (${sign}${delta.toLocaleString('en-US')})`;
 }
 
-function getLatestIndicatorPoints(indicator) {
-  const points = [];
+  function getLatestIndicatorPoints(indicator) {
+    const points = [];
 
-  Object.keys(indicator).forEach((key) => {
-    if (/^\d{4}$/.test(key) && indicator[key] && typeof indicator[key] === 'object') {
-      MONTHS.forEach((month, index) => {
-        const rawValue = indicator[key][month];
+    // Find year-nested data (newest year first)
+    const yearEntries = Object.entries(indicator)
+      .filter(([key, val]) => /^\d{4}$/.test(key) && val && typeof val === 'object')
+      .sort(([a], [b]) => Number.parseInt(b, 10) - Number.parseInt(a, 10));
+
+    const seenDates = new Set();
+
+    // Add year-nested data first
+    for (const [yearStr, yearData] of yearEntries) {
+      const year = Number.parseInt(yearStr, 10);
+      monthLabels.forEach((monthLabel, index) => {
+        const monthKey = ['january','february','march','april','may','june',
+                          'july','august','september','october','november','december'][index];
+        const rawValue = yearData[monthKey];
         if (!rawValue || rawValue === '') return;
+        const stamp = new Date(year, Number.parseInt(monthKey, 10) || index, 1).getTime();
+        const dateKey = `${year}-${String(index + 1).padStart(2, '0')}`;
+        if (seenDates.has(dateKey)) return;
+        seenDates.add(dateKey);
         points.push({
-          stamp: new Date(Number.parseInt(key, 10), index, 1).getTime(),
+          stamp,
           rawValue: String(rawValue),
           numericValue: parseNumericValue(rawValue),
-          monthLabel: `${month.slice(0, 3)} ${key}`,
-          year: Number.parseInt(key, 10),
+          monthLabel: `${monthLabel} ${year}`,
+          year,
           monthIndex: index
         });
       });
     }
-  });
 
-  // Fallback for legacy flat month keys when nested year data is missing.
-  MONTHS.forEach((month, index) => {
-    const rawValue = indicator[month];
-    if (!rawValue || rawValue === '') return;
-    points.push({
-      stamp: new Date(2025, index, 1).getTime(),
-      rawValue: String(rawValue),
-      numericValue: parseNumericValue(rawValue),
-      monthLabel: `${month.slice(0, 3)} 2025`,
-      year: 2025,
-      monthIndex: index
+    // Add flat structure data for months not already covered by nested year data
+    const coveredMonths = new Set();
+    for (const [, yearData] of yearEntries) {
+      Object.keys(yearData).forEach(monthKey => {
+        const idx = ['january','february','march','april','may','june',
+                     'july','august','september','october','november','december']
+          .indexOf(monthKey);
+        if (idx >= 0) coveredMonths.add(idx);
+      });
+    }
+
+    MONTHS.forEach((month, index) => {
+      if (coveredMonths.has(index)) return;
+      const rawValue = indicator[month];
+      if (!rawValue || rawValue === '') return;
+      const stamp = new Date(2025, index, 1).getTime();
+      const dateKey = `flat-${String(index + 1).padStart(2, '0')}`;
+      if (seenDates.has(dateKey)) return;
+      seenDates.add(dateKey);
+      points.push({
+        stamp,
+        rawValue: String(rawValue),
+        numericValue: parseNumericValue(rawValue),
+        monthLabel: `${month.slice(0, 3)} 2025`,
+        year: 2025,
+        monthIndex: index
+      });
     });
-  });
 
-  points.sort((a, b) => b.stamp - a.stamp);
+    points.sort((a, b) => b.stamp - a.stamp);
 
-  if (!points.length) {
-    return { latest: null, previous: null, mom: null, yoyPrevious: null, yoy: null };
+    if (!points.length) {
+      return { latest: null, previous: null, mom: null, yoyPrevious: null, yoy: null };
+    }
+
+    const latest = points[0];
+    const previous = points.length > 1 ? points[1] : null;
+    let mom = null;
+    if (latest && previous && latest.numericValue !== null && previous.numericValue !== null && previous.numericValue !== 0) {
+      mom = ((latest.numericValue - previous.numericValue) / previous.numericValue) * 100;
+    }
+
+    // Find YoY: same month, previous year
+    const targetYear = latest.year - 1;
+    const targetMonth = latest.monthIndex;
+    const yoyPrevious = points.find(p => p.year === targetYear && p.monthIndex === targetMonth) || null;
+    let yoy = null;
+    if (latest && yoyPrevious && latest.numericValue !== null && yoyPrevious.numericValue !== null && yoyPrevious.numericValue !== 0) {
+      yoy = ((latest.numericValue - yoyPrevious.numericValue) / yoyPrevious.numericValue) * 100;
+    }
+
+    return { latest, previous, mom, yoyPrevious, yoy };
   }
-
-  const latest = points[0];
-  const previous = points.length > 1 ? points[1] : null;
-  let mom = null;
-  if (latest && previous && latest.numericValue !== null && previous.numericValue !== null && previous.numericValue !== 0) {
-    mom = ((latest.numericValue - previous.numericValue) / previous.numericValue) * 100;
-  }
-
-  // Find YoY: same month, previous year
-  const targetYear = latest.year - 1;
-  const targetMonth = latest.monthIndex;
-  const yoyPrevious = points.find(p => p.year === targetYear && p.monthIndex === targetMonth) || null;
-  let yoy = null;
-  if (latest && yoyPrevious && latest.numericValue !== null && yoyPrevious.numericValue !== null && yoyPrevious.numericValue !== 0) {
-    yoy = ((latest.numericValue - yoyPrevious.numericValue) / yoyPrevious.numericValue) * 100;
-  }
-
-  return { latest, previous, mom, yoyPrevious, yoy };
-}
 
 function setGeneratedAt() {
   const generatedAt = document.getElementById('generated-at');
@@ -397,11 +425,13 @@ async function loadLatestFinancials() {
     const { latest, previous, mom, yoy } = getLatestIndicatorPoints(item);
     const value = latest ? formatDisplayValue(item.name, latest.rawValue) : 'n/a';
     const employmentDelta = formatEmploymentDelta(item.name, latest, previous);
-    const momText = mom === null ? 'MoM n/a' : `MoM ${mom >= 0 ? '+' : ''}${mom.toFixed(1)}%`;
-    const momClass = mom === null ? 'mom-neutral' : mom > 0 ? 'mom-positive' : mom < 0 ? 'mom-negative' : 'mom-neutral';
+    const displayMom = mom;
+    const displayYoy = yoy;
+    const momText = mom === null ? 'MoM n/a' : `MoM ${displayMom >= 0 ? '+' : ''}${displayMom.toFixed(1)}%`;
+    const momClass = mom === null ? 'mom-neutral' : displayMom > 0 ? 'mom-positive' : displayMom < 0 ? 'mom-negative' : 'mom-neutral';
     const momHtml = `<span class="mom-pill ${momClass}">${escapeHtml(momText)}</span>`;
-    const yoyText = yoy === null ? 'YoY n/a' : `YoY ${yoy >= 0 ? '+' : ''}${yoy.toFixed(1)}%`;
-    const yoyClass = yoy === null ? 'mom-neutral' : yoy > 0 ? 'mom-positive' : yoy < 0 ? 'mom-negative' : 'mom-neutral';
+    const yoyText = yoy === null ? 'YoY n/a' : `YoY ${displayYoy >= 0 ? '+' : ''}${displayYoy.toFixed(1)}%`;
+    const yoyClass = yoy === null ? 'mom-neutral' : displayYoy > 0 ? 'mom-positive' : displayYoy < 0 ? 'mom-negative' : 'mom-neutral';
     const yoyHtml = `<span class="mom-pill ${yoyClass}">${escapeHtml(yoyText)}</span>`;
     const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
     const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;

@@ -189,10 +189,24 @@ function calculateMoMChange(indicator, MONTHS) {
         .map(key => parseInt(key))
         .sort((a, b) => b - a); // Sort years descending
 
-    // Build chronological list of all available data points
+    // Build chronological list of all available data points.
+    // Prefer year-nested data when available; only use flat months that
+    // do not duplicate a year-nested entry.
     const allDataPoints = [];
-    
-    // Add year-nested data first (in reverse chronological order)
+
+    // Collect months already covered by year-nested data (newest year first wins)
+    const coveredFlatMonths = new Set();
+    for (const year of yearKeys) {
+        for (let i = MONTHS.length - 1; i >= 0; i--) {
+            const month = MONTHS[i];
+            const value = indicator[year] && indicator[year][month];
+            if (isValidData(value)) {
+                coveredFlatMonths.add(month);
+            }
+        }
+    }
+
+    // Add year-nested data (in reverse chronological order)
     for (const year of yearKeys) {
         for (let i = MONTHS.length - 1; i >= 0; i--) {
             const month = MONTHS[i];
@@ -207,10 +221,11 @@ function calculateMoMChange(indicator, MONTHS) {
             }
         }
     }
-    
-    // Add flat structure data (legacy support)
+
+    // Add flat structure data only for months not covered by year-nested data (legacy support)
     for (let i = MONTHS.length - 1; i >= 0; i--) {
         const month = MONTHS[i];
+        if (coveredFlatMonths.has(month)) continue;
         const value = indicator[month];
         if (isValidData(value)) {
             allDataPoints.push({
@@ -301,8 +316,9 @@ function calculateYoYChange(indicator, MONTHS) {
     };
 }
 
-function calculateAllMonthlyChanges(indicator, MONTHS) {
+ function calculateAllMonthlyChanges(indicator, MONTHS) {
      const changes = [];
+     const seen = new Set();
 
      // Find year-nested data (keys that are numeric/year-like)
      const yearKeys = Object.keys(indicator)
@@ -310,24 +326,43 @@ function calculateAllMonthlyChanges(indicator, MONTHS) {
          .map(key => parseInt(key))
          .sort((a, b) => a - b); // Sort years ascending (oldest first) for chronological order
 
-     // Build list of all data points in chronological order
+     // Build list of all data points in chronological order.
+     // Prefer year-nested data when available; only include flat months that do
+     // not duplicate a year-nested entry.
+     const nestedMonths = new Set();
+     for (const year of yearKeys) {
+         for (let i = 0; i < MONTHS.length; i++) {
+             const month = MONTHS[i];
+             const value = indicator[year] && indicator[year][month];
+             if (isValidData(value) && extractNumericValue(value) !== null) {
+                 nestedMonths.add(`${year}-${month}`);
+             }
+         }
+     }
+
      const allValues = [];
-     
-     // Add flat structure data first (legacy data, chronologically earlier)
+
+     // Add flat structure data first (only months not in nested data)
      for (let i = 0; i < MONTHS.length; i++) {
          const month = MONTHS[i];
+         const hasNestedForMonth = [...nestedMonths].some(k => k.endsWith(`-${month}`));
+         if (hasNestedForMonth) continue;
          const value = extractNumericValue(indicator[month]);
-         if (value !== null) {
+         if (value !== null && !seen.has(`flat-${month}`)) {
+             seen.add(`flat-${month}`);
              allValues.push({ value, month, year: null, monthIndex: i });
          }
      }
-     
+
      // Add year-nested data in chronological order (ascending years)
      for (const year of yearKeys) {
          for (let i = 0; i < MONTHS.length; i++) {
              const month = MONTHS[i];
+             const key = `${year}-${month}`;
+             if (!nestedMonths.has(key)) continue;
              const value = extractNumericValue(indicator[year][month]);
-             if (value !== null && !allValues.some(v => v.month === month && v.year === year)) {
+             if (value !== null && !seen.has(key)) {
+                 seen.add(key);
                  allValues.push({ value, month, year, monthIndex: i });
              }
          }
@@ -337,7 +372,7 @@ function calculateAllMonthlyChanges(indicator, MONTHS) {
      for (let i = 1; i < allValues.length; i++) {
          const current = allValues[i];
          const previous = allValues[i - 1];
-         
+
          const change = current.value - previous.value;
          const formattedChange = formatCompactNumber(change);
 

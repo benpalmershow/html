@@ -195,15 +195,15 @@
 
 .indicators-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
     align-items: start
 }
 
 .indicator {
     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
     border-radius: var(--card-radius);
-    padding: 0.65rem;
+    padding: auto;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-card);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);

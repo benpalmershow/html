@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-29T14:00:00Z",
+    "lastUpdated": "2026-05-31T14:00:00Z",
     "indices": [
     
         {
@@ -507,7 +507,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "Chicago Fed",
             "name": "Real-Time Unemployment Rate Forecast",
-            "lastUpdated": "2026-04-13T14:00:00Z",
+            "lastUpdated": "2026-05-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
             "september": "4.35",
@@ -518,7 +518,8 @@
                 "january": "4.28",
                 "february": "4.27",
                 "march": "4.49",
-                "april": ""
+                "april": "4.34",
+                "may": "4.32"
             },
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
@@ -1446,7 +1447,7 @@
             "parentCategory": "Business Indicators",
             "agency": "Chicago Fed",
             "name": "Chicago Fed Survey of Economic Conditions",
-            "lastUpdated": "2026-04-29T14:00:00Z",
+            "lastUpdated": "2026-05-31T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
             "may": "3.80",
@@ -1460,8 +1461,9 @@
             "2026": {
                 "january": "+9.8",
                 "february": "+15.7",
-                "march": "+22",
-                    "april": "+16.7"
+                "march": "+21.7",
+                "april": "+19.7",
+                "may": "+11.5"
             },
             "change": "",
             "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."

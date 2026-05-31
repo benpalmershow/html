@@ -76,9 +76,11 @@ const IndicatorRenderers = (function () {
     function renderFOMC(indicator) {
         const rows = [];
         if (indicator.meeting_date) rows.push(`<span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span>`);
-        
+
         let latestDataHtml = '';
-        
+        let historyDataHtml = '';
+        let hasHistory = false;
+
         if (indicator.rate_hold_odds && indicator.rate_cut_odds && indicator.rate_hike_odds) {
             const holdProb = parseFloat(indicator.rate_hold_odds);
             const cutProb = parseFloat(indicator.rate_cut_odds);
@@ -105,26 +107,102 @@ const IndicatorRenderers = (function () {
                         </div>
                     </div>
                 </div>`;
+
+            // Handle historical probabilities
+            if (indicator.probabilities && typeof indicator.probabilities === 'object') {
+                const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+
+                if (sorted.length > 1) {
+                    hasHistory = true;
+                    historyDataHtml = sorted.slice(1).map(([date, probs]) => {
+                        const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                        const hold = probs.rate_hold_odds || '—';
+                        const cut = probs.rate_cut_odds || '—';
+                        const hike = probs.rate_hike_odds || '—';
+                        return `
+                            <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
+                                <span class="prediction-bar-label" style="min-width: 70px; font-size: 10px;">${dateLabel}</span>
+                                <span style="font-size: 10px; margin-right: 4px; font-weight: bold;">${hold}</span>
+                                <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
+                                    <div class="prediction-bar-fill yes-bar" style="width: ${parseFloat(hold) || 0}%; height: 100%;"></div>
+                                </div>
+                                <span style="font-size: 10px; margin-left: 4px; font-weight: bold;">${hike}</span>
+                                <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
+                                    <div class="prediction-bar-fill no-bar" style="width: ${parseFloat(hike) || 0}%; height: 100%;"></div>
+                                </div>
+                                <span style="font-size: 10px; margin-left: 4px; font-weight: bold;">${cut}</span>
+                                <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
+                                    <div class="prediction-bar-fill no-bar" style="width: ${parseFloat(cut) || 0}%; height: 100%; background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);"></div>
+                                </div>
+                            </div>`;
+                    }).join('');
+                }
+            }
         } else {
             if (indicator.rate_hold_odds) rows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
             if (indicator.rate_cut_odds) rows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
             if (indicator.rate_hike_odds) rows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
 
-            let historyDataHtml = '';
             rows.forEach((row, i) => {
                 if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`;
                 else historyDataHtml += `<div class="data-row">${row}</div>`;
             });
-            return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 2 };
+            hasHistory = rows.length > 2;
         }
 
-        return { latestDataHtml, historyDataHtml: '', hasHistory: false };
+        return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
     function renderRecession(indicator) {
         let latestDataHtml = '';
+        let historyDataHtml = '';
+        let hasHistory = false;
 
-        if (indicator.yes_probability && indicator.no_probability) {
+        // Check for historical probabilities
+        const probabilities = indicator.probabilities || indicator.propabilities;
+        if (probabilities && typeof probabilities === 'object') {
+            const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+
+            const buildProbBar = ([date, probs], large) => {
+                const yesProb = parseFloat(probs.yes);
+                const noProb = parseFloat(probs.no);
+                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                const fontSize = large ? '12px' : '10px';
+                return `
+                    <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
+                        <span class="prediction-bar-label" style="min-width: 70px; font-size: ${fontSize};">${dateLabel}</span>
+                        <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
+                        <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
+                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;"></div>
+                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;"></div>
+                        </div>
+                        <span style="font-size: ${fontSize}; margin-left: 4px; font-weight: bold;">${probs.no}</span>
+                    </div>`;
+            };
+
+            if (sorted.length > 0) {
+                const latest = sorted[0];
+                const yesProb = parseFloat(latest[1].yes);
+                const noProb = parseFloat(latest[1].no);
+
+                latestDataHtml = `
+                    <div class="prediction-bar-container prediction-dual-bar">
+                        <div class="prediction-bar-row" style="display: flex; align-items: center;">
+                            <span style="font-size: 12px; margin-right: 4px; font-weight: bold;">${latest[1].yes}</span>
+                            <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
+                                <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${latest[1].yes} Yes"></div>
+                                <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${latest[1].no} No"></div>
+                            </div>
+                            <span style="font-size: 12px; margin-left: 4px; font-weight: bold;">${latest[1].no}</span>
+                        </div>
+                    </div>`;
+            }
+
+            if (sorted.length > 1) {
+                hasHistory = true;
+                historyDataHtml = sorted.slice(1).map(entry => buildProbBar(entry, false)).join('');
+            }
+        } else if (indicator.yes_probability && indicator.no_probability) {
             const yesProb = parseFloat(indicator.yes_probability);
             const noProb = parseFloat(indicator.no_probability);
 
@@ -143,7 +221,7 @@ const IndicatorRenderers = (function () {
             latestDataHtml = `<div class="latest-data-row"><span class="month-label">Recession Probability:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
             if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No Recession:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
         }
-        return { latestDataHtml, historyDataHtml: '', hasHistory: false };
+        return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
      function renderPrediction(indicator) {
@@ -155,15 +233,16 @@ const IndicatorRenderers = (function () {
         if (probabilities && typeof probabilities === 'object') {
             const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
 
-            const buildProbBar = ([date, probs], large) => {
+            const buildProbBar = ([date, probs], large, showLabel = true) => {
                 const yesProb = parseFloat(probs.yes);
                 const noProb = parseFloat(probs.no);
                 const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
                 const fontSize = large ? '12px' : '10px';
                 const labelWidth = large ? '70px' : '70px';
+                const labelHtml = showLabel ? `<span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${dateLabel}</span>` : '';
                 return `
                     <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
-                        <span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${dateLabel}</span>
+                        ${labelHtml}
                         <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
                         <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
                             <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${probs.yes} Yes"></div>
@@ -174,7 +253,7 @@ const IndicatorRenderers = (function () {
             };
 
             if (sorted.length > 0) {
-                latestDataHtml = `<div class="prediction-bar-container">${buildProbBar(sorted[0], true)}</div>`;
+                latestDataHtml = `<div class="prediction-bar-container">${buildProbBar(sorted[0], true, false)}</div>`;
             }
 
             if (sorted.length > 1) {
@@ -225,11 +304,48 @@ const IndicatorRenderers = (function () {
         let historyDataHtml = '';
         let hasHistory = false;
 
-        if (indicator.candidates && typeof indicator.candidates === 'object') {
-            const entries = Object.entries(indicator.candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
-            
+        // Check for probabilities with candidate data (multi-candidate market)
+        const probabilities = indicator.probabilities || indicator.propabilities;
+        if (probabilities && typeof probabilities === 'object') {
+            const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+
+            const buildCandidateBar = ([date, candidates], large, showLabel = true) => {
+                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
+                const entries = Object.entries(candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
+                const fontSize = large ? '12px' : '10px';
+                const labelWidth = large ? '70px' : '90px';
+
+                let html = `<div class="prediction-bar-container">`;
+                entries.forEach(([name, prob]) => {
+                    const probValue = parseFloat(prob);
+                    html += `
+                        <div class="prediction-bar-row">
+                            <span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${name}</span>
+                            <div class="prediction-bar-track">
+                                <div class="prediction-bar-fill yes-bar" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: ${fontSize}; font-weight: bold;">${prob}</div>
+                            </div>
+                        </div>`;
+                });
+                html += `</div>`;
+                const dateWrapper = showLabel ? `<div class="prediction-date-label">${dateLabel}</div>` : '';
+                return `${dateWrapper}${html}`;
+            };
+
+            if (sorted.length > 0) {
+                latestDataHtml = buildCandidateBar(sorted[0], true, false);
+            }
+
+            if (sorted.length > 1) {
+                hasHistory = true;
+                historyDataHtml = sorted.slice(1).map(entry => buildCandidateBar(entry, false)).join('');
+            }
+        } else if (indicator.candidates && typeof indicator.candidates === 'object') {
+            // Fallback to legacy candidates format without history
+            const entries = Object.entries(indicator.candidates)
+                .sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
+
             latestDataHtml = `<div class="prediction-bar-container">`;
-            entries.forEach(([name, prob], i) => {
+            entries.forEach(([name, prob]) => {
                 const probValue = parseFloat(prob);
                 latestDataHtml += `
                     <div class="prediction-bar-row">
@@ -321,10 +437,10 @@ function renderHormuz(indicator) {
         const capacityPct   = latestCount !== null ? Math.min(Math.round((latestCount / PRECRISIS_NORMAL) * 100), 100) : 0;
 
         // --- Current snapshot (most recent probabilities entry) ---
-        const propKeys          = indicator.probabilities ? Object.keys(indicator.probabilities).sort() : [];
-        const currentPropKey    = propKeys[propKeys.length - 1];
+        const propKeys          = indicator.probabilities ? Object.keys(indicator.probabilities).sort((a, b) => new Date(b) - new Date(a)) : [];
+        const currentPropKey    = propKeys[0];
         const currentProp       = currentPropKey ? indicator.probabilities[currentPropKey] : null;
-        const historicalPropKeys = propKeys.slice(0, propKeys.length - 1).reverse();
+        const historicalPropKeys = propKeys.slice(1);
 
         // --- COLLAPSED: clean minimal layout ---
         const latestDataHtml = `
@@ -349,13 +465,21 @@ function renderHormuz(indicator) {
         if (currentProp) {
             const inOut = (currentProp.hormuzInbound !== undefined && currentProp.hormuzOutbound !== undefined) 
                 ? `${currentProp.hormuzInbound}↓ ${currentProp.hormuzOutbound}↑` : null;
-            const metrics = [
-                currentProp.vesselsInGulf !== undefined ? `<div class="hormuz-metric"><span class="hormuz-metric-val">${currentProp.vesselsInGulf.toLocaleString()}</span><span class="hormuz-metric-lbl">Gulf Vessels</span></div>` : '',
-                inOut ? `<div class="hormuz-metric"><span class="hormuz-metric-val">${inOut}</span><span class="hormuz-metric-lbl">In / Out</span></div>` : '',
-                currentProp.darkActivityEvents !== undefined ? `<div class="hormuz-metric"><span class="hormuz-metric-val">${currentProp.darkActivityEvents}</span><span class="hormuz-metric-lbl">Dark Events</span></div>` : '',
-                currentProp.vesselsAttacked !== undefined ? `<div class="hormuz-metric hormuz-metric--danger"><span class="hormuz-metric-val">${currentProp.vesselsAttacked}</span><span class="hormuz-metric-lbl">Attacked</span></div>` : ''
-            ].filter(Boolean).join('');
-            if (metrics) historyDataHtml += `<div class="hormuz-metrics-grid">${metrics}</div>`;
+            const metrics = [];
+            if (currentProp.vesselsInGulf !== undefined) {
+                metrics.push(`<div class="hormuz-metric"><span class="hormuz-metric-val">${currentProp.vesselsInGulf.toLocaleString()}</span><span class="hormuz-metric-lbl">Gulf Vessels</span></div>`);
+            }
+            if (inOut) {
+                metrics.push(`<div class="hormuz-metric"><span class="hormuz-metric-val">${inOut}</span><span class="hormuz-metric-lbl">In / Out</span></div>`);
+            }
+            if (currentProp.darkActivityEvents !== undefined) {
+                metrics.push(`<div class="hormuz-metric"><span class="hormuz-metric-val">${currentProp.darkActivityEvents}</span><span class="hormuz-metric-lbl">Dark Events</span></div>`);
+            }
+            if (currentProp.vesselsAttacked !== undefined) {
+                metrics.push(`<div class="hormuz-metric hormuz-metric--danger"><span class="hormuz-metric-val">${currentProp.vesselsAttacked}</span><span class="hormuz-metric-lbl">Attacked</span></div>`);
+            }
+            const metricsHtml = metrics.join('');
+            if (metricsHtml) historyDataHtml += `<div class="hormuz-metrics-grid">${metricsHtml}</div>`;
         }
 
         // Daily history entries (skip current day, show previous days)
@@ -462,9 +586,15 @@ function hasYesNoProbabilities(indicator) {
 
 function detectIndicatorType(indicator) {
     if (indicator.name.includes('FOMC') || (indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds)) return 'fomc';
-    if (hasYesNoProbabilities(indicator)) return 'prediction';
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
+    // Check for candidate-based probabilities (venezuela-style multi-candidate markets)
+    const probabilities = indicator.probabilities || indicator.propabilities;
+    if (probabilities && typeof probabilities === 'object') {
+        const firstEntry = Object.values(probabilities)[0];
+        if (firstEntry && !firstEntry.yes && !firstEntry.no) return 'venezuela';
+        return 'prediction';
+    }
     if (indicator.candidates && typeof indicator.candidates === 'object') return 'venezuela';
     if (indicator.name === 'KY-04 Massie v. Gallrein') return 'politicalPoll';
     if (indicator.yes_probability && indicator.no_probability) return 'prediction';

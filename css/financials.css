@@ -1228,6 +1228,17 @@
     text-align: right;
 }
 
+.prediction-date-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border-color);
+}
+
 /* ========================================
    13F HOLDINGS STYLES
    ======================================== */

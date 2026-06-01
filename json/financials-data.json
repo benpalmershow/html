@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-05-31T14:00:00Z",
+    "lastUpdated": "2026-06-01:00:00Z",
     "indices": [
     
         {
@@ -33,34 +33,7 @@
             },
             "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by end of April 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. Current traffic: ~8-10 daily transits, far below pre-crisis 100-138/day. Despite US-Iran ceasefire announced April 7, market expects traffic remains depressed amid ongoing mine-clearing operations and vessel rerouting. Volume: $10.8M."
         },
-        {
-            "id": "venezuela-head-of-state-2026",
-            "category": "Prediction Markets",
-            "type": "prediction-market",
-            "isActive": true,
-            "tags": ["politics", "venezuela", "elections"],
-            "displayOrder": 2,
-            "icon": "fa-landmark",
-            "color": "#e74c3c",
-            "units": "probability",
-            "region": "venezuela",
-            "parentCategory": "Prediction Markets",
-            "agency": "Kalshi",
-            "name": "Venezuela Head of State 2026",
-            "lastUpdated": "2026-05-31T08:00:00Z",
-            "releaseDay": 0,
-            "url": "https://kalshi.com/markets/kxvenezuelaleader/who-will-be-the-head-of-state-of-venezuela-on-date/kxvenezuelaleader-26dec31",
-            "polymarket_url": "https://polymarket.com/event/venezuela-leader-end-of-2026",
-         
-            "probabilities": {
-                "2026-05-31": {"Delcy Rodríguez": "21¢", "Nicolás Maduro": "67¢", "María Corina Machado": "6¢", "Diosdado Cabello Rondón": "1¢", "Edmundo González": "1¢"},
-                "2026-04-15": {"Delcy Rodríguez": "60¢", "Nicolás Maduro": "20¢", "María Corina Machado": "15¢", "Diosdado Cabello Rondón": "3¢", "Edmundo González": "2¢"},
-                "2026-04-17": {"Delcy Rodríguez": "62¢", "Nicolás Maduro": "18¢", "María Corina Machado": "14¢", "Diosdado Cabello Rondón": "3¢", "Edmundo González": "3¢"},
-                "2026-04-19": {"Delcy Rodríguez": "65¢", "Nicolás Maduro": "17¢", "María Corina Machado": "14¢", "Diosdado Cabello Rondón": "1¢", "Edmundo González": "1¢"}
-            },
-            "change": "",
-            "explanation": "Prediction market odds for who will be the head of state of Venezuela on December 31, 2026. Delcy Rodríguez commands 65% after assuming interim presidency following US forces capturing Maduro in January 2026. She consolidated power by replacing senior military commanders March 20. Trump administration lifted sanctions on Rodríguez April 1, signaling diplomatic engagement. Over $78M in trading volume."
-        },
+    
         {
             "id": "iranian-regime-fall-2026",
             "category": "Prediction Markets",

@@ -383,5 +383,14 @@ function calculateYoYChange(indicator, MONTHS) {
          });
      }
 
-     return changes;
+return changes;
  }
+
+ // Export to global scope for use in other modules
+ window.DataUtils = {
+     getLatestMonthForIndicator,
+     calculateMoMChange,
+     calculateYoYChange,
+     calculateAllMonthlyChanges,
+     DEFAULT_MONTHS
+ };

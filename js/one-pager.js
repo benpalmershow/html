@@ -84,126 +84,29 @@ function isInternalHtmlPath(path) {
 }
 
 function extractMarkdownBody(markdown) {
-  const parts = markdown.split(/^---$/m);
-  if (parts.length >= 3) {
-    return parts.slice(2).join('---').trim();
-  }
-  return markdown.trim();
-}
+   const parts = markdown.split(/^---$/m);
+   if (parts.length >= 3) {
+     return parts.slice(2).join('---').trim();
+   }
+   return markdown.trim();
+ }
 
+ function parseNumericValue(raw) {
+   return window.HtmlUtils.parseNumericValue(raw);
+ }
 
-function parseNumericValue(raw) {
-  return window.HtmlUtils.parseNumericValue(raw);
-}
+ function formatDisplayValue(indicatorName, rawValue) {
+   const text = cleanText(rawValue || '');
+   if (!text) return 'n/a';
 
-function formatDisplayValue(indicatorName, rawValue) {
-  const text = cleanText(rawValue || '');
-  if (!text) return 'n/a';
+   const needsPercent = /(rate|yield|unemployment)/i.test(indicatorName || '');
+   if (needsPercent && !text.includes('%')) {
+     return `${text}%`;
+   }
+   return text;
+ }
 
-  const needsPercent = /(rate|yield|unemployment)/i.test(indicatorName || '');
-  if (needsPercent && !text.includes('%')) {
-    return `${text}%`;
-  }
-  return text;
-}
-
-function formatEmploymentDelta(indicatorName, latestPoint, previousPoint) {
-  if ((indicatorName || '') !== 'Total Nonfarm Employment') return '';
-  if (!latestPoint || !previousPoint) return '';
-  if (latestPoint.numericValue === null || previousPoint.numericValue === null) return '';
-  const delta = Math.round(latestPoint.numericValue - previousPoint.numericValue);
-  const sign = delta > 0 ? '+' : '';
-  return ` (${sign}${delta.toLocaleString('en-US')})`;
-}
-
-  function getLatestIndicatorPoints(indicator) {
-    const points = [];
-
-    // Find year-nested data (newest year first)
-    const yearEntries = Object.entries(indicator)
-      .filter(([key, val]) => /^\d{4}$/.test(key) && val && typeof val === 'object')
-      .sort(([a], [b]) => Number.parseInt(b, 10) - Number.parseInt(a, 10));
-
-    const seenDates = new Set();
-
-    // Add year-nested data first
-    for (const [yearStr, yearData] of yearEntries) {
-      const year = Number.parseInt(yearStr, 10);
-      monthLabels.forEach((monthLabel, index) => {
-        const monthKey = ['january','february','march','april','may','june',
-                          'july','august','september','october','november','december'][index];
-        const rawValue = yearData[monthKey];
-        if (!rawValue || rawValue === '') return;
-        const stamp = new Date(year, Number.parseInt(monthKey, 10) || index, 1).getTime();
-        const dateKey = `${year}-${String(index + 1).padStart(2, '0')}`;
-        if (seenDates.has(dateKey)) return;
-        seenDates.add(dateKey);
-        points.push({
-          stamp,
-          rawValue: String(rawValue),
-          numericValue: parseNumericValue(rawValue),
-          monthLabel: `${monthLabel} ${year}`,
-          year,
-          monthIndex: index
-        });
-      });
-    }
-
-    // Add flat structure data for months not already covered by nested year data
-    const coveredMonths = new Set();
-    for (const [, yearData] of yearEntries) {
-      Object.keys(yearData).forEach(monthKey => {
-        const idx = ['january','february','march','april','may','june',
-                     'july','august','september','october','november','december']
-          .indexOf(monthKey);
-        if (idx >= 0) coveredMonths.add(idx);
-      });
-    }
-
-    MONTHS.forEach((month, index) => {
-      if (coveredMonths.has(index)) return;
-      const rawValue = indicator[month];
-      if (!rawValue || rawValue === '') return;
-      const stamp = new Date(2025, index, 1).getTime();
-      const dateKey = `flat-${String(index + 1).padStart(2, '0')}`;
-      if (seenDates.has(dateKey)) return;
-      seenDates.add(dateKey);
-      points.push({
-        stamp,
-        rawValue: String(rawValue),
-        numericValue: parseNumericValue(rawValue),
-        monthLabel: `${month.slice(0, 3)} 2025`,
-        year: 2025,
-        monthIndex: index
-      });
-    });
-
-    points.sort((a, b) => b.stamp - a.stamp);
-
-    if (!points.length) {
-      return { latest: null, previous: null, mom: null, yoyPrevious: null, yoy: null };
-    }
-
-    const latest = points[0];
-    const previous = points.length > 1 ? points[1] : null;
-    let mom = null;
-    if (latest && previous && latest.numericValue !== null && previous.numericValue !== null && previous.numericValue !== 0) {
-      mom = ((latest.numericValue - previous.numericValue) / previous.numericValue) * 100;
-    }
-
-    // Find YoY: same month, previous year
-    const targetYear = latest.year - 1;
-    const targetMonth = latest.monthIndex;
-    const yoyPrevious = points.find(p => p.year === targetYear && p.monthIndex === targetMonth) || null;
-    let yoy = null;
-    if (latest && yoyPrevious && latest.numericValue !== null && yoyPrevious.numericValue !== null && yoyPrevious.numericValue !== 0) {
-      yoy = ((latest.numericValue - yoyPrevious.numericValue) / yoyPrevious.numericValue) * 100;
-    }
-
-    return { latest, previous, mom, yoyPrevious, yoy };
-  }
-
-function setGeneratedAt() {
+ function setGeneratedAt() {
   const generatedAt = document.getElementById('generated-at');
   if (!generatedAt) return;
   generatedAt.textContent = `Generated ${new Date().toLocaleString('en-US', {
@@ -421,21 +324,38 @@ async function loadLatestFinancials() {
       return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(displayText)}</a>`;
     }
     
-    // Standard handling for numeric indicators
-    const { latest, previous, mom, yoy } = getLatestIndicatorPoints(item);
-    const value = latest ? formatDisplayValue(item.name, latest.rawValue) : 'n/a';
-    const employmentDelta = formatEmploymentDelta(item.name, latest, previous);
-    const displayMom = mom;
-    const displayYoy = yoy;
-    const momText = mom === null ? 'MoM n/a' : `MoM ${displayMom >= 0 ? '+' : ''}${displayMom.toFixed(1)}%`;
-    const momClass = mom === null ? 'mom-neutral' : displayMom > 0 ? 'mom-positive' : displayMom < 0 ? 'mom-negative' : 'mom-neutral';
+// Standard handling for numeric indicators - use shared utility functions
+    const dataUtils = window.DataUtils || { getLatestMonthForIndicator: () => ({ monthIndex: -1, monthName: '' }), calculateMoMChange: () => null, calculateYoYChange: () => null };
+    const latestMonth = dataUtils.getLatestMonthForIndicator(item, MONTHS);
+    const momResult = dataUtils.calculateMoMChange(item, MONTHS);
+    const yoyResult = dataUtils.calculateYoYChange(item, MONTHS);
+    
+    // Get latest value from year-nested or flat data
+    let latestValue = null;
+    const yearEntries = Object.entries(item)
+      .filter(([key, val]) => /^\d{4}$/.test(key) && val && typeof val === 'object')
+      .sort(([a], [b]) => Number.parseInt(b, 10) - Number.parseInt(a, 10));
+    
+    if (yearEntries.length > 0) {
+      const [latestYear, yearData] = yearEntries[0];
+      const monthKey = MONTHS[latestMonth.monthIndex];
+      latestValue = yearData[monthKey];
+    } else {
+      latestValue = item[latestMonth.monthName];
+    }
+    
+    const value = latestValue ? formatDisplayValue(item.name, latestValue) : 'n/a';
+    const momPercent = momResult ? momResult.percentChange : null;
+    const yoyPercent = yoyResult ? yoyResult.percentChange : null;
+    const momText = momPercent === null ? 'MoM n/a' : `MoM ${momPercent >= 0 ? '+' : ''}${momPercent.toFixed(1)}%`;
+    const momClass = momPercent === null ? 'mom-neutral' : momPercent > 0 ? 'mom-positive' : momPercent < 0 ? 'mom-negative' : 'mom-neutral';
     const momHtml = `<span class="mom-pill ${momClass}">${escapeHtml(momText)}</span>`;
-    const yoyText = yoy === null ? 'YoY n/a' : `YoY ${displayYoy >= 0 ? '+' : ''}${displayYoy.toFixed(1)}%`;
-    const yoyClass = yoy === null ? 'mom-neutral' : displayYoy > 0 ? 'mom-positive' : displayYoy < 0 ? 'mom-negative' : 'mom-neutral';
+    const yoyText = yoyPercent === null ? 'YoY n/a' : `YoY ${yoyPercent >= 0 ? '+' : ''}${yoyPercent.toFixed(1)}%`;
+    const yoyClass = yoyPercent === null ? 'mom-neutral' : yoyPercent > 0 ? 'mom-positive' : yoyPercent < 0 ? 'mom-negative' : 'mom-neutral';
     const yoyHtml = `<span class="mom-pill ${yoyClass}">${escapeHtml(yoyText)}</span>`;
     const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
     const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
-    return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)}${escapeHtml(employmentDelta)} | ${momHtml} | ${yoyHtml}</a>`;
+    return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(value)} | ${momHtml} | ${yoyHtml}</a>`;
   });
   renderList('latest-financials', lines);
 }

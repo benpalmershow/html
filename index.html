@@ -129,17 +129,18 @@
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
 
-  <main class="one-pager-container" id="main-content" tabindex="-1">
-<!-- Hero section links are sourced from json/media.json (first entry, type podcast) -->
+<main class="one-pager-container" id="main-content" tabindex="-1">
+    <!-- Hero section links are sourced from json/media.json (first entry, type podcast) -->
     <script defer src="js/services.js"></script>
     <script defer src="js/sync-hero.js"></script>
-   <section class="latest-episode-hero">
-     <div class="latest-episode-cover">
-       <a href="media.html" title="View Media">
-         <img src="images/logo-360x360.webp" alt="Doc Riter" width="320" height="320" loading="eager" fetchpriority="high">
-       </a>
-     </div>
-     <div class="latest-episode-info">
+
+    <section class="latest-episode-hero">
+      <div class="latest-episode-cover">
+        <a href="media.html" title="View Media">
+          <img src="images/logo-360x360.webp" alt="Doc Riter" width="320" height="320" loading="eager" fetchpriority="high">
+        </a>
+      </div>
+      <div class="latest-episode-info">
        <p class="latest-episode-label">Latest Episode</p>
         <h2 class="latest-episode-title">
           <a href="https://open.spotify.com/episode/0Wz4yFBKDgygSwNuNnB4z6?si=e372d372d36b4a99" target="_blank" rel="noopener noreferrer">Saturday May 16th</a>
@@ -196,31 +197,32 @@
       </h2>
       <ul id="latest-financials" class="compact-list"></ul>
     </article>
-  </section>
-</main>
+</section>
+  </main>
 
-<div id="footer-container"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    fetch('components/footer.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-      })
-      .catch(error => {
-        console.error('Footer load error:', error);
-      });
-  });
-</script>
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
 
-   <script src="js/html-utils.js" defer></script>
-   <script src="js/nav.js" defer></script>
-   <script src="js/swipe-nav.js" defer></script>
-   <script src="js/one-pager.js" defer></script>
-   <script src="js/bfcache-compat.js" defer></script>
-   <script src="js/search.js" defer></script>
-   
-     <script>
+  <script src="js/html-utils.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
+  <script src="js/one-pager.js" defer></script>
+  <script src="js/bfcache-compat.js" defer></script>
+  <script src="js/search.js" defer></script>
+
+  <script>
     (function () {
       function loadScript(src, callback) {
         const script = document.createElement('script');

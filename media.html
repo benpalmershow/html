@@ -175,46 +175,6 @@
       }
     }
 
-     /* Search input styles - matching body.css */
-     .search-wrapper {
-         position: relative;
-         max-width: 280px;
-         margin: 10px auto 0;
-     }
-
-     .search-icon {
-         position: absolute;
-         left: 10px;
-         top: 50%;
-         transform: translateY(-50%);
-         width: 16px;
-         height: 16px;
-         color: var(--text-muted, #6c757d);
-         pointer-events: none;
-     }
-
-     .indicator-search {
-         width: 100%;
-         padding: 0.5rem 0.75rem 0.5rem 2rem;
-         border: 1px solid var(--border-color, #e5e7eb);
-         border-radius: 8px;
-         background: var(--bg-secondary, #f9fafb);
-         color: var(--text-primary, #111827);
-         font-size: 0.9rem;
-         outline: none;
-         transition: border-color 0.2s ease, box-shadow 0.2s ease;
-     }
-
-     .indicator-search:focus {
-         border-color: var(--logo-teal, #2c5f5a);
-         box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
-     }
-
-     .indicator-search::placeholder {
-         color: var(--text-muted, #6c757d);
-         opacity: 0.6;
-     }
-
      /* Font optimization */
     @font-face {
       font-family: 'FontAwesome';
@@ -243,30 +203,32 @@
      <img src="images/listen.webp" alt="" width="32" height="32">
    </div>
 
-   <main id="main-content" tabindex="-1">
-     <div class="page-header page-header-branded">
-       <img src="images/listen.webp" alt="" width="32" height="32" class="page-brand-icon character-broadcaster entrance-pop">
-       <h1 class="page-title" aria-label="Page title">Media</h1>
-     </div>
-     <div class="filters" id="media-filters" aria-label="Filter media by type"></div>
+<main id="main-content" tabindex="-1">
+      <div class="page-header page-header-branded">
+        <img src="images/listen.webp" alt="" width="32" height="32" class="page-brand-icon character-broadcaster entrance-pop">
+        <h1 class="page-title" aria-label="Page title">Media</h1>
+      </div>
 
-     <!-- Search Bar -->
-     <div class="search-wrapper">
-       <i data-lucide="search" class="search-icon"></i>
-       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search media..." autocomplete="off">
-     </div>
+      <div class="filter-bar" id="media-filters" aria-label="Filter media by type">
+        <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <div class="filter-bar-search" id="filterBarSearch">
+          <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search media..." autocomplete="off">
+        </div>
+      </div>
 
-     <div class="media-filters" style="display: none;">
-      <select id="filter-type" aria-label="Filter by media type">
-        <option value="all">All</option>
-      </select>
-      <label data-short="Sort:">
-        <select id="sort-by" aria-label="Sort media">
-          <option value="date-desc">Newest</option>
-          <option value="title-asc">A-Z</option>
+      <div class="media-filters" style="display: none;">
+        <select id="filter-type" aria-label="Filter by media type">
+          <option value="all">All</option>
         </select>
-      </label>
-    </div>
+        <label data-short="Sort:">
+          <select id="sort-by" aria-label="Sort media">
+            <option value="date-desc">Newest</option>
+            <option value="title-asc">A-Z</option>
+          </select>
+        </label>
+      </div>
 
      <div class="media-cards" id="media-cards-container">
        <!-- Featured: Latest Doc Riter Podcast -->

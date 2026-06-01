@@ -129,13 +129,18 @@
 
         mediaFilters.innerHTML = '';
 
+        // Create filters container for media types
+        const filtersContainer = document.createElement('div');
+        filtersContainer.className = 'filters';
+        mediaFilters.appendChild(filtersContainer);
+
         // Create "All" button
         const allBtn = document.createElement('button');
         allBtn.type = 'button';
         allBtn.className = 'filter-btn active';
         allBtn.dataset.type = 'all';
         allBtn.innerHTML = `${typeIcons['all']}<span class="filter-text">${typeLabel['all']}</span>`;
-        mediaFilters.appendChild(allBtn);
+        filtersContainer.appendChild(allBtn);
 
         // Create type buttons
         VALID_MEDIA_TYPES.forEach(type => {
@@ -144,14 +149,14 @@
             btn.className = 'filter-btn';
             btn.dataset.type = type;
             btn.innerHTML = `${typeIcons[type] || typeIcons['all']}<span class="filter-text">${typeLabel[type] || type}</span>`;
-            mediaFilters.appendChild(btn);
+            filtersContainer.appendChild(btn);
         });
 
-        mediaFilters.addEventListener('click', function(e) {
+        filtersContainer.addEventListener('click', function(e) {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
 
-            mediaFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             currentMediaType = btn.dataset.type;

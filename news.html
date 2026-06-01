@@ -138,25 +138,28 @@
      <img src="images/read.webp" alt="" width="32" height="32">
    </div>
 
-   <main id="main-content" tabindex="-1">
-     <div class="page-header page-header-branded">
-       <img src="images/read.webp" alt="" width="32" height="32" class="page-brand-icon character-scholar entrance-slide">
-       <h1 class="page-title" aria-label="Page title">Essays</h1>
-     </div>
+<main id="main-content" tabindex="-1">
+      <div class="page-header page-header-branded">
+        <img src="images/read.webp" alt="" width="32" height="32" class="page-brand-icon character-scholar entrance-slide">
+        <h1 class="page-title" aria-label="Page title">Essays</h1>
+      </div>
 
-     <!-- Search Bar -->
-     <div class="search-wrapper">
-       <i data-lucide="search" class="search-icon"></i>
-       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search essays..." autocomplete="off">
-     </div>
+<div class="filter-bar" id="essay-filters" aria-label="Filter essays by category">
+        <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <div class="filter-bar-search" id="filterBarSearch">
+          <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search essays..." autocomplete="off">
+        </div>
+      </div>
 
-     <div class="article-shell">
-      <div id="article-status" class="article-status">Loading essays...</div>
+      <div class="article-shell">
+        <div id="article-status" class="article-status">Loading essays...</div>
 
-      <section id="essay-index" class="essay-index" hidden>
-        <div id="essay-filters" class="filters" aria-label="Filter essays by category"></div>
-        <div id="essay-results" class="essay-results" aria-live="polite"></div>
-      </section>
+        <section id="essay-index" class="essay-index" hidden>
+          <div id="category-filters" class="filters" aria-label="Filter essays by category"></div>
+          <div id="essay-results" class="essay-results" aria-live="polite"></div>
+        </section>
 
       <article id="article-reader" class="article-reader-card" hidden>
         <div class="article-toolbar">

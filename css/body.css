@@ -507,25 +507,100 @@ html.dark-mode #social-footer .social-links img {
 }
 
 /* ========================================
-   FILTERS (Shared across pages)
-   ======================================== */
+    FILTER BAR - Standardized across all pages
+    ======================================== */
 
-.filters {
+.filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+    padding: 0.6rem var(--content-padding);
+    margin: 0 calc(-1 * var(--content-padding)) 0.6rem;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 20px;
-    padding: 0 var(--spacing-md, 1rem);
-    max-width: 100%;
+    align-items: center;
+    gap: 8px;
     overflow-x: auto;
-    scrollbar-width: none;
+    overflow-y: hidden;
 }
-.filters::-webkit-scrollbar {
+
+.filter-bar::-webkit-scrollbar {
     display: none;
 }
 
-.filters .filter-btn {
+.filter-bar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filter-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 5px;
+    background: linear-gradient(to bottom, var(--bg-primary), transparent);
+    pointer-events: none;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.search-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    border-radius: var(--control-radius, 6px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.search-toggle:hover {
+    background: var(--bg-secondary);
+    color: var(--logo-teal);
+    border-color: var(--border-color);
+}
+
+.filter-bar-search {
+    display: none;
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 180px;
+    max-width: 280px;
+}
+
+.filter-bar-search .indicator-search {
+    width: 100%;
+    max-width: 100%;
+}
+
+.filter-bar.search-open .search-toggle {
+    display: none;
+}
+
+.filter-bar.search-open .filter-bar-search {
+    display: block;
+    animation: searchIn 0.2s ease-out;
+}
+
+@keyframes searchIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.filter-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -540,54 +615,71 @@ html.dark-mode #social-footer .social-links img {
     white-space: nowrap;
 }
 
-.filters .filter-btn .filter-icon,
-.filters .filter-btn .filter-icon i,
-.filters .filter-btn i.fas,
-.filters .filter-btn i.fab {
+.filter-btn .filter-icon,
+.filter-btn .filter-icon i,
+.filter-btn i.fas,
+.filter-btn i.fab {
     flex-shrink: 0;
     width: 1em;
     height: 1em;
     font-size: 1em;
 }
 
-.filters .filter-btn .filter-text {
+.filter-btn .filter-text {
     display: none;
 }
 
-.filters .filter-btn.active .filter-text {
+.filter-btn.active .filter-text {
     display: inline;
 }
 
-.filters .filter-btn:hover {
+.filter-btn:hover {
     background: var(--bg-tertiary, #e8e8e8);
     transform: translateY(-1px);
     opacity: 1;
 }
 
-.filters .filter-btn.active {
+.filter-btn.active {
     background: var(--logo-teal, #2c5f5a);
     color: white;
 }
 
-/* Responsive filters */
 @media (max-width: 768px) {
-    .filters {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: center;
-        padding: 0.5rem;
-        scrollbar-width: none;
-        margin-bottom: 12px;
-    }
-
-    .filters::-webkit-scrollbar {
-        display: none;
-    }
-
-    .filters .filter-btn {
+    .filter-btn {
         padding: 0.45rem 0.75rem;
         font-size: 0.8rem;
     }
+}
+
+/* Source toggle button style */
+.source-toggle-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.source-toggle-btn:hover {
+    color: var(--text-secondary);
+}
+
+.source-toggle-btn.active {
+    color: var(--text-primary);
+}
+
+.source-toggle-btn + .source-toggle-btn::before {
+    content: '|';
+    margin-right: var(--spacing-xs);
+    color: var(--text-muted);
+    opacity: 0.4;
 }
 
 /* Dark mode filter overrides - theme.css handles html.dark-mode via CSS variables */

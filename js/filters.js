@@ -65,59 +65,63 @@ function syncFilterToURL(category, isLatest) {
    ========================================= */
 
 function setupFilters(financialData) {
-    const categories = [...new Set(financialData.indices.map(item => item.category))];
-    const filtersContainer = document.getElementById('essay-filters');
+     const categories = [...new Set(financialData.indices.map(item => item.category))];
+     const filtersContainer = document.getElementById('essay-filters');
 
-    if (!filtersContainer) return;
+     if (!filtersContainer) return;
 
-    filtersContainer.querySelectorAll('.filter-btn').forEach(btn => btn.remove());
+     // Check if there's a nested .filters element for buttons, otherwise use the container
+     const buttonsContainer = filtersContainer.querySelector('.filters') || filtersContainer;
+     buttonsContainer.querySelectorAll('.filter-btn').forEach(btn => btn.remove());
 
-    const createFilterBtn = (id, icon, text, isLatest = false) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `filter-btn ${id === 'all' ? 'active' : ''}`;
-        btn.dataset.category = id;
-        if (isLatest) btn.dataset.isLatest = 'true';
-        btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
-        return btn;
-    };
+     const createFilterBtn = (id, icon, text, isLatest = false) => {
+         const btn = document.createElement('button');
+         btn.type = 'button';
+         btn.className = `filter-btn ${id === 'all' ? 'active' : ''}`;
+         btn.dataset.category = id;
+         if (isLatest) btn.dataset.isLatest = 'true';
+         btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
+         return btn;
+     };
 
-    const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
-    filtersContainer.appendChild(allBtn);
+     // Create buttons
+     const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
+     buttonsContainer.appendChild(allBtn);
 
-    const latestBtn = createFilterBtn('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
-    filtersContainer.appendChild(latestBtn);
+     const latestBtn = createFilterBtn('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
+     buttonsContainer.appendChild(latestBtn);
 
-    categories.forEach(category => {
-        const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
-        const btn = createFilterBtn(category, icon, category);
-        filtersContainer.appendChild(btn);
-    });
+     categories.forEach(category => {
+         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
+         const btn = createFilterBtn(category, icon, category);
+         buttonsContainer.appendChild(btn);
+     });
 
-    const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
-    filtersContainer.appendChild(th13fBtn);
+     const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
+     buttonsContainer.appendChild(th13fBtn);
 
-    filtersContainer.addEventListener('click', function (e) {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
+     // Use event delegation on the buttons container
+     buttonsContainer.addEventListener('click', function (e) {
+         const btn = e.target.closest('.filter-btn');
+         if (!btn) return;
 
-        filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+         buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+         btn.classList.add('active');
 
-        const category = btn.dataset.category;
-        const isLatest = btn.dataset.isLatest === 'true';
+         const category = btn.dataset.category;
+         const isLatest = btn.dataset.isLatest === 'true';
 
-        handleFilterClick(btn, category, isLatest);
+         handleFilterClick(btn, category, isLatest);
 
-        if (isLatest) {
-            renderDashboard('all', true);
-        } else {
-            renderDashboard(category, false);
-        }
-    });
+         if (isLatest) {
+             renderDashboard('all', true);
+         } else {
+             renderDashboard(category, false);
+         }
+     });
 
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-}
+     if (typeof lucide !== 'undefined') lucide.createIcons();
+ }
 
 /* =========================================
    Icon Handlers (SRP: UI interactions)

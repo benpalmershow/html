@@ -1,7 +1,8 @@
 {
   "scripts": {
     "generate:rss": "node scripts/generate-rss.js",
-    "validate": "node scripts/validate-site.js"
+    "validate": "node scripts/validate-site.js",
+    "bump-version": "bash scripts/bump-version.sh"
   },
   "devDependencies": {}
 }

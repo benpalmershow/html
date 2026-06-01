@@ -9,21 +9,22 @@ const Services = (function () {
     // =========================================
     class DataService {
         constructor(options = {}) {
-            this._version = options.version || document.querySelector('meta[name="site-data-version"]')?.content || '20260320';
             this._cache = new Map();
         }
 
-        _cacheKey(path) {
-            return `${path}?v=${this._version}`;
-        }
-
         async fetchJSON(path, options = {}) {
-            const cacheKey = this._cacheKey(path);
+            const cacheKey = path;
             if (this._cache.has(cacheKey) && !options.bustCache) {
                 return this._cache.get(cacheKey);
             }
 
-            const response = await fetch(cacheKey, {
+            let fetchPath = path;
+            if (!options.bustCache) {
+                const params = new URLSearchParams({ _t: Date.now() });
+                fetchPath = `${path}?${params.toString()}`;
+            }
+
+            const response = await fetch(fetchPath, {
                 headers: { 'Accept': 'application/json' },
                 ...options
             });
@@ -39,7 +40,9 @@ const Services = (function () {
 
         async fetchAnyJSON(paths) {
             const fetchPromises = paths.map(async path => {
-                const response = await fetch(this._cacheKey(path), {
+                const params = new URLSearchParams({ _t: Date.now() });
+                const fetchPath = `${path}?${params.toString()}`;
+                const response = await fetch(fetchPath, {
                     headers: { 'Accept': 'application/json' }
                 });
                 if (!response.ok) throw new Error(`Failed to fetch from ${path}`);
@@ -50,15 +53,14 @@ const Services = (function () {
         }
 
         async fetchText(path, options = {}) {
-            const cacheKey = this._cacheKey(path);
-            if (this._cache.has(cacheKey) && !options.bustCache) {
-                return this._cache.get(cacheKey);
+            if (this._cache.has(path) && !options.bustCache) {
+                return this._cache.get(path);
             }
 
-            const response = await fetch(cacheKey, options);
+            const response = await fetch(path, options);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const text = await response.text();
-            this._cache.set(cacheKey, text);
+            this._cache.set(path, text);
             return text;
         }
 

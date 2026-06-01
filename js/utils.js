@@ -16,7 +16,13 @@ function formatYAxisTick(value) {
 }
 
 function formatDate(dateString, formatType = 'full') {
-    const date = new Date(dateString);
+    let date;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+        const [y, m, d] = dateString.split('-').map(Number);
+        date = new Date(y, m - 1, d);
+    } else {
+        date = new Date(dateString);
+    }
     if (formatType === 'short') {
         return date.toLocaleDateString('en-US', {
             month: 'numeric',

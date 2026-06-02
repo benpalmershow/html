@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-01T08:00:00",
+    "lastUpdated": "2026-06-02T08:00:00",
     "indices": [
     
         {
@@ -1845,7 +1845,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2026-05-06T14:00:00Z",
+            "lastUpdated": "2026-06-02T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
             "march": "6,952,000",
@@ -1861,7 +1861,8 @@
             "2026": {
                 "january": "7,240,000",
                 "february": "6,922,000",
-                "march": "6,866,000"
+                "march": "6,887,000",
+                "april": "7,618,000"
             },
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-02T08:00:00",
+    "lastUpdated": "2026-06-03T08:00:00",
     "indices": [
     
         {
@@ -1811,7 +1811,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "ADP",
             "name": "Private Employment",
-            "lastUpdated": "2026-05-06T14:00:00Z",
+            "lastUpdated": "2026-06-03T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.adpresearch.com",
             "march": "131,962,000",
@@ -1828,7 +1828,8 @@
                 "january": "132,270,000",
                 "february": "132,336,000",
                 "march": "132,397,000",
-                "april": "132,506,000"
+                "april": "132,502,000",
+                    "may": "132,624,000"
             },
             "change": "",
             "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."

@@ -338,13 +338,18 @@ h1.page-title {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     text-align: center;
-    margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+    /* Canonical spacing — do not override per-page */
+    margin: 0;
+    padding: 0;
 }
 
 .page-header {
     width: min(100%, var(--content-standard));
     margin-inline: auto;
     padding-inline: var(--content-padding);
+    /* Consistent vertical breathing room above and below the title block */
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
 }
 
 
@@ -432,7 +437,12 @@ h1.page-title {
 
     h1.page-title {
         font-size: 0.8rem;
-        margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+        /* spacing lives on .page-header — no margin override needed */
+    }
+
+    .page-header {
+        padding-top: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
     }
 
     .table-wrapper td:first-child,
@@ -519,6 +529,7 @@ html.dark-mode #social-footer .social-links img {
     margin: 0 calc(-1 * var(--content-padding)) 0.6rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -547,8 +558,9 @@ html.dark-mode #social-footer .social-links img {
 .filters {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .search-toggle {

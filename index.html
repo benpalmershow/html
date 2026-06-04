@@ -133,42 +133,45 @@
     <script defer src="js/services.js"></script>
     <script defer src="js/sync-hero.js"></script>
 
-    <!-- Search Bar -->
-    <div class="search-wrapper">
-      <i data-lucide="search" class="search-icon"></i>
-      <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search..." autocomplete="off">
-    </div>
-
    <section class="updates-grid">
     <article class="section-card section-docs">
-      <h2>
-        <img src="images/announcements.webp" alt="" class="section-link-image" width="24" height="24" loading="lazy">
-        <a href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Journal" title="Open Journal">Latest Docs</a>
+      <h2 class="section-label">
+        <img src="images/announcements.webp" alt="" width="14" height="14">
+        <a href="journal.html" target="_blank" rel="noopener noreferrer">Docs</a>
       </h2>
-      <ul id="latest-journal" class="compact-list"></ul>
+      <div class="compact-list-wrap">
+        <ul id="latest-journal" class="compact-list"></ul>
+      </div>
     </article>
 
     <article class="section-card section-essays">
-      <h2>
-        <a href="news.html" target="_blank" rel="noopener noreferrer" aria-label="Open Essays" title="Open Essays">Latest Essays</a>
+      <h2 class="section-label">
+        <i data-lucide="newspaper" style="width:14px;height:14px;stroke-width:2;"></i>
+        <a href="journal.html" target="_blank" rel="noopener noreferrer">Essays</a>
       </h2>
-      <ul id="latest-essays" class="compact-list"></ul>
+      <div class="compact-list-wrap">
+        <ul id="latest-essays" class="compact-list"></ul>
+      </div>
     </article>
 
     <article class="section-card section-media">
-      <h2>
-        <img src="images/media-60x60.webp" alt="" class="section-link-image" width="24" height="24" loading="lazy">
-        <a href="media.html" target="_blank" rel="noopener noreferrer" aria-label="Open Media" title="Open Media">Latest Media</a>
+      <h2 class="section-label">
+        <img src="images/media-60x60.webp" alt="" width="14" height="14">
+        <a href="media.html" target="_blank" rel="noopener noreferrer">Media</a>
       </h2>
-      <ul id="latest-media" class="compact-list"></ul>
+      <div class="compact-list-wrap">
+        <ul id="latest-media" class="compact-list"></ul>
+      </div>
     </article>
 
     <article class="section-card section-numbers">
-      <h2>
-        <img src="images/read.webp" alt="" class="section-link-image" width="24" height="24" loading="lazy">
-        <a href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer" aria-label="Open Latest Updates" title="Open Latest Updates">Latest Numbers</a>
+      <h2 class="section-label">
+        <img src="images/read.webp" alt="" width="14" height="14">
+        <a href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer">Numbers</a>
       </h2>
-      <ul id="latest-financials" class="compact-list"></ul>
+      <div class="compact-list-wrap">
+        <ul id="latest-financials" class="compact-list"></ul>
+      </div>
     </article>
 </section>
   </main>

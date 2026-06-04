@@ -121,14 +121,15 @@
        </h1>
      </div>
 
-     <!-- Search Bar -->
-     <div class="search-wrapper">
-       <i data-lucide="search" class="search-icon"></i>
-       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
+     <div class="filter-bar" id="journal-category-filters" aria-label="Filter docs and essays">
+       <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+       </button>
+       <div class="filter-bar-search" id="filterBarSearch">
+         <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
+       </div>
+       <div class="filters" id="journal-filters-btns"></div>
      </div>
-
-<div class="filters" id="journal-category-filters" aria-label="Filter essays by category">
-</div>
     <div class="content">
       <!-- Journal entries feed -->
       <div id="journal-feed"></div>

@@ -203,3 +203,31 @@ if (document.readyState === 'loading') {
 } else {
     initSearchForPage();
 }
+
+// Setup search toggle button for filter-bar pattern (journal, media, etc.)
+function setupFilterBarSearchToggle() {
+    const toggle = document.getElementById('searchToggle');
+    if (!toggle) return;
+
+    // Find the nearest filter-bar ancestor or sibling container
+    const filterBar = toggle.closest('.filter-bar');
+    const searchInput = document.getElementById('indicatorSearch');
+    if (!filterBar || !searchInput) return;
+
+    toggle.addEventListener('click', () => {
+        filterBar.classList.add('search-open');
+        setTimeout(() => searchInput.focus(), 80);
+    });
+
+    searchInput.addEventListener('blur', () => {
+        if (!searchInput.value.trim()) {
+            filterBar.classList.remove('search-open');
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFilterBarSearchToggle);
+} else {
+    setupFilterBarSearchToggle();
+}

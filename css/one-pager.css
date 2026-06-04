@@ -896,7 +896,7 @@ html.dark-mode .pill-brand-icon {
 .section-card {
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 0.75rem;
+  padding: 0;
   background: var(--bg-secondary);
   display: flex;
   flex-direction: column;
@@ -925,14 +925,44 @@ html.dark-mode .pill-brand-icon {
   background: var(--bg-primary);
 }
 
-.section-card h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.1rem;
-  line-height: 1.2;
-  display: inline-flex;
+.section-card h2:not(.section-label) {
+  display: none;
+}
+
+.section-label {
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  color: var(--text-primary);
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.4rem 0.6rem 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  line-height: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-label img {
+  opacity: 0.55;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.section-label svg {
+  opacity: 0.55;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.section-label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-label a:hover {
+  color: var(--accent-primary);
 }
 
 .section-card h2 a {
@@ -944,47 +974,129 @@ html.dark-mode .pill-brand-icon {
   color: var(--accent-primary);
 }
 
+/* ── Scroll-driven indicators (inspired by jh3y's oNVmzby pen) ── */
+
+/* Wrapper that positions the indicator arrows */
+.compact-list-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Up/down chevron arrows shown at top and bottom edges */
+.compact-list-wrap::before,
+.compact-list-wrap::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 3;
+  background-color: var(--accent-primary);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  opacity: 0;
+}
+
+/* Top arrow: appears once the list has been scrolled down */
+.compact-list-wrap::before {
+  top: 4px;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 15.75l7.5-7.5 7.5 7.5'/%3E%3C/svg%3E");
+}
+
+/* Bottom arrow: appears by default, fades out when fully scrolled */
+.compact-list-wrap::after {
+  bottom: 4px;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+}
+
 .compact-list {
   margin: 0;
   padding: 0;
   list-style: none;
-  flex: 1;
   overflow-y: auto;
-  max-height: 280px;
+  max-height: 420px;
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) transparent;
-  position: relative;
+  /* Fade edges via mask-image — driven by scroll-linked animations */
+  --scroll-top: 0;
+  --scroll-bottom: 1;
+  mask-image:
+    linear-gradient(to bottom,
+      transparent 0px,
+      black calc(var(--scroll-top) * 32px + (1 - var(--scroll-top)) * 0px),
+      black calc(100% - calc(var(--scroll-bottom) * 32px + (1 - var(--scroll-bottom)) * 0px)),
+      transparent 100%);
 }
 
-.compact-list::before,
-.compact-list::after {
-  content: '';
-  position: sticky;
-  left: 0;
-  right: 0;
-  height: 24px;
-  pointer-events: none;
-  z-index: 1;
+/* Use scroll-driven animation to drive a --progress custom property proxy via @keyframes */
+@supports (animation-timeline: scroll()) {
+  .compact-list {
+    animation:
+      sd-top-fade linear both,
+      sd-bottom-fade linear both;
+    animation-timeline: scroll(self), scroll(self);
+    animation-range:
+      0px 40px,
+      calc(100% - 40px) 100%;
+    mask-image: none; /* remove static mask; driven version below */
+  }
+
+  @keyframes sd-top-fade {
+    from { --_top-mask: 0px; }
+    to   { --_top-mask: 32px; }
+  }
+
+  @keyframes sd-bottom-fade {
+    from { --_bottom-mask: 32px; }
+    to   { --_bottom-mask: 0px; }
+  }
+
+  .compact-list {
+    mask-image:
+      linear-gradient(to bottom,
+        transparent 0px,
+        black var(--_top-mask, 0px),
+        black calc(100% - var(--_bottom-mask, 32px)),
+        transparent 100%);
+  }
+
+  /* Drive indicator chevron opacity via scroll on the list */
+  .compact-list-wrap::before {
+    animation: sd-top-arrow linear both;
+    animation-timeline: scroll(nearest);
+    animation-range: 0px 40px;
+  }
+
+  .compact-list-wrap::after {
+    animation: sd-bottom-arrow linear both;
+    animation-timeline: scroll(nearest);
+    animation-range: calc(100% - 40px) 100%;
+  }
+
+  @keyframes sd-top-arrow {
+    from { opacity: 0; }
+    to   { opacity: 0.65; }
+  }
+
+  @keyframes sd-bottom-arrow {
+    from { opacity: 0.65; }
+    to   { opacity: 0; }
+  }
 }
 
-.compact-list::before {
-  top: 0;
-  background: linear-gradient(to bottom, var(--bg-secondary) 0%, transparent 100%);
-}
+/* Fallback for browsers without scroll-driven animations: plain sticky fades */
+@supports not (animation-timeline: scroll()) {
+  .compact-list {
+    position: relative;
+  }
 
-.compact-list::after {
-  bottom: 0;
-  background: linear-gradient(to top, var(--bg-secondary) 0%, transparent 100%);
-}
-
-.section-card.section-essays .compact-list::before,
-.section-card.section-essays .compact-list::after {
-  background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
-}
-
-.section-card.section-numbers .compact-list::before,
-.section-card.section-numbers .compact-list::after {
-  background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+  .compact-list-wrap::after {
+    opacity: 0.5;
+  }
 }
 
 .compact-list::-webkit-scrollbar {
@@ -1268,7 +1380,8 @@ html.dark-mode .pill-brand-icon {
     page-break-inside: avoid;
   }
 
-  .section-card h2 {
+  .section-card h2:not(.section-label) {
+    display: inline-flex;
     margin-bottom: 0.35rem;
     font-size: 10.2pt;
   }

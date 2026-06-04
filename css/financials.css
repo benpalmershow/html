@@ -6,8 +6,7 @@
 }
 
 .page-title {
-    margin-top: var(--spacing-md) !important;
-    margin-bottom: var(--spacing-sm) !important;
+    /* Spacing is standardized in body.css via .page-header — no override needed */
 }
 
 .header {
@@ -26,13 +25,15 @@
 }
 
 .last-updated {
-    font-size: 0.85rem;
-    opacity: 1;
-    color: var(--logo-teal);
-    text-align: center;
-    margin: 8px 0 14px;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 2px 0 0;
+    opacity: 0.75;
 }
 
 .collapsible-section {
@@ -111,8 +112,14 @@
 }
 
 /* ========================================
-    FILTER BAR - Page-specific overrides
-    ======================================== */
+   PAGE HEADER - stacked layout for title + last-updated
+   ======================================== */
+
+/* On this page the header stacks title + timestamp vertically */
+.page-header.page-header-branded {
+    flex-direction: column;
+    gap: 0.15rem;
+}
 
 #essay-filters {
     padding: 0.6rem var(--content-padding);

@@ -13,23 +13,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const isHomepage = currentPage === 'index.html' || currentPage === '';
 
+  // Separate home/logo page from the rest
+  const homePage = PAGES[0];
+  const navPages = PAGES.slice(1);
+
+  const isHomeActive = currentPage === 'index.html' || currentPage === '';
+
   const renderNavLink = (page) => {
-    const isActive = currentPage === page.file || (currentPage === '' && page.file === 'index.html');
-    if (page.icon) {
-      return `<li><a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" title="${page.name}"><img src="images/${page.icon}" alt="${page.name}" class="nav-link-icon" width="24" height="24" loading="eager"></a></li>`;
-    }
-    return `<li><a href="${page.file}" class="nav-link ${isActive ? 'active' : ''}">${page.name}</a></li>`;
+    const isActive = currentPage === page.file;
+    return `<li>
+      <a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" aria-label="${page.name}" aria-current="${isActive ? 'page' : 'false'}">
+        <img src="images/${page.icon}" alt="" class="nav-link-icon" width="36" height="36" loading="eager">
+        <span class="nav-icon-label">${page.name}</span>
+        ${isActive ? '<span class="nav-active-dot" aria-hidden="true"></span>' : ''}
+      </a>
+    </li>`;
   };
+
+  // Detect stored dark mode preference
+  const isDark = document.documentElement.classList.contains('dark-mode') ||
+    (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   const navHTML = `
     <div class="nav-container">
-      <ul class="nav-list">
-        ${PAGES.map(renderNavLink).join('')}
+      <a href="${homePage.file}" class="nav-logo ${isHomeActive ? 'active' : ''}" aria-label="Howdy, Stranger – Home" aria-current="${isHomeActive ? 'page' : 'false'}">
+        <img src="images/${homePage.icon}" alt="Howdy, Stranger" width="56" height="56" loading="eager">
+      </a>
+      <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
+      <ul class="nav-list" role="list">
+        ${navPages.map(renderNavLink).join('')}
       </ul>
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="${isDark ? 'Switch to light mode' : 'Switch to dark mode'}" title="Toggle dark mode">
+        <i data-lucide="${isDark ? 'sun' : 'moon'}"></i>
+      </button>
     </div>
   `;
 
   navContainer.innerHTML = navHTML;
+
+  // Dark mode toggle wiring
+  const dmToggle = document.getElementById('darkModeToggle');
+  if (dmToggle) {
+    const updateToggleIcon = () => {
+      const dark = document.documentElement.classList.contains('dark-mode');
+      dmToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      const icon = dmToggle.querySelector('i[data-lucide]');
+      if (icon) {
+        icon.setAttribute('data-lucide', dark ? 'sun' : 'moon');
+        if (window.lucide?.createIcons) lucide.createIcons({ nodes: [icon] });
+      }
+    };
+    dmToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      try { localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode') ? '1' : '0'); } catch {}
+      updateToggleIcon();
+    });
+  }
 
   // Badge system — show counts on nav links for new content
   const FIRST_VISIT_KEY = 'new_badges_seeded';

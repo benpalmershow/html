@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-03T08:00:00",
+    "lastUpdated": "2026-06-06T08:00:00",
     "indices": [
     
         {
@@ -1940,7 +1940,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "FRED",
             "name": "Total Nonfarm Employment",
-            "lastUpdated": "2026-05-08T15:00:00Z",
+            "lastUpdated": "2026-06-06T15:00:00Z",
             "releaseDay": 5,
             "url": "https://fred.stlouisfed.org/series/PAYEMS",
             "february": "158,310,000",
@@ -1957,8 +1957,9 @@
             "2026": {
                 "january": "158,592,000",
                 "february": "158,436,000",
-                "march": "158,621,000",
-                "april": "158,736,000"
+                "march": "158,650,000",
+                "april": "158,829,000",
+                "may": "159,001,000"
                 
             },
             "change": "",

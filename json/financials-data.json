@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-06T08:00:00",
+    "lastUpdated": "2026-06-09T08:00:00",
     "indices": [
     
         {
@@ -16,14 +16,13 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Strait of Hormuz Traffic Returns to Normal by July 31, 2026",
-            "lastUpdated": "2026-06-03T17:51:00Z",
+            "lastUpdated": "2026-06-09T17:51:00Z",
             "releaseDay": 0,
-            "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
-            "yes_probability": "46¢",
-            "no_probability": "55¢",
-            "previous_yes": "58¢",
+            "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-july-31",
+        
             "change": "",
             "probabilities": {
+                "2026-06-09": {"yes": "30¢", "no": "71¢"},
                 "2026-06-03": {"yes": "39¢", "no": "62¢"},
                 "2026-05-31": {"yes": "48¢", "no": "53¢"},
                 "2026-05-28": {"yes": "60¢", "no": "41¢"},
@@ -79,12 +78,14 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "US Recession in 2026",
-            "lastUpdated": "2026-05-31T08:00:00Z",
+            "lastUpdated": "2026-06-09T08:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
             "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
            
             "probabilities":{
+                "2026-06-09": {"yes": "18¢", "no": "83¢"},
+                "2026-06-05": {"yes": "29¢", "no": "71¢"},
                 "2026-04-14": {"yes": "26¢", "no": "75¢"},
                 "2026-05-28": {"yes": "20¢", "no": "81¢"},
                 "2026-04-19": {"yes": "26¢", "no": "75¢"},
@@ -336,9 +337,9 @@
             "parentCategory": "Housing Market",
             "agency": "NAR",
             "name": "Existing Home Sales",
-            "lastUpdated": "2026-05-12T14:00:00Z",
+            "lastUpdated": "2026-06-09T14:00:00Z",
             "releaseDay": 22,
-            "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
+            "url": "https://tradingeconomics.com/united-states/existing-home-sales",
             "march": "",
             "april": "4.00M",
             "may": "4.04M",
@@ -353,7 +354,8 @@
                 "january": "3.91M",
                 "february": "4.13M",
                 "march": "4.01M",
-                "april":"4.02M"
+                "april":"4.04M",
+                "may": "4.17M"
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."

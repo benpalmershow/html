@@ -9,7 +9,7 @@ The White House released its Fiscal Year 2027 budget request today, a "skinny bu
 
 The request serves as the opening salvo in the 2027 appropriations cycle, setting the stage for a contentious battle in Congress over the nation's fiscal direction.
 
-#### Key Highlights:
+### Key Highlights:
 
 *   **Defense Spending:** A $1.5 trillion total request, representing a major year-over-year rise. This includes a $251 billion increase in base defense discretionary spending and $350 billion in a new reconciliation bill.
 *   **Non-Defense Discretionary:** A $73 billion (10%) reduction in base spending, targeting programs the administration describes as "weaponized and wasteful."

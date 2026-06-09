@@ -98,6 +98,13 @@ function optimizeSanitizedHtml(cleanHtml) {
     if (!img.hasAttribute('decoding')) {
       img.setAttribute('decoding', 'async');
     }
+    // Ensure all images have alt text for accessibility (SEO issue #5)
+    if (!img.hasAttribute('alt')) {
+      // Derive a meaningful alt from src filename as fallback
+      const src = img.getAttribute('src') || '';
+      const filename = src.split('/').pop().split('?')[0].replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+      img.setAttribute('alt', filename || '');
+    }
     // Remove inline styles that conflict with CSS
     if (img.hasAttribute('style')) {
       const style = img.getAttribute('style').toLowerCase();

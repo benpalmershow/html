@@ -6,27 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Page-specific Meta Tags -->
   <meta name="description"
-    content="Independent commentary and personal insights from Doc Riter.">
+    content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
   <meta name="keywords"
     content="Doc Riter, independent thoughts">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Doc Riter - Howdy, Stranger">
+  <meta property="og:title" content="Doc Riter — Journal & Essays">
   <meta property="og:description"
-    content="Independent commentary and personal insights from Doc Riter.">
+    content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
   <meta property="og:url" content="https://howdystranger.net/journal.html">
   <meta property="og:site_name" content="Howdy, Stranger">
   <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta property="og:image:alt" content="Howdy, Stranger - Doc Riter and Commentary">
 
   <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DocRiter">
   <meta name="twitter:creator" content="@DocRiter">
-  <meta name="twitter:title" content="Doc Riter - Howdy, Stranger">
+  <meta name="twitter:title" content="Doc Riter — Journal & Essays">
   <meta name="twitter:description"
-    content="Independent commentary and personal insights from Doc Riter.">
+    content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
   <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
   <meta name="twitter:image:alt" content="Howdy, Stranger - Doc Riter and Commentary">
 
@@ -34,13 +34,20 @@
   <link rel="canonical" href="https://howdystranger.net/journal.html">
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/theme.css?v=20260429">
-  <link rel="stylesheet" href="css/body.css?v=20260429">
-  <link rel="stylesheet" href="css/nav.css?v=20260429">
+  <link rel="stylesheet" href="css/theme.css?v=20260429" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/theme.css?v=20260429"></noscript>
+  <link rel="stylesheet" href="css/body.css?v=20260429" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/body.css?v=20260429"></noscript>
+  <link rel="stylesheet" href="css/nav.css?v=20260429" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/nav.css?v=20260429"></noscript>
   <link rel="stylesheet" href="css/article.css?v=20260321" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/article.css?v=20260321"></noscript>
   <link rel="stylesheet" href="css/news.css?v=20260429" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/news.css?v=20260429"></noscript>
   <link rel="stylesheet" href="css/journal-tweets.css?v=20260321" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/page-branding.css?v=20260510">
+  <noscript><link rel="stylesheet" href="css/journal-tweets.css?v=20260321"></noscript>
+  <link rel="stylesheet" href="css/page-branding.css?v=20260510" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/page-branding.css?v=20260510"></noscript>
   <style>
     /* Source toggle - matches h1.page-title */
     .source-toggle {
@@ -56,7 +63,9 @@
     }
 
     .source-toggle-btn {
-      padding: 0;
+      padding: 0.75rem 0.5rem;
+      min-width: 48px;
+      min-height: 48px;
       border: none;
       background: transparent;
       color: var(--text-muted);
@@ -68,6 +77,9 @@
       letter-spacing: 0.08em;
       cursor: pointer;
       transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .source-toggle-btn:hover {
@@ -84,8 +96,38 @@
       color: var(--text-muted);
       opacity: 0.4;
     }
+
+    /* Search toggle tap target */
+    .search-toggle {
+      min-width: 48px;
+      min-height: 48px;
+    }
+
+    /* Visually hidden but accessible */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* Utility hidden class to avoid inline styles */
     .hidden { display: none !important; }
+
+    /* CLS: reserve space for dynamically loaded journal feed */
+    #journal-feed:empty {
+      min-height: 400px;
+    }
+
+    /* CLS: reserve space for images in entry content */
+    .entry-content img {
+      aspect-ratio: 16 / 9;
+    }
   </style>
 
   <!-- Preload critical resources -->
@@ -99,10 +141,35 @@
    <!-- Lucide Icons -->
    <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
 
-   <title>Doc Riter - Howdy, Stranger</title>
+   <title>Doc Riter — Journal, Docs & Essays | Howdy, Stranger</title>
 
   <script type="module" src="js/speed-insights.js"></script>
   <meta name="robots" content="noindex, nofollow">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Doc Riter — Journal & Essays",
+    "description": "Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.",
+    "url": "https://howdystranger.net/journal.html",
+    "author": {
+      "@type": "Person",
+      "name": "Doc Riter",
+      "sameAs": "https://twitter.com/DocRiter"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Howdy, Stranger",
+      "url": "https://howdystranger.net",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://howdystranger.net/images/logo-1200x630.webp"
+      }
+    }
+  }
+  </script>
 
 </head>
 
@@ -112,21 +179,21 @@
   <nav class="nav-links" id="main-nav"></nav>
   
 
-   <main id="main-content" tabindex="-1">
-     <div class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
-       <h1 class="page-title" aria-label="Page title">
-         <div class="source-toggle" id="journal-filters" aria-label="Filter by source">
-           <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
-           <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
-         </div>
-       </h1>
-     </div>
+  <main id="main-content" tabindex="-1">
+    <header class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
+       <h1 class="page-title visually-hidden">Journal — Docs &amp; Essays</h1>
+       <div class="source-toggle" id="journal-filters" aria-label="Filter by source" role="group">
+         <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
+         <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
+       </div>
+     </header>
 
      <div class="filter-bar" id="journal-category-filters" aria-label="Filter docs and essays">
-       <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
-         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+       <button id="searchToggle" class="search-toggle" aria-label="Search docs and essays" title="Search" type="button">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
        </button>
        <div class="filter-bar-search" id="filterBarSearch">
+         <label for="indicatorSearch" class="visually-hidden">Search docs and essays</label>
          <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
        </div>
        <div class="filters" id="journal-filters-btns"></div>

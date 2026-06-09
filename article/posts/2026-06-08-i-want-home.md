@@ -5,7 +5,7 @@ poem-style: want-home
 summary: Airport alienation and the loss of human contact in a world of apps, AI, and automated everything.
 ---
 
-## I Want Home
+## AI Air
 
 Can't get home  
 The true dystopia

@@ -33,7 +33,7 @@ and its imminent lack of utility;
 I control that and I've mitigated it with electing to go yellow - battery save mode.  
 I've got it under control.
 
-But now it's my device I can't control.
+But  it's not my device I can't control.
 
 It's the hermetic airport ecosystem with closed options.  
 It's the plane with a novice pilot  

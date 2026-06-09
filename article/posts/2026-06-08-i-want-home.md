@@ -181,7 +181,8 @@ I want dead
 No one is listening anyway  
 What's the point?
 
-My phone Battery indicator is yellow; 36 percent`
+My phone Battery indicator is yellow; 36 percent
+
 Wheels up  
 We're flying  
 We're so high
@@ -212,13 +213,16 @@ Next to jet power with pretzels and water
 
 The automated welcome message comes on
 
-Ding, prerecorded in perfect English
+Ding
 
+Prerecorded in perfect English
 Please sit down and fasten your seatbelts
 
 Before, at welcome the human novice took her shot  
 She read the script like she was supposed to.  
 Like a 5 year old learning to read
+
+Ding 
 
 Each pause  
 Welcome to the friendly…  

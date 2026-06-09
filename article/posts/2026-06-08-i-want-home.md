@@ -156,6 +156,7 @@ Gain debt
 My FICO would drop  
 My premium would rise  
 I would have a record
+
 I was a nuisance  
 I disturbed the peace
 

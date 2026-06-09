@@ -16,21 +16,21 @@
     const style = document.createElement('style');
     style.id = STYLE_ID;
     style.textContent = `
-      #back-to-top-btn {
-        position: fixed;
-        bottom: 1.5rem;
-        ${POSITION === 'left' ? 'left: 1.5rem;' : 'right: 1.5rem;'}
-        z-index: 9999;
+#back-to-top-btn {
+         position: fixed;
+         bottom: 1.5rem;
+         ${POSITION === 'left' ? 'left: 1.5rem;' : 'right: 1.5rem;'}
+         z-index: 9999;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        padding: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 48px;
+         height: 48px;
+         border-radius: 50%;
+         border: none;
+         cursor: pointer;
+         padding: 0;
 
         /* Theme: inherits site CSS variables when available, falls back to safe defaults */
         background: var(--bg-tertiary, #2C5F5A);

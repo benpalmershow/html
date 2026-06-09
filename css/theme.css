@@ -1,6 +1,6 @@
 /* ========================================
-   THEME SYSTEM: Global Variables & Tokens
-   ======================================== */
+    THEME SYSTEM: Global Variables & Tokens
+    ======================================== */
 
 :root {
     /* TYPOGRAPHY */
@@ -117,6 +117,30 @@
     --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Screen reader only utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Site header landmark */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5001;
+  background: rgba(var(--bg-primary-rgb), 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(var(--border-color-rgb), 0.75);
+}
+
 /* DARK MODE OVERRIDES */
 @media (prefers-color-scheme: dark) {
     :root {
@@ -163,6 +187,11 @@ html.dark-mode {
     --shadow-card-hover: 0 2px 4px rgba(var(--color-black-rgb), 0.4), 0 16px 38px rgba(var(--color-black-rgb), 0.32);
     
     --color-apple: #ffffff;
+}
+
+html.dark-mode .site-header {
+    background: rgba(26, 31, 30, 0.92);
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.6);
 }
 
 /* ========================================

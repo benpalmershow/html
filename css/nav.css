@@ -166,6 +166,8 @@
     gap: 3px;
     padding: 0.3rem 0.2rem 0.5rem;
     line-height: 0;
+    min-height: 48px;
+    min-width: 48px;
 }
 
 .nav-link-icon {
@@ -274,8 +276,8 @@
    Dark Mode Toggle — right slot (fourth column)
    ============================================ */
 .dark-mode-toggle {
-    width: clamp(32px, 6vw, 40px);
-    height: clamp(32px, 6vw, 40px);
+    width: clamp(48px, 6vw, 56px);
+    height: clamp(48px, 6vw, 56px);
     flex-shrink: 0;
     border: 1px solid var(--border-color, #e0dcc4);
     border-radius: 50%;

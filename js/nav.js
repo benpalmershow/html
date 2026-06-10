@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const navContainer = document.getElementById('main-nav');
   const dataService = window.Services?.dataService;
 
-  const PAGES = [
+  // Use shared PAGES config
+  const PAGES = window.SitePages || [
     { name: 'Home', file: 'index.html', icon: 'logo-360x360.webp' },
     { name: 'Numbers', file: 'financials.html', desc: 'Economic indicators and market data', icon: 'read.webp' },
     { name: 'Media', file: 'media.html', desc: 'Books, films, and listening picks', icon: 'media.webp' },
@@ -21,8 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderNavLink = (page) => {
     const isActive = currentPage === page.file;
+    const ariaCurrent = isActive ? 'aria-current="page"' : '';
     return `<li>
-      <a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" aria-label="${page.name}" aria-current="${isActive ? 'page' : 'false'}">
+      <a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" aria-label="${page.name}" ${ariaCurrent}>
         <img src="images/${page.icon}" alt="" class="nav-link-icon" width="36" height="36" loading="eager">
         <span class="nav-icon-label">${page.name}</span>
         ${isActive ? '<span class="nav-active-dot" aria-hidden="true"></span>' : ''}
@@ -34,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const isDark = document.documentElement.classList.contains('dark-mode') ||
     (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-  const navHTML = `
+const navHTML = `
     <div class="nav-container">
-      <a href="${homePage.file}" class="nav-logo ${isHomeActive ? 'active' : ''}" aria-label="Howdy, Stranger – Home" aria-current="${isHomeActive ? 'page' : 'false'}">
+      <a href="${homePage.file}" class="nav-logo ${isHomeActive ? 'active' : ''}" aria-label="Howdy, Stranger – Home" ${isHomeActive ? 'aria-current="page"' : ''}>
         <img src="images/${homePage.icon}" alt="Howdy, Stranger" width="56" height="56" loading="eager">
       </a>
       <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
@@ -50,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   navContainer.innerHTML = navHTML;
+  navContainer.setAttribute('aria-label', 'Main');
 
   // Dark mode toggle wiring
   const dmToggle = document.getElementById('darkModeToggle');
@@ -155,25 +158,30 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem(FIRST_VISIT_KEY, '1'); } catch {}
   }
 
-  // Initialize Lucide icons for the navbar
+// Initialize Lucide icons for the navbar
+  let lucideInitAttempts = 0;
+  const MAX_LUCIDE_RETRIES = 10;
   window.initializeLucideIcons = () => {
     if (window.lucide?.createIcons) {
       lucide.createIcons();
-    } else {
+    } else if (lucideInitAttempts < MAX_LUCIDE_RETRIES) {
+      lucideInitAttempts++;
       setTimeout(window.initializeLucideIcons, 100);
+    } else {
+      console.warn('Lucide icons failed to load after', MAX_LUCIDE_RETRIES, 'attempts');
     }
   };
   window.initializeLucideIcons();
 
 
 
-  // Navbar hide/show on scroll
+// Navbar hide/show on scroll
   const setupNavbarScroll = () => {
     let lastScrollTop = 0;
     const navbar = document.getElementById('main-nav');
     const SCROLL_THRESHOLD = 100;
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
       if (currentScroll > lastScrollTop && currentScroll > SCROLL_THRESHOLD) {
         navbar.classList.add('nav-hidden');
       } else {

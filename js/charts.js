@@ -90,12 +90,16 @@ function toggleChartOverlay(indicator, indicatorName) {
 function createChartOverlay(indicator, indicatorName) {
     const overlay = document.createElement('div');
     overlay.className = 'chart-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'chart-overlay-title');
     overlay.innerHTML = `
-        <div class="chart-overlay-range-picker">
+        <div class="chart-overlay-range-picker" id="chartRangePicker">
+            <h4 id="chart-overlay-title" class="chart-overlay-title">${indicatorName} Chart</h4>
             <button class="range-btn" data-range="3">3M</button>
             <button class="range-btn" data-range="6">6M</button>
             <button class="range-btn active" data-range="12">1Y</button>
-            <button class="chart-overlay-close">&times;</button>
+            <button class="chart-overlay-close" aria-label="Close chart">&times;</button>
         </div>
         <div class="chart-overlay-body">
             <div class="chart-overlay-loading">

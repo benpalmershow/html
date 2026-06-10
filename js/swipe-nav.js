@@ -1,7 +1,7 @@
 // Swipe navigation for mobile - navigate between pages with swipe gestures
 (function () {
-  // Page order for swipe navigation
-  const PAGES = [
+  // Use shared PAGES config
+  const PAGES = window.SitePages || [
     { name: 'Home', file: 'index.html' },
     { name: 'Numbers', file: 'financials.html' },
     { name: 'Media', file: 'media.html' },

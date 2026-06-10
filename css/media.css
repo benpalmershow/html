@@ -26,8 +26,8 @@
     --color-primary-dark: #1e4540;
     --color-primary-light: #4a7c7a;
 
-    /* Transitions */
-    --transition-fast: 0.15s ease;
+    /* Transitions - use local variable to avoid clashing with global --transition-fast token */
+    --media-transition-fast: 0.15s ease;
     --transition-medium: 0.2s ease;
     --transition-slow: 0.3s ease;
 
@@ -151,7 +151,7 @@
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all var(--transition-fast);
+    transition: all var(--media-transition-fast);
     border: 1px solid transparent;
 }
 
@@ -160,9 +160,10 @@
 }
 
 .action-link:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all var(--media-transition-fast);
+    }
 
 /* Spotify */
 .spotify-link {

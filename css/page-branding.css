@@ -408,20 +408,5 @@
     }
 }
 
-/* Simple left accent - same as page header */
-.page-left-accent {
-    position: fixed;
-    left: 20px;
-    top: 120px;
-    width: 32px;
-    height: 32px;
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 100;
-}
-
-.page-left-accent img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-}
+/* Simple left accent - same as page header
+   (duplicate block removed - styles combined with existing definition) */

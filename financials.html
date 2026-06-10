@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <!-- Common Meta Tags Component -->
   <script>
     fetch('components/head-meta.html')
@@ -112,11 +112,9 @@
 
    <!-- Performance monitoring -->
    <script src="js/speed-insights.js" defer></script>
-   <meta name="robots" content="noindex, nofollow">
-
+<meta name="robots" content="noindex, nofollow">
+  <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 </head>
-
-<script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 <body>
 
   <nav class="nav-links" id="main-nav"></nav>
@@ -218,19 +216,21 @@
   <script src="js/13f-holdings.js" defer></script>
   <script src="js/financials.js" defer></script>
 
-  <!-- Navigation script -->
-  <script src="js/nav.js" defer></script>
-  <script src="js/swipe-nav.js" defer></script>
-  <script src="js/countdown.js" defer></script>
+<!-- Navigation script -->
+   <script src="js/pages-config.js" defer></script>
+   <script src="js/nav.js" defer></script>
+   <script src="js/swipe-nav.js" defer></script>
+   <script src="js/countdown.js" defer></script>
 
-    <!-- Chart Modal Popup -->
-    <div id="chartModal" class="chart-modal">
+<!-- Chart Modal Popup -->
+    <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle">
       <div class="chart-modal-content">
         <div class="chart-modal-range-picker" id="chartRangePicker">
+          <h3 id="chartModalTitle" class="chart-modal-title">Chart View</h3>
           <button class="range-btn" data-range="3">3M</button>
           <button class="range-btn" data-range="6">6M</button>
           <button class="range-btn active" data-range="12">1Y</button>
-          <button id="closeChartModal">&times;</button>
+          <button id="closeChartModal" aria-label="Close chart dialog">&times;</button>
         </div>
         <div class="chart-modal-body">
         </div>

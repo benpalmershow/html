@@ -1135,45 +1135,7 @@
     height: 100% !important;
 }
 
-/* Search */
-.search-wrapper {
-    position: relative;
-    max-width: 280px;
-    margin: 10px auto 0;
-}
-
-.search-icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    color: var(--text-muted);
-    pointer-events: none;
-}
-
-.indicator-search {
-    width: 100%;
-    padding: 0.5rem 0.75rem 0.5rem 2rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.indicator-search:focus {
-    border-color: var(--logo-teal);
-    box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
-}
-
-.indicator-search::placeholder {
-    color: var(--text-muted);
-    opacity: 0.6;
-}
+/* Search styles are in body.css - removed duplicate definition */
 
 /* Empty state */
 .empty-state {

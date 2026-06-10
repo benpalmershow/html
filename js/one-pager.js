@@ -9,6 +9,44 @@ const MONTHS = [
   'july', 'august', 'september', 'october', 'november', 'december'
 ];
 
+// Shared time formatting utility (compact format: "now", "5m", "2h", "3d", "Jan 5")
+function formatTimeAgo(dateString) {
+  const postDate = new Date(dateString);
+  if (isNaN(postDate)) return '';
+
+  const now = new Date();
+  const diffMins = Math.floor((now - postDate) / 60000);
+
+  if (diffMins < 1) return 'now';
+  if (diffMins < 60) return `${diffMins}m`;
+  if (diffMins < 1440) return `${Math.floor(diffMins / 60)}h`;
+  if (diffMins < 10080) return `${Math.floor(diffMins / 1440)}d`;
+  return postDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// Format time ago for journal entries (date is "M/D/YY", optional time "HH:MM")
+function formatJournalTimeAgo(date, time) {
+  const now = new Date();
+  let entryDateTime;
+
+  if (date) {
+    entryDateTime = parseJournalDate(date);
+    if (time) {
+      const [hours, minutes] = time.split(':').map(Number);
+      entryDateTime = new Date(entryDateTime.getFullYear(), entryDateTime.getMonth(), entryDateTime.getDate(), hours, minutes);
+    }
+  }
+
+  if (!entryDateTime || entryDateTime.getTime() <= 0) return '';
+
+  const diffMins = Math.floor((now - entryDateTime) / 60000);
+  if (diffMins < 1) return 'now';
+  if (diffMins < 60) return `${diffMins}m`;
+  if (diffMins < 1440) return `${Math.floor(diffMins / 60)}h`;
+  if (diffMins < 10080) return `${Math.floor(diffMins / 1440)}d`;
+  return entryDateTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
 const FINANCIAL_CATEGORY_ICONS = {
   'Employment Indicators': 'users',
   'Housing Market': 'home',
@@ -157,32 +195,10 @@ async function loadLatestJournal() {
   const lines = [];
   Object.keys(groupedByDate).forEach(date => {
     const entries = groupedByDate[date];
-    
+
     // Add entries for this date without date header
     entries.forEach(entry => {
-      let timeAgo = '';
-      const now = new Date();
-      let entryDateTime;
-      
-      // Try to parse date from different possible sources
-      if (entry.date) {
-        entryDateTime = parseJournalDate(entry.date);
-        if (entry.time) {
-          const [hours, minutes] = entry.time.split(':').map(Number);
-          entryDateTime = new Date(entryDateTime.getFullYear(), entryDateTime.getMonth(), entryDateTime.getDate(), hours, minutes);
-        }
-      } else if (entry.timestamp) {
-        entryDateTime = new Date(entry.timestamp);
-      }
-      
-      if (entryDateTime && entryDateTime.getTime() > 0) {
-        const diffMins = Math.floor((now - entryDateTime) / 60000);
-        if (diffMins < 1) timeAgo = 'now';
-        else if (diffMins < 60) timeAgo = `${diffMins}m`;
-        else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
-        else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
-        else timeAgo = entryDateTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      }
+      const timeAgo = formatJournalTimeAgo(entry.date, entry.time);
       const entryId = createEntryId(entry.title);
       const linkUrl = entry.url || entry.sourcePath;
       lines.push(`<li class="compact-entry"><span class="time-ago">${timeAgo}</span> <a href="${linkUrl}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(entry.title)}</strong></a> ${escapeHtml(entry.content)}</li>`);
@@ -216,17 +232,11 @@ async function loadLatestEssays() {
   const lines = sorted.map(item => {
     const title = escapeHtml(cleanText(item.title));
     const summary = clip(item.summary || '', 100);
-    
+
     // Calculate time ago
     const itemDate = new Date(item.date || 0);
-    const diffMins = Math.floor((Date.now() - itemDate.getTime()) / 60000);
-    let timeAgo = '';
-    if (diffMins < 1) timeAgo = 'now';
-    else if (diffMins < 60) timeAgo = `${diffMins}m`;
-    else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
-    else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
-    else timeAgo = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    
+    const timeAgo = formatTimeAgo(item.date);
+
     return `<span class="time-ago">${timeAgo}</span> <a href="news.html?article=${encodeURIComponent(item.id)}" target="_blank" rel="noopener noreferrer"><strong>${title}</strong>: ${escapeHtml(summary)}</a>`;
   });
   renderList('latest-essays', lines);
@@ -248,22 +258,15 @@ async function loadLatestMedia() {
   const lines = sorted.map(item => {
     const title = escapeHtml(cleanText(item.title));
     const subtitle = clip(item.description || item.genre || item.author || item.mediaType || '', 70);
-    
+
     // Get icon for media type, fallback to item.icon if available, then default
     const mediaType = (item.mediaType || '').toLowerCase();
     const iconName = MEDIA_CATEGORY_ICONS[mediaType] || (item.icon ? item.icon.replace('fas fa-', '').replace('fab fa-', '') : 'play-circle');
     const iconHtml = `<i data-lucide="${iconName}" class="media-bullet-icon"></i>`;
-    
+
     // Calculate time ago
-    const itemDate = new Date(item.dateAdded || item.date || 0);
-    const diffMins = Math.floor((Date.now() - itemDate.getTime()) / 60000);
-    let timeAgo = '';
-    if (diffMins < 1) timeAgo = 'now';
-    else if (diffMins < 60) timeAgo = `${diffMins}m`;
-    else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
-    else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
-    else timeAgo = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    
+    const timeAgo = formatTimeAgo(item.dateAdded || item.date);
+
     // Link to media page with item ID
     const mediaUrl = `media.html?item=${encodeURIComponent(item.id)}`;
     return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${mediaUrl}" target="_blank" rel="noopener noreferrer"><strong>${title}</strong>: ${escapeHtml(subtitle)}</a>`;
@@ -281,28 +284,21 @@ async function loadLatestFinancials() {
   const lines = sorted.map(item => {
     const categoryText = cleanText(item.category || 'unknown category');
     const itemHref = `financials.html?filter=${encodeURIComponent(categoryText)}`;
-    
+
     // Calculate time ago
-    const itemDate = new Date(item.lastUpdated || 0);
-    const diffMins = Math.floor((Date.now() - itemDate.getTime()) / 60000);
-    let timeAgo = '';
-    if (diffMins < 1) timeAgo = 'now';
-    else if (diffMins < 60) timeAgo = `${diffMins}m`;
-    else if (diffMins < 1440) timeAgo = `${Math.floor(diffMins / 60)}h`;
-    else if (diffMins < 10080) timeAgo = `${Math.floor(diffMins / 1440)}d`;
-    else timeAgo = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    
+    const timeAgo = formatTimeAgo(item.lastUpdated);
+
     // Special handling for prediction markets with various data structures
     if (item.rate_hold_odds || item.rate_cut_odds || item.rate_hike_odds) {
       // FOMC Rate Decision format
       const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
       const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
-      
+
       const odds = [];
       if (item.rate_hold_odds) odds.push(`Hold: ${item.rate_hold_odds}`);
       if (item.rate_cut_odds) odds.push(`Cut: ${item.rate_cut_odds}`);
       if (item.rate_hike_odds) odds.push(`Hike: ${item.rate_hike_odds}`);
-      
+
       return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(odds.join(' | '))}</a>`;
     }
     

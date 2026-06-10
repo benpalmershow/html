@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Common Meta Tags Component -->
   <script>
     fetch('components/head-meta.html')
       .then(response => response.text())
@@ -126,9 +129,8 @@
   </script>
   <script type="module" src="js/speed-insights.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer onerror="console.error('Failed to load Lucide')"></script>
+  <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 </head>
-
-<script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
@@ -206,7 +208,7 @@
       .catch(error => console.error('Error Handling load error:', error));
   </script>
 
-  <script>
+<script>
     fetch('components/scripts-unified.html')
       .then(response => response.text())
       .then(html => {
@@ -222,14 +224,15 @@
       .catch(error => console.error('Scripts load error:', error));
   </script>
 
-    <script src="js/html-utils.js" defer></script>
-    <script src="js/services.js"></script>
-    <script src="js/nav.js" defer></script>
-    <script src="js/swipe-nav.js" defer></script>
-    <script src="js/news-article.js" defer></script>
-    <script src="js/search.js" defer></script>
+  <script src="js/html-utils.js" defer></script>
+  <script src="js/services.js"></script>
+  <script src="js/pages-config.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
+  <script src="js/news-article.js" defer></script>
+  <script src="js/search.js" defer></script>
 
-    <!-- Back to top button -->
-   <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
- </body>
+  <!-- Back to top button -->
+  <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+</body>
 </html>

@@ -189,15 +189,45 @@ function setupModalHandlers() {
     modal.dataset.handlersBound = 'true';
 
     const closeBtn = document.getElementById('closeChartModal');
-    if (closeBtn) closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+    if (closeBtn) closeBtn.addEventListener('click', () => { hideChartModal(modal); });
 
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
+        if (e.target === modal) hideChartModal(modal);
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'block') modal.style.display = 'none';
+        if (e.key === 'Escape' && modal.style.display === 'block') hideChartModal(modal);
     });
+}
+
+function showChartModal(modal) {
+    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusable[0];
+    const lastFocusable = focusable[focusable.length - 1];
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => firstFocusable?.focus(), 0);
+
+    const trapFocus = (e) => {
+        if (e.key !== 'Tab') return;
+        if (e.shiftKey && document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable?.focus();
+        } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable?.focus();
+        }
+    };
+    modal._trapFocusHandler = trapFocus;
+    modal.addEventListener('keydown', trapFocus);
+}
+
+function hideChartModal(modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    if (modal._trapFocusHandler) {
+        modal.removeEventListener('keydown', modal._trapFocusHandler);
+    }
 }
 
 function toggleCollapse(sectionId) {

@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  <!-- Critical meta tags must be inline for first paint -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <!-- Load services and HtmlUtils first - required for data fetching and component loading -->
   <script src="js/services.js"></script>
   <script src="js/html-utils.js"></script>
@@ -190,12 +193,11 @@
       font-display: swap;
       size-adjust: 95%;
     }
-  </style>
-
+</style>
+  <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 </head>
-
-<script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
 
 
@@ -278,9 +280,10 @@
     window.HtmlUtils?.injectScriptsFromComponent('components/scripts-unified.html');
   </script>
 
-  <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
-   <script src="js/nav.js" defer></script>
-   <script src="js/swipe-nav.js" defer></script>
+<!-- Load scripts - nav and socials defer but load quickly for header/footer -->
+   <script src="js/pages-config.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/swipe-nav.js" defer></script>
 
    <script src="js/media.js"></script>
    <script src="js/search.js" defer></script>

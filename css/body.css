@@ -462,39 +462,6 @@ h1.page-title {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-@media (max-width: 600px) {
-    #social-footer {
-        .social-links {
-            gap: 0.75rem;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 0.5rem 0;
-        }
-
-        .footer-info {
-            flex-direction: column;
-            gap: 1rem;
-        }
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    #social-footer .social-links img {
-        filter: invert(1);
-    }
-}
-
-html.dark-mode #social-footer .social-links img {
-    filter: invert(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0s !important;
-        transition-duration: 0s !important;
-    }
 
     .card:hover,
     .logo:hover {

@@ -145,37 +145,11 @@
 
   <script type="module" src="js/speed-insights.js"></script>
   <meta name="robots" content="noindex, nofollow">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Doc Riter — Journal & Essays",
-    "description": "Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.",
-    "url": "https://howdystranger.net/journal.html",
-    "author": {
-      "@type": "Person",
-      "name": "Doc Riter",
-      "sameAs": "https://twitter.com/DocRiter"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Howdy, Stranger",
-      "url": "https://howdystranger.net",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://howdystranger.net/images/logo-1200x630.webp"
-      }
-    }
-  }
-  </script>
-
+  <!-- Move dark mode script inside head to prevent flash -->
+  <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 </head>
-
-<script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
 <body>
-
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
   
 
@@ -228,19 +202,32 @@
     </div>
   </main>
 
-  <!-- Footer Component -->
+<!-- Footer Component -->
   <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
 
-    <!-- Page-specific scripts -->
-    <script src="js/services.js"></script>
-    <script src="js/html-utils.js" defer></script>
-    <script src="js/nav.js" defer></script>
-    <script src="js/swipe-nav.js" defer></script>
-    <script src="js/news-article.js" defer></script>
-    <script src="js/journal-feed.js" defer></script>
-    <script src="js/search.js" defer></script>
+  <!-- Page-specific scripts -->
+  <script src="js/pages-config.js" defer></script>
+  <script src="js/services.js"></script>
+  <script src="js/html-utils.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
+  <script src="js/news-article.js" defer></script>
+  <script src="js/journal-feed.js" defer></script>
+  <script src="js/search.js" defer></script>
 
-    <!-- Back to top button -->
-   <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
- </body>
+  <!-- Back to top button -->
+  <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+</body>
 </html>

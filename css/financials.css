@@ -5,10 +5,6 @@
     padding: 0 var(--content-padding);
 }
 
-.page-title {
-    /* Spacing is standardized in body.css via .page-header — no override needed */
-}
-
 .header {
     text-align: center;
     color: var(--text-primary);
@@ -747,6 +743,91 @@
 
 .prediction-dual-bar .no-bar {
     border-radius: 0 4px 4px 0;
+}
+
+/* ========================================
+   FOMC STACKED BAR LAYOUT
+   ======================================== */
+.fomc-stacked-bar-row {
+    margin-bottom: 8px;
+}
+
+.fomc-stacked-bar-track {
+    display: flex;
+    height: 24px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.fomc-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: width 0.4s ease;
+    position: relative;
+    min-width: 0;
+}
+
+.fomc-segment-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 4px;
+}
+
+.fomc-hold {
+    background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+}
+
+.fomc-hike {
+    background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.fomc-cut {
+    background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+}
+
+.fomc-legend {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+    justify-content: center;
+}
+
+.fomc-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.fomc-legend-color {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+/* ========================================
+   PREDICTION HISTORY ROWS
+   ======================================== */
+.prediction-history-row {
+    transition: background-color 0.2s ease;
+}
+
+.prediction-history-row:hover {
+    background-color: rgba(var(--logo-teal-rgb), 0.05);
+}
+
+.prediction-history-date {
+    cursor: help;
 }
 
 /* Ensure Financial Markets cards are narrow like the rest */

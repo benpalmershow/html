@@ -8,6 +8,20 @@ const IndicatorRenderers = (function () {
 
     // --- Shared data extraction helpers (SRP) ---
 
+    function calculateTrend(currentValue, previousValue) {
+        if (!currentValue || !previousValue) return null;
+        const current = parseFloat(currentValue);
+        const previous = parseFloat(previousValue);
+        if (isNaN(current) || isNaN(previous)) return null;
+        const change = current - previous;
+        const changePercent = previous > 0 ? ((change / previous) * 100).toFixed(1) : 0;
+        return {
+            direction: change > 0 ? 'up' : change < 0 ? 'down' : 'neutral',
+            change: change.toFixed(0),
+            changePercent: changePercent
+        };
+    }
+
     function collectMonthlyData(indicator, MONTHS, MONTH_LABELS) {
         const yearKeys = Object.keys(indicator)
             .filter(key => /^\d{4}$/.test(key))
@@ -86,53 +100,90 @@ const IndicatorRenderers = (function () {
             const cutProb = parseFloat(indicator.rate_cut_odds);
             const hikeProb = parseFloat(indicator.rate_hike_odds);
 
+            // Calculate trends from previous day
+            let holdTrend = null, cutTrend = null, hikeTrend = null;
+            if (indicator.probabilities && typeof indicator.probabilities === 'object') {
+                const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+                if (sorted.length > 1) {
+                    const previous = sorted[1][1];
+                    holdTrend = calculateTrend(indicator.rate_hold_odds, previous.rate_hold_odds);
+                    cutTrend = calculateTrend(indicator.rate_cut_odds, previous.rate_cut_odds);
+                    hikeTrend = calculateTrend(indicator.rate_hike_odds, previous.rate_hike_odds);
+                }
+            }
+
+            const trendArrow = (trend) => {
+                if (!trend) return '';
+                const arrow = trend.direction === 'up' ? '↑' : trend.direction === 'down' ? '↓' : '→';
+                const color = trend.direction === 'up' ? '#22c55e' : trend.direction === 'down' ? '#ef4444' : '#9ca3af';
+                return `<span style="color: ${color}; margin-left: 4px; font-size: 11px;">${arrow}${Math.abs(trend.change)}¢</span>`;
+            };
+
+            // Enhanced stacked bar layout
             latestDataHtml = `
                 <div class="prediction-bar-container" style="margin-top: 4px;">
-                    <div class="prediction-bar-row">
-                        <span class="prediction-bar-label" style="min-width: 40px;">Hold</span>
-                        <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${holdProb}%; background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%); display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold;">${indicator.rate_hold_odds}</div>
+                    <div class="fomc-stacked-bar-row">
+                        <div class="fomc-stacked-bar-track">
+                            <div class="fomc-segment fomc-hold" style="width: ${holdProb}%;" title="Hold: ${indicator.rate_hold_odds}">
+                                <span class="fomc-segment-label">${indicator.rate_hold_odds}</span>
+                                ${trendArrow(holdTrend)}
+                            </div>
+                            <div class="fomc-segment fomc-hike" style="width: ${hikeProb}%;" title="Hike: ${indicator.rate_hike_odds}">
+                                <span class="fomc-segment-label">${indicator.rate_hike_odds}</span>
+                                ${trendArrow(hikeTrend)}
+                            </div>
+                            <div class="fomc-segment fomc-cut" style="width: ${cutProb}%;" title="Cut: ${indicator.rate_cut_odds}">
+                                <span class="fomc-segment-label">${indicator.rate_cut_odds}</span>
+                                ${trendArrow(cutTrend)}
+                            </div>
                         </div>
                     </div>
-                    <div class="prediction-bar-row">
-                        <span class="prediction-bar-label" style="min-width: 40px;">Cut</span>
-                        <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill no-bar" style="width: ${cutProb}%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: white; font-size: 12px; font-weight: bold;">${indicator.rate_cut_odds}</div>
-                        </div>
-                    </div>
-                    <div class="prediction-bar-row">
-                        <span class="prediction-bar-label" style="min-width: 40px;">Hike</span>
-                        <div class="prediction-bar-track">
-                            <div class="prediction-bar-fill no-bar" style="width: ${hikeProb}%; background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold;">${indicator.rate_hike_odds}</div>
-                        </div>
+                    <div class="fomc-legend">
+                        <span class="fomc-legend-item"><span class="fomc-legend-color fomc-hold"></span>Hold</span>
+                        <span class="fomc-legend-item"><span class="fomc-legend-color fomc-hike"></span>Hike</span>
+                        <span class="fomc-legend-item"><span class="fomc-legend-color fomc-cut"></span>Cut</span>
                     </div>
                 </div>`;
 
-            // Handle historical probabilities
+            // Handle historical probabilities with improved readability
             if (indicator.probabilities && typeof indicator.probabilities === 'object') {
                 const sorted = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
 
                 if (sorted.length > 1) {
                     hasHistory = true;
-                    historyDataHtml = sorted.slice(1).map(([date, probs]) => {
+                    historyDataHtml = sorted.slice(1).map(([date, probs], index) => {
                         const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                         const hold = probs.rate_hold_odds || '—';
                         const cut = probs.rate_cut_odds || '—';
                         const hike = probs.rate_hike_odds || '—';
+                        
+                        // Calculate trend for this history entry
+                        const prevEntry = sorted[index + 2];
+                        let trendHtml = '';
+                        if (prevEntry) {
+                            const prevProbs = prevEntry[1];
+                            const holdTrend = calculateTrend(hold, prevProbs.rate_hold_odds);
+                            if (holdTrend) {
+                                const arrow = holdTrend.direction === 'up' ? '↑' : holdTrend.direction === 'down' ? '↓' : '→';
+                                const color = holdTrend.direction === 'up' ? '#22c55e' : holdTrend.direction === 'down' ? '#ef4444' : '#9ca3af';
+                                trendHtml = `<span style="color: ${color}; font-size: 11px; margin-left: 2px;">${arrow}</span>`;
+                            }
+                        }
+                        
                         return `
-                            <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
-                                <span class="prediction-bar-label" style="min-width: 70px; font-size: 10px;">${dateLabel}</span>
-                                <span style="font-size: 10px; margin-right: 4px; font-weight: bold;">${hold}</span>
-                                <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
-                                    <div class="prediction-bar-fill yes-bar" style="width: ${parseFloat(hold) || 0}%; height: 100%;"></div>
-                                </div>
-                                <span style="font-size: 10px; margin-left: 4px; font-weight: bold;">${hike}</span>
-                                <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
-                                    <div class="prediction-bar-fill no-bar" style="width: ${parseFloat(hike) || 0}%; height: 100%;"></div>
-                                </div>
-                                <span style="font-size: 10px; margin-left: 4px; font-weight: bold;">${cut}</span>
-                                <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
-                                    <div class="prediction-bar-fill no-bar" style="width: ${parseFloat(cut) || 0}%; height: 100%; background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);"></div>
+                            <div class="prediction-history-row" style="margin-bottom: 6px; display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15);">
+                                <span class="prediction-history-date" style="min-width: 70px; font-size: 11px; font-weight: 600; color: var(--text-secondary);">${dateLabel}</span>
+                                <div style="display: flex; gap: 8px; flex: 1; justify-content: space-around;">
+                                    <div style="display: flex; align-items: center;">
+                                        <span style="font-size: 11px; font-weight: 700; color: #3b82f6;">${hold}</span>
+                                        ${trendHtml}
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <span style="font-size: 11px; font-weight: 700; color: #f59e0b;">${hike}</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <span style="font-size: 11px; font-weight: 700; color: #ef4444;">${cut}</span>
+                                    </div>
                                 </div>
                             </div>`;
                     }).join('');
@@ -163,44 +214,75 @@ const IndicatorRenderers = (function () {
         if (probabilities && typeof probabilities === 'object') {
             const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
 
-            const buildProbBar = ([date, probs], large) => {
-                const yesProb = parseFloat(probs.yes);
-                const noProb = parseFloat(probs.no);
-                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-                const fontSize = large ? '12px' : '10px';
-                return `
-                    <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
-                        <span class="prediction-bar-label" style="min-width: 70px; font-size: ${fontSize};">${dateLabel}</span>
-                        <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
-                        <div class="prediction-bar-track" style="height: 8px; flex: 1; position: relative;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;"></div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;"></div>
-                        </div>
-                        <span style="font-size: ${fontSize}; margin-left: 4px; font-weight: bold;">${probs.no}</span>
-                    </div>`;
-            };
-
             if (sorted.length > 0) {
                 const latest = sorted[0];
                 const yesProb = parseFloat(latest[1].yes);
                 const noProb = parseFloat(latest[1].no);
 
+                // Calculate trend from previous day
+                let yesTrend = null, noTrend = null;
+                if (sorted.length > 1) {
+                    const previous = sorted[1][1];
+                    yesTrend = calculateTrend(latest[1].yes, previous.yes);
+                    noTrend = calculateTrend(latest[1].no, previous.no);
+                }
+
+                const trendArrow = (trend) => {
+                    if (!trend) return '';
+                    const arrow = trend.direction === 'up' ? '↑' : trend.direction === 'down' ? '↓' : '→';
+                    const color = trend.direction === 'up' ? '#22c55e' : trend.direction === 'down' ? '#ef4444' : '#9ca3af';
+                    return `<span style="color: ${color}; margin-left: 4px; font-size: 11px;">${arrow}${Math.abs(trend.change)}¢</span>`;
+                };
+
                 latestDataHtml = `
                     <div class="prediction-bar-container prediction-dual-bar">
                         <div class="prediction-bar-row" style="display: flex; align-items: center;">
                             <span style="font-size: 12px; margin-right: 4px; font-weight: bold;">${latest[1].yes}</span>
+                            ${trendArrow(yesTrend)}
                             <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
                                 <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${latest[1].yes} Yes"></div>
                                 <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${latest[1].no} No"></div>
                             </div>
                             <span style="font-size: 12px; margin-left: 4px; font-weight: bold;">${latest[1].no}</span>
+                            ${trendArrow(noTrend)}
                         </div>
                     </div>`;
             }
 
             if (sorted.length > 1) {
                 hasHistory = true;
-                historyDataHtml = sorted.slice(1).map(entry => buildProbBar(entry, false)).join('');
+                historyDataHtml = sorted.slice(1).map(([date, probs], index) => {
+                    const yesProb = parseFloat(probs.yes);
+                    const noProb = parseFloat(probs.no);
+                    const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    
+                    // Calculate trend for this history entry
+                    const prevEntry = sorted[index + 2];
+                    let trendHtml = '';
+                    if (prevEntry) {
+                        const prevProbs = prevEntry[1];
+                        const yesTrend = calculateTrend(probs.yes, prevProbs.yes);
+                        if (yesTrend) {
+                            const arrow = yesTrend.direction === 'up' ? '↑' : yesTrend.direction === 'down' ? '↓' : '→';
+                            const color = yesTrend.direction === 'up' ? '#22c55e' : yesTrend.direction === 'down' ? '#ef4444' : '#9ca3af';
+                            trendHtml = `<span style="color: ${color}; font-size: 11px; margin-left: 2px;">${arrow}</span>`;
+                        }
+                    }
+                    
+                    return `
+                        <div class="prediction-history-row" style="margin-bottom: 6px; display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15);">
+                            <span class="prediction-history-date" style="min-width: 70px; font-size: 11px; font-weight: 600; color: var(--text-secondary);">${dateLabel}</span>
+                            <div style="display: flex; gap: 8px; flex: 1; justify-content: space-around;">
+                                <div style="display: flex; align-items: center;">
+                                    <span style="font-size: 11px; font-weight: 700; color: #22c55e;">${probs.yes}</span>
+                                    ${trendHtml}
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="font-size: 11px; font-weight: 700; color: #ef4444;">${probs.no}</span>
+                                </div>
+                            </div>
+                        </div>`;
+                }).join('');
             }
         } else if (indicator.yes_probability && indicator.no_probability) {
             const yesProb = parseFloat(indicator.yes_probability);
@@ -233,32 +315,75 @@ const IndicatorRenderers = (function () {
         if (probabilities && typeof probabilities === 'object') {
             const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
 
-            const buildProbBar = ([date, probs], large, showLabel = true) => {
-                const yesProb = parseFloat(probs.yes);
-                const noProb = parseFloat(probs.no);
-                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
-                const fontSize = large ? '12px' : '10px';
-                const labelWidth = large ? '70px' : '70px';
-                const labelHtml = showLabel ? `<span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${dateLabel}</span>` : '';
-                return `
-                    <div class="prediction-bar-row" style="margin-bottom: 4px; display: flex; align-items: center;">
-                        ${labelHtml}
-                        <span style="font-size: ${fontSize}; margin-right: 4px; font-weight: bold;">${probs.yes}</span>
-                        <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
-                            <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${probs.yes} Yes"></div>
-                            <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${probs.no} No"></div>
-                        </div>
-                        <span style="font-size: ${fontSize}; margin-left: 4px; font-weight: bold;">${probs.no}</span>
-                    </div>`;
-            };
-
             if (sorted.length > 0) {
-                latestDataHtml = `<div class="prediction-bar-container">${buildProbBar(sorted[0], true, false)}</div>`;
+                const latest = sorted[0];
+                const yesProb = parseFloat(latest[1].yes);
+                const noProb = parseFloat(latest[1].no);
+
+                // Calculate trend from previous day
+                let yesTrend = null, noTrend = null;
+                if (sorted.length > 1) {
+                    const previous = sorted[1][1];
+                    yesTrend = calculateTrend(latest[1].yes, previous.yes);
+                    noTrend = calculateTrend(latest[1].no, previous.no);
+                }
+
+                const trendArrow = (trend) => {
+                    if (!trend) return '';
+                    const arrow = trend.direction === 'up' ? '↑' : trend.direction === 'down' ? '↓' : '→';
+                    const color = trend.direction === 'up' ? '#22c55e' : trend.direction === 'down' ? '#ef4444' : '#9ca3af';
+                    return `<span style="color: ${color}; margin-left: 4px; font-size: 11px;">${arrow}${Math.abs(trend.change)}¢</span>`;
+                };
+
+                latestDataHtml = `
+                    <div class="prediction-bar-container">
+                        <div class="prediction-bar-row" style="display: flex; align-items: center;">
+                            <span style="font-size: 12px; margin-right: 4px; font-weight: bold;">${latest[1].yes}</span>
+                            ${trendArrow(yesTrend)}
+                            <div class="prediction-bar-track" style="height: 10px; flex: 1; position: relative;">
+                                <div class="prediction-bar-fill yes-bar" style="width: ${yesProb}%; height: 100%;" title="${latest[1].yes} Yes"></div>
+                                <div class="prediction-bar-fill no-bar" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${latest[1].no} No"></div>
+                            </div>
+                            <span style="font-size: 12px; margin-left: 4px; font-weight: bold;">${latest[1].no}</span>
+                            ${trendArrow(noTrend)}
+                        </div>
+                    </div>`;
             }
 
             if (sorted.length > 1) {
                 hasHistory = true;
-                historyDataHtml = sorted.slice(1).map(entry => buildProbBar(entry, false)).join('');
+                historyDataHtml = sorted.slice(1).map(([date, probs], index) => {
+                    const yesProb = parseFloat(probs.yes);
+                    const noProb = parseFloat(probs.no);
+                    const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    
+                    // Calculate trend for this history entry
+                    const prevEntry = sorted[index + 2];
+                    let trendHtml = '';
+                    if (prevEntry) {
+                        const prevProbs = prevEntry[1];
+                        const yesTrend = calculateTrend(probs.yes, prevProbs.yes);
+                        if (yesTrend) {
+                            const arrow = yesTrend.direction === 'up' ? '↑' : yesTrend.direction === 'down' ? '↓' : '→';
+                            const color = yesTrend.direction === 'up' ? '#22c55e' : yesTrend.direction === 'down' ? '#ef4444' : '#9ca3af';
+                            trendHtml = `<span style="color: ${color}; font-size: 11px; margin-left: 2px;">${arrow}</span>`;
+                        }
+                    }
+                    
+                    return `
+                        <div class="prediction-history-row" style="margin-bottom: 6px; display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15);">
+                            <span class="prediction-history-date" style="min-width: 70px; font-size: 11px; font-weight: 600; color: var(--text-secondary);">${dateLabel}</span>
+                            <div style="display: flex; gap: 8px; flex: 1; justify-content: space-around;">
+                                <div style="display: flex; align-items: center;">
+                                    <span style="font-size: 11px; font-weight: 700; color: #22c55e;">${probs.yes}</span>
+                                    ${trendHtml}
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="font-size: 11px; font-weight: 700; color: #ef4444;">${probs.no}</span>
+                                </div>
+                            </div>
+                        </div>`;
+                }).join('');
             }
         } else if (indicator.yes_probability && indicator.no_probability) {
             const yesProb = parseFloat(indicator.yes_probability);
@@ -312,7 +437,7 @@ const IndicatorRenderers = (function () {
             const buildCandidateBar = ([date, candidates], large, showLabel = true) => {
                 const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
                 const entries = Object.entries(candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
-                const fontSize = large ? '12px' : '10px';
+                const fontSize = large ? '12px' : '11px';
                 const labelWidth = large ? '70px' : '90px';
 
                 let html = `<div class="prediction-bar-container">`;

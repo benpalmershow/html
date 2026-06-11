@@ -1,5 +1,4 @@
 // Chart configuration and initialization
-// SOLID: Strategy pattern for chart configs (OCP), SRP for overlay management
 
 const ChartStrategies = (function () {
     'use strict';
@@ -22,7 +21,6 @@ let chartOverlayTimeout;
 let currentChartIndicatorName = null;
 let currentChartFullConfig = null;
 
-// Crosshair plugin - draws a vertical line at the hovered x position
 const crosshairPlugin = {
     id: 'crosshair',
     afterDraw(chart) {
@@ -46,7 +44,6 @@ const crosshairPlugin = {
     }
 };
 
-// Close overlay on Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         document.querySelectorAll('.chart-overlay.show').forEach(overlay => {
@@ -55,14 +52,10 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// =========================================
-// Overlay Management (SRP: one responsibility)
-// =========================================
+// --- Overlay Management ---
 
 function showChartOverlay(indicator, indicatorName, overlay) {
-    document.querySelectorAll('.chart-overlay.show').forEach(otherOverlay => {
-        if (otherOverlay !== overlay) hideChartOverlay(otherOverlay);
-    });
+    document.querySelectorAll('.chart-overlay.show').forEach(otherOverlay => { if (otherOverlay !== overlay) hideChartOverlay(otherOverlay); });
     overlay.classList.add('show');
     currentChartIndicatorName = indicatorName;
     loadChartInOverlay(indicator, indicatorName, overlay);
@@ -70,21 +63,12 @@ function showChartOverlay(indicator, indicatorName, overlay) {
 
 function hideChartOverlay(overlay) {
     overlay.classList.remove('show');
-    if (overlay._chartInstance) {
-        overlay._chartInstance.destroy();
-        overlay._chartInstance = null;
-    }
+    if (overlay._chartInstance) { overlay._chartInstance.destroy(); overlay._chartInstance = null; }
 }
 
 function toggleChartOverlay(indicator, indicatorName) {
     let overlay = indicator.querySelector('.chart-overlay');
-
-    if (overlay) {
-        if (overlay.classList.contains('show')) hideChartOverlay(overlay);
-        else showChartOverlay(indicator, indicatorName, overlay);
-    } else {
-        createChartOverlay(indicator, indicatorName);
-    }
+    if (overlay) { if (overlay.classList.contains('show')) hideChartOverlay(overlay); else showChartOverlay(indicator, indicatorName, overlay); } else { createChartOverlay(indicator, indicatorName); }
 }
 
 function createChartOverlay(indicator, indicatorName) {
@@ -93,46 +77,18 @@ function createChartOverlay(indicator, indicatorName) {
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
     overlay.setAttribute('aria-labelledby', 'chart-overlay-title');
-    overlay.innerHTML = `
-        <div class="chart-overlay-range-picker" id="chartRangePicker">
-            <h4 id="chart-overlay-title" class="chart-overlay-title">${indicatorName} Chart</h4>
-            <button class="range-btn" data-range="3">3M</button>
-            <button class="range-btn" data-range="6">6M</button>
-            <button class="range-btn active" data-range="12">1Y</button>
-            <button class="chart-overlay-close" aria-label="Close chart">&times;</button>
-        </div>
-        <div class="chart-overlay-body">
-            <div class="chart-overlay-loading">
-                <div class="chart-overlay-loading-spinner"></div>
-                <span>Loading chart...</span>
-            </div>
-        </div>
-    `;
-
+    overlay.innerHTML = `<div class="chart-overlay-range-picker" id="chartRangePicker"><h4 id="chart-overlay-title" class="chart-overlay-title">${indicatorName} Chart</h4><button class="range-btn" data-range="3">3M</button><button class="range-btn" data-range="6">6M</button><button class="range-btn active" data-range="12">1Y</button><button class="chart-overlay-close" aria-label="Close chart">&times;</button></div><div class="chart-overlay-body"><div class="chart-overlay-loading"><div class="chart-overlay-loading-spinner"></div><span>Loading chart...</span></div></div>`;
     indicator.appendChild(overlay);
-
     const closeBtn = overlay.querySelector('.chart-overlay-close');
-    closeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        hideChartOverlay(overlay);
-    });
-
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) hideChartOverlay(overlay);
-    });
+    closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); hideChartOverlay(overlay); });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) hideChartOverlay(overlay); });
 
     overlay.querySelectorAll('.range-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+            e.preventDefault(); e.stopPropagation();
             overlay.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            if (overlay._chartInstance) {
-                overlay._chartInstance.destroy();
-                overlay._chartInstance = null;
-            }
+            if (overlay._chartInstance) { overlay._chartInstance.destroy(); overlay._chartInstance = null; }
             const fullConfig = getChartConfig(indicatorName, window.financialData.indices);
             const slicedConfig = sliceChartDataByRange(fullConfig, btn.dataset.range);
             const body = overlay.querySelector('.chart-overlay-body');
@@ -151,29 +107,18 @@ function createChartOverlay(indicator, indicatorName) {
 
 function loadChartInOverlay(indicator, indicatorName, overlay) {
     const body = overlay.querySelector('.chart-overlay-body');
-
     try {
-        if (!window.financialData || !window.financialData.indices) {
-            showOverlayError(body, 'Financial data not loaded');
-            return;
-        }
-
+        if (!window.financialData || !window.financialData.indices) { showOverlayError(body, 'Financial data not loaded'); return; }
         const chartConfig = getChartConfig(indicatorName, window.financialData.indices);
-
         if (chartConfig && chartConfig.data) {
             const loading = body.querySelector('.chart-overlay-loading');
             if (loading) loading.remove();
-
             const existingCanvas = body.querySelector('canvas');
             if (existingCanvas) {
                 const existingChartId = existingCanvas.id + 'Chart';
-                if (window[existingChartId]) {
-                    window[existingChartId].destroy();
-                    window[existingChartId] = null;
-                }
+                if (window[existingChartId]) { window[existingChartId].destroy(); window[existingChartId] = null; }
                 existingCanvas.remove();
             }
-
             const activeBtn = overlay.querySelector('.range-btn.active');
             const defaultRange = activeBtn ? activeBtn.dataset.range : '12';
             const slicedConfig = sliceChartDataByRange(chartConfig, defaultRange);
@@ -181,7 +126,6 @@ function loadChartInOverlay(indicator, indicatorName, overlay) {
             canvas.className = 'chart-overlay-canvas';
             canvas.id = `overlay-${indicatorName.replace(/\s+/g, '-').toLowerCase()}-chart`;
             body.appendChild(canvas);
-
             const chartInstance = initializeChartInOverlay(slicedConfig, canvas);
             if (chartInstance) overlay._chartInstance = chartInstance;
         } else {
@@ -199,154 +143,59 @@ function showOverlayError(body, message) {
     body.innerHTML = `<div class="chart-overlay-error"><div class="chart-overlay-error-icon">📊</div><p>${message}</p></div>`;
 }
 
-// =========================================
-// Chart Initialization (SRP)
-// =========================================
+// --- Chart Initialization ---
 
 function initializeChartInOverlay(chartConfig, canvas) {
     if (!chartConfig.data) return null;
-
     const ctx = canvas.getContext('2d');
     if (window[canvas.id + 'Chart']) window[canvas.id + 'Chart'].destroy();
-
     const isMixedChart = chartConfig.type === 'chartjs-mixed';
     const chartType = isMixedChart ? 'bar' : 'line';
-
     const scales = buildOverlayScales(isMixedChart);
-
-    const chartInstance = new Chart(ctx, {
-        type: chartType,
-        data: chartConfig.data,
-        plugins: [crosshairPlugin],
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            layout: { padding: 0, autoPadding: false },
-            animation: { duration: 600, easing: 'easeInOutQuart' },
-            plugins: buildOverlayPlugins(isMixedChart),
-            scales: scales,
-            interaction: { mode: 'nearest', axis: 'x', intersect: false }
-        }
-    });
-
+    const chartInstance = new Chart(ctx, { type: chartType, data: chartConfig.data, plugins: [crosshairPlugin], options: { responsive: true, maintainAspectRatio: false, layout: { padding: 0, autoPadding: false }, animation: { duration: 600, easing: 'easeInOutQuart' }, plugins: buildOverlayPlugins(isMixedChart), scales: scales, interaction: { mode: 'nearest', axis: 'x', intersect: false } } });
     window[canvas.id + 'Chart'] = chartInstance;
     return chartInstance;
 }
 
 function buildOverlayScales(isMixedChart) {
-    const scales = {
-        x: {
-            display: true,
-            grid: { display: false, drawBorder: false },
-            ticks: {
-                display: true,
-                font: { size: 9 },
-                color: 'rgba(0, 0, 0, 0.4)',
-                maxRotation: 0,
-                autoSkip: true,
-                maxTicksLimit: 8
-            }
-        }
-    };
-
+    const scales = { x: { display: true, grid: { display: false, drawBorder: false }, ticks: { display: true, font: { size: 9 }, color: 'rgba(0, 0, 0, 0.4)', maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } } };
     if (isMixedChart) {
-        scales.y = {
-            display: true, beginAtZero: false,
-            grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-            ticks: { display: false }, position: 'left', title: { display: false }
-        };
-        scales.y1 = {
-            display: true, beginAtZero: false,
-            grid: { display: false }, ticks: { display: false },
-            position: 'right', title: { display: false }
-        };
+        scales.y = { display: true, beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { display: false }, position: 'left', title: { display: false } };
+        scales.y1 = { display: true, beginAtZero: false, grid: { display: false }, ticks: { display: false }, position: 'right', title: { display: false } };
     } else {
-        scales.y = {
-            display: true, beginAtZero: false,
-            grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false },
-            ticks: { display: false }, position: 'right'
-        };
+        scales.y = { display: true, beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.03)', drawBorder: false }, ticks: { display: false }, position: 'right' };
     }
-
     return scales;
 }
 
 function buildOverlayPlugins(isMixedChart) {
     return {
-        legend: {
-            display: isMixedChart,
-            position: 'bottom',
-            align: 'center',
-            labels: {
-                font: { size: isMixedChart ? 9 : 10 },
-                padding: isMixedChart ? 6 : 12,
-                boxWidth: isMixedChart ? 10 : 14,
-                useBorderRadius: true,
-                borderRadius: 4
-            }
-        },
+        legend: { display: isMixedChart, position: 'bottom', align: 'center', labels: { font: { size: isMixedChart ? 9 : 10 }, padding: isMixedChart ? 6 : 12, boxWidth: isMixedChart ? 10 : 14, useBorderRadius: true, borderRadius: 4 } },
         title: { display: false },
-        tooltip: {
-            mode: 'index',
-            intersect: false,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            titleColor: '#fff',
-            bodyColor: '#fff',
-            borderColor: '#2C5F5A',
-            borderWidth: 1,
-            padding: 10,
-            titleFont: { size: 11 },
-            bodyFont: { size: 11 },
-            boxPadding: 5,
-            callbacks: {
-                title: function (context) {
-                    return context.length > 0 ? context[0].label : '';
-                },
-                label: function (context) {
-                    if (context.parsed.y !== null) {
-                        const formatted = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y);
-                        return isMixedChart ? `${context.dataset.label}: ${formatted}` : formatted;
-                    }
-                    return '';
-                }
-            }
-        },
+        tooltip: { mode: 'index', intersect: false, backgroundColor: 'rgba(0, 0, 0, 0.8)', titleColor: '#fff', bodyColor: '#fff', borderColor: '#2C5F5A', borderWidth: 1, padding: 10, titleFont: { size: 11 }, bodyFont: { size: 11 }, boxPadding: 5, callbacks: { title: function (context) { return context.length > 0 ? context[0].label : ''; }, label: function (context) { if (context.parsed.y !== null) { const formatted = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(context.parsed.y); return isMixedChart ? `${context.dataset.label}: ${formatted}` : formatted; } return ''; } } },
         crosshair: false
     };
 }
 
-// =========================================
-// Chart Data Slicing (SRP)
-// =========================================
+// --- Chart Data Slicing ---
 
 function sliceChartDataByRange(config, months) {
     if (!config || !config.data || months === 'all') return config;
     const count = parseInt(months);
     if (isNaN(count)) return config;
-
     const slicedConfig = JSON.parse(JSON.stringify(config));
     const totalPoints = slicedConfig.data.labels.length;
     const startIndex = Math.max(0, totalPoints - count);
-
     slicedConfig.data.labels = slicedConfig.data.labels.slice(startIndex);
-    slicedConfig.data.datasets.forEach(ds => {
-        ds.data = ds.data.slice(startIndex);
-        if (ds.backgroundColor && Array.isArray(ds.backgroundColor)) {
-            ds.backgroundColor = ds.backgroundColor.slice(startIndex);
-        }
-    });
-
+    slicedConfig.data.datasets.forEach(ds => { ds.data = ds.data.slice(startIndex); if (ds.backgroundColor && Array.isArray(ds.backgroundColor)) ds.backgroundColor = ds.backgroundColor.slice(startIndex); });
     return slicedConfig;
 }
 
-// =========================================
-// Chart Config Resolver (Strategy Pattern - OCP)
-// =========================================
+// --- Chart Config Resolver ---
 
 function getChartConfig(indicatorName, indices) {
     const indicatorData = indices.find(item => item.name.trim().toLowerCase() === indicatorName.trim().toLowerCase());
     if (!indicatorData) return null;
-
     const chartType = ChartStrategies.detectChartType(indicatorData);
     return ChartStrategies.registry.resolve(chartType, indicatorName, indicatorData);
 }
@@ -354,38 +203,25 @@ function getChartConfig(indicatorName, indices) {
 // --- Standard Line Chart Strategy ---
 
 function buildStandardLineChartConfig(indicatorName, indicatorData) {
-    const yearKeys = Object.keys(indicatorData)
-        .filter(key => /^\d{4}$/.test(key))
-        .map(key => parseInt(key))
-        .sort((a, b) => b - a);
-
-    const labels = [];
-    const values = [];
-    const dataMap = {};
-
+    const yearKeys = Object.keys(indicatorData).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
+    const labels = [], values = [], dataMap = {};
     MONTHS.forEach((month, index) => {
         const value = indicatorData[month];
         if (isValidData(value)) {
             const numValue = extractNumericValue(value);
-            if (numValue !== null) {
-                dataMap[`${null}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year: null };
-            }
+            if (numValue !== null) dataMap[`${null}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year: null };
         }
     });
-
     for (const year of yearKeys) {
         const yearData = indicatorData[year];
         MONTHS.forEach((month, index) => {
             const value = yearData[month];
             if (isValidData(value)) {
                 const numValue = extractNumericValue(value);
-                if (numValue !== null) {
-                    dataMap[`${year}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year };
-                }
+                if (numValue !== null) dataMap[`${year}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year };
             }
         });
     }
-
     const sortedData = Object.values(dataMap).sort((a, b) => {
         if (a.year !== b.year) {
             const yearA = a.year !== null ? a.year : 2025;
@@ -394,314 +230,99 @@ function buildStandardLineChartConfig(indicatorName, indicatorData) {
         }
         return a.monthIndex - b.monthIndex;
     });
-
-    sortedData.forEach(item => {
-        labels.push(item.label);
-        values.push(item.value);
-    });
-
-    return {
-        type: 'chartjs',
-        data: {
-            labels,
-            datasets: [{
-                label: indicatorName,
-                data: values,
-                borderColor: '#2C5F5A',
-                backgroundColor: 'rgba(44, 95, 90, 0.1)',
-                tension: 0.4,
-                fill: true,
-                pointBackgroundColor: '#2C5F5A',
-                pointBorderColor: '#fff',
-                pointBorderWidth: 1.5,
-                pointRadius: 3,
-                pointHoverRadius: 5
-            }]
-        }
-    };
+    sortedData.forEach(item => { labels.push(item.label); values.push(item.value); });
+    return { type: 'chartjs', data: { labels, datasets: [{ label: indicatorName, data: values, borderColor: '#2C5F5A', backgroundColor: 'rgba(44, 95, 90, 0.1)', tension: 0.4, fill: true, pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 3, pointHoverRadius: 5 }] } };
 }
 
 // --- Trade Deficit Chart Strategy ---
 
 function buildTradeDeficitChartConfig(indicatorName, indicatorData) {
-    const importValues = [];
-    const exportValues = [];
-    const deficitValues = [];
-    const labels = [];
-
-    const yearKeys = Object.keys(indicatorData)
-        .filter(key => /^\d{4}$/.test(key))
-        .map(key => parseInt(key))
-        .sort((a, b) => b - a);
-
+    const importValues = [], exportValues = [], deficitValues = [], labels = [];
+    const yearKeys = Object.keys(indicatorData).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
     MONTHS.forEach((month, index) => {
-        const importValue = indicatorData.imports[month];
-        const exportValue = indicatorData.exports[month];
-        const deficitValue = indicatorData[month];
+        const importValue = indicatorData.imports[month], exportValue = indicatorData.exports[month], deficitValue = indicatorData[month];
         if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-            const numImport = extractNumericValue(importValue);
-            const numExport = extractNumericValue(exportValue);
-            const numDeficit = extractNumericValue(deficitValue);
-            if (numImport !== null && numExport !== null && numDeficit !== null) {
-                labels.push(MONTH_LABELS[index]);
-                importValues.push(numImport);
-                exportValues.push(numExport);
-                deficitValues.push(numDeficit);
-            }
+            const numImport = extractNumericValue(importValue), numExport = extractNumericValue(exportValue), numDeficit = extractNumericValue(deficitValue);
+            if (numImport !== null && numExport !== null && numDeficit !== null) { labels.push(MONTH_LABELS[index]); importValues.push(numImport); exportValues.push(numExport); deficitValues.push(numDeficit); }
         }
     });
-
     const yearNestedPoints = [];
     for (const year of yearKeys) {
         const yearData = indicatorData[year];
         if (!yearData || typeof yearData !== 'object') continue;
-        const importsYear = indicatorData.imports[year];
-        const exportsYear = indicatorData.exports[year];
+        const importsYear = indicatorData.imports[year], exportsYear = indicatorData.exports[year];
         if (!importsYear || !exportsYear) continue;
         MONTHS.forEach((month, index) => {
-            const importValue = importsYear[month];
-            const exportValue = exportsYear[month];
-            const deficitValue = yearData[month];
+            const importValue = importsYear[month], exportValue = exportsYear[month], deficitValue = yearData[month];
             if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-                const numImport = extractNumericValue(importValue);
-                const numExport = extractNumericValue(exportValue);
-                const numDeficit = extractNumericValue(deficitValue);
-                if (numImport !== null && numExport !== null && numDeficit !== null) {
-                    yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numImport, numExport, numDeficit });
-                }
+                const numImport = extractNumericValue(importValue), numExport = extractNumericValue(exportValue), numDeficit = extractNumericValue(deficitValue);
+                if (numImport !== null && numExport !== null && numDeficit !== null) yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numImport, numExport, numDeficit });
             }
         });
     }
-
     yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
-    yearNestedPoints.slice(0, 2).reverse().forEach(p => {
-        labels.push(p.label);
-        importValues.push(p.numImport);
-        exportValues.push(p.numExport);
-        deficitValues.push(Math.abs(p.numDeficit));
-    });
-
-    return {
-        type: 'chartjs-mixed',
-        data: {
-            labels,
-            datasets: [
-                { label: 'Imports', data: importValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
-                { label: 'Exports', data: exportValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
-                { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
-            ]
-        }
-    };
+    yearNestedPoints.slice(0, 2).reverse().forEach(p => { labels.push(p.label); importValues.push(p.numImport); exportValues.push(p.numExport); deficitValues.push(Math.abs(p.numDeficit)); });
+    return { type: 'chartjs-mixed', data: { labels, datasets: [{ label: 'Imports', data: importValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' }, { label: 'Exports', data: exportValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' }, { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }] } };
 }
 
-// --- Budget Deficit Chart Strategy ---
-
 function buildBudgetDeficitChartConfig(indicatorName, indicatorData) {
-    const receiptValues = [];
-    const outlayValues = [];
-    const deficitValues = [];
-    const labels = [];
-
-    const yearKeys = Object.keys(indicatorData)
-        .filter(key => /^\d{4}$/.test(key))
-        .map(key => parseInt(key))
-        .sort((a, b) => b - a);
-
+    const receiptValues = [], outlayValues = [], deficitValues = [], labels = [];
+    const yearKeys = Object.keys(indicatorData).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
     MONTHS.forEach((month, index) => {
-        const receiptValue = indicatorData.receipts[month];
-        const outlayValue = indicatorData.outlays[month];
-        const deficitValue = indicatorData[month];
+        const receiptValue = indicatorData.receipts[month], outlayValue = indicatorData.outlays[month], deficitValue = indicatorData[month];
         if (isValidData(receiptValue) && isValidData(outlayValue) && isValidData(deficitValue)) {
-            const numReceipt = extractNumericValue(receiptValue);
-            const numOutlay = extractNumericValue(outlayValue);
-            const numDeficit = extractNumericValue(deficitValue);
-            if (numReceipt !== null && numOutlay !== null && numDeficit !== null) {
-                labels.push(MONTH_LABELS[index]);
-                receiptValues.push(numReceipt);
-                outlayValues.push(numOutlay);
-                deficitValues.push(numDeficit);
-            }
+            const numReceipt = extractNumericValue(receiptValue), numOutlay = extractNumericValue(outlayValue), numDeficit = extractNumericValue(deficitValue);
+            if (numReceipt !== null && numOutlay !== null && numDeficit !== null) { labels.push(MONTH_LABELS[index]); receiptValues.push(numReceipt); outlayValues.push(numOutlay); deficitValues.push(numDeficit); }
         }
     });
-
     const yearNestedPoints = [];
     for (const year of yearKeys) {
         const yearData = indicatorData[year];
         if (!yearData || typeof yearData !== 'object') continue;
-        const receiptsYear = indicatorData.receipts[year];
-        const outlaysYear = indicatorData.outlays[year];
+        const receiptsYear = indicatorData.receipts[year], outlaysYear = indicatorData.outlays[year];
         if (!receiptsYear || !outlaysYear) continue;
         MONTHS.forEach((month, index) => {
-            const receiptValue = receiptsYear[month];
-            const outlayValue = outlaysYear[month];
-            const deficitValue = yearData[month];
+            const receiptValue = receiptsYear[month], outlayValue = outlaysYear[month], deficitValue = yearData[month];
             if (isValidData(receiptValue) && isValidData(outlayValue) && isValidData(deficitValue)) {
-                const numReceipt = extractNumericValue(receiptValue);
-                const numOutlay = extractNumericValue(outlayValue);
-                const numDeficit = extractNumericValue(deficitValue);
-                if (numReceipt !== null && numOutlay !== null && numDeficit !== null) {
-                    yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numReceipt, numOutlay, numDeficit });
-                }
+                const numReceipt = extractNumericValue(receiptValue), numOutlay = extractNumericValue(outlayValue), numDeficit = extractNumericValue(deficitValue);
+                if (numReceipt !== null && numOutlay !== null && numDeficit !== null) yearNestedPoints.push({ year, monthIndex: index, label: MONTH_LABELS[index], numReceipt, numOutlay, numDeficit });
             }
         });
     }
-
     yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
-    yearNestedPoints.slice(0, 2).reverse().forEach(p => {
-        labels.push(p.label);
-        receiptValues.push(p.numReceipt);
-        outlayValues.push(p.numOutlay);
-        deficitValues.push(p.numDeficit);
-    });
-
-    return {
-        type: 'chartjs-mixed',
-        data: {
-            labels,
-            datasets: [
-                { label: 'Receipts', data: receiptValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' },
-                { label: 'Outlays', data: outlayValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' },
-                { label: 'Deficit/Surplus', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'rgba(44, 95, 90, 0.2)', borderWidth: 2.5, tension: 0.4, fill: 'origin', yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
-            ]
-        },
-        options: {
-            scales: {
-                y1: {
-                    type: 'linear',
-                    position: 'right',
-                    beginAtZero: false,
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            return value >= 0 ? '+' + value : value;
-                        }
-                    }
-                }
-            },
-            plugins: {
-                legend: { display: true },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            const val = context.raw;
-                            return context.dataset.label + ': ' + (val >= 0 ? '+$' + val + 'M' : '-$' + Math.abs(val) + 'M');
-                        }
-                    }
-                },
-                chartAreaBorder: {
-                    borderColor: 'rgba(0, 0, 0, 0.3)',
-                    borderWidth: 1
-                }
-            }
-        }
-    };
+    yearNestedPoints.slice(0, 2).reverse().forEach(p => { labels.push(p.label); receiptValues.push(p.numReceipt); outlayValues.push(p.numOutlay); deficitValues.push(p.numDeficit); });
+    return { type: 'chartjs-mixed', data: { labels, datasets: [{ label: 'Receipts', data: receiptValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' }, { label: 'Outlays', data: outlayValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' }, { label: 'Deficit/Surplus', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'rgba(44, 95, 90, 0.2)', borderWidth: 2.5, tension: 0.4, fill: 'origin', yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }] }, options: { scales: { y1: { type: 'linear', position: 'right', beginAtZero: false, grid: { color: 'rgba(0, 0, 0, 0.1)' }, ticks: { callback: function(value) { return value >= 0 ? '+' + value : value; } } } }, plugins: { legend: { display: true }, tooltip: { callbacks: { label: function(context) { const val = context.raw; return context.dataset.label + ': ' + (val >= 0 ? '+$' + val + 'M' : '-$' + Math.abs(val) + 'M'); } } }, chartAreaBorder: { borderColor: 'rgba(0, 0, 0, 0.3)', borderWidth: 1 } } } };
 }
 
-// --- Prediction Market Chart Strategy ---
-
 function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
-    const labels = [];
-    const values = [];
-
-    if (indicatorData.bps_probabilities) {
-        Object.keys(indicatorData.bps_probabilities).forEach(key => {
-            labels.push(key);
-            values.push(parseFloat(indicatorData.bps_probabilities[key]));
-        });
-    } else if (indicatorData.candidates && typeof indicatorData.candidates === 'object') {
-        for (const [name, prob] of Object.entries(indicatorData.candidates)) {
-            const val = parseFloat(String(prob).replace(/[^0-9.-]/g, ''));
-            if (!isNaN(val)) { labels.push(name); values.push(val); }
-        }
-    } else if (indicatorData.yes_probability && indicatorData.no_probability) {
-        const yesVal = parseFloat(String(indicatorData.yes_probability).replace(/[^0-9.-]/g, ''));
-        const noVal = parseFloat(String(indicatorData.no_probability).replace(/[^0-9.-]/g, ''));
+    const labels = [], values = [];
+    if (indicatorData.bps_probabilities) { Object.keys(indicatorData.bps_probabilities).forEach(key => { labels.push(key); values.push(parseFloat(indicatorData.bps_probabilities[key])); }); }
+    else if (indicatorData.candidates && typeof indicatorData.candidates === 'object') { for (const [name, prob] of Object.entries(indicatorData.candidates)) { const val = parseFloat(String(prob).replace(/[^0-9.-]/g, '')); if (!isNaN(val)) { labels.push(name); values.push(val); } } }
+    else if (indicatorData.yes_probability && indicatorData.no_probability) {
+        const yesVal = parseFloat(String(indicatorData.yes_probability).replace(/[^0-9.-]/g, '')), noVal = parseFloat(String(indicatorData.no_probability).replace(/[^0-9.-]/g, ''));
         if (!isNaN(yesVal)) { labels.push('Yes'); values.push(yesVal); }
         if (!isNaN(noVal)) { labels.push('No'); values.push(noVal); }
     }
-
-    return {
-        type: 'chartjs-bar',
-        data: { labels, datasets: [{ label: indicatorName, data: values }] }
-    };
+    return { type: 'chartjs-bar', data: { labels, datasets: [{ label: indicatorName, data: values }] } };
 }
 
-// --- Political Poll Chart Strategy ---
-
 function buildPoliticalPollChartConfig(indicatorName, indicatorData) {
-    const labels = [];
-    const candidate1Values = [];
-    const candidate2Values = [];
-
+    const labels = [], candidate1Values = [], candidate2Values = [];
     if (indicatorData.probabilities && typeof indicatorData.probabilities === 'object') {
         const sortedDates = Object.keys(indicatorData.probabilities).sort((a, b) => new Date(a) - new Date(b));
-
         sortedDates.forEach(date => {
-            const probs = indicatorData.probabilities[date];
-            const candidates = Object.entries(probs);
-
+            const probs = indicatorData.probabilities[date], candidates = Object.entries(probs);
             if (candidates.length >= 2) {
                 const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                 labels.push(dateLabel);
-
-                const [candidate1Name, candidate1Prob] = candidates[0];
-                const [candidate2Name, candidate2Prob] = candidates[1];
-
-                const prob1 = parseFloat(String(candidate1Prob).replace(/[^0-9.-]/g, ''));
-                const prob2 = parseFloat(String(candidate2Prob).replace(/[^0-9.-]/g, ''));
-
+                const [candidate1Name, candidate1Prob] = candidates[0], [candidate2Name, candidate2Prob] = candidates[1];
+                const prob1 = parseFloat(String(candidate1Prob).replace(/[^0-9.-]/g, '')), prob2 = parseFloat(String(candidate2Prob).replace(/[^0-9.-]/g, ''));
                 candidate1Values.push(prob1);
                 candidate2Values.push(prob2);
             }
         });
     }
-
-    return {
-        type: 'chartjs-mixed',
-        data: {
-            labels,
-            datasets: [
-                {
-                    label: 'Massie',
-                    data: candidate1Values,
-                    type: 'line',
-                    borderColor: '#3498db',
-                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                    borderWidth: 2.5,
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#3498db',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 1.5,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                },
-                {
-                    label: 'Gallrein',
-                    data: candidate2Values,
-                    type: 'line',
-                    borderColor: '#e74c3c',
-                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                    borderWidth: 2.5,
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#e74c3c',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 1.5,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                }
-            ]
-        }
-    };
+    return { type: 'chartjs-mixed', data: { labels, datasets: [{ label: 'Massie', data: candidate1Values, type: 'line', borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointBackgroundColor: '#3498db', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6 }, { label: 'Gallrein', data: candidate2Values, type: 'line', borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointBackgroundColor: '#e74c3c', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6 }] } };
 }
 
-// Register chart strategies (OCP: add new chart types without modifying existing code)
-ChartStrategies.registry
-    .register('line', buildStandardLineChartConfig)
-    .register('trade-deficit', buildTradeDeficitChartConfig)
-    .register('budget-deficit', buildBudgetDeficitChartConfig)
-    .register('prediction-market', buildPredictionMarketChartConfig)
-    .register('political-poll', buildPoliticalPollChartConfig);
+ChartStrategies.registry.register('line', buildStandardLineChartConfig).register('trade-deficit', buildTradeDeficitChartConfig).register('budget-deficit', buildBudgetDeficitChartConfig).register('prediction-market', buildPredictionMarketChartConfig).register('political-poll', buildPoliticalPollChartConfig);

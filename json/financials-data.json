@@ -1986,7 +1986,7 @@
             "parentCategory": "Business Indicators",
             "agency": "BLS",
             "name": "PPI",
-            "lastUpdated": "2026-05-13T14:00:00Z",
+            "lastUpdated": "2026-06-11T14:00:00Z",
             "releaseDay": 13,
             "url": "https://www.bls.gov/ppi/data.htm",
             "march": "148.061",
@@ -2000,10 +2000,11 @@
             "november": "151.054",
             "december": "151.592",
             "2026": {
-                "january": "152.435",
-                "february": "153.300",
-                "march": "154.372",
-                "april":"156.496"
+                "january": "152.468",
+                "february": "153.236",
+                "march": "154.382",
+                "april":"156.011",
+                "may": "157.659"
             },
             "change": "",
             "explanation": "The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."

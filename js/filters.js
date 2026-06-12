@@ -34,12 +34,11 @@ function handleFilterClick(element, category, isLatest = false) {
         if (typeof ensureLoad13F === 'function') ensureLoad13F();
         currentCategory = '13F Holdings';
     } else if (category === 'World Cup') {
-        document.getElementById('categories').style.display = 'block';
+        document.getElementById('categories').style.display = 'none';
         document.getElementById('latest-13f-filings').style.display = 'none';
         document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
             el.style.display = 'none';
         });
-        // Show World Cup category, hide others
         document.querySelectorAll('.category').forEach(el => {
             if (el.dataset.category === 'World Cup') {
                 el.style.display = 'block';
@@ -47,7 +46,6 @@ function handleFilterClick(element, category, isLatest = false) {
                 el.style.display = 'none';
             }
         });
-        // Ensure World Cup data is loaded
         if (typeof loadWorldCupMatches === 'function') {
             loadWorldCupMatches();
         }
@@ -62,10 +60,6 @@ function handleFilterClick(element, category, isLatest = false) {
         document.querySelectorAll('.category').forEach(el => {
             if (category === 'all') {
                 el.style.display = 'block';
-                // Also show World Cup category when 'all' is selected
-                if (el.dataset.category === 'World Cup') {
-                    el.style.display = 'block';
-                }
             } else if (el.dataset.category === category) {
                 el.style.display = 'block';
             } else {

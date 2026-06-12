@@ -208,6 +208,17 @@ function initializeDashboard() {
         initialize13FView();
         ensureLoad13F();
         setupModalHandlers();
+    } else if (initialFilter === 'World Cup') {
+        document.getElementById('categories').style.display = 'none';
+        document.getElementById('latest-13f-filings').style.display = 'none';
+        document.querySelectorAll('.category').forEach(el => {
+            if (el.dataset.category === 'World Cup') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+        setupModalHandlers();
     } else {
         initializeFilteredView(initialFilter, isLatest, indicatorParam);
         setupModalHandlers();
@@ -263,12 +274,12 @@ function initializeFilteredView(initialFilter, isLatest, indicatorParam) {
         scrollToIndicatorByName(indicatorParam);
     }
 
-    // Ensure Sports category is visible after renderDashboard
-    const sportsCategory = document.querySelector('[data-category="Sports"]');
-    if (sportsCategory) {
-        sportsCategory.style.display = 'block';
+    // Ensure World Cup category is visible after renderDashboard
+    const worldCupCategory = document.querySelector('[data-category="World Cup"]');
+    if (worldCupCategory) {
+        worldCupCategory.style.display = 'block';
     } else {
-        // If Sports category doesn't exist, load World Cup data to create it
+        // If World Cup category doesn't exist, load World Cup data to create it
         if (typeof loadWorldCupMatches === 'function') {
             loadWorldCupMatches();
         }

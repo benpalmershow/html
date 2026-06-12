@@ -22,10 +22,25 @@ function renderMatchCards(matches) {
   // Clear existing cards
   grid.innerHTML = '';
 
-  // Sort matches: live first, then upcoming, then finished
+  // Sort matches: finished first, then live, then upcoming
+  // Within each status: sort by stage order, then by id descending
+  const stageOrder = { GROUP_STAGE: 0, LAST_32: 1, LAST_16: 2, QUARTER_FINAL: 3, SEMI_FINAL: 4, FINAL: 5 };
+  const statusOrder = { finished: 0, live: 1, upcoming: 2 };
+
   const sortedMatches = [...matches].sort((a, b) => {
-    const statusOrder = { live: 0, upcoming: 1, finished: 2 };
-    return (statusOrder[a.status] ?? 3) - (statusOrder[b.status] ?? 3);
+    const statusDiff = (statusOrder[a.status] ?? 3) - (statusOrder[b.status] ?? 3);
+    if (statusDiff !== 0) return statusDiff;
+
+    const stageA = stageOrder[a.stage] ?? 99;
+    const stageB = stageOrder[b.stage] ?? 99;
+    const stageDiff = stageA - stageB;
+    if (stageDiff !== 0) return stageDiff;
+
+    const idA = parseInt(a.id.split('-').pop(), 10) || 0;
+    const idB = parseInt(b.id.split('-').pop(), 10) || 0;
+    if (statusOrder[a.status] === 0) return idB - idA;
+    if (statusOrder[a.status] === 2) return idA - idB;
+    return idA - idB;
   });
 
   // Create card for each match
@@ -61,10 +76,19 @@ function createMatchCard(match) {
   const explanation = match.explanation || '';
   const source = match.source || 'FIFA';
 
+  const stageLabels = {
+    GROUP_STAGE: 'Group Stage',
+    LAST_32: 'Round of 32',
+    LAST_16: 'Round of 16',
+    QUARTER_FINAL: 'Quarter Final',
+    SEMI_FINAL: 'Semi Final',
+    FINAL: 'Final'
+  };
+
   card.innerHTML = `
     <div class="indicator-header">
       <div class="indicator-name">
-        ${match.stage}
+        ${stageLabels[match.stage] || match.stage}
         ${match.status === 'live' ? `<span class="new-badge ${statusBadgeClass}">${statusText}</span>` : ''}
       </div>
       <div class="indicator-actions">
@@ -75,13 +99,13 @@ function createMatchCard(match) {
     <div class="indicator-content">
       <div class="match-score-display">
         <div class="match-team">
-          <span class="team-flag">${match.teamA.flag}</span>
-          <span class="team-name">${match.teamA.name}</span>
+          <span class="team-flag">${match.teamA.flag || '🏳️'}</span>
+          <span class="team-name">${match.teamA.name || 'TBD'}</span>
         </div>
         <div class="match-score">${formatScoreDisplay(match.teamA.score, match.teamB.score)}</div>
         <div class="match-team">
-          <span class="team-flag">${match.teamB.flag}</span>
-          <span class="team-name">${match.teamB.name}</span>
+          <span class="team-flag">${match.teamB.flag || '🏳️'}</span>
+          <span class="team-name">${match.teamB.name || 'TBD'}</span>
         </div>
       </div>
       <div class="match-meta">

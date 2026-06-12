@@ -425,6 +425,102 @@
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Inline style replacements */
+.trend-arrow {
+    margin-left: 4px;
+    font-size: 11px;
+}
+
+.trend-arrow-small {
+    margin-left: 2px;
+    font-size: 11px;
+}
+
+.prediction-bar-row-inline {
+    display: flex;
+    align-items: center;
+}
+
+.prediction-value {
+    font-size: 12px;
+    margin-right: 4px;
+    font-weight: bold;
+}
+
+.prediction-value-left {
+    font-size: 12px;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.prediction-bar-track-inline {
+    height: 10px;
+    flex: 1;
+    position: relative;
+}
+
+.prediction-history-row-inline {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15);
+}
+
+.prediction-history-date-inline {
+    min-width: 70px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.prediction-history-content {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.prediction-yes-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+.prediction-no-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ef4444;
+}
+
+.prediction-hold-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #3b82f6;
+}
+
+.prediction-hike-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f59e0b;
+}
+
+.prediction-cut-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ef4444;
+}
+
+.prediction-history-item {
+    display: flex;
+    align-items: center;
+}
+
+.month-change-inline {
+    margin-left: 8px;
+    font-weight: 600;
+}
+
 /* Inline sparkline on card face */
 .sparkline-container {
   position: absolute;

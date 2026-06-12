@@ -213,6 +213,11 @@ function initializeDashboard() {
         setupModalHandlers();
     }
 
+    // Load World Cup data after dashboard initialization to ensure it's not wiped out
+    if (typeof loadWorldCupMatches === 'function') {
+        loadWorldCupMatches();
+    }
+
     if (typeof setupSearch === 'function') setupSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
     setupKeyboardNavigation();
@@ -256,6 +261,17 @@ function initializeFilteredView(initialFilter, isLatest, indicatorParam) {
         document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
         renderDashboard(initialFilter, false);
         scrollToIndicatorByName(indicatorParam);
+    }
+
+    // Ensure Sports category is visible after renderDashboard
+    const sportsCategory = document.querySelector('[data-category="Sports"]');
+    if (sportsCategory) {
+        sportsCategory.style.display = 'block';
+    } else {
+        // If Sports category doesn't exist, load World Cup data to create it
+        if (typeof loadWorldCupMatches === 'function') {
+            loadWorldCupMatches();
+        }
     }
 }
 

@@ -1,0 +1,45 @@
+name: Fetch World Cup Scores
+
+on:
+  schedule:
+    # Run every 10 minutes
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  fetch-scores:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Fetch World Cup scores
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+        run: |
+          if [ -z "$FOOTBALL_DATA_API_KEY" ]; then
+            echo "FOOTBALL_DATA_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_world_cup.py
+
+      - name: Validate World Cup data
+        run: |
+          python3 -m json.tool json/world-cup.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/world-cup.json
+          git diff --staged --quiet || git commit -m "Update World Cup scores $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git push

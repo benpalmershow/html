@@ -962,7 +962,7 @@
             "parentCategory": "Government",
             "agency": "Treasury",
             "name": "Treasury Debt Level",
-            "lastUpdated": "2026-05-08T14:00:00Z",
+            "lastUpdated": "2026-06-11T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
             "march": "$36,216,627,186,278.78",
@@ -979,7 +979,9 @@
                 "january": "$38,473,375,474,319.00",
                 "february": "$38,743,577,500,254.48",
                 "march": "$38,990,389,667,489.38",
-                "april": "$38,918,837,926,582.90"
+                "april": "$38,918,837,926,582.90",
+                "may": "$38,882,147,615,630.53",
+                "june": "$39,213,266,279,741.16"
                 },
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."

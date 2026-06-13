@@ -23,7 +23,7 @@ function renderMatchCards(matches) {
   grid.innerHTML = '';
 
   // Sort matches: finished first, then live, then upcoming
-  // Within each status: sort by stage order, then by id descending
+  // Within each status: sort by stage order, then by id (finished/live descending, upcoming ascending)
   const stageOrder = { GROUP_STAGE: 0, LAST_32: 1, LAST_16: 2, QUARTER_FINAL: 3, SEMI_FINAL: 4, FINAL: 5 };
   const statusOrder = { finished: 0, live: 1, upcoming: 2 };
 
@@ -38,9 +38,8 @@ function renderMatchCards(matches) {
 
     const idA = parseInt(a.id.split('-').pop(), 10) || 0;
     const idB = parseInt(b.id.split('-').pop(), 10) || 0;
-    if (statusOrder[a.status] === 0) return idB - idA;
     if (statusOrder[a.status] === 2) return idA - idB;
-    return idA - idB;
+    return idB - idA;
   });
 
   // Create card for each match

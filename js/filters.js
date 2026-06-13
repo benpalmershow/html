@@ -13,7 +13,7 @@ const categoryIcons = {
     'Commodities': '<i data-lucide="package" class="filter-icon"></i>',
     'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>',
     'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>',
-    'World Cup': '<i data-lucide="volleyball" class="filter-icon"></i>'
+    'World Cup': '<i data-lucide="trophy" class="filter-icon"></i>'
 };
 
 /* =========================================
@@ -56,6 +56,9 @@ function handleFilterClick(element, category, isLatest = false) {
         document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
         document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
             el.style.display = show13F ? '' : 'none';
+        });
+        document.querySelectorAll('[data-category="World Cup"]').forEach(el => {
+            el.style.display = 'none';
         });
         document.querySelectorAll('.category').forEach(el => {
             if (category === 'all') {
@@ -127,8 +130,8 @@ function setupFilters(financialData) {
      const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
      buttonsContainer.appendChild(th13fBtn);
 
-     // Add World Cup filter button with inline SVG
-     const worldCupBtn = createFilterBtn('World Cup', '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="volleyball" class="lucide lucide-volleyball filter-icon"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M12 18v-6"></path><path d="M8 15l4 3 4-3"></path></svg>', 'World Cup');
+     // Add World Cup filter button
+     const worldCupBtn = createFilterBtn('World Cup', '<i data-lucide="trophy" class="filter-icon"></i>', 'World Cup');
      buttonsContainer.appendChild(worldCupBtn);
 
      // Use event delegation on the buttons container

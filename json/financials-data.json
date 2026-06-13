@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-11T08:00:00",
+    "lastUpdated": "2026-06-13T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -2292,23 +2292,25 @@
             "parentCategory": "Employment Indicators",
             "agency": "FRED",
             "name": "Jobless Claims",
-            "lastUpdated": "2026-04-03T16:00:00Z",
+            "lastUpdated": "2026-06-13T16:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/ICSA",
-            "march": "223,200",
-            "april": "226,000",
-            "may": "234,000",
-            "june": "241,250",
-            "july": "221,250",
-            "august": "230,000",
-            "september": "234,750",
+            "march": "223000",
+            "april": "225,750",
+            "may": "231,800",
+            "june": "239,000",
+            "july": "221,500",
+            "august": "229,600",
+            "september": "234,000",
             "october": "226,750",
-            "november": "217,600",
-            "december": "219,000",
+            "november": "222,400",
+            "december": "219,250",
             "2026": {
-                "january": "211,400",
+                "january": "211,800",
                 "february": "215,750",
-                "march": "207,750"
+                "march": "208,000",
+                "april": "207,750",
+                "may": "211,600"
             },
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
@@ -2394,7 +2396,7 @@
                 "may": "158.012"
             },
             "change": "",
-            "explanation": "Table 3. Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted. The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand and intermediate demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand-Intermediate Demand groupings, seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
+            "explanation": "Table 3. Producer price indexes for Final Demand, not seasonally adjusted. The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand, not seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
         },
         {
             "id": "cpi",

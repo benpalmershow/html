@@ -87,7 +87,7 @@ function createMatchCard(match) {
   const source = match.source || 'FIFA';
 
   const stageLabels = {
-    GROUP_STAGE: 'Group Stage',
+    GROUP_STAGE: 'Group Phase',
     LAST_32: 'Round of 32',
     LAST_16: 'Round of 16',
     QUARTER_FINAL: 'Quarter Final',

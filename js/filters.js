@@ -52,15 +52,15 @@ function handleFilterClick(element, category, isLatest = false) {
         currentCategory = 'World Cup';
     } else {
         document.getElementById('categories').style.display = 'block';
-        const show13F = category === 'all' || isLatest;
-        document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
+        // Always show 13F and World Cup sections when filtering by a data category or 'all'
+        document.getElementById('latest-13f-filings').style.display = 'block';
         document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
-            el.style.display = show13F ? '' : 'none';
+            el.style.display = '';
         });
         document.querySelectorAll('[data-category="World Cup"]').forEach(el => {
-            el.style.display = 'none';
+            el.style.display = 'block';
         });
-        document.querySelectorAll('.category').forEach(el => {
+        document.querySelectorAll('.category:not([data-category="13F Holdings"]):not([data-category="World Cup"])').forEach(el => {
             if (category === 'all') {
                 el.style.display = 'block';
             } else if (el.dataset.category === category) {
@@ -69,7 +69,7 @@ function handleFilterClick(element, category, isLatest = false) {
                 el.style.display = 'none';
             }
         });
-        if (show13F && typeof ensureLoad13F === 'function') ensureLoad13F();
+        if (typeof ensureLoad13F === 'function') ensureLoad13F();
 
         currentCategory = category || 'all';
     }

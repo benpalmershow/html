@@ -563,6 +563,22 @@ h1.page-title {
 .filter-bar-search .indicator-search {
     width: 100%;
     max-width: 100%;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--control-radius, 6px);
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.filter-bar-search .indicator-search:focus {
+    border-color: var(--logo-teal);
+}
+
+.filter-bar-search .indicator-search::placeholder {
+    color: var(--text-muted);
 }
 
 .filter-bar.search-open .search-toggle {

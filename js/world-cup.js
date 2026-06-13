@@ -32,19 +32,6 @@ function renderMatchCards(matches) {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
-
-  // Setup info button handlers
-  setupInfoHandlers();
-}
-
-function setupInfoHandlers() {
-  // Close when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('#worldCupGrid .explanation-text') && !e.target.closest('#worldCupGrid .info-btn')) {
-      document.querySelectorAll('#worldCupGrid .explanation-text').forEach(div => div.style.display = 'none');
-      document.querySelectorAll('#worldCupGrid .info-btn').forEach(b => b.classList.remove('active'));
-    }
-  });
 }
 
 function createMatchCard(match) {

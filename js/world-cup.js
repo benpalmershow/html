@@ -22,48 +22,9 @@ function renderMatchCards(matches) {
   // Clear existing cards
   grid.innerHTML = '';
 
-  // Sort matches: finished first, then live, then upcoming
-  // Within each status: sort by stage order, then by id (finished/live descending, upcoming ascending)
-  const stageOrder = { GROUP_STAGE: 0, LAST_32: 1, LAST_16: 2, QUARTER_FINAL: 3, SEMI_FINAL: 4, FINAL: 5 };
-  const statusOrder = { finished: 0, live: 1, upcoming: 2 };
-
-  const sortedMatches = [...matches].sort((a, b) => {
-    // FINAL matches always go to the bottom
-    const aIsFinal = a.stage === 'FINAL';
-    const bIsFinal = b.stage === 'FINAL';
-    if (aIsFinal && !bIsFinal) return 1;
-    if (!aIsFinal && bIsFinal) return -1;
-
-    // Sort by date first (newest first) if available
-    if (a.date || a.utcDate) {
-      const dateA = new Date(a.date || a.utcDate);
-      const dateB = new Date(b.date || b.utcDate);
-      const dateDiff = dateB - dateA;
-      if (dateDiff !== 0) return dateDiff;
-    }
-
-    // Then sort by status (finished first, then live, then upcoming)
-    const statusDiff = (statusOrder[a.status] ?? 3) - (statusOrder[b.status] ?? 3);
-    if (statusDiff !== 0) return statusDiff;
-
-    // Then sort by stage (excluding FINAL which is already handled)
-    const stageA = stageOrder[a.stage] ?? 99;
-    const stageB = stageOrder[b.stage] ?? 99;
-    const stageDiff = stageA - stageB;
-    if (stageDiff !== 0) return stageDiff;
-
-    // Finally sort by match ID (ascending for upcoming, descending for finished/live)
-    const idA = parseInt(a.id.split('-').pop(), 10) || 0;
-    const idB = parseInt(b.id.split('-').pop(), 10) || 0;
-    if (statusOrder[a.status] === 2) return idA - idB;
-    return idB - idA;
-  });
-
   // Create card for each match
-  sortedMatches.forEach(match => {
-    const teamA = match.teamA || {};
-    const teamB = match.teamB || {};
-    const card = createMatchCard({ ...match, teamA, teamB });
+  matches.forEach(match => {
+    const card = createMatchCard(match);
     grid.appendChild(card);
   });
 
@@ -73,20 +34,11 @@ function renderMatchCards(matches) {
   }
 }
 
-function formatScore(score) {
-  return score === null || score === undefined ? '' : score;
-}
-
-function formatScoreDisplay(homeScore, awayScore) {
-  return `${formatScore(homeScore)} - ${formatScore(awayScore)}`;
-}
-
 function createMatchCard(match) {
   const card = document.createElement('div');
   card.className = 'indicator';
   card.id = `match-${match.id}`;
 
-  const statusBadgeClass = match.status === 'live' ? 'live' : '';
   const statusText = match.status ? match.status.toUpperCase() : 'MATCH';
   const url = match.url || '#';
   const explanation = match.explanation || '';
@@ -105,7 +57,7 @@ function createMatchCard(match) {
     <div class="indicator-header">
       <div class="indicator-name">
         ${stageLabels[match.stage] || match.stage}
-        ${match.status === 'live' ? `<span class="new-badge ${statusBadgeClass}">${statusText}</span>` : ''}
+        ${match.status === 'live' ? `<span class="new-badge live">${statusText}</span>` : ''}
       </div>
       <div class="indicator-actions">
         ${explanation ? `<button class="info-btn" title="Show explanation" data-explanation="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}
@@ -118,7 +70,7 @@ function createMatchCard(match) {
           <span class="team-flag">${match.teamA.flag || '🏳️'}</span>
           <span class="team-name">${match.teamA.name || 'TBD'}</span>
         </div>
-        <div class="match-score">${formatScoreDisplay(match.teamA.score, match.teamB.score)}</div>
+        <div class="match-score">${(match.teamA.score ?? '')} - ${(match.teamB.score ?? '')}</div>
         <div class="match-team">
           <span class="team-flag">${match.teamB.flag || '🏳️'}</span>
           <span class="team-name">${match.teamB.name || 'TBD'}</span>

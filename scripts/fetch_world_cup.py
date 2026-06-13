@@ -106,10 +106,11 @@ def parse_football_data(api_data):
     """Parse football-data.org response into our match format"""
     if not api_data or 'matches' not in api_data:
         return []
-    
+
     matches = []
     api_matches = api_data['matches']
-    
+    now = datetime.utcnow()
+
     for match in api_matches:
         try:
             # Extract match data
@@ -127,7 +128,7 @@ def parse_football_data(api_data):
             match_date = match.get('utcDate', '')
             venue = match.get('venue', '')
             stage = match.get('stage', '')
-            
+
             # Map status to our format
             if status in {'IN_PLAY', 'TIMED', 'PAUSED'}:
                 status_text = 'live'
@@ -147,6 +148,19 @@ def parse_football_data(api_data):
             else:
                 status_text = 'upcoming'
                 time_text = 'TBD'
+
+            # Auto-update status for games that should have finished
+            # If match date is in the past and status is still upcoming, mark as finished
+            if match_date and status_text == 'upcoming':
+                try:
+                    match_datetime = datetime.fromisoformat(match_date.replace('Z', '+00:00'))
+                    # Add 3 hours to account for typical match duration
+                    match_end_time = match_datetime + timedelta(hours=3)
+                    if now > match_end_time:
+                        status_text = 'finished'
+                        time_text = '90\''
+                except (ValueError, TypeError):
+                    pass
             
             match_data = {
                 "id": f"wc2026-{match_id}",

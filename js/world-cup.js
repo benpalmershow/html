@@ -28,6 +28,12 @@ function renderMatchCards(matches) {
   const statusOrder = { finished: 0, live: 1, upcoming: 2 };
 
   const sortedMatches = [...matches].sort((a, b) => {
+    // FINAL matches always go to the bottom
+    const aIsFinal = a.stage === 'FINAL';
+    const bIsFinal = b.stage === 'FINAL';
+    if (aIsFinal && !bIsFinal) return 1;
+    if (!aIsFinal && bIsFinal) return -1;
+
     // Sort by date first (newest first) if available
     if (a.date || a.utcDate) {
       const dateA = new Date(a.date || a.utcDate);
@@ -40,7 +46,7 @@ function renderMatchCards(matches) {
     const statusDiff = (statusOrder[a.status] ?? 3) - (statusOrder[b.status] ?? 3);
     if (statusDiff !== 0) return statusDiff;
 
-    // Then sort by stage
+    // Then sort by stage (excluding FINAL which is already handled)
     const stageA = stageOrder[a.stage] ?? 99;
     const stageB = stageOrder[b.stage] ?? 99;
     const stageDiff = stageA - stageB;

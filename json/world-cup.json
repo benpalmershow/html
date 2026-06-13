@@ -1,2293 +1,4079 @@
 {
+  "competition": "FIFA World Cup 2026",
   "matches": [
     {
       "id": "wc2026-537327",
+      "matchId": 537327,
       "teamA": {
+        "id": 769,
         "name": "Mexico",
-        "flag": "\ud83c\uddf2\ud83c\uddfd",
-        "score": 2
+        "flag": "🇲🇽",
+        "crest": "https://crests.football-data.org/769.svg",
+        "score": 2,
+        "halfTimeScore": 1,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 774,
         "name": "South Africa",
-        "flag": "\ufffd\ufffd\ud83c\udde6",
-        "score": 0
+        "flag": "🇿🇦",
+        "crest": "https://crests.football-data.org/9396.svg",
+        "score": 0,
+        "halfTimeScore": 0,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "finished",
+      "statusRaw": "FINISHED",
       "time": "90'",
+      "minute": null,
       "date": "2026-06-11",
       "utcDate": "2026-06-11T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_A",
+      "matchDay": 1,
+      "winner": "HOME_TEAM",
+      "referees": [
+        "Wilton Sampaio"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Mexico and South Africa at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Mexico and South Africa (GROUP_A)"
     },
     {
       "id": "wc2026-537328",
+      "matchId": 537328,
       "teamA": {
+        "id": 772,
         "name": "South Korea",
-        "flag": "\ud83c\uddf0\ud83c\uddf7",
-        "score": 2
+        "flag": "🇰🇷",
+        "crest": "https://crests.football-data.org/772.png",
+        "score": 2,
+        "halfTimeScore": 0,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 798,
         "name": "Czechia",
-        "flag": "\ud83c\udde8\ud83c\uddff",
-        "score": 1
+        "flag": "🇨🇿",
+        "crest": "https://crests.football-data.org/798.svg",
+        "score": 1,
+        "halfTimeScore": 0,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "finished",
+      "statusRaw": "FINISHED",
       "time": "90'",
+      "minute": null,
       "date": "2026-06-12",
       "utcDate": "2026-06-12T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_A",
+      "matchDay": 1,
+      "winner": "HOME_TEAM",
+      "referees": [
+        "Amin Omar"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between South Korea and Czechia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between South Korea and Czechia (GROUP_A)"
     },
     {
       "id": "wc2026-537333",
+      "matchId": 537333,
       "teamA": {
+        "id": 828,
         "name": "Canada",
-        "flag": "\ud83c\udde8\ud83c\udde6",
-        "score": 1
+        "flag": "🇨🇦",
+        "crest": "https://crests.football-data.org/canada.svg",
+        "score": 1,
+        "halfTimeScore": 0,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1060,
         "name": "Bosnia-Herzegovina",
-        "flag": "\ud83c\udde7\ud83c\udde6",
-        "score": 1
+        "flag": "🇧🇦",
+        "crest": "https://crests.football-data.org/bosnia.svg",
+        "score": 1,
+        "halfTimeScore": 1,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "finished",
+      "statusRaw": "FINISHED",
       "time": "90'",
+      "minute": null,
       "date": "2026-06-12",
       "utcDate": "2026-06-12T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_B",
+      "matchDay": 1,
+      "winner": "DRAW",
+      "referees": [
+        "Facundo Tello"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Canada and Bosnia-Herzegovina at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Canada and Bosnia-Herzegovina (GROUP_B)"
     },
     {
       "id": "wc2026-537345",
+      "matchId": 537345,
       "teamA": {
+        "id": 771,
         "name": "United States",
-        "flag": "\ud83c\uddfa\ud83c\uddf8",
-        "score": 4
+        "flag": "🇺🇸",
+        "crest": "https://crests.football-data.org/usa.svg",
+        "score": 4,
+        "halfTimeScore": 3,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 761,
         "name": "Paraguay",
-        "flag": "\ud83c\uddf5\ud83c\uddfe",
-        "score": 1
+        "flag": "🇵🇾",
+        "crest": "https://crests.football-data.org/761.svg",
+        "score": 1,
+        "halfTimeScore": 0,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "finished",
+      "statusRaw": "FINISHED",
       "time": "90'",
+      "minute": null,
       "date": "2026-06-13",
       "utcDate": "2026-06-13T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_D",
+      "matchDay": 1,
+      "winner": "HOME_TEAM",
+      "referees": [
+        "Danny Makkelie"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between United States and Paraguay at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between United States and Paraguay (GROUP_D)"
     },
     {
       "id": "wc2026-537334",
+      "matchId": 537334,
       "teamA": {
+        "id": 8030,
         "name": "Qatar",
-        "flag": "\ud83c\uddf6\ud83c\udde6",
-        "score": null
+        "flag": "🇶🇦",
+        "crest": "https://crests.football-data.org/8030.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 788,
         "name": "Switzerland",
-        "flag": "\ud83c\udde8\ud83c\udded",
-        "score": null
+        "flag": "🇨🇭",
+        "crest": "https://crests.football-data.org/788.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-13",
       "utcDate": "2026-06-13T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_B",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [
+        "Said Martinez"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Qatar and Switzerland at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Qatar and Switzerland (GROUP_B)"
     },
     {
       "id": "wc2026-537339",
+      "matchId": 537339,
       "teamA": {
+        "id": 764,
         "name": "Brazil",
-        "flag": "\ud83c\udde7\ud83c\uddf7",
-        "score": null
+        "flag": "🇧🇷",
+        "crest": "https://crests.football-data.org/764.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 815,
         "name": "Morocco",
-        "flag": "\ud83c\uddf2\ud83c\udde6",
-        "score": null
+        "flag": "🇲🇦",
+        "crest": "https://crests.football-data.org/morocco.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-13",
       "utcDate": "2026-06-13T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_C",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [
+        "Slavko Vinčič"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Morocco at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Morocco (GROUP_C)"
     },
     {
       "id": "wc2026-537340",
+      "matchId": 537340,
       "teamA": {
+        "id": 836,
         "name": "Haiti",
-        "flag": "\ud83c\udded\ud83c\uddf9",
-        "score": null
+        "flag": "🇭🇹",
+        "crest": "https://crests.football-data.org/haiti.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8873,
         "name": "Scotland",
-        "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
-        "score": null
+        "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+        "crest": "https://crests.football-data.org/814.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_C",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [
+        "Mustapha Ghorbal"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Haiti and Scotland at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Haiti and Scotland (GROUP_C)"
     },
     {
       "id": "wc2026-537346",
+      "matchId": 537346,
       "teamA": {
+        "id": 779,
         "name": "Australia",
-        "flag": "\ud83c\udde6\ud83c\uddfa",
-        "score": null
+        "flag": "🇦🇺",
+        "crest": "https://crests.football-data.org/779.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 803,
         "name": "Turkey",
-        "flag": "\ud83c\uddf9\ud83c\uddf7",
-        "score": null
+        "flag": "🇹🇷",
+        "crest": "https://crests.football-data.org/803.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T04:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_D",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [
+        "Jesús Valenzuela"
+      ],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Australia and Turkey at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Australia and Turkey (GROUP_D)"
     },
     {
       "id": "wc2026-537351",
+      "matchId": 537351,
       "teamA": {
+        "id": 759,
         "name": "Germany",
-        "flag": "\ud83c\udde9\ud83c\uddea",
-        "score": null
+        "flag": "🇩🇪",
+        "crest": "https://crests.football-data.org/759.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
-        "name": "Cura\u00e7ao",
-        "flag": "\ud83c\udde8\ud83c\uddfc",
-        "score": null
+        "id": 9460,
+        "name": "Curaçao",
+        "flag": "🇨🇼",
+        "crest": "https://crests.football-data.org/curacao.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T17:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_E",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Cura\u00e7ao at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Curaçao (GROUP_E)"
     },
     {
       "id": "wc2026-537357",
+      "matchId": 537357,
       "teamA": {
+        "id": 8601,
         "name": "Netherlands",
-        "flag": "\ud83c\uddf3\ud83c\uddf1",
-        "score": null
+        "flag": "🇳🇱",
+        "crest": "https://crests.football-data.org/8601.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 766,
         "name": "Japan",
-        "flag": "\ud83c\uddef\ud83c\uddf5",
-        "score": null
+        "flag": "🇯🇵",
+        "crest": "https://crests.football-data.org/766.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T20:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_F",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Japan at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Japan (GROUP_F)"
     },
     {
       "id": "wc2026-537352",
+      "matchId": 537352,
       "teamA": {
+        "id": 1935,
         "name": "Ivory Coast",
-        "flag": "\ud83c\udde8\ud83c\uddee",
-        "score": null
+        "flag": "🇨🇮",
+        "crest": "https://crests.football-data.org/787.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 791,
         "name": "Ecuador",
-        "flag": "\ud83c\uddea\ud83c\udde8",
-        "score": null
+        "flag": "🇪🇨",
+        "crest": "https://crests.football-data.org/791.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
-      "status": "live",
-      "time": "0-0 HT",
+      "status": "upcoming",
+      "statusRaw": "SCHEDULED",
+      "time": "23:00",
+      "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T23:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_E",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Ivory Coast and Ecuador at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Ivory Coast and Ecuador (GROUP_E)"
     },
     {
       "id": "wc2026-537358",
+      "matchId": 537358,
       "teamA": {
+        "id": 792,
         "name": "Sweden",
-        "flag": "\ud83c\uddf8\ud83c\uddea",
-        "score": null
+        "flag": "🇸🇪",
+        "crest": "https://crests.football-data.org/792.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 802,
         "name": "Tunisia",
-        "flag": "\ud83c\uddf9\ud83c\uddf3",
-        "score": null
+        "flag": "🇹🇳",
+        "crest": "https://crests.football-data.org/tunisia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_F",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Sweden and Tunisia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Sweden and Tunisia (GROUP_F)"
     },
     {
       "id": "wc2026-537369",
+      "matchId": 537369,
       "teamA": {
+        "id": 760,
         "name": "Spain",
-        "flag": "\ud83c\uddea\ud83c\uddf8",
-        "score": null
+        "flag": "🇪🇸",
+        "crest": "https://crests.football-data.org/760.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1930,
         "name": "Cape Verde Islands",
-        "flag": "\ud83c\udde8\ud83c\uddfb",
-        "score": null
+        "flag": "🇨🇻",
+        "crest": "https://crests.football-data.org/cape_verde.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T16:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_H",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Spain and Cape Verde Islands at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Spain and Cape Verde Islands (GROUP_H)"
     },
     {
       "id": "wc2026-537363",
+      "matchId": 537363,
       "teamA": {
+        "id": 805,
         "name": "Belgium",
-        "flag": "\ud83c\udde7\ud83c\uddea",
-        "score": null
+        "flag": "🇧🇪",
+        "crest": "https://crests.football-data.org/805.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 825,
         "name": "Egypt",
-        "flag": "\ud83c\uddea\ud83c\uddec",
-        "score": null
+        "flag": "🇪🇬",
+        "crest": "https://crests.football-data.org/825.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_G",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Belgium and Egypt at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Belgium and Egypt (GROUP_G)"
     },
     {
       "id": "wc2026-537370",
+      "matchId": 537370,
       "teamA": {
+        "id": 801,
         "name": "Saudi Arabia",
-        "flag": "\ud83c\uddf8\ud83c\udde6",
-        "score": null
+        "flag": "🇸🇦",
+        "crest": "https://crests.football-data.org/saudi_arabia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 758,
         "name": "Uruguay",
-        "flag": "\ud83c\uddfa\ud83c\uddfe",
-        "score": null
+        "flag": "🇺🇾",
+        "crest": "https://crests.football-data.org/758.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_H",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Saudi Arabia and Uruguay at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Saudi Arabia and Uruguay (GROUP_H)"
     },
     {
       "id": "wc2026-537364",
+      "matchId": 537364,
       "teamA": {
+        "id": 840,
         "name": "Iran",
-        "flag": "\ud83c\uddee\ud83c\uddf7",
-        "score": null
+        "flag": "🇮🇷",
+        "crest": "https://crests.football-data.org/iran.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 783,
         "name": "New Zealand",
-        "flag": "\ud83c\uddf3\ud83c\uddff",
-        "score": null
+        "flag": "🇳🇿",
+        "crest": "https://crests.football-data.org/783.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_G",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Iran and New Zealand at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Iran and New Zealand (GROUP_G)"
     },
     {
       "id": "wc2026-537391",
+      "matchId": 537391,
       "teamA": {
+        "id": 773,
         "name": "France",
-        "flag": "\ud83c\uddeb\ud83c\uddf7",
-        "score": null
+        "flag": "🇫🇷",
+        "crest": "https://crests.football-data.org/773.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 804,
         "name": "Senegal",
-        "flag": "\ud83c\uddf8\ud83c\uddf3",
-        "score": null
+        "flag": "🇸🇳",
+        "crest": "https://crests.football-data.org/senegal.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_I",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between France and Senegal at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between France and Senegal (GROUP_I)"
     },
     {
       "id": "wc2026-537392",
+      "matchId": 537392,
       "teamA": {
+        "id": 8062,
         "name": "Iraq",
-        "flag": "\ud83c\uddee\ud83c\uddf6",
-        "score": null
+        "flag": "🇮🇶",
+        "crest": "https://crests.football-data.org/iraq.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8872,
         "name": "Norway",
-        "flag": "\ud83c\uddf3\ud83c\uddf4",
-        "score": null
+        "flag": "🇳🇴",
+        "crest": "https://crests.football-data.org/813.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_I",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Iraq and Norway at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Iraq and Norway (GROUP_I)"
     },
     {
       "id": "wc2026-537397",
+      "matchId": 537397,
       "teamA": {
+        "id": 762,
         "name": "Argentina",
-        "flag": "\ud83c\udde6\ud83c\uddf7",
-        "score": null
+        "flag": "🇦🇷",
+        "crest": "https://crests.football-data.org/762.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 778,
         "name": "Algeria",
-        "flag": "\ud83c\udde9\ud83c\uddff",
-        "score": null
+        "flag": "🇩🇿",
+        "crest": "https://crests.football-data.org/algeria.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_J",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Algeria at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Algeria (GROUP_J)"
     },
     {
       "id": "wc2026-537398",
+      "matchId": 537398,
       "teamA": {
+        "id": 816,
         "name": "Austria",
-        "flag": "\ud83c\udde6\ud83c\uddf9",
-        "score": null
+        "flag": "🇦🇹",
+        "crest": "https://crests.football-data.org/816.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8049,
         "name": "Jordan",
-        "flag": "\ud83c\uddef\ud83c\uddf4",
-        "score": null
+        "flag": "🇯🇴",
+        "crest": "https://crests.football-data.org/8049.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T04:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_J",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Austria and Jordan at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Austria and Jordan (GROUP_J)"
     },
     {
       "id": "wc2026-537403",
+      "matchId": 537403,
       "teamA": {
+        "id": 765,
         "name": "Portugal",
-        "flag": "\ud83c\uddf5\ud83c\uddf9",
-        "score": null
+        "flag": "🇵🇹",
+        "crest": "https://crests.football-data.org/765.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1934,
         "name": "Congo DR",
-        "flag": "\ud83c\udde8\ud83c\udde9",
-        "score": null
+        "flag": "🇨🇩",
+        "crest": "https://crests.football-data.org/congo_dr.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T17:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_K",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Portugal and Congo DR at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Portugal and Congo DR (GROUP_K)"
     },
     {
       "id": "wc2026-537409",
+      "matchId": 537409,
       "teamA": {
+        "id": 770,
         "name": "England",
-        "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
-        "score": null
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "crest": "https://crests.football-data.org/770.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 799,
         "name": "Croatia",
-        "flag": "\ud83c\udded\ud83c\uddf7",
-        "score": null
+        "flag": "🇭🇷",
+        "crest": "https://crests.football-data.org/799.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T20:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_L",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between England and Croatia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between England and Croatia (GROUP_L)"
     },
     {
       "id": "wc2026-537410",
+      "matchId": 537410,
       "teamA": {
+        "id": 763,
         "name": "Ghana",
-        "flag": "\ud83c\uddec\ud83c\udded",
-        "score": null
+        "flag": "🇬🇭",
+        "crest": "https://crests.football-data.org/ghana.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1836,
         "name": "Panama",
-        "flag": "\ud83c\uddf5\ud83c\udde6",
-        "score": null
+        "flag": "🇵🇦",
+        "crest": "https://crests.football-data.org/panama.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T23:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_L",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Ghana and Panama at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Ghana and Panama (GROUP_L)"
     },
     {
       "id": "wc2026-537404",
+      "matchId": 537404,
       "teamA": {
+        "id": 8070,
         "name": "Uzbekistan",
-        "flag": "\ud83c\uddfa\ud83c\uddff",
-        "score": null
+        "flag": "🇺🇿",
+        "crest": "https://crests.football-data.org/8070.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 818,
         "name": "Colombia",
-        "flag": "\ud83c\udde8\ud83c\uddf4",
-        "score": null
+        "flag": "🇨🇴",
+        "crest": "https://crests.football-data.org/818.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_K",
+      "matchDay": 1,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Uzbekistan and Colombia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Uzbekistan and Colombia (GROUP_K)"
     },
     {
       "id": "wc2026-537329",
+      "matchId": 537329,
       "teamA": {
+        "id": 798,
         "name": "Czechia",
-        "flag": "\ud83c\udde8\ud83c\uddff",
-        "score": null
+        "flag": "🇨🇿",
+        "crest": "https://crests.football-data.org/798.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 774,
         "name": "South Africa",
-        "flag": "\ufffd\ufffd\ud83c\udde6",
-        "score": null
+        "flag": "🇿🇦",
+        "crest": "https://crests.football-data.org/9396.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T16:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_A",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and South Africa at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and South Africa (GROUP_A)"
     },
     {
       "id": "wc2026-537335",
+      "matchId": 537335,
       "teamA": {
+        "id": 788,
         "name": "Switzerland",
-        "flag": "\ud83c\udde8\ud83c\udded",
-        "score": null
+        "flag": "🇨🇭",
+        "crest": "https://crests.football-data.org/788.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1060,
         "name": "Bosnia-Herzegovina",
-        "flag": "\ud83c\udde7\ud83c\udde6",
-        "score": null
+        "flag": "🇧🇦",
+        "crest": "https://crests.football-data.org/bosnia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_B",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Bosnia-Herzegovina at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Bosnia-Herzegovina (GROUP_B)"
     },
     {
       "id": "wc2026-537336",
+      "matchId": 537336,
       "teamA": {
+        "id": 828,
         "name": "Canada",
-        "flag": "\ud83c\udde8\ud83c\udde6",
-        "score": null
+        "flag": "🇨🇦",
+        "crest": "https://crests.football-data.org/canada.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8030,
         "name": "Qatar",
-        "flag": "\ud83c\uddf6\ud83c\udde6",
-        "score": null
+        "flag": "🇶🇦",
+        "crest": "https://crests.football-data.org/8030.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_B",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Canada and Qatar at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Canada and Qatar (GROUP_B)"
     },
     {
       "id": "wc2026-537330",
+      "matchId": 537330,
       "teamA": {
+        "id": 769,
         "name": "Mexico",
-        "flag": "\ud83c\uddf2\ud83c\uddfd",
-        "score": null
+        "flag": "🇲🇽",
+        "crest": "https://crests.football-data.org/769.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 772,
         "name": "South Korea",
-        "flag": "\ud83c\uddf0\ud83c\uddf7",
-        "score": null
+        "flag": "🇰🇷",
+        "crest": "https://crests.football-data.org/772.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_A",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Mexico and South Korea at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Mexico and South Korea (GROUP_A)"
     },
     {
       "id": "wc2026-537348",
+      "matchId": 537348,
       "teamA": {
+        "id": 771,
         "name": "United States",
-        "flag": "\ud83c\uddfa\ud83c\uddf8",
-        "score": null
+        "flag": "🇺🇸",
+        "crest": "https://crests.football-data.org/usa.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 779,
         "name": "Australia",
-        "flag": "\ud83c\udde6\ud83c\uddfa",
-        "score": null
+        "flag": "🇦🇺",
+        "crest": "https://crests.football-data.org/779.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_D",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between United States and Australia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between United States and Australia (GROUP_D)"
     },
     {
       "id": "wc2026-537342",
+      "matchId": 537342,
       "teamA": {
+        "id": 8873,
         "name": "Scotland",
-        "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
-        "score": null
+        "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+        "crest": "https://crests.football-data.org/814.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 815,
         "name": "Morocco",
-        "flag": "\ud83c\uddf2\ud83c\udde6",
-        "score": null
+        "flag": "🇲🇦",
+        "crest": "https://crests.football-data.org/morocco.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_C",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Scotland and Morocco at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Scotland and Morocco (GROUP_C)"
     },
     {
       "id": "wc2026-537341",
+      "matchId": 537341,
       "teamA": {
+        "id": 764,
         "name": "Brazil",
-        "flag": "\ud83c\udde7\ud83c\uddf7",
-        "score": null
+        "flag": "🇧🇷",
+        "crest": "https://crests.football-data.org/764.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 836,
         "name": "Haiti",
-        "flag": "\ud83c\udded\ud83c\uddf9",
-        "score": null
+        "flag": "🇭🇹",
+        "crest": "https://crests.football-data.org/haiti.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T00:30:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_C",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Haiti at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Haiti (GROUP_C)"
     },
     {
       "id": "wc2026-537347",
+      "matchId": 537347,
       "teamA": {
+        "id": 803,
         "name": "Turkey",
-        "flag": "\ud83c\uddf9\ud83c\uddf7",
-        "score": null
+        "flag": "🇹🇷",
+        "crest": "https://crests.football-data.org/803.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 761,
         "name": "Paraguay",
-        "flag": "\ud83c\uddf5\ud83c\uddfe",
-        "score": null
+        "flag": "🇵🇾",
+        "crest": "https://crests.football-data.org/761.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T03:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_D",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Turkey and Paraguay at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Turkey and Paraguay (GROUP_D)"
     },
     {
       "id": "wc2026-537359",
+      "matchId": 537359,
       "teamA": {
+        "id": 8601,
         "name": "Netherlands",
-        "flag": "\ud83c\uddf3\ud83c\uddf1",
-        "score": null
+        "flag": "🇳🇱",
+        "crest": "https://crests.football-data.org/8601.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 792,
         "name": "Sweden",
-        "flag": "\ud83c\uddf8\ud83c\uddea",
-        "score": null
+        "flag": "🇸🇪",
+        "crest": "https://crests.football-data.org/792.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T17:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_F",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Sweden at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Sweden (GROUP_F)"
     },
     {
       "id": "wc2026-537353",
+      "matchId": 537353,
       "teamA": {
+        "id": 759,
         "name": "Germany",
-        "flag": "\ud83c\udde9\ud83c\uddea",
-        "score": null
+        "flag": "🇩🇪",
+        "crest": "https://crests.football-data.org/759.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1935,
         "name": "Ivory Coast",
-        "flag": "\ud83c\udde8\ud83c\uddee",
-        "score": null
+        "flag": "🇨🇮",
+        "crest": "https://crests.football-data.org/787.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T20:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_E",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Ivory Coast at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Ivory Coast (GROUP_E)"
     },
     {
       "id": "wc2026-537354",
+      "matchId": 537354,
       "teamA": {
+        "id": 791,
         "name": "Ecuador",
-        "flag": "\ud83c\uddea\ud83c\udde8",
-        "score": null
+        "flag": "🇪🇨",
+        "crest": "https://crests.football-data.org/791.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
-        "name": "Cura\u00e7ao",
-        "flag": "\ud83c\udde8\ud83c\uddfc",
-        "score": null
+        "id": 9460,
+        "name": "Curaçao",
+        "flag": "🇨🇼",
+        "crest": "https://crests.football-data.org/curacao.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T00:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_E",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Ecuador and Cura\u00e7ao at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Ecuador and Curaçao (GROUP_E)"
     },
     {
       "id": "wc2026-537360",
+      "matchId": 537360,
       "teamA": {
+        "id": 802,
         "name": "Tunisia",
-        "flag": "\ud83c\uddf9\ud83c\uddf3",
-        "score": null
+        "flag": "🇹🇳",
+        "crest": "https://crests.football-data.org/tunisia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 766,
         "name": "Japan",
-        "flag": "\ud83c\uddef\ud83c\uddf5",
-        "score": null
+        "flag": "🇯🇵",
+        "crest": "https://crests.football-data.org/766.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T04:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_F",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Tunisia and Japan at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Tunisia and Japan (GROUP_F)"
     },
     {
       "id": "wc2026-537371",
+      "matchId": 537371,
       "teamA": {
+        "id": 760,
         "name": "Spain",
-        "flag": "\ud83c\uddea\ud83c\uddf8",
-        "score": null
+        "flag": "🇪🇸",
+        "crest": "https://crests.football-data.org/760.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 801,
         "name": "Saudi Arabia",
-        "flag": "\ud83c\uddf8\ud83c\udde6",
-        "score": null
+        "flag": "🇸🇦",
+        "crest": "https://crests.football-data.org/saudi_arabia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T16:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_H",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Spain and Saudi Arabia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Spain and Saudi Arabia (GROUP_H)"
     },
     {
       "id": "wc2026-537365",
+      "matchId": 537365,
       "teamA": {
+        "id": 805,
         "name": "Belgium",
-        "flag": "\ud83c\udde7\ud83c\uddea",
-        "score": null
+        "flag": "🇧🇪",
+        "crest": "https://crests.football-data.org/805.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 840,
         "name": "Iran",
-        "flag": "\ud83c\uddee\ud83c\uddf7",
-        "score": null
+        "flag": "🇮🇷",
+        "crest": "https://crests.football-data.org/iran.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_G",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Belgium and Iran at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Belgium and Iran (GROUP_G)"
     },
     {
       "id": "wc2026-537372",
+      "matchId": 537372,
       "teamA": {
+        "id": 758,
         "name": "Uruguay",
-        "flag": "\ud83c\uddfa\ud83c\uddfe",
-        "score": null
+        "flag": "🇺🇾",
+        "crest": "https://crests.football-data.org/758.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1930,
         "name": "Cape Verde Islands",
-        "flag": "\ud83c\udde8\ud83c\uddfb",
-        "score": null
+        "flag": "🇨🇻",
+        "crest": "https://crests.football-data.org/cape_verde.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_H",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Uruguay and Cape Verde Islands at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Uruguay and Cape Verde Islands (GROUP_H)"
     },
     {
       "id": "wc2026-537366",
+      "matchId": 537366,
       "teamA": {
+        "id": 783,
         "name": "New Zealand",
-        "flag": "\ud83c\uddf3\ud83c\uddff",
-        "score": null
+        "flag": "🇳🇿",
+        "crest": "https://crests.football-data.org/783.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 825,
         "name": "Egypt",
-        "flag": "\ud83c\uddea\ud83c\uddec",
-        "score": null
+        "flag": "🇪🇬",
+        "crest": "https://crests.football-data.org/825.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_G",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Egypt at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Egypt (GROUP_G)"
     },
     {
       "id": "wc2026-537399",
+      "matchId": 537399,
       "teamA": {
+        "id": 762,
         "name": "Argentina",
-        "flag": "\ud83c\udde6\ud83c\uddf7",
-        "score": null
+        "flag": "🇦🇷",
+        "crest": "https://crests.football-data.org/762.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 816,
         "name": "Austria",
-        "flag": "\ud83c\udde6\ud83c\uddf9",
-        "score": null
+        "flag": "🇦🇹",
+        "crest": "https://crests.football-data.org/816.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T17:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_J",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Austria at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Austria (GROUP_J)"
     },
     {
       "id": "wc2026-537393",
+      "matchId": 537393,
       "teamA": {
+        "id": 773,
         "name": "France",
-        "flag": "\ud83c\uddeb\ud83c\uddf7",
-        "score": null
+        "flag": "🇫🇷",
+        "crest": "https://crests.football-data.org/773.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8062,
         "name": "Iraq",
-        "flag": "\ud83c\uddee\ud83c\uddf6",
-        "score": null
+        "flag": "🇮🇶",
+        "crest": "https://crests.football-data.org/iraq.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T21:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_I",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between France and Iraq at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between France and Iraq (GROUP_I)"
     },
     {
       "id": "wc2026-537394",
+      "matchId": 537394,
       "teamA": {
+        "id": 8872,
         "name": "Norway",
-        "flag": "\ud83c\uddf3\ud83c\uddf4",
-        "score": null
+        "flag": "🇳🇴",
+        "crest": "https://crests.football-data.org/813.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 804,
         "name": "Senegal",
-        "flag": "\ud83c\uddf8\ud83c\uddf3",
-        "score": null
+        "flag": "🇸🇳",
+        "crest": "https://crests.football-data.org/senegal.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T00:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_I",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Norway and Senegal at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Norway and Senegal (GROUP_I)"
     },
     {
       "id": "wc2026-537400",
+      "matchId": 537400,
       "teamA": {
+        "id": 8049,
         "name": "Jordan",
-        "flag": "\ud83c\uddef\ud83c\uddf4",
-        "score": null
+        "flag": "🇯🇴",
+        "crest": "https://crests.football-data.org/8049.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 778,
         "name": "Algeria",
-        "flag": "\ud83c\udde9\ud83c\uddff",
-        "score": null
+        "flag": "🇩🇿",
+        "crest": "https://crests.football-data.org/algeria.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T03:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_J",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Jordan and Algeria at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Jordan and Algeria (GROUP_J)"
     },
     {
       "id": "wc2026-537405",
+      "matchId": 537405,
       "teamA": {
+        "id": 765,
         "name": "Portugal",
-        "flag": "\ud83c\uddf5\ud83c\uddf9",
-        "score": null
+        "flag": "🇵🇹",
+        "crest": "https://crests.football-data.org/765.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8070,
         "name": "Uzbekistan",
-        "flag": "\ud83c\uddfa\ud83c\uddff",
-        "score": null
+        "flag": "🇺🇿",
+        "crest": "https://crests.football-data.org/8070.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T17:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_K",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Portugal and Uzbekistan at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Portugal and Uzbekistan (GROUP_K)"
     },
     {
       "id": "wc2026-537411",
+      "matchId": 537411,
       "teamA": {
+        "id": 770,
         "name": "England",
-        "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
-        "score": null
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "crest": "https://crests.football-data.org/770.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 763,
         "name": "Ghana",
-        "flag": "\ud83c\uddec\ud83c\udded",
-        "score": null
+        "flag": "🇬🇭",
+        "crest": "https://crests.football-data.org/ghana.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T20:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_L",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between England and Ghana at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between England and Ghana (GROUP_L)"
     },
     {
       "id": "wc2026-537412",
+      "matchId": 537412,
       "teamA": {
+        "id": 1836,
         "name": "Panama",
-        "flag": "\ud83c\uddf5\ud83c\udde6",
-        "score": null
+        "flag": "🇵🇦",
+        "crest": "https://crests.football-data.org/panama.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 799,
         "name": "Croatia",
-        "flag": "\ud83c\udded\ud83c\uddf7",
-        "score": null
+        "flag": "🇭🇷",
+        "crest": "https://crests.football-data.org/799.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T23:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_L",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Panama and Croatia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Panama and Croatia (GROUP_L)"
     },
     {
       "id": "wc2026-537406",
+      "matchId": 537406,
       "teamA": {
+        "id": 818,
         "name": "Colombia",
-        "flag": "\ud83c\udde8\ud83c\uddf4",
-        "score": null
+        "flag": "🇨🇴",
+        "crest": "https://crests.football-data.org/818.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1934,
         "name": "Congo DR",
-        "flag": "\ud83c\udde8\ud83c\udde9",
-        "score": null
+        "flag": "🇨🇩",
+        "crest": "https://crests.football-data.org/congo_dr.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_K",
+      "matchDay": 2,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Colombia and Congo DR at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Colombia and Congo DR (GROUP_K)"
     },
     {
       "id": "wc2026-537337",
+      "matchId": 537337,
       "teamA": {
+        "id": 788,
         "name": "Switzerland",
-        "flag": "\ud83c\udde8\ud83c\udded",
-        "score": null
+        "flag": "🇨🇭",
+        "crest": "https://crests.football-data.org/788.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 828,
         "name": "Canada",
-        "flag": "\ud83c\udde8\ud83c\udde6",
-        "score": null
+        "flag": "🇨🇦",
+        "crest": "https://crests.football-data.org/canada.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_B",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Canada at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Canada (GROUP_B)"
     },
     {
       "id": "wc2026-537338",
+      "matchId": 537338,
       "teamA": {
+        "id": 1060,
         "name": "Bosnia-Herzegovina",
-        "flag": "\ud83c\udde7\ud83c\udde6",
-        "score": null
+        "flag": "🇧🇦",
+        "crest": "https://crests.football-data.org/bosnia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8030,
         "name": "Qatar",
-        "flag": "\ud83c\uddf6\ud83c\udde6",
-        "score": null
+        "flag": "🇶🇦",
+        "crest": "https://crests.football-data.org/8030.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_B",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Bosnia-Herzegovina and Qatar at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Bosnia-Herzegovina and Qatar (GROUP_B)"
     },
     {
       "id": "wc2026-537344",
+      "matchId": 537344,
       "teamA": {
+        "id": 815,
         "name": "Morocco",
-        "flag": "\ud83c\uddf2\ud83c\udde6",
-        "score": null
+        "flag": "🇲🇦",
+        "crest": "https://crests.football-data.org/morocco.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 836,
         "name": "Haiti",
-        "flag": "\ud83c\udded\ud83c\uddf9",
-        "score": null
+        "flag": "🇭🇹",
+        "crest": "https://crests.football-data.org/haiti.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_C",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Morocco and Haiti at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Morocco and Haiti (GROUP_C)"
     },
     {
       "id": "wc2026-537343",
+      "matchId": 537343,
       "teamA": {
+        "id": 8873,
         "name": "Scotland",
-        "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
-        "score": null
+        "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+        "crest": "https://crests.football-data.org/814.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 764,
         "name": "Brazil",
-        "flag": "\ud83c\udde7\ud83c\uddf7",
-        "score": null
+        "flag": "🇧🇷",
+        "crest": "https://crests.football-data.org/764.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T22:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_C",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Scotland and Brazil at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Scotland and Brazil (GROUP_C)"
     },
     {
       "id": "wc2026-537331",
+      "matchId": 537331,
       "teamA": {
+        "id": 798,
         "name": "Czechia",
-        "flag": "\ud83c\udde8\ud83c\uddff",
-        "score": null
+        "flag": "🇨🇿",
+        "crest": "https://crests.football-data.org/798.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 769,
         "name": "Mexico",
-        "flag": "\ud83c\uddf2\ud83c\uddfd",
-        "score": null
+        "flag": "🇲🇽",
+        "crest": "https://crests.football-data.org/769.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_A",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and Mexico at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and Mexico (GROUP_A)"
     },
     {
       "id": "wc2026-537332",
+      "matchId": 537332,
       "teamA": {
+        "id": 774,
         "name": "South Africa",
-        "flag": "\ufffd\ufffd\ud83c\udde6",
-        "score": null
+        "flag": "🇿🇦",
+        "crest": "https://crests.football-data.org/9396.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 772,
         "name": "South Korea",
-        "flag": "\ud83c\uddf0\ud83c\uddf7",
-        "score": null
+        "flag": "🇰🇷",
+        "crest": "https://crests.football-data.org/772.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T01:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_A",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between South Africa and South Korea at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between South Africa and South Korea (GROUP_A)"
     },
     {
       "id": "wc2026-537355",
+      "matchId": 537355,
       "teamA": {
+        "id": 791,
         "name": "Ecuador",
-        "flag": "\ud83c\uddea\ud83c\udde8",
-        "score": null
+        "flag": "🇪🇨",
+        "crest": "https://crests.football-data.org/791.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 759,
         "name": "Germany",
-        "flag": "\ud83c\udde9\ud83c\uddea",
-        "score": null
+        "flag": "🇩🇪",
+        "crest": "https://crests.football-data.org/759.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_E",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Ecuador and Germany at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Ecuador and Germany (GROUP_E)"
     },
     {
       "id": "wc2026-537356",
+      "matchId": 537356,
       "teamA": {
-        "name": "Cura\u00e7ao",
-        "flag": "\ud83c\udde8\ud83c\uddfc",
-        "score": null
+        "id": 9460,
+        "name": "Curaçao",
+        "flag": "🇨🇼",
+        "crest": "https://crests.football-data.org/curacao.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 1935,
         "name": "Ivory Coast",
-        "flag": "\ud83c\udde8\ud83c\uddee",
-        "score": null
+        "flag": "🇨🇮",
+        "crest": "https://crests.football-data.org/787.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_E",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Cura\u00e7ao and Ivory Coast at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Curaçao and Ivory Coast (GROUP_E)"
     },
     {
       "id": "wc2026-537361",
+      "matchId": 537361,
       "teamA": {
+        "id": 802,
         "name": "Tunisia",
-        "flag": "\ud83c\uddf9\ud83c\uddf3",
-        "score": null
+        "flag": "🇹🇳",
+        "crest": "https://crests.football-data.org/tunisia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8601,
         "name": "Netherlands",
-        "flag": "\ud83c\uddf3\ud83c\uddf1",
-        "score": null
+        "flag": "🇳🇱",
+        "crest": "https://crests.football-data.org/8601.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T23:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_F",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Tunisia and Netherlands at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Tunisia and Netherlands (GROUP_F)"
     },
     {
       "id": "wc2026-537362",
+      "matchId": 537362,
       "teamA": {
+        "id": 766,
         "name": "Japan",
-        "flag": "\ud83c\uddef\ud83c\uddf5",
-        "score": null
+        "flag": "🇯🇵",
+        "crest": "https://crests.football-data.org/766.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 792,
         "name": "Sweden",
-        "flag": "\ud83c\uddf8\ud83c\uddea",
-        "score": null
+        "flag": "🇸🇪",
+        "crest": "https://crests.football-data.org/792.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T23:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_F",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Japan and Sweden at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Japan and Sweden (GROUP_F)"
     },
     {
       "id": "wc2026-537349",
+      "matchId": 537349,
       "teamA": {
+        "id": 803,
         "name": "Turkey",
-        "flag": "\ud83c\uddf9\ud83c\uddf7",
-        "score": null
+        "flag": "🇹🇷",
+        "crest": "https://crests.football-data.org/803.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 771,
         "name": "United States",
-        "flag": "\ud83c\uddfa\ud83c\uddf8",
-        "score": null
+        "flag": "🇺🇸",
+        "crest": "https://crests.football-data.org/usa.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_D",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Turkey and United States at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Turkey and United States (GROUP_D)"
     },
     {
       "id": "wc2026-537350",
+      "matchId": 537350,
       "teamA": {
+        "id": 761,
         "name": "Paraguay",
-        "flag": "\ud83c\uddf5\ud83c\uddfe",
-        "score": null
+        "flag": "🇵🇾",
+        "crest": "https://crests.football-data.org/761.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 779,
         "name": "Australia",
-        "flag": "\ud83c\udde6\ud83c\uddfa",
-        "score": null
+        "flag": "🇦🇺",
+        "crest": "https://crests.football-data.org/779.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_D",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Paraguay and Australia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Paraguay and Australia (GROUP_D)"
     },
     {
       "id": "wc2026-537395",
+      "matchId": 537395,
       "teamA": {
+        "id": 8872,
         "name": "Norway",
-        "flag": "\ud83c\uddf3\ud83c\uddf4",
-        "score": null
+        "flag": "🇳🇴",
+        "crest": "https://crests.football-data.org/813.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 773,
         "name": "France",
-        "flag": "\ud83c\uddeb\ud83c\uddf7",
-        "score": null
+        "flag": "🇫🇷",
+        "crest": "https://crests.football-data.org/773.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_I",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Norway and France at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Norway and France (GROUP_I)"
     },
     {
       "id": "wc2026-537396",
+      "matchId": 537396,
       "teamA": {
+        "id": 804,
         "name": "Senegal",
-        "flag": "\ud83c\uddf8\ud83c\uddf3",
-        "score": null
+        "flag": "🇸🇳",
+        "crest": "https://crests.football-data.org/senegal.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8062,
         "name": "Iraq",
-        "flag": "\ud83c\uddee\ud83c\uddf6",
-        "score": null
+        "flag": "🇮🇶",
+        "crest": "https://crests.football-data.org/iraq.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T19:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_I",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Senegal and Iraq at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Senegal and Iraq (GROUP_I)"
     },
     {
       "id": "wc2026-537373",
+      "matchId": 537373,
       "teamA": {
+        "id": 758,
         "name": "Uruguay",
-        "flag": "\ud83c\uddfa\ud83c\uddfe",
-        "score": null
+        "flag": "🇺🇾",
+        "crest": "https://crests.football-data.org/758.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 760,
         "name": "Spain",
-        "flag": "\ud83c\uddea\ud83c\uddf8",
-        "score": null
+        "flag": "🇪🇸",
+        "crest": "https://crests.football-data.org/760.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_H",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Uruguay and Spain at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Uruguay and Spain (GROUP_H)"
     },
     {
       "id": "wc2026-537374",
+      "matchId": 537374,
       "teamA": {
+        "id": 1930,
         "name": "Cape Verde Islands",
-        "flag": "\ud83c\udde8\ud83c\uddfb",
-        "score": null
+        "flag": "🇨🇻",
+        "crest": "https://crests.football-data.org/cape_verde.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 801,
         "name": "Saudi Arabia",
-        "flag": "\ud83c\uddf8\ud83c\udde6",
-        "score": null
+        "flag": "🇸🇦",
+        "crest": "https://crests.football-data.org/saudi_arabia.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_H",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Cape Verde Islands and Saudi Arabia at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Cape Verde Islands and Saudi Arabia (GROUP_H)"
     },
     {
       "id": "wc2026-537367",
+      "matchId": 537367,
       "teamA": {
+        "id": 783,
         "name": "New Zealand",
-        "flag": "\ud83c\uddf3\ud83c\uddff",
-        "score": null
+        "flag": "🇳🇿",
+        "crest": "https://crests.football-data.org/783.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 805,
         "name": "Belgium",
-        "flag": "\ud83c\udde7\ud83c\uddea",
-        "score": null
+        "flag": "🇧🇪",
+        "crest": "https://crests.football-data.org/805.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T03:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_G",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Belgium at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Belgium (GROUP_G)"
     },
     {
       "id": "wc2026-537368",
+      "matchId": 537368,
       "teamA": {
+        "id": 825,
         "name": "Egypt",
-        "flag": "\ud83c\uddea\ud83c\uddec",
-        "score": null
+        "flag": "🇪🇬",
+        "crest": "https://crests.football-data.org/825.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 840,
         "name": "Iran",
-        "flag": "\ud83c\uddee\ud83c\uddf7",
-        "score": null
+        "flag": "🇮🇷",
+        "crest": "https://crests.football-data.org/iran.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T03:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_G",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Egypt and Iran at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Egypt and Iran (GROUP_G)"
     },
     {
       "id": "wc2026-537413",
+      "matchId": 537413,
       "teamA": {
+        "id": 1836,
         "name": "Panama",
-        "flag": "\ud83c\uddf5\ud83c\udde6",
-        "score": null
+        "flag": "🇵🇦",
+        "crest": "https://crests.football-data.org/panama.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 770,
         "name": "England",
-        "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
-        "score": null
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "crest": "https://crests.football-data.org/770.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T21:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_L",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Panama and England at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Panama and England (GROUP_L)"
     },
     {
       "id": "wc2026-537414",
+      "matchId": 537414,
       "teamA": {
+        "id": 799,
         "name": "Croatia",
-        "flag": "\ud83c\udded\ud83c\uddf7",
-        "score": null
+        "flag": "🇭🇷",
+        "crest": "https://crests.football-data.org/799.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 763,
         "name": "Ghana",
-        "flag": "\ud83c\uddec\ud83c\udded",
-        "score": null
+        "flag": "🇬🇭",
+        "crest": "https://crests.football-data.org/ghana.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T21:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_L",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Croatia and Ghana at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Croatia and Ghana (GROUP_L)"
     },
     {
       "id": "wc2026-537407",
+      "matchId": 537407,
       "teamA": {
+        "id": 818,
         "name": "Colombia",
-        "flag": "\ud83c\udde8\ud83c\uddf4",
-        "score": null
+        "flag": "🇨🇴",
+        "crest": "https://crests.football-data.org/818.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 765,
         "name": "Portugal",
-        "flag": "\ud83c\uddf5\ud83c\uddf9",
-        "score": null
+        "flag": "🇵🇹",
+        "crest": "https://crests.football-data.org/765.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T23:30:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_K",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Colombia and Portugal at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Colombia and Portugal (GROUP_K)"
     },
     {
       "id": "wc2026-537408",
+      "matchId": 537408,
       "teamA": {
+        "id": 1934,
         "name": "Congo DR",
-        "flag": "\ud83c\udde8\ud83c\udde9",
-        "score": null
+        "flag": "🇨🇩",
+        "crest": "https://crests.football-data.org/congo_dr.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 8070,
         "name": "Uzbekistan",
-        "flag": "\ud83c\uddfa\ud83c\uddff",
-        "score": null
+        "flag": "🇺🇿",
+        "crest": "https://crests.football-data.org/8070.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T23:30:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_K",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Congo DR and Uzbekistan at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Congo DR and Uzbekistan (GROUP_K)"
     },
     {
       "id": "wc2026-537401",
+      "matchId": 537401,
       "teamA": {
+        "id": 8049,
         "name": "Jordan",
-        "flag": "\ud83c\uddef\ud83c\uddf4",
-        "score": null
+        "flag": "🇯🇴",
+        "crest": "https://crests.football-data.org/8049.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 762,
         "name": "Argentina",
-        "flag": "\ud83c\udde6\ud83c\uddf7",
-        "score": null
+        "flag": "🇦🇷",
+        "crest": "https://crests.football-data.org/762.png",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_J",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Jordan and Argentina at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Jordan and Argentina (GROUP_J)"
     },
     {
       "id": "wc2026-537402",
+      "matchId": 537402,
       "teamA": {
+        "id": 778,
         "name": "Algeria",
-        "flag": "\ud83c\udde9\ud83c\uddff",
-        "score": null
+        "flag": "🇩🇿",
+        "crest": "https://crests.football-data.org/algeria.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": 816,
         "name": "Austria",
-        "flag": "\ud83c\udde6\ud83c\uddf9",
-        "score": null
+        "flag": "🇦🇹",
+        "crest": "https://crests.football-data.org/816.svg",
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T02:00:00Z",
       "venue": "",
       "stage": "GROUP_STAGE",
+      "group": "GROUP_J",
+      "matchDay": 3,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 GROUP_STAGE match between Algeria and Austria at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 GROUP_STAGE match between Algeria and Austria (GROUP_J)"
     },
     {
       "id": "wc2026-537417",
+      "matchId": 537417,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T19:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537423",
+      "matchId": 537423,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-29",
       "utcDate": "2026-06-29T17:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537415",
+      "matchId": 537415,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-29",
       "utcDate": "2026-06-29T20:30:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537418",
+      "matchId": 537418,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T01:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537424",
+      "matchId": 537424,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T17:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537416",
+      "matchId": 537416,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T21:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537425",
+      "matchId": 537425,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T01:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537426",
+      "matchId": 537426,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T16:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537422",
+      "matchId": 537422,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T20:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537421",
+      "matchId": 537421,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T00:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537420",
+      "matchId": 537420,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T19:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537419",
+      "matchId": 537419,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T23:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537429",
+      "matchId": 537429,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T03:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537428",
+      "matchId": 537428,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T18:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537427",
+      "matchId": 537427,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T22:00:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537430",
+      "matchId": 537430,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T01:30:00Z",
       "venue": "",
       "stage": "LAST_32",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_32 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
     {
       "id": "wc2026-537376",
+      "matchId": 537376,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T17:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537375",
+      "matchId": 537375,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T21:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537377",
+      "matchId": 537377,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-05",
       "utcDate": "2026-07-05T20:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537378",
+      "matchId": 537378,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T00:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537379",
+      "matchId": 537379,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T19:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537380",
+      "matchId": 537380,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T00:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537381",
+      "matchId": 537381,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T16:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537382",
+      "matchId": 537382,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T20:00:00Z",
       "venue": "",
       "stage": "LAST_16",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 LAST_16 match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
     {
       "id": "wc2026-537383",
+      "matchId": 537383,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-09",
       "utcDate": "2026-07-09T20:00:00Z",
       "venue": "",
       "stage": "QUARTER_FINALS",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
     {
       "id": "wc2026-537384",
+      "matchId": 537384,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-10",
       "utcDate": "2026-07-10T19:00:00Z",
       "venue": "",
       "stage": "QUARTER_FINALS",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
     {
       "id": "wc2026-537385",
+      "matchId": 537385,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-11",
       "utcDate": "2026-07-11T21:00:00Z",
       "venue": "",
       "stage": "QUARTER_FINALS",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
     {
       "id": "wc2026-537386",
+      "matchId": 537386,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-12",
       "utcDate": "2026-07-12T01:00:00Z",
       "venue": "",
       "stage": "QUARTER_FINALS",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
     {
       "id": "wc2026-537387",
+      "matchId": 537387,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-14",
       "utcDate": "2026-07-14T19:00:00Z",
       "venue": "",
       "stage": "SEMI_FINALS",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 SEMI_FINALS match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 SEMI_FINALS match between None and None"
     },
     {
       "id": "wc2026-537388",
+      "matchId": 537388,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-15",
       "utcDate": "2026-07-15T19:00:00Z",
       "venue": "",
       "stage": "SEMI_FINALS",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 SEMI_FINALS match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 SEMI_FINALS match between None and None"
     },
     {
       "id": "wc2026-537389",
+      "matchId": 537389,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-18",
       "utcDate": "2026-07-18T21:00:00Z",
       "venue": "",
       "stage": "THIRD_PLACE",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 THIRD_PLACE match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 THIRD_PLACE match between None and None"
     },
     {
       "id": "wc2026-537390",
+      "matchId": 537390,
       "teamA": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "teamB": {
+        "id": null,
         "name": null,
-        "flag": "\ud83c\udff3\ufe0f",
-        "score": null
+        "flag": "🏳️",
+        "crest": null,
+        "score": null,
+        "halfTimeScore": null,
+        "extraTimeScore": null,
+        "penaltyScore": null
       },
       "status": "live",
+      "statusRaw": "TIMED",
       "time": "0-0 HT",
+      "minute": null,
       "date": "2026-07-19",
       "utcDate": "2026-07-19T19:00:00Z",
       "venue": "",
       "stage": "FINAL",
+      "group": null,
+      "matchDay": null,
+      "winner": null,
+      "referees": [],
       "source": "football-data.org",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures?country=US&wtw-filter=ALL",
-      "explanation": "World Cup 2026 FINAL match between None and None at ."
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
+      "explanation": "World Cup 2026 FINAL match between None and None"
     }
   ],
-  "lastUpdated": "2026-06-13T14:21:56.974214Z"
+  "matchCount": 104,
+  "lastUpdated": "2026-06-13T14:50:13.468312Z"
 }

@@ -29,52 +29,16 @@ function updateActiveElements(selector, predicate) {
 
 function handleFilterClick(element, category, isLatest = false) {
     if (category === '13F Holdings') {
-        document.getElementById('categories').style.display = 'none';
-        document.getElementById('latest-13f-filings').style.display = 'block';
         if (typeof ensureLoad13F === 'function') ensureLoad13F();
-        currentCategory = '13F Holdings';
     } else if (category === 'World Cup') {
-        document.getElementById('categories').style.display = 'none';
-        document.getElementById('latest-13f-filings').style.display = 'none';
-        document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
-            el.style.display = 'none';
-        });
-        document.querySelectorAll('.category').forEach(el => {
-            if (el.dataset.category === 'World Cup') {
-                el.style.display = 'block';
-            } else {
-                el.style.display = 'none';
-            }
-        });
-        if (typeof loadWorldCupMatches === 'function') {
-            loadWorldCupMatches();
-        }
-        currentCategory = 'World Cup';
+        if (typeof loadWorldCupMatches === 'function') loadWorldCupMatches();
     } else {
-        document.getElementById('categories').style.display = 'block';
-        // Always show 13F and World Cup sections when filtering by a data category or 'all'
-        document.getElementById('latest-13f-filings').style.display = 'block';
-        document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
-            el.style.display = '';
-        });
-        document.querySelectorAll('[data-category="World Cup"]').forEach(el => {
-            el.style.display = 'block';
-        });
-        document.querySelectorAll('.category:not([data-category="13F Holdings"]):not([data-category="World Cup"])').forEach(el => {
-            if (category === 'all') {
-                el.style.display = 'block';
-            } else if (el.dataset.category === category) {
-                el.style.display = 'block';
-            } else {
-                el.style.display = 'none';
-            }
-        });
         if (typeof ensureLoad13F === 'function') ensureLoad13F();
-
-        currentCategory = category || 'all';
     }
 
-    syncFilterToURL(category, isLatest);
+    if (typeof setActiveFilter === 'function') {
+        setActiveFilter(isLatest ? 'latest' : category);
+    }
 }
 
 function syncFilterToURL(category, isLatest) {
@@ -147,10 +111,9 @@ function setupFilters(financialData) {
 
          handleFilterClick(btn, category, isLatest);
 
-         if (isLatest) {
-             renderDashboard('all', true);
-         } else if (category !== 'World Cup') {
-             renderDashboard(category, false);
+         // Render indicator categories only for non-special filters
+         if (category !== '13F Holdings' && category !== 'World Cup') {
+             renderDashboard(isLatest ? 'all' : category, isLatest);
          }
      });
 
@@ -162,15 +125,8 @@ function setupFilters(financialData) {
    ========================================= */
 
 function setupIconHandlers(selector, handler) {
-    document.querySelectorAll(selector).forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            handler.call(this);
-        });
-    });
-
-    // Also add event delegation for icons that might be inside buttons
+    // Use event delegation only — avoids double-firing when both direct
+    // and delegated listeners were previously attached to the same elements.
     document.addEventListener('click', function (e) {
         const icon = e.target.closest(selector);
         if (icon) {
@@ -274,38 +230,6 @@ function toggleCollapse(sectionId) {
     content?.classList.toggle('collapsed');
     toggle?.classList.toggle('collapsed');
     if (toggle) toggle.textContent = content?.classList.contains('collapsed') ? '▲' : '▼';
-}
-
-function setupSearch() {
-    const searchInput = document.getElementById('indicatorSearch');
-    if (!searchInput) return;
-
-    let debounceTimer;
-    searchInput.addEventListener('input', function () {
-        clearTimeout(debounceTimer);
-        const query = this.value.trim().toLowerCase();
-        debounceTimer = setTimeout(() => {
-            const indicators = document.querySelectorAll('.indicator');
-            const categories = document.querySelectorAll('.category');
-
-            if (!query) {
-                indicators.forEach(el => el.style.display = '');
-                categories.forEach(el => el.style.display = '');
-                return;
-            }
-
-            indicators.forEach(indicator => {
-                const name = (indicator.getAttribute('data-indicator-name') || '').toLowerCase();
-                const agency = (indicator.querySelector('.indicator-agency')?.textContent || '').toLowerCase();
-                indicator.style.display = (name.includes(query) || agency.includes(query)) ? '' : 'none';
-            });
-
-            categories.forEach(cat => {
-                const visibleIndicators = cat.querySelectorAll('.indicator:not([style*="display: none"])');
-                cat.style.display = visibleIndicators.length > 0 ? '' : 'none';
-            });
-        }, 200);
-    });
 }
 
 function setupStickyObserver() {

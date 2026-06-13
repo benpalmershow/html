@@ -38,8 +38,9 @@ function createMatchCard(match) {
   const card = document.createElement('div');
   card.className = 'indicator';
   card.id = `match-${match.id}`;
-
   const groupDisplay = match.group ? match.group.replace('GROUP_', 'Group ') : '';
+  const searchLabel = [match.teamA.name, match.teamB.name, groupDisplay].filter(Boolean).join(' ');
+  card.setAttribute('data-indicator-name', searchLabel);
 
   let scoreDisplay = `${(match.teamA.score ?? '')} - ${(match.teamB.score ?? '')}`;
 
@@ -111,5 +112,9 @@ if (document.readyState === 'loading') {
   loadWorldCupMatches();
 }
 
-// Auto-refresh every 30 seconds for live matches
-setInterval(loadWorldCupMatches, 30000);
+// Auto-refresh every 30 seconds, but only when World Cup section is active
+setInterval(() => {
+    if (typeof currentCategory !== 'undefined' && currentCategory === 'World Cup') {
+        loadWorldCupMatches();
+    }
+}, 30000);

@@ -21,7 +21,7 @@ const SELECTORS = {
     INDICATOR: '.indicator',
     CHART_OVERLAY: '.chart-overlay',
     CATEGORIES: '#categories',
-    LATEST_13F: '#latest-13f-filings'
+    INDICATOR_CATEGORIES: '#indicator-categories'
 };
 
 const DATA_ATTRS = {
@@ -65,7 +65,7 @@ function scrollToIndicatorByName(indicatorName) {
 
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     const financialData = DashboardState.getData();
-    const categoriesContainer = document.getElementById('categories');
+    const indicatorContainer = document.getElementById('indicator-categories');
     let categories = [...new Set(financialData.indices.map(item => item.category))];
 
     let html = '';
@@ -76,7 +76,7 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         html += renderCategoryView(financialData, categories, filterCategory);
     }
 
-    categoriesContainer.innerHTML = html;
+    indicatorContainer.innerHTML = html;
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -87,8 +87,8 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
     if (typeof renderSparklines === 'function') renderSparklines();
 
-    handleEmptyState(categoriesContainer, filterCategory);
-    makeCardsFocusable(categoriesContainer);
+    handleEmptyState(indicatorContainer, filterCategory);
+    makeCardsFocusable(document.getElementById('categories'));
 }
 
 function renderLatestUpdatesView(financialData) {
@@ -195,95 +195,48 @@ function initializeDashboard() {
 
     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
     setupFilters(financialData);
-    setupSearchToggle();
+    setupFilterBarSearchToggle();
 
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'latest';
     const indicatorParam = urlParams.get('indicator');
     const isLatest = initialFilter.toLowerCase() === 'latest';
 
-    if (window.location.hash === '#latest-13f-filings-anchor') {
-        initialize13FView();
-    } else if (initialFilter === '13F Holdings') {
-        initialize13FView();
+    if (window.location.hash === '#latest-13f-filings-anchor' || initialFilter === '13F Holdings') {
+        setActiveFilter('13F Holdings');
         ensureLoad13F();
-        setupModalHandlers();
     } else if (initialFilter === 'World Cup') {
-        document.getElementById('categories').style.display = 'none';
-        document.getElementById('latest-13f-filings').style.display = 'none';
-        document.querySelectorAll('.category').forEach(el => {
-            if (el.dataset.category === 'World Cup') {
-                el.style.display = 'block';
-            } else {
-                el.style.display = 'none';
-            }
-        });
-        setupModalHandlers();
+        setActiveFilter('World Cup');
     } else {
-        initializeFilteredView(initialFilter, isLatest, indicatorParam);
-        setupModalHandlers();
+        const cat = isLatest ? 'latest' : initialFilter;
+        setActiveFilter(cat);
+        renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
+        if (indicatorParam) scrollToIndicatorByName(indicatorParam);
+        ensureLoad13F();
     }
 
-    // Load World Cup data after dashboard initialization to ensure it's not wiped out
-    if (typeof loadWorldCupMatches === 'function') {
-        loadWorldCupMatches();
-    }
-
-    if (typeof setupSearch === 'function') setupSearch();
+    if (typeof loadWorldCupMatches === 'function') loadWorldCupMatches();
+    if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
+    setupModalHandlers();
     setupKeyboardNavigation();
 }
 
-function initialize13FView() {
-    document.getElementById('categories').style.display = 'none';
-    document.getElementById('latest-13f-filings').style.display = 'block';
+/** Single source of truth for which filter is active.
+ *  Sets data-filter on #categories and marks the correct button active. */
+function setActiveFilter(category) {
+    const categoriesEl = document.getElementById('categories');
+    categoriesEl.dataset.filter = category;
+    currentCategory = category;
 
-    const filterContainer = document.getElementById('essay-filters');
-    filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.category === '13F Holdings') {
-            btn.classList.add('active');
-        }
-    });
-    currentCategory = '13F Holdings';
-}
-
-function initializeFilteredView(initialFilter, isLatest, indicatorParam) {
-    const show13F = isLatest || initialFilter === 'all';
-
-    document.querySelectorAll('[data-category="13F Holdings"]').forEach(el => {
-        el.style.display = show13F ? '' : 'none';
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        const isActive = category === 'latest'
+            ? btn.dataset.isLatest === 'true'
+            : btn.dataset.category === category;
+        btn.classList.toggle('active', isActive);
     });
 
-    const filterContainer = document.getElementById('essay-filters');
-    filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.category === initialFilter || (isLatest && btn.dataset.isLatest === 'true')) {
-            btn.classList.add('active');
-        }
-    });
-
-    if (isLatest) {
-        document.getElementById('latest-13f-filings').style.display = 'block';
-        renderDashboard('all', true);
-        scrollToIndicatorByName(indicatorParam);
-    } else {
-        if (initialFilter === 'all') ensureLoad13F();
-        document.getElementById('latest-13f-filings').style.display = show13F ? 'block' : 'none';
-        renderDashboard(initialFilter, false);
-        scrollToIndicatorByName(indicatorParam);
-    }
-
-    // Ensure World Cup category is visible after renderDashboard
-    const worldCupCategory = document.querySelector('[data-category="World Cup"]');
-    if (worldCupCategory) {
-        worldCupCategory.style.display = 'block';
-    } else {
-        // If World Cup category doesn't exist, load World Cup data to create it
-        if (typeof loadWorldCupMatches === 'function') {
-            loadWorldCupMatches();
-        }
-    }
+    syncFilterToURL(category, category === 'latest');
 }
 
 /* =========================================
@@ -325,25 +278,6 @@ function setupKeyboardNavigation() {
             e.preventDefault();
             next.focus();
             next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-    });
-}
-
-function setupSearchToggle() {
-    const toggle = document.getElementById('searchToggle');
-    const filters = document.getElementById('essay-filters');
-    const searchInput = document.getElementById('indicatorSearch');
-
-    if (!toggle || !filters || !searchInput) return;
-
-    toggle.addEventListener('click', () => {
-        filters.classList.add('search-open');
-        setTimeout(() => searchInput.focus(), 80);
-    });
-
-    searchInput.addEventListener('blur', () => {
-        if (!searchInput.value.trim()) {
-            filters.classList.remove('search-open');
         }
     });
 }

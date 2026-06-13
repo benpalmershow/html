@@ -136,6 +136,7 @@ function initializeFirmCards() {
 
         const card = document.createElement('div');
         card.className = 'indicator';
+        card.setAttribute('data-indicator-name', firmShortNames[firmIdx]);
         card.innerHTML = createFirmCardHTML(firmIdx, firmShortNames[firmIdx], totalValue, firmHoldings, description);
         container.appendChild(card);
 

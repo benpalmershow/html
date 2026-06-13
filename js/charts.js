@@ -149,12 +149,47 @@ function initializeChartInOverlay(chartConfig, canvas) {
     if (!chartConfig.data) return null;
     const ctx = canvas.getContext('2d');
     if (window[canvas.id + 'Chart']) window[canvas.id + 'Chart'].destroy();
+
+    const isBar = chartConfig.type === 'chartjs-bar';
     const isMixedChart = chartConfig.type === 'chartjs-mixed';
-    const chartType = isMixedChart ? 'bar' : 'line';
-    const scales = buildOverlayScales(isMixedChart);
-    const chartInstance = new Chart(ctx, { type: chartType, data: chartConfig.data, plugins: [crosshairPlugin], options: { responsive: true, maintainAspectRatio: false, layout: { padding: 0, autoPadding: false }, animation: { duration: 600, easing: 'easeInOutQuart' }, plugins: buildOverlayPlugins(isMixedChart), scales: scales, interaction: { mode: 'nearest', axis: 'x', intersect: false } } });
+    const chartType = isBar ? 'bar' : isMixedChart ? 'bar' : 'line';
+    const scales = isBar ? buildBarScales() : buildOverlayScales(isMixedChart);
+    const plugins = isBar ? buildBarPlugins(chartConfig) : buildOverlayPlugins(isMixedChart);
+
+    const chartInstance = new Chart(ctx, {
+        type: chartType,
+        data: chartConfig.data,
+        plugins: isBar ? [] : [crosshairPlugin],
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            layout: { padding: 0, autoPadding: false },
+            animation: { duration: 600, easing: 'easeInOutQuart' },
+            plugins,
+            scales,
+            interaction: { mode: 'nearest', axis: 'x', intersect: false }
+        }
+    });
     window[canvas.id + 'Chart'] = chartInstance;
     return chartInstance;
+}
+
+function buildBarScales() {
+    return {
+        x: { display: true, grid: { display: false }, ticks: { font: { size: 10 }, color: 'rgba(150,150,150,0.8)' } },
+        y: { display: true, beginAtZero: true, max: 100, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { display: false } }
+    };
+}
+
+function buildBarPlugins(chartConfig) {
+    return {
+        legend: { display: false },
+        tooltip: {
+            callbacks: {
+                label: (ctx) => `${ctx.parsed.y}%`
+            }
+        }
+    };
 }
 
 function buildOverlayScales(isMixedChart) {
@@ -295,15 +330,49 @@ function buildBudgetDeficitChartConfig(indicatorName, indicatorData) {
 }
 
 function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
-    const labels = [], values = [];
-    if (indicatorData.bps_probabilities) { Object.keys(indicatorData.bps_probabilities).forEach(key => { labels.push(key); values.push(parseFloat(indicatorData.bps_probabilities[key])); }); }
-    else if (indicatorData.candidates && typeof indicatorData.candidates === 'object') { for (const [name, prob] of Object.entries(indicatorData.candidates)) { const val = parseFloat(String(prob).replace(/[^0-9.-]/g, '')); if (!isNaN(val)) { labels.push(name); values.push(val); } } }
-    else if (indicatorData.yes_probability && indicatorData.no_probability) {
-        const yesVal = parseFloat(String(indicatorData.yes_probability).replace(/[^0-9.-]/g, '')), noVal = parseFloat(String(indicatorData.no_probability).replace(/[^0-9.-]/g, ''));
-        if (!isNaN(yesVal)) { labels.push('Yes'); values.push(yesVal); }
-        if (!isNaN(noVal)) { labels.push('No'); values.push(noVal); }
+    // Time-series probability data — render as a line chart over dates
+    const probabilities = indicatorData.probabilities || indicatorData.propabilities;
+    if (probabilities && typeof probabilities === 'object') {
+        const sorted = Object.entries(probabilities)
+            .filter(([, v]) => v && v.yes !== undefined)
+            .sort(([a], [b]) => new Date(a) - new Date(b));
+        if (sorted.length > 1) {
+            const labels = sorted.map(([date]) =>
+                new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+            );
+            const yesValues = sorted.map(([, v]) => parseFloat(v.yes));
+            const noValues = sorted.map(([, v]) => parseFloat(v.no));
+            return {
+                type: 'chartjs-mixed',
+                data: {
+                    labels,
+                    datasets: [
+                        { label: 'Yes', data: yesValues, type: 'line', borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
+                        { label: 'No', data: noValues, type: 'line', borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 }
+                    ]
+                }
+            };
+        }
     }
-    return { type: 'chartjs-bar', data: { labels, datasets: [{ label: indicatorName, data: values }] } };
+
+    // Snapshot / static probability — render as a doughnut-style bar
+    const labels = [], values = [], colors = [];
+    if (indicatorData.bps_probabilities) {
+        Object.entries(indicatorData.bps_probabilities).forEach(([key, val]) => {
+            labels.push(key); values.push(parseFloat(val)); colors.push('#2C5F5A');
+        });
+    } else if (indicatorData.candidates && typeof indicatorData.candidates === 'object') {
+        Object.entries(indicatorData.candidates).forEach(([name, prob]) => {
+            const val = parseFloat(String(prob).replace(/[^0-9.-]/g, ''));
+            if (!isNaN(val)) { labels.push(name); values.push(val); colors.push('#2C5F5A'); }
+        });
+    } else if (indicatorData.yes_probability && indicatorData.no_probability) {
+        labels.push('Yes', 'No');
+        values.push(parseFloat(String(indicatorData.yes_probability).replace(/[^0-9.-]/g, '')));
+        values.push(parseFloat(String(indicatorData.no_probability).replace(/[^0-9.-]/g, '')));
+        colors.push('#22c55e', '#ef4444');
+    }
+    return { type: 'chartjs-bar', data: { labels, datasets: [{ label: indicatorName, data: values, backgroundColor: colors }] } };
 }
 
 function buildPoliticalPollChartConfig(indicatorName, indicatorData) {
@@ -325,4 +394,10 @@ function buildPoliticalPollChartConfig(indicatorName, indicatorData) {
     return { type: 'chartjs-mixed', data: { labels, datasets: [{ label: 'Massie', data: candidate1Values, type: 'line', borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointBackgroundColor: '#3498db', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6 }, { label: 'Gallrein', data: candidate2Values, type: 'line', borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointBackgroundColor: '#e74c3c', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6 }] } };
 }
 
-ChartStrategies.registry.register('line', buildStandardLineChartConfig).register('trade-deficit', buildTradeDeficitChartConfig).register('budget-deficit', buildBudgetDeficitChartConfig).register('prediction-market', buildPredictionMarketChartConfig).register('political-poll', buildPoliticalPollChartConfig);
+ChartStrategies.registry
+    .register('line', buildStandardLineChartConfig)
+    .register('trade-deficit', buildTradeDeficitChartConfig)
+    .register('budget-deficit', buildBudgetDeficitChartConfig)
+    .register('prediction-market', buildPredictionMarketChartConfig)
+    .register('political-poll', buildPoliticalPollChartConfig)
+    .register('chartjs-bar', buildPredictionMarketChartConfig);

@@ -243,6 +243,36 @@
 .category[data-category="Financial Markets"] .indicator-name { overflow-wrap: break-word; word-break: break-word; font-size: 0.8rem; }
 .category[data-category="Financial Markets"] .month-value { font-size: 0.75rem; }
 
+.category[data-category="World Cup"] .indicators-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.category[data-category="World Cup"] .indicator {
+  padding: 0.6rem;
+  min-width: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.category[data-category="World Cup"] .indicator.expanded {
+  overflow: visible;
+}
+
+.category[data-category="World Cup"] .indicator.expanded .explanation-text {
+  display: block;
+}
+
+.category[data-category="World Cup"] .explanation-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.category[data-category="World Cup"] .explanation-text a {
+  color: var(--logo-teal);
+  text-decoration: underline;
+}
+
 
 /* CHART OVERLAY */
 .chart-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); -webkit-border-radius: var(--card-radius); border-radius: var(--card-radius); display: none; flex-direction: column; z-index: 100; opacity: 0; transform: scale(0.95); transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color); overflow: hidden; will-change: opacity, transform; }
@@ -344,8 +374,31 @@
 .indicator:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 2px; }
 .indicator-deep-link { outline: 2px solid var(--logo-teal); outline-offset: 2px; animation: deep-link-pulse 1.8s ease-out; }
 @keyframes deep-link-pulse { 0% { outline-color: var(--logo-teal); } 100% { outline-color: transparent; } }
-#latest-13f-filings-anchor { position: absolute; pointer-events: none; }
 #latest-13f-filings { margin-top: 2rem; }
+
+/* =========================================
+   Filter-driven section visibility
+   All show/hide is handled via data-filter on #categories.
+   No JS style.display needed for section toggling.
+   ========================================= */
+
+#latest-13f-filings-anchor { display: block; pointer-events: none; }
+#categories #latest-13f-filings,
+#categories #world-cup { display: block; }
+
+/* When a specific data category is active: hide 13F and World Cup */
+#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]) #latest-13f-filings,
+#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]) #world-cup { display: none; }
+
+/* When 13F filter is active: show only 13F, hide everything else */
+#categories[data-filter="13F Holdings"] #indicator-categories,
+#categories[data-filter="13F Holdings"] #world-cup { display: none; }
+#categories[data-filter="13F Holdings"] #latest-13f-filings { display: block; }
+
+/* When World Cup filter is active: show only World Cup, hide everything else */
+#categories[data-filter="World Cup"] #indicator-categories,
+#categories[data-filter="World Cup"] #latest-13f-filings { display: none; }
+#categories[data-filter="World Cup"] #world-cup { display: block; }
 
 /* ========================================
    POLL TABLE STYLES

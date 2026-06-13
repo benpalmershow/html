@@ -2,8 +2,8 @@ name: Fetch World Cup Scores
 
 on:
   schedule:
-    # Run every 10 minutes
-    - cron: '*/10 * * * *'
+    # Run every 30 minutes during tournament
+    - cron: '*/30 * * * *'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
@@ -16,8 +16,6 @@ concurrency:
 jobs:
   fetch-scores:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,11 +23,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.12'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
-          pip install requests python-dotenv
+          pip install requests python-dotenv tenacity
 
       - name: Fetch World Cup scores
         env:
@@ -50,6 +49,18 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add json/world-cup.json
-          git diff --staged --quiet || git commit -m "Update World Cup scores $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          if git diff --staged --quiet; then
+            echo "No score changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update World Cup scores [skip ci]"
           git pull --rebase origin main
           git push
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-logs
+          path: logs/
+          retention-days: 7

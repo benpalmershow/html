@@ -3,6 +3,8 @@
 
 let currentCategory = 'all';
 
+const boundIconHandlers = new Set();
+
 const categoryIcons = {
     'Employment Indicators': '<i data-lucide="users" class="filter-icon"></i>',
     'Housing Market': '<i data-lucide="home" class="filter-icon"></i>',
@@ -125,8 +127,9 @@ function setupFilters(financialData) {
    ========================================= */
 
 function setupIconHandlers(selector, handler) {
-    // Use event delegation only — avoids double-firing when both direct
-    // and delegated listeners were previously attached to the same elements.
+    if (boundIconHandlers.has(selector)) return;
+    boundIconHandlers.add(selector);
+
     document.addEventListener('click', function (e) {
         const icon = e.target.closest(selector);
         if (icon) {

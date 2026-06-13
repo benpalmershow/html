@@ -278,18 +278,6 @@ function initializeFirmCards() {
         }, 0);
     }
 
-    document.addEventListener('click', function (e) {
-        const expandBtn = e.target.closest('.expand-toggle');
-        if (expandBtn) {
-            e.preventDefault();
-            e.stopPropagation();
-            const card = expandBtn.closest('.indicator');
-            if (card) {
-                card.classList.toggle('expanded');
-            }
-        }
-    });
-
     if (typeof lucide !== 'undefined') {
         setTimeout(() => lucide.createIcons(), 100);
     }

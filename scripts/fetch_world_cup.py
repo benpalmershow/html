@@ -10,6 +10,10 @@ import requests
 import os
 from datetime import datetime, timedelta
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # football-data.org API endpoint for World Cup
 API_KEY = os.environ.get('FOOTBALL_DATA_API_KEY', '')

@@ -28,21 +28,25 @@ function renderMatchCards(matches) {
   const statusOrder = { finished: 0, live: 1, upcoming: 2 };
 
   const sortedMatches = [...matches].sort((a, b) => {
-    // Sort by date first (newest first)
-    const dateA = new Date(a.date || a.utcDate);
-    const dateB = new Date(b.date || b.utcDate);
-    const dateDiff = dateB - dateA;
-    if (dateDiff !== 0) return dateDiff;
+    // Sort by date first (newest first) if available
+    if (a.date || a.utcDate) {
+      const dateA = new Date(a.date || a.utcDate);
+      const dateB = new Date(b.date || b.utcDate);
+      const dateDiff = dateB - dateA;
+      if (dateDiff !== 0) return dateDiff;
+    }
 
-    // Then keep existing status/stage/id sorting as fallback
+    // Then sort by status (finished first, then live, then upcoming)
     const statusDiff = (statusOrder[a.status] ?? 3) - (statusOrder[b.status] ?? 3);
     if (statusDiff !== 0) return statusDiff;
 
+    // Then sort by stage
     const stageA = stageOrder[a.stage] ?? 99;
     const stageB = stageOrder[b.stage] ?? 99;
     const stageDiff = stageA - stageB;
     if (stageDiff !== 0) return stageDiff;
 
+    // Finally sort by match ID (ascending for upcoming, descending for finished/live)
     const idA = parseInt(a.id.split('-').pop(), 10) || 0;
     const idB = parseInt(b.id.split('-').pop(), 10) || 0;
     if (statusOrder[a.status] === 2) return idA - idB;

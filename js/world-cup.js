@@ -28,6 +28,13 @@ function renderMatchCards(matches) {
   const statusOrder = { finished: 0, live: 1, upcoming: 2 };
 
   const sortedMatches = [...matches].sort((a, b) => {
+    // Sort by date first (newest first)
+    const dateA = new Date(a.date || a.utcDate);
+    const dateB = new Date(b.date || b.utcDate);
+    const dateDiff = dateB - dateA;
+    if (dateDiff !== 0) return dateDiff;
+
+    // Then keep existing status/stage/id sorting as fallback
     const statusDiff = (statusOrder[a.status] ?? 3) - (statusOrder[b.status] ?? 3);
     if (statusDiff !== 0) return statusDiff;
 

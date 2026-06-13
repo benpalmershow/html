@@ -173,7 +173,7 @@
         "name": "Qatar",
         "flag": "🇶🇦",
         "crest": "https://crests.football-data.org/8030.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -188,9 +188,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-13",
       "utcDate": "2026-06-13T19:00:00Z",
@@ -198,7 +198,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "matchDay": 1,
-      "winner": "AWAY_TEAM",
+      "winner": "DRAW",
       "referees": [
         "Said Martinez"
       ],
@@ -4075,5 +4075,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-13T20:49:51.450095Z"
+  "lastUpdated": "2026-06-13T22:04:31.943332Z"
 }

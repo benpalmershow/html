@@ -47,4 +47,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add json/world-cup.json
           git diff --staged --quiet || git commit -m "Update World Cup scores $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git pull --rebase origin main
           git push

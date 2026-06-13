@@ -32,6 +32,19 @@ function renderMatchCards(matches) {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
+
+  // Setup info button handlers
+  setupInfoHandlers();
+}
+
+function setupInfoHandlers() {
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#worldCupGrid .explanation-text') && !e.target.closest('#worldCupGrid .info-btn')) {
+      document.querySelectorAll('#worldCupGrid .explanation-text').forEach(div => div.style.display = 'none');
+      document.querySelectorAll('#worldCupGrid .info-btn').forEach(b => b.classList.remove('active'));
+    }
+  });
 }
 
 function createMatchCard(match) {
@@ -39,49 +52,67 @@ function createMatchCard(match) {
   card.className = 'indicator';
   card.id = `match-${match.id}`;
 
-  const statusText = match.status ? match.status.toUpperCase() : 'MATCH';
-  const url = match.url || '#';
-  const explanation = match.explanation || '';
-  const source = match.source || 'FIFA';
+  const groupDisplay = match.group ? match.group.replace('GROUP_', 'Group ') : '';
 
-  const stageLabels = {
-    GROUP_STAGE: 'Group Phase',
-    LAST_32: 'Round of 32',
-    LAST_16: 'Round of 16',
-    QUARTER_FINAL: 'Quarter Final',
-    SEMI_FINAL: 'Semi Final',
-    FINAL: 'Final'
-  };
+  let scoreDisplay = `${(match.teamA.score ?? '')} - ${(match.teamB.score ?? '')}`;
+
+  const extraInfo = [];
+  if (match.date) extraInfo.push(`Date: ${match.date}`);
+  if (match.matchDay) extraInfo.push(`Matchday: ${match.matchDay}`);
+  if (match.venue) extraInfo.push(`Venue: ${match.venue}`);
+  if (match.referees && match.referees.length > 0) extraInfo.push(`Referee: ${match.referees.join(', ')}`);
+  if (match.winner) {
+    const winnerName = match.winner === 'HOME_TEAM' ? match.teamA.name : match.winner === 'AWAY_TEAM' ? match.teamB.name : 'Draw';
+    extraInfo.push(`Winner: ${winnerName}`);
+  }
+  if (match.teamA.halfTimeScore !== null || match.teamB.halfTimeScore !== null) {
+    extraInfo.push(`HT: ${match.teamA.halfTimeScore ?? '-'} - ${match.teamB.halfTimeScore ?? '-'}`);
+  }
+  if (match.source && match.url) {
+    extraInfo.push(`Source: <a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.source}</a>`);
+  } else if (match.source) {
+    extraInfo.push(`Source: ${match.source}`);
+  }
+
+  const infoBtn = `<button class="info-btn" title="Match details"><i data-lucide="info" class="info-icon"></i></button>`;
+  const detailsHtml = extraInfo.length > 0 ? `<div class="explanation-text" style="display:none;margin-top:6px;padding:6px;background:var(--bg-secondary);border-radius:4px;font-size:0.75rem;color:var(--text-secondary);">${extraInfo.map(info => `<div style="padding:1px 0;">${info}</div>`).join('')}</div>` : '';
 
   card.innerHTML = `
     <div class="indicator-header">
       <div class="indicator-name">
-        ${stageLabels[match.stage] || match.stage}
-        ${match.status === 'live' ? `<span class="new-badge live">${statusText}</span>` : ''}
+        ${groupDisplay}
       </div>
-      <div class="indicator-actions">
-        ${explanation ? `<button class="info-btn" title="Show explanation" data-explanation="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}
-      </div>
+      ${infoBtn}
     </div>
-    <div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${source}</a></div>
     <div class="indicator-content">
       <div class="match-score-display">
         <div class="match-team">
-          <span class="team-flag">${match.teamA.flag || '🏳️'}</span>
+          ${match.teamA.crest ? `<img src="${match.teamA.crest}" alt="${match.teamA.name}" class="team-crest" onerror="this.style.display='none'">` : `<span class="team-flag">${match.teamA.flag || '🏳️'}</span>`}
           <span class="team-name">${match.teamA.name || 'TBD'}</span>
         </div>
-        <div class="match-score">${(match.teamA.score ?? '')} - ${(match.teamB.score ?? '')}</div>
+        <div class="match-score">${scoreDisplay}</div>
         <div class="match-team">
-          <span class="team-flag">${match.teamB.flag || '🏳️'}</span>
+          ${match.teamB.crest ? `<img src="${match.teamB.crest}" alt="${match.teamB.name}" class="team-crest" onerror="this.style.display='none'">` : `<span class="team-flag">${match.teamB.flag || '🏳️'}</span>`}
           <span class="team-name">${match.teamB.name || 'TBD'}</span>
         </div>
       </div>
-      <div class="match-meta">
-        <span class="match-time">${match.time}</span>
-        <span class="match-venue">${match.venue}</span>
-      </div>
+      ${detailsHtml}
     </div>
   `;
+
+  // Attach click handler to toggle explanation
+  card.querySelector('.info-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const expDiv = card.querySelector('.explanation-text');
+    const isVisible = expDiv.style.display === 'block';
+    document.querySelectorAll('#worldCupGrid .explanation-text').forEach(div => div.style.display = 'none');
+    document.querySelectorAll('#worldCupGrid .info-btn').forEach(b => b.classList.remove('active'));
+    if (!isVisible) {
+      expDiv.style.display = 'block';
+      this.classList.add('active');
+    }
+  });
 
   return card;
 }

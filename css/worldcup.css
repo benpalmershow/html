@@ -1,0 +1,63 @@
+/* ========================================
+    WORLD CUP SCORE CARD - MINIMAL
+    ======================================== */
+
+.match-score-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.match-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.team-flag {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.team-name {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70px;
+}
+
+.team-crest {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+.match-score {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--logo-teal);
+  padding: 0 4px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.match-details-popup {
+  color: var(--text-secondary);
+}
+
+.match-details-popup a {
+  color: var(--logo-teal);
+  text-decoration: underline;
+}
+
+.match-details-popup a:hover {
+  color: var(--logo-orange);
+}

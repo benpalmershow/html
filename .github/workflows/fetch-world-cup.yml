@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: fetch-world-cup
+  cancel-in-progress: false
+
 jobs:
   fetch-scores:
     runs-on: ubuntu-latest

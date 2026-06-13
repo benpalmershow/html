@@ -6,6 +6,9 @@ on:
     - cron: '*/10 * * * *'
   workflow_dispatch: # Allow manual trigger
 
+permissions:
+  contents: write
+
 jobs:
   fetch-scores:
     runs-on: ubuntu-latest

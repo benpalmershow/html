@@ -337,8 +337,8 @@
         "name": "Germany",
         "flag": "🇩🇪",
         "crest": "https://crests.football-data.org/759.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -347,13 +347,13 @@
         "name": "Curaçao",
         "flag": "🇨🇼",
         "crest": "https://crests.football-data.org/curacao.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
-      "statusRaw": "TIMED",
+      "statusRaw": "PAUSED",
       "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-14",
@@ -362,7 +362,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 1,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Jalal Jayed"
       ],
@@ -4077,5 +4077,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-14T16:05:47.860067Z"
+  "lastUpdated": "2026-06-14T17:57:33.655184Z"
 }

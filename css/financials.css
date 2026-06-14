@@ -31,23 +31,6 @@
 /* PAGE HEADER */
 .page-header.page-header-branded { flex-direction: column; gap: 0.15rem; }
 
-#essay-filters { padding: 0.6rem var(--content-padding); margin: 0 calc(-1 * var(--content-padding)) 0.6rem; overflow-x: auto; }
-
-#essay-filters::after { content: ''; position: absolute; left: 0; right: 0; bottom: -5px; height: 5px; background: linear-gradient(to bottom, var(--bg-primary), transparent); pointer-events: none; }
-
-#essay-filters .filters { flex-wrap: nowrap; min-width: min-content; }
-
-.filters .filter-btn.active[data-category*="employment"] { background: var(--color-category-employment); color: white; }
-.filters .filter-btn.active[data-category*="housing"] { background: var(--color-category-housing); color: white; }
-.filters .filter-btn.active[data-category*="business"] { background: var(--color-category-business); color: white; }
-.filters .filter-btn.active[data-category*="consumer"] { background: var(--color-category-consumer); color: white; }
-.filters .filter-btn.active[data-category*="trade"] { background: var(--color-category-trade); color: white; }
-.filters .filter-btn.active[data-category="government"] { background: var(--color-category-government); color: white; }
-.filters .filter-btn.active[data-category*="commodities"] { background: var(--color-category-economic); color: white; }
-.filters .filter-btn.active[data-category="healthcare"] { background: var(--color-category-healthcare); color: white; }
-.filters .filter-btn.active[data-category*="prediction"] { background: var(--color-category-prediction); color: white; }
-.filters .filter-btn.active[data-category*="financial"] { background: var(--color-category-economic); color: white; }
-
 .categories { display: grid; gap: 15px }
 
 .category { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%); border-radius: var(--card-radius); padding: 0.5rem clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform 0.3s ease; word-break: break-word }

@@ -1,5 +1,6 @@
 ---
 title: Housing Market Softens as Starts and Pending Sales Decline
+category: policy
 ---
 
 ### <i data-lucide='home' class='post-icon'></i> **Housing Starts down 3.8%**

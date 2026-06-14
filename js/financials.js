@@ -11,8 +11,8 @@ const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'S
 
 const SELECTORS = {
     FILTER_BTN: '.filter-btn',
-    CATEGORY_DROPDOWN: '#essay-filters',
-    DESKTOP_FILTERS: '#essay-filters',
+    CATEGORY_DROPDOWN: '#financials-filters',
+    DESKTOP_FILTERS: '#financials-filters',
     FILTER_DROPDOWN: '.filters',
     FILTER_GROUP: '.filters',
     CHART_BTN: '.chart-btn',

@@ -1,5 +1,6 @@
 ---
 title: Oil Price Slide, Builder Confidence Wanes
+category: policy
 ---
 
 ### <i data-lucide='package' class='post-icon'></i> **Energy and Housing Sentiment Soften**

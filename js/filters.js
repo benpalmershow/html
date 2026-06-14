@@ -62,7 +62,7 @@ function syncFilterToURL(category, isLatest) {
 
 function setupFilters(financialData) {
      const categories = [...new Set(financialData.indices.map(item => item.category))];
-     const filtersContainer = document.getElementById('essay-filters');
+     const filtersContainer = document.getElementById('financials-filters');
 
      if (!filtersContainer) return;
 
@@ -236,7 +236,7 @@ function toggleCollapse(sectionId) {
 }
 
 function setupStickyObserver() {
-    const filters = document.getElementById('essay-filters');
+    const filters = document.getElementById('financials-filters');
     if (!filters) return;
 
     const observer = new IntersectionObserver(

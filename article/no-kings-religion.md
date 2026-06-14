@@ -1,3 +1,8 @@
+---
+title: The Religious No Kings
+category: policy
+---
+
 # The Religious No Kings
 
 *Was not Religion the first No Kings?*

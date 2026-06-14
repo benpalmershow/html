@@ -342,32 +342,6 @@ function getSeriesDataFromIndicator(indicator) {
   };
 }
 
-function toggleEssayReaderView(showReader) {
-  const journalFeed = document.getElementById('journal-feed');
-  const essayReaderContainer = document.getElementById('essay-reader-container');
-  const categoryFilters = document.getElementById('journal-category-filters');
-
-  if (journalFeed) {
-    journalFeed.style.display = showReader ? 'none' : 'block';
-  }
-  if (essayReaderContainer) {
-    if (showReader) {
-      essayReaderContainer.classList.remove('hidden');
-    } else {
-      essayReaderContainer.classList.add('hidden');
-    }
-  }
-  if (categoryFilters) {
-    categoryFilters.style.display = showReader ? 'none' : 'flex';
-  }
-}
-
-function updateJournalPageTitle(source) {
-  // Toggle IS the page title now - just update browser tab
-  const titleText = source === 'journal' ? 'Docs' : 'Essays';
-  document.title = `${titleText} - Howdy, Stranger`;
-}
-
 async function loadJournalEntries() {
   const journalFeed = document.getElementById('journal-feed');
   if (!journalFeed) {
@@ -379,24 +353,8 @@ async function loadJournalEntries() {
     await waitForMarked();
     await ensureHtmlSanitizer();
 
-    // Determine current filter
-    const filterContainer = document.getElementById('journal-filters');
-    const activeBtn = filterContainer?.querySelector('.source-toggle-btn.active, .filter-btn.active');
-    const currentSource = activeBtn?.dataset.source || 'journal';
-
-    // Update page title based on active filter
-    updateJournalPageTitle(currentSource);
-
-    if (currentSource === 'journal') {
-      toggleEssayReaderView(false);
-      await loadJournalData(journalFeed);
-    } else {
-      toggleEssayReaderView(true);
-      // Use news-article.js to load the essay reader
-      if (typeof loadArticle === 'function') {
-        await loadArticle();
-      }
-    }
+    // Load both journal entries and essays by default
+    await filterJournalEntries('all');
 
     if (window.lucide) {
       window.lucide.createIcons();
@@ -435,70 +393,6 @@ async function loadJournalData(journalFeed) {
   bindCollapsibleEntries(journalFeed);
   renderJournalCharts();
   scrollToHash();
-}
-
-async function loadNewsData(journalFeed) {
-  const articles = await Services.dataService.fetchJSON('json/articles.json');
-  
-  if (!Array.isArray(articles)) {
-    throw new Error('Articles data is not an array');
-  }
-
-  const articlesHTML = renderNewsArticles(articles);
-  journalFeed.innerHTML = articlesHTML;
-  
-  // Optimize first image for LCP
-  const firstImage = journalFeed.querySelector('.journal-entry img');
-  if (firstImage) {
-    firstImage.setAttribute('loading', 'eager');
-    firstImage.setAttribute('fetchpriority', 'high');
-    firstImage.setAttribute('decoding', 'async');
-  }
-}
-
-function renderNewsArticles(articles) {
-  const sortedArticles = [...articles].sort((a, b) => {
-    const aTime = Date.parse(a.date || '');
-    const bTime = Date.parse(b.date || '');
-    const aValid = Number.isFinite(aTime);
-    const bValid = Number.isFinite(bTime);
-    if (aValid && bValid) return bTime - aTime;
-    if (aValid) return -1;
-    if (bValid) return 1;
-    return 0;
-  });
-
-  return sortedArticles.map(article => {
-    const articleUrl = `news.html?article=${encodeURIComponent(article.id)}`;
-    const category = article.category || 'uncategorized';
-    const categoryLabel = titleCaseCategory(category);
-    const dateStr = article.date ? formatRelativeDate(article.date) : '';
-    
-    return `
-      <article class="journal-entry">
-        <div class="card-title">
-          <time datetime="${escapeHtml(article.date || '')}">
-            ${escapeHtml(dateStr)}
-          </time>
-        </div>
-        <div class="content">
-          <a class="entry-title-link" href="${articleUrl}" data-category="${escapeHtml(category)}">
-            <h2 class="entry-title">
-              ${escapeHtml(article.title || 'Untitled')}
-              <span class="category-badge ${escapeHtml(category)}">
-                ${escapeHtml(categoryLabel)}
-              </span>
-            </h2>
-            <p class="entry-content">${escapeHtml(article.summary || 'Read the article.')}</p>
-          </a>
-        </div>
-      </article>
-    `;
-  }).join('');
-}
-
-function titleCaseCategory(category) {
-  return window.HtmlUtils.titleCaseCategory(category);
 }
 
 async function renderJournal(journal) {
@@ -819,6 +713,141 @@ async function renderJournalCharts() {
   });
 }
 
+function setupJournalFilters() {
+  const filterButtonsContainer = document.getElementById('filter-buttons');
+  if (!filterButtonsContainer) return;
+
+  const filterConfig = [
+    { id: 'all', label: 'All', icon: 'list' },
+    { id: 'policy', label: 'Policy', icon: 'shield' },
+    { id: 'legal', label: 'Legal', icon: 'gavel' },
+    { id: 'healthcare', label: 'Healthcare', icon: 'heart-pulse' },
+    { id: 'political', label: 'Political', icon: 'landmark' },
+    { id: 'ipo', label: 'IPO', icon: 'rocket' },
+    { id: 'earnings', label: 'Earnings', icon: 'briefcase' },
+    { id: 'corrections', label: 'Corrections', icon: 'badge-alert' }
+  ];
+
+  filterButtonsContainer.innerHTML = '';
+
+  filterConfig.forEach(filter => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `filter-btn ${filter.id === 'all' ? 'active' : ''}`;
+    btn.dataset.category = filter.id;
+    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="${filter.icon}" class="lucide lucide-${filter.icon} filter-icon"></svg><span class="filter-text">${filter.label}</span>`;
+    filterButtonsContainer.appendChild(btn);
+  });
+
+  filterButtonsContainer.addEventListener('click', async function(e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    filterButtonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const category = btn.dataset.category;
+    await filterJournalEntries(category);
+  });
+}
+
+async function getEntryCategory(entry) {
+  // If entry has no file, return null
+  if (!entry.file) return null;
+  
+  try {
+    const response = await fetch(entry.file);
+    if (!response.ok) return null;
+    
+    const md = await response.text();
+    const frontmatter = parseFrontmatter(md);
+    
+    if (frontmatter && frontmatter.category) {
+      return frontmatter.category.toLowerCase();
+    }
+  } catch (error) {
+    console.warn('Failed to parse frontmatter for:', entry.file, error);
+  }
+  
+  return null;
+}
+
+async function filterJournalEntries(category) {
+  const journalFeed = document.getElementById('journal-feed');
+  if (!journalFeed) return;
+
+  try {
+    const journals = await Services.dataService.fetchJSON('json/journal.json');
+    
+    if (!Array.isArray(journals)) {
+      throw new Error('Journal data is not an array');
+    }
+    
+    let filteredJournals = journals;
+    
+    if (category !== 'all') {
+      // First, get categories for all entries with files
+      const categoryCache = new Map();
+      
+      for (const journal of journals) {
+        if (journal.entries && Array.isArray(journal.entries)) {
+          for (const entry of journal.entries) {
+            if (entry.file && !categoryCache.has(entry.file)) {
+              const entryCategory = await getEntryCategory(entry);
+              if (entryCategory) {
+                categoryCache.set(entry.file, entryCategory);
+              }
+            }
+          }
+        }
+      }
+      
+      filteredJournals = journals.filter(journal => {
+        if (journal.entries && Array.isArray(journal.entries)) {
+          return journal.entries.some(entry => {
+            // Check frontmatter category first
+            if (entry.file && categoryCache.has(entry.file)) {
+              return categoryCache.get(entry.file) === category.toLowerCase();
+            }
+            
+            // Fall back to keyword matching
+            const entryText = (entry.title + ' ' + (entry.content || '') + ' ' + (entry.file || '')).toLowerCase();
+            return entryText.includes(category.toLowerCase());
+          });
+        }
+        return false;
+      });
+    }
+    
+    filteredJournals.sort((a, b) => {
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+      return dateB - dateA;
+    });
+    
+    const articlesHTML = await Promise.all(filteredJournals.map(renderJournal));
+    journalFeed.innerHTML = articlesHTML.join('');
+
+    // Optimize first image for LCP
+    const firstImage = journalFeed.querySelector('.journal-entry img');
+    if (firstImage) {
+      firstImage.setAttribute('loading', 'eager');
+      firstImage.setAttribute('fetchpriority', 'high');
+      firstImage.setAttribute('decoding', 'async');
+    }
+
+    bindCollapsibleEntries(journalFeed);
+    renderJournalCharts();
+    
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  } catch (error) {
+    console.error('Error filtering journal entries:', error);
+    journalFeed.innerHTML = '<div class="error-state">Error loading filtered content. Please try again later.</div>';
+  }
+}
+
 async function initializeJournalPage() {
   try {
     await Promise.all([
@@ -840,48 +869,10 @@ async function initializeJournalPage() {
   loadScriptOnce('https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js', { defer: true })
     .catch((error) => console.error('Failed to load Lucide', error));
 
-  // Check URL for article param or hash to set initial filter
-  const urlParams = new URLSearchParams(window.location.search);
-  const hasArticle = urlParams.has('article');
-  const hash = window.location.hash;
-
-  const filterContainer = document.getElementById('journal-filters');
-  if (filterContainer) {
-    // Default to Essays if article param present, otherwise use hash or default
-    if (hasArticle) {
-      filterContainer.querySelectorAll('.source-toggle-btn, .filter-btn').forEach(b => b.classList.remove('active'));
-      const essaysBtn = filterContainer.querySelector('[data-source="news"]');
-      if (essaysBtn) essaysBtn.classList.add('active');
-    } else if (hash === '#docs') {
-      filterContainer.querySelectorAll('.source-toggle-btn, .filter-btn').forEach(b => b.classList.remove('active'));
-      const docsBtn = filterContainer.querySelector('[data-source="journal"]');
-      if (docsBtn) docsBtn.classList.add('active');
-    }
-  }
+  // Setup filter buttons
+  setupJournalFilters();
 
   await loadJournalEntries();
-
-  // Filter toggle handler (filterContainer already declared above)
-  if (filterContainer) {
-    filterContainer.addEventListener('click', (e) => {
-      const btn = e.target.closest('.source-toggle-btn, .filter-btn');
-      if (!btn) return;
-
-      filterContainer.querySelectorAll('.source-toggle-btn, .filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Update URL hash for direct linking
-      const source = btn.dataset.source || 'news';
-      if (source === 'journal') {
-        history.pushState(null, '', window.location.pathname + '#docs');
-      } else {
-        history.pushState(null, '', window.location.pathname);
-      }
-
-      // Reload entries with selected filter
-      loadJournalEntries();
-    });
-  }
 
   // Back button handler for essay reader
   const backBtn = document.getElementById('article-back-btn');

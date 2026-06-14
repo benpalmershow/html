@@ -1,3 +1,8 @@
+---
+title: Madison on the Purse: Separation of Powers and Legislative Encroachment
+category: policy
+---
+
 # Madison on the Purse: Separation of Powers and Legislative Encroachment
 
 James Madison observed that an energetic executive confronts a legislature wielding control of the purse—a structural imbalance that threatens the separation of powers. The legislative power to appropriate funds gives Congress a facility for encroachment that no constitutional restriction can fully prevent.

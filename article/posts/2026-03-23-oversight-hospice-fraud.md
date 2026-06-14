@@ -2,6 +2,7 @@
 title: "Oversight Committee Launches Investigation Into Rampant Taxpayer Fraud in California Hospice Programs"
 date: "2026-03-23"
 description: "House Committee on Oversight and Government Reform, led by Chairman James Comer (R-Ky.), launches investigation into California hospice programs following reports of widespread fraud."
+category: "healthcare"
 categories:
   - "Congress"
   - "Healthcare"

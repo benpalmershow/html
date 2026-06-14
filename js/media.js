@@ -23,9 +23,8 @@
  */
 (function () {
     const mediaContainer = document.getElementById('media-cards-container');
-    const filterType = document.getElementById('filter-type');
-    const sortBy = document.getElementById('sort-by');
     const mediaFilters = document.getElementById('media-filters');
+    const filterButtonsContainer = document.getElementById('filter-buttons');
     let mediaItems = [];
     let isRendering = false;
     let currentMediaType = 'all';
@@ -103,7 +102,7 @@
     }
 
     function setupMediaFilters() {
-        if (!mediaFilters) return;
+        if (!filterButtonsContainer) return;
 
         const typeIcons = {
             'all': '<i class="fas fa-th filter-icon"></i>',
@@ -127,12 +126,7 @@
             'video': 'Videos'
         };
 
-        mediaFilters.innerHTML = '';
-
-        // Create filters container for media types
-        const filtersContainer = document.createElement('div');
-        filtersContainer.className = 'filters';
-        mediaFilters.appendChild(filtersContainer);
+        filterButtonsContainer.innerHTML = '';
 
         // Create "All" button
         const allBtn = document.createElement('button');
@@ -140,7 +134,7 @@
         allBtn.className = 'filter-btn active';
         allBtn.dataset.type = 'all';
         allBtn.innerHTML = `${typeIcons['all']}<span class="filter-text">${typeLabel['all']}</span>`;
-        filtersContainer.appendChild(allBtn);
+        filterButtonsContainer.appendChild(allBtn);
 
         // Create type buttons
         VALID_MEDIA_TYPES.forEach(type => {
@@ -149,18 +143,17 @@
             btn.className = 'filter-btn';
             btn.dataset.type = type;
             btn.innerHTML = `${typeIcons[type] || typeIcons['all']}<span class="filter-text">${typeLabel[type] || type}</span>`;
-            filtersContainer.appendChild(btn);
+            filterButtonsContainer.appendChild(btn);
         });
 
-        filtersContainer.addEventListener('click', function(e) {
+        filterButtonsContainer.addEventListener('click', function(e) {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
 
-            filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            filterButtonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             currentMediaType = btn.dataset.type;
-            if (filterType) filterType.value = currentMediaType;
             filterAndSortMedia();
         });
     }
@@ -177,21 +170,6 @@
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
 
-    function populateFilterDropdown(types) {
-        if (!filterType) return;
-        const fragment = document.createDocumentFragment();
-        types.forEach(type => {
-            const option = document.createElement('option');
-            option.value = type;
-            option.setAttribute('aria-label', `Filter by ${type}`);
-            option.textContent = capitalizeWord(type) + 's';
-            fragment.appendChild(option);
-        });
-        while (filterType.options.length > 1) {
-            filterType.remove(1);
-        }
-        filterType.appendChild(fragment);
-    }
 
     async function fetchMediaData() {
         mediaContainer.innerHTML = Array(12).fill('<div class="media-card-skeleton skeleton"></div>').join('');
@@ -232,9 +210,6 @@
         const mediaTypes = getUniqueMediaTypes(mediaItems);
         setupMediaFilters();
 
-        // Default values
-        if (sortBy) sortBy.value = 'date-desc';
-
         // Check for URL parameters
         const urlParams = new URLSearchParams(window.location.search);
 
@@ -242,19 +217,12 @@
         const initialFilter = urlParams.get('type') || urlParams.get('filter');
         if (initialFilter && VALID_MEDIA_TYPES.includes(initialFilter)) {
             currentMediaType = initialFilter;
-            if (filterType) filterType.value = initialFilter;
             // Update active button
             const activeBtn = mediaFilters?.querySelector(`[data-type="${initialFilter}"]`);
             if (activeBtn) {
                 mediaFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 activeBtn.classList.add('active');
             }
-        }
-
-        // Handle sort
-        const initialSort = urlParams.get('sort');
-        if (initialSort && sortBy.querySelector(`option[value="${initialSort}"]`)) {
-            sortBy.value = initialSort;
         }
 
         filterAndSortMedia(false); // Pass false to avoid redundant URL update on load
@@ -298,7 +266,6 @@
 
             document.getElementById('clear-filters-btn')?.addEventListener('click', () => {
                 currentMediaType = 'all';
-                if (filterType) filterType.value = 'all';
                 if (mediaFilters) {
                     mediaFilters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     const allBtn = mediaFilters.querySelector('[data-type="all"]');
@@ -724,16 +691,13 @@
     function updateURLParams() {
         const params = new URLSearchParams(window.location.search);
         const type = currentMediaType;
-        const sort = sortBy?.value || 'date-desc';
 
         if (type !== 'all') params.set('type', type);
         else params.delete('type');
 
-        if (sort !== 'date-desc') params.set('sort', sort);
-        else params.delete('sort');
-
-        // Remove old 'filter' and 'q' params if they exist
+        // Remove old 'filter', 'sort', and 'q' params if they exist
         params.delete('filter');
+        params.delete('sort');
         params.delete('q');
 
         const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
@@ -744,30 +708,14 @@
         if (shouldUpdateURL) updateURLParams();
 
         const typeFilter = currentMediaType;
-        const sortValue = sortBy?.value || 'date-desc';
 
         let filtered = typeFilter === 'all'
             ? [...mediaItems]
             : mediaItems.filter(item => item.mediaType === typeFilter);
 
         filtered.sort((a, b) => {
-            switch (sortValue) {
-                case 'date-asc':
-                    return (parseDateString(a.dateAdded || a.date) || new Date(0)).getTime() -
-                        (parseDateString(b.dateAdded || b.date) || new Date(0)).getTime();
-                case 'date-desc':
-                    return (parseDateString(b.dateAdded || b.date) || new Date(0)).getTime() -
-                        (parseDateString(a.dateAdded || a.date) || new Date(0)).getTime();
-                case 'newest-added':
-                    return (parseDateString(b.dateAdded) || new Date(0)).getTime() -
-                        (parseDateString(a.dateAdded) || new Date(0)).getTime();
-                case 'title-asc':
-                    return (a.title || '').localeCompare(b.title || '');
-                case 'title-desc':
-                    return (b.title || '').localeCompare(a.title || '');
-                default:
-                    return 0;
-            }
+            return (parseDateString(b.dateAdded || b.date) || new Date(0)).getTime() -
+                (parseDateString(a.dateAdded || a.date) || new Date(0)).getTime();
         });
 
         renderMediaCards(filtered);
@@ -793,14 +741,13 @@
             }
 
             countDisplay.textContent = countText;
-            document.querySelector('.media-filters')?.insertAdjacentElement('afterend', countDisplay);
+            document.querySelector('#media-filters')?.insertAdjacentElement('afterend', countDisplay);
         }
     }
 
     
 
 // Use passive event listeners for better scroll performance
-if (sortBy) sortBy.addEventListener('change', filterAndSortMedia, { passive: true });
 
 // Back to top functionality is handled by back-to-top.js
 

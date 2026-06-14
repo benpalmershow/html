@@ -1,3 +1,8 @@
+---
+title: Calcium Oxide Energy Storage
+category: policy
+---
+
 # CaO + H₂O → Ca(OH)₂ + Δ
 
 Calcium oxide (quicklime) reacts with water in a violently exothermic release — up to 1,155 kJ per kilogram of CaO. The reaction is simple, ancient, and reversible. Heat calcium hydroxide back above 512°C and you recover the oxide and the water. What you store is not electrons in lithium or pumped uphill in a reservoir. You store energy in a chemical bond that sits at ambient temperature indefinitely, loses nothing to self-discharge, and costs almost nothing per unit of stored heat.

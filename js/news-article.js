@@ -187,7 +187,7 @@ function renderEssayCards(articles, category = 'all') {
 }
 
 function renderEssayFilters(articles) {
-  const filtersEl = document.getElementById('essay-filters');
+  const filtersEl = document.getElementById('journal-filters');
   if (!filtersEl) return;
 
   const categories = ['all', ...new Set(articles.map(article => (article.category || 'uncategorized')).filter(Boolean))];

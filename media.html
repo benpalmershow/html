@@ -83,6 +83,7 @@
   <link rel="stylesheet" href="css/theme.css?v=20260429">
   <link rel="stylesheet" href="css/body.css?v=20260429">
   <link rel="stylesheet" href="css/nav.css?v=20260429">
+  <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
   <link rel="stylesheet" href="css/media.css?v=20260429">
   <link rel="stylesheet" href="css/media-overlay.css?v=20251220">
   <link rel="stylesheet" href="css/media-coachella.css?v=20260412">
@@ -213,18 +214,7 @@
         <div class="filter-bar-search" id="filterBarSearch">
           <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search media..." autocomplete="off">
         </div>
-      </div>
-
-      <div class="media-filters" style="display: none;">
-        <select id="filter-type" aria-label="Filter by media type">
-          <option value="all">All</option>
-        </select>
-        <label data-short="Sort:">
-          <select id="sort-by" aria-label="Sort media">
-            <option value="date-desc">Newest</option>
-            <option value="title-asc">A-Z</option>
-          </select>
-        </label>
+        <div class="filters" id="filter-buttons"></div>
       </div>
 
      <div class="media-cards" id="media-cards-container">

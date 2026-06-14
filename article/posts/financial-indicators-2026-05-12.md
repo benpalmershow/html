@@ -1,3 +1,8 @@
+---
+title: Financial Indicators Update - May 12, 2026
+category: policy
+---
+
 # Financial Indicators Update - May 12, 2026
 
 ## Latest Numbers

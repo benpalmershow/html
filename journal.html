@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doc Riter — Journal & Essays</title>
   <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
@@ -40,6 +41,8 @@
   <noscript><link rel="stylesheet" href="css/body.css?v=20260429"></noscript>
   <link rel="stylesheet" href="css/nav.css?v=20260429" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="css/nav.css?v=20260429"></noscript>
+  <link rel="stylesheet" href="css/filter-bar.css?v=20260614" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/filter-bar.css?v=20260614"></noscript>
   <link rel="stylesheet" href="css/article.css?v=20260321" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="css/article.css?v=20260321"></noscript>
   <link rel="stylesheet" href="css/news.css?v=20260429" media="print" onload="this.media='all'">
@@ -156,21 +159,16 @@
   <main id="main-content" tabindex="-1">
     <header class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
        <h1 class="page-title visually-hidden">Journal — Docs &amp; Essays</h1>
-       <div class="source-toggle" id="journal-filters" aria-label="Filter by source" role="group">
-         <button type="button" class="source-toggle-btn active" data-source="journal">Docs</button>
-         <button type="button" class="source-toggle-btn" data-source="news">Essays</button>
-       </div>
      </header>
 
-     <div class="filter-bar" id="journal-category-filters" aria-label="Filter docs and essays">
-       <button id="searchToggle" class="search-toggle" aria-label="Search docs and essays" title="Search" type="button">
-         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+     <div class="filter-bar" id="journal-filters" aria-label="Filter docs and essays">
+       <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
        </button>
        <div class="filter-bar-search" id="filterBarSearch">
-         <label for="indicatorSearch" class="visually-hidden">Search docs and essays</label>
          <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
        </div>
-       <div class="filters" id="journal-filters-btns"></div>
+       <div class="filters" id="filter-buttons"></div>
      </div>
     <div class="content">
       <!-- Journal entries feed -->

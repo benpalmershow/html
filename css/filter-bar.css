@@ -1,0 +1,186 @@
+/* ========================================
+   FILTER BAR - Standardized across all pages
+   ======================================== */
+
+.filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+    padding: 0.6rem var(--content-padding);
+    margin: 0 calc(-1 * var(--content-padding)) 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100vw;
+    max-width: 100vw;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-bar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filter-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 5px;
+    background: linear-gradient(to bottom, var(--bg-primary), transparent);
+    pointer-events: none;
+}
+
+/* Search Toggle Button */
+.search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.search-toggle:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.search-toggle svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Filter Buttons Container */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    min-width: min-content;
+}
+
+/* Filter Button */
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border-color);
+    border-radius: 0.3rem;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.filter-btn .filter-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.filter-btn .filter-text {
+    display: none;
+}
+
+.filter-btn.active .filter-text {
+    display: inline;
+}
+
+.filter-btn:hover {
+    background: var(--bg-tertiary, #e8e8e8);
+    transform: translateY(-1px);
+    opacity: 1;
+}
+
+.filter-btn.active {
+    background: var(--logo-teal, #2c5f5a);
+    color: white;
+    border-color: var(--logo-teal, #2c5f5a);
+}
+
+/* Search Input */
+.filter-bar-search {
+    display: none;
+    position: relative;
+    flex: 1 1 auto;
+    max-width: 280px;
+}
+
+.filter-bar-search .indicator-search {
+    width: 100%;
+    max-width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease;
+}
+
+.filter-bar-search .indicator-search:focus {
+    border-color: var(--logo-teal);
+    outline: none;
+}
+
+.filter-bar-search .indicator-search::placeholder {
+    color: var(--text-muted);
+}
+
+.filter-bar.search-open .search-toggle {
+    display: none;
+}
+
+.filter-bar.search-open .filter-bar-search {
+    display: block;
+    animation: searchIn 0.2s ease-out;
+}
+
+@keyframes searchIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Financials-specific filter button colors */
+.filters .filter-btn.active[data-category*="employment"] { background: var(--color-category-employment); color: white; border-color: var(--color-category-employment); }
+.filters .filter-btn.active[data-category*="housing"] { background: var(--color-category-housing); color: white; border-color: var(--color-category-housing); }
+.filters .filter-btn.active[data-category*="business"] { background: var(--color-category-business); color: white; border-color: var(--color-category-business); }
+.filters .filter-btn.active[data-category*="consumer"] { background: var(--color-category-consumer); color: white; border-color: var(--color-category-consumer); }
+.filters .filter-btn.active[data-category*="trade"] { background: var(--color-category-trade); color: white; border-color: var(--color-category-trade); }
+.filters .filter-btn.active[data-category="government"] { background: var(--color-category-government); color: white; border-color: var(--color-category-government); }
+.filters .filter-btn.active[data-category*="commodities"] { background: var(--color-category-economic); color: white; border-color: var(--color-category-economic); }
+.filters .filter-btn.active[data-category="healthcare"] { background: var(--color-category-healthcare); color: white; border-color: var(--color-category-healthcare); }
+.filters .filter-btn.active[data-category*="prediction"] { background: var(--color-category-prediction); color: white; border-color: var(--color-category-prediction); }
+.filters .filter-btn.active[data-category*="financial"] { background: var(--color-category-economic); color: white; border-color: var(--color-category-economic); }

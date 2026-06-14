@@ -363,7 +363,9 @@
       "group": "GROUP_E",
       "matchDay": 1,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Jalal Jayed"
+      ],
       "source": "football-data.org",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Curaçao (GROUP_E)"
@@ -4075,5 +4077,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-14T14:04:32.771426Z"
+  "lastUpdated": "2026-06-14T16:05:47.860067Z"
 }

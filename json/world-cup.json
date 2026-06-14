@@ -229,9 +229,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-13",
       "utcDate": "2026-06-13T22:00:00Z",
@@ -255,8 +255,8 @@
         "name": "Haiti",
         "flag": "🇭🇹",
         "crest": "https://crests.football-data.org/haiti.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -265,14 +265,14 @@
         "name": "Scotland",
         "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
         "crest": "https://crests.football-data.org/814.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T01:00:00Z",
@@ -280,7 +280,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "matchDay": 1,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Mustapha Ghorbal"
       ],
@@ -296,7 +296,7 @@
         "name": "Australia",
         "flag": "🇦🇺",
         "crest": "https://crests.football-data.org/779.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -306,13 +306,13 @@
         "name": "Turkey",
         "flag": "🇹🇷",
         "crest": "https://crests.football-data.org/803.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
-      "statusRaw": "TIMED",
+      "statusRaw": "IN_PLAY",
       "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-14",
@@ -321,7 +321,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
       "matchDay": 1,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Jesús Valenzuela"
       ],
@@ -430,9 +430,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "status": "upcoming",
+      "statusRaw": "SCHEDULED",
+      "time": "23:00",
       "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T23:00:00Z",
@@ -4075,5 +4075,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-13T23:40:49.463748Z"
+  "lastUpdated": "2026-06-14T04:10:06.973007Z"
 }

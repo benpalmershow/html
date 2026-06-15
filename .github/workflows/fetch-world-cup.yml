@@ -48,13 +48,14 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git fetch origin main
+          git reset --hard origin/main
           git add json/world-cup.json
           if git diff --staged --quiet; then
             echo "No score changes to commit"
             exit 0
           fi
           git commit -m "chore: update World Cup scores [skip ci]"
-          git pull --rebase origin main
           git push
 
       - name: Upload logs on failure

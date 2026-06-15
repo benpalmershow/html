@@ -5,11 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weekly Update - Howdy, Stranger</title>
-  <link rel="stylesheet" href="css/theme.css?v=20260429">
-  <link rel="stylesheet" href="css/body.css?v=20260429">
-  <link rel="stylesheet" href="css/nav.css?v=20260429">
-  <link rel="stylesheet" href="css/one-pager.css?v=20260308">
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
+  <link rel="stylesheet" href="css/theme.css?v=20260614">
+  <link rel="stylesheet" href="css/body.css?v=20260614">
+  <link rel="stylesheet" href="css/nav.css?v=20260614">
+  <link rel="stylesheet" href="css/one-pager.css?v=20260614">
 </head>
 
 <body>
@@ -41,7 +40,7 @@
       
       <article class="section-card">
         <h2>
-          <img src="images/announcements.webp" alt="" class="section-link-image">
+          <img src="images/announcements.webp" alt="Docs section icon" class="section-link-image" loading="lazy">
           <a href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Journal" title="Open Journal">Latest Docs</a>
         </h2>
         <ul id="latest-journal" class="compact-list"></ul>
@@ -49,7 +48,7 @@
 
       <article class="section-card">
         <h2>
-          <img src="images/media-60x60.webp" alt="" class="section-link-image" width="24" height="24">
+          <img src="images/media-60x60.webp" alt="Media section icon" class="section-link-image" width="24" height="24" loading="lazy">
           <a href="media.html" target="_blank" rel="noopener noreferrer" aria-label="Open Media" title="Open Media">Latest Media</a>
         </h2>
         <ul id="latest-media" class="compact-list"></ul>
@@ -57,7 +56,7 @@
 
       <article class="section-card">
         <h2>
-          <img src="images/read.webp" alt="" class="section-link-image" width="24" height="24">
+          <img src="images/read.webp" alt="Numbers section icon" class="section-link-image" width="24" height="24" loading="lazy">
           <a href="financials.html?filter=latest" target="_blank" rel="noopener noreferrer" aria-label="Open Latest Updates" title="Open Latest Updates">Latest Numbers</a>
         </h2>
         <ul id="latest-financials" class="compact-list"></ul>
@@ -69,23 +68,23 @@
         <p class="footer-title">Follow Howdy, Stranger</p>
         <div class="footer-social-list">
           <a href="https://x.com/DocRiter" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="header-social-item">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" width="14" height="14">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" width="14" height="14" loading="lazy">
             <span class="header-social-handle">@DocRiter</span>
           </a>
           <a href="https://www.youtube.com/@BenPalmerShow" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="header-social-item">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="14" height="14">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" width="14" height="14" loading="lazy">
             <span class="header-social-handle">@BenPalmerShow</span>
           </a>
           <a href="https://benpalmershow.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack" class="header-social-item">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack" width="14" height="14">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/substack.svg" alt="Substack" width="14" height="14" loading="lazy">
             <span class="header-social-handle">benpalmershow.substack.com</span>
           </a>
           <a href="https://open.spotify.com/show/5re4DaXRuEkKHEYr3Mc6tJ" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="header-social-item">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify" width="14" height="14">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify" width="14" height="14" loading="lazy">
             <span class="header-social-handle">Doc Riter</span>
           </a>
           <a href="https://podcasts.apple.com/us/podcast/the-ben-palmer-show/id1529618289" target="_blank" rel="noopener noreferrer" aria-label="Apple Podcasts" class="header-social-item">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" alt="Apple Podcasts" width="14" height="14">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applepodcasts.svg" alt="Apple Podcasts" width="14" height="14" loading="lazy">
             <span class="header-social-handle">Doc Riter</span>
           </a>
         </div>
@@ -99,7 +98,7 @@
             width="128"
             height="128">
           <span class="footer-qr-logo-badge" aria-hidden="true">
-            <img src="images/announcements.webp" alt="" class="footer-qr-logo" width="22" height="22">
+            <img src="images/announcements.webp" alt="Howdy, Stranger logo" class="footer-qr-logo" width="22" height="22">
           </span>
         </span>
       </a>
@@ -107,18 +106,32 @@
 
   </main>
 
-    <script src="js/services.js"></script>
+    <script src="js/services.js" defer></script>
+    <script src="js/html-utils.js" defer></script>
+    <script src="js/pages-config.js" defer></script>
     <script src="js/nav.js" defer></script>
     <script src="js/swipe-nav.js" defer></script>
-    <script src="js/html-utils.js" defer></script>
     <script src="js/utils.js" defer></script>
     <script src="js/one-pager.js" defer></script>
     <script src="js/search.js" defer></script>
-    <script>
-     document.addEventListener('DOMContentLoaded', function () {
-       if (window.lucide) window.lucide.createIcons();
-     });
-   </script>
+
+   <!-- Load Lucide icons on-demand after page load -->
+  <script>
+    (function () {
+      const loadLucide = () => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
+        script.defer = true;
+        script.onload = () => window.lucide?.createIcons();
+        document.head.appendChild(script);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        setTimeout(loadLucide, 100);
+      }
+    })();
+  </script>
 
  </body>
 </html>

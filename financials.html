@@ -40,13 +40,13 @@
   </script>
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/theme.css?v=20260429">
-  <link rel="stylesheet" href="css/body.css?v=20260429">
-  <link rel="stylesheet" href="css/nav.css?v=20260429">
+  <link rel="stylesheet" href="css/theme.css?v=20260614">
+  <link rel="stylesheet" href="css/body.css?v=20260614">
+  <link rel="stylesheet" href="css/nav.css?v=20260614">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
-  <link rel="stylesheet" href="css/financials.css?v=20260429">
-  <link rel="stylesheet" href="css/worldcup.css?v=20260613">
-  <link rel="stylesheet" href="css/page-branding.css?v=20260510">
+  <link rel="stylesheet" href="css/financials.css?v=20260614">
+  <link rel="stylesheet" href="css/worldcup.css?v=20260614">
+  <link rel="stylesheet" href="css/page-branding.css?v=20260614">
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/services.js" as="script">
@@ -108,9 +108,6 @@
         "https://e.infogram.com/js/dist/embed-loader-min.js");
     });
   </script>
-
-  <!-- Lucide Icons -->
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
 
    <!-- Performance monitoring -->
    <script src="js/speed-insights.js" defer></script>
@@ -215,8 +212,11 @@
   </script>
 
   <!-- Financials Module Scripts (loaded in dependency order) -->
-  <script src="js/html-utils.js"></script>
-  <script src="js/services.js"></script>
+  <script src="js/services.js" defer></script>
+  <script src="js/html-utils.js" defer></script>
+  <script src="js/pages-config.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/swipe-nav.js" defer></script>
   <script src="js/utils.js?v=20260222" defer></script>
   <script src="js/indicators.js?v=20260222" defer></script>
   <script src="js/charts.js" defer></script>
@@ -225,12 +225,25 @@
   <script src="js/13f-holdings.js" defer></script>
   <script src="js/financials.js" defer></script>
   <script src="js/world-cup.js" defer></script>
+  <script src="js/countdown.js" defer></script>
 
-<!-- Navigation script -->
-   <script src="js/pages-config.js" defer></script>
-   <script src="js/nav.js" defer></script>
-   <script src="js/swipe-nav.js" defer></script>
-   <script src="js/countdown.js" defer></script>
+   <!-- Load Lucide icons on-demand after page load -->
+  <script>
+    (function () {
+      const loadLucide = () => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
+        script.defer = true;
+        script.onload = () => window.lucide?.createIcons();
+        document.head.appendChild(script);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        setTimeout(loadLucide, 100);
+      }
+    })();
+  </script>
 
 <!-- Chart Modal Popup -->
     <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle">

@@ -63,15 +63,15 @@
     rel="stylesheet">
 
   <!-- Stylesheets - deferred load for non-critical CSS -->
-  <link rel="preload" href="css/theme.css?v=20260429" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/body.css?v=20260429" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/nav.css?v=20260429" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="css/one-pager.css?v=20260308" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/theme.css?v=20260614" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/body.css?v=20260614" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20260614" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/one-pager.css?v=20260614" as="style" onload="this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="css/theme.css?v=20260429">
-    <link rel="stylesheet" href="css/body.css?v=20260429">
-    <link rel="stylesheet" href="css/nav.css?v=20260429">
-    <link rel="stylesheet" href="css/one-pager.css?v=20260308">
+    <link rel="stylesheet" href="css/theme.css?v=20260614">
+    <link rel="stylesheet" href="css/body.css?v=20260614">
+    <link rel="stylesheet" href="css/nav.css?v=20260614">
+    <link rel="stylesheet" href="css/one-pager.css?v=20260614">
   </noscript>
   
   <!-- Font Awesome for platform icons - deferred load -->
@@ -139,21 +139,21 @@
 
    <section class="updates-grid">
       <article class="section-card section-docs" data-section-label="Docs">
-        <a href="journal.html" class="section-label"><img src="images/announcements-60x60.webp" alt="" class="section-icon">Docs</a>
+        <a href="journal.html" class="section-label"><img src="images/announcements-60x60.webp" alt="Docs section icon" class="section-icon" loading="lazy">Docs</a>
         <div class="compact-list-wrap">
           <ul id="latest-journal" class="compact-list"></ul>
         </div>
       </article>
 
       <article class="section-card section-media" data-section-label="Media">
-        <a href="media.html" class="section-label"><img src="images/media-60x60.webp" alt="" class="section-icon">Media</a>
+        <a href="media.html" class="section-label"><img src="images/media-60x60.webp" alt="Media section icon" class="section-icon" loading="lazy">Media</a>
         <div class="compact-list-wrap">
           <ul id="latest-media" class="compact-list"></ul>
         </div>
       </article>
 
       <article class="section-card section-numbers" data-section-label="Numbers">
-        <a href="financials.html" class="section-label"><img src="images/read-60x60.webp" alt="" class="section-icon">Numbers</a>
+        <a href="financials.html" class="section-label"><img src="images/read-60x60.webp" alt="Numbers section icon" class="section-icon" loading="lazy">Numbers</a>
         <div class="compact-list-wrap">
           <ul id="latest-financials" class="compact-list"></ul>
         </div>
@@ -176,10 +176,12 @@
     });
   </script>
 
+  <script src="js/services.js" defer></script>
   <script src="js/html-utils.js" defer></script>
-  <script src="js/utils.js" defer></script>
+  <script src="js/pages-config.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/swipe-nav.js" defer></script>
+  <script src="js/utils.js" defer></script>
   <script src="js/one-pager.js" defer></script>
   <script src="js/bfcache-compat.js" defer></script>
   <script src="js/search.js" defer></script>

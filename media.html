@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <!-- Load services and HtmlUtils first - required for data fetching and component loading -->
-  <script src="js/services.js"></script>
-  <script src="js/html-utils.js"></script>
+  <script src="js/services.js" defer></script>
+  <script src="js/html-utils.js" defer></script>
 
   <!-- Common Meta Tags Component -->
   <script>
@@ -65,9 +65,9 @@
   </script>
 
   <!-- Preload CRITICAL resources only -->
-  <link rel="preload" href="css/body.css?v=20260429" as="style">
-  <link rel="preload" href="css/nav.css?v=20260429" as="style">
-  <link rel="preload" href="css/media.css?v=20260429" as="style">
+  <link rel="preload" href="css/body.css?v=20260614" as="style">
+  <link rel="preload" href="css/nav.css?v=20260614" as="style">
+  <link rel="preload" href="css/media.css?v=20260614" as="style">
 
   <!-- Preload Font Awesome fonts -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2"
@@ -80,14 +80,14 @@
   <link rel="preload" href="js/media.js" as="script">
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/theme.css?v=20260429">
-  <link rel="stylesheet" href="css/body.css?v=20260429">
-  <link rel="stylesheet" href="css/nav.css?v=20260429">
+  <link rel="stylesheet" href="css/theme.css?v=20260614">
+  <link rel="stylesheet" href="css/body.css?v=20260614">
+  <link rel="stylesheet" href="css/nav.css?v=20260614">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
-  <link rel="stylesheet" href="css/media.css?v=20260429">
-  <link rel="stylesheet" href="css/media-overlay.css?v=20251220">
-  <link rel="stylesheet" href="css/media-coachella.css?v=20260412">
-  <link rel="stylesheet" href="css/page-branding.css?v=20260510">
+  <link rel="stylesheet" href="css/media.css?v=20260614">
+  <link rel="stylesheet" href="css/media-overlay.css?v=20260614">
+  <link rel="stylesheet" href="css/media-coachella.css?v=20260614">
+  <link rel="stylesheet" href="css/page-branding.css?v=20260614">
 
   <!-- Font Awesome - load async -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -273,11 +273,12 @@
   </script>
 
 <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
+   <script src="js/services.js" defer></script>
+   <script src="js/html-utils.js" defer></script>
    <script src="js/pages-config.js" defer></script>
-    <script src="js/nav.js" defer></script>
-    <script src="js/swipe-nav.js" defer></script>
-
-   <script src="js/media.js"></script>
+   <script src="js/nav.js" defer></script>
+   <script src="js/swipe-nav.js" defer></script>
+   <script src="js/media.js" defer></script>
    <script src="js/search.js" defer></script>
 
    <!-- Load Lucide icons on-demand after page load -->

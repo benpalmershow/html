@@ -43,12 +43,12 @@
   <noscript><link rel="stylesheet" href="css/nav.css?v=20260429"></noscript>
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="css/filter-bar.css?v=20260614"></noscript>
-  <link rel="stylesheet" href="css/article.css?v=20260321" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/article.css?v=20260321"></noscript>
-  <link rel="stylesheet" href="css/news.css?v=20260429" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/news.css?v=20260429"></noscript>
-  <link rel="stylesheet" href="css/journal-tweets.css?v=20260321" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/journal-tweets.css?v=20260321"></noscript>
+  <link rel="stylesheet" href="css/article.css?v=20260614" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/article.css?v=20260614"></noscript>
+  <link rel="stylesheet" href="css/news.css?v=20260614" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/news.css?v=20260614"></noscript>
+  <link rel="stylesheet" href="css/journal-tweets.css?v=20260614" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/journal-tweets.css?v=20260614"></noscript>
   <link rel="stylesheet" href="css/page-branding.css?v=20260510" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="css/page-branding.css?v=20260510"></noscript>
 
@@ -60,9 +60,6 @@
 
    <!-- Preconnect to external domains -->
    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-   <!-- Lucide Icons -->
-   <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js" defer></script>
 
    <title>Doc Riter — Journal, Docs & Essays | Howdy, Stranger</title>
 
@@ -136,14 +133,32 @@
   </script>
 
   <!-- Page-specific scripts -->
-  <script src="js/pages-config.js" defer></script>
-  <script src="js/services.js"></script>
+  <script src="js/services.js" defer></script>
   <script src="js/html-utils.js" defer></script>
+  <script src="js/pages-config.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/swipe-nav.js" defer></script>
   <script src="js/news-article.js" defer></script>
   <script src="js/journal-feed.js" defer></script>
   <script src="js/search.js" defer></script>
+
+  <!-- Load Lucide icons on-demand after page load -->
+  <script>
+    (function () {
+      const loadLucide = () => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
+        script.defer = true;
+        script.onload = () => window.lucide?.createIcons();
+        document.head.appendChild(script);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadLucide, { timeout: 3000 });
+      } else {
+        setTimeout(loadLucide, 100);
+      }
+    })();
+  </script>
 
   <!-- Back to top button -->
   <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>

@@ -1,32 +1,10 @@
-.container { width: 100%; max-width: var(--content-wide); margin: 0 auto; padding: 0 var(--content-padding); }
-
-.header { text-align: center; color: var(--text-primary); margin-bottom: 40px; padding-top: 20px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) }
-
-.header h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 1px 1px 2px var(--shadow-color); color: var(--logo-teal) }
-
 .last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin: 2px 0 0; opacity: 0.75; }
-
-.collapsible-section { margin-bottom: 1rem; overflow: hidden }
-
-.collapsible-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(0, 0, 0, 0.02) 100%); border: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); transition: background-color 0.2s ease, color 0.2s ease; position: relative }
-
-.collapsible-header:hover { background: var(--color-gray-200); color: var(--logo-teal) }
-
-.collapsible-header :is(h1, h2) { font-size: 1.8rem; color: var(--accent-primary); margin: 0; line-height: 1.2 }
-
-.collapse-toggle { font-size: 1.5rem; font-weight: bold; color: var(--logo-teal); transition: transform 0.3s ease }
-
-.collapse-toggle.collapsed { transform: rotate(180deg) }
-
-.collapsible-content { background: var(--bg-primary); padding: 1rem; border: none; transition: max-height 0.4s ease, opacity 0.4s ease; overflow: visible; }
 
 .indicator.expanded .indicator-agency, .indicator.expanded .indicator-content { margin-bottom: 6px; }
 
 .indicator-content { display: flex; flex-direction: column; gap: 2px; overflow: visible; position: relative; z-index: 1; }
 
 .data-rows-container { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-
-.collapsible-content.collapsed { max-height: 0; padding: 0 1rem; opacity: 0; }
 
 /* PAGE HEADER */
 .page-header.page-header-branded { flex-direction: column; gap: 0.15rem; }
@@ -289,11 +267,11 @@
 
 
 /* RESPONSIVE */
-@media (max-width: 768px) { .container { padding: 0 var(--mobile-padding); } .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
+@media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
-@media (max-width: 480px) { .header h1 { font-size: 1.75rem; } .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .collapsible-header :is(h1, h2) { font-size: 1.3rem; } .collapsible-header { padding: 0.5rem 0.75rem; } .collapse-toggle { font-size: 1.2rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: wrap; gap: 6px; } .change-metric-btn { font-size: 0.7rem; } .change-metric-title { font-size: 0.55rem; } .change-metric-value { font-size: 0.75rem; } }
+@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: wrap; gap: 6px; } .change-metric-btn { font-size: 0.7rem; } .change-metric-title { font-size: 0.55rem; } .change-metric-value { font-size: 0.75rem; } }
 
-@media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } .collapsible-header :is(h1, h2) { font-size: 1.1rem; } }
+@media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } }
 
 /* CHART MODAL */
 .chart-modal { display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.7); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }

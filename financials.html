@@ -122,16 +122,13 @@
   <nav class="nav-links" id="main-nav"></nav>
  
 
-   <main class="container">
+   <main id="main-content" tabindex="-1">
      <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
       <h1 class="page-title" aria-label="Page title">Numbers</h1>
       <div id="lastUpdated" class="last-updated"></div>
     </div>
 
-<div class="collapsible-container">
- 
-         <div class="collapsible-content" id="interactive-dashboard-content">
-<div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
+     <div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
             <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </button>
@@ -141,6 +138,7 @@
             <div class="filters" id="filter-buttons"></div>
           </div>
 
+        <div class="content">
         <div class="categories" id="categories">
           <!-- Indicator categories rendered here by renderDashboard -->
           <div id="indicator-categories"></div>
@@ -164,10 +162,7 @@
             <div class="indicators-grid" id="worldCupGrid"></div>
           </div>
         </div>
-
-
       </div>
-    </div>
   </main>
 
   <!-- Footer Component -->

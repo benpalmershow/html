@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doc Riter — Journal & Essays</title>
+  <title>Docs</title>
   <!-- Page-specific Meta Tags -->
   <meta name="description"
     content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
@@ -51,87 +51,7 @@
   <noscript><link rel="stylesheet" href="css/journal-tweets.css?v=20260321"></noscript>
   <link rel="stylesheet" href="css/page-branding.css?v=20260510" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="css/page-branding.css?v=20260510"></noscript>
-  <style>
-    /* Source toggle - matches h1.page-title */
-    .source-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-xs);
-      font-size: 0.85rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
 
-    .source-toggle-btn {
-      padding: 0.75rem 0.5rem;
-      min-width: 48px;
-      min-height: 48px;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font: inherit;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: color 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .source-toggle-btn:hover {
-      color: var(--text-secondary);
-    }
-
-    .source-toggle-btn.active {
-      color: var(--text-primary);
-    }
-
-    .source-toggle-btn + .source-toggle-btn::before {
-      content: '|';
-      margin-right: var(--spacing-xs);
-      color: var(--text-muted);
-      opacity: 0.4;
-    }
-
-    /* Search toggle tap target */
-    .search-toggle {
-      min-width: 48px;
-      min-height: 48px;
-    }
-
-    /* Visually hidden but accessible */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* Utility hidden class to avoid inline styles */
-    .hidden { display: none !important; }
-
-    /* CLS: reserve space for dynamically loaded journal feed */
-    #journal-feed:empty {
-      min-height: 400px;
-    }
-
-    /* CLS: reserve space for images in entry content */
-    .entry-content img {
-      aspect-ratio: 16 / 9;
-    }
-  </style>
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/nav.js" as="script">
@@ -158,7 +78,7 @@
 
   <main id="main-content" tabindex="-1">
     <header class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
-       <h1 class="page-title visually-hidden">Journal — Docs &amp; Essays</h1>
+       <h1 class="page-title" aria-label="Page title">Docs</h1>
      </header>
 
      <div class="filter-bar" id="journal-filters" aria-label="Filter docs and essays">

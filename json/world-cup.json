@@ -38,7 +38,7 @@
       "referees": [
         "Wilton Sampaio"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Mexico and South Africa (GROUP_A)"
     },
@@ -79,7 +79,7 @@
       "referees": [
         "Amin Omar"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between South Korea and Czechia (GROUP_A)"
     },
@@ -120,7 +120,7 @@
       "referees": [
         "Facundo Tello"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Canada and Bosnia-Herzegovina (GROUP_B)"
     },
@@ -161,7 +161,7 @@
       "referees": [
         "Danny Makkelie"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between United States and Paraguay (GROUP_D)"
     },
@@ -202,7 +202,7 @@
       "referees": [
         "Said Martinez"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Qatar and Switzerland (GROUP_B)"
     },
@@ -243,7 +243,7 @@
       "referees": [
         "Slavko Vinčič"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Morocco (GROUP_C)"
     },
@@ -284,7 +284,7 @@
       "referees": [
         "Mustapha Ghorbal"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Haiti and Scotland (GROUP_C)"
     },
@@ -325,7 +325,7 @@
       "referees": [
         "Jesús Valenzuela"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Australia and Turkey (GROUP_D)"
     },
@@ -366,7 +366,7 @@
       "referees": [
         "Jalal Jayed"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Curaçao (GROUP_E)"
     },
@@ -407,7 +407,7 @@
       "referees": [
         "Ismail Elfath"
       ],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Japan (GROUP_F)"
     },
@@ -419,8 +419,8 @@
         "name": "Ivory Coast",
         "flag": "🇨🇮",
         "crest": "https://crests.football-data.org/787.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -429,14 +429,14 @@
         "name": "Ecuador",
         "flag": "🇪🇨",
         "crest": "https://crests.football-data.org/791.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-14",
       "utcDate": "2026-06-14T23:00:00Z",
@@ -444,9 +444,11 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 1,
-      "winner": null,
-      "referees": [],
-      "source": "football-data.org",
+      "winner": "HOME_TEAM",
+      "referees": [
+        "François Letexier"
+      ],
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Ivory Coast and Ecuador (GROUP_E)"
     },
@@ -458,8 +460,8 @@
         "name": "Sweden",
         "flag": "🇸🇪",
         "crest": "https://crests.football-data.org/792.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -468,14 +470,14 @@
         "name": "Tunisia",
         "flag": "🇹🇳",
         "crest": "https://crests.football-data.org/tunisia.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
-      "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "statusRaw": "PAUSED",
+      "time": "2-1 HT",
       "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T02:00:00Z",
@@ -483,9 +485,11 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "matchDay": 1,
-      "winner": null,
-      "referees": [],
-      "source": "football-data.org",
+      "winner": "HOME_TEAM",
+      "referees": [
+        "Yael Falcón"
+      ],
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Sweden and Tunisia (GROUP_F)"
     },
@@ -512,9 +516,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "16:00",
       "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T16:00:00Z",
@@ -524,7 +528,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Spain and Cape Verde Islands (GROUP_H)"
     },
@@ -551,9 +555,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T19:00:00Z",
@@ -563,7 +567,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Belgium and Egypt (GROUP_G)"
     },
@@ -590,9 +594,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-15",
       "utcDate": "2026-06-15T22:00:00Z",
@@ -602,7 +606,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Saudi Arabia and Uruguay (GROUP_H)"
     },
@@ -629,9 +633,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T01:00:00Z",
@@ -641,7 +645,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Iran and New Zealand (GROUP_G)"
     },
@@ -668,9 +672,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T19:00:00Z",
@@ -680,7 +684,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between France and Senegal (GROUP_I)"
     },
@@ -707,9 +711,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T22:00:00Z",
@@ -719,7 +723,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Iraq and Norway (GROUP_I)"
     },
@@ -746,9 +750,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T01:00:00Z",
@@ -758,7 +762,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Algeria (GROUP_J)"
     },
@@ -785,9 +789,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "04:00",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T04:00:00Z",
@@ -797,7 +801,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Austria and Jordan (GROUP_J)"
     },
@@ -824,9 +828,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T17:00:00Z",
@@ -836,7 +840,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Portugal and Congo DR (GROUP_K)"
     },
@@ -863,9 +867,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T20:00:00Z",
@@ -875,7 +879,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between England and Croatia (GROUP_L)"
     },
@@ -902,9 +906,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:00",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T23:00:00Z",
@@ -914,7 +918,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Ghana and Panama (GROUP_L)"
     },
@@ -941,9 +945,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "02:00",
       "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T02:00:00Z",
@@ -953,7 +957,7 @@
       "matchDay": 1,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Uzbekistan and Colombia (GROUP_K)"
     },
@@ -980,9 +984,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "16:00",
       "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T16:00:00Z",
@@ -992,7 +996,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and South Africa (GROUP_A)"
     },
@@ -1019,9 +1023,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T19:00:00Z",
@@ -1031,7 +1035,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Bosnia-Herzegovina (GROUP_B)"
     },
@@ -1058,9 +1062,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T22:00:00Z",
@@ -1070,7 +1074,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Canada and Qatar (GROUP_B)"
     },
@@ -1097,9 +1101,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T01:00:00Z",
@@ -1109,7 +1113,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Mexico and South Korea (GROUP_A)"
     },
@@ -1136,9 +1140,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T19:00:00Z",
@@ -1148,7 +1152,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between United States and Australia (GROUP_D)"
     },
@@ -1175,9 +1179,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T22:00:00Z",
@@ -1187,7 +1191,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Scotland and Morocco (GROUP_C)"
     },
@@ -1214,9 +1218,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:30",
       "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T00:30:00Z",
@@ -1226,7 +1230,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Haiti (GROUP_C)"
     },
@@ -1253,9 +1257,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "03:00",
       "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T03:00:00Z",
@@ -1265,7 +1269,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Turkey and Paraguay (GROUP_D)"
     },
@@ -1292,9 +1296,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T17:00:00Z",
@@ -1304,7 +1308,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Sweden (GROUP_F)"
     },
@@ -1331,9 +1335,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T20:00:00Z",
@@ -1343,7 +1347,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Germany and Ivory Coast (GROUP_E)"
     },
@@ -1370,9 +1374,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T00:00:00Z",
@@ -1382,7 +1386,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Ecuador and Curaçao (GROUP_E)"
     },
@@ -1409,9 +1413,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "04:00",
       "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T04:00:00Z",
@@ -1421,7 +1425,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Tunisia and Japan (GROUP_F)"
     },
@@ -1448,9 +1452,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "16:00",
       "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T16:00:00Z",
@@ -1460,7 +1464,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Spain and Saudi Arabia (GROUP_H)"
     },
@@ -1487,9 +1491,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T19:00:00Z",
@@ -1499,7 +1503,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Belgium and Iran (GROUP_G)"
     },
@@ -1526,9 +1530,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T22:00:00Z",
@@ -1538,7 +1542,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Uruguay and Cape Verde Islands (GROUP_H)"
     },
@@ -1565,9 +1569,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T01:00:00Z",
@@ -1577,7 +1581,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Egypt (GROUP_G)"
     },
@@ -1604,9 +1608,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T17:00:00Z",
@@ -1616,7 +1620,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Austria (GROUP_J)"
     },
@@ -1643,9 +1647,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T21:00:00Z",
@@ -1655,7 +1659,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between France and Iraq (GROUP_I)"
     },
@@ -1682,9 +1686,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T00:00:00Z",
@@ -1694,7 +1698,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Norway and Senegal (GROUP_I)"
     },
@@ -1721,9 +1725,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "03:00",
       "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T03:00:00Z",
@@ -1733,7 +1737,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Jordan and Algeria (GROUP_J)"
     },
@@ -1760,9 +1764,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T17:00:00Z",
@@ -1772,7 +1776,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Portugal and Uzbekistan (GROUP_K)"
     },
@@ -1799,9 +1803,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T20:00:00Z",
@@ -1811,7 +1815,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between England and Ghana (GROUP_L)"
     },
@@ -1838,9 +1842,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:00",
       "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T23:00:00Z",
@@ -1850,7 +1854,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Panama and Croatia (GROUP_L)"
     },
@@ -1877,9 +1881,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "02:00",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T02:00:00Z",
@@ -1889,7 +1893,7 @@
       "matchDay": 2,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Colombia and Congo DR (GROUP_K)"
     },
@@ -1916,9 +1920,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T19:00:00Z",
@@ -1928,7 +1932,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Canada (GROUP_B)"
     },
@@ -1955,9 +1959,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T19:00:00Z",
@@ -1967,7 +1971,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Bosnia-Herzegovina and Qatar (GROUP_B)"
     },
@@ -1994,9 +1998,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T22:00:00Z",
@@ -2006,7 +2010,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Morocco and Haiti (GROUP_C)"
     },
@@ -2033,9 +2037,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T22:00:00Z",
@@ -2045,7 +2049,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Scotland and Brazil (GROUP_C)"
     },
@@ -2072,9 +2076,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T01:00:00Z",
@@ -2084,7 +2088,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and Mexico (GROUP_A)"
     },
@@ -2111,9 +2115,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T01:00:00Z",
@@ -2123,7 +2127,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between South Africa and South Korea (GROUP_A)"
     },
@@ -2150,9 +2154,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
@@ -2162,7 +2166,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Ecuador and Germany (GROUP_E)"
     },
@@ -2189,9 +2193,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
@@ -2201,7 +2205,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Curaçao and Ivory Coast (GROUP_E)"
     },
@@ -2228,9 +2232,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:00",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T23:00:00Z",
@@ -2240,7 +2244,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Tunisia and Netherlands (GROUP_F)"
     },
@@ -2267,9 +2271,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:00",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T23:00:00Z",
@@ -2279,7 +2283,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Japan and Sweden (GROUP_F)"
     },
@@ -2306,9 +2310,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "02:00",
       "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T02:00:00Z",
@@ -2318,7 +2322,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Turkey and United States (GROUP_D)"
     },
@@ -2345,9 +2349,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "02:00",
       "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T02:00:00Z",
@@ -2357,7 +2361,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Paraguay and Australia (GROUP_D)"
     },
@@ -2384,9 +2388,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T19:00:00Z",
@@ -2396,7 +2400,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Norway and France (GROUP_I)"
     },
@@ -2423,9 +2427,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T19:00:00Z",
@@ -2435,7 +2439,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Senegal and Iraq (GROUP_I)"
     },
@@ -2462,9 +2466,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
@@ -2474,7 +2478,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Uruguay and Spain (GROUP_H)"
     },
@@ -2501,9 +2505,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
@@ -2513,7 +2517,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Cape Verde Islands and Saudi Arabia (GROUP_H)"
     },
@@ -2540,9 +2544,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "03:00",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T03:00:00Z",
@@ -2552,7 +2556,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Belgium (GROUP_G)"
     },
@@ -2579,9 +2583,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "03:00",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T03:00:00Z",
@@ -2591,7 +2595,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Egypt and Iran (GROUP_G)"
     },
@@ -2618,9 +2622,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T21:00:00Z",
@@ -2630,7 +2634,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Panama and England (GROUP_L)"
     },
@@ -2657,9 +2661,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T21:00:00Z",
@@ -2669,7 +2673,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Croatia and Ghana (GROUP_L)"
     },
@@ -2696,9 +2700,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:30",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T23:30:00Z",
@@ -2708,7 +2712,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Colombia and Portugal (GROUP_K)"
     },
@@ -2735,9 +2739,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:30",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T23:30:00Z",
@@ -2747,7 +2751,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Congo DR and Uzbekistan (GROUP_K)"
     },
@@ -2774,9 +2778,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "02:00",
       "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T02:00:00Z",
@@ -2786,7 +2790,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Jordan and Argentina (GROUP_J)"
     },
@@ -2813,9 +2817,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "02:00",
       "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T02:00:00Z",
@@ -2825,7 +2829,7 @@
       "matchDay": 3,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Algeria and Austria (GROUP_J)"
     },
@@ -2852,9 +2856,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T19:00:00Z",
@@ -2864,7 +2868,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -2891,9 +2895,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-06-29",
       "utcDate": "2026-06-29T17:00:00Z",
@@ -2903,7 +2907,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -2930,9 +2934,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:30",
       "minute": null,
       "date": "2026-06-29",
       "utcDate": "2026-06-29T20:30:00Z",
@@ -2942,7 +2946,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -2969,9 +2973,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T01:00:00Z",
@@ -2981,7 +2985,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3008,9 +3012,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T17:00:00Z",
@@ -3020,7 +3024,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3047,9 +3051,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T21:00:00Z",
@@ -3059,7 +3063,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3086,9 +3090,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T01:00:00Z",
@@ -3098,7 +3102,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3125,9 +3129,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "16:00",
       "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T16:00:00Z",
@@ -3137,7 +3141,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3164,9 +3168,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T20:00:00Z",
@@ -3176,7 +3180,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3203,9 +3207,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T00:00:00Z",
@@ -3215,7 +3219,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3242,9 +3246,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T19:00:00Z",
@@ -3254,7 +3258,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3281,9 +3285,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "23:00",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T23:00:00Z",
@@ -3293,7 +3297,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3320,9 +3324,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "03:00",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T03:00:00Z",
@@ -3332,7 +3336,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3359,9 +3363,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "18:00",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T18:00:00Z",
@@ -3371,7 +3375,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3398,9 +3402,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "22:00",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T22:00:00Z",
@@ -3410,7 +3414,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3437,9 +3441,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:30",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T01:30:00Z",
@@ -3449,7 +3453,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between None and None"
     },
@@ -3476,9 +3480,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "17:00",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T17:00:00Z",
@@ -3488,7 +3492,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3515,9 +3519,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T21:00:00Z",
@@ -3527,7 +3531,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3554,9 +3558,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-07-05",
       "utcDate": "2026-07-05T20:00:00Z",
@@ -3566,7 +3570,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3593,9 +3597,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T00:00:00Z",
@@ -3605,7 +3609,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3632,9 +3636,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T19:00:00Z",
@@ -3644,7 +3648,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3671,9 +3675,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "00:00",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T00:00:00Z",
@@ -3683,7 +3687,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3710,9 +3714,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "16:00",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T16:00:00Z",
@@ -3722,7 +3726,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3749,9 +3753,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T20:00:00Z",
@@ -3761,7 +3765,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between None and None"
     },
@@ -3788,9 +3792,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "20:00",
       "minute": null,
       "date": "2026-07-09",
       "utcDate": "2026-07-09T20:00:00Z",
@@ -3800,7 +3804,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
@@ -3827,9 +3831,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-07-10",
       "utcDate": "2026-07-10T19:00:00Z",
@@ -3839,7 +3843,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
@@ -3866,9 +3870,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-07-11",
       "utcDate": "2026-07-11T21:00:00Z",
@@ -3878,7 +3882,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
@@ -3905,9 +3909,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "01:00",
       "minute": null,
       "date": "2026-07-12",
       "utcDate": "2026-07-12T01:00:00Z",
@@ -3917,7 +3921,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
     },
@@ -3944,9 +3948,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-07-14",
       "utcDate": "2026-07-14T19:00:00Z",
@@ -3956,7 +3960,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 SEMI_FINALS match between None and None"
     },
@@ -3983,9 +3987,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-07-15",
       "utcDate": "2026-07-15T19:00:00Z",
@@ -3995,7 +3999,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 SEMI_FINALS match between None and None"
     },
@@ -4022,9 +4026,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "21:00",
       "minute": null,
       "date": "2026-07-18",
       "utcDate": "2026-07-18T21:00:00Z",
@@ -4034,7 +4038,7 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 THIRD_PLACE match between None and None"
     },
@@ -4061,9 +4065,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
+      "status": "upcoming",
       "statusRaw": "TIMED",
-      "time": "0-0 HT",
+      "time": "19:00",
       "minute": null,
       "date": "2026-07-19",
       "utcDate": "2026-07-19T19:00:00Z",
@@ -4073,11 +4077,11 @@
       "matchDay": null,
       "winner": null,
       "referees": [],
-      "source": "football-data.org",
+      "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 FINAL match between None and None"
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-15T00:10:52.897152Z"
+  "lastUpdated": "2026-06-15T03:07:49.477630Z"
 }

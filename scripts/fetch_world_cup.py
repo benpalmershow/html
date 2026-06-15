@@ -9,7 +9,7 @@ import json
 import requests
 import os
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from dotenv import load_dotenv
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -133,7 +133,7 @@ def parse_football_data(api_data):
 
     matches = []
     api_matches = api_data['matches']
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
 
     for match in api_matches:
         try:
@@ -158,6 +158,8 @@ def parse_football_data(api_data):
             status = match.get('status', '')
             match_date = match.get('utcDate', '')
             venue = match.get('venue', '')
+            if isinstance(venue, dict):
+                venue = venue.get('name', '') or venue.get('city', '')
             stage = match.get('stage', '')
             group = match.get('group', '')
             match_day = match.get('matchday')
@@ -168,12 +170,15 @@ def parse_football_data(api_data):
             referee_names = [ref.get('name', '') for ref in referees]
 
             # Map status to our format
-            if status in {'IN_PLAY', 'TIMED', 'PAUSED'}:
+            if status in {'IN_PLAY', 'PAUSED'}:
                 status_text = 'live'
                 if 'minute' in match:
                     time_text = f"{match.get('minute')}'"
                 else:
                     time_text = f"{half_time_home_score or 0}-{half_time_away_score or 0} HT"
+            elif status == 'TIMED':
+                status_text = 'upcoming'
+                time_text = match_date.split('T')[1][:5] if 'T' in match_date else 'TBD'
             elif status == 'SCHEDULED':
                 status_text = 'upcoming'
                 time_text = match_date.split('T')[1][:5] if 'T' in match_date else 'TBD'
@@ -188,7 +193,7 @@ def parse_football_data(api_data):
                 time_text = 'TBD'
 
             # Auto-update status for games that should have finished
-            if match_date and status_text == 'upcoming':
+            if match_date and status_text in ['upcoming', 'live']:
                 try:
                     match_datetime = datetime.fromisoformat(match_date.replace('Z', '+00:00'))
                     # Add 3 hours to account for typical match duration
@@ -234,7 +239,7 @@ def parse_football_data(api_data):
                 "matchDay": match_day,
                 "winner": winner,
                 "referees": referee_names,
-                "source": "football-data.org",
+                "source": "FIFA",
                 "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
                 "explanation": f"World Cup 2026 {stage} match between {home_team_name} and {away_team_name}" + 
                               (f" ({group})" if group else "") +
@@ -255,7 +260,7 @@ def update_world_cup_json(matches):
         "competition": "FIFA World Cup 2026",
         "matches": matches,
         "matchCount": len(matches),
-        "lastUpdated": datetime.utcnow().isoformat() + 'Z'
+        "lastUpdated": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
     }
     
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -303,7 +308,7 @@ def test_parse_football_data():
                     'extraTime': {'home': None, 'away': None},
                     'penalties': {'home': None, 'away': None},
                 },
-                'utcDate': '2026-06-12T00:00:00Z',
+                'utcDate': '2026-06-25T00:00:00Z',
                 'venue': 'Stadium',
                 'stage': 'GROUP_STAGE',
                 'group': 'Group A',
@@ -322,7 +327,7 @@ def test_parse_football_data():
                     'extraTime': {'home': None, 'away': None},
                     'penalties': {'home': None, 'away': None},
                 },
-                'utcDate': '2026-06-12T00:00:00Z',
+                'utcDate': '2026-06-25T00:00:00Z',
                 'venue': 'Stadium',
                 'stage': 'GROUP_STAGE',
                 'group': 'Group A',

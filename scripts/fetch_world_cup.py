@@ -170,7 +170,7 @@ def parse_football_data(api_data):
             referee_names = [ref.get('name', '') for ref in referees]
 
             # Map status to our format
-            if status in {'IN_PLAY', 'PAUSED'}:
+            if status in {'IN_PLAY', 'PAUSED', 'EXTRA_TIME', 'PENALTY_SHOOTOUT'}:
                 status_text = 'live'
                 if 'minute' in match:
                     time_text = f"{match.get('minute')}'"

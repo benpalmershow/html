@@ -218,31 +218,6 @@ async function loadLatestJournal() {
   }
 }
 
-async function loadLatestEssays() {
-  const articles = await Services.dataService.fetchJSON('json/articles.json');
-  const sorted = articles
-    .slice()
-    .sort((a, b) => {
-      const dateA = new Date(a.date || 0).getTime();
-      const dateB = new Date(b.date || 0).getTime();
-      return dateB - dateA;
-    })
-    .slice(0, LIMITS.essays);
-
-  const lines = sorted.map(item => {
-    const title = escapeHtml(cleanText(item.title));
-    const summary = clip(item.summary || '', 100);
-
-    // Calculate time ago
-    const itemDate = new Date(item.date || 0);
-    const timeAgo = formatTimeAgo(item.date);
-
-    return `<span class="time-ago">${timeAgo}</span> <a href="news.html?article=${encodeURIComponent(item.id)}" target="_blank" rel="noopener noreferrer"><strong>${title}</strong>: ${escapeHtml(summary)}</a>`;
-  });
-  renderList('latest-essays', lines);
-}
-
-
 
 async function loadLatestMedia() {
   const media = await Services.dataService.fetchJSON('json/media.json');
@@ -368,7 +343,6 @@ async function initOnePager() {
 
   await Promise.allSettled([
     loadLatestJournal(),
-    loadLatestEssays(),
     loadLatestMedia(),
     loadLatestFinancials()
   ]);

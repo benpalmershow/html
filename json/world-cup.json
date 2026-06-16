@@ -691,7 +691,9 @@
       "group": "GROUP_I",
       "matchDay": 1,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Alireza Faghani"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between France and Senegal (GROUP_I)"
@@ -4091,5 +4093,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-16T13:14:06.985749Z"
+  "lastUpdated": "2026-06-16T18:16:24.329200Z"
 }

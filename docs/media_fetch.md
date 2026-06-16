@@ -6,6 +6,32 @@ Standard procedure for adding media entries to `json/media.json`. All types shar
 
 ## `/add new movie, IMDB link [URL or ttID]`
 
+**Automated workflow:** Use the `add-movie.js` script which handles all steps automatically.
+
+```bash
+node scripts/add-movie.js <IMDB_ID or IMDB_URL>
+```
+
+Examples:
+```bash
+node scripts/add-movie.js tt28291010
+node scripts/add-movie.js https://www.imdb.com/title/tt28291010/
+```
+
+**The script automatically:**
+- Fetches movie data from cinemeta and IMDB suggestion endpoints
+- Parses TMDB posters page for poster URL (HTML extraction)
+- Parses Rotten Tomatoes page for score (HTML extraction)
+- Checks for duplicates by title
+- Auto-generates `dateAdded` (today's date)
+- Auto-constructs `embedUrl` from YouTube trailer ID
+- Validates entry structure against required fields
+- Inserts atomically using Node
+- Validates resulting JSON
+- Presents entry for confirmation before insertion
+
+**Manual fallback (if script fails):**
+
 Extract the IMDB ID, then run the movie pipeline below. No TMDB API key is ever available — use only the id-based endpoints listed.
 
 ---

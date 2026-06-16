@@ -152,24 +152,6 @@ function setupLatestItemsSearch() {
     });
 }
 
-function setupPortfolioSearch() {
-    const searchInput = document.getElementById('indicatorSearch');
-    if (!searchInput) return;
-
-    let debounceTimer;
-    searchInput.addEventListener('input', function () {
-        clearTimeout(debounceTimer);
-        const query = this.value.trim().toLowerCase();
-        debounceTimer = setTimeout(() => {
-            const rows = document.querySelectorAll('#portfolio-comparison-table tbody tr');
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(query) ? '' : 'none';
-            });
-        }, 200);
-    });
-}
-
 // Auto-detect page type by URL
 function initSearchForPage() {
     const searchInput = document.getElementById('indicatorSearch');
@@ -179,7 +161,6 @@ function initSearchForPage() {
     let pageType = '';
 
     if (path.endsWith('financials.html') || path.endsWith('/')) pageType = 'financials';
-    else if (path.endsWith('portfolio.html')) pageType = 'portfolio';
     else if (path.endsWith('media.html')) pageType = 'media';
     else if (path.endsWith('news.html')) pageType = 'essays';
     else if (path.endsWith('journal.html')) pageType = 'journal';
@@ -188,7 +169,6 @@ function initSearchForPage() {
     else pageType = 'financials';
 
     switch (pageType) {
-        case 'portfolio': setupPortfolioSearch(); break;
         case 'financials': setupIndicatorSearch(); break;
         case 'media': setupMediaSearch(); break;
         case 'essays': setupEssaySearch(); break;

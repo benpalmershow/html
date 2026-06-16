@@ -624,7 +624,7 @@
         "name": "Iran",
         "flag": "🇮🇷",
         "crest": "https://crests.football-data.org/iran.svg",
-        "score": 1,
+        "score": 2,
         "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -634,14 +634,14 @@
         "name": "New Zealand",
         "flag": "🇳🇿",
         "crest": "https://crests.football-data.org/783.svg",
-        "score": 1,
+        "score": 2,
         "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "1-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-16",
       "utcDate": "2026-06-16T01:00:00Z",
@@ -4091,5 +4091,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-16T02:07:34.200615Z"
+  "lastUpdated": "2026-06-16T08:27:06.180763Z"
 }

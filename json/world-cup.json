@@ -747,7 +747,7 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": 1,
+        "score": 3,
         "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -762,9 +762,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "1-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T01:00:00Z",
@@ -788,8 +788,8 @@
         "name": "Austria",
         "flag": "🇦🇹",
         "crest": "https://crests.football-data.org/816.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -798,14 +798,14 @@
         "name": "Jordan",
         "flag": "🇯🇴",
         "crest": "https://crests.football-data.org/8049.png",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "04:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T04:00:00Z",
@@ -813,7 +813,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
       "matchDay": 1,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Dahane Beida"
       ],
@@ -4099,5 +4099,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-17T02:01:46.611677Z"
+  "lastUpdated": "2026-06-17T07:34:07.400720Z"
 }

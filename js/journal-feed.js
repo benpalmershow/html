@@ -4,11 +4,26 @@ const MONTHS = [
 ];
 
 const SCRIPT_COMPONENTS = ['components/analytics.html', 'components/error-handling.html', 'components/scripts-unified.html'];
+const IDLE_TIMEOUT = 250;
+const IDLE_CHUNK_SIZE = 4;
+const CHART_CHUNK_SIZE = 2;
+const INITIAL_JOURNAL_LIMIT = 10;
 
 // Utility function wrappers (full implementations in html-utils.js)
 function formatRelativeDate(dateString) { return window.HtmlUtils.formatRelativeDate(dateString); }
 function escapeHtml(text) { return window.HtmlUtils.escapeHtml(text); }
 function ensureHtmlSanitizer() { return window.HtmlUtils.ensureHtmlSanitizer(); }
+function parseFrontmatter(md) { return window.HtmlUtils.parseFrontmatter(md); }
+
+function yieldToIdle() {
+  return new Promise((resolve) => {
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(resolve, { timeout: IDLE_TIMEOUT });
+    } else {
+      setTimeout(resolve, 0);
+    }
+  });
+}
 
 function sanitizeHtml(html) {
   return optimizeSanitizedHtml(window.HtmlUtils.sanitizeHtml(html, {
@@ -352,13 +367,7 @@ async function loadJournalEntries() {
   try {
     await waitForMarked();
     await ensureHtmlSanitizer();
-
-    // Load both journal entries and essays by default
     await filterJournalEntries('all');
-
-    if (window.lucide) {
-      window.lucide.createIcons();
-    }
   } catch (error) {
     console.error('Error loading feed:', error);
     journalFeed.innerHTML = '<div class="error-state">Error loading content. Please try again later.</div>';
@@ -378,21 +387,25 @@ async function loadJournalData(journalFeed) {
     return dateB - dateA;
   });
   
-  const articlesHTML = await Promise.all(journals.map(renderJournal));
-  
-  journalFeed.innerHTML = articlesHTML.join('');
+  const initialJournals = journals.slice(0, INITIAL_JOURNAL_LIMIT);
+  const articlesHTML = await renderJournalsChunked(initialJournals);
+  await renderFeed(journalFeed, articlesHTML, true);
+}
 
-  // Optimize first image for LCP
-  const firstImage = journalFeed.querySelector('.journal-entry img');
-  if (firstImage) {
-    firstImage.setAttribute('loading', 'eager');
-    firstImage.setAttribute('fetchpriority', 'high');
-    firstImage.setAttribute('decoding', 'async');
+async function renderJournalsChunked(journals) {
+  const articlesHTML = [];
+
+  for (let i = 0; i < journals.length; i += IDLE_CHUNK_SIZE) {
+    const chunk = journals.slice(i, i + IDLE_CHUNK_SIZE);
+    const rendered = await Promise.all(chunk.map(renderJournal));
+    articlesHTML.push(...rendered);
+
+    if (i + chunk.length < journals.length) {
+      await yieldToIdle();
+    }
   }
 
-  bindCollapsibleEntries(journalFeed);
-  renderJournalCharts();
-  scrollToHash();
+  return articlesHTML;
 }
 
 async function renderJournal(journal) {
@@ -405,7 +418,17 @@ async function renderJournal(journal) {
     return '';
   }
 
-  const entriesHTML = await Promise.all(journal.entries.map(entry => renderEntry(entry, journal.date)));
+  const entriesHTML = [];
+
+  for (let i = 0; i < journal.entries.length; i += IDLE_CHUNK_SIZE) {
+    const chunk = journal.entries.slice(i, i + IDLE_CHUNK_SIZE);
+    entriesHTML.push(...await Promise.all(chunk.map(entry => renderEntry(entry, journal.date))));
+
+    if (i + chunk.length < journal.entries.length) {
+      await yieldToIdle();
+    }
+  }
+
   return `<article class="journal-entry"><div class="card-title"><time datetime="${formatDateForDateTime(journal.date)}">${formatDate(journal.date)}</time></div><div class="content">${entriesHTML.join('')}</div></article>`;
 }
 
@@ -468,7 +491,7 @@ async function renderEntryFromFile(entry, entryId, journalDate) {
     const md = await fileResponse.text();
     const parts = md.split(/^---$/m);
     let content = md.trim();
-  if (parts.length >= 3) {
+    if (parts.length >= 3) {
       content = parts.slice(2).join('---').trim();
     }
 
@@ -523,6 +546,30 @@ function renderInlineEntry(entry, entryId, journalDate) {
   const entryClass = entry.link ? 'entry entry--link' : 'entry';
 
   return `<div id="${entryId}" class="${entryClass}">${timeHtml}<div class="entry-title">${titleHtml}</div>${contentHtml}</div>`;
+}
+
+function optimizeFirstImage(journalFeed) {
+  const firstImage = journalFeed.querySelector('.journal-entry img');
+  if (firstImage) {
+    firstImage.setAttribute('loading', 'eager');
+    firstImage.setAttribute('fetchpriority', 'high');
+    firstImage.setAttribute('decoding', 'async');
+  }
+}
+
+async function renderFeed(journalFeed, articlesHTML, shouldScroll = false) {
+  journalFeed.innerHTML = articlesHTML.join('');
+  optimizeFirstImage(journalFeed);
+  bindCollapsibleEntries(journalFeed);
+  await renderJournalCharts();
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  if (shouldScroll) {
+    scrollToHash();
+  }
 }
 
 function scrollToHash() {
@@ -616,7 +663,7 @@ async function ensureChartJs() {
 }
 
 async function renderJournalCharts() {
-  const containers = document.querySelectorAll('[data-indicator]:not([data-rendered])');
+  const containers = Array.from(document.querySelectorAll('[data-indicator]:not([data-rendered])'));
   if (containers.length === 0) return;
 
   await ensureChartJs();
@@ -642,6 +689,8 @@ async function renderJournalCharts() {
     GRID: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)',
     TEXT: isDark ? '#a0a9b8' : '#6c757d'
   };
+  const indicatorCache = new Map();
+  const seriesCache = new Map();
 
   function getBaseOptions() {
     return {
@@ -665,52 +714,76 @@ async function renderJournalCharts() {
     };
   }
 
-  containers.forEach(container => {
-    if (container.dataset.rendered) return;
-    const canvasId = container.getAttribute('data-chart-id');
-    const indicatorName = container.getAttribute('data-indicator');
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
+  function getIndicator(name) {
+    if (indicatorCache.has(name)) return indicatorCache.get(name);
 
-    const indicator = data.indices.find(i => i.name === indicatorName);
-    if (!indicator) return;
+    const indicator = data.indices.find(i => i.name === name);
+    indicatorCache.set(name, indicator);
+    return indicator;
+  }
 
-    const { labels, dataPoints } = getSeriesDataFromIndicator(indicator);
+  function getSeriesData(indicator) {
+    if (seriesCache.has(indicator)) return seriesCache.get(indicator);
 
-    if (dataPoints.length === 0) return;
+    const series = getSeriesDataFromIndicator(indicator);
+    seriesCache.set(indicator, series);
+    return series;
+  }
 
-    const chartType = indicator.category === 'Prediction Markets' || indicator.bps_probabilities ? 'bar' : 'line';
-    const config = {
-      type: chartType,
-      data: {
-        labels,
-        datasets: [{
-          label: indicator.name || 'Data',
-          data: dataPoints,
-          borderColor: colors.PRIMARY,
-          backgroundColor: chartType === 'bar' ? [colors.PRIMARY, colors.SECONDARY, colors.ACCENT] : colors.PRIMARY_FILL,
-          borderWidth: 2,
-          tension: 0.4,
-          fill: chartType === 'line',
-          pointBackgroundColor: colors.PRIMARY,
-          pointBorderColor: '#fff',
-          pointBorderWidth: 1.5,
-          pointRadius: 3,
-          pointHoverRadius: 5
-        }]
-      },
-      options: getBaseOptions()
-    };
+  for (let i = 0; i < containers.length; i += CHART_CHUNK_SIZE) {
+    const chunk = containers.slice(i, i + CHART_CHUNK_SIZE);
 
-    try {
-      if (canvas._chart instanceof window.Chart) canvas._chart.destroy();
-      const chart = new window.Chart(canvas.getContext('2d'), config);
-      canvas._chart = chart;
-      container.dataset.rendered = 'true';
-    } catch (e) {
-      console.error('Chart render error:', e);
+    chunk.forEach(container => {
+      if (container.dataset.rendered) return;
+      const canvasId = container.getAttribute('data-chart-id');
+      const indicatorName = container.getAttribute('data-indicator');
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
+      const indicator = getIndicator(indicatorName);
+      if (!indicator) return;
+
+      const { labels, dataPoints } = getSeriesData(indicator);
+
+      if (dataPoints.length === 0) return;
+
+      const chartType = indicator.category === 'Prediction Markets' || indicator.bps_probabilities ? 'bar' : 'line';
+      const config = {
+        type: chartType,
+        data: {
+          labels,
+          datasets: [{
+            label: indicator.name || 'Data',
+            data: dataPoints,
+            borderColor: colors.PRIMARY,
+            backgroundColor: chartType === 'bar' ? [colors.PRIMARY, colors.SECONDARY, colors.ACCENT] : colors.PRIMARY_FILL,
+            borderWidth: 2,
+            tension: 0.4,
+            fill: chartType === 'line',
+            pointBackgroundColor: colors.PRIMARY,
+            pointBorderColor: '#fff',
+            pointBorderWidth: 1.5,
+            pointRadius: 3,
+            pointHoverRadius: 5
+          }]
+        },
+        options: getBaseOptions()
+      };
+
+      try {
+        if (canvas._chart instanceof window.Chart) canvas._chart.destroy();
+        const chart = new window.Chart(canvas.getContext('2d'), config);
+        canvas._chart = chart;
+        container.dataset.rendered = 'true';
+      } catch (e) {
+        console.error('Chart render error:', e);
+      }
+    });
+
+    if (i + chunk.length < containers.length) {
+      await yieldToIdle();
     }
-  });
+  }
 }
 
 function setupJournalFilters() {
@@ -751,8 +824,57 @@ function setupJournalFilters() {
   });
 }
 
+function normalizeCategory(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function entryMatchesCategory(entry, category, categoryCache) {
+  if (entry.file && categoryCache.has(entry.file)) {
+    return categoryCache.get(entry.file) === category;
+  }
+
+  const entryText = normalizeCategory(`${entry.title || ''} ${(entry.content || '')} ${(entry.file || '')}`);
+  return entryText.includes(category);
+}
+
+function journalMatchesCategory(journal, category, categoryCache) {
+  if (!journal.entries || !Array.isArray(journal.entries)) return false;
+  return journal.entries.some(entry => entryMatchesCategory(entry, category, categoryCache));
+}
+
+async function buildEntryCategoryCache(journals) {
+  const categoryCache = new Map();
+
+  journals.forEach(journal => {
+    if (!journal.entries || !Array.isArray(journal.entries)) return;
+    journal.entries.forEach(entry => {
+      if (entry.file && !categoryCache.has(entry.file)) {
+        categoryCache.set(entry.file, null);
+      }
+    });
+  });
+
+  const files = Array.from(categoryCache.keys());
+
+  for (let i = 0; i < files.length; i += IDLE_CHUNK_SIZE) {
+    const chunk = files.slice(i, i + IDLE_CHUNK_SIZE);
+
+    await Promise.all(chunk.map(async (file) => {
+      const entryCategory = await getEntryCategory({ file });
+      if (entryCategory) {
+        categoryCache.set(file, entryCategory);
+      }
+    }));
+
+    if (i + chunk.length < files.length) {
+      await yieldToIdle();
+    }
+  }
+
+  return categoryCache;
+}
+
 async function getEntryCategory(entry) {
-  // If entry has no file, return null
   if (!entry.file) return null;
   
   try {
@@ -763,7 +885,7 @@ async function getEntryCategory(entry) {
     const frontmatter = parseFrontmatter(md);
     
     if (frontmatter && frontmatter.category) {
-      return frontmatter.category.toLowerCase();
+      return normalizeCategory(frontmatter.category);
     }
   } catch (error) {
     console.warn('Failed to parse frontmatter for:', entry.file, error);
@@ -786,37 +908,9 @@ async function filterJournalEntries(category) {
     let filteredJournals = journals;
     
     if (category !== 'all') {
-      // First, get categories for all entries with files
-      const categoryCache = new Map();
-      
-      for (const journal of journals) {
-        if (journal.entries && Array.isArray(journal.entries)) {
-          for (const entry of journal.entries) {
-            if (entry.file && !categoryCache.has(entry.file)) {
-              const entryCategory = await getEntryCategory(entry);
-              if (entryCategory) {
-                categoryCache.set(entry.file, entryCategory);
-              }
-            }
-          }
-        }
-      }
-      
-      filteredJournals = journals.filter(journal => {
-        if (journal.entries && Array.isArray(journal.entries)) {
-          return journal.entries.some(entry => {
-            // Check frontmatter category first
-            if (entry.file && categoryCache.has(entry.file)) {
-              return categoryCache.get(entry.file) === category.toLowerCase();
-            }
-            
-            // Fall back to keyword matching
-            const entryText = (entry.title + ' ' + (entry.content || '') + ' ' + (entry.file || '')).toLowerCase();
-            return entryText.includes(category.toLowerCase());
-          });
-        }
-        return false;
-      });
+      const normalizedCategory = normalizeCategory(category);
+      const categoryCache = await buildEntryCategoryCache(journals);
+      filteredJournals = journals.filter(journal => journalMatchesCategory(journal, normalizedCategory, categoryCache));
     }
     
     filteredJournals.sort((a, b) => {
@@ -825,23 +919,8 @@ async function filterJournalEntries(category) {
       return dateB - dateA;
     });
     
-    const articlesHTML = await Promise.all(filteredJournals.map(renderJournal));
-    journalFeed.innerHTML = articlesHTML.join('');
-
-    // Optimize first image for LCP
-    const firstImage = journalFeed.querySelector('.journal-entry img');
-    if (firstImage) {
-      firstImage.setAttribute('loading', 'eager');
-      firstImage.setAttribute('fetchpriority', 'high');
-      firstImage.setAttribute('decoding', 'async');
-    }
-
-    bindCollapsibleEntries(journalFeed);
-    renderJournalCharts();
-    
-    if (window.lucide) {
-      window.lucide.createIcons();
-    }
+    const articlesHTML = await renderJournalsChunked(filteredJournals);
+    await renderFeed(journalFeed, articlesHTML);
   } catch (error) {
     console.error('Error filtering journal entries:', error);
     journalFeed.innerHTML = '<div class="error-state">Error loading filtered content. Please try again later.</div>';
@@ -900,8 +979,6 @@ async function initializeJournalPage() {
       history.pushState(null, '', url.toString());
     });
   }
-
-  await loadJournalEntries();
 }
 
 if (document.readyState === 'loading') {

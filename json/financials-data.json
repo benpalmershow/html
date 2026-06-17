@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-16T08:00:00",
+    "lastUpdated": "2026-06-17T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1775,7 +1775,7 @@
             "parentCategory": "Consumer Indicators",
             "agency": "Census",
             "name": "Monthly Retail Sales",
-            "lastUpdated": "2026-05-15T14:00:00Z",
+            "lastUpdated": "2026-06-17T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.census.gov/retail/sales.html",
             "march": "",
@@ -1793,7 +1793,8 @@
                 "january": "$734B",
                 "february": "$741.3B",
                 "march": "$753.4B",
-                "april": "$757.1B"
+                "april": "$757B",
+                "may": "$763.7B"
             },
             "change": ""
         },
@@ -2096,23 +2097,25 @@
             "parentCategory": "Housing Market",
             "agency": "Census",
             "name": "Housing Starts",
-            "lastUpdated": "2026-04-29T14:00:00Z",
+            "lastUpdated": "2026-06-17T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.census.gov/construction/nrc/current/index.html",
             "march": "1.355M",
             "april": "1.398M",
-            "may": "1.282M",
-            "june": "1.382M",
-            "july": "1.420M",
+            "may": "1.289M",
+            "june": "1.379M",
+            "july": "1.432M",
             "august": "1.291M",
-            "september": "1.328M",
-            "october": "1.272M",
-            "november": "1.324M",
-            "december": "1.373M",
+            "september": "1.319M",
+            "october": "1.273M",
+            "november": "1.319M",
+            "december": "1.378M",
             "2026": {
-                "january": "1.398M",
-                "february": "1.356M",
-                "march": "1.502M"
+                "january": "1.385M",
+                "february": "1.346M",
+                "march": "1.522M",
+                "april": "1.392M",
+                "may": "1.177M"
             },
             "change": "",
             "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."

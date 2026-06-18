@@ -844,9 +844,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T17:00:00Z",
@@ -870,8 +870,8 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 4,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -880,14 +880,14 @@
         "name": "Croatia",
         "flag": "🇭🇷",
         "crest": "https://crests.football-data.org/799.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "20:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T20:00:00Z",
@@ -895,7 +895,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "matchDay": 1,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Clément Turpin"
       ],
@@ -911,8 +911,8 @@
         "name": "Ghana",
         "flag": "🇬🇭",
         "crest": "https://crests.football-data.org/ghana.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -921,14 +921,14 @@
         "name": "Panama",
         "flag": "🇵🇦",
         "crest": "https://crests.football-data.org/panama.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "23:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T23:00:00Z",
@@ -936,8 +936,10 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "matchDay": 1,
-      "winner": null,
-      "referees": [],
+      "winner": "DRAW",
+      "referees": [
+        "Glenn Nyberg"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Ghana and Panama (GROUP_L)"
@@ -976,7 +978,9 @@
       "group": "GROUP_K",
       "matchDay": 1,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Anthony Taylor"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Uzbekistan and Colombia (GROUP_K)"
@@ -4103,5 +4107,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-17T18:42:10.032484Z"
+  "lastUpdated": "2026-06-18T00:22:46.271165Z"
 }

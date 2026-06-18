@@ -911,8 +911,8 @@
         "name": "Ghana",
         "flag": "🇬🇭",
         "crest": "https://crests.football-data.org/ghana.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -921,14 +921,14 @@
         "name": "Panama",
         "flag": "🇵🇦",
         "crest": "https://crests.football-data.org/panama.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "23:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T23:00:00Z",
@@ -936,7 +936,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "matchDay": 1,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Glenn Nyberg"
       ],
@@ -978,7 +978,9 @@
       "group": "GROUP_K",
       "matchDay": 1,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Anthony Taylor"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Uzbekistan and Colombia (GROUP_K)"
@@ -4105,5 +4107,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-17T22:58:11.569961Z"
+  "lastUpdated": "2026-06-18T00:22:46.271165Z"
 }

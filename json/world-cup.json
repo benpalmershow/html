@@ -911,7 +911,7 @@
         "name": "Ghana",
         "flag": "🇬🇭",
         "crest": "https://crests.football-data.org/ghana.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -926,9 +926,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-17",
       "utcDate": "2026-06-17T23:00:00Z",
@@ -936,7 +936,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "matchDay": 1,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Glenn Nyberg"
       ],
@@ -952,8 +952,8 @@
         "name": "Uzbekistan",
         "flag": "🇺🇿",
         "crest": "https://crests.football-data.org/8070.png",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -962,14 +962,14 @@
         "name": "Colombia",
         "flag": "🇨🇴",
         "crest": "https://crests.football-data.org/818.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "02:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T02:00:00Z",
@@ -977,7 +977,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "matchDay": 1,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Anthony Taylor"
       ],
@@ -4107,5 +4107,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-18T00:22:46.271165Z"
+  "lastUpdated": "2026-06-18T05:17:39.465419Z"
 }

@@ -1,158 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Docs</title>
-  <!-- Page-specific Meta Tags -->
-  <meta name="description"
-    content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
-  <meta name="keywords"
-    content="Doc Riter, independent thoughts">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Doc Riter — Journal & Essays">
-  <meta property="og:description"
-    content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
-  <meta property="og:url" content="https://howdystranger.net/journal.html">
-  <meta property="og:site_name" content="Howdy, Stranger">
-  <meta property="og:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
-  <meta property="og:image:alt" content="Howdy, Stranger - Doc Riter and Commentary">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@DocRiter">
-  <meta name="twitter:creator" content="@DocRiter">
-  <meta name="twitter:title" content="Doc Riter — Journal & Essays">
-  <meta name="twitter:description"
-    content="Doc Riter's personal journal — daily docs, independent commentary, and essays on policy, markets, and current events.">
-  <meta name="twitter:image" content="https://howdystranger.net/images/logo-1200x630.webp?v=1">
-  <meta name="twitter:image:alt" content="Howdy, Stranger - Doc Riter and Commentary">
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://howdystranger.net/journal.html">
-
-  <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/theme.css?v=20260429" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/theme.css?v=20260429"></noscript>
-  <link rel="stylesheet" href="css/body.css?v=20260429" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/body.css?v=20260429"></noscript>
-  <link rel="stylesheet" href="css/nav.css?v=20260429" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/nav.css?v=20260429"></noscript>
-  <link rel="stylesheet" href="css/filter-bar.css?v=20260614" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/filter-bar.css?v=20260614"></noscript>
-\  <link rel="stylesheet" href="css/journal-tweets.css?v=20260614" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/journal-tweets.css?v=20260614"></noscript>
-
-
-  <!-- Preload critical resources -->
-  <link rel="preload" href="js/nav.js" as="script">
-  <link rel="preload" href="js/journal-feed.js" as="script">
-
-   <!-- Preconnect to external domains -->
-   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-   <title>Doc Riter — Journal, Docs & Essays | Howdy, Stranger</title>
-
-  <script type="module" src="js/speed-insights.js"></script>
-  <meta name="robots" content="noindex, nofollow">
+  <title>Docs - Howdy, Stranger</title>
   <!-- Move dark mode script inside head to prevent flash -->
   <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/journal.css">
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <nav class="nav-links" id="main-nav"></nav>
-  
 
   <main id="main-content" tabindex="-1">
-    <header class="page-header page-header-branded page-header-bg-brand announcements-bg animated-bg">
-       <h1 class="page-title" aria-label="Page title">Docs</h1>
-     </header>
-
-     <div class="filter-bar" id="journal-filters" aria-label="Filter docs and essays">
-       <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
-         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-       </button>
-       <div class="filter-bar-search" id="filterBarSearch">
-         <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search docs and essays..." autocomplete="off">
-       </div>
-       <div class="filters" id="filter-buttons"></div>
-     </div>
+    <header class="page-header">
+      <h1 class="page-title" aria-label="Page title">Docs</h1>
+    </header>
     <div class="content">
-      <!-- Journal entries feed -->
-      <div id="journal-feed"></div>
-      
-      <!-- Essay reader container (shown when viewing essays) -->
-      <div id="essay-reader-container" class="hidden">
-        <div class="article-shell">
-          <div id="article-status" class="article-status">Loading content...</div>
-          
-          <section id="essay-index" class="essay-index" hidden>
-            <div id="essay-filters" class="filters" aria-label="Filter essays by category"></div>
-            <div id="essay-results" class="essay-results" aria-live="polite"></div>
-          </section>
-          
-          <article id="article-reader" class="article-reader-card" hidden>
-            <div class="article-toolbar">
-              <button type="button" class="article-back-link" id="article-back-btn">
-                <i data-lucide="arrow-left"></i>
-                <span>Essays</span>
-              </button>
-            </div>
-            <div id="article-content" class="article-content"></div>
-          </article>
-          
-          <div id="article-error" class="article-error" hidden></div>
-        </div>
-      </div>
+      <div id="feed"></div>
+      <p id="empty" style="color: var(--text-muted); font-size: 0.875rem; padding: 2rem 0;">No entries found.</p>
     </div>
   </main>
-
-<!-- Footer Component -->
+  
+  <!-- Footer Component -->
   <div id="footer-container"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
-    });
-  </script>
 
-  <!-- Page-specific scripts -->
-  <script src="js/services.js" defer></script>
-  <script src="js/html-utils.js" defer></script>
-  <script src="js/pages-config.js" defer></script>
   <script src="js/nav.js" defer></script>
-  <script src="js/swipe-nav.js" defer></script>
-  <script src="js/journal-feed.js" defer></script>
-  <script src="js/search.js" defer></script>
+  <script src="js/back-to-top.js" defer></script>
+<script>
+  (function() {
+    'use strict';
 
-  <!-- Load Lucide icons on-demand after page load -->
-  <script>
-    (function () {
-      const loadLucide = () => {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
-        script.defer = true;
-        script.onload = () => window.lucide?.createIcons();
-        document.head.appendChild(script);
-      };
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadLucide, { timeout: 3000 });
-      } else {
-        setTimeout(loadLucide, 100);
+    const feed    = document.getElementById('feed');
+    const emptyEl  = document.getElementById('empty');
+
+    let allDays = [];
+  let markedLoaded  = false;
+  let markedLoading = false;
+  const markedCallbacks = [];
+
+  // ── Front matter stripper ──
+   function stripFrontmatter(md) {
+     const match = String(md || '').match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+     return match ? match[2].trim() : md;
+   }
+
+   // ── Markdown loader — deferred until first accordion open ──
+  function loadMarked(cb) {
+    if (markedLoaded) { cb(); return; }
+    markedCallbacks.push(cb);
+    if (markedLoading) return;
+    markedLoading = true;
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/marked@9/marked.min.js';
+    s.onload = () => {
+      markedLoaded = true;
+      markedCallbacks.forEach(fn => fn());
+      markedCallbacks.length = 0;
+    };
+    document.head.appendChild(s);
+  }
+
+  // ── Fetch .md files on demand, cache in memory ──
+  const mdCache = {};
+  function fetchMd(path, cb) {
+    if (mdCache[path]) { cb(mdCache[path]); return; }
+    fetch(path)
+      .then(r => r.ok ? r.text() : Promise.reject(r.status))
+      .then(text => { mdCache[path] = text; cb(text); })
+      .catch(() => cb(null));
+  }
+
+  // ── Title may contain raw HTML <a> tags already ──
+  function renderTitle(title, link) {
+    if (/<a\s/i.test(title)) return title;
+    const esc = title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    if (link) {
+      const ext = link.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${link}"${ext}>${esc}</a>`;
+    }
+    return esc;
+  }
+
+  // ── Build one entry ──
+  function buildEntry(entry) {
+    const hasFile    = !!entry.file;
+    const hasContent = !!entry.content;
+    const hasLink    = !!entry.link;
+
+    const div     = document.createElement('div');
+    div.className = 'entry';
+
+    const headEl     = document.createElement('div');
+    headEl.className = 'entry-head' + (hasFile ? ' has-toggle' : '');
+
+    // Title
+    const titleEl     = document.createElement('span');
+    titleEl.className = 'entry-title';
+    const linkForTitle = hasLink ? entry.link : null;
+    titleEl.innerHTML  = renderTitle(entry.title, linkForTitle);
+
+    // Meta
+    const metaEl     = document.createElement('span');
+    metaEl.className = 'entry-meta';
+
+    if (entry.time) {
+      const t = document.createElement('span');
+      t.className = 'entry-time';
+      t.textContent = entry.time;
+      metaEl.appendChild(t);
+    }
+
+    headEl.appendChild(titleEl);
+    headEl.appendChild(metaEl);
+
+    // Accordion for file-based entries
+    let accordionEl = null;
+    if (hasFile) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class',            'chevron');
+      svg.setAttribute('viewBox',          '0 0 14 14');
+      svg.setAttribute('fill',             'none');
+      svg.setAttribute('stroke',           'currentColor');
+      svg.setAttribute('stroke-width',     '1.5');
+      svg.setAttribute('stroke-linecap',   'round');
+      svg.setAttribute('stroke-linejoin',  'round');
+      svg.setAttribute('aria-hidden',      'true');
+      svg.innerHTML = '<polyline points="4,2 9,7 4,12"/>';
+      headEl.insertBefore(svg, titleEl);
+
+      accordionEl = document.createElement('div');
+      accordionEl.className = 'accordion';
+      accordionEl.hidden    = true;
+      accordionEl.setAttribute('role', 'region');
+
+      const inner     = document.createElement('div');
+      inner.className = 'accordion-inner';
+      accordionEl.appendChild(inner);
+
+      let loaded = false;
+      headEl.setAttribute('role',         'button');
+      headEl.setAttribute('tabindex',     '0');
+      headEl.setAttribute('aria-expanded','false');
+
+      function toggle() {
+        const open = headEl.getAttribute('aria-expanded') === 'true';
+        headEl.setAttribute('aria-expanded', String(!open));
+        accordionEl.hidden = open;
+
+        if (!open && !loaded) {
+          loaded = true;
+          inner.innerHTML = '<span class="loading">Loading…</span>';
+          loadMarked(() => {
+fetchMd(entry.file, text => {
+               const body = stripFrontmatter(text);
+               inner.innerHTML = body
+                 ? window.marked.parse(body)
+                 : '<span class="loading">Could not load file.</span>';
+             });
+          });
+        }
       }
-    })();
-  </script>
 
-  <!-- Back to top button -->
-  <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+      headEl.addEventListener('click',   toggle);
+      headEl.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    }
+
+    div.appendChild(headEl);
+
+    if (hasContent) {
+      const contentEl     = document.createElement('div');
+      contentEl.className = 'entry-content';
+      contentEl.innerHTML = entry.content;
+      div.appendChild(contentEl);
+    }
+
+    if (accordionEl) div.appendChild(accordionEl);
+
+    return div;
+  }
+
+  // ── Build one day group ──
+  function buildDay(day) {
+    const section     = document.createElement('section');
+    section.className = 'day';
+    section.dataset.date = day.date;
+
+    const header     = document.createElement('div');
+    header.className = 'day-header';
+    header.textContent = day.date;
+    section.appendChild(header);
+
+    day.entries.forEach(entry => section.appendChild(buildEntry(entry)));
+    return section;
+  }
+
+  // ── Render ──
+  function render(days) {
+    feed.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    days.forEach(day => frag.appendChild(buildDay(day)));
+    feed.appendChild(frag);
+    emptyEl.style.display = days.length === 0 ? 'block' : 'none';
+  }
+
+// ── Footer loader ──
+    fetch('components/footer.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      })
+      .catch(() => {});
+
+    // ── Bootstrap ──
+    fetch('json/journal.json')
+      .then(r => r.json())
+      .then(data => { allDays = data; render(allDays); })
+      .catch(() => {
+        feed.innerHTML = '<p style="color:var(--text-muted);font-size:.875rem">Failed to load journal.json</p>';
+      });
+})();
+</script>
 </body>
 </html>

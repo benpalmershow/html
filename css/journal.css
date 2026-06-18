@@ -1,0 +1,215 @@
+/* ============================================================
+   journal.css — standalone, no dependencies
+   Layout and component styles for journal.html
+   ============================================================ */
+
+/* ── Entry styles ── */
+.entry {
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.entry:last-child { border-bottom: none; }
+
+/* ── Entry head ── */
+.entry-head {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.entry-head.has-toggle          { cursor: pointer; }
+.entry-head.has-toggle:hover .entry-title { opacity: .6; }
+
+/* ── Title ── */
+.entry-title {
+  flex: 1;
+  font-size: .925rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.entry-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: opacity .15s;
+}
+
+/* ── Meta (time + link icon) ── */
+.entry-meta {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  flex-shrink: 0;
+}
+
+.entry-time {
+  font-size: .7rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.entry-link-icon {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  line-height: 1;
+  transition: color .15s;
+  padding: 6px;
+}
+
+.entry-link-icon:hover { color: var(--text-primary); }
+
+/* ── Chevron ── */
+.chevron {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform .2s ease;
+  margin-top: 3px;
+}
+
+.entry-head[aria-expanded="true"] .chevron { transform: rotate(90deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron { transition: none; }
+}
+
+/* ── Day group ── */
+.day {
+  margin-bottom: 2rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 80px;
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: .75rem;
+}
+
+.day-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ── Inline content ── */
+.entry-content {
+  font-size: .875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: .45rem;
+}
+
+.entry-content a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.entry-content a:hover { opacity: .6; }
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: .5rem;
+  border: 1px solid var(--border-color);
+}
+
+/* ── Accordion ── */
+.accordion[hidden] { display: none; }
+
+.accordion-inner {
+  font-size: .875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  padding-top: .75rem;
+  margin-top: .5rem;
+}
+
+.accordion-inner h1,
+.accordion-inner h2,
+.accordion-inner h3 {
+  font-size: .925rem;
+  font-weight: 600;
+  margin: 1.2em 0 .4em;
+  color: var(--text-primary);
+}
+
+.accordion-inner p          { margin-bottom: .75em; }
+.accordion-inner p:last-child{ margin-bottom: 0; }
+
+.accordion-inner ul,
+.accordion-inner ol {
+  padding-left: 1.2em;
+  margin-bottom: .75em;
+}
+
+.accordion-inner li         { margin-bottom: .2em; }
+
+.accordion-inner blockquote {
+  border-left: 2px solid var(--border-color);
+  padding-left: .75rem;
+  color: var(--text-muted);
+  margin: .75em 0;
+}
+
+.accordion-inner code {
+  font-family: "SF Mono", "Fira Mono", Consolas, monospace;
+  font-size: .82em;
+  background: var(--bg-secondary);
+  padding: .1em .3em;
+  border-radius: 2px;
+}
+
+.accordion-inner pre {
+  background: var(--bg-secondary);
+  padding: .75em;
+  overflow-x: auto;
+  border-radius: 2px;
+  margin-bottom: .75em;
+}
+
+.accordion-inner pre code { background: none; padding: 0; }
+
+.accordion-inner a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.accordion-inner img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-top: .5rem;
+}
+
+.accordion-inner .loading {
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+/* ── Empty state ── */
+#empty {
+  color: var(--text-muted);
+  font-size: .875rem;
+  padding: 2rem 0;
+  display: none;
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  main { padding: 1.25rem .75rem 5rem; }
+}

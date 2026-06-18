@@ -23,8 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderNavLink = (page) => {
     const isActive = currentPage === page.file;
     const ariaCurrent = isActive ? 'aria-current="page"' : '';
+    // Derive data-page attribute from filename (e.g., "journal.html" -> "journal")
+    const pageName = page.file.replace('.html', '');
     return `<li>
-      <a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" aria-label="${page.name}" ${ariaCurrent}>
+      <a href="${page.file}" class="nav-link nav-icon-link ${isActive ? 'active' : ''}" aria-label="${page.name}" ${ariaCurrent} data-page="${pageName}">
         <img src="images/${page.icon}" alt="" class="nav-link-icon" width="36" height="36" loading="eager">
         <span class="nav-icon-label">${page.name}</span>
         ${isActive ? '<span class="nav-active-dot" aria-hidden="true"></span>' : ''}
@@ -105,8 +107,7 @@ const navHTML = `
   };
 
   const fetchJson = (path) => {
-    if (!dataService) return Promise.resolve(null);
-    return dataService.fetchJSON(path).catch(() => null);
+    return fetch(path).then(r => r.ok ? r.json() : null).catch(() => null);
   };
 
   // Numbers

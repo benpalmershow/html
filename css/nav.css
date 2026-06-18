@@ -253,15 +253,16 @@
     50% { transform: translateY(-2px); }
 }
 
-.nav-icon-link[href="media.html"] .nav-link-icon {
+/* Page-specific nav icon animations */
+.nav-icon-link[data-page="media"] .nav-link-icon {
     animation: nav-gentle-sway 5s ease-in-out infinite;
 }
 
-.nav-icon-link[href="financials.html"] .nav-link-icon {
+.nav-icon-link[data-page="financials"] .nav-link-icon {
     animation: nav-calm-float 6s ease-in-out infinite;
 }
 
-.nav-icon-link[href="journal.html"] .nav-link-icon {
+.nav-icon-link[data-page="journal"] .nav-link-icon {
     animation: nav-soft-pulse 4s ease-in-out infinite;
 }
 

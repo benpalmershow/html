@@ -993,7 +993,7 @@
         "name": "Czechia",
         "flag": "🇨🇿",
         "crest": "https://crests.football-data.org/798.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -1003,14 +1003,14 @@
         "name": "South Africa",
         "flag": "🇿🇦",
         "crest": "https://crests.football-data.org/9396.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "16:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-18",
       "utcDate": "2026-06-18T16:00:00Z",
@@ -1018,8 +1018,10 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "matchDay": 2,
-      "winner": null,
-      "referees": [],
+      "winner": "HOME_TEAM",
+      "referees": [
+        "Tori Penso"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Czechia and South Africa (GROUP_A)"
@@ -4107,5 +4109,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-18T12:54:12.621696Z"
+  "lastUpdated": "2026-06-18T16:33:46.588847Z"
 }

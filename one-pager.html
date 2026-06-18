@@ -13,7 +13,46 @@
 
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
-  <nav class="nav-links" id="main-nav"></nav>
+  <nav class="site-nav" id="main-nav" aria-label="Main">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
+        <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
+      </a>
+      <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
+      <div class="nav-actions">
+      <ul class="nav-list">
+        <li><a href="financials.html" class="nav-link" aria-label="Numbers"><img src="images/read.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Numbers</span></a></li>
+        <li><a href="media.html" class="nav-link" aria-label="Media"><img src="images/media.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Media</span></a></li>
+        <li><a href="journal.html" class="nav-link" aria-label="Docs"><img src="images/announcements.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Docs</span></a></li>
+      </ul>
+      <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+          <path class="sun-icon" d="M12 4V2M12 22v-2M4 12H2M22 12h-2M5.64 5.64 4.22 4.22M19.78 19.78l-1.42-1.42M18.36 5.64l1.42-1.42M4.22 19.78l1.42-1.42M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+          <path class="moon-icon" d="M21 14.2A8.8 8.8 0 0 1 9.8 3a7.2 7.2 0 1 0 11.2 11.2Z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  </nav>
+  <script>
+    (function () {
+      const toggle = document.getElementById('darkModeToggle');
+      function updateToggle() {
+        if (!toggle) return;
+        const isDark = document.documentElement.classList.contains('dark-mode');
+        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark-mode');
+          try { localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode') ? '1' : '0'); } catch (e) {}
+          updateToggle();
+        });
+      }
+      updateToggle();
+    })();
+  </script>
 
   <main class="one-pager-container" id="main-content">
     <header class="one-pager-header">
@@ -41,7 +80,7 @@
       <article class="section-card">
         <h2>
           <img src="images/announcements.webp" alt="Docs section icon" class="section-link-image" loading="lazy">
-          <a href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Journal" title="Open Journal">Latest Docs</a>
+          <a href="journal.html" target="_blank" rel="noopener noreferrer" aria-label="Open Docs" title="Open Docs">Latest Docs</a>
         </h2>
         <ul id="latest-journal" class="compact-list"></ul>
       </article>
@@ -108,9 +147,6 @@
 
     <script src="js/services.js" defer></script>
     <script src="js/html-utils.js" defer></script>
-    <script src="js/pages-config.js" defer></script>
-    <script src="js/nav.js" defer></script>
-    <script src="js/swipe-nav.js" defer></script>
     <script src="js/utils.js" defer></script>
     <script src="js/one-pager.js" defer></script>
     <script src="js/search.js" defer></script>

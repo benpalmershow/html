@@ -1,0 +1,65 @@
+/* ========================================
+   UTILITIES
+   ======================================== */
+
+.loading-state {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-muted);
+    font-style: normal;
+    min-height: 4rem;
+    display: grid;
+    place-items: center;
+}
+
+.error-state {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--color-error);
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(var(--border-color-rgb), 0.9);
+    border-left: 3px solid var(--color-error);
+    border-radius: var(--card-radius);
+    margin: var(--spacing-md) 0;
+}
+
+/* Spacing Helpers */
+.m-xs {
+    margin: var(--spacing-xs);
+}
+
+.m-sm {
+    margin: var(--spacing-sm);
+}
+
+.m-md {
+    margin: var(--spacing-md);
+}
+
+.m-lg {
+    margin: var(--spacing-lg);
+}
+
+.m-xl {
+    margin: var(--spacing-xl);
+}
+
+.p-xs {
+    padding: var(--spacing-xs);
+}
+
+.p-sm {
+    padding: var(--spacing-sm);
+}
+
+.p-md {
+    padding: var(--spacing-md);
+}
+
+.p-lg {
+    padding: var(--spacing-lg);
+}
+
+.p-xl {
+    padding: var(--spacing-xl);
+}

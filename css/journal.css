@@ -1,298 +1,72 @@
 /* ============================================================
-   journal.css — standalone, no dependencies
-   Layout and component styles for journal.html
+   journal.css — Journal-specific styles for journal.html
    ============================================================ */
 
-/* ── 1. Base tokens (for standalone page) ── */
-:root {
-  /* Primitives */
-  --color-primary-rgb: 26, 26, 24;
-  --color-primary:     rgb(var(--color-primary-rgb));
+/* ── Main Layout ── */
+main{flex:1}
+.page-header{width:min(100%,1120px);margin:0 auto;padding:2rem 1rem 1rem}
+.page-title{margin:0;text-align:center;color:var(--text-muted);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.content{width:min(100%,760px);margin:0 auto;padding:0 1rem 5rem}
 
-  /* Surface */
-  --bg-primary:   #f9f9f7;
-  --bg-secondary: #f2f2ef;
+/* ── Day Group ── */
+.day{margin:0 0 2rem;content-visibility:auto;contain-intrinsic-size:0 160px}
+.day-header{display:flex;align-items:center;gap:.75rem;margin:0 0 .8rem;color:var(--text-muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.day-header::after{content:"";flex:1;height:1px;background:var(--border-color)}
 
-  /* Text */
-  --text-primary:   #1a1a18;
-  --text-secondary: #3a3a37;
-  --text-muted:     #656562;
-
-  /* Border & shadow */
-  --border-color: #e2e2de;
-
-  /* Accent */
-  --accent-primary:           #1a1a18;
-  --accent-secondary:         #555550;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary-rgb: 232, 232, 228;
-    --color-primary:     rgb(var(--color-primary-rgb));
-
-    --bg-primary:   #141412;
-    --bg-secondary: #1e1e1b;
-
-    --text-primary:   #e8e8e4;
-    --text-secondary: #c0c0bc;
-    --text-muted:     #656562;
-
-    --border-color: #2a2a27;
-
-    --accent-primary:  #e8e8e4;
-    --accent-secondary:#999994;
-  }
-}
-
-/* ── 2. Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html  { font-size: 16px; scroll-behavior: smooth; }
-body  {
-  background: var(--bg-primary);
-  color:      var(--text-primary);
-  font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── 3. Page shell ── */
-#app {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 2rem 1rem 6rem;
-}
-
-/* Override .content max-width for journal page */
-.content {
-  max-width: 640px;
-}
-
-/* ── 4. Header ── */
-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--text-primary);
-  margin-bottom: 2.5rem;
-}
-
-header h1 {
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--text-primary);
-}
-
-/* ── Entry styles ── */
-.entry {
-  padding: .5rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.entry:last-child { border-bottom: none; }
-
-/* ── Entry head ── */
-.entry-head {
-  display: flex;
-  align-items: flex-start;
-  gap: .5rem;
-}
-
-.entry-head.has-toggle          { cursor: pointer; }
-.entry-head.has-toggle:hover .entry-title { opacity: .6; }
-
-/* ── Title ── */
-.entry-title {
-  flex: 1;
-  font-size: .925rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--text-primary);
-  word-break: break-word;
-}
-
-.entry-title a {
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: opacity .15s;
-}
-
-/* ── Meta (time + link icon) ── */
-.entry-meta {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  flex-shrink: 0;
-}
-
-.entry-time {
-  font-size: .7rem;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.entry-link-icon {
-  display: inline-block;
-  color: var(--text-muted);
-  text-decoration: none;
-  line-height: 1;
-  transition: color .15s;
-  padding: 6px;
-}
-
-.entry-link-icon:hover { color: var(--text-primary); }
+/* ── Entry ── */
+.entry{padding:.55rem 0;border-bottom:1px solid var(--border-color)}
+.entry:last-child{border-bottom:0}
+.entry-head{display:flex;align-items:flex-start;gap:.55rem}
+.entry-head.has-toggle{cursor:pointer}
+.entry-head:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:6px}
+.entry-title{flex:1;min-width:0;color:var(--text-primary);font-size:.95rem;font-weight:600;line-height:1.4;word-break:break-word}
+.entry-title a{color:var(--text-primary)}
+.entry-meta{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.entry-time{color:var(--text-muted);font-size:.72rem;font-variant-numeric:tabular-nums;white-space:nowrap}
 
 /* ── Chevron ── */
-.chevron {
-  width: 13px;
-  height: 13px;
-  flex-shrink: 0;
-  color: var(--text-muted);
-  transition: transform .2s ease;
-  margin-top: 3px;
-}
+.chevron{width:13px;height:13px;flex-shrink:0;margin-top:3px;color:var(--text-muted);transition:transform .18s ease}
+.entry-head[aria-expanded="true"] .chevron{transform:rotate(90deg)}
 
-.entry-head[aria-expanded="true"] .chevron { transform: rotate(90deg); }
-
-@media (prefers-reduced-motion: reduce) {
-  .chevron { transition: none; }
-}
-
-/* ── Day group ── */
-.day {
-  margin-bottom: 2rem;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 80px;
-}
-
-.day-header {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: .75rem;
-}
-
-.day-header::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border-color);
-}
-
-/* ── Inline content ── */
-.entry-content {
-  font-size: .875rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-top: .45rem;
-}
-
-.entry-content a {
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-.entry-content a:hover { opacity: .6; }
-
-.entry-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-top: .5rem;
-  border: 1px solid var(--border-color);
-}
+/* ── Entry Content ── */
+.entry-content,.accordion-inner{color:var(--text-secondary);font-size:.9rem;line-height:1.7}
+.entry-content a,.accordion-inner a{display:inline-flex;align-items:center;min-height:44px;margin:-.2em -.15em;padding:.2em .15em;border-radius:6px}
+.entry-content a:hover,.entry-content a:focus,.accordion-inner a:hover,.accordion-inner a:focus{opacity:1}
+.entry-content img,.accordion-inner img{max-width:100%;height:auto;border:1px solid var(--border-color);border-radius:8px;margin:.75rem 0}
 
 /* ── Accordion ── */
-.accordion[hidden] { display: none; }
+.accordion[hidden]{display:none}
+.accordion-inner{border-top:1px solid var(--border-color);margin-top:.5rem;padding-top:.75rem}
+.accordion-inner h1,.accordion-inner h2,.accordion-inner h3{margin:1.2em 0 .4em;color:var(--text-primary);font-size:1rem;font-weight:800}
+.accordion-inner p{margin:0 0 .85em}
+.accordion-inner p:last-child{margin-bottom:0}
+.accordion-inner ul,.accordion-inner ol{padding-left:1.25rem;margin:0 0 .85rem}
+.accordion-inner li{margin:.2em 0}
+.accordion-inner blockquote{margin:.85em 0;border-left:3px solid var(--border-color);padding-left:.85rem;color:var(--text-muted)}
+.accordion-inner code{background:var(--bg-secondary);border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;padding:.1em .35em}
+.accordion-inner pre{background:var(--bg-secondary);border-radius:8px;margin:0 0 .85rem;overflow-x:auto;padding:.85rem}
+.accordion-inner pre code{background:transparent;padding:0}
+.accordion-inner .loading{color:var(--text-muted);font-size:.85rem}
+.video-placeholder{display:flex;align-items:center;justify-content:center;min-height:220px;margin:.75rem 0;border:1px solid var(--border-color);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);cursor:pointer;font-weight:800}
+.video-placeholder:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 
-.accordion-inner {
-  font-size: .875rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  border-top: 1px solid var(--border-color);
-  padding-top: .75rem;
-  margin-top: .5rem;
+/* ── Load More & Empty State ── */
+.load-more{display:none;width:100%;min-height:48px;margin:1rem 0 0;border:1px solid var(--border-color);border-radius:999px;background:var(--bg-secondary);color:var(--text-primary);font-weight:800;cursor:pointer}
+.load-more.is-visible{display:inline-flex;align-items:center;justify-content:center}
+.load-more:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+#empty{display:none;color:var(--text-muted);padding:2rem 0;font-size:.9rem}
+
+/* ── Responsive ── */
+@media (max-width:640px){
+  .page-header{padding-top:1.4rem}
+  .content{padding:0 .85rem 4rem}
+  .entry-title{font-size:.92rem}
 }
 
-.accordion-inner h1,
-.accordion-inner h2,
-.accordion-inner h3 {
-  font-size: .925rem;
-  font-weight: 600;
-  margin: 1.2em 0 .4em;
-  color: var(--text-primary);
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .chevron,.entry-title a,.entry-content a,.accordion-inner a{transition:none}
 }
 
-.accordion-inner p          { margin-bottom: .75em; }
-.accordion-inner p:last-child{ margin-bottom: 0; }
 
-.accordion-inner ul,
-.accordion-inner ol {
-  padding-left: 1.2em;
-  margin-bottom: .75em;
-}
-
-.accordion-inner li         { margin-bottom: .2em; }
-
-.accordion-inner blockquote {
-  border-left: 2px solid var(--border-color);
-  padding-left: .75rem;
-  color: var(--text-muted);
-  margin: .75em 0;
-}
-
-.accordion-inner code {
-  font-family: "SF Mono", "Fira Mono", Consolas, monospace;
-  font-size: .82em;
-  background: var(--bg-secondary);
-  padding: .1em .3em;
-  border-radius: 2px;
-}
-
-.accordion-inner pre {
-  background: var(--bg-secondary);
-  padding: .75em;
-  overflow-x: auto;
-  border-radius: 2px;
-  margin-bottom: .75em;
-}
-
-.accordion-inner pre code { background: none; padding: 0; }
-
-.accordion-inner a {
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-.accordion-inner img {
-  max-width: 100%;
-  border-radius: 4px;
-  margin-top: .5rem;
-}
-
-.accordion-inner .loading {
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-/* ── Empty state ── */
-#empty {
-  color: var(--text-muted);
-  font-size: .875rem;
-  padding: 2rem 0;
-  display: none;
-}
-
-/* ── Mobile ── */
-@media (max-width: 480px) {
-  main { padding: 1.25rem .75rem 5rem; }
-}

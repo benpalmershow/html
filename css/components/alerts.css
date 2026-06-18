@@ -1,0 +1,29 @@
+/* ========================================
+   COMPONENTS: ALERTS & BOXES
+   ======================================== */
+
+.historical-note,
+.legal-box,
+.note {
+    background: var(--bg-secondary);
+    border: 0.5px solid var(--accent-secondary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    border-radius: .4em;
+    color: var(--text-secondary);
+}
+
+.smart-summary,
+.welcome-card {
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-primary);
+    border-radius: .5em;
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    box-shadow: 0 2px 8px var(--shadow-color);
+
+    h2 {
+        margin-top: 0;
+        color: var(--accent-secondary);
+    }
+}

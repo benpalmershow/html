@@ -3,232 +3,416 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Journal - Howdy, Stranger</title>
+  <title>Docs - Howdy, Stranger</title>
+  <meta name="description" content="Short-form analysis, observations, and links from Howdy, Stranger.">
   <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/journal.css">
+  <link rel="stylesheet" href="css/theme.css?v=20260614">
+  <link rel="stylesheet" href="css/body.css?v=20260614">
+  <link rel="stylesheet" href="css/nav.css?v=20260614">
+  <link rel="preload" href="css/journal.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/journal.css?v=20260614"></noscript>
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
-  <nav class="nav-links" id="main-nav"></nav>
+  <nav class="site-nav" id="main-nav" aria-label="Main">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
+        <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
+      </a>
+      <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
+      <div class="nav-actions">
+      <ul class="nav-list">
+        <li><a href="financials.html" class="nav-link" aria-label="Numbers"><img src="images/read.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Numbers</span></a></li>
+        <li><a href="media.html" class="nav-link" aria-label="Media"><img src="images/media.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Media</span></a></li>
+        <li><a href="journal.html" class="nav-link active" aria-current="page" aria-label="Docs"><img src="images/announcements.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Docs</span><span class="nav-active-dot" aria-hidden="true"></span></a></li>
+      </ul>
+      <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+          <path class="sun-icon" d="M12 4V2M12 22v-2M4 12H2M22 12h-2M5.64 5.64 4.22 4.22M19.78 19.78l-1.42-1.42M18.36 5.64l1.42-1.42M4.22 19.78l1.42-1.42M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+          <path class="moon-icon" d="M21 14.2A8.8 8.8 0 0 1 9.8 3a7.2 7.2 0 1 0 11.2 11.2Z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  </nav>
+  <script>
+    (function () {
+      const toggle = document.getElementById('darkModeToggle');
+      function updateToggle() {
+        if (!toggle) return;
+        const isDark = document.documentElement.classList.contains('dark-mode');
+        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark-mode');
+          try { localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode') ? '1' : '0'); } catch (e) {}
+          updateToggle();
+        });
+      }
+      updateToggle();
+    })();
+  </script>
 
- <main id="main-content" tabindex="-1">
-      <div class="page-header page-header-branded page-header-bg-brand media-bg animated-bg">
-        <h1 class="page-title" aria-label="Page title">Docs</h1>
-      </div>
-
+  <main id="main-content" tabindex="-1">
+    <div class="page-header">
+      <h1 class="page-title">Docs</h1>
+    </div>
     <div class="content">
-      <div id="feed"></div>
+      <div id="feed" aria-live="polite"></div>
+      <button id="load-more" class="load-more" type="button">Load more</button>
       <p id="empty">No entries found.</p>
     </div>
   </main>
 
-  <script src="js/nav.js" defer></script>
-  <script src="js/back-to-top.js" defer></script>
-  <script>
-  (function() {
-    'use strict';
-
-    const feed    = document.getElementById('feed');
-    const emptyEl  = document.getElementById('empty');
-
-    let allDays = [];
-  let markedLoaded  = false;
-  let markedLoading = false;
-  const markedCallbacks = [];
-
-  // ── Front matter stripper ──
-   function stripFrontmatter(md) {
-     const match = String(md || '').match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-     return match ? match[2].trim() : md;
-   }
-
-   // ── Markdown loader — deferred until first accordion open ──
-  function loadMarked(cb) {
-    if (markedLoaded) { cb(); return; }
-    markedCallbacks.push(cb);
-    if (markedLoading) return;
-    markedLoading = true;
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/marked@9/marked.min.js';
-    s.onload = () => {
-      markedLoaded = true;
-      markedCallbacks.forEach(fn => fn());
-      markedCallbacks.length = 0;
-    };
-    document.head.appendChild(s);
-  }
-
-  // ── Fetch .md files on demand, cache in memory ──
-  const mdCache = {};
-  function fetchMd(path, cb) {
-    if (mdCache[path]) { cb(mdCache[path]); return; }
-    fetch(path)
-      .then(r => r.ok ? r.text() : Promise.reject(r.status))
-      .then(text => { mdCache[path] = text; cb(text); })
-      .catch(() => cb(null));
-  }
-
-  // ── Title may contain raw HTML <a> tags already ──
-  function renderTitle(title, link) {
-    if (/<a\s/i.test(title)) return title;
-    const esc = title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    if (link) {
-      const ext = link.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
-      return `<a href="${link}"${ext}>${esc}</a>`;
-    }
-    return esc;
-  }
-
-  // ── Build one entry ──
-  function buildEntry(entry) {
-    const hasFile    = !!entry.file;
-    const hasContent = !!entry.content;
-    const hasLink    = !!entry.link;
-
-    const div     = document.createElement('div');
-    div.className = 'entry';
-
-    const headEl     = document.createElement('div');
-    headEl.className = 'entry-head' + (hasFile ? ' has-toggle' : '');
-
-    // Title
-    const titleEl     = document.createElement('span');
-    titleEl.className = 'entry-title';
-    const linkForTitle = hasLink ? entry.link : null;
-    titleEl.innerHTML  = renderTitle(entry.title, linkForTitle);
-
-    // Meta
-    const metaEl     = document.createElement('span');
-    metaEl.className = 'entry-meta';
-
-    if (entry.time) {
-      const t = document.createElement('span');
-      t.className = 'entry-time';
-      t.textContent = entry.time;
-      metaEl.appendChild(t);
-    }
-
-    headEl.appendChild(titleEl);
-    headEl.appendChild(metaEl);
-
-    // Accordion for file-based entries
-    let accordionEl = null;
-    if (hasFile) {
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('class',            'chevron');
-      svg.setAttribute('viewBox',          '0 0 14 14');
-      svg.setAttribute('fill',             'none');
-      svg.setAttribute('stroke',           'currentColor');
-      svg.setAttribute('stroke-width',     '1.5');
-      svg.setAttribute('stroke-linecap',   'round');
-      svg.setAttribute('stroke-linejoin',  'round');
-      svg.setAttribute('aria-hidden',      'true');
-      svg.innerHTML = '<polyline points="4,2 9,7 4,12"/>';
-      headEl.insertBefore(svg, titleEl);
-
-      accordionEl = document.createElement('div');
-      accordionEl.className = 'accordion';
-      accordionEl.hidden    = true;
-      accordionEl.setAttribute('role', 'region');
-
-      const inner     = document.createElement('div');
-      inner.className = 'accordion-inner';
-      accordionEl.appendChild(inner);
-
-      let loaded = false;
-      headEl.setAttribute('role',         'button');
-      headEl.setAttribute('tabindex',     '0');
-      headEl.setAttribute('aria-expanded','false');
-
-      function toggle() {
-        const open = headEl.getAttribute('aria-expanded') === 'true';
-        headEl.setAttribute('aria-expanded', String(!open));
-        accordionEl.hidden = open;
-
-        if (!open && !loaded) {
-          loaded = true;
-          inner.innerHTML = '<span class="loading">Loading…</span>';
-          loadMarked(() => {
-fetchMd(entry.file, text => {
-               const body = stripFrontmatter(text);
-               inner.innerHTML = body
-                 ? window.marked.parse(body)
-                 : '<span class="loading">Could not load file.</span>';
-             });
-          });
-        }
-      }
-
-      headEl.addEventListener('click',   toggle);
-      headEl.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-      });
-    }
-
-    div.appendChild(headEl);
-
-    if (hasContent) {
-      const contentEl     = document.createElement('div');
-      contentEl.className = 'entry-content';
-      contentEl.innerHTML = entry.content;
-      div.appendChild(contentEl);
-    }
-
-    if (accordionEl) div.appendChild(accordionEl);
-
-    return div;
-  }
-
-  // ── Build one day group ──
-  function buildDay(day) {
-    const section     = document.createElement('section');
-    section.className = 'day';
-    section.dataset.date = day.date;
-
-    const header     = document.createElement('div');
-    header.className = 'day-header';
-    header.textContent = day.date;
-    section.appendChild(header);
-
-    day.entries.forEach(entry => section.appendChild(buildEntry(entry)));
-    return section;
-  }
-
-  // ── Render ──
-  function render(days) {
-    feed.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    days.forEach(day => frag.appendChild(buildDay(day)));
-    feed.appendChild(frag);
-    emptyEl.style.display = days.length === 0 ? 'block' : 'none';
-  }
-
-// ── Bootstrap ──
-    fetch('json/journal.json')
-      .then(r => r.json())
-      .then(data => { allDays = data; render(allDays); })
-      .catch(() => {
-        feed.innerHTML = '<p style="color:var(--text-muted);font-size:.875rem">Failed to load journal.json</p>';
-      });
-})();
-</script>
   <script>
     (function () {
-      const loadLucide = () => {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
-        script.defer = true;
-        script.onload = () => window.lucide?.createIcons();
-        document.head.appendChild(script);
+      'use strict';
+
+      const feed = document.getElementById('feed');
+      const emptyEl = document.getElementById('empty');
+      const loadMore = document.getElementById('load-more');
+      const mdCache = {};
+      const BATCH_DAYS = 3;
+      let allDays = [];
+      let renderIndex = 0;
+
+      const imageSizes = {
+        'images/read.webp': [16, 16],
+        'images/arrivals-of-ships.png': [1200, 800],
+        'images/U.S. Department-small.png': [300, 220],
+        'images/Zeekr.png': [1516, 1220]
       };
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadLucide, { timeout: 3000 });
-      } else {
-        setTimeout(loadLucide, 100);
+
+      function stripFrontmatter(md) {
+        const match = String(md || '').match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+        return match ? match[2].trim() : String(md || '').trim();
       }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function escapeAttr(value) {
+        return escapeHtml(value).replace(/`/g, '&#96;');
+      }
+
+      function renderTitle(title, link) {
+        if (/<a\s/i.test(title)) return title;
+        const esc = escapeHtml(title);
+        if (link) {
+          const ext = /^https?:\/\//i.test(link) ? ' target="_blank" rel="noopener noreferrer"' : '';
+          return '<a href="' + escapeAttr(link) + '"' + ext + '>' + esc + '</a>';
+        }
+        return esc;
+      }
+
+      function parseInline(text, autolink) {
+        let out = escapeHtml(text)
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+        const links = [];
+        out = out.replace(/\[([^\]]+)]\((https?:\/\/[^)\s]+)\)/g, (_, label, url) => {
+          links.push('<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + parseInline(label, false) + '</a>');
+          return '@@LINK' + (links.length - 1) + '@@';
+        });
+
+        if (autolink) {
+          out = out.replace(/https?:\/\/[^\s<)]+/g, url => '<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a>');
+        }
+
+        return out.replace(/@@LINK(\d+)@@/g, (_, i) => links[Number(i)] || '');
+      }
+
+      function parseMarkdown(markdown) {
+        const lines = stripFrontmatter(markdown).replace(/\r\n/g, '\n').split('\n');
+        let html = '';
+        let paragraph = [];
+        let inCode = false;
+        let inList = false;
+
+        function flushParagraph() {
+          if (!paragraph.length) return;
+          html += '<p>' + parseInline(paragraph.join(' '), true) + '</p>';
+          paragraph = [];
+        }
+
+        function closeList() {
+          if (!inList) return;
+          html += '</ul>';
+          inList = false;
+        }
+
+        lines.forEach(line => {
+          const trimmed = line.trim();
+          if (!trimmed) {
+            flushParagraph();
+            return;
+          }
+
+          if (/^```/.test(line)) {
+            flushParagraph();
+            closeList();
+            if (inCode) {
+              html += '</code></pre>';
+              inCode = false;
+            } else {
+              html += '<pre><code>';
+              inCode = true;
+            }
+            return;
+          }
+
+          if (inCode) {
+            html += escapeHtml(line) + '\n';
+            return;
+          }
+
+          const heading = line.match(/^(#{1,6})\s+(.+)$/);
+          if (heading) {
+            flushParagraph();
+            closeList();
+            const level = Math.min(heading[1].length, 3);
+            html += '<h' + level + '>' + parseInline(heading[2], true) + '</h' + level + '>';
+            return;
+          }
+
+          const quote = line.match(/^>\s?(.+)$/);
+          if (quote) {
+            flushParagraph();
+            closeList();
+            html += '<blockquote>' + parseInline(quote[1], true) + '</blockquote>';
+            return;
+          }
+
+          const item = line.match(/^[-*]\s+(.+)$/);
+          if (item) {
+            flushParagraph();
+            if (!inList) {
+              html += '<ul>';
+              inList = true;
+            }
+            html += '<li>' + parseInline(item[1], true) + '</li>';
+            return;
+          }
+
+          paragraph.push(trimmed);
+        });
+
+        flushParagraph();
+        closeList();
+        if (inCode) html += '</code></pre>';
+        return html;
+      }
+
+      function getAttr(tag, name) {
+        const match = tag.match(new RegExp('\\s' + name + '\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\')', 'i'));
+        return (match && (match[1] || match[2] || '')).trim();
+      }
+
+      function imageSize(src) {
+        return imageSizes[src] || [1200, 675];
+      }
+
+      function normalizeImages(html) {
+        return String(html || '').replace(/<img\b[^>]*>/gi, tag => {
+          const src = getAttr(tag, 'src');
+          if (!src) return '';
+          const alt = getAttr(tag, 'alt') || '';
+          const size = imageSize(src);
+          const attrs = 'src="' + escapeAttr(src) + '" alt="' + escapeAttr(alt) + '" width="' + size[0] + '" height="' + size[1] + '" loading="lazy" decoding="async"';
+          const external = /^https?:\/\//i.test(src);
+          const img = '<img ' + attrs + (external ? ' referrerpolicy="no-referrer" crossorigin="anonymous"' : '') + '>';
+          return external ? '<a class="media-link" href="' + escapeAttr(src) + '" target="_blank" rel="noopener noreferrer" aria-label="Open image">' + img + '</a>' : img;
+        });
+      }
+
+      function normalizeIframes(html) {
+        return String(html || '').replace(/<iframe\b[^>]*>/gi, tag => {
+          const src = getAttr(tag, 'src');
+          if (!src) return '';
+          const title = getAttr(tag, 'title') || 'Embedded video';
+          return '<div class="video-placeholder" role="button" tabindex="0" data-video-src="' + escapeAttr(src) + '" aria-label="Play ' + escapeAttr(title) + '">Play video</div>';
+        });
+      }
+
+      function normalizeContent(html) {
+        return normalizeIframes(normalizeImages(html));
+      }
+
+      function buildEntry(entry) {
+        const hasFile = !!entry.file;
+        const hasContent = !!entry.content;
+        const hasLink = !!entry.link;
+        const div = document.createElement('div');
+        div.className = 'entry';
+
+        const headEl = document.createElement('div');
+        headEl.className = 'entry-head' + (hasFile ? ' has-toggle' : '');
+
+        const titleEl = document.createElement('span');
+        titleEl.className = 'entry-title';
+        titleEl.innerHTML = renderTitle(entry.title, hasLink ? entry.link : null);
+
+        const metaEl = document.createElement('span');
+        metaEl.className = 'entry-meta';
+        if (entry.time) {
+          const time = document.createElement('span');
+          time.className = 'entry-time';
+          time.textContent = entry.time;
+          metaEl.appendChild(time);
+        }
+
+        headEl.appendChild(titleEl);
+        headEl.appendChild(metaEl);
+
+        let accordionEl = null;
+        if (hasFile) {
+          const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('class', 'chevron');
+          svg.setAttribute('viewBox', '0 0 14 14');
+          svg.setAttribute('fill', 'none');
+          svg.setAttribute('stroke', 'currentColor');
+          svg.setAttribute('stroke-width', '1.5');
+          svg.setAttribute('stroke-linecap', 'round');
+          svg.setAttribute('stroke-linejoin', 'round');
+          svg.setAttribute('aria-hidden', 'true');
+          svg.innerHTML = '<polyline points="4,2 9,7 4,12"/>';
+          headEl.insertBefore(svg, titleEl);
+
+          accordionEl = document.createElement('div');
+          accordionEl.className = 'accordion';
+          accordionEl.hidden = true;
+          accordionEl.setAttribute('role', 'region');
+
+          const inner = document.createElement('div');
+          inner.className = 'accordion-inner';
+          accordionEl.appendChild(inner);
+
+          let loaded = false;
+          headEl.setAttribute('role', 'button');
+          headEl.setAttribute('tabindex', '0');
+          headEl.setAttribute('aria-expanded', 'false');
+
+          function toggle() {
+            const open = headEl.getAttribute('aria-expanded') === 'true';
+            headEl.setAttribute('aria-expanded', String(!open));
+            accordionEl.hidden = open;
+
+            if (!open && !loaded) {
+              loaded = true;
+              inner.innerHTML = '<span class="loading">Loading…</span>';
+              if (mdCache[entry.file]) {
+                inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
+                return;
+              }
+              fetch(entry.file)
+                .then(response => response.ok ? response.text() : Promise.reject(response.status))
+                .then(text => {
+                  mdCache[entry.file] = text;
+                  inner.innerHTML = normalizeContent(parseMarkdown(text));
+                })
+                .catch(() => {
+                  inner.innerHTML = '<span class="loading">Could not load file.</span>';
+                });
+            }
+          }
+
+          headEl.addEventListener('click', toggle);
+          headEl.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              toggle();
+            }
+          });
+        }
+
+        div.appendChild(headEl);
+
+        if (hasContent) {
+          const contentEl = document.createElement('div');
+          contentEl.className = 'entry-content';
+          contentEl.innerHTML = normalizeContent(entry.content);
+          div.appendChild(contentEl);
+        }
+
+        if (accordionEl) div.appendChild(accordionEl);
+        return div;
+      }
+
+      function buildDay(day) {
+        const section = document.createElement('section');
+        section.className = 'day';
+        section.dataset.date = day.date;
+
+        const header = document.createElement('div');
+        header.className = 'day-header';
+        header.textContent = day.date;
+        section.appendChild(header);
+
+        (day.entries || []).forEach(entry => section.appendChild(buildEntry(entry)));
+        return section;
+      }
+
+      function renderMore() {
+        const next = allDays.slice(renderIndex, renderIndex + BATCH_DAYS);
+        const fragment = document.createDocumentFragment();
+        next.forEach(day => fragment.appendChild(buildDay(day)));
+        feed.appendChild(fragment);
+        renderIndex += next.length;
+        loadMore.classList.toggle('is-visible', renderIndex < allDays.length);
+        emptyEl.style.display = allDays.length === 0 ? 'block' : 'none';
+      }
+
+      function activateVideo(target) {
+        if (!target || target.dataset.loaded === 'true') return;
+        target.dataset.loaded = 'true';
+        const iframe = document.createElement('iframe');
+        iframe.width = '560';
+        iframe.height = '315';
+        iframe.src = target.dataset.videoSrc;
+        iframe.title = 'Embedded video';
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        target.replaceWith(iframe);
+      }
+
+      feed.addEventListener('click', event => {
+        activateVideo(event.target.closest('[data-video-src]'));
+      });
+
+      feed.addEventListener('keydown', event => {
+        const target = event.target.closest('[data-video-src]');
+        if (!target) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          activateVideo(target);
+        }
+      });
+
+      loadMore.addEventListener('click', renderMore);
+
+      fetch('json/journal.json')
+        .then(response => response.ok ? response.json() : Promise.reject(response.status))
+        .then(data => {
+          allDays = Array.isArray(data) ? data : [];
+          renderMore();
+        })
+        .catch(() => {
+          feed.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem">Failed to load journal.json</p>';
+          emptyEl.style.display = 'none';
+          loadMore.style.display = 'none';
+        });
     })();
   </script>
 </body>

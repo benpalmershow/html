@@ -3,6 +3,89 @@
    Layout and component styles for journal.html
    ============================================================ */
 
+/* ── 1. Base tokens (for standalone page) ── */
+:root {
+  /* Primitives */
+  --color-primary-rgb: 26, 26, 24;
+  --color-primary:     rgb(var(--color-primary-rgb));
+
+  /* Surface */
+  --bg-primary:   #f9f9f7;
+  --bg-secondary: #f2f2ef;
+
+  /* Text */
+  --text-primary:   #1a1a18;
+  --text-secondary: #3a3a37;
+  --text-muted:     #656562;
+
+  /* Border & shadow */
+  --border-color: #e2e2de;
+
+  /* Accent */
+  --accent-primary:           #1a1a18;
+  --accent-secondary:         #555550;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary-rgb: 232, 232, 228;
+    --color-primary:     rgb(var(--color-primary-rgb));
+
+    --bg-primary:   #141412;
+    --bg-secondary: #1e1e1b;
+
+    --text-primary:   #e8e8e4;
+    --text-secondary: #c0c0bc;
+    --text-muted:     #656562;
+
+    --border-color: #2a2a27;
+
+    --accent-primary:  #e8e8e4;
+    --accent-secondary:#999994;
+  }
+}
+
+/* ── 2. Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { font-size: 16px; scroll-behavior: smooth; }
+body  {
+  background: var(--bg-primary);
+  color:      var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 3. Page shell ── */
+#app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem 6rem;
+}
+
+/* Override .content max-width for journal page */
+.content {
+  max-width: 640px;
+}
+
+/* ── 4. Header ── */
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--text-primary);
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
 /* ── Entry styles ── */
 .entry {
   padding: .5rem 0;

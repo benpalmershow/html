@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Docs - Howdy, Stranger</title>
-  <!-- Move dark mode script inside head to prevent flash -->
+  <title>Journal - Howdy, Stranger</title>
   <script>try{if(localStorage.getItem('darkMode')==='1')document.documentElement.classList.add('dark-mode');}catch(e){}</script>
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/body.css">
@@ -21,16 +20,13 @@
     </header>
     <div class="content">
       <div id="feed"></div>
-      <p id="empty" style="color: var(--text-muted); font-size: 0.875rem; padding: 2rem 0;">No entries found.</p>
+      <p id="empty">No entries found.</p>
     </div>
   </main>
-  
-  <!-- Footer Component -->
-  <div id="footer-container"></div>
 
   <script src="js/nav.js" defer></script>
   <script src="js/back-to-top.js" defer></script>
-<script>
+  <script>
   (function() {
     'use strict';
 
@@ -209,15 +205,7 @@ fetchMd(entry.file, text => {
     emptyEl.style.display = days.length === 0 ? 'block' : 'none';
   }
 
-// ── Footer loader ──
-    fetch('components/footer.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-      })
-      .catch(() => {});
-
-    // ── Bootstrap ──
+// ── Bootstrap ──
     fetch('json/journal.json')
       .then(r => r.json())
       .then(data => { allDays = data; render(allDays); })

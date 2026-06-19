@@ -2,8 +2,8 @@ name: Fetch World Cup Scores
 
 on:
   schedule:
-    # Run every 30 minutes during tournament
-    - cron: '*/30 * * * *'
+    # Run every 10 minutes during tournament
+    - cron: '*/10 * * * *'
   workflow_dispatch: # Allow manual trigger
 
 permissions:

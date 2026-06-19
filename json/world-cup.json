@@ -91,8 +91,8 @@
         "name": "Canada",
         "flag": "🇨🇦",
         "crest": "https://crests.football-data.org/canada.svg",
-        "score": 1,
-        "halfTimeScore": 0,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -101,8 +101,8 @@
         "name": "Bosnia-Herzegovina",
         "flag": "🇧🇦",
         "crest": "https://crests.football-data.org/bosnia.svg",
-        "score": 1,
-        "halfTimeScore": 1,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -116,7 +116,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "matchDay": 1,
-      "winner": "DRAW",
+      "winner": null,
       "referees": [
         "Facundo Tello"
       ],
@@ -4115,5 +4115,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-19T06:33:38.773001Z"
+  "lastUpdated": "2026-06-19T11:06:07.255536Z"
 }

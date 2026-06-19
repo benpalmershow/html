@@ -1183,7 +1183,9 @@
       "group": "GROUP_D",
       "matchDay": 2,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Felix Zwayer"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between United States and Australia (GROUP_D)"
@@ -4115,5 +4117,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-19T16:42:30.099259Z"
+  "lastUpdated": "2026-06-19T18:22:39.255869Z"
 }

@@ -43,7 +43,7 @@
 .match-score {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--logo-teal);
+  color: var(--text-primary);
   padding: 0 4px;
   min-width: 40px;
   text-align: center;

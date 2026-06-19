@@ -239,7 +239,7 @@
 .chart-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); -webkit-border-radius: var(--card-radius); border-radius: var(--card-radius); display: none; flex-direction: column; z-index: 100; opacity: 0; transform: scale(0.95); transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color); overflow: hidden; will-change: opacity, transform; }
 .chart-overlay.show { display: flex; opacity: 1; transform: scale(1); }
 .chart-overlay-header { display: none; }
-.chart-overlay-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 6px; margin: 0; }
+.chart-overlay-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 6px; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chart-overlay-title i { width: 18px; height: 18px; color: var(--color-primary); }
 .chart-overlay-title-floating { position: absolute; bottom: 6px; left: 6px; right: 40px; margin: 0; font-size: 0.8rem; font-weight: 600; color: var(--text-primary); z-index: 10; pointer-events: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .chart-overlay-close { padding: 2px 8px; border: 1px solid var(--border-color); border-radius: 6px; background: transparent; color: var(--text-muted); font-size: 0.7rem; font-weight: 500; line-height: 1; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0; }
@@ -291,9 +291,13 @@
 .chart-modal-range-picker { display: flex; align-items: center; gap: 4px; padding: 0.5rem 1.5rem; border-bottom: 1px solid var(--border-color); background: var(--bg-secondary); flex-shrink: 0; order: 2; }
 .chart-modal-range-picker #closeChartModal { margin-left: auto; }
 .range-btn { padding: 4px 12px; border: 1px solid var(--border-color); border-radius: 6px; background: transparent; color: var(--text-muted); font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.15s ease; }
-
 .range-btn:hover { background: var(--bg-tertiary); color: var(--text-primary); }
 .range-btn.active { background: var(--logo-teal); color: #fff; border-color: var(--logo-teal); }
+
+@media (max-width: 400px) {
+  .chart-overlay-title { display: none; }
+  .chart-overlay-range-picker { justify-content: center; }
+}
 
 /* ========================================
    HORMUZ CRISIS CARD - MINIMAL

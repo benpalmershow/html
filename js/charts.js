@@ -76,8 +76,7 @@ function createChartOverlay(indicator, indicatorName) {
     overlay.className = 'chart-overlay';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
-    overlay.setAttribute('aria-labelledby', 'chart-overlay-title');
-    overlay.innerHTML = `<div class="chart-overlay-range-picker" id="chartRangePicker"><h4 id="chart-overlay-title" class="chart-overlay-title">${indicatorName} Chart</h4><button class="range-btn" data-range="3">3M</button><button class="range-btn" data-range="6">6M</button><button class="range-btn active" data-range="12">1Y</button><button class="chart-overlay-close" aria-label="Close chart">&times;</button></div><div class="chart-overlay-body"><div class="chart-overlay-loading"><div class="chart-overlay-loading-spinner"></div><span>Loading chart...</span></div></div>`;
+    overlay.innerHTML = `<div class="chart-overlay-range-picker" id="chartRangePicker"><button class="range-btn" data-range="3">3M</button><button class="range-btn" data-range="6">6M</button><button class="range-btn active" data-range="12">1Y</button><button class="chart-overlay-close" aria-label="Close chart">&times;</button></div><div class="chart-overlay-body"><div class="chart-overlay-loading"><div class="chart-overlay-loading-spinner"></div><span>Loading chart...</span></div></div>`;
     indicator.appendChild(overlay);
     const closeBtn = overlay.querySelector('.chart-overlay-close');
     closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); hideChartOverlay(overlay); });

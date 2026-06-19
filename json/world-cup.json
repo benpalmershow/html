@@ -1198,7 +1198,7 @@
         "name": "Scotland",
         "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
         "crest": "https://crests.football-data.org/814.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -1208,14 +1208,14 @@
         "name": "Morocco",
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "22:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T22:00:00Z",
@@ -1223,7 +1223,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "matchDay": 2,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Il'giz Tantashev"
       ],
@@ -4119,5 +4119,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-19T21:19:14.335112Z"
+  "lastUpdated": "2026-06-19T22:15:04.642985Z"
 }

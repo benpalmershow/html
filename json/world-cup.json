@@ -1199,7 +1199,7 @@
         "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
         "crest": "https://crests.football-data.org/814.svg",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -1209,13 +1209,13 @@
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
         "score": 1,
-        "halfTimeScore": null,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
       "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "time": "0-1 HT",
       "minute": null,
       "date": "2026-06-19",
       "utcDate": "2026-06-19T22:00:00Z",
@@ -1265,7 +1265,9 @@
       "group": "GROUP_C",
       "matchDay": 2,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Alejandro Hernández Hernández"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Brazil and Haiti (GROUP_C)"
@@ -4119,5 +4121,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-19T22:15:04.642985Z"
+  "lastUpdated": "2026-06-19T23:15:17.115058Z"
 }

@@ -1,0 +1,35 @@
+.world-cup-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wc-compact-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--bg-secondary, rgba(255,255,255,0.04));
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.wc-team {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wc-team:first-child {
+  text-align: right;
+}
+
+.wc-score {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary, #fff);
+  min-width: 36px;
+  text-align: center;
+}

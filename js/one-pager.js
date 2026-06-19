@@ -2,7 +2,8 @@ const LIMITS = {
   journal: Infinity,
   essays: Infinity,
   media: Infinity,
-  financials: Infinity
+  financials: Infinity,
+  worldCup: Infinity
 };
 const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
@@ -331,6 +332,54 @@ async function loadLatestFinancials() {
   renderList('latest-financials', lines);
 }
 
+async function loadLatestWorldCup() {
+  try {
+    const data = await Services.dataService.fetchJSON('json/world-cup.json');
+    const matches = (data.matches || [])
+      .filter(m => m.teamA?.name && m.teamB?.name)
+      .sort((a, b) => {
+        const aScore = (a.teamA.score != null && a.teamB.score != null) ? 1 : 0;
+        const bScore = (b.teamA.score != null && b.teamB.score != null) ? 1 : 0;
+        if (aScore !== bScore) return bScore - aScore;
+        return new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime();
+      })
+      .slice(0, LIMITS.worldCup);
+
+    const container = document.getElementById('latest-world-cup');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!matches.length) {
+      container.innerHTML = '<li>No matches found.</li>';
+      return;
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'world-cup-compact';
+
+    matches.forEach(match => {
+      const scoreA = match.teamA.score;
+      const scoreB = match.teamB.score;
+      const hasScore = scoreA !== null && scoreA !== undefined && scoreB !== null && scoreB !== undefined;
+      const scoreText = hasScore ? `${scoreA} - ${scoreB}` : 'vs';
+      const card = document.createElement('div');
+      card.className = 'wc-compact-match';
+      card.innerHTML = `
+        <span class="wc-team wc-team-a">${escapeHtml(match.teamA.name)} <span class="wc-flag">${match.teamA.flag || '🏳️'}</span></span>
+        <span class="wc-score">${scoreText}</span>
+        <span class="wc-team wc-team-b"><span class="wc-flag">${match.teamB.flag || '🏳️'}</span> ${escapeHtml(match.teamB.name)}</span>
+      `;
+      wrapper.appendChild(card);
+    });
+
+    container.appendChild(wrapper);
+  } catch (error) {
+    console.error('Failed to load World Cup data for one-pager:', error);
+    const target = document.getElementById('latest-world-cup');
+    if (target) target.innerHTML = '<li>Failed to load matches.</li>';
+  }
+}
+
 function setupPrintButton() {
   const button = document.getElementById('print-btn');
   if (!button) return;
@@ -344,7 +393,8 @@ async function initOnePager() {
   await Promise.allSettled([
     loadLatestJournal(),
     loadLatestMedia(),
-    loadLatestFinancials()
+    loadLatestFinancials(),
+    loadLatestWorldCup()
   ]);
 
   const params = new URLSearchParams(window.location.search);

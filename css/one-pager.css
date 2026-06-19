@@ -389,4 +389,56 @@
   .one-pager-header { grid-template-columns: 1fr; }
   .one-pager-footer { grid-template-columns: 1fr; }
   .footer-qr-link { width: 76px; height: 76px; }
+}.world-cup-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.wc-compact-match {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  border-radius: 3px;
+}
+
+.wc-team {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.wc-team-a {
+  justify-content: flex-end;
+}
+
+.wc-team-b {
+  justify-content: flex-start;
+}
+
+.wc-flag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.wc-score {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  min-width: 28px;
+  text-align: center;
+  font-size: 0.78rem;
+  flex-shrink: 0;
 }

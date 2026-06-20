@@ -1336,9 +1336,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "2-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T17:00:00Z",
@@ -1362,7 +1362,7 @@
         "name": "Germany",
         "flag": "🇩🇪",
         "crest": "https://crests.football-data.org/759.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -1372,14 +1372,14 @@
         "name": "Ivory Coast",
         "flag": "🇨🇮",
         "crest": "https://crests.football-data.org/787.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "20:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-20",
       "utcDate": "2026-06-20T20:00:00Z",
@@ -1387,7 +1387,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 2,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Juan Benítez"
       ],
@@ -4127,5 +4127,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-20T18:59:58.130850Z"
+  "lastUpdated": "2026-06-20T20:14:32.080034Z"
 }

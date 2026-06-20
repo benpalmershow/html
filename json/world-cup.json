@@ -1347,7 +1347,9 @@
       "group": "GROUP_F",
       "matchDay": 2,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Michael Oliver"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Netherlands and Sweden (GROUP_F)"
@@ -4123,5 +4125,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-20T14:33:59.626999Z"
+  "lastUpdated": "2026-06-20T16:03:22.219789Z"
 }

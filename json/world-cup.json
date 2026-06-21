@@ -1444,8 +1444,8 @@
         "name": "Tunisia",
         "flag": "🇹🇳",
         "crest": "https://crests.football-data.org/tunisia.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -1454,14 +1454,14 @@
         "name": "Japan",
         "flag": "🇯🇵",
         "crest": "https://crests.football-data.org/766.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 4,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "04:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-21",
       "utcDate": "2026-06-21T04:00:00Z",
@@ -1469,7 +1469,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "matchDay": 2,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "István Kovács"
       ],
@@ -4131,5 +4131,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-21T02:09:10.060233Z"
+  "lastUpdated": "2026-06-21T07:04:01.213407Z"
 }

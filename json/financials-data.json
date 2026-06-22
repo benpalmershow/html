@@ -1641,7 +1641,7 @@
             "parentCategory": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-06-11T14:00:00Z",
+            "lastUpdated": "2026-06-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "2026": {
@@ -1649,9 +1649,15 @@
                 "february": "98",
                 "march": "5",
                 "april": "20",
-                "may": "11"
+                "may": "11",
+                "june": "3"
             },
             "probabilities": {
+                "2026-06-22": {
+                    "hormuzInbound": 10,
+                    "hormuzOutbound": 10
+                   
+                },
                 "2026-06-11": {
                     "vesselsInGulf": 531,
                     "hormuzInbound": 1,

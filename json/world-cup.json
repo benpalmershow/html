@@ -91,8 +91,8 @@
         "name": "Canada",
         "flag": "🇨🇦",
         "crest": "https://crests.football-data.org/canada.svg",
-        "score": 1,
-        "halfTimeScore": 0,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -101,8 +101,8 @@
         "name": "Bosnia-Herzegovina",
         "flag": "🇧🇦",
         "crest": "https://crests.football-data.org/bosnia.svg",
-        "score": 1,
-        "halfTimeScore": 1,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -116,7 +116,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "matchDay": 1,
-      "winner": "DRAW",
+      "winner": null,
       "referees": [
         "Facundo Tello"
       ],
@@ -1649,7 +1649,7 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -1659,14 +1659,14 @@
         "name": "Austria",
         "flag": "🇦🇹",
         "crest": "https://crests.football-data.org/816.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "17:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-22",
       "utcDate": "2026-06-22T17:00:00Z",
@@ -1674,8 +1674,10 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
       "matchDay": 2,
-      "winner": null,
-      "referees": [],
+      "winner": "DRAW",
+      "referees": [
+        "Amin Omar"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Argentina and Austria (GROUP_J)"
@@ -4139,5 +4141,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-22T12:56:37.034321Z"
+  "lastUpdated": "2026-06-22T17:26:14.254120Z"
 }

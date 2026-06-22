@@ -49,7 +49,9 @@ new movie, IMDb: tt11692284
 **Pipeline — 7 steps to `media.json`:**
 
 1. Resolve identity (no API key):
-   - `https://v3-cinemeta.strem.io/meta/movie/[ID].json` → director, genre, year, rating, trailer, description
+   - `https://v3-cinemeta.strem.io/meta/movie/[ID].json` → director, genre (`genres[]`), year (`releaseInfo` or `year`), rating, trailer, description
+     - Note: cinemeta returns a 307 redirect to `cinemeta-live.strem.io` - the script follows redirects automatically
+     - Response uses `trailers[].source` (not `trailerStreams`), `releaseInfo` or `year`, `genres` (plural)
    - `https://v3.sg.media-imdb.com/suggestion/t/[ID].json` → `moviedb_id` for TMDB poster lookup
 2. Poster (browser only — TMDB REST API returns 401):
    - Navigate `https://www.themoviedb.org/movie/[MOVIEDB_ID]-[slug]`
@@ -57,10 +59,10 @@ new movie, IMDb: tt11692284
    - Construct `https://media.themoviedb.org/t/p/w500/[hash].jpg` or `https://image.tmdb.org/t/p/w500/[hash].jpg`
    - Verify visually — title and director must be on the cover
 3. Trailer:
-   - `trailerStreams[0].ytId` → `https://www.youtube.com/embed/[ID]?si=[RANDOM]`
-   - Verify by navigating `https://www.youtube.com/watch?v=[ID]` — title must match
-   - If no trailer: `embedUrl: ""`, `links[0].url: ""`
-   - Always supply a `links` array, empty URLs fine
+    - `trailers[0].source` → YouTube video ID → `https://www.youtube.com/embed/[ID]?si=[RANDOM]`
+    - Verify by navigating `https://www.youtube.com/watch?v=[ID]` — title must match
+    - If no trailer: `embedUrl: ""`, `links[0].url: ""`
+    - Always supply a `links` array, empty URLs fine
 4. Build entry (field order must match existing entries exactly):
 
 ```json
@@ -179,7 +181,10 @@ Update `"cover"` to `"images/media-title.webp"`. WebP cuts file size 30-40% vs. 
 
 **Missing trailer** → `embedUrl: ""`, `links[0].url: ""`. Do not embed from RT or IMDb.
 
-**Missing Rotten Tomatoes page** → `rottenTomatoes: ""`, `ratings.rt: {"score": "", "url": ""}`. Never guess URLs.
+**Missing Rotten Tomatoes page** → check if fetch fails (404/network error) vs page loads with no score:
+- Page inaccessible (fetch throws) → `rottenTomatoes: ""`, `ratings.rt: {"score": "", "url": ""}`
+- Page loads but no score found → `rottenTomatoes: "[RT URL]"`, `ratings.rt: {"score": "", "url": "[RT URL]"}`
+Never guess URLs.
 
 **Duplicate in media.json** → Check by title, alert user, do not insert.
 

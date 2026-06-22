@@ -1,4 +1,4 @@
-I'm not here. Jackson. Mr Guitard on Knox paper. I. Daddy. Daddy. Daddy. **** **** Daddy, you saw that? Yeah. Here you can get some medication. Yes. #!/usr/bin/env node
+#!/usr/bin/env node
 
 /**
  * Automated Movie Addition Script for media.json
@@ -13,10 +13,24 @@ const path = require('path');
 
 const MEDIA_JSON_PATH = path.join(__dirname, '../json/media.json');
 
-// Helper: Fetch JSON from URL
+// Helper: Fetch JSON from URL (follows redirects)
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    https.get(url, { followRedirect: true }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        https.get(res.headers.location, (res2) => {
+          let data = '';
+          res2.on('data', chunk => data += chunk);
+          res2.on('end', () => {
+            try {
+              resolve(JSON.parse(data));
+            } catch (e) {
+              reject(new Error(`Failed to parse JSON from ${url}: ${e.message}`));
+            }
+          });
+        }).on('error', reject);
+        return;
+      }
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
@@ -30,10 +44,18 @@ function fetchJson(url) {
   });
 }
 
-// Helper: Fetch HTML from URL
+// Helper: Fetch HTML from URL (follows redirects)
 function fetchHtml(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    https.get(url, { followRedirect: true }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        https.get(res.headers.location, (res2) => {
+          let data = '';
+          res2.on('data', chunk => data += chunk);
+          res2.on('end', () => resolve(data));
+        }).on('error', reject);
+        return;
+      }
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => resolve(data));
@@ -179,8 +201,9 @@ async function addMovie(imdbInput) {
     
     console.log(`🎭 Title: ${meta.name}`);
     console.log(`👤 Director: ${meta.director ? meta.director[0] : 'Unknown'}`);
-    console.log(`📅 Year: ${meta.year}`);
-    console.log(`🎬 Genre: ${meta.genre ? meta.genre.join(', ') : 'Unknown'}`);
+    const year = meta.releaseInfo || meta.year || 'Unknown';
+    console.log(`📅 Year: ${year}`);
+    console.log(`🎬 Genre: ${meta.genres && meta.genres.length ? meta.genres.join(', ') : 'Unknown'}`);
     console.log(`⭐ IMDb Rating: ${meta.imdbRating}`);
     console.log(`🆔 TMDB ID: ${moviedbId}`);
     
@@ -221,8 +244,11 @@ async function addMovie(imdbInput) {
       console.log(`⚠️  Rotten Tomatoes page not found or inaccessible`);
     }
     
-    // Extract YouTube trailer ID
-    const ytId = meta.trailerStreams && meta.trailerStreams[0] ? meta.trailerStreams[0].ytId : '';
+    // Extract YouTube trailer ID (cinemeta uses trailers array)
+    let ytId = '';
+    if (meta.trailers && meta.trailers.length > 0) {
+      ytId = meta.trailers[0].source || '';
+    }
     const embedUrl = constructEmbedUrl(ytId);
     console.log(`🎥 Trailer: ${ytId ? `https://www.youtube.com/watch?v=${ytId}` : 'Not available'}`);
     
@@ -233,8 +259,8 @@ async function addMovie(imdbInput) {
       author: meta.director ? meta.director[0] : 'Unknown',
       mediaType: 'movie',
       description: meta.description || '',
-      date: meta.year.toString(),
-      genre: meta.genre ? meta.genre.join(', ') : '',
+      date: (meta.releaseInfo || meta.year || '').toString(),
+      genre: meta.genres && meta.genres.length ? meta.genres.join(', ') : '',
       titleColor: '#ffffff',
       tag: '',
       thumbs: '',

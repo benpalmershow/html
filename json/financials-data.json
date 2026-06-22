@@ -277,14 +277,19 @@
             "parentCategory": "Prediction Markets",
             "agency": "Kalshi",
             "name": "FOMC Rate Decision - July",
-            "lastUpdated": "2026-05-31T08:00:00Z",
+            "lastUpdated": "2026-06-22T08:00:00Z",
             "meeting_date": "July 28-29, 2026",
-            "rate_hold_odds": "92\u00a2",
-            "rate_cut_odds": "3\u00a2",
-            "rate_hike_odds": "5\u00a2",
+            "rate_hold_odds": "77\u00a2",
+            "rate_cut_odds": "2\u00a2",
+            "rate_hike_odds": "25\u00a2",
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jul",
-            "polymarket_url": "https://polymarket.com/event/fed-decision-in-july-825",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-july-181",
             "probabilities": {
+                "2026-06-22": {
+                    "rate_hold_odds": "77\u00a2",
+                    "rate_cut_odds": "2\u00a2",
+                    "rate_hike_odds": "25\u00a2"
+                },
                 "2026-05-31": {
                     "rate_hold_odds": "92\u00a2",
                     "rate_cut_odds": "3\u00a2",
@@ -1602,7 +1607,7 @@
             "parentCategory": "Trade & Tariffs",
             "agency": "FRED",
             "name": "Dollar Value Index",
-            "lastUpdated": "2026-04-10T14:00:00Z",
+            "lastUpdated": "2026-06-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
@@ -1619,7 +1624,9 @@
                 "january": "119.28",
                 "february": "117.99",
                 "march": "120.8851",
-                "april": "118.8"
+                "april": "119.03",
+                "may": "118.77",
+                "june": "119.5073"
             },
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."

@@ -447,7 +447,7 @@
             "parentCategory": "Commodities",
             "agency": "Google Finance",
             "name": "Lumber Futures",
-            "lastUpdated": "2026-04-13T14:00:00Z",
+            "lastUpdated": "2026-06-13T22:00:00Z",
             "releaseDay": 0,
             "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
             "march": "683",
@@ -464,7 +464,9 @@
                 "january": "609",
                 "february": "576",
                 "march": "608.50",
-                "april": "575.50"
+                "april": "575.50",
+                "may": "592.00",
+                "june": "637.00"
             },
             "change": "",
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
@@ -680,7 +682,7 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "Oil (WTI)",
-            "lastUpdated": "2026-05-18T19:30:00Z",
+            "lastUpdated": "2026-06-15T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "january": "75.74",
@@ -700,7 +702,8 @@
                 "february": "64.51",
                 "march": "89.33",
                 "april": "91.06",
-                "may": "112.25"
+                "may": "112.25",
+                "june": "84.65"
             },
             "change": "",
             "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
@@ -723,7 +726,7 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "Oil (Brent)",
-            "lastUpdated": "2026-05-18T14:00:00Z",
+            "lastUpdated": "2026-06-15T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
             "2026": {
@@ -731,7 +734,8 @@
                 "february": "70.89",
                 "march": "103.79",
                 "april": "103.40",
-                "may": "116.73"
+                "may": "116.73",
+                "june": "84.36"
             },
             "change": "",
             "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs."
@@ -754,13 +758,14 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "U.S. Petroleum Exports",
-            "lastUpdated": "2026-05-19T14:00:00Z",
+            "lastUpdated": "2026-06-15T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
             "2026": {
                 "march": "11,670",
                 "april": "12,881",
-                "may": "13,137"
+                "may": "13,137",
+                "june": "12,181"
             },
             "change": "",
             "explanation": "Weekly U.S. petroleum exports from EIA (Total Crude Oil and Products), reported in thousand barrels per day. This indicator uses the latest weekly readings shown in the source table, not monthly averages. Current values shown are March 2026: 11,670 and April 2026: 12,881, tracking outbound U.S. crude and refined product flows."
@@ -783,7 +788,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Wheat",
-            "lastUpdated": "2026-05-28T14:00:00Z",
+            "lastUpdated": "2026-06-15T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
             "january": "5.52",
@@ -801,7 +806,8 @@
             "2026": {
                 "january": "5.01",
                 "february": "5.12",
-                "march": "5.52"
+                "march": "5.52",
+                "april": "5.70"
             },
             "change": "",
             "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
@@ -824,7 +830,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Soybeans",
-            "lastUpdated": "2026-05-28T14:00:00Z",
+            "lastUpdated": "2026-06-15T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
             "january": "10.00",
@@ -842,10 +848,11 @@
             "2026": {
                 "january": "10.30",
                 "february": "10.60",
-                "march": "11.10"
+                "march": "11.10",
+                "april": "11.20"
             },
             "change": "",
-            "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
+            "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in s per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
         },
         {
             "id": "beef-price",
@@ -865,7 +872,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Beef",
-            "lastUpdated": "2026-05-28T14:00:00Z",
+            "lastUpdated": "2026-06-15T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
             "january": "199.00",
@@ -883,7 +890,8 @@
             "2026": {
                 "january": "230",
                 "february": "239",
-                "march": "236.00"
+                "march": "236.00",
+                "april": "242.00"
             },
             "change": "",
             "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers."

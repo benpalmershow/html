@@ -88,6 +88,7 @@
   <link rel="stylesheet" href="css/media.css?v=20260614">
   <link rel="stylesheet" href="css/media-overlay.css?v=20260614">
   <link rel="stylesheet" href="css/media-coachella.css?v=20260614">
+  <link rel="stylesheet" href="css/view-transitions.css?v=20260622">
 
   <!-- Font Awesome - load async -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -199,7 +200,7 @@
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
-  <nav class="site-nav" id="main-nav" aria-label="Main">
+  <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
         <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
@@ -241,7 +242,7 @@
   </script>
 
 
-<main id="main-content" tabindex="-1">
+<main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
       <div class="page-header page-header-branded page-header-bg-brand media-bg animated-bg">
         <h1 class="page-title" aria-label="Page title">Media</h1>
       </div>
@@ -312,6 +313,7 @@
   </script>
 
 <!-- Load scripts - nav and socials defer but load quickly for header/footer -->
+   <script src="js/view-transitions.js" defer></script>
    <script src="js/media.js" defer></script>
    <script src="js/search.js" defer></script>
 

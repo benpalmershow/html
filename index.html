@@ -67,11 +67,13 @@
   <link rel="preload" href="css/body.css?v=20260614" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/nav.css?v=20260614" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/one-pager.css?v=20260614" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/view-transitions.css?v=20260622" as="style" onload="this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="css/theme.css?v=20260614">
     <link rel="stylesheet" href="css/body.css?v=20260614">
     <link rel="stylesheet" href="css/nav.css?v=20260614">
     <link rel="stylesheet" href="css/one-pager.css?v=20260614">
+    <link rel="stylesheet" href="css/view-transitions.css?v=20260622">
   </noscript>
   
   <!-- Font Awesome for platform icons - deferred load -->
@@ -127,7 +129,7 @@
   <header class="site-header">
     <h1 class="sr-only">Howdy, Stranger - Independent Commentary & Economic Insight</h1>
   </header>
-  <nav class="site-nav" id="main-nav" aria-label="Main">
+  <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
       <a href="index.html" class="nav-logo active" aria-current="page" aria-label="Howdy, Stranger home">
         <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
@@ -168,7 +170,7 @@
     })();
   </script>
 
-  <main class="one-pager-container" id="main-content" tabindex="-1">
+  <main class="one-pager-container" id="main-content" tabindex="-1" style="view-transition-name: main-content;">
     <div class="hero-logo-container" style="min-height:10px;">
       <div id="hero-content"></div>
     </div>
@@ -224,6 +226,7 @@
   <script src="js/services.js" defer></script>
   <script src="js/html-utils.js" defer></script>
   <script src="js/utils.js" defer></script>
+  <script src="js/view-transitions.js" defer></script>
   <script src="js/one-pager.js" defer></script>
 
    <!-- Back to top button -->

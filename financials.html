@@ -46,6 +46,7 @@
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
   <link rel="stylesheet" href="css/financials.css?v=20260614">
   <link rel="stylesheet" href="css/worldcup.css?v=20260614">
+  <link rel="stylesheet" href="css/view-transitions.css?v=20260622">
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/services.js" as="script">
@@ -114,7 +115,7 @@
 </head>
 <body>
 
-  <nav class="site-nav" id="main-nav" aria-label="Main">
+  <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
         <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
@@ -156,7 +157,7 @@
   </script>
  
 
-   <main id="main-content" tabindex="-1">
+   <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
      <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
       <h1 class="page-title" aria-label="Page title">Numbers</h1>
       <div id="lastUpdated" class="last-updated"></div>
@@ -251,6 +252,7 @@
   <!-- Financials Module Scripts (loaded in dependency order) -->
   <script src="js/services.js" defer></script>
   <script src="js/utils.js?v=20260222" defer></script>
+  <script src="js/view-transitions.js" defer></script>
   <script src="js/indicators.js?v=20260222" defer></script>
   <script src="js/charts.js" defer></script>
   <script src="js/filters.js" defer></script>

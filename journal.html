@@ -115,7 +115,13 @@
       }
 
       function parseInline(text, autolink) {
-        let out = escapeHtml(text)
+        const htmlBlocks = [];
+        let out = String(text).replace(/<[^>]*>/g, match => {
+          htmlBlocks.push(match);
+          return '@@HTML' + (htmlBlocks.length - 1) + '@@';
+        });
+
+        out = escapeHtml(out)
           .replace(/`([^`]+)`/g, '<code>$1</code>')
           .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
           .replace(/\*([^*]+)\*/g, '<em>$1</em>');
@@ -130,7 +136,10 @@
           out = out.replace(/https?:\/\/[^\s<)]+/g, url => '<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a>');
         }
 
-        return out.replace(/@@LINK(\d+)@@/g, (_, i) => links[Number(i)] || '');
+        out = out.replace(/@@LINK(\d+)@@/g, (_, i) => links[Number(i)] || '');
+        out = out.replace(/@@HTML(\d+)@@/g, (_, i) => htmlBlocks[Number(i)] || '');
+
+        return out;
       }
 
       function parseMarkdown(markdown) {

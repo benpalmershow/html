@@ -1813,8 +1813,8 @@
         "name": "Portugal",
         "flag": "🇵🇹",
         "crest": "https://crests.football-data.org/765.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 3,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -1823,14 +1823,14 @@
         "name": "Uzbekistan",
         "flag": "🇺🇿",
         "crest": "https://crests.football-data.org/8070.png",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "17:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "3-0 HT",
       "minute": null,
       "date": "2026-06-23",
       "utcDate": "2026-06-23T17:00:00Z",
@@ -1838,7 +1838,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "matchDay": 2,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Jalal Jayed"
       ],
@@ -1880,7 +1880,9 @@
       "group": "GROUP_L",
       "matchDay": 2,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Said Martinez"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between England and Ghana (GROUP_L)"
@@ -4149,5 +4151,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-23T16:34:37.030123Z"
+  "lastUpdated": "2026-06-23T18:24:46.840203Z"
 }

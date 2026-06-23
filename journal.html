@@ -127,10 +127,11 @@
           .replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
         const links = [];
-        out = out.replace(/\[([^\]]+)]\((https?:\/\/[^)\s]+)\)/g, (_, label, url) => {
-          links.push('<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + parseInline(label, false) + '</a>');
-          return '@@LINK' + (links.length - 1) + '@@';
-        });
+out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
+           const ext = /^https?:\/\//i.test(url) ? ' target="_blank" rel="noopener noreferrer"' : '';
+           links.push('<a href="' + escapeAttr(url) + '"' + ext + '>' + parseInline(label, false) + '</a>');
+           return '@@LINK' + (links.length - 1) + '@@';
+         });
 
         if (autolink) {
           out = out.replace(/https?:\/\/[^\s<)]+/g, url => '<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a>');

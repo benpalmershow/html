@@ -1999,7 +1999,9 @@
       "group": "GROUP_B",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Ramon Abatti Abel"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Switzerland and Canada (GROUP_B)"
@@ -2038,7 +2040,9 @@
       "group": "GROUP_B",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Jesús Valenzuela"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Bosnia-Herzegovina and Qatar (GROUP_B)"
@@ -4151,5 +4155,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-24T15:57:57.453452Z"
+  "lastUpdated": "2026-06-24T17:49:16.073560Z"
 }

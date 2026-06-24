@@ -1988,9 +1988,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T19:00:00Z",
@@ -2029,9 +2029,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "2-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T19:00:00Z",
@@ -2055,7 +2055,7 @@
         "name": "Morocco",
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2065,14 +2065,14 @@
         "name": "Haiti",
         "flag": "🇭🇹",
         "crest": "https://crests.football-data.org/haiti.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "22:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T22:00:00Z",
@@ -2080,7 +2080,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Danny Makkelie"
       ],
@@ -2096,7 +2096,7 @@
         "name": "Scotland",
         "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
         "crest": "https://crests.football-data.org/814.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2106,14 +2106,14 @@
         "name": "Brazil",
         "flag": "🇧🇷",
         "crest": "https://crests.football-data.org/764.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "22:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-06-24",
       "utcDate": "2026-06-24T22:00:00Z",
@@ -2121,7 +2121,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "César Ramos"
       ],
@@ -4159,5 +4159,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-24T20:59:53.537532Z"
+  "lastUpdated": "2026-06-24T22:17:13.303381Z"
 }

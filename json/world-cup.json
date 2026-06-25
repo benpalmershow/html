@@ -2234,9 +2234,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
@@ -2275,9 +2275,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
@@ -2301,7 +2301,7 @@
         "name": "Tunisia",
         "flag": "🇹🇳",
         "crest": "https://crests.football-data.org/tunisia.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2311,14 +2311,14 @@
         "name": "Netherlands",
         "flag": "🇳🇱",
         "crest": "https://crests.football-data.org/8601.svg",
-        "score": null,
+        "score": 2,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "23:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T23:00:00Z",
@@ -2326,7 +2326,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Katia García"
       ],
@@ -2342,7 +2342,7 @@
         "name": "Japan",
         "flag": "🇯🇵",
         "crest": "https://crests.football-data.org/766.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2352,14 +2352,14 @@
         "name": "Sweden",
         "flag": "🇸🇪",
         "crest": "https://crests.football-data.org/792.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "23:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T23:00:00Z",
@@ -2367,7 +2367,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "matchDay": 3,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Ivan Barton"
       ],
@@ -4171,5 +4171,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-25T21:58:22.612511Z"
+  "lastUpdated": "2026-06-25T23:13:24.145490Z"
 }

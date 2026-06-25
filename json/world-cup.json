@@ -2138,7 +2138,7 @@
         "flag": "🇨🇿",
         "crest": "https://crests.football-data.org/798.svg",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2147,14 +2147,14 @@
         "name": "Mexico",
         "flag": "🇲🇽",
         "crest": "https://crests.football-data.org/769.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T01:00:00Z",
@@ -2162,7 +2162,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "matchDay": 3,
-      "winner": "DRAW",
+      "winner": "AWAY_TEAM",
       "referees": [
         "Yael Falcón"
       ],
@@ -2178,8 +2178,8 @@
         "name": "South Africa",
         "flag": "🇿🇦",
         "crest": "https://crests.football-data.org/9396.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2189,13 +2189,13 @@
         "flag": "🇰🇷",
         "crest": "https://crests.football-data.org/772.png",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T01:00:00Z",
@@ -2203,7 +2203,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "matchDay": 3,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Facundo Tello"
       ],
@@ -4163,5 +4163,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-25T01:34:04.186005Z"
+  "lastUpdated": "2026-06-25T05:47:17.604730Z"
 }

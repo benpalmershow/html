@@ -2219,7 +2219,7 @@
         "name": "Ecuador",
         "flag": "🇪🇨",
         "crest": "https://crests.football-data.org/791.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2229,14 +2229,14 @@
         "name": "Germany",
         "flag": "🇩🇪",
         "crest": "https://crests.football-data.org/759.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "20:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
@@ -2244,7 +2244,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 3,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Tori Penso"
       ],
@@ -2260,7 +2260,7 @@
         "name": "Curaçao",
         "flag": "🇨🇼",
         "crest": "https://crests.football-data.org/curacao.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2270,14 +2270,14 @@
         "name": "Ivory Coast",
         "flag": "🇨🇮",
         "crest": "https://crests.football-data.org/787.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "20:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-06-25",
       "utcDate": "2026-06-25T20:00:00Z",
@@ -2285,7 +2285,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Glenn Nyberg"
       ],
@@ -4167,5 +4167,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-25T18:21:20.998085Z"
+  "lastUpdated": "2026-06-25T20:26:35.186125Z"
 }

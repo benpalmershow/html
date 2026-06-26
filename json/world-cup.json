@@ -2491,7 +2491,9 @@
       "group": "GROUP_I",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Michael Oliver"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Norway and France (GROUP_I)"
@@ -2530,7 +2532,9 @@
       "group": "GROUP_I",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Anthony Taylor"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Senegal and Iraq (GROUP_I)"
@@ -4175,5 +4179,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-26T15:55:04.198400Z"
+  "lastUpdated": "2026-06-26T17:26:29.197564Z"
 }

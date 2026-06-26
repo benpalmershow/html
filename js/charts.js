@@ -104,9 +104,13 @@ function createChartOverlay(indicator, indicatorName) {
     showChartOverlay(indicator, indicatorName, overlay);
 }
 
-function loadChartInOverlay(indicator, indicatorName, overlay) {
+async function loadChartInOverlay(indicator, indicatorName, overlay) {
     const body = overlay.querySelector('.chart-overlay-body');
     try {
+        // Load Chart.js on-demand if not already present
+        if (typeof Chart === 'undefined') {
+            await Services.loadExternalModule('https://cdn.jsdelivr.net/npm/chart.js');
+        }
         if (!window.financialData || !window.financialData.indices) { showOverlayError(body, 'Financial data not loaded'); return; }
         const chartConfig = getChartConfig(indicatorName, window.financialData.indices);
         if (chartConfig && chartConfig.data) {

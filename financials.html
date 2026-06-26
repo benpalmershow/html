@@ -6,17 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <!-- Common Meta Tags Component -->
   <script>
-    fetch('components/head-meta.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const metaElements = tempDiv.querySelectorAll('meta, link');
-        metaElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Meta tags load error:', error));
+<!-- Inline meta tags placeholder (replace with actual meta tags) -->
+<meta name="description" content="Financials page for Howdy, Stranger">
+<meta name="author" content="Howdy, Stranger">
+
   </script>
 
   <!-- Page-specific Meta Tags -->

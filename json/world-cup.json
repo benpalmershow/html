@@ -2465,7 +2465,7 @@
         "name": "Norway",
         "flag": "🇳🇴",
         "crest": "https://crests.football-data.org/813.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2475,14 +2475,14 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T19:00:00Z",
@@ -2490,7 +2490,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Michael Oliver"
       ],
@@ -2506,7 +2506,7 @@
         "name": "Senegal",
         "flag": "🇸🇳",
         "crest": "https://crests.football-data.org/senegal.svg",
-        "score": null,
+        "score": 1,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2516,14 +2516,14 @@
         "name": "Iraq",
         "flag": "🇮🇶",
         "crest": "https://crests.football-data.org/iraq.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-06-26",
       "utcDate": "2026-06-26T19:00:00Z",
@@ -2531,7 +2531,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "matchDay": 3,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Anthony Taylor"
       ],
@@ -4179,5 +4179,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-26T17:26:29.197564Z"
+  "lastUpdated": "2026-06-26T19:14:24.267226Z"
 }

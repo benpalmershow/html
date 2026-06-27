@@ -84,7 +84,7 @@
       const href = link.getAttribute('href');
       
       // Skip external links, non-HTTP links, and downloads
-const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('https://')) && 
+      const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('https://')) && 
                              !href.startsWith(window.location.origin);
       if (!href || 
           isExternalHttp ||
@@ -93,18 +93,18 @@ const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('h
         return;
       }
 
-      // Handle hash-based navigation (same-document)
+// Handle hash-based navigation (same-document)
       if (href.startsWith('#')) {
         e.preventDefault();
         const targetId = href.slice(1);
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
           const direction = determineNavigationDirection(
             window.location.hash || '#',
             href
           );
-          
+
           applyTransition(() => {
             targetElement.scrollIntoView({ behavior: 'smooth' });
             window.location.hash = href;
@@ -113,13 +113,13 @@ const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('h
         return;
       }
 
-// For same-origin page navigation, we could use the Navigation API
-       // This is experimental and requires browser support
-       if (supportsNavigationAPI && (href.startsWith('/') || href.endsWith('.html'))) {
-         // Future: Implement Navigation API for cross-document transitions
-         // Currently, we let the browser handle it normally
-         updateHistory(window.location.href);
-       }
+      // For same-origin page navigation, we could use the Navigation API
+      // This is experimental and requires browser support
+      if (supportsNavigationAPI && (href.startsWith('/') || href.endsWith('.html'))) {
+        // Future: Implement Navigation API for cross-document transitions
+        // Currently, we let the browser handle it normally
+        updateHistory(window.location.href);
+      }
     });
 
     // Update history on page load

@@ -2137,8 +2137,8 @@
         "name": "Czechia",
         "flag": "🇨🇿",
         "crest": "https://crests.football-data.org/798.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2147,13 +2147,13 @@
         "name": "Mexico",
         "flag": "🇲🇽",
         "crest": "https://crests.football-data.org/769.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "TIMED",
+      "statusRaw": "FINISHED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-25",
@@ -2162,7 +2162,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Yael Falcón"
       ],
@@ -2178,8 +2178,8 @@
         "name": "South Africa",
         "flag": "🇿🇦",
         "crest": "https://crests.football-data.org/9396.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2188,13 +2188,13 @@
         "name": "South Korea",
         "flag": "🇰🇷",
         "crest": "https://crests.football-data.org/772.png",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "TIMED",
+      "statusRaw": "FINISHED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-25",
@@ -2203,7 +2203,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "matchDay": 3,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Facundo Tello"
       ],
@@ -2219,8 +2219,8 @@
         "name": "Ecuador",
         "flag": "🇪🇨",
         "crest": "https://crests.football-data.org/791.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2229,13 +2229,13 @@
         "name": "Germany",
         "flag": "🇩🇪",
         "crest": "https://crests.football-data.org/759.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "TIMED",
+      "statusRaw": "FINISHED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-25",
@@ -2244,7 +2244,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 3,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Tori Penso"
       ],
@@ -2260,8 +2260,8 @@
         "name": "Curaçao",
         "flag": "🇨🇼",
         "crest": "https://crests.football-data.org/curacao.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2270,13 +2270,13 @@
         "name": "Ivory Coast",
         "flag": "🇨🇮",
         "crest": "https://crests.football-data.org/787.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "TIMED",
+      "statusRaw": "FINISHED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-25",
@@ -2285,7 +2285,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Glenn Nyberg"
       ],
@@ -2301,8 +2301,8 @@
         "name": "Tunisia",
         "flag": "🇹🇳",
         "crest": "https://crests.football-data.org/tunisia.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2311,13 +2311,13 @@
         "name": "Netherlands",
         "flag": "🇳🇱",
         "crest": "https://crests.football-data.org/8601.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "TIMED",
+      "statusRaw": "FINISHED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-25",
@@ -2326,7 +2326,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Katia García"
       ],
@@ -2342,8 +2342,8 @@
         "name": "Japan",
         "flag": "🇯🇵",
         "crest": "https://crests.football-data.org/766.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2352,13 +2352,13 @@
         "name": "Sweden",
         "flag": "🇸🇪",
         "crest": "https://crests.football-data.org/792.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "TIMED",
+      "statusRaw": "FINISHED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-25",
@@ -2367,7 +2367,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "matchDay": 3,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Ivan Barton"
       ],
@@ -2547,8 +2547,8 @@
         "name": "Uruguay",
         "flag": "🇺🇾",
         "crest": "https://crests.football-data.org/758.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2557,14 +2557,14 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "00:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-1 HT",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
@@ -2572,7 +2572,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Ismail Elfath"
       ],
@@ -2588,8 +2588,8 @@
         "name": "Cape Verde Islands",
         "flag": "🇨🇻",
         "crest": "https://crests.football-data.org/cape_verde.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2598,14 +2598,14 @@
         "name": "Saudi Arabia",
         "flag": "🇸🇦",
         "crest": "https://crests.football-data.org/saudi_arabia.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "00:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
@@ -2613,7 +2613,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "matchDay": 3,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "François Letexier"
       ],
@@ -2655,7 +2655,9 @@
       "group": "GROUP_G",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Adham Makhadmeh"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between New Zealand and Belgium (GROUP_G)"
@@ -2694,7 +2696,9 @@
       "group": "GROUP_G",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Szymon Marciniak"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Egypt and Iran (GROUP_G)"
@@ -2937,20 +2941,20 @@
       "id": "wc2026-537417",
       "matchId": 537417,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 774,
+        "name": "South Africa",
+        "flag": "🇿🇦",
+        "crest": "https://crests.football-data.org/9396.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 828,
+        "name": "Canada",
+        "flag": "🇨🇦",
+        "crest": "https://crests.football-data.org/canada.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -2970,26 +2974,26 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_32 match between None and None"
+      "explanation": "World Cup 2026 LAST_32 match between South Africa and Canada"
     },
     {
       "id": "wc2026-537423",
       "matchId": 537423,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 764,
+        "name": "Brazil",
+        "flag": "🇧🇷",
+        "crest": "https://crests.football-data.org/764.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 766,
+        "name": "Japan",
+        "flag": "🇯🇵",
+        "crest": "https://crests.football-data.org/766.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3009,7 +3013,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_32 match between None and None"
+      "explanation": "World Cup 2026 LAST_32 match between Brazil and Japan"
     },
     {
       "id": "wc2026-537415",
@@ -3054,20 +3058,20 @@
       "id": "wc2026-537418",
       "matchId": 537418,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 8601,
+        "name": "Netherlands",
+        "flag": "🇳🇱",
+        "crest": "https://crests.football-data.org/8601.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 815,
+        "name": "Morocco",
+        "flag": "🇲🇦",
+        "crest": "https://crests.football-data.org/morocco.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3087,7 +3091,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_32 match between None and None"
+      "explanation": "World Cup 2026 LAST_32 match between Netherlands and Morocco"
     },
     {
       "id": "wc2026-537424",
@@ -3298,10 +3302,10 @@
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 1060,
+        "name": "Bosnia-Herzegovina",
+        "flag": "🇧🇦",
+        "crest": "https://crests.football-data.org/bosnia.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3321,7 +3325,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_32 match between United States and None"
+      "explanation": "World Cup 2026 LAST_32 match between United States and Bosnia-Herzegovina"
     },
     {
       "id": "wc2026-537420",
@@ -3405,10 +3409,10 @@
       "id": "wc2026-537429",
       "matchId": 537429,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 788,
+        "name": "Switzerland",
+        "flag": "🇨🇭",
+        "crest": "https://crests.football-data.org/788.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3438,16 +3442,16 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_32 match between None and None"
+      "explanation": "World Cup 2026 LAST_32 match between Switzerland and None"
     },
     {
       "id": "wc2026-537428",
       "matchId": 537428,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 779,
+        "name": "Australia",
+        "flag": "🇦🇺",
+        "crest": "https://crests.football-data.org/779.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3477,7 +3481,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_32 match between None and None"
+      "explanation": "World Cup 2026 LAST_32 match between Australia and None"
     },
     {
       "id": "wc2026-537427",
@@ -4183,5 +4187,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-26T22:09:47.555010Z"
+  "lastUpdated": "2026-06-27T01:26:15.016426Z"
 }

@@ -84,9 +84,10 @@
       const href = link.getAttribute('href');
       
       // Skip external links, non-HTTP links, and downloads
+const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('https://')) && 
+                             !href.startsWith(window.location.origin);
       if (!href || 
-          href.startsWith('http://') || 
-          href.startsWith('https://') && !href.startsWith(window.location.origin) ||
+          isExternalHttp ||
           link.hasAttribute('download') ||
           link.target === '_blank') {
         return;
@@ -112,14 +113,13 @@
         return;
       }
 
-      // For same-origin page navigation, we could use the Navigation API
-      // This is experimental and requires browser support
-      if (supportsNavigationAPI && href.startsWith('/') || href.endsWith('.html')) {
-        // Future: Implement Navigation API for cross-document transitions
-        // Currently, we let the browser handle it normally
-        // Update history before navigation
-        updateHistory(window.location.href);
-      }
+// For same-origin page navigation, we could use the Navigation API
+       // This is experimental and requires browser support
+       if (supportsNavigationAPI && (href.startsWith('/') || href.endsWith('.html'))) {
+         // Future: Implement Navigation API for cross-document transitions
+         // Currently, we let the browser handle it normally
+         updateHistory(window.location.href);
+       }
     });
 
     // Update history on page load
@@ -159,9 +159,10 @@
   // Listen for Navigation API entries (if supported)
   if (supportsNavigationAPI) {
     window.navigation.addEventListener('navigate', (event) => {
-      // Future: Handle cross-document view transitions
-      // when the API is fully supported
-      console.log('Navigation event:', event.destination.url);
+      // Only track same-origin navigation for history
+      if (new URL(event.destination.url).origin === window.location.origin) {
+        updateHistory(event.destination.url);
+      }
     });
   }
 

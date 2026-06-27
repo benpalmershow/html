@@ -339,7 +339,9 @@
 .indicator:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 2px; }
 .indicator-deep-link { outline: 2px solid var(--logo-teal); outline-offset: 2px; animation: deep-link-pulse 1.8s ease-out; }
 @keyframes deep-link-pulse { 0% { outline-color: var(--logo-teal); } 100% { outline-color: transparent; } }
-#latest-13f-filings { margin-top: 2rem; }
+#latest-13f-filings { margin-top: 2rem; min-height: 500px; }
+
+#world-cup { min-height: 500px; }
 
 /* =========================================
    Filter-driven section visibility

@@ -2465,8 +2465,8 @@
         "name": "Norway",
         "flag": "🇳🇴",
         "crest": "https://crests.football-data.org/813.svg",
-        "score": 1,
-        "halfTimeScore": 1,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2475,13 +2475,13 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": 4,
-        "halfTimeScore": 3,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "FINISHED",
+      "statusRaw": "TIMED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-26",
@@ -2490,7 +2490,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "matchDay": 3,
-      "winner": "AWAY_TEAM",
+      "winner": null,
       "referees": [
         "Michael Oliver"
       ],
@@ -2506,8 +2506,8 @@
         "name": "Senegal",
         "flag": "🇸🇳",
         "crest": "https://crests.football-data.org/senegal.svg",
-        "score": 5,
-        "halfTimeScore": 1,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2516,13 +2516,13 @@
         "name": "Iraq",
         "flag": "🇮🇶",
         "crest": "https://crests.football-data.org/iraq.svg",
-        "score": 0,
-        "halfTimeScore": 0,
+        "score": null,
+        "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "finished",
-      "statusRaw": "FINISHED",
+      "statusRaw": "TIMED",
       "time": "90'",
       "minute": null,
       "date": "2026-06-26",
@@ -2531,7 +2531,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "matchDay": 3,
-      "winner": "HOME_TEAM",
+      "winner": null,
       "referees": [
         "Anthony Taylor"
       ],
@@ -2562,9 +2562,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
@@ -2603,9 +2603,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T00:00:00Z",
@@ -2629,8 +2629,8 @@
         "name": "New Zealand",
         "flag": "🇳🇿",
         "crest": "https://crests.football-data.org/783.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2639,14 +2639,14 @@
         "name": "Belgium",
         "flag": "🇧🇪",
         "crest": "https://crests.football-data.org/805.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 5,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "03:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T03:00:00Z",
@@ -2654,7 +2654,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Adham Makhadmeh"
       ],
@@ -2670,8 +2670,8 @@
         "name": "Egypt",
         "flag": "🇪🇬",
         "crest": "https://crests.football-data.org/825.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2680,14 +2680,14 @@
         "name": "Iran",
         "flag": "🇮🇷",
         "crest": "https://crests.football-data.org/iran.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "03:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "1-1 HT",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T03:00:00Z",
@@ -2695,7 +2695,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "matchDay": 3,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Szymon Marciniak"
       ],
@@ -4187,5 +4187,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-27T01:26:15.016426Z"
+  "lastUpdated": "2026-06-27T05:07:02.807809Z"
 }

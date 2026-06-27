@@ -23,14 +23,14 @@
    */
   function determineNavigationDirection(currentUrl, targetUrl) {
     if (currentUrl === targetUrl) return 'none';
-    
+
     // Check if we've visited the target URL before
     const targetIndex = navigationHistory.findIndex(entry => entry.url === targetUrl);
-    
+
     if (targetIndex !== -1 && targetIndex < navigationHistory.length - 1) {
       return 'backward';
     }
-    
+
     return 'forward';
   }
 
@@ -59,7 +59,7 @@
     }
 
     const types = type === 'default' ? [] : [type];
-    
+
     return document.startViewTransition({
       update: updateCallback,
       types: types
@@ -82,18 +82,18 @@
       if (!link) return;
 
       const href = link.getAttribute('href');
-      
+
       // Skip external links, non-HTTP links, and downloads
-      const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('https://')) && 
+      const isExternalHttp = href && (href.startsWith('http://') || href.startsWith('https://')) &&
                              !href.startsWith(window.location.origin);
-      if (!href || 
+      if (!href ||
           isExternalHttp ||
           link.hasAttribute('download') ||
           link.target === '_blank') {
         return;
       }
 
-// Handle hash-based navigation (same-document)
+      // Handle hash-based navigation (same-document)
       if (href.startsWith('#')) {
         e.preventDefault();
         const targetId = href.slice(1);

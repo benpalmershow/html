@@ -1,13 +1,6 @@
 /* ========================================
    COMPONENT IMPORTS
    ======================================== */
-@import url('components/cards.css');
-@import url('components/tables.css');
-@import url('components/alerts.css');
-@import url('components/utilities.css');
-@import url('components/search.css');
-@import url('components/footer.css');
-@import url('components/home.css');
 
 /* ========================================
    BASE STYLES & LAYOUT
@@ -42,11 +35,12 @@ body {
 }
 
 .content {
-    padding: var(--content-padding);
-    margin: 0 auto;
-    max-width: var(--max-content-width);
-    width: 100%;
-}
+     padding: var(--content-padding);
+     margin: 0 auto;
+     max-width: var(--max-content-width);
+     width: 100%;
+     min-height: 500px;
+ }
 
 main {
     contain: layout style;
@@ -106,7 +100,7 @@ a:focus-visible {
 h1.page-title {
     font-size: 0.85rem;
     font-family: var(--font-mono);
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;

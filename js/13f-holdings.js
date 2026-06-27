@@ -69,7 +69,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         <div class="indicator-header">
             <div class="firm-card-title">${firmName}</div>
             <div class="indicator-actions">
-                <button class="expand-toggle firm-expand-${firmIdx}">
+                <button class="expand-toggle firm-expand-${firmIdx}" aria-label="Toggle firm details">
                     <i data-lucide="info" style="width: 16px; height: 16px;"></i>
                 </button>
             </div>
@@ -114,6 +114,8 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
 function initializeFirmCards() {
     const container = document.getElementById('firmCardsContainer');
     if (!container) return;
+
+    container.innerHTML = '';
 
     // Sort firms by filing date (newest first), then by name for consistency
     const sortedFirmIndices = firmData.map((firm, index) => index)

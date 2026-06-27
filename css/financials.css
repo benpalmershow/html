@@ -1,4 +1,4 @@
-.last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin: 2px 0 0; opacity: 0.75; }
+.last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin: 2px 0 0; opacity: 0.75; }
 
 .indicator.expanded .indicator-agency, .indicator.expanded .indicator-content { margin-bottom: 6px; }
 
@@ -10,6 +10,8 @@
 .page-header.page-header-branded { flex-direction: column; gap: 0.15rem; }
 
 .categories { display: grid; gap: 15px }
+
+.content { min-height: 80vh; contain: layout; }
 
 .category { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%); border-radius: var(--card-radius); padding: 0.5rem clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform 0.3s ease; word-break: break-word }
 
@@ -25,7 +27,7 @@
 
 .category-name { position: relative; top: 1px }
 
-.indicators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; align-items: start }
+.indicators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; align-items: start; min-height: 400px; }
 
 .indicator {
     background: radial-gradient(ellipse at 50% -20%, rgba(var(--indicator-accent-rgb, 44,95,90), 0.07) 0%, transparent 60%), linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
@@ -108,7 +110,7 @@
 
 .change-metric-title-icon i { width: 8px; height: 8px; stroke-width: 2.1px; }
 
-.change-metric-btn { flex: 0 0 auto; width: fit-content; min-width: -webkit-fill-available; min-width: fit-content; max-width: none; border: none; border-radius: 6px; padding: 2px 6px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 3px; white-space: nowrap; overflow: visible; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.01em; }
+.change-metric-btn { flex: 0 0 auto; width: fit-content; min-width: -webkit-fill-available; min-width: fit-content; max-width: none; border: none; border-radius: 6px; min-height: 24px; margin: 4px 0; padding: 8px 12px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 3px; white-space: nowrap; overflow: visible; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.01em; }
 
 .change-metric-btn:hover { filter: none; border-color: transparent; }
 
@@ -644,6 +646,14 @@
 .skeleton-line.medium { width: 85%; }
 .skeleton-line.long { width: 95%; }
 .skeleton-line.tiny { height: 10px; width: 40%; margin-top: 12px; }
+
+.skeleton-category {
+  background: rgba(var(--bg-secondary-rgb), 0.4);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid rgba(var(--border-color-rgb), 0.4);
+}
 
 /* ========================================
    WORLD CUP SCORE CARD

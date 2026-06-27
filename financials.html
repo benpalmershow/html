@@ -5,33 +5,26 @@
   <!-- Critical meta tags must be inline for first paint -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Financials page for Howdy, Stranger">
+  <meta name="description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.">
   <meta name="author" content="Howdy, Stranger">
-  <meta name="robots" content="noindex, nofollow">
-
-  <!-- Typography System Fonts Component -->
-  <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
-  </script>
+  <meta name="robots" content="index, follow">
 
   <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/theme.css?v=20260614">
-  <link rel="stylesheet" href="css/body.css?v=20260614">
-  <link rel="stylesheet" href="css/nav.css?v=20260614">
-  <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
-  <link rel="stylesheet" href="css/financials.css?v=20260614">
-  <link rel="stylesheet" href="css/worldcup.css?v=20260614">
-  <link rel="stylesheet" href="css/view-transitions.css?v=20260622">
+  <link rel="stylesheet" href="css/theme.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/body.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/nav.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/filter-bar.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/financials.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/worldcup.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/view-transitions.css?v=20260622" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/cards.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/tables.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/alerts.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/utilities.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/search.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/footer.css?v=20260614" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/components/home.css?v=20260614" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/theme.css?v=20260614"><link rel="stylesheet" href="css/body.css?v=20260614"><link rel="stylesheet" href="css/nav.css?v=20260614"><link rel="stylesheet" href="css/filter-bar.css?v=20260614"><link rel="stylesheet" href="css/financials.css?v=20260614"><link rel="stylesheet" href="css/worldcup.css?v=20260614"><link rel="stylesheet" href="css/view-transitions.css?v=20260622"><link rel="stylesheet" href="css/components/cards.css?v=20260614"><link rel="stylesheet" href="css/components/tables.css?v=20260614"><link rel="stylesheet" href="css/components/alerts.css?v=20260614"><link rel="stylesheet" href="css/components/utilities.css?v=20260614"><link rel="stylesheet" href="css/components/search.css?v=20260614"><link rel="stylesheet" href="css/components/footer.css?v=20260614"><link rel="stylesheet" href="css/components/home.css?v=20260614"></noscript>
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/services.js" as="script">
@@ -42,23 +35,6 @@
   <link rel="preload" href="js/13f-holdings.js" as="script">
   <link rel="preload" href="js/financials.js" as="script">
   <link rel="preload" href="js/countdown.js" as="script">
-
-  <!-- Analytics Component -->
-  <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
-  </script>
 
   <!-- Vercel Insights - Production only -->
   <script>
@@ -101,7 +77,7 @@
   <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
-        <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
+        <img src="images/logo-120x120.webp" alt="" width="54" height="54" loading="eager" decoding="async">
       </a>
       <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
       <div class="nav-actions">
@@ -159,7 +135,21 @@
         <div class="content">
         <div class="categories" id="categories">
           <!-- Indicator categories rendered here by renderDashboard -->
-          <div id="indicator-categories"></div>
+          <div id="indicator-categories">
+            <div class="category skeleton-category">
+              <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
+              <div class="indicators-grid">
+                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
+              </div>
+            </div>
+            <div class="category skeleton-category">
+              <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
+              <div class="indicators-grid">
+                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
+              </div>
+            </div>
+          </div>
 
           <!-- 13F Holdings Section -->
           <div id="latest-13f-filings-anchor"></div>
@@ -168,7 +158,9 @@
               <span class="category-icon"><i data-lucide="building-2"></i></span>
               <span class="category-name">13F Holdings</span>
             </h2>
-            <div class="indicators-grid" id="firmCardsContainer"></div>
+            <div class="indicators-grid" id="firmCardsContainer">
+              <div class="skeleton-card" style="min-height: 260px;"></div>
+            </div>
           </div>
 
           <!-- World Cup Score Card -->
@@ -177,7 +169,9 @@
               <span class="category-icon"><i data-lucide="trophy"></i></span>
               <span class="category-name">World Cup 2026</span>
             </h2>
-            <div class="indicators-grid" id="worldCupGrid"></div>
+            <div class="indicators-grid" id="worldCupGrid">
+              <div class="skeleton-card" style="min-height: 140px;"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -230,6 +224,38 @@
         });
       })
       .catch(error => console.error('Scripts load error:', error));
+  </script>
+
+  <!-- Typography System Fonts Component -->
+  <script>
+    fetch('components/fonts.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const linkElements = tempDiv.querySelectorAll('link');
+        linkElements.forEach(element => {
+          document.head.appendChild(element.cloneNode(true));
+        });
+      })
+      .catch(error => console.error('Fonts load error:', error));
+  </script>
+
+  <!-- Analytics Component -->
+  <script>
+    fetch('components/analytics.html')
+      .then(response => response.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const scriptElements = tempDiv.querySelectorAll('script');
+        scriptElements.forEach(script => {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.head.appendChild(newScript);
+        });
+      })
+      .catch(error => console.error('Analytics load error:', error));
   </script>
 
   <!-- Financials Module Scripts (loaded in dependency order) -->

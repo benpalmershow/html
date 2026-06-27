@@ -70,15 +70,16 @@ function setupFilters(financialData) {
      const buttonsContainer = filtersContainer.querySelector('.filters') || filtersContainer;
      buttonsContainer.querySelectorAll('.filter-btn').forEach(btn => btn.remove());
 
-     const createFilterBtn = (id, icon, text, isLatest = false) => {
-         const btn = document.createElement('button');
-         btn.type = 'button';
-         btn.className = `filter-btn ${id === 'all' ? 'active' : ''}`;
-         btn.dataset.category = id;
-         if (isLatest) btn.dataset.isLatest = 'true';
-         btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
-         return btn;
-     };
+const createFilterBtn = (id, icon, text, isLatest = false) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `filter-btn ${id === 'all' ? 'active' : ''}`;
+          btn.dataset.category = id;
+          if (isLatest) btn.dataset.isLatest = 'true';
+          btn.setAttribute('aria-label', `Filter by ${text}`);
+          btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
+          return btn;
+      };
 
      // Create buttons
      const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');

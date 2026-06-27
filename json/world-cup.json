@@ -2737,7 +2737,9 @@
       "group": "GROUP_L",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Abdulrahman Al Jassim"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Panama and England (GROUP_L)"
@@ -2776,7 +2778,9 @@
       "group": "GROUP_L",
       "matchDay": 3,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Drew Fischer"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 GROUP_STAGE match between Croatia and Ghana (GROUP_L)"
@@ -4187,5 +4191,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-27T18:52:46.204932Z"
+  "lastUpdated": "2026-06-27T20:01:45.304108Z"
 }

@@ -2721,14 +2721,14 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": 0,
+        "score": 2,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T21:00:00Z",
@@ -2736,7 +2736,7 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "matchDay": 3,
-      "winner": "DRAW",
+      "winner": "AWAY_TEAM",
       "referees": [
         "Abdulrahman Al Jassim"
       ],
@@ -2752,7 +2752,7 @@
         "name": "Croatia",
         "flag": "🇭🇷",
         "crest": "https://crests.football-data.org/799.svg",
-        "score": 1,
+        "score": 2,
         "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -2762,14 +2762,14 @@
         "name": "Ghana",
         "flag": "🇬🇭",
         "crest": "https://crests.football-data.org/ghana.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-27",
       "utcDate": "2026-06-27T21:00:00Z",
@@ -4195,5 +4195,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-27T22:15:58.721652Z"
+  "lastUpdated": "2026-06-27T23:17:07.745196Z"
 }

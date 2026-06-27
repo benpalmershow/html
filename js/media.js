@@ -133,6 +133,7 @@
         allBtn.type = 'button';
         allBtn.className = 'filter-btn active';
         allBtn.dataset.type = 'all';
+        allBtn.setAttribute('aria-label', 'Show all media');
         allBtn.innerHTML = `${typeIcons['all']}<span class="filter-text">${typeLabel['all']}</span>`;
         filterButtonsContainer.appendChild(allBtn);
 
@@ -142,6 +143,7 @@
             btn.type = 'button';
             btn.className = 'filter-btn';
             btn.dataset.type = type;
+            btn.setAttribute('aria-label', `Filter by ${typeLabel[type] || type}`);
             btn.innerHTML = `${typeIcons[type] || typeIcons['all']}<span class="filter-text">${typeLabel[type] || type}</span>`;
             filterButtonsContainer.appendChild(btn);
         });

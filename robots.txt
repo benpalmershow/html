@@ -1,8 +1,6 @@
 User-agent: *
 Allow: /
 Allow: /journal.html
-Disallow: /*/$
-Disallow: /*.html$
 
 # Sitemaps
 Sitemap: https://howdystranger.net/sitemap.xml

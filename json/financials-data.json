@@ -2733,7 +2733,7 @@
             "parentCategory": "Business Indicators",
             "agency": "Federal Reserve",
             "name": "Industrial Production Index",
-            "lastUpdated": "2026-04-29T14:00:00Z",
+            "lastUpdated": "2026-06-28T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.federalreserve.gov/releases/g17/current/",
             "april": "101.1",
@@ -2744,11 +2744,16 @@
             "september": "101.7",
             "october": "101.2",
             "november": "101.1",
-            "december": "101.6",
+            "december": "101.5",
             "2026": {
-                "january": "102.6",
-                "february": "102.3",
-                "march": "101.8"
+                "january": "101.1",
+                "february": "101.9",
+                "march": "101.6",
+                "april": "102.5",
+                "may": "102.6"
+
+
+
             },
             "change": "",
             "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."

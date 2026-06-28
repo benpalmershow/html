@@ -2967,14 +2967,14 @@
         "name": "Canada",
         "flag": "🇨🇦",
         "crest": "https://crests.football-data.org/canada.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T19:00:00Z",
@@ -2982,7 +2982,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "AWAY_TEAM",
       "referees": [
         "João Pinheiro"
       ],
@@ -4201,5 +4201,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-28T20:03:26.859542Z"
+  "lastUpdated": "2026-06-28T21:13:30.142716Z"
 }

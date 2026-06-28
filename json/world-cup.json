@@ -2957,8 +2957,8 @@
         "name": "South Africa",
         "flag": "🇿🇦",
         "crest": "https://crests.football-data.org/9396.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -2967,14 +2967,14 @@
         "name": "Canada",
         "flag": "🇨🇦",
         "crest": "https://crests.football-data.org/canada.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "status": "live",
+      "statusRaw": "PAUSED",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-28",
       "utcDate": "2026-06-28T19:00:00Z",
@@ -2982,7 +2982,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "João Pinheiro"
       ],
@@ -4201,5 +4201,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-28T18:53:27.720949Z"
+  "lastUpdated": "2026-06-28T20:03:26.859542Z"
 }

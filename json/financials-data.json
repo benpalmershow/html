@@ -2018,7 +2018,7 @@
             "parentCategory": "Housing Market",
             "agency": "FRED",
             "name": "Affordability Index",
-            "lastUpdated": "2026-04-29T19:00:00Z",
+            "lastUpdated": "2026-06-28T19:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/FIXHAI",
             "march": "104.2",
@@ -2026,15 +2026,18 @@
             "may": "97.5",
             "june": "95.5",
             "july": "98.3",
-            "august": "106.5",
-            "september": "105.3",
+            "august": "101.2",
+            "september": "106.7",
             "october": "107.1",
-            "november": "108.8",
-            "december": "111.6",
+            "november": "108.7",
+            "december": "111",
             "2026": {
-                "january": "117.1",
-                "february": "117.5",
-                "march": "113.7"
+                "january": "116.5",
+                "february": "116.1",
+                "march": "112",
+                "april": "108",
+                "may": "105.6"
+
             },
             "change": "",
             "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."

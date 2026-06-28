@@ -413,7 +413,7 @@
             "parentCategory": "Business Indicators",
             "agency": "FRED",
             "name": "10-yr Treasury Yield",
-            "lastUpdated": "2026-05-16T14:00:00Z",
+            "lastUpdated": "2026-06-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DGS10",
             "march": "4.28",
@@ -430,7 +430,9 @@
                 "january": "4.21",
                 "february": "4.13",
                 "march": "4.25",
-                "april": "4.47"
+                "april": "4.32",
+                "may": "4.48",
+                "june": "4.48"
             },
             "change": "",
             "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-26T08:00:00",
+    "lastUpdated": "2026-06-28T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1295,7 +1295,7 @@
             "parentCategory": "Government",
             "agency": "CBP",
             "name": "Southern Border Encounters",
-            "lastUpdated": "2026-04-13T14:00:00Z",
+            "lastUpdated": "2026-06-28T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
             "march": "11,011",
@@ -1305,13 +1305,17 @@
             "july": "7,822",
             "august": "9,731",
             "september": "11,647",
-            "october": "11,706",
-            "november": "10,958",
-            "december": "9,989",
+            "october": "11,707",
+            "november": "10,964",
+            "december": "9,990",
             "2026": {
-                "january": "9,733",
-                "february": "9,614",
-                "march": "11,732"
+                "january": "9,734",
+                "february": "9,612",
+                "march": "11,733",
+                "april": "12,023",
+                "may": "13,530"
+
+
             },
             "change": "",
             "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."
@@ -1449,8 +1453,8 @@
             "region": "us",
             "parentCategory": "Business Indicators",
             "agency": "Commerce",
-            "name": "New Orders",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "name": "New Orders for Manufactured Goods",
+            "lastUpdated": "2026-06-28T14:00:00Z",
             "releaseDay": 3,
             "url": "https://www.census.gov/economic-indicators/",
             "march": "$617.4B",
@@ -1464,7 +1468,12 @@
             "november": "$621.9B",
             "december": "$619.1B",
             "2026": {
-                "january": "$620.1B"
+                "january": "$619.4B",
+                "february": "$621.3B",
+                "march": "$632.6B",
+                "april": "$662.7B"
+
+
             },
             "change": "",
             "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity."
@@ -1528,7 +1537,7 @@
             "parentCategory": "Consumer Indicators",
             "agency": "Manheim",
             "name": "Used Vehicle Value Index",
-            "lastUpdated": "2026-03-20T21:56:00Z",
+            "lastUpdated": "2026-06-28T21:56:00Z",
             "releaseDay": 7,
             "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
             "march": "202.6",
@@ -1543,8 +1552,11 @@
             "december": "205.5",
             "2026": {
                 "january": "210.5",
-                "february": "210",
-                "march": "213.4"
+                "february": "212.3",
+                "march": "215.3",
+                "april": "211.9",
+                "may": "212.6",
+                "june": "213.9"
             },
             "change": "",
             "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."

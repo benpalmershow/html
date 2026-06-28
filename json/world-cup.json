@@ -2983,7 +2983,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "João Pinheiro"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between South Africa and Canada"
@@ -4199,5 +4201,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-28T16:45:15.557067Z"
+  "lastUpdated": "2026-06-28T17:49:36.832490Z"
 }

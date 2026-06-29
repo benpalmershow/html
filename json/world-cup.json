@@ -3039,8 +3039,8 @@
         "name": "Germany",
         "flag": "🇩🇪",
         "crest": "https://crests.football-data.org/759.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3049,14 +3049,14 @@
         "name": "Paraguay",
         "flag": "🇵🇾",
         "crest": "https://crests.football-data.org/761.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
       "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "time": "0-1 HT",
       "minute": null,
       "date": "2026-06-29",
       "utcDate": "2026-06-29T20:30:00Z",
@@ -4205,5 +4205,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-29T21:00:55.892054Z"
+  "lastUpdated": "2026-06-29T22:16:33.680883Z"
 }

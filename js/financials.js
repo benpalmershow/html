@@ -89,6 +89,9 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
     handleEmptyState(indicatorContainer, filterCategory);
     makeCardsFocusable(document.getElementById('categories'));
+
+    // Lazy render indicators to reduce initial DOM complexity
+    setupLazyIndicatorRendering();
 }
 
 function renderLatestUpdatesView(financialData) {
@@ -167,6 +170,39 @@ function handleEmptyState(container, filterCategory) {
 function makeCardsFocusable(container) {
     container.querySelectorAll('.indicator').forEach(card => {
         card.setAttribute('tabindex', '0');
+    });
+}
+
+/* =========================================
+   Lazy Indicator Rendering (DOM Virtualization)
+   ========================================= */
+
+function setupLazyIndicatorRendering() {
+    const categories = document.querySelectorAll('.category');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const category = entry.target;
+                const indicators = category.querySelectorAll('.indicator');
+                indicators.forEach(indicator => {
+                    if (indicator.style.display === 'none') {
+                        indicator.style.display = '';
+                    }
+                });
+                observer.unobserve(category);
+            }
+        });
+    }, { rootMargin: '200px', threshold: 0.01 });
+
+    // Hide indicators in categories not immediately visible
+    categories.forEach((category, index) => {
+        if (index > 1) { // Keep first 2 categories visible
+            const indicators = category.querySelectorAll('.indicator');
+            indicators.forEach(indicator => {
+                indicator.style.display = 'none';
+            });
+            observer.observe(category);
+        }
     });
 }
 

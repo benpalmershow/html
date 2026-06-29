@@ -52,18 +52,54 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// --- Chart Lazy Loading with IntersectionObserver ---
+
+const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const overlay = entry.target.closest('.chart-overlay');
+            if (overlay && !overlay._chartLoaded) {
+                const indicator = overlay.closest('.indicator');
+                const indicatorName = indicator?.getAttribute('data-indicator-name');
+                if (indicatorName) {
+                    loadChartInOverlay(indicator, indicatorName, overlay);
+                    overlay._chartLoaded = true;
+                }
+            }
+        }
+    });
+}, { rootMargin: '50px', threshold: 0.1 });
+
 // --- Overlay Management ---
 
 function showChartOverlay(indicator, indicatorName, overlay) {
     document.querySelectorAll('.chart-overlay.show').forEach(otherOverlay => { if (otherOverlay !== overlay) hideChartOverlay(otherOverlay); });
     overlay.classList.add('show');
     currentChartIndicatorName = indicatorName;
-    loadChartInOverlay(indicator, indicatorName, overlay);
+    
+    // Use IntersectionObserver for lazy loading
+    const canvasContainer = overlay.querySelector('.chart-overlay-body');
+    if (canvasContainer) {
+        chartObserver.observe(canvasContainer);
+    }
+    
+    // Fallback: load immediately if observer doesn't trigger quickly
+    setTimeout(() => {
+        if (!overlay._chartLoaded) {
+            loadChartInOverlay(indicator, indicatorName, overlay);
+            overlay._chartLoaded = true;
+        }
+    }, 100);
 }
 
 function hideChartOverlay(overlay) {
     overlay.classList.remove('show');
+    const canvasContainer = overlay.querySelector('.chart-overlay-body');
+    if (canvasContainer) {
+        chartObserver.unobserve(canvasContainer);
+    }
     if (overlay._chartInstance) { overlay._chartInstance.destroy(); overlay._chartInstance = null; }
+    overlay._chartLoaded = false;
 }
 
 function toggleChartOverlay(indicator, indicatorName) {

@@ -9,22 +9,32 @@
   <meta name="author" content="Howdy, Stranger">
   <meta name="robots" content="index, follow">
 
-  <!-- Critical CSS -->
-  <link rel="stylesheet" href="css/theme.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/body.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/nav.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/filter-bar.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/financials.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/worldcup.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/view-transitions.css?v=20260622" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/cards.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/tables.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/alerts.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/utilities.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/search.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/footer.css?v=20260614" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/components/home.css?v=20260614" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/theme.css?v=20260614"><link rel="stylesheet" href="css/body.css?v=20260614"><link rel="stylesheet" href="css/nav.css?v=20260614"><link rel="stylesheet" href="css/filter-bar.css?v=20260614"><link rel="stylesheet" href="css/financials.css?v=20260614"><link rel="stylesheet" href="css/worldcup.css?v=20260614"><link rel="stylesheet" href="css/view-transitions.css?v=20260622"><link rel="stylesheet" href="css/components/cards.css?v=20260614"><link rel="stylesheet" href="css/components/tables.css?v=20260614"><link rel="stylesheet" href="css/components/alerts.css?v=20260614"><link rel="stylesheet" href="css/components/utilities.css?v=20260614"><link rel="stylesheet" href="css/components/search.css?v=20260614"><link rel="stylesheet" href="css/components/footer.css?v=20260614"><link rel="stylesheet" href="css/components/home.css?v=20260614"></noscript>
+  <!-- Critical CSS - loaded synchronously for first paint -->
+  <link rel="stylesheet" href="css/theme.css?v=20260614">
+  <link rel="stylesheet" href="css/body.css?v=20260614">
+  <link rel="stylesheet" href="css/nav.css?v=20260614">
+  <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
+  <link rel="stylesheet" href="css/financials.css?v=20260614">
+  <link rel="stylesheet" href="css/components/cards.css?v=20260614">
+  <link rel="stylesheet" href="css/components/utilities.css?v=20260614">
+
+  <!-- Non-critical CSS - deferred loading -->
+  <link rel="preload" href="css/worldcup.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/view-transitions.css?v=20260622" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/components/tables.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/components/alerts.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/components/search.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/components/footer.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/components/home.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/worldcup.css?v=20260614">
+    <link rel="stylesheet" href="css/view-transitions.css?v=20260622">
+    <link rel="stylesheet" href="css/components/tables.css?v=20260614">
+    <link rel="stylesheet" href="css/components/alerts.css?v=20260614">
+    <link rel="stylesheet" href="css/components/search.css?v=20260614">
+    <link rel="stylesheet" href="css/components/footer.css?v=20260614">
+    <link rel="stylesheet" href="css/components/home.css?v=20260614">
+  </noscript>
 
   <!-- Preload critical resources -->
   <link rel="preload" href="js/services.js" as="script">
@@ -48,26 +58,6 @@
 
   <!-- Chart.js for interactive charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
-  <!-- Infogram Embed Script (deferred) -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      ! function (e, n, i, s) {
-        var d = "InfogramEmbeds";
-        var o = e.getElementsByTagName(n)[0];
-        if (window[d] && window[d].initialized)
-          window[d].process && window[d].process();
-        else if (!e.getElementById(i)) {
-          var r = e.createElement(n);
-          r.async = 1,
-            r.id = i,
-            r.src = s,
-            o.parentNode.insertBefore(r, o)
-        }
-      }(document, "script", "infogram-async",
-        "https://e.infogram.com/js/dist/embed-loader-min.js");
-    });
-  </script>
 
 <!-- Performance monitoring -->
   <script src="js/speed-insights.js" defer></script>
@@ -95,26 +85,9 @@
     </div>
   </div>
   </nav>
-  <script>
-    (function () {
-      const toggle = document.getElementById('darkModeToggle');
-      function updateToggle() {
-        if (!toggle) return;
-        const isDark = document.documentElement.classList.contains('dark-mode');
-        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      }
-      if (toggle) {
-        toggle.addEventListener('click', () => {
-          document.documentElement.classList.toggle('dark-mode');
-          try { localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode') ? '1' : '0'); } catch (e) {}
-          updateToggle();
-        });
-      }
-      updateToggle();
-    })();
-  </script>
- 
+
+  <!-- Dark Mode Toggle -->
+  <script src="js/dark-mode-toggle.js" defer></script>
 
    <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
      <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
@@ -158,8 +131,8 @@
               <span class="category-icon"><i data-lucide="building-2"></i></span>
               <span class="category-name">13F Holdings</span>
             </h2>
-            <div class="indicators-grid" id="firmCardsContainer">
-              <div class="skeleton-card" style="min-height: 260px;"></div>
+            <div class="indicators-grid" id="firmCardsContainer" style="min-height: 280px; contain: layout;">
+              <div class="skeleton-card" style="height: 260px;"></div>
             </div>
           </div>
 
@@ -179,84 +152,9 @@
 
   <!-- Footer Component -->
   <div id="footer-container"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      fetch('components/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('footer-container').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Footer load error:', error);
-        });
-    });
-  </script>
 
-  <!-- Error Handling Component -->
-  <script>
-    fetch('components/error-handling.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Error Handling load error:', error));
-  </script>
-
-  <!-- Unified Scripts Component -->
-  <script>
-    fetch('components/scripts-unified.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Scripts load error:', error));
-  </script>
-
-  <!-- Typography System Fonts Component -->
-  <script>
-    fetch('components/fonts.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const linkElements = tempDiv.querySelectorAll('link');
-        linkElements.forEach(element => {
-          document.head.appendChild(element.cloneNode(true));
-        });
-      })
-      .catch(error => console.error('Fonts load error:', error));
-  </script>
-
-  <!-- Analytics Component -->
-  <script>
-    fetch('components/analytics.html')
-      .then(response => response.text())
-      .then(html => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const scriptElements = tempDiv.querySelectorAll('script');
-        scriptElements.forEach(script => {
-          const newScript = document.createElement('script');
-          newScript.textContent = script.textContent;
-          document.head.appendChild(newScript);
-        });
-      })
-      .catch(error => console.error('Analytics load error:', error));
-  </script>
+  <!-- Component Loaders (consolidates footer, error-handling, scripts-unified, fonts, analytics) -->
+  <script src="js/component-loaders.js" defer></script>
 
   <!-- Financials Module Scripts (loaded in dependency order) -->
   <script src="js/services.js" defer></script>
@@ -268,29 +166,35 @@
   <script src="js/search.js" defer></script>
   <script src="js/13f-holdings.js" defer></script>
   <script src="js/financials.js" defer></script>
-  <script src="js/world-cup.js" defer></script>
-  <script src="js/countdown.js" defer></script>
 
-   <!-- Load Lucide icons on-demand after page load -->
+  <!-- Non-critical scripts loaded after idle to reduce TBT -->
   <script>
-    (function () {
-      const loadLucide = () => {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.js';
-        script.defer = true;
-        script.onload = () => window.lucide?.createIcons();
-        document.head.appendChild(script);
+    (function() {
+      const loadNonCriticalScripts = () => {
+        const worldCupScript = document.createElement('script');
+        worldCupScript.src = 'js/world-cup.js';
+        worldCupScript.defer = true;
+        document.head.appendChild(worldCupScript);
+
+        const countdownScript = document.createElement('script');
+        countdownScript.src = 'js/countdown.js';
+        countdownScript.defer = true;
+        document.head.appendChild(countdownScript);
       };
+
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadLucide, { timeout: 3000 });
+        requestIdleCallback(loadNonCriticalScripts, { timeout: 2000 });
       } else {
-        setTimeout(loadLucide, 100);
+        window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
       }
     })();
   </script>
 
+   <!-- Load Lucide icons on-demand after page load -->
+  <script src="js/lucide-loader.js" defer></script>
+
 <!-- Chart Modal Popup -->
-    <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle">
+    <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle" style="contain: layout;">
       <div class="chart-modal-content">
         <div class="chart-modal-range-picker" id="chartRangePicker">
           <h3 id="chartModalTitle" class="chart-modal-title">Chart View</h3>
@@ -299,7 +203,7 @@
           <button class="range-btn active" data-range="12">1Y</button>
           <button id="closeChartModal" aria-label="Close chart dialog">&times;</button>
         </div>
-        <div class="chart-modal-body">
+        <div class="chart-modal-body" style="min-height: 400px;">
         </div>
       </div>
     </div>

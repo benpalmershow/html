@@ -5,14 +5,12 @@
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
-  // Main Google Analytics configuration
+  // Main Google Analytics configuration with first-party mode enabled
   gtag('config', 'G-DWEVPGLJDP', {
     'anonymize_ip': true,
-    'cookie_flags': 'SameSite=None;Secure'
+    'cookie_flags': 'SameSite=Lax;Secure',
+    'first_party_collection': true
   });
-
-  // Additional Google Ads configuration
-  gtag('config', 'AW-16914260010');
 
   // Load gtag.js after page load with idle callback fallback
   function loadGtagScript() {

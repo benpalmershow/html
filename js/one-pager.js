@@ -1,9 +1,9 @@
 const LIMITS = {
-  journal: Infinity,
-  essays: Infinity,
-  media: Infinity,
-  financials: Infinity,
-  worldCup: Infinity
+  journal: 10,
+  essays: 10,
+  media: 10,
+  financials: 10,
+  worldCup: 10
 };
 const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
@@ -354,25 +354,20 @@ async function loadLatestWorldCup() {
       return;
     }
 
-    const wrapper = document.createElement('div');
-    wrapper.className = 'world-cup-compact';
-
     matches.forEach(match => {
       const scoreA = match.teamA.score;
       const scoreB = match.teamB.score;
       const hasScore = scoreA !== null && scoreA !== undefined && scoreB !== null && scoreB !== undefined;
       const scoreText = hasScore ? `${scoreA} - ${scoreB}` : 'vs';
-      const card = document.createElement('div');
-      card.className = 'wc-compact-match';
-      card.innerHTML = `
-        <span class="wc-team wc-team-a">${escapeHtml(match.teamA.name)} <span class="wc-flag">${match.teamA.flag || '🏳️'}</span></span>
+      const li = document.createElement('li');
+      li.className = 'wc-compact-match';
+      li.innerHTML = `
+        <span class="wc-team wc-team-a"><span class="wc-team-name">${escapeHtml(match.teamA.name)}</span> <span class="wc-flag">${match.teamA.flag || '🏳️'}</span></span>
         <span class="wc-score">${scoreText}</span>
-        <span class="wc-team wc-team-b"><span class="wc-flag">${match.teamB.flag || '🏳️'}</span> ${escapeHtml(match.teamB.name)}</span>
+        <span class="wc-team wc-team-b"><span class="wc-flag">${match.teamB.flag || '🏳️'}</span> <span class="wc-team-name">${escapeHtml(match.teamB.name)}</span></span>
       `;
-      wrapper.appendChild(card);
+      container.appendChild(li);
     });
-
-    container.appendChild(wrapper);
   } catch (error) {
     console.error('Failed to load World Cup data for one-pager:', error);
     const target = document.getElementById('latest-world-cup');

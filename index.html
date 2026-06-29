@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Hero image preload - LCP priority -->
-  <link rel="preload" as="image" href="images/logo-360x360.webp" imagesrcset="images/logo-360x360.webp 360w" imagesizes="320px">
+  <link rel="preload" as="image" href="images/logo-79x79.webp" imagesrcset="images/logo-79x79.webp 79w" imagesizes="79px">
 
   <!-- Page-specific Meta Tags -->
   <meta name="description" content="Human-curated content, independent commentary, news, and economic insight. Unbiased market analysis and policy coverage.">
@@ -75,13 +75,10 @@
     <link rel="stylesheet" href="css/one-pager.css?v=20260614">
     <link rel="stylesheet" href="css/view-transitions.css?v=20260622">
   </noscript>
-  <link rel="stylesheet" href="css/components/cards.css?v=20260614">
-  <link rel="stylesheet" href="css/components/tables.css?v=20260614">
-  <link rel="stylesheet" href="css/components/alerts.css?v=20260614">
-  <link rel="stylesheet" href="css/components/utilities.css?v=20260614">
-  <link rel="stylesheet" href="css/components/search.css?v=20260614">
-  <link rel="stylesheet" href="css/components/footer.css?v=20260614">
-  <link rel="stylesheet" href="css/components/home.css?v=20260614">
+  <link rel="preload" href="css/components.css?v=20260628" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/components.css?v=20260628">
+  </noscript>
   
   <!-- Font Awesome for platform icons - deferred load -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -138,7 +135,7 @@
   <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
       <a href="index.html" class="nav-logo active" aria-current="page" aria-label="Howdy, Stranger home">
-        <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
+        <img src="images/logo-79x79.webp" alt="" width="56" height="56" loading="eager" decoding="async">
       </a>
       <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
       <div class="nav-actions">
@@ -179,40 +176,55 @@
   </script>
 
   <main class="one-pager-container" id="main-content" tabindex="-1" style="view-transition-name: main-content;">
-    <div class="hero-logo-container" style="min-height:10px;">
-      <div id="hero-content"></div>
-    </div>
-    <!-- Hero section links are sourced from json/media.json (first entry, type podcast) -->
-    <script defer src="js/sync-hero.js"></script>
 
-   <section class="updates-grid">
-      <article class="section-card section-docs" data-section-label="Docs">
-        <a href="journal.html" class="section-label"><img src="images/announcements-60x60.webp" alt="Docs section icon" class="section-icon" width="16" height="16" loading="lazy">Docs</a>
-        <div class="compact-list-wrap">
-          <ul id="latest-journal" class="compact-list"></ul>
-        </div>
-      </article>
 
-      <article class="section-card section-media" data-section-label="Media">
-        <a href="media.html" class="section-label"><img src="images/media-60x60.webp" alt="Media section icon" class="section-icon" width="16" height="16" loading="lazy">Media</a>
-        <div class="compact-list-wrap">
-          <ul id="latest-media" class="compact-list"></ul>
-        </div>
-      </article>
+<section class="updates-grid">
+       <article class="section-card section-docs" data-section-label="Docs">
+         <a href="journal.html" class="section-label"><img src="images/announcements-60x60.webp" alt="Docs section icon" class="section-icon" width="16" height="16" loading="lazy">Docs</a>
+         <div class="compact-list-wrap">
+           <ul id="latest-journal" class="compact-list">
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+           </ul>
+         </div>
+       </article>
 
-      <article class="section-card section-numbers" data-section-label="Numbers">
-        <a href="financials.html" class="section-label"><img src="images/read-60x60.webp" alt="Numbers section icon" class="section-icon" width="16" height="16" loading="lazy">Numbers</a>
-        <div class="compact-list-wrap">
-          <ul id="latest-financials" class="compact-list"></ul>
-        </div>
-      </article>
+       <article class="section-card section-media" data-section-label="Media">
+         <a href="media.html" class="section-label"><img src="images/media-60x60.webp" alt="Media section icon" class="section-icon" width="16" height="16" loading="lazy">Media</a>
+         <div class="compact-list-wrap">
+           <ul id="latest-media" class="compact-list">
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+           </ul>
+         </div>
+       </article>
 
-      <article class="section-card" data-section-label="World Cup 2026">
-        <a href="financials.html" class="section-label"><i data-lucide="trophy" style="width:24px;height:24px;vertical-align:middle;margin-right:6px;"></i>World Cup</a>
-        <div class="compact-list-wrap">
-          <ul id="latest-world-cup" class="compact-list"></ul>
-        </div>
-      </article>
+       <article class="section-card section-numbers" data-section-label="Numbers">
+         <a href="financials.html" class="section-label"><img src="images/read-60x60.webp" alt="Numbers section icon" class="section-icon" width="16" height="16" loading="lazy">Numbers</a>
+         <div class="compact-list-wrap">
+           <ul id="latest-financials" class="compact-list">
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+           </ul>
+         </div>
+       </article>
+
+       <article class="section-card" data-section-label="World Cup 2026">
+         <a href="financials.html" class="section-label"><i data-lucide="trophy" style="width:24px;height:24px;vertical-align:middle;margin-right:6px;"></i>World Cup</a>
+         <div class="compact-list-wrap">
+           <ul id="latest-world-cup" class="compact-list">
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+             <li class="skeleton-list-item"><div class="skeleton-line long"></div></li>
+           </ul>
+         </div>
+       </article>
 
 </section>
   </main>

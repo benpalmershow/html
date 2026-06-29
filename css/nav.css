@@ -46,6 +46,8 @@ html.dark-mode {
   align-items: center;
   gap: 0.35rem;
   margin-left: auto;
+  min-width: 280px;
+  justify-content: flex-end;
 }
 
 .nav-logo {

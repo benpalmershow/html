@@ -43,10 +43,11 @@ body {
  }
 
 main {
-    contain: layout style;
-    content-visibility: auto;
-    flex: 1;
-    min-height: 0;
+     contain: layout style;
+     content-visibility: auto;
+     contain-intrinsic-size: 1px 1000px;
+     flex: 1;
+     min-height: 0;
 }
 
 /* ========================================

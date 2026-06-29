@@ -65,28 +65,33 @@ function createMatchCard(match) {
   const infoBtn = `<button class="info-btn" title="Match details" aria-label="Show match details"><i data-lucide="info" class="info-icon"></i></button>`;
   const detailsHtml = extraInfo.length > 0 ? `<div class="explanation-text" style="display:none;margin-top:6px;padding:6px;background:var(--bg-secondary);border-radius:4px;font-size:0.75rem;color:var(--text-secondary);">${extraInfo.map(info => `<div style="padding:1px 0;">${info}</div>`).join('')}</div>` : '';
 
+const hasCrestA = match.teamA.crest;
+  const hasCrestB = match.teamB.crest;
+  
   card.innerHTML = `
-    <div class="indicator-header">
-      <div class="indicator-name">
-        ${groupDisplay}
-      </div>
-      ${infoBtn}
-    </div>
-    <div class="indicator-content">
-      <div class="match-score-display">
-        <div class="match-team">
-          ${match.teamA.crest ? `<img src="${match.teamA.crest}" alt="${match.teamA.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'">` : `<span class="team-flag">${match.teamA.flag || '🏳️'}</span>`}
-          <span class="team-name">${match.teamA.name || 'TBD'}</span>
-        </div>
-        <div class="match-score">${scoreDisplay}</div>
-        <div class="match-team">
-          ${match.teamB.crest ? `<img src="${match.teamB.crest}" alt="${match.teamB.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'">` : `<span class="team-flag">${match.teamB.flag || '🏳️'}</span>`}
-          <span class="team-name">${match.teamB.name || 'TBD'}</span>
-        </div>
-      </div>
-      ${detailsHtml}
-    </div>
-  `;
+       <div class="indicator-header">
+         <div class="indicator-name">
+           ${groupDisplay}
+         </div>
+         ${infoBtn}
+       </div>
+       <div class="indicator-content">
+         <div class="match-score-display">
+           <div class="match-team">
+             ${hasCrestA ? `<img src="${match.teamA.crest}" alt="${match.teamA.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-block'">` : ''}
+             <span class="team-flag" style="${hasCrestA ? 'display:none;' : ''}">${match.teamA.flag || '🏳️'}</span>
+             <span class="team-name">${match.teamA.name || 'TBD'}</span>
+           </div>
+           <div class="match-score">${scoreDisplay}</div>
+           <div class="match-team">
+             ${hasCrestB ? `<img src="${match.teamB.crest}" alt="${match.teamB.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-block'">` : ''}
+             <span class="team-flag" style="${hasCrestB ? 'display:none;' : ''}">${match.teamB.flag || '🏳️'}</span>
+             <span class="team-name">${match.teamB.name || 'TBD'}</span>
+           </div>
+         </div>
+         ${detailsHtml}
+       </div>
+     `;
 
   // Attach click handler to toggle explanation
   card.querySelector('.info-btn').addEventListener('click', function(e) {

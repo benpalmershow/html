@@ -3162,8 +3162,8 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3173,13 +3173,13 @@
         "flag": "🇸🇪",
         "crest": "https://crests.football-data.org/792.svg",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
       "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "time": "1-0 HT",
       "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T21:00:00Z",
@@ -3187,7 +3187,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Danny Makkelie"
       ],
@@ -4211,5 +4211,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-30T21:07:11.257961Z"
+  "lastUpdated": "2026-06-30T22:22:38.603386Z"
 }

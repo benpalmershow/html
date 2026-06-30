@@ -3121,7 +3121,7 @@
         "name": "Ivory Coast",
         "flag": "🇨🇮",
         "crest": "https://crests.football-data.org/787.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3131,14 +3131,14 @@
         "name": "Norway",
         "flag": "🇳🇴",
         "crest": "https://crests.football-data.org/813.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "17:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T17:00:00Z",
@@ -3146,7 +3146,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Jesús Valenzuela"
       ],
@@ -4209,5 +4209,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-30T15:44:52.298612Z"
+  "lastUpdated": "2026-06-30T17:29:28.565961Z"
 }

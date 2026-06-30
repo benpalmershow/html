@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-28T08:00:00",
+    "lastUpdated": "2026-06-30T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1508,7 +1508,7 @@
             "parentCategory": "Consumer Indicators",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2026-05-27T14:00:00Z",
+            "lastUpdated": "2026-06-30T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -1526,7 +1526,8 @@
                 "february": "91",
                 "march": "92.2",
                 "april": "93.8",
-                "may": "93.1"
+                "may": "90.6",
+                "june": "91.2"
             },
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
@@ -2272,7 +2273,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2026-06-02T14:00:00Z",
+            "lastUpdated": "2026-06-30T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
             "march": "6,952,000",
@@ -2289,7 +2290,8 @@
                 "january": "7,240,000",
                 "february": "6,922,000",
                 "march": "6,887,000",
-                "april": "7,618,000"
+                "april": "7,618,000",
+                "may": "7,594,000"
             },
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."

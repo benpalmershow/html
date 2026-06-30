@@ -3080,24 +3080,24 @@
         "name": "Netherlands",
         "flag": "🇳🇱",
         "crest": "https://crests.football-data.org/8601.svg",
-        "score": 0,
-        "halfTimeScore": null,
-        "extraTimeScore": null,
-        "penaltyScore": null
+        "score": 4,
+        "halfTimeScore": 0,
+        "extraTimeScore": 0,
+        "penaltyScore": 3
       },
       "teamB": {
         "id": 815,
         "name": "Morocco",
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
-        "score": 0,
-        "halfTimeScore": null,
-        "extraTimeScore": null,
-        "penaltyScore": null
+        "score": 4,
+        "halfTimeScore": 0,
+        "extraTimeScore": 0,
+        "penaltyScore": 3
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-06-30",
       "utcDate": "2026-06-30T01:00:00Z",
@@ -3105,7 +3105,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": null,
       "referees": [
         "Wilton Sampaio"
       ],
@@ -4207,5 +4207,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-30T01:25:25.499688Z"
+  "lastUpdated": "2026-06-30T05:35:36.825474Z"
 }

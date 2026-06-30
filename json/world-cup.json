@@ -3042,7 +3042,7 @@
         "score": 4,
         "halfTimeScore": 0,
         "extraTimeScore": 0,
-        "penaltyScore": 4
+        "penaltyScore": 3
       },
       "teamB": {
         "id": 761,
@@ -3064,7 +3064,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Jalal Jayed"
       ],
@@ -3080,10 +3080,10 @@
         "name": "Netherlands",
         "flag": "🇳🇱",
         "crest": "https://crests.football-data.org/8601.svg",
-        "score": 4,
+        "score": 3,
         "halfTimeScore": 0,
         "extraTimeScore": 0,
-        "penaltyScore": 3
+        "penaltyScore": 2
       },
       "teamB": {
         "id": 815,
@@ -3105,7 +3105,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Wilton Sampaio"
       ],
@@ -3595,10 +3595,10 @@
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 815,
+        "name": "Morocco",
+        "flag": "🇲🇦",
+        "crest": "https://crests.football-data.org/morocco.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3618,16 +3618,16 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_16 match between Canada and None"
+      "explanation": "World Cup 2026 LAST_16 match between Canada and Morocco"
     },
     {
       "id": "wc2026-537375",
       "matchId": 537375,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 761,
+        "name": "Paraguay",
+        "flag": "🇵🇾",
+        "crest": "https://crests.football-data.org/761.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3657,16 +3657,16 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_16 match between None and None"
+      "explanation": "World Cup 2026 LAST_16 match between Paraguay and None"
     },
     {
       "id": "wc2026-537377",
       "matchId": 537377,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 764,
+        "name": "Brazil",
+        "flag": "🇧🇷",
+        "crest": "https://crests.football-data.org/764.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3696,7 +3696,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_16 match between None and None"
+      "explanation": "World Cup 2026 LAST_16 match between Brazil and None"
     },
     {
       "id": "wc2026-537378",
@@ -4207,5 +4207,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-06-30T05:35:36.825474Z"
+  "lastUpdated": "2026-06-30T08:43:17.015697Z"
 }

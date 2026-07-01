@@ -3285,9 +3285,9 @@
         "name": "Belgium",
         "flag": "🇧🇪",
         "crest": "https://crests.football-data.org/805.svg",
-        "score": 2,
+        "score": 3,
         "halfTimeScore": 0,
-        "extraTimeScore": 0,
+        "extraTimeScore": 1,
         "penaltyScore": null
       },
       "teamB": {
@@ -3300,9 +3300,9 @@
         "extraTimeScore": 0,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T20:00:00Z",
@@ -3310,7 +3310,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Said Martinez"
       ],
@@ -4219,5 +4219,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-01T22:15:44.699847Z"
+  "lastUpdated": "2026-07-01T23:43:40.187646Z"
 }

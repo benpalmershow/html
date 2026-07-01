@@ -212,11 +212,11 @@ function setupLazyIndicatorRendering() {
 
 async function fetchFinancialData() {
     try {
-        const data = await Services.dataService.fetchAnyJSON(['json/financials-data.json']);
+        const data = await Services.dataService.fetchJSON('json/financials-data.json');
         DashboardState.setData(data);
         initializeDashboard();
     } catch (error) {
-        console.error('Could not load financial data from any path:', error);
+        console.error('Could not load financial data:', error);
         document.getElementById('categories').innerHTML =
             '<div class="error">Error loading financial data. Please try again later.</div>';
     }

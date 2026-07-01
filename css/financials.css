@@ -11,9 +11,14 @@
 
 .categories { display: grid; gap: 15px }
 
-.content { min-height: 80vh; contain: layout; }
+.categories img {
+  aspect-ratio: 1 / 1;
+  display: inline-block;
+}
 
-.category { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%); border-radius: var(--card-radius); padding: 0.5rem clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform 0.3s ease; word-break: break-word }
+.content { min-height: 100vh; contain: layout; }
+
+.category { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.05) 100%); border-radius: var(--card-radius); padding: 0.5rem clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform 0.3s ease; word-break: break-word; content-visibility: auto; contain-intrinsic-size: 1px 500px; }
 
 .category:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15) }
 
@@ -27,7 +32,7 @@
 
 .category-name { position: relative; top: 1px }
 
-.indicators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; align-items: start; min-height: 400px; }
+.indicators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; align-items: start; min-height: 800px; }
 
 .indicator {
     background: radial-gradient(ellipse at 50% -20%, rgba(var(--indicator-accent-rgb, 44,95,90), 0.07) 0%, transparent 60%), linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
@@ -42,6 +47,7 @@
     gap: 0.35rem;
     overflow: hidden;
     animation: cardIn 0.35s ease-out both;
+    contain: layout style;
 }
 
 

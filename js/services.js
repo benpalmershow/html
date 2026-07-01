@@ -160,6 +160,21 @@ const Services = (function () {
 
         // Singleton instances
         dataService: new DataService(),
-        events: new EventBus()
+        events: new EventBus(),
+
+        // Utility: Dynamically load external scripts
+        async loadExternalModule(url) {
+            return new Promise((resolve, reject) => {
+                if (document.querySelector(`script[src="${url}"]`)) {
+                    resolve();
+                    return;
+                }
+                const script = document.createElement('script');
+                script.src = url;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
     };
 })();

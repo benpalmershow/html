@@ -56,8 +56,6 @@
     }
   </script>
 
-  <!-- Chart.js for interactive charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
 <!-- Performance monitoring -->
   <script src="js/speed-insights.js" defer></script>
@@ -156,26 +154,42 @@
   <!-- Component Loaders (consolidates footer, error-handling, scripts-unified, fonts, analytics) -->
   <script src="js/component-loaders.js" defer></script>
 
-  <!-- Financials Module Scripts (loaded in dependency order) -->
+  <!-- Critical Financials Module Scripts (loaded in dependency order) -->
   <script src="js/services.js" defer></script>
   <script src="js/utils.js?v=20260222" defer></script>
   <script src="js/view-transitions.js" defer></script>
   <script src="js/indicators.js?v=20260222" defer></script>
   <script src="js/charts.js" defer></script>
-  <script src="js/filters.js" defer></script>
-  <script src="js/search.js" defer></script>
-  <script src="js/13f-holdings.js" defer></script>
   <script src="js/financials.js" defer></script>
 
   <!-- Non-critical scripts loaded after idle to reduce TBT -->
   <script>
     (function() {
       const loadNonCriticalScripts = () => {
+        // Filters and search - not needed for initial render
+        const filtersScript = document.createElement('script');
+        filtersScript.src = 'js/filters.js';
+        filtersScript.defer = true;
+        document.head.appendChild(filtersScript);
+
+        const searchScript = document.createElement('script');
+        searchScript.src = 'js/search.js';
+        searchScript.defer = true;
+        document.head.appendChild(searchScript);
+
+        // 13F Holdings - appears later in page
+        const holdingsScript = document.createElement('script');
+        holdingsScript.src = 'js/13f-holdings.js';
+        holdingsScript.defer = true;
+        document.head.appendChild(holdingsScript);
+
+        // World Cup - appears later in page
         const worldCupScript = document.createElement('script');
         worldCupScript.src = 'js/world-cup.js';
         worldCupScript.defer = true;
         document.head.appendChild(worldCupScript);
 
+        // Countdown - non-critical
         const countdownScript = document.createElement('script');
         countdownScript.src = 'js/countdown.js';
         countdownScript.defer = true;

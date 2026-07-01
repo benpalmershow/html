@@ -254,7 +254,7 @@ function initializeDashboard() {
     if (typeof loadWorldCupMatches === 'function') loadWorldCupMatches();
     if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
-    setupModalHandlers();
+    if (typeof setupModalHandlers === 'function') setupModalHandlers();
     setupKeyboardNavigation();
 }
 
@@ -272,7 +272,7 @@ function setActiveFilter(category) {
         btn.classList.toggle('active', isActive);
     });
 
-    syncFilterToURL(category, category === 'latest');
+    if (typeof syncFilterToURL === 'function') syncFilterToURL(category, category === 'latest');
 }
 
 /* =========================================

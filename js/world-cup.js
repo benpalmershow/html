@@ -22,8 +22,8 @@ function renderMatchCards(matches) {
   // Clear existing cards
   grid.innerHTML = '';
 
-  // Create card for each match
-  matches.forEach(match => {
+  // Create card for each match (latest first)
+  matches.slice().reverse().forEach(match => {
     const card = createMatchCard(match);
     grid.appendChild(card);
   });

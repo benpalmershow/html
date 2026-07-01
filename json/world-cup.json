@@ -3244,8 +3244,8 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3254,14 +3254,14 @@
         "name": "Congo DR",
         "flag": "🇨🇩",
         "crest": "https://crests.football-data.org/congo_dr.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "16:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-1 HT",
       "minute": null,
       "date": "2026-07-01",
       "utcDate": "2026-07-01T16:00:00Z",
@@ -3269,7 +3269,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Adham Makhadmeh"
       ],
@@ -4215,5 +4215,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-01T15:31:01.280601Z"
+  "lastUpdated": "2026-07-01T17:31:25.476954Z"
 }

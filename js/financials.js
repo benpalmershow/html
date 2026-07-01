@@ -230,8 +230,8 @@ function initializeDashboard() {
     const financialData = DashboardState.getData();
 
     document.getElementById('lastUpdated').textContent = `Last Updated: ${formatDate(financialData.lastUpdated, 'full')}`;
-    setupFilters(financialData);
-    setupFilterBarSearchToggle();
+    if (typeof setupFilters === 'function') setupFilters(financialData);
+    if (typeof setupFilterBarSearchToggle === 'function') setupFilterBarSearchToggle();
 
     const urlParams = new URLSearchParams(window.location.search);
     const initialFilter = urlParams.get('filter') || 'latest';

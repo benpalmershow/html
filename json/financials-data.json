@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-06-30T08:00:00",
+    "lastUpdated": "2026-07-01T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -229,33 +229,31 @@
             "icon": "fa-landmark",
             "color": "#3498db",
             "units": "probability",
-            "region": "us",
             "parentCategory": "Government",
-            "agency": "Kalshi",
+            "agency": "Polymarket",
             "name": "Midterms: Senate",
-            "lastUpdated": "2026-05-17T08:00:00Z",
+            "lastUpdated": "2026-07-01T08:00:00Z",
             "releaseDay": 0,
-            "url": "https://kalshi.com/markets/kxbalancepowercombo/congress-balance-of-power-combo/kxbalancepowercombo-27feb",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
-            "candidates": {
-                "Democratic Party": "46\u00a2",
-                "Republican Party": "55\u00a2"
-            },
             "propabilities": {
+                "2026-07-01": {
+                    "Democratic Party": "42",
+                    "Republican Party": "57"
+                },
                 "2026-04-19": {
-                    "Democratic Party": "54\u00a2",
-                    "Republican Party": "46\u00a2"
+                    "Democratic Party": "54",
+                    "Republican Party": "46"
                 },
                 "2026-04-18": {
-                    "Democratic Party": "52\u00a2",
-                    "Republican Party": "48\u00a2"
+                    "Democratic Party": "52",
+                    "Republican Party": "48"
                 },
                 "2026-04-17": {
-                    "Democratic Party": "50\u00a2",
-                    "Republican Party": "50\u00a2"
+                    "Democratic Party": "50",
+                    "Republican Party": "50"
                 }
             },
-            "change": "Up 2\u00a2 (Democrats)",
+            "change": "",
             "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a slim 51% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent polls show Cooper leading in North Carolina (49-41%)."
         },
         {

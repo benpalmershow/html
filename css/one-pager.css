@@ -416,7 +416,7 @@
   .footer-qr-link { width: 76px; height: 76px; }
 }.wc-compact-match {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto 1fr;
   align-items: center;
   gap: 4px;
   padding: 3px 6px;

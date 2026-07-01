@@ -359,9 +359,11 @@ async function loadLatestWorldCup() {
       const scoreB = match.teamB.score;
       const hasScore = scoreA !== null && scoreA !== undefined && scoreB !== null && scoreB !== undefined;
       const scoreText = hasScore ? `${scoreA} - ${scoreB}` : 'vs';
+      const timeAgo = formatTimeAgo(match.date);
       const li = document.createElement('li');
       li.className = 'wc-compact-match';
       li.innerHTML = `
+        <span class="time-ago">${timeAgo}</span>
         <span class="wc-team wc-team-a"><span class="wc-team-name">${escapeHtml(match.teamA.name)}</span> <span class="wc-flag">${match.teamA.flag || '🏳️'}</span></span>
         <span class="wc-score">${scoreText}</span>
         <span class="wc-team wc-team-b"><span class="wc-flag">${match.teamB.flag || '🏳️'}</span> <span class="wc-team-name">${escapeHtml(match.teamB.name)}</span></span>
@@ -386,10 +388,10 @@ async function initOnePager() {
   setupPrintButton();
 
   await Promise.allSettled([
+    loadLatestWorldCup(),
     loadLatestJournal(),
     loadLatestMedia(),
-    loadLatestFinancials(),
-    loadLatestWorldCup()
+    loadLatestFinancials()
   ]);
 
   const params = new URLSearchParams(window.location.search);

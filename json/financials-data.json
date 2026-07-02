@@ -234,6 +234,7 @@
             "name": "Midterms: Senate",
             "lastUpdated": "2026-07-01T08:00:00Z",
             "releaseDay": 0,
+            "url":"https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
             "propabilities": {
                 "2026-07-01": {
@@ -1037,17 +1038,19 @@
             "units": "probability",
             "region": "us",
             "parentCategory": "Government",
-            "agency": "Kalshi",
+            "agency": "Polymarket",
             "name": "Midterms: House",
-            "lastUpdated": "2026-05-17T08:00:00Z",
+            "lastUpdated": "2026-07-01T08:00:00Z",
             "releaseDay": 0,
-            "url": "https://kalshi.com/markets/kxbalancepowercombo/congress-balance-of-power-combo/kxbalancepowercombo-27feb",
+            "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
-            "candidates": {
-                "Democratic Party": "79\u00a2",
-                "Republican Party": "23\u00a2"
-            },
+         
             "propabilities": {
+                "2026-07-01":  {
+                    "Democratic Party": "84",
+                    "Republican Party": "18"
+                },    
+
                 "2026-05-16": {
                     "Democratic Party": "52\u00a2",
                     "Republican Party": "48\u00a2"

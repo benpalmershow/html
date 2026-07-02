@@ -3367,8 +3367,8 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3377,14 +3377,14 @@
         "name": "Austria",
         "flag": "🇦🇹",
         "crest": "https://crests.football-data.org/816.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "status": "live",
+      "statusRaw": "PAUSED",
+      "time": "1-0 HT",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T19:00:00Z",
@@ -3392,7 +3392,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Glenn Nyberg"
       ],
@@ -4221,5 +4221,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-02T18:44:41.565293Z"
+  "lastUpdated": "2026-07-02T20:07:22.707961Z"
 }

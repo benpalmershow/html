@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-01T08:00:00",
+    "lastUpdated": "2026-07-02T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -2233,7 +2233,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "ADP",
             "name": "Private Employment",
-            "lastUpdated": "2026-06-03T14:00:00Z",
+            "lastUpdated": "2026-07-02T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.adpresearch.com",
             "march": "131,962,000",
@@ -2251,7 +2251,9 @@
                 "february": "132,336,000",
                 "march": "132,397,000",
                 "april": "132,502,000",
-                "may": "132,624,000"
+                "may": "132,624,000",
+                "june":"132,722,000"
+                
             },
             "change": "",
             "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
@@ -2399,7 +2401,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "FRED",
             "name": "Total Nonfarm Employment",
-            "lastUpdated": "2026-06-06T15:00:00Z",
+            "lastUpdated": "2026-07-02T15:00:00Z",
             "releaseDay": 5,
             "url": "https://fred.stlouisfed.org/series/PAYEMS",
             "february": "158,310,000",
@@ -2417,8 +2419,9 @@
                 "january": "158,592,000",
                 "february": "158,436,000",
                 "march": "158,650,000",
-                "april": "158,829,000",
-                "may": "159,001,000"
+                "april": "158,798,000",
+                "may": "158,927,000",
+                "june": "158,984,000"
             },
             "change": "",
             "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."

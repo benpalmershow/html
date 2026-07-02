@@ -3326,8 +3326,8 @@
         "name": "United States",
         "flag": "🇺🇸",
         "crest": "https://crests.football-data.org/usa.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3336,14 +3336,14 @@
         "name": "Bosnia-Herzegovina",
         "flag": "🇧🇦",
         "crest": "https://crests.football-data.org/bosnia.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "00:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "1-0 HT",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T00:00:00Z",
@@ -3351,7 +3351,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Raphael Claus"
       ],
@@ -4219,5 +4219,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-01T23:43:40.187646Z"
+  "lastUpdated": "2026-07-02T01:49:46.970631Z"
 }

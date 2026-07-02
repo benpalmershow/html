@@ -5,6 +5,34 @@ const LIMITS = {
   financials: 10,
   worldCup: 10
 };
+
+// Yield helper to prevent main thread blocking
+function yieldToMain() {
+  return new Promise(resolve => {
+    if (typeof requestIdleCallback !== 'undefined') {
+      requestIdleCallback(() => resolve(), { timeout: 50 });
+    } else {
+      setTimeout(resolve, 0);
+    }
+  });
+}
+
+const SHOW_MORE_LIMITS = {
+  journal: 50,
+  essays: 50,
+  media: 50,
+  financials: 50,
+  worldCup: 50
+};
+
+const BATCH_SIZE = 10;
+
+const expandedSections = {
+  journal: { currentLimit: LIMITS.journal, isLoading: false },
+  media: { currentLimit: LIMITS.media, isLoading: false },
+  financials: { currentLimit: LIMITS.financials, isLoading: false },
+  worldCup: { currentLimit: LIMITS.worldCup, isLoading: false }
+};
 const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
   'july', 'august', 'september', 'october', 'november', 'december'
@@ -168,8 +196,12 @@ function renderList(id, items) {
 }
 
 
-async function loadLatestJournal() {
+async function loadLatestJournal(limit = LIMITS.journal) {
   const journals = await Services.dataService.fetchJSON('json/journal.json');
+  
+  // Yield after fetch before heavy processing
+  await yieldToMain();
+  
   const flat = journals
     .slice()
     .sort((a, b) => parseJournalDate(b.date).getTime() - parseJournalDate(a.date).getTime())
@@ -182,7 +214,7 @@ async function loadLatestJournal() {
         sourcePath: `journal.html#${createEntryId(entry.title)}`
       }))
     )
-    .slice(0, LIMITS.journal);
+    .slice(0, limit);
 
   // Group entries by date but don't show date headers
   const groupedByDate = {};
@@ -220,8 +252,12 @@ async function loadLatestJournal() {
 }
 
 
-async function loadLatestMedia() {
+async function loadLatestMedia(limit = LIMITS.media) {
   const media = await Services.dataService.fetchJSON('json/media.json');
+  
+  // Yield after fetch before heavy processing
+  await yieldToMain();
+  
   const sorted = media
     .slice()
     .sort((a, b) => {
@@ -229,7 +265,7 @@ async function loadLatestMedia() {
       const dateB = new Date(b.dateAdded || b.date || 0).getTime();
       return dateB - dateA;
     })
-    .slice(0, LIMITS.media);
+    .slice(0, limit);
 
   const lines = sorted.map(item => {
     const title = escapeHtml(cleanText(item.title));
@@ -250,12 +286,16 @@ async function loadLatestMedia() {
   renderList('latest-media', lines);
 }
 
-async function loadLatestFinancials() {
+async function loadLatestFinancials(limit = LIMITS.financials) {
   const data = await Services.dataService.fetchJSON('json/financials-data.json');
+  
+  // Yield after fetch before heavy processing
+  await yieldToMain();
+  
   const sorted = (data.indices || [])
     .slice()
     .sort((a, b) => new Date(b.lastUpdated || 0).getTime() - new Date(a.lastUpdated || 0).getTime())
-    .slice(0, LIMITS.financials);
+    .slice(0, limit);
 
   const lines = sorted.map(item => {
     const categoryText = cleanText(item.category || 'unknown category');
@@ -332,9 +372,13 @@ async function loadLatestFinancials() {
   renderList('latest-financials', lines);
 }
 
-async function loadLatestWorldCup() {
+async function loadLatestWorldCup(limit = LIMITS.worldCup) {
   try {
     const data = await Services.dataService.fetchJSON('json/world-cup.json');
+    
+    // Yield after fetch before heavy processing
+    await yieldToMain();
+    
     const matches = (data.matches || [])
       .filter(m => m.teamA?.name && m.teamB?.name)
       .sort((a, b) => {
@@ -343,7 +387,7 @@ async function loadLatestWorldCup() {
         if (aScore !== bScore) return bScore - aScore;
         return new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime();
       })
-      .slice(0, LIMITS.worldCup);
+      .slice(0, limit);
 
     const container = document.getElementById('latest-world-cup');
     if (!container) return;
@@ -383,16 +427,96 @@ function setupPrintButton() {
   button.addEventListener('click', () => window.print());
 }
 
+function setupShowMoreButtons() {
+  setupScrollToShowMore('latest-journal', 'journal', loadLatestJournal);
+  setupScrollToShowMore('latest-media', 'media', loadLatestMedia);
+  setupScrollToShowMore('latest-financials', 'financials', loadLatestFinancials);
+  setupScrollToShowMore('latest-world-cup', 'worldCup', loadLatestWorldCup);
+}
+
+function setupScrollToShowMore(listId, sectionKey, loadFunction) {
+  const list = document.getElementById(listId);
+  if (!list) return;
+
+  let showMoreItem = null;
+
+  const checkScroll = () => {
+    if (showMoreItem) return; // Only add once
+    
+    const scrollTop = list.scrollTop;
+    const scrollHeight = list.scrollHeight;
+    const clientHeight = list.clientHeight;
+    
+    // Show when scrolled within 50px of bottom
+    if (scrollHeight - scrollTop - clientHeight < 50) {
+      addShowMoreItem();
+    }
+  };
+
+  const addShowMoreItem = () => {
+    const li = document.createElement('li');
+    li.className = 'show-more-item';
+    li.innerHTML = `<button class="show-more-link" type="button">Dopamine</button>`;
+    
+    const btn = li.querySelector('button');
+    btn.addEventListener('click', async () => {
+      if (expandedSections[sectionKey].isLoading) return;
+      
+      expandedSections[sectionKey].isLoading = true;
+      btn.textContent = 'Loading...';
+      btn.disabled = true;
+      
+      // Increment by batch size
+      expandedSections[sectionKey].currentLimit += BATCH_SIZE;
+      const newLimit = Math.min(expandedSections[sectionKey].currentLimit, SHOW_MORE_LIMITS[sectionKey]);
+      
+      await loadFunction(newLimit);
+      
+      expandedSections[sectionKey].isLoading = false;
+      
+      // Check if we've reached the max limit
+      if (expandedSections[sectionKey].currentLimit >= SHOW_MORE_LIMITS[sectionKey]) {
+        li.remove();
+        showMoreItem = null;
+      } else {
+        btn.textContent = 'Dopamine';
+        btn.disabled = false;
+        // Scroll to bottom to show new content and keep button visible
+        list.scrollTop = list.scrollHeight;
+      }
+    });
+    
+    list.appendChild(li);
+    showMoreItem = li;
+  };
+
+  list.addEventListener('scroll', checkScroll);
+  // Initial check in case content is already short
+  setTimeout(checkScroll, 100);
+}
+
 async function initOnePager() {
   setGeneratedAt();
   setupPrintButton();
 
-  await Promise.allSettled([
-    loadLatestWorldCup(),
-    loadLatestJournal(),
-    loadLatestMedia(),
-    loadLatestFinancials()
-  ]);
+  // Defer non-critical setup to idle time
+  if (typeof requestIdleCallback !== 'undefined') {
+    requestIdleCallback(() => setupShowMoreButtons(), { timeout: 1000 });
+  } else {
+    setTimeout(setupShowMoreButtons, 100);
+  }
+
+  // Load data with yielding between operations to reduce blocking
+  await loadLatestWorldCup();
+  await yieldToMain();
+  
+  await loadLatestJournal();
+  await yieldToMain();
+  
+  await loadLatestMedia();
+  await yieldToMain();
+  
+  await loadLatestFinancials();
 
   const params = new URLSearchParams(window.location.search);
   if (params.get('autoprint') === '1') {

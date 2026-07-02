@@ -467,3 +467,30 @@
   font-size: 0.78rem;
   flex-shrink: 0;
 }
+
+.show-more-item {
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.show-more-link {
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.show-more-link:hover:not(:disabled) {
+  background: rgba(var(--accent-primary-rgb), 0.08);
+  text-decoration: underline;
+}
+
+.show-more-link:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

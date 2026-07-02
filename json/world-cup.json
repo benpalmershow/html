@@ -3714,20 +3714,20 @@
       "id": "wc2026-537378",
       "matchId": 537378,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 769,
+        "name": "Mexico",
+        "flag": "🇲🇽",
+        "crest": "https://crests.football-data.org/769.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 770,
+        "name": "England",
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "crest": "https://crests.football-data.org/770.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3747,7 +3747,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_16 match between None and None"
+      "explanation": "World Cup 2026 LAST_16 match between Mexico and England"
     },
     {
       "id": "wc2026-537379",
@@ -3792,20 +3792,20 @@
       "id": "wc2026-537380",
       "matchId": 537380,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 771,
+        "name": "United States",
+        "flag": "🇺🇸",
+        "crest": "https://crests.football-data.org/usa.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 805,
+        "name": "Belgium",
+        "flag": "🇧🇪",
+        "crest": "https://crests.football-data.org/805.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -3825,7 +3825,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 LAST_16 match between None and None"
+      "explanation": "World Cup 2026 LAST_16 match between United States and Belgium"
     },
     {
       "id": "wc2026-537381",
@@ -4219,5 +4219,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-02T05:43:49.607254Z"
+  "lastUpdated": "2026-07-02T08:33:43.349092Z"
 }

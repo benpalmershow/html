@@ -392,6 +392,28 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
                 }
             };
         }
+
+        // Handle party-based time-series data (e.g., Democratic Party vs Republican Party)
+        const partySorted = Object.entries(probabilities)
+            .filter(([, v]) => v && (v['Democratic Party'] !== undefined || v['Republican Party'] !== undefined))
+            .sort(([a], [b]) => new Date(a) - new Date(b));
+        if (partySorted.length > 1) {
+            const labels = partySorted.map(([date]) =>
+                new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+            );
+            const demValues = partySorted.map(([, v]) => parseFloat(v['Democratic Party']));
+            const gopValues = partySorted.map(([, v]) => parseFloat(v['Republican Party']));
+            return {
+                type: 'chartjs-mixed',
+                data: {
+                    labels,
+                    datasets: [
+                        { label: 'Democratic Party', data: demValues, type: 'line', borderColor: '#3498db', backgroundColor: 'rgba(52,152,219,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
+                        { label: 'Republican Party', data: gopValues, type: 'line', borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 }
+                    ]
+                }
+            };
+        }
     }
 
     // Snapshot / static probability — render as a doughnut-style bar
@@ -410,6 +432,18 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
         values.push(parseFloat(String(indicatorData.yes_probability).replace(/[^0-9.-]/g, '')));
         values.push(parseFloat(String(indicatorData.no_probability).replace(/[^0-9.-]/g, '')));
         colors.push('#22c55e', '#ef4444');
+    } else if (probabilities && typeof probabilities === 'object') {
+        // Handle party-based static data (e.g., Democratic Party vs Republican Party)
+        const latestDate = Object.keys(probabilities).sort((a, b) => new Date(b) - new Date(a))[0];
+        if (latestDate && probabilities[latestDate]) {
+            const latestData = probabilities[latestDate];
+            if (latestData['Democratic Party'] !== undefined && latestData['Republican Party'] !== undefined) {
+                labels.push('Democratic Party', 'Republican Party');
+                values.push(parseFloat(latestData['Democratic Party']));
+                values.push(parseFloat(latestData['Republican Party']));
+                colors.push('#3498db', '#e74c3c');
+            }
+        }
     }
     return { type: 'chartjs-bar', data: { labels, datasets: [{ label: indicatorName, data: values, backgroundColor: colors }] } };
 }

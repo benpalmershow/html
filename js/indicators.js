@@ -233,7 +233,8 @@ const IndicatorRenderers = (function () {
                 let html = `<div class="prediction-bar-container">`;
                 entries.forEach(([name, prob]) => {
                     const probValue = parseFloat(prob);
-                    html += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill yes-bar" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: ${fontSize}; font-weight: bold;">${prob}</div></div></div>`;
+                    const barClass = name === 'Democratic Party' ? 'dem-bar' : name === 'Republican Party' ? 'gop-bar' : 'yes-bar';
+                    html += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: ${fontSize}; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.2;">${prob}</div></div></div>`;
                 });
                 html += `</div>`;
                 const dateWrapper = showLabel ? `<div class="prediction-date-label">${dateLabel}</div>` : '';
@@ -246,7 +247,8 @@ const IndicatorRenderers = (function () {
             latestDataHtml = `<div class="prediction-bar-container">`;
             entries.forEach(([name, prob]) => {
                 const probValue = parseFloat(prob);
-                latestDataHtml += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: 90px;">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill yes-bar" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold;">${prob}</div></div></div>`;
+                const barClass = name === 'Democratic Party' ? 'dem-bar' : name === 'Republican Party' ? 'gop-bar' : 'yes-bar';
+                latestDataHtml += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: 90px;">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.2;">${prob}</div></div></div>`;
             });
             latestDataHtml += `</div>`;
             hasHistory = entries.length > 2;

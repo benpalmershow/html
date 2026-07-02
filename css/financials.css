@@ -172,6 +172,8 @@
 
 .prediction-bar-fill.yes-bar { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); }
 .prediction-bar-fill.no-bar { background: linear-gradient(90deg, #ef4444 0%, #f87171 100%); }
+.prediction-bar-fill.dem-bar { background: linear-gradient(90deg, #3498db 0%, #5dade2 100%); }
+.prediction-bar-fill.gop-bar { background: linear-gradient(90deg, #e74c3c 0%, #f1948a 100%); }
 
 .prediction-bar-value { font-size: 0.75rem; font-weight: 700; min-width: 32px; text-align: right; }
 

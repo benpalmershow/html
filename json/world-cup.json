@@ -3393,7 +3393,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Glenn Nyberg"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between Spain and Austria"
@@ -4219,5 +4221,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-02T15:27:20.134551Z"
+  "lastUpdated": "2026-07-02T17:08:57.394487Z"
 }

@@ -3223,7 +3223,7 @@
       "time": "90'",
       "minute": null,
       "date": "2026-07-01",
-      "utcDate": "2026-07-01T01:00:00Z",
+      "utcDate": "2026-07-01T02:00:00Z",
       "venue": "",
       "stage": "LAST_32",
       "group": null,
@@ -3326,7 +3326,7 @@
         "name": "United States",
         "flag": "🇺🇸",
         "crest": "https://crests.football-data.org/usa.svg",
-        "score": 1,
+        "score": 2,
         "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3341,9 +3341,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T00:00:00Z",
@@ -4219,5 +4219,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-02T01:49:46.970631Z"
+  "lastUpdated": "2026-07-02T05:43:49.607254Z"
 }

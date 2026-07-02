@@ -3408,7 +3408,7 @@
         "name": "Portugal",
         "flag": "🇵🇹",
         "crest": "https://crests.football-data.org/765.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3418,14 +3418,14 @@
         "name": "Croatia",
         "flag": "🇭🇷",
         "crest": "https://crests.football-data.org/799.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "23:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-02",
       "utcDate": "2026-07-02T23:00:00Z",
@@ -3433,7 +3433,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Espen Eskås"
       ],
@@ -4223,5 +4223,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-02T22:32:37.305524Z"
+  "lastUpdated": "2026-07-02T23:41:16.785000Z"
 }

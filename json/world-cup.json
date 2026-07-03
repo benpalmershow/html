@@ -3490,24 +3490,24 @@
         "name": "Australia",
         "flag": "🇦🇺",
         "crest": "https://crests.football-data.org/779.svg",
-        "score": 1,
+        "score": 3,
         "halfTimeScore": 0,
-        "extraTimeScore": null,
-        "penaltyScore": null
+        "extraTimeScore": 0,
+        "penaltyScore": 4
       },
       "teamB": {
         "id": 825,
         "name": "Egypt",
         "flag": "🇪🇬",
         "crest": "https://crests.football-data.org/825.svg",
-        "score": 1,
+        "score": 5,
         "halfTimeScore": 1,
-        "extraTimeScore": null,
-        "penaltyScore": null
+        "extraTimeScore": 0,
+        "penaltyScore": 4
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "0-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T18:00:00Z",
@@ -3515,7 +3515,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": null,
       "referees": [
         "Gustavo Tejera"
       ],
@@ -4229,5 +4229,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-03T20:06:30.743964Z"
+  "lastUpdated": "2026-07-03T21:19:32.060232Z"
 }

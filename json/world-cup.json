@@ -3464,9 +3464,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T03:00:00Z",
@@ -4225,5 +4225,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-03T04:58:37.777673Z"
+  "lastUpdated": "2026-07-03T07:59:24.662544Z"
 }

@@ -3531,7 +3531,7 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3541,14 +3541,14 @@
         "name": "Cape Verde Islands",
         "flag": "🇨🇻",
         "crest": "https://crests.football-data.org/cape_verde.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "22:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T22:00:00Z",
@@ -3556,7 +3556,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Drew Fischer"
       ],
@@ -4229,5 +4229,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-03T21:19:32.060232Z"
+  "lastUpdated": "2026-07-03T22:17:47.044963Z"
 }

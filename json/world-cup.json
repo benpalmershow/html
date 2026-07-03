@@ -3531,8 +3531,8 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3541,14 +3541,14 @@
         "name": "Cape Verde Islands",
         "flag": "🇨🇻",
         "crest": "https://crests.football-data.org/cape_verde.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
       "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "time": "1-0 HT",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T22:00:00Z",
@@ -4229,5 +4229,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-03T22:17:47.044963Z"
+  "lastUpdated": "2026-07-03T23:28:19.533770Z"
 }

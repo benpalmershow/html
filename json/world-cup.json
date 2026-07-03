@@ -3418,7 +3418,7 @@
         "name": "Croatia",
         "flag": "🇭🇷",
         "crest": "https://crests.football-data.org/799.svg",
-        "score": 2,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3433,7 +3433,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Espen Eskås"
       ],
@@ -3449,8 +3449,8 @@
         "name": "Switzerland",
         "flag": "🇨🇭",
         "crest": "https://crests.football-data.org/788.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3459,14 +3459,14 @@
         "name": "Algeria",
         "flag": "🇩🇿",
         "crest": "https://crests.football-data.org/algeria.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "03:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "1-0 HT",
       "minute": null,
       "date": "2026-07-03",
       "utcDate": "2026-07-03T03:00:00Z",
@@ -3474,7 +3474,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Yael Falcón"
       ],
@@ -4225,5 +4225,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-03T01:16:49.612799Z"
+  "lastUpdated": "2026-07-03T04:58:37.777673Z"
 }

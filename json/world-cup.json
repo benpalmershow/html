@@ -3516,7 +3516,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Gustavo Tejera"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_32 match between Australia and Egypt"
@@ -4225,5 +4227,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-03T14:39:44.633456Z"
+  "lastUpdated": "2026-07-03T16:10:13.151311Z"
 }

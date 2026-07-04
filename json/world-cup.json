@@ -3664,14 +3664,14 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T21:00:00Z",
@@ -3679,7 +3679,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "AWAY_TEAM",
       "referees": [
         "Il'giz Tantashev"
       ],
@@ -4235,5 +4235,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-04T22:32:31.591397Z"
+  "lastUpdated": "2026-07-04T23:35:50.075798Z"
 }

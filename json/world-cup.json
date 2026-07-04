@@ -3614,7 +3614,7 @@
         "flag": "🇨🇦",
         "crest": "https://crests.football-data.org/canada.svg",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3624,12 +3624,12 @@
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "live",
-      "statusRaw": "IN_PLAY",
+      "statusRaw": "PAUSED",
       "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-04",
@@ -4233,5 +4233,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-04T17:18:50.339548Z"
+  "lastUpdated": "2026-07-04T18:15:04.101446Z"
 }

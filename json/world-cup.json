@@ -3572,8 +3572,8 @@
         "name": "Colombia",
         "flag": "🇨🇴",
         "crest": "https://crests.football-data.org/818.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3582,14 +3582,14 @@
         "name": "Ghana",
         "flag": "🇬🇭",
         "crest": "https://crests.football-data.org/ghana.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "01:30",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T01:30:00Z",
@@ -3597,7 +3597,7 @@
       "stage": "LAST_32",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Clément Turpin"
       ],
@@ -4231,5 +4231,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-04T01:06:32.527608Z"
+  "lastUpdated": "2026-07-04T04:45:06.752722Z"
 }

@@ -3639,7 +3639,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Michael Oliver"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between Canada and Morocco"
@@ -4231,5 +4233,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-04T13:57:58.354455Z"
+  "lastUpdated": "2026-07-04T15:01:02.875870Z"
 }

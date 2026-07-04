@@ -3613,7 +3613,7 @@
         "name": "Canada",
         "flag": "🇨🇦",
         "crest": "https://crests.football-data.org/canada.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3623,14 +3623,14 @@
         "name": "Morocco",
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "17:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T17:00:00Z",
@@ -3638,7 +3638,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Michael Oliver"
       ],
@@ -4233,5 +4233,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-04T16:11:42.032654Z"
+  "lastUpdated": "2026-07-04T17:18:50.339548Z"
 }

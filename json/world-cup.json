@@ -3654,7 +3654,7 @@
         "name": "Paraguay",
         "flag": "🇵🇾",
         "crest": "https://crests.football-data.org/761.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3664,14 +3664,14 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "21:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-07-04",
       "utcDate": "2026-07-04T21:00:00Z",
@@ -3679,7 +3679,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Il'giz Tantashev"
       ],
@@ -4235,5 +4235,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-04T20:32:06.690111Z"
+  "lastUpdated": "2026-07-04T21:31:43.509561Z"
 }

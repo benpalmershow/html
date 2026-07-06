@@ -3787,14 +3787,14 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T19:00:00Z",
@@ -3802,7 +3802,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "AWAY_TEAM",
       "referees": [
         "Anthony Taylor"
       ],
@@ -4241,5 +4241,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-06T20:15:37.329094Z"
+  "lastUpdated": "2026-07-06T21:47:29.734436Z"
 }

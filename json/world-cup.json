@@ -3803,7 +3803,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Anthony Taylor"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between Portugal and Spain"
@@ -4239,5 +4241,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-06T16:02:54.534756Z"
+  "lastUpdated": "2026-07-06T18:17:51.617851Z"
 }

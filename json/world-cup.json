@@ -3736,8 +3736,8 @@
         "name": "Mexico",
         "flag": "🇲🇽",
         "crest": "https://crests.football-data.org/769.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3746,14 +3746,14 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "2026-07-06 01:00:00Z",
-      "time": "TBD",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T01:00:00Z",
@@ -3761,7 +3761,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Alireza Faghani"
       ],
@@ -4239,5 +4239,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-06T00:17:30.183450Z"
+  "lastUpdated": "2026-07-06T04:41:11.840458Z"
 }

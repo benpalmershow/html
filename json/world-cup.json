@@ -3777,8 +3777,8 @@
         "name": "Portugal",
         "flag": "🇵🇹",
         "crest": "https://crests.football-data.org/765.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3787,14 +3787,14 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-06",
       "utcDate": "2026-07-06T19:00:00Z",
@@ -3802,7 +3802,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Anthony Taylor"
       ],
@@ -4241,5 +4241,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-06T18:17:51.617851Z"
+  "lastUpdated": "2026-07-06T20:15:37.329094Z"
 }

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-02T08:00:00",
+    "lastUpdated": "2026-07-07T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -19,11 +19,15 @@
             "parentCategory": "Prediction Markets",
             "agency": "Polymarket",
             "name": "Strait of Hormuz Traffic Returns to Normal by July 31",
-            "lastUpdated": "2026-06-22T17:51:00Z",
+            "lastUpdated": "2026-07-07T17:51:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-july-31",
             "change": "",
             "probabilities": {
+                "2026-07-07": {
+                    "yes": "8\u00a2",
+                    "no": "93\u00a2"
+                },
                 "2026-06-22": {
                     "yes": "50\u00a2",
                     "no": "50\u00a2"
@@ -1675,7 +1679,7 @@
             "parentCategory": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-06-22T14:00:00Z",
+            "lastUpdated": "2026-07-07T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "2026": {
@@ -1687,6 +1691,10 @@
                 "june": "3"
             },
             "probabilities": {
+                "2026-07-07": {
+                    "hormuzInbound": 18,
+                    "hormuzOutbound": 27
+                },
                 "2026-06-22": {
                     "hormuzInbound": 10,
                     "hormuzOutbound": 10

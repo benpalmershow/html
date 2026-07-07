@@ -3818,8 +3818,8 @@
         "name": "United States",
         "flag": "🇺🇸",
         "crest": "https://crests.football-data.org/usa.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3828,14 +3828,14 @@
         "name": "Belgium",
         "flag": "🇧🇪",
         "crest": "https://crests.football-data.org/805.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "00:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "1-2 HT",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T00:00:00Z",
@@ -3843,7 +3843,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Adham Makhadmeh"
       ],
@@ -4243,5 +4243,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-06T23:47:43.327552Z"
+  "lastUpdated": "2026-07-07T01:25:07.119188Z"
 }

@@ -3859,8 +3859,8 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3869,14 +3869,14 @@
         "name": "Egypt",
         "flag": "🇪🇬",
         "crest": "https://crests.football-data.org/825.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "LIVE",
-      "time": "TBD",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T16:00:00Z",
@@ -3884,7 +3884,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "François Letexier"
       ],
@@ -3926,7 +3926,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Ivan Barton"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 LAST_16 match between Switzerland and Colombia"
@@ -4245,5 +4247,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-07T16:07:10.836616Z"
+  "lastUpdated": "2026-07-07T18:12:10.917620Z"
 }

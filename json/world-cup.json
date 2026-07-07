@@ -3902,7 +3902,7 @@
         "crest": "https://crests.football-data.org/788.svg",
         "score": 0,
         "halfTimeScore": 0,
-        "extraTimeScore": null,
+        "extraTimeScore": 0,
         "penaltyScore": null
       },
       "teamB": {
@@ -3912,11 +3912,11 @@
         "crest": "https://crests.football-data.org/818.svg",
         "score": 0,
         "halfTimeScore": 0,
-        "extraTimeScore": null,
+        "extraTimeScore": 0,
         "penaltyScore": null
       },
       "status": "live",
-      "statusRaw": "IN_PLAY",
+      "statusRaw": "PAUSED",
       "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-07",
@@ -4247,5 +4247,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-07T21:40:53.888185Z"
+  "lastUpdated": "2026-07-07T22:43:53.771449Z"
 }

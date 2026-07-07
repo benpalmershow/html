@@ -145,7 +145,28 @@ async function loadChartInOverlay(indicator, indicatorName, overlay) {
     try {
         // Load Chart.js on-demand if not already present
         if (typeof Chart === 'undefined') {
-            await Services.loadExternalModule('https://cdn.jsdelivr.net/npm/chart.js');
+            console.log('Loading Chart.js...');
+            await Services.loadExternalModule('https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js');
+            // Wait for the script to execute and set up the global
+            await new Promise(resolve => {
+                const checkInterval = setInterval(() => {
+                    if (typeof Chart !== 'undefined') {
+                        clearInterval(checkInterval);
+                        resolve();
+                    }
+                }, 50);
+                // Timeout after 5 seconds
+                setTimeout(() => {
+                    clearInterval(checkInterval);
+                    resolve();
+                }, 5000);
+            });
+            console.log('Chart.js loaded, typeof Chart:', typeof Chart);
+        }
+        if (typeof Chart === 'undefined') {
+            console.error('Chart.js still undefined after loading');
+            showOverlayError(body, 'Chart.js failed to load');
+            return;
         }
         if (!window.financialData || !window.financialData.indices) { showOverlayError(body, 'Financial data not loaded'); return; }
         const chartConfig = getChartConfig(indicatorName, window.financialData.indices);

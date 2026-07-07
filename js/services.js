@@ -163,14 +163,14 @@ const Services = (function () {
         const promise = new Promise((resolve, reject) => {
             const script = document.createElement('script');
             script.src = url;
-            script.async = true;
+            script.crossOrigin = 'anonymous';
             script.onload = () => {
                 console.log('Module loaded:', url);
                 moduleCache.set(url, promise);
                 resolve();
             };
-            script.onerror = () => {
-                console.error('Failed to load module:', url);
+            script.onerror = (e) => {
+                console.error('Failed to load module:', url, e);
                 reject(new Error(`Failed to load module: ${url}`));
             };
             document.head.appendChild(script);

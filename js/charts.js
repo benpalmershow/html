@@ -103,8 +103,15 @@ function hideChartOverlay(overlay) {
 }
 
 function toggleChartOverlay(indicator, indicatorName) {
+    console.log('toggleChartOverlay called for:', indicatorName);
     let overlay = indicator.querySelector('.chart-overlay');
-    if (overlay) { if (overlay.classList.contains('show')) hideChartOverlay(overlay); else showChartOverlay(indicator, indicatorName, overlay); } else { createChartOverlay(indicator, indicatorName); }
+    if (overlay) {
+        console.log('Overlay exists, toggling show state');
+        if (overlay.classList.contains('show')) hideChartOverlay(overlay); else showChartOverlay(indicator, indicatorName, overlay);
+    } else {
+        console.log('Creating new overlay');
+        createChartOverlay(indicator, indicatorName);
+    }
 }
 
 function createChartOverlay(indicator, indicatorName) {
@@ -143,6 +150,7 @@ function createChartOverlay(indicator, indicatorName) {
 async function loadChartInOverlay(indicator, indicatorName, overlay) {
     const body = overlay.querySelector('.chart-overlay-body');
     try {
+        console.log('loadChartInOverlay called for:', indicatorName);
         // Load Chart.js on-demand if not already present
         if (typeof Chart === 'undefined') {
             console.log('Loading Chart.js...');

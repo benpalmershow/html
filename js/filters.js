@@ -164,8 +164,10 @@ function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
 
 function setupChartIconHandlers(SELECTORS, DATA_ATTRS) {
     setupIconHandlers(SELECTORS.CHART_BTN, function () {
+        console.log('Chart button clicked');
         const indicator = this.closest(SELECTORS.INDICATOR);
         const indicatorName = indicator.getAttribute(DATA_ATTRS.INDICATOR_NAME);
+        console.log('Indicator name:', indicatorName);
         toggleChartOverlay(indicator, indicatorName);
     });
 }

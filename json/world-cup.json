@@ -3828,14 +3828,14 @@
         "name": "Belgium",
         "flag": "🇧🇪",
         "crest": "https://crests.football-data.org/805.svg",
-        "score": 2,
+        "score": 4,
         "halfTimeScore": 2,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "1-2 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T00:00:00Z",
@@ -4243,5 +4243,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-07T01:25:07.119188Z"
+  "lastUpdated": "2026-07-07T05:11:45.087845Z"
 }

@@ -3900,24 +3900,24 @@
         "name": "Switzerland",
         "flag": "🇨🇭",
         "crest": "https://crests.football-data.org/788.svg",
-        "score": 0,
+        "score": 4,
         "halfTimeScore": 0,
         "extraTimeScore": 0,
-        "penaltyScore": null
+        "penaltyScore": 3
       },
       "teamB": {
         "id": 818,
         "name": "Colombia",
         "flag": "🇨🇴",
         "crest": "https://crests.football-data.org/818.svg",
-        "score": 0,
+        "score": 3,
         "halfTimeScore": 0,
         "extraTimeScore": 0,
-        "penaltyScore": null
+        "penaltyScore": 3
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-07",
       "utcDate": "2026-07-07T20:00:00Z",
@@ -3925,7 +3925,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": null,
       "referees": [
         "Ivan Barton"
       ],
@@ -4247,5 +4247,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-07T22:43:53.771449Z"
+  "lastUpdated": "2026-07-07T23:37:04.062759Z"
 }

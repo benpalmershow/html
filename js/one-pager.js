@@ -389,7 +389,23 @@ async function loadLatestWorldCup(limit = LIMITS.worldCup) {
       const scoreB = match.teamB.score;
       const hasScore = scoreA !== null && scoreA !== undefined && scoreB !== null && scoreB !== undefined;
       const scoreText = hasScore ? `${scoreA} - ${scoreB}` : 'vs';
-      const timeAgo = formatTimeAgo(match.date);
+      const matchDate = new Date(match.utcDate || match.date);
+      const now = new Date();
+      const diffMins = Math.floor((now - matchDate) / 60000);
+      let timeAgo;
+      if (diffMins < 0) {
+        timeAgo = 'upcoming';
+      } else if (diffMins < 1) {
+        timeAgo = 'now';
+      } else if (diffMins < 60) {
+        timeAgo = `${diffMins}m`;
+      } else if (diffMins < 1440) {
+        timeAgo = `${Math.floor(diffMins / 60)}h`;
+      } else if (diffMins < 10080) {
+        timeAgo = `${Math.floor(diffMins / 1440)}d`;
+      } else {
+        timeAgo = matchDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      }
       const li = document.createElement('li');
       li.className = 'wc-compact-match';
       li.innerHTML = `

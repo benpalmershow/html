@@ -23,7 +23,11 @@ function renderMatchCards(matches) {
   grid.innerHTML = '';
 
   // Create card for each match (latest first)
-  matches.slice().reverse().forEach(match => {
+  matches.slice().sort((a, b) => {
+    const dateA = new Date(a.utcDate || a.date);
+    const dateB = new Date(b.utcDate || b.date);
+    return dateB - dateA;
+  }).forEach(match => {
     const card = createMatchCard(match);
     grid.appendChild(card);
   });

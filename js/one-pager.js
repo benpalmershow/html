@@ -369,7 +369,9 @@ async function loadLatestWorldCup(limit = LIMITS.worldCup) {
         const aScore = (a.teamA.score != null && a.teamB.score != null) ? 1 : 0;
         const bScore = (b.teamA.score != null && b.teamB.score != null) ? 1 : 0;
         if (aScore !== bScore) return bScore - aScore;
-        return new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime();
+        const dateA = new Date(a.utcDate || a.date || 0);
+        const dateB = new Date(b.utcDate || b.date || 0);
+        return dateB - dateA;
       })
       .slice(0, limit);
 

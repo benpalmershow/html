@@ -1682,7 +1682,7 @@
             "parentCategory": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-07-07T14:00:00Z",
+            "lastUpdated": "2026-07-08T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
@@ -1696,6 +1696,12 @@
                 "july": "32"
             },
             "probabilities": {
+                "2026-07-08":{
+                    
+                    "hormuzInbound": 16,
+                    "hormuzOutbound": 35
+                },
+                
                 "2026-07-07": {
                     "hormuzInbound": 18,
                     "hormuzOutbound": 27

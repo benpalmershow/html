@@ -1,9 +1,9 @@
 const LIMITS = {
-  journal: 10,
-  essays: 10,
-  media: 10,
-  financials: 10,
-  worldCup: 10
+  journal: Infinity,
+  essays: Infinity,
+  media: Infinity ,
+  financials: Infinity,
+  worldCup: Infinity
 };
 
 // Yield helper to prevent main thread blocking
@@ -17,22 +17,6 @@ function yieldToMain() {
   });
 }
 
-const SHOW_MORE_LIMITS = {
-  journal: 50,
-  essays: 50,
-  media: 50,
-  financials: 50,
-  worldCup: 50
-};
-
-const BATCH_SIZE = 10;
-
-const expandedSections = {
-  journal: { currentLimit: LIMITS.journal, isLoading: false },
-  media: { currentLimit: LIMITS.media, isLoading: false },
-  financials: { currentLimit: LIMITS.financials, isLoading: false },
-  worldCup: { currentLimit: LIMITS.worldCup, isLoading: false }
-};
 const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
   'july', 'august', 'september', 'october', 'november', 'december'
@@ -427,84 +411,9 @@ function setupPrintButton() {
   button.addEventListener('click', () => window.print());
 }
 
-function setupShowMoreButtons() {
-  setupScrollToShowMore('latest-journal', 'journal', loadLatestJournal);
-  setupScrollToShowMore('latest-media', 'media', loadLatestMedia);
-  setupScrollToShowMore('latest-financials', 'financials', loadLatestFinancials);
-  setupScrollToShowMore('latest-world-cup', 'worldCup', loadLatestWorldCup);
-}
-
-function setupScrollToShowMore(listId, sectionKey, loadFunction) {
-  const list = document.getElementById(listId);
-  if (!list) return;
-
-  let showMoreItem = null;
-
-  const checkScroll = () => {
-    if (showMoreItem) return; // Only add once
-    
-    const scrollTop = list.scrollTop;
-    const scrollHeight = list.scrollHeight;
-    const clientHeight = list.clientHeight;
-    
-    // Show when scrolled within 50px of bottom
-    if (scrollHeight - scrollTop - clientHeight < 50) {
-      addShowMoreItem();
-    }
-  };
-
-  const addShowMoreItem = () => {
-    const li = document.createElement('li');
-    li.className = 'show-more-item';
-    li.innerHTML = `<button class="show-more-link" type="button">Dopamine</button>`;
-    
-    const btn = li.querySelector('button');
-    btn.addEventListener('click', async () => {
-      if (expandedSections[sectionKey].isLoading) return;
-      
-      expandedSections[sectionKey].isLoading = true;
-      btn.textContent = 'Loading...';
-      btn.disabled = true;
-      
-      // Increment by batch size
-      expandedSections[sectionKey].currentLimit += BATCH_SIZE;
-      const newLimit = Math.min(expandedSections[sectionKey].currentLimit, SHOW_MORE_LIMITS[sectionKey]);
-      
-      await loadFunction(newLimit);
-      
-      expandedSections[sectionKey].isLoading = false;
-      
-      // Check if we've reached the max limit
-      if (expandedSections[sectionKey].currentLimit >= SHOW_MORE_LIMITS[sectionKey]) {
-        li.remove();
-        showMoreItem = null;
-      } else {
-        btn.textContent = 'Dopamine';
-        btn.disabled = false;
-        // Scroll to bottom to show new content and keep button visible
-        list.scrollTop = list.scrollHeight;
-      }
-    });
-    
-    list.appendChild(li);
-    showMoreItem = li;
-  };
-
-  list.addEventListener('scroll', checkScroll);
-  // Initial check in case content is already short
-  setTimeout(checkScroll, 100);
-}
-
 async function initOnePager() {
   setGeneratedAt();
   setupPrintButton();
-
-  // Defer non-critical setup to idle time
-  if (typeof requestIdleCallback !== 'undefined') {
-    requestIdleCallback(() => setupShowMoreButtons(), { timeout: 1000 });
-  } else {
-    setTimeout(setupShowMoreButtons, 100);
-  }
 
   // Load data with yielding between operations to reduce blocking
   await loadLatestWorldCup();

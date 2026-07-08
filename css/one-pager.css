@@ -14,7 +14,8 @@
 #latest-journal a:hover { text-decoration: none; }
 
 #latest-journal,
-#latest-media {
+#latest-media,
+#latest-financials {
   min-height: 160px;
   content-visibility: auto;
   contain-intrinsic-size: 1px 300px;

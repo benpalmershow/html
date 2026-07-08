@@ -3903,7 +3903,7 @@
         "score": 4,
         "halfTimeScore": 0,
         "extraTimeScore": 0,
-        "penaltyScore": 3
+        "penaltyScore": 4
       },
       "teamB": {
         "id": 818,
@@ -3925,7 +3925,7 @@
       "stage": "LAST_16",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "HOME_TEAM",
       "referees": [
         "Ivan Barton"
       ],
@@ -4054,20 +4054,20 @@
       "id": "wc2026-537386",
       "matchId": 537386,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 762,
+        "name": "Argentina",
+        "flag": "🇦🇷",
+        "crest": "https://crests.football-data.org/762.png",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "teamB": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 788,
+        "name": "Switzerland",
+        "flag": "🇨🇭",
+        "crest": "https://crests.football-data.org/788.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -4087,7 +4087,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 QUARTER_FINALS match between None and None"
+      "explanation": "World Cup 2026 QUARTER_FINALS match between Argentina and Switzerland"
     },
     {
       "id": "wc2026-537387",
@@ -4247,5 +4247,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-08T01:06:12.113760Z"
+  "lastUpdated": "2026-07-08T12:53:21.609636Z"
 }

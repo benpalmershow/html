@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-08T08:00:00",
+    "lastUpdated": "2026-07-09T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -458,7 +458,7 @@
             "parentCategory": "Commodities",
             "agency": "Google Finance",
             "name": "Lumber Futures",
-            "lastUpdated": "2026-06-13T22:00:00Z",
+            "lastUpdated": "2026-07-09T22:00:00Z",
             "releaseDay": 0,
             "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
             "march": "683",
@@ -474,10 +474,12 @@
             "2026": {
                 "january": "609",
                 "february": "576",
-                "march": "608.50",
-                "april": "575.50",
-                "may": "592.00",
-                "june": "637.00"
+                "march": "608",
+                "april": "575",
+                "may": "592",
+                "june": "637",
+                "july": "639"
+
             },
             "change": "",
             "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
@@ -1682,7 +1684,7 @@
             "parentCategory": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-07-08T14:00:00Z",
+            "lastUpdated": "2026-07-09T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
@@ -1696,6 +1698,10 @@
                 "july": "32"
             },
             "probabilities": {
+                "2026-07-09": {
+                    "Inbound": 17,
+                    "Outbound": 18
+                },
                 "2026-07-08":{
                     
                     "Inbound": 16,
@@ -2088,9 +2094,12 @@
             "parentCategory": "Housing Market",
             "agency": "FRED",
             "name": "30-yr Mortgage Rate",
-            "lastUpdated": "2026-05-29T14:00:00Z",
+            "lastUpdated": "2026-07-09T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+            "2025": {
+                "january": "6.27",
+                "february": "6.45",
             "march": "6.65",
             "april": "6.73",
             "may": "6.82",
@@ -2100,13 +2109,16 @@
             "september": "6.35",
             "october": "6.25",
             "november": "6.24",
-            "december": "6.19",
+            "december": "6.19"
+            },
             "2026": {
                 "january": "6.10",
-                "february": "5.98",
-                "march": "6.46",
-                "april": "6.35",
-                "may": "6.53"
+                "february": "6.05",
+                "march": "6.18",
+                "april": "6.33",
+                "may": "6.44",
+                "june": "6.49"
+
             },
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."

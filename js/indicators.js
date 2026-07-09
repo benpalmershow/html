@@ -31,11 +31,22 @@ const IndicatorRenderers = (function () {
     function collectMonthlyData(indicator, MONTHS, MONTH_LABELS) {
         const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
         const availableData = [];
+        const coveredMonths = new Set();
+        // Emit one entry per year+month so multiple nested years (e.g. 2025 and 2026) both render.
+        yearKeys.forEach(year => {
+            MONTHS.forEach((month, index) => {
+                const value = indicator[year] ? indicator[year][month] : undefined;
+                if (isValidData(value)) {
+                    availableData.push({ month, label: MONTH_LABELS[index], value, index, year });
+                    coveredMonths.add(month);
+                }
+            });
+        });
+        // Legacy flat months represent prior-year data; include only when not already covered by nested years.
         MONTHS.forEach((month, index) => {
-            let value = null, year = null;
-            for (const yr of yearKeys) { if (indicator[yr] && indicator[yr][month] !== undefined) { value = indicator[yr][month]; year = yr; break; } }
-            if (value === null) { value = indicator[month]; year = null; }
-            if (isValidData(value)) availableData.push({ month, label: MONTH_LABELS[index], value, index, year });
+            if (coveredMonths.has(month)) return;
+            const value = indicator[month];
+            if (isValidData(value)) availableData.push({ month, label: MONTH_LABELS[index], value, index, year: null });
         });
         availableData.sort((a, b) => {
             if (a.year !== null && b.year !== null) { if (a.year !== b.year) return b.year - a.year; }

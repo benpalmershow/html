@@ -3941,8 +3941,8 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3952,7 +3952,7 @@
         "flag": "🇲🇦",
         "crest": "https://crests.football-data.org/morocco.svg",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -3966,7 +3966,7 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Facundo Tello"
       ],
@@ -4249,5 +4249,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-09T20:13:08.839971Z"
+  "lastUpdated": "2026-07-09T21:44:21.441825Z"
 }

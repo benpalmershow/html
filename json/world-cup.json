@@ -3967,7 +3967,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Facundo Tello"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between France and Morocco"
@@ -4247,5 +4249,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-09T16:32:39.840288Z"
+  "lastUpdated": "2026-07-09T18:20:45.508365Z"
 }

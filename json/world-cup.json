@@ -4095,10 +4095,10 @@
       "id": "wc2026-537387",
       "matchId": 537387,
       "teamA": {
-        "id": null,
-        "name": null,
-        "flag": "🏳️",
-        "crest": null,
+        "id": 773,
+        "name": "France",
+        "flag": "🇫🇷",
+        "crest": "https://crests.football-data.org/773.svg",
         "score": null,
         "halfTimeScore": null,
         "extraTimeScore": null,
@@ -4128,7 +4128,7 @@
       "referees": [],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
-      "explanation": "World Cup 2026 SEMI_FINALS match between None and None"
+      "explanation": "World Cup 2026 SEMI_FINALS match between France and None"
     },
     {
       "id": "wc2026-537388",
@@ -4249,5 +4249,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-10T06:12:49.948029Z"
+  "lastUpdated": "2026-07-10T09:52:57.284001Z"
 }

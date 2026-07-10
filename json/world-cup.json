@@ -3982,7 +3982,7 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": 1,
+        "score": 2,
         "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -3997,9 +3997,9 @@
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "1-1 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-10",
       "utcDate": "2026-07-10T19:00:00Z",
@@ -4007,7 +4007,7 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Michael Oliver"
       ],
@@ -4251,5 +4251,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-10T20:03:10.761772Z"
+  "lastUpdated": "2026-07-10T21:14:47.917071Z"
 }

@@ -4008,7 +4008,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Michael Oliver"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between Spain and Belgium"
@@ -4249,5 +4251,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-10T15:02:17.235223Z"
+  "lastUpdated": "2026-07-10T17:03:58.595444Z"
 }

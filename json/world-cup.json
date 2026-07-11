@@ -4049,7 +4049,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Clément Turpin"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 QUARTER_FINALS match between Norway and England"
@@ -4251,5 +4253,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-11T18:02:04.317894Z"
+  "lastUpdated": "2026-07-11T19:19:09.450088Z"
 }

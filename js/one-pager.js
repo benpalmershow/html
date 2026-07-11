@@ -363,15 +363,20 @@ async function loadLatestWorldCup(limit = LIMITS.worldCup) {
     // Yield after fetch before heavy processing
     await yieldToMain();
     
+    const now = new Date();
     const matches = (data.matches || [])
       .filter(m => m.teamA?.name && m.teamB?.name)
       .sort((a, b) => {
-        const aScore = (a.teamA.score != null && a.teamB.score != null) ? 1 : 0;
-        const bScore = (b.teamA.score != null && b.teamB.score != null) ? 1 : 0;
-        if (aScore !== bScore) return bScore - aScore;
-        const dateA = new Date(a.utcDate || a.date || 0);
-        const dateB = new Date(b.utcDate || b.date || 0);
-        return dateB - dateA;
+        const aHasScore = (a.teamA.score != null && a.teamB.score != null);
+        const bHasScore = (b.teamA.score != null && b.teamB.score != null);
+        const aDate = new Date(a.utcDate || a.date || 0);
+        const bDate = new Date(b.utcDate || b.date || 0);
+        const aUpcoming = !aHasScore && aDate > now;
+        const bUpcoming = !bHasScore && bDate > now;
+        if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+        if (aHasScore !== bHasScore) return bHasScore ? 1 : -1;
+        if (aUpcoming) return aDate - bDate;
+        return bDate - aDate;
       })
       .slice(0, limit);
 
@@ -390,11 +395,20 @@ async function loadLatestWorldCup(limit = LIMITS.worldCup) {
       const hasScore = scoreA !== null && scoreA !== undefined && scoreB !== null && scoreB !== undefined;
       const scoreText = hasScore ? `${scoreA} - ${scoreB}` : 'vs';
       const matchDate = new Date(match.utcDate || match.date);
-      const now = new Date();
-      const diffMins = Math.floor((now - matchDate) / 60000);
+      const nowDate = new Date();
+      const diffMins = Math.floor((nowDate - matchDate) / 60000);
       let timeAgo;
       if (diffMins < 0) {
-        timeAgo = 'upcoming';
+        const absMins = Math.abs(diffMins);
+        if (absMins < 60) {
+          timeAgo = `in ${absMins}m`;
+        } else if (absMins < 1440) {
+          timeAgo = `in ${Math.floor(absMins / 60)}h`;
+        } else if (absMins < 10080) {
+          timeAgo = `in ${Math.floor(absMins / 1440)}d`;
+        } else {
+          timeAgo = matchDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
       } else if (diffMins < 1) {
         timeAgo = 'now';
       } else if (diffMins < 60) {

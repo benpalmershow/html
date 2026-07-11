@@ -4023,7 +4023,7 @@
         "name": "Norway",
         "flag": "🇳🇴",
         "crest": "https://crests.football-data.org/813.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -4033,14 +4033,14 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "21:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-11",
       "utcDate": "2026-07-11T21:00:00Z",
@@ -4048,7 +4048,7 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Clément Turpin"
       ],
@@ -4253,5 +4253,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-11T20:11:24.964568Z"
+  "lastUpdated": "2026-07-11T21:06:52.429511Z"
 }

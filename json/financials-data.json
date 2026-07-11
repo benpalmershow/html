@@ -812,7 +812,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Wheat",
-            "lastUpdated": "2026-06-15T19:30:00Z",
+            "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
             "january": "5.52",
@@ -831,7 +831,8 @@
                 "january": "5.01",
                 "february": "5.12",
                 "march": "5.52",
-                "april": "5.70"
+                "april": "5.70",
+                "may": "5.88"
             },
             "change": "",
             "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers."
@@ -854,7 +855,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Soybeans",
-            "lastUpdated": "2026-06-15T19:30:00Z",
+            "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
             "january": "10.00",
@@ -873,7 +874,8 @@
                 "january": "10.30",
                 "february": "10.60",
                 "march": "11.10",
-                "april": "11.20"
+                "april": "11.20",
+                "may": "11.60"
             },
             "change": "",
             "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in s per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector."
@@ -896,7 +898,7 @@
             "parentCategory": "Commodities",
             "agency": "USDA NASS",
             "name": "Beef",
-            "lastUpdated": "2026-06-15T19:30:00Z",
+            "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
             "january": "199.00",
@@ -915,7 +917,8 @@
                 "january": "230",
                 "february": "239",
                 "march": "236.00",
-                "april": "242.00"
+                "april": "242.00",
+                "may": "252.00"
             },
             "change": "",
             "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers."

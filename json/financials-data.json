@@ -1614,7 +1614,7 @@
             "parentCategory": "Consumer Indicators",
             "agency": "FRED",
             "name": "Personal Consumption Expenditures (PCE)",
-            "lastUpdated": "2026-05-29T14:00:00Z",
+            "lastUpdated": "2026-07-11T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/PCE",
             "march": "$20,683B",
@@ -1628,10 +1628,11 @@
             "november": "$21,356B",
             "december": "$21,445.9B",
             "2026": {
-                "january": "$21,509.1B",
-                "february": "21,655.8B",
-                "march": "21,868.3B",
-                "april": "21,979.4B"
+                "january": "$21,478.7B",
+                "february": "21,611.4B",
+                "march": "21,814.7B",
+                "april": "21,903.7B",
+                "may": "22,059.8B"
             },
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."

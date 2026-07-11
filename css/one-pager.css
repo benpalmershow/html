@@ -358,8 +358,8 @@
   padding: 0;
   list-style: none;
   overflow-y: auto;
-  min-height: 160px;
-  max-height: 340px;
+  /* Fixed height so skeleton and loaded content occupy identical space (prevents CLS) */
+  height: 300px;
   content-visibility: auto;
   contain-intrinsic-size: 1px 300px;
 }
@@ -494,4 +494,30 @@
 .show-more-link:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Reserve space for async-injected footer to avoid layout shift */
+#footer-container {
+  min-height: 96px;
+}
+
+/* Homepage intro copy (indexable content) */
+.home-intro {
+  margin: 0.25rem 0 0.75rem;
+}
+
+.home-intro-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.home-intro-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 70ch;
 }

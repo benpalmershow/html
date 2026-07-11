@@ -270,6 +270,41 @@
 .info-btn:hover .info-icon, .chart-btn:hover .chart-icon { background: var(--bg-secondary); color: var(--logo-teal) !important; }
 .info-btn.active .info-icon, .chart-btn.active .chart-icon { background: var(--logo-teal); color: #000000 !important; }
 
+/* Explanation callout (info button) */
+.explanation-text {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--logo-teal);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.explanation-text .explanation-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+.explanation-text .explanation-header svg,
+.explanation-text .explanation-header i {
+  width: 14px;
+  height: 14px;
+  color: var(--logo-teal);
+}
+.explanation-text .explanation-body {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
@@ -577,7 +612,7 @@
 .explanation-tooltip {
   position: fixed;
   z-index: 200;
-  max-width: 360px;
+  max-width: min(360px, calc(100vw - 16px));
   padding: 1rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -587,8 +622,11 @@
   color: var(--text-secondary);
   line-height: 1.5;
   pointer-events: auto;
+  display: none;
   animation: tooltipIn 0.2s ease-out;
 }
+
+.explanation-tooltip.open { display: block; }
 
 .explanation-tooltip::before {
   content: '';
@@ -599,7 +637,21 @@
   border-left: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   transform: rotate(45deg);
+  top: -5px;
+  left: var(--arrow-left, 50%);
+  margin-left: -4px;
 }
+
+.explanation-tooltip.arrow-bottom::before {
+  top: auto;
+  bottom: -5px;
+  border-left: none;
+  border-bottom: none;
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.explanation-tooltip .tooltip-body { margin: 0; }
 
 @keyframes tooltipIn {
   from { opacity: 0; transform: scale(0.96) translateY(4px); }

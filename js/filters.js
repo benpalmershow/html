@@ -141,24 +141,95 @@ function setupIconHandlers(selector, handler) {
     });
 }
 
+let explanationTooltip = null;
+let explanationTooltipOwner = null;
+
+function getExplanationTooltip() {
+    if (explanationTooltip) return explanationTooltip;
+    const tip = document.createElement('div');
+    tip.className = 'explanation-tooltip';
+    tip.setAttribute('role', 'dialog');
+    tip.setAttribute('aria-live', 'polite');
+    tip.innerHTML = '<button class="tooltip-close" aria-label="Close explanation">&times;</button><div class="tooltip-body"></div>';
+    document.body.appendChild(tip);
+
+    tip.querySelector('.tooltip-close').addEventListener('click', hideExplanationTooltip);
+    document.addEventListener('click', function (e) {
+        if (!explanationTooltip || !explanationTooltip.classList.contains('open')) return;
+        if (e.target.closest('.explanation-tooltip') || e.target.closest('.info-btn')) return;
+        hideExplanationTooltip();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') hideExplanationTooltip();
+    });
+    window.addEventListener('scroll', hideExplanationTooltip, true);
+    window.addEventListener('resize', hideExplanationTooltip);
+    explanationTooltip = tip;
+    return tip;
+}
+
+function hideExplanationTooltip() {
+    if (!explanationTooltip) return;
+    explanationTooltip.classList.remove('open');
+    explanationTooltip.style.visibility = 'hidden';
+    if (explanationTooltipOwner) {
+        explanationTooltipOwner.classList.remove('active');
+        explanationTooltipOwner = null;
+    }
+}
+
+function showExplanationTooltip(btn, explanation) {
+    const tip = getExplanationTooltip();
+    tip.querySelector('.tooltip-body').textContent = explanation;
+
+    if (explanationTooltipOwner && explanationTooltipOwner !== btn) {
+        explanationTooltipOwner.classList.remove('active');
+    }
+    explanationTooltipOwner = btn;
+    btn.classList.add('active');
+
+    tip.classList.add('open');
+    tip.style.visibility = 'hidden';
+
+    const rect = btn.getBoundingClientRect();
+    const tipRect = tip.getBoundingClientRect();
+    const margin = 8;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    let top = rect.bottom + margin;
+    let arrowAtTop = true;
+    if (top + tipRect.height > vh - margin && rect.top - margin - tipRect.height > margin) {
+        top = rect.top - margin - tipRect.height;
+        arrowAtTop = false;
+    }
+
+    let left = rect.left + rect.width / 2 - tipRect.width / 2;
+    left = Math.max(margin, Math.min(left, vw - tipRect.width - margin));
+
+    tip.style.top = top + 'px';
+    tip.style.left = left + 'px';
+
+    const arrowX = rect.left + rect.width / 2 - left;
+    tip.style.setProperty('--arrow-left', arrowX + 'px');
+    tip.classList.toggle('arrow-bottom', !arrowAtTop);
+
+    tip.style.visibility = 'visible';
+}
+
 function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
     setupIconHandlers(SELECTORS.INFO_BTN, function () {
         const indicator = this.closest(SELECTORS.INDICATOR);
         if (!indicator) return;
 
-        const explanationDiv = indicator.querySelector('.explanation-text');
-        if (!explanationDiv) return;
-
         const explanation = this.getAttribute(DATA_ATTRS.EXPLANATION);
+        if (!explanation) return;
 
-        if (explanationDiv.style.display === 'none') {
-            explanationDiv.textContent = explanation;
-            explanationDiv.style.display = 'block';
-            this.classList.add('active');
-        } else {
-            explanationDiv.style.display = 'none';
-            this.classList.remove('active');
+        if (explanationTooltipOwner === this && explanationTooltip && explanationTooltip.classList.contains('open')) {
+            hideExplanationTooltip();
+            return;
         }
+        showExplanationTooltip(this, explanation);
     });
 }
 

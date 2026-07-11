@@ -493,7 +493,7 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
     const accent = indicator.color || 'var(--logo-teal)';
     const isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}${indicator.category !== 'Prediction Markets' ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3" class="chart-icon"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div><div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}<div class="explanation-text" style="display: none; margin-top: 8px; padding: 8px; background: var(--bg-secondary, #f5f5f5); border-radius: 4px; font-size: 0.9em; color: var(--text-secondary, #666);"></div>${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}${indicator.category !== 'Prediction Markets' ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3" class="chart-icon"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div><div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---
@@ -523,25 +523,31 @@ function renderSparklines() {
                 x: (i / (values.length - 1)) * width,
                 y: height - ((val - minVal + pad) / (range + pad * 2)) * height
             }));
-            
-            // Draw fill area
+
+            // Build a single smoothed path (shared by fill + stroke so the
+            // shaded area never extends past the visible line)
+            const tracePath = () => {
+                ctx.moveTo(points[0].x, points[0].y);
+                for (let i = 1; i < points.length; i++) {
+                    const xc = (points[i].x + points[i - 1].x) / 2;
+                    const yc = (points[i].y + points[i - 1].y) / 2;
+                    ctx.quadraticCurveTo(points[i - 1].x, points[i - 1].y, xc, yc);
+                }
+                ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+            };
+
+            // Draw fill area (close the smoothed line down to the baseline)
             ctx.beginPath();
-            ctx.moveTo(points[0].x, height);
-            points.forEach(p => ctx.lineTo(p.x, p.y));
+            tracePath();
             ctx.lineTo(points[points.length - 1].x, height);
+            ctx.lineTo(points[0].x, height);
             ctx.closePath();
             ctx.fillStyle = gradient;
             ctx.fill();
-            
-            // Draw line
+
+            // Draw line (same smoothed path)
             ctx.beginPath();
-            ctx.moveTo(points[0].x, points[0].y);
-            for (let i = 1; i < points.length; i++) {
-                const xc = (points[i].x + points[i - 1].x) / 2;
-                const yc = (points[i].y + points[i - 1].y) / 2;
-                ctx.quadraticCurveTo(points[i - 1].x, points[i - 1].y, xc, yc);
-            }
-            ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+            tracePath();
             ctx.strokeStyle = 'rgba(44, 95, 90, 0.18)';
             ctx.lineWidth = 1.5;
             ctx.lineCap = 'round';

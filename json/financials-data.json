@@ -781,14 +781,15 @@
             "parentCategory": "Commodities",
             "agency": "EIA",
             "name": "U.S. Petroleum Exports",
-            "lastUpdated": "2026-06-15T19:30:00Z",
+            "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
             "2026": {
                 "march": "11,670",
                 "april": "12,881",
                 "may": "13,137",
-                "june": "12,181"
+                "june": "12,181",
+                "july": "11,992"
             },
             "change": "",
             "explanation": "Weekly U.S. petroleum exports from EIA (Total Crude Oil and Products), reported in thousand barrels per day. This indicator uses the latest weekly readings shown in the source table, not monthly averages. Current values shown are March 2026: 11,670 and April 2026: 12,881, tracking outbound U.S. crude and refined product flows."

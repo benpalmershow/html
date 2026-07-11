@@ -218,16 +218,16 @@ h1.page-title {
 
 /* Dark mode filter overrides - theme.css handles html.dark-mode via CSS variables */
 @media (prefers-color-scheme: dark) {
-    .filters .filter-btn {
+    html:not(.theme-init) .filters .filter-btn {
         background: var(--color-dark-bg-secondary, #374151);
         color: var(--color-dark-text-secondary, #d1d5db);
     }
 
-    .filters .filter-btn:hover {
+    html:not(.theme-init) .filters .filter-btn:hover {
         background: var(--color-dark-bg-primary, #1f2937);
     }
 
-    .filters .filter-btn.active {
+    html:not(.theme-init) .filters .filter-btn.active {
         background: var(--logo-teal, #2c5f5a);
         color: white;
     }

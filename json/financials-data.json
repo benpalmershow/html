@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-09T08:00:00",
+    "lastUpdated": "2026-07-11T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -934,7 +934,7 @@
             "parentCategory": "Commodities",
             "agency": "CME",
             "name": "Copper Futures",
-            "lastUpdated": "2026-05-28T14:00:00Z",
+            "lastUpdated": "2026-07-11T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
             "march": "4.56",
@@ -952,7 +952,9 @@
                 "february": "5.87",
                 "march": "5.33",
                 "april": "6.00",
-                "may": "6.3885"
+                "may": "6.3885",
+                "june": "6.35",
+                "july": "6.285"
             },
             "change": "",
             "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
@@ -1811,7 +1813,7 @@
             "parentCategory": "Business Indicators",
             "agency": "Chicago Fed",
             "name": "Chicago Fed Survey of Economic Conditions",
-            "lastUpdated": "2026-05-31T14:00:00Z",
+            "lastUpdated": "2026-07-11T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
             "may": "2.50",
@@ -1824,10 +1826,11 @@
             "december": "-16.30",
             "2026": {
                 "january": "+9.8",
-                "february": "+15.7",
-                "march": "+21.7",
-                "april": "+19.7",
-                "may": "+11.5"
+                "february": "+17.1",
+                "march": "+23.1",
+                "april": "+19.6",
+                "may": "+11.4",
+                "june": "+17.5"
             },
             "change": "",
             "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."
@@ -2352,7 +2355,7 @@
             "parentCategory": "Employment Indicators",
             "agency": "Challenger Gray & Christmas",
             "name": "Job Cuts Report",
-            "lastUpdated": "2026-06-03T14:00:00Z",
+            "lastUpdated": "2026-07-11T14:00:00Z",
             "releaseDay": 6,
             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
             "january": "49,795",
@@ -2372,7 +2375,8 @@
                 "february": "48,307",
                 "march": "60,620",
                 "april": "83,387",
-                "may": "97,006"
+                "may": "97,006",
+                "june": "45,849"
             },
             "change": "",
             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
@@ -2480,7 +2484,7 @@
             "parentCategory": "Business Indicators",
             "agency": "BLS",
             "name": "PPI",
-            "lastUpdated": "2026-06-11T14:00:00Z",
+            "lastUpdated": "2026-07-11T14:00:00Z",
             "releaseDay": 13,
             "url": "https://data.bls.gov/pdq/SurveyOutputServlet",
             "march": "148.319",

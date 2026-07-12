@@ -6,417 +6,1156 @@
   <meta name="description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets.">
   <title>Numbers - Howdy, Stranger</title>
   <style>
+    /* === DESIGN TOKENS === */
     :root {
-      --font-body: Georgia, 'Times New Roman', serif;
-      --font-mono: Monaco, Menlo, 'Ubuntu Mono', 'Courier New', monospace;
-      --type-base: clamp(1rem, 3.5vw, 1.25rem);
+      --font-body: Georgia,'Times New Roman',serif;
+      --font-mono: Monaco,Menlo,'Ubuntu Mono','Courier New',monospace;
+      --type-base: clamp(1rem,3.5vw,1.25rem);
       --color-primary: #2c5f5a;
       --color-secondary: #d4822a;
-      --color-white: #ffffff;
-      --color-black: #000000;
+      --color-white: #fff;
+      --color-black: #000;
       --color-gray-500: #6c757d;
       --color-gray-700: #343a40;
-      --color-gray-800: #212529;
-      --text-primary: var(--color-black);
-      --text-secondary: var(--color-gray-700);
-      --text-muted: var(--color-gray-500);
+      --text-primary: #000;
+      --text-secondary: #343a40;
+      --text-muted: #6c757d;
       --bg-primary: #fdf6e8;
       --bg-secondary: #f8f4e6;
       --bg-tertiary: #e9e2d0;
       --border-color: #e8dcc0;
-      --logo-teal: var(--color-primary);
-      --logo-orange: var(--color-secondary);
-      --radius-lg: 8px;
+      --border-color-rgb: 232,220,192;
+      --logo-teal: #2c5f5a;
+      --logo-teal-rgb: 44,95,90;
+      --logo-orange: #d4822a;
       --radius-md: 6px;
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 0.75rem;
+      --radius-lg: 8px;
+      --card-radius: 8px;
+      --spacing-xs: .5rem;
+      --spacing-sm: .75rem;
       --spacing-md: 1.25rem;
       --spacing-lg: 2rem;
       --spacing-xl: 3rem;
-      --max-content-width: 1440px;
       --content-padding: var(--spacing-md);
-      --section-spacing: var(--spacing-xl);
-      --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --max-content-width: 1440px;
+      --transition-base: 300ms cubic-bezier(.4,0,.2,1);
+      --shadow-card: 0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(44,95,90,.07);
+      --nav-bg: #1a1a18;
+      --nav-text: #f9f9f7;
     }
-
-    * { box-sizing: border-box; }
-
-    html {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background: var(--bg-primary);
+    html.dark-mode {
+      --text-primary: #e1e5e9;
+      --text-secondary: #e1e5e9;
+      --text-muted: #a0a9b8;
+      --bg-primary: #1a1f1e;
+      --bg-secondary: #252b2a;
+      --bg-tertiary: #2a3130;
+      --border-color: #495057;
+      --border-color-rgb: 73,80,87;
+      --shadow-card: 0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.24);
     }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-body);
-      line-height: 1.7;
-      background: var(--bg-primary);
-      color: var(--text-secondary);
-      font-size: var(--type-base);
-      display: flex;
-      flex-direction: column;
-    }
-
-    nav {
-      background: var(--bg-primary);
-      border-bottom: 1px solid var(--border-color);
-      padding: var(--spacing-sm) var(--content-padding);
-    }
-
-    .nav-inner {
-      max-width: var(--max-content-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--spacing-md);
-    }
-
-    .nav-brand {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-primary);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: var(--spacing-md);
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: var(--radius-md);
-    }
-
-    .nav-links a.active {
-      color: var(--text-primary);
-      background: var(--bg-secondary);
-    }
-
-    .content {
-      padding: var(--content-padding);
-      margin: 0 auto;
-      max-width: var(--max-content-width);
-      width: 100%;
-      flex: 1;
-    }
-
-    .page-header {
-      padding-top: var(--spacing-lg);
-      padding-bottom: var(--spacing-md);
-    }
-
-    .page-title {
-      font-size: 0.85rem;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: 0;
-    }
-
-    .last-updated {
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      text-align: center;
-      margin-top: 2px;
-      opacity: 0.75;
-    }
-
-    .filter-bar {
-      display: flex;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-lg);
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .filter-btn {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      background: transparent;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: background var(--transition-base), color var(--transition-base);
-    }
-
-    .filter-btn:hover {
-      background: var(--bg-secondary);
-    }
-
-    .filter-btn.active {
-      background: var(--logo-teal);
-      color: var(--color-white);
-      border-color: var(--logo-teal);
-    }
-
-    .categories {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-lg);
-    }
-
-    .category {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-md);
-      border: 1px solid var(--border-color);
-      content-visibility: auto;
-      contain-intrinsic-size: 1px 500px;
-    }
-
-    .category-title {
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-      color: var(--color-primary);
-      margin: 0 0 var(--spacing-md) 0;
-      font-family: var(--font-body);
-      font-weight: 700;
-    }
-
-    .indicators-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: var(--spacing-md);
-    }
-
-    .indicator-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .indicator {
-      background: var(--bg-primary);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-sm);
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      contain: layout style;
-    }
-
-    .indicator-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.3;
-      flex: 1;
-    }
-
-    .expand-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border-radius: 6px;
-      width: 24px;
-      height: 24px;
-    }
-
-    .expand-toggle:hover {
-      background: var(--bg-secondary);
-      color: var(--logo-teal);
-    }
-
-    .indicator.expanded .expand-toggle svg {
-      transform: rotate(180deg);
-    }
-
-    .data-rows-container {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .indicator.expanded .data-rows-container {
-      max-height: 1200px;
-    }
-
-    .indicator-agency {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .indicator-agency a {
-      color: var(--text-muted);
-      text-decoration: underline;
-    }
-
-    .latest-data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4px 0;
-      font-size: 0.85rem;
-    }
-
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4px 0;
-      font-size: 0.85rem;
-    }
-
-    .month-label {
-      font-weight: 600;
-      color: var(--text-secondary);
-      font-size: 0.7rem;
-    }
-
-    .month-value {
-      font-weight: 700;
-      color: var(--text-primary);
-      font-size: 0.85rem;
-      text-align: right;
-    }
-
-    .change-indicators {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .change-metric-btn {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: var(--radius-md);
-      border: none;
-      cursor: pointer;
-    }
-
-    .change-positive {
-      background: rgba(34, 197, 94, 0.1);
-      color: #16a34a;
-    }
-
-    .change-negative {
-      background: rgba(239, 68, 68, 0.1);
-      color: #dc2626;
-    }
-
-    .change-neutral {
-      background: rgba(156, 163, 175, 0.1);
-      color: var(--text-muted);
-    }
-
-    .loading {
-      text-align: center;
-      padding: var(--spacing-xl);
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-    }
-
-    .error {
-      text-align: center;
-      padding: var(--spacing-xl);
-      color: #dc2626;
-      font-family: var(--font-mono);
-    }
-
-    @media (max-width: 768px) {
-      :root {
-        --content-padding: var(--spacing-sm);
-        --section-spacing: var(--spacing-lg);
-      }
-      .indicators-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: var(--spacing-sm);
-      }
-      .nav-links { gap: var(--spacing-sm); }
-    }
-
-    @media (max-width: 480px) {
-      .indicators-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-      }
-      .indicator { padding: 0.5rem; }
-      .indicator-name { font-size: 0.8rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
+    *{box-sizing:border-box}
+    html{height:100%;margin:0;padding:0;overflow-x:hidden;background:var(--bg-primary)}
+    body{min-height:100vh;margin:0;padding:0;font-family:var(--font-body);line-height:1.7;background:var(--bg-primary);color:var(--text-secondary);font-size:var(--type-base);display:flex;flex-direction:column}
+    /* === NAV === */
+    .site-nav{position:sticky;top:0;z-index:5000;background:var(--nav-bg);border-bottom:1px solid var(--border-color)}
+    .nav-container{display:flex;align-items:center;gap:1rem;min-height:60px;padding:0 var(--content-padding);max-width:var(--max-content-width);margin:0 auto}
+    .nav-brand{font-family:var(--font-mono);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--nav-text);text-decoration:none}
+    .nav-links{display:flex;gap:.5rem;list-style:none;margin:0;padding:0;margin-left:auto}
+    .nav-links a{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(249,249,247,.75);text-decoration:none;padding:6px 10px;border-radius:var(--radius-md)}
+    .nav-links a.active{color:var(--nav-text);background:rgba(255,255,255,.1)}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--logo-teal);outline-offset:2px}
+    button:focus:not(:focus-visible){outline:none}
+    /* === PAGE HEADER === */
+    .page-header{padding:var(--spacing-lg) var(--content-padding) var(--spacing-md);text-align:center;max-width:var(--max-content-width);margin:0 auto;width:100%}
+    .page-title{font-size:.85rem;font-family:var(--font-mono);color:var(--text-secondary);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:0}
+    .last-updated{font-size:.72rem;font-family:var(--font-mono);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);text-align:center;margin-top:2px;opacity:.75}
+    /* === FILTER BAR === */
+    .filter-bar{position:sticky;top:0;z-index:100;background:var(--bg-primary);padding:.6rem var(--content-padding);display:flex;align-items:center;gap:8px;overflow-x:auto;border-bottom:1px solid var(--border-color);scrollbar-width:none}
+    .filter-bar::-webkit-scrollbar{display:none}
+    .filters{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;min-width:min-content}
+    .filter-btn{display:flex;align-items:center;gap:.35rem;padding:.45rem .75rem;min-height:36px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--border-color);border-radius:var(--radius-md);background:var(--bg-secondary);color:var(--text-secondary);cursor:pointer;transition:all .2s ease;white-space:nowrap;flex-shrink:0}
+    .filter-btn:hover{background:var(--bg-tertiary)}
+    .filter-btn.active{background:var(--logo-teal);color:#fff;border-color:var(--logo-teal)}
+    .filter-btn svg{width:13px;height:13px;flex-shrink:0;opacity:.75}
+    .filter-btn.active svg{opacity:1}
+    /* === CONTENT === */
+    .content{padding:var(--content-padding);margin:0 auto;max-width:var(--max-content-width);width:100%;flex:1}
+    .categories{display:grid;gap:15px}
+    /* === CATEGORY === */
+    .category{background:linear-gradient(135deg,var(--bg-secondary) 0%,rgba(255,255,255,.05) 100%);border-radius:var(--card-radius);padding:.5rem clamp(1rem,3vw,1.5rem) clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color);box-shadow:0 4px 12px rgba(0,0,0,.06);content-visibility:auto;contain-intrinsic-size:1px 500px;word-break:break-word}
+    .category-title{font-size:clamp(1.1rem,4vw,1.4rem);color:var(--logo-teal);margin:0 0 var(--spacing-md);font-family:var(--font-body);font-weight:700;border-bottom:2px solid var(--logo-teal);padding-bottom:8px}
+    .indicators-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:1.25rem;align-items:start}
+    /* === INDICATOR CARD === */
+    .indicator{background:var(--bg-primary);border-radius:var(--card-radius);padding:.75rem;border:1px solid var(--border-color);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:.35rem;contain:layout style;position:relative;overflow:hidden;min-width:0}
+    .indicator-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-width:0}
+    .indicator-name{font-size:.95rem;font-weight:700;color:var(--text-primary);line-height:1.2;flex:1;min-width:0;overflow-wrap:break-word;word-break:break-word;hyphens:auto}
+    .new-badge{display:inline-flex;align-items:center;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--logo-orange);padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle}
+    .indicator-actions{display:flex;gap:4px;flex-shrink:0}
+    .indicator-agency{font-size:.7rem;color:var(--text-muted);font-weight:500;margin:2px 0}
+    .indicator-agency a{color:var(--text-muted);text-decoration:underline}
+    .indicator-date{color:var(--logo-teal);font-weight:600}
+    .change-indicators{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px;padding-bottom:6px;border-bottom:1px solid rgba(var(--border-color-rgb),.4)}
+    .change-metric-btn{border:none;border-radius:6px;min-height:24px;padding:4px 8px;font-size:.72rem;font-weight:600;cursor:default;white-space:nowrap}
+    .change-positive{background:rgba(34,197,94,.08);color:#16a34a}
+    .change-negative{background:rgba(239,68,68,.08);color:#dc2626}
+    .change-neutral{background:rgba(156,163,175,.08);color:var(--text-muted)}
+    /* === DATA ROWS === */
+    .latest-data-row,.data-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:.85rem}
+    .latest-data-row .month-label{color:var(--logo-teal);font-weight:700}
+    .month-label{font-weight:600;color:var(--text-secondary);font-size:.7rem}
+    .month-value{font-weight:700;color:var(--text-primary);font-size:.75rem;text-align:right;display:flex;align-items:center;gap:4px}
+    .latest-data-row .month-value{font-size:.85rem}
+    .month-change{font-size:.8rem;opacity:.8;font-weight:600}
+    /* === EXPAND === */
+    .expand-toggle{display:inline-flex;align-items:center;justify-content:center;padding:4px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;border-radius:6px;width:24px;height:24px;flex-shrink:0}
+    .expand-toggle:hover{background:var(--bg-secondary);color:var(--logo-teal)}
+    .expand-toggle svg{transition:transform .3s ease;pointer-events:none}
+    .indicator.expanded .expand-toggle svg{transform:rotate(180deg)}
+    .data-rows-container{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+    .indicator.expanded .data-rows-container{max-height:1200px}
+    /* === CHART BTN / INFO BTN === */
+    .info-btn,.chart-btn{background:none;border:none;padding:4px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;color:var(--text-muted)}
+    .info-btn:hover,.chart-btn:hover{background:var(--bg-secondary);color:var(--logo-teal)}
+    .info-btn.active,.chart-btn.active{background:var(--logo-teal);color:#fff}
+    /* === PREDICTION BARS === */
+    .prediction-bar-container{margin:4px 0 6px;display:flex;flex-direction:column;gap:4px}
+    .prediction-bar-row{display:flex;align-items:center;gap:6px}
+    .prediction-bar-label{font-size:.7rem;font-weight:600;color:var(--text-secondary);min-width:28px;flex-shrink:0}
+    .prediction-bar-track{flex:1;height:8px;background:var(--bg-tertiary);border-radius:4px;overflow:hidden;position:relative}
+    .prediction-bar-fill{height:100%;border-radius:4px}
+    .yes-bar{background:linear-gradient(90deg,#22c55e 0%,#4ade80 100%)}
+    .no-bar{background:linear-gradient(90deg,#ef4444 0%,#f87171 100%);position:absolute;right:0;top:0}
+    .prediction-bar-value{font-size:.75rem;font-weight:700;min-width:28px;text-align:right}
+    .yes-value{color:#22c55e}
+    .no-value{color:#ef4444}
+    /* === FOMC === */
+    .fomc-stacked-bar-track{display:flex;height:24px;background:var(--bg-tertiary);border-radius:6px;overflow:hidden}
+    .fomc-segment{display:flex;align-items:center;justify-content:center;height:100%;min-width:0;font-size:11px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+    .fomc-hold{background:linear-gradient(90deg,#3b82f6 0%,#60a5fa 100%)}
+    .fomc-hike{background:linear-gradient(90deg,#f59e0b 0%,#fbbf24 100%)}
+    .fomc-cut{background:linear-gradient(90deg,#ef4444 0%,#f87171 100%)}
+    .fomc-legend{display:flex;gap:10px;margin-top:4px;font-size:.65rem;font-weight:600;color:var(--text-secondary);justify-content:center}
+    .fomc-legend-item{display:flex;align-items:center;gap:3px}
+    .fomc-legend-dot{width:8px;height:8px;border-radius:2px}
+    /* === CHART OVERLAY === */
+    .chart-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:var(--bg-primary);border-radius:var(--card-radius);display:none;flex-direction:column;z-index:100;border:1px solid var(--border-color);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+    .chart-overlay.show{display:flex}
+    .chart-overlay-range-picker{display:flex;align-items:center;gap:4px;padding:6px 8px 2px;flex-shrink:0}
+    .chart-overlay-close{padding:2px 8px;border:1px solid var(--border-color);border-radius:6px;background:transparent;color:var(--text-muted);font-size:.7rem;font-weight:500;cursor:pointer;margin-left:auto}
+    .chart-overlay-close:hover{background:var(--logo-teal);color:#fff;border-color:var(--logo-teal)}
+    .range-btn{padding:2px 8px;border:1px solid var(--border-color);border-radius:6px;background:transparent;color:var(--text-muted);font-size:.7rem;font-weight:500;cursor:pointer}
+    .range-btn.active{background:var(--logo-teal);color:#fff;border-color:var(--logo-teal)}
+    .chart-overlay-body{flex:1;display:flex;flex-direction:column;min-height:0;position:relative}
+    .chart-overlay-canvas{width:100%!important;height:100%!important;min-height:0;background:var(--bg-primary)}
+    .chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:.8rem;font-family:var(--font-mono)}
+    /* === EXPLANATION TOOLTIP === */
+    .explanation-tooltip{position:fixed;z-index:2000;max-width:min(360px,calc(100vw - 16px));padding:1rem;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,.3);font-size:.9rem;color:var(--text-secondary);line-height:1.5;display:none}
+    .explanation-tooltip.open{display:block}
+    .tooltip-close{position:absolute;top:6px;right:8px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.2rem;padding:2px 4px;border-radius:4px}
+    .tooltip-close:hover{background:var(--bg-tertiary)}
+    /* === SPARKLINE === */
+    .sparkline-container{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;border-radius:inherit}
+    .sparkline-container canvas{position:absolute;bottom:0;left:0;width:100%!important;height:100%!important;opacity:.3}
+    .indicator:hover .sparkline-container canvas{opacity:.6}
+    .indicator-content{position:relative;z-index:1}
+    /* === LOADING / ERROR === */
+    .loading,.error{text-align:center;padding:var(--spacing-xl);font-family:var(--font-mono);font-size:.85rem}
+    .error{color:#dc2626}
+    /* === SKELETON === */
+    .skeleton-card{border-radius:var(--card-radius);border:1px solid var(--border-color);background:var(--bg-secondary);padding:.75rem;min-height:100px}
+    .skeleton-line{height:14px;border-radius:4px;background:linear-gradient(90deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.12) 40%,rgba(255,255,255,.04) 80%);background-size:200% 100%;animation:shimmer 1.8s infinite linear;margin-bottom:10px}
+    .skeleton-line.long{width:95%}.skeleton-line.medium{width:75%}.skeleton-line.short{width:50%}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    /* === DARK MODE TOGGLE === */
+    .dark-toggle{background:transparent;border:1px solid rgba(249,249,247,.25);border-radius:var(--radius-md);color:var(--nav-text);font-family:var(--font-mono);font-size:.65rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;cursor:pointer;margin-left:.5rem}
+    .dark-toggle:hover{background:rgba(255,255,255,.1)}
+    /* === WORLD CUP === */
+    .match-score-display{display:flex;justify-content:space-between;align-items:center;gap:6px}
+    .match-team{display:flex;flex-direction:column;align-items:center;gap:0;flex:1}
+    .team-flag{font-size:1.3rem;line-height:1}
+    .team-crest{width:20px;height:20px;object-fit:contain;margin-bottom:2px}
+    .team-name{font-size:.6rem;font-weight:600;color:var(--text-primary);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70px}
+    .match-score{font-size:.95rem;font-weight:600;color:var(--text-primary);padding:0 4px;min-width:40px;text-align:center}
+    .match-detail{font-size:.7rem;color:var(--text-muted);margin-top:4px;padding:4px;background:var(--bg-secondary);border-radius:4px;display:none}
+    .match-detail.open{display:block}
+    /* === 13F === */
+    .firm-filter-buttons{display:flex;gap:.4rem;margin-bottom:.6rem;flex-wrap:wrap}
+    .firm-filter-btn{padding:3px 8px;background:transparent;color:var(--text-muted);border:1px solid var(--border-color);border-radius:3px;cursor:pointer;font-size:.72rem}
+    .firm-filter-btn.active{background:var(--logo-teal);color:#fff;border-color:var(--logo-teal)}
+    .firm-chart-container{position:relative;height:380px}
+    .firm-holdings-list{display:flex;flex-direction:column;gap:2px;max-height:220px;overflow-y:auto;margin-bottom:8px}
+    .holding-item{background:var(--bg-secondary);padding:4px 6px;border-radius:2px;font-size:11px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .holding-item:hover{background:var(--bg-tertiary)}
+    .holding-ticker{font-weight:600;color:var(--text-primary);font-size:12px}
+    .holding-name{font-size:10px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px}
+    .holding-pct{font-size:9px;color:var(--text-muted)}
+    .firm-chart-wrapper{height:150px;margin-top:4px}
+    .firm-chart-wrapper canvas{width:100%!important;height:100%!important}
+    .firm-description{font-size:.82rem;color:var(--text-secondary);line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px solid var(--border-color)}
+    /* === RESPONSIVE === */
+    @media(max-width:768px){.indicators-grid{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:.6rem}.nav-brand{font-size:.75rem}}
+    @media(max-width:480px){.indicators-grid{grid-template-columns:repeat(2,1fr);gap:.4rem}.indicator{padding:.5rem;min-width:0}.indicator-name{font-size:.8rem}}
+    @media(max-width:360px){.indicators-grid{grid-template-columns:1fr}.indicator-name{font-size:.85rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <nav aria-label="Main">
-    <div class="nav-inner">
+  <nav class="site-nav" aria-label="Main">
+    <div class="nav-container">
       <a href="index.html" class="nav-brand">Howdy, Stranger</a>
       <ul class="nav-links">
         <li><a href="financials.html" class="active" aria-current="page">Numbers</a></li>
         <li><a href="media.html">Media</a></li>
         <li><a href="journal.html">Docs</a></li>
       </ul>
+      <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">Theme</button>
     </div>
   </nav>
 
   <main id="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Numbers</h1>
+      <div id="lastUpdated" class="last-updated"></div>
+    </div>
+
+    <div class="filter-bar" id="filterBar" aria-label="Filter indicators">
+      <div class="filters" id="filterButtons"></div>
+    </div>
+
     <div class="content">
-      <div class="page-header">
-        <h1 class="page-title">Numbers</h1>
-        <div id="lastUpdated" class="last-updated"></div>
-      </div>
-
-      <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-filter="latest">Latest</button>
-        <button class="filter-btn" data-filter="all">All</button>
-      </div>
-
       <div class="categories" id="categories">
-        <div class="loading">Loading indicators...</div>
+        <div class="loading">Loading indicators…</div>
+      </div>
+
+      <!-- 13F Holdings section - loaded lazily -->
+      <div id="section-13f" style="display:none;margin-top:15px">
+        <div class="category" data-category="13F Holdings">
+          <h2 class="category-title">13F Holdings</h2>
+          <div class="indicators-grid" id="firmCardsContainer">
+            <div class="skeleton-card" style="height:260px"><div class="skeleton-line long"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- World Cup section - loaded lazily -->
+      <div id="section-worldcup" style="display:none;margin-top:15px">
+        <div class="category" data-category="World Cup">
+          <h2 class="category-title">World Cup 2026</h2>
+          <div class="indicators-grid" id="worldCupGrid">
+            <div class="skeleton-card" style="height:120px"><div class="skeleton-line long"></div></div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
-  <script type="application/json" id="initial-data">{"lastUpdated":"2026-06-30T08:00:00","indices":[{"id":"consumer-confidence","category":"Consumer Indicators","type":"consumer","isActive":true,"tags":["consumer","confidence","survey"],"displayOrder":36,"icon":"fa-thumbs-up","color":"#9b59b6","units":"index","region":"us","parentCategory":"Consumer Indicators","agency":"The Conference Board","name":"Consumer Confidence","lastUpdated":"2026-06-30T14:00:00Z","releaseDay":28,"url":"https://www.conference-board.org/topics/consumer-confidence","march":"85.7","april":"85.7","may":"98.4","june":"95.2","july":"98.7","august":"97.8","september":"95.6","october":"95.5","november":"92.9","december":"94.2","2026":{"january":"89","february":"91","march":"92.2","april":"93.8","may":"90.6","june":"91.2"},"change":"","explanation":"Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."},{"id":"job-openings","category":"Employment Indicators","type":"employment","isActive":true,"tags":["employment","job-openings","jolts"],"displayOrder":53,"icon":"fa-door-open","color":"#34495e","units":"count","region":"us","parentCategory":"Employment Indicators","agency":"BLS","name":"Job Openings","lastUpdated":"2026-06-30T14:00:00Z","releaseDay":0,"url":"https://www.bls.gov/jlt/data.htm","march":"6,952,000","april":"7,098,000","may":"7,310,000","june":"7,204,000","july":"7,089,000","august":"6,919,000","september":"7,169,000","october":"7,170,000","november":"6,846,000","december":"6,550,000","2026":{"january":"7,240,000","february":"6,922,000","march":"6,887,000","april":"7,618,000","may":"7,594,000"},"change":"","explanation":"The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."},{"id":"days-on-market","category":"Housing Market","type":"housing","isActive":true,"tags":["housing","market-speed","real-estate"],"displayOrder":14,"icon":"fa-clock","color":"#e67e22","units":"days","region":"us","parentCategory":"Housing Market","agency":"Zillow","name":"Number of Days on Market (Median)","lastUpdated":"2026-06-28T23:00:00Z","url":"https://www.zillow.com/research/data/","march":"60","april":"53","may":"48","june":"46","july":"47","august":"50","september":"54","october":"56","november":"59","december":"65","2026":{"january":"71","february":"73","march":"68","april":"60","may":"53"},"change":"","explanation":"How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old \u201cDays on Zillow\u201d metric in that it excludes the in-contract period before a home sells."},{"id":"used-vehicle-value-index","category":"Consumer Indicators","type":"consumer","isActive":true,"tags":["consumer","autos","index"],"displayOrder":37,"icon":"fa-car","color":"#9b59b6","units":"index","region":"us","parentCategory":"Consumer Indicators","agency":"Manheim","name":"Used Vehicle Value Index","lastUpdated":"2026-06-28T21:56:00Z","releaseDay":7,"url":"https://www.manheim.com/consulting/used-vehicle-value-index/","march":"202.6","april":"208.2","may":"205.2","june":"208.5","july":"207.4","august":"207.4","september":"207","october":"202.9","november":"205.4","december":"205.5","2026":{"january":"210.5","february":"212.3","march":"215.3","april":"211.9","may":"212.6","june":"213.9"},"change":"","explanation":"The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."},{"id":"affordability-index","category":"Housing Market","type":"housing","isActive":true,"tags":["housing","affordability","index"],"displayOrder":47,"icon":"fa-hand-holding-dollar","color":"#e67e22","units":"index","region":"us","parentCategory":"Housing Market","agency":"FRED","name":"Affordability Index","lastUpdated":"2026-06-28T19:00:00Z","releaseDay":0,"url":"https://fred.stlouisfed.org/series/FIXHAI","march":"104.2","april":"101.4","may":"97.5","june":"95.5","july":"98.3","august":"101.2","september":"106.7","october":"107.1","november":"108.7","december":"111","2026":{"january":"116.5","february":"116.1","march":"112","april":"108","may":"105.6"},"change":"","explanation":"A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."},{"id":"10yr-treasury-yield","category":"Business Indicators","type":"business","isActive":true,"tags":["bonds","yields","interest-rates"],"displayOrder":10,"icon":"fa-chart-bar","color":"#2ecc71","units":"percent","region":"us","parentCategory":"Business Indicators","agency":"FRED","name":"10-yr Treasury Yield","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":0,"url":"https://fred.stlouisfed.org/series/DGS10","march":"4.28","april":"4.28","may":"4.42","june":"4.38","july":"4.39","august":"4.26","september":"4.12","october":"4.06","november":"4.09","december":"4.14","2026":{"january":"4.21","february":"4.13","march":"4.25","april":"4.32","may":"4.48","june":"4.48"},"change":"","explanation":"The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."},{"id":"interest-on-debt","category":"Government","type":"government","isActive":true,"tags":["government","debt","interest"],"displayOrder":28,"icon":"fa-money-bill-wave","color":"#3498db","units":"dollars","region":"us","parentCategory":"Government","agency":"Treasury","name":"Interest on Debt","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":0,"url":"https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government","march":"$89B","april":"$91B","may":"$86B","june":"$84B","july":"$92B","august":"$93B","september":"$37B","october":"$91B","november":"$88B","december":"$92B","2026":{"january":"$76B","february":"$79B","march":"$94B","april":"$97B","may":"$107B"},"change":"","explanation":"The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time."},{"id":"monthly-budget-deficit","category":"Government","type":"government","isActive":true,"tags":["government","budget","deficit"],"displayOrder":29,"icon":"fa-scale-balanced","color":"#3498db","units":"dollars","region":"us","parentCategory":"Government","agency":"Treasury","name":"Monthly Budget Deficit/Surplus","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":0,"url":"https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month","january":"-$128,640M","february":"-$307,017M","march":"-$160,528M","april":"+$258,400M","may":"-$315,652M","june":"+$27,010M","july":"-$291,143M","august":"-$344,792M","september":"+$197,938M","october":"-$284,333M","november":"-$173,277M","december":"-$144,752M","2026":{"january":"-$94,615M","february":"-$307,501M","march":"-$164,100M","april":"+215,024M","may":"-$292,648M"},"receipts":{"january":"513,294","february":"296,424","march":"367,645","april":"850,169","may":"371,229","june":"526,445","july":"338,492","august":"344,315","september":"543,663","october":"404,371","november":"336,002","december":"484,384","2026":{"january":"560,052","february":"313,122","march":"384,863","april":"837,343","may":"$335,512"}},"outlays":{"january":"641,935","february":"603,441","march":"528,174","april":"591,769","may":"686,881","june":"499,436","july":"629,635","august":"689,107","september":"345,725","october":"688,704","november":"509,279","december":"629,136","2026":{"january":"654,667","february":"620,623","march":"548,963","april":"622,319","may":"$628,161"}},"change":"","explanation":"Monthly federal government receipts (revenue) and outlays (spending), with the deficit calculated as outlays minus receipts. A positive value means spending exceeded revenue (deficit), while a negative value indicates a surplus. Data is organized by fiscal year (FY2025 runs October 2024 - September 2025, FY2026 runs October 2025 - September 2026). The Monthly Treasury Statement provides this data from the Treasury Department."},{"id":"southern-border-encounters","category":"Government","type":"government","isActive":true,"tags":["government","immigration","border"],"displayOrder":32,"icon":"fa-border-all","color":"#3498db","units":"count","region":"us","parentCategory":"Government","agency":"CBP","name":"Southern Border Encounters","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":0,"url":"https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters","march":"11,011","april":"12,023","may":"12,450","june":"9,300","july":"7,822","august":"9,731","september":"11,647","october":"11,707","november":"10,964","december":"9,990","2026":{"january":"9,734","february":"9,612","march":"11,733","april":"12,023","may":"13,530"},"change":"","explanation":"The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."},{"id":"tariff-revenue","category":"Trade & Tariffs","type":"trade","isActive":true,"tags":["trade","tariffs","revenue"],"displayOrder":34,"icon":"fa-file-invoice-dollar","color":"#1abc9c","units":"dollars","region":"us","parentCategory":"Trade & Tariffs","agency":"Treasury","name":"Tariff Revenue","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":0,"url":"https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government","march":"$8.2B","april":"$16B","may":"$22B","june":"$27B","july":"$28B","august":"$30B","september":"$30B","october":"$31B","november":"$31B","december":"$28B","2026":{"january":"$28B","february":"$27B","march":"$22B","april":"$22B","may":"$-42B"},"change":"","explanation":"Monthly customs duties collected by the U.S. government on imported goods. Tariffs are taxes imposed on specific categories of imports, often used as a tool of trade policy. Revenue from tariffs goes directly to the U.S. Treasury and can be used to fund government operations. Changes in tariff revenue can reflect shifts in trade volumes, tariff rates, or the composition of imports. Tariff revenue typically increases with new or increased tariffs but may decrease if the tariffs reduce overall trade volumes. This metric is closely watched in trade policy discussions and budget analysis."},{"id":"new-orders","category":"Business Indicators","type":"business","isActive":true,"tags":["business","manufacturing","orders"],"displayOrder":35,"icon":"fa-shopping-cart","color":"#2ecc71","units":"dollars","region":"us","parentCategory":"Business Indicators","agency":"Commerce","name":"New Orders for Manufactured Goods","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":3,"url":"https://www.census.gov/economic-indicators/","march":"$617.4B","april":"$593.5B","may":"$642.5B","june":"$611.5B","july":"$603.6B","august":"$611.5B","september":"$612.9B","october":"$605.4B","november":"$621.9B","december":"$619.1B","2026":{"january":"$619.4B","february":"$621.3B","march":"$632.6B","april":"$662.7B"},"change":"","explanation":"The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity."},{"id":"employment-trends-index","category":"Employment Indicators","type":"employment","isActive":true,"tags":["employment","trends","index"],"displayOrder":51,"icon":"fa-chart-line","color":"#34495e","units":"index","region":"us","parentCategory":"Employment Indicators","agency":"The Conference Board","name":"Employment Trends Index","lastUpdated":"2026-06-28T14:00:00Z","releaseDay":0,"url":"https://www.conference-board.org/topics/employment-trends-index","march":"","april":"","may":"","june":"108.19","july":"107.13","august":"106.68","september":"106.24","october":"105.8","november":"105.5","december":"104.51","2026":{"january":"105.18","february":"105.84","march":"105.52","april":"107.88","may":"107.01"},"change":"","explanation":"The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."}]}</script>
-  <script type="application/json" id="initial-data">{"lastUpdated":"2026-06-30T08:00:00","indices":[{"lastUpdated":"2026-06-30T14:00:00Z","name":"Consumer Confidence","agency":"The Conference Board","url":"https://www.conference-board.org/topics/consumer-confidence","march":"85.7","april":"85.7","may":"98.4","june":"95.2","july":"98.7","august":"97.8","september":"95.6","october":"95.5","november":"92.9","december":"94.2","2026":{"january":"89","february":"91","march":"92.2","april":"93.8","may":"90.6","june":"91.2"}},{"lastUpdated":"2026-06-30T14:00:00Z","name":"Job Openings","agency":"BLS","url":"https://www.bls.gov/jlt/data.htm","march":"6,952,000","april":"7,098,000","may":"7,310,000","june":"7,204,000","july":"7,089,000","august":"6,919,000","september":"7,169,000","october":"7,170,000","november":"6,846,000","december":"6,550,000","2026":{"january":"7,240,000","february":"6,922,000","march":"6,887,000","april":"7,618,000","may":"7,594,000"}},{"lastUpdated":"2026-06-28T23:00:00Z","name":"Number of Days on Market (Median)","agency":"Zillow","url":"https://www.zillow.com/research/data/","march":"60","april":"53","may":"48","june":"46","july":"47","august":"50","september":"54","october":"56","november":"59","december":"65","2026":{"january":"71","february":"73","march":"68","april":"60","may":"53"}},{"lastUpdated":"2026-06-28T21:56:00Z","name":"Used Vehicle Value Index","agency":"Manheim","url":"https://www.manheim.com/consulting/used-vehicle-value-index/","march":"202.6","april":"208.2","may":"205.2","june":"208.5","july":"207.4","august":"207.4","september":"207","october":"202.9","november":"205.4","december":"205.5","2026":{"january":"210.5","february":"212.3","march":"215.3","april":"211.9","may":"212.6","june":"213.9"}},{"lastUpdated":"2026-06-28T19:00:00Z","name":"Affordability Index","agency":"FRED","url":"https://fred.stlouisfed.org/series/FIXHAI","march":"104.2","april":"101.4","may":"97.5","june":"95.5","july":"98.3","august":"101.2","september":"106.7","october":"107.1","november":"108.7","december":"111","2026":{"january":"116.5","february":"116.1","march":"112","april":"108","may":"105.6"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"10-yr Treasury Yield","agency":"FRED","url":"https://fred.stlouisfed.org/series/DGS10","march":"4.28","april":"4.28","may":"4.42","june":"4.38","july":"4.39","august":"4.26","september":"4.12","october":"4.06","november":"4.09","december":"4.14","2026":{"january":"4.21","february":"4.13","march":"4.25","april":"4.32","may":"4.48","june":"4.48"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"Interest on Debt","agency":"Treasury","url":"https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government","march":"$89B","april":"$91B","may":"$86B","june":"$84B","july":"$92B","august":"$93B","september":"$37B","october":"$91B","november":"$88B","december":"$92B","2026":{"january":"$76B","february":"$79B","march":"$94B","april":"$97B","may":"$107B"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"Monthly Budget Deficit/Surplus","agency":"Treasury","url":"https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month","january":"-$128,640M","february":"-$307,017M","march":"-$160,528M","april":"+$258,400M","may":"-$315,652M","june":"+$27,010M","july":"-$291,143M","august":"-$344,792M","september":"+$197,938M","october":"-$284,333M","november":"-$173,277M","december":"-$144,752M","2026":{"january":"-$94,615M","february":"-$307,501M","march":"-$164,100M","april":"+215,024M","may":"-$292,648M"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"Southern Border Encounters","agency":"CBP","url":"https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters","march":"11,011","april":"12,023","may":"12,450","june":"9,300","july":"7,822","august":"9,731","september":"11,647","october":"11,707","november":"10,964","december":"9,990","2026":{"january":"9,734","february":"9,612","march":"11,733","april":"12,023","may":"13,530"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"Tariff Revenue","agency":"Treasury","url":"https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government","march":"$8.2B","april":"$16B","may":"$22B","june":"$27B","july":"$28B","august":"$30B","september":"$30B","october":"$31B","november":"$31B","december":"$28B","2026":{"january":"$28B","february":"$27B","march":"$22B","april":"$22B","may":"$-42B"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"New Orders for Manufactured Goods","agency":"Commerce","url":"https://www.census.gov/economic-indicators/","march":"$617.4B","april":"$593.5B","may":"$642.5B","june":"$611.5B","july":"$603.6B","august":"$611.5B","september":"$612.9B","october":"$605.4B","november":"$621.9B","december":"$619.1B","2026":{"january":"$619.4B","february":"$621.3B","march":"$632.6B","april":"$662.7B"}},{"lastUpdated":"2026-06-28T14:00:00Z","name":"Employment Trends Index","agency":"The Conference Board","url":"https://www.conference-board.org/topics/employment-trends-index","march":"","april":"","may":"","june":"108.19","july":"107.13","august":"106.68","september":"106.24","october":"105.8","november":"105.5","december":"104.51","2026":{"january":"105.18","february":"105.84","march":"105.52","april":"107.88","may":"107.01"}}]}</script>
-  <script src="js/financials-copy.js" defer></script>
+  <!-- Floating explanation tooltip -->
+  <div id="explTooltip" class="explanation-tooltip" role="tooltip">
+    <button class="tooltip-close" id="tooltipClose" aria-label="Close">×</button>
+    <div id="tooltipBody"></div>
+  </div>
+
+  <script>
+  /* ==========================================
+     DARK MODE - runs before first paint
+  ========================================== */
+  (function(){
+    try{
+      var s=localStorage.getItem('darkMode');
+      var dark=s===null?window.matchMedia('(prefers-color-scheme: dark)').matches:s==='1';
+      document.documentElement.classList.toggle('dark-mode',dark);
+    }catch(e){}
+  })();
+  </script>
+
+  <script>
+  /* ==========================================
+     SELF-CONTAINED FINANCIALS ENGINE
+     No external dependencies before interaction.
+     Charts lazy-load Chart.js from CDN on first click.
+  ========================================== */
+  (function(){
+  'use strict';
+
+  /* ---- Constants ---- */
+  const MONTHS=['january','february','march','april','may','june','july','august','september','october','november','december'];
+  const MLABELS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  /* ---- State ---- */
+  let allData=null;
+  let currentFilter='latest';
+  let tooltipOwner=null;
+
+  /* ---- DOM refs ---- */
+  const categoriesEl=document.getElementById('categories');
+  const filterButtonsEl=document.getElementById('filterButtons');
+  const lastUpdatedEl=document.getElementById('lastUpdated');
+  const tooltip=document.getElementById('explTooltip');
+  const tooltipBody=document.getElementById('tooltipBody');
+  const tooltipClose=document.getElementById('tooltipClose');
+  const darkToggle=document.getElementById('darkToggle');
+
+  /* ==========================================
+     DARK MODE TOGGLE
+  ========================================== */
+  darkToggle.addEventListener('click',function(){
+    var isDark=document.documentElement.classList.toggle('dark-mode');
+    try{localStorage.setItem('darkMode',isDark?'1':'0');}catch(e){}
+  });
+
+  /* ==========================================
+     DATA UTILITIES
+  ========================================== */
+  function isValid(v){return v&&v!==''&&!String(v).startsWith('TBD');}
+
+  function toNum(v){
+    if(!v&&v!==0)return null;
+    var s=String(v).replace(/\$/g,'').replace(/^\+/,'').replace(/[A-Za-z]/g,'').replace(/,/g,'').trim();
+    var n=parseFloat(s);
+    return isNaN(n)?null:n;
+  }
+
+  function fmtChange(pct){
+    if(pct===null||pct===undefined)return{f:'—',cls:'change-neutral',dir:0};
+    var f=(pct>=0?'+':'')+pct.toFixed(2)+'%';
+    var neutral=(f==='—'||f==='+0.00%'||f==='0.00%');
+    return{f,cls:neutral?'change-neutral':pct>0?'change-positive':'change-negative',dir:neutral?0:pct>0?1:-1};
+  }
+
+  function fmtCompact(n){
+    if(n===null||n===undefined)return'—';
+    var a=Math.abs(n);
+    if(a>=1000){var k=n/1000;return(n>=0?'+':'')+( a<100000?k.toFixed(1).replace(/\.0$/,''):Math.round(k))+'K';}
+    return(n>=0?'+':'')+n.toFixed(2).replace('.00','');
+  }
+
+  /* Collect all data points newest-first */
+  function collectData(ind){
+    var yks=Object.keys(ind).filter(k=>/^\d{4}$/.test(k)).map(Number).sort((a,b)=>b-a);
+    var pts=[],covered=new Set();
+    yks.forEach(yr=>{
+      MONTHS.forEach((m,i)=>{
+        var v=ind[yr]&&ind[yr][m];
+        if(isValid(v)){pts.push({label:MLABELS[i],value:v,n:toNum(v),month:m,idx:i,year:yr});covered.add(m);}
+      });
+    });
+    MONTHS.forEach((m,i)=>{
+      if(covered.has(m))return;
+      var v=ind[m];
+      if(isValid(v))pts.push({label:MLABELS[i],value:v,n:toNum(v),month:m,idx:i,year:null});
+    });
+    pts.sort((a,b)=>{
+      var ya=a.year!==null?a.year:2025,yb=b.year!==null?b.year:2025;
+      if(ya!==yb)return yb-ya;
+      return b.idx-a.idx;
+    });
+    return pts;
+  }
+
+  function calcMoM(ind){
+    var pts=collectData(ind);
+    if(pts.length<2)return null;
+    var cur=pts[0].n,prev=pts[1].n;
+    if(cur===null||prev===null||prev===0)return null;
+    return((cur-prev)/Math.abs(prev))*100;
+  }
+
+  function calcYoY(ind){
+    var yks=Object.keys(ind).filter(k=>/^\d{4}$/.test(k)).map(Number).sort((a,b)=>b-a);
+    /* Find the most recent data point from year-nested keys */
+    var latest=null;
+    for(var yr of yks){
+      for(var i=MONTHS.length-1;i>=0;i--){
+        var v=ind[yr]&&ind[yr][MONTHS[i]];
+        if(isValid(v)&&toNum(v)!==null){latest={v,n:toNum(v),yr,m:MONTHS[i]};break;}
+      }
+      if(latest)break;
+    }
+    if(!latest)return null;
+    /* Look for same month in prior year - first try nested yr-1, then flat months */
+    var prevV=null;
+    var prevYrData=ind[latest.yr-1];
+    if(prevYrData&&isValid(prevYrData[latest.m]))prevV=prevYrData[latest.m];
+    else if(isValid(ind[latest.m]))prevV=ind[latest.m];
+    if(!prevV)return null;
+    var prevN=toNum(prevV);
+    if(prevN===null||prevN===0)return null;
+    return((latest.n-prevN)/Math.abs(prevN))*100;
+  }
+
+  /* ==========================================
+     INDICATOR TYPE DETECTION & RENDERING
+  ========================================== */
+  function detectType(ind){
+    if(ind.name&&(ind.name.includes('FOMC')||ind.rate_hold_odds||ind.rate_cut_odds))return'fomc';
+    if(ind.name&&ind.name.includes('Recession'))return'recession';
+    if(ind.name&&ind.name.includes('@'))return'sports';
+    if(ind.name&&ind.name.includes('Hormuz'))return'hormuz';
+    var probs=ind.probabilities||ind.propabilities;
+    if(probs&&typeof probs==='object'){
+      var first=Object.values(probs)[0];
+      if(first&&(first['Democratic Party']!==undefined||first['Republican Party']!==undefined))return'party';
+      if(first&&first.yes!==undefined)return'prediction';
+      return'venezuela';
+    }
+    if(ind.candidates&&typeof ind.candidates==='object')return'venezuela';
+    if(ind.yes_probability)return'prediction';
+    return'standard';
+  }
+
+  function renderStandard(ind){
+    var pts=collectData(ind);
+    if(!pts.length)return{latest:'<div class="latest-data-row"><span class="month-label">No data</span></div>',hist:'',hasHist:false};
+    var latest='',hist='';
+    pts.slice(0,2).forEach(function(p){
+      latest+='<div class="latest-data-row"><span class="month-label">'+p.label+'</span><span class="month-value">'+p.value+'</span></div>';
+    });
+    var histPts=pts.slice(2);
+    histPts.forEach(function(p){
+      hist+='<div class="data-row"><span class="month-label">'+p.label+'</span><span class="month-value">'+p.value+'</span></div>';
+    });
+    return{latest,hist,hasHist:histPts.length>0};
+  }
+
+  function renderPrediction(ind){
+    var probs=ind.probabilities||ind.propabilities;
+    if(!probs||typeof probs!=='object'){
+      if(ind.yes_probability){
+        var yp=parseFloat(ind.yes_probability)||0,np=parseFloat(ind.no_probability)||0;
+        var html='<div class="prediction-bar-container">'
+          +'<div class="prediction-bar-row"><span class="prediction-bar-label yes-value">Yes</span>'
+          +'<div class="prediction-bar-track"><div class="prediction-bar-fill yes-bar" style="width:'+yp+'%"></div>'
+          +'<div class="prediction-bar-fill no-bar" style="width:'+np+'%"></div></div>'
+          +'<span class="prediction-bar-value yes-value">'+ind.yes_probability+'</span></div>'
+          +'<div class="prediction-bar-row"><span class="prediction-bar-label no-value">No</span>'
+          +'<span class="prediction-bar-value no-value">'+ind.no_probability+'</span></div></div>';
+        return{latest:html,hist:'',hasHist:false};
+      }
+      return{latest:'<div class="data-row"><span class="month-label">No data</span></div>',hist:'',hasHist:false};
+    }
+    var sorted=Object.entries(probs).sort(function(a,b){return new Date(b[0])-new Date(a[0]);});
+    if(!sorted.length)return{latest:'',hist:'',hasHist:false};
+    var latest=sorted[0][1];
+    var yp=parseFloat(latest.yes)||0,np=parseFloat(latest.no)||0;
+    var latestHtml='<div class="prediction-bar-container">'
+      +'<div class="prediction-bar-row"><span class="prediction-bar-label yes-value">Yes</span>'
+      +'<div class="prediction-bar-track"><div class="prediction-bar-fill yes-bar" style="width:'+yp+'%"></div>'
+      +'<div class="prediction-bar-fill no-bar" style="width:'+np+'%"></div></div>'
+      +'<span class="prediction-bar-value yes-value">'+latest.yes+'</span></div>'
+      +'<div class="prediction-bar-row"><span class="prediction-bar-label no-value">No</span>'
+      +'<span class="prediction-bar-value no-value">'+latest.no+'</span></div></div>';
+    var histHtml='',hasHist=sorted.length>1;
+    sorted.slice(1).forEach(function(e){
+      var d=new Date(e[0]+'T00:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+      histHtml+='<div class="data-row"><span class="month-label">'+d+'</span><span class="month-value"><span class="yes-value">'+e[1].yes+'</span> / <span class="no-value">'+e[1].no+'</span></span></div>';
+    });
+    return{latest:latestHtml,hist:histHtml,hasHist};
+  }
+
+  function renderFOMC(ind){
+    if(ind.rate_hold_odds&&ind.rate_cut_odds&&ind.rate_hike_odds){
+      var ho=parseFloat(ind.rate_hold_odds)||0,hi=parseFloat(ind.rate_hike_odds)||0,cu=parseFloat(ind.rate_cut_odds)||0;
+      var html='<div class="fomc-stacked-bar-track">'
+        +'<div class="fomc-segment fomc-hold" style="width:'+ho+'%" title="Hold">'+ind.rate_hold_odds+'</div>'
+        +'<div class="fomc-segment fomc-hike" style="width:'+hi+'%" title="Hike">'+ind.rate_hike_odds+'</div>'
+        +'<div class="fomc-segment fomc-cut" style="width:'+cu+'%" title="Cut">'+ind.rate_cut_odds+'</div>'
+        +'</div>'
+        +'<div class="fomc-legend">'
+        +'<span class="fomc-legend-item"><span class="fomc-legend-dot fomc-hold"></span>Hold</span>'
+        +'<span class="fomc-legend-item"><span class="fomc-legend-dot fomc-hike"></span>Hike</span>'
+        +'<span class="fomc-legend-item"><span class="fomc-legend-dot fomc-cut"></span>Cut</span>'
+        +'</div>';
+      return{latest:html,hist:'',hasHist:false};
+    }
+    return renderStandard(ind);
+  }
+
+  function renderParty(ind){
+    var probs=ind.probabilities||ind.propabilities;
+    if(!probs)return renderStandard(ind);
+    var sorted=Object.entries(probs).sort(function(a,b){return new Date(b[0])-new Date(a[0]);});
+    if(!sorted.length)return{latest:'',hist:'',hasHist:false};
+    var latest=sorted[0][1];
+    var dem=parseFloat(latest['Democratic Party'])||0,gop=parseFloat(latest['Republican Party'])||0;
+    var html='<div class="prediction-bar-container">'
+      +'<div class="prediction-bar-row"><span class="prediction-bar-label" style="color:#3498db;min-width:50px">Dem</span>'
+      +'<div class="prediction-bar-track"><div class="prediction-bar-fill" style="width:'+dem+'%;background:linear-gradient(90deg,#3498db,#5dade2)"></div></div>'
+      +'<span class="prediction-bar-value" style="color:#3498db">'+latest['Democratic Party']+'</span></div>'
+      +'<div class="prediction-bar-row"><span class="prediction-bar-label" style="color:#e74c3c;min-width:50px">GOP</span>'
+      +'<div class="prediction-bar-track"><div class="prediction-bar-fill" style="width:'+gop+'%;background:linear-gradient(90deg,#e74c3c,#f1948a)"></div></div>'
+      +'<span class="prediction-bar-value" style="color:#e74c3c">'+latest['Republican Party']+'</span></div>'
+      +'</div>';
+    return{latest:html,hist:'',hasHist:false};
+  }
+
+  function renderVenezuela(ind){
+    var probs=ind.probabilities||ind.propabilities;
+    var cands=probs?Object.entries(probs).sort(function(a,b){return new Date(b[0])-new Date(a[0]);})[0]:null;
+    var entries=cands?Object.entries(cands[1]):ind.candidates?Object.entries(ind.candidates):[];
+    if(!entries.length)return renderStandard(ind);
+    entries.sort(function(a,b){return parseFloat(b[1])-parseFloat(a[1]);});
+    var html='<div class="prediction-bar-container">';
+    entries.forEach(function(e){
+      var pv=parseFloat(e[1])||0;
+      html+='<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width:60px;font-size:.65rem">'+e[0].slice(0,8)+'</span>'
+        +'<div class="prediction-bar-track"><div class="prediction-bar-fill yes-bar" style="width:'+pv+'%"></div></div>'
+        +'<span class="prediction-bar-value yes-value">'+e[1]+'</span></div>';
+    });
+    html+='</div>';
+    return{latest:html,hist:'',hasHist:false};
+  }
+
+  function renderSports(ind){
+    var rows=[];
+    if(ind.game_title)rows.push(['Game',ind.game_title]);
+    if(ind.game_time)rows.push(['Time',ind.game_time]);
+    Object.keys(ind).filter(k=>k.endsWith('_win_odds')).forEach(k=>{rows.push([k.replace('_win_odds','').toUpperCase()+' Win',ind[k]]);});
+    if(ind.total_points)rows.push(['Total',ind.total_points]);
+    var latest=rows.slice(0,2).map(r=>'<div class="latest-data-row"><span class="month-label">'+r[0]+'</span><span class="month-value">'+r[1]+'</span></div>').join('');
+    var hist=rows.slice(2).map(r=>'<div class="data-row"><span class="month-label">'+r[0]+'</span><span class="month-value">'+r[1]+'</span></div>').join('');
+    return{latest,hist,hasHist:rows.length>2};
+  }
+
+  function renderHormuz(ind){
+    var daily=ind.daily&&typeof ind.daily==='object'?Object.entries(ind.daily).sort((a,b)=>new Date(b[0])-new Date(a[0])):[];
+    var latest=daily[0],BASELINE=115;
+    if(!latest)return renderStandard(ind);
+    var cnt=parseInt(latest[1],10),pct=Math.min(Math.round((cnt/BASELINE)*100),100);
+    var clsMap=pct<20?'yes-bar':pct<50?'no-bar':'yes-bar'; /* reuse bar colors */
+    var latestHtml='<div><div style="display:flex;align-items:baseline;gap:6px">'
+      +'<span style="font-size:1.4rem;font-weight:700;color:#dc2626">'+cnt+'</span>'
+      +'<span style="font-size:.7rem;color:var(--text-muted)">/day</span>'
+      +'<span style="font-size:.55rem;font-weight:700;background:rgba(220,38,38,.1);color:#dc2626;border:1px solid rgba(220,38,38,.2);border-radius:3px;padding:1px 4px;margin-left:auto">Blockade</span>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:6px;margin-top:4px">'
+      +'<div class="prediction-bar-track"><div class="prediction-bar-fill" style="width:'+pct+'%;background:#dc2626"></div></div>'
+      +'<span style="font-size:.6rem;color:var(--text-muted)">'+pct+'% vs baseline</span></div></div>';
+    var hist=daily.slice(1,6).map(function(e){
+      var d=new Date(e[0]+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+      return'<div class="data-row"><span class="month-label">'+d+'</span><span class="month-value" style="color:#dc2626">'+e[1]+'</span></div>';
+    }).join('');
+    return{latest:latestHtml,hist,hasHist:daily.length>1};
+  }
+
+  function renderByType(ind,type){
+    switch(type){
+      case'fomc':return renderFOMC(ind);
+      case'prediction':case'recession':return renderPrediction(ind);
+      case'party':return renderParty(ind);
+      case'venezuela':return renderVenezuela(ind);
+      case'sports':return renderSports(ind);
+      case'hormuz':return renderHormuz(ind);
+      default:return renderStandard(ind);
+    }
+  }
+
+  /* ==========================================
+     SPARKLINE (no deps)
+  ========================================== */
+  function drawSparkline(canvas,values){
+    if(!values||values.length<3)return;
+    var w=canvas.width=canvas.parentElement.offsetWidth||300;
+    var h=canvas.height=canvas.parentElement.offsetHeight||100;
+    var ctx=canvas.getContext('2d');
+    var min=Math.min.apply(null,values),max=Math.max.apply(null,values);
+    var range=max-min||1,pad=range*.1;
+    var pts=values.map(function(v,i){return{
+      x:(i/(values.length-1))*w,
+      y:h-((v-min+pad)/(range+pad*2))*h
+    };});
+    var grd=ctx.createLinearGradient(0,0,0,h);
+    grd.addColorStop(0,'rgba(44,95,90,.12)');grd.addColorStop(1,'rgba(44,95,90,0)');
+    function trace(){
+      ctx.moveTo(pts[0].x,pts[0].y);
+      for(var i=1;i<pts.length;i++){
+        var xc=(pts[i].x+pts[i-1].x)/2,yc=(pts[i].y+pts[i-1].y)/2;
+        ctx.quadraticCurveTo(pts[i-1].x,pts[i-1].y,xc,yc);
+      }
+      ctx.lineTo(pts[pts.length-1].x,pts[pts.length-1].y);
+    }
+    ctx.beginPath();trace();
+    ctx.lineTo(pts[pts.length-1].x,h);ctx.lineTo(pts[0].x,h);ctx.closePath();
+    ctx.fillStyle=grd;ctx.fill();
+    ctx.beginPath();trace();
+    ctx.strokeStyle='rgba(44,95,90,.18)';ctx.lineWidth=1.5;ctx.lineCap='round';ctx.stroke();
+  }
+
+  function renderSparklines(){
+    document.querySelectorAll('.sparkline-container canvas[data-spark]').forEach(function(c){
+      if(c._done)return;c._done=true;
+      try{drawSparkline(c,JSON.parse(c.dataset.spark));}catch(e){}
+    });
+  }
+
+  /* ==========================================
+     CARD BUILDER
+  ========================================== */
+  function buildCard(ind){
+    var type=detectType(ind);
+    var{latest,hist,hasHist}=renderByType(ind,type);
+    var mom=type==='standard'||type==='fomc'?calcMoM(ind):null;
+    var yoy=type==='standard'?calcYoY(ind):null;
+    var momInfo=fmtChange(mom),yoyInfo=fmtChange(yoy);
+    var changeHtml='';
+    if(mom!==null){
+      changeHtml+='<span class="change-metric-btn '+momInfo.cls+'" title="Month over Month">MoM '+momInfo.f+'</span>';
+    }
+    if(yoy!==null){
+      changeHtml+='<span class="change-metric-btn '+yoyInfo.cls+'" title="Year over Year">YoY '+yoyInfo.f+'</span>';
+    }
+    var url=ind.url||'#';
+    var dateStr=ind.lastUpdated?new Date(ind.lastUpdated).getMonth()+1+'/'+new Date(ind.lastUpdated).getDate():'';
+    var isNew=ind.lastUpdated&&(Date.now()-new Date(ind.lastUpdated).getTime())<(3*24*60*60*1000);
+    var expl=ind.explanation||(ind.explanation_text)||'';
+    /* collect sparkline values for standard type */
+    var sparkVals=[];
+    if(type==='standard'){
+      var pts=collectData(ind);
+      sparkVals=pts.map(p=>p.n).filter(v=>v!==null).reverse();
+    }
+    var infoBtn=expl?'<button class="info-btn" data-expl="'+escQ(expl)+'" aria-label="Show explanation" title="About this indicator"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></button>':'';
+    var chartBtn=(ind.category!=='Prediction Markets'&&type!=='hormuz')?'<button class="chart-btn" data-iname="'+escQ(ind.name)+'" aria-label="View chart" title="View chart"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></button>':'';
+    var expandBtn=hasHist?'<button class="expand-toggle" aria-label="Toggle history"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>':'';
+    var sparkHtml=sparkVals.length>3?'<div class="sparkline-container"><canvas data-spark="'+escQ(JSON.stringify(sparkVals))+'"></canvas></div>':'';
+    return '<div class="indicator" data-iname="'+escQ(ind.name)+'">'
+      +'<div class="indicator-header">'
+      +'<div class="indicator-name">'+ind.name+(isNew?'<span class="new-badge">New</span>':'')+'</div>'
+      +'<div class="indicator-actions">'+infoBtn+chartBtn+expandBtn+'</div>'
+      +'</div>'
+      +'<div class="indicator-agency">Source: <a href="'+url+'" target="_blank" rel="noopener">'+ind.agency+'</a>'
+      +(dateStr?' | <span class="indicator-date">'+dateStr+'</span>':'')
+      +'</div>'
+      +(changeHtml?'<div class="change-indicators">'+changeHtml+'</div>':'')
+      +'<div class="indicator-content">'
+      +latest
+      +(hasHist?'<div class="data-rows-container">'+hist+'</div>':'')
+      +'</div>'
+      +sparkHtml
+      +'</div>';
+  }
+
+  function escQ(s){return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+  /* ==========================================
+     CHART (lazy - loads Chart.js on demand)
+  ========================================== */
+  var chartJsLoaded=false,chartJsLoading=false,chartJsCallbacks=[];
+
+  function ensureChartJs(cb){
+    if(chartJsLoaded){cb();return;}
+    chartJsCallbacks.push(cb);
+    if(chartJsLoading)return;
+    chartJsLoading=true;
+    var s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+    s.crossOrigin='anonymous';
+    s.onload=function(){chartJsLoaded=true;chartJsLoading=false;chartJsCallbacks.forEach(f=>f());chartJsCallbacks=[];};
+    s.onerror=function(){chartJsLoading=false;};
+    document.head.appendChild(s);
+  }
+
+  function buildLineConfig(ind){
+    var pts=collectData(ind);
+    var vals=pts.map(p=>p.n).filter(v=>v!==null).reverse();
+    var labels=pts.map(p=>p.label).reverse().slice(pts.length-vals.length);
+    return{labels,datasets:[{label:ind.name,data:vals,borderColor:'#2C5F5A',backgroundColor:'rgba(44,95,90,.1)',tension:.4,fill:true,pointRadius:3,pointHoverRadius:5}]};
+  }
+
+  function buildBudgetConfig(ind){
+    var labels=[],receipts=[],outlays=[],deficit=[];
+    var yks=Object.keys(ind).filter(k=>/^\d{4}$/.test(k)).map(Number).sort((a,b)=>b-a);
+    yks.forEach(yr=>{
+      MONTHS.forEach((m,i)=>{
+        var rv=ind.receipts&&ind.receipts[yr]&&ind.receipts[yr][m];
+        var ov=ind.outlays&&ind.outlays[yr]&&ind.outlays[yr][m];
+        var dv=ind[yr]&&ind[yr][m];
+        if(isValid(rv)&&isValid(ov)&&isValid(dv)){
+          labels.push(MLABELS[i]+' '+yr);
+          receipts.push(toNum(rv));outlays.push(toNum(ov));deficit.push(toNum(dv));
+        }
+      });
+    });
+    return{labels,datasets:[
+      {label:'Receipts',data:receipts,type:'bar',backgroundColor:'rgba(81,207,102,.7)',borderColor:'#51CF66',borderWidth:1,yAxisID:'y'},
+      {label:'Outlays',data:outlays,type:'bar',backgroundColor:'rgba(255,107,107,.7)',borderColor:'#FF6B6B',borderWidth:1,yAxisID:'y'},
+      {label:'Deficit/Surplus',data:deficit,type:'line',borderColor:'#2C5F5A',backgroundColor:'rgba(44,95,90,.2)',borderWidth:2,tension:.4,fill:'origin',yAxisID:'y1',pointRadius:3}
+    ]};
+  }
+
+  function openChart(card,iname){
+    var existing=card.querySelector('.chart-overlay');
+    if(existing){
+      if(existing.classList.contains('show')){existing.classList.remove('show');}
+      else{existing.classList.add('show');}
+      return;
+    }
+    var overlay=document.createElement('div');
+    overlay.className='chart-overlay show';
+    overlay.innerHTML='<div class="chart-overlay-range-picker">'
+      +'<button class="range-btn" data-range="3">3M</button>'
+      +'<button class="range-btn" data-range="6">6M</button>'
+      +'<button class="range-btn active" data-range="12">1Y</button>'
+      +'<button class="chart-overlay-close" aria-label="Close chart">×</button>'
+      +'</div>'
+      +'<div class="chart-overlay-body"><div class="chart-loading">Loading chart…</div></div>';
+    card.appendChild(overlay);
+    overlay.querySelector('.chart-overlay-close').addEventListener('click',function(){overlay.classList.remove('show');});
+    overlay.querySelectorAll('.range-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        overlay.querySelectorAll('.range-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        if(overlay._chart){overlay._chart.destroy();overlay._chart=null;}
+        loadChartInOverlay(overlay,iname,parseInt(btn.dataset.range));
+      });
+    });
+    ensureChartJs(function(){loadChartInOverlay(overlay,iname,12);});
+  }
+
+  function loadChartInOverlay(overlay,iname,months){
+    if(!allData)return;
+    var ind=allData.indices.find(x=>x.name===iname);
+    if(!ind)return;
+    var body=overlay.querySelector('.chart-overlay-body');
+    body.innerHTML='';
+    var canvas=document.createElement('canvas');
+    canvas.className='chart-overlay-canvas';
+    body.appendChild(canvas);
+    var cfg=ind.receipts?buildBudgetConfig(ind):buildLineConfig(ind);
+    /* slice to last N months */
+    if(cfg.labels.length>months){cfg.labels=cfg.labels.slice(-months);cfg.datasets.forEach(d=>{d.data=d.data.slice(-months);});}
+    try{
+      var isMixed=cfg.datasets.some(d=>d.type==='bar');
+      overlay._chart=new Chart(canvas.getContext('2d'),{
+        type:isMixed?'bar':'line',
+        data:cfg,
+        options:{
+          responsive:true,maintainAspectRatio:false,
+          animation:{duration:400},
+          plugins:{legend:{display:isMixed,position:'bottom',labels:{font:{size:10},padding:8,boxWidth:10}},tooltip:{mode:'index',intersect:false}},
+          scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:8}},
+            y:{grid:{color:'rgba(0,0,0,.03)'},ticks:{display:false}},
+            ...(isMixed?{y1:{grid:{display:false},ticks:{display:false},position:'right'}}:{})}
+        }
+      });
+    }catch(e){body.innerHTML='<div class="chart-loading">Chart unavailable</div>';}
+  }
+
+  /* ==========================================
+     FILTER & RENDER
+  ========================================== */
+  /* Inline SVG icons for filter buttons - no CDN needed */
+  var FILTER_ICONS={
+    'latest':       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    'all':          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>',
+    'Employment Indicators': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    'Housing Market':        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    'Business Indicators':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+    'Consumer Indicators':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+    'Trade & Tariffs':       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>',
+    'Government':            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>',
+    'Prediction Markets':    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+    'Financial Markets':     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+    'Commodities':           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    '13F Holdings':          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="11" width="6" height="11" rx="1"/></svg>',
+    'World Cup':             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>'
+  };
+
+  function buildFilters(data){
+    var cats=[...new Set(data.indices.map(i=>i.category))];
+    function btn(filter,label,icon,active){
+      return '<button class="filter-btn'+(active?' active':'')+'" data-filter="'+escQ(filter)+'">'
+        +icon+label+'</button>';
+    }
+    var html=btn('latest','Latest',FILTER_ICONS['latest'],true)
+      +btn('all','All',FILTER_ICONS['all'],false);
+    cats.forEach(function(c){
+      html+=btn(c,c,FILTER_ICONS[c]||FILTER_ICONS['Financial Markets'],false);
+    });
+    html+=btn('13F Holdings','13F Holdings',FILTER_ICONS['13F Holdings'],false);
+    html+=btn('World Cup','World Cup',FILTER_ICONS['World Cup'],false);
+    filterButtonsEl.innerHTML=html;
+  }
+
+  function render(filter){
+    currentFilter=filter;
+    var data=allData;if(!data)return;
+    var indices=data.indices||[];
+
+    /* Show/hide special sections */
+    var el13f=document.getElementById('section-13f');
+    var elWc=document.getElementById('section-worldcup');
+    var show13f=filter==='13F Holdings'||filter==='all'||filter==='latest';
+    var showWc=filter==='World Cup'||filter==='all'||filter==='latest';
+    el13f.style.display=show13f?'':'none';
+    elWc.style.display=showWc?'':'none';
+
+    /* Lazy-load 13F on first show */
+    if(show13f&&!window._13fLoaded){window._13fLoaded=true;load13F();}
+    /* Lazy-load World Cup on first show */
+    if(showWc&&!window._wcLoaded){window._wcLoaded=true;loadWorldCup();}
+
+    /* When filtered to a special section only, hide indicator categories */
+    if(filter==='13F Holdings'||filter==='World Cup'){
+      categoriesEl.style.display='none';
+      return;
+    }
+    categoriesEl.style.display='';
+
+    var html='';
+    if(filter==='latest'){
+      var sorted=[...indices].sort(function(a,b){
+        var da=a.lastUpdated?new Date(a.lastUpdated).getTime():0;
+        var db=b.lastUpdated?new Date(b.lastUpdated).getTime():0;
+        return db-da;
+      });
+      html='<div class="category" data-category="latest">'
+        +'<h2 class="category-title">Latest Updates</h2>'
+        +'<div class="indicators-grid">'+sorted.map(buildCard).join('')+'</div>'
+        +'</div>';
+    }else if(filter==='all'){
+      var cats=[...new Set(indices.map(i=>i.category))];
+      cats.forEach(function(cat){
+        var items=indices.filter(i=>i.category===cat);
+        html+='<div class="category" data-category="'+escQ(cat)+'">'
+          +'<h2 class="category-title">'+cat+'</h2>'
+          +'<div class="indicators-grid">'+items.map(buildCard).join('')+'</div>'
+          +'</div>';
+      });
+    }else{
+      var items=indices.filter(i=>i.category===filter);
+      if(items.length){
+        html='<div class="category" data-category="'+escQ(filter)+'">'
+          +'<h2 class="category-title">'+filter+'</h2>'
+          +'<div class="indicators-grid">'+items.map(buildCard).join('')+'</div>'
+          +'</div>';
+      }else{
+        html='<div style="text-align:center;padding:2rem;color:var(--text-muted);font-family:var(--font-mono)">No indicators in this category.</div>';
+      }
+    }
+    categoriesEl.innerHTML=html;
+    /* defer sparklines to avoid blocking paint */
+    requestAnimationFrame(function(){requestAnimationFrame(renderSparklines);});
+    /* lazy reveal for off-screen categories */
+    setupLazyReveal();
+  }
+
+  function setupLazyReveal(){
+    var cats=document.querySelectorAll('.category');
+    if(cats.length<=2)return;
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.indicator[style*="display:none"]').forEach(function(c){c.style.display='';});
+          obs.unobserve(e.target);
+        }
+      });
+    },{rootMargin:'200px',threshold:.01});
+    cats.forEach(function(cat,i){
+      if(i>1){
+        cat.querySelectorAll('.indicator').forEach(function(c){c.style.display='none';});
+        obs.observe(cat);
+      }
+    });
+  }
+
+  /* ==========================================
+     EVENT DELEGATION
+  ========================================== */
+  /* Filter click */
+  filterButtonsEl.addEventListener('click',function(e){
+    var btn=e.target.closest('.filter-btn');
+    if(!btn)return;
+    filterButtonsEl.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.filter);
+  });
+
+  /* Expand/collapse, info, chart */
+  categoriesEl.addEventListener('click',function(e){
+    /* expand toggle */
+    var exp=e.target.closest('.expand-toggle');
+    if(exp){
+      var card=exp.closest('.indicator');
+      card.classList.toggle('expanded');
+      return;
+    }
+    /* info btn */
+    var info=e.target.closest('.info-btn');
+    if(info){
+      var expl=info.dataset.expl;
+      if(!expl)return;
+      if(tooltipOwner===info&&tooltip.classList.contains('open')){hideTooltip();return;}
+      showTooltip(info,expl);
+      return;
+    }
+    /* chart btn */
+    var chart=e.target.closest('.chart-btn');
+    if(chart){
+      var card=chart.closest('.indicator');
+      var iname=chart.dataset.iname||card.dataset.iname;
+      if(iname)openChart(card,iname);
+      return;
+    }
+  });
+
+  /* Tooltip helpers */
+  tooltipClose.addEventListener('click',hideTooltip);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')hideTooltip();});
+  document.addEventListener('click',function(e){
+    if(!tooltip.classList.contains('open'))return;
+    if(!tooltip.contains(e.target)&&!e.target.closest('.info-btn'))hideTooltip();
+  });
+  window.addEventListener('scroll',hideTooltip,{passive:true});
+
+  function showTooltip(btn,text){
+    tooltipBody.textContent=text;
+    tooltip.style.visibility='hidden';
+    tooltip.classList.add('open');
+    tooltipOwner=btn;
+    var r=btn.getBoundingClientRect(),tr=tooltip.getBoundingClientRect();
+    var m=8,vw=window.innerWidth,vh=window.innerHeight;
+    var top=r.bottom+m;
+    if(top+tr.height>vh-m&&r.top-m-tr.height>m)top=r.top-m-tr.height;
+    var left=Math.max(m,Math.min(r.left+r.width/2-tr.width/2,vw-tr.width-m));
+    tooltip.style.top=top+'px';tooltip.style.left=left+'px';
+    tooltip.style.visibility='visible';
+  }
+
+  function hideTooltip(){
+    tooltip.classList.remove('open');
+    tooltipOwner=null;
+  }
+
+  /* ==========================================
+     DATA LOADING
+     1. Fetch full JSON immediately (no inline bloat)
+     2. Show skeleton while loading
+  ========================================== */
+  function showSkeleton(){
+    categoriesEl.innerHTML='<div class="category skeleton-card">'
+      +'<div class="skeleton-line long" style="height:20px;margin-bottom:12px"></div>'
+      +'<div class="indicators-grid">'
+      +'<div class="skeleton-card" style="padding:.75rem">'
+      +'<div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div>'
+      +'</div>'
+      +'<div class="skeleton-card" style="padding:.75rem">'
+      +'<div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div>'
+      +'</div></div></div>';
+  }
+
+  function initWithData(data){
+    allData=data;
+    window.financialData=data;
+    lastUpdatedEl.textContent='Last Updated: '+new Date(data.lastUpdated).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    buildFilters(data);
+    /* Read URL filter param */
+    var params=new URLSearchParams(window.location.search);
+    var urlFilter=params.get('filter')||'latest';
+    var activeBtn=filterButtonsEl.querySelector('[data-filter="'+escQ(urlFilter)+'"]');
+    if(activeBtn){
+      filterButtonsEl.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      activeBtn.classList.add('active');
+    }
+    render(urlFilter);
+    /* Preload 13F+WC on idle for latest/all views */
+    if(urlFilter==='latest'||urlFilter==='all'){
+      var idle='requestIdleCallback'in window?requestIdleCallback:function(f){setTimeout(f,1500);};
+      idle(function(){if(!window._13fLoaded){window._13fLoaded=true;load13F();}});
+      idle(function(){if(!window._wcLoaded){window._wcLoaded=true;loadWorldCup();}});
+    }
+  }
+
+  async function loadData(){
+    showSkeleton();
+    try{
+      var res=await fetch('json/financials-data.json?_='+Date.now(),{headers:{'Accept':'application/json'}});
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      var data=await res.json();
+      initWithData(data);
+    }catch(err){
+      categoriesEl.innerHTML='<div class="error">Failed to load data. Please try again.</div>';
+    }
+  }
+
+  /* ==========================================
+     WORLD CUP
+  ========================================== */
+  async function loadWorldCup(){
+    try{
+      var res=await fetch('json/world-cup.json');
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      var data=await res.json();
+      renderWorldCup(data.matches||[]);
+    }catch(e){
+      var g=document.getElementById('worldCupGrid');
+      if(g)g.innerHTML='<div style="color:var(--text-muted);font-size:.85rem;padding:.5rem">Could not load World Cup data.</div>';
+    }
+  }
+
+  function renderWorldCup(matches){
+    var grid=document.getElementById('worldCupGrid');
+    if(!grid)return;
+    matches=matches.slice().sort(function(a,b){return new Date(b.utcDate||b.date)-new Date(a.utcDate||a.date);});
+    grid.innerHTML=matches.map(function(m){
+      var grp=m.group?m.group.replace('GROUP_','Group '):'';
+      var score=(m.teamA.score??'')+(m.teamA.score!=null?' - ':' v ')+(m.teamB.score??'');
+      var details=[];
+      if(m.date)details.push('Date: '+m.date);
+      if(m.venue)details.push('Venue: '+m.venue);
+      if(m.winner){var wn=m.winner==='HOME_TEAM'?m.teamA.name:m.winner==='AWAY_TEAM'?m.teamB.name:'Draw';details.push('Winner: '+wn);}
+      if(m.teamA.halfTimeScore!=null)details.push('HT: '+m.teamA.halfTimeScore+' - '+m.teamB.halfTimeScore);
+      var detailHtml=details.length?'<div class="match-detail" id="md-'+m.id+'">'+details.map(d=>'<div>'+d+'</div>').join('')+'</div>':'';
+      var crestA=m.teamA.crest?'<img src="'+m.teamA.crest+'" alt="'+escQ(m.teamA.name)+'" class="team-crest" onerror="this.style.display=\'none\'">':'';
+      var crestB=m.teamB.crest?'<img src="'+m.teamB.crest+'" alt="'+escQ(m.teamB.name)+'" class="team-crest" onerror="this.style.display=\'none\'">':'';
+      return '<div class="indicator">'
+        +'<div class="indicator-header">'
+        +'<div class="indicator-name">'+grp+'</div>'
+        +(details.length?'<button class="info-btn" onclick="var d=document.getElementById(\'md-'+m.id+'\');d.classList.toggle(\'open\')" aria-label="Match details"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></button>':'')
+        +'</div>'
+        +'<div class="match-score-display">'
+        +'<div class="match-team">'+crestA+'<span class="team-flag" style="'+(m.teamA.crest?'display:none':'')+'">'+( m.teamA.flag||'🏳️')+'</span><span class="team-name">'+m.teamA.name+'</span></div>'
+        +'<div class="match-score">'+score+'</div>'
+        +'<div class="match-team">'+crestB+'<span class="team-flag" style="'+(m.teamB.crest?'display:none':'')+'">'+( m.teamB.flag||'🏳️')+'</span><span class="team-name">'+m.teamB.name+'</span></div>'
+        +'</div>'
+        +detailHtml
+        +'</div>';
+    }).join('');
+  }
+
+  /* ==========================================
+     13F HOLDINGS
+  ========================================== */
+  async function load13F(){
+    try{
+      var res=await fetch('json/13f-holdings.json');
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      var data=await res.json();
+      render13F(data.firms||[],data.holdings||[]);
+    }catch(e){
+      var c=document.getElementById('firmCardsContainer');
+      if(c)c.innerHTML='<div style="color:var(--text-muted);font-size:.85rem;padding:.5rem">Could not load 13F data.</div>';
+    }
+  }
+
+  function isETF(name){
+    var n=name.toUpperCase();
+    if(['INC','CORP','CLASS A','CLASS B','A S F'].some(s=>n.includes(s)))return false;
+    return['ETF','TRUST','FUND','INDEX','SPDR','ISHARES','VANGUARD','INVESCO','DIMENSIONAL'].some(s=>n.includes(s));
+  }
+
+  function holdingColor(pct){
+    pct=parseFloat(pct)||0;
+    if(pct>=8)return'#E63946';if(pct>=5)return'#FF8C42';
+    if(pct>=3)return'#FACC15';if(pct>=1.5)return'#33AA66';
+    return'#3399CC';
+  }
+
+  function render13F(firms,holdings){
+    var container=document.getElementById('firmCardsContainer');
+    if(!container)return;
+    container.innerHTML='';
+
+    /* sort firms: newest filing first */
+    var sorted=firms.map(function(f,i){return i;}).sort(function(a,b){
+      var da=firms[a].filingDate?new Date(firms[a].filingDate):new Date('2025-11-26');
+      var db=firms[b].filingDate?new Date(firms[b].filingDate):new Date('2025-11-26');
+      return db-da;
+    });
+
+    sorted.forEach(function(firmIdx){
+      var firm=firms[firmIdx];
+      var fh=holdings.filter(h=>h.firmIndex===firmIdx).sort((a,b)=>b.value-a.value);
+      if(!fh.length)return;
+      var totalV=fh.reduce(function(s,h){return s+h.value;},0);
+      var filedStr=firm.filingDate?((new Date(firm.filingDate).getMonth()+1)+'/'+ new Date(firm.filingDate).getDate()):'';
+      var cardId='firm-'+firmIdx;
+      var card=document.createElement('div');
+      card.className='indicator';
+      card.id=cardId;
+
+      var listHtml=fh.slice(0,10).map(function(h,i){
+        return'<div class="holding-item" data-idx="'+i+'" data-pct="'+h.pct+'">'
+          +'<div><div class="holding-ticker">'+h.ticker+'</div>'
+          +'<div class="holding-name">'+h.name+'</div>'
+          +'<div class="holding-pct">'+h.pct+'% of portfolio</div></div></div>';
+      }).join('');
+
+      card.innerHTML='<div class="indicator-header">'
+        +'<div class="indicator-name">'+firm.shortName+'</div>'
+        +'<button class="expand-toggle" aria-label="Toggle details"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>'
+        +'</div>'
+        +'<div class="indicator-agency">AUM: <span style="color:var(--text-primary);font-weight:600;">$'+(totalV/1000000).toFixed(1)+'M</span>'
+        +' | Filed: <span class="indicator-date">'+filedStr+'</span></div>'
+        +'<div class="data-rows-container">'
+        +'<div class="firm-filter-buttons">'
+        +'<button class="firm-filter-btn active" data-f="all">All</button>'
+        +'<button class="firm-filter-btn" data-f="etf">ETF</button>'
+        +'<button class="firm-filter-btn" data-f="stock">Stock</button>'
+        +'</div>'
+        +'<div class="firm-holdings-list" id="hl-'+firmIdx+'">'+listHtml+'</div>'
+        +'<div class="firm-chart-wrapper"><canvas id="fc-'+firmIdx+'"></canvas></div>'
+        +(firm.description?'<div class="firm-description">'+firm.description+'</div>':'')
+        +'</div>';
+
+      container.appendChild(card);
+
+      /* filter state */
+      var filterState={f:'all'};
+
+      function refreshList(){
+        var show=filterState.f==='etf'?fh.filter(h=>isETF(h.name)):filterState.f==='stock'?fh.filter(h=>!isETF(h.name)):fh;
+        show=show.slice().sort((a,b)=>b.value-a.value);
+        var hl=document.getElementById('hl-'+firmIdx);
+        if(hl)hl.innerHTML=show.slice(0,10).map(function(h,i){
+          return'<div class="holding-item" data-idx="'+i+'" data-pct="'+h.pct+'">'
+            +'<div><div class="holding-ticker">'+h.ticker+'</div>'
+            +'<div class="holding-name">'+h.name+'</div>'
+            +'<div class="holding-pct">'+h.pct+'% of portfolio</div></div></div>';
+        }).join('');
+        /* update chart if loaded */
+        var ci=window['fc'+firmIdx+'Chart'];
+        if(ci){ci.data.labels=show.slice(0,10).map(h=>h.ticker);ci.data.datasets[0].data=show.slice(0,10).map(h=>h.value/1000000);ci.data.datasets[0].backgroundColor=show.slice(0,10).map(h=>holdingColor(h.pct));ci.update();}
+        /* update filter btns */
+        card.querySelectorAll('.firm-filter-btn').forEach(function(b){b.classList.toggle('active',b.dataset.f===filterState.f);});
+      }
+
+      card.querySelectorAll('.firm-filter-btn').forEach(function(b){
+        b.addEventListener('click',function(){filterState.f=b.dataset.f;refreshList();});
+      });
+
+      /* Collapsed by default - chart draws on first expand */
+      card.querySelector('.expand-toggle').addEventListener('click',function(){
+        var wasExpanded=card.classList.contains('expanded');
+        card.classList.toggle('expanded');
+        /* Draw chart on first open */
+        if(!wasExpanded&&!window['fc'+firmIdx+'Chart']){
+          ensureChartJs(function(){drawFirmChart(firmIdx,fh,filterState);});
+        }
+      });
+
+      /* chart draws on first expand via expand-toggle handler above */
+    });
+  }
+
+  function drawFirmChart(firmIdx,fh,filterState){
+    var ctx=document.getElementById('fc-'+firmIdx);
+    if(!ctx||window['fc'+firmIdx+'Chart'])return;
+    var show=filterState.f==='etf'?fh.filter(h=>isETF(h.name)):filterState.f==='stock'?fh.filter(h=>!isETF(h.name)):fh;
+    show=show.slice(0,10);
+    window['fc'+firmIdx+'Chart']=new Chart(ctx.getContext('2d'),{
+      type:'doughnut',
+      data:{labels:show.map(h=>h.ticker),datasets:[{data:show.map(h=>h.value/1000000),backgroundColor:show.map(h=>holdingColor(h.pct)),borderWidth:1}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return'$'+c.parsed.toFixed(1)+'M';}}}}}
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',loadData);
+  }else{
+    loadData();
+  }
+
+  })(); /* end IIFE */
+  </script>
 </body>
 </html>

@@ -144,6 +144,14 @@ function setupIconHandlers(selector, handler) {
 let explanationTooltip = null;
 let explanationTooltipOwner = null;
 
+// Prefer native CSS Anchor Positioning when the browser supports it
+// (Chrome/Edge 125+). Falls back to JS positioning elsewhere (Firefox/Safari).
+const SUPPORTS_CSS_ANCHOR =
+    typeof CSS !== 'undefined' &&
+    CSS.supports('anchor-name: --a') &&
+    CSS.supports('position-area: block-end');
+const INFO_ANCHOR_NAME = '--hs-info-anchor';
+
 function getExplanationTooltip() {
     if (explanationTooltip) return explanationTooltip;
     const tip = document.createElement('div');
@@ -162,36 +170,41 @@ function getExplanationTooltip() {
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') hideExplanationTooltip();
     });
-    window.addEventListener('scroll', hideExplanationTooltip, true);
-    window.addEventListener('resize', hideExplanationTooltip);
+    // Only needed for the JS fallback path; native CSS anchoring tracks the
+    // button automatically without scroll/resize listeners.
+    if (!SUPPORTS_CSS_ANCHOR) {
+        window.addEventListener('scroll', repositionExplanationTooltip, true);
+        window.addEventListener('resize', repositionExplanationTooltip);
+    }
     explanationTooltip = tip;
     return tip;
 }
 
-function hideExplanationTooltip() {
-    if (!explanationTooltip) return;
-    explanationTooltip.classList.remove('open');
-    explanationTooltip.style.visibility = 'hidden';
-    if (explanationTooltipOwner) {
-        explanationTooltipOwner.classList.remove('active');
-        explanationTooltipOwner = null;
-    }
+let repositionScheduled = false;
+function repositionExplanationTooltip() {
+    if (!explanationTooltip || !explanationTooltip.classList.contains('open') || !explanationTooltipOwner) return;
+    if (repositionScheduled) return;
+    repositionScheduled = true;
+    requestAnimationFrame(function () {
+        repositionScheduled = false;
+        if (!explanationTooltipOwner || !explanationTooltip.classList.contains('open')) return;
+        positionExplanationTooltip(explanationTooltipOwner);
+    });
 }
 
-function showExplanationTooltip(btn, explanation) {
-    const tip = getExplanationTooltip();
-    tip.querySelector('.tooltip-body').textContent = explanation;
-
-    if (explanationTooltipOwner && explanationTooltipOwner !== btn) {
-        explanationTooltipOwner.classList.remove('active');
-    }
-    explanationTooltipOwner = btn;
-    btn.classList.add('active');
-
-    tip.classList.add('open');
-    tip.style.visibility = 'hidden';
+function positionExplanationTooltip(btn) {
+    const tip = explanationTooltip;
+    if (!tip) return;
 
     const rect = btn.getBoundingClientRect();
+
+    // If the anchoring button has scrolled out of view, keep the tooltip hidden
+    // but leave it open so it reappears once the button is visible again.
+    if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        tip.style.visibility = 'hidden';
+        return;
+    }
+
     const tipRect = tip.getBoundingClientRect();
     const margin = 8;
     const vw = window.innerWidth;
@@ -215,6 +228,53 @@ function showExplanationTooltip(btn, explanation) {
     tip.classList.toggle('arrow-bottom', !arrowAtTop);
 
     tip.style.visibility = 'visible';
+}
+
+function hideExplanationTooltip() {
+    if (!explanationTooltip) return;
+    explanationTooltip.classList.remove('open');
+    explanationTooltip.style.visibility = 'hidden';
+    if (explanationTooltipOwner) {
+        explanationTooltipOwner.classList.remove('active');
+        if (SUPPORTS_CSS_ANCHOR) explanationTooltipOwner.style.anchorName = '';
+        explanationTooltipOwner = null;
+    }
+}
+
+function showExplanationTooltip(btn, explanation) {
+    const tip = getExplanationTooltip();
+    tip.querySelector('.tooltip-body').textContent = explanation;
+
+    if (explanationTooltipOwner && explanationTooltipOwner !== btn) {
+        explanationTooltipOwner.classList.remove('active');
+        if (SUPPORTS_CSS_ANCHOR) explanationTooltipOwner.style.anchorName = '';
+    }
+    explanationTooltipOwner = btn;
+    btn.classList.add('active');
+
+    tip.classList.add('open');
+
+    if (SUPPORTS_CSS_ANCHOR) {
+        // Native anchoring: tie the shared tooltip to this button. The browser
+        // keeps it positioned (incl. flipping) via CSS; no JS math required.
+        btn.style.anchorName = INFO_ANCHOR_NAME;
+        tip.classList.add('css-anchored');
+        tip.style.top = '';
+        tip.style.left = '';
+        tip.style.visibility = 'visible';
+
+        // One-time check to point the arrow at the correct side after any flip.
+        requestAnimationFrame(function () {
+            if (explanationTooltipOwner !== btn) return;
+            const bRect = btn.getBoundingClientRect();
+            const tRect = tip.getBoundingClientRect();
+            tip.classList.toggle('arrow-bottom', tRect.top < bRect.top);
+        });
+        return;
+    }
+
+    tip.style.visibility = 'hidden';
+    positionExplanationTooltip(btn);
 }
 
 function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {

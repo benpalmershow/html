@@ -653,6 +653,29 @@
 
 .explanation-tooltip .tooltip-body { margin: 0; }
 
+/* Native CSS Anchor Positioning (Chrome/Edge 125+).
+   The tooltip stays glued to its info button on scroll/resize with no JS. */
+@supports (anchor-name: --a) and (position-area: block-end) {
+  .explanation-tooltip.css-anchored {
+    position: fixed;
+    position-anchor: --hs-info-anchor;
+    position-area: block-end center;
+    margin: 8px 0;
+    /* position-area sizes the containing block to the anchor width, so size to
+       content (clamped) instead of stretching to the tiny info button. */
+    width: max-content;
+    max-width: min(360px, calc(100vw - 16px));
+    justify-self: center;
+    /* Flip above / to the side if there isn't room. */
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  }
+
+  /* Arrow tracks the button's horizontal center regardless of any edge shift. */
+  .explanation-tooltip.css-anchored::before {
+    left: anchor(--hs-info-anchor center);
+  }
+}
+
 @keyframes tooltipIn {
   from { opacity: 0; transform: scale(0.96) translateY(4px); }
   to { opacity: 1; transform: scale(1) translateY(0); }

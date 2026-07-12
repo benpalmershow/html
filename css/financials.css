@@ -676,6 +676,23 @@
   }
 }
 
+/* Mobile tooltip overrides (Safari/iOS-safe).
+   Keeps the tooltip fully on-screen and avoids anchor-positioning edge cases
+   by enforcing centered horizontal placement and a viewport-aware max width. */
+@media (max-width: 480px) {
+  .explanation-tooltip {
+    max-width: min(360px, calc(100vw - 24px)) !important;
+    width: max-content !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .explanation-tooltip::before {
+    left: 50% !important;
+    margin-left: -4px !important;
+  }
+}
+
 @keyframes tooltipIn {
   from { opacity: 0; transform: scale(0.96) translateY(4px); }
   to { opacity: 1; transform: scale(1) translateY(0); }

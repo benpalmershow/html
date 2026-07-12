@@ -4064,9 +4064,9 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": 0,
-        "halfTimeScore": null,
-        "extraTimeScore": null,
+        "score": 3,
+        "halfTimeScore": 1,
+        "extraTimeScore": 2,
         "penaltyScore": null
       },
       "teamB": {
@@ -4074,14 +4074,14 @@
         "name": "Switzerland",
         "flag": "🇨🇭",
         "crest": "https://crests.football-data.org/788.svg",
-        "score": 0,
-        "halfTimeScore": null,
-        "extraTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
+        "extraTimeScore": 0,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "IN_PLAY",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-12",
       "utcDate": "2026-07-12T01:00:00Z",
@@ -4089,7 +4089,7 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "João Pinheiro"
       ],
@@ -4255,5 +4255,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-12T01:15:52.046925Z"
+  "lastUpdated": "2026-07-12T04:40:29.252189Z"
 }

@@ -677,19 +677,16 @@
 }
 
 /* Mobile tooltip overrides (Safari/iOS-safe).
-   Keeps the tooltip fully on-screen and avoids anchor-positioning edge cases
-   by enforcing centered horizontal placement and a viewport-aware max width. */
+   Constrains width to viewport so centering/positioning math stays on-screen. */
 @media (max-width: 480px) {
   .explanation-tooltip {
-    max-width: min(360px, calc(100vw - 24px)) !important;
-    width: max-content !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    max-width: min(360px, calc(100vw - 32px)) !important;
+    box-sizing: border-box;
   }
 
   .explanation-tooltip::before {
-    left: 50% !important;
-    margin-left: -4px !important;
+    left: var(--arrow-left, 50%);
+    margin-left: -4px;
   }
 }
 

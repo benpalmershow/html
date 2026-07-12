@@ -43,16 +43,6 @@ loadComponent(null, 'components/scripts-unified.html', function (html) {
   });
 });
 
-// Load fonts component
-loadComponent(null, 'components/fonts.html', function (html) {
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = html;
-  const linkElements = tempDiv.querySelectorAll('link');
-  linkElements.forEach(element => {
-    document.head.appendChild(element.cloneNode(true));
-  });
-});
-
 // Load analytics component with script execution
 loadComponent(null, 'components/analytics.html', function (html) {
   const tempDiv = document.createElement('div');

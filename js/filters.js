@@ -144,14 +144,6 @@ function setupIconHandlers(selector, handler) {
 let explanationTooltip = null;
 let explanationTooltipOwner = null;
 
-// Whether the browser supports native CSS Anchor Positioning (Chrome/Edge 125+).
-// Kept only to decide whether to clear any leftover anchor-name on the button;
-// placement itself is always computed in JS for consistent cross-screen behavior.
-const SUPPORTS_CSS_ANCHOR =
-    typeof CSS !== 'undefined' &&
-    CSS.supports('anchor-name: --a') &&
-    CSS.supports('position-area: block-end');
-
 function getExplanationTooltip() {
     if (explanationTooltip) return explanationTooltip;
     const tip = document.createElement('div');
@@ -159,7 +151,6 @@ function getExplanationTooltip() {
     tip.setAttribute('role', 'dialog');
     tip.setAttribute('aria-live', 'polite');
     tip.innerHTML = '<button class="tooltip-close" aria-label="Close explanation">&times;</button><div class="tooltip-body"></div>';
-    document.body.appendChild(tip);
 
     tip.querySelector('.tooltip-close').addEventListener('click', hideExplanationTooltip);
     document.addEventListener('click', function (e) {
@@ -170,71 +161,46 @@ function getExplanationTooltip() {
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') hideExplanationTooltip();
     });
-    // JS positioning is now the only path, so always keep the tooltip glued to
-    // its button on scroll/resize across all browsers.
-    window.addEventListener('scroll', repositionExplanationTooltip, true);
-    window.addEventListener('resize', repositionExplanationTooltip);
+    window.addEventListener('resize', function () {
+        if (explanationTooltip && explanationTooltip.classList.contains('open') && explanationTooltipOwner) {
+            const indicator = explanationTooltipOwner.closest('.indicator');
+            if (indicator) positionExplanationTooltip(explanationTooltipOwner, explanationTooltip, indicator);
+        }
+    });
     explanationTooltip = tip;
     return tip;
 }
 
-let repositionScheduled = false;
-function repositionExplanationTooltip() {
-    if (!explanationTooltip || !explanationTooltip.classList.contains('open') || !explanationTooltipOwner) return;
-    if (repositionScheduled) return;
-    repositionScheduled = true;
-    requestAnimationFrame(function () {
-        repositionScheduled = false;
-        if (!explanationTooltipOwner || !explanationTooltip.classList.contains('open')) return;
-        positionExplanationTooltip(explanationTooltipOwner);
-    });
-}
+function positionExplanationTooltip(btn, tip, indicator) {
+    const btnRect = btn.getBoundingClientRect();
+    const indRect = indicator.getBoundingClientRect();
 
-function positionExplanationTooltip(btn) {
-    const tip = explanationTooltip;
-    if (!tip) return;
+    const btnTopInInd = btnRect.top - indRect.top;
+    const btnLeftInInd = btnRect.left - indRect.left;
 
-    const rect = btn.getBoundingClientRect();
-
-    // If the anchoring button has scrolled out of view, keep the tooltip hidden
-    // but leave it open so it reappears once the button is visible again.
-    if (rect.bottom < 0 || rect.top > window.innerHeight) {
-        tip.style.visibility = 'hidden';
-        return;
-    }
-
-    // Use offsetWidth/offsetHeight (not getBoundingClientRect) so the tooltip's
-    // true layout size is measured. getBoundingClientRect reflects the in-flight
-    // tooltipIn scale animation, which would report a smaller size and let the
-    // viewport clamp under-compute on shorter screens.
     const tipW = tip.offsetWidth;
     const tipH = tip.offsetHeight;
     const margin = 8;
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+    const indW = indicator.offsetWidth;
+    const indH = indicator.offsetHeight;
 
-    let top = rect.bottom + margin;
+    let top = btnTopInInd + btnRect.height + margin;
     let arrowAtTop = true;
-    if (top + tipH > vh - margin && rect.top - margin - tipH > margin) {
-        top = rect.top - margin - tipH;
+    if (top + tipH > indH - margin && btnTopInInd - margin - tipH > margin) {
+        top = btnTopInInd - margin - tipH;
         arrowAtTop = false;
     }
-    // Hard-clamp vertically into the viewport. This handles explanations taller
-    // than the available space on either side of the button (e.g. short mobile
-    // viewports) so the tooltip never overflows the bottom of the screen.
-    top = Math.max(margin, Math.min(top, vh - tipH - margin));
+    top = Math.max(margin, Math.min(top, indH - tipH - margin));
 
-    let left = rect.left + rect.width / 2 - tipW / 2;
-    left = Math.max(margin, Math.min(left, vw - tipW - margin));
+    let left = btnLeftInInd + btnRect.width / 2 - tipW / 2;
+    left = Math.max(margin, Math.min(left, indW - tipW - margin));
 
     tip.style.top = top + 'px';
     tip.style.left = left + 'px';
 
-    const arrowX = rect.left + rect.width / 2 - left;
+    const arrowX = btnLeftInInd + btnRect.width / 2 - left;
     tip.style.setProperty('--arrow-left', arrowX + 'px');
     tip.classList.toggle('arrow-bottom', !arrowAtTop);
-
-    tip.style.visibility = 'visible';
 }
 
 function hideExplanationTooltip() {
@@ -243,7 +209,6 @@ function hideExplanationTooltip() {
     explanationTooltip.style.visibility = 'hidden';
     if (explanationTooltipOwner) {
         explanationTooltipOwner.classList.remove('active');
-        if (SUPPORTS_CSS_ANCHOR) explanationTooltipOwner.style.anchorName = '';
         explanationTooltipOwner = null;
     }
 }
@@ -254,21 +219,26 @@ function showExplanationTooltip(btn, explanation) {
 
     if (explanationTooltipOwner && explanationTooltipOwner !== btn) {
         explanationTooltipOwner.classList.remove('active');
-        if (SUPPORTS_CSS_ANCHOR) explanationTooltipOwner.style.anchorName = '';
     }
     explanationTooltipOwner = btn;
     btn.classList.add('active');
 
-    tip.classList.add('open');
+    const indicator = btn.closest('.indicator');
+    if (!indicator) return;
 
-    // Single positioning path: always compute placement in JS so the tooltip is
-    // clamped into the viewport on every screen size and browser (the native
-    // CSS-anchor fallback could overflow when the explanation is taller than the
-    // available space on either side of the button).
-    if (SUPPORTS_CSS_ANCHOR) btn.style.anchorName = '';
-    tip.classList.remove('css-anchored');
+    if (tip.parentNode !== indicator) {
+        indicator.appendChild(tip);
+    }
+
+    tip.classList.add('open');
     tip.style.visibility = 'hidden';
-    positionExplanationTooltip(btn);
+    tip.style.position = 'absolute';
+
+    requestAnimationFrame(() => {
+        if (!explanationTooltipOwner || explanationTooltipOwner !== btn) return;
+        positionExplanationTooltip(btn, tip, indicator);
+        tip.style.visibility = 'visible';
+    });
 }
 
 function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {

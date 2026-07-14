@@ -40,7 +40,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    overflow: hidden;
+    overflow: visible;
     animation: cardIn 0.35s ease-out both;
     contain: layout style;
 }
@@ -610,9 +610,9 @@
 
 /* Floating info tooltip */
 .explanation-tooltip {
-  position: fixed;
+  position: absolute;
   z-index: 200;
-  max-width: min(360px, calc(100vw - 16px));
+  max-width: min(360px, calc(100% - 16px));
   padding: 1rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -623,7 +623,7 @@
   line-height: 1.5;
   pointer-events: auto;
   display: none;
-  max-height: calc(100vh - 32px);
+  max-height: min(280px, 80%);
   overflow-y: auto;
   overflow-wrap: anywhere;
   animation: tooltipIn 0.2s ease-out;
@@ -656,12 +656,10 @@
 
 .explanation-tooltip .tooltip-body { margin: 0; }
 
-/* Mobile tooltip overrides (Safari/iOS-safe).
-   Placement is handled uniformly by JS (see positionExplanationTooltip in
-   js/filters.js), so we only need a viewport-aware max width here. */
+/* Mobile tooltip overrides */
 @media (max-width: 480px) {
   .explanation-tooltip {
-    max-width: calc(100vw - 24px);
+    max-width: calc(100% - 12px);
   }
 }
 

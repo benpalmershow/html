@@ -64,6 +64,7 @@ function scrollToIndicatorByName(indicatorName) {
 }
 
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
+    if (typeof hideExplanationTooltip === 'function') hideExplanationTooltip();
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
     let categories = [...new Set(financialData.indices.map(item => item.category))];

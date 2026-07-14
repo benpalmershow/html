@@ -245,7 +245,12 @@ const IndicatorRenderers = (function () {
                 entries.forEach(([name, prob]) => {
                     const probValue = parseFloat(prob);
                     const barClass = name === 'Democratic Party' ? 'dem-bar' : name === 'Republican Party' ? 'gop-bar' : 'yes-bar';
-                    html += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: ${fontSize}; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.2;">${prob}</div></div></div>`;
+                    const valueColor = barClass === 'dem-bar' ? '#3498db' : barClass === 'gop-bar' ? '#e74c3c' : barClass === 'yes-bar' ? '#22c55e' : '#ef4444';
+                    if (probValue >= 15) {
+                        html += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: ${fontSize}; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.2;">${prob}</div></div></div>`;
+                    } else {
+                        html += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: ${labelWidth}; font-size: ${fontSize};">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%;"></div></div><span class="prediction-bar-value" style="color: ${valueColor};">${prob}</span></div>`;
+                    }
                 });
                 html += `</div>`;
                 const dateWrapper = showLabel ? `<div class="prediction-date-label">${dateLabel}</div>` : '';
@@ -259,7 +264,12 @@ const IndicatorRenderers = (function () {
             entries.forEach(([name, prob]) => {
                 const probValue = parseFloat(prob);
                 const barClass = name === 'Democratic Party' ? 'dem-bar' : name === 'Republican Party' ? 'gop-bar' : 'yes-bar';
-                latestDataHtml += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: 90px;">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.2;">${prob}</div></div></div>`;
+                const valueColor = barClass === 'dem-bar' ? '#3498db' : barClass === 'gop-bar' ? '#e74c3c' : barClass === 'yes-bar' ? '#22c55e' : '#ef4444';
+                if (probValue >= 15) {
+                    latestDataHtml += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: 90px;">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%; display: flex; align-items: center; justify-content: flex-start; padding-left: 8px; color: white; font-size: 12px; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.2;">${prob}</div></div></div>`;
+                } else {
+                    latestDataHtml += `<div class="prediction-bar-row"><span class="prediction-bar-label" style="min-width: 90px;">${name}</span><div class="prediction-bar-track"><div class="prediction-bar-fill ${barClass}" style="width: ${probValue}%;"></div></div><span class="prediction-bar-value" style="color: ${valueColor};">${prob}</span></div>`;
+                }
             });
             latestDataHtml += `</div>`;
             hasHistory = entries.length > 2;

@@ -4131,7 +4131,9 @@
       "group": null,
       "matchDay": null,
       "winner": null,
-      "referees": [],
+      "referees": [
+        "Ivan Barton"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 SEMI_FINALS match between France and Spain"
@@ -4255,5 +4257,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-14T14:13:22.529909Z"
+  "lastUpdated": "2026-07-14T17:54:05.186057Z"
 }

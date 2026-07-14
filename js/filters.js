@@ -144,13 +144,13 @@ function setupIconHandlers(selector, handler) {
 let explanationTooltip = null;
 let explanationTooltipOwner = null;
 
-// Prefer native CSS Anchor Positioning when the browser supports it
-// (Chrome/Edge 125+). Falls back to JS positioning elsewhere (Firefox/Safari).
+// Whether the browser supports native CSS Anchor Positioning (Chrome/Edge 125+).
+// Kept only to decide whether to clear any leftover anchor-name on the button;
+// placement itself is always computed in JS for consistent cross-screen behavior.
 const SUPPORTS_CSS_ANCHOR =
     typeof CSS !== 'undefined' &&
     CSS.supports('anchor-name: --a') &&
     CSS.supports('position-area: block-end');
-const INFO_ANCHOR_NAME = '--hs-info-anchor';
 
 function getExplanationTooltip() {
     if (explanationTooltip) return explanationTooltip;
@@ -170,12 +170,10 @@ function getExplanationTooltip() {
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') hideExplanationTooltip();
     });
-    // Only needed for the JS fallback path; native CSS anchoring tracks the
-    // button automatically without scroll/resize listeners.
-    if (!SUPPORTS_CSS_ANCHOR) {
-        window.addEventListener('scroll', repositionExplanationTooltip, true);
-        window.addEventListener('resize', repositionExplanationTooltip);
-    }
+    // JS positioning is now the only path, so always keep the tooltip glued to
+    // its button on scroll/resize across all browsers.
+    window.addEventListener('scroll', repositionExplanationTooltip, true);
+    window.addEventListener('resize', repositionExplanationTooltip);
     explanationTooltip = tip;
     return tip;
 }
@@ -216,6 +214,10 @@ function positionExplanationTooltip(btn) {
         top = rect.top - margin - tipRect.height;
         arrowAtTop = false;
     }
+    // Hard-clamp vertically into the viewport. This handles explanations taller
+    // than the available space on either side of the button (e.g. short mobile
+    // viewports) so the tooltip never overflows the bottom of the screen.
+    top = Math.max(margin, Math.min(top, vh - tipRect.height - margin));
 
     let left = rect.left + rect.width / 2 - tipRect.width / 2;
     left = Math.max(margin, Math.min(left, vw - tipRect.width - margin));
@@ -254,25 +256,12 @@ function showExplanationTooltip(btn, explanation) {
 
     tip.classList.add('open');
 
-    if (SUPPORTS_CSS_ANCHOR) {
-        // Native anchoring: tie the shared tooltip to this button. The browser
-        // keeps it positioned (incl. flipping) via CSS; no JS math required.
-        btn.style.anchorName = INFO_ANCHOR_NAME;
-        tip.classList.add('css-anchored');
-        tip.style.top = '';
-        tip.style.left = '';
-        tip.style.visibility = 'visible';
-
-        // One-time check to point the arrow at the correct side after any flip.
-        requestAnimationFrame(function () {
-            if (explanationTooltipOwner !== btn) return;
-            const bRect = btn.getBoundingClientRect();
-            const tRect = tip.getBoundingClientRect();
-            tip.classList.toggle('arrow-bottom', tRect.top < bRect.top);
-        });
-        return;
-    }
-
+    // Single positioning path: always compute placement in JS so the tooltip is
+    // clamped into the viewport on every screen size and browser (the native
+    // CSS-anchor fallback could overflow when the explanation is taller than the
+    // available space on either side of the button).
+    if (SUPPORTS_CSS_ANCHOR) btn.style.anchorName = '';
+    tip.classList.remove('css-anchored');
     tip.style.visibility = 'hidden';
     positionExplanationTooltip(btn);
 }

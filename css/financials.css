@@ -623,6 +623,9 @@
   line-height: 1.5;
   pointer-events: auto;
   display: none;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  overflow-wrap: anywhere;
   animation: tooltipIn 0.2s ease-out;
 }
 
@@ -653,40 +656,12 @@
 
 .explanation-tooltip .tooltip-body { margin: 0; }
 
-/* Native CSS Anchor Positioning (Chrome/Edge 125+).
-   The tooltip stays glued to its info button on scroll/resize with no JS. */
-@supports (anchor-name: --a) and (position-area: block-end) {
-  .explanation-tooltip.css-anchored {
-    position: fixed;
-    position-anchor: --hs-info-anchor;
-    position-area: block-end center;
-    margin: 8px 0;
-    /* position-area sizes the containing block to the anchor width, so size to
-       content (clamped) instead of stretching to the tiny info button. */
-    width: max-content;
-    max-width: min(360px, calc(100vw - 16px));
-    justify-self: center;
-    /* Flip above / to the side if there isn't room. */
-    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
-  }
-
-  /* Arrow tracks the button's horizontal center regardless of any edge shift. */
-  .explanation-tooltip.css-anchored::before {
-    left: anchor(--hs-info-anchor center);
-  }
-}
-
 /* Mobile tooltip overrides (Safari/iOS-safe).
-   Constrains width to viewport so centering/positioning math stays on-screen. */
+   Placement is handled uniformly by JS (see positionExplanationTooltip in
+   js/filters.js), so we only need a viewport-aware max width here. */
 @media (max-width: 480px) {
   .explanation-tooltip {
-    max-width: min(360px, calc(100vw - 32px)) !important;
-    box-sizing: border-box;
-  }
-
-  .explanation-tooltip::before {
-    left: var(--arrow-left, 50%);
-    margin-left: -4px;
+    max-width: calc(100vw - 24px);
   }
 }
 

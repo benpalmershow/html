@@ -203,24 +203,29 @@ function positionExplanationTooltip(btn) {
         return;
     }
 
-    const tipRect = tip.getBoundingClientRect();
+    // Use offsetWidth/offsetHeight (not getBoundingClientRect) so the tooltip's
+    // true layout size is measured. getBoundingClientRect reflects the in-flight
+    // tooltipIn scale animation, which would report a smaller size and let the
+    // viewport clamp under-compute on shorter screens.
+    const tipW = tip.offsetWidth;
+    const tipH = tip.offsetHeight;
     const margin = 8;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
     let top = rect.bottom + margin;
     let arrowAtTop = true;
-    if (top + tipRect.height > vh - margin && rect.top - margin - tipRect.height > margin) {
-        top = rect.top - margin - tipRect.height;
+    if (top + tipH > vh - margin && rect.top - margin - tipH > margin) {
+        top = rect.top - margin - tipH;
         arrowAtTop = false;
     }
     // Hard-clamp vertically into the viewport. This handles explanations taller
     // than the available space on either side of the button (e.g. short mobile
     // viewports) so the tooltip never overflows the bottom of the screen.
-    top = Math.max(margin, Math.min(top, vh - tipRect.height - margin));
+    top = Math.max(margin, Math.min(top, vh - tipH - margin));
 
-    let left = rect.left + rect.width / 2 - tipRect.width / 2;
-    left = Math.max(margin, Math.min(left, vw - tipRect.width - margin));
+    let left = rect.left + rect.width / 2 - tipW / 2;
+    left = Math.max(margin, Math.min(left, vw - tipW - margin));
 
     tip.style.top = top + 'px';
     tip.style.left = left + 'px';

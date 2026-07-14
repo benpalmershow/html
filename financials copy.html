@@ -3,37 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets.">
+  <meta name="description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.">
+  <meta name="author" content="Howdy, Stranger">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://howdystranger.com/financials copy.html">
+  
+  <!-- DNS prefetch for external domains -->
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  
   <title>Numbers - Howdy, Stranger</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://howdystranger.com/financials copy.html">
+  <meta property="og:title" content="Numbers - Howdy, Stranger">
+  <meta property="og:description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.">
+  <meta property="og:image" content="https://howdystranger.com/images/logo-120x120.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://howdystranger.com/financials copy.html">
+  <meta property="twitter:title" content="Numbers - Howdy, Stranger">
+  <meta property="twitter:description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.">
+  <meta property="twitter:image" content="https://howdystranger.com/images/logo-120x120.webp">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Numbers - Howdy, Stranger",
+    "description": "Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.",
+    "url": "https://howdystranger.com/financials copy.html",
+    "author": {
+      "@type": "Organization",
+      "name": "Howdy, Stranger"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Howdy, Stranger",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://howdystranger.com/images/logo-120x120.webp"
+      }
+    },
+    "dateModified": "2026-07-13"
+  }
+  </script>
+
+  <!-- Apply theme before first paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('darkMode');
+        var dark = saved === null
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : saved === '1';
+        var root = document.documentElement;
+        root.classList.toggle('dark-mode', dark);
+        root.classList.add('theme-init');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Critical CSS - loaded synchronously for first paint -->
   <link rel="stylesheet" href="css/financials-copy.css">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="js/financials-copy.js" as="script">
+
+  <!-- Vercel Insights - Production only -->
+  <script>
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  </script>
+
+  <!-- Performance monitoring -->
+  <script src="js/speed-insights.js" defer></script>
 </head>
 <body>
-  <nav class="site-nav" aria-label="Main">
+  <!-- Skip to content link for keyboard accessibility -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
-      <a href="index.html" class="nav-brand">Howdy, Stranger</a>
-      <ul class="nav-links">
-        <li><a href="financials.html" class="active" aria-current="page">Numbers</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="journal.html">Docs</a></li>
+      <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
+        <img src="images/logo-120x120.webp" alt="" width="54" height="54" loading="eager" decoding="async">
+      </a>
+      <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
+      <div class="nav-actions">
+      <ul class="nav-list"> 
+<li><a href="financials copy.html" class="nav-link active" aria-current="page" aria-label="Numbers"><img src="images/read-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Numbers</span><span class="nav-active-dot" aria-hidden="true"></span></a></li>
+         <li><a href="media.html" class="nav-link" aria-label="Media"><img src="images/media-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Media</span></a></li>
+         <li><a href="journal.html" class="nav-link" aria-label="Docs"><img src="images/announcements-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Docs</span></a></li>
       </ul>
-      <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">Theme</button>
+      <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="dark-mode-toggle-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path class="sun-icon" d="M12 4V2M12 22v-2M4 12H2M22 12h-2M5.64 5.64 4.22 4.22M19.78 19.78l-1.42-1.42M18.36 5.64l1.42-1.42M4.22 19.78l1.42-1.42M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+            <path class="moon-icon" d="M21 14.2A8.8 8.8 0 0 1 9.8 3a7.2 7.2 0 1 0 11.2 11.2Z"></path>
+          </svg>
+        </span>
+        <span class="dark-mode-toggle-label">Theme</span>
+      </button>
     </div>
+  </div>
   </nav>
 
-  <main id="main-content">
-    <div class="page-header">
-      <h1 class="page-title">Numbers</h1>
+  <!-- Dark Mode Toggle -->
+  <script src="js/dark-mode-toggle.js" defer></script>
+
+   <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
+     <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
+      <h1 class="page-title" aria-label="Page title">Numbers</h1>
       <div id="lastUpdated" class="last-updated"></div>
     </div>
 
-    <div class="filter-bar" id="filterBar" aria-label="Filter indicators">
-      <div class="filters" id="filterButtons"></div>
-    </div>
+     <div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
+            <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <div class="filter-bar-search" id="filterBarSearch">
+              <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
+            </div>
+            <div class="filters" id="filter-buttons"></div>
+          </div>
 
     <div class="content">
       <div class="categories" id="categories">
         <div class="loading">Loading indicators…</div>
       </div>
+
+      <noscript>
+        <div class="category" style="padding:2rem;text-align:center;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--card-radius);">
+          <h2 style="color:var(--logo-teal);margin:0 0 1rem;">JavaScript Required</h2>
+          <p style="margin:0;color:var(--text-secondary);">This dashboard requires JavaScript to load and display economic indicators. Please enable JavaScript in your browser settings.</p>
+        </div>
+      </noscript>
 
       <!-- 13F Holdings section - loaded lazily -->
       <div id="section-13f" style="display:none;margin-top:15px">
@@ -63,19 +174,36 @@
     <div id="tooltipBody"></div>
   </div>
 
+  <!-- Footer Component -->
+  <div id="footer-container"></div>
+
+  <!-- Component Loaders (consolidates footer, error-handling, scripts-unified, fonts, analytics) -->
+  <script src="js/component-loaders.js" defer></script>
+
+  <!-- Critical Financials Module Scripts (loaded in dependency order) -->
+  <script src="js/financials-copy.js" defer></script>
+
+  <!-- Non-critical scripts loaded after idle to reduce TBT -->
   <script>
-  /* ==========================================
-     DARK MODE - runs before first paint
-  ========================================== */
-  (function(){
-    try{
-      var s=localStorage.getItem('darkMode');
-      var dark=s===null?window.matchMedia('(prefers-color-scheme: dark)').matches:s==='1';
-      document.documentElement.classList.toggle('dark-mode',dark);
-    }catch(e){}
-  })();
+    (function() {
+      const loadNonCriticalScripts = () => {
+        // Search functionality
+        const searchScript = document.createElement('script');
+        searchScript.src = 'js/search.js';
+        searchScript.defer = true;
+        document.head.appendChild(searchScript);
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadNonCriticalScripts, { timeout: 2000 });
+      } else {
+        window.addEventListener('load', () => setTimeout(loadNonCriticalScripts, 1000));
+      }
+    })();
   </script>
 
-  <script src="js/financials-copy.js" defer></script>
-</body>
+    <!-- Back to top button -->
+    <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+
+  </body>
 </html>

@@ -18,20 +18,68 @@
 
   /* ---- DOM refs ---- */
   const categoriesEl=document.getElementById('categories');
-  const filterButtonsEl=document.getElementById('filterButtons');
+  const filterButtonsEl=document.getElementById('filter-buttons');
   const lastUpdatedEl=document.getElementById('lastUpdated');
   const tooltip=document.getElementById('explTooltip');
   const tooltipBody=document.getElementById('tooltipBody');
   const tooltipClose=document.getElementById('tooltipClose');
-  const darkToggle=document.getElementById('darkToggle');
+  const searchToggle=document.getElementById('searchToggle');
+  const filterBarSearch=document.getElementById('filterBarSearch');
+  const indicatorSearch=document.getElementById('indicatorSearch');
+
+  /* ==========================================
+     SEARCH TOGGLE
+  ========================================== */
+  if(searchToggle){
+    searchToggle.addEventListener('click',function(){
+      filterBarSearch.classList.toggle('open');
+      if(filterBarSearch.classList.contains('open')){
+        indicatorSearch.focus();
+      }
+    });
+  }
+
+  /* ==========================================
+     SEARCH FUNCTIONALITY
+  ========================================== */
+  if(indicatorSearch){
+    indicatorSearch.addEventListener('input',function(){
+      var query=this.value.toLowerCase().trim();
+      if(!query){
+        render(currentFilter);
+        return;
+      }
+      if(!allData)return;
+      var indices=allData.indices||[];
+      var filtered=indices.filter(function(ind){
+        return ind.name&&ind.name.toLowerCase().includes(query)||
+               ind.agency&&ind.agency.toLowerCase().includes(query)||
+               ind.category&&ind.category.toLowerCase().includes(query);
+      });
+      var html='';
+      if(filtered.length){
+        html='<div class="category" data-category="search-results">'
+          +'<h2 class="category-title">Search Results ('+filtered.length+')</h2>'
+          +'<div class="indicators-grid">'+filtered.map(buildCard).join('')+'</div>'
+          +'</div>';
+      }else{
+        html='<div style="text-align:center;padding:2rem;color:var(--text-muted);font-family:var(--font-mono)">No results found for "'+this.value+'".</div>';
+      }
+      categoriesEl.innerHTML=html;
+      requestAnimationFrame(function(){requestAnimationFrame(renderSparklines);});
+    });
+  }
 
   /* ==========================================
      DARK MODE TOGGLE
   ========================================== */
-  darkToggle.addEventListener('click',function(){
-    var isDark=document.documentElement.classList.toggle('dark-mode');
-    try{localStorage.setItem('darkMode',isDark?'1':'0');}catch(e){}
-  });
+  const darkToggle=document.getElementById('darkModeToggle');
+  if(darkToggle){
+    darkToggle.addEventListener('click',function(){
+      var isDark=document.documentElement.classList.toggle('dark-mode');
+      try{localStorage.setItem('darkMode',isDark?'1':'0');}catch(e){}
+    });
+  }
 
   /* ==========================================
      DATA UTILITIES

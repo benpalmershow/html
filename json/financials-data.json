@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-11T08:00:00",
+    "lastUpdated": "2026-07-14T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -706,6 +706,7 @@
             "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
+            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
             "january": "75.74",
             "february": "71.53",
             "march": "68.24",
@@ -740,7 +741,7 @@
                 "oil",
                 "energy"
             ],
-            "displayOrder": 18,
+            "displayOrder": 19,
             "icon": "fa-oil-can",
             "color": "#f39c12",
             "units": "dollars-per-barrel",
@@ -751,6 +752,7 @@
             "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
+            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
             "2026": {
                 "january": "66.60",
                 "february": "70.89",
@@ -764,6 +766,32 @@
             "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs."
         },
         {
+            "id": "crack-margin",
+            "category": "Commodities",
+            "type": "commodity",
+            "isActive": true,
+            "tags": [
+                "commodities",
+                "oil",
+                "refining"
+            ],
+            "displayOrder": 18,
+            "icon": "fa-industry",
+            "color": "#f39c12",
+            "units": "dollars-per-barrel",
+            "region": "us",
+            "parentCategory": "Commodities",
+            "agency": "EIA",
+            "name": "3:2:1 Crack Spread",
+            "lastUpdated": "2026-07-13T14:00:00Z",
+            "releaseDay": 0,
+            "url": "https://www.eia.gov/todayinenergy/prices.php",
+            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
+            "current": "60.75",
+            "change": "+4.2",
+            "explanation": "The 3:2:1 crack spread measures the difference between the purchase price of crude oil and the selling price of finished products (gasoline and distillate fuel) that a refinery produces from the crude oil. It approximates the product yield at a typical U.S. refinery: for every three barrels of crude oil processed, the refinery makes two barrels of gasoline and one barrel of distillate fuel. The crack spread is an indicator of short-term refinery profit margins. Current Gulf Coast (LLS) 3:2:1 crack spread: $60.75/barrel."
+        },
+        {
             "id": "us-petroleum-exports",
             "category": "Commodities",
             "type": "commodity",
@@ -773,7 +801,7 @@
                 "petroleum",
                 "exports"
             ],
-            "displayOrder": 19,
+            "displayOrder": 20,
             "icon": "fa-gas-pump",
             "color": "#f39c12",
             "units": "thousand-barrels-per-day",
@@ -784,6 +812,7 @@
             "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
+            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
             "2026": {
                 "march": "11,670",
                 "april": "12,881",
@@ -1698,7 +1727,7 @@
             "parentCategory": "Trade & Tariffs",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-07-09T14:00:00Z",
+            "lastUpdated": "2026-07-14T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
@@ -1709,9 +1738,13 @@
                 "april": "20",
                 "may": "11",
                 "june": "3",
-                "july": "32"
+                "july": "16"
             },
             "probabilities": {
+                   "2026-07-14": {
+                    "Inbound": 9,
+                    "Outbound": 10
+                },
                 "2026-07-09": {
                     "Inbound": 17,
                     "Outbound": 18

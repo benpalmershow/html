@@ -4105,8 +4105,8 @@
         "name": "France",
         "flag": "🇫🇷",
         "crest": "https://crests.football-data.org/773.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 0,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -4115,14 +4115,14 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 1,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-14",
       "utcDate": "2026-07-14T19:00:00Z",
@@ -4130,7 +4130,7 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "referees": [
         "Ivan Barton"
       ],
@@ -4257,5 +4257,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-14T17:54:05.186057Z"
+  "lastUpdated": "2026-07-14T21:09:28.510124Z"
 }

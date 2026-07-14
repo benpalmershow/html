@@ -2536,7 +2536,7 @@
             "parentCategory": "Consumer Indicators",
             "agency": "BLS",
             "name": "CPI",
-            "lastUpdated": "2026-06-11T14:00:00Z",
+            "lastUpdated": "2026-07-14T14:00:00Z",
             "releaseDay": 11,
             "url": "https://www.bls.gov/cpi/data.htm",
             "january": "317.671",
@@ -2556,7 +2556,8 @@
                 "february": "326.785",
                 "march": "330.213",
                 "april": "333.020",
-                "may": "335.123"
+                "may": "335.123",
+                "june": "333.952"
             },
             "change": "",
             "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."

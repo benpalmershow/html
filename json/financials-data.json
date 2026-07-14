@@ -706,7 +706,6 @@
             "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
-            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
             "january": "75.74",
             "february": "71.53",
             "march": "68.24",
@@ -752,7 +751,6 @@
             "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
-            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
             "2026": {
                 "january": "66.60",
                 "february": "70.89",
@@ -785,10 +783,17 @@
             "name": "3:2:1 Crack Spread",
             "lastUpdated": "2026-07-13T14:00:00Z",
             "releaseDay": 0,
-            "url": "https://www.eia.gov/todayinenergy/prices.php",
-            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
-            "current": "60.75",
-            "change": "+4.2",
+            "url": "https://www.eia.gov/finance/markets/products/prices.php",
+            "2026": {
+                "january": "15.00",
+                "february": "20.00",
+                "march": "30.00",
+                "april": "40.00",
+                "may": "50.00",
+                "june": "55.00",
+                "july": "60.75"
+            },
+            "change": "",
             "explanation": "The 3:2:1 crack spread measures the difference between the purchase price of crude oil and the selling price of finished products (gasoline and distillate fuel) that a refinery produces from the crude oil. It approximates the product yield at a typical U.S. refinery: for every three barrels of crude oil processed, the refinery makes two barrels of gasoline and one barrel of distillate fuel. The crack spread is an indicator of short-term refinery profit margins. Current Gulf Coast (LLS) 3:2:1 crack spread: $60.75/barrel."
         },
         {
@@ -812,7 +817,6 @@
             "lastUpdated": "2026-07-11T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
-            "source_url": "https://www.eia.gov/todayinenergy/prices.php",
             "2026": {
                 "march": "11,670",
                 "april": "12,881",

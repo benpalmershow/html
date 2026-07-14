@@ -161,6 +161,15 @@
 .filter-bar.search-open .filter-bar-search {
     display: block;
     animation: searchIn 0.2s ease-out;
+    flex: 1 1 0;
+    min-width: 120px;
+    max-width: 280px;
+}
+
+.filter-bar.search-open .filters {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow-x: auto;
 }
 
 @keyframes searchIn {
@@ -185,3 +194,35 @@
 .filters .filter-btn.active[data-category="healthcare"] { background: var(--color-category-healthcare); color: white; border-color: var(--color-category-healthcare); }
 .filters .filter-btn.active[data-category*="prediction"] { background: var(--color-category-prediction); color: white; border-color: var(--color-category-prediction); }
 .filters .filter-btn.active[data-category*="financial"] { background: var(--color-category-economic); color: white; border-color: var(--color-category-economic); }
+
+@media (max-width: 400px) {
+  .filter-bar {
+    gap: 4px;
+    padding: 0.5rem 0.25rem;
+  }
+  .search-toggle {
+    width: 40px;
+    min-height: 40px;
+  }
+  .search-toggle svg {
+    width: 14px;
+    height: 14px;
+  }
+  .filter-btn {
+    min-width: 32px;
+    min-height: 36px;
+    padding: 0.3rem 0.4rem;
+    font-size: 0;
+    gap: 0;
+  }
+  .filter-btn .filter-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .filter-btn .filter-text {
+    display: none;
+  }
+  .filters {
+    gap: 4px;
+  }
+}

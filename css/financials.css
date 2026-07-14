@@ -339,6 +339,30 @@
   .chart-overlay-range-picker { justify-content: center; }
 }
 
+@media (max-width: 420px) {
+  .indicators-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .indicator {
+    padding: 0.5rem;
+  }
+  .category {
+    padding: 0.5rem 0.5rem;
+  }
+  .category-title {
+    font-size: 1rem;
+    gap: 6px;
+  }
+  .change-indicators {
+    gap: 4px;
+  }
+  .change-metric-btn {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+}
+
 /* ========================================
    HORMUZ CRISIS CARD - MINIMAL
    ======================================== */

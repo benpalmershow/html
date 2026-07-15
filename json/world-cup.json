@@ -4146,7 +4146,7 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -4156,14 +4156,14 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "status": "live",
+      "statusRaw": "IN_PLAY",
+      "time": "0-0 HT",
       "minute": null,
       "date": "2026-07-15",
       "utcDate": "2026-07-15T19:00:00Z",
@@ -4171,7 +4171,7 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Ismail Elfath"
       ],
@@ -4259,5 +4259,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-15T18:19:26.199828Z"
+  "lastUpdated": "2026-07-15T19:39:01.941566Z"
 }

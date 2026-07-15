@@ -4146,8 +4146,8 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -4156,14 +4156,14 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": null,
-        "halfTimeScore": null,
+        "score": 2,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
-      "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-15",
       "utcDate": "2026-07-15T19:00:00Z",
@@ -4171,8 +4171,10 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": null,
-      "referees": [],
+      "winner": "AWAY_TEAM",
+      "referees": [
+        "Ismail Elfath"
+      ],
       "source": "FIFA",
       "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures",
       "explanation": "World Cup 2026 SEMI_FINALS match between England and Argentina"
@@ -4257,5 +4259,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-15T14:26:56.159104Z"
+  "lastUpdated": "2026-07-15T21:33:31.041714Z"
 }

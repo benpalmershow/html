@@ -2532,13 +2532,13 @@
             "parentCategory": "Business Indicators",
             "agency": "BLS",
             "name": "PPI",
-            "lastUpdated": "2026-07-11T14:00:00Z",
+            "lastUpdated": "2026-07-15T14:00:00Z",
             "releaseDay": 13,
             "url": "https://data.bls.gov/pdq/SurveyOutputServlet",
             "march": "148.319",
             "april": "148.009",
             "may": "148.427",
-            "june": "145.321",
+            "june": "148.838",
             "july": "149.898",
             "august": "149.466",
             "september": "150.100",
@@ -2547,10 +2547,11 @@
             "december": "150.773",
             "2026": {
                 "january": "152.145",
-                "february": "153.188",
-                "march": "154.664",
-                "april": "156.395",
-                "may": "158.012"
+                "february": "153.156",
+                "march": "154.687",
+                "april": "156.412",
+                "may": "157.346",
+                "june": "157.045"
             },
             "change": "",
             "explanation": "Table 3. Producer price indexes for Final Demand, not seasonally adjusted. The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand, not seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
@@ -2757,7 +2758,7 @@
             "parentCategory": "Business Indicators",
             "agency": "NFIB",
             "name": "Small Business Optimism Index",
-            "lastUpdated": "2026-07-07T14:00:00Z",
+            "lastUpdated": "2026-07-15T14:00:00Z",
             "releaseDay": 12,
             "url": "https://www.nfib.com/news/monthly_report/sbet/",
             "march": "97.4",
@@ -2775,7 +2776,8 @@
                 "february": "98.8",
                 "march": "95.8",
                 "april": "95.9",
-                "may": "95.3"
+                "may": "95.3",
+                "june": "97.4"
 
             },
             "change": "",

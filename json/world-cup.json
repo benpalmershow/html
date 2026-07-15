@@ -4146,8 +4146,8 @@
         "name": "England",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "crest": "https://crests.football-data.org/770.svg",
-        "score": 0,
-        "halfTimeScore": null,
+        "score": 1,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -4157,7 +4157,7 @@
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
         "score": 0,
-        "halfTimeScore": null,
+        "halfTimeScore": 0,
         "extraTimeScore": null,
         "penaltyScore": null
       },
@@ -4171,7 +4171,7 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Ismail Elfath"
       ],
@@ -4259,5 +4259,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-15T19:39:01.941566Z"
+  "lastUpdated": "2026-07-15T20:38:07.260122Z"
 }

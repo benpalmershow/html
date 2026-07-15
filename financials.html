@@ -58,27 +58,12 @@
   <link rel="preload" href="js/indicators.js" as="script">
   <link rel="preload" href="js/charts.js" as="script">
   <link rel="preload" href="js/filters.js" as="script">
-  <link rel="preload" href="js/13f-holdings.js" as="script">
   <link rel="preload" href="js/financials.js" as="script">
-  <link rel="preload" href="js/countdown.js" as="script">
 
   <!-- DNS prefetch and data prefetch -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="prefetch" href="json/financials-data.json" as="fetch" crossorigin>
-
-  <!-- Vercel Insights - Production only -->
-  <script>
-    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      const script = document.createElement('script');
-      script.src = '/_vercel/insights/script.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    }
-  </script>
-
-
-<!-- Performance monitoring -->
-  <script src="js/speed-insights.js" defer></script>
 </head>
 <body>
 
@@ -212,6 +197,30 @@
         countdownScript.src = 'js/countdown.js';
         countdownScript.defer = true;
         document.head.appendChild(countdownScript);
+
+        // Speed insights - non-critical
+        const speedInsightsScript = document.createElement('script');
+        speedInsightsScript.src = 'js/speed-insights.js';
+        speedInsightsScript.defer = true;
+        document.head.appendChild(speedInsightsScript);
+
+        // Back to top - non-critical
+        const backToTopScript = document.createElement('script');
+        backToTopScript.src = 'js/back-to-top.js';
+        backToTopScript.dataset.threshold = '300';
+        backToTopScript.dataset.duration = '400';
+        backToTopScript.dataset.label = 'Back to top';
+        backToTopScript.dataset.position = 'right';
+        backToTopScript.defer = true;
+        document.head.appendChild(backToTopScript);
+
+        // Vercel Insights - Production only
+        if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+          const vercelScript = document.createElement('script');
+          vercelScript.src = '/_vercel/insights/script.js';
+          vercelScript.defer = true;
+          document.head.appendChild(vercelScript);
+        }
       };
 
       if ('requestIdleCallback' in window) {
@@ -225,8 +234,8 @@
    <!-- Load Lucide icons on-demand after page load -->
   <script src="js/lucide-loader.js" defer></script>
 
-<!-- Chart Modal Popup -->
-    <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle" style="contain: layout;">
+<!-- Chart Modal Popup - lazy loaded via JS when needed -->
+    <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle" style="contain: layout; display: none;">
       <div class="chart-modal-content">
         <div class="chart-modal-range-picker" id="chartRangePicker">
           <h3 id="chartModalTitle" class="chart-modal-title">Chart View</h3>
@@ -239,9 +248,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Back to top button -->
-    <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
 
   </body>
 </html>

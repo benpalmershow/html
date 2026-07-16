@@ -88,7 +88,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 10).map(h => `
                         <div class="holding-item">
-                            <div class="holding-ticker"><a href="https://www.perplexity.ai/search?q=${h.ticker}+stock" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                            <div class="holding-ticker"><a href="https://www.perplexity.ai/finance/${h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
                             <div class="holding-name">${h.name}</div>
                             <div class="holding-pct">${h.pct}%</div>
                         </div>
@@ -159,7 +159,7 @@ function initializeFirmCards() {
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
                     <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}">
-                         <div class="holding-ticker"><a href="https://www.perplexity.ai/search?q=${h.ticker}+stock" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                         <div class="holding-ticker"><a href="https://www.perplexity.ai/finance/${h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
                          <div class="holding-name">${h.name}</div>
                          <div class="holding-pct">${h.pct}%</div>
                      </div>
@@ -168,6 +168,8 @@ function initializeFirmCards() {
                 // Add click handlers for holdings
                 holdingsList.querySelectorAll('.holding-item').forEach((item) => {
                     item.addEventListener('click', (e) => {
+                        // If the click originated from a link, allow default navigation
+                        if (e.target.closest('a')) return;
                         e.preventDefault();
                         const holdingIndex = parseInt(item.dataset.holdingIndex);
                         

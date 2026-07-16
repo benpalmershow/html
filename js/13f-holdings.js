@@ -88,18 +88,11 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 10).map(h => `
                         <div class="holding-item">
-                            <div>
-                                <div class="holding-ticker">${h.ticker}</div>
-                                <div class="holding-name">${h.name}</div>
-                                <div class="holding-pct">${h.pct}% of portfolio</div>
-                            </div>
+                            <div class="holding-ticker"><a href="https://www.perplexity.ai/search?q=${h.ticker}+stock" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                            <div class="holding-name">${h.name}</div>
+                            <div class="holding-pct">${h.pct}%</div>
                         </div>
                     `).join('')}
-                </div>
-                <div class="firm-chart-wrapper">
-                    <div class="firm-chart-inner">
-                        <canvas id="chart-${firmIdx}" class="firm-chart-canvas"></canvas>
-                    </div>
                 </div>
             </div>
             <div class="data-rows-container firm-description-${firmIdx}">
@@ -166,11 +159,9 @@ function initializeFirmCards() {
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
                     <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}">
-                         <div>
-                             <div class="holding-ticker">${h.ticker}</div>
-                             <div class="holding-name">${h.name}</div>
-                             <div class="holding-pct">${h.pct}% of portfolio</div>
-                         </div>
+                         <div class="holding-ticker"><a href="https://www.perplexity.ai/search?q=${h.ticker}+stock" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                         <div class="holding-name">${h.name}</div>
+                         <div class="holding-pct">${h.pct}%</div>
                      </div>
                 `).join('');
 
@@ -189,34 +180,8 @@ function initializeFirmCards() {
                         const pct = item.dataset.pct;
                         item.classList.add('highlighted');
                         item.style.borderLeft = `3px solid ${getColorByValue(pct)}`;
-                        
-                        const chartInstance = window[`chart-${firmIdx}Chart`];
-                        if (chartInstance) {
-                            // Reset all segments to full opacity
-                            chartInstance.data.datasets[0].backgroundColor = displayHoldings.slice(0, 10).map(h => getColorByValue(h.pct));
-                            // Highlight clicked segment with increased opacity/brightness
-                            const colors = displayHoldings.slice(0, 10).map((h, i) => {
-                                if (i === holdingIndex) return getColorByValue(h.pct);
-                                return hexToRgba(getColorByValue(h.pct), 0.3);
-                            });
-                            chartInstance.data.datasets[0].backgroundColor = colors;
-                            chartInstance.update();
-                        }
                     });
                 });
-            }
-
-            // Update chart
-            const chartCanvas = document.getElementById(`chart-${firmIdx}`);
-            if (chartCanvas && window[`chart-${firmIdx}Chart`]) {
-                const chartInstance = window[`chart-${firmIdx}Chart`];
-                const chartData = displayHoldings.slice(0, 10);
-                chartInstance.data.labels = chartData.map(h => h.ticker);
-                chartInstance.data.datasets[0].data = chartData.map(h => h.value / 1000000);
-                chartInstance.data.datasets[0].backgroundColor = chartData.map(h => getColorByValue(h.pct));
-                chartInstance.data.datasets[0].borderWidth = 1;
-                chartInstance.data.datasets[0].borderColor = getBgColor();
-                chartInstance.update();
             }
 
             // Update button states
@@ -236,48 +201,6 @@ function initializeFirmCards() {
 
         // Initialize display with event handlers
         updateFirmDisplay();
-
-        setTimeout(() => {
-            const ctx = document.getElementById(`chart-${firmIdx}`);
-            if (ctx && typeof Chart !== 'undefined') {
-                const chartData = firmHoldings.slice(0, 10);
-                const chartInstance = new Chart(ctx.getContext('2d'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: chartData.map(h => h.ticker),
-                        datasets: [{
-                            data: chartData.map(h => h.value / 1000000),
-                            backgroundColor: chartData.map(h => getColorByValue(h.pct)),
-                            borderColor: getBgColor(),
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        onClick: (event, elements) => {
-                            if (elements.length > 0) {
-                                const index = elements[0].index;
-                                const holdingItem = card.querySelector(`[data-holding-index="${index}"]`);
-                                if (holdingItem) holdingItem.click();
-                            }
-                        },
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function (context) {
-                                        return `$${context.parsed.toFixed(1)}M`;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-                window[`chart-${firmIdx}Chart`] = chartInstance;
-
-            }
-        }, 0);
     }
 
     if (typeof lucide !== 'undefined') {

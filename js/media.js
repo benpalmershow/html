@@ -48,13 +48,13 @@
     };
 
     const MEDIA_TYPE_ICONS = {
-        'podcast': 'fas fa-podcast',
-        'playlist': 'fas fa-list',
-        'book': 'fas fa-book',
-        'song': 'fas fa-music',
-        'video': 'fas fa-video',
-        'movie': 'fas fa-film',
-        'album': 'fas fa-compact-disc'
+        'podcast': 'mic',
+        'playlist': 'list',
+        'book': 'book',
+        'song': 'music',
+        'video': 'video',
+        'movie': 'film',
+        'album': 'disc'
     };
 
     const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
@@ -105,14 +105,14 @@
         if (!filterButtonsContainer) return;
 
         const typeIcons = {
-            'all': '<i class="fas fa-th filter-icon"></i>',
-            'movie': '<i class="fas fa-film filter-icon"></i>',
-            'book': '<i class="fas fa-book filter-icon"></i>',
-            'podcast': '<i class="fas fa-podcast filter-icon"></i>',
-            'playlist': '<i class="fas fa-list filter-icon"></i>',
-            'album': '<i class="fas fa-compact-disc filter-icon"></i>',
-            'song': '<i class="fas fa-music filter-icon"></i>',
-            'video': '<i class="fas fa-video filter-icon"></i>'
+            'all': '<i data-lucide="grid" class="filter-icon"></i>',
+            'movie': '<i data-lucide="film" class="filter-icon"></i>',
+            'book': '<i data-lucide="book" class="filter-icon"></i>',
+            'podcast': '<i data-lucide="mic" class="filter-icon"></i>',
+            'playlist': '<i data-lucide="list" class="filter-icon"></i>',
+            'album': '<i data-lucide="disc" class="filter-icon"></i>',
+            'song': '<i data-lucide="music" class="filter-icon"></i>',
+            'video': '<i data-lucide="video" class="filter-icon"></i>'
         };
 
         const typeLabel = {
@@ -158,6 +158,11 @@
             currentMediaType = btn.dataset.type;
             filterAndSortMedia();
         });
+
+        // Create Lucide icons after filter buttons are added
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
     }
 
     function getUniqueMediaTypes(items) {
@@ -200,11 +205,15 @@
 
             mediaContainer.innerHTML = `
                 <div class="error-state">
-                    <i class="fas fa-exclamation-triangle"></i>
+                    <i data-lucide="alert-triangle"></i>
                     <p>${errorMessage}</p>
                     <button onclick="location.reload()" class="retry-button">Try Again</button>
                 </div>
             `;
+            // Create Lucide icons for error state
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
         }
     }
 
@@ -254,7 +263,7 @@
             mediaContainer.innerHTML = `
                 <div class="empty-state">
                     <div class="empty-state-icon">
-                        <i class="fas fa-filter"></i>
+                        <i data-lucide="filter"></i>
                     </div>
                     <h2 class="empty-state-title">No results found</h2>
                     <p class="empty-state-text">
@@ -265,6 +274,11 @@
                     </div>
                 </div>
             `;
+
+            // Create Lucide icons for empty state
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
 
             document.getElementById('clear-filters-btn')?.addEventListener('click', () => {
                 currentMediaType = 'all';
@@ -302,6 +316,10 @@
             } else {
                 // Generate schemas after all cards are rendered
                 scheduleRender(() => generateSchemas(items));
+                // Create Lucide icons after all cards are rendered
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
                 isRendering = false;
             }
         }
@@ -427,7 +445,7 @@
 
         const typeBadge = document.createElement('div');
         typeBadge.className = 'media-type';
-        typeBadge.innerHTML = `<i class="${getMediaTypeIcon(item.mediaType)}"></i>`;
+        typeBadge.innerHTML = `<i data-lucide="${getMediaTypeIcon(item.mediaType)}"></i>`;
 
         if (item.status?.toLowerCase() === 'reading now') {
             const badge = document.createElement('div');
@@ -535,7 +553,7 @@
             lineupBtn.target = '_blank';
             lineupBtn.rel = 'noopener noreferrer';
             lineupBtn.title = 'Full Lineup';
-            lineupBtn.innerHTML = '<i class="fas fa-list-ul"></i>';
+            lineupBtn.innerHTML = '<i data-lucide="list"></i>';
             addActionToTop(lineupBtn);
         }
 

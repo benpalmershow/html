@@ -114,6 +114,47 @@ When a claim provides a numerator but not the denominator (e.g., "68,000 nonciti
 
 ---
 
+## Performance Guidelines
+
+**Critical:** All content changes must preserve or improve site performance. The site is optimized for Core Web Vitals (LCP, CLS, INP).
+
+### Performance Impact of Content Changes
+
+When creating articles or news content:
+
+1. **Image optimization:**
+   - Use `.webp` format for all images in articles
+   - Add explicit `width` and `height` attributes to prevent CLS
+   - Use `loading="lazy"` for images below the fold
+   - Use `decoding="async"` for non-critical images
+
+2. **File size considerations:**
+   - Keep articles concise and focused
+   - Avoid embedding large media files directly
+   - Use external links for large datasets instead of embedding
+
+3. **Link performance:**
+   - Verify all external links load quickly
+   - Prefer primary sources (official PDFs) over secondary summaries
+   - Remove or replace broken links before publishing
+
+When modifying content:
+- Test page load performance after adding new articles
+- Verify LCP (Largest Contentful Paint) is not degraded
+- Check CLS (Cumulative Layout Shift) remains low
+- Ensure INP (Interaction to Next Paint) stays under 200ms
+
+### Testing Performance
+
+Before publishing content changes:
+1. Run `npm run validate` to check JSON validity
+2. Test page load in Chrome DevTools Performance tab
+3. Check Lighthouse scores (target: 90+ Performance)
+4. Verify Core Web Vitals are not degraded
+5. Test all external links for accessibility and speed
+
+---
+
 ## 6. Example Workflow
 
 ```text

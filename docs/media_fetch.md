@@ -232,3 +232,45 @@ Add to `json/posts.json` at **top** of array: `{ "date": "YYYY-MM-DDT12:00:00Z",
 | IMDb page WAF block | Use only id-based endpoints (no `imdb.com/title/…` direct calls) |
 | TMDB REST API 401 | Do not call `api.themoviedb.org` without a key; use browser gallery instead |
 | Wrong trailer source | Verify YouTube title matches before using; leave empty if unverifiable |
+
+---
+
+## Performance Guidelines
+
+**Critical:** All media additions must preserve or improve site performance. The site is optimized for Core Web Vitals (LCP, CLS, INP).
+
+### Performance Impact of Media Changes
+
+When adding media entries:
+
+1. **Image optimization:**
+   - Use `.webp` format for all cover images (30-40% smaller than JPEG)
+   - Add explicit `width` and `height` attributes to prevent CLS
+   - Use `loading="lazy"` for media cards below the fold
+   - Use `decoding="async"` for non-critical images
+   - Optimize TMDB posters to `w500` size (50KB vs original slow/large)
+
+2. **JSON file size:**
+   - Keep `media.json` entries compact
+   - Remove unnecessary fields (empty strings vs null)
+   - Avoid duplicate entries
+
+3. **Caching strategy:**
+   - Media.js uses IndexedDB caching (5-minute TTL)
+   - Cache busting via `meta[name="site-data-version"]` only when necessary
+   - Batch rendering (12 items per batch) with requestIdleCallback
+
+When modifying media:
+- Test page load performance after adding new entries
+- Verify LCP (Largest Contentful Paint) is not degraded
+- Check CLS (Cumulative Layout Shift) remains low
+- Ensure INP (Interaction to Next Paint) stays under 200ms
+
+### Testing Performance
+
+Before deploying media changes:
+1. Run `python -m json.tool json/media.json > /dev/null` to validate JSON
+2. Test page load in Chrome DevTools Performance tab
+3. Check Lighthouse scores (target: 90+ Performance)
+4. Verify Core Web Vitals are not degraded
+5. Test media card rendering with new entries

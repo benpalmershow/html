@@ -106,3 +106,43 @@ Example:
 - Invalid inline HTML in `title` or `content`
 - Missing `rel='noopener noreferrer'` on external links
 - Turning a short journal item into a standalone page when a linkable note would do
+
+---
+
+## Performance Guidelines
+
+**Critical:** All content changes must preserve or improve site performance. The site is optimized for Core Web Vitals (LCP, CLS, INP).
+
+### Performance Impact of Content Changes
+
+When adding posts or journal entries:
+
+1. **Image optimization:**
+   - Use `.webp` format for all images in posts
+   - Add explicit `width` and `height` attributes to prevent CLS
+   - Use `loading="lazy"` for images below the fold
+   - Use `decoding="async"` for non-critical images
+
+2. **Chart embedding:**
+   - Charts load on-demand via IntersectionObserver (visible on scroll)
+   - Chart.js loads lazily only when needed
+   - No performance impact from unused chart placeholders
+
+3. **File size considerations:**
+   - Keep markdown posts concise (under 150 words for journal entries)
+   - Long-form pages should be in `article/` with proper structure
+   - Avoid embedding large media files directly
+
+When modifying content:
+- Test page load performance after adding new posts
+- Verify LCP (Largest Contentful Paint) is not degraded
+- Check CLS (Cumulative Layout Shift) remains low
+- Ensure INP (Interaction to Next Paint) stays under 200ms
+
+### Testing Performance
+
+Before publishing content changes:
+1. Run `npm run validate` to check JSON validity
+2. Test page load in Chrome DevTools Performance tab
+3. Check Lighthouse scores (target: 90+ Performance)
+4. Verify Core Web Vitals are not degraded

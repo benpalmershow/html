@@ -497,3 +497,43 @@ const categoryIcons = {
 - URL accessibility testing
 - Date format consistency checks
 - Numeric data validation
+
+---
+
+## Performance Guidelines
+
+**Critical:** All data updates must preserve or improve site performance. The site is optimized for Core Web Vitals (LCP, CLS, INP).
+
+### Performance Impact of Data Changes
+
+When updating financial data:
+
+1. **JSON file size:**
+   - Keep `financials-data.json` as compact as possible
+   - Remove outdated prediction markets (completed games, expired FOMC meetings)
+   - Avoid adding unnecessary fields to indicator objects
+
+2. **Chart rendering performance:**
+   - Charts load on-demand via IntersectionObserver (visible on scroll)
+   - Chart.js loads lazily only when needed
+   - Large indicator arrays don't impact initial page load
+
+3. **Data fetching optimization:**
+   - Use IndexedDB caching in `media.js` pattern for API responses
+   - Implement cache-busting via `meta[name="site-data-version"]` only when necessary
+   - Batch API requests where possible
+
+When modifying data:
+- Test page load performance after adding new indicators
+- Verify LCP (Largest Contentful Paint) is not degraded
+- Check CLS (Cumulative Layout Shift) remains low
+- Ensure INP (Interaction to Next Paint) stays under 200ms
+
+### Testing Performance
+
+Before deploying data changes:
+1. Run `npm run validate` to check JSON validity
+2. Test page load in Chrome DevTools Performance tab
+3. Check Lighthouse scores (target: 90+ Performance)
+4. Verify Core Web Vitals are not degraded
+5. Test chart rendering performance with new indicators

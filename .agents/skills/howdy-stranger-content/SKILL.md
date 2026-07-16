@@ -373,6 +373,55 @@ When publishing a data update (e.g., monthly economic indicators):
    The surge reflects...
    ```
 
+## Performance Guidelines
+
+**Critical:** All changes must preserve or improve site performance. The site is optimized for Core Web Vitals (LCP, CLS, INP).
+
+### Performance Principles
+
+1. **No blocking resources:**
+   - Scripts use `defer` attribute
+   - Non-critical CSS loads asynchronously
+   - Lucide icons load on-demand via `requestIdleCallback`
+
+2. **Image optimization:**
+   - Use `.webp` format for all images
+   - Implement lazy loading for non-LCP images
+   - Use `loading="lazy"` and `decoding="async"` for off-screen images
+   - Set explicit width/height attributes to prevent CLS
+
+3. **CSS containment:**
+   - Use `contain: layout style paint` for isolated components
+   - Use `content-visibility: auto` for large off-screen sections
+   - Set `contain-intrinsic-size` for reserved space
+
+4. **Font loading:**
+   - Use system fonts where possible
+   - Preconnect to font CDNs
+   - Use `font-display: swap` for web fonts
+
+5. **JavaScript efficiency:**
+   - Use passive event listeners for scroll/touch
+   - Batch DOM updates with `requestAnimationFrame`
+   - Use `requestIdleCallback` for non-critical tasks
+   - Implement IndexedDB caching for API responses
+
+### When Making Changes
+
+- **Adding new scripts:** Always use `defer` or load on-demand
+- **Adding new CSS:** Consider if it can be deferred or loaded asynchronously
+- **Adding new images:** Optimize to WebP, add dimensions, use lazy loading
+- **Modifying layout:** Test for CLS (Cumulative Layout Shift)
+- **Adding animations:** Respect `prefers-reduced-motion` media query
+
+### Testing Performance
+
+Before deploying changes:
+1. Run `npm run validate` to check JSON validity
+2. Test in Chrome DevTools Performance tab
+3. Check Lighthouse scores (target: 90+ Performance)
+4. Verify Core Web Vitals are not degraded
+
 ## Technical Notes
 
 ### Journal Feed Loader (`js/journal-feed.js`)

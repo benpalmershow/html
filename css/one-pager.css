@@ -8,6 +8,63 @@
   contain-intrinsic-size: 1px 1200px;
 }
 
+.hero-section {
+  text-align: left;
+  padding: 2.5rem 1rem 1.5rem;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  contain: layout style paint;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 12vw, 6rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.hero-letter {
+  display: inline-block;
+  animation: hero-letter-retreat 2s ease-in-out forwards;
+  opacity: 0;
+}
+
+.hero-letter:nth-child(1) { animation-delay: 0.1s; }
+.hero-letter:nth-child(2) { animation-delay: 0.2s; }
+.hero-letter:nth-child(3) { animation-delay: 0.3s; }
+.hero-letter:nth-child(4) { animation-delay: 0.4s; }
+.hero-letter:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes hero-letter-retreat {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-letter {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .time-ago { font-size: 0.75rem; color: var(--color-gray-600, #495057); }
 
 #latest-journal a { text-decoration: none; color: inherit; }

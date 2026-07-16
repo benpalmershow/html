@@ -447,6 +447,17 @@ async function initOnePager() {
   setGeneratedAt();
   setupPrintButton();
 
+  // Hide hero letters after animation completes (Safari mobile fallback)
+  const heroLetters = document.querySelectorAll('.hero-letter');
+  if (heroLetters.length > 0) {
+    setTimeout(() => {
+      heroLetters.forEach(letter => {
+        letter.style.opacity = '0';
+        letter.style.visibility = 'hidden';
+      });
+    }, 2500); // 2s animation + buffer
+  }
+
   // Load data with yielding between operations to reduce blocking
   await loadLatestWorldCup();
   await yieldToMain();

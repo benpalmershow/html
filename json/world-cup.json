@@ -4228,7 +4228,7 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
@@ -4238,14 +4238,14 @@
         "name": "Argentina",
         "flag": "🇦🇷",
         "crest": "https://crests.football-data.org/762.png",
-        "score": null,
+        "score": 0,
         "halfTimeScore": null,
         "extraTimeScore": null,
         "penaltyScore": null
       },
       "status": "upcoming",
-      "statusRaw": "TIMED",
-      "time": "19:00",
+      "statusRaw": "LIVE",
+      "time": "TBD",
       "minute": null,
       "date": "2026-07-19",
       "utcDate": "2026-07-19T19:00:00Z",
@@ -4253,7 +4253,7 @@
       "stage": "FINAL",
       "group": null,
       "matchDay": null,
-      "winner": null,
+      "winner": "DRAW",
       "referees": [
         "Slavko Vinčič"
       ],
@@ -4263,5 +4263,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-19T18:31:58.877221Z"
+  "lastUpdated": "2026-07-19T19:45:34.180504Z"
 }

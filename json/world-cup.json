@@ -4228,9 +4228,9 @@
         "name": "Spain",
         "flag": "🇪🇸",
         "crest": "https://crests.football-data.org/760.svg",
-        "score": 0,
+        "score": 1,
         "halfTimeScore": 0,
-        "extraTimeScore": null,
+        "extraTimeScore": 1,
         "penaltyScore": null
       },
       "teamB": {
@@ -4240,12 +4240,12 @@
         "crest": "https://crests.football-data.org/762.png",
         "score": 0,
         "halfTimeScore": 0,
-        "extraTimeScore": null,
+        "extraTimeScore": 0,
         "penaltyScore": null
       },
-      "status": "live",
-      "statusRaw": "PAUSED",
-      "time": "0-0 HT",
+      "status": "finished",
+      "statusRaw": "FINISHED",
+      "time": "90'",
       "minute": null,
       "date": "2026-07-19",
       "utcDate": "2026-07-19T19:00:00Z",
@@ -4253,7 +4253,7 @@
       "stage": "FINAL",
       "group": null,
       "matchDay": null,
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "referees": [
         "Slavko Vinčič"
       ],
@@ -4263,5 +4263,5 @@
     }
   ],
   "matchCount": 104,
-  "lastUpdated": "2026-07-19T21:23:32.404606Z"
+  "lastUpdated": "2026-07-19T22:12:38.454788Z"
 }

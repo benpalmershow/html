@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-16T08:00:00",
+    "lastUpdated": "2026-07-22T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1906,7 +1906,7 @@
             "category": "Business Indicators",
             "agency": "The Conference Board",
             "name": "Lagging Economic Index",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-07-22T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.conference-board.org/topics/us-leading-indicators",
             "march": "118.9",
@@ -1920,7 +1920,12 @@
             "november": "119.8",
             "december": "119.6",
             "2026": {
-                "january": "120.0"
+                "january": "120.0",
+                "february": "120.1",
+                "march": "120.2",
+                "april": "120.6",
+                "may": "120.5",
+                "june": "120.5"
             },
             "change": "",
             "explanation": "The Conference Board's Lagging Economic Index (LAG) is a composite of seven economic indicators that change after the economy as a whole changes. Components include the average duration of unemployment, the prime rate, and the ratio of consumer credit to personal income. The LAG helps confirm and assess the direction of the economy's movements over recent months. It's particularly useful for confirming that a turning point in the economy has actually occurred. The index is expressed relative to 2016=100 and is typically used in conjunction with the Leading and Coincident Economic Indexes to provide a comprehensive view of the business cycle."
@@ -1986,7 +1991,7 @@
             "color": "#2ecc71",
             "agency": "The Conference Board",
             "name": "Leading Economic Indicator",
-            "lastUpdated": "2026-03-20T14:00:00Z",
+            "lastUpdated": "2026-07-22T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.conference-board.org/topics/leading-economic-indicators",
             "march": "",
@@ -2000,7 +2005,13 @@
             "november": "97.9",
             "december": "97.6",
             "2026": {
-                "january": "97.5"
+                "january": "97.5",
+                "february": "97.9",
+                "march": "97.3",
+                "april": "99.2", 
+                "may": "99.3",
+                "june": "99.1"           
+
             },
             "change": "",
             "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle."

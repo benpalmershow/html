@@ -99,7 +99,7 @@
       const emptyEl = document.getElementById('empty');
       const loadMore = document.getElementById('load-more');
       const mdCache = {};
-      const BATCH_DAYS = 3;
+      let BATCH_DAYS = 3;
       let allDays = [];
       let renderIndex = 0;
 
@@ -387,6 +387,7 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
         const section = document.createElement('section');
         section.className = 'day';
         section.dataset.date = day.date;
+        section.id = day.date;
 
         const header = document.createElement('div');
         header.className = 'day-header';
@@ -405,6 +406,15 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
         renderIndex += next.length;
         loadMore.classList.toggle('is-visible', renderIndex < allDays.length);
         emptyEl.style.display = allDays.length === 0 ? 'block' : 'none';
+        if (window.location.hash) scrollToHash();
+      }
+
+      function scrollToHash() {
+        const id = window.location.hash.slice(1);
+        const target = document.getElementById(id) || document.querySelector('[data-date="' + id.replace(/"/g, '\\"') + '"]');
+        if (target) {
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
+        }
       }
 
       function activateVideo(target) {
@@ -437,12 +447,22 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
 
       loadMore.addEventListener('click', renderMore);
 
-      fetch('json/journal.json')
-        .then(response => response.ok ? response.json() : Promise.reject(response.status))
-        .then(data => {
-          allDays = Array.isArray(data) ? data : [];
-          renderMore();
-        })
+        fetch('json/journal.json')
+          .then(response => response.ok ? response.json() : Promise.reject(response.status))
+          .then(data => {
+            allDays = Array.isArray(data) ? data : [];
+            const hasHash = !!window.location.hash;
+            if (hasHash) {
+              renderIndex = 0;
+              const origBatch = BATCH_DAYS;
+              BATCH_DAYS = allDays.length;
+              renderMore();
+              BATCH_DAYS = origBatch;
+              scrollToHash();
+            } else {
+              renderMore();
+            }
+          })
         .catch(() => {
           feed.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem">Failed to load journal.json</p>';
           emptyEl.style.display = 'none';

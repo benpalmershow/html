@@ -14,8 +14,7 @@ const categoryIcons = {
     'Government': '<i data-lucide="landmark" class="filter-icon"></i>',
     'Commodities': '<i data-lucide="package" class="filter-icon"></i>',
     'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>',
-    'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>',
-    'World Cup': '<i data-lucide="trophy" class="filter-icon"></i>'
+    'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>'
 };
 
 /* =========================================
@@ -32,8 +31,6 @@ function updateActiveElements(selector, predicate) {
 function handleFilterClick(element, category, isLatest = false) {
     if (category === '13F Holdings') {
         if (typeof ensureLoad13F === 'function') ensureLoad13F();
-    } else if (category === 'World Cup') {
-        if (typeof loadWorldCupMatches === 'function') loadWorldCupMatches();
     } else {
         if (typeof ensureLoad13F === 'function') ensureLoad13F();
     }
@@ -94,14 +91,10 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
          buttonsContainer.appendChild(btn);
      });
 
-     const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
-     buttonsContainer.appendChild(th13fBtn);
+      const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
+      buttonsContainer.appendChild(th13fBtn);
 
-     // Add World Cup filter button
-     const worldCupBtn = createFilterBtn('World Cup', '<i data-lucide="trophy" class="filter-icon"></i>', 'World Cup');
-     buttonsContainer.appendChild(worldCupBtn);
-
-     // Use event delegation on the buttons container
+      // Use event delegation on the buttons container
      buttonsContainer.addEventListener('click', function (e) {
          const btn = e.target.closest('.filter-btn');
          if (!btn) return;
@@ -114,10 +107,10 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
 
          handleFilterClick(btn, category, isLatest);
 
-         // Render indicator categories only for non-special filters
-         if (category !== '13F Holdings' && category !== 'World Cup') {
-             renderDashboard(isLatest ? 'all' : category, isLatest);
-         }
+          // Render indicator categories only for non-special filters
+          if (category !== '13F Holdings') {
+              renderDashboard(isLatest ? 'all' : category, isLatest);
+          }
      });
 
      if (typeof lucide !== 'undefined') lucide.createIcons();

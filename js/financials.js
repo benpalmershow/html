@@ -242,8 +242,6 @@ function initializeDashboard() {
     if (window.location.hash === '#latest-13f-filings-anchor' || initialFilter === '13F Holdings') {
         setActiveFilter('13F Holdings');
         ensureLoad13F();
-    } else if (initialFilter === 'World Cup') {
-        setActiveFilter('World Cup');
     } else {
         const cat = isLatest ? 'latest' : initialFilter;
         setActiveFilter(cat);
@@ -252,7 +250,6 @@ function initializeDashboard() {
         ensureLoad13F();
     }
 
-    if (typeof loadWorldCupMatches === 'function') loadWorldCupMatches();
     if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
     if (typeof setupModalHandlers === 'function') setupModalHandlers();

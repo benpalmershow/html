@@ -203,5 +203,17 @@ function initializeFirmCards() {
     }
 }
 
+document.addEventListener('click', function(e) {
+    const infoBtn = e.target.closest('.info-btn');
+    if (!infoBtn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const explanation = infoBtn.getAttribute('data-explanation');
+    if (!explanation) return;
+    if (typeof showExplanationTooltip === 'function') {
+        showExplanationTooltip(infoBtn, explanation);
+    }
+});
+
 // Auto-initialize when script loads
 document.addEventListener('DOMContentLoaded', load13FData);

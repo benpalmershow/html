@@ -208,7 +208,7 @@ function hideExplanationTooltip() {
 
 function showExplanationTooltip(btn, explanation) {
     const tip = getExplanationTooltip();
-    tip.querySelector('.tooltip-body').textContent = explanation;
+    tip.querySelector('.tooltip-body').innerHTML = explanation;
 
     if (explanationTooltipOwner && explanationTooltipOwner !== btn) {
         explanationTooltipOwner.classList.remove('active');

@@ -69,9 +69,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         <div class="indicator-header">
             <div class="firm-card-title">${firmName}</div>
             <div class="indicator-actions">
-                <button class="expand-toggle firm-expand-${firmIdx}" aria-label="Toggle firm details">
-                    <i data-lucide="info" style="width: 16px; height: 16px;"></i>
-                </button>
+                ${description ? `<button class="info-btn" title="Show firm description" aria-label="Show firm description" data-explanation="${description.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>` : ''}
             </div>
         </div>
         <div class="firm-card-info">
@@ -88,16 +86,11 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 10).map(h => `
                         <div class="holding-item">
-                            <div class="holding-ticker"><a href="https://www.perplexity.ai/finance/${h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                             <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
                             <div class="holding-name">${h.name}</div>
                             <div class="holding-pct">${h.pct}%</div>
                         </div>
                     `).join('')}
-                </div>
-            </div>
-            <div class="data-rows-container firm-description-${firmIdx}">
-                <div class="firm-description">
-                    ${description || ''}
                 </div>
             </div>
         </div>
@@ -159,7 +152,7 @@ function initializeFirmCards() {
             if (holdingsList) {
                 holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
                     <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}">
-                         <div class="holding-ticker"><a href="https://www.perplexity.ai/finance/${h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                         <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
                          <div class="holding-name">${h.name}</div>
                          <div class="holding-pct">${h.pct}%</div>
                      </div>

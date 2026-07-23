@@ -1,0 +1,91 @@
+/* ========================================
+   PREDICTION BAR STYLES
+   ======================================== */
+
+.prediction-toggle-container { margin: 1rem 0; text-align: center }
+
+.prediction-toggle-btn { background: var(--bg-secondary); color: var(--text-secondary); border: 2px solid var(--border-color); padding: 8px 16px; border-radius: var(--control-radius); font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px }
+
+.prediction-toggle-btn:hover { background: var(--logo-orange); color: var(--color-white); border-color: var(--logo-orange); transform: translateY(-1px) }
+
+.prediction-toggle-btn i { width: 16px; height: 16px }
+
+.prediction-markets-hidden { display: none !important }
+
+.prediction-bar-container { margin: 6px 0 8px; display: flex; flex-direction: column; gap: 4px; }
+
+.prediction-bar-row { display: flex; align-items: center; gap: 8px; }
+
+.prediction-bar-label { font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); min-width: 50px; flex-shrink: 0; }
+
+.prediction-bar-track { flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; position: relative; }
+
+.prediction-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+
+.prediction-bar-fill.yes-bar { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); }
+
+.prediction-bar-fill.no-bar { background: linear-gradient(90deg, #ef4444 0%, #f87171 100%); }
+
+.prediction-bar-fill.dem-bar { background: linear-gradient(90deg, #3498db 0%, #5dade2 100%); }
+
+.prediction-bar-fill.gop-bar { background: linear-gradient(90deg, #e74c3c 0%, #f1948a 100%); }
+
+.prediction-bar-fill.fomc-hold { background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%); }
+
+.prediction-bar-fill.fomc-hike { background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); }
+
+.prediction-bar-fill.fomc-cut { background: linear-gradient(90deg, #ef4444 0%, #f87171 100%); }
+
+.bar-dem { background: linear-gradient(90deg, #3498db 0%, #5dade2 100%) !important; }
+
+.bar-gop { background: linear-gradient(90deg, #e74c3c 0%, #f1948a 100%) !important; }
+
+.bar-yes { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%) !important; }
+
+.bar-no { background: linear-gradient(90deg, #ef4444 0%, #f87171 100%) !important; }
+
+.prediction-bar-value { font-size: 0.75rem; font-weight: 700; min-width: 32px; text-align: right; }
+
+.prediction-bar-value.yes-value { color: #22c55e; }
+
+.prediction-bar-value.no-value { color: #ef4444; }
+
+.prediction-change { font-size: 0.65rem; margin-left: 4px; font-weight: 600; }
+
+.prediction-change.positive { color: #22c55e; }
+
+.prediction-change.negative { color: #ef4444; }
+
+.prediction-dual-bar .prediction-bar-track { height: 12px; }
+
+.prediction-dual-bar .bar-yes { border-radius: 4px 0 0 4px; }
+
+.prediction-dual-bar .bar-no { border-radius: 0 4px 4px 0; }
+
+/* FOMC STACKED BAR */
+.fomc-stacked-bar-row { margin-bottom: 8px; }
+
+.fomc-stacked-bar-track { display: flex; height: 24px; background: var(--bg-tertiary); border-radius: 6px; overflow: hidden; position: relative; }
+
+.fomc-segment { display: flex; align-items: center; justify-content: center; height: 100%; transition: width 0.4s ease; position: relative; min-width: 0; }
+
+.fomc-segment-label { font-size: 11px; font-weight: 700; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 4px; }
+
+.fomc-hold { background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%); }
+
+.fomc-hike { background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); }
+
+.fomc-cut { background: linear-gradient(90deg, #ef4444 0%, #f87171 100%); }
+
+.fomc-legend { display: flex; gap: 12px; margin-top: 6px; justify-content: center; }
+
+.fomc-legend-item { display: flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; color: var(--text-secondary); }
+
+.fomc-legend-color { width: 8px; height: 8px; border-radius: 2px; }
+
+/* PREDICTION HISTORY */
+.prediction-history-row { transition: background-color 0.2s ease; }
+
+.prediction-history-row:hover { background-color: rgba(var(--logo-teal-rgb), 0.05); }
+
+.prediction-history-date { cursor: help; }

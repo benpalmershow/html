@@ -287,11 +287,12 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
         const hasFile = !!entry.file;
         const hasContent = !!entry.content;
         const hasLink = !!entry.link;
+        const hasToggle = hasFile || (hasContent && entry.collapsed);
         const div = document.createElement('div');
         div.className = 'entry';
 
         const headEl = document.createElement('div');
-        headEl.className = 'entry-head' + (hasFile ? ' has-toggle' : '');
+        headEl.className = 'entry-head' + (hasToggle ? ' has-toggle' : '');
 
         const titleEl = document.createElement('span');
         titleEl.className = 'entry-title';
@@ -310,7 +311,7 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
         headEl.appendChild(metaEl);
 
         let accordionEl = null;
-        if (hasFile) {
+        if (hasToggle) {
           const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
           svg.setAttribute('class', 'chevron');
           svg.setAttribute('viewBox', '0 0 14 14');
@@ -344,20 +345,24 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
 
             if (!open && !loaded) {
               loaded = true;
-              inner.innerHTML = '<span class="loading">Loading…</span>';
-              if (mdCache[entry.file]) {
-                inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
-                return;
+              if (hasFile) {
+                inner.innerHTML = '<span class="loading">Loading…</span>';
+                if (mdCache[entry.file]) {
+                  inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
+                  return;
+                }
+                fetch(entry.file)
+                  .then(response => response.ok ? response.text() : Promise.reject(response.status))
+                  .then(text => {
+                    mdCache[entry.file] = text;
+                    inner.innerHTML = normalizeContent(parseMarkdown(text));
+                  })
+                  .catch(() => {
+                    inner.innerHTML = '<span class="loading">Could not load file.</span>';
+                  });
+              } else if (hasContent) {
+                inner.innerHTML = normalizeContent(entry.content);
               }
-              fetch(entry.file)
-                .then(response => response.ok ? response.text() : Promise.reject(response.status))
-                .then(text => {
-                  mdCache[entry.file] = text;
-                  inner.innerHTML = normalizeContent(parseMarkdown(text));
-                })
-                .catch(() => {
-                  inner.innerHTML = '<span class="loading">Could not load file.</span>';
-                });
             }
           }
 
@@ -372,7 +377,7 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
 
         div.appendChild(headEl);
 
-        if (hasContent) {
+        if (hasContent && !hasToggle) {
           const contentEl = document.createElement('div');
           contentEl.className = 'entry-content';
           contentEl.innerHTML = normalizeContent(entry.content);

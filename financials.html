@@ -136,8 +136,8 @@
               <span class="category-icon"><i data-lucide="building-2"></i></span>
               <span class="category-name">13F Holdings</span>
             </h2>
-            <div class="indicators-grid" id="firmCardsContainer" style="min-height: 280px; contain: layout;">
-              <div class="skeleton-card" style="height: 260px;"></div>
+            <div class="indicators-grid" id="firmCardsContainer" style="contain: layout;">
+              <div class="skeleton-card" style="height: 120px;"></div>
             </div>
           </div>
 
@@ -160,6 +160,7 @@
   <script src="js/charts.js" defer></script>
   <script src="js/filters.js" defer></script>
   <script src="js/financials.js" defer></script>
+  <script src="js/13f-holdings.js" defer></script>
 
   <!-- Non-critical scripts loaded after idle to reduce TBT -->
   <script>
@@ -169,12 +170,6 @@
         searchScript.src = 'js/search.js';
         searchScript.defer = true;
         document.head.appendChild(searchScript);
-
-        // 13F Holdings - appears later in page
-        const holdingsScript = document.createElement('script');
-        holdingsScript.src = 'js/13f-holdings.js';
-        holdingsScript.defer = true;
-        document.head.appendChild(holdingsScript);
 
         // World Cup - appears later in page
         const worldCupScript = document.createElement('script');

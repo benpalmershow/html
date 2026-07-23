@@ -1,0 +1,67 @@
+/* ========================================
+   HORMUZ CRISIS CARD - MINIMAL
+   ======================================== */
+
+.hormuz-card { display: flex; flex-direction: column; gap: 4px; }
+
+.hormuz-top-row { display: flex; align-items: baseline; gap: 4px; line-height: 1; }
+
+.hormuz-count-num { font-size: 1.4rem; font-weight: 700; color: #dc2626; letter-spacing: -0.02em; }
+
+.hormuz-count-unit { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+
+.hormuz-status-badge { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #dc2626; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 3px; padding: 1px 4px; margin-left: auto; }
+
+.hormuz-capacity-row { display: flex; align-items: center; gap: 6px; }
+
+.hormuz-capacity-track { flex: 1; height: 4px; background: rgba(var(--color-primary-rgb), 0.1); border-radius: 2px; overflow: hidden; }
+
+.hormuz-capacity-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; min-width: 2px; }
+
+.hormuz-capacity--critical { background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%); }
+
+.hormuz-capacity--low { background: linear-gradient(90deg, #f97316 0%, #fb923c 100%); }
+
+.hormuz-capacity--normal { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); }
+
+.hormuz-capacity-text { font-size: 0.6rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+
+.hormuz-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 6px 0; }
+
+.hormuz-metric { background: rgba(var(--color-primary-rgb), 0.05); border: 1px solid var(--border-color); border-radius: 4px; padding: 5px 8px; display: flex; flex-direction: column; gap: 2px; }
+
+.hormuz-metric--danger { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.25); }
+
+.hormuz-metric-val { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
+
+.hormuz-metric--danger .hormuz-metric-val { color: #dc2626; }
+
+.hormuz-metric-lbl { font-size: 0.55rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+.hormuz-section-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 8px; margin-bottom: 4px; padding-bottom: 2px; border-bottom: 1px solid var(--border-color); }
+
+.hormuz-daily-list { display: flex; flex-direction: column; gap: 2px; }
+
+.hormuz-daily-item { display: flex; align-items: center; gap: 8px; padding: 3px 6px; border-radius: 3px; font-size: 0.75rem; }
+
+.hormuz-daily-item:hover { background: rgba(var(--color-primary-rgb), 0.05); }
+
+.hormuz-daily--low { background: rgba(220, 38, 38, 0.06); }
+
+.hormuz-daily--low .hormuz-daily-count { color: #dc2626; font-weight: 700; }
+
+.hormuz-daily-date { color: var(--text-muted); min-width: 50px; font-weight: 500; }
+
+.hormuz-daily-count { font-weight: 600; color: var(--text-primary); min-width: 24px; }
+
+.hormuz-daily-badge { font-size: 0.6rem; color: #dc2626; font-weight: 600; margin-left: auto; }
+
+.hormuz-monthly-grid { display: flex; gap: 12px; }
+
+.hormuz-monthly-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+.hormuz-monthly-name { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+
+.hormuz-monthly-val { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
+
+.hormuz-monthly--low { color: #dc2626; }

@@ -65,17 +65,37 @@ function isETF(holding) {
 }
 
 function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, description) {
+    const topPositions = firmHoldings.slice(0, 5);
+    const concentrationPct = topPositions.reduce((sum, h) => sum + h.pct, 0);
+    
+    // Build firm metrics info for the tooltip
+    const firmMetrics = `
+        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+                <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM:</span>
+                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem;">$${(totalValue / 1000000).toFixed(1)}M</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+                <span style="color: var(--text-secondary); font-size: 0.8rem;">Filed:</span>
+                <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${getFilingDate(firmIdx)}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 12px;">
+                <span style="color: var(--text-secondary); font-size: 0.8rem;">Top 5:</span>
+                <span style="color: var(--logo-orange); font-weight: 600; font-size: 0.8rem;">${concentrationPct.toFixed(1)}%</span>
+            </div>
+        </div>
+    `;
+    
+    const fullExplanation = firmMetrics + (description || '');
+    
     return `
         <div class="indicator-header">
             <div class="firm-card-title">${firmName}</div>
             <div class="indicator-actions">
-                ${description ? `<button class="info-btn" title="Show firm description" aria-label="Show firm description" data-explanation="${description.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>` : ''}
+                <button class="info-btn" title="Show firm details" aria-label="Show firm details" data-explanation="${fullExplanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
             </div>
         </div>
-        <div class="firm-card-info">
-            <div>AUM: $${(totalValue / 1000000).toFixed(1)}M</div>
-            <div>Filed: ${getFilingDate(firmIdx)}</div>
-        </div>
+        <div class="indicator-agency">Filed: <span class="indicator-date">${getFilingDate(firmIdx)}</span></div>
         <div class="firm-filter-buttons">
             <button class="firm-filter-btn firm-filter-${firmIdx}-all active" data-firm="${firmIdx}" data-filter="all">All</button>
             <button class="firm-filter-btn firm-filter-${firmIdx}-etf" data-firm="${firmIdx}" data-filter="etf">ETF</button>
@@ -85,12 +105,16 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 10).map(h => `
-                        <div class="holding-item">
+                        <div class="holding-item" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
                              <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
                             <div class="holding-name">${h.name}</div>
                             <div class="holding-pct">${h.pct}%</div>
                         </div>
                     `).join('')}
+                </div>
+                <div class="firm-empty-state" style="display: none;">
+                    <div class="empty-state-icon">📊</div>
+                    <div class="empty-state-text">No holdings match this filter</div>
                 </div>
             </div>
         </div>
@@ -149,34 +173,44 @@ function initializeFirmCards() {
 
             // Update holdings list
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
+            const emptyState = card.querySelector('.firm-empty-state');
+            
             if (holdingsList) {
-                holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
-                    <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}">
-                         <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
-                         <div class="holding-name">${h.name}</div>
-                         <div class="holding-pct">${h.pct}%</div>
-                     </div>
-                `).join('');
+                if (displayHoldings.length === 0) {
+                    holdingsList.style.display = 'none';
+                    if (emptyState) emptyState.style.display = 'block';
+                } else {
+                    holdingsList.style.display = 'flex';
+                    if (emptyState) emptyState.style.display = 'none';
+                    
+                    holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
+                        <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
+                             <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
+                             <div class="holding-name">${h.name}</div>
+                             <div class="holding-pct">${h.pct}%</div>
+                         </div>
+                    `).join('');
 
-                // Add click handlers for holdings
-                holdingsList.querySelectorAll('.holding-item').forEach((item) => {
-                    item.addEventListener('click', (e) => {
-                        // If the click originated from a link, allow default navigation
-                        if (e.target.closest('a')) return;
-                        e.preventDefault();
-                        const holdingIndex = parseInt(item.dataset.holdingIndex);
-                        
-                        // Highlight the holding item in the list
-                        holdingsList.querySelectorAll('.holding-item').forEach(h => {
-                            h.classList.remove('highlighted');
-                            h.style.borderLeft = '';
-                            h.style.borderImage = '';
+                    // Add click handlers for holdings
+                    holdingsList.querySelectorAll('.holding-item').forEach((item) => {
+                        item.addEventListener('click', (e) => {
+                            // If the click originated from a link, allow default navigation
+                            if (e.target.closest('a')) return;
+                            e.preventDefault();
+                            const holdingIndex = parseInt(item.dataset.holdingIndex);
+                            
+                            // Highlight the holding item in the list
+                            holdingsList.querySelectorAll('.holding-item').forEach(h => {
+                                h.classList.remove('highlighted');
+                                h.style.borderLeft = '';
+                                h.style.borderImage = '';
+                            });
+                            const pct = item.dataset.pct;
+                            item.classList.add('highlighted');
+                            item.style.borderLeft = `3px solid ${getColorByValue(pct)}`;
                         });
-                        const pct = item.dataset.pct;
-                        item.classList.add('highlighted');
-                        item.style.borderLeft = `3px solid ${getColorByValue(pct)}`;
                     });
-                });
+                }
             }
 
             // Update button states

@@ -1,0 +1,53 @@
+/* ========================================
+   13F HOLDINGS STYLES
+   ======================================== */
+
+.firm-card-title { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; letter-spacing: -0.01em; }
+
+.firm-filter-buttons { display: flex; gap: 0.35rem; margin-bottom: 0.5rem; padding: 0 0.2rem; flex-wrap: wrap; }
+
+.firm-filter-btn { padding: 4px 10px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 500; transition: all 0.2s ease; }
+
+.firm-filter-btn.active { background: var(--logo-teal); color: white; border-color: var(--logo-teal); font-weight: 600; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(var(--logo-teal-rgb), 0.25); }
+
+.firm-filter-btn:hover:not(.active) { background: var(--bg-secondary); border-color: var(--text-muted); }
+
+.firm-holdings-list { display: flex; flex-direction: column; gap: 3px; max-height: 320px; overflow-y: auto; padding-right: 3px; }
+
+.holding-item { background: var(--bg-secondary); padding: 5px 8px 5px 12px; border-radius: 4px; font-size: 11px; transition: all 0.15s ease; display: flex; align-items: center; gap: 8px; cursor: pointer; border: 1px solid transparent; position: relative; }
+
+.holding-item:hover { background: var(--bg-tertiary); border-color: var(--border-color); transform: translateX(1px); }
+
+.holding-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pct-color, var(--logo-teal)); border-radius: 1px; transition: background 0.3s ease; }
+
+.holding-ticker { font-weight: 700; color: var(--text-primary); font-size: 12px; letter-spacing: -0.02em; flex-shrink: 0; position: relative; z-index: 1; }
+
+.holding-ticker a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+
+.holding-ticker a:hover { color: var(--logo-teal); text-decoration: underline; }
+
+.holding-name { font-weight: 500; color: var(--text-secondary); font-size: 10px; line-height: 1.2; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; position: relative; z-index: 1; }
+
+.holding-pct { color: var(--logo-teal); font-size: 10px; font-weight: 600; min-width: 28px; text-align: right; flex-shrink: 0; position: relative; z-index: 1; }
+
+.firm-empty-state { text-align: center; padding: 1.5rem 0.75rem; color: var(--text-muted); font-size: 0.8rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; }
+
+.firm-description { padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; }
+
+.firm-description a { color: var(--logo-teal); text-decoration: none; font-weight: 500; }
+
+.firm-description a:hover { text-decoration: underline; color: var(--logo-orange); }
+
+/* 13F Mobile Responsiveness */
+@media (max-width: 768px) {
+  .firm-holdings-list { max-height: 280px; }
+  .holding-item { padding: 4px 6px; }
+  .firm-filter-btn { padding: 3px 8px; font-size: 0.7rem; }
+}
+
+@media (max-width: 480px) {
+  .firm-card-title { font-size: 0.85rem; }
+  .firm-filter-buttons { gap: 0.3rem; }
+  .firm-filter-btn { padding: 3px 7px; font-size: 0.65rem; }
+  .holding-item { padding: 4px 5px; }
+}

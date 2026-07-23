@@ -61,3 +61,21 @@
 .match-details-popup a:hover {
   color: var(--logo-orange);
 }
+
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  padding-top: 4px;
+  border-top: 1px solid var(--border-color);
+}
+
+.match-time {
+  font-weight: 600;
+  color: #ef4444;
+}
+
+#match-status-badge.live {
+  animation: badgePulse 2s ease-in-out infinite;
+}

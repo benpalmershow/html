@@ -9,6 +9,8 @@
 const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+const ENABLE_EARNINGS = false;
+
 const SELECTORS = {
     FILTER_BTN: '.filter-btn',
     CATEGORY_DROPDOWN: '#financials-filters',
@@ -213,7 +215,17 @@ function setupLazyIndicatorRendering() {
 
 async function fetchFinancialData() {
     try {
-        const data = await Services.dataService.fetchJSON('json/financials-data.json');
+        const [data, earningsData] = await Promise.all([
+            Services.dataService.fetchJSON('json/financials-data.json'),
+            Services.dataService.fetchJSON('json/earnings.json').catch(() => null)
+        ]);
+
+        if (ENABLE_EARNINGS && earningsData && earningsData.earnings && earningsData.earnings.length) {
+            const earningsIndicators = convertEarningsToIndicators(earningsData.earnings);
+            data.indices = data.indices.filter(item => item.category !== 'Earnings');
+            data.indices.push(...earningsIndicators);
+        }
+
         DashboardState.setData(data);
         initializeDashboard();
     } catch (error) {
@@ -221,6 +233,51 @@ async function fetchFinancialData() {
         document.getElementById('categories').innerHTML =
             '<div class="error">Error loading financial data. Please try again later.</div>';
     }
+}
+
+function convertEarningsToIndicators(earnings) {
+    return earnings.map(entry => {
+        const recent = (entry.recentEarnings || []);
+        const latest = recent[0] || {};
+        const info = entry.info || {};
+
+        const indicator = {
+            id: `earnings-${entry.ticker.toLowerCase()}`,
+            category: 'Earnings',
+            agency: entry.source || 'Yahoo Finance',
+            name: entry.ticker,
+            url: `https://finance.yahoo.com/quote/${entry.ticker}`,
+            lastUpdated: entry.fetchedAt,
+            reportedDate: latest.reportedDate || '',
+            actualEPS: latest.actualEPS,
+            estimatedEPS: latest.estimatedEPS,
+            surprisePercent: latest.surprisePercent,
+            nextEarningsDate: entry.nextEarningsDate || '',
+            estimatedNextEPS: entry.estimatedEPS || latest.estimatedEPS,
+            latestPrice: entry.latestPrice,
+            change: '',
+            explanation: buildEarningsExplanation(entry, latest, info),
+            info: info,
+            recentEarnings: entry.recentEarnings || []
+        };
+
+        return indicator;
+    }).filter(ind => ind.name);
+}
+
+function buildEarningsExplanation(entry, latest, info) {
+    const parts = [];
+    parts.push(`${entry.company || entry.ticker} latest earnings from ${latest.reportedDate || 'N/A'}.`);
+    if (entry.nextEarningsDate) {
+        parts.push(`Next earnings: ${entry.nextEarningsDate}.`);
+    }
+    if (info.marketCap) {
+        parts.push(`Market cap: $${(info.marketCap / 1e9).toFixed(1)}B.`);
+    }
+    if (info.trailingPE) {
+        parts.push(`P/E: ${info.trailingPE.toFixed(1)}.`);
+    }
+    return parts.join(' ');
 }
 
 /* =========================================

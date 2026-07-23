@@ -10,6 +10,7 @@ const ChartStrategies = (function () {
         if (indicator.name === 'Monthly Budget Deficit' && indicator.receipts && indicator.outlays) return 'budget-deficit';
         if (indicator.name === 'KY-04 Massie v. Gallrein') return 'political-poll';
         if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return 'prediction-market';
+        if (indicator.category === 'Earnings' && indicator.recentEarnings && indicator.recentEarnings.length > 0) return 'earnings';
         return 'line';
     }
 
@@ -496,10 +497,29 @@ function buildPoliticalPollChartConfig(indicatorName, indicatorData) {
     return { type: 'chartjs-mixed', data: { labels, datasets: [{ label: 'Massie', data: candidate1Values, type: 'line', borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointBackgroundColor: '#3498db', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6 }, { label: 'Gallrein', data: candidate2Values, type: 'line', borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointBackgroundColor: '#e74c3c', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6 }] } };
 }
 
+function buildEarningsChartConfig(indicatorName, indicatorData) {
+    const recent = (indicatorData.recentEarnings || []).slice(0, 8).reverse();
+    if (recent.length === 0) return null;
+    const labels = recent.map(e => e.reportedDate ? new Date(e.reportedDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }) : '');
+    const actualValues = recent.map(e => parseFloat(e.actualEPS));
+    const estimatedValues = recent.map(e => parseFloat(e.estimatedEPS));
+    return {
+        type: 'chartjs-bar',
+        data: {
+            labels,
+            datasets: [
+                { label: 'Actual EPS', data: actualValues, backgroundColor: 'rgba(44, 95, 90, 0.8)', borderColor: '#2C5F5A', borderWidth: 1 },
+                { label: 'Est. EPS', data: estimatedValues, backgroundColor: 'rgba(255, 255, 255, 0.4)', borderColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1 }
+            ]
+        }
+    };
+}
+
 ChartStrategies.registry
     .register('line', buildStandardLineChartConfig)
     .register('trade-deficit', buildTradeDeficitChartConfig)
     .register('budget-deficit', buildBudgetDeficitChartConfig)
     .register('prediction-market', buildPredictionMarketChartConfig)
     .register('political-poll', buildPoliticalPollChartConfig)
-    .register('chartjs-bar', buildPredictionMarketChartConfig);
+    .register('chartjs-bar', buildPredictionMarketChartConfig)
+    .register('earnings', buildEarningsChartConfig);

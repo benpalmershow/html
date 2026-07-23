@@ -1,0 +1,42 @@
+name: Fetch Earnings
+
+on:
+  schedule:
+    - cron: "0 6 * * 1-5"   # Weekdays at 6am PT
+  workflow_dispatch:          # Manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-earnings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install yfinance pandas
+
+      - name: Run earnings fetcher
+        run: python3 scripts/fetch_earnings.py
+
+      - name: Validate JSON
+        run: python3 -m json.tool json/earnings.json > /dev/null
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/earnings.json
+          if git diff --staged --quiet; then
+            echo "No earnings changes detected"
+            exit 0
+          fi
+          git commit -m "chore: update earnings [skip ci]"
+          git push

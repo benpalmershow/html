@@ -306,8 +306,66 @@ function renderHormuz(indicator) {
         return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
+    function renderEarnings(indicator) {
+        const info = indicator.info || {};
+        const recent = indicator.recentEarnings || [];
+        const latest = recent[0] || {};
+        const infoEntries = Object.entries(info).filter(([, value]) => value !== null && value !== undefined && value !== '');
+
+        const latestItems = [];
+        if (latest.reportedDate) latestItems.push(`<div class="latest-data-row"><span class="month-label">Reported:</span><span class="month-value">${latest.reportedDate}</span></div>`);
+        if (latest.actualEPS !== undefined && latest.actualEPS !== null) latestItems.push(`<div class="latest-data-row"><span class="month-label">Actual EPS:</span><span class="month-value">$${latest.actualEPS}</span></div>`);
+        if (latest.estimatedEPS !== undefined && latest.estimatedEPS !== null) latestItems.push(`<div class="latest-data-row"><span class="month-label">Est. EPS:</span><span class="month-value">$${latest.estimatedEPS}</span></div>`);
+        if (latest.surprisePercent) {
+            const val = parseFloat(latest.surprisePercent);
+            const cssClass = val >= 0 ? 'change-positive' : 'change-negative';
+            const icon = val >= 0 ? 'arrow-up-right' : 'arrow-down-right';
+            const surpriseHtml = `<i data-lucide="${icon}" style="display:inline;width:0.85em;height:0.85em;vertical-align:-0.05em;margin-right:2px;"></i>${Math.abs(val)}%`;
+            latestItems.push(`<div class="latest-data-row"><span class="month-label">Surprise:</span><span class="month-value ${cssClass}">${surpriseHtml}</span></div>`);
+        }
+        if (info.marketCap) latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">$${(info.marketCap / 1e9).toFixed(1)}B</span></div>`);
+        if (info.trailingPE) latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${info.trailingPE.toFixed(1)}</span></div>`);
+
+        const latestDataHtml = latestItems.slice(0, 4).join('');
+
+        let historyDataHtml = '';
+        let hasHistory = false;
+        if (recent.length > 1) {
+            hasHistory = true;
+            historyDataHtml = recent.slice(1).map(entry => {
+                const val = parseFloat(entry.surprisePercent);
+                const cssClass = val >= 0 ? 'change-positive' : 'change-negative';
+                const icon = val >= 0 ? 'arrow-up-right' : 'arrow-down-right';
+                const surpriseHtml = `<i data-lucide="${icon}" style="display:inline;width:0.85em;height:0.85em;vertical-align:-0.05em;margin-right:2px;"></i>${Math.abs(val)}%`;
+                return `<div class="data-row"><span class="month-label">${entry.reportedDate || ''}</span><span class="month-value">Actual: $${entry.actualEPS} | Est: $${entry.estimatedEPS} <span class="${cssClass}">${surpriseHtml}</span></span></div>`;
+            }).join('');
+        }
+
+        if (infoEntries.length > 0) {
+            hasHistory = true;
+            const companyRows = [];
+            if (info.company || indicator.name) companyRows.push(`<div class="data-row"><span class="month-label">Company:</span><span class="month-value">${info.company || indicator.name}</span></div>`);
+            if (info.sector) companyRows.push(`<div class="data-row"><span class="month-label">Sector:</span><span class="month-value">${info.sector}</span></div>`);
+            if (indicator.latestPrice) companyRows.push(`<div class="data-row"><span class="month-label">Price:</span><span class="month-value">$${indicator.latestPrice}</span></div>`);
+            if (indicator.nextEarningsDate) companyRows.push(`<div class="data-row"><span class="month-label">Next:</span><span class="month-value">${indicator.nextEarningsDate}</span></div>`);
+            if (indicator.estimatedNextEPS) companyRows.push(`<div class="data-row"><span class="month-label">Next Est:</span><span class="month-value">$${indicator.estimatedNextEPS}</span></div>`);
+
+            const infoRows = infoEntries.slice(0, 12).map(([key, value]) => {
+                const displayValue = typeof value === 'number' ? (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
+                return `<div class="data-row"><span class="month-label">${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:</span><span class="month-value">${displayValue}</span></div>`;
+            }).join('');
+
+            const sections = [];
+            if (companyRows.length > 0) sections.push(companyRows.join(''));
+            if (infoRows) sections.push(`<div class="prediction-section-label" style="margin-top: 8px;">Key Metrics</div>` + infoRows);
+            historyDataHtml += sections.join('');
+        }
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
+    }
+
     // --- Registry setup ---
-    registry.register('fomc', (indicator) => renderFOMC(indicator)).register('recession', (indicator) => renderRecession(indicator)).register('prediction', (indicator) => renderPrediction(indicator)).register('sports', (indicator) => renderSports(indicator)).register('venezuela', (indicator) => renderVenezuela(indicator)).register('hormuz', (indicator) => renderHormuz(indicator)).register('politicalPoll', (indicator) => renderPoliticalPoll(indicator)).register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS)).registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
+    registry.register('fomc', (indicator) => renderFOMC(indicator)).register('recession', (indicator) => renderRecession(indicator)).register('prediction', (indicator) => renderPrediction(indicator)).register('sports', (indicator) => renderSports(indicator)).register('venezuela', (indicator) => renderVenezuela(indicator)).register('hormuz', (indicator) => renderHormuz(indicator)).register('politicalPoll', (indicator) => renderPoliticalPoll(indicator)).register('earnings', (indicator) => renderEarnings(indicator)).register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS)).registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
     return { registry, collectMonthlyData, collectSparklineValues };
 })();
 
@@ -324,6 +382,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('FOMC') || (indicator.rate_cut_odds || indicator.rate_hold_odds || indicator.rate_hike_odds)) return 'fomc';
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
+    if (indicator.category === 'Earnings') return 'earnings';
     const probabilities = indicator.probabilities || indicator.propabilities;
     if (probabilities && typeof probabilities === 'object') {
         const firstEntry = Object.values(probabilities)[0];
@@ -427,7 +486,7 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
     const accent = indicator.color || 'var(--logo-teal)';
     const isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}${indicator.category !== 'Prediction Markets' ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3" class="chart-icon"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div><div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}${!['Prediction Markets'].includes(indicator.category) ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3" class="chart-icon"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div><div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---

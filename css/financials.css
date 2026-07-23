@@ -89,7 +89,7 @@
 
 .data-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 0.85rem; margin-bottom: 0; }
 
-.month-label { font-weight: 600; color: var(--text-secondary); font-size: 0.7rem; word-break: keep-all; hyphens: none; cursor: help; }
+  .month-label { font-weight: 600; color: var(--text-secondary); font-size: 0.7rem; word-break: keep-all; hyphens: none; }
 
 .month-label[title] { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
 

@@ -288,16 +288,19 @@ function renderHormuz(indicator) {
         if (availableData.length > 0) {
             const latest = availableData[0];
             const extraHtml = buildExtraHtml(indicator, latest, MONTHS);
-            latestDataHtml = `<div class="latest-data-row"><span class="month-label">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
+            const latestTooltip = buildLabelTooltip(indicator, latest, MONTHS);
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label" title="${latestTooltip}">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
             if (availableData.length > 1) {
                 const second = availableData[1];
                 const secondExtraHtml = buildExtraHtml(indicator, second, MONTHS);
-                latestDataHtml += `<div class="latest-data-row"><span class="month-label">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
+                const secondTooltip = buildLabelTooltip(indicator, second, MONTHS);
+                latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="${secondTooltip}">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
                 hasHistory = availableData.length > 2;
                 for (let i = 2; i < availableData.length; i++) {
                     const item = availableData[i];
                     const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
-                    historyDataHtml += `<div class="data-row"><span class="month-label">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
+                    const historyTooltip = buildLabelTooltip(indicator, item, MONTHS);
+                    historyDataHtml += `<div class="data-row"><span class="month-label" title="${historyTooltip}">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
                 }
             }
         } else {
@@ -310,7 +313,8 @@ function renderHormuz(indicator) {
         const info = indicator.info || {};
         const recent = indicator.recentEarnings || [];
         const latest = recent[0] || {};
-        const infoEntries = Object.entries(info).filter(([, value]) => value !== null && value !== undefined && value !== '');
+        const excludedInfoKeys = new Set(['company', 'sector', 'marketCap', 'trailingPE']);
+        const infoEntries = Object.entries(info).filter(([key, value]) => value !== null && value !== undefined && value !== '' && !excludedInfoKeys.has(key));
 
         const latestItems = [];
         if (latest.reportedDate) latestItems.push(`<div class="latest-data-row"><span class="month-label">Reported:</span><span class="month-value">${latest.reportedDate}</span></div>`);
@@ -350,7 +354,7 @@ function renderHormuz(indicator) {
             if (indicator.nextEarningsDate) companyRows.push(`<div class="data-row"><span class="month-label">Next:</span><span class="month-value">${indicator.nextEarningsDate}</span></div>`);
             if (indicator.estimatedNextEPS) companyRows.push(`<div class="data-row"><span class="month-label">Next Est:</span><span class="month-value">$${indicator.estimatedNextEPS}</span></div>`);
 
-            const infoRows = infoEntries.slice(0, 12).map(([key, value]) => {
+            const infoRows = infoEntries.map(([key, value]) => {
                 const displayValue = typeof value === 'number' ? (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
                 return `<div class="data-row"><span class="month-label">${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:</span><span class="month-value">${displayValue}</span></div>`;
             }).join('');
@@ -420,6 +424,25 @@ function buildExtraHtml(indicator, dataItem, MONTHS) {
         if (yoyValue) extraHtml = `<span class="month-change month-change-inline">${yoyValue}</span>`;
     }
     return extraHtml;
+}
+
+function buildLabelTooltip(indicator, dataItem, MONTHS) {
+    const parts = [`${dataItem.label}: ${dataItem.value}`];
+    if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
+        const changesMap = {};
+        calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
+        const changeObj = changesMap[dataItem.month];
+        if (changeObj) {
+            parts.push(`MoM: ${changeObj.formatted}`);
+            parts.push(`Previous: ${changeObj.prevValue}`);
+        }
+    } else if (indicator.name === 'CPI') {
+        let yoyValue = null;
+        if (indicator.yoy && dataItem.year && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) yoyValue = indicator.yoy[dataItem.year][dataItem.month];
+        else if (indicator.yoy && indicator.yoy[dataItem.month]) yoyValue = indicator.yoy[dataItem.month];
+        if (yoyValue) parts.push(`YoY: ${yoyValue}`);
+    }
+    return parts.join('\n');
 }
 
 // --- Change Metric Button builder ---

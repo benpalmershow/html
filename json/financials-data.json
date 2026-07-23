@@ -209,15 +209,19 @@
             "color": "#e74c3c",
             "agency": "Kalshi",
             "name": "FOMC Rate Decision - July",
-            "lastUpdated": "2026-07-14T08:00:00Z",
+            "lastUpdated": "2026-07-23T08:00:00Z",
             "meeting_date": "July 28-29, 2026",
-            "rate_hold_odds": "92\u00a2",
+            "rate_hold_odds": "74\u00a2",
             "rate_cut_odds": "1\u00a2",
-            "rate_hike_odds": "7\u00a2",
+            "rate_hike_odds": "26\u00a2",
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jul",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-july-181",
             "probabilities": {
-                "2026-07-14": {
+                   "2026-07-23": {
+                    "rate_hold_odds": "74\u00a2",
+                    "rate_cut_odds": "1\u00a2",
+                    "rate_hike_odds": "26\u00a2"
+                }, "2026-07-14": {
                     "rate_hold_odds": "92\u00a2",
                     "rate_cut_odds": "1\u00a2",
                     "rate_hike_odds": "7\u00a2"

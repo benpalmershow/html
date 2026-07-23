@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-23T16:43:49.483893Z",
+  "lastUpdated": "2026-07-23T19:50:36.092584Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -8,18 +8,18 @@
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-07-23T16:43:49.484423Z",
+      "fetchedAt": "2026-07-23T19:50:36.093114Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
       "info": {
-        "marketCap": 5088953237504.0,
+        "marketCap": 5032883781632.0,
         "enterpriseValue": 5091493937152.0,
-        "trailingPE": 32.18,
-        "forwardPE": 16.33,
+        "trailingPE": 31.82,
+        "forwardPE": 16.15,
         "pegRatio": 0.57,
-        "priceToSalesTrailing12Months": 20.08,
-        "priceToBook": 26.04,
+        "priceToSalesTrailing12Months": 19.86,
+        "priceToBook": 25.75,
         "grossMargins": 0.74,
         "operatingMargins": 0.66,
         "profitMargins": 0.63,
@@ -66,7 +66,7 @@
         "dayLow": 205.96,
         "regularMarketDayHigh": 210.87,
         "regularMarketDayLow": 205.96,
-        "regularMarketVolume": 54121877.0,
+        "regularMarketVolume": 81712998.0,
         "averageVolume10days": 125292180.0,
         "sharesShort": 310126785.0,
         "sharesShortPreviousMonthDate": 1780012800.0,
@@ -79,22 +79,22 @@
         "exDividendDate": "2026-06-04",
         "lastDividendDate": "2026-06-04"
       },
-      "latestPrice": 210.1
+      "latestPrice": 207.81
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-07-23T16:43:51.910693Z",
+      "fetchedAt": "2026-07-23T19:50:38.501942Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
       "info": {
-        "marketCap": 1213004906496.0,
+        "marketCap": 1197850492928.0,
         "enterpriseValue": 1177149374464.0,
-        "trailingPE": 299.05,
-        "forwardPE": 146.06,
+        "trailingPE": 295.31,
+        "forwardPE": 142.14,
         "pegRatio": 4.75,
-        "priceToSalesTrailing12Months": 11.71,
-        "priceToBook": 14.42,
+        "priceToSalesTrailing12Months": 11.56,
+        "priceToBook": 14.57,
         "grossMargins": 0.19,
         "operatingMargins": 0.01,
         "profitMargins": 0.04,
@@ -113,7 +113,7 @@
         "debtToEquity": 10.67,
         "currentRatio": 1.94,
         "quickRatio": 1.34,
-        "bookValue": 22.4,
+        "bookValue": 21.9,
         "sharesOutstanding": 3755723871.0,
         "floatShares": null,
         "impliedSharesOutstanding": 3755723871.0,
@@ -138,10 +138,10 @@
         "open": 341.0,
         "regularMarketOpen": 341.0,
         "dayHigh": 341.86,
-        "dayLow": 318.55,
+        "dayLow": 315.74,
         "regularMarketDayHigh": 341.86,
-        "regularMarketDayLow": 318.55,
-        "regularMarketVolume": 70213977.0,
+        "regularMarketDayLow": 315.74,
+        "regularMarketVolume": 98473744.0,
         "averageVolume10days": 31611760.0,
         "sharesShort": 79109257.0,
         "sharesShortPreviousMonthDate": 1780012800.0,
@@ -152,54 +152,22 @@
         "currency": "USD",
         "recommendationKey": "buy"
       },
-      "latestPrice": 322.98,
-      "nextEarningsDate": "2026-10-21",
-      "estimatedEPS": 0.55,
-      "recentEarnings": [
-        {
-          "reportedDate": "2026-07-22",
-          "actualEPS": 0.33,
-          "estimatedEPS": 0.54,
-          "surprisePercent": -38.35,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2026-04-22",
-          "actualEPS": 0.41,
-          "estimatedEPS": 0.35,
-          "surprisePercent": 17.15,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2026-01-28",
-          "actualEPS": 0.5,
-          "estimatedEPS": 0.45,
-          "surprisePercent": 10.96,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2025-10-22",
-          "actualEPS": 0.5,
-          "estimatedEPS": 0.56,
-          "surprisePercent": -10.53,
-          "source": "Yahoo Finance"
-        }
-      ]
+      "latestPrice": 318.94
     },
     {
       "ticker": "IBM",
-      "fetchedAt": "2026-07-23T16:43:54.073925Z",
+      "fetchedAt": "2026-07-23T19:50:43.244993Z",
       "source": "Yahoo Finance",
       "company": "International Business Machines Corporation",
       "sector": "Technology",
       "info": {
-        "marketCap": 193353203712.0,
+        "marketCap": 193409597440.0,
         "enterpriseValue": 250899726336.0,
-        "trailingPE": 18.27,
+        "trailingPE": 18.28,
         "forwardPE": 15.76,
         "pegRatio": 2.03,
         "priceToSalesTrailing12Months": 2.8,
-        "priceToBook": 5.86,
+        "priceToBook": 5.87,
         "grossMargins": 0.58,
         "operatingMargins": 0.16,
         "profitMargins": 0.16,
@@ -246,7 +214,7 @@
         "dayLow": 199.2,
         "regularMarketDayHigh": 207.55,
         "regularMarketDayLow": 199.2,
-        "regularMarketVolume": 9545809.0,
+        "regularMarketVolume": 13094471.0,
         "averageVolume10days": 18817870.0,
         "sharesShort": 34277714.0,
         "sharesShortPreviousMonthDate": 1780012800.0,
@@ -259,39 +227,7 @@
         "exDividendDate": "2026-05-08",
         "lastDividendDate": "2026-05-08"
       },
-      "latestPrice": 205.72,
-      "nextEarningsDate": "2026-10-21",
-      "estimatedEPS": 2.87,
-      "recentEarnings": [
-        {
-          "reportedDate": "2026-07-22",
-          "actualEPS": 2.93,
-          "estimatedEPS": 2.93,
-          "surprisePercent": -0.1,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2026-04-22",
-          "actualEPS": 1.91,
-          "estimatedEPS": 1.81,
-          "surprisePercent": 5.45,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2026-01-28",
-          "actualEPS": 4.52,
-          "estimatedEPS": 4.29,
-          "surprisePercent": 5.3,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2025-10-22",
-          "actualEPS": 2.65,
-          "estimatedEPS": 2.45,
-          "surprisePercent": 8.31,
-          "source": "Yahoo Finance"
-        }
-      ]
+      "latestPrice": 205.78
     }
   ]
 }

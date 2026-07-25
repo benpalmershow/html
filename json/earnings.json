@@ -12,7 +12,6 @@
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "info": {
         "marketCap": 5056375554048.0,
         "enterpriseValue": 5011633864704.0,
         "trailingPE": 32.47,
@@ -77,8 +76,8 @@
         "currency": "USD",
         "recommendationKey": "strong_buy",
         "exDividendDate": "2026-06-04",
-        "lastDividendDate": "2026-06-04"
-      },
+        "lastDividendDate": "2026-06-04",
+      
       "latestPrice": 208.76
     },
     {
@@ -87,7 +86,7 @@
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "info": {
+      
         "marketCap": 1262630862848.0,
         "enterpriseValue": 1001315500032.0,
         "trailingPE": 343.75,
@@ -150,8 +149,8 @@
         "fullTimeEmployees": 134785.0,
         "industry": "Auto Manufacturers",
         "currency": "USD",
-        "recommendationKey": "buy"
-      },
+        "recommendationKey": "buy",
+      
       "latestPrice": 319.69
     },
     {
@@ -160,7 +159,6 @@
       "source": "Yahoo Finance",
       "company": "International Business Machines Corporation",
       "sector": "Technology",
-      "info": {
         "marketCap": 194692071424.0,
         "enterpriseValue": 251727986688.0,
         "trailingPE": 18.29,
@@ -225,8 +223,8 @@
         "currency": "USD",
         "recommendationKey": "buy",
         "exDividendDate": "2026-08-10",
-        "lastDividendDate": "2026-05-08"
-      },
+        "lastDividendDate": "2026-05-08",
+      
       "latestPrice": 206.65
     }
   ]

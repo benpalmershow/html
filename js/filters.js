@@ -135,119 +135,49 @@ function setupIconHandlers(selector, handler) {
     });
 }
 
-let explanationTooltip = null;
-let explanationTooltipOwner = null;
-
-function getExplanationTooltip() {
-    if (explanationTooltip) return explanationTooltip;
-    const tip = document.createElement('div');
-    tip.className = 'explanation-tooltip';
-    tip.setAttribute('role', 'dialog');
-    tip.setAttribute('aria-live', 'polite');
-    tip.innerHTML = '<button class="tooltip-close" aria-label="Close explanation">&times;</button><div class="tooltip-body"></div>';
-
-    tip.querySelector('.tooltip-close').addEventListener('click', hideExplanationTooltip);
-    document.addEventListener('click', function (e) {
-        if (!explanationTooltip || !explanationTooltip.classList.contains('open')) return;
-        if (e.target.closest('.explanation-tooltip') || e.target.closest('.info-btn')) return;
-        hideExplanationTooltip();
-    });
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') hideExplanationTooltip();
-    });
-    window.addEventListener('resize', function () {
-        if (explanationTooltip && explanationTooltip.classList.contains('open') && explanationTooltipOwner) {
-            const indicator = explanationTooltipOwner.closest('.indicator');
-            if (indicator) positionExplanationTooltip(explanationTooltipOwner, explanationTooltip, indicator);
-        }
-    });
-    explanationTooltip = tip;
-    return tip;
-}
-
-function positionExplanationTooltip(btn, tip, indicator) {
-    const btnRect = btn.getBoundingClientRect();
-    const indRect = indicator.getBoundingClientRect();
-
-    const btnTopInInd = btnRect.top - indRect.top;
-    const btnLeftInInd = btnRect.left - indRect.left;
-
-    const tipW = tip.offsetWidth;
-    const tipH = tip.offsetHeight;
-    const margin = 8;
-    const indW = indicator.offsetWidth;
-    const indH = indicator.offsetHeight;
-
-    let top = btnTopInInd + btnRect.height + margin;
-    let arrowAtTop = true;
-    if (top + tipH > indH - margin && btnTopInInd - margin - tipH > margin) {
-        top = btnTopInInd - margin - tipH;
-        arrowAtTop = false;
-    }
-    top = Math.max(margin, Math.min(top, indH - tipH - margin));
-
-    let left = btnLeftInInd + btnRect.width / 2 - tipW / 2;
-    left = Math.max(margin, Math.min(left, indW - tipW - margin));
-
-    tip.style.top = top + 'px';
-    tip.style.left = left + 'px';
-
-    const arrowX = btnLeftInInd + btnRect.width / 2 - left;
-    tip.style.setProperty('--arrow-left', arrowX + 'px');
-    tip.classList.toggle('arrow-bottom', !arrowAtTop);
-}
-
-function hideExplanationTooltip() {
-    if (!explanationTooltip) return;
-    explanationTooltip.classList.remove('open');
-    explanationTooltip.style.visibility = 'hidden';
-    if (explanationTooltipOwner) {
-        explanationTooltipOwner.classList.remove('active');
-        explanationTooltipOwner = null;
-    }
-}
-
-function showExplanationTooltip(btn, explanation) {
-    const tip = getExplanationTooltip();
-    tip.querySelector('.tooltip-body').innerHTML = explanation;
-
-    if (explanationTooltipOwner && explanationTooltipOwner !== btn) {
-        explanationTooltipOwner.classList.remove('active');
-    }
-    explanationTooltipOwner = btn;
-    btn.classList.add('active');
-
-    const indicator = btn.closest('.indicator');
-    if (!indicator) return;
-
-    if (tip.parentNode !== indicator) {
-        indicator.appendChild(tip);
-    }
-
-    tip.classList.add('open');
-    tip.style.visibility = 'hidden';
-    tip.style.position = 'absolute';
-
-    requestAnimationFrame(() => {
-        if (!explanationTooltipOwner || explanationTooltipOwner !== btn) return;
-        positionExplanationTooltip(btn, tip, indicator);
-        tip.style.visibility = 'visible';
-    });
-}
-
 function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
     setupIconHandlers(SELECTORS.INFO_BTN, function () {
         const indicator = this.closest(SELECTORS.INDICATOR);
         if (!indicator) return;
 
-        const explanation = this.getAttribute(DATA_ATTRS.EXPLANATION);
-        if (!explanation) return;
+        const modal = indicator.querySelector('.explanation-modal');
+        if (!modal) return;
 
-        if (explanationTooltipOwner === this && explanationTooltip && explanationTooltip.classList.contains('open')) {
-            hideExplanationTooltip();
-            return;
+        const isOpen = modal.classList.contains('open');
+        
+        // Close all other open modals
+        document.querySelectorAll('.explanation-modal.open').forEach(m => {
+            if (m !== modal) m.classList.remove('open');
+        });
+
+        if (!isOpen) {
+            // Check if modal would go off-screen below
+            const indicatorRect = indicator.getBoundingClientRect();
+            const modalHeight = modal.offsetHeight || 200;
+            const spaceBelow = window.innerHeight - indicatorRect.bottom;
+            
+            if (spaceBelow < modalHeight + 16) {
+                modal.classList.add('position-above');
+            } else {
+                modal.classList.remove('position-above');
+            }
         }
-        showExplanationTooltip(this, explanation);
+
+        modal.classList.toggle('open', !isOpen);
+        this.classList.toggle('active', !isOpen);
+    });
+
+    // Handle close button clicks
+    document.addEventListener('click', function (e) {
+        const closeBtn = e.target.closest('.explanation-modal-close');
+        if (closeBtn) {
+            const modal = closeBtn.closest('.explanation-modal');
+            const indicator = modal.closest('.indicator');
+            const infoBtn = indicator.querySelector('.info-btn');
+            modal.classList.remove('open');
+            modal.classList.remove('position-above');
+            if (infoBtn) infoBtn.classList.remove('active');
+        }
     });
 }
 

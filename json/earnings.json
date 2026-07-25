@@ -12,7 +12,6 @@
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "info": {
         "marketCap": 5056375554048.0,
         "enterpriseValue": 5011633864704.0,
         "trailingPE": 32.47,
@@ -77,9 +76,9 @@
         "currency": "USD",
         "recommendationKey": "strong_buy",
         "exDividendDate": "2026-06-04",
-        "lastDividendDate": "2026-06-04"
-      },
-      "latestPrice": 208.76
+        "lastDividendDate": "2026-06-04",
+      "latestPrice": 208.76,
+      "explanation": "NVIDIA Corporation is a leading semiconductor company specializing in graphics processing units (GPUs) and AI accelerators. The company dominates the data center AI chip market with its H100 and Blackwell architectures, driving exceptional revenue growth of 85% year-over-year. With a market cap of $5.06T and profit margins of 63%, NVIDIA benefits from surging demand for AI training and inference across cloud providers and enterprises. Analyst consensus is strong buy with a target price of $302.83, reflecting expectations of continued AI infrastructure spending despite premium valuation metrics (P/E 32.47 forward)."
     },
     {
       "ticker": "TSLA",
@@ -87,7 +86,6 @@
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "info": {
         "marketCap": 1262630862848.0,
         "enterpriseValue": 1001315500032.0,
         "trailingPE": 343.75,
@@ -150,9 +148,10 @@
         "fullTimeEmployees": 134785.0,
         "industry": "Auto Manufacturers",
         "currency": "USD",
-        "recommendationKey": "buy"
-      },
-      "latestPrice": 319.69
+        "recommendationKey": "buy",
+      
+      "latestPrice": 319.69,
+      "explanation": "Tesla, Inc. is an electric vehicle and clean energy company leading the automotive transition to sustainable transportation. Despite recent stock pressure from EV demand concerns and competition, Tesla maintains $1.26T market cap with strong cash position ($43.5B). The company faces margin compression (operating margins at 1%) due to price cuts and Model 3/Y aging, though energy storage and Autopilot/FSD software represent growth opportunities. Analysts remain cautiously bullish with $425 target price, betting on long-term autonomous driving potential and energy expansion despite current valuation challenges (forward P/E 142.72)."
     },
     {
       "ticker": "IBM",
@@ -160,7 +159,6 @@
       "source": "Yahoo Finance",
       "company": "International Business Machines Corporation",
       "sector": "Technology",
-      "info": {
         "marketCap": 194692071424.0,
         "enterpriseValue": 251727986688.0,
         "trailingPE": 18.29,
@@ -225,9 +223,9 @@
         "currency": "USD",
         "recommendationKey": "buy",
         "exDividendDate": "2026-08-10",
-        "lastDividendDate": "2026-05-08"
-      },
-      "latestPrice": 206.65
+        "lastDividendDate": "2026-05-08",
+      "latestPrice": 206.65,
+      "explanation": "International Business Machines Corporation (IBM) is a legacy technology services and infrastructure company undergoing transformation under hybrid cloud and AI strategy. With $194.7B market cap and focus on enterprise software, consulting, and mainframe systems, IBM delivers steady dividends (3.29% yield) and stable cash flows. The company's Red Hat acquisition and Watson AI initiatives drive growth in a mature business with modest revenue growth (1%). Analysts see value at $262.85 target price, citing attractive valuation (forward P/E 15.83) and reliable dividend payments despite high debt-to-equity ratio from historical acquisitions."
     }
   ]
 }

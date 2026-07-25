@@ -11,8 +11,63 @@ const IndicatorRenderers = (function () {
         return new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     }
 
-    const BAR_COLOR_MAP = { 'dem-bar': '#3498db', 'gop-bar': '#e74c3c', 'yes-bar': '#22c55e', 'no-bar': '#ef4444', 'fomc-hold': '#3b82f6', 'fomc-hike': '#f59e0b', 'fomc-cut': '#ef4444' };
-
+        const BAR_COLOR_MAP = { 'dem-bar': '#3498db', 'gop-bar': '#e74c3c', 'yes-bar': '#22c55e', 'no-bar': '#ef4444', 'fomc-hold': '#3b82f6', 'fomc-hike': '#f59e0b', 'fomc-cut': '#ef4444' };
+    const EARNINGS_TOOLTIP_MAP = {
+        marketCap: 'Total market capitalization (share price × shares outstanding). Formula: marketCap = price × sharesOutstanding.',
+        enterpriseValue: 'Enterprise value = marketCap + totalDebt – totalCash. Formula: EV = marketCap + totalDebt - totalCash.',
+        trailingPE: 'Trailing price‑to‑earnings ratio (last 12 months). Formula: trailingPE = price / EPS (where EPS = netIncome / sharesOutstanding).',
+        forwardPE: 'Forward P/E based on projected earnings. Formula: forwardPE = price / forwardEPS.',
+        pegRatio: 'Price/Earnings to Growth ratio; lower is better. Formula: PEG = PE / earningsGrowth (%).',
+        priceToSalesTrailing12Months: 'Price divided by revenue per share over the last year. Formula: P/S = price / (totalRevenue / sharesOutstanding).',
+        priceToBook: 'Price divided by book value per share. Formula: P/B = price / bookValue.',
+        grossMargins: 'Gross profit ÷ revenue. Formula: grossMargin = grossProfits / totalRevenue.',
+        operatingMargins: 'Operating profit ÷ revenue. Formula: operatingMargin = operatingIncome / totalRevenue.',
+        profitMargins: 'Net profit ÷ revenue. Formula: profitMargin = netIncome / totalRevenue.',
+        returnOnAssets: 'Net income ÷ total assets. Formula: ROA = netIncome / totalAssets.',
+        returnOnEquity: 'Net income ÷ shareholder equity. Formula: ROE = netIncome / (bookValue × sharesOutstanding).',
+        revenueGrowth: 'Year‑over‑year revenue growth rate. Formula: (currentRevenue - previousRevenue) / previousRevenue.',
+        earningsGrowth: 'Year‑over‑year earnings growth rate. Formula: (currentEarnings - previousEarnings) / previousEarnings.',
+        revenuePerShare: 'Revenue divided by number of shares. Formula: revenuePerShare = totalRevenue / sharesOutstanding.',
+        freeCashflow: 'Cash generated after capital expenditures. Approximation: freeCashflow = operatingCashflow - capex (capex not provided).',
+        operatingCashflow: 'Cash from operating activities (as reported).',
+        grossProfits: 'Revenue minus cost of goods sold. Formula: grossProfits = totalRevenue - COGS (COGS not provided).',
+        totalCash: 'Total cash and cash equivalents (as reported).',
+        totalCashPerShare: 'Cash per share. Formula: totalCashPerShare = totalCash / sharesOutstanding.',
+        totalDebt: 'Total debt obligations (as reported).',
+        totalRevenue: 'Total revenue (top line).',
+        debtToEquity: 'Debt ÷ shareholder equity. Formula: debtToEquity = totalDebt / (bookValue * sharesOutstanding).',
+        currentRatio: 'Current assets ÷ current liabilities. (Values not provided; formula shown for reference).',
+        quickRatio: 'Liquidity ratio excluding inventories. Formula: quickRatio = (currentAssets - inventories) / currentLiabilities.',
+        bookValue: 'Shareholder equity per share. Formula: bookValue = (totalAssets - totalLiabilities) / sharesOutstanding (approximated by provided bookValue).',
+        sharesOutstanding: 'Number of shares currently issued.',
+        floatShares: 'Shares available for public trading.',
+        impliedSharesOutstanding: 'Calculated shares based on market cap. Formula: impliedShares = marketCap / price.'
+    };
+    function getEarningsTooltip(key, info) {
+        switch (key) {
+            case 'marketCap':
+                if (info.sharesOutstanding) {
+                    const price = (info.marketCap / info.sharesOutstanding).toFixed(2);
+                    return `Market cap = price × sharesOutstanding = $${price} × ${info.sharesOutstanding.toLocaleString()} = $${info.marketCap.toLocaleString()}`;
+                }
+                return 'Total market capitalization (share price × shares outstanding).';
+            case 'enterpriseValue':
+                if (info.marketCap && info.totalDebt && info.totalCash) {
+                    const ev = info.marketCap + info.totalDebt - info.totalCash;
+                    return `Enterprise value = marketCap + totalDebt – totalCash = $${info.marketCap.toLocaleString()} + $${info.totalDebt.toLocaleString()} – $${info.totalCash.toLocaleString()} = $${ev.toLocaleString()}`;
+                }
+                return 'Enterprise value = marketCap + totalDebt – totalCash.';
+            case 'debtToEquity':
+                if (info.totalDebt && info.bookValue && info.sharesOutstanding) {
+                    const equity = info.bookValue * info.sharesOutstanding;
+                    const ratio = (info.totalDebt / equity).toFixed(2);
+                    return `Debt‑to‑equity = totalDebt / (bookValue × sharesOutstanding) = $${info.totalDebt.toLocaleString()} / (${info.bookValue} × ${info.sharesOutstanding.toLocaleString()}) = ${ratio}`;
+                }
+                return 'Debt ÷ shareholder equity.';
+            default:
+                return EARNINGS_TOOLTIP_MAP[key] || '';
+        }
+    }
     function predictionBarRow(name, value, barClass, labelWidth = '90px', fontSize = '12px') {
         const valueColor = BAR_COLOR_MAP[barClass] || '#22c55e';
         const width = parseFloat(value);
@@ -310,11 +365,10 @@ function renderHormuz(indicator) {
     }
 
     function renderEarnings(indicator) {
-        const info = indicator.info || {};
         const recent = indicator.recentEarnings || [];
         const latest = recent[0] || {};
-        const excludedInfoKeys = new Set(['company', 'sector', 'marketCap', 'trailingPE']);
-        const infoEntries = Object.entries(info).filter(([key, value]) => value !== null && value !== undefined && value !== '' && !excludedInfoKeys.has(key));
+        const excludedKeys = new Set(['company', 'sector', 'marketCap', 'trailingPE', 'recentEarnings', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'name', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change']);
+        const infoEntries = Object.entries(indicator).filter(([key, value]) => value !== null && value !== undefined && value !== '' && !excludedKeys.has(key));
 
         const latestItems = [];
         if (latest.reportedDate) latestItems.push(`<div class="latest-data-row"><span class="month-label">Reported:</span><span class="month-value">${latest.reportedDate}</span></div>`);
@@ -327,8 +381,8 @@ function renderHormuz(indicator) {
             const surpriseHtml = `<i data-lucide="${icon}" style="display:inline;width:0.85em;height:0.85em;vertical-align:-0.05em;margin-right:2px;"></i>${Math.abs(val)}%`;
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Surprise:</span><span class="month-value ${cssClass}">${surpriseHtml}</span></div>`);
         }
-        if (info.marketCap) latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">$${(info.marketCap / 1e9).toFixed(1)}B</span></div>`);
-        if (info.trailingPE) latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${info.trailingPE.toFixed(1)}</span></div>`);
+        if (indicator.marketCap) latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">$${(indicator.marketCap / 1e9).toFixed(1)}B</span></div>`);
+        if (indicator.trailingPE) latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${indicator.trailingPE.toFixed(1)}</span></div>`);
 
         const latestDataHtml = latestItems.slice(0, 4).join('');
 
@@ -348,15 +402,17 @@ function renderHormuz(indicator) {
         if (infoEntries.length > 0) {
             hasHistory = true;
             const companyRows = [];
-            if (info.company || indicator.name) companyRows.push(`<div class="data-row"><span class="month-label">Company:</span><span class="month-value">${info.company || indicator.name}</span></div>`);
-            if (info.sector) companyRows.push(`<div class="data-row"><span class="month-label">Sector:</span><span class="month-value">${info.sector}</span></div>`);
+            if (indicator.company || indicator.name) companyRows.push(`<div class="data-row"><span class="month-label">Company:</span><span class="month-value">${indicator.company || indicator.name}</span></div>`);
+            if (indicator.sector) companyRows.push(`<div class="data-row"><span class="month-label">Sector:</span><span class="month-value">${indicator.sector}</span></div>`);
             if (indicator.latestPrice) companyRows.push(`<div class="data-row"><span class="month-label">Price:</span><span class="month-value">$${indicator.latestPrice}</span></div>`);
             if (indicator.nextEarningsDate) companyRows.push(`<div class="data-row"><span class="month-label">Next:</span><span class="month-value">${indicator.nextEarningsDate}</span></div>`);
             if (indicator.estimatedNextEPS) companyRows.push(`<div class="data-row"><span class="month-label">Next Est:</span><span class="month-value">$${indicator.estimatedNextEPS}</span></div>`);
 
             const infoRows = infoEntries.map(([key, value]) => {
                 const displayValue = typeof value === 'number' ? (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
-                return `<div class="data-row"><span class="month-label">${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:</span><span class="month-value">${displayValue}</span></div>`;
+                const tooltip = getEarningsTooltip(key, indicator);
+                const label = `${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:`;
+                return `<div class="data-row"><span class="month-label" title="${tooltip}">${label}</span><span class="month-value" title="${tooltip}">${displayValue}</span></div>`;
             }).join('');
 
             const sections = [];
@@ -509,7 +565,7 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
     const accent = indicator.color || 'var(--logo-teal)';
     const isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon"></i></button>` : ''}${!['Prediction Markets'].includes(indicator.category) ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3" class="chart-icon"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div><div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info"></i></button>` : ''}${!['Prediction Markets'].includes(indicator.category) ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${explanation ? `<div class="explanation-modal"><div class="explanation-modal-header"><h4 class="explanation-modal-title">${indicator.name}</h4><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${explanation}</div></div>` : ''}<div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---

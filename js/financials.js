@@ -9,7 +9,7 @@
 const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const ENABLE_EARNINGS = false;
+const ENABLE_EARNINGS = true;
 
 const SELECTORS = {
     FILTER_BTN: '.filter-btn',
@@ -66,7 +66,6 @@ function scrollToIndicatorByName(indicatorName) {
 }
 
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
-    if (typeof hideExplanationTooltip === 'function') hideExplanationTooltip();
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
     let categories = [...new Set(financialData.indices.map(item => item.category))];
@@ -239,7 +238,6 @@ function convertEarningsToIndicators(earnings) {
     return earnings.map(entry => {
         const recent = (entry.recentEarnings || []);
         const latest = recent[0] || {};
-        const info = entry.info || {};
 
         const indicator = {
             id: `earnings-${entry.ticker.toLowerCase()}`,
@@ -256,27 +254,134 @@ function convertEarningsToIndicators(earnings) {
             estimatedNextEPS: entry.estimatedEPS || latest.estimatedEPS,
             latestPrice: entry.latestPrice,
             change: '',
-            explanation: buildEarningsExplanation(entry, latest, info),
-            info: info,
-            recentEarnings: entry.recentEarnings || []
+            explanation: buildEarningsExplanation(entry, latest),
+            recentEarnings: entry.recentEarnings || [],
+            company: entry.company,
+            sector: entry.sector,
+            marketCap: entry.marketCap,
+            trailingPE: entry.trailingPE,
+            forwardPE: entry.forwardPE,
+            pegRatio: entry.pegRatio,
+            priceToSalesTrailing12Months: entry.priceToSalesTrailing12Months,
+            priceToBook: entry.priceToBook,
+            grossMargins: entry.grossMargins,
+            operatingMargins: entry.operatingMargins,
+            profitMargins: entry.profitMargins,
+            returnOnAssets: entry.returnOnAssets,
+            returnOnEquity: entry.returnOnEquity,
+            revenueGrowth: entry.revenueGrowth,
+            earningsGrowth: entry.earningsGrowth,
+            revenuePerShare: entry.revenuePerShare,
+            freeCashflow: entry.freeCashflow,
+            operatingCashflow: entry.operatingCashflow,
+            grossProfits: entry.grossProfits,
+            totalCash: entry.totalCash,
+            totalCashPerShare: entry.totalCashPerShare,
+            totalDebt: entry.totalDebt,
+            totalRevenue: entry.totalRevenue,
+            debtToEquity: entry.debtToEquity,
+            currentRatio: entry.currentRatio,
+            quickRatio: entry.quickRatio,
+            bookValue: entry.bookValue,
+            sharesOutstanding: entry.sharesOutstanding,
+            floatShares: entry.floatShares,
+            impliedSharesOutstanding: entry.impliedSharesOutstanding,
+            dividendRate: entry.dividendRate,
+            dividendYield: entry.dividendYield,
+            payoutRatio: entry.payoutRatio,
+            fiveYearAvgDividendYield: entry.fiveYearAvgDividendYield,
+            targetHighPrice: entry.targetHighPrice,
+            targetLowPrice: entry.targetLowPrice,
+            targetMeanPrice: entry.targetMeanPrice,
+            targetMedianPrice: entry.targetMedianPrice,
+            recommendationMean: entry.recommendationMean,
+            numberOfAnalystOpinions: entry.numberOfAnalystOpinions,
+            beta: entry.beta,
+            fiftyTwoWeekHigh: entry.fiftyTwoWeekHigh,
+            fiftyTwoWeekLow: entry.fiftyTwoWeekLow,
+            fiftyDayAverage: entry.fiftyDayAverage,
+            twoHundredDayAverage: entry.twoHundredDayAverage,
+            averageVolume: entry.averageVolume,
+            averageDailyVolume10Day: entry.averageDailyVolume10Day,
+            previousClose: entry.previousClose,
+            open: entry.open,
+            regularMarketOpen: entry.regularMarketOpen,
+            dayHigh: entry.dayHigh,
+            dayLow: entry.dayLow,
+            regularMarketDayHigh: entry.regularMarketDayHigh,
+            regularMarketDayLow: entry.regularMarketDayLow,
+            regularMarketVolume: entry.regularMarketVolume,
+            averageVolume10days: entry.averageVolume10days,
+            sharesShort: entry.sharesShort,
+            sharesShortPreviousMonthDate: entry.sharesShortPreviousMonthDate,
+            sharesShortPriorMonth: entry.sharesShortPriorMonth,
+            dateShortInterest: entry.dateShortInterest,
+            fullTimeEmployees: entry.fullTimeEmployees,
+            industry: entry.industry,
+            currency: entry.currency,
+            recommendationKey: entry.recommendationKey,
+            exDividendDate: entry.exDividendDate,
+            lastDividendDate: entry.lastDividendDate
         };
 
         return indicator;
     }).filter(ind => ind.name);
 }
 
-function buildEarningsExplanation(entry, latest, info) {
+function buildEarningsExplanation(entry, latest) {
     const parts = [];
-    parts.push(`${entry.company || entry.ticker} latest earnings from ${latest.reportedDate || 'N/A'}.`);
+    const company = entry.company || entry.ticker;
+    
+    // Company description based on sector
+    if (entry.sector) {
+        parts.push(`${company} operates in the ${entry.sector} sector.`);
+    }
+    
+    // Market cap
+    if (entry.marketCap) {
+        const marketCap = entry.marketCap >= 1e12 ? `$${(entry.marketCap / 1e12).toFixed(2)}T` : `$${(entry.marketCap / 1e9).toFixed(1)}B`;
+        parts.push(`Market cap: ${marketCap}.`);
+    }
+    
+    // Growth metrics
+    if (entry.revenueGrowth) {
+        parts.push(`Revenue growth: ${(entry.revenueGrowth * 100).toFixed(0)}% year-over-year.`);
+    }
+    if (entry.earningsGrowth) {
+        parts.push(`Earnings growth: ${(entry.earningsGrowth * 100).toFixed(0)}% year-over-year.`);
+    }
+    
+    // Profitability
+    if (entry.profitMargins) {
+        parts.push(`Profit margins: ${(entry.profitMargins * 100).toFixed(0)}%.`);
+    }
+    
+    // Valuation
+    if (entry.trailingPE) {
+        parts.push(`Trailing P/E: ${entry.trailingPE.toFixed(1)}.`);
+    }
+    if (entry.forwardPE) {
+        parts.push(`Forward P/E: ${entry.forwardPE.toFixed(1)}.`);
+    }
+    
+    // Analyst recommendations
+    if (entry.targetMeanPrice) {
+        parts.push(`Analyst target price: $${entry.targetMeanPrice.toFixed(2)}.`);
+    }
+    if (entry.recommendationMean) {
+        const recMap = { 1: 'Strong Buy', 2: 'Buy', 3: 'Hold', 4: 'Sell', 5: 'Strong Sell' };
+        const rec = recMap[Math.round(entry.recommendationMean)] || 'Hold';
+        parts.push(`Analyst consensus: ${rec}.`);
+    }
+    
+    // Latest earnings
+    if (latest.reportedDate) {
+        parts.push(`Latest earnings reported: ${latest.reportedDate}.`);
+    }
     if (entry.nextEarningsDate) {
-        parts.push(`Next earnings: ${entry.nextEarningsDate}.`);
+        parts.push(`Next earnings date: ${entry.nextEarningsDate}.`);
     }
-    if (info.marketCap) {
-        parts.push(`Market cap: $${(info.marketCap / 1e9).toFixed(1)}B.`);
-    }
-    if (info.trailingPE) {
-        parts.push(`P/E: ${info.trailingPE.toFixed(1)}.`);
-    }
+    
     return parts.join(' ');
 }
 

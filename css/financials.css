@@ -27,7 +27,15 @@
 
 .category-name { position: relative; top: 1px }
 
-.indicators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; align-items: start; min-height: 800px; }
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+    min-height: 800px;
+    overflow-x: auto; /* allow scroll on very narrow screens */
+    -webkit-overflow-scrolling: touch;
+}
 
 .indicator {
     background: radial-gradient(ellipse at 50% -20%, rgba(var(--indicator-accent-rgb, 44,95,90), 0.07) 0%, transparent 60%), linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);

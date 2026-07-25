@@ -254,3 +254,53 @@ h1.page-title {
     top: 0;
 }
 
+/* ==============================================================
+   RESPONSIVE UTILITIES & MAINTAINABILITY HELPERS
+   --------------------------------------------------------------
+   • Central breakpoint variables (mobile‑first)
+   • .responsive-grid – reusable grid that adapts to screen width
+   • .scrollable-x – enable horizontal scroll for overflow content
+   • .flex-wrap‑center – useful for flex containers on small screens
+   • .hide‑sm / .show‑sm – simple visibility toggles
+   --------------------------------------------------------------
+   These utilities can be used on any page without creating new CSS files.
+   ============================================================== */
+
+/* Breakpoint variables – used in media queries throughout the site */
+:root {
+  --bp-sm: 480px;   /* small phones */
+  --bp-md: 768px;   /* tablets */
+  --bp-lg: 1024px;  /* small laptops */
+}
+
+/* Responsive grid that automatically shrinks columns on narrow screens */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md, 1rem);
+  width: 100%;
+  overflow-x: auto; /* fallback for ultra‑narrow viewports */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Utility to force horizontal scrolling when content exceeds viewport */
+.scrollable-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Centered flex‑wrap for small screens */
+.flex-wrap-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm, 0.5rem);
+}
+
+/* Visibility helpers – hide/show on mobile */
+.hide-sm { display: block; }
+.show-sm { display: none; }
+@media (max-width: var(--bp-sm)) {
+  .hide-sm { display: none !important; }
+  .show-sm { display: block !important; }
+}

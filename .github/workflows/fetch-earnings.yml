@@ -21,7 +21,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install yfinance pandas
+        run: pip install yfinance pandas lxml
 
       - name: Run earnings fetcher
         run: python3 scripts/fetch_earnings.py

@@ -6,16 +6,15 @@ Writes output to json/earnings.json for downstream consumption.
 
 import json
 import logging
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-import yfinance as yf
-import pandas as pd
+import yfinance as yf  # type: ignore
+import pandas as pd  # type: ignore
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-
-import os
 
 OUTPUT_FILE = Path(__file__).parent.parent / "json" / "earnings.json"
 TICKER_LIST_FILE = Path(__file__).parent.parent / "json" / "earnings-tickers.json"
@@ -184,7 +183,7 @@ def fetch_ticker_data(symbol):
         info = t.info or {}
         result["company"] = info.get("longName") or info.get("shortName", symbol)
         result["sector"] = info.get("sector", "")
-        result["info"] = fetch_info_metrics(info)
+        result.update(fetch_info_metrics(info))
     except Exception as e:
         logger.warning(f"{symbol}: metadata fetch failed: {e}")
         result["company"] = symbol

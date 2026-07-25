@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-23T08:00:00",
+    "lastUpdated": "2026-07-25T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1615,7 +1615,7 @@
             "color": "#e67e22",
             "agency": "Census",
             "name": "New Home Sales",
-            "lastUpdated": "2026-06-25T14:00:00Z",
+            "lastUpdated": "2026-07-25T14:00:00Z",
             "releaseDay": 23,
             "url": "https://www.census.gov/construction/nrs/current/index.html#:~:text=New%20Home%20Sales,April%202024%20rate%20of%20719%2C000.",
             "march": "660,000",
@@ -1631,9 +1631,11 @@
             "2026": {
                 "january": "576,000",
                 "february": "630,000",
-                "march": "664,000",
-                "april": "626,000",
-                "may": "580,000"
+                "march": "659,000",
+                "april": "646,000",
+                "may": "618,000",
+                "june": "628,000"
+
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."

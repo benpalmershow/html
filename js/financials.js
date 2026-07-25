@@ -247,6 +247,10 @@ function convertEarningsToIndicators(earnings) {
             url: `https://finance.yahoo.com/quote/${entry.ticker}`,
             lastUpdated: entry.fetchedAt,
             reportedDate: latest.reportedDate || '',
+            isNew: (() => {
+                const d = latest.reportedDate ? new Date(latest.reportedDate) : null;
+                return d ? (Date.now() - d.getTime()) < (3 * 24 * 60 * 60 * 1000) : false;
+            })(),
             actualEPS: latest.actualEPS,
             estimatedEPS: latest.estimatedEPS,
             surprisePercent: latest.surprisePercent,

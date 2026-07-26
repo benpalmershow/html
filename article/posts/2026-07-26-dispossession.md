@@ -8,16 +8,18 @@ We can be empathetic, but sometimes it’s refreshing to see honest vindication.
 
 But fighting produces victims and as we've evolved, we no longer bludgeon each other. We represent each other's grievances instead. We've insulated ourselves from suffering. No one can be bullied. 
 
-But here's someone who has no protected status and who we all can fight - the Troll. Not the keyboard one with quick fingers and ample time. The ugly one. The one with hair on its knuckles and an intimidating scowl who lives under a bridge. That one!`
+But here's a bully who has no protected status and who we all can fight - the Troll. Not the keyboard one with quick fingers and ample time. The ugly one. The one with hair on its knuckles and an intimidating scowl who lives under a bridge. That one!`
 The billy goats Gruff fend off the Troll because he has the audacity to claim title to the bridge. Whose bridge? The eldest goat is William Wallace with horns sheathed in keratin. No thank you, he says (I am coming to gobble *you* up!) No land acknowledgment necessary. He butts the Troll off the bridge. The land dispute is adjudicated with violence. 
 
-Here's another story. Hollywood has become dispossessed, supposedly. What used to be theirs is someone else’s. Antitrust M&A stole their industry. They claimed title to the titles - novels, magazines, television, and movies. Now TikTok gives title to whoever wants to hit record on their iPhone. Hollywood’s land was stolen because big tech conquered them. They were trolled or are they the old Troll? I don't know. The metaphor is just one paint brush. 
+Here's another victim story. Hollywood has become dispossessed, supposedly. What used to be theirs is someone else’s. Antitrust M&A stole their industry. They claimed title to the titles - novels, magazines, television, and movies. Now TikTok gives title to whoever wants to hit record on their iPhone. Hollywood’s land was stolen because big tech conquered them. They were trolled or are they the old Troll? I don't know. The metaphor is just one paint brush in trying to contextualize the aggrieved.
 
-Dispossession is just the other side of a story. It’s the luddite versus a datacenter. The Palestinian versus the Jew. But I want to hear both sides of the story. The vanquished and the victor. Territory and conquest became problematic because we're complacent and affluent. We've moved on from violence that exists off the page.   
+Dispossession is only one side of a story. It's wildly incomplete without an antagonist and protagonist; the luddite versus a datacenter; the Palestinian versus the Jew, the vanquished and the victor.
 
-But the story that every kid grows up with answered some basic questions. Who won? Who fought back? Who successfully appealed and righted a wrong? Who's the good guy? Who's the bad guy? As adults the story is, it's complicated. But as a parent, you're an idiot to tell your kid you are the bad guy. Your heritage is never evil. It can't be. Not even Babar would tell his kids the other side of their imperialist story. 
+But the story that every kid grows up with answered some basic one sided questions. Who won? Who fought back? Who successfully appealed and righted a wrong? Who's the good guy? Who's the bad guy? 
 
-It’s up to indigenous to take back their land. The land acknowledgment is pithy patronage. Just like it’s up to the settlers in the West Bank to claim theirs and call it Judea. It's up to the terrorist or the settler. Everyone is fighting to survive. One day our only possession will die.
+As adults the story became, it's complicated, don't hurt feelings, don't pinch pain. But as a parent, you're an idiot to tell your kid you are the bad guy. Your heritage can never be evil. Not even Babar would tell his kids the other side of their imperialist story. 
+
+It’s up to the indigenous to take back their land and tell their story. The land acknowledgment is pithy patronage from the wrong side. Just like it’s up to the settlers in the West Bank to claim theirs and call it Judea. It's up to the villager to fight back and call it Palestine. Everyone is fighting to survive. One day our only possession will die.
 
 AI's Take: 
 First, it says that indigenous peoples should reclaim their land, and that land acknowledgments are shallow gestures — “pithy patronage” — unless they are backed by real justice.

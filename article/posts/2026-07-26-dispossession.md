@@ -6,9 +6,10 @@ There’s another word for dispossession. It’s conquest. And its story is as o
 
 We can be empathetic, but sometimes it’s refreshing to see honest vindication. In Braveheart, someone slits your girl, you slit them back. And then you pound their head in. You bludgeon them. Sometimes you need to beat the shit out of people. That’s what we did before iPhones. We fought. 
 
-But fighting produces victims. And as we've evolved, we no longer bludgeon each other. We represent each other's grievances. We've insulated ourselves from suffering. No one can be bullied. But here's someone who has no protected status and who we all can fight - the Troll. Not the keyboard one with quick fingers and ample time. The ugly one. The one with hair on its knuckles and an intimidating scowl who lives under a bridge. That one!`
+But fighting produces victims and as we've evolved, we no longer bludgeon each other. We represent each other's grievances instead. We've insulated ourselves from suffering. No one can be bullied. 
 
-The billy goat’s Gruff fend off the Troll because he has the audacity to claim title to the bridge. Whose bridge? The eldest goat is William Wallace with horns sheathed in keratin. No thank you, he says (I am coming to *gobble* you up!) No land acknowledgment necessary. He butts the Troll off the bridge. The land dispute is adjudicated with violence. 
+But here's someone who has no protected status and who we all can fight - the Troll. Not the keyboard one with quick fingers and ample time. The ugly one. The one with hair on its knuckles and an intimidating scowl who lives under a bridge. That one!`
+The billy goats Gruff fend off the Troll because he has the audacity to claim title to the bridge. Whose bridge? The eldest goat is William Wallace with horns sheathed in keratin. No thank you, he says (I am coming to gobble *you* up!) No land acknowledgment necessary. He butts the Troll off the bridge. The land dispute is adjudicated with violence. 
 
 Here's another story. Hollywood has become dispossessed, supposedly. What used to be theirs is someone else’s. Antitrust M&A stole their industry. They claimed title to the titles - novels, magazines, television, and movies. Now TikTok gives title to whoever wants to hit record on their iPhone. Hollywood’s land was stolen because big tech conquered them. They were trolled or are they the old Troll? I don't know. The metaphor is just one paint brush. 
 

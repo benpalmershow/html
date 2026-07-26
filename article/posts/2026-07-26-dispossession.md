@@ -17,7 +17,7 @@ Dispossession is only one side of a story. It's wildly incomplete without an ant
 
 But the story that every kid grows up with answered some basic one sided questions. Who won? Who fought back? Who successfully appealed and righted a wrong? Who's the good guy? Who's the bad guy? 
 
-As adults the story became, it's complicated, don't hurt feelings, don't pinch pain. But as a parent, you're an idiot to tell your kid you are the bad guy. Your heritage can never be evil. Not even Babar would tell his kids the other side of their imperialist story. 
+As adults, the story became 'it's complicated', don't hurt feelings, don't pinch pain. But as a parent, you're an idiot to tell your kid you are the bad guy. Your heritage can never be evil. Not even Babar would tell his kids the other side of their imperialist story. 
 
 It’s up to the indigenous to take back their land and tell their story. The land acknowledgment is pithy patronage from the wrong side. Just like it’s up to the settlers in the West Bank to claim theirs and call it Judea. It's up to the villager to fight back and call it Palestine. Everyone is fighting to survive. One day our only possession will die.
 

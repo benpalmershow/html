@@ -1,3 +1,9 @@
+/* ----------------------------------------------------
+   one-pager.css – Design System v1.4
+   Last updated: 2026‑07‑27
+   Author: Benjamin Palmer
+   ---------------------------------------------------- */
+
 .one-pager-container {
   max-width: 980px;
   margin: 0.5rem auto 1rem;
@@ -6,6 +12,39 @@
   flex-direction: column;
   content-visibility: auto;
   contain-intrinsic-size: 1px 1200px;
+}
+
+/* Design System Tokens */
+:root {
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Core palette */
+  --c-bg-primary: hsl(220, 10%, 98%);
+  --c-bg-secondary: hsl(220, 10%, 95%);
+  --c-bg-primary-glass: rgba(255,255,255,0.45);
+  --c-text-primary: hsl(220, 15%, 15%);
+  --c-text-secondary: hsl(220, 8%, 45%);
+  --c-accent-primary: hsl(212, 86%, 55%);
+  --c-accent-secondary: hsl(212, 86%, 65%);
+  --c-border: hsl(210, 10%, 85%);
+  --c-shadow: rgba(0,0,0,0.12);
+
+  /* Gradients & shadows */
+  --gradient-hero: linear-gradient(135deg, hsl(212,86%,70%) 0%, hsl(212,86%,45%) 100%);
+  --shadow-card: 0 8px 24px var(--c-shadow);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --c-bg-primary: hsl(220, 15%, 10%);
+  --c-bg-secondary: hsl(220, 15%, 12%);
+  --c-bg-primary-glass: rgba(0,0,0,0.45);
+  --c-text-primary: hsl(220, 15%, 90%);
+  --c-text-secondary: hsl(220, 8%, 70%);
+  --c-accent-primary: hsl(212, 86%, 70%);
+  --c-border: hsl(210, 10%, 30%);
+  --c-shadow: rgba(0,0,0,0.6);
 }
 
 .hero-section {
@@ -196,6 +235,14 @@
   color: var(--text-muted);
 }
 
+.article-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .one-pager-header h1 {
   margin: 0;
   font-size: 1.4rem;
@@ -206,6 +253,13 @@
 }
 
 .title-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.site-logo {
   width: 34px;
   height: 34px;
   object-fit: cover;
@@ -242,16 +296,17 @@
 
 .featured-podcast-card {
   margin: 1.5rem 0;
-  border: 1px solid var(--accent-primary);
+  border: 1px solid var(--c-accent-primary);
   border-radius: 16px;
   padding: 1.5rem;
-  background: var(--bg-secondary);
+  background: var(--c-bg-primary-glass);
+  backdrop-filter: blur(12px) saturate(150%);
   display: flex;
   align-items: center;
   gap: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 20px var(--shadow-color);
+  box-shadow: var(--shadow-card);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -333,16 +388,19 @@
 .section-card {
   border-radius: 12px;
   padding: 0;
-  background: var(--bg-secondary);
+  background: var(--c-bg-primary-glass);
+  backdrop-filter: blur(12px) saturate(150%);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 200px;
   contain: layout style;
+  box-shadow: var(--shadow-card);
 }
 
 .section-card:hover {
-  box-shadow: 0 8px 24px var(--shadow-color);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--c-shadow);
 }
 
 .section-label {
@@ -576,4 +634,32 @@
   line-height: 1.5;
   color: var(--text-secondary);
   max-width: 70ch;
+}
+
+/* Utility Helpers */
+.d-flex   { display: flex; }
+.f-col    { flex-direction: column; }
+.f-row    { flex-direction: row; }
+.ai-center{ align-items: center; }
+.jc-between{ justify-content: space-between; }
+.gap-1rem { gap: 1rem; }
+.rounded-12 { border-radius: 12px; }
+.shadow-md { box-shadow: var(--shadow-card); }
+
+/* Focus-visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--c-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Container queries (fallback to media queries) */
+@container (max-width: 600px) {
+  .updates-grid { grid-template-columns: 1fr; }
+  .one-pager-header { grid-template-columns: 1fr; }
+}
+
+/* Enhanced containment for large components */
+.updates-grid,
+.section-card {
+  contain: layout style paint;
 }

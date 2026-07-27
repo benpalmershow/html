@@ -29,7 +29,7 @@
 
 .indicators-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.25rem;
     align-items: start;
     min-height: 800px;
@@ -51,6 +51,7 @@
     overflow: visible;
     animation: cardIn 0.35s ease-out both;
     contain: layout style;
+    min-width: 0;
 }
 
 .indicator:hover { will-change: transform; }

@@ -245,7 +245,7 @@ function convertEarningsToIndicators(earnings) {
             agency: entry.source || 'Yahoo Finance',
             name: entry.ticker,
             url: `https://finance.yahoo.com/quote/${entry.ticker}`,
-            lastUpdated: entry.fetchedAt,
+            lastUpdated: latest.reportedDate || entry.fetchedAt,
             reportedDate: latest.reportedDate || '',
             isNew: (() => {
                 const d = latest.reportedDate ? new Date(latest.reportedDate) : null;

@@ -508,7 +508,7 @@ function buildChangeMetricButton(label, changeInfo, title) {
     const topSection = label ? `<span class="change-metric-title">${label}</span>` : '';
     const valueWithoutSign = changeInfo.formatted.replace(/^[+\-]/, '');
     const valueWithIcon = `<i data-lucide="${iconName}" style="display: inline; width: 0.85em; height: 0.85em; vertical-align: -0.05em; margin-right: 2px;"></i>${valueWithoutSign}`;
-    return `<div class="change-metric-block"><button type="button" class="change-metric-btn ${changeInfo.cssClass}" title="${title.replace(/"/g, '&quot;')}">${topSection}<span class="change-metric-value">${valueWithIcon}</span></button></div>`;
+    return `<div class="change-metric-block"><button type="button" class="change-metric-btn ${changeInfo.cssClass}">${topSection}<span class="change-metric-value">${valueWithIcon}</span></button></div>`;
 }
 
 // --- Card Creation ---

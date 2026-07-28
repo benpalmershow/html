@@ -376,7 +376,7 @@
     var momInfo=fmtChange(mom),yoyInfo=fmtChange(yoy);
     var changeHtml='';
     if(mom!==null){
-      changeHtml+='<span class="change-metric-btn '+momInfo.cls+'" title="Month over Month">MoM '+momInfo.f+'</span>';
+      changeHtml+='<span class="change-metric-btn '+momInfo.cls+'">MoM '+momInfo.f+'</span>';
     }
     if(yoy!==null){
       changeHtml+='<span class="change-metric-btn '+yoyInfo.cls+'" title="Year over Year">YoY '+yoyInfo.f+'</span>';

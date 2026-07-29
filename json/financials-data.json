@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-28T08:00:00",
+    "lastUpdated": "2026-07-29T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -750,26 +750,27 @@
             "color": "#e67e22",
             "agency": "FRED",
             "name": "Case-Shiller National Home Price Index",
-            "lastUpdated": "2026-07-11T14:00:00Z",
+            "lastUpdated": "2026-07-29T14:00:00Z",
             "releaseDay": 30,
             "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
-            "january": "323.662",
-            "february": "325.129",
-            "march": "327.740",
-            "april": "329.891",
-            "may": "331.409",
-            "june": "331.596",
-            "july": "330.940",
-            "august": "329.851",
-            "september": "328.875",
-            "october": "328.238",
-            "november": "327.852",
-            "december": "327.008",
+            "january": "323.659",
+            "february": "325.127",
+            "march": "327.737",
+            "april": "329.893",
+            "may": "331.412",
+            "june": "331.600",
+            "july": "330.945",
+            "august": "329.860",
+            "september": "328.886",
+            "october": "328.250",
+            "november": "327.865",
+            "december": "327.025",
             "2026": {
-                "january": "326.695",
-                "february": "327.700",
-                "march": "330.132",
-                "april": "332.678"
+                "january": "326.728",
+                "february": "327.759",
+                "march": "330.228",
+                "april": "332.984",
+                "may": "335.104"
             },
             "change": "",
             "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
@@ -1138,7 +1139,7 @@
             "color": "#9b59b6",
             "agency": "The Conference Board",
             "name": "Consumer Confidence",
-            "lastUpdated": "2026-06-30T14:00:00Z",
+            "lastUpdated": "2026-07-29T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.conference-board.org/topics/consumer-confidence",
             "march": "85.7",
@@ -1157,7 +1158,8 @@
                 "march": "92.2",
                 "april": "93.8",
                 "may": "90.6",
-                "june": "91.2"
+                "june": "92.2",
+                "july": "90.8"
             },
             "change": "",
             "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."

@@ -328,6 +328,55 @@ function convertEarningsToIndicators(earnings) {
             lastDividendDate: entry.lastDividendDate
         };
 
+        const prev = (() => {
+            try {
+                const raw = localStorage.getItem(`earnings-prev-${entry.ticker}`);
+                return raw ? JSON.parse(raw) : null;
+            } catch (e) {
+                return null;
+            }
+        })();
+
+        const deltas = {};
+        const metricsToTrack = [
+            'marketCap', 'trailingPE', 'forwardPE', 'pegRatio',
+            'priceToSalesTrailing12Months', 'priceToBook',
+            'profitMargins', 'revenueGrowth', 'earningsGrowth',
+            'dividendYield', 'debtToEquity', 'currentRatio', 'quickRatio',
+            'bookValue', 'beta',
+            'fiftyDayAverage', 'twoHundredDayAverage',
+            'previousClose', 'dayHigh', 'dayLow',
+            'regularMarketVolume', 'averageVolume',
+            'totalRevenue', 'totalCash', 'totalDebt',
+            'freeCashflow', 'operatingCashflow', 'grossProfits',
+            'targetMeanPrice', 'targetMedianPrice',
+            'latestPrice'
+        ];
+
+        metricsToTrack.forEach(key => {
+            const curr = indicator[key];
+            const old = prev && prev[key] != null ? prev[key] : null;
+            if (curr != null && old != null && typeof curr === 'number' && typeof old === 'number' && old !== 0) {
+                const diff = curr - old;
+                const pct = (diff / Math.abs(old)) * 100;
+                deltas[key] = { diff, pct, old, curr };
+            }
+        });
+
+        indicator.deltas = deltas;
+
+        try {
+            const snapshot = {};
+            metricsToTrack.forEach(key => {
+                if (indicator[key] != null && typeof indicator[key] === 'number') {
+                    snapshot[key] = indicator[key];
+                }
+            });
+            localStorage.setItem(`earnings-prev-${entry.ticker}`, JSON.stringify(snapshot));
+        } catch (e) {
+            // storage full or unavailable
+        }
+
         return indicator;
     }).filter(ind => ind.name);
 }

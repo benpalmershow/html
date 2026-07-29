@@ -367,8 +367,29 @@ function renderHormuz(indicator) {
     function renderEarnings(indicator) {
         const recent = indicator.recentEarnings || [];
         const latest = recent[0] || {};
-        const excludedKeys = new Set(['company', 'sector', 'marketCap', 'trailingPE', 'recentEarnings', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'name', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change']);
+        const excludedKeys = new Set(['company', 'sector', 'marketCap', 'trailingPE', 'recentEarnings', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'name', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change', 'isNew', 'deltas']);
         const infoEntries = Object.entries(indicator).filter(([key, value]) => value !== null && value !== undefined && value !== '' && !excludedKeys.has(key));
+
+        function formatDelta(delta) {
+            if (!delta || delta.diff == null) return '';
+            const { diff, pct } = delta;
+            const sign = diff > 0 ? '+' : '';
+            const cssClass = diff > 0 ? 'change-positive' : diff < 0 ? 'change-negative' : 'change-neutral';
+            const icon = diff > 0 ? 'arrow-up-right' : diff < 0 ? 'arrow-down-right' : 'minus';
+            const absPct = Math.abs(pct).toFixed(2);
+            const text = `${sign}${diff.toFixed(2)} (${sign}${absPct}%)`;
+            return `<i data-lucide="${icon}" style="display:inline;width:0.75em;height:0.75em;vertical-align:-0.05em;margin-right:2px;"></i><span class="${cssClass}">${text}</span>`;
+        }
+
+        function formatDeltaCompact(delta, formatter) {
+            if (!delta || delta.diff == null) return '';
+            const { diff, pct } = delta;
+            const sign = diff > 0 ? '+' : '';
+            const cssClass = diff > 0 ? 'change-positive' : diff < 0 ? 'change-negative' : 'change-neutral';
+            const icon = diff > 0 ? 'arrow-up-right' : diff < 0 ? 'arrow-down-right' : 'minus';
+            const text = `${sign}${formatter(diff)} (${sign}${Math.abs(pct).toFixed(1)}%)`;
+            return `<i data-lucide="${icon}" style="display:inline;width:0.75em;height:0.75em;vertical-align:-0.05em;margin-right:2px;"></i><span class="${cssClass}">${text}</span>`;
+        }
 
         const latestItems = [];
         if (latest.reportedDate) latestItems.push(`<div class="latest-data-row"><span class="month-label">Reported:</span><span class="month-value">${latest.reportedDate}</span></div>`);
@@ -381,10 +402,18 @@ function renderHormuz(indicator) {
             const surpriseHtml = `<i data-lucide="${icon}" style="display:inline;width:0.85em;height:0.85em;vertical-align:-0.05em;margin-right:2px;"></i>${Math.abs(val)}%`;
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Surprise:</span><span class="month-value ${cssClass}">${surpriseHtml}</span></div>`);
         }
-        if (indicator.marketCap) latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">$${(indicator.marketCap / 1e9).toFixed(1)}B</span></div>`);
-        if (indicator.trailingPE) latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${indicator.trailingPE.toFixed(1)}</span></div>`);
+        if (indicator.marketCap) {
+            const capDelta = indicator.deltas && indicator.deltas.marketCap;
+            const capText = `$${(indicator.marketCap / 1e9).toFixed(1)}B` + (capDelta ? ' ' + formatDeltaCompact(capDelta, v => (v/1e9).toFixed(1) + 'B') : '');
+            latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">${capText}</span></div>`);
+        }
+        if (indicator.trailingPE) {
+            const peDelta = indicator.deltas && indicator.deltas.trailingPE;
+            const peText = indicator.trailingPE.toFixed(1) + (peDelta ? ' ' + formatDeltaCompact(peDelta, v => v.toFixed(1)) : '');
+            latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${peText}</span></div>`);
+        }
 
-        const latestDataHtml = latestItems.slice(0, 4).join('');
+        const latestDataHtml = latestItems.slice(0, 6).join('');
 
         let historyDataHtml = '';
         let hasHistory = false;
@@ -404,12 +433,25 @@ function renderHormuz(indicator) {
             const companyRows = [];
             if (indicator.company || indicator.name) companyRows.push(`<div class="data-row"><span class="month-label">Company:</span><span class="month-value">${indicator.company || indicator.name}</span></div>`);
             if (indicator.sector) companyRows.push(`<div class="data-row"><span class="month-label">Sector:</span><span class="month-value">${indicator.sector}</span></div>`);
-            if (indicator.latestPrice) companyRows.push(`<div class="data-row"><span class="month-label">Price:</span><span class="month-value">$${indicator.latestPrice}</span></div>`);
+            if (indicator.latestPrice) {
+                const priceDelta = indicator.deltas && indicator.deltas.latestPrice;
+                const priceText = `$${indicator.latestPrice}` + (priceDelta ? ' ' + formatDeltaCompact(priceDelta, v => (v >= 0 ? '+' : '') + v.toFixed(2)) : '');
+                companyRows.push(`<div class="data-row"><span class="month-label">Price:</span><span class="month-value">${priceText}</span></div>`);
+            }
             if (indicator.nextEarningsDate) companyRows.push(`<div class="data-row"><span class="month-label">Next:</span><span class="month-value">${indicator.nextEarningsDate}</span></div>`);
             if (indicator.estimatedNextEPS) companyRows.push(`<div class="data-row"><span class="month-label">Next Est:</span><span class="month-value">$${indicator.estimatedNextEPS}</span></div>`);
 
+            const deltaKeys = new Set(['forwardPE', 'pegRatio', 'priceToSalesTrailing12Months', 'priceToBook', 'profitMargins', 'revenueGrowth', 'earningsGrowth', 'dividendYield', 'debtToEquity', 'currentRatio', 'quickRatio', 'bookValue', 'beta', 'fiftyDayAverage', 'twoHundredDayAverage', 'previousClose', 'dayHigh', 'dayLow', 'regularMarketVolume', 'averageVolume', 'totalRevenue', 'totalCash', 'totalDebt', 'freeCashflow', 'operatingCashflow', 'grossProfits', 'targetMeanPrice', 'targetMedianPrice']);
             const infoRows = infoEntries.map(([key, value]) => {
-                const displayValue = typeof value === 'number' ? (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
+                const isDeltaKey = deltaKeys.has(key);
+                const delta = isDeltaKey && indicator.deltas ? indicator.deltas[key] : null;
+                let displayValue = typeof value === 'number' ? (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
+                if (delta) {
+                    displayValue += ' ' + formatDeltaCompact(delta, v => {
+                        if (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt')) return (v/1e9).toFixed(1) + 'B';
+                        return v.toFixed(2);
+                    });
+                }
                 const tooltip = getEarningsTooltip(key, indicator);
                 const label = `${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:`;
                 return `<div class="data-row"><span class="month-label" title="${tooltip}">${label}</span><span class="month-value" title="${tooltip}">${displayValue}</span></div>`;

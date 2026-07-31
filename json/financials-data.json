@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-29T08:00:00",
+    "lastUpdated": "2026-07-31T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1200,7 +1200,7 @@
             "color": "#9b59b6",
             "agency": "FRED",
             "name": "Personal Consumption Expenditures (PCE)",
-            "lastUpdated": "2026-07-11T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/PCE",
             "march": "$20,683B",
@@ -1217,8 +1217,9 @@
                 "january": "$21,478.7B",
                 "february": "21,611.4B",
                 "march": "21,814.7B",
-                "april": "21,903.7B",
-                "may": "22,059.8B"
+                "april": "21,931.5B",
+                "may": "22,118.9B",
+                "june": "22,184.1B"
             },
             "change": "",
             "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
@@ -1587,7 +1588,7 @@
             "color": "#e67e22",
             "agency": "FRED",
             "name": "30-yr Mortgage Rate",
-            "lastUpdated": "2026-07-09T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
             "2025": {
@@ -1610,7 +1611,7 @@
                 "march": "6.18",
                 "april": "6.33",
                 "may": "6.44",
-                "june": "6.49"
+                "june": "6.66"
             },
             "change": "",
             "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."

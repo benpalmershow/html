@@ -1174,7 +1174,7 @@
             "color": "#9b59b6",
             "agency": "Manheim",
             "name": "Used Vehicle Value Index",
-            "lastUpdated": "2026-06-28T21:56:00Z",
+            "lastUpdated": "2026-07-31T21:56:00Z",
             "releaseDay": 7,
             "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
             "march": "202.6",
@@ -1193,7 +1193,8 @@
                 "march": "215.3",
                 "april": "211.9",
                 "may": "212.6",
-                "june": "213.9"
+                "june": "213.9",
+                "july": "211.5"
             },
             "change": "",
             "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."
@@ -1234,7 +1235,7 @@
             "color": "#1abc9c",
             "agency": "FRED",
             "name": "Dollar Value Index",
-            "lastUpdated": "2026-06-22T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
@@ -1253,7 +1254,8 @@
                 "march": "120.8851",
                 "april": "119.03",
                 "may": "118.77",
-                "june": "119.5073"
+                "june": "119.5073",
+                "july": "120.7105"
             },
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
@@ -1477,7 +1479,7 @@
             "color": "#e67e22",
             "agency": "NAR",
             "name": "Pending Home Sales Index",
-            "lastUpdated": "2026-06-18T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
             "march": "74.5",
@@ -1495,7 +1497,9 @@
                 "february": "72.6",
                 "march": "73.8",
                 "april": "74",
-                "may": "76.8"
+                "may": "76.6",
+                "june": "72.5"
+
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."

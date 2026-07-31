@@ -135,7 +135,7 @@
     if(pts.length<2)return null;
     var cur=pts[0].n,prev=pts[1].n;
     if(cur===null||prev===null||prev===0)return null;
-    return((cur-prev)/Math.abs(prev))*100;
+    return((cur-prev)/prev)*100;
   }
 
   function calcYoY(ind){
@@ -158,7 +158,7 @@
     if(!prevV)return null;
     var prevN=toNum(prevV);
     if(prevN===null||prevN===0)return null;
-    return((latest.n-prevN)/Math.abs(prevN))*100;
+    return((latest.n-prevN)/prevN)*100;
   }
 
   /* ==========================================

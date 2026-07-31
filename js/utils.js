@@ -252,7 +252,7 @@ function calculateMoMChange(indicator, MONTHS) {
 
     if (currentValue === null || previousValue === null || previousValue === 0) return null;
 
-    const change = ((currentValue - previousValue) / Math.abs(previousValue)) * 100;
+    const change = ((currentValue - previousValue) / previousValue) * 100;
     const numberChange = currentValue - previousValue;
 
     return {
@@ -313,7 +313,7 @@ function calculateYoYChange(indicator, MONTHS) {
     const yearBackNumeric = extractNumericValue(yearBackValue);
     if (!isValidData(yearBackValue) || yearBackNumeric === null || yearBackNumeric === 0) return null;
 
-    const percentChange = ((latest.numeric - yearBackNumeric) / Math.abs(yearBackNumeric)) * 100;
+    const percentChange = ((latest.numeric - yearBackNumeric) / yearBackNumeric) * 100;
 
     return {
         percentChange,

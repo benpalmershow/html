@@ -217,11 +217,12 @@
             "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jul",
             "polymarket_url": "https://polymarket.com/event/fed-decision-in-july-181",
             "probabilities": {
-                   "2026-07-23": {
+                "2026-07-23": {
                     "rate_hold_odds": "74\u00a2",
                     "rate_cut_odds": "1\u00a2",
                     "rate_hike_odds": "26\u00a2"
-                }, "2026-07-14": {
+                },
+                "2026-07-14": {
                     "rate_hold_odds": "92\u00a2",
                     "rate_cut_odds": "1\u00a2",
                     "rate_hike_odds": "7\u00a2"
@@ -1108,7 +1109,7 @@
                 "february": "$27B",
                 "march": "$22B",
                 "april": "$22B",
-                "may": "$-42",
+                "may": "$0B",
                 "june": "$-26B"
             },
             "change": "",
@@ -1285,15 +1286,15 @@
                 "july": "11"
             },
             "probabilities": {
-               "2026-07-31" : {
+                "2026-07-31": {
                     "Inbound": 7,
                     "Outbound": 4
-               },
-               "2026-07-28": {
-                    "Inbound" : 3,
-                    "Outbound" : 3
-               },
-               "2026-07-23": {
+                },
+                "2026-07-28": {
+                    "Inbound": 3,
+                    "Outbound": 3
+                },
+                "2026-07-23": {
                     "Inbound": 8,
                     "Outbound": 5
                 },
@@ -1443,9 +1444,9 @@
                 "january": "$734B",
                 "february": "$741.3B",
                 "march": "$753.4B",
-                "april": "$759,097B",
-                "may": "$766,876B",
-                "june": "$768,553B"
+                "april": "$759.1B",
+                "may": "$766.9B",
+                "june": "$768.6B"
             },
             "change": ""
         },
@@ -1504,7 +1505,6 @@
                 "april": "74",
                 "may": "76.6",
                 "june": "72.5"
-
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
@@ -1660,7 +1660,6 @@
                 "april": "646,000",
                 "may": "618,000",
                 "june": "628,000"
-
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
@@ -2046,10 +2045,9 @@
                 "january": "97.5",
                 "february": "97.9",
                 "march": "97.3",
-                "april": "99.2", 
+                "april": "99.2",
                 "may": "99.3",
-                "june": "99.1"           
-
+                "june": "99.1"
             },
             "change": "",
             "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle."

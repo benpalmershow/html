@@ -495,7 +495,7 @@
             "color": "#34495e",
             "agency": "Chicago Fed",
             "name": "Real-Time Unemployment Rate Forecast",
-            "lastUpdated": "2026-05-31T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release",
             "september": "4.35",
@@ -507,7 +507,9 @@
                 "february": "4.27",
                 "march": "4.49",
                 "april": "4.34",
-                "may": "4.32"
+                "may": "4.32",
+                "june": "4.19",
+                "july": "4.13"
             },
             "change": "",
             "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
@@ -919,7 +921,7 @@
             "color": "#3498db",
             "agency": "Treasury",
             "name": "Treasury Debt Level",
-            "lastUpdated": "2026-06-11T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
             "march": "$36,216,627,186,278.78",
@@ -938,7 +940,8 @@
                 "march": "$38,990,389,667,489.38",
                 "april": "$38,918,837,926,582.90",
                 "may": "$38,882,147,615,630.53",
-                "june": "$39,213,266,279,741.16"
+                "june": "$39,213,266,279,741.16",
+                "july": "$39,799,618,642,771.12"
             },
             "change": "",
             "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances."
@@ -1415,7 +1418,7 @@
             "color": "#9b59b6",
             "agency": "Census",
             "name": "Monthly Retail Sales",
-            "lastUpdated": "2026-06-17T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 15,
             "url": "https://www.census.gov/retail/sales.html",
             "march": "",
@@ -1433,8 +1436,9 @@
                 "january": "$734B",
                 "february": "$741.3B",
                 "march": "$753.4B",
-                "april": "$757B",
-                "may": "$763.7B"
+                "april": "$759,097B",
+                "may": "$766,876B",
+                "june": "$768,553B"
             },
             "change": ""
         },
@@ -1658,7 +1662,7 @@
             "color": "#e67e22",
             "agency": "Census",
             "name": "Housing Starts",
-            "lastUpdated": "2026-06-17T14:00:00Z",
+            "lastUpdated": "2026-07-31T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.census.gov/construction/nrc/current/index.html",
             "march": "1.355M",
@@ -1675,8 +1679,9 @@
                 "january": "1.385M",
                 "february": "1.346M",
                 "march": "1.522M",
-                "april": "1.392M",
-                "may": "1.177M"
+                "april": "1.414M",
+                "may": "1.199M",
+                "june": "1.427M"
             },
             "change": "",
             "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."

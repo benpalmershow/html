@@ -85,8 +85,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
     const topPositions = firmHoldings.slice(0, 5);
     const concentrationPct = topPositions.reduce((sum, h) => sum + h.pct, 0);
     
-    // Build firm metrics info for the tooltip
-    const firmMetrics = `
+    const firmDetails = `
         <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
             <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM:</span>
@@ -103,21 +102,14 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         </div>
     `;
     
-    const fullExplanation = firmMetrics + (description || '');
-    
     return `
         <div class="indicator-header">
             <div class="firm-card-title">${firmName}</div>
             <div class="indicator-actions">
-                <button class="info-btn" title="Show firm details" aria-label="Show firm details" data-explanation="${fullExplanation.replace(/"/g, '&quot;')}"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
+                <button class="info-btn" title="Show firm details" aria-label="Show firm details"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
             </div>
         </div>
-        <div class="indicator-agency">Filed: <span class="indicator-date">${getFilingDate(firmIdx)}</span></div>
-        <div class="firm-filter-buttons">
-            <button class="firm-filter-btn firm-filter-${firmIdx}-all active" data-firm="${firmIdx}" data-filter="all">All</button>
-            <button class="firm-filter-btn firm-filter-${firmIdx}-etf" data-firm="${firmIdx}" data-filter="etf">ETF</button>
-            <button class="firm-filter-btn firm-filter-${firmIdx}-stock" data-firm="${firmIdx}" data-filter="stock">Stock</button>
-        </div>
+        <div class="explanation-modal"><div class="explanation-modal-header"><span class="explanation-modal-title">Firm Details</span><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${firmDetails}${description || ''}</div></div>
         <div class="indicator-content">
             <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
@@ -253,63 +245,6 @@ function initializeFirmCards() {
         setTimeout(() => lucide.createIcons(), 100);
     }
 }
-
-document.addEventListener('click', function(e) {
-    const infoBtn = e.target.closest('.info-btn');
-    if (!infoBtn) return;
-    e.preventDefault();
-    e.stopPropagation();
-
-    let tooltip = document.querySelector('.explanation-tooltip-13f');
-    const isOpen = tooltip && tooltip.classList.contains('open');
-
-    if (isOpen && tooltip._button === infoBtn) {
-        tooltip.remove();
-        infoBtn.classList.remove('active');
-        return;
-    }
-
-    if (tooltip) tooltip.remove();
-    document.querySelectorAll('.info-btn.active').forEach(btn => btn.classList.remove('active'));
-
-    const explanation = infoBtn.getAttribute('data-explanation');
-    if (!explanation) return;
-
-    tooltip = document.createElement('div');
-    tooltip.className = 'explanation-tooltip-13f';
-    tooltip._button = infoBtn;
-    tooltip.innerHTML = `<div class="explanation-modal-header"><span class="explanation-modal-title">Firm Details</span><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${explanation}</div>`;
-    document.body.appendChild(tooltip);
-
-    const rect = infoBtn.getBoundingClientRect();
-    tooltip.style.position = 'fixed';
-    tooltip.style.left = rect.left + 'px';
-    tooltip.style.top = rect.bottom + 8 + 'px';
-    tooltip.style.zIndex = '9999';
-
-    const modalHeight = tooltip.offsetHeight || 200;
-    const spaceBelow = window.innerHeight - rect.bottom;
-    if (spaceBelow < modalHeight + 16) {
-        tooltip.style.top = 'auto';
-        tooltip.style.bottom = (window.innerHeight - rect.top + 8) + 'px';
-    }
-
-    tooltip.classList.add('open');
-    infoBtn.classList.add('active');
-
-    tooltip.querySelector('.explanation-modal-close').addEventListener('click', () => {
-        tooltip.remove();
-        infoBtn.classList.remove('active');
-    });
-
-    document.addEventListener('click', function close(e) {
-        if (!tooltip.contains(e.target) && e.target !== infoBtn) {
-            tooltip.remove();
-            infoBtn.classList.remove('active');
-            document.removeEventListener('click', close);
-        }
-    });
-});
 
 // Auto-initialize when script loads
 document.addEventListener('DOMContentLoaded', load13FData);

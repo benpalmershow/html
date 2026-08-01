@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-07-31T08:00:00",
+    "lastUpdated": "2026-08-01T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -208,57 +208,16 @@
             "category": "Prediction Markets",
             "color": "#e74c3c",
             "agency": "Kalshi",
-            "name": "FOMC Rate Decision - July",
-            "lastUpdated": "2026-07-23T08:00:00Z",
-            "meeting_date": "July 28-29, 2026",
-            "rate_hold_odds": "74\u00a2",
+            "name": "FOMC Rate Decision - September",
+            "lastUpdated": "2026-08-01T08:00:00Z",
+            "meeting_date": "September 18-19, 2026",
+            "rate_hold_odds": "39\u00a2",
             "rate_cut_odds": "1\u00a2",
-            "rate_hike_odds": "26\u00a2",
-            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jul",
-            "polymarket_url": "https://polymarket.com/event/fed-decision-in-july-181",
-            "probabilities": {
-                "2026-07-23": {
-                    "rate_hold_odds": "74\u00a2",
-                    "rate_cut_odds": "1\u00a2",
-                    "rate_hike_odds": "26\u00a2"
-                },
-                "2026-07-14": {
-                    "rate_hold_odds": "92\u00a2",
-                    "rate_cut_odds": "1\u00a2",
-                    "rate_hike_odds": "7\u00a2"
-                },
-                "2026-06-22": {
-                    "rate_hold_odds": "77\u00a2",
-                    "rate_cut_odds": "2\u00a2",
-                    "rate_hike_odds": "25\u00a2"
-                },
-                "2026-05-31": {
-                    "rate_hold_odds": "92\u00a2",
-                    "rate_cut_odds": "3\u00a2",
-                    "rate_hike_odds": "5\u00a2"
-                },
-                "2026-05-14": {
-                    "rate_hold_odds": "89\u00a2",
-                    "rate_cut_odds": "9\u00a2",
-                    "rate_hike_odds": "2\u00a2"
-                },
-                "2026-04-19": {
-                    "rate_hold_odds": "90\u00a2",
-                    "rate_cut_odds": "8\u00a2",
-                    "rate_hike_odds": "2\u00a2"
-                },
-                "2026-04-18": {
-                    "rate_hold_odds": "92\u00a2",
-                    "rate_cut_odds": "6\u00a2",
-                    "rate_hike_odds": "2\u00a2"
-                },
-                "2026-04-17": {
-                    "rate_hold_odds": "94\u00a2",
-                    "rate_cut_odds": "4\u00a2",
-                    "rate_hike_odds": "2\u00a2"
-                }
-            },
-            "change": "Down 8\u00a2 (Hold)",
+            "rate_hike_odds": "60\u00a2",
+            "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26sep",
+            "polymarket_url": "https://polymarket.com/event/fed-decision-in-september-762",
+            
+            "change": "",
             "explanation": "Federal Reserve interest rate decision prediction market for the July 28-29, 2026 FOMC meeting. Market expects a rate hold with 92% probability as the Fed maintains its cautious stance amid elevated oil prices from Middle East tensions. March nonfarm payrolls rebounded to 178,000 while unemployment held at 4.3%, signaling economic resilience. Volume: $8.2M."
         },
         {

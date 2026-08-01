@@ -53,14 +53,31 @@ function getFilingDate(firmIdx) {
 
 function isETF(holding) {
     const name = holding.name.toUpperCase();
-    const stockIndicators = ['INC', 'CORP', 'CLASS A', 'CLASS B', 'A S F'];
+    
+    const etfIssuers = [
+        'ISHARES', 'VANGUARD', 'SPDR', 'INVESCO',
+        'STRATEGIC TR', 'PROSHARES', 'VANECK', 'GLOBAL X', 'KRANESHARES',
+        'SIMPLIFY', 'WISDOMTREE', 'TEUCRIUM', 'FIRST TR', 'ABERDEEN', 'ABRDN',
+        'DIMENSIONAL', 'GRANITESHARES', 'INNOVATOR', 'STRIVE', 'MIDDAG',
+        'PIMCO', 'STATE STR', 'EXCHANGE TRADED', 'SELECT SECTOR',
+        'SERIES', 'FDS', 'FD VI', 'PORTFOLIO', 'T ROWE PRICE',
+        'COLUMBIA ETF', 'COHEN & STEERS', 'YIELDMAX', 'BITWISE',
+        'GRAYSCALE', 'COINSHARES', 'ARK', 'MIDDAG'
+    ];
+    if (etfIssuers.some(issuer => name.includes(issuer))) {
+        return true;
+    }
+    
+    const stockIndicators = ['INC', 'CORP', 'PLC', 'LTD', 'A S F', 'CO'];
     if (stockIndicators.some(indicator => name.includes(indicator))) {
         return false;
     }
-    const etfIndicators = ['ETF', 'TRUST', 'FUND', 'INDEX', 'SPDR', 'ISHARES', 'VANGUARD', 'INVESCO', 'DIMENSIONAL'];
-    if (etfIndicators.some(indicator => name.includes(indicator))) {
+    
+    const etfKeywords = ['ETF', 'TRUST', 'FUND', 'INDEX', 'SPDR', 'ISHARES', 'VANGUARD', 'INVESCO', 'DIMENSIONAL'];
+    if (etfKeywords.some(keyword => name.includes(keyword))) {
         return true;
     }
+    
     return false;
 }
 
@@ -248,6 +265,31 @@ document.addEventListener('click', function(e) {
         showExplanationTooltip(infoBtn, explanation);
     }
 });
+
+function showExplanationTooltip(button, content) {
+    let tooltip = document.querySelector('.explanation-tooltip-13f');
+    if (tooltip) tooltip.remove();
+
+    tooltip = document.createElement('div');
+    tooltip.className = 'explanation-tooltip-13f';
+    tooltip.innerHTML = `<div class="explanation-modal-header"><span class="explanation-modal-title">Firm Details</span><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${content}</div>`;
+    document.body.appendChild(tooltip);
+
+    const rect = button.getBoundingClientRect();
+    tooltip.style.position = 'fixed';
+    tooltip.style.left = rect.left + 'px';
+    tooltip.style.top = (rect.bottom + 8) + 'px';
+    tooltip.style.zIndex = '9999';
+
+    tooltip.querySelector('.explanation-modal-close').addEventListener('click', () => tooltip.remove());
+    tooltip.classList.add('open');
+    document.addEventListener('click', function close(e) {
+        if (!tooltip.contains(e.target) && e.target !== button) {
+            tooltip.remove();
+            document.removeEventListener('click', close);
+        }
+    });
+}
 
 // Auto-initialize when script loads
 document.addEventListener('DOMContentLoaded', load13FData);

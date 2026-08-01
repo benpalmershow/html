@@ -34,6 +34,30 @@ DEFAULT_CIK        = "1067983"
 DEFAULT_ACCESSION  = "0001193125-26-226661"
 DEFAULT_OUT        = "13f_holdings.json"
 
+# Known CUSIP → ticker fallbacks (useful when 13F infotable lacks ticker symbols)
+CUSIP_TO_TICKER = {
+    "G0593M107": "AZN",    # AstraZeneca PLC
+    "97785W106": "WOLF",   # WOLFSPEED INC
+    "71531U102": "PSQ",    # PERSHING SQUARE INC
+    "36467W117": "GME",    # GAMESTOP CORP NEW
+    "26614N201": "DD",     # DUPONT DE NEMOURS INC
+    "904767803": "UL",     # UNILEVER PLC
+    "438516205": "HON",    # HONEYWELL INTL INC
+    "68389X204": "ORCL",   # ORACLE CORP
+    "F92124100": "TTE",    # TOTALENERGIES SE
+    "314352105": "FDX",    # FEDEX FGHT HLDG CO INC
+    "72348N109": "PFG",    # PINNACLE FINL PARTNERS INC
+    "724078209": "PIPR",   # PIPER SANDLER COMPANIES
+    "349381103": "FIG",    # FIGURE TECHNOLOGY SOLUTIO
+    "84472E102": "SSB",    # SOUTHSTATE BK CORP
+    "98386P102": "XEN",    # X-ENERGY INC
+    "644323107": "FSLS",   # FS SPECIALTY LENDING FD
+    "02079K107": "GOOG",   # ALPHABET INC CLASS C
+    "02079K305": "GOOGL",  # ALPHABET INC CLASS A
+    "30303M102": "META",   # META PLATFORMS
+    "57636Q104": "MA",     # MASTERCARD INC
+}
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def normalise_accession(raw: str) -> str:
@@ -249,7 +273,7 @@ def main():
 
         # Fall back gracefully
         if not ticker or ticker.lower() in ("nan", "none"):
-            ticker = cusip or "N/A"
+            ticker = CUSIP_TO_TICKER.get(cusip.upper(), cusip or "N/A")
 
         holdings_entries.append({
             "ticker":    ticker,

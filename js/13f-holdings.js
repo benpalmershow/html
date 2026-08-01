@@ -259,37 +259,57 @@ document.addEventListener('click', function(e) {
     if (!infoBtn) return;
     e.preventDefault();
     e.stopPropagation();
+
+    let tooltip = document.querySelector('.explanation-tooltip-13f');
+    const isOpen = tooltip && tooltip.classList.contains('open');
+
+    if (isOpen && tooltip._button === infoBtn) {
+        tooltip.remove();
+        infoBtn.classList.remove('active');
+        return;
+    }
+
+    if (tooltip) tooltip.remove();
+    document.querySelectorAll('.info-btn.active').forEach(btn => btn.classList.remove('active'));
+
     const explanation = infoBtn.getAttribute('data-explanation');
     if (!explanation) return;
-    if (typeof showExplanationTooltip === 'function') {
-        showExplanationTooltip(infoBtn, explanation);
-    }
-});
-
-function showExplanationTooltip(button, content) {
-    let tooltip = document.querySelector('.explanation-tooltip-13f');
-    if (tooltip) tooltip.remove();
 
     tooltip = document.createElement('div');
     tooltip.className = 'explanation-tooltip-13f';
-    tooltip.innerHTML = `<div class="explanation-modal-header"><span class="explanation-modal-title">Firm Details</span><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${content}</div>`;
+    tooltip._button = infoBtn;
+    tooltip.innerHTML = `<div class="explanation-modal-header"><span class="explanation-modal-title">Firm Details</span><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${explanation}</div>`;
     document.body.appendChild(tooltip);
 
-    const rect = button.getBoundingClientRect();
+    const rect = infoBtn.getBoundingClientRect();
     tooltip.style.position = 'fixed';
     tooltip.style.left = rect.left + 'px';
-    tooltip.style.top = (rect.bottom + 8) + 'px';
+    tooltip.style.top = rect.bottom + 8 + 'px';
     tooltip.style.zIndex = '9999';
 
-    tooltip.querySelector('.explanation-modal-close').addEventListener('click', () => tooltip.remove());
+    const modalHeight = tooltip.offsetHeight || 200;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    if (spaceBelow < modalHeight + 16) {
+        tooltip.style.top = 'auto';
+        tooltip.style.bottom = (window.innerHeight - rect.top + 8) + 'px';
+    }
+
     tooltip.classList.add('open');
+    infoBtn.classList.add('active');
+
+    tooltip.querySelector('.explanation-modal-close').addEventListener('click', () => {
+        tooltip.remove();
+        infoBtn.classList.remove('active');
+    });
+
     document.addEventListener('click', function close(e) {
-        if (!tooltip.contains(e.target) && e.target !== button) {
+        if (!tooltip.contains(e.target) && e.target !== infoBtn) {
             tooltip.remove();
+            infoBtn.classList.remove('active');
             document.removeEventListener('click', close);
         }
     });
-}
+});
 
 // Auto-initialize when script loads
 document.addEventListener('DOMContentLoaded', load13FData);

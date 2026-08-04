@@ -41,7 +41,7 @@ main{flex:1}
 .accordion-inner p{margin:0 0 .85em}
 .accordion-inner p:last-child{margin-bottom:0}
 .accordion-inner ul,.accordion-inner ol{padding-left:1.25rem;margin:0 0 .85rem}
-.accordion-inner ol{padding-left:1.75rem}
+.accordion-inner ol{padding-left:1.75rem;list-style-position:inside}
 .accordion-inner li{margin:.2em 0}
 .accordion-inner blockquote{margin:.85em 0;border-left:3px solid var(--border-color);padding-left:.85rem;color:var(--text-muted)}
 .accordion-inner code{background:var(--bg-secondary);border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;padding:.1em .35em}

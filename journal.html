@@ -128,6 +128,36 @@
         return escapeHtml(value).replace(/`/g, '&#96;');
       }
 
+      function slugify(text) {
+        return String(text)
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '');
+      }
+
+      function renderTableRows(rows) {
+        if (rows.length < 2) return '';
+        const headerCells = rows[0].split('|').slice(1, -1).map(c => c.trim());
+        const bodyRows = rows.slice(2);
+        let h = '<table><thead><tr>';
+        headerCells.forEach(cell => {
+          h += '<th>' + parseInline(cell, true) + '</th>';
+        });
+        h += '</tr></thead><tbody>';
+        bodyRows.forEach(row => {
+          const cells = row.split('|').slice(1, -1).map(c => c.trim());
+          h += '<tr>';
+          cells.forEach(cell => {
+            h += '<td>' + parseInline(cell, true) + '</td>';
+          });
+          h += '</tr>';
+        });
+        h += '</tbody></table>';
+        return h;
+      }
+
       function renderTitle(title, link) {
         if (/<a\s/i.test(title)) return title;
         const esc = escapeHtml(title);
@@ -145,10 +175,13 @@
           return '@@HTML' + (htmlBlocks.length - 1) + '@@';
         });
 
-        out = escapeHtml(out)
-          .replace(/`([^`]+)`/g, '<code>$1</code>')
-          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+out = escapeHtml(out)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/_([^_]+)_/g, '<em>$1</em>')
+    .replace(/~~([^~]+)~~/g, '<del>$1</del>');
 
         const links = [];
 out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
@@ -173,6 +206,10 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
         let paragraph = [];
         let inCode = false;
         let inList = false;
+        let inOrderedList = false;
+        let inTable = false;
+        let tableRows = [];
+        const footnotes = {};
 
         function flushParagraph() {
           if (!paragraph.length) return;
@@ -181,9 +218,14 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
         }
 
         function closeList() {
-          if (!inList) return;
-          html += '</ul>';
-          inList = false;
+          if (inOrderedList) {
+            html += '</ol>';
+            inOrderedList = false;
+          }
+          if (inList) {
+            html += '</ul>';
+            inList = false;
+          }
         }
 
         lines.forEach(line => {
@@ -193,14 +235,16 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
             return;
           }
 
-          if (/^```/.test(line)) {
+          const codeFence = line.match(/^```(\S*)/);
+          if (codeFence) {
             flushParagraph();
             closeList();
             if (inCode) {
               html += '</code></pre>';
               inCode = false;
             } else {
-              html += '<pre><code>';
+              const lang = codeFence[1] ? ' class="language-' + codeFence[1] + '"' : '';
+              html += '<pre><code' + lang + '>';
               inCode = true;
             }
             return;
@@ -216,7 +260,8 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
             flushParagraph();
             closeList();
             const level = Math.min(heading[1].length, 3);
-            html += '<h' + level + '>' + parseInline(heading[2], true) + '</h' + level + '>';
+            const slug = slugify(heading[2]);
+            html += '<h' + level + ' id="' + escapeAttr(slug) + '">' + parseInline(heading[2], true) + '</h' + level + '>';
             return;
           }
 
@@ -228,14 +273,74 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
             return;
           }
 
+          const hr = line.match(/^(-{3,}|\*{3,}|_{3,})$/);
+          if (hr) {
+            flushParagraph();
+            closeList();
+            html += '<hr>';
+            return;
+          }
+
           const item = line.match(/^[-*]\s+(.+)$/);
           if (item) {
             flushParagraph();
+            if (inOrderedList) {
+              html += '</ol>';
+              inOrderedList = false;
+            }
             if (!inList) {
               html += '<ul>';
               inList = true;
             }
-            html += '<li>' + parseInline(item[1], true) + '</li>';
+            const taskMatch = item[1].match(/^\[([ xX])\]\s+(.+)$/);
+            if (taskMatch) {
+              const checked = taskMatch[1] !== ' ' ? ' checked' : '';
+              html += '<li><input type="checkbox" disabled' + checked + '> ' + parseInline(taskMatch[2], true) + '</li>';
+            } else {
+              html += '<li>' + parseInline(item[1], true) + '</li>';
+            }
+            return;
+          }
+
+          const orderedItem = line.match(/^(\d+)\.\s+(.+)$/);
+          if (orderedItem) {
+            if (inTable) {
+              html += renderTableRows(tableRows);
+              tableRows = [];
+              inTable = false;
+            }
+            flushParagraph();
+            if (inList) {
+              html += '</ul>';
+              inList = false;
+            }
+            if (!inOrderedList) {
+              html += '<ol>';
+              inOrderedList = true;
+            }
+            html += '<li>' + parseInline(orderedItem[2], true) + '</li>';
+            return;
+          }
+
+          const tableRow = line.match(/^\|.+\|$/);
+          if (tableRow) {
+            flushParagraph();
+            if (!inTable) {
+              inTable = true;
+            }
+            tableRows.push(trimmed);
+            return;
+          }
+
+          if (inTable) {
+            html += renderTableRows(tableRows);
+            tableRows = [];
+            inTable = false;
+          }
+
+          const fnDef = line.match(/^\[\^(\d+)\]:\s+(.+)$/);
+          if (fnDef) {
+            footnotes[fnDef[1]] = fnDef[2];
             return;
           }
 
@@ -244,8 +349,25 @@ out = out.replace(/\[([^\]]+)]\(([^\s)]+)\)/g, (_, label, url) => {
 
         flushParagraph();
         closeList();
+        if (inTable) {
+          html += renderTableRows(tableRows);
+          tableRows = [];
+          inTable = false;
+        }
         if (inCode) html += '</code></pre>';
-        return html;
+        let result = html;
+        const fnKeys = Object.keys(footnotes);
+        if (fnKeys.length) {
+          result = result.replace(/\[\^(\d+)\]/g, (_, num) => {
+            return '<sup><a href="#fn-' + num + '" id="fnref-' + num + '">' + num + '</a></sup>';
+          });
+          result += '<section class="footnotes"><ol>';
+          fnKeys.forEach(num => {
+            result += '<li id="fn-' + num + '">' + parseInline(footnotes[num], true) + ' <a href="#fnref-' + num + '">↩</a></li>';
+          });
+          result += '</ol></section>';
+        }
+        return result;
       }
 
       function getAttr(tag, name) {

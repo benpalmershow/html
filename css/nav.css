@@ -190,9 +190,8 @@ html.dark-mode {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 6px;
   min-height: 48px;
-  min-width: 48px;
   padding: 0.3rem 0.2rem 0.55rem;
   border: none;
   border-radius: var(--control-radius, 8px);
@@ -220,8 +219,8 @@ html.dark-mode {
 }
 
 .dark-mode-toggle-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .dark-mode-toggle-label {

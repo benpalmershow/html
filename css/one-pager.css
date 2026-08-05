@@ -380,7 +380,7 @@
 .updates-grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   contain-intrinsic-size: 1px 800px;
 }

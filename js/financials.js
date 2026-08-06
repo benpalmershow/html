@@ -325,7 +325,8 @@ function convertEarningsToIndicators(earnings) {
             currency: entry.currency,
             recommendationKey: entry.recommendationKey,
             exDividendDate: entry.exDividendDate,
-            lastDividendDate: entry.lastDividendDate
+            lastDividendDate: entry.lastDividendDate,
+            priceHistory: entry.priceHistory || []
         };
 
         const prev = (() => {
@@ -541,4 +542,24 @@ document.addEventListener('DOMContentLoaded', function () {
         ensureLoad13F();
     }
     if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    const categoriesEl = document.getElementById('categories');
+    if (categoriesEl) {
+        categoriesEl.addEventListener('click', function (e) {
+            const label = e.target.closest('.prediction-section-label');
+            if (!label) return;
+            const section = label.parentElement;
+            if (!section || !section.classList.contains('metric-section')) return;
+            const isCollapsed = section.classList.toggle('collapsed');
+            label.setAttribute('aria-expanded', String(!isCollapsed));
+        });
+        categoriesEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const label = e.target.closest('.prediction-section-label');
+                if (!label) return;
+                e.preventDefault();
+                label.click();
+            }
+        });
+    }
 });

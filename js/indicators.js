@@ -367,99 +367,77 @@ function renderHormuz(indicator) {
     function renderEarnings(indicator) {
         const recent = indicator.recentEarnings || [];
         const latest = recent[0] || {};
-        const excludedKeys = new Set(['company', 'sector', 'marketCap', 'trailingPE', 'recentEarnings', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'name', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change', 'isNew', 'deltas']);
+        const excludedKeys = new Set(['marketCap', 'trailingPE', 'recentEarnings', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change', 'isNew', 'deltas', 'priceHistory']);
         const infoEntries = Object.entries(indicator).filter(([key, value]) => value !== null && value !== undefined && value !== '' && !excludedKeys.has(key));
 
-        function formatDelta(delta) {
-            if (!delta || delta.diff == null) return '';
-            const { diff, pct } = delta;
-            const sign = diff > 0 ? '+' : '';
-            const cssClass = diff > 0 ? 'change-positive' : diff < 0 ? 'change-negative' : 'change-neutral';
-            const icon = diff > 0 ? 'arrow-up-right' : diff < 0 ? 'arrow-down-right' : 'minus';
-            const absPct = Math.abs(pct).toFixed(2);
-            const text = `${sign}${diff.toFixed(2)} (${sign}${absPct}%)`;
-            return `<i data-lucide="${icon}" style="display:inline;width:0.75em;height:0.75em;vertical-align:-0.05em;margin-right:2px;"></i><span class="${cssClass}">${text}</span>`;
-        }
-
-        function formatDeltaCompact(delta, formatter) {
-            if (!delta || delta.diff == null) return '';
-            const { diff, pct } = delta;
-            const sign = diff > 0 ? '+' : '';
-            const cssClass = diff > 0 ? 'change-positive' : diff < 0 ? 'change-negative' : 'change-neutral';
-            const icon = diff > 0 ? 'arrow-up-right' : diff < 0 ? 'arrow-down-right' : 'minus';
-            const text = `${sign}${formatter(diff)} (${sign}${Math.abs(pct).toFixed(1)}%)`;
-            return `<i data-lucide="${icon}" style="display:inline;width:0.75em;height:0.75em;vertical-align:-0.05em;margin-right:2px;"></i><span class="${cssClass}">${text}</span>`;
-        }
-
         const latestItems = [];
-        if (latest.reportedDate) latestItems.push(`<div class="latest-data-row"><span class="month-label">Reported:</span><span class="month-value">${latest.reportedDate}</span></div>`);
-        if (latest.actualEPS !== undefined && latest.actualEPS !== null) latestItems.push(`<div class="latest-data-row"><span class="month-label">Actual EPS:</span><span class="month-value">$${latest.actualEPS}</span></div>`);
-        if (latest.estimatedEPS !== undefined && latest.estimatedEPS !== null) latestItems.push(`<div class="latest-data-row"><span class="month-label">Est. EPS:</span><span class="month-value">$${latest.estimatedEPS}</span></div>`);
-        if (latest.surprisePercent) {
-            const val = parseFloat(latest.surprisePercent);
-            const cssClass = val >= 0 ? 'change-positive' : 'change-negative';
-            const icon = val >= 0 ? 'arrow-up-right' : 'arrow-down-right';
-            const surpriseHtml = `<i data-lucide="${icon}" style="display:inline;width:0.85em;height:0.85em;vertical-align:-0.05em;margin-right:2px;"></i>${Math.abs(val)}%`;
-            latestItems.push(`<div class="latest-data-row"><span class="month-label">Surprise:</span><span class="month-value ${cssClass}">${surpriseHtml}</span></div>`);
+        if (indicator.latestPrice) {
+            latestItems.push(`<div class="latest-data-row"><span class="month-label">Price:</span><span class="month-value">$${indicator.latestPrice}</span></div>`);
         }
         if (indicator.marketCap) {
-            const capDelta = indicator.deltas && indicator.deltas.marketCap;
-            const capText = `$${(indicator.marketCap / 1e9).toFixed(1)}B` + (capDelta ? ' ' + formatDeltaCompact(capDelta, v => (v/1e9).toFixed(1) + 'B') : '');
+            const capText = `$${(indicator.marketCap / 1e9).toFixed(1)}B`;
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">${capText}</span></div>`);
         }
-        if (indicator.trailingPE) {
-            const peDelta = indicator.deltas && indicator.deltas.trailingPE;
-            const peText = indicator.trailingPE.toFixed(1) + (peDelta ? ' ' + formatDeltaCompact(peDelta, v => v.toFixed(1)) : '');
-            latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${peText}</span></div>`);
-        }
+        const peValue = indicator.trailingPE ?? indicator.forwardPE;
+        latestItems.push(`<div class="latest-data-row"><span class="month-label">P/E:</span><span class="month-value">${peValue !== null && peValue !== undefined ? peValue.toFixed(1) : '\u2014'}</span></div>`);
 
         const latestDataHtml = latestItems.slice(0, 6).join('');
 
         let historyDataHtml = '';
         let hasHistory = false;
-        if (recent.length > 1) {
+        if (recent.length > 0) {
             hasHistory = true;
-            historyDataHtml = recent.slice(1).map(entry => {
+            historyDataHtml = recent.map(entry => {
                 const val = parseFloat(entry.surprisePercent);
-                const cssClass = val >= 0 ? 'change-positive' : 'change-negative';
-                const icon = val >= 0 ? 'arrow-up-right' : 'arrow-down-right';
-                const surpriseHtml = `<i data-lucide="${icon}" style="display:inline;width:0.85em;height:0.85em;vertical-align:-0.05em;margin-right:2px;"></i>${Math.abs(val)}%`;
-                return `<div class="data-row"><span class="month-label">${entry.reportedDate || ''}</span><span class="month-value">Actual: $${entry.actualEPS} | Est: $${entry.estimatedEPS} <span class="${cssClass}">${surpriseHtml}</span></span></div>`;
+                const sign = val >= 0 ? '+' : '';
+                const dateLabel = entry.reportedDate ? new Date(entry.reportedDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }) : '';
+                const surpriseClass = val >= 0 ? 'surprise-positive' : 'surprise-negative';
+                return `<div class="data-row"><span class="month-label">${dateLabel}</span><span class="month-value">Actual: $${entry.actualEPS} | Est: $${entry.estimatedEPS} <span class="${surpriseClass}">${sign}${val.toFixed(2)}%</span></span></div>`;
             }).join('');
         }
 
         if (infoEntries.length > 0) {
             hasHistory = true;
             const companyRows = [];
-            if (indicator.company || indicator.name) companyRows.push(`<div class="data-row"><span class="month-label">Company:</span><span class="month-value">${indicator.company || indicator.name}</span></div>`);
-            if (indicator.sector) companyRows.push(`<div class="data-row"><span class="month-label">Sector:</span><span class="month-value">${indicator.sector}</span></div>`);
-            if (indicator.latestPrice) {
-                const priceDelta = indicator.deltas && indicator.deltas.latestPrice;
-                const priceText = `$${indicator.latestPrice}` + (priceDelta ? ' ' + formatDeltaCompact(priceDelta, v => (v >= 0 ? '+' : '') + v.toFixed(2)) : '');
-                companyRows.push(`<div class="data-row"><span class="month-label">Price:</span><span class="month-value">${priceText}</span></div>`);
-            }
             if (indicator.nextEarningsDate) companyRows.push(`<div class="data-row"><span class="month-label">Next:</span><span class="month-value">${indicator.nextEarningsDate}</span></div>`);
             if (indicator.estimatedNextEPS) companyRows.push(`<div class="data-row"><span class="month-label">Next Est:</span><span class="month-value">$${indicator.estimatedNextEPS}</span></div>`);
 
-            const deltaKeys = new Set(['forwardPE', 'pegRatio', 'priceToSalesTrailing12Months', 'priceToBook', 'profitMargins', 'revenueGrowth', 'earningsGrowth', 'dividendYield', 'debtToEquity', 'currentRatio', 'quickRatio', 'bookValue', 'beta', 'fiftyDayAverage', 'twoHundredDayAverage', 'previousClose', 'dayHigh', 'dayLow', 'regularMarketVolume', 'averageVolume', 'totalRevenue', 'totalCash', 'totalDebt', 'freeCashflow', 'operatingCashflow', 'grossProfits', 'targetMeanPrice', 'targetMedianPrice']);
-            const infoRows = infoEntries.map(([key, value]) => {
-                const isDeltaKey = deltaKeys.has(key);
-                const delta = isDeltaKey && indicator.deltas ? indicator.deltas[key] : null;
-                let displayValue = typeof value === 'number' ? (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
-                if (delta) {
-                    displayValue += ' ' + formatDeltaCompact(delta, v => {
-                        if (key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt')) return (v/1e9).toFixed(1) + 'B';
-                        return v.toFixed(2);
-                    });
+            function formatEarningsValue(key, value) {
+                const isCash = key.includes('Cap') || key.includes('Revenue') || key.includes('Cashflow') || key.includes('Profits') || key.includes('Debt') || key === 'totalCash';
+                let displayValue = typeof value === 'number' ? (isCash ? '$' + (value / 1e9).toFixed(1) + 'B' : value.toFixed ? value.toFixed(2) : value) : value;
+                return displayValue;
+            }
+
+            const metricGroups = [
+                { label: 'Valuation', keys: ['forwardPE', 'pegRatio', 'priceToSalesTrailing12Months', 'priceToBook', 'trailingPE'] },
+                { label: 'Profitability', keys: ['grossMargins', 'operatingMargins', 'profitMargins', 'returnOnAssets', 'returnOnEquity', 'revenueGrowth', 'earningsGrowth'] },
+                { label: 'Financials', keys: ['totalRevenue', 'totalCash', 'operatingCashflow', 'grossProfits', 'totalDebt', 'freeCashflow', 'debtToEquity', 'currentRatio', 'quickRatio', 'bookValue'] },
+                { label: 'Per Share', keys: ['revenuePerShare', 'totalCashPerShare', 'sharesOutstanding', 'floatShares', 'impliedSharesOutstanding'] },
+                { label: 'Market Data', keys: ['fiftyTwoWeekHigh', 'fiftyTwoWeekLow', 'fiftyDayAverage', 'twoHundredDayAverage', 'averageVolume', 'previousClose', 'dayHigh', 'dayLow', 'regularMarketVolume'] },
+                { label: 'Analyst', keys: ['targetHighPrice', 'targetLowPrice', 'targetMeanPrice', 'targetMedianPrice', 'recommendationMean', 'numberOfAnalystOpinions', 'recommendationKey'] },
+                { label: 'Company', keys: ['company', 'name', 'sector', 'fullTimeEmployees', 'industry', 'currency'] }
+            ];
+
+            const allInfoRows = [];
+            metricGroups.forEach(group => {
+                const groupRows = [];
+                group.keys.forEach(key => {
+                    const entry = infoEntries.find(([k]) => k === key);
+                    if (!entry) return;
+                    const [k, value] = entry;
+                    const displayValue = formatEarningsValue(k, value);
+                    const tooltip = getEarningsTooltip(k, indicator);
+                    const label = `${k.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:`;
+                    groupRows.push(`<div class="data-row"><span class="month-label" title="${tooltip}">${label}</span><span class="month-value" title="${tooltip}">${displayValue}</span></div>`);
+                });
+                if (groupRows.length > 0) {
+                    allInfoRows.push(`<div class="metric-section collapsed"><div class="prediction-section-label" role="button" tabindex="0" aria-expanded="false">${group.label}</div><div class="metric-section-body">${groupRows.join('')}</div></div>`);
                 }
-                const tooltip = getEarningsTooltip(key, indicator);
-                const label = `${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:`;
-                return `<div class="data-row"><span class="month-label" title="${tooltip}">${label}</span><span class="month-value" title="${tooltip}">${displayValue}</span></div>`;
-            }).join('');
+            });
 
             const sections = [];
             if (companyRows.length > 0) sections.push(companyRows.join(''));
-            if (infoRows) sections.push(`<div class="prediction-section-label" style="margin-top: 8px;">Key Metrics</div>` + infoRows);
+            if (allInfoRows.length > 0) sections.push(allInfoRows.join(''));
             historyDataHtml += sections.join('');
         }
 
@@ -612,7 +590,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     } else {
         isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
     }
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation && indicator.category !== 'Earnings' ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info"></i></button>` : ''}${!['Prediction Markets'].includes(indicator.category) ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${explanation && indicator.category !== 'Earnings' ? `<div class="explanation-modal"><div class="explanation-modal-header"><h4 class="explanation-modal-title">${indicator.name}</h4><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${explanation}</div></div>` : ''}<div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name" title="${(indicator.company || '').replace(/"/g, '&quot;')}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation && indicator.category !== 'Earnings' ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info"></i></button>` : ''}${!['Prediction Markets'].includes(indicator.category) ? `<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>` : ''}${hasHistory ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${explanation && indicator.category !== 'Earnings' ? `<div class="explanation-modal"><div class="explanation-modal-header"><h4 class="explanation-modal-title">${indicator.name}</h4><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${explanation}</div></div>` : ''}<div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${hasHistory ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}</div>${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}</div>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---

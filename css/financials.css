@@ -96,13 +96,19 @@
 .latest-data-row .month-label, .last-data-row .month-label { color: var(--logo-teal); font-weight: 700; }
 .latest-data-row .month-value, .last-data-row .month-value { color: var(--text-primary); font-weight: 700; font-size: 0.85rem; }
 
-.data-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 0.85rem; margin-bottom: 0; }
+.data-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-size: 0.8rem; margin-bottom: 0; gap: 8px; min-width: 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15); }
 
-  .month-label { font-weight: 600; color: var(--text-secondary); font-size: 0.7rem; word-break: keep-all; hyphens: none; }
+.data-row:last-child { border-bottom: none; }
+
+  .month-label { font-weight: 600; color: var(--text-secondary); font-size: 0.7rem; word-break: keep-all; hyphens: none; flex-shrink: 0; }
 
 .month-label[title] { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
 
 .month-value { font-weight: 600; color: var(--text-primary); text-align: right; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 4px; }
+
+.surprise-positive { color: #22c55e; font-weight: 700; }
+
+.surprise-negative { color: #ef4444; font-weight: 700; }
 
 .month-change, .job-change-inline { font-size: 0.85rem; opacity: 0.8; font-weight: 600; }
 
@@ -170,6 +176,13 @@
 .prediction-bar-row { display: flex; align-items: center; gap: 8px; }
 
 .prediction-bar-label { font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); min-width: 50px; flex-shrink: 0; }
+
+.prediction-section-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 10px; margin-bottom: 4px; padding-bottom: 2px; border-bottom: 1px solid var(--border-color); cursor: pointer; user-select: none; display: flex; align-items: center; gap: 4px; }
+.prediction-section-label::before { content: ''; display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid var(--text-muted); border-bottom: 1.5px solid var(--text-muted); transform: rotate(45deg); transition: transform 0.2s ease; flex-shrink: 0; }
+.prediction-section-label.collapsed::before { transform: rotate(-45deg); }
+.metric-section-body { overflow: hidden; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 4px 0; }
+.metric-section.collapsed .metric-section-body { max-height: 0; }
+.metric-section.collapsed .prediction-section-label { margin-bottom: 0; border-bottom-color: transparent; }
 
 .prediction-bar-track { flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; position: relative; }
 

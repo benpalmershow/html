@@ -79,6 +79,8 @@ def fetch_info_metrics(info):
     ]
     for key in valuation:
         metrics[key] = safe_num(info.get(key))
+    if metrics.get("marketCap") is None:
+        metrics["marketCap"] = safe_num(info.get("nonDilutedMarketCap"))
 
     profitability = [
         "grossMargins",
@@ -195,6 +197,20 @@ def fetch_ticker_data(symbol):
             result["latestPrice"] = safe_num(hist["Close"].iloc[-1])
     except Exception as e:
         logger.warning(f"{symbol}: price fetch failed: {e}")
+
+    # Price history (12 months) for charting
+    try:
+        price_hist = t.history(period="12mo")
+        if not price_hist.empty:
+            price_history = []
+            for date, row in price_hist.iterrows():
+                price_history.append({
+                    "date": pd.Timestamp(date).strftime("%Y-%m-%d"),
+                    "close": safe_num(row["Close"])
+                })
+            result["priceHistory"] = price_history
+    except Exception as e:
+        logger.warning(f"{symbol}: price history fetch failed: {e}")
 
     # Next earnings date
     try:

@@ -288,10 +288,23 @@ function sliceChartDataByRange(config, months) {
     const count = parseInt(months);
     if (isNaN(count)) return config;
     const slicedConfig = JSON.parse(JSON.stringify(config));
-    const totalPoints = slicedConfig.data.labels.length;
-    const startIndex = Math.max(0, totalPoints - count);
-    slicedConfig.data.labels = slicedConfig.data.labels.slice(startIndex);
-    slicedConfig.data.datasets.forEach(ds => { ds.data = ds.data.slice(startIndex); if (ds.backgroundColor && Array.isArray(ds.backgroundColor)) ds.backgroundColor = ds.backgroundColor.slice(startIndex); });
+    if (config._dateLabels && config._dateLabels.length > 0) {
+        const now = new Date();
+        const cutoff = new Date(now.getFullYear(), now.getMonth() - count, 1);
+        const filteredIndices = [];
+        config._dateLabels.forEach((d, i) => {
+            const date = new Date(d + 'T00:00:00Z');
+            if (date >= cutoff) filteredIndices.push(i);
+        });
+        slicedConfig.data.labels = filteredIndices.map(i => config.data.labels[i]);
+        slicedConfig.data.datasets.forEach(ds => { ds.data = filteredIndices.map(i => ds.data[i]); });
+        slicedConfig._dateLabels = filteredIndices.map(i => config._dateLabels[i]);
+    } else {
+        const totalPoints = slicedConfig.data.labels.length;
+        const startIndex = Math.max(0, totalPoints - count);
+        slicedConfig.data.labels = slicedConfig.data.labels.slice(startIndex);
+        slicedConfig.data.datasets.forEach(ds => { ds.data = ds.data.slice(startIndex); if (ds.backgroundColor && Array.isArray(ds.backgroundColor)) ds.backgroundColor = ds.backgroundColor.slice(startIndex); });
+    }
     return slicedConfig;
 }
 
@@ -498,21 +511,25 @@ function buildPoliticalPollChartConfig(indicatorName, indicatorData) {
 }
 
 function buildEarningsChartConfig(indicatorName, indicatorData) {
-    const recent = (indicatorData.recentEarnings || []).slice(0, 8).reverse();
-    if (recent.length === 0) return null;
-    const labels = recent.map(e => e.reportedDate ? new Date(e.reportedDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }) : '');
-    const actualValues = recent.map(e => parseFloat(e.actualEPS));
-    const estimatedValues = recent.map(e => parseFloat(e.estimatedEPS));
-    return {
-        type: 'chartjs-bar',
+    const priceHistory = (indicatorData.priceHistory || []).filter(e => e && e.close != null && !isNaN(parseFloat(e.close)));
+    if (priceHistory.length === 0) return null;
+    const labels = priceHistory.map(e => {
+        const d = new Date(e.date + 'T00:00:00Z');
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    });
+    const dateLabels = priceHistory.map(e => e.date);
+    const closeValues = priceHistory.map(e => parseFloat(e.close));
+    const config = {
+        type: 'line',
         data: {
             labels,
             datasets: [
-                { label: 'Actual EPS', data: actualValues, backgroundColor: 'rgba(44, 95, 90, 0.8)', borderColor: '#2C5F5A', borderWidth: 1 },
-                { label: 'Est. EPS', data: estimatedValues, backgroundColor: 'rgba(255, 255, 255, 0.4)', borderColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1 }
+                { label: 'Price', data: closeValues, borderColor: '#2C5F5A', backgroundColor: 'rgba(44, 95, 90, 0.1)', borderWidth: 2, fill: true, tension: 0.3, pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 3, pointHoverRadius: 5 }
             ]
-        }
+        },
+        _dateLabels: dateLabels
     };
+    return config;
 }
 
 ChartStrategies.registry

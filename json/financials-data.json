@@ -1231,7 +1231,7 @@
             "color": "#1abc9c",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-07-31T14:00:00Z",
+            "lastUpdated": "2026-08-06T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
@@ -1242,9 +1242,14 @@
                 "april": "20",
                 "may": "11",
                 "june": "3",
-                "july": "11"
+                "july": "11",
+                "august": "4"
             },
             "probabilities": {
+                "2026-08-06": {
+                    "Inbound": 9,
+                    "Outbound": 11
+                },
                 "2026-07-31": {
                     "Inbound": 7,
                     "Outbound": 4
@@ -1747,7 +1752,7 @@
             "color": "#34495e",
             "agency": "Challenger Gray & Christmas",
             "name": "Job Cuts Report",
-            "lastUpdated": "2026-07-11T14:00:00Z",
+            "lastUpdated": "2026-08-06T14:00:00Z",
             "releaseDay": 6,
             "url": "https://www.challengergray.com/blog/category/job-cuts-report/",
             "january": "49,795",
@@ -1768,7 +1773,8 @@
                 "march": "60,620",
                 "april": "83,387",
                 "may": "97,006",
-                "june": "45,849"
+                "june": "45,849",
+                "july": "33,429"
             },
             "change": "",
             "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."

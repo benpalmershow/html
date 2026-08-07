@@ -112,9 +112,9 @@
 
 .month-change, .job-change-inline { font-size: 0.85rem; opacity: 0.8; font-weight: 600; }
 
-.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.4); overflow: visible; min-width: 0; position: relative; z-index: 1; }
+.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: nowrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.4); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
 
-.change-metric-block { display: flex; justify-content: center; align-items: center; padding: 0; }
+.change-metric-block { display: flex; justify-content: center; align-items: center; padding: 0; flex-shrink: 1; min-width: 0; }
 
 .change-metric-title { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-secondary); line-height: 1; opacity: 0.7; flex-shrink: 0; }
 
@@ -122,9 +122,9 @@
 
 .change-metric-title-icon i { width: 8px; height: 8px; stroke-width: 2.1px; }
 
-.change-metric-btn { flex: 0 0 auto; width: fit-content; min-width: -webkit-fill-available; min-width: fit-content; max-width: none; border: none; border-radius: 6px; min-height: 24px; margin: 4px 0; padding: 8px 12px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 3px; white-space: nowrap; overflow: visible; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.01em; }
+.change-metric-btn { flex: 0 1 auto; width: fit-content; min-width: 0; max-width: none; border: none; border-radius: 6px; min-height: 24px; margin: 2px 0; padding: 3px 5px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 2px; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.01em; }
 
-.change-metric-btn:hover { filter: none; border-color: transparent; }
+.change-metric-btn svg { width: 0.85em !important; height: 0.85em !important; }
 
 .change-metric-btn:focus-visible { outline: none; outline-offset: 0; }
 
@@ -361,9 +361,9 @@
 /* RESPONSIVE */
 @media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
-@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: wrap; gap: 6px; } .change-metric-btn { font-size: 0.7rem; } .change-metric-title { font-size: 0.55rem; } .change-metric-value { font-size: 0.75rem; } }
+@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: nowrap; gap: 3px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; } .change-metric-value { font-size: 0.65rem; } }
 
-@media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } }
+@media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } .change-indicators { flex-wrap: wrap; } }
 
 
 

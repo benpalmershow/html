@@ -95,8 +95,8 @@
 
   function fmtChange(pct){
     if(pct===null||pct===undefined)return{f:'—',cls:'change-neutral',dir:0};
-    var f=(pct>=0?'+':'')+pct.toFixed(2)+'%';
-    var neutral=(f==='—'||f==='+0.00%'||f==='0.00%');
+    var f=(pct>=0?'+':'')+pct.toFixed(1)+'%';
+    var neutral=(f==='—'||f==='+0.0%'||f==='0.0%');
     return{f,cls:neutral?'change-neutral':pct>0?'change-positive':'change-negative',dir:neutral?0:pct>0?1:-1};
   }
 

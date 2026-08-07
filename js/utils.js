@@ -45,10 +45,10 @@ function formatChangeIndicator(percentChange) {
     }
 
     const formatted = typeof percentChange === 'number'
-        ? `${percentChange >= 0 ? '+' : ''}${percentChange.toFixed(2)}%`
+        ? `${percentChange >= 0 ? '+' : ''}${percentChange.toFixed(1)}%`
         : percentChange;
 
-    const isNeutral = formatted === "—" || formatted === "0" || formatted === "0.00" || formatted === "+0.00%";
+    const isNeutral = formatted === "—" || formatted === "0" || formatted === "0.0" || formatted === "+0.0%";
     const isPositive = formatted.startsWith('+') && !isNeutral;
     const isNegative = formatted.startsWith('-');
 

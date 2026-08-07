@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-08-04T08:00:00",
+    "lastUpdated": "2026-08-07T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1815,7 +1815,7 @@
             "color": "#34495e",
             "agency": "FRED",
             "name": "Total Nonfarm Employment",
-            "lastUpdated": "2026-07-02T15:00:00Z",
+            "lastUpdated": "2026-08-07T15:00:00Z",
             "releaseDay": 5,
             "url": "https://fred.stlouisfed.org/series/PAYEMS",
             "february": "158,310,000",
@@ -1834,8 +1834,9 @@
                 "february": "158,436,000",
                 "march": "158,650,000",
                 "april": "158,798,000",
-                "may": "158,927,000",
-                "june": "158,984,000"
+                "may": "158,861,000",
+                "june": "158,881,000",
+                "july": "158,858,000"
             },
             "change": "",
             "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."

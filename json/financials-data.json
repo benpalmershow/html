@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-08-10T08:00:00",
+    "lastUpdated": "2026-08-11T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -344,7 +344,7 @@
             "color": "#e67e22",
             "agency": "NAR",
             "name": "Existing Home Sales",
-            "lastUpdated": "2026-07-10T14:00:00Z",
+            "lastUpdated": "2026-08-11T14:00:00Z",
             "releaseDay": 22,
             "url": "https://tradingeconomics.com/united-states/existing-home-sales",
             "march": "",
@@ -355,15 +355,16 @@
             "august": "4.00M",
             "september": "4.05M",
             "october": "4.11M",
-            "november": "4.13M",
+            "november": "4.14M",
             "december": "4.27M",
             "2026": {
-                "january": "3.91M",
+                "january": "4.02M",
                 "february": "4.13M",
                 "march": "4.01M",
                 "april": "4.04M",
                 "may": "4.19M",
-                "june": "4.09M"
+                "june": "4.13M",
+                "july": "4.06M"
             },
             "change": "",
             "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
@@ -1675,7 +1676,7 @@
             "color": "#34495e",
             "agency": "The Conference Board",
             "name": "Employment Trends Index",
-            "lastUpdated": "2026-06-28T14:00:00Z",
+            "lastUpdated": "2026-08-11T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.conference-board.org/topics/employment-trends-index",
             "march": "",
@@ -1693,7 +1694,9 @@
                 "february": "105.84",
                 "march": "105.52",
                 "april": "107.88",
-                "may": "107.01"
+                "may": "107.01",
+                "june": "106.74",
+                "july": "107.71"
             },
             "change": "",
             "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
@@ -2036,7 +2039,7 @@
             "color": "#2ecc71",
             "agency": "NFIB",
             "name": "Small Business Optimism Index",
-            "lastUpdated": "2026-07-15T14:00:00Z",
+            "lastUpdated": "2026-08-11T14:00:00Z",
             "releaseDay": 12,
             "url": "https://www.nfib.com/news/monthly_report/sbet/",
             "march": "97.4",
@@ -2055,7 +2058,8 @@
                 "march": "95.8",
                 "april": "95.9",
                 "may": "95.3",
-                "june": "97.4"
+                "june": "97.4",
+                "july": "99.8"
             },
             "change": "",
             "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."

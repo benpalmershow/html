@@ -9,6 +9,45 @@
   <meta name="author" content="Howdy, Stranger">
   <meta name="robots" content="index, follow">
   <title>Numbers - Howdy, Stranger</title>
+  <link rel="canonical" href="https://howdystranger.com/financials.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://howdystranger.com/financials.html">
+  <meta property="og:title" content="Numbers - Howdy, Stranger">
+  <meta property="og:description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.">
+  <meta property="og:image" content="https://howdystranger.com/images/logo-120x120.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://howdystranger.com/financials.html">
+  <meta property="twitter:title" content="Numbers - Howdy, Stranger">
+  <meta property="twitter:description" content="Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.">
+  <meta property="twitter:image" content="https://howdystranger.com/images/logo-120x120.webp">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Numbers - Howdy, Stranger",
+    "description": "Economic indicators dashboard with real-time data on employment, housing, commodities, financial markets, and prediction markets. Track key economic metrics and market forecasts.",
+    "url": "https://howdystranger.com/financials.html",
+    "author": {
+      "@type": "Organization",
+      "name": "Howdy, Stranger"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Howdy, Stranger",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://howdystranger.com/images/logo-120x120.webp"
+      }
+    },
+    "dateModified": "2026-07-13"
+  }
+  </script>
 
   <!-- Apply theme before first paint to avoid flash -->
   <script>
@@ -61,17 +100,22 @@
   <link rel="preload" href="js/financials.js" as="script">
 
   <!-- DNS prefetch and data prefetch -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="prefetch" href="json/financials-data.json" as="fetch" crossorigin>
 </head>
 <body>
+  <!-- Skip to content link for keyboard accessibility -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
         <img src="images/logo-120x120.webp" alt="" width="54" height="54" loading="eager" decoding="async">
       </a>
+      <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
       <div class="nav-actions">
       <ul class="nav-list"> 
 <li><a href="financials.html" class="nav-link active" aria-current="page" aria-label="Numbers"><img src="images/read-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Numbers</span><span class="nav-active-dot" aria-hidden="true"></span></a></li>
@@ -128,6 +172,13 @@
               </div>
             </div>
           </div>
+
+        <noscript>
+          <div class="category" style="padding:2rem;text-align:center;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--card-radius);">
+            <h2 style="color:var(--logo-teal);margin:0 0 1rem;">JavaScript Required</h2>
+            <p style="margin:0;color:var(--text-secondary);">This dashboard requires JavaScript to load and display economic indicators. Please enable JavaScript in your browser settings.</p>
+          </div>
+        </noscript>
 
           <!-- 13F Holdings Section -->
           <div id="latest-13f-filings-anchor"></div>

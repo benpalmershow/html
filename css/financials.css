@@ -11,6 +11,10 @@
 
 .categories { display: grid; gap: 15px }
 
+.section-deferred { display: none; }
+
+.section-deferred.is-visible { display: block; }
+
 .content { min-height: 80vh; contain: layout; }
 
 .category { background: var(--bg-secondary); border-radius: var(--card-radius); padding: 0.5rem clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform 0.3s ease; word-break: break-word; content-visibility: auto; contain-intrinsic-size: 1px 500px; }
@@ -52,7 +56,10 @@
     animation: cardIn 0.35s ease-out both;
     contain: layout style;
     min-width: 0;
+    min-height: 118px;
 }
+
+.indicator.indicator-static { animation: none; }
 
 .indicator:hover { will-change: transform; }
 
@@ -705,6 +712,11 @@
   border: 1px solid var(--border-color);
   background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255,255,255,0.04) 100%);
   overflow: hidden;
+  min-height: 118px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .skeleton-line {

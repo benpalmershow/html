@@ -245,6 +245,3 @@ function initializeFirmCards() {
         setTimeout(() => lucide.createIcons(), 100);
     }
 }
-
-// Auto-initialize when script loads
-document.addEventListener('DOMContentLoaded', load13FData);

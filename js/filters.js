@@ -183,12 +183,46 @@ function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
 
 function setupChartIconHandlers(SELECTORS, DATA_ATTRS) {
     setupIconHandlers(SELECTORS.CHART_BTN, function () {
-        console.log('Chart button clicked');
         const indicator = this.closest(SELECTORS.INDICATOR);
         const indicatorName = indicator.getAttribute(DATA_ATTRS.INDICATOR_NAME);
-        console.log('Indicator name:', indicatorName);
-        toggleChartOverlay(indicator, indicatorName);
+        ensureChartsModule(function () {
+            toggleChartOverlay(indicator, indicatorName);
+        });
     });
+}
+
+let chartsModuleLoading = false;
+const chartsModuleCallbacks = [];
+
+function ensureChartsModule(callback) {
+    if (typeof toggleChartOverlay === 'function') {
+        callback();
+        return;
+    }
+    chartsModuleCallbacks.push(callback);
+    if (chartsModuleLoading) return;
+    chartsModuleLoading = true;
+
+    if (!document.querySelector('link[href="css/financials-modal.css"]')) {
+        const style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.href = 'css/financials-modal.css';
+        document.head.appendChild(style);
+    }
+
+    const script = document.createElement('script');
+    script.src = 'js/charts.js';
+    script.defer = true;
+    script.onload = function () {
+        chartsModuleLoading = false;
+        chartsModuleCallbacks.forEach(function (cb) { cb(); });
+        chartsModuleCallbacks.length = 0;
+    };
+    script.onerror = function () {
+        chartsModuleLoading = false;
+        console.error('Failed to load charts.js');
+    };
+    document.head.appendChild(script);
 }
 
 function setupExpandHandlers(SELECTORS) {

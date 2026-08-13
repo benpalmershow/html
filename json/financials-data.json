@@ -821,7 +821,7 @@
             "color": "#3498db",
             "agency": "Treasury",
             "name": "Monthly Budget Deficit/Surplus",
-            "lastUpdated": "2026-07-31T14:00:00Z",
+            "lastUpdated": "2026-08-12T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
             "january": "-$128,640M",
@@ -842,7 +842,8 @@
                 "march": "-$164,100M",
                 "april": "+215,024M",
                 "may": "-$292,648M",
-                "june": "-$120,305M"
+                "june": "-$120,305M",
+                "july": "-$432,308M"
             },
             "receipts": {
                 "january": "513,294",
@@ -863,7 +864,8 @@
                     "march": "384,863",
                     "april": "837,343",
                     "may": "$335,512",
-                    "june": "$495,761"
+                    "june": "$495,761",
+                    "july": "$334,010"
                 }
             },
             "outlays": {
@@ -885,7 +887,8 @@
                     "march": "548,963",
                     "april": "622,319",
                     "may": "$628,160",
-                    "june": "$616,067"
+                    "june": "$616,067",
+                    "july": "$766,318"
                 }
             },
             "change": "",

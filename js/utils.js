@@ -184,6 +184,16 @@ function getLatestMonthForIndicator(indicator, MONTHS = DEFAULT_MONTHS) {
      };
  }
 
+function calculatePercentChange(currentValue, previousValue) {
+    if (previousValue === 0) return null;
+    const numberChange = currentValue - previousValue;
+    // When baseline is negative, use absolute value so moving toward zero
+    // (e.g. -26 to -8) registers as a positive percent change.
+    const denominator = previousValue < 0 ? Math.abs(previousValue) : previousValue;
+    const percentChange = (numberChange / denominator) * 100;
+    return { percentChange, numberChange };
+}
+
 function calculateMoMChange(indicator, MONTHS) {
     let currentValue = null;
     let previousValue = null;
@@ -252,12 +262,11 @@ function calculateMoMChange(indicator, MONTHS) {
 
     if (currentValue === null || previousValue === null || previousValue === 0) return null;
 
-    const change = ((currentValue - previousValue) / previousValue) * 100;
-    const numberChange = currentValue - previousValue;
+    const { percentChange, numberChange } = calculatePercentChange(currentValue, previousValue);
 
     return {
-        percentChange: change,
-        numberChange: numberChange,
+        percentChange,
+        numberChange,
         currentRawValue: currentRawValue
     };
 }
@@ -313,11 +322,12 @@ function calculateYoYChange(indicator, MONTHS) {
     const yearBackNumeric = extractNumericValue(yearBackValue);
     if (!isValidData(yearBackValue) || yearBackNumeric === null || yearBackNumeric === 0) return null;
 
-    const percentChange = ((latest.numeric - yearBackNumeric) / yearBackNumeric) * 100;
+    const changeResult = calculatePercentChange(latest.numeric, yearBackNumeric);
+    if (!changeResult) return null;
 
     return {
-        percentChange,
-        numberChange: latest.numeric - yearBackNumeric,
+        percentChange: changeResult.percentChange,
+        numberChange: changeResult.numberChange,
         currentRawValue: latest.value
     };
 }

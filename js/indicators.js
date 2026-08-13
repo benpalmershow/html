@@ -569,13 +569,12 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
     }
     if (momChange === null) return '';
     const isUnemploymentIndicator = indicator.name.includes('Unemployment');
-    const isBudgetDeficitIndicator = indicator.name.includes('Budget Deficit');
     const momChangeValue = momChange.percentChange;
     const momInfo = formatChangeIndicator(momChangeValue);
     const changeLabel = indicator.change_label || 'MoM';
     result += buildChangeMetricButton(changeLabel, momInfo, changeLabel + ' change');
     if (yoyChange !== null) {
-        const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : isBudgetDeficitIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
+        const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
         const yoyInfo = formatChangeIndicator(yoyChangeValue);
         result += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
     }

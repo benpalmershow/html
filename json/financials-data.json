@@ -178,11 +178,15 @@
             "color": "#3498db",
             "agency": "Polymarket",
             "name": "Midterms: Senate",
-            "lastUpdated": "2026-07-01T08:00:00Z",
+            "lastUpdated": "2026-08-14T08:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
             "probabilities": {
+                "2026-08-14": {
+                    "Democratic Party": "53",
+                    "Republican Party": "48"
+                },
                 "2026-07-01": {
                     "Democratic Party": "42",
                     "Republican Party": "57"

@@ -249,7 +249,7 @@
             "color": "#9b59b6",
             "agency": "UMich",
             "name": "Consumer Sentiment",
-            "lastUpdated": "2026-08-10T15:00:00Z",
+            "lastUpdated": "2026-08-14T15:00:00Z",
             "releaseDay": 15,
             "url": "https://www.sca.isr.umich.edu",
             "march": "57.0",
@@ -269,7 +269,8 @@
                 "april": "49.8",
                 "may": "44.8",
                 "june": "49.5",
-                "july": "55.2"
+                "july": "55.2",
+                "august": "51.0"
             },
             "change": "",
             "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity."
@@ -1805,7 +1806,7 @@
             "color": "#34495e",
             "agency": "FRED",
             "name": "Jobless Claims",
-            "lastUpdated": "2026-07-11T16:00:00Z",
+            "lastUpdated": "2026-08-14T16:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/ICSA",
             "march": "223000",
@@ -1824,7 +1825,8 @@
                 "march": "208,000",
                 "april": "207,750",
                 "may": "211,600",
-                "june": "222,500"
+                "june": "222,500",
+                "july": "203,250"
             },
             "change": "",
             "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."

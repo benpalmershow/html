@@ -3,7 +3,23 @@
 
 function setupIndicatorSearch() {
     const searchInput = document.getElementById('indicatorSearch');
+    const emptyState = document.getElementById('searchEmptyState');
+    const clearBtn = document.getElementById('clearSearchBtn');
     if (!searchInput) return;
+
+    const updateEmptyState = (visibleCategories) => {
+        const anyVisible = visibleCategories > 0;
+        if (emptyState) emptyState.style.display = anyVisible ? 'none' : 'block';
+        if (window.lucide) lucide.createIcons();
+    };
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+        });
+    }
 
     let debounceTimer;
     searchInput.addEventListener('input', function () {
@@ -16,6 +32,7 @@ function setupIndicatorSearch() {
             if (!query) {
                 indicators.forEach(el => el.style.display = '');
                 categories.forEach(el => el.style.display = '');
+                updateEmptyState(categories.length);
                 return;
             }
 
@@ -25,10 +42,15 @@ function setupIndicatorSearch() {
                 indicator.style.display = (name.includes(query) || agency.includes(query)) ? '' : 'none';
             });
 
+            let visibleCount = 0;
             categories.forEach(cat => {
                 const visibleIndicators = cat.querySelectorAll('.indicator:not([style*="display: none"])');
-                cat.style.display = visibleIndicators.length > 0 ? '' : 'none';
+                const isVisible = visibleIndicators.length > 0;
+                cat.style.display = isVisible ? '' : 'none';
+                if (isVisible) visibleCount++;
             });
+
+            updateEmptyState(visibleCount);
         }, 200);
     });
 }

@@ -10,6 +10,7 @@ const ChartStrategies = (function () {
         if (indicator.name === 'Monthly Budget Deficit' && indicator.receipts && indicator.outlays) return 'budget-deficit';
         if (indicator.name === 'KY-04 Massie v. Gallrein') return 'political-poll';
         if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return 'prediction-market';
+        if (indicator.probabilities && typeof indicator.probabilities === 'object' && Object.keys(indicator.probabilities).length > 1) return 'prediction-market';
         if (indicator.category === 'Earnings' && indicator.recentEarnings && indicator.recentEarnings.length > 0) return 'earnings';
         return 'line';
     }
@@ -424,6 +425,7 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
             );
             const yesValues = sorted.map(([, v]) => parseFloat(v.yes));
             const noValues = sorted.map(([, v]) => parseFloat(v.no));
+            const dateLabels = sorted.map(([date]) => date);
             return {
                 type: 'chartjs-mixed',
                 data: {
@@ -432,7 +434,8 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
                         { label: 'Yes', data: yesValues, type: 'line', borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
                         { label: 'No', data: noValues, type: 'line', borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 }
                     ]
-                }
+                },
+                _dateLabels: dateLabels
             };
         }
 
@@ -446,6 +449,7 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
             );
             const demValues = partySorted.map(([, v]) => parseFloat(v['Democratic Party']));
             const gopValues = partySorted.map(([, v]) => parseFloat(v['Republican Party']));
+            const dateLabels = partySorted.map(([date]) => date);
             return {
                 type: 'chartjs-mixed',
                 data: {
@@ -454,7 +458,8 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
                         { label: 'Democratic Party', data: demValues, type: 'line', borderColor: '#3498db', backgroundColor: 'rgba(52,152,219,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
                         { label: 'Republican Party', data: gopValues, type: 'line', borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 }
                     ]
-                }
+                },
+                _dateLabels: dateLabels
             };
         }
     }

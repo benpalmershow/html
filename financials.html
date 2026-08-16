@@ -75,7 +75,6 @@
 
   <!-- Non-critical CSS - deferred loading -->
   <link rel="preload" href="css/worldcup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="css/view-transitions.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/tables.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/alerts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/search.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -83,7 +82,6 @@
   <link rel="preload" href="css/components/home.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="css/worldcup.css">
-    <link rel="stylesheet" href="css/view-transitions.css">
     <link rel="stylesheet" href="css/components/tables.css">
     <link rel="stylesheet" href="css/components/alerts.css">
     <link rel="stylesheet" href="css/components/search.css">
@@ -110,7 +108,7 @@
   <!-- Skip to content link for keyboard accessibility -->
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
-  <nav class="site-nav" id="main-nav" aria-label="Main" style="view-transition-name: nav;">
+  <nav class="site-nav" id="main-nav" aria-label="Main">
     <div class="nav-container">
       <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
         <img src="images/logo-120x120.webp" alt="" width="54" height="54" loading="eager" decoding="async">
@@ -138,7 +136,7 @@
   <!-- Dark Mode Toggle -->
   <script src="js/dark-mode-toggle.js" defer></script>
 
-   <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
+   <main id="main-content" tabindex="-1">
      <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
       <h1 class="page-title" aria-label="Page title">Numbers</h1>
       <div id="lastUpdated" class="last-updated"></div>
@@ -212,7 +210,6 @@
   <!-- Critical Financials Module Scripts (loaded in dependency order) -->
   <script src="js/services.js" defer></script>
   <script src="js/utils.js" defer></script>
-  <script src="js/view-transitions.js" defer></script>
   <script src="js/indicators.js" defer></script>
   <script src="js/charts.js" defer></script>
   <script src="js/filters.js" defer></script>

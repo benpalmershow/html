@@ -74,11 +74,18 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
     if (sortByLatest) {
         html += renderLatestUpdatesView(financialData);
+        indicatorContainer.innerHTML = html;
     } else {
-        html += renderCategoryView(financialData, categories, filterCategory);
-    }
+        const visibleCategories = categories.filter(category => filterCategory === 'all' || category === filterCategory).slice(0, 2);
+        const deferredCategories = categories.filter(category => filterCategory === 'all' || category === filterCategory).slice(2);
 
-    indicatorContainer.innerHTML = html;
+        html += renderCategoryView(financialData, visibleCategories, filterCategory);
+        indicatorContainer.innerHTML = html;
+
+        if (deferredCategories.length) {
+            scheduleDeferredCategoryRender(financialData, deferredCategories, filterCategory, indicatorContainer);
+        }
+    }
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -94,6 +101,34 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
     // Lazy render indicators to reduce initial DOM complexity
     setupLazyIndicatorRendering();
+}
+
+function scheduleDeferredCategoryRender(financialData, categories, filterCategory, indicatorContainer) {
+    const queue = [...categories];
+    const flushNextBatch = () => {
+        const nextBatch = queue.splice(0, 2);
+        if (!nextBatch.length) return;
+
+        const html = renderCategoryView(financialData, nextBatch, filterCategory);
+        indicatorContainer.insertAdjacentHTML('beforeend', html);
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
+        setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+        setupExpandHandlers(SELECTORS);
+
+        if (queue.length) {
+            const schedule = typeof requestIdleCallback === 'function'
+                ? () => requestIdleCallback(flushNextBatch, { timeout: 1500 })
+                : () => setTimeout(flushNextBatch, 120);
+            schedule();
+        }
+    };
+
+    const schedule = typeof requestIdleCallback === 'function'
+        ? () => requestIdleCallback(flushNextBatch, { timeout: 1500 })
+        : () => setTimeout(flushNextBatch, 120);
+    schedule();
 }
 
 function renderLatestUpdatesView(financialData) {

@@ -424,9 +424,9 @@ async function loadLatestWorldCup(limit = LIMITS.worldCup) {
       li.className = 'wc-compact-match';
       li.innerHTML = `
         <span class="time-ago">${timeAgo}</span>
-        <span class="wc-team wc-team-a"><span class="wc-team-name">${escapeHtml(match.teamA.name)}</span> <span class="wc-flag">${match.teamA.flag || '🏳️'}</span></span>
+        <span class="wc-team wc-team-a"><span class="wc-team-name">${escapeHtml(match.teamA.name)}</span> <span class="wc-flag" aria-label="${escapeHtml(match.teamA.name)} flag placeholder"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12l-1.2 3.5L16 12.5H4z"></path><path d="M4 5.5v13"></path><path d="M4 18.5h12"></path></svg></span></span>
         <span class="wc-score">${scoreText}</span>
-        <span class="wc-team wc-team-b"><span class="wc-flag">${match.teamB.flag || '🏳️'}</span> <span class="wc-team-name">${escapeHtml(match.teamB.name)}</span></span>
+        <span class="wc-team wc-team-b"><span class="wc-flag" aria-label="${escapeHtml(match.teamB.name)} flag placeholder"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12l-1.2 3.5L16 12.5H4z"></path><path d="M4 5.5v13"></path><path d="M4 18.5h12"></path></svg></span> <span class="wc-team-name">${escapeHtml(match.teamB.name)}</span></span>
       `;
       container.appendChild(li);
     });

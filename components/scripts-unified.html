@@ -13,7 +13,7 @@
       // Load Speed Insights
       const i = document.createElement('script');
       i.type = 'module';
-      i.src = 'js/speed-insights.js';
+      i.src = '/js/speed-insights.js';
       i.onerror = () => console.error('Failed to load speed insights');
       document.head.appendChild(i);
     }
@@ -30,7 +30,27 @@
 <!-- Service Worker Registration -->
 <script>
   if ('serviceWorker' in navigator) {
+    const isLocalPreview = window.location.hostname === 'localhost'
+      || window.location.hostname === '127.0.0.1'
+      || window.location.protocol === 'file:';
+
+    const cleanupLocalServiceWorker = async () => {
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map(reg => reg.unregister()));
+        const keys = await caches.keys();
+        await Promise.all(keys.map(key => caches.delete(key)));
+      } catch (error) {
+        console.warn('Local service worker cleanup failed:', error);
+      }
+    };
+
     window.addEventListener('load', () => {
+      if (isLocalPreview) {
+        cleanupLocalServiceWorker();
+        return;
+      }
+
       navigator.serviceWorker.register('/sw.js').catch(error => {
         console.error('Service worker registration failed:', error);
       });

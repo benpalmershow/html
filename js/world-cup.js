@@ -82,14 +82,18 @@ const hasCrestA = match.teamA.crest;
        <div class="indicator-content">
          <div class="match-score-display">
            <div class="match-team">
-             ${hasCrestA ? `<img src="${match.teamA.crest}" alt="${match.teamA.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-block'">` : ''}
-             <span class="team-flag" style="${hasCrestA ? 'display:none;' : ''}">${match.teamA.flag || '🏳️'}</span>
+             ${hasCrestA ? `<img src="${match.teamA.crest}" alt="${match.teamA.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-flex'">` : ''}
+             <span class="team-flag" style="${hasCrestA ? 'display:none;' : ''}" aria-label="${match.teamA.name} flag placeholder">
+               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12l-1.2 3.5L16 12.5H4z"></path><path d="M4 5.5v13"></path><path d="M4 18.5h12"></path></svg>
+             </span>
              <span class="team-name">${match.teamA.name || 'TBD'}</span>
            </div>
            <div class="match-score">${scoreDisplay}</div>
            <div class="match-team">
-             ${hasCrestB ? `<img src="${match.teamB.crest}" alt="${match.teamB.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-block'">` : ''}
-             <span class="team-flag" style="${hasCrestB ? 'display:none;' : ''}">${match.teamB.flag || '🏳️'}</span>
+             ${hasCrestB ? `<img src="${match.teamB.crest}" alt="${match.teamB.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-flex'">` : ''}
+             <span class="team-flag" style="${hasCrestB ? 'display:none;' : ''}" aria-label="${match.teamB.name} flag placeholder">
+               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12l-1.2 3.5L16 12.5H4z"></path><path d="M4 5.5v13"></path><path d="M4 18.5h12"></path></svg>
+             </span>
              <span class="team-name">${match.teamB.name || 'TBD'}</span>
            </div>
          </div>

@@ -210,7 +210,19 @@ async function loadChartInOverlay(indicator, indicatorName, overlay) {
 function showOverlayError(body, message) {
     const loading = body.querySelector('.chart-overlay-loading');
     if (loading) loading.remove();
-    body.innerHTML = `<div class="chart-overlay-error"><div class="chart-overlay-error-icon">📊</div><p>${message}</p></div>`;
+    body.innerHTML = `
+        <div class="chart-overlay-error">
+            <div class="chart-overlay-error-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19h16"></path>
+                    <path d="M7 16V9"></path>
+                    <path d="M12 16V5"></path>
+                    <path d="M17 16v-7"></path>
+                </svg>
+            </div>
+            <p>${message}</p>
+        </div>
+    `;
 }
 
 // --- Chart Initialization ---

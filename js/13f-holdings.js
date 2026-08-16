@@ -122,7 +122,14 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                     `).join('')}
                 </div>
                 <div class="firm-empty-state" style="display: none;">
-                    <div class="empty-state-icon">📊</div>
+                    <div class="empty-state-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19h16"></path>
+                            <path d="M7 16V9"></path>
+                            <path d="M12 16V5"></path>
+                            <path d="M17 16v-7"></path>
+                        </svg>
+                    </div>
                     <div class="empty-state-text">No holdings match this filter</div>
                 </div>
             </div>

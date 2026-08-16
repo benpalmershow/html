@@ -140,44 +140,27 @@ function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
         const indicator = this.closest(SELECTORS.INDICATOR);
         if (!indicator) return;
 
-        const modal = indicator.querySelector('.explanation-modal');
-        if (!modal) return;
+        const hasExplanation = indicator.querySelector('.indicator-explanation');
+        if (!hasExplanation) return;
 
-        const isOpen = modal.classList.contains('open');
-        
-        // Close all other open modals
-        document.querySelectorAll('.explanation-modal.open').forEach(m => {
-            if (m !== modal) m.classList.remove('open');
+        const isOpen = this.classList.contains('active');
+
+        document.querySelectorAll('.info-btn.active').forEach(btn => {
+            if (btn !== this) btn.classList.remove('active');
         });
 
-        if (!isOpen) {
-            // Check if modal would go off-screen below
-            const indicatorRect = indicator.getBoundingClientRect();
-            const modalHeight = modal.offsetHeight || 200;
-            const spaceBelow = window.innerHeight - indicatorRect.bottom;
-            
-            if (spaceBelow < modalHeight + 16) {
-                modal.classList.add('position-above');
-            } else {
-                modal.classList.remove('position-above');
+        document.querySelectorAll('.indicator .info-btn.active').forEach(btn => {
+            if (btn !== this) btn.classList.remove('active');
+        });
+
+        document.querySelectorAll('.indicator.info-open').forEach(card => {
+            if (card !== indicator) {
+                card.classList.remove('info-open');
             }
-        }
+        });
 
-        modal.classList.toggle('open', !isOpen);
+        indicator.classList.toggle('info-open', !isOpen);
         this.classList.toggle('active', !isOpen);
-    });
-
-    // Handle close button clicks
-    document.addEventListener('click', function (e) {
-        const closeBtn = e.target.closest('.explanation-modal-close');
-        if (closeBtn) {
-            const modal = closeBtn.closest('.explanation-modal');
-            const indicator = modal.closest('.indicator');
-            const infoBtn = indicator.querySelector('.info-btn');
-            modal.classList.remove('open');
-            modal.classList.remove('position-above');
-            if (infoBtn) infoBtn.classList.remove('active');
-        }
     });
 }
 

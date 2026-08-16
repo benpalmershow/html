@@ -11,10 +11,18 @@
     const errorEl = document.createElement('div');
     errorEl.style.cssText = `
       position: fixed; top: 20px; right: 20px; z-index: 1000;
-      background: white; padding: 10px; border: 1px solid #ddd;
-      border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.96); padding: 12px 14px; border: 1px solid var(--border-color, #e5ddd2);
+      border-radius: 12px; box-shadow: 0 12px 28px rgba(0,0,0,0.08); color: var(--text-primary, #1b1c1a);
+      display: flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 600; max-width: 300px;
     `;
-    errorEl.textContent = `⚠️ ${message}`;
+    errorEl.innerHTML = `
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--color-secondary, #a97b4d);">
+        <path d="M12 9v4"></path>
+        <path d="M12 17h.01"></path>
+        <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path>
+      </svg>
+      <span>${message}</span>
+    `;
     document.body.appendChild(errorEl);
     setTimeout(() => errorEl.remove(), 5000);
   }

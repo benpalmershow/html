@@ -1,0 +1,19 @@
+/* Financials performance overrides - keep in sync with financials.css deltas */
+
+.section-deferred { display: none; }
+
+.section-deferred.is-visible { display: block; }
+
+.indicator { min-height: 118px; }
+
+.indicator.indicator-static { animation: none; }
+
+.skeleton-card {
+  min-height: 118px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.content { min-height: 80vh; contain: layout; }

@@ -73,12 +73,32 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     let html = '';
 
     if (sortByLatest) {
-        html += renderLatestUpdatesView(financialData);
+        const sortedIndicators = financialData.indices.slice().sort((a, b) => {
+            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+            if (dateA > 0 && dateB > 0) return dateB - dateA;
+            if (dateA > 0) return -1;
+            if (dateB > 0) return 1;
+            const aInfo = getLatestMonthForIndicator(a);
+            const bInfo = getLatestMonthForIndicator(b);
+            if (aInfo.daysOld !== bInfo.daysOld) return aInfo.daysOld - bInfo.daysOld;
+            return a.name.localeCompare(b.name);
+        });
+        const initialCount = 4;
+        html += renderLatestUpdatesView(financialData, sortedIndicators.slice(0, initialCount));
+        const remainingLatest = sortedIndicators.slice(initialCount);
+        if (remainingLatest.length) {
+            scheduleAppendRemainingLatest(financialData, remainingLatest);
+        }
     } else {
         html += renderCategoryView(financialData, categories, filterCategory);
     }
 
+    const heightBefore = indicatorContainer.getBoundingClientRect().height;
+    indicatorContainer.style.minHeight = `${heightBefore}px`;
     indicatorContainer.innerHTML = html;
+
+    indicatorContainer.querySelectorAll('.indicator').forEach(el => el.classList.add('indicator-static'));
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -96,21 +116,23 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     setupLazyIndicatorRendering();
 }
 
-function renderLatestUpdatesView(financialData) {
-    const allIndicators = financialData.indices.slice();
-    allIndicators.sort((a, b) => {
-        const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-        const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+function renderLatestUpdatesView(financialData, indicatorsOverride) {
+    const allIndicators = indicatorsOverride || financialData.indices.slice();
+    if (!indicatorsOverride) {
+        allIndicators.sort((a, b) => {
+            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
 
-        if (dateA > 0 && dateB > 0) return dateB - dateA;
-        if (dateA > 0) return -1;
-        if (dateB > 0) return 1;
+            if (dateA > 0 && dateB > 0) return dateB - dateA;
+            if (dateA > 0) return -1;
+            if (dateB > 0) return 1;
 
-        const aInfo = getLatestMonthForIndicator(a);
-        const bInfo = getLatestMonthForIndicator(b);
-        if (aInfo.daysOld !== bInfo.daysOld) return aInfo.daysOld - bInfo.daysOld;
-        return a.name.localeCompare(b.name);
-    });
+            const aInfo = getLatestMonthForIndicator(a);
+            const bInfo = getLatestMonthForIndicator(b);
+            if (aInfo.daysOld !== bInfo.daysOld) return aInfo.daysOld - bInfo.daysOld;
+            return a.name.localeCompare(b.name);
+        });
+    }
 
     return `
         <div class="category" data-category="latest-updates">
@@ -123,6 +145,48 @@ function renderLatestUpdatesView(financialData) {
             </div>
         </div>
     `;
+}
+
+function scheduleAppendRemainingLatest(financialData, remainingIndicators) {
+    const grid = document.querySelector('#indicator-categories .category[data-category="latest-updates"] .indicators-grid');
+    if (!grid) return;
+
+    const sentinel = document.createElement('div');
+    sentinel.className = 'lazy-load-sentinel';
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.height = '1px';
+    grid.appendChild(sentinel);
+
+    const observer = new IntersectionObserver((entries) => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        appendRemainingLatestIndicators(financialData, remainingIndicators);
+        observer.disconnect();
+        sentinel.remove();
+    }, { rootMargin: '300px', threshold: 0 });
+
+    observer.observe(sentinel);
+}
+
+function appendRemainingLatestIndicators(financialData, remainingIndicators) {
+    if (!remainingIndicators.length) return;
+
+    const grid = document.querySelector('#indicator-categories .category[data-category="latest-updates"] .indicators-grid');
+    if (!grid) return;
+
+    const fragment = document.createDocumentFragment();
+    remainingIndicators.forEach(indicator => {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS);
+        fragment.appendChild(wrapper.firstElementChild);
+    });
+    grid.appendChild(fragment);
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
+    setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+    setupExpandHandlers(SELECTORS);
+    if (typeof renderSparklines === 'function') renderSparklines();
+    makeCardsFocusable(document.getElementById('categories'));
 }
 
 function renderCategoryView(financialData, categories, filterCategory) {
@@ -180,13 +244,13 @@ function makeCardsFocusable(container) {
    ========================================= */
 
 function setupLazyIndicatorRendering() {
+    const INITIAL_VISIBLE = 4;
     const categories = document.querySelectorAll('.category');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const category = entry.target;
-                const indicators = category.querySelectorAll('.indicator');
-                indicators.forEach(indicator => {
+                category.querySelectorAll('.indicator').forEach(indicator => {
                     if (indicator.style.display === 'none') {
                         indicator.style.display = '';
                     }
@@ -196,13 +260,14 @@ function setupLazyIndicatorRendering() {
         });
     }, { rootMargin: '200px', threshold: 0.01 });
 
-    // Hide indicators in categories not immediately visible
     categories.forEach((category, index) => {
-        if (index > 1) { // Keep first 2 categories visible
-            const indicators = category.querySelectorAll('.indicator');
-            indicators.forEach(indicator => {
+        const indicators = category.querySelectorAll('.indicator');
+        indicators.forEach((indicator, indIndex) => {
+            if (index > 1 || indIndex >= INITIAL_VISIBLE) {
                 indicator.style.display = 'none';
-            });
+            }
+        });
+        if (index > 1 || indicators.length > INITIAL_VISIBLE) {
             observer.observe(category);
         }
     });
@@ -214,19 +279,29 @@ function setupLazyIndicatorRendering() {
 
 async function fetchFinancialData() {
     try {
-        const [data, earningsData] = await Promise.all([
-            Services.dataService.fetchJSON('json/financials-data.json'),
-            Services.dataService.fetchJSON('json/earnings.json').catch(() => null)
-        ]);
-
-        if (ENABLE_EARNINGS && earningsData && earningsData.earnings && earningsData.earnings.length) {
-            const earningsIndicators = convertEarningsToIndicators(earningsData.earnings);
-            data.indices = data.indices.filter(item => item.category !== 'Earnings');
-            data.indices.push(...earningsIndicators);
-        }
+        const dataPromise = window.__FINANCIALS_DATA_PROMISE__ || Services.dataService.fetchJSON('json/financials-data.json');
+        const data = await dataPromise;
+        window.__FINANCIALS_DATA_PROMISE__ = null;
 
         DashboardState.setData(data);
         initializeDashboard();
+
+        if (ENABLE_EARNINGS) {
+            Services.dataService.fetchJSON('json/earnings.json')
+                .catch(() => null)
+                .then(earningsData => {
+                    if (!earningsData?.earnings?.length) return;
+                    const financialData = DashboardState.getData();
+                    const earningsIndicators = convertEarningsToIndicators(earningsData.earnings);
+                    financialData.indices = financialData.indices.filter(item => item.category !== 'Earnings');
+                    financialData.indices.push(...earningsIndicators);
+                    DashboardState.setData(financialData);
+                    if (typeof setupFilters === 'function') setupFilters(financialData);
+                    const current = document.getElementById('categories')?.dataset.filter || 'latest';
+                    const isLatest = current === 'latest';
+                    renderDashboard(isLatest ? 'all' : current, isLatest);
+                });
+        }
     } catch (error) {
         console.error('Could not load financial data:', error);
         document.getElementById('categories').innerHTML =
@@ -463,8 +538,9 @@ function initializeDashboard() {
         setActiveFilter(cat);
         renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
         if (indicatorParam) scrollToIndicatorByName(indicatorParam);
-        ensureLoad13F();
     }
+
+    setup13FIntersectionLoader();
 
     if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
@@ -496,7 +572,39 @@ function setActiveFilter(category) {
 function ensureLoad13F() {
     if (DashboardState.is13FLoaded()) return;
     DashboardState.mark13FLoaded();
-    if (typeof load13FData === 'function') load13FData();
+
+    const section = document.getElementById('latest-13f-filings');
+    if (section) section.classList.add('is-visible');
+
+    const runLoad = () => {
+        if (typeof load13FData === 'function') load13FData();
+    };
+
+    if (typeof load13FData === 'function') {
+        runLoad();
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'js/13f-holdings.js';
+    script.defer = true;
+    script.onload = runLoad;
+    script.onerror = () => console.error('Failed to load 13f-holdings.js');
+    document.head.appendChild(script);
+}
+
+function setup13FIntersectionLoader() {
+    const section = document.getElementById('latest-13f-filings');
+    if (!section || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries.some(entry => entry.isIntersecting)) {
+            ensureLoad13F();
+            observer.disconnect();
+        }
+    }, { rootMargin: '400px', threshold: 0 });
+
+    observer.observe(section);
 }
 
 /* =========================================
@@ -519,9 +627,13 @@ function setupKeyboardNavigation() {
             next = cards[idx - 1];
         } else if (e.key === 'Enter') {
             const chartBtn = focused.querySelector('.chart-btn');
-            if (chartBtn) chartBtn.click();
-            e.preventDefault();
-            return;
+            if (chartBtn) {
+                ensureChartsModule(function () {
+                    chartBtn.click();
+                });
+                e.preventDefault();
+                return;
+            }
         }
 
         if (next) {

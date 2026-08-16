@@ -64,14 +64,20 @@
     })();
   </script>
 
-  <!-- Critical CSS - loaded synchronously for first paint -->
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/filter-bar.css">
-  <link rel="stylesheet" href="css/financials.css">
-  <link rel="stylesheet" href="css/components/cards.css">
-  <link rel="stylesheet" href="css/components/utilities.css">
+  <!-- Start data fetch during HTML parse (before deferred scripts) -->
+  <script>
+    window.__FINANCIALS_DATA_PROMISE__ = fetch('json/financials-data.json', {
+      credentials: 'same-origin',
+      headers: { 'Accept': 'application/json' }
+    }).then(function (response) {
+      if (!response.ok) throw new Error('Failed to prefetch financials data');
+      return response.json();
+    });
+  </script>
+
+  <!-- Critical CSS - optimized bundle for first paint -->
+  <link rel="stylesheet" href="css/financials-copy.css">
+  <link rel="stylesheet" href="css/financials-perf.css">
 
   <!-- Non-critical CSS - deferred loading -->
   <link rel="preload" href="css/worldcup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -81,6 +87,9 @@
   <link rel="preload" href="css/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/home.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
+    <link rel="stylesheet" href="css/financials-copy.css">
+    <link rel="stylesheet" href="css/financials-perf.css">
+    <link rel="stylesheet" href="css/financials.css">
     <link rel="stylesheet" href="css/worldcup.css">
     <link rel="stylesheet" href="css/components/tables.css">
     <link rel="stylesheet" href="css/components/alerts.css">
@@ -89,20 +98,14 @@
     <link rel="stylesheet" href="css/components/home.css">
   </noscript>
 
-  <!-- Preload critical resources -->
-  <link rel="preload" href="js/services.js" as="script">
-  <link rel="preload" href="js/utils.js" as="script">
-  <link rel="preload" href="js/indicators.js" as="script">
-  <link rel="preload" href="js/charts.js" as="script">
-  <link rel="preload" href="js/filters.js" as="script">
-  <link rel="preload" href="js/financials.js" as="script">
-
   <!-- DNS prefetch and data prefetch -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="prefetch" href="json/financials-data.json" as="fetch" crossorigin>
+  <link rel="preload" href="json/financials-data.json" as="fetch" crossorigin>
+  <link rel="preload" href="js/indicators.js" as="script">
+  <link rel="preload" href="js/filters.js" as="script">
 </head>
 <body>
   <!-- Skip to content link for keyboard accessibility -->
@@ -156,16 +159,15 @@
         <div class="categories" id="categories">
           <!-- Indicator categories rendered here by renderDashboard -->
           <div id="indicator-categories">
-            <div class="category skeleton-category">
-              <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
+            <div class="category skeleton-category" data-category="latest-updates">
+              <h2 class="category-title">
+                <span class="category-icon"><span class="skeleton-line" style="display:inline-block;width:1.5em;height:1.5em;border-radius:4px;"></span></span>
+                <span class="category-name"><span class="skeleton-line" style="display:inline-block;width:140px;height:22px;"></span></span>
+              </h2>
               <div class="indicators-grid">
                 <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
                 <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
-              </div>
-            </div>
-            <div class="category skeleton-category">
-              <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
-              <div class="indicators-grid">
+                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
                 <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
               </div>
             </div>
@@ -186,7 +188,7 @@
 
           <!-- 13F Holdings Section -->
           <div id="latest-13f-filings-anchor"></div>
-          <div class="category" id="latest-13f-filings" data-category="13F Holdings">
+          <div class="category section-deferred" id="latest-13f-filings" data-category="13F Holdings">
             <h2 class="category-title">
               <span class="category-icon"><i data-lucide="building-2"></i></span>
               <span class="category-name">13F Holdings</span>
@@ -211,15 +213,18 @@
   <script src="js/services.js" defer></script>
   <script src="js/utils.js" defer></script>
   <script src="js/indicators.js" defer></script>
-  <script src="js/charts.js" defer></script>
   <script src="js/filters.js" defer></script>
   <script src="js/financials.js" defer></script>
-  <script src="js/13f-holdings.js" defer></script>
 
   <!-- Non-critical scripts loaded after idle to reduce TBT -->
   <script>
     (function() {
       const loadNonCriticalScripts = () => {
+        const viewTransitionsScript = document.createElement('script');
+        viewTransitionsScript.src = 'js/view-transitions.js';
+        viewTransitionsScript.defer = true;
+        document.head.appendChild(viewTransitionsScript);
+
         const searchScript = document.createElement('script');
         searchScript.src = 'js/search.js';
         searchScript.defer = true;

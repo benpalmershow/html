@@ -109,7 +109,13 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                 <button class="info-btn" title="Show firm details" aria-label="Show firm details"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
             </div>
         </div>
-        <div class="explanation-modal"><div class="explanation-modal-header"><span class="explanation-modal-title">Firm Details</span><button class="explanation-modal-close" aria-label="Close">&times;</button></div><div class="explanation-modal-body">${firmDetails}${description || ''}</div></div>
+        <div class="indicator-explanation">
+            <div class="indicator-explanation-header">Firm details</div>
+            <div class="indicator-explanation-body">
+                ${firmDetails}
+                ${description || ''}
+            </div>
+        </div>
         <div class="indicator-content">
             <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
@@ -172,6 +178,18 @@ function initializeFirmCards() {
         const firmState = {
             filter: 'all'
         };
+
+        card.querySelector('.info-btn')?.addEventListener('click', () => {
+            const isOpen = card.classList.contains('info-open');
+            document.querySelectorAll('#firmCardsContainer .indicator.info-open').forEach(other => {
+                if (other !== card) other.classList.remove('info-open');
+            });
+            document.querySelectorAll('#firmCardsContainer .info-btn.active').forEach(other => {
+                if (other !== card.querySelector('.info-btn')) other.classList.remove('active');
+            });
+            card.classList.toggle('info-open', !isOpen);
+            card.querySelector('.info-btn').classList.toggle('active', !isOpen);
+        });
 
         // Update display function
         function updateFirmDisplay() {

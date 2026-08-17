@@ -1,4 +1,4 @@
-.last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin: 2px 0 0; opacity: 0.75; }
+.last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin: 2px 0 0; opacity: 0.75; min-height: 20px; }
 
 .indicator.expanded .indicator-agency, .indicator.expanded .indicator-content { margin-bottom: 6px; }
 

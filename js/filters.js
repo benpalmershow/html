@@ -64,9 +64,9 @@ function setupFilters(financialData) {
 
      if (!filtersContainer) return;
 
-     // Check if there's a nested .filters element for buttons, otherwise use the container
-     const buttonsContainer = filtersContainer.querySelector('.filters') || filtersContainer;
-     buttonsContainer.querySelectorAll('.filter-btn').forEach(btn => btn.remove());
+      // Check if there's a nested .filters element for buttons, otherwise use the container
+      const buttonsContainer = filtersContainer.querySelector('.filters') || filtersContainer;
+      buttonsContainer.innerHTML = '';
 
 const createFilterBtn = (id, icon, text, isLatest = false) => {
           const btn = document.createElement('button');

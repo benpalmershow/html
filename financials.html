@@ -70,8 +70,153 @@
   <link rel="stylesheet" href="css/nav.css?v=20260816">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260816">
   <link rel="stylesheet" href="css/financials.css?v=20260816">
-  <link rel="stylesheet" href="css/components/cards.css?v=20260816">
-  <link rel="stylesheet" href="css/components/utilities.css?v=20260816">
+  <style>
+/* ========================================
+   UTILITIES
+   ======================================== */
+
+.loading-state {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-muted);
+    font-style: normal;
+    min-height: 4rem;
+    display: grid;
+    place-items: center;
+}
+
+.error-state {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--color-error);
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(var(--border-color-rgb), 0.9);
+    border-left: 3px solid var(--color-error);
+    border-radius: var(--card-radius);
+    margin: var(--spacing-md) 0;
+}
+
+/* Spacing Helpers */
+.m-xs {
+    margin: var(--spacing-xs);
+}
+
+.m-sm {
+    margin: var(--spacing-sm);
+}
+
+.m-md {
+    margin: var(--spacing-md);
+}
+
+.m-lg {
+    margin: var(--spacing-lg);
+}
+
+.m-xl {
+    margin: var(--spacing-xl);
+}
+
+.p-xs {
+    padding: var(--spacing-xs);
+}
+
+.p-sm {
+    padding: var(--spacing-sm);
+}
+
+.p-md {
+    padding: var(--spacing-md);
+}
+
+.p-lg {
+    padding: var(--spacing-lg);
+}
+
+.p-xl {
+    padding: var(--spacing-xl);
+}
+
+/* ========================================
+   COMPONENTS: CARDS
+   ======================================== */
+
+.card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.card:hover,
+.card:focus {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--accent-secondary);
+}
+
+.card.expanded {
+    padding: 0;
+}
+
+.card a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 600;
+    background: rgba(var(--color-secondary-rgb), 0.08);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--control-radius);
+    padding: 0.18em 0.85em;
+    margin: 0.15em 0.25em 0.15em 0;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.card a:hover,
+.card a:focus {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.media-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.media-card:hover,
+.media-card:focus {
+    border-color: var(--accent-secondary);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+.media-card.hidden {
+    display: none;
+}
+
+.card-title {
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.featured-badge {
+    background: var(--accent-secondary);
+    color: var(--color-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--spacing-xs);
+    margin-left: var(--spacing-sm);
+}
+  </style>
 
   <!-- Non-critical CSS - deferred loading -->
   <link rel="preload" href="css/worldcup.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -149,7 +294,14 @@
             <div class="filter-bar-search" id="filterBarSearch">
               <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
             </div>
-            <div class="filters" id="filter-buttons"></div>
+             <div class="filters" id="filter-buttons">
+               <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
+               <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
+               <div class="skeleton-filter-btn" style="width: 70px; height: 42px;"></div>
+               <div class="skeleton-filter-btn" style="width: 90px; height: 42px;"></div>
+               <div class="skeleton-filter-btn" style="width: 110px; height: 42px;"></div>
+               <div class="skeleton-filter-btn" style="width: 60px; height: 42px;"></div>
+             </div>
           </div>
 
         <div class="content">
@@ -191,11 +343,11 @@
               <span class="category-icon"><i data-lucide="building-2"></i></span>
               <span class="category-name">13F Holdings</span>
             </h2>
-            <div class="indicators-grid" id="firmCardsContainer" style="contain: layout;">
-              <div class="skeleton-card" style="height: 120px;"></div>
-              <div class="skeleton-card" style="height: 120px;"></div>
-              <div class="skeleton-card" style="height: 120px;"></div>
-            </div>
+              <div class="indicators-grid" id="firmCardsContainer" style="contain: layout;">
+                <div class="skeleton-card" style="height: 200px;"></div>
+                <div class="skeleton-card" style="height: 200px;"></div>
+                <div class="skeleton-card" style="height: 200px;"></div>
+              </div>
           </div>
 
 

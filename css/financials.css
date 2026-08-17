@@ -845,3 +845,5 @@
   .firm-filter-btn { padding: 3px 7px; font-size: 0.65rem; }
   .holding-item { padding: 4px 5px; }
 }
+
+#firmCardsContainer { min-height: 400px; }

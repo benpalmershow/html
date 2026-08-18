@@ -108,9 +108,21 @@ h1.page-title {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* Canonical spacing — do not override per-page */
     margin: 0;
     padding: 0;
+}
+
+.page-title-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    opacity: 0.85;
 }
 
 .page-header {

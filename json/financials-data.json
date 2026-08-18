@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-08-13T08:00:00",
+    "lastUpdated": "2026-08-18T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -1254,7 +1254,7 @@
             "color": "#1abc9c",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-08-06T14:00:00Z",
+            "lastUpdated": "2026-08-18T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
@@ -1269,6 +1269,10 @@
                 "august": "4"
             },
             "probabilities": {
+                "2026-08-18": {
+                    "Inbound": 8,
+                    "Outbound": 5
+                },
                 "2026-08-06": {
                     "Inbound": 9,
                     "Outbound": 11
@@ -1473,7 +1477,7 @@
             "color": "#e67e22",
             "agency": "NAR",
             "name": "Pending Home Sales Index",
-            "lastUpdated": "2026-07-31T14:00:00Z",
+            "lastUpdated": "2026-08-18T14:00:00Z",
             "releaseDay": 28,
             "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
             "march": "74.5",
@@ -1492,7 +1496,8 @@
                 "march": "73.8",
                 "april": "74",
                 "may": "76.6",
-                "june": "72.5"
+                "june": "72.9",
+                "july": "71.2"
             },
             "change": "",
             "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
@@ -1533,7 +1538,7 @@
             "color": "#e67e22",
             "agency": "NAHB",
             "name": "Housing Market Index",
-            "lastUpdated": "2026-07-16T08:05:00Z",
+            "lastUpdated": "2026-08-18T08:05:00Z",
             "releaseDay": 18,
             "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
             "march": "39",
@@ -1553,7 +1558,8 @@
                 "april": "34",
                 "may": "37",
                 "june": "36",
-                "july": "34"
+                "july": "34",
+                "august": "35"
             },
             "change": "",
             "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."
@@ -1658,7 +1664,7 @@
             "color": "#e67e22",
             "agency": "Census",
             "name": "Housing Starts",
-            "lastUpdated": "2026-07-31T14:00:00Z",
+            "lastUpdated": "2026-08-18T14:00:00Z",
             "releaseDay": 18,
             "url": "https://www.census.gov/construction/nrc/current/index.html",
             "march": "1.355M",
@@ -1676,8 +1682,9 @@
                 "february": "1.346M",
                 "march": "1.522M",
                 "april": "1.414M",
-                "may": "1.199M",
-                "june": "1.427M"
+                "may": "1.182M",
+                "june": "1.415M",
+                "july": "1.239M"
             },
             "change": "",
             "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."

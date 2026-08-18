@@ -57,3 +57,14 @@
         padding: 0.45rem 0.75rem 0.45rem 2rem;
     }
 }
+
+.clear-search-btn {
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.85rem;
+}

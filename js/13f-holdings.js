@@ -179,19 +179,7 @@ function initializeFirmCards() {
             filter: 'all'
         };
 
-        card.querySelector('.info-btn')?.addEventListener('click', () => {
-            const isOpen = card.classList.contains('info-open');
-            document.querySelectorAll('#firmCardsContainer .indicator.info-open').forEach(other => {
-                if (other !== card) other.classList.remove('info-open');
-            });
-            document.querySelectorAll('#firmCardsContainer .info-btn.active').forEach(other => {
-                if (other !== card.querySelector('.info-btn')) other.classList.remove('active');
-            });
-            card.classList.toggle('info-open', !isOpen);
-            card.querySelector('.info-btn').classList.toggle('active', !isOpen);
-        });
 
-        // Update display function
         function updateFirmDisplay() {
             let displayHoldings = [...firmHoldings];
 

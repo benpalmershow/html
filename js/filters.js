@@ -164,31 +164,6 @@ function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
     });
 }
 
-function setup13FInfoHandlers() {
-    document.addEventListener('click', function (event) {
-        const btn = event.target.closest('#firmCardsContainer .info-btn');
-        if (!btn) return;
-
-        const card = btn.closest('.indicator');
-        if (!card) return;
-
-        const explanation = card.querySelector('.indicator-explanation');
-        if (!explanation) return;
-
-        const isOpen = card.classList.contains('info-open');
-
-        document.querySelectorAll('#firmCardsContainer .indicator.info-open').forEach(other => {
-            if (other !== card) other.classList.remove('info-open');
-        });
-        document.querySelectorAll('#firmCardsContainer .info-btn.active').forEach(other => {
-            if (other !== btn) other.classList.remove('active');
-        });
-
-        card.classList.toggle('info-open', !isOpen);
-        btn.classList.toggle('active', !isOpen);
-    });
-}
-
 function setupChartIconHandlers(SELECTORS, DATA_ATTRS) {
     setupIconHandlers(SELECTORS.CHART_BTN, function () {
         console.log('Chart button clicked');

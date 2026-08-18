@@ -501,6 +501,10 @@ function initializeDashboard() {
         ensureLoad13F();
     }
 
+    setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
+    setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+    setupExpandHandlers(SELECTORS);
+
     if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
     if (typeof setupModalHandlers === 'function') setupModalHandlers();

@@ -140,23 +140,15 @@
   flex-shrink: 0;
   margin-left: auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
   min-height: 44px;
   min-width: 44px;
-  padding: 0.2rem 0.15rem 0.35rem;
+  padding: 0.25rem;
   border: none;
   border-radius: var(--control-radius, 8px);
   background: transparent;
   color: var(--text-secondary);
-  font-family: inherit;
-  font-size: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
@@ -184,13 +176,6 @@
 
 .dark-mode-toggle:focus-visible { outline: none; }
 
-.dark-mode-toggle-label {
-  font-size: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
-}
-
 /* Sun/moon swap */
 .dark-mode-toggle-icon .sun-icon,
 .dark-mode-toggle-icon .moon-icon {
@@ -208,10 +193,6 @@ html.dark-mode .dark-mode-toggle-icon .moon-icon { opacity: 1; }
 @media (max-width: 540px) {
   .header-wordmark { display: none; }
   .header-nav-link img { display: none; }
-}
-
-@media (max-width: 360px) {
-  .dark-mode-toggle-label { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

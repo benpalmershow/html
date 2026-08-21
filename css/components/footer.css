@@ -39,6 +39,7 @@
             img {
                 width: 24px;
                 height: 24px;
+                filter: brightness(0);
                 transition: filter 0.3s ease, transform 0.3s ease;
             }
 
@@ -66,5 +67,15 @@
 
     .footer-text {
         margin: 0;
+    }
+}
+
+html.dark-mode #social-footer .social-links img {
+    filter: brightness(0) invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not(.theme-init) #social-footer .social-links img {
+        filter: brightness(0) invert(1);
     }
 }

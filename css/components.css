@@ -349,6 +349,7 @@ table {
             img {
                 width: 24px;
                 height: 24px;
+                filter: brightness(0);
                 transition: filter 0.3s ease, transform 0.3s ease;
             }
 
@@ -379,8 +380,15 @@ table {
     }
 }
 
-/* ========================================
-   HOME PAGE
+html.dark-mode #social-footer .social-links img {
+    filter: brightness(0) invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not(.theme-init) #social-footer .social-links img {
+        filter: brightness(0) invert(1);
+    }
+}
    ======================================== */
 
 .home-shell {
@@ -565,4 +573,45 @@ html.dark-mode .hero-link.secondary:focus-visible {
         justify-content: center;
         width: 100%;
     }
+}
+
+/* ========================================
+   HOME HERO
+   ======================================== */
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem) var(--content-padding);
+}
+
+.hero-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 16vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+  opacity: 0;
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-wordmark {
+    animation: none;
+    opacity: 1;
+  }
 }

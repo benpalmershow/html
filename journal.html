@@ -504,5 +504,18 @@
         });
     })();
   </script>
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Footer load error:', error);
+        });
+    });
+  </script>
 </body>
 </html>

@@ -124,13 +124,6 @@ h1.page-title {
     opacity: 0.85;
 }
 
-.page-header {
-    width: min(100%, var(--content-standard));
-    margin-inline: auto;
-    padding-inline: var(--content-padding);
-    padding-top: var(--spacing-lg);
-    padding-bottom: var(--spacing-sm);
-}
 
 
 /* ========================================
@@ -146,11 +139,6 @@ h1.page-title {
     h1.page-title {
         font-size: 0.8rem;
         /* spacing lives on .page-header — no margin override needed */
-    }
-
-    .page-header {
-        padding-top: var(--spacing-md);
-        padding-bottom: var(--spacing-sm);
     }
 
     .table-wrapper td:first-child,

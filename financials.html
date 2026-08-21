@@ -251,17 +251,17 @@
 </head>
 <body>
   
-  <nav class="site-nav" id="main-nav" aria-label="Main">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
-        <img src="images/logo-120x120.webp" alt="" width="54" height="54" loading="eager" decoding="async">
+  <!-- Dark Mode Toggle -->
+  <script src="js/dark-mode-toggle.js" defer></script>
+
+   <header class="page-header" role="banner">
+      <a href="index.html" class="header-home" aria-label="Howdy, Stranger home">
+        <img src="images/logo-120x120.webp" alt="" width="44" height="44" loading="eager" decoding="async">
       </a>
-      <span class="nav-wordmark" aria-hidden="true">Howdy, Stranger</span>
-      <div class="nav-actions">
-      <ul class="nav-list"> 
-<li><a href="financials.html" class="nav-link active" aria-current="page" aria-label="Numbers"><img src="images/read-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Numbers</span><span class="nav-active-dot" aria-hidden="true"></span></a></li>
-         <li><a href="media.html" class="nav-link" aria-label="Media"><img src="images/media-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Media</span></a></li>
-         <li><a href="journal.html" class="nav-link" aria-label="Docs"><img src="images/announcements-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Docs</span></a></li>
+      <ul class="header-nav" role="list" aria-label="Site navigation">
+        <li><a href="financials.html" class="header-nav-link active" aria-current="page"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager">Numbers</a></li>
+        <li><a href="media.html"      class="header-nav-link"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="lazy">Media</a></li>
+        <li><a href="journal.html"    class="header-nav-link"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="lazy">Docs</a></li>
       </ul>
       <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
         <span class="dark-mode-toggle-icon" aria-hidden="true">
@@ -272,18 +272,10 @@
         </span>
         <span class="dark-mode-toggle-label">Theme</span>
       </button>
-    </div>
-  </div>
-  </nav>
-
-  <!-- Dark Mode Toggle -->
-  <script src="js/dark-mode-toggle.js" defer></script>
+    </header>
 
    <main id="main-content" tabindex="-1">
-     <div class="page-header page-header-branded page-header-bg-brand read-bg animated-bg">
-      <h1 class="page-title" aria-label="Page title"><img src="images/read-60x60.webp" alt="" class="page-title-icon" width="20" height="20" aria-hidden="true">Numbers</h1>
-      <div id="lastUpdated" class="last-updated"></div>
-    </div>
+    <div id="lastUpdated" class="last-updated"></div>
 
      <div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
             <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">

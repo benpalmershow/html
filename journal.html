@@ -32,16 +32,16 @@
   <noscript><link rel="stylesheet" href="css/journal.css?v=20260614"></noscript>
 </head>
 <body>
-  <nav class="site-nav" id="main-nav" aria-label="Main">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo" aria-label="Howdy, Stranger home">
-        <img src="images/logo-360x360.webp" alt="" width="56" height="56" loading="eager" decoding="async">
+  <script src="js/dark-mode-toggle.js" defer></script>
+
+  <header class="page-header" role="banner">
+      <a href="index.html" class="header-home" aria-label="Howdy, Stranger home">
+        <img src="images/logo-360x360.webp" alt="" width="44" height="44" loading="eager" decoding="async">
       </a>
-      <div class="nav-actions">
-      <ul class="nav-list">
-<li><a href="financials.html" class="nav-link" aria-label="Numbers"><img src="images/read-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Numbers</span></a></li>
-         <li><a href="media.html" class="nav-link" aria-label="Media"><img src="images/media-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Media</span></a></li>
-         <li><a href="journal.html" class="nav-link active" aria-current="page" aria-label="Docs"><img src="images/announcements-60x60.webp" alt="" class="nav-link-icon" width="36" height="36" loading="eager" decoding="async"><span>Docs</span><span class="nav-active-dot" aria-hidden="true"></span></a></li>
+      <ul class="header-nav" role="list" aria-label="Site navigation">
+        <li><a href="financials.html" class="header-nav-link"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="lazy">Numbers</a></li>
+        <li><a href="media.html"      class="header-nav-link"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="lazy">Media</a></li>
+        <li><a href="journal.html"    class="header-nav-link active" aria-current="page"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager">Docs</a></li>
       </ul>
       <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
         <span class="dark-mode-toggle-icon" aria-hidden="true">
@@ -52,36 +52,9 @@
         </span>
         <span class="dark-mode-toggle-label">Theme</span>
       </button>
-    </div>
-  </div>
-  </nav>
-  <script>
-    (function () {
-      const toggle = document.getElementById('darkModeToggle');
-      function updateToggle() {
-        if (!toggle) return;
-        const isDark = document.documentElement.classList.contains('dark-mode');
-        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        const label = toggle.querySelector('.dark-mode-toggle-label');
-        if (label) label.textContent = isDark ? 'Dark' : 'Light';
-      }
-      if (toggle) {
-        toggle.addEventListener('click', () => {
-          document.documentElement.classList.toggle('dark-mode');
-          try { localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode') ? '1' : '0'); } catch (e) {}
-          updateToggle();
-        });
-      }
-      updateToggle();
-    })();
-  </script>
+    </header>
 
   <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
-    <div class="page-header">
-      <h1 class="page-title"><img src="images/announcements-60x60.webp" alt="" class="page-title-icon" width="20" height="20" aria-hidden="true">Docs</h1>
-    </div>
     <div class="content">
       <div id="feed" aria-live="polite"></div>
       <button id="load-more" class="load-more" type="button" title="this is how you curtail engagement farming">Dopamine</button>

@@ -7,7 +7,6 @@
 .data-rows-container { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
 /* PAGE HEADER */
-.page-header.page-header-branded { flex-direction: column; gap: 0.15rem; }
 
 .categories { display: grid; gap: 15px }
 

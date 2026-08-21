@@ -4,7 +4,6 @@
 
 /* ── Main Layout ── */
 main{flex:1}
-.page-header{width:min(100%,1120px);margin:0 auto;padding:2rem 1rem 1rem}
 .page-title{margin:0;text-align:center;color:var(--text-muted);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .content{width:min(100%,760px);margin:0 auto;padding:0 1rem 5rem}
 
@@ -59,7 +58,6 @@ main{flex:1}
 
 /* ── Responsive ── */
 @media (max-width:640px){
-  .page-header{padding-top:1.4rem}
   .content{padding:0 .85rem 4rem}
   .entry-title{font-size:.92rem}
 }

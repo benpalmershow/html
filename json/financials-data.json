@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-08-18T08:00:00",
+    "lastUpdated": "2026-08-22T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -2004,7 +2004,7 @@
             "color": "#2ecc71",
             "agency": "S&P Global",
             "name": "Composite PMI (Flash)",
-            "lastUpdated": "2026-03-25T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.pmi.spglobal.com/Public",
             "march": "",
@@ -2018,9 +2018,15 @@
             "november": "54.2",
             "december": "52.7",
             "2026": {
-                "january": "52.8",
-                "february": "51.9",
-                "march": "51.4"
+                "january": "53.8",
+                "february": "542",
+                "march": "54",
+                "april": "54.5",
+                "may": "54.9",
+                "june": "54.2",
+                "july": "54.5",
+                "august": "56"
+
             },
             "change": "",
             "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations."
@@ -2031,7 +2037,7 @@
             "color": "#2ecc71",
             "agency": "The Conference Board",
             "name": "Leading Economic Indicator",
-            "lastUpdated": "2026-07-22T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 22,
             "url": "https://www.conference-board.org/topics/leading-economic-indicators",
             "march": "",
@@ -2049,8 +2055,9 @@
                 "february": "97.9",
                 "march": "97.3",
                 "april": "99.2",
-                "may": "99.3",
-                "june": "99.1"
+                "may": "99.4",
+                "june": "99.3",
+                "july": "99.5"
             },
             "change": "",
             "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle."

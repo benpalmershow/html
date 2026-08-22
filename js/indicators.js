@@ -285,7 +285,7 @@ const IndicatorRenderers = (function () {
 
 function renderHormuz(indicator) {
         const PRECRISIS_NORMAL = 115;
-        const dailyEntries = indicator.daily && typeof indicator.daily === 'object' ? Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a)) : [];
+        const dailyEntries = indicator.daily && typeof indicator.daily === 'object' ? Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a)) : Object.entries(indicator.probabilities || {}).sort(([a], [b]) => new Date(b) - new Date(a)).map(([date, val]) => [date, ((val.Inbound || 0) + (val.Outbound || 0)).toString()]);
         const latestEntry = dailyEntries[0], previousEntry = dailyEntries[1];
         const latestCount = latestEntry ? parseInt(latestEntry[1], 10) : null;
         const prevCount = previousEntry ? parseInt(previousEntry[1], 10) : null;
@@ -463,6 +463,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('Recession')) return 'recession';
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.category === 'Earnings') return 'earnings';
+    if (indicator.name === 'Strait of Hormuz Daily Transits') return 'hormuz';
     const probabilities = indicator.probabilities || indicator.propabilities;
     if (probabilities && typeof probabilities === 'object') {
         const firstEntry = Object.values(probabilities)[0];
@@ -472,7 +473,6 @@ function detectIndicatorType(indicator) {
     if (indicator.candidates && typeof indicator.candidates === 'object') return 'venezuela';
     if (indicator.name === 'KY-04 Massie v. Gallrein') return 'politicalPoll';
     if (indicator.yes_probability && indicator.no_probability) return 'prediction';
-    if (indicator.name === 'Strait of Hormuz Daily Transits') return 'hormuz';
     return 'standard';
 }
 

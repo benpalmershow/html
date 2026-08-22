@@ -9,6 +9,7 @@ const ChartStrategies = (function () {
         if (indicator.name === 'Trade Deficit' && indicator.imports && indicator.exports) return 'trade-deficit';
         if (indicator.name === 'Monthly Budget Deficit' && indicator.receipts && indicator.outlays) return 'budget-deficit';
         if (indicator.name === 'KY-04 Massie v. Gallrein') return 'political-poll';
+        if (indicator.name === 'Strait of Hormuz Daily Transits') return 'hormuz';
         if (indicator.category === 'Prediction Markets' || indicator.bps_probabilities || indicator.yes_probability || indicator.candidates) return 'prediction-market';
         if (indicator.probabilities && typeof indicator.probabilities === 'object' && Object.keys(indicator.probabilities).length > 1) return 'prediction-market';
         if (indicator.category === 'Earnings' && indicator.recentEarnings && indicator.recentEarnings.length > 0) return 'earnings';
@@ -549,6 +550,36 @@ function buildEarningsChartConfig(indicatorName, indicatorData) {
     return config;
 }
 
+function buildHormuzChartConfig(indicatorName, indicatorData) {
+    const probabilities = indicatorData.probabilities || indicatorData.propabilities;
+    if (!probabilities || typeof probabilities !== 'object') return null;
+
+    const sorted = Object.entries(probabilities)
+        .filter(([, v]) => v && (v.Inbound !== undefined || v.Outbound !== undefined))
+        .sort(([a], [b]) => new Date(a) - new Date(b));
+
+    if (sorted.length < 2) return null;
+
+    const labels = sorted.map(([date]) =>
+        new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+    );
+    const inboundValues = sorted.map(([, v]) => parseFloat(v.Inbound) || 0);
+    const outboundValues = sorted.map(([, v]) => parseFloat(v.Outbound) || 0);
+    const dateLabels = sorted.map(([date]) => date);
+
+    return {
+        type: 'chartjs-mixed',
+        data: {
+            labels,
+            datasets: [
+                { label: 'Inbound', data: inboundValues, type: 'line', borderColor: '#3498db', backgroundColor: 'rgba(52,152,219,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
+                { label: 'Outbound', data: outboundValues, type: 'line', borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 }
+            ]
+        },
+        _dateLabels: dateLabels
+    };
+}
+
 ChartStrategies.registry
     .register('line', buildStandardLineChartConfig)
     .register('trade-deficit', buildTradeDeficitChartConfig)
@@ -556,4 +587,5 @@ ChartStrategies.registry
     .register('prediction-market', buildPredictionMarketChartConfig)
     .register('political-poll', buildPoliticalPollChartConfig)
     .register('chartjs-bar', buildPredictionMarketChartConfig)
-    .register('earnings', buildEarningsChartConfig);
+    .register('earnings', buildEarningsChartConfig)
+    .register('hormuz', buildHormuzChartConfig);

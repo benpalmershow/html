@@ -979,7 +979,7 @@
             "color": "#3498db",
             "agency": "CBP",
             "name": "Southern Border Encounters",
-            "lastUpdated": "2026-06-28T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
             "march": "11,011",
@@ -997,7 +997,10 @@
                 "february": "9,612",
                 "march": "11,733",
                 "april": "12,023",
-                "may": "13,530"
+                "may": "13,538",
+                "june": "12,907",
+                "july": "12,730"
+        
             },
             "change": "",
             "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."
@@ -1008,7 +1011,7 @@
             "color": "#1abc9c",
             "agency": "Census",
             "name": "Trade Deficit",
-            "lastUpdated": "2026-07-07T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 9,
             "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
             "march": "$132,983B",
@@ -1026,7 +1029,8 @@
                 "february": "$54,980B",
                 "march": "$56,585B",
                 "april": "$54,570B",
-                "may": "$77,585B"
+                "may": "$77,647B",
+                "june": "$73,261B"
             },
             "change": "",
             "explanation": "The difference between the value of a country's imports and exports of goods and services. A trade deficit occurs when imports exceed exports. The U.S. has run persistent trade deficits since the 1970s, reflecting strong consumer demand and the dollar's role as the global reserve currency. The trade balance is influenced by exchange rates, economic growth differentials, and trade policies. While a trade deficit can indicate economic strength (strong consumer demand), persistent large deficits may raise concerns about domestic manufacturing and job losses in certain sectors.",
@@ -1046,7 +1050,8 @@
                     "february": "$366,783B",
                     "march": "$375,360B",
                     "april": "$382,758B",
-                    "may": "$395,263B"
+                    "may": "$395,80B",
+                    "june": "$387,989B"
                 }
             },
             "exports": {
@@ -1065,7 +1070,8 @@
                     "february": "$311,803B",
                     "march": "$318,776B",
                     "april": "$328,187B",
-                    "may": "$317,677B"
+                    "may": "$317,633B",
+                    "june": "$314,728B"
                 }
             }
         },
@@ -1517,26 +1523,27 @@
             "color": "#e67e22",
             "agency": "NAR",
             "name": "Median Home Price",
-            "lastUpdated": "2026-07-10T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 0,
-            "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
+            "url": "https://www.nar.realtor/sites/default/files/2026-08/ehs-07-2026-single-family-only-2026-08-11.pdf",
             "march": "$403,100",
             "april": "$414,000",
             "may": "$424,800",
             "june": "$409,200",
-            "july": "$397,300",
-            "august": "$417,900",
-            "september": "$416,800",
-            "october": "$404,200",
-            "november": "$402,500",
-            "december": "$429,100",
+            "july": "432,000",
+            "august": "$427,700",
+            "september": "$417,600",
+            "october": "$420,200",
+            "november": "$415,100",
+            "december": "$409,500",
             "2026": {
-                "january": "$416,200",
-                "february": "$412,000",
-                "march": "$393,100",
-                "april": "$416,500",
-                "may": "$424,900",
-                "june": "$440,600"
+                "january": "$398,200",
+                "february": "$402,300",
+                "march": "$413,300",
+                "april": "$421,900",
+                "may": "$436,400",
+                "june": "$448,800",
+                "july": "$440,300"
             },
             "change": "",
             "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
@@ -1735,7 +1742,7 @@
             "color": "#34495e",
             "agency": "ADP",
             "name": "Private Employment",
-            "lastUpdated": "2026-07-02T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.adpresearch.com",
             "march": "131,962,000",
@@ -1754,7 +1761,8 @@
                 "march": "132,397,000",
                 "april": "132,502,000",
                 "may": "132,624,000",
-                "june": "132,722,000"
+                "june": "132,719,000",
+                "july": "132,763,000"
             },
             "change": "",
             "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
@@ -1765,7 +1773,7 @@
             "color": "#34495e",
             "agency": "BLS",
             "name": "Job Openings",
-            "lastUpdated": "2026-06-30T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.bls.gov/jlt/data.htm",
             "march": "6,952,000",
@@ -1782,8 +1790,9 @@
                 "january": "7,240,000",
                 "february": "6,922,000",
                 "march": "6,887,000",
-                "april": "7,618,000",
-                "may": "7,594,000"
+                "april": "7,585,000",
+                "may": "7,537,000",
+                "june": "7,359,000"
             },
             "change": "",
             "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."

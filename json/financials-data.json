@@ -1234,7 +1234,7 @@
             "color": "#1abc9c",
             "agency": "FRED",
             "name": "Dollar Value Index",
-            "lastUpdated": "2026-07-31T14:00:00Z",
+            "lastUpdated": "2026-08-22T14:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
             "march": "126.4",
@@ -1254,7 +1254,8 @@
                 "april": "119.03",
                 "may": "118.77",
                 "june": "119.5073",
-                "july": "120.7105"
+                "july": "120.7105",
+                "august": "118.9028"
             },
             "change": "",
             "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
@@ -1587,7 +1588,7 @@
             "color": "#e67e22",
             "agency": "FRED",
             "name": "Affordability Index",
-            "lastUpdated": "2026-07-11T19:00:00Z",
+            "lastUpdated": "2026-08-22T19:00:00Z",
             "releaseDay": 0,
             "url": "https://fred.stlouisfed.org/series/FIXHAI",
             "march": "104.2",
@@ -1606,7 +1607,8 @@
                 "march": "112",
                 "april": "108",
                 "may": "105.1",
-                "june": "102.3"
+                "june": "101.8",
+                "july": "103.3"
             },
             "change": "",
             "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."

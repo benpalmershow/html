@@ -30,12 +30,6 @@ function updateActiveElements(selector, predicate) {
 }
 
 function handleFilterClick(element, category, isLatest = false) {
-    if (category === '13F Holdings') {
-        if (typeof ensureLoad13F === 'function') ensureLoad13F();
-    } else {
-        if (typeof ensureLoad13F === 'function') ensureLoad13F();
-    }
-
     if (typeof setActiveFilter === 'function') {
         setActiveFilter(isLatest ? 'latest' : category);
     }
@@ -106,12 +100,8 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
          const category = btn.dataset.category;
          const isLatest = btn.dataset.isLatest === 'true';
 
-         handleFilterClick(btn, category, isLatest);
-
-          // Render indicator categories only for non-special filters
-          if (category !== '13F Holdings') {
-              renderDashboard(isLatest ? 'all' : category, isLatest);
-          }
+          handleFilterClick(btn, category, isLatest);
+          renderDashboard(isLatest ? 'all' : category, isLatest);
      });
 
      if (typeof lucide !== 'undefined') lucide.createIcons();

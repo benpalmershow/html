@@ -68,6 +68,21 @@ function scrollToIndicatorByName(indicatorName) {
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
+
+    if (filterCategory === '13F Holdings') {
+        indicatorContainer.innerHTML = '';
+        ensureLoad13F();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
+        setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+        setupExpandHandlers(SELECTORS);
+        if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
+        if (typeof renderSparklines === 'function') renderSparklines();
+        makeCardsFocusable(document.getElementById('categories'));
+        setupLazyIndicatorRendering();
+        return;
+    }
+
     let categories = [...new Set(financialData.indices.map(item => item.category))];
 
     let html = '';
@@ -486,20 +501,18 @@ function initializeDashboard() {
     if (typeof setupFilterBarSearchToggle === 'function') setupFilterBarSearchToggle();
 
     const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('filter') || 'latest';
+    let initialFilter = urlParams.get('filter') || 'latest';
     const indicatorParam = urlParams.get('indicator');
     const isLatest = initialFilter.toLowerCase() === 'latest';
 
-    if (window.location.hash === '#latest-13f-filings-anchor' || initialFilter === '13F Holdings') {
-        setActiveFilter('13F Holdings');
-        ensureLoad13F();
-    } else {
-        const cat = isLatest ? 'latest' : initialFilter;
-        setActiveFilter(cat);
-        renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
-        if (indicatorParam) scrollToIndicatorByName(indicatorParam);
-        ensureLoad13F();
+    if (window.location.hash === '#latest-13f-filings-anchor') {
+        initialFilter = '13F Holdings';
     }
+
+    const cat = isLatest ? 'latest' : initialFilter;
+    setActiveFilter(cat);
+    renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
+    if (indicatorParam) scrollToIndicatorByName(indicatorParam);
 
     setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
@@ -509,6 +522,8 @@ function initializeDashboard() {
     if (typeof setupStickyObserver === 'function') setupStickyObserver();
     if (typeof setupModalHandlers === 'function') setupModalHandlers();
     setupKeyboardNavigation();
+
+    ensureLoad13F();
 }
 
 /** Single source of truth for which filter is active.
@@ -577,9 +592,6 @@ function setupKeyboardNavigation() {
 
 document.addEventListener('DOMContentLoaded', function () {
     fetchFinancialData();
-    if (window.location.hash === '#latest-13f-filings-anchor') {
-        ensureLoad13F();
-    }
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
     const categoriesEl = document.getElementById('categories');

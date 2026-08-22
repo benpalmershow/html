@@ -190,9 +190,7 @@
     .error{color:#dc2626}
     /* === SKELETON === */
     .skeleton-card{border-radius:var(--card-radius);border:1px solid var(--border-color);background:var(--bg-secondary);padding:.75rem;min-height:100px}
-    .skeleton-line{height:14px;border-radius:4px;background:linear-gradient(90deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.12) 40%,rgba(255,255,255,.04) 80%);background-size:200% 100%;animation:shimmer 1.8s infinite linear;margin-bottom:10px}
     .skeleton-line.long{width:95%}.skeleton-line.medium{width:75%}.skeleton-line.short{width:50%}
-    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
     /* === DARK MODE TOGGLE === */
     .dark-toggle{background:transparent;border:1px solid rgba(249,249,247,.25);border-radius:var(--radius-md);color:var(--nav-text);font-family:var(--font-mono);font-size:.65rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;cursor:pointer;margin-left:.5rem}
     .dark-toggle:hover{background:rgba(255,255,255,.1)}

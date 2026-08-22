@@ -100,20 +100,7 @@
     flex-shrink: 0;
 }
 
-/* Skeleton filter buttons - prevent CLS before JS loads */
-.skeleton-filter-btn {
-    border-radius: 999px;
-    border: 1px solid var(--border-color);
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255,255,255,0.04) 100%);
-    flex-shrink: 0;
-    background-size: 200% 100%;
-    animation: shimmer 1.8s infinite linear;
-}
 
-@keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
 
 .filter-btn .filter-icon {
     display: inline-flex;

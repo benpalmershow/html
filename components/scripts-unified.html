@@ -1,31 +1,3 @@
-<!-- Unified Scripts Component -->
-<!-- Vercel Insights - Production only -->
-<script>
-  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    function loadVercelScripts() {
-      // Load Vercel Insights
-      const s = document.createElement('script');
-      s.src = '/_vercel/insights/script.js';
-      s.defer = true;
-      s.onerror = () => console.error('Failed to load Vercel insights');
-      document.head.appendChild(s);
-
-      // Load Speed Insights
-      const i = document.createElement('script');
-      i.type = 'module';
-      i.src = '/js/speed-insights.js';
-      i.onerror = () => console.error('Failed to load speed insights');
-      document.head.appendChild(i);
-    }
-
-    // Use requestIdleCallback if available, otherwise fallback to setTimeout
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadVercelScripts);
-    } else {
-      setTimeout(loadVercelScripts, 2000);
-    }
-  }
-</script>
 
 <!-- Service Worker Registration -->
 <script>

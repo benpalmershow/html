@@ -5,5 +5,7 @@
     "bump-version": "bash scripts/bump-version.sh",
     "add-movie": "node scripts/add-movie.js"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
 }

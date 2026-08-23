@@ -12,7 +12,7 @@ The Bureau of Economic Analysis released its 2024 Regional Price Parities by Met
 
 **What the index actually measures:** RPPs compare prices for goods, services, and rents across regions. A 211.9 in San Jose means a $3,000 rent that buys a luxury unit there might cost $1,400 nationally - or $700 in Paducah. Same salary, radically different life.
 
-**The policy implication:** Federal poverty thresholds, minimum wages, and transfer payments that ignore local prices overpay in Monroe and underpay in San Jose. A $15/hour minimum wage is poverty in San Jose and a kings ransom in Johnstown. One price does not fit all - but we price like it does.
+
 
 | Rank | Metro | RPP |
 |------|-------|-----|

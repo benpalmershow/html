@@ -6,6 +6,10 @@
 
 .data-rows-container { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
+.category[data-category="13F Holdings"] .indicator .data-rows-container { max-height: 180px; }
+
+.category[data-category="13F Holdings"] .indicator.expanded .data-rows-container { max-height: 1200px; }
+
 /* PAGE HEADER */
 
 .categories { display: grid; gap: 15px }

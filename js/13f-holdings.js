@@ -107,6 +107,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div class="firm-card-title">${firmName}</div>
             <div class="indicator-actions">
                 <button class="info-btn" title="Show firm details" aria-label="Show firm details"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
+                <button class="expand-toggle" aria-label="Toggle holdings"><i data-lucide="chevron-down"></i></button>
             </div>
         </div>
         <div class="indicator-explanation">
@@ -117,7 +118,8 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             </div>
         </div>
         <div class="indicator-content">
-            <div class="firm-chart-container">
+            <div class="data-rows-container">
+                <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
                     ${firmHoldings.slice(0, 10).map(h => `
                         <div class="holding-item" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
@@ -138,6 +140,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
                     </div>
                     <div class="empty-state-text">No holdings match this filter</div>
                 </div>
+            </div>
             </div>
         </div>
     `;

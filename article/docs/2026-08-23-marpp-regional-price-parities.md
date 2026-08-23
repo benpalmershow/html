@@ -1,6 +1,6 @@
 > *Location is purchasing power.*
 
-The Bureau of Economic Analysis released its 2024 Regional Price Parities by Metropolitan Statistical Area - and the disparities are staggering. The **San Jose-Sunnyvale-Santa Clara, CA** metro clocks in at **211.9** (index, US = 100), meaning goods, services, and rent cost more than **twice the national average**. Meanwhile, **Monroe, LA** sits at **42.8** - less than half the national average, and barely one-fifth what a San Jose resident pays.
+From the Bureau of Economic Analysis' 2024 Regional Price Parities Report: **San Jose-Sunnyvale-Santa Clara, CA** metro clocks in at **211.9** (index, US = 100), meaning goods, services, and rent cost more than **twice the national average**. Meanwhile, **Monroe, LA** sits at **42.8** - less than half the national average, and barely one-fifth what a San Jose resident pays.
 
 |||
 
@@ -8,9 +8,9 @@ The Bureau of Economic Analysis released its 2024 Regional Price Parities by Met
 
 **The other America is cheap - and cheap for a reason.** The bottom reads like a list of forgotten places: Monroe, LA (42.8), Johnstown, PA (42.3), Parkersburg, WV (45.9), Dothan, AL (46.9), Florence-Muscle Shoals, AL (47.7), Hammond, LA (48.2), Paducah, KY (48.8). These are places young people leave, where capital does not flow, where the housing is affordable because opportunity is not there.
 
-**The non-metropolitan US averages just 59.852** - four-tenths of San Jose's index. Rural America is a different country price-wise. The gap between coastal metropolis and heartland is not a gradient; it is a cliff.
+**The non-metropolitan US averages just 59.852** - four-tenths of San Jose's index. Rural America is a different country price-wise. The gap between coastal metropolis and heartland explains cultural and political inclinations. 
 
-**What the index actually measures:** RPPs compare prices for goods, services, and rents across regions. A 211.9 in San Jose means a $3,000 rent that buys a luxury unit there might cost $1,400 nationally - or $700 in Paducah. Same salary, radically different life.
+**What the index actually measures:** RPPs compare prices for goods, services, and rents across regions. A 211.9 in San Jose means a $3,000 rent that buys a luxury unit there might cost $1,400 nationally - or $700 in Paducah. Same salary, radically different lifestyle.
 
 
 

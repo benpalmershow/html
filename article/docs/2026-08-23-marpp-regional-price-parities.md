@@ -12,7 +12,7 @@ From the Bureau of Economic Analysis' 2024 Regional Price Parities Report: **San
 
 **What the index actually measures:** RPPs compare prices for goods, services, and rents across regions. A 211.9 in San Jose means a $3,000 rent that buys a luxury unit there might cost $1,400 nationally - or $700 in Paducah. Same salary, radically different lifestyle.
 
-
+[BEA RPP](https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area>)
 
 | Rank | Metro | RPP |
 |------|-------|-----|

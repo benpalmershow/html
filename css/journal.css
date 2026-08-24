@@ -29,8 +29,8 @@ main{flex:1}
 
 /* ── Entry Content ── */
 .entry-content,.accordion-inner{color:var(--text-secondary);font-size:.9rem;line-height:1.7}
-.entry-content a,.accordion-inner a{display:inline-flex;align-items:center;min-height:44px;margin:-.2em -.15em;padding:.2em .15em;border-radius:6px}
-.entry-content a:hover,.entry-content a:focus,.accordion-inner a:hover,.accordion-inner a:focus{opacity:1}
+.entry-content a,.accordion-inner a{color:var(--logo-teal);display:inline-flex;align-items:center;min-height:44px;margin:-.2em -.15em;padding:.2em .15em;border-radius:6px;text-decoration:underline}
+.entry-content a:hover,.entry-content a:focus,.accordion-inner a:hover,.accordion-inner a:focus{opacity:1;color:var(--logo-orange)}
 .entry-content img,.accordion-inner img{max-width:100%;height:auto;border:1px solid var(--border-color);border-radius:8px;margin:.75rem 0}
 
 /* ── Accordion ── */

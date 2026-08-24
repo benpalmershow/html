@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2026-08-23T08:00:00",
+    "lastUpdated": "2026-08-24T08:00:00",
     "indices": [
         {
             "id": "strait-of-hormuz-traffic",
@@ -547,12 +547,12 @@
             "color": "#f39c12",
             "agency": "EIA",
             "name": "3:2:1 Crack Spread",
-            "lastUpdated": "2026-08-10T14:00:00Z",
+            "lastUpdated": "2026-08-24T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/todayinenergy/prices.php",
             "2026": {
                 "july": "60.75",
-                "august": "54.9"
+                "august": "71.1"
             },
             "change": "",
             "explanation": "The 3:2:1 crack spread measures the difference between the purchase price of crude oil and the selling price of finished products (gasoline and distillate fuel) that a refinery produces from the crude oil. It approximates the product yield at a typical U.S. refinery: for every three barrels of crude oil processed, the refinery makes two barrels of gasoline and one barrel of distillate fuel. The crack spread is an indicator of short-term refinery profit margins. Current Gulf Coast (LLS) 3:2:1 crack spread: $60.75/barrel."
@@ -563,7 +563,7 @@
             "color": "#f39c12",
             "agency": "EIA",
             "name": "U.S. Petroleum Exports",
-            "lastUpdated": "2026-08-10T19:30:00Z",
+            "lastUpdated": "2026-08-24T19:30:00Z",
             "releaseDay": 0,
             "url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
             "2026": {
@@ -572,7 +572,7 @@
                 "may": "13,137",
                 "june": "12,181",
                 "july": "11,992",
-                "august": "11,562"
+                "august": "12,342"
             },
             "change": "",
             "explanation": "Weekly U.S. petroleum exports from EIA (Total Crude Oil and Products), reported in thousand barrels per day. This indicator uses the latest weekly readings shown in the source table, not monthly averages. Current values shown are March 2026: 11,670 and April 2026: 12,881, tracking outbound U.S. crude and refined product flows."
@@ -708,7 +708,7 @@
             "color": "#f39c12",
             "agency": "USDA",
             "name": "Urea",
-            "lastUpdated": "2026-08-10T14:00:00Z",
+            "lastUpdated": "2026-08-24T14:00:00Z",
             "releaseDay": 0,
             "url": "https://www.ams.usda.gov/mnreports/ams_3621.pdf",
             "2026": {
@@ -719,7 +719,7 @@
                 "may": "873.57",
                 "june": "830.04",
                 "july": "686.71",
-                "august": "653.33"
+                "august": "614.6"
             },
             "change": "",
             "explanation": "The average retail price of granular urea, the most widely used nitrogen fertilizer globally, as reported by the USDA Agricultural Marketing Service in their weekly national fertilizer review. Urea contains 46% nitrogen and is essential for agricultural crop production across all major grain, oilseed, and commodity crops. Prices are quoted in US dollars per short ton. Urea prices are heavily influenced by natural gas costs (the primary feedstock for production), global agricultural demand, seasonal planting cycles, and trade policies. Rising urea prices increase input costs for farmers and can pressure food prices higher, while falling prices provide relief to agricultural producers. The fertilizer market is closely watched for its implications on food security and agricultural commodity prices."
@@ -761,11 +761,15 @@
             "color": "#3498db",
             "agency": "Polymarket",
             "name": "Midterms: House",
-            "lastUpdated": "2026-07-01T08:00:00Z",
+            "lastUpdated": "2026-08-24T08:00:00Z",
             "releaseDay": 0,
             "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
             "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
             "probabilities": {
+                "2026-08-24": {
+                    "Democratic Party": "89",
+                    "Republican Party": "12"
+                },
                 "2026-07-01": {
                     "Democratic Party": "84",
                     "Republican Party": "18"
@@ -1266,7 +1270,7 @@
             "color": "#1abc9c",
             "agency": "Windward",
             "name": "Strait of Hormuz Daily Transits",
-            "lastUpdated": "2026-08-23T14:00:00Z",
+            "lastUpdated": "2026-08-24T14:00:00Z",
             "releaseDay": 0,
             "url": "https://insights.windward.ai/",
             "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
@@ -1281,7 +1285,11 @@
                 "august": "4"
             },
             "probabilities": {
-                "2026-08-23": {
+                "2026-08-24": {
+                    "Inbound": 6,
+                    "Outbound": 10
+
+                },"2026-08-23": {
                     "Inbound": 20,
                     "Outbound": 14
                 },

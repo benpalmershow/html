@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-08-25T00:43:57.996Z",
   "indices": [
-    {
+    { 
       "id": "strait-of-hormuz-traffic",
       "category": "Prediction Markets",
       "color": "#e74c3c",
@@ -9,54 +9,16 @@
       "name": "Strait of Hormuz Traffic Returns to Normal by July 31",
       "lastUpdated": "2026-08-25T00:43:38.259Z",
       "releaseDay": 0,
-      "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-july-31",
+      "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
       "probabilities": {
-        "2026-07-07": {
-          "yes": "8¢",
-          "no": "93¢"
-        },
-        "2026-06-22": {
-          "yes": "50¢",
-          "no": "50¢"
-        },
-        "2026-06-11": {
-          "yes": "24¢",
-          "no": "77¢"
-        },
-        "2026-06-09": {
-          "yes": "30¢",
-          "no": "71¢"
-        },
-        "2026-06-03": {
-          "yes": "39¢",
-          "no": "62¢"
-        },
-        "2026-05-31": {
-          "yes": "48¢",
-          "no": "53¢"
-        },
-        "2026-05-28": {
-          "yes": "60¢",
-          "no": "41¢"
-        },
-        "2026-05-11": {
-          "yes": "46¢",
-          "no": "55¢"
-        },
-        "2026-05-08": {
-          "yes": "58¢",
-          "no": "42¢"
-        },
-        "2026-05-07": {
-          "yes": "48¢",
-          "no": "52¢"
-        },
-        "2026-05-05": {
-          "yes": "50¢",
-          "no": "50¢"
-        }
-      },
+        "2026-08-24": {
+          "yes": "34¢",
+          "no": "67¢"
+        
+      }
+    },
+
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by end of April 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. Current traffic: ~8-10 daily transits, far below pre-crisis 100-138/day. Despite US-Iran ceasefire announced April 7, market expects traffic remains depressed amid ongoing mine-clearing operations and vessel rerouting. Volume: $10.8M.",
       "yes_odds": "0¢",
       "no_odds": "100¢"

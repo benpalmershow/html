@@ -147,11 +147,15 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Midterms: Senate",
-      "lastUpdated": "2026-08-14T08:00:00Z",
+      "lastUpdated": "2026-08-25T08:00:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "probabilities": {
+        "2026-08-25": {
+          "Democratic Party": "50",
+          "Republican Party": "50"
+        },
         "2026-08-14": {
           "Democratic Party": "53",
           "Republican Party": "48"
@@ -881,14 +885,14 @@
         "may": "$38,882,147,615,630.53",
         "june": "$39,213,266,279,741.16",
         "july": "$39,799,618,642,771.12",
-        "august": "$39,913,529,319,464.71"
+        "august": "$40,032,876,505,819.31"
       },
       "id": "treasury-debt-level",
       "category": "Government",
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Treasury Debt Level",
-      "lastUpdated": "2026-08-14T15:00:00Z",
+      "lastUpdated": "2026-08-25T15:00:00Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
       "march": "$36,216,627,186,278.78",
@@ -1115,14 +1119,15 @@
         "april": "93.8",
         "may": "90.6",
         "june": "92.2",
-        "july": "90.8"
+        "july": "90.2",
+        "august": "89.4"
       },
       "id": "consumer-confidence",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "The Conference Board",
       "name": "Consumer Confidence",
-      "lastUpdated": "2026-07-29T14:00:00Z",
+      "lastUpdated": "2026-08-25T14:00:00Z",
       "releaseDay": 28,
       "url": "https://www.conference-board.org/topics/consumer-confidence",
       "march": "85.7",
@@ -1380,19 +1385,21 @@
     },
     {
       "2026": {
-        "january": "+9.8",
-        "february": "+17.1",
-        "march": "+23.1",
-        "april": "+19.6",
-        "may": "+11.4",
-        "june": "+17.5"
+        "january": "+12.4",
+        "february": "+19.6",
+        "march": "+21.3",
+        "april": "+19.4",
+        "may": "+12.9",
+        "june": "+22.8",
+        "july": "+10.6",
+        "august": "+4.7"
       },
       "id": "chicago-fed-survey",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "Chicago Fed",
       "name": "Chicago Fed Survey of Economic Conditions",
-      "lastUpdated": "2026-07-11T14:00:00Z",
+      "lastUpdated": "2026-08-25T14:00:00Z",
       "releaseDay": 22,
       "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
       "may": "2.50",
@@ -1401,8 +1408,8 @@
       "august": "0",
       "september": "-9.50",
       "october": "15.90",
-      "november": "-2.60",
-      "december": "-16.30",
+      "november": "00",
+      "december": "-14.90",
       "change": "",
       "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."
     },
@@ -1631,16 +1638,17 @@
         "january": "576,000",
         "february": "630,000",
         "march": "659,000",
-        "april": "646,000",
-        "may": "618,000",
-        "june": "628,000"
+        "april": "641,000",
+        "may": "630,000",
+        "june": "678,000",
+        "july": "607,000"
       },
       "id": "new-home-sales",
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "Census",
       "name": "New Home Sales",
-      "lastUpdated": "2026-07-25T14:00:00Z",
+      "lastUpdated": "2026-08-25T14:00:00Z",
       "releaseDay": 23,
       "url": "https://www.census.gov/construction/nrs/current/index.html#:~:text=New%20Home%20Sales,April%202024%20rate%20of%20719%2C000.",
       "march": "660,000",

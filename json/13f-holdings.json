@@ -166,6 +166,22 @@
       "description": "Evelyn Partners Investment Management Services Ltd is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-03-31). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065205&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings \u2192</a>",
       "firmIndex": 20,
       "lastUpdated": "2026-05-15"
+    },
+    {
+      "name": "Duquesne Family Office LLC",
+      "shortName": "Duquesne",
+      "filingDate": "2026-08-14",
+      "description": "Duquesne Family Office LLC is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-06-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1536411&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings \u2192</a>",
+      "firmIndex": 21,
+      "lastUpdated": "2026-08-25"
+    },
+    {
+      "name": "Thrive Capital Management, LLC",
+      "shortName": "Thrive",
+      "filingDate": "2026-08-14",
+      "description": "Thrive Capital Management, LLC is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-06-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1765681&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings \u2192</a>",
+      "firmIndex": 22,
+      "lastUpdated": "2026-08-25"
     }
   ],
   "holdings": [
@@ -30192,13 +30208,13 @@
       "link": "https://www.perplexity.ai/finance/MRCY"
     },
     {
-      "ticker": "316841105",
+      "ticker": "FIG",
       "name": "FIGMA INC",
       "value": 51159,
       "pct": 0.0,
       "firm": "Allworth Financial LP",
       "firmIndex": 11,
-      "link": "https://www.perplexity.ai/finance/316841105"
+      "link": "https://www.perplexity.ai/finance/FIG"
     },
     {
       "ticker": "SCHY",
@@ -57903,13 +57919,13 @@
       "link": "https://www.perplexity.ai/finance/LRCX"
     },
     {
-      "ticker": "84615Q103",
+      "ticker": "SPCX",
       "name": "SPACE EXPLORATION TECHN CORP",
       "value": 9010473,
       "pct": 0.2,
       "firm": "IFP Advisors, Inc",
       "firmIndex": 14,
-      "link": "https://www.perplexity.ai/finance/84615Q103"
+      "link": "https://www.perplexity.ai/finance/SPCX"
     },
     {
       "ticker": "IBDS",
@@ -75930,13 +75946,13 @@
       "link": "https://www.perplexity.ai/finance/AWF"
     },
     {
-      "ticker": "316841105",
+      "ticker": "FIG",
       "name": "FIGMA INC",
       "value": 78275,
       "pct": 0.0,
       "firm": "IFP Advisors, Inc",
       "firmIndex": 14,
-      "link": "https://www.perplexity.ai/finance/316841105"
+      "link": "https://www.perplexity.ai/finance/FIG"
     },
     {
       "ticker": "IYE",
@@ -115537,6 +115553,861 @@
       "firm": "Evelyn Partners Investment Management Services Ltd",
       "firmIndex": 20,
       "link": "https://www.perplexity.ai/finance/OPTT"
+    },
+    {
+      "ticker": "NTRA",
+      "name": "Natera Inc",
+      "value": 864923000,
+      "pct": 16.6,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/NTRA"
+    },
+    {
+      "ticker": "INSM",
+      "name": "Insmed Inc",
+      "value": 295837000,
+      "pct": 5.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/INSM"
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufac",
+      "value": 281613000,
+      "pct": 5.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/TSM"
+    },
+    {
+      "ticker": "EWZ",
+      "name": "Ishares Inc",
+      "value": 264414000,
+      "pct": 5.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/EWZ"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon Com Inc",
+      "value": 238555000,
+      "pct": 4.6,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AMZN"
+    },
+    {
+      "ticker": "STM",
+      "name": "Stmicroelectronics N V",
+      "value": 232375000,
+      "pct": 4.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/STM"
+    },
+    {
+      "ticker": "RSP",
+      "name": "Invesco Exchange Traded Fd T",
+      "value": 190514000,
+      "pct": 3.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RSP"
+    },
+    {
+      "ticker": "YPF",
+      "name": "Ypf Sociedad Anonima",
+      "value": 142726000,
+      "pct": 2.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/YPF"
+    },
+    {
+      "ticker": "CDW",
+      "name": "Cdw Corp",
+      "value": 139789000,
+      "pct": 2.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CDW"
+    },
+    {
+      "ticker": "TBBB",
+      "name": "Bbb Foods Inc",
+      "value": 120915000,
+      "pct": 2.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/TBBB"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc",
+      "value": 120184000,
+      "pct": 2.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/GOOGL"
+    },
+    {
+      "ticker": "STX",
+      "name": "Seagate Technology Hldngs Pl",
+      "value": 117730000,
+      "pct": 2.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/STX"
+    },
+    {
+      "ticker": "FOXA",
+      "name": "Fox Corp",
+      "value": 114992000,
+      "pct": 2.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/FOXA"
+    },
+    {
+      "ticker": "UAL",
+      "name": "United Airls Hldgs Inc",
+      "value": 108084000,
+      "pct": 2.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/UAL"
+    },
+    {
+      "ticker": "SE",
+      "name": "Sea Ltd",
+      "value": 105404000,
+      "pct": 2.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SE"
+    },
+    {
+      "ticker": "NAMS",
+      "name": "Newamsterdam Pharma Company",
+      "value": 104047000,
+      "pct": 2.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/NAMS"
+    },
+    {
+      "ticker": "IWM",
+      "name": "Ishares Tr",
+      "value": 99149000,
+      "pct": 1.9,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/IWM"
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk Corp",
+      "value": 79353000,
+      "pct": 1.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SNDK"
+    },
+    {
+      "ticker": "RVMD",
+      "name": "Revolution Medicines Inc",
+      "value": 74835000,
+      "pct": 1.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RVMD"
+    },
+    {
+      "ticker": "SPY",
+      "name": "State Str Spdr S&P 500 Etf T",
+      "value": 67209000,
+      "pct": 1.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SPY"
+    },
+    {
+      "ticker": "BTDR",
+      "name": "Bitdeer Technologies Group",
+      "value": 64670000,
+      "pct": 1.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/BTDR"
+    },
+    {
+      "ticker": "CRH",
+      "name": "Crh Plc",
+      "value": 59230000,
+      "pct": 1.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CRH"
+    },
+    {
+      "ticker": "DAL",
+      "name": "Delta Air Lines Inc",
+      "value": 56477000,
+      "pct": 1.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/DAL"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla Inc",
+      "value": 52996000,
+      "pct": 1.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/TSLA"
+    },
+    {
+      "ticker": "FLR",
+      "name": "Fluor Corp",
+      "value": 51457000,
+      "pct": 1.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/FLR"
+    },
+    {
+      "ticker": "DHI",
+      "name": "D R Horton Inc",
+      "value": 48701000,
+      "pct": 0.9,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/DHI"
+    },
+    {
+      "ticker": "CPNG",
+      "name": "Coupang Inc",
+      "value": 46334000,
+      "pct": 0.9,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CPNG"
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices Inc",
+      "value": 42348000,
+      "pct": 0.8,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AMD"
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks Inc",
+      "value": 39780000,
+      "pct": 0.8,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/PANW"
+    },
+    {
+      "ticker": "CLF",
+      "name": "Cleveland-Cliffs Inc New",
+      "value": 39590000,
+      "pct": 0.8,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CLF"
+    },
+    {
+      "ticker": "HUT",
+      "name": "Hut 8 Corp",
+      "value": 36267000,
+      "pct": 0.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/HUT"
+    },
+    {
+      "ticker": "CAI",
+      "name": "Caris Life Sciences Inc",
+      "value": 33759000,
+      "pct": 0.6,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CAI"
+    },
+    {
+      "ticker": "ARGT",
+      "name": "Global X Fds",
+      "value": 30019000,
+      "pct": 0.6,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/ARGT"
+    },
+    {
+      "ticker": "FOX",
+      "name": "Fox Corp",
+      "value": 29631000,
+      "pct": 0.6,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/FOX"
+    },
+    {
+      "ticker": "WWD",
+      "name": "Woodward Inc",
+      "value": 28587000,
+      "pct": 0.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/WWD"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms Inc",
+      "value": 28165000,
+      "pct": 0.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/META"
+    },
+    {
+      "ticker": "NUVB",
+      "name": "Nuvation Bio Inc",
+      "value": 25786000,
+      "pct": 0.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/NUVB"
+    },
+    {
+      "ticker": "PTGX",
+      "name": "Protagonist Therapeutics Inc",
+      "value": 25607000,
+      "pct": 0.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/PTGX"
+    },
+    {
+      "ticker": "ROKU",
+      "name": "Roku Inc",
+      "value": 25425000,
+      "pct": 0.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/ROKU"
+    },
+    {
+      "ticker": "CVCO",
+      "name": "Cavco Inds Inc Del",
+      "value": 24268000,
+      "pct": 0.5,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CVCO"
+    },
+    {
+      "ticker": "ADMA",
+      "name": "Adma Biologics Inc",
+      "value": 23303000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/ADMA"
+    },
+    {
+      "ticker": "44916Y106",
+      "name": "Hyperliquid Strategies Inc",
+      "value": 23150000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/44916Y106"
+    },
+    {
+      "ticker": "RMBS",
+      "name": "Rambus Inc Del",
+      "value": 22964000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RMBS"
+    },
+    {
+      "ticker": "RYTM",
+      "name": "Rhythm Pharmaceuticals Inc",
+      "value": 22608000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RYTM"
+    },
+    {
+      "ticker": "SKY",
+      "name": "Champion Homes Inc",
+      "value": 22418000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SKY"
+    },
+    {
+      "ticker": "DAKT",
+      "name": "Daktronics Inc",
+      "value": 21968000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/DAKT"
+    },
+    {
+      "ticker": "PCT",
+      "name": "Purecycle Technologies Inc",
+      "value": 21746000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/PCT"
+    },
+    {
+      "ticker": "SCCO",
+      "name": "Southern Copper Corp",
+      "value": 21444000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SCCO"
+    },
+    {
+      "ticker": "LIN",
+      "name": "Linde Plc",
+      "value": 21380000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/LIN"
+    },
+    {
+      "ticker": "ENTG",
+      "name": "Entegris Inc",
+      "value": 21277000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/ENTG"
+    },
+    {
+      "ticker": "TEVA",
+      "name": "Teva Pharmaceutical Inds Ltd",
+      "value": 21175000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/TEVA"
+    },
+    {
+      "ticker": "U",
+      "name": "Unity Software Inc",
+      "value": 21114000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/U"
+    },
+    {
+      "ticker": "AEVA",
+      "name": "Aeva Technologies Inc",
+      "value": 20683000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AEVA"
+    },
+    {
+      "ticker": "RIOT",
+      "name": "Riot Platforms Inc",
+      "value": 20666000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RIOT"
+    },
+    {
+      "ticker": "74743L100",
+      "name": "Qnity Electronics Inc",
+      "value": 20521000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/74743L100"
+    },
+    {
+      "ticker": "EQIX",
+      "name": "Equinix Inc",
+      "value": 19232000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/EQIX"
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research Corp",
+      "value": 18893000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/LRCX"
+    },
+    {
+      "ticker": "24477V105",
+      "name": "Definium Therapeutics Inc",
+      "value": 16774000,
+      "pct": 0.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/24477V105"
+    },
+    {
+      "ticker": "BLTE",
+      "name": "Belite Bio Inc Sponsored",
+      "value": 16338000,
+      "pct": 0.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/BLTE"
+    },
+    {
+      "ticker": "TXG",
+      "name": "10X Genomics Inc",
+      "value": 15455000,
+      "pct": 0.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/TXG"
+    },
+    {
+      "ticker": "WAB",
+      "name": "Wabtec",
+      "value": 15258000,
+      "pct": 0.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/WAB"
+    },
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly & Co",
+      "value": 14849000,
+      "pct": 0.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/LLY"
+    },
+    {
+      "ticker": "XENE",
+      "name": "Xenon Pharmaceuticals Inc",
+      "value": 14402000,
+      "pct": 0.3,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/XENE"
+    },
+    {
+      "ticker": "OLMA",
+      "name": "Olema Pharmaceuticals Inc",
+      "value": 12345000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/OLMA"
+    },
+    {
+      "ticker": "RGEN",
+      "name": "Repligen Corp",
+      "value": 10560000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RGEN"
+    },
+    {
+      "ticker": "RKT",
+      "name": "Rocket Cos Inc",
+      "value": 10272000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RKT"
+    },
+    {
+      "ticker": "BIDU",
+      "name": "Baidu Inc",
+      "value": 10080000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/BIDU"
+    },
+    {
+      "ticker": "ARM",
+      "name": "Arm Holdings Plc",
+      "value": 9960000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/ARM"
+    },
+    {
+      "ticker": "CVNA",
+      "name": "Carvana Co",
+      "value": 9939000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CVNA"
+    },
+    {
+      "ticker": "RDDT",
+      "name": "Reddit Inc",
+      "value": 9816000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RDDT"
+    },
+    {
+      "ticker": "AA",
+      "name": "Alcoa Corp",
+      "value": 9679000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AA"
+    },
+    {
+      "ticker": "TMO",
+      "name": "Thermo Fisher Scientific Inc",
+      "value": 9626000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/TMO"
+    },
+    {
+      "ticker": "DHR",
+      "name": "Danaher Corp Del",
+      "value": 9581000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/DHR"
+    },
+    {
+      "ticker": "FFIV",
+      "name": "F5 Inc",
+      "value": 9151000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/FFIV"
+    },
+    {
+      "ticker": "VIST",
+      "name": "Vista Energy S.A.B. De C.V.",
+      "value": 8594000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/VIST"
+    },
+    {
+      "ticker": "SKE",
+      "name": "Skeena Res Ltd New",
+      "value": 8003000,
+      "pct": 0.2,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SKE"
+    },
+    {
+      "ticker": "JBS",
+      "name": "Jbs N.V.",
+      "value": 7772000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/JBS"
+    },
+    {
+      "ticker": "GLUE",
+      "name": "Monte Rosa Therapeutics Inc",
+      "value": 7202000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/GLUE"
+    },
+    {
+      "ticker": "RLAY",
+      "name": "Relay Therapeutics Inc",
+      "value": 6530000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/RLAY"
+    },
+    {
+      "ticker": "DBVT",
+      "name": "Dbv Technologies S A Sponsored",
+      "value": 6287000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/DBVT"
+    },
+    {
+      "ticker": "CCCS",
+      "name": "Ccc Intelligent Solutions Hl",
+      "value": 6042000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CCCS"
+    },
+    {
+      "ticker": "UWMC",
+      "name": "Uwm Holdings Corporation",
+      "value": 5915000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/UWMC"
+    },
+    {
+      "ticker": "NVTS",
+      "name": "Navitas Semiconductor Corp",
+      "value": 5575000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/NVTS"
+    },
+    {
+      "ticker": "83443Q103",
+      "name": "Solstice Advanced Matls Inc",
+      "value": 5540000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/83443Q103"
+    },
+    {
+      "ticker": "FTAI",
+      "name": "Ftai Aviation Ltd",
+      "value": 5465000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/FTAI"
+    },
+    {
+      "ticker": "BEAM",
+      "name": "Beam Therapeutics Inc",
+      "value": 5272000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/BEAM"
+    },
+    {
+      "ticker": "AUR",
+      "name": "Aurora Innovation Inc",
+      "value": 4322000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AUR"
+    },
+    {
+      "ticker": "IREN",
+      "name": "Iren Limited",
+      "value": 3983000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/IREN"
+    },
+    {
+      "ticker": "GGAL",
+      "name": "Grupo Financiero Galicia S.A",
+      "value": 2977000,
+      "pct": 0.1,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/GGAL"
+    },
+    {
+      "ticker": "WVE",
+      "name": "Wave Life Sciences Ltd",
+      "value": 1005000,
+      "pct": 0.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/WVE"
+    },
+    {
+      "ticker": "SPCX",
+      "name": "Space Exploration Techn Corp",
+      "value": 3231681066,
+      "pct": 84.8,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/SPCX"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon Com Inc",
+      "value": 215468417,
+      "pct": 5.7,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/AMZN"
+    },
+    {
+      "ticker": "OSCR",
+      "name": "Oscar Health Inc",
+      "value": 180919957,
+      "pct": 4.7,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/OSCR"
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify Inc",
+      "value": 102284385,
+      "pct": 2.7,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/SHOP"
+    },
+    {
+      "ticker": "FIG",
+      "name": "Figma Inc",
+      "value": 79535145,
+      "pct": 2.1,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/FIG"
     }
   ],
   "lastUpdated": "2026-08-01"

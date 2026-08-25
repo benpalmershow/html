@@ -461,6 +461,9 @@
 .hormuz-capacity--critical { background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%); }
 .hormuz-capacity--low { background: linear-gradient(90deg, #f97316 0%, #fb923c 100%); }
 .hormuz-capacity--normal { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); }
+.hormuz-top-row--critical .hormuz-count-num { color: #dc2626; }
+.hormuz-top-row--critical .hormuz-count-unit { color: #dc2626; }
+.hormuz-top-row--low .hormuz-count-unit { color: #f97316; }
 .hormuz-capacity-text { font-size: 0.6rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
 .hormuz-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 6px 0; }
 .hormuz-metric { background: rgba(var(--color-primary-rgb), 0.05); border: 1px solid var(--border-color); border-radius: 4px; padding: 5px 8px; display: flex; flex-direction: column; gap: 2px; }

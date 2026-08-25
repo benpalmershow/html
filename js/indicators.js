@@ -295,7 +295,7 @@ function renderHormuz(indicator) {
         const currentPropKey = propKeys[0];
         const currentProp = currentPropKey ? indicator.probabilities[currentPropKey] : null;
 
-        const latestDataHtml = `<div class="hormuz-card"><div class="hormuz-top-row"><span class="hormuz-count-num">${latestCount !== null ? latestCount : '\u2014'}</span><span class="hormuz-count-unit">/day</span><span class="hormuz-status-badge">Blockade</span></div><div class="hormuz-capacity-row" title="vs pre-crisis baseline of ~${PRECRISIS_NORMAL}/day"><div class="hormuz-capacity-track"><div class="hormuz-capacity-fill ${capacityPct < 20 ? 'hormuz-capacity--critical' : capacityPct < 50 ? 'hormuz-capacity--low' : 'hormuz-capacity--normal'}" style="width: ${capacityPct}%"></div></div><span class="hormuz-capacity-text">${capacityPct}% · ${latestDateStr}</span></div></div>`;
+        const latestDataHtml = `<div class="hormuz-card"><div class="hormuz-top-row ${capacityPct < 20 ? 'hormuz-top-row--critical' : capacityPct < 50 ? 'hormuz-top-row--low' : ''}"><span class="hormuz-count-num">${latestCount !== null ? latestCount : '\u2014'}</span><span class="hormuz-count-unit">/day</span><span class="hormuz-status-badge">Blockade</span></div><div class="hormuz-capacity-row" title="vs pre-crisis baseline of ~${PRECRISIS_NORMAL}/day"><div class="hormuz-capacity-track"><div class="hormuz-capacity-fill ${capacityPct < 20 ? 'hormuz-capacity--critical' : capacityPct < 50 ? 'hormuz-capacity--low' : 'hormuz-capacity--normal'}" style="width: ${capacityPct}%"></div></div><span class="hormuz-capacity-text">${capacityPct}% · ${latestDateStr}</span></div></div>`;
 
         let historyDataHtml = '';
         if (currentProp) {
@@ -317,7 +317,7 @@ function renderHormuz(indicator) {
                 const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                 const snap = indicator.probabilities?.[dateKey];
                 const isLow = parseInt(count, 10) < 20;
-                historyDataHtml += `<div class="hormuz-daily-item ${isLow ? 'hormuz-daily--low' : ''}"><span class="hormuz-daily-date">${dateStr}</span><span class="hormuz-daily-count">${count}</span>${snap?.vesselsAttacked ? `<span class="hormuz-daily-badge">⚠ ${snap.vesselsAttacked}</span>` : ''}</div>`;
+                historyDataHtml += `<div class="hormuz-daily-item ${isLow ? 'hormuz-daily--low' : ''}"><span class="hormuz-daily-date">${dateStr}</span><span class="hormuz-daily-count">${count}</span>${isLow ? `<span class="hormuz-daily-badge">&lt;20</span>` : ''}${snap?.vesselsAttacked ? `<span class="hormuz-daily-badge">⚠ ${snap.vesselsAttacked}</span>` : ''}</div>`;
             });
             historyDataHtml += `</div>`;
         }

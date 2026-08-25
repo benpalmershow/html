@@ -1252,11 +1252,15 @@
       "color": "#1abc9c",
       "agency": "Windward",
       "name": "Strait of Hormuz Daily Transits",
-      "lastUpdated": "2026-08-24T14:00:00Z",
+      "lastUpdated": "2026-08-25T14:00:00Z",
       "releaseDay": 0,
       "url": "https://insights.windward.ai/",
       "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
       "probabilities": {
+        "2026-08-25": {
+          "Inbound": 4,
+          "Outbound": 0
+        },
         "2026-08-24": {
           "Inbound": 6,
           "Outbound": 10

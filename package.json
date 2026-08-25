@@ -2,8 +2,14 @@
   "scripts": {
     "generate:rss": "node scripts/generate-rss.js",
     "validate": "node scripts/validate-site.js",
+    "validate:watch": "node scripts/validate-site.js --watch",
     "bump-version": "bash scripts/bump-version.sh",
-    "add-movie": "node scripts/add-movie.js"
+    "add-movie": "node scripts/add-movie.js",
+    "add-book": "node scripts/add-book.js",
+    "add-podcast": "node scripts/add-podcast.js",
+    "publish": "node scripts/publish.js",
+    "fred-fetch": "python3 scripts/fetch_fred.py",
+    "kalshi-fetch": "node scripts/kalshi-fetch.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1"

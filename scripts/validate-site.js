@@ -153,20 +153,46 @@ function validateSitemaps() {
 }
 
 function main() {
+  const watchMode = process.argv.includes('--watch');
+  
+  if (watchMode) {
+    console.log('Watching for changes... Press Ctrl+C to stop.\n');
+    runValidation();
+    
+    let timeout;
+    const debounce = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(runValidation, 500);
+    };
+    
+    fs.watch(ROOT, { recursive: true }, debounce);
+    process.on('SIGINT', () => {
+      console.log('\nStopping watcher.');
+      process.exit(0);
+    });
+  } else {
+    runValidation();
+  }
+}
+
+function runValidation() {
+  failures.length = 0;
+  warnings.length = 0;
+  
   validateJson();
   validateContentIndexes();
   validateLocalReferences();
   validateSitemaps();
-
+  
   warnings.forEach(message => console.warn(`Warning: ${message}`));
-
+  
   if (failures.length) {
     failures.forEach(message => console.error(`Error: ${message}`));
     console.error(`\nValidation failed with ${failures.length} error(s).`);
-    process.exit(1);
+    if (!process.argv.includes('--watch')) process.exit(1);
+  } else {
+    console.log(`[${new Date().toLocaleTimeString()}] Site validation passed.`);
   }
-
-  console.log('Site validation passed.');
 }
 
 main();

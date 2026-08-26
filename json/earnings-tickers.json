@@ -3,8 +3,14 @@
     "NVDA",
     "TSLA",
     "NYT",
-    "SPCX"
+    "SPCX",
+    "CRM",
+    "CRWD",
+    "HPQ",
+    "OKTA",
+    "ANF",
+    "SJM"
   ],
   "description": "Edit this list to add/remove tickers for the earnings fetcher. The GitHub Actions workflow will respect this file unless TICKERS is set.",
-  "lastEdited": "2026-07-23"
+  "lastEdited": "2026-08-26"
 }

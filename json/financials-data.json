@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-25T00:43:57.996Z",
+  "lastUpdated": "2026-08-28T00:43:57.996Z",
   "indices": [
     { 
       "id": "strait-of-hormuz-traffic",
@@ -292,14 +292,14 @@
         "may": "592",
         "june": "637",
         "july": "639",
-        "august": "583"
+        "august": "559"
       },
       "id": "lumber-futures",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "Google Finance",
       "name": "Lumber Futures",
-      "lastUpdated": "2026-08-10T22:00:00Z",
+      "lastUpdated": "2026-08-28T22:00:00Z",
       "releaseDay": 0,
       "url": "https://www.google.com/finance/quote/LBRW00:CME?sa=X&ved=2ahUKEwifpuS0suWOAxWMiO4BHd22BUYQ3ecFegQIIhAT&window=YTD",
       "march": "683",
@@ -586,14 +586,15 @@
         "february": "10.60",
         "march": "11.10",
         "april": "11.20",
-        "may": "11.60"
+        "may": "11.60",
+        "june": "11.30"
       },
       "id": "soybeans-price",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Soybeans",
-      "lastUpdated": "2026-07-11T19:30:00Z",
+      "lastUpdated": "2026-08-28T19:30:00Z",
       "releaseDay": 0,
       "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
       "january": "10.00",
@@ -617,14 +618,15 @@
         "february": "239",
         "march": "236.00",
         "april": "242.00",
-        "may": "252.00"
+        "may": "252.00",
+        "june": "254.00"
       },
       "id": "beef-price",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Beef",
-      "lastUpdated": "2026-07-11T19:30:00Z",
+      "lastUpdated": "2026-08-28T19:30:00Z",
       "releaseDay": 0,
       "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
       "january": "199.00",
@@ -651,14 +653,14 @@
         "may": "6.3885",
         "june": "6.35",
         "july": "6.285",
-        "august": "6.6130"
+        "august": "6.6870"
       },
       "id": "copper-futures",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "CME",
       "name": "Copper Futures",
-      "lastUpdated": "2026-08-10T14:00:00Z",
+      "lastUpdated": "2026-08-28T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
       "march": "4.56",

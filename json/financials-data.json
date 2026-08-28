@@ -380,14 +380,15 @@
         "march": "68",
         "april": "60",
         "may": "53",
-        "june": "50"
+        "june": "50",
+        "july": "51"
       },
       "id": "days-on-market",
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "Zillow",
       "name": "Number of Days on Market (Median)",
-      "lastUpdated": "2026-08-10T23:00:00Z",
+      "lastUpdated": "2026-08-28T23:00:00Z",
       "url": "https://www.zillow.com/research/data/",
       "march": "60",
       "april": "53",

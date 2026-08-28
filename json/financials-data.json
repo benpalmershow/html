@@ -1960,13 +1960,14 @@
         "february": "120.1",
         "march": "120.2",
         "april": "120.6",
-        "may": "120.5",
-        "june": "120.5"
+        "may": "120.2",
+        "june": "120.1",
+        "july": "120.4"
       },
       "category": "Business Indicators",
       "agency": "The Conference Board",
       "name": "Lagging Economic Index",
-      "lastUpdated": "2026-07-22T14:00:00Z",
+      "lastUpdated": "2026-08-28T14:00:00Z",
       "releaseDay": 22,
       "url": "https://www.conference-board.org/topics/us-leading-indicators",
       "march": "118.9",
@@ -2110,17 +2111,21 @@
     {
       "2026": {
         "january": "53.8",
-        "february": "56.1",
+        "february": "53.4",
         "march": "54",
         "april": "53.6",
-        "may": "54.5"
+        "may": "53.2",
+        "june": "54",
+        "july": "54.1"
+        
+
       },
       "id": "services-pmi",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "ISM",
       "name": "Services PMI",
-      "lastUpdated": "2026-06-28T14:00:00Z",
+      "lastUpdated": "2026-08-28T14:00:00Z",
       "releaseDay": 5,
       "url": "https://tradingeconomics.com/united-states/services-pmi",
       "march": "50.8",

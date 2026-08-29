@@ -442,7 +442,7 @@
         return section;
       }
       function renderMore() {
-        const next = allDays.slice(renderIndex, renderIndex + 3);
+        const next = allDays.slice(renderIndex, renderIndex + 30);
         const fragment = document.createDocumentFragment();
         next.forEach(day => fragment.appendChild(buildDay(day)));
         feed.appendChild(fragment);

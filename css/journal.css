@@ -8,17 +8,17 @@ main{flex:1}
 .content{width:min(100%,760px);margin:0 auto;padding:0 1rem 5rem}
 
 /* ── Day Group ── */
-.day{margin:0 0 2rem}
-.day-header{display:flex;align-items:center;gap:.75rem;margin:0 0 .8rem;color:var(--text-muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.day{margin:0 0 2.5rem}
+.day-header{display:flex;align-items:center;gap:.75rem;margin:0 0 1rem;color:var(--text-muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .day-header::after{content:"";flex:1;height:1px;background:var(--border-color)}
 
 /* ── Entry ── */
-.entry{padding:.55rem 0;border-bottom:1px solid var(--border-color)}
+.entry{padding:.9rem 0;border-bottom:1px solid var(--border-color)}
 .entry:last-child{border-bottom:0}
 .entry-head{display:flex;align-items:flex-start;gap:.55rem}
 .entry-head.has-toggle{cursor:pointer}
 .entry-head:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:6px}
-.entry-title{flex:1;min-width:0;color:var(--text-primary);font-size:.95rem;font-weight:600;line-height:1.4;word-break:break-word}
+.entry-title{flex:1;min-width:0;color:var(--text-primary);font-size:.95rem;font-weight:600;line-height:1.7;word-break:break-word}
 .entry-title a{color:var(--text-primary)}
 .entry-meta{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
 .entry-time{color:var(--text-muted);font-size:.72rem;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -29,7 +29,7 @@ main{flex:1}
 
 /* ── Entry Content ── */
 .entry-content,.accordion-inner{color:var(--text-secondary);font-size:.9rem;line-height:1.7}
-.entry-content a,.accordion-inner a{color:var(--logo-teal);display:inline-flex;align-items:center;min-height:44px;margin:-.2em -.15em;padding:.2em .15em;border-radius:6px;text-decoration:underline}
+.entry-content a,.accordion-inner a{color:var(--logo-teal);display:inline-flex;align-items:center;text-decoration:underline}
 .entry-content a:hover,.entry-content a:focus,.accordion-inner a:hover,.accordion-inner a:focus{opacity:1;color:var(--logo-orange)}
 .entry-content img,.accordion-inner img{max-width:100%;height:auto;border:1px solid var(--border-color);border-radius:8px;margin:.75rem 0}
 

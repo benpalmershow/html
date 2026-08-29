@@ -22,7 +22,6 @@
         "icon": "fab fa-youtube",
         "url": "https://youtu.be/K8pdnqxfvbs?si=ifzMvo4BKVj94DvL"
       },
-
       {
         "label": "Amazon Music",
         "icon": "fab fa-amazon",
@@ -4070,7 +4069,7 @@
     "embedUrl": "https://www.youtube.com/embed/K-8nIAQit3o",
     "ratings": {
       "rt": {
-        "score": "91",
+        "score": "91%",
         "url": "https://www.rottentomatoes.com/m/13_days_13_nights"
       },
       "imdb": {
@@ -4185,5 +4184,38 @@
       }
     ],
     "dateAdded": "2026-08-15"
+  },
+  {
+    "title": "The Sheep Detectives",
+    "author": "Kyle Balda",
+    "mediaType": "movie",
+    "description": "Every night a shepherd reads aloud a murder mystery, pretending his sheep can understand. When he is found dead, the sheep realize at once that it was a murder and think they know everything about how to go about solving it.",
+    "date": "2026",
+    "genre": "Comedy, Family, Mystery",
+    "titleColor": "#ffffff",
+    "tag": "",
+    "thumbs": "",
+    "cover": "https://image.tmdb.org/t/p/w500/iKy5460GdsoknM8ppmGlJbKxAKa.jpg",
+    "imdb": "https://www.imdb.com/title/tt32565993/",
+    "rottenTomatoes": "https://www.rottentomatoes.com/m/the_sheep_detectives",
+    "embedUrl": "https://www.youtube.com/embed/826SRt1CFbg",
+    "ratings": {
+      "rt": {
+        "score": "95%",
+        "url": "https://www.rottentomatoes.com/m/the_sheep_detectives"
+      },
+      "imdb": {
+        "score": "7.5",
+        "url": "https://www.imdb.com/title/tt32565993/"
+      }
+    },
+    "links": [
+      {
+        "label": "Trailer",
+        "icon": "fab fa-youtube",
+        "url": "https://www.youtube.com/watch?v=826SRt1CFbg"
+      }
+    ],
+    "dateAdded": "2026-08-29"
   }
 ]

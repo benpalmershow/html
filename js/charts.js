@@ -477,6 +477,32 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
         }
     }
 
+        // Handle FOMC rate decision time-series data
+        const fomcSorted = Object.entries(probabilities)
+            .filter(([, v]) => v && v.rate_hold_odds !== undefined)
+            .sort(([a], [b]) => new Date(a) - new Date(b));
+        if (fomcSorted.length > 1) {
+            const labels = fomcSorted.map(([date]) =>
+                new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+            );
+            const holdValues = fomcSorted.map(([, v]) => parseFloat(String(v.rate_hold_odds).replace(/[^0-9.-]/g, '')));
+            const hikeValues = fomcSorted.map(([, v]) => parseFloat(String(v.rate_hike_odds).replace(/[^0-9.-]/g, '')));
+            const cutValues = fomcSorted.map(([, v]) => parseFloat(String(v.rate_cut_odds).replace(/[^0-9.-]/g, '')));
+            const dateLabels = fomcSorted.map(([date]) => date);
+            return {
+                type: 'chartjs-mixed',
+                data: {
+                    labels,
+                    datasets: [
+                        { label: 'Hold', data: holdValues, type: 'line', borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
+                        { label: 'Hike', data: hikeValues, type: 'line', borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 },
+                        { label: 'Cut', data: cutValues, type: 'line', borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.1)', borderWidth: 2.5, tension: 0.4, fill: true, pointRadius: 3, pointHoverRadius: 5 }
+                    ]
+                },
+                _dateLabels: dateLabels
+            };
+        }
+
     // Snapshot / static probability — render as a doughnut-style bar
     const labels = [], values = [], colors = [];
     if (indicatorData.bps_probabilities) {

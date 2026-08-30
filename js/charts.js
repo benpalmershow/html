@@ -501,9 +501,51 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
                 },
                 _dateLabels: dateLabels
             };
+         }
+
+        // Handle generic multi-key probability time series (e.g., outcome-based markets like "Will Trump be impeached?")
+        const genericSorted = Object.entries(probabilities)
+            .filter(([, v]) => v && typeof v === 'object' && !v.yes && !v.no && !v['Democratic Party'] && !v['Republican Party'] && !v.rate_hold_odds)
+            .sort(([a], [b]) => new Date(a) - new Date(b));
+        if (genericSorted.length > 1) {
+            const allKeys = [...new Set(genericSorted.flatMap(([, v]) => Object.keys(v)))];
+            const outcomeKeys = allKeys.filter(k => !['yes', 'no', 'Democratic Party', 'Republican Party'].includes(k) && !k.startsWith('rate_'));
+            if (outcomeKeys.length > 0) {
+                const labels = genericSorted.map(([date]) =>
+                    new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+                );
+                const dateLabels = genericSorted.map(([date]) => date);
+                const datasetColors = [
+                    { border: '#3498db', bg: 'rgba(52,152,219,0.1)' },
+                    { border: '#e74c3c', bg: 'rgba(231,76,60,0.1)' },
+                    { border: '#22c55e', bg: 'rgba(34,197,94,0.1)' },
+                    { border: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
+                    { border: '#8b5cf6', bg: 'rgba(139,92,246,0.1)' }
+                ];
+                const datasets = outcomeKeys.map((key, i) => {
+                    const colors = datasetColors[i % datasetColors.length];
+                    return {
+                        label: key,
+                        data: genericSorted.map(([, v]) => v[key] !== undefined ? parseFloat(String(v[key]).replace(/[^0-9.-]/g, '')) : null),
+                        type: 'line',
+                        borderColor: colors.border,
+                        backgroundColor: colors.bg,
+                        borderWidth: 2.5,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 3,
+                        pointHoverRadius: 5
+                    };
+                });
+                return {
+                    type: 'chartjs-mixed',
+                    data: { labels, datasets },
+                    _dateLabels: dateLabels
+                };
+            }
         }
 
-    // Snapshot / static probability — render as a doughnut-style bar
+    // Snapshot / static probability — render as a bar chart
     const labels = [], values = [], colors = [];
     if (indicatorData.bps_probabilities) {
         Object.entries(indicatorData.bps_probabilities).forEach(([key, val]) => {
@@ -529,6 +571,23 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
                 values.push(parseFloat(latestData['Democratic Party']));
                 values.push(parseFloat(latestData['Republican Party']));
                 colors.push('#3498db', '#e74c3c');
+            } else if (latestData.yes !== undefined && latestData.no !== undefined) {
+                labels.push('Yes', 'No');
+                values.push(parseFloat(String(latestData.yes).replace(/[^0-9.-]/g, '')));
+                values.push(parseFloat(String(latestData.no).replace(/[^0-9.-]/g, '')));
+                colors.push('#22c55e', '#ef4444');
+            } else {
+                // Generic fallback: render all outcome probabilities from the latest entry
+                Object.entries(latestData).forEach(([key, val]) => {
+                    if (!['yes', 'no', 'Democratic Party', 'Republican Party'].includes(key) && !key.startsWith('rate_')) {
+                        const numVal = parseFloat(String(val).replace(/[^0-9.-]/g, ''));
+                        if (!isNaN(numVal)) {
+                            labels.push(key);
+                            values.push(numVal);
+                            colors.push('#2C5F5A');
+                        }
+                    }
+                });
             }
         }
     }

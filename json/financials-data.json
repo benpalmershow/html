@@ -214,16 +214,19 @@
       "color": "#e74c3c",
       "agency": "Kalshi",
       "name": "Will Trump be impeached?",
-      "lastUpdated": "2026-05-31T08:00:00Z",
+      "lastUpdated": "2026-08-29T08:00:00Z",
       "releaseDay": 0,
       "url": "https://kalshi.com/markets/kximpeach/president-impeached/kximpeach",
       "probabilities": {
+        "2026-08-29": {
+          "Before Jan 1, 2027": "20¢",
+          "Before Jan 1, 2028": "61¢"
+        },
         "2026-05-31": {
           "Before Jan 1, 2027": "9.8¢",
           "Before Jan 1, 2028": "58¢"
         },
         "2026-04-19": {
-          "Before Jun 1, 2026": "1.2¢",
           "Before Jan 1, 2027": "13¢",
           "Before Jan 1, 2028": "65¢"
         }

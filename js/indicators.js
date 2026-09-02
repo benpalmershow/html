@@ -117,33 +117,38 @@ const IndicatorRenderers = (function () {
         const rows = [];
         if (indicator.meeting_date) rows.push(`<span class="month-label">Meeting:</span> <span class="month-value">${indicator.meeting_date}</span>`);
         let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
-        if (indicator.rate_hold_odds && indicator.rate_cut_odds && indicator.rate_hike_odds) {
-            const holdProb = parseFloat(indicator.rate_hold_odds), cutProb = parseFloat(indicator.rate_cut_odds), hikeProb = parseFloat(indicator.rate_hike_odds);
-            let sortedProbabilities = null;
-            if (indicator.probabilities && typeof indicator.probabilities === 'object') {
-                sortedProbabilities = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
-            }
 
+        let sortedProbabilities = null;
+        if (indicator.probabilities && typeof indicator.probabilities === 'object') {
+            sortedProbabilities = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+        }
+        const latestEntry = sortedProbabilities && sortedProbabilities.length ? sortedProbabilities[0][1] : null;
+        const holdOdds = indicator.rate_hold_odds || (latestEntry && latestEntry.rate_hold_odds);
+        const cutOdds = indicator.rate_cut_odds || (latestEntry && latestEntry.rate_cut_odds);
+        const hikeOdds = indicator.rate_hike_odds || (latestEntry && latestEntry.rate_hike_odds);
+
+        if (holdOdds && cutOdds && hikeOdds) {
+            const holdProb = parseFloat(holdOdds), cutProb = parseFloat(cutOdds), hikeProb = parseFloat(hikeOdds);
 
             latestDataHtml = `
                 <div class="prediction-bar-container" style="margin-top: 4px;">
-                    ${predictionBarRow('Hold', indicator.rate_hold_odds, 'fomc-hold', '50px', '12px')}
-                    ${predictionBarRow('Hike', indicator.rate_hike_odds, 'fomc-hike', '50px', '12px')}
-                    ${predictionBarRow('Cut', indicator.rate_cut_odds, 'fomc-cut', '50px', '12px')}
+                    ${predictionBarRow('Hold', holdOdds, 'fomc-hold', '50px', '12px')}
+                    ${predictionBarRow('Hike', hikeOdds, 'fomc-hike', '50px', '12px')}
+                    ${predictionBarRow('Cut', cutOdds, 'fomc-cut', '50px', '12px')}
                 </div>`;
 
             if (sortedProbabilities && sortedProbabilities.length > 1) {
                 hasHistory = true;
-                historyDataHtml = sortedProbabilities.slice(1).map(([date, probs], index) => {
+                historyDataHtml = sortedProbabilities.slice(1).map(([date, probs]) => {
                     const dateLabel = formatDateShort(date);
                     const hold = probs.rate_hold_odds || '—', cut = probs.rate_cut_odds || '—', hike = probs.rate_hike_odds || '—';
                     return `<div class="prediction-history-row prediction-history-row-inline"><span class="prediction-history-date prediction-history-date-inline">${dateLabel}</span><div class="prediction-history-content"><div class="prediction-history-item"><span class="prediction-hold-value">${hold}</span></div><div class="prediction-history-item"><span class="prediction-hike-value">${hike}</span></div><div class="prediction-history-item"><span class="prediction-cut-value">${cut}</span></div></div></div>`;
                 }).join('');
             }
         } else {
-            if (indicator.rate_hold_odds) rows.push(`<span class="month-label">Hold:</span> <span class="month-value">${indicator.rate_hold_odds}</span>`);
-            if (indicator.rate_cut_odds) rows.push(`<span class="month-label">Cut:</span> <span class="month-value">${indicator.rate_cut_odds}</span>`);
-            if (indicator.rate_hike_odds) rows.push(`<span class="month-label">Hike:</span> <span class="month-value">${indicator.rate_hike_odds}</span>`);
+            if (holdOdds) rows.push(`<span class="month-label">Hold:</span> <span class="month-value">${holdOdds}</span>`);
+            if (cutOdds) rows.push(`<span class="month-label">Cut:</span> <span class="month-value">${cutOdds}</span>`);
+            if (hikeOdds) rows.push(`<span class="month-label">Hike:</span> <span class="month-value">${hikeOdds}</span>`);
             rows.forEach((row, i) => { if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`; else historyDataHtml += `<div class="data-row">${row}</div>`; });
             hasHistory = rows.length > 2;
         }

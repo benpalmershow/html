@@ -289,15 +289,24 @@ async function loadLatestFinancials(limit = LIMITS.financials) {
     const timeAgo = formatTimeAgo(item.lastUpdated);
 
     // Special handling for prediction markets with various data structures
-    if (item.rate_hold_odds || item.rate_cut_odds || item.rate_hike_odds) {
+    if (item.rate_hold_odds || item.rate_cut_odds || item.rate_hike_odds || (item.probabilities && (item.probabilities[Object.keys(item.probabilities).sort().pop()] || {}) && ((item.probabilities[Object.keys(item.probabilities).sort().pop()] || {}).rate_hold_odds || (item.probabilities[Object.keys(item.probabilities).sort().pop()] || {}).rate_hike_odds || (item.probabilities[Object.keys(item.probabilities).sort().pop()] || {}).rate_cut_odds))) {
       // FOMC Rate Decision format
       const categoryIcon = FINANCIAL_CATEGORY_ICONS[categoryText] || 'bar-chart-2';
       const iconHtml = `<i data-lucide="${categoryIcon}" class="financial-bullet-icon"></i>`;
 
+      let latestEntry = null;
+      if (item.probabilities && typeof item.probabilities === 'object') {
+        const sortedDates = Object.keys(item.probabilities).sort((a, b) => new Date(b) - new Date(a));
+        if (sortedDates.length) latestEntry = item.probabilities[sortedDates[0]];
+      }
+      const hold = item.rate_hold_odds || (latestEntry && latestEntry.rate_hold_odds);
+      const cut = item.rate_cut_odds || (latestEntry && latestEntry.rate_cut_odds);
+      const hike = item.rate_hike_odds || (latestEntry && latestEntry.rate_hike_odds);
+
       const odds = [];
-      if (item.rate_hold_odds) odds.push(`Hold: ${item.rate_hold_odds}`);
-      if (item.rate_cut_odds) odds.push(`Cut: ${item.rate_cut_odds}`);
-      if (item.rate_hike_odds) odds.push(`Hike: ${item.rate_hike_odds}`);
+      if (hold) odds.push(`Hold: ${hold}`);
+      if (cut) odds.push(`Cut: ${cut}`);
+      if (hike) odds.push(`Hike: ${hike}`);
 
       return `<span class="time-ago">${timeAgo}</span> ${iconHtml} <a href="${itemHref}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(cleanText(item.name))}</strong>: ${escapeHtml(odds.join(' | '))}</a>`;
     }

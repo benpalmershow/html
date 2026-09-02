@@ -406,9 +406,9 @@
                   .catch(() => {
                     inner.innerHTML = '<span class="loading">Could not load file.</span>';
                   });
-              } else if (hasContent) {
-                inner.innerHTML = normalizeContent(entry.content);
-              }
+               } else if (hasContent) {
+                 inner.innerHTML = normalizeContent(parseInline(entry.content, true));
+               }
             }
           }
           headEl.addEventListener('click', toggle);
@@ -423,7 +423,7 @@
         if (hasContent && !hasToggle) {
           const contentEl = document.createElement('div');
           contentEl.className = 'entry-content';
-          contentEl.innerHTML = normalizeContent(entry.content);
+          contentEl.innerHTML = normalizeContent(parseInline(entry.content, true));
           div.appendChild(contentEl);
         }
         if (accordionEl) div.appendChild(accordionEl);

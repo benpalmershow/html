@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-29T00:43:57.996Z",
+  "lastUpdated": "2026-09-02T00:43:57.996Z",
   "indices": [
     { 
       "id": "strait-of-hormuz-traffic",
@@ -186,15 +186,18 @@
       "color": "#e74c3c",
       "agency": "Kalshi",
       "name": "FOMC Rate Decision - September",
-      "lastUpdated": "2026-08-29T15:58:00.000Z",
+      "lastUpdated": "2026-09-02T15:58:00.000Z",
       "meeting_date": "September 18-19, 2026",
-      "rate_hold_odds": "54¢",
-      "rate_cut_odds": "2¢",
-      "rate_hike_odds": "47¢",
+    
       "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26sep",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-september-762",
       "change": "",
       "probabilities": {
+        "2026-09-02": {
+          "rate_hold_odds": "40¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "58¢"
+        },
         "2026-08-29": {
           "rate_hold_odds": "54¢",
           "rate_cut_odds": "2¢",
@@ -275,19 +278,19 @@
         "may": "4.48",
         "june": "4.48",
         "july": "4.67",
-        "august": "4.69"
+        "august": "4.75"
       },
       "id": "10yr-treasury-yield",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-08-10T14:00:00Z",
+      "lastUpdated": "2026-09-02T14:00:00Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "march": "4.28",
       "april": "4.28",
-      "may": "4.42",
+      "may": "4.42",  
       "june": "4.38",
       "july": "4.39",
       "august": "4.26",
@@ -484,14 +487,14 @@
         "may": "112.25",
         "june": "84.65",
         "july": "69.60",
-        "august": "81.96"
+        "august": "83.90"
       },
       "id": "oil-wti",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "EIA",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-08-10T19:30:00Z",
+      "lastUpdated": "2026-09-02T19:30:00Z",
       "releaseDay": 0,
       "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "january": "75.74",
@@ -518,14 +521,14 @@
         "may": "116.73",
         "june": "84.36",
         "july": "69.56",
-        "august": "88.90"
+        "august": "88.24"
       },
       "id": "oil-brent",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "EIA",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-08-10T19:30:00Z",
+      "lastUpdated": "2026-09-02T19:30:00Z",
       "releaseDay": 0,
       "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "change": "",
@@ -1477,14 +1480,15 @@
         "march": "$2,164.5B",
         "april": "$2,207.1B",
         "may": "$2,168.5B",
-        "june": "$2,166.5B"
+        "june": "$2,167.7B",
+        "july": "$2,157.6B"
       },
       "id": "construction-spending",
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "Commerce",
       "name": "Construction Spending",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-09-02T14:00:00Z",
       "releaseDay": 2,
       "url": "https://www.census.gov/construction/c30/current/index.html",
       "march": "$2,162B",
@@ -1762,14 +1766,15 @@
         "april": "132,502,000",
         "may": "132,624,000",
         "june": "132,719,000",
-        "july": "132,763,000"
+        "july": "132,765,000",
+        "august": "132,803,000"
       },
       "id": "private-employment",
       "category": "Employment Indicators",
       "color": "#34495e",
       "agency": "ADP",
       "name": "Private Employment",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-09-02T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.adpresearch.com",
       "march": "131,962,000",
@@ -1792,14 +1797,15 @@
         "march": "6,887,000",
         "april": "7,585,000",
         "may": "7,537,000",
-        "june": "7,359,000"
+        "june": "7,182,000",
+        "july": "7,271,000"
       },
       "id": "job-openings",
       "category": "Employment Indicators",
       "color": "#34495e",
       "agency": "BLS",
       "name": "Job Openings",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-09-02T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.bls.gov/jlt/data.htm",
       "march": "6,952,000",

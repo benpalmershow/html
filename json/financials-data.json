@@ -1006,19 +1006,20 @@
     },
     {
       "2026": {
-        "january": "$54,185B",
-        "february": "$54,980B",
-        "march": "$56,585B",
-        "april": "$54,570B",
-        "may": "$77,647B",
-        "june": "$73,261B"
+        "january": "$52,670B",
+        "february": "$52,500B",
+        "march": "$53,657B",
+        "april": "$52,883B",
+        "may": "$75,752B",
+        "june": "$71,182B",
+        "july": "$88,576B"
       },
       "id": "trade-deficit",
       "category": "Trade & Tariffs",
       "color": "#1abc9c",
       "agency": "Census",
       "name": "Trade Deficit",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-9-03T14:00:00Z",
       "releaseDay": 9,
       "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
       "march": "$132,983B",
@@ -1035,12 +1036,13 @@
       "explanation": "The difference between the value of a country's imports and exports of goods and services. A trade deficit occurs when imports exceed exports. The U.S. has run persistent trade deficits since the 1970s, reflecting strong consumer demand and the dollar's role as the global reserve currency. The trade balance is influenced by exchange rates, economic growth differentials, and trade policies. While a trade deficit can indicate economic strength (strong consumer demand), persistent large deficits may raise concerns about domestic manufacturing and job losses in certain sectors.",
       "imports": {
         "2026": {
-          "january": "$353,991B",
-          "february": "$366,783B",
-          "march": "$375,360B",
-          "april": "$382,758B",
-          "may": "$395,280B",
-          "june": "$387,989B"
+          "january": "$353,941B",
+          "february": "$366,127B",
+          "march": "$374,820B",
+          "april": "$382,776B",
+          "may": "$395,731B",
+          "june": "$388,517B",
+          "july": "$399,299B"
         },
         "march": "$420,0B",
         "april": "$352,083B",
@@ -1055,12 +1057,13 @@
       },
       "exports": {
         "2026": {
-          "january": "$299,806B",
-          "february": "$311,803B",
-          "march": "$318,776B",
-          "april": "$328,187B",
-          "may": "$317,633B",
-          "june": "$314,728B"
+          "january": "$301,271B",
+          "february": "$313,628B",
+          "march": "$321,163B",
+          "april": "$329,893B",
+          "may": "$319,979B",
+          "june": "$317,335B",
+          "july": "$310,723B"
         },
         "march": "$283,369B",
         "april": "$290,598B",

@@ -493,7 +493,7 @@
         docRiterCover.className = 'media-cover doc-riter-custom-cover';
         
         const dpIcon = document.createElement('img');
-        dpIcon.src = 'images/logo.webp';
+        dpIcon.src = 'images/announcements.webp';
         dpIcon.className = 'doc-riter-custom-icon';
         dpIcon.alt = '';
         

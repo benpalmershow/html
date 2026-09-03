@@ -36,7 +36,7 @@
     const CACHE_KEY = 'media-data-v5';
     const CACHE_DURATION = 5 * 60 * 1000;
     const BATCH_SIZE = 12;
-    const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video'];
+    const VALID_MEDIA_TYPES = ['movie', 'book', 'podcast', 'playlist', 'album', 'song', 'video', 'art'];
     const PLATFORM_ICONS = {
         spotify: 'spotify-link',
         apple: 'apple-link',
@@ -54,7 +54,8 @@
         'song': 'music',
         'video': 'video',
         'movie': 'film',
-        'album': 'disc'
+        'album': 'disc',
+        'art': 'image'
     };
 
     const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
@@ -112,7 +113,8 @@
             'playlist': '<i data-lucide="list" class="filter-icon"></i>',
             'album': '<i data-lucide="disc" class="filter-icon"></i>',
             'song': '<i data-lucide="music" class="filter-icon"></i>',
-            'video': '<i data-lucide="video" class="filter-icon"></i>'
+            'video': '<i data-lucide="video" class="filter-icon"></i>',
+            'art': '<i data-lucide="image" class="filter-icon"></i>'
         };
 
         const typeLabel = {
@@ -123,7 +125,8 @@
             'playlist': 'Playlists',
             'album': 'Albums',
             'song': 'Songs',
-            'video': 'Videos'
+            'video': 'Videos',
+            'art': 'Art'
         };
 
         filterButtonsContainer.innerHTML = '';
@@ -765,7 +768,89 @@
         }
     }
 
-    
+    function openArtLightbox(src, alt) {
+        const lightbox = document.getElementById('art-lightbox');
+        const img = document.getElementById('art-lightbox-img');
+        const closeBtn = document.getElementById('art-lightbox-close');
+
+        if (!lightbox || !img) return;
+
+        img.src = src;
+        img.alt = alt || '';
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        closeBtn.focus();
+    }
+
+    function closeArtLightbox() {
+        const lightbox = document.getElementById('art-lightbox');
+        const img = document.getElementById('art-lightbox-img');
+
+        if (!lightbox || !img) return;
+
+        lightbox.style.display = 'none';
+        img.src = '';
+        document.body.style.overflow = '';
+    }
+
+    function setupArtLightbox() {
+        const lightbox = document.getElementById('art-lightbox');
+        const closeBtn = document.getElementById('art-lightbox-close');
+
+        if (!lightbox || !closeBtn) return;
+
+        closeBtn.addEventListener('click', () => {
+            closeArtLightbox();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeArtLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                closeArtLightbox();
+            }
+        });
+    }
+
+    function attachArtCardClicks() {
+        document.querySelectorAll('.media-card[data-media-type="art"]').forEach(card => {
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.style.cursor = 'pointer';
+
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.action-btn') || e.target.closest('a')) return;
+
+                const coverImg = card.querySelector('.media-cover img');
+                const src = coverImg ? coverImg.src : '';
+                const alt = coverImg ? coverImg.alt : '';
+                if (src) openArtLightbox(src, alt);
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const coverImg = card.querySelector('.media-cover img');
+                    const src = coverImg ? coverImg.src : '';
+                    const alt = coverImg ? coverImg.alt : '';
+                    if (src) openArtLightbox(src, alt);
+                }
+            });
+        });
+    }
+
+    const originalRenderMediaCards = renderMediaCards;
+    renderMediaCards = function(items) {
+        originalRenderMediaCards(items);
+        attachArtCardClicks();
+    };
+
+    setupArtLightbox();
 
 // Use passive event listeners for better scroll performance
 

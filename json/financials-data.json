@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-03T00:43:57.996Z",
+  "lastUpdated": "2026-09-04T00:43:57.996Z",
   "indices": [
     { 
       "id": "strait-of-hormuz-traffic",
@@ -1895,15 +1895,16 @@
         "march": "158,650,000",
         "april": "158,798,000",
         "may": "158,861,000",
-        "june": "158,881,000",
-        "july": "158,858,000"
+        "june": "158,892,000",
+        "july": "158,913,000",
+        "august": "159,075,000"
       },
       "id": "total-nonfarm-employment",
       "category": "Employment Indicators",
       "color": "#34495e",
       "agency": "FRED",
       "name": "Total Nonfarm Employment",
-      "lastUpdated": "2026-08-07T15:00:00Z",
+      "lastUpdated": "2026-09-04T15:00:00Z",
       "releaseDay": 5,
       "url": "https://fred.stlouisfed.org/series/PAYEMS",
       "february": "158,310,000",

@@ -60,7 +60,7 @@
 
     const X_LINK_SVG = `<svg viewBox="0 0 120 120" width="1.1em" height="1.1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;"><path d="M85.5 34H99L74.5 62.5L102 99H80.5L62.5 76.5L41.5 99H28L54.5 68.5L28 34H50L66 54.5L85.5 34ZM81.5 92H87.5L49 41H42.5L81.5 92Z" fill="white"/></svg>`;
 
-    const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222C5F5A%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ELand Unknown%3C/text%3E%3C/svg%3E';
+    const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%222a2a2a%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22FFFFFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ECover Unavailable%3C/text%3E%3C/svg%3E';
 
     function openDB() {
         return new Promise((resolve, reject) => {
@@ -474,9 +474,7 @@
             }
         }, { passive: true });
 
-        if (item.mediaType === 'podcast' && item.author?.includes('Doc Riter')) {
-            renderDocRiterCover(coverContainer, item);
-        } else if (item.mediaType === 'playlist') {
+        if (item.mediaType === 'playlist') {
             renderPlaylistCover(coverContainer, item);
         } else {
             coverContainer.appendChild(coverImg);
@@ -486,30 +484,6 @@
         card.appendChild(overlay);
 
         return card;
-    }
-
-    function renderDocRiterCover(container, item) {
-        const docRiterCover = document.createElement('div');
-        docRiterCover.className = 'media-cover doc-riter-custom-cover';
-        
-        const dpIcon = document.createElement('img');
-        dpIcon.src = 'images/announcements.webp';
-        dpIcon.className = 'doc-riter-custom-icon';
-        dpIcon.alt = '';
-        
-        const dpDate = document.createElement('div');
-        dpDate.className = 'doc-riter-custom-date';
-        
-        let dateText = item.date || item.dateAdded || '';
-        const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        if (item.title && months.some(m => item.title.includes(m))) {
-            dateText = item.title;
-        }
-        dpDate.textContent = dateText;
-        
-        docRiterCover.appendChild(dpIcon);
-        docRiterCover.appendChild(dpDate);
-        container.appendChild(docRiterCover);
     }
 
     function renderPlaylistCover(container, item) {

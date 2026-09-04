@@ -435,6 +435,8 @@
     .media-description { font-size: 0.85rem; line-height: 1.4; }
     .media-author { font-size: 0.9rem; }
     .media-date-bottom { font-size: 0.65rem; }
+    .media-songs-header { font-size: 0.7rem; }
+    .media-song-item { font-size: 0.8rem; }
     
     .corner-action { padding: 0.35rem; }
     .action-btn { height: 20px; min-width: 20px; padding: 1px 2px; border-radius: 2px; font-size: 0.55em;}
@@ -448,6 +450,8 @@
     .media-description { font-size: 0.85rem; line-height: 1.4; hyphens: none; }
     .media-author { font-size: 0.8rem; }
     .media-date-bottom { font-size: 0.6rem; padding: 0.15rem 0; }
+    .media-songs-header { font-size: 0.65rem; }
+    .media-song-item { font-size: 0.75rem; }
 
     .corner-action { padding: 0.25rem; }
     .action-btn { height: 18px; min-width: 18px; padding: 1px 2px; border-radius: 2px; font-size: 0.5em;}
@@ -491,6 +495,48 @@
 
 .media-highlight-link:hover {
   opacity: 1;
+}
+
+/* Playlist Songs List */
+.media-songs {
+  margin-top: 0.75rem;
+  order: 5;
+}
+
+.media-songs-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+}
+
+.media-songs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.media-song-item {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-light);
+  opacity: 0.9;
+  padding-left: 0.75rem;
+  position: relative;
+}
+
+.media-song-item::before {
+  content: '♪';
+  position: absolute;
+  left: 0;
+  opacity: 0.6;
+  font-size: 0.75rem;
 }
 
 

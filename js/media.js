@@ -514,6 +514,7 @@
 
     function renderPlaylistCover(container, item) {
         const plCover = document.createElement('div');
+        const month = item.date ? item.date.split(' ')[0] : '';
         plCover.className = 'media-cover playlist-custom-cover';
 
         const plIcon = document.createElement('img');
@@ -527,6 +528,16 @@
 
         plCover.appendChild(plIcon);
         plCover.appendChild(plTitle);
+
+        if (month) {
+            const monthAbbr = month.slice(0, 3).toUpperCase();
+            const monthBg = document.createElement('div');
+            monthBg.className = 'playlist-month-bg';
+            monthBg.textContent = monthAbbr;
+            monthBg.setAttribute('aria-hidden', 'true');
+            plCover.insertBefore(monthBg, plTitle);
+        }
+
         container.appendChild(plCover);
     }
 
@@ -634,6 +645,26 @@
             dateElement.className = 'media-date-bottom';
             dateElement.textContent = item.date;
             overlayContent.appendChild(dateElement);
+        }
+
+        // Playlist Songs
+        if (item.mediaType === 'playlist' && item.songs?.length > 0) {
+            const songsList = document.createElement('div');
+            songsList.className = 'media-songs';
+            const songsHeader = document.createElement('div');
+            songsHeader.className = 'media-songs-header';
+            songsHeader.textContent = 'Songs';
+            songsList.appendChild(songsHeader);
+            const songsUl = document.createElement('ul');
+            songsUl.className = 'media-songs-list';
+            item.songs.forEach(song => {
+                const li = document.createElement('li');
+                li.className = 'media-song-item';
+                li.textContent = song;
+                songsUl.appendChild(li);
+            });
+            songsList.appendChild(songsUl);
+            overlayContent.appendChild(songsList);
         }
 
         // Stars Rating

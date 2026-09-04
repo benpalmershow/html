@@ -340,7 +340,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(145deg, #1a3c39 0%, var(--color-primary, #2c5f5a) 50%, #0f2421 100%);
+        background: linear-gradient(145deg, #1f2937 0%, #111827 50%, #1f2937 100%);
         color: white;
         text-align: center;
         padding: 1rem 1rem 1rem 1rem;
@@ -357,6 +357,22 @@
         inset: 0;
         background: radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.04) 0%, transparent 60%);
         pointer-events: none;
+    }
+
+    .playlist-month-bg {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display, inherit);
+        font-size: 7rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.04);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+        letter-spacing: 0.05em;
     }
 
     .playlist-custom-title {

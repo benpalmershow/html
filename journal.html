@@ -61,13 +61,25 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
       <div class="filter-bar-search" id="filterBarSearch">
-        <input type="text" id="journalSearch" class="indicator-search" placeholder="Search journal..." autocomplete="off">
+        <input type="text" id="journalSearch" class="indicator-search" placeholder="Search journal or #tag (#video, #financials)..." autocomplete="off">
       </div>
       <div class="filters" id="filter-buttons">
         <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
         <div class="skeleton-filter-btn" style="width: 70px; height: 42px;"></div>
         <div class="skeleton-filter-btn" style="width: 90px; height: 42px;"></div>
         <div class="skeleton-filter-btn" style="width: 60px; height: 42px;"></div>
+      </div>
+    </div>
+
+    <div class="sub-filter-bar" id="subFilterBar" style="display: none;" aria-label="Secondary filters">
+      <div class="sub-filters" id="subFilterButtons"></div>
+    </div>
+    <div class="active-filter-bar" id="activeFilterBar" style="display: none;">
+      <div class="active-tag-chip" id="activeTagChip">
+        <span id="activeTagText">#tag</span>
+        <button type="button" id="clearActiveTagBtn" aria-label="Clear active tag filter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </div>
     </div>
 
@@ -365,6 +377,15 @@
         if (entry.category) {
           div.dataset.category = entry.category;
         }
+        if (entry.subcategory) {
+          div.dataset.subcategory = entry.subcategory;
+        }
+        if (Array.isArray(entry.tags) && entry.tags.length > 0) {
+          div.dataset.tags = entry.tags.join(' ');
+        }
+        if (entry.type) {
+          div.dataset.type = entry.type;
+        }
         const headEl = document.createElement('div');
         headEl.className = 'entry-head' + (hasToggle ? ' has-toggle' : '');
         const titleEl = document.createElement('span');
@@ -439,6 +460,38 @@
           });
         }
         div.appendChild(headEl);
+
+        // Tags and subcategory metadata strip
+        if (entry.subcategory || (Array.isArray(entry.tags) && entry.tags.length > 0)) {
+          const tagsEl = document.createElement('div');
+          tagsEl.className = 'entry-tags';
+          if (entry.subcategory) {
+            const subPill = document.createElement('span');
+            subPill.className = 'entry-subcat-pill';
+            subPill.textContent = entry.subcategory.replace(/-/g, ' ');
+            tagsEl.appendChild(subPill);
+          }
+          const tagIcons = {
+            'financials': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>',
+            'media': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>',
+            'video': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>',
+            'external': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>'
+          };
+          if (Array.isArray(entry.tags)) {
+            entry.tags.forEach(tag => {
+              const chip = document.createElement('button');
+              chip.type = 'button';
+              chip.className = 'entry-tag-chip' + (tagIcons[tag] ? ' tag-' + tag : '');
+              chip.dataset.tag = tag;
+              const iconHtml = tagIcons[tag] || '';
+              chip.innerHTML = iconHtml + '#' + escapeHtml(tag);
+              chip.setAttribute('aria-label', 'Filter by tag #' + tag);
+              tagsEl.appendChild(chip);
+            });
+          }
+          div.appendChild(tagsEl);
+        }
+
         if (hasContent && !hasToggle) {
           const contentEl = document.createElement('div');
           contentEl.className = 'entry-content';

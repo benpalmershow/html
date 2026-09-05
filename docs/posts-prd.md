@@ -29,9 +29,12 @@ Journal entries are stored in `json/journal.json` as a JSON array sorted by date
     "date": "MM/DD/YY",
     "entries": [
       {
-        "title": "📰 Title",
+        "title": "📰 Title Here",
         "content": "Short commentary with optional <a href='article/example.html' target='_blank' rel='noopener noreferrer'>link</a>.",
-        "link": "https://external.url"  // optional
+        "category": "society",
+        "subcategory": "digital-life",
+        "tags": ["screentime", "parenting"],
+        "type": "note"
       }
     ]
   }
@@ -42,9 +45,13 @@ Journal entries are stored in `json/journal.json` as a JSON array sorted by date
 
 1. `date` in `MM/DD/YY` format at the group level
 2. `title` for every entry (include emoji prefix)
-3. Optional `content` for body copy, links, or context
-4. Valid HTML for any inline links
-5. Array sorted newest-first (newest date block at top of file)
+3. `category` - One of the 5 canonical pillars: `economy`, `policy`, `trade`, `society`, `dispatches`
+4. `subcategory` - Focused sub-topic (e.g., `tariffs`, `housing`, `indicators`, `markets`, `fiscal`, `digital-life`, `personal`, `verse`)
+5. `tags` - Array of lowercase kebab-case semantic tags (e.g., `["tariffs", "manufacturing"]`)
+6. `type` - Content format: `note` (short inline text), `essay` (markdown file), `data` (chart/indicator/odds), `curation` (link/rec), `verse` (poetry)
+7. Optional `content` for body copy, links, or context (or `file` for markdown essays)
+8. Valid HTML for any inline links
+9. Array sorted newest-first (newest date block at top of file)
 
 ### Formatting standards
 

@@ -1,67 +1,145 @@
 // Journal Filter Bar Logic
-// Handles category filtering for journal entries based on frontmatter categories
-// Follows the same pattern as financials filters.js
-
+// Handles 3-tier categorization: Macro Pillars, Subcategories, and Cross-Cutting Tags
 (function() {
     'use strict';
 
-    let currentCategory = 'all';
+    // 5 Core Editorial Pillars
+    const PILLARS = [
+        { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' },
+        { id: 'latest', name: 'Latest', icon: '<i data-lucide="clock" class="filter-icon"></i>', isLatest: true },
+        { id: 'economy', name: 'Economy & Markets', icon: '<i data-lucide="trending-up" class="filter-icon"></i>' },
+        { id: 'policy', name: 'State & Law', icon: '<i data-lucide="landmark" class="filter-icon"></i>' },
+        { id: 'trade', name: 'Trade & Industry', icon: '<i data-lucide="ship" class="filter-icon"></i>' },
+        { id: 'society', name: 'Living & Society', icon: '<i data-lucide="users" class="filter-icon"></i>' },
+        { id: 'dispatches', name: 'Dispatches & Culture', icon: '<i data-lucide="book-open" class="filter-icon"></i>' }
+    ];
 
-    // Category icons mapping
-    const categoryIcons = {
-        'business': '<i data-lucide="briefcase" class="filter-icon"></i>',
-        'consumer': '<i data-lucide="shopping-cart" class="filter-icon"></i>',
-        'corrections': '<i data-lucide="alert-triangle" class="filter-icon"></i>',
-        'docs': '<i data-lucide="file-text" class="filter-icon"></i>',
-        'earnings': '<i data-lucide="circle-dollar-sign" class="filter-icon"></i>',
-        'economic': '<i data-lucide="trending-up" class="filter-icon"></i>',
-        'employment': '<i data-lucide="users" class="filter-icon"></i>',
-        'government': '<i data-lucide="landmark" class="filter-icon"></i>',
-        'healthcare': '<i data-lucide="heart-pulse" class="filter-icon"></i>',
-        'housing': '<i data-lucide="home" class="filter-icon"></i>',
-        'ipo': '<i data-lucide="rocket" class="filter-icon"></i>',
-        'journal': '<i data-lucide="book-open" class="filter-icon"></i>',
-        'legal': '<i data-lucide="scale" class="filter-icon"></i>',
-        'media': '<i data-lucide="play-circle" class="filter-icon"></i>',
-        'poem': '<i data-lucide="feather" class="filter-icon"></i>',
-        'policy': '<i data-lucide="scroll" class="filter-icon"></i>',
-        'political': '<i data-lucide="vote" class="filter-icon"></i>',
-        'prediction': '<i data-lucide="target" class="filter-icon"></i>',
-        'trade': '<i data-lucide="ship" class="filter-icon"></i>'
+    // Curated Subcategories per Pillar
+    const SUBCATEGORIES = {
+        'economy': [
+            { id: 'all', name: 'All' },
+            { id: 'indicators', name: 'Indicators' },
+            { id: 'markets', name: 'Markets' },
+            { id: 'corporate', name: 'Corporate & 13F' },
+            { id: 'labor', name: 'Labor' }
+        ],
+        'policy': [
+            { id: 'all', name: 'All' },
+            { id: 'fiscal', name: 'Fiscal & Debt' },
+            { id: 'legal', name: 'Legal & Courts' },
+            { id: 'politics', name: 'Politics' },
+            { id: 'regulatory', name: 'Regulatory' }
+        ],
+        'trade': [
+            { id: 'all', name: 'All' },
+            { id: 'tariffs', name: 'Tariffs' },
+            { id: 'supply-chains', name: 'Supply Chains' },
+            { id: 'manufacturing', name: 'Manufacturing' },
+            { id: 'energy', name: 'Energy' }
+        ],
+        'society': [
+            { id: 'all', name: 'All' },
+            { id: 'housing', name: 'Housing' },
+            { id: 'healthcare', name: 'Healthcare' },
+            { id: 'digital-life', name: 'Digital Life' }
+        ],
+        'dispatches': [
+            { id: 'all', name: 'All' },
+            { id: 'personal', name: 'Personal' },
+            { id: 'curation', name: 'Media Curation' },
+            { id: 'verse', name: 'Verse' },
+            { id: 'critique', name: 'Critique' }
+        ]
     };
 
-    // Extract unique categories from journal data
-    function extractCategories(data) {
-        const categories = new Set();
-        data.forEach(day => {
-            (day.entries || []).forEach(entry => {
-                if (entry.category) {
-                    categories.add(entry.category);
-                }
-            });
+    let currentCategory = 'all';
+    let currentSubcategory = 'all';
+    let currentTag = null;
+    let currentSearch = '';
+
+    function syncURL() {
+        const url = new URL(window.location);
+        if (currentCategory && currentCategory !== 'all') {
+            url.searchParams.set('category', currentCategory);
+        } else {
+            url.searchParams.delete('category');
+        }
+        if (currentSubcategory && currentSubcategory !== 'all') {
+            url.searchParams.set('sub', currentSubcategory);
+        } else {
+            url.searchParams.delete('sub');
+        }
+        if (currentTag) {
+            url.searchParams.set('tag', currentTag);
+        } else {
+            url.searchParams.delete('tag');
+        }
+        window.history.replaceState({}, '', url);
+    }
+
+    function readURL() {
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('category') || params.get('filter');
+        const sub = params.get('sub');
+        const tag = params.get('tag');
+
+        if (cat && (cat === 'latest' || SUBCATEGORIES[cat])) {
+            currentCategory = cat;
+        }
+        if (sub) {
+            currentSubcategory = sub;
+        }
+        if (tag) {
+            currentTag = tag;
+        }
+    }
+
+    function updateActiveTagUI() {
+        const bar = document.getElementById('activeFilterBar');
+        const text = document.getElementById('activeTagText');
+        if (!bar || !text) return;
+
+        if (currentTag) {
+            text.textContent = '#' + currentTag;
+            bar.style.display = 'flex';
+        } else {
+            bar.style.display = 'none';
+        }
+
+        document.querySelectorAll('.entry-tag-chip').forEach(chip => {
+            chip.classList.toggle('active', chip.dataset.tag === currentTag);
         });
-        return Array.from(categories).sort();
     }
 
-    // Create filter button
-    function createFilterBtn(id, icon, text, isLatest = false) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `filter-btn ${id === 'all' ? 'active' : ''}`;
-        btn.dataset.category = id;
-        if (isLatest) btn.dataset.isLatest = 'true';
-        btn.setAttribute('aria-label', `Filter by ${text}`);
-        btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
-        return btn;
+    function updateSubcategoryUI() {
+        const subBar = document.getElementById('subFilterBar');
+        const subContainer = document.getElementById('subFilterButtons');
+        if (!subBar || !subContainer) return;
+
+        if (currentCategory === 'all' || currentCategory === 'latest' || !SUBCATEGORIES[currentCategory]) {
+            subBar.style.display = 'none';
+            subContainer.innerHTML = '';
+            currentSubcategory = 'all';
+            return;
+        }
+
+        const subcats = SUBCATEGORIES[currentCategory];
+        subContainer.innerHTML = '';
+
+        subcats.forEach(sub => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `sub-filter-btn ${currentSubcategory === sub.id ? 'active' : ''}`;
+            btn.dataset.sub = sub.id;
+            btn.textContent = sub.name;
+            subContainer.appendChild(btn);
+        });
+
+        subBar.style.display = 'flex';
     }
 
-    // Filter journal entries by category
-    function filterJournalEntries(category) {
-        currentCategory = category;
-
-        // Get all day sections
+    function filterJournalEntries() {
         const daySections = document.querySelectorAll('.day');
-
         let totalEntries = 0;
         let matchingEntries = 0;
 
@@ -71,14 +149,45 @@
 
             entries.forEach(entry => {
                 totalEntries++;
-                const entryCategory = entry.dataset.category;
-                const matchesCategory = category === 'all' || category === 'latest' || entryCategory === category;
-                if (matchesCategory) matchingEntries++;
-                entry.style.display = matchesCategory ? '' : 'none';
-                if (matchesCategory) hasVisibleEntries = true;
+                const entryCategory = entry.dataset.category || '';
+                const entrySubcategory = entry.dataset.subcategory || '';
+                const entryTags = (entry.dataset.tags || '').split(' ').filter(Boolean);
+                const title = entry.querySelector('.entry-title')?.textContent.toLowerCase() || '';
+                const content = entry.querySelector('.entry-content')?.textContent.toLowerCase() || '';
+
+                // 1. Pillar match
+                const matchesCategory = currentCategory === 'all' || currentCategory === 'latest' || entryCategory === currentCategory;
+
+                // 2. Subcategory match
+                const matchesSubcategory = currentSubcategory === 'all' || entrySubcategory === currentSubcategory;
+
+                // 3. Tag match
+                const matchesTag = !currentTag || entryTags.includes(currentTag);
+
+                // 4. Search match
+                let matchesSearch = true;
+                if (currentSearch) {
+                    const q = currentSearch.toLowerCase().trim();
+                    if (q.startsWith('#')) {
+                        const tagQuery = q.slice(1);
+                        matchesSearch = entryTags.some(t => t.toLowerCase().includes(tagQuery));
+                    } else {
+                        matchesSearch = title.includes(q) ||
+                                        content.includes(q) ||
+                                        entryCategory.includes(q) ||
+                                        entrySubcategory.includes(q) ||
+                                        entryTags.some(t => t.toLowerCase().includes(q));
+                    }
+                }
+
+                const isMatch = matchesCategory && matchesSubcategory && matchesTag && matchesSearch;
+                entry.style.display = isMatch ? '' : 'none';
+                if (isMatch) {
+                    matchingEntries++;
+                    hasVisibleEntries = true;
+                }
             });
 
-            // Hide entire day if no visible entries
             daySection.style.display = hasVisibleEntries ? '' : 'none';
         });
 
@@ -91,38 +200,40 @@
             emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
         }
 
-        // Don't hide load more button when filtering - we need it to load more entries
-        // Only hide it when all entries are actually loaded (when the button naturally disappears)
-        if (loadMoreBtn && (category === 'all' || category === 'latest')) {
+        if (loadMoreBtn && (currentCategory === 'all' || currentCategory === 'latest') && !currentTag && !currentSearch) {
             loadMoreBtn.style.display = hasVisibleEntries ? '' : 'none';
         }
 
-        // If no matching entries and load more button exists, keep loading until found or exhausted
-        if (!hasVisibleEntries && loadMoreBtn && loadMoreBtn.style.display !== 'none' && category !== 'all' && category !== 'latest') {
+        // Auto load more if no matches in current view and more entries exist
+        const isFiltered = currentCategory !== 'all' || currentSubcategory !== 'all' || currentTag || currentSearch;
+        if (!hasVisibleEntries && loadMoreBtn && loadMoreBtn.style.display !== 'none' && isFiltered) {
             const loadUntilFound = () => {
                 if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
                     loadMoreBtn.click();
                     setTimeout(() => {
-                        // Check if we now have matching entries by re-running the filter check
-                        const nowHasMatching = Array.from(document.querySelectorAll('.entry')).some(entry => {
-                            const entryCategory = entry.dataset.category;
-                            return entryCategory === category;
-                        });
-                        if (!nowHasMatching) {
-                            loadUntilFound();
-                        } else {
-                            // Found entries, re-apply filter
-                            filterJournalEntries(category);
-                        }
-                    }, 200);
+                        filterJournalEntries();
+                    }, 150);
                 }
             };
             loadUntilFound();
         }
+
+        updateActiveTagUI();
+        syncURL();
     }
 
-    // Setup filter buttons
-    function setupJournalFilters(data) {
+    function createFilterBtn(id, icon, text, isLatest = false) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `filter-btn ${id === currentCategory ? 'active' : ''}`;
+        btn.dataset.category = id;
+        if (isLatest) btn.dataset.isLatest = 'true';
+        btn.setAttribute('aria-label', `Filter by ${text}`);
+        btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
+        return btn;
+    }
+
+    function setupJournalFilters() {
         const filtersContainer = document.getElementById('journal-filters');
         if (!filtersContainer) return;
 
@@ -131,25 +242,12 @@
 
         buttonsContainer.innerHTML = '';
 
-        const categories = extractCategories(data);
-
-        // Create "All" button
-        const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
-        buttonsContainer.appendChild(allBtn);
-
-        // Create "Latest" button
-        const latestBtn = createFilterBtn('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
-        buttonsContainer.appendChild(latestBtn);
-
-        // Create category buttons (exclude 'docs')
-        categories.forEach(category => {
-            if (category === 'docs') return; // Skip docs category
-            const icon = categoryIcons[category] || '<i data-lucide="tag" class="filter-icon"></i>';
-            const btn = createFilterBtn(category, icon, category.charAt(0).toUpperCase() + category.slice(1));
+        PILLARS.forEach(pillar => {
+            const btn = createFilterBtn(pillar.id, pillar.icon, pillar.name, !!pillar.isLatest);
             buttonsContainer.appendChild(btn);
         });
 
-        // Event delegation for filter clicks
+        // Primary pillar button click
         buttonsContainer.addEventListener('click', function(e) {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
@@ -157,17 +255,76 @@
             buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const category = btn.dataset.category;
-            filterJournalEntries(category);
+            currentCategory = btn.dataset.category;
+            currentSubcategory = 'all';
+
+            updateSubcategoryUI();
+            filterJournalEntries();
+
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
 
-        // Initialize Lucide icons
+        // Subcategory strip button click
+        const subContainer = document.getElementById('subFilterButtons');
+        if (subContainer) {
+            subContainer.addEventListener('click', function(e) {
+                const btn = e.target.closest('.sub-filter-btn');
+                if (!btn) return;
+
+                subContainer.querySelectorAll('.sub-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                currentSubcategory = btn.dataset.sub;
+                filterJournalEntries();
+            });
+        }
+
+        // Active tag dismiss button
+        const clearTagBtn = document.getElementById('clearActiveTagBtn');
+        if (clearTagBtn) {
+            clearTagBtn.addEventListener('click', function() {
+                currentTag = null;
+                filterJournalEntries();
+            });
+        }
+
+        // Feed tag chips click listener (delegated)
+        const feed = document.getElementById('feed');
+        if (feed) {
+            feed.addEventListener('click', function(e) {
+                const chip = e.target.closest('.entry-tag-chip');
+                if (!chip) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                const tag = chip.dataset.tag;
+                if (currentTag === tag) {
+                    currentTag = null; // Toggle off if clicked again
+                } else {
+                    currentTag = tag;
+                }
+
+                filterJournalEntries();
+
+                // Smooth scroll to top of feed
+                const filtersEl = document.getElementById('journal-filters');
+                if (filtersEl) {
+                    filtersEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
+        updateSubcategoryUI();
+        filterJournalEntries();
+
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
     }
 
-    // Setup search functionality
     function setupSearch() {
         const searchToggle = document.getElementById('searchToggle');
         const filterBar = document.getElementById('journal-filters');
@@ -183,57 +340,28 @@
         });
 
         searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-
-            const daySections = document.querySelectorAll('.day');
-
-            daySections.forEach(daySection => {
-                const entries = daySection.querySelectorAll('.entry');
-                let hasVisibleEntries = false;
-
-                entries.forEach(entry => {
-                    const title = entry.querySelector('.entry-title')?.textContent.toLowerCase() || '';
-                    const content = entry.querySelector('.entry-content')?.textContent.toLowerCase() || '';
-                    const entryCategory = entry.dataset.category || '';
-
-                    const matchesSearch = query === '' || title.includes(query) || content.includes(query) || entryCategory.includes(query);
-                    entry.style.display = matchesSearch ? '' : 'none';
-                    if (matchesSearch) hasVisibleEntries = true;
-                });
-
-                daySection.style.display = hasVisibleEntries ? '' : 'none';
-            });
-
-            // Update empty state
-            const emptyEl = document.getElementById('empty');
-            const hasVisibleEntries = document.querySelectorAll('.day[style=""], .day:not([style])').length > 0;
-
-            if (emptyEl) {
-                emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
-            }
+            currentSearch = e.target.value.trim();
+            filterJournalEntries();
         });
 
-        // Close search on escape
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 filterBar.classList.remove('search-open');
                 searchInput.value = '';
-                filterJournalEntries(currentCategory);
+                currentSearch = '';
+                filterJournalEntries();
             }
         });
     }
 
-    // Initialize journal filters
     async function initJournalFilters() {
         try {
-            const response = await fetch('json/journal.json');
-            const journalData = await response.json();
+            readURL();
 
-            // Wait for DOM to be ready and journal entries to be rendered
             const waitForJournal = () => {
                 const feed = document.getElementById('feed');
                 if (feed && feed.children.length > 0) {
-                    setupJournalFilters(journalData);
+                    setupJournalFilters();
                     setupSearch();
                 } else {
                     setTimeout(waitForJournal, 100);
@@ -246,11 +374,10 @@
                 waitForJournal();
             }
         } catch (error) {
-            console.error('Failed to load journal data for filters:', error);
+            console.error('Failed to initialize journal filters:', error);
         }
     }
 
-    // Start initialization
     initJournalFilters();
 
 })();

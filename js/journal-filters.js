@@ -6,7 +6,6 @@
     // 5 Core Editorial Pillars
     const PILLARS = [
         { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' },
-        { id: 'latest', name: 'Latest', icon: '<i data-lucide="clock" class="filter-icon"></i>', isLatest: true },
         { id: 'economy', name: 'Economy & Markets', icon: '<i data-lucide="trending-up" class="filter-icon"></i>' },
         { id: 'policy', name: 'State & Law', icon: '<i data-lucide="landmark" class="filter-icon"></i>' },
         { id: 'trade', name: 'Trade & Industry', icon: '<i data-lucide="ship" class="filter-icon"></i>' },
@@ -83,7 +82,7 @@
         const sub = params.get('sub');
         const tag = params.get('tag');
 
-        if (cat && (cat === 'latest' || SUBCATEGORIES[cat])) {
+        if (cat && SUBCATEGORIES[cat]) {
             currentCategory = cat;
         }
         if (sub) {
@@ -116,7 +115,7 @@
         const subContainer = document.getElementById('subFilterButtons');
         if (!subBar || !subContainer) return;
 
-        if (currentCategory === 'all' || currentCategory === 'latest' || !SUBCATEGORIES[currentCategory]) {
+        if (currentCategory === 'all' || !SUBCATEGORIES[currentCategory]) {
             subBar.style.display = 'none';
             subContainer.innerHTML = '';
             currentSubcategory = 'all';
@@ -156,7 +155,7 @@
                 const content = entry.querySelector('.entry-content')?.textContent.toLowerCase() || '';
 
                 // 1. Pillar match
-                const matchesCategory = currentCategory === 'all' || currentCategory === 'latest' || entryCategory === currentCategory;
+                const matchesCategory = currentCategory === 'all' || entryCategory === currentCategory;
 
                 // 2. Subcategory match
                 const matchesSubcategory = currentSubcategory === 'all' || entrySubcategory === currentSubcategory;
@@ -200,7 +199,7 @@
             emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
         }
 
-        if (loadMoreBtn && (currentCategory === 'all' || currentCategory === 'latest') && !currentTag && !currentSearch) {
+        if (loadMoreBtn && currentCategory === 'all' && !currentTag && !currentSearch) {
             loadMoreBtn.style.display = hasVisibleEntries ? '' : 'none';
         }
 
@@ -222,12 +221,11 @@
         syncURL();
     }
 
-    function createFilterBtn(id, icon, text, isLatest = false) {
+    function createFilterBtn(id, icon, text) {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `filter-btn ${id === currentCategory ? 'active' : ''}`;
         btn.dataset.category = id;
-        if (isLatest) btn.dataset.isLatest = 'true';
         btn.setAttribute('aria-label', `Filter by ${text}`);
         btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
         return btn;
@@ -243,7 +241,7 @@
         buttonsContainer.innerHTML = '';
 
         PILLARS.forEach(pillar => {
-            const btn = createFilterBtn(pillar.id, pillar.icon, pillar.name, !!pillar.isLatest);
+            const btn = createFilterBtn(pillar.id, pillar.icon, pillar.name);
             buttonsContainer.appendChild(btn);
         });
 

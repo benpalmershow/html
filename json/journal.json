@@ -13,6 +13,42 @@
           "screentime"
         ],
         "type": "note"
+      },
+      {
+        "title": "ACLU: License Plate Reader Disclosure",
+        "link": "https://www.aclum.org/press-releases/massachusetts-court-rules-state-police-must-disclose-license-plate-reader-locations-and-audit-records/",
+        "content": "Suffolk Superior Court rules Massachusetts State Police must disclose ALPR camera locations and audit logs (with plate numbers redacted). ACLU sought records for 5 years; MSP invoked critical infrastructure exemptions. 25+ MA municipalities have cancelled Flock contracts.",
+        "category": "policy",
+        "subcategory": "legal",
+        "tags": [
+          "external",
+          "legal"
+        ],
+        "type": "curation"
+      },
+      {
+        "title": "NHTSA Tesla Cybercab Investigation",
+        "link": "https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
+        "content": "NHTSA opened investigation into ~1,000 Tesla Cybercabs after Austin launch. Examining self-certification basis and technical data for FMVSS compliance. Cybercab lacks steering wheel, brake pedal, accelerator pedal, and mirrors.",
+        "category": "policy",
+        "subcategory": "regulatory",
+        "tags": [
+          "external",
+          "regulation"
+        ],
+        "type": "curation"
+      },
+      {
+        "title": "Tesla Cybercab Self-Certification Probe",
+        "link": "https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
+        "content": "Tesla self-certified Cybercab compliance with federal safety standards despite lack of conventional manual controls. NHTSA audit will examine process and determine extent company deemed FMVSS inapplicable. No petition for exemption filed.",
+        "category": "policy",
+        "subcategory": "regulatory",
+        "tags": [
+          "external",
+          "regulation"
+        ],
+        "type": "curation"
       }
     ]
   },
@@ -430,64 +466,7 @@
   },
   {
     "date": "08/03/26",
-    "entries": [
-      {
-        "title": "🎟️ Democratizing Venture (RVII)",
-        "file": "article/docs/2026-08-03-rvii.md",
-        "collapsed": true,
-        "category": "economy",
-        "subcategory": "corporate",
-        "tags": [
-          "corporate"
-        ],
-        "type": "essay"
-      },
-      {
-        "title": "💣 Anti-Weaponization Fund",
-        "content": " Create a bad thing ($1.8B anti-weaponization fund). Use the bad for publicity. Stoke antagonists. Use the bad thing as leverage to get something else. Convert antagonist to form consensus through good faith. Rescind the bad thing. Get the good thing (Senate Confirmation).",
-        "category": "policy",
-        "subcategory": "legal",
-        "tags": [
-          "legal"
-        ],
-        "type": "note"
-      },
-      {
-        "title": "🐑 4th Amendment",
-        "link": "https://maps.deflock.org/",
-        "category": "policy",
-        "subcategory": "legal",
-        "tags": [
-          "constitution",
-          "external",
-          "legal"
-        ],
-        "type": "curation"
-      },
-      {
-        "title": "🇯🇵 164 yen per dollar to 156",
-        "link": "https://www.federalreserve.gov/monetarypolicy/fima-repo-facility-faqs.htm",
-        "category": "economy",
-        "subcategory": "markets",
-        "tags": [
-          "external",
-          "fomc",
-          "markets"
-        ],
-        "type": "curation"
-      },
-      {
-        "title": "🧻 Toilet Paper",
-        "link": "https://en.wikipedia.org/wiki/Hesperaloe",
-        "category": "dispatches",
-        "subcategory": "personal",
-        "tags": [
-          "dispatch",
-          "external"
-        ],
-        "type": "curation"
-      }
-    ]
+    "entries": []
   },
   {
     "date": "08/01/26",
@@ -3721,17 +3700,6 @@
   {
     "date": "03/22/26",
     "entries": [
-      {
-        "title": "Oversight Committee Launches Investigation Into Rampant Taxpayer Fraud in California Hospice Programs",
-        "file": "article/oversight-hospice-fraud.md",
-        "collapsed": true,
-        "category": "society",
-        "subcategory": "healthcare",
-        "tags": [
-          "healthcare"
-        ],
-        "type": "essay"
-      },
       {
         "title": "📰 Due Process For Cheap Labor",
         "content": "Christy Walton, worth $24.3 billion, buys a full page <i>New York Times</i> ad to defend illegal cheap labor in the language of due process. Meanwhile Elon Musk, worth $852 billion, offers to single handedly fund TSA. <a href='https://x.com/mattwalshblog/status/2036426524857881050?s=61' target='_blank' rel='noopener noreferrer'>ICE</a> and TSA do not serve the American public, and neither do Walton or Musk. They all claim to be helping. <a href='https://x.com/elonmusk/status/2035306094281855336?s=61' target='_blank' rel='noopener noreferrer'>Musk post</a>.",
@@ -7081,18 +7049,6 @@
           "policy"
         ],
         "type": "essay"
-      },
-      {
-        "title": "Jobless Claims",
-        "file": "article/posts/2025-11-26-jobless-claims-november.md",
-        "collapsed": true,
-        "time": "18:00",
-        "category": "economy",
-        "subcategory": "labor",
-        "tags": [
-          "labor"
-        ],
-        "type": "essay"
       }
     ]
   },
@@ -7728,20 +7684,7 @@
   },
   {
     "date": "11/02/25",
-    "entries": [
-      {
-        "title": "Trump Interview",
-        "file": "article/doc-riter-trump-interview.md",
-        "collapsed": true,
-        "category": "policy",
-        "subcategory": "politics",
-        "tags": [
-          "politics",
-          "trump"
-        ],
-        "type": "essay"
-      }
-    ]
+    "entries": []
   },
   {
     "date": "10/31/25",
@@ -7788,17 +7731,6 @@
         "subcategory": "personal",
         "tags": [
           "dispatch"
-        ],
-        "type": "essay"
-      },
-      {
-        "title": "consumer confidence",
-        "file": "article/posts/2025-10-29-consumer-confidence.md",
-        "collapsed": true,
-        "category": "economy",
-        "subcategory": "indicators",
-        "tags": [
-          "macro-data"
         ],
         "type": "essay"
       }
@@ -7885,18 +7817,6 @@
     "date": "10/24/25",
     "entries": [
       {
-        "title": "chicago fed survey",
-        "file": "article/posts/2025-10-24-chicago-fed-survey.md",
-        "collapsed": true,
-        "category": "economy",
-        "subcategory": "indicators",
-        "tags": [
-          "fomc",
-          "macro-data"
-        ],
-        "type": "essay"
-      },
-      {
         "title": "housing market indicators",
         "file": "article/posts/2025-10-24-housing-market-indicators.md",
         "collapsed": true,
@@ -7952,17 +7872,6 @@
     "date": "10/22/25",
     "entries": [
       {
-        "title": "Sustainable Abundance",
-        "file": "article/sustainable-abundance.md",
-        "collapsed": true,
-        "category": "policy",
-        "subcategory": "regulatory",
-        "tags": [
-          "regulation"
-        ],
-        "type": "essay"
-      },
-      {
         "title": "navan ipo",
         "file": "article/posts/2025-10-22-navan-ipo.md",
         "collapsed": true,
@@ -8006,18 +7915,6 @@
   {
     "date": "10/20/25",
     "entries": [
-      {
-        "title": "Navan IPO",
-        "file": "article/navan-ipo.md",
-        "collapsed": true,
-        "category": "economy",
-        "subcategory": "corporate",
-        "tags": [
-          "corporate",
-          "ipo"
-        ],
-        "type": "essay"
-      },
       {
         "title": "☁️ AWS Alternatives",
         "content": "Was looking for alternative after AWS. Turns out, competitor also on AWS.",
@@ -8921,17 +8818,6 @@
         "subcategory": "indicators",
         "tags": [
           "macro-data"
-        ],
-        "type": "essay"
-      },
-      {
-        "title": "site update",
-        "file": "article/posts/2025-08-07-site-update.md",
-        "collapsed": true,
-        "category": "dispatches",
-        "subcategory": "personal",
-        "tags": [
-          "dispatch"
         ],
         "type": "essay"
       }

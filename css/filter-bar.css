@@ -187,17 +187,6 @@
     }
 }
 
-/* Financials-specific filter button colors */
-.filters .filter-btn.active[data-category*="employment"] { background: var(--color-category-employment); color: white; border-color: var(--color-category-employment); }
-.filters .filter-btn.active[data-category*="housing"] { background: var(--color-category-housing); color: white; border-color: var(--color-category-housing); }
-.filters .filter-btn.active[data-category*="business"] { background: var(--color-category-business); color: white; border-color: var(--color-category-business); }
-.filters .filter-btn.active[data-category*="consumer"] { background: var(--color-category-consumer); color: white; border-color: var(--color-category-consumer); }
-.filters .filter-btn.active[data-category*="trade"] { background: var(--color-category-trade); color: white; border-color: var(--color-category-trade); }
-.filters .filter-btn.active[data-category="government"] { background: var(--color-category-government); color: white; border-color: var(--color-category-government); }
-.filters .filter-btn.active[data-category*="commodities"] { background: var(--color-category-economic); color: white; border-color: var(--color-category-economic); }
-.filters .filter-btn.active[data-category="healthcare"] { background: var(--color-category-healthcare); color: white; border-color: var(--color-category-healthcare); }
-.filters .filter-btn.active[data-category*="prediction"] { background: var(--color-category-prediction); color: white; border-color: var(--color-category-prediction); }
-.filters .filter-btn.active[data-category*="financial"] { background: var(--color-category-economic); color: white; border-color: var(--color-category-economic); }
 
 @media (max-width: 400px) {
   .filter-bar {

@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="css/theme.css?v=20260614">
   <link rel="stylesheet" href="css/body.css?v=20260614">
   <link rel="stylesheet" href="css/nav.css?v=20260821">
+  <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
   <link rel="preload" href="css/journal.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="css/components/cards.css?v=20260614">
   <link rel="stylesheet" href="css/components/tables.css?v=20260614">
@@ -55,6 +56,21 @@
     </header>
 
   <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
+    <div class="filter-bar" id="journal-filters" aria-label="Filter journal by category">
+      <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="filter-bar-search" id="filterBarSearch">
+        <input type="text" id="journalSearch" class="indicator-search" placeholder="Search journal..." autocomplete="off">
+      </div>
+      <div class="filters" id="filter-buttons">
+        <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 70px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 90px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 60px; height: 42px;"></div>
+      </div>
+    </div>
+
     <div class="content">
       <div id="feed" aria-live="polite"></div>
       <button id="load-more" class="load-more" type="button" title="this is how you curtail engagement farming">Dopamine</button>
@@ -346,6 +362,9 @@
         const hasToggle = hasFile || (hasContent && entry.collapsed);
         const div = document.createElement('div');
         div.className = 'entry';
+        if (entry.category) {
+          div.dataset.category = entry.category;
+        }
         const headEl = document.createElement('div');
         headEl.className = 'entry-head' + (hasToggle ? ' has-toggle' : '');
         const titleEl = document.createElement('span');
@@ -518,5 +537,7 @@
     });
     </script>
     <script src="js/back-to-top.js" data-threshold="300" data-duration="400" data-label="Back to top" data-position="right" defer></script>
+    <script src="js/journal-filters.js" defer></script>
+    <script src="js/lucide-loader.js" defer></script>
   </body>
 </html>

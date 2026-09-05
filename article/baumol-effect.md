@@ -1,7 +1,7 @@
 ---
 title: The Baumol Effect: Why Services Get Expensive
 date: 2026-05-19
-category: economics
+category: economic
 icon: trending-up
 summary: Baumol and Bowen, 1960s: wages in low-productivity sectors (healthcare, education) rise because they compete with high-productivity sectors (tech, manufacturing). Costs climb cumulatively, no productivity gains, wages go up, manufactured goods fall in relative price.
 ---

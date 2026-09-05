@@ -1,6 +1,6 @@
 ---
 date: 2026-04-06T18:30:00Z
-category: economy
+category: economic
 ---
 
 ### <i data-lucide='trending-up' class='post-icon'></i> **The Shrinking Middle Class Myth**

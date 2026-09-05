@@ -1,3 +1,7 @@
+---
+category: media
+---
+
 # Coachella viewers guide
 
 ## Sunday, April 12

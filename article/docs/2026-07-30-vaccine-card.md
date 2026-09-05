@@ -1,3 +1,7 @@
+---
+category: political
+---
+
 Vaccine card, please.
 
 On the advice of counsel, I respectfully decline to answer based upon my rights under the Fifth Amendment to the Constitution.

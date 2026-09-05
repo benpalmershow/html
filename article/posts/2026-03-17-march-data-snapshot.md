@@ -1,5 +1,5 @@
 ---
-category: data
+category: economic
 ---
 
 <i data-lucide='chart-line' class='post-icon'></i> <b>Oil +41%, Recession Odds Climbing</b>

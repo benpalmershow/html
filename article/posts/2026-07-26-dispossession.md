@@ -1,5 +1,6 @@
 ---
 date: 2026-07-26T06:41:00-07:00
+category: political
 ---
 
 There’s another word for dispossession. It’s conquest. And its story is as old as time. And to be honest, it’s a good story (since we have to moralize everything in order to appease the victim trolls who will inevitably shame us).

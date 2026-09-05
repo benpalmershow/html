@@ -1,6 +1,6 @@
 ---
 date: 2026-04-06T18:40:00Z
-category: geopolitics
+category: policy
 ---
 
 ### <i data-lucide='anchor' class='post-icon'></i> **Iran's Strategic Coastline**

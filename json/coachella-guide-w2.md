@@ -1,3 +1,7 @@
+---
+category: media
+---
+
 # Coachella viewers guide - Weekend 2
 
 ## Sunday, April 19

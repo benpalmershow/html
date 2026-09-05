@@ -1,3 +1,7 @@
+---
+category: housing
+---
+
 > *Location is purchasing power.*
 
 From the Bureau of Economic Analysis' 2024 Regional Price Parities Report: **San Jose-Sunnyvale-Santa Clara, CA** metro clocks in at **211.9** (index, US = 100), meaning goods, services, and rent cost more than **twice the national average**. Meanwhile, **Monroe, LA** sits at **42.8** - less than half the national average, and barely one-fifth what a San Jose resident pays.

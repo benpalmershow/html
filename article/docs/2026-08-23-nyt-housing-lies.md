@@ -1,3 +1,7 @@
+---
+category: housing
+---
+
 > *Two irreconcilable visions. The street versus the book. Reality v. theory.*
 
 On one side: a **hard-edged critique** that sees Housing First as a failed, enabling ideology promoted by a sensationalist media. On the other: a **rigorous defense** that frames the policy as evidence-based compassion under attack by reactionary politics.

@@ -106,8 +106,22 @@ function createFECCardHTML(race) {
         : '';
 
     const candidateLinks = (race.candidates || []).map(c => {
-        if (!c.source_url) return '';
-        return `<div><a href="${c.source_url}" target="_blank" rel="noopener noreferrer">${c.name} (FEC)</a></div>`;
+        const coh = c.cash_on_hand_end_period != null
+            ? fmtMoney(parseFloat(c.cash_on_hand_end_period))
+            : null;
+        const coverageDate = c.coverage_end_date
+            ? c.coverage_end_date.slice(0, 7) // "2026-06"
+            : null;
+        const cohLabel = coh && coverageDate
+            ? `CoH ${coh} (${coverageDate})`
+            : coh ? `CoH ${coh}` : '';
+        const link = c.source_url
+            ? `<a href="${c.source_url}" target="_blank" rel="noopener noreferrer">${c.name}</a>`
+            : `<span>${c.name}</span>`;
+        return `<div class="fec-explain-row">
+            <span class="fec-explain-name">${link}</span>
+            ${cohLabel ? `<span class="fec-explain-coh">${cohLabel}</span>` : ''}
+        </div>`;
     }).join('');
 
     const cycleInfo = race.cycle ? `<div><strong>Cycle:</strong> ${race.cycle || '2026'}</div>` : '';

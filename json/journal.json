@@ -1,6 +1,51 @@
 [
   {
-    "date": "09/05/26",
+    "date": "09/06/26",
+    "entries": [
+      {
+        "title": "🗳️ FEC Campaign Finance",
+        "link": "financials.html?filter=FEC%20Campaign%20Finance",
+        "content": "Added live 2026 Senate race fundraising data to Numbers. Seven key races - GA, TX, OH, NC, ME, MI, IA - with total raised, cash on hand, and lean ratings. Updated weekly from the FEC. Talarico outraised Paxton 7:1 in a toss-up. Ossoff has $42.6M CoH. Cooper outraised Whatley 3:1 in a Lean R. The money doesn't always win but it tells you who the donors believe in. <a href='financials.html?filter=FEC%20Campaign%20Finance'>View the data.</a>",
+        "category": "policy",
+        "subcategory": "politics",
+        "tags": [
+          "financials",
+          "politics"
+        ],
+      "type": "data"
+    },
+    {
+      "title": "🛒 $22B Christy Walton tells you to march on Labor Day",
+      "link": "https://en.wikipedia.org/wiki/Christy_Walton",
+      "content": "$22B Christy Walton telling you to March on Labor Day. Full page ad in NYT. She should donate her funds to Walmart employees.",
+      "category": "economy",
+      "subcategory": "corporate",
+      "type": "note",
+      "tags": [
+        "walton",
+        "wealth",
+        "labor",
+        "nyt"
+      ]
+    },
+    {
+      "title": "🕵️ SNAP and Social Security Fraud",
+      "link": "https://www.justice.gov/usao-ma/pr/illegal-alien-sentenced-prison-snap-and-social-security-fraud",
+      "content": "The Boston Globe tells you fraud is not borne out by their experience. But here it is. And it's not just this guy who's figured out how to get free money.",
+      "category": "policy",
+      "subcategory": "legal",
+      "type": "curation",
+      "tags": [
+        "snap",
+        "social-security",
+        "fraud",
+        "immigration"
+      ]
+    }
+  ]
+},
+{
+  "date": "09/05/26",
     "entries": [
       {
         "title": "🤳 Screen Time",

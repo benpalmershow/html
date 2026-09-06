@@ -22,7 +22,6 @@
       "subcategory": "corporate",
       "type": "note",
       "tags": [
-        "walton",
         "wealth",
         "labor",
         "nyt-critique",
@@ -69,7 +68,8 @@
         "subcategory": "legal",
         "tags": [
           "external",
-          "legal"
+          "legal",
+          "privacy"
         ],
         "type": "curation"
       },
@@ -82,7 +82,8 @@
         "subcategory": "regulatory",
         "tags": [
           "external",
-          "regulation"
+          "regulation",
+          "cars"
         ],
         "type": "curation"
       }
@@ -98,7 +99,8 @@
         "subcategory": "curation",
         "tags": [
           "media-rec",
-          "video"
+          "video",
+          "cars"
         ],
         "type": "curation"
       }
@@ -130,7 +132,9 @@
         "category": "economy",
         "subcategory": "indicators",
         "tags": [
-          "macro-data"
+          "macro-data",
+          "overton",
+          "policy"
         ],
         "type": "note"
       },
@@ -142,7 +146,12 @@
         "subcategory": "legal",
         "tags": [
           "external",
-          "legal"
+          "legal",
+          "trade",
+          "venezuela",
+          "oil",
+          "energy"
+      
         ],
         "type": "curation"
       },
@@ -156,7 +165,8 @@
           "external",
           "labor",
           "manufacturing",
-          "tariffs"
+          "tariffs",
+          "overton"
         ],
         "type": "curation"
       }
@@ -172,7 +182,9 @@
         "category": "economy",
         "subcategory": "indicators",
         "tags": [
-          "macro-data"
+          "macro-data",
+          "science",
+          "space"
         ],
         "type": "essay"
       }
@@ -190,7 +202,6 @@
         "tags": [
           "financials",
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "data"
@@ -1616,7 +1627,8 @@
         "subcategory": "fiscal",
         "tags": [
           "fiscal",
-          "grift"
+          "grift",
+          "policy"
         ],
         "type": "note"
       },
@@ -2818,7 +2830,6 @@
         "subcategory": "markets",
         "tags": [
           "hormuz",
-          "odds",
           "prediction-markets"
         ],
         "type": "data"
@@ -2836,7 +2847,6 @@
         "subcategory": "markets",
         "tags": [
           "hormuz",
-          "odds",
           "prediction-markets"
         ],
         "type": "data"
@@ -3006,7 +3016,6 @@
         "subcategory": "markets",
         "tags": [
           "hormuz",
-          "odds",
           "prediction-markets"
         ],
         "type": "note"
@@ -3408,7 +3417,6 @@
         "tags": [
           "financials",
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "data"
@@ -3508,7 +3516,8 @@
         "category": "policy",
         "subcategory": "legal",
         "tags": [
-          "legal"
+          "legal",
+          "scotus"
         ],
         "type": "essay"
       },
@@ -3519,7 +3528,8 @@
         "category": "policy",
         "subcategory": "legal",
         "tags": [
-          "legal"
+          "legal",
+          "scotus"
         ],
         "type": "essay"
       },
@@ -3531,7 +3541,6 @@
         "tags": [
           "financials",
           "hormuz",
-          "odds",
           "prediction-markets"
         ],
         "type": "note"
@@ -3542,7 +3551,8 @@
         "category": "policy",
         "subcategory": "fiscal",
         "tags": [
-          "fiscal"
+          "fiscal",
+          "politics"
         ],
         "type": "note"
       },
@@ -3552,7 +3562,8 @@
         "category": "society",
         "subcategory": "housing",
         "tags": [
-          "housing"
+          "housing",
+          "policy"
         ],
         "type": "note"
       },
@@ -3562,7 +3573,8 @@
         "category": "policy",
         "subcategory": "regulatory",
         "tags": [
-          "regulation"
+          "regulation",
+          "policy"
         ],
         "type": "note"
       },
@@ -3573,7 +3585,8 @@
         "subcategory": "labor",
         "tags": [
           "labor",
-          "waymo"
+          "waymo",
+          "cars"
         ],
         "type": "note"
       },
@@ -3622,7 +3635,8 @@
         "category": "policy",
         "subcategory": "fiscal",
         "tags": [
-          "policy"
+          "policy",
+          "fraud"
         ],
         "type": "note"
       },
@@ -3634,7 +3648,6 @@
         "tags": [
           "financials",
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "data"
@@ -3655,7 +3668,8 @@
         "category": "trade",
         "subcategory": "tariffs",
         "tags": [
-          "tariffs"
+          "tariffs",
+          "trade"
         ],
         "type": "note"
       },
@@ -3715,7 +3729,6 @@
         "subcategory": "markets",
         "tags": [
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "essay"
@@ -4287,7 +4300,6 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
           "prediction-markets"
         ],
         "type": "essay"
@@ -4299,7 +4311,6 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
           "prediction-markets"
         ],
         "type": "essay"
@@ -5046,7 +5057,6 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
           "prediction-markets"
         ],
         "type": "note"
@@ -5575,7 +5585,6 @@
         "subcategory": "markets",
         "tags": [
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "essay"
@@ -5637,8 +5646,8 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
-          "prediction-markets"
+          "prediction-markets",
+          "sports"
         ],
         "type": "essay"
       }
@@ -5804,8 +5813,8 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
-          "prediction-markets"
+          "prediction-markets",
+          "sports"
         ],
         "type": "essay"
       },
@@ -5817,7 +5826,8 @@
         "category": "policy",
         "subcategory": "fiscal",
         "tags": [
-          "fiscal"
+          "fiscal",
+          "nyc"
         ],
         "type": "essay"
       }
@@ -6027,8 +6037,8 @@
         "subcategory": "markets",
         "tags": [
           "fomc",
-          "odds",
-          "prediction-markets"
+          "prediction-markets",
+          "sports"
         ],
         "type": "essay"
       },
@@ -6040,7 +6050,8 @@
         "category": "policy",
         "subcategory": "politics",
         "tags": [
-          "politics"
+          "politics",
+          "prediction-markets"
         ],
         "type": "essay"
       }
@@ -6282,7 +6293,6 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
           "prediction-markets"
         ],
         "type": "note"
@@ -7733,7 +7743,6 @@
         "subcategory": "markets",
         "tags": [
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "essay"
@@ -8082,7 +8091,7 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
+          "sports",
           "prediction-markets"
         ],
         "type": "essay"
@@ -8170,7 +8179,7 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
+          "sports",
           "prediction-markets"
         ],
         "type": "essay"
@@ -8281,7 +8290,7 @@
         "category": "economy",
         "subcategory": "markets",
         "tags": [
-          "odds",
+          "sports",
           "prediction-markets"
         ],
         "type": "essay"
@@ -9097,7 +9106,6 @@
         "subcategory": "markets",
         "tags": [
           "fomc",
-          "odds",
           "prediction-markets"
         ],
         "type": "essay"

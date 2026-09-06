@@ -378,4 +378,5 @@
 
     initJournalFilters();
 
+    window.filterJournalEntries = filterJournalEntries;
 })();

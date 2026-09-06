@@ -524,6 +524,9 @@
         loadMore.classList.toggle('is-visible', renderIndex < allDays.length);
         emptyEl.style.display = allDays.length === 0 ? 'block' : 'none';
         if (window.location.hash) scrollToHash();
+        if (typeof window.filterJournalEntries === 'function') {
+          window.filterJournalEntries();
+        }
       }
       function scrollToHash() {
         const id = window.location.hash.slice(1);

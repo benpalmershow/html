@@ -868,6 +868,16 @@
     min-height: unset;
 }
 
+.fec-data-date {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    margin-left: 0.5em;
+    text-transform: none;
+    vertical-align: middle;
+}
+
 /* Race card header */
 .fec-race-title {
     display: flex;
@@ -1014,4 +1024,16 @@
     font-size: 0.75rem;
     color: var(--text-secondary);
     line-height: 1.4;
+}
+
+/* Per-card updated date */
+.fec-fetch-date {
+    margin-top: 8px;
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.75;
 }

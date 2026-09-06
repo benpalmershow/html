@@ -172,10 +172,11 @@ RACES = [
                 "source_url": "https://www.fec.gov/data/candidate/S6IA00314/",
             },
             {
+                "candidate_id": "S6IA00298",
                 "name": "Josh Turek",
                 "party": "DEM",
                 "incumbent": False,
-                # No FEC candidate_id on file yet for 2026 cycle
+                "source_url": "https://www.fec.gov/data/candidate/S6IA00298/",
             },
         ],
     },

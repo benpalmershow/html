@@ -92,6 +92,15 @@ function createFECCardHTML(race) {
             </div>`;
     }).join('');
 
+    // Show the most recent fetchedAt across all candidates as a single card-level date
+    const latestFetch = (race.candidates || [])
+        .map(c => c.fetchedAt ? new Date(c.fetchedAt) : null)
+        .filter(Boolean)
+        .sort((a, b) => b - a)[0];
+    const cardDate = latestFetch
+        ? latestFetch.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        : null;
+
     const note = race.note
         ? `<div class="fec-race-note">${race.note}</div>`
         : '';
@@ -121,6 +130,7 @@ function createFECCardHTML(race) {
             <div class="indicator-explanation-body">
                 ${note ? `<p style="margin:0 0 6px;">${race.note}</p>` : ''}
                 ${candidateLinks}
+                ${cardDate ? `<div class="fec-fetch-date" style="margin-top:8px;">Updated ${cardDate}</div>` : ''}
             </div>
         </div>
         <div class="indicator-content">
@@ -153,17 +163,13 @@ function initializeFECCards(data, container) {
         container.appendChild(card);
     });
 
-    // Update last-updated timestamp if present
+    // Show data date inside the section header, never touching the main #lastUpdated element
     if (data.lastUpdated) {
-        const el = document.getElementById('lastUpdated');
-        if (el) {
+        const titleEl = document.querySelector('#fec-campaign .category-name');
+        if (titleEl) {
             const d = new Date(data.lastUpdated);
             const formatted = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            // Only update if the FEC filter is currently active to avoid clobbering the main timestamp
-            const cats = document.getElementById('categories');
-            if (cats && cats.dataset.filter === 'FEC Campaign Finance') {
-                el.textContent = `FEC data as of ${formatted}`;
-            }
+            titleEl.innerHTML = `FEC Campaign Finance <span class="fec-data-date">as of ${formatted}</span>`;
         }
     }
 

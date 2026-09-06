@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-06T02:25:08.459568Z",
+  "lastUpdated": "2026-09-06T16:23:58.651172Z",
   "source": "OpenFEC API",
   "source_url": "https://api.open.fec.gov/developers/",
   "cycle": 2026,
@@ -14,18 +14,26 @@
           "name": "Jon Ossoff",
           "party": "DEM",
           "incumbent": true,
-          "fetchedAt": "2026-09-06T01:52:50.800135Z",
+          "source_url": "https://www.fec.gov/data/candidate/S8GA00180/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S8GA00180/"
+          "receipts": 97986263.04,
+          "disbursements": 59730545.53,
+          "cash_on_hand_end_period": "42587451.00",
+          "coverage_end_date": "2026-06-30"
         },
         {
           "candidate_id": "S6GA00390",
           "name": "Mike Collins",
           "party": "REP",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:53:00.871984Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6GA00390/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6GA00390/"
+          "receipts": 7409349.57,
+          "disbursements": 5932538.69,
+          "cash_on_hand_end_period": "2079981.42",
+          "coverage_end_date": "2026-06-30"
         }
       ]
     },
@@ -39,18 +47,26 @@
           "name": "Ken Paxton",
           "party": "REP",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:53:10.954466Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6TX00388/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6TX00388/"
+          "receipts": 9248698.53,
+          "disbursements": 7492915.18,
+          "cash_on_hand_end_period": "1755783.35",
+          "coverage_end_date": "2026-06-30"
         },
         {
           "candidate_id": "S6TX00479",
           "name": "James Talarico",
           "party": "DEM",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:53:21.218248Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6TX00479/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6TX00479/"
+          "receipts": 68555930.42,
+          "disbursements": 47007775.34,
+          "cash_on_hand_end_period": "21548155.08",
+          "coverage_end_date": "2026-06-30"
         }
       ]
     },
@@ -64,18 +80,26 @@
           "name": "Jon Husted",
           "party": "REP",
           "incumbent": true,
-          "fetchedAt": "2026-09-06T01:53:31.277050Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6OH00304/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6OH00304/"
+          "receipts": 14360027.53,
+          "disbursements": 4940716.33,
+          "cash_on_hand_end_period": "9419311.20",
+          "coverage_end_date": "2026-06-30"
         },
         {
           "candidate_id": "S6OH00163",
           "name": "Sherrod Brown",
           "party": "DEM",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:53:41.676545Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6OH00163/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6OH00163/"
+          "receipts": 38566234.1,
+          "disbursements": 22336492.78,
+          "cash_on_hand_end_period": "16229741.32",
+          "coverage_end_date": "2026-06-30"
         }
       ]
     },
@@ -89,18 +113,26 @@
           "name": "Roy Cooper",
           "party": "DEM",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:53:55.462613Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6NC00407/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6NC00407/"
+          "receipts": 34975789.18,
+          "disbursements": 14258221.92,
+          "cash_on_hand_end_period": "20717567.26",
+          "coverage_end_date": "2026-06-30"
         },
         {
           "candidate_id": "S6NC00415",
           "name": "Michael Whatley",
           "party": "REP",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:54:06.774355Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6NC00415/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6NC00415/"
+          "receipts": 11272504.49,
+          "disbursements": 7810806.43,
+          "cash_on_hand_end_period": "3461698.06",
+          "coverage_end_date": "2026-06-30"
         }
       ]
     },
@@ -114,9 +146,13 @@
           "name": "Susan Collins",
           "party": "REP",
           "incumbent": true,
-          "fetchedAt": "2026-09-06T01:54:17.341770Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6ME00159/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6ME00159/"
+          "receipts": 18930077.99,
+          "disbursements": 9187155.05,
+          "cash_on_hand_end_period": "11038115.42",
+          "coverage_end_date": "2026-06-30"
         }
       ]
     },
@@ -130,18 +166,26 @@
           "name": "Mike Rogers",
           "party": "REP",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:54:27.828571Z",
+          "source_url": "https://www.fec.gov/data/candidate/S4MI00595/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S4MI00595/"
+          "receipts": 10898177.09,
+          "disbursements": 6680643.32,
+          "cash_on_hand_end_period": "4473237.49",
+          "coverage_end_date": "2026-07-15"
         },
         {
           "candidate_id": "S6MI00418",
           "name": "Abdul El-Sayed",
           "party": "DEM",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T01:54:38.342063Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6MI00418/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6MI00418/"
+          "receipts": 14514335.93,
+          "disbursements": 11961573.38,
+          "cash_on_hand_end_period": "2552762.55",
+          "coverage_end_date": "2026-07-15"
         }
       ]
     },
@@ -155,16 +199,26 @@
           "name": "Ashley Hinson",
           "party": "REP",
           "incumbent": false,
-          "fetchedAt": "2026-09-06T02:24:47.068042Z",
+          "source_url": "https://www.fec.gov/data/candidate/S6IA00314/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
           "source": "OpenFEC API",
-          "source_url": "https://www.fec.gov/data/candidate/S6IA00314/"
+          "receipts": 10217845.39,
+          "disbursements": 5396429.3,
+          "cash_on_hand_end_period": "6749491.49",
+          "coverage_end_date": "2026-06-30"
         },
         {
           "candidate_id": "S6IA00298",
           "name": "Josh Turek",
           "party": "DEM",
           "incumbent": false,
-          "source_url": "https://www.fec.gov/data/candidate/S6IA00298/"
+          "source_url": "https://www.fec.gov/data/candidate/S6IA00298/",
+          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "source": "OpenFEC API",
+          "receipts": 6276526.9,
+          "disbursements": 3914213.12,
+          "cash_on_hand_end_period": "2362313.78",
+          "coverage_end_date": "2026-06-30"
         }
       ]
     }

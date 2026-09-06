@@ -83,6 +83,14 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         return;
     }
 
+    if (filterCategory === 'FEC Campaign Finance') {
+        indicatorContainer.innerHTML = '';
+        ensureLoadFEC();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        makeCardsFocusable(document.getElementById('categories'));
+        return;
+    }
+
     let categories = [...new Set(financialData.indices.map(item => item.category))];
 
     let html = '';
@@ -509,6 +517,10 @@ function initializeDashboard() {
         initialFilter = '13F Holdings';
     }
 
+    if (window.location.hash === '#fec-campaign-anchor') {
+        initialFilter = 'FEC Campaign Finance';
+    }
+
     const cat = isLatest ? 'latest' : initialFilter;
     setActiveFilter(cat);
     renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
@@ -551,6 +563,17 @@ function ensureLoad13F() {
     if (DashboardState.is13FLoaded()) return;
     DashboardState.mark13FLoaded();
     if (typeof load13FData === 'function') load13FData();
+}
+
+/* =========================================
+   FEC Lazy Loading (SRP)
+   ========================================= */
+
+let _fecLoaded = false;
+function ensureLoadFEC() {
+    if (_fecLoaded) return;
+    _fecLoaded = true;
+    if (typeof loadFECData === 'function') loadFECData();
 }
 
 /* =========================================

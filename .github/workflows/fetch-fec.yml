@@ -1,0 +1,55 @@
+name: Fetch FEC Campaign Finance
+
+on:
+  schedule:
+    # Weekly on Mondays at 8am UTC (covers weekend FEC filing activity)
+    - cron: '0 8 * * 1'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-fec
+  cancel-in-progress: false
+
+jobs:
+  fetch-fec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch FEC candidate totals
+        env:
+          FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+        run: |
+          if [ -z "$FEC_API_KEY" ]; then
+            echo "FEC_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_fec.py
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/fec-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/fec-data.json
+          if git diff --staged --quiet; then
+            echo "No FEC data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update FEC campaign finance data [skip ci]"
+          git push

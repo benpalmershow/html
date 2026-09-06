@@ -500,22 +500,33 @@
    ========================================= */
 
 #latest-13f-filings-anchor { display: block; pointer-events: none; }
+#fec-campaign-anchor { display: block; pointer-events: none; }
 #categories #latest-13f-filings,
-#categories #world-cup { display: block; }
+#categories #world-cup,
+#categories #fec-campaign { display: block; }
 
-/* When a specific data category is active: hide 13F and World Cup */
-#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]) #latest-13f-filings,
-#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]) #world-cup { display: none; }
+/* When a specific data category is active: hide 13F, World Cup, and FEC */
+#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="FEC Campaign Finance"]) #latest-13f-filings,
+#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="FEC Campaign Finance"]) #world-cup,
+#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="FEC Campaign Finance"]) #fec-campaign { display: none; }
 
 /* When 13F filter is active: show only 13F, hide everything else */
 #categories[data-filter="13F Holdings"] #indicator-categories,
-#categories[data-filter="13F Holdings"] #world-cup { display: none; }
+#categories[data-filter="13F Holdings"] #world-cup,
+#categories[data-filter="13F Holdings"] #fec-campaign { display: none; }
 #categories[data-filter="13F Holdings"] #latest-13f-filings { display: block; }
 
 /* When World Cup filter is active: show only World Cup, hide everything else */
 #categories[data-filter="World Cup"] #indicator-categories,
-#categories[data-filter="World Cup"] #latest-13f-filings { display: none; }
+#categories[data-filter="World Cup"] #latest-13f-filings,
+#categories[data-filter="World Cup"] #fec-campaign { display: none; }
 #categories[data-filter="World Cup"] #world-cup { display: block; }
+
+/* When FEC filter is active: show only FEC, hide everything else */
+#categories[data-filter="FEC Campaign Finance"] #indicator-categories,
+#categories[data-filter="FEC Campaign Finance"] #latest-13f-filings,
+#categories[data-filter="FEC Campaign Finance"] #world-cup { display: none; }
+#categories[data-filter="FEC Campaign Finance"] #fec-campaign { display: block; }
 
 /* ========================================
    POLL TABLE STYLES
@@ -847,3 +858,160 @@
 }
 
 #firmCardsContainer { min-height: 400px; }
+
+/* ========================================
+   FEC CAMPAIGN FINANCE STYLES
+   ======================================== */
+
+.category[data-category="FEC Campaign Finance"] .indicators-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    min-height: unset;
+}
+
+/* Race card header */
+.fec-race-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.fec-state-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.fec-race-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Lean badge */
+.fec-lean-badge {
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    line-height: 1;
+    white-space: nowrap;
+    align-self: flex-start;
+}
+
+.fec-lean-tossup {
+    background: rgba(250, 204, 21, 0.18);
+    color: #b45309;
+    border: 1px solid rgba(250, 204, 21, 0.5);
+}
+
+.dark-mode .fec-lean-tossup {
+    color: #fde68a;
+    background: rgba(250, 204, 21, 0.12);
+}
+
+.fec-lean-r {
+    background: rgba(220, 38, 38, 0.1);
+    color: #b91c1c;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.dark-mode .fec-lean-r {
+    color: #fca5a5;
+    background: rgba(220, 38, 38, 0.12);
+}
+
+.fec-lean-d {
+    background: rgba(37, 99, 235, 0.1);
+    color: #1d4ed8;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+.dark-mode .fec-lean-d {
+    color: #93c5fd;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+/* Candidate rows */
+.fec-candidates {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.fec-candidate-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.fec-party-chip {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.02em;
+}
+
+.fec-candidate-name {
+    flex: 1;
+    min-width: 0;
+    color: var(--text-primary);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fec-candidate-name a.fec-source-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    transition: color 0.15s ease;
+}
+
+.fec-candidate-name a.fec-source-link:hover {
+    color: var(--logo-teal);
+    text-decoration: underline;
+    background: none;
+}
+
+.fec-incumbent {
+    display: inline-block;
+    font-size: 0.5rem;
+    color: var(--logo-teal);
+    margin-left: 5px;
+    vertical-align: middle;
+    opacity: 0.85;
+}
+
+/* Race note */
+.fec-race-note {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}

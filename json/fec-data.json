@@ -1,0 +1,170 @@
+{
+  "lastUpdated": "2026-09-06T02:25:08.459568Z",
+  "source": "OpenFEC API",
+  "source_url": "https://api.open.fec.gov/developers/",
+  "cycle": 2026,
+  "races": [
+    {
+      "state": "GA",
+      "label": "Georgia Senate",
+      "note": "Toss-up. Ossoff (D) incumbent vs. Collins (R).",
+      "candidates": [
+        {
+          "candidate_id": "S8GA00180",
+          "name": "Jon Ossoff",
+          "party": "DEM",
+          "incumbent": true,
+          "fetchedAt": "2026-09-06T01:52:50.800135Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S8GA00180/"
+        },
+        {
+          "candidate_id": "S6GA00390",
+          "name": "Mike Collins",
+          "party": "REP",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:53:00.871984Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6GA00390/"
+        }
+      ]
+    },
+    {
+      "state": "TX",
+      "label": "Texas Senate",
+      "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
+      "candidates": [
+        {
+          "candidate_id": "S6TX00388",
+          "name": "Ken Paxton",
+          "party": "REP",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:53:10.954466Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6TX00388/"
+        },
+        {
+          "candidate_id": "S6TX00479",
+          "name": "James Talarico",
+          "party": "DEM",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:53:21.218248Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6TX00479/"
+        }
+      ]
+    },
+    {
+      "state": "OH",
+      "label": "Ohio Senate (Special)",
+      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
+      "candidates": [
+        {
+          "candidate_id": "S6OH00304",
+          "name": "Jon Husted",
+          "party": "REP",
+          "incumbent": true,
+          "fetchedAt": "2026-09-06T01:53:31.277050Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6OH00304/"
+        },
+        {
+          "candidate_id": "S6OH00163",
+          "name": "Sherrod Brown",
+          "party": "DEM",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:53:41.676545Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6OH00163/"
+        }
+      ]
+    },
+    {
+      "state": "NC",
+      "label": "North Carolina Senate",
+      "note": "Lean R. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+      "candidates": [
+        {
+          "candidate_id": "S6NC00407",
+          "name": "Roy Cooper",
+          "party": "DEM",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:53:55.462613Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6NC00407/"
+        },
+        {
+          "candidate_id": "S6NC00415",
+          "name": "Michael Whatley",
+          "party": "REP",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:54:06.774355Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6NC00415/"
+        }
+      ]
+    },
+    {
+      "state": "ME",
+      "label": "Maine Senate",
+      "note": "Lean R. Collins (R) incumbent vs. Jackson (D).",
+      "candidates": [
+        {
+          "candidate_id": "S6ME00159",
+          "name": "Susan Collins",
+          "party": "REP",
+          "incumbent": true,
+          "fetchedAt": "2026-09-06T01:54:17.341770Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6ME00159/"
+        }
+      ]
+    },
+    {
+      "state": "MI",
+      "label": "Michigan Senate",
+      "note": "Lean D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+      "candidates": [
+        {
+          "candidate_id": "S4MI00595",
+          "name": "Mike Rogers",
+          "party": "REP",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:54:27.828571Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S4MI00595/"
+        },
+        {
+          "candidate_id": "S6MI00418",
+          "name": "Abdul El-Sayed",
+          "party": "DEM",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T01:54:38.342063Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6MI00418/"
+        }
+      ]
+    },
+    {
+      "state": "IA",
+      "label": "Iowa Senate",
+      "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
+      "candidates": [
+        {
+          "candidate_id": "S6IA00314",
+          "name": "Ashley Hinson",
+          "party": "REP",
+          "incumbent": false,
+          "fetchedAt": "2026-09-06T02:24:47.068042Z",
+          "source": "OpenFEC API",
+          "source_url": "https://www.fec.gov/data/candidate/S6IA00314/"
+        },
+        {
+          "name": "Josh Turek",
+          "party": "DEM",
+          "incumbent": false
+        }
+      ]
+    }
+  ]
+}

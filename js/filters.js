@@ -15,7 +15,8 @@ const categoryIcons = {
     'Commodities': '<i data-lucide="package" class="filter-icon"></i>',
     'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>',
     'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>',
-    'Earnings': '<i data-lucide="circle-dollar-sign" class="filter-icon"></i>'
+    'Earnings': '<i data-lucide="circle-dollar-sign" class="filter-icon"></i>',
+    'FEC Campaign Finance': '<i data-lucide="vote" class="filter-icon"></i>'
 };
 
 /* =========================================
@@ -88,6 +89,9 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
 
       const th13fBtn = createFilterBtn('13F Holdings', '<i data-lucide="building-2" class="filter-icon"></i>', '13F Holdings');
       buttonsContainer.appendChild(th13fBtn);
+
+      const fecBtn = createFilterBtn('FEC Campaign Finance', '<i data-lucide="vote" class="filter-icon"></i>', 'FEC');
+      buttonsContainer.appendChild(fecBtn);
 
       // Use event delegation on the buttons container
      buttonsContainer.addEventListener('click', function (e) {

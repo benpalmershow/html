@@ -98,7 +98,6 @@
         "category": "dispatches",
         "subcategory": "curation",
         "tags": [
-          "media-rec",
           "video",
           "cars"
         ],
@@ -1937,7 +1936,8 @@
         "subcategory": "curation",
         "tags": [
           "media",
-          "media-rec"
+          "media-rec",
+          "scotus"
         ],
         "type": "curation"
       },
@@ -1997,7 +1997,8 @@
         "category": "dispatches",
         "subcategory": "personal",
         "tags": [
-          "dispatch"
+          "dispatch",
+          "venezuela"
         ],
         "type": "note"
       },
@@ -2022,7 +2023,9 @@
         "subcategory": "regulatory",
         "tags": [
           "external",
-          "regulation"
+          "regulation",
+          "AI",
+          "immigration"
         ],
         "type": "curation"
       }
@@ -2055,7 +2058,8 @@
         "category": "policy",
         "subcategory": "legal",
         "tags": [
-          "legal"
+          "legal",
+          "scotus"
         ],
         "type": "essay"
       },
@@ -2079,7 +2083,9 @@
         "subcategory": "corporate",
         "tags": [
           "corporate",
-          "external"
+          "external",
+          "space",
+          "science"
         ],
         "type": "curation"
       },
@@ -2114,7 +2120,8 @@
         "category": "policy",
         "subcategory": "politics",
         "tags": [
-          "politics"
+          "politics",
+          "overton"
         ],
         "type": "note"
       }
@@ -2158,7 +2165,8 @@
         "subcategory": "corporate",
         "tags": [
           "corporate",
-          "external"
+          "external",
+          "wealth"
         ],
         "type": "curation"
       }
@@ -2176,7 +2184,6 @@
         "subcategory": "legal",
         "tags": [
           "external",
-          "fomc",
           "legal"
         ],
         "type": "curation"
@@ -2206,7 +2213,8 @@
         "subcategory": "fiscal",
         "tags": [
           "external",
-          "policy"
+          "policy",
+          "fraud"
         ],
         "type": "curation"
       },
@@ -2218,7 +2226,8 @@
         "subcategory": "personal",
         "tags": [
           "dispatch",
-          "external"
+          "external",
+          "overton"
         ],
         "type": "curation"
       },
@@ -2231,7 +2240,9 @@
         "subcategory": "legal",
         "tags": [
           "external",
-          "legal"
+          "legal",
+          "cuba",
+          "human-rights"
         ],
         "type": "curation"
       },
@@ -2258,7 +2269,8 @@
         "subcategory": "curation",
         "tags": [
           "financials",
-          "media-rec"
+          "oil",
+          "trade"
         ],
         "type": "curation"
       }
@@ -2276,7 +2288,7 @@
         "subcategory": "housing",
         "tags": [
           "financials",
-          "housing"
+          "housing", "macro-data"
         ],
         "type": "curation"
       },
@@ -2289,8 +2301,8 @@
         "subcategory": "legal",
         "tags": [
           "external",
-          "fomc",
-          "legal"
+          "legal",
+          "overton"
         ],
         "type": "curation"
       },
@@ -2300,7 +2312,9 @@
         "category": "dispatches",
         "subcategory": "personal",
         "tags": [
-          "dispatch"
+          "dispatch",
+          "oil",
+          "venezuela"
         ],
         "type": "note"
       },
@@ -2312,7 +2326,9 @@
         "category": "dispatches",
         "subcategory": "personal",
         "tags": [
-          "dispatch"
+          "dispatch",
+          "energy",
+          "science"
         ],
         "type": "note"
       },
@@ -2368,7 +2384,8 @@
         "subcategory": "politics",
         "tags": [
           "nyt-critique",
-          "politics"
+          "politics",
+          "overton"
         ],
         "type": "note"
       }
@@ -2400,7 +2417,8 @@
         "category": "dispatches",
         "subcategory": "curation",
         "tags": [
-          "media-rec"
+          "media-rec",
+          "music"
         ],
         "type": "essay"
       },
@@ -2425,7 +2443,9 @@
         "category": "economy",
         "subcategory": "corporate",
         "tags": [
-          "corporate"
+          "corporate",
+          "space",
+          "science"
         ],
         "type": "note"
       },
@@ -2437,7 +2457,8 @@
         "subcategory": "verse",
         "tags": [
           "nyt-critique",
-          "poetry"
+          "poetry",
+          "overton"
         ],
         "type": "verse"
       }
@@ -2454,7 +2475,8 @@
         "category": "dispatches",
         "subcategory": "curation",
         "tags": [
-          "media-rec"
+          "media-rec",
+          "music"
         ],
         "type": "essay"
       },
@@ -2476,7 +2498,8 @@
         "category": "policy",
         "subcategory": "legal",
         "tags": [
-          "legal"
+          "legal",
+          "privacy"
         ],
         "type": "note"
       }

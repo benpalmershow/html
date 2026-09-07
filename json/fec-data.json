@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-06T16:23:58.651172Z",
+  "lastUpdated": "2026-09-07T14:03:50.248075Z",
   "source": "OpenFEC API",
   "source_url": "https://api.open.fec.gov/developers/",
   "cycle": 2026,
@@ -7,7 +7,7 @@
     {
       "state": "GA",
       "label": "Georgia Senate",
-      "note": "Toss-up. Ossoff (D) incumbent vs. Collins (R). Ossoff holds a dominant fundraising edge - $98M raised to Collins' $7.4M - but Georgia remains competitive at the presidential level.",
+      "note": "Toss-up. Ossoff (D) incumbent vs. Collins (R).",
       "candidates": [
         {
           "candidate_id": "S8GA00180",
@@ -15,7 +15,7 @@
           "party": "DEM",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S8GA00180/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 97986263.04,
           "disbursements": 59730545.53,
@@ -28,7 +28,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6GA00390/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 7409349.57,
           "disbursements": 5932538.69,
@@ -40,7 +40,7 @@
     {
       "state": "TX",
       "label": "Texas Senate",
-      "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary. Despite Texas being red-leaning, Talarico has a massive fundraising edge - $68.6M raised vs. Paxton's $9.2M - making this a genuine toss-up.",
+      "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
       "candidates": [
         {
           "candidate_id": "S6TX00388",
@@ -48,7 +48,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00388/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 9248698.53,
           "disbursements": 7492915.18,
@@ -61,7 +61,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00479/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 68555930.42,
           "disbursements": 47007775.34,
@@ -73,7 +73,7 @@
     {
       "state": "OH",
       "label": "Ohio Senate (Special)",
-      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat. Brown has a significant fundraising edge - $38.6M to Husted's $14.4M - but Husted holds cash-on-hand advantage relative to burn rate.",
+      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
       "candidates": [
         {
           "candidate_id": "S6OH00304",
@@ -81,7 +81,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00304/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 14360027.53,
           "disbursements": 4940716.33,
@@ -94,7 +94,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00163/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 38566234.1,
           "disbursements": 22336492.78,
@@ -106,7 +106,7 @@
     {
       "state": "NC",
       "label": "North Carolina Senate",
-      "note": "Lean R. Open seat - Tillis retiring. Cooper (D) has a 3:1 fundraising edge - $35M to Whatley's $11.3M - which upgrades what was once a safe Republican seat. Still leans R given state fundamentals.",
+      "note": "Lean R. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
       "candidates": [
         {
           "candidate_id": "S6NC00407",
@@ -114,7 +114,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00407/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 34975789.18,
           "disbursements": 14258221.92,
@@ -127,7 +127,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00415/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 11272504.49,
           "disbursements": 7810806.43,
@@ -139,7 +139,7 @@
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Lean R. Collins (R) incumbent vs. Jackson (D). Collins raised $18.9M with $11M cash on hand - a strong incumbent position. No FEC filing yet on file for Jackson.",
+      "note": "Lean R. Collins (R) incumbent vs. Jackson (D).",
       "candidates": [
         {
           "candidate_id": "S6ME00159",
@@ -147,7 +147,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6ME00159/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 18930077.99,
           "disbursements": 9187155.05,
@@ -159,7 +159,7 @@
     {
       "state": "MI",
       "label": "Michigan Senate",
-      "note": "Lean D. Open seat - Peters retiring. El-Sayed (D) leads on fundraising - $14.5M to Rogers' $10.9M - though Rogers has more cash on hand ($4.5M vs. $2.6M). Michigan's lean-D fundamentals favor El-Sayed.",
+      "note": "Lean D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
       "candidates": [
         {
           "candidate_id": "S4MI00595",
@@ -167,7 +167,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S4MI00595/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 10898177.09,
           "disbursements": 6680643.32,
@@ -180,7 +180,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6MI00418/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 14514335.93,
           "disbursements": 11961573.38,
@@ -192,7 +192,7 @@
     {
       "state": "IA",
       "label": "Iowa Senate",
-      "note": "Lean R. Open seat - Ernst retiring. Hinson (R) leads fundraising - $10.2M raised vs. Turek's $6.3M - and holds a stronger cash-on-hand position ($6.7M vs. $2.4M). Iowa's Republican lean holds here.",
+      "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
       "candidates": [
         {
           "candidate_id": "S6IA00314",
@@ -200,7 +200,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00314/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 10217845.39,
           "disbursements": 5396429.3,
@@ -213,7 +213,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00298/",
-          "fetchedAt": "2026-09-06T16:23:58.651172Z",
+          "fetchedAt": "2026-09-07T14:03:50.248075Z",
           "source": "OpenFEC API",
           "receipts": 6276526.9,
           "disbursements": 3914213.12,

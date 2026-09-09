@@ -1,0 +1,58 @@
+name: Update NFL Prediction Markets
+
+on:
+  schedule:
+    # Daily during the NFL season (Sep-Jan); off-season it's a cheap no-op.
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-nfl-markets
+  cancel-in-progress: false
+
+jobs:
+  update-nfl-markets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch live NFL odds from Polymarket
+        # Polymarket's public gamma API is the live odds source.
+        # NFL.com/ESPN are intentionally NOT scraped (NFL owns its schedule
+        # and broadcast footage). Polymarket is a CFTC-regulated prediction
+        # market exchange, not an NFL data feed.
+        run: python3 scripts/fetch-nfl-odds.py
+
+      - name: Merge NFL games YAML into financials-data.json
+        run: python3 scripts/apply-nfl-yml.py --replace-completed
+
+      - name: Validate merged data
+        run: |
+          python3 -m json.tool json/financials-data.json > /dev/null
+          python3 -m json.tool json/nfl-games.yml > /dev/null || true
+          node scripts/validate-site.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json json/nfl-games.yml
+          if git diff --staged --quiet; then
+            echo "No NFL market changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update NFL prediction markets [skip ci]"
+          git push

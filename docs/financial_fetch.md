@@ -144,6 +144,11 @@ Always verify team abbreviations match correct team names:
 - [ ] No duplicate games
 - [ ] Cross-reference market URL title with entered team data
 
+**Automation:** `json/nfl-games.yml` holds the schedule; `scripts/fetch-nfl-odds.py`
+pulls live Polymarket odds into it, and `scripts/apply-nfl-yml.py` merges the
+result into `json/financials-data.json`. A scheduled workflow
+(`.github/workflows/update-nfl-markets.yml`) runs both daily in season.
+
 ---
 
 ### FOMC Rate Decision Prediction Updates
@@ -491,6 +496,23 @@ const categoryIcons = {
 - Set up weekly/monthly reminders for regular data updates
 - Create scripts to scrape public APIs where available
 - Automate prediction market odds fetching
+
+### NFL Prediction Markets Automation (live, Polymarket-backed)
+- **Live odds fetcher:** `scripts/fetch-nfl-odds.py` -- queries Polymarket's
+  public gamma API (`/events?slug=<slug>`) and rewrites the `<TEAM>_win_odds`
+  and `lastUpdated` fields in `json/nfl-games.yml`
+- **Merger:** `scripts/apply-nfl-yml.py` -- upserts games into
+  `json/financials-data.json` by `id`, with `--replace-completed` to drop past
+  games
+- **Scheduled run:** `.github/workflows/update-nfl-markets.yml` (daily 08:00
+  UTC in season) runs the fetcher, then the merger, validates, and commits
+- **Why Polymarket, not NFL.com/ESPN:** the NFL owns its schedule and broadcast
+  footage, so official NFL sites are off-limits for scraping. Polymarket is a
+  CFTC-regulated prediction-market exchange (not an NFL data feed), so its odds
+  are public, machine-readable, and free of NFL intellectual property. The
+  World Cup pattern (football-data.org with a free key) is mirrored here.
+- **Manual steps:** edit the schedule in `json/nfl-games.yml` (teams, times,
+  `polymarket_slug`); the workflow refreshes the odds automatically.
 
 ### Data Validation Scripts
 - JSON schema validation for indicator objects

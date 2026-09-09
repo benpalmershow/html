@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-09-09T00:43:57.996Z",
+  "lastUpdated": "2026-09-09T23:25:48.419068Z",
   "indices": [
-    { 
+    {
       "id": "strait-of-hormuz-traffic",
       "category": "Prediction Markets",
       "color": "#e74c3c",
@@ -15,10 +15,8 @@
         "2026-08-24": {
           "yes": "34¢",
           "no": "67¢"
-        
-      }
-    },
-
+        }
+      },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by end of April 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. Current traffic: ~8-10 daily transits, far below pre-crisis 100-138/day. Despite US-Iran ceasefire announced April 7, market expects traffic remains depressed amid ongoing mine-clearing operations and vessel rerouting. Volume: $10.8M.",
       "yes_odds": "0¢",
       "no_odds": "100¢"
@@ -188,7 +186,6 @@
       "name": "FOMC Rate Decision - September",
       "lastUpdated": "2026-09-02T15:58:00.000Z",
       "meeting_date": "September 18-19, 2026",
-    
       "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26sep",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-september-762",
       "change": "",
@@ -290,7 +287,7 @@
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "march": "4.28",
       "april": "4.28",
-      "may": "4.42",  
+      "may": "4.42",
       "june": "4.38",
       "july": "4.39",
       "august": "4.26",
@@ -2154,8 +2151,6 @@
         "may": "53.2",
         "june": "54",
         "july": "54.1"
-        
-
       },
       "id": "services-pmi",
       "category": "Business Indicators",
@@ -2225,6 +2220,22 @@
       "url": "https://robotaxitracker.com/vehicles?provider=waymo&area=bay-area-waymo",
       "change": "",
       "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
+    },
+    {
+      "id": "ne-sea-2026-09-09",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "NE @ SEA",
+      "game_title": "NE @ SEA",
+      "game_time": "Sep 9, 2026 8:20 PM ET",
+      "game_time_iso": "2026-09-09T20:20:00-04:00",
+      "url": "https://polymarket.com/sports/nfl/nfl-ne-sea-2026-09-10",
+      "lastUpdated": "2026-09-09T23:15:14.520187Z",
+      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ne-sea-2026-09-10",
+      "week": 1,
+      "NE_win_odds": "38.5¢",
+      "SEA_win_odds": "61.5¢",
+      "explanation": "NFL game prediction market showing the probability of the New England Patriots winning against the Seattle Seahawks. This is the 2026 NFL season opener (Week 1), a Super Bowl LX rematch played Wednesday night at Lumen Field. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
     }
   ]
 }

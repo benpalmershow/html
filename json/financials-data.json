@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-04T00:43:57.996Z",
+  "lastUpdated": "2026-09-09T00:43:57.996Z",
   "indices": [
     { 
       "id": "strait-of-hormuz-traffic",
@@ -487,14 +487,15 @@
         "may": "112.25",
         "june": "84.65",
         "july": "69.60",
-        "august": "83.90"
+        "august": "83.90",
+        "september": "91.48"
       },
       "id": "oil-wti",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "EIA",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-09-02T19:30:00Z",
+      "lastUpdated": "2026-09-09T19:30:00Z",
       "releaseDay": 0,
       "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "january": "75.74",
@@ -521,14 +522,15 @@
         "may": "116.73",
         "june": "84.36",
         "july": "69.56",
-        "august": "88.24"
+        "august": "88.24",
+        "september": "96.02"
       },
       "id": "oil-brent",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "EIA",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-09-02T19:30:00Z",
+      "lastUpdated": "2026-09-09T19:30:00Z",
       "releaseDay": 0,
       "url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "change": "",
@@ -1280,11 +1282,15 @@
       "color": "#1abc9c",
       "agency": "Windward",
       "name": "Strait of Hormuz Daily Transits",
-      "lastUpdated": "2026-08-25T14:00:00Z",
+      "lastUpdated": "2026-09-09T14:00:00Z",
       "releaseDay": 0,
       "url": "https://insights.windward.ai/",
       "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
       "probabilities": {
+        "2026-09-09": {
+          "Inbound": 10,
+          "Outbound": 6
+        },
         "2026-08-25": {
           "Inbound": 4,
           "Outbound": 0

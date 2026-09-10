@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-09T23:25:48.419068Z",
+  "lastUpdated": "2026-09-10T23:25:48.419068Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1929,19 +1929,20 @@
         "january": "152.145",
         "february": "153.156",
         "march": "154.393",
-        "april": "156.076",
-        "may": "156.783",
-        "june": "156.607",
-        "july": "156.563"
+        "april": "156.061",
+        "may": "156.864",
+        "june": "156.667",
+        "july": "156.784",
+        "august": "157.411"
       },
       "id": "ppi",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "BLS",
       "name": "PPI",
-      "lastUpdated": "2026-08-13T14:00:00Z",
+      "lastUpdated": "2026-09-10T14:00:00Z",
       "releaseDay": 13,
-      "url": "https://data.bls.gov/pdq/SurveyOutputServlet",
+      "url": "https://www.bls.gov/news.release/ppi.toc.htm",
       "march": "148.319",
       "april": "148.009",
       "may": "148.427",

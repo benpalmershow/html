@@ -150,7 +150,7 @@
                 totalEntries++;
                 const entryCategory = entry.dataset.category || '';
                 const entrySubcategory = entry.dataset.subcategory || '';
-                const entryTags = (entry.dataset.tags || '').split(' ').filter(Boolean);
+                const entryTags = (entry.dataset.tags || '').split(',').filter(Boolean);
                 const title = entry.querySelector('.entry-title')?.textContent.toLowerCase() || '';
                 const content = entry.querySelector('.entry-content')?.textContent.toLowerCase() || '';
 

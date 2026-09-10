@@ -383,7 +383,7 @@
           div.dataset.subcategory = entry.subcategory;
         }
         if (Array.isArray(entry.tags) && entry.tags.length > 0) {
-          div.dataset.tags = entry.tags.join(' ');
+          div.dataset.tags = entry.tags.join(',');
         }
         if (entry.type) {
           div.dataset.type = entry.type;

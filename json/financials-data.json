@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-09T23:25:48.419068Z",
+  "lastUpdated": "2026-09-10T12:50:14.258378Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -2220,22 +2220,6 @@
       "url": "https://robotaxitracker.com/vehicles?provider=waymo&area=bay-area-waymo",
       "change": "",
       "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
-    },
-    {
-      "id": "ne-sea-2026-09-09",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "NE @ SEA",
-      "game_title": "NE @ SEA",
-      "game_time": "Sep 9, 2026 8:20 PM ET",
-      "game_time_iso": "2026-09-09T20:20:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-ne-sea-2026-09-10",
-      "lastUpdated": "2026-09-09T23:15:14.520187Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ne-sea-2026-09-10",
-      "week": 1,
-      "NE_win_odds": "38.5¢",
-      "SEA_win_odds": "61.5¢",
-      "explanation": "NFL game prediction market showing the probability of the New England Patriots winning against the Seattle Seahawks. This is the 2026 NFL season opener (Week 1), a Super Bowl LX rematch played Wednesday night at Lumen Field. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
     }
   ]
 }

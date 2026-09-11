@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-09T23:25:48.419068Z",
+  "lastUpdated": "2026-09-11T14:00:00Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -243,14 +243,15 @@
         "may": "44.8",
         "june": "49.5",
         "july": "55.2",
-        "august": "51.0"
+        "august": "51.7",
+        "september": "47.8"
       },
       "id": "consumer-sentiment",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "UMich",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-08-14T15:00:00Z",
+      "lastUpdated": "2026-09-11T15:00:00Z",
       "releaseDay": 15,
       "url": "https://www.sca.isr.umich.edu",
       "march": "57.0",
@@ -275,14 +276,15 @@
         "may": "4.48",
         "june": "4.48",
         "july": "4.67",
-        "august": "4.75"
+        "august": "4.75",
+        "september": "4.83"
       },
       "id": "10yr-treasury-yield",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-09-02T14:00:00Z",
+      "lastUpdated": "2026-09-11T14:00:00Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "march": "4.28",
@@ -1273,18 +1275,23 @@
         "may": "11",
         "june": "3",
         "july": "11",
-        "august": "4"
+        "august": "5",
+        "september": "3"
       },
       "id": "strait-of-hormuz-daily-transits",
       "category": "Trade & Tariffs",
       "color": "#1abc9c",
       "agency": "Windward",
       "name": "Strait of Hormuz Daily Transits",
-      "lastUpdated": "2026-09-09T14:00:00Z",
+      "lastUpdated": "2026-09-11T14:00:00Z",
       "releaseDay": 0,
       "url": "https://insights.windward.ai/",
       "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
       "probabilities": {
+        "2026-09-11": {
+          "Inbound": 6,
+          "Outbound": 4
+        },
         "2026-09-09": {
           "Inbound": 10,
           "Outbound": 6
@@ -1550,16 +1557,17 @@
         "april": "$421,900",
         "may": "$436,400",
         "june": "$448,800",
-        "july": "$440,300"
+        "july": "$442,500",
+        "august": "$434,800"
       },
       "id": "median-home-price",
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "NAR",
       "name": "Median Home Price",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-09-11T14:00:00Z",
       "releaseDay": 0,
-      "url": "https://www.nar.realtor/sites/default/files/2026-08/ehs-07-2026-single-family-only-2026-08-11.pdf",
+      "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
       "march": "$403,100",
       "april": "$414,000",
       "may": "$424,800",
@@ -1965,14 +1973,15 @@
         "april": "333.020",
         "may": "335.123",
         "june": "333.952",
-        "july": "333.918"
+        "july": "333.918",
+        "august": "334.980"
       },
       "id": "cpi",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "BLS",
       "name": "CPI",
-      "lastUpdated": "2026-08-12T14:00:00Z",
+      "lastUpdated": "2026-09-11T14:00:00Z",
       "releaseDay": 11,
       "url": "https://www.bls.gov/cpi/data.htm",
       "january": "317.671",

@@ -85,12 +85,14 @@
     <link rel="stylesheet" href="css/body.css?v=20260614">
     <link rel="stylesheet" href="css/nav.css?v=20260821">
   </noscript>
-  <link rel="preload" href="css/components.css?v=20260628" as="style" onload="this.rel='stylesheet'">
+<link rel="preload" href="css/components.css?v=20260628" as="style" onload="this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="css/components.css?v=20260628">
     <link rel="stylesheet" href="css/components/footer.css?v=20260628">
+    <link rel="stylesheet" href="css/sun-track.css">
   </noscript>
   <link rel="stylesheet" href="css/components/footer.css?v=20260628">
+  <link rel="stylesheet" href="css/sun-track.css">
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
@@ -155,10 +157,16 @@
     </button>
   </header>
   <script src="js/dark-mode-toggle.js" defer></script>
+  <script src="js/sun-times.js" defer></script>
 
-  <main class="hero-main" aria-label="Welcome">
-    <h1 class="hero-wordmark">Howdy</h1>
-  </main>
+<div class="hero-wrap">
+    <main class="hero-main" aria-label="Welcome">
+      <h1 class="hero-wordmark">Howdy</h1>
+    </main>
+  </div>
+  <div class="sun-track" aria-hidden="true">
+    <div class="sun-body"></div>
+  </div>
 
   <div id="footer-container" style="margin-top: auto"></div>
   <script>

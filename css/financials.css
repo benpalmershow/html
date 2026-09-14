@@ -16,15 +16,15 @@
 
 .content { min-height: 80vh; contain: layout; }
 
-.category { background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform 0.2s ease, box-shadow 0.2s ease; word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: 1px 500px; }
+.category { background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: 1px 500px; will-change: transform, box-shadow; }
 
-.category:hover { transform: translateY(-1px); box-shadow: var(--shadow-card-hover); }
+.category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 
 .category-title { font-size: clamp(1.15rem, 3vw, 1.5rem); color: var(--accent-primary); margin-top: 0; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.7rem; display: flex; align-items: center; gap: 10px }
 
-.category-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; color: var(--logo-teal); transition: transform 0.2s ease, color 0.2s ease }
+.category-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; color: var(--logo-teal); transition: transform var(--transition-base), color var(--transition-base); will-change: transform, color; }
 
-.category:hover .category-icon { transform: scale(1.1); color: var(--logo-orange) }
+.category:hover .category-icon { transform: scale3d(1.15, 1.15, 1); color: var(--logo-orange); }
 
 .category-icon i { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center }
 
@@ -46,29 +46,42 @@
     padding: 0.85rem;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-card);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: box-shadow var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
     overflow: visible;
-    animation: cardIn 0.2s ease-out both;
+    animation: cardIn 0.3s var(--ease-out-back) both;
     contain: layout paint style;
     content-visibility: auto;
     contain-intrinsic-size: 220px 220px;
     min-width: 0;
 }
 
-.indicator:hover { box-shadow: var(--shadow-card-hover); }
+.indicator:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+    border-color: var(--accent-secondary);
+}
 
 
 /* Entrance animation for cards */
-@keyframes cardIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale3d(0.95, 0.95, 1);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale3d(1, 1, 1);
+    }
+}
 
 .indicators-grid > :nth-child(1) { animation-delay: 0s; }
-.indicators-grid > :nth-child(2) { animation-delay: 0.04s; }
-.indicators-grid > :nth-child(3) { animation-delay: 0.08s; }
-.indicators-grid > :nth-child(n+4) { animation-delay: 0.12s; }
+.indicators-grid > :nth-child(2) { animation-delay: 0.05s; }
+.indicators-grid > :nth-child(3) { animation-delay: 0.1s; }
+.indicators-grid > :nth-child(n+4) { animation-delay: 0.15s; }
 
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
@@ -167,11 +180,13 @@
 .change-metric-title-icon.change-positive { color: #22c55e; }
 .change-metric-title-icon.change-negative { color: #ef4444; }
 .change-metric-title-icon.change-neutral { color: #d1d5db; }
-.expand-toggle { display: inline-flex; align-items: center; justify-content: center; padding: 4px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; transition: all 0.2s ease; border-radius: 6px; width: 24px; height: 24px; }
+.expand-toggle { display: inline-flex; align-items: center; justify-content: center; padding: 4px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); border-radius: 6px; width: 24px; height: 24px; will-change: transform, background-color; }
 
-.expand-toggle:hover { background: var(--bg-secondary); color: var(--logo-teal); }
+.expand-toggle:hover { background: var(--bg-secondary); color: var(--logo-teal); transform: scale(1.1); }
 
-.expand-toggle i { width: 16px; height: 16px; transition: transform 0.3s ease; }
+.expand-toggle:active { transform: scale(0.95); }
+
+.expand-toggle i { width: 16px; height: 16px; transition: transform var(--transition-slow); }
 
 .indicator.expanded .expand-toggle i { transform: rotate(180deg); }
 
@@ -312,7 +327,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  transition: var(--transition-hover);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   width: 24px;
   height: 24px;
   color: var(--text-muted);
@@ -323,6 +338,11 @@
 .info-btn:hover, .chart-btn:hover {
   background: var(--bg-secondary);
   color: var(--logo-teal);
+  transform: scale(1.1);
+}
+
+.info-btn:active, .chart-btn:active {
+  transform: scale(0.95);
 }
 
 .info-btn.active, .chart-btn.active {
@@ -745,6 +765,29 @@
   border: 1px solid var(--border-color);
   background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255,255,255,0.04) 100%);
   overflow: hidden;
+  position: relative;
+}
+
+.skeleton-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: skeleton-card-shimmer 1.5s infinite;
+}
+
+@keyframes skeleton-card-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .skeleton-line {
@@ -757,6 +800,12 @@
   );
   background-size: 200% 100%;
   margin-bottom: 10px;
+  animation: skeleton-line-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-line-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 .skeleton-line.short { width: 65%; }
@@ -770,6 +819,12 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: 1px solid rgba(var(--border-color-rgb), 0.4);
+  animation: skeleton-fade-in 0.3s ease-out;
+}
+
+@keyframes skeleton-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ========================================

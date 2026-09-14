@@ -5,9 +5,11 @@ games:
   away: NE
   away_full: New England Patriots
   away_pm_name: Patriots
+  away_color: '#00205E'
   home: SEA
   home_full: Seattle Seahawks
   home_pm_name: Seahawks
+  home_color: '#005055'
   game_time: Sep 9, 2026 8:20 PM ET
   game_time_iso: '2026-09-09T20:20:00-04:00'
   week: 1
@@ -18,3 +20,24 @@ games:
   SEA_win_odds: 100.0¢
   explanation: NFL game prediction market showing the probability of the New England Patriots winning against the Seattle Seahawks. This is the 2026 NFL season opener (Week 1), a Super Bowl LX rematch played Wednesday night at Lumen Field. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   lastUpdated: '2026-09-11T05:29:54.137655Z'
+- id: den-kc-2026-09-14
+  category: Prediction Markets
+  agency: Kalshi
+  away: DEN
+  away_full: Denver Broncos
+  away_pm_name: Broncos
+  away_color: '#001430'
+  home: KC
+  home_full: Kansas City Chiefs
+  home_pm_name: Chiefs
+  home_color: '#E31937'
+  game_time: Sep 14, 2026 8:15 PM ET
+  game_time_iso: '2026-09-14T20:15:00-04:00'
+  week: 1
+  polymarket_slug: nfl-den-kc-2026-09-15
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-den-kc-2026-09-15
+  url: https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26sep14denkc
+  DEN_win_odds: 45.5¢
+  KC_win_odds: 54.5¢
+  explanation: NFL game prediction market showing the probability of the Denver Broncos winning against the Kansas City Chiefs. This is the 2026 NFL season opener (Week 1), a Monday Night Football matchup at GEHA Field at Arrowhead Stadium. Broncos quarterback Bo Nix faces off against Patrick Mahomes in a key AFC West battle. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-14T22:36:24.118578Z'

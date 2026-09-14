@@ -88,6 +88,13 @@ def build_indicator(game):
 
     indicator.update(odds_fields)
 
+    away_color = game.get("away_color")
+    if away_color:
+        indicator["away_color"] = away_color
+    home_color = game.get("home_color")
+    if home_color:
+        indicator["home_color"] = home_color
+
     explanation = game.get("explanation")
     if explanation:
         indicator["explanation"] = explanation

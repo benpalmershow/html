@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-14T14:55:51.461528Z",
+  "lastUpdated": "2026-09-14T23:10:04.737647Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -2236,6 +2236,24 @@
       "url": "https://robotaxitracker.com/vehicles?provider=waymo&area=bay-area-waymo",
       "change": "",
       "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
+    },
+    {
+      "id": "den-kc-2026-09-14",
+      "category": "Prediction Markets",
+      "agency": "Kalshi",
+      "name": "DEN @ KC",
+      "game_title": "Denver Broncos @ Kansas City Chiefs",
+      "game_time": "Sep 14, 2026 8:15 PM ET",
+      "game_time_iso": "2026-09-14T20:15:00-04:00",
+      "url": "https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26sep14denkc",
+      "lastUpdated": "2026-09-14T22:36:24.118578Z",
+      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-den-kc-2026-09-15",
+      "week": 1,
+      "DEN_win_odds": "45.5¢",
+      "KC_win_odds": "54.5¢",
+      "away_color": "#001430",
+      "home_color": "#E31937",
+      "explanation": "NFL game prediction market showing the probability of the Denver Broncos winning against the Kansas City Chiefs. This is the 2026 NFL season opener (Week 1), a Monday Night Football matchup at GEHA Field at Arrowhead Stadium. Broncos quarterback Bo Nix faces off against Patrick Mahomes in a key AFC West battle. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
     }
   ]
 }

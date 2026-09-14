@@ -218,14 +218,41 @@ const IndicatorRenderers = (function () {
 
     function renderSports(indicator) {
         const rows = [];
-        if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value game-title">${indicator.game_title}</span>`);
+        if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value game-title">${indicator.name}</span>`);
         if (indicator.game_time) rows.push(`<span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span>`);
         if (indicator.week) rows.push(`<span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span>`);
-        Object.keys(indicator).filter(key => key.endsWith('_win_odds')).forEach(key => { const teamName = key.replace('_win_odds', '').toUpperCase(); rows.push(`<span class="month-label">${teamName} Win:</span> <span class="month-value">${indicator[key]}</span>`); });
-        if (indicator.total_points) rows.push(`<span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span>`);
+
+        // Win odds as a single stacked dual-color bar (same pattern as other prediction markets).
+        const winOddsKeys = Object.keys(indicator).filter(key => key.endsWith('_win_odds'));
         let latestDataHtml = '', historyDataHtml = '';
-        rows.forEach((row, i) => { if (i < 2) latestDataHtml += `<div class="latest-data-row">${row}</div>`; else historyDataHtml += `<div class="data-row">${row}</div>`; });
-        return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 2 };
+        if (winOddsKeys.length >= 2) {
+            const [awayKey, homeKey] = winOddsKeys;
+            const awayLabel = indicator[`${awayKey.replace('_win_odds', '_pm_name')}`] || awayKey.replace('_win_odds', '').toUpperCase();
+            const homeLabel = indicator[`${homeKey.replace('_win_odds', '_pm_name')}`] || homeKey.replace('_win_odds', '').toUpperCase();
+            const awayOdds = indicator[awayKey], homeOdds = indicator[homeKey];
+            const awayProb = parseFloat(awayOdds), homeProb = parseFloat(homeOdds);
+            if (!isNaN(awayProb) && !isNaN(homeProb)) {
+                const awayColor = indicator.away_color || '#22c55e';
+                const homeColor = indicator.home_color || '#ef4444';
+                latestDataHtml = `
+                    <div class="prediction-bar-container prediction-dual-bar">
+                        <div class="prediction-bar-row prediction-bar-row-inline">
+                            <span class="prediction-value" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
+                            <div class="prediction-bar-track prediction-bar-track-inline">
+                                <div class="prediction-bar-fill bar-yes" style="width: ${awayProb}%; height: 100%; background: linear-gradient(90deg, ${awayColor} 0%, ${awayColor}cc 100%);" title="${awayOdds} ${awayLabel}"></div>
+                                <div class="prediction-bar-fill bar-no" style="width: ${homeProb}%; position: absolute; right: 0; height: 100%; background: linear-gradient(90deg, ${homeColor} 0%, ${homeColor}cc 100%);" title="${homeOdds} ${homeLabel}"></div>
+                            </div>
+                            <span class="prediction-value-left" title="${homeLabel}">${homeOdds} ${homeLabel}</span>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        if (indicator.total_points) rows.push(`<span class="month-label">Total:</span> <span class="month-value">${indicator.total_points}</span>`);
+        if (indicator.venue) rows.push(`<span class="month-label">Venue:</span> <span class="month-value">${indicator.venue}</span>`);
+
+        rows.forEach((row, i) => { historyDataHtml += `<div class="data-row">${row}</div>`; });
+        return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 0 || winOddsKeys.length >= 2 };
     }
 
     function renderVenezuela(indicator) {

@@ -203,10 +203,12 @@
             loadMoreBtn.style.display = hasVisibleEntries ? '' : 'none';
         }
 
-        // Auto load more if no matches in current view and more entries exist
+        // Auto load more if filtering and more entries exist.
+        // Keep loading until all entries are exhausted so matches spread
+        // across paginated days are all visible, not just those in the first batch.
         const isFiltered = currentCategory !== 'all' || currentSubcategory !== 'all' || currentTag || currentSearch;
-        if (!hasVisibleEntries && loadMoreBtn && loadMoreBtn.style.display !== 'none' && isFiltered) {
-            const loadUntilFound = () => {
+        if (isFiltered && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
+            const loadUntilExhausted = () => {
                 if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
                     loadMoreBtn.click();
                     setTimeout(() => {
@@ -214,7 +216,7 @@
                     }, 150);
                 }
             };
-            loadUntilFound();
+            loadUntilExhausted();
         }
 
         updateActiveTagUI();

@@ -1,43 +1,316 @@
 games:
-- id: ne-sea-2026-09-09
+- id: car-atl-2026-09-20
   category: Prediction Markets
   agency: Polymarket
-  away: NE
-  away_full: New England Patriots
-  away_pm_name: Patriots
-  away_color: '#00205E'
-  home: SEA
-  home_full: Seattle Seahawks
-  home_pm_name: Seahawks
-  home_color: '#005055'
-  game_time: Sep 9, 2026 8:20 PM ET
-  game_time_iso: '2026-09-09T20:20:00-04:00'
-  week: 1
-  polymarket_slug: nfl-ne-sea-2026-09-10
-  polymarket_url: https://polymarket.com/sports/nfl/nfl-ne-sea-2026-09-10
-  url: https://polymarket.com/sports/nfl/nfl-ne-sea-2026-09-10
-  NE_win_odds: 0.0¢
-  SEA_win_odds: 100.0¢
-  explanation: NFL game prediction market showing the probability of the New England Patriots winning against the Seattle Seahawks. This is the 2026 NFL season opener (Week 1), a Super Bowl LX rematch played Wednesday night at Lumen Field. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  lastUpdated: '2026-09-11T05:29:54.137655Z'
-- id: den-kc-2026-09-14
+  away: CAR
+  away_full: Carolina Panthers
+  away_pm_name: Panthers
+  away_color: '#0085CA'
+  home: ATL
+  home_full: Atlanta Falcons
+  home_pm_name: Falcons
+  home_color: '#A71930'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-car-atl-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-car-atl-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-car-atl-2026-09-20
+  CAR_win_odds: 57.5¢
+  ATL_win_odds: 42.5¢
+  explanation: NFL game prediction market showing the probability of the Carolina Panthers winning against the Atlanta Falcons. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:21:39.319426Z'
+- id: no-bal-2026-09-20
   category: Prediction Markets
-  agency: Kalshi
-  away: DEN
-  away_full: Denver Broncos
-  away_pm_name: Broncos
-  away_color: '#001430'
+  agency: Polymarket
+  away: 'NO'
+  away_full: New Orleans Saints
+  away_pm_name: Saints
+  away_color: '#D3BC8D'
+  home: BAL
+  home_full: Baltimore Ravens
+  home_pm_name: Ravens
+  home_color: '#241773'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-no-bal-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-no-bal-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-no-bal-2026-09-20
+  NO_win_odds: 21.5¢
+  BAL_win_odds: 78.5¢
+  explanation: NFL game prediction market showing the probability of the New Orleans Saints winning against the Baltimore Ravens. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:19:38.248374Z'
+- id: min-chi-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: MIN
+  away_full: Minnesota Vikings
+  away_pm_name: Vikings
+  away_color: '#4F2683'
+  home: CHI
+  home_full: Chicago Bears
+  home_pm_name: Bears
+  home_color: '#0B162A'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-min-chi-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-min-chi-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-min-chi-2026-09-20
+  MIN_win_odds: 33.5¢
+  CHI_win_odds: 66.5¢
+  explanation: NFL game prediction market showing the probability of the Minnesota Vikings winning against the Chicago Bears. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:23:36.456123Z'
+- id: cin-hou-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: CIN
+  away_full: Cincinnati Bengals
+  away_pm_name: Bengals
+  away_color: '#FB4F14'
+  home: HOU
+  home_full: Houston Texans
+  home_pm_name: Texans
+  home_color: '#03202F'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-cin-hou-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-cin-hou-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-cin-hou-2026-09-20
+  CIN_win_odds: 42.5¢
+  HOU_win_odds: 57.5¢
+  explanation: NFL game prediction market showing the probability of the Cincinnati Bengals winning against the Houston Texans. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:19:38.248374Z'
+- id: pit-ne-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: PIT
+  away_full: Pittsburgh Steelers
+  away_pm_name: Steelers
+  away_color: '#FFB612'
+  home: NE
+  home_full: New England Patriots
+  home_pm_name: Patriots
+  home_color: '#002244'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-pit-ne-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-pit-ne-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-pit-ne-2026-09-20
+  PIT_win_odds: 31.5¢
+  NE_win_odds: 68.5¢
+  explanation: NFL game prediction market showing the probability of the Pittsburgh Steelers winning against the New England Patriots. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:21:39.319426Z'
+- id: gb-nyj-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: GB
+  away_full: Green Bay Packers
+  away_pm_name: Packers
+  away_color: '#203731'
+  home: NYJ
+  home_full: New York Jets
+  home_pm_name: Jets
+  home_color: '#125740'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-gb-nyj-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-gb-nyj-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-gb-nyj-2026-09-20
+  GB_win_odds: 61.5¢
+  NYJ_win_odds: 38.5¢
+  explanation: NFL game prediction market showing the probability of the Green Bay Packers winning against the New York Jets. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:23:36.456123Z'
+- id: cle-tb-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: CLE
+  away_full: Cleveland Browns
+  away_pm_name: Browns
+  away_color: '#311D00'
+  home: TB
+  home_full: Tampa Bay Buccaneers
+  home_pm_name: Buccaneers
+  home_color: '#D50A0A'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-cle-tb-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-cle-tb-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-cle-tb-2026-09-20
+  CLE_win_odds: 21.5¢
+  TB_win_odds: 78.5¢
+  explanation: NFL game prediction market showing the probability of the Cleveland Browns winning against the Tampa Bay Buccaneers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:19:38.248374Z'
+- id: phi-ten-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: PHI
+  away_full: Philadelphia Eagles
+  away_pm_name: Eagles
+  away_color: '#004C54'
+  home: TEN
+  home_full: Tennessee Titans
+  home_pm_name: Titans
+  home_color: '#4B925E'
+  game_time: Sep 20, 2026 1:00 PM ET
+  game_time_iso: '2026-09-20T13:00:00-04:00'
+  week: 2
+  polymarket_slug: nfl-phi-ten-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-phi-ten-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-phi-ten-2026-09-20
+  PHI_win_odds: 75.5¢
+  TEN_win_odds: 24.5¢
+  explanation: NFL game prediction market showing the probability of the Philadelphia Eagles winning against the Tennessee Titans. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:19:38.248374Z'
+- id: jax-den-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: JAX
+  away_full: Jacksonville Jaguars
+  away_pm_name: Jaguars
+  away_color: '#006778'
+  home: DEN
+  home_full: Denver Broncos
+  home_pm_name: Broncos
+  home_color: '#FB4F14'
+  game_time: Sep 20, 2026 4:05 PM ET
+  game_time_iso: '2026-09-20T16:05:00-04:00'
+  week: 2
+  polymarket_slug: nfl-jax-den-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-jax-den-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-jax-den-2026-09-20
+  JAX_win_odds: 41.5¢
+  DEN_win_odds: 58.5¢
+  explanation: NFL game prediction market showing the probability of the Jacksonville Jaguars winning against the Denver Broncos. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:21:39.319426Z'
+- id: lv-lac-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: LV
+  away_full: Las Vegas Raiders
+  away_pm_name: Raiders
+  away_color: '#000000'
+  home: LAC
+  home_full: Los Angeles Chargers
+  home_pm_name: Chargers
+  home_color: '#0080C6'
+  game_time: Sep 20, 2026 4:05 PM ET
+  game_time_iso: '2026-09-20T16:05:00-04:00'
+  week: 2
+  polymarket_slug: nfl-lv-lac-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-lv-lac-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-lv-lac-2026-09-20
+  LV_win_odds: 27.5¢
+  LAC_win_odds: 72.5¢
+  explanation: NFL game prediction market showing the probability of the Las Vegas Raiders winning against the Los Angeles Chargers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:23:36.456123Z'
+- id: sea-ari-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: SEA
+  away_full: Seattle Seahawks
+  away_pm_name: Seahawks
+  away_color: '#002244'
+  home: ARI
+  home_full: Arizona Cardinals
+  home_pm_name: Cardinals
+  home_color: '#97233F'
+  game_time: Sep 20, 2026 4:25 PM ET
+  game_time_iso: '2026-09-20T16:25:00-04:00'
+  week: 2
+  polymarket_slug: nfl-sea-ari-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-sea-ari-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-sea-ari-2026-09-20
+  SEA_win_odds: 65.5¢
+  ARI_win_odds: 34.5¢
+  explanation: NFL game prediction market showing the probability of the Seattle Seahawks winning against the Arizona Cardinals. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:21:39.319426Z'
+- id: was-dal-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: WAS
+  away_full: Washington Commanders
+  away_pm_name: Commanders
+  away_color: '#5A1414'
+  home: DAL
+  home_full: Dallas Cowboys
+  home_pm_name: Cowboys
+  home_color: '#003594'
+  game_time: Sep 20, 2026 4:25 PM ET
+  game_time_iso: '2026-09-20T16:25:00-04:00'
+  week: 2
+  polymarket_slug: nfl-was-dal-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-was-dal-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-was-dal-2026-09-20
+  WAS_win_odds: 34.5¢
+  DAL_win_odds: 65.5¢
+  explanation: NFL game prediction market showing the probability of the Washington Commanders winning against the Dallas Cowboys. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:21:39.319426Z'
+- id: mia-sf-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: MIA
+  away_full: Miami Dolphins
+  away_pm_name: Dolphins
+  away_color: '#008E97'
+  home: SF
+  home_full: San Francisco 49ers
+  home_pm_name: 49ers
+  home_color: '#AA0000'
+  game_time: Sep 20, 2026 4:25 PM ET
+  game_time_iso: '2026-09-20T16:25:00-04:00'
+  week: 2
+  polymarket_slug: nfl-mia-sf-2026-09-20
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-mia-sf-2026-09-20
+  url: https://polymarket.com/sports/nfl/nfl-mia-sf-2026-09-20
+  MIA_win_odds: 10.5¢
+  SF_win_odds: 89.5¢
+  explanation: NFL game prediction market showing the probability of the Miami Dolphins winning against the San Francisco 49ers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:19:38.248374Z'
+- id: ind-kc-2026-09-20
+  category: Prediction Markets
+  agency: Polymarket
+  away: IND
+  away_full: Indianapolis Colts
+  away_pm_name: Colts
+  away_color: '#002C5F'
   home: KC
   home_full: Kansas City Chiefs
   home_pm_name: Chiefs
-  home_color: '#E31937'
-  game_time: Sep 14, 2026 8:15 PM ET
-  game_time_iso: '2026-09-14T20:15:00-04:00'
-  week: 1
-  polymarket_slug: nfl-den-kc-2026-09-15
-  polymarket_url: https://polymarket.com/sports/nfl/nfl-den-kc-2026-09-15
-  url: https://kalshi.com/markets/kxnflgame/professional-football-game/kxnflgame-26sep14denkc
-  DEN_win_odds: 0.0¢
-  KC_win_odds: 100.0¢
-  explanation: NFL game prediction market showing the probability of the Denver Broncos winning against the Kansas City Chiefs. This is the 2026 NFL season opener (Week 1), a Monday Night Football matchup at GEHA Field at Arrowhead Stadium. Broncos quarterback Bo Nix faces off against Patrick Mahomes in a key AFC West battle. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  lastUpdated: '2026-09-16T05:21:47.383834Z'
+  home_color: '#E31837'
+  game_time: Sep 20, 2026 8:20 PM ET
+  game_time_iso: '2026-09-20T20:20:00-04:00'
+  week: 2
+  polymarket_slug: nfl-ind-kc-2026-09-21
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-ind-kc-2026-09-21
+  url: https://polymarket.com/sports/nfl/nfl-ind-kc-2026-09-21
+  IND_win_odds: 27.5¢
+  KC_win_odds: 72.5¢
+  explanation: NFL game prediction market showing the probability of the Indianapolis Colts winning against the Kansas City Chiefs. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:21:39.319426Z'
+- id: nyg-lar-2026-09-21
+  category: Prediction Markets
+  agency: Polymarket
+  away: NYG
+  away_full: New York Giants
+  away_pm_name: Giants
+  away_color: '#0B2265'
+  home: LAR
+  home_full: Los Angeles Rams
+  home_pm_name: Rams
+  home_color: '#003594'
+  game_time: Sep 21, 2026 8:15 PM ET
+  game_time_iso: '2026-09-21T20:15:00-04:00'
+  week: 2
+  polymarket_slug: nfl-nyg-la-2026-09-22
+  polymarket_url: https://polymarket.com/sports/nfl/nfl-nyg-la-2026-09-22
+  url: https://polymarket.com/sports/nfl/nfl-nyg-la-2026-09-22
+  NYG_win_odds: 25.5¢
+  LAR_win_odds: 74.5¢
+  explanation: NFL game prediction market showing the probability of the New York Giants winning against the Los Angeles Rams. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
+  lastUpdated: '2026-09-19T03:23:36.456123Z'

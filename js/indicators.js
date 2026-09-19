@@ -234,15 +234,19 @@ const IndicatorRenderers = (function () {
             if (!isNaN(awayProb) && !isNaN(homeProb)) {
                 const awayColor = indicator.away_color || '#22c55e';
                 const homeColor = indicator.home_color || '#ef4444';
+                const awayState = awayProb === homeProb ? 'sports-even' : awayProb > homeProb ? 'sports-favorite' : 'sports-underdog';
+                const homeState = awayProb === homeProb ? 'sports-even' : homeProb > awayProb ? 'sports-favorite' : 'sports-underdog';
+                const awayFillState = awayState === 'sports-favorite' ? 'sports-favorite-fill' : awayState === 'sports-underdog' ? 'sports-underdog-fill' : 'sports-even-fill';
+                const homeFillState = homeState === 'sports-favorite' ? 'sports-favorite-fill' : homeState === 'sports-underdog' ? 'sports-underdog-fill' : 'sports-even-fill';
                 latestDataHtml = `
                     <div class="prediction-bar-container prediction-dual-bar">
                         <div class="prediction-bar-row prediction-bar-row-inline">
-                            <span class="prediction-value" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
+                            <span class="prediction-value sports-team-label sports-away ${awayState}" style="--team-color: ${awayColor};" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
                             <div class="prediction-bar-track prediction-bar-track-inline">
-                                <div class="prediction-bar-fill bar-yes" style="width: ${awayProb}%; height: 100%; background: linear-gradient(90deg, ${awayColor} 0%, ${awayColor}cc 100%);" title="${awayOdds} ${awayLabel}"></div>
-                                <div class="prediction-bar-fill bar-no" style="width: ${homeProb}%; position: absolute; right: 0; height: 100%; background: linear-gradient(90deg, ${homeColor} 0%, ${homeColor}cc 100%);" title="${homeOdds} ${homeLabel}"></div>
+                                <div class="prediction-bar-fill bar-yes ${awayFillState}" style="width: ${awayProb}%; height: 100%; background: linear-gradient(90deg, ${awayColor} 0%, ${awayColor}cc 100%); --team-color: ${awayColor};" title="${awayOdds} ${awayLabel}"></div>
+                                <div class="prediction-bar-fill bar-no ${homeFillState}" style="width: ${homeProb}%; position: absolute; right: 0; height: 100%; background: linear-gradient(90deg, ${homeColor} 0%, ${homeColor}cc 100%); --team-color: ${homeColor};" title="${homeOdds} ${homeLabel}"></div>
                             </div>
-                            <span class="prediction-value-left" title="${homeLabel}">${homeOdds} ${homeLabel}</span>
+                            <span class="prediction-value-left sports-team-label sports-home ${homeState}" style="--team-color: ${homeColor};" title="${homeLabel}">${homeOdds} ${homeLabel}</span>
                         </div>
                     </div>`;
             }

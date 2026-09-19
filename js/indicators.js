@@ -244,7 +244,7 @@ latestDataHtml = `
                                 <span class="prediction-value sports-team-label sports-away ${awayState}" style="--team-color: ${awayColor};" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
                                 <div class="prediction-bar-track prediction-bar-track-inline">
                                     <div class="prediction-bar-fill bar-away ${awayFillState}" style="width: ${awayProb}%; height: 100%; --team-color: ${awayColor};" title="${awayLabel} ${awayOdds}"></div>
-                                    <div class="prediction-bar-fill bar-home ${homeFillState}" style="width: ${homeProb}%; margin-left: ${awayProb}%; height: 100%; --team-color: ${homeColor};" title="${homeLabel} ${homeOdds}"></div>
+                                    <div class="prediction-bar-fill bar-home ${homeFillState}" style="width: calc(${homeProb}% - 2px); margin-left: calc(${awayProb}% + 2px); height: 100%; --team-color: ${homeColor};" title="${homeLabel} ${homeOdds}"></div>
                                 </div>
                                 <span class="prediction-value-left sports-team-label sports-home ${homeState}" style="--team-color: ${homeColor};" title="${homeLabel}">${homeLabel} ${homeOdds}</span>
                             </div>

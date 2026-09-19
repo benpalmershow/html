@@ -18,11 +18,10 @@
         "type": "curation",
         "content": "Independent International Fact-Finding Mission on Iran confirms civilians suffered serious human rights violations and 'crimes against humanity committed by their government.' Killings by security forces 'occurred on a massive scale in all provinces' during violent crackdown on mass protests. At least 221 children killed, some as young as two. Security forces attacked health care facilities. 29 men executed following summary trials; 70+ face imminent execution. Mission also found 'reasonable grounds' US committed war crimes via indiscriminate attacks in Feb 2026, including Tomahawk strikes on Tree of Tayyiba Elementary School in Minab (150+ killed, 120 children) and precision missile strikes with tungsten pellets in Lamard (22 civilians killed)."
       },
-     
       {
         "title": "📰 Someone Said Something",
         "content": "To Broadly cite 'commenters on social media' is like saying anyone said something. No need to identify who the commentator was, no need to verify facts of the statement. It just paves the way for the story teller to include extreme speech in order to attract attention.",
-        "category": "media",
+        "category": "dispatches",
         "tags": [
           "nyt-critique",
           "social-media"
@@ -42,7 +41,7 @@
       {
         "title": "📊 AI Not Popular With Voters",
         "content": "NYT: 'A.I. Is Not Very Popular With Voters, New Poll Finds' - Asking if you support construction of data centers is not the same as asking if you support AI. Americans love their SUVs, but they wouldn't approve drilling for oil in Alaska.",
-        "category": "media",
+        "category": "dispatches",
         "tags": [
           "ai",
           "polling",
@@ -75,7 +74,14 @@
         "link": "https://ag.ny.gov/press-release/2026/attorney-general-james-leads-major-challenge-trump-administrations-attack",
         "category": "policy",
         "subcategory": "legal",
-        "tags": ["immigration", "public charge","snap","attorney general", "lawsuit", "external"],
+        "tags": [
+          "immigration",
+          "public charge",
+          "snap",
+          "attorney general",
+          "lawsuit",
+          "external"
+        ],
         "type": "curation",
         "content": "NY AG Letitia James leads a 22-state coalition (plus DC) suing to block the Trump administration's new public charge rule that would let immigration officers deny green cards based on use of public benefits, including school meals, health insurance, or SNAP. The rule takes effect Sept 18. James previously blocked a similar 2020 rule, upheld by the 2nd Circuit."
       },
@@ -84,7 +90,12 @@
         "link": "https://iranwarcost.watson.brown.edu/",
         "category": "policy",
         "subcategory": "indicators",
-        "tags": ["iran war", "energy", "gasoline", "external"],
+        "tags": [
+          "iran war",
+          "energy",
+          "gasoline",
+          "external"
+        ],
         "type": "curation",
         "content": "Extra fuel costs to US consumers since the Iran war began Feb 28, 2026. The tracker compares actual AAA gasoline/diesel prices against a no-war counterfactual baseline. As of Sept 2026, total extra consumer burden exceeds $100B nationally, averaging $760+ per household. Texas bears the largest share (~$11B)."
       },
@@ -93,7 +104,13 @@
         "link": "https://www.cbo.gov/publication/62756",
         "category": "economy",
         "subcategory": "indicators",
-        "tags": ["iran war", "cbo", "defense spending", "inflation", "external"],
+        "tags": [
+          "iran war",
+          "cbo",
+          "defense spending",
+          "inflation",
+          "external"
+        ],
         "type": "curation",
         "content": "CBO estimates DoD combat operations against Iran cost $38.1B through Aug 1, 2026. Ongoing cost: $2-3B/month depending on intensity. Munitions replacement is the largest component: $21.7B ($7.3B cruise missiles, $13.1B missile defense interceptors, $1.2B other). War depletes interceptor stockpiles — rebuilding takes 5+ years. CBO projects 0.5pp higher PCE inflation in Q1 2027 driven by energy costs (Strait of Hormuz, Red Sea disruptions). Pentagon declined CBO data requests; estimates use public sources."
       },
@@ -102,20 +119,30 @@
         "link": "https://www.state.gov/arms-sales-congressional-notifications/",
         "category": "trade",
         "subcategory": "tariffs",
-        "tags": ["arms sales", "congress","defense spending", "hard power", "external"],
+        "tags": [
+          "arms sales",
+          "congress",
+          "defense spending",
+          "hard power",
+          "external"
+        ],
         "type": "curation",
         "content": "State Dept's Bureau of Political-Military Affairs posted new Foreign Military Sales congressional notifications (Sept 2026): Saudi Arabia (JDAM-ER, AGT-1500 engines), Iraq (Bell 412/407M helicopters), South Korea (AIM-9X Block II), Qatar (KC-46A aerial refueling), Norway (UH-60M Black Hawks), Italy (APKWS-II), Oman (F-16 sustainment), Argentina (UH-60L Black Hawks)."
       },
-{
+      {
         "title": "🇺🇸 Foreign Aid",
         "link": "https://foreignassistance.gov",
         "category": "trade",
         "subcategory": "tariffs",
-        "tags": ["foreign aid", "state department","soft power", "external"],
+        "tags": [
+          "foreign aid",
+          "state department",
+          "soft power",
+          "external"
+        ],
         "type": "curation",
         "content": "USG foreign aid across 20+ agencies since 1946."
       }
-   
     ]
   },
   {
@@ -127,7 +154,12 @@
         "collapsed": true,
         "category": "policy",
         "subcategory": "legal",
-        "tags": ["clancy trial","podcast", "medical", "testimony"],
+        "tags": [
+          "clancy trial",
+          "podcast",
+          "medical",
+          "testimony"
+        ],
         "type": "dispatches"
       }
     ]
@@ -138,7 +170,7 @@
       {
         "title": "🤖 AI Pocalypse",
         "content": "Would you rather Obama, Jeffries, and Sanders fight rogue AI, or <a href='https://finance.yahoo.com/quote/CRWD/' target='_blank' rel='noopener noreferrer'>$CRWD</a>? My +900% ROI money is on private self-interested actors not dumb-ass faux-altruistic politicians.",
-        "category": "media",
+        "category": "dispatches",
         "tags": [
           "ai",
           "policy",
@@ -176,19 +208,20 @@
         "title": "🚌 Free and Fast",
         "link": "https://www.nyc.gov/mayors-office/news/2026/06/mayor-mamdani-advances-34th-street-busway-in-manhattan",
         "content": "Press Release: Mayor Mamdani and NYC DOT restart work on Manhattan's 34th Street busway, delivering faster service for 28,000 daily riders. The busway runs both directions from 9th Ave to 3rd Ave, with through traffic limited to buses, trucks, and emergency vehicles. Busways in NYC have boosted speeds up to 60% while cutting injuries by up to 45%, with 34th Street being a Vision Zero Priority Corridor after 324 traffic injuries from 2020-2024. Reality: No progress on initiatives to reduce congestion, improve bus speeds, or enhance safety. The busway is a political stunt with no real impact on traffic.",
-        "category": "government",
+        "category": "policy",
         "tags": [
           "nyc",
           "transportation",
           "mamdani",
-          "external"],
+          "external"
+        ],
         "type": "curation"
       },
       {
         "title": "👩‍🏫 Racist Liberals",
         "link": "https://www.justice.gov/opa/pr/joint-investigation-us-justice-department-and-us-department-education-finds-uc-berkeley-law",
         "content": "Joint investigation by DOJ and ED finds Berkeley Law School deliberately discriminates against white and Asian students in admissions, using race, essay prompts, and other tactics to further diversity goals post-SFFA. More than one-third of admitted black applicants had LSAT scores below 99% of admitted white applicants. Black applicants had 5.8x higher odds of admission than comparable white applicants in 2025.",
-        "category": "legal",
+        "category": "policy",
         "tags": [
           "berkeley",
           "discrimination",
@@ -201,7 +234,7 @@
       {
         "title": "🤖 AI fearmongering",
         "content": "'AI could launch a bioweapon attack!' There will always be a risk of a big bad weapon, but there is also the possible reward of sustainable abundance. There was the risk of 9/11, yet unimaginative government could not prevent it. Start with converting human cronyism into data driven appropriation. Fear GOVERNMENT not TECH. Solve inflation first. Another NYT narrative: 'Less than a quarter of Americans expect A.I. to have a positive impact on K-12 education, arts and entertainment, how people do their jobs, the economy, personal relationships or happiness over the next 20 years.' Says who? Then why does everyone use it?!",
-        "category": "media",
+        "category": "dispatches",
         "tags": [
           "ai",
           "nyt-critique",
@@ -234,7 +267,8 @@
       {
         "title": "🌍 Equal Earth Projection",
         "link": "https://en.wikipedia.org/wiki/Equal_Earth_projection",
-            "category": "regulatory",        "tags": [
+        "category": "policy",
+        "tags": [
           "geography",
           "external"
         ]
@@ -244,7 +278,6 @@
   {
     "date": "09/10/26",
     "entries": [
-    
       {
         "title": "🎙️ Clancy Trial - Day 4 (46:23)",
         "content": "'Despite our best resuscitative efforts, the medicine, the fluids, the CPR, breathing for him, it did not look like his heart would ever start again...'",
@@ -290,41 +323,41 @@
           "financials",
           "politics"
         ],
-      "type": "data"
-    },
-    {
-      "title": "🛒 $22B Christy Walton tells you to march on Labor Day",
-      "link": "https://en.wikipedia.org/wiki/Christy_Walton",
-      "content": "$22B Christy Walton telling you to March on Labor Day. Full page ad in NYT. She should donate her funds to Walmart employees.",
-      "category": "economy",
-      "subcategory": "corporate",
-      "type": "note",
-      "tags": [
-        "wealth",
-        "labor",
-        "nyt-critique",
-        "external"
-      ]
-    },
-    {
-      "title": "🕵️ SNAP and Social Security Fraud",
-      "link": "https://www.justice.gov/usao-ma/pr/illegal-alien-sentenced-prison-snap-and-social-security-fraud",
-      "content": "The Boston Globe tells you fraud is not borne out by their experience. But here it is. And it's not just this guy who's figured out how to get free money.",
-      "category": "policy",
-      "subcategory": "legal",
-      "type": "curation",
-      "tags": [
-        "snap",
-        "social-security",
-        "fraud",
-        "immigration",
-        "external"
-      ]
+        "type": "data"
+      },
+      {
+        "title": "🛒 $22B Christy Walton tells you to march on Labor Day",
+        "link": "https://en.wikipedia.org/wiki/Christy_Walton",
+        "content": "$22B Christy Walton telling you to March on Labor Day. Full page ad in NYT. She should donate her funds to Walmart employees.",
+        "category": "economy",
+        "subcategory": "corporate",
+        "type": "note",
+        "tags": [
+          "wealth",
+          "labor",
+          "nyt-critique",
+          "external"
+        ]
+      },
+      {
+        "title": "🕵️ SNAP and Social Security Fraud",
+        "link": "https://www.justice.gov/usao-ma/pr/illegal-alien-sentenced-prison-snap-and-social-security-fraud",
+        "content": "The Boston Globe tells you fraud is not borne out by their experience. But here it is. And it's not just this guy who's figured out how to get free money.",
+        "category": "policy",
+        "subcategory": "legal",
+        "type": "curation",
+        "tags": [
+          "snap",
+          "social-security",
+          "fraud",
+          "immigration",
+          "external"
+        ]
       }
     ]
   },
   {
-  "date": "09/05/26",
+    "date": "09/05/26",
     "entries": [
       {
         "title": "🤳 Screen Time",
@@ -351,7 +384,6 @@
         ],
         "type": "curation"
       },
-
       {
         "title": "Tesla Cybercab Self-Certification Probe",
         "link": "https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
@@ -428,7 +460,6 @@
           "venezuela",
           "oil",
           "energy"
-      
         ],
         "type": "curation"
       },
@@ -2568,7 +2599,8 @@
         "subcategory": "housing",
         "tags": [
           "financials",
-          "housing", "macro-data"
+          "housing",
+          "macro-data"
         ],
         "type": "curation"
       },

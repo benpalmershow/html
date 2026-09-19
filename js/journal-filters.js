@@ -54,8 +54,6 @@
     let currentCategory = 'all';
     let currentSubcategory = 'all';
     let currentTag = null;
-    let currentSearch = '';
-    let searchTimeout = null;
 
     function syncURL() {
         const url = new URL(window.location);
@@ -166,36 +164,6 @@
 
                 // 4. Search match with fuzzy matching
                 let matchesSearch = true;
-                if (currentSearch) {
-                    const q = currentSearch.toLowerCase().trim();
-                    if (q.startsWith('#')) {
-                        const tagQuery = q.slice(1);
-                        matchesSearch = entryTags.some(t => t.toLowerCase().includes(tagQuery));
-                    } else {
-                        // Fuzzy matching - check if query characters appear in order
-                        const fuzzyMatch = (text, query) => {
-                            let textIndex = 0;
-                            let queryIndex = 0;
-                            while (textIndex < text.length && queryIndex < query.length) {
-                                if (text[textIndex] === query[queryIndex]) {
-                                    queryIndex++;
-                                }
-                                textIndex++;
-                            }
-                            return queryIndex === query.length;
-                        };
-
-                        const searchTerm = q.replace(/\s+/g, '');
-                        matchesSearch = 
-                            title.toLowerCase().includes(q) ||
-                            content.toLowerCase().includes(q) ||
-                            entryCategory.toLowerCase().includes(q) ||
-                            entrySubcategory.toLowerCase().includes(q) ||
-                            entryTags.some(t => t.toLowerCase().includes(q)) ||
-                            fuzzyMatch(title.toLowerCase(), searchTerm) ||
-                            fuzzyMatch(content.toLowerCase(), searchTerm);
-                    }
-                }
 
                 const isMatch = matchesCategory && matchesSubcategory && matchesTag && matchesSearch;
                 entry.style.display = isMatch ? '' : 'none';
@@ -211,11 +179,10 @@
         // Update empty state and search results count
         const emptyEl = document.getElementById('empty');
         const loadMoreBtn = document.getElementById('load-more');
-        const searchResultsCount = document.getElementById('searchResultsCount');
         const hasVisibleEntries = matchingEntries > 0;
 
         if (emptyEl) {
-            if (currentSearch || currentCategory !== 'all' || currentTag) {
+            if (currentCategory !== 'all' || currentTag) {
                 emptyEl.textContent = `No entries found matching your criteria (${totalEntries} total entries)`;
             } else {
                 emptyEl.textContent = 'No entries found.';
@@ -223,24 +190,14 @@
             emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
         }
 
-        // Update search results count indicator
-        if (searchResultsCount) {
-            if (currentSearch && matchingEntries > 0) {
-                searchResultsCount.textContent = `${matchingEntries} results`;
-                searchResultsCount.style.display = 'inline-block';
-            } else {
-                searchResultsCount.style.display = 'none';
-            }
-        }
-
-        if (loadMoreBtn && currentCategory === 'all' && !currentTag && !currentSearch) {
+        if (loadMoreBtn && currentCategory === 'all' && !currentTag) {
             loadMoreBtn.style.display = hasVisibleEntries ? '' : 'none';
         }
 
         // Auto load more if filtering and more entries exist.
         // Keep loading until all entries are exhausted so matches spread
         // across paginated days are all visible, not just those in the first batch.
-        const isFiltered = currentCategory !== 'all' || currentSubcategory !== 'all' || currentTag || currentSearch;
+        const isFiltered = currentCategory !== 'all' || currentSubcategory !== 'all' || currentTag;
         if (isFiltered && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
             const loadUntilExhausted = () => {
                 if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
@@ -359,38 +316,6 @@
         }
     }
 
-    function setupSearch() {
-        const searchToggle = document.getElementById('searchToggle');
-        const filterBar = document.getElementById('journal-filters');
-        const searchInput = document.getElementById('journalSearch');
-
-        if (!searchToggle || !filterBar || !searchInput) return;
-
-        searchToggle.addEventListener('click', () => {
-            filterBar.classList.toggle('search-open');
-            if (filterBar.classList.contains('search-open')) {
-                searchInput.focus();
-            }
-        });
-
-        searchInput.addEventListener('input', (e) => {
-            // Debounce search for better performance
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                currentSearch = e.target.value.trim();
-                filterJournalEntries();
-            }, 300);
-        });
-
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                filterBar.classList.remove('search-open');
-                searchInput.value = '';
-                currentSearch = '';
-                filterJournalEntries();
-            }
-        });
-    }
 
     async function initJournalFilters() {
         try {
@@ -401,11 +326,9 @@
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
                     setupJournalFilters();
-                    setupSearch();
                 });
             } else {
                 setupJournalFilters();
-                setupSearch();
             }
         } catch (error) {
             console.error('Failed to initialize journal filters:', error);

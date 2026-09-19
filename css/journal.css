@@ -78,18 +78,6 @@ main{flex:1}
 .load-more:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 #empty{display:none;color:var(--text-muted);padding:2rem 0;font-size:.9rem;text-align:center}
 
-/* ── Search Results Feedback ── */
-.search-results-count {
-  display: inline-block;
-  margin-left: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  background: var(--bg-secondary);
-  border-radius: 4px;
-}
-
 /* ── Loading States ── */
 .feed-loading {
   display: flex;
@@ -136,11 +124,6 @@ main{flex:1}
     padding: 0.6rem 0.8rem;
   }
   
-  .search-toggle {
-    min-width: 2.8rem;
-    min-height: 2.8rem;
-  }
-  
   .load-more {
     min-height: 3rem;
     font-size: 1rem;
@@ -158,12 +141,6 @@ main{flex:1}
   /* Mobile filter bar optimization */
   .filter-bar {
     padding: 0.5rem 0.85rem;
-  }
-  
-  .indicator-search {
-    padding: 0.6rem 0.8rem;
-    font-size: 1rem;
-    min-height: 2.8rem;
   }
 }
 

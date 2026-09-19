@@ -42,33 +42,6 @@
     pointer-events: none;
 }
 
-/* Search Toggle Button */
-.search-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    min-height: 48px;
-    padding: 0;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-}
-
-.search-toggle:hover {
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
-}
-
-.search-toggle svg {
-    width: 16px;
-    height: 16px;
-}
-
 /* Filter Buttons Container */
 .filters {
     display: flex;
@@ -130,77 +103,12 @@
     border-color: var(--logo-teal, #2c5f5a);
 }
 
-/* Search Input */
-.filter-bar-search {
-    display: none;
-    position: relative;
-    flex: 1 1 auto;
-    max-width: 280px;
-}
-
-.filter-bar-search .indicator-search {
-    width: 100%;
-    max-width: 100%;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    transition: border-color 0.2s ease;
-}
-
-.filter-bar-search .indicator-search:focus {
-    border-color: var(--logo-teal);
-}
-
-.filter-bar-search .indicator-search::placeholder {
-    color: var(--text-muted);
-}
-
-.filter-bar.search-open .search-toggle {
-    display: none;
-}
-
-.filter-bar.search-open .filter-bar-search {
-    display: block;
-    animation: searchIn 0.2s ease-out;
-    flex: 1 1 0;
-    min-width: 120px;
-    max-width: 280px;
-}
-
-.filter-bar.search-open .filters {
-    min-width: 0;
-    flex-shrink: 1;
-    overflow-x: auto;
-}
-
-@keyframes searchIn {
-    from {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 
 @media (max-width: 400px) {
   .filter-bar {
     gap: 4px;
     padding: 0.5rem 0.25rem;
     height: 56px;
-  }
-  .search-toggle {
-    width: 40px;
-    min-height: 40px;
-  }
-  .search-toggle svg {
-    width: 14px;
-    height: 14px;
   }
   .filter-btn {
     min-width: 32px;

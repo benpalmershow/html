@@ -213,7 +213,7 @@
 .metric-section.collapsed .metric-section-body { max-height: 0; }
 .metric-section.collapsed .prediction-section-label { margin-bottom: 0; border-bottom-color: transparent; }
 
-.prediction-bar-track { flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; position: relative; }
+.prediction-bar-track { flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 0px; overflow: hidden; position: relative; }
 
 .prediction-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
 

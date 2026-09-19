@@ -402,11 +402,20 @@ function calculateYoYChange(indicator, MONTHS) {
 return changes;
  }
 
- // Export to global scope for use in other modules
- window.DataUtils = {
-     getLatestMonthForIndicator,
-     calculateMoMChange,
-     calculateYoYChange,
-     calculateAllMonthlyChanges,
-     DEFAULT_MONTHS
- };
+  // Export to global scope for use in other modules
+  window.DataUtils = {
+      getLatestMonthForIndicator,
+      calculateMoMChange,
+      calculateYoYChange,
+      calculateAllMonthlyChanges,
+      DEFAULT_MONTHS,
+      TEAM_COLORS: {
+          'ARI': '#97233F', 'ATL': '#A71930', 'BAL': '#241773', 'CHI': '#0B162A',
+          'CIN': '#FB4F14', 'DAL': '#003594', 'DEN': '#FB4F14', 'HOU': '#03202F',
+          'IND': '#002C5F', 'JAX': '#006778', 'KC': '#E31837', 'LAC': '#0080C6',
+          'LAR': '#003594', 'MIA': '#008E97', 'NE': '#002244', 'NO': '#D3BC8D',
+          'NYG': '#0B2265', 'NYJ': '#125740', 'PHI': '#004C54', 'PIT': '#FFB612',
+          'SF': '#AA0000', 'TB': '#D50A0A', 'TEN': '#4B925E', 'WAS': '#5A1414',
+          'CAR': '#0085CA', 'GB': '#203731', 'LV': '#000000', 'SEA': '#002244'
+      }
+  };

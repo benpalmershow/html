@@ -503,6 +503,54 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
             };
          }
 
+        // Handle NFL/sports win-odds time-series data
+        const sportsSorted = Object.entries(probabilities)
+            .filter(([, v]) => v && typeof v === 'object' && Object.keys(v).some(k => k.endsWith('_win_odds')))
+            .sort(([a], [b]) => new Date(a) - new Date(b));
+        if (sportsSorted.length > 1) {
+            const allWinOddsKeys = [...new Set(sportsSorted.flatMap(([, v]) => Object.keys(v).filter(k => k.endsWith('_win_odds'))))];
+            const labels = sportsSorted.map(([date]) =>
+                new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+            );
+            const dateLabels = sportsSorted.map(([date]) => date);
+            const teamColors = window.DataUtils?.TEAM_COLORS || {
+                'ARI': '#97233F', 'ATL': '#A71930', 'BAL': '#241773', 'CHI': '#0B162A',
+                'CIN': '#FB4F14', 'DAL': '#003594', 'DEN': '#FB4F14', 'HOU': '#03202F',
+                'IND': '#002C5F', 'JAX': '#006778', 'KC': '#E31837', 'LAC': '#0080C6',
+                'LAR': '#003594', 'MIA': '#008E97', 'NE': '#002244', 'NO': '#D3BC8D',
+                'NYG': '#0B2265', 'NYJ': '#125740', 'PHI': '#004C54', 'PIT': '#FFB612',
+                'SF': '#AA0000', 'TB': '#D50A0A', 'TEN': '#4B925E', 'WAS': '#5A1414',
+                'CAR': '#0085CA', 'GB': '#203731', 'LV': '#000000', 'SEA': '#002244'
+            };
+            const datasets = allWinOddsKeys.map(key => {
+                const teamAbbr = key.replace('_win_odds', '');
+                const color = teamColors[teamAbbr] || '#2C5F5A';
+                return {
+                    label: teamAbbr,
+                    data: sportsSorted.map(([, v]) => {
+                        const val = v[key];
+                        return val ? parseFloat(String(val).replace(/[^0-9.-]/g, '')) : null;
+                    }),
+                    type: 'line',
+                    borderColor: color,
+                    backgroundColor: color + '20',
+                    borderWidth: 2.5,
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                    pointBackgroundColor: color,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1.5
+                };
+            });
+            return {
+                type: 'chartjs-mixed',
+                data: { labels, datasets },
+                _dateLabels: dateLabels
+            };
+        }
+
         // Handle generic multi-key probability time series (e.g., outcome-based markets like "Will Trump be impeached?")
         const genericSorted = Object.entries(probabilities)
             .filter(([, v]) => v && typeof v === 'object' && !v.yes && !v.no && !v['Democratic Party'] && !v['Republican Party'] && !v.rate_hold_odds)

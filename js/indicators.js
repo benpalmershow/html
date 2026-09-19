@@ -224,7 +224,7 @@ const IndicatorRenderers = (function () {
 
         // Win odds as a single stacked dual-color bar (same pattern as other prediction markets).
         const winOddsKeys = Object.keys(indicator).filter(key => key.endsWith('_win_odds'));
-        let latestDataHtml = '', historyDataHtml = '';
+        let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
         if (winOddsKeys.length >= 2) {
             const [awayKey, homeKey] = winOddsKeys;
             const awayLabel = indicator[`${awayKey.replace('_win_odds', '_pm_name')}`] || awayKey.replace('_win_odds', '').toUpperCase();
@@ -232,23 +232,40 @@ const IndicatorRenderers = (function () {
             const awayOdds = indicator[awayKey], homeOdds = indicator[homeKey];
             const awayProb = parseFloat(awayOdds), homeProb = parseFloat(homeOdds);
             if (!isNaN(awayProb) && !isNaN(homeProb)) {
-                const awayColor = indicator.away_color || '#22c55e';
-                const homeColor = indicator.home_color || '#ef4444';
+            const awayColor = (window.DataUtils?.TEAM_COLORS || {})[awayKey.replace('_win_odds', '')] || indicator.away_color || '#22c55e';
+                const homeColor = (window.DataUtils?.TEAM_COLORS || {})[homeKey.replace('_win_odds', '')] || indicator.home_color || '#ef4444';
                 const awayState = awayProb === homeProb ? 'sports-even' : awayProb > homeProb ? 'sports-favorite' : 'sports-underdog';
                 const homeState = awayProb === homeProb ? 'sports-even' : homeProb > awayProb ? 'sports-favorite' : 'sports-underdog';
                 const awayFillState = awayState === 'sports-favorite' ? 'sports-favorite-fill' : awayState === 'sports-underdog' ? 'sports-underdog-fill' : 'sports-even-fill';
                 const homeFillState = homeState === 'sports-favorite' ? 'sports-favorite-fill' : homeState === 'sports-underdog' ? 'sports-underdog-fill' : 'sports-even-fill';
-                latestDataHtml = `
-                    <div class="prediction-bar-container prediction-dual-bar">
-                        <div class="prediction-bar-row prediction-bar-row-inline">
-                            <span class="prediction-value sports-team-label sports-away ${awayState}" style="--team-color: ${awayColor};" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
-                            <div class="prediction-bar-track prediction-bar-track-inline">
-                                <div class="prediction-bar-fill bar-yes ${awayFillState}" style="width: ${awayProb}%; height: 100%; background: linear-gradient(90deg, ${awayColor} 0%, ${awayColor}cc 100%); --team-color: ${awayColor};" title="${awayOdds} ${awayLabel}"></div>
-                                <div class="prediction-bar-fill bar-no ${homeFillState}" style="width: ${homeProb}%; position: absolute; right: 0; height: 100%; background: linear-gradient(90deg, ${homeColor} 0%, ${homeColor}cc 100%); --team-color: ${homeColor};" title="${homeOdds} ${homeLabel}"></div>
+latestDataHtml = `
+                        <div class="prediction-bar-container prediction-dual-bar">
+                            <div class="prediction-bar-row prediction-bar-row-inline">
+                                <span class="prediction-value sports-team-label sports-away ${awayState}" style="--team-color: ${awayColor};" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
+                                <div class="prediction-bar-track prediction-bar-track-inline">
+                                    <div class="prediction-bar-fill bar-away ${awayFillState}" style="width: ${awayProb}%; height: 100%; --team-color: ${awayColor};" title="${awayLabel} ${awayOdds}"></div>
+                                    <div class="prediction-bar-fill bar-home ${homeFillState}" style="width: ${homeProb}%; margin-left: ${awayProb}%; height: 100%; --team-color: ${homeColor};" title="${homeLabel} ${homeOdds}"></div>
+                                </div>
+                                <span class="prediction-value-left sports-team-label sports-home ${homeState}" style="--team-color: ${homeColor};" title="${homeLabel}">${homeLabel} ${homeOdds}</span>
                             </div>
-                            <span class="prediction-value-left sports-team-label sports-home ${homeState}" style="--team-color: ${homeColor};" title="${homeLabel}">${homeOdds} ${homeLabel}</span>
-                        </div>
-                    </div>`;
+                        </div>`;
+            }
+        }
+
+        // Probability history over time (like FOMC)
+        if (indicator.probabilities && typeof indicator.probabilities === 'object') {
+            const sortedProbabilities = Object.entries(indicator.probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
+            if (sortedProbabilities.length > 1) {
+                hasHistory = true;
+                historyDataHtml = sortedProbabilities.slice(1).map(([date, probs]) => {
+                    const dateLabel = formatDateShort(date);
+                    const entries = Object.entries(probs).filter(([k]) => k.endsWith('_win_odds'));
+                    const historyItems = entries.map(([key, val]) => {
+                        const teamAbbr = key.replace('_win_odds', '');
+                        return `<div class="prediction-history-item"><span class="prediction-history-team">${teamAbbr}</span><span class="prediction-history-value">${val}</span></div>`;
+                    }).join('');
+                    return `<div class="prediction-history-row prediction-history-row-inline"><span class="prediction-history-date prediction-history-date-inline">${dateLabel}</span><div class="prediction-history-content">${historyItems}</div></div>`;
+                }).join('');
             }
         }
 
@@ -256,7 +273,7 @@ const IndicatorRenderers = (function () {
         if (indicator.venue) rows.push(`<span class="month-label">Venue:</span> <span class="month-value">${indicator.venue}</span>`);
 
         rows.forEach((row, i) => { historyDataHtml += `<div class="data-row">${row}</div>`; });
-        return { latestDataHtml, historyDataHtml, hasHistory: rows.length > 0 || winOddsKeys.length >= 2 };
+        return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
     function renderVenezuela(indicator) {

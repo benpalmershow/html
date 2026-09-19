@@ -78,14 +78,12 @@
   <link rel="preload" href="css/worldcup.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/tables.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/alerts.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="css/components/search.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/footer.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="css/components/home.css?v=20260816" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="css/worldcup.css?v=20260816">
     <link rel="stylesheet" href="css/components/tables.css?v=20260816">
     <link rel="stylesheet" href="css/components/alerts.css?v=20260816">
-    <link rel="stylesheet" href="css/components/search.css?v=20260816">
     <link rel="stylesheet" href="css/components/footer.css?v=20260816">
     <link rel="stylesheet" href="css/components/home.css?v=20260816">
   </noscript>
@@ -134,12 +132,9 @@
     <div id="lastUpdated" class="last-updated"></div>
 
      <div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
-            <button id="searchToggle" class="search-toggle" aria-label="Search" title="Search" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            </button>
-            <div class="filter-bar-search" id="filterBarSearch">
-              <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search indicators..." autocomplete="off">
-            </div>
+
+              
+     
              <div class="filters" id="filter-buttons">
                <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
                <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
@@ -167,12 +162,6 @@
                 <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
               </div>
             </div>
-          </div>
-
-          <div id="searchEmptyState" class="empty-state" style="display: none;">
-            <i data-lucide="search-x"></i>
-            <p>No indicators match your search. Try adjusting your query.</p>
-            <button type="button" id="clearSearchBtn" class="clear-search-btn">Clear search</button>
           </div>
 
         <noscript>
@@ -235,12 +224,6 @@
   <script>
     (function() {
       const loadNonCriticalScripts = () => {
-        const searchScript = document.createElement('script');
-        searchScript.src = 'js/search.js?v=20260816';
-        searchScript.defer = true;
-        document.head.appendChild(searchScript);
-
-        // World Cup - appears later in page
         const worldCupScript = document.createElement('script');
         worldCupScript.src = 'js/world-cup.js?v=20260816';
         worldCupScript.defer = true;

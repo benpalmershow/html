@@ -55,6 +55,7 @@
     let currentSubcategory = 'all';
     let currentTag = null;
     let currentSearch = '';
+    let searchTimeout = null;
 
     function syncURL() {
         const url = new URL(window.location);
@@ -163,7 +164,7 @@
                 // 3. Tag match
                 const matchesTag = !currentTag || entryTags.includes(currentTag);
 
-                // 4. Search match
+                // 4. Search match with fuzzy matching
                 let matchesSearch = true;
                 if (currentSearch) {
                     const q = currentSearch.toLowerCase().trim();
@@ -171,11 +172,28 @@
                         const tagQuery = q.slice(1);
                         matchesSearch = entryTags.some(t => t.toLowerCase().includes(tagQuery));
                     } else {
-                        matchesSearch = title.includes(q) ||
-                                        content.includes(q) ||
-                                        entryCategory.includes(q) ||
-                                        entrySubcategory.includes(q) ||
-                                        entryTags.some(t => t.toLowerCase().includes(q));
+                        // Fuzzy matching - check if query characters appear in order
+                        const fuzzyMatch = (text, query) => {
+                            let textIndex = 0;
+                            let queryIndex = 0;
+                            while (textIndex < text.length && queryIndex < query.length) {
+                                if (text[textIndex] === query[queryIndex]) {
+                                    queryIndex++;
+                                }
+                                textIndex++;
+                            }
+                            return queryIndex === query.length;
+                        };
+
+                        const searchTerm = q.replace(/\s+/g, '');
+                        matchesSearch = 
+                            title.toLowerCase().includes(q) ||
+                            content.toLowerCase().includes(q) ||
+                            entryCategory.toLowerCase().includes(q) ||
+                            entrySubcategory.toLowerCase().includes(q) ||
+                            entryTags.some(t => t.toLowerCase().includes(q)) ||
+                            fuzzyMatch(title.toLowerCase(), searchTerm) ||
+                            fuzzyMatch(content.toLowerCase(), searchTerm);
                     }
                 }
 
@@ -190,13 +208,29 @@
             daySection.style.display = hasVisibleEntries ? '' : 'none';
         });
 
-        // Update empty state
+        // Update empty state and search results count
         const emptyEl = document.getElementById('empty');
         const loadMoreBtn = document.getElementById('load-more');
+        const searchResultsCount = document.getElementById('searchResultsCount');
         const hasVisibleEntries = matchingEntries > 0;
 
         if (emptyEl) {
+            if (currentSearch || currentCategory !== 'all' || currentTag) {
+                emptyEl.textContent = `No entries found matching your criteria (${totalEntries} total entries)`;
+            } else {
+                emptyEl.textContent = 'No entries found.';
+            }
             emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
+        }
+
+        // Update search results count indicator
+        if (searchResultsCount) {
+            if (currentSearch && matchingEntries > 0) {
+                searchResultsCount.textContent = `${matchingEntries} results`;
+                searchResultsCount.style.display = 'inline-block';
+            } else {
+                searchResultsCount.style.display = 'none';
+            }
         }
 
         if (loadMoreBtn && currentCategory === 'all' && !currentTag && !currentSearch) {
@@ -340,8 +374,12 @@
         });
 
         searchInput.addEventListener('input', (e) => {
-            currentSearch = e.target.value.trim();
-            filterJournalEntries();
+            // Debounce search for better performance
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                currentSearch = e.target.value.trim();
+                filterJournalEntries();
+            }, 300);
         });
 
         searchInput.addEventListener('keydown', (e) => {
@@ -357,21 +395,17 @@
     async function initJournalFilters() {
         try {
             readURL();
-
-            const waitForJournal = () => {
-                const feed = document.getElementById('feed');
-                if (feed && feed.children.length > 0) {
+            
+            // Set up filters immediately like media.js and filters.js do
+            // Don't wait for content - just ensure the DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
                     setupJournalFilters();
                     setupSearch();
-                } else {
-                    setTimeout(waitForJournal, 100);
-                }
-            };
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', waitForJournal);
+                });
             } else {
-                waitForJournal();
+                setupJournalFilters();
+                setupSearch();
             }
         } catch (error) {
             console.error('Failed to initialize journal filters:', error);

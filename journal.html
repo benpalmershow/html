@@ -116,6 +116,7 @@
       </button>
       <div class="filter-bar-search" id="filterBarSearch">
         <input type="text" id="journalSearch" class="indicator-search" placeholder="Search journal or #tag (#video, #financials)..." autocomplete="off">
+        <span id="searchResultsCount" class="search-results-count" style="display: none;"></span>
       </div>
       <div class="filters" id="filter-buttons">
         <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
@@ -140,7 +141,12 @@
     </div>
 
     <div class="content">
-      <div id="feed" aria-live="polite"></div>
+      <div id="feed" aria-live="polite">
+        <div id="feed-loading" class="feed-loading">
+          <div class="loading-spinner"></div>
+          <span>Loading journal entries...</span>
+        </div>
+      </div>
       <button id="load-more" class="load-more" type="button" title="this is how you curtail engagement farming">Dopamine</button>
       <p id="empty">No entries found.</p>
     </div>
@@ -488,7 +494,7 @@
             if (!open && !loaded) {
               loaded = true;
               if (hasFile) {
-                inner.innerHTML = '<span class="loading">Loading…</span>';
+                inner.innerHTML = '<div class="accordion-loading"><div class="loading-spinner"></div><span>Loading content...</span></div>';
                 if (mdCache[entry.file]) {
                   inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
                   return;
@@ -500,7 +506,7 @@
                     inner.innerHTML = normalizeContent(parseMarkdown(text));
                   })
                   .catch(() => {
-                    inner.innerHTML = '<span class="loading">Could not load file.</span>';
+                    inner.innerHTML = '<span class="loading-error">Could not load file.</span>';
                   });
                } else if (hasContent) {
                  inner.innerHTML = normalizeContent(parseInline(entry.content, true));
@@ -578,9 +584,6 @@
         loadMore.classList.toggle('is-visible', renderIndex < allDays.length);
         emptyEl.style.display = allDays.length === 0 ? 'block' : 'none';
         if (window.location.hash) scrollToHash();
-        if (typeof window.filterJournalEntries === 'function') {
-          window.filterJournalEntries();
-        }
       }
       function scrollToHash() {
         const id = window.location.hash.slice(1);
@@ -619,6 +622,9 @@
         .then(response => response.ok ? response.json() : Promise.reject(response.status))
         .then(data => {
           allDays = Array.isArray(data) ? data : [];
+          const loadingEl = document.getElementById('feed-loading');
+          if (loadingEl) loadingEl.style.display = 'none';
+          
           const hasHash = !!window.location.hash;
           if (hasHash) {
             renderIndex = 0;
@@ -627,8 +633,15 @@
           } else {
             renderMore();
           }
+          
+          // Initialize filters after content is loaded, similar to media.js pattern
+          if (typeof window.filterJournalEntries === 'function') {
+            window.filterJournalEntries();
+          }
         })
         .catch(() => {
+          const loadingEl = document.getElementById('feed-loading');
+          if (loadingEl) loadingEl.style.display = 'none';
           feed.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem">Failed to load journal.json</p>';
           emptyEl.style.display = 'none';
           loadMore.style.display = 'none';

@@ -1,58 +1,19 @@
 // Journal Filter Bar Logic
-// Handles 3-tier categorization: Macro Pillars, Subcategories, and Cross-Cutting Tags
+// Handles 2-tier categorization: Macro Pillars and Cross-Cutting Tags
 (function() {
     'use strict';
 
     // 5 Core Editorial Pillars
     const PILLARS = [
         { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' },
-        { id: 'economy', name: 'Economy & Markets', icon: '<i data-lucide="trending-up" class="filter-icon"></i>' },
-        { id: 'policy', name: 'State & Law', icon: '<i data-lucide="landmark" class="filter-icon"></i>' },
-        { id: 'trade', name: 'Trade & Industry', icon: '<i data-lucide="ship" class="filter-icon"></i>' },
-        { id: 'society', name: 'Living & Society', icon: '<i data-lucide="users" class="filter-icon"></i>' },
-        { id: 'dispatches', name: 'Dispatches & Culture', icon: '<i data-lucide="book-open" class="filter-icon"></i>' }
+        { id: 'economy', name: 'Economy', icon: '<i data-lucide="trending-up" class="filter-icon"></i>' },
+        { id: 'policy', name: 'Policy', icon: '<i data-lucide="landmark" class="filter-icon"></i>' },
+        { id: 'trade', name: 'Trade', icon: '<i data-lucide="ship" class="filter-icon"></i>' },
+        { id: 'society', name: 'Society', icon: '<i data-lucide="users" class="filter-icon"></i>' },
+        { id: 'dispatches', name: 'Dispatches', icon: '<i data-lucide="book-open" class="filter-icon"></i>' }
     ];
 
-    // Curated Subcategories per Pillar
-    const SUBCATEGORIES = {
-        'economy': [
-            { id: 'all', name: 'All' },
-            { id: 'indicators', name: 'Indicators' },
-            { id: 'markets', name: 'Markets' },
-            { id: 'corporate', name: 'Corporate & 13F' },
-            { id: 'labor', name: 'Labor' }
-        ],
-        'policy': [
-            { id: 'all', name: 'All' },
-            { id: 'fiscal', name: 'Fiscal & Debt' },
-            { id: 'legal', name: 'Legal & Courts' },
-            { id: 'politics', name: 'Politics' },
-            { id: 'regulatory', name: 'Regulatory' }
-        ],
-        'trade': [
-            { id: 'all', name: 'All' },
-            { id: 'tariffs', name: 'Tariffs' },
-            { id: 'supply-chains', name: 'Supply Chains' },
-            { id: 'manufacturing', name: 'Manufacturing' },
-            { id: 'energy', name: 'Energy' }
-        ],
-        'society': [
-            { id: 'all', name: 'All' },
-            { id: 'housing', name: 'Housing' },
-            { id: 'healthcare', name: 'Healthcare' },
-            { id: 'digital-life', name: 'Digital Life' }
-        ],
-        'dispatches': [
-            { id: 'all', name: 'All' },
-            { id: 'personal', name: 'Personal' },
-            { id: 'curation', name: 'Media Curation' },
-            { id: 'verse', name: 'Verse' },
-            { id: 'critique', name: 'Critique' }
-        ]
-    };
-
     let currentCategory = 'all';
-    let currentSubcategory = 'all';
     let currentTag = null;
 
     function syncURL() {
@@ -61,11 +22,6 @@
             url.searchParams.set('category', currentCategory);
         } else {
             url.searchParams.delete('category');
-        }
-        if (currentSubcategory && currentSubcategory !== 'all') {
-            url.searchParams.set('sub', currentSubcategory);
-        } else {
-            url.searchParams.delete('sub');
         }
         if (currentTag) {
             url.searchParams.set('tag', currentTag);
@@ -78,14 +34,10 @@
     function readURL() {
         const params = new URLSearchParams(window.location.search);
         const cat = params.get('category') || params.get('filter');
-        const sub = params.get('sub');
         const tag = params.get('tag');
 
-        if (cat && SUBCATEGORIES[cat]) {
+        if (cat && PILLARS.some(p => p.id === cat)) {
             currentCategory = cat;
-        }
-        if (sub) {
-            currentSubcategory = sub;
         }
         if (tag) {
             currentTag = tag;
@@ -109,33 +61,6 @@
         });
     }
 
-    function updateSubcategoryUI() {
-        const subBar = document.getElementById('subFilterBar');
-        const subContainer = document.getElementById('subFilterButtons');
-        if (!subBar || !subContainer) return;
-
-        if (currentCategory === 'all' || !SUBCATEGORIES[currentCategory]) {
-            subBar.style.display = 'none';
-            subContainer.innerHTML = '';
-            currentSubcategory = 'all';
-            return;
-        }
-
-        const subcats = SUBCATEGORIES[currentCategory];
-        subContainer.innerHTML = '';
-
-        subcats.forEach(sub => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = `sub-filter-btn ${currentSubcategory === sub.id ? 'active' : ''}`;
-            btn.dataset.sub = sub.id;
-            btn.textContent = sub.name;
-            subContainer.appendChild(btn);
-        });
-
-        subBar.style.display = 'flex';
-    }
-
     function filterJournalEntries() {
         const daySections = document.querySelectorAll('.day');
         let totalEntries = 0;
@@ -148,7 +73,6 @@
             entries.forEach(entry => {
                 totalEntries++;
                 const entryCategory = entry.dataset.category || '';
-                const entrySubcategory = entry.dataset.subcategory || '';
                 const entryTags = (entry.dataset.tags || '').split(',').filter(Boolean);
                 const title = entry.querySelector('.entry-title')?.textContent.toLowerCase() || '';
                 const content = entry.querySelector('.entry-content')?.textContent.toLowerCase() || '';
@@ -156,16 +80,13 @@
                 // 1. Pillar match
                 const matchesCategory = currentCategory === 'all' || entryCategory === currentCategory;
 
-                // 2. Subcategory match
-                const matchesSubcategory = currentSubcategory === 'all' || entrySubcategory === currentSubcategory;
-
-                // 3. Tag match
+                // 2. Tag match
                 const matchesTag = !currentTag || entryTags.includes(currentTag);
 
-                // 4. Search match with fuzzy matching
+                // 3. Search match with fuzzy matching
                 let matchesSearch = true;
 
-                const isMatch = matchesCategory && matchesSubcategory && matchesTag && matchesSearch;
+                const isMatch = matchesCategory && matchesTag && matchesSearch;
                 entry.style.display = isMatch ? '' : 'none';
                 if (isMatch) {
                     matchingEntries++;
@@ -197,7 +118,7 @@
         // Auto load more if filtering and more entries exist.
         // Keep loading until all entries are exhausted so matches spread
         // across paginated days are all visible, not just those in the first batch.
-        const isFiltered = currentCategory !== 'all' || currentSubcategory !== 'all' || currentTag;
+        const isFiltered = currentCategory !== 'all' || currentTag;
         if (isFiltered && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
             const loadUntilExhausted = () => {
                 if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
@@ -247,30 +168,13 @@
             btn.classList.add('active');
 
             currentCategory = btn.dataset.category;
-            currentSubcategory = 'all';
 
-            updateSubcategoryUI();
             filterJournalEntries();
 
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
         });
-
-        // Subcategory strip button click
-        const subContainer = document.getElementById('subFilterButtons');
-        if (subContainer) {
-            subContainer.addEventListener('click', function(e) {
-                const btn = e.target.closest('.sub-filter-btn');
-                if (!btn) return;
-
-                subContainer.querySelectorAll('.sub-filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                currentSubcategory = btn.dataset.sub;
-                filterJournalEntries();
-            });
-        }
 
         // Active tag dismiss button
         const clearTagBtn = document.getElementById('clearActiveTagBtn');
@@ -308,7 +212,6 @@
             });
         }
 
-        updateSubcategoryUI();
         filterJournalEntries();
 
         if (typeof lucide !== 'undefined') {

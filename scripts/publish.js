@@ -55,19 +55,18 @@ function createMarkdownPost(title, category) {
   return path.relative(ROOT, filePath);
 }
 
-function updateJournal(filePath, title, collapsed, category, subcategory, tags) {
+function updateJournal(filePath, title, collapsed, category, tags) {
   const journal = JSON.parse(fs.readFileSync(JOURNAL_PATH, 'utf8'));
   const today = getJournalDate();
   
-  const entry = {
-    title: title,
-    file: filePath,
-    collapsed: collapsed !== false,
-    category: category || 'dispatches',
-    subcategory: subcategory || 'personal',
-    tags: tags || [],
-    type: 'essay'
-  };
+    const entry = {
+      title: title,
+      file: filePath,
+      collapsed: collapsed !== false,
+      category: category || 'dispatches',
+      tags: tags || [],
+      type: 'essay'
+    };
   
   let dayEntry = journal.find(d => d.date === today);
   if (!dayEntry) {
@@ -132,11 +131,10 @@ function main() {
       journal.unshift(dayEntry);
     }
     
-    dayEntry.entries.unshift({
+      dayEntry.entries.unshift({
       title: title,
       content: 'Content here. Edit in json/journal.json.',
       category: category || 'dispatches',
-      subcategory: 'personal',
       tags: [],
       type: 'note'
     });
@@ -145,7 +143,7 @@ function main() {
     console.log(`Added inline entry to journal.json for ${today}`);
   } else {
     filePath = createMarkdownPost(title, type === 'docs' ? 'docs' : category);
-    updateJournal(filePath, title, noCollapse ? false : true, category || 'dispatches', 'personal', []);
+    updateJournal(filePath, title, noCollapse ? false : true, category || 'dispatches', []);
   }
   
   if (!noValidate) {

@@ -433,9 +433,6 @@
         if (entry.category) {
           div.dataset.category = entry.category;
         }
-        if (entry.subcategory) {
-          div.dataset.subcategory = entry.subcategory;
-        }
         if (Array.isArray(entry.tags) && entry.tags.length > 0) {
           div.dataset.tags = entry.tags.join(',');
         }
@@ -517,16 +514,9 @@
         }
         div.appendChild(headEl);
 
-        // Tags and subcategory metadata strip
-        if (entry.subcategory || (Array.isArray(entry.tags) && entry.tags.length > 0)) {
+        if (Array.isArray(entry.tags) && entry.tags.length > 0) {
           const tagsEl = document.createElement('div');
           tagsEl.className = 'entry-tags';
-          if (entry.subcategory) {
-            const subPill = document.createElement('span');
-            subPill.className = 'entry-subcat-pill';
-            subPill.textContent = entry.subcategory.replace(/-/g, ' ');
-            tagsEl.appendChild(subPill);
-          }
           const tagIcons = {
             'financials': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>',
             'media': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>',

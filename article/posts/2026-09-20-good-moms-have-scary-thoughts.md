@@ -9,7 +9,7 @@ Here's NYT:
  'She experienced a command hallucination — a male voice that told her to kill her children.'
 
 Here's Doc Riter:
-'She had evil thoughts and acted on them.'
+'She had evil thoughts and **acted** on them.'
 
 Here's NYT:
 'A broader challenge, as the nation considers the Clancy case, is to remind women suffering from postpartum disorders that they are "not villains or bad mothers," so they can feel comfortable seeking treatment, Dr. Riddle said.'

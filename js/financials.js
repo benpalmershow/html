@@ -157,8 +157,8 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
 function renderLatestUpdatesView(financialData) {
     const allIndicators = financialData.indices.slice();
     allIndicators.sort((a, b) => {
-        const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-        const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+        const dateA = a.game_time_iso ? new Date(a.game_time_iso).getTime() : (a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0);
+        const dateB = b.game_time_iso ? new Date(b.game_time_iso).getTime() : (b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0);
 
         if (dateA > 0 && dateB > 0) return dateB - dateA;
         if (dateA > 0) return -1;
@@ -192,8 +192,9 @@ function renderCategoryView(financialData, categories, filterCategory) {
         let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
         categoryIndicators.sort((a, b) => {
-            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+            // Sports cards (NFL) organize by game time; others by lastUpdated
+            const dateA = a.game_time_iso ? new Date(a.game_time_iso).getTime() : (a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0);
+            const dateB = b.game_time_iso ? new Date(b.game_time_iso).getTime() : (b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0);
 
             if (dateA > 0 && dateB > 0) return dateB - dateA;
             if (dateA > 0) return -1;

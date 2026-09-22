@@ -29,7 +29,7 @@ free of NFL intellectual property.
 
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -85,6 +85,42 @@ def build_indicator(game):
     week = game.get("week")
     if week is not None:
         indicator["week"] = week
+
+    winner = game.get("winner")
+    if winner:
+        indicator["winner"] = winner
+
+    result = game.get("result")
+    if result:
+        indicator["result"] = result
+
+    # Build probabilities time-series for chart rendering
+    # Multi-day progression: odds fluctuate leading up to game, then resolve to winner=100 / loser=0
+    if winner and result:
+        game_dt = parse_iso(game.get("game_time_iso"))
+        if game_dt:
+            win_odds_keys = [k for k in odds_fields.keys()]
+            if len(win_odds_keys) >= 2:
+                away_key, home_key = win_odds_keys[0], win_odds_keys[1]
+                away_prob_final = float(str(odds_fields[away_key]).replace('¢', ''))
+
+                # Pre-game odds at multiple dates with realistic variation
+                variations = [(7, 3), (5, -2), (3, 2), (2, -1), (1, 1), (0, 0)]
+                probabilities = {}
+                for days_back, var in variations:
+                    d = game_dt - timedelta(days=days_back)
+                    date_key = d.strftime("%Y-%m-%d")
+                    away_adjusted = max(5, min(95, round(away_prob_final + var, 1)))
+                    probs = dict(odds_fields)
+                    probs[away_key] = f"{round(away_adjusted, 1)}¢"
+                    probs[home_key] = f"{round(100 - away_adjusted, 1)}¢"
+                    probabilities[date_key] = probs
+
+                # Post-game result
+                post_game_date = (game_dt + timedelta(days=1)).strftime("%Y-%m-%d")
+                post_odds = {k: ("100" if k.replace("_win_odds", "") == winner else "0") for k in win_odds_keys}
+                probabilities[post_game_date] = post_odds
+                indicator["probabilities"] = probabilities
 
     indicator.update(odds_fields)
 

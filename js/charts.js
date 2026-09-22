@@ -478,9 +478,9 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
     }
 
         // Handle FOMC rate decision time-series data
-        const fomcSorted = Object.entries(probabilities)
+        const fomcSorted = probabilities ? Object.entries(probabilities)
             .filter(([, v]) => v && v.rate_hold_odds !== undefined)
-            .sort(([a], [b]) => new Date(a) - new Date(b));
+            .sort(([a], [b]) => new Date(a) - new Date(b)) : [];
         if (fomcSorted.length > 1) {
             const labels = fomcSorted.map(([date]) =>
                 new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
@@ -504,9 +504,9 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
          }
 
         // Handle NFL/sports win-odds time-series data
-        const sportsSorted = Object.entries(probabilities)
+        const sportsSorted = probabilities ? Object.entries(probabilities)
             .filter(([, v]) => v && typeof v === 'object' && Object.keys(v).some(k => k.endsWith('_win_odds')))
-            .sort(([a], [b]) => new Date(a) - new Date(b));
+            .sort(([a], [b]) => new Date(a) - new Date(b)) : [];
         if (sportsSorted.length > 1) {
             const allWinOddsKeys = [...new Set(sportsSorted.flatMap(([, v]) => Object.keys(v).filter(k => k.endsWith('_win_odds'))))];
             const labels = sportsSorted.map(([date]) =>
@@ -552,9 +552,9 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
         }
 
         // Handle generic multi-key probability time series (e.g., outcome-based markets like "Will Trump be impeached?")
-        const genericSorted = Object.entries(probabilities)
+        const genericSorted = probabilities ? Object.entries(probabilities)
             .filter(([, v]) => v && typeof v === 'object' && !v.yes && !v.no && !v['Democratic Party'] && !v['Republican Party'] && !v.rate_hold_odds)
-            .sort(([a], [b]) => new Date(a) - new Date(b));
+            .sort(([a], [b]) => new Date(a) - new Date(b)) : [];
         if (genericSorted.length > 1) {
             const allKeys = [...new Set(genericSorted.flatMap(([, v]) => Object.keys(v)))];
             const outcomeKeys = allKeys.filter(k => !['yes', 'no', 'Democratic Party', 'Republican Party'].includes(k) && !k.startsWith('rate_'));
@@ -637,6 +637,25 @@ function buildPredictionMarketChartConfig(indicatorName, indicatorData) {
                     }
                 });
             }
+        }
+    } else if (indicatorData.game_time_iso) {
+        // NFL/sports game with flat win odds — render as a bar chart with team colors
+        const winOddsKeys = Object.keys(indicatorData).filter(key => key.endsWith('_win_odds'));
+        const teamColors = window.DataUtils?.TEAM_COLORS || {};
+        const winner = indicatorData.winner || null;
+        const borderColors = [];
+        winOddsKeys.forEach(key => {
+            const teamAbbr = key.replace('_win_odds', '');
+            const prob = parseFloat(String(indicatorData[key]).replace(/[^0-9.-]/g, ''));
+            if (!isNaN(prob)) {
+                labels.push(teamAbbr);
+                values.push(prob);
+                colors.push(teamColors[teamAbbr] || '#2C5F5A');
+                borderColors.push(teamAbbr === winner ? '#22c55e' : 'transparent');
+            }
+        });
+        if (labels.length > 0) {
+            return { type: 'chartjs-bar', data: { labels, datasets: [{ label: indicatorName, data: values, backgroundColor: colors, borderColor: borderColors, borderWidth: winner ? 3 : 0 }] } };
         }
     }
     return { type: 'chartjs-bar', data: { labels, datasets: [{ label: indicatorName, data: values, backgroundColor: colors }] } };

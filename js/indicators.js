@@ -219,7 +219,7 @@ const IndicatorRenderers = (function () {
     function renderSports(indicator) {
         const rows = [];
         if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value game-title">${indicator.name}</span>`);
-        if (indicator.game_time) rows.push(`<span class="month-label">Time:</span> <span class="month-value"><span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span></span>`);
+        if (indicator.game_time) rows.push(`<span class="month-label">Time:</span> <span class="month-value">${indicator.result ? `<span class="game-final">Final: ${indicator.result}</span>` : `<span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span>`}</span>`);
         if (indicator.week) rows.push(`<span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span>`);
 
         // Win odds as a single stacked dual-color bar (same pattern as other prediction markets).
@@ -241,12 +241,12 @@ const IndicatorRenderers = (function () {
 latestDataHtml = `
                         <div class="prediction-bar-container prediction-dual-bar">
                             <div class="prediction-bar-row prediction-bar-row-inline">
-                                <span class="prediction-value sports-team-label sports-away ${awayState}" style="--team-color: ${awayColor};" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
+                                <span class="prediction-value sports-team-label sports-away ${awayState}${indicator.result && indicator.winner === awayKey.replace('_win_odds', '') ? ' sports-winner' : ''}" style="--team-color: ${awayColor};" title="${awayLabel}">${awayLabel} ${awayOdds}</span>
                                 <div class="prediction-bar-track prediction-bar-track-inline">
                                     <div class="prediction-bar-fill bar-away ${awayFillState}" style="width: ${awayProb}%; height: 100%; --team-color: ${awayColor};" title="${awayLabel} ${awayOdds}"></div>
                                     <div class="prediction-bar-fill bar-home ${homeFillState}" style="width: calc(${homeProb}% - 2px); margin-left: calc(${awayProb}% + 2px); height: 100%; --team-color: ${homeColor};" title="${homeLabel} ${homeOdds}"></div>
                                 </div>
-                                <span class="prediction-value-left sports-team-label sports-home ${homeState}" style="--team-color: ${homeColor};" title="${homeLabel}">${homeLabel} ${homeOdds}</span>
+                                <span class="prediction-value-left sports-team-label sports-home ${homeState}${indicator.result && indicator.winner === homeKey.replace('_win_odds', '') ? ' sports-winner' : ''}" style="--team-color: ${homeColor};" title="${homeLabel}">${homeLabel} ${homeOdds}</span>
                             </div>
                         </div>`;
             }

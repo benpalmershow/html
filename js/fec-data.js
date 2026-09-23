@@ -1,4 +1,4 @@
-// FEC Campaign Finance - 2026 Senate Race Data
+// Elections - 2026 Senate Race Data
 // Renders key Senate races from json/fec-data.json as indicator cards
 
 let fecDataLoaded = false;
@@ -13,7 +13,7 @@ async function loadFECData() {
     } catch (err) {
         console.error('Could not load FEC data:', err);
         if (container) {
-            container.innerHTML = `<div class="error-state">Failed to load campaign finance data.</div>`;
+            container.innerHTML = `<div class="error-state">Failed to load election data.</div>`;
         }
     }
 }
@@ -57,6 +57,27 @@ function getLeanInfo(note) {
     if (lower.startsWith('safe r'))  return { label: 'Safe R',  cls: 'fec-lean-r' };
     if (lower.startsWith('safe d'))  return { label: 'Safe D',  cls: 'fec-lean-d' };
     return { label: '', cls: '' };
+}
+
+function createKalshiBar(race) {
+    const kalshi = race.kalshi;
+    if (!kalshi) return '';
+    const rProb = kalshi.r || 0;
+    const dProb = kalshi.d || 0;
+    const kalshiUrl = race.kalshi_url || '#';
+    return `
+        <a href="${kalshiUrl}" target="_blank" rel="noopener noreferrer" class="kalshi-bar-link">
+            <div class="kalshi-bar-container">
+                <span class="kalshi-label">Kalshi:</span>
+                <div class="kalshi-bar-track">
+                    <div class="kalshi-bar-fill kalshi-bar-r" style="width: ${rProb}%;" title="Republican ${rProb}%"></div>
+                    <div class="kalshi-bar-fill kalshi-bar-d" style="width: ${dProb}%;" title="Democratic ${dProb}%"></div>
+                </div>
+                <span class="kalshi-value r" style="color: var(--fec-rep);">R ${rProb}%</span>
+                <span class="kalshi-value d" style="color: var(--fec-dem);">D ${dProb}%</span>
+            </div>
+        </a>
+    `;
 }
 
 /* =========================================
@@ -105,6 +126,8 @@ function createFECCardHTML(race) {
         ? `<div class="fec-race-note">${race.note}</div>`
         : '';
 
+    const kalshiBar = createKalshiBar(race);
+
     const candidateLinks = (race.candidates || []).map(c => {
         const coh = c.cash_on_hand_end_period != null
             ? fmtMoney(parseFloat(c.cash_on_hand_end_period))
@@ -134,8 +157,8 @@ function createFECCardHTML(race) {
             </div>
             <div class="indicator-actions">
                 ${leanBadge}
-                <button class="info-btn" title="Race details" aria-label="Show race details">
-                    <i data-lucide="info" style="width:16px;height:16px;"></i>
+                <button class="expand-toggle" aria-label="Toggle race details">
+                    <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
                 </button>
             </div>
         </div>
@@ -144,6 +167,7 @@ function createFECCardHTML(race) {
             <div class="indicator-explanation-body">
                 ${note ? `<p style="margin:0 0 6px;">${race.note}</p>` : ''}
                 ${candidateLinks}
+                ${kalshiBar}
                 ${cardDate ? `<div class="fec-fetch-date" style="margin-top:8px;">Updated ${cardDate}</div>` : ''}
             </div>
         </div>
@@ -183,11 +207,25 @@ function initializeFECCards(data, container) {
         if (titleEl) {
             const d = new Date(data.lastUpdated);
             const formatted = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            titleEl.innerHTML = `FEC Campaign Finance <span class="fec-data-date">as of ${formatted}</span>`;
+            titleEl.innerHTML = `Elections <span class="fec-data-date">as of ${formatted}</span>`;
         }
     }
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // When in Latest Updates view, move Election cards to top of Latest Updates grid
+    const categoriesEl = document.getElementById('categories');
+    if (categoriesEl && categoriesEl.dataset.filter === 'latest') {
+        const latestGrid = document.querySelector('.category[data-category="latest-updates"] .indicators-grid');
+        if (latestGrid) {
+            const cards = container.querySelectorAll('.indicator');
+            cards.forEach(card => {
+                latestGrid.insertBefore(card, latestGrid.firstChild);
+            });
+        }
+        const fecSection = document.getElementById('fec-campaign');
+        if (fecSection) fecSection.style.display = 'none';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {

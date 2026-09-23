@@ -83,11 +83,12 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         return;
     }
 
-    if (filterCategory === 'FEC Campaign Finance') {
+    if (filterCategory === 'Elections') {
         indicatorContainer.innerHTML = '';
         ensureLoadFEC();
         if (typeof lucide !== 'undefined') lucide.createIcons();
         makeCardsFocusable(document.getElementById('categories'));
+        setupExpandHandlers(SELECTORS);
         return;
     }
 
@@ -158,8 +159,8 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
 function renderLatestUpdatesView(financialData) {
     const allIndicators = financialData.indices.slice();
     allIndicators.sort((a, b) => {
-        const dateA = a.game_time_iso ? new Date(a.game_time_iso).getTime() : (a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0);
-        const dateB = b.game_time_iso ? new Date(b.game_time_iso).getTime() : (b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0);
+        const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+        const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
 
         if (dateA > 0 && dateB > 0) return dateB - dateA;
         if (dateA > 0) return -1;
@@ -171,6 +172,18 @@ function renderLatestUpdatesView(financialData) {
         return a.name.localeCompare(b.name);
     });
 
+    const MAX_PREDICTION = 2;
+    const predictionItems = [];
+    const otherItems = [];
+    allIndicators.forEach(ind => {
+        if (ind.category === 'Prediction Markets' && predictionItems.length < MAX_PREDICTION) {
+            predictionItems.push(ind);
+        } else {
+            otherItems.push(ind);
+        }
+    });
+    const sorted = [...predictionItems, ...otherItems];
+
     return `
         <div class="category" data-category="latest-updates">
             <h2 class="category-title">
@@ -178,7 +191,7 @@ function renderLatestUpdatesView(financialData) {
                 <span class="category-name">Latest Updates</span>
             </h2>
             <div class="indicators-grid">
-                ${allIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
+                ${sorted.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
             </div>
         </div>
     `;
@@ -520,7 +533,7 @@ function initializeDashboard() {
     }
 
     if (window.location.hash === '#fec-campaign-anchor') {
-        initialFilter = 'FEC Campaign Finance';
+        initialFilter = 'Elections';
     }
 
     const cat = isLatest ? 'latest' : initialFilter;
@@ -568,12 +581,29 @@ function ensureLoad13F() {
 }
 
 /* =========================================
-   FEC Lazy Loading (SRP)
+   Elections Lazy Loading (SRP)
    ========================================= */
 
 let _fecLoaded = false;
 function ensureLoadFEC() {
-    if (_fecLoaded) return;
+    if (_fecLoaded) {
+        const fecContainer = document.getElementById('fecCardsContainer');
+        if (fecContainer && fecContainer.children.length === 0) {
+            if (typeof loadFECData === 'function') loadFECData();
+        }
+        const categoriesEl = document.getElementById('categories');
+        if (categoriesEl && categoriesEl.dataset.filter === 'latest') {
+            const fecContainer = document.getElementById('fecCardsContainer');
+            const latestGrid = document.querySelector('.category[data-category="latest-updates"] .indicators-grid');
+            if (fecContainer && latestGrid && fecContainer.children.length > 0 && latestGrid.children.length === 0) {
+                const cards = fecContainer.querySelectorAll('.indicator');
+                cards.forEach(card => latestGrid.insertBefore(card, latestGrid.firstChild));
+                const fecSection = document.getElementById('fec-campaign');
+                if (fecSection) fecSection.style.display = 'none';
+            }
+        }
+        return;
+    }
     _fecLoaded = true;
     if (typeof loadFECData === 'function') loadFECData();
 }

@@ -43,7 +43,9 @@ RACES = [
     {
         "state": "GA",
         "label": "Georgia Senate",
-        "note": "Toss-up. Ossoff (D) incumbent vs. Collins (R).",
+        "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
+        "kalshi": {"r": 8, "d": 92},
+        "kalshi_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
         "candidates": [
             {
                 "candidate_id": "S8GA00180",
@@ -65,6 +67,8 @@ RACES = [
         "state": "TX",
         "label": "Texas Senate",
         "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
+        "kalshi": {"r": 52, "d": 48},
+        "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
         "candidates": [
             {
                 "candidate_id": "S6TX00388",
@@ -86,6 +90,8 @@ RACES = [
         "state": "OH",
         "label": "Ohio Senate (Special)",
         "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
+        "kalshi": {"r": 48, "d": 52},
+        "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
         "candidates": [
             {
                 "candidate_id": "S6OH00304",
@@ -106,7 +112,9 @@ RACES = [
     {
         "state": "NC",
         "label": "North Carolina Senate",
-        "note": "Lean R. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+        "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+        "kalshi": {"r": 8, "d": 92},
+        "kalshi_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
         "candidates": [
             {
                 "candidate_id": "S6NC00407",
@@ -127,7 +135,9 @@ RACES = [
     {
         "state": "KS",
         "label": "Kansas Senate",
-        "note": "Lean R. Marshall (R) incumbent vs. Hamilton (D).",
+        "note": "Safe R. Marshall (R) incumbent vs. Hamilton (D).",
+        "kalshi": {"r": 78, "d": 22},
+        "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
         "candidates": [
             {
                 "candidate_id": "S0KS00315",
@@ -148,7 +158,9 @@ RACES = [
     {
         "state": "ME",
         "label": "Maine Senate",
-        "note": "Lean R. Collins (R) incumbent vs. Jackson (D).",
+        "note": "Safe D. Collins (R) incumbent vs. Jackson (D).",
+        "kalshi": {"r": 35, "d": 65},
+        "kalshi_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
         "candidates": [
             {
                 "candidate_id": "S6ME00159",
@@ -162,7 +174,9 @@ RACES = [
     {
         "state": "MI",
         "label": "Michigan Senate",
-        "note": "Lean D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+        "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+        "kalshi": {"r": 30, "d": 70},
+        "kalshi_url": "https://kalshi.com/markets/senatemi/michigan-senate-race/senatemi-26",
         "candidates": [
             {
                 "candidate_id": "S4MI00595",
@@ -184,6 +198,8 @@ RACES = [
         "state": "IA",
         "label": "Iowa Senate",
         "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
+        "kalshi": {"r": 63, "d": 37},
+        "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
         "candidates": [
             {
                 "candidate_id": "S6IA00314",
@@ -280,7 +296,7 @@ def main() -> int:
             # Polite delay between requests
             time.sleep(REQUEST_DELAY)
 
-        races_out.append({**race, "candidates": candidates_out})
+        races_out.append({**race, "candidates": candidates_out, "lastUpdated": now})
 
     output = {
         "lastUpdated": now,

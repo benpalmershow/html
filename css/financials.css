@@ -414,7 +414,7 @@
   font-size: 0.85rem;
 }
 
-.indicator.info-open .indicator-explanation {
+.indicator.expanded .indicator-explanation {
   display: block;
 }
 
@@ -535,9 +535,9 @@
 #categories #fec-campaign { display: block; }
 
 /* When a specific data category is active: hide 13F, World Cup, and FEC */
-#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="FEC Campaign Finance"]) #latest-13f-filings,
-#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="FEC Campaign Finance"]) #world-cup,
-#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="FEC Campaign Finance"]) #fec-campaign { display: none; }
+#categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="Elections"]) #latest-13f-filings,
+ #categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="Elections"]) #world-cup,
+ #categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="Elections"]) #fec-campaign { display: none; }
 
 /* When 13F filter is active: show only 13F, hide everything else */
 #categories[data-filter="13F Holdings"] #indicator-categories,
@@ -552,10 +552,10 @@
 #categories[data-filter="World Cup"] #world-cup { display: block; }
 
 /* When FEC filter is active: show only FEC, hide everything else */
-#categories[data-filter="FEC Campaign Finance"] #indicator-categories,
-#categories[data-filter="FEC Campaign Finance"] #latest-13f-filings,
-#categories[data-filter="FEC Campaign Finance"] #world-cup { display: none; }
-#categories[data-filter="FEC Campaign Finance"] #fec-campaign { display: block; }
+#categories[data-filter="Elections"] #indicator-categories,
+ #categories[data-filter="Elections"] #latest-13f-filings,
+ #categories[data-filter="Elections"] #world-cup { display: none; }
+ #categories[data-filter="Elections"] #fec-campaign { display: block; }
 
 /* ========================================
    POLL TABLE STYLES
@@ -924,10 +924,10 @@
 #firmCardsContainer { min-height: 400px; }
 
 /* ========================================
-   FEC CAMPAIGN FINANCE STYLES
-   ======================================== */
+    ELECTIONS STYLES
+    ======================================== */
 
-.category[data-category="FEC Campaign Finance"] .indicators-grid {
+.category[data-category="Elections"] .indicators-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     min-height: unset;
 }
@@ -1148,4 +1148,62 @@
     font-weight: 600;
     color: var(--text-muted);
     white-space: nowrap;
+}
+
+/* Kalshi prediction bar */
+.kalshi-bar-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.kalshi-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+}
+
+.kalshi-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.kalshi-bar-track {
+    flex: 1;
+    height: 8px;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-tertiary);
+}
+
+.kalshi-bar-fill {
+    height: 100%;
+    transition: width 0.4s ease;
+}
+
+.kalshi-bar-r {
+    background: linear-gradient(90deg, #DC2626 0%, #f1948a 100%);
+    border-radius: 4px 0 0 4px;
+}
+
+.kalshi-bar-d {
+    background: linear-gradient(90deg, #2563EB 0%, #5dade2 100%);
+    border-radius: 0 4px 4px 0;
+}
+
+.kalshi-value {
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: right;
+    flex-shrink: 0;
 }

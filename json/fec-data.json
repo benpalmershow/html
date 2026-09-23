@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-23T14:41:03.342108Z",
+  "lastUpdated": "2026-09-23T15:23:19.291755Z",
   "source": "OpenFEC API",
   "source_url": "https://api.open.fec.gov/developers/",
   "cycle": 2026,
@@ -7,7 +7,12 @@
     {
       "state": "GA",
       "label": "Georgia Senate",
-      "note": "Toss-up. Ossoff (D) incumbent vs. Collins (R).",
+      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
+      "kalshi": {
+        "r": 8,
+        "d": 92
+      },
+      "kalshi_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
       "candidates": [
         {
           "candidate_id": "S8GA00180",
@@ -15,7 +20,7 @@
           "party": "DEM",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S8GA00180/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 97986263.04,
           "disbursements": 59730545.53,
@@ -28,19 +33,25 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6GA00390/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 7409349.57,
           "disbursements": 5932538.69,
           "cash_on_hand_end_period": "2079981.42",
           "coverage_end_date": "2026-06-30"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "TX",
       "label": "Texas Senate",
       "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
+      "kalshi": {
+        "r": 52,
+        "d": 48
+      },
+      "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
       "candidates": [
         {
           "candidate_id": "S6TX00388",
@@ -48,7 +59,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00388/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 9248698.53,
           "disbursements": 7492915.18,
@@ -61,19 +72,25 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00479/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 68560930.42,
           "disbursements": 47012775.34,
           "cash_on_hand_end_period": "21548155.08",
           "coverage_end_date": "2026-06-30"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "OH",
       "label": "Ohio Senate (Special)",
       "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
+      "kalshi": {
+        "r": 48,
+        "d": 52
+      },
+      "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
       "candidates": [
         {
           "candidate_id": "S6OH00304",
@@ -81,7 +98,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00304/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 14360027.53,
           "disbursements": 4940716.33,
@@ -94,19 +111,25 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00163/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 38566234.1,
           "disbursements": 22336492.78,
           "cash_on_hand_end_period": "16229741.32",
           "coverage_end_date": "2026-06-30"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "NC",
       "label": "North Carolina Senate",
-      "note": "Lean R. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+      "kalshi": {
+        "r": 8,
+        "d": 92
+      },
+      "kalshi_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
       "candidates": [
         {
           "candidate_id": "S6NC00407",
@@ -114,7 +137,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00407/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 34975789.18,
           "disbursements": 14258221.92,
@@ -127,19 +150,25 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00415/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 11272504.49,
           "disbursements": 7810806.43,
           "cash_on_hand_end_period": "3461698.06",
           "coverage_end_date": "2026-06-30"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "KS",
       "label": "Kansas Senate",
-      "note": "Lean R. Marshall (R) incumbent vs. Hamilton (D).",
+      "note": "Safe R. Marshall (R) incumbent vs. Hamilton (D).",
+      "kalshi": {
+        "r": 78,
+        "d": 22
+      },
+      "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
       "candidates": [
         {
           "candidate_id": "S0KS00315",
@@ -147,7 +176,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S0KS00315/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 6205622.26,
           "disbursements": 1027502.84,
@@ -160,19 +189,25 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6KS00312/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 4169077.81,
           "disbursements": 2438456.9,
           "cash_on_hand_end_period": "1730620.91",
           "coverage_end_date": "2026-07-15"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Lean R. Collins (R) incumbent vs. Jackson (D).",
+      "note": "Safe D. Collins (R) incumbent vs. Jackson (D).",
+      "kalshi": {
+        "r": 35,
+        "d": 65
+      },
+      "kalshi_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
       "candidates": [
         {
           "candidate_id": "S6ME00159",
@@ -180,19 +215,25 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6ME00159/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 18930077.99,
           "disbursements": 9187155.05,
           "cash_on_hand_end_period": "11038115.42",
           "coverage_end_date": "2026-06-30"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "MI",
       "label": "Michigan Senate",
-      "note": "Lean D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+      "kalshi": {
+        "r": 30,
+        "d": 70
+      },
+      "kalshi_url": "https://kalshi.com/markets/senatemi/michigan-senate-race/senatemi-26",
       "candidates": [
         {
           "candidate_id": "S4MI00595",
@@ -200,7 +241,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S4MI00595/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 10898177.09,
           "disbursements": 6680643.32,
@@ -213,19 +254,25 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6MI00418/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 14514335.93,
           "disbursements": 11961573.38,
           "cash_on_hand_end_period": "2552762.55",
           "coverage_end_date": "2026-07-15"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     },
     {
       "state": "IA",
       "label": "Iowa Senate",
       "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
+      "kalshi": {
+        "r": 63,
+        "d": 37
+      },
+      "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
       "candidates": [
         {
           "candidate_id": "S6IA00314",
@@ -233,7 +280,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00314/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 10217845.39,
           "disbursements": 5396429.3,
@@ -246,14 +293,15 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00298/",
-          "fetchedAt": "2026-09-23T14:41:03.342108Z",
+          "fetchedAt": "2026-09-23T15:23:19.291755Z",
           "source": "OpenFEC API",
           "receipts": 6276526.9,
           "disbursements": 3914213.12,
           "cash_on_hand_end_period": "2362313.78",
           "coverage_end_date": "2026-06-30"
         }
-      ]
+      ],
+      "lastUpdated": "2026-09-23T15:23:19.291755Z"
     }
   ]
 }

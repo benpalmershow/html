@@ -1,5 +1,52 @@
 [
   {
+    "date": "09/23/26",
+    "entries": [
+      {
+        "title": "🗽 Mamdani Wins $131.5M From DoorDash for 260K Delivery Workers",
+        "category": "policy",
+        "link": "https://www.nyc.gov/mayors-office/news/2026/09/transcript--mayor-mamdani-wins-record--131-5-million-from-doorda",
+        "content": "NYC Mayor Mamdani announces the largest labor enforcement action in NYC history - a $131.5M settlement with DoorDash for underpaying more than 260,000 delivery workers between April 2022 and June 2026. DoorDash failed to count canceled trips, on-call time, and out-of-city trips, denying workers the city's $22/hour minimum pay rate. $115M goes directly to affected workers (no claim required); $16M for civil penalties, costs, and a new worker-powered app that lets deliveristas record DoorDash app data and share it directly with the Department of Consumer and Worker Protection for ongoing compliance monitoring. DoorDash must also submit monthly data for 3 years and attest under oath to compliance.",
+        "tags": [
+          "nyc",
+          "mamdani",
+          "labor",
+          "gig-economy",
+          "external",
+          "legal"
+        ],
+        "type": "note"
+      },
+      {
+        "title": "🏥 ACA Exchanges: 2.6M Improper Enrollments Persist in 2026",
+        "category": "policy",
+        "link": "https://aspe.hhs.gov/reports/aca-exchange-enrollment-2026",
+        "content": "HHS ASPE report estimates 19.2M Americans enrolled in ACA Exchange plans as of Feb 2026 - still nearly double the 2019 baseline. CMS removed ~2.9M enrollees flagged as improper, phantom, or fraudulent (1.5M via subsidy removal, 1.4M via policy changes) after the Trump administration's Marketplace Integrity and Affordability Rule. Despite this cleanup, an estimated 2.6M improper enrollments (13.2% of total) remain, including over 1M lacking a Social Security number. The fraud spike traces to 2021-2025 zero-premium plan availability that let brokers earn $5-$30/month commissions enrolling people without their knowledge.",
+        "tags": [
+          "aca",
+          "healthcare",
+          "fraud",
+          "hhs",
+          "government",
+          "external"
+        ],
+        "type": "note"
+      },
+      {
+        "title": "✈️ Tracking",
+        "category": "dispatches",
+        "link": "https://www.flightradar24.com/",
+        "tags": [
+          "aviation",
+          "flights",
+          "external",
+          "data"
+        ],
+        "type": "note"
+      }
+    ]
+  },
+  {
     "date": "09/19/26",
     "entries": [
       {
@@ -538,6 +585,7 @@
           "manufacturing",
           "tariffs",
           "overton",
+          "gig-economy",
           "npr",
           "media-critique"
         ],

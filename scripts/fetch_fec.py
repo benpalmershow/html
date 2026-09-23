@@ -125,6 +125,27 @@ RACES = [
         ],
     },
     {
+        "state": "KS",
+        "label": "Kansas Senate",
+        "note": "Lean R. Marshall (R) incumbent vs. Hamilton (D).",
+        "candidates": [
+            {
+                "candidate_id": "S0KS00315",
+                "name": "Roger Marshall",
+                "party": "REP",
+                "incumbent": True,
+                "source_url": "https://www.fec.gov/data/candidate/S0KS00315/",
+            },
+            {
+                "candidate_id": "S6KS00312",
+                "name": "Adam Hamilton",
+                "party": "DEM",
+                "incumbent": False,
+                "source_url": "https://www.fec.gov/data/candidate/S6KS00312/",
+            },
+        ],
+    },
+    {
         "state": "ME",
         "label": "Maine Senate",
         "note": "Lean R. Collins (R) incumbent vs. Jackson (D).",

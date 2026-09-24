@@ -573,16 +573,9 @@ function ensureLoadFEC() {
             if (typeof loadFECData === 'function') loadFECData();
         }
         const categoriesEl = document.getElementById('categories');
-        if (categoriesEl && categoriesEl.dataset.filter === 'latest') {
-            const fecContainer = document.getElementById('fecCardsContainer');
-            const latestGrid = document.querySelector('.category[data-category="latest-updates"] .indicators-grid');
-            if (fecContainer && latestGrid && fecContainer.children.length > 0 && latestGrid.children.length === 0) {
-                const cards = fecContainer.querySelectorAll('.indicator');
-                cards.forEach(card => latestGrid.insertBefore(card, latestGrid.firstChild));
-                const fecSection = document.getElementById('fec-campaign');
-                if (fecSection) fecSection.style.display = 'none';
-            }
-        }
+        // Removed forced insertion of election cards into Latest Updates.
+        // Election cards are now displayed only via the Elections filter.
+        // This ensures pure date‑sorted ordering for Latest Updates.
         return;
     }
     _fecLoaded = true;

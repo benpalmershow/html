@@ -212,20 +212,6 @@ function initializeFECCards(data, container) {
     }
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
-
-    // When in Latest Updates view, move Election cards to top of Latest Updates grid
-    const categoriesEl = document.getElementById('categories');
-    if (categoriesEl && categoriesEl.dataset.filter === 'latest') {
-        const latestGrid = document.querySelector('.category[data-category="latest-updates"] .indicators-grid');
-        if (latestGrid) {
-            const cards = container.querySelectorAll('.indicator');
-            cards.forEach(card => {
-                latestGrid.insertBefore(card, latestGrid.firstChild);
-            });
-        }
-        const fecSection = document.getElementById('fec-campaign');
-        if (fecSection) fecSection.style.display = 'none';
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {

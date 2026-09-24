@@ -113,6 +113,10 @@ function validateLocalReferences() {
 
   sourceFiles.forEach(filePath => {
     const relativeFile = rel(filePath);
+    // Skip validation for files inside the .kilo directory (generated artifacts)
+    if (relativeFile.startsWith('.kilo' + path.sep)) {
+      return;
+    }
     const text = read(filePath);
     const references = [];
     let match;

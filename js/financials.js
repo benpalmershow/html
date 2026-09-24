@@ -158,31 +158,12 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
 
 function renderLatestUpdatesView(financialData) {
     const allIndicators = financialData.indices.slice();
+    // Sort by lastUpdated descending; fall back to original order if missing
     allIndicators.sort((a, b) => {
         const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
         const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
-
-        if (dateA > 0 && dateB > 0) return dateB - dateA;
-        if (dateA > 0) return -1;
-        if (dateB > 0) return 1;
-
-        const aInfo = getLatestMonthForIndicator(a);
-        const bInfo = getLatestMonthForIndicator(b);
-        if (aInfo.daysOld !== bInfo.daysOld) return aInfo.daysOld - bInfo.daysOld;
-        return a.name.localeCompare(b.name);
+        return dateB - dateA;
     });
-
-    const MAX_PREDICTION = 2;
-    const predictionItems = [];
-    const otherItems = [];
-    allIndicators.forEach(ind => {
-        if (ind.category === 'Prediction Markets' && predictionItems.length < MAX_PREDICTION) {
-            predictionItems.push(ind);
-        } else {
-            otherItems.push(ind);
-        }
-    });
-    const sorted = [...predictionItems, ...otherItems];
 
     return `
         <div class="category" data-category="latest-updates">
@@ -191,7 +172,7 @@ function renderLatestUpdatesView(financialData) {
                 <span class="category-name">Latest Updates</span>
             </h2>
             <div class="indicators-grid">
-                ${sorted.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
+                ${allIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
             </div>
         </div>
     `;

@@ -414,8 +414,13 @@
   font-size: 0.85rem;
 }
 
-.indicator.expanded .indicator-explanation {
+.indicator.expanded .indicator-explanation,
+.indicator.info-open .indicator-explanation {
   display: block;
+}
+
+.info-btn.active {
+  color: var(--logo-teal);
 }
 
 .indicator-explanation-header {

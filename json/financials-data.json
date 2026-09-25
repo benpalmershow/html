@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-25T01:02:27.691650Z",
+  "lastUpdated": "2026-09-25T13:32:38.520278Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -2247,742 +2247,6 @@
       "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
     },
     {
-      "id": "car-atl-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "CAR @ ATL",
-      "game_title": "Carolina Panthers @ Atlanta Falcons",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-car-atl-2026-09-20",
-      "lastUpdated": "2026-09-21T23:23:32.114822Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-car-atl-2026-09-20",
-      "week": 2,
-      "winner": "CAR",
-      "result": "34-3",
-      "probabilities": {
-        "2026-09-13": {
-          "CAR_win_odds": "95¢",
-          "ATL_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "CAR_win_odds": "95¢",
-          "ATL_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "CAR_win_odds": "95¢",
-          "ATL_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "CAR_win_odds": "95¢",
-          "ATL_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "CAR_win_odds": "95¢",
-          "ATL_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "CAR_win_odds": "95¢",
-          "ATL_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "CAR_win_odds": "100",
-          "ATL_win_odds": "0"
-        }
-      },
-      "CAR_win_odds": "100.0¢",
-      "ATL_win_odds": "0.0¢",
-      "away_color": "#0085CA",
-      "home_color": "#A71930",
-      "explanation": "NFL game prediction market showing the probability of the Carolina Panthers winning against the Atlanta Falcons. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "no-bal-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "NO @ BAL",
-      "game_title": "New Orleans Saints @ Baltimore Ravens",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-no-bal-2026-09-20",
-      "lastUpdated": "2026-09-21T23:25:29.303818Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-no-bal-2026-09-20",
-      "week": 2,
-      "winner": "NO",
-      "result": "24-17",
-      "probabilities": {
-        "2026-09-13": {
-          "NO_win_odds": "95¢",
-          "BAL_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "NO_win_odds": "95¢",
-          "BAL_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "NO_win_odds": "95¢",
-          "BAL_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "NO_win_odds": "95¢",
-          "BAL_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "NO_win_odds": "95¢",
-          "BAL_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "NO_win_odds": "95¢",
-          "BAL_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "NO_win_odds": "100",
-          "BAL_win_odds": "0"
-        }
-      },
-      "NO_win_odds": "100.0¢",
-      "BAL_win_odds": "0.0¢",
-      "away_color": "#D3BC8D",
-      "home_color": "#241773",
-      "explanation": "NFL game prediction market showing the probability of the New Orleans Saints winning against the Baltimore Ravens. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "min-chi-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "MIN @ CHI",
-      "game_title": "Minnesota Vikings @ Chicago Bears",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-min-chi-2026-09-20",
-      "lastUpdated": "2026-09-21T22:47:34.144623Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-min-chi-2026-09-20",
-      "week": 2,
-      "winner": "MIN",
-      "result": "9-3",
-      "probabilities": {
-        "2026-09-13": {
-          "MIN_win_odds": "95¢",
-          "CHI_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "MIN_win_odds": "95¢",
-          "CHI_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "MIN_win_odds": "95¢",
-          "CHI_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "MIN_win_odds": "95¢",
-          "CHI_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "MIN_win_odds": "95¢",
-          "CHI_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "MIN_win_odds": "95¢",
-          "CHI_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "MIN_win_odds": "100",
-          "CHI_win_odds": "0"
-        }
-      },
-      "MIN_win_odds": "100.0¢",
-      "CHI_win_odds": "0.0¢",
-      "away_color": "#4F2683",
-      "home_color": "#0B162A",
-      "explanation": "NFL game prediction market showing the probability of the Minnesota Vikings winning against the Chicago Bears. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "cin-hou-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "CIN @ HOU",
-      "game_title": "Cincinnati Bengals @ Houston Texans",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-cin-hou-2026-09-20",
-      "lastUpdated": "2026-09-21T23:49:32.4648Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-cin-hou-2026-09-20",
-      "week": 2,
-      "winner": "CIN",
-      "result": "20-6",
-      "probabilities": {
-        "2026-09-13": {
-          "CIN_win_odds": "95¢",
-          "HOU_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "CIN_win_odds": "95¢",
-          "HOU_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "CIN_win_odds": "95¢",
-          "HOU_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "CIN_win_odds": "95¢",
-          "HOU_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "CIN_win_odds": "95¢",
-          "HOU_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "CIN_win_odds": "95¢",
-          "HOU_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "CIN_win_odds": "100",
-          "HOU_win_odds": "0"
-        }
-      },
-      "CIN_win_odds": "100.0¢",
-      "HOU_win_odds": "0.0¢",
-      "away_color": "#FB4F14",
-      "home_color": "#03202F",
-      "explanation": "NFL game prediction market showing the probability of the Cincinnati Bengals winning against the Houston Texans. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "pit-ne-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "PIT @ NE",
-      "game_title": "Pittsburgh Steelers @ New England Patriots",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-pit-ne-2026-09-20",
-      "lastUpdated": "2026-09-22T00:06:04.814122Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-pit-ne-2026-09-20",
-      "week": 2,
-      "winner": "NE",
-      "result": "20-3",
-      "probabilities": {
-        "2026-09-13": {
-          "PIT_win_odds": "5¢",
-          "NE_win_odds": "95¢"
-        },
-        "2026-09-15": {
-          "PIT_win_odds": "5¢",
-          "NE_win_odds": "95¢"
-        },
-        "2026-09-17": {
-          "PIT_win_odds": "5¢",
-          "NE_win_odds": "95¢"
-        },
-        "2026-09-18": {
-          "PIT_win_odds": "5¢",
-          "NE_win_odds": "95¢"
-        },
-        "2026-09-19": {
-          "PIT_win_odds": "5¢",
-          "NE_win_odds": "95¢"
-        },
-        "2026-09-20": {
-          "PIT_win_odds": "5¢",
-          "NE_win_odds": "95¢"
-        },
-        "2026-09-21": {
-          "PIT_win_odds": "0",
-          "NE_win_odds": "100"
-        }
-      },
-      "PIT_win_odds": "0.0¢",
-      "NE_win_odds": "100.0¢",
-      "away_color": "#FFB612",
-      "home_color": "#002244",
-      "explanation": "NFL game prediction market showing the probability of the Pittsburgh Steelers winning against the New England Patriots. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "gb-nyj-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "GB @ NYJ",
-      "game_title": "Green Bay Packers @ New York Jets",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-gb-nyj-2026-09-20",
-      "lastUpdated": "2026-09-21T22:59:31.174038Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-gb-nyj-2026-09-20",
-      "week": 2,
-      "winner": "GB",
-      "result": "20-17",
-      "probabilities": {
-        "2026-09-13": {
-          "GB_win_odds": "95¢",
-          "NYJ_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "GB_win_odds": "95¢",
-          "NYJ_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "GB_win_odds": "95¢",
-          "NYJ_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "GB_win_odds": "95¢",
-          "NYJ_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "GB_win_odds": "95¢",
-          "NYJ_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "GB_win_odds": "95¢",
-          "NYJ_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "GB_win_odds": "100",
-          "NYJ_win_odds": "0"
-        }
-      },
-      "GB_win_odds": "100.0¢",
-      "NYJ_win_odds": "0.0¢",
-      "away_color": "#203731",
-      "home_color": "#125740",
-      "explanation": "NFL game prediction market showing the probability of the Green Bay Packers winning against the New York Jets. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "cle-tb-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "CLE @ TB",
-      "game_title": "Cleveland Browns @ Tampa Bay Buccaneers",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-cle-tb-2026-09-20",
-      "lastUpdated": "2026-09-22T00:19:43.901516Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-cle-tb-2026-09-20",
-      "week": 2,
-      "winner": "CLE",
-      "result": "23-19",
-      "probabilities": {
-        "2026-09-13": {
-          "CLE_win_odds": "95¢",
-          "TB_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "CLE_win_odds": "95¢",
-          "TB_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "CLE_win_odds": "95¢",
-          "TB_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "CLE_win_odds": "95¢",
-          "TB_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "CLE_win_odds": "95¢",
-          "TB_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "CLE_win_odds": "95¢",
-          "TB_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "CLE_win_odds": "100",
-          "TB_win_odds": "0"
-        }
-      },
-      "CLE_win_odds": "100.0¢",
-      "TB_win_odds": "0.0¢",
-      "away_color": "#311D00",
-      "home_color": "#D50A0A",
-      "explanation": "NFL game prediction market showing the probability of the Cleveland Browns winning against the Tampa Bay Buccaneers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "phi-ten-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "PHI @ TEN",
-      "game_title": "Philadelphia Eagles @ Tennessee Titans",
-      "game_time": "Sep 20, 2026 1:00 PM ET",
-      "game_time_iso": "2026-09-20T13:00:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-phi-ten-2026-09-20",
-      "lastUpdated": "2026-09-21T22:41:30.763571Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-phi-ten-2026-09-20",
-      "week": 2,
-      "winner": "PHI",
-      "result": "24-20",
-      "probabilities": {
-        "2026-09-13": {
-          "PHI_win_odds": "95¢",
-          "TEN_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "PHI_win_odds": "95¢",
-          "TEN_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "PHI_win_odds": "95¢",
-          "TEN_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "PHI_win_odds": "95¢",
-          "TEN_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "PHI_win_odds": "95¢",
-          "TEN_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "PHI_win_odds": "95¢",
-          "TEN_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "PHI_win_odds": "100",
-          "TEN_win_odds": "0"
-        }
-      },
-      "PHI_win_odds": "100.0¢",
-      "TEN_win_odds": "0.0¢",
-      "away_color": "#004C54",
-      "home_color": "#4B925E",
-      "explanation": "NFL game prediction market showing the probability of the Philadelphia Eagles winning against the Tennessee Titans. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "jax-den-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "JAX @ DEN",
-      "game_title": "Jacksonville Jaguars @ Denver Broncos",
-      "game_time": "Sep 20, 2026 4:05 PM ET",
-      "game_time_iso": "2026-09-20T16:05:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-jax-den-2026-09-20",
-      "lastUpdated": "2026-09-22T00:59:43.649965Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-jax-den-2026-09-20",
-      "week": 2,
-      "winner": "DEN",
-      "result": "20-13",
-      "probabilities": {
-        "2026-09-13": {
-          "JAX_win_odds": "5¢",
-          "DEN_win_odds": "95¢"
-        },
-        "2026-09-15": {
-          "JAX_win_odds": "5¢",
-          "DEN_win_odds": "95¢"
-        },
-        "2026-09-17": {
-          "JAX_win_odds": "5¢",
-          "DEN_win_odds": "95¢"
-        },
-        "2026-09-18": {
-          "JAX_win_odds": "5¢",
-          "DEN_win_odds": "95¢"
-        },
-        "2026-09-19": {
-          "JAX_win_odds": "5¢",
-          "DEN_win_odds": "95¢"
-        },
-        "2026-09-20": {
-          "JAX_win_odds": "5¢",
-          "DEN_win_odds": "95¢"
-        },
-        "2026-09-21": {
-          "JAX_win_odds": "0",
-          "DEN_win_odds": "100"
-        }
-      },
-      "JAX_win_odds": "0.0¢",
-      "DEN_win_odds": "100.0¢",
-      "away_color": "#006778",
-      "home_color": "#FB4F14",
-      "explanation": "NFL game prediction market showing the probability of the Jacksonville Jaguars winning against the Denver Broncos. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "lv-lac-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "LV @ LAC",
-      "game_title": "Las Vegas Raiders @ Los Angeles Chargers",
-      "game_time": "Sep 20, 2026 4:05 PM ET",
-      "game_time_iso": "2026-09-20T16:05:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-lv-lac-2026-09-20",
-      "lastUpdated": "2026-09-22T00:59:43.649965Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-lv-lac-2026-09-20",
-      "week": 2,
-      "winner": "LV",
-      "result": "26-14",
-      "probabilities": {
-        "2026-09-13": {
-          "LV_win_odds": "95¢",
-          "LAC_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "LV_win_odds": "95¢",
-          "LAC_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "LV_win_odds": "95¢",
-          "LAC_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "LV_win_odds": "95¢",
-          "LAC_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "LV_win_odds": "95¢",
-          "LAC_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "LV_win_odds": "95¢",
-          "LAC_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "LV_win_odds": "100",
-          "LAC_win_odds": "0"
-        }
-      },
-      "LV_win_odds": "100.0¢",
-      "LAC_win_odds": "0.0¢",
-      "away_color": "#000000",
-      "home_color": "#0080C6",
-      "explanation": "NFL game prediction market showing the probability of the Las Vegas Raiders winning against the Los Angeles Chargers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "sea-ari-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "SEA @ ARI",
-      "game_title": "Seattle Seahawks @ Arizona Cardinals",
-      "game_time": "Sep 20, 2026 4:25 PM ET",
-      "game_time_iso": "2026-09-20T16:25:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-sea-ari-2026-09-20",
-      "lastUpdated": "2026-09-22T01:18:03.029995Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-sea-ari-2026-09-20",
-      "week": 2,
-      "winner": "SEA",
-      "result": "31-7",
-      "probabilities": {
-        "2026-09-13": {
-          "SEA_win_odds": "95¢",
-          "ARI_win_odds": "5¢"
-        },
-        "2026-09-15": {
-          "SEA_win_odds": "95¢",
-          "ARI_win_odds": "5¢"
-        },
-        "2026-09-17": {
-          "SEA_win_odds": "95¢",
-          "ARI_win_odds": "5¢"
-        },
-        "2026-09-18": {
-          "SEA_win_odds": "95¢",
-          "ARI_win_odds": "5¢"
-        },
-        "2026-09-19": {
-          "SEA_win_odds": "95¢",
-          "ARI_win_odds": "5¢"
-        },
-        "2026-09-20": {
-          "SEA_win_odds": "95¢",
-          "ARI_win_odds": "5¢"
-        },
-        "2026-09-21": {
-          "SEA_win_odds": "100",
-          "ARI_win_odds": "0"
-        }
-      },
-      "SEA_win_odds": "100.0¢",
-      "ARI_win_odds": "0.0¢",
-      "away_color": "#002244",
-      "home_color": "#97233F",
-      "explanation": "NFL game prediction market showing the probability of the Seattle Seahawks winning against the Arizona Cardinals. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "was-dal-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "WAS @ DAL",
-      "game_title": "Washington Commanders @ Dallas Cowboys",
-      "game_time": "Sep 20, 2026 4:25 PM ET",
-      "game_time_iso": "2026-09-20T16:25:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-was-dal-2026-09-20",
-      "lastUpdated": "2026-09-22T01:54:00.328233Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-was-dal-2026-09-20",
-      "week": 2,
-      "winner": "DAL",
-      "result": "37-20",
-      "probabilities": {
-        "2026-09-13": {
-          "WAS_win_odds": "5¢",
-          "DAL_win_odds": "95¢"
-        },
-        "2026-09-15": {
-          "WAS_win_odds": "5¢",
-          "DAL_win_odds": "95¢"
-        },
-        "2026-09-17": {
-          "WAS_win_odds": "5¢",
-          "DAL_win_odds": "95¢"
-        },
-        "2026-09-18": {
-          "WAS_win_odds": "5¢",
-          "DAL_win_odds": "95¢"
-        },
-        "2026-09-19": {
-          "WAS_win_odds": "5¢",
-          "DAL_win_odds": "95¢"
-        },
-        "2026-09-20": {
-          "WAS_win_odds": "5¢",
-          "DAL_win_odds": "95¢"
-        },
-        "2026-09-21": {
-          "WAS_win_odds": "0",
-          "DAL_win_odds": "100"
-        }
-      },
-      "WAS_win_odds": "0.0¢",
-      "DAL_win_odds": "100.0¢",
-      "away_color": "#5A1414",
-      "home_color": "#003594",
-      "explanation": "NFL game prediction market showing the probability of the Washington Commanders winning against the Dallas Cowboys. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "mia-sf-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "MIA @ SF",
-      "game_title": "Miami Dolphins @ San Francisco 49ers",
-      "game_time": "Sep 20, 2026 4:25 PM ET",
-      "game_time_iso": "2026-09-20T16:25:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-mia-sf-2026-09-20",
-      "lastUpdated": "2026-09-22T00:53:44.59562Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-mia-sf-2026-09-20",
-      "week": 2,
-      "winner": "SF",
-      "result": "35-13",
-      "probabilities": {
-        "2026-09-13": {
-          "MIA_win_odds": "5¢",
-          "SF_win_odds": "95¢"
-        },
-        "2026-09-15": {
-          "MIA_win_odds": "5¢",
-          "SF_win_odds": "95¢"
-        },
-        "2026-09-17": {
-          "MIA_win_odds": "5¢",
-          "SF_win_odds": "95¢"
-        },
-        "2026-09-18": {
-          "MIA_win_odds": "5¢",
-          "SF_win_odds": "95¢"
-        },
-        "2026-09-19": {
-          "MIA_win_odds": "5¢",
-          "SF_win_odds": "95¢"
-        },
-        "2026-09-20": {
-          "MIA_win_odds": "5¢",
-          "SF_win_odds": "95¢"
-        },
-        "2026-09-21": {
-          "MIA_win_odds": "0",
-          "SF_win_odds": "100"
-        }
-      },
-      "MIA_win_odds": "0.0¢",
-      "SF_win_odds": "100.0¢",
-      "away_color": "#008E97",
-      "home_color": "#AA0000",
-      "explanation": "NFL game prediction market showing the probability of the Miami Dolphins winning against the San Francisco 49ers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "ind-kc-2026-09-20",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "IND @ KC",
-      "game_title": "Indianapolis Colts @ Kansas City Chiefs",
-      "game_time": "Sep 20, 2026 8:20 PM ET",
-      "game_time_iso": "2026-09-20T20:20:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-ind-kc-2026-09-21",
-      "lastUpdated": "2026-09-22T05:28:16.609514Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ind-kc-2026-09-21",
-      "week": 2,
-      "winner": "KC",
-      "result": "33-30",
-      "probabilities": {
-        "2026-09-13": {
-          "IND_win_odds": "5¢",
-          "KC_win_odds": "95¢"
-        },
-        "2026-09-15": {
-          "IND_win_odds": "5¢",
-          "KC_win_odds": "95¢"
-        },
-        "2026-09-17": {
-          "IND_win_odds": "5¢",
-          "KC_win_odds": "95¢"
-        },
-        "2026-09-18": {
-          "IND_win_odds": "5¢",
-          "KC_win_odds": "95¢"
-        },
-        "2026-09-19": {
-          "IND_win_odds": "5¢",
-          "KC_win_odds": "95¢"
-        },
-        "2026-09-20": {
-          "IND_win_odds": "5¢",
-          "KC_win_odds": "95¢"
-        },
-        "2026-09-21": {
-          "IND_win_odds": "0",
-          "KC_win_odds": "100"
-        }
-      },
-      "IND_win_odds": "0.0¢",
-      "KC_win_odds": "100.0¢",
-      "away_color": "#002C5F",
-      "home_color": "#E31837",
-      "explanation": "NFL game prediction market showing the probability of the Indianapolis Colts winning against the Kansas City Chiefs. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "nyg-lar-2026-09-21",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "NYG @ LAR",
-      "game_title": "New York Giants @ Los Angeles Rams",
-      "game_time": "Sep 21, 2026 8:15 PM ET",
-      "game_time_iso": "2026-09-21T20:15:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-nyg-la-2026-09-22",
-      "lastUpdated": "2026-09-23T05:17:03.696861Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-nyg-la-2026-09-22",
-      "week": 2,
-      "NYG_win_odds": "0.0¢",
-      "LAR_win_odds": "100.0¢",
-      "away_color": "#0B2265",
-      "home_color": "#003594",
-      "explanation": "NFL game prediction market showing the probability of the New York Giants winning against the Los Angeles Rams. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
-      "id": "atl-gb-2026-09-24",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "ATL @ GB",
-      "game_title": "Atlanta Falcons @ Green Bay Packers",
-      "game_time": "Sep 24, 2026 8:15 PM ET",
-      "game_time_iso": "2026-09-24T20:15:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-atl-gb-2026-09-25",
-      "lastUpdated": "2026-09-25T01:00:53.80768Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-atl-gb-2026-09-25",
-      "week": 3,
-      "ATL_win_odds": "35.5¢",
-      "GB_win_odds": "64.5¢",
-      "away_color": "#A71930",
-      "home_color": "#203731",
-      "explanation": "NFL game prediction market showing the probability of the Atlanta Falcons winning against the Green Bay Packers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
-    },
-    {
       "id": "nyj-det-2026-09-27",
       "category": "Prediction Markets",
       "agency": "Polymarket",
@@ -2991,7 +2255,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-nyj-det-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:28:52.472025Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-nyj-det-2026-09-27",
       "week": 3,
       "NYJ_win_odds": "27.5¢",
@@ -3009,11 +2273,11 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-sea-was-2026-09-27",
-      "lastUpdated": "2026-09-25T01:00:53.80768Z",
+      "lastUpdated": "2026-09-25T13:28:52.472025Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-sea-was-2026-09-27",
       "week": 3,
-      "SEA_win_odds": "75.5¢",
-      "WAS_win_odds": "24.5¢",
+      "SEA_win_odds": "76.5¢",
+      "WAS_win_odds": "23.5¢",
       "away_color": "#002244",
       "home_color": "#5A1414",
       "explanation": "NFL game prediction market showing the probability of the Seattle Seahawks winning against the Washington Commanders. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
@@ -3027,7 +2291,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-pit-2026-09-27",
-      "lastUpdated": "2026-09-25T00:57:28.948144Z",
+      "lastUpdated": "2026-09-25T13:27:29.535985Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-cin-pit-2026-09-27",
       "week": 3,
       "CIN_win_odds": "62.5¢",
@@ -3045,7 +2309,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ne-jax-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:28:52.472025Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ne-jax-2026-09-27",
       "week": 3,
       "NE_win_odds": "40.5¢",
@@ -3063,11 +2327,11 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-mia-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:28:52.472025Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-kc-mia-2026-09-27",
       "week": 3,
-      "KC_win_odds": "84.5¢",
-      "MIA_win_odds": "15.5¢",
+      "KC_win_odds": "85.5¢",
+      "MIA_win_odds": "14.5¢",
       "away_color": "#E31837",
       "home_color": "#008E97",
       "explanation": "NFL game prediction market showing the probability of the Kansas City Chiefs winning against the Miami Dolphins. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
@@ -3081,7 +2345,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-hou-ind-2026-09-27",
-      "lastUpdated": "2026-09-25T01:00:53.80768Z",
+      "lastUpdated": "2026-09-25T13:30:45.157295Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-hou-ind-2026-09-27",
       "week": 3,
       "HOU_win_odds": "53.5¢",
@@ -3099,7 +2363,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-lac-buf-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:28:52.472025Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-lac-buf-2026-09-27",
       "week": 3,
       "LAC_win_odds": "24.5¢",
@@ -3117,7 +2381,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ten-nyg-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:27:29.541873Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ten-nyg-2026-09-27",
       "week": 3,
       "TEN_win_odds": "44.5¢",
@@ -3135,7 +2399,7 @@
       "game_time": "Sep 27, 2026 1:00 PM ET",
       "game_time_iso": "2026-09-27T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-car-cle-2026-09-27",
-      "lastUpdated": "2026-09-25T00:57:29.00282Z",
+      "lastUpdated": "2026-09-25T13:27:29.604456Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-car-cle-2026-09-27",
       "week": 3,
       "CAR_win_odds": "57.5¢",
@@ -3153,7 +2417,7 @@
       "game_time": "Sep 27, 2026 4:05 PM ET",
       "game_time_iso": "2026-09-27T16:05:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ari-sf-2026-09-27",
-      "lastUpdated": "2026-09-25T00:57:28.950569Z",
+      "lastUpdated": "2026-09-25T13:30:58.061445Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ari-sf-2026-09-27",
       "week": 3,
       "ARI_win_odds": "21.5¢",
@@ -3171,7 +2435,7 @@
       "game_time": "Sep 27, 2026 4:05 PM ET",
       "game_time_iso": "2026-09-27T16:05:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-min-tb-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:28:52.472025Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-min-tb-2026-09-27",
       "week": 3,
       "MIN_win_odds": "52.5¢",
@@ -3189,7 +2453,7 @@
       "game_time": "Sep 27, 2026 4:25 PM ET",
       "game_time_iso": "2026-09-27T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-bal-dal-2026-09-27",
-      "lastUpdated": "2026-09-25T00:58:50.368934Z",
+      "lastUpdated": "2026-09-25T13:27:29.611893Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-bal-dal-2026-09-27",
       "week": 3,
       "BAL_win_odds": "62.5¢",
@@ -3202,16 +2466,17 @@
       "id": "lv-no-2026-09-27",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "LV @ NO",
+      "name": "LV @ False",
       "game_title": "Las Vegas Raiders @ New Orleans Saints",
       "game_time": "Sep 27, 2026 4:25 PM ET",
       "game_time_iso": "2026-09-27T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-lv-no-2026-09-27",
-      "lastUpdated": "2026-09-25T01:00:53.80768Z",
+      "lastUpdated": "2026-09-25T13:30:58.061445Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-lv-no-2026-09-27",
       "week": 3,
       "LV_win_odds": "38.5¢",
       "NO_win_odds": "61.5¢",
+      "False_win_odds": "61.5¢",
       "away_color": "#000000",
       "home_color": "#D3BC8D",
       "explanation": "NFL game prediction market showing the probability of the Las Vegas Raiders winning against the New Orleans Saints. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
@@ -3242,9 +2507,9 @@
       "game_title": "Philadelphia Eagles @ Chicago Bears",
       "game_time": "Sep 28, 2026 8:15 PM ET",
       "game_time_iso": "2026-09-28T20:15:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-phi-chi-2026-09-29",
+      "url": "https://polymarket.com/sports/nfl/nfl-phi-chi-2026-09-28",
       "lastUpdated": "2026-09-24T16:00:00.000000Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-phi-chi-2026-09-29",
+      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-phi-chi-2026-09-28",
       "week": 3,
       "PHI_win_odds": "47.0¢",
       "CHI_win_odds": "53.5¢",

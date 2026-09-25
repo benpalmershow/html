@@ -99,7 +99,6 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     if (sortByLatest) {
         html += renderLatestUpdatesView(financialData);
         indicatorContainer.innerHTML = html;
-        ensureLoadFEC();
     } else {
         const visibleCategories = categories.filter(category => filterCategory === 'all' || category === filterCategory).slice(0, 2);
         const deferredCategories = categories.filter(category => filterCategory === 'all' || category === filterCategory).slice(2);
@@ -572,10 +571,6 @@ function ensureLoadFEC() {
         if (fecContainer && fecContainer.children.length === 0) {
             if (typeof loadFECData === 'function') loadFECData();
         }
-        const categoriesEl = document.getElementById('categories');
-        // Removed forced insertion of election cards into Latest Updates.
-        // Election cards are now displayed only via the Elections filter.
-        // This ensures pure date‑sorted ordering for Latest Updates.
         return;
     }
     _fecLoaded = true;

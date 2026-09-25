@@ -1,5 +1,25 @@
 [
   {
+    "date": "09/25/26",
+    "entries": [
+      {
+        "title": "💸 Big Tech doesn't want to hire American workers",
+        "category": "policy",
+        "link": "https://www.regulations.gov/comment/USCIS-2026-0298-11315",
+        "content": "TechNet waited until the deadline to file its comment on the DHS proposal to charge $103,265 for every H-1B cap-subject petition, payable at filing and stacked on top of every other fee. The number is just $8,777,488,035 of interagency costs divided by 85,000 projected petitions, and the agency concedes assigning those costs to one slice of employers is a model it has never used before. The docket took 11,706 submissions in a 30-day window, which is a comment period sized for a footnote and not for an $8.8B annual charge.<br><br>TechNet's complaint is the one DHS put in its own record: the agency's analysis finds significant economic impact on 76% of the small businesses that filed cap-subject petitions in FY2025. Startups do not have five million employees to spread a six-figure charge across, so the work goes to an existing team in another country or the project slips. That is the interesting part of this rule, because the money is not really about who files an H-1B. It is about which employers can still afford to hire one.<br><br>The sharpest line is the advanced degree exemption. Congress reserved 20,000 cap slots for US graduates, and the proposal does not formally repeal them, it just charges the graduates $103,265 to use them. TechNet also wants no supplemental charge at all in the first cap cycle, capped at 5% of the proposal in the second and 10% in the third, payment deferred until after approval, refunds when a petition dies on a visa refusal, and an exemption for anyone holding a US master's or doctorate. Withdrawal remains the recommendation. The fallback schedule is a useful tell for what industry expects to actually happen: not withdrawal, but a fee that ratchets up over three years instead of one.",
+        "tags": [
+          "immigration",
+          "dhs",
+          "startups",
+          "legal",
+          "labor",
+          "external"
+        ],
+        "type": "curation"
+      }
+    ]
+  },
+  {
     "date": "09/24/26", 
     "entries": [
       {
@@ -219,7 +239,7 @@
         "link": "https://iranwarcost.watson.brown.edu/",
         "content": "Extra fuel costs to US consumers since the Iran war began Feb 28, 2026. The tracker compares actual AAA gasoline/diesel prices against a no-war counterfactual baseline. As of Sept 2026, total extra consumer burden exceeds $100B nationally, averaging $760+ per household. Texas bears the largest share (~$11B).",
         "tags": [
-          "iran war",
+          "iran",
           "energy",
           "gasoline",
           "external",
@@ -233,7 +253,7 @@
         "link": "https://www.cbo.gov/publication/62756",
         "content": "CBO estimates DoD combat operations against Iran cost $38.1B through Aug 1, 2026. Ongoing cost: $2-3B/month depending on intensity. Munitions replacement is the largest component: $21.7B ($7.3B cruise missiles, $13.1B missile defense interceptors, $1.2B other). War depletes interceptor stockpiles \u2014 rebuilding takes 5+ years. CBO projects 0.5pp higher PCE inflation in Q1 2027 driven by energy costs (Strait of Hormuz, Red Sea disruptions). Pentagon declined CBO data requests; estimates use public sources.",
         "tags": [
-          "iran war",
+          "iran",
           "cbo",
           "defense spending",
           "inflation",

@@ -2665,6 +2665,34 @@
         }
       },
       "explanation": "NFL game prediction market showing the probability of the Philadelphia Eagles winning against the Chicago Bears. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
+    },
+    {
+      "id": "atl-gb-2026-09-24",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "ATL @ GB",
+      "game_title": "Atlanta Falcons @ Green Bay Packers",
+      "game_time": "Sep 24, 2026 8:15 PM ET",
+      "game_time_iso": "2026-09-24T20:15:00-04:00",
+      "url": "https://polymarket.com/sports/nfl/nfl-atl-gb-2026-09-25",
+      "lastUpdated": "2026-09-25T14:30:00.000000Z",
+      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-atl-gb-2026-09-25",
+      "week": 3,
+      "ATL_win_odds": "100¢",
+      "GB_win_odds": "0¢",
+      "away_color": "#A71930",
+      "home_color": "#203731",
+      "probabilities": {
+        "2026-09-25": {
+          "ATL_win_odds": "100¢",
+          "GB_win_odds": "0¢"
+        },
+        "2026-09-24": {
+          "ATL_win_odds": "100¢",
+          "GB_win_odds": "0¢"
+        }
+      },
+      "explanation": "NFL game prediction market showing the probability of the Atlanta Falcons winning against the Green Bay Packers. Market resolved with Falcons winning 100¢."
     }
   ]
 }

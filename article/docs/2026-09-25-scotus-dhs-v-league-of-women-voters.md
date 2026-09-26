@@ -9,6 +9,19 @@ tags: ["scotus", "immigration", "voting-rights", "stay", "dhs", "league-of-women
 
 **Docket No. 26A308** | **Decided September 25, 2026**
 
+## Media Portrayal
+
+NYT headline "Justices Permit Voter Screening by U.S. database"
+### Concerns:
+- expansive online system
+- 'critics fear system could purge voters' 
+- harm caused by burdoning people 
+- disenfranchising anyone for any requirement 
+- being unlawfully targeted
+
+
+
+
 ## Case Overview
 
 The Supreme Court granted an emergency stay application filed by the Department of Homeland Security, staying a district court order that had blocked enforcement of a DHS rule. The stay is pending disposition of the appeal to the D.C. Circuit and any petition for certiorari.

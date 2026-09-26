@@ -12,7 +12,7 @@ tags: ["scotus", "immigration", "voting-rights", "stay", "dhs", "league-of-women
 ## Media Portrayal
 
 NYT headline "Justices Permit Voter Screening by U.S. database"
-### Concerns:
+#### Concerns:
 - expansive online system
 - 'critics fear system could purge voters' 
 - harm caused by burdoning people 

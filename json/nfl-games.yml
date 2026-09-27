@@ -517,6 +517,10 @@ games:
   WAS_win_odds: 22.5¢
   explanation: NFL game prediction market showing the probability of the Seattle Seahawks winning against the Washington Commanders. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   lastUpdated: '2026-09-26T12:49:20.116455Z'
+  odds_history:
+  - timestamp: '2026-09-26T12:49:20.116455Z'
+    SEA_win_odds: 77.5¢
+    WAS_win_odds: 22.5¢
 - id: cin-pit-2026-09-27
   category: Prediction Markets
   agency: Polymarket
@@ -685,6 +689,10 @@ games:
   SF_win_odds: 78.5¢
   explanation: NFL game prediction market showing the probability of the Arizona Cardinals winning against the San Francisco 49ers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   lastUpdated: '2026-09-26T12:51:19.790782Z'
+  odds_history:
+  - timestamp: '2026-09-26T12:51:19.790782Z'
+    ARI_win_odds: 21.5¢
+    SF_win_odds: 78.5¢
 - id: min-tb-2026-09-27
   category: Prediction Markets
   agency: Polymarket

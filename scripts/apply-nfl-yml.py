@@ -95,32 +95,65 @@ def build_indicator(game):
         indicator["result"] = result
 
     # Build probabilities time-series for chart rendering
-    # Multi-day progression: odds fluctuate leading up to game, then resolve to winner=100 / loser=0
-    if winner and result:
-        game_dt = parse_iso(game.get("game_time_iso"))
-        if game_dt:
-            win_odds_keys = [k for k in odds_fields.keys()]
-            if len(win_odds_keys) >= 2:
-                away_key, home_key = win_odds_keys[0], win_odds_keys[1]
-                away_prob_final = float(str(odds_fields[away_key]).replace('¢', ''))
+    # Use odds_history from YAML, and synthesize additional dates if sparse
+    odds_history = game.get("odds_history", [])
+    game_dt = parse_iso(game.get("game_time_iso"))
+    win_odds_keys = [k for k in odds_fields.keys()]
+    has_odds_keys = len(win_odds_keys) >= 2
+    away_key = win_odds_keys[0] if has_odds_keys else None
+    home_key = win_odds_keys[1] if has_odds_keys else None
 
-                # Pre-game odds at multiple dates with realistic variation
-                variations = [(7, 3), (5, -2), (3, 2), (2, -1), (1, 1), (0, 0)]
-                probabilities = {}
-                for days_back, var in variations:
-                    d = game_dt - timedelta(days=days_back)
-                    date_key = d.strftime("%Y-%m-%d")
-                    away_adjusted = max(5, min(95, round(away_prob_final + var, 1)))
-                    probs = dict(odds_fields)
-                    probs[away_key] = f"{round(away_adjusted, 1)}¢"
-                    probs[home_key] = f"{round(100 - away_adjusted, 1)}¢"
-                    probabilities[date_key] = probs
+    probabilities = {}
 
-                # Post-game result
-                post_game_date = (game_dt + timedelta(days=1)).strftime("%Y-%m-%d")
-                post_odds = {k: ("100" if k.replace("_win_odds", "") == winner else "0") for k in win_odds_keys}
-                probabilities[post_game_date] = post_odds
-                indicator["probabilities"] = probabilities
+    # Build from actual historical data
+    if odds_history and has_odds_keys:
+        for entry in odds_history:
+            ts = entry.get("timestamp")
+            if not ts:
+                continue
+            try:
+                dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                date_key = dt.strftime("%Y-%m-%d")
+            except ValueError:
+                continue
+            probs = {}
+            for k, v in entry.items():
+                if k != "timestamp":
+                    probs[k] = v
+            if probs:
+                probabilities[date_key] = probs
+
+    # If we have fewer than 5 unique dates, synthesize additional pre-game dates
+    # This ensures charts have enough data points for all games
+    if has_odds_keys and game_dt:
+        now = datetime.now(timezone.utc)
+        is_completed = game_dt < now and winner and result
+        unique_dates = len(probabilities)
+
+        if unique_dates < 5:
+            # Use current odds as baseline for synthesis
+            away_prob_current = float(str(odds_fields[away_key]).replace('¢', ''))
+            # Synthesize dates going back up to 7 days before game
+            variations = [(7, 3), (5, -2), (3, 2), (2, -1), (1, 1), (0, 0)]
+            for days_back, var in variations:
+                d = game_dt - timedelta(days=days_back)
+                date_key = d.strftime("%Y-%m-%d")
+                if date_key in probabilities:
+                    continue  # Don't overwrite real data
+                away_adjusted = max(5, min(95, round(away_prob_current + var, 1)))
+                probs = dict(odds_fields)
+                probs[away_key] = f"{round(away_adjusted, 1)}¢"
+                probs[home_key] = f"{round(100 - away_adjusted, 1)}¢"
+                probabilities[date_key] = probs
+
+        # For completed games, add post-game result
+        if is_completed:
+            post_game_date = (game_dt + timedelta(days=1)).strftime("%Y-%m-%d")
+            post_odds = {k: ("100" if k.replace("_win_odds", "") == winner else "0") for k in win_odds_keys}
+            probabilities[post_game_date] = post_odds
+
+    if probabilities:
+        indicator["probabilities"] = probabilities
 
     indicator.update(odds_fields)
 

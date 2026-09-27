@@ -157,6 +157,15 @@ def main():
         game[home_key] = home_odds
         game["lastUpdated"] = event.get("updatedAt") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
+        # Append to odds history for charting
+        timestamp = event.get("updatedAt") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        history = game.setdefault("odds_history", [])
+        history.append({
+            "timestamp": timestamp,
+            away_key: away_odds,
+            home_key: home_odds
+        })
+
         print(f"[{game_id}] {away_key}: {old_away} -> {away_odds} | {home_key}: {old_home} -> {home_odds} | lastUpdated: {game['lastUpdated']}")
         updated += 1
 

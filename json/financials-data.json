@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-28T16:40:25.818890Z",
+  "lastUpdated": "2026-09-29T14:46:05.936136Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -2245,50 +2245,6 @@
       "url": "https://robotaxitracker.com/vehicles?provider=waymo&area=bay-area-waymo",
       "change": "",
       "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
-    },
-    {
-      "id": "phi-chi-2026-09-28",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "PHI @ CHI",
-      "game_title": "Philadelphia Eagles @ Chicago Bears",
-      "game_time": "Sep 28, 2026 8:15 PM ET",
-      "game_time_iso": "2026-09-28T20:15:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-phi-chi-2026-09-28",
-      "lastUpdated": "2026-09-24T16:00:00.000000Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-phi-chi-2026-09-28",
-      "week": 3,
-      "probabilities": {
-        "2026-09-21": {
-          "PHI_win_odds": "50.0¢",
-          "CHI_win_odds": "50.0¢"
-        },
-        "2026-09-23": {
-          "PHI_win_odds": "45.0¢",
-          "CHI_win_odds": "55.0¢"
-        },
-        "2026-09-25": {
-          "PHI_win_odds": "49.0¢",
-          "CHI_win_odds": "51.0¢"
-        },
-        "2026-09-26": {
-          "PHI_win_odds": "46.0¢",
-          "CHI_win_odds": "54.0¢"
-        },
-        "2026-09-27": {
-          "PHI_win_odds": "48.0¢",
-          "CHI_win_odds": "52.0¢"
-        },
-        "2026-09-28": {
-          "PHI_win_odds": "47.0¢",
-          "CHI_win_odds": "53.0¢"
-        }
-      },
-      "PHI_win_odds": "47.0¢",
-      "CHI_win_odds": "53.5¢",
-      "away_color": "#004C54",
-      "home_color": "#0B162A",
-      "explanation": "NFL game prediction market showing the probability of the Philadelphia Eagles winning against the Chicago Bears. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-28T13:21:44.772450Z",
+  "lastUpdated": "2026-10-02T12:10:15.836917Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -15,17 +15,17 @@
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-09-28T13:21:44.772921Z",
+      "fetchedAt": "2026-10-02T12:10:15.837424Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "marketCap": 5434765213696.0,
-      "enterpriseValue": 5400577966080.0,
-      "trailingPE": 28.49,
-      "forwardPE": 14.35,
-      "pegRatio": 0.47,
-      "priceToSalesTrailing12Months": 17.94,
-      "priceToBook": 23.73,
+      "marketCap": 5574576046080.0,
+      "enterpriseValue": 5540117217280.0,
+      "trailingPE": 29.15,
+      "forwardPE": 14.71,
+      "pegRatio": 0.48,
+      "priceToSalesTrailing12Months": 18.4,
+      "priceToBook": 24.34,
       "grossMargins": 0.75,
       "operatingMargins": 0.66,
       "profitMargins": 0.64,
@@ -49,7 +49,7 @@
       "floatShares": 23132626000.0,
       "impliedSharesOutstanding": 24147000000.0,
       "dividendRate": 1.0,
-      "dividendYield": 0.44,
+      "dividendYield": 0.43,
       "payoutRatio": 0.04,
       "fiveYearAvgDividendYield": 0.05,
       "targetHighPrice": 515.0,
@@ -61,19 +61,19 @@
       "beta": 2.22,
       "fiftyTwoWeekHigh": 236.54,
       "fiftyTwoWeekLow": 164.27,
-      "fiftyDayAverage": 215.98,
-      "twoHundredDayAverage": 199.47,
-      "averageVolume": 124633855.0,
-      "averageDailyVolume10Day": 106374760.0,
-      "previousClose": 224.58,
-      "open": 225.15,
-      "regularMarketOpen": 225.15,
-      "dayHigh": 226.94,
-      "dayLow": 223.13,
-      "regularMarketDayHigh": 226.94,
-      "regularMarketDayLow": 223.13,
-      "regularMarketVolume": 89947712.0,
-      "averageVolume10days": 106374760.0,
+      "fiftyDayAverage": 217.77,
+      "twoHundredDayAverage": 200.43,
+      "averageVolume": 122420392.0,
+      "averageDailyVolume10Day": 111674630.0,
+      "previousClose": 228.38,
+      "open": 229.95,
+      "regularMarketOpen": 229.95,
+      "dayHigh": 232.28,
+      "dayLow": 228.16,
+      "regularMarketDayHigh": 232.28,
+      "regularMarketDayLow": 228.16,
+      "regularMarketVolume": 97538145.0,
+      "averageVolume10days": 111674630.0,
       "sharesShort": 294225803.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 285956804.0,
@@ -84,24 +84,8 @@
       "recommendationKey": "strong_buy",
       "exDividendDate": "2026-09-10",
       "lastDividendDate": "2026-09-10",
-      "latestPrice": 225.07,
+      "latestPrice": 230.86,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 177.76
-        },
-        {
-          "date": "2025-09-29",
-          "close": 181.42
-        },
-        {
-          "date": "2025-09-30",
-          "close": 186.13
-        },
-        {
-          "date": "2025-10-01",
-          "close": 186.79
-        },
         {
           "date": "2025-10-02",
           "close": 188.44
@@ -256,7 +240,7 @@
         },
         {
           "date": "2025-11-25",
-          "close": 177.4
+          "close": 177.39
         },
         {
           "date": "2025-11-26",
@@ -1089,6 +1073,22 @@
         {
           "date": "2026-09-25",
           "close": 225.07
+        },
+        {
+          "date": "2026-09-28",
+          "close": 228.86
+        },
+        {
+          "date": "2026-09-29",
+          "close": 227.21
+        },
+        {
+          "date": "2026-09-30",
+          "close": 228.38
+        },
+        {
+          "date": "2026-10-01",
+          "close": 230.86
         }
       ],
       "nextEarningsDate": "2026-11-17",
@@ -1126,17 +1126,17 @@
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-09-28T13:21:46.277882Z",
+      "fetchedAt": "2026-10-02T12:10:17.310284Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "marketCap": 1469666033664.0,
-      "enterpriseValue": 1442883043328.0,
-      "trailingPE": 344.55,
-      "forwardPE": 171.25,
-      "pegRatio": 4.45,
-      "priceToSalesTrailing12Months": 14.18,
-      "priceToBook": 16.92,
+      "marketCap": 1398574153728.0,
+      "enterpriseValue": 1371791163392.0,
+      "trailingPE": 334.07,
+      "forwardPE": 163.71,
+      "pegRatio": 4.24,
+      "priceToSalesTrailing12Months": 13.5,
+      "priceToBook": 16.1,
       "grossMargins": 0.19,
       "operatingMargins": 0.01,
       "profitMargins": 0.04,
@@ -1165,26 +1165,26 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 600.0,
       "targetLowPrice": 125.0,
-      "targetMeanPrice": 395.83,
+      "targetMeanPrice": 395.57,
       "targetMedianPrice": 412.5,
       "recommendationMean": 2.35,
       "numberOfAnalystOpinions": 38.0,
       "beta": 1.84,
       "fiftyTwoWeekHigh": 498.83,
       "fiftyTwoWeekLow": 297.38,
-      "fiftyDayAverage": 348.25,
-      "twoHundredDayAverage": 395.62,
-      "averageVolume": 39040411.0,
-      "averageDailyVolume10Day": 35626190.0,
-      "previousClose": 377.94,
-      "open": 384.9,
-      "regularMarketOpen": 384.9,
-      "dayHigh": 386.83,
-      "dayLow": 367.67,
-      "regularMarketDayHigh": 386.83,
-      "regularMarketDayLow": 367.67,
-      "regularMarketVolume": 45999470.0,
-      "averageVolume10days": 35626190.0,
+      "fiftyDayAverage": 346.57,
+      "twoHundredDayAverage": 393.71,
+      "averageVolume": 37887752.0,
+      "averageDailyVolume10Day": 36462500.0,
+      "previousClose": 354.81,
+      "open": 356.81,
+      "regularMarketOpen": 356.81,
+      "dayHigh": 359.79,
+      "dayLow": 353.8,
+      "regularMarketDayHigh": 359.79,
+      "regularMarketDayLow": 353.8,
+      "regularMarketVolume": 30302824.0,
+      "averageVolume10days": 36462500.0,
       "sharesShort": 68862357.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 69196896.0,
@@ -1193,24 +1193,8 @@
       "industry": "Auto Manufacturers",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 372.11,
+      "latestPrice": 354.11,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 440.4
-        },
-        {
-          "date": "2025-09-29",
-          "close": 443.21
-        },
-        {
-          "date": "2025-09-30",
-          "close": 444.72
-        },
-        {
-          "date": "2025-10-01",
-          "close": 459.46
-        },
         {
           "date": "2025-10-02",
           "close": 436.0
@@ -2198,10 +2182,26 @@
         {
           "date": "2026-09-25",
           "close": 372.11
+        },
+        {
+          "date": "2026-09-28",
+          "close": 357.45
+        },
+        {
+          "date": "2026-09-29",
+          "close": 352.84
+        },
+        {
+          "date": "2026-09-30",
+          "close": 354.81
+        },
+        {
+          "date": "2026-10-01",
+          "close": 354.11
         }
       ],
       "nextEarningsDate": "2026-10-21",
-      "estimatedEPS": 0.45,
+      "estimatedEPS": 0.44,
       "recentEarnings": [
         {
           "reportedDate": "2026-07-22",
@@ -2235,17 +2235,17 @@
     },
     {
       "ticker": "NYT",
-      "fetchedAt": "2026-09-28T13:21:47.184234Z",
+      "fetchedAt": "2026-10-02T12:10:18.259787Z",
       "source": "Yahoo Finance",
       "company": "The New York Times Company",
       "sector": "Communication Services",
-      "marketCap": 10294731776.0,
-      "enterpriseValue": 9633918976.0,
-      "trailingPE": 26.6,
-      "forwardPE": 20.33,
+      "marketCap": 10275377152.0,
+      "enterpriseValue": 9614565376.0,
+      "trailingPE": 26.55,
+      "forwardPE": 20.29,
       "pegRatio": 3.79,
-      "priceToSalesTrailing12Months": 3.49,
-      "priceToBook": 5.04,
+      "priceToSalesTrailing12Months": 3.48,
+      "priceToBook": 5.03,
       "grossMargins": 0.51,
       "operatingMargins": 0.17,
       "profitMargins": 0.13,
@@ -2271,7 +2271,7 @@
       "dividendRate": 0.92,
       "dividendYield": 1.44,
       "payoutRatio": 0.32,
-      "fiveYearAvgDividendYield": 0.95,
+      "fiveYearAvgDividendYield": 0.96,
       "targetHighPrice": 90.0,
       "targetLowPrice": 63.0,
       "targetMeanPrice": 78.56,
@@ -2281,19 +2281,19 @@
       "beta": 0.91,
       "fiftyTwoWeekHigh": 87.1,
       "fiftyTwoWeekLow": 54.1,
-      "fiftyDayAverage": 68.71,
-      "twoHundredDayAverage": 73.75,
-      "averageVolume": 2362766.0,
-      "averageDailyVolume10Day": 4587240.0,
-      "previousClose": 63.05,
-      "open": 62.73,
-      "regularMarketOpen": 62.73,
-      "dayHigh": 64.91,
-      "dayLow": 62.65,
-      "regularMarketDayHigh": 64.91,
-      "regularMarketDayLow": 62.65,
-      "regularMarketVolume": 3630619.0,
-      "averageVolume10days": 4587240.0,
+      "fiftyDayAverage": 67.81,
+      "twoHundredDayAverage": 73.68,
+      "averageVolume": 2412150.0,
+      "averageDailyVolume10Day": 4515680.0,
+      "previousClose": 63.7,
+      "open": 63.96,
+      "regularMarketOpen": 63.96,
+      "dayHigh": 63.98,
+      "dayLow": 62.95,
+      "regularMarketDayHigh": 63.98,
+      "regularMarketDayLow": 62.95,
+      "regularMarketVolume": 1602550.0,
+      "averageVolume10days": 4515680.0,
       "sharesShort": 13533377.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 11503786.0,
@@ -2302,26 +2302,10 @@
       "industry": "Publishing",
       "currency": "USD",
       "recommendationKey": "buy",
-      "exDividendDate": "2026-07-08",
+      "exDividendDate": "2026-10-07",
       "lastDividendDate": "2026-07-08",
-      "latestPrice": 63.83,
+      "latestPrice": 63.71,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 57.51
-        },
-        {
-          "date": "2025-09-29",
-          "close": 56.69
-        },
-        {
-          "date": "2025-09-30",
-          "close": 56.73
-        },
-        {
-          "date": "2025-10-01",
-          "close": 55.03
-        },
         {
           "date": "2025-10-02",
           "close": 54.95
@@ -3309,6 +3293,22 @@
         {
           "date": "2026-09-25",
           "close": 63.83
+        },
+        {
+          "date": "2026-09-28",
+          "close": 64.17
+        },
+        {
+          "date": "2026-09-29",
+          "close": 62.32
+        },
+        {
+          "date": "2026-09-30",
+          "close": 63.7
+        },
+        {
+          "date": "2026-10-01",
+          "close": 63.71
         }
       ],
       "nextEarningsDate": "2026-11-04",
@@ -3346,17 +3346,17 @@
     },
     {
       "ticker": "SPCX",
-      "fetchedAt": "2026-09-28T13:21:48.085874Z",
+      "fetchedAt": "2026-10-02T12:10:19.492756Z",
       "source": "Yahoo Finance",
       "company": "Space Exploration Technologies Corp.",
       "sector": "Industrials",
-      "marketCap": 1959866925056.0,
-      "enterpriseValue": 3859433127936.0,
+      "marketCap": 1951826313216.0,
+      "enterpriseValue": 3843351379968.0,
       "trailingPE": null,
-      "forwardPE": 85.29,
+      "forwardPE": 84.94,
       "pegRatio": null,
-      "priceToSalesTrailing12Months": 85.05,
-      "priceToBook": 15.4,
+      "priceToSalesTrailing12Months": 84.7,
+      "priceToBook": 15.33,
       "grossMargins": 0.52,
       "operatingMargins": -0.02,
       "profitMargins": -0.36,
@@ -3385,26 +3385,26 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 450.0,
       "targetLowPrice": 140.0,
-      "targetMeanPrice": 222.42,
-      "targetMedianPrice": 220.0,
-      "recommendationMean": 1.69,
-      "numberOfAnalystOpinions": 19.0,
+      "targetMeanPrice": 226.04,
+      "targetMedianPrice": 225.0,
+      "recommendationMean": 1.68,
+      "numberOfAnalystOpinions": 25.0,
       "beta": null,
       "fiftyTwoWeekHigh": 225.64,
       "fiftyTwoWeekLow": 104.83,
-      "fiftyDayAverage": 135.92,
-      "twoHundredDayAverage": 143.3,
-      "averageVolume": 92714806.0,
-      "averageDailyVolume10Day": 99830030.0,
-      "previousClose": 148.03,
-      "open": 148.38,
-      "regularMarketOpen": 148.38,
-      "dayHigh": 149.66,
-      "dayLow": 146.0,
-      "regularMarketDayHigh": 149.66,
-      "regularMarketDayLow": 146.0,
-      "regularMarketVolume": 54595189.0,
-      "averageVolume10days": 99830030.0,
+      "fiftyDayAverage": 138.14,
+      "twoHundredDayAverage": 143.57,
+      "averageVolume": 92368395.0,
+      "averageDailyVolume10Day": 97717750.0,
+      "previousClose": 150.86,
+      "open": 150.45,
+      "regularMarketOpen": 150.45,
+      "dayHigh": 153.78,
+      "dayLow": 146.03,
+      "regularMarketDayHigh": 153.78,
+      "regularMarketDayLow": 146.03,
+      "regularMarketVolume": 68728208.0,
+      "averageVolume10days": 97717750.0,
       "sharesShort": 162252035.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 184389672.0,
@@ -3413,7 +3413,7 @@
       "industry": "Aerospace & Defense",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 148.68,
+      "latestPrice": 148.07,
       "priceHistory": [
         {
           "date": "2026-06-12",
@@ -3706,6 +3706,22 @@
         {
           "date": "2026-09-25",
           "close": 148.68
+        },
+        {
+          "date": "2026-09-28",
+          "close": 145.47
+        },
+        {
+          "date": "2026-09-29",
+          "close": 149.24
+        },
+        {
+          "date": "2026-09-30",
+          "close": 150.86
+        },
+        {
+          "date": "2026-10-01",
+          "close": 148.07
         }
       ],
       "nextEarningsDate": "2026-11-03",
@@ -3722,17 +3738,17 @@
     },
     {
       "ticker": "CRM",
-      "fetchedAt": "2026-09-28T13:21:48.804980Z",
+      "fetchedAt": "2026-10-02T12:10:20.464708Z",
       "source": "Yahoo Finance",
       "company": "Salesforce, Inc.",
       "sector": "Technology",
-      "marketCap": 192598458368.0,
-      "enterpriseValue": 223571460096.0,
-      "trailingPE": 21.41,
-      "forwardPE": 14.62,
-      "pegRatio": 0.78,
-      "priceToSalesTrailing12Months": 4.38,
-      "priceToBook": 5.02,
+      "marketCap": 194795864064.0,
+      "enterpriseValue": 225768865792.0,
+      "trailingPE": 21.27,
+      "forwardPE": 14.79,
+      "pegRatio": 0.77,
+      "priceToSalesTrailing12Months": 4.43,
+      "priceToBook": 5.08,
       "grossMargins": 0.77,
       "operatingMargins": 0.21,
       "profitMargins": 0.22,
@@ -3756,31 +3772,31 @@
       "floatShares": 797536380.0,
       "impliedSharesOutstanding": 823000000.0,
       "dividendRate": 1.76,
-      "dividendYield": 0.75,
+      "dividendYield": 0.74,
       "payoutRatio": 0.16,
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 475.0,
       "targetLowPrice": 160.0,
-      "targetMeanPrice": 281.08,
+      "targetMeanPrice": 282.58,
       "targetMedianPrice": 280.0,
-      "recommendationMean": 1.74,
+      "recommendationMean": 1.76,
       "numberOfAnalystOpinions": 53.0,
       "beta": 1.2,
       "fiftyTwoWeekHigh": 269.11,
       "fiftyTwoWeekLow": 146.32,
-      "fiftyDayAverage": 213.68,
-      "twoHundredDayAverage": 201.26,
-      "averageVolume": 13813046.0,
-      "averageDailyVolume10Day": 12884450.0,
-      "previousClose": 238.22,
-      "open": 237.03,
-      "regularMarketOpen": 237.03,
-      "dayHigh": 239.37,
-      "dayLow": 233.38,
-      "regularMarketDayHigh": 239.37,
-      "regularMarketDayLow": 233.38,
-      "regularMarketVolume": 8483000.0,
-      "averageVolume10days": 12884450.0,
+      "fiftyDayAverage": 218.51,
+      "twoHundredDayAverage": 200.6,
+      "averageVolume": 13711898.0,
+      "averageDailyVolume10Day": 12297610.0,
+      "previousClose": 229.57,
+      "open": 235.28,
+      "regularMarketOpen": 235.28,
+      "dayHigh": 239.45,
+      "dayLow": 230.75,
+      "regularMarketDayHigh": 239.45,
+      "regularMarketDayLow": 230.75,
+      "regularMarketVolume": 9563732.0,
+      "averageVolume10days": 12297610.0,
       "sharesShort": 32348247.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 26502629.0,
@@ -3791,24 +3807,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2026-09-17",
       "lastDividendDate": "2026-09-17",
-      "latestPrice": 234.02,
+      "latestPrice": 236.69,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 241.38
-        },
-        {
-          "date": "2025-09-29",
-          "close": 243.04
-        },
-        {
-          "date": "2025-09-30",
-          "close": 235.01
-        },
-        {
-          "date": "2025-10-01",
-          "close": 233.71
-        },
         {
           "date": "2025-10-02",
           "close": 236.87
@@ -4796,6 +4796,22 @@
         {
           "date": "2026-09-25",
           "close": 234.02
+        },
+        {
+          "date": "2026-09-28",
+          "close": 227.27
+        },
+        {
+          "date": "2026-09-29",
+          "close": 225.31
+        },
+        {
+          "date": "2026-09-30",
+          "close": 229.57
+        },
+        {
+          "date": "2026-10-01",
+          "close": 236.69
         }
       ],
       "nextEarningsDate": "2026-12-02",
@@ -4833,17 +4849,17 @@
     },
     {
       "ticker": "CRWD",
-      "fetchedAt": "2026-09-28T13:21:49.572360Z",
+      "fetchedAt": "2026-10-02T12:10:21.437960Z",
       "source": "Yahoo Finance",
       "company": "CrowdStrike Holdings, Inc.",
       "sector": "Technology",
-      "marketCap": 258164703232.0,
-      "enterpriseValue": 254008819712.0,
-      "trailingPE": 8404.33,
-      "forwardPE": 157.0,
-      "pegRatio": 8.07,
-      "priceToSalesTrailing12Months": 47.84,
-      "priceToBook": 50.6,
+      "marketCap": 272458825728.0,
+      "enterpriseValue": 268302958592.0,
+      "trailingPE": 8869.67,
+      "forwardPE": 165.69,
+      "pegRatio": 8.47,
+      "priceToSalesTrailing12Months": 50.49,
+      "priceToBook": 53.4,
       "grossMargins": 0.75,
       "operatingMargins": -0.02,
       "profitMargins": 0.01,
@@ -4864,7 +4880,7 @@
       "quickRatio": 1.37,
       "bookValue": 4.98,
       "sharesOutstanding": 1023934842.0,
-      "floatShares": 1007183268.0,
+      "floatShares": 1007203747.0,
       "impliedSharesOutstanding": 1023934842.0,
       "dividendRate": null,
       "dividendYield": null,
@@ -4877,21 +4893,21 @@
       "recommendationMean": 1.7,
       "numberOfAnalystOpinions": 50.0,
       "beta": 1.25,
-      "fiftyTwoWeekHigh": 263.87,
+      "fiftyTwoWeekHigh": 269.3,
       "fiftyTwoWeekLow": 85.68,
-      "fiftyDayAverage": 212.63,
-      "twoHundredDayAverage": 150.11,
-      "averageVolume": 10093680.0,
-      "averageDailyVolume10Day": 13771420.0,
-      "previousClose": 259.67,
-      "open": 259.49,
-      "regularMarketOpen": 259.49,
-      "dayHigh": 259.8,
-      "dayLow": 251.54,
-      "regularMarketDayHigh": 259.8,
-      "regularMarketDayLow": 251.54,
-      "regularMarketVolume": 7641562.0,
-      "averageVolume10days": 13771420.0,
+      "fiftyDayAverage": 218.06,
+      "twoHundredDayAverage": 152.8,
+      "averageVolume": 9714880.0,
+      "averageDailyVolume10Day": 10282680.0,
+      "previousClose": 264.75,
+      "open": 263.23,
+      "regularMarketOpen": 263.23,
+      "dayHigh": 269.3,
+      "dayLow": 259.31,
+      "regularMarketDayHigh": 269.3,
+      "regularMarketDayLow": 259.31,
+      "regularMarketVolume": 6859136.0,
+      "averageVolume10days": 10282680.0,
       "sharesShort": 27929552.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 24164922.0,
@@ -4900,24 +4916,8 @@
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 252.13,
+      "latestPrice": 266.09,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 120.36
-        },
-        {
-          "date": "2025-09-29",
-          "close": 122.11
-        },
-        {
-          "date": "2025-09-30",
-          "close": 122.6
-        },
-        {
-          "date": "2025-10-01",
-          "close": 124.99
-        },
         {
           "date": "2025-10-02",
           "close": 124.2
@@ -5905,6 +5905,22 @@
         {
           "date": "2026-09-25",
           "close": 252.13
+        },
+        {
+          "date": "2026-09-28",
+          "close": 259.25
+        },
+        {
+          "date": "2026-09-29",
+          "close": 262.74
+        },
+        {
+          "date": "2026-09-30",
+          "close": 264.75
+        },
+        {
+          "date": "2026-10-01",
+          "close": 266.09
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -5942,17 +5958,17 @@
     },
     {
       "ticker": "HPQ",
-      "fetchedAt": "2026-09-28T13:21:50.323392Z",
+      "fetchedAt": "2026-10-02T12:10:22.354359Z",
       "source": "Yahoo Finance",
       "company": "HP Inc.",
       "sector": "Technology",
-      "marketCap": 28226056192.0,
-      "enterpriseValue": 34396057600.0,
+      "marketCap": 28992581632.0,
+      "enterpriseValue": 35162578944.0,
       "trailingPE": 11.95,
-      "forwardPE": 9.97,
+      "forwardPE": 10.25,
       "pegRatio": 3.34,
-      "priceToSalesTrailing12Months": 0.48,
-      "priceToBook": -306.86,
+      "priceToSalesTrailing12Months": 0.49,
+      "priceToBook": -315.2,
       "grossMargins": 0.2,
       "operatingMargins": 0.05,
       "profitMargins": 0.04,
@@ -5976,9 +5992,9 @@
       "floatShares": 898499432.0,
       "impliedSharesOutstanding": 901790969.0,
       "dividendRate": 1.2,
-      "dividendYield": 3.83,
+      "dividendYield": 3.73,
       "payoutRatio": 0.45,
-      "fiveYearAvgDividendYield": 3.69,
+      "fiveYearAvgDividendYield": 3.71,
       "targetHighPrice": 72.0,
       "targetLowPrice": 19.0,
       "targetMeanPrice": 29.66,
@@ -5988,19 +6004,19 @@
       "beta": 1.21,
       "fiftyTwoWeekHigh": 36.23,
       "fiftyTwoWeekLow": 17.56,
-      "fiftyDayAverage": 29.9,
-      "twoHundredDayAverage": 23.47,
-      "averageVolume": 15459450.0,
-      "averageDailyVolume10Day": 16871060.0,
-      "previousClose": 31.14,
-      "open": 31.6,
-      "regularMarketOpen": 31.6,
-      "dayHigh": 31.77,
-      "dayLow": 30.83,
-      "regularMarketDayHigh": 31.77,
-      "regularMarketDayLow": 30.83,
-      "regularMarketVolume": 11959156.0,
-      "averageVolume10days": 16871060.0,
+      "fiftyDayAverage": 30.43,
+      "twoHundredDayAverage": 23.59,
+      "averageVolume": 15346734.0,
+      "averageDailyVolume10Day": 16020670.0,
+      "previousClose": 31.28,
+      "open": 31.61,
+      "regularMarketOpen": 31.61,
+      "dayHigh": 32.38,
+      "dayLow": 31.33,
+      "regularMarketDayHigh": 32.38,
+      "regularMarketDayLow": 31.33,
+      "regularMarketVolume": 13671709.0,
+      "averageVolume10days": 16020670.0,
       "sharesShort": 72511904.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 81142372.0,
@@ -6011,24 +6027,8 @@
       "recommendationKey": "none",
       "exDividendDate": "2026-09-09",
       "lastDividendDate": "2026-09-09",
-      "latestPrice": 31.3,
+      "latestPrice": 32.15,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 25.41
-        },
-        {
-          "date": "2025-09-29",
-          "close": 25.59
-        },
-        {
-          "date": "2025-09-30",
-          "close": 25.91
-        },
-        {
-          "date": "2025-10-01",
-          "close": 25.41
-        },
         {
           "date": "2025-10-02",
           "close": 25.2
@@ -7016,6 +7016,22 @@
         {
           "date": "2026-09-25",
           "close": 31.3
+        },
+        {
+          "date": "2026-09-28",
+          "close": 31.32
+        },
+        {
+          "date": "2026-09-29",
+          "close": 30.73
+        },
+        {
+          "date": "2026-09-30",
+          "close": 31.28
+        },
+        {
+          "date": "2026-10-01",
+          "close": 32.15
         }
       ],
       "nextEarningsDate": "2026-11-24",
@@ -7053,17 +7069,17 @@
     },
     {
       "ticker": "OKTA",
-      "fetchedAt": "2026-09-28T13:21:51.170852Z",
+      "fetchedAt": "2026-10-02T12:10:23.561667Z",
       "source": "Yahoo Finance",
       "company": "Okta, Inc.",
       "sector": "Technology",
-      "marketCap": 34123296768.0,
-      "enterpriseValue": 31877296128.0,
-      "trailingPE": 116.88,
-      "forwardPE": 44.58,
-      "pegRatio": 1.61,
-      "priceToSalesTrailing12Months": 11.1,
-      "priceToBook": 4.89,
+      "marketCap": 37172174848.0,
+      "enterpriseValue": 34926174208.0,
+      "trailingPE": 127.32,
+      "forwardPE": 48.56,
+      "pegRatio": 1.73,
+      "priceToSalesTrailing12Months": 12.1,
+      "priceToBook": 5.33,
       "grossMargins": 0.78,
       "operatingMargins": 0.13,
       "profitMargins": 0.1,
@@ -7092,26 +7108,26 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 250.0,
       "targetLowPrice": 127.0,
-      "targetMeanPrice": 209.92,
-      "targetMedianPrice": 219.0,
+      "targetMeanPrice": 212.25,
+      "targetMedianPrice": 223.0,
       "recommendationMean": 1.66,
       "numberOfAnalystOpinions": 43.0,
       "beta": 0.79,
-      "fiftyTwoWeekHigh": 212.5,
+      "fiftyTwoWeekHigh": 213.86,
       "fiftyTwoWeekLow": 62.66,
-      "fiftyDayAverage": 158.19,
-      "twoHundredDayAverage": 109.17,
-      "averageVolume": 3503031.0,
-      "averageDailyVolume10Day": 4728400.0,
-      "previousClose": 206.64,
-      "open": 204.0,
-      "regularMarketOpen": 204.0,
-      "dayHigh": 205.0,
-      "dayLow": 195.04,
-      "regularMarketDayHigh": 205.0,
-      "regularMarketDayLow": 195.04,
-      "regularMarketVolume": 3994471.0,
-      "averageVolume10days": 4728400.0,
+      "fiftyDayAverage": 163.25,
+      "twoHundredDayAverage": 111.52,
+      "averageVolume": 3502974.0,
+      "averageDailyVolume10Day": 4235000.0,
+      "previousClose": 209.11,
+      "open": 210.0,
+      "regularMarketOpen": 210.0,
+      "dayHigh": 213.86,
+      "dayLow": 205.25,
+      "regularMarketDayHigh": 213.86,
+      "regularMarketDayLow": 205.25,
+      "regularMarketVolume": 3179686.0,
+      "averageVolume10days": 4235000.0,
       "sharesShort": 8205342.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 6449812.0,
@@ -7120,24 +7136,8 @@
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 195.19,
+      "latestPrice": 212.63,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 91.16
-        },
-        {
-          "date": "2025-09-29",
-          "close": 93.86
-        },
-        {
-          "date": "2025-09-30",
-          "close": 91.7
-        },
-        {
-          "date": "2025-10-01",
-          "close": 91.69
-        },
         {
           "date": "2025-10-02",
           "close": 94.92
@@ -8125,6 +8125,22 @@
         {
           "date": "2026-09-25",
           "close": 195.19
+        },
+        {
+          "date": "2026-09-28",
+          "close": 202.18
+        },
+        {
+          "date": "2026-09-29",
+          "close": 204.88
+        },
+        {
+          "date": "2026-09-30",
+          "close": 209.11
+        },
+        {
+          "date": "2026-10-01",
+          "close": 212.63
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -8162,17 +8178,17 @@
     },
     {
       "ticker": "ANF",
-      "fetchedAt": "2026-09-28T13:21:52.048890Z",
+      "fetchedAt": "2026-10-02T12:10:24.521857Z",
       "source": "Yahoo Finance",
       "company": "Abercrombie & Fitch Co.",
       "sector": "Consumer Cyclical",
-      "marketCap": 5758769664.0,
-      "enterpriseValue": 6423351296.0,
-      "trailingPE": 11.72,
-      "forwardPE": 10.57,
+      "marketCap": 5786351616.0,
+      "enterpriseValue": 6450933760.0,
+      "trailingPE": 11.62,
+      "forwardPE": 10.62,
       "pegRatio": 3.62,
       "priceToSalesTrailing12Months": 1.08,
-      "priceToBook": 4.25,
+      "priceToBook": 4.27,
       "grossMargins": 0.64,
       "operatingMargins": 0.2,
       "profitMargins": 0.1,
@@ -8208,19 +8224,19 @@
       "beta": 0.97,
       "fiftyTwoWeekHigh": 155.22,
       "fiftyTwoWeekLow": 65.45,
-      "fiftyDayAverage": 120.92,
-      "twoHundredDayAverage": 100.78,
-      "averageVolume": 1507252.0,
-      "averageDailyVolume10Day": 1242530.0,
-      "previousClose": 134.3,
-      "open": 134.5,
-      "regularMarketOpen": 134.5,
-      "dayHigh": 136.72,
-      "dayLow": 132.63,
-      "regularMarketDayHigh": 136.72,
-      "regularMarketDayLow": 132.63,
-      "regularMarketVolume": 1066328.0,
-      "averageVolume10days": 1242530.0,
+      "fiftyDayAverage": 124.15,
+      "twoHundredDayAverage": 101.33,
+      "averageVolume": 1506955.0,
+      "averageDailyVolume10Day": 1190780.0,
+      "previousClose": 134.69,
+      "open": 134.64,
+      "regularMarketOpen": 134.64,
+      "dayHigh": 138.38,
+      "dayLow": 133.02,
+      "regularMarketDayHigh": 138.38,
+      "regularMarketDayLow": 133.02,
+      "regularMarketVolume": 1136027.0,
+      "averageVolume10days": 1190780.0,
       "sharesShort": 5270080.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 4039347.0,
@@ -8231,24 +8247,8 @@
       "recommendationKey": "none",
       "exDividendDate": "2020-03-05",
       "lastDividendDate": "2020-03-05",
-      "latestPrice": 135.71,
+      "latestPrice": 136.36,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 85.89
-        },
-        {
-          "date": "2025-09-29",
-          "close": 84.77
-        },
-        {
-          "date": "2025-09-30",
-          "close": 85.55
-        },
-        {
-          "date": "2025-10-01",
-          "close": 86.16
-        },
         {
           "date": "2025-10-02",
           "close": 85.67
@@ -9236,6 +9236,22 @@
         {
           "date": "2026-09-25",
           "close": 135.71
+        },
+        {
+          "date": "2026-09-28",
+          "close": 134.18
+        },
+        {
+          "date": "2026-09-29",
+          "close": 133.59
+        },
+        {
+          "date": "2026-09-30",
+          "close": 134.69
+        },
+        {
+          "date": "2026-10-01",
+          "close": 136.36
         }
       ],
       "nextEarningsDate": "2026-11-25",
@@ -9273,17 +9289,17 @@
     },
     {
       "ticker": "SJM",
-      "fetchedAt": "2026-09-28T13:21:53.137413Z",
+      "fetchedAt": "2026-10-02T12:10:25.628104Z",
       "source": "Yahoo Finance",
       "company": "The J. M. Smucker Company",
       "sector": "Consumer Defensive",
-      "marketCap": 12925604864.0,
-      "enterpriseValue": 19822604288.0,
-      "trailingPE": 56.81,
-      "forwardPE": 11.08,
+      "marketCap": 12386148352.0,
+      "enterpriseValue": 19283148800.0,
+      "trailingPE": 55.21,
+      "forwardPE": 10.62,
       "pegRatio": 2.17,
-      "priceToSalesTrailing12Months": 1.41,
-      "priceToBook": 2.25,
+      "priceToSalesTrailing12Months": 1.35,
+      "priceToBook": 2.15,
       "grossMargins": 0.38,
       "operatingMargins": 0.18,
       "profitMargins": 0.03,
@@ -9307,7 +9323,7 @@
       "floatShares": 104516870.0,
       "impliedSharesOutstanding": 106823183.0,
       "dividendRate": 4.48,
-      "dividendYield": 3.7,
+      "dividendYield": 3.86,
       "payoutRatio": 2.06,
       "fiveYearAvgDividendYield": 3.38,
       "targetHighPrice": 157.0,
@@ -9319,19 +9335,19 @@
       "beta": 0.26,
       "fiftyTwoWeekHigh": 135.89,
       "fiftyTwoWeekLow": 88.25,
-      "fiftyDayAverage": 122.13,
-      "twoHundredDayAverage": 108.18,
-      "averageVolume": 1394436.0,
-      "averageDailyVolume10Day": 1393260.0,
-      "previousClose": 121.66,
-      "open": 121.31,
-      "regularMarketOpen": 121.31,
-      "dayHigh": 121.42,
-      "dayLow": 120.01,
-      "regularMarketDayHigh": 121.42,
-      "regularMarketDayLow": 120.01,
-      "regularMarketVolume": 918573.0,
-      "averageVolume10days": 1393260.0,
+      "fiftyDayAverage": 122.48,
+      "twoHundredDayAverage": 108.55,
+      "averageVolume": 1370955.0,
+      "averageDailyVolume10Day": 1338570.0,
+      "previousClose": 118.91,
+      "open": 118.31,
+      "regularMarketOpen": 118.31,
+      "dayHigh": 118.8,
+      "dayLow": 115.11,
+      "regularMarketDayHigh": 118.8,
+      "regularMarketDayLow": 115.11,
+      "regularMarketVolume": 1201689.0,
+      "averageVolume10days": 1338570.0,
       "sharesShort": 4733617.0,
       "sharesShortPreviousMonthDate": 1786665600.0,
       "sharesShortPriorMonth": 4272434.0,
@@ -9341,24 +9357,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2026-08-14",
       "lastDividendDate": "2026-08-14",
-      "latestPrice": 121.0,
+      "latestPrice": 115.95,
       "priceHistory": [
-        {
-          "date": "2025-09-26",
-          "close": 104.89
-        },
-        {
-          "date": "2025-09-29",
-          "close": 103.21
-        },
-        {
-          "date": "2025-09-30",
-          "close": 104.31
-        },
-        {
-          "date": "2025-10-01",
-          "close": 104.23
-        },
         {
           "date": "2025-10-02",
           "close": 103.54
@@ -10346,6 +10346,22 @@
         {
           "date": "2026-09-25",
           "close": 121.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 120.63
+        },
+        {
+          "date": "2026-09-29",
+          "close": 120.7
+        },
+        {
+          "date": "2026-09-30",
+          "close": 118.91
+        },
+        {
+          "date": "2026-10-01",
+          "close": 115.95
         }
       ],
       "nextEarningsDate": "2026-11-24",

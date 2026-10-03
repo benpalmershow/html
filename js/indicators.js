@@ -581,7 +581,9 @@ function buildChangeMetricButton(label, changeInfo, title) {
     const topSection = label ? `<span class="change-metric-title">${label}</span>` : '';
     const valueWithoutSign = changeInfo.formatted.replace(/^[+\-]/, '');
     const valueWithIcon = `<i data-lucide="${iconName}" style="display: inline; width: 0.85em; height: 0.85em; vertical-align: -0.05em; margin-right: 2px;"></i>${valueWithoutSign}`;
-    return `<div class="change-metric-block"><button type="button" class="change-metric-btn ${changeInfo.cssClass}">${topSection}<span class="change-metric-value">${valueWithIcon}</span></button></div>`;
+    const safeTitle = String(title || label || '').replace(/"/g, '&quot;');
+    const accessibleName = `${label ? label + ' ' : ''}${changeInfo.formatted}`.replace(/"/g, '&quot;');
+    return `<div class="change-metric-block"><button type="button" class="change-metric-btn ${changeInfo.cssClass}" title="${safeTitle}" aria-label="${accessibleName}">${topSection}<span class="change-metric-value">${valueWithIcon}</span></button></div>`;
 }
 
 // --- Card Creation ---
@@ -661,7 +663,11 @@ function renderSparklines() {
             const width = canvas.width = canvas.parentElement.offsetWidth || 300;
             const height = canvas.height = canvas.parentElement.offsetHeight || 120;
             const minVal = Math.min(...values), maxVal = Math.max(...values);
-            const range = maxVal - minVal || 1, pad = range * 0.1;
+            const range = maxVal - minVal;
+            const lineWidth = 1.5;
+            const inset = lineWidth / 2;
+            const innerW = width - inset * 2;
+            const innerH = height - inset * 2;
             
             // Clear canvas
             ctx.clearRect(0, 0, width, height);
@@ -671,10 +677,11 @@ function renderSparklines() {
             gradient.addColorStop(0, 'rgba(44, 95, 90, 0.12)');
             gradient.addColorStop(1, 'rgba(44, 95, 90, 0)');
             
-            // Calculate points
+            // Calculate points (edge-to-edge: only a half-line inset so the
+            // stroke is flush with the card border instead of clipped)
             const points = values.map((val, i) => ({
-                x: (i / (values.length - 1)) * width,
-                y: height - ((val - minVal + pad) / (range + pad * 2)) * height
+                x: inset + (i / (values.length - 1)) * innerW,
+                y: range > 0 ? inset + (1 - (val - minVal) / range) * innerH : inset + innerH / 2
             }));
 
             // Build a single smoothed path (shared by fill + stroke so the
@@ -702,7 +709,7 @@ function renderSparklines() {
             ctx.beginPath();
             tracePath();
             ctx.strokeStyle = 'rgba(44, 95, 90, 0.18)';
-            ctx.lineWidth = 1.5;
+            ctx.lineWidth = lineWidth;
             ctx.lineCap = 'round';
             ctx.stroke();
         } catch (e) { /* skip broken sparklines */ }

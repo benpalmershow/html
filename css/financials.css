@@ -2,7 +2,7 @@
 
 .indicator.expanded .indicator-agency, .indicator.expanded .indicator-content { margin-bottom: 6px; }
 
-.indicator-content { display: flex; flex-direction: column; gap: 2px; overflow: visible; position: relative; z-index: 1; }
+.indicator-content { display: flex; flex-direction: column; gap: 2px; overflow: visible; }
 
 .data-rows-container { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
@@ -139,21 +139,21 @@
 
 .month-change, .job-change-inline { font-size: 0.85rem; opacity: 0.8; font-weight: 600; }
 
-.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: nowrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.4); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
+.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: nowrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.55); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
 
 .change-metric-block { display: flex; justify-content: center; align-items: center; padding: 0; flex-shrink: 1; min-width: 0; }
 
-.change-metric-title { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-secondary); line-height: 1; opacity: 0.7; flex-shrink: 0; }
+.change-metric-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); line-height: 1; flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 
 .change-metric-title-icon { display: inline-flex; align-items: center; justify-content: center; width: 8px; height: 8px; flex-shrink: 0; }
 
 .change-metric-title-icon i { width: 8px; height: 8px; stroke-width: 2.1px; }
 
-.change-metric-btn { flex: 0 1 auto; width: fit-content; min-width: 0; max-width: none; border: none; border-radius: 6px; min-height: 24px; margin: 2px 0; padding: 3px 5px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 2px; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.01em; }
+.change-metric-btn { flex: 0 1 auto; width: fit-content; min-width: 0; max-width: none; border: 1px solid transparent; border-radius: 6px; min-height: 26px; margin: 2px 0; padding: 3px 5px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 5px; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.01em; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
 
 .change-metric-btn svg { width: 0.85em !important; height: 0.85em !important; }
 
-.change-metric-btn:focus-visible { outline: none; outline-offset: 0; }
+.change-metric-btn:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 1px; }
 
 .change-metric-btn:only-child { max-width: 100%; }
 
@@ -163,19 +163,20 @@
 
 .change-metric-main { display: inline-flex; align-items: center; justify-content: flex-start; width: 100%; min-width: 0; overflow: visible; }
 
-.change-metric-value { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.005em; flex-shrink: 0; line-height: 1; text-align: right; }
+.change-metric-value { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.005em; font-variant-numeric: tabular-nums; flex-shrink: 0; line-height: 1; text-align: right; }
 
 .change-metric-btn.change-positive .change-metric-value { color: #22c55e; }
 .change-metric-btn.change-negative .change-metric-value { color: #ef4444; }
+.change-metric-btn.change-neutral .change-metric-value { color: var(--text-secondary); }
 
 .change-metric-btn.change-positive, .change-metric-btn.change-negative, .change-metric-btn.change-neutral { background: transparent; border-color: transparent; }
 
-.change-metric-btn.change-positive { background: rgba(34, 197, 94, 0.08); }
-.change-metric-btn.change-positive:hover { background: rgba(34, 197, 94, 0.16); }
-.change-metric-btn.change-negative { background: rgba(239, 68, 68, 0.08); }
-.change-metric-btn.change-negative:hover { background: rgba(239, 68, 68, 0.16); }
-.change-metric-btn.change-neutral { background: rgba(209, 213, 219, 0.08); }
-.change-metric-btn.change-neutral:hover { background: rgba(209, 213, 219, 0.16); }
+.change-metric-btn.change-positive { background: rgba(34, 197, 94, 0.12); border-color: rgba(34, 197, 94, 0.3); }
+.change-metric-btn.change-positive:hover { background: rgba(34, 197, 94, 0.2); }
+.change-metric-btn.change-negative { background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); }
+.change-metric-btn.change-negative:hover { background: rgba(239, 68, 68, 0.2); }
+.change-metric-btn.change-neutral { background: rgba(209, 213, 219, 0.12); border-color: rgba(209, 213, 219, 0.26); }
+.change-metric-btn.change-neutral:hover { background: rgba(209, 213, 219, 0.2); }
 
 .change-metric-title-icon.change-positive { color: #22c55e; }
 .change-metric-title-icon.change-negative { color: #ef4444; }
@@ -394,7 +395,7 @@
 /* RESPONSIVE */
 @media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
-@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: nowrap; gap: 3px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; } .change-metric-value { font-size: 0.65rem; } }
+@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: nowrap; gap: 4px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } }
 
 @media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } .change-indicators { flex-wrap: wrap; } }
 
@@ -519,7 +520,7 @@
 .hormuz-monthly-name { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .hormuz-monthly-val { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
 .hormuz-monthly--low { color: #dc2626; }
-.sparkline-container { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; border-radius: inherit; }
+.sparkline-container { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; border-radius: inherit; }
 .sparkline-container canvas { position: absolute; bottom: 0; left: 0; width: 100% !important; height: 100% !important; }
 .indicator:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 2px; }
 .indicator-deep-link { outline: 2px solid var(--logo-teal); outline-offset: 2px; animation: deep-link-pulse 1.8s ease-out; }
@@ -741,7 +742,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
   border-radius: inherit;
 }
@@ -756,11 +757,6 @@
 
 .indicator:hover .sparkline-container canvas {
   opacity: 0.7;
-}
-
-.indicator-content {
-  position: relative;
-  z-index: 1;
 }
 
 

@@ -42,7 +42,7 @@ jobs:
       - name: Validate merged data
         run: |
           python3 -m json.tool json/financials-data.json > /dev/null
-          python3 -m json.tool json/nfl-games.yml > /dev/null || true
+          python3 -c 'import yaml; yaml.safe_load(open("json/nfl-games.yml", encoding="utf-8"))'
           node scripts/validate-site.js
 
       - name: Commit and push changes

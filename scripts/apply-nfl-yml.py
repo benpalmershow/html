@@ -3,14 +3,14 @@
 Merge json/nfl-games.yml into json/financials-data.json.
 
 Usage:
-    python3 scripts/apply-nfl-yml.py [--replace-completed]
+    python3 scripts/apply-nfl-yml.py [--week 5] [--replace-completed]
 
 Also run automatically by .github/workflows/update-nfl-markets.yml
 (daily at 08:00 UTC during the NFL season).
 
 Typical sequence:
-    1. python3 scripts/fetch-nfl-odds.py      # refresh <TEAM>_win_odds from Polymarket
-    2. python3 scripts/apply-nfl-yml.py       # merge into financials-data.json
+    1. python3 scripts/fetch-nfl-odds.py --week 5
+    2. python3 scripts/apply-nfl-yml.py --week 5
 
 Behavior:
   - Each game in the YAML becomes a "Prediction Markets" indicator object
@@ -28,7 +28,7 @@ free of NFL intellectual property.
 """
 
 import json
-import sys
+import argparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -36,7 +36,7 @@ try:
     import yaml
 except ImportError:
     print("PyYAML is required. Install with: pip install pyyaml")
-    sys.exit(1)
+    raise SystemExit(1)
 
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "json" / "nfl-games.yml"
@@ -69,7 +69,7 @@ def build_indicator(game):
     indicator = {
         "id": game["id"],
         "category": game.get("category", DEFAULT_CATEGORY),
-        "agency": game.get("agency", "Kalshi"),
+        "agency": game.get("agency", "Polymarket"),
         "name": f"{away} @ {home}",
         "game_title": f"{away_full} @ {home_full}",
         "game_time": game["game_time"],
@@ -172,7 +172,14 @@ def build_indicator(game):
 
 
 def main():
-    replace_completed = "--replace-completed" in sys.argv
+    parser = argparse.ArgumentParser(description="Merge NFL game data into financials-data.json.")
+    parser.add_argument("--week", type=int, help="Merge only games from this NFL week.")
+    parser.add_argument(
+        "--replace-completed",
+        action="store_true",
+        help="Remove completed NFL games from financials-data.json.",
+    )
+    args = parser.parse_args()
 
     if not YAML_PATH.exists():
         print(f"YAML file not found: {YAML_PATH}")
@@ -194,6 +201,8 @@ def main():
     now = datetime.now(timezone.utc)
     new_indicators = []
     completed_ids = []
+    incomplete_odds_ids = []
+    selected_games = 0
 
     for game in games:
         game_id = game.get("id")
@@ -201,12 +210,27 @@ def main():
             print("Skipping game with no id.")
             continue
 
+        if args.week is not None and game.get("week") != args.week:
+            continue
+        selected_games += 1
+
         game_dt = parse_iso(game.get("game_time_iso"))
-        if replace_completed and game_dt is not None and game_dt < now:
+        if args.replace_completed and game_dt is not None and game_dt < now:
             completed_ids.append(game_id)
             continue
 
+        away_odds = game.get(f"{game.get('away')}_win_odds")
+        home_odds = game.get(f"{game.get('home')}_win_odds")
+        if not away_odds or not home_odds:
+            print(f"Skipping game with incomplete live odds: {game_id}")
+            incomplete_odds_ids.append(game_id)
+            continue
+
         new_indicators.append(build_indicator(game))
+
+    if args.week is not None and selected_games == 0:
+        print(f"No games found for week {args.week}.")
+        return 1
 
     # Upsert by id: update existing, append the rest.
     existing_ids = {ind.get("id"): i for i, ind in enumerate(indices)}
@@ -222,10 +246,27 @@ def main():
 
     indices.extend(appended)
 
-    if replace_completed and completed_ids:
+    remove_ids = set(incomplete_odds_ids)
+    if args.week is not None:
+        eligible_ids = {indicator["id"] for indicator in new_indicators}
+        remove_ids.update(
+            indicator.get("id")
+            for indicator in indices
+            if indicator.get("category") == DEFAULT_CATEGORY
+            and indicator.get("week") == args.week
+            and indicator.get("id")
+            and indicator.get("id") not in eligible_ids
+        )
+
+    if args.replace_completed and completed_ids:
+        remove_ids.update(completed_ids)
+
+    if remove_ids:
         before = len(indices)
-        indices[:] = [ind for ind in indices if ind.get("id") not in completed_ids]
-        print(f"Removed {before - len(indices)} completed game(s): {', '.join(completed_ids)}")
+        indices[:] = [ind for ind in indices if ind.get("id") not in remove_ids]
+        removed = before - len(indices)
+        if removed:
+            print(f"Removed {removed} unavailable or completed game(s): {', '.join(sorted(remove_ids))}")
 
     data["lastUpdated"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 

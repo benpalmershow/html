@@ -9,7 +9,7 @@ CFTC-regulated prediction-market exchange (not an NFL data feed), so its odds
 are public, machine-readable, and free of NFL intellectual property.
 
 Usage:
-    python3 scripts/fetch-nfl-odds.py [--game-id ne-sea-2026-09-09]
+    python3 scripts/fetch-nfl-odds.py [--week 5] [--game-id ne-sea-2026-09-09]
 
 For each game with a polymarket_slug, this queries:
     https://gamma-api.polymarket.com/events?slug=<slug>
@@ -17,13 +17,13 @@ and rewrites the <TEAM>_win_odds fields from the moneyline market's
 outcomePrices (e.g. "0.385" -> "38.5¢"). The `lastUpdated` field is set to the
 event's updatedAt timestamp. All other YAML content is preserved.
 
-The moneyline market is identified as the event market whose outcomes are
-exactly the two team labels and whose question is "<Away> vs. <Home>" with no
-suffix (spreads and O/U totals have suffixes like "O/U 44.5" or "Spread").
+The moneyline market is identified by Polymarket's sportsMarketType field and
+the exact away/home outcome labels. Other markets, including spreads and
+totals, are ignored.
 """
 
+import argparse
 import json
-import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -34,15 +34,11 @@ try:
     import yaml
 except ImportError:
     print("PyYAML is required. Install with: pip install pyyaml")
-    sys.exit(1)
+    raise SystemExit(1)
 
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "json" / "nfl-games.yml"
 GAMMA_BASE = "https://gamma-api.polymarket.com/events"
-
-
-def only_game():
-    return sys.argv[sys.argv.index("--game-id") + 1] if "--game-id" in sys.argv else None
 
 
 def fetch_event(slug):
@@ -98,7 +94,11 @@ def find_moneyline(event, away_name, home_name):
 
 
 def main():
-    only = only_game()
+    parser = argparse.ArgumentParser(description="Refresh NFL moneyline odds from Polymarket.")
+    parser.add_argument("--game-id", help="Refresh one game by its YAML id.")
+    parser.add_argument("--week", type=int, help="Refresh only games from this NFL week.")
+    args = parser.parse_args()
+
     if not YAML_PATH.exists():
         print(f"YAML file not found: {YAML_PATH}")
         return 1
@@ -108,10 +108,14 @@ def main():
     games = doc.setdefault("games", [])
 
     updated = 0
+    selected = 0
     for game in games:
         game_id = game.get("id")
-        if only and game_id != only:
+        if args.game_id and game_id != args.game_id:
             continue
+        if args.week is not None and game.get("week") != args.week:
+            continue
+        selected += 1
         slug = game.get("polymarket_slug")
         if not slug:
             print(f"[{game_id}] no polymarket_slug; skipping")
@@ -160,19 +164,25 @@ def main():
         # Append to odds history for charting
         timestamp = event.get("updatedAt") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
         history = game.setdefault("odds_history", [])
-        history.append({
+        snapshot = {
             "timestamp": timestamp,
             away_key: away_odds,
             home_key: home_odds
-        })
+        }
+        if not history or history[-1] != snapshot:
+            history.append(snapshot)
 
         print(f"[{game_id}] {away_key}: {old_away} -> {away_odds} | {home_key}: {old_home} -> {home_odds} | lastUpdated: {game['lastUpdated']}")
         updated += 1
 
+    if selected == 0:
+        print("No games matched the requested filters.")
+        return 1
+
     with open(YAML_PATH, "w") as f:
         yaml.safe_dump(doc, f, sort_keys=False, allow_unicode=True, width=1000)
 
-    print(f"Updated {updated} game(s) in {YAML_PATH}")
+    print(f"Refreshed odds for {updated} of {selected} selected game(s) in {YAML_PATH}")
     return 0
 
 

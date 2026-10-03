@@ -113,8 +113,11 @@
 
 .prediction-history-content {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
+    row-gap: 4px;
     flex: 1;
+    min-width: 0;
     justify-content: space-around;
 }
 
@@ -151,17 +154,40 @@
 .prediction-history-item {
     display: flex;
     align-items: center;
+    gap: 6px;
+    min-width: 0;
 }
 
 .prediction-history-team {
     font-size: 10px;
     font-weight: 600;
     color: var(--text-secondary);
-    min-width: 60px;
+    min-width: 52px;
+    white-space: nowrap;
 }
 
 .prediction-history-value {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     color: var(--text-primary);
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+    .prediction-history-row-inline {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+    }
+
+    .prediction-history-date-inline {
+        min-width: 0;
+    }
+
+    .prediction-history-content {
+        justify-content: space-between;
+    }
 }

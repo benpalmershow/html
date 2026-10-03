@@ -37,6 +37,10 @@
     --logo-teal-dark: var(--color-teal-dark);
     --logo-orange: var(--color-secondary);
 
+    /* Category accents resolve to the single brand teal (see .category in
+       financials.css); brand orange stays reserved for accents such as the
+       NEW badge and hover states. */
+
     /* CATEGORY COLORS */
     --color-category-ipo: #1e88e5;
     --color-category-earnings: #43a047;

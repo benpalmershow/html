@@ -6,9 +6,11 @@
 
 .data-rows-container { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
-.category[data-category="13F Holdings"] .indicator .data-rows-container { max-height: 180px; }
+/* 13F cards show holdings by default, so the rows container scrolls instead of
+   clipping (the holdings list itself is unbounded to avoid nested scrollers). */
+.category[data-category="13F Holdings"] .indicator .data-rows-container { max-height: 180px; overflow-y: auto; }
 
-.category[data-category="13F Holdings"] .indicator.expanded .data-rows-container { max-height: 1200px; }
+.category[data-category="13F Holdings"] .indicator.expanded .data-rows-container { max-height: 1200px; overflow-y: auto; }
 
 /* PAGE HEADER */
 
@@ -16,13 +18,13 @@
 
 .content { min-height: 80vh; contain: layout; }
 
-.category { background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: 1px 500px; will-change: transform, box-shadow; }
+.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: 1px 500px; will-change: transform, box-shadow; }
 
 .category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 
-.category-title { font-size: clamp(1.15rem, 3vw, 1.5rem); color: var(--accent-primary); margin-top: 0; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.7rem; display: flex; align-items: center; gap: 10px }
+.category-title { font-size: clamp(1.15rem, 3vw, 1.5rem); color: var(--category-accent); margin-top: 0; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.7rem; display: flex; align-items: center; gap: 10px }
 
-.category-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; color: var(--logo-teal); transition: transform var(--transition-base), color var(--transition-base); will-change: transform, color; }
+.category-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; color: var(--category-accent); transition: transform var(--transition-base), color var(--transition-base); will-change: transform, color; }
 
 .category:hover .category-icon { transform: scale3d(1.15, 1.15, 1); color: var(--logo-orange); }
 
@@ -62,7 +64,8 @@
 .indicator:hover {
     box-shadow: var(--shadow-card-hover);
     transform: translateY(-2px);
-    border-color: var(--accent-secondary);
+    border-color: var(--category-accent, var(--logo-teal));
+    border-color: color-mix(in srgb, var(--category-accent, var(--logo-teal)) 50%, transparent);
 }
 
 
@@ -85,9 +88,13 @@
 
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
-.indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: normal; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: normal; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; max-height: 2.4em; overflow: hidden; }
 
-.new-badge { display: inline-flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--logo-orange); padding: 2px 6px; border-radius: 3px; line-height: 1; animation: badgePulse 2s ease-in-out infinite; }
+/* Accent rail along the top edge; single brand teal for every card. */
+.indicator::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--indicator-accent, var(--category-accent, var(--logo-teal))); opacity: 0.5; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; pointer-events: none; }
+
+/* Sized to fit the second flex line inside .indicator-name's 2.4em clip box; top offset keeps it clear of the bottom edge. */
+.new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-orange); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; animation: badgePulse 1.4s ease-in-out 3; }
 
 @keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
@@ -103,18 +110,19 @@
 
 .indicator-agency a { color: var(--text-muted); text-decoration: underline; }
 
-.indicator-date { color: var(--logo-teal); font-weight: 600; }
+.indicator-date { color: var(--category-accent); font-weight: 600; }
 
 .indicator.expanded .data-rows-container { max-height: 1200px; margin-top: 0; }
 
 .latest-data-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; margin-bottom: 0; }
 
-.latest-data-row, .last-data-row { background: linear-gradient(135deg, rgba(var(--logo-teal-rgb), 0.08) 0%, rgba(var(--logo-teal-rgb), 0.02) 100%); border-radius: 4px; padding: 3px 4px; margin: 2px 0; }
+.latest-data-row, .last-data-row { background: rgba(var(--border-color-rgb), 0.28); border-radius: 4px; padding: 4px 5px; margin: 2px 0; }
 
-.latest-data-row .month-label, .last-data-row .month-label { color: var(--logo-teal); font-weight: 700; }
-.latest-data-row .month-value, .last-data-row .month-value { color: var(--text-primary); font-weight: 700; font-size: 0.85rem; }
+.latest-data-row .month-label, .last-data-row .month-label { color: var(--text-secondary); font-weight: 600; }
+.latest-data-row .month-value, .last-data-row .month-value { color: var(--text-primary); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+.latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.85rem; letter-spacing: 0; }
 
-.data-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-size: 0.8rem; margin-bottom: 0; gap: 8px; min-width: 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15); }
+.data-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-size: 0.8rem; margin-bottom: 0; gap: 8px; min-width: 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15); font-variant-numeric: tabular-nums; }
 
 .data-row:last-child { border-bottom: none; }
 
@@ -122,7 +130,7 @@
 
 .month-label[title] { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; }
 
-.month-value { font-weight: 600; color: var(--text-primary); text-align: right; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 4px; }
+.month-value { font-weight: 600; color: var(--text-primary); text-align: right; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 4px; font-variant-numeric: tabular-nums; }
 
 /* Matchup titles are long (e.g. "New England Patriots @ Seattle Seahawks");
    render on ONE line instead of wrapping or truncating. The indicators-grid
@@ -393,9 +401,9 @@
 
 
 /* RESPONSIVE */
-@media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
+@media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.95rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.75rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
-@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: nowrap; gap: 4px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } }
+@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: nowrap; gap: 4px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } .latest-data-row, .last-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; } .month-value.game-title { white-space: normal; overflow: visible; text-overflow: unset; } }
 
 @media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } .change-indicators { flex-wrap: wrap; } }
 
@@ -434,7 +442,7 @@
 }
 
 .indicator-explanation-body a {
-  color: var(--logo-teal);
+  color: var(--category-accent);
   text-decoration: underline;
 }
 
@@ -692,8 +700,11 @@
 
 .prediction-history-content {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
+    row-gap: 4px;
     flex: 1;
+    min-width: 0;
     justify-content: space-around;
 }
 
@@ -730,6 +741,26 @@
 .prediction-history-item {
     display: flex;
     align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.prediction-history-team {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 52px;
+    white-space: nowrap;
+}
+
+.prediction-history-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    font-variant-numeric: tabular-nums;
 }
 
 .month-change-inline {
@@ -894,7 +925,7 @@
 .firm-filter-btn { padding: 4px 10px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 500; transition: all 0.2s ease; }
 .firm-filter-btn.active { background: var(--logo-teal); color: white; border-color: var(--logo-teal); font-weight: 600; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(var(--logo-teal-rgb), 0.25); }
 .firm-filter-btn:hover:not(.active) { background: var(--bg-secondary); border-color: var(--text-muted); }
-.firm-holdings-list { display: flex; flex-direction: column; gap: 3px; max-height: 320px; overflow-y: auto; padding-right: 3px; }
+.firm-holdings-list { display: flex; flex-direction: column; gap: 3px; max-height: none; overflow: visible; padding-right: 3px; }
 .holding-item { background: var(--bg-secondary); padding: 5px 8px 5px 12px; border-radius: 4px; font-size: 11px; transition: all 0.15s ease; display: flex; align-items: center; gap: 8px; cursor: pointer; border: 1px solid transparent; position: relative; }
 .holding-item:hover { background: var(--bg-tertiary); border-color: var(--border-color); transform: translateX(1px); }
 .holding-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pct-color, var(--logo-teal)); border-radius: 1px; transition: background 0.3s ease; }
@@ -910,7 +941,6 @@
 
 /* 13F Mobile Responsiveness */
 @media (max-width: 768px) {
-  .firm-holdings-list { max-height: 280px; }
   .holding-item { padding: 4px 6px; }
   .firm-filter-btn { padding: 3px 8px; font-size: 0.7rem; }
 }

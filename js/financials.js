@@ -207,7 +207,6 @@ function renderCategoryView(financialData, categories, filterCategory) {
         });
 
         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2"></i>';
-
         html += `
             <div class="category" data-category="${category}">
                 <h2 class="category-title">

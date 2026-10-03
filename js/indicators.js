@@ -637,81 +637,163 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
 }
 
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
-    const accent = indicator.color || 'var(--logo-teal)';
+    /* Cards inherit the accent from their category (see theme.css accent map). */
+    const accentStyle = '';
     let isNew = false;
     if (indicator.category === 'Earnings' && typeof indicator.isNew === 'boolean') {
         isNew = indicator.isNew;
     } else {
         isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
     }
-    const explanationHtml = explanation && indicator.category !== 'Earnings'
-        ? `<div class="indicator-explanation"><div class="indicator-explanation-header">Why this matters</div><div class="indicator-explanation-body">${explanation}</div></div>`
+
+    const sourceLinks = [
+        `<a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>`,
+        indicator.portwatch_url ? `<a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : '',
+        indicator.category === 'Prediction Markets' && indicator.kalshi_url ? `<a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : '',
+        indicator.category === 'Prediction Markets' && indicator.polymarket_url && indicator.polymarket_url !== url ? `<a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''
+    ].filter(Boolean).join(' &middot; ');
+
+    const whyHtml = explanation && indicator.category !== 'Earnings'
+        ? `<div class="indicator-explanation-header">Why this matters</div><div class="indicator-explanation-body">${explanation}</div>`
+        : '';
+    const explanationHtml = `<div class="indicator-explanation">${whyHtml}<div class="indicator-explanation-header">Source</div><div class="indicator-explanation-body">${sourceLinks}</div></div>`;
+
+    const updatedHtml = indicator.lastUpdated
+        ? `Updated <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>`
         : '';
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}" style="--indicator-accent: ${accent};"><div class="indicator-header"><div class="indicator-name" title="${(indicator.company || '').replace(/"/g, '&quot;')}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${explanation && indicator.category !== 'Earnings' ? `<button class="info-btn" title="Show explanation" aria-label="Show explanation" ${DATA_ATTRS.EXPLANATION}="${explanation.replace(/"/g, '&quot;')}"><i data-lucide="info"></i></button>` : ''}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div><div class="indicator-agency">Source: <a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>${indicator.portwatch_url ? ` | <a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.kalshi_url ? ` | <a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : ''}${indicator.category === 'Prediction Markets' && indicator.polymarket_url && indicator.polymarket_url !== url ? ` | <a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''}${indicator.lastUpdated ? ` | <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>` : ''}</div>${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${latestDataHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    /* Rows whose label + value run long (money supply, market caps, transits)
+       keep the compact headline size so they never ellipsize. */
+    const decoratedLatestHtml = latestDataHtml.replace(/<div class="latest-data-row">([\s\S]*?)<\/div>/g, (match, inner) => {
+        const text = inner.replace(/<[^>]*>/g, '');
+        return text.length > 17 ? `<div class="latest-data-row long-value">${inner}</div>` : match;
+    });
+
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${(indicator.company || '').replace(/"/g, '&quot;')}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions"><button class="info-btn" title="Show source and explanation" aria-label="Show source and explanation"><i data-lucide="info"></i></button><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---
+function hexToRgb(color) {
+    if (!color) return null;
+    const value = color.trim();
+    const named = { 'var(--logo-teal)': '44, 95, 90' };
+    if (named[value]) return named[value];
+    const hex = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+    if (!hex) return null;
+    let h = hex[1];
+    if (h.length === 3) h = h.split('').map(c => c + c).join('');
+    const int = parseInt(h, 16);
+    return `${(int >> 16) & 255}, ${(int >> 8) & 255}, ${int & 255}`;
+}
+
+function drawSparkline(canvas) {
+    try {
+        const values = JSON.parse(canvas.dataset.sparkline);
+        if (!values || values.length < 3) return false;
+        const container = canvas.parentElement;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        if (!width || !height) return false;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        const ctx = canvas.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const minVal = Math.min(...values), maxVal = Math.max(...values);
+        const range = maxVal - minVal;
+        const lineWidth = 1.5;
+        const inset = lineWidth / 2;
+        const innerW = width - inset * 2;
+        const innerH = height - inset * 2;
+
+        // Tint the trace with the card's accent so categories stay distinguishable.
+        const cardStyle = getComputedStyle(container.closest('.indicator') || container);
+        const accent = (cardStyle.getPropertyValue('--indicator-accent') || cardStyle.getPropertyValue('--category-accent')).trim();
+        const rgb = hexToRgb(accent) || '44, 95, 90';
+
+        // Create gradient fill
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, `rgba(${rgb}, 0.12)`);
+        gradient.addColorStop(1, `rgba(${rgb}, 0)`);
+
+        // Calculate points (edge-to-edge: only a half-line inset so the
+        // stroke is flush with the card border instead of clipped)
+        const points = values.map((val, i) => ({
+            x: inset + (i / (values.length - 1)) * innerW,
+            y: range > 0 ? inset + (1 - (val - minVal) / range) * innerH : inset + innerH / 2
+        }));
+
+        // Build a single smoothed path (shared by fill + stroke so the
+        // shaded area never extends past the visible line)
+        const tracePath = () => {
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let i = 1; i < points.length; i++) {
+                const xc = (points[i].x + points[i - 1].x) / 2;
+                const yc = (points[i].y + points[i - 1].y) / 2;
+                ctx.quadraticCurveTo(points[i - 1].x, points[i - 1].y, xc, yc);
+            }
+            ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+        };
+
+        // Draw fill area (close the smoothed line down to the baseline)
+        ctx.beginPath();
+        tracePath();
+        ctx.lineTo(points[points.length - 1].x, height);
+        ctx.lineTo(points[0].x, height);
+        ctx.closePath();
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        // Draw line (same smoothed path)
+        ctx.beginPath();
+        tracePath();
+        ctx.strokeStyle = `rgba(${rgb}, 0.18)`;
+        ctx.lineWidth = lineWidth;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        return true;
+    } catch (e) { /* skip broken sparklines */ return false; }
+}
+
 function renderSparklines() {
-    document.querySelectorAll('.sparkline-container canvas[data-sparkline]').forEach(canvas => {
+    const canvases = document.querySelectorAll('.sparkline-container canvas[data-sparkline]');
+    const draw = canvas => {
+        if (canvas._sparklineRendered) return true;
+        const drawn = drawSparkline(canvas);
+        canvas._sparklineRendered = drawn;
+        return drawn;
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        canvases.forEach(draw);
+        return;
+    }
+
+    /* Cards use content-visibility, so an off-screen card reports its
+       contain-intrinsic-size. Wait until a card is on screen so the
+       sparkline is drawn at its real size. */
+    if (sparklineObserver) sparklineObserver.disconnect();
+    sparklineObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            if (draw(entry.target)) sparklineObserver.unobserve(entry.target);
+        });
+    }, { rootMargin: '300px 0px' });
+
+    canvases.forEach(canvas => {
         if (canvas._sparklineRendered) return;
-        canvas._sparklineRendered = true;
-        try {
-            const values = JSON.parse(canvas.dataset.sparkline);
-            if (!values || values.length < 3) return;
-            const ctx = canvas.getContext('2d');
-            const width = canvas.width = canvas.parentElement.offsetWidth || 300;
-            const height = canvas.height = canvas.parentElement.offsetHeight || 120;
-            const minVal = Math.min(...values), maxVal = Math.max(...values);
-            const range = maxVal - minVal;
-            const lineWidth = 1.5;
-            const inset = lineWidth / 2;
-            const innerW = width - inset * 2;
-            const innerH = height - inset * 2;
-            
-            // Clear canvas
-            ctx.clearRect(0, 0, width, height);
-            
-            // Create gradient fill
-            const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, 'rgba(44, 95, 90, 0.12)');
-            gradient.addColorStop(1, 'rgba(44, 95, 90, 0)');
-            
-            // Calculate points (edge-to-edge: only a half-line inset so the
-            // stroke is flush with the card border instead of clipped)
-            const points = values.map((val, i) => ({
-                x: inset + (i / (values.length - 1)) * innerW,
-                y: range > 0 ? inset + (1 - (val - minVal) / range) * innerH : inset + innerH / 2
-            }));
-
-            // Build a single smoothed path (shared by fill + stroke so the
-            // shaded area never extends past the visible line)
-            const tracePath = () => {
-                ctx.moveTo(points[0].x, points[0].y);
-                for (let i = 1; i < points.length; i++) {
-                    const xc = (points[i].x + points[i - 1].x) / 2;
-                    const yc = (points[i].y + points[i - 1].y) / 2;
-                    ctx.quadraticCurveTo(points[i - 1].x, points[i - 1].y, xc, yc);
-                }
-                ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
-            };
-
-            // Draw fill area (close the smoothed line down to the baseline)
-            ctx.beginPath();
-            tracePath();
-            ctx.lineTo(points[points.length - 1].x, height);
-            ctx.lineTo(points[0].x, height);
-            ctx.closePath();
-            ctx.fillStyle = gradient;
-            ctx.fill();
-
-            // Draw line (same smoothed path)
-            ctx.beginPath();
-            tracePath();
-            ctx.strokeStyle = 'rgba(44, 95, 90, 0.18)';
-            ctx.lineWidth = lineWidth;
-            ctx.lineCap = 'round';
-            ctx.stroke();
-        } catch (e) { /* skip broken sparklines */ }
+        sparklineObserver.observe(canvas);
     });
 }
+
+let sparklineObserver = null;
+let sparklineResizeTimer = null;
+window.addEventListener('resize', () => {
+    clearTimeout(sparklineResizeTimer);
+    sparklineResizeTimer = setTimeout(() => {
+        document.querySelectorAll('.sparkline-container canvas[data-sparkline]').forEach(canvas => {
+            canvas._sparklineRendered = false;
+        });
+        renderSparklines();
+    }, 200);
+}, { passive: true });

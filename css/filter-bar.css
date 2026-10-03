@@ -71,9 +71,8 @@
     transition: all 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
+    position: relative;
 }
-
-
 
 .filter-btn .filter-icon {
     display: inline-flex;
@@ -95,6 +94,8 @@
     background: var(--bg-tertiary, #e8e8e8);
     transform: translateY(-1px);
     opacity: 1;
+    border-color: var(--logo-teal, #2c5f5a);
+    border-color: color-mix(in srgb, var(--logo-teal, #2c5f5a) 50%, transparent);
 }
 
 .filter-btn.active {

@@ -69,18 +69,21 @@ html.dark-mode .sun-arc-path {
   position: absolute;
   top: 0;
   left: 0;
-  width: clamp(30px, 4vw, 52px);
-  height: clamp(30px, 4vw, 52px);
+  width: clamp(48px, 6vw, 84px);
+  height: clamp(48px, 6vw, 84px);
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fff6d5, #ffe08a 25%, #f5a623 55%, #d4822a 80%, #9c5a12);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+    radial-gradient(circle at 35% 30%, #fff6d5 0%, #ffe08a 22%, #f5a623 50%, #d4822a 78%, #9c5a12 100%);
   box-shadow:
-    0 0 14px rgba(255, 200, 110, 0.9),
-    0 0 34px rgba(245, 166, 35, 0.65),
-    0 0 70px rgba(212, 130, 42, 0.45),
-    0 0 120px rgba(212, 130, 42, 0.22);
+    0 0 18px rgba(255, 210, 130, 0.95),
+    0 0 40px rgba(245, 180, 60, 0.7),
+    0 0 80px rgba(220, 150, 50, 0.5),
+    0 0 140px rgba(210, 130, 42, 0.3),
+    0 0 220px rgba(200, 120, 40, 0.15);
   transition: opacity 0.6s ease, filter 0.6s ease;
-  will-change: left, top, opacity, filter;
+  will-change: left, top, opacity, filter, transform;
   z-index: 100;
   pointer-events: auto;
   cursor: default;
@@ -89,7 +92,7 @@ html.dark-mode .sun-arc-path {
 .sun-body::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -4%;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #ff4500, #ff6a00 30%, #e03c00 70%);
   opacity: var(--horizon-factor, 0);
@@ -97,14 +100,13 @@ html.dark-mode .sun-arc-path {
   pointer-events: none;
 }
 
-/* Night states are now driven by JS inline styles; removed static .is-night overrides. */
 .sun-body::after {
   content: '';
   position: absolute;
-  inset: -10px;
+  inset: -8%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 166, 35, 0.4), rgba(245, 166, 35, 0) 70%);
-  animation: sun-breath 4s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255, 160, 30, 0.35) 0%, rgba(255, 120, 20, 0.08) 50%, transparent 75%);
+  animation: sun-breath 5s ease-in-out infinite;
   pointer-events: none;
 }
 

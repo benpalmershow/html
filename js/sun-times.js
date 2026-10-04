@@ -178,8 +178,9 @@
       currentY += (targetY - currentY) * smooth;
 
       const horizonFactor = clamp(1 - altitude / 30, 0, 1);
-      const glowScale = lerp(0.6, 1.6, horizonFactor);
-      const glowOpacity = lerp(0.15, 0.7, horizonFactor) * tf;
+      const sunScale = lerp(1, 1.35, horizonFactor);
+      const glowScale = lerp(0.7, 1.8, horizonFactor);
+      const glowOpacity = lerp(0.2, 0.75, horizonFactor) * tf;
       const hazeOpacity = clamp(1 - altitude / 12, 0, 0.9);
       const showStars = tf < 0.6;
 
@@ -188,6 +189,7 @@
       body.style.opacity = String(0.15 + 0.85 * tf);
       body.style.setProperty('--horizon-factor', String(horizonFactor));
       body.style.filter = 'blur(' + clamp((1 - altitude / 15) * 2, 0, 3) + 'px) brightness(' + lerp(0.85, 1.05, altitude / 90) + ')';
+      body.style.transform = 'translate(-50%, -50%) scale(' + sunScale + ')';
 
       starfield.classList.toggle('is-visible', showStars);
 

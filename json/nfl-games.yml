@@ -874,7 +874,7 @@ games:
   SEA_win_odds: 0.0¢
   WAS_win_odds: 100.0¢
   explanation: NFL game prediction market showing the probability of the Seattle Seahawks winning against the Washington Commanders. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  lastUpdated: '2026-10-03T15:07:12.183119Z'
+  lastUpdated: '2026-10-04T13:27:35.159835Z'
   odds_history:
   - timestamp: '2026-09-26T12:49:20.116455Z'
     SEA_win_odds: 77.5¢
@@ -898,6 +898,9 @@ games:
     SEA_win_odds: 0.0¢
     WAS_win_odds: 100.0¢
   - timestamp: '2026-10-03T15:07:12.183119Z'
+    SEA_win_odds: 0.0¢
+    WAS_win_odds: 100.0¢
+  - timestamp: '2026-10-04T13:27:35.159835Z'
     SEA_win_odds: 0.0¢
     WAS_win_odds: 100.0¢
 - id: cin-pit-2026-09-27
@@ -1437,13 +1440,16 @@ games:
   polymarket_url: https://polymarket.com/sports/nfl/nfl-ind-was-2026-10-04
   url: https://polymarket.com/sports/nfl/nfl-ind-was-2026-10-04
   explanation: NFL game prediction market showing the probability of the Indianapolis Colts winning against the Washington Commanders. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  IND_win_odds: 65.5¢
-  WAS_win_odds: 34.5¢
-  lastUpdated: '2026-10-03T15:17:05.830787Z'
+  IND_win_odds: 49.5¢
+  WAS_win_odds: 50.5¢
+  lastUpdated: '2026-10-04T13:51:02.596218Z'
   odds_history:
   - timestamp: '2026-10-03T15:17:05.830787Z'
     IND_win_odds: 65.5¢
     WAS_win_odds: 34.5¢
+  - timestamp: '2026-10-04T13:51:02.596218Z'
+    IND_win_odds: 49.5¢
+    WAS_win_odds: 50.5¢
 - id: ten-bal-2026-10-04
   category: Prediction Markets
   agency: Polymarket
@@ -1464,9 +1470,12 @@ games:
   explanation: NFL game prediction market showing the probability of the Tennessee Titans winning against the Baltimore Ravens. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   TEN_win_odds: 14.5¢
   BAL_win_odds: 85.5¢
-  lastUpdated: '2026-10-03T15:17:05.830787Z'
+  lastUpdated: '2026-10-04T13:47:02.352251Z'
   odds_history:
   - timestamp: '2026-10-03T15:17:05.830787Z'
+    TEN_win_odds: 14.5¢
+    BAL_win_odds: 85.5¢
+  - timestamp: '2026-10-04T13:47:02.352251Z'
     TEN_win_odds: 14.5¢
     BAL_win_odds: 85.5¢
 - id: ne-buf-2026-10-04
@@ -1487,13 +1496,16 @@ games:
   polymarket_url: https://polymarket.com/sports/nfl/nfl-ne-buf-2026-10-04
   url: https://polymarket.com/sports/nfl/nfl-ne-buf-2026-10-04
   explanation: NFL game prediction market showing the probability of the New England Patriots winning against the Buffalo Bills. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  NE_win_odds: 25.5¢
-  BUF_win_odds: 74.5¢
-  lastUpdated: '2026-10-03T15:15:04.461445Z'
+  NE_win_odds: 26.5¢
+  BUF_win_odds: 73.5¢
+  lastUpdated: '2026-10-04T13:47:02.352251Z'
   odds_history:
   - timestamp: '2026-10-03T15:15:04.461445Z'
     NE_win_odds: 25.5¢
     BUF_win_odds: 74.5¢
+  - timestamp: '2026-10-04T13:47:02.352251Z'
+    NE_win_odds: 26.5¢
+    BUF_win_odds: 73.5¢
 - id: nyj-chi-2026-10-04
   category: Prediction Markets
   agency: Polymarket
@@ -1514,9 +1526,12 @@ games:
   explanation: NFL game prediction market showing the probability of the New York Jets winning against the Chicago Bears. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   NYJ_win_odds: 36.5¢
   CHI_win_odds: 63.5¢
-  lastUpdated: '2026-10-03T15:13:10.212856Z'
+  lastUpdated: '2026-10-04T13:47:02.352251Z'
   odds_history:
   - timestamp: '2026-10-03T15:13:10.212856Z'
+    NYJ_win_odds: 36.5¢
+    CHI_win_odds: 63.5¢
+  - timestamp: '2026-10-04T13:47:02.352251Z'
     NYJ_win_odds: 36.5¢
     CHI_win_odds: 63.5¢
 - id: jax-cin-2026-10-04
@@ -1537,13 +1552,16 @@ games:
   polymarket_url: https://polymarket.com/sports/nfl/nfl-jax-cin-2026-10-04
   url: https://polymarket.com/sports/nfl/nfl-jax-cin-2026-10-04
   explanation: NFL game prediction market showing the probability of the Jacksonville Jaguars winning against the Cincinnati Bengals. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  JAX_win_odds: 42.5¢
-  CIN_win_odds: 57.5¢
-  lastUpdated: '2026-10-03T15:16:04.743769Z'
+  JAX_win_odds: 43.5¢
+  CIN_win_odds: 56.5¢
+  lastUpdated: '2026-10-04T13:49:03.305253Z'
   odds_history:
   - timestamp: '2026-10-03T15:16:04.743769Z'
     JAX_win_odds: 42.5¢
     CIN_win_odds: 57.5¢
+  - timestamp: '2026-10-04T13:49:03.305253Z'
+    JAX_win_odds: 43.5¢
+    CIN_win_odds: 56.5¢
 - id: dal-hou-2026-10-04
   category: Prediction Markets
   agency: Polymarket
@@ -1564,9 +1582,12 @@ games:
   explanation: NFL game prediction market showing the probability of the Dallas Cowboys winning against the Houston Texans. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   DAL_win_odds: 41.5¢
   HOU_win_odds: 58.5¢
-  lastUpdated: '2026-10-03T15:17:05.830787Z'
+  lastUpdated: '2026-10-04T13:49:03.305253Z'
   odds_history:
   - timestamp: '2026-10-03T15:17:05.830787Z'
+    DAL_win_odds: 41.5¢
+    HOU_win_odds: 58.5¢
+  - timestamp: '2026-10-04T13:49:03.305253Z'
     DAL_win_odds: 41.5¢
     HOU_win_odds: 58.5¢
 - id: ari-nyg-2026-10-04
@@ -1587,13 +1608,16 @@ games:
   polymarket_url: https://polymarket.com/sports/nfl/nfl-ari-nyg-2026-10-04
   url: https://polymarket.com/sports/nfl/nfl-ari-nyg-2026-10-04
   explanation: NFL game prediction market showing the probability of the Arizona Cardinals winning against the New York Giants. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  ARI_win_odds: 56.5¢
-  NYG_win_odds: 43.5¢
-  lastUpdated: '2026-10-03T15:15:04.461445Z'
+  ARI_win_odds: 55.5¢
+  NYG_win_odds: 44.5¢
+  lastUpdated: '2026-10-04T13:47:02.352251Z'
   odds_history:
   - timestamp: '2026-10-03T15:15:04.461445Z'
     ARI_win_odds: 56.5¢
     NYG_win_odds: 43.5¢
+  - timestamp: '2026-10-04T13:47:02.352251Z'
+    ARI_win_odds: 55.5¢
+    NYG_win_odds: 44.5¢
 - id: gb-tb-2026-10-04
   category: Prediction Markets
   agency: Polymarket
@@ -1612,13 +1636,16 @@ games:
   polymarket_url: https://polymarket.com/sports/nfl/nfl-gb-tb-2026-10-04
   url: https://polymarket.com/sports/nfl/nfl-gb-tb-2026-10-04
   explanation: NFL game prediction market showing the probability of the Green Bay Packers winning against the Tampa Bay Buccaneers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  GB_win_odds: 61.5¢
-  TB_win_odds: 38.5¢
-  lastUpdated: '2026-10-03T15:15:04.461445Z'
+  GB_win_odds: 59.5¢
+  TB_win_odds: 40.5¢
+  lastUpdated: '2026-10-04T13:49:03.305253Z'
   odds_history:
   - timestamp: '2026-10-03T15:15:04.461445Z'
     GB_win_odds: 61.5¢
     TB_win_odds: 38.5¢
+  - timestamp: '2026-10-04T13:49:03.305253Z'
+    GB_win_odds: 59.5¢
+    TB_win_odds: 40.5¢
 - id: mia-min-2026-10-04
   category: Prediction Markets
   agency: Polymarket
@@ -1637,13 +1664,16 @@ games:
   polymarket_url: https://polymarket.com/sports/nfl/nfl-mia-min-2026-10-04
   url: https://polymarket.com/sports/nfl/nfl-mia-min-2026-10-04
   explanation: NFL game prediction market showing the probability of the Miami Dolphins winning against the Minnesota Vikings. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
-  MIA_win_odds: 16.5¢
-  MIN_win_odds: 83.5¢
-  lastUpdated: '2026-10-03T15:15:53.59563Z'
+  MIA_win_odds: 17.5¢
+  MIN_win_odds: 82.5¢
+  lastUpdated: '2026-10-04T13:49:03.305253Z'
   odds_history:
   - timestamp: '2026-10-03T15:15:53.59563Z'
     MIA_win_odds: 16.5¢
     MIN_win_odds: 83.5¢
+  - timestamp: '2026-10-04T13:49:03.305253Z'
+    MIA_win_odds: 17.5¢
+    MIN_win_odds: 82.5¢
 - id: kc-lv-2026-10-04
   category: Prediction Markets
   agency: Polymarket
@@ -1664,9 +1694,12 @@ games:
   explanation: NFL game prediction market showing the probability of the Kansas City Chiefs winning against the Las Vegas Raiders. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   KC_win_odds: 66.5¢
   LV_win_odds: 33.5¢
-  lastUpdated: '2026-10-03T15:17:05.830787Z'
+  lastUpdated: '2026-10-04T13:49:03.305253Z'
   odds_history:
   - timestamp: '2026-10-03T15:17:05.830787Z'
+    KC_win_odds: 66.5¢
+    LV_win_odds: 33.5¢
+  - timestamp: '2026-10-04T13:49:03.305253Z'
     KC_win_odds: 66.5¢
     LV_win_odds: 33.5¢
 - id: lac-sea-2026-10-04
@@ -1689,9 +1722,12 @@ games:
   explanation: NFL game prediction market showing the probability of the Los Angeles Chargers winning against the Seattle Seahawks. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   LAC_win_odds: 24.5¢
   SEA_win_odds: 75.5¢
-  lastUpdated: '2026-10-03T15:13:10.212856Z'
+  lastUpdated: '2026-10-04T13:47:02.352251Z'
   odds_history:
   - timestamp: '2026-10-03T15:13:10.212856Z'
+    LAC_win_odds: 24.5¢
+    SEA_win_odds: 75.5¢
+  - timestamp: '2026-10-04T13:47:02.352251Z'
     LAC_win_odds: 24.5¢
     SEA_win_odds: 75.5¢
 - id: den-sf-2026-10-04
@@ -1714,8 +1750,11 @@ games:
   explanation: NFL game prediction market showing the probability of the Denver Broncos winning against the San Francisco 49ers. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   DEN_win_odds: 42.5¢
   SF_win_odds: 57.5¢
-  lastUpdated: '2026-10-03T15:13:10.212856Z'
+  lastUpdated: '2026-10-04T13:47:02.352251Z'
   odds_history:
   - timestamp: '2026-10-03T15:13:10.212856Z'
+    DEN_win_odds: 42.5¢
+    SF_win_odds: 57.5¢
+  - timestamp: '2026-10-04T13:47:02.352251Z'
     DEN_win_odds: 42.5¢
     SF_win_odds: 57.5¢

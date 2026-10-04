@@ -4,8 +4,6 @@ category: society
 tags: ["society", "scotus", "protest", "constitution"]
 ---
 
-# Kayak-tivists
-
 Old white liberals in kayaks are not conveying their disappointment. They are harassing justices and disrespecting constitutional principles. Can only assume they have grown up with the privilege of over-representation.
 
 Debating how best to convey displeasure?

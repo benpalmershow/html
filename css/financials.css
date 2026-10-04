@@ -147,17 +147,19 @@
 
 .month-change, .job-change-inline { font-size: 0.85rem; opacity: 0.8; font-weight: 600; }
 
-.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: nowrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.55); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
+/* Change metrics wrap onto a second line when the card is narrow so the
+   MoM/YoY labels and values are never truncated. */
+.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.55); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
 
-.change-metric-block { display: flex; justify-content: center; align-items: center; padding: 0; flex-shrink: 1; min-width: 0; }
+.change-metric-block { display: flex; justify-content: center; align-items: center; padding: 0; flex-shrink: 0; }
 
-.change-metric-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); line-height: 1; flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.change-metric-title { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); line-height: 1; flex-shrink: 0; white-space: nowrap; }
 
 .change-metric-title-icon { display: inline-flex; align-items: center; justify-content: center; width: 8px; height: 8px; flex-shrink: 0; }
 
 .change-metric-title-icon i { width: 8px; height: 8px; stroke-width: 2.1px; }
 
-.change-metric-btn { flex: 0 1 auto; width: fit-content; min-width: 0; max-width: none; border: 1px solid transparent; border-radius: 6px; min-height: 26px; margin: 2px 0; padding: 3px 5px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 5px; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.01em; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
+.change-metric-btn { flex: 0 0 auto; width: fit-content; min-width: 0; max-width: none; border: 1px solid transparent; border-radius: 6px; min-height: 26px; margin: 2px 0; padding: 3px 5px; display: inline-flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 5px; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.01em; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
 
 .change-metric-btn svg { width: 0.85em !important; height: 0.85em !important; }
 
@@ -365,6 +367,45 @@
   pointer-events: none;
 }
 
+/* Category filter button (lucide category icon; filters the dashboard) */
+.category-filter-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 2;
+}
+
+.category-filter-btn:hover {
+  background: var(--bg-secondary);
+  color: var(--logo-teal);
+  transform: scale(1.1);
+}
+
+.category-filter-btn:active {
+  transform: scale(0.95);
+}
+
+.category-filter-btn:focus-visible {
+  outline: 2px solid var(--logo-teal);
+  outline-offset: 1px;
+}
+
+.category-filter-btn i, .category-filter-btn svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
 /* Explanation callout (info button) */
 .explanation-text {
   display: none;
@@ -403,7 +444,7 @@
 /* RESPONSIVE */
 @media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.58rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.95rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.75rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
-@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { flex-wrap: nowrap; gap: 4px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } .latest-data-row, .last-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; } .month-value.game-title { white-space: normal; overflow: visible; text-overflow: unset; } }
+@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { gap: 4px; } .change-metric-btn { padding: 2px 4px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } .latest-data-row, .last-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; } .month-value.game-title { white-space: normal; overflow: visible; text-overflow: unset; } }
 
 @media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { gap: 0.35rem; } .change-indicators { flex-wrap: wrap; } }
 

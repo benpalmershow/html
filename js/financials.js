@@ -19,6 +19,7 @@ const SELECTORS = {
     FILTER_GROUP: '.filters',
     CHART_BTN: '.chart-btn',
     INFO_BTN: '.info-btn',
+    CATEGORY_FILTER_BTN: '.category-filter-btn',
     EXPAND_TOGGLE: '.expand-toggle',
     INDICATOR: '.indicator',
     CHART_OVERLAY: '.chart-overlay',
@@ -75,6 +76,7 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         if (typeof lucide !== 'undefined') lucide.createIcons();
         setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
         setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+        setupCategoryFilterHandlers(SELECTORS);
         setupExpandHandlers(SELECTORS);
         if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
         if (typeof renderSparklines === 'function') renderSparklines();
@@ -115,6 +117,7 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
     setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+    setupCategoryFilterHandlers(SELECTORS);
     setupExpandHandlers(SELECTORS);
 
     if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
@@ -139,6 +142,7 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
         if (typeof lucide !== 'undefined') lucide.createIcons();
         setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
         setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+        setupCategoryFilterHandlers(SELECTORS);
         setupExpandHandlers(SELECTORS);
 
         if (queue.length) {
@@ -532,6 +536,7 @@ function initializeDashboard() {
 
     setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+    setupCategoryFilterHandlers(SELECTORS);
     setupExpandHandlers(SELECTORS);
 
     if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();

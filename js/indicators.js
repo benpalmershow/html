@@ -677,7 +677,19 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const nameTitle = String(indicator.company || indicator.name || '').replace(/"/g, '&quot;');
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions"><button class="info-btn" title="Show source and explanation" aria-label="Show source and explanation"><i data-lucide="info"></i></button><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    const categoryFilterBtn = buildCategoryFilterButton(indicator.category);
+
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${categoryFilterBtn}<button class="info-btn" title="Show source and explanation" aria-label="Show source and explanation"><i data-lucide="info"></i></button><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+}
+
+/* Category icon button on each card: shows the card's category (same lucide
+   icon the matching filter bar button uses) and filters the dashboard to it
+   when clicked. */
+function buildCategoryFilterButton(category) {
+    if (!category) return '';
+    const label = String(category).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const iconName = typeof getCategoryIconName === 'function' ? getCategoryIconName(category) : 'bar-chart-2';
+    return `<button class="category-filter-btn" data-category="${label}" title="Show only ${label}" aria-label="Show only ${label}"><i data-lucide="${iconName}"></i></button>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---

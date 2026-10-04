@@ -5,19 +5,29 @@ let currentCategory = 'all';
 
 const boundIconHandlers = new Set();
 
-const categoryIcons = {
-    'Employment Indicators': '<i data-lucide="users" class="filter-icon"></i>',
-    'Housing Market': '<i data-lucide="home" class="filter-icon"></i>',
-    'Business Indicators': '<i data-lucide="briefcase" class="filter-icon"></i>',
-    'Consumer Indicators': '<i data-lucide="shopping-cart" class="filter-icon"></i>',
-    'Trade & Tariffs': '<i data-lucide="ship" class="filter-icon"></i>',
-    'Government': '<i data-lucide="landmark" class="filter-icon"></i>',
-    'Commodities': '<i data-lucide="package" class="filter-icon"></i>',
-    'Prediction Markets': '<i data-lucide="trending-up" class="filter-icon"></i>',
-    'Financial Markets': '<i data-lucide="bar-chart-2" class="filter-icon"></i>',
-    'Earnings': '<i data-lucide="circle-dollar-sign" class="filter-icon"></i>',
-    'Elections': '<i data-lucide="vote" class="filter-icon"></i>'
+const DEFAULT_CATEGORY_ICON = 'bar-chart-2';
+
+const categoryIconNames = {
+    'Employment Indicators': 'users',
+    'Housing Market': 'home',
+    'Business Indicators': 'briefcase',
+    'Consumer Indicators': 'shopping-cart',
+    'Trade & Tariffs': 'ship',
+    'Government': 'landmark',
+    'Commodities': 'package',
+    'Prediction Markets': 'trending-up',
+    'Financial Markets': 'bar-chart-2',
+    'Earnings': 'circle-dollar-sign',
+    'Elections': 'vote'
 };
+
+function getCategoryIconName(category) {
+    return categoryIconNames[category] || DEFAULT_CATEGORY_ICON;
+}
+
+const categoryIcons = Object.fromEntries(
+    Object.entries(categoryIconNames).map(([category, name]) => [category, `<i data-lucide="${name}" class="filter-icon"></i>`])
+);
 
 /* =========================================
    Filter Click Handler (SRP: filter state management)
@@ -82,7 +92,7 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
      buttonsContainer.appendChild(latestBtn);
 
      categories.forEach(category => {
-         const icon = categoryIcons[category] || '<i data-lucide="bar-chart-2" class="filter-icon"></i>';
+         const icon = categoryIcons[category] || `<i data-lucide="${getCategoryIconName(category)}" class="filter-icon"></i>`;
          const btn = createFilterBtn(category, icon, category);
          buttonsContainer.appendChild(btn);
      });
@@ -126,6 +136,24 @@ function setupIconHandlers(selector, handler) {
             e.stopPropagation();
             handler.call(icon);
         }
+    });
+}
+
+function setupCategoryFilterHandlers(SELECTORS) {
+    setupIconHandlers(SELECTORS.CATEGORY_FILTER_BTN, function () {
+        const category = this.dataset.category;
+        if (!category) return;
+
+        // Reuse the filter bar button so active state, URL sync, and the
+        // re-render all stay in one place.
+        const filterBtn = document.querySelector(`${SELECTORS.FILTER_BTN}[data-category="${CSS.escape(category)}"]`);
+        if (filterBtn) {
+            filterBtn.click();
+            return;
+        }
+
+        if (typeof setActiveFilter === 'function') setActiveFilter(category);
+        if (typeof renderDashboard === 'function') renderDashboard(category, false);
     });
 }
 

@@ -88,12 +88,12 @@
 
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
-.indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: normal; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; max-height: 2.4em; overflow: hidden; }
+.indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: break-word; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 /* Accent rail along the top edge; single brand teal for every card. */
 .indicator::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--indicator-accent, var(--category-accent, var(--logo-teal))); opacity: 0.5; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; pointer-events: none; }
 
-/* Sized to fit the second flex line inside .indicator-name's 2.4em clip box; top offset keeps it clear of the bottom edge. */
+/* Badge sits inline after the wrapped name text; top offset keeps it aligned with the first line. */
 .new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-orange); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; animation: badgePulse 1.4s ease-in-out 3; }
 
 @keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }

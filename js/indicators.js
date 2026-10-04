@@ -539,9 +539,15 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 
 // --- Extra HTML builder ---
 
+const INLINE_CHANGE_IDS = new Set(['total-nonfarm-employment', 'job-openings', 'private-employment']);
+
+function hasInlineMonthlyChange(indicator) {
+    return INLINE_CHANGE_IDS.has(indicator.id);
+}
+
 function buildExtraHtml(indicator, dataItem, MONTHS) {
     let extraHtml = '';
-    if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
+    if (hasInlineMonthlyChange(indicator)) {
         const changesMap = {};
         calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
         const changeObj = changesMap[dataItem.month];
@@ -557,7 +563,7 @@ function buildExtraHtml(indicator, dataItem, MONTHS) {
 
 function buildLabelTooltip(indicator, dataItem, MONTHS) {
     const parts = [`${dataItem.label}: ${dataItem.value}`];
-    if (indicator.name === 'Total Nonfarm Employment' || indicator.name === 'Job Openings' || indicator.name === 'Private Employment') {
+    if (hasInlineMonthlyChange(indicator)) {
         const changesMap = {};
         calculateAllMonthlyChanges(indicator, MONTHS).forEach(change => changesMap[change.month] = change);
         const changeObj = changesMap[dataItem.month];
@@ -669,7 +675,9 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
         return text.length > 17 ? `<div class="latest-data-row long-value">${inner}</div>` : match;
     });
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${(indicator.company || '').replace(/"/g, '&quot;')}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions"><button class="info-btn" title="Show source and explanation" aria-label="Show source and explanation"><i data-lucide="info"></i></button><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    const nameTitle = String(indicator.company || indicator.name || '').replace(/"/g, '&quot;');
+
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions"><button class="info-btn" title="Show source and explanation" aria-label="Show source and explanation"><i data-lucide="info"></i></button><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle history"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
 }
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---

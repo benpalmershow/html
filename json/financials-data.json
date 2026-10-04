@@ -119,43 +119,6 @@
       "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds have fallen to 8% as resilient economic data underpins the market view: real GDP expanded at a 3.1% annualized pace in Q3, the unemployment rate held near 4.2%, the Sahm rule remained well below its 0.50 recession threshold, and the yield curve has steepened positively. Federal Reserve projections and bank forecasts anticipate above-trend growth through 2027 despite elevated inflation near 3.4% CPI. Kalshi shows 5% recession probability. Volume: $2.2M."
     },
     {
-      "id": "tech-layoffs-2026",
-      "category": "Prediction Markets",
-      "color": "#e74c3c",
-      "agency": "Kalshi",
-      "name": "More tech layoffs in 2026 than in 2025?",
-      "lastUpdated": "2026-10-04T14:44:00Z",
-      "releaseDay": 0,
-      "url": "https://kalshi.com/markets/kxlayoffsyinfo/tech-layoffs/kxlayoffsyinfo-26",
-      "polymarket_url": "https://polymarket.com/event/tech-layoffs-up-or-down-in-2026",
-      "yes_probability": "95¢",
-      "no_probability": "5¢",
-      "probabilities": {
-        "2026-05-28": {
-          "yes": "91¢",
-          "no": "9¢"
-        },
-        "2026-10-04": {
-          "yes": "95¢",
-          "no": "5¢"
-        },
-        "2026-04-19": {
-          "yes": "82¢",
-          "no": "18¢"
-        },
-        "2026-04-18": {
-          "yes": "85¢",
-          "no": "15¢"
-        },
-        "2026-04-17": {
-          "yes": "88¢",
-          "no": "12¢"
-        }
-      },
-      "change": "",
-      "explanation": "Kalshi prediction market on whether major tech companies will announce more layoffs in 2026 compared to 2025. Market now prices 95.1% probability for 'Yes', reflecting expectations that 2026 tech workforce reductions will exceed 2025 levels amid ongoing sector consolidation. Volume: $0 (Kalshi)."
-    },
-    {
       "id": "midterms-senate-2026",
       "category": "Government",
       "color": "#3498db",
@@ -199,44 +162,64 @@
       "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a 65% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent NYT/Siena polls show Democratic candidates leading or tied in multiple Republican-held seats including Texas, Alaska, Ohio, Kansas, and Iowa. Democrats need a net gain of four seats for control."
     },
     {
-      "id": "fomc-rate-decision-july-2026",
+      "id": "fomc-rate-decision-october-2026",
       "category": "Prediction Markets",
       "color": "#e74c3c",
       "agency": "Kalshi",
-      "name": "FOMC Rate Decision - September",
-      "lastUpdated": "2026-10-04T14:44:00Z",
-      "meeting_date": "September 16, 2026",
-      "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26sep",
-      "polymarket_url": "https://polymarket.com/event/fed-decision-in-september-762",
+      "name": "FOMC Rate Decision - October",
+      "lastUpdated": "2026-10-04T15:45:00Z",
+      "meeting_date": "Oct 27-28, 2026",
+      "announcement_time": "2:00 PM ET",
+      "announcement_time_iso": "2026-10-28T14:00:00-04:00",
+      "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26oct",
+      "polymarket_url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
+      "rate_hold_odds": "83¢",
+      "rate_cut_odds": "1¢",
+      "rate_hike_odds": "18¢",
       "change": "",
       "probabilities": {
-        "2026-09-12": {
-          "rate_hold_odds": "20¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "80¢"
-        },
-        "2026-09-02": {
-          "rate_hold_odds": "40¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "58¢"
-        },
-        "2026-08-29": {
-          "rate_hold_odds": "54¢",
-          "rate_cut_odds": "2¢",
-          "rate_hike_odds": "47¢"
-        },
         "2026-08-25": {
-          "rate_hold_odds": "65¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "35¢"
+          "rate_hold_odds": "73¢",
+          "rate_cut_odds": "3¢",
+          "rate_hike_odds": "22¢"
         },
-        "2026-09-16": {
-          "rate_hold_odds": "0¢",
-          "rate_cut_odds": "0¢",
-          "rate_hike_odds": "100¢"
+        "2026-09-15": {
+          "rate_hold_odds": "60¢",
+          "rate_cut_odds": "2¢",
+          "rate_hike_odds": "38¢"
+        },
+        "2026-09-25": {
+          "rate_hold_odds": "33¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "68¢"
+        },
+        "2026-09-29": {
+          "rate_hold_odds": "30¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "70¢"
+        },
+        "2026-10-01": {
+          "rate_hold_odds": "66¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "33¢"
+        },
+        "2026-10-02": {
+          "rate_hold_odds": "73¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "28¢"
+        },
+        "2026-10-03": {
+          "rate_hold_odds": "82¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "19¢"
+        },
+        "2026-10-04": {
+          "rate_hold_odds": "83¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "18¢"
         }
       },
-      "explanation": "Federal Reserve interest rate decision prediction market for the September 16, 2026 FOMC meeting. Market has resolved: the Fed hiked rates by 25bps at the September meeting. Leading up to resolution, market pricing had shifted significantly toward a hike: hold probability dropped from 65¢ to 20¢ while hike odds rose from 35¢ to 80¢, reflecting increased uncertainty after recent economic data. Final settlement: Hike 25bps (Yes) at 88¢ last trade; Hold (Hike 0bps) at 12¢ last trade. Volume: $48.3M (Hold), $18.8M (Hike 25bps)."
+      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70¢ on Sep 29 while hold odds fell to 30¢. That repricing reversed hard over the past week. Kalshi now quotes hold at 83¢, a 25bps hike at 18¢, and a 25bps cut at 1¢, and Polymarket agrees at 83¢ for no change and 17¢ for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps."
     },
     {
       "id": "trump-impeachment",
@@ -2296,8 +2279,8 @@
       "agency": "Polymarket",
       "name": "TEN @ BAL",
       "game_title": "Tennessee Titans @ Baltimore Ravens",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ten-bal-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ten-bal-2026-10-04",
@@ -2340,8 +2323,8 @@
       "agency": "Polymarket",
       "name": "NE @ BUF",
       "game_title": "New England Patriots @ Buffalo Bills",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ne-buf-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ne-buf-2026-10-04",
@@ -2384,8 +2367,8 @@
       "agency": "Polymarket",
       "name": "NYJ @ CHI",
       "game_title": "New York Jets @ Chicago Bears",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-nyj-chi-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-nyj-chi-2026-10-04",
@@ -2428,8 +2411,8 @@
       "agency": "Polymarket",
       "name": "JAX @ CIN",
       "game_title": "Jacksonville Jaguars @ Cincinnati Bengals",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-jax-cin-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-jax-cin-2026-10-04",
@@ -2472,8 +2455,8 @@
       "agency": "Polymarket",
       "name": "DAL @ HOU",
       "game_title": "Dallas Cowboys @ Houston Texans",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-dal-hou-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-dal-hou-2026-10-04",
@@ -2516,8 +2499,8 @@
       "agency": "Polymarket",
       "name": "ARI @ NYG",
       "game_title": "Arizona Cardinals @ New York Giants",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ari-nyg-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ari-nyg-2026-10-04",
@@ -2560,8 +2543,8 @@
       "agency": "Polymarket",
       "name": "GB @ TB",
       "game_title": "Green Bay Packers @ Tampa Bay Buccaneers",
-      "game_time": "Oct 4, 2026 5:00 PM ET",
-      "game_time_iso": "2026-10-04T17:00:00-04:00",
+      "game_time": "Oct 4, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-04T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-gb-tb-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-gb-tb-2026-10-04",
@@ -2604,8 +2587,8 @@
       "agency": "Polymarket",
       "name": "MIA @ MIN",
       "game_title": "Miami Dolphins @ Minnesota Vikings",
-      "game_time": "Oct 4, 2026 8:05 PM ET",
-      "game_time_iso": "2026-10-04T20:05:00-04:00",
+      "game_time": "Oct 4, 2026 4:05 PM ET",
+      "game_time_iso": "2026-10-04T16:05:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-min-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-mia-min-2026-10-04",
@@ -2648,8 +2631,8 @@
       "agency": "Polymarket",
       "name": "KC @ LV",
       "game_title": "Kansas City Chiefs @ Las Vegas Raiders",
-      "game_time": "Oct 4, 2026 8:25 PM ET",
-      "game_time_iso": "2026-10-04T20:25:00-04:00",
+      "game_time": "Oct 4, 2026 4:25 PM ET",
+      "game_time_iso": "2026-10-04T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-lv-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-kc-lv-2026-10-04",
@@ -2692,8 +2675,8 @@
       "agency": "Polymarket",
       "name": "LAC @ SEA",
       "game_title": "Los Angeles Chargers @ Seattle Seahawks",
-      "game_time": "Oct 4, 2026 8:25 PM ET",
-      "game_time_iso": "2026-10-04T20:25:00-04:00",
+      "game_time": "Oct 4, 2026 4:25 PM ET",
+      "game_time_iso": "2026-10-04T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-lac-sea-2026-10-04",
       "lastUpdated": "2026-10-04T14:44:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-lac-sea-2026-10-04",
@@ -2736,8 +2719,8 @@
       "agency": "Polymarket",
       "name": "DEN @ SF",
       "game_title": "Denver Broncos @ San Francisco 49ers",
-      "game_time": "Oct 4, 2026 8:25 PM ET",
-      "game_time_iso": "2026-10-04T20:25:00-04:00",
+      "game_time": "Oct 4, 2026 4:25 PM ET",
+      "game_time_iso": "2026-10-04T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-den-sf-2026-10-04",
       "lastUpdated": "2026-10-04T15:22:00Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-den-sf-2026-10-04",

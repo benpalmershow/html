@@ -652,8 +652,12 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
         isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
     }
 
+    const domainLabel = (u) => {
+        try { const p = new URL(u).hostname.split('.'); return p.slice(-2).join('.'); } catch { return 'Source'; }
+    };
     const sourceLinks = [
         `<a href="${url}" target="_blank" rel="noopener noreferrer">${indicator.agency}</a>`,
+        indicator.source_url ? `<a href="${indicator.source_url}" target="_blank" rel="noopener noreferrer">${domainLabel(indicator.source_url)}</a>` : '',
         indicator.portwatch_url ? `<a href="${indicator.portwatch_url}" target="_blank" rel="noopener noreferrer">PortWatch</a>` : '',
         indicator.category === 'Prediction Markets' && indicator.kalshi_url ? `<a href="${indicator.kalshi_url}" target="_blank" rel="noopener noreferrer">Kalshi</a>` : '',
         indicator.category === 'Prediction Markets' && indicator.polymarket_url && indicator.polymarket_url !== url ? `<a href="${indicator.polymarket_url}" target="_blank" rel="noopener noreferrer">Polymarket</a>` : ''

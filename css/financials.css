@@ -147,9 +147,8 @@
 
 .month-change, .job-change-inline { font-size: 0.85rem; opacity: 0.8; font-weight: 600; }
 
-/* Change metrics wrap onto a second line when the card is narrow so the
-   MoM/YoY labels and values are never truncated. */
-.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.55); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
+/* Keep MoM and YoY on the same line; truncate if needed instead of wrapping. */
+.change-indicators { margin: 6px 0 8px 0; padding-bottom: 6px; display: flex; flex-wrap: nowrap; gap: 6px; justify-content: flex-start; align-items: center; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.55); overflow-x: clip; overflow-y: hidden; min-width: 0; position: relative; z-index: 1; }
 
 .change-metric-block { display: flex; justify-content: center; align-items: center; padding: 0; flex-shrink: 0; }
 

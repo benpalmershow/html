@@ -35,24 +35,18 @@ if not FRED_API_KEY:
 # Map indicator name (as stored in financials-data.json) to FRED series ID
 INDICATOR_MAP = {
     "10-yr Treasury Yield": "DGS10",
-    "30-yr Treasury Yield": "DGS30",
-    "3-month Treasury Yield": "DGS3MO",
-    "2-yr Treasury Yield": "DGS2Y",
     "CPI": "CPIAUCSL",
-    "Core CPI": "CPILFESL",
     "PPI": "PPIACO",
-    "Core PPI": "PPIFG",
     "Unemployment Rate": "UNRATE",
     "Jobs": "PAYEMS",
     "Average Hourly Earnings": "CES0500000003",
     "Jobless Claims": "ICSA",
-    "Continuing Jobless Claims": "CCSA",
-    "Retail Sales": "RSAFS",
-    "Industrial Production": "INDPRO",
+    "Monthly Retail Sales": "RSAFS",
+    "Industrial Production Index": "INDPRO",
     "Capacity Utilization": "TCU",
     "Consumer Sentiment": "UMCSENT",
     "Consumer Confidence": "CONF",
-    "NFIB Small Business Optimism": "NFIB",
+    "Small Business Optimism Index": "NFIB",
     "Housing Starts": "HOUST",
     "New Home Sales": "HSN1F",
     "Building Permits": "PERMIT",
@@ -62,6 +56,7 @@ INDICATOR_MAP = {
     "Oil (WTI)": "DCOILWTICO",
     "Natural Gas": "DHHNGSP",
     "U.S. Petroleum Exports": "PAUELS",
+    "Oil (Brent)": "DCOILBRENTEU",
     "Personal Consumption Expenditures (PCE)": "PCE",
     "Dollar Value Index": "DTWEXBGS",
 }
@@ -72,6 +67,8 @@ PAYROLLS_INDICATORS = {"Jobs"}
 WEEKLY_SERIES = {"Jobless Claims"}
 # Indicators that need billions-style formatting (comma + "B" suffix)
 BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
+# Indicators whose FRED values are in millions and need /1000 for billions formatting
+MILLIONS_INDICATORS = {"Monthly Retail Sales"}
 
 MONTH_MAP = {
     "01": "january", "02": "february", "03": "march", "04": "april",
@@ -140,6 +137,8 @@ def format_value(value, indicator_name, existing_value=None):
     """Format a numeric value based on indicator type and existing format."""
     if indicator_name in BILLIONS_INDICATORS:
         return f"{value:,.1f}B"
+    if indicator_name in MILLIONS_INDICATORS:
+        return f"{value / 1000:,.1f}B"
     if indicator_name in PAYROLLS_INDICATORS:
         return f"{int(round(value * 1000)):,}"
     if existing_value:

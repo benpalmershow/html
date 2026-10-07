@@ -545,6 +545,7 @@ function initializeDashboard() {
     setupKeyboardNavigation();
 
     ensureLoad13F();
+    ensureLoadFEC();
 }
 
 /** Single source of truth for which filter is active.

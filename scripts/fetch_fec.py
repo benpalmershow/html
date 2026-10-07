@@ -217,6 +217,29 @@ RACES = [
             },
         ],
     },
+    {
+        "state": "NH",
+        "label": "New Hampshire Senate",
+        "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R).",
+        "kalshi": {"r": 11, "d": 89},
+        "kalshi_url": "https://kalshi.com/markets/senatenh/new-hampshire-senate-race/senatenh-26",
+        "candidates": [
+            {
+                "candidate_id": "S6NH00141",
+                "name": "Chris Pappas",
+                "party": "DEM",
+                "incumbent": False,
+                "source_url": "https://www.fec.gov/data/candidate/S6NH00141/",
+            },
+            {
+                "candidate_id": "S6NH00208",
+                "name": "John E. Sununu",
+                "party": "REP",
+                "incumbent": False,
+                "source_url": "https://www.fec.gov/data/candidate/S6NH00208/",
+            },
+        ],
+    },
 ]
 
 # ── API helpers ────────────────────────────────────────────────────────────────

@@ -297,6 +297,18 @@
             html += '<h' + level + ' id="' + escapeAttr(slug) + '">' + parseInline(heading[2], true) + '</h' + level + '>';
             return;
           }
+          const detailsTag = line.match(/^(<details>|<\/details>|<summary>.*<\/summary>)$/);
+          if (detailsTag) {
+            flushParagraph();
+            closeList();
+            if (inTable) {
+              html += renderTableRows(tableRows);
+              tableRows = [];
+              inTable = false;
+            }
+            html += trimmed;
+            return;
+          }
           const quote = line.match(/^>\s?(.+)$/);
           if (quote) {
             flushParagraph();

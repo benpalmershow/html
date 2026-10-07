@@ -1316,11 +1316,15 @@
       "color": "#1abc9c",
       "agency": "Windward",
       "name": "Strait of Hormuz Daily Transits",
-      "lastUpdated": "2026-10-02T14:00:00Z",
+      "lastUpdated": "2026-10-07T14:00:00Z",
       "releaseDay": 0,
       "url": "https://insights.windward.ai/",
       "url2": "https://portwatch.imf.org/pages/cc317ba850e34c4dadbead6f7b336fb1",
       "probabilities": {
+        "2026-10-07": {
+          "Inbound": 5,
+          "Outbound": 8
+        },
         "2026-10-02": {
           "Inbound": 4,
           "Outbound": 4
@@ -1799,14 +1803,17 @@
         "april": "107.88",
         "may": "107.01",
         "june": "106.74",
-        "july": "107.71"
+        "july": "107.71",
+        "august": "107.56",
+        "september": "108.08"
+       
       },
       "id": "employment-trends-index",
       "category": "Employment Indicators",
       "color": "#34495e",
       "agency": "The Conference Board",
       "name": "Employment Trends Index",
-      "lastUpdated": "2026-08-11T14:00:00Z",
+      "lastUpdated": "2026-10-07T14:08:23Z",
       "releaseDay": 0,
       "url": "https://www.conference-board.org/topics/employment-trends-index",
       "march": "",

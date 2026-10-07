@@ -1717,7 +1717,7 @@ games:
   explanation: NFL game prediction market showing the probability of the Miami Dolphins winning against the Minnesota Vikings. Odds reflect market expectations for the game outcome based on team performance, injuries, and betting patterns.
   MIA_win_odds: 0.0¢
   MIN_win_odds: 100.0¢
-  lastUpdated: '2026-10-06T14:37:35.086952Z'
+  lastUpdated: '2026-10-07T15:22:43.98795Z'
   odds_history:
   - timestamp: '2026-10-03T15:15:53.59563Z'
     MIA_win_odds: 16.5¢
@@ -1729,6 +1729,9 @@ games:
     MIA_win_odds: 0.0¢
     MIN_win_odds: 100.0¢
   - timestamp: '2026-10-06T14:37:35.086952Z'
+    MIA_win_odds: 0.0¢
+    MIN_win_odds: 100.0¢
+  - timestamp: '2026-10-07T15:22:43.98795Z'
     MIA_win_odds: 0.0¢
     MIN_win_odds: 100.0¢
 - id: kc-lv-2026-10-04

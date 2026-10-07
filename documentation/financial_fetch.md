@@ -456,6 +456,45 @@ Base URL: `https://api.fiscaldata.treasury.gov/services/api/fiscal_service`
     collections (e.g. `"$-26B"`).
 - Local preview: `python3 scripts/fetch_treasury.py --dry-run`
 
+### Census Foreign Trade Automation (live, keyed API)
+- **Fetcher:** `scripts/fetch_census.py` -- queries the Census
+  Bureau API (`timeseries/eits/ftd`, the FT-900 report) and
+  updates the `agency: "Census"` indicator in
+  `json/financials-data.json`: Trade Deficit, including its
+  `imports`/`exports` sub-objects. Supports `--dry-run` to
+  preview changes without writing.
+- **Scheduled run:** `.github/workflows/fetch-census.yml`
+  (daily 10:00 UTC) runs the fetcher, validates the JSON, and
+  commits with `[skip ci]`. Requires the `CENSUS_API_KEY`
+  repository secret (also in `.env` for local runs via
+  `python-dotenv`).
+- **Scope:** only the current calendar year's nested year object
+  (e.g. `"2026": {"january": ...}`) is written. Flat top-level
+  month fields hold prior-year data and are left untouched, so
+  charts never double-plot a month.
+
+#### Census API reference
+Base URL: `https://api.census.gov/data`
+(docs: https://api.census.gov/data.html,
+key signup: https://api.census.gov/data/key_signup.html)
+
+- **FT-900 U.S. International Trade in Goods and Services**
+  (`trade-deficit`) --
+  `GET /timeseries/eits/ftd?get=time_slot_id,seasonally_adj,data_type_code,category_code,cell_value,error_data&for=us:*&time=<YEAR>&key=<KEY>`
+  - One row per month per series. Filter `category_code ==
+    "BOPGS"` (goods and services, the headline balance),
+    `seasonally_adj == "yes"`, `time_slot_id == "0"`
+    (monthly). The API auto-appends `time` and `us` columns.
+  - `data_type_code`: `BAL` = balance (negative for a
+    deficit; the JSON stores the negated value so a deficit is
+    positive), `EXP` = exports, `IMP` = imports.
+  - `cell_value` is millions of dollars, stored in the
+    existing `"$420,754B"` format.
+  - `error_data` is the string `"yes"`/`"no"`, not a boolean.
+  - The still-open month is skipped; the FT-900 itself is
+    published with roughly a six-week lag.
+- Local preview: `python3 scripts/fetch_census.py --dry-run`
+
 ### Data Validation Scripts
 - JSON schema validation for indicator objects
 - URL accessibility testing

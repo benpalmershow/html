@@ -8,10 +8,14 @@ API (requires a free key):
   Docs: https://api.census.gov/data.html
   Key:  https://api.census.gov/data/key_signup.html
 
-Indicators updated (agency == "Census"):
+Indicators updated (Census API programs; agency "Census" or "Commerce"):
   trade-deficit   timeseries/eits/ftd (FT-900, goods and services,
                   seasonally adjusted): BAL -> deficit (stored positive),
                   IMP -> imports, EXP -> exports
+  new-orders      timeseries/eits/m3 (M3, total manufacturing,
+                  seasonally adjusted): NO -> new orders
+  construction-spending  timeseries/eits/vip (VIP, total construction,
+                  seasonally adjusted): AXXXX/T -> construction spending
 
 Only the current calendar year's nested year object (e.g. "2026": {"january": ...})
 is written for the indicator and its imports/exports sub-objects. Flat top-level
@@ -71,7 +75,26 @@ FT900_MONTHLY_SLOT = "0"
 FT900_FIELDS = {"BAL": "deficit", "EXP": "exports", "IMP": "imports"}
 
 # Indicator id -> fetched updates. None is the indicator's own month fields.
-INDICATOR_IDS = ("trade-deficit",)
+INDICATOR_IDS = ("trade-deficit", "new-orders", "construction-spending")
+
+# --- M3: Manufacturers' Shipments, Inventories, and Orders -------------------
+# Series: timeseries/eits/m3. The M3 series identification code is a 6-digit
+# field; position 1 is the seasonal adjustment flag (A = seasonally adjusted),
+# positions 2-4 are the aggregate series, positions 5-6 are the data item.
+# We request seasonally_adj=yes and pull the total-manufacturing aggregate
+# (MTM) for the new-orders data item (NO).
+M3_DATASET = "timeseries/eits/m3"
+M3_CATEGORY = "MTM"      # total manufacturing aggregate
+M3_DATA_TYPE = "NO"      # new orders
+
+# --- VIP: Value of Construction Put in Place (Construction Spending) --------
+# Series: timeseries/eits/vip. category_code selects the construction sector;
+# data_type_code selects the value field. The headline "total construction"
+# is the AXXX aggregate (all ownerships) with data_type T (total = private
+# value V + public P). All cell values are in millions of dollars.
+VIP_DATASET = "timeseries/eits/vip"
+VIP_CATEGORY = "AXXXX"    # total construction, all ownerships
+VIP_DATA_TYPE = "T"       # total (private value + public)
 
 if not API_KEY:
     print("Error: CENSUS_API_KEY environment variable not set.")
@@ -155,8 +178,78 @@ def fetch_ft900(target_year):
     return out
 
 
-def format_millions(value):
-    return f"${value:,.0f}B"
+def fetch_eits_rows(dataset, target_year, category_code, data_type_code):
+    """Fetch monthly rows from a Census EITS dataset for target_year.
+
+    Returns {month_key: cell_value} for rows matching the requested
+    category_code and data_type_code, skipping error_data rows and the
+    still-open month. Values are returned as raw floats (millions of
+    dollars); callers format them.
+    """
+    rows = fetch_census_data(
+        dataset,
+        {
+            # `time` is auto-appended by the API; it cannot be listed in
+            # `get` (the API returns "unknown variable 'time'").
+            "get": "category_code,data_type_code,cell_value,error_data",
+            "for": "us:*",
+            "time": str(target_year),
+            "time_slot_id": "0",          # monthly
+            "seasonally_adj": "yes",
+            "key": API_KEY,
+        },
+    )
+
+    now = datetime.now(timezone.utc)
+    out = {}
+    for row in rows:
+        if str(row.get("category_code", "")).strip() != category_code:
+            continue
+        if str(row.get("data_type_code", "")).strip() != data_type_code:
+            continue
+        if str(row.get("error_data", "")).lower() == "yes":
+            continue
+        try:
+            year, month_num = row["time"].split("-")
+            value = float(row["cell_value"])
+        except (ValueError, TypeError, KeyError):
+            continue
+        if int(year) != target_year:
+            continue
+        month_key = MONTH_MAP.get(month_num)
+        if not month_key:
+            continue
+        # Skip the still-open month: a month only counts once it has
+        # fully elapsed, otherwise we would store a partial value.
+        if (int(year), int(month_num)) >= (now.year, now.month):
+            continue
+        out[month_key] = value
+    return out
+
+
+def fetch_m3(target_year):
+    """New orders for total manufacturing (M3), in millions of dollars."""
+    return fetch_eits_rows(
+        M3_DATASET, target_year, M3_CATEGORY, M3_DATA_TYPE
+    )
+
+
+def fetch_vip(target_year):
+    """Total construction spending (VIP), in millions of dollars."""
+    return fetch_eits_rows(
+        VIP_DATASET, target_year, VIP_CATEGORY, VIP_DATA_TYPE
+    )
+
+
+def format_billions(value):
+    """Format a value in millions of dollars as a billions string.
+
+    All three Census EITS datasets (FT-900, M3, VIP) return cell values in
+    millions of dollars; the JSON stores billions with one decimal, e.g.
+    "$92.8B" for a $92,826M deficit or "$2,184.5B" for $2,184,500M of
+    construction spending.
+    """
+    return f"${value / 1000:,.1f}B"
 
 
 def write_month_values(indicator, year_key, updates, now_iso, changes):
@@ -189,20 +282,36 @@ def collect_updates(target_year):
         ft900 = fetch_ft900(target_year)
         sources["trade-deficit"] = {
             None: {
-                m: format_millions(v["deficit"])
+                m: format_billions(v["deficit"])
                 for m, v in ft900.items() if "deficit" in v
             },
             "imports": {
-                m: format_millions(v["imports"])
+                m: format_billions(v["imports"])
                 for m, v in ft900.items() if "imports" in v
             },
             "exports": {
-                m: format_millions(v["exports"])
+                m: format_billions(v["exports"])
                 for m, v in ft900.items() if "exports" in v
             },
         }
     except Exception as e:
         logger.error("FT-900 fetch failed: %s", e)
+
+    try:
+        new_orders = fetch_m3(target_year)
+        sources["new-orders"] = {
+            None: {m: format_billions(v) for m, v in new_orders.items()},
+        }
+    except Exception as e:
+        logger.error("M3 fetch failed: %s", e)
+
+    try:
+        construction = fetch_vip(target_year)
+        sources["construction-spending"] = {
+            None: {m: format_billions(v) for m, v in construction.items()},
+        }
+    except Exception as e:
+        logger.error("VIP fetch failed: %s", e)
 
     return sources
 
@@ -226,9 +335,12 @@ def update_financials(dry_run=False):
         indicator_id = indicator.get("id")
         if indicator_id not in sources:
             continue
-        if indicator.get("agency") != "Census":
+        # Census-sourced indicators may carry agency "Census" (FT-900 trade)
+        # or "Commerce" (M3 orders, VIP construction). Both are Census API
+        # programs; the agency label reflects the parent survey.
+        if indicator.get("agency") not in ("Census", "Commerce"):
             logger.warning(
-                "Skipping %s: agency is %r, expected 'Census'",
+                "Skipping %s: agency is %r, expected 'Census' or 'Commerce'",
                 indicator_id, indicator.get("agency"),
             )
             continue

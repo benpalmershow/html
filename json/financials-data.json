@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-07T18:01:55Z",
+  "lastUpdated": "2026-10-07T20:02:17Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1041,21 +1041,21 @@
     },
     {
       "2026": {
-        "january": "$52,670B",
-        "february": "$52,500B",
-        "march": "$53,657B",
-        "april": "$52,883B",
-        "may": "$75,752B",
-        "june": "$71,182B",
-        "july": "$92,826B",
-        "august": "$105,572B"
+        "january": "$52.7B",
+        "february": "$52.5B",
+        "march": "$53.7B",
+        "april": "$52.9B",
+        "may": "$75.8B",
+        "june": "$71.2B",
+        "july": "$92.8B",
+        "august": "$105.6B"
       },
       "id": "trade-deficit",
       "category": "Trade & Tariffs",
       "color": "#1abc9c",
       "agency": "Census",
       "name": "Trade Deficit",
-      "lastUpdated": "2026-10-07T18:01:55Z",
+      "lastUpdated": "2026-10-07T20:02:17Z",
       "releaseDay": 9,
       "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
       "march": "$132,983B",
@@ -1072,14 +1072,14 @@
       "explanation": "The difference between the value of a country's imports and exports of goods and services. A trade deficit occurs when imports exceed exports. The U.S. has run persistent trade deficits since the 1970s, reflecting strong consumer demand and the dollar's role as the global reserve currency. The trade balance is influenced by exchange rates, economic growth differentials, and trade policies. While a trade deficit can indicate economic strength (strong consumer demand), persistent large deficits may raise concerns about domestic manufacturing and job losses in certain sectors.",
       "imports": {
         "2026": {
-          "january": "$353,941B",
-          "february": "$366,127B",
-          "march": "$374,820B",
-          "april": "$382,776B",
-          "may": "$395,731B",
-          "june": "$388,517B",
-          "july": "$403,550B",
-          "august": "$420,754B"
+          "january": "$353.9B",
+          "february": "$366.1B",
+          "march": "$374.8B",
+          "april": "$382.8B",
+          "may": "$395.7B",
+          "june": "$388.5B",
+          "july": "$403.6B",
+          "august": "$420.8B"
         },
         "march": "$420,0B",
         "april": "$352,083B",
@@ -1094,14 +1094,14 @@
       },
       "exports": {
         "2026": {
-          "january": "$301,271B",
-          "february": "$313,628B",
-          "march": "$321,163B",
-          "april": "$329,893B",
-          "may": "$319,979B",
-          "june": "$317,335B",
-          "july": "$310,723B",
-          "august": "$315,182B"
+          "january": "$301.3B",
+          "february": "$313.6B",
+          "march": "$321.2B",
+          "april": "$329.9B",
+          "may": "$320.0B",
+          "june": "$317.3B",
+          "july": "$310.7B",
+          "august": "$315.2B"
         },
         "march": "$283,369B",
         "april": "$290,598B",
@@ -1153,15 +1153,17 @@
         "february": "$621.3B",
         "march": "$632.6B",
         "april": "$665.9B",
-        "may": "$658.9B",
-        "june": "$656.6B"
+        "may": "$658.8B",
+        "june": "$657.8B",
+        "july": "$662.8B",
+        "august": "$663.5B"
       },
       "id": "new-orders",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "Commerce",
       "name": "New Orders for Manufactured Goods",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-10-07T20:02:17Z",
       "releaseDay": 3,
       "url": "https://www.census.gov/economic-indicators/",
       "march": "$617.4B",
@@ -1541,12 +1543,12 @@
     },
     {
       "2026": {
-        "january": "$2,178.1B",
-        "february": "$2,160.7B",
-        "march": "$2,164.5B",
-        "april": "$2,207.1B",
-        "may": "$2,168.5B",
-        "june": "$2,167.7B",
+        "january": "$2,195.6B",
+        "february": "$2,189.7B",
+        "march": "$2,199.4B",
+        "april": "$2,168.2B",
+        "may": "$2,168.4B",
+        "june": "$2,187.3B",
         "july": "$2,184.5B",
         "august": "$2,203.1B"
       },
@@ -1555,7 +1557,7 @@
       "color": "#e67e22",
       "agency": "Commerce",
       "name": "Construction Spending",
-      "lastUpdated": "2026-10-02T14:00:00Z",
+      "lastUpdated": "2026-10-07T20:02:17Z",
       "releaseDay": 2,
       "url": "https://www.census.gov/construction/c30/current/index.html",
       "march": "$2,162B",

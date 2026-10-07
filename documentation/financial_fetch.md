@@ -258,6 +258,7 @@ and validation procedure. The automated implementation lives in
 - **FRED**: Various economic series
 - **EIA**: Oil prices, energy commodities
 - **NYMEX/CME**: Oil futures, commodities pricing
+- **Treasury Fiscal Data API**: Debt level, budget receipts/outlays, interest on debt, tariff revenue (see Treasury automation below)
 
 #### Step 2: Update Frequency
 - **Monthly**: Most economic indicators (CPI, PPI, Employment, etc.)
@@ -392,6 +393,68 @@ const categoryIcons = {
   World Cup pattern (football-data.org with a free key) is mirrored here.
 - **Manual steps:** edit the schedule in `json/nfl-games.yml` (teams, times,
   `polymarket_slug`); the workflow refreshes the odds automatically.
+
+### Treasury Fiscal Data Automation (live, open API)
+- **Fetcher:** `scripts/fetch_treasury.py` -- queries the Treasury
+  Fiscal Data API (open, no key required) and updates the four
+  `agency: "Treasury"` indicators in `json/financials-data.json`
+  in place: Treasury Debt Level, Monthly Budget Deficit/Surplus
+  (including its `receipts`/`outlays` sub-objects), Interest on
+  Debt, and Tariff Revenue. Supports `--dry-run` to preview
+  changes without writing.
+- **Scheduled run:** `.github/workflows/fetch-treasury.yml`
+  (daily 09:00 UTC) runs the fetcher, validates the JSON, and
+  commits with `[skip ci]`.
+- **Scope:** only the current calendar year's nested year object
+  (e.g. `"2026": {"january": ...}`) is written. Flat top-level
+  month fields hold prior-year data and are left untouched, so
+  charts never double-plot a month.
+
+#### Treasury API reference
+Base URL: `https://api.fiscaldata.treasury.gov/services/api/fiscal_service`
+(docs: https://fiscaldata.treasury.gov/api-documentation/)
+
+- **Debt to the Penny** (`treasury-debt-level`) --
+  `GET /v2/accounting/od/debt_to_penny?page[size]=1000&sort=-record_date`
+  - One row per business day. Group rows by
+    `record_calendar_year`/`record_calendar_month` and keep the row
+    with the latest `record_date` (month-end snapshot).
+  - Field: `tot_pub_debt_out_amt` (dollars with cents) ->
+    `"$40,171,825,101,340.31"`.
+  - The still-open month is skipped (no month-end value exists yet).
+- **MTS Table 1** (`monthly-budget-deficit`) --
+  `GET /v1/accounting/mts/mts_table_1?page[size]=100&sort=-record_date`
+  - Use only the latest release (max `record_date`); it carries
+    every fiscal year-to-date month.
+  - Rows are keyed by `line_code_nbr`, not `classification_desc`:
+    month names repeat across fiscal years. Within the release's
+    fiscal year (`record_fiscal_year`, October - September):
+    160 = October, 170 = November, 180 = December, 190 = January,
+    200 = February, 210 = March, 220 = April, 230 = May,
+    240 = June, 250 = July, 260 = August, 270 = September,
+    280 = fiscal year-to-date.
+  - Fields: `current_month_gross_rcpt_amt`,
+    `current_month_gross_outly_amt`, `current_month_dfct_sur_amt`.
+  - **Sign convention:** the API deficit field is positive for a
+    deficit; the JSON stores the negated value. Formatted as
+    `-$94,615M` (deficit) or `+$215,024M` (surplus). Receipts and
+    outlays are stored in millions with no currency symbol
+    (`560,052`).
+- **MTS Table 3** (`interest-on-debt`) --
+  `GET /v1/accounting/mts/mts_table_3?page[size]=500&sort=-record_date`
+  - Each release covers a single month; the row's
+    `record_calendar_year`/`record_calendar_month` identify the
+    data month.
+  - Line `line_code_nbr == 360` = "Interest on Treasury Debt
+    Securities (Gross)", field `current_month_rcpt_outly_amt` ->
+    `"$98B"` (rounded billions).
+- **MTS Table 4** (`tariff-revenue`) --
+  `GET /v1/accounting/mts/mts_table_4?page[size]=500&sort=-record_date`
+  - Line `line_code_nbr == 405` = "Customs Duties", field
+    `current_month_net_rcpt_amt` -> `"$13B"` (rounded billions).
+    Values can be negative when refunds/revisions exceed
+    collections (e.g. `"$-26B"`).
+- Local preview: `python3 scripts/fetch_treasury.py --dry-run`
 
 ### Data Validation Scripts
 - JSON schema validation for indicator objects

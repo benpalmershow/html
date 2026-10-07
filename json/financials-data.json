@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-07T14:08:23Z",
+  "lastUpdated": "2026-10-07T15:20:52Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -822,20 +822,21 @@
     },
     {
       "2026": {
-        "january": "$76B",
-        "february": "$79B",
-        "march": "$94B",
-        "april": "$97B",
-        "may": "$107B",
-        "june": "$104B",
-        "july": "$104B"
+        "january": "$72B",
+        "february": "$93B",
+        "march": "$103B",
+        "april": "$112B",
+        "may": "$133B",
+        "june": "$185B",
+        "july": "$118B",
+        "august": "$98B"
       },
       "id": "interest-on-debt",
       "category": "Government",
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Interest on Debt",
-      "lastUpdated": "2026-08-12T14:00:00Z",
+      "lastUpdated": "2026-10-07T15:20:52Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$89B",
@@ -856,17 +857,18 @@
         "january": "-$94,615M",
         "february": "-$307,501M",
         "march": "-$164,100M",
-        "april": "+215,024M",
+        "april": "+$215,024M",
         "may": "-$292,648M",
         "june": "-$120,305M",
-        "july": "-$432,308M"
+        "july": "-$432,286M",
+        "august": "-$166,797M"
       },
       "id": "monthly-budget-deficit",
       "category": "Government",
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Monthly Budget Deficit/Surplus",
-      "lastUpdated": "2026-08-12T14:00:00Z",
+      "lastUpdated": "2026-10-07T15:20:52Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
       "january": "-$128,640M",
@@ -887,9 +889,10 @@
           "february": "313,122",
           "march": "384,863",
           "april": "837,343",
-          "may": "$335,512",
-          "june": "$495,761",
-          "july": "$334,010"
+          "may": "335,512",
+          "june": "495,761",
+          "july": "334,010",
+          "august": "360,033"
         },
         "january": "513,294",
         "february": "296,424",
@@ -910,9 +913,10 @@
           "february": "620,623",
           "march": "548,963",
           "april": "622,319",
-          "may": "$628,160",
-          "june": "$616,067",
-          "july": "$766,318"
+          "may": "628,160",
+          "june": "616,067",
+          "july": "766,296",
+          "august": "526,830"
         },
         "january": "641,935",
         "february": "603,441",
@@ -932,21 +936,22 @@
     },
     {
       "2026": {
-        "january": "$38,473,375,474,319.00",
-        "february": "$38,743,577,500,254.48",
-        "march": "$38,990,389,667,489.38",
-        "april": "$38,918,837,926,582.90",
-        "may": "$38,882,147,615,630.53",
-        "june": "$39,213,266,279,741.16",
-        "july": "$39,799,618,642,771.12",
-        "august": "$40,032,876,505,819.31"
+        "january": "$38,521,368,112,341.66",
+        "february": "$38,769,805,982,273.81",
+        "march": "$39,065,421,393,640.82",
+        "april": "$38,967,833,861,543.11",
+        "may": "$39,207,759,598,302.62",
+        "june": "$39,462,398,380,774.37",
+        "july": "$39,771,617,162,466.97",
+        "august": "$40,175,641,071,634.14",
+        "september": "$40,171,825,101,340.31"
       },
       "id": "treasury-debt-level",
       "category": "Government",
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Treasury Debt Level",
-      "lastUpdated": "2026-08-25T15:00:00Z",
+      "lastUpdated": "2026-10-07T15:20:52Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
       "march": "$36,216,627,186,278.78",
@@ -1115,14 +1120,15 @@
         "april": "$22B",
         "may": "$0B",
         "june": "$-26B",
-        "july": "$-8.5B"
+        "july": "$-9B",
+        "august": "$13B"
       },
       "id": "tariff-revenue",
       "category": "Trade & Tariffs",
       "color": "#1abc9c",
       "agency": "Treasury",
       "name": "Tariff Revenue",
-      "lastUpdated": "2026-08-12T14:00:00Z",
+      "lastUpdated": "2026-10-07T15:20:52Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$8.2B",
@@ -1806,7 +1812,6 @@
         "july": "107.71",
         "august": "107.56",
         "september": "108.08"
-       
       },
       "id": "employment-trends-index",
       "category": "Employment Indicators",

@@ -370,13 +370,6 @@ function buildStandardLineChartConfig(indicatorName, indicatorData) {
 function buildTradeDeficitChartConfig(indicatorName, indicatorData) {
     const importValues = [], exportValues = [], deficitValues = [], labels = [];
     const yearKeys = Object.keys(indicatorData).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
-    MONTHS.forEach((month, index) => {
-        const importValue = indicatorData.imports[month], exportValue = indicatorData.exports[month], deficitValue = indicatorData[month];
-        if (isValidData(importValue) && isValidData(exportValue) && isValidData(deficitValue)) {
-            const numImport = extractNumericValue(importValue), numExport = extractNumericValue(exportValue), numDeficit = extractNumericValue(deficitValue);
-            if (numImport !== null && numExport !== null && numDeficit !== null) { labels.push(MONTH_LABELS[index]); importValues.push(numImport); exportValues.push(numExport); deficitValues.push(numDeficit); }
-        }
-    });
     const yearNestedPoints = [];
     for (const year of yearKeys) {
         const yearData = indicatorData[year];
@@ -392,7 +385,7 @@ function buildTradeDeficitChartConfig(indicatorName, indicatorData) {
         });
     }
     yearNestedPoints.sort((a, b) => a.year !== b.year ? b.year - a.year : b.monthIndex - a.monthIndex);
-    yearNestedPoints.slice(0, 2).reverse().forEach(p => { labels.push(p.label); importValues.push(p.numImport); exportValues.push(p.numExport); deficitValues.push(Math.abs(p.numDeficit)); });
+    yearNestedPoints.slice(0, 12).reverse().forEach(p => { labels.push(p.label); importValues.push(p.numImport); exportValues.push(p.numExport); deficitValues.push(Math.abs(p.numDeficit)); });
     return { type: 'chartjs-mixed', data: { labels, datasets: [{ label: 'Imports', data: importValues, type: 'bar', backgroundColor: 'rgba(255, 107, 107, 0.7)', borderColor: '#FF6B6B', borderWidth: 1, yAxisID: 'y' }, { label: 'Exports', data: exportValues, type: 'bar', backgroundColor: 'rgba(81, 207, 102, 0.7)', borderColor: '#51CF66', borderWidth: 1, yAxisID: 'y' }, { label: 'Deficit', data: deficitValues, type: 'line', borderColor: '#2C5F5A', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4, fill: false, yAxisID: 'y1', pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }] } };
 }
 

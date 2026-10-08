@@ -54,6 +54,21 @@ def parse_iso(value):
         return None
 
 
+def odds_to_int(value):
+    """Convert '38.5¢' or '38¢' to clean integer string '38'.
+
+    Constraint: nfl_probability_integer_format requires no cents symbol
+    and no decimal places in the merged financials-data.json output.
+    """
+    if value is None:
+        return None
+    cleaned = str(value).replace('¢', '').strip()
+    try:
+        return str(int(round(float(cleaned))))
+    except (ValueError, TypeError):
+        return str(value)
+
+
 def build_indicator(game):
     """Convert one YAML game dict into a financials-data.json indicator object."""
     away = game["away"]
@@ -64,7 +79,7 @@ def build_indicator(game):
     odds_fields = {}
     for key, value in game.items():
         if key.endswith("_win_odds"):
-            odds_fields[key] = value
+            odds_fields[key] = odds_to_int(value)
 
     indicator = {
         "id": game["id"],
@@ -119,7 +134,7 @@ def build_indicator(game):
             probs = {}
             for k, v in entry.items():
                 if k != "timestamp":
-                    probs[k] = v
+                    probs[k] = odds_to_int(v)
             if probs:
                 probabilities[date_key] = probs
 
@@ -142,8 +157,8 @@ def build_indicator(game):
                     continue  # Don't overwrite real data
                 away_adjusted = max(5, min(95, round(away_prob_current + var, 1)))
                 probs = dict(odds_fields)
-                probs[away_key] = f"{round(away_adjusted, 1)}¢"
-                probs[home_key] = f"{round(100 - away_adjusted, 1)}¢"
+                probs[away_key] = f"{round(away_adjusted)}"
+                probs[home_key] = f"{round(100 - away_adjusted)}"
                 probabilities[date_key] = probs
 
         # For completed games, add post-game result
@@ -192,6 +207,8 @@ def main():
     if not games:
         print("No games defined in YAML. Nothing to do.")
         return 0
+
+    print(f"Processing {len(games)} games from YAML")
 
     with open(FINANCIALS_PATH, "r") as f:
         data = json.load(f)
@@ -274,6 +291,7 @@ def main():
         json.dump(data, f, indent=2, ensure_ascii=False)
 
     print(f"Wrote {FINANCIALS_PATH} ({len(indices)} indicators total).")
+    print(f"Summary: {len(new_indicators)} processed, {len(appended)} new, {len([i for i in new_indicators if i['id'] in existing_ids])} updated")
     return 0
 
 

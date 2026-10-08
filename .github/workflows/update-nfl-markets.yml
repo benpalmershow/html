@@ -16,6 +16,7 @@ concurrency:
 jobs:
   update-nfl-markets:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,6 +36,7 @@ jobs:
         # and broadcast footage). Polymarket is a CFTC-regulated prediction
         # market exchange, not an NFL data feed.
         run: python3 scripts/fetch-nfl-odds.py
+        continue-on-error: true
 
       - name: Merge NFL games YAML into financials-data.json
         run: python3 scripts/apply-nfl-yml.py --replace-completed

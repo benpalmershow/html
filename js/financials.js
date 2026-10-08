@@ -161,8 +161,15 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
 
 function renderLatestUpdatesView(financialData) {
     const allIndicators = financialData.indices.slice();
+    // Exclude NFL games ( Prediction Markets with game_time_iso ) from Latest view
+    const filteredIndicators = allIndicators.filter(indicator => {
+        if (indicator.category === 'Prediction Markets' && indicator.game_time_iso) {
+            return false;
+        }
+        return true;
+    });
     // Sort by lastUpdated descending; fall back to original order if missing
-    allIndicators.sort((a, b) => {
+    filteredIndicators.sort((a, b) => {
         const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
         const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
         return dateB - dateA;
@@ -175,7 +182,7 @@ function renderLatestUpdatesView(financialData) {
                 <span class="category-name">Latest Updates</span>
             </h2>
             <div class="indicators-grid">
-                ${allIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
+                ${filteredIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
             </div>
         </div>
     `;
@@ -190,20 +197,19 @@ function renderCategoryView(financialData, categories, filterCategory) {
         let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
         categoryIndicators.sort((a, b) => {
-            // Prediction Markets sort by lastUpdated (most recent first); others use game time or lastUpdated
+            // Prediction Markets: sort by game time (most recent first)
             if (category === 'Prediction Markets') {
-                const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-                const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+                const dateA = a.game_time_iso ? new Date(a.game_time_iso).getTime() : (a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0);
+                const dateB = b.game_time_iso ? new Date(b.game_time_iso).getTime() : (b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0);
                 if (dateA > 0 && dateB > 0) return dateB - dateA;
                 if (dateA > 0) return -1;
                 if (dateB > 0) return 1;
                 return a.name.localeCompare(b.name);
             }
-            
-            // Sports cards (NFL) organize by game time; others by lastUpdated
-            const dateA = a.game_time_iso ? new Date(a.game_time_iso).getTime() : (a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0);
-            const dateB = b.game_time_iso ? new Date(b.game_time_iso).getTime() : (b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0);
 
+            // Other categories: sort by lastUpdated descending
+            const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+            const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
             if (dateA > 0 && dateB > 0) return dateB - dateA;
             if (dateA > 0) return -1;
             if (dateB > 0) return 1;

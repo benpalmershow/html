@@ -24,6 +24,7 @@ totals, are ignored.
 
 import argparse
 import json
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -41,11 +42,25 @@ YAML_PATH = ROOT / "json" / "nfl-games.yml"
 GAMMA_BASE = "https://gamma-api.polymarket.com/events"
 
 
-def fetch_event(slug):
+def fetch_event(slug, max_retries=3):
+    """Fetch event data with retry logic for transient failures."""
     url = f"{GAMMA_BASE}?slug={urllib.parse.quote(slug)}"
     req = urllib.request.Request(url, headers={"User-Agent": "howdy-stranger-nfl-odds/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except (urllib.error.URLError, urllib.error.HTTPError) as e:
+            if attempt == max_retries - 1:
+                raise
+            # Exponential backoff: 1s, 2s, 4s
+            wait_time = 2 ** attempt
+            print(f"  [retry {attempt + 1}/{max_retries}] waiting {wait_time}s before retry...")
+            time.sleep(wait_time)
+        except Exception as e:
+            print(f"  Unexpected error: {e}")
+            raise
 
 
 def price_to_cents(price_str):
@@ -124,11 +139,14 @@ def main():
         try:
             events = fetch_event(slug)
         except (urllib.error.URLError, urllib.error.HTTPError) as e:
-            print(f"[{game_id}] API error for slug {slug}: {e}")
+            print(f"[{game_id}] API error for slug {slug} (after retries): {e}")
             continue
         except Exception as e:
             print(f"[{game_id}] unexpected error: {e}")
             continue
+
+        # Rate limiting: wait 200ms between API calls to avoid rate limits
+        time.sleep(0.2)
 
         if not events:
             print(f"[{game_id}] no event for slug {slug}")

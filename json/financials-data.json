@@ -564,14 +564,15 @@
     {
       "2026": {
         "july": "60.75",
-        "august": "64.79"
+        "august": "64.79",
+        "september": "58.43"
       },
       "id": "crack-margin",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "EIA",
       "name": "3:2:1 Crack Spread",
-      "lastUpdated": "2026-08-25T14:00:00Z",
+      "lastUpdated": "2026-10-09T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.eia.gov/todayinenergy/prices.php",
       "change": "",
@@ -709,14 +710,15 @@
         "may": "6.3885",
         "june": "6.35",
         "july": "6.285",
-        "august": "6.6870"
+        "august": "6.6870",
+        "september": "6.7110"
       },
       "id": "copper-futures",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "CME",
       "name": "Copper Futures",
-      "lastUpdated": "2026-08-28T14:00:00Z",
+      "lastUpdated": "2026-10-09T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.cmegroup.com/markets/metals/base/copper.quotes.html",
       "march": "4.56",
@@ -741,14 +743,15 @@
         "may": "873.57",
         "june": "830.04",
         "july": "686.71",
-        "august": "614.6"
+        "august": "614.6",
+        "september": "643"
       },
       "id": "urea-price",
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "USDA",
       "name": "Urea",
-      "lastUpdated": "2026-08-24T14:00:00Z",
+      "lastUpdated": "2026-10-09T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.ams.usda.gov/mnreports/ams_3621.pdf",
       "change": "",
@@ -1231,14 +1234,16 @@
         "april": "211.9",
         "may": "212.6",
         "june": "213.9",
-        "july": "210"
+        "july": "210",
+        "august": "208.2",
+        "september": "205.9"
       },
       "id": "used-vehicle-value-index",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "Manheim",
       "name": "Used Vehicle Value Index",
-      "lastUpdated": "2026-07-31T21:56:00Z",
+      "lastUpdated": "2026-10-09T21:56:00Z",
       "releaseDay": 7,
       "url": "https://www.manheim.com/consulting/used-vehicle-value-index/",
       "march": "202.6",

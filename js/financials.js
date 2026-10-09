@@ -197,11 +197,23 @@ function renderCategoryView(financialData, categories, filterCategory) {
         let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
         categoryIndicators.sort((a, b) => {
-            // Prediction Markets: sort by game time ascending (earliest first)
+            // Prediction Markets: NFL games (with game_time_iso) sort by game time ascending (earliest first)
+            // Non-NFL prediction markets sort by lastUpdated descending (most recent first)
             if (category === 'Prediction Markets') {
-                const dateA = a.game_time_iso ? new Date(a.game_time_iso).getTime() : (a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0);
-                const dateB = b.game_time_iso ? new Date(b.game_time_iso).getTime() : (b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0);
-                if (dateA > 0 && dateB > 0) return dateA - dateB;
+                const hasGameTimeA = !!a.game_time_iso;
+                const hasGameTimeB = !!b.game_time_iso;
+
+                if (hasGameTimeA && hasGameTimeB) {
+                    const dateA = new Date(a.game_time_iso).getTime();
+                    const dateB = new Date(b.game_time_iso).getTime();
+                    return dateA - dateB;
+                }
+                if (hasGameTimeA) return -1;
+                if (hasGameTimeB) return 1;
+
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+                if (dateA > 0 && dateB > 0) return dateB - dateA;
                 if (dateA > 0) return -1;
                 if (dateB > 0) return 1;
                 return a.name.localeCompare(b.name);

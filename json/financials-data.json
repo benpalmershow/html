@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-09T14:03:16Z",
+  "lastUpdated": "2026-10-09T15:39:24Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -13,17 +13,17 @@
       "change": "",
       "probabilities": {
         "2026-08-24": {
-          "yes": "34¢",
-          "no": "67¢"
+          "yes": "34\u00a2",
+          "no": "67\u00a2"
         },
         "2026-10-04": {
-          "yes": "20¢",
-          "no": "80¢"
+          "yes": "20\u00a2",
+          "no": "80\u00a2"
         }
       },
-      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
-      "yes_odds": "20¢",
-      "no_odds": "80¢"
+      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of \u226560 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
+      "yes_odds": "20\u00a2",
+      "no_odds": "80\u00a2"
     },
     {
       "id": "iranian-regime-fall-2026",
@@ -34,42 +34,42 @@
       "lastUpdated": "2026-10-04T14:30:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
-      "yes_probability": "7¢",
+      "yes_probability": "7\u00a2",
       "no_probability": "93",
       "probabilities": {
         "2026-08-24": {
-          "yes": "8¢",
-          "no": "93¢"
+          "yes": "8\u00a2",
+          "no": "93\u00a2"
         },
         "2026-10-04": {
-          "yes": "7¢",
-          "no": "93¢"
+          "yes": "7\u00a2",
+          "no": "93\u00a2"
         },
         "2026-05-31": {
-          "yes": "14¢",
-          "no": "87¢"
+          "yes": "14\u00a2",
+          "no": "87\u00a2"
         },
         "2026-05-28": {
-          "yes": "15¢",
-          "no": "87¢"
+          "yes": "15\u00a2",
+          "no": "87\u00a2"
         },
         "2026-04-19": {
-          "yes": "21¢",
-          "no": "79¢"
+          "yes": "21\u00a2",
+          "no": "79\u00a2"
         },
         "2026-04-18": {
-          "yes": "27¢",
-          "no": "73¢"
+          "yes": "27\u00a2",
+          "no": "73\u00a2"
         },
         "2026-04-17": {
-          "yes": "33¢",
-          "no": "67¢"
+          "yes": "33\u00a2",
+          "no": "67\u00a2"
         }
       },
       "change": "",
       "explanation": "Polymarket prediction on whether the Iranian regime will fall by end of 2026. Market reflects 93% probability the regime endures despite nationwide protests since late 2025 and US-Israel airstrikes. IRGC has consolidated control following Supreme Leader Khamenei's death on February 28, 2026, brutally suppressing dissent while organizing pro-regime demonstrations. Mojtaba Khamenei succeeded his father with unusual speed, and subsequent protests were contained through decisive force. Ceasefire with US reduces military pressure. Volume: $26.7M.",
-      "yes_odds": "7¢",
-      "no_odds": "93¢"
+      "yes_odds": "7\u00a2",
+      "no_odds": "93\u00a2"
     },
     {
       "id": "us-recession-2026",
@@ -83,36 +83,36 @@
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
       "probabilities": {
         "2026-06-09": {
-          "yes": "18¢",
-          "no": "83¢"
+          "yes": "18\u00a2",
+          "no": "83\u00a2"
         },
         "2026-06-05": {
-          "yes": "29¢",
-          "no": "71¢"
+          "yes": "29\u00a2",
+          "no": "71\u00a2"
         },
         "2026-04-14": {
-          "yes": "26¢",
-          "no": "75¢"
+          "yes": "26\u00a2",
+          "no": "75\u00a2"
         },
         "2026-05-28": {
-          "yes": "20¢",
-          "no": "81¢"
+          "yes": "20\u00a2",
+          "no": "81\u00a2"
         },
         "2026-04-19": {
-          "yes": "26¢",
-          "no": "75¢"
+          "yes": "26\u00a2",
+          "no": "75\u00a2"
         },
         "2026-04-18": {
-          "yes": "29¢",
-          "no": "71¢"
+          "yes": "29\u00a2",
+          "no": "71\u00a2"
         },
         "2026-04-17": {
-          "yes": "32¢",
-          "no": "68¢"
+          "yes": "32\u00a2",
+          "no": "68\u00a2"
         },
         "2026-10-04": {
-          "yes": "8¢",
-          "no": "92¢"
+          "yes": "8\u00a2",
+          "no": "92\u00a2"
         }
       },
       "change": "",
@@ -173,53 +173,53 @@
       "announcement_time_iso": "2026-10-28T14:00:00-04:00",
       "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26oct",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
-      "rate_hold_odds": "83¢",
-      "rate_cut_odds": "1¢",
-      "rate_hike_odds": "18¢",
+      "rate_hold_odds": "83\u00a2",
+      "rate_cut_odds": "1\u00a2",
+      "rate_hike_odds": "18\u00a2",
       "change": "",
       "probabilities": {
         "2026-08-25": {
-          "rate_hold_odds": "73¢",
-          "rate_cut_odds": "3¢",
-          "rate_hike_odds": "22¢"
+          "rate_hold_odds": "73\u00a2",
+          "rate_cut_odds": "3\u00a2",
+          "rate_hike_odds": "22\u00a2"
         },
         "2026-09-15": {
-          "rate_hold_odds": "60¢",
-          "rate_cut_odds": "2¢",
-          "rate_hike_odds": "38¢"
+          "rate_hold_odds": "60\u00a2",
+          "rate_cut_odds": "2\u00a2",
+          "rate_hike_odds": "38\u00a2"
         },
         "2026-09-25": {
-          "rate_hold_odds": "33¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "68¢"
+          "rate_hold_odds": "33\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "68\u00a2"
         },
         "2026-09-29": {
-          "rate_hold_odds": "30¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "70¢"
+          "rate_hold_odds": "30\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "70\u00a2"
         },
         "2026-10-01": {
-          "rate_hold_odds": "66¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "33¢"
+          "rate_hold_odds": "66\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "33\u00a2"
         },
         "2026-10-02": {
-          "rate_hold_odds": "73¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "28¢"
+          "rate_hold_odds": "73\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "28\u00a2"
         },
         "2026-10-03": {
-          "rate_hold_odds": "82¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "19¢"
+          "rate_hold_odds": "82\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "19\u00a2"
         },
         "2026-10-04": {
-          "rate_hold_odds": "83¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "18¢"
+          "rate_hold_odds": "83\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "18\u00a2"
         }
       },
-      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70¢ on Sep 29 while hold odds fell to 30¢. That repricing reversed hard over the past week. Kalshi now quotes hold at 83¢, a 25bps hike at 18¢, and a 25bps cut at 1¢, and Polymarket agrees at 83¢ for no change and 17¢ for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps."
+      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70\u00a2 on Sep 29 while hold odds fell to 30\u00a2. That repricing reversed hard over the past week. Kalshi now quotes hold at 83\u00a2, a 25bps hike at 18\u00a2, and a 25bps cut at 1\u00a2, and Polymarket agrees at 83\u00a2 for no change and 17\u00a2 for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps."
     },
     {
       "id": "trump-impeachment",
@@ -232,20 +232,20 @@
       "url": "https://kalshi.com/markets/kximpeach/president-impeached/kximpeach",
       "probabilities": {
         "2026-08-29": {
-          "Before Jan 1, 2027": "20¢",
-          "Before Jan 1, 2028": "61¢"
+          "Before Jan 1, 2027": "20\u00a2",
+          "Before Jan 1, 2028": "61\u00a2"
         },
         "2026-10-04": {
-          "Before Jan 1, 2027": "4¢",
-          "Before Jan 1, 2028": "66¢"
+          "Before Jan 1, 2027": "4\u00a2",
+          "Before Jan 1, 2028": "66\u00a2"
         },
         "2026-05-31": {
-          "Before Jan 1, 2027": "10¢",
-          "Before Jan 1, 2028": "58¢"
+          "Before Jan 1, 2027": "10\u00a2",
+          "Before Jan 1, 2028": "58\u00a2"
         },
         "2026-04-19": {
-          "Before Jan 1, 2027": "13¢",
-          "Before Jan 1, 2028": "65¢"
+          "Before Jan 1, 2027": "13\u00a2",
+          "Before Jan 1, 2028": "65\u00a2"
         }
       },
       "change": "",
@@ -439,7 +439,7 @@
       "november": "59",
       "december": "65",
       "change": "",
-      "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."
+      "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old \u201cDays on Zillow\u201d metric in that it excludes the in-contract period before a home sells."
     },
     {
       "2026": {
@@ -807,20 +807,20 @@
           "Republican Party": "18"
         },
         "2026-05-16": {
-          "Democratic Party": "52¢",
-          "Republican Party": "48¢"
+          "Democratic Party": "52\u00a2",
+          "Republican Party": "48\u00a2"
         },
         "2026-05-15": {
-          "Democratic Party": "51¢",
-          "Republican Party": "49¢"
+          "Democratic Party": "51\u00a2",
+          "Republican Party": "49\u00a2"
         },
         "2026-05-14": {
-          "Democratic Party": "50¢",
-          "Republican Party": "50¢"
+          "Democratic Party": "50\u00a2",
+          "Republican Party": "50\u00a2"
         },
         "2026-05-12": {
-          "Democratic Party": "49¢",
-          "Republican Party": "51¢"
+          "Democratic Party": "49\u00a2",
+          "Republican Party": "51\u00a2"
         },
         "2026-10-04": {
           "Democratic Party": "94",
@@ -846,7 +846,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Interest on Debt",
-      "lastUpdated": "2026-10-08T15:56:48Z",
+      "lastUpdated": "2026-10-09T15:39:24Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$89B",
@@ -878,7 +878,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Monthly Budget Deficit/Surplus",
-      "lastUpdated": "2026-10-08T15:56:48Z",
+      "lastUpdated": "2026-10-09T15:39:24Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
       "january": "-$128,640M",
@@ -961,7 +961,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Treasury Debt Level",
-      "lastUpdated": "2026-10-08T15:56:48Z",
+      "lastUpdated": "2026-10-09T15:39:24Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
       "march": "$36,216,627,186,278.78",
@@ -1014,7 +1014,7 @@
         "El Salvador": "13,727",
         "Honduras": "10,553"
       },
-      "change": "Q3→Q4: -26,625 (-74.1%)",
+      "change": "Q3\u2192Q4: -26,625 (-74.1%)",
       "change_label": "QoQ",
       "explanation": "Form I-821 applications for Temporary Protected Status (TPS) approved by USCIS during Fiscal Year 2025, broken down by quarter and by country of designation. TPS is a temporary immigration status granted to eligible nationals of designated countries who are already in the United States, allowing them to live and work legally while conditions in their home country prevent safe return. The program covers countries experiencing armed conflict, environmental disasters, or other extraordinary conditions. Venezuela and Haiti represented the largest cohorts of approved applications in FY2025, reflecting ongoing designations for those countries. Quarterly approvals show significant variance, with Q1 (Oct-Dec) typically seeing the highest volume and Q4 (Jul-Sep) the lowest, often reflecting processing backlogs and staffing patterns. This data is published quarterly by USCIS in the RADP (Refugee, Asylum, and Temporary Protected Status) data report."
     },
@@ -1141,7 +1141,7 @@
       "color": "#1abc9c",
       "agency": "Treasury",
       "name": "Tariff Revenue",
-      "lastUpdated": "2026-10-08T15:56:48Z",
+      "lastUpdated": "2026-10-09T15:39:24Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$8.2B",

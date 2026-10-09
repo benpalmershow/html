@@ -261,14 +261,15 @@
         "june": "49.5",
         "july": "55.2",
         "august": "51.7",
-        "september": "48.1"
+        "september": "48.1",
+        "october": "46.3"
       },
       "id": "consumer-sentiment",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-10-09T14:03:16Z",
+      "lastUpdated": "2026-10-09T14:40:00Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",

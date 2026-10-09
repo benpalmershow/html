@@ -8,12 +8,16 @@ Updates only indicators where agency == "FRED" in the JSON data.
 For monthly-frequency series, uses the latest monthly observation.
 For daily/weekly series, uses the latest observation and updates the
 corresponding month/year in the data file.
+
+Consumer Sentiment is fetched directly from the University of Michigan CSV
+(see fetch_umich_sentiment) rather than FRED's UMCSENT series, because FRED
+delays that series by 1 month at the source's request and would otherwise lag
+the actual release date.
 """
 
 import json
 import os
 import sys
-from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -44,7 +48,6 @@ INDICATOR_MAP = {
     "Monthly Retail Sales": "RSAFS",
     "Industrial Production Index": "INDPRO",
     "Capacity Utilization": "TCU",
-    "Consumer Sentiment": "UMCSENT",
     "Consumer Confidence": "CONF",
     "Small Business Optimism Index": "NFIB",
     "Housing Starts": "HOUST",
@@ -60,6 +63,11 @@ INDICATOR_MAP = {
     "Personal Consumption Expenditures (PCE)": "PCE",
     "Dollar Value Index": "DTWEXBGS",
 }
+
+# Consumer Sentiment is fetched directly from the University of Michigan CSV
+# (see fetch_umich_sentiment) because FRED's UMCSENT series is delayed 1 month
+# at the source's request and lags the actual release date.
+UMICH_SENTIMENT_URL = "https://www.sca.isr.umich.edu/files/tbcics.csv"
 
 # Indicators whose values are in thousands on FRED and need *1000
 PAYROLLS_INDICATORS = {"Jobs"}
@@ -131,6 +139,90 @@ def detect_decimals(existing_value):
     if "." in existing_value:
         return len(existing_value.split(".")[1].rstrip("B").replace(",", ""))
     return 0
+
+
+def fetch_umich_sentiment():
+    """Fetch the latest Index of Consumer Sentiment from the University of Michigan CSV.
+
+    Returns a list of (month_name, year, value) tuples, most recent first.
+    The CSV is not delayed like FRED's UMCSENT series, so it reflects the
+    actual release date (including preliminary prints marked "(P)").
+    """
+    try:
+        resp = requests.get(UMICH_SENTIMENT_URL, timeout=30)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"  Error fetching UMich sentiment CSV: {e}")
+        return []
+
+    rows = []
+    for line in resp.text.splitlines():
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) < 2:
+            continue
+        month_raw, year_raw = parts[0], parts[1]
+        if not month_raw or not year_raw:
+            continue
+        try:
+            year = int(year_raw)
+            month_name = month_raw.split()[0].lower()
+        except (ValueError, IndexError):
+            continue
+        if month_name not in MONTH_MAP.values():
+            continue
+        # The index value is the first numeric cell in the row (the CSV has
+        # several leading empty columns before it).
+        value_raw = ""
+        for cell in parts[2:]:
+            if cell:
+                value_raw = cell
+                break
+        if not value_raw:
+            continue
+        try:
+            value = float(value_raw)
+        except ValueError:
+            continue
+        rows.append((month_name, year, value, month_raw))
+
+    rows.sort(key=lambda r: (r[1], list(MONTH_MAP.values()).index(r[0])), reverse=True)
+    return rows
+
+
+def update_umich_sentiment(data, now_iso):
+    """Update the Consumer Sentiment indicator from the UMich CSV."""
+    rows = fetch_umich_sentiment()
+    if not rows:
+        print("  No UMich sentiment data fetched")
+        return []
+
+    indicator = None
+    for idx in data.get("indices", []):
+        if idx.get("name") == "Consumer Sentiment" and idx.get("agency") == "FRED":
+            indicator = idx
+            break
+    if not indicator:
+        print("  Consumer Sentiment indicator not found or not FRED-sourced in JSON")
+        return []
+
+    updates = []
+    for month_name, year, value, month_raw in rows:
+        year_str = str(year)
+        existing_value = indicator.get(year_str, {}).get(month_name)
+        formatted = str(round(value, 1))
+        if existing_value is None:
+            if year_str not in indicator:
+                indicator[year_str] = {}
+            indicator[year_str][month_name] = formatted
+            updates.append(f"Consumer Sentiment ({year_str} {month_name}): {formatted} (new)")
+        elif existing_value != formatted:
+            if year_str not in indicator:
+                indicator[year_str] = {}
+            indicator[year_str][month_name] = formatted
+            updates.append(f"Consumer Sentiment ({year_str} {month_name}): {existing_value} -> {formatted}")
+
+    indicator["lastUpdated"] = now_iso
+    return updates
 
 
 def format_value(value, indicator_name, existing_value=None):
@@ -216,6 +308,11 @@ def update_financials():
 
         if not found:
             print(f"  Indicator '{indicator_name}' not found or not FRED-sourced in JSON")
+
+    # Consumer Sentiment is pulled from the University of Michigan CSV directly,
+    # since FRED's UMCSENT series is delayed 1 month at the source's request.
+    umich_updates = update_umich_sentiment(data, now_iso)
+    updates.extend(umich_updates)
 
     data["lastUpdated"] = now_iso
 

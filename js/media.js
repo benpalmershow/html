@@ -634,7 +634,34 @@
             item.songs.forEach(song => {
                 const li = document.createElement('li');
                 li.className = 'media-song-item';
-                li.textContent = song;
+
+                let title = '';
+                let artist = '';
+                if (typeof song === 'object' && song !== null && song.title) {
+                    title = song.title;
+                    artist = song.artist || '';
+                } else if (typeof song === 'string') {
+                    const sepIdx = song.lastIndexOf(' - ');
+                    if (sepIdx > -1) {
+                        title = song.slice(0, sepIdx);
+                        artist = song.slice(sepIdx + 3);
+                    } else {
+                        title = song;
+                    }
+                }
+
+                const titleEl = document.createElement('span');
+                titleEl.className = 'media-song-title';
+                titleEl.textContent = title;
+                li.appendChild(titleEl);
+
+                if (artist) {
+                    const artistEl = document.createElement('span');
+                    artistEl.className = 'media-song-artist';
+                    artistEl.textContent = artist;
+                    li.appendChild(artistEl);
+                }
+
                 songsUl.appendChild(li);
             });
             songsList.appendChild(songsUl);

@@ -529,6 +529,19 @@
   opacity: 0.9;
   padding-left: 0.75rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-song-title {
+  font-weight: 600;
+  opacity: 1;
+}
+
+.media-song-artist {
+  font-size: 0.88em;
+  font-weight: 400;
+  opacity: 0.6;
 }
 
 .media-song-item::before {

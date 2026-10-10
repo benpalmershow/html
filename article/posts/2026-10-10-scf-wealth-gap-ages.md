@@ -13,5 +13,5 @@ The bottom quartile tells a bleaker story: median net worth dropped from $3,800 
 
 [Read the full report](https://www.federalreserve.gov/publications/files/scf26.pdf) at the Federal Reserve. 
 
-More on the Numbers page.
+More on the Numbers page:
 [View indicators](financials.html)

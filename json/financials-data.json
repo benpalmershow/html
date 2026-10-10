@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-10T13:17:27Z",
+  "lastUpdated": "2026-10-10T14:23:45.715223Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -13,17 +13,17 @@
       "change": "",
       "probabilities": {
         "2026-08-24": {
-          "yes": "34\u00a2",
-          "no": "67\u00a2"
+          "yes": "34¢",
+          "no": "67¢"
         },
         "2026-10-04": {
-          "yes": "20\u00a2",
-          "no": "80\u00a2"
+          "yes": "20¢",
+          "no": "80¢"
         }
       },
-      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of \u226560 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
-      "yes_odds": "20\u00a2",
-      "no_odds": "80\u00a2"
+      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
+      "yes_odds": "20¢",
+      "no_odds": "80¢"
     },
     {
       "id": "iranian-regime-fall-2026",
@@ -34,42 +34,42 @@
       "lastUpdated": "2026-10-04T14:30:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
-      "yes_probability": "7\u00a2",
+      "yes_probability": "7¢",
       "no_probability": "93",
       "probabilities": {
         "2026-08-24": {
-          "yes": "8\u00a2",
-          "no": "93\u00a2"
+          "yes": "8¢",
+          "no": "93¢"
         },
         "2026-10-04": {
-          "yes": "7\u00a2",
-          "no": "93\u00a2"
+          "yes": "7¢",
+          "no": "93¢"
         },
         "2026-05-31": {
-          "yes": "14\u00a2",
-          "no": "87\u00a2"
+          "yes": "14¢",
+          "no": "87¢"
         },
         "2026-05-28": {
-          "yes": "15\u00a2",
-          "no": "87\u00a2"
+          "yes": "15¢",
+          "no": "87¢"
         },
         "2026-04-19": {
-          "yes": "21\u00a2",
-          "no": "79\u00a2"
+          "yes": "21¢",
+          "no": "79¢"
         },
         "2026-04-18": {
-          "yes": "27\u00a2",
-          "no": "73\u00a2"
+          "yes": "27¢",
+          "no": "73¢"
         },
         "2026-04-17": {
-          "yes": "33\u00a2",
-          "no": "67\u00a2"
+          "yes": "33¢",
+          "no": "67¢"
         }
       },
       "change": "",
       "explanation": "Polymarket prediction on whether the Iranian regime will fall by end of 2026. Market reflects 93% probability the regime endures despite nationwide protests since late 2025 and US-Israel airstrikes. IRGC has consolidated control following Supreme Leader Khamenei's death on February 28, 2026, brutally suppressing dissent while organizing pro-regime demonstrations. Mojtaba Khamenei succeeded his father with unusual speed, and subsequent protests were contained through decisive force. Ceasefire with US reduces military pressure. Volume: $26.7M.",
-      "yes_odds": "7\u00a2",
-      "no_odds": "93\u00a2"
+      "yes_odds": "7¢",
+      "no_odds": "93¢"
     },
     {
       "id": "us-recession-2026",
@@ -83,36 +83,36 @@
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
       "probabilities": {
         "2026-06-09": {
-          "yes": "18\u00a2",
-          "no": "83\u00a2"
+          "yes": "18¢",
+          "no": "83¢"
         },
         "2026-06-05": {
-          "yes": "29\u00a2",
-          "no": "71\u00a2"
+          "yes": "29¢",
+          "no": "71¢"
         },
         "2026-04-14": {
-          "yes": "26\u00a2",
-          "no": "75\u00a2"
+          "yes": "26¢",
+          "no": "75¢"
         },
         "2026-05-28": {
-          "yes": "20\u00a2",
-          "no": "81\u00a2"
+          "yes": "20¢",
+          "no": "81¢"
         },
         "2026-04-19": {
-          "yes": "26\u00a2",
-          "no": "75\u00a2"
+          "yes": "26¢",
+          "no": "75¢"
         },
         "2026-04-18": {
-          "yes": "29\u00a2",
-          "no": "71\u00a2"
+          "yes": "29¢",
+          "no": "71¢"
         },
         "2026-04-17": {
-          "yes": "32\u00a2",
-          "no": "68\u00a2"
+          "yes": "32¢",
+          "no": "68¢"
         },
         "2026-10-04": {
-          "yes": "8\u00a2",
-          "no": "92\u00a2"
+          "yes": "8¢",
+          "no": "92¢"
         }
       },
       "change": "",
@@ -173,53 +173,53 @@
       "announcement_time_iso": "2026-10-28T14:00:00-04:00",
       "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26oct",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
-      "rate_hold_odds": "83\u00a2",
-      "rate_cut_odds": "1\u00a2",
-      "rate_hike_odds": "18\u00a2",
+      "rate_hold_odds": "83¢",
+      "rate_cut_odds": "1¢",
+      "rate_hike_odds": "18¢",
       "change": "",
       "probabilities": {
         "2026-08-25": {
-          "rate_hold_odds": "73\u00a2",
-          "rate_cut_odds": "3\u00a2",
-          "rate_hike_odds": "22\u00a2"
+          "rate_hold_odds": "73¢",
+          "rate_cut_odds": "3¢",
+          "rate_hike_odds": "22¢"
         },
         "2026-09-15": {
-          "rate_hold_odds": "60\u00a2",
-          "rate_cut_odds": "2\u00a2",
-          "rate_hike_odds": "38\u00a2"
+          "rate_hold_odds": "60¢",
+          "rate_cut_odds": "2¢",
+          "rate_hike_odds": "38¢"
         },
         "2026-09-25": {
-          "rate_hold_odds": "33\u00a2",
-          "rate_cut_odds": "1\u00a2",
-          "rate_hike_odds": "68\u00a2"
+          "rate_hold_odds": "33¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "68¢"
         },
         "2026-09-29": {
-          "rate_hold_odds": "30\u00a2",
-          "rate_cut_odds": "1\u00a2",
-          "rate_hike_odds": "70\u00a2"
+          "rate_hold_odds": "30¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "70¢"
         },
         "2026-10-01": {
-          "rate_hold_odds": "66\u00a2",
-          "rate_cut_odds": "1\u00a2",
-          "rate_hike_odds": "33\u00a2"
+          "rate_hold_odds": "66¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "33¢"
         },
         "2026-10-02": {
-          "rate_hold_odds": "73\u00a2",
-          "rate_cut_odds": "1\u00a2",
-          "rate_hike_odds": "28\u00a2"
+          "rate_hold_odds": "73¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "28¢"
         },
         "2026-10-03": {
-          "rate_hold_odds": "82\u00a2",
-          "rate_cut_odds": "1\u00a2",
-          "rate_hike_odds": "19\u00a2"
+          "rate_hold_odds": "82¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "19¢"
         },
         "2026-10-04": {
-          "rate_hold_odds": "83\u00a2",
-          "rate_cut_odds": "1\u00a2",
-          "rate_hike_odds": "18\u00a2"
+          "rate_hold_odds": "83¢",
+          "rate_cut_odds": "1¢",
+          "rate_hike_odds": "18¢"
         }
       },
-      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70\u00a2 on Sep 29 while hold odds fell to 30\u00a2. That repricing reversed hard over the past week. Kalshi now quotes hold at 83\u00a2, a 25bps hike at 18\u00a2, and a 25bps cut at 1\u00a2, and Polymarket agrees at 83\u00a2 for no change and 17\u00a2 for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps."
+      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70¢ on Sep 29 while hold odds fell to 30¢. That repricing reversed hard over the past week. Kalshi now quotes hold at 83¢, a 25bps hike at 18¢, and a 25bps cut at 1¢, and Polymarket agrees at 83¢ for no change and 17¢ for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps."
     },
     {
       "id": "trump-impeachment",
@@ -232,20 +232,20 @@
       "url": "https://kalshi.com/markets/kximpeach/president-impeached/kximpeach",
       "probabilities": {
         "2026-08-29": {
-          "Before Jan 1, 2027": "20\u00a2",
-          "Before Jan 1, 2028": "61\u00a2"
+          "Before Jan 1, 2027": "20¢",
+          "Before Jan 1, 2028": "61¢"
         },
         "2026-10-04": {
-          "Before Jan 1, 2027": "4\u00a2",
-          "Before Jan 1, 2028": "66\u00a2"
+          "Before Jan 1, 2027": "4¢",
+          "Before Jan 1, 2028": "66¢"
         },
         "2026-05-31": {
-          "Before Jan 1, 2027": "10\u00a2",
-          "Before Jan 1, 2028": "58\u00a2"
+          "Before Jan 1, 2027": "10¢",
+          "Before Jan 1, 2028": "58¢"
         },
         "2026-04-19": {
-          "Before Jan 1, 2027": "13\u00a2",
-          "Before Jan 1, 2028": "65\u00a2"
+          "Before Jan 1, 2027": "13¢",
+          "Before Jan 1, 2028": "65¢"
         }
       },
       "change": "",
@@ -444,7 +444,7 @@
       "november": "59",
       "december": "65",
       "change": "",
-      "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old \u201cDays on Zillow\u201d metric in that it excludes the in-contract period before a home sells."
+      "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."
     },
     {
       "2026": {
@@ -815,20 +815,20 @@
           "Republican Party": "18"
         },
         "2026-05-16": {
-          "Democratic Party": "52\u00a2",
-          "Republican Party": "48\u00a2"
+          "Democratic Party": "52¢",
+          "Republican Party": "48¢"
         },
         "2026-05-15": {
-          "Democratic Party": "51\u00a2",
-          "Republican Party": "49\u00a2"
+          "Democratic Party": "51¢",
+          "Republican Party": "49¢"
         },
         "2026-05-14": {
-          "Democratic Party": "50\u00a2",
-          "Republican Party": "50\u00a2"
+          "Democratic Party": "50¢",
+          "Republican Party": "50¢"
         },
         "2026-05-12": {
-          "Democratic Party": "49\u00a2",
-          "Republican Party": "51\u00a2"
+          "Democratic Party": "49¢",
+          "Republican Party": "51¢"
         },
         "2026-10-04": {
           "Democratic Party": "94",
@@ -1022,7 +1022,7 @@
         "El Salvador": "13,727",
         "Honduras": "10,553"
       },
-      "change": "Q3\u2192Q4: -26,625 (-74.1%)",
+      "change": "Q3→Q4: -26,625 (-74.1%)",
       "change_label": "QoQ",
       "explanation": "Form I-821 applications for Temporary Protected Status (TPS) approved by USCIS during Fiscal Year 2025, broken down by quarter and by country of designation. TPS is a temporary immigration status granted to eligible nationals of designated countries who are already in the United States, allowing them to live and work legally while conditions in their home country prevent safe return. The program covers countries experiencing armed conflict, environmental disasters, or other extraordinary conditions. Venezuela and Haiti represented the largest cohorts of approved applications in FY2025, reflecting ongoing designations for those countries. Quarterly approvals show significant variance, with Q1 (Oct-Dec) typically seeing the highest volume and Q4 (Jul-Sep) the lowest, often reflecting processing backlogs and staffing patterns. This data is published quarterly by USCIS in the RADP (Refugee, Asylum, and Temporary Protected Status) data report."
     },
@@ -2458,7 +2458,7 @@
       "game_time": "Oct 11, 2026 9:30 AM ET",
       "game_time_iso": "2026-10-11T09:30:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-phi-jax-2026-10-11",
-      "lastUpdated": "2026-10-09T21:34:37.447665Z",
+      "lastUpdated": "2026-10-10T14:22:38.216928Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-phi-jax-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2474,6 +2474,10 @@
           "PHI_win_odds": "24",
           "JAX_win_odds": "76"
         },
+        "2026-10-10": {
+          "PHI_win_odds": "24",
+          "JAX_win_odds": "76"
+        },
         "2026-10-04": {
           "PHI_win_odds": "27",
           "JAX_win_odds": "73"
@@ -2481,10 +2485,6 @@
         "2026-10-06": {
           "PHI_win_odds": "22",
           "JAX_win_odds": "78"
-        },
-        "2026-10-10": {
-          "PHI_win_odds": "25",
-          "JAX_win_odds": "75"
         },
         "2026-10-11": {
           "PHI_win_odds": "24",
@@ -2505,7 +2505,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-chi-gb-2026-10-11",
-      "lastUpdated": "2026-10-09T21:32:39.718285Z",
+      "lastUpdated": "2026-10-10T14:20:36.317658Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-chi-gb-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2521,6 +2521,10 @@
           "CHI_win_odds": "52",
           "GB_win_odds": "48"
         },
+        "2026-10-10": {
+          "CHI_win_odds": "52",
+          "GB_win_odds": "48"
+        },
         "2026-10-04": {
           "CHI_win_odds": "55",
           "GB_win_odds": "45"
@@ -2528,10 +2532,6 @@
         "2026-10-06": {
           "CHI_win_odds": "50",
           "GB_win_odds": "50"
-        },
-        "2026-10-10": {
-          "CHI_win_odds": "53",
-          "GB_win_odds": "47"
         },
         "2026-10-11": {
           "CHI_win_odds": "52",
@@ -2552,7 +2552,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-nyg-was-2026-10-11",
-      "lastUpdated": "2026-10-09T21:32:39.718285Z",
+      "lastUpdated": "2026-10-10T14:20:36.317658Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-nyg-was-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2568,6 +2568,10 @@
           "NYG_win_odds": "36",
           "WAS_win_odds": "64"
         },
+        "2026-10-10": {
+          "NYG_win_odds": "36",
+          "WAS_win_odds": "64"
+        },
         "2026-10-04": {
           "NYG_win_odds": "39",
           "WAS_win_odds": "61"
@@ -2575,10 +2579,6 @@
         "2026-10-06": {
           "NYG_win_odds": "34",
           "WAS_win_odds": "66"
-        },
-        "2026-10-10": {
-          "NYG_win_odds": "37",
-          "WAS_win_odds": "63"
         },
         "2026-10-11": {
           "NYG_win_odds": "36",
@@ -2599,7 +2599,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-hou-ten-2026-10-11",
-      "lastUpdated": "2026-10-09T21:34:37.447665Z",
+      "lastUpdated": "2026-10-10T14:18:37.798048Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-hou-ten-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2615,6 +2615,10 @@
           "HOU_win_odds": "76",
           "TEN_win_odds": "24"
         },
+        "2026-10-10": {
+          "HOU_win_odds": "76",
+          "TEN_win_odds": "24"
+        },
         "2026-10-04": {
           "HOU_win_odds": "79",
           "TEN_win_odds": "21"
@@ -2622,10 +2626,6 @@
         "2026-10-06": {
           "HOU_win_odds": "74",
           "TEN_win_odds": "26"
-        },
-        "2026-10-10": {
-          "HOU_win_odds": "77",
-          "TEN_win_odds": "23"
         },
         "2026-10-11": {
           "HOU_win_odds": "76",
@@ -2646,7 +2646,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-lv-ne-2026-10-11",
-      "lastUpdated": "2026-10-09T21:36:37.955968Z",
+      "lastUpdated": "2026-10-10T14:20:36.317658Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-lv-ne-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2662,6 +2662,10 @@
           "LV_win_odds": "36",
           "NE_win_odds": "64"
         },
+        "2026-10-10": {
+          "LV_win_odds": "36",
+          "NE_win_odds": "64"
+        },
         "2026-10-04": {
           "LV_win_odds": "39",
           "NE_win_odds": "61"
@@ -2669,10 +2673,6 @@
         "2026-10-06": {
           "LV_win_odds": "34",
           "NE_win_odds": "66"
-        },
-        "2026-10-10": {
-          "LV_win_odds": "37",
-          "NE_win_odds": "63"
         },
         "2026-10-11": {
           "LV_win_odds": "36",
@@ -2693,7 +2693,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-cle-nyj-2026-10-11",
-      "lastUpdated": "2026-10-09T21:34:37.447665Z",
+      "lastUpdated": "2026-10-10T14:22:38.216928Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-cle-nyj-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2709,6 +2709,10 @@
           "CLE_win_odds": "44",
           "NYJ_win_odds": "56"
         },
+        "2026-10-10": {
+          "CLE_win_odds": "44",
+          "NYJ_win_odds": "56"
+        },
         "2026-10-04": {
           "CLE_win_odds": "47",
           "NYJ_win_odds": "53"
@@ -2716,10 +2720,6 @@
         "2026-10-06": {
           "CLE_win_odds": "42",
           "NYJ_win_odds": "58"
-        },
-        "2026-10-10": {
-          "CLE_win_odds": "45",
-          "NYJ_win_odds": "55"
         },
         "2026-10-11": {
           "CLE_win_odds": "44",
@@ -2740,7 +2740,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-mia-2026-10-11",
-      "lastUpdated": "2026-10-09T21:34:37.447665Z",
+      "lastUpdated": "2026-10-10T14:18:37.798048Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-cin-mia-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2756,6 +2756,10 @@
           "CIN_win_odds": "76",
           "MIA_win_odds": "24"
         },
+        "2026-10-10": {
+          "CIN_win_odds": "76",
+          "MIA_win_odds": "24"
+        },
         "2026-10-04": {
           "CIN_win_odds": "79",
           "MIA_win_odds": "21"
@@ -2763,10 +2767,6 @@
         "2026-10-06": {
           "CIN_win_odds": "74",
           "MIA_win_odds": "26"
-        },
-        "2026-10-10": {
-          "CIN_win_odds": "77",
-          "MIA_win_odds": "23"
         },
         "2026-10-11": {
           "CIN_win_odds": "76",
@@ -2787,7 +2787,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-ind-pit-2026-10-11",
-      "lastUpdated": "2026-10-09T21:32:39.718285Z",
+      "lastUpdated": "2026-10-10T14:22:38.216928Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-ind-pit-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2803,6 +2803,10 @@
           "IND_win_odds": "42",
           "PIT_win_odds": "58"
         },
+        "2026-10-10": {
+          "IND_win_odds": "42",
+          "PIT_win_odds": "58"
+        },
         "2026-10-04": {
           "IND_win_odds": "45",
           "PIT_win_odds": "55"
@@ -2810,10 +2814,6 @@
         "2026-10-06": {
           "IND_win_odds": "40",
           "PIT_win_odds": "60"
-        },
-        "2026-10-10": {
-          "IND_win_odds": "43",
-          "PIT_win_odds": "57"
         },
         "2026-10-11": {
           "IND_win_odds": "42",
@@ -2834,7 +2834,7 @@
       "game_time": "Oct 11, 2026 4:05 PM ET",
       "game_time_iso": "2026-10-11T16:05:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-den-lac-2026-10-11",
-      "lastUpdated": "2026-10-09T21:34:37.447665Z",
+      "lastUpdated": "2026-10-10T14:18:37.798048Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-den-lac-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2850,6 +2850,10 @@
           "DEN_win_odds": "64",
           "LAC_win_odds": "36"
         },
+        "2026-10-10": {
+          "DEN_win_odds": "64",
+          "LAC_win_odds": "36"
+        },
         "2026-10-04": {
           "DEN_win_odds": "67",
           "LAC_win_odds": "33"
@@ -2857,10 +2861,6 @@
         "2026-10-06": {
           "DEN_win_odds": "62",
           "LAC_win_odds": "38"
-        },
-        "2026-10-10": {
-          "DEN_win_odds": "65",
-          "LAC_win_odds": "35"
         },
         "2026-10-11": {
           "DEN_win_odds": "64",
@@ -2881,7 +2881,7 @@
       "game_time": "Oct 11, 2026 4:25 PM ET",
       "game_time_iso": "2026-10-11T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-det-ari-2026-10-11",
-      "lastUpdated": "2026-10-09T21:32:39.718285Z",
+      "lastUpdated": "2026-10-10T14:22:38.216928Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-det-ari-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2897,6 +2897,10 @@
           "DET_win_odds": "70",
           "ARI_win_odds": "30"
         },
+        "2026-10-10": {
+          "DET_win_odds": "70",
+          "ARI_win_odds": "30"
+        },
         "2026-10-04": {
           "DET_win_odds": "73",
           "ARI_win_odds": "27"
@@ -2904,10 +2908,6 @@
         "2026-10-06": {
           "DET_win_odds": "68",
           "ARI_win_odds": "32"
-        },
-        "2026-10-10": {
-          "DET_win_odds": "71",
-          "ARI_win_odds": "29"
         },
         "2026-10-11": {
           "DET_win_odds": "70",
@@ -2928,7 +2928,7 @@
       "game_time": "Oct 11, 2026 4:25 PM ET",
       "game_time_iso": "2026-10-11T16:25:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-sf-sea-2026-10-11",
-      "lastUpdated": "2026-10-09T21:36:37.955968Z",
+      "lastUpdated": "2026-10-10T14:21:09.524655Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-sf-sea-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2944,6 +2944,10 @@
           "SF_win_odds": "38",
           "SEA_win_odds": "62"
         },
+        "2026-10-10": {
+          "SF_win_odds": "38",
+          "SEA_win_odds": "62"
+        },
         "2026-10-04": {
           "SF_win_odds": "41",
           "SEA_win_odds": "59"
@@ -2951,10 +2955,6 @@
         "2026-10-06": {
           "SF_win_odds": "36",
           "SEA_win_odds": "64"
-        },
-        "2026-10-10": {
-          "SF_win_odds": "39",
-          "SEA_win_odds": "61"
         },
         "2026-10-11": {
           "SF_win_odds": "38",
@@ -2975,7 +2975,7 @@
       "game_time": "Oct 11, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-11T13:00:00-04:00",
       "url": "https://polymarket.com/sports/nfl/nfl-min-no-2026-10-11",
-      "lastUpdated": "2026-10-09T21:32:39.718285Z",
+      "lastUpdated": "2026-10-10T14:22:38.216928Z",
       "polymarket_url": "https://polymarket.com/sports/nfl/nfl-min-no-2026-10-11",
       "week": 5,
       "probabilities": {
@@ -2991,6 +2991,10 @@
           "MIN_win_odds": "56",
           "NO_win_odds": "44"
         },
+        "2026-10-10": {
+          "MIN_win_odds": "56",
+          "NO_win_odds": "44"
+        },
         "2026-10-04": {
           "MIN_win_odds": "59",
           "NO_win_odds": "41"
@@ -2998,10 +3002,6 @@
         "2026-10-06": {
           "MIN_win_odds": "54",
           "NO_win_odds": "46"
-        },
-        "2026-10-10": {
-          "MIN_win_odds": "57",
-          "NO_win_odds": "43"
         },
         "2026-10-11": {
           "MIN_win_odds": "56",
@@ -3012,53 +3012,6 @@
       "NO_win_odds": "44",
       "away_color": "#4F2683",
       "home_color": "#D3BC8D"
-    },
-    {
-      "id": "tb-dal-2026-10-09",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "TB @ DAL",
-      "game_title": "Tampa Bay Buccaneers @ Dallas Cowboys",
-      "game_time": "Oct 8, 2026 8:15 PM ET",
-      "game_time_iso": "2026-10-08T20:15:00-04:00",
-      "url": "https://polymarket.com/sports/nfl/nfl-tb-dal-2026-10-09",
-      "lastUpdated": "2026-10-09T21:24:51.987537Z",
-      "polymarket_url": "https://polymarket.com/sports/nfl/nfl-tb-dal-2026-10-09",
-      "week": 5,
-      "probabilities": {
-        "2026-10-07": {
-          "TB_win_odds": "20",
-          "DAL_win_odds": "81"
-        },
-        "2026-10-08": {
-          "TB_win_odds": "20",
-          "DAL_win_odds": "80"
-        },
-        "2026-10-09": {
-          "TB_win_odds": "100",
-          "DAL_win_odds": "0"
-        },
-        "2026-10-01": {
-          "TB_win_odds": "95",
-          "DAL_win_odds": "5"
-        },
-        "2026-10-03": {
-          "TB_win_odds": "95",
-          "DAL_win_odds": "5"
-        },
-        "2026-10-05": {
-          "TB_win_odds": "95",
-          "DAL_win_odds": "5"
-        },
-        "2026-10-06": {
-          "TB_win_odds": "95",
-          "DAL_win_odds": "5"
-        }
-      },
-      "TB_win_odds": "100",
-      "DAL_win_odds": "0",
-      "away_color": "#D50A0A",
-      "home_color": "#003594"
     }
   ]
 }

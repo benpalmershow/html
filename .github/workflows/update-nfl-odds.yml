@@ -5,6 +5,10 @@ on:
     - cron: '0 6 * * *' # Run daily at 06:00 UTC
   workflow_dispatch:
 
+concurrency:
+  group: update-nfl-odds
+  cancel-in-progress: true
+
 jobs:
   update-odds:
     runs-on: ubuntu-latest
@@ -28,18 +32,24 @@ jobs:
         id: week
         run: echo "::set-output name=week::$(date +%V)"
 
-      - name: Fetch NFL odds
+      - name: Fetch NFL odds for current week
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}
 
-      - name: Validate odds
+      - name: Validate odds (custom script if present)
         run: |
           if [ -f scripts/validate-nfl-odds.py ]; then
             python3 scripts/validate-nfl-odds.py
           else
-            echo "No validation script found, skipping."
+            echo "No custom validation script found, skipping."
           fi
 
-      - name: Apply NFL YAML
+      - name: Validate merged data (JSON/YAML + site validator)
+        run: |
+          python3 -m json.tool json/financials-data.json > /dev/null
+          python3 -c "import yaml; yaml.safe_load(open('json/nfl-games.yml', encoding='utf-8'))"
+          node scripts/validate-site.js
+
+      - name: Apply NFL YAML (weekly)
         run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }} --replace-completed
 
       - name: Commit changes

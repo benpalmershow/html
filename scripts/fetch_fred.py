@@ -77,6 +77,10 @@ WEEKLY_SERIES = {"Jobless Claims"}
 BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in millions and need /1000 for billions formatting
 MILLIONS_INDICATORS = {"Monthly Retail Sales"}
+# Indicators whose FRED values are in thousands and need *1000 before formatting
+THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
+# Indicators whose FRED value is formatted with an "M" suffix (millions-style)
+M_SUFFIX_INDICATORS = {"Housing Starts"}
 
 MONTH_MAP = {
     "01": "january", "02": "february", "03": "march", "04": "april",
@@ -233,6 +237,16 @@ def format_value(value, indicator_name, existing_value=None):
         return f"{value / 1000:,.1f}B"
     if indicator_name in PAYROLLS_INDICATORS:
         return f"{int(round(value * 1000)):,}"
+    if indicator_name in THOUSANDS_INDICATORS:
+        scaled = value * 1000
+        if indicator_name in M_SUFFIX_INDICATORS:
+            return f"{scaled / 1_000_000:,.3f}M"
+        if existing_value:
+            if "," in existing_value and "." not in existing_value:
+                return f"{int(round(scaled)):,}"
+            decimals = detect_decimals(existing_value)
+            return str(round(scaled, decimals))
+        return f"{int(round(scaled)):,}"
     if existing_value:
         if "," in existing_value and "." not in existing_value:
             return f"{int(round(value)):,}"

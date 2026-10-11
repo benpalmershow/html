@@ -63,6 +63,16 @@ creating cards whose source links or odds are missing.
 
 ## Reliability requirements
 
+## Automation and monitoring
+
+- **Scheduled fetch**: Set up a cron job (e.g., via GitHub Actions or a server cron) that runs `python3 scripts/fetch-nfl-odds.py --week $(date +%V)` daily to keep odds current throughout the week.
+- **Automated validation**: After each fetch, run `python3 scripts/validate-nfl-odds.py` (a new script you can create) that checks for missing Polymarket events or incomplete odds and fails the job if any are found.
+- **Alerting**: Integrate a simple Slack or email notification on validation failures to prompt manual review.
+- **Idempotent merges**: Ensure the merge script `apply-nfl-yml.py` is run with `--replace-completed` to prune stale entries and avoid duplicate odds-history records.
+- **Version control**: Commit any YAML changes automatically (e.g., via a bot) with a clear message indicating the week and fetch timestamp.
+
+## Reliability requirements
+
 - A missing Polymarket event or moneyline means the game is omitted from the
   published cards; never infer odds from the schedule, market favorites, or
   final scores.

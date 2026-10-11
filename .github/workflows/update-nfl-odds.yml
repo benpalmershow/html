@@ -1,0 +1,57 @@
+name: Update NFL Odds
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Run daily at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-odds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Determine current NFL week (ISO week number)
+        id: week
+        run: echo "::set-output name=week::$(date +%V)"
+
+      - name: Fetch NFL odds
+        run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}
+
+      - name: Validate odds
+        run: |
+          if [ -f scripts/validate-nfl-odds.py ]; then
+            python3 scripts/validate-nfl-odds.py
+          else
+            echo "No validation script found, skipping."
+          fi
+
+      - name: Apply NFL YAML
+        run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }} --replace-completed
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add json/nfl-games.yml json/financials-data.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Automated NFL odds update for week ${{ steps.week.outputs.week }}"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

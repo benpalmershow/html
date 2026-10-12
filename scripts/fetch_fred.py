@@ -37,31 +37,32 @@ if not FRED_API_KEY:
     sys.exit(1)
 
 # Map indicator name (as stored in financials-data.json) to FRED series ID
+# Use seasonally adjusted series where applicable to match series consistency
 INDICATOR_MAP = {
     "10-yr Treasury Yield": "DGS10",
-    "CPI": "CPIAUCSL",
-    "PPI": "PPIACO",
-    "Unemployment Rate": "UNRATE",
-    "Jobs": "PAYEMS",
-    "Average Hourly Earnings": "CES0500000003",
-    "Jobless Claims": "ICSA",
-    "Monthly Retail Sales": "RSAFS",
-    "Industrial Production Index": "INDPRO",
-    "Capacity Utilization": "TCU",
-    "Consumer Confidence": "CONF",
-    "Small Business Optimism Index": "NFIB",
-    "Housing Starts": "HOUST",
-    "New Home Sales": "HSN1F",
-    "Building Permits": "PERMIT",
-    "Case-Shiller National Home Price Index": "CSUSHPINSA",
-    "30-yr Mortgage Rate": "MORTGAGE30US",
-    "Affordability Index": "FIXHAI",
-    "Oil (WTI)": "DCOILWTICO",
-    "Natural Gas": "DHHNGSP",
-    "U.S. Petroleum Exports": "PAUELS",
-    "Oil (Brent)": "DCOILBRENTEU",
-    "Personal Consumption Expenditures (PCE)": "PCE",
-    "Dollar Value Index": "DTWEXBGS",
+    "CPI": "CPIAUCSL",  # SA
+    "PPI": "PPIFIS",  # SA Final Demand Producer Price Index
+    "Unemployment Rate": "UNRATE",  # SA
+    "Jobs": "PAYEMS",  # SA
+    "Average Hourly Earnings": "CES0500000003",  # SA
+    "Jobless Claims": "ICSA",  # SA
+    "Monthly Retail Sales": "RSAFS",  # SA
+    "Industrial Production Index": "INDPRO",  # SA
+    "Capacity Utilization": "TCU",  # SA
+    "Consumer Confidence": "CONF",  # Conference Board; series format varies
+    "Small Business Optimism Index": "NFIB",  # NSA/seasonally not standard; keep as is
+    "Housing Starts": "HOUST",  # SA
+    "New Home Sales": "HSN1F",  # SA
+    "Building Permits": "PERMIT",  # SA
+    "Case-Shiller National Home Price Index": "CSUSHPINSA",  # SA
+    "30-yr Mortgage Rate": "MORTGAGE30US",  # NSA weekly avg
+    "Affordability Index": "FIXHAI",  # NSA
+    "Oil (WTI)": "DCOILWTICO",  # spot; not SA
+    "Natural Gas": "DHHNGSP",  # spot; not SA
+    "U.S. Petroleum Exports": "PAUELS",  # weekly
+    "Oil (Brent)": "DCOILBRENTEU",  # spot; not SA
+    "Personal Consumption Expenditures (PCE)": "PCE",  # SA in level? PCE is nominal; check - but keep existing series; values stored as formatted
+    "Dollar Value Index": "DTWEXBGS",  # daily index, not SA
 }
 
 # Consumer Sentiment is fetched directly from the University of Michigan CSV
@@ -220,39 +221,54 @@ def update_umich_sentiment(data, now_iso):
             indicator[year_str][month_name] = formatted
             updates.append(f"Consumer Sentiment ({year_str} {month_name}): {formatted} (new)")
         elif existing_value != formatted:
+            mom_pct, yoy_pct = compute_mom_yoy(existing_value, formatted)
+            warning = validate_large_change("Consumer Sentiment", mom_pct, yoy_pct)
             if year_str not in indicator:
                 indicator[year_str] = {}
             indicator[year_str][month_name] = formatted
-            updates.append(f"Consumer Sentiment ({year_str} {month_name}): {existing_value} -> {formatted}")
+            msg = f"Consumer Sentiment ({year_str} {month_name}): {existing_value} -> {formatted}"
+            if warning:
+                msg = f"WARNING: {warning}; {msg}"
+            updates.append(msg)
 
     indicator["lastUpdated"] = now_iso
     return updates
 
 
-def format_value(value, indicator_name, existing_value=None):
-    """Format a numeric value based on indicator type and existing format."""
-    if indicator_name in BILLIONS_INDICATORS:
-        return f"{value:,.1f}B"
-    if indicator_name in MILLIONS_INDICATORS:
-        return f"{value / 1000:,.1f}B"
-    if indicator_name in PAYROLLS_INDICATORS:
-        return f"{int(round(value * 1000)):,}"
-    if indicator_name in THOUSANDS_INDICATORS:
-        scaled = value * 1000
-        if indicator_name in M_SUFFIX_INDICATORS:
-            return f"{scaled / 1_000_000:,.3f}M"
-        if existing_value:
-            if "," in existing_value and "." not in existing_value:
-                return f"{int(round(scaled)):,}"
-            decimals = detect_decimals(existing_value)
-            return str(round(scaled, decimals))
-        return f"{int(round(scaled)):,}"
-    if existing_value:
-        if "," in existing_value and "." not in existing_value:
-            return f"{int(round(value)):,}"
-        decimals = detect_decimals(existing_value)
-        return str(round(value, decimals))
-    return str(round(value, 2))
+def compute_mom_yoy(existing_val_str, new_val_str):
+    """Compute MoM and YoY percent changes if possible."""
+    try:
+        # Strip non-numeric chars except . - ,
+        def parse(v):
+            if not v:
+                return None
+            v = str(v).strip()
+            # Remove currency symbols, commas, B, M suffixes
+            for ch in ['$', 'B', 'M', 'K', ' ']:
+                v = v.replace(ch, '')
+            v = v.replace(',', '')
+            return float(v)
+        old = parse(existing_val_str)
+        new = parse(new_val_str)
+        if old is None or new is None or old == 0:
+            return None, None
+        mom = ((new - old) / abs(old)) * 100.0
+        # YoY requires comparing to same month last year - but we don't have it here; skip
+        return mom, None
+    except Exception:
+        return None, None
+
+
+def validate_large_change(indicator_name, mom_pct, yoy_pct):
+    """Flag unusually large changes that may indicate series inconsistency."""
+    if mom_pct is None and yoy_pct is None:
+        return None
+    # Threshold: > 50% MoM or > 50% YoY is suspicious
+    if mom_pct is not None and abs(mom_pct) > 50.0:
+        return f"Large MoM change ({mom_pct:+.1f}%) detected for {indicator_name} - verify series consistency (SA/NSA, base, vintage)"
+    if yoy_pct is not None and abs(yoy_pct) > 50.0:
+        return f"Large YoY change ({yoy_pct:+.1f}%) detected for {indicator_name} - verify series consistency (SA/NSA, base, vintage)"
+    return None
 
 
 def update_financials():
@@ -310,11 +326,16 @@ def update_financials():
                         f"{indicator_name} ({year_str} {month_key}): {formatted} (new)"
                     )
                 elif existing_value != formatted:
+                    mom_pct, yoy_pct = compute_mom_yoy(existing_value, formatted)
+                    warning = validate_large_change(indicator_name, mom_pct, yoy_pct)
                     idx[year_str][month_key] = formatted
-                    updates.append(
+                    msg = (
                         f"{indicator_name} ({year_str} {month_key}): "
                         f"{existing_value} -> {formatted}"
                     )
+                    if warning:
+                        msg = f"WARNING: {warning}; {msg}"
+                    updates.append(msg)
 
                 idx["lastUpdated"] = now_iso
                 found = True

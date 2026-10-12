@@ -80,14 +80,18 @@ BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
 MILLIONS_INDICATORS = {"Monthly Retail Sales"}
 # Indicators whose FRED values are in thousands and need *1000 before formatting
 THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
-# Indicators whose FRED value is formatted with an "M" suffix (millions-style)
-M_SUFFIX_INDICATORS = {"Housing Starts"}
-
-MONTH_MAP = {
-    "01": "january", "02": "february", "03": "march", "04": "april",
-    "05": "may", "06": "june", "07": "july", "08": "august",
-    "09": "september", "10": "october", "11": "november", "12": "december",
+# Indicators that are inherently volatile; raise threshold for warnings
+VOLATILE_INDICATORS = {
+    "Oil (WTI)",
+    "Oil (Brent)",
+    "20ft Equivalents (TEUs)",
+    "Shipping Container Rate (China-US 40ft)",
+    "Lumber Futures",
+    "Urea",
+    "Crack Margin",
+    "U.S. Petroleum Exports",
 }
+
 
 
 def fetch_fred_observations(series_id, limit=100):
@@ -260,14 +264,16 @@ def compute_mom_yoy(existing_val_str, new_val_str):
 
 
 def validate_large_change(indicator_name, mom_pct, yoy_pct):
-    """Flag unusually large changes that may indicate series inconsistency."""
+    """Flag unusually large changes that may indicate series consistency."""
     if mom_pct is None and yoy_pct is None:
         return None
-    # Threshold: > 50% MoM or > 50% YoY is suspicious
-    if mom_pct is not None and abs(mom_pct) > 50.0:
-        return f"Large MoM change ({mom_pct:+.1f}%) detected for {indicator_name} - verify series consistency (SA/NSA, base, vintage)"
-    if yoy_pct is not None and abs(yoy_pct) > 50.0:
-        return f"Large YoY change ({yoy_pct:+.1f}%) detected for {indicator_name} - verify series consistency (SA/NSA, base, vintage)"
+    # Higher threshold for volatile series
+    mom_thresh = 25.0 if indicator_name in VOLATILE_INDICATORS else 10.0
+    yoy_thresh = 40.0 if indicator_name in VOLATILE_INDICATORS else 20.0
+    if mom_pct is not None and abs(mom_pct) > mom_thresh:
+        return f"Large MoM change ({mom_pct:+.1f}%) for {indicator_name} - verify series consistency (SA/NSA, base, vintage)"
+    if yoy_pct is not None and abs(yoy_pct) > yoy_thresh:
+        return f"Large YoY change ({yoy_pct:+.1f}%) for {indicator_name} - verify series consistency (SA/NSA, base, vintage)"
     return None
 
 

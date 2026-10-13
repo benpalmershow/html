@@ -104,7 +104,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
     
     return `
         <div class="indicator-header">
-            <div class="firm-card-title">${firmName}</div>
+            <div class="firm-card-title">${HtmlUtils.escapeHtml(firmName)}</div>
             <div class="indicator-actions">
                 <button class="info-btn" title="Show firm details" aria-label="Show firm details"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
                 <button class="expand-toggle" aria-label="Toggle holdings"><i data-lucide="chevron-down"></i></button>
@@ -114,20 +114,26 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div class="indicator-explanation-header">Firm details</div>
             <div class="indicator-explanation-body">
                 ${firmDetails}
-                ${description || ''}
+                ${description || ''} ${/* description may contain intentional HTML from trusted JSON source */''}
             </div>
         </div>
         <div class="indicator-content">
             <div class="data-rows-container">
                 <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
-                    ${firmHoldings.slice(0, 10).map(h => `
+                    ${firmHoldings.slice(0, 10).map(h => {
+                        const safeTicker = HtmlUtils.escapeHtml(h.ticker);
+                        const safeName = HtmlUtils.escapeHtml(h.name);
+                        const isValidLink = h.link && typeof h.link === 'string' && (h.link.startsWith('https://') || h.link.startsWith('http://'));
+                        const safeLink = isValidLink ? h.link : 'https://www.perplexity.ai/finance/' + safeTicker;
+                        return `
                         <div class="holding-item" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
-                             <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
-                            <div class="holding-name">${h.name}</div>
+                             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer">${safeTicker}</a></div>
+                            <div class="holding-name">${safeName}</div>
                             <div class="holding-pct">${h.pct}%</div>
                         </div>
-                    `).join('')}
+                    `;
+                    }).join('')}
                 </div>
                 <div class="firm-empty-state" style="display: none;">
                     <div class="empty-state-icon" aria-hidden="true">
@@ -208,13 +214,18 @@ function initializeFirmCards() {
                     holdingsList.style.display = 'flex';
                     if (emptyState) emptyState.style.display = 'none';
                     
-                    holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => `
+                    holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => {
+                        const safeTicker = HtmlUtils.escapeHtml(h.ticker);
+                        const safeName = HtmlUtils.escapeHtml(h.name);
+                        const isValidLink = h.link && typeof h.link === 'string' && (h.link.startsWith('https://') || h.link.startsWith('http://'));
+                        const safeLink = isValidLink ? h.link : 'https://www.perplexity.ai/finance/' + safeTicker;
+                        return `
                         <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
-                             <div class="holding-ticker"><a href="${h.link || 'https://www.perplexity.ai/finance/' + h.ticker}" target="_blank" rel="noopener noreferrer">${h.ticker}</a></div>
-                             <div class="holding-name">${h.name}</div>
+                             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer">${safeTicker}</a></div>
+                             <div class="holding-name">${safeName}</div>
                              <div class="holding-pct">${h.pct}%</div>
                          </div>
-                    `).join('');
+                    `; }).join('');
 
                     // Add click handlers for holdings
                     holdingsList.querySelectorAll('.holding-item').forEach((item) => {
@@ -262,5 +273,5 @@ function initializeFirmCards() {
     }
 }
 
-// Auto-initialize when script loads
-document.addEventListener('DOMContentLoaded', load13FData);
+// Note: load13FData is triggered lazily by financials.js (ensureLoad13F)
+// when the 13F section scrolls into view. No auto-init needed here.

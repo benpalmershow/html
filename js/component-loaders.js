@@ -3,7 +3,10 @@
 
 function loadComponent(containerId, componentPath, handler) {
   fetch(componentPath)
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) throw new Error(`Component not found: ${componentPath} (${response.status})`);
+      return response.text();
+    })
     .then(html => {
       if (handler) {
         handler(html);

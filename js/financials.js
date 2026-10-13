@@ -562,7 +562,7 @@ function initializeDashboard() {
     if (typeof setupModalHandlers === 'function') setupModalHandlers();
     setupKeyboardNavigation();
 
-    ensureLoad13F();
+    setupLazySectionLoad('latest-13f-filings', ensureLoad13F);
     ensureLoadFEC();
 }
 
@@ -584,8 +584,28 @@ function setActiveFilter(category) {
 }
 
 /* =========================================
-   13F Lazy Loading (SRP)
-   ========================================= */
+    Section Lazy Loading (SRP)
+    Loads data for below-the-fold sections only
+    when they scroll into view.
+    ========================================= */
+
+function setupLazySectionLoad(sectionId, loader) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const loaded = { value: false };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !loaded.value) {
+                loaded.value = true;
+                observer.unobserve(section);
+                loader();
+            }
+        });
+    }, { rootMargin: '200px', threshold: 0.01 });
+
+    observer.observe(section);
+}
 
 function ensureLoad13F() {
     if (DashboardState.is13FLoaded()) return;

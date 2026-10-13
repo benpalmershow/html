@@ -10,6 +10,7 @@ const Services = (function () {
     class DataService {
         constructor(options = {}) {
             this._cache = new Map();
+            this._inflight = new Map(); // deduplicate concurrent fetches for the same key
         }
 
         async fetchJSON(path, options = {}) {
@@ -18,24 +19,37 @@ const Services = (function () {
                 return this._cache.get(cacheKey);
             }
 
+            // If a fetch for this key is already in-flight, reuse that Promise
+            // to avoid sending multiple network requests before the cache is warm
+            if (this._inflight.has(cacheKey) && !options.bustCache) {
+                return this._inflight.get(cacheKey);
+            }
+
             let fetchPath = path;
             if (!options.bustCache) {
                 const params = new URLSearchParams({ _t: Date.now() });
                 fetchPath = `${path}?${params.toString()}`;
             }
 
-            const response = await fetch(fetchPath, {
+            const fetchPromise = fetch(fetchPath, {
                 headers: { 'Accept': 'application/json' },
                 ...options
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch ${path}: ${response.status}`);
+                }
+                return response.json();
+            }).then(data => {
+                this._cache.set(cacheKey, data);
+                this._inflight.delete(cacheKey);
+                return data;
+            }).catch(err => {
+                this._inflight.delete(cacheKey);
+                throw err;
             });
 
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${path}: ${response.status}`);
-            }
-
-            const data = await response.json();
-            this._cache.set(cacheKey, data);
-            return data;
+            this._inflight.set(cacheKey, fetchPromise);
+            return fetchPromise;
         }
 
         async fetchAnyJSON(paths) {
@@ -165,7 +179,6 @@ const Services = (function () {
             script.src = url;
             script.crossOrigin = 'anonymous';
             script.onload = () => {
-                console.log('Module loaded:', url);
                 moduleCache.set(url, promise);
                 resolve();
             };

@@ -45,7 +45,7 @@
         "url": "https://howdystranger.net/images/logo-120x120.webp"
       }
     },
-    "dateModified": "2026-07-13"
+    "dateModified": "2026-10-12"
   }
   </script>
 
@@ -101,7 +101,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="prefetch" href="json/financials-data.json" as="fetch" crossorigin>
+
 </head>
 <body>
   
@@ -212,6 +212,7 @@
 
   <!-- Critical Financials Module Scripts (loaded in dependency order) -->
   <script src="js/services.js?v=20260816" defer></script>
+  <script src="js/html-utils.js?v=20260816" defer></script>
   <script src="js/utils.js?v=20260816" defer></script>
   <script src="js/indicators.js?v=20260816" defer></script>
   <script src="js/charts.js?v=20260816" defer></script>
@@ -252,7 +253,7 @@
           vercelScript.defer = true;
           document.head.appendChild(vercelScript);
         }
-      };w
+      };
 
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadNonCriticalScripts, { timeout: 2000 });

@@ -5,6 +5,9 @@ on:
     - cron: '0 6 * * *' # Run daily at 06:00 UTC
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: update-nfl-odds
   cancel-in-progress: true
@@ -30,7 +33,7 @@ jobs:
 
       - name: Determine current NFL week (ISO week number)
         id: week
-        run: echo "::set-output name=week::$(date +%V)"
+        run: echo "week=$(date +%V)" >> "$GITHUB_OUTPUT"
 
       - name: Fetch NFL odds for current week
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}

@@ -43,7 +43,10 @@ function createMatchCard(match) {
   card.className = 'indicator';
   card.id = `match-${match.id}`;
   const groupDisplay = match.group ? match.group.replace('GROUP_', 'Group ') : '';
-  const searchLabel = [match.teamA.name, match.teamB.name, groupDisplay].filter(Boolean).join(' ');
+  const teamAName = HtmlUtils.escapeHtml(match.teamA.name || 'TBD');
+  const teamBName = HtmlUtils.escapeHtml(match.teamB.name || 'TBD');
+  const groupDisplayEscaped = HtmlUtils.escapeHtml(groupDisplay);
+  const searchLabel = HtmlUtils.escapeHtml([match.teamA.name, match.teamB.name, groupDisplay].filter(Boolean).join(' '));
   card.setAttribute('data-indicator-name', searchLabel);
 
   let scoreDisplay = `${(match.teamA.score ?? '')} - ${(match.teamB.score ?? '')}`;
@@ -51,50 +54,57 @@ function createMatchCard(match) {
   const extraInfo = [];
   if (match.date) extraInfo.push(`Date: ${match.date}`);
   if (match.matchDay) extraInfo.push(`Matchday: ${match.matchDay}`);
-  if (match.venue) extraInfo.push(`Venue: ${match.venue}`);
-  if (match.referees && match.referees.length > 0) extraInfo.push(`Referee: ${match.referees.join(', ')}`);
+  if (match.venue) extraInfo.push(`Venue: ${HtmlUtils.escapeHtml(match.venue)}`);
+  if (match.referees && match.referees.length > 0) extraInfo.push(`Referee: ${match.referees.map(r => HtmlUtils.escapeHtml(r)).join(', ')}`);
   if (match.winner) {
     const winnerName = match.winner === 'HOME_TEAM' ? match.teamA.name : match.winner === 'AWAY_TEAM' ? match.teamB.name : 'Draw';
-    extraInfo.push(`Winner: ${winnerName}`);
+    extraInfo.push(`Winner: ${HtmlUtils.escapeHtml(winnerName)}`);
   }
   if (match.teamA.halfTimeScore !== null || match.teamB.halfTimeScore !== null) {
     extraInfo.push(`HT: ${match.teamA.halfTimeScore ?? '-'} - ${match.teamB.halfTimeScore ?? '-'}`);
   }
   if (match.source && match.url) {
-    extraInfo.push(`Source: <a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.source}</a>`);
+    const safeSource = HtmlUtils.escapeHtml(match.source);
+    const isValidUrl = typeof match.url === 'string' && (match.url.startsWith('https://') || match.url.startsWith('http://'));
+    if (isValidUrl) {
+      extraInfo.push(`Source: <a href="${HtmlUtils.escapeHtml(match.url)}" target="_blank" rel="noopener noreferrer">${safeSource}</a>`);
+    } else {
+      extraInfo.push(`Source: ${safeSource}`);
+    }
   } else if (match.source) {
-    extraInfo.push(`Source: ${match.source}`);
+    extraInfo.push(`Source: ${HtmlUtils.escapeHtml(match.source)}`);
   }
 
   const infoBtn = `<button class="info-btn" title="Match details" aria-label="Show match details"><i data-lucide="info" class="info-icon"></i></button>`;
   const detailsHtml = extraInfo.length > 0 ? `<div class="explanation-text" style="display:none;margin-top:6px;padding:6px;background:var(--bg-secondary);border-radius:4px;font-size:0.75rem;color:var(--text-secondary);">${extraInfo.map(info => `<div style="padding:1px 0;">${info}</div>`).join('')}</div>` : '';
 
-const hasCrestA = match.teamA.crest;
-  const hasCrestB = match.teamB.crest;
+  // Validate crest URLs: only allow https:// to prevent XSS via src
+  const hasCrestA = match.teamA.crest && typeof match.teamA.crest === 'string' && match.teamA.crest.startsWith('https://');
+  const hasCrestB = match.teamB.crest && typeof match.teamB.crest === 'string' && match.teamB.crest.startsWith('https://');
   
   card.innerHTML = `
        <div class="indicator-header">
          <div class="indicator-name">
-           ${groupDisplay}
+           ${groupDisplayEscaped}
          </div>
          ${infoBtn}
        </div>
        <div class="indicator-content">
          <div class="match-score-display">
            <div class="match-team">
-             ${hasCrestA ? `<img src="${match.teamA.crest}" alt="${match.teamA.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-flex'">` : ''}
-             <span class="team-flag" style="${hasCrestA ? 'display:none;' : ''}" aria-label="${match.teamA.name} flag placeholder">
+             ${hasCrestA ? `<img src="${HtmlUtils.escapeHtml(match.teamA.crest)}" alt="${teamAName}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-flex'">` : ''}
+             <span class="team-flag" style="${hasCrestA ? 'display:none;' : ''}" aria-label="${teamAName} flag placeholder">
                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12l-1.2 3.5L16 12.5H4z"></path><path d="M4 5.5v13"></path><path d="M4 18.5h12"></path></svg>
              </span>
-             <span class="team-name">${match.teamA.name || 'TBD'}</span>
+             <span class="team-name">${teamAName}</span>
            </div>
            <div class="match-score">${scoreDisplay}</div>
            <div class="match-team">
-             ${hasCrestB ? `<img src="${match.teamB.crest}" alt="${match.teamB.name}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-flex'">` : ''}
-             <span class="team-flag" style="${hasCrestB ? 'display:none;' : ''}" aria-label="${match.teamB.name} flag placeholder">
+             ${hasCrestB ? `<img src="${HtmlUtils.escapeHtml(match.teamB.crest)}" alt="${teamBName}" class="team-crest" width="20" height="20" onerror="this.style.display='none'; this.parentNode.querySelector('.team-flag').style.display='inline-flex'">` : ''}
+             <span class="team-flag" style="${hasCrestB ? 'display:none;' : ''}" aria-label="${teamBName} flag placeholder">
                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12l-1.2 3.5L16 12.5H4z"></path><path d="M4 5.5v13"></path><path d="M4 18.5h12"></path></svg>
              </span>
-             <span class="team-name">${match.teamB.name || 'TBD'}</span>
+             <span class="team-name">${teamBName}</span>
            </div>
          </div>
          ${detailsHtml}

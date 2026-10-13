@@ -1278,3 +1278,8 @@
     text-align: right;
     flex-shrink: 0;
 }
+
+/* Reserve space for async-injected footer to prevent layout shift (CLS) */
+#footer-container {
+    min-height: 96px;
+}

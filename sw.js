@@ -116,7 +116,3 @@ if (self.location.hostname === 'localhost' || self.location.hostname === '127.0.
     );
   });
 }
-
-function getOptimizedImageUrl(originalUrl) {
-  return originalUrl;
-}

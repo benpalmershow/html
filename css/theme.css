@@ -163,6 +163,8 @@
         
         --bg-primary: #0f1419;
         --bg-secondary: #161b22;
+        --bg-primary-rgb: 15, 20, 25;
+        --bg-secondary-rgb: 22, 27, 34;
         --bg-tertiary: #21262d;
         
         --accent-primary: #ffffff;
@@ -187,6 +189,8 @@ html.dark-mode {
     
     --bg-primary: #0f1419;
     --bg-secondary: #161b22;
+    --bg-primary-rgb: 15, 20, 25;
+    --bg-secondary-rgb: 22, 27, 34;
     --bg-tertiary: #21262d;
     
     --accent-primary: #ffffff;

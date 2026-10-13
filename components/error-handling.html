@@ -7,6 +7,10 @@
     }
   });
 
+  window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled promise rejection:', event.reason);
+  });
+
   function showSimpleError(message) {
     const errorEl = document.createElement('div');
     errorEl.style.cssText = `

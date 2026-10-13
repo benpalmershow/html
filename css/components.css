@@ -380,12 +380,14 @@ table {
     }
 }
 
-html.dark-mode #social-footer .social-links img {
+html.dark-mode #social-footer .social-links img,
+html.dark-mode #social-footer .social-links svg {
     filter: brightness(0) invert(1);
 }
 
 @media (prefers-color-scheme: dark) {
-    html:not(.theme-init) #social-footer .social-links img {
+    html:not(.theme-init) #social-footer .social-links img,
+    html:not(.theme-init) #social-footer .social-links svg {
         filter: brightness(0) invert(1);
     }
 }

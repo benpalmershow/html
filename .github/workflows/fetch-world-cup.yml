@@ -17,20 +17,35 @@ jobs:
   fetch-scores:
     runs-on: ubuntu-latest
     steps:
+      - name: Check tournament date range
+        id: date-check
+        run: |
+          MONTH=$(date +%-m)
+          if [ "$MONTH" -lt 6 ] || [ "$MONTH" -gt 7 ]; then
+            echo "Outside tournament window (June-July). Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout repository
+        if: steps.date-check.outputs.skip == 'false'
         uses: actions/checkout@v4
 
       - name: Set up Python
+        if: steps.date-check.outputs.skip == 'false'
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
 
       - name: Install dependencies
+        if: steps.date-check.outputs.skip == 'false'
         run: |
           pip install -r requirements.txt
 
       - name: Fetch World Cup scores
+        if: steps.date-check.outputs.skip == 'false'
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
         run: |
@@ -41,10 +56,12 @@ jobs:
           python3 scripts/fetch_world_cup.py
 
       - name: Validate World Cup data
+        if: steps.date-check.outputs.skip == 'false'
         run: |
           python3 -m json.tool json/world-cup.json > /dev/null
 
       - name: Commit and push changes
+        if: steps.date-check.outputs.skip == 'false'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"

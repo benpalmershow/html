@@ -31,7 +31,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - `Services.Registry` (pluggable render/chart strategies)
   - `Services.events` (event bus)
 - `js/html-utils.js` centralizes sanitization, markdown frontmatter parsing, numeric parsing, and component/script injection helpers.
-- `js/pages-config.js` defines canonical site navigation; `js/nav.js` renders nav from it and adds “new content” badges based on `json/*.json` freshness.
+- Navigation is hardcoded inline in each HTML page's `<nav>` element; there is no `pages-config.js` or `nav.js`.
 - `js/search.js` auto-selects page-specific search behavior from pathname (financials/media/journal/latest lists).
 
 ### Data model and page ownership

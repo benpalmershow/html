@@ -149,12 +149,17 @@ def update_indicator(indicator, parsed_data):
         formatted = format_value(source_value, existing_vals)
         if existing is None:
             year_bucket[month] = formatted
+            indicator["newMonth"] = True
             updates.append(f"{indicator['name']} ({year_key} {month}): {formatted} (new)")
         elif existing != formatted:
             year_bucket[month] = formatted
+            indicator["newMonth"] = False
             updates.append(
                 f"{indicator['name']} ({year_key} {month}): {existing} -> {formatted}"
             )
+        else:
+            # Revision-less re-fetch: no new month, no badge.
+            indicator["newMonth"] = False
 
     if year_bucket:
         indicator[year_key] = year_bucket
@@ -173,14 +178,19 @@ def update_indicator(indicator, parsed_data):
             formatted = format_value(source_value, flat_existing)
             if existing is None:
                 indicator[month] = formatted
+                indicator["newMonth"] = True
                 updates.append(
                     f"{indicator['name']} ({prev_year} {month}): {formatted} (new)"
                 )
             elif existing != formatted:
                 indicator[month] = formatted
+                indicator["newMonth"] = False
                 updates.append(
                     f"{indicator['name']} ({prev_year} {month}): {existing} -> {formatted}"
                 )
+            else:
+                # Revision-less re-fetch: no new month, no badge.
+                indicator["newMonth"] = False
 
     indicator["lastUpdated"] = now_iso
     return updates

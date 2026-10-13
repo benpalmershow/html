@@ -110,7 +110,6 @@
     const header = document.querySelector('.page-header');
     let headerH = header ? header.offsetHeight : 72;
     const glow = track.querySelector('.sun-glow');
-    const haze = track.querySelector('.sun-haze');
     const arcPath = track.querySelector('.sun-arc-path');
     const starfield = track.querySelector('.sun-starfield');
 
@@ -181,7 +180,6 @@
       const sunScale = lerp(1, 1.35, horizonFactor);
       const glowScale = lerp(0.7, 1.8, horizonFactor);
       const glowOpacity = lerp(0.2, 0.75, horizonFactor) * tf;
-      const hazeOpacity = clamp(1 - altitude / 12, 0, 0.9);
       const showStars = tf < 0.6;
 
       body.style.left = currentX + 'px';
@@ -196,10 +194,6 @@
       if (glow) {
         glow.style.transform = 'translate(-50%, -50%) scale(' + glowScale + ')';
         glow.style.opacity = String(glowOpacity);
-      }
-
-      if (haze) {
-        haze.style.opacity = String(hazeOpacity);
       }
 
       if (arcPath) {

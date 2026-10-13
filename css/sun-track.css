@@ -115,20 +115,6 @@ html.dark-mode .sun-arc-path {
   50% { opacity: 0.85; transform: scale(1.1); }
 }
 
-/* Atmospheric haze near the horizon */
-.sun-haze {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 35%;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(210, 170, 120, 0.18), transparent);
-  pointer-events: none;
-  opacity: 0;
-  filter: blur(6px);
-  will-change: opacity;
-}
-
 /* Starfield for night sky */
 .sun-starfield {
   position: absolute;

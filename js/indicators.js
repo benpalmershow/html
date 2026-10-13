@@ -583,13 +583,10 @@ function buildLabelTooltip(indicator, dataItem, MONTHS) {
 // --- Change Metric Button builder ---
 
 function buildChangeMetricButton(label, changeInfo, title) {
-    const iconName = changeInfo.direction > 0 ? 'arrow-up-right' : changeInfo.direction < 0 ? 'arrow-down-right' : 'minus';
-    const topSection = label ? `<span class="change-metric-title">${label}</span>` : '';
-    const valueWithoutSign = changeInfo.formatted.replace(/^[+\-]/, '');
-    const valueWithIcon = `<i data-lucide="${iconName}" style="display: inline; width: 0.85em; height: 0.85em; vertical-align: -0.05em; margin-right: 2px;"></i>${valueWithoutSign}`;
     const safeTitle = String(title || label || '').replace(/"/g, '&quot;');
     const accessibleName = `${label ? label + ' ' : ''}${changeInfo.formatted}`.replace(/"/g, '&quot;');
-    return `<div class="change-metric-block"><button type="button" class="change-metric-btn ${changeInfo.cssClass}" title="${safeTitle}" aria-label="${accessibleName}">${topSection}<span class="change-metric-value">${valueWithIcon}</span></button></div>`;
+    const metricLabel = label ? `<span class="change-metric-title" aria-hidden="true">${label}</span>` : '';
+    return `<div class="change-metric-block"><button type="button" class="change-metric-btn ${changeInfo.cssClass}" title="${safeTitle}" aria-label="${accessibleName}">${metricLabel}<span class="change-metric-value">${changeInfo.formatted}</span></button></div>`;
 }
 
 // --- Card Creation ---
@@ -648,6 +645,11 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     let isNew = false;
     if (indicator.category === 'Earnings' && typeof indicator.isNew === 'boolean') {
         isNew = indicator.isNew;
+    } else if (typeof indicator.newMonth === 'boolean') {
+        // Set by the monthly data fetchers: true only when a brand-new month
+        // was added, false for revisions to existing months or revision-less
+        // re-fetches. This is what the "New" badge should actually mean.
+        isNew = indicator.newMonth;
     } else {
         isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
     }

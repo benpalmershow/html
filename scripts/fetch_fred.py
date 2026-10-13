@@ -221,6 +221,7 @@ def update_umich_sentiment(data, now_iso):
         return []
 
     updates = []
+    had_new_month = False
     for month_name, year, value, month_raw in rows:
         year_str = str(year)
         existing_value = indicator.get(year_str, {}).get(month_name)
@@ -229,6 +230,7 @@ def update_umich_sentiment(data, now_iso):
             if year_str not in indicator:
                 indicator[year_str] = {}
             indicator[year_str][month_name] = formatted
+            had_new_month = True
             updates.append(f"Consumer Sentiment ({year_str} {month_name}): {formatted} (new)")
         elif existing_value != formatted:
             mom_pct, yoy_pct = compute_mom_yoy(existing_value, formatted)
@@ -240,7 +242,11 @@ def update_umich_sentiment(data, now_iso):
             if warning:
                 msg = f"WARNING: {warning}; {msg}"
             updates.append(msg)
+        else:
+            # Revision-less re-fetch: no new month, no badge.
+            pass
 
+    indicator["newMonth"] = had_new_month
     indicator["lastUpdated"] = now_iso
     return updates
 
@@ -334,6 +340,7 @@ def update_financials():
 
                 if existing_value is None:
                     idx[year_str][month_key] = formatted
+                    idx["newMonth"] = True
                     updates.append(
                         f"{indicator_name} ({year_str} {month_key}): {formatted} (new)"
                     )
@@ -341,6 +348,7 @@ def update_financials():
                     mom_pct, yoy_pct = compute_mom_yoy(existing_value, formatted)
                     warning = validate_large_change(indicator_name, mom_pct, yoy_pct)
                     idx[year_str][month_key] = formatted
+                    idx["newMonth"] = False
                     msg = (
                         f"{indicator_name} ({year_str} {month_key}): "
                         f"{existing_value} -> {formatted}"
@@ -348,6 +356,9 @@ def update_financials():
                     if warning:
                         msg = f"WARNING: {warning}; {msg}"
                     updates.append(msg)
+                else:
+                    # Revision-less re-fetch: no new month, no badge.
+                    idx["newMonth"] = False
 
                 idx["lastUpdated"] = now_iso
                 found = True

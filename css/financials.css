@@ -158,7 +158,7 @@
 
 .change-metric-title-icon i { width: 8px; height: 8px; stroke-width: 2.1px; }
 
-.change-metric-btn { flex: 0 0 auto; width: fit-content; min-width: 0; max-width: none; border: 1px solid transparent; border-radius: 6px; min-height: 29px; margin: 2px 0; padding: 9px 5px 3px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.005em; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
+.change-metric-btn { flex: 0 0 auto; width: fit-content; min-width: 0; max-width: none; border: 1px solid transparent; border-radius: 6px; min-height: 29px; margin: 2px 0; padding: 11px 5px 3px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; white-space: nowrap; overflow: hidden; box-sizing: border-box; position: relative; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.005em; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
 
 .change-metric-btn:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 1px; }
 
@@ -518,7 +518,7 @@
   }
   .change-metric-btn {
     font-size: 0.7rem;
-    padding: 4px 5px;
+    padding: 11px 5px 3px;
   }
 }
 

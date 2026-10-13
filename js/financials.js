@@ -197,13 +197,24 @@ function renderCategoryView(financialData, categories, filterCategory) {
         let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
         categoryIndicators.sort((a, b) => {
-            // Prediction Markets: NFL games (with game_time_iso) sort by game time ascending (earliest first)
+            // Prediction Markets: NFL games (with game_time_iso) sort completed first, then upcoming
             // Non-NFL prediction markets sort by lastUpdated descending (most recent first)
             if (category === 'Prediction Markets') {
                 const hasGameTimeA = !!a.game_time_iso;
                 const hasGameTimeB = !!b.game_time_iso;
 
                 if (hasGameTimeA && hasGameTimeB) {
+                    const isCompletedA = !!a.winner;
+                    const isCompletedB = !!b.winner;
+
+                    if (isCompletedA && isCompletedB) {
+                        const dateA = new Date(a.game_time_iso).getTime();
+                        const dateB = new Date(b.game_time_iso).getTime();
+                        return dateB - dateA;
+                    }
+                    if (isCompletedA) return -1;
+                    if (isCompletedB) return 1;
+
                     const dateA = new Date(a.game_time_iso).getTime();
                     const dateB = new Date(b.game_time_iso).getTime();
                     return dateA - dateB;

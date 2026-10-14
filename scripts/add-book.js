@@ -51,12 +51,12 @@ function fetchHtml(url) {
 function extractIsbn(input) {
   const cleaned = input.replace(/[-\s]/g, '');
   const match = cleaned.match(/(\d{10}|\d{13})/);
-  if (!match) throw new Error('Invalid ISBN. Must be 10 or 13 digits.');
+  if (!match) return null;
   return match[1];
 }
 
 function extractOlId(input) {
-  const match = input.match(/OL\d+[A-Z]?\d+/);
+  const match = input.match(/OL\d+[A-Z]?/);
   if (!match) return null;
   return match[0];
 }
@@ -112,9 +112,11 @@ async function addBook(input) {
     let coverUrl = '';
     
     if (olId) {
-      console.log(`Fetching Open Library data for ${olId}...`);
-      bookData = await fetchJson(`https://openlibrary.org${olId}.json`);
-    } else {
+      // If the olId doesn't start with '/', assume it's a work ID and prepend '/works/'
+      const olIdPath = olId.startsWith('/') ? olId : `/works/${olId}`;
+      console.log(`Fetching Open Library data for ${olIdPath}...`);
+      bookData = await fetchJson(`https://openlibrary.org${olIdPath}.json`);
+    } else if (isbn) {
       console.log(`Fetching Open Library data for ISBN ${isbn}...`);
       try {
         bookData = await fetchJson(`https://openlibrary.org/isbn/${isbn}.json`);
@@ -123,10 +125,17 @@ async function addBook(input) {
         const searchResults = await fetchJson(`https://openlibrary.org/search.json?q=${encodeURIComponent(input)}`);
         if (searchResults.docs && searchResults.docs.length > 0) {
           const first = searchResults.docs[0];
-          olId = first.key.replace('/works/', '').replace('/books/', '');
-          if (!olId.startsWith('OL')) olId = first.key;
+          olId = first.key; // Keep the full key
           bookData = await fetchJson(`https://openlibrary.org${olId}.json`);
         }
+      }
+    } else {
+      console.log('No OL ID or ISBN provided, searching by title...');
+      const searchResults = await fetchJson(`https://openlibrary.org/search.json?q=${encodeURIComponent(input)}`);
+      if (searchResults.docs && searchResults.docs.length > 0) {
+        const first = searchResults.docs[0];
+        olId = first.key; // Keep the full key
+        bookData = await fetchJson(`https://openlibrary.org${olId}.json`);
       }
     }
     
@@ -137,7 +146,7 @@ async function addBook(input) {
     const title = bookData.title || 'Unknown Title';
     console.log(`Title: ${title}`);
     
-    const authorKey = bookData.authors && bookData.authors[0] ? bookData.authors[0].key : null;
+    const authorKey = bookData.authors && bookData.authors[0] && bookData.authors[0].author ? bookData.authors[0].author.key : null;
     let authorName = 'Unknown Author';
     if (authorKey) {
       try {

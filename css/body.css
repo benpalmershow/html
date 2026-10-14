@@ -3,19 +3,21 @@
    ======================================== */
 
 /* ========================================
-   BASE STYLES & LAYOUT
-   ======================================== */
+    BASE STYLES & LAYOUT
+    ======================================== */
 
-* {
-    box-sizing: border-box;
-}
-
+@layer base {
 html {
+    box-sizing: border-box;
     height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     background: var(--bg-primary);
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 body {
@@ -39,13 +41,13 @@ body {
      max-width: var(--max-content-width);
      width: 100%;
      min-height: 500px;
- }
+}
 
 main {
      flex: 1;
      min-height: 0;
 }
-
+}
 /* ========================================
    TYPOGRAPHY
    ======================================== */
@@ -260,6 +262,7 @@ h1.page-title {
    These utilities can be used on any page without creating new CSS files.
    ============================================================== */
 
+@layer utilities {
 /* Breakpoint variables – used in media queries throughout the site */
 :root {
   --bp-sm: 480px;   /* small phones */
@@ -297,4 +300,5 @@ h1.page-title {
 @media (max-width: var(--bp-sm)) {
   .hide-sm { display: none !important; }
   .show-sm { display: block !important; }
+}
 }

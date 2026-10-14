@@ -2,6 +2,9 @@
     THEME SYSTEM: Global Variables & Tokens
     ======================================== */
 
+/* Cascade layer order for predictable overrides */
+@layer reset, base, theme, components, utilities;
+
 :root {
     /* TYPOGRAPHY */
     --font-display: Georgia, 'Times New Roman', serif;

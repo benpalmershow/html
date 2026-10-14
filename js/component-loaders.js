@@ -17,10 +17,7 @@ function loadComponent(containerId, componentPath, handler) {
     .catch(error => console.error(`${componentPath} load error:`, error));
 }
 
-// Load footer component
-document.addEventListener('DOMContentLoaded', function () {
-  loadComponent('footer-container', 'components/footer.html');
-});
+// Footer is now inlined directly in HTML for no-JS accessibility
 
 // Load error handling component with script execution
 loadComponent(null, 'components/error-handling.html', function (html) {

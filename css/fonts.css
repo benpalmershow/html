@@ -1,0 +1,34 @@
+/* Self-hosted web fonts - replaces Google Fonts external dependency */
+/* Latin-only subset WOFF2 files downloaded from Google Fonts */
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/cormorant-garamond-latin.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Crimson Pro';
+    font-style: normal;
+    font-weight: 600 700;
+    font-display: swap;
+    src: url('../fonts/crimson-pro.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/space-mono-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/space-mono-700.woff2') format('woff2');
+}

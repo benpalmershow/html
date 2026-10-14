@@ -152,8 +152,109 @@ def get_monthly_average(observations, year, month):
 def detect_decimals(existing_value):
     """Detect the number of decimal places from an existing value string."""
     if "." in existing_value:
-        return len(existing_value.split(".")[1].rstrip("B").replace(",", ""))
+        fractional = existing_value.split(".")[1]
+        # Remove B/M suffixes and commas
+        cleaned = fractional.rstrip("BM").replace(",", "")
+        return len(cleaned)
     return 0
+
+
+def format_value(value, indicator_name, existing_value):
+    """Format a numeric observation according to indicator rules.
+
+    - Applies scaling:
+      * PAYROLLS_INDICATORS and THOUSANDS_INDICATORS are multiplied by 1000.
+      * MILLIONS_INDICATORS are divided by 1000 to convert to billions.
+    - Appends "B" for indicators treated as billions (BILLIONS_INDICATORS and MILLIONS_INDICATORS).
+    - Uses decimal precision from existing_value when available; otherwise uses sensible defaults.
+    - Preserves format style (M/B suffixes) from existing value when present.
+    """
+    # Work on a local copy
+    val = float(value)
+
+    # Apply indicator-specific scaling
+    if indicator_name in PAYROLLS_INDICATORS or indicator_name in THOUSANDS_INDICATORS:
+        val = val * 1000.0
+
+    # If the series is given in millions and we want billions, convert
+    if indicator_name in MILLIONS_INDICATORS:
+        val = val / 1000.0
+
+    is_billion = indicator_name in BILLIONS_INDICATORS or indicator_name in MILLIONS_INDICATORS
+
+    # Determine decimal places and format style from existing value
+    decimals = None
+    format_suffix = ''  # To track M/B suffixes
+    if existing_value:
+        try:
+            # Check for M/B suffixes
+            if existing_value.endswith('M'):
+                format_suffix = 'M'
+                numeric_part = existing_value[:-1]
+            elif existing_value.endswith('B'):
+                format_suffix = 'B'
+                numeric_part = existing_value[:-1]
+            else:
+                numeric_part = existing_value
+            
+            # Detect decimal places in the numeric part
+            if '.' in numeric_part:
+                fractional = numeric_part.split('.')[1]
+                # Remove commas for decimal count
+                cleaned = fractional.replace(',', '')
+                decimals = len(cleaned)
+            else:
+                decimals = 0
+        except Exception:
+            decimals = None
+            format_suffix = ''
+
+    if decimals is None:
+        # sensible defaults when no existing value:
+        # - small numbers: 2 decimals
+        # - below 10: 1 decimal
+        # - otherwise: no decimals
+        abs_val = abs(val)
+        if abs_val < 1:
+            decimals = 2
+        elif abs_val < 10:
+            decimals = 1
+        else:
+            decimals = 0
+
+    # Round to desired decimals before formatting to avoid floating noise
+    rounded = round(val, decimals)
+
+    # Apply format based on detected suffix or indicator rules
+    if format_suffix == 'M':
+        # Format as X.XXXM (millions format)
+        # Convert value to millions for display
+        millions_val = rounded / 1000000.0
+        if decimals > 0:
+            fmt = f"{{:.{decimals}f}}M"
+            return fmt.format(millions_val)
+        else:
+            return f"{int(round(millions_val))}M"
+    elif format_suffix == 'B':
+        # Format as X.XXXB (billions format)
+        # Convert value to billions for display
+        billions_val = rounded / 1000000000.0
+        if decimals > 0:
+            fmt = f"{{:.{decimals}f}}B"
+            return fmt.format(billions_val)
+        else:
+            return f"{int(round(billions_val))}B"
+    elif is_billion:
+        # comma + decimals + "B" suffix
+        fmt = f"{{:,.{decimals}f}}B"
+        return fmt.format(rounded)
+    else:
+        # regular number formatting (commas; decimals only if >0)
+        if decimals > 0:
+            fmt = f"{{:,.{decimals}f}}"
+            return fmt.format(rounded)
+        else:
+            return f"{int(round(rounded)):,}"
 
 
 def fetch_umich_sentiment():

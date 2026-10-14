@@ -18,7 +18,6 @@ const SELECTORS = {
     FILTER_DROPDOWN: '.filters',
     FILTER_GROUP: '.filters',
     CHART_BTN: '.chart-btn',
-    INFO_BTN: '.info-btn',
     CATEGORY_FILTER_BTN: '.category-filter-btn',
     EXPAND_TOGGLE: '.expand-toggle',
     INDICATOR: '.indicator',
@@ -74,7 +73,6 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         indicatorContainer.innerHTML = '';
         ensureLoad13F();
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
         setupChartIconHandlers(SELECTORS, DATA_ATTRS);
         setupCategoryFilterHandlers(SELECTORS);
         setupExpandHandlers(SELECTORS);
@@ -115,7 +113,6 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
     setupCategoryFilterHandlers(SELECTORS);
     setupExpandHandlers(SELECTORS);
@@ -140,7 +137,6 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
         indicatorContainer.insertAdjacentHTML('beforeend', html);
 
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
         setupChartIconHandlers(SELECTORS, DATA_ATTRS);
         setupCategoryFilterHandlers(SELECTORS);
         setupExpandHandlers(SELECTORS);
@@ -172,7 +168,11 @@ function renderLatestUpdatesView(financialData) {
     filteredIndicators.sort((a, b) => {
         const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
         const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
-        return dateB - dateA;
+        if (dateA !== dateB) return dateB - dateA;
+        const aIsNew = a.category === 'Earnings' ? (typeof a.isNew === 'boolean' && a.isNew) : (typeof a.newMonth === 'boolean' && a.newMonth);
+        const bIsNew = b.category === 'Earnings' ? (typeof b.isNew === 'boolean' && b.isNew) : (typeof b.newMonth === 'boolean' && b.newMonth);
+        if (aIsNew !== bIsNew) return aIsNew ? -1 : 1;
+        return 0;
     });
 
     return `
@@ -563,7 +563,6 @@ function initializeDashboard() {
     renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
     if (indicatorParam) scrollToIndicatorByName(indicatorParam);
 
-    setupInfoIconHandlers(SELECTORS, DATA_ATTRS);
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
     setupCategoryFilterHandlers(SELECTORS);
     setupExpandHandlers(SELECTORS);

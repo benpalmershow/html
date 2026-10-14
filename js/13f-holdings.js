@@ -106,8 +106,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         <div class="indicator-header">
             <div class="firm-card-title">${HtmlUtils.escapeHtml(firmName)}</div>
             <div class="indicator-actions">
-                <button class="info-btn" title="Show firm details" aria-label="Show firm details"><i data-lucide="info" class="info-icon" style="width: 16px; height: 16px;"></i></button>
-                <button class="expand-toggle" aria-label="Toggle holdings"><i data-lucide="chevron-down"></i></button>
+                <button class="expand-toggle" aria-label="Toggle firm details"><i data-lucide="chevron-down"></i></button>
             </div>
         </div>
         <div class="indicator-explanation">

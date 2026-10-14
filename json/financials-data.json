@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-14T14:10:37Z",
+  "lastUpdated": "2026-10-14T14:29:39Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -269,7 +269,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
@@ -289,7 +289,8 @@
         "december": "52.9",
         "november": "51.0",
         "october": "53.6"
-      }
+      },
+      "newMonth": false
     },
     {
       "2026": {
@@ -302,14 +303,14 @@
         "july": "4.67",
         "august": "4.75",
         "september": "4.96",
-        "october": "5.22"
+        "october": "5.24"
       },
       "id": "10yr-treasury-yield",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "march": "4.28",
@@ -323,7 +324,8 @@
       "november": "4.09",
       "december": "4.14",
       "change": "",
-      "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions)."
+      "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions).",
+      "newMonth": false
     },
     {
       "2026": {
@@ -523,7 +525,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -540,7 +542,8 @@
       "november": "60.06",
       "december": "57.97",
       "change": "",
-      "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending."
+      "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -560,12 +563,13 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "change": "",
-      "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs."
+      "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -781,7 +785,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 30,
       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
       "january": "323.659",
@@ -797,7 +801,8 @@
       "november": "327.869",
       "december": "327.035",
       "change": "",
-      "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending."
+      "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
+      "newMonth": false
     },
     {
       "id": "midterms-house-2026",
@@ -1290,7 +1295,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Personal Consumption Expenditures (PCE)",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/PCE",
       "march": "$20,683B",
@@ -1304,7 +1309,8 @@
       "november": "$21,356B",
       "december": "$21,445.9B",
       "change": "",
-      "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers."
+      "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -1317,14 +1323,14 @@
         "july": "120.7105",
         "august": "118.9028",
         "september": "120.9693",
-        "october": "121.38"
+        "october": "121.60"
       },
       "id": "dollar-value-index",
       "category": "Trade & Tariffs",
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "march": "126.4",
@@ -1338,7 +1344,8 @@
       "november": "121.80",
       "december": "120.57",
       "change": "",
-      "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars."
+      "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -1551,14 +1558,14 @@
         "may": "$766.2B",
         "june": "$768.1B",
         "july": "$763.6B",
-        "august": "737.8B"
+        "august": "$737.8B"
       },
       "id": "monthly-retail-sales",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Monthly Retail Sales",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/RSAFS",
       "source_url": "https://www.census.gov/retail/sales.html",
@@ -1573,7 +1580,8 @@
       "october": "$731.4B",
       "november": "$735.1B",
       "december": "$735B",
-      "change": ""
+      "change": "",
+      "newMonth": false
     },
     {
       "2026": {
@@ -1714,14 +1722,15 @@
         "may": "105.1",
         "june": "101.8",
         "july": "102.8",
-        "august": "104.7"
+        "august": "104.7",
+        "september": "105"
       },
       "id": "affordability-index",
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Affordability Index",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "march": "104.2",
@@ -1735,7 +1744,8 @@
       "november": "108.7",
       "december": "111",
       "change": "",
-      "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes."
+      "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes.",
+      "newMonth": false
     },
     {
       "2025": {
@@ -1769,11 +1779,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "30-yr Mortgage Rate",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "change": "",
-      "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy."
+      "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -1791,7 +1802,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "New Home Sales",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 23,
       "url": "https://fred.stlouisfed.org/series/HSN1F",
       "source_url": "https://www.census.gov/construction/nrs/current/index.html",
@@ -1806,7 +1817,8 @@
       "november": "757,000",
       "december": "723,000",
       "change": "",
-      "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health."
+      "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -1824,7 +1836,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Housing Starts",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 18,
       "url": "https://fred.stlouisfed.org/series/HOUST",
       "source_url": "https://www.census.gov/construction/nrc/current/index.html",
@@ -1839,7 +1851,8 @@
       "november": "1.319M",
       "december": "1.378M",
       "change": "",
-      "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts."
+      "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -1990,7 +2003,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobless Claims",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "march": "223000",
@@ -2004,7 +2017,8 @@
       "november": "222,400",
       "december": "219,250",
       "change": "",
-      "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions."
+      "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2023,7 +2037,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobs",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 5,
       "url": "https://fred.stlouisfed.org/series/PAYEMS",
       "february": "158,310,000",
@@ -2038,7 +2052,8 @@
       "november": "158,449,000",
       "december": "158,432,000",
       "change": "",
-      "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month)."
+      "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month).",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2056,7 +2071,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "PPI",
-      "lastUpdated": "2026-10-12T18:15:59Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 13,
       "url": "https://fred.stlouisfed.org/series/PPIACO",
       "source_url": "https://www.bls.gov/news.release/ppi.toc.htm",
@@ -2071,7 +2086,8 @@
       "november": "150.580",
       "december": "150.773",
       "change": "",
-      "explanation": "Table 3. Producer price indexes for Final Demand, not seasonally adjusted. The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand, not seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends."
+      "explanation": "Table 3. Producer price indexes for Final Demand, not seasonally adjusted. The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand, not seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2082,14 +2098,15 @@
         "may": "335.123",
         "june": "333.952",
         "july": "333.918",
-        "august": "334.131"
+        "august": "334.131",
+        "september": "336.298"
       },
       "id": "cpi",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "CPI",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 11,
       "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
       "source_url": "https://www.bls.gov/cpi/data.htm",
@@ -2106,7 +2123,8 @@
       "november": "324.122",
       "december": "324.054",
       "change": "",
-      "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments."
+      "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments.",
+      "newMonth": true
     },
     {
       "2026": {
@@ -2311,7 +2329,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Industrial Production Index",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/INDPRO",
       "source_url": "https://www.federalreserve.gov/releases/g17/current/",
@@ -2325,7 +2343,8 @@
       "november": "101.1",
       "december": "101.5",
       "change": "",
-      "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used."
+      "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used.",
+      "newMonth": false
     },
     {
       "2025": {
@@ -2362,11 +2381,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Unemployment Rate",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/UNRATE",
       "change": "",
-      "explanation": "The seasonally adjusted unemployment rate, published by the Bureau of Labor Statistics. It represents the percentage of the labor force that is unemployed and actively seeking employment, serving as a key measure of labor market health and slack in the economy."
+      "explanation": "The seasonally adjusted unemployment rate, published by the Bureau of Labor Statistics. It represents the percentage of the labor force that is unemployed and actively seeking employment, serving as a key measure of labor market health and slack in the economy.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2385,11 +2405,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Average Hourly Earnings",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/CES0500000003",
       "change": "",
-      "explanation": "The seasonally adjusted average hourly earnings of all employees on private non-farm payrolls, published by the Bureau of Labor Statistics. This is a key measure of wage growth and labor market tightening, closely watched for inflationary pressures."
+      "explanation": "The seasonally adjusted average hourly earnings of all employees on private non-farm payrolls, published by the Bureau of Labor Statistics. This is a key measure of wage growth and labor market tightening, closely watched for inflationary pressures.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2408,11 +2429,12 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Capacity Utilization",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
-      "explanation": "The capacity utilization rate for total industry (including manufacturing, mining, and utilities), published by the Federal Reserve. It measures the percentage of available resources being used to produce goods and services, serving as a key indicator of economic slack and inflationary pressure."
+      "explanation": "The capacity utilization rate for total industry (including manufacturing, mining, and utilities), published by the Federal Reserve. It measures the percentage of available resources being used to produce goods and services, serving as a key indicator of economic slack and inflationary pressure.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2431,11 +2453,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Building Permits",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 19,
       "url": "https://fred.stlouisfed.org/series/PERMIT",
       "change": "",
-      "explanation": "The number of building permits issued for new privately owned housing units, published by the U.S. Census Bureau. This is a leading indicator of future residential construction activity and housing market conditions, as permits are typically filed before construction begins."
+      "explanation": "The number of building permits issued for new privately owned housing units, published by the U.S. Census Bureau. This is a leading indicator of future residential construction activity and housing market conditions, as permits are typically filed before construction begins.",
+      "newMonth": false
     },
     {
       "2026": {
@@ -2455,11 +2478,12 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-10-11T13:42:47Z",
+      "lastUpdated": "2026-10-14T14:29:39Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",
-      "explanation": "The Henry Hub natural gas spot price, a daily benchmark for wholesale natural gas prices in the United States. It reflects the cost of natural gas at the Henry Hub in Louisiana, a major trading hub. Natural gas prices are influenced by weather patterns, supply/demand fundamentals, and storage levels."
+      "explanation": "The Henry Hub natural gas spot price, a daily benchmark for wholesale natural gas prices in the United States. It reflects the cost of natural gas at the Henry Hub in Louisiana, a major trading hub. Natural gas prices are influenced by weather patterns, supply/demand fundamentals, and storage levels.",
+      "newMonth": false
     },
     {
       "id": "chi-gb-2026-10-11",

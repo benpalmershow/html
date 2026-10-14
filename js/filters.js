@@ -157,35 +157,6 @@ function setupCategoryFilterHandlers(SELECTORS) {
     });
 }
 
-function setupInfoIconHandlers(SELECTORS, DATA_ATTRS) {
-    setupIconHandlers(SELECTORS.INFO_BTN, function () {
-        const indicator = this.closest(SELECTORS.INDICATOR);
-        if (!indicator) return;
-
-        const hasExplanation = indicator.querySelector('.indicator-explanation');
-        if (!hasExplanation) return;
-
-        const isOpen = this.classList.contains('active');
-
-        document.querySelectorAll('.info-btn.active').forEach(btn => {
-            if (btn !== this) btn.classList.remove('active');
-        });
-
-        document.querySelectorAll('.indicator .info-btn.active').forEach(btn => {
-            if (btn !== this) btn.classList.remove('active');
-        });
-
-        document.querySelectorAll('.indicator.info-open').forEach(card => {
-            if (card !== indicator) {
-                card.classList.remove('info-open');
-            }
-        });
-
-        indicator.classList.toggle('info-open', !isOpen);
-        this.classList.toggle('active', !isOpen);
-    });
-}
-
 function setupChartIconHandlers(SELECTORS, DATA_ATTRS) {
     setupIconHandlers(SELECTORS.CHART_BTN, function () {
         const indicator = this.closest(SELECTORS.INDICATOR);

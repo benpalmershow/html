@@ -428,6 +428,19 @@
             if (item.cover.includes('themoviedb.org') || item.cover.includes('tmdb.org')) {
                 optimizedCover = item.cover.replace(/\/original\//, '/w500/');
             }
+            // Serve 300px-tall WebP variants for self-hosted art covers (full-res
+            // files are 0.5-2 MB but cards render at ~148x212)
+            const artMatch = item.cover.match(/^images\/art\/(.+)\.webp$/);
+            if (artMatch) {
+                optimizedCover = `images/art/${artMatch[1]}-300.webp`;
+            }
+            // Serve WebP for the self-hosted podcast cover PNG (1.9 MB PNG)
+            if (item.cover === 'images/DocRiterReport.png') {
+                optimizedCover = 'images/DocRiterReport-300x300.webp';
+                if (item.coverSrcset && item.coverSrcset.includes('DocRiterReport.png')) {
+                    item.coverSrcset = item.coverSrcset.replace(/images\/DocRiterReport\.png/g, 'images/DocRiterReport-300x300.webp');
+                }
+            }
 
             coverImg.src = optimizedCover;
             if (item.coverSrcset) {

@@ -4539,7 +4539,9 @@
     "titleColor": "#ffffff",
     "tag": "",
     "thumbs": "",
-    "cover": "https://covers.openlibrary.org/b/id/15252406-L.jpg",
+    "cover": "images/little-blue-dot-500x500.webp",
+    "coverSrcset": "images/little-blue-dot-125x125.webp 125w, images/little-blue-dot-250x250.webp 250w, images/little-blue-dot-500x500.webp 500w",
+    "coverSizes": "(max-width: 768px) 148px, 148px",
     "isbn": "",
     "links": [
       {

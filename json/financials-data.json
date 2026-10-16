@@ -2075,23 +2075,24 @@
         "february": "153.204",
         "march": "154.393",
         "april": "156.061",
-        "may": "156.864",
-        "june": "156.667",
-        "july": "156.784",
-        "august": "157.411"
+        "may": "156.874",
+        "june": "156.683",
+        "july": "156.924",
+        "august": "157.662",
+        "september": "159.780"
       },
       "id": "ppi",
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "PPI",
-      "lastUpdated": "2026-10-15T12:23:00Z",
+      "lastUpdated": "2026-10-16T18:20:00Z",
       "releaseDay": 13,
       "url": "https://fred.stlouisfed.org/series/PPIFIS",
-      "source_url": "https://www.bls.gov/news.release/ppi.toc.htm",
+      "source_url": "https://fred.stlouisfed.org/series/PPIFIS",
       "change": "",
-      "explanation": "Table 3. Producer price indexes for Final Demand, not seasonally adjusted. The Producer Price Index (PPI) measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. For monthly updates, use the BLS PPI news release and pull this series from Table 3 (p.30), \"Producer price indexes for Final Demand, not seasonally adjusted.\" It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends.",
-      "newMonth": false
+      "explanation": "The Producer Price Index (PPI) for Final Demand, seasonally adjusted, sourced from the FRED series PPIFIS. The PPI measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends.",
+      "newMonth": true
     },
     {
       "2026": {

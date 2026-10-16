@@ -37,6 +37,10 @@ jobs:
             echo "BLS_API_KEY secret is not set"
             exit 1
           fi
+          # PPI is intentionally NOT fetched here: it is sourced from the FRED
+          # series PPIFIS (seasonally adjusted Final Demand Producer Price
+          # Index) at https://fred.stlouisfed.org/series/PPIFIS by the
+          # fetch-fred workflow, so the BLS workflow must not overwrite it.
           python3 scripts/fetch_bls.py
 
       - name: Validate JSON output

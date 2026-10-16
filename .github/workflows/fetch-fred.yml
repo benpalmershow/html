@@ -38,6 +38,8 @@ jobs:
             echo "FRED_API_KEY secret is not set"
             exit 1
           fi
+          # PPI is sourced from FRED series PPIFIS (seasonally adjusted Final
+          # Demand Producer Price Index): https://fred.stlouisfed.org/series/PPIFIS
           python3 scripts/fetch_fred.py
 
       - name: Validate JSON output

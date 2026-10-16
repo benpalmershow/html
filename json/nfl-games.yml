@@ -244,10 +244,13 @@ games:
   polymarket_slug: nfl-buf-la-2026-10-13
   away_color: '#00338D'
   home_color: '#003594'
-  BUF_win_odds: 53.5¢
-  LA_win_odds: 46.5¢
-  lastUpdated: '2026-10-13T01:38:50.352737Z'
+  BUF_win_odds: 100.0¢
+  LA_win_odds: 0.0¢
+  lastUpdated: '2026-10-14T04:21:49.165263Z'
   odds_history:
   - timestamp: '2026-10-13T01:38:50.352737Z'
     BUF_win_odds: 53.5¢
     LA_win_odds: 46.5¢
+  - timestamp: '2026-10-14T04:21:49.165263Z'
+    BUF_win_odds: 100.0¢
+    LA_win_odds: 0.0¢

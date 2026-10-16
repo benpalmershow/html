@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-15T11:06:31.031744Z",
+  "lastUpdated": "2026-10-16T14:31:22Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -10,7 +10,8 @@
     "HPQ",
     "OKTA",
     "ANF",
-    "SJM"
+    "SJM",
+    "CRWV"
   ],
   "earnings": [
     {
@@ -10429,6 +10430,131 @@
           "actualEPS": 2.1,
           "estimatedEPS": 2.1,
           "surprisePercent": -0.03,
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ticker": "CRWV",
+      "fetchedAt": "2026-10-16T14:31:22Z",
+      "source": "Yahoo Finance",
+      "company": "CoreWeave, Inc.",
+      "sector": "Technology",
+      "marketCap": 38440000000.0,
+      "enterpriseValue": 94000000000.0,
+      "trailingPE": null,
+      "forwardPE": null,
+      "pegRatio": null,
+      "priceToSalesTrailing12Months": 5.97,
+      "priceToBook": 9.54,
+      "grossMargins": 0.6742,
+      "operatingMargins": null,
+      "profitMargins": -0.254,
+      "returnOnAssets": null,
+      "returnOnEquity": -0.436,
+      "revenueGrowth": 1.5087,
+      "earningsGrowth": -0.2057,
+      "revenuePerShare": null,
+      "freeCashflow": null,
+      "operatingCashflow": null,
+      "grossProfits": null,
+      "totalCash": null,
+      "totalCashPerShare": null,
+      "totalDebt": null,
+      "totalRevenue": 7590000000.0,
+      "debtToEquity": 702.41,
+      "currentRatio": null,
+      "quickRatio": null,
+      "bookValue": null,
+      "sharesOutstanding": 551540000.0,
+      "floatShares": null,
+      "impliedSharesOutstanding": 551540000.0,
+      "dividendRate": null,
+      "dividendYield": 0.0,
+      "payoutRatio": 0.0,
+      "fiveYearAvgDividendYield": null,
+      "targetHighPrice": null,
+      "targetLowPrice": null,
+      "targetMeanPrice": 147.5,
+      "targetMedianPrice": null,
+      "recommendationMean": null,
+      "numberOfAnalystOpinions": 35.0,
+      "beta": 3.42,
+      "fiftyTwoWeekHigh": 150.4,
+      "fiftyTwoWeekLow": 59.51,
+      "fiftyDayAverage": null,
+      "twoHundredDayAverage": null,
+      "averageVolume": 45120000.0,
+      "averageDailyVolume10Day": 45120000.0,
+      "previousClose": 69.69,
+      "open": 65.08,
+      "regularMarketOpen": 65.08,
+      "dayHigh": 66.69,
+      "dayLow": 63.64,
+      "regularMarketDayHigh": 66.69,
+      "regularMarketDayLow": 63.64,
+      "regularMarketVolume": 24240000.0,
+      "averageVolume10days": 45120000.0,
+      "sharesShort": null,
+      "sharesShortPreviousMonthDate": null,
+      "sharesShortPriorMonth": null,
+      "dateShortInterest": null,
+      "fullTimeEmployees": 881.0,
+      "industry": "Internet Software",
+      "currency": "USD",
+      "recommendationKey": "neutral",
+      "latestPrice": 64.32,
+      "priceHistory": [
+        {
+          "date": "2026-10-09",
+          "close": 82.08
+        },
+        {
+          "date": "2026-10-12",
+          "close": 80.26
+        },
+        {
+          "date": "2026-10-13",
+          "close": 77.81
+        },
+        {
+          "date": "2026-10-14",
+          "close": 65.78
+        },
+        {
+          "date": "2026-10-15",
+          "close": 69.69
+        }
+      ],
+      "nextEarningsDate": "2026-11-11",
+      "estimatedEPS": -1.53,
+      "recentEarnings": [
+        {
+          "reportedDate": "2026-08-10",
+          "actualEPS": -1.14,
+          "estimatedEPS": -1.47,
+          "surprisePercent": 22.45,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-05-14",
+          "actualEPS": -1.4,
+          "estimatedEPS": -1.2,
+          "surprisePercent": -16.26,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-02-26",
+          "actualEPS": -0.89,
+          "estimatedEPS": -0.68,
+          "surprisePercent": -29.96,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2025-11-12",
+          "actualEPS": -0.22,
+          "estimatedEPS": -0.48,
+          "surprisePercent": 54.37,
           "source": "Yahoo Finance"
         }
       ]

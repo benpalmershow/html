@@ -592,8 +592,6 @@
         if (!target || target.dataset.loaded === 'true') return;
         target.dataset.loaded = 'true';
         const iframe = document.createElement('iframe');
-        iframe.width = '560';
-        iframe.height = '315';
         iframe.src = target.dataset.videoSrc;
         iframe.title = 'Embedded video';
         iframe.loading = 'lazy';

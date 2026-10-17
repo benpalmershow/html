@@ -49,4 +49,4 @@ The Times' article frames the windfall as a victory over Trump administration pr
 
 ---
 
-*Please fund HowdyStranger.net, an independent bulwark against a confiscatory mob coming for your assets and your brain by clicking the cup of coffee in the footer.*
+*Please fund HowdyStranger.net, an independent bulwark against a confiscatory mob coming for your assets and your brain by [clicking the cup of coffee](https://buymeacoffee.com/howdystranger).*

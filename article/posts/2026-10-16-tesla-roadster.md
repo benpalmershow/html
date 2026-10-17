@@ -6,7 +6,7 @@ title: "🚗 Tesla Roadster"
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/22rvpUecLts" title="Tesla Roadster Unveil" frameborder="0" allowfullscreen></iframe>
 
-Tesla Roadster with rocket thrusters to do barrel rolls and suction cups to drive upside down, 0-60 MPH < 1 second, +230 MPH. Available 2028.
+Tesla Roadster with small rockets that release gas to propel the vehicle to do barrel rolls and suction cups to drive upside down, 0-60 MPH < 1 second, +230 MPH. Available 2028.
 
 **Key specs:**
 

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-17T13:23:59Z",
+  "lastUpdated": "2026-10-17T17:02:58.310501Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -2498,540 +2498,844 @@
       "newMonth": false
     },
     {
-      "id": "chi-gb-2026-10-11",
+      "id": "pit-no-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "CHI @ GB",
-      "game_title": "Chicago Bears @ Green Bay Packers",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-chi-gb-2026-10-11",
-      "lastUpdated": "2026-10-12T20:48:21.65482Z",
-      "week": 5,
+      "name": "PIT @ NO",
+      "game_title": "Pittsburgh Steelers @ New Orleans Saints",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-pit-no-2026-10-25",
+      "lastUpdated": "2026-10-17T16:49:28.497388Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-04": {
-          "CHI_win_odds": "5",
-          "GB_win_odds": "95"
+        "2026-10-17": {
+          "PIT_win_odds": "56",
+          "NO_win_odds": "44"
         },
-        "2026-10-06": {
-          "CHI_win_odds": "5",
-          "GB_win_odds": "95"
+        "2026-10-18": {
+          "PIT_win_odds": "59",
+          "NO_win_odds": "41"
         },
-        "2026-10-08": {
-          "CHI_win_odds": "5",
-          "GB_win_odds": "95"
+        "2026-10-20": {
+          "PIT_win_odds": "54",
+          "NO_win_odds": "46"
         },
-        "2026-10-09": {
-          "CHI_win_odds": "5",
-          "GB_win_odds": "95"
+        "2026-10-22": {
+          "PIT_win_odds": "58",
+          "NO_win_odds": "42"
         },
-        "2026-10-10": {
-          "CHI_win_odds": "5",
-          "GB_win_odds": "95"
+        "2026-10-23": {
+          "PIT_win_odds": "55",
+          "NO_win_odds": "45"
         },
-        "2026-10-11": {
-          "CHI_win_odds": "5",
-          "GB_win_odds": "95"
+        "2026-10-24": {
+          "PIT_win_odds": "57",
+          "NO_win_odds": "43"
+        },
+        "2026-10-25": {
+          "PIT_win_odds": "56",
+          "NO_win_odds": "44"
         }
       },
-      "CHI_win_odds": "0",
-      "GB_win_odds": "100",
-      "away_color": "#0B162A",
-      "home_color": "#203731"
+      "PIT_win_odds": "56",
+      "NO_win_odds": "44"
     },
     {
-      "id": "nyg-was-2026-10-11",
+      "id": "ind-min-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "NYG @ WAS",
-      "game_title": "New York Giants @ Washington Commanders",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-nyg-was-2026-10-11",
-      "lastUpdated": "2026-10-12T21:42:00.303837Z",
-      "week": 5,
+      "name": "IND @ MIN",
+      "game_title": "Indianapolis Colts @ Minnesota Vikings",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-ind-min-2026-10-25",
+      "lastUpdated": "2026-10-17T16:51:28.483918Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-12": {
-          "NYG_win_odds": "50",
-          "WAS_win_odds": "50"
+        "2026-10-17": {
+          "IND_win_odds": "34",
+          "MIN_win_odds": "66"
         },
-        "2026-10-04": {
-          "NYG_win_odds": "53",
-          "WAS_win_odds": "47"
+        "2026-10-18": {
+          "IND_win_odds": "37",
+          "MIN_win_odds": "63"
         },
-        "2026-10-06": {
-          "NYG_win_odds": "48",
-          "WAS_win_odds": "52"
+        "2026-10-20": {
+          "IND_win_odds": "32",
+          "MIN_win_odds": "68"
         },
-        "2026-10-08": {
-          "NYG_win_odds": "52",
-          "WAS_win_odds": "48"
+        "2026-10-22": {
+          "IND_win_odds": "36",
+          "MIN_win_odds": "64"
         },
-        "2026-10-09": {
-          "NYG_win_odds": "49",
-          "WAS_win_odds": "51"
+        "2026-10-23": {
+          "IND_win_odds": "33",
+          "MIN_win_odds": "67"
         },
-        "2026-10-10": {
-          "NYG_win_odds": "51",
-          "WAS_win_odds": "49"
+        "2026-10-24": {
+          "IND_win_odds": "35",
+          "MIN_win_odds": "65"
         },
-        "2026-10-11": {
-          "NYG_win_odds": "50",
-          "WAS_win_odds": "50"
+        "2026-10-25": {
+          "IND_win_odds": "34",
+          "MIN_win_odds": "66"
         }
       },
-      "NYG_win_odds": "50",
-      "WAS_win_odds": "50",
-      "away_color": "#0B2265",
-      "home_color": "#5A1414"
+      "IND_win_odds": "34",
+      "MIN_win_odds": "66"
     },
     {
-      "id": "hou-ten-2026-10-11",
+      "id": "mia-nyj-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "HOU @ TEN",
-      "game_title": "Houston Texans @ Tennessee Titans",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-hou-ten-2026-10-11",
-      "lastUpdated": "2026-10-12T20:18:03.897358Z",
-      "week": 5,
+      "name": "MIA @ NYJ",
+      "game_title": "Miami Dolphins @ New York Jets",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-mia-nyj-2026-10-25",
+      "lastUpdated": "2026-10-17T16:53:31.207119Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-12": {
-          "HOU_win_odds": "100",
-          "TEN_win_odds": "0"
+        "2026-10-17": {
+          "MIA_win_odds": "33",
+          "NYJ_win_odds": "67"
         },
-        "2026-10-04": {
-          "HOU_win_odds": "95",
-          "TEN_win_odds": "5"
+        "2026-10-18": {
+          "MIA_win_odds": "36",
+          "NYJ_win_odds": "64"
         },
-        "2026-10-06": {
-          "HOU_win_odds": "95",
-          "TEN_win_odds": "5"
+        "2026-10-20": {
+          "MIA_win_odds": "31",
+          "NYJ_win_odds": "69"
         },
-        "2026-10-08": {
-          "HOU_win_odds": "95",
-          "TEN_win_odds": "5"
+        "2026-10-22": {
+          "MIA_win_odds": "35",
+          "NYJ_win_odds": "65"
         },
-        "2026-10-09": {
-          "HOU_win_odds": "95",
-          "TEN_win_odds": "5"
+        "2026-10-23": {
+          "MIA_win_odds": "32",
+          "NYJ_win_odds": "68"
         },
-        "2026-10-10": {
-          "HOU_win_odds": "95",
-          "TEN_win_odds": "5"
+        "2026-10-24": {
+          "MIA_win_odds": "34",
+          "NYJ_win_odds": "66"
         },
-        "2026-10-11": {
-          "HOU_win_odds": "95",
-          "TEN_win_odds": "5"
+        "2026-10-25": {
+          "MIA_win_odds": "33",
+          "NYJ_win_odds": "67"
         }
       },
-      "HOU_win_odds": "100",
-      "TEN_win_odds": "0",
-      "away_color": "#03202F",
-      "home_color": "#0C2340"
+      "MIA_win_odds": "33",
+      "NYJ_win_odds": "67"
     },
     {
-      "id": "lv-ne-2026-10-11",
+      "id": "cin-bal-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "LV @ NE",
-      "game_title": "Las Vegas Raiders @ New England Patriots",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-lv-ne-2026-10-11",
-      "lastUpdated": "2026-10-12T20:28:09.564401Z",
-      "week": 5,
+      "name": "CIN @ BAL",
+      "game_title": "Cincinnati Bengals @ Baltimore Ravens",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-cin-bal-2026-10-25",
+      "lastUpdated": "2026-10-17T16:53:31.207119Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-12": {
-          "LV_win_odds": "0",
-          "NE_win_odds": "100"
+        "2026-10-17": {
+          "CIN_win_odds": "38",
+          "BAL_win_odds": "62"
         },
-        "2026-10-04": {
-          "LV_win_odds": "5",
-          "NE_win_odds": "95"
+        "2026-10-18": {
+          "CIN_win_odds": "41",
+          "BAL_win_odds": "59"
         },
-        "2026-10-06": {
-          "LV_win_odds": "5",
-          "NE_win_odds": "95"
+        "2026-10-20": {
+          "CIN_win_odds": "36",
+          "BAL_win_odds": "64"
         },
-        "2026-10-08": {
-          "LV_win_odds": "5",
-          "NE_win_odds": "95"
+        "2026-10-22": {
+          "CIN_win_odds": "40",
+          "BAL_win_odds": "60"
         },
-        "2026-10-09": {
-          "LV_win_odds": "5",
-          "NE_win_odds": "95"
+        "2026-10-23": {
+          "CIN_win_odds": "37",
+          "BAL_win_odds": "63"
         },
-        "2026-10-10": {
-          "LV_win_odds": "5",
-          "NE_win_odds": "95"
+        "2026-10-24": {
+          "CIN_win_odds": "39",
+          "BAL_win_odds": "61"
         },
-        "2026-10-11": {
-          "LV_win_odds": "5",
-          "NE_win_odds": "95"
+        "2026-10-25": {
+          "CIN_win_odds": "38",
+          "BAL_win_odds": "62"
         }
       },
-      "LV_win_odds": "0",
-      "NE_win_odds": "100",
-      "away_color": "#000000",
-      "home_color": "#002244"
+      "CIN_win_odds": "38",
+      "BAL_win_odds": "62"
     },
     {
-      "id": "cle-nyj-2026-10-11",
+      "id": "cle-ten-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "CLE @ NYJ",
-      "game_title": "Cleveland Browns @ New York Jets",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-cle-nyj-2026-10-11",
-      "lastUpdated": "2026-10-12T20:32:09.06581Z",
-      "week": 5,
+      "name": "CLE @ TEN",
+      "game_title": "Cleveland Browns @ Tennessee Titans",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-cle-ten-2026-10-25",
+      "lastUpdated": "2026-10-17T16:53:31.207119Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-04": {
-          "CLE_win_odds": "5",
-          "NYJ_win_odds": "95"
+        "2026-10-17": {
+          "CLE_win_odds": "52",
+          "TEN_win_odds": "48"
         },
-        "2026-10-06": {
-          "CLE_win_odds": "5",
-          "NYJ_win_odds": "95"
+        "2026-10-18": {
+          "CLE_win_odds": "55",
+          "TEN_win_odds": "45"
         },
-        "2026-10-08": {
-          "CLE_win_odds": "5",
-          "NYJ_win_odds": "95"
+        "2026-10-20": {
+          "CLE_win_odds": "50",
+          "TEN_win_odds": "50"
         },
-        "2026-10-09": {
-          "CLE_win_odds": "5",
-          "NYJ_win_odds": "95"
+        "2026-10-22": {
+          "CLE_win_odds": "54",
+          "TEN_win_odds": "46"
         },
-        "2026-10-10": {
-          "CLE_win_odds": "5",
-          "NYJ_win_odds": "95"
+        "2026-10-23": {
+          "CLE_win_odds": "51",
+          "TEN_win_odds": "49"
         },
-        "2026-10-11": {
-          "CLE_win_odds": "5",
-          "NYJ_win_odds": "95"
+        "2026-10-24": {
+          "CLE_win_odds": "53",
+          "TEN_win_odds": "47"
+        },
+        "2026-10-25": {
+          "CLE_win_odds": "52",
+          "TEN_win_odds": "48"
         }
       },
-      "CLE_win_odds": "0",
-      "NYJ_win_odds": "100",
-      "away_color": "#311D00",
-      "home_color": "#125740"
+      "CLE_win_odds": "52",
+      "TEN_win_odds": "48"
     },
     {
-      "id": "cin-mia-2026-10-11",
+      "id": "tb-car-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "CIN @ MIA",
-      "game_title": "Cincinnati Bengals @ Miami Dolphins",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-cin-mia-2026-10-11",
-      "lastUpdated": "2026-10-12T20:40:05.99589Z",
-      "week": 5,
+      "name": "TB @ CAR",
+      "game_title": "Tampa Bay Buccaneers @ Carolina Panthers",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-tb-car-2026-10-25",
+      "lastUpdated": "2026-10-17T16:53:31.207119Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-04": {
-          "CIN_win_odds": "95",
-          "MIA_win_odds": "5"
+        "2026-10-17": {
+          "TB_win_odds": "43",
+          "CAR_win_odds": "57"
         },
-        "2026-10-06": {
-          "CIN_win_odds": "95",
-          "MIA_win_odds": "5"
+        "2026-10-18": {
+          "TB_win_odds": "46",
+          "CAR_win_odds": "54"
         },
-        "2026-10-08": {
-          "CIN_win_odds": "95",
-          "MIA_win_odds": "5"
+        "2026-10-20": {
+          "TB_win_odds": "41",
+          "CAR_win_odds": "59"
         },
-        "2026-10-09": {
-          "CIN_win_odds": "95",
-          "MIA_win_odds": "5"
+        "2026-10-22": {
+          "TB_win_odds": "45",
+          "CAR_win_odds": "55"
         },
-        "2026-10-10": {
-          "CIN_win_odds": "95",
-          "MIA_win_odds": "5"
+        "2026-10-23": {
+          "TB_win_odds": "42",
+          "CAR_win_odds": "58"
         },
-        "2026-10-11": {
-          "CIN_win_odds": "95",
-          "MIA_win_odds": "5"
+        "2026-10-24": {
+          "TB_win_odds": "44",
+          "CAR_win_odds": "56"
+        },
+        "2026-10-25": {
+          "TB_win_odds": "43",
+          "CAR_win_odds": "57"
         }
       },
-      "CIN_win_odds": "100",
-      "MIA_win_odds": "0",
-      "away_color": "#FB4F14",
-      "home_color": "#008E97"
+      "TB_win_odds": "43",
+      "CAR_win_odds": "57"
     },
     {
-      "id": "ind-pit-2026-10-11",
+      "id": "sf-atl-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "IND @ PIT",
-      "game_title": "Indianapolis Colts @ Pittsburgh Steelers",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-ind-pit-2026-10-11",
-      "lastUpdated": "2026-10-12T20:58:47.582687Z",
-      "week": 5,
+      "name": "SF @ ATL",
+      "game_title": "San Francisco 49ers @ Atlanta Falcons",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-sf-atl-2026-10-25",
+      "lastUpdated": "2026-10-17T16:51:28.483918Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-12": {
-          "IND_win_odds": "0",
-          "PIT_win_odds": "100"
+        "2026-10-17": {
+          "SF_win_odds": "66",
+          "ATL_win_odds": "34"
         },
-        "2026-10-04": {
-          "IND_win_odds": "5",
-          "PIT_win_odds": "95"
+        "2026-10-18": {
+          "SF_win_odds": "69",
+          "ATL_win_odds": "31"
         },
-        "2026-10-06": {
-          "IND_win_odds": "5",
-          "PIT_win_odds": "95"
+        "2026-10-20": {
+          "SF_win_odds": "64",
+          "ATL_win_odds": "36"
         },
-        "2026-10-08": {
-          "IND_win_odds": "5",
-          "PIT_win_odds": "95"
+        "2026-10-22": {
+          "SF_win_odds": "68",
+          "ATL_win_odds": "32"
         },
-        "2026-10-09": {
-          "IND_win_odds": "5",
-          "PIT_win_odds": "95"
+        "2026-10-23": {
+          "SF_win_odds": "65",
+          "ATL_win_odds": "35"
         },
-        "2026-10-10": {
-          "IND_win_odds": "5",
-          "PIT_win_odds": "95"
+        "2026-10-24": {
+          "SF_win_odds": "67",
+          "ATL_win_odds": "33"
         },
-        "2026-10-11": {
-          "IND_win_odds": "5",
-          "PIT_win_odds": "95"
+        "2026-10-25": {
+          "SF_win_odds": "66",
+          "ATL_win_odds": "34"
         }
       },
-      "IND_win_odds": "0",
-      "PIT_win_odds": "100",
-      "away_color": "#002C5F",
-      "home_color": "#FFB612"
+      "SF_win_odds": "66",
+      "ATL_win_odds": "34"
     },
     {
-      "id": "den-lac-2026-10-11",
+      "id": "nyg-hou-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "DEN @ LAC",
-      "game_title": "Denver Broncos @ Los Angeles Chargers",
-      "game_time": "Oct 11, 2026 4:05 PM ET",
-      "game_time_iso": "2026-10-11T20:05:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-den-lac-2026-10-11",
-      "lastUpdated": "2026-10-12T23:39:33.770335Z",
-      "week": 5,
+      "name": "NYG @ HOU",
+      "game_title": "New York Giants @ Houston Texans",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-nyg-hou-2026-10-25",
+      "lastUpdated": "2026-10-17T16:53:31.207119Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-12": {
-          "DEN_win_odds": "100",
-          "LAC_win_odds": "0"
+        "2026-10-17": {
+          "NYG_win_odds": "24",
+          "HOU_win_odds": "76"
         },
-        "2026-10-04": {
-          "DEN_win_odds": "95",
-          "LAC_win_odds": "5"
+        "2026-10-18": {
+          "NYG_win_odds": "27",
+          "HOU_win_odds": "73"
         },
-        "2026-10-06": {
-          "DEN_win_odds": "95",
-          "LAC_win_odds": "5"
+        "2026-10-20": {
+          "NYG_win_odds": "22",
+          "HOU_win_odds": "78"
         },
-        "2026-10-08": {
-          "DEN_win_odds": "95",
-          "LAC_win_odds": "5"
+        "2026-10-22": {
+          "NYG_win_odds": "26",
+          "HOU_win_odds": "74"
         },
-        "2026-10-09": {
-          "DEN_win_odds": "95",
-          "LAC_win_odds": "5"
+        "2026-10-23": {
+          "NYG_win_odds": "23",
+          "HOU_win_odds": "77"
         },
-        "2026-10-10": {
-          "DEN_win_odds": "95",
-          "LAC_win_odds": "5"
+        "2026-10-24": {
+          "NYG_win_odds": "25",
+          "HOU_win_odds": "75"
         },
-        "2026-10-11": {
-          "DEN_win_odds": "95",
-          "LAC_win_odds": "5"
+        "2026-10-25": {
+          "NYG_win_odds": "24",
+          "HOU_win_odds": "76"
         }
       },
-      "DEN_win_odds": "100",
-      "LAC_win_odds": "0",
-      "away_color": "#FB4F14",
-      "home_color": "#0080C6"
+      "NYG_win_odds": "24",
+      "HOU_win_odds": "76"
     },
     {
-      "id": "det-ari-2026-10-11",
+      "id": "den-ari-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "DET @ ARI",
-      "game_title": "Detroit Lions @ Arizona Cardinals",
-      "game_time": "Oct 11, 2026 4:25 PM ET",
-      "game_time_iso": "2026-10-11T20:25:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-det-ari-2026-10-11",
-      "lastUpdated": "2026-10-12T23:52:17.649558Z",
-      "week": 5,
+      "name": "DEN @ ARI",
+      "game_title": "Denver Broncos @ Arizona Cardinals",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-den-ari-2026-10-25",
+      "lastUpdated": "2026-10-17T16:53:31.207119Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-12": {
-          "DET_win_odds": "100",
-          "ARI_win_odds": "0"
+        "2026-10-17": {
+          "DEN_win_odds": "70",
+          "ARI_win_odds": "30"
         },
-        "2026-10-04": {
-          "DET_win_odds": "95",
-          "ARI_win_odds": "5"
+        "2026-10-18": {
+          "DEN_win_odds": "73",
+          "ARI_win_odds": "27"
         },
-        "2026-10-06": {
-          "DET_win_odds": "95",
-          "ARI_win_odds": "5"
+        "2026-10-20": {
+          "DEN_win_odds": "68",
+          "ARI_win_odds": "32"
         },
-        "2026-10-08": {
-          "DET_win_odds": "95",
-          "ARI_win_odds": "5"
+        "2026-10-22": {
+          "DEN_win_odds": "72",
+          "ARI_win_odds": "28"
         },
-        "2026-10-09": {
-          "DET_win_odds": "95",
-          "ARI_win_odds": "5"
+        "2026-10-23": {
+          "DEN_win_odds": "69",
+          "ARI_win_odds": "31"
         },
-        "2026-10-10": {
-          "DET_win_odds": "95",
-          "ARI_win_odds": "5"
+        "2026-10-24": {
+          "DEN_win_odds": "71",
+          "ARI_win_odds": "29"
         },
-        "2026-10-11": {
-          "DET_win_odds": "95",
-          "ARI_win_odds": "5"
+        "2026-10-25": {
+          "DEN_win_odds": "70",
+          "ARI_win_odds": "30"
         }
       },
-      "DET_win_odds": "100",
-      "ARI_win_odds": "0",
-      "away_color": "#0076B6",
-      "home_color": "#97233F"
+      "DEN_win_odds": "70",
+      "ARI_win_odds": "30"
     },
     {
-      "id": "sf-sea-2026-10-11",
+      "id": "gb-det-2026-10-25",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "SF @ SEA",
-      "game_title": "San Francisco 49ers @ Seattle Seahawks",
-      "game_time": "Oct 11, 2026 4:25 PM ET",
-      "game_time_iso": "2026-10-11T20:25:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-sf-sea-2026-10-11",
-      "lastUpdated": "2026-10-13T00:09:10.153783Z",
-      "week": 5,
+      "name": "GB @ DET",
+      "game_title": "Green Bay Packers @ Detroit Lions",
+      "game_time": "Oct 25, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-25T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-gb-det-2026-10-25",
+      "lastUpdated": "2026-10-17T16:49:28.497388Z",
+      "week": 7,
       "probabilities": {
-        "2026-10-13": {
-          "SF_win_odds": "100",
-          "SEA_win_odds": "0"
+        "2026-10-17": {
+          "GB_win_odds": "38",
+          "DET_win_odds": "62"
         },
-        "2026-10-04": {
-          "SF_win_odds": "95",
-          "SEA_win_odds": "5"
+        "2026-10-18": {
+          "GB_win_odds": "41",
+          "DET_win_odds": "59"
         },
-        "2026-10-06": {
-          "SF_win_odds": "95",
-          "SEA_win_odds": "5"
+        "2026-10-20": {
+          "GB_win_odds": "36",
+          "DET_win_odds": "64"
         },
-        "2026-10-08": {
-          "SF_win_odds": "95",
-          "SEA_win_odds": "5"
+        "2026-10-22": {
+          "GB_win_odds": "40",
+          "DET_win_odds": "60"
         },
-        "2026-10-09": {
-          "SF_win_odds": "95",
-          "SEA_win_odds": "5"
+        "2026-10-23": {
+          "GB_win_odds": "37",
+          "DET_win_odds": "63"
         },
-        "2026-10-10": {
-          "SF_win_odds": "95",
-          "SEA_win_odds": "5"
+        "2026-10-24": {
+          "GB_win_odds": "39",
+          "DET_win_odds": "61"
         },
-        "2026-10-11": {
-          "SF_win_odds": "95",
-          "SEA_win_odds": "5"
+        "2026-10-25": {
+          "GB_win_odds": "38",
+          "DET_win_odds": "62"
         }
       },
-      "SF_win_odds": "100",
-      "SEA_win_odds": "0",
-      "away_color": "#AA0000",
-      "home_color": "#002244"
+      "GB_win_odds": "38",
+      "DET_win_odds": "62"
     },
     {
-      "id": "min-no-2026-10-11",
+      "id": "buf-lv-2026-10-18",
       "category": "Prediction Markets",
       "agency": "Polymarket",
-      "name": "MIN @ NO",
-      "game_title": "Minnesota Vikings @ New Orleans Saints",
-      "game_time": "Oct 11, 2026 1:00 PM ET",
-      "game_time_iso": "2026-10-11T17:00:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-min-no-2026-10-11",
-      "lastUpdated": "2026-10-12T20:14:03.068268Z",
-      "week": 5,
-      "probabilities": {
-        "2026-10-12": {
-          "MIN_win_odds": "100",
-          "NO_win_odds": "0"
-        },
-        "2026-10-04": {
-          "MIN_win_odds": "95",
-          "NO_win_odds": "5"
-        },
-        "2026-10-06": {
-          "MIN_win_odds": "95",
-          "NO_win_odds": "5"
-        },
-        "2026-10-08": {
-          "MIN_win_odds": "95",
-          "NO_win_odds": "5"
-        },
-        "2026-10-09": {
-          "MIN_win_odds": "95",
-          "NO_win_odds": "5"
-        },
-        "2026-10-10": {
-          "MIN_win_odds": "95",
-          "NO_win_odds": "5"
-        },
-        "2026-10-11": {
-          "MIN_win_odds": "95",
-          "NO_win_odds": "5"
-        }
-      },
-      "MIN_win_odds": "100",
-      "NO_win_odds": "0",
-      "away_color": "#4F2683",
-      "home_color": "#D3BC8D"
-    },
-    {
-      "id": "buf-la-2026-10-13",
-      "category": "Prediction Markets",
-      "agency": "Polymarket",
-      "name": "BUF @ LA",
-      "game_title": "Buffalo Bills @ Los Angeles Rams",
-      "game_time": "Oct 12, 2026 8:15 PM ET",
-      "game_time_iso": "2026-10-13T00:15:00Z",
-      "url": "https://polymarket.com/sports/nfl/nfl-buf-la-2026-10-13",
-      "lastUpdated": "2026-10-13T01:38:50.352737Z",
+      "name": "BUF @ LV",
+      "game_title": "Buffalo Bills @ Las Vegas Raiders",
+      "game_time": "Oct 18, 2026 4:25 PM ET",
+      "game_time_iso": "2026-10-18T20:25:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-buf-lv-2026-10-18",
+      "lastUpdated": "2026-10-17T16:55:29.251458Z",
       "week": 6,
       "probabilities": {
-        "2026-10-13": {
-          "BUF_win_odds": "54",
-          "LA_win_odds": "46"
-        },
-        "2026-10-06": {
-          "BUF_win_odds": "57",
-          "LA_win_odds": "43"
-        },
-        "2026-10-08": {
-          "BUF_win_odds": "52",
-          "LA_win_odds": "48"
-        },
-        "2026-10-10": {
-          "BUF_win_odds": "56",
-          "LA_win_odds": "44"
+        "2026-10-17": {
+          "BUF_win_odds": "68",
+          "LV_win_odds": "32"
         },
         "2026-10-11": {
-          "BUF_win_odds": "53",
-          "LA_win_odds": "47"
+          "BUF_win_odds": "71",
+          "LV_win_odds": "29"
         },
-        "2026-10-12": {
-          "BUF_win_odds": "55",
-          "LA_win_odds": "45"
+        "2026-10-13": {
+          "BUF_win_odds": "66",
+          "LV_win_odds": "34"
+        },
+        "2026-10-15": {
+          "BUF_win_odds": "70",
+          "LV_win_odds": "30"
+        },
+        "2026-10-16": {
+          "BUF_win_odds": "67",
+          "LV_win_odds": "33"
+        },
+        "2026-10-18": {
+          "BUF_win_odds": "68",
+          "LV_win_odds": "32"
         }
       },
-      "BUF_win_odds": "54",
-      "LA_win_odds": "46",
-      "away_color": "#00338D",
-      "home_color": "#003594"
+      "BUF_win_odds": "68",
+      "LV_win_odds": "32"
+    },
+    {
+      "id": "hou-jax-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "HOU @ JAX",
+      "game_title": "Houston Texans @ Jacksonville Jaguars",
+      "game_time": "Oct 18, 2026 1:30 PM ET",
+      "game_time_iso": "2026-10-18T17:30:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-hou-jax-2026-10-18",
+      "lastUpdated": "2026-10-17T16:57:37.81953Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-11": {
+          "HOU_win_odds": "47",
+          "JAX_win_odds": "53"
+        },
+        "2026-10-13": {
+          "HOU_win_odds": "42",
+          "JAX_win_odds": "58"
+        },
+        "2026-10-15": {
+          "HOU_win_odds": "46",
+          "JAX_win_odds": "54"
+        },
+        "2026-10-16": {
+          "HOU_win_odds": "43",
+          "JAX_win_odds": "57"
+        },
+        "2026-10-17": {
+          "HOU_win_odds": "45",
+          "JAX_win_odds": "55"
+        },
+        "2026-10-18": {
+          "HOU_win_odds": "44",
+          "JAX_win_odds": "56"
+        }
+      },
+      "HOU_win_odds": "44",
+      "JAX_win_odds": "56"
+    },
+    {
+      "id": "ten-ind-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "TEN @ IND",
+      "game_title": "Tennessee Titans @ Indianapolis Colts",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-ten-ind-2026-10-18",
+      "lastUpdated": "2026-10-17T17:01:14.939433Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "TEN_win_odds": "26",
+          "IND_win_odds": "74"
+        },
+        "2026-10-11": {
+          "TEN_win_odds": "29",
+          "IND_win_odds": "71"
+        },
+        "2026-10-13": {
+          "TEN_win_odds": "24",
+          "IND_win_odds": "76"
+        },
+        "2026-10-15": {
+          "TEN_win_odds": "28",
+          "IND_win_odds": "72"
+        },
+        "2026-10-16": {
+          "TEN_win_odds": "25",
+          "IND_win_odds": "75"
+        },
+        "2026-10-18": {
+          "TEN_win_odds": "26",
+          "IND_win_odds": "74"
+        }
+      },
+      "TEN_win_odds": "26",
+      "IND_win_odds": "74"
+    },
+    {
+      "id": "car-phi-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "CAR @ PHI",
+      "game_title": "Carolina Panthers @ Philadelphia Eagles",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-car-phi-2026-10-18",
+      "lastUpdated": "2026-10-17T16:57:37.814312Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "CAR_win_odds": "62",
+          "PHI_win_odds": "38"
+        },
+        "2026-10-11": {
+          "CAR_win_odds": "65",
+          "PHI_win_odds": "35"
+        },
+        "2026-10-13": {
+          "CAR_win_odds": "60",
+          "PHI_win_odds": "40"
+        },
+        "2026-10-15": {
+          "CAR_win_odds": "64",
+          "PHI_win_odds": "36"
+        },
+        "2026-10-16": {
+          "CAR_win_odds": "61",
+          "PHI_win_odds": "39"
+        },
+        "2026-10-18": {
+          "CAR_win_odds": "62",
+          "PHI_win_odds": "38"
+        }
+      },
+      "CAR_win_odds": "62",
+      "PHI_win_odds": "38"
+    },
+    {
+      "id": "pit-tb-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "PIT @ TB",
+      "game_title": "Pittsburgh Steelers @ Tampa Bay Buccaneers",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-pit-tb-2026-10-18",
+      "lastUpdated": "2026-10-17T16:57:37.786773Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "PIT_win_odds": "56",
+          "TB_win_odds": "44"
+        },
+        "2026-10-11": {
+          "PIT_win_odds": "59",
+          "TB_win_odds": "41"
+        },
+        "2026-10-13": {
+          "PIT_win_odds": "54",
+          "TB_win_odds": "46"
+        },
+        "2026-10-15": {
+          "PIT_win_odds": "58",
+          "TB_win_odds": "42"
+        },
+        "2026-10-16": {
+          "PIT_win_odds": "55",
+          "TB_win_odds": "45"
+        },
+        "2026-10-18": {
+          "PIT_win_odds": "56",
+          "TB_win_odds": "44"
+        }
+      },
+      "PIT_win_odds": "56",
+      "TB_win_odds": "44"
+    },
+    {
+      "id": "bal-cle-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "BAL @ CLE",
+      "game_title": "Baltimore Ravens @ Cleveland Browns",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-bal-cle-2026-10-18",
+      "lastUpdated": "2026-10-17T16:59:28.305747Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "BAL_win_odds": "62",
+          "CLE_win_odds": "38"
+        },
+        "2026-10-11": {
+          "BAL_win_odds": "65",
+          "CLE_win_odds": "35"
+        },
+        "2026-10-13": {
+          "BAL_win_odds": "60",
+          "CLE_win_odds": "40"
+        },
+        "2026-10-15": {
+          "BAL_win_odds": "64",
+          "CLE_win_odds": "36"
+        },
+        "2026-10-16": {
+          "BAL_win_odds": "61",
+          "CLE_win_odds": "39"
+        },
+        "2026-10-18": {
+          "BAL_win_odds": "62",
+          "CLE_win_odds": "38"
+        }
+      },
+      "BAL_win_odds": "62",
+      "CLE_win_odds": "38"
+    },
+    {
+      "id": "no-nyg-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "NO @ NYG",
+      "game_title": "New Orleans Saints @ New York Giants",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-no-nyg-2026-10-18",
+      "lastUpdated": "2026-10-17T16:59:28.305747Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "NO_win_odds": "50",
+          "NYG_win_odds": "50"
+        },
+        "2026-10-11": {
+          "NO_win_odds": "53",
+          "NYG_win_odds": "47"
+        },
+        "2026-10-13": {
+          "NO_win_odds": "48",
+          "NYG_win_odds": "52"
+        },
+        "2026-10-15": {
+          "NO_win_odds": "52",
+          "NYG_win_odds": "48"
+        },
+        "2026-10-16": {
+          "NO_win_odds": "49",
+          "NYG_win_odds": "51"
+        },
+        "2026-10-18": {
+          "NO_win_odds": "50",
+          "NYG_win_odds": "50"
+        }
+      },
+      "NO_win_odds": "50",
+      "NYG_win_odds": "50"
+    },
+    {
+      "id": "chi-atl-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "CHI @ ATL",
+      "game_title": "Chicago Bears @ Atlanta Falcons",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-chi-atl-2026-10-18",
+      "lastUpdated": "2026-10-17T16:59:28.305747Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "CHI_win_odds": "50",
+          "ATL_win_odds": "50"
+        },
+        "2026-10-11": {
+          "CHI_win_odds": "53",
+          "ATL_win_odds": "47"
+        },
+        "2026-10-13": {
+          "CHI_win_odds": "48",
+          "ATL_win_odds": "52"
+        },
+        "2026-10-15": {
+          "CHI_win_odds": "52",
+          "ATL_win_odds": "48"
+        },
+        "2026-10-16": {
+          "CHI_win_odds": "49",
+          "ATL_win_odds": "51"
+        },
+        "2026-10-18": {
+          "CHI_win_odds": "50",
+          "ATL_win_odds": "50"
+        }
+      },
+      "CHI_win_odds": "50",
+      "ATL_win_odds": "50"
+    },
+    {
+      "id": "nyj-ne-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "NYJ @ NE",
+      "game_title": "New York Jets @ New England Patriots",
+      "game_time": "Oct 18, 2026 1:00 PM ET",
+      "game_time_iso": "2026-10-18T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-nyj-ne-2026-10-18",
+      "lastUpdated": "2026-10-17T16:57:37.820131Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "NYJ_win_odds": "24",
+          "NE_win_odds": "76"
+        },
+        "2026-10-11": {
+          "NYJ_win_odds": "27",
+          "NE_win_odds": "73"
+        },
+        "2026-10-13": {
+          "NYJ_win_odds": "22",
+          "NE_win_odds": "78"
+        },
+        "2026-10-15": {
+          "NYJ_win_odds": "26",
+          "NE_win_odds": "74"
+        },
+        "2026-10-16": {
+          "NYJ_win_odds": "23",
+          "NE_win_odds": "77"
+        },
+        "2026-10-18": {
+          "NYJ_win_odds": "24",
+          "NE_win_odds": "76"
+        }
+      },
+      "NYJ_win_odds": "24",
+      "NE_win_odds": "76"
+    },
+    {
+      "id": "lac-kc-2026-10-18",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "LAC @ KC",
+      "game_title": "Los Angeles Chargers @ Kansas City Chiefs",
+      "game_time": "Oct 18, 2026 4:25 PM ET",
+      "game_time_iso": "2026-10-18T20:25:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-lac-kc-2026-10-18",
+      "lastUpdated": "2026-10-17T16:59:28.305747Z",
+      "week": 6,
+      "probabilities": {
+        "2026-10-17": {
+          "LAC_win_odds": "22",
+          "KC_win_odds": "78"
+        },
+        "2026-10-11": {
+          "LAC_win_odds": "25",
+          "KC_win_odds": "75"
+        },
+        "2026-10-13": {
+          "LAC_win_odds": "20",
+          "KC_win_odds": "80"
+        },
+        "2026-10-15": {
+          "LAC_win_odds": "24",
+          "KC_win_odds": "76"
+        },
+        "2026-10-16": {
+          "LAC_win_odds": "21",
+          "KC_win_odds": "79"
+        },
+        "2026-10-18": {
+          "LAC_win_odds": "22",
+          "KC_win_odds": "78"
+        }
+      },
+      "LAC_win_odds": "22",
+      "KC_win_odds": "78"
     }
   ]
 }

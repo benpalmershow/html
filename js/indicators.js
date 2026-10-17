@@ -130,6 +130,7 @@ const IndicatorRenderers = (function () {
         if (holdOdds && cutOdds && hikeOdds) {
             const holdProb = parseFloat(holdOdds), cutProb = parseFloat(cutOdds), hikeProb = parseFloat(hikeOdds);
 
+            if (indicator.week) latestDataHtml += `<div class="latest-data-row"><span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span></div>`;
             latestDataHtml = `
                 <div class="prediction-bar-container" style="margin-top: 4px;">
                     ${predictionBarRow('Hold', holdOdds, 'fomc-hold', '50px', '12px')}
@@ -220,7 +221,6 @@ const IndicatorRenderers = (function () {
         const rows = [];
         if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value game-title">${indicator.name}</span>`);
         if (indicator.game_time) rows.push(`<span class="month-label">Time:</span> <span class="month-value">${indicator.result ? `<span class="game-final">Final: ${indicator.result}</span>` : `<span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span>`}</span>`);
-        if (indicator.week) rows.push(`<span class="month-label">Week:</span> <span class="month-value">${indicator.week}</span>`);
 
         // Win odds as a single stacked dual-color bar (same pattern as other prediction markets).
         const winOddsKeys = Object.keys(indicator).filter(key => key.endsWith('_win_odds'));
@@ -685,7 +685,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const categoryFilterBtn = buildCategoryFilterButton(indicator.category);
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${isNew ? '<span class="new-badge">New</span>' : ''}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${(isNew && !indicator.game_time_iso) ? '<span class="new-badge">New</span>' : ''}${(indicator.game_time_iso && indicator.week) ? `<span class="week-badge">W${indicator.week}</span>` : ''}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
 }
 
 /* Category icon button on each card: shows the card's category (same lucide

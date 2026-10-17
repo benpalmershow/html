@@ -43,7 +43,7 @@ The Times' article frames the windfall as a victory over Trump administration pr
 
 - [Harvard Management Co 13F — SEC EDGAR](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001082621&type=13F-HR&dateb=&owner=include&count=10)
 - [Harvard 13F holdings on Howdy](financials.html?filter=13F%20Holdings)
-- [NYT: "As Trump Cuts, Harvard's Coffer Gushes to $68 Billion"](https://www.nytimes.com)
+- [NYT: As Trump Cuts, Harvard's Coffer Gushes to $68 Billion](https://www.nytimes.com)
 
 ---
 

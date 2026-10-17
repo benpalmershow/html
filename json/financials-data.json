@@ -13,17 +13,19 @@
       "change": "",
       "probabilities": {
         "2026-08-24": {
-          "yes": "34¢",
-          "no": "67¢"
+          "yes": "34\u00a2",
+          "no": "67\u00a2"
         },
         "2026-10-04": {
-          "yes": "20¢",
-          "no": "80¢"
+          "yes": "20\u00a2",
+          "no": "80\u00a2"
         }
       },
-      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
-      "yes_odds": "20¢",
-      "no_odds": "80¢"
+      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of \u226560 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
+      "yes_odds": "20\u00a2",
+      "no_odds": "80\u00a2",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "iranian-regime-fall-2026",
@@ -34,42 +36,44 @@
       "lastUpdated": "2026-10-04T14:30:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
-      "yes_probability": "7¢",
+      "yes_probability": "7\u00a2",
       "no_probability": "93",
       "probabilities": {
         "2026-08-24": {
-          "yes": "8¢",
-          "no": "93¢"
+          "yes": "8\u00a2",
+          "no": "93\u00a2"
         },
         "2026-10-04": {
-          "yes": "7¢",
-          "no": "93¢"
+          "yes": "7\u00a2",
+          "no": "93\u00a2"
         },
         "2026-05-31": {
-          "yes": "14¢",
-          "no": "87¢"
+          "yes": "14\u00a2",
+          "no": "87\u00a2"
         },
         "2026-05-28": {
-          "yes": "15¢",
-          "no": "87¢"
+          "yes": "15\u00a2",
+          "no": "87\u00a2"
         },
         "2026-04-19": {
-          "yes": "21¢",
-          "no": "79¢"
+          "yes": "21\u00a2",
+          "no": "79\u00a2"
         },
         "2026-04-18": {
-          "yes": "27¢",
-          "no": "73¢"
+          "yes": "27\u00a2",
+          "no": "73\u00a2"
         },
         "2026-04-17": {
-          "yes": "33¢",
-          "no": "67¢"
+          "yes": "33\u00a2",
+          "no": "67\u00a2"
         }
       },
       "change": "",
       "explanation": "Polymarket prediction on whether the Iranian regime will fall by end of 2026. Market reflects 93% probability the regime endures despite nationwide protests since late 2025 and US-Israel airstrikes. IRGC has consolidated control following Supreme Leader Khamenei's death on February 28, 2026, brutally suppressing dissent while organizing pro-regime demonstrations. Mojtaba Khamenei succeeded his father with unusual speed, and subsequent protests were contained through decisive force. Ceasefire with US reduces military pressure. Volume: $26.7M.",
-      "yes_odds": "7¢",
-      "no_odds": "93¢"
+      "yes_odds": "7\u00a2",
+      "no_odds": "93\u00a2",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "us-recession-2026",
@@ -83,40 +87,42 @@
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
       "probabilities": {
         "2026-06-09": {
-          "yes": "18¢",
-          "no": "83¢"
+          "yes": "18\u00a2",
+          "no": "83\u00a2"
         },
         "2026-06-05": {
-          "yes": "29¢",
-          "no": "71¢"
+          "yes": "29\u00a2",
+          "no": "71\u00a2"
         },
         "2026-04-14": {
-          "yes": "26¢",
-          "no": "75¢"
+          "yes": "26\u00a2",
+          "no": "75\u00a2"
         },
         "2026-05-28": {
-          "yes": "20¢",
-          "no": "81¢"
+          "yes": "20\u00a2",
+          "no": "81\u00a2"
         },
         "2026-04-19": {
-          "yes": "26¢",
-          "no": "75¢"
+          "yes": "26\u00a2",
+          "no": "75\u00a2"
         },
         "2026-04-18": {
-          "yes": "29¢",
-          "no": "71¢"
+          "yes": "29\u00a2",
+          "no": "71\u00a2"
         },
         "2026-04-17": {
-          "yes": "32¢",
-          "no": "68¢"
+          "yes": "32\u00a2",
+          "no": "68\u00a2"
         },
         "2026-10-04": {
-          "yes": "8¢",
-          "no": "92¢"
+          "yes": "8\u00a2",
+          "no": "92\u00a2"
         }
       },
       "change": "",
-      "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds have fallen to 8% as resilient economic data underpins the market view: real GDP expanded at a 3.1% annualized pace in Q3, the unemployment rate held near 4.2%, the Sahm rule remained well below its 0.50 recession threshold, and the yield curve has steepened positively. Federal Reserve projections and bank forecasts anticipate above-trend growth through 2027 despite elevated inflation near 3.4% CPI. Kalshi shows 5% recession probability. Volume: $2.2M."
+      "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2026, as defined by two consecutive quarters of negative GDP growth (BEA) or an NBER declaration. Recession odds have fallen to 8% as resilient economic data underpins the market view: real GDP expanded at a 3.1% annualized pace in Q3, the unemployment rate held near 4.2%, the Sahm rule remained well below its 0.50 recession threshold, and the yield curve has steepened positively. Federal Reserve projections and bank forecasts anticipate above-trend growth through 2027 despite elevated inflation near 3.4% CPI. Kalshi shows 5% recession probability. Volume: $2.2M.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "midterms-senate-2026",
@@ -159,7 +165,9 @@
         }
       },
       "change": "",
-      "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a 65% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent NYT/Siena polls show Democratic candidates leading or tied in multiple Republican-held seats including Texas, Alaska, Ohio, Kansas, and Iowa. Democrats need a net gain of four seats for control."
+      "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a 65% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent NYT/Siena polls show Democratic candidates leading or tied in multiple Republican-held seats including Texas, Alaska, Ohio, Kansas, and Iowa. Democrats need a net gain of four seats for control.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "fomc-rate-decision-october-2026",
@@ -173,53 +181,55 @@
       "announcement_time_iso": "2026-10-28T14:00:00-04:00",
       "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26oct",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
-      "rate_hold_odds": "83¢",
-      "rate_cut_odds": "1¢",
-      "rate_hike_odds": "18¢",
+      "rate_hold_odds": "83\u00a2",
+      "rate_cut_odds": "1\u00a2",
+      "rate_hike_odds": "18\u00a2",
       "change": "",
       "probabilities": {
         "2026-08-25": {
-          "rate_hold_odds": "73¢",
-          "rate_cut_odds": "3¢",
-          "rate_hike_odds": "22¢"
+          "rate_hold_odds": "73\u00a2",
+          "rate_cut_odds": "3\u00a2",
+          "rate_hike_odds": "22\u00a2"
         },
         "2026-09-15": {
-          "rate_hold_odds": "60¢",
-          "rate_cut_odds": "2¢",
-          "rate_hike_odds": "38¢"
+          "rate_hold_odds": "60\u00a2",
+          "rate_cut_odds": "2\u00a2",
+          "rate_hike_odds": "38\u00a2"
         },
         "2026-09-25": {
-          "rate_hold_odds": "33¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "68¢"
+          "rate_hold_odds": "33\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "68\u00a2"
         },
         "2026-09-29": {
-          "rate_hold_odds": "30¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "70¢"
+          "rate_hold_odds": "30\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "70\u00a2"
         },
         "2026-10-01": {
-          "rate_hold_odds": "66¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "33¢"
+          "rate_hold_odds": "66\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "33\u00a2"
         },
         "2026-10-02": {
-          "rate_hold_odds": "73¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "28¢"
+          "rate_hold_odds": "73\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "28\u00a2"
         },
         "2026-10-03": {
-          "rate_hold_odds": "82¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "19¢"
+          "rate_hold_odds": "82\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "19\u00a2"
         },
         "2026-10-04": {
-          "rate_hold_odds": "83¢",
-          "rate_cut_odds": "1¢",
-          "rate_hike_odds": "18¢"
+          "rate_hold_odds": "83\u00a2",
+          "rate_cut_odds": "1\u00a2",
+          "rate_hike_odds": "18\u00a2"
         }
       },
-      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70¢ on Sep 29 while hold odds fell to 30¢. That repricing reversed hard over the past week. Kalshi now quotes hold at 83¢, a 25bps hike at 18¢, and a 25bps cut at 1¢, and Polymarket agrees at 83¢ for no change and 17¢ for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps."
+      "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70\u00a2 on Sep 29 while hold odds fell to 30\u00a2. That repricing reversed hard over the past week. Kalshi now quotes hold at 83\u00a2, a 25bps hike at 18\u00a2, and a 25bps cut at 1\u00a2, and Polymarket agrees at 83\u00a2 for no change and 17\u00a2 for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps.",
+      "releaseTimeISO": "2026-10-15T18:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "trump-impeachment",
@@ -232,24 +242,26 @@
       "url": "https://kalshi.com/markets/kximpeach/president-impeached/kximpeach",
       "probabilities": {
         "2026-08-29": {
-          "Before Jan 1, 2027": "20¢",
-          "Before Jan 1, 2028": "61¢"
+          "Before Jan 1, 2027": "20\u00a2",
+          "Before Jan 1, 2028": "61\u00a2"
         },
         "2026-10-04": {
-          "Before Jan 1, 2027": "4¢",
-          "Before Jan 1, 2028": "66¢"
+          "Before Jan 1, 2027": "4\u00a2",
+          "Before Jan 1, 2028": "66\u00a2"
         },
         "2026-05-31": {
-          "Before Jan 1, 2027": "10¢",
-          "Before Jan 1, 2028": "58¢"
+          "Before Jan 1, 2027": "10\u00a2",
+          "Before Jan 1, 2028": "58\u00a2"
         },
         "2026-04-19": {
-          "Before Jan 1, 2027": "13¢",
-          "Before Jan 1, 2028": "65¢"
+          "Before Jan 1, 2027": "13\u00a2",
+          "Before Jan 1, 2028": "65\u00a2"
         }
       },
       "change": "",
-      "explanation": "Kalshi prediction market on whether President Trump will be impeached before the specified dates. Market shows 66% probability of impeachment before Jan 1, 2028, 4.4% before Jan 1, 2027, and 28% before Mar 1, 2027. Volume: $4.8M. Resolution verified from Library of Congress records."
+      "explanation": "Kalshi prediction market on whether President Trump will be impeached before the specified dates. Market shows 66% probability of impeachment before Jan 1, 2028, 4.4% before Jan 1, 2027, and 28% before Mar 1, 2027. Volume: $4.8M. Resolution verified from Library of Congress records.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2025": {
@@ -290,7 +302,9 @@
       "december": "52.9",
       "change": "",
       "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -325,7 +339,9 @@
       "december": "4.14",
       "change": "",
       "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions).",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -357,7 +373,9 @@
       "november": "560",
       "december": "544",
       "change": "",
-      "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing."
+      "explanation": "The price of random-length lumber futures contracts traded on the Chicago Mercantile Exchange (CME). Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Prices are quoted in US dollars per 1,000 board feet. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber futures are often used by homebuilders, construction companies, and investors to hedge against price volatility. The commodity is particularly important in North America, where wood-frame construction is common for residential housing.",
+      "releaseTimeISO": "2026-08-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -390,7 +408,9 @@
       "november": "4.14M",
       "december": "4.27M",
       "change": "",
-      "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales."
+      "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales.",
+      "releaseTimeISO": "2026-10-22T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -417,7 +437,9 @@
       "november": "$2,958",
       "december": "$1,964",
       "change": "",
-      "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs."
+      "explanation": "The Freightos Baltic Index (FBX) tracks the cost to ship a 40-foot container from China to the U.S. West Coast, a key indicator of global trade costs and supply chain conditions. Freightos provides real-time data from major freight forwarders and carriers. These rates are highly sensitive to demand for shipping capacity, fuel costs, port congestion, and geopolitical factors. Sharp increases can indicate supply chain disruptions or strong trade volumes, while falling rates may suggest weakening demand or improving supply chain efficiency. The FBX is updated daily and is widely used by shippers, carriers, and economists to monitor global trade health and predict supply chain costs.",
+      "releaseTimeISO": "2026-03-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -447,7 +469,9 @@
       "november": "59",
       "december": "65",
       "change": "",
-      "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old “Days on Zillow” metric in that it excludes the in-contract period before a home sells."
+      "explanation": "How long it takes homes in a region to change to pending status on Zillow.com after first being shown as for sale. The reported figure indicates the number of days (mean or median) that it took for homes that went pending during the week being reported, to go pending. This differs from the old \u201cDays on Zillow\u201d metric in that it excludes the in-contract period before a home sells.",
+      "releaseTimeISO": "2026-08-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -479,7 +503,9 @@
       "november": "782,249.00",
       "december": "791,587.75",
       "change": "",
-      "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups."
+      "explanation": "A standard measure of cargo capacity, where 1 TEU represents a container 20 feet long. The Port of LA/Long Beach is the busiest port complex in the Western Hemisphere, handling about 40% of U.S. imports. TEU volume is a key indicator of trade flows, consumer demand, and supply chain health. Monthly fluctuations can reflect seasonal patterns, economic conditions, and supply chain disruptions. The data is reported with a one-month lag and is closely watched by economists and businesses for insights into trade trends and potential inventory buildups.",
+      "releaseTimeISO": "2026-09-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -505,7 +531,9 @@
       "november": "4.56",
       "december": "4.38",
       "change": "",
-      "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics."
+      "explanation": "The Chicago Fed's Real-Time Unemployment Rate Forecast provides an estimate of the current unemployment rate using high-frequency data from sources like payroll processing, job search websites, and government filings. It aims to provide a more timely indicator of labor market conditions than the official unemployment rate, which is released with a lag. The forecast is updated weekly and can signal changes in employment trends before they appear in official statistics.",
+      "releaseTimeISO": "2026-08-15T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -543,7 +571,9 @@
       "december": "57.97",
       "change": "",
       "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -569,7 +599,9 @@
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "change": "",
       "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -586,7 +618,9 @@
       "releaseDay": 0,
       "url": "https://www.eia.gov/todayinenergy/prices.php",
       "change": "",
-      "explanation": "The 3:2:1 crack spread measures the difference between the purchase price of crude oil and the selling price of finished products (gasoline and distillate fuel) that a refinery produces from the crude oil. It approximates the product yield at a typical U.S. refinery: for every three barrels of crude oil processed, the refinery makes two barrels of gasoline and one barrel of distillate fuel. The crack spread is an indicator of short-term refinery profit margins. Current Gulf Coast (LLS) 3:2:1 crack spread: $60.75/barrel."
+      "explanation": "The 3:2:1 crack spread measures the difference between the purchase price of crude oil and the selling price of finished products (gasoline and distillate fuel) that a refinery produces from the crude oil. It approximates the product yield at a typical U.S. refinery: for every three barrels of crude oil processed, the refinery makes two barrels of gasoline and one barrel of distillate fuel. The crack spread is an indicator of short-term refinery profit margins. Current Gulf Coast (LLS) 3:2:1 crack spread: $60.75/barrel.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -607,7 +641,9 @@
       "url": "https://fred.stlouisfed.org/series/PAUELS",
       "source_url": "https://www.eia.gov/dnav/pet/pet_move_wkly_dc_NUS-Z00_mbblpd_w.htm",
       "change": "",
-      "explanation": "Weekly U.S. petroleum exports from EIA (Total Crude Oil and Products), reported in thousand barrels per day. This indicator uses the latest weekly readings shown in the source table, not monthly averages. Current values shown are March 2026: 11,670 and April 2026: 12,881, tracking outbound U.S. crude and refined product flows."
+      "explanation": "Weekly U.S. petroleum exports from EIA (Total Crude Oil and Products), reported in thousand barrels per day. This indicator uses the latest weekly readings shown in the source table, not monthly averages. Current values shown are March 2026: 11,670 and April 2026: 12,881, tracking outbound U.S. crude and refined product flows.",
+      "releaseTimeISO": "2026-08-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -642,7 +678,9 @@
       "december": "5.03",
       "change": "",
       "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -677,7 +715,9 @@
       "december": "10.30",
       "change": "",
       "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in s per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -712,7 +752,9 @@
       "december": "221.00",
       "change": "",
       "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -745,7 +787,9 @@
       "november": "5.35",
       "december": "5.54",
       "change": "",
-      "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME)."
+      "explanation": "The price of high-grade copper futures contracts traded on the COMEX division of the Chicago Mercantile Exchange (CME). Copper is often called 'Dr. Copper' for its ability to predict economic trends due to its widespread use in construction, electronics, and manufacturing. Prices are quoted in US dollars per pound. Copper demand is closely tied to global industrial activity, particularly in emerging markets like China. The metal is also seen as a barometer of global economic health, with rising prices often indicating strong manufacturing activity and economic growth. Copper is highly sensitive to changes in global supply (from mining) and demand (from industrial usage), as well as inventory levels at major exchanges like the London Metal Exchange (LME).",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -768,7 +812,9 @@
       "releaseDay": 0,
       "url": "https://www.ams.usda.gov/mnreports/ams_3621.pdf",
       "change": "",
-      "explanation": "The average retail price of granular urea, the most widely used nitrogen fertilizer globally, as reported by the USDA Agricultural Marketing Service in their weekly national fertilizer review. Urea contains 46% nitrogen and is essential for agricultural crop production across all major grain, oilseed, and commodity crops. Prices are quoted in US dollars per short ton. Urea prices are heavily influenced by natural gas costs (the primary feedstock for production), global agricultural demand, seasonal planting cycles, and trade policies. Rising urea prices increase input costs for farmers and can pressure food prices higher, while falling prices provide relief to agricultural producers. The fertilizer market is closely watched for its implications on food security and agricultural commodity prices."
+      "explanation": "The average retail price of granular urea, the most widely used nitrogen fertilizer globally, as reported by the USDA Agricultural Marketing Service in their weekly national fertilizer review. Urea contains 46% nitrogen and is essential for agricultural crop production across all major grain, oilseed, and commodity crops. Prices are quoted in US dollars per short ton. Urea prices are heavily influenced by natural gas costs (the primary feedstock for production), global agricultural demand, seasonal planting cycles, and trade policies. Rising urea prices increase input costs for farmers and can pressure food prices higher, while falling prices provide relief to agricultural producers. The fertilizer market is closely watched for its implications on food security and agricultural commodity prices.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -802,7 +848,9 @@
       "december": "327.035",
       "change": "",
       "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-30T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "midterms-house-2026",
@@ -824,20 +872,20 @@
           "Republican Party": "18"
         },
         "2026-05-16": {
-          "Democratic Party": "52¢",
-          "Republican Party": "48¢"
+          "Democratic Party": "52\u00a2",
+          "Republican Party": "48\u00a2"
         },
         "2026-05-15": {
-          "Democratic Party": "51¢",
-          "Republican Party": "49¢"
+          "Democratic Party": "51\u00a2",
+          "Republican Party": "49\u00a2"
         },
         "2026-05-14": {
-          "Democratic Party": "50¢",
-          "Republican Party": "50¢"
+          "Democratic Party": "50\u00a2",
+          "Republican Party": "50\u00a2"
         },
         "2026-05-12": {
-          "Democratic Party": "49¢",
-          "Republican Party": "51¢"
+          "Democratic Party": "49\u00a2",
+          "Republican Party": "51\u00a2"
         },
         "2026-10-04": {
           "Democratic Party": "94",
@@ -845,7 +893,9 @@
         }
       },
       "change": "",
-      "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Democrats hold a commanding 94% edge, driven by an 8-point generic ballot advantage and President Trump's approval ratings in the mid-30s amid voter concerns over prices, inflation, and foreign policy. Democrats need only a net gain of roughly three seats from their current position near 214-216 seats. Republican redistricting efforts have narrowed the map in some states."
+      "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Democrats hold a commanding 94% edge, driven by an 8-point generic ballot advantage and President Trump's approval ratings in the mid-30s amid voter concerns over prices, inflation, and foreign policy. Democrats need only a net gain of roughly three seats from their current position near 214-216 seats. Republican redistricting efforts have narrowed the map in some states.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -879,7 +929,9 @@
       "december": "$92B",
       "change": "",
       "explanation": "The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T16:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -965,7 +1017,9 @@
       },
       "change": "",
       "explanation": "Monthly federal government receipts (revenue) and outlays (spending), with the deficit calculated as outlays minus receipts. A negative value means spending exceeded revenue (deficit), while a positive value indicates a surplus. Data is organized by fiscal year (FY2025 runs October 2024 - September 2025, FY2026 runs October 2025 - September 2026). The Monthly Treasury Statement provides this data from the Treasury Department.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T16:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -999,7 +1053,9 @@
       "december": "$38,339,541,810,902.33",
       "change": "",
       "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T16:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2024": {
@@ -1038,9 +1094,11 @@
         "El Salvador": "13,727",
         "Honduras": "10,553"
       },
-      "change": "Q3→Q4: -26,625 (-74.1%)",
+      "change": "Q3\u2192Q4: -26,625 (-74.1%)",
       "change_label": "QoQ",
-      "explanation": "Form I-821 applications for Temporary Protected Status (TPS) approved by USCIS during Fiscal Year 2025, broken down by quarter and by country of designation. TPS is a temporary immigration status granted to eligible nationals of designated countries who are already in the United States, allowing them to live and work legally while conditions in their home country prevent safe return. The program covers countries experiencing armed conflict, environmental disasters, or other extraordinary conditions. Venezuela and Haiti represented the largest cohorts of approved applications in FY2025, reflecting ongoing designations for those countries. Quarterly approvals show significant variance, with Q1 (Oct-Dec) typically seeing the highest volume and Q4 (Jul-Sep) the lowest, often reflecting processing backlogs and staffing patterns. This data is published quarterly by USCIS in the RADP (Refugee, Asylum, and Temporary Protected Status) data report."
+      "explanation": "Form I-821 applications for Temporary Protected Status (TPS) approved by USCIS during Fiscal Year 2025, broken down by quarter and by country of designation. TPS is a temporary immigration status granted to eligible nationals of designated countries who are already in the United States, allowing them to live and work legally while conditions in their home country prevent safe return. The program covers countries experiencing armed conflict, environmental disasters, or other extraordinary conditions. Venezuela and Haiti represented the largest cohorts of approved applications in FY2025, reflecting ongoing designations for those countries. Quarterly approvals show significant variance, with Q1 (Oct-Dec) typically seeing the highest volume and Q4 (Jul-Sep) the lowest, often reflecting processing backlogs and staffing patterns. This data is published quarterly by USCIS in the RADP (Refugee, Asylum, and Temporary Protected Status) data report.",
+      "releaseTimeISO": "2026-08-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1071,7 +1129,9 @@
       "november": "10,964",
       "december": "9,990",
       "change": "",
-      "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection."
+      "explanation": "The number of individuals encountered by U.S. Customs and Border Protection (CBP) between ports of entry along the Southwest border. This metric includes both apprehensions (individuals taken into custody) and inadmissibles (individuals presenting at ports of entry without proper documentation). The data is reported by CBP and can vary due to seasonal migration patterns, economic conditions in home countries, and changes in U.S. immigration policies. The numbers represent unique encounters and may include multiple encounters with the same individual. This indicator is often used to analyze migration trends and border security effectiveness, though it does not represent total illegal entries, as it doesn't account for those who evade detection.",
+      "releaseTimeISO": "2026-08-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1148,7 +1208,9 @@
         "november": "$289,504B",
         "december": "$285,282B"
       },
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-09T14:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1182,7 +1244,9 @@
       "december": "$28B",
       "change": "",
       "explanation": "Monthly customs duties collected by the U.S. government on imported goods. Tariffs are taxes imposed on specific categories of imports, often used as a tool of trade policy. Revenue from tariffs goes directly to the U.S. Treasury and can be used to fund government operations. Changes in tariff revenue can reflect shifts in trade volumes, tariff rates, or the composition of imports. Tariff revenue typically increases with new or increased tariffs but may decrease if the tariffs reduce overall trade volumes. This metric is closely watched in trade policy discussions and budget analysis.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T16:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1215,7 +1279,9 @@
       "december": "$619.1B",
       "change": "",
       "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-03T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1249,7 +1315,9 @@
       "november": "92.9",
       "december": "94.2",
       "change": "",
-      "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity."
+      "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity.",
+      "releaseTimeISO": "2026-09-28T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1282,7 +1350,9 @@
       "november": "205.4",
       "december": "205.5",
       "change": "",
-      "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health."
+      "explanation": "The Manheim Used Vehicle Value Index tracks used vehicle prices at wholesale auctions, providing insight into used car market trends. The index is adjusted for seasonality, mileage, and vehicle mix, with a base of 100 in 1997. Rising values indicate strong demand or limited supply in the used vehicle market, while declining values suggest softening demand. The index is closely watched as used car prices significantly impact inflation measures and consumer spending. The index includes all major vehicle manufacturers and segments, making it a comprehensive measure of the used vehicle market's health.",
+      "releaseTimeISO": "2026-10-07T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1315,7 +1385,9 @@
       "december": "$21,445.9B",
       "change": "",
       "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T13:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1350,7 +1422,9 @@
       "december": "120.57",
       "change": "",
       "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1522,7 +1596,9 @@
         }
       },
       "change": "",
-      "explanation": "Daily ship transits through the Strait of Hormuz, a critical chokepoint for global oil shipments. Data from Windward AI Maritime Intelligence Operations Center. Pre-crisis normal was 100-138 transits/day. Current transits dropped dramatically from ~115/day in mid-February to single digits after February 28, 2026 due to US-Israel-Iran conflict and U.S. maritime blockade. The strait handles roughly 20% of global oil consumption. On April 14, 2026 (Day 2 of U.S. blockade), 19 vessels transited: 5 inbound, 14 outbound. Outbound volume surged as Iran-linked tonnage cleared port ahead of enforcement tightening."
+      "explanation": "Daily ship transits through the Strait of Hormuz, a critical chokepoint for global oil shipments. Data from Windward AI Maritime Intelligence Operations Center. Pre-crisis normal was 100-138 transits/day. Current transits dropped dramatically from ~115/day in mid-February to single digits after February 28, 2026 due to US-Israel-Iran conflict and U.S. maritime blockade. The strait handles roughly 20% of global oil consumption. On April 14, 2026 (Day 2 of U.S. blockade), 19 vessels transited: 5 inbound, 14 outbound. Outbound volume surged as Iran-linked tonnage cleared port ahead of enforcement tightening.",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1552,7 +1628,9 @@
       "november": "00",
       "december": "-14.90",
       "change": "",
-      "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions."
+      "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions.",
+      "releaseTimeISO": "2026-08-22T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1587,7 +1665,9 @@
       "november": "$735.1B",
       "december": "$735B",
       "change": "",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T14:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1620,7 +1700,9 @@
       "december": "$2,197.6B",
       "change": "",
       "explanation": "The total dollar value of construction work done in the U.S. each month, as reported by the U.S. Census Bureau. This includes both public and private construction projects, covering residential, non-residential, and infrastructure spending. The data is seasonally adjusted and annualized to show what the yearly total would be if that month's pace continued for 12 months. Construction spending is a coincident indicator of economic activity, reflecting current business investment and government expenditure. The report breaks down spending by sector (residential, commercial, manufacturing, etc.) and by funding source (private vs. public). Analysts watch for trends in construction spending as they can signal shifts in economic growth and employment in the construction sector.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-02T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1652,7 +1734,9 @@
       "november": "77.2",
       "december": "71.5",
       "change": "",
-      "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two."
+      "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two.",
+      "releaseTimeISO": "2026-09-28T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1684,7 +1768,9 @@
       "november": "$415,100",
       "december": "$409,500",
       "change": "",
-      "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes."
+      "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes.",
+      "releaseTimeISO": "2026-09-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1717,7 +1803,9 @@
       "november": "38",
       "december": "39",
       "change": "",
-      "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity."
+      "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity.",
+      "releaseTimeISO": "2026-09-18T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1751,7 +1839,9 @@
       "december": "111",
       "change": "",
       "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2025": {
@@ -1790,7 +1880,9 @@
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "change": "",
       "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1824,7 +1916,9 @@
       "december": "723,000",
       "change": "",
       "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-23T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1858,7 +1952,9 @@
       "december": "1.378M",
       "change": "",
       "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-18T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1891,7 +1987,9 @@
       "november": "105.5",
       "december": "104.51",
       "change": "",
-      "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data."
+      "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data.",
+      "releaseTimeISO": "2026-10-15T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1924,7 +2022,9 @@
       "november": "132,222,000",
       "december": "132,259,000",
       "change": "",
-      "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients."
+      "explanation": "The total level of private sector employment, excluding government jobs, as reported by the ADP National Employment Report. This survey of approximately 400,000 U.S. businesses provides an early indicator of labor market conditions, typically released two days before the BLS employment report. The data is seasonally adjusted and broken down by business size (small: 1-49 employees, medium: 50-499 employees, large: 500+ employees) and industry. While the ADP report can be volatile month-to-month, it provides valuable insights into private sector hiring trends and often influences market expectations for the official employment report. The data is based on actual payroll data from ADP clients.",
+      "releaseTimeISO": "2026-10-15T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1956,7 +2056,9 @@
       "november": "6,846,000",
       "december": "6,550,000",
       "change": "",
-      "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency."
+      "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency.",
+      "releaseTimeISO": "2026-09-15T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -1989,7 +2091,9 @@
       "november": "71,321",
       "december": "35,553",
       "change": "",
-      "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges."
+      "explanation": "The Challenger Job Cuts Report tracks monthly announcements of job cuts by U.S.-based employers. It provides insights into corporate restructuring, economic conditions, and labor market trends. The report includes reasons for layoffs and year-over-year comparisons, serving as an early indicator of labor market challenges.",
+      "releaseTimeISO": "2026-08-06T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2024,7 +2128,9 @@
       "december": "219,250",
       "change": "",
       "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2059,7 +2165,9 @@
       "december": "158,432,000",
       "change": "",
       "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month).",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-05T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2025": {
@@ -2098,7 +2206,9 @@
       "source_url": "https://fred.stlouisfed.org/series/PPIFIS",
       "change": "",
       "explanation": "The Producer Price Index (PPI) for Final Demand, seasonally adjusted, sourced from the FRED series PPIFIS. The PPI measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-13T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2135,7 +2245,9 @@
       "december": "324.054",
       "change": "",
       "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-11T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2164,7 +2276,9 @@
       "november": "119.8",
       "december": "119.6",
       "change": "",
-      "explanation": "The Conference Board's Lagging Economic Index (LAG) is a composite of seven economic indicators that change after the economy as a whole changes. Components include the average duration of unemployment, the prime rate, and the ratio of consumer credit to personal income. The LAG helps confirm and assess the direction of the economy's movements over recent months. It's particularly useful for confirming that a turning point in the economy has actually occurred. The index is expressed relative to 2016=100 and is typically used in conjunction with the Leading and Coincident Economic Indexes to provide a comprehensive view of the business cycle."
+      "explanation": "The Conference Board's Lagging Economic Index (LAG) is a composite of seven economic indicators that change after the economy as a whole changes. Components include the average duration of unemployment, the prime rate, and the ratio of consumer credit to personal income. The LAG helps confirm and assess the direction of the economy's movements over recent months. It's particularly useful for confirming that a turning point in the economy has actually occurred. The index is expressed relative to 2016=100 and is typically used in conjunction with the Leading and Coincident Economic Indexes to provide a comprehensive view of the business cycle.",
+      "releaseTimeISO": "2026-08-22T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2195,7 +2309,9 @@
       "november": "48.2",
       "december": "47.9",
       "change": "",
-      "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity."
+      "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity.",
+      "releaseTimeISO": "2026-08-01T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2228,7 +2344,9 @@
       "november": "54.2",
       "december": "52.7",
       "change": "",
-      "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations."
+      "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations.",
+      "releaseTimeISO": "2026-09-22T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2259,7 +2377,9 @@
       "november": "97.9",
       "december": "97.6",
       "change": "",
-      "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle."
+      "explanation": "The Conference Board's Leading Economic Index (LEI) is a composite of 10 forward-looking economic indicators that typically change direction before the overall economy does. The components include average weekly hours in manufacturing, stock prices, building permits, and consumer expectations. The index is designed to signal peaks and troughs in the business cycle, with three consecutive monthly declines often preceding a recession. The LEI is expressed as an index with 2016 as the base year (2016=100). Economists and policymakers use the LEI to anticipate turning points in the economy, with a six- to nine-month lead time. The index is published monthly and is subject to revisions as more complete data becomes available. The Conference Board also produces Coincident and Lagging Economic Indexes to provide a comprehensive view of the business cycle.",
+      "releaseTimeISO": "2026-08-22T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2291,7 +2411,9 @@
       "november": "99",
       "december": "99.5",
       "change": "",
-      "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality."
+      "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality.",
+      "releaseTimeISO": "2026-08-12T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2322,7 +2444,9 @@
       "november": "52.4",
       "december": "53.8",
       "change": "",
-      "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations."
+      "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations.",
+      "releaseTimeISO": "2026-08-05T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2356,7 +2480,9 @@
       "december": "101.5",
       "change": "",
       "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used.",
-      "newMonth": true
+      "newMonth": true,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2025": {
@@ -2374,7 +2500,9 @@
       "releaseDay": 0,
       "url": "https://robotaxitracker.com/vehicles?provider=waymo&area=bay-area-waymo",
       "change": "",
-      "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment."
+      "explanation": "Weekly autonomous vehicle trips by Waymo in their operational markets (Phoenix, San Francisco, Los Angeles, Austin). This metric tracks the scale of Waymo's commercial robotaxi service expansion, showing significant growth from initial launch volumes to broader deployment.",
+      "releaseTimeISO": "2026-05-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2398,7 +2526,9 @@
       "url": "https://fred.stlouisfed.org/series/UNRATE",
       "change": "",
       "explanation": "The seasonally adjusted unemployment rate, published by the Bureau of Labor Statistics. It represents the percentage of the labor force that is unemployed and actively seeking employment, serving as a key measure of labor market health and slack in the economy.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-07T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2422,7 +2552,9 @@
       "url": "https://fred.stlouisfed.org/series/CES0500000003",
       "change": "",
       "explanation": "The seasonally adjusted average hourly earnings of all employees on private non-farm payrolls, published by the Bureau of Labor Statistics. This is a key measure of wage growth and labor market tightening, closely watched for inflationary pressures.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-07T12:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2446,7 +2578,9 @@
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
       "explanation": "The capacity utilization rate for total industry (including manufacturing, mining, and utilities), published by the Federal Reserve. It measures the percentage of available resources being used to produce goods and services, serving as a key indicator of economic slack and inflationary pressure.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2470,7 +2604,9 @@
       "url": "https://fred.stlouisfed.org/series/PERMIT",
       "change": "",
       "explanation": "The number of building permits issued for new privately owned housing units, published by the U.S. Census Bureau. This is a leading indicator of future residential construction activity and housing market conditions, as permits are typically filed before construction begins.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-19T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "2026": {
@@ -2495,7 +2631,9 @@
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",
       "explanation": "The Henry Hub natural gas spot price, a daily benchmark for wholesale natural gas prices in the United States. It reflects the cost of natural gas at the Henry Hub in Louisiana, a major trading hub. Natural gas prices are influenced by weather patterns, supply/demand fundamentals, and storage levels.",
-      "newMonth": false
+      "newMonth": false,
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "pit-no-2026-10-25",
@@ -2539,7 +2677,9 @@
         }
       },
       "PIT_win_odds": "56",
-      "NO_win_odds": "44"
+      "NO_win_odds": "44",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "ind-min-2026-10-25",
@@ -2583,7 +2723,9 @@
         }
       },
       "IND_win_odds": "34",
-      "MIN_win_odds": "66"
+      "MIN_win_odds": "66",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "mia-nyj-2026-10-25",
@@ -2627,7 +2769,9 @@
         }
       },
       "MIA_win_odds": "33",
-      "NYJ_win_odds": "67"
+      "NYJ_win_odds": "67",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "cin-bal-2026-10-25",
@@ -2671,7 +2815,9 @@
         }
       },
       "CIN_win_odds": "38",
-      "BAL_win_odds": "62"
+      "BAL_win_odds": "62",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "cle-ten-2026-10-25",
@@ -2715,7 +2861,9 @@
         }
       },
       "CLE_win_odds": "52",
-      "TEN_win_odds": "48"
+      "TEN_win_odds": "48",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "tb-car-2026-10-25",
@@ -2759,7 +2907,9 @@
         }
       },
       "TB_win_odds": "43",
-      "CAR_win_odds": "57"
+      "CAR_win_odds": "57",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "sf-atl-2026-10-25",
@@ -2803,7 +2953,9 @@
         }
       },
       "SF_win_odds": "66",
-      "ATL_win_odds": "34"
+      "ATL_win_odds": "34",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "nyg-hou-2026-10-25",
@@ -2847,7 +2999,9 @@
         }
       },
       "NYG_win_odds": "24",
-      "HOU_win_odds": "76"
+      "HOU_win_odds": "76",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "den-ari-2026-10-25",
@@ -2891,7 +3045,9 @@
         }
       },
       "DEN_win_odds": "70",
-      "ARI_win_odds": "30"
+      "ARI_win_odds": "30",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "gb-det-2026-10-25",
@@ -2935,7 +3091,9 @@
         }
       },
       "GB_win_odds": "38",
-      "DET_win_odds": "62"
+      "DET_win_odds": "62",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "buf-lv-2026-10-18",
@@ -2975,7 +3133,9 @@
         }
       },
       "BUF_win_odds": "68",
-      "LV_win_odds": "32"
+      "LV_win_odds": "32",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "hou-jax-2026-10-18",
@@ -3055,7 +3215,9 @@
         }
       },
       "TEN_win_odds": "26",
-      "IND_win_odds": "74"
+      "IND_win_odds": "74",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "car-phi-2026-10-18",
@@ -3095,7 +3257,9 @@
         }
       },
       "CAR_win_odds": "62",
-      "PHI_win_odds": "38"
+      "PHI_win_odds": "38",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "pit-tb-2026-10-18",
@@ -3135,7 +3299,9 @@
         }
       },
       "PIT_win_odds": "56",
-      "TB_win_odds": "44"
+      "TB_win_odds": "44",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "bal-cle-2026-10-18",
@@ -3175,7 +3341,9 @@
         }
       },
       "BAL_win_odds": "62",
-      "CLE_win_odds": "38"
+      "CLE_win_odds": "38",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "no-nyg-2026-10-18",
@@ -3215,7 +3383,9 @@
         }
       },
       "NO_win_odds": "50",
-      "NYG_win_odds": "50"
+      "NYG_win_odds": "50",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "chi-atl-2026-10-18",
@@ -3255,7 +3425,9 @@
         }
       },
       "CHI_win_odds": "50",
-      "ATL_win_odds": "50"
+      "ATL_win_odds": "50",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "nyj-ne-2026-10-18",
@@ -3295,7 +3467,9 @@
         }
       },
       "NYJ_win_odds": "24",
-      "NE_win_odds": "76"
+      "NE_win_odds": "76",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "lac-kc-2026-10-18",
@@ -3335,7 +3509,9 @@
         }
       },
       "LAC_win_odds": "22",
-      "KC_win_odds": "78"
+      "KC_win_odds": "78",
+      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     }
   ]
 }

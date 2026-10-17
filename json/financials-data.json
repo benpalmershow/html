@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-17T11:23:02Z",
+  "lastUpdated": "2026-10-17T12:34:22Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -864,7 +864,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Interest on Debt",
-      "lastUpdated": "2026-10-16T19:08:21Z",
+      "lastUpdated": "2026-10-17T12:34:22Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$89B",
@@ -879,7 +879,7 @@
       "december": "$92B",
       "change": "",
       "explanation": "The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time.",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "2026": {
@@ -898,7 +898,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Monthly Budget Deficit/Surplus",
-      "lastUpdated": "2026-10-16T19:08:21Z",
+      "lastUpdated": "2026-10-17T12:34:22Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
       "january": "-$128,640M",
@@ -965,7 +965,7 @@
       },
       "change": "",
       "explanation": "Monthly federal government receipts (revenue) and outlays (spending), with the deficit calculated as outlays minus receipts. A negative value means spending exceeded revenue (deficit), while a positive value indicates a surplus. Data is organized by fiscal year (FY2025 runs October 2024 - September 2025, FY2026 runs October 2025 - September 2026). The Monthly Treasury Statement provides this data from the Treasury Department.",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "2026": {
@@ -984,7 +984,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Treasury Debt Level",
-      "lastUpdated": "2026-10-16T19:08:21Z",
+      "lastUpdated": "2026-10-17T12:34:22Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
       "march": "$36,216,627,186,278.78",
@@ -999,7 +999,7 @@
       "december": "$38,339,541,810,902.33",
       "change": "",
       "explanation": "The total outstanding debt of the U.S. government, representing the cumulative amount of money borrowed by the federal government to finance budget deficits over time. This includes debt held by the public (Treasury securities owned by individuals, corporations, and foreign governments) and intragovernmental holdings (debt held by government trust funds like Social Security). The debt level is influenced by annual budget deficits, economic conditions, and interest rates. A growing debt can lead to higher interest payments and potentially crowd out other government spending. The debt-to-GDP ratio is a key metric for assessing the sustainability of government finances.",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "2024": {
@@ -1167,7 +1167,7 @@
       "color": "#1abc9c",
       "agency": "Treasury",
       "name": "Tariff Revenue",
-      "lastUpdated": "2026-10-16T19:08:21Z",
+      "lastUpdated": "2026-10-17T12:34:22Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "march": "$8.2B",
@@ -1182,7 +1182,7 @@
       "december": "$28B",
       "change": "",
       "explanation": "Monthly customs duties collected by the U.S. government on imported goods. Tariffs are taxes imposed on specific categories of imports, often used as a tool of trade policy. Revenue from tariffs goes directly to the U.S. Treasury and can be used to fund government operations. Changes in tariff revenue can reflect shifts in trade volumes, tariff rates, or the composition of imports. Tariff revenue typically increases with new or increased tariffs but may decrease if the tariffs reduce overall trade volumes. This metric is closely watched in trade policy discussions and budget analysis.",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "2026": {

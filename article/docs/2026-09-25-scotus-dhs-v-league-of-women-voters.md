@@ -1,6 +1,6 @@
 ---
 title: "DHS v. League of Women Voters — Stay Granted (26A308)"
-date: "09/25/26"
+date: 2026-09-25
 category: "scotus"
 tags: ["scotus", "immigration", "voting-rights", "stay", "dhs", "league-of-women-voters", "shadow-docket"]
 ---

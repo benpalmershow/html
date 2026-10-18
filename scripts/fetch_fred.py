@@ -77,7 +77,7 @@ WEEKLY_SERIES = {"Jobless Claims"}
 # Indicators that need billions-style formatting (comma + "B" suffix)
 BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in millions and need /1000 for billions formatting
-MILLIONS_INDICATORS = {"Monthly Retail Sales"}
+MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in thousands and need *1000 before formatting
 THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
 # Indicators that are inherently volatile; raise threshold for warnings
@@ -237,8 +237,14 @@ def format_value(value, indicator_name, existing_value):
             return f"{int(round(millions_val))}M"
     elif format_suffix == 'B':
         # Format as X.XXXB (billions format)
-        # Convert value to billions for display
-        billions_val = rounded / 1000000000.0
+        # Value has already been scaled to billions by the MILLIONS_INDICATORS
+        # rule above, so format `rounded` directly without another /1e9.
+        billions_val = rounded
+        if decimals > 0:
+            fmt = f"{{:,.{decimals}f}}B"
+            return fmt.format(billions_val)
+        else:
+            return f"{int(round(billions_val)):,}B"
         if decimals > 0:
             fmt = f"{{:.{decimals}f}}B"
             return fmt.format(billions_val)

@@ -10,4 +10,4 @@ The core point is straightforward: technology itself isn't villainous just becau
 
 That asymmetry is telling. Hollywood has spent decades mythmaking and shaping cultural narratives, often with little self-awareness about its own concentration of power and incentives. The industry that built its fortune on selling stories now frets about who controls the next storytelling machine. 
 
-Instead of a morality play pitting good creators against evil technologists, the more honest take is a competition over attention, distribution, and cultural influence. Both industries chase those things. Calling one side uniquely corrupt while the other rides to the rescue doesn't hold up. The power struggle is real, but the saints and villains are evenly distributed.
+Instead of a morality play pitting good creators against evil technologists, the more honest take is a competition over attention, distribution, and cultural influence. Both industries chase those things. Calling one side uniquely corrupt while the other rides to the rescue doesn't hold up. 

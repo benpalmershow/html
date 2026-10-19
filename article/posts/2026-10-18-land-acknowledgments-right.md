@@ -5,5 +5,3 @@
 The New York Times recently ran an opinion piece making the case for land acknowledgments as a necessary recognition of historical reality rather than mere virtue signaling. The argument centers on confronting the uncomfortable truth of colonial dispossession rather than glossing over it.
 
 Doc Riter pushes back hard on that framing, asking pointed questions: if our ancestors benefited from systems of oppression, does awareness automatically produce guilt? Is guilt the point? And more practically, how does acknowledgment translate into material repair: reparation, just compensation, or expropriation?
-
-Those are fair questions. Acknowledgment can be performative if it ends at words. But refusing to acknowledge the history also does nothing to address the material consequences that persist to this day. 

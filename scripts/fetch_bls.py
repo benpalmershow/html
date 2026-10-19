@@ -36,7 +36,13 @@ if not BLS_API_KEY:
 # PPI is intentionally excluded: it is sourced from FRED (PPIFIS, seasonally
 # adjusted) via scripts/fetch_fred.py. BLS WPUFD4 carries a different vintage
 # (preliminary) value than FRED PPIFIS, so the BLS workflow must not clobber it.
-INDICATOR_MAP = {}
+INDICATOR_MAP = {
+    "Job Openings": "JTSJOL",  # JOLTS Job Openings: Total Nonfarm, level in thousands
+}
+
+# Indicators whose BLS values are reported in thousands and need *1000 to match
+# the stored units (e.g. Job Openings stored as "7,240,000").
+THOUSANDS_INDICATORS = {"Job Openings"}
 
 MONTH_MAP = {
     "01": "january", "02": "february", "03": "march", "04": "april",
@@ -105,7 +111,11 @@ def update_financials():
                 fval = float(val)
             except ValueError:
                 continue
-            by_year.setdefault(year, {})[month] = f"{fval:.3f}"
+            if indicator_name in THOUSANDS_INDICATORS:
+                fval = fval * 1000.0
+                by_year.setdefault(year, {})[month] = f"{int(round(fval)):,}"
+            else:
+                by_year.setdefault(year, {})[month] = f"{fval:.3f}"
 
         found = False
         for idx in data.get("indices", []):

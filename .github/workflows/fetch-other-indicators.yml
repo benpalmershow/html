@@ -1,0 +1,50 @@
+name: Fetch Other Indicators
+
+on:
+  schedule:
+    # Run daily at 8:00 AM UTC, after FRED (7:00) and Treasury (9:00 - before)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-other-indicators
+  cancel-in-progress: false
+
+jobs:
+  fetch-other-indicators:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Fetch Polymarket and Kalshi indicators
+        run: |
+          python3 scripts/fetch_other_indicators.py
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/financials-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json
+          if git diff --staged --quiet; then
+            echo "No other-indicator data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update Polymarket/Kalshi prediction market indicators [skip ci]"
+          git push

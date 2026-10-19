@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-16T19:14:53.243039Z",
+  "lastUpdated": "2026-10-19T15:20:49.941504Z",
   "source": "OpenFEC API",
   "source_url": "https://api.open.fec.gov/developers/",
   "cycle": 2026,
@@ -20,12 +20,12 @@
           "party": "DEM",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S8GA00180/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 97986263.04,
-          "disbursements": 59730545.53,
-          "cash_on_hand_end_period": "42587451.00",
-          "coverage_end_date": "2026-06-30"
+          "receipts": 131133034.31,
+          "disbursements": 109195705.41,
+          "cash_on_hand_end_period": "26269062.39",
+          "coverage_end_date": "2026-09-30"
         },
         {
           "candidate_id": "S6GA00390",
@@ -33,7 +33,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6GA00390/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 10249716.29,
           "disbursements": 9693572.36,
@@ -41,7 +41,7 @@
           "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "TX",
@@ -59,7 +59,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00388/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 19497809.76,
           "disbursements": 14572704.29,
@@ -72,15 +72,15 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00479/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 68560930.42,
-          "disbursements": 47012775.34,
-          "cash_on_hand_end_period": "21548155.08",
-          "coverage_end_date": "2026-06-30"
+          "receipts": 128772835.42,
+          "disbursements": 114178603.57,
+          "cash_on_hand_end_period": "14594231.85",
+          "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "OH",
@@ -98,7 +98,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00304/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 19208763.22,
           "disbursements": 10325469.94,
@@ -111,15 +111,15 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00163/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 38566234.1,
-          "disbursements": 22336492.78,
-          "cash_on_hand_end_period": "16229741.32",
-          "coverage_end_date": "2026-06-30"
+          "receipts": 61686819.69,
+          "disbursements": 56825367.76,
+          "cash_on_hand_end_period": "4861451.93",
+          "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "NC",
@@ -137,7 +137,7 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00407/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 47190466.06,
           "disbursements": 34713071.15,
@@ -150,7 +150,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00415/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 13415721.2,
           "disbursements": 12499619.7,
@@ -158,7 +158,7 @@
           "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "KS",
@@ -176,7 +176,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S0KS00315/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 7006239.78,
           "disbursements": 6294110.62,
@@ -189,15 +189,15 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6KS00312/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 4169077.81,
-          "disbursements": 2438456.9,
-          "cash_on_hand_end_period": "1730620.91",
-          "coverage_end_date": "2026-07-15"
+          "receipts": 13533710.93,
+          "disbursements": 10350311.17,
+          "cash_on_hand_end_period": "3183399.76",
+          "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "ME",
@@ -215,7 +215,7 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6ME00159/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 24131410.26,
           "disbursements": 20038120.36,
@@ -223,7 +223,7 @@
           "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "MI",
@@ -241,7 +241,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S4MI00595/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 20565706.38,
           "disbursements": 14293939.07,
@@ -254,15 +254,15 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6MI00418/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 14514335.93,
-          "disbursements": 11961573.38,
-          "cash_on_hand_end_period": "2552762.55",
-          "coverage_end_date": "2026-07-15"
+          "receipts": 45175566.89,
+          "disbursements": 41383363.43,
+          "cash_on_hand_end_period": "3792203.46",
+          "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "IA",
@@ -280,7 +280,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00314/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 13472386.27,
           "disbursements": 8475472.45,
@@ -293,15 +293,15 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00298/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 6276526.9,
-          "disbursements": 3914213.12,
-          "cash_on_hand_end_period": "2362313.78",
-          "coverage_end_date": "2026-06-30"
+          "receipts": 20152882.38,
+          "disbursements": 16545789.08,
+          "cash_on_hand_end_period": "3607093.30",
+          "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     },
     {
       "state": "NH",
@@ -319,12 +319,12 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NH00141/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
-          "receipts": 15384656.83,
-          "disbursements": 11540323.25,
-          "cash_on_hand_end_period": "4251917.81",
-          "coverage_end_date": "2026-08-19"
+          "receipts": 21500073.11,
+          "disbursements": 18623763.08,
+          "cash_on_hand_end_period": "3283894.26",
+          "coverage_end_date": "2026-09-30"
         },
         {
           "candidate_id": "S6NH00208",
@@ -332,7 +332,7 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NH00208/",
-          "fetchedAt": "2026-10-16T19:14:53.243039Z",
+          "fetchedAt": "2026-10-19T15:20:49.941504Z",
           "source": "OpenFEC API",
           "receipts": 5334886.01,
           "disbursements": 2799104.85,
@@ -340,7 +340,7 @@
           "coverage_end_date": "2026-09-30"
         }
       ],
-      "lastUpdated": "2026-10-16T19:14:53.243039Z"
+      "lastUpdated": "2026-10-19T15:20:49.941504Z"
     }
   ]
 }

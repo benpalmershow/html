@@ -96,6 +96,7 @@
 /* Badge sits inline after the wrapped name text; top offset keeps it aligned with the first line. */
 .new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-orange); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; animation: badgePulse 1.4s ease-in-out 3; }
 .week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-teal); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; }
+.game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-teal-dark, var(--logo-teal)); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; }
 
 @keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 

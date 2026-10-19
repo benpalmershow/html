@@ -31,9 +31,46 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Determine current NFL week (ISO week number)
+      - name: Determine current NFL week (from game dates in YAML)
         id: week
-        run: echo "week=$(date +%V)" >> "$GITHUB_OUTPUT"
+        run: |
+          # NFL season weeks (1-18) are NOT the ISO calendar week number.
+          # Derive the active NFL week from json/nfl-games.yml instead:
+          # the week containing today, or the nearest upcoming week if today
+          # falls between weeks. Games from all active weeks are refreshed.
+          WEEK=$(python3 - <<'PY'
+          import datetime, sys
+          from pathlib import Path
+          try:
+              import yaml
+          except ImportError:
+              print(); sys.exit(0)
+          doc = yaml.safe_load(Path("json/nfl-games.yml").read_text()) or {}
+          now = datetime.datetime.now(datetime.timezone.utc)
+          weeks = []
+          for g in doc.get("games", []):
+              w = g.get("week")
+              iso = g.get("game_time_iso")
+              if w is None or not iso:
+                  continue
+              try:
+                  dt = datetime.datetime.fromisoformat(iso.replace("Z", "+00:00"))
+              except ValueError:
+                  continue
+              weeks.append((w, dt))
+          if not weeks:
+              print(); sys.exit(0)
+          # Active weeks: those whose game window covers today, or the next
+          # upcoming week if today is before the next game window.
+          upcoming = [w for w, dt in weeks if dt >= now]
+          if upcoming:
+              print(max(upcoming))
+          else:
+              print(max(w for w, _ in weeks))
+          PY
+          )
+          echo "week=$WEEK" >> "$GITHUB_OUTPUT"
+          echo "NFL week: $WEEK"
 
       - name: Fetch NFL odds for current week
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}

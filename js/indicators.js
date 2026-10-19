@@ -11,6 +11,27 @@ const IndicatorRenderers = (function () {
         return new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     }
 
+    // The binary market helpers live in html-utils.js. Resolve them lazily so a
+    // stale cached copy of that file degrades the rendering instead of throwing
+    // and blanking the whole dashboard.
+    function sharedUtils() {
+        return (typeof HtmlUtils !== 'undefined') ? HtmlUtils : null;
+    }
+
+    function binaryProbabilityEntries(indicator) {
+        const utils = sharedUtils();
+        return (utils && utils.getBinaryProbabilityEntries)
+            ? utils.getBinaryProbabilityEntries(indicator)
+            : [];
+    }
+
+    function toPercent(value) {
+        const utils = sharedUtils();
+        if (utils && utils.probabilityPercent) return utils.probabilityPercent(value);
+        const num = parseFloat(value);
+        return Number.isFinite(num) ? Math.min(100, Math.max(0, num)) : 0;
+    }
+
         const BAR_COLOR_MAP = { 'dem-bar': '#3498db', 'gop-bar': '#e74c3c', 'yes-bar': '#22c55e', 'no-bar': '#ef4444', 'fomc-hold': '#3b82f6', 'fomc-hike': '#f59e0b', 'fomc-cut': '#ef4444' };
     const EARNINGS_TOOLTIP_MAP = {
         marketCap: 'Total market capitalization (share price × shares outstanding). Formula: marketCap = price × sharesOutstanding.',
@@ -160,51 +181,54 @@ const IndicatorRenderers = (function () {
     function renderBinaryPrediction(indicator, options = {}) {
         let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
         const { useDualBarClass = false, showCustomLabel = false, customLabel = 'Probability' } = options;
-        const probabilities = indicator.probabilities || indicator.propabilities;
-        if (probabilities && typeof probabilities === 'object') {
-            const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
-            if (sorted.length > 0) {
-                const latest = sorted[0];
-                const yesProb = parseFloat(latest[1].yes), noProb = parseFloat(latest[1].no);
-                const containerClass = useDualBarClass ? 'prediction-bar-container prediction-dual-bar' : 'prediction-bar-container';
-                latestDataHtml = `
-                    <div class="${containerClass}">
-                        <div class="prediction-bar-row prediction-bar-row-inline">
-                            <span class="prediction-value">${latest[1].yes}</span>
-                            <div class="prediction-bar-track prediction-bar-track-inline">
-                                <div class="prediction-bar-fill bar-yes" style="width: ${yesProb}%; height: 100%;" title="${latest[1].yes} Yes"></div>
-                                <div class="prediction-bar-fill bar-no" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${latest[1].no} No"></div>
-                            </div>
-                            <span class="prediction-value-left">${latest[1].no}</span>
-                        </div>
-                    </div>`;
-            }
+        const containerClass = useDualBarClass ? 'prediction-bar-container prediction-dual-bar' : 'prediction-bar-container';
+        const pairs = binaryProbabilityEntries(indicator);
 
-            if (sorted.length > 1) {
-                hasHistory = true;
-                historyDataHtml = sorted.slice(1).map(([date, probs], index) => {
-                    const yesProb = parseFloat(probs.yes), noProb = parseFloat(probs.no);
-                    const dateLabel = formatDateShort(date);
-                    return `<div class="prediction-history-row prediction-history-row-inline"><span class="prediction-history-date prediction-history-date-inline">${dateLabel}</span><div class="prediction-history-content"><div class="prediction-history-item"><span class="prediction-yes-value">${probs.yes}</span></div><div class="prediction-history-item"><span class="prediction-no-value">${probs.no}</span></div></div></div>`;
-                }).join('');
-            }
-        } else if (indicator.yes_probability && indicator.no_probability) {
-            const yesProb = parseFloat(indicator.yes_probability), noProb = parseFloat(indicator.no_probability);
-            const containerClass = useDualBarClass ? 'prediction-bar-container prediction-dual-bar' : 'prediction-bar-container';
+        if (pairs.length > 0) {
+            const latestPair = pairs[0][1];
+            const yesProb = toPercent(latestPair.yes);
+            const noProb = toPercent(latestPair.no);
             latestDataHtml = `
                 <div class="${containerClass}">
                     <div class="prediction-bar-row prediction-bar-row-inline">
-                        <span class="prediction-value">${indicator.yes_probability}</span>
+                        <span class="prediction-value">${latestPair.yes}</span>
                         <div class="prediction-bar-track prediction-bar-track-inline">
-                            <div class="prediction-bar-fill bar-yes" style="width: ${yesProb}%; height: 100%;" title="${indicator.yes_probability} Yes"></div>
-                            <div class="prediction-bar-fill bar-no" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${indicator.no_probability} No"></div>
+                            <div class="prediction-bar-fill bar-yes" style="width: ${yesProb}%; height: 100%;" title="${latestPair.yes} Yes"></div>
+                            <div class="prediction-bar-fill bar-no" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${latestPair.no} No"></div>
                         </div>
-                        <span class="prediction-value-left">${indicator.no_probability}</span>
+                        <span class="prediction-value-left">${latestPair.no}</span>
                     </div>
                 </div>`;
-        } else if (indicator.yes_probability && showCustomLabel) {
-            latestDataHtml = `<div class="latest-data-row"><span class="month-label">${customLabel}:</span> <span class="month-value">${indicator.yes_probability}</span></div>`;
-            if (indicator.no_probability) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No ${customLabel}:</span> <span class="month-value">${indicator.no_probability}</span></div>`;
+        }
+
+        if (pairs.length > 1) {
+            hasHistory = true;
+            historyDataHtml = pairs.slice(1).map(([date, pair]) => {
+                const dateLabel = formatDateShort(date);
+                return `<div class="prediction-history-row prediction-history-row-inline"><span class="prediction-history-date prediction-history-date-inline">${dateLabel}</span><div class="prediction-history-content"><div class="prediction-history-item"><span class="prediction-yes-value">${pair.yes}</span></div><div class="prediction-history-item"><span class="prediction-no-value">${pair.no}</span></div></div></div>`;
+            }).join('');
+        }
+
+        if (pairs.length === 0) {
+            const topYes = indicator.yes_probability || indicator.yes_odds;
+            const topNo = indicator.no_probability || indicator.no_odds;
+            if (topYes && topNo) {
+                const yesProb = toPercent(topYes), noProb = toPercent(topNo);
+                latestDataHtml = `
+                    <div class="${containerClass}">
+                        <div class="prediction-bar-row prediction-bar-row-inline">
+                            <span class="prediction-value">${topYes}</span>
+                            <div class="prediction-bar-track prediction-bar-track-inline">
+                                <div class="prediction-bar-fill bar-yes" style="width: ${yesProb}%; height: 100%;" title="${topYes} Yes"></div>
+                                <div class="prediction-bar-fill bar-no" style="width: ${noProb}%; position: absolute; right: 0; height: 100%;" title="${topNo} No"></div>
+                            </div>
+                            <span class="prediction-value-left">${topNo}</span>
+                        </div>
+                    </div>`;
+            } else if (topYes && showCustomLabel) {
+                latestDataHtml = `<div class="latest-data-row"><span class="month-label">${customLabel}:</span> <span class="month-value">${topYes}</span></div>`;
+                if (topNo) latestDataHtml += `<div class="latest-data-row"><span class="month-label">No ${customLabel}:</span> <span class="month-value">${topNo}</span></div>`;
+            }
         }
         return { latestDataHtml, historyDataHtml, hasHistory };
     }
@@ -220,7 +244,13 @@ const IndicatorRenderers = (function () {
     function renderSports(indicator) {
         const rows = [];
         if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value game-title">${indicator.name}</span>`);
-        if (indicator.game_time) rows.push(`<span class="month-label">Time:</span> <span class="month-value">${indicator.result ? `<span class="game-final">Final: ${indicator.result}</span>` : `<span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span>`}</span>`);
+        if (indicator.game_time) {
+            const winnerAbbr = indicator.winner || null;
+            const resultLabel = winnerAbbr
+                ? `Final: ${winnerAbbr} wins`
+                : (indicator.result || indicator.game_time);
+            rows.push(`<span class="month-label">Time:</span> <span class="month-value">${indicator.result ? `<span class="game-final">${resultLabel}</span>` : `<span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span>`}</span>`);
+        }
 
         // Win odds as a single stacked dual-color bar (same pattern as other prediction markets).
         const winOddsKeys = Object.keys(indicator).filter(key => key.endsWith('_win_odds'));
@@ -685,7 +715,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const categoryFilterBtn = buildCategoryFilterButton(indicator.category);
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${(isNew && !indicator.game_time_iso) ? '<span class="new-badge">New</span>' : ''}${(indicator.game_time_iso && indicator.week) ? `<span class="week-badge">W${indicator.week}</span>` : ''}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${(isNew && !indicator.game_time_iso) ? '<span class="new-badge">New</span>' : ''}${(indicator.game_time_iso && indicator.week) ? `<span class="week-badge">W${indicator.week}</span>` : ''}${indicator.result ? '<span class="game-final-badge">Final</span>' : ''}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
 }
 
 /* Category icon button on each card: shows the card's category (same lucide

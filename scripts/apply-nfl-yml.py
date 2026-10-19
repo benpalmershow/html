@@ -101,11 +101,30 @@ def build_indicator(game):
     if week is not None:
         indicator["week"] = week
 
+    # Derive winner/result for completed games. Polymarket settles the
+    # moneyline to 100¢ for the winner and 0¢ for the loser once the game
+    # finishes; the YAML may not carry an explicit winner/result field, so
+    # infer it from the settled odds and game time rather than leaving the
+    # card looking like a live countdown that never resolves.
     winner = game.get("winner")
+    result = game.get("result")
+    if not winner or not result:
+        settled_winner = None
+        if len(odds_fields) == 2:
+            settled = [(k, odds_to_int(v)) for k, v in odds_fields.items()]
+            hundred = [k for k, v in settled if v == "100"]
+            zero = [k for k, v in settled if v == "0"]
+            if len(hundred) == 1 and len(zero) == 1:
+                settled_winner = hundred[0].replace("_win_odds", "")
+        game_dt = parse_iso(game.get("game_time_iso"))
+        is_past = game_dt is not None and game_dt <= datetime.now(timezone.utc)
+        if settled_winner and is_past:
+            if not winner:
+                winner = settled_winner
+            if not result:
+                result = "Final"
     if winner:
         indicator["winner"] = winner
-
-    result = game.get("result")
     if result:
         indicator["result"] = result
 

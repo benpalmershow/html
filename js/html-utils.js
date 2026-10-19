@@ -139,6 +139,52 @@
     return num;
   }
 
+  // Binary yes/no markets store their odds under a canonical "yes"/"no" pair.
+  // Older snapshots and top-level fields use the "_odds"/"_probability" variants.
+  const BINARY_YES_KEYS = ['yes', 'yes_odds', 'yes_probability'];
+  const BINARY_NO_KEYS = ['no', 'no_odds', 'no_probability'];
+
+  // Returns { yes, no } for a probability snapshot entry, or null when the
+  // entry does not carry a complete yes/no pair.
+  function getBinaryPair(entry) {
+    if (!entry || typeof entry !== 'object') return null;
+    const yesKey = BINARY_YES_KEYS.find((key) => entry[key] !== undefined && entry[key] !== null && entry[key] !== '');
+    const noKey = BINARY_NO_KEYS.find((key) => entry[key] !== undefined && entry[key] !== null && entry[key] !== '');
+    if (!yesKey || !noKey) return null;
+    return { yes: entry[yesKey], no: entry[noKey] };
+  }
+
+  // Sorted (newest first) list of [date, { yes, no }] for a binary market.
+  // Entries without a complete pair are skipped so malformed snapshots never
+  // render as "undefined".
+  function getBinaryProbabilityEntries(indicator) {
+    const probabilities = indicator && (indicator.probabilities || indicator.propabilities);
+    if (!probabilities || typeof probabilities !== 'object') return [];
+    return Object.entries(probabilities)
+      .map(([date, entry]) => [date, getBinaryPair(entry)])
+      .filter(([, pair]) => pair !== null)
+      .sort(([a], [b]) => new Date(b) - new Date(a));
+  }
+
+  // Converts an odds/probability token into a percentage number usable as a CSS
+  // width. Handles cent tokens ("14¢"), percentages ("14%"), plain percentage
+  // points ("14") and ratio-style decimals (0.14 -> 14).
+  function probabilityPercent(value) {
+    if (value === null || value === undefined || value === '') return 0;
+    if (typeof value === 'number') {
+      const scaled = value > 0 && value <= 1 ? value * 100 : value;
+      return Math.min(100, Math.max(0, scaled));
+    }
+    const text = String(value).trim();
+    const match = text.match(/[-+]?\d*\.?\d+/);
+    if (!match) return 0;
+    let num = Number.parseFloat(match[0]);
+    if (!Number.isFinite(num)) return 0;
+    const isScaled = text.indexOf('¢') === -1 && text.indexOf('%') === -1;
+    if (isScaled && num > 0 && num < 1) num *= 100;
+    return Math.min(100, Math.max(0, num));
+  }
+
   async function waitForMarked() {
     if (window.marked) return;
 
@@ -224,6 +270,9 @@
     titleCaseCategory,
     formatDate,
     parseNumericValue,
+    getBinaryPair,
+    getBinaryProbabilityEntries,
+    probabilityPercent,
     waitForMarked,
     loadComponentHtml,
     loadComponentToElement,

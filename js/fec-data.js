@@ -168,6 +168,7 @@ function createFECCardHTML(race) {
                 ${note ? `<p style="margin:0 0 6px;">${race.note}</p>` : ''}
                 ${candidateLinks}
                 ${kalshiBar}
+                ${race.video_url ? `<a href="${race.video_url}" target="_blank" rel="noopener noreferrer" class="fec-source-link" style="display:inline-block;margin-top:6px;">Video</a>` : ''}
                 ${cardDate ? `<div class="fec-fetch-date" style="margin-top:8px;">Updated ${cardDate}</div>` : ''}
             </div>
         </div>

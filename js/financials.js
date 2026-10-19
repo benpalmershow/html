@@ -197,8 +197,9 @@ function renderCategoryView(financialData, categories, filterCategory) {
         let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
         categoryIndicators.sort((a, b) => {
-            // Prediction Markets: NFL games (with game_time_iso) sort completed first, then upcoming
-            // Non-NFL prediction markets sort by lastUpdated descending (most recent first)
+            // Prediction Markets: NFL games (with game_time_iso) sort by next
+            // upcoming first, then completed games (most recent first).
+            // Non-NFL prediction markets sort by lastUpdated descending.
             if (category === 'Prediction Markets') {
                 const hasGameTimeA = !!a.game_time_iso;
                 const hasGameTimeB = !!b.game_time_iso;
@@ -207,14 +208,17 @@ function renderCategoryView(financialData, categories, filterCategory) {
                     const isCompletedA = !!a.winner;
                     const isCompletedB = !!b.winner;
 
+                    // Upcoming games always sort before completed games so the
+                    // next game stays on top of the category.
+                    if (isCompletedA !== isCompletedB) {
+                        return isCompletedA ? 1 : -1;
+                    }
                     if (isCompletedA && isCompletedB) {
                         const dateA = new Date(a.game_time_iso).getTime();
                         const dateB = new Date(b.game_time_iso).getTime();
                         return dateB - dateA;
                     }
-                    if (isCompletedA) return -1;
-                    if (isCompletedB) return 1;
-
+                    // Both upcoming: earliest kickoff first (next game on top)
                     const dateA = new Date(a.game_time_iso).getTime();
                     const dateB = new Date(b.game_time_iso).getTime();
                     return dateA - dateB;

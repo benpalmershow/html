@@ -9,6 +9,9 @@ names. Fetchers write into json/financials-data.json following the same
 conventions as the other fetch scripts:
 
   - probabilities[YYYY-MM-DD] = {outcome_field: "XX\u00a2", ...}
+    Binary yes/no markets use the canonical keys "yes"/"no"; other market
+    shapes use their own keys (e.g. "Democratic Party", "rate_hold_odds",
+    "PIT_win_odds").
   - top-level odds fields (yes_odds, no_odds, rate_hold_odds, ...)
   - lastUpdated timestamp
 
@@ -188,9 +191,13 @@ def fetch_kalshi(ticker, max_retries=3):
 #   agency       - indicator "agency" (used to confirm the match)
 #   source       - "polymarket" or "kalshi"
 #   api_id       - Polymarket event slug or Kalshi market ticker
-#   outcome_map  - dict mapping API outcome name -> indicator JSON field name
-#                  (e.g. {"Yes": "yes_odds", "No": "no_odds"}). If omitted,
+#   outcome_map  - dict mapping API outcome name -> snapshot key used in
+#                  "probabilities" (e.g. {"Yes": "yes", "No": "no"}). If omitted,
 #                  only the "probabilities" time-series is updated.
+#   top_level_map- dict mapping snapshot key -> list of top-level indicator
+#                  fields that mirror the current odds (e.g.
+#                  {"yes": ["yes_odds", "yes_probability"]}). If omitted, the
+#                  top-level field name matches the snapshot key.
 #   implemented  - False means the source/API is not yet wired; skipped with a note.
 #   note         - human-readable note about what is needed to implement.
 SOURCE_REGISTRY = {
@@ -200,8 +207,9 @@ SOURCE_REGISTRY = {
         "source": "polymarket",
         "api_id": "strait-of-hormuz-traffic-returns-to-normal-by-december-31",
         "market_configs": [
-            {"question_contains": "Strait of Hormuz", "outcome_map": {"Yes": "yes_odds", "No": "no_odds"}},
+            {"question_contains": "Strait of Hormuz", "outcome_map": {"Yes": "yes", "No": "no"}},
         ],
+        "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
         "implemented": True,
     },
     "iranian-regime-fall-2026": {
@@ -209,8 +217,9 @@ SOURCE_REGISTRY = {
         "source": "polymarket",
         "api_id": "will-the-iranian-regime-fall-by-the-end-of-2026",
         "market_configs": [
-            {"question_contains": "Iranian regime", "outcome_map": {"Yes": "yes_odds", "No": "no_odds"}},
+            {"question_contains": "Iranian regime", "outcome_map": {"Yes": "yes", "No": "no"}},
         ],
+        "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
         "implemented": True,
     },
     "us-recession-2026": {
@@ -218,8 +227,9 @@ SOURCE_REGISTRY = {
         "source": "polymarket",
         "api_id": "us-recession-by-end-of-2026",
         "market_configs": [
-            {"question_contains": "US recession", "outcome_map": {"Yes": "yes_odds", "No": "no_odds"}},
+            {"question_contains": "US recession", "outcome_map": {"Yes": "yes", "No": "no"}},
         ],
+        "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
         "implemented": True,
     },
     "midterms-senate-2026": {
@@ -453,7 +463,20 @@ def find_indicator(data, indicator_id, agency):
     return None
 
 
-def update_indicator(indicator, outcomes, updated_at, outcome_map):
+LEGACY_BINARY_KEYS = {"yes_odds": "yes", "no_odds": "no"}
+
+
+def normalize_snapshot(snapshot):
+    """Rewrite legacy binary snapshot keys (yes_odds/no_odds) to canonical yes/no."""
+    if not any(key in snapshot for key in LEGACY_BINARY_KEYS):
+        return snapshot
+    normalized = {}
+    for key, value in snapshot.items():
+        normalized[LEGACY_BINARY_KEYS.get(key, key)] = value
+    return normalized
+
+
+def update_indicator(indicator, outcomes, updated_at, outcome_map, top_level_map=None):
     """Write fetched outcomes into an indicator: probabilities + top-level fields + lastUpdated."""
     date_key = todays_date_key()
     probs = indicator.setdefault("probabilities", {})
@@ -464,6 +487,7 @@ def update_indicator(indicator, outcomes, updated_at, outcome_map):
         field = outcome_map.get(api_name, api_name) if outcome_map else api_name
         if field:
             snapshot[field] = price
+    snapshot = normalize_snapshot(snapshot)
 
     if snapshot:
         existing = probs.get(date_key)
@@ -475,7 +499,9 @@ def update_indicator(indicator, outcomes, updated_at, outcome_map):
 
     # Update top-level odds fields from the latest snapshot.
     for field, price in snapshot.items():
-        indicator[field] = price
+        targets = (top_level_map or {}).get(field, [field])
+        for target in targets:
+            indicator[target] = price
 
     indicator["lastUpdated"] = updated_at or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     return snapshot
@@ -499,6 +525,7 @@ def main(dry_run=False):
         source = cfg["source"]
         api_id = cfg.get("api_id")
         outcome_map = cfg.get("outcome_map") or {}
+        top_level_map = cfg.get("top_level_map") or {}
         market_configs = cfg.get("market_configs") or []
         agency = cfg.get("agency")
 
@@ -527,7 +554,7 @@ def main(dry_run=False):
             print(f"  No data returned for {indicator_id}")
             continue
 
-        snapshot = update_indicator(indicator, result["outcomes"], result.get("updatedAt"), fetch_outcome_map)
+        snapshot = update_indicator(indicator, result["outcomes"], result.get("updatedAt"), fetch_outcome_map, top_level_map)
         indicator["lastUpdated"] = now_iso
         label = ", ".join(f"{k}={v}" for k, v in snapshot.items())
         changes.append(f"{indicator_id}: {label}")

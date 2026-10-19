@@ -2,9 +2,8 @@
 
 ## Goal
 
-When prompted with a request such as **"update NFL cards for week 5"**, update
-the financials page with only verified upcoming NFL moneyline markets, without
-creating cards whose source links or odds are missing.
+Update the financials page with only verified upcoming NFL moneyline markets,
+without creating cards whose source links or odds are missing.
 
 ## Source of truth and scope
 
@@ -14,9 +13,21 @@ creating cards whose source links or odds are missing.
 - Polymarket's Gamma API is the automated odds source used by
   `scripts/fetch-nfl-odds.py`. Do not enter guessed, stale, or manually
   estimated odds.
-- Process only the requested week for a manual weekly update. Do not rewrite
-  unrelated indicators or other weeks.
 - The displayed matchup is always away team `@` home team.
+
+## Automated pipeline
+
+The full update is automated by `.github/workflows/update-nfl-odds.yml`
+(daily at 06:00 UTC, plus manual `workflow_dispatch`). It runs the same
+sequence as the other financials fetchers (`fetch-treasury.yml`, `fetch-fred.yml`,
+`fetch-census.yml`, etc.) and writes directly to `json/financials-data.json`:
+
+```sh
+python3 scripts/fetch-nfl-odds.py --week <week>
+python3 scripts/apply-nfl-yml.py --week <week> --replace-completed
+```
+
+Each step is described below. Manual weekly updates follow the same commands.
 
 ## Weekly workflow
 
@@ -41,7 +52,7 @@ creating cards whose source links or odds are missing.
 
    ```sh
    python3 scripts/fetch-nfl-odds.py --week 5
-   python3 scripts/apply-nfl-yml.py --week 5
+   python3 scripts/apply-nfl-yml.py --week 5 --replace-completed
    ```
 
    Replace `5` with the requested week number. Review fetch output; remove any
@@ -61,15 +72,23 @@ creating cards whose source links or odds are missing.
    both live odds fields, and a corresponding indicator in `financials-data`.
    Confirm no removed/unavailable ID remains in either dataset.
 
-## Reliability requirements
-
 ## Automation and monitoring
 
-- **Scheduled fetch**: Set up a cron job (e.g., via GitHub Actions or a server cron) that runs `python3 scripts/fetch-nfl-odds.py --week $(date +%V)` daily to keep odds current throughout the week.
-- **Automated validation**: After each fetch, run `python3 scripts/validate-nfl-odds.py` (a new script you can create) that checks for missing Polymarket events or incomplete odds and fails the job if any are found.
-- **Alerting**: Integrate a simple Slack or email notification on validation failures to prompt manual review.
-- **Idempotent merges**: Ensure the merge script `apply-nfl-yml.py` is run with `--replace-completed` to prune stale entries and avoid duplicate odds-history records.
-- **Version control**: Commit any YAML changes automatically (e.g., via a bot) with a clear message indicating the week and fetch timestamp.
+- **Scheduled fetch**: `.github/workflows/update-nfl-odds.yml` runs
+  `python3 scripts/fetch-nfl-odds.py --week $(date +%V)` daily at 06:00 UTC to
+  keep odds current throughout the week. The workflow also accepts manual
+  `workflow_dispatch` runs.
+- **Automated validation**: After each fetch, run
+  `python3 scripts/validate-nfl-odds.py` (a new script you can create) that
+  checks for missing Polymarket events or incomplete odds and fails the job if
+  any are found.
+- **Alerting**: Integrate a simple Slack or email notification on validation
+  failures to prompt manual review.
+- **Idempotent merges**: Ensure the merge script `apply-nfl-yml.py` is run with
+  `--replace-completed` to prune stale entries and avoid duplicate odds-history
+  records.
+- **Version control**: Commit any YAML changes automatically (e.g., via a bot)
+  with a clear message indicating the week and fetch timestamp.
 
 ## Reliability requirements
 

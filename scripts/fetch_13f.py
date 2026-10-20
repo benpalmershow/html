@@ -615,14 +615,14 @@ def main():
     data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     with open(HOLDINGS_PATH, "w") as handle:
-        json.dump(data, handle, indent=2)
+        json.dump(data, handle, indent=2, ensure_ascii=False)
         handle.write("\n")
     print(f"Saved {HOLDINGS_PATH} ({len(merged)} holdings, {len(previous)} prior snapshots)")
 
     if learned_tickers:
         ticker_map.update(learned_tickers)
         with open(TICKER_MAP_PATH, "w") as handle:
-            json.dump(ticker_map, handle, indent=2, sort_keys=True)
+            json.dump(ticker_map, handle, indent=2, sort_keys=True, ensure_ascii=False)
             handle.write("\n")
         print(f"Saved {TICKER_MAP_PATH} ({len(learned_tickers)} new tickers)")
 

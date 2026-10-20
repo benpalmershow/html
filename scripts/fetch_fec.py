@@ -331,7 +331,7 @@ def main() -> int:
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w") as f:
-        json.dump(output, f, indent=2)
+        json.dump(output, f, indent=2, ensure_ascii=False)
 
     logger.info(f"Wrote {OUTPUT_FILE}")
     return 0

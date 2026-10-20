@@ -316,7 +316,7 @@ def update_financials(dry_run=False):
         return
 
     with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
     logger.info("Saved %d changes to %s", len(changes), FINANCIALS_PATH)

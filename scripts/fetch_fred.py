@@ -482,7 +482,7 @@ def update_financials():
     data["lastUpdated"] = now_iso
 
     with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
     print(f"\nUpdated {len(updates)} values:")

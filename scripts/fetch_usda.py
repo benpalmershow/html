@@ -237,7 +237,7 @@ def update_financials():
     data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
     print(f"\nUpdated {len(all_updates)} values:")

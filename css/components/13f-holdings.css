@@ -2,6 +2,12 @@
    13F HOLDINGS STYLES
    ======================================== */
 
+/* Container for 13F card to enable container queries */
+.category[data-category="13F Holdings"] .indicator {
+  container-type: inline-size;
+  container-name: firm-card;
+}
+
 .firm-card-title { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; letter-spacing: -0.01em; }
 
 .firm-filter-buttons { display: flex; gap: 0.35rem; margin-bottom: 0.5rem; padding: 0 0.2rem; flex-wrap: wrap; }
@@ -12,13 +18,31 @@
 
 .firm-filter-btn:hover:not(.active) { background: var(--bg-secondary); border-color: var(--text-muted); }
 
-.firm-holdings-list { display: flex; flex-direction: column; gap: 3px; max-height: 320px; overflow-y: auto; padding-right: 3px; }
+.firm-sort-toggle { display: inline-flex; align-items: center; justify-content: center; padding: 4px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); border-radius: 6px; width: 24px; height: 24px; margin-right: 4px; }
 
-.holding-item { background: var(--bg-secondary); padding: 5px 8px 5px 12px; border-radius: 4px; font-size: 11px; transition: all 0.15s ease; display: flex; align-items: center; gap: 8px; cursor: pointer; border: 1px solid transparent; position: relative; }
+.firm-sort-toggle:hover { background: var(--bg-secondary); color: var(--logo-orange); transform: scale(1.1); }
 
-.holding-item:hover { background: var(--bg-tertiary); border-color: var(--border-color); transform: translateX(1px); }
+.firm-sort-toggle:active { transform: scale(0.95); }
 
-.holding-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pct-color, var(--logo-teal)); border-radius: 1px; transition: background 0.3s ease; }
+.firm-sort-toggle i { width: 16px; height: 16px; transition: transform var(--transition-slow); }
+
+.firm-holdings-list { display: flex; flex-direction: column; gap: 3px; max-height: 320px; overflow-y: auto; padding-right: 3px; scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; }
+
+.firm-holdings-list::-webkit-scrollbar { width: 4px; }
+
+.firm-holdings-list::-webkit-scrollbar-track { background: transparent; }
+
+.firm-holdings-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+.holding-item { background: var(--bg-secondary); padding: 6px 10px 6px 14px; border-radius: 6px; font-size: 11px; transition: all 0.15s ease; display: flex; align-items: center; gap: 8px; cursor: pointer; border: 1px solid transparent; position: relative; }
+
+.holding-item:hover { background: var(--bg-tertiary); border-color: var(--border-color); transform: translateX(2px); }
+
+.holding-item.highlighted { background: var(--bg-tertiary); border-color: var(--pct-color, var(--logo-teal)); }
+
+.holding-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--pct-color, var(--logo-teal)); border-radius: 2px 0 0 2px; transition: background 0.3s ease; }
+
+.holding-item:hover::before { width: 5px; }
 
 .holding-ticker { font-weight: 700; color: var(--text-primary); font-size: 12px; letter-spacing: -0.02em; flex-shrink: 0; position: relative; z-index: 1; }
 
@@ -26,11 +50,38 @@
 
 .holding-ticker a:hover { color: var(--logo-teal); text-decoration: underline; }
 
-.holding-name { font-weight: 500; color: var(--text-secondary); font-size: 10px; line-height: 1.2; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; position: relative; z-index: 1; }
+.holding-name { font-weight: 500; color: var(--text-secondary); font-size: 10px; line-height: 1.2; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; position: relative; z-index: 1; display: none; }
 
-.holding-pct { color: var(--logo-teal); font-size: 10px; font-weight: 600; min-width: 28px; text-align: right; flex-shrink: 0; position: relative; z-index: 1; }
+.holding-item:hover .holding-name { display: block; animation: fadeIn 0.2s ease; }
 
-.firm-empty-state { text-align: center; padding: 1.5rem 0.75rem; color: var(--text-muted); font-size: 0.8rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.holding-pct { color: var(--logo-teal); font-size: 11px; font-weight: 600; min-width: 36px; text-align: right; flex-shrink: 0; position: relative; z-index: 1; margin-left: auto; }
+
+.holding-change { font-size: 10px; font-weight: 600; margin-left: 4px; flex-shrink: 0; min-width: 32px; text-align: right; }
+
+.holding-change.change-new { color: var(--logo-orange); }
+
+.holding-change.change-positive { color: #22c55e; }
+
+.holding-change.change-negative { color: #ef4444; }
+
+.holding-change.change-flat { color: var(--text-muted); }
+
+.firm-empty-state { text-align: center; padding: 1.5rem 0.75rem; color: var(--text-muted); font-size: 0.8rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; }
+
+.firm-empty-state .empty-state-icon { width: 32px; height: 32px; margin: 0 auto 0.5rem; opacity: 0.5; }
+
+.firm-empty-state .empty-state-text { font-size: 0.85rem; }
+
+.firm-show-more { display: flex; justify-content: center; margin-top: 0.5rem; padding: 0 0.2rem; }
+
+.firm-show-more-btn { width: 100%; padding: 6px 12px; background: transparent; color: var(--logo-teal); border: 1px solid var(--logo-teal); border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 500; transition: all 0.2s ease; }
+
+.firm-show-more-btn:hover { background: var(--logo-teal); color: white; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(var(--logo-teal-rgb), 0.25); }
 
 .firm-description { padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; }
 
@@ -38,16 +89,41 @@
 
 .firm-description a:hover { text-decoration: underline; color: var(--logo-orange); }
 
+/* Container query for responsive 13F cards */
+@container firm-card (max-width: 200px) {
+  .firm-filter-buttons { gap: 0.25rem; }
+  .firm-filter-btn { padding: 3px 6px; font-size: 0.65rem; }
+  .holding-item { padding: 4px 6px 4px 10px; }
+  .holding-ticker { font-size: 11px; }
+  .holding-name { font-size: 9px; }
+  .holding-pct { font-size: 10px; min-width: 28px; }
+  .holding-change { min-width: 24px; }
+}
+
+@container firm-card (min-width: 300px) {
+  .firm-holdings-list { max-height: 400px; }
+  .holding-item { padding: 7px 12px 7px 16px; }
+  .holding-ticker { font-size: 13px; }
+  .holding-name { font-size: 11px; }
+  .holding-pct { font-size: 12px; min-width: 36px; }
+  .holding-change { min-width: 36px; }
+}
+
 /* 13F Mobile Responsiveness */
 @media (max-width: 768px) {
   .firm-holdings-list { max-height: 280px; }
-  .holding-item { padding: 4px 6px; }
+  .holding-item { padding: 5px 8px 5px 12px; }
   .firm-filter-btn { padding: 3px 8px; font-size: 0.7rem; }
+  .holding-change { min-width: 28px; }
 }
 
 @media (max-width: 480px) {
   .firm-card-title { font-size: 0.85rem; }
   .firm-filter-buttons { gap: 0.3rem; }
   .firm-filter-btn { padding: 3px 7px; font-size: 0.65rem; }
-  .holding-item { padding: 4px 5px; }
+  .holding-item { padding: 4px 6px 4px 10px; }
+  .holding-ticker { font-size: 11px; }
+  .holding-name { font-size: 9px; }
+  .holding-pct { font-size: 10px; min-width: 28px; }
+  .holding-change { min-width: 24px; }
 }

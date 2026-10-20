@@ -137,10 +137,16 @@ function holdingChange(holding, priorSnapshot) {
 }
 
 function buildHoldingItem(holding, priorSnapshot, index) {
-    const safeTicker = HtmlUtils.escapeHtml(holding.ticker);
     const safeName = HtmlUtils.escapeHtml(holding.name);
+    const safeTicker = HtmlUtils.escapeHtml(holding.ticker);
     const isValidLink = holding.link && typeof holding.link === 'string' && (holding.link.startsWith('https://') || holding.link.startsWith('http://'));
-    const safeLink = isValidLink ? holding.link : 'https://www.perplexity.ai/finance/' + safeTicker;
+    const safeLink = isValidLink ? holding.link : 'https://www.perplexity.ai/finance/' + safeName;
+
+    // Check if ticker is a CIK number (10 digits) or if it looks like a number
+    const isCIK = /^\d{10}$/.test(holding.ticker) || /^\d+$/.test(holding.ticker);
+    const displayTicker = isCIK ? '' : safeTicker;
+    const displayText = isCIK ? safeName : displayTicker;
+
     const change = holdingChange(holding, priorSnapshot);
     const changeHtml = change
         ? `<span class="holding-change ${change.className}" title="${HtmlUtils.escapeHtml(change.title)}">${change.label}</span>`
@@ -148,7 +154,7 @@ function buildHoldingItem(holding, priorSnapshot, index) {
 
     return `
         <div class="holding-item" data-holding-index="${index}" data-pct="${holding.pct}" style="--pct-width: ${Math.min(holding.pct * 2, 100)}%; --pct-color: ${getColorByValue(holding.pct)};">
-             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer">${safeTicker}</a></div>
+             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer" title="${safeName}">${displayText}</a></div>
             <div class="holding-name">${safeName}</div>
             ${changeHtml}
             <div class="holding-pct">${holding.pct}%</div>
@@ -199,6 +205,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         <div class="indicator-header">
             <div class="firm-card-title">${HtmlUtils.escapeHtml(firmName)}</div>
             <div class="indicator-actions">
+                <button class="firm-sort-toggle" aria-label="Sort holdings" data-firm="${firmIdx}"><i data-lucide="arrow-up-down"></i></button>
                 <button class="expand-toggle" aria-label="Toggle firm details"><i data-lucide="chevron-down"></i></button>
             </div>
         </div>
@@ -212,21 +219,29 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         <div class="indicator-content">
             <div class="data-rows-container">
                 <div class="firm-chart-container">
-                <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
-                    ${firmHoldings.slice(0, 13).map((h, idx) => buildHoldingItem(h, priorSnapshot, idx)).join('')}
-                </div>
-                <div class="firm-empty-state" style="display: none;">
-                    <div class="empty-state-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19h16"></path>
-                            <path d="M7 16V9"></path>
-                            <path d="M12 16V5"></path>
-                            <path d="M17 16v-7"></path>
-                        </svg>
+                    <div class="firm-filter-buttons">
+                        <button class="firm-filter-btn active" data-filter="all" data-firm="${firmIdx}">All</button>
+                        <button class="firm-filter-btn" data-filter="etf" data-firm="${firmIdx}">ETFs</button>
+                        <button class="firm-filter-btn" data-filter="stock" data-firm="${firmIdx}">Stocks</button>
                     </div>
-                    <div class="empty-state-text">No holdings match this filter</div>
+                    <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
+                        ${firmHoldings.slice(0, 13).map((h, idx) => buildHoldingItem(h, priorSnapshot, idx)).join('')}
+                    </div>
+                    <div class="firm-empty-state" style="display: none;">
+                        <div class="empty-state-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19h16"></path>
+                                <path d="M7 16V9"></path>
+                                <path d="M12 16V5"></path>
+                                <path d="M17 16v-7"></path>
+                            </svg>
+                        </div>
+                        <div class="empty-state-text">No holdings match this filter</div>
+                    </div>
+                    <div class="firm-show-more" style="display: ${firmHoldings.length > 13 ? 'flex' : 'none'};">
+                        <button class="firm-show-more-btn" data-firm="${firmIdx}">Show more</button>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     `;
@@ -266,9 +281,13 @@ function initializeFirmCards() {
 
         // Store state for this firm
         const firmState = {
-            filter: 'all'
+            filter: 'all',
+            sort: 'pct',
+            showMore: false
         };
 
+        const sortOptions = ['pct', 'value', 'name'];
+        const sortLabels = { pct: 'percentage', value: 'value', name: 'name' };
 
         function updateFirmDisplay() {
             let displayHoldings = [...firmHoldings];
@@ -280,23 +299,46 @@ function initializeFirmCards() {
                 displayHoldings = displayHoldings.filter(h => !isETF(h));
             }
 
-            // Sort by value (descending)
-            displayHoldings.sort((a, b) => b.value - a.value);
+            // Apply sort
+            if (firmState.sort === 'pct') {
+                displayHoldings.sort((a, b) => b.pct - a.pct);
+            } else if (firmState.sort === 'value') {
+                displayHoldings.sort((a, b) => b.value - a.value);
+            } else if (firmState.sort === 'name') {
+                displayHoldings.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            // Determine how many to show
+            const showCount = firmState.showMore ? displayHoldings.length : Math.min(13, displayHoldings.length);
 
             // Update holdings list
             const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
             const emptyState = card.querySelector('.firm-empty-state');
-            
+            const showMoreDiv = card.querySelector('.firm-show-more');
+            const showMoreBtn = card.querySelector('.firm-show-more-btn');
+            const sortToggle = card.querySelector('.firm-sort-toggle');
+
             if (holdingsList) {
                 if (displayHoldings.length === 0) {
                     holdingsList.style.display = 'none';
                     if (emptyState) emptyState.style.display = 'block';
+                    if (showMoreDiv) showMoreDiv.style.display = 'none';
                 } else {
                     holdingsList.style.display = 'flex';
                     if (emptyState) emptyState.style.display = 'none';
-                    
-                    holdingsList.innerHTML = displayHoldings.slice(0, 13).map((h, idx) =>
+
+                    holdingsList.innerHTML = displayHoldings.slice(0, showCount).map((h, idx) =>
                         buildHoldingItem(h, priorSnapshot, idx)).join('');
+
+                    // Show/hide "Show more" button
+                    if (showMoreDiv && showMoreBtn) {
+                        if (displayHoldings.length > 13) {
+                            showMoreDiv.style.display = 'flex';
+                            showMoreBtn.textContent = firmState.showMore ? 'Show less' : `Show more (${displayHoldings.length - 13})`;
+                        } else {
+                            showMoreDiv.style.display = 'none';
+                        }
+                    }
 
                     // Add click handlers for holdings
                     holdingsList.querySelectorAll('.holding-item').forEach((item) => {
@@ -305,7 +347,7 @@ function initializeFirmCards() {
                             if (e.target.closest('a')) return;
                             e.preventDefault();
                             const holdingIndex = parseInt(item.dataset.holdingIndex);
-                            
+
                             // Highlight the holding item in the list
                             holdingsList.querySelectorAll('.holding-item').forEach(h => {
                                 h.classList.remove('highlighted');
@@ -320,20 +362,49 @@ function initializeFirmCards() {
                 }
             }
 
-            // Update button states
+            // Update filter button states
             card.querySelectorAll('.firm-filter-btn').forEach(btn => {
                 const isActive = btn.dataset.filter === firmState.filter;
                 btn.classList.toggle('active', isActive);
             });
+
+            // Update sort toggle title
+            if (sortToggle) {
+                sortToggle.title = `Sort by ${sortLabels[firmState.sort]}`;
+            }
         }
 
-        // Setup button handlers
+        // Setup filter button handlers
         card.querySelectorAll('.firm-filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 firmState.filter = btn.dataset.filter;
+                firmState.showMore = false; // Reset show more when filtering
                 updateFirmDisplay();
             });
         });
+
+        // Setup sort toggle handler - cycles through sort options
+        const sortToggle = card.querySelector('.firm-sort-toggle');
+        if (sortToggle) {
+            // Initialize with default sort
+            sortToggle.title = `Sort by ${sortLabels[firmState.sort]}`;
+
+            sortToggle.addEventListener('click', () => {
+                const currentIndex = sortOptions.indexOf(firmState.sort);
+                const nextIndex = (currentIndex + 1) % sortOptions.length;
+                firmState.sort = sortOptions[nextIndex];
+                updateFirmDisplay();
+            });
+        }
+
+        // Setup show more button handler
+        const showMoreBtn = card.querySelector('.firm-show-more-btn');
+        if (showMoreBtn) {
+            showMoreBtn.addEventListener('click', () => {
+                firmState.showMore = !firmState.showMore;
+                updateFirmDisplay();
+            });
+        }
 
         // Initialize display with event handlers
         updateFirmDisplay();

@@ -1062,10 +1062,8 @@
     border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
-.dark-mode .fec-lean-d {
-    color: #93c5fd;
-    background: rgba(37, 99, 235, 0.12);
-}
+.fec-card-r { --indicator-accent: var(--fec-rep, #DC2626); }
+.fec-card-d { --indicator-accent: var(--fec-dem, #2563EB); }
 
 /* Candidate rows */
 .fec-candidates {

@@ -155,6 +155,15 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
     schedule();
 }
 
+/* Badge state lives in indicators.js; fall back to the raw flags so a stale
+   cached copy of that file cannot break the Latest Updates view. */
+function isNewBadgeCard(indicator) {
+    if (typeof showsNewBadge === 'function') return showsNewBadge(indicator);
+    if (!indicator || indicator.game_time_iso) return false;
+    if (typeof indicator.newMonth === 'boolean') return indicator.newMonth;
+    return indicator.isNew === true;
+}
+
 function renderLatestUpdatesView(financialData) {
     const allIndicators = financialData.indices.slice();
     // Exclude NFL games ( Prediction Markets with game_time_iso ) from Latest view
@@ -166,12 +175,13 @@ function renderLatestUpdatesView(financialData) {
     });
     // Sort by lastUpdated descending; fall back to original order if missing
     filteredIndicators.sort((a, b) => {
+        // Cards carrying the "New" badge always stay at the top of the list.
+        const aIsNew = isNewBadgeCard(a);
+        const bIsNew = isNewBadgeCard(b);
+        if (aIsNew !== bIsNew) return aIsNew ? -1 : 1;
         const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
         const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
         if (dateA !== dateB) return dateB - dateA;
-        const aIsNew = a.category === 'Earnings' ? (typeof a.isNew === 'boolean' && a.isNew) : (typeof a.newMonth === 'boolean' && a.newMonth);
-        const bIsNew = b.category === 'Earnings' ? (typeof b.isNew === 'boolean' && b.isNew) : (typeof b.newMonth === 'boolean' && b.newMonth);
-        if (aIsNew !== bIsNew) return aIsNew ? -1 : 1;
         return 0;
     });
 

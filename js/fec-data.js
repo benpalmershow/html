@@ -156,7 +156,6 @@ function createFECCardHTML(race) {
                 <span class="fec-race-label">${race.label}</span>
             </div>
             <div class="indicator-actions">
-                ${leanBadge}
                 <button class="expand-toggle" aria-label="Toggle race details">
                     <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
                 </button>
@@ -194,6 +193,11 @@ function initializeFECCards(data, container) {
     data.races.forEach(race => {
         const card = document.createElement('div');
         card.className = 'indicator';
+        const kalshi = race.kalshi || {};
+        const r = kalshi.r || 0;
+        const d = kalshi.d || 0;
+        if (r > d) card.classList.add('fec-card-r');
+        else if (d > r) card.classList.add('fec-card-d');
         card.setAttribute('data-indicator-name', race.label);
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'article');

@@ -621,6 +621,29 @@ function buildChangeMetricButton(label, changeInfo, title) {
 
 // --- Card Creation ---
 
+const NEW_BADGE_WINDOW_MS = 3 * 24 * 60 * 60 * 1000;
+
+/* Single source of truth for the "New" badge so other views (Latest Updates)
+   can pin badge cards to the top of their lists. */
+function isIndicatorNew(indicator) {
+    if (!indicator) return false;
+    if (indicator.category === 'Earnings' && typeof indicator.isNew === 'boolean') {
+        return indicator.isNew;
+    }
+    if (typeof indicator.newMonth === 'boolean') {
+        // Set by the monthly data fetchers: true only when a brand-new month
+        // was added, false for revisions to existing months or revision-less
+        // re-fetches. This is what the "New" badge should actually mean.
+        return indicator.newMonth;
+    }
+    return !!(indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < NEW_BADGE_WINDOW_MS);
+}
+
+/* NFL game cards get a week badge instead, so they never count as "New". */
+function showsNewBadge(indicator) {
+    return isIndicatorNew(indicator) && !indicator.game_time_iso;
+}
+
 function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     const momChange = calculateMoMChange(indicator, MONTHS);
     const yoyChange = calculateYoYChange(indicator, MONTHS);
@@ -672,17 +695,7 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
     /* Cards inherit the accent from their category (see theme.css accent map). */
     const accentStyle = '';
-    let isNew = false;
-    if (indicator.category === 'Earnings' && typeof indicator.isNew === 'boolean') {
-        isNew = indicator.isNew;
-    } else if (typeof indicator.newMonth === 'boolean') {
-        // Set by the monthly data fetchers: true only when a brand-new month
-        // was added, false for revisions to existing months or revision-less
-        // re-fetches. This is what the "New" badge should actually mean.
-        isNew = indicator.newMonth;
-    } else {
-        isNew = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < (3 * 24 * 60 * 60 * 1000);
-    }
+    const isNew = isIndicatorNew(indicator);
 
     const domainLabel = (u) => {
         try { const p = new URL(u).hostname.split('.'); return p.slice(-2).join('.'); } catch { return 'Source'; }

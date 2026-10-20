@@ -135,8 +135,8 @@ RACES = [
     {
         "state": "KS",
         "label": "Kansas Senate",
-        "note": "Safe R. Marshall (R) incumbent vs. Hamilton (D).",
-        "kalshi": {"r": 78, "d": 22},
+        "note": "Marshall (R) incumbent vs. Hamilton (D). Polls show Hamilton +1.0.",
+        "kalshi": {"r": 60, "d": 40},
         "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
         "candidates": [
             {

@@ -1,5 +1,5 @@
 ---
-date: 2026-10-20T15:00:00Z
+date: 2026-10-20T08:00:00Z
 category: economy
 title: "Weak Housing, a Fed Hold, and a Democratic House"
 ---

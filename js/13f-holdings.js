@@ -184,10 +184,10 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         : '';
 
     const firmDetails = `
-        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
+        <div style="margin-bottom: 12px; padding-bottom: 12px;">
             <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
-                <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM:</span>
-                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem;">${formatAum(totalValue)}${aumDelta}</span>
+                <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM</span>
+                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem; white-space: nowrap;">${formatAum(totalValue)}${aumDelta}</span>
             </div>
             ${periodRow}
             <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
@@ -211,10 +211,10 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         </div>
         <div class="indicator-explanation">
             <div class="indicator-explanation-header">Firm details</div>
-            <div class="indicator-explanation-body">
-                ${firmDetails}
-                ${description || ''} ${/* description may contain intentional HTML from trusted JSON source */''}
-            </div>
+        <div class="indicator-explanation-body">
+            ${firmDetails}
+            ${description ? `<div class="firm-description">${description}</div>` : ''}
+        </div>
         </div>
         <div class="indicator-content">
             <div class="data-rows-container">

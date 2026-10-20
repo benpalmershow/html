@@ -453,9 +453,8 @@
 .indicator-explanation {
   display: none;
   margin-top: 0.75rem;
-  padding: 0.8rem 0.9rem;
+  padding: 0;
   background: var(--bg-primary);
-  border: 1px solid var(--border-color);
   border-radius: 8px;
   color: var(--text-secondary);
   line-height: 1.55;

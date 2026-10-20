@@ -985,6 +985,15 @@
 .holding-ticker a:hover { color: var(--logo-teal); text-decoration: underline; }
 .holding-name { font-weight: 500; color: var(--text-secondary); font-size: 10px; line-height: 1.2; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; position: relative; z-index: 1; }
 .holding-pct { color: var(--logo-teal); font-size: 10px; font-weight: 600; min-width: 28px; text-align: right; flex-shrink: 0; position: relative; z-index: 1; }
+.holding-change { font-size: 9px; font-weight: 700; letter-spacing: -0.02em; min-width: 42px; text-align: right; flex-shrink: 0; position: relative; z-index: 1; font-variant-numeric: tabular-nums; }
+.holding-change.change-positive { color: #22c55e; }
+.holding-change.change-negative { color: #ef4444; }
+.holding-change.change-flat { color: var(--text-muted); }
+.holding-change.change-new { color: var(--logo-teal); }
+.firm-delta { margin-left: 6px; font-size: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.firm-delta.change-positive { color: #22c55e; }
+.firm-delta.change-negative { color: #ef4444; }
+.firm-delta.change-flat { color: var(--text-muted); }
 .firm-empty-state { text-align: center; padding: 1.5rem 0.75rem; color: var(--text-muted); font-size: 0.8rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; }
 .firm-description { padding: 8px 0; border-top: 1px solid var(--border-color); margin-top: 8px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; }
 .firm-description a { color: var(--logo-teal); text-decoration: none; font-weight: 500; }

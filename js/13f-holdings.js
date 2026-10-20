@@ -3,12 +3,14 @@
 let firmData = null;
 let allHoldings = [];
 let firmShortNames = [];
+let previousData = {};
 
 async function load13FData() {
     try {
         const data = await Services.dataService.fetchJSON('json/13f-holdings.json');
         firmData = data.firms;
         allHoldings = data.holdings;
+        previousData = data.previous || {};
         firmShortNames = data.firms.map(f => f.shortName);
         initializeFirmCards();
     } catch (error) {
@@ -43,8 +45,12 @@ function getColorByValue(percentage) {
 function getFilingDate(firmIdx) {
     // Extract filing date from firm data or use default
     if (firmData && firmData[firmIdx] && firmData[firmIdx].filingDate) {
-        const date = new Date(firmData[firmIdx].filingDate);
-        return (date.getMonth() + 1) + '/' + date.getDate();
+        const parts = String(firmData[firmIdx].filingDate).split('-');
+        const month = parseInt(parts[1], 10);
+        const day = parseInt(parts[2], 10);
+        if (!isNaN(month) && !isNaN(day)) {
+            return month + '/' + day;
+        }
     }
     // Default for older firms
     return '11/26';
@@ -81,16 +87,103 @@ function isETF(holding) {
     return false;
 }
 
+function getPriorSnapshot(firmIdx) {
+    if (!firmData || !firmData[firmIdx]) return null;
+    const snapshot = previousData[firmData[firmIdx].name];
+    return snapshot && snapshot.holdings ? snapshot : null;
+}
+
+function formatAum(value) {
+    if (value >= 1e9) return '$' + (value / 1e9).toFixed(1) + 'B';
+    if (value >= 1e6) return '$' + (value / 1e6).toFixed(1) + 'M';
+    if (value >= 1e3) return '$' + (value / 1e3).toFixed(1) + 'K';
+    return '$' + value.toFixed(0);
+}
+
+function formatShares(shares) {
+    if (!shares) return '0';
+    if (shares >= 1e9) return (shares / 1e9).toFixed(2) + 'B';
+    if (shares >= 1e6) return (shares / 1e6).toFixed(1) + 'M';
+    if (shares >= 1e3) return (shares / 1e3).toFixed(1) + 'K';
+    return String(shares);
+}
+
+// Quarter-over-quarter change for a single position.
+function holdingChange(holding, priorSnapshot) {
+    if (!priorSnapshot) return null;
+
+    const prior = holding.cusip ? priorSnapshot.holdings[holding.cusip] : null;
+    if (!prior) {
+        return { label: 'NEW', className: 'change-new', title: 'New position this quarter' };
+    }
+
+    const valueChange = prior.value ? ((holding.value - prior.value) / prior.value) * 100 : null;
+    const shareChange = prior.shares ? ((holding.shares - prior.shares) / prior.shares) * 100 : null;
+
+    const shareText = shareChange === null
+        ? 'position size unknown'
+        : `Shares ${formatShares(prior.shares)} \u2192 ${formatShares(holding.shares)} (${shareChange > 0 ? '+' : ''}${shareChange.toFixed(1)}%)`;
+
+    if (valueChange === null) {
+        return { label: '\u2014', className: 'change-flat', title: shareText };
+    }
+
+    const rounded = Math.abs(valueChange) < 0.05 ? 0 : valueChange;
+    const className = rounded > 0 ? 'change-positive' : rounded < 0 ? 'change-negative' : 'change-flat';
+    const arrow = rounded > 0 ? '\u25b2' : rounded < 0 ? '\u25bc' : '\u2014';
+    const label = rounded === 0 ? '\u2014' : `${arrow} ${Math.abs(rounded).toFixed(1)}%`;
+
+    return { label, className, title: shareText };
+}
+
+function buildHoldingItem(holding, priorSnapshot, index) {
+    const safeTicker = HtmlUtils.escapeHtml(holding.ticker);
+    const safeName = HtmlUtils.escapeHtml(holding.name);
+    const isValidLink = holding.link && typeof holding.link === 'string' && (holding.link.startsWith('https://') || holding.link.startsWith('http://'));
+    const safeLink = isValidLink ? holding.link : 'https://www.perplexity.ai/finance/' + safeTicker;
+    const change = holdingChange(holding, priorSnapshot);
+    const changeHtml = change
+        ? `<span class="holding-change ${change.className}" title="${HtmlUtils.escapeHtml(change.title)}">${change.label}</span>`
+        : '';
+
+    return `
+        <div class="holding-item" data-holding-index="${index}" data-pct="${holding.pct}" style="--pct-width: ${Math.min(holding.pct * 2, 100)}%; --pct-color: ${getColorByValue(holding.pct)};">
+             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer">${safeTicker}</a></div>
+            <div class="holding-name">${safeName}</div>
+            ${changeHtml}
+            <div class="holding-pct">${holding.pct}%</div>
+        </div>
+    `;
+}
+
 function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, description) {
     const topPositions = firmHoldings.slice(0, 5);
     const concentrationPct = topPositions.reduce((sum, h) => sum + h.pct, 0);
-    
+    const priorSnapshot = getPriorSnapshot(firmIdx);
+
+    let aumDelta = '';
+    if (priorSnapshot && priorSnapshot.total) {
+        const delta = ((totalValue - priorSnapshot.total) / priorSnapshot.total) * 100;
+        const deltaClass = delta > 0 ? 'change-positive' : delta < 0 ? 'change-negative' : 'change-flat';
+        const arrow = delta > 0 ? '\u25b2' : delta < 0 ? '\u25bc' : '\u2014';
+        aumDelta = `<span class="firm-delta ${deltaClass}">${arrow} ${Math.abs(delta).toFixed(1)}%</span>`;
+    }
+
+    const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
+    const periodRow = period
+        ? `<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+            <span style="color: var(--text-secondary); font-size: 0.8rem;">Period:</span>
+            <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${HtmlUtils.escapeHtml(period)}</span>
+        </div>`
+        : '';
+
     const firmDetails = `
         <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
             <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM:</span>
-                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem;">$${(totalValue / 1000000).toFixed(1)}M</span>
+                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem;">${formatAum(totalValue)}${aumDelta}</span>
             </div>
+            ${periodRow}
             <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">Filed:</span>
                 <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${getFilingDate(firmIdx)}</span>
@@ -101,7 +194,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             </div>
         </div>
     `;
-    
+
     return `
         <div class="indicator-header">
             <div class="firm-card-title">${HtmlUtils.escapeHtml(firmName)}</div>
@@ -120,19 +213,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div class="data-rows-container">
                 <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
-                    ${firmHoldings.slice(0, 10).map(h => {
-                        const safeTicker = HtmlUtils.escapeHtml(h.ticker);
-                        const safeName = HtmlUtils.escapeHtml(h.name);
-                        const isValidLink = h.link && typeof h.link === 'string' && (h.link.startsWith('https://') || h.link.startsWith('http://'));
-                        const safeLink = isValidLink ? h.link : 'https://www.perplexity.ai/finance/' + safeTicker;
-                        return `
-                        <div class="holding-item" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
-                             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer">${safeTicker}</a></div>
-                            <div class="holding-name">${safeName}</div>
-                            <div class="holding-pct">${h.pct}%</div>
-                        </div>
-                    `;
-                    }).join('')}
+                    ${firmHoldings.slice(0, 10).map((h, idx) => buildHoldingItem(h, priorSnapshot, idx)).join('')}
                 </div>
                 <div class="firm-empty-state" style="display: none;">
                     <div class="empty-state-icon" aria-hidden="true">
@@ -175,6 +256,7 @@ function initializeFirmCards() {
 
         const totalValue = firmHoldings.reduce((sum, h) => sum + h.value, 0);
         const description = firmData && firmData[firmIdx] ? firmData[firmIdx].description : '';
+        const priorSnapshot = getPriorSnapshot(firmIdx);
 
         const card = document.createElement('div');
         card.className = 'indicator';
@@ -213,18 +295,8 @@ function initializeFirmCards() {
                     holdingsList.style.display = 'flex';
                     if (emptyState) emptyState.style.display = 'none';
                     
-                    holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) => {
-                        const safeTicker = HtmlUtils.escapeHtml(h.ticker);
-                        const safeName = HtmlUtils.escapeHtml(h.name);
-                        const isValidLink = h.link && typeof h.link === 'string' && (h.link.startsWith('https://') || h.link.startsWith('http://'));
-                        const safeLink = isValidLink ? h.link : 'https://www.perplexity.ai/finance/' + safeTicker;
-                        return `
-                        <div class="holding-item" data-holding-index="${idx}" data-pct="${h.pct}" style="--pct-width: ${Math.min(h.pct * 2, 100)}%; --pct-color: ${getColorByValue(h.pct)};">
-                             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer">${safeTicker}</a></div>
-                             <div class="holding-name">${safeName}</div>
-                             <div class="holding-pct">${h.pct}%</div>
-                         </div>
-                    `; }).join('');
+                    holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) =>
+                        buildHoldingItem(h, priorSnapshot, idx)).join('');
 
                     // Add click handlers for holdings
                     holdingsList.querySelectorAll('.holding-item').forEach((item) => {

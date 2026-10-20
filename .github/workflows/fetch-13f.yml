@@ -1,0 +1,60 @@
+name: Fetch 13F Holdings
+
+on:
+  schedule:
+    # 13F filings land up to 45 days after quarter end; run twice a week.
+    - cron: '30 8 * * 1,4'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-13f
+  cancel-in-progress: false
+
+jobs:
+  fetch-13f:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Fetch 13F filings from SEC EDGAR
+        run: |
+          python3 scripts/fetch_13f.py
+
+      - name: Validate JSON output
+        run: |
+          python3 -m json.tool json/13f-holdings.json > /dev/null
+          python3 -m json.tool json/13f-ticker-map.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/13f-holdings.json json/13f-ticker-map.json
+          if git diff --staged --quiet; then
+            echo "No 13F data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: refresh 13F holdings from SEC EDGAR [skip ci]"
+          git push
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-logs
+          path: logs/
+          retention-days: 7

@@ -213,7 +213,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             <div class="data-rows-container">
                 <div class="firm-chart-container">
                 <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
-                    ${firmHoldings.slice(0, 10).map((h, idx) => buildHoldingItem(h, priorSnapshot, idx)).join('')}
+                    ${firmHoldings.slice(0, 13).map((h, idx) => buildHoldingItem(h, priorSnapshot, idx)).join('')}
                 </div>
                 <div class="firm-empty-state" style="display: none;">
                     <div class="empty-state-icon" aria-hidden="true">
@@ -295,7 +295,7 @@ function initializeFirmCards() {
                     holdingsList.style.display = 'flex';
                     if (emptyState) emptyState.style.display = 'none';
                     
-                    holdingsList.innerHTML = displayHoldings.slice(0, 10).map((h, idx) =>
+                    holdingsList.innerHTML = displayHoldings.slice(0, 13).map((h, idx) =>
                         buildHoldingItem(h, priorSnapshot, idx)).join('');
 
                     // Add click handlers for holdings

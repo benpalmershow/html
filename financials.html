@@ -294,7 +294,7 @@
   <script src="js/lucide-loader.js?v=20260816" defer></script>
 
 <!-- Chart Modal Popup - lazy loaded via JS when needed -->
-    <div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle" style="contain: layout; display: none;">
+    <dialog id="chartModal" class="chart-modal" aria-labelledby="chartModalTitle" style="contain: layout;">
       <div class="chart-modal-content">
         <div class="chart-modal-range-picker" id="chartRangePicker">
           <h3 id="chartModalTitle" class="chart-modal-title">Chart View</h3>
@@ -306,7 +306,7 @@
         <div class="chart-modal-body" style="min-height: 400px;">
         </div>
       </div>
-    </div>
+    </dialog>
 
   </body>
 </html>

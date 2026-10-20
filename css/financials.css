@@ -493,7 +493,46 @@
 
 /* RANGE PICKER */
 .chart-modal-range-picker { display: flex; align-items: center; gap: 4px; padding: 0.5rem 1.5rem; border-bottom: 1px solid var(--border-color); background: var(--bg-secondary); flex-shrink: 0; order: 2; }
-.chart-modal-range-picker #closeChartModal { margin-left: auto; }
+.chart-modal {
+  opacity: 0;
+  transform: scale(0.9);
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+}
+.chart-modal[open]:where(:not([data-closing])) {
+  opacity: 1;
+  transform: scale(1);
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+.chart-modal[open]:where(:not([data-closing]))::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  @starting-style {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+.chart-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+  transition-property: background-color, display, overlay;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chart-modal {
+    transform: none;
+    transition-duration: 0.1s;
+  }
+  .chart-modal[open]:where(:not([data-closing])) {
+    @starting-style {
+      transform: none;
+    }
+  }
+}
 .range-btn { padding: 4px 12px; border: 1px solid var(--border-color); border-radius: 6px; background: transparent; color: var(--text-muted); font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.15s ease; }
 .range-btn:hover { background: var(--bg-tertiary); color: var(--text-primary); }
 .range-btn.active { background: var(--logo-teal); color: #fff; border-color: var(--logo-teal); }

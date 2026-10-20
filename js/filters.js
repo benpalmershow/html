@@ -188,17 +188,34 @@ function setupModalHandlers() {
         if (e.target === modal) hideChartModal(modal);
     });
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'block') hideChartModal(modal);
+    modal.addEventListener('cancel', (e) => {
+        e.preventDefault();
+        hideChartModal(modal);
     });
 }
 
+function supportsTopLayerExit() {
+    return window.CSS?.supports?.('overlay', 'auto') && canTransitionDisplay();
+}
+
+function canTransitionDisplay() {
+    if (!window.CSS?.supports?.('transition-behavior', 'allow-discrete') || !document.body) return false;
+    const probe = document.createElement('div');
+    probe.style.cssText = 'transition: display 1s allow-discrete !important; display: block;';
+    document.body.appendChild(probe);
+    getComputedStyle(probe).display;
+    probe.style.display = 'none';
+    const result = getComputedStyle(probe).display === 'block';
+    probe.remove();
+    return result;
+}
+
 function showChartModal(modal) {
+    modal.showModal();
+    document.body.style.overflow = 'hidden';
     const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
     const firstFocusable = focusable[0];
     const lastFocusable = focusable[focusable.length - 1];
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
     setTimeout(() => firstFocusable?.focus(), 0);
 
     const trapFocus = (e) => {
@@ -215,8 +232,20 @@ function showChartModal(modal) {
     modal.addEventListener('keydown', trapFocus);
 }
 
-function hideChartModal(modal) {
-    modal.style.display = 'none';
+async function hideChartModal(modal) {
+    if (!supportsTopLayerExit()) {
+        modal.setAttribute('data-closing', '');
+        const animations = modal.getAnimations({ subtree: true });
+        if (animations.length > 0) {
+            await Promise.race([
+                Promise.allSettled(animations.map((a) => a.finished)),
+                new Promise((r) => setTimeout(r, 2000)),
+            ]);
+        }
+        if (!modal.hasAttribute('data-closing')) return;
+        modal.removeAttribute('data-closing');
+    }
+    modal.close();
     document.body.style.overflow = '';
     if (modal._trapFocusHandler) {
         modal.removeEventListener('keydown', modal._trapFocusHandler);

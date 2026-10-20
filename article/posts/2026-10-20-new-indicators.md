@@ -12,8 +12,8 @@ Housing is still sliding, the labor market is coasting sideways, and the market 
 
 | Indicator | Agency | Period | Value | Prior | MoM | YoY |
 |---|---|---|---|---|---|---|
-| Pending Home Sales Index | NAR | Sep 2026 | 66.0 | 71.2 | -7.3% | -11.3% |
-| Housing Market Index | NAHB | Oct 2026 | 29 | 32 | -9.4% | -21.6% |
+| [Pending Home Sales Index](financials.html#pending-home-sales-index) | NAR | Sep 2026 | 66.0 | 71.2 | -7.3% | -11.3% |
+| [Housing Market Index](financials.html#housing-market-index) | NAHB | Oct 2026 | 29 | 32 | -9.4% | -21.6% |
 
 The Pending Home Sales Index is the more important of the pair, because contracts signed this month become closed sales in one or two months. September came in at 66.0, down 7.3% from August and 11.3% from a year earlier. That is the lowest print of 2026, and it sits 13.8% below the May peak of 76.6. The index has now fallen for four straight months.
 

@@ -420,6 +420,68 @@ function renderHormuz(indicator) {
         return { latestDataHtml, historyDataHtml, hasHistory: true };
     }
 
+    function renderInterestOnDebt(indicator, MONTHS, MONTH_LABELS) {
+        const availableData = collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
+        let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
+
+        // Calculate annual total for the most recent year
+        let annualTotal = 0;
+        let annualYear = '';
+        const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
+        if (yearKeys.length > 0) {
+            const latestYear = yearKeys[0];
+            annualYear = latestYear;
+            const yearData = indicator[latestYear];
+            if (yearData) {
+                let sum = 0;
+                let hasData = false;
+                Object.values(yearData).forEach(value => {
+                    if (value && typeof value === 'string') {
+                        const numValue = parseFloat(value.replace(/[$B]/g, ''));
+                        if (!isNaN(numValue)) {
+                            sum += numValue;
+                            hasData = true;
+                        }
+                    }
+                });
+                if (hasData) {
+                    annualTotal = sum;
+                }
+            }
+        }
+
+        // Show monthly data
+        if (availableData.length > 0) {
+            const latest = availableData[0];
+            const extraHtml = buildExtraHtml(indicator, latest, MONTHS);
+            const latestTooltip = buildLabelTooltip(indicator, latest, MONTHS);
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label" title="${latestTooltip}">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
+            if (availableData.length > 1) {
+                const second = availableData[1];
+                const secondExtraHtml = buildExtraHtml(indicator, second, MONTHS);
+                const secondTooltip = buildLabelTooltip(indicator, second, MONTHS);
+                latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="${secondTooltip}">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
+                hasHistory = availableData.length > 2;
+                for (let i = 2; i < availableData.length; i++) {
+                    const item = availableData[i];
+                    const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
+                    const historyTooltip = buildLabelTooltip(indicator, item, MONTHS);
+                    historyDataHtml += `<div class="data-row"><span class="month-label" title="${historyTooltip}">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
+                }
+            }
+        } else {
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>`;
+        }
+
+        // Add annual total to history section (expanded card)
+        if (annualTotal > 0) {
+            historyDataHtml = `<div class="data-row" style="border-top: 1px solid var(--border-color); margin-top: 8px; padding-top: 8px;"><span class="month-label">Annual (${annualYear}):</span><span class="month-value">$${annualTotal.toFixed(0)}B</span></div>` + historyDataHtml;
+            hasHistory = true;
+        }
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
+    }
+
     function renderStandard(indicator, MONTHS, MONTH_LABELS) {
         const availableData = collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
         let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
@@ -449,8 +511,9 @@ function renderHormuz(indicator) {
 
     function renderEarnings(indicator) {
         const recent = indicator.recentEarnings || [];
+        const quarterly = indicator.quarterlyFinancials || [];
         const latest = recent[0] || {};
-        const excludedKeys = new Set(['marketCap', 'trailingPE', 'recentEarnings', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change', 'isNew', 'deltas', 'priceHistory']);
+        const excludedKeys = new Set(['marketCap', 'trailingPE', 'recentEarnings', 'quarterlyFinancials', 'latestPrice', 'nextEarningsDate', 'estimatedNextEPS', 'reportedDate', 'actualEPS', 'estimatedEPS', 'surprisePercent', 'explanation', 'ticker', 'id', 'category', 'agency', 'url', 'lastUpdated', 'change', 'isNew', 'deltas', 'priceHistory', 'quarterEnd', 'totalRevenue', 'netIncome', 'grossProfit', 'operatingIncome', 'ebitda', 'basicEPS', 'dilutedEPS', 'rdExpense', 'sgaExpense']);
         const infoEntries = Object.entries(indicator).filter(([key, value]) => value !== null && value !== undefined && value !== '' && !excludedKeys.has(key));
 
         const latestItems = [];
@@ -468,15 +531,88 @@ function renderHormuz(indicator) {
 
         let historyDataHtml = '';
         let hasHistory = false;
+
+        // Quarterly financials table (revenue, net income, KPIs)
+        if (quarterly.length > 0) {
+            hasHistory = true;
+
+            // Check if we have SEC data (filingUrl) or yfinance data (metrics)
+            const hasSecData = quarterly.some(q => q.filingUrl);
+
+            const quarterRows = quarterly.map(q => {
+                let dateLabel = '';
+                if (q.quarterEnd) {
+                    const date = new Date(q.quarterEnd + 'T00:00:00Z');
+                    const month = date.getUTCMonth();
+                    const year = date.getUTCFullYear();
+                    const quarterNum = Math.floor(month / 3) + 1;
+                    const yearShort = year.toString().slice(-2);
+                    dateLabel = `Q${quarterNum} '${yearShort}`;
+                }
+
+                // Check if this is SEC data (has filingUrl) or yfinance data (has metrics)
+                if (q.filingUrl) {
+                    // SEC data - show filing link for verification
+                    const accessionShort = q.accessionNumber ? q.accessionNumber.replace(/-/g, '').slice(-8) : '';
+                    return `<div class="quarterly-row quarterly-row-sec">
+                        <span class="quarterly-date">${dateLabel}</span>
+                        <span class="quarterly-metric quarterly-filing-link"><a href="${q.filingUrl}" target="_blank" rel="noopener noreferrer" class="sec-filing-link">View 10-Q Filing (${accessionShort})</a></span>
+                    </div>`;
+                } else {
+                    // yfinance data - show metrics (legacy, will be removed once SEC parsing is complete)
+                    const revenue = q.totalRevenue !== undefined ? `$${q.totalRevenue.toFixed(2)}B` : '\u2014';
+                    const netIncome = q.netIncome !== undefined ? `$${q.netIncome.toFixed(2)}B` : '\u2014';
+                    const netIncomeClass = q.netIncome >= 0 ? 'earnings-positive' : 'earnings-negative';
+                    const grossProfit = q.grossProfit !== undefined ? `$${q.grossProfit.toFixed(2)}B` : '\u2014';
+                    const operatingIncome = q.operatingIncome !== undefined ? `$${q.operatingIncome.toFixed(2)}B` : '\u2014';
+                    const ebitda = q.ebitda !== undefined ? `$${q.ebitda.toFixed(2)}B` : '\u2014';
+                    const rdExpense = q.rdExpense !== undefined ? `$${q.rdExpense.toFixed(2)}B` : '\u2014';
+                    const sgaExpense = q.sgaExpense !== undefined ? `$${q.sgaExpense.toFixed(2)}B` : '\u2014';
+
+                    return `<div class="quarterly-row">
+                        <span class="quarterly-date">${dateLabel}</span>
+                        <span class="quarterly-metric" title="Total Revenue">${revenue}</span>
+                        <span class="quarterly-metric ${netIncomeClass}" title="Net Income">${netIncome}</span>
+                        <span class="quarterly-metric" title="Gross Profit">${grossProfit}</span>
+                        <span class="quarterly-metric" title="Operating Income">${operatingIncome}</span>
+                        <span class="quarterly-metric" title="EBITDA">${ebitda}</span>
+                        <span class="quarterly-metric" title="R&D Expense">${rdExpense}</span>
+                        <span class="quarterly-metric" title="SG&A Expense">${sgaExpense}</span>
+                    </div>`;
+                }
+            }).join('');
+
+            // Use simpler header for SEC-only mode
+            const headerHtml = hasSecData
+                ? `<div class="quarterly-header quarterly-header-sec">
+                    <span class="quarterly-label">Qtr</span>
+                    <span class="quarterly-label">SEC Filing</span>
+                </div>`
+                : `<div class="quarterly-header">
+                    <span class="quarterly-label">Qtr</span>
+                    <span class="quarterly-label" title="Total Revenue">Revenue</span>
+                    <span class="quarterly-label" title="Net Income">Net Income</span>
+                    <span class="quarterly-label" title="Gross Profit">Gross Profit</span>
+                    <span class="quarterly-label" title="Operating Income">Op. Income</span>
+                    <span class="quarterly-label" title="EBITDA">EBITDA</span>
+                    <span class="quarterly-label" title="R&D Expense">R&D</span>
+                    <span class="quarterly-label" title="SG&A Expense">SG&A</span>
+                </div>`;
+
+            historyDataHtml += `<div class="quarterly-section">${headerHtml}${quarterRows}</div>`;
+        }
+
+        // Recent earnings surprises
         if (recent.length > 0) {
             hasHistory = true;
-            historyDataHtml = recent.map(entry => {
+            const earningsRows = recent.map(entry => {
                 const val = parseFloat(entry.surprisePercent);
                 const sign = val >= 0 ? '+' : '';
                 const dateLabel = entry.reportedDate ? new Date(entry.reportedDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }) : '';
                 const surpriseClass = val >= 0 ? 'surprise-positive' : 'surprise-negative';
-                return `<div class="data-row"><span class="month-label">${dateLabel}</span><span class="month-value">Actual: $${entry.actualEPS} | Est: $${entry.estimatedEPS} <span class="${surpriseClass}">${sign}${val.toFixed(2)}%</span></span></div>`;
+                return `<div class="data-row earnings-surprise-row"><span class="month-label">${dateLabel}</span><div class="earnings-metrics"><span class="earnings-metric">Actual: $${entry.actualEPS}</span><span class="earnings-metric">Est: $${entry.estimatedEPS}</span><span class="earnings-metric ${surpriseClass}">${sign}${val.toFixed(2)}%</span></div></div>`;
             }).join('');
+            historyDataHtml += `<div class="earnings-surprise-section">${earningsRows}</div>`;
         }
 
         if (infoEntries.length > 0) {
@@ -528,7 +664,7 @@ function renderHormuz(indicator) {
     }
 
     // --- Registry setup ---
-    registry.register('fomc', (indicator) => renderFOMC(indicator)).register('recession', (indicator) => renderRecession(indicator)).register('prediction', (indicator) => renderPrediction(indicator)).register('sports', (indicator) => renderSports(indicator)).register('venezuela', (indicator) => renderVenezuela(indicator)).register('hormuz', (indicator) => renderHormuz(indicator)).register('politicalPoll', (indicator) => renderPoliticalPoll(indicator)).register('earnings', (indicator) => renderEarnings(indicator)).register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS)).registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
+    registry.register('fomc', (indicator) => renderFOMC(indicator)).register('recession', (indicator) => renderRecession(indicator)).register('prediction', (indicator) => renderPrediction(indicator)).register('sports', (indicator) => renderSports(indicator)).register('venezuela', (indicator) => renderVenezuela(indicator)).register('hormuz', (indicator) => renderHormuz(indicator)).register('politicalPoll', (indicator) => renderPoliticalPoll(indicator)).register('earnings', (indicator) => renderEarnings(indicator)).register('interestOnDebt', (indicator, MONTHS, MONTH_LABELS) => renderInterestOnDebt(indicator, MONTHS, MONTH_LABELS)).register('standard', (indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS)).registerFallback((indicator, MONTHS, MONTH_LABELS) => renderStandard(indicator, MONTHS, MONTH_LABELS));
     return { registry, collectMonthlyData, collectSparklineValues };
 })();
 
@@ -547,6 +683,7 @@ function detectIndicatorType(indicator) {
     if (indicator.name.includes('@')) return 'sports';
     if (indicator.category === 'Earnings') return 'earnings';
     if (indicator.name === 'Strait of Hormuz Daily Transits') return 'hormuz';
+    if (indicator.name === 'Interest on Debt') return 'interestOnDebt';
     const probabilities = indicator.probabilities || indicator.propabilities;
     if (probabilities && typeof probabilities === 'object') {
         const firstEntry = Object.values(probabilities)[0];
@@ -728,7 +865,18 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const categoryFilterBtn = buildCategoryFilterButton(indicator.category);
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${indicator.name}${(isNew && !indicator.game_time_iso) ? '<span class="new-badge">New</span>' : ''}${(indicator.game_time_iso && indicator.week) ? `<span class="week-badge">W${indicator.week}</span>` : ''}${indicator.result ? '<span class="game-final-badge">Final</span>' : ''}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    // For earnings cards, hyperlink the ticker to Perplexity Finance
+    const displayName = indicator.category === 'Earnings' && indicator.ticker
+        ? `<a href="https://www.perplexity.ai/finance/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="indicator-name-link">${indicator.name}</a>`
+        : indicator.name;
+
+    const badges = [
+        (isNew && !indicator.game_time_iso) ? '<span class="new-badge">New</span>' : '',
+        (indicator.game_time_iso && indicator.week) ? `<span class="week-badge">W${indicator.week}</span>` : '',
+        indicator.result ? '<span class="game-final-badge">Final</span>' : ''
+    ].filter(Boolean).join('');
+
+    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${displayName}${badges}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
 }
 
 /* Category icon button on each card: shows the card's category (same lucide

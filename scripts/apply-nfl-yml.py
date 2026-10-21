@@ -69,6 +69,26 @@ def odds_to_int(value):
         return str(value)
 
 
+def last_live_price(odds_history, key):
+    """Return the most recent unsettled price for `key` in the odds history.
+
+    Completed games settle at 100/0, so their current price cannot be used as
+    the anchor for a synthesized pre-game line. This walks the history
+    backwards for the last price that still sits strictly between 0 and 100.
+    """
+    for entry in reversed(odds_history or []):
+        value = entry.get(key)
+        if value is None:
+            continue
+        try:
+            price = float(str(value).replace('¢', '').strip())
+        except (TypeError, ValueError):
+            continue
+        if 0 < price < 100:
+            return price
+    return None
+
+
 def build_indicator(game):
     """Convert one YAML game dict into a financials-data.json indicator object."""
     away = game["away"]
@@ -167,6 +187,14 @@ def build_indicator(game):
         if unique_dates < 5:
             # Use current odds as baseline for synthesis
             away_prob_current = float(str(odds_fields[away_key]).replace('¢', ''))
+            if is_completed:
+                # A completed game settles at 100/0, so the current price is not
+                # a usable anchor for the pre-game line. Fall back to the last
+                # live market level so the chart shows a realistic path into
+                # the game instead of a flat 95/5.
+                pre_game = last_live_price(odds_history, away_key)
+                if pre_game is not None:
+                    away_prob_current = pre_game
             # Synthesize dates going back up to 7 days before game
             variations = [(7, 3), (5, -2), (3, 2), (2, -1), (1, 1), (0, 0)]
             for days_back, var in variations:

@@ -365,6 +365,7 @@ function convertEarningsToIndicators(earnings) {
             category: 'Earnings',
             agency: entry.source || 'Yahoo Finance',
             name: entry.ticker,
+            ticker: entry.ticker,
             url: `https://finance.yahoo.com/quote/${entry.ticker}`,
             lastUpdated: latest.reportedDate || entry.fetchedAt,
             reportedDate: latest.reportedDate || '',
@@ -381,6 +382,7 @@ function convertEarningsToIndicators(earnings) {
             change: '',
             explanation: buildEarningsExplanation(entry, latest),
             recentEarnings: entry.recentEarnings || [],
+            quarterlyFinancials: entry.quarterlyFinancials || [],
             company: entry.company,
             sector: entry.sector,
             marketCap: entry.marketCap,
@@ -447,7 +449,8 @@ function convertEarningsToIndicators(earnings) {
             recommendationKey: entry.recommendationKey,
             exDividendDate: entry.exDividendDate,
             lastDividendDate: entry.lastDividendDate,
-            priceHistory: entry.priceHistory || []
+            priceHistory: entry.priceHistory || [],
+            quarterlyFinancials: entry.quarterlyFinancials || []
         };
 
         const prev = (() => {

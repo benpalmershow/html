@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-21T15:25:11Z",
+  "lastUpdated": "2026-10-21T21:39:54.172610Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1263,7 +1263,8 @@
         "april": "12,023",
         "may": "13,538",
         "june": "12,907",
-        "july": "12,730"
+        "july": "12,730",
+        "august": "12,242"
       },
       "2025": {
         "march": "11,011",
@@ -1281,7 +1282,7 @@
       "color": "#3498db",
       "agency": "CBP",
       "name": "Southern Border Encounters",
-      "lastUpdated": "2026-08-22T14:00:00Z",
+      "lastUpdated": "2026-10-21T14:00:00Z",
       "releaseDay": 0,
       "url": "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
       "change": "",
@@ -2866,7 +2867,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-pit-no-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.012491Z",
+      "lastUpdated": "2026-10-21T21:33:11.5824Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -2918,7 +2919,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ind-min-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.011471Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -2970,7 +2971,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-nyj-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.011062Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3022,7 +3023,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-bal-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.011881Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3038,32 +3039,32 @@
           "BAL_win_odds": "58"
         },
         "2026-10-21": {
-          "CIN_win_odds": "42",
-          "BAL_win_odds": "58"
+          "CIN_win_odds": "52",
+          "BAL_win_odds": "48"
         },
         "2026-10-18": {
-          "CIN_win_odds": "45",
-          "BAL_win_odds": "55"
+          "CIN_win_odds": "55",
+          "BAL_win_odds": "45"
         },
         "2026-10-22": {
-          "CIN_win_odds": "44",
-          "BAL_win_odds": "56"
+          "CIN_win_odds": "54",
+          "BAL_win_odds": "46"
         },
         "2026-10-23": {
-          "CIN_win_odds": "41",
-          "BAL_win_odds": "59"
+          "CIN_win_odds": "51",
+          "BAL_win_odds": "49"
         },
         "2026-10-24": {
-          "CIN_win_odds": "43",
-          "BAL_win_odds": "57"
+          "CIN_win_odds": "53",
+          "BAL_win_odds": "47"
         },
         "2026-10-25": {
-          "CIN_win_odds": "42",
-          "BAL_win_odds": "58"
+          "CIN_win_odds": "52",
+          "BAL_win_odds": "48"
         }
       },
-      "CIN_win_odds": "42",
-      "BAL_win_odds": "58"
+      "CIN_win_odds": "52",
+      "BAL_win_odds": "48"
     },
     {
       "id": "cle-ten-2026-10-25",
@@ -3074,7 +3075,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cle-ten-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.005986Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3126,7 +3127,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-tb-car-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.012272Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3142,32 +3143,32 @@
           "CAR_win_odds": "61"
         },
         "2026-10-21": {
-          "TB_win_odds": "38",
-          "CAR_win_odds": "62"
-        },
-        "2026-10-18": {
-          "TB_win_odds": "41",
-          "CAR_win_odds": "59"
-        },
-        "2026-10-22": {
           "TB_win_odds": "40",
           "CAR_win_odds": "60"
         },
-        "2026-10-23": {
-          "TB_win_odds": "37",
-          "CAR_win_odds": "63"
+        "2026-10-18": {
+          "TB_win_odds": "43",
+          "CAR_win_odds": "57"
         },
-        "2026-10-24": {
+        "2026-10-22": {
+          "TB_win_odds": "42",
+          "CAR_win_odds": "58"
+        },
+        "2026-10-23": {
           "TB_win_odds": "39",
           "CAR_win_odds": "61"
         },
+        "2026-10-24": {
+          "TB_win_odds": "41",
+          "CAR_win_odds": "59"
+        },
         "2026-10-25": {
-          "TB_win_odds": "38",
-          "CAR_win_odds": "62"
+          "TB_win_odds": "40",
+          "CAR_win_odds": "60"
         }
       },
-      "TB_win_odds": "38",
-      "CAR_win_odds": "62"
+      "TB_win_odds": "40",
+      "CAR_win_odds": "60"
     },
     {
       "id": "sf-atl-2026-10-25",
@@ -3178,7 +3179,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-sf-atl-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.011388Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3194,32 +3195,32 @@
           "ATL_win_odds": "34"
         },
         "2026-10-21": {
-          "SF_win_odds": "62",
-          "ATL_win_odds": "38"
+          "SF_win_odds": "58",
+          "ATL_win_odds": "42"
         },
         "2026-10-18": {
-          "SF_win_odds": "65",
-          "ATL_win_odds": "35"
-        },
-        "2026-10-22": {
-          "SF_win_odds": "64",
-          "ATL_win_odds": "36"
-        },
-        "2026-10-23": {
           "SF_win_odds": "61",
           "ATL_win_odds": "39"
         },
+        "2026-10-22": {
+          "SF_win_odds": "60",
+          "ATL_win_odds": "40"
+        },
+        "2026-10-23": {
+          "SF_win_odds": "57",
+          "ATL_win_odds": "43"
+        },
         "2026-10-24": {
-          "SF_win_odds": "63",
-          "ATL_win_odds": "37"
+          "SF_win_odds": "59",
+          "ATL_win_odds": "41"
         },
         "2026-10-25": {
-          "SF_win_odds": "62",
-          "ATL_win_odds": "38"
+          "SF_win_odds": "58",
+          "ATL_win_odds": "42"
         }
       },
-      "SF_win_odds": "62",
-      "ATL_win_odds": "38"
+      "SF_win_odds": "58",
+      "ATL_win_odds": "42"
     },
     {
       "id": "nyg-hou-2026-10-25",
@@ -3230,7 +3231,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-nyg-hou-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.007438Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3282,7 +3283,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-den-ari-2026-10-25",
-      "lastUpdated": "2026-10-21T10:55:10.760113Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3334,7 +3335,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-gb-det-2026-10-25",
-      "lastUpdated": "2026-10-21T10:57:33.00744Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -3400,24 +3401,24 @@
           "LV_win_odds": "0"
         },
         "2026-10-11": {
-          "BUF_win_odds": "95",
-          "LV_win_odds": "5"
+          "BUF_win_odds": "70",
+          "LV_win_odds": "30"
         },
         "2026-10-13": {
-          "BUF_win_odds": "95",
-          "LV_win_odds": "5"
+          "BUF_win_odds": "66",
+          "LV_win_odds": "34"
         },
         "2026-10-15": {
-          "BUF_win_odds": "95",
-          "LV_win_odds": "5"
+          "BUF_win_odds": "70",
+          "LV_win_odds": "30"
         },
         "2026-10-16": {
-          "BUF_win_odds": "95",
-          "LV_win_odds": "5"
+          "BUF_win_odds": "66",
+          "LV_win_odds": "34"
         },
         "2026-10-18": {
-          "BUF_win_odds": "95",
-          "LV_win_odds": "5"
+          "BUF_win_odds": "68",
+          "LV_win_odds": "32"
         }
       },
       "BUF_win_odds": "100",
@@ -3442,28 +3443,28 @@
           "JAX_win_odds": "0"
         },
         "2026-10-11": {
-          "HOU_win_odds": "95",
-          "JAX_win_odds": "5"
+          "HOU_win_odds": "46",
+          "JAX_win_odds": "54"
         },
         "2026-10-13": {
-          "HOU_win_odds": "95",
-          "JAX_win_odds": "5"
+          "HOU_win_odds": "42",
+          "JAX_win_odds": "58"
         },
         "2026-10-15": {
-          "HOU_win_odds": "95",
-          "JAX_win_odds": "5"
+          "HOU_win_odds": "46",
+          "JAX_win_odds": "54"
         },
         "2026-10-16": {
-          "HOU_win_odds": "95",
-          "JAX_win_odds": "5"
+          "HOU_win_odds": "42",
+          "JAX_win_odds": "58"
         },
         "2026-10-17": {
-          "HOU_win_odds": "95",
-          "JAX_win_odds": "5"
+          "HOU_win_odds": "44",
+          "JAX_win_odds": "56"
         },
         "2026-10-18": {
-          "HOU_win_odds": "95",
-          "JAX_win_odds": "5"
+          "HOU_win_odds": "44",
+          "JAX_win_odds": "56"
         }
       },
       "HOU_win_odds": "100",
@@ -3492,24 +3493,24 @@
           "IND_win_odds": "0"
         },
         "2026-10-11": {
-          "TEN_win_odds": "95",
-          "IND_win_odds": "5"
+          "TEN_win_odds": "28",
+          "IND_win_odds": "72"
         },
         "2026-10-13": {
-          "TEN_win_odds": "95",
-          "IND_win_odds": "5"
+          "TEN_win_odds": "24",
+          "IND_win_odds": "76"
         },
         "2026-10-15": {
-          "TEN_win_odds": "95",
-          "IND_win_odds": "5"
+          "TEN_win_odds": "28",
+          "IND_win_odds": "72"
         },
         "2026-10-16": {
-          "TEN_win_odds": "95",
-          "IND_win_odds": "5"
+          "TEN_win_odds": "24",
+          "IND_win_odds": "76"
         },
         "2026-10-18": {
-          "TEN_win_odds": "95",
-          "IND_win_odds": "5"
+          "TEN_win_odds": "26",
+          "IND_win_odds": "74"
         }
       },
       "TEN_win_odds": "100",
@@ -3538,24 +3539,24 @@
           "PHI_win_odds": "0"
         },
         "2026-10-11": {
-          "CAR_win_odds": "95",
-          "PHI_win_odds": "5"
+          "CAR_win_odds": "64",
+          "PHI_win_odds": "36"
         },
         "2026-10-13": {
-          "CAR_win_odds": "95",
-          "PHI_win_odds": "5"
+          "CAR_win_odds": "60",
+          "PHI_win_odds": "40"
         },
         "2026-10-15": {
-          "CAR_win_odds": "95",
-          "PHI_win_odds": "5"
+          "CAR_win_odds": "64",
+          "PHI_win_odds": "36"
         },
         "2026-10-16": {
-          "CAR_win_odds": "95",
-          "PHI_win_odds": "5"
+          "CAR_win_odds": "60",
+          "PHI_win_odds": "40"
         },
         "2026-10-18": {
-          "CAR_win_odds": "95",
-          "PHI_win_odds": "5"
+          "CAR_win_odds": "62",
+          "PHI_win_odds": "38"
         }
       },
       "CAR_win_odds": "100",
@@ -3584,24 +3585,24 @@
           "TB_win_odds": "0"
         },
         "2026-10-11": {
-          "PIT_win_odds": "95",
-          "TB_win_odds": "5"
+          "PIT_win_odds": "58",
+          "TB_win_odds": "42"
         },
         "2026-10-13": {
-          "PIT_win_odds": "95",
-          "TB_win_odds": "5"
+          "PIT_win_odds": "54",
+          "TB_win_odds": "46"
         },
         "2026-10-15": {
-          "PIT_win_odds": "95",
-          "TB_win_odds": "5"
+          "PIT_win_odds": "58",
+          "TB_win_odds": "42"
         },
         "2026-10-16": {
-          "PIT_win_odds": "95",
-          "TB_win_odds": "5"
+          "PIT_win_odds": "54",
+          "TB_win_odds": "46"
         },
         "2026-10-18": {
-          "PIT_win_odds": "95",
-          "TB_win_odds": "5"
+          "PIT_win_odds": "56",
+          "TB_win_odds": "44"
         }
       },
       "PIT_win_odds": "100",
@@ -3630,24 +3631,24 @@
           "CLE_win_odds": "100"
         },
         "2026-10-11": {
-          "BAL_win_odds": "5",
-          "CLE_win_odds": "95"
+          "BAL_win_odds": "64",
+          "CLE_win_odds": "36"
         },
         "2026-10-13": {
-          "BAL_win_odds": "5",
-          "CLE_win_odds": "95"
+          "BAL_win_odds": "60",
+          "CLE_win_odds": "40"
         },
         "2026-10-15": {
-          "BAL_win_odds": "5",
-          "CLE_win_odds": "95"
+          "BAL_win_odds": "64",
+          "CLE_win_odds": "36"
         },
         "2026-10-16": {
-          "BAL_win_odds": "5",
-          "CLE_win_odds": "95"
+          "BAL_win_odds": "60",
+          "CLE_win_odds": "40"
         },
         "2026-10-18": {
-          "BAL_win_odds": "5",
-          "CLE_win_odds": "95"
+          "BAL_win_odds": "62",
+          "CLE_win_odds": "38"
         }
       },
       "BAL_win_odds": "0",
@@ -3676,24 +3677,24 @@
           "NYG_win_odds": "0"
         },
         "2026-10-11": {
-          "NO_win_odds": "95",
-          "NYG_win_odds": "5"
+          "NO_win_odds": "54",
+          "NYG_win_odds": "46"
         },
         "2026-10-13": {
-          "NO_win_odds": "95",
-          "NYG_win_odds": "5"
+          "NO_win_odds": "48",
+          "NYG_win_odds": "52"
         },
         "2026-10-15": {
-          "NO_win_odds": "95",
-          "NYG_win_odds": "5"
+          "NO_win_odds": "52",
+          "NYG_win_odds": "48"
         },
         "2026-10-16": {
-          "NO_win_odds": "95",
-          "NYG_win_odds": "5"
+          "NO_win_odds": "50",
+          "NYG_win_odds": "50"
         },
         "2026-10-18": {
-          "NO_win_odds": "95",
-          "NYG_win_odds": "5"
+          "NO_win_odds": "50",
+          "NYG_win_odds": "50"
         }
       },
       "NO_win_odds": "100",
@@ -3722,24 +3723,24 @@
           "ATL_win_odds": "0"
         },
         "2026-10-11": {
-          "CHI_win_odds": "95",
-          "ATL_win_odds": "5"
+          "CHI_win_odds": "54",
+          "ATL_win_odds": "46"
         },
         "2026-10-13": {
-          "CHI_win_odds": "95",
-          "ATL_win_odds": "5"
+          "CHI_win_odds": "48",
+          "ATL_win_odds": "52"
         },
         "2026-10-15": {
-          "CHI_win_odds": "95",
-          "ATL_win_odds": "5"
+          "CHI_win_odds": "52",
+          "ATL_win_odds": "48"
         },
         "2026-10-16": {
-          "CHI_win_odds": "95",
-          "ATL_win_odds": "5"
+          "CHI_win_odds": "50",
+          "ATL_win_odds": "50"
         },
         "2026-10-18": {
-          "CHI_win_odds": "95",
-          "ATL_win_odds": "5"
+          "CHI_win_odds": "50",
+          "ATL_win_odds": "50"
         }
       },
       "CHI_win_odds": "100",
@@ -3768,24 +3769,24 @@
           "NE_win_odds": "100"
         },
         "2026-10-11": {
-          "NYJ_win_odds": "5",
-          "NE_win_odds": "95"
+          "NYJ_win_odds": "28",
+          "NE_win_odds": "72"
         },
         "2026-10-13": {
-          "NYJ_win_odds": "5",
-          "NE_win_odds": "95"
+          "NYJ_win_odds": "22",
+          "NE_win_odds": "78"
         },
         "2026-10-15": {
-          "NYJ_win_odds": "5",
-          "NE_win_odds": "95"
+          "NYJ_win_odds": "26",
+          "NE_win_odds": "74"
         },
         "2026-10-16": {
-          "NYJ_win_odds": "5",
-          "NE_win_odds": "95"
+          "NYJ_win_odds": "24",
+          "NE_win_odds": "76"
         },
         "2026-10-18": {
-          "NYJ_win_odds": "5",
-          "NE_win_odds": "95"
+          "NYJ_win_odds": "24",
+          "NE_win_odds": "76"
         }
       },
       "NYJ_win_odds": "0",
@@ -3814,24 +3815,24 @@
           "KC_win_odds": "100"
         },
         "2026-10-11": {
-          "LAC_win_odds": "5",
-          "KC_win_odds": "95"
+          "LAC_win_odds": "24",
+          "KC_win_odds": "76"
         },
         "2026-10-13": {
-          "LAC_win_odds": "5",
-          "KC_win_odds": "95"
+          "LAC_win_odds": "20",
+          "KC_win_odds": "80"
         },
         "2026-10-15": {
-          "LAC_win_odds": "5",
-          "KC_win_odds": "95"
+          "LAC_win_odds": "24",
+          "KC_win_odds": "76"
         },
         "2026-10-16": {
-          "LAC_win_odds": "5",
-          "KC_win_odds": "95"
+          "LAC_win_odds": "20",
+          "KC_win_odds": "80"
         },
         "2026-10-18": {
-          "LAC_win_odds": "5",
-          "KC_win_odds": "95"
+          "LAC_win_odds": "22",
+          "KC_win_odds": "78"
         }
       },
       "LAC_win_odds": "0",
@@ -3846,7 +3847,7 @@
       "game_time": "Oct 22, 2026 8:15 PM ET",
       "game_time_iso": "2026-10-23T00:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ne-chi-2026-10-23",
-      "lastUpdated": "2026-10-21T10:57:33.046901Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -3890,7 +3891,7 @@
       "game_time": "Oct 25, 2026 8:20 PM ET",
       "game_time_iso": "2026-10-26T00:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-sea-2026-10-26",
-      "lastUpdated": "2026-10-21T10:57:32.908517Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -3934,7 +3935,7 @@
       "game_time": "Oct 26, 2026 8:15 PM ET",
       "game_time_iso": "2026-10-27T00:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-dal-phi-2026-10-27",
-      "lastUpdated": "2026-10-21T10:57:32.905678Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -3982,7 +3983,7 @@
       "game_time": "Oct 25, 2026 4:25 PM ET",
       "game_time_iso": "2026-10-25T20:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-la-lv-2026-10-25",
-      "lastUpdated": "2026-10-21T10:55:10.760113Z",
+      "lastUpdated": "2026-10-21T21:35:11.202427Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -4122,16 +4123,22 @@
       "game_time": "Oct 19, 2026 8:15 PM ET",
       "game_time_iso": "2026-10-20T00:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-was-sf-2026-10-20",
-      "lastUpdated": "2026-10-19T21:57:28.025696Z",
+      "lastUpdated": "2026-10-21T03:41:17.520984Z",
       "week": 6,
+      "winner": "SF",
+      "result": "Final",
       "probabilities": {
         "2026-10-19": {
           "WAS_win_odds": "22",
           "SF_win_odds": "78"
         },
+        "2026-10-21": {
+          "WAS_win_odds": "0",
+          "SF_win_odds": "100"
+        },
         "2026-10-13": {
-          "WAS_win_odds": "25",
-          "SF_win_odds": "75"
+          "WAS_win_odds": "24",
+          "SF_win_odds": "76"
         },
         "2026-10-15": {
           "WAS_win_odds": "20",
@@ -4142,16 +4149,16 @@
           "SF_win_odds": "76"
         },
         "2026-10-18": {
-          "WAS_win_odds": "21",
-          "SF_win_odds": "79"
+          "WAS_win_odds": "20",
+          "SF_win_odds": "80"
         },
         "2026-10-20": {
           "WAS_win_odds": "22",
           "SF_win_odds": "78"
         }
       },
-      "WAS_win_odds": "22",
-      "SF_win_odds": "78"
+      "WAS_win_odds": "0",
+      "SF_win_odds": "100"
     }
   ]
 }

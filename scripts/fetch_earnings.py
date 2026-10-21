@@ -285,6 +285,9 @@ def fetch_ticker_data(symbol):
     except Exception as e:
         logger.warning(f"{symbol}: earnings history fetch failed: {e}")
 
+    # Note: Quarterly financials are now fetched from SEC EDGAR via fetch_sec_quarterly.py
+    # This provides verifiable data from the primary source (SEC.gov) rather than yfinance
+
     return result
 
 

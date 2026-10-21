@@ -90,6 +90,10 @@
 
 .indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: break-word; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
+.indicator-name-link { color: var(--text-primary); text-decoration: none; transition: color var(--transition-fast); }
+
+.indicator-name-link:hover { color: var(--logo-teal); text-decoration: underline; }
+
 /* Accent rail along the top edge; single brand teal for every card. */
 .indicator::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--indicator-accent, var(--category-accent, var(--logo-teal))); opacity: 0.5; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; pointer-events: none; }
 
@@ -143,9 +147,51 @@
    wider floor so the title stays on one line instead of collapsing the card. */
 .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
 
+/* Earnings cards have wide quarterly tables; give them more width. */
+.category[data-category="Earnings"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); }
+
 .surprise-positive { color: #22c55e; font-weight: 700; }
 
 .surprise-negative { color: #ef4444; font-weight: 700; }
+
+.earnings-positive { color: #22c55e; font-weight: 700; }
+
+.earnings-negative { color: #ef4444; font-weight: 700; }
+
+/* QUARTERLY FINANCIALS TABLE */
+.quarterly-section { margin: 8px 0; padding: 8px; background: rgba(var(--border-color-rgb), 0.12); border-radius: 6px; overflow-x: auto; }
+
+.quarterly-header { display: grid; grid-template-columns: 1fr repeat(7, 1fr); gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 4px; min-width: 500px; }
+
+.quarterly-header-sec { grid-template-columns: 1fr 1fr; min-width: 300px; }
+
+.quarterly-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); text-align: center; }
+
+.quarterly-row { display: grid; grid-template-columns: 1fr repeat(7, 1fr); gap: 6px; padding: 6px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.12); transition: background-color 0.2s ease; min-width: 500px; }
+
+.quarterly-row-sec { grid-template-columns: 1fr 1fr; min-width: 300px; }
+
+.quarterly-row:last-child { border-bottom: none; }
+
+.quarterly-row:hover { background-color: rgba(var(--logo-teal-rgb), 0.05); }
+
+.quarterly-date { font-size: 0.7rem; font-weight: 600; color: var(--text-primary); text-align: left; }
+
+.quarterly-metric { font-size: 0.68rem; font-weight: 600; color: var(--text-secondary); text-align: right; font-variant-numeric: tabular-nums; }
+
+.quarterly-filing-link { text-align: left; }
+
+.sec-filing-link { color: var(--logo-teal); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: color var(--transition-fast); }
+
+.sec-filing-link:hover { color: var(--logo-orange); text-decoration: underline; }
+
+.earnings-surprise-section { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border-color); }
+
+.earnings-surprise-row { align-items: center; }
+
+.earnings-metrics { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: flex-end; }
+
+.earnings-metric { font-size: 0.75rem; font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .month-change, .job-change-inline { font-size: 0.85rem; opacity: 0.8; font-weight: 600; }
 

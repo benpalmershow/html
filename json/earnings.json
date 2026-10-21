@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-21T11:26:10.504677Z",
+  "lastUpdated": "2026-10-21T21:46:43.098177Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -15,17 +15,17 @@
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-10-21T11:26:10.505312Z",
+      "fetchedAt": "2026-10-21T21:46:43.098626Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "marketCap": 5227101028352.0,
+      "marketCap": 5359909470208.0,
       "enterpriseValue": 5193318006784.0,
-      "trailingPE": 27.37,
-      "forwardPE": 13.6,
+      "trailingPE": 28.06,
+      "forwardPE": 13.95,
       "pegRatio": 0.26,
-      "priceToSalesTrailing12Months": 17.25,
-      "priceToBook": 22.83,
+      "priceToSalesTrailing12Months": 17.69,
+      "priceToBook": 23.41,
       "grossMargins": 0.75,
       "operatingMargins": 0.66,
       "profitMargins": 0.64,
@@ -65,14 +65,14 @@
       "twoHundredDayAverage": 203.26,
       "averageVolume": 118203737.0,
       "averageDailyVolume10Day": 98456570.0,
-      "previousClose": 217.09,
-      "open": 215.97,
-      "regularMarketOpen": 215.97,
-      "dayHigh": 218.46,
-      "dayLow": 212.77,
-      "regularMarketDayHigh": 218.46,
-      "regularMarketDayLow": 212.77,
-      "regularMarketVolume": 77454645.0,
+      "previousClose": 216.47,
+      "open": 220.96,
+      "regularMarketOpen": 220.96,
+      "dayHigh": 222.19,
+      "dayLow": 217.66,
+      "regularMarketDayHigh": 222.19,
+      "regularMarketDayLow": 217.66,
+      "regularMarketVolume": 86111324.0,
       "averageVolume10days": 98456570.0,
       "sharesShort": 311389688.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -84,12 +84,8 @@
       "recommendationKey": "strong_buy",
       "exDividendDate": "2026-09-10",
       "lastDividendDate": "2026-09-10",
-      "latestPrice": 216.47,
+      "latestPrice": 221.97,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 180.73
-        },
         {
           "date": "2025-10-22",
           "close": 179.85
@@ -1089,6 +1085,10 @@
         {
           "date": "2026-10-20",
           "close": 216.47
+        },
+        {
+          "date": "2026-10-21",
+          "close": 221.97
         }
       ],
       "nextEarningsDate": "2026-11-17",
@@ -1122,21 +1122,52 @@
           "surprisePercent": 3.46,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-26",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/0001045810-26-000075-index.htm",
+          "accessionNumber": "0001045810-26-000075",
+          "filingDate": "2026-08-26"
+        },
+        {
+          "quarterEnd": "2026-05-20",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000052/0001045810-26-000052-index.htm",
+          "accessionNumber": "0001045810-26-000052",
+          "filingDate": "2026-05-20"
+        },
+        {
+          "quarterEnd": "2025-11-19",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581025000230/0001045810-25-000230-index.htm",
+          "accessionNumber": "0001045810-25-000230",
+          "filingDate": "2025-11-19"
+        },
+        {
+          "quarterEnd": "2025-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581025000209/0001045810-25-000209-index.htm",
+          "accessionNumber": "0001045810-25-000209",
+          "filingDate": "2025-08-27"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-10-21T11:26:11.776113Z",
+      "fetchedAt": "2026-10-21T21:46:45.246716Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "marketCap": 1475985408000.0,
+      "marketCap": 1526381674496.0,
       "enterpriseValue": 1449202417664.0,
-      "trailingPE": 346.03,
-      "forwardPE": 172.34,
-      "pegRatio": 3.61,
-      "priceToSalesTrailing12Months": 14.24,
-      "priceToBook": 16.99,
+      "trailingPE": 357.84,
+      "forwardPE": 178.22,
+      "pegRatio": 3.81,
+      "priceToSalesTrailing12Months": 14.73,
+      "priceToBook": 17.57,
       "grossMargins": 0.19,
       "operatingMargins": 0.01,
       "profitMargins": 0.04,
@@ -1176,14 +1207,14 @@
       "twoHundredDayAverage": 387.26,
       "averageVolume": 37830426.0,
       "averageDailyVolume10Day": 32185650.0,
-      "previousClose": 368.06,
-      "open": 370.35,
-      "regularMarketOpen": 370.35,
-      "dayHigh": 377.59,
-      "dayLow": 363.64,
-      "regularMarketDayHigh": 377.59,
-      "regularMarketDayLow": 363.64,
-      "regularMarketVolume": 30761382.0,
+      "previousClose": 373.71,
+      "open": 381.51,
+      "regularMarketOpen": 381.51,
+      "dayHigh": 388.84,
+      "dayLow": 380.51,
+      "regularMarketDayHigh": 388.84,
+      "regularMarketDayLow": 380.51,
+      "regularMarketVolume": 44779790.0,
       "averageVolume10days": 32185650.0,
       "sharesShort": 70931312.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -1193,12 +1224,8 @@
       "industry": "Auto Manufacturers",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 373.71,
+      "latestPrice": 386.47,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 442.6
-        },
         {
           "date": "2025-10-22",
           "close": 438.97
@@ -2198,11 +2225,18 @@
         {
           "date": "2026-10-20",
           "close": 373.71
+        },
+        {
+          "date": "2026-10-21",
+          "close": 386.47
         }
       ],
-      "nextEarningsDate": "2026-10-21",
-      "estimatedEPS": 0.45,
       "recentEarnings": [
+        {
+          "reportedDate": "2026-10-21",
+          "estimatedEPS": 0.45,
+          "source": "Yahoo Finance"
+        },
         {
           "reportedDate": "2026-07-22",
           "actualEPS": 0.33,
@@ -2223,29 +2257,53 @@
           "estimatedEPS": 0.45,
           "surprisePercent": 10.96,
           "source": "Yahoo Finance"
+        }
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-07-23",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828026049270/0001628280-26-049270-index.htm",
+          "accessionNumber": "0001628280-26-049270",
+          "filingDate": "2026-07-23"
         },
         {
-          "reportedDate": "2025-10-22",
-          "actualEPS": 0.5,
-          "estimatedEPS": 0.56,
-          "surprisePercent": -10.53,
-          "source": "Yahoo Finance"
+          "quarterEnd": "2026-04-23",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828026026673/0001628280-26-026673-index.htm",
+          "accessionNumber": "0001628280-26-026673",
+          "filingDate": "2026-04-23"
+        },
+        {
+          "quarterEnd": "2025-10-23",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828025045968/0001628280-25-045968-index.htm",
+          "accessionNumber": "0001628280-25-045968",
+          "filingDate": "2025-10-23"
+        },
+        {
+          "quarterEnd": "2025-07-24",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828025035806/0001628280-25-035806-index.htm",
+          "accessionNumber": "0001628280-25-035806",
+          "filingDate": "2025-07-24"
         }
-      ]
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "NYT",
-      "fetchedAt": "2026-10-21T11:26:12.576975Z",
+      "fetchedAt": "2026-10-21T21:46:46.497284Z",
       "source": "Yahoo Finance",
       "company": "The New York Times Company",
       "sector": "Communication Services",
-      "marketCap": 11218885632.0,
+      "marketCap": 11105987584.0,
       "enterpriseValue": 10558073856.0,
-      "trailingPE": 28.98,
-      "forwardPE": 22.26,
+      "trailingPE": 28.69,
+      "forwardPE": 22.03,
       "pegRatio": 3.79,
-      "priceToSalesTrailing12Months": 3.8,
-      "priceToBook": 5.49,
+      "priceToSalesTrailing12Months": 3.76,
+      "priceToBook": 5.43,
       "grossMargins": 0.51,
       "operatingMargins": 0.17,
       "profitMargins": 0.13,
@@ -2285,14 +2343,14 @@
       "twoHundredDayAverage": 73.46,
       "averageVolume": 2520507.0,
       "averageDailyVolume10Day": 1744650.0,
-      "previousClose": 68.07,
-      "open": 68.77,
-      "regularMarketOpen": 68.77,
-      "dayHigh": 69.95,
-      "dayLow": 68.77,
-      "regularMarketDayHigh": 69.95,
-      "regularMarketDayLow": 68.77,
-      "regularMarketVolume": 1325787.0,
+      "previousClose": 69.56,
+      "open": 69.56,
+      "regularMarketOpen": 69.56,
+      "dayHigh": 69.79,
+      "dayLow": 68.45,
+      "regularMarketDayHigh": 69.79,
+      "regularMarketDayLow": 68.45,
+      "regularMarketVolume": 1789864.0,
       "averageVolume10days": 1744650.0,
       "sharesShort": 18363364.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -2304,12 +2362,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2026-10-07",
       "lastDividendDate": "2026-10-07",
-      "latestPrice": 69.56,
+      "latestPrice": 68.86,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 55.78
-        },
         {
           "date": "2025-10-22",
           "close": 56.34
@@ -3309,6 +3363,10 @@
         {
           "date": "2026-10-20",
           "close": 69.56
+        },
+        {
+          "date": "2026-10-21",
+          "close": 68.86
         }
       ],
       "nextEarningsDate": "2026-11-04",
@@ -3342,21 +3400,52 @@
           "surprisePercent": 10.84,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-05",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169126000034/0000071691-26-000034-index.htm",
+          "accessionNumber": "0000071691-26-000034",
+          "filingDate": "2026-08-05"
+        },
+        {
+          "quarterEnd": "2026-05-06",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169126000025/0000071691-26-000025-index.htm",
+          "accessionNumber": "0000071691-26-000025",
+          "filingDate": "2026-05-06"
+        },
+        {
+          "quarterEnd": "2025-11-05",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169125000126/0000071691-25-000126-index.htm",
+          "accessionNumber": "0000071691-25-000126",
+          "filingDate": "2025-11-05"
+        },
+        {
+          "quarterEnd": "2025-08-06",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169125000119/0000071691-25-000119-index.htm",
+          "accessionNumber": "0000071691-25-000119",
+          "filingDate": "2025-08-06"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "SPCX",
-      "fetchedAt": "2026-10-21T11:26:13.680808Z",
+      "fetchedAt": "2026-10-21T21:46:47.872930Z",
       "source": "Yahoo Finance",
       "company": "Space Exploration Technologies Corp.",
       "sector": "Industrials",
-      "marketCap": 1948135194624.0,
+      "marketCap": 2098779652096.0,
       "enterpriseValue": 3835969404928.0,
       "trailingPE": null,
-      "forwardPE": 68.32,
+      "forwardPE": 77.89,
       "pegRatio": null,
-      "priceToSalesTrailing12Months": 84.54,
-      "priceToBook": 15.31,
+      "priceToSalesTrailing12Months": 91.08,
+      "priceToBook": 16.5,
       "grossMargins": 0.52,
       "operatingMargins": -0.02,
       "profitMargins": -0.36,
@@ -3376,19 +3465,19 @@
       "currentRatio": 5.12,
       "quickRatio": 4.95,
       "bookValue": 9.66,
-      "sharesOutstanding": 7696293669.0,
+      "sharesOutstanding": 7571396888.0,
       "floatShares": 4971640124.0,
-      "impliedSharesOutstanding": 13181779945.0,
+      "impliedSharesOutstanding": 13174187298.0,
       "dividendRate": null,
       "dividendYield": 0.0,
       "payoutRatio": 0.0,
       "fiveYearAvgDividendYield": null,
-      "targetHighPrice": 450.0,
-      "targetLowPrice": 118.0,
-      "targetMeanPrice": 224.81,
-      "targetMedianPrice": 225.0,
+      "targetHighPrice": 800.0,
+      "targetLowPrice": 70.0,
+      "targetMeanPrice": 255.06,
+      "targetMedianPrice": 235.0,
       "recommendationMean": 1.79,
-      "numberOfAnalystOpinions": 31.0,
+      "numberOfAnalystOpinions": 34.0,
       "beta": null,
       "fiftyTwoWeekHigh": 225.64,
       "fiftyTwoWeekLow": 104.83,
@@ -3396,14 +3485,14 @@
       "twoHundredDayAverage": 145.67,
       "averageVolume": 95611018.0,
       "averageDailyVolume10Day": 81971770.0,
-      "previousClose": 147.96,
-      "open": 146.13,
-      "regularMarketOpen": 146.13,
-      "dayHigh": 148.66,
-      "dayLow": 143.27,
-      "regularMarketDayHigh": 148.66,
-      "regularMarketDayLow": 143.27,
-      "regularMarketVolume": 99549776.0,
+      "previousClose": 147.79,
+      "open": 160.56,
+      "regularMarketOpen": 160.56,
+      "dayHigh": 166.18,
+      "dayLow": 156.93,
+      "regularMarketDayHigh": 166.18,
+      "regularMarketDayLow": 156.93,
+      "regularMarketVolume": 218416864.0,
       "averageVolume10days": 81971770.0,
       "sharesShort": 180996777.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -3413,7 +3502,7 @@
       "industry": "Aerospace & Defense",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 147.79,
+      "latestPrice": 159.31,
       "priceHistory": [
         {
           "date": "2026-06-12",
@@ -3774,6 +3863,10 @@
         {
           "date": "2026-10-20",
           "close": 147.79
+        },
+        {
+          "date": "2026-10-21",
+          "close": 159.31
         }
       ],
       "nextEarningsDate": "2027-02-09",
@@ -3793,21 +3886,31 @@
           "surprisePercent": 68.89,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-04",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001181412/000162828026052535/0001628280-26-052535-index.htm",
+          "accessionNumber": "0001628280-26-052535",
+          "filingDate": "2026-08-04"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "CRM",
-      "fetchedAt": "2026-10-21T11:26:14.410550Z",
+      "fetchedAt": "2026-10-21T21:46:48.857642Z",
       "source": "Yahoo Finance",
       "company": "Salesforce, Inc.",
       "sector": "Technology",
-      "marketCap": 199519879168.0,
+      "marketCap": 198984941568.0,
       "enterpriseValue": 230492897280.0,
-      "trailingPE": 22.18,
-      "forwardPE": 15.13,
-      "pegRatio": 0.86,
-      "priceToSalesTrailing12Months": 4.54,
-      "priceToBook": 5.2,
+      "trailingPE": 22.12,
+      "forwardPE": 15.09,
+      "pegRatio": 0.87,
+      "priceToSalesTrailing12Months": 4.53,
+      "priceToBook": 5.18,
       "grossMargins": 0.77,
       "operatingMargins": 0.21,
       "profitMargins": 0.22,
@@ -3845,16 +3948,16 @@
       "fiftyTwoWeekLow": 146.32,
       "fiftyDayAverage": 232.01,
       "twoHundredDayAverage": 198.88,
-      "averageVolume": 12702407.0,
+      "averageVolume": 12700385.0,
       "averageDailyVolume10Day": 7240090.0,
-      "previousClose": 242.45,
-      "open": 235.75,
-      "regularMarketOpen": 235.75,
-      "dayHigh": 244.14,
-      "dayLow": 235.6,
-      "regularMarketDayHigh": 244.14,
-      "regularMarketDayLow": 235.6,
-      "regularMarketVolume": 8132489.0,
+      "previousClose": 242.43,
+      "open": 241.4,
+      "regularMarketOpen": 241.4,
+      "dayHigh": 244.18,
+      "dayLow": 237.23,
+      "regularMarketDayHigh": 244.18,
+      "regularMarketDayLow": 237.23,
+      "regularMarketVolume": 5425611.0,
       "averageVolume10days": 7240090.0,
       "sharesShort": 32888398.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -3866,12 +3969,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2026-09-17",
       "lastDividendDate": "2026-09-17",
-      "latestPrice": 242.43,
+      "latestPrice": 241.78,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 261.19
-        },
         {
           "date": "2025-10-22",
           "close": 254.48
@@ -4871,6 +4970,10 @@
         {
           "date": "2026-10-20",
           "close": 242.43
+        },
+        {
+          "date": "2026-10-21",
+          "close": 241.78
         }
       ],
       "nextEarningsDate": "2026-12-02",
@@ -4904,21 +5007,52 @@
           "surprisePercent": 13.57,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852426000190/0001108524-26-000190-index.htm",
+          "accessionNumber": "0001108524-26-000190",
+          "filingDate": "2026-08-27"
+        },
+        {
+          "quarterEnd": "2026-05-28",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852426000127/0001108524-26-000127-index.htm",
+          "accessionNumber": "0001108524-26-000127",
+          "filingDate": "2026-05-28"
+        },
+        {
+          "quarterEnd": "2025-12-04",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852425000238/0001108524-25-000238-index.htm",
+          "accessionNumber": "0001108524-25-000238",
+          "filingDate": "2025-12-04"
+        },
+        {
+          "quarterEnd": "2025-09-04",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852425000088/0001108524-25-000088-index.htm",
+          "accessionNumber": "0001108524-25-000088",
+          "filingDate": "2025-09-04"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "CRWD",
-      "fetchedAt": "2026-10-21T11:26:15.237348Z",
+      "fetchedAt": "2026-10-21T21:46:50.539061Z",
       "source": "Yahoo Finance",
       "company": "CrowdStrike Holdings, Inc.",
       "sector": "Technology",
-      "marketCap": 232812068864.0,
+      "marketCap": 245068562432.0,
       "enterpriseValue": 228656201728.0,
-      "trailingPE": 3789.5,
-      "forwardPE": 141.12,
+      "trailingPE": 3989.0,
+      "forwardPE": 148.54,
       "pegRatio": 5.87,
-      "priceToSalesTrailing12Months": 43.14,
-      "priceToBook": 45.63,
+      "priceToSalesTrailing12Months": 45.42,
+      "priceToBook": 48.03,
       "grossMargins": 0.75,
       "operatingMargins": -0.02,
       "profitMargins": 0.01,
@@ -4956,16 +5090,16 @@
       "fiftyTwoWeekLow": 85.68,
       "fiftyDayAverage": 233.49,
       "twoHundredDayAverage": 161.68,
-      "averageVolume": 9557644.0,
+      "averageVolume": 9552603.0,
       "averageDailyVolume10Day": 8899970.0,
-      "previousClose": 228.1,
-      "open": 226.66,
-      "regularMarketOpen": 226.66,
-      "dayHigh": 229.24,
-      "dayLow": 221.36,
-      "regularMarketDayHigh": 229.24,
-      "regularMarketDayLow": 221.36,
-      "regularMarketVolume": 8002471.0,
+      "previousClose": 227.37,
+      "open": 230.89,
+      "regularMarketOpen": 230.89,
+      "dayHigh": 242.9,
+      "dayLow": 228.7,
+      "regularMarketDayHigh": 242.9,
+      "regularMarketDayLow": 228.7,
+      "regularMarketVolume": 9332356.0,
       "averageVolume10days": 8899970.0,
       "sharesShort": 26196357.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -4975,12 +5109,8 @@
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 227.37,
+      "latestPrice": 239.34,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 125.99
-        },
         {
           "date": "2025-10-22",
           "close": 125.03
@@ -5980,6 +6110,10 @@
         {
           "date": "2026-10-20",
           "close": 227.37
+        },
+        {
+          "date": "2026-10-21",
+          "close": 239.34
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -6013,21 +6147,52 @@
           "surprisePercent": 1.98,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552726000031/0001535527-26-000031-index.htm",
+          "accessionNumber": "0001535527-26-000031",
+          "filingDate": "2026-08-27"
+        },
+        {
+          "quarterEnd": "2026-06-04",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552726000025/0001535527-26-000025-index.htm",
+          "accessionNumber": "0001535527-26-000025",
+          "filingDate": "2026-06-04"
+        },
+        {
+          "quarterEnd": "2025-12-03",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552725000033/0001535527-25-000033-index.htm",
+          "accessionNumber": "0001535527-25-000033",
+          "filingDate": "2025-12-03"
+        },
+        {
+          "quarterEnd": "2025-08-28",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552725000025/0001535527-25-000025-index.htm",
+          "accessionNumber": "0001535527-25-000025",
+          "filingDate": "2025-08-28"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "HPQ",
-      "fetchedAt": "2026-10-21T11:26:16.118965Z",
+      "fetchedAt": "2026-10-21T21:46:51.738828Z",
       "source": "Yahoo Finance",
       "company": "HP Inc.",
       "sector": "Technology",
-      "marketCap": 28144896000.0,
+      "marketCap": 28244092928.0,
       "enterpriseValue": 34314895360.0,
-      "trailingPE": 11.91,
-      "forwardPE": 9.92,
-      "pegRatio": 3.2,
+      "trailingPE": 11.95,
+      "forwardPE": 9.93,
+      "pegRatio": 3.33,
       "priceToSalesTrailing12Months": 0.48,
-      "priceToBook": -305.98,
+      "priceToBook": -307.06,
       "grossMargins": 0.2,
       "operatingMargins": 0.05,
       "profitMargins": 0.04,
@@ -6056,8 +6221,8 @@
       "fiveYearAvgDividendYield": 3.48,
       "targetHighPrice": 33.8,
       "targetLowPrice": 19.0,
-      "targetMeanPrice": 27.31,
-      "targetMedianPrice": 28.0,
+      "targetMeanPrice": 27.52,
+      "targetMedianPrice": 29.0,
       "recommendationMean": 3.22,
       "numberOfAnalystOpinions": 17.0,
       "beta": 1.19,
@@ -6065,16 +6230,16 @@
       "fiftyTwoWeekLow": 17.56,
       "fiftyDayAverage": 31.3,
       "twoHundredDayAverage": 24.09,
-      "averageVolume": 14725138.0,
+      "averageVolume": 14763928.0,
       "averageDailyVolume10Day": 11940760.0,
-      "previousClose": 30.24,
-      "open": 30.25,
-      "regularMarketOpen": 30.25,
-      "dayHigh": 31.28,
-      "dayLow": 30.02,
-      "regularMarketDayHigh": 31.28,
-      "regularMarketDayLow": 30.02,
-      "regularMarketVolume": 7991107.0,
+      "previousClose": 31.21,
+      "open": 31.26,
+      "regularMarketOpen": 31.26,
+      "dayHigh": 31.46,
+      "dayLow": 30.84,
+      "regularMarketDayHigh": 31.46,
+      "regularMarketDayLow": 30.84,
+      "regularMarketVolume": 8199435.0,
       "averageVolume10days": 11940760.0,
       "sharesShort": 73087274.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -6086,12 +6251,8 @@
       "recommendationKey": "hold",
       "exDividendDate": "2026-09-09",
       "lastDividendDate": "2026-09-09",
-      "latestPrice": 31.21,
+      "latestPrice": 31.32,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 26.79
-        },
         {
           "date": "2025-10-22",
           "close": 26.32
@@ -7091,6 +7252,10 @@
         {
           "date": "2026-10-20",
           "close": 31.21
+        },
+        {
+          "date": "2026-10-21",
+          "close": 31.32
         }
       ],
       "nextEarningsDate": "2026-11-24",
@@ -7124,21 +7289,52 @@
           "surprisePercent": 0.76,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721726000051/0000047217-26-000051-index.htm",
+          "accessionNumber": "0000047217-26-000051",
+          "filingDate": "2026-08-27"
+        },
+        {
+          "quarterEnd": "2026-05-28",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721726000029/0000047217-26-000029-index.htm",
+          "accessionNumber": "0000047217-26-000029",
+          "filingDate": "2026-05-28"
+        },
+        {
+          "quarterEnd": "2026-02-25",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721726000011/0000047217-26-000011-index.htm",
+          "accessionNumber": "0000047217-26-000011",
+          "filingDate": "2026-02-25"
+        },
+        {
+          "quarterEnd": "2025-08-28",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721725000063/0000047217-25-000063-index.htm",
+          "accessionNumber": "0000047217-25-000063",
+          "filingDate": "2025-08-28"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "OKTA",
-      "fetchedAt": "2026-10-21T11:26:17.267978Z",
+      "fetchedAt": "2026-10-21T21:46:53.177197Z",
       "source": "Yahoo Finance",
       "company": "Okta, Inc.",
       "sector": "Technology",
-      "marketCap": 33918756864.0,
+      "marketCap": 36474638336.0,
       "enterpriseValue": 31672756224.0,
-      "trailingPE": 116.88,
-      "forwardPE": 44.31,
-      "pegRatio": 1.34,
-      "priceToSalesTrailing12Months": 11.04,
-      "priceToBook": 4.86,
+      "trailingPE": 125.69,
+      "forwardPE": 47.65,
+      "pegRatio": 1.39,
+      "priceToSalesTrailing12Months": 11.87,
+      "priceToBook": 5.23,
       "grossMargins": 0.78,
       "operatingMargins": 0.13,
       "profitMargins": 0.1,
@@ -7167,8 +7363,8 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 250.0,
       "targetLowPrice": 127.0,
-      "targetMeanPrice": 212.83,
-      "targetMedianPrice": 223.0,
+      "targetMeanPrice": 214.72,
+      "targetMedianPrice": 225.0,
       "recommendationMean": 1.66,
       "numberOfAnalystOpinions": 43.0,
       "beta": 0.73,
@@ -7178,14 +7374,14 @@
       "twoHundredDayAverage": 119.59,
       "averageVolume": 3528562.0,
       "averageDailyVolume10Day": 3342120.0,
-      "previousClose": 189.93,
-      "open": 187.72,
-      "regularMarketOpen": 187.72,
-      "dayHigh": 195.37,
-      "dayLow": 183.6,
-      "regularMarketDayHigh": 195.37,
-      "regularMarketDayLow": 183.6,
-      "regularMarketVolume": 2358538.0,
+      "previousClose": 194.02,
+      "open": 194.1,
+      "regularMarketOpen": 194.1,
+      "dayHigh": 210.86,
+      "dayLow": 192.91,
+      "regularMarketDayHigh": 210.86,
+      "regularMarketDayLow": 192.91,
+      "regularMarketVolume": 4037461.0,
       "averageVolume10days": 3342120.0,
       "sharesShort": 7927408.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -7195,12 +7391,8 @@
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 194.02,
+      "latestPrice": 208.64,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 89.45
-        },
         {
           "date": "2025-10-22",
           "close": 87.04
@@ -8200,6 +8392,10 @@
         {
           "date": "2026-10-20",
           "close": 194.02
+        },
+        {
+          "date": "2026-10-21",
+          "close": 208.64
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -8233,21 +8429,52 @@
           "surprisePercent": 8.05,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013426000069/0001660134-26-000069-index.htm",
+          "accessionNumber": "0001660134-26-000069",
+          "filingDate": "2026-08-27"
+        },
+        {
+          "quarterEnd": "2026-05-29",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013426000051/0001660134-26-000051-index.htm",
+          "accessionNumber": "0001660134-26-000051",
+          "filingDate": "2026-05-29"
+        },
+        {
+          "quarterEnd": "2025-12-03",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013425000171/0001660134-25-000171-index.htm",
+          "accessionNumber": "0001660134-25-000171",
+          "filingDate": "2025-12-03"
+        },
+        {
+          "quarterEnd": "2025-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013425000157/0001660134-25-000157-index.htm",
+          "accessionNumber": "0001660134-25-000157",
+          "filingDate": "2025-08-27"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "ANF",
-      "fetchedAt": "2026-10-21T11:26:18.091413Z",
+      "fetchedAt": "2026-10-21T21:46:54.402826Z",
       "source": "Yahoo Finance",
       "company": "Abercrombie & Fitch Co.",
       "sector": "Consumer Cyclical",
-      "marketCap": 6862911488.0,
+      "marketCap": 6774223872.0,
       "enterpriseValue": 7527493632.0,
-      "trailingPE": 13.97,
-      "forwardPE": 12.55,
+      "trailingPE": 13.79,
+      "forwardPE": 12.38,
       "pegRatio": 3.62,
-      "priceToSalesTrailing12Months": 1.28,
-      "priceToBook": 5.07,
+      "priceToSalesTrailing12Months": 1.27,
+      "priceToBook": 5.0,
       "grossMargins": 0.64,
       "operatingMargins": 0.2,
       "profitMargins": 0.1,
@@ -8276,10 +8503,10 @@
       "fiveYearAvgDividendYield": 3.08,
       "targetHighPrice": 185.0,
       "targetLowPrice": 134.0,
-      "targetMeanPrice": 164.3,
+      "targetMeanPrice": 165.82,
       "targetMedianPrice": 165.0,
       "recommendationMean": 1.93,
-      "numberOfAnalystOpinions": 10.0,
+      "numberOfAnalystOpinions": 11.0,
       "beta": 1.01,
       "fiftyTwoWeekHigh": 163.82,
       "fiftyTwoWeekLow": 65.45,
@@ -8287,14 +8514,14 @@
       "twoHundredDayAverage": 102.91,
       "averageVolume": 1562596.0,
       "averageDailyVolume10Day": 1356820.0,
-      "previousClose": 162.01,
-      "open": 162.0,
-      "regularMarketOpen": 162.0,
-      "dayHigh": 163.82,
-      "dayLow": 159.61,
-      "regularMarketDayHigh": 163.82,
-      "regularMarketDayLow": 159.61,
-      "regularMarketVolume": 1206965.0,
+      "previousClose": 161.73,
+      "open": 161.06,
+      "regularMarketOpen": 161.06,
+      "dayHigh": 162.01,
+      "dayLow": 158.85,
+      "regularMarketDayHigh": 162.01,
+      "regularMarketDayLow": 158.85,
+      "regularMarketVolume": 846886.0,
       "averageVolume10days": 1356820.0,
       "sharesShort": 4422372.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -8306,12 +8533,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2020-03-05",
       "lastDividendDate": "2020-03-05",
-      "latestPrice": 161.73,
+      "latestPrice": 159.64,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 69.05
-        },
         {
           "date": "2025-10-22",
           "close": 68.39
@@ -9311,6 +9534,10 @@
         {
           "date": "2026-10-20",
           "close": 161.73
+        },
+        {
+          "date": "2026-10-21",
+          "close": 159.64
         }
       ],
       "nextEarningsDate": "2026-11-25",
@@ -9332,9 +9559,9 @@
         },
         {
           "reportedDate": "2026-03-04",
-          "actualEPS": 3.67,
+          "actualEPS": 3.68,
           "estimatedEPS": 3.57,
-          "surprisePercent": 2.75,
+          "surprisePercent": 3.12,
           "source": "Yahoo Finance"
         },
         {
@@ -9344,21 +9571,52 @@
           "surprisePercent": 9.4,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-09-04",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884026000047/0001018840-26-000047-index.htm",
+          "accessionNumber": "0001018840-26-000047",
+          "filingDate": "2026-09-04"
+        },
+        {
+          "quarterEnd": "2026-06-05",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884026000036/0001018840-26-000036-index.htm",
+          "accessionNumber": "0001018840-26-000036",
+          "filingDate": "2026-06-05"
+        },
+        {
+          "quarterEnd": "2025-12-05",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884025000048/0001018840-25-000048-index.htm",
+          "accessionNumber": "0001018840-25-000048",
+          "filingDate": "2025-12-05"
+        },
+        {
+          "quarterEnd": "2025-09-05",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884025000045/0001018840-25-000045-index.htm",
+          "accessionNumber": "0001018840-25-000045",
+          "filingDate": "2025-09-05"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "SJM",
-      "fetchedAt": "2026-10-21T11:26:19.070946Z",
+      "fetchedAt": "2026-10-21T21:46:55.684354Z",
       "source": "Yahoo Finance",
       "company": "The J. M. Smucker Company",
       "sector": "Consumer Defensive",
-      "marketCap": 13851761664.0,
+      "marketCap": 13653070848.0,
       "enterpriseValue": 20748763136.0,
-      "trailingPE": 60.59,
-      "forwardPE": 11.8,
+      "trailingPE": 59.72,
+      "forwardPE": 11.63,
       "pegRatio": 2.17,
-      "priceToSalesTrailing12Months": 1.51,
-      "priceToBook": 2.41,
+      "priceToSalesTrailing12Months": 1.49,
+      "priceToBook": 2.37,
       "grossMargins": 0.38,
       "operatingMargins": 0.18,
       "profitMargins": 0.03,
@@ -9396,16 +9654,16 @@
       "fiftyTwoWeekLow": 88.25,
       "fiftyDayAverage": 122.88,
       "twoHundredDayAverage": 110.0,
-      "averageVolume": 1306436.0,
+      "averageVolume": 1296804.0,
       "averageDailyVolume10Day": 1148440.0,
-      "previousClose": 127.07,
-      "open": 128.44,
-      "regularMarketOpen": 128.44,
-      "dayHigh": 129.78,
-      "dayLow": 127.45,
-      "regularMarketDayHigh": 129.78,
-      "regularMarketDayLow": 127.45,
-      "regularMarketVolume": 753462.0,
+      "previousClose": 129.67,
+      "open": 129.26,
+      "regularMarketOpen": 129.26,
+      "dayHigh": 129.34,
+      "dayLow": 127.01,
+      "regularMarketDayHigh": 129.34,
+      "regularMarketDayLow": 127.01,
+      "regularMarketVolume": 906988.0,
       "averageVolume10days": 1148440.0,
       "sharesShort": 4257083.0,
       "sharesShortPreviousMonthDate": 1788134400.0,
@@ -9416,12 +9674,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2026-08-14",
       "lastDividendDate": "2026-08-14",
-      "latestPrice": 129.67,
+      "latestPrice": 127.81,
       "priceHistory": [
-        {
-          "date": "2025-10-21",
-          "close": 100.6
-        },
         {
           "date": "2025-10-22",
           "close": 100.61
@@ -10421,6 +10675,10 @@
         {
           "date": "2026-10-20",
           "close": 129.67
+        },
+        {
+          "date": "2026-10-21",
+          "close": 127.81
         }
       ],
       "nextEarningsDate": "2026-11-24",
@@ -10454,7 +10712,38 @@
           "surprisePercent": -0.03,
           "source": "Yahoo Finance"
         }
-      ]
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-08-26",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141926000080/0000091419-26-000080-index.htm",
+          "accessionNumber": "0000091419-26-000080",
+          "filingDate": "2026-08-26"
+        },
+        {
+          "quarterEnd": "2026-02-26",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141926000016/0000091419-26-000016-index.htm",
+          "accessionNumber": "0000091419-26-000016",
+          "filingDate": "2026-02-26"
+        },
+        {
+          "quarterEnd": "2025-11-25",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141925000106/0000091419-25-000106-index.htm",
+          "accessionNumber": "0000091419-25-000106",
+          "filingDate": "2025-11-25"
+        },
+        {
+          "quarterEnd": "2025-08-27",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141925000071/0000091419-25-000071-index.htm",
+          "accessionNumber": "0000091419-25-000071",
+          "filingDate": "2025-08-27"
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
     }
   ]
 }

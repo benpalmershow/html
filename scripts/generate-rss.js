@@ -1,21 +1,33 @@
 #!/usr/bin/env node
 
 /**
- * RSS Feed Generator for Howdy, Stranger
- * Generates news-feed.xml from json/articles.json (essays) and
- * journal.json entries with markdown file paths.
+ * RSS feed and news sitemap generator for Howdy, Stranger.
+ *
+ * Reads the same article sources as scripts/build-article-index.js and points
+ * every item at a real, indexable page (article.html?slug=<slug>). The previous
+ * build emitted news.html?article=... and journal.html#<title-slug> links,
+ * neither of which resolved to a document.
+ *
  * Run: node scripts/generate-rss.js
  */
 
 const fs = require('fs');
 const path = require('path');
+const exporter = require('./build-article-index.js');
 
-const SITE_URL = 'https://howdystranger.net';
+const SITE_URL = exporter.SITE_URL;
 const FEED_FILE = path.join(__dirname, '../news-feed.xml');
 const NEWS_SITEMAP_FILE = path.join(__dirname, '../news-sitemap.xml');
-const ARTICLES_INDEX = path.join(__dirname, '../json/articles.json');
-const JOURNAL_INDEX = path.join(__dirname, '../json/journal.json');
+const SITEMAP_FILE = path.join(__dirname, '../sitemap.xml');
 const ROOT = path.join(__dirname, '..');
+
+const STATIC_PAGES = [
+  { loc: '/', priority: '1.0', changefreq: 'daily' },
+  { loc: '/financials.html', priority: '0.8', changefreq: 'weekly' },
+  { loc: '/journal.html', priority: '0.7', changefreq: 'daily' },
+  { loc: '/media.html', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/one-pager.html', priority: '0.5', changefreq: 'weekly' }
+];
 
 function escapeXml(text) {
   if (!text) return '';
@@ -28,133 +40,74 @@ function escapeXml(text) {
 }
 
 function toRFC822(dateInput) {
-  const date = dateInput instanceof Date ? dateInput : new Date(`${dateInput}T12:00:00Z`);
+  let date;
+  if (dateInput instanceof Date) {
+    date = dateInput;
+  } else if (/^\d{4}-\d{2}-\d{2}T/.test(String(dateInput))) {
+    date = new Date(dateInput);
+  } else {
+    date = new Date(`${dateInput}T12:00:00Z`);
+  }
   return date.toUTCString();
 }
 
-function parseMarkdown(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-
-    if (!match) {
-      return { frontmatter: {}, body: content };
-    }
-
-    const frontmatter = {};
-    const yamlContent = match[1];
-    const body = match[2];
-
-    yamlContent.split('\n').forEach(line => {
-      const [key, ...valueParts] = line.split(':');
-      if (key && valueParts.length) {
-        const value = valueParts.join(':').trim().replace(/^['"]|['"]$/g, '');
-        frontmatter[key.trim()] = value;
-      }
-    });
-
-    return { frontmatter, body };
-  } catch (error) {
-    console.error(`Error parsing markdown file ${filePath}:`, error.message);
-    return { frontmatter: {}, body: '' };
-  }
+// CDATA already shields the payload, so only the closing sequence needs care.
+function cdata(text) {
+  return String(text || '').replace(/]]>/g, ']]]]><![CDATA[>');
 }
 
-function stripMarkdown(text) {
-  if (!text) return '';
-  return text
-    .replace(/#+\s+/g, '')
-    .replace(/\*\*(.*?)\*\*/g, '$1')
-    .replace(/\*(.*?)\*/g, '$1')
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/<[^>]+>/g, '')
-    .replace(/\n+/g, ' ')
-    .trim()
-    .substring(0, 500);
-}
+function buildRecords() {
+  const journalLookup = exporter.buildJournalLookup();
+  const records = exporter.collectSources()
+    .map(relativePath => exporter.buildRecord(relativePath, journalLookup.get(relativePath)))
+    .filter((record, index, all) => all.findIndex(other => other.slug === record.slug) === index)
+    .sort((a, b) => (a.dateTime < b.dateTime ? 1 : a.dateTime > b.dateTime ? -1 : 0));
 
-function createEntryId(title) {
-  const plainTitle = String(title).replace(/<[^>]*>/g, ' ');
-  return plainTitle
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
-function parseJournalDate(journalDate, time) {
-  const parts = journalDate.split('/');
-  if (parts.length !== 3) return new Date(0);
-
-  const [month, day, year] = parts;
-  const fullYear = year.length === 2 ? 2000 + parseInt(year, 10) : parseInt(year, 10);
-  let hours = 12;
-  let minutes = 0;
-
-  if (time) {
-    const [h, m] = time.split(':').map(Number);
-    if (!Number.isNaN(h)) hours = h;
-    if (!Number.isNaN(m)) minutes = m;
+  // Indexed articles own a standalone page; the rest link to the journal
+  // entry they came from.
+  const exported = new Set();
+  if (fs.existsSync(exporter.INDEX_FILE)) {
+    JSON.parse(fs.readFileSync(exporter.INDEX_FILE, 'utf8')).forEach(entry => exported.add(entry.id));
   }
 
-  return new Date(fullYear, parseInt(month, 10) - 1, parseInt(day, 10), hours, minutes);
-}
-
-function getJournalPubDate(journalDate, entry, frontmatter = {}) {
-  if (frontmatter.date) {
-    const parsed = new Date(frontmatter.date);
-    if (!Number.isNaN(parsed.getTime())) return parsed;
-  }
-  return parseJournalDate(journalDate, entry.time);
-}
-
-function loadJournalFileEntries() {
-  const journal = JSON.parse(fs.readFileSync(JOURNAL_INDEX, 'utf8'));
-  const entries = [];
-
-  journal.forEach(day => {
-    if (!Array.isArray(day.entries)) return;
-
-    day.entries.forEach(entry => {
-      if (!entry.file) return;
-
-      const filePath = path.join(ROOT, entry.file);
-      if (!fs.existsSync(filePath)) {
-        console.warn(`Skipping missing journal file: ${entry.file}`);
-        return;
-      }
-
-      const { frontmatter, body } = parseMarkdown(filePath);
-      const entryId = createEntryId(entry.title);
-      const pubDate = getJournalPubDate(day.date, entry, frontmatter);
-      const category = frontmatter.category || 'journal';
-      const description = stripMarkdown(entry.content || body).substring(0, 200);
-      const contentText = stripMarkdown(body);
-
-      entries.push({
-        title: stripMarkdown(String(entry.title).replace(/<[^>]*>/g, '')),
-        description,
-        guid: entry.file,
-        pubDate,
-        link: `${SITE_URL}/journal.html#${encodeURIComponent(entryId)}`,
-        category,
-        contentText
-      });
-    });
+  records.forEach(record => {
+    record.hasPage = exported.has(record.slug);
+    record.pageUrl = record.hasPage
+      ? SITE_URL + record.url
+      : SITE_URL + '/journal.html#' + record.journalSlug;
   });
 
-  return entries.sort((a, b) => b.pubDate - a.pubDate);
+  return records;
 }
 
-function buildNewsSitemap(articlesData) {
-  const urls = articlesData.map(article => {
-    const title = escapeXml(article.title);
-    const publicationDate = escapeXml(article.date);
-    const loc = `${SITE_URL}/news?article=${encodeURIComponent(article.id)}`;
+function buildRssItem(record) {
+  const url = record.pageUrl;
+  const description = record.summary || record.title;
+  const content = exporter.plainText(record.html);
+
+  return `    <item>
+    <title>${escapeXml(record.title)}</title>
+    <link>${url}</link>
+    <guid isPermaLink="true">${url}</guid>
+    <pubDate>${toRFC822(record.dateTime)}</pubDate>
+    <category>${escapeXml(record.category)}</category>
+    <description><![CDATA[${cdata(description)}]]></description>
+    <content:encoded><![CDATA[${cdata(content)}]]></content:encoded>
+  </item>`;
+}
+
+function buildNewsSitemap(records) {
+  // Google News needs a distinct URL per story, so only articles with their
+  // own page are listed; fragment URLs would collapse into one document.
+  const urls = records.filter(record => record.hasPage).map(record => {
+    const title = escapeXml(record.title);
+    const publicationDate = escapeXml(record.date);
+    const loc = SITE_URL + record.url;
+    const lastmod = escapeXml(record.date);
 
     return `  <url>
     <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
     <news:news>
       <news:publication>
         <news:name>Howdy, Stranger</news:name>
@@ -174,54 +127,32 @@ ${urls}
 `;
 }
 
-function buildRssItem({ title, link, guid, pubDate, category, description, contentText }) {
-  return `    <item>
-      <title>${escapeXml(title)}</title>
-      <link>${link}</link>
-      <guid isPermaLink="true">${escapeXml(guid)}</guid>
-      <pubDate>${toRFC822(pubDate)}</pubDate>
-      <category>${escapeXml(category)}</category>
-      <description><![CDATA[${escapeXml(description)}]]></description>
-      <content:encoded><![CDATA[${contentText}]]></content:encoded>
-    </item>`;
+function buildSitemap(records) {
+  const staticUrls = STATIC_PAGES.map(page => `  <url>
+    <loc>${SITE_URL}${page.loc}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('\n');
+
+  const articleUrls = records.filter(record => record.hasPage).map(record => `  <url>
+    <loc>${SITE_URL}${record.url}</loc>
+    <lastmod>${record.date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>`).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticUrls}
+${articleUrls}
+</urlset>
+`;
 }
 
 function generateRSS() {
   try {
-    const articlesData = JSON.parse(fs.readFileSync(ARTICLES_INDEX, 'utf8'));
-    const journalEntries = loadJournalFileEntries();
-
-    const articleItems = articlesData.map(article => {
-      const articlePath = path.join(ROOT, 'article', `${article.id}.md`);
-      const { frontmatter, body } = parseMarkdown(articlePath);
-      const description = article.summary || frontmatter.summary || '';
-      const contentText = stripMarkdown(body);
-
-      return buildRssItem({
-        title: article.title,
-        link: `${SITE_URL}/news.html?article=${encodeURIComponent(article.id)}`,
-        guid: `${SITE_URL}/news.html?article=${encodeURIComponent(article.id)}`,
-        pubDate: new Date(`${article.date}T12:00:00Z`),
-        category: article.category,
-        description: stripMarkdown(description).substring(0, 200),
-        contentText
-      });
-    });
-
-    const journalItems = journalEntries.map(entry => ({
-      pubDate: entry.pubDate,
-      xml: buildRssItem(entry)
-    }));
-
-    const articleItemRows = articlesData.map((article, index) => ({
-      pubDate: new Date(`${article.date}T12:00:00Z`),
-      xml: articleItems[index]
-    }));
-
-    const items = [...articleItemRows, ...journalItems]
-      .sort((a, b) => b.pubDate - a.pubDate)
-      .map(row => row.xml)
-      .join('\n');
+    const records = buildRecords();
+    const items = records.map(buildRssItem).join('\n');
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -232,7 +163,7 @@ function generateRSS() {
     <language>en-us</language>
     <atom:link href="${SITE_URL}/news-feed.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <copyright>Copyright (c) 2025 Ben Palmer. All rights reserved.</copyright>
+    <copyright>Copyright (c) 2026 Ben Palmer. All rights reserved.</copyright>
     <managingEditor>ben@howdystranger.net (Ben Palmer)</managingEditor>
     <webMaster>ben@howdystranger.net (Ben Palmer)</webMaster>
     <image>
@@ -245,14 +176,15 @@ ${items}
 </rss>`;
 
     fs.writeFileSync(FEED_FILE, rss, 'utf8');
-    fs.writeFileSync(NEWS_SITEMAP_FILE, buildNewsSitemap(articlesData), 'utf8');
-    console.log(`✅ RSS feed generated: ${FEED_FILE}`);
-    console.log(`✅ News sitemap generated: ${NEWS_SITEMAP_FILE}`);
-    console.log(`📰 Essays (articles.json): ${articlesData.length}`);
-    console.log(`📝 Journal markdown entries: ${journalEntries.length}`);
-    console.log(`📊 Combined RSS items: ${articleItems.length + journalItems.length}`);
+    fs.writeFileSync(NEWS_SITEMAP_FILE, buildNewsSitemap(records), 'utf8');
+    fs.writeFileSync(SITEMAP_FILE, buildSitemap(records), 'utf8');
+
+    const withPage = records.filter(record => record.hasPage).length;
+    console.log(`RSS feed generated: ${path.relative(ROOT, FEED_FILE)} (${records.length} items, ${withPage} with a standalone page)`);
+    console.log(`News sitemap generated: ${path.relative(ROOT, NEWS_SITEMAP_FILE)} (${withPage} urls)`);
+    console.log(`Sitemap generated: ${path.relative(ROOT, SITEMAP_FILE)} (${withPage + STATIC_PAGES.length} urls)`);
   } catch (error) {
-    console.error('❌ Error generating RSS feed:', error.message);
+    console.error(`Error generating RSS feed: ${error.message}`);
     process.exit(1);
   }
 }

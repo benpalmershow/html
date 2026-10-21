@@ -152,8 +152,8 @@ function main() {
   }
   
   if (!noRss && filePath) {
-    console.log('\nGenerating RSS...');
-    runCommand('npm run generate:rss');
+    console.log('\nExporting articles and generating RSS...');
+    runCommand('npm run generate:content');
   }
   
   console.log('\nDone.');

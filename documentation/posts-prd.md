@@ -58,7 +58,7 @@ Journal entries are stored in `json/journal.json` as a JSON array sorted by date
 - Keep entries concise. One or two short paragraphs is the default.
 - HTML is allowed in `title` and `content`, but keep it simple.
 - External links must use `target='_blank'` and `rel='noopener noreferrer'`.
-- Internal links should point directly to the relevant page such as `news.html?article=slug`, `media.html#slug`, `financials.html?filter=Category`, or an `article/...` page.
+- Internal links should point directly to the relevant page such as `article.html?slug=<slug>`, `media.html#slug`, `financials.html?filter=Category`, or `financials.html?indicator=<exact indicator name>`.
 - Emojis are acceptable in journal titles because the journal feed already uses them extensively.
 - No em dashes in prose. Use a hyphen with spaces instead.
 
@@ -79,7 +79,7 @@ Example:
 
 ```json
 {
-  "title": "🛸 <a href='news.html?article=military-drones'>Military Drones</a>",
+  "title": "🛸 <a href='/article.html?slug=military-drones'>Military Drones</a>",
   "content": "Updated comparison of reusable UAVs, loitering munitions, and one-way attack drones through the lens of cost exchange and production scale."
 }
 ```
@@ -90,7 +90,7 @@ Example:
 
 `article/posts/` and `json/posts.json` still exist on the site, but they are no longer the default workflow for new content. Treat them as legacy or special purpose surfaces unless a task specifically calls for a homepage post card or a backwards-compatible post entry.
 
-**RSS:** `npm run generate:rss` builds `news-feed.xml` from `json/articles.json` (essays) and journal entries in `json/journal.json` that include a `file` path to markdown. It does not read `json/posts.json`.
+**RSS:** `npm run generate:content` writes `json/article-index.json` from every `article/**/*.md` and then builds `news-feed.xml`, `news-sitemap.xml`, and `sitemap.xml`. Every feed and sitemap URL points at `article.html?slug=<slug>`, the single page that renders any article. It reads `article/` and `json/journal.json`; it does not read `json/posts.json`.
 
 ---
 

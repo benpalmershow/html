@@ -15,4 +15,4 @@ Evelyn Partners takes a broader approach, holding 246 positions anchored by
 - Adobe ($7.8M)
 - Amazon ($14.0M)
 
-[View all 13F holdings](financials.html#latest-13f-filings)
+[View all 13F holdings](financials.html#latest-13f-filings-anchor)

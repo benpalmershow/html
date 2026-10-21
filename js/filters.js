@@ -46,7 +46,7 @@ function handleFilterClick(element, category, isLatest = false) {
     }
 }
 
-function syncFilterToURL(category, isLatest) {
+function syncFilterToURL(category, isLatest, preserveIndicator = false) {
     const url = new URL(window.location);
     if (isLatest) {
         url.searchParams.set('filter', 'latest');
@@ -55,7 +55,11 @@ function syncFilterToURL(category, isLatest) {
     } else {
         url.searchParams.set('filter', category || 'all');
     }
-    url.searchParams.delete('indicator');
+    // Keep ?indicator= while it is still pointing at the visible card so the
+    // deep link stays shareable; a user-initiated filter change drops it.
+    if (!preserveIndicator) {
+        url.searchParams.delete('indicator');
+    }
     history.replaceState(null, '', url);
 }
 

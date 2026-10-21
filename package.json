@@ -1,6 +1,8 @@
 {
   "scripts": {
+    "build:index": "node scripts/build-article-index.js",
     "generate:rss": "node scripts/generate-rss.js",
+    "generate:content": "node scripts/build-article-index.js && node scripts/generate-rss.js",
     "validate": "node scripts/validate-site.js",
     "validate:watch": "node scripts/validate-site.js --watch",
     "bump-version": "bash scripts/bump-version.sh",

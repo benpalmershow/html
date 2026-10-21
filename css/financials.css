@@ -18,7 +18,7 @@
 
 .content { min-height: 80dvh; contain: layout; }
 
-.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: 1px 500px; will-change: transform, box-shadow; }
+.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: auto 500px; will-change: transform, box-shadow; }
 
 .category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 

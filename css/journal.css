@@ -46,6 +46,8 @@ main{flex:1}
 .accordion-inner pre{background:var(--bg-secondary);border-radius:8px;margin:0 0 .85rem;overflow-x:auto;padding:.85rem}
 .accordion-inner pre code{background:transparent;padding:0}
 .accordion-inner .loading{color:var(--text-muted);font-size:.85rem}
+.accordion-inner .table-scroll{overflow-x:auto;margin:0 0 .85rem;-webkit-overflow-scrolling:touch}
+.accordion-inner .table-scroll table{margin:0}
 .accordion-loading {
   display: flex;
   flex-direction: column;
@@ -328,3 +330,17 @@ main{flex:1}
 
 
 
+
+/* ── Entry Permalink ── */
+.entry-permalink{
+  flex-shrink:0;
+  color:var(--text-muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+}
+.entry-permalink:hover,.entry-permalink:focus-visible{color:var(--logo-orange);border-bottom-color:var(--logo-orange)}

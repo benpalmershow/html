@@ -16,13 +16,13 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 
 **Howdy, Stranger** is a static HTML/CSS/JS site for independent economic commentary. There is no framework, no bundler, and no database - JSON files are the runtime data source, deployed to Vercel with no build step.
 
-**Entry points** (`index.html`, `financials.html`, `news.html`, `journal.html`, `media.html`, `portfolio.html`) compose reusable HTML fragments from `components/` (header, footer, analytics, fonts, etc.) and pull runtime data from `json/`.
+**Entry points** (`index.html`, `financials.html`, `article.html`, `journal.html`, `media.html`, `one-pager.html`) compose reusable HTML fragments from `components/` (header, footer, analytics, fonts, etc.) and pull runtime data from `json/`.
 
 **Content pipeline:**
 - Long-form articles live in `article/` (and `_/` for drafts/archive)
 - Short posts live in `article/posts/` as markdown with YAML frontmatter
+- `article.html?slug=<slug>` is the single article page: it reads `json/article-index.json` (built by `scripts/build-article-index.js`), fetches the markdown source, and renders it with `js/markdown.js`
 - `json/posts.json` is legacy (RSS no longer uses it; see `scripts/generate-rss.js`)
-- `js/posts-loader.js` parses markdown, extracts snippets, injects chart placeholders (`{{chart:Name}}`), and relies on `marked`, `Chart.js`, and `lucide` being available globally via CDN
 
 **Financial data:** `json/financials-data.json` holds all indicators and prediction markets. Charts and the financials page render from this file via `js/charts.js` and `js/financials.js`.
 
@@ -31,7 +31,7 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 **Other data files:**
 - `json/media.json` - curated media
 - `json/journal.json` - journal/tweet feed
-- `json/portfolio.json` - investment portfolio
+- `json/article-index.json` - generated article manifest (slug, source file, title, date, tags)
 - `json/13f-holdings.json` - 13F holdings (updated by `scripts/get_latest_13f_holdings_final.py`)
 
 **`scripts/`** contains utility scripts (RSS generation, Python data fetchers). See `docs/financial_fetch.md` for the full data update SOP.
@@ -48,7 +48,7 @@ See `docs/posts-prd.md` for full spec. Quick reference:
    ---
    ```
 2. Add an entry to `json/journal.json` (see skill / `docs/posts-prd.md`). Do not add to `json/posts.json` unless explicitly requested.
-3. Regenerate RSS after publishing markdown journal posts: `npm run generate:rss`
+3. Regenerate article pages, RSS, and sitemaps after publishing markdown journal posts: `npm run generate:content`
 4. Use `<p>` tags for paragraphs (not `<br><br>`) - snippet extraction depends on them.
 5. Use `{{chart:Indicator Name}}` to embed a chart; the name must exactly match the `name` field in `json/financials-data.json`.
 6. Use Lucide icons (`<i data-lucide='icon-name' class='post-icon'></i>`), not emojis.

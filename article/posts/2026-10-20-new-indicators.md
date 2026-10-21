@@ -12,8 +12,8 @@ Housing is still sliding, the labor market is coasting sideways, and the market 
 
 | Indicator | Agency | Period | Value | Prior | MoM | YoY |
 |---|---|---|---|---|---|---|
-| [Pending Home Sales Index](financials.html#pending-home-sales-index) | NAR | Sep 2026 | 66.0 | 71.2 | -7.3% | -11.3% |
-| [Housing Market Index](financials.html#housing-market-index) | NAHB | Oct 2026 | 29 | 32 | -9.4% | -21.6% |
+| [Pending Home Sales Index](financials.html?indicator=Pending%20Home%20Sales%20Index) | NAR | Sep 2026 | 66.0 | 71.2 | -7.3% | -11.3% |
+| [Housing Market Index](financials.html?indicator=Housing%20Market%20Index) | NAHB | Oct 2026 | 29 | 32 | -9.4% | -21.6% |
 
 The Pending Home Sales Index is the more important of the pair, because contracts signed this month become closed sales in one or two months. September came in at 66.0, down 7.3% from August and 11.3% from a year earlier. That is the lowest print of 2026, and it sits 13.8% below the May peak of 76.6. The index has now fallen for four straight months.
 
@@ -23,7 +23,7 @@ Builders are not cheerful either. The NAHB Housing Market Index dropped to 29 fr
 
 | Indicator | Agency | Period | Value | Prior | MoM | YoY |
 |---|---|---|---|---|---|---|
-| [Employment Trends Index](financials.html#employment-trends-index) | Conference Board | Sep 2026 | 107.56 | 108.08 | -0.5% | +1.2% |
+| [Employment Trends Index](financials.html?indicator=Employment%20Trends%20Index) | Conference Board | Sep 2026 | 107.56 | 108.08 | -0.5% | +1.2% |
 
 The Conference Board Employment Trends Index landed at 107.56 in September, down 0.5% from a revised August reading of 108.08, which is the high of 2026. That August revision matters: the index spent the summer climbing, from 107.01 in May to 108.08 in August, and September gave a little of it back. The level is still 1.2% above a year earlier. A composite that stalls in the high 107s is a labor market holding its shape rather than one gaining ground. The blend of job openings, industrial production, and business confidence moves ahead of the unemployment rate and payrolls.
 
@@ -31,12 +31,12 @@ The Conference Board Employment Trends Index landed at 107.56 in September, down
 
 | Market | Latest odds | Recent read | Move |
 |---|---|---|---|
-| [FOMC rate decision, Oct 27-28](financials.html#fomc-rate-decision-october-2026) | Hold 86¢, hike 12¢, cut 0¢ | Sep 29: hold 30¢ | Hold +56 points |
-| [US recession in 2026](financials.html#us-recession-2026) | 6¢ (Kalshi 5¢) | Oct 4: 8¢ | -26 points since Apr 17 (32¢) |
-| [Senate control](financials.html#midterms-senate-2026) | Dem 64¢ / Rep 36¢ | Aug 25: 50/50 | Dem +14 points |
-| [House control](financials.html#midterms-house-2026) | Dem 92¢ / Rep 8¢ | May 12: 49/51 | Dem +43 points |
-| [Hormuz traffic normal by Dec 31](financials.html#strait-of-hormuz-traffic) | 12¢ | Oct 19: 14¢ | -22 points since Aug 24 (34¢) |
-| [Iranian regime falls by end of 2026](financials.html#iranian-regime-fall-2026) | 4¢ | Oct 19: 4¢ | -29 points since Apr 17 (33¢) |
+| [FOMC rate decision, Oct 27-28](financials.html?indicator=FOMC%20Rate%20Decision%20-%20October) | Hold 86¢, hike 12¢, cut 0¢ | Sep 29: hold 30¢ | Hold +56 points |
+| [US recession in 2026](financials.html?indicator=US%20Recession%20in%202026) | 6¢ (Kalshi 5¢) | Oct 4: 8¢ | -26 points since Apr 17 (32¢) |
+| [Senate control](financials.html?indicator=Senate) | Dem 64¢ / Rep 36¢ | Aug 25: 50/50 | Dem +14 points |
+| [House control](financials.html?indicator=House) | Dem 92¢ / Rep 8¢ | May 12: 49/51 | Dem +43 points |
+| [Hormuz traffic normal by Dec 31](financials.html?indicator=Strait%20of%20Hormuz%20traffic%20returns%20to%20normal%20by%20December%2031%3F) | 12¢ | Oct 19: 14¢ | -22 points since Aug 24 (34¢) |
+| [Iranian regime falls by end of 2026](financials.html?indicator=Iranian%20Regime%20Fall%20by%20End%20of%202026) | 4¢ | Oct 19: 4¢ | -29 points since Apr 17 (33¢) |
 
 The Fed repricing is the biggest single move on the board. Markets spent September pricing a second consecutive hike, with hold odds bottoming at 30¢ on September 29 while hike odds hit 70¢. Three weeks later the trade flipped completely: hold at 86¢, a 25 basis point hike at 12¢, and a cut at zero. The statement lands at 2:00 PM ET on October 28.
 

@@ -150,7 +150,7 @@ News-specific sitemap created for Google News crawlers.
 **Sample entry:**
 ```xml
 <url>
-  <loc>https://howdystranger.net/news.html?article=slaughter-v-trump</loc>
+  <loc>https://howdystranger.net/article.html?slug=slaughter-v-trump</loc>
   <lastmod>2025-12-09</lastmod>
   <news:news>
     <news:publication>

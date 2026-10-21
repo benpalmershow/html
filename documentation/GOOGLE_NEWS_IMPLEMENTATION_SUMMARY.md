@@ -138,7 +138,7 @@ curl https://howdystranger.net/news-feed.xml | head -20
 ```
 
 ### 2. Test NewsArticle Schema
-- Visit any article: `https://howdystranger.net/news.html?article=slaughter-v-trump`
+- Visit any article: `https://howdystranger.net/article.html?slug=slaughter-v-trump`
 - Open DevTools (F12) → Sources
 - Look for `<script type="application/ld+json">` with NewsArticle schema
 - Or use: https://validator.schema.org/

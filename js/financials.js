@@ -60,9 +60,21 @@ function scrollToIndicatorByName(indicatorName) {
     const target = cards.find(card => card.getAttribute(DATA_ATTRS.INDICATOR_NAME) === indicatorName);
     if (!target) return;
 
+    const scrollToTarget = () => {
+        const rect = target.getBoundingClientRect();
+        if (Math.abs(rect.top) > 8) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     target.classList.add('indicator-deep-link');
     setTimeout(() => target.classList.remove('indicator-deep-link'), 1800);
+
+    // Skipped categories are laid out from an intrinsic-size estimate, so the
+    // page can shift after the first scroll. Re-align once layout settles.
+    requestAnimationFrame(scrollToTarget);
+    setTimeout(scrollToTarget, 350);
 }
 
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
@@ -573,7 +585,7 @@ function initializeDashboard() {
     }
 
     const cat = isLatest ? 'latest' : initialFilter;
-    setActiveFilter(cat);
+    setActiveFilter(cat, !!indicatorParam);
     renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
     if (indicatorParam) scrollToIndicatorByName(indicatorParam);
 
@@ -592,7 +604,7 @@ function initializeDashboard() {
 
 /** Single source of truth for which filter is active.
  *  Sets data-filter on #categories and marks the correct button active. */
-function setActiveFilter(category) {
+function setActiveFilter(category, preserveIndicator = false) {
     const categoriesEl = document.getElementById('categories');
     categoriesEl.dataset.filter = category;
     currentCategory = category;
@@ -604,7 +616,7 @@ function setActiveFilter(category) {
         btn.classList.toggle('active', isActive);
     });
 
-    if (typeof syncFilterToURL === 'function') syncFilterToURL(category, category === 'latest');
+    if (typeof syncFilterToURL === 'function') syncFilterToURL(category, category === 'latest', preserveIndicator);
 }
 
 /* =========================================

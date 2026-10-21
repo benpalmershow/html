@@ -106,6 +106,46 @@ function validateContentIndexes() {
   }
 }
 
+function validateArticleIndex() {
+  const indexPath = path.join(ROOT, 'json/article-index.json');
+  if (!fs.existsSync(indexPath)) {
+    fail('json/article-index.json is missing (run: npm run generate:content)');
+    return;
+  }
+
+  const index = JSON.parse(read(indexPath));
+  const ids = new Set();
+
+  index.forEach((entry, index_) => {
+    if (!entry.id) {
+      fail(`json/article-index.json entry ${index_} is missing id`);
+      return;
+    }
+    if (ids.has(entry.id)) fail(`json/article-index.json has a duplicate id: ${entry.id}`);
+    ids.add(entry.id);
+    if (entry.source && !exists(entry.source)) {
+      fail(`json/article-index.json entry ${entry.id} references missing file: ${entry.source}`);
+    }
+    if (entry.url !== `/article.html?slug=${encodeURIComponent(entry.id)}`) {
+      fail(`json/article-index.json entry ${entry.id} has an unexpected url: ${entry.url}`);
+    }
+  });
+
+  // Every article URL in the feed and sitemaps must exist in the index, or the
+  // published link lands on a page that renders "Article not found".
+  ['news-feed.xml', 'news-sitemap.xml', 'sitemap.xml'].forEach(fileName => {
+    const filePath = path.join(ROOT, fileName);
+    if (!fs.existsSync(filePath)) return;
+    const text = read(filePath);
+    const pattern = /article\.html\?slug=([^<&"']+)/g;
+    let match;
+    while ((match = pattern.exec(text))) {
+      const slug = decodeURIComponent(match[1]);
+      if (!ids.has(slug)) fail(`${fileName} links to an article missing from the index: ${slug}`);
+    }
+  });
+}
+
 function validateLocalReferences() {
   const sourceFiles = listFiles('.', filePath => /\.(html|css|webmanifest)$/.test(filePath));
   const attrPattern = /\b(?:href|src)=["']([^"']+)["']/g;
@@ -185,6 +225,7 @@ function runValidation() {
   
   validateJson();
   validateContentIndexes();
+  validateArticleIndex();
   validateLocalReferences();
   validateSitemaps();
   

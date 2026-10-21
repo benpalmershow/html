@@ -15,7 +15,35 @@ delays that series by 1 month at the source's request and would otherwise lag
 the actual release date.
 """
 
-import json
+import csv
+import io
+
+def fetch_fred_csv_observations(series_id, limit=100):
+    """Fallback: fetch observations from FRED's CSV endpoint."""
+    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
+    try:
+        resp = requests.get(url, timeout=30)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"  CSV fallback error for {series_id}: {e}")
+        return []
+    rows = []
+    reader = csv.reader(io.StringIO(resp.text))
+    header = next(reader, None)
+    for row in reader:
+        if len(row) < 2:
+            continue
+        date_str, val = row[0].strip(), row[1].strip()
+        if not date_str or val in ("", "."):
+            continue
+        try:
+            float(val)
+        except ValueError:
+            continue
+        rows.append({"date": date_str, "value": val})
+    rows.sort(key=lambda r: r["date"], reverse=True)
+    return rows[:limit]
+
 import os
 import sys
 from datetime import datetime, timezone
@@ -100,8 +128,10 @@ MONTH_MAP = {
 
 
 
-def fetch_fred_observations(series_id, limit=100):
-    """Fetch the latest observations from the FRED API."""
+import time
+
+def fetch_fred_observations(series_id, limit=100, retries=3):
+    """Fetch the latest observations from the FRED API with retry on transient errors."""
     url = "https://api.stlouisfed.org/fred/series/observations"
     params = {
         "series_id": series_id,
@@ -110,13 +140,27 @@ def fetch_fred_observations(series_id, limit=100):
         "limit": limit,
         "sort_order": "desc",
     }
-    try:
-        resp = requests.get(url, params=params, timeout=30)
-        resp.raise_for_status()
-        return resp.json().get("observations", [])
-    except Exception as e:
-        print(f"  Error fetching {series_id}: {e}")
-        return []
+    for attempt in range(retries):
+        try:
+            resp = requests.get(url, params=params, timeout=30)
+            if resp.status_code in (400, 404, 423):
+                print(f"  HTTP {resp.status_code} for {series_id}; trying CSV fallback")
+                return fetch_fred_csv_observations(series_id, limit)
+            if resp.status_code in (429, 500, 502, 503, 504):
+                wait = 2 ** attempt
+                print(f"  HTTP {resp.status_code} for {series_id}; retrying in {wait}s")
+                time.sleep(wait)
+                continue
+            resp.raise_for_status()
+            return resp.json().get("observations", [])
+        except Exception as e:
+            print(f"  Error fetching {series_id}: {e}")
+            if attempt == retries - 1:
+                print(f"  Trying CSV fallback for {series_id}")
+                return fetch_fred_csv_observations(series_id, limit)
+            time.sleep(2 ** attempt)
+            continue
+    return []
 
 
 def get_latest_observation(observations):

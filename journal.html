@@ -201,15 +201,6 @@
           time.textContent = entry.time;
           metaEl.appendChild(time);
         }
-        if (hasFile && entry.file.startsWith('article/')) {
-          const slug = entry.file.split('/').pop().replace(/\.md$/, '');
-          const permalink = document.createElement('a');
-          permalink.className = 'entry-permalink';
-          permalink.href = '/article.html?slug=' + encodeURIComponent(slug);
-          permalink.textContent = 'Permalink';
-          permalink.setAttribute('aria-label', 'Open this entry as a standalone page');
-          metaEl.appendChild(permalink);
-        }
         headEl.appendChild(titleEl);
         headEl.appendChild(metaEl);
         let accordionEl = null;
@@ -232,6 +223,18 @@
           const inner = document.createElement('div');
           inner.className = 'accordion-inner';
           accordionEl.appendChild(inner);
+          if (hasFile && entry.file.startsWith('article/')) {
+            const slug = entry.file.split('/').pop().replace(/\.md$/, '');
+            const footer = document.createElement('div');
+            footer.className = 'entry-accordion-footer';
+            const permalink = document.createElement('a');
+            permalink.className = 'entry-permalink entry-permalink-bottom';
+            permalink.href = '/article.html?slug=' + encodeURIComponent(slug);
+            permalink.textContent = 'Permalink';
+            permalink.setAttribute('aria-label', 'Open this entry as a standalone page');
+            footer.appendChild(permalink);
+            accordionEl.appendChild(footer);
+          }
           let loaded = false;
           headEl.setAttribute('role', 'button');
           headEl.setAttribute('tabindex', '0');

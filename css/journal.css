@@ -342,5 +342,18 @@ main{flex:1}
   text-transform:uppercase;
   text-decoration:none;
   border-bottom:1px solid transparent;
+  margin:0;
 }
 .entry-permalink:hover,.entry-permalink:focus-visible{color:var(--logo-orange);border-bottom-color:var(--logo-orange)}
+
+.entry-accordion-footer{
+  margin:0;
+  padding:0;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.entry-permalink-bottom{
+  margin:0;
+  padding:0;
+}

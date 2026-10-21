@@ -415,58 +415,77 @@ def update_financials():
 
         is_weekly = indicator_name in WEEKLY_SERIES
 
+        # Build a month -> value map from all returned observations so that
+        # revised (and newly released) months are both pulled, not just the latest.
+        monthly_values = {}
         if is_weekly:
-            date_str, _ = get_latest_observation(observations)
-            if date_str is None:
-                print(f"  No data for {indicator_name}")
-                continue
-            year, month = int(date_str[:4]), int(date_str[5:7])
-            value = get_monthly_average(observations, year, month)
+            # Group observations by month and average them.
+            months_seen = set()
+            for obs in observations:
+                d = obs.get("date")
+                if not d:
+                    continue
+                ym = (int(d[:4]), int(d[5:7]))
+                months_seen.add(ym)
+            for (y, m) in months_seen:
+                v = get_monthly_average(observations, y, m)
+                if v is not None:
+                    monthly_values[(y, m)] = v
         else:
-            date_str, value = get_latest_observation(observations)
-            if date_str is None:
-                print(f"  No data for {indicator_name}")
-                continue
-            year, month = int(date_str[:4]), int(date_str[5:7])
+            # Monthly/spot series: use the last observation within each month.
+            # Observations are sorted desc, so first occurrence per month wins.
+            seen = set()
+            for obs in observations:
+                d = obs.get("date")
+                val = obs.get("value")
+                if not d or not val or val == ".":
+                    continue
+                ym = (int(d[:4]), int(d[5:7]))
+                if ym in seen:
+                    continue
+                seen.add(ym)
+                try:
+                    monthly_values[ym] = float(val)
+                except ValueError:
+                    continue
 
-        month_key = MONTH_MAP[f"{month:02d}"]
-        year_str = str(year)
-
-        if value is None:
-            print(f"  No valid value for {indicator_name}")
+        if not monthly_values:
+            print(f"  No data for {indicator_name}")
             continue
 
         found = False
         for idx in data.get("indices", []):
             if idx.get("name") == indicator_name and idx.get("agency") == "FRED":
-                if year_str not in idx:
-                    idx[year_str] = {}
+                had_new_month = False
+                for (year, month), value in monthly_values.items():
+                    year_str = str(year)
+                    month_key = MONTH_MAP[f"{month:02d}"]
+                    if year_str not in idx:
+                        idx[year_str] = {}
 
-                existing_value = idx[year_str].get(month_key)
-                formatted = format_value(value, indicator_name, existing_value)
+                    existing_value = idx[year_str].get(month_key)
+                    formatted = format_value(value, indicator_name, existing_value)
 
-                if existing_value is None:
-                    idx[year_str][month_key] = formatted
-                    idx["newMonth"] = True
-                    updates.append(
-                        f"{indicator_name} ({year_str} {month_key}): {formatted} (new)"
-                    )
-                elif existing_value != formatted:
-                    mom_pct, yoy_pct = compute_mom_yoy(existing_value, formatted)
-                    warning = validate_large_change(indicator_name, mom_pct, yoy_pct)
-                    idx[year_str][month_key] = formatted
-                    idx["newMonth"] = False
-                    msg = (
-                        f"{indicator_name} ({year_str} {month_key}): "
-                        f"{existing_value} -> {formatted}"
-                    )
-                    if warning:
-                        msg = f"WARNING: {warning}; {msg}"
-                    updates.append(msg)
-                else:
-                    # Revision-less re-fetch: no new month, no badge.
-                    idx["newMonth"] = False
+                    if existing_value is None:
+                        idx[year_str][month_key] = formatted
+                        had_new_month = True
+                        updates.append(
+                            f"{indicator_name} ({year_str} {month_key}): {formatted} (new)"
+                        )
+                    elif existing_value != formatted:
+                        mom_pct, yoy_pct = compute_mom_yoy(existing_value, formatted)
+                        warning = validate_large_change(indicator_name, mom_pct, yoy_pct)
+                        idx[year_str][month_key] = formatted
+                        msg = (
+                            f"{indicator_name} ({year_str} {month_key}): "
+                            f"{existing_value} -> {formatted}"
+                        )
+                        if warning:
+                            msg = f"WARNING: {warning}; {msg}"
+                        updates.append(msg)
+                    # else: no change, skip
 
+                idx["newMonth"] = had_new_month
                 idx["lastUpdated"] = now_iso
                 found = True
                 break

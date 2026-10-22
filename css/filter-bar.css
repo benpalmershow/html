@@ -11,7 +11,7 @@
     margin: 0 auto 0.85rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.6rem;
     overflow-x: auto;
     overflow-y: hidden;

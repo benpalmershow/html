@@ -53,6 +53,12 @@ XBRL_METRICS: Dict[str, List[str]] = {
         "SellingGeneralAndAdministrativeExpense",
         "GeneralAndAdministrativeExpense",
     ],
+    "capitalExpenditures": [
+        "PaymentsToAcquirePropertyPlantAndEquipment",
+        "PaymentsToAcquireProductiveAssets",
+    ],
+    "operatingCashFlow": ["NetCashProvidedByUsedInOperatingActivities"],
+    "earningsPerShare": ["EarningsPerShareDiluted", "EarningsPerShareBasic"],
     # EBITDA is not a standard tag, so it is derived from operating income plus
     # depreciation and amortization once the quarterly series are built.
     "depreciationAndAmortization": [
@@ -346,14 +352,12 @@ def discrete_quarter_amounts(facts: Dict) -> Dict[str, Dict[str, float]]:
         for end, value in assigned.items():
             amounts.setdefault(end, {})[metric] = value
 
-    # EBITDA = operating income + depreciation and amortization
+    # Free cash flow = operating cash flow - capital expenditures
     for end, metrics in amounts.items():
-        operating = metrics.get("operatingIncome")
-        depreciation = metrics.get("depreciationAndAmortization")
-        if operating is None or depreciation is None:
-            continue
-        metrics["ebitda"] = operating + depreciation
-        metrics.pop("depreciationAndAmortization", None)
+        operating = metrics.get("operatingCashFlow")
+        capex = metrics.get("capitalExpenditures")
+        if operating is not None and capex is not None:
+            metrics["freeCashFlow"] = operating - capex
 
     return amounts
 

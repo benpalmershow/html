@@ -5,12 +5,8 @@
     "TSLA",
     "NYT",
     "SPCX",
-    "CRM",
     "CRWD",
-    "HPQ",
     "OKTA",
-    "ANF",
-    "SJM",
     "FOUR",
     "DAL"
   ],
@@ -1140,7 +1136,10 @@
           "operatingIncome": 63734000000.0,
           "rdExpense": 7054000000.0,
           "sgaExpense": 1354000000.0,
-          "ebitda": 64861000000.0
+          "capitalExpenditures": 2677000000.0,
+          "operatingCashFlow": 24077000000.0,
+          "depreciationAndAmortization": 1127000000.0,
+          "freeCashFlow": 21400000000.0
         },
         {
           "quarterEnd": "2026-04-26",
@@ -1156,7 +1155,10 @@
           "operatingIncome": 53536000000.0,
           "rdExpense": 6321000000.0,
           "sgaExpense": 1300000000.0,
-          "ebitda": 54533000000.0
+          "capitalExpenditures": 1757000000.0,
+          "operatingCashFlow": 50344000000.0,
+          "depreciationAndAmortization": 997000000.0,
+          "freeCashFlow": 48587000000.0
         },
         {
           "quarterEnd": "2025-10-26",
@@ -1172,7 +1174,10 @@
           "operatingIncome": 36010000000.0,
           "rdExpense": 4705000000.0,
           "sgaExpense": 1134000000.0,
-          "ebitda": 36761000000.0
+          "capitalExpenditures": 1636000000.0,
+          "operatingCashFlow": 23751000000.0,
+          "depreciationAndAmortization": 751000000.0,
+          "freeCashFlow": 22115000000.0
         },
         {
           "quarterEnd": "2025-07-27",
@@ -1188,7 +1193,10 @@
           "operatingIncome": 28440000000.0,
           "rdExpense": 4291000000.0,
           "sgaExpense": 1122000000.0,
-          "ebitda": 29109000000.0
+          "capitalExpenditures": 1895000000.0,
+          "operatingCashFlow": 15365000000.0,
+          "depreciationAndAmortization": 669000000.0,
+          "freeCashFlow": 13470000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -2315,7 +2323,10 @@
           "grossProfit": 5494000000.0,
           "operatingIncome": 718000000.0,
           "rdExpense": 2761000000.0,
-          "sgaExpense": 2015000000.0
+          "sgaExpense": 2015000000.0,
+          "capitalExpenditures": 4732000000.0,
+          "operatingCashFlow": 6263000000.0,
+          "freeCashFlow": 1531000000.0
         },
         {
           "quarterEnd": "2026-06-30",
@@ -2330,7 +2341,10 @@
           "grossProfit": 4751000000.0,
           "operatingIncome": 398000000.0,
           "rdExpense": 2371000000.0,
-          "sgaExpense": 1982000000.0
+          "sgaExpense": 1982000000.0,
+          "capitalExpenditures": 5789000000.0,
+          "operatingCashFlow": 4697000000.0,
+          "freeCashFlow": -1092000000.0
         },
         {
           "quarterEnd": "2026-03-31",
@@ -2345,7 +2359,10 @@
           "grossProfit": 4720000000.0,
           "operatingIncome": 941000000.0,
           "rdExpense": 1946000000.0,
-          "sgaExpense": 1833000000.0
+          "sgaExpense": 1833000000.0,
+          "capitalExpenditures": 2493000000.0,
+          "operatingCashFlow": 3937000000.0,
+          "freeCashFlow": 1444000000.0
         },
         {
           "quarterEnd": "2025-09-30",
@@ -2360,7 +2377,10 @@
           "grossProfit": 5054000000.0,
           "operatingIncome": 1624000000.0,
           "rdExpense": 1630000000.0,
-          "sgaExpense": 1562000000.0
+          "sgaExpense": 1562000000.0,
+          "capitalExpenditures": 2248000000.0,
+          "operatingCashFlow": 6238000000.0,
+          "freeCashFlow": 3990000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -3489,7 +3509,10 @@
           "operatingIncome": 118018000.0,
           "rdExpense": 70350000.0,
           "sgaExpense": 85767000.0,
-          "ebitda": 139141000.0
+          "capitalExpenditures": 10111000.0,
+          "operatingCashFlow": 194264000.0,
+          "depreciationAndAmortization": 21123000.0,
+          "freeCashFlow": 184153000.0
         },
         {
           "quarterEnd": "2026-03-31",
@@ -3504,7 +3527,10 @@
           "operatingIncome": 90617000.0,
           "rdExpense": 70193000.0,
           "sgaExpense": 86452000.0,
-          "ebitda": 111180000.0
+          "capitalExpenditures": 10723000.0,
+          "operatingCashFlow": 92236000.0,
+          "depreciationAndAmortization": 20563000.0,
+          "freeCashFlow": 81513000.0
         },
         {
           "quarterEnd": "2025-09-30",
@@ -3519,7 +3545,10 @@
           "operatingIncome": 104788000.0,
           "rdExpense": 66989000.0,
           "sgaExpense": 76640000.0,
-          "ebitda": 126129000.0
+          "capitalExpenditures": 7878000.0,
+          "operatingCashFlow": 207608000.0,
+          "depreciationAndAmortization": 21341000.0,
+          "freeCashFlow": 199730000.0
         },
         {
           "quarterEnd": "2025-06-30",
@@ -3534,7 +3563,10 @@
           "operatingIncome": 106551000.0,
           "rdExpense": 63940000.0,
           "sgaExpense": 82552000.0,
-          "ebitda": 127947000.0
+          "capitalExpenditures": 10336000.0,
+          "operatingCashFlow": 113638000.0,
+          "depreciationAndAmortization": 21396000.0,
+          "freeCashFlow": 103302000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -4006,9 +4038,10 @@
           "totalRevenue": 14575000000.0,
           "rdExpense": 4596000000.0,
           "sgaExpense": 1707000000.0,
-          "operatingIncome": 2791000000.0,
-          "netIncome": 4404000000.0,
-          "grossProfit": 9097000000.0,
+"operatingIncome": 2791000000.0,
+            "netIncome": 4404000000.0,
+            "capitalExpenditures": 19600000000.0,
+            "grossProfit": 9097000000.0,
           "ebitda": 8809000000.0,
           "priorYear": {
             "quarterEnd": "2025-09-30",
@@ -5163,7 +5196,10 @@
           "operatingIncome": 2331000000.0,
           "rdExpense": 1687000000.0,
           "sgaExpense": 725000000.0,
-          "ebitda": 3297000000.0
+          "capitalExpenditures": 171000000.0,
+          "operatingCashFlow": 1269000000.0,
+          "depreciationAndAmortization": 966000000.0,
+          "freeCashFlow": 1098000000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -5179,7 +5215,10 @@
           "operatingIncome": 2347000000.0,
           "rdExpense": 1627000000.0,
           "sgaExpense": 740000000.0,
-          "ebitda": 3332000000.0
+          "capitalExpenditures": 145000000.0,
+          "operatingCashFlow": 6701000000.0,
+          "depreciationAndAmortization": 985000000.0,
+          "freeCashFlow": 6556000000.0
         },
         {
           "quarterEnd": "2025-10-31",
@@ -5195,7 +5234,10 @@
           "operatingIncome": 2188000000.0,
           "rdExpense": 1433000000.0,
           "sgaExpense": 667000000.0,
-          "ebitda": 3039000000.0
+          "capitalExpenditures": 139000000.0,
+          "operatingCashFlow": 2316000000.0,
+          "depreciationAndAmortization": 851000000.0,
+          "freeCashFlow": 2177000000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -5211,7 +5253,10 @@
           "operatingIncome": 2332000000.0,
           "rdExpense": 1481000000.0,
           "sgaExpense": 734000000.0,
-          "ebitda": 3149000000.0
+          "capitalExpenditures": 135000000.0,
+          "operatingCashFlow": 740000000.0,
+          "depreciationAndAmortization": 817000000.0,
+          "freeCashFlow": 605000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -6339,7 +6384,10 @@
           "operatingIncome": -33232000.0,
           "rdExpense": 444200000.0,
           "sgaExpense": 175954000.0,
-          "ebitda": -7532000.0
+          "capitalExpenditures": 124413000.0,
+          "operatingCashFlow": 530268000.0,
+          "depreciationAndAmortization": 25700000.0,
+          "freeCashFlow": 405855000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -6354,7 +6402,10 @@
           "grossProfit": 1043352000.0,
           "operatingIncome": -30600000.0,
           "rdExpense": 408326000.0,
-          "sgaExpense": 176952000.0
+          "sgaExpense": 176952000.0,
+          "capitalExpenditures": 97624000.0,
+          "operatingCashFlow": 590937000.0,
+          "freeCashFlow": 493313000.0
         },
         {
           "quarterEnd": "2025-10-31",
@@ -6369,7 +6420,10 @@
           "grossProfit": 926439000.0,
           "operatingIncome": -69443000.0,
           "rdExpense": 347564000.0,
-          "sgaExpense": 167286000.0
+          "sgaExpense": 167286000.0,
+          "capitalExpenditures": 83395000.0,
+          "operatingCashFlow": 397541000.0,
+          "freeCashFlow": 314146000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -6385,7 +6439,10 @@
           "operatingIncome": -105457000.0,
           "rdExpense": 342533000.0,
           "sgaExpense": 176745000.0,
-          "ebitda": -85857000.0
+          "capitalExpenditures": 30497000.0,
+          "operatingCashFlow": 332832000.0,
+          "depreciationAndAmortization": 19600000.0,
+          "freeCashFlow": 302335000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -7515,7 +7572,10 @@
           "operatingIncome": 892000000.0,
           "rdExpense": 389000000.0,
           "sgaExpense": 1537000000.0,
-          "ebitda": 1136000000.0
+          "capitalExpenditures": 187000000.0,
+          "operatingCashFlow": 1735000000.0,
+          "depreciationAndAmortization": 244000000.0,
+          "freeCashFlow": 1548000000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -7531,7 +7591,10 @@
           "operatingIncome": 612000000.0,
           "rdExpense": 432000000.0,
           "sgaExpense": 1514000000.0,
-          "ebitda": 876000000.0
+          "capitalExpenditures": 170000000.0,
+          "operatingCashFlow": 926000000.0,
+          "depreciationAndAmortization": 264000000.0,
+          "freeCashFlow": 756000000.0
         },
         {
           "quarterEnd": "2026-01-31",
@@ -7547,7 +7610,10 @@
           "operatingIncome": 759000000.0,
           "rdExpense": 392000000.0,
           "sgaExpense": 1504000000.0,
-          "ebitda": 973000000.0
+          "capitalExpenditures": 233000000.0,
+          "operatingCashFlow": 383000000.0,
+          "depreciationAndAmortization": 214000000.0,
+          "freeCashFlow": 150000000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -7563,7 +7629,10 @@
           "operatingIncome": 716000000.0,
           "rdExpense": 406000000.0,
           "sgaExpense": 1452000000.0,
-          "ebitda": 1022000000.0
+          "capitalExpenditures": 215000000.0,
+          "operatingCashFlow": 1661000000.0,
+          "depreciationAndAmortization": 306000000.0,
+          "freeCashFlow": 1446000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -8690,7 +8759,10 @@
           "grossProfit": 641000000.0,
           "operatingIncome": 107000000.0,
           "rdExpense": 163000000.0,
-          "sgaExpense": 98000000.0
+          "sgaExpense": 98000000.0,
+          "capitalExpenditures": 1000000.0,
+          "operatingCashFlow": 234000000.0,
+          "freeCashFlow": 233000000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -8705,7 +8777,10 @@
           "grossProfit": 595000000.0,
           "operatingIncome": 56000000.0,
           "rdExpense": 163000000.0,
-          "sgaExpense": 98000000.0
+          "sgaExpense": 98000000.0,
+          "capitalExpenditures": 1000000.0,
+          "operatingCashFlow": 277000000.0,
+          "freeCashFlow": 276000000.0
         },
         {
           "quarterEnd": "2025-10-31",
@@ -8720,7 +8795,10 @@
           "grossProfit": 572000000.0,
           "operatingIncome": 23000000.0,
           "rdExpense": 160000000.0,
-          "sgaExpense": 118000000.0
+          "sgaExpense": 118000000.0,
+          "capitalExpenditures": 4000000.0,
+          "operatingCashFlow": 218000000.0,
+          "freeCashFlow": 214000000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -8735,7 +8813,10 @@
           "grossProfit": 560000000.0,
           "operatingIncome": 41000000.0,
           "rdExpense": 160000000.0,
-          "sgaExpense": 113000000.0
+          "sgaExpense": 113000000.0,
+          "capitalExpenditures": 2000000.0,
+          "operatingCashFlow": 167000000.0,
+          "freeCashFlow": 165000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -9863,7 +9944,10 @@
           "netIncome": 183720000.0,
           "operatingIncome": 252700000.0,
           "sgaExpense": 204784000.0,
-          "ebitda": 295979000.0
+          "capitalExpenditures": 68016000.0,
+          "operatingCashFlow": 269145000.0,
+          "depreciationAndAmortization": 43279000.0,
+          "freeCashFlow": 201129000.0
         },
         {
           "quarterEnd": "2026-05-02",
@@ -9877,7 +9961,10 @@
           "netIncome": 67134000.0,
           "operatingIncome": 88797000.0,
           "sgaExpense": 182754000.0,
-          "ebitda": 131101000.0
+          "capitalExpenditures": 61341000.0,
+          "operatingCashFlow": 44256000.0,
+          "depreciationAndAmortization": 42304000.0,
+          "freeCashFlow": -17085000.0
         },
         {
           "quarterEnd": "2025-11-01",
@@ -9891,7 +9978,10 @@
           "netIncome": 112995000.0,
           "operatingIncome": 155021000.0,
           "sgaExpense": 193402000.0,
-          "ebitda": 193587000.0
+          "capitalExpenditures": 68269000.0,
+          "operatingCashFlow": 200107000.0,
+          "depreciationAndAmortization": 38566000.0,
+          "freeCashFlow": 131838000.0
         },
         {
           "quarterEnd": "2025-08-02",
@@ -9905,7 +9995,10 @@
           "netIncome": 141383000.0,
           "operatingIncome": 206658000.0,
           "sgaExpense": 175325000.0,
-          "ebitda": 244082000.0
+          "capitalExpenditures": 66179000.0,
+          "operatingCashFlow": 116893000.0,
+          "depreciationAndAmortization": 37424000.0,
+          "freeCashFlow": 50714000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -11032,7 +11125,10 @@
           "netIncome": 324300000.0,
           "grossProfit": 979600000.0,
           "operatingIncome": 511600000.0,
-          "sgaExpense": 410500000.0
+          "sgaExpense": 410500000.0,
+          "capitalExpenditures": 88400000.0,
+          "operatingCashFlow": 425700000.0,
+          "freeCashFlow": 337300000.0
         },
         {
           "quarterEnd": "2026-01-31",
@@ -11046,7 +11142,10 @@
           "netIncome": -724200000.0,
           "grossProfit": 827800000.0,
           "operatingIncome": -548400000.0,
-          "sgaExpense": 363200000.0
+          "sgaExpense": 363200000.0,
+          "capitalExpenditures": 71500000.0,
+          "operatingCashFlow": 558500000.0,
+          "freeCashFlow": 487000000.0
         },
         {
           "quarterEnd": "2025-10-31",
@@ -11060,7 +11159,10 @@
           "netIncome": 241300000.0,
           "grossProfit": 869900000.0,
           "operatingIncome": 418500000.0,
-          "sgaExpense": 398200000.0
+          "sgaExpense": 398200000.0,
+          "capitalExpenditures": 66300000.0,
+          "operatingCashFlow": 346500000.0,
+          "freeCashFlow": 280200000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -11074,7 +11176,10 @@
           "netIncome": -43900000.0,
           "grossProfit": 474700000.0,
           "operatingIncome": 45600000.0,
-          "sgaExpense": 377400000.0
+          "sgaExpense": 377400000.0,
+          "capitalExpenditures": 84300000.0,
+          "operatingCashFlow": -10600000.0,
+          "freeCashFlow": -94900000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -12201,7 +12306,10 @@
           "netIncome": 22000000.0,
           "operatingIncome": 95000000.0,
           "sgaExpense": 231000000.0,
-          "ebitda": 234000000.0
+          "capitalExpenditures": 6000000.0,
+          "operatingCashFlow": 63000000.0,
+          "depreciationAndAmortization": 139000000.0,
+          "freeCashFlow": 57000000.0
         },
         {
           "quarterEnd": "2026-03-31",
@@ -12215,7 +12323,10 @@
           "netIncome": 15000000.0,
           "operatingIncome": 50000000.0,
           "sgaExpense": 216000000.0,
-          "ebitda": 185000000.0
+          "capitalExpenditures": 6000000.0,
+          "operatingCashFlow": 134000000.0,
+          "depreciationAndAmortization": 135000000.0,
+          "freeCashFlow": 128000000.0
         },
         {
           "quarterEnd": "2025-09-30",
@@ -12229,7 +12340,10 @@
           "netIncome": 28100000.0,
           "operatingIncome": 114600000.0,
           "sgaExpense": 188400000.0,
-          "ebitda": 239700000.0
+          "capitalExpenditures": 6800000.0,
+          "operatingCashFlow": 172300000.0,
+          "depreciationAndAmortization": 125100000.0,
+          "freeCashFlow": 165500000.0
         },
         {
           "quarterEnd": "2025-06-30",
@@ -12243,7 +12357,10 @@
           "netIncome": 34000000.0,
           "operatingIncome": 83000000.0,
           "sgaExpense": 131000000.0,
-          "ebitda": 171000000.0
+          "capitalExpenditures": 1000000.0,
+          "operatingCashFlow": 142000000.0,
+          "depreciationAndAmortization": 88000000.0,
+          "freeCashFlow": 141000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -13370,7 +13487,8 @@
           "totalRevenue": 20186000000.0,
           "netIncome": 756000000.0,
           "operatingIncome": 1454000000.0,
-          "ebitda": 2127000000.0
+          "operatingCashFlow": 1713000000.0,
+          "depreciationAndAmortization": 673000000.0
         },
         {
           "quarterEnd": "2026-06-30",
@@ -13383,7 +13501,8 @@
           "totalRevenue": 19757000000.0,
           "netIncome": 1604000000.0,
           "operatingIncome": 1864000000.0,
-          "ebitda": 2520000000.0
+          "operatingCashFlow": 1595000000.0,
+          "depreciationAndAmortization": 656000000.0
         },
         {
           "quarterEnd": "2026-03-31",
@@ -13396,7 +13515,10 @@
           "totalRevenue": 15854000000.0,
           "netIncome": -289000000.0,
           "operatingIncome": 501000000.0,
-          "ebitda": 1136000000.0
+          "capitalExpenditures": 1200000000.0,
+          "operatingCashFlow": 2432000000.0,
+          "depreciationAndAmortization": 635000000.0,
+          "freeCashFlow": 1232000000.0
         },
         {
           "quarterEnd": "2025-09-30",
@@ -13409,7 +13531,10 @@
           "totalRevenue": 16673000000.0,
           "netIncome": 1417000000.0,
           "operatingIncome": 1684000000.0,
-          "ebitda": 2298000000.0
+          "capitalExpenditures": 1160000000.0,
+          "operatingCashFlow": 1847000000.0,
+          "depreciationAndAmortization": 614000000.0,
+          "freeCashFlow": 687000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"

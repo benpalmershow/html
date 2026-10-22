@@ -16,9 +16,9 @@
 
 .categories { display: grid; gap: 15px }
 
-.content { min-height: 80dvh; contain: layout; }
+.content { min-height: 80dvh; }
 
-.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; content-visibility: auto; contain: layout paint; contain-intrinsic-size: auto 500px; will-change: transform, box-shadow; }
+.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; will-change: transform, box-shadow; }
 
 .category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 
@@ -55,7 +55,7 @@
     gap: 0.35rem;
     overflow: visible;
     animation: cardIn 0.3s var(--ease-out-back) both;
-    contain: layout paint style;
+    contain: layout style;
     content-visibility: auto;
     contain-intrinsic-size: 220px 220px;
     min-width: 0;
@@ -120,7 +120,7 @@
 
 .indicator.expanded .data-rows-container { max-height: 1200px; margin-top: 0; }
 
-.latest-data-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; margin-bottom: 0; }
+.latest-data-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; margin-bottom: 0; min-width: 0; overflow: visible; }
 
 .latest-data-row, .last-data-row { background: rgba(var(--border-color-rgb), 0.28); border-radius: 4px; padding: 4px 5px; margin: 2px 0; }
 
@@ -148,7 +148,10 @@
 .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
 
 /* Earnings cards */
-.category[data-category="Earnings"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.category[data-category="Earnings"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+.earnings-card { contain: layout style; overflow: visible; overflow-x: hidden; content-visibility: visible; contain-intrinsic-size: auto; }
+.earnings-card .data-rows-container { max-height: 0; overflow: hidden; }
+.earnings-card.expanded .data-rows-container { max-height: none; overflow: visible; }
 
 .earnings-ticker { display: inline-flex; align-items: center; padding: 1px 5px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-muted); vertical-align: middle; }
 
@@ -631,7 +634,7 @@
   .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; overflow-x: visible; min-height: auto; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { gap: 4px; } .change-metric-btn { padding: 8px 5px 3px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } .latest-data-row, .last-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; } .month-value.game-title { white-space: normal; overflow-wrap: break-word; text-overflow: unset; line-height: 1.25; } }
+@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; overflow-x: visible; min-height: auto; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { gap: 4px; } .change-metric-btn { padding: 8px 5px 3px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } .latest-data-row, .last-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; } .category[data-category="Earnings"] .indicators-grid { grid-template-columns: 1fr; } .month-value.game-title { white-space: normal; overflow-wrap: break-word; text-overflow: unset; line-height: 1.25; } }
 
 @media (max-width: 360px) { .indicator-name { font-size: 0.8rem; } .indicator { padding: 0.4rem; } .indicators-grid { grid-template-columns: 1fr; gap: 0.35rem; } }
 
@@ -1061,6 +1064,7 @@
   left: 0;
   width: 100% !important;
   height: 100% !important;
+  max-width: 100%;
   opacity: 0.35;
 }
 

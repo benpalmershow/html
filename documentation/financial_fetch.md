@@ -495,6 +495,12 @@ key signup: https://api.census.gov/data/key_signup.html)
     published with roughly a six-week lag.
 - Local preview: `python3 scripts/fetch_census.py --dry-run`
 
+### SEC Quarterly Fetcher Fallback for Missing Metrics
+When the SEC filing's per-quarter XBRL omits a metric (e.g., `capitalExpenditures` missing from an 8-K exhibit), do not leave it as "—" or enter it manually. Instead:
+1. Query the SEC CompanyFacts API: `https://data.sec.gov/api/xbrl/companyfacts/CIK<CIK>.json`.
+2. Pull the cumulative fact (e.g., `us-gaap.PaymentsToAcquirePropertyPlantAndEquipment`) for the period end.
+3. Difference consecutive period-end totals to derive the standalone quarterly value.
+4. Validate the derived value against a reputable source (filing text, earnings release, or analyst report) before writing to `json/earnings.json`.
 ### Data Validation Scripts
 - JSON schema validation for indicator objects
 - URL accessibility testing

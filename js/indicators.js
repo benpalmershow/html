@@ -651,6 +651,8 @@ function renderHormuz(indicator) {
                     <td title="Total Revenue">${formatAmount(q.totalRevenue)}</td>
                     <td class="${netIncomeClass}" title="Net Income">${formatAmount(q.netIncome)}</td>
                     <td title="Operating Income">${formatAmount(q.operatingIncome)}</td>
+                    <td title="Capital Expenditures">${formatAmount(q.capitalExpenditures)}</td>
+                    <td title="Free Cash Flow">${formatAmount(q.freeCashFlow)}</td>
                 </tr>`;
             }).join('');
 
@@ -663,6 +665,8 @@ function renderHormuz(indicator) {
                             <th scope="col">Revenue</th>
                             <th scope="col">Net Inc.</th>
                             <th scope="col">Op. Inc.</th>
+                            <th scope="col">CapEx</th>
+                            <th scope="col">FCF</th>
                         </tr>
                     </thead>
                     <tbody>${quarterRows}</tbody>
@@ -1017,7 +1021,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
         indicator.result ? '<span class="game-final-badge">Final</span>' : ''
     ].filter(Boolean).join('');
 
-    return `<div class="indicator" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${displayName}${badges}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${displayName}${badges}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
 }
 
 /* Category icon button on each card: shows the card's category (same lucide

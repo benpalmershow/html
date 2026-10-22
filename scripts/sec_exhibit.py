@@ -140,6 +140,38 @@ METRIC_RULES = [
             r"^total cost of sales$",
         ],
     ),
+    (
+        "adjustedNetIncome",
+        [
+            r"^adjusted net income(?: \(loss\))?$",
+            r"^non-gaap net income(?: \(loss\))?$",
+            r"^adjusted net income attributable to common shareholders$",
+        ],
+    ),
+    (
+        "capitalExpenditures",
+        [
+            r"^capital expenditures$",
+            r"^capex$",
+            r"^purchases of property and equipment$",
+            r"^capital expenditure$",
+        ],
+    ),
+    (
+        "freeCashFlow",
+        [r"^free cash flow$", r"^free cashflow$"],
+    ),
+    (
+        "earningsPerShare",
+        [
+            r"^earnings per (?:basic and )?diluted share$",
+            r"^diluted earnings per share$",
+            r"^basic earnings per share$",
+            r"^earnings per share$",
+            r"^net income per (?:basic and )?diluted share$",
+            r"^profit per share$",
+        ],
+    ),
 ]
 
 EXCLUDE_WORDS = (
@@ -165,6 +197,9 @@ PRIOR_YEAR_METRICS = (
     "rdExpense",
     "sgaExpense",
     "costOfRevenue",
+    "adjustedNetIncome",
+    "capitalExpenditures",
+    "freeCashFlow",
 )
 
 
@@ -527,8 +562,6 @@ def match_metric(label: str) -> Optional[Tuple[str, int]]:
     normalized = re.sub(r"\s+", " ", normalize(label).lower())
     if not normalized:
         return None
-    if any(word in normalized for word in EXCLUDE_WORDS):
-        return None
 
     # Section headings sometimes run into the row label (for example
     # "OPERATING EXPENSES Research and development"), so try the tail of the
@@ -540,8 +573,13 @@ def match_metric(label: str) -> Optional[Tuple[str, int]]:
     for candidate in candidates:
         for metric, patterns in METRIC_RULES:
             for index, pattern in enumerate(patterns):
-                if re.match(pattern, candidate):
-                    return (metric, index)
+                if not re.match(pattern, candidate):
+                    continue
+                if metric != "earningsPerShare" and any(
+                    word in normalized for word in EXCLUDE_WORDS
+                ):
+                    return None
+                return (metric, index)
     return None
 
 
@@ -684,7 +722,14 @@ def parse_exhibit_991(html_text: str) -> Optional[Dict]:
                     period_end = parsed[1]
                 break
 
-    amounts = {key: value * unit for key, value in metrics.items() if key != "costOfRevenue"}
+    amounts = {}
+    for key, value in metrics.items():
+        if key == "costOfRevenue":
+            continue
+        if key == "earningsPerShare":
+            amounts[key] = value
+        else:
+            amounts[key] = value * unit
     prior_amounts = extract_prior_year_metrics(
         table, period_end, unit, PRIOR_YEAR_METRICS
     )

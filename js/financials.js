@@ -360,14 +360,17 @@ function convertEarningsToIndicators(earnings) {
         const recent = (entry.recentEarnings || []);
         const latest = recent[0] || {};
 
+        const latestQ = (entry.quarterlyFinancials || [])[0];
+
         const indicator = {
             id: `earnings-${entry.ticker.toLowerCase()}`,
             category: 'Earnings',
-            agency: entry.source || 'Yahoo Finance',
+            agency: 'Yahoo Finance',
+            source_url: latestQ?.filingUrl || 'https://www.sec.gov/edgar/searchedgar/companysearch',
             name: entry.ticker,
             ticker: entry.ticker,
             url: `https://finance.yahoo.com/quote/${entry.ticker}`,
-            lastUpdated: latest.reportedDate || entry.fetchedAt,
+            lastUpdated: latestQ?.filingDate || latest.reportedDate || entry.fetchedAt,
             reportedDate: latest.reportedDate || '',
             isNew: (() => {
                 const d = latest.reportedDate ? new Date(latest.reportedDate) : null;

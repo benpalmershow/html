@@ -10,7 +10,9 @@
     "HPQ",
     "OKTA",
     "ANF",
-    "SJM"
+    "SJM",
+    "FOUR",
+    "DAL"
   ],
   "earnings": [
     {
@@ -1125,32 +1127,60 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-26",
+          "quarterEnd": "2026-07-26",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/0001045810-26-000075-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/0001045810-26-000075-index.htm",
           "accessionNumber": "0001045810-26-000075",
-          "filingDate": "2026-08-26"
+          "filingDate": "2026-08-26",
+          "form": "10-Q",
+          "totalRevenue": 96221000000.0,
+          "netIncome": 59688000000.0,
+          "grossProfit": 72142000000.0,
+          "operatingIncome": 63734000000.0,
+          "rdExpense": 7054000000.0,
+          "sgaExpense": 1354000000.0
         },
         {
-          "quarterEnd": "2026-05-20",
+          "quarterEnd": "2026-04-26",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000052/0001045810-26-000052-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/0001045810-26-000052-index.htm",
           "accessionNumber": "0001045810-26-000052",
-          "filingDate": "2026-05-20"
+          "filingDate": "2026-05-20",
+          "form": "10-Q",
+          "totalRevenue": 81615000000.0,
+          "netIncome": 58321000000.0,
+          "grossProfit": 61157000000.0,
+          "operatingIncome": 53536000000.0,
+          "rdExpense": 6321000000.0,
+          "sgaExpense": 1300000000.0
         },
         {
-          "quarterEnd": "2025-11-19",
+          "quarterEnd": "2025-10-26",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581025000230/0001045810-25-000230-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/0001045810-25-000230-index.htm",
           "accessionNumber": "0001045810-25-000230",
-          "filingDate": "2025-11-19"
+          "filingDate": "2025-11-19",
+          "form": "10-Q",
+          "totalRevenue": 57006000000.0,
+          "netIncome": 31910000000.0,
+          "grossProfit": 41849000000.0,
+          "operatingIncome": 36010000000.0,
+          "rdExpense": 4705000000.0,
+          "sgaExpense": 1134000000.0
         },
         {
-          "quarterEnd": "2025-08-27",
+          "quarterEnd": "2025-07-27",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581025000209/0001045810-25-000209-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/0001045810-25-000209-index.htm",
           "accessionNumber": "0001045810-25-000209",
-          "filingDate": "2025-08-27"
+          "filingDate": "2025-08-27",
+          "form": "10-Q",
+          "totalRevenue": 46743000000.0,
+          "netIncome": 26422000000.0,
+          "grossProfit": 33853000000.0,
+          "operatingIncome": 28440000000.0,
+          "rdExpense": 4291000000.0,
+          "sgaExpense": 1122000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -2261,32 +2291,75 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-07-23",
+          "quarterEnd": "2026-09-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828026049270/0001628280-26-049270-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/0001628280-26-066738-index.htm",
+          "accessionNumber": "0001628280-26-066738",
+          "filingDate": "2026-10-21",
+          "form": "8-K",
+          "exhibitUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm",
+          "totalRevenue": 28046000000.0,
+          "grossProfit": 5494000000.0,
+          "rdExpense": 2761000000.0,
+          "sgaExpense": 2015000000.0,
+          "operatingIncome": 718000000.0,
+          "netIncome": 787000000.0
+        },
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/0001628280-26-049270-index.htm",
           "accessionNumber": "0001628280-26-049270",
-          "filingDate": "2026-07-23"
+          "filingDate": "2026-07-23",
+          "form": "10-Q",
+          "totalRevenue": 28236000000.0,
+          "netIncome": 1114000000.0,
+          "grossProfit": 4751000000.0,
+          "operatingIncome": 398000000.0,
+          "rdExpense": 2371000000.0,
+          "sgaExpense": 1982000000.0
         },
         {
-          "quarterEnd": "2026-04-23",
+          "quarterEnd": "2026-03-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828026026673/0001628280-26-026673-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/0001628280-26-026673-index.htm",
           "accessionNumber": "0001628280-26-026673",
-          "filingDate": "2026-04-23"
+          "filingDate": "2026-04-23",
+          "form": "10-Q",
+          "totalRevenue": 22387000000.0,
+          "netIncome": 477000000.0,
+          "grossProfit": 4720000000.0,
+          "operatingIncome": 941000000.0,
+          "rdExpense": 1946000000.0,
+          "sgaExpense": 1833000000.0
         },
         {
-          "quarterEnd": "2025-10-23",
+          "quarterEnd": "2025-09-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828025045968/0001628280-25-045968-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045968/0001628280-25-045968-index.htm",
           "accessionNumber": "0001628280-25-045968",
-          "filingDate": "2025-10-23"
+          "filingDate": "2025-10-23",
+          "form": "10-Q",
+          "totalRevenue": 28095000000.0,
+          "netIncome": 1373000000.0,
+          "grossProfit": 5054000000.0,
+          "operatingIncome": 1624000000.0,
+          "rdExpense": 1630000000.0,
+          "sgaExpense": 1562000000.0
         },
         {
-          "quarterEnd": "2025-07-24",
+          "quarterEnd": "2025-06-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001318605/000162828025035806/0001628280-25-035806-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/0001628280-25-035806-index.htm",
           "accessionNumber": "0001628280-25-035806",
-          "filingDate": "2025-07-24"
+          "filingDate": "2025-07-24",
+          "form": "10-Q",
+          "totalRevenue": 22496000000.0,
+          "netIncome": 1172000000.0,
+          "grossProfit": 3878000000.0,
+          "operatingIncome": 923000000.0,
+          "rdExpense": 1589000000.0,
+          "sgaExpense": 1366000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -3403,32 +3476,56 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-05",
+          "quarterEnd": "2026-06-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169126000034/0000071691-26-000034-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169126000034/0000071691-26-000034-index.htm",
           "accessionNumber": "0000071691-26-000034",
-          "filingDate": "2026-08-05"
+          "filingDate": "2026-08-05",
+          "form": "10-Q",
+          "totalRevenue": 762455000.0,
+          "netIncome": 93418000.0,
+          "operatingIncome": 118018000.0,
+          "rdExpense": 70350000.0,
+          "sgaExpense": 85767000.0
         },
         {
-          "quarterEnd": "2026-05-06",
+          "quarterEnd": "2026-03-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169126000025/0000071691-26-000025-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169126000025/0000071691-26-000025-index.htm",
           "accessionNumber": "0000071691-26-000025",
-          "filingDate": "2026-05-06"
+          "filingDate": "2026-05-06",
+          "form": "10-Q",
+          "totalRevenue": 712236000.0,
+          "netIncome": 87922000.0,
+          "operatingIncome": 90617000.0,
+          "rdExpense": 70193000.0,
+          "sgaExpense": 86452000.0
         },
         {
-          "quarterEnd": "2025-11-05",
+          "quarterEnd": "2025-09-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169125000126/0000071691-25-000126-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169125000126/0000071691-25-000126-index.htm",
           "accessionNumber": "0000071691-25-000126",
-          "filingDate": "2025-11-05"
+          "filingDate": "2025-11-05",
+          "form": "10-Q",
+          "totalRevenue": 700821000.0,
+          "netIncome": 81647000.0,
+          "operatingIncome": 104788000.0,
+          "rdExpense": 66989000.0,
+          "sgaExpense": 76640000.0
         },
         {
-          "quarterEnd": "2025-08-06",
+          "quarterEnd": "2025-06-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000071691/000007169125000119/0000071691-25-000119-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169125000119/0000071691-25-000119-index.htm",
           "accessionNumber": "0000071691-25-000119",
-          "filingDate": "2025-08-06"
+          "filingDate": "2025-08-06",
+          "form": "10-Q",
+          "totalRevenue": 685873000.0,
+          "netIncome": 82945000.0,
+          "operatingIncome": 106551000.0,
+          "rdExpense": 63940000.0,
+          "sgaExpense": 82552000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -3451,7 +3548,7 @@
       "profitMargins": -0.36,
       "returnOnAssets": null,
       "returnOnEquity": null,
-      "revenueGrowth": 0.92,
+      "revenueGrowth": 1.61,
       "earningsGrowth": null,
       "revenuePerShare": 5.89,
       "freeCashflow": null,
@@ -3889,11 +3986,45 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-04",
+          "quarterEnd": "2026-09-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001181412/000162828026052535/0001628280-26-052535-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/0001628280-26-066482-index.htm",
+          "accessionNumber": "0001628280-26-066482",
+          "filingDate": "2026-10-20",
+          "form": "8-K",
+          "exhibitUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
+          "totalRevenue": 14575000000.0,
+          "rdExpense": 4596000000.0,
+          "sgaExpense": 1707000000.0,
+          "operatingIncome": 2791000000.0,
+          "netIncome": 4404000000.0,
+          "grossProfit": 9097000000.0
+        },
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
           "accessionNumber": "0001628280-26-052535",
-          "filingDate": "2026-08-04"
+          "filingDate": "2026-08-04",
+          "form": "10-Q",
+          "totalRevenue": 7814000000.0,
+          "netIncome": -541000000.0,
+          "operatingIncome": -143000000.0,
+          "rdExpense": 3548000000.0,
+          "sgaExpense": 912000000.0
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/0001628280-26-066482-index.htm",
+          "accessionNumber": "0001628280-26-066482",
+          "filingDate": "2026-10-20",
+          "form": "8-K",
+          "exhibitUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
+          "totalRevenue": 5584000000.0,
+          "netIncome": -285000000.0,
+          "operatingIncome": -120000000.0,
+          "grossProfit": 2140000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -5010,32 +5141,60 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-27",
+          "quarterEnd": "2026-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852426000190/0001108524-26-000190-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000190/0001108524-26-000190-index.htm",
           "accessionNumber": "0001108524-26-000190",
-          "filingDate": "2026-08-27"
+          "filingDate": "2026-08-27",
+          "form": "10-Q",
+          "totalRevenue": 11345000000.0,
+          "netIncome": 3526000000.0,
+          "grossProfit": 8696000000.0,
+          "operatingIncome": 2331000000.0,
+          "rdExpense": 1687000000.0,
+          "sgaExpense": 725000000.0
         },
         {
-          "quarterEnd": "2026-05-28",
+          "quarterEnd": "2026-04-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852426000127/0001108524-26-000127-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000127/0001108524-26-000127-index.htm",
           "accessionNumber": "0001108524-26-000127",
-          "filingDate": "2026-05-28"
+          "filingDate": "2026-05-28",
+          "form": "10-Q",
+          "totalRevenue": 11133000000.0,
+          "netIncome": 2107000000.0,
+          "grossProfit": 8563000000.0,
+          "operatingIncome": 2347000000.0,
+          "rdExpense": 1627000000.0,
+          "sgaExpense": 740000000.0
         },
         {
-          "quarterEnd": "2025-12-04",
+          "quarterEnd": "2025-10-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852425000238/0001108524-25-000238-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000238/0001108524-25-000238-index.htm",
           "accessionNumber": "0001108524-25-000238",
-          "filingDate": "2025-12-04"
+          "filingDate": "2025-12-04",
+          "form": "10-Q",
+          "totalRevenue": 10259000000.0,
+          "netIncome": 2086000000.0,
+          "grossProfit": 8004000000.0,
+          "operatingIncome": 2188000000.0,
+          "rdExpense": 1433000000.0,
+          "sgaExpense": 667000000.0
         },
         {
-          "quarterEnd": "2025-09-04",
+          "quarterEnd": "2025-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001108524/000110852425000088/0001108524-25-000088-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000088/0001108524-25-000088-index.htm",
           "accessionNumber": "0001108524-25-000088",
-          "filingDate": "2025-09-04"
+          "filingDate": "2025-09-04",
+          "form": "10-Q",
+          "totalRevenue": 10236000000.0,
+          "netIncome": 1887000000.0,
+          "grossProfit": 7994000000.0,
+          "operatingIncome": 2332000000.0,
+          "rdExpense": 1481000000.0,
+          "sgaExpense": 734000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -6150,32 +6309,60 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-27",
+          "quarterEnd": "2026-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552726000031/0001535527-26-000031-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/0001535527-26-000031-index.htm",
           "accessionNumber": "0001535527-26-000031",
-          "filingDate": "2026-08-27"
+          "filingDate": "2026-08-27",
+          "form": "10-Q",
+          "totalRevenue": 1470897000.0,
+          "netIncome": 5306000.0,
+          "grossProfit": 1096895000.0,
+          "operatingIncome": -33232000.0,
+          "rdExpense": 444200000.0,
+          "sgaExpense": 175954000.0
         },
         {
-          "quarterEnd": "2026-06-04",
+          "quarterEnd": "2026-04-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552726000025/0001535527-26-000025-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000025/0001535527-26-000025-index.htm",
           "accessionNumber": "0001535527-26-000025",
-          "filingDate": "2026-06-04"
+          "filingDate": "2026-06-04",
+          "form": "10-Q",
+          "totalRevenue": 1385629000.0,
+          "netIncome": 27774000.0,
+          "grossProfit": 1043352000.0,
+          "operatingIncome": -30600000.0,
+          "rdExpense": 408326000.0,
+          "sgaExpense": 176952000.0
         },
         {
-          "quarterEnd": "2025-12-03",
+          "quarterEnd": "2025-10-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552725000033/0001535527-25-000033-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552725000033/0001535527-25-000033-index.htm",
           "accessionNumber": "0001535527-25-000033",
-          "filingDate": "2025-12-03"
+          "filingDate": "2025-12-03",
+          "form": "10-Q",
+          "totalRevenue": 1234244000.0,
+          "netIncome": -33997000.0,
+          "grossProfit": 926439000.0,
+          "operatingIncome": -69443000.0,
+          "rdExpense": 347564000.0,
+          "sgaExpense": 167286000.0
         },
         {
-          "quarterEnd": "2025-08-28",
+          "quarterEnd": "2025-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552725000025/0001535527-25-000025-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552725000025/0001535527-25-000025-index.htm",
           "accessionNumber": "0001535527-25-000025",
-          "filingDate": "2025-08-28"
+          "filingDate": "2025-08-28",
+          "form": "10-Q",
+          "totalRevenue": 1168952000.0,
+          "netIncome": -70153000.0,
+          "grossProfit": 860401000.0,
+          "operatingIncome": -105457000.0,
+          "rdExpense": 342533000.0,
+          "sgaExpense": 176745000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -7292,32 +7479,60 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-27",
+          "quarterEnd": "2026-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721726000051/0000047217-26-000051-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000051/0000047217-26-000051-index.htm",
           "accessionNumber": "0000047217-26-000051",
-          "filingDate": "2026-08-27"
+          "filingDate": "2026-08-27",
+          "form": "10-Q",
+          "totalRevenue": 15677000000.0,
+          "netIncome": 661000000.0,
+          "grossProfit": 2945000000.0,
+          "operatingIncome": 892000000.0,
+          "rdExpense": 389000000.0,
+          "sgaExpense": 1537000000.0
         },
         {
-          "quarterEnd": "2026-05-28",
+          "quarterEnd": "2026-04-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721726000029/0000047217-26-000029-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000029/0000047217-26-000029-index.htm",
           "accessionNumber": "0000047217-26-000029",
-          "filingDate": "2026-05-28"
+          "filingDate": "2026-05-28",
+          "form": "10-Q",
+          "totalRevenue": 14408000000.0,
+          "netIncome": 450000000.0,
+          "grossProfit": 3016000000.0,
+          "operatingIncome": 612000000.0,
+          "rdExpense": 432000000.0,
+          "sgaExpense": 1514000000.0
         },
         {
-          "quarterEnd": "2026-02-25",
+          "quarterEnd": "2026-01-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721726000011/0000047217-26-000011-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000011/0000047217-26-000011-index.htm",
           "accessionNumber": "0000047217-26-000011",
-          "filingDate": "2026-02-25"
+          "filingDate": "2026-02-25",
+          "form": "10-Q",
+          "totalRevenue": 14438000000.0,
+          "netIncome": 545000000.0,
+          "grossProfit": 2835000000.0,
+          "operatingIncome": 759000000.0,
+          "rdExpense": 392000000.0,
+          "sgaExpense": 1504000000.0
         },
         {
-          "quarterEnd": "2025-08-28",
+          "quarterEnd": "2025-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000047217/000004721725000063/0000047217-25-000063-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000063/0000047217-25-000063-index.htm",
           "accessionNumber": "0000047217-25-000063",
-          "filingDate": "2025-08-28"
+          "filingDate": "2025-08-28",
+          "form": "10-Q",
+          "totalRevenue": 13932000000.0,
+          "netIncome": 763000000.0,
+          "grossProfit": 2851000000.0,
+          "operatingIncome": 716000000.0,
+          "rdExpense": 406000000.0,
+          "sgaExpense": 1452000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -8432,32 +8647,60 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-27",
+          "quarterEnd": "2026-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013426000069/0001660134-26-000069-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013426000069/0001660134-26-000069-index.htm",
           "accessionNumber": "0001660134-26-000069",
-          "filingDate": "2026-08-27"
+          "filingDate": "2026-08-27",
+          "form": "10-Q",
+          "totalRevenue": 805000000.0,
+          "netIncome": 116000000.0,
+          "grossProfit": 641000000.0,
+          "operatingIncome": 107000000.0,
+          "rdExpense": 163000000.0,
+          "sgaExpense": 98000000.0
         },
         {
-          "quarterEnd": "2026-05-29",
+          "quarterEnd": "2026-04-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013426000051/0001660134-26-000051-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013426000051/0001660134-26-000051-index.htm",
           "accessionNumber": "0001660134-26-000051",
-          "filingDate": "2026-05-29"
+          "filingDate": "2026-05-29",
+          "form": "10-Q",
+          "totalRevenue": 765000000.0,
+          "netIncome": 74000000.0,
+          "grossProfit": 595000000.0,
+          "operatingIncome": 56000000.0,
+          "rdExpense": 163000000.0,
+          "sgaExpense": 98000000.0
         },
         {
-          "quarterEnd": "2025-12-03",
+          "quarterEnd": "2025-10-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013425000171/0001660134-25-000171-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013425000171/0001660134-25-000171-index.htm",
           "accessionNumber": "0001660134-25-000171",
-          "filingDate": "2025-12-03"
+          "filingDate": "2025-12-03",
+          "form": "10-Q",
+          "totalRevenue": 742000000.0,
+          "netIncome": 43000000.0,
+          "grossProfit": 572000000.0,
+          "operatingIncome": 23000000.0,
+          "rdExpense": 160000000.0,
+          "sgaExpense": 118000000.0
         },
         {
-          "quarterEnd": "2025-08-27",
+          "quarterEnd": "2025-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001660134/000166013425000157/0001660134-25-000157-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013425000157/0001660134-25-000157-index.htm",
           "accessionNumber": "0001660134-25-000157",
-          "filingDate": "2025-08-27"
+          "filingDate": "2025-08-27",
+          "form": "10-Q",
+          "totalRevenue": 728000000.0,
+          "netIncome": 67000000.0,
+          "grossProfit": 560000000.0,
+          "operatingIncome": 41000000.0,
+          "rdExpense": 160000000.0,
+          "sgaExpense": 113000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -9574,32 +9817,52 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-09-04",
+          "quarterEnd": "2026-08-01",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884026000047/0001018840-26-000047-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884026000047/0001018840-26-000047-index.htm",
           "accessionNumber": "0001018840-26-000047",
-          "filingDate": "2026-09-04"
+          "filingDate": "2026-09-04",
+          "form": "10-Q",
+          "totalRevenue": 1266689000.0,
+          "netIncome": 183720000.0,
+          "operatingIncome": 252700000.0,
+          "sgaExpense": 204784000.0
         },
         {
-          "quarterEnd": "2026-06-05",
+          "quarterEnd": "2026-05-02",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884026000036/0001018840-26-000036-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884026000036/0001018840-26-000036-index.htm",
           "accessionNumber": "0001018840-26-000036",
-          "filingDate": "2026-06-05"
+          "filingDate": "2026-06-05",
+          "form": "10-Q",
+          "totalRevenue": 1113821000.0,
+          "netIncome": 67134000.0,
+          "operatingIncome": 88797000.0,
+          "sgaExpense": 182754000.0
         },
         {
-          "quarterEnd": "2025-12-05",
+          "quarterEnd": "2025-11-01",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884025000048/0001018840-25-000048-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884025000048/0001018840-25-000048-index.htm",
           "accessionNumber": "0001018840-25-000048",
-          "filingDate": "2025-12-05"
+          "filingDate": "2025-12-05",
+          "form": "10-Q",
+          "totalRevenue": 1290619000.0,
+          "netIncome": 112995000.0,
+          "operatingIncome": 155021000.0,
+          "sgaExpense": 193402000.0
         },
         {
-          "quarterEnd": "2025-09-05",
+          "quarterEnd": "2025-08-02",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0001018840/000101884025000045/0001018840-25-000045-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884025000045/0001018840-25-000045-index.htm",
           "accessionNumber": "0001018840-25-000045",
-          "filingDate": "2025-09-05"
+          "filingDate": "2025-09-05",
+          "form": "10-Q",
+          "totalRevenue": 1208560000.0,
+          "netIncome": 141383000.0,
+          "operatingIncome": 206658000.0,
+          "sgaExpense": 175325000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
@@ -10715,32 +10978,56 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-08-26",
+          "quarterEnd": "2026-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141926000080/0000091419-26-000080-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141926000080/0000091419-26-000080-index.htm",
           "accessionNumber": "0000091419-26-000080",
-          "filingDate": "2026-08-26"
+          "filingDate": "2026-08-26",
+          "form": "10-Q",
+          "totalRevenue": 2219300000.0,
+          "netIncome": 324300000.0,
+          "grossProfit": 979600000.0,
+          "operatingIncome": 511600000.0,
+          "sgaExpense": 410500000.0
         },
         {
-          "quarterEnd": "2026-02-26",
+          "quarterEnd": "2026-01-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141926000016/0000091419-26-000016-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141926000016/0000091419-26-000016-index.htm",
           "accessionNumber": "0000091419-26-000016",
-          "filingDate": "2026-02-26"
+          "filingDate": "2026-02-26",
+          "form": "10-Q",
+          "totalRevenue": 2339400000.0,
+          "netIncome": -724200000.0,
+          "grossProfit": 827800000.0,
+          "operatingIncome": -548400000.0,
+          "sgaExpense": 363200000.0
         },
         {
-          "quarterEnd": "2025-11-25",
+          "quarterEnd": "2025-10-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141925000106/0000091419-25-000106-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141925000106/0000091419-25-000106-index.htm",
           "accessionNumber": "0000091419-25-000106",
-          "filingDate": "2025-11-25"
+          "filingDate": "2025-11-25",
+          "form": "10-Q",
+          "totalRevenue": 2330100000.0,
+          "netIncome": 241300000.0,
+          "grossProfit": 869900000.0,
+          "operatingIncome": 418500000.0,
+          "sgaExpense": 398200000.0
         },
         {
-          "quarterEnd": "2025-08-27",
+          "quarterEnd": "2025-07-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/0000091419/000009141925000071/0000091419-25-000071-index.htm",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141925000071/0000091419-25-000071-index.htm",
           "accessionNumber": "0000091419-25-000071",
-          "filingDate": "2025-08-27"
+          "filingDate": "2025-08-27",
+          "form": "10-Q",
+          "totalRevenue": 2113300000.0,
+          "netIncome": -43900000.0,
+          "grossProfit": 474700000.0,
+          "operatingIncome": 45600000.0,
+          "sgaExpense": 377400000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"

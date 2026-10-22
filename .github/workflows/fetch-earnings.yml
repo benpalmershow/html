@@ -21,10 +21,13 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install yfinance pandas lxml
+        run: pip install yfinance pandas lxml requests
 
       - name: Run earnings fetcher
         run: python3 scripts/fetch_earnings.py
+
+      - name: Run SEC quarterly fetcher
+        run: python3 scripts/fetch_sec_quarterly.py
 
       - name: Validate JSON
         run: python3 -m json.tool json/earnings.json > /dev/null

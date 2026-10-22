@@ -546,6 +546,7 @@ function renderHormuz(indicator) {
 
         const price = indicator.latestPrice != null ? `$${indicator.latestPrice.toFixed ? indicator.latestPrice.toFixed(2) : indicator.latestPrice}` : '\u2014';
         let dayChange = '';
+        let priceContext = '';
         if (indicator.latestPrice != null && indicator.previousClose != null && indicator.previousClose !== 0) {
             const pct = ((indicator.latestPrice - indicator.previousClose) / Math.abs(indicator.previousClose)) * 100;
             const sign = pct >= 0 ? '+' : '';
@@ -553,7 +554,27 @@ function renderHormuz(indicator) {
             const arrow = pct >= 0 ? '↑' : '↓';
             dayChange = `<span class="earnings-day-change ${cls}" title="Change vs previous close">${arrow} ${sign}${pct.toFixed(1)}%</span>`;
         }
-        latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label">Price:</span><span class="month-value earnings-price-value">${price}${dayChange}</span></div>`);
+
+        // Price context badge based on 52-week range
+        if (indicator.latestPrice != null && indicator.fiftyTwoWeekLow != null && indicator.fiftyTwoWeekHigh != null) {
+            const range = indicator.fiftyTwoWeekHigh - indicator.fiftyTwoWeekLow;
+            const position = range > 0 ? ((indicator.latestPrice - indicator.fiftyTwoWeekLow) / range) * 100 : 50;
+            let contextLabel = '';
+            let contextClass = '';
+            if (position >= 80) {
+                contextLabel = 'Near 52W High';
+                contextClass = 'price-context-high';
+            } else if (position <= 20) {
+                contextLabel = 'Near 52W Low';
+                contextClass = 'price-context-low';
+            } else {
+                contextLabel = 'Mid-Range';
+                contextClass = 'price-context-mid';
+            }
+            priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;
+        }
+
+        latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label">Price:</span><span class="month-value earnings-price-value">${price}${dayChange}${priceContext}</span></div>`);
 
         if (quarterly.length > 0) {
             const latestQ = quarterly[0];
@@ -618,7 +639,8 @@ function renderHormuz(indicator) {
         if (quarterly.length > 0) {
             hasHistory = true;
             const tableId = `earnings-qtr-${String(indicator.ticker || indicator.name || 'x').replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
-            const quarterRows = quarterly.map(q => {
+
+            const quarterRows = quarterly.map((q, index) => {
                 const dateLabel = formatQuarterLabel(q.quarterEnd) || q.quarterEnd || '';
                 const filingForm = q.form || '10-Q';
                 const isEvent = filingForm !== '10-Q' && filingForm !== '10-K';
@@ -645,7 +667,11 @@ function renderHormuz(indicator) {
                     ? `<a href="${filingUrl}" target="_blank" rel="noopener noreferrer" class="sec-filing-link" title="${rowTitle}">${dateLabel} <span class="form-badge">${filingForm}</span></a>`
                     : `${dateLabel} <span class="form-badge">${filingForm}</span>`;
 
-                return `<tr>
+                // Highlight the most recent quarter
+                const isLatest = index === 0;
+                const rowClass = isLatest ? 'quarterly-latest' : '';
+
+                return `<tr class="${rowClass}">
                     <th scope="row">${filingLink}</th>
                     <td title="Total Revenue">${formatAmount(q.totalRevenue)}</td>
                     <td class="${netIncomeClass}" title="Net Income">${formatAmount(q.netIncome)}</td>
@@ -692,50 +718,70 @@ function renderHormuz(indicator) {
             historyDataHtml += `<div class="earnings-subheading">EPS Surprise History</div><div class="earnings-surprise-list">${surpriseRows}</div>`;
         }
 
-        // 3. Key Fundamentals (Replaces the 7 slop accordions with concise stats)
-        const stats = [];
+        // 3. Key Fundamentals (Grouped by category)
+        const valuationStats = [];
+        const profitabilityStats = [];
+        const cashFlowStats = [];
+        const otherStats = [];
+
+        // Valuation metrics
         if (indicator.marketCap) {
-            stats.push({ label: 'Market Cap', value: formatAmount(indicator.marketCap), tip: 'Share price times shares outstanding' });
+            valuationStats.push({ label: 'Mkt Cap', value: formatAmount(indicator.marketCap), tip: 'Share price times shares outstanding' });
         }
-        if (indicator.fiftyTwoWeekLow != null && indicator.fiftyTwoWeekHigh != null) {
-            stats.push({ label: '52-Wk Range', value: `$${indicator.fiftyTwoWeekLow.toFixed(0)} – $${indicator.fiftyTwoWeekHigh.toFixed(0)}`, tip: '52-week low and high stock price' });
+        if (indicator.forwardPE != null) {
+            valuationStats.push({ label: 'Fwd P/E', value: indicator.forwardPE.toFixed(1), tip: 'Forward price-to-earnings ratio' });
+        }
+        if (indicator.targetMeanPrice != null) {
+            const rec = indicator.recommendationKey ? ` ${indicator.recommendationKey.toUpperCase()}` : '';
+            valuationStats.push({ label: 'Target', value: `$${indicator.targetMeanPrice.toFixed(0)}${rec}`, tip: 'Consensus analyst price target and recommendation' });
+        }
+
+        // Profitability metrics
+        if (indicator.profitMargins != null) {
+            profitabilityStats.push({ label: 'Profit Marg', value: `${(indicator.profitMargins * 100).toFixed(1)}%`, tip: 'Net profit divided by revenue' });
+        }
+        if (indicator.grossMargins != null) {
+            profitabilityStats.push({ label: 'Gross Marg', value: `${(indicator.grossMargins * 100).toFixed(1)}%`, tip: 'Gross profit divided by revenue' });
         }
         if (indicator.revenueGrowth != null) {
             const sign = indicator.revenueGrowth >= 0 ? '+' : '';
-            stats.push({ label: 'YoY Rev Growth', value: `${sign}${(indicator.revenueGrowth * 100).toFixed(1)}%`, tip: 'Year-over-year revenue growth rate' });
-        }
-        if (indicator.profitMargins != null) {
-            stats.push({ label: 'Profit Margin', value: `${(indicator.profitMargins * 100).toFixed(1)}%`, tip: 'Net profit divided by revenue' });
-        }
-        if (indicator.grossMargins != null) {
-            stats.push({ label: 'Gross Margin', value: `${(indicator.grossMargins * 100).toFixed(1)}%`, tip: 'Gross profit divided by revenue' });
-        }
-        if (indicator.freeCashflow != null) {
-            stats.push({ label: 'Free Cash Flow', value: formatAmount(indicator.freeCashflow), tip: 'Operating cash flow minus capital expenditures' });
-        }
-        if (indicator.totalCash != null && indicator.totalDebt != null) {
-            stats.push({ label: 'Cash / Debt', value: `${formatAmount(indicator.totalCash)} / ${formatAmount(indicator.totalDebt)}`, tip: 'Total cash vs total debt on balance sheet' });
-        }
-        if (indicator.targetMeanPrice != null) {
-            const rec = indicator.recommendationKey ? ` (${indicator.recommendationKey.toUpperCase()})` : '';
-            stats.push({ label: 'Analyst Target', value: `$${indicator.targetMeanPrice.toFixed(0)}${rec}`, tip: 'Consensus analyst price target and recommendation' });
-        }
-        if (indicator.forwardPE != null) {
-            stats.push({ label: 'Forward P/E', value: indicator.forwardPE.toFixed(1), tip: 'Forward price-to-earnings ratio' });
-        }
-        if (indicator.dividendYield != null && indicator.dividendYield > 0) {
-            stats.push({ label: 'Div Yield', value: `${indicator.dividendYield.toFixed(2)}%`, tip: 'Annual dividend yield' });
+            const growthClass = indicator.revenueGrowth >= 0 ? 'earnings-positive' : 'earnings-negative';
+            profitabilityStats.push({ label: 'YoY Growth', value: `<span class="${growthClass}">${sign}${(indicator.revenueGrowth * 100).toFixed(1)}%</span>`, tip: 'Year-over-year revenue growth rate' });
         }
 
-        if (stats.length > 0) {
-            hasHistory = true;
+        // Cash Flow metrics
+        if (indicator.freeCashflow != null) {
+            cashFlowStats.push({ label: 'FCF', value: formatAmount(indicator.freeCashflow), tip: 'Operating cash flow minus capital expenditures' });
+        }
+        if (indicator.totalCash != null && indicator.totalDebt != null) {
+            cashFlowStats.push({ label: 'Cash/Debt', value: `${formatAmount(indicator.totalCash)} / ${formatAmount(indicator.totalDebt)}`, tip: 'Total cash vs total debt on balance sheet' });
+        }
+
+        // Other metrics
+        if (indicator.fiftyTwoWeekLow != null && indicator.fiftyTwoWeekHigh != null) {
+            otherStats.push({ label: '52W Range', value: `$${indicator.fiftyTwoWeekLow.toFixed(0)}–$${indicator.fiftyTwoWeekHigh.toFixed(0)}`, tip: '52-week low and high stock price' });
+        }
+        if (indicator.dividendYield != null && indicator.dividendYield > 0) {
+            otherStats.push({ label: 'Div Yield', value: `${indicator.dividendYield.toFixed(2)}%`, tip: 'Annual dividend yield' });
+        }
+
+        const renderStatsGroup = (stats, groupName) => {
+            if (stats.length === 0) return '';
             const statsHtml = stats.map(s => `
                 <div class="stat-item" title="${s.tip}">
                     <span class="stat-label">${s.label}</span>
                     <span class="stat-value">${s.value}</span>
                 </div>
             `).join('');
-            historyDataHtml += `<div class="earnings-subheading">Key Fundamentals</div><div class="earnings-stats-grid">${statsHtml}</div>`;
+            return `<div class="earnings-subheading">${groupName}</div><div class="earnings-stats-grid">${statsHtml}</div>`;
+        };
+
+        if (valuationStats.length > 0 || profitabilityStats.length > 0 || cashFlowStats.length > 0 || otherStats.length > 0) {
+            hasHistory = true;
+            historyDataHtml += renderStatsGroup(valuationStats, 'Valuation');
+            historyDataHtml += renderStatsGroup(profitabilityStats, 'Profitability');
+            historyDataHtml += renderStatsGroup(cashFlowStats, 'Cash Flow');
+            historyDataHtml += renderStatsGroup(otherStats, 'Other');
         }
 
         return { latestDataHtml, historyDataHtml, hasHistory };
@@ -990,7 +1036,31 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     const whyHtml = explanation && indicator.category !== 'Earnings'
         ? `<div class="indicator-explanation-header">Why this matters</div><div class="indicator-explanation-body">${explanation}</div>`
         : '';
-    const explanationHtml = `<div class="indicator-explanation">${whyHtml}<div class="indicator-explanation-header">Source</div><div class="indicator-explanation-body">${sourceLinks}</div></div>`;
+
+    // For earnings cards, combine Source with Quick Links
+    let sourceSection = '';
+    if (indicator.category === 'Earnings') {
+        const quickActions = [];
+        if (indicator.ticker) {
+            quickActions.push(`<a href="https://www.perplexity.ai/finance/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Perplexity</a>`);
+        }
+        if (indicator.url) {
+            quickActions.push(`<a href="${indicator.url}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Yahoo</a>`);
+        }
+        if (indicator.ticker) {
+            quickActions.push(`<a href="https://www.google.com/finance/quote/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Google</a>`);
+        }
+        if (indicator.quarterlyFinancials && indicator.quarterlyFinancials.length > 0 && indicator.quarterlyFinancials[0].filingUrl) {
+            quickActions.push(`<a href="${indicator.quarterlyFinancials[0].filingUrl}" target="_blank" rel="noopener noreferrer" class="quick-action-link">SEC</a>`);
+        }
+
+        const actionsHtml = quickActions.length > 0 ? quickActions.join('<span class="quick-action-sep">·</span>') : sourceLinks;
+        sourceSection = `<div class="indicator-explanation-header">Source & Links</div><div class="indicator-explanation-body">${actionsHtml}</div>`;
+    } else {
+        sourceSection = `<div class="indicator-explanation-header">Source</div><div class="indicator-explanation-body">${sourceLinks}</div>`;
+    }
+
+    const explanationHtml = `<div class="indicator-explanation">${whyHtml}${sourceSection}</div>`;
 
     const updatedHtml = indicator.lastUpdated
         ? `Updated <span class="indicator-date">${formatUpdatedDate(indicator.lastUpdated)}</span>`
@@ -1007,11 +1077,11 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const categoryFilterBtn = buildCategoryFilterButton(indicator.category);
 
-    // For earnings cards, hyperlink the clean company name to Perplexity Finance
+    // For earnings cards, show company name and ticker (no hyperlink)
     let displayName = indicator.name;
     if (indicator.category === 'Earnings' && indicator.ticker) {
         const companyName = indicator.company ? cleanCompanyName(indicator.company) : indicator.name;
-        displayName = `<a href="https://www.perplexity.ai/finance/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="indicator-name-link">${companyName}</a><span class="earnings-ticker">${indicator.ticker}</span>`;
+        displayName = `${companyName}<span class="earnings-ticker">${indicator.ticker}</span>`;
     }
 
     const badges = [
@@ -1020,7 +1090,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
         indicator.result ? '<span class="game-final-badge">Final</span>' : ''
     ].filter(Boolean).join('');
 
-    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${displayName}${badges}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${explanationHtml}</div></div>`;
+    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${displayName}${badges}</div><div class="indicator-actions">${categoryFilterBtn}<button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${explanationHtml}</div></div>`;
 }
 
 /* Category icon button on each card: shows the card's category (same lucide

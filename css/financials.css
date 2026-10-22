@@ -132,6 +132,9 @@
 
 .indicator.expanded .data-rows-container { max-height: 1200px; margin-top: 0; }
 
+/* Hide sparkline when card is expanded to avoid clutter */
+.indicator.expanded .sparkline-container { display: none; }
+
 .latest-data-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; margin-bottom: 0; min-width: 0; overflow: visible; }
 
 .latest-data-row, .last-data-row { background: rgba(var(--border-color-rgb), 0.28); border-radius: 4px; padding: 5px 8px; margin: 3px 0; }
@@ -181,6 +184,37 @@
 
 .earnings-day-change { font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.12); }
 
+/* Price context badge */
+.price-context-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.price-context-high {
+    background: rgba(34, 197, 94, 0.15);
+    color: #16a34a;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.price-context-low {
+    background: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.price-context-mid {
+    background: rgba(209, 213, 219, 0.15);
+    color: #6b7280;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
 /* Compact layout for tighter grids (e.g., Latest Updates view) */
 @media (max-width: 900px) {
     .earnings-price-row { padding: 5px 6px; }
@@ -195,7 +229,14 @@
 
 /* Enhanced EPS row with better visual emphasis */
 .earnings-eps-row { background: rgba(var(--border-color-rgb), 0.25); padding: 5px 8px; margin: 3px 0; }
-.earnings-actual { font-weight: 800; font-size: 0.95rem; }
+.earnings-actual { font-weight: 800; font-size: 0.95rem; white-space: nowrap; }
+.earnings-vs { white-space: nowrap; }
+.earnings-surprise-pill { white-space: nowrap; }
+
+/* Company row with sector badge */
+.earnings-company-row { background: rgba(var(--border-color-rgb), 0.2); padding: 5px 8px; margin: 3px 0; }
+.earnings-company-name { font-weight: 600; font-size: 0.85rem; }
+.earnings-sector { display: inline-block; margin-left: 8px; padding: 1px 5px; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 4px; background: rgba(var(--logo-teal-rgb), 0.15); color: var(--logo-teal); text-transform: uppercase; }
 
 .earnings-surprise-pill { display: inline-flex; align-items: center; gap: 2px; padding: 2px 6px; font-size: 0.7rem; font-weight: 700; border-radius: 4px; font-variant-numeric: tabular-nums; margin-left: 6px; }
 
@@ -306,11 +347,77 @@
     font-weight: 700;
 }
 
+/* Trend indicators in quarterly table */
+.trend-indicator {
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-left: 4px;
+    opacity: 0.8;
+}
+
+.trend-positive {
+    color: #16a34a;
+}
+
+.trend-negative {
+    color: #dc2626;
+}
+
 .quarterly-section .quarterly-table tbody tr:last-child th,
 .quarterly-section .quarterly-table tbody tr:last-child td { border-bottom: none; }
 
 .quarterly-section .quarterly-table tbody tr:hover th,
 .quarterly-section .quarterly-table tbody tr:hover td { background-color: rgba(var(--logo-teal-rgb), 0.05); }
+
+/* Highlight the most recent quarter */
+.quarterly-section .quarterly-table tbody tr.quarterly-latest {
+    background-color: rgba(var(--logo-teal-rgb), 0.08);
+    font-weight: 600;
+}
+
+.quarterly-section .quarterly-table tbody tr.quarterly-latest th,
+.quarterly-section .quarterly-table tbody tr.quarterly-latest td {
+    color: var(--text-primary);
+}
+
+.latest-badge {
+    display: inline-block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--logo-teal);
+    color: white;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-left: 6px;
+    white-space: nowrap;
+}
+
+/* Quick action links (now in explanation section) */
+.quick-action-link {
+    color: var(--logo-teal);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(var(--logo-teal-rgb), 0.08);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    white-space: nowrap;
+}
+
+.quick-action-link:hover {
+    background: rgba(var(--logo-teal-rgb), 0.15);
+    color: var(--logo-orange);
+}
+
+.quick-action-sep {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    opacity: 0.5;
+    margin: 0 4px;
+}
 
 .sec-filing-link { color: var(--logo-teal); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: color var(--transition-fast); }
 
@@ -342,7 +449,7 @@
 
 .stat-label { color: var(--text-muted); font-size: 0.65rem; font-weight: 500; }
 
-.stat-value { color: var(--text-primary); font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.stat-value { color: var(--text-primary); font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
 
 .earnings-metrics { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: flex-end; }
 

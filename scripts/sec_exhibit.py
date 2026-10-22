@@ -156,6 +156,17 @@ EXCLUDE_WORDS = (
     "noncontrolling",
 )
 
+PRIOR_YEAR_METRICS = (
+    "totalRevenue",
+    "grossProfit",
+    "operatingIncome",
+    "netIncome",
+    "ebitda",
+    "rdExpense",
+    "sgaExpense",
+    "costOfRevenue",
+)
+
 
 def normalize(text: Optional[str]) -> str:
     if not text:
@@ -244,6 +255,205 @@ def rows_from_table(table) -> List[List[str]]:
         if cells:
             rows.append(cells)
     return rows
+
+
+def table_rows_with_positions(table) -> List[List[Dict]]:
+    """Rows of cells that keep their column position.
+
+    Financial tables pad columns with empty spacer cells, so the position of a
+    value cell is what identifies the period it belongs to.
+    """
+    rows: List[List[Dict]] = []
+    for tr in table.xpath(".//tr"):
+        cells: List[Dict] = []
+        column = 0
+        for td in tr.xpath("./td|./th"):
+            try:
+                colspan = int(td.get("colspan") or 1)
+            except (TypeError, ValueError):
+                colspan = 1
+            cells.append(
+                {
+                    "column": column,
+                    "colspan": colspan,
+                    "text": normalize(" ".join(td.itertext())),
+                }
+            )
+            column += colspan
+        if cells:
+            rows.append(cells)
+    return rows
+
+
+def is_data_row(cells: List[Dict]) -> bool:
+    for cell in cells:
+        if cell["column"] == 0:
+            continue
+        text = cell["text"]
+        if parse_number(text) is not None and not YEAR_RE.match(text.strip("()")):
+            return True
+    return False
+
+
+def column_profiles(rows: List[List[Dict]]) -> List[Dict]:
+    """Describe every column of a table by its period label.
+
+    Each profile carries the header text, the year, the month/day and the
+    period kind (quarter, half, nine months, year).
+    """
+    header_rows: List[List[Dict]] = []
+    for cells in rows:
+        if is_data_row(cells):
+            break
+        header_rows.append(cells)
+
+    profiles: List[Dict] = []
+
+    def profile(index: int) -> Dict:
+        while len(profiles) <= index:
+            profiles.append({"text": [], "year": None, "month": None, "day": None, "kind": None})
+        return profiles[index]
+
+    for cells in header_rows:
+        for cell in cells:
+            text = cell["text"]
+            for offset in range(cell["colspan"]):
+                entry = profile(cell["column"] + offset)
+                if text:
+                    entry["text"].append(text)
+
+    for entry in profiles:
+        joined = " ".join(entry["text"])
+        entry["joined"] = joined
+        year_match = re.search(r"\b(19|20)\d{2}\b", joined)
+        if year_match:
+            entry["year"] = int(year_match.group(0))
+        date_match = re.search(r"([A-Za-z]{3,9})\.?\s+(\d{1,2})", joined)
+        if date_match:
+            month = MONTHS.get(date_match.group(1).lower())
+            if month:
+                entry["month"] = month
+                entry["day"] = int(date_match.group(2))
+        lowered = joined.lower()
+        if "three months" in lowered or "13 weeks" in lowered or "thirteen weeks" in lowered or "quarter" in lowered:
+            entry["kind"] = "quarter"
+        elif "six months" in lowered or "26 weeks" in lowered or "twenty-six weeks" in lowered:
+            entry["kind"] = "half"
+        elif "nine months" in lowered or "39 weeks" in lowered or "thirty-nine weeks" in lowered:
+            entry["kind"] = "nine"
+        elif "year" in lowered or "twelve months" in lowered or "52 weeks" in lowered:
+            entry["kind"] = "year"
+
+    return profiles
+
+
+def row_values_by_column(cells: List[Dict]) -> Dict[int, float]:
+    values: Dict[int, float] = {}
+    for cell in cells:
+        if cell["column"] == 0:
+            continue
+        text = cell["text"]
+        value = parse_number(text)
+        if value is None or YEAR_RE.match(text.strip("()")):
+            continue
+        values[cell["column"]] = value
+    return values
+
+
+def row_label(cells: List[Dict]) -> str:
+    for cell in cells:
+        text = cell["text"]
+        if not text or YEAR_RE.match(text.strip("()")):
+            continue
+        if parse_number(text) is not None:
+            continue
+        return text
+    return ""
+
+
+def collect_metric_columns(rows: List[List[Dict]]) -> Dict[str, Dict[int, float]]:
+    """Map every matched metric to its values keyed by column position."""
+    candidates: Dict[str, Tuple[int, int, Dict[int, float]]] = {}
+
+    for position, cells in enumerate(rows):
+        if not is_data_row(cells):
+            continue
+        label = row_label(cells)
+        match = match_metric(label)
+        if not match:
+            continue
+        metric, specificity = match
+        values = row_values_by_column(cells)
+        if not values:
+            continue
+        current = candidates.get(metric)
+        if current is None or (specificity, position) < (current[0], current[1]):
+            candidates[metric] = (specificity, position, values)
+
+    return {metric: entry[2] for metric, entry in candidates.items()}
+
+
+def prior_year_column(profiles: List[Dict], period_end: str) -> Optional[int]:
+    """Column holding the same period one year earlier."""
+    year = int(period_end[:4])
+    month = int(period_end[5:7])
+    day = int(period_end[8:10])
+
+    current = None
+    for index, profile in enumerate(profiles):
+        if profile["month"] == month and profile["day"] == day and profile["year"] == year:
+            current = index
+            break
+    if current is None:
+        for index, profile in enumerate(profiles):
+            if profile["month"] == month and profile["day"] == day and profile["year"]:
+                current = index
+                break
+    if current is None:
+        return None
+
+    kind = profiles[current]["kind"]
+    for index, profile in enumerate(profiles):
+        if index == current:
+            continue
+        if profile["month"] != month or profile["day"] != day:
+            continue
+        if profile["year"] != year - 1:
+            continue
+        if kind and profile["kind"] and profile["kind"] != kind:
+            continue
+        return index
+    return None
+
+
+def extract_prior_year_metrics(
+    table, period_end: str, unit: float, wanted: List[str]
+) -> Dict[str, float]:
+    """Amounts for the same quarter one year earlier, from the release itself."""
+    if table is None or not period_end:
+        return {}
+
+    rows = table_rows_with_positions(table)
+    profiles = column_profiles(rows)
+    if not profiles:
+        return {}
+
+    prior_column = prior_year_column(profiles, period_end)
+    if prior_column is None:
+        return {}
+
+    metrics = collect_metric_columns(rows)
+    result: Dict[str, float] = {}
+    for metric in wanted:
+        values = metrics.get(metric)
+        if not values or prior_column not in values:
+            continue
+        result[metric] = values[prior_column] * unit
+
+    if "grossProfit" not in result and {"totalRevenue", "costOfRevenue"} <= set(result):
+        result["grossProfit"] = result["totalRevenue"] - result["costOfRevenue"]
+
+    return result
 
 
 def rows_from_flat_text(line: str) -> List[Tuple[str, List[float]]]:
@@ -361,9 +571,9 @@ def extract_block_metrics(
     return metrics
 
 
-def collect_blocks(html_text: str) -> List[Tuple[str, List[Tuple[str, List[float]]]]]:
-    """Return [(block header, [(label, values)])] for tables and flat text blocks."""
-    blocks: List[Tuple[str, List[Tuple[str, List[float]]]]] = []
+def collect_blocks(html_text: str) -> List[Tuple[str, List[Tuple[str, List[float]]], object]]:
+    """Return [(block header, [(label, values)], table)] for tables and flat text blocks."""
+    blocks: List[Tuple[str, List[Tuple[str, List[float]]], object]] = []
     if lxml_html is None:
         return blocks
 
@@ -380,7 +590,7 @@ def collect_blocks(html_text: str) -> List[Tuple[str, List[Tuple[str, List[float
         first_data_index = raw_pairs[0][2]
         header_text = " ".join(" ".join(row) for row in rows[:first_data_index])
         header_text = (header_text + " " + pairs[0][0]).strip()
-        blocks.append((header_text, pairs))
+        blocks.append((header_text, pairs, table))
 
     for table in tables:
         table.drop_tree()
@@ -392,7 +602,7 @@ def collect_blocks(html_text: str) -> List[Tuple[str, List[Tuple[str, List[float
             continue
         pairs = rows_from_flat_text(line)
         if pairs:
-            blocks.append((pairs[0][0], pairs))
+            blocks.append((pairs[0][0], pairs, None))
 
     return blocks
 
@@ -422,8 +632,9 @@ def parse_exhibit_991(html_text: str) -> Optional[Dict]:
     document_unit = detect_document_unit(full_text)
     is_earnings_release = any(marker in full_text.lower() for marker in EARNINGS_MARKERS)
 
-    best: Optional[Tuple[int, Dict[str, float], str, List[str], float]] = None
-    for header_text, pairs in collect_blocks(html_text):
+    best: Optional[Tuple[int, Dict[str, float], str, List[str], float, object]] = None
+    block_metrics: List[Tuple[str, Dict[str, float], float]] = []
+    for header_text, pairs, table in collect_blocks(html_text):
         if is_cumulative_only(header_text):
             continue
         metrics = extract_block_metrics(pairs, header_text)
@@ -432,16 +643,25 @@ def parse_exhibit_991(html_text: str) -> Optional[Dict]:
         unit = detect_unit(header_text) or document_unit
         if unit is None:
             continue
+        block_metrics.append((header_text, metrics, unit))
         score = len(metrics)
         if best is None or score > best[0]:
-            best = (score, metrics, header_text, find_period_labels(header_text), unit)
+            best = (score, metrics, header_text, find_period_labels(header_text), unit, table)
 
     if best is None:
         return None
 
-    _, metrics, header_text, period_labels, unit = best
+    _, metrics, header_text, period_labels, unit, table = best
     if "totalRevenue" not in metrics:
         return None
+
+    # Releases often split the income statement and the non-GAAP measures into
+    # separate tables with the same period columns, so borrow any missing
+    # metric from a sibling table that shares the header.
+    for sibling_header, sibling_metrics, sibling_unit in block_metrics:
+        if sibling_header == header_text and sibling_unit == unit:
+            for metric, value in sibling_metrics.items():
+                metrics.setdefault(metric, value)
 
     period_end = None
     match = re.search(
@@ -465,10 +685,14 @@ def parse_exhibit_991(html_text: str) -> Optional[Dict]:
                 break
 
     amounts = {key: value * unit for key, value in metrics.items() if key != "costOfRevenue"}
+    prior_amounts = extract_prior_year_metrics(
+        table, period_end, unit, PRIOR_YEAR_METRICS
+    )
     return {
         "periodEnd": period_end,
         "periodLabel": target_label,
         "amounts": amounts,
+        "priorYearAmounts": prior_amounts,
         "unit": unit,
         "isEarningsRelease": is_earnings_release,
     }

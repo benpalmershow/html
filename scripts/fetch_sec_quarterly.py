@@ -53,6 +53,14 @@ XBRL_METRICS: Dict[str, List[str]] = {
         "SellingGeneralAndAdministrativeExpense",
         "GeneralAndAdministrativeExpense",
     ],
+    # EBITDA is not a standard tag, so it is derived from operating income plus
+    # depreciation and amortization once the quarterly series are built.
+    "depreciationAndAmortization": [
+        "DepreciationDepletionAndAmortization",
+        "DepreciationAmortizationAndAccretionNet",
+        "DepreciationAndAmortization",
+        "DepreciationDepletionAndAmortizationExcludingAmortizationOfDeferredCharges",
+    ],
 }
 
 
@@ -149,12 +157,14 @@ def get_recent_filings(cik: str, filing_type: str = "10-Q", count: int = 4) -> L
         forms = filings.get("form", [])
         report_dates = filings.get("reportDate", [])
         items_list = filings.get("items", [])
+        acceptance_times = filings.get("acceptanceDateTime", [])
 
         # Filter for the requested filing type
         matches = []
         for i, form in enumerate(forms):
             if form != filing_type:
                 continue
+            accepted = acceptance_times[i] if i < len(acceptance_times) else ""
             matches.append(
                 {
                     "accessionNumber": filings["accessionNumber"][i],
@@ -162,6 +172,11 @@ def get_recent_filings(cik: str, filing_type: str = "10-Q", count: int = 4) -> L
                     "reportDate": report_dates[i] if i < len(report_dates) else "",
                     "form": form,
                     "items": items_list[i] if i < len(items_list) else "",
+                    # EDGAR stamps the filing date by business day, so a filing
+                    # accepted after hours carries the previous calendar day in
+                    # UTC. The acceptance timestamp is when it went public.
+                    "acceptedDate": accepted[:10] if accepted else "",
+                    "acceptedDateTime": accepted,
                 }
             )
 
@@ -331,6 +346,15 @@ def discrete_quarter_amounts(facts: Dict) -> Dict[str, Dict[str, float]]:
         for end, value in assigned.items():
             amounts.setdefault(end, {})[metric] = value
 
+    # EBITDA = operating income + depreciation and amortization
+    for end, metrics in amounts.items():
+        operating = metrics.get("operatingIncome")
+        depreciation = metrics.get("depreciationAndAmortization")
+        if operating is None or depreciation is None:
+            continue
+        metrics["ebitda"] = operating + depreciation
+        metrics.pop("depreciationAndAmortization", None)
+
     return amounts
 
 
@@ -365,6 +389,19 @@ def resolve_period_end(
         return base.isoformat()
 
     return None
+
+
+def prior_year_period_end(period_end: str) -> Optional[str]:
+    """The same quarter one year earlier."""
+    try:
+        parsed = date.fromisoformat(period_end)
+    except ValueError:
+        return None
+    try:
+        return parsed.replace(year=parsed.year - 1).isoformat()
+    except ValueError:
+        # February 29 has no prior-year equivalent
+        return parsed.replace(year=parsed.year - 1, day=28).isoformat()
 
 
 def fetch_8k_quarter(
@@ -418,6 +455,15 @@ def fetch_8k_quarter(
         entry["quarterEnd"] = period_end
         entry["exhibitUrl"] = get_document_url(cik, filing["accessionNumber"], document)
         entry.update(amounts)
+
+        # The release usually prints the prior-year quarter next to the current
+        # one, which gives a year-over-year base for a quarter whose 10-Q has
+        # not been filed yet.
+        prior_amounts = exhibit.get("priorYearAmounts") or {}
+        prior_period = prior_year_period_end(period_end)
+        if prior_amounts and prior_period:
+            entry["priorYear"] = {"quarterEnd": prior_period, **prior_amounts}
+
         logger.info(
             f"  CIK {cik}: 8-K {filing['accessionNumber']} covers {period_end} "
             f"(revenue ${amounts['totalRevenue'] / 1e9:.2f}B)"
@@ -438,6 +484,7 @@ def build_filing_entry(cik: str, filing: Dict) -> Dict:
         "filingUrl": get_filing_url(cik, filing["accessionNumber"]),
         "accessionNumber": filing["accessionNumber"],
         "filingDate": filing["filingDate"],
+        "acceptedDate": filing.get("acceptedDate", ""),
         "form": filing.get("form", ""),
     }
 

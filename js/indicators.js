@@ -535,21 +535,36 @@ function renderHormuz(indicator) {
             return `Q${quarterNum} '${yearShort}`;
         };
 
-        // --- Card Front: Most recent, most relevant data ---
+        const quarterLabelForReport = (entry) => {
+            if (!entry) return '';
+            const match = quarterly.find(q => q.filingDate === entry.reportedDate || q.acceptedDate === entry.reportedDate);
+            return match ? formatQuarterLabel(match.quarterEnd) : '';
+        };
+
+        // --- Card Front: who / when / print / beat ---
         const latestItems = [];
 
-        // Row 1: Stock Price & P/E
+        if (indicator.nextEarningsDate) {
+            const nextDate = new Date(indicator.nextEarningsDate + 'T00:00:00Z');
+            const startOfToday = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
+            if (!Number.isNaN(nextDate.getTime()) && nextDate.getTime() >= startOfToday) {
+                const nextLabel = nextDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                latestItems.push(`<div class="latest-data-row"><span class="month-label">Next:</span><span class="month-value">${nextLabel}</span></div>`);
+            }
+        }
+
         const price = indicator.latestPrice != null ? `$${indicator.latestPrice.toFixed ? indicator.latestPrice.toFixed(2) : indicator.latestPrice}` : '\u2014';
         const peValue = indicator.trailingPE ?? indicator.forwardPE;
         const pePill = peValue != null ? `<span class="earnings-pill" title="P/E Ratio">P/E ${peValue.toFixed(1)}</span>` : '';
-        latestItems.push(`<div class="latest-data-row"><span class="month-label">Price:</span><span class="month-value">${price}${pePill ? ` ${pePill}` : ''}</span></div>`);
-
-        // Row 2: Market Cap
-        if (indicator.marketCap) {
-            latestItems.push(`<div class="latest-data-row"><span class="month-label">Market Cap:</span><span class="month-value">${formatAmount(indicator.marketCap)}</span></div>`);
+        let dayChange = '';
+        if (indicator.latestPrice != null && indicator.previousClose != null && indicator.previousClose !== 0) {
+            const pct = ((indicator.latestPrice - indicator.previousClose) / Math.abs(indicator.previousClose)) * 100;
+            const sign = pct >= 0 ? '+' : '';
+            const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
+            dayChange = `<span class="earnings-day-change ${cls}" title="Change vs previous close">${sign}${pct.toFixed(1)}%</span>`;
         }
+        latestItems.push(`<div class="latest-data-row"><span class="month-label">Price:</span><span class="month-value">${price}${dayChange}${pePill ? ` ${pePill}` : ''}</span></div>`);
 
-        // Row 3: Latest Reported Quarter (from SEC filings)
         if (quarterly.length > 0) {
             const latestQ = quarterly[0];
             const qLabel = formatQuarterLabel(latestQ.quarterEnd) || 'Latest';
@@ -557,26 +572,30 @@ function renderHormuz(indicator) {
             const filingUrl = latestQ.exhibitUrl || latestQ.filingUrl;
             const rev = latestQ.totalRevenue != null ? formatAmount(latestQ.totalRevenue) : null;
             const net = latestQ.netIncome != null ? formatAmount(latestQ.netIncome) : null;
-            const op = latestQ.operatingIncome != null ? formatAmount(latestQ.operatingIncome) : null;
             const netClass = latestQ.netIncome != null ? (latestQ.netIncome >= 0 ? 'earnings-positive' : 'earnings-negative') : '';
 
             const qBadge = filingUrl
                 ? `<a href="${filingUrl}" target="_blank" rel="noopener noreferrer" class="sec-filing-tag" title="View official SEC ${form} filing">${qLabel} (${form})</a>`
                 : `${qLabel} (${form})`;
 
-            if (rev) {
-                latestItems.push(`<div class="latest-data-row"><span class="month-label">${qBadge}:</span><span class="month-value">${rev}</span></div>`);
+            const printParts = [];
+            if (rev) printParts.push(`<span title="Total Revenue">${rev}</span>`);
+            if (net) printParts.push(`<span class="${netClass}" title="Net Income">${net}</span>`);
+            if (printParts.length) {
+                latestItems.push(`<div class="latest-data-row"><span class="month-label">${qBadge}:</span><span class="month-value">${printParts.join('<span class="earnings-sep"> · </span>')}</span></div>`);
             }
         }
 
-        // Row 4: EPS Beat/Miss or Revenue Growth
         const reportedRecent = recent.filter(entry => entry.actualEPS != null && entry.surprisePercent != null && !Number.isNaN(parseFloat(entry.surprisePercent)));
         const latestBeat = reportedRecent[0];
         if (latestBeat) {
             const surprise = parseFloat(latestBeat.surprisePercent);
             const sign = surprise >= 0 ? '+' : '';
             const surpriseClass = surprise >= 0 ? 'surprise-positive' : 'surprise-negative';
-            latestItems.push(`<div class="latest-data-row"><span class="month-label">EPS Beat:</span><span class="month-value">$${latestBeat.actualEPS.toFixed(2)} <span class="earnings-vs">vs $${latestBeat.estimatedEPS.toFixed(2)}</span> <span class="earnings-surprise-pill ${surpriseClass}">${sign}${surprise.toFixed(1)}%</span></span></div>`);
+            const epsQuarter = quarterLabelForReport(latestBeat);
+            const epsLabel = epsQuarter ? `${epsQuarter} EPS` : 'EPS';
+            const est = latestBeat.estimatedEPS != null ? `$${latestBeat.estimatedEPS.toFixed(2)}` : '\u2014';
+            latestItems.push(`<div class="latest-data-row"><span class="month-label">${epsLabel}:</span><span class="month-value">$${latestBeat.actualEPS.toFixed(2)} <span class="earnings-vs">vs ${est}</span> <span class="earnings-surprise-pill ${surpriseClass}">${sign}${surprise.toFixed(1)}%</span></span></div>`);
         } else if (indicator.revenueGrowth != null) {
             const growthSign = indicator.revenueGrowth >= 0 ? '+' : '';
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Rev Growth:</span><span class="month-value">${growthSign}${(indicator.revenueGrowth * 100).toFixed(1)}% YoY</span></div>`);
@@ -587,7 +606,7 @@ function renderHormuz(indicator) {
         // --- Card Expanded: Historical table & Key Fundamentals ---
         let historyDataHtml = '';
 
-        // 0. Next scheduled report (shown in the expanded card, not the front)
+        // 0. Next scheduled report (date is on the face; expand keeps Est. EPS)
         if (indicator.nextEarningsDate) {
             hasHistory = true;
             const nextDate = new Date(indicator.nextEarningsDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -607,9 +626,9 @@ function renderHormuz(indicator) {
         // 1. Quarterly financials table (SEC filings)
         if (quarterly.length > 0) {
             hasHistory = true;
+            const tableId = `earnings-qtr-${String(indicator.ticker || indicator.name || 'x').replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
             const quarterRows = quarterly.map(q => {
                 const dateLabel = formatQuarterLabel(q.quarterEnd) || q.quarterEnd || '';
-                const accessionShort = q.accessionNumber ? q.accessionNumber.replace(/-/g, '').slice(-8) : '';
                 const filingForm = q.form || '10-Q';
                 const isEvent = filingForm !== '10-Q' && filingForm !== '10-K';
                 const filingDate = q.filingDate || q.quarterEnd || '';
@@ -623,37 +642,32 @@ function renderHormuz(indicator) {
                     ? ''
                     : (q.netIncome >= 0 ? 'earnings-positive' : 'earnings-negative');
 
-                let marginText = '\u2014';
-                if (q.netIncome != null && q.totalRevenue != null && q.totalRevenue > 0) {
-                    const m = (q.netIncome / q.totalRevenue) * 100;
-                    marginText = `${m.toFixed(1)}%`;
-                } else if (q.operatingIncome != null && q.totalRevenue != null && q.totalRevenue > 0) {
-                    const m = (q.operatingIncome / q.totalRevenue) * 100;
-                    marginText = `${m.toFixed(1)}% op`;
-                }
-
                 const filingLink = filingUrl
                     ? `<a href="${filingUrl}" target="_blank" rel="noopener noreferrer" class="sec-filing-link" title="${rowTitle}">${dateLabel} <span class="form-badge">${filingForm}</span></a>`
                     : `${dateLabel} <span class="form-badge">${filingForm}</span>`;
 
-                return `<div class="quarterly-row">
-                    <span class="quarterly-date">${filingLink}</span>
-                    <span class="quarterly-metric" title="Revenue">${formatAmount(q.totalRevenue)}</span>
-                    <span class="quarterly-metric ${netIncomeClass}" title="Net Income">${formatAmount(q.netIncome)}</span>
-                    <span class="quarterly-metric" title="Operating Income">${formatAmount(q.operatingIncome)}</span>
-                    <span class="quarterly-metric" title="Profit Margin">${marginText}</span>
-                </div>`;
+                return `<tr>
+                    <th scope="row">${filingLink}</th>
+                    <td title="Total Revenue">${formatAmount(q.totalRevenue)}</td>
+                    <td class="${netIncomeClass}" title="Net Income">${formatAmount(q.netIncome)}</td>
+                    <td title="Operating Income">${formatAmount(q.operatingIncome)}</td>
+                </tr>`;
             }).join('');
 
-            const headerHtml = `<div class="quarterly-header">
-                <span class="quarterly-label">Qtr</span>
-                <span class="quarterly-label" title="Total Revenue">Revenue</span>
-                <span class="quarterly-label" title="Net Income">Net Inc.</span>
-                <span class="quarterly-label" title="Operating Income">Op. Inc.</span>
-                <span class="quarterly-label" title="Profit Margin">Margin</span>
+            historyDataHtml += `<div class="quarterly-section" tabindex="0" role="region" aria-labelledby="${tableId}">
+                <table class="quarterly-table">
+                    <caption id="${tableId}" class="earnings-subheading">SEC Quarterly History</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Qtr</th>
+                            <th scope="col">Revenue</th>
+                            <th scope="col">Net Inc.</th>
+                            <th scope="col">Op. Inc.</th>
+                        </tr>
+                    </thead>
+                    <tbody>${quarterRows}</tbody>
+                </table>
             </div>`;
-
-            historyDataHtml += `<div class="earnings-subheading">SEC Quarterly History</div><div class="quarterly-section">${headerHtml}${quarterRows}</div>`;
         }
 
         // 2. Recent earnings surprises (EPS beat/miss track record)
@@ -677,6 +691,9 @@ function renderHormuz(indicator) {
 
         // 3. Key Fundamentals (Replaces the 7 slop accordions with concise stats)
         const stats = [];
+        if (indicator.marketCap) {
+            stats.push({ label: 'Market Cap', value: formatAmount(indicator.marketCap), tip: 'Share price times shares outstanding' });
+        }
         if (indicator.fiftyTwoWeekLow != null && indicator.fiftyTwoWeekHigh != null) {
             stats.push({ label: '52-Wk Range', value: `$${indicator.fiftyTwoWeekLow.toFixed(0)} – $${indicator.fiftyTwoWeekHigh.toFixed(0)}`, tip: '52-week low and high stock price' });
         }
@@ -847,7 +864,14 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     const url = indicator.url || '#';
     const explanation = indicator.explanation || '';
     const changeIndicators = buildChangeIndicators(momChange, yoyChange, indicator);
-    const sparklineValues = indicatorType === 'standard' ? IndicatorRenderers.collectSparklineValues(indicator, MONTHS) : indicatorType === 'hormuz' && indicator.daily ? Object.entries(indicator.daily).sort(([a], [b]) => new Date(a) - new Date(b)).map(([, v]) => parseFloat(v)).filter(v => !isNaN(v)) : [];
+    let sparklineValues = [];
+    if (indicatorType === 'standard') {
+        sparklineValues = IndicatorRenderers.collectSparklineValues(indicator, MONTHS);
+    } else if (indicatorType === 'hormuz' && indicator.daily) {
+        sparklineValues = Object.entries(indicator.daily).sort(([a], [b]) => new Date(a) - new Date(b)).map(([, v]) => parseFloat(v)).filter(v => !isNaN(v));
+    } else if (indicatorType === 'earnings' && Array.isArray(indicator.priceHistory)) {
+        sparklineValues = indicator.priceHistory.map(entry => entry && parseFloat(entry.close)).filter(value => !Number.isNaN(value));
+    }
     return buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues });
 }
 
@@ -876,6 +900,11 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
                         break;
                     }
                 }
+            }
+            // A quarter taken from an earnings release carries its own
+            // prior-year comparative, because no 10-Q exists for it yet.
+            if (!yoyPast && quarterly[0].priorYear && quarterly[0].priorYear.totalRevenue) {
+                yoyPast = quarterly[0].priorYear;
             }
             if (yoyPast) {
                 const yoy = ((r0 - yoyPast.totalRevenue) / Math.abs(yoyPast.totalRevenue)) * 100;
@@ -927,6 +956,18 @@ function cleanCompanyName(name) {
     return c;
 }
 
+/* A date-only value is a calendar day, not an instant. Parsing it as UTC and
+   reading local getters shifts the label a day back for viewers west of UTC
+   (SEC filing dates would land one day early). */
+function formatUpdatedDate(value) {
+    const raw = String(value || '');
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(raw)
+        ? new Date(raw + 'T00:00:00')
+        : new Date(raw);
+    if (Number.isNaN(date.getTime())) return '';
+    return `${date.getMonth() + 1}/${date.getDate()}`;
+}
+
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
     /* Cards inherit the accent from their category (see theme.css accent map). */
     const accentStyle = '';
@@ -949,7 +990,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     const explanationHtml = `<div class="indicator-explanation">${whyHtml}<div class="indicator-explanation-header">Source</div><div class="indicator-explanation-body">${sourceLinks}</div></div>`;
 
     const updatedHtml = indicator.lastUpdated
-        ? `Updated <span class="indicator-date">${new Date(indicator.lastUpdated).getMonth() + 1}/${new Date(indicator.lastUpdated).getDate()}</span>`
+        ? `Updated <span class="indicator-date">${formatUpdatedDate(indicator.lastUpdated)}</span>`
         : '';
 
     /* Rows whose label + value run long (money supply, market caps, transits)
@@ -967,7 +1008,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     let displayName = indicator.name;
     if (indicator.category === 'Earnings' && indicator.ticker) {
         const companyName = indicator.company ? cleanCompanyName(indicator.company) : indicator.name;
-        displayName = `<a href="https://www.perplexity.ai/finance/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="indicator-name-link" title="${indicator.ticker}">${companyName}</a>`;
+        displayName = `<a href="https://www.perplexity.ai/finance/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="indicator-name-link">${companyName}</a><span class="earnings-ticker">${indicator.ticker}</span>`;
     }
 
     const badges = [

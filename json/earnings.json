@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-21T21:46:43.098177Z",
+  "lastUpdated": "2026-10-22T01:35:22.223940Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -17,13 +17,13 @@
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-10-21T21:46:43.098626Z",
+      "fetchedAt": "2026-10-22T01:35:22.224398Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
       "marketCap": 5359909470208.0,
-      "enterpriseValue": 5193318006784.0,
-      "trailingPE": 28.06,
+      "enterpriseValue": 5323578408960.0,
+      "trailingPE": 27.37,
       "forwardPE": 13.95,
       "pegRatio": 0.26,
       "priceToSalesTrailing12Months": 17.69,
@@ -1132,13 +1132,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/0001045810-26-000075-index.htm",
           "accessionNumber": "0001045810-26-000075",
           "filingDate": "2026-08-26",
+          "acceptedDate": "2026-08-27",
           "form": "10-Q",
           "totalRevenue": 96221000000.0,
           "netIncome": 59688000000.0,
           "grossProfit": 72142000000.0,
           "operatingIncome": 63734000000.0,
           "rdExpense": 7054000000.0,
-          "sgaExpense": 1354000000.0
+          "sgaExpense": 1354000000.0,
+          "ebitda": 64861000000.0
         },
         {
           "quarterEnd": "2026-04-26",
@@ -1146,13 +1148,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/0001045810-26-000052-index.htm",
           "accessionNumber": "0001045810-26-000052",
           "filingDate": "2026-05-20",
+          "acceptedDate": "2026-05-21",
           "form": "10-Q",
           "totalRevenue": 81615000000.0,
           "netIncome": 58321000000.0,
           "grossProfit": 61157000000.0,
           "operatingIncome": 53536000000.0,
           "rdExpense": 6321000000.0,
-          "sgaExpense": 1300000000.0
+          "sgaExpense": 1300000000.0,
+          "ebitda": 54533000000.0
         },
         {
           "quarterEnd": "2025-10-26",
@@ -1160,13 +1164,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/0001045810-25-000230-index.htm",
           "accessionNumber": "0001045810-25-000230",
           "filingDate": "2025-11-19",
+          "acceptedDate": "2025-11-20",
           "form": "10-Q",
           "totalRevenue": 57006000000.0,
           "netIncome": 31910000000.0,
           "grossProfit": 41849000000.0,
           "operatingIncome": 36010000000.0,
           "rdExpense": 4705000000.0,
-          "sgaExpense": 1134000000.0
+          "sgaExpense": 1134000000.0,
+          "ebitda": 36761000000.0
         },
         {
           "quarterEnd": "2025-07-27",
@@ -1174,26 +1180,28 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/0001045810-25-000209-index.htm",
           "accessionNumber": "0001045810-25-000209",
           "filingDate": "2025-08-27",
+          "acceptedDate": "2025-08-28",
           "form": "10-Q",
           "totalRevenue": 46743000000.0,
           "netIncome": 26422000000.0,
           "grossProfit": 33853000000.0,
           "operatingIncome": 28440000000.0,
           "rdExpense": 4291000000.0,
-          "sgaExpense": 1122000000.0
+          "sgaExpense": 1122000000.0,
+          "ebitda": 29109000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-10-21T21:46:45.246716Z",
+      "fetchedAt": "2026-10-22T01:35:23.763072Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
       "marketCap": 1526381674496.0,
-      "enterpriseValue": 1449202417664.0,
-      "trailingPE": 357.84,
+      "enterpriseValue": 1499598553088.0,
+      "trailingPE": 345.06,
       "forwardPE": 178.22,
       "pegRatio": 3.81,
       "priceToSalesTrailing12Months": 14.73,
@@ -2264,7 +2272,9 @@
       "recentEarnings": [
         {
           "reportedDate": "2026-10-21",
+          "actualEPS": 0.48,
           "estimatedEPS": 0.45,
+          "surprisePercent": 6.4,
           "source": "Yahoo Finance"
         },
         {
@@ -2296,6 +2306,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/0001628280-26-066738-index.htm",
           "accessionNumber": "0001628280-26-066738",
           "filingDate": "2026-10-21",
+          "acceptedDate": "2026-10-21",
           "form": "8-K",
           "exhibitUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm",
           "totalRevenue": 28046000000.0,
@@ -2311,6 +2322,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/0001628280-26-049270-index.htm",
           "accessionNumber": "0001628280-26-049270",
           "filingDate": "2026-07-23",
+          "acceptedDate": "2026-07-23",
           "form": "10-Q",
           "totalRevenue": 28236000000.0,
           "netIncome": 1114000000.0,
@@ -2325,6 +2337,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/0001628280-26-026673-index.htm",
           "accessionNumber": "0001628280-26-026673",
           "filingDate": "2026-04-23",
+          "acceptedDate": "2026-04-23",
           "form": "10-Q",
           "totalRevenue": 22387000000.0,
           "netIncome": 477000000.0,
@@ -2339,6 +2352,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045968/0001628280-25-045968-index.htm",
           "accessionNumber": "0001628280-25-045968",
           "filingDate": "2025-10-23",
+          "acceptedDate": "2025-10-23",
           "form": "10-Q",
           "totalRevenue": 28095000000.0,
           "netIncome": 1373000000.0,
@@ -2353,6 +2367,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/0001628280-25-035806-index.htm",
           "accessionNumber": "0001628280-25-035806",
           "filingDate": "2025-07-24",
+          "acceptedDate": "2025-07-24",
           "form": "10-Q",
           "totalRevenue": 22496000000.0,
           "netIncome": 1172000000.0,
@@ -2366,12 +2381,12 @@
     },
     {
       "ticker": "NYT",
-      "fetchedAt": "2026-10-21T21:46:46.497284Z",
+      "fetchedAt": "2026-10-22T01:35:24.795543Z",
       "source": "Yahoo Finance",
       "company": "The New York Times Company",
       "sector": "Communication Services",
       "marketCap": 11105987584.0,
-      "enterpriseValue": 10558073856.0,
+      "enterpriseValue": 10445175808.0,
       "trailingPE": 28.69,
       "forwardPE": 22.03,
       "pegRatio": 3.79,
@@ -3481,12 +3496,14 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169126000034/0000071691-26-000034-index.htm",
           "accessionNumber": "0000071691-26-000034",
           "filingDate": "2026-08-05",
+          "acceptedDate": "2026-08-05",
           "form": "10-Q",
           "totalRevenue": 762455000.0,
           "netIncome": 93418000.0,
           "operatingIncome": 118018000.0,
           "rdExpense": 70350000.0,
-          "sgaExpense": 85767000.0
+          "sgaExpense": 85767000.0,
+          "ebitda": 139141000.0
         },
         {
           "quarterEnd": "2026-03-31",
@@ -3494,12 +3511,14 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169126000025/0000071691-26-000025-index.htm",
           "accessionNumber": "0000071691-26-000025",
           "filingDate": "2026-05-06",
+          "acceptedDate": "2026-05-06",
           "form": "10-Q",
           "totalRevenue": 712236000.0,
           "netIncome": 87922000.0,
           "operatingIncome": 90617000.0,
           "rdExpense": 70193000.0,
-          "sgaExpense": 86452000.0
+          "sgaExpense": 86452000.0,
+          "ebitda": 111180000.0
         },
         {
           "quarterEnd": "2025-09-30",
@@ -3507,12 +3526,14 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169125000126/0000071691-25-000126-index.htm",
           "accessionNumber": "0000071691-25-000126",
           "filingDate": "2025-11-05",
+          "acceptedDate": "2025-11-05",
           "form": "10-Q",
           "totalRevenue": 700821000.0,
           "netIncome": 81647000.0,
           "operatingIncome": 104788000.0,
           "rdExpense": 66989000.0,
-          "sgaExpense": 76640000.0
+          "sgaExpense": 76640000.0,
+          "ebitda": 126129000.0
         },
         {
           "quarterEnd": "2025-06-30",
@@ -3520,24 +3541,26 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/71691/000007169125000119/0000071691-25-000119-index.htm",
           "accessionNumber": "0000071691-25-000119",
           "filingDate": "2025-08-06",
+          "acceptedDate": "2025-08-06",
           "form": "10-Q",
           "totalRevenue": 685873000.0,
           "netIncome": 82945000.0,
           "operatingIncome": 106551000.0,
           "rdExpense": 63940000.0,
-          "sgaExpense": 82552000.0
+          "sgaExpense": 82552000.0,
+          "ebitda": 127947000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "SPCX",
-      "fetchedAt": "2026-10-21T21:46:47.872930Z",
+      "fetchedAt": "2026-10-22T01:35:25.924944Z",
       "source": "Yahoo Finance",
       "company": "Space Exploration Technologies Corp.",
       "sector": "Industrials",
       "marketCap": 2098779652096.0,
-      "enterpriseValue": 3835969404928.0,
+      "enterpriseValue": 4139677646848.0,
       "trailingPE": null,
       "forwardPE": 77.89,
       "pegRatio": null,
@@ -3548,7 +3571,7 @@
       "profitMargins": -0.36,
       "returnOnAssets": null,
       "returnOnEquity": null,
-      "revenueGrowth": 1.61,
+      "revenueGrowth": 0.92,
       "earningsGrowth": null,
       "revenuePerShare": 5.89,
       "freeCashflow": null,
@@ -3967,7 +3990,7 @@
         }
       ],
       "nextEarningsDate": "2027-02-09",
-      "estimatedEPS": 0.46,
+      "estimatedEPS": 0.4,
       "recentEarnings": [
         {
           "reportedDate": "2026-10-20",
@@ -3991,6 +4014,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/0001628280-26-066482-index.htm",
           "accessionNumber": "0001628280-26-066482",
           "filingDate": "2026-10-20",
+          "acceptedDate": "2026-10-21",
           "form": "8-K",
           "exhibitUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
           "totalRevenue": 14575000000.0,
@@ -3998,7 +4022,18 @@
           "sgaExpense": 1707000000.0,
           "operatingIncome": 2791000000.0,
           "netIncome": 4404000000.0,
-          "grossProfit": 9097000000.0
+          "grossProfit": 9097000000.0,
+          "ebitda": 8809000000.0,
+          "priorYear": {
+            "quarterEnd": "2025-09-30",
+            "totalRevenue": 5576000000.0,
+            "operatingIncome": -273000000.0,
+            "netIncome": -1054000000.0,
+            "rdExpense": 2291000000.0,
+            "sgaExpense": 575000000.0,
+            "costOfRevenue": 2705000000.0,
+            "grossProfit": 2871000000.0
+          }
         },
         {
           "quarterEnd": "2026-06-30",
@@ -4006,37 +4041,25 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
           "accessionNumber": "0001628280-26-052535",
           "filingDate": "2026-08-04",
+          "acceptedDate": "2026-08-05",
           "form": "10-Q",
           "totalRevenue": 7814000000.0,
           "netIncome": -541000000.0,
           "operatingIncome": -143000000.0,
           "rdExpense": 3548000000.0,
           "sgaExpense": 912000000.0
-        },
-        {
-          "quarterEnd": "2025-09-30",
-          "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/0001628280-26-066482-index.htm",
-          "accessionNumber": "0001628280-26-066482",
-          "filingDate": "2026-10-20",
-          "form": "8-K",
-          "exhibitUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
-          "totalRevenue": 5584000000.0,
-          "netIncome": -285000000.0,
-          "operatingIncome": -120000000.0,
-          "grossProfit": 2140000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "CRM",
-      "fetchedAt": "2026-10-21T21:46:48.857642Z",
+      "fetchedAt": "2026-10-22T01:35:26.800288Z",
       "source": "Yahoo Finance",
       "company": "Salesforce, Inc.",
       "sector": "Technology",
       "marketCap": 198984941568.0,
-      "enterpriseValue": 230492897280.0,
+      "enterpriseValue": 229957943296.0,
       "trailingPE": 22.12,
       "forwardPE": 15.09,
       "pegRatio": 0.87,
@@ -5146,13 +5169,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000190/0001108524-26-000190-index.htm",
           "accessionNumber": "0001108524-26-000190",
           "filingDate": "2026-08-27",
+          "acceptedDate": "2026-08-27",
           "form": "10-Q",
           "totalRevenue": 11345000000.0,
           "netIncome": 3526000000.0,
           "grossProfit": 8696000000.0,
           "operatingIncome": 2331000000.0,
           "rdExpense": 1687000000.0,
-          "sgaExpense": 725000000.0
+          "sgaExpense": 725000000.0,
+          "ebitda": 3297000000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -5160,13 +5185,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000127/0001108524-26-000127-index.htm",
           "accessionNumber": "0001108524-26-000127",
           "filingDate": "2026-05-28",
+          "acceptedDate": "2026-05-28",
           "form": "10-Q",
           "totalRevenue": 11133000000.0,
           "netIncome": 2107000000.0,
           "grossProfit": 8563000000.0,
           "operatingIncome": 2347000000.0,
           "rdExpense": 1627000000.0,
-          "sgaExpense": 740000000.0
+          "sgaExpense": 740000000.0,
+          "ebitda": 3332000000.0
         },
         {
           "quarterEnd": "2025-10-31",
@@ -5174,13 +5201,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000238/0001108524-25-000238-index.htm",
           "accessionNumber": "0001108524-25-000238",
           "filingDate": "2025-12-04",
+          "acceptedDate": "2025-12-04",
           "form": "10-Q",
           "totalRevenue": 10259000000.0,
           "netIncome": 2086000000.0,
           "grossProfit": 8004000000.0,
           "operatingIncome": 2188000000.0,
           "rdExpense": 1433000000.0,
-          "sgaExpense": 667000000.0
+          "sgaExpense": 667000000.0,
+          "ebitda": 3039000000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -5188,25 +5217,27 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000088/0001108524-25-000088-index.htm",
           "accessionNumber": "0001108524-25-000088",
           "filingDate": "2025-09-04",
+          "acceptedDate": "2025-09-04",
           "form": "10-Q",
           "totalRevenue": 10236000000.0,
           "netIncome": 1887000000.0,
           "grossProfit": 7994000000.0,
           "operatingIncome": 2332000000.0,
           "rdExpense": 1481000000.0,
-          "sgaExpense": 734000000.0
+          "sgaExpense": 734000000.0,
+          "ebitda": 3149000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "CRWD",
-      "fetchedAt": "2026-10-21T21:46:50.539061Z",
+      "fetchedAt": "2026-10-22T01:35:27.887980Z",
       "source": "Yahoo Finance",
       "company": "CrowdStrike Holdings, Inc.",
       "sector": "Technology",
       "marketCap": 245068562432.0,
-      "enterpriseValue": 228656201728.0,
+      "enterpriseValue": 240912695296.0,
       "trailingPE": 3989.0,
       "forwardPE": 148.54,
       "pegRatio": 5.87,
@@ -6314,13 +6345,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/0001535527-26-000031-index.htm",
           "accessionNumber": "0001535527-26-000031",
           "filingDate": "2026-08-27",
+          "acceptedDate": "2026-08-27",
           "form": "10-Q",
           "totalRevenue": 1470897000.0,
           "netIncome": 5306000.0,
           "grossProfit": 1096895000.0,
           "operatingIncome": -33232000.0,
           "rdExpense": 444200000.0,
-          "sgaExpense": 175954000.0
+          "sgaExpense": 175954000.0,
+          "ebitda": -7532000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -6328,6 +6361,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000025/0001535527-26-000025-index.htm",
           "accessionNumber": "0001535527-26-000025",
           "filingDate": "2026-06-04",
+          "acceptedDate": "2026-06-04",
           "form": "10-Q",
           "totalRevenue": 1385629000.0,
           "netIncome": 27774000.0,
@@ -6342,6 +6376,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552725000033/0001535527-25-000033-index.htm",
           "accessionNumber": "0001535527-25-000033",
           "filingDate": "2025-12-03",
+          "acceptedDate": "2025-12-03",
           "form": "10-Q",
           "totalRevenue": 1234244000.0,
           "netIncome": -33997000.0,
@@ -6356,26 +6391,28 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1535527/000153552725000025/0001535527-25-000025-index.htm",
           "accessionNumber": "0001535527-25-000025",
           "filingDate": "2025-08-28",
+          "acceptedDate": "2025-08-28",
           "form": "10-Q",
           "totalRevenue": 1168952000.0,
           "netIncome": -70153000.0,
           "grossProfit": 860401000.0,
           "operatingIncome": -105457000.0,
           "rdExpense": 342533000.0,
-          "sgaExpense": 176745000.0
+          "sgaExpense": 176745000.0,
+          "ebitda": -85857000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "HPQ",
-      "fetchedAt": "2026-10-21T21:46:51.738828Z",
+      "fetchedAt": "2026-10-22T01:35:28.928356Z",
       "source": "Yahoo Finance",
       "company": "HP Inc.",
       "sector": "Technology",
       "marketCap": 28244092928.0,
-      "enterpriseValue": 34314895360.0,
-      "trailingPE": 11.95,
+      "enterpriseValue": 34414092288.0,
+      "trailingPE": 11.91,
       "forwardPE": 9.93,
       "pegRatio": 3.33,
       "priceToSalesTrailing12Months": 0.48,
@@ -7484,13 +7521,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000051/0000047217-26-000051-index.htm",
           "accessionNumber": "0000047217-26-000051",
           "filingDate": "2026-08-27",
+          "acceptedDate": "2026-08-27",
           "form": "10-Q",
           "totalRevenue": 15677000000.0,
           "netIncome": 661000000.0,
           "grossProfit": 2945000000.0,
           "operatingIncome": 892000000.0,
           "rdExpense": 389000000.0,
-          "sgaExpense": 1537000000.0
+          "sgaExpense": 1537000000.0,
+          "ebitda": 1136000000.0
         },
         {
           "quarterEnd": "2026-04-30",
@@ -7498,13 +7537,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000029/0000047217-26-000029-index.htm",
           "accessionNumber": "0000047217-26-000029",
           "filingDate": "2026-05-28",
+          "acceptedDate": "2026-05-28",
           "form": "10-Q",
           "totalRevenue": 14408000000.0,
           "netIncome": 450000000.0,
           "grossProfit": 3016000000.0,
           "operatingIncome": 612000000.0,
           "rdExpense": 432000000.0,
-          "sgaExpense": 1514000000.0
+          "sgaExpense": 1514000000.0,
+          "ebitda": 876000000.0
         },
         {
           "quarterEnd": "2026-01-31",
@@ -7512,13 +7553,15 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721726000011/0000047217-26-000011-index.htm",
           "accessionNumber": "0000047217-26-000011",
           "filingDate": "2026-02-25",
+          "acceptedDate": "2026-02-25",
           "form": "10-Q",
           "totalRevenue": 14438000000.0,
           "netIncome": 545000000.0,
           "grossProfit": 2835000000.0,
           "operatingIncome": 759000000.0,
           "rdExpense": 392000000.0,
-          "sgaExpense": 1504000000.0
+          "sgaExpense": 1504000000.0,
+          "ebitda": 973000000.0
         },
         {
           "quarterEnd": "2025-07-31",
@@ -7526,25 +7569,27 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000063/0000047217-25-000063-index.htm",
           "accessionNumber": "0000047217-25-000063",
           "filingDate": "2025-08-28",
+          "acceptedDate": "2025-08-28",
           "form": "10-Q",
           "totalRevenue": 13932000000.0,
           "netIncome": 763000000.0,
           "grossProfit": 2851000000.0,
           "operatingIncome": 716000000.0,
           "rdExpense": 406000000.0,
-          "sgaExpense": 1452000000.0
+          "sgaExpense": 1452000000.0,
+          "ebitda": 1022000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "OKTA",
-      "fetchedAt": "2026-10-21T21:46:53.177197Z",
+      "fetchedAt": "2026-10-22T01:35:30.161587Z",
       "source": "Yahoo Finance",
       "company": "Okta, Inc.",
       "sector": "Technology",
       "marketCap": 36474638336.0,
-      "enterpriseValue": 31672756224.0,
+      "enterpriseValue": 34228637696.0,
       "trailingPE": 125.69,
       "forwardPE": 47.65,
       "pegRatio": 1.39,
@@ -8652,6 +8697,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013426000069/0001660134-26-000069-index.htm",
           "accessionNumber": "0001660134-26-000069",
           "filingDate": "2026-08-27",
+          "acceptedDate": "2026-08-27",
           "form": "10-Q",
           "totalRevenue": 805000000.0,
           "netIncome": 116000000.0,
@@ -8666,6 +8712,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013426000051/0001660134-26-000051-index.htm",
           "accessionNumber": "0001660134-26-000051",
           "filingDate": "2026-05-29",
+          "acceptedDate": "2026-05-29",
           "form": "10-Q",
           "totalRevenue": 765000000.0,
           "netIncome": 74000000.0,
@@ -8680,6 +8727,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013425000171/0001660134-25-000171-index.htm",
           "accessionNumber": "0001660134-25-000171",
           "filingDate": "2025-12-03",
+          "acceptedDate": "2025-12-03",
           "form": "10-Q",
           "totalRevenue": 742000000.0,
           "netIncome": 43000000.0,
@@ -8694,6 +8742,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1660134/000166013425000157/0001660134-25-000157-index.htm",
           "accessionNumber": "0001660134-25-000157",
           "filingDate": "2025-08-27",
+          "acceptedDate": "2025-08-27",
           "form": "10-Q",
           "totalRevenue": 728000000.0,
           "netIncome": 67000000.0,
@@ -8707,13 +8756,13 @@
     },
     {
       "ticker": "ANF",
-      "fetchedAt": "2026-10-21T21:46:54.402826Z",
+      "fetchedAt": "2026-10-22T01:35:31.258522Z",
       "source": "Yahoo Finance",
       "company": "Abercrombie & Fitch Co.",
       "sector": "Consumer Cyclical",
       "marketCap": 6774223872.0,
-      "enterpriseValue": 7527493632.0,
-      "trailingPE": 13.79,
+      "enterpriseValue": 7438806016.0,
+      "trailingPE": 13.97,
       "forwardPE": 12.38,
       "pegRatio": 3.62,
       "priceToSalesTrailing12Months": 1.27,
@@ -9822,11 +9871,13 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884026000047/0001018840-26-000047-index.htm",
           "accessionNumber": "0001018840-26-000047",
           "filingDate": "2026-09-04",
+          "acceptedDate": "2026-09-04",
           "form": "10-Q",
           "totalRevenue": 1266689000.0,
           "netIncome": 183720000.0,
           "operatingIncome": 252700000.0,
-          "sgaExpense": 204784000.0
+          "sgaExpense": 204784000.0,
+          "ebitda": 295979000.0
         },
         {
           "quarterEnd": "2026-05-02",
@@ -9834,11 +9885,13 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884026000036/0001018840-26-000036-index.htm",
           "accessionNumber": "0001018840-26-000036",
           "filingDate": "2026-06-05",
+          "acceptedDate": "2026-06-05",
           "form": "10-Q",
           "totalRevenue": 1113821000.0,
           "netIncome": 67134000.0,
           "operatingIncome": 88797000.0,
-          "sgaExpense": 182754000.0
+          "sgaExpense": 182754000.0,
+          "ebitda": 131101000.0
         },
         {
           "quarterEnd": "2025-11-01",
@@ -9846,11 +9899,13 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884025000048/0001018840-25-000048-index.htm",
           "accessionNumber": "0001018840-25-000048",
           "filingDate": "2025-12-05",
+          "acceptedDate": "2025-12-05",
           "form": "10-Q",
           "totalRevenue": 1290619000.0,
           "netIncome": 112995000.0,
           "operatingIncome": 155021000.0,
-          "sgaExpense": 193402000.0
+          "sgaExpense": 193402000.0,
+          "ebitda": 193587000.0
         },
         {
           "quarterEnd": "2025-08-02",
@@ -9858,23 +9913,25 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/1018840/000101884025000045/0001018840-25-000045-index.htm",
           "accessionNumber": "0001018840-25-000045",
           "filingDate": "2025-09-05",
+          "acceptedDate": "2025-09-05",
           "form": "10-Q",
           "totalRevenue": 1208560000.0,
           "netIncome": 141383000.0,
           "operatingIncome": 206658000.0,
-          "sgaExpense": 175325000.0
+          "sgaExpense": 175325000.0,
+          "ebitda": 244082000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"
     },
     {
       "ticker": "SJM",
-      "fetchedAt": "2026-10-21T21:46:55.684354Z",
+      "fetchedAt": "2026-10-22T01:35:32.693032Z",
       "source": "Yahoo Finance",
       "company": "The J. M. Smucker Company",
       "sector": "Consumer Defensive",
       "marketCap": 13653070848.0,
-      "enterpriseValue": 20748763136.0,
+      "enterpriseValue": 20550070272.0,
       "trailingPE": 59.72,
       "forwardPE": 11.63,
       "pegRatio": 2.17,
@@ -10983,6 +11040,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141926000080/0000091419-26-000080-index.htm",
           "accessionNumber": "0000091419-26-000080",
           "filingDate": "2026-08-26",
+          "acceptedDate": "2026-08-26",
           "form": "10-Q",
           "totalRevenue": 2219300000.0,
           "netIncome": 324300000.0,
@@ -10996,6 +11054,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141926000016/0000091419-26-000016-index.htm",
           "accessionNumber": "0000091419-26-000016",
           "filingDate": "2026-02-26",
+          "acceptedDate": "2026-02-26",
           "form": "10-Q",
           "totalRevenue": 2339400000.0,
           "netIncome": -724200000.0,
@@ -11009,6 +11068,7 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141925000106/0000091419-25-000106-index.htm",
           "accessionNumber": "0000091419-25-000106",
           "filingDate": "2025-11-25",
+          "acceptedDate": "2025-11-25",
           "form": "10-Q",
           "totalRevenue": 2330100000.0,
           "netIncome": 241300000.0,
@@ -11022,12 +11082,2348 @@
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/91419/000009141925000071/0000091419-25-000071-index.htm",
           "accessionNumber": "0000091419-25-000071",
           "filingDate": "2025-08-27",
+          "acceptedDate": "2025-08-27",
           "form": "10-Q",
           "totalRevenue": 2113300000.0,
           "netIncome": -43900000.0,
           "grossProfit": 474700000.0,
           "operatingIncome": 45600000.0,
           "sgaExpense": 377400000.0
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
+    },
+    {
+      "ticker": "FOUR",
+      "fetchedAt": "2026-10-22T01:35:33.765518Z",
+      "source": "Yahoo Finance",
+      "company": "Shift4 Payments, Inc.",
+      "sector": "Technology",
+      "marketCap": 3119714304.0,
+      "enterpriseValue": 8458714112.0,
+      "trailingPE": 62.71,
+      "forwardPE": 6.46,
+      "pegRatio": 0.29,
+      "priceToSalesTrailing12Months": 0.65,
+      "priceToBook": 5.09,
+      "grossMargins": 0.36,
+      "operatingMargins": 0.07,
+      "profitMargins": 0.02,
+      "returnOnAssets": 0.03,
+      "returnOnEquity": 0.06,
+      "revenueGrowth": 0.34,
+      "earningsGrowth": -0.75,
+      "revenuePerShare": 66.36,
+      "freeCashflow": 353524992.0,
+      "operatingCashflow": 593000000.0,
+      "grossProfits": 1716999936.0,
+      "totalCash": 356000000.0,
+      "totalCashPerShare": 4.51,
+      "totalDebt": 4567000064.0,
+      "totalRevenue": 4782000128.0,
+      "debtToEquity": 262.32,
+      "currentRatio": 1.21,
+      "quickRatio": 0.68,
+      "bookValue": 7.76,
+      "sharesOutstanding": 78960120.0,
+      "floatShares": 44070801.0,
+      "impliedSharesOutstanding": 78960120.0,
+      "dividendRate": null,
+      "dividendYield": 0.0,
+      "payoutRatio": 0.0,
+      "fiveYearAvgDividendYield": null,
+      "targetHighPrice": 94.0,
+      "targetLowPrice": 40.0,
+      "targetMeanPrice": 52.86,
+      "targetMedianPrice": 49.5,
+      "recommendationMean": 2.12,
+      "numberOfAnalystOpinions": 22.0,
+      "beta": 1.39,
+      "fiftyTwoWeekHigh": 77.5,
+      "fiftyTwoWeekLow": 34.56,
+      "fiftyDayAverage": 41.75,
+      "twoHundredDayAverage": 47.38,
+      "averageVolume": 1917921.0,
+      "averageDailyVolume10Day": 1709200.0,
+      "previousClose": 40.46,
+      "open": 40.96,
+      "regularMarketOpen": 40.96,
+      "dayHigh": 41.31,
+      "dayLow": 39.3,
+      "regularMarketDayHigh": 41.31,
+      "regularMarketDayLow": 39.3,
+      "regularMarketVolume": 1880358.0,
+      "averageVolume10days": 1709200.0,
+      "sharesShort": 14595059.0,
+      "sharesShortPreviousMonthDate": 1788134400.0,
+      "sharesShortPriorMonth": 13688642.0,
+      "dateShortInterest": 1790726400.0,
+      "fullTimeEmployees": 6300.0,
+      "industry": "Software - Infrastructure",
+      "currency": "USD",
+      "recommendationKey": "buy",
+      "exDividendDate": "2026-10-15",
+      "latestPrice": 39.51,
+      "priceHistory": [
+        {
+          "date": "2025-10-22",
+          "close": 75.39
+        },
+        {
+          "date": "2025-10-23",
+          "close": 75.99
+        },
+        {
+          "date": "2025-10-24",
+          "close": 76.26
+        },
+        {
+          "date": "2025-10-27",
+          "close": 76.76
+        },
+        {
+          "date": "2025-10-28",
+          "close": 75.15
+        },
+        {
+          "date": "2025-10-29",
+          "close": 70.01
+        },
+        {
+          "date": "2025-10-30",
+          "close": 66.31
+        },
+        {
+          "date": "2025-10-31",
+          "close": 69.1
+        },
+        {
+          "date": "2025-11-03",
+          "close": 68.38
+        },
+        {
+          "date": "2025-11-04",
+          "close": 66.74
+        },
+        {
+          "date": "2025-11-05",
+          "close": 67.16
+        },
+        {
+          "date": "2025-11-06",
+          "close": 66.82
+        },
+        {
+          "date": "2025-11-07",
+          "close": 66.15
+        },
+        {
+          "date": "2025-11-10",
+          "close": 70.93
+        },
+        {
+          "date": "2025-11-11",
+          "close": 71.4
+        },
+        {
+          "date": "2025-11-12",
+          "close": 73.18
+        },
+        {
+          "date": "2025-11-13",
+          "close": 72.26
+        },
+        {
+          "date": "2025-11-14",
+          "close": 69.88
+        },
+        {
+          "date": "2025-11-17",
+          "close": 67.65
+        },
+        {
+          "date": "2025-11-18",
+          "close": 66.12
+        },
+        {
+          "date": "2025-11-19",
+          "close": 65.58
+        },
+        {
+          "date": "2025-11-20",
+          "close": 65.6
+        },
+        {
+          "date": "2025-11-21",
+          "close": 69.01
+        },
+        {
+          "date": "2025-11-24",
+          "close": 69.62
+        },
+        {
+          "date": "2025-11-25",
+          "close": 70.15
+        },
+        {
+          "date": "2025-11-26",
+          "close": 70.17
+        },
+        {
+          "date": "2025-11-28",
+          "close": 73.78
+        },
+        {
+          "date": "2025-12-01",
+          "close": 72.95
+        },
+        {
+          "date": "2025-12-02",
+          "close": 70.79
+        },
+        {
+          "date": "2025-12-03",
+          "close": 70.09
+        },
+        {
+          "date": "2025-12-04",
+          "close": 69.36
+        },
+        {
+          "date": "2025-12-05",
+          "close": 68.88
+        },
+        {
+          "date": "2025-12-08",
+          "close": 66.79
+        },
+        {
+          "date": "2025-12-09",
+          "close": 66.9
+        },
+        {
+          "date": "2025-12-10",
+          "close": 68.82
+        },
+        {
+          "date": "2025-12-11",
+          "close": 68.99
+        },
+        {
+          "date": "2025-12-12",
+          "close": 68.75
+        },
+        {
+          "date": "2025-12-15",
+          "close": 66.12
+        },
+        {
+          "date": "2025-12-16",
+          "close": 65.62
+        },
+        {
+          "date": "2025-12-17",
+          "close": 64.53
+        },
+        {
+          "date": "2025-12-18",
+          "close": 64.43
+        },
+        {
+          "date": "2025-12-19",
+          "close": 64.07
+        },
+        {
+          "date": "2025-12-22",
+          "close": 65.0
+        },
+        {
+          "date": "2025-12-23",
+          "close": 64.78
+        },
+        {
+          "date": "2025-12-24",
+          "close": 65.1
+        },
+        {
+          "date": "2025-12-26",
+          "close": 65.23
+        },
+        {
+          "date": "2025-12-29",
+          "close": 65.55
+        },
+        {
+          "date": "2025-12-30",
+          "close": 64.43
+        },
+        {
+          "date": "2025-12-31",
+          "close": 62.97
+        },
+        {
+          "date": "2026-01-02",
+          "close": 62.68
+        },
+        {
+          "date": "2026-01-05",
+          "close": 63.96
+        },
+        {
+          "date": "2026-01-06",
+          "close": 65.88
+        },
+        {
+          "date": "2026-01-07",
+          "close": 65.59
+        },
+        {
+          "date": "2026-01-08",
+          "close": 66.09
+        },
+        {
+          "date": "2026-01-09",
+          "close": 66.88
+        },
+        {
+          "date": "2026-01-12",
+          "close": 65.62
+        },
+        {
+          "date": "2026-01-13",
+          "close": 65.51
+        },
+        {
+          "date": "2026-01-14",
+          "close": 67.11
+        },
+        {
+          "date": "2026-01-15",
+          "close": 65.91
+        },
+        {
+          "date": "2026-01-16",
+          "close": 64.41
+        },
+        {
+          "date": "2026-01-20",
+          "close": 62.04
+        },
+        {
+          "date": "2026-01-21",
+          "close": 64.0
+        },
+        {
+          "date": "2026-01-22",
+          "close": 66.0
+        },
+        {
+          "date": "2026-01-23",
+          "close": 66.21
+        },
+        {
+          "date": "2026-01-26",
+          "close": 64.2
+        },
+        {
+          "date": "2026-01-27",
+          "close": 61.46
+        },
+        {
+          "date": "2026-01-28",
+          "close": 59.98
+        },
+        {
+          "date": "2026-01-29",
+          "close": 59.4
+        },
+        {
+          "date": "2026-01-30",
+          "close": 59.04
+        },
+        {
+          "date": "2026-02-02",
+          "close": 58.5
+        },
+        {
+          "date": "2026-02-03",
+          "close": 54.12
+        },
+        {
+          "date": "2026-02-04",
+          "close": 58.21
+        },
+        {
+          "date": "2026-02-05",
+          "close": 58.08
+        },
+        {
+          "date": "2026-02-06",
+          "close": 59.28
+        },
+        {
+          "date": "2026-02-09",
+          "close": 58.61
+        },
+        {
+          "date": "2026-02-10",
+          "close": 59.81
+        },
+        {
+          "date": "2026-02-11",
+          "close": 58.74
+        },
+        {
+          "date": "2026-02-12",
+          "close": 54.57
+        },
+        {
+          "date": "2026-02-13",
+          "close": 55.01
+        },
+        {
+          "date": "2026-02-17",
+          "close": 56.26
+        },
+        {
+          "date": "2026-02-18",
+          "close": 59.14
+        },
+        {
+          "date": "2026-02-19",
+          "close": 58.49
+        },
+        {
+          "date": "2026-02-20",
+          "close": 58.49
+        },
+        {
+          "date": "2026-02-23",
+          "close": 57.47
+        },
+        {
+          "date": "2026-02-24",
+          "close": 58.31
+        },
+        {
+          "date": "2026-02-25",
+          "close": 57.37
+        },
+        {
+          "date": "2026-02-26",
+          "close": 48.41
+        },
+        {
+          "date": "2026-02-27",
+          "close": 44.07
+        },
+        {
+          "date": "2026-03-02",
+          "close": 46.94
+        },
+        {
+          "date": "2026-03-03",
+          "close": 49.89
+        },
+        {
+          "date": "2026-03-04",
+          "close": 47.46
+        },
+        {
+          "date": "2026-03-05",
+          "close": 49.0
+        },
+        {
+          "date": "2026-03-06",
+          "close": 47.87
+        },
+        {
+          "date": "2026-03-09",
+          "close": 47.24
+        },
+        {
+          "date": "2026-03-10",
+          "close": 46.88
+        },
+        {
+          "date": "2026-03-11",
+          "close": 47.23
+        },
+        {
+          "date": "2026-03-12",
+          "close": 43.91
+        },
+        {
+          "date": "2026-03-13",
+          "close": 43.33
+        },
+        {
+          "date": "2026-03-16",
+          "close": 44.6
+        },
+        {
+          "date": "2026-03-17",
+          "close": 45.07
+        },
+        {
+          "date": "2026-03-18",
+          "close": 43.98
+        },
+        {
+          "date": "2026-03-19",
+          "close": 41.95
+        },
+        {
+          "date": "2026-03-20",
+          "close": 41.17
+        },
+        {
+          "date": "2026-03-23",
+          "close": 44.03
+        },
+        {
+          "date": "2026-03-24",
+          "close": 52.5
+        },
+        {
+          "date": "2026-03-25",
+          "close": 48.86
+        },
+        {
+          "date": "2026-03-26",
+          "close": 48.41
+        },
+        {
+          "date": "2026-03-27",
+          "close": 44.48
+        },
+        {
+          "date": "2026-03-30",
+          "close": 43.62
+        },
+        {
+          "date": "2026-03-31",
+          "close": 43.73
+        },
+        {
+          "date": "2026-04-01",
+          "close": 42.61
+        },
+        {
+          "date": "2026-04-02",
+          "close": 42.76
+        },
+        {
+          "date": "2026-04-06",
+          "close": 42.24
+        },
+        {
+          "date": "2026-04-07",
+          "close": 40.27
+        },
+        {
+          "date": "2026-04-08",
+          "close": 42.15
+        },
+        {
+          "date": "2026-04-09",
+          "close": 42.23
+        },
+        {
+          "date": "2026-04-10",
+          "close": 44.18
+        },
+        {
+          "date": "2026-04-13",
+          "close": 45.47
+        },
+        {
+          "date": "2026-04-14",
+          "close": 46.78
+        },
+        {
+          "date": "2026-04-15",
+          "close": 48.01
+        },
+        {
+          "date": "2026-04-16",
+          "close": 48.45
+        },
+        {
+          "date": "2026-04-17",
+          "close": 49.66
+        },
+        {
+          "date": "2026-04-20",
+          "close": 49.32
+        },
+        {
+          "date": "2026-04-21",
+          "close": 48.61
+        },
+        {
+          "date": "2026-04-22",
+          "close": 51.22
+        },
+        {
+          "date": "2026-04-23",
+          "close": 46.25
+        },
+        {
+          "date": "2026-04-24",
+          "close": 45.29
+        },
+        {
+          "date": "2026-04-27",
+          "close": 45.0
+        },
+        {
+          "date": "2026-04-28",
+          "close": 46.23
+        },
+        {
+          "date": "2026-04-29",
+          "close": 45.09
+        },
+        {
+          "date": "2026-04-30",
+          "close": 44.28
+        },
+        {
+          "date": "2026-05-01",
+          "close": 45.21
+        },
+        {
+          "date": "2026-05-04",
+          "close": 43.99
+        },
+        {
+          "date": "2026-05-05",
+          "close": 40.97
+        },
+        {
+          "date": "2026-05-06",
+          "close": 42.88
+        },
+        {
+          "date": "2026-05-07",
+          "close": 46.85
+        },
+        {
+          "date": "2026-05-08",
+          "close": 42.58
+        },
+        {
+          "date": "2026-05-11",
+          "close": 41.47
+        },
+        {
+          "date": "2026-05-12",
+          "close": 40.78
+        },
+        {
+          "date": "2026-05-13",
+          "close": 40.87
+        },
+        {
+          "date": "2026-05-14",
+          "close": 42.02
+        },
+        {
+          "date": "2026-05-15",
+          "close": 42.02
+        },
+        {
+          "date": "2026-05-18",
+          "close": 42.5
+        },
+        {
+          "date": "2026-05-19",
+          "close": 40.99
+        },
+        {
+          "date": "2026-05-20",
+          "close": 42.2
+        },
+        {
+          "date": "2026-05-21",
+          "close": 43.53
+        },
+        {
+          "date": "2026-05-22",
+          "close": 43.24
+        },
+        {
+          "date": "2026-05-26",
+          "close": 42.79
+        },
+        {
+          "date": "2026-05-27",
+          "close": 42.95
+        },
+        {
+          "date": "2026-05-28",
+          "close": 43.83
+        },
+        {
+          "date": "2026-05-29",
+          "close": 44.56
+        },
+        {
+          "date": "2026-06-01",
+          "close": 45.21
+        },
+        {
+          "date": "2026-06-02",
+          "close": 43.29
+        },
+        {
+          "date": "2026-06-03",
+          "close": 40.22
+        },
+        {
+          "date": "2026-06-04",
+          "close": 39.29
+        },
+        {
+          "date": "2026-06-05",
+          "close": 38.08
+        },
+        {
+          "date": "2026-06-08",
+          "close": 37.66
+        },
+        {
+          "date": "2026-06-09",
+          "close": 38.11
+        },
+        {
+          "date": "2026-06-10",
+          "close": 35.63
+        },
+        {
+          "date": "2026-06-11",
+          "close": 39.45
+        },
+        {
+          "date": "2026-06-12",
+          "close": 41.18
+        },
+        {
+          "date": "2026-06-15",
+          "close": 39.94
+        },
+        {
+          "date": "2026-06-16",
+          "close": 41.3
+        },
+        {
+          "date": "2026-06-17",
+          "close": 39.17
+        },
+        {
+          "date": "2026-06-18",
+          "close": 39.4
+        },
+        {
+          "date": "2026-06-22",
+          "close": 38.57
+        },
+        {
+          "date": "2026-06-23",
+          "close": 38.67
+        },
+        {
+          "date": "2026-06-24",
+          "close": 44.22
+        },
+        {
+          "date": "2026-06-25",
+          "close": 43.78
+        },
+        {
+          "date": "2026-06-26",
+          "close": 47.65
+        },
+        {
+          "date": "2026-06-29",
+          "close": 48.23
+        },
+        {
+          "date": "2026-06-30",
+          "close": 48.64
+        },
+        {
+          "date": "2026-07-01",
+          "close": 49.2
+        },
+        {
+          "date": "2026-07-02",
+          "close": 51.35
+        },
+        {
+          "date": "2026-07-06",
+          "close": 51.38
+        },
+        {
+          "date": "2026-07-07",
+          "close": 51.16
+        },
+        {
+          "date": "2026-07-08",
+          "close": 47.82
+        },
+        {
+          "date": "2026-07-09",
+          "close": 49.29
+        },
+        {
+          "date": "2026-07-10",
+          "close": 50.81
+        },
+        {
+          "date": "2026-07-13",
+          "close": 49.23
+        },
+        {
+          "date": "2026-07-14",
+          "close": 50.01
+        },
+        {
+          "date": "2026-07-15",
+          "close": 51.01
+        },
+        {
+          "date": "2026-07-16",
+          "close": 51.65
+        },
+        {
+          "date": "2026-07-17",
+          "close": 50.31
+        },
+        {
+          "date": "2026-07-20",
+          "close": 50.87
+        },
+        {
+          "date": "2026-07-21",
+          "close": 49.11
+        },
+        {
+          "date": "2026-07-22",
+          "close": 48.22
+        },
+        {
+          "date": "2026-07-23",
+          "close": 46.33
+        },
+        {
+          "date": "2026-07-24",
+          "close": 48.35
+        },
+        {
+          "date": "2026-07-27",
+          "close": 49.97
+        },
+        {
+          "date": "2026-07-28",
+          "close": 54.84
+        },
+        {
+          "date": "2026-07-29",
+          "close": 56.05
+        },
+        {
+          "date": "2026-07-30",
+          "close": 53.73
+        },
+        {
+          "date": "2026-07-31",
+          "close": 53.0
+        },
+        {
+          "date": "2026-08-03",
+          "close": 54.28
+        },
+        {
+          "date": "2026-08-04",
+          "close": 55.61
+        },
+        {
+          "date": "2026-08-05",
+          "close": 53.38
+        },
+        {
+          "date": "2026-08-06",
+          "close": 43.36
+        },
+        {
+          "date": "2026-08-07",
+          "close": 41.26
+        },
+        {
+          "date": "2026-08-10",
+          "close": 43.16
+        },
+        {
+          "date": "2026-08-11",
+          "close": 41.04
+        },
+        {
+          "date": "2026-08-12",
+          "close": 43.92
+        },
+        {
+          "date": "2026-08-13",
+          "close": 48.0
+        },
+        {
+          "date": "2026-08-14",
+          "close": 45.37
+        },
+        {
+          "date": "2026-08-17",
+          "close": 44.35
+        },
+        {
+          "date": "2026-08-18",
+          "close": 46.7
+        },
+        {
+          "date": "2026-08-19",
+          "close": 47.13
+        },
+        {
+          "date": "2026-08-20",
+          "close": 47.86
+        },
+        {
+          "date": "2026-08-21",
+          "close": 47.93
+        },
+        {
+          "date": "2026-08-24",
+          "close": 48.0
+        },
+        {
+          "date": "2026-08-25",
+          "close": 48.0
+        },
+        {
+          "date": "2026-08-26",
+          "close": 46.25
+        },
+        {
+          "date": "2026-08-27",
+          "close": 43.94
+        },
+        {
+          "date": "2026-08-28",
+          "close": 43.96
+        },
+        {
+          "date": "2026-08-31",
+          "close": 42.28
+        },
+        {
+          "date": "2026-09-01",
+          "close": 41.08
+        },
+        {
+          "date": "2026-09-02",
+          "close": 44.23
+        },
+        {
+          "date": "2026-09-03",
+          "close": 44.19
+        },
+        {
+          "date": "2026-09-04",
+          "close": 45.94
+        },
+        {
+          "date": "2026-09-08",
+          "close": 42.29
+        },
+        {
+          "date": "2026-09-09",
+          "close": 41.13
+        },
+        {
+          "date": "2026-09-10",
+          "close": 43.03
+        },
+        {
+          "date": "2026-09-11",
+          "close": 45.05
+        },
+        {
+          "date": "2026-09-14",
+          "close": 45.32
+        },
+        {
+          "date": "2026-09-15",
+          "close": 42.35
+        },
+        {
+          "date": "2026-09-16",
+          "close": 42.09
+        },
+        {
+          "date": "2026-09-17",
+          "close": 41.35
+        },
+        {
+          "date": "2026-09-18",
+          "close": 38.98
+        },
+        {
+          "date": "2026-09-21",
+          "close": 39.37
+        },
+        {
+          "date": "2026-09-22",
+          "close": 39.07
+        },
+        {
+          "date": "2026-09-23",
+          "close": 38.46
+        },
+        {
+          "date": "2026-09-24",
+          "close": 38.16
+        },
+        {
+          "date": "2026-09-25",
+          "close": 38.45
+        },
+        {
+          "date": "2026-09-28",
+          "close": 37.03
+        },
+        {
+          "date": "2026-09-29",
+          "close": 37.08
+        },
+        {
+          "date": "2026-09-30",
+          "close": 36.17
+        },
+        {
+          "date": "2026-10-01",
+          "close": 35.58
+        },
+        {
+          "date": "2026-10-02",
+          "close": 36.17
+        },
+        {
+          "date": "2026-10-05",
+          "close": 37.55
+        },
+        {
+          "date": "2026-10-06",
+          "close": 38.5
+        },
+        {
+          "date": "2026-10-07",
+          "close": 38.99
+        },
+        {
+          "date": "2026-10-08",
+          "close": 39.52
+        },
+        {
+          "date": "2026-10-09",
+          "close": 40.0
+        },
+        {
+          "date": "2026-10-12",
+          "close": 39.85
+        },
+        {
+          "date": "2026-10-13",
+          "close": 38.84
+        },
+        {
+          "date": "2026-10-14",
+          "close": 37.99
+        },
+        {
+          "date": "2026-10-15",
+          "close": 39.34
+        },
+        {
+          "date": "2026-10-16",
+          "close": 39.43
+        },
+        {
+          "date": "2026-10-19",
+          "close": 39.77
+        },
+        {
+          "date": "2026-10-20",
+          "close": 40.46
+        },
+        {
+          "date": "2026-10-21",
+          "close": 39.51
+        }
+      ],
+      "nextEarningsDate": "2026-11-05",
+      "estimatedEPS": 1.37,
+      "recentEarnings": [
+        {
+          "reportedDate": "2026-08-06",
+          "actualEPS": 1.32,
+          "estimatedEPS": 1.24,
+          "surprisePercent": 6.83,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-05-06",
+          "actualEPS": 0.97,
+          "estimatedEPS": 0.96,
+          "surprisePercent": 0.97,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-02-25",
+          "actualEPS": 1.6,
+          "estimatedEPS": 1.6,
+          "surprisePercent": -0.05,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2025-11-06",
+          "actualEPS": 1.47,
+          "estimatedEPS": 1.48,
+          "surprisePercent": -0.57,
+          "source": "Yahoo Finance"
+        }
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1794669/000179466926000045/0001794669-26-000045-index.htm",
+          "accessionNumber": "0001794669-26-000045",
+          "filingDate": "2026-08-06",
+          "acceptedDate": "2026-08-06",
+          "form": "10-Q",
+          "totalRevenue": 1295000000.0,
+          "netIncome": 22000000.0,
+          "operatingIncome": 95000000.0,
+          "sgaExpense": 231000000.0,
+          "ebitda": 234000000.0
+        },
+        {
+          "quarterEnd": "2026-03-31",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1794669/000179466926000020/0001794669-26-000020-index.htm",
+          "accessionNumber": "0001794669-26-000020",
+          "filingDate": "2026-05-07",
+          "acceptedDate": "2026-05-07",
+          "form": "10-Q",
+          "totalRevenue": 1121000000.0,
+          "netIncome": 15000000.0,
+          "operatingIncome": 50000000.0,
+          "sgaExpense": 216000000.0,
+          "ebitda": 185000000.0
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1794669/000179466925000035/0001794669-25-000035-index.htm",
+          "accessionNumber": "0001794669-25-000035",
+          "filingDate": "2025-11-06",
+          "acceptedDate": "2025-11-06",
+          "form": "10-Q",
+          "totalRevenue": 1176900000.0,
+          "netIncome": 28100000.0,
+          "operatingIncome": 114600000.0,
+          "sgaExpense": 188400000.0,
+          "ebitda": 239700000.0
+        },
+        {
+          "quarterEnd": "2025-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/1794669/000179466925000027/0001794669-25-000027-index.htm",
+          "accessionNumber": "0001794669-25-000027",
+          "filingDate": "2025-08-05",
+          "acceptedDate": "2025-08-05",
+          "form": "10-Q",
+          "totalRevenue": 966000000.0,
+          "netIncome": 34000000.0,
+          "operatingIncome": 83000000.0,
+          "sgaExpense": 131000000.0,
+          "ebitda": 171000000.0
+        }
+      ],
+      "quarterlySource": "SEC EDGAR"
+    },
+    {
+      "ticker": "DAL",
+      "fetchedAt": "2026-10-22T01:35:34.990898Z",
+      "source": "Yahoo Finance",
+      "company": "Delta Air Lines, Inc.",
+      "sector": "Industrials",
+      "marketCap": 51100053504.0,
+      "enterpriseValue": 66972073984.0,
+      "trailingPE": 15.5,
+      "forwardPE": 10.6,
+      "pegRatio": 0.21,
+      "priceToSalesTrailing12Months": 0.71,
+      "priceToBook": 2.26,
+      "grossMargins": 0.18,
+      "operatingMargins": 0.07,
+      "profitMargins": 0.05,
+      "returnOnAssets": 0.04,
+      "returnOnEquity": 0.16,
+      "revenueGrowth": 0.21,
+      "earningsGrowth": -0.47,
+      "revenuePerShare": 110.04,
+      "freeCashflow": 2492124928.0,
+      "operatingCashflow": 8000000000.0,
+      "grossProfits": 12849000448.0,
+      "totalCash": 3787000064.0,
+      "totalCashPerShare": 5.79,
+      "totalDebt": 19935000576.0,
+      "totalRevenue": 71799996416.0,
+      "debtToEquity": 88.55,
+      "currentRatio": 0.4,
+      "quickRatio": 0.24,
+      "bookValue": 34.41,
+      "sharesOutstanding": 657912380.0,
+      "floatShares": 650040347.0,
+      "impliedSharesOutstanding": 657912380.0,
+      "dividendRate": 0.86,
+      "dividendYield": 1.12,
+      "payoutRatio": 0.16,
+      "fiveYearAvgDividendYield": 2.12,
+      "targetHighPrice": 125.0,
+      "targetLowPrice": 53.0,
+      "targetMeanPrice": 101.07,
+      "targetMedianPrice": 101.5,
+      "recommendationMean": 1.32,
+      "numberOfAnalystOpinions": 24.0,
+      "beta": 1.34,
+      "fiftyTwoWeekHigh": 95.68,
+      "fiftyTwoWeekLow": 55.03,
+      "fiftyDayAverage": 81.72,
+      "twoHundredDayAverage": 76.36,
+      "averageVolume": 6290412.0,
+      "averageDailyVolume10Day": 7541650.0,
+      "previousClose": 76.66,
+      "open": 76.94,
+      "regularMarketOpen": 76.94,
+      "dayHigh": 79.25,
+      "dayLow": 76.19,
+      "regularMarketDayHigh": 79.25,
+      "regularMarketDayLow": 76.19,
+      "regularMarketVolume": 8608581.0,
+      "averageVolume10days": 7541650.0,
+      "sharesShort": 25570890.0,
+      "sharesShortPreviousMonthDate": 1788134400.0,
+      "sharesShortPriorMonth": 25258577.0,
+      "dateShortInterest": 1790726400.0,
+      "fullTimeEmployees": 100000.0,
+      "industry": "Airlines",
+      "currency": "USD",
+      "recommendationKey": "strong_buy",
+      "exDividendDate": "2026-10-15",
+      "lastDividendDate": "2026-10-15",
+      "latestPrice": 77.67,
+      "priceHistory": [
+        {
+          "date": "2025-10-22",
+          "close": 59.37
+        },
+        {
+          "date": "2025-10-23",
+          "close": 58.15
+        },
+        {
+          "date": "2025-10-24",
+          "close": 60.31
+        },
+        {
+          "date": "2025-10-27",
+          "close": 59.81
+        },
+        {
+          "date": "2025-10-28",
+          "close": 57.25
+        },
+        {
+          "date": "2025-10-29",
+          "close": 58.14
+        },
+        {
+          "date": "2025-10-30",
+          "close": 56.52
+        },
+        {
+          "date": "2025-10-31",
+          "close": 56.77
+        },
+        {
+          "date": "2025-11-03",
+          "close": 57.88
+        },
+        {
+          "date": "2025-11-04",
+          "close": 55.06
+        },
+        {
+          "date": "2025-11-05",
+          "close": 57.92
+        },
+        {
+          "date": "2025-11-06",
+          "close": 57.2
+        },
+        {
+          "date": "2025-11-07",
+          "close": 58.26
+        },
+        {
+          "date": "2025-11-10",
+          "close": 57.94
+        },
+        {
+          "date": "2025-11-11",
+          "close": 57.13
+        },
+        {
+          "date": "2025-11-12",
+          "close": 59.84
+        },
+        {
+          "date": "2025-11-13",
+          "close": 59.28
+        },
+        {
+          "date": "2025-11-14",
+          "close": 57.79
+        },
+        {
+          "date": "2025-11-17",
+          "close": 55.17
+        },
+        {
+          "date": "2025-11-18",
+          "close": 56.53
+        },
+        {
+          "date": "2025-11-19",
+          "close": 56.27
+        },
+        {
+          "date": "2025-11-20",
+          "close": 55.38
+        },
+        {
+          "date": "2025-11-21",
+          "close": 57.95
+        },
+        {
+          "date": "2025-11-24",
+          "close": 60.03
+        },
+        {
+          "date": "2025-11-25",
+          "close": 61.49
+        },
+        {
+          "date": "2025-11-26",
+          "close": 63.59
+        },
+        {
+          "date": "2025-11-28",
+          "close": 63.42
+        },
+        {
+          "date": "2025-12-01",
+          "close": 63.47
+        },
+        {
+          "date": "2025-12-02",
+          "close": 64.45
+        },
+        {
+          "date": "2025-12-03",
+          "close": 66.78
+        },
+        {
+          "date": "2025-12-04",
+          "close": 66.53
+        },
+        {
+          "date": "2025-12-05",
+          "close": 66.39
+        },
+        {
+          "date": "2025-12-08",
+          "close": 66.51
+        },
+        {
+          "date": "2025-12-09",
+          "close": 66.7
+        },
+        {
+          "date": "2025-12-10",
+          "close": 69.19
+        },
+        {
+          "date": "2025-12-11",
+          "close": 69.81
+        },
+        {
+          "date": "2025-12-12",
+          "close": 69.07
+        },
+        {
+          "date": "2025-12-15",
+          "close": 70.52
+        },
+        {
+          "date": "2025-12-16",
+          "close": 70.39
+        },
+        {
+          "date": "2025-12-17",
+          "close": 68.98
+        },
+        {
+          "date": "2025-12-18",
+          "close": 69.41
+        },
+        {
+          "date": "2025-12-19",
+          "close": 70.31
+        },
+        {
+          "date": "2025-12-22",
+          "close": 71.3
+        },
+        {
+          "date": "2025-12-23",
+          "close": 69.75
+        },
+        {
+          "date": "2025-12-24",
+          "close": 70.21
+        },
+        {
+          "date": "2025-12-26",
+          "close": 70.1
+        },
+        {
+          "date": "2025-12-29",
+          "close": 68.79
+        },
+        {
+          "date": "2025-12-30",
+          "close": 68.61
+        },
+        {
+          "date": "2025-12-31",
+          "close": 68.67
+        },
+        {
+          "date": "2026-01-02",
+          "close": 68.33
+        },
+        {
+          "date": "2026-01-05",
+          "close": 71.06
+        },
+        {
+          "date": "2026-01-06",
+          "close": 71.46
+        },
+        {
+          "date": "2026-01-07",
+          "close": 70.89
+        },
+        {
+          "date": "2026-01-08",
+          "close": 70.54
+        },
+        {
+          "date": "2026-01-09",
+          "close": 71.54
+        },
+        {
+          "date": "2026-01-12",
+          "close": 70.28
+        },
+        {
+          "date": "2026-01-13",
+          "close": 68.6
+        },
+        {
+          "date": "2026-01-14",
+          "close": 67.77
+        },
+        {
+          "date": "2026-01-15",
+          "close": 70.59
+        },
+        {
+          "date": "2026-01-16",
+          "close": 69.68
+        },
+        {
+          "date": "2026-01-20",
+          "close": 66.75
+        },
+        {
+          "date": "2026-01-21",
+          "close": 68.22
+        },
+        {
+          "date": "2026-01-22",
+          "close": 68.22
+        },
+        {
+          "date": "2026-01-23",
+          "close": 67.24
+        },
+        {
+          "date": "2026-01-26",
+          "close": 66.79
+        },
+        {
+          "date": "2026-01-27",
+          "close": 65.44
+        },
+        {
+          "date": "2026-01-28",
+          "close": 65.13
+        },
+        {
+          "date": "2026-01-29",
+          "close": 65.84
+        },
+        {
+          "date": "2026-01-30",
+          "close": 65.19
+        },
+        {
+          "date": "2026-02-02",
+          "close": 68.35
+        },
+        {
+          "date": "2026-02-03",
+          "close": 69.69
+        },
+        {
+          "date": "2026-02-04",
+          "close": 70.11
+        },
+        {
+          "date": "2026-02-05",
+          "close": 69.04
+        },
+        {
+          "date": "2026-02-06",
+          "close": 74.55
+        },
+        {
+          "date": "2026-02-09",
+          "close": 74.21
+        },
+        {
+          "date": "2026-02-10",
+          "close": 73.67
+        },
+        {
+          "date": "2026-02-11",
+          "close": 70.66
+        },
+        {
+          "date": "2026-02-12",
+          "close": 68.76
+        },
+        {
+          "date": "2026-02-13",
+          "close": 68.27
+        },
+        {
+          "date": "2026-02-17",
+          "close": 70.1
+        },
+        {
+          "date": "2026-02-18",
+          "close": 70.36
+        },
+        {
+          "date": "2026-02-19",
+          "close": 66.73
+        },
+        {
+          "date": "2026-02-20",
+          "close": 68.71
+        },
+        {
+          "date": "2026-02-23",
+          "close": 66.17
+        },
+        {
+          "date": "2026-02-24",
+          "close": 68.5
+        },
+        {
+          "date": "2026-02-25",
+          "close": 68.65
+        },
+        {
+          "date": "2026-02-26",
+          "close": 69.95
+        },
+        {
+          "date": "2026-02-27",
+          "close": 65.18
+        },
+        {
+          "date": "2026-03-02",
+          "close": 63.74
+        },
+        {
+          "date": "2026-03-03",
+          "close": 64.09
+        },
+        {
+          "date": "2026-03-04",
+          "close": 63.33
+        },
+        {
+          "date": "2026-03-05",
+          "close": 60.83
+        },
+        {
+          "date": "2026-03-06",
+          "close": 58.54
+        },
+        {
+          "date": "2026-03-09",
+          "close": 60.1
+        },
+        {
+          "date": "2026-03-10",
+          "close": 58.8
+        },
+        {
+          "date": "2026-03-11",
+          "close": 58.67
+        },
+        {
+          "date": "2026-03-12",
+          "close": 57.48
+        },
+        {
+          "date": "2026-03-13",
+          "close": 58.32
+        },
+        {
+          "date": "2026-03-16",
+          "close": 60.36
+        },
+        {
+          "date": "2026-03-17",
+          "close": 64.32
+        },
+        {
+          "date": "2026-03-18",
+          "close": 63.31
+        },
+        {
+          "date": "2026-03-19",
+          "close": 64.5
+        },
+        {
+          "date": "2026-03-20",
+          "close": 62.94
+        },
+        {
+          "date": "2026-03-23",
+          "close": 64.62
+        },
+        {
+          "date": "2026-03-24",
+          "close": 66.12
+        },
+        {
+          "date": "2026-03-25",
+          "close": 67.45
+        },
+        {
+          "date": "2026-03-26",
+          "close": 66.33
+        },
+        {
+          "date": "2026-03-27",
+          "close": 64.32
+        },
+        {
+          "date": "2026-03-30",
+          "close": 62.69
+        },
+        {
+          "date": "2026-03-31",
+          "close": 65.96
+        },
+        {
+          "date": "2026-04-01",
+          "close": 67.07
+        },
+        {
+          "date": "2026-04-02",
+          "close": 66.23
+        },
+        {
+          "date": "2026-04-06",
+          "close": 66.25
+        },
+        {
+          "date": "2026-04-07",
+          "close": 65.1
+        },
+        {
+          "date": "2026-04-08",
+          "close": 67.54
+        },
+        {
+          "date": "2026-04-09",
+          "close": 67.29
+        },
+        {
+          "date": "2026-04-10",
+          "close": 67.28
+        },
+        {
+          "date": "2026-04-13",
+          "close": 66.52
+        },
+        {
+          "date": "2026-04-14",
+          "close": 71.13
+        },
+        {
+          "date": "2026-04-15",
+          "close": 71.42
+        },
+        {
+          "date": "2026-04-16",
+          "close": 69.34
+        },
+        {
+          "date": "2026-04-17",
+          "close": 71.15
+        },
+        {
+          "date": "2026-04-20",
+          "close": 70.65
+        },
+        {
+          "date": "2026-04-21",
+          "close": 69.67
+        },
+        {
+          "date": "2026-04-22",
+          "close": 67.87
+        },
+        {
+          "date": "2026-04-23",
+          "close": 67.83
+        },
+        {
+          "date": "2026-04-24",
+          "close": 67.91
+        },
+        {
+          "date": "2026-04-27",
+          "close": 67.66
+        },
+        {
+          "date": "2026-04-28",
+          "close": 66.69
+        },
+        {
+          "date": "2026-04-29",
+          "close": 65.75
+        },
+        {
+          "date": "2026-04-30",
+          "close": 67.45
+        },
+        {
+          "date": "2026-05-01",
+          "close": 68.44
+        },
+        {
+          "date": "2026-05-04",
+          "close": 67.96
+        },
+        {
+          "date": "2026-05-05",
+          "close": 70.3
+        },
+        {
+          "date": "2026-05-06",
+          "close": 72.76
+        },
+        {
+          "date": "2026-05-07",
+          "close": 72.53
+        },
+        {
+          "date": "2026-05-08",
+          "close": 72.75
+        },
+        {
+          "date": "2026-05-11",
+          "close": 70.64
+        },
+        {
+          "date": "2026-05-12",
+          "close": 70.15
+        },
+        {
+          "date": "2026-05-13",
+          "close": 70.49
+        },
+        {
+          "date": "2026-05-14",
+          "close": 71.17
+        },
+        {
+          "date": "2026-05-15",
+          "close": 69.86
+        },
+        {
+          "date": "2026-05-18",
+          "close": 69.87
+        },
+        {
+          "date": "2026-05-19",
+          "close": 67.4
+        },
+        {
+          "date": "2026-05-20",
+          "close": 73.73
+        },
+        {
+          "date": "2026-05-21",
+          "close": 75.25
+        },
+        {
+          "date": "2026-05-22",
+          "close": 75.74
+        },
+        {
+          "date": "2026-05-26",
+          "close": 78.97
+        },
+        {
+          "date": "2026-05-27",
+          "close": 81.37
+        },
+        {
+          "date": "2026-05-28",
+          "close": 82.06
+        },
+        {
+          "date": "2026-05-29",
+          "close": 82.05
+        },
+        {
+          "date": "2026-06-01",
+          "close": 81.04
+        },
+        {
+          "date": "2026-06-02",
+          "close": 79.6
+        },
+        {
+          "date": "2026-06-03",
+          "close": 78.37
+        },
+        {
+          "date": "2026-06-04",
+          "close": 79.09
+        },
+        {
+          "date": "2026-06-05",
+          "close": 79.0
+        },
+        {
+          "date": "2026-06-08",
+          "close": 77.8
+        },
+        {
+          "date": "2026-06-09",
+          "close": 80.74
+        },
+        {
+          "date": "2026-06-10",
+          "close": 76.07
+        },
+        {
+          "date": "2026-06-11",
+          "close": 81.4
+        },
+        {
+          "date": "2026-06-12",
+          "close": 82.62
+        },
+        {
+          "date": "2026-06-15",
+          "close": 83.63
+        },
+        {
+          "date": "2026-06-16",
+          "close": 82.7
+        },
+        {
+          "date": "2026-06-17",
+          "close": 81.82
+        },
+        {
+          "date": "2026-06-18",
+          "close": 83.74
+        },
+        {
+          "date": "2026-06-22",
+          "close": 85.47
+        },
+        {
+          "date": "2026-06-23",
+          "close": 86.26
+        },
+        {
+          "date": "2026-06-24",
+          "close": 90.17
+        },
+        {
+          "date": "2026-06-25",
+          "close": 91.63
+        },
+        {
+          "date": "2026-06-26",
+          "close": 92.08
+        },
+        {
+          "date": "2026-06-29",
+          "close": 92.68
+        },
+        {
+          "date": "2026-06-30",
+          "close": 93.17
+        },
+        {
+          "date": "2026-07-01",
+          "close": 92.57
+        },
+        {
+          "date": "2026-07-02",
+          "close": 92.26
+        },
+        {
+          "date": "2026-07-06",
+          "close": 91.2
+        },
+        {
+          "date": "2026-07-07",
+          "close": 88.16
+        },
+        {
+          "date": "2026-07-08",
+          "close": 86.83
+        },
+        {
+          "date": "2026-07-09",
+          "close": 88.75
+        },
+        {
+          "date": "2026-07-10",
+          "close": 87.14
+        },
+        {
+          "date": "2026-07-13",
+          "close": 85.95
+        },
+        {
+          "date": "2026-07-14",
+          "close": 85.27
+        },
+        {
+          "date": "2026-07-15",
+          "close": 85.72
+        },
+        {
+          "date": "2026-07-16",
+          "close": 86.46
+        },
+        {
+          "date": "2026-07-17",
+          "close": 83.93
+        },
+        {
+          "date": "2026-07-20",
+          "close": 84.3
+        },
+        {
+          "date": "2026-07-21",
+          "close": 84.39
+        },
+        {
+          "date": "2026-07-22",
+          "close": 83.29
+        },
+        {
+          "date": "2026-07-23",
+          "close": 81.74
+        },
+        {
+          "date": "2026-07-24",
+          "close": 84.82
+        },
+        {
+          "date": "2026-07-27",
+          "close": 86.43
+        },
+        {
+          "date": "2026-07-28",
+          "close": 89.12
+        },
+        {
+          "date": "2026-07-29",
+          "close": 86.01
+        },
+        {
+          "date": "2026-07-30",
+          "close": 88.34
+        },
+        {
+          "date": "2026-07-31",
+          "close": 87.19
+        },
+        {
+          "date": "2026-08-03",
+          "close": 91.33
+        },
+        {
+          "date": "2026-08-04",
+          "close": 92.51
+        },
+        {
+          "date": "2026-08-05",
+          "close": 92.88
+        },
+        {
+          "date": "2026-08-06",
+          "close": 91.72
+        },
+        {
+          "date": "2026-08-07",
+          "close": 91.08
+        },
+        {
+          "date": "2026-08-10",
+          "close": 88.96
+        },
+        {
+          "date": "2026-08-11",
+          "close": 90.16
+        },
+        {
+          "date": "2026-08-12",
+          "close": 89.68
+        },
+        {
+          "date": "2026-08-13",
+          "close": 91.05
+        },
+        {
+          "date": "2026-08-14",
+          "close": 89.1
+        },
+        {
+          "date": "2026-08-17",
+          "close": 87.34
+        },
+        {
+          "date": "2026-08-18",
+          "close": 85.46
+        },
+        {
+          "date": "2026-08-19",
+          "close": 83.06
+        },
+        {
+          "date": "2026-08-20",
+          "close": 80.83
+        },
+        {
+          "date": "2026-08-21",
+          "close": 82.18
+        },
+        {
+          "date": "2026-08-24",
+          "close": 82.25
+        },
+        {
+          "date": "2026-08-25",
+          "close": 83.39
+        },
+        {
+          "date": "2026-08-26",
+          "close": 82.85
+        },
+        {
+          "date": "2026-08-27",
+          "close": 80.91
+        },
+        {
+          "date": "2026-08-28",
+          "close": 79.85
+        },
+        {
+          "date": "2026-08-31",
+          "close": 77.78
+        },
+        {
+          "date": "2026-09-01",
+          "close": 76.17
+        },
+        {
+          "date": "2026-09-02",
+          "close": 77.92
+        },
+        {
+          "date": "2026-09-03",
+          "close": 78.53
+        },
+        {
+          "date": "2026-09-04",
+          "close": 79.95
+        },
+        {
+          "date": "2026-09-08",
+          "close": 78.74
+        },
+        {
+          "date": "2026-09-09",
+          "close": 78.53
+        },
+        {
+          "date": "2026-09-10",
+          "close": 78.02
+        },
+        {
+          "date": "2026-09-11",
+          "close": 79.69
+        },
+        {
+          "date": "2026-09-14",
+          "close": 79.58
+        },
+        {
+          "date": "2026-09-15",
+          "close": 78.67
+        },
+        {
+          "date": "2026-09-16",
+          "close": 77.65
+        },
+        {
+          "date": "2026-09-17",
+          "close": 79.21
+        },
+        {
+          "date": "2026-09-18",
+          "close": 79.4
+        },
+        {
+          "date": "2026-09-21",
+          "close": 82.27
+        },
+        {
+          "date": "2026-09-22",
+          "close": 83.68
+        },
+        {
+          "date": "2026-09-23",
+          "close": 81.52
+        },
+        {
+          "date": "2026-09-24",
+          "close": 82.53
+        },
+        {
+          "date": "2026-09-25",
+          "close": 84.7
+        },
+        {
+          "date": "2026-09-28",
+          "close": 83.79
+        },
+        {
+          "date": "2026-09-29",
+          "close": 84.63
+        },
+        {
+          "date": "2026-09-30",
+          "close": 83.23
+        },
+        {
+          "date": "2026-10-01",
+          "close": 83.89
+        },
+        {
+          "date": "2026-10-02",
+          "close": 83.85
+        },
+        {
+          "date": "2026-10-05",
+          "close": 82.85
+        },
+        {
+          "date": "2026-10-06",
+          "close": 83.43
+        },
+        {
+          "date": "2026-10-07",
+          "close": 82.74
+        },
+        {
+          "date": "2026-10-08",
+          "close": 81.91
+        },
+        {
+          "date": "2026-10-09",
+          "close": 81.94
+        },
+        {
+          "date": "2026-10-12",
+          "close": 79.89
+        },
+        {
+          "date": "2026-10-13",
+          "close": 79.35
+        },
+        {
+          "date": "2026-10-14",
+          "close": 76.44
+        },
+        {
+          "date": "2026-10-15",
+          "close": 78.08
+        },
+        {
+          "date": "2026-10-16",
+          "close": 75.37
+        },
+        {
+          "date": "2026-10-19",
+          "close": 74.63
+        },
+        {
+          "date": "2026-10-20",
+          "close": 76.66
+        },
+        {
+          "date": "2026-10-21",
+          "close": 77.67
+        }
+      ],
+      "nextEarningsDate": "2027-01-13",
+      "estimatedEPS": 1.43,
+      "recentEarnings": [
+        {
+          "reportedDate": "2026-10-09",
+          "actualEPS": 1.72,
+          "estimatedEPS": 1.76,
+          "surprisePercent": -2.12,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-07-10",
+          "actualEPS": 1.56,
+          "estimatedEPS": 1.49,
+          "surprisePercent": 4.48,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-04-08",
+          "actualEPS": 0.64,
+          "estimatedEPS": 0.57,
+          "surprisePercent": 11.35,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-01-13",
+          "actualEPS": 1.55,
+          "estimatedEPS": 1.55,
+          "surprisePercent": 0.27,
+          "source": "Yahoo Finance"
+        }
+      ],
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-09-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000038/0000027904-26-000038-index.htm",
+          "accessionNumber": "0000027904-26-000038",
+          "filingDate": "2026-10-09",
+          "acceptedDate": "2026-10-10",
+          "form": "10-Q",
+          "totalRevenue": 20186000000.0,
+          "netIncome": 756000000.0,
+          "operatingIncome": 1454000000.0,
+          "ebitda": 2127000000.0
+        },
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000031/0000027904-26-000031-index.htm",
+          "accessionNumber": "0000027904-26-000031",
+          "filingDate": "2026-07-10",
+          "acceptedDate": "2026-07-11",
+          "form": "10-Q",
+          "totalRevenue": 19757000000.0,
+          "netIncome": 1604000000.0,
+          "operatingIncome": 1864000000.0,
+          "ebitda": 2520000000.0
+        },
+        {
+          "quarterEnd": "2026-03-31",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000022/0000027904-26-000022-index.htm",
+          "accessionNumber": "0000027904-26-000022",
+          "filingDate": "2026-04-08",
+          "acceptedDate": "2026-04-09",
+          "form": "10-Q",
+          "totalRevenue": 15854000000.0,
+          "netIncome": -289000000.0,
+          "operatingIncome": 501000000.0,
+          "ebitda": 1136000000.0
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/27904/000002790425000020/0000027904-25-000020-index.htm",
+          "accessionNumber": "0000027904-25-000020",
+          "filingDate": "2025-10-09",
+          "acceptedDate": "2025-10-10",
+          "form": "10-Q",
+          "totalRevenue": 16673000000.0,
+          "netIncome": 1417000000.0,
+          "operatingIncome": 1684000000.0,
+          "ebitda": 2298000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"

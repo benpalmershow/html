@@ -214,6 +214,30 @@ function renderLatestUpdatesView(financialData) {
     `;
 }
 
+function compareEarningsCards(a, b) {
+    const rank = (indicator) => {
+        const isNew = typeof isIndicatorNew === 'function' ? isIndicatorNew(indicator) : !!indicator.isNew;
+        if (isNew) {
+            const reported = indicator.reportedDate ? new Date(indicator.reportedDate).getTime() : 0;
+            return { pin: 0, t: Number.isNaN(reported) ? 0 : -reported };
+        }
+        const nextRaw = indicator.nextEarningsDate;
+        if (nextRaw) {
+            const stamp = String(nextRaw).length <= 10 ? `${nextRaw}T00:00:00Z` : nextRaw;
+            const next = new Date(stamp).getTime();
+            const startOfToday = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
+            if (!Number.isNaN(next) && next >= startOfToday) return { pin: 1, t: next };
+        }
+        const updated = indicator.lastUpdated ? new Date(indicator.lastUpdated).getTime() : 0;
+        return { pin: 2, t: Number.isNaN(updated) ? 0 : -updated };
+    };
+    const left = rank(a);
+    const right = rank(b);
+    if (left.pin !== right.pin) return left.pin - right.pin;
+    if (left.t !== right.t) return left.t - right.t;
+    return String(a.ticker || a.name || '').localeCompare(String(b.ticker || b.name || ''));
+}
+
 function renderCategoryView(financialData, categories, filterCategory) {
     let html = '';
 
@@ -260,10 +284,10 @@ function renderCategoryView(financialData, categories, filterCategory) {
                 return a.name.localeCompare(b.name);
             }
 
-            // Earnings: follow the order of json/earnings-tickers.json. The sort
-            // is stable, so returning 0 keeps the configured sequence.
+            // Earnings: recently reported cards stay on top, then soonest
+            // upcoming print, then remaining names by lastUpdated.
             if (category === 'Earnings') {
-                return 0;
+                return compareEarningsCards(a, b);
             }
 
             // Other categories: sort by lastUpdated descending
@@ -421,7 +445,7 @@ function convertEarningsToIndicators(earnings, configuredTickers = null) {
             name: entry.ticker,
             ticker: entry.ticker,
             url: `https://finance.yahoo.com/quote/${entry.ticker}`,
-            lastUpdated: latestQ?.filingDate || latest.reportedDate || entry.fetchedAt,
+            lastUpdated: latestQ?.acceptedDate || latestQ?.filingDate || latest.reportedDate || entry.fetchedAt,
             reportedDate: latest.reportedDate || '',
             isNew: (() => {
                 const d = latest.reportedDate ? new Date(latest.reportedDate) : null;

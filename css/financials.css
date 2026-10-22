@@ -150,6 +150,10 @@
 /* Earnings cards */
 .category[data-category="Earnings"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 
+.earnings-ticker { display: inline-flex; align-items: center; padding: 1px 5px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-muted); vertical-align: middle; }
+
+.earnings-day-change { font-size: 0.72rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: 6px; }
+
 .earnings-pill { display: inline-block; padding: 1px 5px; font-size: 0.65rem; font-weight: 600; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-secondary); margin-left: 4px; vertical-align: middle; }
 
 .earnings-surprise-pill { display: inline-block; padding: 1px 5px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; font-variant-numeric: tabular-nums; margin-left: 4px; }
@@ -175,23 +179,132 @@
 .earnings-negative { color: #ef4444; font-weight: 700; }
 
 /* QUARTERLY FINANCIALS TABLE */
-.quarterly-section { margin: 4px 0 8px; padding: 6px; background: rgba(var(--border-color-rgb), 0.08); border-radius: 6px; overflow-x: auto; }
+.quarterly-section {
+    margin: 4px 0 8px;
+    padding: 6px;
+    background: rgba(var(--border-color-rgb), 0.08);
+    border-radius: 6px;
+    overflow: auto;
+    max-inline-size: 100%;
+    container-type: inline-size;
+}
 
-.quarterly-header { display: grid; grid-template-columns: minmax(62px, 1.15fr) minmax(56px, 1fr) minmax(52px, 1fr) minmax(52px, 1fr) minmax(46px, 0.85fr); gap: 4px; padding: 3px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 3px; min-width: 290px; }
+.quarterly-section:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 1px; }
 
-.quarterly-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.quarterly-section .quarterly-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    font-size: 0.68rem;
+    --label-2: "Revenue";
+    --label-3: "Net Inc.";
+    --label-4: "Op. Inc.";
+}
 
-.quarterly-label:first-child { text-align: left; }
+.quarterly-section .quarterly-table caption.earnings-subheading {
+    caption-side: top;
+    text-align: left;
+    margin: 0 0 4px;
+}
 
-.quarterly-row { display: grid; grid-template-columns: minmax(62px, 1.15fr) minmax(56px, 1fr) minmax(52px, 1fr) minmax(52px, 1fr) minmax(46px, 0.85fr); gap: 4px; padding: 5px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1); transition: background-color 0.2s ease; min-width: 290px; }
+.quarterly-section .quarterly-table th,
+.quarterly-section .quarterly-table td {
+    padding: 5px 4px;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
+    white-space: nowrap;
+    font-size: 0.68rem;
+}
 
-.quarterly-row:last-child { border-bottom: none; }
+.quarterly-section .quarterly-table thead {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+}
 
-.quarterly-row:hover { background-color: rgba(var(--logo-teal-rgb), 0.05); }
+.quarterly-section .quarterly-table thead th {
+    background: var(--bg-secondary);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    text-align: right;
+}
 
-.quarterly-date { font-size: 0.7rem; font-weight: 600; color: var(--text-primary); text-align: left; white-space: nowrap; }
+.quarterly-section .quarterly-table thead th:first-child,
+.quarterly-section .quarterly-table tbody th {
+    text-align: left;
+}
 
-.quarterly-metric { font-size: 0.68rem; font-weight: 600; color: var(--text-secondary); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.quarterly-section .quarterly-table tbody th {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    background: var(--bg-primary);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.quarterly-section .quarterly-table td {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+}
+
+.quarterly-section .quarterly-table tbody tr:last-child th,
+.quarterly-section .quarterly-table tbody tr:last-child td { border-bottom: none; }
+
+.quarterly-section .quarterly-table tbody tr:hover th,
+.quarterly-section .quarterly-table tbody tr:hover td { background-color: rgba(var(--logo-teal-rgb), 0.05); }
+
+@container (width < 300px) {
+    .quarterly-section .quarterly-table,
+    .quarterly-section .quarterly-table tbody,
+    .quarterly-section .quarterly-table tr,
+    .quarterly-section .quarterly-table th,
+    .quarterly-section .quarterly-table td { display: block; }
+
+    .quarterly-section .quarterly-table caption.earnings-subheading {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .quarterly-section .quarterly-table thead { display: none; }
+
+    .quarterly-section .quarterly-table tbody tr {
+        margin-block-end: 0.55rem;
+        padding-block-end: 0.35rem;
+        border-bottom: 1px solid rgba(var(--border-color-rgb), 0.16);
+    }
+
+    .quarterly-section .quarterly-table tbody tr:last-child {
+        margin-block-end: 0;
+        border-bottom: none;
+    }
+
+    .quarterly-section .quarterly-table tbody th {
+        position: sticky;
+        inset-block-start: 0;
+        inset-inline-start: auto;
+        z-index: 2;
+        background: var(--bg-secondary);
+        padding-block: 4px;
+    }
+
+    .quarterly-section .quarterly-table td {
+        text-align: left;
+        padding-block: 2px;
+    }
+
+    .quarterly-section .quarterly-table td:nth-child(2)::before { content: var(--label-2) ": "; color: var(--text-muted); font-weight: 500; }
+    .quarterly-section .quarterly-table td:nth-child(3)::before { content: var(--label-3) ": "; color: var(--text-muted); font-weight: 500; }
+    .quarterly-section .quarterly-table td:nth-child(4)::before { content: var(--label-4) ": "; color: var(--text-muted); font-weight: 500; }
+}
 
 .sec-filing-link { color: var(--logo-teal); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: color var(--transition-fast); }
 

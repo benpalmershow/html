@@ -14,26 +14,27 @@ const Services = (function () {
         }
 
         async fetchJSON(path, options = {}) {
+            const { bustCache, noCacheBust, ...fetchOptions } = options;
             const cacheKey = path;
-            if (this._cache.has(cacheKey) && !options.bustCache) {
+            if (this._cache.has(cacheKey) && !bustCache) {
                 return this._cache.get(cacheKey);
             }
 
             // If a fetch for this key is already in-flight, reuse that Promise
             // to avoid sending multiple network requests before the cache is warm
-            if (this._inflight.has(cacheKey) && !options.bustCache) {
+            if (this._inflight.has(cacheKey) && !bustCache) {
                 return this._inflight.get(cacheKey);
             }
 
             let fetchPath = path;
-            if (!options.bustCache) {
+            if (!bustCache && !noCacheBust) {
                 const params = new URLSearchParams({ _t: Date.now() });
                 fetchPath = `${path}?${params.toString()}`;
             }
 
             const fetchPromise = fetch(fetchPath, {
                 headers: { 'Accept': 'application/json' },
-                ...options
+                ...fetchOptions
             }).then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to fetch ${path}: ${response.status}`);

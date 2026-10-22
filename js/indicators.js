@@ -582,17 +582,27 @@ function renderHormuz(indicator) {
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Rev Growth:</span><span class="month-value">${growthSign}${(indicator.revenueGrowth * 100).toFixed(1)}% YoY</span></div>`);
         }
 
-        // Row 5: Next Earnings Date & Estimate
-        if (indicator.nextEarningsDate) {
-            const nextDate = new Date(indicator.nextEarningsDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-            const estText = indicator.estimatedNextEPS != null ? ` <span class="earnings-vs">(Est: $${indicator.estimatedNextEPS.toFixed(2)})</span>` : '';
-            latestItems.push(`<div class="latest-data-row"><span class="month-label">Next Report:</span><span class="month-value">${nextDate}${estText}</span></div>`);
-        }
-
         const latestDataHtml = latestItems.join('');
 
         // --- Card Expanded: Historical table & Key Fundamentals ---
         let historyDataHtml = '';
+
+        // 0. Next scheduled report (shown in the expanded card, not the front)
+        if (indicator.nextEarningsDate) {
+            hasHistory = true;
+            const nextDate = new Date(indicator.nextEarningsDate + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+            const nextStats = [{ label: 'Date', value: nextDate, tip: 'Next scheduled earnings report' }];
+            if (indicator.estimatedNextEPS != null) {
+                nextStats.push({ label: 'Est. EPS', value: `$${indicator.estimatedNextEPS.toFixed(2)}`, tip: 'Consensus EPS estimate for the next report' });
+            }
+            const nextStatsHtml = nextStats.map(s => `
+                <div class="stat-item" title="${s.tip}">
+                    <span class="stat-label">${s.label}</span>
+                    <span class="stat-value">${s.value}</span>
+                </div>
+            `).join('');
+            historyDataHtml += `<div class="earnings-subheading">Next Report</div><div class="earnings-stats-grid">${nextStatsHtml}</div>`;
+        }
 
         // 1. Quarterly financials table (SEC filings)
         if (quarterly.length > 0) {

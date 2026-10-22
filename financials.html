@@ -90,12 +90,14 @@
   </noscript>
 
   <!-- Preload critical resources -->
-  <link rel="preload" href="js/services.js?v=20260816" as="script">
+  <link rel="preload" href="js/services.js?v=20261022" as="script">
   <link rel="preload" href="js/utils.js?v=20260816" as="script">
-  <link rel="preload" href="js/indicators.js?v=20261020" as="script">
+  <link rel="preload" href="js/indicators.js?v=20261022" as="script">
   <link rel="preload" href="js/charts.js?v=20260816" as="script">
   <link rel="preload" href="js/filters.js?v=20260816" as="script">
-  <link rel="preload" href="js/financials.js?v=20261020" as="script">
+  <link rel="preload" href="js/financials.js?v=20261022" as="script">
+  <!-- Tracked earnings tickers (source of truth for the Earnings section) -->
+  <link rel="preload" href="json/earnings-tickers.json" as="fetch" crossorigin="anonymous">
 
    <!-- DNS prefetch for CDN resources -->
    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -238,13 +240,13 @@
   <script src="js/component-loaders.js?v=20260816" defer></script>
 
   <!-- Critical Financials Module Scripts (loaded in dependency order) -->
-  <script src="js/services.js?v=20260816" defer></script>
+  <script src="js/services.js?v=20261022" defer></script>
   <script src="js/html-utils.js?v=20261019" defer></script>
   <script src="js/utils.js?v=20260816" defer></script>
-  <script src="js/indicators.js?v=20261020" defer></script>
+  <script src="js/indicators.js?v=20261022" defer></script>
   <script src="js/charts.js?v=20260816" defer></script>
   <script src="js/filters.js?v=20260816" defer></script>
-  <script src="js/financials.js?v=20261020" defer></script>
+  <script src="js/financials.js?v=20261022" defer></script>
   <script src="js/13f-holdings.js?v=20260816" defer></script>
   <script src="js/fec-data.js?v=20261019" defer></script>
 

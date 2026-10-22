@@ -11,6 +11,10 @@ const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'S
 
 const ENABLE_EARNINGS = true;
 
+// Source of truth for the tickers shown in the Earnings section. The same file
+// drives scripts/fetch_earnings.py and scripts/fetch_sec_quarterly.py.
+const EARNINGS_TICKERS_FILE = 'json/earnings-tickers.json';
+
 const SELECTORS = {
     FILTER_BTN: '.filter-btn',
     CATEGORY_DROPDOWN: '#financials-filters',
@@ -78,6 +82,7 @@ function scrollToIndicatorByName(indicatorName) {
 }
 
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
+    console.log('TRACE renderDashboard', filterCategory, sortByLatest, new Error().stack);
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
 
@@ -256,6 +261,12 @@ function renderCategoryView(financialData, categories, filterCategory) {
                 return a.name.localeCompare(b.name);
             }
 
+            // Earnings: follow the order of json/earnings-tickers.json. The sort
+            // is stable, so returning 0 keeps the configured sequence.
+            if (category === 'Earnings') {
+                return 0;
+            }
+
             // Other categories: sort by lastUpdated descending
             const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
             const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
@@ -335,13 +346,15 @@ function setupLazyIndicatorRendering() {
 
 async function fetchFinancialData() {
     try {
-        const [data, earningsData] = await Promise.all([
+        const [data, earningsData, tickerConfig] = await Promise.all([
             Services.dataService.fetchJSON('json/financials-data.json'),
-            Services.dataService.fetchJSON('json/earnings.json').catch(() => null)
+            Services.dataService.fetchJSON('json/earnings.json').catch(() => null),
+            Services.dataService.fetchJSON(EARNINGS_TICKERS_FILE, { noCacheBust: true, cache: 'no-cache' }).catch(() => null)
         ]);
 
         if (ENABLE_EARNINGS && earningsData && earningsData.earnings && earningsData.earnings.length) {
-            const earningsIndicators = convertEarningsToIndicators(earningsData.earnings);
+            const configuredTickers = getConfiguredTickers(tickerConfig);
+            const earningsIndicators = convertEarningsToIndicators(earningsData.earnings, configuredTickers);
             data.indices = data.indices.filter(item => item.category !== 'Earnings');
             data.indices.push(...earningsIndicators);
         }
@@ -355,8 +368,47 @@ async function fetchFinancialData() {
     }
 }
 
-function convertEarningsToIndicators(earnings) {
-    return earnings.map(entry => {
+/* =========================================
+   Earnings Ticker Configuration (SRP)
+   json/earnings-tickers.json is the source of truth for which companies the
+   Earnings section tracks. Editing that file changes the page.
+   ========================================= */
+
+/** Normalized, de-duplicated ticker list from json/earnings-tickers.json.
+ *  Returns null when the config is unavailable so the page can still render
+ *  whatever the fetcher produced. */
+function getConfiguredTickers(tickerConfig) {
+    const raw = tickerConfig && Array.isArray(tickerConfig.tickers) ? tickerConfig.tickers : [];
+    const tickers = [];
+    raw.forEach(ticker => {
+        const normalized = String(ticker || '').trim().toUpperCase();
+        if (normalized && !tickers.includes(normalized)) tickers.push(normalized);
+    });
+    return tickers.length ? tickers : null;
+}
+
+/** Keep only the configured tickers and order them the way the config lists them. */
+function orderEarningsByConfig(earnings, configuredTickers) {
+    if (!configuredTickers) return earnings;
+
+    const selected = earnings.filter(entry => configuredTickers.includes(normalizeTicker(entry.ticker)));
+
+    const missing = configuredTickers.filter(ticker => !selected.some(entry => normalizeTicker(entry.ticker) === ticker));
+    if (missing.length) {
+        console.warn(`Earnings data missing for configured tickers: ${missing.join(', ')}`);
+    }
+
+    return [...selected].sort((a, b) =>
+        configuredTickers.indexOf(normalizeTicker(a.ticker)) - configuredTickers.indexOf(normalizeTicker(b.ticker))
+    );
+}
+
+function normalizeTicker(ticker) {
+    return String(ticker || '').trim().toUpperCase();
+}
+
+function convertEarningsToIndicators(earnings, configuredTickers = null) {
+    return orderEarningsByConfig(earnings, configuredTickers).map(entry => {
         const recent = (entry.recentEarnings || []);
         const latest = recent[0] || {};
 
@@ -611,6 +663,7 @@ function initializeDashboard() {
 /** Single source of truth for which filter is active.
  *  Sets data-filter on #categories and marks the correct button active. */
 function setActiveFilter(category, preserveIndicator = false) {
+    console.log('TRACE setActiveFilter', category, new Error().stack);
     const categoriesEl = document.getElementById('categories');
     categoriesEl.dataset.filter = category;
     currentCategory = category;

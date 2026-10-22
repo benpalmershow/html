@@ -40,6 +40,7 @@
     min-height: 800px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
 }
 
 .indicator {
@@ -53,12 +54,14 @@
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    overflow: visible;
+    overflow: hidden;
     animation: cardIn 0.3s var(--ease-out-back) both;
     contain: layout style;
     content-visibility: auto;
     contain-intrinsic-size: 220px 220px;
     min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .indicator:hover {
@@ -66,6 +69,12 @@
     transform: translateY(-2px);
     border-color: var(--category-accent, var(--logo-teal));
     border-color: color-mix(in srgb, var(--category-accent, var(--logo-teal)) 50%, transparent);
+}
+
+/* Earnings cards get special hover treatment */
+.category[data-category="Earnings"] .indicator:hover {
+    border-color: var(--logo-teal);
+    box-shadow: 0 8px 24px rgba(var(--logo-teal-rgb), 0.15);
 }
 
 
@@ -97,6 +106,9 @@
 /* Accent rail along the top edge; single brand teal for every card. */
 .indicator::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--indicator-accent, var(--category-accent, var(--logo-teal))); opacity: 0.5; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; pointer-events: none; }
 
+/* Earnings cards get a more prominent accent rail */
+.category[data-category="Earnings"] .indicator::before { height: 3px; opacity: 0.7; }
+
 /* Badge sits inline after the wrapped name text; top offset keeps it aligned with the first line. */
 .new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-orange); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; animation: badgePulse 1.4s ease-in-out 3; }
 .week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-teal); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; }
@@ -120,12 +132,12 @@
 
 .indicator.expanded .data-rows-container { max-height: 1200px; margin-top: 0; }
 
-.latest-data-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; margin-bottom: 0; min-width: 0; overflow: visible; }
+.latest-data-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; margin-bottom: 0; min-width: 0; overflow: visible; }
 
-.latest-data-row, .last-data-row { background: rgba(var(--border-color-rgb), 0.28); border-radius: 4px; padding: 4px 5px; margin: 2px 0; }
+.latest-data-row, .last-data-row { background: rgba(var(--border-color-rgb), 0.28); border-radius: 4px; padding: 5px 8px; margin: 3px 0; }
 
-.latest-data-row .month-label, .last-data-row .month-label { color: var(--text-secondary); font-weight: 600; }
-.latest-data-row .month-value, .last-data-row .month-value { color: var(--text-primary); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+.latest-data-row .month-label, .last-data-row .month-label { color: var(--text-secondary); font-weight: 600; font-size: 0.72rem; }
+.latest-data-row .month-value, .last-data-row .month-value { color: var(--text-primary); font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; }
 .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.85rem; letter-spacing: 0; }
 
 .data-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-size: 0.8rem; margin-bottom: 0; gap: 8px; min-width: 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15); font-variant-numeric: tabular-nums; }
@@ -149,17 +161,46 @@
 
 /* Earnings cards */
 .category[data-category="Earnings"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+
+/* Give earnings cards more space in Latest Updates view */
+.category[data-category="latest-updates"] .indicators-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+    overflow-x: visible;
+    padding-bottom: 8px;
+}
+
 .earnings-card { contain: layout style; overflow: visible; overflow-x: hidden; content-visibility: visible; contain-intrinsic-size: auto; }
 .earnings-card .data-rows-container { max-height: 0; overflow: hidden; }
 .earnings-card.expanded .data-rows-container { max-height: none; overflow: visible; }
 
 .earnings-ticker { display: inline-flex; align-items: center; padding: 1px 5px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-muted); vertical-align: middle; }
 
-.earnings-day-change { font-size: 0.72rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: 6px; }
+/* Enhanced price row with better visual hierarchy */
+.earnings-price-row { background: rgba(var(--border-color-rgb), 0.35); border-left: 3px solid var(--logo-teal); padding: 6px 8px; margin: 4px 0; }
+.earnings-price-value { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; }
+
+.earnings-day-change { font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.12); }
+
+/* Compact layout for tighter grids (e.g., Latest Updates view) */
+@media (max-width: 900px) {
+    .earnings-price-row { padding: 5px 6px; }
+    .earnings-price-value { font-size: 1.05rem; }
+    .earnings-day-change { font-size: 0.75rem; margin-left: 6px; }
+    .earnings-eps-row { padding: 4px 6px; }
+    .earnings-actual { font-size: 0.9rem; }
+    .earnings-surprise-pill { font-size: 0.65rem; padding: 1px 4px; }
+}
 
 .earnings-pill { display: inline-block; padding: 1px 5px; font-size: 0.65rem; font-weight: 600; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-secondary); margin-left: 4px; vertical-align: middle; }
 
-.earnings-surprise-pill { display: inline-block; padding: 1px 5px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; font-variant-numeric: tabular-nums; margin-left: 4px; }
+/* Enhanced EPS row with better visual emphasis */
+.earnings-eps-row { background: rgba(var(--border-color-rgb), 0.25); padding: 5px 8px; margin: 3px 0; }
+.earnings-actual { font-weight: 800; font-size: 0.95rem; }
+
+.earnings-surprise-pill { display: inline-flex; align-items: center; gap: 2px; padding: 2px 6px; font-size: 0.7rem; font-weight: 700; border-radius: 4px; font-variant-numeric: tabular-nums; margin-left: 6px; }
+
+.surprise-positive { background: rgba(34, 197, 94, 0.15); color: #16a34a; border: 1px solid rgba(34, 197, 94, 0.3); }
+.surprise-negative { background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
 
 .sec-filing-tag { color: var(--logo-teal); text-decoration: none; font-weight: 600; font-size: 0.7rem; transition: color var(--transition-fast); }
 
@@ -171,25 +212,25 @@
 
 .earnings-sep { color: var(--text-muted); opacity: 0.5; margin: 0 2px; }
 
-.earnings-subheading { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 10px 0 4px; padding-bottom: 2px; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.2); }
+.earnings-subheading { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 12px 0 6px; padding-bottom: 4px; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.25); }
 
-.surprise-positive { color: #22c55e; font-weight: 700; }
+.surprise-positive { color: #16a34a; font-weight: 700; }
 
-.surprise-negative { color: #ef4444; font-weight: 700; }
+.surprise-negative { color: #dc2626; font-weight: 700; }
 
-.earnings-positive { color: #22c55e; font-weight: 700; }
+.earnings-positive { color: #16a34a; font-weight: 700; background: rgba(34, 197, 94, 0.1); padding: 1px 4px; border-radius: 3px; }
 
-.earnings-negative { color: #ef4444; font-weight: 700; }
+.earnings-negative { color: #dc2626; font-weight: 700; background: rgba(239, 68, 68, 0.1); padding: 1px 4px; border-radius: 3px; }
 
 /* QUARTERLY FINANCIALS TABLE */
 .quarterly-section {
-    margin: 4px 0 8px;
-    padding: 6px;
-    background: rgba(var(--border-color-rgb), 0.08);
-    border-radius: 6px;
+    margin: 8px 0 12px;
+    padding: 8px;
+    background: rgba(var(--border-color-rgb), 0.12);
+    border-radius: 8px;
     overflow: auto;
     max-inline-size: 100%;
-    container-type: inline-size;
+    border: 1px solid rgba(var(--border-color-rgb), 0.2);
 }
 
 .quarterly-section:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 1px; }
@@ -200,10 +241,7 @@
     border-collapse: separate;
     border-spacing: 0;
     table-layout: auto;
-    font-size: 0.68rem;
-    --label-2: "Revenue";
-    --label-3: "Net Inc.";
-    --label-4: "Op. Inc.";
+    font-size: 0.7rem;
 }
 
 .quarterly-section .quarterly-table caption.earnings-subheading {
@@ -214,10 +252,10 @@
 
 .quarterly-section .quarterly-table th,
 .quarterly-section .quarterly-table td {
-    padding: 5px 4px;
-    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.12);
     white-space: nowrap;
-    font-size: 0.68rem;
+    font-size: 0.7rem;
 }
 
 .quarterly-section .quarterly-table thead {
@@ -258,82 +296,53 @@
     background: transparent;
 }
 
+.quarterly-section .quarterly-table td.earnings-positive {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.quarterly-section .quarterly-table td.earnings-negative {
+    color: #dc2626;
+    font-weight: 700;
+}
+
 .quarterly-section .quarterly-table tbody tr:last-child th,
 .quarterly-section .quarterly-table tbody tr:last-child td { border-bottom: none; }
 
 .quarterly-section .quarterly-table tbody tr:hover th,
 .quarterly-section .quarterly-table tbody tr:hover td { background-color: rgba(var(--logo-teal-rgb), 0.05); }
 
-@container (width < 300px) {
-    .quarterly-section .quarterly-table,
-    .quarterly-section .quarterly-table tbody,
-    .quarterly-section .quarterly-table tr,
-    .quarterly-section .quarterly-table th,
-    .quarterly-section .quarterly-table td { display: block; }
-
-    .quarterly-section .quarterly-table caption.earnings-subheading {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .quarterly-section .quarterly-table thead { display: none; }
-
-    .quarterly-section .quarterly-table tbody tr {
-        margin-block-end: 0.55rem;
-        padding-block-end: 0.35rem;
-        border-bottom: 1px solid rgba(var(--border-color-rgb), 0.16);
-    }
-
-    .quarterly-section .quarterly-table tbody tr:last-child {
-        margin-block-end: 0;
-        border-bottom: none;
-    }
-
-    .quarterly-section .quarterly-table tbody th {
-        position: sticky;
-        inset-block-start: 0;
-        inset-inline-start: auto;
-        z-index: 2;
-        background: var(--bg-secondary);
-        padding-block: 4px;
-    }
-
-    .quarterly-section .quarterly-table td {
-        text-align: left;
-        padding-block: 2px;
-    }
-
-    .quarterly-section .quarterly-table td:nth-child(2)::before { content: var(--label-2) ": "; color: var(--text-muted); font-weight: 500; }
-    .quarterly-section .quarterly-table td:nth-child(3)::before { content: var(--label-3) ": "; color: var(--text-muted); font-weight: 500; }
-    .quarterly-section .quarterly-table td:nth-child(4)::before { content: var(--label-4) ": "; color: var(--text-muted); font-weight: 500; }
-}
-
 .sec-filing-link { color: var(--logo-teal); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: color var(--transition-fast); }
 
 .sec-filing-link:hover { color: var(--logo-orange); text-decoration: underline; }
 
-.earnings-surprise-list { display: flex; flex-direction: column; gap: 3px; margin: 4px 0 8px; padding: 4px 6px; background: rgba(var(--border-color-rgb), 0.08); border-radius: 6px; }
+.earnings-surprise-list { display: flex; flex-direction: column; gap: 4px; margin: 8px 0 12px; padding: 8px 10px; background: rgba(var(--border-color-rgb), 0.12); border-radius: 8px; border: 1px solid rgba(var(--border-color-rgb), 0.2); }
 
-.earnings-surprise-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem; padding: 3px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08); }
+.earnings-surprise-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; padding: 4px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08); transition: background-color var(--transition-fast); }
 
 .earnings-surprise-item:last-child { border-bottom: none; }
 
-.surprise-date { color: var(--text-muted); font-size: 0.65rem; }
+.earnings-surprise-item:hover { background-color: rgba(var(--border-color-rgb), 0.08); border-radius: 4px; padding-left: 4px; padding-right: 4px; }
 
-.surprise-values { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.surprise-date { color: var(--text-muted); font-size: 0.68rem; font-weight: 500; }
 
-.surprise-badge { font-weight: 700; font-size: 0.65rem; font-variant-numeric: tabular-nums; }
+.surprise-values { color: var(--text-secondary); font-variant-numeric: tabular-nums; font-weight: 600; }
 
-.earnings-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; margin: 4px 0 8px; padding: 6px 8px; background: rgba(var(--border-color-rgb), 0.08); border-radius: 6px; }
+.surprise-badge { font-weight: 700; font-size: 0.7rem; font-variant-numeric: tabular-nums; padding: 2px 6px; border-radius: 4px; }
 
-.stat-item { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; padding: 3px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06); }
+.surprise-badge.surprise-positive { background: rgba(34, 197, 94, 0.15); color: #16a34a; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+.surprise-badge.surprise-negative { background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+.earnings-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin: 8px 0 12px; padding: 10px 12px; background: rgba(var(--border-color-rgb), 0.12); border-radius: 8px; border: 1px solid rgba(var(--border-color-rgb), 0.2); }
+
+.stat-item { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.7rem; padding: 4px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08); }
 
 .stat-item:nth-last-child(-n+2) { border-bottom: none; }
 
-.stat-label { color: var(--text-muted); font-size: 0.63rem; font-weight: 500; }
+.stat-label { color: var(--text-muted); font-size: 0.65rem; font-weight: 500; }
 
-.stat-value { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.stat-value { color: var(--text-primary); font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
 
 .earnings-metrics { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: flex-end; }
 

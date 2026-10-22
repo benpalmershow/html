@@ -544,26 +544,16 @@ function renderHormuz(indicator) {
         // --- Card Front: who / when / print / beat ---
         const latestItems = [];
 
-        if (indicator.nextEarningsDate) {
-            const nextDate = new Date(indicator.nextEarningsDate + 'T00:00:00Z');
-            const startOfToday = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
-            if (!Number.isNaN(nextDate.getTime()) && nextDate.getTime() >= startOfToday) {
-                const nextLabel = nextDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-                latestItems.push(`<div class="latest-data-row"><span class="month-label">Next:</span><span class="month-value">${nextLabel}</span></div>`);
-            }
-        }
-
         const price = indicator.latestPrice != null ? `$${indicator.latestPrice.toFixed ? indicator.latestPrice.toFixed(2) : indicator.latestPrice}` : '\u2014';
-        const peValue = indicator.trailingPE ?? indicator.forwardPE;
-        const pePill = peValue != null ? `<span class="earnings-pill" title="P/E Ratio">P/E ${peValue.toFixed(1)}</span>` : '';
         let dayChange = '';
         if (indicator.latestPrice != null && indicator.previousClose != null && indicator.previousClose !== 0) {
             const pct = ((indicator.latestPrice - indicator.previousClose) / Math.abs(indicator.previousClose)) * 100;
             const sign = pct >= 0 ? '+' : '';
             const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
-            dayChange = `<span class="earnings-day-change ${cls}" title="Change vs previous close">${sign}${pct.toFixed(1)}%</span>`;
+            const arrow = pct >= 0 ? '↑' : '↓';
+            dayChange = `<span class="earnings-day-change ${cls}" title="Change vs previous close">${arrow} ${sign}${pct.toFixed(1)}%</span>`;
         }
-        latestItems.push(`<div class="latest-data-row"><span class="month-label">Price:</span><span class="month-value">${price}${dayChange}${pePill ? ` ${pePill}` : ''}</span></div>`);
+        latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label">Price:</span><span class="month-value earnings-price-value">${price}${dayChange}</span></div>`);
 
         if (quarterly.length > 0) {
             const latestQ = quarterly[0];
@@ -592,10 +582,11 @@ function renderHormuz(indicator) {
             const surprise = parseFloat(latestBeat.surprisePercent);
             const sign = surprise >= 0 ? '+' : '';
             const surpriseClass = surprise >= 0 ? 'surprise-positive' : 'surprise-negative';
+            const beatIcon = surprise >= 0 ? '✓' : '✗';
             const epsQuarter = quarterLabelForReport(latestBeat);
             const epsLabel = epsQuarter ? `${epsQuarter} EPS` : 'EPS';
             const est = latestBeat.estimatedEPS != null ? `$${latestBeat.estimatedEPS.toFixed(2)}` : '\u2014';
-            latestItems.push(`<div class="latest-data-row"><span class="month-label">${epsLabel}:</span><span class="month-value">$${latestBeat.actualEPS.toFixed(2)} <span class="earnings-vs">vs ${est}</span> <span class="earnings-surprise-pill ${surpriseClass}">${sign}${surprise.toFixed(1)}%</span></span></div>`);
+            latestItems.push(`<div class="latest-data-row earnings-eps-row"><span class="month-label">${epsLabel}:</span><span class="month-value"><span class="earnings-actual">$${latestBeat.actualEPS.toFixed(2)}</span> <span class="earnings-vs">vs ${est}</span> <span class="earnings-surprise-pill ${surpriseClass}" title="EPS surprise">${beatIcon} ${sign}${surprise.toFixed(1)}%</span></span></div>`);
         } else if (indicator.revenueGrowth != null) {
             const growthSign = indicator.revenueGrowth >= 0 ? '+' : '';
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Rev Growth:</span><span class="month-value">${growthSign}${(indicator.revenueGrowth * 100).toFixed(1)}% YoY</span></div>`);
@@ -642,6 +633,14 @@ function renderHormuz(indicator) {
                     ? ''
                     : (q.netIncome >= 0 ? 'earnings-positive' : 'earnings-negative');
 
+                const operatingIncomeClass = q.operatingIncome === undefined || q.operatingIncome === null
+                    ? ''
+                    : (q.operatingIncome >= 0 ? 'earnings-positive' : 'earnings-negative');
+
+                const freeCashFlowClass = q.freeCashFlow === undefined || q.freeCashFlow === null
+                    ? ''
+                    : (q.freeCashFlow >= 0 ? 'earnings-positive' : 'earnings-negative');
+
                 const filingLink = filingUrl
                     ? `<a href="${filingUrl}" target="_blank" rel="noopener noreferrer" class="sec-filing-link" title="${rowTitle}">${dateLabel} <span class="form-badge">${filingForm}</span></a>`
                     : `${dateLabel} <span class="form-badge">${filingForm}</span>`;
@@ -650,9 +649,9 @@ function renderHormuz(indicator) {
                     <th scope="row">${filingLink}</th>
                     <td title="Total Revenue">${formatAmount(q.totalRevenue)}</td>
                     <td class="${netIncomeClass}" title="Net Income">${formatAmount(q.netIncome)}</td>
-                    <td title="Operating Income">${formatAmount(q.operatingIncome)}</td>
+                    <td class="${operatingIncomeClass}" title="Operating Income">${formatAmount(q.operatingIncome)}</td>
                     <td title="Capital Expenditures">${formatAmount(q.capitalExpenditures)}</td>
-                    <td title="Free Cash Flow">${formatAmount(q.freeCashFlow)}</td>
+                    <td class="${freeCashFlowClass}" title="Free Cash Flow">${formatAmount(q.freeCashFlow)}</td>
                 </tr>`;
             }).join('');
 

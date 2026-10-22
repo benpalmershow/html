@@ -82,7 +82,6 @@ function scrollToIndicatorByName(indicatorName) {
 }
 
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
-    console.log('TRACE renderDashboard', filterCategory, sortByLatest, new Error().stack);
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
 
@@ -663,7 +662,6 @@ function initializeDashboard() {
 /** Single source of truth for which filter is active.
  *  Sets data-filter on #categories and marks the correct button active. */
 function setActiveFilter(category, preserveIndicator = false) {
-    console.log('TRACE setActiveFilter', category, new Error().stack);
     const categoriesEl = document.getElementById('categories');
     categoriesEl.dataset.filter = category;
     currentCategory = category;

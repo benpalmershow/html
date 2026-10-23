@@ -190,6 +190,7 @@ def write_month_values(indicator, year_key, updates, now_iso, changes):
     updates maps a field name (None for the indicator's own month fields)
     to {month_key: formatted_value}.
     """
+    indicator_changed = False
     for field, values in updates.items():
         target = indicator if field is None else indicator.setdefault(field, {})
         if year_key not in target:
@@ -201,6 +202,7 @@ def write_month_values(indicator, year_key, updates, now_iso, changes):
                 # A brand-new month is what earns the "New" badge; a revision
                 # to an existing month does not.
                 indicator["newMonth"] = True
+                indicator_changed = True
                 label = f"{field}.{month_key}" if field else month_key
                 changes.append(
                     f"{indicator.get('name')} ({year_key} {label}): "
@@ -209,6 +211,7 @@ def write_month_values(indicator, year_key, updates, now_iso, changes):
             elif existing != formatted:
                 target[year_key][month_key] = formatted
                 indicator["newMonth"] = False
+                indicator_changed = True
                 label = f"{field}.{month_key}" if field else month_key
                 changes.append(
                     f"{indicator.get('name')} ({year_key} {label}): "
@@ -217,7 +220,8 @@ def write_month_values(indicator, year_key, updates, now_iso, changes):
             else:
                 # Revision-less re-fetch: no new month, no badge.
                 indicator["newMonth"] = False
-    indicator["lastUpdated"] = now_iso
+    if indicator_changed:
+        indicator["lastUpdated"] = now_iso
 
 
 def collect_updates(target_year):

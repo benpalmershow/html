@@ -1,8 +1,8 @@
 {
-  "totalEntries": 789,
+  "totalEntries": 790,
   "byCategory": {
     "economy": 491,
-    "policy": 251,
+    "policy": 252,
     "trade": 42,
     "society": 4,
     "dispatches": 1
@@ -53,15 +53,20 @@
     "screentime": 2,
     "energy": 2,
     "settlement": 2,
-    "healthcare": 1,
+    "healthcare": 2,
     "rent": 1,
-    "dispatch": 1
+    "dispatch": 1,
+    "fraud": 1,
+    "doj": 14,
+    "los-angeles": 1,
+    "fbi": 1
   },
   "byType": {
     "note": 323,
     "essay": 303,
     "curation": 148,
     "data": 13,
-    "verse": 2
+    "verse": 2,
+    "dispatch": 2
   }
 }

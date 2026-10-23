@@ -418,8 +418,8 @@
       "source_url": "https://www.sca.isr.umich.edu",
       "change": "",
       "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity.",
-      "newMonth": false,
-      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "newMonth": true,
+      "releaseTimeISO": "2026-10-23T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -3354,7 +3354,9 @@
         "june": "54.2",
         "july": "54.5",
         "august": "56",
-        "september": "58.4"
+        "september": "58.4",
+        "october": "57.6"
+
       },
       "2025": {
         "march": "",
@@ -3372,12 +3374,13 @@
       "color": "#2ecc71",
       "agency": "S&P Global",
       "name": "Composite PMI (Flash)",
-      "lastUpdated": "2026-09-24T14:00:00Z",
+      "lastUpdated": "2026-10-23T14:00:00Z",
       "releaseDay": 22,
       "url": "https://www.pmi.spglobal.com/Public",
       "change": "",
       "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations.",
-      "releaseTimeISO": "2026-09-22T15:00:00Z",
+      "releaseTimeISO": "2026-10-23T15:00:00Z",
+      "newMonth":true,
       "releaseTimeZone": "America/New_York"
     },
     {

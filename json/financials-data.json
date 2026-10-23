@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-23T12:25:22Z",
+  "lastUpdated": "2026-10-23T13:16:52Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-10-22T13:40:46Z",
+      "lastUpdated": "2026-10-23T13:16:52Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -35,6 +35,10 @@
         "2026-10-22": {
           "yes": "12¢",
           "no": "88¢"
+        },
+        "2026-10-23": {
+          "yes": "12¢",
+          "no": "88¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -52,7 +56,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2026",
-      "lastUpdated": "2026-10-22T13:40:46Z",
+      "lastUpdated": "2026-10-23T13:16:52Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
       "probabilities": {
@@ -99,6 +103,10 @@
         "2026-10-22": {
           "yes": "6¢",
           "no": "94¢"
+        },
+        "2026-10-23": {
+          "yes": "6¢",
+          "no": "94¢"
         }
       },
       "change": "",
@@ -117,7 +125,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2026",
-      "lastUpdated": "2026-10-22T13:40:46Z",
+      "lastUpdated": "2026-10-23T13:16:52Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
@@ -169,6 +177,10 @@
         "2026-10-22": {
           "yes": "8¢",
           "no": "92¢"
+        },
+        "2026-10-23": {
+          "yes": "8¢",
+          "no": "92¢"
         }
       },
       "change": "",
@@ -187,7 +199,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-10-22T13:40:46Z",
+      "lastUpdated": "2026-10-23T13:16:52Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -235,6 +247,10 @@
         "2026-10-22": {
           "Democratic Party": "68¢",
           "Republican Party": "32¢"
+        },
+        "2026-10-23": {
+          "Democratic Party": "68¢",
+          "Republican Party": "32¢"
         }
       },
       "change": "",
@@ -251,16 +267,16 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - October",
-      "lastUpdated": "2026-10-22T13:40:46Z",
+      "lastUpdated": "2026-10-23T13:16:52Z",
       "meeting_date": "Oct 27-28, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-10-28T14:00:00-04:00",
       "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
       "kalshi_url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26oct",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
-      "rate_hold_odds": "92¢",
+      "rate_hold_odds": "94¢",
       "rate_cut_odds": "0¢",
-      "rate_hike_odds": "8¢",
+      "rate_hike_odds": "6¢",
       "change": "",
       "probabilities": {
         "2026-08-25": {
@@ -322,6 +338,11 @@
           "rate_cut_odds": "0¢",
           "rate_hold_odds": "92¢",
           "rate_hike_odds": "8¢"
+        },
+        "2026-10-23": {
+          "rate_cut_odds": "0¢",
+          "rate_hold_odds": "94¢",
+          "rate_hike_odds": "6¢"
         }
       },
       "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70¢ on Sep 29 while hold odds fell to 30¢. That repricing reversed hard over the past week. Kalshi now quotes hold at 83¢, a 25bps hike at 18¢, and a 25bps cut at 1¢, and Polymarket agrees at 83¢ for no change and 17¢ for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps.",
@@ -1012,7 +1033,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-10-22T13:40:46Z",
+      "lastUpdated": "2026-10-23T13:16:52Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1058,6 +1079,10 @@
           "Republican Party": "8¢"
         },
         "2026-10-22": {
+          "Democratic Party": "92¢",
+          "Republican Party": "8¢"
+        },
+        "2026-10-23": {
           "Democratic Party": "92¢",
           "Republican Party": "8¢"
         }

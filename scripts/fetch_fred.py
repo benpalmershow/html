@@ -17,6 +17,7 @@ the actual release date.
 
 import csv
 import io
+import json
 
 def fetch_fred_csv_observations(series_id, limit=100):
     """Fallback: fetch observations from FRED's CSV endpoint."""

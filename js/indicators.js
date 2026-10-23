@@ -574,7 +574,7 @@ function renderHormuz(indicator) {
             priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;
         }
 
-        latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label">Price:</span><span class="month-value earnings-price-value">${price}${dayChange}${priceContext}</span></div>`);
+        latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label"><span style="font-weight: 700; margin-right: 4px;">$</span>Price:</span><span class="month-value earnings-price-value">${price}${dayChange}${priceContext}</span></div>`);
 
         if (quarterly.length > 0) {
             const latestQ = quarterly[0];
@@ -1077,11 +1077,10 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const categoryFilterBtn = buildCategoryFilterButton(indicator.category);
 
-    // For earnings cards, show company name and ticker (no hyperlink)
+    // For earnings cards, show company name only (no ticker)
     let displayName = indicator.name;
-    if (indicator.category === 'Earnings' && indicator.ticker) {
-        const companyName = indicator.company ? cleanCompanyName(indicator.company) : indicator.name;
-        displayName = `${companyName}<span class="earnings-ticker">${indicator.ticker}</span>`;
+    if (indicator.category === 'Earnings' && indicator.company) {
+        displayName = cleanCompanyName(indicator.company);
     }
 
     const badges = [

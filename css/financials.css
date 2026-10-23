@@ -75,6 +75,7 @@
 .category[data-category="Earnings"] .indicator:hover {
     border-color: var(--logo-teal);
     box-shadow: 0 8px 24px rgba(var(--logo-teal-rgb), 0.15);
+    transform: translateY(-3px);
 }
 
 
@@ -97,7 +98,10 @@
 
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
-.indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: break-word; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-width: 0; word-break: normal; overflow-wrap: break-word; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+
+/* Earnings cards get larger, more prominent company name */
+.category[data-category="Earnings"] .indicator-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
 
 .indicator-name-link { color: var(--text-primary); text-decoration: none; transition: color var(--transition-fast); }
 
@@ -109,10 +113,10 @@
 /* Earnings cards get a more prominent accent rail */
 .category[data-category="Earnings"] .indicator::before { height: 3px; opacity: 0.7; }
 
-/* Badge sits inline after the wrapped name text; top offset keeps it aligned with the first line. */
-.new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-orange); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; animation: badgePulse 1.4s ease-in-out 3; }
-.week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-teal); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; }
-.game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--logo-teal-dark, var(--logo-teal)); padding: 1px 5px; border-radius: 2px; line-height: 1.1; position: relative; top: -2px; }
+/* Badge sits in its own row for earnings cards, inline for others. */
+.new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(249, 115, 22, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; animation: badgePulse 1.4s ease-in-out 3; }
+.week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(20, 184, 166, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
+.game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(20, 184, 166, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
 
 @keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
@@ -176,11 +180,16 @@
 .earnings-card .data-rows-container { max-height: 0; overflow: hidden; }
 .earnings-card.expanded .data-rows-container { max-height: none; overflow: visible; }
 
-.earnings-ticker { display: inline-flex; align-items: center; padding: 1px 5px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-muted); vertical-align: middle; }
+.earnings-company { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+
+.earnings-ticker { display: inline-flex; align-items: center; padding: 2px 6px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.18); color: var(--text-muted); vertical-align: middle; margin-left: 6px; }
+
+/* Ticker as subtle subtitle in agency line */
+.earnings-ticker-sub { display: inline-flex; align-items: center; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; color: var(--text-muted); margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(var(--border-color-rgb), 0.3); }
 
 /* Enhanced price row with better visual hierarchy */
-.earnings-price-row { background: rgba(var(--border-color-rgb), 0.35); border-left: 3px solid var(--logo-teal); padding: 6px 8px; margin: 4px 0; }
-.earnings-price-value { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; }
+.earnings-price-row { background: rgba(var(--border-color-rgb), 0.4); border-left: 4px solid var(--logo-teal); padding: 8px 10px; margin: 6px 0; border-radius: 0 6px 6px 0; }
+.earnings-price-value { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
 
 .earnings-day-change { font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.12); }
 

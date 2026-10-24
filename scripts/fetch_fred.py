@@ -15,6 +15,7 @@ delays that series by 1 month at the source's request and would otherwise lag
 the actual release date.
 """
 
+import argparse
 import csv
 import io
 import json
@@ -441,7 +442,7 @@ def validate_large_change(indicator_name, mom_pct, yoy_pct):
     return None
 
 
-def update_financials():
+def update_financials(indicator_names=None):
     with open(FINANCIALS_PATH, "r") as f:
         data = json.load(f)
 
@@ -450,7 +451,15 @@ def update_financials():
 
     updates = []
 
+    selected = (
+        {n.strip() for n in indicator_names}
+        if indicator_names
+        else set(INDICATOR_MAP.keys())
+    )
+
     for indicator_name, series_id in INDICATOR_MAP.items():
+        if indicator_name not in selected:
+            continue
         print(f"Fetching {indicator_name} ({series_id})...")
 
         observations = fetch_fred_observations(series_id, limit=100)
@@ -538,10 +547,9 @@ def update_financials():
         if not found:
             print(f"  Indicator '{indicator_name}' not found or not FRED-sourced in JSON")
 
-    # Consumer Sentiment is pulled from the University of Michigan CSV directly,
-    # since FRED's UMCSENT series is delayed 1 month at the source's request.
-    umich_updates = update_umich_sentiment(data, now_iso)
-    updates.extend(umich_updates)
+    if not indicator_names or "Consumer Sentiment" in indicator_names:
+        umich_updates = update_umich_sentiment(data, now_iso)
+        updates.extend(umich_updates)
 
     data["lastUpdated"] = now_iso
 
@@ -557,4 +565,15 @@ def update_financials():
 
 
 if __name__ == "__main__":
-    update_financials()
+    parser = argparse.ArgumentParser(
+        description="Fetch economic indicators from FRED API and update financials-data.json.",
+    )
+    parser.add_argument(
+        "--indicators",
+        help="Comma-separated list of indicator names to fetch (default: all FRED-sourced)",
+    )
+    args = parser.parse_args()
+    indicator_names = (
+        {n.strip() for n in args.indicators.split(",")} if args.indicators else None
+    )
+    update_financials(indicator_names)

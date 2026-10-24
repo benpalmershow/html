@@ -1,0 +1,56 @@
+name: Fetch FRED Daily Indicators
+
+on:
+  schedule:
+    # Run daily at 6:00 UTC for FRED daily-frequency series;
+    # only commits when a source revision or new observation exists.
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-fred-daily
+  cancel-in-progress: false
+
+jobs:
+  fetch-fred-daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch FRED daily indicators
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          if [ -z "$FRED_API_KEY" ]; then
+            echo "FRED_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_fred.py --indicators "10-yr Treasury Yield,Oil (WTI),Oil (Brent),Dollar Value Index,Natural Gas"
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/financials-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json
+          if git diff --staged --quiet; then
+            echo "No FRED daily data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update FRED daily indicators [skip ci]"
+          git push

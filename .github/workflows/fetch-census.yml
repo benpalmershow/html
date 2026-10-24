@@ -2,8 +2,10 @@ name: Fetch Census Data
 
 on:
   schedule:
-    # Run daily at 10:00 AM UTC (FT-900 releases roughly six weeks after month-end)
-    - cron: '0 10 * * *'
+    # Run monthly on the 15th at 10:00 UTC, after the FT-900 release
+    # (roughly six weeks after month-end); skips days when the source
+    # has published no revision or new data.
+    - cron: '0 10 15 * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:
@@ -39,7 +41,7 @@ jobs:
             echo "CENSUS_API_KEY secret is not set"
             exit 1
           fi
-          python3 scripts/fetch_census.py
+          python3 scripts/fetch_census.py --indicators "trade-deficit,new-orders,construction-spending"
 
       - name: Validate JSON output
         run: python3 -m json.tool json/financials-data.json > /dev/null

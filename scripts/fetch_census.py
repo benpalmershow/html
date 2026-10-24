@@ -334,7 +334,7 @@ def collect_updates(target_year):
     return sources
 
 
-def update_financials(dry_run=False):
+def update_financials(dry_run=False, indicator_ids=None):
     with open(FINANCIALS_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -346,6 +346,10 @@ def update_financials(dry_run=False):
     logger.info("Target calendar year: %d", target_year)
 
     sources = collect_updates(target_year)
+
+    if indicator_ids:
+        selected = {i.strip() for i in indicator_ids.split(",")}
+        sources = {k: v for k, v in sources.items() if k in selected}
 
     changes = []
     found = set()
@@ -397,8 +401,12 @@ def main():
         action="store_true",
         help="Preview changes without writing financials-data.json",
     )
+    parser.add_argument(
+        "--indicators",
+        help="Comma-separated list of indicator ids to fetch (default: all Census-sourced)",
+    )
     args = parser.parse_args()
-    update_financials(dry_run=args.dry_run)
+    update_financials(dry_run=args.dry_run, indicator_ids=args.indicators)
 
 
 if __name__ == "__main__":

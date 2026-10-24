@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-23T19:11:08Z",
+  "lastUpdated": "2026-10-24T13:45:58Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-10-23T13:16:52Z",
+      "lastUpdated": "2026-10-24T12:35:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -39,6 +39,10 @@
         "2026-10-23": {
           "yes": "12¢",
           "no": "88¢"
+        },
+        "2026-10-24": {
+          "yes": "12¢",
+          "no": "88¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -56,7 +60,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2026",
-      "lastUpdated": "2026-10-23T13:16:52Z",
+      "lastUpdated": "2026-10-24T12:35:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2026",
       "probabilities": {
@@ -107,6 +111,10 @@
         "2026-10-23": {
           "yes": "6¢",
           "no": "94¢"
+        },
+        "2026-10-24": {
+          "yes": "6¢",
+          "no": "94¢"
         }
       },
       "change": "",
@@ -125,7 +133,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2026",
-      "lastUpdated": "2026-10-23T13:16:52Z",
+      "lastUpdated": "2026-10-24T12:35:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
@@ -181,6 +189,10 @@
         "2026-10-23": {
           "yes": "8¢",
           "no": "92¢"
+        },
+        "2026-10-24": {
+          "yes": "8¢",
+          "no": "92¢"
         }
       },
       "change": "",
@@ -199,7 +211,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-10-23T13:16:52Z",
+      "lastUpdated": "2026-10-24T12:35:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -251,6 +263,10 @@
         "2026-10-23": {
           "Democratic Party": "68¢",
           "Republican Party": "32¢"
+        },
+        "2026-10-24": {
+          "Democratic Party": "68¢",
+          "Republican Party": "32¢"
         }
       },
       "change": "",
@@ -267,7 +283,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - October",
-      "lastUpdated": "2026-10-23T13:16:52Z",
+      "lastUpdated": "2026-10-24T12:35:00Z",
       "meeting_date": "Oct 27-28, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-10-28T14:00:00-04:00",
@@ -343,6 +359,11 @@
           "rate_cut_odds": "0¢",
           "rate_hold_odds": "94¢",
           "rate_hike_odds": "6¢"
+        },
+        "2026-10-24": {
+          "rate_cut_odds": "0¢",
+          "rate_hold_odds": "94¢",
+          "rate_hike_odds": "6¢"
         }
       },
       "explanation": "Federal Reserve interest rate decision prediction market for the October 27-28, 2026 FOMC meeting, with the statement released at 2:00 PM ET on Oct 28. Following the Fed's 25bps hike at the September meeting, markets initially priced a second consecutive hike: hike odds reached 70¢ on Sep 29 while hold odds fell to 30¢. That repricing reversed hard over the past week. Kalshi now quotes hold at 83¢, a 25bps hike at 18¢, and a 25bps cut at 1¢, and Polymarket agrees at 83¢ for no change and 17¢ for a 25bps increase. Kalshi volume: $3.3M on hold, $2.4M on hike 25bps, $0.9M on cut 25bps.",
@@ -412,13 +433,13 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
       "change": "",
       "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-23T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -434,7 +455,7 @@
         "july": "4.75",
         "august": "4.75",
         "september": "5.29",
-        "october": "5.13"
+        "october": "4.96"
       },
       "2025": {
         "march": "4.28",
@@ -452,7 +473,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -697,7 +718,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -725,7 +746,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -807,7 +828,7 @@
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Wheat",
-      "lastUpdated": "2026-10-22T12:47:12Z",
+      "lastUpdated": "2026-10-24T11:50:50Z",
       "releaseDay": 0,
       "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
       "change": "",
@@ -857,7 +878,7 @@
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Soybeans",
-      "lastUpdated": "2026-10-22T12:47:11Z",
+      "lastUpdated": "2026-10-24T11:50:49Z",
       "releaseDay": 0,
       "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
       "change": "",
@@ -907,7 +928,7 @@
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Beef",
-      "lastUpdated": "2026-10-22T12:47:12Z",
+      "lastUpdated": "2026-10-24T11:50:50Z",
       "releaseDay": 0,
       "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
       "change": "",
@@ -1018,7 +1039,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 30,
       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
       "change": "",
@@ -1128,7 +1149,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-10-23T13:16:52Z",
+      "lastUpdated": "2026-10-24T12:35:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1178,6 +1199,10 @@
           "Republican Party": "8¢"
         },
         "2026-10-23": {
+          "Democratic Party": "92¢",
+          "Republican Party": "8¢"
+        },
+        "2026-10-24": {
           "Democratic Party": "92¢",
           "Republican Party": "8¢"
         }
@@ -1696,12 +1721,12 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Personal Consumption Expenditures (PCE)",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/PCE",
       "change": "",
       "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T13:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -1829,7 +1854,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -2078,13 +2103,13 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Monthly Retail Sales",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/RSAFS",
       "source_url": "https://www.census.gov/retail/sales.html",
       "explanation": "The total value of sales at retail establishments, adjusted for seasonal variation, holiday differences, and trading days. Published by the U.S. Census Bureau, this 'advance' report is based on a sample of about 5,500 retail and food services firms. The data is divided into 13 major categories, including motor vehicles, electronics, clothing, and e-commerce. Retail sales account for about one-third of consumer spending, which drives about 70% of U.S. economic activity. The 'core' retail sales figure (excluding autos, gas, and building materials) is closely watched as a measure of underlying consumer demand. The data is volatile month-to-month, so economists often look at the three-month moving average for trends.",
       "change": "",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T14:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2360,7 +2385,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Affordability Index",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "change": "",
@@ -2401,12 +2426,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "30-yr Mortgage Rate",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "change": "",
       "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2444,13 +2469,13 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "New Home Sales",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 23,
       "url": "https://fred.stlouisfed.org/series/HSN1F",
       "source_url": "https://www.census.gov/construction/nrs/current/index.html",
       "change": "",
       "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-23T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2579,13 +2604,13 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Housing Starts",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 18,
       "url": "https://fred.stlouisfed.org/series/HOUST",
       "source_url": "https://www.census.gov/construction/nrc/current/index.html",
       "change": "",
       "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-18T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2862,12 +2887,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobless Claims",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "change": "",
       "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2906,12 +2931,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobs",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 5,
       "url": "https://fred.stlouisfed.org/series/PAYEMS",
       "change": "",
       "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month).",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-05T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3039,13 +3064,13 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "PPI",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 13,
       "url": "https://fred.stlouisfed.org/series/PPIFIS",
       "source_url": "https://fred.stlouisfed.org/series/PPIFIS",
       "change": "",
       "explanation": "The Producer Price Index (PPI) for Final Demand, seasonally adjusted, sourced from the FRED series PPIFIS. The PPI measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-13T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3172,13 +3197,13 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "CPI",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 11,
       "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
       "source_url": "https://www.bls.gov/cpi/data.htm",
       "change": "",
       "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-11T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3356,7 +3381,6 @@
         "august": "56",
         "september": "58.4",
         "october": "57.6"
-
       },
       "2025": {
         "march": "",
@@ -3380,7 +3404,7 @@
       "change": "",
       "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations.",
       "releaseTimeISO": "2026-10-23T15:00:00Z",
-      "newMonth":true,
+      "newMonth": true,
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -3520,13 +3544,13 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Industrial Production Index",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/INDPRO",
       "source_url": "https://www.federalreserve.gov/releases/g17/current/",
       "change": "",
       "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3660,12 +3684,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Unemployment Rate",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/UNRATE",
       "change": "",
       "explanation": "The seasonally adjusted unemployment rate, published by the Bureau of Labor Statistics. It represents the percentage of the labor force that is unemployed and actively seeking employment, serving as a key measure of labor market health and slack in the economy.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-07T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
@@ -3792,12 +3816,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Average Hourly Earnings",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/CES0500000003",
       "change": "",
       "explanation": "The seasonally adjusted average hourly earnings of all employees on private non-farm payrolls, published by the Bureau of Labor Statistics. This is a key measure of wage growth and labor market tightening, closely watched for inflationary pressures.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-07T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
@@ -3925,12 +3949,12 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Capacity Utilization",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
       "explanation": "The capacity utilization rate for total industry (including manufacturing, mining, and utilities), published by the Federal Reserve. It measures the percentage of available resources being used to produce goods and services, serving as a key indicator of economic slack and inflationary pressure.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
@@ -4058,12 +4082,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Building Permits",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 19,
       "url": "https://fred.stlouisfed.org/series/PERMIT",
       "change": "",
       "explanation": "The number of building permits issued for new privately owned housing units, published by the U.S. Census Bureau. This is a leading indicator of future residential construction activity and housing market conditions, as permits are typically filed before construction begins.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-19T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
@@ -4192,7 +4216,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-10-23T19:11:08Z",
+      "lastUpdated": "2026-10-24T11:47:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",
@@ -4210,7 +4234,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-pit-no-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:02:53.901258Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4236,10 +4260,14 @@
         "2026-10-23": {
           "PIT_win_odds": "62",
           "NO_win_odds": "38"
+        },
+        "2026-10-24": {
+          "PIT_win_odds": "60",
+          "NO_win_odds": "40"
         }
       },
-      "PIT_win_odds": "62",
-      "NO_win_odds": "38"
+      "PIT_win_odds": "60",
+      "NO_win_odds": "40"
     },
     {
       "id": "ind-min-2026-10-25",
@@ -4250,7 +4278,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ind-min-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:02:53.901258Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4276,6 +4304,10 @@
         "2026-10-23": {
           "IND_win_odds": "28",
           "MIN_win_odds": "72"
+        },
+        "2026-10-24": {
+          "IND_win_odds": "28",
+          "MIN_win_odds": "72"
         }
       },
       "IND_win_odds": "28",
@@ -4290,7 +4322,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-nyj-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4316,6 +4348,10 @@
         "2026-10-23": {
           "MIA_win_odds": "34",
           "NYJ_win_odds": "66"
+        },
+        "2026-10-24": {
+          "MIA_win_odds": "34",
+          "NYJ_win_odds": "66"
         }
       },
       "MIA_win_odds": "34",
@@ -4330,7 +4366,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-bal-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4356,10 +4392,14 @@
         "2026-10-23": {
           "CIN_win_odds": "48",
           "BAL_win_odds": "52"
+        },
+        "2026-10-24": {
+          "CIN_win_odds": "52",
+          "BAL_win_odds": "48"
         }
       },
-      "CIN_win_odds": "48",
-      "BAL_win_odds": "52"
+      "CIN_win_odds": "52",
+      "BAL_win_odds": "48"
     },
     {
       "id": "cle-ten-2026-10-25",
@@ -4370,7 +4410,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cle-ten-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4396,6 +4436,10 @@
         "2026-10-23": {
           "CLE_win_odds": "54",
           "TEN_win_odds": "46"
+        },
+        "2026-10-24": {
+          "CLE_win_odds": "54",
+          "TEN_win_odds": "46"
         }
       },
       "CLE_win_odds": "54",
@@ -4410,7 +4454,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-tb-car-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4436,6 +4480,10 @@
         "2026-10-23": {
           "TB_win_odds": "42",
           "CAR_win_odds": "58"
+        },
+        "2026-10-24": {
+          "TB_win_odds": "42",
+          "CAR_win_odds": "58"
         }
       },
       "TB_win_odds": "42",
@@ -4450,7 +4498,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-sf-atl-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4476,6 +4524,10 @@
         "2026-10-23": {
           "SF_win_odds": "58",
           "ATL_win_odds": "42"
+        },
+        "2026-10-24": {
+          "SF_win_odds": "58",
+          "ATL_win_odds": "42"
         }
       },
       "SF_win_odds": "58",
@@ -4490,7 +4542,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-nyg-hou-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4516,6 +4568,10 @@
         "2026-10-23": {
           "NYG_win_odds": "20",
           "HOU_win_odds": "80"
+        },
+        "2026-10-24": {
+          "NYG_win_odds": "20",
+          "HOU_win_odds": "80"
         }
       },
       "NYG_win_odds": "20",
@@ -4530,7 +4586,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-den-ari-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4556,10 +4612,14 @@
         "2026-10-23": {
           "DEN_win_odds": "66",
           "ARI_win_odds": "34"
+        },
+        "2026-10-24": {
+          "DEN_win_odds": "68",
+          "ARI_win_odds": "32"
         }
       },
-      "DEN_win_odds": "66",
-      "ARI_win_odds": "34"
+      "DEN_win_odds": "68",
+      "ARI_win_odds": "32"
     },
     {
       "id": "gb-det-2026-10-25",
@@ -4570,7 +4630,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-gb-det-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4594,6 +4654,10 @@
           "DET_win_odds": "62"
         },
         "2026-10-23": {
+          "GB_win_odds": "38",
+          "DET_win_odds": "62"
+        },
+        "2026-10-24": {
           "GB_win_odds": "38",
           "DET_win_odds": "62"
         }
@@ -5070,7 +5134,7 @@
       "game_time": "Oct 25, 2026 8:20 PM ET",
       "game_time_iso": "2026-10-26T00:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-sea-2026-10-26",
-      "lastUpdated": "2026-10-23T10:48:16.94827Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5090,6 +5154,10 @@
           "SEA_win_odds": "58"
         },
         "2026-10-23": {
+          "KC_win_odds": "42",
+          "SEA_win_odds": "58"
+        },
+        "2026-10-24": {
           "KC_win_odds": "42",
           "SEA_win_odds": "58"
         }
@@ -5106,7 +5174,7 @@
       "game_time": "Oct 26, 2026 8:15 PM ET",
       "game_time_iso": "2026-10-27T00:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-dal-phi-2026-10-27",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5128,10 +5196,14 @@
         "2026-10-23": {
           "DAL_win_odds": "64",
           "PHI_win_odds": "36"
+        },
+        "2026-10-24": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
         }
       },
-      "DAL_win_odds": "64",
-      "PHI_win_odds": "36"
+      "DAL_win_odds": "66",
+      "PHI_win_odds": "34"
     },
     {
       "id": "lar-lv-2026-10-25",
@@ -5142,7 +5214,7 @@
       "game_time": "Oct 25, 2026 4:25 PM ET",
       "game_time_iso": "2026-10-25T20:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-la-lv-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:02:53.901258Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5164,10 +5236,14 @@
         "2026-10-23": {
           "LAR_win_odds": "64",
           "LV_win_odds": "36"
+        },
+        "2026-10-24": {
+          "LAR_win_odds": "62",
+          "LV_win_odds": "38"
         }
       },
-      "LAR_win_odds": "64",
-      "LV_win_odds": "36"
+      "LAR_win_odds": "62",
+      "LV_win_odds": "38"
     },
     {
       "id": "dal-gb-2026-10-18",

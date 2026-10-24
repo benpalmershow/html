@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-23T19:11:08Z",
+  "lastUpdated": "2026-10-24T10:07:39.333570Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -3356,7 +3356,6 @@
         "august": "56",
         "september": "58.4",
         "october": "57.6"
-
       },
       "2025": {
         "march": "",
@@ -3380,7 +3379,7 @@
       "change": "",
       "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations.",
       "releaseTimeISO": "2026-10-23T15:00:00Z",
-      "newMonth":true,
+      "newMonth": true,
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -4210,7 +4209,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-pit-no-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:02:53.901258Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4236,10 +4235,14 @@
         "2026-10-23": {
           "PIT_win_odds": "62",
           "NO_win_odds": "38"
+        },
+        "2026-10-24": {
+          "PIT_win_odds": "60",
+          "NO_win_odds": "40"
         }
       },
-      "PIT_win_odds": "62",
-      "NO_win_odds": "38"
+      "PIT_win_odds": "60",
+      "NO_win_odds": "40"
     },
     {
       "id": "ind-min-2026-10-25",
@@ -4250,7 +4253,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ind-min-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:02:53.901258Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4276,6 +4279,10 @@
         "2026-10-23": {
           "IND_win_odds": "28",
           "MIN_win_odds": "72"
+        },
+        "2026-10-24": {
+          "IND_win_odds": "28",
+          "MIN_win_odds": "72"
         }
       },
       "IND_win_odds": "28",
@@ -4290,7 +4297,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-nyj-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4316,6 +4323,10 @@
         "2026-10-23": {
           "MIA_win_odds": "34",
           "NYJ_win_odds": "66"
+        },
+        "2026-10-24": {
+          "MIA_win_odds": "34",
+          "NYJ_win_odds": "66"
         }
       },
       "MIA_win_odds": "34",
@@ -4330,7 +4341,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-bal-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4356,10 +4367,14 @@
         "2026-10-23": {
           "CIN_win_odds": "48",
           "BAL_win_odds": "52"
+        },
+        "2026-10-24": {
+          "CIN_win_odds": "52",
+          "BAL_win_odds": "48"
         }
       },
-      "CIN_win_odds": "48",
-      "BAL_win_odds": "52"
+      "CIN_win_odds": "52",
+      "BAL_win_odds": "48"
     },
     {
       "id": "cle-ten-2026-10-25",
@@ -4370,7 +4385,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cle-ten-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4396,6 +4411,10 @@
         "2026-10-23": {
           "CLE_win_odds": "54",
           "TEN_win_odds": "46"
+        },
+        "2026-10-24": {
+          "CLE_win_odds": "54",
+          "TEN_win_odds": "46"
         }
       },
       "CLE_win_odds": "54",
@@ -4410,7 +4429,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-tb-car-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4436,6 +4455,10 @@
         "2026-10-23": {
           "TB_win_odds": "42",
           "CAR_win_odds": "58"
+        },
+        "2026-10-24": {
+          "TB_win_odds": "42",
+          "CAR_win_odds": "58"
         }
       },
       "TB_win_odds": "42",
@@ -4450,7 +4473,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-sf-atl-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4476,6 +4499,10 @@
         "2026-10-23": {
           "SF_win_odds": "58",
           "ATL_win_odds": "42"
+        },
+        "2026-10-24": {
+          "SF_win_odds": "58",
+          "ATL_win_odds": "42"
         }
       },
       "SF_win_odds": "58",
@@ -4490,7 +4517,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-nyg-hou-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4516,6 +4543,10 @@
         "2026-10-23": {
           "NYG_win_odds": "20",
           "HOU_win_odds": "80"
+        },
+        "2026-10-24": {
+          "NYG_win_odds": "20",
+          "HOU_win_odds": "80"
         }
       },
       "NYG_win_odds": "20",
@@ -4530,7 +4561,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-den-ari-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4556,10 +4587,14 @@
         "2026-10-23": {
           "DEN_win_odds": "66",
           "ARI_win_odds": "34"
+        },
+        "2026-10-24": {
+          "DEN_win_odds": "68",
+          "ARI_win_odds": "32"
         }
       },
-      "DEN_win_odds": "66",
-      "ARI_win_odds": "34"
+      "DEN_win_odds": "68",
+      "ARI_win_odds": "32"
     },
     {
       "id": "gb-det-2026-10-25",
@@ -4570,7 +4605,7 @@
       "game_time": "Oct 25, 2026 1:00 PM ET",
       "game_time_iso": "2026-10-25T17:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-gb-det-2026-10-25",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-17": {
@@ -4594,6 +4629,10 @@
           "DET_win_odds": "62"
         },
         "2026-10-23": {
+          "GB_win_odds": "38",
+          "DET_win_odds": "62"
+        },
+        "2026-10-24": {
           "GB_win_odds": "38",
           "DET_win_odds": "62"
         }
@@ -5070,7 +5109,7 @@
       "game_time": "Oct 25, 2026 8:20 PM ET",
       "game_time_iso": "2026-10-26T00:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-sea-2026-10-26",
-      "lastUpdated": "2026-10-23T10:48:16.94827Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5090,6 +5129,10 @@
           "SEA_win_odds": "58"
         },
         "2026-10-23": {
+          "KC_win_odds": "42",
+          "SEA_win_odds": "58"
+        },
+        "2026-10-24": {
           "KC_win_odds": "42",
           "SEA_win_odds": "58"
         }
@@ -5106,7 +5149,7 @@
       "game_time": "Oct 26, 2026 8:15 PM ET",
       "game_time_iso": "2026-10-27T00:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-dal-phi-2026-10-27",
-      "lastUpdated": "2026-10-23T10:52:18.189925Z",
+      "lastUpdated": "2026-10-24T10:04:53.209756Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5128,10 +5171,14 @@
         "2026-10-23": {
           "DAL_win_odds": "64",
           "PHI_win_odds": "36"
+        },
+        "2026-10-24": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
         }
       },
-      "DAL_win_odds": "64",
-      "PHI_win_odds": "36"
+      "DAL_win_odds": "66",
+      "PHI_win_odds": "34"
     },
     {
       "id": "lar-lv-2026-10-25",
@@ -5142,7 +5189,7 @@
       "game_time": "Oct 25, 2026 4:25 PM ET",
       "game_time_iso": "2026-10-25T20:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-la-lv-2026-10-25",
-      "lastUpdated": "2026-10-23T10:50:17.328117Z",
+      "lastUpdated": "2026-10-24T10:02:53.901258Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5164,10 +5211,14 @@
         "2026-10-23": {
           "LAR_win_odds": "64",
           "LV_win_odds": "36"
+        },
+        "2026-10-24": {
+          "LAR_win_odds": "62",
+          "LV_win_odds": "38"
         }
       },
-      "LAR_win_odds": "64",
-      "LV_win_odds": "36"
+      "LAR_win_odds": "62",
+      "LV_win_odds": "38"
     },
     {
       "id": "dal-gb-2026-10-18",

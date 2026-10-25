@@ -629,9 +629,9 @@ games:
   game_time_iso: '2026-10-25T20:25:00Z'
   url: https://polymarket.com/sports/nfl/nfl-la-lv-2026-10-25
   polymarket_slug: nfl-la-lv-2026-10-25
-  LAR_win_odds: 73.5¢
-  LV_win_odds: 26.5¢
-  lastUpdated: '2026-10-25T20:56:03.225578Z'
+  LAR_win_odds: 96.6¢
+  LV_win_odds: 3.4¢
+  lastUpdated: '2026-10-25T22:56:49.511478Z'
   odds_history:
   - timestamp: '2026-10-19T21:48:56.900214Z'
     LAR_win_odds: 67.0¢
@@ -666,6 +666,9 @@ games:
   - timestamp: '2026-10-25T20:56:03.225578Z'
     LAR_win_odds: 73.5¢
     LV_win_odds: 26.5¢
+  - timestamp: '2026-10-25T22:56:49.511478Z'
+    LAR_win_odds: 96.6¢
+    LV_win_odds: 3.4¢
 - id: gb-det-2026-10-25
   week: 7
   away: GB

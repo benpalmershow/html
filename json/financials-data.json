@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-25T21:00:03.329943Z",
+  "lastUpdated": "2026-10-25T22:59:12.914451Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -4651,6 +4651,10 @@
       "winner": "HOU",
       "result": "Final",
       "probabilities": {
+        "2026-10-17": {
+          "HOU_win_odds": "44",
+          "JAX_win_odds": "56"
+        },
         "2026-10-19": {
           "HOU_win_odds": "100",
           "JAX_win_odds": "0"
@@ -4670,10 +4674,6 @@
         "2026-10-16": {
           "HOU_win_odds": "42",
           "JAX_win_odds": "58"
-        },
-        "2026-10-17": {
-          "HOU_win_odds": "44",
-          "JAX_win_odds": "56"
         },
         "2026-10-18": {
           "HOU_win_odds": "44",
@@ -5083,6 +5083,10 @@
           "KC_win_odds": "42",
           "SEA_win_odds": "58"
         },
+        "2026-10-23": {
+          "KC_win_odds": "42",
+          "SEA_win_odds": "58"
+        },
         "2026-10-24": {
           "KC_win_odds": "42",
           "SEA_win_odds": "58"
@@ -5148,7 +5152,7 @@
       "game_time": "Oct 25, 2026 4:25 PM ET",
       "game_time_iso": "2026-10-25T20:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-la-lv-2026-10-25",
-      "lastUpdated": "2026-10-25T20:56:03.225578Z",
+      "lastUpdated": "2026-10-25T22:56:49.511478Z",
       "week": 7,
       "probabilities": {
         "2026-10-19": {
@@ -5176,12 +5180,12 @@
           "LV_win_odds": "38"
         },
         "2026-10-25": {
-          "LAR_win_odds": "74",
-          "LV_win_odds": "26"
+          "LAR_win_odds": "97",
+          "LV_win_odds": "3"
         }
       },
-      "LAR_win_odds": "74",
-      "LV_win_odds": "26"
+      "LAR_win_odds": "97",
+      "LV_win_odds": "3"
     },
     {
       "id": "dal-gb-2026-10-18",

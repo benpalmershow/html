@@ -7,7 +7,7 @@ without creating cards whose source links or odds are missing.
 
 ## Source of truth and scope
 
-- `json/nfl-games.yml` is the maintained NFL game source.
+- `data/nfl-games.yml` is the maintained NFL game source.
 - `json/financials-data.json` is the rendered-site dataset, generated from the
   YAML by `scripts/apply-nfl-yml.py`.
 - Polymarket's Gamma API is the automated odds source used by
@@ -42,7 +42,7 @@ Each step is described below. Manual weekly updates follow the same commands.
    usable prices. A schedule entry alone is not evidence that a market exists.
 4. If a market or usable odds are unavailable, do not create placeholder odds
    or a card with a dead source link. Remove that matchup from
-   `json/nfl-games.yml`. The week-scoped merge will remove any matching stale
+   `data/nfl-games.yml`. The week-scoped merge will remove any matching stale
    card from `json/financials-data.json`. Report which games were omitted and
    why.
 5. Add/update the verified games in YAML, using stable IDs in the form
@@ -63,7 +63,7 @@ Each step is described below. Manual weekly updates follow the same commands.
 7. Validate YAML as YAML and financials as JSON, then run the site validator:
 
    ```sh
-   python3 -c 'import yaml; yaml.safe_load(open("json/nfl-games.yml", encoding="utf-8"))'
+   python3 -c 'import yaml; yaml.safe_load(open("data/nfl-games.yml", encoding="utf-8"))'
    python3 -m json.tool json/financials-data.json > /dev/null
    npm run validate
    ```

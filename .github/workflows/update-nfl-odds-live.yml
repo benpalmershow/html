@@ -1,0 +1,63 @@
+name: Update NFL Odds (Live)
+
+on:
+  schedule:
+    # Thursday night games (UTC)
+    - cron: '*/5 0-5,16-23 * * 4'
+    # Sunday games (UTC)
+    - cron: '*/5 12-23 * * 0'
+    # Monday night games (UTC)
+    - cron: '*/5 0-5,16-23 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-nfl-odds-live
+  cancel-in-progress: true
+
+jobs:
+  update-odds-live:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Fetch NFL odds (live gametime)
+        run: python3 scripts/fetch-nfl-odds.py --mode live
+
+      - name: Validate merged data
+        run: |
+          python3 -m json.tool json/financials-data.json > /dev/null || true
+          python3 -c "import yaml; yaml.safe_load(open('data/nfl-games.yml', encoding='utf-8'))"
+          node scripts/validate-site.js || true
+
+      - name: Apply NFL YAML (live)
+        run: python3 scripts/apply-nfl-yml.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/nfl-games.yml json/financials-data.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: nfl odds live update"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

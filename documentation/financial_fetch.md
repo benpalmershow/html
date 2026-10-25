@@ -380,7 +380,7 @@ const categoryIcons = {
 ### NFL Prediction Markets Automation (live, Polymarket-backed)
 - **Live odds fetcher:** `scripts/fetch-nfl-odds.py` -- queries Polymarket's
   public gamma API (`/events?slug=<slug>`) and rewrites the `<TEAM>_win_odds`
-  and `lastUpdated` fields in `json/nfl-games.yml`
+  and `lastUpdated` fields in `data/nfl-games.yml`
 - **Merger:** `scripts/apply-nfl-yml.py` -- upserts games into
   `json/financials-data.json` by `id`, with `--replace-completed` to drop past
   games
@@ -391,7 +391,7 @@ const categoryIcons = {
   CFTC-regulated prediction-market exchange (not an NFL data feed), so its odds
   are public, machine-readable, and free of NFL intellectual property. The
   World Cup pattern (football-data.org with a free key) is mirrored here.
-- **Manual steps:** edit the schedule in `json/nfl-games.yml` (teams, times,
+- **Manual steps:** edit the schedule in `data/nfl-games.yml` (teams, times,
   `polymarket_slug`); the workflow refreshes the odds automatically.
 
 ### Treasury Fiscal Data Automation (live, open API)

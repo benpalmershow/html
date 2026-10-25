@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetch LIVE win odds for NFL games from Polymarket and refresh json/nfl-games.yml.
+Fetch LIVE win odds for NFL games from Polymarket and refresh data/nfl-games.yml.
 
 Mirrors scripts/fetch_world_cup.py: a scheduled script polls a public API and
 rewrites the data file. No NFL.com/ESPN scraping - the NFL owns its schedule
@@ -24,11 +24,13 @@ totals, are ignored.
 
 import argparse
 import json
+import os
+import random
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -38,7 +40,7 @@ except ImportError:
     raise SystemExit(1)
 
 ROOT = Path(__file__).resolve().parent.parent
-YAML_PATH = ROOT / "json" / "nfl-games.yml"
+YAML_PATH = ROOT / "data" / "nfl-games.yml"
 GAMMA_BASE = "https://gamma-api.polymarket.com/events"
 
 
@@ -71,6 +73,43 @@ def price_to_cents(price_str):
         return None
     cents = round(value * 100, 1)
     return f"{cents:.1f}¢"
+def parse_game_time_iso(value):
+    if not value:
+        return None
+    try:
+        if value.endswith('Z'):
+            value = value[:-1] + '+00:00'
+        return datetime.fromisoformat(value)
+    except Exception:
+        return None
+
+
+def is_live_window(game, now, pre_minutes=15, post_hours=4):
+    gt = parse_game_time_iso(game.get('game_time_iso'))
+    if gt is None:
+        return True
+    if gt.tzinfo is None:
+        gt = gt.replace(tzinfo=timezone.utc)
+    if now >= gt - timedelta(minutes=pre_minutes) and now <= gt + timedelta(hours=post_hours):
+        return True
+    return False
+
+
+def is_recently_updated(game, now, max_age_min=3):
+    lu = game.get('lastUpdated')
+    if not lu:
+        return False
+    try:
+        if lu.endswith('Z'):
+            lu_dt = datetime.fromisoformat(lu[:-1] + '+00:00')
+        else:
+            lu_dt = datetime.fromisoformat(lu)
+        if lu_dt.tzinfo is None:
+            lu_dt = lu_dt.replace(tzinfo=timezone.utc)
+        return (now - lu_dt) < timedelta(minutes=max_age_min)
+    except Exception:
+        return False
+
 
 
 def _parse_json_list(value):
@@ -112,6 +151,11 @@ def main():
     parser = argparse.ArgumentParser(description="Refresh NFL moneyline odds from Polymarket.")
     parser.add_argument("--game-id", help="Refresh one game by its YAML id.")
     parser.add_argument("--week", type=int, help="Refresh only games from this NFL week.")
+    parser.add_argument("--mode", choices=["full", "live"], default=os.environ.get("NFL_MODE", "full"), help="full = all selected games; live = only games near/in gametime")
+    parser.add_argument("--pre-minutes", type=int, default=int(os.environ.get("NFL_PRE_MINUTES", "15")))
+    parser.add_argument("--post-hours", type=int, default=int(os.environ.get("NFL_POST_HOURS", "4")))
+    parser.add_argument("--max-age-min", type=int, default=int(os.environ.get("NFL_MAX_AGE_MIN", "3")), help="skip polling if recently updated in live mode")
+    parser.add_argument("--no-skip-recent", action="store_true", help="do not skip recently updated games in live mode")
     args = parser.parse_args()
 
     if not YAML_PATH.exists():
@@ -122,14 +166,24 @@ def main():
         doc = yaml.safe_load(f) or {}
     games = doc.setdefault("games", [])
 
+    now = datetime.now(timezone.utc)
     updated = 0
     selected = 0
+    skipped_live = 0
+    skipped_recent = 0
     for game in games:
         game_id = game.get("id")
         if args.game_id and game_id != args.game_id:
             continue
         if args.week is not None and game.get("week") != args.week:
             continue
+        if args.mode == "live":
+            if not is_live_window(game, now, pre_minutes=args.pre_minutes, post_hours=args.post_hours):
+                skipped_live += 1
+                continue
+            if not args.no_skip_recent and is_recently_updated(game, now, max_age_min=args.max_age_min):
+                skipped_recent += 1
+                continue
         selected += 1
         slug = game.get("polymarket_slug")
         if not slug:
@@ -145,8 +199,8 @@ def main():
             print(f"[{game_id}] unexpected error: {e}")
             continue
 
-        # Rate limiting: wait 200ms between API calls to avoid rate limits
-        time.sleep(0.2)
+        # Rate limiting: wait small random delay between API calls to avoid rate limits
+        time.sleep(random.uniform(0.2, 0.6))
 
         if not events:
             print(f"[{game_id}] no event for slug {slug}")
@@ -200,7 +254,7 @@ def main():
     with open(YAML_PATH, "w") as f:
         yaml.safe_dump(doc, f, sort_keys=False, allow_unicode=True, width=1000)
 
-    print(f"Refreshed odds for {updated} of {selected} selected game(s) in {YAML_PATH}")
+    print(f"Refreshed odds for {updated} of {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent})")
     return 0
 
 

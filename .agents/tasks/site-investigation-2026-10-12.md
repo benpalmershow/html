@@ -214,8 +214,8 @@ The `components/` system exists and is already used for the footer — the heade
 **Impact:** Medium  
 **Finding:** A copy of the financials page with a space in the filename is in the repo root alongside production files. Vercel will serve this at `/financials%20copy` which is a live URL. These files appear to be experimental scratch copies and should be deleted.
 
-### 7.5 `json/journal.json.bak` and `json/nfl-games.yml` Are Unintentional Artifacts
-**Files:** `json/journal.json.bak`, `json/nfl-games.yml`  
+### 7.5 `json/journal.json.bak` and `data/nfl-games.yml` Are Unintentional Artifacts
+**Files:** `json/journal.json.bak`, `data/nfl-games.yml`  
 **Impact:** Low  
 **Finding:** `journal.json.bak` is a backup file served by Vercel (accessible at `/json/journal.json.bak`). `nfl-games.yml` is a YAML file in the JSON directory — the validate script ignores it but it's an inconsistency. Both should be removed from the repo (or added to `.vercelignore`/`.gitignore`).
 

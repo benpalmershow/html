@@ -35,7 +35,7 @@ jobs:
         id: week
         run: |
           # NFL season weeks (1-18) are NOT the ISO calendar week number.
-          # Derive the active NFL week from json/nfl-games.yml instead:
+          # Derive the active NFL week from data/nfl-games.yml instead:
           # the week containing today, or the nearest upcoming week if today
           # falls between weeks. Games from all active weeks are refreshed.
           WEEK=$(python3 - <<'PY'
@@ -45,7 +45,7 @@ jobs:
               import yaml
           except ImportError:
               print(); sys.exit(0)
-          doc = yaml.safe_load(Path("json/nfl-games.yml").read_text()) or {}
+          doc = yaml.safe_load(Path("data/nfl-games.yml").read_text()) or {}
           now = datetime.datetime.now(datetime.timezone.utc)
           weeks = []
           for g in doc.get("games", []):
@@ -86,7 +86,7 @@ jobs:
       - name: Validate merged data (JSON/YAML + site validator)
         run: |
           python3 -m json.tool json/financials-data.json > /dev/null
-          python3 -c "import yaml; yaml.safe_load(open('json/nfl-games.yml', encoding='utf-8'))"
+          python3 -c "import yaml; yaml.safe_load(open('data/nfl-games.yml', encoding='utf-8'))"
           node scripts/validate-site.js
 
       - name: Apply NFL YAML (weekly)
@@ -96,7 +96,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add json/nfl-games.yml json/financials-data.json
+          git add data/nfl-games.yml json/financials-data.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

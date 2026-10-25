@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Merge json/nfl-games.yml into json/financials-data.json.
+Merge data/nfl-games.yml into json/financials-data.json.
 
 Usage:
     python3 scripts/apply-nfl-yml.py [--week 5] [--replace-completed]
@@ -39,7 +39,7 @@ except ImportError:
     raise SystemExit(1)
 
 ROOT = Path(__file__).resolve().parent.parent
-YAML_PATH = ROOT / "json" / "nfl-games.yml"
+YAML_PATH = ROOT / "data" / "nfl-games.yml"
 FINANCIALS_PATH = ROOT / "json" / "financials-data.json"
 
 DEFAULT_CATEGORY = "Prediction Markets"

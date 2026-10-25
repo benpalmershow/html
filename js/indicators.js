@@ -1034,7 +1034,11 @@ function formatUpdatedDate(value) {
         ? new Date(raw + 'T00:00:00')
         : new Date(raw);
     if (Number.isNaN(date.getTime())) return '';
-    return `${date.getMonth() + 1}/${date.getDate()}`;
+    const h = date.getHours();
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const hour12 = h % 12 || 12;
+    const min = date.getMinutes().toString().padStart(2,'0');
+    return `${date.getMonth() + 1}/${date.getDate()} ${hour12}:${min} ${ampm}`;
 }
 
 function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues, latestMonthTag }) {

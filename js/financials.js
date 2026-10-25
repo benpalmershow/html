@@ -179,6 +179,39 @@ function setupBadgeLinkHandlers() {
     });
 }
 
+function setupCategorySortHandlers() {
+    const container = document.getElementById('categories');
+    if (!container || container.dataset.categorySortBound === 'true') return;
+    container.dataset.categorySortBound = 'true';
+    container.addEventListener('click', (e) => {
+        const btn = e.target.closest('.latest-updates-sort-btn, .category-sort-btn');
+        if (!btn) return;
+        e.preventDefault();
+
+        // Reset any badge-driven sort and re-render the affected category
+        // sorted by lastUpdated descending (the default order).
+        currentSort = null;
+        const url = new URL(window.location.href);
+        url.searchParams.delete('sort');
+        url.searchParams.delete('sortValue');
+        window.history.pushState({}, '', url.toString());
+
+        const financialData = (typeof DashboardState !== 'undefined' && DashboardState.getData) ? DashboardState.getData() : null;
+        if (!financialData) return;
+
+        const isLatest = btn.classList.contains('latest-updates-sort-btn');
+        if (isLatest) {
+            renderDashboard('all', true);
+        } else {
+            const category = btn.dataset.category;
+            if (category) {
+                renderDashboard(category, false);
+            }
+        }
+        window.scrollTo(0, 0);
+    });
+}
+
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
@@ -303,7 +336,7 @@ function renderLatestUpdatesView(financialData) {
         <div class="category" data-category="latest-updates">
             <h2 class="category-title">
                 <span class="category-icon"><i data-lucide="clock"></i></span>
-                <span class="category-name">Latest Updates</span>
+                <button type="button" class="category-name latest-updates-sort-btn" title="Sort by last updated">Latest Updates</button>
             </h2>
             <div class="indicators-grid">
                 ${filteredIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
@@ -389,7 +422,7 @@ function renderCategoryView(financialData, categories, filterCategory) {
             <div class="category" data-category="${category}">
                 <h2 class="category-title">
                     <span class="category-icon">${icon}</span>
-                    <span class="category-name">${category}</span>
+                    <button type="button" class="category-name category-sort-btn" data-category="${CSS.escape(category)}" title="Reset sort for ${category}">${category}</button>
                 </h2>
                 <div class="indicators-grid">
                     ${categoryIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
@@ -759,6 +792,7 @@ function initializeDashboard() {
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
     setupCategoryFilterHandlers(SELECTORS);
     setupExpandHandlers(SELECTORS);
+    setupCategorySortHandlers();
 
     if (typeof setupIndicatorSearch === 'function') setupIndicatorSearch();
     if (typeof setupStickyObserver === 'function') setupStickyObserver();

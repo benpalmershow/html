@@ -32,6 +32,40 @@
 
 .category-name { position: relative; top: 1px }
 
+/* Make category titles behave like clickable reset buttons while
+   keeping the existing title look. */
+.category-name.category-sort-btn,
+.category-name.latest-updates-sort-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    display: inline;
+}
+
+.category-name.category-sort-btn:hover,
+.category-name.category-sort-btn:focus-visible,
+.category-name.latest-updates-sort-btn:hover,
+.category-name.latest-updates-sort-btn:focus-visible {
+    color: var(--logo-orange);
+    outline: none;
+}
+
+.category-name.category-sort-btn:active,
+.category-name.latest-updates-sort-btn:active {
+    color: var(--logo-orange);
+}
+
 .indicators-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -132,7 +166,10 @@
 
 .indicator-agency a { color: var(--text-muted); text-decoration: underline; }
 
-.indicator-date { color: var(--category-accent); font-weight: 600; }
+.indicator-date { color: var(--category-accent); font-weight: 600; display: inline-flex; align-items: baseline; gap: 0.35em; flex-wrap: wrap; }
+.indicator-date-time-el { font-style: normal; }
+.indicator-date-time { font-weight: 400; font-size: 0.85em; opacity: 0.85; }
+.indicator-date-ago { font-weight: 400; font-size: 0.8em; opacity: 0.7; }
 
 .indicator.expanded .data-rows-container { max-height: 1200px; margin-top: 0; }
 

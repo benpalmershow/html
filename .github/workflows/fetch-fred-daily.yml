@@ -38,7 +38,7 @@ jobs:
             echo "FRED_API_KEY secret is not set"
             exit 1
           fi
-          python3 scripts/fetch_fred.py --indicators "10-yr Treasury Yield,Oil (WTI),Oil (Brent),Dollar Value Index,Natural Gas"
+          python3 scripts/fetch_fred.py --indicators "10-yr Treasury Yield,Oil (WTI),Oil (Brent),Dollar Value Index,Natural Gas,Lumber (PPI)"
 
       - name: Validate JSON output
         run: python3 -m json.tool json/financials-data.json > /dev/null

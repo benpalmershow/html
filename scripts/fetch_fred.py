@@ -93,6 +93,7 @@ INDICATOR_MAP = {
     "Oil (Brent)": "DCOILBRENTEU",  # spot; not SA
     "Personal Consumption Expenditures (PCE)": "PCE",  # SA in level? PCE is nominal; check - but keep existing series; values stored as formatted
     "Dollar Value Index": "DTWEXBGS",  # daily index, not SA
+    "Lumber (PPI)": "WPU081",  # PPI by Commodity: Lumber
 }
 
 # Consumer Sentiment is fetched directly from the University of Michigan CSV
@@ -116,7 +117,7 @@ VOLATILE_INDICATORS = {
     "Oil (Brent)",
     "20ft Equivalents (TEUs)",
     "Shipping Container Rate (China-US 40ft)",
-    "Lumber Futures",
+    "Lumber (PPI)",
     "Urea",
     "Crack Margin",
     "U.S. Petroleum Exports",

@@ -921,7 +921,21 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     } else if (indicatorType === 'earnings' && Array.isArray(indicator.priceHistory)) {
         sparklineValues = indicator.priceHistory.map(entry => entry && parseFloat(entry.close)).filter(value => !Number.isNaN(value));
     }
-    return buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues });
+
+    let latestMonthTag = '';
+    if (indicatorType === 'standard' || indicatorType === 'interestOnDebt') {
+        try {
+            const monthlyData = IndicatorRenderers.collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
+            if (monthlyData && monthlyData.length > 0) {
+                const latest = monthlyData[0];
+                latestMonthTag = latest.label;
+            }
+        } catch (e) {
+            latestMonthTag = '';
+        }
+    }
+
+    return buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues, latestMonthTag });
 }
 
 function buildChangeIndicators(momChange, yoyChange, indicator) {
@@ -1017,7 +1031,7 @@ function formatUpdatedDate(value) {
     return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
-function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues }) {
+function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues, latestMonthTag }) {
     /* Cards inherit the accent from their category (see theme.css accent map). */
     const accentStyle = '';
     const isNew = isIndicatorNew(indicator);
@@ -1083,6 +1097,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const badges = [
         (isNew && !indicator.game_time_iso) ? '<span class="new-badge">New</span>' : '',
+        (latestMonthTag && !indicator.game_time_iso && indicator.category !== 'Prediction Markets' && indicator.category !== 'Earnings') ? `<span class="latest-month-badge">${latestMonthTag}</span>` : '',
         (indicator.game_time_iso && indicator.week) ? `<span class="week-badge">W${indicator.week}</span>` : '',
         indicator.result ? '<span class="game-final-badge">Final</span>' : ''
     ].filter(Boolean).join('');

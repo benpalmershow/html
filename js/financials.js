@@ -93,13 +93,40 @@ function badgeMatches(card, key, value) {
 
 function sortIndicatorCards(key, value) {
     const grids = document.querySelectorAll('.indicators-grid');
+    const financialData = (typeof DashboardState !== 'undefined' && DashboardState.getData) ? DashboardState.getData() : null;
+
+    // Build lookup by indicator name for lastUpdated (secondary sort)
+    const indicatorByName = new Map();
+    if (financialData && Array.isArray(financialData.indices)) {
+        financialData.indices.forEach(ind => {
+            if (ind && ind.name) {
+                indicatorByName.set(ind.name, ind);
+            }
+        });
+    }
+
+    const getLastUpdated = (card) => {
+        const name = card.getAttribute('data-indicator-name');
+        const ind = name ? indicatorByName.get(name) : null;
+        if (ind && ind.lastUpdated) {
+            const t = new Date(ind.lastUpdated).getTime();
+            return Number.isNaN(t) ? 0 : t;
+        }
+        return 0;
+    };
+
     grids.forEach(grid => {
         const cards = Array.from(grid.querySelectorAll('.indicator'));
         cards.sort((a, b) => {
             const aMatch = badgeMatches(a, key, value);
             const bMatch = badgeMatches(b, key, value);
-            if (aMatch && !bMatch) return -1;
-            if (!aMatch && bMatch) return 1;
+            if (aMatch !== bMatch) {
+                return aMatch ? -1 : 1; // matching badges first
+            }
+            // Secondary sort: newest lastUpdated first within each group
+            const ta = getLastUpdated(a);
+            const tb = getLastUpdated(b);
+            if (ta !== tb) return tb - ta;
             return 0;
         });
         cards.forEach(card => grid.appendChild(card));

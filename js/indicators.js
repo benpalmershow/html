@@ -886,12 +886,14 @@ function buildChangeMetricButton(label, changeInfo, title) {
 
 // --- Card Creation ---
 
-const NEW_BADGE_WINDOW_MS = 3 * 24 * 60 * 60 * 1000;
+const NEW_BADGE_WINDOW_MS = 5 * 24 * 60 * 60 * 1000;
 
 /* Single source of truth for the "New" badge so other views (Latest Updates)
    can pin badge cards to the top of their lists. */
 function isIndicatorNew(indicator) {
     if (!indicator) return false;
+    const withinWindow = indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < NEW_BADGE_WINDOW_MS;
+    if (!withinWindow) return false;
     if (indicator.category === 'Earnings' && typeof indicator.isNew === 'boolean') {
         return indicator.isNew;
     }
@@ -901,7 +903,7 @@ function isIndicatorNew(indicator) {
         // re-fetches. This is what the "New" badge should actually mean.
         return indicator.newMonth;
     }
-    return !!(indicator.lastUpdated && (Date.now() - new Date(indicator.lastUpdated).getTime()) < NEW_BADGE_WINDOW_MS);
+    return true;
 }
 
 /* NFL game cards get a week badge instead, so they never count as "New". */

@@ -81,6 +81,77 @@ function scrollToIndicatorByName(indicatorName) {
     setTimeout(scrollToTarget, 350);
 }
 
+let currentSort = null; // { key, value } — badge-driven sort state
+
+function badgeMatches(card, key, value) {
+    const links = card.querySelectorAll('.badge-link');
+    return Array.from(links).some(link =>
+        link.getAttribute('data-sort-key') === key &&
+        link.getAttribute('data-sort-value') === value
+    );
+}
+
+function sortIndicatorCards(key, value) {
+    const grids = document.querySelectorAll('.indicators-grid');
+    grids.forEach(grid => {
+        const cards = Array.from(grid.querySelectorAll('.indicator'));
+        cards.sort((a, b) => {
+            const aMatch = badgeMatches(a, key, value);
+            const bMatch = badgeMatches(b, key, value);
+            if (aMatch && !bMatch) return -1;
+            if (!aMatch && bMatch) return 1;
+            return 0;
+        });
+        cards.forEach(card => grid.appendChild(card));
+    });
+}
+
+function applySort(key, value) {
+    sortIndicatorCards(key, value);
+    // Surface the sorted groups at the top so a page refresh with sort params
+    // (or a badge click from mid-page) doesn't leave the viewer scrolled down
+    // past the newly ordered cards.
+    window.scrollTo(0, 0);
+}
+
+function applyInitialSort() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const key = urlParams.get('sort');
+    const value = urlParams.get('sortValue');
+    if (key && value) {
+        currentSort = { key, value };
+        requestAnimationFrame(() => applySort(key, value));
+    }
+}
+
+function setupBadgeLinkHandlers() {
+    const container = document.getElementById('categories');
+    if (!container || container.dataset.badgeHandlersBound === 'true') return;
+    container.dataset.badgeHandlersBound = 'true';
+    container.addEventListener('click', (e) => {
+        const link = e.target.closest('.badge-link');
+        if (!link) return;
+        e.preventDefault();
+        const key = link.getAttribute('data-sort-key');
+        const value = link.getAttribute('data-sort-value');
+        if (!key || !value) return;
+
+        const url = new URL(window.location.href);
+        if (currentSort && currentSort.key === key && currentSort.value === value) {
+            currentSort = null;
+            url.searchParams.delete('sort');
+            url.searchParams.delete('sortValue');
+        } else {
+            currentSort = { key, value };
+            url.searchParams.set('sort', key);
+            url.searchParams.set('sortValue', value);
+        }
+        window.history.pushState({}, '', url.toString());
+        if (currentSort) applySort(currentSort.key, currentSort.value);
+        else window.scrollTo(0, 0);
+    });
+}
+
 function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
@@ -656,6 +727,7 @@ function initializeDashboard() {
     setActiveFilter(cat, !!indicatorParam);
     renderDashboard(isLatest ? 'all' : initialFilter, isLatest);
     if (indicatorParam) scrollToIndicatorByName(indicatorParam);
+    applyInitialSort();
 
     setupChartIconHandlers(SELECTORS, DATA_ATTRS);
     setupCategoryFilterHandlers(SELECTORS);
@@ -793,5 +865,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 label.click();
             }
         });
+        setupBadgeLinkHandlers();
     }
 });

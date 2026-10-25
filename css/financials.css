@@ -107,17 +107,16 @@
 
 .indicator-name-link:hover { color: var(--logo-teal); text-decoration: underline; }
 
-/* Accent rail along the top edge; single brand teal for every card. */
-.indicator::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--indicator-accent, var(--category-accent, var(--logo-teal))); opacity: 0.5; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; pointer-events: none; }
-
-/* Earnings cards get a more prominent accent rail */
-.category[data-category="Earnings"] .indicator::before { height: 3px; opacity: 0.7; }
+/* Accent rail removed */
 
 /* Badge sits in its own row for earnings cards, inline for others. */
 .new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(249, 115, 22, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; animation: badgePulse 1.4s ease-in-out 3; }
 .week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(20, 184, 166, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
 .latest-month-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(59, 130, 246, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
 .game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(20, 184, 166, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
+
+.badge-link { cursor: pointer; text-decoration: none; color: inherit; }
+.badge-link:hover { opacity: 0.85; }
 
 @keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 

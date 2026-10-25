@@ -422,7 +422,7 @@ function renderCategoryView(financialData, categories, filterCategory) {
             <div class="category" data-category="${category}">
                 <h2 class="category-title">
                     <span class="category-icon">${icon}</span>
-                    <button type="button" class="category-name category-sort-btn" data-category="${CSS.escape(category)}" title="Reset sort for ${category}">${category}</button>
+                    <button type="button" class="category-name category-sort-btn" data-category="${category}" title="Reset sort for ${category}">${category}</button>
                 </h2>
                 <div class="indicators-grid">
                     ${categoryIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}

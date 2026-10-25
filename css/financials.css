@@ -66,6 +66,14 @@
     color: var(--logo-orange);
 }
 
+/* Active state mirrors the filter bar so the category title reflects which
+   section is currently shown. */
+.category-name.category-sort-btn.active,
+.category-name.latest-updates-sort-btn.active {
+    color: var(--logo-teal);
+    font-weight: 700;
+}
+
 .indicators-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

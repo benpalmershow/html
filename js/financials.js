@@ -179,6 +179,15 @@ function setupBadgeLinkHandlers() {
     });
 }
 
+function syncCategoryTitleActive(category) {
+    const container = document.getElementById('categories');
+    if (!container) return;
+    container.querySelectorAll('.category-name.category-sort-btn, .category-name.latest-updates-sort-btn').forEach(btn => {
+        const btnCategory = btn.dataset.category || (btn.classList.contains('latest-updates-sort-btn') ? 'latest' : null);
+        btn.classList.toggle('active', btnCategory === category);
+    });
+}
+
 function setupCategorySortHandlers() {
     const container = document.getElementById('categories');
     if (!container || container.dataset.categorySortBound === 'true') return;
@@ -201,11 +210,15 @@ function setupCategorySortHandlers() {
 
         const isLatest = btn.classList.contains('latest-updates-sort-btn');
         if (isLatest) {
+            if (typeof setActiveFilter === 'function') setActiveFilter('latest');
             renderDashboard('all', true);
+            if (typeof syncCategoryTitleActive === 'function') syncCategoryTitleActive('latest');
         } else {
             const category = btn.dataset.category;
             if (category) {
+                if (typeof setActiveFilter === 'function') setActiveFilter(category);
                 renderDashboard(category, false);
+                if (typeof syncCategoryTitleActive === 'function') syncCategoryTitleActive(category);
             }
         }
         window.scrollTo(0, 0);
@@ -272,6 +285,12 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
 
     // Lazy render indicators to reduce initial DOM complexity
     setupLazyIndicatorRendering();
+
+    // Re-sync the active category title after any re-render so the button
+    // highlight always reflects the currently shown section.
+    if (typeof syncCategoryTitleActive === 'function') {
+        syncCategoryTitleActive(sortByLatest ? 'latest' : (filterCategory === 'all' ? null : filterCategory));
+    }
 }
 
 function scheduleDeferredCategoryRender(financialData, categories, filterCategory, indicatorContainer) {
@@ -293,6 +312,12 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
                 ? () => requestIdleCallback(flushNextBatch, { timeout: 1500 })
                 : () => setTimeout(flushNextBatch, 120);
             schedule();
+        } else {
+            // Deferred categories finished rendering; re-sync the active title
+            // highlight in case the inserted buttons lost their state.
+            if (typeof syncCategoryTitleActive === 'function') {
+                syncCategoryTitleActive(filterCategory === 'all' ? null : filterCategory);
+            }
         }
     };
 
@@ -816,6 +841,8 @@ function setActiveFilter(category, preserveIndicator = false) {
             : btn.dataset.category === category;
         btn.classList.toggle('active', isActive);
     });
+
+    if (typeof syncCategoryTitleActive === 'function') syncCategoryTitleActive(category);
 
     if (typeof syncFilterToURL === 'function') syncFilterToURL(category, category === 'latest', preserveIndicator);
 }

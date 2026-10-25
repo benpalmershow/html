@@ -108,19 +108,22 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
       buttonsContainer.appendChild(fecBtn);
 
       // Use event delegation on the buttons container
-     buttonsContainer.addEventListener('click', function (e) {
-         const btn = e.target.closest('.filter-btn');
-         if (!btn) return;
+buttonsContainer.addEventListener('click', function (e) {
+          const btn = e.target.closest('.filter-btn');
+          if (!btn) return;
 
-         buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-         btn.classList.add('active');
+          buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-         const category = btn.dataset.category;
-         const isLatest = btn.dataset.isLatest === 'true';
+          const category = btn.dataset.category;
+          const isLatest = btn.dataset.isLatest === 'true';
 
-          handleFilterClick(btn, category, isLatest);
-          renderDashboard(isLatest ? 'all' : category, isLatest);
-     });
+           handleFilterClick(btn, category, isLatest);
+           renderDashboard(isLatest ? 'all' : category, isLatest);
+           if (typeof syncCategoryTitleActive === 'function') {
+               syncCategoryTitleActive(isLatest ? 'latest' : category);
+           }
+      });
 
      if (typeof lucide !== 'undefined') lucide.createIcons();
  }

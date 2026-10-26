@@ -448,9 +448,44 @@
     white-space: nowrap;
 }
 
+/* Quarterly Revenue Growth Highlights */
+.earnings-growth-header {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.7fr 0.7fr;
+    gap: 4px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    padding: 0 4px 4px;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.2);
+}
+
+.earnings-growth-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.7fr 0.7fr;
+    gap: 4px;
+    align-items: center;
+    padding: 3px 4px;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
+}
+
+.earnings-growth-row:last-child { border-bottom: none; }
+
+.earnings-growth-row:hover { background: rgba(var(--logo-teal-rgb), 0.04); }
+
+.growth-quarter { font-weight: 600; }
+
+.growth-rev { text-align: right; }
+
+.growth-qoq,
+.growth-yoy { text-align: right; }
+
 /* Quick action links (now in explanation section) */
 .quick-action-link {
-    color: var(--logo-teal);
     text-decoration: none;
     font-size: 0.7rem;
     font-weight: 600;

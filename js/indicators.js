@@ -683,7 +683,7 @@ function renderHormuz(indicator) {
 
             historyDataHtml += `<div class="quarterly-section" tabindex="0" role="region" aria-labelledby="${tableId}">
                 <table class="quarterly-table">
-                    <caption id="${tableId}" class="earnings-subheading">SEC Quarterly History</caption>
+                    <caption id="${tableId}" class="earnings-subheading">Quarterly Financials</caption>
                     <thead>
                         <tr>
                             <th scope="col">Qtr</th>
@@ -697,6 +697,123 @@ function renderHormuz(indicator) {
                     <tbody>${quarterRows}</tbody>
                 </table>
             </div>`;
+        }
+
+        // 1b. Quarterly Revenue Growth Highlights (QoQ and YoY per quarter)
+        if (quarterly.length > 0) {
+            hasHistory = true;
+            const growthRows = quarterly.map((q, index) => {
+                const dateLabel = formatQuarterLabel(q.quarterEnd) || q.quarterEnd || '';
+                const rev = q.totalRevenue;
+                if (rev == null) return '';
+
+                // QoQ: vs immediately preceding quarter
+                let qoqHtml = '';
+                if (index < quarterly.length - 1) {
+                    const prev = quarterly[index + 1].totalRevenue;
+                    if (prev != null && prev !== 0) {
+                        const pct = ((rev - prev) / Math.abs(prev)) * 100;
+                        const sign = pct >= 0 ? '+' : '';
+                        const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
+                        qoqHtml = `<span class="${cls}">${sign}${pct.toFixed(1)}%</span>`;
+                    }
+                }
+
+                // YoY: vs same quarter prior year
+                let yoyHtml = '';
+                const qDate = new Date(q.quarterEnd + 'T00:00:00Z');
+                if (!Number.isNaN(qDate.getTime())) {
+                    const targetMonth = qDate.getUTCMonth();
+                    const targetYear = qDate.getUTCFullYear() - 1;
+                    const match = quarterly.find(pq => {
+                        if (!pq.quarterEnd || pq.totalRevenue == null) return false;
+                        const pd = new Date(pq.quarterEnd + 'T00:00:00Z');
+                        return !Number.isNaN(pd.getTime()) && pd.getUTCMonth() === targetMonth && pd.getUTCFullYear() === targetYear;
+                    });
+                    if (match) {
+                        const pct = ((rev - match.totalRevenue) / Math.abs(match.totalRevenue)) * 100;
+                        const sign = pct >= 0 ? '+' : '';
+                        const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
+                        yoyHtml = `<span class="${cls}">${sign}${pct.toFixed(1)}%</span>`;
+                    }
+                }
+
+                return `<div class="earnings-growth-row">
+                    <span class="growth-quarter">${dateLabel}</span>
+                    <span class="growth-rev">${formatAmount(rev)}</span>
+                    <span class="growth-qoq">${qoqHtml || '\u2014'}</span>
+                    <span class="growth-yoy">${yoyHtml || '\u2014'}</span>
+                </div>`;
+            }).filter(Boolean).join('');
+
+            if (growthRows) {
+                historyDataHtml += `<div class="earnings-subheading">Revenue Growth</div>
+                    <div class="earnings-growth-header">
+                        <span>Quarter</span><span>Revenue</span><span>QoQ</span><span>YoY</span>
+                    </div>
+                    <div class="earnings-growth-list">${growthRows}</div>`;
+            }
+        }
+
+        // 1c. Quarterly Operating Metrics (compute intensity, operating margin)
+        if (quarterly.length > 0) {
+            const metricRows = quarterly.map((q, index) => {
+                const dateLabel = formatQuarterLabel(q.quarterEnd) || q.quarterEnd || '';
+                const rev = q.totalRevenue;
+                if (rev == null || rev === 0) return '';
+
+                const computeCost = q.computeInfrastructure;
+                const computePerDollar = computeCost != null
+                    ? `<span class="${computeCost > rev ? 'earnings-negative' : 'earnings-positive'}">$${(computeCost / rev).toFixed(2)}</span>`
+                    : '\u2014';
+
+                const opMargin = q.operatingMargin != null
+                    ? `<span class="${q.operatingMargin >= 0 ? 'earnings-positive' : 'earnings-negative'}">${(q.operatingMargin * 100).toFixed(1)}%</span>`
+                    : '\u2014';
+
+                return `<div class="earnings-growth-row">
+                    <span class="growth-quarter">${dateLabel}</span>
+                    <span class="growth-rev">${computePerDollar}</span>
+                    <span class="growth-qoq">${opMargin}</span>
+                    <span class="growth-yoy"></span>
+                </div>`;
+            }).filter(Boolean).join('');
+
+            if (metricRows) {
+                historyDataHtml += `<div class="earnings-subheading">Operating Metrics</div>
+                    <div class="earnings-growth-header">
+                        <span>Quarter</span><span>Compute / $1 Rev</span><span>Op. Margin</span><span></span>
+                    </div>
+                    <div class="earnings-growth-list">${metricRows}</div>`;
+            }
+        }
+
+        // 1d. Revenue Mix (consumption-based vs subscription-based)
+        if (indicator.revenueMix) {
+            const mix = indicator.revenueMix;
+            const mixRows = Object.entries(mix)
+                .filter(([key]) => key !== 'source' && key !== 'notes')
+                .map(([period, data]) => {
+                    const label = period === 'h1_2026' ? 'H1 2026' : period;
+                    const cb = data.consumptionBased != null ? formatAmount(data.consumptionBased) : '\u2014';
+                    const sb = data.subscriptionBased != null ? formatAmount(data.subscriptionBased) : '\u2014';
+                    const cbPct = data.consumptionPct != null ? `${data.consumptionPct}%` : '';
+                    const sbPct = data.subscriptionPct != null ? `${data.subscriptionPct}%` : '';
+                    return `<div class="earnings-growth-row">
+                        <span class="growth-quarter">${label}</span>
+                        <span class="growth-rev">${cb} <span style="font-size:0.6rem;color:var(--text-muted)">${cbPct}</span></span>
+                        <span class="growth-qoq">${sb} <span style="font-size:0.6rem;color:var(--text-muted)">${sbPct}</span></span>
+                        <span class="growth-yoy"></span>
+                    </div>`;
+                }).join('');
+
+            if (mixRows) {
+                historyDataHtml += `<div class="earnings-subheading">Revenue Mix</div>
+                    <div class="earnings-growth-header">
+                        <span>Period</span><span>Consumption</span><span>Subscription</span><span></span>
+                    </div>
+                    <div class="earnings-growth-list">${mixRows}</div>`;
+            }
         }
 
         // 2. Recent earnings surprises (EPS beat/miss track record)
@@ -715,7 +832,7 @@ function renderHormuz(indicator) {
                     <span class="surprise-badge ${surpriseClass}">${sign}${val.toFixed(1)}%</span>
                 </div>`;
             }).join('');
-            historyDataHtml += `<div class="earnings-subheading">EPS Surprise History</div><div class="earnings-surprise-list">${surpriseRows}</div>`;
+            historyDataHtml += `<div class="earnings-subheading">EPS Surprises</div><div class="earnings-surprise-list">${surpriseRows}</div>`;
         }
 
         // 3. Key Fundamentals (Grouped by category)

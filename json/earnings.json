@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-26T19:39:56.889751Z",
+  "lastUpdated": "2026-10-26T21:25:41.057542Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -8857,56 +8857,20 @@
       "notes": "Net loss dominated by $72.4B change in fair value of convertible notes and derivative liabilities. Operating cash flow positive at $3.93B H1. Q3 2026 revenue $16.8B per investor day disclosure (unaudited).",
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2025-03-31",
+          "quarterEnd": "2026-06-30",
           "source": "SEC EDGAR (S-1)",
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
           "filingDate": "2026-10-26",
           "acceptedDate": "2026-10-26",
           "form": "S-1",
-          "totalRevenue": 376000000,
-          "netIncome": -6592000000,
-          "operatingIncome": -935000000,
+          "totalRevenue": 11555000000,
+          "netIncome": -66309000000,
+          "operatingIncome": 974000000,
           "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-06-30",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 787000000,
-          "netIncome": -6377000000,
-          "operatingIncome": -1200000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-09-30",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 1382000000,
-          "netIncome": -12138000000,
-          "operatingIncome": -3089000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-12-31",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 2040000000,
-          "netIncome": -16858000000,
-          "operatingIncome": -2836000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
+          "freeCashFlow": null,
+          "computeInfrastructure": 5558000000,
+          "computePerRevenueDollar": 0.48,
+          "operatingMargin": 0.0843
         },
         {
           "quarterEnd": "2026-03-31",
@@ -8919,20 +8883,74 @@
           "netIncome": -14439000000,
           "operatingIncome": -1667000000,
           "capitalExpenditures": null,
-          "freeCashFlow": null
+          "freeCashFlow": null,
+          "computeInfrastructure": 3387000000,
+          "computePerRevenueDollar": 0.72,
+          "operatingMargin": -0.3524
         },
         {
-          "quarterEnd": "2026-06-30",
+          "quarterEnd": "2025-12-31",
           "source": "SEC EDGAR (S-1)",
           "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
           "filingDate": "2026-10-26",
           "acceptedDate": "2026-10-26",
           "form": "S-1",
-          "totalRevenue": 11555000000,
-          "netIncome": -66309000000,
-          "operatingIncome": 974000000,
+          "totalRevenue": 2040000000,
+          "netIncome": -16858000000,
+          "operatingIncome": -2836000000,
           "capitalExpenditures": null,
-          "freeCashFlow": null
+          "freeCashFlow": null,
+          "computeInfrastructure": 2945000000,
+          "computePerRevenueDollar": 1.44,
+          "operatingMargin": -1.3902
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 1382000000,
+          "netIncome": -12138000000,
+          "operatingIncome": -3089000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null,
+          "computeInfrastructure": 2047000000,
+          "computePerRevenueDollar": 1.48,
+          "operatingMargin": -2.2352
+        },
+        {
+          "quarterEnd": "2025-06-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 787000000,
+          "netIncome": -6377000000,
+          "operatingIncome": -1200000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null,
+          "computeInfrastructure": 1390000000,
+          "computePerRevenueDollar": 1.77,
+          "operatingMargin": -1.5248
+        },
+        {
+          "quarterEnd": "2025-03-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 376000000,
+          "netIncome": -6592000000,
+          "operatingIncome": -935000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null,
+          "computeInfrastructure": 944000000,
+          "computePerRevenueDollar": 2.51,
+          "operatingMargin": -2.4867
         }
       ],
       "quarterlySource": "SEC EDGAR (S-1)",
@@ -8943,7 +8961,29 @@
       "source_url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
       "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
       "yahooUrl": "https://finance.yahoo.com/quote/ANTH.PVT/",
-      "googleFinanceUrl": "https://www.google.com/finance/quote/E10AAFF2-4D89-46D4-820B-B4F64B8D42CA:CRUNCHBASE"
+      "googleFinanceUrl": "https://www.google.com/finance/quote/E10AAFF2-4D89-46D4-820B-B4F64B8D42CA:CRUNCHBASE",
+      "revenueMix": {
+        "2024": {
+          "consumptionBased": 288000000,
+          "consumptionPct": 75,
+          "subscriptionBased": 98000000,
+          "subscriptionPct": 25
+        },
+        "2025": {
+          "consumptionBased": 3800000000,
+          "consumptionPct": 83,
+          "subscriptionBased": 789000000,
+          "subscriptionPct": 17
+        },
+        "h1_2026": {
+          "consumptionBased": 13100000000,
+          "consumptionPct": 80,
+          "subscriptionBased": 3200000000,
+          "subscriptionPct": 20
+        },
+        "source": "SEC EDGAR S-1 (Management's Discussion)",
+        "notes": "Consumption-based revenue is derived from customer usage during the trailing 28-day period ended on the measurement date, multiplied by 13, plus aggregate monthly subscription fees multiplied by 12. Run-Rate Revenue excludes the Bartz settlement and donation matching."
+      }
     }
   ]
 }

@@ -61,7 +61,7 @@ See `docs/posts-prd.md` for full spec. Quick reference:
 
 ## Financial Data Updates
 
-See `docs/financial_fetch.md` for the full SOP (NFL predictions, FOMC markets, economic indicators).
+See `documentation/financial_fetch.md` for the full SOP (NFL predictions, FOMC markets, economic indicators).
 
 - **Never** enter market odds without verifying live from Kalshi/Polymarket URLs.
 - Always include `lastUpdated` (ISO timestamp) and source URLs in any JSON data change.

@@ -217,7 +217,9 @@ function setupCategorySortHandlers() {
             const category = btn.dataset.category;
             if (category) {
                 if (typeof setActiveFilter === 'function') setActiveFilter(category);
-                renderDashboard(category, false);
+                // Title click forces a plain lastUpdated sort, overriding the
+                // category's default ordering (e.g. Prediction Markets kickoff).
+                renderDashboard(category, false, true);
                 if (typeof syncCategoryTitleActive === 'function') syncCategoryTitleActive(category);
             }
         }
@@ -225,7 +227,7 @@ function setupCategorySortHandlers() {
     });
 }
 
-function renderDashboard(filterCategory = 'all', sortByLatest = false) {
+function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLatestSort = false) {
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
 
@@ -263,11 +265,11 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
         const visibleCategories = categories.filter(category => filterCategory === 'all' || category === filterCategory).slice(0, 2);
         const deferredCategories = categories.filter(category => filterCategory === 'all' || category === filterCategory).slice(2);
 
-        html += renderCategoryView(financialData, visibleCategories, filterCategory);
+        html += renderCategoryView(financialData, visibleCategories, filterCategory, forceLatestSort);
         indicatorContainer.innerHTML = html;
 
         if (deferredCategories.length) {
-            scheduleDeferredCategoryRender(financialData, deferredCategories, filterCategory, indicatorContainer);
+            scheduleDeferredCategoryRender(financialData, deferredCategories, filterCategory, indicatorContainer, forceLatestSort);
         }
     }
 
@@ -293,13 +295,13 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false) {
     }
 }
 
-function scheduleDeferredCategoryRender(financialData, categories, filterCategory, indicatorContainer) {
+function scheduleDeferredCategoryRender(financialData, categories, filterCategory, indicatorContainer, forceLatestSort = false) {
     const queue = [...categories];
     const flushNextBatch = () => {
         const nextBatch = queue.splice(0, 2);
         if (!nextBatch.length) return;
 
-        const html = renderCategoryView(financialData, nextBatch, filterCategory);
+        const html = renderCategoryView(financialData, nextBatch, filterCategory, forceLatestSort);
         indicatorContainer.insertAdjacentHTML('beforeend', html);
 
         if (typeof lucide !== 'undefined') lucide.createIcons();
@@ -381,7 +383,7 @@ function compareEarningsCards(a, b) {
     return String(a.ticker || a.name || '').localeCompare(String(b.ticker || b.name || ''));
 }
 
-function renderCategoryView(financialData, categories, filterCategory) {
+function renderCategoryView(financialData, categories, filterCategory, forceLatestSort = false) {
     let html = '';
 
     categories.forEach(category => {
@@ -390,6 +392,18 @@ function renderCategoryView(financialData, categories, filterCategory) {
         let categoryIndicators = financialData.indices.filter(item => item.category === category);
 
         categoryIndicators.sort((a, b) => {
+            // A title-click "reset" forces a plain lastUpdated sort even for
+            // categories that normally order by game kickoff (Prediction Markets)
+            // or earnings schedule.
+            if (forceLatestSort) {
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+                if (dateA > 0 && dateB > 0) return dateB - dateA;
+                if (dateA > 0) return -1;
+                if (dateB > 0) return 1;
+                return a.name.localeCompare(b.name);
+            }
+
             // Prediction Markets: NFL games (with game_time_iso) sort by next
             // upcoming first, then completed games (most recent first).
             // Non-NFL prediction markets sort by lastUpdated descending.

@@ -3289,7 +3289,9 @@
         "april": "95.9",
         "may": "95.3",
         "june": "97.4",
-        "july": "99.8"
+        "july": "99.8",
+        "august": "98.7",
+        "september": "97.9"
       },
       "2025": {
         "march": "97.4",
@@ -3307,13 +3309,12 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Small Business Optimism Index",
-      "lastUpdated": "2026-08-11T14:00:00Z",
+      "lastUpdated": "2026-10-25T14:00:00Z",
       "releaseDay": 12,
-      "url": "https://fred.stlouisfed.org/series/NFIB",
       "source_url": "https://www.nfib.com/news/monthly_report/sbet/",
       "change": "",
       "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality.",
-      "releaseTimeISO": "2026-08-12T15:00:00Z",
+      "releaseTimeISO": "2026-10-25T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {

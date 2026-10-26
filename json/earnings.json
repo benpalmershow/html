@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-26T12:32:54.733231Z",
+  "lastUpdated": "2026-10-26T19:39:56.889751Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -8,7 +8,8 @@
     "CRWD",
     "OKTA",
     "FOUR",
-    "DAL"
+    "DAL",
+    "ANT"
   ],
   "earnings": [
     {
@@ -8789,6 +8790,160 @@
         }
       ],
       "quarterlySource": "SEC EDGAR"
+    },
+    {
+      "ticker": "ANT",
+      "fetchedAt": "2026-10-26T19:21:16.792826Z",
+      "source": "SEC EDGAR (S-1)",
+      "company": "Anthropic, PBC",
+      "sector": "Technology",
+      "totalCash": 131651000000,
+      "totalAssets": 147358000000,
+      "totalLiabilities": 117467000000,
+      "workingCapital": 130760000000,
+      "totalRevenue": 16286000000,
+      "grossProfit": null,
+      "operatingIncome": -693000000,
+      "netIncome": -80748000000,
+      "operatingCashFlow": 3929000000,
+      "capitalExpenditures": -482000000,
+      "freeCashFlow": null,
+      "computeAndInfrastructure": 8945000000,
+      "personnel": 3152000000,
+      "salesMarketingPartnerships": 3168000000,
+      "otherOperatingAdmin": 1714000000,
+      "stockBasedCompensation": 2185000000,
+      "sharesOutstanding": 2024972990,
+      "floatShares": null,
+      "netLossPerShare": -39.88,
+      "quarterlyRevenue": {
+        "2025-03-31": 376000000,
+        "2025-06-30": 787000000,
+        "2025-09-30": 1382000000,
+        "2025-12-31": 2040000000,
+        "2026-03-31": 4731000000,
+        "2026-06-30": 11555000000
+      },
+      "quarterlyNetIncome": {
+        "2025-03-31": -6592000000,
+        "2025-06-30": -6377000000,
+        "2025-09-30": -12138000000,
+        "2025-12-31": -16858000000,
+        "2026-03-31": -14439000000,
+        "2026-06-30": -66309000000
+      },
+      "q3_2026_revenue": 16800000000,
+      "annualRevenue": {
+        "2023": 41000000,
+        "2024": 386000000,
+        "2025": 4585000000
+      },
+      "tickerSymbol": "ANT",
+      "exchange": "Nasdaq Global Select Market",
+      "ipoStatus": "Filed - price range and share count not yet determined",
+      "filingDate": "2026-10-26",
+      "filingForm": "S-1",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "cik": "0002130357",
+      "publicBenefitCorporation": true,
+      "publicBenefitPurpose": "Responsible development and maintenance of advanced AI for the long-term benefit of humanity",
+      "latestValuation": 965000000000,
+      "priorValuation": 380000000000,
+      "millionDollarCustomers": 1900,
+      "tenMillionDollarCustomers": 250,
+      "revenuePerDollarComputeQ3": 1.7,
+      "adjustedOperatingMarginH1": 0.11,
+      "cashFlowPositiveQ3": true,
+      "notes": "Net loss dominated by $72.4B change in fair value of convertible notes and derivative liabilities. Operating cash flow positive at $3.93B H1. Q3 2026 revenue $16.8B per investor day disclosure (unaudited).",
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2025-03-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 376000000,
+          "netIncome": -6592000000,
+          "operatingIncome": -935000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-06-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 787000000,
+          "netIncome": -6377000000,
+          "operatingIncome": -1200000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 1382000000,
+          "netIncome": -12138000000,
+          "operatingIncome": -3089000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-12-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 2040000000,
+          "netIncome": -16858000000,
+          "operatingIncome": -2836000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2026-03-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 4731000000,
+          "netIncome": -14439000000,
+          "operatingIncome": -1667000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/0001628280-26-067168-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 11555000000,
+          "netIncome": -66309000000,
+          "operatingIncome": 974000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        }
+      ],
+      "quarterlySource": "SEC EDGAR (S-1)",
+      "lastUpdated": "2026-10-26T19:22:50.098380Z",
+      "explanation": "Anthropic, PBC is a public benefit corporation incorporated under Delaware law, focused on the responsible development and maintenance of advanced AI for the long-term benefit of humanity. The developer of the Claude AI model filed its S-1 registration statement on October 26, 2026, for a proposed Nasdaq listing under the ticker ANT. Revenue grew from $41M (2023) to $386M (2024) to $4.6B (2025), then reached $16.3B in the six months ended June 30, 2026. Q3 2026 revenue was $16.8B per investor-day disclosure. The H1 2026 net loss of $80.7B is driven almost entirely by a $72.4B change in the fair value of convertible notes and derivative liabilities as the enterprise valuation rose; operating cash flow was positive at $3.93B. As of September 30, more than 1,900 customers generated at least $1M in annualized revenue. The company held $131.7B in cash and short-term investments as of June 30, 2026. The IPO price range and share count have not yet been determined.",
+      "companyDescription": "Anthropic is an AI safety and research company developing frontier AI models, including the Claude family of assistants. It operates as a public benefit corporation with a Long-Term Benefit Trust and a special Class T common stock that gives AI-safety-focused trustees majority board representation.",
+      "explanationOverride": "Anthropic, PBC is a public benefit corporation focused on the responsible development and maintenance of advanced AI for the long-term benefit of humanity. The developer of the Claude AI model filed its S-1 registration statement on October 26, 2026, for a proposed Nasdaq listing under the ticker ANT. Revenue grew from $41M (2023) to $386M (2024) to $4.6B (2025), then reached $16.3B in the six months ended June 30, 2026. Q3 2026 revenue was $16.8B per investor-day disclosure. The H1 2026 net loss of $80.7B is driven almost entirely by a $72.4B change in the fair value of convertible notes and derivative liabilities as the enterprise valuation rose; operating cash flow was positive at $3.93B. As of September 30, more than 1,900 customers generated at least $1M in annualized revenue. The company held $131.7B in cash and short-term investments as of June 30, 2026. The IPO price range and share count have not yet been determined.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "yahooUrl": "https://finance.yahoo.com/quote/ANTH.PVT/",
+      "googleFinanceUrl": "https://www.google.com/finance/quote/E10AAFF2-4D89-46D4-820B-B4F64B8D42CA:CRUNCHBASE"
     }
   ]
 }

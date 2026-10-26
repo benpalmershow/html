@@ -1068,7 +1068,9 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
 
     const whyHtml = explanation && indicator.category !== 'Earnings'
         ? `<div class="indicator-explanation-header">Why this matters</div><div class="indicator-explanation-body">${explanation}</div>`
-        : '';
+        : (indicator.category === 'Earnings' && indicator.company
+            ? `<div class="indicator-explanation-header">About</div><div class="indicator-explanation-body">${explanation}</div>`
+            : '');
 
     // For earnings cards, combine Source with Quick Links
     let sourceSection = '';
@@ -1081,7 +1083,8 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
             quickActions.push(`<a href="${indicator.url}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Yahoo</a>`);
         }
         if (indicator.ticker) {
-            quickActions.push(`<a href="https://www.google.com/finance/quote/${indicator.ticker}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Google</a>`);
+            const googleUrl = indicator.googleFinanceUrl || `https://www.google.com/finance/quote/${indicator.ticker}`;
+            quickActions.push(`<a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Google</a>`);
         }
         if (indicator.quarterlyFinancials && indicator.quarterlyFinancials.length > 0 && indicator.quarterlyFinancials[0].filingUrl) {
             quickActions.push(`<a href="${indicator.quarterlyFinancials[0].filingUrl}" target="_blank" rel="noopener noreferrer" class="quick-action-link">SEC</a>`);

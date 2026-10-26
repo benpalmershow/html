@@ -601,7 +601,7 @@ function convertEarningsToIndicators(earnings, configuredTickers = null) {
             source_url: latestQ?.filingUrl || 'https://www.sec.gov/edgar/searchedgar/companysearch',
             name: entry.ticker,
             ticker: entry.ticker,
-            url: `https://finance.yahoo.com/quote/${entry.ticker}`,
+            url: entry.yahooUrl || `https://finance.yahoo.com/quote/${entry.ticker}`,
             lastUpdated: latestQ?.acceptedDate || latestQ?.filingDate || latest.reportedDate || entry.fetchedAt,
             reportedDate: latest.reportedDate || '',
             isNew: (() => {
@@ -615,7 +615,7 @@ function convertEarningsToIndicators(earnings, configuredTickers = null) {
             estimatedNextEPS: entry.estimatedEPS || latest.estimatedEPS,
             latestPrice: entry.latestPrice,
             change: '',
-            explanation: buildEarningsExplanation(entry, latest),
+            explanation: entry.explanationOverride || buildEarningsExplanation(entry, latest),
             recentEarnings: entry.recentEarnings || [],
             quarterlyFinancials: entry.quarterlyFinancials || [],
             company: entry.company,

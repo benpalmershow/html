@@ -51,9 +51,9 @@ games:
   game_time_iso: '2026-10-26T00:20:00Z'
   url: https://polymarket.com/sports/nfl/nfl-kc-sea-2026-10-26
   polymarket_slug: nfl-kc-sea-2026-10-26
-  KC_win_odds: 41.5¢
-  SEA_win_odds: 58.5¢
-  lastUpdated: '2026-10-25T20:57:28.048562Z'
+  KC_win_odds: 33.5¢
+  SEA_win_odds: 66.5¢
+  lastUpdated: '2026-10-26T01:02:16.975925Z'
   odds_history:
   - timestamp: '2026-10-19T21:48:56.900214Z'
     KC_win_odds: 45.5¢
@@ -85,6 +85,9 @@ games:
   - timestamp: '2026-10-25T20:57:28.048562Z'
     KC_win_odds: 41.5¢
     SEA_win_odds: 58.5¢
+  - timestamp: '2026-10-26T01:02:16.975925Z'
+    KC_win_odds: 33.5¢
+    SEA_win_odds: 66.5¢
 - id: dal-phi-2026-10-26
   week: 7
   away: DAL

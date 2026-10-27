@@ -23,8 +23,60 @@ jobs:
       - name: Install dependencies
         run: pip install yfinance pandas lxml requests
 
+      - name: Preserve ANT manual entry
+        run: |
+          python3 -c "
+          import json
+          with open('json/earnings.json', 'r') as f:
+              data = json.load(f)
+          ant_entry = next((e for e in data.get('earnings', []) if e.get('ticker') == 'ANT'), None)
+          if ant_entry and ant_entry.get('source') == 'SEC EDGAR':
+              with open('/tmp/ant_backup.json', 'w') as f:
+                  json.dump(ant_entry, f)
+              echo 'ANT entry backed up'
+          else:
+              echo 'No ANT manual entry to backup'
+          "
+
       - name: Run earnings fetcher
         run: python3 scripts/fetch_earnings.py
+
+      - name: Restore ANT manual entry
+        run: |
+          if [ -f /tmp/ant_backup.json ]; then
+            python3 -c "
+            import json
+            with open('/tmp/ant_backup.json', 'r') as f:
+                ant_entry = json.load(f)
+            with open('json/earnings.json', 'r') as f:
+                data = json.load(f)
+            # Remove any ANT entry from fetcher
+            data['earnings'] = [e for e in data['earnings'] if e.get('ticker') != 'ANT']
+            # Re-insert manual ANT entry
+            data['earnings'].append(ant_entry)
+            with open('json/earnings.json', 'w') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            echo 'ANT entry restored'
+            "
+          else
+            echo 'No ANT backup to restore'
+          fi
+
+      - name: Ensure ANT in tickers list
+        run: |
+          python3 -c "
+          import json
+          with open('json/earnings-tickers.json', 'r') as f:
+              data = json.load(f)
+          if 'ANT' not in data.get('tickers', []):
+              data['tickers'].append('ANT')
+              data['lastEdited'] = '2026-10-27'
+              with open('json/earnings-tickers.json', 'w') as f:
+                  json.dump(data, f, indent=2)
+              echo 'ANT added to tickers list'
+          else:
+              echo 'ANT already in tickers list'
+          "
 
       - name: Run SEC quarterly fetcher
         run: python3 scripts/fetch_sec_quarterly.py

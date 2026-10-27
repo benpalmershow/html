@@ -17,3 +17,5 @@ As of September 30, more than 1,900 customers generated at least $1 million each
 The IPO price range and share count have not yet been determined. Anthropic previously raised a $65 billion Series H round in May 2026 that valued the company at $965 billion, following a $30 billion round in February that valued it at $380 billion.
 
 [Read the S-1](https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm)
+
+[View Anthropic earnings card](financials.html?indicator=ANT)

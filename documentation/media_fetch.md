@@ -130,7 +130,7 @@ The movie template above is the *observed* shape in `media.json`. Other types us
 | Book | `category`, `amazon`, `goodreads`, `ratings.gr` |
 | Podcast | `icon`, `links[]` (Apple/Spotify/YouTube), `url` |
 | Album | `genre`, `links[]` (YouTube Music/Spotify) |
-| Playlist | `icon: "fas fa-podcast"`, `cover: "images/listen.png"`, `links[]` |
+| Playlist | `icon: "fas fa-podcast"`, `cover: "images/listen.png"`, `links[]`, `songs[]` (list of "Title - Artist" strings) |
 
 ---
 

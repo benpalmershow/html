@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-27T02:06:22.982722Z",
+  "lastUpdated": "2026-10-26T15:36:47Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -4539,6 +4539,54 @@
       },
       "LAC_win_odds": "0",
       "KC_win_odds": "100"
+    },
+    {
+      "id": "dal-phi-2026-10-26",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "DAL @ PHI",
+      "game_title": "Dallas Cowboys @ Philadelphia Eagles",
+      "game_time": "Oct 26, 2026 8:15 PM ET",
+      "game_time_iso": "2026-10-27T00:15:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-dal-phi-2026-10-27",
+      "lastUpdated": "2026-10-26T12:00:52.864853Z",
+      "week": 7,
+      "probabilities": {
+        "2026-10-19": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
+        },
+        "2026-10-20": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
+        },
+        "2026-10-21": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
+        },
+        "2026-10-22": {
+          "DAL_win_odds": "64",
+          "PHI_win_odds": "36"
+        },
+        "2026-10-23": {
+          "DAL_win_odds": "64",
+          "PHI_win_odds": "36"
+        },
+        "2026-10-24": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
+        },
+        "2026-10-25": {
+          "DAL_win_odds": "68",
+          "PHI_win_odds": "32"
+        },
+        "2026-10-26": {
+          "DAL_win_odds": "66",
+          "PHI_win_odds": "34"
+        }
+      },
+      "DAL_win_odds": "66",
+      "PHI_win_odds": "34"
     },
     {
       "id": "dal-gb-2026-10-18",

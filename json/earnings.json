@@ -8885,7 +8885,12 @@
           "totalRevenue": 16300000000.0,
           "netIncome": -80700000000.0,
           "operatingIncome": -693000000.0,
-          "operatingCashFlow": 3930000000.0
+          "operatingCashFlow": 3930000000.0,
+          "depreciationAndAmortization": 614000000.0,
+          "capitalExpenditures": 1160000000.0,
+          "freeCashFlow": 687000000.0,
+          "grossProfits": 8915000000.0,
+          "totalCash": 131700000000.0
         },
         {
           "quarterEnd": "2025-12-31",
@@ -8895,7 +8900,14 @@
           "filingDate": "2026-10-26",
           "acceptedDate": "2026-10-26",
           "form": "S-1",
-          "totalRevenue": 4600000000.0
+          "totalRevenue": 4600000000.0,
+          "netIncome": -2100000000.0,
+          "operatingIncome": -2100000000.0,
+          "operatingCashFlow": 1847000000.0,
+          "depreciationAndAmortization": 614000000.0,
+          "capitalExpenditures": 1160000000.0,
+          "freeCashFlow": 687000000.0,
+          "grossProfits": 2511000000.0
         }
       ],
       "quarterlySource": "SEC EDGAR"

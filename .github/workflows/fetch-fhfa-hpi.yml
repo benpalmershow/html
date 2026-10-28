@@ -1,0 +1,55 @@
+name: Fetch FHFA House Price Index
+
+on:
+  schedule:
+    # FHFA House Price Index releases quarterly (Feb/May/Aug/Nov).
+    - cron: '0 14 25 2,5,8,11 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-fhfa-hpi
+  cancel-in-progress: false
+
+jobs:
+  fetch-fhfa-hpi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch FHFA House Price Index
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          if [ -z "$FRED_API_KEY" ]; then
+            echo "FRED_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_fred.py --indicators "FHFA House Price Index"
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/financials-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json
+          if git diff --staged --quiet; then
+            echo "No FHFA House Price Index data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update FHFA House Price Index [skip ci]"
+          git push

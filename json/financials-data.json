@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-27T15:00:48Z",
+  "lastUpdated": "2026-10-28T01:15:20Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -316,7 +316,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-10-27T11:20:55Z",
+      "lastUpdated": "2026-10-28T01:15:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -886,12 +886,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-"lastUpdated": "2026-10-27T13:00:00Z",
-       "releaseDay": 30,
-       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
-       "change": "",
-       "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
-       "newMonth": true,
+      "lastUpdated": "2026-10-27T13:00:00Z",
+      "releaseDay": 30,
+      "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
+      "change": "",
+      "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
+      "newMonth": true,
       "releaseTimeISO": "2026-10-30T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -1486,7 +1486,8 @@
         "june": "92.2",
         "july": "90.2",
         "august": "88.6",
-        "september": "81.9"
+        "september": "84.2",
+        "october": "91.7"
       },
       "2025": {
         "march": "85.7",
@@ -1502,16 +1503,17 @@
       },
       "category": "Consumer Indicators",
       "color": "#9b59b6",
-      "agency": "FRED",
+      "agency": "Conference Board",
       "name": "Consumer Confidence",
-      "lastUpdated": "2026-09-29T14:00:00Z",
+      "lastUpdated": "2026-10-28T01:10:18Z",
       "releaseDay": 28,
-      "url": "https://fred.stlouisfed.org/series/CONF",
+      "url": "https://www.conference-board.org/data/consumerdata.cfm",
       "source_url": "https://www.conference-board.org/topics/consumer-confidence",
       "change": "",
       "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity.",
-      "releaseTimeISO": "2026-09-28T15:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeISO": "2026-10-27T14:00:00Z",
+      "releaseTimeZone": "America/New_York",
+      "newMonth": true
     },
     {
       "id": "used-vehicle-value-index",
@@ -2312,7 +2314,8 @@
         "may": "636,000",
         "june": "672,000",
         "july": "643,000",
-        "august": "684,000"
+        "august": "684,000",
+        "september": "676,000"
       },
       "2025": {
         "march": "656,000",
@@ -2332,14 +2335,14 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "New Home Sales",
-      "lastUpdated": "2026-10-24T11:47:20Z",
-      "releaseDay": 23,
+      "lastUpdated": "2026-10-27T14:00:00Z",
+      "releaseDay": 27,
       "url": "https://fred.stlouisfed.org/series/HSN1F",
       "source_url": "https://www.census.gov/construction/nrs/current/index.html",
       "change": "",
       "explanation": "The seasonally adjusted annual rate of newly constructed single-family homes sold during the month, as reported by the U.S. Census Bureau. This indicator measures demand for new residential construction and is considered a leading economic indicator. The data includes both completed homes and those under construction, with sales recorded when contracts are signed, not at closing. The median and average sales prices are also reported. New home sales account for about 10-15% of total home sales but are more sensitive to economic conditions than existing home sales, making them an important gauge of consumer confidence and economic health.",
-      "newMonth": false,
-      "releaseTimeISO": "2026-10-23T15:00:00Z",
+      "newMonth": true,
+      "releaseTimeISO": "2026-10-27T14:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
         "december": "702,000",
@@ -4690,6 +4693,44 @@
       },
       "WAS_win_odds": "0",
       "SF_win_odds": "100"
+    },
+    {
+      "id": "fhfa-house-price-index",
+      "2026": {
+        "q1": "712.20",
+        "q2": "719.87"
+      },
+      "2025": {
+        "january": "688.42",
+        "april": "698.69",
+        "july": "703.04",
+        "october": "707.22"
+      },
+      "category": "Housing Market",
+      "color": "#e67e22",
+      "agency": "FRED",
+      "name": "FHFA House Price Index",
+      "lastUpdated": "2026-10-28T01:00:00Z",
+      "releaseDay": 28,
+      "url": "https://fred.stlouisfed.org/series/USSTHPI",
+      "source_url": "https://www.fhfa.gov/hpi",
+      "change": "",
+      "explanation": "The FHFA House Price Index measures changes in single-family home prices across the United States using a repeat-sales methodology. Published by the Federal Housing Finance Agency, it tracks price appreciation for homes with conforming mortgages.",
+      "newMonth": true,
+      "releaseTimeISO": "2026-10-28T01:00:00Z",
+      "releaseTimeZone": "America/New_York",
+      "2023": {
+        "january": "619.69",
+        "april": "637.85",
+        "july": "648.28",
+        "october": "648.40"
+      },
+      "2024": {
+        "january": "657.59",
+        "april": "673.16",
+        "july": "679.81",
+        "october": "683.47"
+      }
     }
   ]
 }

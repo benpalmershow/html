@@ -247,6 +247,22 @@ and validation procedure. The automated implementation lives in
 
 ### Regular Maintenance Tasks
 
+#### Step 0b: Consumer Confidence (Conference Board) — Manual Update Required
+The Conference Board's Consumer Confidence Index is **not** auto-fetched. The
+source publishes a monthly press release (~last Tuesday, 10 AM ET) but does not
+expose a machine-readable feed (the data is behind a paywall). Update it
+manually from https://www.conference-board.org/data/consumerdata.cfm.
+
+**CRITICAL — always check for revisions:** The Conference Board revises the
+prior month in every release (sometimes by several points). Before writing the
+new month, verify the previous month's value against the press release and
+update `financials-data.json` if it changed. Do not overwrite a revision with a
+stale value.
+
+- `scripts/fetch_fred.py` no longer references this indicator (the old `CONF`
+  FRED series was removed by the source); it is excluded from `INDICATOR_MAP`.
+- The `url` field points to the Conference Board data page, not FRED.
+
 #### Step 1: Data Sources
 **Primary Sources by Indicator:**
 - **Federal Reserve**: Industrial Production, Capacity Utilization

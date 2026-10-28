@@ -79,12 +79,12 @@ INDICATOR_MAP = {
     "Monthly Retail Sales": "RSAFS",  # SA
     "Industrial Production Index": "INDPRO",  # SA
     "Capacity Utilization": "TCU",  # SA
-    "Consumer Confidence": "CONF",  # Conference Board; series format varies
     "Small Business Optimism Index": "NFIB",  # NSA/seasonally not standard; keep as is
     "Housing Starts": "HOUST",  # SA
     "New Home Sales": "HSN1F",  # SA
     "Building Permits": "PERMIT",  # SA
     "Case-Shiller National Home Price Index": "CSUSHPINSA",  # SA
+    "FHFA House Price Index": "USSTHPI",  # SA
     "30-yr Mortgage Rate": "MORTGAGE30US",  # NSA weekly avg
     "Affordability Index": "FIXHAI",  # NSA
     "Oil (WTI)": "DCOILWTICO",  # spot; not SA
@@ -95,6 +95,13 @@ INDICATOR_MAP = {
     "Dollar Value Index": "DTWEXBGS",  # daily index, not SA
     "Lumber (PPI)": "WPU081",  # PPI by Commodity: Lumber
 }
+
+# Consumer Confidence (Conference Board) is NOT auto-fetched here.
+# The Conference Board does not publish a public machine-readable feed for its
+# Consumer Confidence Index (data is behind a paywall). Update it manually from
+# the monthly press release at https://www.conference-board.org/data/consumerdata.cfm
+# (published ~last Tuesday of each month at 10 AM ET). ALWAYS check for revisions
+# to prior months in the same release before writing the new value.
 
 # Consumer Sentiment is fetched directly from the University of Michigan CSV
 # (see fetch_umich_sentiment) because FRED's UMCSENT series is delayed 1 month

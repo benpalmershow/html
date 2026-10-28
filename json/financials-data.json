@@ -865,7 +865,8 @@
         "april": "333.15",
         "may": "335.58",
         "june": "336.91",
-        "july": "337.31"
+        "july": "337.31",
+        "august": "336.74"
       },
       "2025": {
         "january": "323.631",
@@ -885,12 +886,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-      "lastUpdated": "2026-10-24T11:47:20Z",
-      "releaseDay": 30,
-      "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
-      "change": "",
-      "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
-      "newMonth": false,
+"lastUpdated": "2026-10-27T13:00:00Z",
+       "releaseDay": 30,
+       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
+       "change": "",
+       "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
+       "newMonth": true,
       "releaseTimeISO": "2026-10-30T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {

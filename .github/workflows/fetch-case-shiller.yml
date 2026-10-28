@@ -1,0 +1,57 @@
+name: Fetch Case-Shiller Index
+
+on:
+  schedule:
+    # S&P Case-Shiller releases on the last Tuesday of each month at 9:00 am ET.
+    # Run every Tuesday at 14:00 UTC (covers 9:00 am ET under both EST and EDT);
+    # the fetch script only commits when a new month or revision is published.
+    - cron: '0 14 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-case-shiller
+  cancel-in-progress: false
+
+jobs:
+  fetch-case-shiller:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch Case-Shiller index
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          if [ -z "$FRED_API_KEY" ]; then
+            echo "FRED_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_fred.py --indicators "Case-Shiller National Home Price Index"
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/financials-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json
+          if git diff --staged --quiet; then
+            echo "No Case-Shiller data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update Case-Shiller National Home Price Index [skip ci]"
+          git push

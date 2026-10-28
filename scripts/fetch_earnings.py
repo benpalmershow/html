@@ -300,6 +300,11 @@ def main():
     }
 
     for symbol in TICKERS:
+        # Skip ANT (Anthropic) - manually sourced from SEC S-1, not available via yfinance
+        if symbol == "ANT":
+            logger.info(f"  {symbol}: skipped (manually sourced from SEC S-1)")
+            continue
+
         try:
             data = fetch_ticker_data(symbol)
             output["earnings"].append(data)

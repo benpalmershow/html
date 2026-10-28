@@ -232,6 +232,21 @@
 /* Ticker as subtle subtitle in agency line */
 .earnings-ticker-sub { display: inline-flex; align-items: center; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; color: var(--text-muted); margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(var(--border-color-rgb), 0.3); }
 
+/* Pre-IPO badge for S-1 filings */
+.pre-ipo-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    white-space: nowrap;
+}
+
 /* Enhanced price row with better visual hierarchy */
 .earnings-price-row { background: rgba(var(--border-color-rgb), 0.4); border-left: 4px solid var(--logo-teal); padding: 8px 10px; margin: 6px 0; border-radius: 0 6px 6px 0; }
 .earnings-price-value { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
@@ -531,6 +546,191 @@
 .surprise-badge.surprise-negative { background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
 
 .earnings-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin: 8px 0 12px; padding: 10px 12px; background: rgba(var(--border-color-rgb), 0.12); border-radius: 8px; border: 1px solid rgba(var(--border-color-rgb), 0.2); }
+
+/* S-1 metrics grid gets a purple accent to distinguish from regular stats */
+.earnings-stats-grid.s1-metrics-grid {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: rgba(168, 85, 247, 0.2);
+}
+
+/* Revenue Growth Timeline */
+.growth-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    background: rgba(var(--border-color-rgb), 0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(var(--border-color-rgb), 0.2);
+}
+
+.growth-timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08);
+    font-size: 0.72rem;
+}
+
+.growth-timeline-item:last-child {
+    border-bottom: none;
+}
+
+.growth-timeline-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.growth-timeline-value {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Accounting Artifact Note */
+.accounting-note {
+    margin: 12px 0;
+    padding: 12px 14px;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 8px;
+    border-left: 4px solid rgba(251, 191, 36, 0.5);
+}
+
+.accounting-note-header {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #d97706;
+    margin-bottom: 6px;
+}
+
+.accounting-note-body {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Funding History Timeline */
+.funding-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    background: rgba(var(--border-color-rgb), 0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(var(--border-color-rgb), 0.2);
+}
+
+.funding-timeline-header {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1fr 1fr;
+    gap: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.25);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+
+.funding-timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1fr 1fr;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08);
+    font-size: 0.7rem;
+}
+
+.funding-timeline-item:last-child {
+    border-bottom: none;
+}
+
+.funding-round {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.funding-date {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.funding-amount {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.funding-valuation {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+/* Competitors Section */
+.competitors-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    background: rgba(var(--border-color-rgb), 0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(var(--border-color-rgb), 0.2);
+    font-size: 0.75rem;
+}
+
+.competitors-label {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.competitors-list {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* S-1 Quick Links */
+.s1-links-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    background: rgba(168, 85, 247, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.s1-link {
+    color: var(--logo-teal);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(var(--logo-teal-rgb), 0.08);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.s1-link:hover {
+    background: rgba(var(--logo-teal-rgb), 0.15);
+    color: var(--logo-orange);
+}
+
+.s1-link-sep {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
 
 .stat-item { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.7rem; padding: 4px 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08); }
 

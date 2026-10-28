@@ -8890,7 +8890,51 @@
           "capitalExpenditures": 1160000000.0,
           "freeCashFlow": 687000000.0,
           "grossProfits": 8915000000.0,
-          "totalCash": 131700000000.0
+          "totalCash": 131700000000.0,
+          "adjustedOperatingIncome": 1620000000.0,
+          "customerCountOver1M": 1900,
+          "customerCountOver10M": 250,
+          "revenuePerComputeDollar": 1.70,
+          "netLossAccountingArtifact": 72400000000.0,
+          "revenueHistory": [
+            {"year": 2023, "revenue": 41000000},
+            {"year": 2024, "revenue": 386000000},
+            {"year": 2025, "revenue": 4600000000},
+            {"period": "H1 2026", "revenue": 16300000000}
+          ],
+          "valuationContext": {
+            "seriesHValuation": 965000000000,
+            "seriesHDate": "May 2026",
+            "seriesHRound": "Series H",
+            "ipoStatus": "Filed S-1 October 2026, awaiting IPO pricing",
+            "fundingHistory": [
+              {"round": "Seed", "date": "2021", "amount": 124000000, "valuation": null},
+              {"round": "Series B", "date": "2022", "amount": 400000000, "valuation": 4000000000},
+              {"round": "Series C", "date": "2023", "amount": 450000000, "valuation": 5000000000},
+              {"round": "Series D", "date": "2024", "amount": 2000000000, "valuation": 18000000000},
+              {"round": "Series F", "date": "2025", "amount": 4500000000, "valuation": 40000000000},
+              {"round": "Series H", "date": "May 2026", "amount": 65000000000, "valuation": 965000000000}
+            ]
+          },
+          "unitEconomics": {
+            "grossMargins": 0.55,
+            "monthlyBurnRate": 500000000,
+            "cashRunwayMonths": 264,
+            "ltvCacRatio": 3.5,
+            "netDollarRetention": 125
+          },
+          "marketContext": {
+            "marketSegment": "Generative AI / LLM",
+            "competitors": ["OpenAI", "Google DeepMind", "Meta AI", "Amazon Anthropic"],
+            "marketSize": "$200B by 2030",
+            "differentiation": "Constitutional AI, safety-focused, enterprise focus"
+          },
+          "s1SectionLinks": {
+            "business": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc",
+            "management": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc",
+            "riskFactors": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc",
+            "financials": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc"
+          }
         },
         {
           "quarterEnd": "2025-12-31",

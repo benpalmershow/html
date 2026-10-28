@@ -514,6 +514,10 @@ function renderHormuz(indicator) {
         const quarterly = indicator.quarterlyFinancials || [];
         let hasHistory = false;
 
+        // Detect if this is an S-1 filing (pre-IPO)
+        const isS1Filing = quarterly.length > 0 && quarterly[0].form === 'S-1';
+        const isPreIPO = isS1Filing || (indicator.latestPrice == null && indicator.marketCap == null);
+
         const formatAmount = (value) => {
             if (value === null || value === undefined || Number.isNaN(value)) return '\u2014';
             const abs = Math.abs(value);
@@ -544,37 +548,45 @@ function renderHormuz(indicator) {
         // --- Card Front: who / when / print / beat ---
         const latestItems = [];
 
-        const price = indicator.latestPrice != null ? `$${indicator.latestPrice.toFixed ? indicator.latestPrice.toFixed(2) : indicator.latestPrice}` : '\u2014';
-        let dayChange = '';
-        let priceContext = '';
-        if (indicator.latestPrice != null && indicator.previousClose != null && indicator.previousClose !== 0) {
-            const pct = ((indicator.latestPrice - indicator.previousClose) / Math.abs(indicator.previousClose)) * 100;
-            const sign = pct >= 0 ? '+' : '';
-            const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
-            const arrow = pct >= 0 ? '↑' : '↓';
-            dayChange = `<span class="earnings-day-change ${cls}" title="Change vs previous close">${arrow} ${sign}${pct.toFixed(1)}%</span>`;
+        // Add pre-IPO badge if applicable
+        if (isPreIPO) {
+            latestItems.push(`<div class="latest-data-row"><span class="month-label"></span><span class="month-value"><span class="pre-ipo-badge" title="Pre-IPO filing - not yet publicly traded">Pre-IPO</span></span></div>`);
         }
 
-        // Price context badge based on 52-week range
-        if (indicator.latestPrice != null && indicator.fiftyTwoWeekLow != null && indicator.fiftyTwoWeekHigh != null) {
-            const range = indicator.fiftyTwoWeekHigh - indicator.fiftyTwoWeekLow;
-            const position = range > 0 ? ((indicator.latestPrice - indicator.fiftyTwoWeekLow) / range) * 100 : 50;
-            let contextLabel = '';
-            let contextClass = '';
-            if (position >= 80) {
-                contextLabel = 'Near 52W High';
-                contextClass = 'price-context-high';
-            } else if (position <= 20) {
-                contextLabel = 'Near 52W Low';
-                contextClass = 'price-context-low';
-            } else {
-                contextLabel = 'Mid-Range';
-                contextClass = 'price-context-mid';
+        // Only show price row if not pre-IPO
+        if (!isPreIPO) {
+            const price = indicator.latestPrice != null ? `$${indicator.latestPrice.toFixed ? indicator.latestPrice.toFixed(2) : indicator.latestPrice}` : '\u2014';
+            let dayChange = '';
+            let priceContext = '';
+            if (indicator.latestPrice != null && indicator.previousClose != null && indicator.previousClose !== 0) {
+                const pct = ((indicator.latestPrice - indicator.previousClose) / Math.abs(indicator.previousClose)) * 100;
+                const sign = pct >= 0 ? '+' : '';
+                const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
+                const arrow = pct >= 0 ? '↑' : '↓';
+                dayChange = `<span class="earnings-day-change ${cls}" title="Change vs previous close">${arrow} ${sign}${pct.toFixed(1)}%</span>`;
             }
-            priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;
-        }
 
-        latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label"><span style="font-weight: 700; margin-right: 4px;">$</span>Price:</span><span class="month-value earnings-price-value">${price}${dayChange}${priceContext}</span></div>`);
+            // Price context badge based on 52-week range
+            if (indicator.latestPrice != null && indicator.fiftyTwoWeekLow != null && indicator.fiftyTwoWeekHigh != null) {
+                const range = indicator.fiftyTwoWeekHigh - indicator.fiftyTwoWeekLow;
+                const position = range > 0 ? ((indicator.latestPrice - indicator.fiftyTwoWeekLow) / range) * 100 : 50;
+                let contextLabel = '';
+                let contextClass = '';
+                if (position >= 80) {
+                    contextLabel = 'Near 52W High';
+                    contextClass = 'price-context-high';
+                } else if (position <= 20) {
+                    contextLabel = 'Near 52W Low';
+                    contextClass = 'price-context-low';
+                } else {
+                    contextLabel = 'Mid-Range';
+                    contextClass = 'price-context-mid';
+                }
+                priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;
+            }
+
+            latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label"><span style="font-weight: 700; margin-right: 4px;">$</span>Price:</span><span class="month-value earnings-price-value">${price}${dayChange}${priceContext}</span></div>`);
+        }
 
         if (quarterly.length > 0) {
             const latestQ = quarterly[0];
@@ -591,9 +603,61 @@ function renderHormuz(indicator) {
 
             const printParts = [];
             if (rev) printParts.push(`<span title="Total Revenue">${rev}</span>`);
-            if (net) printParts.push(`<span class="${netClass}" title="Net Income">${net}</span>`);
+            // For S-1 filings, show adjusted operating income instead of net income
+            if (isS1Filing && latestQ.adjustedOperatingIncome != null) {
+                const adjOi = formatAmount(latestQ.adjustedOperatingIncome);
+                const adjOiClass = latestQ.adjustedOperatingIncome >= 0 ? 'earnings-positive' : 'earnings-negative';
+                printParts.push(`<span class="${adjOiClass}" title="Adjusted Operating Income (excludes SBC and noncash charitable contributions)">${adjOi} Adj. OI</span>`);
+            } else if (net) {
+                printParts.push(`<span class="${netClass}" title="Net Income">${net}</span>`);
+            }
             if (printParts.length) {
                 latestItems.push(`<div class="latest-data-row"><span class="month-label">${qBadge}:</span><span class="month-value">${printParts.join('<span class="earnings-sep"> · </span>')}</span></div>`);
+            }
+
+            // Add S-1 specific operating metrics for the card front
+            if (isS1Filing) {
+                const s1Metrics = [];
+                if (latestQ.customerCountOver1M != null) {
+                    s1Metrics.push(`<span title="Customers with $1M+ annualized revenue">${latestQ.customerCountOver1M.toLocaleString()} customers</span>`);
+                }
+                if (latestQ.revenuePerComputeDollar != null) {
+                    s1Metrics.push(`<span title="Revenue per dollar of compute spend">$${latestQ.revenuePerComputeDollar.toFixed(2)}/$1 compute</span>`);
+                }
+                if (s1Metrics.length) {
+                    latestItems.push(`<div class="latest-data-row long-value"><span class="month-label">Operating Metrics:</span><span class="month-value">${s1Metrics.join('<span class="earnings-sep"> · </span>')}</span></div>`);
+                }
+
+                // Add YoY revenue growth for card front (2025 vs 2024)
+                if (latestQ.revenueHistory) {
+                    const revHistory = latestQ.revenueHistory;
+                    const y2025 = revHistory.find(r => r.year === 2025);
+                    const y2024 = revHistory.find(r => r.year === 2024);
+                    if (y2025 && y2024 && y2025.revenue && y2024.revenue && y2024.revenue > 0) {
+                        const growthPct = ((y2025.revenue - y2024.revenue) / Math.abs(y2024.revenue)) * 100;
+                        const growthSign = growthPct >= 0 ? '+' : '';
+                        const growthClass = growthPct >= 0 ? 'earnings-positive' : 'earnings-negative';
+                        latestItems.push(`<div class="latest-data-row"><span class="month-label">YoY Growth:</span><span class="month-value"><span class="${growthClass}">${growthSign}${growthPct.toFixed(0)}%</span> 2024 → 2025</span></div>`);
+                    }
+                }
+
+                // Add quick-access unit economics on card front
+                if (latestQ.unitEconomics) {
+                    const ue = latestQ.unitEconomics;
+                    const quickMetrics = [];
+
+                    if (ue.grossMargins != null) {
+                        quickMetrics.push(`<span title="Gross margins">${(ue.grossMargins * 100).toFixed(0)}% GM</span>`);
+                    }
+                    if (ue.cashRunwayMonths != null) {
+                        const years = (ue.cashRunwayMonths / 12).toFixed(1);
+                        quickMetrics.push(`<span title="Cash runway">${years}y runway</span>`);
+                    }
+
+                    if (quickMetrics.length) {
+                        latestItems.push(`<div class="latest-data-row"><span class="month-label">Unit Economics:</span><span class="month-value">${quickMetrics.join('<span class="earnings-sep"> · </span>')}</span></div>`);
+                    }
+                }
             }
         }
 
@@ -697,6 +761,187 @@ function renderHormuz(indicator) {
                     <tbody>${quarterRows}</tbody>
                 </table>
             </div>`;
+
+            // Add S-1 specific metrics section
+            if (isS1Filing && quarterly[0]) {
+                const latestQ = quarterly[0];
+
+                // Section 1: Operating Metrics
+                const s1Metrics = [];
+
+                if (latestQ.adjustedOperatingIncome != null) {
+                    s1Metrics.push({ label: 'Adj. Operating Income', value: formatAmount(latestQ.adjustedOperatingIncome), tip: 'Excludes stock-based compensation and noncash charitable contributions' });
+                }
+                if (latestQ.customerCountOver1M != null) {
+                    s1Metrics.push({ label: '$1M+ ARR Customers', value: latestQ.customerCountOver1M.toLocaleString(), tip: 'Customers generating at least $1M in annualized revenue' });
+                }
+                if (latestQ.customerCountOver10M != null) {
+                    s1Metrics.push({ label: '$10M+ ARR Customers', value: latestQ.customerCountOver10M.toLocaleString(), tip: 'Customers generating at least $10M in annualized revenue' });
+                }
+                if (latestQ.revenuePerComputeDollar != null) {
+                    s1Metrics.push({ label: 'Revenue/Compute', value: `$${latestQ.revenuePerComputeDollar.toFixed(2)}/$1`, tip: 'Revenue generated per dollar spent on computing power' });
+                }
+
+                if (s1Metrics.length > 0) {
+                    const s1StatsHtml = s1Metrics.map(s => `
+                        <div class="stat-item" title="${s.tip}">
+                            <span class="stat-label">${s.label}</span>
+                            <span class="stat-value">${s.value}</span>
+                        </div>
+                    `).join('');
+                    historyDataHtml += `<div class="earnings-subheading">Operating Metrics</div><div class="earnings-stats-grid s1-metrics-grid">${s1StatsHtml}</div>`;
+                }
+
+                // Section 2: Revenue Growth Timeline
+                if (latestQ.revenueHistory && latestQ.revenueHistory.length > 0) {
+                    const growthTimeline = latestQ.revenueHistory.map(entry => {
+                        const rev = formatAmount(entry.revenue);
+                        const label = entry.year ? `${entry.year}` : entry.period;
+                        return `<div class="growth-timeline-item">
+                            <span class="growth-timeline-label">${label}</span>
+                            <span class="growth-timeline-value">${rev}</span>
+                        </div>`;
+                    }).join('');
+                    historyDataHtml += `<div class="earnings-subheading">Revenue Growth</div><div class="growth-timeline">${growthTimeline}</div>`;
+                }
+
+                // Section 3: Valuation & Context
+                if (latestQ.valuationContext) {
+                    const ctx = latestQ.valuationContext;
+                    const ctxMetrics = [];
+
+                    if (ctx.seriesHValuation != null) {
+                        ctxMetrics.push({ label: 'Series H Valuation', value: formatAmount(ctx.seriesHValuation), tip: `${ctx.seriesHRound} raised in ${ctx.seriesHDate}` });
+                    }
+                    if (ctx.ipoStatus) {
+                        ctxMetrics.push({ label: 'IPO Status', value: 'Filed S-1', tip: ctx.ipoStatus });
+                    }
+
+                    if (ctxMetrics.length > 0) {
+                        const ctxStatsHtml = ctxMetrics.map(s => `
+                            <div class="stat-item" title="${s.tip}">
+                                <span class="stat-label">${s.label}</span>
+                                <span class="stat-value">${s.value}</span>
+                            </div>
+                        `).join('');
+                        historyDataHtml += `<div class="earnings-subheading">Valuation & Context</div><div class="earnings-stats-grid s1-metrics-grid">${ctxStatsHtml}</div>`;
+                    }
+
+                    // Add funding history timeline
+                    if (ctx.fundingHistory && ctx.fundingHistory.length > 0) {
+                        const fundingTimeline = ctx.fundingHistory.map(entry => {
+                            const amount = formatAmount(entry.amount);
+                            const valuation = entry.valuation ? formatAmount(entry.valuation) : '—';
+                            return `<div class="funding-timeline-item">
+                                <span class="funding-round">${entry.round}</span>
+                                <span class="funding-date">${entry.date}</span>
+                                <span class="funding-amount">${amount}</span>
+                                <span class="funding-valuation">${valuation}</span>
+                            </div>`;
+                        }).join('');
+                        historyDataHtml += `<div class="earnings-subheading">Funding History</div><div class="funding-timeline"><div class="funding-timeline-header"><span class="funding-round">Round</span><span class="funding-date">Date</span><span class="funding-amount">Raised</span><span class="funding-valuation">Valuation</span></div>${fundingTimeline}</div>`;
+                    }
+                }
+
+                // Section 4: Unit Economics
+                if (latestQ.unitEconomics) {
+                    const ue = latestQ.unitEconomics;
+                    const ueMetrics = [];
+
+                    if (ue.grossMargins != null) {
+                        ueMetrics.push({ label: 'Gross Margins', value: `${(ue.grossMargins * 100).toFixed(0)}%`, tip: 'Gross profit as percentage of revenue' });
+                    }
+                    if (ue.monthlyBurnRate != null) {
+                        ueMetrics.push({ label: 'Monthly Burn', value: formatAmount(ue.monthlyBurnRate), tip: 'Monthly cash burn rate' });
+                    }
+                    if (ue.cashRunwayMonths != null) {
+                        const years = (ue.cashRunwayMonths / 12).toFixed(1);
+                        ueMetrics.push({ label: 'Cash Runway', value: `${years} years`, tip: `${ue.cashRunwayMonths} months at current burn rate` });
+                    }
+                    if (ue.ltvCacRatio != null) {
+                        ueMetrics.push({ label: 'LTV/CAC', value: ue.ltvCacRatio.toFixed(1) + 'x', tip: 'Lifetime value to customer acquisition cost ratio' });
+                    }
+                    if (ue.netDollarRetention != null) {
+                        ueMetrics.push({ label: 'NDR', value: `${ue.netDollarRetention}%`, tip: 'Net dollar retention rate' });
+                    }
+
+                    if (ueMetrics.length > 0) {
+                        const ueStatsHtml = ueMetrics.map(s => `
+                            <div class="stat-item" title="${s.tip}">
+                                <span class="stat-label">${s.label}</span>
+                                <span class="stat-value">${s.value}</span>
+                            </div>
+                        `).join('');
+                        historyDataHtml += `<div class="earnings-subheading">Unit Economics</div><div class="earnings-stats-grid s1-metrics-grid">${ueStatsHtml}</div>`;
+                    }
+                }
+
+                // Section 5: Market Context
+                if (latestQ.marketContext) {
+                    const mc = latestQ.marketContext;
+                    const mcMetrics = [];
+
+                    if (mc.marketSegment) {
+                        mcMetrics.push({ label: 'Market Segment', value: mc.marketSegment, tip: 'Primary market segment' });
+                    }
+                    if (mc.marketSize) {
+                        mcMetrics.push({ label: 'TAM', value: mc.marketSize, tip: 'Total addressable market' });
+                    }
+                    if (mc.differentiation) {
+                        mcMetrics.push({ label: 'Differentiation', value: mc.differentiation, tip: 'Key competitive advantages' });
+                    }
+
+                    if (mcMetrics.length > 0) {
+                        const mcStatsHtml = mcMetrics.map(s => `
+                            <div class="stat-item" title="${s.tip}">
+                                <span class="stat-label">${s.label}</span>
+                                <span class="stat-value">${s.value}</span>
+                            </div>
+                        `).join('');
+                        historyDataHtml += `<div class="earnings-subheading">Market Context</div><div class="earnings-stats-grid s1-metrics-grid">${mcStatsHtml}</div>`;
+
+                        // Add competitors list
+                        if (mc.competitors && mc.competitors.length > 0) {
+                            const competitorsList = mc.competitors.join(', ');
+                            historyDataHtml += `<div class="competitors-section"><span class="competitors-label">Key Competitors:</span><span class="competitors-list">${competitorsList}</span></div>`;
+                        }
+                    }
+                }
+
+                // Section 6: S-1 Quick Links
+                if (latestQ.s1SectionLinks) {
+                    const links = latestQ.s1SectionLinks;
+                    const linkItems = [];
+
+                    if (links.business) {
+                        linkItems.push(`<a href="${links.business}" target="_blank" rel="noopener noreferrer" class="s1-link">Business</a>`);
+                    }
+                    if (links.management) {
+                        linkItems.push(`<a href="${links.management}" target="_blank" rel="noopener noreferrer" class="s1-link">Management</a>`);
+                    }
+                    if (links.riskFactors) {
+                        linkItems.push(`<a href="${links.riskFactors}" target="_blank" rel="noopener noreferrer" class="s1-link">Risk Factors</a>`);
+                    }
+                    if (links.financials) {
+                        linkItems.push(`<a href="${links.financials}" target="_blank" rel="noopener noreferrer" class="s1-link">Financials</a>`);
+                    }
+
+                    if (linkItems.length > 0) {
+                        historyDataHtml += `<div class="earnings-subheading">S-1 Quick Links</div><div class="s1-links-section">${linkItems.join('<span class="s1-link-sep"> · </span>')}</div>`;
+                    }
+                }
+
+                // Section 4: Accounting Artifact Explanation
+                if (latestQ.netLossAccountingArtifact != null) {
+                    const artifactValue = formatAmount(latestQ.netLossAccountingArtifact);
+                    historyDataHtml += `<div class="accounting-note">
+                        <div class="accounting-note-header">Net Loss Explained</div>
+                        <div class="accounting-note-body">
+                            The headline -$80.7B net loss is primarily an accounting artifact: ${artifactValue} stems from changes in the fair value of convertible notes and other financing instruments as Anthropic's enterprise valuation rose. This does not reflect operating performance.
+                        </div>
+                    </div>`;
+                }
+            }
         }
 
         // 1b. Quarterly Revenue Growth Highlights (QoQ and YoY per quarter)

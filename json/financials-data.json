@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-29T12:08:07.453529Z",
+  "lastUpdated": "2026-10-29T15:07:25Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-10-28T14:59:45Z",
+      "lastUpdated": "2026-10-29T15:07:25Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -57,6 +57,10 @@
           "no": "88¢"
         },
         "2026-10-28": {
+          "yes": "12¢",
+          "no": "88¢"
+        },
+        "2026-10-29": {
           "yes": "12¢",
           "no": "88¢"
         }
@@ -117,7 +121,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-10-28T14:59:45Z",
+      "lastUpdated": "2026-10-29T15:07:25Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -189,6 +193,10 @@
         "2026-10-28": {
           "Democratic Party": "66¢",
           "Republican Party": "34¢"
+        },
+        "2026-10-29": {
+          "Democratic Party": "68¢",
+          "Republican Party": "32¢"
         }
       },
       "change": "",
@@ -196,8 +204,8 @@
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
-      "Democratic Party": "66¢",
-      "Republican Party": "34¢"
+      "Democratic Party": "68¢",
+      "Republican Party": "32¢"
     },
     {
       "id": "fomc-rate-decision-december-2026",
@@ -1004,7 +1012,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-10-28T14:59:45Z",
+      "lastUpdated": "2026-10-29T15:07:25Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1076,6 +1084,10 @@
         "2026-10-28": {
           "Democratic Party": "92¢",
           "Republican Party": "8¢"
+        },
+        "2026-10-29": {
+          "Democratic Party": "94¢",
+          "Republican Party": "6¢"
         }
       },
       "change": "",
@@ -1083,8 +1095,8 @@
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
-      "Democratic Party": "92¢",
-      "Republican Party": "8¢"
+      "Democratic Party": "94¢",
+      "Republican Party": "6¢"
     },
     {
       "id": "interest-on-debt",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-28T15:36:43Z",
+  "lastUpdated": "2026-10-29T12:02:17Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -306,7 +306,7 @@
         "july": "4.75",
         "august": "4.75",
         "september": "5.29",
-        "october": "5.00"
+        "october": "4.99"
       },
       "2025": {
         "march": "4.28",
@@ -324,7 +324,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-10-28T11:54:34Z",
+      "lastUpdated": "2026-10-29T12:02:17Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -552,7 +552,7 @@
         "july": "86.16",
         "august": "87.03",
         "september": "97.18",
-        "october": "107.89"
+        "october": "103.37"
       },
       "2025": {
         "january": "75.74",
@@ -572,7 +572,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-10-28T11:54:34Z",
+      "lastUpdated": "2026-10-29T12:02:17Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -594,13 +594,13 @@
         "july": "96.95",
         "august": "89.75",
         "september": "115.91",
-        "october": "115.22"
+        "october": "123.10"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-10-28T11:54:34Z",
+      "lastUpdated": "2026-10-29T12:02:17Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -1727,7 +1727,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-10-28T11:54:34Z",
+      "lastUpdated": "2026-10-29T12:02:17Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -4089,13 +4089,13 @@
         "july": "2.59",
         "august": "2.90",
         "september": "3.02",
-        "october": "3.10"
+        "october": "2.76"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-10-28T11:54:34Z",
+      "lastUpdated": "2026-10-29T12:02:17Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",

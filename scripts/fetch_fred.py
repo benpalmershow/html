@@ -118,6 +118,13 @@ BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
 MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in thousands and need *1000 before formatting
 THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
+
+# Default decimal precision for new months when no existing value exists to
+# copy precision from. Without this, the generic rules (values >= 10 get 0
+# decimals) would drop meaningful precision for large indicators like PCE.
+DEFAULT_DECIMALS = {
+    "Personal Consumption Expenditures (PCE)": 1,
+}
 # Indicators that are inherently volatile; raise threshold for warnings
 VOLATILE_INDICATORS = {
     "Oil (WTI)",
@@ -264,17 +271,20 @@ def format_value(value, indicator_name, existing_value):
             format_suffix = ''
 
     if decimals is None:
-        # sensible defaults when no existing value:
+        # Use indicator-specific default precision when available, then fall
+        # back to sensible generic defaults:
         # - small numbers: 2 decimals
         # - below 10: 1 decimal
         # - otherwise: no decimals
-        abs_val = abs(val)
-        if abs_val < 1:
-            decimals = 2
-        elif abs_val < 10:
-            decimals = 1
-        else:
-            decimals = 0
+        decimals = DEFAULT_DECIMALS.get(indicator_name)
+        if decimals is None:
+            abs_val = abs(val)
+            if abs_val < 1:
+                decimals = 2
+            elif abs_val < 10:
+                decimals = 1
+            else:
+                decimals = 0
 
     # Round to desired decimals before formatting to avoid floating noise
     rounded = round(val, decimals)

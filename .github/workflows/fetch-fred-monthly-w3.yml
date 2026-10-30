@@ -40,7 +40,7 @@ jobs:
             echo "FRED_API_KEY secret is not set"
             exit 1
           fi
-          python3 scripts/fetch_fred.py --indicators "Case-Shiller National Home Price Index,New Home Sales,Consumer Sentiment,FHFA House Price Index"
+          python3 scripts/fetch_fred.py --indicators "Personal Consumption Expenditures (PCE),Case-Shiller National Home Price Index,New Home Sales,Consumer Sentiment,FHFA House Price Index"
 
       - name: Validate JSON output
         run: python3 -m json.tool json/financials-data.json > /dev/null

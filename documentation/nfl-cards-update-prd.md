@@ -15,31 +15,110 @@ without creating cards whose source links or odds are missing.
   estimated odds.
 - The displayed matchup is always away team `@` home team.
 
-## Automated pipeline
+## CLI tools
 
-The full update is automated by `.github/workflows/update-nfl-odds.yml`
-(daily at 06:00 UTC, plus manual `workflow_dispatch`). It runs the same
-sequence as the other financials fetchers (`fetch-treasury.yml`, `fetch-fred.yml`,
-`fetch-census.yml`, etc.) and writes directly to `json/financials-data.json`:
+**`scripts/fetch-nfl-odds.py`** — refreshes win odds from Polymarket and rewrites
+`data/nfl-games.yml` in place.
 
-```sh
-python3 scripts/fetch-nfl-odds.py --week <week>
-python3 scripts/apply-nfl-yml.py --week <week> --replace-completed
+```
+python3 scripts/fetch-nfl-odds.py [--week 5] [--game-id ne-sea-2026-09-09]
+                                  [--mode full|live] [--pre-minutes 15]
+                                  [--post-hours 4] [--max-age-min 3]
+                                  [--no-skip-recent]
 ```
 
-Each step is described below. Manual weekly updates follow the same commands.
+- `--week` limits API calls and merges to the requested NFL week.
+- `--game-id` refreshes a single game by its YAML id.
+- `--mode live` only polls games inside their live window (used by the live
+  workflow). `--mode full` polls all selected games (default).
+- For each game with a `polymarket_slug`, queries
+  `https://gamma-api.polymarket.com/events?slug=<slug>` and rewrites the
+  `<TEAM>_win_odds` fields from the full-game moneyline market's
+  `outcomePrices` (e.g. `"0.385"` -> `"38.5¢"`). `lastUpdated` is set to the
+  event's `updatedAt`.
+- Odds are appended to `odds_history` only when the snapshot differs from the
+  last entry, so repeat refreshes with the same timestamp/prices do not create
+  duplicate samples.
+- All other YAML content is preserved. Games without a usable moneyline market
+  are left unchanged (not removed by the fetcher).
 
-## Weekly workflow
+**`scripts/apply-nfl-yml.py`** — merges `data/nfl-games.yml` into
+`json/financials-data.json`.
 
-1. Inspect the current worktree and existing NFL records before editing. Preserve
-   unrelated user changes.
-2. Verify the requested week's schedule, game dates/times, home/away assignment,
-   team abbreviations, full names, and team market labels against a reliable
-   schedule and live market listing.
-3. Check the exact Polymarket event slug for each matchup. Add a game to the
-   published set only when its event and full-game moneyline market are
-   available. The market must have exactly the two expected team outcomes and
-   usable prices. A schedule entry alone is not evidence that a market exists.
+```
+python3 scripts/apply-nfl-yml.py [--week 5] [--replace-completed]
+```
+
+- Each game becomes a "Prediction Markets" indicator (`name = "AWAY @ HOME"`),
+  upserted by `id`. No other indicators are touched.
+- With `--replace-completed`, games whose `game_time_iso` is in the past are
+  removed from the rendered dataset.
+- Games missing both team odds are skipped and not rendered.
+- YAML odds (`"38.5¢"`) are converted to integer strings (`"38"`) with no
+  cents symbol or decimal places in `financials-data.json`.
+
+**`scripts/validate-nfl-odds.py`** — validates that every game has a live
+Polymarket moneyline market with both outcomes and usable prices. Exits
+non-zero on any failure.
+
+```
+python3 scripts/validate-nfl-odds.py [--week 5]
+```
+
+## Required YAML fields per game
+
+- `id` — stable, form `<away>-<home>-YYYY-MM-DD`, unique across the file.
+- `week` — NFL week number (integer).
+- `away` / `home` — team abbreviations.
+- `away_full` / `home_full` — full team names (used for `game_title`).
+- `away_pm_name` / `home_pm_name` — Polymarket outcome labels (must match the
+  moneyline market outcomes exactly).
+- `game_time` / `game_time_iso` — human-readable and ISO-8601 UTC game time.
+- `url` — Polymarket sports page URL (functional source link).
+- `polymarket_slug` — exact Polymarket event slug used by the Gamma API.
+- `polymarket_url` — optional direct Polymarket event URL.
+- `<TEAM>_win_odds` — both team win odds, `¢`-suffixed strings (e.g. `38.5¢`).
+- `lastUpdated` — ISO-8601 UTC timestamp.
+- Optional: `away_color`, `home_color`, `explanation`, `odds_history`, `winner`,
+  `result`.
+
+## Workflows
+
+Two GitHub Actions workflows drive the pipeline:
+
+### 1. Daily week-scoped refresh — `.github/workflows/update-nfl-odds.yml`
+
+Runs daily at 06:00 UTC (plus manual `workflow_dispatch`). Derives the active
+NFL week from `data/nfl-games.yml` (not the ISO calendar week), then:
+
+1. `python3 scripts/fetch-nfl-odds.py --week <week>`
+2. `python3 scripts/validate-nfl-odds.py` (if present; fails the job on issues)
+3. `python3 -m json.tool json/financials-data.json > /dev/null`
+4. `python3 -c "import yaml; yaml.safe_load(open('data/nfl-games.yml'))"`
+5. `node scripts/validate-site.js`
+6. `python3 scripts/apply-nfl-yml.py --week <week> --replace-completed`
+7. Commit `data/nfl-games.yml` and `json/financials-data.json` if changed.
+
+### 2. Live gametime refresh — `.github/workflows/update-nfl-odds-live.yml`
+
+Runs every 5 minutes during Thursday/Sunday/Monday gametime windows (plus
+manual `workflow_dispatch`):
+
+1. `python3 scripts/fetch-nfl-odds.py --mode live`
+2. Validate YAML/JSON and run `node scripts/validate-site.js`
+3. `python3 scripts/apply-nfl-yml.py` (all weeks, no `--replace-completed`)
+4. Commit if changed.
+
+## Weekly manual workflow
+
+1. Inspect the current worktree and existing NFL records before editing.
+   Preserve unrelated user changes.
+2. Verify the requested week's schedule, game dates/times, home/away
+   assignment, team abbreviations, full names, and team market labels against a
+   reliable schedule and live market listing.
+3. Check the exact Polymarket event slug for each matchup. The market must have
+   exactly the two expected team outcomes and usable prices. A schedule entry
+   alone is not evidence that a market exists.
 4. If a market or usable odds are unavailable, do not create placeholder odds
    or a card with a dead source link. Remove that matchup from
    `data/nfl-games.yml`. The week-scoped merge will remove any matching stale
@@ -52,14 +131,10 @@ Each step is described below. Manual weekly updates follow the same commands.
 
    ```sh
    python3 scripts/fetch-nfl-odds.py --week 5
+   python3 scripts/validate-nfl-odds.py --week 5
    python3 scripts/apply-nfl-yml.py --week 5 --replace-completed
    ```
 
-   Replace `5` with the requested week number. Review fetch output; remove any
-   game for which the event or moneyline was not found from YAML, then rerun
-   the merge for that week. The merge skips records missing either team's odds
-   and prunes stale cards from that week. Do not treat a successful process
-   exit as proof every selected game's market was found.
 7. Validate YAML as YAML and financials as JSON, then run the site validator:
 
    ```sh
@@ -71,24 +146,6 @@ Each step is described below. Manual weekly updates follow the same commands.
 8. Confirm each published week entry has a unique ID, a functional market URL,
    both live odds fields, and a corresponding indicator in `financials-data`.
    Confirm no removed/unavailable ID remains in either dataset.
-
-## Automation and monitoring
-
-- **Scheduled fetch**: `.github/workflows/update-nfl-odds.yml` runs
-  `python3 scripts/fetch-nfl-odds.py --week $(date +%V)` daily at 06:00 UTC to
-  keep odds current throughout the week. The workflow also accepts manual
-  `workflow_dispatch` runs.
-- **Automated validation**: After each fetch, run
-  `python3 scripts/validate-nfl-odds.py` (a new script you can create) that
-  checks for missing Polymarket events or incomplete odds and fails the job if
-  any are found.
-- **Alerting**: Integrate a simple Slack or email notification on validation
-  failures to prompt manual review.
-- **Idempotent merges**: Ensure the merge script `apply-nfl-yml.py` is run with
-  `--replace-completed` to prune stale entries and avoid duplicate odds-history
-  records.
-- **Version control**: Commit any YAML changes automatically (e.g., via a bot)
-  with a clear message indicating the week and fetch timestamp.
 
 ## Reliability requirements
 

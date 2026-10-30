@@ -1,22 +1,23 @@
-name: Fetch FRED Monthly Indicators
+name: "Fetch FRED Monthly Indicators (Release Window: Days 8-19)"
 
 on:
   schedule:
-    # Run monthly on the 1st at 7:00 UTC, after FRED's monthly releases
-    # (CPI, PPI, employment, retail sales, etc.);
-    # only commits when a source revision or new month exists.
-    - cron: '0 7 1 * *'
-  workflow_dispatch: # Allow manual trigger from GitHub UI
+    # CPI/PPI (days 10-15), Monthly Retail Sales (days 12-16),
+    # Housing Starts / Building Permits (days 15-19), Industrial Production /
+    # Capacity Utilization (days 14-18), Small Business Optimism, Affordability Index.
+    # Every 5 minutes only during days 8-19; idle rest of month.
+    - cron: '*/5 * * 8-19 *'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: fetch-fred-monthly
+  group: fetch-fred-monthly-w2
   cancel-in-progress: false
 
 jobs:
-  fetch-fred-monthly:
+  fetch-fred-monthly-w2:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -31,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Fetch FRED monthly indicators
+      - name: Fetch FRED monthly indicators (days 8-19)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
@@ -39,7 +40,7 @@ jobs:
             echo "FRED_API_KEY secret is not set"
             exit 1
           fi
-          python3 scripts/fetch_fred.py --indicators "CPI,PPI,Unemployment Rate,Jobs,Average Hourly Earnings,Monthly Retail Sales,Industrial Production Index,Capacity Utilization,Consumer Confidence,Small Business Optimism Index,Housing Starts,New Home Sales,Building Permits,Case-Shiller National Home Price Index,Affordability Index,Personal Consumption Expenditures (PCE),Consumer Sentiment"
+          python3 scripts/fetch_fred.py --indicators "CPI,PPI,Monthly Retail Sales,Housing Starts,Building Permits,Industrial Production Index,Capacity Utilization,Small Business Optimism Index,Affordability Index"
 
       - name: Validate JSON output
         run: python3 -m json.tool json/financials-data.json > /dev/null
@@ -50,7 +51,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add json/financials-data.json
           if git diff --staged --quiet; then
-            echo "No FRED monthly data changes to commit"
+            echo "No FRED W2 data changes to commit"
             exit 0
           fi
           git commit -m "chore: update FRED monthly indicators [skip ci]"

@@ -1,0 +1,58 @@
+name: "Fetch FRED Monthly Indicators (Release Window: Days 20-31)"
+
+on:
+  schedule:
+    # Case-Shiller / Consumer Confidence (last Tuesday, days 24-30),
+    # New Home Sales (days 24-28), Consumer Sentiment final (days 25-31),
+    # FHFA House Price Index (end of month).
+    # Every 5 minutes only during days 20-31; idle rest of month.
+    - cron: '*/5 * * 20-31 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-fred-monthly-w3
+  cancel-in-progress: false
+
+jobs:
+  fetch-fred-monthly-w3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch FRED monthly indicators (days 20-31)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          if [ -z "$FRED_API_KEY" ]; then
+            echo "FRED_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_fred.py --indicators "Case-Shiller National Home Price Index,New Home Sales,Consumer Sentiment,FHFA House Price Index"
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/financials-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json
+          if git diff --staged --quiet; then
+            echo "No FRED W3 data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update FRED monthly indicators [skip ci]"
+          git push

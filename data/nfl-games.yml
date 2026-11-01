@@ -1067,7 +1067,7 @@ games:
   polymarket_slug: nfl-lac-la-2026-11-01
   LAC_win_odds: 26.5¢
   LAR_win_odds: 73.5¢
-  lastUpdated: '2026-11-01T12:27:29.204176Z'
+  lastUpdated: '2026-11-01T21:18:19.522737Z'
   odds_history:
   - timestamp: '2026-10-30T01:53:00.386041Z'
     LAC_win_odds: 26.5¢
@@ -1079,6 +1079,9 @@ games:
     LAC_win_odds: 26.5¢
     LAR_win_odds: 73.5¢
   - timestamp: '2026-11-01T12:27:29.204176Z'
+    LAC_win_odds: 26.5¢
+    LAR_win_odds: 73.5¢
+  - timestamp: '2026-11-01T21:18:19.522737Z'
     LAC_win_odds: 26.5¢
     LAR_win_odds: 73.5¢
 - id: kc-den-2026-11-01
@@ -1093,9 +1096,9 @@ games:
   game_time_iso: '2026-11-01T20:25:00Z'
   url: https://polymarket.com/sports/nfl/nfl-kc-den-2026-11-01
   polymarket_slug: nfl-kc-den-2026-11-01
-  KC_win_odds: 51.5¢
-  DEN_win_odds: 48.5¢
-  lastUpdated: '2026-11-01T12:26:28.92672Z'
+  KC_win_odds: 50.5¢
+  DEN_win_odds: 49.5¢
+  lastUpdated: '2026-11-01T21:20:18.953223Z'
   odds_history:
   - timestamp: '2026-10-30T01:53:00.386041Z'
     KC_win_odds: 52.5¢
@@ -1109,6 +1112,9 @@ games:
   - timestamp: '2026-11-01T12:26:28.92672Z'
     KC_win_odds: 51.5¢
     DEN_win_odds: 48.5¢
+  - timestamp: '2026-11-01T21:20:18.953223Z'
+    KC_win_odds: 50.5¢
+    DEN_win_odds: 49.5¢
 - id: chi-sea-2026-11-02
   week: 8
   away: CHI

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-03T13:29:02.095196Z",
+  "lastUpdated": "2026-11-03T16:02:36Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-02T18:07:02Z",
+      "lastUpdated": "2026-11-03T16:02:36Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -79,6 +79,10 @@
         "2026-11-02": {
           "yes": "12¢",
           "no": "88¢"
+        },
+        "2026-11-03": {
+          "yes": "12¢",
+          "no": "88¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -137,7 +141,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-11-02T18:07:02Z",
+      "lastUpdated": "2026-11-03T16:02:36Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -229,6 +233,10 @@
         "2026-11-02": {
           "Democratic Party": "74¢",
           "Republican Party": "26¢"
+        },
+        "2026-11-03": {
+          "Democratic Party": "76¢",
+          "Republican Party": "24¢"
         }
       },
       "change": "",
@@ -236,8 +244,8 @@
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
-      "Democratic Party": "74¢",
-      "Republican Party": "26¢"
+      "Democratic Party": "76¢",
+      "Republican Party": "24¢"
     },
     {
       "id": "fomc-rate-decision-december-2026",
@@ -1044,7 +1052,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-11-02T18:07:02Z",
+      "lastUpdated": "2026-11-03T16:02:36Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1136,6 +1144,10 @@
         "2026-11-02": {
           "Democratic Party": "96¢",
           "Republican Party": "4¢"
+        },
+        "2026-11-03": {
+          "Democratic Party": "94¢",
+          "Republican Party": "6¢"
         }
       },
       "change": "",
@@ -1143,8 +1155,8 @@
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
-      "Democratic Party": "96¢",
-      "Republican Party": "4¢"
+      "Democratic Party": "94¢",
+      "Republican Party": "6¢"
     },
     {
       "id": "interest-on-debt",

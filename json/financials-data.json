@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-03T20:23:25Z",
+  "lastUpdated": "2026-11-04T13:34:03Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -354,7 +354,8 @@
         "july": "4.75",
         "august": "4.75",
         "september": "5.29",
-        "october": "4.94"
+        "october": "4.94",
+        "november": "4.9"
       },
       "2025": {
         "march": "4.28",
@@ -372,12 +373,12 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-03T13:23:06Z",
+      "lastUpdated": "2026-11-04T13:34:03Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
       "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions).",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -620,7 +621,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-03T13:23:06Z",
+      "lastUpdated": "2026-11-04T13:34:03Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -648,7 +649,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-03T13:23:06Z",
+      "lastUpdated": "2026-11-04T13:34:03Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -1801,7 +1802,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-11-03T13:23:06Z",
+      "lastUpdated": "2026-11-04T13:34:03Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -4169,7 +4170,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-11-03T13:23:06Z",
+      "lastUpdated": "2026-11-04T13:34:03Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",

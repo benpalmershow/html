@@ -618,6 +618,7 @@ function convertEarningsToIndicators(earnings, configuredTickers = null) {
             explanation: entry.explanationOverride || buildEarningsExplanation(entry, latest),
             recentEarnings: entry.recentEarnings || [],
             quarterlyFinancials: entry.quarterlyFinancials || [],
+            revenueMix: entry.revenueMix || null,
             company: entry.company,
             sector: entry.sector,
             marketCap: entry.marketCap,

@@ -8797,8 +8797,8 @@
     },
     {
       "ticker": "ANT",
-      "fetchedAt": "2026-10-27T11:50:53.504409Z",
-      "lastUpdated": "2026-10-26T12:00:00Z",
+      "fetchedAt": "2026-11-03T18:30:00.000000Z",
+      "lastUpdated": "2026-11-02T22:00:00Z",
       "source": "SEC EDGAR",
       "company": "Anthropic, PBC",
       "sector": "Technology",
@@ -8814,16 +8814,16 @@
       "profitMargins": null,
       "returnOnAssets": null,
       "returnOnEquity": null,
-      "revenueGrowth": null,
+      "revenueGrowth": 11.27,
       "earningsGrowth": null,
       "revenuePerShare": null,
-      "freeCashflow": null,
-      "operatingCashflow": null,
+      "freeCashflow": 5644000000.0,
+      "operatingCashflow": 6569000000.0,
       "grossProfits": null,
-      "totalCash": null,
+      "totalCash": 131845000000.0,
       "totalCashPerShare": null,
-      "totalDebt": null,
-      "totalRevenue": null,
+      "totalDebt": 0.0,
+      "totalRevenue": 35282000000.0,
       "debtToEquity": null,
       "currentRatio": null,
       "quickRatio": null,
@@ -8861,10 +8861,17 @@
       "sharesShortPreviousMonthDate": null,
       "sharesShortPriorMonth": null,
       "dateShortInterest": null,
-      "explanationOverride": "Anthropic, PBC filed its S-1 registration statement with the SEC on October 26, 2026, disclosing the first public financial figures for the Claude AI developer ahead of its planned Nasdaq listing under the ticker ANT. Revenue reached $16.3 billion in the six months ended June 30, 2026, up from $1.16 billion in the year-earlier period. Full-year 2025 revenue was $4.6 billion, following $386 million in 2024 and $41 million in 2023. Quarterly revenue climbed from $4.7 billion in Q1 2026 to $11.6 billion in Q2 2026, and Anthropic separately told prospective investors that Q3 revenue reached $16.8 billion. Operating expenses for H1 2026 totaled $17.0 billion, driven by $8.9 billion in compute and infrastructure costs, $3.2 billion in personnel, and $3.2 billion in sales, marketing, and partnerships. Operating income was a loss of $693 million in H1 2026, compared with a $2.1 billion loss in H1 2025, though Q2 2026 produced $974 million in operating income on its own. The headline net loss of $80.7 billion for H1 2026 is almost entirely an accounting artifact: $72.4 billion stems from changes in the fair value of convertible notes and other financing instruments as Anthropic's enterprise valuation rose. Excluding stock-based compensation and noncash charitable contributions, adjusted operating income was $1.62 billion for the period. Operating cash flow was positive at $3.93 billion, and the company reported $1.70 of revenue for every dollar spent on computing power in Q3. As of September 30, more than 1,900 customers generated at least $1 million each in annualized revenue, including roughly 250 that generated at least $10 million. Anthropic held $131.7 billion in cash, cash equivalents, and short-term investments as of June 30, 2026. The IPO price range and share count have not yet been determined. Anthropic previously raised a $65 billion Series H round in May 2026 that valued the company at $965 billion, following a $30 billion round in February that valued it at $380 billion.",
+      "explanationOverride": "Anthropic, PBC filed Amendment No. 1 to its S-1 registration statement (Form S-1/A) with the SEC on November 2, 2026 ahead of its planned Nasdaq listing under the ticker ANT, officially disclosing full financial results through Q3 2026. Revenue for the nine months ended September 30, 2026 reached .24 billion, surging 1,206% from .55 billion in the year-earlier period. Quarterly revenue expanded rapidly throughout 2026: .73 billion in Q1, .56 billion in Q2 (+144% QoQ), and .96 billion in Q3 (+47% QoQ, +1,127% YoY). Full-year 2025 revenue was .59 billion, following  million in 2024 and  million in 2023. Operating expenses for Q3 2026 totaled .52 billion (.50 billion for 9M 2026), driven by .86 billion in compute and infrastructure, .71 billion in personnel, .36 billion in sales, marketing, and partnerships, and .59 billion in other operating and administrative costs (including a .0 billion non-cash fair value accrual for the employee donation matching plan). Operating income was a loss of  million in Q3 2026, following positive operating income of  million in Q2 and a .67 billion loss in Q1, bringing 9M 2026 GAAP operating loss to .26 billion (compared to a .22 billion operating loss in 9M 2025). On a non-GAAP basis, Adjusted Operating Income was positive .08 billion for 9M 2026 (a 12% adjusted operating margin), and Adjusted Net Income reached .59 billion. Operating cash flow turned strongly positive to .57 billion for the first nine months of 2026 (including .64 billion generated in Q3 alone), up from negative .02 billion in 9M 2025, yielding .64 billion in free cash flow after  million in capital expenditures. Anthropic generated ~.72 of revenue for every dollar spent on compute and infrastructure in Q3, even while absorbing .0 billion of compute delivered under short-term commitments. The headline net loss of .04 billion for 9M 2026 (.29 billion in Q3) is primarily an accounting artifact: .32 billion reflects non-cash changes in the fair value of convertible notes, derivative liabilities, and SAFEs as Anthropic's enterprise valuation climbed. As of September 30, 2026, Anthropic held .85 billion in cash, cash equivalents (.56B), and short-term investments (.28B), with an additional .8 billion available under its credit facility. Contractual commitments for compute and infrastructure totaled approximately .4 billion (.5 billion through 2030, with .8 billion due in the next 12 months). Customer scale expanded to more than 11,900 customers generating at least ,000 each in annualized revenue, over 1,900 generating at least  million, and approximately 250 generating at least  million. The IPO price range and share count have not yet been determined. Anthropic previously raised a  billion Series H round in May 2026 that valued the company at  billion, following a  billion round in February that valued it at  billion.",
       "isNew": true,
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
       "recentEarnings": [
+        {
+          "reportedDate": "2026-11-02",
+          "actualEPS": null,
+          "estimatedEPS": null,
+          "surprisePercent": null,
+          "source": "SEC EDGAR"
+        },
         {
           "reportedDate": "2026-10-26",
           "actualEPS": null,
@@ -8875,86 +8882,229 @@
       ],
       "quarterlyFinancials": [
         {
-          "quarterEnd": "2026-06-30",
+          "quarterEnd": "2026-09-30",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
-          "accessionNumber": "0001628280-26-067168",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 16300000000.0,
-          "netIncome": -80700000000.0,
-          "operatingIncome": -693000000.0,
-          "operatingCashFlow": 3930000000.0,
-          "depreciationAndAmortization": 614000000.0,
-          "capitalExpenditures": 1160000000.0,
-          "freeCashFlow": 687000000.0,
-          "grossProfits": 8915000000.0,
-          "totalCash": 131700000000.0,
-          "adjustedOperatingIncome": 1620000000.0,
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 16956000000.0,
+          "netIncome": -23291000000.0,
+          "operatingIncome": -567000000.0,
+          "computeExpense": 9863000000.0,
+          "operatingCashFlow": 2639000000.0,
+          "capitalExpenditures": 300000000.0,
+          "freeCashFlow": 2339000000.0,
+          "grossProfits": 7093000000.0,
+          "totalCash": 131845000000.0,
+          "adjustedOperatingIncome": 4081000000.0,
+          "customerCountOver100K": 11900,
           "customerCountOver1M": 1900,
           "customerCountOver10M": 250,
-          "revenuePerComputeDollar": 1.70,
-          "netLossAccountingArtifact": 72400000000.0,
+          "revenuePerComputeDollar": 1.72,
+          "netLossAccountingArtifact": 21936000000.0,
           "revenueHistory": [
-            {"year": 2023, "revenue": 41000000},
-            {"year": 2024, "revenue": 386000000},
-            {"year": 2025, "revenue": 4600000000},
-            {"period": "H1 2026", "revenue": 16300000000}
+            {
+              "year": 2023,
+              "revenue": 41000000
+            },
+            {
+              "year": 2024,
+              "revenue": 386000000
+            },
+            {
+              "year": 2025,
+              "revenue": 4585000000
+            },
+            {
+              "period": "9M 2026",
+              "revenue": 33242000000
+            }
           ],
           "valuationContext": {
             "seriesHValuation": 965000000000,
             "seriesHDate": "May 2026",
             "seriesHRound": "Series H",
-            "ipoStatus": "Filed S-1 October 2026, awaiting IPO pricing",
+            "ipoStatus": "Filed S-1 October 2026; Amended S-1/A November 2, 2026 with Q3 2026 financials, awaiting IPO pricing",
             "fundingHistory": [
-              {"round": "Seed", "date": "2021", "amount": 124000000, "valuation": null},
-              {"round": "Series B", "date": "2022", "amount": 400000000, "valuation": 4000000000},
-              {"round": "Series C", "date": "2023", "amount": 450000000, "valuation": 5000000000},
-              {"round": "Series D", "date": "2024", "amount": 2000000000, "valuation": 18000000000},
-              {"round": "Series F", "date": "2025", "amount": 4500000000, "valuation": 40000000000},
-              {"round": "Series H", "date": "May 2026", "amount": 65000000000, "valuation": 965000000000}
+              {
+                "round": "Seed",
+                "date": "2021",
+                "amount": 124000000,
+                "valuation": null
+              },
+              {
+                "round": "Series B",
+                "date": "2022",
+                "amount": 400000000,
+                "valuation": 4000000000
+              },
+              {
+                "round": "Series C",
+                "date": "2023",
+                "amount": 450000000,
+                "valuation": 5000000000
+              },
+              {
+                "round": "Series D",
+                "date": "2024",
+                "amount": 2000000000,
+                "valuation": 18000000000
+              },
+              {
+                "round": "Series F",
+                "date": "2025",
+                "amount": 4500000000,
+                "valuation": 40000000000
+              },
+              {
+                "round": "Series H",
+                "date": "May 2026",
+                "amount": 65000000000,
+                "valuation": 965000000000
+              }
             ]
           },
           "unitEconomics": {
-            "grossMargins": 0.55,
-            "monthlyBurnRate": 500000000,
-            "cashRunwayMonths": 264,
+            "grossMargins": 0.42,
+            "monthlyBurnRate": 300000000,
+            "cashRunwayMonths": 439,
             "ltvCacRatio": 3.5,
             "netDollarRetention": 125
           },
           "marketContext": {
             "marketSegment": "Generative AI / LLM",
-            "competitors": ["OpenAI", "Google DeepMind", "Meta AI", "Amazon Anthropic"],
-            "marketSize": "$200B by 2030",
-            "differentiation": "Constitutional AI, safety-focused, enterprise focus"
+            "competitors": [
+              "OpenAI",
+              "Google DeepMind",
+              "Meta AI",
+              "Amazon Anthropic"
+            ],
+            "marketSize": "B by 2030",
+            "differentiation": "Constitutional AI, safety-focused, enterprise focus, Claude Code agentic architecture"
           },
           "s1SectionLinks": {
-            "business": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc",
-            "management": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc",
-            "riskFactors": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc",
-            "financials": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm#toc"
+            "business": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm#toc",
+            "management": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm#toc",
+            "riskFactors": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm#toc",
+            "financials": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm#toc"
           }
+        },
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 11555000000.0,
+          "netIncome": -66309000000.0,
+          "operatingIncome": 974000000.0,
+          "computeExpense": 5558000000.0,
+          "operatingCashFlow": 2083000000.0,
+          "capitalExpenditures": 312000000.0,
+          "freeCashFlow": 1771000000.0,
+          "grossProfits": 5997000000.0
+        },
+        {
+          "quarterEnd": "2026-03-31",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 4731000000.0,
+          "netIncome": -14439000000.0,
+          "operatingIncome": -1667000000.0,
+          "computeExpense": 3387000000.0,
+          "operatingCashFlow": 1847000000.0,
+          "capitalExpenditures": 313000000.0,
+          "freeCashFlow": 1534000000.0,
+          "grossProfits": 1344000000.0
         },
         {
           "quarterEnd": "2025-12-31",
           "source": "SEC EDGAR",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
-          "accessionNumber": "0001628280-26-067168",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 4600000000.0,
-          "netIncome": -2100000000.0,
-          "operatingIncome": -2100000000.0,
-          "operatingCashFlow": 1847000000.0,
-          "depreciationAndAmortization": 614000000.0,
-          "capitalExpenditures": 1160000000.0,
-          "freeCashFlow": 687000000.0,
-          "grossProfits": 2511000000.0
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 2040000000.0,
+          "netIncome": -16858000000.0,
+          "operatingIncome": -2836000000.0,
+          "computeExpense": 2945000000.0
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 1382000000.0,
+          "netIncome": -12138000000.0,
+          "operatingIncome": -3089000000.0,
+          "computeExpense": 2047000000.0
+        },
+        {
+          "quarterEnd": "2025-06-30",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 787000000.0,
+          "netIncome": -6377000000.0,
+          "operatingIncome": -1200000000.0,
+          "computeExpense": 1390000000.0
+        },
+        {
+          "quarterEnd": "2025-03-31",
+          "source": "SEC EDGAR",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm",
+          "accessionNumber": "0001628280-26-068676",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 376000000.0,
+          "netIncome": -6592000000.0,
+          "operatingIncome": -935000000.0,
+          "computeExpense": 944000000.0
         }
       ],
-      "quarterlySource": "SEC EDGAR"
+      "quarterlySource": "SEC EDGAR",
+      "revenueMix": {
+        "9M 2026": {
+          "consumptionBased": 26306000000.0,
+          "subscriptionBased": 6936000000.0,
+          "consumptionPct": 79.1,
+          "subscriptionPct": 20.9
+        },
+        "9M 2025": {
+          "consumptionBased": 2125000000.0,
+          "subscriptionBased": 420000000.0,
+          "consumptionPct": 83.5,
+          "subscriptionPct": 16.5
+        },
+        "FY 2025": {
+          "consumptionBased": 3796000000.0,
+          "subscriptionBased": 789000000.0,
+          "consumptionPct": 82.8,
+          "subscriptionPct": 17.2
+        },
+        "FY 2024": {
+          "consumptionBased": 288000000.0,
+          "subscriptionBased": 98000000.0,
+          "consumptionPct": 74.6,
+          "subscriptionPct": 25.4
+        }
+      }
     }
   ]
 }

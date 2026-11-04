@@ -366,7 +366,7 @@ latestDataHtml = `
         return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
-function renderHormuz(indicator) {
+    function renderHormuz(indicator) {
         const PRECRISIS_NORMAL = 115;
         const dailyEntries = indicator.daily && typeof indicator.daily === 'object' ? Object.entries(indicator.daily).sort(([a], [b]) => new Date(b) - new Date(a)) : Object.entries(indicator.probabilities || {}).sort(([a], [b]) => new Date(b) - new Date(a)).map(([date, val]) => [date, ((val.Inbound || 0) + (val.Outbound || 0)).toString()]);
         const latestEntry = dailyEntries[0], previousEntry = dailyEntries[1];
@@ -515,7 +515,7 @@ function renderHormuz(indicator) {
         let hasHistory = false;
 
         // Detect if this is an S-1 filing (pre-IPO)
-        const isS1Filing = quarterly.length > 0 && quarterly[0].form === 'S-1';
+        const isS1Filing = quarterly.length > 0 && (quarterly[0].form === 'S-1' || quarterly[0].form === 'S-1/A' || (quarterly[0].form && quarterly[0].form.startsWith('S-1')));
         const isPreIPO = isS1Filing || (indicator.latestPrice == null && indicator.marketCap == null);
 
         const formatAmount = (value) => {
@@ -772,6 +772,9 @@ function renderHormuz(indicator) {
                 if (latestQ.adjustedOperatingIncome != null) {
                     s1Metrics.push({ label: 'Adj. Operating Income', value: formatAmount(latestQ.adjustedOperatingIncome), tip: 'Excludes stock-based compensation and noncash charitable contributions' });
                 }
+                if (latestQ.customerCountOver100K != null) {
+                    s1Metrics.push({ label: '$100K+ ARR Customers', value: latestQ.customerCountOver100K.toLocaleString(), tip: 'Customers generating at least $100K in annualized revenue' });
+                }
                 if (latestQ.customerCountOver1M != null) {
                     s1Metrics.push({ label: '$1M+ ARR Customers', value: latestQ.customerCountOver1M.toLocaleString(), tip: 'Customers generating at least $1M in annualized revenue' });
                 }
@@ -892,12 +895,15 @@ function renderHormuz(indicator) {
                     }
 
                     if (mcMetrics.length > 0) {
-                        const mcStatsHtml = mcMetrics.map(s => `
-                            <div class="stat-item" title="${s.tip}">
+                        const mcStatsHtml = mcMetrics.map(s => {
+                            const isFull = s.label === 'Differentiation' || (s.value && String(s.value).length > 30);
+                            return `
+                            <div class="stat-item${isFull ? ' stat-item-full' : ''}" title="${s.tip}">
                                 <span class="stat-label">${s.label}</span>
                                 <span class="stat-value">${s.value}</span>
                             </div>
-                        `).join('');
+                        `;
+                        }).join('');
                         historyDataHtml += `<div class="earnings-subheading">Market Context</div><div class="earnings-stats-grid s1-metrics-grid">${mcStatsHtml}</div>`;
 
                         // Add competitors list
@@ -934,10 +940,11 @@ function renderHormuz(indicator) {
                 // Section 4: Accounting Artifact Explanation
                 if (latestQ.netLossAccountingArtifact != null) {
                     const artifactValue = formatAmount(latestQ.netLossAccountingArtifact);
+                    const headlineLoss = latestQ.netIncome != null ? formatAmount(latestQ.netIncome) : '';
                     historyDataHtml += `<div class="accounting-note">
                         <div class="accounting-note-header">Net Loss Explained</div>
                         <div class="accounting-note-body">
-                            The headline -$80.7B net loss is primarily an accounting artifact: ${artifactValue} stems from changes in the fair value of convertible notes and other financing instruments as Anthropic's enterprise valuation rose. This does not reflect operating performance.
+                            The headline ${headlineLoss} net loss is primarily an accounting artifact: ${artifactValue} stems from changes in the fair value of convertible notes and other financing instruments as Anthropic's enterprise valuation rose. This does not reflect operating performance.
                         </div>
                     </div>`;
                 }

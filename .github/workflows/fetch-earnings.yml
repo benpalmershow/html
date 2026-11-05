@@ -82,13 +82,15 @@ jobs:
         run: python3 scripts/fetch_sec_quarterly.py
 
       - name: Validate JSON
-        run: python3 -m json.tool json/earnings.json > /dev/null
+        run: |
+          python3 -m json.tool json/earnings.json > /dev/null
+          python3 -m json.tool json/earnings-tickers.json > /dev/null
 
       - name: Commit and push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add json/earnings.json
+          git add json/earnings.json json/earnings-tickers.json
           if git diff --staged --quiet; then
             echo "No earnings changes detected"
             exit 0

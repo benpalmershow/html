@@ -942,7 +942,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-      "lastUpdated": "2026-11-03T20:23:25Z",
+  "lastUpdated": "2026-11-05T14:45:00Z",
       "releaseDay": 30,
       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
       "change": "",
@@ -1414,7 +1414,8 @@
         "may": "$75.8B",
         "june": "$71.2B",
         "july": "$92.8B",
-        "august": "$105.6B"
+        "august": "$105.7B",
+        "september": "$105.0B"
       },
       "2025": {
         "march": "$132,983B",
@@ -1432,7 +1433,7 @@
       "color": "#1abc9c",
       "agency": "Census",
       "name": "Trade Deficit",
-      "lastUpdated": "2026-10-23T14:34:28Z",
+      "lastUpdated": "2026-11-04T13:30:00Z",
       "releaseDay": 9,
       "url": "https://www.census.gov/foreign-trade/Press-Release/ft900_index.html",
       "change": "",
@@ -1446,7 +1447,8 @@
           "may": "$395.7B",
           "june": "$388.5B",
           "july": "$403.6B",
-          "august": "$420.8B"
+          "august": "$421.4B",
+          "september": "$426.6B"
         },
         "march": "$420,0B",
         "april": "$352,083B",
@@ -1468,7 +1470,8 @@
           "may": "$320.0B",
           "june": "$317.3B",
           "july": "$310.7B",
-          "august": "$315.2B"
+          "august": "$315.7B",
+          "september": "$321.5B"
         },
         "march": "$283,369B",
         "april": "$290,598B",
@@ -1481,8 +1484,8 @@
         "november": "$289,504B",
         "december": "$285,282B"
       },
-      "newMonth": false,
-      "releaseTimeISO": "2026-10-09T14:00:00Z",
+      "newMonth": true,
+      "releaseTimeISO": "2026-11-04T13:30:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -1998,8 +2001,9 @@
         "may": "+12.9",
         "june": "+21.1",
         "july": "+10.5",
-        "august": "+4.7",
-        "september": "-4.5"
+        "august": "+5",
+        "september": "-4",
+        "october": "+6"
       },
       "2025": {
         "may": "2.50",
@@ -2015,13 +2019,14 @@
       "color": "#2ecc71",
       "agency": "Chicago Fed",
       "name": "Chicago Fed Survey of Economic Conditions",
-      "lastUpdated": "2026-10-17T14:00:00Z",
+      "lastUpdated": "2026-10-22T15:00:00Z",
       "releaseDay": 22,
       "url": "https://www.chicagofed.org/research/data/cfsec/current-data",
       "change": "",
       "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions.",
-      "releaseTimeISO": "2026-08-22T15:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeISO": "2026-10-22T15:00:00Z",
+      "releaseTimeZone": "America/New_York",
+      "newMonth": true
     },
     {
       "id": "monthly-retail-sales",
@@ -2167,7 +2172,8 @@
         "may": "$2,168.4B",
         "june": "$2,187.3B",
         "july": "$2,184.5B",
-        "august": "$2,203.1B"
+        "august": "$2,227.4B",
+        "september": "$2,186.1B"
       },
       "2025": {
         "march": "$2,162B",
@@ -2185,13 +2191,13 @@
       "color": "#e67e22",
       "agency": "Commerce",
       "name": "Construction Spending",
-      "lastUpdated": "2026-10-23T14:34:28Z",
+      "lastUpdated": "2026-11-02T15:00:00Z",
       "releaseDay": 2,
       "url": "https://www.census.gov/construction/c30/current/index.html",
       "change": "",
       "explanation": "The total dollar value of construction work done in the U.S. each month, as reported by the U.S. Census Bureau. This includes both public and private construction projects, covering residential, non-residential, and infrastructure spending. The data is seasonally adjusted and annualized to show what the yearly total would be if that month's pace continued for 12 months. Construction spending is a coincident indicator of economic activity, reflecting current business investment and government expenditure. The report breaks down spending by sector (residential, commercial, manufacturing, etc.) and by funding source (private vs. public). Analysts watch for trends in construction spending as they can signal shifts in economic growth and employment in the construction sector.",
-      "newMonth": false,
-      "releaseTimeISO": "2026-10-02T15:00:00Z",
+      "newMonth": true,
+      "releaseTimeISO": "2026-11-02T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -2743,8 +2749,9 @@
         "april": "7,585,000",
         "may": "7,537,000",
         "june": "7,182,000",
-        "july": "7,355,000",
-        "august": "7,079,000"
+        "july": "7,335,000",
+        "august": "7,190,000",
+        "september": "7,523,000"
       },
       "2025": {
         "march": "6,952,000",
@@ -2762,13 +2769,14 @@
       "color": "#34495e",
       "agency": "BLS",
       "name": "Job Openings",
-      "lastUpdated": "2026-09-29T14:00:00Z",
+      "lastUpdated": "2026-11-03T15:00:00Z",
       "releaseDay": 0,
       "url": "https://www.bls.gov/jlt/data.htm",
       "change": "",
       "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency.",
-      "releaseTimeISO": "2026-09-15T12:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeISO": "2026-11-03T15:00:00Z",
+      "releaseTimeZone": "America/New_York",
+      "newMonth": true
     },
     {
       "id": "job-cuts-report",

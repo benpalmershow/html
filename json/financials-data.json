@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T16:40:15Z",
+  "lastUpdated": "2026-11-05T13:48:01Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -363,7 +363,7 @@
         "august": "4.75",
         "september": "5.29",
         "october": "4.94",
-        "november": "4.9"
+        "november": "5.0"
       },
       "2025": {
         "march": "4.28",
@@ -381,12 +381,12 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-04T13:34:03Z",
+      "lastUpdated": "2026-11-05T13:48:01Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
       "explanation": "The yield on the 10-year U.S. Treasury note, a benchmark for interest rates across the economy. This yield represents the return an investor would receive by holding the note to maturity. The 10-year Treasury yield is influenced by Federal Reserve policy, inflation expectations, economic growth prospects, and global demand for safe assets. It serves as a reference rate for many financial products, including mortgages, corporate bonds, and auto loans. When the 10-year yield rises, borrowing costs typically increase throughout the economy. The yield curve, which plots yields across different maturities, is closely watched for signals about economic growth and potential recessions (an inverted yield curve has preceded recent recessions).",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -609,7 +609,8 @@
         "july": "86.16",
         "august": "87.03",
         "september": "97.18",
-        "october": "103.37"
+        "october": "107.56",
+        "november": "100"
       },
       "2025": {
         "january": "75.74",
@@ -629,13 +630,13 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-04T13:34:03Z",
+      "lastUpdated": "2026-11-05T13:48:01Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "change": "",
       "explanation": "The monthly average price of West Texas Intermediate (WTI) crude oil spot price FOB (free on board) at Cushing, Oklahoma, quoted in dollars per barrel. Published by the U.S. Energy Information Administration (EIA), the Cushing spot price is the primary benchmark for U.S. crude oil prices and reflects global oil market conditions, supply disruptions, and demand expectations. WTI prices are influenced by OPEC production decisions, geopolitical events, economic growth, and inventory levels at the Cushing hub. Rising oil prices increase costs for consumers (gasoline, heating) and businesses (transportation, manufacturing), while falling prices provide relief. Oil prices are a key component of inflation measures and can significantly impact overall economic conditions and consumer spending.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -651,19 +652,20 @@
         "july": "96.95",
         "august": "89.75",
         "september": "115.91",
-        "october": "123.10"
+        "october": "120.15",
+        "november": "107"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-04T13:34:03Z",
+      "lastUpdated": "2026-11-05T13:48:01Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
       "change": "",
       "explanation": "The price of Brent crude oil, the primary global benchmark for oil prices, quoted in dollars per barrel. Brent crude is sourced from the North Sea and serves as the reference price for approximately two-thirds of the world's traded oil supplies. Unlike WTI, which is landlocked at Cushing, Oklahoma, Brent is waterborne, making it more reflective of global supply and demand dynamics. Brent prices are influenced by OPEC production decisions, geopolitical events (particularly in the Middle East and North Sea), global economic growth, and shipping disruptions. The Brent-WTI spread is closely watched as an indicator of U.S. oil market conditions versus global markets. Brent crude is the benchmark for European, African, and Middle Eastern oil exports, and its price directly impacts global gasoline, diesel, and jet fuel costs.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1814,7 +1816,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-11-04T13:34:03Z",
+      "lastUpdated": "2026-11-05T13:48:01Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -4176,18 +4178,19 @@
         "july": "2.59",
         "august": "2.90",
         "september": "3.02",
-        "october": "2.76"
+        "october": "2.42",
+        "november": "2.6"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-11-04T13:34:03Z",
+      "lastUpdated": "2026-11-05T13:48:01Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",
       "explanation": "The Henry Hub natural gas spot price, a daily benchmark for wholesale natural gas prices in the United States. It reflects the cost of natural gas at the Henry Hub in Louisiana, a major trading hub. Natural gas prices are influenced by weather patterns, supply/demand fundamentals, and storage levels.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },

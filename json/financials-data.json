@@ -243,16 +243,16 @@
           "Republican Party": "24¢"
         },
         "2026-11-04": {
-          "Democratic Party": "1¢",
+          "Democratic Party": "100¢",
           "Republican Party": "0¢"
         }
       },
       "change": "",
-      "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Democrats hold a 65% edge as Republicans defend 22 of 35 seats up, including vulnerable opens from Tillis (NC), Ernst (IA), plus specials in Ohio and Florida following VP Vance and Secretary Rubio's departures. Recent NYT/Siena polls show Democratic candidates leading or tied in multiple Republican-held seats including Texas, Alaska, Ohio, Kansas, and Iowa. Democrats need a net gain of four seats for control.",
-      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
+      "releaseTimeISO": "2026-11-04T10:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
-      "Democratic Party": "1¢",
+      "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },
     {
@@ -1161,16 +1161,16 @@
           "Republican Party": "6¢"
         },
         "2026-11-04": {
-          "Democratic Party": "1¢",
+          "Democratic Party": "100¢",
           "Republican Party": "0¢"
         }
       },
       "change": "",
-      "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Democrats hold a commanding 94% edge, driven by an 8-point generic ballot advantage and President Trump's approval ratings in the mid-30s amid voter concerns over prices, inflation, and foreign policy. Democrats need only a net gain of roughly three seats from their current position near 214-216 seats. Republican redistricting efforts have narrowed the map in some states.",
-      "releaseTimeISO": "2026-10-15T15:00:00Z",
+      "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-house-in-2026",
+      "releaseTimeISO": "2026-11-04T13:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
-      "Democratic Party": "1¢",
+      "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },
     {
@@ -3317,7 +3317,9 @@
         "april": "52.7",
         "may": "54",
         "june": "53.3",
-        "july": "55.6"
+        "july": "55.6",
+        "august": "54.6",
+        "september": "54.5"
       },
       "2025": {
         "march": "49",
@@ -3335,13 +3337,14 @@
       "color": "#2ecc71",
       "agency": "ISM",
       "name": "Manufacturing PMI",
-      "lastUpdated": "2026-08-04T14:00:00Z",
+      "lastUpdated": "2026-10-01T15:00:00Z",
       "releaseDay": 1,
       "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports",
       "change": "",
       "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity.",
-      "releaseTimeISO": "2026-08-01T15:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeISO": "2026-10-01T15:00:00Z",
+      "releaseTimeZone": "America/New_York",
+      "newMonth": true
     },
     {
       "id": "composite-pmi-flash",
@@ -3463,7 +3466,9 @@
         "april": "53.6",
         "may": "53.2",
         "june": "54",
-        "july": "54.1"
+        "july": "54.1",
+        "august": "55.4",
+        "september": "54.9"
       },
       "2025": {
         "march": "50.8",
@@ -3481,13 +3486,14 @@
       "color": "#2ecc71",
       "agency": "ISM",
       "name": "Services PMI",
-      "lastUpdated": "2026-08-28T14:00:00Z",
+      "lastUpdated": "2026-10-05T15:00:00Z",
       "releaseDay": 5,
       "url": "https://tradingeconomics.com/united-states/services-pmi",
       "change": "",
       "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations.",
-      "releaseTimeISO": "2026-08-05T15:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeISO": "2026-10-05T15:00:00Z",
+      "releaseTimeZone": "America/New_York",
+      "newMonth": true
     },
     {
       "id": "industrial-production-index",

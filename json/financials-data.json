@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-05T15:34:19Z",
+  "lastUpdated": "2026-11-05T15:36:37Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1499,7 +1499,7 @@
         "november": "$289,504B",
         "december": "$285,282B"
       },
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-04T13:30:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1551,7 +1551,8 @@
         "may": "$658.8B",
         "june": "$657.8B",
         "july": "$662.8B",
-        "august": "$663.5B"
+        "august": "$665.0B",
+        "september": "$677.2B"
       },
       "2025": {
         "march": "$617.4B",
@@ -1569,12 +1570,12 @@
       "color": "#2ecc71",
       "agency": "Commerce",
       "name": "New Orders for Manufactured Goods",
-      "lastUpdated": "2026-10-23T14:34:28Z",
+      "lastUpdated": "2026-11-05T15:36:37Z",
       "releaseDay": 3,
       "url": "https://www.census.gov/economic-indicators/",
       "change": "",
       "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-03T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -2186,7 +2187,7 @@
         "april": "$2,168.2B",
         "may": "$2,168.4B",
         "june": "$2,187.3B",
-        "july": "$2,184.5B",
+        "july": "$2,184.0B",
         "august": "$2,227.4B",
         "september": "$2,186.1B"
       },
@@ -2206,12 +2207,12 @@
       "color": "#e67e22",
       "agency": "Commerce",
       "name": "Construction Spending",
-      "lastUpdated": "2026-11-02T15:00:00Z",
+      "lastUpdated": "2026-11-05T15:36:37Z",
       "releaseDay": 2,
       "url": "https://www.census.gov/construction/c30/current/index.html",
       "change": "",
       "explanation": "The total dollar value of construction work done in the U.S. each month, as reported by the U.S. Census Bureau. This includes both public and private construction projects, covering residential, non-residential, and infrastructure spending. The data is seasonally adjusted and annualized to show what the yearly total would be if that month's pace continued for 12 months. Construction spending is a coincident indicator of economic activity, reflecting current business investment and government expenditure. The report breaks down spending by sector (residential, commercial, manufacturing, etc.) and by funding source (private vs. public). Analysts watch for trends in construction spending as they can signal shifts in economic growth and employment in the construction sector.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-02T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },

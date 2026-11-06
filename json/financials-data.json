@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T15:32:26Z",
+  "lastUpdated": "2026-11-06T15:50:07Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-06T15:32:26Z",
+      "lastUpdated": "2026-11-06T15:50:07Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -112,7 +112,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-11-06T15:32:26Z",
+      "lastUpdated": "2026-11-06T15:50:07Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
       "probabilities": {
@@ -137,7 +137,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2027",
-      "lastUpdated": "2026-11-06T15:32:26Z",
+      "lastUpdated": "2026-11-06T15:50:07Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
@@ -163,7 +163,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-11-06T15:32:26Z",
+      "lastUpdated": "2026-11-06T15:50:07Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -277,7 +277,7 @@
       "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "releaseTimeISO": "2026-11-04T10:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true,
+      "newMonth": false,
       "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },
@@ -287,7 +287,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-06T15:32:26Z",
+      "lastUpdated": "2026-11-06T15:50:07Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
@@ -1194,7 +1194,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-11-06T15:32:26Z",
+      "lastUpdated": "2026-11-06T15:50:07Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1308,7 +1308,7 @@
       "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "releaseTimeISO": "2026-11-04T13:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true,
+      "newMonth": false,
       "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },

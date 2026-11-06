@@ -92,10 +92,7 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
      const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
      buttonsContainer.appendChild(allBtn);
 
-     const latestBtn = createFilterBtn('latest', '<i data-lucide="clock" class="filter-icon"></i>', 'Latest', true);
-     buttonsContainer.appendChild(latestBtn);
-
-     categories.forEach(category => {
+      categories.forEach(category => {
          const icon = categoryIcons[category] || `<i data-lucide="${getCategoryIconName(category)}" class="filter-icon"></i>`;
          const btn = createFilterBtn(category, icon, category);
          buttonsContainer.appendChild(btn);
@@ -115,14 +112,15 @@ buttonsContainer.addEventListener('click', function (e) {
           buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
 
-          const category = btn.dataset.category;
-          const isLatest = btn.dataset.isLatest === 'true';
+const category = btn.dataset.category;
+const isLatest = btn.dataset.isLatest === 'true' || category === 'all';
 
-           handleFilterClick(btn, category, isLatest);
-           renderDashboard(isLatest ? 'all' : category, isLatest);
-           if (typeof syncCategoryTitleActive === 'function') {
-               syncCategoryTitleActive(isLatest ? 'latest' : category);
-           }
+            handleFilterClick(btn, category, isLatest);
+            renderDashboard(isLatest ? 'all' : category, isLatest, true);
+            if (typeof syncCategoryTitleActive === 'function') {
+                syncCategoryTitleActive(isLatest ? 'latest' : category);
+            }
+            window.scrollTo(0, 0);
       });
 
      if (typeof lucide !== 'undefined') lucide.createIcons();

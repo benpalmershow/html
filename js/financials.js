@@ -227,7 +227,7 @@ function setupCategorySortHandlers() {
     });
 }
 
-function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLatestSort = false) {
+function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLatestSort = true) {
     const financialData = DashboardState.getData();
     const indicatorContainer = document.getElementById('indicator-categories');
 
@@ -383,7 +383,7 @@ function compareEarningsCards(a, b) {
     return String(a.ticker || a.name || '').localeCompare(String(b.ticker || b.name || ''));
 }
 
-function renderCategoryView(financialData, categories, filterCategory, forceLatestSort = false) {
+function renderCategoryView(financialData, categories, filterCategory, forceLatestSort = true) {
     let html = '';
 
     categories.forEach(category => {
@@ -811,9 +811,9 @@ function initializeDashboard() {
     if (typeof setupFilterBarSearchToggle === 'function') setupFilterBarSearchToggle();
 
     const urlParams = new URLSearchParams(window.location.search);
-    let initialFilter = urlParams.get('filter') || 'latest';
+    let initialFilter = urlParams.get('filter') || 'all';
     const indicatorParam = urlParams.get('indicator');
-    const isLatest = initialFilter.toLowerCase() === 'latest';
+    const isLatest = initialFilter === 'all' || initialFilter === 'latest';
 
     if (window.location.hash === '#latest-13f-filings-anchor') {
         initialFilter = '13F Holdings';

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T13:37:38.036122Z",
+  "lastUpdated": "2026-11-06T15:32:26Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-05T16:21:30Z",
+      "lastUpdated": "2026-11-06T15:32:26Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -91,6 +91,10 @@
         "2026-11-05": {
           "yes": "10¢",
           "no": "90¢"
+        },
+        "2026-11-06": {
+          "yes": "10¢",
+          "no": "90¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -100,7 +104,7 @@
       "no_probability": "90¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "iranian-regime-fall-2027",
@@ -108,19 +112,24 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-10-24T12:35:00Z",
+      "lastUpdated": "2026-11-06T15:32:26Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
-      "probabilities": {},
+      "probabilities": {
+        "2026-11-06": {
+          "yes": "22¢",
+          "no": "78¢"
+        }
+      },
       "change": "",
       "explanation": "Polymarket prediction on whether the Iranian regime will fall before 2028. Current market price 26¢ Yes / 74¢ No. Volume: $32.6K.",
-      "yes_odds": "26¢",
-      "yes_probability": "26¢",
-      "no_odds": "74¢",
-      "no_probability": "74¢",
+      "yes_odds": "22¢",
+      "yes_probability": "22¢",
+      "no_odds": "78¢",
+      "no_probability": "78¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "us-recession-2027",
@@ -128,20 +137,25 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2027",
-      "lastUpdated": "2026-10-24T12:35:00Z",
+      "lastUpdated": "2026-11-06T15:32:26Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
-      "probabilities": {},
+      "probabilities": {
+        "2026-11-06": {
+          "yes": "32¢",
+          "no": "68¢"
+        }
+      },
       "change": "",
       "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2027. Current market price 35¢ Yes / 65¢ No. Volume: $12.3K.",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true,
-      "yes_odds": "35¢",
-      "yes_probability": "35¢",
-      "no_odds": "65¢",
-      "no_probability": "65¢"
+      "newMonth": false,
+      "yes_odds": "32¢",
+      "yes_probability": "32¢",
+      "no_odds": "68¢",
+      "no_probability": "68¢"
     },
     {
       "id": "midterms-senate-2026",
@@ -149,7 +163,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-11-05T16:21:30Z",
+      "lastUpdated": "2026-11-06T15:32:26Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -253,6 +267,10 @@
         "2026-11-05": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
+        },
+        "2026-11-06": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
         }
       },
       "change": "",
@@ -269,22 +287,32 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-05T20:00:22Z",
+      "lastUpdated": "2026-11-06T15:32:26Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
       "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
       "kalshi_url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26dec",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
-      "rate_hold_odds": "34¢",
+      "rate_hold_odds": "20¢",
       "rate_cut_odds": "1¢",
-      "rate_hike_odds": "64¢",
+      "rate_hike_odds": "78¢",
       "change": "",
-      "probabilities": {},
-      "explanation": "Polymarket prediction on the December 8-9, 2026 FOMC rate decision. Market-implied odds assign 64% to a 25 bps increase, 34% to no change, and <1% to 25 bps decrease, reflecting persistent inflation pressures. Current federal funds target range 3.75%-4.00%. Volume: $14.9M.",
+      "probabilities": {
+        "2026-11-06": {
+          "rate_cut_50_bps_odds": "0¢",
+          "rate_cut_odds": "1¢",
+          "rate_hold_odds": "20¢",
+          "rate_hike_odds": "78¢",
+          "rate_hike_50_bps_odds": "1¢"
+        }
+      },
+      "explanation": "Polymarket prediction on the December 8-9, 2026 FOMC rate decision. Market-implied odds assign 78% to a 25 bps increase, 20% to no change, and <1% to 25 bps decrease / 50+ bps increase. Current federal funds target range 3.75%-4.00%. Volume: $14.9M.",
       "releaseTimeISO": "2026-12-09T19:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false,
+      "rate_cut_50_bps_odds": "0¢",
+      "rate_hike_50_bps_odds": "1¢"
     },
     {
       "id": "trump-impeachment",
@@ -342,19 +370,20 @@
         "july": "55.2",
         "august": "51.7",
         "september": "48.1",
-        "october": "48.0"
+        "october": "48.0",
+        "november": "51.0"
       },
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:55Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
       "change": "",
       "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-23T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -389,7 +418,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-06T13:31:57Z",
+      "lastUpdated": "2026-11-06T15:19:37Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -427,15 +456,109 @@
       },
       "category": "Commodities",
       "color": "#f39c12",
-      "agency": "BLS",
+      "agency": "FRED",
       "name": "Lumber (PPI)",
-      "lastUpdated": "2026-10-25T17:53:00Z",
+      "lastUpdated": "2026-11-06T15:25:20Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/WPU081",
       "change": "",
       "explanation": "The Producer Price Index by Commodity for Lumber and Wood Products: Lumber (FRED series WPU081), measuring the average change over time in the selling prices received by domestic producers for lumber. The index is a broad, economy-wide producer price measure (base year 1982=100) covering softwood and hardwood lumber categories, including framing lumber such as 2x4s, but it is not a retail or mill price for any single dimension; 2x4 prices are a subset of the basket and can diverge based on grade, species, and region. Lumber prices are a key indicator for the housing and construction industries, as they directly impact building costs. Lumber is highly sensitive to housing market conditions, seasonal construction patterns, and weather-related supply disruptions. The market is influenced by factors such as sawmill capacity, transportation costs, and trade policies. Lumber prices are particularly important in North America, where wood-frame construction is common for residential housing.",
       "releaseTimeISO": "2026-08-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeZone": "America/New_York",
+      "2024": {
+        "december": "266",
+        "november": "263",
+        "october": "258",
+        "september": "255",
+        "august": "252",
+        "july": "248",
+        "june": "250",
+        "may": "250",
+        "april": "255",
+        "march": "252",
+        "february": "249",
+        "january": "247"
+      },
+      "2023": {
+        "december": "245",
+        "november": "240",
+        "october": "246",
+        "september": "256",
+        "august": "256",
+        "july": "272",
+        "june": "258",
+        "may": "261",
+        "april": "261",
+        "march": "264",
+        "february": "267",
+        "january": "263"
+      },
+      "2022": {
+        "december": "264",
+        "november": "276",
+        "october": "283",
+        "september": "292",
+        "august": "307",
+        "july": "319",
+        "june": "318",
+        "may": "395",
+        "april": "384",
+        "march": "445",
+        "february": "422",
+        "january": "404"
+      },
+      "2021": {
+        "december": "347",
+        "november": "299",
+        "october": "288",
+        "september": "275",
+        "august": "283",
+        "july": "335",
+        "june": "444",
+        "may": "462",
+        "april": "390",
+        "march": "366",
+        "february": "344",
+        "january": "330"
+      },
+      "2020": {
+        "december": "292",
+        "november": "264",
+        "october": "301",
+        "september": "322",
+        "august": "270",
+        "july": "241",
+        "june": "225",
+        "may": "211",
+        "april": "204",
+        "march": "222",
+        "february": "215",
+        "january": "210"
+      },
+      "2019": {
+        "december": "210",
+        "november": "208",
+        "october": "209",
+        "september": "211",
+        "august": "209",
+        "july": "210",
+        "june": "206",
+        "may": "211",
+        "april": "213",
+        "march": "214",
+        "february": "216",
+        "january": "210"
+      },
+      "2018": {
+        "december": "211",
+        "november": "209",
+        "october": "214",
+        "september": "228",
+        "august": "232",
+        "july": "248",
+        "june": "254"
+      },
+      "newMonth": true
     },
     {
       "id": "existing-home-sales",
@@ -638,7 +761,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-06T13:31:57Z",
+      "lastUpdated": "2026-11-06T15:19:37Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -667,7 +790,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-06T13:31:57Z",
+      "lastUpdated": "2026-11-06T15:19:37Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -961,7 +1084,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-      "lastUpdated": "2026-11-05T14:45:00Z",
+      "lastUpdated": "2026-11-06T15:20:00Z",
       "releaseDay": 30,
       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
       "change": "",
@@ -1071,7 +1194,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-11-05T16:21:30Z",
+      "lastUpdated": "2026-11-06T15:32:26Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1173,6 +1296,10 @@
           "Republican Party": "0¢"
         },
         "2026-11-05": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
+        },
+        "2026-11-06": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
         }
@@ -1587,7 +1714,7 @@
       "url": "https://www.census.gov/economic-indicators/",
       "change": "",
       "explanation": "The New Orders indicator measures the value of new orders placed with domestic manufacturers for both durable and non-durable goods. It's a leading indicator of manufacturing activity and future production. The data, published by the U.S. Census Bureau, is adjusted for seasonal variation and trading day differences. A rising trend in new orders typically signals increased production and employment in the manufacturing sector, while declining orders may indicate an economic slowdown. The report breaks down orders by industry and includes data on unfilled orders and inventories, providing insights into supply chain conditions and future manufacturing activity.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-03T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1699,12 +1826,12 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Personal Consumption Expenditures (PCE)",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:55Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/PCE",
       "change": "",
       "explanation": "Personal Consumption Expenditures (PCE) is the primary measure of consumer spending on goods and services in the U.S. economy. Published by the Bureau of Economic Analysis (BEA), it accounts for about two-thirds of domestic final spending and is a key component of GDP. The PCE price index is the Federal Reserve's preferred measure of inflation. Unlike the CPI, PCE includes all consumption expenditures, including those made on behalf of households (like employer-paid health insurance), and uses a formula that accounts for changes in consumer behavior. The PCE report provides insights into spending patterns across various categories, helping economists understand economic growth drivers.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T13:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -1832,7 +1959,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-11-06T13:31:57Z",
+      "lastUpdated": "2026-11-06T15:19:37Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -2087,7 +2214,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Monthly Retail Sales",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/RSAFS",
       "source_url": "https://www.census.gov/retail/sales.html",
@@ -2370,7 +2497,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Affordability Index",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "change": "",
@@ -2405,18 +2532,19 @@
         "july": "6.66",
         "august": "6.66",
         "september": "7.03",
-        "october": "7.2"
+        "october": "7.2",
+        "november": "7.2"
       },
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "FRED",
       "name": "30-yr Mortgage Rate",
-      "lastUpdated": "2026-11-02T15:07:28Z",
+      "lastUpdated": "2026-11-06T15:19:58Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "change": "",
       "explanation": "The average interest rate on a 30-year fixed-rate mortgage, a key benchmark for U.S. home loans. This rate is based on a weekly survey of about 125 lenders by Freddie Mac and represents the interest rate a borrower would pay on a 30-year fixed mortgage with an 80% loan-to-value ratio. Mortgage rates are influenced by the 10-year Treasury yield, Federal Reserve monetary policy, inflation expectations, and overall economic conditions. Lower rates improve housing affordability and can stimulate home buying and refinancing activity, while higher rates can cool housing demand. The 30-year fixed mortgage is the most popular home loan product in the U.S., making this rate a critical indicator for the housing market and broader economy.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2455,7 +2583,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "New Home Sales",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:59Z",
       "releaseDay": 27,
       "url": "https://fred.stlouisfed.org/series/HSN1F",
       "source_url": "https://www.census.gov/construction/nrs/current/index.html",
@@ -2590,7 +2718,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Housing Starts",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 18,
       "url": "https://fred.stlouisfed.org/series/HOUST",
       "source_url": "https://www.census.gov/construction/nrc/current/index.html",
@@ -2855,7 +2983,7 @@
         "july": "203,250",
         "august": "206,000",
         "september": "200,500",
-        "october": "196,750"
+        "october": "195,400"
       },
       "2025": {
         "march": "223,000",
@@ -2875,7 +3003,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobless Claims",
-      "lastUpdated": "2026-11-02T15:07:28Z",
+      "lastUpdated": "2026-11-06T15:19:58Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "change": "",
@@ -2919,7 +3047,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobs",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:50Z",
       "releaseDay": 5,
       "url": "https://fred.stlouisfed.org/series/PAYEMS",
       "change": "",
@@ -3052,7 +3180,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "PPI",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 13,
       "url": "https://fred.stlouisfed.org/series/PPIFIS",
       "source_url": "https://fred.stlouisfed.org/series/PPIFIS",
@@ -3185,7 +3313,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "CPI",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 11,
       "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
       "source_url": "https://www.bls.gov/cpi/data.htm",
@@ -3539,7 +3667,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Industrial Production Index",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/INDPRO",
       "source_url": "https://www.federalreserve.gov/releases/g17/current/",
@@ -3679,7 +3807,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Unemployment Rate",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:50Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/UNRATE",
       "change": "",
@@ -3811,7 +3939,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Average Hourly Earnings",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:50Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/CES0500000003",
       "change": "",
@@ -3944,7 +4072,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Capacity Utilization",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
@@ -4077,7 +4205,7 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Building Permits",
-      "lastUpdated": "2026-10-30T15:28:18Z",
+      "lastUpdated": "2026-11-06T15:19:52Z",
       "releaseDay": 19,
       "url": "https://fred.stlouisfed.org/series/PERMIT",
       "change": "",
@@ -4212,7 +4340,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-11-06T13:31:57Z",
+      "lastUpdated": "2026-11-06T15:19:37Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",
@@ -4225,7 +4353,9 @@
       "id": "fhfa-house-price-index",
       "2026": {
         "q1": "712.20",
-        "q2": "719.87"
+        "q2": "719.87",
+        "april": "720",
+        "january": "712"
       },
       "2025": {
         "january": "688.42",
@@ -4237,13 +4367,13 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "FHFA House Price Index",
-      "lastUpdated": "2026-10-28T01:00:00Z",
+      "lastUpdated": "2026-11-06T15:20:01Z",
       "releaseDay": 28,
       "url": "https://fred.stlouisfed.org/series/USSTHPI",
       "source_url": "https://www.fhfa.gov/hpi",
       "change": "",
       "explanation": "The FHFA House Price Index measures changes in single-family home prices across the United States using a repeat-sales methodology. Published by the Federal Housing Finance Agency, it tracks price appreciation for homes with conforming mortgages.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-28T01:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2023": {
@@ -4257,6 +4387,136 @@
         "april": "673.16",
         "july": "679.81",
         "october": "683.47"
+      },
+      "2022": {
+        "october": "616",
+        "july": "623",
+        "april": "613",
+        "january": "576"
+      },
+      "2021": {
+        "october": "556",
+        "july": "538",
+        "april": "510",
+        "january": "483"
+      },
+      "2020": {
+        "october": "471",
+        "july": "461",
+        "april": "453",
+        "january": "449"
+      },
+      "2019": {
+        "october": "443",
+        "july": "440",
+        "april": "434",
+        "january": "427"
+      },
+      "2018": {
+        "october": "422",
+        "july": "421",
+        "april": "416",
+        "january": "408"
+      },
+      "2017": {
+        "october": "403",
+        "july": "399",
+        "april": "393",
+        "january": "385"
+      },
+      "2016": {
+        "october": "382",
+        "july": "379",
+        "april": "372",
+        "january": "366"
+      },
+      "2015": {
+        "october": "362",
+        "july": "359",
+        "april": "354",
+        "january": "349"
+      },
+      "2014": {
+        "october": "345",
+        "july": "342",
+        "april": "337",
+        "january": "331"
+      },
+      "2013": {
+        "october": "328",
+        "july": "326",
+        "april": "321",
+        "january": "316"
+      },
+      "2012": {
+        "october": "315",
+        "july": "312",
+        "april": "308",
+        "january": "310"
+      },
+      "2011": {
+        "october": "313",
+        "july": "311",
+        "april": "309",
+        "january": "315"
+      },
+      "2010": {
+        "october": "324",
+        "july": "326",
+        "april": "323",
+        "january": "326"
+      },
+      "2009": {
+        "october": "330",
+        "july": "332",
+        "april": "341",
+        "january": "350"
+      },
+      "2008": {
+        "october": "348",
+        "july": "351",
+        "april": "362",
+        "january": "372"
+      },
+      "2007": {
+        "october": "375",
+        "july": "376",
+        "april": "380",
+        "january": "380"
+      },
+      "2006": {
+        "october": "379",
+        "july": "375",
+        "april": "372",
+        "january": "368"
+      },
+      "2005": {
+        "october": "362",
+        "july": "354",
+        "april": "344",
+        "january": "333"
+      },
+      "2004": {
+        "october": "326",
+        "july": "319",
+        "april": "307",
+        "january": "300"
+      },
+      "2003": {
+        "october": "295",
+        "july": "287",
+        "april": "283",
+        "january": "279"
+      },
+      "2002": {
+        "october": "276",
+        "july": "272",
+        "april": "267",
+        "january": "262"
+      },
+      "2001": {
+        "october": "259",
+        "july": "256"
       }
     },
     {
@@ -4328,10 +4588,6 @@
           "SEA_win_odds": "58"
         },
         "2026-10-22": {
-          "KC_win_odds": "42",
-          "SEA_win_odds": "58"
-        },
-        "2026-10-23": {
           "KC_win_odds": "42",
           "SEA_win_odds": "58"
         },
@@ -5002,6 +5258,492 @@
       },
       "GB_win_odds": "0",
       "DET_win_odds": "100"
+    },
+    {
+      "id": "car-gb-2026-10-29",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "CAR @ GB",
+      "game_title": "Carolina Panthers @ Green Bay Packers",
+      "game_time": "Oct 29, 2026 8:15 PM ET",
+      "game_time_iso": "2026-10-30T00:15:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-car-gb-2026-10-30",
+      "lastUpdated": "2026-10-31T03:44:41.593335Z",
+      "week": 8,
+      "winner": "GB",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "CAR_win_odds": "0",
+          "GB_win_odds": "100"
+        },
+        "2026-10-31": {
+          "CAR_win_odds": "0",
+          "GB_win_odds": "100"
+        },
+        "2026-10-23": {
+          "CAR_win_odds": "18",
+          "GB_win_odds": "82"
+        },
+        "2026-10-25": {
+          "CAR_win_odds": "14",
+          "GB_win_odds": "86"
+        },
+        "2026-10-27": {
+          "CAR_win_odds": "18",
+          "GB_win_odds": "82"
+        },
+        "2026-10-28": {
+          "CAR_win_odds": "14",
+          "GB_win_odds": "86"
+        },
+        "2026-10-29": {
+          "CAR_win_odds": "16",
+          "GB_win_odds": "84"
+        }
+      },
+      "CAR_win_odds": "0",
+      "GB_win_odds": "100"
+    },
+    {
+      "id": "bal-buf-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "BAL @ BUF",
+      "game_title": "Baltimore Ravens @ Buffalo Bills",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-bal-buf-2026-11-01",
+      "lastUpdated": "2026-11-02T22:01:46.204936Z",
+      "week": 8,
+      "winner": "BUF",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "BAL_win_odds": "38",
+          "BUF_win_odds": "62"
+        },
+        "2026-10-31": {
+          "BAL_win_odds": "38",
+          "BUF_win_odds": "62"
+        },
+        "2026-11-01": {
+          "BAL_win_odds": "38",
+          "BUF_win_odds": "62"
+        },
+        "2026-11-02": {
+          "BAL_win_odds": "0",
+          "BUF_win_odds": "100"
+        },
+        "2026-10-25": {
+          "BAL_win_odds": "42",
+          "BUF_win_odds": "58"
+        },
+        "2026-10-27": {
+          "BAL_win_odds": "36",
+          "BUF_win_odds": "64"
+        },
+        "2026-10-29": {
+          "BAL_win_odds": "40",
+          "BUF_win_odds": "60"
+        }
+      },
+      "BAL_win_odds": "0",
+      "BUF_win_odds": "100"
+    },
+    {
+      "id": "ten-cin-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "TEN @ CIN",
+      "game_title": "Tennessee Titans @ Cincinnati Bengals",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-ten-cin-2026-11-01",
+      "lastUpdated": "2026-11-02T22:07:43.289368Z",
+      "week": 8,
+      "winner": "CIN",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "TEN_win_odds": "14",
+          "CIN_win_odds": "86"
+        },
+        "2026-10-31": {
+          "TEN_win_odds": "14",
+          "CIN_win_odds": "86"
+        },
+        "2026-11-01": {
+          "TEN_win_odds": "12",
+          "CIN_win_odds": "88"
+        },
+        "2026-11-02": {
+          "TEN_win_odds": "0",
+          "CIN_win_odds": "100"
+        },
+        "2026-10-25": {
+          "TEN_win_odds": "14",
+          "CIN_win_odds": "86"
+        },
+        "2026-10-27": {
+          "TEN_win_odds": "10",
+          "CIN_win_odds": "90"
+        },
+        "2026-10-29": {
+          "TEN_win_odds": "14",
+          "CIN_win_odds": "86"
+        }
+      },
+      "TEN_win_odds": "0",
+      "CIN_win_odds": "100"
+    },
+    {
+      "id": "ari-dal-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "ARI @ DAL",
+      "game_title": "Arizona Cardinals @ Dallas Cowboys",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-ari-dal-2026-11-01",
+      "lastUpdated": "2026-11-02T22:07:43.289368Z",
+      "week": 8,
+      "winner": "ARI",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "ARI_win_odds": "26",
+          "DAL_win_odds": "74"
+        },
+        "2026-10-31": {
+          "ARI_win_odds": "26",
+          "DAL_win_odds": "74"
+        },
+        "2026-11-01": {
+          "ARI_win_odds": "24",
+          "DAL_win_odds": "76"
+        },
+        "2026-11-02": {
+          "ARI_win_odds": "100",
+          "DAL_win_odds": "0"
+        },
+        "2026-10-25": {
+          "ARI_win_odds": "28",
+          "DAL_win_odds": "72"
+        },
+        "2026-10-27": {
+          "ARI_win_odds": "22",
+          "DAL_win_odds": "78"
+        },
+        "2026-10-29": {
+          "ARI_win_odds": "26",
+          "DAL_win_odds": "74"
+        }
+      },
+      "ARI_win_odds": "100",
+      "DAL_win_odds": "0"
+    },
+    {
+      "id": "min-det-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "MIN @ DET",
+      "game_title": "Minnesota Vikings @ Detroit Lions",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-min-det-2026-11-01",
+      "lastUpdated": "2026-11-02T21:27:40.130447Z",
+      "week": 8,
+      "winner": "DET",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "MIN_win_odds": "38",
+          "DET_win_odds": "62"
+        },
+        "2026-10-31": {
+          "MIN_win_odds": "38",
+          "DET_win_odds": "62"
+        },
+        "2026-11-01": {
+          "MIN_win_odds": "38",
+          "DET_win_odds": "62"
+        },
+        "2026-11-02": {
+          "MIN_win_odds": "0",
+          "DET_win_odds": "100"
+        },
+        "2026-10-25": {
+          "MIN_win_odds": "40",
+          "DET_win_odds": "60"
+        },
+        "2026-10-27": {
+          "MIN_win_odds": "36",
+          "DET_win_odds": "64"
+        },
+        "2026-10-29": {
+          "MIN_win_odds": "40",
+          "DET_win_odds": "60"
+        }
+      },
+      "MIN_win_odds": "0",
+      "DET_win_odds": "100"
+    },
+    {
+      "id": "ind-jax-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "IND @ JAX",
+      "game_title": "Indianapolis Colts @ Jacksonville Jaguars",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-ind-jax-2026-11-01",
+      "lastUpdated": "2026-11-02T21:25:39.979152Z",
+      "week": 8,
+      "winner": "JAX",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "IND_win_odds": "20",
+          "JAX_win_odds": "80"
+        },
+        "2026-10-31": {
+          "IND_win_odds": "20",
+          "JAX_win_odds": "80"
+        },
+        "2026-11-01": {
+          "IND_win_odds": "18",
+          "JAX_win_odds": "82"
+        },
+        "2026-11-02": {
+          "IND_win_odds": "0",
+          "JAX_win_odds": "100"
+        },
+        "2026-10-25": {
+          "IND_win_odds": "22",
+          "JAX_win_odds": "78"
+        },
+        "2026-10-27": {
+          "IND_win_odds": "16",
+          "JAX_win_odds": "84"
+        },
+        "2026-10-29": {
+          "IND_win_odds": "20",
+          "JAX_win_odds": "80"
+        }
+      },
+      "IND_win_odds": "0",
+      "JAX_win_odds": "100"
+    },
+    {
+      "id": "cle-pit-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "CLE @ PIT",
+      "game_title": "Cleveland Browns @ Pittsburgh Steelers",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-cle-pit-2026-11-01",
+      "lastUpdated": "2026-11-02T21:25:39.979152Z",
+      "week": 8,
+      "winner": "PIT",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "CLE_win_odds": "36",
+          "PIT_win_odds": "64"
+        },
+        "2026-10-31": {
+          "CLE_win_odds": "36",
+          "PIT_win_odds": "64"
+        },
+        "2026-11-01": {
+          "CLE_win_odds": "34",
+          "PIT_win_odds": "66"
+        },
+        "2026-11-02": {
+          "CLE_win_odds": "0",
+          "PIT_win_odds": "100"
+        },
+        "2026-10-25": {
+          "CLE_win_odds": "38",
+          "PIT_win_odds": "62"
+        },
+        "2026-10-27": {
+          "CLE_win_odds": "32",
+          "PIT_win_odds": "68"
+        },
+        "2026-10-29": {
+          "CLE_win_odds": "36",
+          "PIT_win_odds": "64"
+        }
+      },
+      "CLE_win_odds": "0",
+      "PIT_win_odds": "100"
+    },
+    {
+      "id": "atl-tb-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "ATL @ TB",
+      "game_title": "Atlanta Falcons @ Tampa Bay Buccaneers",
+      "game_time": "Nov 1, 2026 1:00 PM ET",
+      "game_time_iso": "2026-11-01T17:00:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-atl-tb-2026-11-01",
+      "lastUpdated": "2026-11-02T21:11:44.252721Z",
+      "week": 8,
+      "winner": "TB",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "ATL_win_odds": "44",
+          "TB_win_odds": "56"
+        },
+        "2026-10-31": {
+          "ATL_win_odds": "44",
+          "TB_win_odds": "56"
+        },
+        "2026-11-01": {
+          "ATL_win_odds": "46",
+          "TB_win_odds": "54"
+        },
+        "2026-11-02": {
+          "ATL_win_odds": "0",
+          "TB_win_odds": "100"
+        },
+        "2026-10-25": {
+          "ATL_win_odds": "48",
+          "TB_win_odds": "52"
+        },
+        "2026-10-27": {
+          "ATL_win_odds": "44",
+          "TB_win_odds": "56"
+        },
+        "2026-10-29": {
+          "ATL_win_odds": "48",
+          "TB_win_odds": "52"
+        }
+      },
+      "ATL_win_odds": "0",
+      "TB_win_odds": "100"
+    },
+    {
+      "id": "lac-lar-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "LAC @ LAR",
+      "game_title": "Los Angeles Chargers @ Los Angeles Rams",
+      "game_time": "Nov 1, 2026 4:05 PM ET",
+      "game_time_iso": "2026-11-01T20:05:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-lac-la-2026-11-01",
+      "lastUpdated": "2026-11-03T00:12:19.603915Z",
+      "week": 8,
+      "winner": "LAR",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "LAC_win_odds": "26",
+          "LAR_win_odds": "74"
+        },
+        "2026-10-31": {
+          "LAC_win_odds": "26",
+          "LAR_win_odds": "74"
+        },
+        "2026-11-01": {
+          "LAC_win_odds": "26",
+          "LAR_win_odds": "74"
+        },
+        "2026-11-02": {
+          "LAC_win_odds": "0",
+          "LAR_win_odds": "100"
+        },
+        "2026-11-03": {
+          "LAC_win_odds": "0",
+          "LAR_win_odds": "100"
+        }
+      },
+      "LAC_win_odds": "0",
+      "LAR_win_odds": "100"
+    },
+    {
+      "id": "kc-den-2026-11-01",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "KC @ DEN",
+      "game_title": "Kansas City Chiefs @ Denver Broncos",
+      "game_time": "Nov 1, 2026 4:25 PM ET",
+      "game_time_iso": "2026-11-01T20:25:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-kc-den-2026-11-01",
+      "lastUpdated": "2026-11-03T00:56:21.912004Z",
+      "week": 8,
+      "winner": "DEN",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "KC_win_odds": "52",
+          "DEN_win_odds": "48"
+        },
+        "2026-10-31": {
+          "KC_win_odds": "52",
+          "DEN_win_odds": "48"
+        },
+        "2026-11-01": {
+          "KC_win_odds": "50",
+          "DEN_win_odds": "50"
+        },
+        "2026-11-02": {
+          "KC_win_odds": "0",
+          "DEN_win_odds": "100"
+        },
+        "2026-11-03": {
+          "KC_win_odds": "0",
+          "DEN_win_odds": "100"
+        }
+      },
+      "KC_win_odds": "0",
+      "DEN_win_odds": "100"
+    },
+    {
+      "id": "chi-sea-2026-11-02",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "CHI @ SEA",
+      "game_title": "Chicago Bears @ Seattle Seahawks",
+      "game_time": "Nov 2, 2026 8:15 PM ET",
+      "game_time_iso": "2026-11-03T01:15:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-chi-sea-2026-11-03",
+      "lastUpdated": "2026-11-04T04:44:18.326756Z",
+      "week": 8,
+      "winner": "CHI",
+      "result": "Final",
+      "probabilities": {
+        "2026-10-30": {
+          "CHI_win_odds": "38",
+          "SEA_win_odds": "62"
+        },
+        "2026-10-31": {
+          "CHI_win_odds": "38",
+          "SEA_win_odds": "62"
+        },
+        "2026-11-01": {
+          "CHI_win_odds": "38",
+          "SEA_win_odds": "62"
+        },
+        "2026-11-02": {
+          "CHI_win_odds": "38",
+          "SEA_win_odds": "62"
+        },
+        "2026-11-03": {
+          "CHI_win_odds": "100",
+          "SEA_win_odds": "0"
+        },
+        "2026-11-04": {
+          "CHI_win_odds": "100",
+          "SEA_win_odds": "0"
+        }
+      },
+      "CHI_win_odds": "100",
+      "SEA_win_odds": "0"
     }
   ]
 }

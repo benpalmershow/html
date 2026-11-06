@@ -74,8 +74,9 @@ def price_to_cents(value):
         v = float(value)
     except (TypeError, ValueError):
         return None
-    # If value is already >= 1, treat as cents; otherwise convert decimal -> cents.
-    cents = v if v >= 1 else v * 100
+    # Polymarket gamma API returns prices as decimals in [0, 1] (1.0 = 100%).
+    # Treat v <= 1 as a decimal fraction; v > 1 as an already-computed cent value.
+    cents = v * 100.0 if v <= 1.0 else v
     return f"{int(round(cents))}{CENT}"
 
 
@@ -212,20 +213,20 @@ SOURCE_REGISTRY = {
         "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
         "implemented": True,
     },
-    "iranian-regime-fall-2026": {
+    "iranian-regime-fall-2027": {
         "agency": "Polymarket",
         "source": "polymarket",
-        "api_id": "will-the-iranian-regime-fall-by-the-end-of-2026",
+        "api_id": "will-the-iranian-regime-fall-by-the-end-of-2027",
         "market_configs": [
             {"question_contains": "Iranian regime", "outcome_map": {"Yes": "yes", "No": "no"}},
         ],
         "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
         "implemented": True,
     },
-    "us-recession-2026": {
+    "us-recession-2027": {
         "agency": "Polymarket",
         "source": "polymarket",
-        "api_id": "us-recession-by-end-of-2026",
+        "api_id": "us-recession-by-end-of-2027-20260807185409760",
         "market_configs": [
             {"question_contains": "US recession", "outcome_map": {"Yes": "yes", "No": "no"}},
         ],
@@ -254,14 +255,16 @@ SOURCE_REGISTRY = {
     # FOMC switched from Kalshi to Polymarket: Kalshi's public API returns a
     # Cloudflare challenge (429) for unauthenticated requests and cannot be
     # polled from GitHub Actions. Polymarket's gamma API is public and works.
-    "fomc-rate-decision-october-2026": {
+    "fomc-rate-decision-december-2026": {
         "agency": "Polymarket",
         "source": "polymarket",
-        "api_id": "fed-decision-in-october-20260617190323537",
+        "api_id": "fed-decision-in-december-20260729232808632",
         "market_configs": [
+            {"question_contains": "decrease interest rates by 50+ bps", "outcome_map": {"Yes": "rate_cut_50_bps_odds"}},
             {"question_contains": "decrease interest rates by 25 bps", "outcome_map": {"Yes": "rate_cut_odds"}},
             {"question_contains": "no change in Fed interest rates", "outcome_map": {"Yes": "rate_hold_odds"}},
             {"question_contains": "increase interest rates by 25 bps", "outcome_map": {"Yes": "rate_hike_odds"}},
+            {"question_contains": "increase interest rates by 50+ bps", "outcome_map": {"Yes": "rate_hike_50_bps_odds"}},
         ],
         "implemented": True,
     },

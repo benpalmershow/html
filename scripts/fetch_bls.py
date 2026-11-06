@@ -128,14 +128,11 @@ def update_financials():
                 idx.update(by_year)
 
                 idx["agency"] = "BLS"
-                idx["url"] = "https://fred.stlouisfed.org/series/PPIFIS"
-                idx["source_url"] = "https://www.bls.gov/news.release/ppi.toc.htm"
+                idx["source_url"] = "https://www.bls.gov/jlt/"
                 idx["explanation"] = (
-                    "Producer Price Index by Commodity: Final Demand, "
-                    "seasonally adjusted. The PPI measures the average change "
-                    "over time in the selling prices received by domestic "
-                    "producers for their output. Sourced from the BLS PPI news "
-                    "release (WPUFD4)."
+                    "Job Openings and Labor Turnover Survey (JOLTS): Job Openings, "
+                    "Total Nonfarm, level. Sourced from the BLS JOLTS release "
+                    "(series JTSJOL)."
                 )
                 idx["change"] = ""
                 idx["lastUpdated"] = now_iso

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T02:24:26Z",
+  "lastUpdated": "2026-11-07T15:16:04Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-06T15:50:07Z",
+      "lastUpdated": "2026-11-07T14:50:14Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -95,6 +95,10 @@
         "2026-11-06": {
           "yes": "10¢",
           "no": "90¢"
+        },
+        "2026-11-07": {
+          "yes": "10¢",
+          "no": "90¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -104,7 +108,7 @@
       "no_probability": "90¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": false
+      "newMonth": true
     },
     {
       "id": "iranian-regime-fall-2027",
@@ -112,24 +116,28 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-11-06T15:50:07Z",
+      "lastUpdated": "2026-11-07T14:50:14Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
       "probabilities": {
         "2026-11-06": {
           "yes": "22¢",
           "no": "78¢"
+        },
+        "2026-11-07": {
+          "yes": "18¢",
+          "no": "82¢"
         }
       },
       "change": "",
       "explanation": "Polymarket prediction on whether the Iranian regime will fall before 2028. Current market price 26¢ Yes / 74¢ No. Volume: $32.6K.",
-      "yes_odds": "22¢",
-      "yes_probability": "22¢",
-      "no_odds": "78¢",
-      "no_probability": "78¢",
+      "yes_odds": "18¢",
+      "yes_probability": "18¢",
+      "no_odds": "82¢",
+      "no_probability": "82¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": false
+      "newMonth": true
     },
     {
       "id": "us-recession-2027",
@@ -137,12 +145,16 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2027",
-      "lastUpdated": "2026-11-06T15:50:07Z",
+      "lastUpdated": "2026-11-07T14:50:14Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-26",
       "probabilities": {
         "2026-11-06": {
+          "yes": "32¢",
+          "no": "68¢"
+        },
+        "2026-11-07": {
           "yes": "32¢",
           "no": "68¢"
         }
@@ -151,7 +163,7 @@
       "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2027. Current market price 35¢ Yes / 65¢ No. Volume: $12.3K.",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": false,
+      "newMonth": true,
       "yes_odds": "32¢",
       "yes_probability": "32¢",
       "no_odds": "68¢",
@@ -163,7 +175,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "Senate",
-      "lastUpdated": "2026-11-06T15:50:07Z",
+      "lastUpdated": "2026-11-07T14:50:14Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
@@ -271,13 +283,17 @@
         "2026-11-06": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
+        },
+        "2026-11-07": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
         }
       },
       "change": "",
       "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "releaseTimeISO": "2026-11-04T10:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": false,
+      "newMonth": true,
       "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },
@@ -287,16 +303,16 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-06T15:50:07Z",
+      "lastUpdated": "2026-11-07T14:50:14Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
       "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
       "kalshi_url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26dec",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
-      "rate_hold_odds": "20¢",
+      "rate_hold_odds": "22¢",
       "rate_cut_odds": "1¢",
-      "rate_hike_odds": "78¢",
+      "rate_hike_odds": "76¢",
       "change": "",
       "probabilities": {
         "2026-11-06": {
@@ -305,13 +321,20 @@
           "rate_hold_odds": "20¢",
           "rate_hike_odds": "78¢",
           "rate_hike_50_bps_odds": "1¢"
+        },
+        "2026-11-07": {
+          "rate_cut_50_bps_odds": "1¢",
+          "rate_cut_odds": "1¢",
+          "rate_hold_odds": "22¢",
+          "rate_hike_odds": "76¢",
+          "rate_hike_50_bps_odds": "1¢"
         }
       },
       "explanation": "Polymarket prediction on the December 8-9, 2026 FOMC rate decision. Market-implied odds assign 78% to a 25 bps increase, 20% to no change, and <1% to 25 bps decrease / 50+ bps increase. Current federal funds target range 3.75%-4.00%. Volume: $14.9M.",
       "releaseTimeISO": "2026-12-09T19:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": false,
-      "rate_cut_50_bps_odds": "0¢",
+      "newMonth": true,
+      "rate_cut_50_bps_odds": "1¢",
       "rate_hike_50_bps_odds": "1¢"
     },
     {
@@ -400,7 +423,7 @@
         "august": "4.75",
         "september": "5.29",
         "october": "4.94",
-        "november": "4.9"
+        "november": "4.8"
       },
       "2025": {
         "march": "4.28",
@@ -418,7 +441,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -458,7 +481,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Lumber (PPI)",
-      "lastUpdated": "2026-11-06T15:25:20Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/WPU081",
       "change": "",
@@ -761,7 +784,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -790,7 +813,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -1194,7 +1217,7 @@
       "color": "#3498db",
       "agency": "Polymarket",
       "name": "House",
-      "lastUpdated": "2026-11-06T15:50:07Z",
+      "lastUpdated": "2026-11-07T14:50:14Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
@@ -1302,13 +1325,17 @@
         "2026-11-06": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
+        },
+        "2026-11-07": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
         }
       },
       "change": "",
       "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "releaseTimeISO": "2026-11-04T13:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": false,
+      "newMonth": true,
       "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },
@@ -2126,7 +2153,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -4508,7 +4535,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",

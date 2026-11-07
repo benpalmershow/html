@@ -119,7 +119,7 @@ function createChartOverlay(indicator, indicatorName) {
     overlay.className = 'chart-overlay';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
-    overlay.innerHTML = `<div class="chart-overlay-range-picker" id="chartRangePicker"><button class="range-btn" data-range="3">3M</button><button class="range-btn" data-range="6">6M</button><button class="range-btn active" data-range="12">1Y</button><button class="chart-overlay-close" aria-label="Close chart">&times;</button></div><div class="chart-overlay-body"><div class="chart-overlay-loading"><div class="chart-overlay-loading-spinner"></div><span>Loading chart...</span></div></div>`;
+    overlay.innerHTML = `<div class="chart-overlay-range-picker" id="chartRangePicker"><button class="range-btn" data-range="3">3M</button><button class="range-btn" data-range="6">6M</button><button class="range-btn active" data-range="12">1Y</button><button class="range-btn" data-range="60">5Y</button><button class="chart-overlay-close" aria-label="Close chart">&times;</button></div><div class="chart-overlay-body"><div class="chart-overlay-loading"><div class="chart-overlay-loading-spinner"></div><span>Loading chart...</span></div></div>`;
     indicator.appendChild(overlay);
     const closeBtn = overlay.querySelector('.chart-overlay-close');
     closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); hideChartOverlay(overlay); });
@@ -330,30 +330,63 @@ function getChartConfig(indicatorName, indices) {
 function buildStandardLineChartConfig(indicatorName, indicatorData) {
     const yearKeys = Object.keys(indicatorData).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
     const labels = [], values = [], dataMap = {};
-    MONTHS.forEach((month, index) => {
-        const value = indicatorData[month];
-        if (isValidData(value)) {
-            const numValue = extractNumericValue(value);
-            if (numValue !== null) dataMap[`${null}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year: null };
-        }
-    });
-    for (const year of yearKeys) {
+    const currentYear = new Date().getFullYear();
+
+    // Check if this indicator uses quarterly data
+    const hasQuarterlyData = yearKeys.some(year => {
         const yearData = indicatorData[year];
+        if (!yearData) return false;
+        return Object.keys(yearData).some(key => /^q[1-4]$/.test(key));
+    });
+
+    if (hasQuarterlyData) {
+        const QUARTERS = ['q1', 'q2', 'q3', 'q4'];
+        const QUARTER_LABELS = ['Q1', 'Q2', 'Q3', 'Q4'];
+        for (const year of yearKeys) {
+            const yearData = indicatorData[year];
+            QUARTERS.forEach((quarter, index) => {
+                const value = yearData[quarter];
+                if (isValidData(value)) {
+                    const numValue = extractNumericValue(value);
+                    if (numValue !== null) {
+                        const label = year === currentYear ? QUARTER_LABELS[index] : `${year} ${QUARTER_LABELS[index]}`;
+                        dataMap[`${year}-${index}`] = { quarter, label, value: numValue, quarterIndex: index, year };
+                    }
+                }
+            });
+        }
+    } else {
         MONTHS.forEach((month, index) => {
-            const value = yearData[month];
+            const value = indicatorData[month];
             if (isValidData(value)) {
                 const numValue = extractNumericValue(value);
-                if (numValue !== null) dataMap[`${year}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year };
+                if (numValue !== null) dataMap[`${null}-${index}`] = { month, label: MONTH_LABELS[index], value: numValue, monthIndex: index, year: null };
             }
         });
+        for (const year of yearKeys) {
+            const yearData = indicatorData[year];
+            MONTHS.forEach((month, index) => {
+                const value = yearData[month];
+                if (isValidData(value)) {
+                    const numValue = extractNumericValue(value);
+                    if (numValue !== null) {
+                        const label = year === currentYear ? MONTH_LABELS[index] : `${year} ${MONTH_LABELS[index]}`;
+                        dataMap[`${year}-${index}`] = { month, label, value: numValue, monthIndex: index, year };
+                    }
+                }
+            });
+        }
     }
+
     const sortedData = Object.values(dataMap).sort((a, b) => {
         if (a.year !== b.year) {
             const yearA = a.year !== null ? a.year : 2025;
             const yearB = b.year !== null ? b.year : 2025;
             return yearA - yearB;
         }
-        return a.monthIndex - b.monthIndex;
+        const indexA = a.monthIndex !== undefined ? a.monthIndex : a.quarterIndex;
+        const indexB = b.monthIndex !== undefined ? b.monthIndex : b.quarterIndex;
+        return indexA - indexB;
     });
     sortedData.forEach(item => { labels.push(item.label); values.push(item.value); });
     return { type: 'chartjs', data: { labels, datasets: [{ label: indicatorName, data: values, borderColor: '#2C5F5A', backgroundColor: 'rgba(44, 95, 90, 0.1)', tension: 0.4, fill: true, pointBackgroundColor: '#2C5F5A', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 3, pointHoverRadius: 5 }] } };

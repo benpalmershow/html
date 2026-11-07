@@ -127,6 +127,7 @@ THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
 # decimals) would drop meaningful precision for large indicators like PCE.
 DEFAULT_DECIMALS = {
     "Personal Consumption Expenditures (PCE)": 1,
+    "GDP": 2,
 }
 # Indicators that are inherently volatile; raise threshold for warnings
 VOLATILE_INDICATORS = {

@@ -99,22 +99,48 @@ const IndicatorRenderers = (function () {
         const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(key => parseInt(key)).sort((a, b) => b - a);
         const availableData = [];
         const coveredMonths = new Set();
-        // Emit one entry per year+month so multiple nested years (e.g. 2025 and 2026) both render.
-        yearKeys.forEach(year => {
-            MONTHS.forEach((month, index) => {
-                const value = indicator[year] ? indicator[year][month] : undefined;
-                if (isValidData(value)) {
-                    availableData.push({ month, label: MONTH_LABELS[index], value, index, year });
-                    coveredMonths.add(month);
-                }
+        const currentYear = new Date().getFullYear();
+
+        // Check if this indicator uses quarterly data (q1, q2, q3, q4)
+        const hasQuarterlyData = yearKeys.some(year => {
+            const yearData = indicator[year];
+            if (!yearData) return false;
+            return Object.keys(yearData).some(key => /^q[1-4]$/.test(key));
+        });
+
+        if (hasQuarterlyData) {
+            // Collect quarterly data
+            const QUARTERS = ['q1', 'q2', 'q3', 'q4'];
+            const QUARTER_LABELS = ['Q1', 'Q2', 'Q3', 'Q4'];
+            yearKeys.forEach(year => {
+                QUARTERS.forEach((quarter, index) => {
+                    const value = indicator[year] ? indicator[year][quarter] : undefined;
+                    if (isValidData(value)) {
+                        const label = year === currentYear ? QUARTER_LABELS[index] : `${year} ${QUARTER_LABELS[index]}`;
+                        availableData.push({ month: quarter, label, value, index, year });
+                    }
+                });
             });
-        });
-        // Legacy flat months represent prior-year data; include only when not already covered by nested years.
-        MONTHS.forEach((month, index) => {
-            if (coveredMonths.has(month)) return;
-            const value = indicator[month];
-            if (isValidData(value)) availableData.push({ month, label: MONTH_LABELS[index], value, index, year: null });
-        });
+        } else {
+            // Emit one entry per year+month so multiple nested years (e.g. 2025 and 2026) both render.
+            yearKeys.forEach(year => {
+                MONTHS.forEach((month, index) => {
+                    const value = indicator[year] ? indicator[year][month] : undefined;
+                    if (isValidData(value)) {
+                        const label = year === currentYear ? MONTH_LABELS[index] : `${year} ${MONTH_LABELS[index]}`;
+                        availableData.push({ month, label, value, index, year });
+                        coveredMonths.add(month);
+                    }
+                });
+            });
+            // Legacy flat months represent prior-year data; include only when not already covered by nested years.
+            MONTHS.forEach((month, index) => {
+                if (coveredMonths.has(month)) return;
+                const value = indicator[month];
+                if (isValidData(value)) availableData.push({ month, label: MONTH_LABELS[index], value, index, year: null });
+            });
+        }
+
         availableData.sort((a, b) => {
             if (a.year !== null && b.year !== null) { if (a.year !== b.year) return b.year - a.year; }
             if (a.year !== null && b.year === null) return -1;
@@ -127,8 +153,28 @@ const IndicatorRenderers = (function () {
     function collectSparklineValues(indicator, MONTHS) {
         const sparklineValues = [];
         const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(k => parseInt(k)).sort();
-        MONTHS.forEach(month => { const flatVal = extractNumericValue(indicator[month]); if (flatVal !== null) sparklineValues.push(flatVal); });
-        yearKeys.forEach(year => { MONTHS.forEach(month => { if (indicator[year] && indicator[year][month] !== undefined) { const val = extractNumericValue(indicator[year][month]); if (val !== null) sparklineValues.push(val); } }); });
+
+        // Check if this indicator uses quarterly data
+        const hasQuarterlyData = yearKeys.some(year => {
+            const yearData = indicator[year];
+            if (!yearData) return false;
+            return Object.keys(yearData).some(key => /^q[1-4]$/.test(key));
+        });
+
+        if (hasQuarterlyData) {
+            const QUARTERS = ['q1', 'q2', 'q3', 'q4'];
+            yearKeys.forEach(year => {
+                QUARTERS.forEach(quarter => {
+                    if (indicator[year] && indicator[year][quarter] !== undefined) {
+                        const val = extractNumericValue(indicator[year][quarter]);
+                        if (val !== null) sparklineValues.push(val);
+                    }
+                });
+            });
+        } else {
+            MONTHS.forEach(month => { const flatVal = extractNumericValue(indicator[month]); if (flatVal !== null) sparklineValues.push(flatVal); });
+            yearKeys.forEach(year => { MONTHS.forEach(month => { if (indicator[year] && indicator[year][month] !== undefined) { const val = extractNumericValue(indicator[year][month]); if (val !== null) sparklineValues.push(val); } }); });
+        }
         return sparklineValues;
     }
 

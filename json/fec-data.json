@@ -84,7 +84,7 @@
     },
     {
       "state": "OH",
-      "label": "Ohio Senate (Special)",
+      "label": "Ohio Senate",
       "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
       "kalshi": {
         "r": 0,
@@ -202,7 +202,7 @@
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Safe D. Collins (R) incumbent vs. Jackson (D).",
+      "note": "Jackson (D) won. Collins (R) incumbent.",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -221,9 +221,22 @@
           "disbursements": 23830778.33,
           "cash_on_hand_end_period": "2689882.54",
           "coverage_end_date": "2026-10-14"
+        },
+        {
+          "candidate_id": "S6ME00464",
+          "name": "Troy Jackson",
+          "party": "DEM",
+          "incumbent": false,
+          "source_url": "https://www.fec.gov/data/candidate/S6ME00464/",
+          "fetchedAt": "2026-11-07T18:21:00.000000Z",
+          "source": "OpenFEC API",
+          "receipts": 26872873.96,
+          "disbursements": 25276003.4,
+          "cash_on_hand_end_period": "1596870.56",
+          "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:21:00.000000Z"
     },
     {
       "state": "MI",
@@ -347,8 +360,8 @@
       "label": "Alaska Senate",
       "note": "Lean D. Sullivan (R) incumbent vs. Peltola (D).",
       "kalshi": {
-        "r": 38,
-        "d": 62
+        "r": 28,
+        "d": 72
       },
       "kalshi_url": "https://kalshi.com/markets/senateak/alaska-senate-race/senateak-26",
       "candidates": [
@@ -386,8 +399,8 @@
       "label": "Mississippi Senate",
       "note": "Safe D. Hyde-Smith (R) incumbent vs. Pinkins (D).",
       "kalshi": {
-        "r": 15,
-        "d": 85
+        "r": 1,
+        "d": 99
       },
       "kalshi_url": "https://kalshi.com/markets/senatems/mississippi-senate-race/senatems-26",
       "candidates": [

@@ -1661,7 +1661,7 @@
     ======================================== */
 
 .category[data-category="Elections"] .indicators-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     min-height: unset;
 }
 
@@ -1675,104 +1675,47 @@
     vertical-align: middle;
 }
 
-/* Race card header */
-.fec-race-title {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex: 1;
-    min-width: 0;
+.category[data-category="Elections"] .indicator-name {
+    align-items: center;
 }
 
 .fec-senate-badge {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    margin-left: 0;
+    vertical-align: middle;
+    align-self: auto;
+    background: var(--logo-orange);
     color: #fff;
-    background: var(--logo-teal);
-    padding: 1px 5px;
-    border-radius: 3px;
-    line-height: 1.1;
-    flex-shrink: 0;
-}
-
-.fec-race-label {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.2;
-    word-break: break-word;
-}
-
-/* Lean badge */
-.fec-lean-badge {
-    flex-shrink: 0;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 3px;
-    line-height: 1;
-    white-space: nowrap;
-    align-self: flex-start;
-}
-
-.fec-lean-tossup {
-    background: rgba(250, 204, 21, 0.18);
-    color: #b45309;
-    border: 1px solid rgba(250, 204, 21, 0.5);
-}
-
-.dark-mode .fec-lean-tossup {
-    color: #fde68a;
-    background: rgba(250, 204, 21, 0.12);
-}
-
-.fec-lean-r {
-    background: rgba(220, 38, 38, 0.1);
-    color: #b91c1c;
-    border: 1px solid rgba(220, 38, 38, 0.3);
-}
-
-.dark-mode .fec-lean-r {
-    color: #fca5a5;
-    background: rgba(220, 38, 38, 0.12);
-}
-
-.fec-lean-d {
-    background: rgba(37, 99, 235, 0.1);
-    color: #1d4ed8;
-    border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .fec-card-r { --indicator-accent: var(--fec-rep, #DC2626); }
 .fec-card-d { --indicator-accent: var(--fec-dem, #2563EB); }
 
-.fec-card-r, .fec-card-d {
-  border-color: var(--indicator-accent);
+.fec-card-r,
+.fec-card-d {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--indicator-accent) 7%, var(--bg-primary)) 0%,
+    var(--bg-primary) 100%
+  );
 }
 
-.fec-card-r:hover, .fec-card-d:hover {
-  border-color: var(--indicator-accent);
+.fec-data-visible {
+    max-height: none;
+    overflow: visible;
 }
 
-/* Candidate rows */
-.fec-candidates {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 4px;
-}
-
-.fec-candidate-row {
-    display: flex;
+.fec-candidate-row .month-label {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
+    gap: 6px;
+    min-width: 0;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.fec-candidate-row .month-value {
+    color: var(--text-secondary);
+    font-weight: 700;
 }
 
 .fec-party-chip {
@@ -1780,72 +1723,50 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 3px;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 800;
     color: #fff;
     letter-spacing: 0.02em;
 }
 
 .fec-candidate-name {
-    flex: 1;
     min-width: 0;
-    color: var(--text-primary);
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .fec-candidate-name a.fec-source-link {
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    display: inline;
-    transition: color 0.15s ease;
+    transition: color var(--transition-fast);
 }
 
 .fec-candidate-name a.fec-source-link:hover {
     color: var(--logo-teal);
     text-decoration: underline;
-    background: none;
 }
 
 .fec-incumbent {
     display: inline-block;
     font-size: 0.5rem;
     color: var(--logo-teal);
-    margin-left: 5px;
+    margin-left: 2px;
     vertical-align: middle;
     opacity: 0.85;
 }
 
-/* Race note */
-.fec-race-note {
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-}
-
-/* Per-card updated date */
-.fec-fetch-date {
-    margin-top: 8px;
-    font-size: 0.65rem;
-    font-family: var(--font-mono);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    opacity: 0.75;
+.fec-winner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-left: 4px;
+    vertical-align: middle;
+    line-height: 1;
 }
 
 /* Explanation panel candidate rows */
@@ -1875,16 +1796,10 @@
 .fec-explain-name a {
     color: var(--logo-teal);
     text-decoration: none;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    display: inline;
 }
 
 .fec-explain-name a:hover {
     text-decoration: underline;
-    background: none;
 }
 
 .fec-explain-coh {

@@ -88,7 +88,7 @@ RACES = [
     },
     {
         "state": "OH",
-        "label": "Ohio Senate (Special)",
+        "label": "Ohio Senate",
         "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
         "kalshi": {"r": 48, "d": 52},
         "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
@@ -158,8 +158,8 @@ RACES = [
     {
         "state": "ME",
         "label": "Maine Senate",
-        "note": "Safe D. Collins (R) incumbent vs. Jackson (D).",
-        "kalshi": {"r": 35, "d": 65},
+        "note": "Jackson (D) won. Collins (R) incumbent.",
+        "kalshi": {"r": 0, "d": 100},
         "kalshi_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
         "candidates": [
             {
@@ -168,6 +168,13 @@ RACES = [
                 "party": "REP",
                 "incumbent": True,
                 "source_url": "https://www.fec.gov/data/candidate/S6ME00159/",
+            },
+            {
+                "candidate_id": "S6ME00464",
+                "name": "Troy Jackson",
+                "party": "DEM",
+                "incumbent": False,
+                "source_url": "https://www.fec.gov/data/candidate/S6ME00464/",
             },
         ],
     },

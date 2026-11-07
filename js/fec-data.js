@@ -29,9 +29,11 @@ function fmtMoney(n) {
     return '$' + Math.round(n).toLocaleString();
 }
 
-/* =========================================
-   Party helpers
-   ========================================= */
+const STATE_NAMES = {
+  GA:'Georgia',TX:'Texas',OH:'Ohio',NC:'North Carolina',KS:'Kansas',ME:'Maine',MI:'Michigan',IA:'Iowa',NH:'New Hampshire',AK:'Alaska',MS:'Mississippi'
+};
+
+function stateName(code){ return STATE_NAMES[code] || code; }
 
 function getFECPartyColor(party) {
     if (party === 'DEM') return 'var(--fec-dem, #2563EB)';
@@ -48,16 +50,6 @@ function getFECPartyLabel(party) {
 /* =========================================
    Lean badge
    ========================================= */
-
-function getLeanInfo(note) {
-    const lower = (note || '').toLowerCase();
-    if (lower.startsWith('toss-up')) return { label: 'Toss-up', cls: 'fec-lean-tossup' };
-    if (lower.startsWith('lean r'))  return { label: 'Lean R',  cls: 'fec-lean-r' };
-    if (lower.startsWith('lean d'))  return { label: 'Lean D',  cls: 'fec-lean-d' };
-    if (lower.startsWith('safe r'))  return { label: 'Safe R',  cls: 'fec-lean-r' };
-    if (lower.startsWith('safe d'))  return { label: 'Safe D',  cls: 'fec-lean-d' };
-    return { label: '', cls: '' };
-}
 
 function createKalshiBar(race) {
     const kalshi = race.kalshi;
@@ -80,22 +72,39 @@ function createKalshiBar(race) {
     `;
 }
 
+function formatFECUpdatedDate(value) {
+    if (!value) return '';
+    const raw = String(value);
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(raw) ? new Date(raw + 'T00:00:00') : new Date(raw);
+    if (Number.isNaN(date.getTime())) return '';
+    const iso = date.toISOString();
+    const diff = (Date.now() - date.getTime()) / 1000;
+    let ago = 'just now';
+    if (diff >= 31536000) ago = Math.floor(diff / 31536000) + 'y ago';
+    else if (diff >= 2592000) ago = Math.floor(diff / 2592000) + 'mo ago';
+    else if (diff >= 604800) ago = Math.floor(diff / 604800) + 'w ago';
+    else if (diff >= 86400) ago = Math.floor(diff / 86400) + 'd ago';
+    else if (diff >= 3600) ago = Math.floor(diff / 3600) + 'h ago';
+    else if (diff >= 60) ago = Math.floor(diff / 60) + 'm ago';
+    return `<time class="indicator-date" datetime="${iso}" title="${iso}">${ago}</time>`;
+}
+
 /* =========================================
    Card HTML
    ========================================= */
 
 function createFECCardHTML(race) {
-    const lean = getLeanInfo(race.note);
-
-    const leanBadge = lean.label
-        ? `<span class="fec-lean-badge ${lean.cls}">${lean.label}</span>`
-        : '';
+    const kalshi = race.kalshi || {};
+    const leadingParty = kalshi.r > kalshi.d ? 'REP' : kalshi.d > kalshi.r ? 'DEM' : null;
 
     const candidateRows = (race.candidates || []).map(c => {
         const partyColor = getFECPartyColor(c.party);
         const partyLabel = getFECPartyLabel(c.party);
         const incumbentMark = c.incumbent
             ? `<span class="fec-incumbent" title="Incumbent">&#9654;</span>`
+            : '';
+        const winnerMark = leadingParty && c.party === leadingParty
+            ? `<span class="fec-winner" title="Leading" aria-label="Leading">&#10003;</span>`
             : '';
         const fecLink = c.source_url
             ? `<a href="${c.source_url}" target="_blank" rel="noopener noreferrer" class="fec-source-link" title="FEC filing">${c.name}</a>`
@@ -106,25 +115,19 @@ function createFECCardHTML(race) {
             : '';
 
         return `
-            <div class="fec-candidate-row">
-                <span class="fec-party-chip" style="background:${partyColor};">${partyLabel}</span>
-                <span class="fec-candidate-name">${fecLink}${incumbentMark}</span>
-                ${raised}
+            <div class="data-row fec-candidate-row">
+                <span class="month-label fec-candidate-name"><span class="fec-party-chip" style="background:${partyColor};">${partyLabel}</span>${fecLink}${incumbentMark}${winnerMark}</span>
+                <span class="month-value">${raised}</span>
             </div>`;
     }).join('');
 
-    // Show the most recent fetchedAt across all candidates as a single card-level date
     const latestFetch = (race.candidates || [])
         .map(c => c.fetchedAt ? new Date(c.fetchedAt) : null)
         .filter(Boolean)
         .sort((a, b) => b - a)[0];
-    const cardDate = latestFetch
-        ? latestFetch.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-        : null;
+    const updatedHtml = latestFetch ? `Updated ${formatFECUpdatedDate(latestFetch.toISOString())}` : '';
 
-    const note = race.note
-        ? `<div class="fec-race-note">${race.note}</div>`
-        : '';
+    const note = race.note ? `<p style="margin:0 0 6px;">${race.note}</p>` : '';
 
     const kalshiBar = createKalshiBar(race);
 
@@ -133,7 +136,7 @@ function createFECCardHTML(race) {
             ? fmtMoney(parseFloat(c.cash_on_hand_end_period))
             : null;
         const coverageDate = c.coverage_end_date
-            ? c.coverage_end_date.slice(0, 7) // "2026-06"
+            ? c.coverage_end_date.slice(0, 7)
             : null;
         const cohLabel = coh && coverageDate
             ? `CoH ${coh} (${coverageDate})`
@@ -147,34 +150,31 @@ function createFECCardHTML(race) {
         </div>`;
     }).join('');
 
-    const cycleInfo = race.cycle ? `<div><strong>Cycle:</strong> ${race.cycle || '2026'}</div>` : '';
+    const hasLeadingCandidate = leadingParty && (race.candidates || []).some(c => c.party === leadingParty);
+    const leadingMark = leadingParty && !hasLeadingCandidate
+        ? `<span class="fec-winner fec-winner-header" title="${leadingParty === 'DEM' ? 'Democrat' : 'Republican'} leading" aria-label="${leadingParty === 'DEM' ? 'Democrat' : 'Republican'} leading">&#10003;</span>`
+        : '';
 
     return `
         <div class="indicator-header">
-            <div class="fec-race-title">
-                <span class="fec-state-label">${race.state}</span>
-                <span class="fec-senate-badge">Senate</span>
-                <span class="fec-race-label">${race.label}</span>
-            </div>
+            <div class="indicator-name" title="${stateName(race.state)} Senate">${stateName(race.state)}<span class="week-badge fec-senate-badge" title="U.S. Senate race">Senate</span>${leadingMark}</div>
             <div class="indicator-actions">
                 <button class="expand-toggle" aria-label="Toggle race details">
-                    <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                    <i data-lucide="chevron-down"></i>
                 </button>
             </div>
+        </div>
+        ${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}
+        <div class="indicator-content">
+            ${candidateRows ? `<div class="data-rows-container fec-data-visible">${candidateRows}</div>` : ''}
         </div>
         <div class="indicator-explanation">
             <div class="indicator-explanation-header">Race details</div>
             <div class="indicator-explanation-body">
-                ${note ? `<p style="margin:0 0 6px;">${race.note}</p>` : ''}
+                ${note}
                 ${candidateLinks}
                 ${kalshiBar}
                 ${race.video_url ? `<a href="${race.video_url}" target="_blank" rel="noopener noreferrer" class="fec-source-link" style="display:inline-block;margin-top:6px;">Video</a>` : ''}
-                ${cardDate ? `<div class="fec-fetch-date" style="margin-top:8px;">Updated ${cardDate}</div>` : ''}
-            </div>
-        </div>
-        <div class="indicator-content">
-            <div class="fec-candidates">
-                ${candidateRows}
             </div>
         </div>`;
 }

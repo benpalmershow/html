@@ -401,10 +401,10 @@ SOURCE_REGISTRY = {
     },
     "private-employment": {
         "agency": "ADP",
-        "source": "adp",
-        "api_id": None,
-        "implemented": False,
-        "note": "ADP Private Employment (National Employment Report) may require subscription/API key.",
+        "source": "fred",
+        "api_id": "ADPMNUSNERNSA",
+        "implemented": True,
+        "note": "Fetched via scripts/fetch_adp.py from FRED series ADPMNUSNERNSA (no API key).",
     },
     "job-openings": {
         "agency": "BLS",

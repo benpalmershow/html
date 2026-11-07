@@ -92,6 +92,7 @@ INDICATOR_MAP = {
     "U.S. Petroleum Exports": "PAUELS",  # weekly
     "Oil (Brent)": "DCOILBRENTEU",  # spot; not SA
     "Personal Consumption Expenditures (PCE)": "PCE",  # SA in level? PCE is nominal; check - but keep existing series; values stored as formatted
+"GDP": "GDP",  # nominal GDP in billions, SA quarterly, BEA via FRED
     "Dollar Value Index": "DTWEXBGS",  # daily index, not SA
     "Lumber (PPI)": "WPU081",  # PPI by Commodity: Lumber
 }
@@ -113,7 +114,7 @@ PAYROLLS_INDICATORS = {"Jobs"}
 # Weekly series where the JSON stores monthly averages
 WEEKLY_SERIES = {"Jobless Claims"}
 # Indicators that need billions-style formatting (comma + "B" suffix)
-BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
+BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)", "GDP"}
 # Indicators whose FRED values are in millions and need /1000 for billions formatting
 MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in thousands and need *1000 before formatting

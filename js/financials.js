@@ -588,11 +588,29 @@ function convertEarningsToIndicators(earnings, configuredTickers = null) {
 
         const latestQ = (entry.quarterlyFinancials || [])[0];
 
+        // Extract CIK from filing URL or entry.cik (for S-1 filings like ANT)
+        function extractCik(entry, latestQ) {
+            let raw = null;
+            if (entry.cik) {
+                raw = String(entry.cik);
+            } else {
+                const url = (latestQ && latestQ.filingUrl) || entry.filingUrl || entry.source_url || '';
+                const match = url.match(/\/data\/(\d+)\//);
+                if (match) raw = match[1];
+            }
+            if (!raw) return null;
+            const digits = raw.replace(/\D/g, '');
+            return digits ? digits.padStart(10, '0') : null;
+        }
+
+        const indicatorCik = extractCik(entry, latestQ);
+
         const indicator = {
             id: `earnings-${entry.ticker.toLowerCase()}`,
             category: 'Earnings',
             agency: 'Yahoo Finance',
-            source_url: latestQ?.filingUrl || 'https://www.sec.gov/edgar/searchedgar/companysearch',
+            cik: indicatorCik,
+            source_url: latestQ?.filingUrl || entry.filingUrl || 'https://www.sec.gov/edgar/searchedgar/companysearch',
             name: entry.ticker,
             ticker: entry.ticker,
             url: entry.yahooUrl || `https://finance.yahoo.com/quote/${entry.ticker}`,

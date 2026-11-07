@@ -628,6 +628,17 @@ latestDataHtml = `
                     latestItems.push(`<div class="latest-data-row long-value"><span class="month-label">Operating Metrics:</span><span class="month-value">${s1Metrics.join('<span class="earnings-sep"> · </span>')}</span></div>`);
                 }
 
+                // Add compute commitments summary on card front
+                if (latestQ.computeCommitments && latestQ.computeCommitments.aggregateCommittedSpend != null) {
+                    const cc = latestQ.computeCommitments;
+                    const ccParts = [];
+                    ccParts.push(`<span title="Aggregate committed compute and infrastructure spend">${formatAmount(cc.aggregateCommittedSpend)} committed</span>`);
+                    if (cc.dueBefore2030 != null) {
+                        ccParts.push(`<span title="Due before 2030">${formatAmount(cc.dueBefore2030)} by 2030</span>`);
+                    }
+                    latestItems.push(`<div class="latest-data-row long-value"><span class="month-label">Compute Commitments:</span><span class="month-value">${ccParts.join('<span class="earnings-sep"> · </span>')}</span></div>`);
+                }
+
                 // Add YoY revenue growth for card front (2025 vs 2024)
                 if (latestQ.revenueHistory) {
                     const revHistory = latestQ.revenueHistory;
@@ -879,7 +890,36 @@ latestDataHtml = `
                     }
                 }
 
-                // Section 5: Market Context
+                // Section 5: Compute Commitments
+                if (latestQ.computeCommitments) {
+                    const cc = latestQ.computeCommitments;
+                    const ccMetrics = [];
+
+                    if (cc.aggregateCommittedSpend != null) {
+                        ccMetrics.push({ label: 'Committed Spend', value: formatAmount(cc.aggregateCommittedSpend), tip: `Aggregate committed compute and infrastructure purchase and lease commitments as of ${cc.asOf || 'latest'}` });
+                    }
+                    if (cc.dueBefore2030 != null) {
+                        ccMetrics.push({ label: 'Due by 2030', value: formatAmount(cc.dueBefore2030), tip: 'Expected to be incurred before December 31, 2030' });
+                    }
+                    if (cc.dueNext12Months != null) {
+                        ccMetrics.push({ label: 'Due Next 12 Mo', value: formatAmount(cc.dueNext12Months), tip: 'Due in the 12 months following the reporting date' });
+                    }
+                    if (cc.performanceObligations != null) {
+                        ccMetrics.push({ label: 'Perf. Obligations', value: formatAmount(cc.performanceObligations), tip: 'Remaining performance obligations' });
+                    }
+
+                    if (ccMetrics.length > 0) {
+                        const ccStatsHtml = ccMetrics.map(s => `
+                            <div class="stat-item" title="${s.tip}">
+                                <span class="stat-label">${s.label}</span>
+                                <span class="stat-value">${s.value}</span>
+                            </div>
+                        `).join('');
+                        historyDataHtml += `<div class="earnings-subheading">Compute Commitments</div><div class="earnings-stats-grid s1-metrics-grid">${ccStatsHtml}</div>`;
+                    }
+                }
+
+                // Section 6: Market Context
                 if (latestQ.marketContext) {
                     const mc = latestQ.marketContext;
                     const mcMetrics = [];
@@ -1455,7 +1495,12 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
             const googleUrl = indicator.googleFinanceUrl || `https://www.google.com/finance/quote/${indicator.ticker}`;
             quickActions.push(`<a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="quick-action-link">Google</a>`);
         }
-        if (indicator.quarterlyFinancials && indicator.quarterlyFinancials.length > 0 && indicator.quarterlyFinancials[0].filingUrl) {
+        // SEC link: use CIK browse page (shows all filings, including latest) when available,
+        // otherwise fall back to the latest quarterly filing URL
+        if (indicator.cik) {
+            const secUrl = `https://www.sec.gov/edgar/browse/?CIK=${indicator.cik.padStart(10, '0')}`;
+            quickActions.push(`<a href="${secUrl}" target="_blank" rel="noopener noreferrer" class="quick-action-link">SEC</a>`);
+        } else if (indicator.quarterlyFinancials && indicator.quarterlyFinancials.length > 0 && indicator.quarterlyFinancials[0].filingUrl) {
             quickActions.push(`<a href="${indicator.quarterlyFinancials[0].filingUrl}" target="_blank" rel="noopener noreferrer" class="quick-action-link">SEC</a>`);
         }
 

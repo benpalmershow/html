@@ -128,7 +128,19 @@ def _parse_json_list(value):
     return []
 
 
-def find_moneyline(event, away_name, home_name):
+def _names_match(outcome, name, full=None):
+    o = outcome.strip().lower()
+    n = name.strip().lower()
+    if o == n:
+        return True
+    if full:
+        f = full.strip().lower()
+        if o == f or o in f.split():
+            return True
+    return False
+
+
+def find_moneyline(event, away_name, home_name, away_full=None, home_full=None):
     """Return (away_price, home_price) from the full-game moneyline market, or None.
 
     The full-game moneyline is the market with sportsMarketType == "moneyline"
@@ -141,9 +153,15 @@ def find_moneyline(event, away_name, home_name):
         prices = _parse_json_list(m.get("outcomePrices"))
         if len(outcomes) != 2 or len(prices) != 2:
             continue
-        if set(outcomes) != {away_name, home_name}:
+        away_idx = home_idx = None
+        for i, outcome in enumerate(outcomes):
+            if _names_match(outcome, away_name, away_full):
+                away_idx = i
+            elif _names_match(outcome, home_name, home_full):
+                home_idx = i
+        if away_idx is None or home_idx is None or away_idx == home_idx:
             continue
-        return prices[outcomes.index(away_name)], prices[outcomes.index(home_name)]
+        return prices[away_idx], prices[home_idx]
     return None
 
 
@@ -213,7 +231,7 @@ def main():
             print(f"[{game_id}] missing away_pm_name/home_pm_name; skipping")
             continue
 
-        found = find_moneyline(event, away_pm, home_pm)
+        found = find_moneyline(event, away_pm, home_pm, game.get("away_full"), game.get("home_full"))
         if not found:
             print(f"[{game_id}] moneyline market not found in event {event.get('id')}")
             continue

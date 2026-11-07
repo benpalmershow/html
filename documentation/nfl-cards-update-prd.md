@@ -71,8 +71,9 @@ python3 scripts/validate-nfl-odds.py [--week 5]
 - `week` — NFL week number (integer).
 - `away` / `home` — team abbreviations.
 - `away_full` / `home_full` — full team names (used for `game_title`).
-- `away_pm_name` / `home_pm_name` — Polymarket outcome labels (must match the
-  moneyline market outcomes exactly).
+- `away_pm_name` / `home_pm_name` — Polymarket outcome labels; matched to the
+  moneyline market outcomes by normalized equality/containment so Polymarket's
+  full team names (e.g. `Cardinals`) match the YAML abbreviations (e.g. `ARI`).
 - `game_time` / `game_time_iso` — human-readable and ISO-8601 UTC game time.
 - `url` — Polymarket sports page URL (functional source link).
 - `polymarket_slug` — exact Polymarket event slug used by the Gamma API.

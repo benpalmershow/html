@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T01:05:32.070696Z",
+  "lastUpdated": "2026-11-07T16:35:08.992280Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -9,22 +9,23 @@
     "OKTA",
     "FOUR",
     "DAL",
-    "ANT"
+    "ANT",
+    "JAPAY"
   ],
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-11-06T15:21:09.941009Z",
+      "fetchedAt": "2026-11-07T16:35:08.993051Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "marketCap": 4638638604288.0,
-      "enterpriseValue": 4352950927360.0,
-      "trailingPE": 24.29,
-      "forwardPE": 12.07,
-      "pegRatio": 0.24,
-      "priceToSalesTrailing12Months": 15.31,
-      "priceToBook": 20.26,
+      "marketCap": 4506795900928.0,
+      "enterpriseValue": 4474414825472.0,
+      "trailingPE": 23.6,
+      "forwardPE": 11.73,
+      "pegRatio": 0.23,
+      "priceToSalesTrailing12Months": 14.88,
+      "priceToBook": 19.68,
       "grossMargins": 0.75,
       "operatingMargins": 0.66,
       "profitMargins": 0.64,
@@ -48,7 +49,7 @@
       "floatShares": 23133108000.0,
       "impliedSharesOutstanding": 24147000000.0,
       "dividendRate": 1.0,
-      "dividendYield": 0.55,
+      "dividendYield": 0.54,
       "payoutRatio": 0.04,
       "fiveYearAvgDividendYield": 0.03,
       "targetHighPrice": 515.0,
@@ -60,19 +61,19 @@
       "beta": 2.25,
       "fiftyTwoWeekHigh": 243.37,
       "fiftyTwoWeekLow": 164.27,
-      "fiftyDayAverage": 220.64,
-      "twoHundredDayAverage": 204.66,
-      "averageVolume": 116137859.0,
-      "averageDailyVolume10Day": 125821130.0,
+      "fiftyDayAverage": 219.81,
+      "twoHundredDayAverage": 204.67,
+      "averageVolume": 117341326.0,
+      "averageDailyVolume10Day": 136071280.0,
       "previousClose": 181.6,
-      "open": 191.14,
-      "regularMarketOpen": 191.14,
+      "open": 191.1,
+      "regularMarketOpen": 191.1,
       "dayHigh": 194.9,
-      "dayLow": 190.0,
+      "dayLow": 185.22,
       "regularMarketDayHigh": 194.9,
-      "regularMarketDayLow": 190.0,
-      "regularMarketVolume": 57289259.0,
-      "averageVolume10days": 125821130.0,
+      "regularMarketDayLow": 185.22,
+      "regularMarketVolume": 179308722.0,
+      "averageVolume10days": 136071280.0,
       "sharesShort": 301622687.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 294225803.0,
@@ -83,12 +84,8 @@
       "recommendationKey": "strong_buy",
       "exDividendDate": "2026-09-10",
       "lastDividendDate": "2026-09-10",
-      "latestPrice": 192.1,
+      "latestPrice": 186.64,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 187.63
-        },
         {
           "date": "2025-11-07",
           "close": 187.7
@@ -139,7 +136,7 @@
         },
         {
           "date": "2025-11-25",
-          "close": 177.39
+          "close": 177.4
         },
         {
           "date": "2025-11-26",
@@ -1091,7 +1088,7 @@
         },
         {
           "date": "2026-11-06",
-          "close": 192.1
+          "close": 186.64
         }
       ],
       "nextEarningsDate": "2026-11-17",
@@ -1208,17 +1205,17 @@
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-11-06T15:21:11.442173Z",
+      "fetchedAt": "2026-11-07T16:35:10.512603Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "marketCap": 1429771911168.0,
-      "enterpriseValue": 1330121408512.0,
-      "trailingPE": 397.49,
-      "forwardPE": 167.52,
-      "pegRatio": 4.49,
-      "priceToSalesTrailing12Months": 13.8,
-      "priceToBook": 16.01,
+      "marketCap": 1415956922368.0,
+      "enterpriseValue": 1387554930688.0,
+      "trailingPE": 393.65,
+      "forwardPE": 165.9,
+      "pegRatio": 4.18,
+      "priceToSalesTrailing12Months": 13.67,
+      "priceToBook": 15.86,
       "grossMargins": 0.19,
       "operatingMargins": 0.05,
       "profitMargins": 0.03,
@@ -1249,24 +1246,24 @@
       "targetLowPrice": 128.11,
       "targetMeanPrice": 413.1,
       "targetMedianPrice": 436.0,
-      "recommendationMean": 2.3,
+      "recommendationMean": 2.27,
       "numberOfAnalystOpinions": 40.0,
       "beta": 1.74,
       "fiftyTwoWeekHigh": 498.83,
       "fiftyTwoWeekLow": 297.38,
-      "fiftyDayAverage": 372.07,
-      "twoHundredDayAverage": 384.32,
-      "averageVolume": 37795321.0,
-      "averageDailyVolume10Day": 43010830.0,
+      "fiftyDayAverage": 372.14,
+      "twoHundredDayAverage": 383.87,
+      "averageVolume": 37759267.0,
+      "averageDailyVolume10Day": 43253010.0,
       "previousClose": 343.69,
       "open": 348.92,
       "regularMarketOpen": 348.92,
-      "dayHigh": 361.72,
+      "dayHigh": 363.84,
       "dayLow": 347.6,
-      "regularMarketDayHigh": 361.72,
+      "regularMarketDayHigh": 363.84,
       "regularMarketDayLow": 347.6,
-      "regularMarketVolume": 11329029.0,
-      "averageVolume10days": 43010830.0,
+      "regularMarketVolume": 36550707.0,
+      "averageVolume10days": 43253010.0,
       "sharesShort": 69350469.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 68862357.0,
@@ -1275,12 +1272,8 @@
       "industry": "Auto Manufacturers",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 361.71,
+      "latestPrice": 358.22,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 445.91
-        },
         {
           "date": "2025-11-07",
           "close": 429.52
@@ -2283,7 +2276,7 @@
         },
         {
           "date": "2026-11-06",
-          "close": 361.71
+          "close": 358.22
         }
       ],
       "nextEarningsDate": "2027-01-27",
@@ -2396,17 +2389,17 @@
     },
     {
       "ticker": "NYT",
-      "fetchedAt": "2026-11-06T15:21:12.541581Z",
+      "fetchedAt": "2026-11-07T16:35:11.376352Z",
       "source": "Yahoo Finance",
       "company": "The New York Times Company",
       "sector": "Communication Services",
-      "marketCap": 10569743360.0,
-      "enterpriseValue": 9812126720.0,
-      "trailingPE": 26.44,
-      "forwardPE": 21.15,
+      "marketCap": 10931129344.0,
+      "enterpriseValue": 10258262016.0,
+      "trailingPE": 27.34,
+      "forwardPE": 21.68,
       "pegRatio": 3.79,
-      "priceToSalesTrailing12Months": 3.5,
-      "priceToBook": 5.18,
+      "priceToSalesTrailing12Months": 3.62,
+      "priceToBook": 5.36,
       "grossMargins": 0.51,
       "operatingMargins": 0.16,
       "profitMargins": 0.14,
@@ -2430,31 +2423,31 @@
       "floatShares": 132524754.0,
       "impliedSharesOutstanding": 159905346.0,
       "dividendRate": 0.92,
-      "dividendYield": 1.4,
+      "dividendYield": 1.35,
       "payoutRatio": 0.33,
       "fiveYearAvgDividendYield": 0.95,
       "targetHighPrice": 85.0,
-      "targetLowPrice": 63.0,
-      "targetMeanPrice": 76.89,
+      "targetLowPrice": 64.0,
+      "targetMeanPrice": 77.0,
       "targetMedianPrice": 76.0,
-      "recommendationMean": null,
+      "recommendationMean": 1.7,
       "numberOfAnalystOpinions": 9.0,
       "beta": 0.86,
       "fiftyTwoWeekHigh": 87.1,
       "fiftyTwoWeekLow": 58.87,
       "fiftyDayAverage": 67.28,
-      "twoHundredDayAverage": 73.34,
-      "averageVolume": 2581264.0,
-      "averageDailyVolume10Day": 3113230.0,
+      "twoHundredDayAverage": 73.32,
+      "averageVolume": 2577021.0,
+      "averageDailyVolume10Day": 3317980.0,
       "previousClose": 65.57,
       "open": 65.09,
       "regularMarketOpen": 65.09,
-      "dayHigh": 66.31,
+      "dayHigh": 68.52,
       "dayLow": 65.13,
-      "regularMarketDayHigh": 66.31,
+      "regularMarketDayHigh": 68.52,
       "regularMarketDayLow": 65.13,
-      "regularMarketVolume": 211459.0,
-      "averageVolume10days": 3113230.0,
+      "regularMarketVolume": 3226994.0,
+      "averageVolume10days": 3317980.0,
       "sharesShort": 18693319.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 13533377.0,
@@ -2462,15 +2455,11 @@
       "fullTimeEmployees": 6000.0,
       "industry": "Publishing",
       "currency": "USD",
-      "recommendationKey": "none",
+      "recommendationKey": "buy",
       "exDividendDate": "2026-10-07",
       "lastDividendDate": "2026-10-07",
-      "latestPrice": 66.1,
+      "latestPrice": 68.36,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 59.26
-        },
         {
           "date": "2025-11-07",
           "close": 60.62
@@ -3473,11 +3462,11 @@
         },
         {
           "date": "2026-11-06",
-          "close": 66.1
+          "close": 68.36
         }
       ],
       "nextEarningsDate": "2027-02-03",
-      "estimatedEPS": 0.97,
+      "estimatedEPS": 0.96,
       "recentEarnings": [
         {
           "reportedDate": "2026-11-04",
@@ -3586,17 +3575,17 @@
     },
     {
       "ticker": "SPCX",
-      "fetchedAt": "2026-11-06T15:21:13.732183Z",
+      "fetchedAt": "2026-11-07T16:35:12.317647Z",
       "source": "Yahoo Finance",
       "company": "Space Exploration Technologies Corp.",
       "sector": "Industrials",
-      "marketCap": 1784891441152.0,
-      "enterpriseValue": 1628254109696.0,
-      "trailingPE": 571.41,
-      "forwardPE": 51.24,
+      "marketCap": 1823529500672.0,
+      "enterpriseValue": 1772892454912.0,
+      "trailingPE": 583.78,
+      "forwardPE": 50.41,
       "pegRatio": null,
-      "priceToSalesTrailing12Months": 55.7,
-      "priceToBook": 10.1,
+      "priceToSalesTrailing12Months": 56.91,
+      "priceToBook": 10.31,
       "grossMargins": 0.57,
       "operatingMargins": 0.28,
       "profitMargins": -0.09,
@@ -3625,26 +3614,26 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 800.0,
       "targetLowPrice": 70.0,
-      "targetMeanPrice": 257.11,
-      "targetMedianPrice": 247.5,
-      "recommendationMean": 1.72,
-      "numberOfAnalystOpinions": 36.0,
+      "targetMeanPrice": 255.06,
+      "targetMedianPrice": 245.0,
+      "recommendationMean": 1.7,
+      "numberOfAnalystOpinions": 37.0,
       "beta": null,
       "fiftyTwoWeekHigh": 225.64,
       "fiftyTwoWeekLow": 104.83,
-      "fiftyDayAverage": 149.31,
-      "twoHundredDayAverage": 145.28,
-      "averageVolume": 99936190.0,
-      "averageDailyVolume10Day": 106825030.0,
+      "fiftyDayAverage": 149.18,
+      "twoHundredDayAverage": 145.17,
+      "averageVolume": 97980481.0,
+      "averageDailyVolume10Day": 107459810.0,
       "previousClose": 123.62,
-      "open": 131.14,
-      "regularMarketOpen": 131.14,
-      "dayHigh": 132.74,
+      "open": 130.94,
+      "regularMarketOpen": 130.94,
+      "dayHigh": 135.32,
       "dayLow": 128.57,
-      "regularMarketDayHigh": 132.74,
+      "regularMarketDayHigh": 135.32,
       "regularMarketDayLow": 128.57,
-      "regularMarketVolume": 34075977.0,
-      "averageVolume10days": 106825030.0,
+      "regularMarketVolume": 114507519.0,
+      "averageVolume10days": 107459810.0,
       "sharesShort": 167294863.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 162252035.0,
@@ -3653,7 +3642,7 @@
       "industry": "Aerospace & Defense",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 131.43,
+      "latestPrice": 134.27,
       "priceHistory": [
         {
           "date": "2026-06-12",
@@ -4065,7 +4054,7 @@
         },
         {
           "date": "2026-11-06",
-          "close": 131.41
+          "close": 134.27
         }
       ],
       "nextEarningsDate": "2027-02-09",
@@ -4120,17 +4109,17 @@
     },
     {
       "ticker": "CRWD",
-      "fetchedAt": "2026-11-06T15:21:14.875980Z",
+      "fetchedAt": "2026-11-07T16:35:13.191693Z",
       "source": "Yahoo Finance",
       "company": "CrowdStrike Holdings, Inc.",
       "sector": "Technology",
-      "marketCap": 228260675584.0,
-      "enterpriseValue": 218242777088.0,
-      "trailingPE": 4458.5,
-      "forwardPE": 138.42,
-      "pegRatio": 6.22,
-      "priceToSalesTrailing12Months": 42.3,
-      "priceToBook": 44.74,
+      "marketCap": 222091460608.0,
+      "enterpriseValue": 217935593472.0,
+      "trailingPE": 3615.0,
+      "forwardPE": 134.69,
+      "pegRatio": 5.6,
+      "priceToSalesTrailing12Months": 41.16,
+      "priceToBook": 43.53,
       "grossMargins": 0.75,
       "operatingMargins": -0.02,
       "profitMargins": 0.01,
@@ -4151,7 +4140,7 @@
       "quickRatio": 1.37,
       "bookValue": 4.98,
       "sharesOutstanding": 1023934842.0,
-      "floatShares": 1007746432.0,
+      "floatShares": 1007807868.0,
       "impliedSharesOutstanding": 1023934842.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -4159,26 +4148,26 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 325.0,
       "targetLowPrice": 132.0,
-      "targetMeanPrice": 248.45,
+      "targetMeanPrice": 249.68,
       "targetMedianPrice": 250.0,
       "recommendationMean": 1.66,
       "numberOfAnalystOpinions": 50.0,
       "beta": 1.15,
       "fiftyTwoWeekHigh": 286.99,
       "fiftyTwoWeekLow": 85.68,
-      "fiftyDayAverage": 244.0,
-      "twoHundredDayAverage": 169.72,
-      "averageVolume": 9975573.0,
-      "averageDailyVolume10Day": 10094820.0,
+      "fiftyDayAverage": 243.78,
+      "twoHundredDayAverage": 170.24,
+      "averageVolume": 10056375.0,
+      "averageDailyVolume10Day": 9860140.0,
       "previousClose": 217.2,
       "open": 230.69,
       "regularMarketOpen": 230.69,
       "dayHigh": 230.69,
-      "dayLow": 221.2,
+      "dayLow": 216.14,
       "regularMarketDayHigh": 230.69,
-      "regularMarketDayLow": 221.2,
-      "regularMarketVolume": 2118916.0,
-      "averageVolume10days": 10094820.0,
+      "regularMarketDayLow": 216.14,
+      "regularMarketVolume": 10970495.0,
+      "averageVolume10days": 9860140.0,
       "sharesShort": 24026908.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 27929552.0,
@@ -4187,12 +4176,8 @@
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 222.93,
+      "latestPrice": 216.9,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 133.13
-        },
         {
           "date": "2025-11-07",
           "close": 134.95
@@ -5195,7 +5180,7 @@
         },
         {
           "date": "2026-11-06",
-          "close": 222.93
+          "close": 216.9
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -5310,17 +5295,17 @@
     },
     {
       "ticker": "OKTA",
-      "fetchedAt": "2026-11-06T15:21:15.905582Z",
+      "fetchedAt": "2026-11-07T16:35:14.151381Z",
       "source": "Yahoo Finance",
       "company": "Okta, Inc.",
       "sector": "Technology",
-      "marketCap": 30467790848.0,
-      "enterpriseValue": 27676350464.0,
-      "trailingPE": 104.99,
-      "forwardPE": 39.81,
-      "pegRatio": 1.37,
-      "priceToSalesTrailing12Months": 9.91,
-      "priceToBook": 4.37,
+      "marketCap": 29490542592.0,
+      "enterpriseValue": 27244541952.0,
+      "trailingPE": 101.62,
+      "forwardPE": 38.53,
+      "pegRatio": 1.21,
+      "priceToSalesTrailing12Months": 9.6,
+      "priceToBook": 4.23,
       "grossMargins": 0.78,
       "operatingMargins": 0.13,
       "profitMargins": 0.1,
@@ -5356,19 +5341,19 @@
       "beta": 0.72,
       "fiftyTwoWeekHigh": 235.0,
       "fiftyTwoWeekLow": 62.66,
-      "fiftyDayAverage": 196.89,
-      "twoHundredDayAverage": 126.4,
-      "averageVolume": 4226129.0,
-      "averageDailyVolume10Day": 6831220.0,
+      "fiftyDayAverage": 196.81,
+      "twoHundredDayAverage": 126.78,
+      "averageVolume": 4275662.0,
+      "averageDailyVolume10Day": 7054970.0,
       "previousClose": 171.16,
       "open": 176.41,
       "regularMarketOpen": 176.41,
       "dayHigh": 178.95,
-      "dayLow": 171.74,
+      "dayLow": 164.18,
       "regularMarketDayHigh": 178.95,
-      "regularMarketDayLow": 171.74,
-      "regularMarketVolume": 577964.0,
-      "averageVolume10days": 6831220.0,
+      "regularMarketDayLow": 164.18,
+      "regularMarketVolume": 5289897.0,
+      "averageVolume10days": 7054970.0,
       "sharesShort": 6959996.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 8205342.0,
@@ -5377,12 +5362,8 @@
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 174.28,
+      "latestPrice": 168.69,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 85.87
-        },
         {
           "date": "2025-11-07",
           "close": 85.21
@@ -6385,7 +6366,7 @@
         },
         {
           "date": "2026-11-06",
-          "close": 174.28
+          "close": 168.69
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -6498,38 +6479,38 @@
     },
     {
       "ticker": "FOUR",
-      "fetchedAt": "2026-11-06T15:21:17.157407Z",
+      "fetchedAt": "2026-11-07T16:35:15.230635Z",
       "source": "Yahoo Finance",
       "company": "Shift4 Payments, Inc.",
       "sector": "Technology",
-      "marketCap": 3325010688.0,
-      "enterpriseValue": 8877992960.0,
-      "trailingPE": 66.84,
-      "forwardPE": 6.9,
+      "marketCap": 3471086848.0,
+      "enterpriseValue": 8707535872.0,
+      "trailingPE": 52.96,
+      "forwardPE": 7.59,
       "pegRatio": 0.32,
       "priceToSalesTrailing12Months": 0.7,
-      "priceToBook": 5.82,
-      "grossMargins": 0.36,
-      "operatingMargins": 0.07,
+      "priceToBook": 7.08,
+      "grossMargins": 0.35,
+      "operatingMargins": 0.1,
       "profitMargins": 0.02,
       "returnOnAssets": 0.03,
-      "returnOnEquity": 0.06,
-      "revenueGrowth": 0.34,
-      "earningsGrowth": -0.75,
-      "revenuePerShare": 66.36,
-      "freeCashflow": 353524992.0,
-      "operatingCashflow": 593000000.0,
-      "grossProfits": 1716999936.0,
-      "totalCash": 356000000.0,
-      "totalCashPerShare": 4.51,
-      "totalDebt": 4567000064.0,
-      "totalRevenue": 4782000128.0,
-      "debtToEquity": 262.32,
-      "currentRatio": 1.21,
-      "quickRatio": 0.68,
-      "bookValue": 7.24,
+      "returnOnEquity": 0.07,
+      "revenueGrowth": 0.12,
+      "earningsGrowth": 1.1,
+      "revenuePerShare": 66.27,
+      "freeCashflow": 448750016.0,
+      "operatingCashflow": 642000000.0,
+      "grossProfits": 1747000064.0,
+      "totalCash": 1242000000.0,
+      "totalCashPerShare": 16.57,
+      "totalDebt": 5539999744.0,
+      "totalRevenue": 4924000256.0,
+      "debtToEquity": 350.63,
+      "currentRatio": 1.23,
+      "quickRatio": 0.86,
+      "bookValue": 6.21,
       "sharesOutstanding": 78960120.0,
-      "floatShares": 44070801.0,
+      "floatShares": 41829213.0,
       "impliedSharesOutstanding": 78960120.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -6537,26 +6518,26 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 94.0,
       "targetLowPrice": 40.0,
-      "targetMeanPrice": 52.36,
-      "targetMedianPrice": 49.0,
+      "targetMeanPrice": 50.5,
+      "targetMedianPrice": 47.5,
       "recommendationMean": 2.12,
       "numberOfAnalystOpinions": 22.0,
       "beta": 1.48,
       "fiftyTwoWeekHigh": 75.34,
       "fiftyTwoWeekLow": 34.56,
-      "fiftyDayAverage": 40.29,
-      "twoHundredDayAverage": 45.88,
-      "averageVolume": 2135779.0,
-      "averageDailyVolume10Day": 2706220.0,
+      "fiftyDayAverage": 40.3,
+      "twoHundredDayAverage": 45.77,
+      "averageVolume": 2119085.0,
+      "averageDailyVolume10Day": 2893940.0,
       "previousClose": 42.79,
       "open": 41.23,
       "regularMarketOpen": 41.23,
-      "dayHigh": 42.33,
+      "dayHigh": 44.69,
       "dayLow": 40.8,
-      "regularMarketDayHigh": 42.33,
+      "regularMarketDayHigh": 44.69,
       "regularMarketDayLow": 40.8,
-      "regularMarketVolume": 619724.0,
-      "averageVolume10days": 2706220.0,
+      "regularMarketVolume": 3625006.0,
+      "averageVolume10days": 2893940.0,
       "sharesShort": 13989027.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 14843102.0,
@@ -6566,12 +6547,8 @@
       "currency": "USD",
       "recommendationKey": "buy",
       "exDividendDate": "2026-10-15",
-      "latestPrice": 42.1,
+      "latestPrice": 43.96,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 66.82
-        },
         {
           "date": "2025-11-07",
           "close": 66.15
@@ -7574,11 +7551,11 @@
         },
         {
           "date": "2026-11-06",
-          "close": 42.1
+          "close": 43.96
         }
       ],
       "nextEarningsDate": "2027-02-25",
-      "estimatedEPS": 1.54,
+      "estimatedEPS": 1.35,
       "recentEarnings": [
         {
           "reportedDate": "2026-11-05",
@@ -7683,17 +7660,17 @@
     },
     {
       "ticker": "DAL",
-      "fetchedAt": "2026-11-06T15:21:18.128474Z",
+      "fetchedAt": "2026-11-07T16:35:16.447760Z",
       "source": "Yahoo Finance",
       "company": "Delta Air Lines, Inc.",
       "sector": "Industrials",
-      "marketCap": 57409437696.0,
-      "enterpriseValue": 72004091904.0,
-      "trailingPE": 17.42,
-      "forwardPE": 11.96,
+      "marketCap": 57369956352.0,
+      "enterpriseValue": 73208111104.0,
+      "trailingPE": 17.41,
+      "forwardPE": 11.95,
       "pegRatio": 0.21,
       "priceToSalesTrailing12Months": 0.8,
-      "priceToBook": 2.54,
+      "priceToBook": 2.53,
       "grossMargins": 0.18,
       "operatingMargins": 0.07,
       "profitMargins": 0.05,
@@ -7717,7 +7694,7 @@
       "floatShares": 650092696.0,
       "impliedSharesOutstanding": 657912380.0,
       "dividendRate": 0.86,
-      "dividendYield": 1.01,
+      "dividendYield": 0.99,
       "payoutRatio": 0.16,
       "fiveYearAvgDividendYield": 2.12,
       "targetHighPrice": 125.0,
@@ -7729,19 +7706,19 @@
       "beta": 1.42,
       "fiftyTwoWeekHigh": 95.68,
       "fiftyTwoWeekLow": 55.27,
-      "fiftyDayAverage": 80.67,
-      "twoHundredDayAverage": 77.01,
-      "averageVolume": 6446462.0,
-      "averageDailyVolume10Day": 6435030.0,
+      "fiftyDayAverage": 80.79,
+      "twoHundredDayAverage": 77.1,
+      "averageVolume": 6489192.0,
+      "averageDailyVolume10Day": 6500460.0,
       "previousClose": 85.36,
       "open": 86.0,
       "regularMarketOpen": 86.0,
-      "dayHigh": 87.56,
+      "dayHigh": 87.85,
       "dayLow": 85.7,
-      "regularMarketDayHigh": 87.56,
+      "regularMarketDayHigh": 87.85,
       "regularMarketDayLow": 85.7,
-      "regularMarketVolume": 787825.0,
-      "averageVolume10days": 6435030.0,
+      "regularMarketVolume": 6120637.0,
+      "averageVolume10days": 6500460.0,
       "sharesShort": 21112539.0,
       "sharesShortPreviousMonthDate": 1789430400.0,
       "sharesShortPriorMonth": 26222815.0,
@@ -7752,12 +7729,8 @@
       "recommendationKey": "strong_buy",
       "exDividendDate": "2026-10-15",
       "lastDividendDate": "2026-10-15",
-      "latestPrice": 87.26,
+      "latestPrice": 87.2,
       "priceHistory": [
-        {
-          "date": "2025-11-06",
-          "close": 57.2
-        },
         {
           "date": "2025-11-07",
           "close": 58.26
@@ -8760,7 +8733,7 @@
         },
         {
           "date": "2026-11-06",
-          "close": 87.26
+          "close": 87.2
         }
       ],
       "nextEarningsDate": "2027-01-13",
@@ -8860,8 +8833,1105 @@
       "quarterlySource": "SEC EDGAR"
     },
     {
+      "ticker": "JAPAY",
+      "fetchedAt": "2026-11-07T16:35:17.620521Z",
+      "source": "Yahoo Finance",
+      "company": "Japan Tobacco Inc.",
+      "sector": "Consumer Defensive",
+      "marketCap": 60293591040.0,
+      "enterpriseValue": 882458624000.0,
+      "trailingPE": 15.58,
+      "forwardPE": 12.22,
+      "pegRatio": 1.04,
+      "priceToSalesTrailing12Months": 0.02,
+      "priceToBook": 2.31,
+      "grossMargins": 0.58,
+      "operatingMargins": 0.3,
+      "profitMargins": 0.16,
+      "returnOnAssets": 0.08,
+      "returnOnEquity": 0.15,
+      "revenueGrowth": null,
+      "earningsGrowth": null,
+      "revenuePerShare": 1077.24,
+      "freeCashflow": 511110610944.0,
+      "operatingCashflow": 958290001920.0,
+      "grossProfits": 2201195905024.0,
+      "totalCash": 1081860030464.0,
+      "totalCashPerShare": 304.68,
+      "totalDebt": 1874841042944.0,
+      "totalRevenue": 3825029087232.0,
+      "debtToEquity": 45.17,
+      "currentRatio": 1.91,
+      "quickRatio": 0.93,
+      "bookValue": 7.34,
+      "sharesOutstanding": 3550859498.0,
+      "floatShares": 2193259386.0,
+      "impliedSharesOutstanding": 3550859498.0,
+      "dividendRate": 0.83,
+      "dividendYield": 4.89,
+      "payoutRatio": 0.75,
+      "fiveYearAvgDividendYield": 5.09,
+      "targetHighPrice": 26.0,
+      "targetLowPrice": 17.0,
+      "targetMeanPrice": 21.5,
+      "targetMedianPrice": 21.5,
+      "recommendationMean": 2.5,
+      "numberOfAnalystOpinions": 2.0,
+      "beta": 0.15,
+      "fiftyTwoWeekHigh": 24.54,
+      "fiftyTwoWeekLow": 16.17,
+      "fiftyDayAverage": 22.3,
+      "twoHundredDayAverage": 20.06,
+      "averageVolume": 71334.0,
+      "averageDailyVolume10Day": 86770.0,
+      "previousClose": 20.0,
+      "open": 17.69,
+      "regularMarketOpen": 17.69,
+      "dayHigh": 17.69,
+      "dayLow": 16.38,
+      "regularMarketDayHigh": 17.69,
+      "regularMarketDayLow": 16.38,
+      "regularMarketVolume": 45597.0,
+      "averageVolume10days": 86770.0,
+      "sharesShort": null,
+      "sharesShortPreviousMonthDate": null,
+      "sharesShortPriorMonth": null,
+      "dateShortInterest": null,
+      "fullTimeEmployees": 52867.0,
+      "industry": "Tobacco",
+      "currency": "USD",
+      "recommendationKey": "buy",
+      "exDividendDate": "2026-06-30",
+      "lastDividendDate": "2025-06-30",
+      "latestPrice": 16.98,
+      "priceHistory": [
+        {
+          "date": "2025-11-07",
+          "close": 18.16
+        },
+        {
+          "date": "2025-11-10",
+          "close": 18.03
+        },
+        {
+          "date": "2025-11-11",
+          "close": 18.13
+        },
+        {
+          "date": "2025-11-12",
+          "close": 18.3
+        },
+        {
+          "date": "2025-11-13",
+          "close": 18.22
+        },
+        {
+          "date": "2025-11-14",
+          "close": 18.36
+        },
+        {
+          "date": "2025-11-17",
+          "close": 18.32
+        },
+        {
+          "date": "2025-11-18",
+          "close": 18.14
+        },
+        {
+          "date": "2025-11-19",
+          "close": 18.16
+        },
+        {
+          "date": "2025-11-20",
+          "close": 18.22
+        },
+        {
+          "date": "2025-11-21",
+          "close": 18.45
+        },
+        {
+          "date": "2025-11-24",
+          "close": 18.55
+        },
+        {
+          "date": "2025-11-25",
+          "close": 18.87
+        },
+        {
+          "date": "2025-11-26",
+          "close": 18.87
+        },
+        {
+          "date": "2025-11-28",
+          "close": 18.84
+        },
+        {
+          "date": "2025-12-01",
+          "close": 18.86
+        },
+        {
+          "date": "2025-12-02",
+          "close": 18.93
+        },
+        {
+          "date": "2025-12-03",
+          "close": 18.68
+        },
+        {
+          "date": "2025-12-04",
+          "close": 18.44
+        },
+        {
+          "date": "2025-12-05",
+          "close": 18.49
+        },
+        {
+          "date": "2025-12-08",
+          "close": 18.46
+        },
+        {
+          "date": "2025-12-09",
+          "close": 18.44
+        },
+        {
+          "date": "2025-12-10",
+          "close": 18.6
+        },
+        {
+          "date": "2025-12-11",
+          "close": 18.49
+        },
+        {
+          "date": "2025-12-12",
+          "close": 18.45
+        },
+        {
+          "date": "2025-12-15",
+          "close": 18.79
+        },
+        {
+          "date": "2025-12-16",
+          "close": 18.75
+        },
+        {
+          "date": "2025-12-17",
+          "close": 18.56
+        },
+        {
+          "date": "2025-12-18",
+          "close": 18.53
+        },
+        {
+          "date": "2025-12-19",
+          "close": 18.35
+        },
+        {
+          "date": "2025-12-22",
+          "close": 18.29
+        },
+        {
+          "date": "2025-12-23",
+          "close": 18.52
+        },
+        {
+          "date": "2025-12-24",
+          "close": 18.59
+        },
+        {
+          "date": "2025-12-26",
+          "close": 18.49
+        },
+        {
+          "date": "2025-12-29",
+          "close": 18.57
+        },
+        {
+          "date": "2025-12-30",
+          "close": 18.46
+        },
+        {
+          "date": "2025-12-31",
+          "close": 17.94
+        },
+        {
+          "date": "2026-01-02",
+          "close": 17.99
+        },
+        {
+          "date": "2026-01-05",
+          "close": 18.0
+        },
+        {
+          "date": "2026-01-06",
+          "close": 17.9
+        },
+        {
+          "date": "2026-01-07",
+          "close": 18.23
+        },
+        {
+          "date": "2026-01-08",
+          "close": 18.32
+        },
+        {
+          "date": "2026-01-09",
+          "close": 18.46
+        },
+        {
+          "date": "2026-01-12",
+          "close": 18.58
+        },
+        {
+          "date": "2026-01-13",
+          "close": 18.26
+        },
+        {
+          "date": "2026-01-14",
+          "close": 18.3
+        },
+        {
+          "date": "2026-01-15",
+          "close": 18.31
+        },
+        {
+          "date": "2026-01-16",
+          "close": 18.28
+        },
+        {
+          "date": "2026-01-20",
+          "close": 18.26
+        },
+        {
+          "date": "2026-01-21",
+          "close": 18.2
+        },
+        {
+          "date": "2026-01-22",
+          "close": 17.97
+        },
+        {
+          "date": "2026-01-23",
+          "close": 17.96
+        },
+        {
+          "date": "2026-01-26",
+          "close": 18.06
+        },
+        {
+          "date": "2026-01-27",
+          "close": 18.22
+        },
+        {
+          "date": "2026-01-28",
+          "close": 18.0
+        },
+        {
+          "date": "2026-01-29",
+          "close": 18.16
+        },
+        {
+          "date": "2026-01-30",
+          "close": 18.02
+        },
+        {
+          "date": "2026-02-02",
+          "close": 18.47
+        },
+        {
+          "date": "2026-02-03",
+          "close": 18.57
+        },
+        {
+          "date": "2026-02-04",
+          "close": 18.88
+        },
+        {
+          "date": "2026-02-05",
+          "close": 18.88
+        },
+        {
+          "date": "2026-02-06",
+          "close": 19.21
+        },
+        {
+          "date": "2026-02-09",
+          "close": 19.82
+        },
+        {
+          "date": "2026-02-10",
+          "close": 19.58
+        },
+        {
+          "date": "2026-02-11",
+          "close": 19.85
+        },
+        {
+          "date": "2026-02-12",
+          "close": 19.99
+        },
+        {
+          "date": "2026-02-13",
+          "close": 19.97
+        },
+        {
+          "date": "2026-02-17",
+          "close": 19.25
+        },
+        {
+          "date": "2026-02-18",
+          "close": 19.3
+        },
+        {
+          "date": "2026-02-19",
+          "close": 19.16
+        },
+        {
+          "date": "2026-02-20",
+          "close": 19.05
+        },
+        {
+          "date": "2026-02-23",
+          "close": 19.05
+        },
+        {
+          "date": "2026-02-24",
+          "close": 19.25
+        },
+        {
+          "date": "2026-02-25",
+          "close": 19.58
+        },
+        {
+          "date": "2026-02-26",
+          "close": 19.33
+        },
+        {
+          "date": "2026-02-27",
+          "close": 19.08
+        },
+        {
+          "date": "2026-03-02",
+          "close": 18.9
+        },
+        {
+          "date": "2026-03-03",
+          "close": 18.25
+        },
+        {
+          "date": "2026-03-04",
+          "close": 18.25
+        },
+        {
+          "date": "2026-03-05",
+          "close": 17.9
+        },
+        {
+          "date": "2026-03-06",
+          "close": 17.89
+        },
+        {
+          "date": "2026-03-09",
+          "close": 18.0
+        },
+        {
+          "date": "2026-03-10",
+          "close": 18.26
+        },
+        {
+          "date": "2026-03-11",
+          "close": 18.12
+        },
+        {
+          "date": "2026-03-12",
+          "close": 17.69
+        },
+        {
+          "date": "2026-03-13",
+          "close": 17.81
+        },
+        {
+          "date": "2026-03-16",
+          "close": 18.32
+        },
+        {
+          "date": "2026-03-17",
+          "close": 18.55
+        },
+        {
+          "date": "2026-03-18",
+          "close": 18.39
+        },
+        {
+          "date": "2026-03-19",
+          "close": 18.37
+        },
+        {
+          "date": "2026-03-20",
+          "close": 17.97
+        },
+        {
+          "date": "2026-03-23",
+          "close": 18.24
+        },
+        {
+          "date": "2026-03-24",
+          "close": 18.32
+        },
+        {
+          "date": "2026-03-25",
+          "close": 18.66
+        },
+        {
+          "date": "2026-03-26",
+          "close": 18.56
+        },
+        {
+          "date": "2026-03-27",
+          "close": 18.37
+        },
+        {
+          "date": "2026-03-30",
+          "close": 18.91
+        },
+        {
+          "date": "2026-03-31",
+          "close": 19.16
+        },
+        {
+          "date": "2026-04-01",
+          "close": 19.18
+        },
+        {
+          "date": "2026-04-02",
+          "close": 18.93
+        },
+        {
+          "date": "2026-04-06",
+          "close": 19.16
+        },
+        {
+          "date": "2026-04-07",
+          "close": 19.04
+        },
+        {
+          "date": "2026-04-08",
+          "close": 19.26
+        },
+        {
+          "date": "2026-04-09",
+          "close": 18.92
+        },
+        {
+          "date": "2026-04-10",
+          "close": 18.83
+        },
+        {
+          "date": "2026-04-13",
+          "close": 18.75
+        },
+        {
+          "date": "2026-04-14",
+          "close": 18.62
+        },
+        {
+          "date": "2026-04-15",
+          "close": 18.55
+        },
+        {
+          "date": "2026-04-16",
+          "close": 18.32
+        },
+        {
+          "date": "2026-04-17",
+          "close": 18.38
+        },
+        {
+          "date": "2026-04-20",
+          "close": 18.19
+        },
+        {
+          "date": "2026-04-21",
+          "close": 17.97
+        },
+        {
+          "date": "2026-04-22",
+          "close": 17.8
+        },
+        {
+          "date": "2026-04-23",
+          "close": 18.16
+        },
+        {
+          "date": "2026-04-24",
+          "close": 18.18
+        },
+        {
+          "date": "2026-04-27",
+          "close": 18.03
+        },
+        {
+          "date": "2026-04-28",
+          "close": 18.03
+        },
+        {
+          "date": "2026-04-29",
+          "close": 17.9
+        },
+        {
+          "date": "2026-04-30",
+          "close": 18.66
+        },
+        {
+          "date": "2026-05-01",
+          "close": 18.66
+        },
+        {
+          "date": "2026-05-04",
+          "close": 18.63
+        },
+        {
+          "date": "2026-05-05",
+          "close": 18.63
+        },
+        {
+          "date": "2026-05-06",
+          "close": 18.97
+        },
+        {
+          "date": "2026-05-07",
+          "close": 18.84
+        },
+        {
+          "date": "2026-05-08",
+          "close": 18.77
+        },
+        {
+          "date": "2026-05-11",
+          "close": 19.61
+        },
+        {
+          "date": "2026-05-12",
+          "close": 19.16
+        },
+        {
+          "date": "2026-05-13",
+          "close": 19.55
+        },
+        {
+          "date": "2026-05-14",
+          "close": 19.73
+        },
+        {
+          "date": "2026-05-15",
+          "close": 19.83
+        },
+        {
+          "date": "2026-05-18",
+          "close": 19.99
+        },
+        {
+          "date": "2026-05-19",
+          "close": 20.17
+        },
+        {
+          "date": "2026-05-20",
+          "close": 20.01
+        },
+        {
+          "date": "2026-05-21",
+          "close": 19.59
+        },
+        {
+          "date": "2026-05-22",
+          "close": 19.24
+        },
+        {
+          "date": "2026-05-26",
+          "close": 19.17
+        },
+        {
+          "date": "2026-05-27",
+          "close": 19.16
+        },
+        {
+          "date": "2026-05-28",
+          "close": 19.15
+        },
+        {
+          "date": "2026-05-29",
+          "close": 19.24
+        },
+        {
+          "date": "2026-06-01",
+          "close": 18.93
+        },
+        {
+          "date": "2026-06-02",
+          "close": 19.19
+        },
+        {
+          "date": "2026-06-03",
+          "close": 19.02
+        },
+        {
+          "date": "2026-06-04",
+          "close": 18.82
+        },
+        {
+          "date": "2026-06-05",
+          "close": 18.46
+        },
+        {
+          "date": "2026-06-08",
+          "close": 19.21
+        },
+        {
+          "date": "2026-06-09",
+          "close": 18.87
+        },
+        {
+          "date": "2026-06-10",
+          "close": 19.14
+        },
+        {
+          "date": "2026-06-11",
+          "close": 19.8
+        },
+        {
+          "date": "2026-06-12",
+          "close": 19.38
+        },
+        {
+          "date": "2026-06-15",
+          "close": 18.88
+        },
+        {
+          "date": "2026-06-16",
+          "close": 19.02
+        },
+        {
+          "date": "2026-06-17",
+          "close": 18.89
+        },
+        {
+          "date": "2026-06-18",
+          "close": 18.87
+        },
+        {
+          "date": "2026-06-22",
+          "close": 18.44
+        },
+        {
+          "date": "2026-06-23",
+          "close": 18.34
+        },
+        {
+          "date": "2026-06-24",
+          "close": 18.41
+        },
+        {
+          "date": "2026-06-25",
+          "close": 18.32
+        },
+        {
+          "date": "2026-06-26",
+          "close": 18.79
+        },
+        {
+          "date": "2026-06-29",
+          "close": 18.8
+        },
+        {
+          "date": "2026-06-30",
+          "close": 18.38
+        },
+        {
+          "date": "2026-07-01",
+          "close": 18.42
+        },
+        {
+          "date": "2026-07-02",
+          "close": 18.92
+        },
+        {
+          "date": "2026-07-06",
+          "close": 19.02
+        },
+        {
+          "date": "2026-07-07",
+          "close": 19.12
+        },
+        {
+          "date": "2026-07-08",
+          "close": 19.03
+        },
+        {
+          "date": "2026-07-09",
+          "close": 19.04
+        },
+        {
+          "date": "2026-07-10",
+          "close": 18.98
+        },
+        {
+          "date": "2026-07-13",
+          "close": 18.76
+        },
+        {
+          "date": "2026-07-14",
+          "close": 18.92
+        },
+        {
+          "date": "2026-07-15",
+          "close": 18.83
+        },
+        {
+          "date": "2026-07-16",
+          "close": 19.09
+        },
+        {
+          "date": "2026-07-17",
+          "close": 19.48
+        },
+        {
+          "date": "2026-07-20",
+          "close": 19.57
+        },
+        {
+          "date": "2026-07-21",
+          "close": 19.66
+        },
+        {
+          "date": "2026-07-22",
+          "close": 19.75
+        },
+        {
+          "date": "2026-07-23",
+          "close": 19.3
+        },
+        {
+          "date": "2026-07-24",
+          "close": 19.74
+        },
+        {
+          "date": "2026-07-27",
+          "close": 19.95
+        },
+        {
+          "date": "2026-07-28",
+          "close": 20.29
+        },
+        {
+          "date": "2026-07-29",
+          "close": 20.67
+        },
+        {
+          "date": "2026-07-30",
+          "close": 21.82
+        },
+        {
+          "date": "2026-07-31",
+          "close": 22.22
+        },
+        {
+          "date": "2026-08-03",
+          "close": 22.1
+        },
+        {
+          "date": "2026-08-04",
+          "close": 21.61
+        },
+        {
+          "date": "2026-08-05",
+          "close": 21.59
+        },
+        {
+          "date": "2026-08-06",
+          "close": 22.16
+        },
+        {
+          "date": "2026-08-07",
+          "close": 22.54
+        },
+        {
+          "date": "2026-08-10",
+          "close": 22.23
+        },
+        {
+          "date": "2026-08-11",
+          "close": 22.29
+        },
+        {
+          "date": "2026-08-12",
+          "close": 22.13
+        },
+        {
+          "date": "2026-08-13",
+          "close": 22.14
+        },
+        {
+          "date": "2026-08-14",
+          "close": 22.33
+        },
+        {
+          "date": "2026-08-17",
+          "close": 22.26
+        },
+        {
+          "date": "2026-08-18",
+          "close": 21.74
+        },
+        {
+          "date": "2026-08-19",
+          "close": 21.83
+        },
+        {
+          "date": "2026-08-20",
+          "close": 21.59
+        },
+        {
+          "date": "2026-08-21",
+          "close": 21.87
+        },
+        {
+          "date": "2026-08-24",
+          "close": 21.57
+        },
+        {
+          "date": "2026-08-25",
+          "close": 21.92
+        },
+        {
+          "date": "2026-08-26",
+          "close": 21.77
+        },
+        {
+          "date": "2026-08-27",
+          "close": 21.89
+        },
+        {
+          "date": "2026-08-28",
+          "close": 21.66
+        },
+        {
+          "date": "2026-08-31",
+          "close": 21.6
+        },
+        {
+          "date": "2026-09-01",
+          "close": 21.81
+        },
+        {
+          "date": "2026-09-02",
+          "close": 22.01
+        },
+        {
+          "date": "2026-09-03",
+          "close": 22.19
+        },
+        {
+          "date": "2026-09-04",
+          "close": 21.76
+        },
+        {
+          "date": "2026-09-08",
+          "close": 21.57
+        },
+        {
+          "date": "2026-09-09",
+          "close": 21.41
+        },
+        {
+          "date": "2026-09-10",
+          "close": 21.26
+        },
+        {
+          "date": "2026-09-11",
+          "close": 21.78
+        },
+        {
+          "date": "2026-09-14",
+          "close": 21.9
+        },
+        {
+          "date": "2026-09-15",
+          "close": 21.87
+        },
+        {
+          "date": "2026-09-16",
+          "close": 21.69
+        },
+        {
+          "date": "2026-09-17",
+          "close": 22.13
+        },
+        {
+          "date": "2026-09-18",
+          "close": 21.91
+        },
+        {
+          "date": "2026-09-21",
+          "close": 21.82
+        },
+        {
+          "date": "2026-09-22",
+          "close": 21.85
+        },
+        {
+          "date": "2026-09-23",
+          "close": 21.78
+        },
+        {
+          "date": "2026-09-24",
+          "close": 21.63
+        },
+        {
+          "date": "2026-09-25",
+          "close": 22.08
+        },
+        {
+          "date": "2026-09-28",
+          "close": 21.76
+        },
+        {
+          "date": "2026-09-29",
+          "close": 21.83
+        },
+        {
+          "date": "2026-09-30",
+          "close": 22.04
+        },
+        {
+          "date": "2026-10-01",
+          "close": 21.58
+        },
+        {
+          "date": "2026-10-02",
+          "close": 21.69
+        },
+        {
+          "date": "2026-10-05",
+          "close": 21.9
+        },
+        {
+          "date": "2026-10-06",
+          "close": 21.82
+        },
+        {
+          "date": "2026-10-07",
+          "close": 22.01
+        },
+        {
+          "date": "2026-10-08",
+          "close": 22.16
+        },
+        {
+          "date": "2026-10-09",
+          "close": 22.91
+        },
+        {
+          "date": "2026-10-12",
+          "close": 22.88
+        },
+        {
+          "date": "2026-10-13",
+          "close": 23.09
+        },
+        {
+          "date": "2026-10-14",
+          "close": 23.14
+        },
+        {
+          "date": "2026-10-15",
+          "close": 23.64
+        },
+        {
+          "date": "2026-10-16",
+          "close": 23.75
+        },
+        {
+          "date": "2026-10-19",
+          "close": 23.56
+        },
+        {
+          "date": "2026-10-20",
+          "close": 23.71
+        },
+        {
+          "date": "2026-10-21",
+          "close": 23.6
+        },
+        {
+          "date": "2026-10-22",
+          "close": 24.0
+        },
+        {
+          "date": "2026-10-23",
+          "close": 23.98
+        },
+        {
+          "date": "2026-10-26",
+          "close": 24.08
+        },
+        {
+          "date": "2026-10-27",
+          "close": 23.67
+        },
+        {
+          "date": "2026-10-28",
+          "close": 23.13
+        },
+        {
+          "date": "2026-10-29",
+          "close": 22.95
+        },
+        {
+          "date": "2026-10-30",
+          "close": 22.94
+        },
+        {
+          "date": "2026-11-02",
+          "close": 23.39
+        },
+        {
+          "date": "2026-11-03",
+          "close": 23.26
+        },
+        {
+          "date": "2026-11-04",
+          "close": 23.62
+        },
+        {
+          "date": "2026-11-05",
+          "close": 20.0
+        },
+        {
+          "date": "2026-11-06",
+          "close": 16.98
+        }
+      ],
+      "nextEarningsDate": "2027-02-10",
+      "estimatedEPS": 0.02,
+      "recentEarnings": [
+        {
+          "reportedDate": "2026-10-29",
+          "actualEPS": 0.33,
+          "estimatedEPS": 0.37,
+          "surprisePercent": -9.55,
+          "source": "Yahoo Finance"
+        },
+        {
+          "reportedDate": "2026-07-30",
+          "actualEPS": 0.4,
+          "estimatedEPS": 0.33,
+          "surprisePercent": 23.48,
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
       "ticker": "ANT",
-      "fetchedAt": "2026-10-26T19:21:16.792826Z",
+      "fetchedAt": "2026-11-07T16:35:43.034356Z",
       "source": "SEC EDGAR (S-1)",
       "company": "Anthropic, PBC",
       "sector": "Technology",

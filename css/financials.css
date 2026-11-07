@@ -1684,12 +1684,19 @@
     min-width: 0;
 }
 
-.fec-state-label {
-    font-size: 0.65rem;
+.fec-senate-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.55rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: #fff;
+    background: var(--logo-teal);
+    padding: 1px 5px;
+    border-radius: 3px;
+    line-height: 1.1;
+    flex-shrink: 0;
 }
 
 .fec-race-label {

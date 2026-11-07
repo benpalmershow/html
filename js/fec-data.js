@@ -153,6 +153,7 @@ function createFECCardHTML(race) {
         <div class="indicator-header">
             <div class="fec-race-title">
                 <span class="fec-state-label">${race.state}</span>
+                <span class="fec-senate-badge">Senate</span>
                 <span class="fec-race-label">${race.label}</span>
             </div>
             <div class="indicator-actions">

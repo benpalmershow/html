@@ -341,6 +341,84 @@
         }
       ],
       "lastUpdated": "2026-11-06T15:20:31.601991Z"
+    },
+    {
+      "state": "AK",
+      "label": "Alaska Senate",
+      "note": "Lean D. Sullivan (R) incumbent vs. Peltola (D).",
+      "kalshi": {
+        "r": 38,
+        "d": 62
+      },
+      "kalshi_url": "https://kalshi.com/markets/senateak/alaska-senate-race/senateak-26",
+      "candidates": [
+        {
+          "candidate_id": "S2AK00098",
+          "name": "Dan Sullivan",
+          "party": "REP",
+          "incumbent": true,
+          "source_url": "https://www.fec.gov/data/candidate/S2AK00098/",
+          "fetchedAt": "2026-11-06T15:20:31.601991Z",
+          "source": "OpenFEC API",
+          "receipts": null,
+          "disbursements": null,
+          "cash_on_hand_end_period": null,
+          "coverage_end_date": null
+        },
+        {
+          "candidate_id": "S6AK00000",
+          "name": "Mary Peltola",
+          "party": "DEM",
+          "incumbent": false,
+          "source_url": "https://www.fec.gov/data/candidate/S6AK00000/",
+          "fetchedAt": "2026-11-06T15:20:31.601991Z",
+          "source": "OpenFEC API",
+          "receipts": null,
+          "disbursements": null,
+          "cash_on_hand_end_period": null,
+          "coverage_end_date": null
+        }
+      ],
+      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+    },
+    {
+      "state": "MS",
+      "label": "Mississippi Senate",
+      "note": "Safe D. Hyde-Smith (R) incumbent vs. Pinkins (D).",
+      "kalshi": {
+        "r": 15,
+        "d": 85
+      },
+      "kalshi_url": "https://kalshi.com/markets/senatems/mississippi-senate-race/senatems-26",
+      "candidates": [
+        {
+          "candidate_id": "S6MS00269",
+          "name": "Cindy Hyde-Smith",
+          "party": "REP",
+          "incumbent": true,
+          "source_url": "https://www.fec.gov/data/candidate/S6MS00269/",
+          "fetchedAt": "2026-11-06T15:20:31.601991Z",
+          "source": "OpenFEC API",
+          "receipts": null,
+          "disbursements": null,
+          "cash_on_hand_end_period": null,
+          "coverage_end_date": null
+        },
+        {
+          "candidate_id": "S6MS00000",
+          "name": "Ty Pinkins",
+          "party": "DEM",
+          "incumbent": false,
+          "source_url": "https://www.fec.gov/data/candidate/S6MS00000/",
+          "fetchedAt": "2026-11-06T15:20:31.601991Z",
+          "source": "OpenFEC API",
+          "receipts": null,
+          "disbursements": null,
+          "cash_on_hand_end_period": null,
+          "coverage_end_date": null
+        }
+      ],
+      "lastUpdated": "2026-11-06T15:20:31.601991Z"
     }
   ]
 }

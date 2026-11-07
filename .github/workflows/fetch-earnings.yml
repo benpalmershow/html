@@ -68,9 +68,9 @@ jobs:
           import json
           with open('json/earnings-tickers.json', 'r') as f:
               data = json.load(f)
-          if 'ANT' not in data.get('tickers', []):
-              data['tickers'].append('ANT')
-              data['lastEdited'] = '2026-10-27'
+if 'ANT' not in data.get('tickers', []):
+               data['tickers'].append('ANT')
+               data['lastEdited'] = '2026-11-07'
               with open('json/earnings-tickers.json', 'w') as f:
                   json.dump(data, f, indent=2)
               echo 'ANT added to tickers list'

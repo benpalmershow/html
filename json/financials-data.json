@@ -3221,8 +3221,9 @@
         "may": "158,861,000",
         "june": "158,892,000",
         "july": "158,882,000",
-        "august": "159,015,000",
-        "september": "159,044,000"
+        "august": "159,068,000",
+        "september": "159,128,000",
+        "october": "159,293,000"
       },
       "2025": {
         "february": "158,310,000",
@@ -3242,12 +3243,12 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobs",
-      "lastUpdated": "2026-11-06T15:19:50Z",
+      "lastUpdated": "2026-11-07T16:39:58Z",
       "releaseDay": 5,
       "url": "https://fred.stlouisfed.org/series/PAYEMS",
       "change": "",
       "explanation": "The total level of nonfarm payroll employment in the U.S. economy. This key employment metric from the Bureau of Labor Statistics (BLS) includes all nonfarm business, government, and nonprofit employees. The figure is seasonally adjusted to account for predictable employment patterns. Month-over-month changes indicate the net number of jobs added or lost, with a consistent monthly addition of 100,000-150,000 jobs typically needed to keep pace with population growth. The report also includes revisions to previous months' data and is considered a lagging indicator, reflecting labor market conditions from the reference period (usually the pay period including the 12th of the month).",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-05T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {

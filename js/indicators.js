@@ -1522,7 +1522,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     ].filter(Boolean).join(' &middot; ');
 
     const whyHtml = explanation && indicator.category !== 'Earnings'
-        ? `<div class="indicator-explanation-header">Why this matters</div><div class="indicator-explanation-body">${explanation}</div>`
+        ? `<div class="indicator-explanation-header">Why this matters</div><div class="indicator-explanation-body">${explanation}${sourceLinks ? ` <span class="quick-action-sep">·</span> ${sourceLinks}` : ''}</div>`
         : (indicator.category === 'Earnings' && indicator.company
             ? `<div class="indicator-explanation-header">About</div><div class="indicator-explanation-body">${explanation}</div>`
             : '');
@@ -1551,9 +1551,9 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
         }
 
         const actionsHtml = quickActions.length > 0 ? quickActions.join('<span class="quick-action-sep">·</span>') : sourceLinks;
-        sourceSection = `<div class="indicator-explanation-header">Source & Links</div><div class="indicator-explanation-body">${actionsHtml}</div>`;
+        sourceSection = `<div class="indicator-explanation-body">${actionsHtml}</div>`;
     } else {
-        sourceSection = `<div class="indicator-explanation-header">Source</div><div class="indicator-explanation-body">${sourceLinks}</div>`;
+        sourceSection = '';
     }
 
     const explanationHtml = `<div class="indicator-explanation">${whyHtml}${sourceSection}</div>`;

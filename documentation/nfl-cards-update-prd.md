@@ -111,22 +111,39 @@ manual `workflow_dispatch`):
 
 ## Weekly manual workflow
 
-1. Inspect the current worktree and existing NFL records before editing.
-   Preserve unrelated user changes.
+### Step 0 — Discover the week's Polymarket markets (no link pasting needed)
+
+The Polymarket NFL page (`https://polymarket.com/sports/nfl`) lists all active game events. Fetch it and extract `nfl-<away>-<home>-YYYY-MM-DD` slugs, then query each via the Gamma API:
+
+```
+https://gamma-api.polymarket.com/events?slug=<slug>
+```
+
+For each slug, confirm:
+- the event has a full-game moneyline market (`sportsMarketType == "moneyline"`) with exactly the two expected team outcomes,
+- usable `outcomePrices` (decimals in [0,1]),
+- the game is upcoming (after now) and assigned to the target NFL week.
+
+From the market `description` extract the scheduled date/time (e.g. "scheduled for November 8 at 4:25PM ET") and convert to `game_time_iso` (UTC). Map Polymarket outcome names to standard NFL abbreviations via the outcome labels (e.g. "Cardinals" → `ARI`).
+
+This produces the YAML fields below. You do not need to paste the Polymarket URL manually — the fetcher reads it from `polymarket_slug`.
+
+### Step 1 — Inspect the current worktree and existing NFL records before editing.
+    Preserve unrelated user changes.
 2. Verify the requested week's schedule, game dates/times, home/away
-   assignment, team abbreviations, full names, and team market labels against a
-   reliable schedule and live market listing.
+    assignment, team abbreviations, full names, and team market labels against a
+    reliable schedule and live market listing.
 3. Check the exact Polymarket event slug for each matchup. The market must have
-   exactly the two expected team outcomes and usable prices. A schedule entry
-   alone is not evidence that a market exists.
+    exactly the two expected team outcomes and usable prices. A schedule entry
+    alone is not evidence that a market exists.
 4. If a market or usable odds are unavailable, do not create placeholder odds
-   or a card with a dead source link. Remove that matchup from
-   `data/nfl-games.yml`. The week-scoped merge will remove any matching stale
-   card from `json/financials-data.json`. Report which games were omitted and
-   why.
+    or a card with a dead source link. Remove that matchup from
+    `data/nfl-games.yml`. The week-scoped merge will remove any matching stale
+    card from `json/financials-data.json`. Report which games were omitted and
+    why.
 5. Add/update the verified games in YAML, using stable IDs in the form
-   `<away>-<home>-YYYY-MM-DD`, valid Polymarket slug/URL, correct `week`, both
-   `<TEAM>_win_odds` fields, and `lastUpdated`.
+    `<away>-<home>-YYYY-MM-DD`, valid Polymarket slug/URL, correct `week`, both
+    `<TEAM>_win_odds` fields, and `lastUpdated`.
 6. Refresh only the requested week and merge only that week:
 
    ```sh
@@ -144,8 +161,8 @@ manual `workflow_dispatch`):
    ```
 
 8. Confirm each published week entry has a unique ID, a functional market URL,
-   both live odds fields, and a corresponding indicator in `financials-data`.
-   Confirm no removed/unavailable ID remains in either dataset.
+    both live odds fields, and a corresponding indicator in `financials-data`.
+    Confirm no removed/unavailable ID remains in either dataset.
 
 ## Reliability requirements
 

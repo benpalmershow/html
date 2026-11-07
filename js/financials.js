@@ -340,13 +340,7 @@ function isNewBadgeCard(indicator) {
 
 function renderLatestUpdatesView(financialData) {
     const allIndicators = financialData.indices.slice();
-    // Exclude NFL games ( Prediction Markets with game_time_iso ) from Latest view
-    const filteredIndicators = allIndicators.filter(indicator => {
-        if (indicator.category === 'Prediction Markets' && indicator.game_time_iso) {
-            return false;
-        }
-        return true;
-    });
+    const filteredIndicators = allIndicators;
     // Sort by lastUpdated descending; fall back to original order if missing
     filteredIndicators.sort((a, b) => {
         // Cards carrying the "New" badge always stay at the top of the list.

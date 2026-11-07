@@ -108,7 +108,7 @@
       "no_probability": "90¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "iranian-regime-fall-2027",
@@ -137,7 +137,7 @@
       "no_probability": "82¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "us-recession-2027",
@@ -163,7 +163,7 @@
       "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2027. Current market price 35¢ Yes / 65¢ No. Volume: $12.3K.",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true,
+      "newMonth": false,
       "yes_odds": "32¢",
       "yes_probability": "32¢",
       "no_odds": "68¢",
@@ -293,7 +293,7 @@
       "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "releaseTimeISO": "2026-11-04T10:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true,
+      "newMonth": false,
       "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },
@@ -1335,7 +1335,7 @@
       "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "releaseTimeISO": "2026-11-04T13:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true,
+      "newMonth": false,
       "Democratic Party": "100¢",
       "Republican Party": "0¢"
     },

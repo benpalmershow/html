@@ -54,6 +54,7 @@ function getFECPartyLabel(party) {
 function createKalshiBar(race) {
     const kalshi = race.kalshi;
     if (!kalshi) return '';
+    if (race.result === 'called') return '';
     const rProb = kalshi.r || 0;
     const dProb = kalshi.d || 0;
     const kalshiUrl = race.kalshi_url || '#';
@@ -95,7 +96,10 @@ function formatFECUpdatedDate(value) {
 
 function createFECCardHTML(race) {
     const kalshi = race.kalshi || {};
-    const leadingParty = kalshi.r > kalshi.d ? 'REP' : kalshi.d > kalshi.r ? 'DEM' : null;
+    const isCalled = race.result === 'called';
+    const leadingParty = race.winner_party || (kalshi.r > kalshi.d ? 'REP' : kalshi.d > kalshi.r ? 'DEM' : null);
+    const markTitle = isCalled ? 'Won' : 'Leading';
+    const markLabel = isCalled ? 'Won' : 'Leading';
 
     const candidateRows = (race.candidates || []).map(c => {
         const partyColor = getFECPartyColor(c.party);
@@ -104,7 +108,7 @@ function createFECCardHTML(race) {
             ? `<span class="fec-incumbent" title="Incumbent">&#9654;</span>`
             : '';
         const winnerMark = leadingParty && c.party === leadingParty
-            ? `<span class="fec-winner" title="Leading" aria-label="Leading">&#10003;</span>`
+            ? `<span class="fec-winner" title="${markTitle}" aria-label="${markLabel}">&#10003;</span>`
             : '';
         const fecLink = c.source_url
             ? `<a href="${c.source_url}" target="_blank" rel="noopener noreferrer" class="fec-source-link" title="FEC filing">${c.name}</a>`
@@ -151,8 +155,11 @@ function createFECCardHTML(race) {
     }).join('');
 
     const hasLeadingCandidate = leadingParty && (race.candidates || []).some(c => c.party === leadingParty);
+    const headerMarkTitle = isCalled
+        ? `${leadingParty === 'DEM' ? 'Democrat' : 'Republican'} won`
+        : `${leadingParty === 'DEM' ? 'Democrat' : 'Republican'} leading`;
     const leadingMark = leadingParty && !hasLeadingCandidate
-        ? `<span class="fec-winner fec-winner-header" title="${leadingParty === 'DEM' ? 'Democrat' : 'Republican'} leading" aria-label="${leadingParty === 'DEM' ? 'Democrat' : 'Republican'} leading">&#10003;</span>`
+        ? `<span class="fec-winner fec-winner-header" title="${headerMarkTitle}" aria-label="${headerMarkTitle}">&#10003;</span>`
         : '';
 
     return `
@@ -169,7 +176,7 @@ function createFECCardHTML(race) {
             ${candidateRows ? `<div class="data-rows-container fec-data-visible">${candidateRows}</div>` : ''}
         </div>
         <div class="indicator-explanation">
-            <div class="indicator-explanation-header">Race details</div>
+            <div class="indicator-explanation-header">${isCalled ? 'Result' : 'Race details'}</div>
             <div class="indicator-explanation-body">
                 ${note}
                 ${candidateLinks}

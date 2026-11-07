@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T15:20:31.601991Z",
+  "lastUpdated": "2026-11-07T18:52:05.000Z",
   "source": "OpenFEC API",
   "source_url": "https://api.open.fec.gov/developers/",
   "cycle": 2026,
@@ -7,7 +7,9 @@
     {
       "state": "GA",
       "label": "Georgia Senate",
-      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
+      "note": "Result: Jon Ossoff (D, incumbent) won re-election over Mike Collins (R).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -41,12 +43,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "TX",
       "label": "Texas Senate",
-      "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
+      "note": "Result: James Talarico (D) won the open seat over Ken Paxton (R).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -80,12 +84,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "OH",
       "label": "Ohio Senate",
-      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
+      "note": "Result: Sherrod Brown (D) won the special election over Jon Husted (R, incumbent appointee).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -119,12 +125,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "NC",
       "label": "North Carolina Senate",
-      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+      "note": "Result: Roy Cooper (D) won the open seat over Michael Whatley (R).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -158,12 +166,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "KS",
       "label": "Kansas Senate",
-      "note": "Lean D. Marshall (R) incumbent vs. Hamilton (D).",
+      "note": "Result: Adam Hamilton (D) defeated Roger Marshall (R, incumbent).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -197,12 +207,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Jackson (D) won. Collins (R) incumbent.",
+      "note": "Result: Troy Jackson (D) defeated Susan Collins (R, incumbent).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -236,12 +248,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-07T18:21:00.000000Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "MI",
       "label": "Michigan Senate",
-      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+      "note": "Result: Abdul El-Sayed (D) won the open seat over Mike Rogers (R).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -275,12 +289,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "IA",
       "label": "Iowa Senate",
-      "note": "Toss-up. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
+      "note": "Result: Josh Turek (D) won the open seat over Ashley Hinson (R).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -314,12 +330,14 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "NH",
       "label": "New Hampshire Senate",
-      "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R).",
+      "note": "Result: Chris Pappas (D) won the open seat over John E. Sununu (R).",
+      "result": "called",
+      "winner_party": "DEM",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -353,12 +371,13 @@
           "coverage_end_date": "2026-10-14"
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "AK",
       "label": "Alaska Senate",
-      "note": "Lean D. Sullivan (R) incumbent vs. Peltola (D).",
+      "note": "Result: Race not yet called. Dan Sullivan (R, incumbent) vs. Mary Peltola (D).",
+      "result": "uncalled",
       "kalshi": {
         "r": 28,
         "d": 72
@@ -392,12 +411,13 @@
           "coverage_end_date": null
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     },
     {
       "state": "MS",
       "label": "Mississippi Senate",
-      "note": "Safe D. Hyde-Smith (R) incumbent vs. Pinkins (D).",
+      "note": "Result: Race not yet called (very close). Cindy Hyde-Smith (R, incumbent) vs. Ty Pinkins (D).",
+      "result": "uncalled",
       "kalshi": {
         "r": 1,
         "d": 99
@@ -431,7 +451,7 @@
           "coverage_end_date": null
         }
       ],
-      "lastUpdated": "2026-11-06T15:20:31.601991Z"
+      "lastUpdated": "2026-11-07T18:52:05.000Z"
     }
   ]
 }

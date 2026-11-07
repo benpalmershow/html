@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T02:24:26Z",
+  "lastUpdated": "2026-11-07T12:12:23Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -400,7 +400,7 @@
         "august": "4.75",
         "september": "5.29",
         "october": "4.94",
-        "november": "4.9"
+        "november": "4.8"
       },
       "2025": {
         "march": "4.28",
@@ -418,7 +418,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -458,7 +458,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Lumber (PPI)",
-      "lastUpdated": "2026-11-06T15:25:20Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/WPU081",
       "change": "",
@@ -761,7 +761,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -790,7 +790,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -2126,7 +2126,7 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
@@ -4508,7 +4508,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-11-06T15:19:37Z",
+      "lastUpdated": "2026-11-07T12:12:23Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T15:16:04Z",
+  "lastUpdated": "2026-11-07T16:38:13Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1962,7 +1962,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "GDP",
-      "lastUpdated": "2026-11-07T02:24:26Z",
+      "lastUpdated": "2026-11-07T16:38:13Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/GDP",
       "change": "",
@@ -3243,7 +3243,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobs",
-      "lastUpdated": "2026-11-07T16:39:58Z",
+      "lastUpdated": "2026-11-07T16:38:13Z",
       "releaseDay": 5,
       "url": "https://fred.stlouisfed.org/series/PAYEMS",
       "change": "",
@@ -3997,18 +3997,19 @@
         "june": "4.2",
         "july": "4.1",
         "august": "4.1",
-        "september": "4.2"
+        "september": "4.2",
+        "october": "4.1"
       },
       "category": "Employment Indicators",
       "color": "#34495e",
       "agency": "FRED",
       "name": "Unemployment Rate",
-      "lastUpdated": "2026-11-06T15:19:50Z",
+      "lastUpdated": "2026-11-07T16:38:13Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/UNRATE",
       "change": "",
       "explanation": "The seasonally adjusted unemployment rate, published by the Bureau of Labor Statistics. It represents the percentage of the labor force that is unemployed and actively seeking employment, serving as a key measure of labor market health and slack in the economy.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-07T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
@@ -4129,18 +4130,19 @@
         "june": "37.59",
         "july": "37.64",
         "august": "37.76",
-        "september": "37.81"
+        "september": "37.86",
+        "october": "38"
       },
       "category": "Employment Indicators",
       "color": "#34495e",
       "agency": "FRED",
       "name": "Average Hourly Earnings",
-      "lastUpdated": "2026-11-06T15:19:50Z",
+      "lastUpdated": "2026-11-07T16:38:13Z",
       "releaseDay": 7,
       "url": "https://fred.stlouisfed.org/series/CES0500000003",
       "change": "",
       "explanation": "The seasonally adjusted average hourly earnings of all employees on private non-farm payrolls, published by the Bureau of Labor Statistics. This is a key measure of wage growth and labor market tightening, closely watched for inflationary pressures.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-07T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {

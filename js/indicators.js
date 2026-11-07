@@ -151,7 +151,7 @@ const IndicatorRenderers = (function () {
     }
 
     function collectSparklineValues(indicator, MONTHS) {
-        const sparklineValues = [];
+        let sparklineValues = [];
         const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(k => parseInt(k)).sort();
 
         // Check if this indicator uses quarterly data
@@ -171,9 +171,13 @@ const IndicatorRenderers = (function () {
                     }
                 });
             });
+            // Match the 1yr chart range (4 quarters)
+            if (sparklineValues.length > 4) sparklineValues = sparklineValues.slice(-4);
         } else {
             MONTHS.forEach(month => { const flatVal = extractNumericValue(indicator[month]); if (flatVal !== null) sparklineValues.push(flatVal); });
             yearKeys.forEach(year => { MONTHS.forEach(month => { if (indicator[year] && indicator[year][month] !== undefined) { const val = extractNumericValue(indicator[year][month]); if (val !== null) sparklineValues.push(val); } }); });
+            // Match the 1yr chart range (12 months)
+            if (sparklineValues.length > 12) sparklineValues = sparklineValues.slice(-12);
         }
         return sparklineValues;
     }

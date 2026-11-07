@@ -113,10 +113,12 @@ UMICH_SENTIMENT_URL = "https://www.sca.isr.umich.edu/files/tbcics.csv"
 PAYROLLS_INDICATORS = {"Jobs"}
 # Weekly series where the JSON stores monthly averages
 WEEKLY_SERIES = {"Jobless Claims"}
+# Quarterly series where the JSON stores quarter keys (q1..q4)
+QUARTERLY_SERIES = {"GDP"}
 # Indicators that need billions-style formatting (comma + "B" suffix)
 BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)", "GDP"}
 # Indicators whose FRED values are in millions and need /1000 for billions formatting
-MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)"}
+MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)", "GDP"}
 # Indicators whose FRED values are in thousands and need *1000 before formatting
 THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
 
@@ -532,7 +534,11 @@ def update_financials(indicator_names=None):
                 had_new_month = False
                 for (year, month), value in monthly_values.items():
                     year_str = str(year)
-                    month_key = MONTH_MAP[f"{month:02d}"]
+                    if indicator_name in QUARTERLY_SERIES:
+                        q = (month - 1) // 3 + 1
+                        month_key = f"q{q}"
+                    else:
+                        month_key = MONTH_MAP[f"{month:02d}"]
                     if year_str not in idx:
                         idx[year_str] = {}
 

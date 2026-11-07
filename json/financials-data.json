@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T00:47:20.445327Z",
+  "lastUpdated": "2026-11-07T01:26:28Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1935,14 +1935,166 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "GDP",
-      "lastUpdated": "2026-11-06T15:19:55Z",
+      "lastUpdated": "2026-11-07T01:26:28Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/GDP",
       "change": "",
       "explanation": "Gross Domestic Product (GDP) measures the total value of goods and services produced in the U.S. economy. Published by the Bureau of Economic Analysis (BEA).",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T13:00:00Z",
-      "releaseTimeZone": "America/New_York"
+      "releaseTimeZone": "America/New_York",
+      "2026": {
+        "march": "32B",
+        "june": "33B",
+        "september": "33B"
+      },
+      "2025": {
+        "december": "31B",
+        "september": "31B",
+        "june": "31B",
+        "march": "30B"
+      },
+      "2024": {
+        "december": "30B",
+        "september": "30B",
+        "june": "29B",
+        "march": "29B"
+      },
+      "2023": {
+        "december": "28B",
+        "september": "28B",
+        "june": "28B",
+        "march": "27B"
+      },
+      "2022": {
+        "december": "27B",
+        "september": "26B",
+        "june": "26B",
+        "march": "25B"
+      },
+      "2021": {
+        "december": "25B",
+        "september": "24B",
+        "june": "23B",
+        "march": "23B"
+      },
+      "2020": {
+        "december": "22B",
+        "september": "22B",
+        "june": "20B",
+        "march": "22B"
+      },
+      "2019": {
+        "december": "22B",
+        "september": "22B",
+        "june": "21B",
+        "march": "21B"
+      },
+      "2018": {
+        "december": "21B",
+        "september": "21B",
+        "june": "21B",
+        "march": "20B"
+      },
+      "2017": {
+        "december": "20B",
+        "september": "20B",
+        "june": "19B",
+        "march": "19B"
+      },
+      "2016": {
+        "december": "19B",
+        "september": "19B",
+        "june": "19B",
+        "march": "19B"
+      },
+      "2015": {
+        "december": "18B",
+        "september": "18B",
+        "june": "18B",
+        "march": "18B"
+      },
+      "2014": {
+        "december": "18B",
+        "september": "18B",
+        "june": "18B",
+        "march": "17B"
+      },
+      "2013": {
+        "december": "17B",
+        "september": "17B",
+        "june": "17B",
+        "march": "17B"
+      },
+      "2012": {
+        "december": "16B",
+        "september": "16B",
+        "june": "16B",
+        "march": "16B"
+      },
+      "2011": {
+        "december": "16B",
+        "september": "16B",
+        "june": "16B",
+        "march": "15B"
+      },
+      "2010": {
+        "december": "15B",
+        "september": "15B",
+        "june": "15B",
+        "march": "15B"
+      },
+      "2009": {
+        "december": "15B",
+        "september": "14B",
+        "june": "14B",
+        "march": "14B"
+      },
+      "2008": {
+        "december": "15B",
+        "september": "15B",
+        "june": "15B",
+        "march": "15B"
+      },
+      "2007": {
+        "december": "15B",
+        "september": "15B",
+        "june": "14B",
+        "march": "14B"
+      },
+      "2006": {
+        "december": "14B",
+        "september": "14B",
+        "june": "14B",
+        "march": "14B"
+      },
+      "2005": {
+        "december": "13B",
+        "september": "13B",
+        "june": "13B",
+        "march": "13B"
+      },
+      "2004": {
+        "december": "13B",
+        "september": "12B",
+        "june": "12B",
+        "march": "12B"
+      },
+      "2003": {
+        "december": "12B",
+        "september": "12B",
+        "june": "11B",
+        "march": "11B"
+      },
+      "2002": {
+        "december": "11B",
+        "september": "11B",
+        "june": "11B",
+        "march": "11B"
+      },
+      "2001": {
+        "december": "11B"
+      }
     },
     {
       "id": "dollar-value-index",

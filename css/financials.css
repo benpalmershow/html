@@ -1769,15 +1769,39 @@
     line-height: 1;
 }
 
+/* Compact race details (expanded election cards) */
+.category[data-category="Elections"] .indicator-explanation {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+.category[data-category="Elections"] .indicator-explanation-header {
+    margin: 0 0 0.15rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+}
+
+.category[data-category="Elections"] .indicator-explanation-body {
+    font-size: 0.74rem;
+    line-height: 1.35;
+    white-space: normal;
+}
+
+.category[data-category="Elections"] .indicator-explanation-body p {
+    margin: 0 0 2px;
+}
+
 /* Explanation panel candidate rows */
 .fec-explain-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 8px;
-    padding: 4px 0;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.8rem;
+    gap: 6px;
+    padding: 1px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
+    font-size: 0.72rem;
+    line-height: 1.2;
 }
 
 .fec-explain-row:last-child {
@@ -1804,7 +1828,7 @@
 
 .fec-explain-coh {
     flex-shrink: 0;
-    font-size: 0.72rem;
+    font-size: 0.64rem;
     font-family: var(--font-mono);
     font-weight: 600;
     color: var(--text-muted);
@@ -1817,31 +1841,32 @@
     color: inherit;
     display: block;
     cursor: pointer;
+    margin: 0;
 }
 
 .kalshi-bar-container {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border-color);
+    gap: 4px;
+    margin-top: 2px;
+    padding-top: 2px;
+    border-top: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
 }
 
 .kalshi-label {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
     flex-shrink: 0;
 }
 
 .kalshi-bar-track {
     flex: 1;
-    height: 8px;
+    height: 6px;
     display: flex;
-    border-radius: 4px;
+    border-radius: 3px;
     overflow: hidden;
     background: var(--bg-tertiary);
 }
@@ -1853,18 +1878,18 @@
 
 .kalshi-bar-r {
     background: linear-gradient(90deg, #DC2626 0%, #f1948a 100%);
-    border-radius: 4px 0 0 4px;
+    border-radius: 3px 0 0 3px;
 }
 
 .kalshi-bar-d {
     background: linear-gradient(90deg, #2563EB 0%, #5dade2 100%);
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 3px 3px 0;
 }
 
 .kalshi-value {
-    font-size: 0.7rem;
+    font-size: 0.64rem;
     font-weight: 700;
-    min-width: 32px;
+    min-width: 28px;
     text-align: right;
     flex-shrink: 0;
 }

@@ -14,11 +14,11 @@
 
 /* PAGE HEADER */
 
-.categories { display: grid; gap: 15px }
+.categories { display: grid; gap: 15px; content-visibility: auto; contain-intrinsic-size: auto 1200px; }
 
 .content { min-height: 80dvh; }
 
-.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; will-change: transform, box-shadow; }
+.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; will-change: transform, box-shadow; contain: layout style paint; }
 
 .category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 

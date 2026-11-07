@@ -128,6 +128,22 @@
   height: 2px;
   background: var(--color-secondary, #d4822a);
   border-radius: 1px;
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header-nav-link.active::after {
+    animation: load-underline 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes load-underline {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 .header-nav-link:focus-visible {

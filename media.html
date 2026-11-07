@@ -108,6 +108,10 @@
   <link rel="stylesheet" href="css/components/footer.css?v=20260614">
   <link rel="stylesheet" href="css/components/home.css?v=20260614">
 
+  <!-- Preconnect for Font Awesome CDN -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
   <!-- Font Awesome - load async -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -220,12 +224,12 @@
 
   <header class="page-header" role="banner">
         <a href="index.html" class="header-home" aria-label="Howdy, Stranger home">
-          <img src="images/logo-360x360.webp" alt="" width="44" height="44" loading="eager" decoding="async">
+          <img src="images/logo-360x360.webp" alt="" width="44" height="44" loading="eager" decoding="async" fetchpriority="high">
         </a>
         <ul class="header-nav" role="list" aria-label="Site navigation">
-          <li><a href="financials.html" class="header-nav-link"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="lazy">Numbers</a></li>
-          <li><a href="media.html"      class="header-nav-link active" aria-current="page"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager">Media</a></li>
-          <li><a href="journal.html"    class="header-nav-link"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="lazy">Docs</a></li>
+          <li><a href="financials.html" class="header-nav-link"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Numbers</a></li>
+          <li><a href="media.html"      class="header-nav-link active" aria-current="page"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Media</a></li>
+          <li><a href="journal.html"    class="header-nav-link"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Docs</a></li>
         </ul>
         <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
           <span class="dark-mode-toggle-icon" aria-hidden="true">

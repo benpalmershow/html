@@ -8,7 +8,7 @@ async function loadFECData() {
     if (!container) return;
 
     try {
-        const data = await Services.dataService.fetchJSON('json/fec-data.json');
+        const data = await Services.dataService.fetchJSON('json/fec-data.json', { bustCache: true });
         initializeFECCards(data, container);
     } catch (err) {
         console.error('Could not load FEC data:', err);

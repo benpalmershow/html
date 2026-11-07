@@ -1745,6 +1745,14 @@
 .fec-card-r { --indicator-accent: var(--fec-rep, #DC2626); }
 .fec-card-d { --indicator-accent: var(--fec-dem, #2563EB); }
 
+.fec-card-r, .fec-card-d {
+  border-color: var(--indicator-accent);
+}
+
+.fec-card-r:hover, .fec-card-d:hover {
+  border-color: var(--indicator-accent);
+}
+
 /* Candidate rows */
 .fec-candidates {
     display: flex;

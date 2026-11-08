@@ -1984,13 +1984,13 @@
       }
     },
     {
-      "id": "personal-consumption-expenditures",
+      "id": "gdp",
       "category": "Consumer Indicators",
       "color": "#9b59b6",
-      "agency": "FRED",
+      "agency": "BEA",
       "name": "GDP",
       "lastUpdated": "2026-11-08T18:50:00Z",
-      "releaseDay": 0,
+      "releaseDay": 30,
       "url": "https://fred.stlouisfed.org/series/GDP",
       "change": "",
       "explanation": "Gross Domestic Product (GDP) measures the total value of goods and services produced in the U.S. economy. Published by the Bureau of Economic Analysis (BEA).",

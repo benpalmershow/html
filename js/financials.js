@@ -339,14 +339,9 @@ function isNewBadgeCard(indicator) {
 }
 
 function renderLatestUpdatesView(financialData) {
-    const allIndicators = financialData.indices.slice();
-    const filteredIndicators = allIndicators;
+    const filteredIndicators = financialData.indices.slice();
     // Sort by lastUpdated descending; fall back to original order if missing
     filteredIndicators.sort((a, b) => {
-        // Cards carrying the "New" badge always stay at the top of the list.
-        const aIsNew = isNewBadgeCard(a);
-        const bIsNew = isNewBadgeCard(b);
-        if (aIsNew !== bIsNew) return aIsNew ? -1 : 1;
         const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
         const dateB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
         if (dateA !== dateB) return dateB - dateA;

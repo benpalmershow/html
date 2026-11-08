@@ -64,19 +64,19 @@ jobs:
 
       - name: Ensure ANT in tickers list
         run: |
-          python3 -c "
+          python3 - <<'PY'
           import json
           with open('json/earnings-tickers.json', 'r') as f:
               data = json.load(f)
-if 'ANT' not in data.get('tickers', []):
-               data['tickers'].append('ANT')
-               data['lastEdited'] = '2026-11-07'
+          if 'ANT' not in data.get('tickers', []):
+              data['tickers'].append('ANT')
+              data['lastEdited'] = '2026-11-07'
               with open('json/earnings-tickers.json', 'w') as f:
                   json.dump(data, f, indent=2)
-              echo 'ANT added to tickers list'
+              print('ANT added to tickers list')
           else:
-              echo 'ANT already in tickers list'
-          "
+              print('ANT already in tickers list')
+          PY
 
       - name: Run SEC quarterly fetcher
         run: python3 scripts/fetch_sec_quarterly.py

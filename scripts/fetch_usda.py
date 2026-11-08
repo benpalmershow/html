@@ -192,7 +192,8 @@ def update_indicator(indicator, parsed_data):
                 # Revision-less re-fetch: no new month, no badge.
                 indicator["newMonth"] = False
 
-    indicator["lastUpdated"] = now_iso
+    if updates:
+        indicator["lastUpdated"] = now_iso
     return updates
 
 
@@ -234,15 +235,18 @@ def update_financials():
         updates = update_indicator(indicator, parsed_data)
         all_updates.extend(updates)
 
-    data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-    with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-
     print(f"\nUpdated {len(all_updates)} values:")
     for u in all_updates:
         print(f"  - {u}")
+
+    if not all_updates:
+        print("\nNo USDA data changes; skipping write")
+        return
+
+    data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    with open(FINANCIALS_PATH, "w") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
 
     print(f"\nSaved to {FINANCIALS_PATH}")
 

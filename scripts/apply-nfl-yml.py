@@ -299,11 +299,16 @@ def main():
     # Upsert by id: update existing, append the rest.
     existing_ids = {ind.get("id"): i for i, ind in enumerate(indices)}
     appended = []
+    updated = 0
     for indicator in new_indicators:
         game_id = indicator["id"]
         if game_id in existing_ids:
-            indices[existing_ids[game_id]] = indicator
-            print(f"Updated existing indicator: {game_id}")
+            if indices[existing_ids[game_id]] != indicator:
+                indices[existing_ids[game_id]] = indicator
+                print(f"Updated existing indicator: {game_id}")
+                updated += 1
+            else:
+                print(f"No change for indicator: {game_id}")
         else:
             appended.append(indicator)
             print(f"Appending new indicator: {game_id}")
@@ -331,6 +336,12 @@ def main():
         removed = before - len(indices)
         if removed:
             print(f"Removed {removed} unavailable or completed game(s): {', '.join(sorted(remove_ids))}")
+    else:
+        removed = 0
+
+    if updated == 0 and removed == 0 and not appended:
+        print("No NFL financials data changes; skipping write")
+        return 0
 
     data["lastUpdated"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
@@ -338,7 +349,6 @@ def main():
         json.dump(data, f, indent=2, ensure_ascii=False)
 
     print(f"Wrote {FINANCIALS_PATH} ({len(indices)} indicators total).")
-    print(f"Summary: {len(new_indicators)} processed, {len(appended)} new, {len([i for i in new_indicators if i['id'] in existing_ids])} updated")
     return 0
 
 

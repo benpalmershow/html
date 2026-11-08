@@ -492,11 +492,13 @@ def update_indicator(indicator, outcomes, updated_at, outcome_map, top_level_map
             snapshot[field] = price
     snapshot = normalize_snapshot(snapshot)
 
+    changed = False
     if snapshot:
         existing = probs.get(date_key)
         if existing is None or existing != snapshot:
             probs[date_key] = snapshot
             indicator["newMonth"] = True
+            changed = True
         else:
             indicator["newMonth"] = False
 
@@ -504,10 +506,13 @@ def update_indicator(indicator, outcomes, updated_at, outcome_map, top_level_map
     for field, price in snapshot.items():
         targets = (top_level_map or {}).get(field, [field])
         for target in targets:
+            if indicator.get(target) != price:
+                changed = True
             indicator[target] = price
 
-    indicator["lastUpdated"] = updated_at or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-    return snapshot
+    if changed:
+        indicator["lastUpdated"] = updated_at or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return snapshot, changed
 
 
 def main(dry_run=False):
@@ -557,12 +562,10 @@ def main(dry_run=False):
             print(f"  No data returned for {indicator_id}")
             continue
 
-        snapshot = update_indicator(indicator, result["outcomes"], result.get("updatedAt"), fetch_outcome_map, top_level_map)
-        indicator["lastUpdated"] = now_iso
-        label = ", ".join(f"{k}={v}" for k, v in snapshot.items())
-        changes.append(f"{indicator_id}: {label}")
-
-    data["lastUpdated"] = now_iso
+        snapshot, changed = update_indicator(indicator, result["outcomes"], result.get("updatedAt"), fetch_outcome_map, top_level_map)
+        if changed:
+            label = ", ".join(f"{k}={v}" for k, v in snapshot.items())
+            changes.append(f"{indicator_id}: {label}")
 
     if skipped:
         print("\n--- Skipped (not implemented) ---")
@@ -580,6 +583,11 @@ def main(dry_run=False):
         print("Dry run: JSON not written.")
         return
 
+    if not changes:
+        print("\nNo other-indicator data changes; skipping write")
+        return
+
+    data["lastUpdated"] = now_iso
     with open(FINANCIALS_PATH, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")

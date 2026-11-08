@@ -249,25 +249,32 @@ def main():
         old_home = game.get(home_key)
         game[away_key] = away_odds
         game[home_key] = home_odds
-        game["lastUpdated"] = event.get("updatedAt") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        new_updated_at = event.get("updatedAt") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        changed = old_away != away_odds or old_home != home_odds or game.get("lastUpdated") != new_updated_at
+        game["lastUpdated"] = new_updated_at
 
-        # Append to odds history for charting
-        timestamp = event.get("updatedAt") or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-        history = game.setdefault("odds_history", [])
-        snapshot = {
-            "timestamp": timestamp,
-            away_key: away_odds,
-            home_key: home_odds
-        }
-        if not history or history[-1] != snapshot:
-            history.append(snapshot)
-
-        print(f"[{game_id}] {away_key}: {old_away} -> {away_odds} | {home_key}: {old_home} -> {home_odds} | lastUpdated: {game['lastUpdated']}")
-        updated += 1
+        # Append to odds history for charting when the snapshot changes.
+        if changed:
+            history = game.setdefault("odds_history", [])
+            snapshot = {
+                "timestamp": new_updated_at,
+                away_key: away_odds,
+                home_key: home_odds,
+            }
+            if not history or history[-1] != snapshot:
+                history.append(snapshot)
+            print(f"[{game_id}] {away_key}: {old_away} -> {away_odds} | {home_key}: {old_home} -> {home_odds} | lastUpdated: {game['lastUpdated']}")
+            updated += 1
+        else:
+            print(f"[{game_id}] no odds change; lastUpdated: {game['lastUpdated']}")
 
     if selected == 0:
         print("No games matched the requested filters.")
         return 1
+
+    if updated == 0:
+        print(f"No NFL odds changes for {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent}); skipping write")
+        return 0
 
     with open(YAML_PATH, "w") as f:
         yaml.safe_dump(doc, f, sort_keys=False, allow_unicode=True, width=1000)

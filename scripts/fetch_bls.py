@@ -120,12 +120,14 @@ def update_financials():
         found = False
         for idx in data.get("indices", []):
             if idx.get("name") == indicator_name:
+                before = {k: v for k, v in idx.items() if k.isdigit() or k in MONTH_MAP.values()}
                 # Drop any stale flat month keys (march, april, ...) and
                 # replace monthly storage with consistent nested year objects.
                 for k in list(idx.keys()):
                     if k in MONTH_MAP.values():
                         del idx[k]
                 idx.update(by_year)
+                after = {k: v for k, v in idx.items() if k.isdigit()}
 
                 idx["agency"] = "BLS"
                 idx["source_url"] = "https://www.bls.gov/jlt/"
@@ -135,16 +137,25 @@ def update_financials():
                     "(series JTSJOL)."
                 )
                 idx["change"] = ""
-                idx["lastUpdated"] = now_iso
-                idx["newMonth"] = False
                 found = True
-                updates.append(
-                    f"{indicator_name}: updated from BLS ({series_id})"
-                )
+                if before != after:
+                    idx["lastUpdated"] = now_iso
+                    idx["newMonth"] = False
+                    updates.append(
+                        f"{indicator_name}: updated from BLS ({series_id})"
+                    )
                 break
 
         if not found:
             print(f"  Indicator '{indicator_name}' not found in JSON")
+
+    print(f"\nUpdated {len(updates)} indicator(s):")
+    for u in updates:
+        print(f"  - {u}")
+
+    if not updates:
+        print("\nNo BLS data changes; skipping write")
+        return
 
     data["lastUpdated"] = now_iso
 
@@ -152,9 +163,6 @@ def update_financials():
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
-    print(f"\nUpdated {len(updates)} indicator(s):")
-    for u in updates:
-        print(f"  - {u}")
     print(f"\nSaved to {FINANCIALS_PATH}")
 
 

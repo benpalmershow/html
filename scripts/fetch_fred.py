@@ -566,7 +566,8 @@ def update_financials(indicator_names=None):
                     # else: no change, skip
 
                 idx["newMonth"] = had_new_month
-                idx["lastUpdated"] = now_iso
+                if had_new_month or any(u.startswith(f"{indicator_name} (") for u in updates):
+                    idx["lastUpdated"] = now_iso
                 found = True
                 break
 
@@ -577,15 +578,19 @@ def update_financials(indicator_names=None):
         umich_updates = update_umich_sentiment(data, now_iso)
         updates.extend(umich_updates)
 
+    print(f"\nUpdated {len(updates)} values:")
+    for u in updates:
+        print(f"  - {u}")
+
+    if not updates:
+        print("\nNo FRED data changes; skipping write")
+        return
+
     data["lastUpdated"] = now_iso
 
     with open(FINANCIALS_PATH, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
-
-    print(f"\nUpdated {len(updates)} values:")
-    for u in updates:
-        print(f"  - {u}")
 
     print(f"\nSaved to {FINANCIALS_PATH}")
 

@@ -106,14 +106,17 @@ def main():
             changed = True
             logger.info("Set %s %s = %s", current_year, month, value)
 
-    indicator["lastUpdated"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-    iso = now.replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    indicator["releaseTimeISO"] = iso
-
     if args.dry_run:
         print(json.dumps({current_year: updates}, indent=2))
         return
 
+    if not changed:
+        logger.info("No ADP data changes; skipping write")
+        return
+
+    indicator["lastUpdated"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    iso = now.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    indicator["releaseTimeISO"] = iso
     FINANCIALS_PATH.write_text(json.dumps(data, indent=2) + "\n")
     logger.info("Updated %s", FINANCIALS_PATH)
 

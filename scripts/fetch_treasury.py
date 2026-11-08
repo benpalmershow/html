@@ -306,19 +306,21 @@ def update_financials(dry_run=False):
     for indicator_id in set(sources) - found:
         logger.error("Indicator '%s' not found in financials-data.json", indicator_id)
 
-    data["lastUpdated"] = now_iso
-
     if changes:
         logger.info("Updates:")
         for change in changes:
             logger.info("  - %s", change)
     else:
         logger.info("No changes for %d", target_year)
+        if not dry_run:
+            logger.info("No Treasury data changes; skipping write")
+            return
 
     if dry_run:
         logger.info("Dry run: %d changes previewed, JSON not written", len(changes))
         return
 
+    data["lastUpdated"] = now_iso
     with open(FINANCIALS_PATH, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")

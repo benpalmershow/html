@@ -280,9 +280,6 @@ def main():
         selected_games += 1
 
         game_dt = parse_iso(game.get("game_time_iso"))
-        if args.replace_completed and game_dt is not None and game_dt < now:
-            completed_ids.append(game_id)
-            continue
 
         away_odds = game.get(f"{game.get('away')}_win_odds")
         home_odds = game.get(f"{game.get('home')}_win_odds")
@@ -329,14 +326,16 @@ def main():
         )
 
     if args.replace_completed and completed_ids:
-        remove_ids.update(completed_ids)
+        # Completed games are retained with their final settled odds
+        # (winner/result inferred in build_indicator); nothing to remove here.
+        pass
 
     if remove_ids:
         before = len(indices)
         indices[:] = [ind for ind in indices if ind.get("id") not in remove_ids]
         removed = before - len(indices)
         if removed:
-            print(f"Removed {removed} unavailable or completed game(s): {', '.join(sorted(remove_ids))}")
+            print(f"Removed {removed} unavailable game(s): {', '.join(sorted(remove_ids))}")
     else:
         removed = 0
 

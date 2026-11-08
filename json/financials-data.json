@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-08T15:39:32Z",
+  "lastUpdated": "2026-11-08T17:37:00.938974Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -4793,20 +4793,22 @@
       "game_time": "Nov 08, 2026 09:30 AM ET",
       "game_time_iso": "2026-11-08T14:30:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-atl-2026-11-08",
-      "lastUpdated": "2026-11-08T12:33:41.041141Z",
+      "lastUpdated": "2026-11-08T17:35:39.417951Z",
       "week": 9,
+      "winner": "CIN",
+      "result": "Final",
       "probabilities": {
         "2026-11-07": {
           "CIN_win_odds": "62",
           "ATL_win_odds": "38"
         },
         "2026-11-08": {
-          "CIN_win_odds": "62",
-          "ATL_win_odds": "38"
+          "CIN_win_odds": "100",
+          "ATL_win_odds": "0"
         },
         "2026-11-01": {
-          "CIN_win_odds": "65",
-          "ATL_win_odds": "35"
+          "CIN_win_odds": "66",
+          "ATL_win_odds": "34"
         },
         "2026-11-03": {
           "CIN_win_odds": "60",
@@ -4817,12 +4819,16 @@
           "ATL_win_odds": "36"
         },
         "2026-11-06": {
-          "CIN_win_odds": "61",
-          "ATL_win_odds": "39"
+          "CIN_win_odds": "62",
+          "ATL_win_odds": "38"
+        },
+        "2026-11-09": {
+          "CIN_win_odds": "100",
+          "ATL_win_odds": "0"
         }
       },
-      "CIN_win_odds": "62",
-      "ATL_win_odds": "38"
+      "CIN_win_odds": "100",
+      "ATL_win_odds": "0"
     },
     {
       "id": "cle-no-2026-11-08",

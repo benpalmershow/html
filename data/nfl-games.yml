@@ -33,9 +33,9 @@ games:
   game_time_iso: '2026-11-08T14:30:00Z'
   url: https://polymarket.com/sports/nfl/nfl-cin-atl-2026-11-08
   polymarket_slug: nfl-cin-atl-2026-11-08
-  CIN_win_odds: 62.5¢
-  ATL_win_odds: 37.5¢
-  lastUpdated: '2026-11-08T12:33:41.041141Z'
+  CIN_win_odds: 100.0¢
+  ATL_win_odds: 0.1¢
+  lastUpdated: '2026-11-08T17:35:39.417951Z'
   odds_history:
   - timestamp: '2026-11-07T00:43:41.483476Z'
     CIN_win_odds: 61.5¢
@@ -43,6 +43,9 @@ games:
   - timestamp: '2026-11-08T12:33:41.041141Z'
     CIN_win_odds: 62.5¢
     ATL_win_odds: 37.5¢
+  - timestamp: '2026-11-08T17:35:39.417951Z'
+    CIN_win_odds: 100.0¢
+    ATL_win_odds: 0.1¢
 - id: cle-no-2026-11-08
   week: 9
   away: CLE

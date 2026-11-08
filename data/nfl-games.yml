@@ -11,9 +11,9 @@ games:
   game_time_iso: '2026-11-08T21:25:00Z'
   url: https://polymarket.com/sports/nfl/nfl-ari-sea-2026-11-08
   polymarket_slug: nfl-ari-sea-2026-11-08
-  ARI_win_odds: 21.5¢
-  SEA_win_odds: 78.5¢
-  lastUpdated: '2026-11-08T22:01:55.95308Z'
+  ARI_win_odds: 16.5¢
+  SEA_win_odds: 83.5¢
+  lastUpdated: '2026-11-08T22:17:36.172634Z'
   odds_history:
   - timestamp: '2026-11-07T00:41:41.124308Z'
     ARI_win_odds: 22.5¢
@@ -27,6 +27,9 @@ games:
   - timestamp: '2026-11-08T22:01:55.95308Z'
     ARI_win_odds: 21.5¢
     SEA_win_odds: 78.5¢
+  - timestamp: '2026-11-08T22:17:36.172634Z'
+    ARI_win_odds: 16.5¢
+    SEA_win_odds: 83.5¢
 - id: cin-atl-2026-11-08
   week: 9
   away: CIN
@@ -167,9 +170,9 @@ games:
   game_time_iso: '2026-11-08T21:25:00Z'
   url: https://polymarket.com/sports/nfl/nfl-gb-ne-2026-11-08
   polymarket_slug: nfl-gb-ne-2026-11-08
-  GB_win_odds: 85.5¢
-  NE_win_odds: 14.5¢
-  lastUpdated: '2026-11-08T22:01:42.172392Z'
+  GB_win_odds: 83.5¢
+  NE_win_odds: 16.5¢
+  lastUpdated: '2026-11-08T22:17:36.172634Z'
   odds_history:
   - timestamp: '2026-11-07T00:41:41.124308Z'
     GB_win_odds: 38.5¢
@@ -183,6 +186,9 @@ games:
   - timestamp: '2026-11-08T22:01:42.172392Z'
     GB_win_odds: 85.5¢
     NE_win_odds: 14.5¢
+  - timestamp: '2026-11-08T22:17:36.172634Z'
+    GB_win_odds: 83.5¢
+    NE_win_odds: 16.5¢
 - id: hou-lac-2026-11-08
   week: 9
   away: HOU
@@ -195,9 +201,9 @@ games:
   game_time_iso: '2026-11-08T21:05:00Z'
   url: https://polymarket.com/sports/nfl/nfl-hou-lac-2026-11-08
   polymarket_slug: nfl-hou-lac-2026-11-08
-  HOU_win_odds: 73.5¢
-  LAC_win_odds: 26.5¢
-  lastUpdated: '2026-11-08T22:00:23.809489Z'
+  HOU_win_odds: 82.5¢
+  LAC_win_odds: 17.5¢
+  lastUpdated: '2026-11-08T22:15:49.403094Z'
   odds_history:
   - timestamp: '2026-11-07T00:45:41.462984Z'
     HOU_win_odds: 69.5¢
@@ -211,6 +217,9 @@ games:
   - timestamp: '2026-11-08T22:00:23.809489Z'
     HOU_win_odds: 73.5¢
     LAC_win_odds: 26.5¢
+  - timestamp: '2026-11-08T22:15:49.403094Z'
+    HOU_win_odds: 82.5¢
+    LAC_win_odds: 17.5¢
 - id: lar-was-2026-11-08
   week: 9
   away: LAR
@@ -248,9 +257,9 @@ games:
   game_time_iso: '2026-11-08T21:05:00Z'
   url: https://polymarket.com/sports/nfl/nfl-lv-sf-2026-11-08
   polymarket_slug: nfl-lv-sf-2026-11-08
-  LV_win_odds: 10.5¢
-  SF_win_odds: 89.5¢
-  lastUpdated: '2026-11-08T22:03:48.875182Z'
+  LV_win_odds: 6.5¢
+  SF_win_odds: 93.5¢
+  lastUpdated: '2026-11-08T22:19:36.862858Z'
   odds_history:
   - timestamp: '2026-11-07T00:45:41.462984Z'
     LV_win_odds: 19.5¢
@@ -264,6 +273,9 @@ games:
   - timestamp: '2026-11-08T22:03:48.875182Z'
     LV_win_odds: 10.5¢
     SF_win_odds: 89.5¢
+  - timestamp: '2026-11-08T22:19:36.862858Z'
+    LV_win_odds: 6.5¢
+    SF_win_odds: 93.5¢
 - id: nyg-phi-2026-11-08
   week: 9
   away: NYG

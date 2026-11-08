@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-08T23:09:05.058930Z",
+  "lastUpdated": "2026-11-08T23:56:13.191595Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -4793,7 +4793,7 @@
       "game_time": "Nov 08, 2026 04:25 PM ET",
       "game_time_iso": "2026-11-08T21:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ari-sea-2026-11-08",
-      "lastUpdated": "2026-11-08T23:03:45.762645Z",
+      "lastUpdated": "2026-11-08T23:55:08.932183Z",
       "week": 9,
       "probabilities": {
         "2026-11-07": {
@@ -4801,28 +4801,28 @@
           "SEA_win_odds": "78"
         },
         "2026-11-08": {
-          "ARI_win_odds": "8",
-          "SEA_win_odds": "92"
+          "ARI_win_odds": "3",
+          "SEA_win_odds": "97"
         },
         "2026-11-01": {
-          "ARI_win_odds": "11",
-          "SEA_win_odds": "89"
-        },
-        "2026-11-03": {
           "ARI_win_odds": "6",
           "SEA_win_odds": "94"
         },
+        "2026-11-03": {
+          "ARI_win_odds": "5",
+          "SEA_win_odds": "95"
+        },
         "2026-11-05": {
-          "ARI_win_odds": "10",
-          "SEA_win_odds": "90"
+          "ARI_win_odds": "5",
+          "SEA_win_odds": "95"
         },
         "2026-11-06": {
-          "ARI_win_odds": "7",
-          "SEA_win_odds": "93"
+          "ARI_win_odds": "5",
+          "SEA_win_odds": "95"
         }
       },
-      "ARI_win_odds": "8",
-      "SEA_win_odds": "92"
+      "ARI_win_odds": "3",
+      "SEA_win_odds": "97"
     },
     {
       "id": "cin-atl-2026-11-08",
@@ -5063,36 +5063,42 @@
       "game_time": "Nov 08, 2026 04:25 PM ET",
       "game_time_iso": "2026-11-08T21:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-gb-ne-2026-11-08",
-      "lastUpdated": "2026-11-08T23:07:37.446037Z",
+      "lastUpdated": "2026-11-08T23:53:36.192653Z",
       "week": 9,
+      "winner": "GB",
+      "result": "Final",
       "probabilities": {
         "2026-11-07": {
           "GB_win_odds": "38",
           "NE_win_odds": "62"
         },
         "2026-11-08": {
-          "GB_win_odds": "74",
-          "NE_win_odds": "26"
+          "GB_win_odds": "100",
+          "NE_win_odds": "0"
         },
         "2026-11-01": {
-          "GB_win_odds": "77",
-          "NE_win_odds": "23"
+          "GB_win_odds": "95",
+          "NE_win_odds": "5"
         },
         "2026-11-03": {
-          "GB_win_odds": "72",
-          "NE_win_odds": "28"
+          "GB_win_odds": "95",
+          "NE_win_odds": "5"
         },
         "2026-11-05": {
-          "GB_win_odds": "76",
-          "NE_win_odds": "24"
+          "GB_win_odds": "95",
+          "NE_win_odds": "5"
         },
         "2026-11-06": {
-          "GB_win_odds": "73",
-          "NE_win_odds": "27"
+          "GB_win_odds": "95",
+          "NE_win_odds": "5"
+        },
+        "2026-11-09": {
+          "GB_win_odds": "100",
+          "NE_win_odds": "0"
         }
       },
-      "GB_win_odds": "74",
-      "NE_win_odds": "26"
+      "GB_win_odds": "100",
+      "NE_win_odds": "0"
     },
     {
       "id": "hou-lac-2026-11-08",
@@ -5103,36 +5109,42 @@
       "game_time": "Nov 08, 2026 04:05 PM ET",
       "game_time_iso": "2026-11-08T21:05:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-hou-lac-2026-11-08",
-      "lastUpdated": "2026-11-08T23:05:36.403868Z",
+      "lastUpdated": "2026-11-08T23:52:35.213682Z",
       "week": 9,
+      "winner": "HOU",
+      "result": "Final",
       "probabilities": {
         "2026-11-07": {
           "HOU_win_odds": "70",
           "LAC_win_odds": "30"
         },
         "2026-11-08": {
-          "HOU_win_odds": "94",
-          "LAC_win_odds": "6"
+          "HOU_win_odds": "100",
+          "LAC_win_odds": "0"
         },
         "2026-11-01": {
           "HOU_win_odds": "95",
           "LAC_win_odds": "5"
         },
         "2026-11-03": {
-          "HOU_win_odds": "92",
-          "LAC_win_odds": "8"
+          "HOU_win_odds": "95",
+          "LAC_win_odds": "5"
         },
         "2026-11-05": {
           "HOU_win_odds": "95",
           "LAC_win_odds": "5"
         },
         "2026-11-06": {
-          "HOU_win_odds": "93",
-          "LAC_win_odds": "7"
+          "HOU_win_odds": "95",
+          "LAC_win_odds": "5"
+        },
+        "2026-11-09": {
+          "HOU_win_odds": "100",
+          "LAC_win_odds": "0"
         }
       },
-      "HOU_win_odds": "94",
-      "LAC_win_odds": "6"
+      "HOU_win_odds": "100",
+      "LAC_win_odds": "0"
     },
     {
       "id": "lar-was-2026-11-08",
@@ -5189,36 +5201,42 @@
       "game_time": "Nov 08, 2026 04:05 PM ET",
       "game_time_iso": "2026-11-08T21:05:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-lv-sf-2026-11-08",
-      "lastUpdated": "2026-11-08T23:06:22.851721Z",
+      "lastUpdated": "2026-11-08T23:51:43.229536Z",
       "week": 9,
+      "winner": "SF",
+      "result": "Final",
       "probabilities": {
         "2026-11-07": {
           "LV_win_odds": "20",
           "SF_win_odds": "80"
         },
         "2026-11-08": {
-          "LV_win_odds": "7",
-          "SF_win_odds": "93"
+          "LV_win_odds": "0",
+          "SF_win_odds": "100"
         },
         "2026-11-01": {
-          "LV_win_odds": "10",
-          "SF_win_odds": "90"
+          "LV_win_odds": "5",
+          "SF_win_odds": "95"
         },
         "2026-11-03": {
           "LV_win_odds": "5",
           "SF_win_odds": "95"
         },
         "2026-11-05": {
-          "LV_win_odds": "9",
-          "SF_win_odds": "91"
+          "LV_win_odds": "5",
+          "SF_win_odds": "95"
         },
         "2026-11-06": {
-          "LV_win_odds": "6",
-          "SF_win_odds": "94"
+          "LV_win_odds": "5",
+          "SF_win_odds": "95"
+        },
+        "2026-11-09": {
+          "LV_win_odds": "0",
+          "SF_win_odds": "100"
         }
       },
-      "LV_win_odds": "7",
-      "SF_win_odds": "93"
+      "LV_win_odds": "0",
+      "SF_win_odds": "100"
     },
     {
       "id": "nyg-phi-2026-11-08",

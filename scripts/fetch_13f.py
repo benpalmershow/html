@@ -22,6 +22,7 @@ Usage:
 
 import argparse
 import json
+from fetch_utils import atomic_write_json
 import re
 import sys
 import time
@@ -597,33 +598,40 @@ def main():
     merged.sort(key=lambda h: (h.get("firmIndex", 0), -h.get("value", 0)))
     data["holdings"] = merged
 
+    changed = False
     for entry in updated_firms:
         for firm in firms:
             if firm.get("name") != entry["name"]:
                 continue
-            firm["cik"] = entry["cik"]
-            firm["period"] = entry["period"]
-            firm["previousPeriod"] = entry["previousPeriod"]
-            firm["filingDate"] = entry["filingDate"]
-            firm["lastUpdated"] = entry["lastUpdated"]
-            firm["description"] = build_description(
-                firm["name"], entry["cik"], entry["period"]
-            )
+            for key in ("cik", "period", "previousPeriod", "filingDate"):
+                if firm.get(key) != entry[key]:
+                    changed = True
+                    firm[key] = entry[key]
+            desc = build_description(firm["name"], entry["cik"], entry["period"])
+            if firm.get("description") != desc:
+                changed = True
+                firm["description"] = desc
+            if changed:
+                firm["lastUpdated"] = entry["lastUpdated"]
 
-    previous.update(new_previous)
-    data["previous"] = previous
-    data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if new_previous:
+        previous.update(new_previous)
+        data["previous"] = previous
+        changed = True
 
-    with open(HOLDINGS_PATH, "w") as handle:
-        json.dump(data, handle, indent=2, ensure_ascii=False)
-        handle.write("\n")
-    print(f"Saved {HOLDINGS_PATH} ({len(merged)} holdings, {len(previous)} prior snapshots)")
+    if merged != holdings:
+        changed = True
+
+    if changed:
+        data["lastUpdated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        atomic_write_json(HOLDINGS_PATH, data)
+        print(f"Saved {HOLDINGS_PATH} ({len(merged)} holdings, {len(previous)} prior snapshots)")
+    else:
+        print("No 13F data changes; skipping holdings write")
 
     if learned_tickers:
         ticker_map.update(learned_tickers)
-        with open(TICKER_MAP_PATH, "w") as handle:
-            json.dump(ticker_map, handle, indent=2, sort_keys=True, ensure_ascii=False)
-            handle.write("\n")
+        atomic_write_json(TICKER_MAP_PATH, ticker_map)
         print(f"Saved {TICKER_MAP_PATH} ({len(learned_tickers)} new tickers)")
 
 

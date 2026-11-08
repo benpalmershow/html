@@ -255,19 +255,64 @@ def parse_football_data(api_data):
     return matches
 
 def update_world_cup_json(matches):
-    """Update world-cup.json with fetched matches"""
+    """Update world-cup.json with fetched matches, preserving lastUpdated when unchanged.
+
+    Compares source-driven fields (scores/status/fixtures). Time-derived display fields
+    like minute/time are recomputed from the API snapshot but do not force a write
+    when the underlying match state is unchanged.
+    """
+    from fetch_utils import atomic_write_json
+
+    existing = {}
+    if OUTPUT_FILE.exists():
+        try:
+            existing = json.loads(OUTPUT_FILE.read_text())
+        except Exception:
+            existing = {}
+
+    def comparable(m):
+        return {
+            "id": m.get("id"),
+            "matchId": m.get("matchId"),
+            "teamA": {k: m.get("teamA", {}).get(k) for k in ("id", "name", "score", "halfTimeScore", "extraTimeScore", "penaltyScore")},
+            "teamB": {k: m.get("teamB", {}).get(k) for k in ("id", "name", "score", "halfTimeScore", "extraTimeScore", "penaltyScore")},
+            "statusRaw": m.get("statusRaw"),
+            "status": m.get("status") if m.get("statusRaw") in {"IN_PLAY", "PAUSED", "EXTRA_TIME", "PENALTY_SHOOTOUT", "FINISHED"} else m.get("status"),
+            "date": m.get("date"),
+            "utcDate": m.get("utcDate"),
+            "venue": m.get("venue"),
+            "stage": m.get("stage"),
+            "group": m.get("group"),
+            "matchDay": m.get("matchDay"),
+            "winner": m.get("winner"),
+            "referees": m.get("referees"),
+        }
+
+    new_content = {
+        "competition": "FIFA World Cup 2026",
+        "matches": [comparable(m) for m in matches],
+        "matchCount": len(matches),
+    }
+    old_matches = existing.get("matches") or []
+    old_content = {
+        "competition": existing.get("competition"),
+        "matches": [comparable(m) for m in old_matches] if old_matches else old_matches,
+        "matchCount": existing.get("matchCount"),
+    }
+    if old_content == new_content:
+        logger.info("No World Cup score changes; skipping write")
+        return False
+
     output_data = {
         "competition": "FIFA World Cup 2026",
         "matches": matches,
         "matchCount": len(matches),
-        "lastUpdated": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+        "lastUpdated": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
     }
-    
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(output_data, f, indent=2, ensure_ascii=False)
-    
+
+    atomic_write_json(OUTPUT_FILE, output_data)
     logger.info(f"Updated {OUTPUT_FILE} with {len(matches)} matches")
+    return True
 
 def main():
     """Main function to fetch and update World Cup data"""

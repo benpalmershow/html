@@ -52,4 +52,4 @@ jobs:
             exit 0
           fi
           git commit -m "chore: update FHFA House Price Index [skip ci]"
-          git push
+          bash scripts/git_push_retry.sh "$(git branch --show-current)"

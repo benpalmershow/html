@@ -29,6 +29,7 @@ Usage:
 
 import argparse
 import json
+from fetch_utils import atomic_write_json
 import logging
 import os
 import sys
@@ -387,9 +388,7 @@ def update_financials(dry_run=False, indicator_ids=None):
         return
 
     data["lastUpdated"] = now_iso
-    with open(FINANCIALS_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    atomic_write_json(FINANCIALS_PATH, data)
 
     logger.info("Saved %d changes to %s", len(changes), FINANCIALS_PATH)
 

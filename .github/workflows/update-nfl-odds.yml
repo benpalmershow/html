@@ -72,6 +72,11 @@ jobs:
           echo "week=$WEEK" >> "$GITHUB_OUTPUT"
           echo "NFL week: $WEEK"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Fetch NFL odds for current week
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}
 
@@ -83,14 +88,17 @@ jobs:
             echo "No custom validation script found, skipping."
           fi
 
-      - name: Validate merged data (JSON/YAML + site validator)
+      - name: Validate merged data (JSON/YAML + targeted NFL/site checks)
         run: |
           python3 -m json.tool json/financials-data.json > /dev/null
           python3 -c "import yaml; yaml.safe_load(open('data/nfl-games.yml', encoding='utf-8'))"
-          node scripts/validate-site.js
+          python3 scripts/validate_nfl_data.py
 
       - name: Apply NFL YAML (weekly)
         run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }} --replace-completed
+
+      - name: Validate final site state
+        run: node scripts/validate-site.js
 
       - name: Commit changes
         run: |
@@ -100,8 +108,8 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Automated NFL odds update for week ${{ steps.week.outputs.week }}"
-            git push
+            git commit -m "Automated NFL odds update for week ${{ steps.week.outputs.week }} [skip ci]"
+            bash scripts/git_push_retry.sh "$(git branch --show-current)"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -47,4 +47,4 @@ jobs:
             exit 0
           fi
           git commit -m "chore: update Polymarket/Kalshi prediction market indicators [skip ci]"
-          git push
+          bash scripts/git_push_retry.sh "$(git branch --show-current)"

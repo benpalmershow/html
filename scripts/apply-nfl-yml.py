@@ -28,6 +28,7 @@ free of NFL intellectual property.
 """
 
 import json
+from fetch_utils import atomic_write_json
 import argparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -345,8 +346,7 @@ def main():
 
     data["lastUpdated"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
-    with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    atomic_write_json(FINANCIALS_PATH, data)
 
     print(f"Wrote {FINANCIALS_PATH} ({len(indices)} indicators total).")
     return 0

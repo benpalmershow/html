@@ -16,6 +16,7 @@ Usage:
   python3 scripts/fetch_adp.py            # fetch and update the JSON
   python3 scripts/fetch_adp.py --dry-run  # preview changes without writing
 """
+from fetch_utils import atomic_write_json
 import argparse
 import csv
 import io
@@ -117,7 +118,7 @@ def main():
     indicator["lastUpdated"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     iso = now.replace(microsecond=0).isoformat().replace("+00:00", "Z")
     indicator["releaseTimeISO"] = iso
-    FINANCIALS_PATH.write_text(json.dumps(data, indent=2) + "\n")
+    atomic_write_json(FINANCIALS_PATH, data)
     logger.info("Updated %s", FINANCIALS_PATH)
 
 

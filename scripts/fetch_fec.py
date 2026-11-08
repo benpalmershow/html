@@ -8,6 +8,7 @@ Requires: FEC_API_KEY environment variable (get a free key at https://api.open.f
 """
 
 import json
+from fetch_utils import atomic_write_json
 import os
 import logging
 import time
@@ -311,7 +312,6 @@ def main() -> int:
         candidates_out = []
         for cand in race["candidates"]:
             cand_out = dict(cand)  # copy static fields
-            cand_out["fetchedAt"] = now
             cand_out["source"] = "OpenFEC API"
 
             try:
@@ -326,19 +326,27 @@ def main() -> int:
             # Polite delay between requests
             time.sleep(REQUEST_DELAY)
 
-        races_out.append({**race, "candidates": candidates_out, "lastUpdated": now})
+        races_out.append({**race, "candidates": candidates_out})
 
     output = {
-        "lastUpdated": now,
         "source": "OpenFEC API",
         "source_url": "https://api.open.fec.gov/developers/",
         "cycle": CYCLE,
         "races": races_out,
     }
 
+    if OUTPUT_FILE.exists():
+        try:
+            existing = json.loads(OUTPUT_FILE.read_text())
+            if {k: v for k, v in existing.items() if k != "lastUpdated"} == output:
+                logger.info("No FEC data changes; skipping write")
+                return 0
+        except Exception:
+            pass
+
+    output = {"lastUpdated": now, **output}
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+    atomic_write_json(OUTPUT_FILE, output)
 
     logger.info(f"Wrote {OUTPUT_FILE}")
     return 0

@@ -12,6 +12,7 @@ series for the headline PPI).
 """
 
 import json
+from fetch_utils import atomic_write_json
 import os
 import sys
 from datetime import datetime, timezone
@@ -159,9 +160,7 @@ def update_financials():
 
     data["lastUpdated"] = now_iso
 
-    with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    atomic_write_json(FINANCIALS_PATH, data)
 
     print(f"\nSaved to {FINANCIALS_PATH}")
 

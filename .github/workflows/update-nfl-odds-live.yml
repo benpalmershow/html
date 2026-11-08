@@ -36,14 +36,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Fetch NFL odds (live gametime)
         run: python3 scripts/fetch-nfl-odds.py --mode live
 
-      - name: Validate merged data
+      - name: Validate data (targeted)
         run: |
-          python3 -m json.tool json/financials-data.json > /dev/null || true
+          python3 -m json.tool json/financials-data.json > /dev/null
           python3 -c "import yaml; yaml.safe_load(open('data/nfl-games.yml', encoding='utf-8'))"
-          node scripts/validate-site.js || true
+          python3 scripts/validate_nfl_data.py
 
       - name: Apply NFL YAML (live)
         run: python3 scripts/apply-nfl-yml.py
@@ -56,8 +61,8 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: nfl odds live update"
-            git push
+            git commit -m "chore: nfl odds live update [skip ci]"
+            bash scripts/git_push_retry.sh "$(git branch --show-current)"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -276,8 +276,9 @@ def main():
         print(f"No NFL odds changes for {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent}); skipping write")
         return 0
 
-    with open(YAML_PATH, "w") as f:
-        yaml.safe_dump(doc, f, sort_keys=False, allow_unicode=True, width=1000)
+    from fetch_utils import atomic_write_text
+    rendered = yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=1000)
+    atomic_write_text(YAML_PATH, rendered)
 
     print(f"Refreshed odds for {updated} of {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent})")
     return 0

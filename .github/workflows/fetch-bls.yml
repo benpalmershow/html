@@ -58,4 +58,4 @@ jobs:
             exit 0
           fi
           git commit -m "chore: update BLS economic indicators [skip ci]"
-          git push
+          bash scripts/git_push_retry.sh "$(git branch --show-current)"

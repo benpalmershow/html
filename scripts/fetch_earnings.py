@@ -293,8 +293,19 @@ def fetch_ticker_data(symbol):
 
 def main():
     logger.info(f"Starting yfinance earnings fetch for {', '.join(TICKERS)}...")
+    existing_by_ticker = {}
+    if OUTPUT_FILE.exists():
+        try:
+            existing_by_ticker = {
+                e.get("ticker"): e for e in json.loads(OUTPUT_FILE.read_text()).get("earnings", [])
+                if e.get("ticker")
+            }
+        except Exception:
+            existing_by_ticker = {}
+
+    now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     output = {
-        "lastUpdated": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "lastUpdated": now_iso,
         "tickers": TICKERS,
         "earnings": [],
     }
@@ -302,29 +313,52 @@ def main():
     for symbol in TICKERS:
         # Skip ANT (Anthropic) - manually sourced from SEC S-1, not available via yfinance
         if symbol == "ANT":
+            existing_ant = existing_by_ticker.get("ANT")
+            if existing_ant:
+                output["earnings"].append(existing_ant)
             logger.info(f"  {symbol}: skipped (manually sourced from SEC S-1)")
             continue
 
         try:
             data = fetch_ticker_data(symbol)
+            previous = existing_by_ticker.get(symbol, {})
+            # Preserve fields owned by other scripts/workflow steps.
+            for key in ("quarterlyFinancials", "quarterlySource"):
+                if key in previous and key not in data:
+                    data[key] = previous[key]
+            comparable_new = {k: v for k, v in data.items() if k != "fetchedAt"}
+            comparable_old = {k: v for k, v in previous.items() if k != "fetchedAt"}
+            if comparable_new == comparable_old and comparable_old:
+                data["fetchedAt"] = previous.get("fetchedAt", data["fetchedAt"])
+                logger.info(f"  {symbol}: no changes")
+            else:
+                logger.info(f"  {symbol}: {data.get('company', symbol)}")
             output["earnings"].append(data)
-            logger.info(f"  {symbol}: {data.get('company', symbol)}")
         except Exception as e:
             logger.error(f"  {symbol}: fatal error: {e}")
-            output["earnings"].append(
-                {
-                    "ticker": symbol,
-                    "error": str(e),
-                    "fetchedAt": datetime.now(timezone.utc)
-                    .isoformat()
-                    .replace("+00:00", "Z"),
-                }
-            )
+            previous = existing_by_ticker.get(symbol)
+            if previous:
+                output["earnings"].append(previous)
+            else:
+                output["earnings"].append(
+                    {
+                        "ticker": symbol,
+                        "error": str(e),
+                        "fetchedAt": now_iso,
+                    }
+                )
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+    if OUTPUT_FILE.exists():
+        try:
+            existing = json.loads(OUTPUT_FILE.read_text())
+            if {k: v for k, v in existing.items() if k != "lastUpdated"} == {k: v for k, v in output.items() if k != "lastUpdated"}:
+                logger.info("No earnings changes; skipping write")
+                return 0
+        except Exception:
+            pass
 
+    from fetch_utils import atomic_write_json
+    atomic_write_json(OUTPUT_FILE, output)
     logger.info(f"Wrote to {OUTPUT_FILE}")
     return 0
 

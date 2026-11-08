@@ -7,6 +7,7 @@ This provides verifiable data from the primary source (SEC.gov).
 
 import calendar
 import json
+from fetch_utils import atomic_write_json
 import logging
 import os
 import re
@@ -549,6 +550,7 @@ def main():
     except Exception as e:
         logger.error(f"Failed to load existing earnings data: {e}")
         raise SystemExit(1)
+    before = json.loads(json.dumps(existing_data))
 
     # Update each ticker with SEC quarterly data
     for ticker in TICKERS:
@@ -569,10 +571,14 @@ def main():
         except Exception as e:
             logger.error(f"  {ticker}: fatal error: {e}")
 
-    # Write updated data
+    # Write updated data only when SEC quarterly data changed.
+    changed = existing_data != before
+    if not changed:
+        logger.info("No SEC quarterly changes; skipping write")
+        return 0
+
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(existing_data, f, indent=2, ensure_ascii=False)
+    atomic_write_json(OUTPUT_FILE, existing_data)
 
     logger.info(f"Wrote updated data to {OUTPUT_FILE}")
     return 0

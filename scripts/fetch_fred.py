@@ -19,6 +19,7 @@ import argparse
 import csv
 import io
 import json
+from fetch_utils import atomic_write_json
 
 def fetch_fred_csv_observations(series_id, limit=100):
     """Fallback: fetch observations from FRED's CSV endpoint."""
@@ -588,9 +589,7 @@ def update_financials(indicator_names=None):
 
     data["lastUpdated"] = now_iso
 
-    with open(FINANCIALS_PATH, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    atomic_write_json(FINANCIALS_PATH, data)
 
     print(f"\nSaved to {FINANCIALS_PATH}")
 

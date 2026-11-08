@@ -12,10 +12,13 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - run: pip install requests tenacity
       - run: python3 scripts/fetch_adp.py
       - run: npm run validate
@@ -29,4 +32,4 @@ jobs:
             exit 0
           fi
           git commit -m "chore: update ADP private employment [skip ci]"
-          git push
+          bash scripts/git_push_retry.sh "$(git branch --show-current)"

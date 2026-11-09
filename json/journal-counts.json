@@ -1,11 +1,13 @@
 {
-  "totalEntries": 795,
+  "totalEntries": 798,
   "byCategory": {
     "economy": 492,
     "policy": 255,
     "trade": 42,
-    "society": 5,
-    "dispatches": 1
+    "society": 6,
+    "dispatches": 1,
+    "business": 1,
+    "tech": 1
   },
   "bySubcategory": {
     "economy -> indicators": 492,
@@ -20,7 +22,8 @@
     "trade -> energy": 2,
     "society -> healthcare": 1,
     "society -> housing": 1,
-    "dispatches -> personal": 1
+    "dispatches -> personal": 1,
+    "business -> automotive": 1
   },
   "byTag": {
     "indicators": 319,
@@ -50,7 +53,7 @@
     "scotus": 10,
     "national-debt": 7,
     "prediction-markets": 7,
-    "waymo": 5,
+    "waymo": 6,
     "glp1": 4,
     "labor": 3,
     "manufacturing": 3,
@@ -65,14 +68,28 @@
     "fraud": 1,
     "doj": 14,
     "los-angeles": 1,
-    "fbi": 1
+    "fbi": 1,
+    "ai": 1,
+    "agents": 1,
+    "automation": 1,
+    "food": 1,
+    "culture": 1,
+    "byd": 1,
+    "ev": 1,
+    "electric-vehicles": 1,
+    "china": 1,
+    "automotive": 1,
+    "autonomous-driving": 1,
+    "motion-prediction": 1,
+    "benchmarks": 1,
+    "machine-learning": 1
   },
   "byType": {
-    "note": 323,
+    "note": 324,
     "essay": 303,
     "curation": 153,
     "data": 13,
     "verse": 2,
-    "dispatch": 2
+    "dispatch": 4
   }
 }

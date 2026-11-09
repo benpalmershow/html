@@ -9,8 +9,9 @@
     "FOUR",
     "DAL",
     "ANT",
+    "BYDIF",
     "JAPAY"
   ],
-  "description": "Edit this list to add/remove tickers for the earnings fetcher. The GitHub Actions workflow will respect this file unless TICKERS is set. Note: ANT is manually sourced from SEC S-1 and preserved by the workflow.",
-  "lastEdited": "2026-11-07"
+  "description": "Edit this list to add/remove tickers for the earnings fetcher. The GitHub Actions workflow will respect this file unless TICKERS is set. Note: ANT is manually sourced from SEC S-1 and preserved by the workflow. BYDIF is manually sourced from Perplexity Finance; financials are unset pending live verification.",
+  "lastEdited": "2026-11-09"
 }

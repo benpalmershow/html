@@ -75,6 +75,7 @@ INDICATOR_MAP = {
     "PPI": "PPIFIS",  # SA Final Demand Producer Price Index
     "Unemployment Rate": "UNRATE",  # SA
     "Jobs": "PAYEMS",  # SA
+    "JOLTS Quits Rate": "JTSQUR",  # SA monthly quits rate
     "Average Hourly Earnings": "CES0500000003",  # SA
     "Jobless Claims": "ICSA",  # SA
     "Monthly Retail Sales": "RSAFS",  # SA

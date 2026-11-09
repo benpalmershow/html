@@ -53,6 +53,29 @@ Journal entries are stored in `json/journal.json` as a JSON array sorted by date
 8. Valid HTML for any inline links
 9. Array sorted newest-first (newest date block at top of file)
 
+### File-backed entries (markdown)
+
+For entries backed by a markdown file (longer notes, essays, dispatches):
+- `journal.json` owns the display `title` (with emoji). Do **not** repeat that title as the first `#`/`###` heading inside the markdown file, because `journal.html` renders the JSON title as the entry header and also renders the fetched markdown body. Duplicating the title shows it twice.
+- The markdown file should start with YAML frontmatter (optional but preferred for articles) followed directly by the body content; the article page/index derive metadata from frontmatter when present.
+- Keep `file` paths relative to site root (e.g., `article/posts/YYYY-MM-DD-slug.md`).
+
+```json
+{
+  "date": "11/09/26",
+  "entries": [
+    {
+      "title": "🥚 The Biggest Egg",
+      "category": "society",
+      "tags": ["ai", "agents", "automation", "food", "culture"],
+      "type": "note",
+      "file": "article/posts/2026-11-09-the-biggest-egg.md",
+      "collapsed": true
+    }
+  ]
+}
+```
+
 ### Formatting standards
 
 - Keep entries concise. One or two short paragraphs is the default.
@@ -109,6 +132,7 @@ Example:
 ## Common Pitfalls
 
 - Adding new routine content to `article/posts/` instead of `json/journal.json`
+- Duplicating the display title inside a file-backed markdown entry (put the emoji title only in `journal.json`; `journal.html` renders the JSON title and the markdown body)
 - Forgetting to create a new date block when publishing on a new day
 - Invalid inline HTML in `title` or `content`
 - Missing `rel='noopener noreferrer'` on external links

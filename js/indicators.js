@@ -564,9 +564,11 @@ latestDataHtml = `
         const quarterly = indicator.quarterlyFinancials || [];
         let hasHistory = false;
 
-        // Detect if this is an S-1 filing (pre-IPO)
+        // Detect if this is an S-1 filing (pre-IPO). Do not infer pre-IPO from
+        // missing scraped data alone: manual/OTC entries can lack price/market cap.
         const isS1Filing = quarterly.length > 0 && (quarterly[0].form === 'S-1' || quarterly[0].form === 'S-1/A' || (quarterly[0].form && quarterly[0].form.startsWith('S-1')));
-        const isPreIPO = isS1Filing || (indicator.latestPrice == null && indicator.marketCap == null);
+        const hasS1Signals = isS1Filing || /pre-ipo|not yet publicly traded/i.test(String(indicator.explanation || indicator.notes || ''));
+        const isPreIPO = hasS1Signals && indicator.latestPrice == null && indicator.marketCap == null;
 
         const formatAmount = (value) => {
             if (value === null || value === undefined || Number.isNaN(value)) return '\u2014';
@@ -736,6 +738,21 @@ latestDataHtml = `
         } else if (indicator.revenueGrowth != null) {
             const growthSign = indicator.revenueGrowth >= 0 ? '+' : '';
             latestItems.push(`<div class="latest-data-row"><span class="month-label">Rev Growth:</span><span class="month-value">${growthSign}${(indicator.revenueGrowth * 100).toFixed(1)}% YoY</span></div>`);
+        }
+
+        if (latestItems.length === 0) {
+            const pendingParts = [];
+            if (indicator.exchange) pendingParts.push(indicator.exchange);
+            if (indicator.sector) pendingParts.push(indicator.sector);
+            if (indicator.industry && indicator.industry !== indicator.sector) pendingParts.push(indicator.industry);
+            if (pendingParts.length) {
+                latestItems.push(`<div class="latest-data-row long-value"><span class="month-label">Listing:</span><span class="month-value">${pendingParts.join(' · ')}</span></div>`);
+            }
+            if (indicator.notes) {
+                latestItems.push(`<div class="latest-data-row long-value"><span class="month-label">Data:</span><span class="month-value">${indicator.notes}</span></div>`);
+            } else if (quarterly.length === 0 && reportedRecent.length === 0 && indicator.latestPrice == null) {
+                latestItems.push(`<div class="latest-data-row long-value"><span class="month-label">Data:</span><span class="month-value">Financial figures pending verification.</span></div>`);
+            }
         }
 
         const latestDataHtml = latestItems.join('');

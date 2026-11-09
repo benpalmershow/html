@@ -11,7 +11,7 @@ Ten-year Treasury yield 4.13% today up from November avg. of 4.09%.
 
 ---
 
-# **Dr. Copper**
+## **Dr. Copper**
 
 Copper futures jumped to $5.35 per pound in November. Rising copper prices benefit mining operations while pressuring construction and electronics manufacturing costs.
 
@@ -21,7 +21,7 @@ Copper futures jumped to $5.35 per pound in November. Rising copper prices benef
 
 ---
 
-# **Trade Deficit down 11%**
+## **Trade Deficit down 11%**
 
 The U.S. trade deficit contracted to $52.8 billion in September, the tightest monthly reading in recent months. The improvement reflects moderating import growth and steadier export activity.
 
@@ -31,11 +31,11 @@ The U.S. trade deficit contracted to $52.8 billion in September, the tightest mo
 
 ---
 
-# <i data-lucide='home' class='post-icon'></i> **Mortgage Rates Hold at 6.24%**
+## <i data-lucide='home' class='post-icon'></i> **Mortgage Rates Hold at 6.24%**
 
 The 30-year fixed mortgage rate remained flat at 6.24% in November, continuing recent stability in home loan costs. Rates have retreated from August's 6.59% high, improving affordability.
 
-# <i data-lucide='trending-down' class='post-icon'></i> **Job Cuts down 53%**
+## <i data-lucide='trending-down' class='post-icon'></i> **Job Cuts down 53%**
 
 Challenger job cut announcements fell to 71,321 in November, down 53% from October's 153,074. Corporate restructuring pressures are easing heading into year-end.
 

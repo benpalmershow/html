@@ -40,7 +40,7 @@ jobs:
             echo "FRED_API_KEY secret is not set"
             exit 1
           fi
-          python3 scripts/fetch_fred.py --indicators "CPI,PPI,Monthly Retail Sales,Housing Starts,Building Permits,Industrial Production Index,Capacity Utilization,Small Business Optimism Index,Affordability Index"
+          python3 scripts/fetch_fred.py --indicators "CPI,PPI,Monthly Retail Sales,Housing Starts,Building Permits,Industrial Production Index,Capacity Utilization,Small Business Optimism Index,Affordability Index,JOLTS Quits Rate"
 
       - name: Validate JSON output
         run: python3 -m json.tool json/financials-data.json > /dev/null

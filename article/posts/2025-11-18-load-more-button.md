@@ -17,7 +17,7 @@ We didn't. Twenty-three years later, the same machinery grinds on—same process
 
 **Affordability Crisis (2024):** Real wages flat since 1979. Housing costs up 250% since 2000. Student debt $1.7T. Proposal? Income-based repayment plans. 50-yr mortgages. Lack of imagination. 
 
-# The Governor Brown DIY Principle
+## The Governor Brown DIY Principle
 
 ["Not every human problem deserves a law."](https://archive.gov.ca.gov/archive/gov39/wp-content/uploads/2017/09/SB_0105_Veto_Message.pdf) If we stop petitioning institutions to solve our problems, then we have to do the work. So instead of a cookie consent law, just DIY. Reduce time on media that preys on your engagement which hogs your imagination. Replace infinite scroll with a 'load more' button. 
 

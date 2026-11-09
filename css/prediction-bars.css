@@ -78,6 +78,8 @@
 .sports-team-label.sports-away { color: var(--team-color); }
 .sports-team-label.sports-home { color: var(--team-color); }
 .sports-even { font-weight: 600; }
+/* Bold the winning team after a final match */
+.sports-winner { font-weight: 700; }
 
 /* FOMC STACKED BAR */
 .fomc-stacked-bar-row { margin-bottom: 8px; }

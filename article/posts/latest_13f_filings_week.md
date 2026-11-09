@@ -110,12 +110,12 @@ category: economic
 ---
 
 
-# Latest 13F Filings - December 1, 2025
+## Latest 13F Filings - December 1, 2025
 
 
 
 
-# Latest 13F Filings - December 2025
+## Latest 13F Filings - December 2025
 
 ## Allworth Financial LP
 

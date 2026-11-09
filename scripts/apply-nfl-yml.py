@@ -55,6 +55,19 @@ def parse_iso(value):
         return None
 
 
+def is_newer_timestamp(new_ts, old_ts):
+    """Return True if new_ts is strictly newer than old_ts.
+
+    If either timestamp is unparseable, default to treating new as newer so we
+    never silently drop data we can't compare.
+    """
+    nd = parse_iso(new_ts)
+    od = parse_iso(old_ts)
+    if nd is None or od is None:
+        return True
+    return nd > od
+
+
 def odds_to_int(value):
     """Convert '38.5¢' or '38¢' to clean integer string '38'.
 
@@ -298,15 +311,25 @@ def main():
     existing_ids = {ind.get("id"): i for i, ind in enumerate(indices)}
     appended = []
     updated = 0
+    skipped_stale = 0
     for indicator in new_indicators:
         game_id = indicator["id"]
+        new_ts = indicator.get("lastUpdated")
         if game_id in existing_ids:
-            if indices[existing_ids[game_id]] != indicator:
+            existing = indices[existing_ids[game_id]]
+            old_ts = existing.get("lastUpdated")
+            if existing == indicator:
+                print(f"No change for indicator: {game_id}")
+            elif is_newer_timestamp(new_ts, old_ts):
                 indices[existing_ids[game_id]] = indicator
                 print(f"Updated existing indicator: {game_id}")
                 updated += 1
             else:
-                print(f"No change for indicator: {game_id}")
+                print(
+                    f"Skipping stale update for indicator: {game_id} "
+                    f"(existing {old_ts} newer than YAML {new_ts})"
+                )
+                skipped_stale += 1
         else:
             appended.append(indicator)
             print(f"Appending new indicator: {game_id}")

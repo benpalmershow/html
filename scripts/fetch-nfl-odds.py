@@ -269,8 +269,11 @@ def main():
             print(f"[{game_id}] no odds change; lastUpdated: {game['lastUpdated']}")
 
     if selected == 0:
-        print("No games matched the requested filters.")
-        return 1
+        if args.game_id or args.week is not None:
+            print("No games matched the requested filters.")
+            return 1
+        print("No games matched the requested filters (live mode: no games in gametime window).")
+        return 0
 
     if updated == 0:
         print(f"No NFL odds changes for {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent}); skipping write")

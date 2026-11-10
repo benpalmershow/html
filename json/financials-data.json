@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T03:04:59.851306Z",
+  "lastUpdated": "2026-11-10T04:49:25.879292Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -5378,16 +5378,18 @@
       "game_time": "Nov 09, 2026 08:15 PM ET",
       "game_time_iso": "2026-11-10T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-buf-min-2026-11-10",
-      "lastUpdated": "2026-11-10T03:00:27.475478Z",
+      "lastUpdated": "2026-11-10T04:44:23.614179Z",
       "week": 9,
+      "winner": "BUF",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
-          "BUF_win_odds": "70",
-          "MIN_win_odds": "30"
+          "BUF_win_odds": "100",
+          "MIN_win_odds": "0"
         },
         "2026-11-03": {
-          "BUF_win_odds": "73",
-          "MIN_win_odds": "27"
+          "BUF_win_odds": "74",
+          "MIN_win_odds": "26"
         },
         "2026-11-05": {
           "BUF_win_odds": "68",
@@ -5398,16 +5400,20 @@
           "MIN_win_odds": "28"
         },
         "2026-11-08": {
-          "BUF_win_odds": "69",
-          "MIN_win_odds": "31"
+          "BUF_win_odds": "70",
+          "MIN_win_odds": "30"
         },
         "2026-11-09": {
-          "BUF_win_odds": "71",
-          "MIN_win_odds": "29"
+          "BUF_win_odds": "72",
+          "MIN_win_odds": "28"
+        },
+        "2026-11-11": {
+          "BUF_win_odds": "100",
+          "MIN_win_odds": "0"
         }
       },
-      "BUF_win_odds": "70",
-      "MIN_win_odds": "30"
+      "BUF_win_odds": "100",
+      "MIN_win_odds": "0"
     },
     {
       "id": "nfl-was-nyg-2026-11-13",

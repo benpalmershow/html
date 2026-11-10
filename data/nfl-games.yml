@@ -441,9 +441,9 @@ games:
   game_time_iso: '2026-11-10T01:15:00Z'
   url: https://polymarket.com/sports/nfl/nfl-buf-min-2026-11-10
   polymarket_slug: nfl-buf-min-2026-11-10
-  BUF_win_odds: 66.5¢
-  MIN_win_odds: 33.5¢
-  lastUpdated: '2026-11-10T02:25:00.000000Z'
+  BUF_win_odds: 64.5¢
+  MIN_win_odds: 35.5¢
+  lastUpdated: '2026-11-10T02:22:25.66191Z'
   odds_history:
   - timestamp: '2026-11-10T01:28:24.70763Z'
     BUF_win_odds: 64.5¢
@@ -454,6 +454,9 @@ games:
   - timestamp: '2026-11-10T02:18:24.713938Z'
     BUF_win_odds: 66.5¢
     MIN_win_odds: 33.5¢
+  - timestamp: '2026-11-10T02:22:25.66191Z'
+    BUF_win_odds: 64.5¢
+    MIN_win_odds: 35.5¢
 - id: nfl-was-nyg-2026-11-13
   week: 10
   away: WAS

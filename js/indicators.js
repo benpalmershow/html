@@ -293,7 +293,6 @@ const IndicatorRenderers = (function () {
 
     function renderSports(indicator) {
         const rows = [];
-        if (indicator.game_title) rows.push(`<span class="month-label">Game:</span> <span class="month-value game-title">${indicator.name}</span>`);
         if (indicator.game_time) {
             const winnerAbbr = indicator.winner || null;
             const resultLabel = winnerAbbr

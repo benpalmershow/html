@@ -23,9 +23,10 @@ Builders are not cheerful either. The NAHB Housing Market Index dropped to 29 fr
 
 | Indicator | Agency | Period | Value | Prior | MoM | YoY |
 |---|---|---|---|---|---|---|
-| [Employment Trends Index](financials.html?indicator=Employment%20Trends%20Index) | Conference Board | Sep 2026 | 107.56 | 108.08 | -0.5% | +1.2% |
+| [Employment Trends Index](financials.html?indicator=Employment%20Trends%20Index) | Conference Board | Sep 2026 | 108.43 | 108.08 | +0.3% | +1.9% |
+| [Employment Trends Index](financials.html?indicator=Employment%20Trends%20Index) | Conference Board | Oct 2026 | 108.36 | 108.43 | -0.1% | +2.4% |
 
-The Conference Board Employment Trends Index landed at 107.56 in September, down 0.5% from a revised August reading of 108.08, which is the high of 2026. That August revision matters: the index spent the summer climbing, from 107.01 in May to 108.08 in August, and September gave a little of it back. The level is still 1.2% above a year earlier. A composite that stalls in the high 107s is a labor market holding its shape rather than one gaining ground. The blend of job openings, industrial production, and business confidence moves ahead of the unemployment rate and payrolls.
+The Conference Board Employment Trends Index landed at 108.43 in September, an upward revision from the initial 107.56 reading, and climbed from 108.08 in August. October came in at 108.36, a 0.1% monthly decline, but the index remains 2.4% above a year earlier. The annual growth rate has been edging higher over the last six months, up from 1.9% in September. The blend of job openings, industrial production, and business confidence moves ahead of the unemployment rate and payrolls.
 
 ## Prediction markets: six new prints
 
@@ -48,7 +49,7 @@ The two geopolitical markets both hardened. The chance that Strait of Hormuz tra
 
 ## The pattern
 
-Housing is the weak link in this batch. Contract activity down 11.3% year over year, builder sentiment at 29, and prices that have not adjusted enough to clear the market. The labor composite gave back 0.5% in September, and the Fed is priced to sit still through the meeting while that weakness plays out. If the housing data keeps sliding, the 6% recession price becomes the interesting one to watch.
+Housing is the weak link in this batch. Contract activity down 11.3% year over year, builder sentiment at 29, and prices that have not adjusted enough to clear the market. The labor composite climbed to 108.43 in September and eased to 108.36 in October, and the Fed is priced to sit still through the meeting while that weakness plays out. If the housing data keeps sliding, the 6% recession price becomes the interesting one to watch.
 
 [View all the new indicators on Numbers](financials.html?filter=latest)
 

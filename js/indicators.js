@@ -300,6 +300,9 @@ const IndicatorRenderers = (function () {
                 ? `Final: ${winnerAbbr} wins`
                 : (indicator.result || indicator.game_time);
             rows.push(`<span class="month-label">Time:</span> <span class="month-value">${indicator.result ? `<span class="game-final">${resultLabel}</span>` : `<span class="game-countdown" data-game-time="${indicator.game_time_iso}">${indicator.game_time}</span>`}</span>`);
+            if (indicator.url) {
+                rows.push(`<span class="month-label">Source:</span> <span class="month-value"><a href="${indicator.url}" target="_blank" rel="noopener noreferrer">Polymarket</a></span>`);
+            }
         }
 
         // Win odds as a single stacked dual-color bar (same pattern as other prediction markets).

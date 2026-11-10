@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T04:49:25.879292Z",
+  "lastUpdated": "2026-11-10T14:01:51Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -469,7 +469,7 @@
         "august": "4.75",
         "september": "5.29",
         "october": "4.94",
-        "november": "4.8"
+        "november": "4.9"
       },
       "2025": {
         "march": "4.28",
@@ -487,7 +487,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-08T12:32:27Z",
+      "lastUpdated": "2026-11-10T14:01:51Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -2189,7 +2189,8 @@
         "july": "119.7034",
         "august": "118.5679",
         "september": "120.9693",
-        "october": "121.67"
+        "october": "121.67",
+        "november": "122"
       },
       "2025": {
         "march": "126.4",
@@ -2207,12 +2208,12 @@
       "color": "#1abc9c",
       "agency": "FRED",
       "name": "Dollar Value Index",
-      "lastUpdated": "2026-11-08T12:32:27Z",
+      "lastUpdated": "2026-11-10T14:01:51Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
       "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-09T18:37:49Z",
+  "lastUpdated": "2026-11-10T01:31:22.801079Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -5368,6 +5368,46 @@
       },
       "NYJ_win_odds": "0",
       "KC_win_odds": "100"
+    },
+    {
+      "id": "buf-min-2026-11-10",
+      "category": "Prediction Markets",
+      "agency": "Polymarket",
+      "name": "BUF @ MIN",
+      "game_title": "Buffalo Bills @ Minnesota Vikings",
+      "game_time": "Nov 10, 2026 08:15 PM ET",
+      "game_time_iso": "2026-11-11T01:15:00Z",
+      "url": "https://polymarket.com/sports/nfl/nfl-buf-min-2026-11-10",
+      "lastUpdated": "2026-11-10T01:28:24.70763Z",
+      "week": 10,
+      "probabilities": {
+        "2026-11-04": {
+          "BUF_win_odds": "67",
+          "MIN_win_odds": "33"
+        },
+        "2026-11-06": {
+          "BUF_win_odds": "62",
+          "MIN_win_odds": "38"
+        },
+        "2026-11-08": {
+          "BUF_win_odds": "66",
+          "MIN_win_odds": "34"
+        },
+        "2026-11-09": {
+          "BUF_win_odds": "63",
+          "MIN_win_odds": "37"
+        },
+        "2026-11-10": {
+          "BUF_win_odds": "65",
+          "MIN_win_odds": "35"
+        },
+        "2026-11-11": {
+          "BUF_win_odds": "64",
+          "MIN_win_odds": "36"
+        }
+      },
+      "BUF_win_odds": "64",
+      "MIN_win_odds": "36"
     }
   ]
 }

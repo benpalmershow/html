@@ -297,7 +297,7 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLate
 
 function scheduleDeferredCategoryRender(financialData, categories, filterCategory, indicatorContainer, forceLatestSort = false) {
     const queue = [...categories];
-    const flushNextBatch = () => {
+    const flushNextBatch = async () => {
         const nextBatch = queue.splice(0, 2);
         if (!nextBatch.length) return;
 
@@ -310,10 +310,8 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
         setupExpandHandlers(SELECTORS);
 
         if (queue.length) {
-            const schedule = typeof requestIdleCallback === 'function'
-                ? () => requestIdleCallback(flushNextBatch, { timeout: 1500 })
-                : () => setTimeout(flushNextBatch, 120);
-            schedule();
+            await yieldToMain();
+            flushNextBatch();
         } else {
             // Deferred categories finished rendering; re-sync the active title
             // highlight in case the inserted buttons lost their state.
@@ -323,10 +321,23 @@ function scheduleDeferredCategoryRender(financialData, categories, filterCategor
         }
     };
 
-    const schedule = typeof requestIdleCallback === 'function'
-        ? () => requestIdleCallback(flushNextBatch, { timeout: 1500 })
-        : () => setTimeout(flushNextBatch, 120);
-    schedule();
+    flushNextBatch();
+}
+
+// Yield to the main thread between deferred batches so user input stays
+// responsive. scheduler.yield() puts continuations at the front of the
+// task queue (better than setTimeout(..., 0) which queues at the back).
+function yieldToMain() {
+    if (typeof scheduler !== 'undefined' && typeof scheduler.yield === 'function') {
+        return scheduler.yield();
+    }
+    return new Promise(resolve => {
+        if (typeof requestIdleCallback === 'function') {
+            requestIdleCallback(resolve, { timeout: 1500 });
+        } else {
+            setTimeout(resolve, 0);
+        }
+    });
 }
 
 /* Badge state lives in indicators.js; fall back to the raw flags so a stale

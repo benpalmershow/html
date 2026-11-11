@@ -83,6 +83,8 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 4px;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
 }
 
 .indicator {

@@ -1,5 +1,5 @@
-/* Overlay styles moved to media-overlay.css for better organization */
-@import url('media-overlay.css');
+/* Overlay styles are loaded separately from media-overlay.css;
+   do not @import here (imports create sequential request chains). */
 
 /* ==========================================================================
     CSS VARIABLES & GLOBAL STYLES
@@ -572,6 +572,8 @@
     justify-content: center;
     margin: 2rem auto;
     max-width: 1200px;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
 }
 
 /* Desktop Styles (769px and above) */

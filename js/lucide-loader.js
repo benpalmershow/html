@@ -1,4 +1,6 @@
-// Load Lucide icons on-demand after page load
+// Load Lucide icons on-demand after page load.
+// scheduler.yield() is preferred over setTimeout(..., 0) because it places
+// the continuation at the front of the task queue, keeping input responsive.
 (function () {
   const loadLucide = () => {
     const script = document.createElement('script');
@@ -7,9 +9,16 @@
     script.onload = () => window.lucide?.createIcons();
     document.head.appendChild(script);
   };
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadLucide, { timeout: 3000 });
-  } else {
-    setTimeout(loadLucide, 100);
+
+  function schedule(task, timeout) {
+    if (typeof scheduler !== 'undefined' && typeof scheduler.yield === 'function') {
+      scheduler.yield().then(task);
+    } else if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(task, { timeout });
+    } else {
+      setTimeout(task, 0);
+    }
   }
+
+  schedule(loadLucide, 3000);
 })();

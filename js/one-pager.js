@@ -6,8 +6,13 @@ const LIMITS = {
   worldCup: Infinity
 };
 
-// Yield helper to prevent main thread blocking
+// Yield helper to prevent main thread blocking.
+// Prefers scheduler.yield() (puts continuations at the front of the task
+// queue) and falls back to requestIdleCallback, then setTimeout.
 function yieldToMain() {
+  if (typeof scheduler !== 'undefined' && typeof scheduler.yield === 'function') {
+    return scheduler.yield();
+  }
   return new Promise(resolve => {
     if (typeof requestIdleCallback !== 'undefined') {
       requestIdleCallback(() => resolve(), { timeout: 50 });

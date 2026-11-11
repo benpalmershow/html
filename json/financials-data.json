@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T15:50:00Z",
+  "lastUpdated": "2026-11-10T21:59:00Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1256,6 +1256,25 @@
         "may": "202",
         "april": "201"
       }
+    },
+    {
+      "id": "wasde-agricultural-supply",
+      "2026": {
+        "october": "Corn: 1,849mb / Soy: 315mb / Wheat: 740mb",
+        "november": "Corn: 1,758mb / Soy: 300mb / Wheat: 743mb"
+      },
+      "category": "Commodities",
+      "color": "#f39c12",
+      "agency": "USDA",
+      "name": "WASDE Supply & Demand Estimates",
+      "lastUpdated": "2026-11-10T15:00:00Z",
+      "releaseDay": 10,
+      "url": "https://www.usda.gov/oce/commodity-markets/wasde",
+      "change": "",
+      "explanation": "USDA's World Agricultural Supply and Demand Estimates (WASDE), released monthly by the World Agricultural Outlook Board, forecasts supply and use for U.S. and world wheat, corn, soybeans, and other commodities. The November report lowered U.S. corn ending stocks to 1,758 million bushels and soybeans to 300 million, while raising wheat to 743 million.",
+      "newMonth": true,
+      "releaseTimeISO": "2026-11-10T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "midterms-house-2026",
@@ -2567,6 +2586,32 @@
       }
     },
     {
+      "id": "redbook-retail-sales",
+      "2026": {
+        "september": "8.2%",
+        "october": "9.3%",
+        "november": "10.1%"
+      },
+      "2025": {
+        "september": "8.3%",
+        "october": "9.0%",
+        "november": "10.4%",
+        "december": "9.6%"
+      },
+      "category": "Consumer Indicators",
+      "color": "#9b59b6",
+      "agency": "Redbook Research",
+      "name": "Johnson Redbook Retail Sales",
+      "lastUpdated": "2026-11-10T15:00:00Z",
+      "releaseDay": 0,
+      "url": "https://tradingeconomics.com/united-states/redbook-index",
+      "change": "",
+      "explanation": "The Johnson Redbook Index measures year-over-year same-store sales growth across a sample of approximately 9,000 large U.S. general merchandise retailers, representing over 80% of the dollar value of the Commerce Department's official retail sales series. Published weekly by Redbook Research, the index tracks sales at locations continuously open for 12 months or longer. Values are nominal (not inflation-adjusted), so a portion of the YoY gain reflects price increases. The index provides a high-frequency read on consumer spending trends ahead of official monthly retail sales reports.",
+      "newMonth": true,
+      "releaseTimeISO": "2026-11-10T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
+    },
+    {
       "id": "construction-spending",
       "2026": {
         "january": "$2,195.6B",
@@ -2602,6 +2647,35 @@
       "explanation": "The total dollar value of construction work done in the U.S. each month, as reported by the U.S. Census Bureau. This includes both public and private construction projects, covering residential, non-residential, and infrastructure spending. The data is seasonally adjusted and annualized to show what the yearly total would be if that month's pace continued for 12 months. Construction spending is a coincident indicator of economic activity, reflecting current business investment and government expenditure. The report breaks down spending by sector (residential, commercial, manufacturing, etc.) and by funding source (private vs. public). Analysts watch for trends in construction spending as they can signal shifts in economic growth and employment in the construction sector.",
       "newMonth": false,
       "releaseTimeISO": "2026-11-02T15:00:00Z",
+      "releaseTimeZone": "America/New_York"
+    },
+    {
+      "id": "household-debt",
+      "2026": {
+        "q1": "18.771T",
+        "q2": "18.771T",
+        "q3": "19.105T"
+      },
+      "2025": {
+        "q1": "18.36T",
+        "q2": "18.44T",
+        "q3": "18.59T",
+        "q4": "18.56T"
+      },
+      "2024": {
+        "q4": "17.85T"
+      },
+      "category": "Consumer Indicators",
+      "color": "#9b59b6",
+      "agency": "New York Fed",
+      "name": "Total Household Debt",
+      "lastUpdated": "2026-11-10T15:00:00Z",
+      "releaseDay": 0,
+      "url": "https://www.newyorkfed.org/microeconomics/householdcredit",
+      "change": "",
+      "explanation": "Total U.S. household debt (mortgages, auto loans, student loans, credit cards, and HELOCs) as reported quarterly by the Federal Reserve Bank of New York's Center for Microeconomic Data, based on a nationally representative sample of anonymized Equifax credit data. The Q3 2026 report showed total debt expanded by $334 billion (1.8%) to $19.105 trillion, driven by a $257 billion increase in mortgage balances to $13.374 trillion. Credit card debt reached a record $1.285 trillion and auto loans rose to $1.734 trillion. The aggregate delinquency rate ticked up to 5.0%.",
+      "newMonth": true,
+      "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -3546,7 +3620,8 @@
         "june": "332.568",
         "july": "332.813",
         "august": "334.131",
-        "september": "336.298"
+        "september": "336.298",
+        "october": "337.476"
       },
       "2025": {
         "january": "318.961",
@@ -3565,14 +3640,14 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "CPI",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-10T15:00:00Z",
       "releaseDay": 11,
       "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
       "source_url": "https://www.bls.gov/cpi/data.htm",
       "change": "",
       "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments.",
-      "newMonth": false,
-      "releaseTimeISO": "2026-10-11T15:00:00Z",
+      "newMonth": true,
+      "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
         "december": "318",
@@ -3824,7 +3899,8 @@
         "june": "97.4",
         "july": "99.8",
         "august": "98.7",
-        "september": "97.9"
+        "september": "97.9",
+        "october": "97.8"
       },
       "2025": {
         "march": "97.4",
@@ -3842,12 +3918,12 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Small Business Optimism Index",
-      "lastUpdated": "2026-10-25T14:00:00Z",
+      "lastUpdated": "2026-11-10T15:00:00Z",
       "releaseDay": 12,
       "source_url": "https://www.nfib.com/news/monthly_report/sbet/",
       "change": "",
       "explanation": "The NFIB Small Business Optimism Index is based on a monthly survey of small business owners across the U.S. The index is a composite of 10 components including plans to increase employment, inventory, and capital spending, and expectations for the economy. Readings above 100 indicate expansion, while below 100 suggests contraction. The index is closely watched as small businesses account for about 44% of U.S. economic activity and are often the first to experience and respond to economic changes. The report also includes data on hiring plans, capital spending intentions, and concerns about inflation or labor quality.",
-      "releaseTimeISO": "2026-10-25T15:00:00Z",
+      "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {

@@ -537,23 +537,26 @@ latestDataHtml = `
     function renderStandard(indicator, MONTHS, MONTH_LABELS) {
         const availableData = collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
         let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
+
+        /* Split combined commodity values (e.g. "Corn: ... / Soy: ... / Wheat: ...")
+           onto separate lines so each crop reads clearly instead of crammed into one string. */
+        const renderValue = (value) => {
+            const parts = String(value || '').split(' / ').map(p => p.trim()).filter(Boolean);
+            if (parts.length > 1) return parts.map(p => `<span class="commodity-part">${p}</span>`).join('<br>');
+            return String(value || '');
+        };
+
         if (availableData.length > 0) {
             const latest = availableData[0];
             const extraHtml = buildExtraHtml(indicator, latest, MONTHS);
             const latestTooltip = buildLabelTooltip(indicator, latest, MONTHS);
-            latestDataHtml = `<div class="latest-data-row"><span class="month-label" title="${latestTooltip}">${latest.label}:</span><span class="month-value">${latest.value}${extraHtml}</span></div>`;
-            if (availableData.length > 1) {
-                const second = availableData[1];
-                const secondExtraHtml = buildExtraHtml(indicator, second, MONTHS);
-                const secondTooltip = buildLabelTooltip(indicator, second, MONTHS);
-                latestDataHtml += `<div class="latest-data-row"><span class="month-label" title="${secondTooltip}">${second.label}:</span><span class="month-value">${second.value}${secondExtraHtml}</span></div>`;
-                hasHistory = availableData.length > 2;
-                for (let i = 2; i < availableData.length; i++) {
-                    const item = availableData[i];
-                    const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
-                    const historyTooltip = buildLabelTooltip(indicator, item, MONTHS);
-                    historyDataHtml += `<div class="data-row"><span class="month-label" title="${historyTooltip}">${item.label}:</span><span class="month-value">${item.value}${historyExtraHtml}</span></div>`;
-                }
+            latestDataHtml = `<div class="latest-data-row"><span class="month-label" title="${latestTooltip}">${latest.label}:</span><span class="month-value">${renderValue(latest.value)}${extraHtml}</span></div>`;
+            hasHistory = availableData.length > 1;
+            for (let i = 1; i < availableData.length; i++) {
+                const item = availableData[i];
+                const historyExtraHtml = buildExtraHtml(indicator, item, MONTHS);
+                const historyTooltip = buildLabelTooltip(indicator, item, MONTHS);
+                historyDataHtml += `<div class="data-row"><span class="month-label" title="${historyTooltip}">${item.label}:</span><span class="month-value">${renderValue(item.value)}${historyExtraHtml}</span></div>`;
             }
         } else {
             latestDataHtml = `<div class="latest-data-row"><span class="month-label">Status:</span><span class="month-value">No Data</span></div>`;

@@ -194,6 +194,8 @@
 .latest-data-row .month-value, .last-data-row .month-value { color: var(--text-primary); font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; }
 .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.85rem; letter-spacing: 0; }
 
+.commodity-part { display: block; line-height: 1.35; }
+
 .data-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-size: 0.8rem; margin-bottom: 0; gap: 8px; min-width: 0; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.15); font-variant-numeric: tabular-nums; }
 
 .data-row:last-child { border-bottom: none; }

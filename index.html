@@ -62,6 +62,14 @@
   <link href="css/fonts.css?v=20261013" rel="stylesheet">
 
 
+  <!-- Pre-hide animated elements before first paint so they don't flash visible -->
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .page-header { opacity: 0; }
+      .hero-wordmark { opacity: 0; }
+    }
+  </style>
+
   <!-- Apply theme before first paint to avoid flash -->
   <script>
     (function () {

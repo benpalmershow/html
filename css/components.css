@@ -391,7 +391,6 @@ html.dark-mode #social-footer .social-links svg {
         filter: brightness(0) invert(1);
     }
 }
-   ======================================== */
 
 .home-shell {
     width: min(1100px, calc(100vw - 2.5rem));
@@ -581,6 +580,12 @@ html.dark-mode .hero-link.secondary:focus-visible {
    HOME HERO
    ======================================== */
 
+/* ========================================
+   HOME PAGE ANIMATIONS
+   All motion opt-in via prefers-reduced-motion: no-preference
+   so the static state is the default.
+   ======================================== */
+
 @keyframes hero-fade-up {
   from {
     opacity: 0;
@@ -589,6 +594,28 @@ html.dark-mode .hero-link.secondary:focus-visible {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes header-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes icon-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -606,6 +633,7 @@ html.dark-mode .hero-link.secondary:focus-visible {
   padding: clamp(2rem, 6vw, 5rem) var(--content-padding);
 }
 
+/* Wordmark: initial opacity set inline in index.html before first paint */
 .hero-wordmark {
   font-family: var(--font-display);
   font-size: clamp(4rem, 16vw, 10rem);
@@ -613,13 +641,32 @@ html.dark-mode .hero-link.secondary:focus-visible {
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0;
-  opacity: 0;
-  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-wordmark {
-    animation: none;
-    opacity: 1;
+/* Header: initial opacity set inline in index.html before first paint */
+.page-header {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: header-slide-down 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
+}
+
+/* Social footer icons: staggered pop-in — opt-in only */
+#social-footer .social-links a {
+  @media (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    animation: icon-pop-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #social-footer .social-links a:nth-child(1) { animation-delay: 0.35s; }
+  #social-footer .social-links a:nth-child(2) { animation-delay: 0.42s; }
+  #social-footer .social-links a:nth-child(3) { animation-delay: 0.49s; }
+  #social-footer .social-links a:nth-child(4) { animation-delay: 0.56s; }
+  #social-footer .social-links a:nth-child(5) { animation-delay: 0.63s; }
+  #social-footer .social-links a:nth-child(6) { animation-delay: 0.70s; }
 }

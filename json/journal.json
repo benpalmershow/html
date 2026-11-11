@@ -1,5 +1,80 @@
 [
   {
+    "date": "11/11/26",
+    "entries": [
+      {
+        "title": "The 50",
+        "link": "https://www.the50.com/restaurants/best-in-the-world/list/1-50",
+        "category": "society",
+        "content": "The World’s 50 Best Restaurants | The List and Awards",
+        "tags": [
+          "food",
+          "culture",
+          "external"
+        ],
+        "type": "curation"
+      },
+      {
+        "title": "🎨 CSS",
+        "category": "technology",
+        "content": "Your census bureau funded by your tax dollars doesn’t know simple web design. Notice an orphaned number dangling like a desperate calf. At howdy stranger, we use:<br><br><pre><code>p {\n  text-wrap: pretty;\n}</code></pre><br><br><img src=\"images/art/IMG_0010.webp\" alt=\"Census FT900 table showing an orphaned number\" loading=\"lazy\">",
+        "tags": [
+          "css",
+          "design",
+          "census",
+          "web"
+        ],
+        "type": "note",
+        "collapsed": true
+      },
+      {
+        "title": "🪦 Grave Shadows",
+        "category": "policy",
+        "content": "\"A towering arch casting shadows across the graves of our father, mother, and uncles, as well as the graves of so many who have served our country, would also cast a shadow over our democratic principles, undermining the safeguards established by our elected representatives to protect this hallowed ground for generations to come.\"",
+        "link": "https://www.democracydefendersfund.org/news/kennedy-family-sues-to-block-the-trump-administration-from-unlawfully-building-250-foot-arch/",
+        "tags": [
+          "politics"
+        ],
+        "type": "curation"
+      },
+      {
+        "title": "Dear Joe",
+        "category": "policy",
+        "tags": [
+          "politics",
+          "trump"
+        ],
+        "type": "curation",
+        "file": "article/posts/2026-11-11-dear-joe.md",
+        "collapsed": true
+      },
+      {
+        "title": "broken arm",
+        "category": "finance",
+        "content": "7yr ARM +43%",
+        "tags": [
+          "personal finance",
+          "mortgage",
+          "rates"
+        ],
+        "type": "note"
+      },
+      {
+        "title": "O KEI",
+        "link": "https://pressroom.toyota.com/toyota-says-okei-to-america-introducing-the-scion-by-toyota-brand-and-kei-01/",
+        "category": "business",
+        "content": "Toyota introduces the Scion by Toyota brand and kei cars to America.",
+        "tags": [
+          "automotive",
+          "toyota",
+          "scion",
+          "kei"
+        ],
+        "type": "curation"
+      }
+    ]
+  },
+  {
     "date": "11/10/26",
     "entries": [
       {
@@ -9754,18 +9829,41 @@
       }
     ]
   },
-  {
-    "date": "10/14/25",
+{
+    "date": "11/11/26",
     "entries": [
       {
-        "title": "urban crime analysis",
+        "title": "✅ Yes Men",
         "category": "policy",
-        "file": "article/posts/2025-10-14-urban-crime-analysis.md",
-        "collapsed": true,
+        "content": "Midterms were the result of republican obeisance. Sycophancy can't check megalomania. Tweak the prompt, and avoid 'yes sir'. Choose deliberation.",
+        "tags": [
+          "politics",
+          "midterms",
+          "republican"
+        ],
+        "type": "note",
+        "time": "16:00"
+      },
+      {
+        "title": "🪦 Grave Shadows",
+        "category": "policy",
+        "content": "\"A towering arch casting shadows across the graves of our father, mother, and uncles, as well as the graves of so many who have served our country, would also cast a shadow over our democratic principles, undermining the safeguards established by our elected representatives to protect this hallowed ground for generations to come.\"",
+        "link": "https://www.democracydefendersfund.org/news/kennedy-family-sues-to-block-the-trump-administration-from-unlawfully-building-250-foot-arch/",
         "tags": [
           "politics"
         ],
-        "type": "essay"
+        "type": "curation"
+      },
+      {
+        "title": "bomb Iran?",
+        "category": "policy",
+        "content": "A Senator thinks we should be concerned about Iranian global hegemony - enough, apparently, to bomb Iran over it.",
+        "tags": [
+          "politics",
+          "geopolitics",
+          "iran"
+        ],
+        "type": "note"
       }
     ]
   },

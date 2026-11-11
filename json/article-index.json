@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-11-11-dear-joe",
+    "url": "/article.html?slug=2026-11-11-dear-joe",
+    "source": "article/posts/2026-11-11-dear-joe.md",
+    "title": "Dear Joe",
+    "date": "2026-11-11",
+    "dateTime": "2026-11-11T00:00:00Z",
+    "category": "policy",
+    "tags": [
+      "politics",
+      "trump"
+    ],
+    "wordCount": 245,
+    "readingMinutes": 1,
+    "journalSlug": "dear-joe"
+  },
+  {
     "id": "2026-11-10-venus-new-era-exploration",
     "url": "/article.html?slug=2026-11-10-venus-new-era-exploration",
     "source": "article/posts/2026-11-10-venus-new-era-exploration.md",
@@ -11,7 +27,6 @@
       "venus",
       "nasa",
       "space",
-      "planetary-science",
       "video"
     ],
     "wordCount": 81,
@@ -29,7 +44,6 @@
     "tags": [
       "weather",
       "climate",
-      "el-nino",
       "nature",
       "philosophy"
     ],
@@ -41,7 +55,7 @@
     "id": "2026-11-10-november-data-update",
     "url": "/article.html?slug=2026-11-10-november-data-update",
     "source": "article/posts/2026-11-10-november-data-update.md",
-    "title": "October CPI, Jobs, and Small Business Sentiment",
+    "title": "October CPI +0.4%, 86K Jobs, $334B Household Debt",
     "date": "2026-11-10",
     "dateTime": "2026-11-10T15:00:00Z",
     "category": "economy",
@@ -49,15 +63,11 @@
       "cpi",
       "inflation",
       "employment",
-      "adp",
-      "nfib",
       "small-business",
-      "household-debt",
-      "retail-sales",
-      "wasde"
+      "debt"
     ],
-    "wordCount": 331,
-    "readingMinutes": 2,
+    "wordCount": 299,
+    "readingMinutes": 1,
     "journalSlug": "november-data-update-cpi-jobs-and-small-business"
   },
   {
@@ -69,11 +79,8 @@
     "dateTime": "2026-11-09T16:00:00Z",
     "category": "business",
     "tags": [
-      "byd",
       "ev",
-      "electric-vehicles",
-      "china",
-      "automotive"
+      "cars"
     ],
     "wordCount": 278,
     "readingMinutes": 1,
@@ -89,8 +96,6 @@
     "category": "society",
     "tags": [
       "ai",
-      "agents",
-      "automation",
       "food",
       "culture"
     ],
@@ -121,10 +126,8 @@
     "category": "economy",
     "tags": [
       "economics",
-      "textbooks",
       "keynes",
-      "samuelson",
-      "history of thought"
+      "history"
     ],
     "wordCount": 543,
     "readingMinutes": 2,
@@ -139,11 +142,8 @@
     "dateTime": "2026-11-09T00:00:00Z",
     "category": "tech",
     "tags": [
-      "autonomous-driving",
-      "motion-prediction",
-      "waymo",
-      "benchmarks",
-      "machine-learning"
+      "ai",
+      "cars"
     ],
     "wordCount": 186,
     "readingMinutes": 1,
@@ -1107,6 +1107,19 @@
     "wordCount": 38,
     "readingMinutes": 1,
     "journalSlug": "site-update"
+  },
+  {
+    "id": "2025-10-14-urban-crime-analysis",
+    "url": "/article.html?slug=2025-10-14-urban-crime-analysis",
+    "source": "article/posts/2025-10-14-urban-crime-analysis.md",
+    "title": "New Crime Analysis: Hidden Urban Crime",
+    "date": "2026-04-16",
+    "dateTime": "2026-04-16T00:05:00Z",
+    "category": "political",
+    "tags": [],
+    "wordCount": 66,
+    "readingMinutes": 1,
+    "journalSlug": "new-crime-analysis-hidden-urban-crime"
   },
   {
     "id": "2025-10-24-chicago-fed-survey",
@@ -4324,21 +4337,6 @@
     "wordCount": 518,
     "readingMinutes": 2,
     "journalSlug": "urban-crime"
-  },
-  {
-    "id": "2025-10-14-urban-crime-analysis",
-    "url": "/article.html?slug=2025-10-14-urban-crime-analysis",
-    "source": "article/posts/2025-10-14-urban-crime-analysis.md",
-    "title": "urban crime analysis",
-    "date": "2025-10-14",
-    "dateTime": "2025-10-14T00:00:00Z",
-    "category": "political",
-    "tags": [
-      "politics"
-    ],
-    "wordCount": 66,
-    "readingMinutes": 1,
-    "journalSlug": "urban-crime-analysis"
   },
   {
     "id": "2025-10-10-eagles-giants",

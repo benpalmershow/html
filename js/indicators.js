@@ -538,13 +538,54 @@ latestDataHtml = `
         const availableData = collectMonthlyData(indicator, MONTHS, MONTH_LABELS);
         let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
 
-        /* Split combined commodity values (e.g. "Corn: ... / Soy: ... / Wheat: ...")
-           onto separate lines so each crop reads clearly instead of crammed into one string. */
+        const parseCommodity = (value) => {
+            const text = String(value || '');
+            const parts = text.split(' / ').map(p => p.trim()).filter(Boolean);
+            if (parts.length < 2) return null;
+            const entries = parts.map(p => {
+                const sep = p.indexOf(': ');
+                if (sep > 0) return [p.slice(0, sep), p.slice(sep + 2)];
+                return null;
+            }).filter(Boolean);
+            return entries.length > 1 ? entries : null;
+        };
+
         const renderValue = (value) => {
-            const parts = String(value || '').split(' / ').map(p => p.trim()).filter(Boolean);
-            if (parts.length > 1) return parts.map(p => `<span class="commodity-part">${p}</span>`).join('<br>');
+            const entries = parseCommodity(value);
+            if (entries) return entries.map(([name, val]) => (
+                `<span class="commodity-part"><span class="commodity-name">${name}</span><span class="commodity-value">${val}</span></span>`
+            )).join('');
             return String(value || '');
         };
+
+        const commodityRows = availableData.map(item => ({ item, entries: parseCommodity(item.value) })).filter(r => r.entries);
+        const isCommodityTable = commodityRows.length === availableData.length && availableData.length > 0;
+
+        if (isCommodityTable) {
+            const colNames = [];
+            const seen = new Set();
+            commodityRows.forEach(({ entries }) => entries.forEach(([name]) => {
+                if (!seen.has(name)) { seen.add(name); colNames.push(name); }
+            }));
+
+            const tableHead = `<tr><th scope="col">Month</th>${colNames.map(n => `<th scope="col">${n}</th>`).join('')}</tr>`;
+            const tableBody = commodityRows.map(({ item, entries }) => {
+                const valueMap = new Map(entries);
+                const cells = colNames.map(name => `<td>${valueMap.get(name) || '\u2014'}</td>`).join('');
+                return `<tr><th scope="row">${item.label}</th>${cells}</tr>`;
+            }).join('');
+
+            latestDataHtml = `
+                <div class="commodity-table-wrap">
+                    <table class="commodity-table">
+                        <thead>${tableHead}</thead>
+                        <tbody>${tableBody}</tbody>
+                    </table>
+                </div>`;
+            hasHistory = false;
+            historyDataHtml = '';
+            return { latestDataHtml, historyDataHtml, hasHistory };
+        }
 
         if (availableData.length > 0) {
             const latest = availableData[0];
@@ -1317,8 +1358,34 @@ function renderIndicatorData(indicator, type, MONTHS, MONTH_LABELS) {
 
 const INLINE_CHANGE_IDS = new Set(['total-nonfarm-employment', 'job-openings', 'private-employment']);
 
+function getCpiYoyColor(pct) {
+    if (pct < 0) return '#3b82f6';         // blue - deflation
+    if (pct <= 2) return '#22c55e';        // green - target range
+    if (pct <= 3) return '#84cc16';        // lime-green
+    if (pct <= 4) return '#eab308';        // yellow
+    if (pct <= 5) return '#f97316';        // orange
+    if (pct <= 6) return '#ef4444';        // red
+    return '#b91c1c';                       // dark red - very high
+}
+
 function hasInlineMonthlyChange(indicator) {
     return INLINE_CHANGE_IDS.has(indicator.id);
+}
+
+function getCpiYoy(indicator, dataItem) {
+    if (!dataItem || !dataItem.year) return null;
+    if (indicator.yoy && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) {
+        return indicator.yoy[dataItem.year][dataItem.month];
+    }
+    if (indicator.yoy && indicator.yoy[dataItem.month]) return indicator.yoy[dataItem.month];
+    const prevYear = indicator[dataItem.year - 1];
+    if (!prevYear || !isValidData(prevYear[dataItem.month])) return null;
+    const current = extractNumericValue(dataItem.value);
+    const previous = extractNumericValue(prevYear[dataItem.month]);
+    if (current === null || previous === null || previous === 0) return null;
+    const pct = ((current - previous) / Math.abs(previous)) * 100;
+    const sign = pct > 0 ? '+' : '';
+    return `${sign}${pct.toFixed(1)}%`;
 }
 
 function buildExtraHtml(indicator, dataItem, MONTHS) {
@@ -1329,10 +1396,12 @@ function buildExtraHtml(indicator, dataItem, MONTHS) {
         const changeObj = changesMap[dataItem.month];
         if (changeObj) extraHtml = `<span class="month-change month-change-inline ${changeObj.change >= 0 ? 'change-positive' : 'change-negative'}">${changeObj.formatted}</span>`;
     } else if (indicator.name === 'CPI') {
-        let yoyValue = null;
-        if (indicator.yoy && dataItem.year && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) yoyValue = indicator.yoy[dataItem.year][dataItem.month];
-        else if (indicator.yoy && indicator.yoy[dataItem.month]) yoyValue = indicator.yoy[dataItem.month];
-        if (yoyValue) extraHtml = `<span class="month-change month-change-inline">${yoyValue}</span>`;
+        const yoyValue = getCpiYoy(indicator, dataItem);
+        if (yoyValue) {
+            const pct = parseFloat(yoyValue);
+            const color = getCpiYoyColor(pct);
+            extraHtml = `<span class="month-change month-change-inline" style="color: ${color}">${yoyValue}</span>`;
+        }
     }
     return extraHtml;
 }
@@ -1348,9 +1417,7 @@ function buildLabelTooltip(indicator, dataItem, MONTHS) {
             parts.push(`Previous: ${changeObj.prevValue}`);
         }
     } else if (indicator.name === 'CPI') {
-        let yoyValue = null;
-        if (indicator.yoy && dataItem.year && indicator.yoy[dataItem.year] && indicator.yoy[dataItem.year][dataItem.month]) yoyValue = indicator.yoy[dataItem.year][dataItem.month];
-        else if (indicator.yoy && indicator.yoy[dataItem.month]) yoyValue = indicator.yoy[dataItem.month];
+        const yoyValue = getCpiYoy(indicator, dataItem);
         if (yoyValue) parts.push(`YoY: ${yoyValue}`);
     }
     return parts.join('\n');
@@ -1490,9 +1557,29 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
     const momInfo = formatChangeIndicator(momChangeValue);
     const changeLabel = indicator.change_label || 'MoM';
     result += buildChangeMetricButton(changeLabel, momInfo, changeLabel + ' change');
-    if (yoyChange !== null) {
-        const yoyChangeValue = isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange;
-        const yoyInfo = formatChangeIndicator(yoyChangeValue);
+
+    let yoyMetric = yoyChange !== null
+        ? (isUnemploymentIndicator ? -yoyChange.percentChange : yoyChange.percentChange)
+        : null;
+    if (yoyMetric === null && indicator.name === 'CPI') {
+        const yearKeys = Object.keys(indicator).filter(k => /^\d{4}$/.test(k)).map(Number).sort((a, b) => b - a);
+        outer: for (const year of yearKeys) {
+            const monthsObj = indicator[year] || {};
+            for (let i = MONTHS.length - 1; i >= 0; i--) {
+                const month = MONTHS[i];
+                if (!isValidData(monthsObj[month])) continue;
+                const current = extractNumericValue(monthsObj[month]);
+                const prevYearObj = indicator[year - 1] || {};
+                const previous = extractNumericValue(prevYearObj[month]);
+                if (current !== null && previous !== null && previous !== 0) {
+                    yoyMetric = ((current - previous) / Math.abs(previous)) * 100;
+                }
+                break outer;
+            }
+        }
+    }
+    if (yoyMetric !== null) {
+        const yoyInfo = formatChangeIndicator(yoyMetric);
         result += buildChangeMetricButton('YoY', yoyInfo, 'Year over Year');
     }
     return result;

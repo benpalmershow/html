@@ -2698,7 +2698,7 @@
       "name": "Total Household Debt",
       "lastUpdated": "2026-11-10T15:00:00Z",
       "releaseDay": 0,
-      "url": "https://www.newyorkfed.org/microeconomics/householdcredit",
+      "url": "https://www.newyorkfed.org/microeconomics/hhdc",
       "change": "",
       "explanation": "Total U.S. household debt (mortgages, auto loans, student loans, credit cards, and HELOCs) as reported quarterly by the Federal Reserve Bank of New York's Center for Microeconomic Data, based on a nationally representative sample of anonymized Equifax credit data. The Q3 2026 report showed total debt expanded by $334 billion (1.8%) to $19.105 trillion, driven by a $257 billion increase in mortgage balances to $13.374 trillion. Credit card debt reached a record $1.285 trillion and auto loans rose to $1.734 trillion. The aggregate delinquency rate ticked up to 5.0%.",
       "newMonth": true,
@@ -3660,6 +3660,7 @@
         "july": "322.169",
         "august": "323.291",
         "september": "324.245",
+        "october": "325.063",
         "november": "325.063",
         "december": "326.031"
       },

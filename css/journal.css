@@ -14,7 +14,7 @@ main{flex:1}
 /* ── Performance: Defer rendering for off-screen day sections ── */
 .day.deferred {
   content-visibility: auto;
-  contain-intrinsic-size: auto 1px auto 400px;
+  contain-intrinsic-size: auto none auto 400px;
 }
 
 /* ── Search Bar ── */
@@ -88,8 +88,8 @@ main{flex:1}
 .entry-content img,.accordion-inner img{max-width:100%;height:auto;border:1px solid var(--border-color);border-radius:8px;margin:.75rem 0}
 
 /* ── Accordion ── */
-.accordion[hidden]{display:none}
-/* hidden="until-found" is handled by the browser for searchability */
+.accordion[hidden]:not([hidden="until-found"]) { display: none; }
+/* hidden="until-found" is handled natively by the browser for find-in-page searchability */
 .accordion-inner{border-top:1px solid var(--border-color);margin-top:.5rem;padding-top:.75rem}
 .accordion-inner h1,.accordion-inner h2,.accordion-inner h3{margin:1.2em 0 .4em;color:var(--text-primary);font-size:1rem;font-weight:800}
 .accordion-inner p{margin:0 0 .85em}

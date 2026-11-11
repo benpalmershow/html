@@ -9,12 +9,8 @@
           "cpi",
           "inflation",
           "employment",
-          "adp",
-          "nfib",
           "small-business",
-          "household-debt",
-          "retail-sales",
-          "wasde"
+          "debt"
         ],
         "type": "note",
         "file": "article/posts/2026-11-10-november-data-update.md",
@@ -26,7 +22,6 @@
         "tags": [
           "weather",
           "climate",
-          "el-nino",
           "nature",
           "philosophy"
         ],
@@ -41,7 +36,6 @@
           "venus",
           "nasa",
           "space",
-          "planetary-science",
           "video"
         ],
         "type": "note",
@@ -58,8 +52,6 @@
         "category": "society",
         "tags": [
           "ai",
-          "agents",
-          "automation",
           "food",
           "culture"
         ],
@@ -71,11 +63,8 @@
         "title": "🚗 BYD Launches New Seagull EV With 5-Minute Flash Charging",
         "category": "business",
         "tags": [
-          "byd",
           "ev",
-          "electric-vehicles",
-          "china",
-          "automotive"
+          "cars"
         ],
         "type": "dispatch",
         "file": "article/posts/2026-11-09-byd-seagull-ev.md",
@@ -98,11 +87,8 @@
         "title": "🤖 Waymo Motion Prediction Challenge 2024",
         "category": "tech",
         "tags": [
-          "autonomous-driving",
-          "motion-prediction",
-          "waymo",
-          "benchmarks",
-          "machine-learning"
+          "ai",
+          "cars"
         ],
         "type": "dispatch",
         "file": "article/posts/2026-11-09-waymo-motion-prediction-challenge-2024.md",
@@ -116,10 +102,8 @@
         "file": "article/posts/2026-11-09-samuelson-economics-textbook.md",
         "tags": [
           "economics",
-          "textbooks",
           "keynes",
-          "samuelson",
-          "history of thought"
+          "history"
         ],
         "type": "curation"
       },
@@ -130,8 +114,7 @@
         "content": "The Conference Board Employment Trends Index fell to 108.36 in October, a 0.1% monthly decline from an upwardly revised 108.43 in September, but remained 2.4% above October 2025. The composite of eight labor-market indicators signals continued job growth potential despite the minor monthly dip.",
         "tags": [
           "indicators",
-          "employment",
-          "conference board"
+          "employment"
         ],
         "type": "curation"
       }
@@ -182,7 +165,6 @@
         "category": "economy",
         "content": "ASU finance research on whether stocks outperform Treasury bills — a small fraction of stocks drive most of the market's gains.",
         "tags": [
-          "indicators",
           "stocks",
           "wealth"
         ],

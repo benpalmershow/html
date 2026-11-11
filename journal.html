@@ -52,7 +52,7 @@
   <link rel="stylesheet" href="css/body.css?v=20260614">
   <link rel="stylesheet" href="css/nav.css?v=20260821">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
-  <link rel="preload" href="css/journal.css?v=20260614" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="css/journal.css?v=20260614">
   <link rel="stylesheet" href="css/components/cards.css?v=20260614">
   <link rel="stylesheet" href="css/components/tables.css?v=20260614">
   <link rel="stylesheet" href="css/components/alerts.css?v=20260614">
@@ -60,7 +60,6 @@
 
   <link rel="stylesheet" href="css/components/footer.css?v=20260614">
   <link rel="stylesheet" href="css/components/home.css?v=20260614">
-  <noscript><link rel="stylesheet" href="css/journal.css?v=20260614"></noscript>
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -122,12 +121,12 @@
       </div>
     </div>
 
-    <div class="search-bar" id="searchBar" style="display: none;">
+    <search class="search-bar" id="searchBar" style="display: none;" role="search">
       <input type="search" id="searchInput" class="search-input" placeholder="Search journal entries..." aria-label="Search journal entries">
       <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
-    </div>
+    </search>
 
     <div class="sub-filter-bar" id="subFilterBar" style="display: none;" aria-label="Secondary filters">
       <div class="sub-filters" id="subFilterButtons"></div>
@@ -227,7 +226,8 @@
           accordionEl.className = 'accordion';
           accordionEl.hidden = true;
           accordionEl.setAttribute('hidden', 'until-found');
-          accordionEl.setAttribute('role', 'region');
+          const panelId = 'panel-' + (div.id || (entry.title ? slugify(entry.title) : Math.random().toString(36).slice(2, 8)));
+          accordionEl.id = panelId;
           const inner = document.createElement('div');
           inner.className = 'accordion-inner';
           accordionEl.appendChild(inner);
@@ -244,41 +244,57 @@
             accordionEl.appendChild(footer);
           }
           let loaded = false;
+          function loadContent() {
+            if (loaded) return;
+            loaded = true;
+            if (hasFile) {
+              inner.innerHTML = '<div class="accordion-loading"><div class="loading-spinner"></div><span>Loading content...</span></div>';
+              if (mdCache[entry.file]) {
+                inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
+                return;
+              }
+              fetch(entry.file)
+                .then(response => response.ok ? response.text() : Promise.reject(response.status))
+                .then(text => {
+                  mdCache[entry.file] = text;
+                  inner.innerHTML = normalizeContent(parseMarkdown(text));
+                })
+                .catch(() => {
+                  inner.innerHTML = '<span class="loading-error">Could not load file.</span>';
+                });
+            } else if (hasContent) {
+              inner.innerHTML = normalizeContent(parseInline(entry.content, true));
+            }
+          }
+          // Preload inline content so text is indexed by native find-in-page under hidden="until-found"
+          if (hasContent && !hasFile) {
+            loadContent();
+          }
           headEl.setAttribute('role', 'button');
           headEl.setAttribute('tabindex', '0');
           headEl.setAttribute('aria-expanded', 'false');
+          headEl.setAttribute('aria-controls', panelId);
           function toggle() {
             const open = headEl.getAttribute('aria-expanded') === 'true';
             headEl.setAttribute('aria-expanded', String(!open));
             if (!open) {
               accordionEl.removeAttribute('hidden');
+              loadContent();
             } else {
               accordionEl.setAttribute('hidden', 'until-found');
             }
-            if (!open && !loaded) {
-              loaded = true;
-              if (hasFile) {
-                inner.innerHTML = '<div class="accordion-loading"><div class="loading-spinner"></div><span>Loading content...</span></div>';
-                if (mdCache[entry.file]) {
-                  inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
-                  return;
-                }
-                fetch(entry.file)
-                  .then(response => response.ok ? response.text() : Promise.reject(response.status))
-                  .then(text => {
-                    mdCache[entry.file] = text;
-                    inner.innerHTML = normalizeContent(parseMarkdown(text));
-                  })
-                  .catch(() => {
-                    inner.innerHTML = '<span class="loading-error">Could not load file.</span>';
-                  });
-               } else if (hasContent) {
-                 inner.innerHTML = normalizeContent(parseInline(entry.content, true));
-               }
-            }
           }
-          headEl.addEventListener('click', toggle);
+          // Synchronize ARIA state when content is revealed by native find-in-page
+          accordionEl.addEventListener('beforematch', () => {
+            headEl.setAttribute('aria-expanded', 'true');
+            loadContent();
+          });
+          headEl.addEventListener('click', event => {
+            if (event.target.closest('a')) return;
+            toggle();
+          });
           headEl.addEventListener('keydown', event => {
+            if (event.target.closest('a')) return;
             if (event.key === 'Enter' || event.key === ' ') {
               event.preventDefault();
               toggle();
@@ -353,12 +369,18 @@
       }
       function scrollToHash() {
         const id = window.location.hash.slice(1);
+        if (!id) return false;
         const escaped = id.replace(/"/g, '\\"');
         const target = document.getElementById(id)
           || document.querySelector('[data-slug="' + escaped + '"]')
           || document.querySelector('[data-date="' + escaped + '"]');
         if (!target) return false;
-        setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
+        const toggleHead = target.querySelector('.entry-head.has-toggle') || target.closest('.entry')?.querySelector('.entry-head.has-toggle');
+        if (toggleHead && toggleHead.getAttribute('aria-expanded') === 'false') {
+          toggleHead.click();
+        }
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        setTimeout(() => target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }), 50);
         return true;
       }
       function activateVideo(target) {
@@ -369,7 +391,7 @@
         iframe.title = 'Embedded video';
         iframe.loading = 'lazy';
         iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
         target.replaceWith(iframe);
       }

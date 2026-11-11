@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-10T16:16:25.213356Z",
+      "lastUpdated": "2026-11-11T15:53:46.158305Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -111,6 +111,10 @@
         "2026-11-10": {
           "yes": "8¢",
           "no": "92¢"
+        },
+        "2026-11-11": {
+          "yes": "8¢",
+          "no": "92¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -128,7 +132,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-11-10T16:16:25.213356Z",
+      "lastUpdated": "2026-11-11T15:55:47.848208Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
       "probabilities": {
@@ -151,6 +155,10 @@
         "2026-11-10": {
           "yes": "20¢",
           "no": "80¢"
+        },
+        "2026-11-11": {
+          "yes": "20¢",
+          "no": "80¢"
         }
       },
       "change": "",
@@ -169,7 +177,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2027",
-      "lastUpdated": "2026-11-10T16:18:26.642825Z",
+      "lastUpdated": "2026-11-11T15:57:47.11024Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-27",
@@ -191,6 +199,10 @@
           "no": "72¢"
         },
         "2026-11-10": {
+          "yes": "28¢",
+          "no": "72¢"
+        },
+        "2026-11-11": {
           "yes": "28¢",
           "no": "72¢"
         }
@@ -335,6 +347,10 @@
         "2026-11-10": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
+        },
+        "2026-11-11": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
         }
       },
       "change": "",
@@ -351,16 +367,16 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-10T16:14:25.399956Z",
+      "lastUpdated": "2026-11-11T15:53:46.158305Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
       "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
       "kalshi_url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26dec",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
-      "rate_hold_odds": "5¢",
+      "rate_hold_odds": "3¢",
       "rate_cut_odds": "0¢",
-      "rate_hike_odds": "84¢",
+      "rate_hike_odds": "86¢",
       "change": "",
       "probabilities": {
         "2026-11-06": {
@@ -397,6 +413,13 @@
           "rate_hold_odds": "5¢",
           "rate_hike_odds": "84¢",
           "rate_hike_50_bps_odds": "11¢"
+        },
+        "2026-11-11": {
+          "rate_cut_50_bps_odds": "0¢",
+          "rate_cut_odds": "0¢",
+          "rate_hold_odds": "3¢",
+          "rate_hike_odds": "86¢",
+          "rate_hike_50_bps_odds": "12¢"
         }
       },
       "explanation": "Polymarket prediction on the December 8-9, 2026 FOMC rate decision. Market-implied odds assign 78% to a 25 bps increase, 20% to no change, and <1% to 25 bps decrease / 50+ bps increase. Current federal funds target range 3.75%-4.00%. Volume: $14.9M.",
@@ -404,7 +427,7 @@
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
       "rate_cut_50_bps_odds": "0¢",
-      "rate_hike_50_bps_odds": "11¢"
+      "rate_hike_50_bps_odds": "12¢"
     },
     {
       "id": "trump-impeachment",
@@ -1427,6 +1450,10 @@
           "Republican Party": "0¢"
         },
         "2026-11-10": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
+        },
+        "2026-11-11": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
         }

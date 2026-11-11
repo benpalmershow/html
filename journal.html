@@ -122,6 +122,13 @@
       </div>
     </div>
 
+    <div class="search-bar" id="searchBar" style="display: none;">
+      <input type="search" id="searchInput" class="search-input" placeholder="Search journal entries..." aria-label="Search journal entries">
+      <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
     <div class="sub-filter-bar" id="subFilterBar" style="display: none;" aria-label="Secondary filters">
       <div class="sub-filters" id="subFilterButtons"></div>
     </div>
@@ -219,6 +226,7 @@
           accordionEl = document.createElement('div');
           accordionEl.className = 'accordion';
           accordionEl.hidden = true;
+          accordionEl.setAttribute('hidden', 'until-found');
           accordionEl.setAttribute('role', 'region');
           const inner = document.createElement('div');
           inner.className = 'accordion-inner';
@@ -242,7 +250,11 @@
           function toggle() {
             const open = headEl.getAttribute('aria-expanded') === 'true';
             headEl.setAttribute('aria-expanded', String(!open));
-            accordionEl.hidden = open;
+            if (!open) {
+              accordionEl.removeAttribute('hidden');
+            } else {
+              accordionEl.setAttribute('hidden', 'until-found');
+            }
             if (!open && !loaded) {
               loaded = true;
               if (hasFile) {
@@ -308,9 +320,13 @@
         if (accordionEl) div.appendChild(accordionEl);
         return div;
       }
-      function buildDay(day) {
+      function buildDay(day, index) {
         const section = document.createElement('section');
         section.className = 'day';
+        // Apply content-visibility optimization to sections after the first 3
+        if (index >= 3) {
+          section.classList.add('deferred');
+        }
         section.dataset.date = day.date;
         section.id = day.date;
         const header = document.createElement('div');
@@ -323,7 +339,7 @@
       function renderMore() {
         const next = allDays.slice(renderIndex, renderIndex + 30);
         const fragment = document.createDocumentFragment();
-        next.forEach(day => fragment.appendChild(buildDay(day)));
+        next.forEach((day, idx) => fragment.appendChild(buildDay(day, renderIndex + idx)));
         feed.appendChild(fragment);
         renderIndex += next.length;
         loadMore.classList.toggle('is-visible', renderIndex < allDays.length);

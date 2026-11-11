@@ -15,6 +15,7 @@
 
     let currentCategory = 'all';
     let currentTag = null;
+    let currentSearchQuery = '';
 
     function syncURL() {
         const url = new URL(window.location);
@@ -28,6 +29,11 @@
         } else {
             url.searchParams.delete('tag');
         }
+        if (currentSearchQuery) {
+            url.searchParams.set('search', currentSearchQuery);
+        } else {
+            url.searchParams.delete('search');
+        }
         window.history.replaceState({}, '', url);
     }
 
@@ -35,12 +41,16 @@
         const params = new URLSearchParams(window.location.search);
         const cat = params.get('category') || params.get('filter');
         const tag = params.get('tag');
+        const search = params.get('search');
 
         if (cat && PILLARS.some(p => p.id === cat)) {
             currentCategory = cat;
         }
         if (tag) {
             currentTag = tag;
+        }
+        if (search) {
+            currentSearchQuery = search;
         }
     }
 
@@ -83,8 +93,12 @@
                 // 2. Tag match
                 const matchesTag = !currentTag || entryTags.includes(currentTag);
 
-                // 3. Search match with fuzzy matching
+                // 3. Search match
                 let matchesSearch = true;
+                if (currentSearchQuery) {
+                    const query = currentSearchQuery.toLowerCase();
+                    matchesSearch = title.includes(query) || content.includes(query);
+                }
 
                 const isMatch = matchesCategory && matchesTag && matchesSearch;
                 entry.style.display = isMatch ? '' : 'none';
@@ -103,7 +117,7 @@
         const hasVisibleEntries = matchingEntries > 0;
 
         if (emptyEl) {
-            if (currentCategory !== 'all' || currentTag) {
+            if (currentCategory !== 'all' || currentTag || currentSearchQuery) {
                 emptyEl.textContent = `No entries found matching your criteria (${totalEntries} total entries)`;
             } else {
                 emptyEl.textContent = 'No entries found.';
@@ -111,14 +125,14 @@
             emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
         }
 
-        if (loadMoreBtn && currentCategory === 'all' && !currentTag) {
+        if (loadMoreBtn && currentCategory === 'all' && !currentTag && !currentSearchQuery) {
             loadMoreBtn.style.display = hasVisibleEntries ? '' : 'none';
         }
 
         // Auto load more if filtering and more entries exist.
         // Keep loading until all entries are exhausted so matches spread
         // across paginated days are all visible, not just those in the first batch.
-        const isFiltered = currentCategory !== 'all' || currentTag;
+        const isFiltered = currentCategory !== 'all' || currentTag || currentSearchQuery;
         if (isFiltered && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
             const loadUntilExhausted = () => {
                 if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
@@ -159,15 +173,27 @@
             buttonsContainer.appendChild(btn);
         });
 
+        // Add search button to filter bar (separate from PILLARS)
+        const searchToggleBtn = createFilterBtn('search', '<i data-lucide="search" class="filter-icon"></i>', 'Search');
+        searchToggleBtn.dataset.category = 'search';
+        buttonsContainer.appendChild(searchToggleBtn);
+
         // Primary pillar button click
         buttonsContainer.addEventListener('click', function(e) {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
 
+            const category = btn.dataset.category;
+
+            // Handle search button separately
+            if (category === 'search') {
+                return; // Search button has its own handler
+            }
+
             buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            currentCategory = btn.dataset.category;
+            currentCategory = category;
 
             filterJournalEntries();
 
@@ -182,6 +208,66 @@
             clearTagBtn.addEventListener('click', function() {
                 currentTag = null;
                 filterJournalEntries();
+            });
+        }
+
+        // Search input setup
+        const searchBar = document.getElementById('searchBar');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+        if (searchBar && searchInput && clearSearchBtn) {
+            // Show search bar if there's a search query in URL
+            if (currentSearchQuery) {
+                searchBar.style.display = 'flex';
+                searchInput.value = currentSearchQuery;
+                clearSearchBtn.classList.add('is-visible');
+                searchToggleBtn.classList.add('active');
+            }
+
+            // Search toggle button click
+            searchToggleBtn.addEventListener('click', function() {
+                const isSearchActive = searchBar.style.display === 'flex';
+                if (isSearchActive) {
+                    searchBar.style.display = 'none';
+                    currentSearchQuery = '';
+                    searchInput.value = '';
+                    clearSearchBtn.classList.remove('is-visible');
+                    searchToggleBtn.classList.remove('active');
+                } else {
+                    searchBar.style.display = 'flex';
+                    searchInput.focus();
+                    searchToggleBtn.classList.add('active');
+                }
+                filterJournalEntries();
+            });
+
+            // Search input typing
+            searchInput.addEventListener('input', function() {
+                currentSearchQuery = this.value.trim();
+                clearSearchBtn.classList.toggle('is-visible', currentSearchQuery.length > 0);
+                filterJournalEntries();
+            });
+
+            // Clear search button
+            clearSearchBtn.addEventListener('click', function() {
+                currentSearchQuery = '';
+                searchInput.value = '';
+                clearSearchBtn.classList.remove('is-visible');
+                searchToggleBtn.classList.remove('active');
+                filterJournalEntries();
+            });
+
+            // Search on Enter key
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    searchBar.style.display = 'none';
+                    currentSearchQuery = '';
+                    searchInput.value = '';
+                    clearSearchBtn.classList.remove('is-visible');
+                    searchToggleBtn.classList.remove('active');
+                    filterJournalEntries();
+                }
             });
         }
 

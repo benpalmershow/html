@@ -43,14 +43,5 @@ loadComponent(null, 'components/scripts-unified.html', function (html) {
   });
 });
 
-// Load analytics component with script execution
-loadComponent(null, 'components/analytics.html', function (html) {
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = html;
-  const scriptElements = tempDiv.querySelectorAll('script');
-  scriptElements.forEach(script => {
-    const newScript = document.createElement('script');
-    newScript.textContent = script.textContent;
-    document.head.appendChild(newScript);
-  });
-});
+// Analytics is loaded directly via js/analytics.js on pages that need it.
+

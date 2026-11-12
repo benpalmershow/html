@@ -104,37 +104,7 @@
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 
   <!-- Analytics -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-
-    let gaLoaded = false;
-    const loadGA = () => {
-      if (gaLoaded) return;
-      gaLoaded = true;
-      gtag('js', new Date());
-      gtag('config', 'G-DWEVPGLJDP', { 'anonymize_ip': true, 'cookie_flags': 'SameSite=Lax;Secure' });
-
-      const script = document.createElement('script');
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DWEVPGLJDP';
-      script.async = true;
-      document.head.appendChild(script);
-    };
-
-    // Load after 10 seconds or on first interaction
-    let gaTimeout = setTimeout(loadGA, 10000);
-
-    const loadOnInteraction = () => {
-      clearTimeout(gaTimeout);
-      loadGA();
-      document.removeEventListener('click', loadOnInteraction);
-      document.removeEventListener('scroll', loadOnInteraction);
-      document.removeEventListener('keydown', loadOnInteraction);
-    };
-    document.addEventListener('click', loadOnInteraction, { passive: true, once: true });
-    document.addEventListener('scroll', loadOnInteraction, { passive: true, once: true });
-    document.addEventListener('keydown', loadOnInteraction, { passive: true, once: true });
-  </script>
+  <script src="js/analytics.js" defer></script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">

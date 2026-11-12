@@ -58,6 +58,9 @@ except ImportError:
     print("requests is required. Install with: pip install requests")
     sys.exit(1)
 
+from dotenv import load_dotenv
+load_dotenv()
+
 ROOT = Path(__file__).resolve().parent.parent
 FINANCIALS_PATH = ROOT / "json" / "financials-data.json"
 FRED_API_KEY = os.environ.get("FRED_API_KEY")

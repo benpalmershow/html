@@ -133,6 +133,16 @@ THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
 DEFAULT_DECIMALS = {
     "Personal Consumption Expenditures (PCE)": 1,
     "GDP": 2,
+    "Affordability Index": 1,
+    "Case-Shiller National Home Price Index": 1,
+}
+
+# Per-indicator forced decimal precision, overriding existing_value detection.
+# Use when the indicator's true precision is known and should not be inferred
+# from a stale integer-formatted value already in the JSON.
+FORCE_DECIMALS = {
+    "Affordability Index": 1,
+    "Case-Shiller National Home Price Index": 1,
 }
 # Indicators that are inherently volatile; raise threshold for warnings
 VOLATILE_INDICATORS = {
@@ -278,6 +288,12 @@ def format_value(value, indicator_name, existing_value):
         except Exception:
             decimals = None
             format_suffix = ''
+
+    # Force indicator-specific precision, overriding existing_value inference.
+    # Needed when a stale integer-formatted value in the JSON would otherwise
+    # lock the fetcher into 0 decimals for an indicator that genuinely needs 1.
+    if indicator_name in FORCE_DECIMALS:
+        decimals = FORCE_DECIMALS[indicator_name]
 
     if decimals is None:
         # Use indicator-specific default precision when available, then fall

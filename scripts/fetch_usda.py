@@ -24,6 +24,9 @@ except ImportError:
     print("requests is required. Install with: pip install requests")
     sys.exit(1)
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from fetch_utils import atomic_write_json
 
 ROOT = Path(__file__).resolve().parent.parent

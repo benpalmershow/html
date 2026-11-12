@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T14:29:48.484395Z",
+  "lastUpdated": "2026-11-12T16:36:45Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-11T15:53:46.158305Z",
+      "lastUpdated": "2026-11-12T16:34:10.063749Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -115,13 +115,17 @@
         "2026-11-11": {
           "yes": "8¢",
           "no": "92¢"
+        },
+        "2026-11-12": {
+          "yes": "6¢",
+          "no": "94¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
-      "yes_odds": "8¢",
-      "yes_probability": "8¢",
-      "no_odds": "92¢",
-      "no_probability": "92¢",
+      "yes_odds": "6¢",
+      "yes_probability": "6¢",
+      "no_odds": "94¢",
+      "no_probability": "94¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true
@@ -132,7 +136,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-11-11T15:55:47.848208Z",
+      "lastUpdated": "2026-11-12T16:34:10.063749Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
       "probabilities": {
@@ -159,14 +163,18 @@
         "2026-11-11": {
           "yes": "20¢",
           "no": "80¢"
+        },
+        "2026-11-12": {
+          "yes": "18¢",
+          "no": "82¢"
         }
       },
       "change": "",
       "explanation": "Polymarket prediction on whether the Iranian regime will fall before 2028. Current market price 26¢ Yes / 74¢ No. Volume: $32.6K.",
-      "yes_odds": "20¢",
-      "yes_probability": "20¢",
-      "no_odds": "80¢",
-      "no_probability": "80¢",
+      "yes_odds": "18¢",
+      "yes_probability": "18¢",
+      "no_odds": "82¢",
+      "no_probability": "82¢",
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true
@@ -177,7 +185,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2027",
-      "lastUpdated": "2026-11-11T15:57:47.11024Z",
+      "lastUpdated": "2026-11-12T16:36:10.951398Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-27",
@@ -203,6 +211,10 @@
           "no": "72¢"
         },
         "2026-11-11": {
+          "yes": "28¢",
+          "no": "72¢"
+        },
+        "2026-11-12": {
           "yes": "28¢",
           "no": "72¢"
         }
@@ -351,6 +363,10 @@
         "2026-11-11": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
+        },
+        "2026-11-12": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
         }
       },
       "change": "",
@@ -367,7 +383,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-11T15:53:46.158305Z",
+      "lastUpdated": "2026-11-12T16:32:10.24626Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
@@ -376,7 +392,7 @@
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
       "rate_hold_odds": "3¢",
       "rate_cut_odds": "0¢",
-      "rate_hike_odds": "86¢",
+      "rate_hike_odds": "90¢",
       "change": "",
       "probabilities": {
         "2026-11-06": {
@@ -420,6 +436,13 @@
           "rate_hold_odds": "3¢",
           "rate_hike_odds": "86¢",
           "rate_hike_50_bps_odds": "12¢"
+        },
+        "2026-11-12": {
+          "rate_cut_50_bps_odds": "0¢",
+          "rate_cut_odds": "0¢",
+          "rate_hold_odds": "3¢",
+          "rate_hike_odds": "90¢",
+          "rate_hike_50_bps_odds": "7¢"
         }
       },
       "explanation": "Polymarket prediction on the December 8-9, 2026 FOMC rate decision. Market-implied odds assign 78% to a 25 bps increase, 20% to no change, and <1% to 25 bps decrease / 50+ bps increase. Current federal funds target range 3.75%-4.00%. Volume: $14.9M.",
@@ -427,7 +450,7 @@
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
       "rate_cut_50_bps_odds": "0¢",
-      "rate_hike_50_bps_odds": "12¢"
+      "rate_hike_50_bps_odds": "7¢"
     },
     {
       "id": "trump-impeachment",
@@ -492,13 +515,13 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-11-06T15:19:55Z",
+      "lastUpdated": "2026-11-12T16:33:46Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
       "change": "",
       "explanation": "Monthly survey by the University of Michigan (500+ phone interviews) assessing consumer attitudes about personal finances, business conditions, and buying conditions. The index is benchmarked to 100 (1966=100). Values above 90 suggest economic expansion, while values below 80 may indicate economic stress. The survey includes current conditions (40% weight) and expectations (60% weight) components. The expectations component is particularly important as it can predict future consumer spending patterns. The index is a leading indicator of consumer spending, which accounts for about 70% of U.S. economic activity.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-23T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1427,6 +1450,10 @@
         "2026-11-11": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢"
+        },
+        "2026-11-12": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢"
         }
       },
       "change": "",
@@ -2257,7 +2284,7 @@
       "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
       "change": "",
       "explanation": "The U.S. Dollar Index (DXY) measures the value of the U.S. dollar relative to a basket of foreign currencies, including the euro, Japanese yen, British pound, Canadian dollar, Swedish krona, and Swiss franc. A higher index value indicates a stronger dollar, which makes U.S. exports more expensive and imports cheaper. The index is influenced by interest rate differentials, economic growth, and global risk appetite. A strong dollar can reduce inflation by making imports cheaper but can hurt U.S. exporters and multinational companies' overseas earnings when converted back to dollars.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -2829,7 +2856,8 @@
         "june": "101.4",
         "july": "102.7",
         "august": "103.7",
-        "september": "105"
+        "september": "105",
+        "october": "101"
       },
       "2025": {
         "march": "104.2",
@@ -2847,12 +2875,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Affordability Index",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-12T16:33:46Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/FIXHAI",
       "change": "",
       "explanation": "A composite measure of housing affordability that considers home prices, mortgage interest rates, and median family income. The National Association of Realtors (NAR) Housing Affordability Index is set to 100, representing the point at which a median-income family has exactly enough income to qualify for a mortgage on a median-priced home. Values above 100 indicate greater affordability (a family with the median income has more than enough income to qualify), while values below 100 indicate declining affordability. The index assumes a 20% down payment and a 30-year fixed-rate mortgage. Regional variations can be significant due to differences in home prices and local incomes.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -3335,7 +3363,8 @@
         "july": "203,250",
         "august": "206,000",
         "september": "200,500",
-        "october": "195,400"
+        "october": "195,800",
+        "november": "200,000"
       },
       "2025": {
         "march": "223,000",
@@ -3355,16 +3384,16 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobless Claims",
-      "lastUpdated": "2026-11-06T15:19:58Z",
+      "lastUpdated": "2026-11-12T16:33:46Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "change": "",
       "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
-        "december": "222,750",
+        "december": "217,667",
         "november": "222,000"
       }
     },
@@ -3674,7 +3703,7 @@
       "source_url": "https://www.bls.gov/cpi/data.htm",
       "change": "",
       "explanation": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It's the most widely used measure of inflation, tracking price changes for a fixed basket of about 80,000 goods and services. The 'headline' CPI includes food and energy prices, which can be volatile month-to-month. The 'core' CPI excludes these volatile categories to show underlying inflation trends. The Federal Reserve targets 2% annual inflation as measured by the PCE price index, but CPI is more widely reported in the media and used for cost-of-living adjustments.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {

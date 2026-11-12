@@ -348,10 +348,6 @@
 
 .earnings-subheading { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 12px 0 6px; padding-bottom: 4px; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.25); }
 
-.surprise-positive { color: #16a34a; font-weight: 700; }
-
-.surprise-negative { color: #dc2626; font-weight: 700; }
-
 .earnings-positive { color: #16a34a; font-weight: 700; background: rgba(34, 197, 94, 0.1); padding: 1px 4px; border-radius: 3px; }
 
 .earnings-negative { color: #dc2626; font-weight: 700; background: rgba(239, 68, 68, 0.1); padding: 1px 4px; border-radius: 3px; }

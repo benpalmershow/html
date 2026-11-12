@@ -64,12 +64,22 @@
     })();
   </script>
 
+  <script>
+    (function () {
+      var isElectionsView = new URLSearchParams(window.location.search).get('filter') === 'Elections';
+      var isElectionsAnchor = window.location.hash === '#fec-campaign-anchor';
+      if (isElectionsView || isElectionsAnchor) {
+        document.documentElement.dataset.initialFilter = 'Elections';
+      }
+    })();
+  </script>
+
   <!-- Critical CSS - loaded synchronously for first paint -->
   <link rel="stylesheet" href="css/theme.css?v=20260816">
   <link rel="stylesheet" href="css/body.css?v=20260816">
   <link rel="stylesheet" href="css/nav.css?v=20260821">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260816">
-  <link rel="stylesheet" href="css/financials.css?v=20261110e">
+  <link rel="stylesheet" href="css/financials.css?v=20261112">
   <link rel="stylesheet" href="css/prediction-bars.css?v=20261109">
   <link rel="stylesheet" href="css/components/13f-holdings.css?v=20261019">
   
@@ -95,7 +105,7 @@
   <link rel="preload" href="js/indicators.js?v=20261022o" as="script">
   <link rel="preload" href="js/charts.js?v=20260816" as="script">
   <link rel="preload" href="js/filters.js?v=20260816" as="script">
-  <link rel="preload" href="js/financials.js?v=20261022" as="script">
+  <link rel="preload" href="js/financials.js?v=20261112" as="script">
   <!-- Tracked earnings tickers (source of truth for the Earnings section) -->
   <link rel="preload" href="json/earnings-tickers.json" as="fetch" crossorigin="anonymous">
 
@@ -247,7 +257,7 @@
   <script src="js/indicators.js?v=20261022o" defer></script>
   <script src="js/charts.js?v=20260816" defer></script>
   <script src="js/filters.js?v=20260816" defer></script>
-  <script src="js/financials.js?v=20261022" defer></script>
+  <script src="js/financials.js?v=20261112" defer></script>
   <script src="js/13f-holdings.js?v=20260816" defer></script>
   <script src="js/fec-data.js?v=20261019" defer></script>
 

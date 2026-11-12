@@ -1318,6 +1318,10 @@
 #categories #world-cup,
 #categories #fec-campaign { display: block; }
 
+html[data-initial-filter="Elections"] #categories #indicator-categories,
+html[data-initial-filter="Elections"] #categories #latest-13f-filings,
+html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
+
 /* When a specific data category is active: hide 13F, World Cup, and FEC */
 #categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="Elections"]) #latest-13f-filings,
  #categories[data-filter]:not([data-filter="all"]):not([data-filter="latest"]):not([data-filter="13F Holdings"]):not([data-filter="World Cup"]):not([data-filter="Elections"]) #world-cup,
@@ -1707,6 +1711,14 @@
 .category[data-category="Elections"] .indicators-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     min-height: unset;
+}
+
+@media (max-width: 480px) {
+    html[data-initial-filter="Elections"] #fec-campaign,
+    #categories[data-filter="Elections"] #fec-campaign {
+        /* Reserve the measured mobile height of the eleven Elections cards. */
+        min-height: 96rem;
+    }
 }
 
 .fec-data-date {

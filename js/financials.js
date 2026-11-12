@@ -241,7 +241,6 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLate
         if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
         if (typeof renderSparklines === 'function') renderSparklines();
         makeCardsFocusable(document.getElementById('categories'));
-        setupLazyIndicatorRendering();
         return;
     }
 
@@ -284,9 +283,6 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLate
 
     handleEmptyState(indicatorContainer, filterCategory);
     makeCardsFocusable(document.getElementById('categories'));
-
-    // Lazy render indicators to reduce initial DOM complexity
-    setupLazyIndicatorRendering();
 
     // Re-sync the active category title after any re-render so the button
     // highlight always reflects the currently shown section.
@@ -484,39 +480,6 @@ function handleEmptyState(container, filterCategory) {
 function makeCardsFocusable(container) {
     container.querySelectorAll('.indicator').forEach(card => {
         card.setAttribute('tabindex', '0');
-    });
-}
-
-/* =========================================
-   Lazy Indicator Rendering (DOM Virtualization)
-   ========================================= */
-
-function setupLazyIndicatorRendering() {
-    const categories = document.querySelectorAll('.category');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const category = entry.target;
-                const indicators = category.querySelectorAll('.indicator');
-                indicators.forEach(indicator => {
-                    if (indicator.style.display === 'none') {
-                        indicator.style.display = '';
-                    }
-                });
-                observer.unobserve(category);
-            }
-        });
-    }, { rootMargin: '200px', threshold: 0.01 });
-
-    // Hide indicators in categories not immediately visible
-    categories.forEach((category, index) => {
-        if (index > 1) { // Keep first 2 categories visible
-            const indicators = category.querySelectorAll('.indicator');
-            indicators.forEach(indicator => {
-                indicator.style.display = 'none';
-            });
-            observer.observe(category);
-        }
     });
 }
 
@@ -857,8 +820,8 @@ function initializeDashboard() {
     if (typeof setupModalHandlers === 'function') setupModalHandlers();
     setupKeyboardNavigation();
 
+    setupLazySectionLoad('fec-campaign', ensureLoadFEC);
     setupLazySectionLoad('latest-13f-filings', ensureLoad13F);
-    ensureLoadFEC();
 }
 
 /** Single source of truth for which filter is active.
@@ -866,6 +829,7 @@ function initializeDashboard() {
 function setActiveFilter(category, preserveIndicator = false) {
     const categoriesEl = document.getElementById('categories');
     categoriesEl.dataset.filter = category;
+    document.documentElement.removeAttribute('data-initial-filter');
     currentCategory = category;
 
     document.querySelectorAll('.filter-btn').forEach(btn => {

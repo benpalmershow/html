@@ -1,8 +1,17 @@
-<!-- Unified Analytics Component -->
+<!-- Unified Analytics Component with Consent Mode v2 -->
 <script>
   // Initialize dataLayer and gtag function
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
+
+  // Consent Mode v2: Default to denied for ad_storage and analytics_storage
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+
   gtag('js', new Date());
 
   // Main Google Analytics configuration with first-party mode enabled

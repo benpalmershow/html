@@ -29,3 +29,22 @@
     });
   }
 </script>
+
+<!-- Analytics Event Tracking -->
+<script>
+  // Contact form submit tracking
+  (function () {
+    const btn = document.getElementById('contact-submit');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'contact_form_submit', {
+          event_category: 'Contact',
+          event_label: 'Form Submit',
+          value: 1
+        });
+      }
+    }, { passive: true });
+  })();
+</script>

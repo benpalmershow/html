@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-11T16:36:09.089272Z",
+  "lastUpdated": "2026-11-12T02:25:28Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -967,7 +967,8 @@
         "may": "5.88",
         "june": "5.70",
         "july": "6.06",
-        "august": "6.23"
+        "august": "6.23",
+        "september": "6.30"
       },
       "2025": {
         "january": "5.52",
@@ -978,7 +979,7 @@
         "june": "5.28",
         "july": "4.94",
         "august": "4.84",
-        "september": "4.77",
+        "september": "4.76",
         "october": "4.73",
         "november": "4.90",
         "december": "5.03"
@@ -987,25 +988,14 @@
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Wheat",
-      "lastUpdated": "2026-10-24T11:50:50Z",
+      "lastUpdated": "2026-11-12T02:25:27Z",
       "releaseDay": 0,
-      "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
+      "url": "https://quickstats.nass.usda.gov/",
       "change": "",
-      "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers.",
+      "explanation": "The average price received by farmers for wheat, as reported by the USDA National Agricultural Statistics Service (NASS). Wheat prices are quoted in dollars per bushel and are tracked monthly. Wheat is a major U.S. staple grain used for bread, flour, pasta, and other food products, as well as animal feed. Prices are influenced by global supply and demand, weather patterns, trade policies, and competing crops. The U.S. is among the world's largest wheat producers and exporters, making domestic prices important for agricultural income and global food security. Wheat prices directly impact food costs for consumers and feed costs for livestock producers. Quick Stats search (https://quickstats.nass.usda.gov/): Program SURVEY > Sector CROPS > Group FIELD CROPS > Commodity WHEAT > Category PRICE RECEIVED > Data Item WHEAT - PRICE RECEIVED, MEASURED IN $ / BU > Domain TOTAL > Geographic Level NATIONAL > State US TOTAL; select Year, Period Type MONTHLY, and desired Periods, then Get Data.",
       "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "january": "5.52",
-      "february": "5.59",
-      "march": "5.71",
-      "april": "5.61",
-      "may": "5.58",
-      "june": "5.28",
-      "july": "4.94",
-      "august": "4.84",
-      "october": "4.73",
-      "november": "4.90",
-      "december": "5.03"
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "soybeans-price",
@@ -1017,7 +1007,8 @@
         "may": "11.60",
         "june": "11.30",
         "july": "11.60",
-        "august": "12.10"
+        "august": "12.10",
+        "september": "12.20"
       },
       "2025": {
         "january": "10.00",
@@ -1028,7 +1019,7 @@
         "june": "10.40",
         "july": "10.20",
         "august": "10.00",
-        "september": "9.85",
+        "september": "9.93",
         "october": "9.69",
         "november": "10.50",
         "december": "10.30"
@@ -1037,25 +1028,14 @@
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Soybeans",
-      "lastUpdated": "2026-10-24T11:50:49Z",
+      "lastUpdated": "2026-11-12T02:25:26Z",
       "releaseDay": 0,
-      "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
+      "url": "https://quickstats.nass.usda.gov/",
       "change": "",
-      "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in s per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector.",
+      "explanation": "The average price received by farmers for soybeans, as reported by the USDA National Agricultural Statistics Service (NASS). Soybean prices are quoted in dollars per bushel and are tracked monthly. Soybean is a major U.S. agricultural commodity used for both food (soy products) and feed applications. Prices are influenced by supply and demand factors including global production, weather patterns, trade policies, and feed grain competition. The U.S. is the world's largest soybean producer, making domestic prices important for agricultural income, export competitiveness, and food inflation. Soybean prices also impact livestock production costs and feed expenses throughout the agricultural sector. Quick Stats search (https://quickstats.nass.usda.gov/): Program SURVEY > Sector CROPS > Group FIELD CROPS > Commodity SOYBEANS > Category PRICE RECEIVED > Data Item SOYBEANS - PRICE RECEIVED, MEASURED IN $ / BU > Domain TOTAL > Geographic Level NATIONAL > State US TOTAL; select Year, Period Type MONTHLY, and desired Periods, then Get Data.",
       "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "january": "10.00",
-      "february": "10.20",
-      "march": "10.20",
-      "april": "10.20",
-      "may": "10.40",
-      "june": "10.40",
-      "july": "10.20",
-      "august": "10.00",
-      "october": "9.69",
-      "november": "10.50",
-      "december": "10.30"
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "beef-price",
@@ -1067,7 +1047,8 @@
         "may": "252.00",
         "june": "254.00",
         "july": "246.00",
-        "august": "231.00"
+        "august": "231.00",
+        "september": "223.00"
       },
       "2025": {
         "january": "199.00",
@@ -1078,7 +1059,7 @@
         "june": "228.00",
         "july": "229.00",
         "august": "236.00",
-        "september": "238",
+        "september": "238.00",
         "october": "232.00",
         "november": "226.00",
         "december": "221.00"
@@ -1087,25 +1068,14 @@
       "color": "#f39c12",
       "agency": "USDA NASS",
       "name": "Beef",
-      "lastUpdated": "2026-10-24T11:50:50Z",
+      "lastUpdated": "2026-11-12T02:25:28Z",
       "releaseDay": 0,
-      "url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
+      "url": "https://quickstats.nass.usda.gov/",
       "change": "",
-      "explanation": "The average price received by farmers for all beef cattle, as reported by the USDA National Agricultural Statistics Service (NASS). Beef cattle prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. This includes all classes of beef cattle: steers, heifers, cows, and calves. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers.",
+      "explanation": "The average price received by farmers for beef cattle (cattle, GE 500 lbs), as reported by the USDA National Agricultural Statistics Service (NASS). Prices are quoted in dollars per hundredweight (cwt) and are tracked monthly. Beef cattle prices are influenced by supply and demand factors including herd size, feed costs, consumer demand, and international trade. The metric reflects market conditions for one of the U.S. agriculture sector's largest commodities. Cattle prices directly impact ranching profitability and influence the cost of beef products for consumers. Quick Stats search (https://quickstats.nass.usda.gov/): Program SURVEY > Sector ANIMALS & PRODUCTS > Group LIVESTOCK > Commodity CATTLE > Category PRICE RECEIVED > Data Item CATTLE, GE 500 LBS - PRICE RECEIVED, MEASURED IN $ / CWT > Domain TOTAL > Geographic Level NATIONAL > State US TOTAL; select Year, Period Type MONTHLY, and desired Periods, then Get Data (use this data item, not calves/cows/steers & heifers-only series).",
       "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "january": "199",
-      "february": "203",
-      "march": "202",
-      "april": "208",
-      "may": "219",
-      "june": "228",
-      "july": "229",
-      "august": "236",
-      "october": "232",
-      "november": "226",
-      "december": "221"
+      "releaseTimeZone": "America/New_York"
     },
     {
       "id": "copper-futures",

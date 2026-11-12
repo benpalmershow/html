@@ -2,22 +2,17 @@
 """
 Fetch USDA NASS agricultural price data and update financials-data.json.
 
-Fetches monthly commodity price data from USDA NASS text files and updates the
-corresponding indicators (Soybeans, Wheat, Beef) in json/financials-data.json.
+Prefers the Quick Stats API (https://quickstats.nass.usda.gov/api) when
+NASS_API_KEY is set, and falls back to public text chart files if the API key
+is unavailable or the API request fails. The key must be provided via the
+NASS_API_KEY environment variable (never hardcoded).
 
-These URLs are public and do not require an API key or authentication.
-Each file uses a fixed-width text format with year-prefixed lines for the first
-month of a year and indented month-only lines for subsequent months.
-
-The script updates two locations per indicator:
-  - A "YYYY" bucket for the latest year present in the source data
-    (used by charts for the current/in-progress year)
-  - Top-level month keys for the previous year (legacy fallback data,
-    rendered only for months not covered by a year bucket)
+Updates USDA NASS-sourced price indicators (Soybeans, Wheat, Beef) by writing
+monthly values into "YYYY" buckets (latest and previous year when present).
 """
 
 import json
-from fetch_utils import atomic_write_json
+import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -29,45 +24,162 @@ except ImportError:
     print("requests is required. Install with: pip install requests")
     sys.exit(1)
 
+from fetch_utils import atomic_write_json
+
 ROOT = Path(__file__).resolve().parent.parent
 FINANCIALS_PATH = ROOT / "json" / "financials-data.json"
+
+NASS_API_BASE = "https://quickstats.nass.usda.gov/api"
+NASS_API_KEY = os.environ.get("NASS_API_KEY")
+NASS_API_LIMIT = 50000
 
 MONTHS = [
     "january", "february", "march", "april", "may", "june",
     "july", "august", "september", "october", "november", "december",
 ]
+MONTH_TO_NUM = {m: i + 1 for i, m in enumerate(MONTHS)}
 
-# Map indicator name (as stored in financials-data.json) to its USDA NASS URL.
-# All three files share the same text format; Beef has extra columns but the
-# first column ("All Beef Cattle") is what the JSON tracks.
-INDICATOR_URLS = {
-    "Soybeans": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
-    "Wheat":    "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
-    "Beef":     "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
+# Indicator config. "api" params are broad Quick Stats filters; rows are matched
+# in code by short_desc/unit/domain/period to tolerate catalog field variations.
+# "txt_url" is the legacy public fallback source.
+INDICATORS = {
+    "Soybeans": {
+        "txt_url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricesb.txt",
+        "api": {
+            "commodity_desc": "SOYBEANS",
+            "statisticcat_desc": "PRICE RECEIVED",
+            "agg_level_desc": "NATIONAL",
+            "freq_desc": "MONTHLY",
+        },
+        "short_desc": "SOYBEANS - PRICE RECEIVED, MEASURED IN $ / BU",
+        "unit_desc": "$ / BU",
+    },
+    "Wheat": {
+        "txt_url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/pricewh.txt",
+        "api": {
+            "commodity_desc": "WHEAT",
+            "statisticcat_desc": "PRICE RECEIVED",
+            "agg_level_desc": "NATIONAL",
+            "freq_desc": "MONTHLY",
+        },
+        "short_desc": "WHEAT - PRICE RECEIVED, MEASURED IN $ / BU",
+        "unit_desc": "$ / BU",
+    },
+    "Beef": {
+        "txt_url": "https://www.nass.usda.gov/Charts_and_Maps/graphics/data/priceca.txt",
+        "api": {
+            "commodity_desc": "CATTLE",
+            "statisticcat_desc": "PRICE RECEIVED",
+            "agg_level_desc": "NATIONAL",
+            "freq_desc": "MONTHLY",
+        },
+        "short_desc": "CATTLE, GE 500 LBS - PRICE RECEIVED, MEASURED IN $ / CWT",
+        "unit_desc": "$ / CWT",
+    },
+}
+
+MONTH_ABBR = {
+    "JAN": "january", "FEB": "february", "MAR": "march", "APR": "april",
+    "MAY": "may", "JUN": "june", "JUL": "july", "AUG": "august",
+    "SEP": "september", "OCT": "october", "NOV": "november", "DEC": "december",
 }
 
 # Regex to parse USDA NASS price-file data lines.
-# Year-prefixed line:  "2016 January ..:   8.71"
-# Month-only line:     "     February .:   8.51"
-# The optional 4-digit year at the start indicates the first month of that year;
-# subsequent indented month lines belong to the same year until the next year line.
-LINE_RE = re.compile(
-    r'^\s*(?:(\d{4})\s+)?([A-Za-z]+)\s*\.+:\s*(.+)$'
-)
+LINE_RE = re.compile(r'^\s*(?:(\d{4})\s+)?([A-Za-z]+)\s*\.+:\s*(.+)$')
 
 
-def fetch_prices(url):
+def nass_get(endpoint, params):
+    """Call a Quick Stats API endpoint and return parsed JSON."""
+    url = f"{NASS_API_BASE}/{endpoint.lstrip('/')}"
+    resp = requests.get(url, params=params, timeout=30)
+    resp.raise_for_status()
+    payload = resp.json()
+    # API can return HTTP 200 with an error payload.
+    if isinstance(payload, dict) and "error" in payload:
+        err = payload["error"]
+        msg = ", ".join(err) if isinstance(err, list) else str(err)
+        raise RuntimeError(f"NASS API error: {msg}")
+    return payload
+
+
+def fetch_prices_api(indicator_name, years_back=2):
+    """Fetch monthly prices via Quick Stats API.
+
+    Returns a dict mapping year -> {month_name -> value_str, ...}
+    """
+    if not NASS_API_KEY:
+        raise RuntimeError("NASS_API_KEY environment variable not set")
+
+    config = INDICATORS[indicator_name]
+    current_year = datetime.now(timezone.utc).year
+    start_year = max(current_year - (years_back - 1), 2000)
+
+    params = {
+        "key": NASS_API_KEY,
+        "year__GE": str(start_year),
+        **config["api"],
+    }
+
+    counts = nass_get("get_counts/", params)
+    count = int(counts.get("count", 0))
+    print(f"  API count: {count}")
+    if count == 0:
+        return {}
+    if count > NASS_API_LIMIT:
+        raise RuntimeError(
+            f"Query exceeds API limit ({count} > {NASS_API_LIMIT}); narrow filters"
+        )
+
+    payload = nass_get("api_GET/", {**params, "format": "json"})
+    rows = payload.get("data", []) if isinstance(payload, dict) else []
+
+    data = {}
+    want_short = config.get("short_desc")
+    want_unit = config.get("unit_desc")
+    for row in rows:
+        if row.get("domain_desc") != "TOTAL":
+            continue
+        if want_short and row.get("short_desc") != want_short:
+            continue
+        if want_unit and row.get("unit_desc") != want_unit:
+            continue
+
+        year = row.get("year")
+        period = (row.get("reference_period_desc") or "").strip().upper()
+        begin = str(row.get("begin_code", "")).strip()
+        value = row.get("Value")
+        if not year or value in (None, "", "(D)", "(S)", "(NA)", "(Z)"):
+            continue
+
+        month_name = MONTH_ABBR.get(period)
+        if not month_name and begin.isdigit():
+            idx = int(begin)
+            if 1 <= idx <= 12:
+                month_name = MONTHS[idx - 1]
+        if not month_name:
+            continue
+
+        value_str = str(value).replace(",", "").strip()
+        try:
+            float(value_str)
+        except ValueError:
+            continue
+        data.setdefault(int(year), {})[month_name] = value_str
+
+    return data
+
+
+def fetch_prices_txt(url):
     """Fetch a USDA NASS price text file."""
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
     return resp.text
 
 
-def parse_prices(text):
+def parse_prices_txt(text):
     """Parse a USDA NASS price text file.
 
     Returns a dict mapping year -> {month_name -> value_str, ...}
-    where month_name is lowercase (e.g. "january").
     """
     data = {}
     current_year = None
@@ -80,9 +192,6 @@ def parse_prices(text):
         if month_lower not in MONTHS:
             continue
 
-        # Extract the first numeric value from the remainder.
-        # For multi-column files (e.g. Beef), the first column is "All Beef Cattle",
-        # which is the aggregate the JSON tracks.
         numbers = re.findall(r'\d+(?:\.\d+)?', rest)
         if not numbers:
             continue
@@ -116,7 +225,6 @@ def format_value(value_str, existing_values):
             break
     if decimals > 0:
         return f"{num:.{decimals}f}"
-    # No existing decimal format – use integer if the value is whole, else 2 dp.
     if num == int(num):
         return str(int(num))
     return f"{num:.2f}"
@@ -165,37 +273,70 @@ def update_indicator(indicator, parsed_data):
     if year_bucket:
         indicator[year_key] = year_bucket
 
-    # -- Previous year: update top-level month keys (legacy fallback) --
+    # -- Previous year: update year bucket if present --
     if prev_year is not None:
+        prev_key = str(prev_year)
         prev_months = parsed_data[prev_year]
-        flat_existing = [
-            indicator.get(m) for m in MONTHS if indicator.get(m)
-        ]
+        prev_bucket = indicator.get(prev_key, {})
         for month in MONTHS:
             source_value = prev_months.get(month)
             if source_value is None:
                 continue
-            existing = indicator.get(month)
-            formatted = format_value(source_value, flat_existing)
+            existing = prev_bucket.get(month)
+            existing_vals = [v for v in prev_bucket.values() if v]
+            formatted = format_value(source_value, existing_vals)
             if existing is None:
-                indicator[month] = formatted
+                prev_bucket[month] = formatted
                 indicator["newMonth"] = True
                 updates.append(
-                    f"{indicator['name']} ({prev_year} {month}): {formatted} (new)"
+                    f"{indicator['name']} ({prev_key} {month}): {formatted} (new)"
                 )
             elif existing != formatted:
-                indicator[month] = formatted
+                prev_bucket[month] = formatted
                 indicator["newMonth"] = False
                 updates.append(
-                    f"{indicator['name']} ({prev_year} {month}): {existing} -> {formatted}"
+                    f"{indicator['name']} ({prev_key} {month}): {existing} -> {formatted}"
                 )
             else:
-                # Revision-less re-fetch: no new month, no badge.
                 indicator["newMonth"] = False
+        if prev_bucket:
+            indicator[prev_key] = prev_bucket
 
     if updates:
         indicator["lastUpdated"] = now_iso
     return updates
+
+
+def fetch_indicator_data(indicator_name):
+    """Fetch parsed price data for an indicator, preferring Quick Stats API."""
+    config = INDICATORS[indicator_name]
+
+    if NASS_API_KEY:
+        try:
+            print(f"  Trying Quick Stats API...")
+            parsed = fetch_prices_api(indicator_name)
+            if parsed:
+                years_found = sorted(parsed.keys(), reverse=True)
+                print(
+                    f"  API: parsed {len(years_found)} years "
+                    f"(latest: {years_found[0]}, {len(parsed[years_found[0]])} months)"
+                )
+                return parsed, "Quick Stats API"
+            print("  API returned no usable records; falling back to text source")
+        except Exception as e:
+            print(f"  API fetch failed ({e}); falling back to text source")
+    else:
+        print("  NASS_API_KEY not set; using text source fallback")
+
+    text = fetch_prices_txt(config["txt_url"])
+    parsed = parse_prices_txt(text)
+    if parsed:
+        years_found = sorted(parsed.keys(), reverse=True)
+        print(
+            f"  Text: parsed {len(years_found)} years "
+            f"(latest: {years_found[0]}, {len(parsed[years_found[0]])} months)"
+        )
+    return parsed, "text file"
 
 
 def update_financials():
@@ -205,8 +346,8 @@ def update_financials():
 
     all_updates = []
 
-    for indicator_name, url in INDICATOR_URLS.items():
-        print(f"Fetching {indicator_name} from {url}...")
+    for indicator_name in INDICATORS:
+        print(f"Fetching {indicator_name}...")
 
         indicator = None
         for idx in data.get("indices", []):
@@ -219,21 +360,18 @@ def update_financials():
             continue
 
         try:
-            text = fetch_prices(url)
+            parsed_data, source = fetch_indicator_data(indicator_name)
         except Exception as e:
             print(f"  Error fetching {indicator_name}: {e}")
             continue
 
-        parsed_data = parse_prices(text)
         if not parsed_data:
             print(f"  No data parsed for {indicator_name}")
             continue
 
-        years_found = sorted(parsed_data.keys(), reverse=True)
-        print(f"  Parsed {len(years_found)} years of data "
-              f"(latest: {years_found[0]}, {len(parsed_data[years_found[0]])} months)")
-
         updates = update_indicator(indicator, parsed_data)
+        if updates:
+            print(f"  Source: {source}")
         all_updates.extend(updates)
 
     print(f"\nUpdated {len(all_updates)} values:")

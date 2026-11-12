@@ -686,7 +686,8 @@
         "june": "4.13M",
         "july": "4.06M",
         "august": "3.93M",
-        "september": "3.99M"
+        "september": "3.99M",
+        "october": "3.75M"
       },
       "2025": {
         "march": "",
@@ -704,12 +705,12 @@
       "color": "#e67e22",
       "agency": "NAR",
       "name": "Existing Home Sales",
-      "lastUpdated": "2026-10-13T14:00:00Z",
+      "lastUpdated": "2026-11-12T15:00:00Z",
       "releaseDay": 22,
       "url": "https://tradingeconomics.com/united-states/existing-home-sales",
       "change": "",
       "explanation": "The seasonally adjusted annual rate of previously owned single-family homes, townhomes, condominiums, and co-ops that closed escrow during the month, as reported by the National Association of Realtors (NAR). Existing home sales account for about 85-90% of total home sales and are a key indicator of housing market conditions. The data includes both cash and mortgage-financed transactions. The report also provides information on inventory levels (measured in months of supply), median and average sales prices, and the share of first-time and all-cash buyers. Existing home sales are recorded at closing, making them a lagging indicator compared to new home sales and pending home sales.",
-      "releaseTimeISO": "2026-10-22T15:00:00Z",
+      "releaseTimeISO": "2026-11-12T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -2750,7 +2751,9 @@
         "may": "$436,400",
         "june": "$448,800",
         "july": "$442,500",
-        "august": "$434,800"
+        "august": "$434,800",
+        "september": "$417,500",
+        "october": "$416,700"
       },
       "2025": {
         "march": "$403,100",
@@ -2768,12 +2771,12 @@
       "color": "#e67e22",
       "agency": "NAR",
       "name": "Median Home Price",
-      "lastUpdated": "2026-09-11T14:00:00Z",
+      "lastUpdated": "2026-11-12T15:00:00Z",
       "releaseDay": 0,
       "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales",
       "change": "",
       "explanation": "The median sales price of existing single-family homes sold during the month, as reported by the National Association of Realtors (NAR). This figure represents the midpoint of all home prices, with half of homes selling for more and half for less. The median price is influenced by the mix of homes sold in a given month and can be affected by seasonal patterns and regional variations. Unlike average prices, the median is less affected by extremely high or low sales. The data is not seasonally adjusted and can be volatile month-to-month. Year-over-year comparisons are often more meaningful indicators of price trends than month-to-month changes.",
-      "releaseTimeISO": "2026-09-15T15:00:00Z",
+      "releaseTimeISO": "2026-11-12T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
     {

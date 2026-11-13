@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T16:03:17Z",
+  "lastUpdated": "2026-11-13T16:50:59Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1502,7 +1502,8 @@
         "june": "$185B",
         "july": "$118B",
         "august": "$98B",
-        "september": "$93B"
+        "september": "$93B",
+        "october": "$115B"
       },
       "2025": {
         "march": "$89B",
@@ -1520,7 +1521,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Interest on Debt",
-      "lastUpdated": "2026-10-23T13:55:49Z",
+      "lastUpdated": "2026-11-13T16:50:59Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "change": "",
@@ -1540,7 +1541,8 @@
         "june": "-$120,305M",
         "july": "-$432,286M",
         "august": "-$166,779M",
-        "september": "-$26,900M"
+        "september": "-$26,900M",
+        "october": "-$404,064M"
       },
       "2025": {
         "january": "-$128,640M",
@@ -1560,7 +1562,7 @@
       "color": "#3498db",
       "agency": "Treasury",
       "name": "Monthly Budget Deficit/Surplus",
-      "lastUpdated": "2026-10-23T13:55:49Z",
+      "lastUpdated": "2026-11-13T16:50:59Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/receipts-and-outlays-of-the-u-s-government-by-month",
       "receipts": {
@@ -1573,7 +1575,8 @@
           "june": "495,761",
           "july": "334,010",
           "august": "360,033",
-          "september": "557,875"
+          "september": "557,875",
+          "october": "368,940"
         },
         "january": "513,294",
         "february": "296,424",
@@ -1598,7 +1601,8 @@
           "june": "616,067",
           "july": "766,296",
           "august": "526,812",
-          "september": "584,775"
+          "september": "584,775",
+          "october": "773,004"
         },
         "january": "641,935",
         "february": "603,441",
@@ -1615,7 +1619,7 @@
       },
       "change": "",
       "explanation": "Monthly federal government receipts (revenue) and outlays (spending), with the deficit calculated as outlays minus receipts. A negative value means spending exceeded revenue (deficit), while a positive value indicates a surplus. Data is organized by fiscal year (FY2025 runs October 2024 - September 2025, FY2026 runs October 2025 - September 2026). The Monthly Treasury Statement provides this data from the Treasury Department.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T16:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1832,7 +1836,8 @@
         "june": "$-26B",
         "july": "$-9B",
         "august": "$13B",
-        "september": "$6B"
+        "september": "$6B",
+        "october": "$19B"
       },
       "2025": {
         "march": "$8.2B",
@@ -1850,7 +1855,7 @@
       "color": "#1abc9c",
       "agency": "Treasury",
       "name": "Tariff Revenue",
-      "lastUpdated": "2026-10-23T13:55:49Z",
+      "lastUpdated": "2026-11-13T16:50:59Z",
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "change": "",

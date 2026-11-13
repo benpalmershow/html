@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T21:15:00Z",
+  "lastUpdated": "2026-11-13T22:30:00Z",
   "indices": [
     {
       "id": "faa-groundstop-lifted",
@@ -7,25 +7,26 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FAA Ground Stop",
-      "lastUpdated": "2026-11-13T21:15:00Z",
+      "lastUpdated": "2026-11-13T22:30:00Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/nationwide-ground-stop-lifted-byptptpt",
       "change": "",
       "probabilities": {
         "2026-11-13": {
-          "Today 6 PM": "3¢",
-          "Today 8 PM": "27¢",
-          "Today 10 PM": "38¢",
-          "Tomorrow 12 AM": "67¢",
-          "Tomorrow 12 PM": "93¢",
-          "In 2 days": "98¢"
+          "Today 6 PM": "5¢",
+          "Today 7 PM": "1¢",
+          "Today 8 PM": "26¢",
+          "Today 10 PM": "39¢",
+          "Tomorrow 12 AM": "68¢",
+          "Tomorrow 12 PM": "92¢",
+          "In 2 days": "97¢"
         }
       },
-      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (98%) assigned to lifting in 2 days. Volume: $2,287.",
-      "yes_odds": "67¢",
-      "yes_probability": "67¢",
-      "no_odds": "35¢",
-      "no_probability": "35¢",
+      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (97%) assigned to lifting in 2 days. Volume: $54,701.",
+      "yes_odds": "68¢",
+      "yes_probability": "68¢",
+      "no_odds": "34¢",
+      "no_probability": "34¢",
       "releaseTimeISO": "2026-11-13T21:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true

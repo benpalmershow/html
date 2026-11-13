@@ -7,13 +7,21 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FAA Ground Stop",
-      "lastUpdated": "2026-11-13T22:44:09.299958Z",
+      "lastUpdated": "2026-11-13T22:52:12.037479Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/nationwide-ground-stop-lifted-byptptpt",
       "kalshi_url": "https://kalshi.com/markets/kxfaagroundstoplift/when-will-the-faa-lift-the-ground-stop/kxfaagroundstoplift-13nov26",
       "change": "",
       "probabilities": {
         "2026-11-13": {
+          "6 PM": "1¢",
+          "8 PM": "32¢",
+          "10 PM": "50¢",
+          "12 AM": "97¢",
+          "12 PM": "90¢",
+          "7 PM": "8¢"
+        },
+        "2026-11-13T18:00:00Z": {
           "6 PM": "5¢",
           "7 PM": "36¢",
           "8 PM": "26¢",
@@ -25,15 +33,13 @@
       },
       "bar_colors": [
         "#e74c3c",
-        "#f39c12",
-        "#f39c12",
+        "#e74c3c",
         "#f39c12",
         "#27ae60",
-        "#27ae60",
-        "#2ecc71"
+        "#2ecc71",
+        "#e74c3c"
       ],
-      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (96%) assigned to lifting in 2 days. Volume: $54,701.",
-
+      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (97%) assigned to lifting by midnight. Volume: $54,701.",
       "releaseTimeISO": "2026-11-13T21:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true

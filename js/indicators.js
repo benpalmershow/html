@@ -8,7 +8,16 @@ const IndicatorRenderers = (function () {
     // --- Shared data extraction helpers (SRP) ---
 
     function formatDateShort(date) {
-        return new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+        // Handle both YYYY-MM-DD and ISO timestamp formats
+        const dateStr = date.includes('T') ? date : date + 'T00:00:00Z';
+        const d = new Date(dateStr);
+        // For today's entries, show time instead of date
+        const now = new Date();
+        const isToday = d.toDateString() === now.toDateString();
+        if (isToday) {
+            return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }) + ' UTC';
+        }
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     }
 
     // The binary market helpers live in html-utils.js. Resolve them lazily so a
@@ -308,14 +317,30 @@ const IndicatorRenderers = (function () {
 
         if (sortedProbabilities.length > 0) {
             const [latestDate, latestProbs] = sortedProbabilities[0];
+            const previousProbs = sortedProbabilities.length > 1 ? sortedProbabilities[1][1] : null;
             const entries = Object.entries(latestProbs);
             
-            // Render current odds as bar rows
+            // Render current odds as bar rows with change indicators
             const barRows = entries.map(([label, value], index) => {
                 const color = barColors[index] || '#22c55e';
                 const prob = parseFloat(value);
                 const displayValue = value;
-                return predictionBarRow(label, displayValue, '', '70px', '12px');
+                
+                // Calculate change indicator
+                let changeIndicator = '';
+                if (previousProbs && previousProbs[label]) {
+                    const prevValue = parseFloat(previousProbs[label]);
+                    const currentValue = parseFloat(value);
+                    const change = currentValue - prevValue;
+                    
+                    if (change > 0) {
+                        changeIndicator = `<span class="odds-change odds-up" title="+${change.toFixed(0)}¢">↑</span>`;
+                    } else if (change < 0) {
+                        changeIndicator = `<span class="odds-change odds-down" title="${change.toFixed(0)}¢">↓</span>`;
+                    }
+                }
+                
+                return predictionBarRow(label, displayValue + changeIndicator, '', '70px', '12px');
             }).join('');
 
             latestDataHtml = `<div class="prediction-bar-container">${barRows}</div>`;

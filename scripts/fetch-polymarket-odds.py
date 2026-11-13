@@ -126,12 +126,12 @@ def get_current_probabilities(event):
                     cents = price_to_cents(price)
                     if cents:
                         # Simplify the title for display
-                    simplified_title = title.replace("November 13, ", "").replace("November 14, ", "").replace("November 15, ", "")
-                    # Further simplify time format
-                    simplified_title = simplified_title.replace(":00 PM ET", " PM").replace(":00 AM ET", " AM").replace("12:00 AM", "Midnight").replace("12:00 PM", "12 PM")
-                    # Simplify "In 2 days" to "2 days"
-                    simplified_title = simplified_title.replace("In 2 days ", "2 days")
-                    result[simplified_title] = cents
+                        simplified_title = title.replace("November 13, ", "").replace("November 14, ", "").replace("November 15, ", "")
+                        # Further simplify time format
+                        simplified_title = simplified_title.replace(":00 PM ET", " PM").replace(":00 AM ET", " AM").replace("12:00 AM", "Midnight").replace("12:00 PM", "12 PM")
+                        # Simplify "In 2 days" to "2 days"
+                        simplified_title = simplified_title.replace("In 2 days ", "2 days")
+                        result[simplified_title] = cents
                     break
     else:
         # Single market - use the first one
@@ -250,19 +250,19 @@ def main():
             print(f"[{entry_id}] no probabilities found in event data")
             continue
 
-        # Get today's date key
-        today = now.strftime("%Y-%m-%d")
-        old_probs = entry.get("probabilities", {}).get(today, {})
+        # Use ISO timestamp as key to allow multiple updates per day
+        timestamp_key = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+        old_probs = entry.get("probabilities", {})
 
         # Check if probabilities changed
         if current_probs == old_probs:
             print(f"[{entry_id}] no odds change; skipping")
             continue
 
-        # Update probabilities
+        # Update probabilities with timestamp key
         if "probabilities" not in entry:
             entry["probabilities"] = {}
-        entry["probabilities"][today] = current_probs
+        entry["probabilities"][timestamp_key] = current_probs
 
         # Update timestamp
         new_updated_at = event.get("updatedAt") or now.isoformat().replace("+00:00", "Z")

@@ -56,6 +56,30 @@ function getFilingDate(firmIdx) {
     return '11/26';
 }
 
+function formatUpdatedDate(value) {
+    const raw = String(value || '');
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(raw)
+        ? new Date(raw + 'T00:00:00')
+        : new Date(raw);
+    if (Number.isNaN(date.getTime())) return '';
+    const iso = date.toISOString();
+    const diff = Date.now() - date.getTime();
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+    let ago;
+    if (seconds < 60) ago = 'just now';
+    else if (minutes < 60) ago = minutes + 'm ago';
+    else if (hours < 24) ago = hours + 'h ago';
+    else if (days < 30) ago = days + 'd ago';
+    else if (months < 12) ago = months + 'mo ago';
+    else ago = years + 'y ago';
+    return `<time class="indicator-date" datetime="${iso}" title="${iso}">${ago}</time>`;
+}
+
 
 function isETF(holding) {
     const name = holding.name.toUpperCase();
@@ -183,14 +207,22 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         </div>`
         : '';
 
-    const firmDetails = `
-        <div style="margin-bottom: 12px; padding-bottom: 12px;">
-            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+    const lastUpdated = firmData && firmData[firmIdx] ? firmData[firmIdx].lastUpdated : null;
+    const updatedRow = lastUpdated
+        ? `<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+            <span style="color: var(--text-secondary); font-size: 0.8rem;">Updated:</span>
+            <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${formatUpdatedDate(lastUpdated)}</span>
+        </div>`
+        : '';
+
+const firmDetails = `
+        <div style="padding-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 2px;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM</span>
                 <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem; white-space: nowrap;">${formatAum(totalValue)}${aumDelta}</span>
             </div>
-            ${periodRow}
-            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+            ${periodRow ? periodRow.replace('margin-bottom: 4px', 'margin-bottom: 2px') : ''}
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 2px;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">Filed:</span>
                 <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${getFilingDate(firmIdx)}</span>
             </div>

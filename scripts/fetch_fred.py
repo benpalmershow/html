@@ -135,6 +135,7 @@ DEFAULT_DECIMALS = {
     "GDP": 2,
     "Affordability Index": 1,
     "Case-Shiller National Home Price Index": 1,
+    "PPI": 3,
 }
 
 # Per-indicator forced decimal precision, overriding existing_value detection.

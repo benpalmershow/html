@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T16:50:59Z",
+  "lastUpdated": "2026-11-13T20:59:51Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -1525,7 +1525,7 @@
       "releaseDay": 0,
       "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
       "change": "",
-      "explanation": "The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time.",
+      "explanation": "The monthly interest expense on the U.S. national debt, as reported by the Treasury Department. This represents the cost of servicing the federal government's outstanding debt obligations, including Treasury bills, notes, and bonds. The amount varies based on the total debt level and prevailing interest rates. Rising interest rates or increasing debt levels can significantly impact this expense. Interest payments are a mandatory part of the federal budget and compete with other government spending priorities. The Congressional Budget Office (CBO) projects these costs will continue to grow as both debt levels and interest rates remain elevated. This metric is a key indicator of fiscal sustainability and the government's debt burden over time. This figure is gross interest: the total cash paid out to holders of Treasury securities (the public, trust funds, and other government accounts) during the month. It is not net of interest income the Treasury receives from other sources, such as interest on federal credit programs or loans. Gross interest is the relevant measure of the government's cash outflow for debt service; net interest would subtract those offsetting receipts and understates the actual cost of servicing the debt.",
       "newMonth": false,
       "releaseTimeISO": "2026-10-15T16:00:00Z",
       "releaseTimeZone": "America/New_York"
@@ -3585,22 +3585,23 @@
         "march": "154.393",
         "april": "156.061",
         "may": "156.874",
-        "june": "156.683",
-        "july": "156.924",
-        "august": "157.662",
-        "september": "159.780"
+        "june": "156.675",
+        "july": "156.834",
+        "august": "157.482",
+        "september": "159.699",
+        "october": "160.254"
       },
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "PPI",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-13T20:59:51Z",
       "releaseDay": 13,
       "url": "https://fred.stlouisfed.org/series/PPIFIS",
       "source_url": "https://fred.stlouisfed.org/series/PPIFIS",
       "change": "",
       "explanation": "The Producer Price Index (PPI) for Final Demand, seasonally adjusted, sourced from the FRED series PPIFIS. The PPI measures the average change over time in the selling prices received by domestic producers for their output. It tracks price changes from the perspective of the seller rather than the consumer. The PPI includes prices for goods, services, and construction sold to final demand. It is considered a leading indicator of consumer price inflation, as producers often pass on higher costs to consumers. The PPI covers about 75% of U.S. goods-producing sectors and is used by businesses for contract adjustments and by economists to analyze economic trends.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-13T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {

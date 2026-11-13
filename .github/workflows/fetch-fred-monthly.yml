@@ -1,0 +1,63 @@
+name: Fetch FRED Monthly Indicators
+
+on:
+  schedule:
+    # Jobs / unemployment / earnings: first Friday, days 1-7, released 08:30 ET.
+    # 12-18 UTC covers the morning release window.
+    - cron: '*/5 12-18 1-7 * *'
+    # All other monthly releases and revisions: CPI/PPI, retail sales, housing,
+    # industrial production, PCE, Case-Shiller, New Home Sales, Consumer Sentiment,
+    # and FHFA HPI. Run every 5 minutes across the full window so a release is
+    # picked up immediately instead of waiting for the next daily run.
+    - cron: '*/5 * 8-31 * *'
+    # Daily catch-up for delayed releases, revisions, or missed windows.
+    - cron: '15 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-fred-monthly
+  cancel-in-progress: false
+
+jobs:
+  fetch-fred-monthly:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch FRED monthly indicators
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          if [ -z "$FRED_API_KEY" ]; then
+            echo "FRED_API_KEY secret is not set"
+            exit 1
+          fi
+          python3 scripts/fetch_fred.py --indicators "Unemployment Rate,Jobs,Average Hourly Earnings,GDP,CPI,PPI,Monthly Retail Sales,Housing Starts,Building Permits,Industrial Production Index,Capacity Utilization,Small Business Optimism Index,Affordability Index,JOLTS Quits Rate,Personal Consumption Expenditures (PCE),Case-Shiller National Home Price Index,New Home Sales,Consumer Sentiment,FHFA House Price Index"
+
+      - name: Validate JSON output
+        run: python3 -m json.tool json/financials-data.json > /dev/null
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add json/financials-data.json
+          if git diff --staged --quiet; then
+            echo "No FRED monthly data changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update FRED monthly indicators [skip ci]"
+          bash scripts/git_push_retry.sh "$(git branch --show-current)"

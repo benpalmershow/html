@@ -464,6 +464,13 @@ Base URL: `https://api.fiscaldata.treasury.gov/services/api/fiscal_service`
   - Line `line_code_nbr == 360` = "Interest on Treasury Debt
     Securities (Gross)", field `current_month_rcpt_outly_amt` ->
     `"$98B"` (rounded billions).
+    **Gross, not net.** The classification_desc in the API is
+    explicitly "Interest on Treasury Debt Securities (Gross)"; it
+    reports total cash paid to holders of Treasury securities
+    (public, trust funds, intragovernmental) with no offset for
+    interest income received from federal credit programs or
+    loans. Treat this indicator as gross interest in all
+    explanations and comparisons.
 - **MTS Table 4** (`tariff-revenue`) --
   `GET /v1/accounting/mts/mts_table_4?page[size]=500&sort=-record_date`
   - Line `line_code_nbr == 405` = "Customs Duties", field

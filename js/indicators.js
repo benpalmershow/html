@@ -288,7 +288,53 @@ const IndicatorRenderers = (function () {
     }
 
     function renderPrediction(indicator) {
+        // Check if this is a multi-outcome market (not yes/no)
+        const probs = indicator.probabilities;
+        if (probs && typeof probs === 'object') {
+            const firstEntry = Object.values(probs)[0];
+            if (firstEntry && !firstEntry.yes && !firstEntry.no && Object.keys(firstEntry).length > 0) {
+                return renderMultiOutcomePrediction(indicator);
+            }
+        }
         return renderBinaryPrediction(indicator, { useDualBarClass: false, showCustomLabel: false });
+    }
+
+    function renderMultiOutcomePrediction(indicator) {
+        let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
+        const probs = indicator.probabilities;
+        const barColors = indicator.bar_colors || [];
+
+        const sortedProbabilities = Object.entries(probs).sort(([a], [b]) => new Date(b) - new Date(a));
+
+        if (sortedProbabilities.length > 0) {
+            const [latestDate, latestProbs] = sortedProbabilities[0];
+            const entries = Object.entries(latestProbs);
+            
+            // Render current odds as bar rows
+            const barRows = entries.map(([label, value], index) => {
+                const color = barColors[index] || '#22c55e';
+                const prob = parseFloat(value);
+                const displayValue = value;
+                return predictionBarRow(label, displayValue, '', '70px', '12px');
+            }).join('');
+
+            latestDataHtml = `<div class="prediction-bar-container">${barRows}</div>`;
+        }
+
+        // Render history for previous dates
+        if (sortedProbabilities.length > 1) {
+            hasHistory = true;
+            historyDataHtml = sortedProbabilities.slice(1).map(([date, probs]) => {
+                const dateLabel = formatDateShort(date);
+                const entries = Object.entries(probs);
+                const historyItems = entries.map(([label, value]) => {
+                    return `<div class="prediction-history-item"><span class="prediction-history-label">${label}</span><span class="prediction-history-value">${value}</span></div>`;
+                }).join('');
+                return `<div class="prediction-history-row prediction-history-row-inline"><span class="prediction-history-date prediction-history-date-inline">${dateLabel}</span><div class="prediction-history-content">${historyItems}</div></div>`;
+            }).join('');
+        }
+
+        return { latestDataHtml, historyDataHtml, hasHistory };
     }
 
     function renderSports(indicator) {

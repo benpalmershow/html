@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T22:30:00Z",
+  "lastUpdated": "2026-11-13T22:44:09.299958Z",
   "indices": [
     {
       "id": "faa-groundstop-lifted",
@@ -7,26 +7,33 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FAA Ground Stop",
-      "lastUpdated": "2026-11-13T22:30:00Z",
+      "lastUpdated": "2026-11-13T22:44:09.299958Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/nationwide-ground-stop-lifted-byptptpt",
+      "kalshi_url": "https://kalshi.com/markets/kxfaagroundstoplift/when-will-the-faa-lift-the-ground-stop/kxfaagroundstoplift-13nov26",
       "change": "",
       "probabilities": {
         "2026-11-13": {
-          "Today 6 PM": "5¢",
-          "Today 7 PM": "1¢",
-          "Today 8 PM": "26¢",
-          "Today 10 PM": "39¢",
-          "Tomorrow 12 AM": "68¢",
-          "Tomorrow 12 PM": "92¢",
-          "In 2 days": "97¢"
+          "6 PM": "5¢",
+          "7 PM": "36¢",
+          "8 PM": "26¢",
+          "10 PM": "38¢",
+          "Midnight": "68¢",
+          "Tomorrow 12 PM": "89¢",
+          "In 2 days": "96¢"
         }
       },
-      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (97%) assigned to lifting in 2 days. Volume: $54,701.",
-      "yes_odds": "68¢",
-      "yes_probability": "68¢",
-      "no_odds": "34¢",
-      "no_probability": "34¢",
+      "bar_colors": [
+        "#e74c3c",
+        "#f39c12",
+        "#f39c12",
+        "#f39c12",
+        "#27ae60",
+        "#27ae60",
+        "#2ecc71"
+      ],
+      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (96%) assigned to lifting in 2 days. Volume: $54,701.",
+
       "releaseTimeISO": "2026-11-13T21:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true

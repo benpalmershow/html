@@ -67,6 +67,16 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 - World Cup automation:
   - Data fetcher: `scripts/fetch_world_cup.py` -> `json/world-cup.json`
   - Scheduled updater: `.github/workflows/fetch-world-cup.yml`
+- Polymarket prediction market automation:
+  - Data fetcher: `scripts/fetch-polymarket-odds.py` -> `json/financials-data.json`
+  - Scheduled updater: `.github/workflows/update-polymarket-odds.yml` (runs every 30 minutes)
+  - Updates all Polymarket prediction market entries with current odds
+  - For fast-moving events (e.g., FAA groundstop), add journal entries when odds shift significantly:
+    - When a leading outcome probability changes by >10%
+    - When a new outcome becomes the market leader
+    - When a market resolves (groundstop lifted, election called, etc.)
+    - Format: "📊 [Market Name]: odds now show X% for [outcome] (was Y%)"
+    - Link to financials page: `[View indicators](financials.html?indicator=[Market Name])`
 
 ## Project-specific guardrails
 - Do not change these without explicit approval:

@@ -118,6 +118,11 @@
     --content-padding: var(--spacing-md);
     --section-spacing: var(--spacing-xl);
     
+    /* COLOR SCHEME: tells the browser to theme native UI (scrollbars, form
+       controls, canvas background) for both light and dark. MANDATORY per
+       the dark-mode guide to avoid a flash of un-themed content. */
+    color-scheme: light dark;
+
     /* ANIMATION TOKENS */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -256,24 +261,41 @@ html.dark-mode .site-header {
     100% { transform: translateX(100%); }
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+/* Custom Scrollbars
+   Standard properties first; scrollbar-width is required on macOS to force
+   the browser to render non-overlay scrollbars so scrollbar-color is visible.
+   The ::-webkit-scrollbar block is kept as a fallback for browsers that do
+   not yet support the standard scrollbar-color property. */
+:root {
+    --scrollbar-thumb: var(--border-color);
+    --scrollbar-track: var(--bg-primary);
 }
 
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-    border-radius: 4px;
+html {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 4px;
-}
+/* Legacy WebKit fallback — only applied where the standard is unsupported */
+@supports not (scrollbar-color: auto) {
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
+    ::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
+    }
 }
 
 /* ========================================

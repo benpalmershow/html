@@ -37,6 +37,7 @@
   line-height: 1.2;
   font-weight: 800;
   word-break: break-word;
+  text-wrap: balance;
 }
 
 .article-meta {
@@ -64,6 +65,15 @@
 .article-body h1 { font-size: 1.35rem; }
 .article-body h2 { font-size: 1.15rem; }
 .article-body h3 { font-size: 1rem; }
+
+/* Improve long-form text layout: prevent orphaned last words and produce a
+   better visual rag. text-wrap: pretty is a progressive enhancement — browsers
+   without support fall back to standard wrap silently. */
+.article-body p,
+.article-body blockquote,
+.article-body li {
+  text-wrap: pretty;
+}
 
 .article-tags {
   display: flex;

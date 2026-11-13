@@ -236,13 +236,13 @@
     {
       "name": "Thrive Capital Management, LLC",
       "shortName": "Thrive",
-      "filingDate": "2026-08-14",
-      "description": "Thrive Capital Management, LLC is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-06-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1765681&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
+      "filingDate": "2026-11-12",
+      "description": "Thrive Capital Management, LLC is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-09-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1765681&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
       "firmIndex": 22,
-      "lastUpdated": "2026-11-12",
+      "lastUpdated": "2026-11-13",
       "cik": 1765681,
-      "period": "2026-06-30",
-      "previousPeriod": "2026-03-31"
+      "period": "2026-09-30",
+      "previousPeriod": "2026-06-30"
     },
     {
       "name": "HARVARD MANAGEMENT CO",
@@ -250,7 +250,7 @@
       "filingDate": "2026-08-14",
       "description": "HARVARD MANAGEMENT CO is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-06-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1082621&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
       "firmIndex": 23,
-      "lastUpdated": "2026-11-12",
+      "lastUpdated": "2026-11-13",
       "cik": 1082621,
       "period": "2026-06-30",
       "previousPeriod": "2026-03-31"
@@ -143562,20 +143562,20 @@
     },
     {
       "ticker": "SPCX",
-      "name": "Space Exploration Techn Corp",
-      "value": 3231681066,
-      "pct": 84.8,
+      "name": "SPACE EXPLORATION TECHN CORP",
+      "value": 7071165286,
+      "pct": 92.1,
       "firm": "Thrive Capital Management, LLC",
       "firmIndex": 22,
       "link": "https://www.perplexity.ai/finance/SPCX",
       "cusip": "84615Q103",
-      "shares": 18914205
+      "shares": 46872367
     },
     {
       "ticker": "AMZN",
-      "name": "Amazon Com Inc",
-      "value": 215468417,
-      "pct": 5.7,
+      "name": "AMAZON COM INC",
+      "value": 225241068,
+      "pct": 2.9,
       "firm": "Thrive Capital Management, LLC",
       "firmIndex": 22,
       "link": "https://www.perplexity.ai/finance/AMZN",
@@ -143583,21 +143583,10 @@
       "shares": 904038
     },
     {
-      "ticker": "OSCR",
-      "name": "Oscar Health Inc",
-      "value": 180919957,
-      "pct": 4.7,
-      "firm": "Thrive Capital Management, LLC",
-      "firmIndex": 22,
-      "link": "https://www.perplexity.ai/finance/OSCR",
-      "cusip": "687793109",
-      "shares": 6343617
-    },
-    {
       "ticker": "SHOP",
-      "name": "Shopify Inc",
-      "value": 102284385,
-      "pct": 2.7,
+      "name": "SHOPIFY INC",
+      "value": 132849661,
+      "pct": 1.7,
       "firm": "Thrive Capital Management, LLC",
       "firmIndex": 22,
       "link": "https://www.perplexity.ai/finance/SHOP",
@@ -143605,15 +143594,37 @@
       "shares": 895817
     },
     {
+      "ticker": "OSCR",
+      "name": "OSCAR HEALTH INC",
+      "value": 131862500,
+      "pct": 1.7,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/OSCR",
+      "cusip": "687793AB5",
+      "shares": 35000000
+    },
+    {
       "ticker": "FIG",
-      "name": "Figma Inc",
-      "value": 79535145,
-      "pct": 2.1,
+      "name": "FIGMA INC",
+      "value": 92417289,
+      "pct": 1.2,
       "firm": "Thrive Capital Management, LLC",
       "firmIndex": 22,
       "link": "https://www.perplexity.ai/finance/FIG",
       "cusip": "316841105",
       "shares": 4396636
+    },
+    {
+      "ticker": "SECZ",
+      "name": "SECURITIZE CORP",
+      "value": 24561463,
+      "pct": 0.3,
+      "firm": "Thrive Capital Management, LLC",
+      "firmIndex": 22,
+      "link": "https://www.perplexity.ai/finance/SECZ",
+      "cusip": "81517B101",
+      "shares": 1683445
     },
     {
       "ticker": "SPACEX",
@@ -143825,7 +143836,7 @@
       "shares": 714285
     }
   ],
-  "lastUpdated": "2026-11-12",
+  "lastUpdated": "2026-11-13",
   "previous": {
     "ABBINGTON INVESTMENT GROUP": {
       "period": "2026-06-30",
@@ -156806,32 +156817,38 @@
       }
     },
     "Thrive Capital Management, LLC": {
-      "period": "2026-03-31",
-      "total": 343686077,
+      "period": "2026-06-30",
+      "total": 3809888970,
       "holdings": {
+        "84615Q103": {
+          "ticker": "SPCX",
+          "value": 3231681066,
+          "pct": 84.8,
+          "shares": 18914205
+        },
+        "023135106": {
+          "ticker": "AMZN",
+          "value": 215468417,
+          "pct": 5.7,
+          "shares": 904038
+        },
+        "687793109": {
+          "ticker": "OSCR",
+          "value": 180919957,
+          "pct": 4.7,
+          "shares": 6343617
+        },
         "82509L107": {
           "ticker": "SHOP",
-          "value": 106261813,
-          "pct": 30.9,
+          "value": 102284385,
+          "pct": 2.7,
           "shares": 895817
         },
         "316841105": {
           "ticker": "FIG",
-          "value": 92944885,
-          "pct": 27.0,
+          "value": 79535145,
+          "pct": 2.1,
           "shares": 4396636
-        },
-        "687793109": {
-          "ticker": "OSCR",
-          "value": 72761287,
-          "pct": 21.2,
-          "shares": 6343617
-        },
-        "146869102": {
-          "ticker": "CVNA",
-          "value": 71289123,
-          "pct": 20.7,
-          "shares": 226761
         }
       }
     },

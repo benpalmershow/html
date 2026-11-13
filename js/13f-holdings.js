@@ -280,6 +280,7 @@ const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
 function initializeFirmCards() {
     const container = document.getElementById('firmCardsContainer');
     if (!container) return;
+    if (!Array.isArray(firmData) || !Array.isArray(allHoldings)) return;
 
     container.innerHTML = '';
 

@@ -922,7 +922,10 @@ function setupLazySectionLoad(sectionId, loader) {
 
 function ensureLoad13F() {
     if (DashboardState.is13FLoaded()) {
-        if (typeof initializeFirmCards === 'function') initializeFirmCards();
+        if (Array.isArray(window.firmData) ? false : false) {} // no-op
+        if (typeof firmData !== 'undefined' && Array.isArray(firmData) && typeof initializeFirmCards === 'function') {
+            initializeFirmCards();
+        }
         return;
     }
     DashboardState.mark13FLoaded();

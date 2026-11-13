@@ -88,11 +88,14 @@ const createFilterBtn = (id, icon, text, isLatest = false) => {
           return btn;
       };
 
-     // Create buttons
-     const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
-     buttonsContainer.appendChild(allBtn);
+      // Create buttons
+      const allBtn = createFilterBtn('all', '<i data-lucide="list" class="filter-icon"></i>', 'All');
+      buttonsContainer.appendChild(allBtn);
 
-      categories.forEach(category => {
+      const sportsBtn = createFilterBtn('Sports', '<i data-lucide="trophy" class="filter-icon"></i>', 'Sports');
+      buttonsContainer.appendChild(sportsBtn);
+
+       categories.forEach(category => {
          const icon = categoryIcons[category] || `<i data-lucide="${getCategoryIconName(category)}" class="filter-icon"></i>`;
          const btn = createFilterBtn(category, icon, category);
          buttonsContainer.appendChild(btn);

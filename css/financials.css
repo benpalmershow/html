@@ -158,10 +158,10 @@
 /* Accent rail removed */
 
 /* Badge sits in its own row for earnings cards, inline for others. */
-.new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(249, 115, 22, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; animation: badgePulse 1.4s ease-in-out 3; }
-.week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(20, 184, 166, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
-.latest-month-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(59, 130, 246, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
-.game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(20, 184, 166, 0.85); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
+.new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--color-secondary); padding: 1px 4px; border-radius: 2px; line-height: 1.1; animation: badgePulse 1.4s ease-in-out 3; }
+.week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--color-secondary); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
+.latest-month-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: color-mix(in oklab, var(--color-primary), white 30%); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
+.game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: color-mix(in oklab, var(--color-primary), white 30%); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
 
 .badge-link { cursor: pointer; text-decoration: none; color: inherit; }
 .badge-link:hover { opacity: 0.85; }

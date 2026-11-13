@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T13:47:25.583581Z",
+  "lastUpdated": "2026-11-13T15:15:07.288696Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -2790,7 +2790,7 @@
         "july": "432,000",
         "august": "$427,700",
         "september": "$417,600",
-        "october": "$420,200",
+        "october": "$415,200",
         "november": "$415,100",
         "december": "$409,500"
       },
@@ -5556,11 +5556,13 @@
       "agency": "Polymarket",
       "name": "WAS @ NYG",
       "game_title": "Washington Commanders @ New York Giants",
-      "game_time": "Nov 13, 2026 1:15 AM ET",
+      "game_time": "Nov 12, 2026 8:15 PM ET",
       "game_time_iso": "2026-11-13T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-was-nyg-2026-11-13",
-      "lastUpdated": "2026-11-13T02:34:06.62084Z",
+      "lastUpdated": "2026-11-13T15:10:18.222551Z",
       "week": 10,
+      "winner": "WAS",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "WAS_win_odds": "44",
@@ -5571,24 +5573,28 @@
           "NYG_win_odds": "56"
         },
         "2026-11-13": {
-          "WAS_win_odds": "58",
-          "NYG_win_odds": "42"
+          "WAS_win_odds": "100",
+          "NYG_win_odds": "0"
         },
         "2026-11-06": {
-          "WAS_win_odds": "61",
-          "NYG_win_odds": "39"
+          "WAS_win_odds": "62",
+          "NYG_win_odds": "38"
         },
         "2026-11-08": {
           "WAS_win_odds": "56",
           "NYG_win_odds": "44"
         },
         "2026-11-12": {
-          "WAS_win_odds": "59",
-          "NYG_win_odds": "41"
+          "WAS_win_odds": "60",
+          "NYG_win_odds": "40"
+        },
+        "2026-11-14": {
+          "WAS_win_odds": "100",
+          "NYG_win_odds": "0"
         }
       },
-      "WAS_win_odds": "58",
-      "NYG_win_odds": "42"
+      "WAS_win_odds": "100",
+      "NYG_win_odds": "0"
     },
     {
       "id": "nfl-ne-det-2026-11-15",

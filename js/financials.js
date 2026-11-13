@@ -254,8 +254,48 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLate
     }
 
     let categories = [...new Set(financialData.indices.map(item => item.category))];
-
     let html = '';
+
+    if (filterCategory === 'Sports') {
+        indicatorContainer.innerHTML = '';
+        const sportsIndicators = financialData.indices.filter(
+            ind => ind.category === 'Prediction Markets' && ind.game_time_iso
+        );
+        // Upcoming NFL games first, then completed games (most recent first).
+        sportsIndicators.sort((a, b) => {
+            const isCompletedA = !!a.winner;
+            const isCompletedB = !!b.winner;
+            if (isCompletedA !== isCompletedB) return isCompletedA ? 1 : -1;
+            const dateA = new Date(a.game_time_iso).getTime();
+            const dateB = new Date(b.game_time_iso).getTime();
+            if (isCompletedA && isCompletedB) return dateB - dateA;
+            return dateA - dateB;
+        });
+        html = `
+            <div class="category" data-category="sports">
+                <h2 class="category-title">
+                    <span class="category-icon"><i data-lucide="trophy"></i></span>
+                    <button type="button" class="category-name category-sort-btn" data-category="Sports" title="Reset sort for Sports">Sports</button>
+                </h2>
+                <div class="indicators-grid">
+                    ${sportsIndicators.map(indicator => createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS)).join('')}
+                </div>
+            </div>
+        `;
+        indicatorContainer.innerHTML = html;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        setupChartIconHandlers(SELECTORS, DATA_ATTRS);
+        setupCategoryFilterHandlers(SELECTORS);
+        setupExpandHandlers(SELECTORS);
+        if (typeof updateAllCountdowns === 'function') updateAllCountdowns();
+        if (typeof renderSparklines === 'function') renderSparklines();
+        handleEmptyState(indicatorContainer, filterCategory);
+        makeCardsFocusable(document.getElementById('categories'));
+        if (typeof syncCategoryTitleActive === 'function') {
+            syncCategoryTitleActive('Sports');
+        }
+        return;
+    }
 
     if (sortByLatest) {
         html += renderLatestUpdatesView(financialData);
@@ -346,7 +386,11 @@ function isNewBadgeCard(indicator) {
 }
 
 function renderLatestUpdatesView(financialData) {
-    const filteredIndicators = financialData.indices.slice();
+    // Exclude NFL prediction-market games from Latest Updates; they live under
+    // the dedicated Sports filter instead.
+    const filteredIndicators = financialData.indices.filter(
+        ind => !(ind.category === 'Prediction Markets' && ind.game_time_iso)
+    );
     // Sort by lastUpdated descending; fall back to original order if missing
     filteredIndicators.sort((a, b) => {
         const dateA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
@@ -385,7 +429,15 @@ function renderCategoryView(financialData, categories, filterCategory, forceLate
     categories.forEach(category => {
         if (filterCategory !== 'all' && category !== filterCategory) return;
 
-        let categoryIndicators = financialData.indices.filter(item => item.category === category);
+        // NFL games live under the dedicated Sports filter; exclude them from
+        // the Prediction Markets category view so they only appear in Sports.
+        let categoryIndicators = financialData.indices.filter(item => {
+            if (item.category === category) {
+                if (category === 'Prediction Markets' && item.game_time_iso) return false;
+                return true;
+            }
+            return false;
+        });
 
         categoryIndicators.sort((a, b) => {
             // A title-click "reset" forces a plain lastUpdated sort even for

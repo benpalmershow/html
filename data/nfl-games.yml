@@ -471,13 +471,13 @@ games:
   home_full: New York Giants
   away_pm_name: WAS
   home_pm_name: NYG
-  game_time: Nov 13, 2026 1:15 AM ET
+  game_time: Nov 12, 2026 8:15 PM ET
   game_time_iso: '2026-11-13T01:15:00Z'
   url: https://polymarket.com/sports/nfl/nfl-was-nyg-2026-11-13
   polymarket_slug: nfl-was-nyg-2026-11-13
-  WAS_win_odds: 58.5¢
-  NYG_win_odds: 41.5¢
-  lastUpdated: '2026-11-13T02:34:06.62084Z'
+  WAS_win_odds: 100.0¢
+  NYG_win_odds: 0.0¢
+  lastUpdated: '2026-11-13T15:10:18.222551Z'
   odds_history:
   - timestamp: '2026-11-10T02:06:27.058528Z'
     WAS_win_odds: 45.5¢
@@ -491,6 +491,9 @@ games:
   - timestamp: '2026-11-13T02:34:06.62084Z'
     WAS_win_odds: 58.5¢
     NYG_win_odds: 41.5¢
+  - timestamp: '2026-11-13T15:10:18.222551Z'
+    WAS_win_odds: 100.0¢
+    NYG_win_odds: 0.0¢
 - id: nfl-ne-det-2026-11-15
   week: 10
   away: NE

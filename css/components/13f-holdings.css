@@ -8,7 +8,7 @@
   container-name: firm-card;
 }
 
-.firm-card-title { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; letter-spacing: -0.01em; }
+.firm-card-title { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; letter-spacing: -0.01em; flex: 1; min-inline-size: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .firm-filter-buttons { display: flex; gap: 0.35rem; margin-bottom: 0.5rem; padding: 0 0.2rem; flex-wrap: wrap; }
 

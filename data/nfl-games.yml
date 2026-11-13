@@ -475,9 +475,9 @@ games:
   game_time_iso: '2026-11-13T01:15:00Z'
   url: https://polymarket.com/sports/nfl/nfl-was-nyg-2026-11-13
   polymarket_slug: nfl-was-nyg-2026-11-13
-  WAS_win_odds: 43.5¢
-  NYG_win_odds: 56.5¢
-  lastUpdated: '2026-11-11T13:21:08.106295Z'
+  WAS_win_odds: 58.5¢
+  NYG_win_odds: 41.5¢
+  lastUpdated: '2026-11-13T02:34:06.62084Z'
   odds_history:
   - timestamp: '2026-11-10T02:06:27.058528Z'
     WAS_win_odds: 45.5¢
@@ -488,6 +488,9 @@ games:
   - timestamp: '2026-11-11T13:21:08.106295Z'
     WAS_win_odds: 43.5¢
     NYG_win_odds: 56.5¢
+  - timestamp: '2026-11-13T02:34:06.62084Z'
+    WAS_win_odds: 58.5¢
+    NYG_win_odds: 41.5¢
 - id: nfl-ne-det-2026-11-15
   week: 10
   away: NE

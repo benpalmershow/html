@@ -199,30 +199,27 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         aumDelta = `<span class="firm-delta ${deltaClass}">${arrow} ${Math.abs(delta).toFixed(1)}%</span>`;
     }
 
-    const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
+const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
     const periodRow = period
-        ? `<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+        ? `<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 0;">
             <span style="color: var(--text-secondary); font-size: 0.8rem;">Period:</span>
             <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${HtmlUtils.escapeHtml(period)}</span>
         </div>`
         : '';
 
     const lastUpdated = firmData && firmData[firmIdx] ? firmData[firmIdx].lastUpdated : null;
-    const updatedRow = lastUpdated
-        ? `<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
-            <span style="color: var(--text-secondary); font-size: 0.8rem;">Updated:</span>
-            <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${formatUpdatedDate(lastUpdated)}</span>
-        </div>`
+    const updatedHtml = lastUpdated
+        ? `<div class="indicator-agency">Updated <span class="indicator-date">${formatUpdatedDate(lastUpdated)}</span></div>`
         : '';
 
-const firmDetails = `
-        <div style="padding-bottom: 8px;">
-            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 2px;">
+    const firmDetails = `
+        <div style="padding-bottom: 4px;">
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 0;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">AUM</span>
-                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem; white-space: nowrap;">${formatAum(totalValue)}${aumDelta}</span>
+                <span style="color: var(--logo-teal); font-weight: 600; font-size: 0.8rem; white-space: nowrap;">${formatAum(totalValue)} ${aumDelta}</span>
             </div>
-            ${periodRow ? periodRow.replace('margin-bottom: 4px', 'margin-bottom: 2px') : ''}
-            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 2px;">
+            ${periodRow}
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 0;">
                 <span style="color: var(--text-secondary); font-size: 0.8rem;">Filed:</span>
                 <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;">${getFilingDate(firmIdx)}</span>
             </div>
@@ -241,13 +238,7 @@ const firmDetails = `
                 <button class="expand-toggle" aria-label="Toggle firm details"><i data-lucide="chevron-down"></i></button>
             </div>
         </div>
-        <div class="indicator-explanation">
-            <div class="indicator-explanation-header">Firm details</div>
-        <div class="indicator-explanation-body">
-            ${firmDetails}
-            ${description ? `<div class="firm-description">${description}</div>` : ''}
-        </div>
-        </div>
+        ${updatedHtml}
         <div class="indicator-content">
             <div class="data-rows-container">
                 <div class="firm-chart-container">
@@ -276,6 +267,13 @@ const firmDetails = `
                 </div>
             </div>
         </div>
+        <div class="indicator-explanation">
+            <div class="indicator-explanation-header">Firm details</div>
+        <div class="indicator-explanation-body">
+            ${firmDetails}
+            ${description ? `<div class="firm-description">${description}</div>` : ''}
+        </div>
+        </div>
     `;
 }
 
@@ -285,13 +283,11 @@ function initializeFirmCards() {
 
     container.innerHTML = '';
 
-    // Sort firms by filing date (newest first), then by name for consistency
+    // Sort firms by lastUpdated (newest first), then by name for consistency
     const sortedFirmIndices = firmData.map((firm, index) => index)
         .sort((a, b) => {
-            // Get filing dates or use default for comparison
-            const dateA = firmData[a].filingDate ? new Date(firmData[a].filingDate) : new Date('2025-11-26');
-            const dateB = firmData[b].filingDate ? new Date(firmData[b].filingDate) : new Date('2025-11-26');
-            // Sort by date descending (newest first)
+            const dateA = firmData[a].lastUpdated ? new Date(firmData[a].lastUpdated) : new Date(0);
+            const dateB = firmData[b].lastUpdated ? new Date(firmData[b].lastUpdated) : new Date(0);
             return dateB - dateA;
         });
 

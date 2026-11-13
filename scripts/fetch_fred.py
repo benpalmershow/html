@@ -58,8 +58,12 @@ except ImportError:
     print("requests is required. Install with: pip install requests")
     sys.exit(1)
 
-from dotenv import load_dotenv
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    # python-dotenv is optional in CI; FRED_API_KEY is provided via env.
+    pass
 
 ROOT = Path(__file__).resolve().parent.parent
 FINANCIALS_PATH = ROOT / "json" / "financials-data.json"
@@ -136,6 +140,7 @@ DEFAULT_DECIMALS = {
     "Affordability Index": 1,
     "Case-Shiller National Home Price Index": 1,
     "PPI": 3,
+    "Lumber (PPI)": 3,
 }
 
 # Per-indicator forced decimal precision, overriding existing_value detection.

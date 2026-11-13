@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T20:59:51Z",
+  "lastUpdated": "2026-11-13T21:04:10Z",
   "indices": [
     {
       "id": "strait-of-hormuz-traffic",
@@ -598,8 +598,9 @@
         "may": "281.228",
         "june": "280.234",
         "july": "291.003",
-        "august": "286.355",
-        "september": "282.340"
+        "august": "286.481",
+        "september": "282.695",
+        "october": "275.584"
       },
       "2025": {
         "january": "264.294",
@@ -619,7 +620,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Lumber (PPI)",
-      "lastUpdated": "2026-11-08T12:32:27Z",
+      "lastUpdated": "2026-11-13T21:04:10Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/WPU081",
       "change": "",
@@ -719,7 +720,7 @@
         "july": "248",
         "june": "254"
       },
-      "newMonth": false
+      "newMonth": true
     },
     {
       "id": "existing-home-sales",

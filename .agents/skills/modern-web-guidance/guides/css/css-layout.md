@@ -216,7 +216,7 @@ Baseline status for Popover: Newly available. It's been Baseline since 2025-01-2
 Supported by: Chrome 116 (Aug 2023), Edge 116 (Aug 2023), Firefox 125 (Apr 2024), Safari 17 (Sep 2023), and Safari iOS 18.3 (Jan 2025).
 
 Browser support for Anchor positioning: Limited availability.
-Supported by: Safari 27.
+Supported by: Safari 27 (Sep 2026).
 Unsupported in: Chrome, Edge, and Firefox.
 
 **When to use each overlay primitive:**
@@ -232,7 +232,7 @@ Unsupported in: Chrome, Edge, and Firefox.
 - Don't mix physical and logical keywords in a single `position-area` value — pick one coordinate system.
 - Feature-detect with `@supports (anchor-name: --x)` and provide an absolute-position fallback.
 
-> For full implementation detail, polyfill strategies, and `popover` value reference, see `declarative-dialog-popover-control` (via `npx -y modern-web-guidance@latest retrieve "declarative-dialog-popover-control"`) and `position-aware-tooltips` (via `npx -y modern-web-guidance@latest retrieve "position-aware-tooltips"`). For anchor positioning applied to menus and tab indicators, see `resilient-context-menus-and-nested-dropdowns` (via `npx -y modern-web-guidance@latest retrieve "resilient-context-menus-and-nested-dropdowns"`) and `anchor-positioning-tab-underline` (via `npx -y modern-web-guidance@latest retrieve "anchor-positioning-tab-underline"`).
+> For full implementation detail, polyfill strategies, and `popover` value reference, see `declarative-dialog-popover-control` (via `npx -y modern-web-guidance@latest retrieve "declarative-dialog-popover-control"`) and `position-aware-tooltips` (via `npx -y modern-web-guidance@latest retrieve "position-aware-tooltips"`). For anchor positioning applied to dropdowns, flyouts, and tab indicators, see `viewport-aware-dropdowns` (via `npx -y modern-web-guidance@latest retrieve "viewport-aware-dropdowns"`) and `anchor-positioning-tab-underline` (via `npx -y modern-web-guidance@latest retrieve "anchor-positioning-tab-underline"`).
 
 ## 6 Overflow tracking and layout stability
 
@@ -250,6 +250,8 @@ Manage layout shifts, scrollbars, and clipping predictably.
 - Use `scrollbar-gutter: stable` to reserve space for scrollbars and prevent layout shifts when content grows.
 - Use `overscroll-behavior: contain` (or `none`) on nested scroll regions (such as sidebars, modals, and lists) to stop scroll chains from bubbling into the page, or `overscroll-behavior: chain` on intermediate scroll wrappers (such as swipe-to-reveal tracks) when excess scroll should propagate to an ancestor scroller without triggering a local rubber-band bounce.
 - Use the `-webkit-line-clamp` + `display: -webkit-box` + `-webkit-box-orient: vertical` triad for multi-line truncation — despite the prefix, this pattern is fully specified and not deprecated. Declare the unprefixed `line-clamp` shorthand alongside it; browsers that don't yet support it ignore the property harmlessly.
+- For text that must stay on one line (labels, table cells, file names) see `single-line-overflow` (via `npx -y modern-web-guidance@latest retrieve "single-line-overflow"`) for techniques for truncating and revealing the full text on demand without UX friction.
+
 **Do not:**
 
 - Don't use `overflow: scroll` when `auto` will do — `scroll` forces scrollbars even when there's nothing to scroll.
@@ -286,9 +288,7 @@ Supported by: Chrome 108 (Nov 2022), Edge 108 (Dec 2022), Firefox 101 (May 2022)
 
 ## 8 Grid lanes (aka masonry)
 
-Browser support for Grid lanes: Limited availability.
-Supported by: Safari 26.4 (Mar 2026).
-Unsupported in: Chrome, Edge, and Firefox.
+Grid lanes is not natively supported by any major browser yet.
 
 The specification is in development under the name "grid lanes" (e.g., `display: grid-lanes`), while earlier experimental prototypes used `grid-template-rows: masonry`.
 

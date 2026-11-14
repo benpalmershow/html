@@ -6,11 +6,7 @@
     // 5 Core Editorial Pillars
     const PILLARS = [
         { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' },
-        { id: 'economy', name: 'Economy', icon: '<i data-lucide="trending-up" class="filter-icon"></i>' },
-        { id: 'policy', name: 'Policy', icon: '<i data-lucide="landmark" class="filter-icon"></i>' },
-        { id: 'trade', name: 'Trade', icon: '<i data-lucide="ship" class="filter-icon"></i>' },
-        { id: 'society', name: 'Society', icon: '<i data-lucide="users" class="filter-icon"></i>' },
-        { id: 'dispatches', name: 'Dispatches', icon: '<i data-lucide="book-open" class="filter-icon"></i>' }
+        { id: 'books', name: 'Books', icon: '<i data-lucide="book" class="filter-icon"></i>' }
     ];
 
     let currentCategory = 'all';

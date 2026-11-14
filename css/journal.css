@@ -249,11 +249,14 @@ main {
 .accordion-inner ul,
 .accordion-inner ol {
   margin: 0 0 0.85rem;
-  padding-left: 1.25rem;
+  /* Indent lists well past the left edge of the content column. The browser
+     default ul padding is 20px, so a value equal to it renders flush; use a
+     larger indent so bullets never sit on the left border. */
+  padding-left: 2rem;
 }
 
 .accordion-inner ol {
-  padding-left: 1.75rem;
+  padding-left: 2.5rem;
   list-style-position: inside;
 }
 

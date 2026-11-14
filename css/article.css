@@ -62,6 +62,20 @@
 
 .article-body { border-top: 0; margin-top: 0; padding-top: 0; }
 .article-body > :first-child { margin-top: 0; }
+
+/* Bulleted and numbered lists must stay indented from the left edge of the
+   content column. The browser default left padding (20px) is applied to the
+   list itself, but the parent (article-body / article-wrapper) has no left
+   margin or padding, so the bullets render flush with the left border. */
+.article-body ul,
+.article-body ol {
+  padding-left: 1.5rem;
+}
+
+.article-body ol {
+  padding-left: 2rem;
+  list-style-position: inside;
+}
 .article-body h1 { font-size: 1.35rem; }
 .article-body h2 { font-size: 1.15rem; }
 .article-body h3 { font-size: 1rem; }

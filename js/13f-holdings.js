@@ -271,7 +271,7 @@ const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
             <div class="indicator-explanation-header">Firm details</div>
         <div class="indicator-explanation-body">
             ${firmDetails}
-            ${description ? `<div class="firm-description">${description}</div>` : ''}
+            ${description ? `<div class="firm-description">${HtmlUtils.sanitizeHtml(description)}</div>` : ''}
         </div>
         </div>
     `;

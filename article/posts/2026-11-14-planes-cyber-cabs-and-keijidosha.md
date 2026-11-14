@@ -4,7 +4,7 @@ category: journal
 tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keijidosha", "aviation", "transportation"]
 ---
 ### 🚕 Cybercabs
-The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Start at $299/mo end up at [$1,185/mo.](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61)
+The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Start at $299/mo., end up at [$1,185/mo.](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61)
 
 
 The obligations in the [required autonomy subscription](https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61) reminds me of what I liked about my former American auto mobility. 
@@ -13,7 +13,7 @@ You are no longer autonomous. You are now obligated to make a $300 monthly payme
 - [Robotaxi Resistance](article.html?slug=robotaxi-resistance) — U.S. city councils block robotaxi expansion over driver job displacement and safety concerns.
 - [Cybercab for select customers](https://x.com/robotaxi/status/2121384435241402737?a=4NI16-51fgy3cKguYhE&s=12)
 ### ✈️ Planes 
-The airplane is faster and more efficient, but the system can go down (very rarely). You are reminded of your obligation to comply with all federal regulations and carrier rules. Safety first. But air travel is a completely different ball game.
+The airplane is faster and more efficient, but the system can go down (as we saw last night). You are reminded of your obligation to comply with all federal regulations and carrier rules. Safety first, $50B second for additional FAA appropriations. 
 
 Here's to the Humans in an AI system ([FAA Ground Stop](financials.html?indicator=FAA%20Ground%20Stop)):
 

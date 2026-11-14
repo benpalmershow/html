@@ -1,12 +1,17 @@
 [
-
   {
     "date": "11/14/26",
     "entries": [
       {
         "title": "🎭 8PM Lincoln in the Bardo | The Met Opera",
         "category": "media",
-        "tags": ["opera", "music", "livestream", "metropolitan-opera", "lincoln-bardo"],
+        "tags": [
+          "opera",
+          "music",
+          "livestream",
+          "metropolitan-opera",
+          "lincoln-bardo"
+        ],
         "type": "curation",
         "file": "article/posts/2026-11-14-opera-lincoln-bardo.md",
         "collapsed": true
@@ -42,7 +47,6 @@
         ],
         "type": "curation"
       }
-    
     ]
   },
   {
@@ -1762,7 +1766,8 @@
           "small business",
           "media-critique"
         ],
-        "type": "curation"
+        "type": "curation",
+        "content": "📉'Tariffs Made His Cookie Cutters More Expensive' -NPR"
       },
       {
         "title": "🤖 AI is a model of knowledge for good or evil. Politicians are playing God to deny you the apple.",
@@ -1772,7 +1777,8 @@
           "policy",
           "regulation"
         ],
-        "type": "note"
+        "type": "note",
+        "content": "🤖 AI is a model of knowledge for good or evil. Politicians are playing God to deny you the apple."
       }
     ]
   },
@@ -2670,7 +2676,8 @@
         "tags": [
           "healthcare"
         ],
-        "type": "note"
+        "type": "note",
+        "content": "🍁 $1,299/mo. Healthcare for all "
       }
     ]
   },
@@ -3187,7 +3194,8 @@
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "content": "📲 Hey Siri, 'Live My Life'"
       },
       {
         "title": "🎭 Defund Art",
@@ -4325,7 +4333,8 @@
           "venezuela",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "content": "🛢️ Petro + Rodriguez"
       },
       {
         "title": "☢️ Nuclear Option",
@@ -4401,13 +4410,15 @@
     "date": "04/22/26",
     "entries": [
       {
-        "title": "🧮 <a href='https://x.com/GodswillChemist/status/2046608946828353638/video/1?s=61' target='_blank'>Calorie Comparison</a> | <a href='https://realfood.gov/' target='_blank'>Dietary Guidelines 2025-2030</a>",
+        "title": "🧮 Calorie Comparison | Dietary Guidelines 2025-2030",
         "category": "society",
         "time": "19:17",
         "tags": [
           "healthcare"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/GodswillChemist/status/2046608946828353638/video/1?s=61",
+        "content": "Links: https://x.com/GodswillChemist/status/2046608946828353638/video/1?s=61"
       }
     ]
   },
@@ -4707,14 +4718,15 @@
     "date": "04/11/26",
     "entries": [
       {
-        "title": "🛸 <a href='https://plus.nasa.gov/scheduled-video/nasas-artemis-ii-crew-return-to-houston-2/' target='_blank' rel='noopener noreferrer'>Welcome Home Artemis 2</a>",
+        "title": "🛸 Welcome Home Artemis 2",
         "category": "dispatches",
         "time": "16:00",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://plus.nasa.gov/scheduled-video/nasas-artemis-ii-crew-return-to-houston-2/"
       },
       {
         "title": "🎸 Coachella live 4pm",
@@ -4754,24 +4766,26 @@
         "type": "curation"
       },
       {
-        "title": "⛽ <a href='https://x.com/javierblas/status/2042630988409217212?s=61' target='_blank' rel='noopener noreferrer'>Oil Tanker Tracker</a>",
+        "title": "⛽ Oil Tanker Tracker",
         "category": "dispatches",
         "time": "07:12",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/javierblas/status/2042630988409217212?s=61"
       },
       {
-        "title": "🍔 <a href='https://www.tiktok.com/@plussizeparkhoppers' target='_blank' rel='noopener noreferrer'>Plus Size Park Hoppers</a>",
+        "title": "🍔 Plus Size Park Hoppers",
         "category": "policy",
         "time": "06:50",
         "tags": [
           "regulation",
           "regulatory"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://www.tiktok.com/@plussizeparkhoppers"
       }
     ]
   },
@@ -4804,24 +4818,26 @@
         "type": "data"
       },
       {
-        "title": "🫃 <a href='https://x.com/marcnixon24/status/2042683293574025516?s=61' target='_blank' rel='noopener noreferrer'>MMIWG2LGBTQQIA+</a>",
+        "title": "🫃 MMIWG2LGBTQQIA+",
         "category": "dispatches",
         "time": "15:36",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/marcnixon24/status/2042683293574025516?s=61"
       },
       {
-        "title": "🕵️‍♀️ <a href='https://x.com/nickshirleyy/status/2042411675307971061?s=61' target='_blank' rel='noopener noreferrer'>Credit</a>",
+        "title": "🕵️‍♀️ Credit",
         "category": "dispatches",
         "time": "15:27",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/nickshirleyy/status/2042411675307971061?s=61"
       },
       {
         "title": "🔵 PACed",
@@ -4880,17 +4896,18 @@
         "type": "note"
       },
       {
-        "title": "🏜️ <a href='https://x.com/shaykhsulaiman/status/2041518746821439985?s=61' target='_blank' rel='noopener noreferrer'>Bridge Day</a>",
+        "title": "🏜️ Bridge Day",
         "category": "dispatches",
         "time": "09:42",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/shaykhsulaiman/status/2041518746821439985?s=61"
       },
       {
-        "title": "📮 <a href='https://x.com/hormuzletter/status/2041525215520268791?s=61' target='_blank' rel='noopener noreferrer'>Power Plant Day</a>",
+        "title": "📮 Power Plant Day",
         "category": "trade",
         "time": "09:38",
         "tags": [
@@ -4899,7 +4916,8 @@
           "shipping",
           "supply-chains"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/hormuzletter/status/2041525215520268791?s=61"
       },
       {
         "title": "🗳️ 1996: The Last Time Bipartisanship Worked on Immigration",
@@ -4925,14 +4943,15 @@
         "type": "essay"
       },
       {
-        "title": "🎬 <a href='https://x.com/mazemoore/status/2041525612968399124?s=61' target='_blank' rel='noopener noreferrer'>Unburdened</a>",
+        "title": "🎬 Unburdened",
         "category": "dispatches",
         "time": "08:45",
         "tags": [
           "media-rec",
           "curation"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/mazemoore/status/2041525612968399124?s=61"
       }
     ]
   },
@@ -5035,13 +5054,14 @@
         "type": "note"
       },
       {
-        "title": "🦍 <a href='https://x.com/WallStreetApes/status/2040519741169922488' target='_blank' rel='noopener noreferrer'>Expensive</a>",
+        "title": "🦍 Expensive",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/WallStreetApes/status/2040519741169922488"
       }
     ]
   },
@@ -5124,22 +5144,24 @@
         "type": "curation"
       },
       {
-        "title": "📱 <a href='https://x.com/mazemoore/status/2039415233043726546' target='_blank' rel='noopener noreferrer'>Extreme Content</a>",
+        "title": "📱 Extreme Content",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/mazemoore/status/2039415233043726546"
       },
       {
-        "title": "😭 <a href='https://x.com/mazemoore/status/2039419207314551074' target='_blank' rel='noopener noreferrer'>Southern Tears</a>",
+        "title": "😭 Southern Tears",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/mazemoore/status/2039419207314551074"
       },
       {
         "title": "⚖️ Birthright on the Brink",
@@ -5197,13 +5219,14 @@
         "type": "essay"
       },
       {
-        "title": "🔊 <a href='https://x.com/marionawfal/status/2038879467276513676' target='_blank' rel='noopener noreferrer'>Feminine Ambition</a>",
+        "title": "🔊 Feminine Ambition",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/marionawfal/status/2038879467276513676"
       },
       {
         "title": "⚖️ One Bad Taste",
@@ -5404,13 +5427,14 @@
     "date": "03/26/26",
     "entries": [
       {
-        "title": "📱 <a href='https://x.com/elonmusk/status/2037083023909544235' target='_blank' rel='noopener noreferrer'> Addictive and Deleterious</a>",
+        "title": "📱 Addictive and Deleterious",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://x.com/elonmusk/status/2037083023909544235"
       },
       {
         "title": "🏦 FOMC Odds Shift, Jackson Hole Looms",
@@ -5685,31 +5709,34 @@
         "type": "note"
       },
       {
-        "title": "🦅 <a href='https://yorktowninstitute.org/about/' target='_blank' rel='noopener noreferrer'>Hawk</a>",
+        "title": "🦅 Hawk",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://yorktowninstitute.org/about/"
       },
       {
-        "title": " <a href='https://www.rivr.ai' target='_blank' rel='noopener noreferrer'>Delivery: Rivr AI</a>",
+        "title": "Delivery: Rivr AI",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://www.rivr.ai"
       },
       {
-        "title": "🚗 <a href='https://teslatracker.com' target='_blank' rel='noopener noreferrer'>Tesla Tracker</a>",
+        "title": "🚗 Tesla Tracker",
         "category": "economy",
         "tags": [
           "macro-data",
           "indicators"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://teslatracker.com"
       },
       {
         "title": "fomc april 2026",
@@ -5816,23 +5843,25 @@
         "type": "note"
       },
       {
-        "title": "📊 <a href='https://en.wikipedia.org/wiki/Vector_autoregression' target='_blank' rel='noopener noreferrer'>Data Speak</a>",
+        "title": "📊 Data Speak",
         "category": "dispatches",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://en.wikipedia.org/wiki/Vector_autoregression"
       },
       {
-        "title": "🐀 <a href='https://youtu.be/2kTwpOxEgzM?si=ab-fUsVmF9iZt09q' target='_blank' rel='noopener noreferrer'>The Pest Control Company</a>",
+        "title": "🐀 The Pest Control Company",
         "category": "dispatches",
         "tags": [
           "media-rec",
           "video",
           "curation"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://youtu.be/2kTwpOxEgzM?si=ab-fUsVmF9iZt09q"
       },
       {
         "title": "🧬 Leave Your Mark",
@@ -5895,7 +5924,7 @@
       {
         "title": "🍇 No Grapes, No Rapes",
         "category": "dispatches",
-        "content": "",
+        "content": "🍇 No Grapes, No Rapes",
         "tags": [
           "dispatch",
           "personal"
@@ -5920,7 +5949,8 @@
           "constitution",
           "legal"
         ],
-        "type": "note"
+        "type": "note",
+        "content": "🏛️ Pentagon < First and Fifth Amendments."
       },
       {
         "title": "🇮🇪 Ireland Taxes",
@@ -5933,14 +5963,15 @@
         "type": "note"
       },
       {
-        "title": "🍽️ <a href='https://www.princetonreview.com/college-rankings?rankings=best-campus-food' target='_blank' rel='noopener noreferrer'>Feed the Students</a>",
+        "title": "🍽️ Feed the Students",
         "category": "dispatches",
         "content": "",
         "tags": [
           "dispatch",
           "personal"
         ],
-        "type": "note"
+        "type": "note",
+        "link": "https://www.princetonreview.com/college-rankings?rankings=best-campus-food"
       },
       {
         "title": "⚡ Hormuz Energy Flows",
@@ -9894,7 +9925,7 @@
       }
     ]
   },
-{
+  {
     "date": "11/11/26",
     "entries": [
       {

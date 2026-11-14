@@ -24,5 +24,5 @@ The airplane is faster and more efficient, but the system can go down (very rare
 Here's to the Humans in an AI system ([FAA Ground Stop](financials.html?indicator=FAA%20Ground%20Stop)):
 
 - [Hoobastank](https://x.com/jenniestaer/status/2121453668612677873/video/1?a=0qRkwnX5XcgGu8GUW28&s=12)
-- ttps://x.com/_simpleplanbr/status/2121452736809926968/video/1?a=qRkBcKJCl4pojlnoqjY&s=12
+- https://x.com/_simpleplanbr/status/2121452736809926968/video/1?a=qRkBcKJCl4pojlnoqjY&s=12
 - https://x.com/seattlesubmiss/status/2121435015246733710/video/1?a=rbhUWDE9bw15ZVppzYg&s=12

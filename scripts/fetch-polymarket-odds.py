@@ -125,13 +125,8 @@ def get_current_probabilities(event):
                 if outcome.strip().lower() == "yes":
                     cents = price_to_cents(price)
                     if cents:
-                        # Simplify the title for display
-                        simplified_title = title.replace("November 13, ", "").replace("November 14, ", "").replace("November 15, ", "")
-                        # Further simplify time format
-                        simplified_title = simplified_title.replace(":00 PM ET", " PM").replace(":00 AM ET", " AM").replace("12:00 AM", "Midnight").replace("12:00 PM", "12 PM")
-                        # Simplify "In 2 days" to "2 days"
-                        simplified_title = simplified_title.replace("In 2 days ", "2 days")
-                        result[simplified_title] = cents
+                        # Use the raw Polymarket groupItemTitle (e.g. "November 13, 6:00 PM ET")
+                        result[title] = cents
                     break
     else:
         # Single market - use the first one

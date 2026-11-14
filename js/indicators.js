@@ -477,6 +477,10 @@ latestDataHtml = `
                 const prevCandidates = sorted.length > 1 ? sorted[1][1] : null;
                 latestDataHtml = buildCandidateBar(sorted[0], true, true, prevCandidates);
             }
+            if (sorted.length > 1) {
+                hasHistory = true;
+                historyDataHtml = sorted.slice(1).map(entry => buildCandidateBar(entry, false)).join('');
+            }
         } else if (indicator.candidates && typeof indicator.candidates === 'object') {
             const entries = Object.entries(indicator.candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
             latestDataHtml = `<div class="prediction-bar-container">`;

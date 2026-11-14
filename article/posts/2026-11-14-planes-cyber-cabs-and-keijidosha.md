@@ -15,12 +15,12 @@ You are no longer autonomous. You are now obligated to make a $300 monthly payme
 
 A KEI truck is cheap with no subscription. That's why Americans love it and corporations don't (it's a safety liability).  But the 25MPH limit is unrealistic. No freedom-loving American wants to be honked at for being a slowpoke!
 - https://www.youtube.com/watch?v=QR9KbY8mCxI
-- [link](article.html?slug=oregon-kei-trucks-sb1213) 
+- [Nimble Kei](article.html?slug=oregon-kei-trucks-sb1213) 
 
 
-The airplane is faster and more efficient but the system can go down and you are reminded of your obligation to comply with all federal regulations and carrier rules. Safety first. 
+The airplane is faster and more efficient, but the system can go down (very rarely). You are reminded of your obligation to comply with all federal regulations and carrier rules. Safety first. But air travel is a completely different ball game. 
 
-Here are humans dealing with a broken system ([FAA Ground Stop](financials.html?indicator=FAA%20Ground%20Stop)):
+Here's to the Humans in a AI system ([FAA Ground Stop](financials.html?indicator=FAA%20Ground%20Stop)):
 
 - https://x.com/jenniestaer/status/2121453668612677873/video/1?a=0qRkwnX5XcgGu8GUW28&s=12
 

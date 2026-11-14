@@ -20,6 +20,20 @@ const IndicatorRenderers = (function () {
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     }
 
+    // Sort timestamp for a probabilities key. Date-only keys parse as midnight,
+    // which would rank a same-day snapshot below an earlier ISO-timestamped one.
+    // For today's date-only key, lastUpdated is the best available snapshot time.
+    function snapshotSortTime(dateKey, indicator) {
+        if (dateKey.includes('T')) return new Date(dateKey).getTime();
+        const dayMs = new Date(dateKey + 'T00:00:00Z').getTime();
+        const todayUtc = new Date().toISOString().slice(0, 10);
+        if (dateKey === todayUtc && indicator.lastUpdated) {
+            const updatedMs = new Date(indicator.lastUpdated).getTime();
+            if (!isNaN(updatedMs)) return updatedMs;
+        }
+        return dayMs;
+    }
+
     // The binary market helpers live in html-utils.js. Resolve them lazily so a
     // stale cached copy of that file degrades the rendering instead of throwing
     // and blanking the whole dashboard.
@@ -433,22 +447,36 @@ latestDataHtml = `
         let latestDataHtml = '', historyDataHtml = '', hasHistory = false;
         const probabilities = indicator.probabilities || indicator.propabilities;
         if (probabilities && typeof probabilities === 'object') {
-            const sorted = Object.entries(probabilities).sort(([a], [b]) => new Date(b) - new Date(a));
-            const buildCandidateBar = ([date, candidates], large, showLabel = true) => {
-                const dateLabel = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
+            const sorted = Object.entries(probabilities).sort(([a], [b]) => snapshotSortTime(b, indicator) - snapshotSortTime(a, indicator));
+            const buildCandidateBar = ([date, candidates], large, showLabel = true, prevCandidates = null) => {
+                const hasTime = date.includes('T');
+                // Parse date-only keys as local midnight so the label doesn't shift a day.
+                const d = new Date(hasTime ? date : date + 'T00:00:00');
+                // Date-only keys have no recorded time; fall back to the indicator's lastUpdated.
+                const timeSource = hasTime ? d : (indicator.lastUpdated ? new Date(indicator.lastUpdated) : null);
+                const dateLabel = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) +
+                    (timeSource ? ', ' + timeSource.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : '');
                 const entries = Object.entries(candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
                 const fontSize = large ? '12px' : '11px', labelWidth = large ? '70px' : '90px';
                 let html = `<div class="prediction-bar-container">`;
                 entries.forEach(([name, prob]) => {
                     const barClass = name === 'Democratic Party' ? 'dem-bar' : name === 'Republican Party' ? 'gop-bar' : 'yes-bar';
-                    html += predictionBarRow(name, prob, barClass, labelWidth, fontSize);
+                    let changeIndicator = '';
+                    if (prevCandidates && prevCandidates[name] !== undefined) {
+                        const change = parseFloat(prob) - parseFloat(prevCandidates[name]);
+                        if (change > 0) changeIndicator = `<span class="prediction-change positive" title="+${change.toFixed(0)}¢">↑</span>`;
+                        else if (change < 0) changeIndicator = `<span class="prediction-change negative" title="${change.toFixed(0)}¢">↓</span>`;
+                    }
+                    html += predictionBarRow(name, prob + changeIndicator, barClass, labelWidth, fontSize);
                 });
                 html += `</div>`;
                 const dateWrapper = showLabel ? `<div class="prediction-date-label">${dateLabel}</div>` : '';
                 return `${dateWrapper}${html}`;
             };
-            if (sorted.length > 0) latestDataHtml = buildCandidateBar(sorted[0], true, false);
-            if (sorted.length > 1) { hasHistory = true; historyDataHtml = sorted.slice(1).map(entry => buildCandidateBar(entry, false)).join(''); }
+            if (sorted.length > 0) {
+                const prevCandidates = sorted.length > 1 ? sorted[1][1] : null;
+                latestDataHtml = buildCandidateBar(sorted[0], true, true, prevCandidates);
+            }
         } else if (indicator.candidates && typeof indicator.candidates === 'object') {
             const entries = Object.entries(indicator.candidates).sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
             latestDataHtml = `<div class="prediction-bar-container">`;
@@ -457,7 +485,7 @@ latestDataHtml = `
                 latestDataHtml += predictionBarRow(name, prob, barClass, '90px', '12px');
             });
             latestDataHtml += `</div>`;
-            hasHistory = entries.length > 2;
+            hasHistory = false;
         }
         return { latestDataHtml, historyDataHtml, hasHistory };
     }

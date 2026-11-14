@@ -4,7 +4,8 @@ category: journal
 tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keijidosha", "aviation", "transportation"]
 ---
 ### 🚕 Cybercabs
-The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Is it $299/mo or [$1,185](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61)?
+The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Start at $299/mo end up at [$1,185/mo.](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61)
+
 
 The obligations in the [required autonomy subscription](https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61) reminds me of what I liked about my former American auto mobility. 
 Independence meant no reliance on a 3rd party. No subscription meant more money in my pocket to buy more gas to go faster and farther on my own.

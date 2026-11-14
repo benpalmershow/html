@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FAA Ground Stop",
-      "lastUpdated": "2026-11-14T16:54:20.129765Z",
+      "lastUpdated": "2026-11-14T21:08:19.518889Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/nationwide-ground-stop-lifted-byptptpt",
       "kalshi_url": "https://kalshi.com/markets/kxfaagroundstoplift/when-will-the-faa-lift-the-ground-stop/kxfaagroundstoplift-13nov26",
@@ -115,6 +115,22 @@
           "November 13, 10:30 PM ET": "100¢",
           "November 14, 4:00 AM ET": "100¢",
           "November 14, 1:00 AM ET": "100¢"
+        },
+        "2026-11-14T21:21:45Z": {
+          "November 13, 6:00 PM ET": "0¢",
+          "November 13, 8:00 PM ET": "0¢",
+          "November 13, 10:00 PM ET": "100¢",
+          "November 14, 12:00 AM ET": "100¢",
+          "November 14, 12:00 PM ET": "100¢",
+          "November 15, 12:00 AM ET": "100¢",
+          "November 13, 7:00 PM ET": "0¢",
+          "November 13, 9:00 PM ET": "100¢",
+          "November 14, 2:00 AM ET": "100¢",
+          "November 14, 6:00 AM ET": "100¢",
+          "November 13, 11:00 PM ET": "100¢",
+          "November 13, 10:30 PM ET": "100¢",
+          "November 14, 4:00 AM ET": "100¢",
+          "November 14, 1:00 AM ET": "100¢"
         }
       },
       "bar_colors": [
@@ -136,7 +152,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-14T16:56:12.559806Z",
+      "lastUpdated": "2026-11-14T21:20:12.488633Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "change": "",
@@ -272,6 +288,10 @@
         "2026-11-14T16:57:20Z": {
           "Yes": "6¢",
           "No": "94¢"
+        },
+        "2026-11-14T21:21:45Z": {
+          "Yes": "6¢",
+          "No": "94¢"
         }
       },
       "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
@@ -289,7 +309,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-11-14T16:56:12.559806Z",
+      "lastUpdated": "2026-11-14T21:18:13.89772Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
       "probabilities": {
@@ -344,6 +364,10 @@
         "2026-11-14T16:57:20Z": {
           "Yes": "17¢",
           "No": "83¢"
+        },
+        "2026-11-14T21:21:45Z": {
+          "Yes": "17¢",
+          "No": "83¢"
         }
       },
       "change": "",
@@ -362,7 +386,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "US Recession in 2027",
-      "lastUpdated": "2026-11-14T16:56:12.559806Z",
+      "lastUpdated": "2026-11-14T21:20:12.488633Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
       "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-27",
@@ -416,6 +440,10 @@
           "no": "72¢"
         },
         "2026-11-14T16:57:20Z": {
+          "Yes": "28¢",
+          "No": "72¢"
+        },
+        "2026-11-14T21:21:45Z": {
           "Yes": "28¢",
           "No": "72¢"
         }
@@ -620,6 +648,17 @@
           "Party E": "0¢",
           "Party F": "0¢",
           "Other": "0¢"
+        },
+        "2026-11-14T21:21:45Z": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢",
+          "Party A": "0¢",
+          "Party B": "0¢",
+          "Party C": "0¢",
+          "Party D": "0¢",
+          "Party E": "0¢",
+          "Party F": "0¢",
+          "Other": "0¢"
         }
       },
       "change": "",
@@ -636,7 +675,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-14T16:56:12.559806Z",
+      "lastUpdated": "2026-11-14T21:18:13.89772Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
@@ -737,6 +776,13 @@
           "25 bps decrease": "0¢",
           "No change": "4¢",
           "25 bps increase": "88¢",
+          "50+ bps increase": "9¢"
+        },
+        "2026-11-14T21:21:45Z": {
+          "50+ bps decrease": "0¢",
+          "25 bps decrease": "0¢",
+          "No change": "3¢",
+          "25 bps increase": "86¢",
           "50+ bps increase": "9¢"
         }
       },
@@ -1793,6 +1839,17 @@
           "Republican Party": "0¢"
         },
         "2026-11-14T16:57:20Z": {
+          "Democratic Party": "100¢",
+          "Republican Party": "0¢",
+          "Party A": "0¢",
+          "Party B": "0¢",
+          "Party C": "0¢",
+          "Party D": "0¢",
+          "Party E": "0¢",
+          "Party F": "0¢",
+          "Other": "0¢"
+        },
+        "2026-11-14T21:21:45Z": {
           "Democratic Party": "100¢",
           "Republican Party": "0¢",
           "Party A": "0¢",

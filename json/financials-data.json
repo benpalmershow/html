@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-14T01:24:19Z",
+  "lastUpdated": "2026-11-14T12:47:34Z",
   "indices": [
     {
       "id": "faa-groundstop-lifted",
@@ -764,7 +764,7 @@
         "august": "4.75",
         "september": "5.29",
         "october": "4.94",
-        "november": "4.9"
+        "november": "5.1"
       },
       "2025": {
         "march": "4.28",
@@ -782,7 +782,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "10-yr Treasury Yield",
-      "lastUpdated": "2026-11-10T14:01:51Z",
+      "lastUpdated": "2026-11-14T12:47:34Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DGS10",
       "change": "",
@@ -923,7 +923,7 @@
         "july": "248",
         "june": "254"
       },
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "existing-home-sales",
@@ -1107,7 +1107,7 @@
         "august": "87.03",
         "september": "97.18",
         "october": "107.56",
-        "november": "100"
+        "november": "90"
       },
       "2025": {
         "january": "75.74",
@@ -1127,7 +1127,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-08T12:32:27Z",
+      "lastUpdated": "2026-11-14T12:47:34Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -1150,13 +1150,13 @@
         "august": "89.75",
         "september": "115.91",
         "october": "120.15",
-        "november": "107"
+        "november": "92"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-08T12:32:27Z",
+      "lastUpdated": "2026-11-14T12:47:34Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -4991,7 +4991,7 @@
         "august": "2.90",
         "september": "3.02",
         "october": "2.42",
-        "november": "2.6"
+        "november": "3.0"
       },
       "category": "Commodities",
       "color": "#f39c12",

@@ -25,7 +25,7 @@ Here's to the Humans in an AI system ([FAA Ground Stop](financials.html?indicato
 
 
 ### 🛻 Keijidōsha
-A KEI truck is cheap with no subscription. That's why Americans love it and corporations don't (it's a safety liability). But the 25MPH limit is unrealistic. No freedom-loving American wants to be honked at for being a slowpoke!
+A KEI truck is cheap with no subscription. Americans love it. Corporations don't because it's a safety liability and there are no profit margins on a $7,000 truck. The 25MPH limit is unrealistic. No freedom-loving American wants to be honked at for being a slowpoke!
 
 - [States banning KEI](https://www.youtube.com/watch?v=QR9KbY8mCxI)
 - [Nimble Kei](article.html?slug=oregon-kei-trucks-sb1213)

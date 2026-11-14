@@ -6,7 +6,7 @@ tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keij
 ### 🚕 Cybercabs
 The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Affordable with a required $299/mo fee? 
 
->[TX Example](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61) - Car: $29,990 Sales tax: $1,874 Registration and Texas EV fee: $1,299 Autonomy Subscription, 59 months after the free first one: $17,641 Electricity: $1,521 Maintenance, repairs and tires: $5,035 Insurance at the Texas average: $13,755
+>[TX Example](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61) - Car: $29,990, Sales tax: $1,874 Registration and Texas EV fee: $1,299 Autonomy Subscription, 59 months after the free first one: $17,641 Electricity: $1,521 Maintenance, repairs and tires: $5,035 Insurance at the Texas average: $13,755
 - Total: $71,115
 - Monthly: $1,185
 The obligations in the [required autonomy subscription](https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61) reminds me of what I liked about my former American auto mobility. 

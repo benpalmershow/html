@@ -4,6 +4,9 @@ category: journal
 tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keijidosha", "aviation", "transportation"]
 ---
 
+
+
+
 The CyberCab intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Affordable with a required $299/mo fee? We shall see.
 
 - https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61
@@ -21,7 +24,7 @@ A KEI truck is cheap with no subscription. That's why Americans love it and corp
 
 The airplane is faster and more efficient, but the system can go down (very rarely). You are reminded of your obligation to comply with all federal regulations and carrier rules. Safety first. But air travel is a completely different ball game.
 
-Here's to the Humans in a AI system ([FAA Ground Stop](financials.html?indicator=FAA%20Ground%20Stop)):
+Here's to the Humans in an AI system ([FAA Ground Stop](financials.html?indicator=FAA%20Ground%20Stop)):
 
 - https://x.com/jenniestaer/status/2121453668612677873/video/1?a=0qRkwnX5XcgGu8GUW28&s=12
 - https://x.com/_simpleplanbr/status/2121452736809926968/video/1?a=qRkBcKJCl4pojlnoqjY&s=12

@@ -301,6 +301,9 @@
         footnotes[fnDef[1]] = fnDef[2];
         return;
       }
+      // A paragraph following a list must close the list first; otherwise the
+      // <p> is emitted inside the open <ul>/<ol> and inherits its left padding.
+      closeList();
       paragraph.push(trimmed);
     });
     flushParagraph();

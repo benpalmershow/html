@@ -3,16 +3,13 @@ date: 2026-11-14T16:23:00Z
 category: journal
 tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keijidosha", "aviation", "transportation"]
 ---
-
-
-
-
 The CyberCab intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Affordable with a required $299/mo fee? We shall see.
 
-- https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61
-- https://www.tesla.com/robotaxi
-- https://x.com/robotaxi/status/2121384435241402737?a=4NI16-51fgy3cKguYhE&s=12
-- [Robotaxi Resistance](article.html?slug=robotaxi-resistance) — U.S. city councils block robotaxi expansion over driver job displacement and safety concerns.
+-  https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61
+-  https://www.tesla.com/robotaxi
+-  https://x.com/robotaxi/status/2121384435241402737?a=4NI16-51fgy3cKguYhE&s=12
+-  [Robotaxi Resistance](article.html?slug=robotaxi-resistance) — U.S. city councils block robotaxi expansion over driver job displacement and safety concerns.
+
 
 The obligations in the contract reminds me of what I like about my former American auto mobility. Independence meant no reliance on a 3rd party. No subscription meant more money in my pocket to buy more gas to go faster and farther on my own.
 You are no longer autonomous. You are now obligated to make a $300 monthly payment to maintain mobility.

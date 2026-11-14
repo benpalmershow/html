@@ -37,7 +37,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 - `js/html-utils.js` centralizes sanitization, markdown frontmatter parsing, numeric parsing, and component/script injection helpers.
 - `js/markdown.js` is the shared Markdown renderer (UMD: `window.MarkdownUtils` in the browser, `require()` in Node). `journal.html`, `article.html`, and `scripts/build-article-index.js` all use it so the journal feed, the article page, and the feed render identical markup. Change it in one place, never in a copy.
 - Navigation is hardcoded inline in each HTML page's `<nav>` element; there is no `pages-config.js` or `nav.js`.
-- `js/search.js` is a placeholder; no page currently ships a search UI.
+- `js/search.js` provides search and filtering utilities (powers the updates search on `one-pager.html` and indicator search helpers).
 
 ### Data model and page ownership
 - `json/financials-data.json`: core “Numbers” dataset (indicators + prediction markets).

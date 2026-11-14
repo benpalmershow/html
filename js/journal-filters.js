@@ -258,8 +258,9 @@
                 filterJournalEntries();
             });
 
-            // Search on Enter key
+            // Search keyboard shortcuts (IME-safe)
             searchInput.addEventListener('keydown', function(e) {
+                if (e.isComposing) return;
                 if (e.key === 'Escape') {
                     searchBar.style.display = 'none';
                     currentSearchQuery = '';

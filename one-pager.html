@@ -112,10 +112,16 @@
      </header>
 
      <!-- Search Bar -->
-     <div class="search-wrapper">
-       <i data-lucide="search" class="search-icon"></i>
-       <input type="text" id="indicatorSearch" class="indicator-search" placeholder="Search..." autocomplete="off">
-     </div>
+     <search class="search-wrapper" aria-label="Search updates">
+       <label for="indicatorSearch" class="sr-only">Search updates</label>
+       <i data-lucide="search" class="search-icon" aria-hidden="true"></i>
+       <input type="search" id="indicatorSearch" class="indicator-search" placeholder="Search updates..." aria-label="Search updates" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search">
+       <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" hidden>
+         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+       </button>
+     </search>
+     <div id="searchLiveRegion" class="sr-only" aria-live="polite"></div>
+     <div id="searchEmptyState" class="search-empty-state" style="display: none;" role="status"></div>
 
      <section class="updates-grid">
       
@@ -194,7 +200,7 @@
     <script src="js/html-utils.js?v=20261012" defer></script>
     <script src="js/utils.js?v=20261012" defer></script>
     <script src="js/one-pager.js?v=20261012" defer></script>
-    <script src="js/search.js?v=20261012" defer></script>
+    <script src="js/search.js?v=20261114" defer></script>
 
    <!-- Load Lucide icons on-demand after page load -->
   <script>

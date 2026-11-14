@@ -2,10 +2,12 @@
    SEARCH
    ======================================== */
 
+search.search-wrapper,
 .search-wrapper {
     position: relative;
-    max-width: 280px;
+    max-width: 320px;
     margin: 10px auto 0;
+    display: block;
 }
 
 .search-icon {
@@ -22,7 +24,7 @@
 .search-wrapper .indicator-search,
 .search-wrapper .search-input {
     width: 100%;
-    padding: 0.5rem 0.75rem 0.5rem 2rem;
+    padding: 0.5rem 2rem 0.5rem 2.1rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     background: var(--bg-secondary);
@@ -32,20 +34,69 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hide native search cancel decoration to avoid visual collision with custom clear button */
+.search-wrapper .indicator-search::-webkit-search-cancel-button,
+.search-wrapper .search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 .search-wrapper .indicator-search:focus,
 .search-wrapper .search-input:focus {
-    border-color: var(--logo-teal);
+    border-color: var(--logo-teal, #2c5f5a);
     box-shadow: 0 0 0 2px rgba(44, 95, 90, 0.15);
 }
 
 .search-wrapper .indicator-search::placeholder,
 .search-wrapper .search-input::placeholder {
     color: var(--text-muted);
-    opacity: 0.6;
+    opacity: 0.7;
+}
+
+.search-wrapper .clear-search-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.search-wrapper .clear-search-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-tertiary, rgba(0, 0, 0, 0.05));
+}
+
+.search-wrapper .clear-search-btn.is-visible {
+    display: flex;
+}
+
+.search-empty-state {
+    max-width: 480px;
+    margin: 1.5rem auto;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--card-bg, var(--bg-secondary));
+    border: 1px dashed var(--border-color);
+    border-radius: var(--card-radius, 8px);
+    font-size: 0.95rem;
 }
 
 /* Responsive search */
 @media (max-width: 768px) {
+    search.search-wrapper,
     .search-wrapper {
         max-width: 100%;
         margin: 8px 0 0;
@@ -54,17 +105,6 @@
     .search-wrapper .indicator-search,
     .search-wrapper .search-input {
         font-size: 0.85rem;
-        padding: 0.45rem 0.75rem 0.45rem 2rem;
+        padding: 0.45rem 1.8rem 0.45rem 2rem;
     }
-}
-
-.clear-search-btn {
-    margin-top: 0.5rem;
-    padding: 0.4rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--card-radius);
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    cursor: pointer;
-    font-size: 0.85rem;
 }

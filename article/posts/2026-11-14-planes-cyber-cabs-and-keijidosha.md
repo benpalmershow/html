@@ -4,16 +4,16 @@ category: journal
 tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keijidosha", "aviation", "transportation"]
 ---
 ### 🚕 Cybercabs
-The Cybercab intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Affordable with a required $299/mo fee? We shall see.
+The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Affordable with a required $299/mo fee? 
 
--  [required autonomy subscription](https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61)
--  [Robotaxi](https://www.tesla.com/robotaxi)
--  [Cybercab for select customers](https://x.com/robotaxi/status/2121384435241402737?a=4NI16-51fgy3cKguYhE&s=12)
--  [Robotaxi Resistance](article.html?slug=robotaxi-resistance) — U.S. city councils block robotaxi expansion over driver job displacement and safety concerns.
-
-The obligations in the contract reminds me of what I like about my former American auto mobility. Independence meant no reliance on a 3rd party. No subscription meant more money in my pocket to buy more gas to go faster and farther on my own.
+>[TX Example](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61) - Car: $29,990 Sales tax: $1,874 Registration and Texas EV fee: $1,299 Autonomy Subscription, 59 months after the free first one: $17,641 Electricity: $1,521 Maintenance, repairs and tires: $5,035 Insurance at the Texas average: $13,755
+- Total: $71,115
+- Monthly: $1,185
+The obligations in the [required autonomy subscription](https://x.com/scotsrule08/status/2121392613114941630/photo/1?a=0WE527I2gSdGvGDkYyQ&s=61) reminds me of what I liked about my former American auto mobility. 
+Independence meant no reliance on a 3rd party. No subscription meant more money in my pocket to buy more gas to go faster and farther on my own.
 You are no longer autonomous. You are now obligated to make a $300 monthly payment to maintain mobility.
-
+- [Robotaxi Resistance](article.html?slug=robotaxi-resistance) — U.S. city councils block robotaxi expansion over driver job displacement and safety concerns.
+- [Cybercab for select customers](https://x.com/robotaxi/status/2121384435241402737?a=4NI16-51fgy3cKguYhE&s=12)
 ### ✈️ Planes 
 The airplane is faster and more efficient, but the system can go down (very rarely). You are reminded of your obligation to comply with all federal regulations and carrier rules. Safety first. But air travel is a completely different ball game.
 

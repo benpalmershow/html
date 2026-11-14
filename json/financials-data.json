@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FAA Ground Stop",
-      "lastUpdated": "2026-11-14T00:44:09.789021Z",
+      "lastUpdated": "2026-11-14T01:40:09.940048Z",
       "releaseDay": 0,
       "url": "https://polymarket.com/event/nationwide-ground-stop-lifted-byptptpt",
       "kalshi_url": "https://kalshi.com/markets/kxfaagroundstoplift/when-will-the-faa-lift-the-ground-stop/kxfaagroundstoplift-13nov26",
@@ -35,6 +35,22 @@
           "November 14, 6:00 AM ET": "78¢",
           "November 13, 11:00 PM ET": "39¢",
           "November 13, 10:30 PM ET": "39¢"
+        },
+        "2026-11-14T01:42:15Z": {
+          "November 13, 6:00 PM ET": "0¢",
+          "November 13, 8:00 PM ET": "1¢",
+          "November 13, 10:00 PM ET": "99¢",
+          "November 14, 12:00 AM ET": "100¢",
+          "November 14, 12:00 PM ET": "99¢",
+          "November 15, 12:00 AM ET": "100¢",
+          "November 13, 7:00 PM ET": "0¢",
+          "November 13, 9:00 PM ET": "99¢",
+          "November 14, 2:00 AM ET": "100¢",
+          "November 14, 6:00 AM ET": "100¢",
+          "November 13, 11:00 PM ET": "99¢",
+          "November 13, 10:30 PM ET": "99¢",
+          "November 14, 4:00 AM ET": "99¢",
+          "November 14, 1:00 AM ET": "99¢"
         }
       },
       "bar_colors": [
@@ -45,7 +61,7 @@
         "#2ecc71",
         "#e74c3c"
       ],
-      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. The market offers multiple time windows, with the highest probability (97%) assigned to lifting by midnight. Volume: $54,701.",
+      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. As of November 13 late evening ET, all windows from 9:00 PM ET onward trade at 99-100¢ while 8:00 PM ET and earlier sit at 0-1¢, effectively resolving the market in favor of a lift between 8:00 and 9:00 PM ET. Volume: $54,701.",
       "releaseTimeISO": "2026-11-13T21:00:00Z",
       "releaseTimeZone": "America/New_York",
       "newMonth": true

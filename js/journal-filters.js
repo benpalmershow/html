@@ -4,7 +4,7 @@
     'use strict';
 
     const PILLARS = [
-        { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' }
+        { id: 'all', name: 'DOCS', icon: '<i data-lucide="notebook" class="filter-icon"></i>' }
     ];
 
     const MEDIA_FILTERS = [

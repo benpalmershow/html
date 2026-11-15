@@ -14,7 +14,7 @@
 
 /* PAGE HEADER */
 
-.categories { display: grid; gap: 15px; content-visibility: auto; contain-intrinsic-size: auto 1200px; scrollbar-gutter: stable; }
+.categories { display: grid; grid-template-columns: minmax(0, 1fr); gap: 15px; content-visibility: auto; contain-intrinsic-size: auto 1200px; scrollbar-gutter: stable; }
 
 .content { min-height: 80dvh; }
 

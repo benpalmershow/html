@@ -263,6 +263,41 @@ stale value.
   FRED series was removed by the source); it is excluded from `INDICATOR_MAP`.
 - The `url` field points to the Conference Board data page, not FRED.
 
+#### Step 0c: Southern Border Encounters (CBP) — Manual Update Required
+The CBP Southwest Land Border Encounters series is **not** auto-fetched. It is
+published only inside a Tableau dashboard, which offers no data export (the
+Download menu is limited to Image/PDF/PowerPoint) and blocks the Tableau JS API
+(`getSummaryDataAsync` / `getSelectedMarksAsync` return `403
+PermissionDeniedException`). Do not waste time trying to pull it via API.
+
+**Source:** https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters
+(dashboard: `publicstats.cbp.gov/.../CBPSBOEnforcementActionsDashboardsSEPFY26/SBOEncounters9552`).
+
+**Fastest reliable extraction (one filter + one sweep):**
+1. Open the "SBO Encounters" view and let it finish rendering.
+2. Open the **FY** quick filter (bottom of the filter rail). Uncheck every year
+   except the target fiscal year, then click **Apply**. Isolating a single year
+   removes the line overlap (consecutive FYs sit on top of each other near zero)
+   and rescales the y-axis so every month is readable.
+3. Hover each of the 12 month ticks (OCT, NOV, DEC, JAN ... SEP) top-to-bottom and
+   read the tooltip value ("MON FY20XX 12,345 Enforcement Encounters"). With one
+   FY selected there is no ambiguity.
+
+**CRITICAL - fiscal vs calendar year:** the dashboard is **fiscal year**
+(Oct -> Sep) but `financials-data.json` is **calendar year**. Map FY N's Oct/Nov/Dec
+into the *previous* calendar year block:
+- FY2026 Oct-Dec (2025) -> `"2025"` block (october/november/december)
+- FY2026 Jan-Sep (2026) -> `"2026"` block (january..september)
+
+**CRITICAL - always check for revisions:** CBP revises prior months. Compare
+*every* month against the existing JSON and update any that moved, not just the
+newest one. (Last pass: April 2026 was a stale duplicate of April 2025 at 12,023;
+the correct value was 12,859.)
+
+Bump `lastUpdated` to an ISO timestamp after writing. The dashboard footer shows
+the data-currency date (e.g. "current as of 10/15/2026") - use it in `lastUpdated`
+if you want to record the source date rather than the write time.
+
 #### Step 1: Data Sources
 **Primary Sources by Indicator:**
 - **Federal Reserve**: Industrial Production, Capacity Utilization

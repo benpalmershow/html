@@ -204,55 +204,6 @@ def fetch_kalshi(ticker, max_retries=3):
 #   note         - human-readable note about what is needed to implement.
 SOURCE_REGISTRY = {
     # --- Polymarket prediction markets (implemented via gamma API) ---
-    "strait-of-hormuz-traffic": {
-        "agency": "Polymarket",
-        "source": "polymarket",
-        "api_id": "strait-of-hormuz-traffic-returns-to-normal-by-december-31",
-        "market_configs": [
-            {"question_contains": "Strait of Hormuz", "outcome_map": {"Yes": "yes", "No": "no"}},
-        ],
-        "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
-        "implemented": True,
-    },
-    "iranian-regime-fall-2027": {
-        "agency": "Polymarket",
-        "source": "polymarket",
-        "api_id": "will-the-iranian-regime-fall-by-the-end-of-2027",
-        "market_configs": [
-            {"question_contains": "Iranian regime", "outcome_map": {"Yes": "yes", "No": "no"}},
-        ],
-        "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
-        "implemented": True,
-    },
-    "us-recession-2027": {
-        "agency": "Polymarket",
-        "source": "polymarket",
-        "api_id": "us-recession-by-end-of-2027-20260807185409760",
-        "market_configs": [
-            {"question_contains": "US recession", "outcome_map": {"Yes": "yes", "No": "no"}},
-        ],
-        "top_level_map": {"yes": ["yes_odds", "yes_probability"], "no": ["no_odds", "no_probability"]},
-        "implemented": True,
-    },
-    "midterms-senate-2026": {
-        "agency": "Polymarket",
-        "source": "polymarket",
-        "api_id": "which-party-will-win-the-senate-in-2026",
-        "market_configs": [
-            {"question_contains": "Democratic Party control the Senate", "outcome_map": {"Yes": "Democratic Party", "No": "Republican Party"}},
-        ],
-        "implemented": True,
-    },
-    "midterms-house-2026": {
-        "agency": "Polymarket",
-        "source": "polymarket",
-        "api_id": "which-party-will-win-the-house-in-2026",
-        "market_configs": [
-            {"question_contains": "Democratic Party control the House", "outcome_map": {"Yes": "Democratic Party", "No": "Republican Party"}},
-        ],
-        "implemented": True,
-    },
-    # --- Polymarket prediction markets (implemented via gamma API) ---
     # FOMC switched from Kalshi to Polymarket: Kalshi's public API returns a
     # Cloudflare challenge (429) for unauthenticated requests and cannot be
     # polled from GitHub Actions. Polymarket's gamma API is public and works.

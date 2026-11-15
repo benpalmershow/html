@@ -1,713 +1,6 @@
 {
-  "lastUpdated": "2026-11-14T14:55:21Z",
+  "lastUpdated": "2026-11-15T02:01:53.179848Z",
   "indices": [
-    {
-      "id": "faa-groundstop-lifted",
-      "category": "Prediction Markets",
-      "color": "#e74c3c",
-      "agency": "Polymarket",
-      "name": "FAA Ground Stop",
-      "lastUpdated": "2026-11-15T01:10:17.086324Z",
-      "releaseDay": 0,
-      "url": "https://polymarket.com/event/nationwide-ground-stop-lifted-byptptpt",
-      "kalshi_url": "https://kalshi.com/markets/kxfaagroundstoplift/when-will-the-faa-lift-the-ground-stop/kxfaagroundstoplift-13nov26",
-      "change": "",
-      "probabilities": {
-        "2026-11-14T00:48:36Z": {
-          "November 13, 8:00 PM ET": "1¢",
-          "November 13, 10:00 PM ET": "10¢",
-          "November 14, 12:00 AM ET": "31¢",
-          "November 14, 12:00 PM ET": "85¢",
-          "November 15, 12:00 AM ET": "93¢",
-          "November 13, 9:00 PM ET": "7¢",
-          "November 14, 2:00 AM ET": "46¢",
-          "November 14, 6:00 AM ET": "70¢",
-          "November 13, 11:00 PM ET": "14¢",
-          "November 13, 10:30 PM ET": "7¢"
-        },
-        "2026-11-14T00:27:19Z": {
-          "November 13, 8:00 PM ET": "6¢",
-          "November 13, 10:00 PM ET": "32¢",
-          "November 14, 12:00 AM ET": "96¢",
-          "November 14, 12:00 PM ET": "88¢",
-          "November 13, 9:00 PM ET": "18¢",
-          "November 14, 2:00 AM ET": "66¢",
-          "November 14, 6:00 AM ET": "78¢",
-          "November 13, 11:00 PM ET": "39¢",
-          "November 13, 10:30 PM ET": "39¢"
-        },
-        "2026-11-14T01:42:15Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "1¢",
-          "November 13, 10:00 PM ET": "99¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "99¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "99¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "99¢",
-          "November 13, 10:30 PM ET": "99¢",
-          "November 14, 4:00 AM ET": "99¢",
-          "November 14, 1:00 AM ET": "99¢"
-        },
-        "2026-11-14T02:07:20Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "0¢",
-          "November 13, 10:00 PM ET": "100¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "100¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "100¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "100¢",
-          "November 13, 10:30 PM ET": "100¢",
-          "November 14, 4:00 AM ET": "100¢",
-          "November 14, 1:00 AM ET": "100¢"
-        },
-        "2026-11-14T03:01:54Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "1¢",
-          "November 13, 10:00 PM ET": "100¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "100¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "100¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "100¢",
-          "November 13, 10:30 PM ET": "100¢",
-          "November 14, 4:00 AM ET": "100¢",
-          "November 14, 1:00 AM ET": "100¢"
-        },
-        "2026-11-14T10:50:40Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "0¢",
-          "November 13, 10:00 PM ET": "100¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "100¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "100¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "100¢",
-          "November 13, 10:30 PM ET": "100¢",
-          "November 14, 4:00 AM ET": "100¢",
-          "November 14, 1:00 AM ET": "100¢"
-        },
-        "2026-11-14T16:57:20Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "0¢",
-          "November 13, 10:00 PM ET": "100¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "100¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "100¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "100¢",
-          "November 13, 10:30 PM ET": "100¢",
-          "November 14, 4:00 AM ET": "100¢",
-          "November 14, 1:00 AM ET": "100¢"
-        },
-        "2026-11-14T21:21:45Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "0¢",
-          "November 13, 10:00 PM ET": "100¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "100¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "100¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "100¢",
-          "November 13, 10:30 PM ET": "100¢",
-          "November 14, 4:00 AM ET": "100¢",
-          "November 14, 1:00 AM ET": "100¢"
-        },
-        "2026-11-15T01:15:42Z": {
-          "November 13, 6:00 PM ET": "0¢",
-          "November 13, 8:00 PM ET": "0¢",
-          "November 13, 10:00 PM ET": "100¢",
-          "November 14, 12:00 AM ET": "100¢",
-          "November 14, 12:00 PM ET": "100¢",
-          "November 15, 12:00 AM ET": "100¢",
-          "November 13, 7:00 PM ET": "0¢",
-          "November 13, 9:00 PM ET": "100¢",
-          "November 14, 2:00 AM ET": "100¢",
-          "November 14, 6:00 AM ET": "100¢",
-          "November 13, 11:00 PM ET": "100¢",
-          "November 13, 10:30 PM ET": "100¢",
-          "November 14, 4:00 AM ET": "100¢",
-          "November 14, 1:00 AM ET": "100¢"
-        }
-      },
-      "bar_colors": [
-        "#e74c3c",
-        "#e74c3c",
-        "#f39c12",
-        "#27ae60",
-        "#2ecc71",
-        "#e74c3c"
-      ],
-      "explanation": "Polymarket prediction market on when the FAA will lift the nationwide ground stop issued on November 13, 2026 due to communication issues affecting multiple Air Route Traffic Control Centers. As of November 13 late evening ET, all windows from 9:00 PM ET onward trade at 99-100¢ while 8:00 PM ET and earlier sit at 0-1¢, effectively resolving the market in favor of a lift between 8:00 and 9:00 PM ET. Volume: $54,701.",
-      "releaseTimeISO": "2026-11-13T21:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "newMonth": true
-    },
-    {
-      "id": "strait-of-hormuz-traffic",
-      "category": "Prediction Markets",
-      "color": "#e74c3c",
-      "agency": "Polymarket",
-      "name": "Strait of Hormuz traffic returns to normal by December 31?",
-      "lastUpdated": "2026-11-15T01:14:09.335064Z",
-      "releaseDay": 0,
-      "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-december-31",
-      "change": "",
-      "probabilities": {
-        "2026-08-24": {
-          "yes": "34¢",
-          "no": "67¢"
-        },
-        "2026-10-04": {
-          "yes": "20¢",
-          "no": "80¢"
-        },
-        "2026-10-19": {
-          "yes": "14¢",
-          "no": "86¢"
-        },
-        "2026-10-20": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-21": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-22": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-23": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-24": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-25": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-26": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-27": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-28": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-29": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-10-30": {
-          "yes": "10¢",
-          "no": "90¢"
-        },
-        "2026-10-31": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-11-01": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-11-02": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-11-03": {
-          "yes": "12¢",
-          "no": "88¢"
-        },
-        "2026-11-04": {
-          "yes": "10¢",
-          "no": "90¢"
-        },
-        "2026-11-05": {
-          "yes": "10¢",
-          "no": "90¢"
-        },
-        "2026-11-06": {
-          "yes": "10¢",
-          "no": "90¢"
-        },
-        "2026-11-07": {
-          "yes": "10¢",
-          "no": "90¢"
-        },
-        "2026-11-08": {
-          "yes": "8¢",
-          "no": "92¢"
-        },
-        "2026-11-09": {
-          "yes": "10¢",
-          "no": "90¢"
-        },
-        "2026-11-10": {
-          "yes": "8¢",
-          "no": "92¢"
-        },
-        "2026-11-11": {
-          "yes": "8¢",
-          "no": "92¢"
-        },
-        "2026-11-12": {
-          "yes": "6¢",
-          "no": "94¢"
-        },
-        "2026-11-13": {
-          "yes": "6¢",
-          "no": "94¢"
-        },
-        "2026-11-14T00:27:19Z": {
-          "Yes": "6¢",
-          "No": "94¢"
-        },
-        "2026-11-14T03:01:54Z": {
-          "Yes": "6¢",
-          "No": "94¢"
-        },
-        "2026-11-14T10:50:40Z": {
-          "Yes": "6¢",
-          "No": "94¢"
-        },
-        "2026-11-14": {
-          "yes": "6¢",
-          "no": "94¢"
-        },
-        "2026-11-14T16:57:20Z": {
-          "Yes": "6¢",
-          "No": "94¢"
-        },
-        "2026-11-14T21:21:45Z": {
-          "Yes": "6¢",
-          "No": "94¢"
-        },
-        "2026-11-15T01:15:42Z": {
-          "Yes": "6¢",
-          "No": "94¢"
-        }
-      },
-      "explanation": "Prediction market on whether Strait of Hormuz shipping traffic returns to normal by December 31, 2026. Resolution requires IMF Portwatch 7-day moving average of ≥60 ship transits/day. As of early October 2026, AIS-visible transits average roughly 3-7 per day, about 3-7% of the pre-crisis baseline of 100-138/day, following the February 2026 escalation that prompted Iranian control claims, permit requirements, and repeated vessel strikes. Iran's October 4 statements conditioning reopening on seven specific demands sustain severe risk levels and high war-risk insurance premiums. Major carriers remain suspended and no diplomatic breakthrough has restored open navigation. Volume: $14.0M.",
-      "yes_odds": "6¢",
-      "yes_probability": "6¢",
-      "no_odds": "94¢",
-      "no_probability": "94¢",
-      "releaseTimeISO": "2026-10-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "newMonth": true
-    },
-    {
-      "id": "iranian-regime-fall-2027",
-      "category": "Prediction Markets",
-      "color": "#e74c3c",
-      "agency": "Polymarket",
-      "name": "Iranian Regime Fall by End of 2028",
-      "lastUpdated": "2026-11-15T01:14:09.335064Z",
-      "releaseDay": 0,
-      "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-the-end-of-2027",
-      "probabilities": {
-        "2026-11-06": {
-          "yes": "22¢",
-          "no": "78¢"
-        },
-        "2026-11-07": {
-          "yes": "18¢",
-          "no": "82¢"
-        },
-        "2026-11-08": {
-          "yes": "21¢",
-          "no": "79¢"
-        },
-        "2026-11-09": {
-          "yes": "20¢",
-          "no": "80¢"
-        },
-        "2026-11-10": {
-          "yes": "20¢",
-          "no": "80¢"
-        },
-        "2026-11-11": {
-          "yes": "20¢",
-          "no": "80¢"
-        },
-        "2026-11-12": {
-          "yes": "18¢",
-          "no": "82¢"
-        },
-        "2026-11-13": {
-          "yes": "17¢",
-          "no": "83¢"
-        },
-        "2026-11-14T00:27:19Z": {
-          "Yes": "17¢",
-          "No": "83¢"
-        },
-        "2026-11-14T03:01:54Z": {
-          "Yes": "17¢",
-          "No": "83¢"
-        },
-        "2026-11-14T10:50:40Z": {
-          "Yes": "17¢",
-          "No": "83¢"
-        },
-        "2026-11-14": {
-          "yes": "17¢",
-          "no": "83¢"
-        },
-        "2026-11-14T16:57:20Z": {
-          "Yes": "17¢",
-          "No": "83¢"
-        },
-        "2026-11-14T21:21:45Z": {
-          "Yes": "17¢",
-          "No": "83¢"
-        },
-        "2026-11-15T01:15:42Z": {
-          "Yes": "16¢",
-          "No": "84¢"
-        }
-      },
-      "change": "",
-      "explanation": "Polymarket prediction on whether the Iranian regime will fall before 2028. Current market price 26¢ Yes / 74¢ No. Volume: $32.6K.",
-      "yes_odds": "17¢",
-      "yes_probability": "17¢",
-      "no_odds": "83¢",
-      "no_probability": "83¢",
-      "releaseTimeISO": "2026-10-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "newMonth": true
-    },
-    {
-      "id": "us-recession-2027",
-      "category": "Prediction Markets",
-      "color": "#e74c3c",
-      "agency": "Polymarket",
-      "name": "US Recession in 2027",
-      "lastUpdated": "2026-11-15T01:14:09.335064Z",
-      "releaseDay": 0,
-      "url": "https://polymarket.com/event/us-recession-by-end-of-2027-20260807185409760",
-      "kalshi_url": "https://kalshi.com/markets/kxrecssnber/recession/kxrecssnber-27",
-      "probabilities": {
-        "2026-11-06": {
-          "yes": "32¢",
-          "no": "68¢"
-        },
-        "2026-11-07": {
-          "yes": "32¢",
-          "no": "68¢"
-        },
-        "2026-11-08": {
-          "yes": "32¢",
-          "no": "68¢"
-        },
-        "2026-11-09": {
-          "yes": "28¢",
-          "no": "72¢"
-        },
-        "2026-11-10": {
-          "yes": "28¢",
-          "no": "72¢"
-        },
-        "2026-11-11": {
-          "yes": "28¢",
-          "no": "72¢"
-        },
-        "2026-11-12": {
-          "yes": "28¢",
-          "no": "72¢"
-        },
-        "2026-11-13": {
-          "yes": "28¢",
-          "no": "72¢"
-        },
-        "2026-11-14T00:27:19Z": {
-          "Yes": "28¢",
-          "No": "72¢"
-        },
-        "2026-11-14T03:01:54Z": {
-          "Yes": "28¢",
-          "No": "72¢"
-        },
-        "2026-11-14T10:50:40Z": {
-          "Yes": "28¢",
-          "No": "72¢"
-        },
-        "2026-11-14": {
-          "yes": "28¢",
-          "no": "72¢"
-        },
-        "2026-11-14T16:57:20Z": {
-          "Yes": "28¢",
-          "No": "72¢"
-        },
-        "2026-11-14T21:21:45Z": {
-          "Yes": "28¢",
-          "No": "72¢"
-        },
-        "2026-11-15T01:15:42Z": {
-          "Yes": "28¢",
-          "No": "72¢"
-        }
-      },
-      "change": "",
-      "explanation": "Polymarket prediction on whether the U.S. will enter a recession by end of 2027. Current market price 35¢ Yes / 65¢ No. Volume: $12.3K.",
-      "releaseTimeISO": "2026-10-15T15:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "newMonth": true,
-      "yes_odds": "28¢",
-      "yes_probability": "28¢",
-      "no_odds": "72¢",
-      "no_probability": "72¢"
-    },
-    {
-      "id": "midterms-senate-2026",
-      "category": "Prediction Markets",
-      "color": "#3498db",
-      "agency": "Polymarket",
-      "name": "Senate",
-      "lastUpdated": "2026-11-05T10:55:47.729196Z",
-      "releaseDay": 0,
-      "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
-      "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
-      "probabilities": {
-        "2026-08-25": {
-          "Democratic Party": "50",
-          "Republican Party": "50"
-        },
-        "2026-08-14": {
-          "Democratic Party": "53",
-          "Republican Party": "48"
-        },
-        "2026-07-01": {
-          "Democratic Party": "42",
-          "Republican Party": "57"
-        },
-        "2026-04-19": {
-          "Democratic Party": "54",
-          "Republican Party": "46"
-        },
-        "2026-04-18": {
-          "Democratic Party": "52",
-          "Republican Party": "48"
-        },
-        "2026-04-17": {
-          "Democratic Party": "50",
-          "Republican Party": "50"
-        },
-        "2026-10-04": {
-          "Democratic Party": "65",
-          "Republican Party": "35"
-        },
-        "2026-10-19": {
-          "Democratic Party": "64¢",
-          "Republican Party": "36¢"
-        },
-        "2026-10-20": {
-          "Democratic Party": "64¢",
-          "Republican Party": "36¢"
-        },
-        "2026-10-21": {
-          "Democratic Party": "64¢",
-          "Republican Party": "36¢"
-        },
-        "2026-10-22": {
-          "Democratic Party": "68¢",
-          "Republican Party": "32¢"
-        },
-        "2026-10-23": {
-          "Democratic Party": "68¢",
-          "Republican Party": "32¢"
-        },
-        "2026-10-24": {
-          "Democratic Party": "68¢",
-          "Republican Party": "32¢"
-        },
-        "2026-10-25": {
-          "Democratic Party": "66¢",
-          "Republican Party": "34¢"
-        },
-        "2026-10-26": {
-          "Democratic Party": "64¢",
-          "Republican Party": "36¢"
-        },
-        "2026-10-27": {
-          "Democratic Party": "66¢",
-          "Republican Party": "34¢"
-        },
-        "2026-10-28": {
-          "Democratic Party": "66¢",
-          "Republican Party": "34¢"
-        },
-        "2026-10-29": {
-          "Democratic Party": "68¢",
-          "Republican Party": "32¢"
-        },
-        "2026-10-30": {
-          "Democratic Party": "72¢",
-          "Republican Party": "28¢"
-        },
-        "2026-10-31": {
-          "Democratic Party": "72¢",
-          "Republican Party": "28¢"
-        },
-        "2026-11-01": {
-          "Democratic Party": "72¢",
-          "Republican Party": "28¢"
-        },
-        "2026-11-02": {
-          "Democratic Party": "74¢",
-          "Republican Party": "26¢"
-        },
-        "2026-11-03": {
-          "Democratic Party": "76¢",
-          "Republican Party": "24¢"
-        },
-        "2026-11-04": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-05": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-06": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-07": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-08": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-09": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-10": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-11": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-12": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-13": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-14T00:27:19Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14T03:01:54Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14T10:50:40Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-14T16:57:20Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14T21:21:45Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-15T01:15:42Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        }
-      },
-      "change": "",
-      "explanation": "Prediction market on which party will control the U.S. Senate after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
-      "releaseTimeISO": "2026-11-04T10:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "newMonth": true,
-      "Democratic Party": "100¢",
-      "Republican Party": "0¢"
-    },
     {
       "id": "fomc-rate-decision-december-2026",
       "category": "Prediction Markets",
@@ -1703,228 +996,6 @@
       "newMonth": true,
       "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York"
-    },
-    {
-      "id": "midterms-house-2026",
-      "category": "Prediction Markets",
-      "color": "#3498db",
-      "agency": "Polymarket",
-      "name": "House",
-      "lastUpdated": "2026-11-05T13:05:49.600317Z",
-      "releaseDay": 0,
-      "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
-      "polymarket_url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
-      "probabilities": {
-        "2026-08-24": {
-          "Democratic Party": "89",
-          "Republican Party": "12"
-        },
-        "2026-07-01": {
-          "Democratic Party": "84",
-          "Republican Party": "18"
-        },
-        "2026-05-16": {
-          "Democratic Party": "52¢",
-          "Republican Party": "48¢"
-        },
-        "2026-05-15": {
-          "Democratic Party": "51¢",
-          "Republican Party": "49¢"
-        },
-        "2026-05-14": {
-          "Democratic Party": "50¢",
-          "Republican Party": "50¢"
-        },
-        "2026-05-12": {
-          "Democratic Party": "49¢",
-          "Republican Party": "51¢"
-        },
-        "2026-10-04": {
-          "Democratic Party": "94",
-          "Republican Party": "8"
-        },
-        "2026-10-19": {
-          "Democratic Party": "90¢",
-          "Republican Party": "10¢"
-        },
-        "2026-10-20": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-21": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-22": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-23": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-24": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-25": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-26": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-27": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-28": {
-          "Democratic Party": "92¢",
-          "Republican Party": "8¢"
-        },
-        "2026-10-29": {
-          "Democratic Party": "94¢",
-          "Republican Party": "6¢"
-        },
-        "2026-10-30": {
-          "Democratic Party": "94¢",
-          "Republican Party": "6¢"
-        },
-        "2026-10-31": {
-          "Democratic Party": "94¢",
-          "Republican Party": "6¢"
-        },
-        "2026-11-01": {
-          "Democratic Party": "94¢",
-          "Republican Party": "6¢"
-        },
-        "2026-11-02": {
-          "Democratic Party": "96¢",
-          "Republican Party": "4¢"
-        },
-        "2026-11-03": {
-          "Democratic Party": "94¢",
-          "Republican Party": "6¢"
-        },
-        "2026-11-04": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-05": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-06": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-07": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-08": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-09": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-10": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-11": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-12": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-13": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-14T00:27:19Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14T03:01:54Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14T10:50:40Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢"
-        },
-        "2026-11-14T16:57:20Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-14T21:21:45Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        },
-        "2026-11-15T01:15:42Z": {
-          "Democratic Party": "100¢",
-          "Republican Party": "0¢",
-          "Party A": "0¢",
-          "Party B": "0¢",
-          "Party C": "0¢",
-          "Party D": "0¢",
-          "Party E": "0¢",
-          "Party F": "0¢",
-          "Other": "0¢"
-        }
-      },
-      "change": "",
-      "explanation": "Prediction market on which party will control the U.S. House of Representatives after the 2026 midterm elections. Polymarket resolved the market to Democratic Party control after the November 3, 2026 elections; displayed odds are 100¢ Democratic Party / 0¢ Republican Party, pending final certification and resolution under Polymarket rules. Source: https://polymarket.com/event/which-party-will-win-the-house-in-2026",
-      "releaseTimeISO": "2026-11-04T13:00:00Z",
-      "releaseTimeZone": "America/New_York",
-      "newMonth": true,
-      "Democratic Party": "100¢",
-      "Republican Party": "0¢"
     },
     {
       "id": "interest-on-debt",
@@ -6027,7 +5098,7 @@
       "game_time": "Nov 12, 2026 8:15 PM ET",
       "game_time_iso": "2026-11-13T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-was-nyg-2026-11-13",
-      "lastUpdated": "2026-11-13T15:10:18.222551Z",
+      "lastUpdated": "2026-11-14T04:40:18.719322Z",
       "week": 10,
       "winner": "WAS",
       "result": "Final",
@@ -6044,6 +5115,10 @@
           "WAS_win_odds": "100",
           "NYG_win_odds": "0"
         },
+        "2026-11-14": {
+          "WAS_win_odds": "100",
+          "NYG_win_odds": "0"
+        },
         "2026-11-06": {
           "WAS_win_odds": "62",
           "NYG_win_odds": "38"
@@ -6055,10 +5130,6 @@
         "2026-11-12": {
           "WAS_win_odds": "60",
           "NYG_win_odds": "40"
-        },
-        "2026-11-14": {
-          "WAS_win_odds": "100",
-          "NYG_win_odds": "0"
         }
       },
       "WAS_win_odds": "100",
@@ -6073,7 +5144,7 @@
       "game_time": "Nov 15, 2026 2:30 PM ET",
       "game_time_iso": "2026-11-15T14:30:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ne-det-2026-11-15",
-      "lastUpdated": "2026-11-11T16:03:40.641421Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6081,6 +5152,10 @@
           "DET_win_odds": "58"
         },
         "2026-11-11": {
+          "NE_win_odds": "42",
+          "DET_win_odds": "58"
+        },
+        "2026-11-15": {
           "NE_win_odds": "42",
           "DET_win_odds": "58"
         },
@@ -6099,10 +5174,6 @@
         "2026-11-14": {
           "NE_win_odds": "43",
           "DET_win_odds": "57"
-        },
-        "2026-11-15": {
-          "NE_win_odds": "42",
-          "DET_win_odds": "58"
         }
       },
       "NE_win_odds": "42",
@@ -6117,7 +5188,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-buf-nyj-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6128,29 +5199,29 @@
           "BUF_win_odds": "80",
           "NYJ_win_odds": "20"
         },
+        "2026-11-15": {
+          "BUF_win_odds": "78",
+          "NYJ_win_odds": "22"
+        },
         "2026-11-08": {
-          "BUF_win_odds": "83",
-          "NYJ_win_odds": "17"
-        },
-        "2026-11-12": {
-          "BUF_win_odds": "82",
-          "NYJ_win_odds": "18"
-        },
-        "2026-11-13": {
-          "BUF_win_odds": "79",
-          "NYJ_win_odds": "21"
-        },
-        "2026-11-14": {
           "BUF_win_odds": "81",
           "NYJ_win_odds": "19"
         },
-        "2026-11-15": {
+        "2026-11-12": {
           "BUF_win_odds": "80",
           "NYJ_win_odds": "20"
+        },
+        "2026-11-13": {
+          "BUF_win_odds": "77",
+          "NYJ_win_odds": "23"
+        },
+        "2026-11-14": {
+          "BUF_win_odds": "79",
+          "NYJ_win_odds": "21"
         }
       },
-      "BUF_win_odds": "80",
-      "NYJ_win_odds": "20"
+      "BUF_win_odds": "78",
+      "NYJ_win_odds": "22"
     },
     {
       "id": "nfl-car-no-2026-11-15",
@@ -6161,7 +5232,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-car-no-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6172,29 +5243,29 @@
           "CAR_win_odds": "44",
           "NO_win_odds": "56"
         },
-        "2026-11-08": {
-          "CAR_win_odds": "47",
-          "NO_win_odds": "53"
-        },
-        "2026-11-12": {
+        "2026-11-15": {
           "CAR_win_odds": "46",
           "NO_win_odds": "54"
         },
-        "2026-11-13": {
-          "CAR_win_odds": "43",
-          "NO_win_odds": "57"
+        "2026-11-08": {
+          "CAR_win_odds": "49",
+          "NO_win_odds": "51"
         },
-        "2026-11-14": {
+        "2026-11-12": {
+          "CAR_win_odds": "48",
+          "NO_win_odds": "52"
+        },
+        "2026-11-13": {
           "CAR_win_odds": "45",
           "NO_win_odds": "55"
         },
-        "2026-11-15": {
-          "CAR_win_odds": "44",
-          "NO_win_odds": "56"
+        "2026-11-14": {
+          "CAR_win_odds": "47",
+          "NO_win_odds": "53"
         }
       },
-      "CAR_win_odds": "44",
-      "NO_win_odds": "56"
+      "CAR_win_odds": "46",
+      "NO_win_odds": "54"
     },
     {
       "id": "nfl-hou-cle-2026-11-15",
@@ -6205,7 +5276,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-hou-cle-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6213,6 +5284,10 @@
           "CLE_win_odds": "32"
         },
         "2026-11-11": {
+          "HOU_win_odds": "68",
+          "CLE_win_odds": "32"
+        },
+        "2026-11-15": {
           "HOU_win_odds": "68",
           "CLE_win_odds": "32"
         },
@@ -6231,10 +5306,6 @@
         "2026-11-14": {
           "HOU_win_odds": "69",
           "CLE_win_odds": "31"
-        },
-        "2026-11-15": {
-          "HOU_win_odds": "68",
-          "CLE_win_odds": "32"
         }
       },
       "HOU_win_odds": "68",
@@ -6249,7 +5320,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-jax-ten-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6257,6 +5328,10 @@
           "TEN_win_odds": "16"
         },
         "2026-11-11": {
+          "JAX_win_odds": "84",
+          "TEN_win_odds": "16"
+        },
+        "2026-11-15": {
           "JAX_win_odds": "84",
           "TEN_win_odds": "16"
         },
@@ -6275,10 +5350,6 @@
         "2026-11-14": {
           "JAX_win_odds": "85",
           "TEN_win_odds": "15"
-        },
-        "2026-11-15": {
-          "JAX_win_odds": "84",
-          "TEN_win_odds": "16"
         }
       },
       "JAX_win_odds": "84",
@@ -6293,7 +5364,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-atl-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6304,29 +5375,29 @@
           "KC_win_odds": "64",
           "ATL_win_odds": "36"
         },
+        "2026-11-15": {
+          "KC_win_odds": "62",
+          "ATL_win_odds": "38"
+        },
         "2026-11-08": {
-          "KC_win_odds": "67",
-          "ATL_win_odds": "33"
-        },
-        "2026-11-12": {
-          "KC_win_odds": "66",
-          "ATL_win_odds": "34"
-        },
-        "2026-11-13": {
-          "KC_win_odds": "63",
-          "ATL_win_odds": "37"
-        },
-        "2026-11-14": {
           "KC_win_odds": "65",
           "ATL_win_odds": "35"
         },
-        "2026-11-15": {
+        "2026-11-12": {
           "KC_win_odds": "64",
           "ATL_win_odds": "36"
+        },
+        "2026-11-13": {
+          "KC_win_odds": "61",
+          "ATL_win_odds": "39"
+        },
+        "2026-11-14": {
+          "KC_win_odds": "63",
+          "ATL_win_odds": "37"
         }
       },
-      "KC_win_odds": "64",
-      "ATL_win_odds": "36"
+      "KC_win_odds": "62",
+      "ATL_win_odds": "38"
     },
     {
       "id": "nfl-mia-ind-2026-11-15",
@@ -6337,7 +5408,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-ind-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6345,6 +5416,10 @@
           "IND_win_odds": "56"
         },
         "2026-11-11": {
+          "MIA_win_odds": "34",
+          "IND_win_odds": "66"
+        },
+        "2026-11-15": {
           "MIA_win_odds": "34",
           "IND_win_odds": "66"
         },
@@ -6363,10 +5438,6 @@
         "2026-11-14": {
           "MIA_win_odds": "35",
           "IND_win_odds": "65"
-        },
-        "2026-11-15": {
-          "MIA_win_odds": "34",
-          "IND_win_odds": "66"
         }
       },
       "MIA_win_odds": "34",
@@ -6381,7 +5452,7 @@
       "game_time": "Nov 15, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-15T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-min-gb-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6392,29 +5463,29 @@
           "MIN_win_odds": "38",
           "GB_win_odds": "62"
         },
+        "2026-11-15": {
+          "MIN_win_odds": "42",
+          "GB_win_odds": "58"
+        },
         "2026-11-08": {
+          "MIN_win_odds": "45",
+          "GB_win_odds": "55"
+        },
+        "2026-11-12": {
+          "MIN_win_odds": "44",
+          "GB_win_odds": "56"
+        },
+        "2026-11-13": {
           "MIN_win_odds": "41",
           "GB_win_odds": "59"
         },
-        "2026-11-12": {
-          "MIN_win_odds": "40",
-          "GB_win_odds": "60"
-        },
-        "2026-11-13": {
-          "MIN_win_odds": "37",
-          "GB_win_odds": "63"
-        },
         "2026-11-14": {
-          "MIN_win_odds": "39",
-          "GB_win_odds": "61"
-        },
-        "2026-11-15": {
-          "MIN_win_odds": "38",
-          "GB_win_odds": "62"
+          "MIN_win_odds": "43",
+          "GB_win_odds": "57"
         }
       },
-      "MIN_win_odds": "38",
-      "GB_win_odds": "62"
+      "MIN_win_odds": "42",
+      "GB_win_odds": "58"
     },
     {
       "id": "nfl-la-ari-2026-11-15",
@@ -6425,7 +5496,7 @@
       "game_time": "Nov 15, 2026 9:05 PM ET",
       "game_time_iso": "2026-11-15T21:05:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-la-ari-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6433,6 +5504,10 @@
           "ARI_win_odds": "22"
         },
         "2026-11-11": {
+          "LA_win_odds": "80",
+          "ARI_win_odds": "20"
+        },
+        "2026-11-15": {
           "LA_win_odds": "80",
           "ARI_win_odds": "20"
         },
@@ -6451,10 +5526,6 @@
         "2026-11-14": {
           "LA_win_odds": "81",
           "ARI_win_odds": "19"
-        },
-        "2026-11-15": {
-          "LA_win_odds": "80",
-          "ARI_win_odds": "20"
         }
       },
       "LA_win_odds": "80",
@@ -6469,7 +5540,7 @@
       "game_time": "Nov 15, 2026 9:05 PM ET",
       "game_time_iso": "2026-11-15T21:05:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-sea-lv-2026-11-15",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:54:08.861456Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6477,6 +5548,10 @@
           "LV_win_odds": "38"
         },
         "2026-11-11": {
+          "SEA_win_odds": "72",
+          "LV_win_odds": "28"
+        },
+        "2026-11-15": {
           "SEA_win_odds": "72",
           "LV_win_odds": "28"
         },
@@ -6495,10 +5570,6 @@
         "2026-11-14": {
           "SEA_win_odds": "73",
           "LV_win_odds": "27"
-        },
-        "2026-11-15": {
-          "SEA_win_odds": "72",
-          "LV_win_odds": "28"
         }
       },
       "SEA_win_odds": "72",
@@ -6513,7 +5584,7 @@
       "game_time": "Nov 15, 2026 9:25 PM ET",
       "game_time_iso": "2026-11-15T21:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-sf-dal-2026-11-15",
-      "lastUpdated": "2026-11-11T13:19:07.277634Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6521,6 +5592,10 @@
           "DAL_win_odds": "34"
         },
         "2026-11-11": {
+          "SF_win_odds": "66",
+          "DAL_win_odds": "34"
+        },
+        "2026-11-15": {
           "SF_win_odds": "66",
           "DAL_win_odds": "34"
         },
@@ -6539,10 +5614,6 @@
         "2026-11-14": {
           "SF_win_odds": "67",
           "DAL_win_odds": "33"
-        },
-        "2026-11-15": {
-          "SF_win_odds": "66",
-          "DAL_win_odds": "34"
         }
       },
       "SF_win_odds": "66",
@@ -6557,7 +5628,7 @@
       "game_time": "Nov 16, 2026 1:20 AM ET",
       "game_time_iso": "2026-11-16T01:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-pit-cin-2026-11-16",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6565,6 +5636,10 @@
           "CIN_win_odds": "64"
         },
         "2026-11-11": {
+          "PIT_win_odds": "36",
+          "CIN_win_odds": "64"
+        },
+        "2026-11-15": {
           "PIT_win_odds": "36",
           "CIN_win_odds": "64"
         },
@@ -6579,10 +5654,6 @@
         "2026-11-14": {
           "PIT_win_odds": "35",
           "CIN_win_odds": "65"
-        },
-        "2026-11-15": {
-          "PIT_win_odds": "37",
-          "CIN_win_odds": "63"
         },
         "2026-11-16": {
           "PIT_win_odds": "36",
@@ -6601,7 +5672,7 @@
       "game_time": "Nov 17, 2026 1:15 AM ET",
       "game_time_iso": "2026-11-17T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-lac-bal-2026-11-17",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:58:08.210126Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6612,6 +5683,10 @@
           "LAC_win_odds": "34",
           "BAL_win_odds": "66"
         },
+        "2026-11-15": {
+          "LAC_win_odds": "34",
+          "BAL_win_odds": "66"
+        },
         "2026-11-12": {
           "LAC_win_odds": "32",
           "BAL_win_odds": "68"
@@ -6619,10 +5694,6 @@
         "2026-11-14": {
           "LAC_win_odds": "36",
           "BAL_win_odds": "64"
-        },
-        "2026-11-15": {
-          "LAC_win_odds": "33",
-          "BAL_win_odds": "67"
         },
         "2026-11-16": {
           "LAC_win_odds": "35",
@@ -6645,7 +5716,7 @@
       "game_time": "Nov 24, 2026 1:15 AM ET",
       "game_time_iso": "2026-11-24T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-cin-was-2026-11-24",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 10,
       "probabilities": {
         "2026-11-10": {
@@ -6656,33 +5727,37 @@
           "CIN_win_odds": "65",
           "WAS_win_odds": "35"
         },
-        "2026-11-17": {
-          "CIN_win_odds": "68",
-          "WAS_win_odds": "32"
-        },
-        "2026-11-19": {
-          "CIN_win_odds": "63",
-          "WAS_win_odds": "37"
-        },
-        "2026-11-21": {
-          "CIN_win_odds": "67",
-          "WAS_win_odds": "33"
-        },
-        "2026-11-22": {
+        "2026-11-15": {
           "CIN_win_odds": "64",
           "WAS_win_odds": "36"
         },
-        "2026-11-23": {
+        "2026-11-17": {
+          "CIN_win_odds": "67",
+          "WAS_win_odds": "33"
+        },
+        "2026-11-19": {
+          "CIN_win_odds": "62",
+          "WAS_win_odds": "38"
+        },
+        "2026-11-21": {
           "CIN_win_odds": "66",
           "WAS_win_odds": "34"
         },
-        "2026-11-24": {
+        "2026-11-22": {
+          "CIN_win_odds": "63",
+          "WAS_win_odds": "37"
+        },
+        "2026-11-23": {
           "CIN_win_odds": "65",
           "WAS_win_odds": "35"
+        },
+        "2026-11-24": {
+          "CIN_win_odds": "64",
+          "WAS_win_odds": "36"
         }
       },
-      "CIN_win_odds": "65",
-      "WAS_win_odds": "35"
+      "CIN_win_odds": "64",
+      "WAS_win_odds": "36"
     },
     {
       "id": "nfl-ind-hou-2026-11-20",
@@ -6693,7 +5768,7 @@
       "game_time": "Nov 20, 2026 1:15 AM ET",
       "game_time_iso": "2026-11-20T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ind-hou-2026-11-20",
-      "lastUpdated": "2026-11-11T13:13:06.457388Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -6704,33 +5779,33 @@
           "IND_win_odds": "18",
           "HOU_win_odds": "82"
         },
-        "2026-11-13": {
-          "IND_win_odds": "21",
-          "HOU_win_odds": "79"
-        },
         "2026-11-15": {
-          "IND_win_odds": "16",
-          "HOU_win_odds": "84"
-        },
-        "2026-11-17": {
-          "IND_win_odds": "20",
-          "HOU_win_odds": "80"
-        },
-        "2026-11-18": {
-          "IND_win_odds": "17",
-          "HOU_win_odds": "83"
-        },
-        "2026-11-19": {
           "IND_win_odds": "19",
           "HOU_win_odds": "81"
         },
-        "2026-11-20": {
+        "2026-11-13": {
+          "IND_win_odds": "22",
+          "HOU_win_odds": "78"
+        },
+        "2026-11-17": {
+          "IND_win_odds": "21",
+          "HOU_win_odds": "79"
+        },
+        "2026-11-18": {
           "IND_win_odds": "18",
           "HOU_win_odds": "82"
+        },
+        "2026-11-19": {
+          "IND_win_odds": "20",
+          "HOU_win_odds": "80"
+        },
+        "2026-11-20": {
+          "IND_win_odds": "19",
+          "HOU_win_odds": "81"
         }
       },
-      "IND_win_odds": "18",
-      "HOU_win_odds": "82"
+      "IND_win_odds": "19",
+      "HOU_win_odds": "81"
     },
     {
       "id": "nfl-bal-car-2026-11-22",
@@ -6741,7 +5816,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-bal-car-2026-11-22",
-      "lastUpdated": "2026-11-11T13:23:09.636304Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -6753,8 +5828,8 @@
           "CAR_win_odds": "54"
         },
         "2026-11-15": {
-          "BAL_win_odds": "49",
-          "CAR_win_odds": "51"
+          "BAL_win_odds": "46",
+          "CAR_win_odds": "54"
         },
         "2026-11-17": {
           "BAL_win_odds": "44",
@@ -6789,7 +5864,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-buf-2026-11-22",
-      "lastUpdated": "2026-11-11T13:23:09.636304Z",
+      "lastUpdated": "2026-11-15T01:58:08.210126Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -6801,8 +5876,8 @@
           "BUF_win_odds": "92"
         },
         "2026-11-15": {
-          "MIA_win_odds": "11",
-          "BUF_win_odds": "89"
+          "MIA_win_odds": "8",
+          "BUF_win_odds": "92"
         },
         "2026-11-17": {
           "MIA_win_odds": "6",
@@ -6837,7 +5912,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-no-chi-2026-11-22",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:58:08.210126Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -6849,8 +5924,8 @@
           "CHI_win_odds": "84"
         },
         "2026-11-15": {
-          "NO_win_odds": "19",
-          "CHI_win_odds": "81"
+          "NO_win_odds": "16",
+          "CHI_win_odds": "84"
         },
         "2026-11-17": {
           "NO_win_odds": "14",
@@ -6885,7 +5960,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-tb-det-2026-11-22",
-      "lastUpdated": "2026-11-11T13:23:09.636304Z",
+      "lastUpdated": "2026-11-15T01:58:08.210126Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -6897,8 +5972,8 @@
           "DET_win_odds": "64"
         },
         "2026-11-15": {
-          "TB_win_odds": "39",
-          "DET_win_odds": "61"
+          "TB_win_odds": "36",
+          "DET_win_odds": "64"
         },
         "2026-11-17": {
           "TB_win_odds": "34",
@@ -6933,7 +6008,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ten-dal-2026-11-22",
-      "lastUpdated": "2026-11-11T13:21:08.106295Z",
+      "lastUpdated": "2026-11-15T01:56:08.385306Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -6945,8 +6020,8 @@
           "DAL_win_odds": "80"
         },
         "2026-11-15": {
-          "TEN_win_odds": "23",
-          "DAL_win_odds": "77"
+          "TEN_win_odds": "20",
+          "DAL_win_odds": "80"
         },
         "2026-11-17": {
           "TEN_win_odds": "18",
@@ -6981,7 +6056,7 @@
       "game_time": "Nov 26, 2026 1:00 AM ET",
       "game_time_iso": "2026-11-26T01:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-gb-la-2026-11-26",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7003,6 +6078,10 @@
         "2026-11-14": {
           "GB_win_odds": "38",
           "LA_win_odds": "62"
+        },
+        "2026-11-15": {
+          "GB_win_odds": "38",
+          "LA_win_odds": "62"
         }
       },
       "GB_win_odds": "38",
@@ -7017,7 +6096,7 @@
       "game_time": "Nov 26, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-26T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-chi-det-2026-11-26",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7039,6 +6118,10 @@
         "2026-11-14": {
           "CHI_win_odds": "52",
           "DET_win_odds": "48"
+        },
+        "2026-11-15": {
+          "CHI_win_odds": "52",
+          "DET_win_odds": "48"
         }
       },
       "CHI_win_odds": "52",
@@ -7053,7 +6136,7 @@
       "game_time": "Nov 26, 2026 9:30 PM ET",
       "game_time_iso": "2026-11-26T21:30:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-phi-dal-2026-11-26",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7075,6 +6158,10 @@
         "2026-11-14": {
           "PHI_win_odds": "30",
           "DAL_win_odds": "70"
+        },
+        "2026-11-15": {
+          "PHI_win_odds": "30",
+          "DAL_win_odds": "70"
         }
       },
       "PHI_win_odds": "30",
@@ -7089,7 +6176,7 @@
       "game_time": "Nov 27, 2026 1:20 AM ET",
       "game_time_iso": "2026-11-27T01:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-kc-buf-2026-11-27",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7109,6 +6196,10 @@
           "BUF_win_odds": "71"
         },
         "2026-11-14": {
+          "KC_win_odds": "29",
+          "BUF_win_odds": "71"
+        },
+        "2026-11-15": {
           "KC_win_odds": "29",
           "BUF_win_odds": "71"
         }
@@ -7125,7 +6216,7 @@
       "game_time": "Nov 27, 2026 8:00 PM ET",
       "game_time_iso": "2026-11-27T20:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-den-pit-2026-11-27",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7145,6 +6236,10 @@
           "PIT_win_odds": "46"
         },
         "2026-11-14": {
+          "DEN_win_odds": "54",
+          "PIT_win_odds": "46"
+        },
+        "2026-11-15": {
           "DEN_win_odds": "54",
           "PIT_win_odds": "46"
         }
@@ -7161,7 +6256,7 @@
       "game_time": "Nov 29, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-29T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-atl-min-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7181,6 +6276,10 @@
           "MIN_win_odds": "70"
         },
         "2026-11-14": {
+          "ATL_win_odds": "30",
+          "MIN_win_odds": "70"
+        },
+        "2026-11-15": {
           "ATL_win_odds": "30",
           "MIN_win_odds": "70"
         }
@@ -7197,7 +6296,7 @@
       "game_time": "Nov 29, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-29T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-bal-hou-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7219,6 +6318,10 @@
         "2026-11-14": {
           "BAL_win_odds": "29",
           "HOU_win_odds": "71"
+        },
+        "2026-11-15": {
+          "BAL_win_odds": "29",
+          "HOU_win_odds": "71"
         }
       },
       "BAL_win_odds": "29",
@@ -7233,7 +6336,7 @@
       "game_time": "Nov 29, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-29T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-lv-cle-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7255,6 +6358,10 @@
         "2026-11-14": {
           "LV_win_odds": "28",
           "CLE_win_odds": "72"
+        },
+        "2026-11-15": {
+          "LV_win_odds": "28",
+          "CLE_win_odds": "72"
         }
       },
       "LV_win_odds": "28",
@@ -7269,7 +6376,7 @@
       "game_time": "Nov 29, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-29T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-no-cin-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7289,6 +6396,10 @@
           "CIN_win_odds": "77"
         },
         "2026-11-14": {
+          "NO_win_odds": "23",
+          "CIN_win_odds": "77"
+        },
+        "2026-11-15": {
           "NO_win_odds": "23",
           "CIN_win_odds": "77"
         }
@@ -7305,7 +6416,7 @@
       "game_time": "Nov 29, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-29T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-nyg-ind-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7325,6 +6436,10 @@
           "IND_win_odds": "56"
         },
         "2026-11-14": {
+          "NYG_win_odds": "44",
+          "IND_win_odds": "56"
+        },
+        "2026-11-15": {
           "NYG_win_odds": "44",
           "IND_win_odds": "56"
         }
@@ -7341,7 +6456,7 @@
       "game_time": "Nov 29, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-29T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-nyj-mia-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7361,6 +6476,10 @@
           "MIA_win_odds": "48"
         },
         "2026-11-14": {
+          "NYJ_win_odds": "52",
+          "MIA_win_odds": "48"
+        },
+        "2026-11-15": {
           "NYJ_win_odds": "52",
           "MIA_win_odds": "48"
         }
@@ -7377,7 +6496,7 @@
       "game_time": "Nov 29, 2026 9:05 PM ET",
       "game_time_iso": "2026-11-29T21:05:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ten-jax-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7397,6 +6516,10 @@
           "JAX_win_odds": "82"
         },
         "2026-11-14": {
+          "TEN_win_odds": "18",
+          "JAX_win_odds": "82"
+        },
+        "2026-11-15": {
           "TEN_win_odds": "18",
           "JAX_win_odds": "82"
         }
@@ -7413,7 +6536,7 @@
       "game_time": "Nov 29, 2026 9:25 PM ET",
       "game_time_iso": "2026-11-29T21:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-sea-sf-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7433,6 +6556,10 @@
           "SF_win_odds": "48"
         },
         "2026-11-14": {
+          "SEA_win_odds": "52",
+          "SF_win_odds": "48"
+        },
+        "2026-11-15": {
           "SEA_win_odds": "52",
           "SF_win_odds": "48"
         }
@@ -7449,7 +6576,7 @@
       "game_time": "Nov 29, 2026 9:25 PM ET",
       "game_time_iso": "2026-11-29T21:25:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-was-ari-2026-11-29",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7469,6 +6596,10 @@
           "ARI_win_odds": "36"
         },
         "2026-11-14": {
+          "WAS_win_odds": "64",
+          "ARI_win_odds": "36"
+        },
+        "2026-11-15": {
           "WAS_win_odds": "64",
           "ARI_win_odds": "36"
         }
@@ -7485,7 +6616,7 @@
       "game_time": "Nov 30, 2026 1:20 AM ET",
       "game_time_iso": "2026-11-30T01:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ne-lac-2026-11-30",
-      "lastUpdated": "2026-11-14T12:50:11.050924Z",
+      "lastUpdated": "2026-11-15T02:00:10.060076Z",
       "week": 12,
       "probabilities": {
         "2026-11-10": {
@@ -7505,6 +6636,10 @@
           "LAC_win_odds": "32"
         },
         "2026-11-14": {
+          "NE_win_odds": "68",
+          "LAC_win_odds": "32"
+        },
+        "2026-11-15": {
           "NE_win_odds": "68",
           "LAC_win_odds": "32"
         }

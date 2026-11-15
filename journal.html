@@ -191,7 +191,8 @@
         renderTitle,
         parseInline,
         parseMarkdown,
-        normalizeContent
+        normalizeContent,
+        videoEmbedUrl
       } = window.MarkdownUtils;
 
       function appendPermalink(container, href, label) {
@@ -211,6 +212,12 @@
           return journalTags[entry.file].slice();
         }
         return Array.isArray(entry.tags) ? entry.tags.slice() : [];
+      }
+
+      function videoUrlFromHtml(html) {
+        if (!html) return null;
+        const m = String(html).match(/href=["']([^"']*)["']/);
+        return (m && videoEmbedUrl(m[1])) ? videoEmbedUrl(m[1]) : null;
       }
 
       function buildEntry(entry) {
@@ -245,6 +252,10 @@
         const titleEl = document.createElement('span');
         titleEl.className = 'entry-title';
         titleEl.innerHTML = renderTitle(entry.title, hasLink ? entry.link : null);
+        const titleVideoUrl = videoUrlFromHtml(entry.title);
+        if (titleVideoUrl) {
+          titleEl.textContent = titleEl.textContent || entry.title || '';
+        }
         const metaEl = document.createElement('span');
         metaEl.className = 'entry-meta';
         if (entry.time) {
@@ -367,6 +378,34 @@
         }
 
         div.appendChild(headEl);
+
+        if (videoEmbedUrl(entry.link)) {
+          const videoEl = document.createElement('div');
+          videoEl.className = 'video-placeholder';
+          videoEl.setAttribute('role', 'button');
+          videoEl.setAttribute('tabindex', '0');
+          videoEl.setAttribute('data-video-src', videoEmbedUrl(entry.link));
+          videoEl.setAttribute(
+            'aria-label',
+            'Play video' + (entry.title ? ': ' + escapeHtml(entry.title) : '')
+          );
+          videoEl.textContent = 'Play video';
+          div.appendChild(videoEl);
+        }
+
+        if (titleVideoUrl) {
+          const videoEl = document.createElement('div');
+          videoEl.className = 'video-placeholder';
+          videoEl.setAttribute('role', 'button');
+          videoEl.setAttribute('tabindex', '0');
+          videoEl.setAttribute('data-video-src', titleVideoUrl);
+          videoEl.setAttribute(
+            'aria-label',
+            'Play video' + (entry.title ? ': ' + escapeHtml(entry.title) : '')
+          );
+          videoEl.textContent = 'Play video';
+          div.appendChild(videoEl);
+        }
 
         if (hasContent && !hasToggle) {
           const contentEl = document.createElement('div');

@@ -22,6 +22,14 @@
     'images/Zeekr.png': [1516, 1220]
   };
 
+  const YT_ID_RE = /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+  function videoEmbedUrl(url) {
+    if (!url) return '';
+    const m = String(url).match(YT_ID_RE);
+    return m ? 'https://www.youtube.com/embed/' + m[1] : '';
+  }
+
   function escapeHtml(value) {
     return String(value ?? '')
       .replace(/&/g, '&amp;')
@@ -351,8 +359,17 @@
     });
   }
 
+  function normalizeVideoLinks(html) {
+    return String(html || '').replace(/<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, (tag, url) => {
+      if (!YT_ID_RE.test(url)) return tag;
+      const embedUrl = videoEmbedUrl(url);
+      if (!embedUrl) return tag;
+      return '<div class="video-placeholder" role="button" tabindex="0" data-video-src="' + escapeAttr(embedUrl) + '" aria-label="Play video">Play video</div>';
+    });
+  }
+
   function normalizeContent(html) {
-    return normalizeIframes(normalizeImages(html));
+    return normalizeVideoLinks(normalizeIframes(normalizeImages(html)));
   }
 
   /**
@@ -379,6 +396,7 @@
     parseMarkdown,
     normalizeImages,
     normalizeIframes,
+    normalizeVideoLinks,
     normalizeContent,
     rewriteLinks
   };

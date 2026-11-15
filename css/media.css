@@ -1093,43 +1093,15 @@ MEDIA LINKS ORDER
 }
 
 /* Ensure media overlay icons stay white in dark mode */
-[data-theme="dark"] .media-overlay .youtube-link,
-[data-theme="dark"] .media-overlay .spotify-link,
-[data-theme="dark"] .media-overlay .apple-link,
-[data-theme="dark"] .media-overlay .soundcloud-link,
-[data-theme="dark"] .media-overlay .amazon-link,
-[data-theme="dark"] .media-overlay .google-link,
-[data-theme="dark"] .media-overlay .rss-link,
-[data-theme="dark"] .media-overlay .x-link,
-[data-theme="dark"] .media-overlay .media-link,
-[data-theme="dark"] .media-overlay .song-link,
-[data-theme="dark"] .media-overlay .podcast-link {
-    color: white !important;
-}
-
-[data-theme="dark"] .media-overlay .youtube-link i,
-[data-theme="dark"] .media-overlay .spotify-link i,
-[data-theme="dark"] .media-overlay .apple-link i,
-[data-theme="dark"] .media-overlay .soundcloud-link i,
-[data-theme="dark"] .media-overlay .amazon-link i,
-[data-theme="dark"] .media-overlay .google-link i,
-[data-theme="dark"] .media-overlay .rss-link i,
-[data-theme="dark"] .media-overlay .x-link i,
-[data-theme="dark"] .media-overlay .media-link i,
-[data-theme="dark"] .media-overlay .song-link i,
-[data-theme="dark"] .media-overlay .podcast-link i {
-    color: white !important;
-}
-
-/* Record spinning animation for music post images */
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+[data-theme="dark"] .media-overlay :is(
+  .youtube-link, .spotify-link, .apple-link, .soundcloud-link,
+  .amazon-link, .google-link, .rss-link, .x-link, .media-link,
+  .song-link, .podcast-link,
+  .youtube-link i, .spotify-link i, .apple-link i, .soundcloud-link i,
+  .amazon-link i, .google-link i, .rss-link i, .x-link i, .media-link i,
+  .song-link i, .podcast-link i
+) {
+  color: #fff !important;
 }
 
 /* Art Lightbox */

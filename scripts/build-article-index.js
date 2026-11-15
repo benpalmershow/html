@@ -30,18 +30,9 @@ const EXCLUDED_DIRS = ['article/draft'];
 // links then fall back to the journal page anchor.
 const MIN_WORDS = Number(process.env.ARTICLE_MIN_WORDS || 0);
 
-const { escapeHtml, parseMarkdown, normalizeContent } = MarkdownUtils;
+const { parseMarkdown, normalizeContent, slugify } = MarkdownUtils;
 
 const EMOJI_RE = /[\u{1F000}-\u{1FAFF}\u{1F1E6}-\u{1F1FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}\u{23E9}-\u{23FA}\u{2049}\u{203C}\u{2B50}]/gu;
-
-function slugify(text) {
-  return String(text)
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/, '');
-}
 
 function stripEmoji(text) {
   return String(text || '').replace(EMOJI_RE, '').replace(/\s{2,}/g, ' ').trim();

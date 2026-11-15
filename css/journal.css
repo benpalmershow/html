@@ -186,7 +186,9 @@ main {
   color: var(--text-primary);
 }
 
-.entry-title a:focus-visible {
+.entry-title a:focus-visible,
+.entry-content a:focus-visible,
+.accordion-inner a:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
   border-radius: 2px;
@@ -237,17 +239,10 @@ main {
 }
 
 .entry-content a:hover,
-.entry-content a:focus,
-.accordion-inner a:hover,
-.accordion-inner a:focus {
-  color: var(--logo-orange);
-}
-
 .entry-content a:focus-visible,
+.accordion-inner a:hover,
 .accordion-inner a:focus-visible {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 2px;
-  border-radius: 2px;
+  color: var(--logo-orange);
 }
 
 .entry-content img,
@@ -388,23 +383,17 @@ main {
   }
 }
 
-.video-placeholder iframe {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: 0;
-  border-radius: var(--radius-lg);
-}
-
+.video-placeholder iframe,
 .embedded-video {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
   border-radius: var(--radius-lg);
-  margin: 0.75rem 0;
 }
+
+.video-placeholder iframe { height: auto; }
+.embedded-video { margin: 0.75rem 0; }
 
 /* ── Load More & Empty State ─────────────────────────────── */
 .load-more {
@@ -481,10 +470,6 @@ main {
   width: 24px;
   height: 24px;
   border-width: 2px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
 }
 
 /* ── Sub-Filter Bar (Secondary Categories) ───────────────── */
@@ -654,12 +639,6 @@ main {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-
-  .entry-tag-chip:where(.tag-financials, .tag-media, .tag-video, .tag-external):hover {
-    color: var(--tag);
-    background: color-mix(in srgb, var(--tag) 16%, transparent);
-    border-color: var(--tag);
-  }
 }
 
 .entry-tag-chip:focus-visible {
@@ -679,6 +658,14 @@ main {
   color: var(--tag);
   background: color-mix(in srgb, var(--tag) 8%, transparent);
   border-color: color-mix(in srgb, var(--tag) 25%, transparent);
+}
+
+@media (hover: hover) {
+  .entry-tag-chip:where(.tag-financials, .tag-media, .tag-video, .tag-external):hover {
+    color: var(--tag);
+    background: color-mix(in srgb, var(--tag) 16%, transparent);
+    border-color: var(--tag);
+  }
 }
 
 @supports not (color: color-mix(in srgb, black, white)) {

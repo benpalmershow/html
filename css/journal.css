@@ -36,6 +36,7 @@ main {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-wrap: nowrap;
 }
 
 .day-header::after {
@@ -124,6 +125,11 @@ main {
   background: var(--bg-tertiary);
 }
 
+.clear-search-btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
 .clear-search-btn.is-visible {
   display: flex;
 }
@@ -162,10 +168,23 @@ main {
   font-weight: 600;
   line-height: 1.7;
   word-break: break-word;
+  text-wrap: pretty;
+}
+
+.entry-title .entry-tags {
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .entry-title a {
   color: var(--text-primary);
+}
+
+.entry-title a:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .entry-meta {
@@ -350,6 +369,13 @@ main {
   outline-offset: 3px;
 }
 
+@media (hover: hover) {
+  .video-placeholder:hover {
+    border-color: var(--text-muted);
+    background: var(--bg-tertiary);
+  }
+}
+
 .video-placeholder iframe {
   display: block;
   width: 100%;
@@ -380,6 +406,12 @@ main {
   border: 1px solid var(--border-color);
   border-radius: 999px;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.load-more:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--text-muted);
 }
 
 .load-more.is-visible {
@@ -489,6 +521,11 @@ main {
   border-color: var(--text-muted);
 }
 
+.sub-filter-btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
 .sub-filter-btn.active {
   color: #fff;
   background: var(--logo-teal);
@@ -543,13 +580,20 @@ main {
   opacity: 0.7;
 }
 
+.active-tag-chip button:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* ── Entry Tags & Subcategory Pill ───────────────────────── */
 .entry-tags {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem;
-  margin-top: 0.35rem;
+  margin-left: 0.45rem;
+  vertical-align: middle;
 }
 
 .entry-subcat-pill {
@@ -590,12 +634,25 @@ main {
   opacity: 0.85;
 }
 
-.entry-tag-chip:hover {
-  color: var(--logo-orange);
-  background: var(--bg-secondary);
-  border-color: var(--logo-orange);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+@media (hover: hover) {
+  .entry-tag-chip:hover {
+    color: var(--logo-orange);
+    background: var(--bg-secondary);
+    border-color: var(--logo-orange);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .entry-tag-chip:where(.tag-financials, .tag-media, .tag-video, .tag-external):hover {
+    color: var(--tag);
+    background: color-mix(in srgb, var(--tag) 16%, transparent);
+    border-color: var(--tag);
+  }
+}
+
+.entry-tag-chip:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
 /* Category accent for each chip type. */
@@ -610,12 +667,6 @@ main {
   color: var(--tag);
   background: color-mix(in srgb, var(--tag) 8%, transparent);
   border-color: color-mix(in srgb, var(--tag) 25%, transparent);
-}
-
-.entry-tag-chip:where(.tag-financials, .tag-media, .tag-video, .tag-external):hover {
-  color: var(--tag);
-  background: color-mix(in srgb, var(--tag) 16%, transparent);
-  border-color: var(--tag);
 }
 
 .entry-tag-chip.active,

@@ -343,10 +343,8 @@
             }
           });
         }
-        div.appendChild(headEl);
-
         if (tags.length > 0) {
-          const tagsEl = document.createElement('div');
+          const tagsEl = document.createElement('span');
           tagsEl.className = 'entry-tags';
           const tagIcons = {
             'financials': '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tag-icon" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>',
@@ -365,8 +363,10 @@
             chip.setAttribute('aria-label', 'Filter by tag #' + tag);
             tagsEl.appendChild(chip);
           });
-          div.appendChild(tagsEl);
+          titleEl.appendChild(tagsEl);
         }
+
+        div.appendChild(headEl);
 
         if (hasContent && !hasToggle) {
           const contentEl = document.createElement('div');

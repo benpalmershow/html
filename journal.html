@@ -113,34 +113,29 @@
     </header>
 
   <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
-    <div class="filter-bar" id="journal-filters" aria-label="Filter journal by category">
-
+    <div class="filter-bar" id="journal-filters" aria-label="Filter journal entries">
       <div class="filters" id="filter-buttons">
         <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
-        <div class="skeleton-filter-btn" style="width: 90px; height: 42px;"></div>
-        <div class="skeleton-filter-btn" style="width: 120px; height: 42px;"></div>
-        <div class="skeleton-filter-btn" style="width: 90px; height: 42px;"></div>
-        <div class="skeleton-filter-btn" style="width: 100px; height: 42px;"></div>
-        <div class="skeleton-filter-btn" style="width: 120px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 72px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 72px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 84px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 72px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 72px; height: 42px;"></div>
+        <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
       </div>
-    </div>
-
-    <search class="search-bar" id="searchBar" style="display: none;">
-      <input type="search" id="searchInput" class="search-input" placeholder="Search journal entries..." aria-label="Search journal entries" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search">
-      <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-    </search>
-
-    <div class="sub-filter-bar" id="subFilterBar" style="display: none;" aria-label="Secondary filters">
-      <div class="sub-filters" id="subFilterButtons"></div>
-    </div>
-    <div class="active-filter-bar" id="activeFilterBar" style="display: none;">
-      <div class="active-tag-chip" id="activeTagChip">
-        <span id="activeTagText">#tag</span>
-        <button type="button" id="clearActiveTagBtn" aria-label="Clear active tag filter">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      <search class="search-bar" id="searchBar" hidden>
+        <input type="search" id="searchInput" class="search-input" placeholder="Search..." aria-label="Search journal entries" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search">
+        <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
+      </search>
+      <div class="active-filter-bar" id="activeFilterBar" hidden>
+        <div class="active-tag-chip" id="activeTagChip">
+          <span id="activeTagText">#tag</span>
+          <button type="button" id="clearActiveTagBtn" aria-label="Clear active tag filter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -169,6 +164,9 @@
       let searchIndex = null;
       let searchIndexPromise = null;
       let journalTags = {};
+      let activeDays = [];
+      let filteredMode = false;
+
       function loadSearchIndex() {
         if (searchIndexPromise) return searchIndexPromise;
         searchIndexPromise = fetch('json/journal-search.json')
@@ -186,16 +184,16 @@
         return searchIndexPromise;
       }
       window.loadJournalSearchIndex = loadSearchIndex;
+
       const {
         escapeHtml,
-        escapeAttr,
         slugify,
-        stripFrontmatter,
         renderTitle,
         parseInline,
         parseMarkdown,
         normalizeContent
       } = window.MarkdownUtils;
+
       function appendPermalink(container, href, label) {
         const footer = document.createElement('div');
         footer.className = 'entry-accordion-footer entry-footer';
@@ -207,12 +205,14 @@
         footer.appendChild(link);
         container.appendChild(footer);
       }
+
       function getEntryTags(entry) {
-        if (entry.file) {
-          return Array.isArray(journalTags[entry.file]) ? journalTags[entry.file] : [];
+        if (entry.file && Array.isArray(journalTags[entry.file])) {
+          return journalTags[entry.file].slice();
         }
-        return Array.isArray(entry.tags) ? entry.tags : [];
+        return Array.isArray(entry.tags) ? entry.tags.slice() : [];
       }
+
       function buildEntry(entry) {
         const hasFile = !!entry.file;
         const hasContent = !!entry.content;
@@ -239,6 +239,7 @@
         if (entry.type) {
           div.dataset.type = entry.type;
         }
+
         const headEl = document.createElement('div');
         headEl.className = 'entry-head' + (hasToggle ? ' has-toggle' : '');
         const titleEl = document.createElement('span');
@@ -254,6 +255,7 @@
         }
         headEl.appendChild(titleEl);
         headEl.appendChild(metaEl);
+
         let accordionEl = null;
         if (hasToggle) {
           const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -267,6 +269,7 @@
           svg.setAttribute('aria-hidden', 'true');
           svg.innerHTML = '<polyline points="4,2 9,7 4,12"/>';
           headEl.insertBefore(svg, titleEl);
+
           accordionEl = document.createElement('div');
           accordionEl.className = 'accordion';
           accordionEl.hidden = true;
@@ -282,6 +285,7 @@
           } else if (div.dataset.slug) {
             appendPermalink(accordionEl, '#' + div.dataset.slug, 'Permalink');
           }
+
           let loaded = false;
           function loadContent() {
             if (loaded) return;
@@ -305,10 +309,10 @@
               inner.innerHTML = normalizeContent(parseInline(entry.content, true));
             }
           }
-          // Preload inline content so text is indexed by native find-in-page under hidden="until-found"
           if (hasContent && !hasFile) {
             loadContent();
           }
+
           headEl.setAttribute('role', 'button');
           headEl.setAttribute('tabindex', '0');
           headEl.setAttribute('aria-expanded', 'false');
@@ -323,7 +327,6 @@
               accordionEl.setAttribute('hidden', 'until-found');
             }
           }
-          // Synchronize ARIA state when content is revealed by native find-in-page
           accordionEl.addEventListener('beforematch', () => {
             headEl.setAttribute('aria-expanded', 'true');
             loadContent();
@@ -355,9 +358,9 @@
           tags.forEach(tag => {
             const chip = document.createElement('button');
             chip.type = 'button';
-            chip.className = 'entry-tag-chip' + (tagIcons[tag] ? ' tag-' + tag : '');
+            const iconHtml = tagIcons[tag] || tagIcons[String(tag).toLowerCase()] || '';
+            chip.className = 'entry-tag-chip' + (iconHtml ? ' tag-' + String(tag).toLowerCase() : '');
             chip.dataset.tag = tag;
-            const iconHtml = tagIcons[tag] || '';
             chip.innerHTML = iconHtml + '#' + escapeHtml(tag);
             chip.setAttribute('aria-label', 'Filter by tag #' + tag);
             tagsEl.appendChild(chip);
@@ -377,10 +380,10 @@
         }
         return div;
       }
+
       function buildDay(day, index) {
         const section = document.createElement('section');
         section.className = 'day';
-        // Apply content-visibility optimization to sections after the first 3
         if (index >= 3) {
           section.classList.add('deferred');
         }
@@ -393,21 +396,12 @@
         (day.entries || []).forEach(entry => section.appendChild(buildEntry(entry)));
         return section;
       }
-      function renderMore() {
-        const next = allDays.slice(renderIndex, renderIndex + 30);
-        const fragment = document.createDocumentFragment();
-        next.forEach((day, idx) => fragment.appendChild(buildDay(day, renderIndex + idx)));
-        feed.appendChild(fragment);
-        renderIndex += next.length;
-        loadMore.classList.toggle('is-visible', renderIndex < allDays.length);
-        emptyEl.style.display = allDays.length === 0 ? 'block' : 'none';
-        if (window.location.hash) {
-          // Keep rendering until the deep-linked entry exists in the DOM.
-          if (!scrollToHash() && renderIndex < allDays.length) {
-            renderMore();
-          }
-        }
+
+      function setEmptyMessage(message) {
+        if (!emptyEl) return;
+        emptyEl.textContent = message;
       }
+
       function scrollToHash() {
         const id = window.location.hash.slice(1);
         if (!id) return false;
@@ -424,6 +418,75 @@
         setTimeout(() => target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }), 50);
         return true;
       }
+
+      function renderDefault(keepHash) {
+        filteredMode = false;
+        activeDays = allDays;
+        renderIndex = 0;
+        feed.innerHTML = '';
+        renderMore(keepHash !== false);
+      }
+
+      function renderMore(keepHash) {
+        if (filteredMode) return;
+        const next = activeDays.slice(renderIndex, renderIndex + 30);
+        const fragment = document.createDocumentFragment();
+        next.forEach((day, idx) => fragment.appendChild(buildDay(day, renderIndex + idx)));
+        feed.appendChild(fragment);
+        renderIndex += next.length;
+        loadMore.classList.toggle('is-visible', renderIndex < activeDays.length);
+        emptyEl.style.display = activeDays.length === 0 ? 'block' : 'none';
+        if (keepHash !== false && window.location.hash) {
+          if (!scrollToHash() && renderIndex < activeDays.length) {
+            renderMore(true);
+          }
+        }
+      }
+
+      function renderFilteredDays(days, meta) {
+        filteredMode = true;
+        activeDays = Array.isArray(days) ? days : [];
+        renderIndex = activeDays.length;
+        feed.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+        activeDays.forEach((day, idx) => fragment.appendChild(buildDay(day, idx)));
+        feed.appendChild(fragment);
+        loadMore.classList.remove('is-visible');
+        loadMore.style.display = 'none';
+        const matching = meta && typeof meta.matchingEntries === 'number' ? meta.matchingEntries : 0;
+        const total = meta && typeof meta.totalEntries === 'number' ? meta.totalEntries : 0;
+        if (activeDays.length === 0) {
+          setEmptyMessage(total ? `No entries found matching your criteria (${total} total entries)` : 'No entries found.');
+          emptyEl.style.display = 'block';
+        } else {
+          emptyEl.style.display = 'none';
+        }
+        if (meta && meta.scrollToFilters) {
+          const filtersEl = document.getElementById('journal-filters');
+          if (filtersEl) filtersEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      function showDefaultView() {
+        loadMore.style.display = '';
+        setEmptyMessage('No entries found.');
+        renderDefault(false);
+      }
+
+      window.journalApp = {
+        isReady: function () { return allDays.length > 0 || journalTags !== null; },
+        getDays: function () { return allDays; },
+        getTagsMap: function () { return journalTags; },
+        getSearchIndex: function () { return searchIndex || {}; },
+        getEntryTags: getEntryTags,
+        getTotalEntries: function () {
+          return allDays.reduce((sum, day) => sum + ((day.entries || []).length), 0);
+        },
+        renderDefault: showDefaultView,
+        renderFiltered: renderFilteredDays,
+        setEmptyMessage: setEmptyMessage
+      };
+
       function activateVideo(target) {
         if (!target || target.dataset.loaded === 'true') return;
         target.dataset.loaded = 'true';
@@ -448,7 +511,8 @@
           activateVideo(target);
         }
       });
-      loadMore.addEventListener('click', renderMore);
+      loadMore.addEventListener('click', function () { renderMore(true); });
+
       Promise.all([
         fetch('json/journal.json').then(response => response.ok ? response.json() : Promise.reject(response.status)),
         fetch('json/journal-tags.json')
@@ -460,18 +524,15 @@
           journalTags = tags && typeof tags === 'object' ? tags : {};
           const loadingEl = document.getElementById('feed-loading');
           if (loadingEl) loadingEl.style.display = 'none';
-          
-          const hasHash = !!window.location.hash;
-          if (hasHash) {
-            renderIndex = 0;
-            renderMore();
+
+          showDefaultView();
+          if (window.location.hash) {
             scrollToHash();
-          } else {
-            renderMore();
           }
-          
-          // Initialize filters after content is loaded, similar to media.js pattern
-          if (typeof window.filterJournalEntries === 'function') {
+
+          if (typeof window.initJournalFilters === 'function') {
+            window.initJournalFilters();
+          } else if (typeof window.filterJournalEntries === 'function') {
             window.filterJournalEntries();
           }
         })

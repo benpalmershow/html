@@ -64,6 +64,19 @@ main {
   padding: 0 1rem;
 }
 
+.search-bar[hidden],
+.active-filter-bar[hidden] {
+  display: none;
+}
+
+.filter-bar .search-bar {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  flex: 0 1 220px;
+  min-width: 140px;
+}
+
 .search-input {
   flex: 1;
   padding: 0.62rem 0.95rem;
@@ -491,6 +504,13 @@ main {
   padding: 0 1rem;
 }
 
+.filter-bar .active-filter-bar {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  flex: 0 0 auto;
+}
+
 .active-tag-chip {
   display: inline-flex;
   align-items: center;
@@ -500,6 +520,7 @@ main {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.75rem;
   font-weight: 600;
+  white-space: nowrap;
   background: var(--bg-secondary);
   border: 1px solid var(--logo-orange);
   border-radius: 999px;

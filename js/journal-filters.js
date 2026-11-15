@@ -1,26 +1,64 @@
 // Journal Filter Bar Logic
-// Handles 2-tier categorization: Macro Pillars and Cross-Cutting Tags
+// Handles categorization: All, media type filters, tags, and search
 (function() {
     'use strict';
 
-    // 5 Core Editorial Pillars
     const PILLARS = [
-        { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' },
-        { id: 'books', name: 'Books', icon: '<i data-lucide="book" class="filter-icon"></i>' }
+        { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' }
     ];
+
+    const MEDIA_FILTERS = [
+        { id: 'movie', name: 'Movies', icon: '<i data-lucide="film" class="filter-icon"></i>', tags: ['movie', 'film'] },
+        { id: 'book', name: 'Books', icon: '<i data-lucide="book" class="filter-icon"></i>', tags: ['book', 'books'] },
+        { id: 'podcast', name: 'Podcasts', icon: '<i data-lucide="mic" class="filter-icon"></i>', tags: ['podcast'] },
+        { id: 'song', name: 'Music', icon: '<i data-lucide="music" class="filter-icon"></i>', tags: ['song', 'music'] },
+        { id: 'video', name: 'Videos', icon: '<i data-lucide="video" class="filter-icon"></i>', tags: ['video'] }
+    ];
+
+    const MEDIA_TAG_SETS = MEDIA_FILTERS.reduce((acc, filter) => {
+        acc[filter.id] = new Set(filter.tags.map(normalizeTag));
+        return acc;
+    }, {});
+    const MEDIA_IDS = new Set(MEDIA_FILTERS.map(filter => filter.id));
 
     let currentCategory = 'all';
     let currentTag = null;
+    let currentTagKey = '';
     let currentSearchQuery = '';
     let searchTimer = null;
+    let appReady = false;
+    let categoryCounts = Object.create(null);
+    let searchToggleBtn = null;
+
+    function normalizeTag(tag) {
+        return String(tag || '').trim().toLowerCase();
+    }
+
+    function getApp() {
+        return window.journalApp || null;
+    }
+
+    function getEntryTags(entry) {
+        const app = getApp();
+        if (app && typeof app.getEntryTags === 'function') {
+            return app.getEntryTags(entry) || [];
+        }
+        return Array.isArray(entry.tags) ? entry.tags.slice() : [];
+    }
+
+    function entryTagKeys(entry) {
+        return getEntryTags(entry).map(normalizeTag).filter(Boolean);
+    }
 
     function syncURL() {
         const url = new URL(window.location);
         if (currentCategory && currentCategory !== 'all') {
-            url.searchParams.set('category', currentCategory);
+            url.searchParams.set('media', currentCategory);
         } else {
-            url.searchParams.delete('category');
+            url.searchParams.delete('media');
         }
+        url.searchParams.delete('category');
+        url.searchParams.delete('filter');
         if (currentTag) {
             url.searchParams.set('tag', currentTag);
         } else {
@@ -36,19 +74,16 @@
 
     function readURL() {
         const params = new URLSearchParams(window.location.search);
-        const cat = params.get('category') || params.get('filter');
-        const tag = params.get('tag');
-        const search = params.get('search');
+        const cat = params.get('media') || params.get('category') || params.get('filter');
 
-        if (cat && PILLARS.some(p => p.id === cat)) {
+        if (cat && (cat === 'all' || MEDIA_IDS.has(cat))) {
             currentCategory = cat;
+        } else {
+            currentCategory = 'all';
         }
-        if (tag) {
-            currentTag = tag;
-        }
-        if (search) {
-            currentSearchQuery = search;
-        }
+        currentTag = null;
+        currentTagKey = '';
+        currentSearchQuery = '';
     }
 
     function updateActiveTagUI() {
@@ -58,109 +93,168 @@
 
         if (currentTag) {
             text.textContent = '#' + currentTag;
-            bar.style.display = 'flex';
+            bar.hidden = false;
         } else {
-            bar.style.display = 'none';
+            bar.hidden = true;
         }
 
         document.querySelectorAll('.entry-tag-chip').forEach(chip => {
-            chip.classList.toggle('active', chip.dataset.tag === currentTag);
+            chip.classList.toggle('active', normalizeTag(chip.dataset.tag) === currentTagKey);
         });
     }
 
-    function filterJournalEntries() {
-        const daySections = document.querySelectorAll('.day');
-        let totalEntries = 0;
-        let matchingEntries = 0;
+    function computeCategoryCounts() {
+        const app = getApp();
+        const days = app && typeof app.getDays === 'function' ? app.getDays() : [];
+        categoryCounts = { all: 0 };
+        MEDIA_FILTERS.forEach(filter => { categoryCounts[filter.id] = 0; });
 
-        daySections.forEach(daySection => {
-            const entries = daySection.querySelectorAll('.entry');
-            let hasVisibleEntries = false;
-
-            entries.forEach(entry => {
-                totalEntries++;
-                const entryCategory = entry.dataset.category || '';
-                const entryTags = (entry.dataset.tags || '').split(',').filter(Boolean);
-                const title = entry.querySelector('.entry-title')?.textContent || '';
-                const content = (entry.querySelector('.entry-content')?.textContent || '')
-                    + ' ' + (entry.querySelector('.accordion-inner')?.textContent || '');
-                const file = entry.dataset.file || '';
-                const indexed = window.journalSearchIndex && file && window.journalSearchIndex[file]
-                    ? window.journalSearchIndex[file]
-                    : '';
-                const haystack = (title + ' ' + content + ' ' + entryTags.join(' ') + ' ' + indexed).toLowerCase();
-
-                // 1. Pillar match
-                const matchesCategory = currentCategory === 'all' || entryCategory === currentCategory;
-
-                // 2. Tag match
-                const matchesTag = !currentTag || entryTags.includes(currentTag);
-
-                // 3. Search match
-                let matchesSearch = true;
-                if (currentSearchQuery) {
-                    matchesSearch = haystack.includes(currentSearchQuery.toLowerCase());
-                }
-
-                const isMatch = matchesCategory && matchesTag && matchesSearch;
-                entry.style.display = isMatch ? '' : 'none';
-                if (isMatch) {
-                    matchingEntries++;
-                    hasVisibleEntries = true;
-                }
+        days.forEach(day => {
+            (day.entries || []).forEach(entry => {
+                categoryCounts.all += 1;
+                const tagSet = new Set(entryTagKeys(entry));
+                MEDIA_FILTERS.forEach(filter => {
+                    const matchSet = MEDIA_TAG_SETS[filter.id];
+                    for (const tag of tagSet) {
+                        if (matchSet.has(tag)) {
+                            categoryCounts[filter.id] += 1;
+                            break;
+                        }
+                    }
+                });
             });
+        });
+    }
 
-            daySection.style.display = hasVisibleEntries ? '' : 'none';
+    function matchesCategory(entryTags, categoryId) {
+        if (!categoryId || categoryId === 'all') return true;
+        const matchSet = MEDIA_TAG_SETS[categoryId];
+        if (!matchSet) return false;
+        return entryTags.some(tag => matchSet.has(tag));
+    }
+
+    function buildHaystack(entry, tags, searchIndex) {
+        const file = entry.file || '';
+        const indexed = file && searchIndex[file] ? searchIndex[file] : '';
+        return [
+            entry.title || '',
+            entry.content || '',
+            file,
+            tags.join(' '),
+            indexed
+        ].join(' ').toLowerCase();
+    }
+
+    function filterJournalEntries(options) {
+        const opts = options || {};
+        const app = getApp();
+        if (!app || !appReady) return;
+
+        const days = app.getDays ? app.getDays() : [];
+        const searchIndex = app.getSearchIndex ? app.getSearchIndex() : (window.journalSearchIndex || {});
+        const hasFilters = currentCategory !== 'all' || !!currentTagKey || !!currentSearchQuery;
+        const query = currentSearchQuery.toLowerCase();
+        const totalEntries = app.getTotalEntries ? app.getTotalEntries() : 0;
+
+        if (!hasFilters) {
+            app.renderDefault();
+            app.setEmptyMessage('No entries found.');
+            updateActiveTagUI();
+            syncURL();
+            updateSearchUI();
+            return;
+        }
+
+        let matchingEntries = 0;
+        const filteredDays = [];
+
+        days.forEach(day => {
+            const matchedEntries = (day.entries || []).filter(entry => {
+                const tags = getEntryTags(entry);
+                const tagKeys = tags.map(normalizeTag).filter(Boolean);
+                if (!matchesCategory(tagKeys, currentCategory)) return false;
+                if (currentTagKey && !tagKeys.includes(currentTagKey)) return false;
+                if (query) {
+                    const haystack = buildHaystack(entry, tags, searchIndex);
+                    if (!haystack.includes(query)) return false;
+                }
+                matchingEntries += 1;
+                return true;
+            });
+            if (matchedEntries.length) {
+                filteredDays.push({ date: day.date, entries: matchedEntries });
+            }
         });
 
-        // Update empty state and search results count
-        const emptyEl = document.getElementById('empty');
-        const loadMoreBtn = document.getElementById('load-more');
-        const hasVisibleEntries = matchingEntries > 0;
-
-        if (emptyEl) {
-            if (currentCategory !== 'all' || currentTag || currentSearchQuery) {
-                emptyEl.textContent = `No entries found matching your criteria (${totalEntries} total entries)`;
-            } else {
-                emptyEl.textContent = 'No entries found.';
-            }
-            emptyEl.style.display = hasVisibleEntries ? 'none' : 'block';
-        }
-
-        if (loadMoreBtn && currentCategory === 'all' && !currentTag && !currentSearchQuery) {
-            loadMoreBtn.style.display = hasVisibleEntries ? '' : 'none';
-        }
-
-        // Auto load more if filtering and more entries exist.
-        // Keep loading until all entries are exhausted so matches spread
-        // across paginated days are all visible, not just those in the first batch.
-        const isFiltered = currentCategory !== 'all' || currentTag || currentSearchQuery;
-        if (isFiltered && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
-            let batches = 0;
-            const loadUntilExhausted = () => {
-                if (loadMoreBtn && loadMoreBtn.style.display !== 'none' && batches < 20) {
-                    batches++;
-                    loadMoreBtn.click();
-                    setTimeout(() => {
-                        filterJournalEntries();
-                    }, 25);
-                }
-            };
-            loadUntilExhausted();
-        }
-
+        app.renderFiltered(filteredDays, {
+            matchingEntries,
+            totalEntries,
+            scrollToFilters: !!opts.scrollToFilters
+        });
         updateActiveTagUI();
         syncURL();
+        updateSearchUI();
     }
 
-    function createFilterBtn(id, icon, text) {
+    function createFilterBtn(id, icon, text, count) {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = `filter-btn ${id === currentCategory ? 'active' : ''}`;
+        btn.className = 'filter-btn' + (id === currentCategory ? ' active' : '');
         btn.dataset.category = id;
-        btn.setAttribute('aria-label', `Filter by ${text}`);
+        const label = typeof count === 'number' ? `${text} (${count})` : text;
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('aria-pressed', id === currentCategory ? 'true' : 'false');
+        btn.title = label;
         btn.innerHTML = `${icon}<span class="filter-text">${text}</span>`;
         return btn;
+    }
+
+    function updateFilterButtonStates() {
+        const container = document.getElementById('filter-buttons');
+        if (!container) return;
+        container.querySelectorAll('.filter-btn[data-category]').forEach(btn => {
+            const id = btn.dataset.category;
+            if (id === 'search') {
+                const active = isSearchOpen();
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                btn.setAttribute('aria-expanded', active ? 'true' : 'false');
+                return;
+            }
+            const active = id === currentCategory;
+            btn.classList.toggle('active', active);
+            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+    }
+
+    function isSearchOpen() {
+        const searchBar = document.getElementById('searchBar');
+        return !!(searchBar && !searchBar.hidden);
+    }
+
+    function updateSearchUI() {
+        const searchBar = document.getElementById('searchBar');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        if (!searchBar || !searchInput || !clearSearchBtn) return;
+        searchInput.value = currentSearchQuery;
+        if (!currentSearchQuery && !isSearchOpen()) {
+            searchBar.hidden = true;
+        }
+        clearSearchBtn.classList.toggle('is-visible', currentSearchQuery.length > 0);
+        if (searchToggleBtn) {
+            const open = isSearchOpen();
+            searchToggleBtn.classList.toggle('active', open);
+            searchToggleBtn.setAttribute('aria-pressed', open ? 'true' : 'false');
+            searchToggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            searchToggleBtn.setAttribute('aria-controls', 'searchBar');
+        }
+    }
+
+    function ensureSearchIndexLoaded() {
+        if (window.loadJournalSearchIndex) {
+            window.loadJournalSearchIndex().then(() => filterJournalEntries());
+        }
     }
 
     function setupJournalFilters() {
@@ -170,35 +264,47 @@
         const buttonsContainer = filtersContainer.querySelector('.filters');
         if (!buttonsContainer) return;
 
+        computeCategoryCounts();
         buttonsContainer.innerHTML = '';
 
         PILLARS.forEach(pillar => {
-            const btn = createFilterBtn(pillar.id, pillar.icon, pillar.name);
-            buttonsContainer.appendChild(btn);
+            buttonsContainer.appendChild(createFilterBtn(pillar.id, pillar.icon, pillar.name, categoryCounts.all));
         });
 
-        // Add search button to filter bar (separate from PILLARS)
-        const searchToggleBtn = createFilterBtn('search', '<i data-lucide="search" class="filter-icon"></i>', 'Search');
+        MEDIA_FILTERS.forEach(filter => {
+            const count = categoryCounts[filter.id] || 0;
+            if (count === 0) return;
+            buttonsContainer.appendChild(createFilterBtn(filter.id, filter.icon, filter.name, count));
+        });
+
+        searchToggleBtn = createFilterBtn('search', '<i data-lucide="search" class="filter-icon"></i>', 'Search');
         searchToggleBtn.dataset.category = 'search';
+        searchToggleBtn.setAttribute('aria-expanded', 'false');
+        searchToggleBtn.setAttribute('aria-controls', 'searchBar');
         buttonsContainer.appendChild(searchToggleBtn);
 
-        // Primary pillar button click
         buttonsContainer.addEventListener('click', function(e) {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
 
             const category = btn.dataset.category;
-
-            // Handle search button separately
-            if (category === 'search') {
-                return; // Search button has its own handler
-            }
-
-            buttonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            if (category === 'search') return;
 
             currentCategory = category;
+            currentTag = null;
+            currentTagKey = '';
+            currentSearchQuery = '';
+            clearTimeout(searchTimer);
 
+            const searchBar = document.getElementById('searchBar');
+            const searchInput = document.getElementById('searchInput');
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+            if (searchBar) searchBar.hidden = true;
+            if (searchInput) searchInput.value = '';
+            if (clearSearchBtn) clearSearchBtn.classList.remove('is-visible');
+
+            updateFilterButtonStates();
+            updateSearchUI();
             filterJournalEntries();
 
             if (typeof lucide !== 'undefined') {
@@ -206,81 +312,71 @@
             }
         });
 
-        // Active tag dismiss button
         const clearTagBtn = document.getElementById('clearActiveTagBtn');
         if (clearTagBtn) {
             clearTagBtn.addEventListener('click', function() {
                 currentTag = null;
+                currentTagKey = '';
                 filterJournalEntries();
             });
         }
 
-        // Search input setup
         const searchBar = document.getElementById('searchBar');
         const searchInput = document.getElementById('searchInput');
         const clearSearchBtn = document.getElementById('clearSearchBtn');
 
         if (searchBar && searchInput && clearSearchBtn) {
-            // Show search bar if there's a search query in URL
             if (currentSearchQuery) {
-                searchBar.style.display = 'flex';
+                searchBar.hidden = false;
                 searchInput.value = currentSearchQuery;
-                clearSearchBtn.classList.add('is-visible');
-                searchToggleBtn.classList.add('active');
+                ensureSearchIndexLoaded();
             }
 
-            // Search toggle button click
             searchToggleBtn.addEventListener('click', function() {
-                const isSearchActive = searchBar.style.display === 'flex';
-                if (isSearchActive) {
-                    searchBar.style.display = 'none';
+                const open = !isSearchOpen();
+                if (!open) {
+                    searchBar.hidden = true;
                     currentSearchQuery = '';
                     searchInput.value = '';
-                    clearSearchBtn.classList.remove('is-visible');
-                    searchToggleBtn.classList.remove('active');
                 } else {
-                    searchBar.style.display = 'flex';
+                    searchBar.hidden = false;
                     searchInput.focus();
-                    searchToggleBtn.classList.add('active');
+                    if (currentSearchQuery) ensureSearchIndexLoaded();
                 }
                 filterJournalEntries();
             });
 
-            // Search input typing
             searchInput.addEventListener('input', function() {
                 currentSearchQuery = this.value.trim();
                 clearSearchBtn.classList.toggle('is-visible', currentSearchQuery.length > 0);
                 clearTimeout(searchTimer);
                 searchTimer = setTimeout(filterJournalEntries, 180);
-                if (window.loadJournalSearchIndex) {
-                    window.loadJournalSearchIndex().then(() => window.filterJournalEntries());
-                }
+                if (currentSearchQuery) ensureSearchIndexLoaded();
             });
 
-            // Clear search button
             clearSearchBtn.addEventListener('click', function() {
                 currentSearchQuery = '';
                 searchInput.value = '';
                 clearSearchBtn.classList.remove('is-visible');
-                searchToggleBtn.classList.remove('active');
+                if (!isSearchOpen()) {
+                    filterJournalEntries();
+                    return;
+                }
+                searchInput.focus();
                 filterJournalEntries();
             });
 
-            // Search keyboard shortcuts (IME-safe)
             searchInput.addEventListener('keydown', function(e) {
                 if (e.isComposing) return;
                 if (e.key === 'Escape') {
-                    searchBar.style.display = 'none';
+                    searchBar.hidden = true;
                     currentSearchQuery = '';
                     searchInput.value = '';
-                    clearSearchBtn.classList.remove('is-visible');
-                    searchToggleBtn.classList.remove('active');
                     filterJournalEntries();
                 }
             });
         }
 
-        // Feed tag chips click listener (delegated)
         const feed = document.getElementById('feed');
         if (feed) {
             feed.addEventListener('click', function(e) {
@@ -290,27 +386,22 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                const tag = chip.dataset.tag;
-                if (currentTag === tag) {
-                    currentTag = null; // Toggle off if clicked again
+                const tag = chip.dataset.tag || '';
+                const tagKey = normalizeTag(tag);
+                if (currentTagKey && currentTagKey === tagKey) {
+                    currentTag = null;
+                    currentTagKey = '';
                 } else {
                     currentTag = tag;
+                    currentTagKey = tagKey;
                 }
 
-                filterJournalEntries();
-
-                // Smooth scroll to top of feed
-                const filtersEl = document.getElementById('journal-filters');
-                if (filtersEl) {
-                    filtersEl.scrollIntoView({ behavior: 'smooth' });
-                }
+                filterJournalEntries({ scrollToFilters: true });
             });
         }
 
-        if (currentSearchQuery && window.loadJournalSearchIndex) {
-            window.loadJournalSearchIndex().then(() => window.filterJournalEntries());
-        }
-
+        updateFilterButtonStates();
+        updateSearchUI();
         filterJournalEntries();
 
         if (typeof lucide !== 'undefined') {
@@ -318,17 +409,14 @@
         }
     }
 
-
-    async function initJournalFilters() {
+    function initJournalFilters() {
         try {
+            const app = getApp();
+            if (!app) return;
+            appReady = true;
             readURL();
-            
-            // Set up filters immediately like media.js and filters.js do
-            // Don't wait for content - just ensure the DOM is ready
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    setupJournalFilters();
-                });
+                document.addEventListener('DOMContentLoaded', setupJournalFilters, { once: true });
             } else {
                 setupJournalFilters();
             }
@@ -337,7 +425,15 @@
         }
     }
 
-    initJournalFilters();
+    window.addEventListener('popstate', function() {
+        if (!appReady) return;
+        readURL();
+        if (currentSearchQuery) ensureSearchIndexLoaded();
+        updateFilterButtonStates();
+        updateSearchUI();
+        filterJournalEntries();
+    });
 
+    window.initJournalFilters = initJournalFilters;
     window.filterJournalEntries = filterJournalEntries;
 })();

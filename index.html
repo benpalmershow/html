@@ -103,6 +103,8 @@
     <link rel="stylesheet" href="css/components/footer.css?v=20260628">
   </noscript>
   <link rel="stylesheet" href="css/components/footer.css?v=20260628">
+  <!-- Force a style resolution so the @view-transition opt-in is set before first paint (avoids aborted-transition console errors) -->
+  <script>getComputedStyle(document.documentElement).color</script>
 
   <title>Howdy, Stranger - Independent Commentary & Economic Insight</title>
 

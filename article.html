@@ -45,6 +45,8 @@
   <link rel="stylesheet" href="/css/components/footer.css?v=20260628">
   <link rel="stylesheet" href="/css/components/tables.css?v=20260614">
   <link rel="stylesheet" href="/css/components/utilities.css?v=20260614">
+  <!-- Force a style resolution so the @view-transition opt-in is set before first paint (avoids aborted-transition console errors) -->
+  <script>getComputedStyle(document.documentElement).color</script>
 
   <script>
     (function () {

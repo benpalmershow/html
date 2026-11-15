@@ -10,7 +10,7 @@ Sentencing is adjudication best modernized with AI inference. Judges are biased 
 
 You don't stay an execution because of systemic bias. You decide on the merits of the individual case. A crime is a crime. It doesn't matter what color your skin is. If you are guilty, you are guilty.
 
-The issue is that the government is not good at killing people fairly. If 1/8 are innocent, and 200 sentenced to death have since been exonerated, the government should not do that. If they (unusually and cruelly) botch executions, they should not do that. If they arrest and sentance you because of your skin color, they should not do that. If it's cheaper to do life sentences, the government should do that.
+The issue is that the government is not good at killing people fairly. If 1/8 are innocent, and 200 sentenced to death have since been exonerated, the government should not do that. If they (unusually and cruelly) botch executions, they should not do that. If they arrest and sentence you because of your skin color, they should not do that. If it's cheaper to do life sentences, the government should do that.
 
 But don't politicize capital punishment to prime a candidate for moral authority. We need ethical deliberation and the best solution. We don't need a moral hero preaching to their partisan choir.
 

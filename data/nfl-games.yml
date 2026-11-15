@@ -847,9 +847,9 @@ games:
   game_time_iso: '2026-11-15T21:05:00Z'
   url: https://polymarket.com/sports/nfl/nfl-la-ari-2026-11-15
   polymarket_slug: nfl-la-ari-2026-11-15
-  LA_win_odds: 80.5¢
-  ARI_win_odds: 19.5¢
-  lastUpdated: '2026-11-15T16:28:09.487319Z'
+  LA_win_odds: 99.4¢
+  ARI_win_odds: 0.6¢
+  lastUpdated: '2026-11-15T23:04:30.504728Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     LA_win_odds: 79.0¢
@@ -866,6 +866,9 @@ games:
   - timestamp: '2026-11-15T16:28:09.487319Z'
     LA_win_odds: 80.5¢
     ARI_win_odds: 19.5¢
+  - timestamp: '2026-11-15T23:04:30.504728Z'
+    LA_win_odds: 99.4¢
+    ARI_win_odds: 0.6¢
 - id: nfl-sea-lv-2026-11-15
   week: 10
   away: SEA
@@ -878,9 +881,9 @@ games:
   game_time_iso: '2026-11-15T21:05:00Z'
   url: https://polymarket.com/sports/nfl/nfl-sea-lv-2026-11-15
   polymarket_slug: nfl-sea-lv-2026-11-15
-  SEA_win_odds: 71.5¢
-  LV_win_odds: 28.5¢
-  lastUpdated: '2026-11-15T16:28:09.487319Z'
+  SEA_win_odds: 93.5¢
+  LV_win_odds: 6.5¢
+  lastUpdated: '2026-11-15T23:02:53.684179Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     SEA_win_odds: 62.5¢
@@ -897,6 +900,9 @@ games:
   - timestamp: '2026-11-15T16:28:09.487319Z'
     SEA_win_odds: 71.5¢
     LV_win_odds: 28.5¢
+  - timestamp: '2026-11-15T23:02:53.684179Z'
+    SEA_win_odds: 93.5¢
+    LV_win_odds: 6.5¢
 - id: nfl-sf-dal-2026-11-15
   week: 10
   away: SF
@@ -909,9 +915,9 @@ games:
   game_time_iso: '2026-11-15T21:25:00Z'
   url: https://polymarket.com/sports/nfl/nfl-sf-dal-2026-11-15
   polymarket_slug: nfl-sf-dal-2026-11-15
-  SF_win_odds: 64.5¢
-  DAL_win_odds: 35.5¢
-  lastUpdated: '2026-11-15T16:28:09.487319Z'
+  SF_win_odds: 67.5¢
+  DAL_win_odds: 32.5¢
+  lastUpdated: '2026-11-15T23:00:07.836792Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     SF_win_odds: 67.5¢
@@ -928,6 +934,9 @@ games:
   - timestamp: '2026-11-15T16:28:09.487319Z'
     SF_win_odds: 64.5¢
     DAL_win_odds: 35.5¢
+  - timestamp: '2026-11-15T23:00:07.836792Z'
+    SF_win_odds: 67.5¢
+    DAL_win_odds: 32.5¢
 - id: nfl-pit-cin-2026-11-16
   week: 10
   away: PIT

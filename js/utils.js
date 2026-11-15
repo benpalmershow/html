@@ -24,399 +24,204 @@ function formatDate(dateString, formatType = 'full') {
         date = new Date(dateString);
     }
     if (formatType === 'short') {
-        return date.toLocaleDateString('en-US', {
-            month: 'numeric',
-            day: 'numeric'
-        });
+        return date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' });
     } else {
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     }
 }
 
 function formatChangeIndicator(percentChange) {
-    if (percentChange === null || percentChange === undefined) {
+    if (percentChange === null || percentChange === undefined || Math.abs(percentChange) < 0.05) {
         return { formatted: '—', cssClass: 'change-neutral', direction: 0 };
     }
-
-    const formatted = typeof percentChange === 'number'
-        ? `${percentChange >= 0 ? '+' : ''}${percentChange.toFixed(1)}%`
-        : percentChange;
-
-    const isNeutral = formatted === "—" || formatted === "0" || formatted === "0.0" || formatted === "+0.0%";
-    const isPositive = formatted.startsWith('+') && !isNeutral;
-    const isNegative = formatted.startsWith('-');
-
+    const formatted = `${percentChange >= 0 ? '+' : ''}${percentChange.toFixed(1)}%`;
+    const isPositive = percentChange > 0;
     return {
         formatted,
-        cssClass: isNeutral ? 'change-neutral' : isPositive ? 'change-positive' : 'change-negative',
-        direction: isNeutral ? 0 : isPositive ? 1 : -1
+        cssClass: isPositive ? 'change-positive' : 'change-negative',
+        direction: isPositive ? 1 : -1
     };
 }
 
 function extractNumericValue(value) {
     if (!value || value === '' || value.startsWith('TBD') || value === '—') return null;
-
-    // Check if value already includes M or B suffix (e.g., "$20,683B" means 20,683 in billions)
-    // The suffix is just a label, not a multiplier to apply
-    let hasSuffix = false;
-    if (value.includes('M') || value.includes('B')) {
-        hasSuffix = true;
-    }
-
-    let cleanValue = value.toString()
-        .replace(/\$/g, '')
-        .replace(/^\+/g, '')
-        .replace(/[A-Za-z]/g, '')
-        .trim();
-
-    // Remove commas as thousand separators (not decimal separators)
-    cleanValue = cleanValue.replace(/,/g, '');
-
+    let cleanValue = value.toString().replace(/\$/g, '').replace(/^\+/g, '').replace(/[A-Za-z]/g, '').trim().replace(/,/g, '');
     const num = parseFloat(cleanValue);
-    if (isNaN(num)) return null;
-    
-    // If value had M or B suffix, it's already in millions/billions - just return as-is
-    // The suffix was just for display purposes
-    return num;
+    return isNaN(num) ? null : num;
 }
 
 function formatCompactNumber(num) {
     if (num === null || num === undefined) return '—';
-
     const absNum = Math.abs(num);
-
-    // For numbers >= 1000, use K suffix
+    if (absNum >= 1000000000) return (num >= 0 ? '+' : '') + (absNum / 1000000000).toFixed(1) + 'B';
+    if (absNum >= 1000000) return (num >= 0 ? '+' : '') + (absNum / 1000000).toFixed(1) + 'M';
     if (absNum >= 1000) {
         const kValue = num / 1000;
-        // Show 1 decimal place for values under 100K, no decimals for 100K+
-        if (absNum < 100000) {
-            const formatted = kValue.toFixed(1);
-            // Remove .0 decimals
-            const clean = formatted.replace(/\.0$/, '');
-            return (num >= 0 ? '+' : '') + clean + 'K';
-        } else {
-            return (num >= 0 ? '+' : '') + Math.round(kValue) + 'K';
-        }
+        if (absNum < 100000) return (num >= 0 ? '+' : '') + kValue.toFixed(1).replace(/\.0$/, '') + 'K';
+        return (num >= 0 ? '+' : '') + Math.round(kValue) + 'K';
     }
-
-    // For smaller numbers, show as-is
-    const formatted = num.toFixed(2).replace('.00', '');
-    return (num >= 0 ? '+' : '') + formatted;
+    return (num >= 0 ? '+' : '') + num.toFixed(2).replace('.00', '');
 }
 
-function getLatestMonthForIndicator(indicator, MONTHS = DEFAULT_MONTHS) {
-     // Find year-nested data (keys that are numeric/year-like)
-     const yearKeys = Object.keys(indicator)
-         .filter(key => /^\d{4}$/.test(key))
-         .map(key => parseInt(key))
-         .sort((a, b) => b - a); // Sort years descending
+// Returns sorted year keys (newest first) for year-nested indicator data
+function getYearKeys(indicator) {
+    return Object.keys(indicator)
+        .filter(key => /^\d{4}$/.test(key))
+        .map(key => parseInt(key, 10))
+        .sort((a, b) => b - a);
+}
 
-     // Check year-nested data first (newest years first)
-     for (const year of yearKeys) {
-         for (let i = MONTHS.length - 1; i >= 0; i--) {
-             const month = MONTHS[i];
-             if (isValidData(indicator[year][month])) {
-                 // Calculate approximate days since data was released
-                 const now = new Date();
+// Calculate days since approximate release date
+function calcDaysOld(year, monthIndex, releaseDay) {
+    const releaseDate = new Date(year, monthIndex, releaseDay);
+    const daysOld = Math.floor((Date.now() - releaseDate) / (1000 * 60 * 60 * 24));
+    return daysOld >= 0 ? daysOld : 9999;
+}
 
-                 // Get release day (default to 15th if not specified or 0)
-                 const releaseDay = indicator.releaseDay && indicator.releaseDay > 0 ? indicator.releaseDay : 15;
+// Get latest data point from indicator (handles year-nested and flat)
+function getLatestDataPoint(indicator, MONTHS = DEFAULT_MONTHS) {
+    const yearKeys = getYearKeys(indicator);
+    const releaseDay = indicator.releaseDay && indicator.releaseDay > 0 ? indicator.releaseDay : 15;
 
-                 // Create the approximate release date for year-nested data
-                 const releaseDate = new Date(year, i, releaseDay);
-
-                 // Calculate days old
-                 const daysOld = Math.floor((now - releaseDate) / (1000 * 60 * 60 * 24));
-
-                 return {
-                     monthIndex: i,
-                     monthName: MONTHS[i],
-                     daysOld: daysOld >= 0 ? daysOld : 9999 // If negative (future date), treat as very old
-                 };
-             }
-         }
-     }
-
-     // Fall back to flat structure
-     for (let i = MONTHS.length - 1; i >= 0; i--) {
-         const month = MONTHS[i];
-         if (isValidData(indicator[month])) {
-             // Calculate approximate days since data was released
-             const now = new Date();
-             const currentYear = now.getFullYear();
-             const currentMonth = now.getMonth(); // 0-11
-
-             // Get release day (default to 15th if not specified or 0)
-             const releaseDay = indicator.releaseDay && indicator.releaseDay > 0 ? indicator.releaseDay : 15;
-
-             // Determine the year for this data point
-             // If the data month is in the future relative to current month, it's from last year
-             let dataYear = currentYear;
-             if (i > currentMonth) {
-                 dataYear = currentYear - 1;
-             }
-
-             // Create the approximate release date
-             const releaseDate = new Date(dataYear, i, releaseDay);
-
-             // Calculate days old
-             const daysOld = Math.floor((now - releaseDate) / (1000 * 60 * 60 * 24));
-
-             return {
-                 monthIndex: i,
-                 monthName: MONTHS[i],
-                 daysOld: daysOld >= 0 ? daysOld : 9999 // If negative (future date), treat as very old
-             };
-         }
-     }
-
-     // No data found
-     return {
-         monthIndex: -1,
-         monthName: 'none',
-         daysOld: 99999 // Very high value to sort to bottom
-     };
- }
+    for (const year of yearKeys) {
+        for (let i = MONTHS.length - 1; i >= 0; i--) {
+            const month = MONTHS[i];
+            const value = indicator[year]?.[month];
+            if (isValidData(value)) {
+                return { value, numeric: extractNumericValue(value), year, month, monthIndex: i, daysOld: calcDaysOld(year, i, releaseDay) };
+            }
+        }
+    }
+    // Flat fallback
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    for (let i = MONTHS.length - 1; i >= 0; i--) {
+        const month = MONTHS[i];
+        const value = indicator[month];
+        if (isValidData(value)) {
+            const dataYear = i > currentMonth ? currentYear - 1 : currentYear;
+            return { value, numeric: extractNumericValue(value), year: dataYear, month, monthIndex: i, daysOld: calcDaysOld(dataYear, i, releaseDay) };
+        }
+    }
+    return null;
+}
 
 function calculatePercentChange(currentValue, previousValue) {
     if (previousValue === 0) return null;
     const numberChange = currentValue - previousValue;
-    // When baseline is negative, use absolute value so moving toward zero
-    // (e.g. -26 to -8) registers as a positive percent change.
     const denominator = previousValue < 0 ? Math.abs(previousValue) : previousValue;
-    const percentChange = (numberChange / denominator) * 100;
-    return { percentChange, numberChange };
+    return { percentChange: (numberChange / denominator) * 100, numberChange };
 }
 
-function calculateMoMChange(indicator, MONTHS) {
-    let currentValue = null;
-    let previousValue = null;
-    let currentRawValue = '';
-
-    // Find year-nested data (keys that are numeric/year-like)
-    const yearKeys = Object.keys(indicator)
-        .filter(key => /^\d{4}$/.test(key))
-        .map(key => parseInt(key))
-        .sort((a, b) => b - a); // Sort years descending
-
-    // Build chronological list of all available data points.
-    // Prefer year-nested data when available; only use flat months that
-    // do not duplicate a year-nested entry.
+function calculateMoMChange(indicator, MONTHS = DEFAULT_MONTHS) {
+    const yearKeys = getYearKeys(indicator);
     const allDataPoints = [];
-
-    // Collect months already covered by year-nested data (newest year first wins)
     const coveredFlatMonths = new Set();
+
     for (const year of yearKeys) {
         for (let i = MONTHS.length - 1; i >= 0; i--) {
             const month = MONTHS[i];
-            const value = indicator[year] && indicator[year][month];
-            if (isValidData(value)) {
-                coveredFlatMonths.add(month);
-            }
+            const value = indicator[year]?.[month];
+            if (isValidData(value)) coveredFlatMonths.add(month);
         }
     }
 
-    // Add year-nested data (in reverse chronological order)
     for (const year of yearKeys) {
         for (let i = MONTHS.length - 1; i >= 0; i--) {
             const month = MONTHS[i];
-            const value = indicator[year][month];
-            if (isValidData(value)) {
-                allDataPoints.push({
-                    value: value,
-                    numeric: extractNumericValue(value),
-                    year: year,
-                    monthIndex: i
-                });
-            }
+            const value = indicator[year]?.[month];
+            if (isValidData(value)) allDataPoints.push({ value, numeric: extractNumericValue(value), year, monthIndex: i });
         }
     }
 
-    // Add flat structure data only for months not covered by year-nested data (legacy support)
     for (let i = MONTHS.length - 1; i >= 0; i--) {
         const month = MONTHS[i];
         if (coveredFlatMonths.has(month)) continue;
         const value = indicator[month];
-        if (isValidData(value)) {
-            allDataPoints.push({
-                value: value,
-                numeric: extractNumericValue(value),
-                year: null,
-                monthIndex: i
-            });
-        }
+        if (isValidData(value)) allDataPoints.push({ value, numeric: extractNumericValue(value), year: null, monthIndex: i });
     }
 
-    // Get the two most recent data points
-    if (allDataPoints.length >= 2) {
-        currentValue = allDataPoints[0].numeric;
-        currentRawValue = allDataPoints[0].value;
-        previousValue = allDataPoints[1].numeric;
-    }
-
+    if (allDataPoints.length < 2) return null;
+    const currentValue = allDataPoints[0].numeric;
+    const previousValue = allDataPoints[1].numeric;
     if (currentValue === null || previousValue === null || previousValue === 0) return null;
 
     const { percentChange, numberChange } = calculatePercentChange(currentValue, previousValue);
-
-    return {
-        percentChange,
-        numberChange,
-        currentRawValue: currentRawValue
-    };
+    return { percentChange, numberChange, currentRawValue: allDataPoints[0].value };
 }
 
-function calculateYoYChange(indicator, MONTHS) {
-    const yearKeys = Object.keys(indicator)
-        .filter(key => /^\d{4}$/.test(key))
-        .map(key => parseInt(key, 10))
-        .sort((a, b) => b - a); // Newest year first
-
-    // Require roughly one year of monthly history before showing YoY.
+function calculateYoYChange(indicator, MONTHS = DEFAULT_MONTHS) {
+    const yearKeys = getYearKeys(indicator);
     let totalValidPoints = 0;
-    for (const month of MONTHS) {
-        if (isValidData(indicator[month]) && extractNumericValue(indicator[month]) !== null) {
-            totalValidPoints++;
-        }
-    }
-    for (const year of yearKeys) {
-        for (const month of MONTHS) {
-            const value = indicator[year] && indicator[year][month];
-            if (isValidData(value) && extractNumericValue(value) !== null) {
-                totalValidPoints++;
-            }
-        }
-    }
+    for (const month of MONTHS) if (isValidData(indicator[month]) && extractNumericValue(indicator[month]) !== null) totalValidPoints++;
+    for (const year of yearKeys) for (const month of MONTHS) { const value = indicator[year]?.[month]; if (isValidData(value) && extractNumericValue(value) !== null) totalValidPoints++; }
     if (totalValidPoints < 12) return null;
 
-    let latest = null;
-    for (const year of yearKeys) {
-        for (let i = MONTHS.length - 1; i >= 0; i--) {
-            const month = MONTHS[i];
-            const value = indicator[year] && indicator[year][month];
-            const numeric = extractNumericValue(value);
-            if (isValidData(value) && numeric !== null) {
-                latest = { value, numeric, year, month, monthIndex: i };
-                break;
-            }
-        }
-        if (latest) break;
-    }
-
+    const latest = getLatestDataPoint(indicator, MONTHS);
     if (!latest) return null;
 
-    let yearBackValue = null;
     const previousYearData = indicator[latest.year - 1];
-    if (previousYearData && previousYearData[latest.month] !== undefined) {
-        yearBackValue = previousYearData[latest.month];
-    } else if (indicator[latest.month] !== undefined) {
-        // Mixed schema support: flat month values represent the prior-year baseline.
-        yearBackValue = indicator[latest.month];
-    }
-
+    const yearBackValue = (previousYearData && previousYearData[latest.month] !== undefined) ? previousYearData[latest.month] : indicator[latest.month];
     const yearBackNumeric = extractNumericValue(yearBackValue);
     if (!isValidData(yearBackValue) || yearBackNumeric === null || yearBackNumeric === 0) return null;
 
     const changeResult = calculatePercentChange(latest.numeric, yearBackNumeric);
-    if (!changeResult) return null;
-
-    return {
-        percentChange: changeResult.percentChange,
-        numberChange: changeResult.numberChange,
-        currentRawValue: latest.value
-    };
+    return changeResult ? { percentChange: changeResult.percentChange, numberChange: changeResult.numberChange, currentRawValue: latest.value } : null;
 }
 
- function calculateAllMonthlyChanges(indicator, MONTHS) {
-     const changes = [];
-     const seen = new Set();
+function calculateAllMonthlyChanges(indicator, MONTHS = DEFAULT_MONTHS) {
+    const changes = [];
+    const seen = new Set();
+    const yearKeys = getYearKeys(indicator).sort((a, b) => a - b);
 
-     // Find year-nested data (keys that are numeric/year-like)
-     const yearKeys = Object.keys(indicator)
-         .filter(key => /^\d{4}$/.test(key))
-         .map(key => parseInt(key))
-         .sort((a, b) => a - b); // Sort years ascending (oldest first) for chronological order
+    const nestedMonths = new Set();
+    for (const year of yearKeys) for (let i = 0; i < MONTHS.length; i++) {
+        const month = MONTHS[i];
+        const value = indicator[year]?.[month];
+        if (isValidData(value) && extractNumericValue(value) !== null) nestedMonths.add(`${year}-${month}`);
+    }
+    const nestedMonthNames = new Set([...nestedMonths].map(k => k.split('-')[1]));
 
-     // Build list of all data points in chronological order.
-     // Prefer year-nested data when available; only include flat months that do
-     // not duplicate a year-nested entry.
-     const nestedMonths = new Set();
-     for (const year of yearKeys) {
-         for (let i = 0; i < MONTHS.length; i++) {
-             const month = MONTHS[i];
-             const value = indicator[year] && indicator[year][month];
-             if (isValidData(value) && extractNumericValue(value) !== null) {
-                 nestedMonths.add(`${year}-${month}`);
-             }
-         }
-     }
+    const allValues = [];
+    for (let i = 0; i < MONTHS.length; i++) {
+        const month = MONTHS[i];
+        if (nestedMonthNames.has(month)) continue;
+        const value = extractNumericValue(indicator[month]);
+        if (value !== null && !seen.has(`flat-${month}`)) { seen.add(`flat-${month}`); allValues.push({ value, month, year: null, monthIndex: i }); }
+    }
+    for (const year of yearKeys) for (let i = 0; i < MONTHS.length; i++) {
+        const month = MONTHS[i], key = `${year}-${month}`;
+        if (!nestedMonths.has(key)) continue;
+        const value = extractNumericValue(indicator[year]?.[month]);
+        if (value !== null && !seen.has(key)) { seen.add(key); allValues.push({ value, month, year, monthIndex: i }); }
+    }
 
-     const allValues = [];
+    for (let i = 1; i < allValues.length; i++) {
+        const change = allValues[i].value - allValues[i - 1].value;
+        changes.push({ month: allValues[i].month, change, formatted: formatCompactNumber(change) });
+    }
+    return changes;
+}
 
-     // Add flat structure data first (only months not in nested data)
-     for (let i = 0; i < MONTHS.length; i++) {
-         const month = MONTHS[i];
-         const hasNestedForMonth = [...nestedMonths].some(k => k.endsWith(`-${month}`));
-         if (hasNestedForMonth) continue;
-         const value = extractNumericValue(indicator[month]);
-         if (value !== null && !seen.has(`flat-${month}`)) {
-             seen.add(`flat-${month}`);
-             allValues.push({ value, month, year: null, monthIndex: i });
-         }
-     }
-
-     // Add year-nested data in chronological order (ascending years)
-     for (const year of yearKeys) {
-         for (let i = 0; i < MONTHS.length; i++) {
-             const month = MONTHS[i];
-             const key = `${year}-${month}`;
-             if (!nestedMonths.has(key)) continue;
-             const value = extractNumericValue(indicator[year][month]);
-             if (value !== null && !seen.has(key)) {
-                 seen.add(key);
-                 allValues.push({ value, month, year, monthIndex: i });
-             }
-         }
-     }
-
-     // Calculate changes between consecutive data points
-     for (let i = 1; i < allValues.length; i++) {
-         const current = allValues[i];
-         const previous = allValues[i - 1];
-
-         const change = current.value - previous.value;
-         const formattedChange = formatCompactNumber(change);
-
-         changes.push({
-             month: current.month,
-             change: change,
-             formatted: formattedChange
-         });
-     }
-
-return changes;
- }
-
-  // Export to global scope for use in other modules
-  window.DataUtils = {
-      getLatestMonthForIndicator,
-      calculateMoMChange,
-      calculateYoYChange,
-      calculateAllMonthlyChanges,
-      DEFAULT_MONTHS,
-      TEAM_COLORS: {
-          'ARI': '#97233F', 'ATL': '#A71930', 'BAL': '#241773', 'BUF': '#00338D',
-          'CAR': '#0085CA', 'CHI': '#0B162A', 'CIN': '#FB4F14', 'CLE': '#311D00',
-          'DAL': '#003594', 'DEN': '#FB4F14', 'DET': '#0076B6', 'GB': '#203731',
-          'HOU': '#03202F', 'IND': '#002C5F', 'JAX': '#006778', 'KC': '#E31837',
-          'LAC': '#0080C6', 'LAR': '#003594', 'LV': '#000000', 'MIA': '#008E97',
-          'MIN': '#4F2683', 'NE': '#002244', 'NO': '#D3BC8D', 'NYG': '#0B2265',
-          'NYJ': '#125740', 'PHI': '#004C54', 'PIT': '#FFB612', 'SEA': '#002244',
-          'SF': '#AA0000', 'TB': '#D50A0A', 'TEN': '#4B925E', 'WAS': '#5A1414'
-      }
-  };
+// Export to global scope for use in other modules
+window.DataUtils = {
+    getLatestMonthForIndicator: (indicator, MONTHS) => {
+        const dp = getLatestDataPoint(indicator, MONTHS);
+        return dp ? { monthIndex: dp.monthIndex, monthName: dp.month, daysOld: dp.daysOld } : { monthIndex: -1, monthName: 'none', daysOld: 99999 };
+    },
+    calculateMoMChange,
+    calculateYoYChange,
+    calculateAllMonthlyChanges,
+    DEFAULT_MONTHS,
+    TEAM_COLORS: {
+        'ARI': '#97233F', 'ATL': '#A71930', 'BAL': '#241773', 'BUF': '#00338D',
+        'CAR': '#0085CA', 'CHI': '#0B162A', 'CIN': '#FB4F14', 'CLE': '#311D00',
+        'DAL': '#003594', 'DEN': '#FB4F14', 'DET': '#0076B6', 'GB': '#203731',
+        'HOU': '#03202F', 'IND': '#002C5F', 'JAX': '#006778', 'KC': '#E31837',
+        'LAC': '#0080C6', 'LAR': '#003594', 'LV': '#000000', 'MIA': '#008E97',
+        'MIN': '#4F2683', 'NE': '#002244', 'NO': '#D3BC8D', 'NYG': '#0B2265',
+        'NYJ': '#125740', 'PHI': '#004C54', 'PIT': '#FFB612', 'SEA': '#002244',
+        'SF': '#AA0000', 'TB': '#D50A0A', 'TEN': '#4B925E', 'WAS': '#5A1414'
+    }
+};

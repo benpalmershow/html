@@ -84,6 +84,9 @@
         var root = document.documentElement;
         root.classList.toggle('dark-mode', dark);
         root.classList.add('theme-init');
+        var scheme = saved === null ? 'light dark' : (dark ? 'dark' : 'light');
+        var meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) meta.content = scheme;
       } catch (e) {}
     })();
   </script>

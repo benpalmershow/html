@@ -4,7 +4,7 @@
 
 .indicator-content { display: flex; flex-direction: column; gap: 2px; overflow: visible; }
 
-.data-rows-container { max-height: 0; overflow: clip; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.data-rows-container { max-height: 0; overflow: clip; interpolate-size: allow-keywords; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
 /* 13F cards show holdings by default, so the rows container scrolls instead of
    clipping (the holdings list itself is unbounded to avoid nested scrollers). */
@@ -139,10 +139,7 @@
     }
 }
 
-.indicators-grid > :nth-child(1) { animation-delay: 0s; }
-.indicators-grid > :nth-child(2) { animation-delay: 0.05s; }
-.indicators-grid > :nth-child(3) { animation-delay: 0.1s; }
-.indicators-grid > :nth-child(n+4) { animation-delay: 0.15s; }
+.indicators-grid > * { animation-delay: calc(sibling-index() * 0.05s); }
 
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
@@ -185,7 +182,7 @@
 .indicator-date-time { font-weight: 400; font-size: 0.85em; opacity: 0.85; }
 .indicator-date-ago { font-weight: 400; font-size: 0.8em; opacity: 0.7; }
 
-.indicator.expanded .data-rows-container { max-height: 1200px; margin-top: 0; }
+.indicator.expanded .data-rows-container { max-height: 1200px; height: auto; margin-top: 0; }
 
 /* Hide sparkline when card is expanded to avoid clutter */
 .indicator.expanded .sparkline-container { display: none; }
@@ -857,7 +854,7 @@
 .prediction-section-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 10px; margin-bottom: 4px; padding-bottom: 2px; border-bottom: 1px solid var(--border-color); cursor: pointer; user-select: none; display: flex; align-items: center; gap: 4px; }
 .prediction-section-label::before { content: ''; display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid var(--text-muted); border-bottom: 1.5px solid var(--text-muted); transform: rotate(45deg); transition: transform 0.2s ease; flex-shrink: 0; }
 .prediction-section-label.collapsed::before { transform: rotate(-45deg); }
-.metric-section-body { overflow: clip; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 4px 0; }
+.metric-section-body { overflow: clip; height: auto; interpolate-size: allow-keywords; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 4px 0; }
 .metric-section.collapsed .metric-section-body { max-height: 0; }
 .metric-section.collapsed .prediction-section-label { margin-bottom: 0; border-bottom-color: transparent; }
 

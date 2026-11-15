@@ -136,6 +136,16 @@
     --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
     --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
     --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+/* Map <meta name="color-scheme"> back to CSS color-scheme so the stored
+   override actually takes effect (:root's color-scheme: light dark would
+   otherwise win and the meta update would be a no-op). */
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  color-scheme: dark;
+}
+:root:has(> head > meta[name="color-scheme"][content="light"]) {
+  color-scheme: light;
 }
 
 /* Screen reader only utility */

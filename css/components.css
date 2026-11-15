@@ -663,10 +663,9 @@ html.dark-mode .hero-link.secondary:focus-visible {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  #social-footer .social-links a:nth-child(1) { animation-delay: 0.35s; }
-  #social-footer .social-links a:nth-child(2) { animation-delay: 0.42s; }
-  #social-footer .social-links a:nth-child(3) { animation-delay: 0.49s; }
-  #social-footer .social-links a:nth-child(4) { animation-delay: 0.56s; }
-  #social-footer .social-links a:nth-child(5) { animation-delay: 0.63s; }
-  #social-footer .social-links a:nth-child(6) { animation-delay: 0.70s; }
+  #social-footer .social-links a {
+    --stagger-start: 0.35s;
+    --stagger-step: 0.07s;
+    animation-delay: calc(var(--stagger-start) + sibling-index() * var(--stagger-step));
+  }
 }

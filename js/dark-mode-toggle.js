@@ -9,11 +9,14 @@
     toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
   }
   if (toggle) {
-    toggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark-mode');
-      try { localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode') ? '1' : '0'); } catch (e) {}
-      updateToggle();
-    });
+      toggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark-mode');
+        var isDark = document.documentElement.classList.contains('dark-mode');
+        try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch (e) {}
+        var meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) meta.content = isDark ? 'dark' : 'light';
+        updateToggle();
+      });
   }
   updateToggle();
 })();

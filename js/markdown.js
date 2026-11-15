@@ -397,6 +397,7 @@
     normalizeImages,
     normalizeIframes,
     normalizeVideoLinks,
+    videoEmbedUrl,
     normalizeContent,
     rewriteLinks
   };

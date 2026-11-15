@@ -11,3 +11,6 @@ You Don't Need a Smartphone by August Lamm — Notes on living without a smartph
 
 ### Notes
 >I would never have known myself, period. p.18
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hpIjr7E781U" title="The Age of Unavailability: A Talk w/ August Lamm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

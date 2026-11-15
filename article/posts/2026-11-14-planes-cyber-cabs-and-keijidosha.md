@@ -27,3 +27,6 @@ A KEI truck is cheap with no subscription. Americans love it. Corporations don't
 
 - [States banning KEI](https://www.youtube.com/watch?v=QR9KbY8mCxI)
 - [Nimble Kei](article.html?slug=oregon-kei-trucks-sb1213)
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/grdt05okn3Q" title="The Future Has Arrived | Cybercab" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

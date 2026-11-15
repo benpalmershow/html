@@ -34,3 +34,6 @@ Oh, and if you mean everyone, you’ll have to continue deportations for that ut
 
 - [Ruben Gallego, U.S. Senator](https://www.gallego.senate.gov)
 - [Previous: Minimum Wage Tracker](/article.html?slug=2026-01-03-minimum-wage-tracker)
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ndwx2NDGHhw" title="US midterms 2026: Democrats won Congress. But who controls the party?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

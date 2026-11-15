@@ -4,8 +4,8 @@ date: 2025-10-06
 category: legal
 icon: gavel
 summary: Supreme Court oral arguments schedule for October-November 2025 term with case summaries and podcast links
+tags: ["legal", "scotus"]
 ---
-
 <div class="article-wrapper">
 
 # Supreme Court Oral Arguments Schedule

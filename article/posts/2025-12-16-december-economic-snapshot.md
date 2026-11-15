@@ -1,8 +1,8 @@
 ---
 date: 2025-12-16T18:30:00Z
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 ### **What do the Numbers Say?**
 
 Wheat, soybeans, beef, and crude oil all declining. Shipping container rates from China collapsed 33.7% to $1,964 while tariff revenue dropped 8.8% to $31B. Housing market showing buyer advantage as days on market increased 5.4% to 59 days while builder confidence ticked up slightly to 39. Unemployment forecast at 4.44% for November. Retail sales flat at $732.6B. Government tax revenue dropped 16.8% to $336B while debt hit $38.34 trillion.

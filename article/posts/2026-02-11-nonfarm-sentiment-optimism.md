@@ -1,8 +1,8 @@
 ---
 date: 2026-02-11T15:00:00Z
 category: employment
+tags: ["labor"]
 ---
-
 ### <i data-lucide='users' class='post-icon'></i> **Jobs, Small Biz, Optimism, Oil, Scroll**
 
 January saw payroll growth of 130,000 jobs, slightly above the 127,000 added in December. The labor market continues adding jobs at a steady pace despite broader economic uncertainty, driven by strength in leisure and hospitality services.

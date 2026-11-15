@@ -20,8 +20,8 @@ resources:
   - title: SCOTUSblog Coverage
     url: https://www.scotusblog.com/case-files/cases/chatrie-v-united-states/
     icon: bookmark
+tags: ["legal", "scotus"]
 ---
-
 <div class="article-wrapper">
 
 # Chatrie v. United States: Geofence Searches and the Fourth Amendment

@@ -4,8 +4,8 @@ date: 2025-11-09
 category: legal
 icon: gavel
 summary: Supreme Court held "regulate importation" does not authorize presidential tariffs. Chief Justice Roberts' majority applied major questions doctrine. Refunds likely in billions.
+tags: ["legal", "scotus", "tariffs"]
 ---
-
 <div class="article-wrapper">
 
 # SCOTUS Rules Against IEEPA Tariff Authority

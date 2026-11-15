@@ -1,8 +1,8 @@
 ---
 date: 2025-12-18T23:30:00Z
 category: healthcare
+tags: ["healthcare"]
 ---
-
 ###  **War, Reparations, and Dying**
 
 ## <i data-lucide='ship' class='post-icon'></i> Build Ships

@@ -1,5 +1,5 @@
 ---
 category: government
+tags: ["fiscal"]
 ---
-
 <i data-lucide='trending-up' class='post-icon'></i> <b>Budget Surplus $27B</b><br><br>Federal budget shows $27B surplus.<br><br><a href="financials.html?filter=Government%20Indicators"><b>View government indicators</b></a>

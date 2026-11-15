@@ -1,3 +1,7 @@
+---
+tags: ["nyt-critique", "elections"]
+---
+
 
 > Front page NYT story about $10 dollar gas because trump is president and the NYT wants a democrat in the White House. But the actual story is about a remote location renting a gas generator for $5,000 a month because solar would cost $3 million? A lot more to this story than DNC-promulgated “affordability under King Trump.” It’s not news. It’s a story that tells people they’re informed but shows that they aren’t when you ask probing questions. 
 

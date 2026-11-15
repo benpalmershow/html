@@ -1,8 +1,8 @@
 ---
 date: 2026-03-16T16:00:00Z
 category: healthcare
+tags: ["healthcare"]
 ---
-
 ### <i data-lucide='atom' class='post-icon'></i> **Interleukin-10**
 
 IL-10 is a small protein your immune system produces to calm inflammation. When you get injured, your body floods the area with pro-inflammatory signals to fight infection and start healing. IL-10 is the off switch. It tells immune cells to stand down once the job is done.

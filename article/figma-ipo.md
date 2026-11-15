@@ -5,8 +5,8 @@ category: ipo
 icon: figma
 summary: Figma targets $16-18B IPO valuation with $1B raise, betting on AI-powered collaborative design and expanding TAM in app development market
 ticker: FIG
+tags: ["corporate", "ipo"]
 ---
-
 <div class="article-wrapper">
 
 # Figma IPO: Comprehensive Investment Analysis

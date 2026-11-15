@@ -222,14 +222,14 @@ SOURCE_REGISTRY = {
     },
     # Trump impeachment: no equivalent Polymarket market found after searching
     # common slugs. Kept unimplemented; verify odds manually from the Kalshi URL
-    # per docs/financial_fetch.md if a Polymarket market is later identified.
+    # per documentation/financial_fetch.md if a Polymarket market is later identified.
     "trump-impeachment": {
         "agency": "Kalshi",
         "source": "kalshi",
         "api_id": "kximpeach",
         "outcome_map": {"Before Jan 1, 2027": "impeached_before_2027_odds", "Before Jan 1, 2028": "impeached_before_2028_odds"},
         "implemented": False,
-        "note": "Kalshi public API requires Cloudflare challenge; cannot poll from GitHub Actions. No equivalent Polymarket market found after searching common slugs. Verify odds manually from the Kalshi URL per docs/financial_fetch.md.",
+        "note": "Kalshi public API requires Cloudflare challenge; cannot poll from GitHub Actions. No equivalent Polymarket market found after searching common slugs. Verify odds manually from the Kalshi URL per documentation/financial_fetch.md.",
     },
     # --- Not yet implemented: no verified public API / source URL ---
     "existing-home-sales": {

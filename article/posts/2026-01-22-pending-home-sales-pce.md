@@ -1,8 +1,8 @@
 ---
 date: 2026-01-22T14:00:00Z
 category: housing
+tags: ["housing"]
 ---
-
 ### <i data-lucide='home' class='post-icon'></i> **Pending Home Sales Slide While Consumers Keep Spending**
 
 Divergent signals from the housing and consumer sectors. December's sharp decline in Pending Home Sales contrasts with November's resilient consumer spending—a timing gap that obscures whether momentum has shifted since the start of the year.

@@ -1,8 +1,8 @@
 ---
 date: 2026-02-01T10:00:00
 category: legal
+tags: ["legal"]
 ---
-
 ### <i data-lucide='book' class='post-icon'></i> **I Need a New Butt!**
 
 Mississippi's Court of Appeals ruled that an elementary school administrator was wrongfully terminated for reading an age-appropriate children's book to second graders, establishing that school districts must prove book content violates professional standards rather than dismissing educators on subjective grounds.

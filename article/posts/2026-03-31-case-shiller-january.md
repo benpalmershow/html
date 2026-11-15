@@ -1,8 +1,8 @@
 ---
 date: 2026-03-31T19:00:00Z
 category: housing
+tags: ["housing"]
 ---
-
 ### <i data-lucide='home' class='post-icon'></i> **Case-Shiller Decline Continues into 2026**
 
 The Case-Shiller National Home Price Index dipped to 326.612 in January, down 0.1% from December's 326.969. The index has been drifting lower since peaking at 331.608 last June, shedding roughly 1.5% over seven months.

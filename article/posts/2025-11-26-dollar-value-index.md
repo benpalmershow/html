@@ -1,8 +1,8 @@
 ---
 date: 2025-11-26T09:30:00
 category: economic
+tags: ["markets"]
 ---
-
 ### **U.S. Dollar**
 
 The U.S. Dollar Index climbed to 121.17 in October, reversing a slight decline from September as markets reassess Fed policy and economic growth prospects. Higher rates attract foreign investment in dollar-denominated assets, supporting the currency. But a strong dollar makes American exports more expensive abroad.

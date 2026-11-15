@@ -1,9 +1,8 @@
 ---
 date: 2026-10-28T02:10:00Z
 category: finance
-tags: ["fed", "yields", "term premia", "treasury", "monetary policy", "r-star"]
+tags: ["fed", "yields", "term premia", "treasury", "monetary policy"]
 ---
-
 The [New York Fed term premia](https://www.newyorkfed.org/research/data_indicators/term-premia-tabs#/overview) break down Treasury yields into expected future short rates and the term premium (extra compensation for locking up money longer).
 
 **Why current rates are considered low relative to the neutral rate:** 

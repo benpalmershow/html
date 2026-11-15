@@ -5,8 +5,8 @@ category: legal
 icon: gavel
 summary: Solicitor General Sauer defended IEEPA tariffs as non-revenue regulatory measures - tools of foreign policy leverage rather than exercises of Congress's taxing power.
 link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
+tags: ["legal", "tariffs", "trump"]
 ---
-
 <div class="article-wrapper">
 
 # The $2000 Tariff Rebate

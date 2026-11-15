@@ -1,8 +1,8 @@
 ---
 date: 2025-12-26T10:00:00
 category: journal
+tags: ["dispatch", "personal"]
 ---
-
 ### **The Sacred and the Profane**
 
 From: <a href="media.html#against-the-machine">Against the Machine</a> by Paul Kingsnorth

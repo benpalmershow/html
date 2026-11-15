@@ -1,8 +1,8 @@
 ---
 date: 2026-01-05T15:00:00
 category: healthcare
+tags: ["healthcare"]
 ---
-
 ### <i data-lucide='syringe' class='post-icon'></i> **Childhood Immunization Schedule Revised**
 
 HHS released a comprehensive reassessment of the U.S. childhood immunization schedule, reducing the core routine vaccines from 17-18 diseases down to 11. The new consensus schedule focuses on vaccines where international agreement exists, moving other vaccines to "shared clinical decision-making" status for individual risk assessment.

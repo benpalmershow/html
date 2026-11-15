@@ -2,8 +2,8 @@
 date: 2025-12-03T19:00:00
 id: san-francisco-upf-complaint
 category: legal
+tags: ["legal"]
 ---
-
 # How can we drive more ounces into more bodies more often?
 
 The San Francisco City Attorney filed a sweeping lawsuit against Kraft Heinz, Mondelez, PepsiCo, Coca-Cola, General Mills, Nestlé, ConAgra, Mars, Post Holdings, Kellanov, and WK Kellogg Co.

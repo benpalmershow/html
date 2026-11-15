@@ -5,8 +5,8 @@ category: earnings
 icon: message-circle
 summary: Reddit delivers exceptional Q2 2025 performance with return to profitability, 78% revenue growth, and 21% user growth
 ticker: RDDT
+tags: ["corporate", "earnings"]
 ---
-
 <div class="article-wrapper">
 
 # Reddit Q2 2025 Earnings Report

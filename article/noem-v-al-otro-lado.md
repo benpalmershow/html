@@ -4,8 +4,8 @@ date: 2026-03-25
 category: legal
 icon: gavel
 summary: Analysis of the March 24, 2026 Supreme Court oral argument in Noem v. Al Otro Lado, examining whether asylum seekers stopped at the Mexican border have "arrived in the United States"
+tags: ["legal", "scotus"]
 ---
-
 <div class="article-wrapper">
 
 # Noem v. Al Otro Lado

@@ -1,8 +1,8 @@
 ---
 date: 2026-01-29T12:00:00Z
 category: healthcare
+tags: ["healthcare"]
 ---
-
 ### <i data-lucide='briefcase' class='post-icon'></i> **Life Expectancy and Factory Activity Up**
 
 U.S. life expectancy reached 79 years in 2024, the highest ever recorded, driven by the largest decline in drug overdose death rates on record. Overall mortality decreased 4% year-over-year, with overdose deaths falling 26.2% as synthetic opioid deaths dropped 35.6%.

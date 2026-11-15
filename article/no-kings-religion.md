@@ -1,8 +1,8 @@
 ---
 title: The Religious No Kings
 category: policy
+tags: ["regulation"]
 ---
-
 # The Religious No Kings
 
 *Was not Religion the first No Kings?*

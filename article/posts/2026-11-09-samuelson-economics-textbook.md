@@ -1,3 +1,7 @@
+---
+tags: ["economics", "keynes", "history"]
+---
+
 <i data-lucide='book-open' class='post-icon'></i> <b>Samuelson's Economics: The Textbook That Built Modern Mainstream Economics</b>
 
 <p>Paul Samuelson's <i>Economics</i> (first published 1948, McGraw-Hill) is the most influential introductory textbook in the history of the discipline. Written entirely by Samuelson until the 12th edition (2001), it has appeared in nineteen editions, the most recent in 2009 with <b>William Nordhaus</b>, who joined as co-author for the 17th edition and contributed the environmental economics sections. It sold over four million copies, was translated into forty-one languages, and for decades was the bestselling economics textbook in the world - over 300,000 copies of each edition from 1961 through 1976.</p>

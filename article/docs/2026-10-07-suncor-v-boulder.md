@@ -2,9 +2,8 @@
 title: "Suncor Energy v. County Commissioners of Boulder County - Oral Argument (25-170)"
 date: "10/07/26"
 category: "policy"
-tags: ["scotus", "climate", "preemption", "clean-air-act", "jurisdiction", "boulder", "extraterritoriality", "fossil-fuels"]
+tags: ["scotus", "climate", "preemption", "clean-air-act", "jurisdiction"]
 ---
-
 # Suncor Energy (U.S.A.) Inc. v. County Commissioners of Boulder County
 
 **Docket No. 25-170** | **Argued Monday, October 5, 2026, 10:06 a.m.** | **First argument of October Term 2026**

@@ -3,7 +3,6 @@ date: 2026-10-04T12:00:00Z
 category: society
 tags: ["society", "scotus", "protest", "constitution"]
 ---
-
 Old white liberals in kayaks are not conveying their disappointment. They are harassing justices and disrespecting constitutional principles. Can only assume they have grown up with the privilege of over-representation.
 
 Debating how best to convey displeasure?

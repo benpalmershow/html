@@ -20,8 +20,8 @@ resources:
   - title: SCOTUS Blog Analysis
     url: https://www.scotusblog.com/2025/12/court-seems-likely-to-side-with-trump-on-presidents-power-to-fire-ftc-commissioner/
     icon: bookmark
+tags: ["legal", "trump"]
 ---
-
 <div class="article-wrapper">
 
 # Trump v. Slaughter: Presidential Power Over Independent Agencies

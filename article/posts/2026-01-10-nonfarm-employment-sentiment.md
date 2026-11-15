@@ -1,8 +1,8 @@
 ---
 date: 2026-01-10T16:00:00Z
 category: employment
+tags: ["labor"]
 ---
-
 ### <i data-lucide="users" class="post-icon"></i> **+50k Jobs, Sentiment Recovers**
 
 December nonfarm payrolls added 50,000 jobs as consumer sentiment bounced to 54 in January, signaling modest labor market resilience alongside improving household confidence.

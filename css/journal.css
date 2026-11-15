@@ -346,6 +346,15 @@ main {
   border-radius: var(--radius-lg);
 }
 
+.embedded-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius-lg);
+  margin: 0.75rem 0;
+}
+
 /* ── Load More & Empty State ─────────────────────────────── */
 .load-more {
   display: none;
@@ -622,6 +631,10 @@ main {
   justify-content: flex-end;
   margin: 0;
   padding: 0;
+}
+
+.entry-footer {
+  margin-top: 0.35rem;
 }
 
 .entry-permalink-bottom {

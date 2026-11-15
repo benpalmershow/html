@@ -1,8 +1,8 @@
 ---
 date: 2026-11-15T15:43:12Z
 category: economy
+tags: ["media"]
 ---
-
 ### Oil Me Up 
 
 The NYT interviews a playwright to expound on the "unlimited pillage" of Venezuelan oil by Evil Orange. But the pillage of course was at the behest of their Far Left government.

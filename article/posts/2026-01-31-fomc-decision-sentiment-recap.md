@@ -1,8 +1,8 @@
 ---
 date: 2026-01-31T14:00:00
 category: prediction
+tags: ["fomc", "prediction-markets", "markets"]
 ---
-
 ### <i data-lucide='trending-up' class='post-icon'></i> **FOMC Holds as Predicted, Consumer Sentiment Rebounds**
 
 The Federal Reserve made its January rate decision official this week, holding the federal funds rate steady as expected. Meanwhile, consumer sentiment improved significantly, suggesting households are gaining confidence despite persistent economic uncertainty.

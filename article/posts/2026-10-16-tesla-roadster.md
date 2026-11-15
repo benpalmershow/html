@@ -2,8 +2,8 @@
 date: 2026-10-16T14:00:00Z
 category: technology
 title: "🚗 Tesla Roadster"
+tags: ["tesla", "cars", "technology", "external", "media"]
 ---
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/22rvpUecLts" title="Tesla Roadster Unveil" frameborder="0" allowfullscreen></iframe>
 
 Tesla Roadster with small rockets that release gas to propel the vehicle to do barrel rolls and suction cups to drive upside down, 0-60 MPH < 1 second, +230 MPH. Available 2028.

@@ -8,8 +8,8 @@ categories:
   - "Healthcare"
   - "Fraud"
   - "California"
+tags: ["healthcare"]
 ---
-
 **WASHINGTON** — Following alarming reports that California officials failed to properly safeguard federal funds, House Committee on Oversight and Government Reform Committee Chairman James Comer (R-Ky.) and Oversight Committee Republicans today launched an investigation into rampant taxpayer fraud in California's hospice programs.
 
 In a letter to California Governor Gavin Newsom, the lawmakers emphasized that the Newsom administration has been aware of state audit reports of hospice fraud for at least four years but has failed to prevent or detect it and has enabled hospice providers to defraud the American taxpayer and exploit vulnerable patients.

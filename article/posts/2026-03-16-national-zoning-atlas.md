@@ -1,8 +1,8 @@
 ---
 date: 2026-03-16T18:00:00Z
 category: housing
+tags: ["housing"]
 ---
-
 ### <i data-lucide='map' class='post-icon'></i> **National Zoning Atlas**
 
 The National Zoning Atlas has digitized zoning codes across 9,200+ jurisdictions covering 185 million people, reading over 1 million pages of zoning regulations to build a searchable, interactive map of how American land can be used.

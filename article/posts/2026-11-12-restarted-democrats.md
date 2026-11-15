@@ -2,8 +2,8 @@
 date: 2026-11-12
 category: policy
 title: Restarted Democrats
+tags: ["politics", "democrats", "economy", "media"]
 ---
-
 > "This country can overcome smallness and cruelty if leaders include everyone." — Ruben Gallego
 
 Gallego demands a $20 min wage for everyone so workers can fill up their big ass truck. Cool. If it works. But Trump has that card. He just blew it in the end. That’s all Dems got. His mistake.

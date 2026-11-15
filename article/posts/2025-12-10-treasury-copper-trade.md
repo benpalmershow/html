@@ -1,8 +1,8 @@
 ---
 date: 2025-12-12T14:00:00Z
 category: government
+tags: ["tariffs"]
 ---
-
 # <i data-lucide='briefcase' class='post-icon'></i> **10-Year**
 
 Ten-year Treasury yield 4.13% today up from November avg. of 4.09%.

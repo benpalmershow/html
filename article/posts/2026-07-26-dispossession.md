@@ -1,8 +1,8 @@
 ---
 date: 2026-07-26T06:41:00-07:00
 category: political
+tags: ["politics"]
 ---
-
 There’s another word for dispossession. It’s conquest. And its story is as old as time. And to be honest, it’s a good story (since we have to moralize everything in order to appease the victim trolls who will inevitably shame us).
 
 We can be empathetic, but sometimes it’s refreshing to see honest vindication. In Braveheart, someone slits your girl, you slit them back. And then you pound their head in. You bludgeon them. Sometimes you need to beat the shit out of people. That’s what we did before iPhones. We fought. 

@@ -1,8 +1,8 @@
 ---
 date: 2026-04-07T07:20:00Z
 category: government
+tags: ["policy", "fiscal"]
 ---
-
 ### <i data-lucide='vote' class='post-icon'></i> **1996 to 2026: Only citizens are eligible to vote**
 
 In 1996, Congress passed the Illegal Immigration Reform and Immigrant Responsibility Act with a 97-3 Senate vote. President Bill Clinton signed it into law.

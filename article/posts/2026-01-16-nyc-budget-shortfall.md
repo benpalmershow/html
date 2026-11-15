@@ -1,8 +1,8 @@
 ---
 date: 2026-01-16T18:00:00Z
 category: government
+tags: ["fiscal", "nyc", "media"]
 ---
-
 ### <i data-lucide='alert-triangle' class='post-icon'></i> **NYC $10.4B Short**
 
 Comptroller Mark Levine projects historic budget gaps following misbudgeting from the Adams administration. This marks the first time since the Great Recession that New York City faces shortfalls of this scale this late in the fiscal year.

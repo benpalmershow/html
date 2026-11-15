@@ -2,8 +2,8 @@
 date: 2026-10-20T08:00:00Z
 category: economy
 title: "Weak Housing, a Fed Hold, and a Democratic House"
+tags: ["indicators", "financials", "housing", "prediction-markets", "fomc"]
 ---
-
 <i data-lucide='bar-chart-3' class='post-icon'></i>
 
 Housing is still sliding, the labor market is coasting sideways, and the market has fully priced a Fed hold plus a Democratic midterm year.

@@ -4,8 +4,8 @@ date: 2026-05-09
 category: policy
 icon: alert-triangle
 summary: California's $12.5M free diaper program reveals the inefficiency of state-administered charity - costing $0.50 per diaper through nonprofit middlemen when private markets deliver at $0.43 with better choice and less overhead
+tags: ["fiscal", "grift"]
 ---
-
 <div class="article-wrapper">
 
 # Diaper Grift

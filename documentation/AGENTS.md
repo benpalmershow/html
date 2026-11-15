@@ -34,11 +34,11 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 - `json/article-index.json` - generated article manifest (slug, source file, title, date, tags)
 - `json/13f-holdings.json` - 13F holdings (updated by `scripts/get_latest_13f_holdings_final.py`)
 
-**`scripts/`** contains utility scripts (RSS generation, Python data fetchers). See `docs/financial_fetch.md` for the full data update SOP.
+**`scripts/`** contains utility scripts (RSS generation, Python data fetchers). See `documentation/financial_fetch.md` for the full data update SOP.
 
 ## Posts Workflow
 
-See `docs/posts-prd.md` for full spec. Quick reference:
+See `documentation/posts-prd.md` for full spec. Quick reference:
 
 1. Create `article/posts/YYYY-MM-DD-slug.md` with YAML frontmatter:
    ```markdown
@@ -47,7 +47,7 @@ See `docs/posts-prd.md` for full spec. Quick reference:
    category: financials
    ---
    ```
-2. Add an entry to `json/journal.json` (see skill / `docs/posts-prd.md`). Do not add to `json/posts.json` unless explicitly requested.
+2. Add an entry to `json/journal.json` (see skill / `documentation/posts-prd.md`). Do not add to `json/posts.json` unless explicitly requested.
 3. Regenerate article pages, RSS, and sitemaps after publishing markdown journal posts: `npm run generate:content`
 4. Use `<p>` tags for paragraphs (not `<br><br>`) - snippet extraction depends on them.
 5. Use `{{chart:Indicator Name}}` to embed a chart; the name must exactly match the `name` field in `json/financials-data.json`.
@@ -102,12 +102,18 @@ This site publishes human-written economic commentary. Avoid these AI tells in a
 
 ## Data File Preservation
 
-**Never delete existing entries from JSON data files (journal.json, media.json, posts.json, etc.) unless explicitly instructed.** New commits should only add new entries. If old entries need to be removed, this must be explicitly stated in the task description.
+**Never delete existing entries from JSON data files (journal.json, media.json, etc.) unless explicitly instructed.** New commits should only add new entries. If old entries need to be removed, this must be explicitly stated in the task description.
 
 ## Journal Entry Format
 
-Every new entry in `json/journal.json` must include:
-- **timestamp** - ISO-style time (e.g., `"time": "08:30"`)
+Every new entry in `json/journal.json` should include:
 - **title** - must include an emoji prefix
+- **category** - one of `economy`, `policy`, `trade`, `society`, `dispatches`
+- **subcategory** - focused sub-topic (for example `tariffs`, `housing`, `markets`, `legal`, `personal`)
+- **type** - `note`, `essay`, `data`, `curation`, `dispatch`, or `verse`
+- **tags** - lowercase kebab-case, maximum 5
+- **time** - optional `h:mm AM/PM` timestamp; include when known
 - **content** - the entry body (can be omitted if using `file` or `link`)
 - **link** - optional URL reference for external sources
+
+For file-backed entries, tags are canonical in the markdown frontmatter. Run `npm run generate:content` to sync them into `json/journal.json`, then `npm run validate` to confirm the journal schema, date order, and tag sync.

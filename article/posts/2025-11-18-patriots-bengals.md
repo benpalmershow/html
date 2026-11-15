@@ -1,8 +1,8 @@
 ---
 date: 2025-11-18T14:00:00
 category: political
+tags: ["media-rec", "curation"]
 ---
-
 ## **Patriots @ Bengals**
 
 Patriots 79¢ win probability. [New England visits Cincinnati on Sunday 1:00 PM ET.](financials.html?filter=Prediction%20Markets)

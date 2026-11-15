@@ -4,8 +4,8 @@ date: 2025-10-08
 category: legal
 icon: scale
 summary: Analysis of Supreme Court oral argument examining whether Colorado's ban on sexual orientation and gender identity change efforts is a viewpoint-based speech restriction or permissible regulation of harmful medical conduct
+tags: ["legal"]
 ---
-
 <div class="article-wrapper">
 
 # Chiles v. Salazar: Legal Analysis

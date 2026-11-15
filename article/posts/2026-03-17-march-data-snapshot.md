@@ -1,7 +1,7 @@
 ---
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 <i data-lucide='chart-line' class='post-icon'></i> <b>Oil +41%, Recession Odds Climbing</b>
 
 <p>Oil spiking, housing bouncing, the Fed sitting on its hands, and recession odds climbing. Here's where the numbers stand.</p>

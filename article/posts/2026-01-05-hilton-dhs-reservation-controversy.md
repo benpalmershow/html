@@ -1,8 +1,8 @@
 ---
 date: 2026-01-05T14:30:00
 category: legal
+tags: ["legal"]
 ---
-
 ### <i data-lucide='building-2' class='post-icon'></i> **Kicking out the people who make the Bed**
 
 DHS publicly accused Hilton of a "coordinated campaign" to refuse service to ICE officers in Minneapolis. The agency's viral post reached 7.1 million views, sparking boycott pledges and competitive positioning from Marriott, Hyatt, and others.

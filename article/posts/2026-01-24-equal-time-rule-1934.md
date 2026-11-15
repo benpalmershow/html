@@ -1,8 +1,8 @@
 ---
 date: 2026-01-24T20:30:00
 category: policy
+tags: ["regulation"]
 ---
-
 ### <i data-lucide='radio' class='post-icon'></i> **"Equal Time" Rule: An Artifact of the 1934 Communications Act**
 
 The equal time rule requires broadcast stations to offer equal opportunities to legally qualified political candidates. Enacted in 1934 as Section 315 of the Communications Act, this provision became a cornerstone of broadcast regulation that shaped electoral communication for nearly a century.

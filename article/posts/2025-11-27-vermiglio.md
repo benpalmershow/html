@@ -1,8 +1,8 @@
 ---
 date: 2025-11-27T11:00:00
 category: media
+tags: ["media-rec", "curation"]
 ---
-
 ### **Vermiglio**
 
 <a href="media.html#vermiglio"><img src="https://media.themoviedb.org/t/p/w500/zNEFWWS495ZWe8Jj5jTPS4zu9IF.jpg" alt="Vermiglio" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>

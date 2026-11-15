@@ -1,7 +1,7 @@
 ---
 category: prediction
+tags: ["prediction-markets", "markets"]
 ---
-
 <i data-lucide='users' class='post-icon'></i> <b>More Tech Layoffs in 2026?</b>
 
 <p>Prediction markets show an 84% probability that there will be more tech layoffs in 2026 compared to 2025.</p>

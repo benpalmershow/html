@@ -1,8 +1,8 @@
 ---
 date: 2026-03-17T20:30:00
 category: media
+tags: ["media-rec", "music", "curation"]
 ---
-
 <i data-lucide='music' class='post-icon'></i> <b>🎧 New Playlists</b>
 
 <style>

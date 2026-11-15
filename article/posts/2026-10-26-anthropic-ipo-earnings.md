@@ -2,8 +2,8 @@
 date: 2026-10-26T16:00:00Z
 category: technology
 title: "🚀 Anthropic Files for IPO: $16.3B Revenue, $80.7B Net Loss"
+tags: ["anthropic", "ipo", "ai", "sec", "earnings"]
 ---
-
 Anthropic, PBC filed its S-1 registration statement with the SEC on October 26, 2026, disclosing the first public financial figures for the Claude AI developer ahead of its planned Nasdaq listing under the ticker ANT.
 
 Revenue reached $16.3 billion in the six months ended June 30, 2026, up from $1.16 billion in the year-earlier period. Full-year 2025 revenue was $4.6 billion, following $386 million in 2024 and $41 million in 2023. Quarterly revenue climbed from $4.7 billion in Q1 2026 to $11.6 billion in Q2 2026, and Anthropic separately told prospective investors that Q3 revenue reached $16.8 billion.

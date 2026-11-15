@@ -1,7 +1,7 @@
 ---
 category: housing
+tags: ["housing"]
 ---
-
 <i data-lucide='home'></i> <b>Pending Home Sales Index and Housing Market Index</b>
 
 <p>Pending sales ticked up in February while builder confidence edged higher in March. Small moves, same story.</p>

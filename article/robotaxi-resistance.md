@@ -4,8 +4,8 @@ date: 2025-12-08
 category: policy
 icon: shield
 summary: City council members across US cities oppose autonomous robotaxis over job displacement and safety concerns
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 # No Drivah

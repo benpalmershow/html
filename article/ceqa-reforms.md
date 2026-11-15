@@ -4,8 +4,8 @@ date: 2025-07-02
 category: policy
 icon: newspaper
 summary: Governor Newsom signs AB 130 and SB 131 reforming California Environmental Quality Act to accelerate housing development and infrastructure projects
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 # CA CEQA Reforms

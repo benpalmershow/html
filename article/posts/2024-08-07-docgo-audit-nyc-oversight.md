@@ -1,8 +1,8 @@
 ---
 date: 2024-08-07T12:00:00
 category: healthcare
+tags: ["healthcare", "housing"]
 ---
-
 ### <i data-lucide='home' class='post-icon'></i> **NYC Audit Exposes $11M DocGo Asylum Housing Failure**
 
 The New York City Comptroller's audit of the $432 million DocGo contract reveals systematic fiscal mismanagement and unsafe conditions in asylum seeker housing. Nearly 80% of a two-month sample in payments—$11 million of $13.8 million—lacked adequate documentation and should be recovered.

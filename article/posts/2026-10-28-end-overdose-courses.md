@@ -1,9 +1,8 @@
 ---
 date: 2026-10-28T02:15:00Z
 category: health
-tags: ["ketamine", "special k", "party drugs", "campus", "harm reduction", "drug prevalence"]
+tags: ["ketamine", "special k", "party drugs", "campus", "harm reduction"]
 ---
-
 Ketamine, commonly known as "Special K", has become increasingly prevalent as a recreational party drug on college campuses. Originally developed as a medical and veterinary anesthetic, illicit ketamine is often snorted or ingested at parties and raves for its dissociative effects.
 
 **Key Risks:**

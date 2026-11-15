@@ -1,8 +1,8 @@
 ---
 date: 2026-04-02T11:45:00Z
 category: government
+tags: ["legal", "scotus"]
 ---
-
 ### <i data-lucide='gavel' class='post-icon'></i> **Birthright on the Brink: Domicile and the 19th Century Mind**
 
 The Supreme Court oral arguments in *Trump v. Barbara* (2026) have resurrected a 19th-century linguistic ghost: the distinction between physical presence and legal "allegiance." Justice Gorsuch, ever the originalist, pushed counsel on whether the 14th Amendment's "subject to the jurisdiction thereof" clause requires more than just being on U.S. soil. He zeroed in on "domicile"—a concept that, in the 1860s, implied a voluntary submission to the sovereign’s protection in exchange for loyalty.

@@ -1,3 +1,7 @@
+---
+tags: ["freedom", "states", "regulation", "cato"]
+---
+
 Cato Institute's annual Freedom in the 50 States ranks all 50 states on economic and personal freedom across 10 policy categories: fiscal burden, housing, occupational, tech/consumer, education, speech, medicine, firearms, policing, and recreation.
 
 Top 5 most free states: Arizona, Montana, Nevada, Florida, Idaho.

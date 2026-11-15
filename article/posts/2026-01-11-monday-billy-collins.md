@@ -1,7 +1,7 @@
 ---
 category: journal
+tags: ["dispatch", "personal"]
 ---
-
 <i data-lucide="book-open"></i>
 
 # Monday

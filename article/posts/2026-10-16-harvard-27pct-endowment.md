@@ -2,8 +2,8 @@
 date: 2026-10-16T15:00:00Z
 category: finance
 title: "Harvard's 27% Endowment Return"
+tags: ["harvard", "13f", "endowment", "spacex", "nyt-critique"]
 ---
-
 The New York Times: *"As Trump Cuts, Harvard's Coffer Gushes to $68 Billion."* The framing is pure Trump-defiant triumphalism — the bad guy tried to hurt us, but we outsmarted him. That's the kind of journalism people accept without asking questions.
 
 But the real question is: **how did Harvard earn a 27% return?**

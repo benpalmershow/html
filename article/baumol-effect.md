@@ -4,8 +4,8 @@ date: 2026-05-19
 category: economic
 icon: trending-up
 summary: Baumol and Bowen, 1960s: wages in low-productivity sectors (healthcare, education) rise because they compete with high-productivity sectors (tech, manufacturing). Costs climb cumulatively, no productivity gains, wages go up, manufactured goods fall in relative price.
+tags: ["financials", "macro-data", "indicators"]
 ---
-
 # The Baumol Effect
 
 A string quartet playing Beethoven in 2026 needs the same four musicians for the same thirty minutes as in 1966. Output is flat. But those musicians aren't earning 1966 wages.

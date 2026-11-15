@@ -267,7 +267,7 @@ NFL prediction markets are stored in `json/financials-data.json` under the "Pred
    - Verify team names in `game_title` match abbreviations in `name`
    - Validate JSON syntax is correct
 
-**See `/docs/financial_fetch.md` for detailed NFL prediction update procedures.**
+**See `documentation/financial_fetch.md` for detailed NFL prediction update procedures.**
 
 ## Media Management
 

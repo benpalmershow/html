@@ -1,8 +1,8 @@
 ---
 date: 2026-01-16T16:00:00
 category: prediction
+tags: ["fomc", "labor"]
 ---
-
 ### <i data-lucide='users' class='post-icon'></i> **Shirley, FOMC, Jobless, Mortgage**
 
 Market odds show the Fed will hold rates steady at the January 27-28 meeting, with minimal probability of cuts or hikes as the central bank pauses its easing cycle.

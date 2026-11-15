@@ -1,8 +1,8 @@
 ---
 date: 2026-04-03T11:30:00Z
 category: government
+tags: ["fiscal"]
 ---
-
 ### <i data-lucide='landmark' class='post-icon'></i> **FY 2027 Budget: Defense Surges, Everything Else Shrinks**
 
 The White House released its Fiscal Year 2027 budget request today, a "skinny budget" that signals a massive shift in federal priorities. The proposal calls for a staggering $1.5 trillion in total defense funding, while stripping 10% from non-defense discretionary spending to target what the administration calls "woke and wasteful" programs.

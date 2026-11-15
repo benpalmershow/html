@@ -1,8 +1,8 @@
 ---
 date: 2025-11-22T23:50:00
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 ## Performance Upgrade Complete
 
 Site performance improved across all metrics, with page load times cut by 57% and all Core Web Vitals in the excellent range.

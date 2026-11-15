@@ -4,8 +4,8 @@ date: 2025-08-16
 category: corrections
 icon: alert-triangle
 summary: Previously reported numbers were wildly inaccurate. $HOOD numbers have been updated. $TWLO deleted until confident posting.
+tags: ["policy", "politics"]
 ---
-
 <div class="article-wrapper">
 
 # $HOOD (updated) and $TWLO (deleted)

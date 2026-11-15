@@ -1,8 +1,8 @@
 ---
 date: 2026-02-16T12:00:00Z
 category: legal
+tags: ["legal", "snap"]
 ---
-
 ### <i data-lucide='shield-alert' class='post-icon'></i> **"Despite claims, massive SNAP fraud is rare"**
 
 They say no fraud but Massachusetts auditor Diana DiZoglio's Bureau of Special Investigations identified $11.95 million in public benefit fraud during fiscal year 2025, with 4,179 completed investigations uncovering systemic vulnerabilities in SNAP, MassHealth, and welfare programs.

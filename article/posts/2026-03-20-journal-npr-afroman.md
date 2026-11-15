@@ -1,8 +1,8 @@
 ---
 date: 2026-03-20T19:00:00Z
 category: journal
+tags: ["media-critique", "critique", "npr"]
 ---
-
 **NPR Deserts, Hurricane James & Afroman**
 
 NPR's accusatory capital allocation lexicon, Letitia James' political hurricanes, Truth Social's practical utility, and Afroman's viral security footage. Today's journal entries examine the intersections of state action, individual choice, and creative resistance.

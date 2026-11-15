@@ -1,8 +1,8 @@
 ---
 date: 2026-01-03T00:00:00
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 ### <i data-lucide='book' class='post-icon'></i> **Food Intelligence**
 
 Award-winning health journalist Julia Belluz and nutrition scientist Kevin Hall reveal how your food environment shapes eating behavior more than willpower. The book shows "how diseases like obesity and type 2 diabetes are not a result of a failure of will power; they are consequences of food systems working as designed."

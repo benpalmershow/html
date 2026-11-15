@@ -1,8 +1,8 @@
 ---
 date: 2025-11-30T19:00:00
 category: housing
+tags: ["housing"]
 ---
-
 ###  **California's Fiscal Cliff**
 
 California's structural budget deficit has reached an unsustainable inflection point. The state faces an $18 billion gap in 2026-27, but the real problem emerges after: a $35 billion annual structural deficit by 2027-28. Revenue is growing, but it's fully consumed by mandatory spending from Prop 98 (schools/colleges) and Prop 2 (reserves/debt), both of which auto-scale with revenues. Rainy day funds are depleted, debt deferrals exhausted, and one-time measures exhausted.

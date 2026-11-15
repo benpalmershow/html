@@ -1,8 +1,8 @@
 ---
 date: 2025-11-25T00:00:00
 category: journal
+tags: ["healthcare"]
 ---
-
 ### **How to Have Willpower**
 
 <a href="media.html#how-to-have-willpower"><img src="https://pup-assets.imgix.net/onix/images/9780691220345.jpg" alt="How to Have Willpower" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>

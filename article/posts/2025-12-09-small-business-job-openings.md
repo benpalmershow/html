@@ -1,8 +1,8 @@
 ---
 date: 2025-12-09T21:00:00Z
 category: employment
+tags: ["labor"]
 ---
-
 ### <i data-lucide='users' class='post-icon'></i> **October JOLTS**
 
 The Job Openings and Labor Turnover Survey (JOLTS) showed persistent employer demand, with 7.67 million openings in October signaling ongoing labor market tightness despite recent softening.

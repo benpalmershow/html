@@ -1,8 +1,8 @@
 ---
 date: 2025-12-20T14:00:00Z
 category: housing
+tags: ["housing"]
 ---
-
 ### <i data-lucide='home' class='post-icon'></i> **Existing Home Sales Accelerate**
 
 November existing home sales rose to $4.13M, marking a 0.5% monthly gain from October's $4.11M. The uptick signals modest momentum in housing activity, though the market remains constrained by affordability pressures and lingering inventory challenges.

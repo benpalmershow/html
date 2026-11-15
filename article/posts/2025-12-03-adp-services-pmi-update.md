@@ -1,8 +1,8 @@
 ---
 date: 2025-12-03T15:00:00
 category: employment
+tags: ["labor"]
 ---
-
 ### **More Ounces into More Bodies More Often**
 
 San Francisco's landmark lawsuit against major food manufacturers exposes the deliberate design of ultra-processed foods to be addictive, particularly targeting children.

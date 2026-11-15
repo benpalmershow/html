@@ -4,8 +4,8 @@ date: 2025-12-16
 category: policy
 icon: shield
 summary: SF Ordinance No. 258-25 (File 240701) creates a Reparations Fund as a category-four fund to receive appropriated or donated dollars; it establishes the budget mechanism, but the ordinance text does not appropriate a specific amount.
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 **Updated:** December 27, 2025

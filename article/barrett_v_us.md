@@ -4,8 +4,8 @@ date: 2025-10-08
 category: legal
 icon: scale
 summary: Focused analysis on double jeopardy, cumulative punishment, and lenity doctrine prompted by Justice Gorsuch's questioning at oral argument
+tags: ["legal"]
 ---
-
 <div class="article-wrapper">
 
 # Barrett v. United States: Legal Analysis

@@ -1,8 +1,8 @@
 ---
 date: 2025-12-04T14:00:00
 category: employment
+tags: ["labor"]
 ---
-
 ### **Jobless Claims**
 
 Initial jobless claims (seasonally adjusted, monthly average) fell to 217,600 in November, down from 226,750 in October, marking a meaningful improvement in labor market health. The decline suggests employers remain cautious with layoffs despite economic headwinds.

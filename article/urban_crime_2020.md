@@ -5,8 +5,8 @@ category: policy
 icon: shield-alert
 summary: 58% of violent crimes in urban areas never get reported to police. Young Black victims in big cities face the highest risks during evening hours.
 link: article/urban_crime_2020.html
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 # Hidden Urban Crime Analysis

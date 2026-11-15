@@ -1,3 +1,7 @@
+---
+tags: ["nyt-critique", "ai", "hollywood", "technology"]
+---
+
 
 > NYT: Hollywood Thinks the Tech Oligarch Must Be Stopped 
 > Doc Riter: Americans empowered by AI think Hollywood Must Be Stopped

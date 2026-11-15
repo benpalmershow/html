@@ -1,7 +1,7 @@
 ---
 category: media
+tags: ["media-rec", "music", "curation"]
 ---
-
 # Coachella viewers guide - Weekend 2
 
 ## Sunday, April 19

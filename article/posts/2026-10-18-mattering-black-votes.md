@@ -1,3 +1,7 @@
+---
+tags: ["nyt-critique", "activism"]
+---
+
 
 > NYT: Latest Round of Rallies By ‘No Kings’ Group Focuses on Early Votes
 > Doc Riter: White Liberal woman in Prospect Park holds racist sign “because Black votes matter too”

@@ -1,8 +1,8 @@
 ---
 date: 2026-11-09T15:59:00Z
 category: society
+tags: ["ai", "food", "culture"]
 ---
-
 If you use agents to order pizza, you might be missing the point. AI agents are not here to automate everything.
 
 You should probably have a personal relationship with your food provider. Ghost kitchen-dashed calories will suffice, but maybe we should respect our history of human hospitality and cultivated cuisine over shoveling in and GLP'ing out.

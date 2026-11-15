@@ -1,8 +1,8 @@
 ---
 date: 2026-02-15T14:00:00Z
 category: government
+tags: ["fiscal"]
 ---
-
 ### <i data-lucide='landmark' class='post-icon'></i> **January Deficit Down to $94.6B**
 
 January's monthly budget deficit came in at $94.6 billion, the smallest monthly deficit since last spring as tax revenue surged to $560 billion and interest payments fell to $76 billion.

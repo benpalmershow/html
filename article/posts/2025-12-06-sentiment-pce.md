@@ -1,8 +1,8 @@
 ---
 date: 2025-12-06T15:00:00
 category: consumer
+tags: ["macro-data", "sentiment", "indicators"]
 ---
-
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Spending**
 
 December consumer sentiment climbed to 53.3, recovering from November's 51 after early weakness gave way to cautious optimism. Meanwhile, September personal consumption expenditures totaled $21,152.2B, sustaining the spending momentum that underpins two-thirds of economic activity.

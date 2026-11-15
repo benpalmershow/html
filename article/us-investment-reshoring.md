@@ -4,8 +4,8 @@ date: 2025-11-22
 category: policy
 icon: factory
 summary: Trump tariff threats forcing multinationals to shift manufacturing to U.S., with GE Appliances, Nokia, and Saudi Arabia's PIF leading $100B+ reshoring commitment
+tags: ["tariffs", "trump"]
 ---
-
 <div class="article-wrapper">
 
 # Trump Tariffs Spark Reshoring Wave

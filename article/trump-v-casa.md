@@ -4,8 +4,8 @@ date: 2025-06-01
 category: legal
 icon: gavel
 summary: Supreme Court examines judicial authority to issue nationwide injunctions against federal policies
+tags: ["legal", "trump"]
 ---
-
 <div class="article-wrapper">
 
 # Supreme Court Case: Trump v. CASA, Inc.

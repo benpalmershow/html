@@ -1,8 +1,8 @@
 ---
 date: 2025-12-29T14:00:00
 category: legal
+tags: ["legal", "snap"]
 ---
-
 ### **68,000 MA Noncitizen SNAP Participants**
 
 In 2023, 68,000 noncitizens collected SNAP benefits in Massachusetts.

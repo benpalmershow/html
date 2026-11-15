@@ -1,8 +1,8 @@
 ---
 date: 2026-10-21T09:00:00Z
 category: policy
+tags: ["snap", "fraud", "doj", "usda", "benefits"]
 ---
-
 Remember when the press said, nothing to see here? Click #snap filter above. Here are the receipts.
 
 The Department of Justice Fraud Division, in coordination with the Department of Agriculture and USDA Office of Inspector General, announced the uncovering of nearly $42 million in Supplemental Nutrition Assistance Program (SNAP) benefit fraud.

@@ -1,8 +1,8 @@
 ---
 date: 2026-10-10T14:00:00Z
 category: economy
+tags: ["wealth", "income", "federal reserve"]
 ---
-
 The Federal Reserve released the 2025 Survey of Consumer Finances on Friday, and the generational wealth gap is now stark. Between 2022 and 2025, median net worth for families headed by someone under 35 fell 23 percent to $33,000. For families 75 and older, median net worth rose 37 percent to roughly $505,000. The oldest age group now holds the most wealth of any cohort, displacing the 65-to-74 bracket that led the prior survey.
 
 The divergence tracks the stock market. Retirement account values drove most of the older cohort's gains, and equities have been the strongest asset class over the period. Younger families, by contrast, saw their median wealth fall largely because business equity gains unwound from the 2019-to-2022 run-up. Homeownership costs and student debt continue to weigh on the under-35 cohort, which also carries a disproportionate share of negative or near-zero net worth.

@@ -1,8 +1,8 @@
 ---
 date: 2026-01-05T14:30:00
 category: political
+tags: ["politics", "prediction-markets"]
 ---
-
 ### <i data-lucide='globe' class='post-icon'></i> **🇻🇪 Rodríguez, González, or Machado?**
 
 Kalshi and Polymarket are pricing the likelihood of who will lead Venezuela on December 31, 2026. Delcy Rodríguez currently leads the field at 42¢, followed by Edmundo González at 22¢ and María Corina Machado at 18¢. González won 67% of the vote in the contested July 2024 election, though official results favored Maduro.

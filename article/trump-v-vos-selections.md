@@ -5,8 +5,8 @@ category: legal
 icon: gavel
 summary: Justices question whether the International Emergency Economic Powers Act allows presidential tariffs without clear congressional authorization under Article I.
 link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
+tags: ["legal", "trump"]
 ---
-
 <div class="article-wrapper">
 
 # Trump's IEEPA Tariff Authority

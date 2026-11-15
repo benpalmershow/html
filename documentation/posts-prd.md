@@ -34,7 +34,8 @@ Journal entries are stored in `json/journal.json` as a JSON array sorted by date
         "category": "society",
         "subcategory": "digital-life",
         "tags": ["screentime", "parenting"],
-        "type": "note"
+        "type": "note",
+        "time": "8:30 AM"
       }
     ]
   }
@@ -47,11 +48,26 @@ Journal entries are stored in `json/journal.json` as a JSON array sorted by date
 2. `title` for every entry (include emoji prefix)
 3. `category` - One of the 5 canonical pillars: `economy`, `policy`, `trade`, `society`, `dispatches`
 4. `subcategory` - Focused sub-topic (e.g., `tariffs`, `housing`, `indicators`, `markets`, `fiscal`, `digital-life`, `personal`, `verse`)
-5. `tags` - Array of lowercase kebab-case semantic tags (e.g., `["tariffs", "manufacturing"]`)
-6. `type` - Content format: `note` (short inline text), `essay` (markdown file), `data` (chart/indicator/odds), `curation` (link/rec), `verse` (poetry)
-7. Optional `content` for body copy, links, or context (or `file` for markdown essays)
-8. Valid HTML for any inline links
-9. Array sorted newest-first (newest date block at top of file)
+5. `tags` - Array of lowercase kebab-case semantic tags (e.g., `["tariffs", "manufacturing"]`), maximum 5
+6. `type` - Content format: `note` (short inline text), `essay` (markdown file), `data` (chart/indicator/odds), `curation` (link/rec), `dispatch` (dispatch), `verse` (poetry)
+7. Optional `time` in `h:mm AM/PM` format (e.g., `8:30 AM`) for ordering entries within a day
+8. Optional `content` for body copy, links, or context (or `file` for markdown essays)
+9. Valid HTML for any inline links
+10. Array sorted newest-first (newest date block at top of file)
+
+### Tags live in markdown for file-backed entries
+
+For entries with a `file`, the markdown frontmatter is the source of truth for `tags`:
+
+```markdown
+---
+date: 2026-11-15T12:00:00Z
+category: policy
+tags: ["housing", "regulation"]
+---
+```
+
+`npm run generate:content` syncs those tags into `json/journal.json`. Do not hand-edit file-backed tags in `json/journal.json`; edit the markdown and regenerate.
 
 ### File-backed entries (markdown)
 

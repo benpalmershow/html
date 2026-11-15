@@ -1,3 +1,7 @@
+---
+tags: ["ai", "cars"]
+---
+
 
 Given 1 second of agent tracks + map, predict 8 agents' positions for 8 seconds at 2 Hz (16 waypoints, excluding current timestep). Test set hides ground truth; validation provides it.
 

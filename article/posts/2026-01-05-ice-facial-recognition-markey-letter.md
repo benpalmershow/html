@@ -1,8 +1,8 @@
 ---
 date: 2026-01-05T09:00:00
 category: policy
+tags: ["regulation"]
 ---
-
 ### <i data-lucide='camera' class='post-icon'></i> **ICE's Mobile Facial Recognition**
 
 ICE has deployed a mobile facial recognition app called Mobile Fortify on government-issued phones used by immigration enforcement agents. The app allows agents to perform contactless biometric scans that match individuals against federal databases such as IDENT and the FBI's National Crime Information Center. This enables real-time identification of people during immigration enforcement operations, dramatically accelerating arrest capability. The app's existence was revealed in June 2025 through leaked materials, sparking immediate concerns from lawmakers and civil rights organizations.

@@ -1,8 +1,8 @@
 ---
 date: 2025-12-23T12:00:00
 category: media
+tags: ["media-rec", "curation"]
 ---
-
 ### <i data-lucide='building-2' class='post-icon'></i> **The Monk and the Machine**
 
 

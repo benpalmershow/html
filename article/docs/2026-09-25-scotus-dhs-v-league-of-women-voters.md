@@ -2,9 +2,8 @@
 title: "DHS v. League of Women Voters — Stay Granted (26A308)"
 date: 2026-09-25
 category: "scotus"
-tags: ["scotus", "immigration", "voting-rights", "stay", "dhs", "league-of-women-voters", "shadow-docket"]
+tags: ["scotus", "immigration", "voting-rights", "stay", "dhs"]
 ---
-
 # Department of Homeland Security, et al. v. League of Women Voters, et al.
 
 **Docket No. 26A308** | **Decided September 25, 2026**

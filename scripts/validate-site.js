@@ -7,6 +7,41 @@ const ROOT = path.resolve(__dirname, '..');
 const failures = [];
 const warnings = [];
 
+const JOURNAL_DATE_RE = /^\d{2}\/\d{2}\/\d{2}$/;
+const JOURNAL_TIME_RE = /^\d{1,2}:\d{2}(?:\s*[AP]M)?$/;
+const JOURNAL_CATEGORIES = ['economy', 'policy', 'trade', 'society', 'dispatches'];
+const JOURNAL_TYPES = ['note', 'essay', 'data', 'curation', 'dispatch', 'verse'];
+
+function parseJournalDate(value) {
+  const match = JOURNAL_DATE_RE.exec(String(value || ''));
+  if (!match) return null;
+  const year = 2000 + Number(match[3]);
+  return Date.UTC(year, Number(match[1]) - 1, Number(match[2]));
+}
+
+function parseTagList(value) {
+  const text = String(value || '').trim();
+  if (!text) return [];
+  const values = text.startsWith('[') && text.endsWith(']')
+    ? text.slice(1, -1).split(',')
+    : text.split(',');
+  return values
+    .map(item => item.trim().replace(/^["']|["']$/g, '').trim())
+    .filter(Boolean);
+}
+
+function frontmatterTags(relativePath) {
+  try {
+    const raw = read(path.join(ROOT, relativePath));
+    const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+    if (!match) return [];
+    const line = match[1].match(/^tags\s*:\s*(.*)$/m);
+    return line ? parseTagList(line[1]) : [];
+  } catch (error) {
+    return null;
+  }
+}
+
 function rel(filePath) {
   return path.relative(ROOT, filePath);
 }
@@ -71,21 +106,85 @@ function validateContentIndexes() {
     if (!Array.isArray(journal)) {
       fail('json/journal.json must be an array');
     } else {
+      const seenDates = new Set();
+      const titleDates = new Map();
+      let previousDate = null;
+
       journal.forEach((day, dayIndex) => {
-        if (!day.date) fail(`json/journal.json day ${dayIndex} is missing date`);
+        const label = day.date || `day ${dayIndex}`;
+        if (!day.date) {
+          fail(`json/journal.json day ${dayIndex} is missing date`);
+        } else {
+          if (!JOURNAL_DATE_RE.test(day.date)) {
+            fail(`json/journal.json ${day.date} must use MM/DD/YY format`);
+          }
+          if (seenDates.has(day.date)) {
+            fail(`json/journal.json has duplicate date block: ${day.date}`);
+          }
+          seenDates.add(day.date);
+
+          const current = parseJournalDate(day.date);
+          if (current !== null && previousDate !== null && current > previousDate) {
+            fail(`json/journal.json date blocks are not newest-first: ${day.date}`);
+          }
+          if (current !== null) previousDate = current;
+        }
+
         if (!Array.isArray(day.entries)) {
-          fail(`json/journal.json day ${day.date || dayIndex} is missing entries array`);
+          fail(`json/journal.json ${label} is missing entries array`);
           return;
         }
+
+        const dayTitles = new Set();
         day.entries.forEach((entry, entryIndex) => {
+          const entryLabel = `${label} entry ${entryIndex}`;
           if (!entry.title) {
-            fail(`json/journal.json ${day.date} entry ${entryIndex} is missing title`);
+            fail(`json/journal.json ${entryLabel} is missing title`);
+          } else {
+            if (dayTitles.has(entry.title)) {
+              warn(`json/journal.json ${label} repeats title: ${entry.title}`);
+            }
+            dayTitles.add(entry.title);
+
+            const firstDate = titleDates.get(entry.title);
+            if (firstDate) {
+              warn(`json/journal.json repeats title "${entry.title}" (${firstDate}, ${day.date})`);
+            } else {
+              titleDates.set(entry.title, day.date);
+            }
           }
+
           if (entry.file && !exists(entry.file)) {
             fail(`json/journal.json references missing file: ${entry.file}`);
           }
           if (!entry.file && !entry.content && !entry.link) {
-            warn(`json/journal.json ${day.date} entry ${entryIndex} has no file, content, or link`);
+            warn(`json/journal.json ${entryLabel} has no file, content, or link`);
+          }
+          if (entry.category && !JOURNAL_CATEGORIES.includes(entry.category)) {
+            fail(`json/journal.json ${entryLabel} has non-canonical category "${entry.category}"`);
+          }
+          if (entry.type && !JOURNAL_TYPES.includes(entry.type)) {
+            fail(`json/journal.json ${entryLabel} has unknown type "${entry.type}"`);
+          }
+          if (entry.time && !JOURNAL_TIME_RE.test(entry.time)) {
+            fail(`json/journal.json ${entryLabel} has invalid time "${entry.time}"`);
+          }
+          if (entry.tags !== undefined) {
+            if (!Array.isArray(entry.tags) || entry.tags.some(tag => typeof tag !== 'string')) {
+              fail(`json/journal.json ${entryLabel} tags must be an array of strings`);
+            } else if (entry.tags.length > 5) {
+              warn(`json/journal.json ${entryLabel} has ${entry.tags.length} tags (max 5)`);
+            }
+          }
+
+          if (entry.file) {
+            const mdTags = frontmatterTags(entry.file);
+            if (mdTags !== null) {
+              const journalTags = Array.isArray(entry.tags) ? entry.tags : [];
+              if (mdTags.join('|') !== journalTags.join('|')) {
+                fail(`json/journal.json ${entryLabel} tags do not match ${entry.file}; run npm run generate:content`);
+              }
+            }
           }
         });
       });

@@ -1,8 +1,8 @@
 ---
 date: 2026-05-16T14:30:00
 category: economic
+tags: ["13f", "corporate"]
 ---
-
 ## Berkshire Hathaway's Q1 2026 13F Filing
 
 Warren Buffett's Berkshire Hathaway filed its Q1 2026 13F on Friday, revealing a $263B portfolio with 90 positions.

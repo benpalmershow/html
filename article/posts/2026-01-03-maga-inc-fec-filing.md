@@ -1,8 +1,8 @@
 ---
 date: 2026-01-03T12:00:00Z
 category: political
+tags: ["politics"]
 ---
-
 ### <i data-lucide='file-down' class='post-icon'></i> MAGA INC.
 
 MAGA INC., filed its Form 3X report covering the period July 1 - December 22, 2025.

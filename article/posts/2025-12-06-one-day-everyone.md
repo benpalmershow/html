@@ -1,8 +1,8 @@
 ---
 date: 2025-12-06T14:00:00
 category: journal
+tags: ["dispatch", "personal"]
 ---
-
 ### **One Day, Everyone Will Have Always Been Against This**
 
 <a href="media.html#one-day-everyone"><img src="https://www.syndetics.com/index.aspx?isbn=9780593804148&issn=/MC.JPG&client=sfpl&type=xw12" alt="One Day, Everyone Will Have Always Been Against This" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>

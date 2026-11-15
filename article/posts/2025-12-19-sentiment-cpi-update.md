@@ -1,8 +1,8 @@
 ---
 date: 2025-12-19T19:00:00Z
 category: consumer
+tags: ["cpi", "macro-data", "sentiment", "indicators"]
 ---
-
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Sentiment Up, Inflation Down**
 
 Consumer Sentiment rebounded to 52.9 in December, up 3.7% from November's 51, signaling modest improvement in household confidence. 

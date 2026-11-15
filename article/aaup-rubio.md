@@ -5,8 +5,8 @@ category: legal
 icon: gavel
 summary: Trump administration officials violated First Amendment rights of non-citizens through coordinated campaign to chill pro-Palestinian speech on college campuses
 link: https://storage.courtlistener.com/recap/gov.uscourts.mad.282460/gov.uscourts.mad.282460.261.0.pdf
+tags: ["legal"]
 ---
-
 <div class="article-wrapper">
 
 # Federal Court Rules on Non-Citizens' First Amendment Rights

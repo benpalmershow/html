@@ -20,8 +20,8 @@ resources:
   - title: SCOTUS Blog Analysis
     url: https://www.scotusblog.com/cases/case-files/hamm-v-smith-4/
     icon: bookmark
+tags: ["legal"]
 ---
-
 <div class="article-wrapper">
 
 # IQ Scores and the Death Penalty

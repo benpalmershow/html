@@ -6,8 +6,8 @@ icon: bar-chart-3
 summary: Robinhood reports record quarterly revenue of $989M with fourth consecutive quarter of GAAP profitability
 ticker: HOOD
 link: https://investors.robinhood.com/static-files/96125635-9736-40ed-a873-eb0cf735b079
+tags: ["corporate"]
 ---
-
 <div class="article-wrapper">
 
 # Robinhood Q2 2025 Earnings

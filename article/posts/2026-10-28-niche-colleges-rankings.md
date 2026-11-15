@@ -1,9 +1,8 @@
 ---
 date: 2026-10-28T02:20:00Z
 category: education
-tags: ["education", "colleges", "rankings", "party schools", "student reviews", "search"]
+tags: ["education", "colleges", "rankings", "party schools", "student reviews"]
 ---
-
 [Niche](https://www.niche.com/colleges/search/all-colleges/) ranks colleges based on student reviews and nightlife statistics. The [2027 Top Party Schools](https://www.niche.com/colleges/search/top-party-schools/) ranking reflects schools with active party scenes, Greek life, and off-campus nightlife.
 
 **Top 20 Party Schools (2027):**

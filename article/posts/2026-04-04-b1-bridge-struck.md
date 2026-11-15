@@ -1,8 +1,8 @@
 ---
 date: 2026-04-04T14:00:00Z
 category: government
+tags: ["policy", "fiscal"]
 ---
-
 ### <i data-lucide='bridge' class='post-icon'></i> **B1 Bridge Struck**
 
 <a href='https://x.com/monitorx99800/status/2040389965629002214' target='_blank' rel='noopener noreferrer'>Source</a> | <a href='https://x.com/jansant/status/2040085820477145265' target='_blank' rel='noopener noreferrer'>Additional</a>

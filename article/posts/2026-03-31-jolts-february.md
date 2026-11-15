@@ -1,8 +1,8 @@
 ---
 date: 2026-03-31T18:00:00Z
 category: employment
+tags: ["labor"]
 ---
-
 ### <i data-lucide='briefcase' class='post-icon'></i> **Job Openings down 358,000**
 
 February job openings dropped to 6.88 million, down 358,000 from January's revised 7.24 million. January was revised up from an initial 7.18 million, making the month-over-month decline look steeper than it might have otherwise. Still, the 4.9% monthly drop signals the labor market remains stuck in a tightening-to-loosening transition that started last fall.

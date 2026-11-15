@@ -57,7 +57,8 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 - `index.html` summary cards are aggregated by `js/one-pager.js`, which pulls latest items from journal/media/financials and links into full pages via query params.
 
 ### Content and automation flows
-- Journal-first publishing is the default (`docs/posts-prd.md`): add new routine items to `json/journal.json` first; long-form lives in `article/` and is linked from journal entries.
+- Journal-first publishing is the default (`documentation/posts-prd.md`): add new routine items to `json/journal.json` first; long-form lives in `article/` and is linked from journal entries.
+- For file-backed journal entries, tags are canonical in the markdown frontmatter. `npm run generate:content` syncs them into `json/journal.json` and rebuilds the search index.
 - Article pages are rendered by one page, not one file per article:
   - `article.html?slug=<slug>` loads `json/article-index.json`, fetches the markdown source, and renders it with `js/markdown.js`.
   - `scripts/build-article-index.js` writes that manifest from every `article/**/*.md` (excluding `article/draft/`).
@@ -73,7 +74,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - `sw.js` cache strategy
   - Google Analytics IDs/snippets
   - `vercel.json` routing behavior
-- For financial/prediction market updates (`docs/financial_fetch.md`):
+- For financial/prediction market updates (`documentation/financial_fetch.md`):
   - Verify odds from live source URLs before writing JSON.
   - Keep `lastUpdated` timestamps and source URLs current.
   - For NFL markets, format matchup names as `AWAY @ HOME`.

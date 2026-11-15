@@ -1,7 +1,7 @@
 ---
 date: 2026-11-14T16:23:00Z
 category: journal
-tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla", "kei-truck", "keijidosha", "aviation", "transportation"]
+tags: ["faa", "ground-stop", "cybercab", "robotaxi", "tesla"]
 ---
 ### 🚕 Cybercabs
 The [Cybercab](https://www.tesla.com/robotaxi) intends to make travel efficient, affordable, and accessible. Reliable? We shall see. Start at $299/mo., end up at [$1,185/mo.](https://x.com/chadmoran/status/2121404328628150518?a=SMwAuJL2DGOCQrP7RMg&s=61)

@@ -1,8 +1,8 @@
 ---
 date: 2026-01-04T11:00:00
 category: policy
+tags: ["housing", "regulation"]
 ---
-
 ### <i data-lucide='gavel' class='post-icon'></i> **Inclusionary Housing**
 
 Columbia St LLC sued Cambridge over a mandate forcing developers to surrender 20% of floor area to permanent affordable housing without payment. The ordinance exemplifies unchecked government land-use authority - seizing private property for public benefit while exempting everyone else.

@@ -14,7 +14,7 @@ Typical sequence:
 
 Behavior:
   - Each game in the YAML becomes a "Prediction Markets" indicator object
-    following the template in docs/financial_fetch.md (name = "AWAY @ HOME").
+    following the template in documentation/financial_fetch.md (name = "AWAY @ HOME").
   - Games are upserted by `id`: an existing indicator with the same id is
     updated in place; new ids are appended. No other indicators are touched.
   - With --replace-completed, games whose game_time_iso is in the past are

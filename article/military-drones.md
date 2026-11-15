@@ -4,8 +4,8 @@ date: 2026-03-21
 category: policy
 icon: shield
 summary: Drone warfare is now an industrial and budget problem as cheap one-way systems, loitering munitions, and reusable ISR platforms force militaries to rethink cost, survivability, and air defense economics.
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 # Military Drones

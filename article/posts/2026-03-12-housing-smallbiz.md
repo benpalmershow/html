@@ -1,8 +1,8 @@
 ---
 date: 2026-03-12T20:00:00Z
 category: housing
+tags: ["housing"]
 ---
-
 ## <i data-lucide='home' class='post-icon'></i> **Existing Home Sales Rise**
 
 Existing home sales rose to **4.09M** in February, up from 3.91M in January.

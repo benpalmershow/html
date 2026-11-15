@@ -1,8 +1,8 @@
 ---
 date: 2025-12-01T00:00:00
 category: policy
+tags: ["housing", "regulation"]
 ---
-
 ### **Rent Control**
 
 New York's affordable housing stock faces a cascade of financial defaults unless the city acts on policy reforms. Over 50% of affordable buildings have expenses exceeding rental income, jeopardizing both tenants and the city's bond rating.

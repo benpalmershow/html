@@ -1,9 +1,8 @@
 ---
 date: 2026-10-28T02:00:00Z
 category: economy
-tags: ["capitalism", "economic freedom", "property rights", "rule of law", "index", "npr"]
+tags: ["capitalism", "economic freedom", "property rights", "rule of law", "index"]
 ---
-
 The [Global Capitalism Index (GCI)](https://capitalismindex.com/) from the Democracy and Capitalism Lab at the University of Virginia ranks countries based on institutions that support market systems. 
 
 **United States (2025):**

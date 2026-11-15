@@ -1,8 +1,8 @@
 ---
 date: 2026-02-22T24:00:00Z
 category: journal
+tags: ["dispatch", "personal"]
 ---
-
 ### <i data-lucide='hat-glasses' class='post-icon'></i> **Light on Evidence, Heavy on Rage**
 
 <a href="journal.html"><img src="images/read.webp" alt="Journal entry" style="width: 60px; height: auto; float: left; margin-right: 10px;"></a>

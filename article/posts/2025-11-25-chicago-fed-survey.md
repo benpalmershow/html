@@ -1,8 +1,8 @@
 ---
 date: 2025-11-25T16:56:00
 category: economic
+tags: ["fomc", "macro-data", "indicators"]
 ---
-
 ### **Chicago Fed Survey**
 
 The Chicago Fed Survey of Economic Conditions Activity Index fell sharply to -3.92 in November, down from October's +17.33. The negative reading signals below-average growth in the Seventh District (Illinois, Indiana, Iowa, Michigan, Wisconsin).

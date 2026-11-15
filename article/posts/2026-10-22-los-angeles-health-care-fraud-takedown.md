@@ -1,8 +1,8 @@
 ---
 date: 2026-10-22T16:00:00Z
 category: policy
+tags: ["fraud", "doj", "healthcare", "fbi"]
 ---
-
 ### ⚖️ Los Angeles Health Care Fraud Takedown: 15 Defendants, Nearly $2B in Loss
 
 The Justice Department announced charges against 15 defendants, including six medical professionals, for health care fraud schemes that collectively resulted in over $1.8 billion in fraudulent claims to government and private health care programs. Eight defendants were arrested today.

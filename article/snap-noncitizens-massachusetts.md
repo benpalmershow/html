@@ -1,8 +1,8 @@
 ---
 date: 2025-12-31T12:00:00
 category: policy
+tags: ["regulation"]
 ---
-
 **Updated: December 31, 2025**
 
 ### New Soda Restrictions Effective January 1, 2026

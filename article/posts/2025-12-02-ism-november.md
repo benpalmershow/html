@@ -1,8 +1,8 @@
 ---
 date: 2025-12-02T15:00:00
 category: business
+tags: ["macro-data", "indicators"]
 ---
-
 ### **Cox v. Sony Copyright Case**
 
 The Supreme Court heard whether Cox Communications can be held liable for copyright infringement by its subscribers. This landmark case tests the boundaries of secondary liability under copyright law and the scope of DMCA safe harbor protections. [Read full analysis](news.html?article=cox-v-sony)

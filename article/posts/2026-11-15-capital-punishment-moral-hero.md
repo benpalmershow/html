@@ -1,9 +1,8 @@
 ---
 date: 2026-11-15T16:00:00Z
 category: journal
-tags: ["newsom", "", "justice", "politics", "crime", "ai"]
+tags: ["newsom", "justice", "politics", "crime", "ai"]
 ---
-
 Lauding Newsom for moral leadership for saving 548 souls is the same sycophancy esteemed by the right.
 
 Sentencing is adjudication best modernized with AI inference. Judges are biased just like journalists. Any racial quota is a societal reflection, not nefarious gerrymandering solved with more gerrymandering. Humans don't know the perfect racial quota because they will always want to move the needle towards 'their own'.

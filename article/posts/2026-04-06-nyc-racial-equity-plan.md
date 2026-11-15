@@ -1,8 +1,8 @@
 ---
 date: 2026-04-06T18:00:00Z
 category: government
+tags: ["policy", "fiscal"]
 ---
-
 ### <i data-lucide='scale' class='post-icon'></i> **NYC's Preliminary Racial Equity Plan**
 
 New York City has released its Preliminary Racial Equity Plan, charting community equity priorities and outcome indicators across multiple city agencies. 

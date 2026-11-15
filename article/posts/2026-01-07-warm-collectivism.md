@@ -1,8 +1,8 @@
 ---
 date: 2026-01-07T10:00:00
 category: political
+tags: ["politics"]
 ---
-
 ### <i data-lucide='users' class='post-icon'></i> **Warm Collectivism**
 
 PGE's new Base Services Charge decouples utility usage from service, matching energy bills to customer income levels and shifting cost burdens from low-income households. The policy rolls out March 2026.

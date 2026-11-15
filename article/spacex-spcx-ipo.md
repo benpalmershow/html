@@ -5,8 +5,8 @@ category: ipo
 icon: rocket
 summary: SpaceX (SPCX) files for IPO with $18.7B revenue, targeting dual Nasdaq listing as Starlink drives profitability while AI arm burns billions on gigawatt-scale compute buildout
 ticker: SPCX
+tags: ["corporate", "external", "ipo"]
 ---
-
 <div class="article-wrapper">
 
 # SpaceX IPO: $18.7B Revenue, $28.5T TAM, Dual-Class Control

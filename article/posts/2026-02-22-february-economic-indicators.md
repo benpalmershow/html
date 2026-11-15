@@ -1,8 +1,8 @@
 ---
 date: 2026-02-22T18:30:00Z
 category: economic
+tags: ["housing", "markets"]
 ---
-
 ## Consumer Holds, Housing Cools, Yields Spike
 
 

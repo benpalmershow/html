@@ -5,8 +5,8 @@ category: legal
 icon: gavel
 summary: SCOTUS oral arguments reveal deep skepticism. Can the President impose $195 billion in tariffs under a 1977 emergency act? Justice Kavanaugh grapples with the "donut hole" problem - can the President ban all trade but not tax 1%? A major clash between executive power and Article I taxation.
 link: https://www.supremecourt.gov/oral_arguments/argument_transcripts/2025/24-1287_b07d.pdf
+tags: ["legal", "trump"]
 ---
-
 <div class="article-wrapper">
 
 # Update to Tariff SCOTUS Case

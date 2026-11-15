@@ -1,8 +1,8 @@
 ---
 date: 2025-12-05T13:00:00
 category: journal
+tags: ["politics"]
 ---
-
 The historic Kennedy family compound in Hyannis, Massachusetts is on the market for $21.5M.
 
 [View listing](https://www.zillow.com/homedetails/151-155-Irving-Ave-Hyannis-MA-02601/453457953_zpid/?utm_campaign=zillowwebmessage&utm_medium=referral&utm_source=txtshare)

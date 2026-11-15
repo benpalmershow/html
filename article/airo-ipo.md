@@ -6,8 +6,8 @@ icon: dollar-sign
 summary: AIRO Group Holdings completes IPO with 140% surge on debut, specializing in drones, avionics, and eVTOL aircraft
 ticker: AIRO
 link: https://finance.yahoo.com/quote/AIRO
+tags: ["corporate", "ipo"]
 ---
-
 <div class="article-wrapper">
 
 # AIRO Group Holdings IPO

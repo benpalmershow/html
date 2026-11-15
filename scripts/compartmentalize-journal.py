@@ -11,6 +11,7 @@ This script enriches all entries in json/journal.json with:
 
 import json
 import os
+import re
 import shutil
 import sys
 
@@ -220,6 +221,45 @@ def classify_entry(entry):
     return pillar, subcat, clean_tags, entry_type
 
 
+def write_frontmatter_tags(relative_path, tags):
+    """Write tags into a markdown file's YAML frontmatter.
+
+    File-backed journal entries keep their canonical tags in markdown, not in
+    json/journal.json. The build step syncs them back into the journal feed.
+    """
+    path = os.path.join(ROOT, relative_path)
+    with open(path, 'r', encoding='utf-8') as f:
+        raw = f.read()
+
+    match = re.match(r'^---\s*\n([\s\S]*?)\n---\s*\n?', raw)
+    tag_line = 'tags: ' + json.dumps(tags, ensure_ascii=False)
+
+    if not match:
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write('---\n' + tag_line + '\n---\n\n' + raw)
+        return
+
+    lines = match.group(1).split('\n')
+    output = []
+    skipping_list = False
+
+    for line in lines:
+        if re.match(r'^tags\s*:', line):
+            skipping_list = not bool(line.split(':', 1)[1].strip())
+            continue
+        if skipping_list:
+            if re.match(r'^\s*-\s+', line):
+                continue
+            skipping_list = False
+        output.append(line)
+
+    output.append(tag_line)
+    body = raw[match.end():]
+
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write('---\n' + '\n'.join(output) + '\n---\n' + body)
+
+
 def main():
     if not os.path.exists(JOURNAL_PATH):
         print(f"Error: {JOURNAL_PATH} not found", file=sys.stderr)
@@ -245,8 +285,11 @@ def main():
             # Update entry fields
             entry['category'] = pillar
             entry['subcategory'] = subcat
-            entry['tags'] = tags
             entry['type'] = entry_type
+            if entry.get('file'):
+                write_frontmatter_tags(entry['file'], tags)
+            else:
+                entry['tags'] = tags
 
             pillar_counts[pillar] = pillar_counts.get(pillar, 0) + 1
             subcat_key = f"{pillar} -> {subcat}"

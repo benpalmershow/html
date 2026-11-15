@@ -1,8 +1,8 @@
 ---
 date: 2026-05-25T07:27:00Z
 category: government
+tags: ["constitution", "legal", "nyt-critique"]
 ---
-
 ### <i data-lucide='gavel' class='post-icon'></i> NYT Critique
 
 **The President is Popular Therefore the Constitution Needs to be Changed** That's NYT's Adam Liptak. He's regurgitating academic slop from privileged pontificators who have the time to scrutinize success. Thomas Jefferson's Louisiana Purchase was the first usurpation of executive power. The grievances for Trump:

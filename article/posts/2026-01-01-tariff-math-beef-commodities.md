@@ -1,8 +1,8 @@
 ---
 date: 2026-01-01T17:56:00Z
 category: trade
+tags: ["tariffs"]
 ---
-
 ### <i data-lucide='package' class='post-icon'></i> Minneapolis Daycare
 
 The "news" chooses ad hominem over investigation and goes after a 23-year-old attempting to expose Minneapolis daycare fraud.

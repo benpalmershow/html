@@ -1,8 +1,8 @@
 ---
 date: 2026-04-06T18:30:00Z
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 ### <i data-lucide='trending-up' class='post-icon'></i> **The Shrinking Middle Class Myth**
 
 A new AEI report challenges the populist narrative that America's middle class is hollowing out. Using an **absolute** definition (constant purchasing power thresholds) rather than Pew's relative approach, the data tells a different story.

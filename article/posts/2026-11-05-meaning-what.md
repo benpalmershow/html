@@ -1,3 +1,7 @@
+---
+tags: ["politics", "media", "media critique", "democracy", "populism"]
+---
+
 "This is not a blue moment. Or a red moment. It's a red, white and blue moment because America has won tonight," - Your next speaker of the House.
 
 This statement doesn't mean anything to me. I'm trying to understand how it would. It's cheap talk for cheap politics.

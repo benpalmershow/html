@@ -1,8 +1,8 @@
 ---
 date: 2025-12-10T11:00:00
 category: journal
+tags: ["dispatch", "personal"]
 ---
-
 ### <i data-lucide='heart' class='post-icon'></i> **Divorce Money**
 
 <a href="https://yieldgiving.com/essays/we-are-the-ones-we-ve-been-waiting-for/" target="_blank" rel="noopener">MacKenzie Scott</a> distributes $7.2 billion (<a href="https://en.wikipedia.org/wiki/Jeff_Bezos" target="_blank" rel="noopener">of Bezos'</a> money) to organizations globally.

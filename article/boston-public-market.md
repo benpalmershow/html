@@ -4,8 +4,8 @@ date: 2025-07-07
 category: policy
 icon: store
 summary: Boston Public Market Association's 2024 financial statements reveal operating losses despite $5M+ in SNAP sales, illustrating challenges of public food markets
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 # Why Mamdani Public Grocery Stores Don't Work

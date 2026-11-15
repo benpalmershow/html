@@ -1,9 +1,8 @@
 ---
 date: 2026-11-15T15:42:00Z
 category: journal
-tags: ["router", "fiber", "infrastructure", "aviation", "faa", "l3harris", "waymo", "inference"]
+tags: ["router", "fiber", "infrastructure", "aviation", "faa"]
 ---
-
 Our home router updates at 3am every night. Beyond the walls, it may even rely on legacy analog copper wire. Our internet never goes down because the internet is essential to our family.
 
 We have a household mandate, funds have been allocated, and the private market has been a great partner so far. We've appropriated $50/mo. and everything has been just fine. We have cellular backups. We take our connectivity seriously.

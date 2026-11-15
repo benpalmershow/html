@@ -1,9 +1,8 @@
 ---
 date: 2026-08-25T12:00:00Z
 category: docs
+tags: ["politics"]
 ---
-
-
 > Parties from principle, especially abstract speculative principle, are known only to modern times, and are, perhaps, the most extraordinary and unaccountable phaenomenon, that has yet appeared in human affairs. [*Essays, Moral, Political, and Literary*](https://davidhume.org/texts/empl1/pg) (David Hume)
 
 Hume distinguishes three sources of faction: interest, principle, and affection. Interest is rational and predictable. Affection is tribal but personal. Principle is different.

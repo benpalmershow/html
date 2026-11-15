@@ -5,8 +5,8 @@ category: healthcare
 icon: heart-pulse
 summary: A deep dive into the hidden costs and systemic issues within the American healthcare system, revealing how insurance billing practices can inflate costs while creating a false sense of affordability for patients
 link: article/healthcare-costs.md
+tags: ["healthcare"]
 ---
-
 <div class="article-wrapper">
 
 # The Hidden Costs of Healthcare: A Broken System

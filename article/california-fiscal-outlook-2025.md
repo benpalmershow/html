@@ -5,8 +5,8 @@ category: policy
 icon: trending-down
 summary: California faces an $18 billion budget deficit in 2026-27. Revenues up $11B but consumed by mandatory spending. Structural deficits reach $35B annually by 2027-28.
 author: Ben Palmer
+tags: ["regulation"]
 ---
-
 <div class="article-wrapper">
 
 # California's $18B Budget Deficit

@@ -1,8 +1,7 @@
 ---
 category: employment
+tags: ["labor"]
 ---
-
-
 ### **BLS Employment Gains**
 
 September saw the addition of 119,000 nonfarm jobs, bringing total employment to 159.626M (+0.1% MoM). The labor market continues steady expansion despite economic uncertainty. Employment continued to trend up in health care, food services and 

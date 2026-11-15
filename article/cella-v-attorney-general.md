@@ -5,8 +5,8 @@ category: legal
 icon: gavel
 summary: Massachusetts Supreme Judicial Court bars rent control initiative from 2026 ballot because exemption for "facilities operated solely for religious purposes" makes the measure relate to religion under Article 48
 link: https://www.mass.gov/doc/cella-v-attorney-general-sjc-w13893/download
+tags: ["housing", "rent"]
 ---
-
 <div class="article-wrapper">
 
 # Cella v. Attorney General: Rent Control Initiative Blocked on Religious Exemption Grounds

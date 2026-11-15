@@ -1,8 +1,8 @@
 ---
 date: 2026-11-14T20:00:00Z
 category: media
+tags: ["book", "technology", "smartphone", "media"]
 ---
-
 You Don't Need a Smartphone by August Lamm — Notes on living without a smartphone. A short, practical look at stepping back from constant connectivity and reclaiming attention.
 
 - [Open Library](https://openlibrary.org/isbn/9798217009077)

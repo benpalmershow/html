@@ -2,8 +2,8 @@
 date: 2026-11-10T15:00:00Z
 category: economy
 title: "October CPI +0.4%, 86K Jobs, $334B Household Debt"
+tags: ["cpi", "inflation", "employment", "small-business", "debt"]
 ---
-
 <p>The [Consumer Price Index](financials.html?indicator=CPI) rose a seasonally adjusted 0.4% in October, ahead of the 0.3% that economists expected. September was revised to 0.6%. The Bureau of Labor Statistics could not publish a year over year figure because last year's government shutdown prevented October 2025 data collection. Shelter accounted for more than 30% of the monthly increase, and energy rose 0.7% after a 5.2% jump in September.</p>
 
 <p>Private sector employers added 86,000 jobs in October, per the [ADP National Employment Report](financials.html?indicator=Private%20Employment), matching the revised September total. Trade, transportation, and utilities led with 39,000, while professional and business services shed 27,000. Base pay rose 3.2% year over year.</p>

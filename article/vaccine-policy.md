@@ -4,8 +4,8 @@ date: 2025-09-29
 category: policy
 icon: shield-alert
 summary: Examining the asymmetric framing of vaccine policy debates and the role of institutional credibility in public health discourse
+tags: ["regulation"]
 ---
-
 # Vaccine Policy & Media Framing
 
 **Analysis: September 29, 2025**

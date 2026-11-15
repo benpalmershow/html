@@ -1,8 +1,8 @@
 ---
 date: 2025-12-23T11:00:00
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 ### <i data-lucide='shopping-cart' class='post-icon'></i> **Consumer Confidence Down**
 
 Consumer confidence fell sharply in December to 89.1, down 3.8 points (-4.1%) from November's 92.9.

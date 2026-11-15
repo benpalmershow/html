@@ -1,8 +1,8 @@
 ---
 date: 2025-11-28T12:00:00
 category: economic
+tags: ["13f", "corporate"]
 ---
-
 ### **Buy Appreciation, Not Discounts**
 
 While everyone's chasing discounts on stuff that loses value, five major investment firms just filed their Q3 holdings: **EQUITEC Proprietary Markets**, **Lantern Wealth Advisors**, **Strategic Advocates**, **Vermillion & White**, and **XXEC**. Together they manage **$1.31 billion** across **50 securities**.

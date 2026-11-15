@@ -1,8 +1,8 @@
 ---
 date: 2026-01-12T00:00:00
 category: journal
+tags: ["dispatch", "personal"]
 ---
-
 ### <i data-lucide='zap' class='post-icon'></i> **Eating Expertise**
 
 Mechanic shortage. A transmission replacement takes 10 hours of professional labor. The cost-of-living squeeze leaves you with three plays: buy a car without that system, get chauffeured by autonomous vehicles, or buy productivity. That means AI stock.

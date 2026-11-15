@@ -1,8 +1,8 @@
 ---
 date: 2025-12-21T10:30:00
 category: media
+tags: ["media-rec", "curation"]
 ---
-
 ### **The Poor Side of Town**
 
 ![The Poor Side of Town](https://www.syndetics.com/index.aspx?isbn=9781641772020&issn=/MC.JPG&client=sfpl&type=xw12)

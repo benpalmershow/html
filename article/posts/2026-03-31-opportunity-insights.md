@@ -1,8 +1,8 @@
 ---
 date: 2026-03-31T12:00:00Z
 category: government
+tags: ["policy", "fiscal"]
 ---
-
 ### <i data-lucide='graduation-cap' class='post-icon'></i> **Think-Tank Main Street**
 
 These are the think-tanks that squander your money in good faith. Benevolent bookworms ingest Main Street.

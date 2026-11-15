@@ -1,8 +1,8 @@
 ---
 date: 2025-11-26T19:00:00
 category: housing
+tags: ["housing"]
 ---
-
 ###  **Housing Affordability**
 
 The Housing Affordability Index rebounded to 104.5 in September, marking a notable recovery from August's 100.6, signaling improved purchasing power for median-income families amid moderating mortgage rates and stable home prices.

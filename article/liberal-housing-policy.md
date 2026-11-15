@@ -4,8 +4,8 @@ date: 2025-11-30
 category: policy
 author: Ben Palmer
 summary: Real estate entrepreneurs like Realer Estate solve affordability problems through market innovation - while liberal think tanks waste time bribing homeowners and creating new regulations.
+tags: ["housing", "regulation"]
 ---
-
 <div class="article-wrapper">
 
 # How Many Brains to Make a Tank Think?

@@ -1,8 +1,8 @@
 ---
 date: 2026-01-03T14:00:00
 category: employment
+tags: ["labor"]
 ---
-
 ### <i data-lucide='dollar-sign' class='post-icon'></i> **Minimum Wage**
 
 The federal minimum wage remains frozen at $7.25 since 2009, but 30 states and DC have enacted their own increases. The EPI Minimum Wage Tracker reveals how dramatically labor standards vary - from Alabama and Wyoming at the federal floor to California, Massachusetts, and Washington pushing toward $18+.

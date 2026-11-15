@@ -2,8 +2,8 @@
 source: reddit
 reddit_url: https://www.reddit.com/r/Killtony/comments/1qw5k97/a_complete_list_of_every_golden_ticket_winner/
 category: media
+tags: ["media-rec", "curation", "media"]
 ---
-
 # Golden Ticket Winners - Kill Tony
 
 <div style="width: auto; max-width: 320px;">

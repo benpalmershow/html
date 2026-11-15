@@ -1,8 +1,8 @@
 ---
 date: 2025-12-24T12:00:00
 category: policy
+tags: ["fiscal"]
 ---
-
 ### <i data-lucide='users' class='post-icon'></i> **California Faces $2.5 Billion CalFresh Bill**
 
 Federal legislation enacted in July 2025 just handed California a major fiscal problem. Starting in federal fiscal year 2028, states will shoulder part of SNAP benefits costs—determined by their payment error rate (PER). California's 11 percent error rate means the state will pay 15 percent of its CalFresh costs if it doesn't improve. At current spending levels, that's nearly $1.8 billion annually in new benefit costs, plus another $600 million in administrative expenses. Total estimated impact: $2.5 billion per year.

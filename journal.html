@@ -166,6 +166,26 @@
       const mdCache = {};
       let allDays = [];
       let renderIndex = 0;
+      let searchIndex = null;
+      let searchIndexPromise = null;
+      let journalTags = {};
+      function loadSearchIndex() {
+        if (searchIndexPromise) return searchIndexPromise;
+        searchIndexPromise = fetch('json/journal-search.json')
+          .then(response => response.ok ? response.json() : {})
+          .then(index => {
+            searchIndex = index && typeof index === 'object' ? index : {};
+            window.journalSearchIndex = searchIndex;
+            return searchIndex;
+          })
+          .catch(() => {
+            searchIndex = {};
+            window.journalSearchIndex = searchIndex;
+            return searchIndex;
+          });
+        return searchIndexPromise;
+      }
+      window.loadJournalSearchIndex = loadSearchIndex;
       const {
         escapeHtml,
         escapeAttr,
@@ -176,11 +196,29 @@
         parseMarkdown,
         normalizeContent
       } = window.MarkdownUtils;
+      function appendPermalink(container, href, label) {
+        const footer = document.createElement('div');
+        footer.className = 'entry-accordion-footer entry-footer';
+        const link = document.createElement('a');
+        link.className = 'entry-permalink entry-permalink-bottom';
+        link.href = href;
+        link.textContent = label || 'Permalink';
+        link.setAttribute('aria-label', 'Link to this entry');
+        footer.appendChild(link);
+        container.appendChild(footer);
+      }
+      function getEntryTags(entry) {
+        if (entry.file) {
+          return Array.isArray(journalTags[entry.file]) ? journalTags[entry.file] : [];
+        }
+        return Array.isArray(entry.tags) ? entry.tags : [];
+      }
       function buildEntry(entry) {
         const hasFile = !!entry.file;
         const hasContent = !!entry.content;
         const hasLink = !!entry.link;
         const hasToggle = hasFile || (hasContent && entry.collapsed);
+        const tags = getEntryTags(entry);
         const div = document.createElement('div');
         div.className = 'entry';
         if (hasFile && entry.file.startsWith('article/')) {
@@ -189,11 +227,14 @@
         if (entry.title) {
           div.dataset.slug = slugify(entry.title);
         }
+        if (entry.file) {
+          div.dataset.file = entry.file;
+        }
         if (entry.category) {
           div.dataset.category = entry.category;
         }
-        if (Array.isArray(entry.tags) && entry.tags.length > 0) {
-          div.dataset.tags = entry.tags.join(',');
+        if (tags.length > 0) {
+          div.dataset.tags = tags.join(',');
         }
         if (entry.type) {
           div.dataset.type = entry.type;
@@ -237,15 +278,9 @@
           accordionEl.appendChild(inner);
           if (hasFile && entry.file.startsWith('article/')) {
             const slug = entry.file.split('/').pop().replace(/\.md$/, '');
-            const footer = document.createElement('div');
-            footer.className = 'entry-accordion-footer';
-            const permalink = document.createElement('a');
-            permalink.className = 'entry-permalink entry-permalink-bottom';
-            permalink.href = '/article.html?slug=' + encodeURIComponent(slug);
-            permalink.textContent = 'Permalink';
-            permalink.setAttribute('aria-label', 'Open this entry as a standalone page');
-            footer.appendChild(permalink);
-            accordionEl.appendChild(footer);
+            appendPermalink(accordionEl, '/article.html?slug=' + encodeURIComponent(slug), 'Permalink');
+          } else if (div.dataset.slug) {
+            appendPermalink(accordionEl, '#' + div.dataset.slug, 'Permalink');
           }
           let loaded = false;
           function loadContent() {
@@ -307,7 +342,7 @@
         }
         div.appendChild(headEl);
 
-        if (Array.isArray(entry.tags) && entry.tags.length > 0) {
+        if (tags.length > 0) {
           const tagsEl = document.createElement('div');
           tagsEl.className = 'entry-tags';
           const tagIcons = {
@@ -339,6 +374,9 @@
           div.appendChild(contentEl);
         }
         if (accordionEl) div.appendChild(accordionEl);
+        if (!hasToggle && div.dataset.slug) {
+          appendPermalink(div, '#' + div.dataset.slug, 'Permalink');
+        }
         return div;
       }
       function buildDay(day, index) {
@@ -398,6 +436,7 @@
         iframe.referrerPolicy = 'strict-origin-when-cross-origin';
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
+        iframe.className = 'embedded-video';
         target.replaceWith(iframe);
       }
       feed.addEventListener('click', event => {

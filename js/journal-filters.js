@@ -12,6 +12,7 @@
     let currentCategory = 'all';
     let currentTag = null;
     let currentSearchQuery = '';
+    let searchTimer = null;
 
     function syncURL() {
         const url = new URL(window.location);
@@ -80,8 +81,14 @@
                 totalEntries++;
                 const entryCategory = entry.dataset.category || '';
                 const entryTags = (entry.dataset.tags || '').split(',').filter(Boolean);
-                const title = entry.querySelector('.entry-title')?.textContent.toLowerCase() || '';
-                const content = entry.querySelector('.entry-content')?.textContent.toLowerCase() || '';
+                const title = entry.querySelector('.entry-title')?.textContent || '';
+                const content = (entry.querySelector('.entry-content')?.textContent || '')
+                    + ' ' + (entry.querySelector('.accordion-inner')?.textContent || '');
+                const file = entry.dataset.file || '';
+                const indexed = window.journalSearchIndex && file && window.journalSearchIndex[file]
+                    ? window.journalSearchIndex[file]
+                    : '';
+                const haystack = (title + ' ' + content + ' ' + entryTags.join(' ') + ' ' + indexed).toLowerCase();
 
                 // 1. Pillar match
                 const matchesCategory = currentCategory === 'all' || entryCategory === currentCategory;
@@ -92,8 +99,7 @@
                 // 3. Search match
                 let matchesSearch = true;
                 if (currentSearchQuery) {
-                    const query = currentSearchQuery.toLowerCase();
-                    matchesSearch = title.includes(query) || content.includes(query);
+                    matchesSearch = haystack.includes(currentSearchQuery.toLowerCase());
                 }
 
                 const isMatch = matchesCategory && matchesTag && matchesSearch;
@@ -130,12 +136,14 @@
         // across paginated days are all visible, not just those in the first batch.
         const isFiltered = currentCategory !== 'all' || currentTag || currentSearchQuery;
         if (isFiltered && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
+            let batches = 0;
             const loadUntilExhausted = () => {
-                if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
+                if (loadMoreBtn && loadMoreBtn.style.display !== 'none' && batches < 20) {
+                    batches++;
                     loadMoreBtn.click();
                     setTimeout(() => {
                         filterJournalEntries();
-                    }, 150);
+                    }, 25);
                 }
             };
             loadUntilExhausted();
@@ -242,7 +250,11 @@
             searchInput.addEventListener('input', function() {
                 currentSearchQuery = this.value.trim();
                 clearSearchBtn.classList.toggle('is-visible', currentSearchQuery.length > 0);
-                filterJournalEntries();
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(filterJournalEntries, 180);
+                if (window.loadJournalSearchIndex) {
+                    window.loadJournalSearchIndex().then(() => window.filterJournalEntries());
+                }
             });
 
             // Clear search button
@@ -293,6 +305,10 @@
                     filtersEl.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        }
+
+        if (currentSearchQuery && window.loadJournalSearchIndex) {
+            window.loadJournalSearchIndex().then(() => window.filterJournalEntries());
         }
 
         filterJournalEntries();

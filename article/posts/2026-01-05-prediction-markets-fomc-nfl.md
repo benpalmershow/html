@@ -1,8 +1,8 @@
 ---
 date: 2026-01-05T17:00:00
 category: prediction
+tags: ["fomc", "prediction-markets", "sports", "markets"]
 ---
-
 ### <i data-lucide='trophy' class='post-icon'></i> **NFL Playoff Odds**
 
 ### <i data-lucide='trending-up' class='post-icon'></i> **FOMC Rate Decision: Hold Heavily Favored**

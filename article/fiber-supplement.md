@@ -5,8 +5,8 @@ category: healthcare
 icon: leaf
 summary: A deep dive into how the supplement industry has turned basic nutrition into a $4 billion market, revealing the perverse incentives that drive companies to profit from our health problems
 link: article/fiber-supplement.md
+tags: ["healthcare"]
 ---
-
 <div class="article-wrapper">
 
 # The Fiber Supplement Scam: How Capitalism Commodifies Basic Nutrition

@@ -5,8 +5,8 @@ category: ipo
 icon: briefcase
 summary: Circle files for IPO as USDC stablecoin issuer targets public markets with regulatory-first approach
 ticker: CRCL
+tags: ["corporate", "ipo"]
 ---
-
 <div class="article-wrapper">
 
 # Circle IPO Filing

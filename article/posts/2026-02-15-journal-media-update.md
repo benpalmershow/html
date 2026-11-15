@@ -1,8 +1,8 @@
 ---
 date: 2026-02-14T18:00:00Z
 category: journal
+tags: ["dispatch", "housing", "personal"]
 ---
-
 ### <i data-lucide='landmark' class='post-icon'></i> **Debt %, CPI, Housing Market, and Wagner**
 
 ## Dept Interest

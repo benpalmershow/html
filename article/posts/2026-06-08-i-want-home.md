@@ -3,8 +3,8 @@ date: 2026-06-08T20:27:00Z
 category: poem
 poem-style: want-home
 summary: Airport alienation and the loss of human contact in a world of apps, AI, and automated everything.
+tags: ["poetry", "verse"]
 ---
-
 ## AI Air
 
 Can't get home  

@@ -1,8 +1,8 @@
 ---
 date: 2026-10-20T17:15:00Z
 category: policy
+tags: ["immigration", "labor", "discrimination", "doj", "eeoc"]
 ---
-
 ### ⚖️ DOJ and EEOC Secure $5M Settlement with Instacart Over Discrimination Against U.S. Workers
 
 DOJ and EEOC announced a $5,000,000 joint settlement with Instacart over allegations of discrimination against U.S. and American workers based on citizenship status and national origin in violation of the Immigration and Nationality Act and Title VII.

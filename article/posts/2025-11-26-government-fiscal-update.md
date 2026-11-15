@@ -1,8 +1,8 @@
 ---
 date: 2025-11-26T14:30:00
 category: government
+tags: ["policy", "fiscal"]
 ---
-
 ### **$38,360,841,844,745.79**
 
 

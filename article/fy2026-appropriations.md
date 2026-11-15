@@ -1,8 +1,8 @@
 ---
 date: 2026-01-31T10:00:00
 category: policy
+tags: ["fiscal"]
 ---
-
 ### FY2026 Appropriations: $1.639T Budget with Major Workforce Cuts
 
 By January 30, the Senate passed five of the 12 fiscal year 2026 appropriations bills on a bipartisan 71-29 vote, totaling **$1.639 trillion** in net base discretionary spending. The package also includes a two-week continuing resolution for the Department of Homeland Security to allow time for further negotiations. That's **$38.6 billion more** than FY2025, driven partially offset by a **10% federal workforce cut** and **$11.7 billion clawed back** from the IRS.

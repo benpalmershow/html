@@ -1,8 +1,8 @@
 ---
 date: 2025-12-01T11:00:00
 category: media
+tags: ["media-rec", "curation"]
 ---
-
 ###  **The Kids Know**
 
 A News Literacy Project study finds most teenagers harbor significant distrust in journalism and lack understanding of how reporting works. The findings underscores what researchers describe as "overwhelming cynicism" among a generation growing up with skepticism toward the press.

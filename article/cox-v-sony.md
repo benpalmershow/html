@@ -4,8 +4,8 @@ date: 2026-03-25
 category: legal
 icon: gavel
 summary: Supreme Court unanimously reverses billion-dollar judgment, holding ISPs cannot be held contributorily liable for customer infringement without proof of inducement or a service tailored to infringement
+tags: ["legal", "scotus"]
 ---
-
 <div class="article-wrapper">
 
 # Cox v. Sony: Can ISPs Be Liable for Customer Copyright Infringement?

@@ -1,8 +1,8 @@
 ---
 date: 2026-03-31T12:00:00Z
 category: government
+tags: ["regulation"]
 ---
-
 ### <i data-lucide='scale' class='post-icon'></i> **One Bad Taste**
 
 OneTaste founder Nicole Daedone was sentenced to nine years in prison and former Head of Sales Rachel Cherwitz to 78 months for forced labor conspiracy (E.D.N.Y., 23-CR-146). Judge Gujarati also imposed a $12 million forfeiture judgment against Daedone and awarded $887,877.64 in restitution to seven victims. Both were convicted by a federal jury in June 2025.

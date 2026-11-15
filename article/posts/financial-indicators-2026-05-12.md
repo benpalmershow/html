@@ -1,8 +1,8 @@
 ---
 title: Financial Indicators Update - May 12, 2026
 category: policy
+tags: ["financials", "regulation"]
 ---
-
 # Financial Indicators Update - May 12, 2026
 
 ## Latest Numbers

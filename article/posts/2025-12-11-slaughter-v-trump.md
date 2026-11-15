@@ -1,8 +1,8 @@
 ---
 date: 2025-12-11T12:30:00
 category: legal
+tags: ["legal", "trump"]
 ---
-
 ## **Conclusive and Preclusive**
 
 

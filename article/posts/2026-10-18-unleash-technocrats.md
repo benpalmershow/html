@@ -1,3 +1,7 @@
+---
+tags: ["nyt-critique", "technology", "politics", "altruism"]
+---
+
 
 > NYT: Unleash the Technocrats! 
 > Doc Riter: Okay, Blogger

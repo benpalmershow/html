@@ -1,8 +1,8 @@
 ---
 date: 2026-03-31T15:00:00Z
 category: government
+tags: ["policy", "fiscal"]
 ---
-
 Judge Richard Leon granted a preliminary injunction today blocking all physical development of the proposed White House ballroom at the former site of the East Wing. The order in *National Trust for Historic Preservation v. National Park Service* (D.D.C., 25-4316) bars demolition, site preparation, excavation, foundation work, and any other construction activity unless strictly necessary for safety and security of the White House grounds.
 
 <a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.287645/gov.uscourts.dcd.287645.61.0_1.pdf" target="_blank" rel="noopener noreferrer">Order (PDF)</a> · <a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.287645/gov.uscourts.dcd.287645.60.0_3.pdf" target="_blank" rel="noopener noreferrer">Memorandum & Opinion (PDF)</a>

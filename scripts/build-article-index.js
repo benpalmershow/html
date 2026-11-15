@@ -17,7 +17,10 @@ const MarkdownUtils = require('../js/markdown.js');
 const ROOT = path.join(__dirname, '..');
 const SITE_URL = 'https://howdystranger.net';
 const INDEX_FILE = path.join(ROOT, 'json/article-index.json');
+const SEARCH_FILE = path.join(ROOT, 'json/journal-search.json');
+const TAG_FILE = path.join(ROOT, 'json/journal-tags.json');
 const JOURNAL_FILE = path.join(ROOT, 'json/journal.json');
+const SEARCH_SNIPPET_LIMIT = 1200;
 
 // article/draft is intentionally excluded: drafts are not published.
 const SOURCE_DIRS = ['article', 'article/posts', 'article/docs', 'article/archive/posts'];
@@ -69,6 +72,19 @@ function parseFrontmatter(raw) {
   });
 
   return { meta, body: match[2].trim() };
+}
+
+function parseTags(raw) {
+  const text = String(raw || '').trim();
+  if (!text) return [];
+
+  const values = text.startsWith('[') && text.endsWith(']')
+    ? text.slice(1, -1).split(',')
+    : text.split(',');
+
+  return values
+    .map(value => value.trim().replace(/^["']|["']$/g, '').trim())
+    .filter(Boolean);
 }
 
 function parseDate(raw) {
@@ -184,6 +200,51 @@ function buildJournalLookup() {
   return lookup;
 }
 
+function syncJournalTags() {
+  if (!fs.existsSync(JOURNAL_FILE)) return { updated: 0, files: 0, tagsByFile: {} };
+
+  const journal = JSON.parse(fs.readFileSync(JOURNAL_FILE, 'utf8'));
+  const cache = new Map();
+  const tagsByFile = {};
+  let updated = 0;
+
+  journal.forEach(day => {
+    (day.entries || []).forEach(entry => {
+      if (!entry.file) return;
+
+      let tags;
+      if (cache.has(entry.file)) {
+        tags = cache.get(entry.file);
+      } else {
+        try {
+          const raw = fs.readFileSync(path.join(ROOT, entry.file), 'utf8');
+          tags = parseTags(parseFrontmatter(raw).meta.tags);
+        } catch (error) {
+          console.warn(`Could not read tags from ${entry.file}: ${error.message}`);
+          tags = null;
+        }
+        cache.set(entry.file, tags);
+        if (tags !== null) tagsByFile[entry.file] = tags;
+      }
+
+      // Tags are canonical in markdown frontmatter. Keep the journal feed lean
+      // by removing any duplicated tags from file-backed entries.
+      if (entry.tags !== undefined) {
+        delete entry.tags;
+        updated++;
+      }
+    });
+  });
+
+  if (updated) {
+    fs.writeFileSync(JOURNAL_FILE, JSON.stringify(journal, null, 2) + '\n', 'utf8');
+  }
+
+  fs.writeFileSync(TAG_FILE, JSON.stringify(tagsByFile) + '\n', 'utf8');
+
+  return { updated, files: cache.size, tagsByFile };
+}
+
 function buildRecord(relativePath, journalEntry) {
   const absolute = path.join(ROOT, relativePath);
   const raw = fs.readFileSync(absolute, 'utf8');
@@ -223,14 +284,40 @@ function buildRecord(relativePath, journalEntry) {
     dateTime: isoDateTime(date),
     category,
     summary,
-    tags: journalEntry ? journalEntry.tags : [],
+    tags: meta.tags !== undefined
+      ? parseTags(meta.tags)
+      : (journalEntry ? journalEntry.tags : []),
     wordCount,
     readingMinutes: Math.max(1, Math.round(wordCount / 220)),
     html
   };
 }
 
+function buildSearchIndex(journalLookup) {
+  const index = {};
+
+  journalLookup.forEach((_entry, relativePath) => {
+    try {
+      const raw = fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
+      const { body } = parseFrontmatter(raw);
+      const text = plainText(body).replace(/\s+/g, ' ').trim();
+      index[relativePath] = text.length > SEARCH_SNIPPET_LIMIT
+        ? text.slice(0, SEARCH_SNIPPET_LIMIT).trimEnd()
+        : text;
+    } catch (error) {
+      console.warn(`Could not index ${relativePath}: ${error.message}`);
+    }
+  });
+
+  return index;
+}
+
 function main() {
+  const synced = syncJournalTags();
+  if (synced.updated) {
+    console.log(`Removed duplicated tags from ${synced.updated} journal entries.`);
+  }
+
   const journalLookup = buildJournalLookup();
   const sources = collectSources();
 
@@ -273,7 +360,12 @@ function main() {
 
   fs.writeFileSync(INDEX_FILE, JSON.stringify(index, null, 2) + '\n', 'utf8');
 
+  const searchIndex = buildSearchIndex(journalLookup);
+  fs.writeFileSync(SEARCH_FILE, JSON.stringify(searchIndex) + '\n', 'utf8');
+
   console.log(`Indexed ${records.length} articles in ${path.relative(ROOT, INDEX_FILE)}`);
+  console.log(`Indexed ${Object.keys(searchIndex).length} journal sources in ${path.relative(ROOT, SEARCH_FILE)}`);
+  console.log(`Wrote ${Object.keys(synced.tagsByFile || {}).length} file tag maps in ${path.relative(ROOT, TAG_FILE)}`);
   if (skipped.length) {
     console.log(`Skipped ${skipped.length} short articles (ARTICLE_MIN_WORDS=${MIN_WORDS}); their feed links use journal.html anchors.`);
   }
@@ -282,10 +374,15 @@ function main() {
 module.exports = {
   SITE_URL,
   INDEX_FILE,
+  SEARCH_FILE,
+  TAG_FILE,
   buildJournalLookup,
   collectSources,
   buildRecord,
-  plainText
+  parseFrontmatter,
+  parseTags,
+  plainText,
+  syncJournalTags
 };
 
 if (require.main === module) main();

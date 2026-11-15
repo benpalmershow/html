@@ -1,8 +1,8 @@
 ---
 date: 2026-02-27T17:30:00Z
 category: economic
+tags: ["macro-data", "indicators"]
 ---
-
 ### <i data-lucide='briefcase' class='post-icon'></i> **PPI up 0.5%**
 
 Producer prices rose to 152.174 in January, up 0.5% from 151.446 in December, indicating upstream inflation pressure is still firm at the start of 2026.

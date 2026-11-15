@@ -1,7 +1,7 @@
 ---
 category: economic
+tags: ["cpi", "macro-data", "indicators"]
 ---
-
 ### <i data-lucide='chart-line' class='post-icon'></i> **CPI up 2.4% YoY**
 
 The Consumer Price Index (CPI) rose to 326.785 in February, up 0.5% from January.

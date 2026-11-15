@@ -6,8 +6,8 @@ icon: dollar-sign
 summary: Crypto firm Bullish seeks up to $4.2 billion valuation in US IPO with $629.3M raise
 ticker: BLSH
 link: https://www.reuters.com/business/crypto-firm-bullish-seeks-up-42-billion-valuation-us-ipo-2025-08-04/
+tags: ["corporate", "ipo"]
 ---
-
 <div class="article-wrapper">
 
 # Bullish Launches IPO Filing

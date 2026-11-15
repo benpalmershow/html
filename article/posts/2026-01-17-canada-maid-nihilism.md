@@ -1,8 +1,8 @@
 ---
 date: 2026-01-17T12:00:00Z
 category: healthcare
+tags: ["healthcare"]
 ---
-
 ### <i data-lucide="heart-handshake" class="post-icon"></i> **Canada Affirms Despair**
 
 A Canadian with mental illness is now claiming discrimination for being denied Medical Aid in Dying (MAID). What was framed as compassionate end-of-life care has become a cultural statement about the value of life itself.

@@ -1,8 +1,8 @@
 ---
 date: 2026-11-15T15:42:30Z
 category: journal
+tags: ["media", "narrative", "spacex"]
 ---
-
 ## Chopstick Picking
 
 All news is biased. The stories only matter because someone told you they do. Ignore most of them. Their intentions are for you to hate the world and then buy their ostensible solace. They market a problem and sell a solution. 

@@ -6,8 +6,8 @@ icon: trending-up
 summary: UBS upgrade spurs Peloton stock rally ahead of Q4 2025 earnings, with analyst setting $11 price target suggesting 80% upside potential
 ticker: PTON
 link: https://finance.yahoo.com/quote/PTON
+tags: ["corporate"]
 ---
-
 <div class="article-wrapper">
 
 # Peloton Stock Rallies on UBS Upgrade

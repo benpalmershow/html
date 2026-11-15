@@ -1,8 +1,8 @@
 ---
 date: 2026-04-06T18:35:00Z
 category: government
+tags: ["politics", "trump"]
 ---
-
 ### <i data-lucide='landmark' class='post-icon'></i> **Trump Accounts Update**
 
 The Treasury has designated BNY Mellon as financial agent to support the new Trump Accounts program. BNY has partnered with Robinhood, which will serve as brokerage and initial trustee.

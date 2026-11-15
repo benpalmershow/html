@@ -147,38 +147,38 @@
    <main id="main-content" tabindex="-1">
     <div id="lastUpdated" class="last-updated">Last Updated: Loading&hellip;</div>
 
-     <div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
+<div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category" style="contain: layout; min-height: 60px;">
 
-              
-     
-             <div class="filters" id="filter-buttons">
-               <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
-               <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
-               <div class="skeleton-filter-btn" style="width: 70px; height: 42px;"></div>
-               <div class="skeleton-filter-btn" style="width: 90px; height: 42px;"></div>
-               <div class="skeleton-filter-btn" style="width: 110px; height: 42px;"></div>
-               <div class="skeleton-filter-btn" style="width: 60px; height: 42px;"></div>
+               
+      
+              <div class="filters" id="filter-buttons" style="scrollbar-gutter: stable;">
+                <div class="skeleton-filter-btn" style="width: 42px; height: 42px; flex-shrink: 0;"></div>
+                <div class="skeleton-filter-btn" style="width: 42px; height: 42px; flex-shrink: 0;"></div>
+                <div class="skeleton-filter-btn" style="width: 70px; height: 42px; flex-shrink: 0;"></div>
+                <div class="skeleton-filter-btn" style="width: 90px; height: 42px; flex-shrink: 0;"></div>
+                <div class="skeleton-filter-btn" style="width: 110px; height: 42px; flex-shrink: 0;"></div>
+                <div class="skeleton-filter-btn" style="width: 60px; height: 42px; flex-shrink: 0;"></div>
+              </div>
+           </div>
+
+<div class="content">
+         <div class="categories" id="categories" style="scrollbar-gutter: stable;">
+           <!-- Indicator categories rendered here by renderDashboard -->
+           <div id="indicator-categories" style="contain: layout; min-height: 600px;">
+             <div class="category skeleton-category" style="min-height: 200px;">
+               <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
+               <div class="indicators-grid" style="min-height: 180px;">
+                 <div class="skeleton-card" style="height: 160px;"></div>
+                 <div class="skeleton-card" style="height: 160px;"></div>
+               </div>
              </div>
-          </div>
-
-        <div class="content">
-        <div class="categories" id="categories">
-          <!-- Indicator categories rendered here by renderDashboard -->
-          <div id="indicator-categories">
-            <div class="category skeleton-category">
-              <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
-              <div class="indicators-grid">
-                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
-                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
-              </div>
-            </div>
-            <div class="category skeleton-category">
-              <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
-              <div class="indicators-grid">
-                <div class="skeleton-card"><div class="skeleton-line long"></div><div class="skeleton-line medium"></div><div class="skeleton-line short"></div></div>
-              </div>
-            </div>
-          </div>
+             <div class="category skeleton-category" style="min-height: 200px;">
+               <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
+               <div class="indicators-grid" style="min-height: 180px;">
+                 <div class="skeleton-card" style="height: 160px;"></div>
+               </div>
+             </div>
+           </div>
 
         <noscript>
           <div class="category" style="padding:2rem;text-align:center;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--card-radius);">
@@ -187,33 +187,33 @@
           </div>
         </noscript>
 
-          <!-- Elections Section -->
-          <div id="fec-campaign-anchor"></div>
-          <div class="category" id="fec-campaign" data-category="Elections">
-            <h2 class="category-title">
-              <span class="category-icon"><i data-lucide="vote"></i></span>
-              <button type="button" class="category-name category-sort-btn" data-category="Elections" title="Reset sort for Elections">Elections</button>
-            </h2>
-            <div class="indicators-grid" id="fecCardsContainer" style="contain: layout;">
-              <div class="skeleton-card" style="height: 160px;"></div>
-              <div class="skeleton-card" style="height: 160px;"></div>
-              <div class="skeleton-card" style="height: 160px;"></div>
-            </div>
-          </div>
+<!-- Elections Section -->
+           <div id="fec-campaign-anchor"></div>
+           <div class="category" id="fec-campaign" data-category="Elections" style="contain: layout;">
+             <h2 class="category-title">
+               <span class="category-icon"><i data-lucide="vote"></i></span>
+               <button type="button" class="category-name category-sort-btn" data-category="Elections" title="Reset sort for Elections">Elections</button>
+             </h2>
+             <div class="indicators-grid" id="fecCardsContainer" style="contain: layout; scrollbar-gutter: stable; min-height: 200px;">
+               <div class="skeleton-card" style="height: 160px;"></div>
+               <div class="skeleton-card" style="height: 160px;"></div>
+               <div class="skeleton-card" style="height: 160px;"></div>
+             </div>
+           </div>
 
-          <!-- 13F Holdings Section -->
-          <div id="latest-13f-filings-anchor"></div>
-          <div class="category" id="latest-13f-filings" data-category="13F Holdings">
-            <h2 class="category-title">
-              <span class="category-icon"><i data-lucide="building-2"></i></span>
-              <button type="button" class="category-name category-sort-btn" data-category="13F Holdings" title="Reset sort for 13F Holdings">13F Holdings</button>
-            </h2>
-              <div class="indicators-grid" id="firmCardsContainer" style="contain: layout;">
-                <div class="skeleton-card" style="height: 200px;"></div>
-                <div class="skeleton-card" style="height: 200px;"></div>
-                <div class="skeleton-card" style="height: 200px;"></div>
-              </div>
-          </div>
+           <!-- 13F Holdings Section -->
+           <div id="latest-13f-filings-anchor"></div>
+           <div class="category" id="latest-13f-filings" data-category="13F Holdings" style="contain: layout;">
+             <h2 class="category-title">
+               <span class="category-icon"><i data-lucide="building-2"></i></span>
+               <button type="button" class="category-name category-sort-btn" data-category="13F Holdings" title="Reset sort for 13F Holdings">13F Holdings</button>
+             </h2>
+               <div class="indicators-grid" id="firmCardsContainer" style="contain: layout; scrollbar-gutter: stable; min-height: 250px;">
+                 <div class="skeleton-card" style="height: 200px;"></div>
+                 <div class="skeleton-card" style="height: 200px;"></div>
+                 <div class="skeleton-card" style="height: 200px;"></div>
+               </div>
+           </div>
 
 
         </div>
@@ -312,16 +312,16 @@
   <script src="js/lucide-loader.js?v=20260816" defer></script>
 
 <!-- Chart Modal Popup - lazy loaded via JS when needed -->
-    <dialog id="chartModal" class="chart-modal" aria-labelledby="chartModalTitle" style="contain: layout;">
-      <div class="chart-modal-content">
-        <div class="chart-modal-range-picker" id="chartRangePicker">
+    <dialog id="chartModal" class="chart-modal" aria-labelledby="chartModalTitle" style="contain: layout; aspect-ratio: 16 / 9; min-width: 320px;">
+      <div class="chart-modal-content" style="display: flex; flex-direction: column; height: 100%;">
+        <div class="chart-modal-range-picker" id="chartRangePicker" style="flex-shrink: 0;">
           <h3 id="chartModalTitle" class="chart-modal-title">Chart View</h3>
           <button class="range-btn" data-range="3">3M</button>
           <button class="range-btn" data-range="6">6M</button>
           <button class="range-btn active" data-range="12">1Y</button>
           <button id="closeChartModal" aria-label="Close chart dialog">&times;</button>
         </div>
-        <div class="chart-modal-body" style="min-height: 400px;">
+        <div class="chart-modal-body" style="flex: 1; min-height: 0; display: flex; flex-direction: column;">
         </div>
       </div>
     </dialog>

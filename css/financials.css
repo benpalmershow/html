@@ -1,4 +1,4 @@
-.last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin: 2px 0 0; opacity: 0.75; min-height: 20px; }
+.last-updated { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin: 2px 0 0; opacity: 0.75; min-height: 1.25rem; line-height: 1.25; }
 
 .indicator.expanded .indicator-agency, .indicator.expanded .indicator-content { margin-bottom: 6px; }
 
@@ -14,11 +14,11 @@
 
 /* PAGE HEADER */
 
-.categories { display: grid; gap: 15px; content-visibility: auto; contain-intrinsic-size: auto 1200px; }
+.categories { display: grid; gap: 15px; content-visibility: auto; contain-intrinsic-size: auto 1200px; scrollbar-gutter: stable; }
 
 .content { min-height: 80dvh; }
 
-.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; contain: layout style paint; container: category / inline-size; }
+.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; contain: layout style paint; container: category / inline-size; content-visibility: auto; contain-intrinsic-size: auto 400px; }
 
 .category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 
@@ -244,8 +244,8 @@
     padding-bottom: 8px;
 }
 
-.earnings-card { contain: layout style; overflow: visible; overflow-x: hidden; content-visibility: visible; contain-intrinsic-size: auto; }
-.earnings-card .data-rows-container { max-height: 0; overflow: clip; }
+.earnings-card { contain: layout style; overflow: visible; overflow-x: hidden; content-visibility: auto; contain-intrinsic-size: 380px 300px; }
+.earnings-card .data-rows-container { max-height: 0; overflow: clip; scrollbar-gutter: stable; }
 .earnings-card.expanded .data-rows-container { max-height: none; overflow: visible; }
 
 .earnings-company { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
@@ -916,6 +916,7 @@
 .category[data-category="World Cup"] .indicators-grid {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+  scrollbar-gutter: stable;
 }
 
 .category[data-category="World Cup"] .indicator {
@@ -1574,6 +1575,8 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
   background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255,255,255,0.04) 100%);
   overflow: clip;
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 220px 160px;
 }
 
 .skeleton-card::before {
@@ -1700,7 +1703,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 .firm-delta.change-negative { color: #ef4444; }
 .firm-delta.change-flat { color: var(--text-muted); }
 
-#firmCardsContainer { min-height: 400px; }
+#firmCardsContainer { min-height: 400px; scrollbar-gutter: stable; }
 
 /* ========================================
     ELECTIONS STYLES
@@ -1709,6 +1712,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 .category[data-category="Elections"] .indicators-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     min-height: unset;
+    scrollbar-gutter: stable;
 }
 
 @media (max-width: 480px) {

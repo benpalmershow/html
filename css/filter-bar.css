@@ -49,6 +49,7 @@
     gap: 8px;
     flex-wrap: nowrap;
     min-width: min-content;
+    scrollbar-gutter: stable;
 }
 
 /* Filter Button */

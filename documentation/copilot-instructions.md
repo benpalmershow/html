@@ -15,6 +15,7 @@ npx serve .
 - `json/media.json` - media catalog rendered by `js/media.js`.
 - `json/13f-holdings.json` - 13F holdings; updated by `scripts/get_latest_13f_holdings_final.py`.
 - `json/article-index.json` - generated manifest for `article.html?slug=<slug>`.
+- `json/journal-tags.json` - generated file-to-tags map for file-backed journal entries.
 - `json/journal-search.json` - generated plain-text index used by the journal search box.
 
 **Publishing workflow**
@@ -30,8 +31,8 @@ tags: ["housing", "regulation"]
 ```
 
 3. Add the journal entry with `title`, `category`, `subcategory`, `type`, `file`, and `collapsed`. Do not duplicate the title as a heading inside the markdown body.
-4. Tags for file-backed entries are canonical in the markdown frontmatter. `scripts/build-article-index.js` syncs them into `json/journal.json`; never hand-edit file-backed tags in `json/journal.json`.
-5. Run `npm run generate:content` after adding or editing a markdown file. It syncs tags, rebuilds `json/article-index.json`, `json/journal-search.json`, the RSS feed, and sitemaps.
+4. Tags for file-backed entries are canonical in the markdown frontmatter. `scripts/build-article-index.js` writes them to `json/journal-tags.json` and removes duplicated `tags` from those journal entries.
+5. Run `npm run generate:content` after adding or editing a markdown file. It rebuilds the tag map, `json/article-index.json`, `json/journal-search.json`, the RSS feed, and sitemaps.
 6. Run `npm run validate` before publishing. It checks journal schema, date order, canonical categories, tag sync, local links, and article/feed consistency.
 
 **Journal entry fields**
@@ -88,7 +89,7 @@ Always verify odds live on Kalshi/Polymarket before editing, include `lastUpdate
 
 **Quick PR checklist**
 - Journal entries and their markdown files are updated together.
-- File-backed tags live in markdown frontmatter; `npm run generate:content` syncs `json/journal.json`.
+- File-backed tags live in markdown frontmatter; `npm run generate:content` writes `json/journal-tags.json`.
 - `npm run validate` passes.
 - Source URLs and `lastUpdated` timestamps are present for financial or prediction-market data.
 - Avoid em dashes in prose and the "not X, it's Y" inversion.

@@ -20,7 +20,7 @@ const INDEX_FILE = path.join(ROOT, 'json/article-index.json');
 const SEARCH_FILE = path.join(ROOT, 'json/journal-search.json');
 const TAG_FILE = path.join(ROOT, 'json/journal-tags.json');
 const JOURNAL_FILE = path.join(ROOT, 'json/journal.json');
-const SEARCH_SNIPPET_LIMIT = 1200;
+const SEARCH_SNIPPET_LIMIT = 800;
 
 // article/draft is intentionally excluded: drafts are not published.
 const SOURCE_DIRS = ['article', 'article/posts', 'article/docs', 'article/archive/posts'];

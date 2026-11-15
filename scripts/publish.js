@@ -141,7 +141,6 @@ function updateJournal(filePath, title, collapsed, category, tags) {
     collapsed: collapsed !== false,
     category: canonical,
     subcategory: defaultSubcategory(canonical),
-    tags: tags || [],
     type: 'essay',
     time: getJournalTime()
   };

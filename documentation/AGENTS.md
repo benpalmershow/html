@@ -116,4 +116,4 @@ Every new entry in `json/journal.json` should include:
 - **content** - the entry body (can be omitted if using `file` or `link`)
 - **link** - optional URL reference for external sources
 
-For file-backed entries, tags are canonical in the markdown frontmatter. Run `npm run generate:content` to sync them into `json/journal.json`, then `npm run validate` to confirm the journal schema, date order, and tag sync.
+For file-backed entries, tags are canonical in the markdown frontmatter. Run `npm run generate:content` to rebuild `json/journal-tags.json` (the journal feed does not duplicate file-backed tags), then `npm run validate` to confirm the journal schema, date order, and tag map.

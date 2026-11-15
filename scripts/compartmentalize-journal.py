@@ -287,6 +287,7 @@ def main():
             entry['subcategory'] = subcat
             entry['type'] = entry_type
             if entry.get('file'):
+                entry.pop('tags', None)
                 write_frontmatter_tags(entry['file'], tags)
             else:
                 entry['tags'] = tags

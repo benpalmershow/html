@@ -110,6 +110,18 @@ function validateContentIndexes() {
       const titleDates = new Map();
       let previousDate = null;
 
+      const tagPath = path.join(ROOT, 'json/journal-tags.json');
+      let fileTags = {};
+      if (fs.existsSync(tagPath)) {
+        try {
+          fileTags = JSON.parse(read(tagPath));
+        } catch (error) {
+          fail(`json/journal-tags.json is invalid JSON: ${error.message}`);
+        }
+      } else {
+        fail('json/journal-tags.json is missing (run: npm run generate:content)');
+      }
+
       journal.forEach((day, dayIndex) => {
         const label = day.date || `day ${dayIndex}`;
         if (!day.date) {
@@ -169,21 +181,22 @@ function validateContentIndexes() {
           if (entry.time && !JOURNAL_TIME_RE.test(entry.time)) {
             fail(`json/journal.json ${entryLabel} has invalid time "${entry.time}"`);
           }
-          if (entry.tags !== undefined) {
+          if (entry.file) {
+            if (entry.tags !== undefined) {
+              fail(`json/journal.json ${entryLabel} must not duplicate tags; tags live in ${entry.file}`);
+            }
+            const mdTags = frontmatterTags(entry.file);
+            const mapTags = Array.isArray(fileTags[entry.file]) ? fileTags[entry.file] : null;
+            if (mdTags !== null && mapTags === null) {
+              fail(`json/journal-tags.json is missing tags for ${entry.file}; run npm run generate:content`);
+            } else if (mdTags !== null && mapTags !== null && mdTags.join('|') !== mapTags.join('|')) {
+              fail(`json/journal-tags.json does not match ${entry.file}; run npm run generate:content`);
+            }
+          } else if (entry.tags !== undefined) {
             if (!Array.isArray(entry.tags) || entry.tags.some(tag => typeof tag !== 'string')) {
               fail(`json/journal.json ${entryLabel} tags must be an array of strings`);
             } else if (entry.tags.length > 5) {
               warn(`json/journal.json ${entryLabel} has ${entry.tags.length} tags (max 5)`);
-            }
-          }
-
-          if (entry.file) {
-            const mdTags = frontmatterTags(entry.file);
-            if (mdTags !== null) {
-              const journalTags = Array.isArray(entry.tags) ? entry.tags : [];
-              if (mdTags.join('|') !== journalTags.join('|')) {
-                fail(`json/journal.json ${entryLabel} tags do not match ${entry.file}; run npm run generate:content`);
-              }
             }
           }
         });

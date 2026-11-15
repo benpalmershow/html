@@ -58,7 +58,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ### Content and automation flows
 - Journal-first publishing is the default (`documentation/posts-prd.md`): add new routine items to `json/journal.json` first; long-form lives in `article/` and is linked from journal entries.
-- For file-backed journal entries, tags are canonical in the markdown frontmatter. `npm run generate:content` syncs them into `json/journal.json` and rebuilds the search index.
+- For file-backed journal entries, tags are canonical in the markdown frontmatter. `npm run generate:content` writes them to `json/journal-tags.json`; `json/journal.json` does not duplicate them.
 - Article pages are rendered by one page, not one file per article:
   - `article.html?slug=<slug>` loads `json/article-index.json`, fetches the markdown source, and renders it with `js/markdown.js`.
   - `scripts/build-article-index.js` writes that manifest from every `article/**/*.md` (excluding `article/draft/`).

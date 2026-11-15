@@ -67,7 +67,7 @@ tags: ["housing", "regulation"]
 ---
 ```
 
-`npm run generate:content` syncs those tags into `json/journal.json`. Do not hand-edit file-backed tags in `json/journal.json`; edit the markdown and regenerate.
+`npm run generate:content` writes those tags to `json/journal-tags.json` and removes any duplicated `tags` from file-backed entries in `json/journal.json`. Do not store file-backed tags in `json/journal.json`; edit the markdown and regenerate.
 
 ### File-backed entries (markdown)
 

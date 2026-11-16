@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-16T02:42:41.903761Z",
+  "lastUpdated": "2026-11-16T03:35:22.174218Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -5664,8 +5664,10 @@
       "game_time": "Nov 16, 2026 1:20 AM ET",
       "game_time_iso": "2026-11-16T01:20:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-pit-cin-2026-11-16",
-      "lastUpdated": "2026-11-16T02:40:08.580552Z",
+      "lastUpdated": "2026-11-16T03:32:11.061638Z",
       "week": 10,
+      "winner": "CIN",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "PIT_win_odds": "36",
@@ -5680,24 +5682,28 @@
           "CIN_win_odds": "64"
         },
         "2026-11-16": {
-          "PIT_win_odds": "8",
-          "CIN_win_odds": "92"
+          "PIT_win_odds": "0",
+          "CIN_win_odds": "100"
         },
         "2026-11-09": {
-          "PIT_win_odds": "11",
-          "CIN_win_odds": "89"
+          "PIT_win_odds": "5",
+          "CIN_win_odds": "95"
         },
         "2026-11-13": {
-          "PIT_win_odds": "10",
-          "CIN_win_odds": "90"
+          "PIT_win_odds": "5",
+          "CIN_win_odds": "95"
         },
         "2026-11-14": {
-          "PIT_win_odds": "7",
-          "CIN_win_odds": "93"
+          "PIT_win_odds": "5",
+          "CIN_win_odds": "95"
+        },
+        "2026-11-17": {
+          "PIT_win_odds": "0",
+          "CIN_win_odds": "100"
         }
       },
-      "PIT_win_odds": "8",
-      "CIN_win_odds": "92"
+      "PIT_win_odds": "0",
+      "CIN_win_odds": "100"
     },
     {
       "id": "nfl-lac-bal-2026-11-17",

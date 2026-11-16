@@ -115,7 +115,6 @@
 .indicator:hover {
     box-shadow: var(--shadow-card-hover);
     transform: translateY(-2px);
-    border-color: var(--category-accent, var(--logo-teal));
     border-color: color-mix(in srgb, var(--category-accent, var(--logo-teal)) 50%, transparent);
 }
 
@@ -155,10 +154,23 @@
 /* Accent rail removed */
 
 /* Badge sits in its own row for earnings cards, inline for others. */
-.new-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--color-secondary); padding: 1px 4px; border-radius: 2px; line-height: 1.1; animation: badgePulse 1.4s ease-in-out 3; }
-.week-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--color-secondary); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
-.latest-month-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: color-mix(in oklab, var(--color-primary), white 30%); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
-.game-final-badge { display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: color-mix(in oklab, var(--color-primary), white 30%); padding: 1px 4px; border-radius: 2px; line-height: 1.1; }
+.new-badge, .week-badge, .latest-month-badge, .game-final-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 2px;
+    line-height: 1.1;
+}
+.new-badge { animation: badgePulse 1.4s ease-in-out 3; }
+.new-badge, .week-badge { background: var(--color-secondary); }
+.latest-month-badge, .game-final-badge { background: color-mix(in oklab, var(--color-primary), white 30%); }
 
 .badge-link { cursor: pointer; text-decoration: none; color: inherit; }
 .badge-link:hover { opacity: 0.85; }
@@ -226,20 +238,6 @@
    render on ONE line instead of wrapping or truncating. The indicators-grid
    already has overflow-x: auto, so a long title just widens the scroll row. */
 .month-value.game-title { white-space: nowrap; overflow: visible; text-overflow: unset; text-align: left; font-size: 0.8rem; line-height: 1.3; }
-
-/* Prediction Markets cards carry long one-line matchup titles; give them a
-   wider floor so the title stays on one line instead of collapsing the card. */
-.category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
-
-/* Earnings cards */
-.category[data-category="Earnings"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
-
-/* Give earnings cards more space in Latest Updates view */
-.category[data-category="latest-updates"] .indicators-grid {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-    overflow-x: visible;
-    padding-bottom: 8px;
-}
 
 .earnings-card { contain: layout style; overflow: visible; overflow-x: hidden; content-visibility: auto; contain-intrinsic-size: 380px 300px; }
 .earnings-card .data-rows-container { max-height: 0; overflow: clip; scrollbar-gutter: stable; }
@@ -345,9 +343,9 @@
 
 .earnings-subheading { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 12px 0 6px; padding-bottom: 4px; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.25); }
 
-.earnings-positive { color: #16a34a; font-weight: 700; background: rgba(34, 197, 94, 0.1); padding: 1px 4px; border-radius: 3px; }
-
-.earnings-negative { color: #dc2626; font-weight: 700; background: rgba(239, 68, 68, 0.1); padding: 1px 4px; border-radius: 3px; }
+.earnings-positive, .earnings-negative { font-weight: 700; padding: 1px 4px; border-radius: 3px; }
+.earnings-positive { color: #16a34a; background: rgba(34, 197, 94, 0.1); }
+.earnings-negative { color: #dc2626; background: rgba(239, 68, 68, 0.1); }
 
 /* QUARTERLY FINANCIALS TABLE */
 .quarterly-section {
@@ -905,16 +903,9 @@
 .prediction-history-row:hover { background-color: rgba(var(--logo-teal-rgb), 0.05); }
 .prediction-history-date { cursor: help; }
 
-.category[data-category="Financial Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 .category[data-category="Financial Markets"] .indicator { max-width: 100%; min-width: 0; }
 .category[data-category="Financial Markets"] .indicator-name { overflow-wrap: break-word; word-break: break-word; font-size: 0.8rem; }
 .category[data-category="Financial Markets"] .month-value { font-size: 0.75rem; }
-
-.category[data-category="World Cup"] .indicators-grid {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  scrollbar-gutter: stable;
-}
 
 .category[data-category="World Cup"] .indicator {
   padding: 0.6rem;
@@ -963,7 +954,7 @@
 .chart-overlay-error-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.5; }
 
 /* ICON BUTTON STYLING */
-.info-btn, .chart-btn {
+.info-btn, .chart-btn, .category-filter-btn {
   background: none;
   border: none;
   padding: 4px;
@@ -980,13 +971,13 @@
   z-index: 2;
 }
 
-.info-btn:hover, .chart-btn:hover {
+.info-btn:hover, .chart-btn:hover, .category-filter-btn:hover {
   background: var(--bg-secondary);
   color: var(--logo-teal);
   transform: scale(1.1);
 }
 
-.info-btn:active, .chart-btn:active {
+.info-btn:active, .chart-btn:active, .category-filter-btn:active {
   transform: scale(0.95);
 }
 
@@ -995,49 +986,16 @@
   color: #000000;
 }
 
-.info-btn i, .info-btn svg, .chart-btn i, .chart-btn svg {
+.info-btn i, .info-btn svg, .chart-btn i, .chart-btn svg,
+.category-filter-btn i, .category-filter-btn svg {
   width: 16px;
   height: 16px;
   pointer-events: none;
-}
-
-/* Category filter button (lucide category icon; filters the dashboard) */
-.category-filter-btn {
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-  width: 24px;
-  height: 24px;
-  color: var(--text-muted);
-  position: relative;
-  z-index: 2;
-}
-
-.category-filter-btn:hover {
-  background: var(--bg-secondary);
-  color: var(--logo-teal);
-  transform: scale(1.1);
-}
-
-.category-filter-btn:active {
-  transform: scale(0.95);
 }
 
 .category-filter-btn:focus-visible {
   outline: 2px solid var(--logo-teal);
   outline-offset: 1px;
-}
-
-.category-filter-btn i, .category-filter-btn svg {
-  width: 16px;
-  height: 16px;
-  pointer-events: none;
 }
 
 /* Explanation callout (info button) */
@@ -1076,14 +1034,95 @@
 
 
 /* RESPONSIVE */
-@media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; min-height: 600px; overflow-x: auto; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.46rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.95rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.75rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
+@media (max-width: 768px) { .indicators-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; min-height: 600px; overflow-x: auto; } .indicator { padding: 0.6rem; border-radius: 6px; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.46rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.95rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.75rem; } .latest-data-row { padding: 2px 0; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
 @media (max-width: 600px) {
   .indicators-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 0.8rem; overflow-x: auto; min-height: auto; }
-  .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; }
+  .category[data-category="Earnings"] .indicators-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+  .category[data-category="Earnings"] .earnings-price-row { padding: 5px 6px; }
+  .category[data-category="Earnings"] .earnings-price-value { font-size: 1rem; }
+  .category[data-category="Earnings"] .earnings-day-change { font-size: 0.7rem; margin-inline-start: 6px; }
+  .category[data-category="Earnings"] .earnings-eps-row { padding: 4px 6px; }
+  .category[data-category="Earnings"] .earnings-actual { font-size: 0.85rem; }
+  .category[data-category="Earnings"] .earnings-surprise-pill { font-size: 0.6rem; padding: 1px 4px; }
+  .category[data-category="Earnings"] .earnings-company-row { padding: 4px 6px; }
+  .category[data-category="Earnings"] .earnings-company-name { font-size: 0.8rem; }
+  .category[data-category="Earnings"] .earnings-sector { font-size: 0.5rem; padding: 1px 3px; }
+  .category[data-category="Earnings"] .earnings-stats-grid { grid-template-columns: 1fr; gap: 4px; padding: 8px 10px; }
+  .category[data-category="Earnings"] .stat-item { font-size: 0.65rem; padding: 3px 0; }
+  .category[data-category="Earnings"] .quarterly-section { padding: 6px; }
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table { font-size: 0.62rem; }
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table th,
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table td { padding: 4px 5px; }
+  .category[data-category="Earnings"] .growth-timeline { padding: 8px 10px; gap: 4px; }
+  .category[data-category="Earnings"] .growth-timeline-item { font-size: 0.65rem; }
+  .category[data-category="Earnings"] .funding-timeline { padding: 8px 10px; gap: 4px; }
+  .category[data-category="Earnings"] .funding-timeline-header { font-size: 0.6rem; gap: 4px; }
+  .category[data-category="Earnings"] .funding-timeline-item { font-size: 0.62rem; gap: 4px; }
+  .category[data-category="Earnings"] .competitors-section { padding: 8px 10px; font-size: 0.68rem; }
+  .category[data-category="Earnings"] .s1-links-section { padding: 6px 8px; gap: 6px; }
+  .category[data-category="Earnings"] .s1-link { font-size: 0.62rem; padding: 1px 4px; }
+  .category[data-category="Earnings"] .earnings-growth-header { font-size: 0.55rem; gap: 3px; padding: 0 3px 3px; }
+  .category[data-category="Earnings"] .earnings-growth-row { font-size: 0.65rem; gap: 3px; padding: 2px 3px; }
+  .category[data-category="Earnings"] .earnings-subheading { font-size: 0.6rem; margin: 8px 0 4px; }
+  .category[data-category="Earnings"] .accounting-note { padding: 8px 10px; font-size: 0.7rem; }
+  .category[data-category="Earnings"] .accounting-note-header { font-size: 0.62rem; margin-bottom: 4px; }
+  .category[data-category="Earnings"] .accounting-note-body { font-size: 0.72rem; line-height: 1.4; }
 }
 
-@media (max-width: 480px) { .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } .indicators-grid { grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 0.7rem; overflow-x: auto; min-height: auto; } .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } .indicator-name { font-size: 0.8rem; } .indicator-header { gap: 3px; } .indicator-agency { font-size: 0.7rem; } .latest-data-row { padding: 2px 0; } .data-label, .data-value { font-size: 0.75rem; } .data-row { padding: 2px 0; gap: 3px; } .month-label { font-size: 0.6rem; } .month-value { font-size: 0.63rem; gap: 2px; } .month-value.game-title { font-size: 0.6rem; } .category { padding: 0.75rem 0.5rem; } .change-indicators { gap: 4px; } .change-metric-btn { padding: 8px 5px 3px; font-size: 0.6rem; } .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } .change-metric-value { font-size: 0.65rem; } .latest-data-row, .last-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; } .category[data-category="Earnings"] .indicators-grid { grid-template-columns: 1fr; } .month-value.game-title { white-space: normal; overflow-wrap: break-word; text-overflow: unset; line-height: 1.25; } }
+@media (max-width: 480px) { 
+  .page-title { padding-left: 0.5rem; padding-right: 0.5rem; } 
+  .indicators-grid { grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 0.7rem; overflow-x: auto; min-height: auto; } 
+  .indicator { padding: 0.4rem; border-radius: 6px; gap: 0.2rem; } 
+  .indicator-name { font-size: 0.8rem; } 
+  .indicator-header { gap: 3px; } 
+  .indicator-agency { font-size: 0.7rem; } 
+  .latest-data-row { padding: 2px 0; } 
+  .data-label, .data-value { font-size: 0.75rem; } 
+  .data-row { padding: 2px 0; gap: 3px; } 
+  .month-label { font-size: 0.6rem; } 
+  .month-value { font-size: 0.63rem; gap: 2px; } 
+  .month-value.game-title { font-size: 0.6rem; } 
+  .category { padding: 0.75rem 0.5rem; } 
+  .change-indicators { gap: 4px; } 
+  .change-metric-btn { padding: 8px 5px 3px; font-size: 0.6rem; } 
+  .change-metric-title { font-size: 0.5rem; letter-spacing: 0.04em; text-transform: none; } 
+  .change-metric-value { font-size: 0.65rem; } 
+  .latest-data-row, .last-data-row { padding: 3px 4px; } 
+  .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.85rem; } 
+  .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.68rem; } 
+  .month-value.game-title { white-space: normal; overflow-wrap: break-word; text-overflow: unset; line-height: 1.25; }
+  .category[data-category="Earnings"] .indicators-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+  .category[data-category="Earnings"] .earnings-price-row { padding: 4px 5px; }
+  .category[data-category="Earnings"] .earnings-price-value { font-size: 0.95rem; }
+  .category[data-category="Earnings"] .earnings-day-change { font-size: 0.65rem; margin-inline-start: 4px; }
+  .category[data-category="Earnings"] .earnings-eps-row { padding: 3px 5px; }
+  .category[data-category="Earnings"] .earnings-actual { font-size: 0.8rem; }
+  .category[data-category="Earnings"] .earnings-surprise-pill { font-size: 0.55rem; padding: 1px 3px; }
+  .category[data-category="Earnings"] .earnings-company-row { padding: 3px 5px; }
+  .category[data-category="Earnings"] .earnings-company-name { font-size: 0.75rem; }
+  .category[data-category="Earnings"] .earnings-sector { font-size: 0.48rem; padding: 1px 3px; }
+  .category[data-category="Earnings"] .earnings-stats-grid { grid-template-columns: 1fr; gap: 3px; padding: 6px 8px; }
+  .category[data-category="Earnings"] .stat-item { font-size: 0.6rem; padding: 2px 0; }
+  .category[data-category="Earnings"] .quarterly-section { padding: 5px; }
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table { font-size: 0.58rem; }
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table th,
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table td { padding: 3px 4px; }
+  .category[data-category="Earnings"] .growth-timeline { padding: 6px 8px; gap: 3px; }
+  .category[data-category="Earnings"] .growth-timeline-item { font-size: 0.6rem; }
+  .category[data-category="Earnings"] .funding-timeline { padding: 6px 8px; gap: 3px; }
+  .category[data-category="Earnings"] .funding-timeline-header { font-size: 0.55rem; gap: 3px; }
+  .category[data-category="Earnings"] .funding-timeline-item { font-size: 0.58rem; gap: 3px; }
+  .category[data-category="Earnings"] .competitors-section { padding: 6px 8px; font-size: 0.62rem; }
+  .category[data-category="Earnings"] .s1-links-section { padding: 5px 6px; gap: 5px; }
+  .category[data-category="Earnings"] .s1-link { font-size: 0.58rem; padding: 1px 3px; }
+  .category[data-category="Earnings"] .earnings-growth-header { font-size: 0.5rem; gap: 2px; padding: 0 2px 2px; }
+  .category[data-category="Earnings"] .earnings-growth-row { font-size: 0.6rem; gap: 2px; padding: 2px 2px; }
+  .category[data-category="Earnings"] .earnings-subheading { font-size: 0.55rem; margin: 6px 0 3px; }
+  .category[data-category="Earnings"] .accounting-note { padding: 6px 8px; font-size: 0.65rem; }
+  .category[data-category="Earnings"] .accounting-note-header { font-size: 0.58rem; margin-bottom: 3px; }
+  .category[data-category="Earnings"] .accounting-note-body { font-size: 0.68rem; line-height: 1.35; }
+}
 
 @media (max-width: 375px) { .category { padding: 0.6rem 0.4rem; } .indicators-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.6rem; } }
 
@@ -1249,7 +1288,6 @@
 
 @media (max-width: 600px) {
   .indicators-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 0.8rem; overflow-x: auto; min-height: auto; }
-  .category[data-category="Prediction Markets"] .indicators-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
@@ -1294,8 +1332,6 @@
 .hormuz-monthly-name { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .hormuz-monthly-val { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
 .hormuz-monthly--low { color: #dc2626; }
-.sparkline-container { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: clip; border-radius: inherit; }
-.sparkline-container canvas { position: absolute; bottom: 0; left: 0; width: 100% !important; height: 100% !important; }
 .indicator:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 2px; }
 .indicator-deep-link { outline: 2px solid var(--logo-teal); outline-offset: 2px; animation: deep-link-pulse 1.8s ease-out; }
 @keyframes deep-link-pulse { 0% { outline-color: var(--logo-teal); } 100% { outline-color: transparent; } }
@@ -1420,32 +1456,18 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 }
 
 /* Inline style replacements */
-.trend-arrow {
-    margin-inline-start: 4px;
-    font-size: 11px;
-}
-
-.trend-arrow-small {
-    margin-inline-start: 2px;
-    font-size: 11px;
-}
+.trend-arrow, .trend-arrow-small { font-size: 11px; }
+.trend-arrow { margin-inline-start: 4px; }
+.trend-arrow-small { margin-inline-start: 2px; }
 
 .prediction-bar-row-inline {
     display: flex;
     align-items: center;
 }
 
-.prediction-value {
-    font-size: 12px;
-    margin-inline-end: 4px;
-    font-weight: bold;
-}
-
-.prediction-value-left {
-    font-size: 12px;
-    margin-inline-start: 4px;
-    font-weight: bold;
-}
+.prediction-value, .prediction-value-left { font-size: 12px; font-weight: bold; }
+.prediction-value { margin-inline-end: 4px; }
+.prediction-value-left { margin-inline-start: 4px; }
 
 .prediction-bar-track-inline {
     height: 10px;
@@ -1478,35 +1500,16 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     justify-content: space-around;
 }
 
-.prediction-yes-value {
+.prediction-yes-value, .prediction-no-value, .prediction-hold-value, .prediction-hike-value, .prediction-cut-value {
     font-size: 11px;
     font-weight: 700;
-    color: #22c55e;
 }
 
-.prediction-no-value {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ef4444;
-}
-
-.prediction-hold-value {
-    font-size: 11px;
-    font-weight: 700;
-    color: #3b82f6;
-}
-
-.prediction-hike-value {
-    font-size: 11px;
-    font-weight: 700;
-    color: #f59e0b;
-}
-
-.prediction-cut-value {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ef4444;
-}
+.prediction-yes-value { color: #22c55e; }
+.prediction-no-value { color: #ef4444; }
+.prediction-hold-value { color: #3b82f6; }
+.prediction-hike-value { color: #f59e0b; }
+.prediction-cut-value { color: #ef4444; }
 
 .prediction-history-item {
     display: flex;
@@ -1705,12 +1708,6 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 /* ========================================
     ELECTIONS STYLES
     ======================================== */
-
-.category[data-category="Elections"] .indicators-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    min-height: unset;
-    scrollbar-gutter: stable;
-}
 
 @media (max-width: 480px) {
     html[data-initial-filter="Elections"] #fec-campaign,

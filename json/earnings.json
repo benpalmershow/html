@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T16:35:08.992280Z",
+  "lastUpdated": "2026-11-16T00:50:40.426102Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -10,24 +10,25 @@
     "FOUR",
     "DAL",
     "ANT",
+    "BYDIF",
     "JAPAY"
   ],
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-11-07T16:35:08.993051Z",
+      "fetchedAt": "2026-11-16T00:50:40.426866Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "marketCap": 4506795900928.0,
-      "enterpriseValue": 4474414825472.0,
-      "trailingPE": 23.6,
-      "forwardPE": 11.73,
-      "pegRatio": 0.23,
-      "priceToSalesTrailing12Months": 14.88,
-      "priceToBook": 19.68,
+      "marketCap": 3932339044352.0,
+      "enterpriseValue": 3901076013056.0,
+      "trailingPE": 20.59,
+      "forwardPE": 10.27,
+      "pegRatio": 0.2,
+      "priceToSalesTrailing12Months": 12.98,
+      "priceToBook": 17.17,
       "grossMargins": 0.75,
-      "operatingMargins": 0.66,
+      "operatingMargins": 0.65,
       "profitMargins": 0.64,
       "returnOnAssets": 0.54,
       "returnOnEquity": 1.17,
@@ -46,66 +47,46 @@
       "quickRatio": 2.92,
       "bookValue": 9.48,
       "sharesOutstanding": 24147000000.0,
-      "floatShares": 23133108000.0,
+      "floatShares": 23133590000.0,
       "impliedSharesOutstanding": 24147000000.0,
       "dividendRate": 1.0,
-      "dividendYield": 0.54,
+      "dividendYield": 0.61,
       "payoutRatio": 0.04,
       "fiveYearAvgDividendYield": 0.03,
       "targetHighPrice": 515.0,
-      "targetLowPrice": 180.0,
-      "targetMeanPrice": 327.14,
-      "targetMedianPrice": 315.0,
-      "recommendationMean": 1.29,
-      "numberOfAnalystOpinions": 58.0,
+      "targetLowPrice": 170.0,
+      "targetMeanPrice": 276.56,
+      "targetMedianPrice": 275.0,
+      "recommendationMean": 1.62,
+      "numberOfAnalystOpinions": 53.0,
       "beta": 2.25,
       "fiftyTwoWeekHigh": 243.37,
-      "fiftyTwoWeekLow": 164.27,
-      "fiftyDayAverage": 219.81,
-      "twoHundredDayAverage": 204.67,
-      "averageVolume": 117341326.0,
-      "averageDailyVolume10Day": 136071280.0,
-      "previousClose": 181.6,
-      "open": 191.1,
-      "regularMarketOpen": 191.1,
-      "dayHigh": 194.9,
-      "dayLow": 185.22,
-      "regularMarketDayHigh": 194.9,
-      "regularMarketDayLow": 185.22,
-      "regularMarketVolume": 179308722.0,
-      "averageVolume10days": 136071280.0,
-      "sharesShort": 301622687.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 294225803.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyTwoWeekLow": 148.8,
+      "fiftyDayAverage": 214.65,
+      "twoHundredDayAverage": 204.19,
+      "averageVolume": 146134656.0,
+      "averageDailyVolume10Day": 318932360.0,
+      "previousClose": 166.19,
+      "open": 169.89,
+      "regularMarketOpen": 169.89,
+      "dayHigh": 170.0,
+      "dayLow": 158.39,
+      "regularMarketDayHigh": 170.0,
+      "regularMarketDayLow": 158.39,
+      "regularMarketVolume": 365796552.0,
+      "averageVolume10days": 318932360.0,
+      "sharesShort": 279579505.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 311389688.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 42000.0,
       "industry": "Semiconductors",
       "currency": "USD",
-      "recommendationKey": "strong_buy",
+      "recommendationKey": "buy",
       "exDividendDate": "2026-09-10",
       "lastDividendDate": "2026-09-10",
-      "latestPrice": 186.64,
+      "latestPrice": 162.85,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 187.7
-        },
-        {
-          "date": "2025-11-10",
-          "close": 198.57
-        },
-        {
-          "date": "2025-11-11",
-          "close": 192.7
-        },
-        {
-          "date": "2025-11-12",
-          "close": 193.34
-        },
-        {
-          "date": "2025-11-13",
-          "close": 186.41
-        },
         {
           "date": "2025-11-14",
           "close": 189.72
@@ -1089,6 +1070,26 @@
         {
           "date": "2026-11-06",
           "close": 186.64
+        },
+        {
+          "date": "2026-11-09",
+          "close": 178.67
+        },
+        {
+          "date": "2026-11-10",
+          "close": 168.89
+        },
+        {
+          "date": "2026-11-11",
+          "close": 173.73
+        },
+        {
+          "date": "2026-11-12",
+          "close": 166.19
+        },
+        {
+          "date": "2026-11-13",
+          "close": 162.85
         }
       ],
       "nextEarningsDate": "2026-11-17",
@@ -1205,19 +1206,19 @@
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-11-07T16:35:10.512603Z",
+      "fetchedAt": "2026-11-16T00:50:42.056391Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "marketCap": 1415956922368.0,
-      "enterpriseValue": 1387554930688.0,
-      "trailingPE": 393.65,
-      "forwardPE": 165.9,
-      "pegRatio": 4.18,
-      "priceToSalesTrailing12Months": 13.67,
-      "priceToBook": 15.86,
+      "marketCap": 1542445203456.0,
+      "enterpriseValue": 1514043211776.0,
+      "trailingPE": 428.81,
+      "forwardPE": 180.72,
+      "pegRatio": 4.55,
+      "priceToSalesTrailing12Months": 14.89,
+      "priceToBook": 17.28,
       "grossMargins": 0.19,
-      "operatingMargins": 0.05,
+      "operatingMargins": 0.03,
       "profitMargins": 0.03,
       "returnOnAssets": 0.01,
       "returnOnEquity": 0.04,
@@ -1244,56 +1245,36 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 600.0,
       "targetLowPrice": 128.11,
-      "targetMeanPrice": 413.1,
+      "targetMeanPrice": 412.48,
       "targetMedianPrice": 436.0,
-      "recommendationMean": 2.27,
+      "recommendationMean": 2.3,
       "numberOfAnalystOpinions": 40.0,
       "beta": 1.74,
       "fiftyTwoWeekHigh": 498.83,
       "fiftyTwoWeekLow": 297.38,
-      "fiftyDayAverage": 372.14,
-      "twoHundredDayAverage": 383.87,
-      "averageVolume": 37759267.0,
-      "averageDailyVolume10Day": 43253010.0,
-      "previousClose": 343.69,
-      "open": 348.92,
-      "regularMarketOpen": 348.92,
-      "dayHigh": 363.84,
-      "dayLow": 347.6,
-      "regularMarketDayHigh": 363.84,
-      "regularMarketDayLow": 347.6,
-      "regularMarketVolume": 36550707.0,
-      "averageVolume10days": 43253010.0,
-      "sharesShort": 69350469.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 68862357.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 374.74,
+      "twoHundredDayAverage": 382.73,
+      "averageVolume": 37643070.0,
+      "averageDailyVolume10Day": 38366910.0,
+      "previousClose": 397.45,
+      "open": 401.94,
+      "regularMarketOpen": 401.94,
+      "dayHigh": 404.4,
+      "dayLow": 385.83,
+      "regularMarketDayHigh": 404.4,
+      "regularMarketDayLow": 385.83,
+      "regularMarketVolume": 32392965.0,
+      "averageVolume10days": 38366910.0,
+      "sharesShort": 65956693.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 70931312.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 134785.0,
       "industry": "Auto Manufacturers",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 358.22,
+      "latestPrice": 390.22,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 429.52
-        },
-        {
-          "date": "2025-11-10",
-          "close": 445.23
-        },
-        {
-          "date": "2025-11-11",
-          "close": 439.62
-        },
-        {
-          "date": "2025-11-12",
-          "close": 430.6
-        },
-        {
-          "date": "2025-11-13",
-          "close": 401.99
-        },
         {
           "date": "2025-11-14",
           "close": 404.35
@@ -2277,6 +2258,26 @@
         {
           "date": "2026-11-06",
           "close": 358.22
+        },
+        {
+          "date": "2026-11-09",
+          "close": 378.05
+        },
+        {
+          "date": "2026-11-10",
+          "close": 379.78
+        },
+        {
+          "date": "2026-11-11",
+          "close": 390.84
+        },
+        {
+          "date": "2026-11-12",
+          "close": 397.45
+        },
+        {
+          "date": "2026-11-13",
+          "close": 390.22
         }
       ],
       "nextEarningsDate": "2027-01-27",
@@ -2389,19 +2390,19 @@
     },
     {
       "ticker": "NYT",
-      "fetchedAt": "2026-11-07T16:35:11.376352Z",
+      "fetchedAt": "2026-11-16T00:50:42.959077Z",
       "source": "Yahoo Finance",
       "company": "The New York Times Company",
       "sector": "Communication Services",
-      "marketCap": 10931129344.0,
-      "enterpriseValue": 10258262016.0,
-      "trailingPE": 27.34,
-      "forwardPE": 21.68,
+      "marketCap": 11642707968.0,
+      "enterpriseValue": 10969841664.0,
+      "trailingPE": 29.12,
+      "forwardPE": 22.97,
       "pegRatio": 3.79,
-      "priceToSalesTrailing12Months": 3.62,
-      "priceToBook": 5.36,
+      "priceToSalesTrailing12Months": 3.86,
+      "priceToBook": 5.71,
       "grossMargins": 0.51,
-      "operatingMargins": 0.16,
+      "operatingMargins": 0.17,
       "profitMargins": 0.14,
       "returnOnAssets": 0.11,
       "returnOnEquity": 0.2,
@@ -2420,10 +2421,10 @@
       "quickRatio": 1.34,
       "bookValue": 12.75,
       "sharesOutstanding": 159124622.0,
-      "floatShares": 132524754.0,
+      "floatShares": 132289693.0,
       "impliedSharesOutstanding": 159905346.0,
       "dividendRate": 0.92,
-      "dividendYield": 1.35,
+      "dividendYield": 1.26,
       "payoutRatio": 0.33,
       "fiveYearAvgDividendYield": 0.95,
       "targetHighPrice": 85.0,
@@ -2435,51 +2436,31 @@
       "beta": 0.86,
       "fiftyTwoWeekHigh": 87.1,
       "fiftyTwoWeekLow": 58.87,
-      "fiftyDayAverage": 67.28,
-      "twoHundredDayAverage": 73.32,
-      "averageVolume": 2577021.0,
-      "averageDailyVolume10Day": 3317980.0,
-      "previousClose": 65.57,
-      "open": 65.09,
-      "regularMarketOpen": 65.09,
-      "dayHigh": 68.52,
-      "dayLow": 65.13,
-      "regularMarketDayHigh": 68.52,
-      "regularMarketDayLow": 65.13,
-      "regularMarketVolume": 3226994.0,
-      "averageVolume10days": 3317980.0,
-      "sharesShort": 18693319.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 13533377.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 67.76,
+      "twoHundredDayAverage": 73.31,
+      "averageVolume": 2557351.0,
+      "averageDailyVolume10Day": 3058900.0,
+      "previousClose": 71.46,
+      "open": 71.69,
+      "regularMarketOpen": 71.69,
+      "dayHigh": 73.57,
+      "dayLow": 71.65,
+      "regularMarketDayHigh": 73.57,
+      "regularMarketDayLow": 71.65,
+      "regularMarketVolume": 1347103.0,
+      "averageVolume10days": 3058900.0,
+      "sharesShort": 18606093.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 18363364.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 6000.0,
       "industry": "Publishing",
       "currency": "USD",
       "recommendationKey": "buy",
       "exDividendDate": "2026-10-07",
       "lastDividendDate": "2026-10-07",
-      "latestPrice": 68.36,
+      "latestPrice": 72.81,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 60.62
-        },
-        {
-          "date": "2025-11-10",
-          "close": 61.84
-        },
-        {
-          "date": "2025-11-11",
-          "close": 62.28
-        },
-        {
-          "date": "2025-11-12",
-          "close": 62.49
-        },
-        {
-          "date": "2025-11-13",
-          "close": 63.72
-        },
         {
           "date": "2025-11-14",
           "close": 63.17
@@ -3463,6 +3444,26 @@
         {
           "date": "2026-11-06",
           "close": 68.36
+        },
+        {
+          "date": "2026-11-09",
+          "close": 72.17
+        },
+        {
+          "date": "2026-11-10",
+          "close": 72.58
+        },
+        {
+          "date": "2026-11-11",
+          "close": 72.7
+        },
+        {
+          "date": "2026-11-12",
+          "close": 71.46
+        },
+        {
+          "date": "2026-11-13",
+          "close": 72.81
         }
       ],
       "nextEarningsDate": "2027-02-03",
@@ -3575,19 +3576,19 @@
     },
     {
       "ticker": "SPCX",
-      "fetchedAt": "2026-11-07T16:35:12.317647Z",
+      "fetchedAt": "2026-11-16T00:50:43.958508Z",
       "source": "Yahoo Finance",
       "company": "Space Exploration Technologies Corp.",
       "sector": "Industrials",
-      "marketCap": 1823529500672.0,
-      "enterpriseValue": 1772892454912.0,
-      "trailingPE": 583.78,
-      "forwardPE": 50.41,
+      "marketCap": 1889261846528.0,
+      "enterpriseValue": 1838624800768.0,
+      "trailingPE": 604.83,
+      "forwardPE": 50.73,
       "pegRatio": null,
-      "priceToSalesTrailing12Months": 56.91,
-      "priceToBook": 10.31,
+      "priceToSalesTrailing12Months": 58.96,
+      "priceToBook": 10.69,
       "grossMargins": 0.57,
-      "operatingMargins": 0.28,
+      "operatingMargins": 0.02,
       "profitMargins": -0.09,
       "returnOnAssets": null,
       "returnOnEquity": null,
@@ -3606,7 +3607,7 @@
       "quickRatio": 2.94,
       "bookValue": 13.02,
       "sharesOutstanding": 8246541218.0,
-      "floatShares": 3047047454.0,
+      "floatShares": 3047183264.0,
       "impliedSharesOutstanding": 13581063709.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -3614,35 +3615,35 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 800.0,
       "targetLowPrice": 70.0,
-      "targetMeanPrice": 255.06,
+      "targetMeanPrice": 256.41,
       "targetMedianPrice": 245.0,
       "recommendationMean": 1.7,
       "numberOfAnalystOpinions": 37.0,
       "beta": null,
       "fiftyTwoWeekHigh": 225.64,
       "fiftyTwoWeekLow": 104.83,
-      "fiftyDayAverage": 149.18,
-      "twoHundredDayAverage": 145.17,
-      "averageVolume": 97980481.0,
-      "averageDailyVolume10Day": 107459810.0,
-      "previousClose": 123.62,
-      "open": 130.94,
-      "regularMarketOpen": 130.94,
-      "dayHigh": 135.32,
-      "dayLow": 128.57,
-      "regularMarketDayHigh": 135.32,
-      "regularMarketDayLow": 128.57,
-      "regularMarketVolume": 114507519.0,
-      "averageVolume10days": 107459810.0,
-      "sharesShort": 167294863.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 162252035.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 148.9,
+      "twoHundredDayAverage": 144.97,
+      "averageVolume": 95022671.0,
+      "averageDailyVolume10Day": 105962550.0,
+      "previousClose": 139.94,
+      "open": 140.17,
+      "regularMarketOpen": 140.17,
+      "dayHigh": 142.24,
+      "dayLow": 136.64,
+      "regularMarketDayHigh": 142.24,
+      "regularMarketDayLow": 136.64,
+      "regularMarketVolume": 78515464.0,
+      "averageVolume10days": 105962550.0,
+      "sharesShort": 141051437.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 180996777.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 21000.0,
       "industry": "Aerospace & Defense",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 134.27,
+      "latestPrice": 139.11,
       "priceHistory": [
         {
           "date": "2026-06-12",
@@ -4055,10 +4056,30 @@
         {
           "date": "2026-11-06",
           "close": 134.27
+        },
+        {
+          "date": "2026-11-09",
+          "close": 142.07
+        },
+        {
+          "date": "2026-11-10",
+          "close": 143.09
+        },
+        {
+          "date": "2026-11-11",
+          "close": 139.75
+        },
+        {
+          "date": "2026-11-12",
+          "close": 139.94
+        },
+        {
+          "date": "2026-11-13",
+          "close": 139.11
         }
       ],
       "nextEarningsDate": "2027-02-09",
-      "estimatedEPS": 0.38,
+      "estimatedEPS": 0.39,
       "recentEarnings": [
         {
           "reportedDate": "2026-10-20",
@@ -4109,17 +4130,17 @@
     },
     {
       "ticker": "CRWD",
-      "fetchedAt": "2026-11-07T16:35:13.191693Z",
+      "fetchedAt": "2026-11-16T00:50:45.312957Z",
       "source": "Yahoo Finance",
       "company": "CrowdStrike Holdings, Inc.",
       "sector": "Technology",
-      "marketCap": 222091460608.0,
-      "enterpriseValue": 217935593472.0,
-      "trailingPE": 3615.0,
-      "forwardPE": 134.69,
-      "pegRatio": 5.6,
-      "priceToSalesTrailing12Months": 41.16,
-      "priceToBook": 43.53,
+      "marketCap": 232033878016.0,
+      "enterpriseValue": 227878010880.0,
+      "trailingPE": 3776.83,
+      "forwardPE": 140.72,
+      "pegRatio": 5.85,
+      "priceToSalesTrailing12Months": 43.0,
+      "priceToBook": 45.48,
       "grossMargins": 0.75,
       "operatingMargins": -0.02,
       "profitMargins": 0.01,
@@ -4140,7 +4161,7 @@
       "quickRatio": 1.37,
       "bookValue": 4.98,
       "sharesOutstanding": 1023934842.0,
-      "floatShares": 1007807868.0,
+      "floatShares": 1007848826.0,
       "impliedSharesOutstanding": 1023934842.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -4148,56 +4169,36 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 325.0,
       "targetLowPrice": 132.0,
-      "targetMeanPrice": 249.68,
+      "targetMeanPrice": 250.18,
       "targetMedianPrice": 250.0,
       "recommendationMean": 1.66,
       "numberOfAnalystOpinions": 50.0,
       "beta": 1.15,
       "fiftyTwoWeekHigh": 286.99,
       "fiftyTwoWeekLow": 85.68,
-      "fiftyDayAverage": 243.78,
-      "twoHundredDayAverage": 170.24,
-      "averageVolume": 10056375.0,
-      "averageDailyVolume10Day": 9860140.0,
-      "previousClose": 217.2,
-      "open": 230.69,
-      "regularMarketOpen": 230.69,
-      "dayHigh": 230.69,
-      "dayLow": 216.14,
-      "regularMarketDayHigh": 230.69,
-      "regularMarketDayLow": 216.14,
-      "regularMarketVolume": 10970495.0,
-      "averageVolume10days": 9860140.0,
-      "sharesShort": 24026908.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 27929552.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 244.92,
+      "twoHundredDayAverage": 173.05,
+      "averageVolume": 10069110.0,
+      "averageDailyVolume10Day": 8819000.0,
+      "previousClose": 229.87,
+      "open": 235.5,
+      "regularMarketOpen": 235.5,
+      "dayHigh": 235.85,
+      "dayLow": 219.35,
+      "regularMarketDayHigh": 235.85,
+      "regularMarketDayLow": 219.35,
+      "regularMarketVolume": 6575059.0,
+      "averageVolume10days": 8819000.0,
+      "sharesShort": 21939047.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 26196357.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 11706.0,
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 216.9,
+      "latestPrice": 226.61,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 134.95
-        },
-        {
-          "date": "2025-11-10",
-          "close": 139.38
-        },
-        {
-          "date": "2025-11-11",
-          "close": 139.18
-        },
-        {
-          "date": "2025-11-12",
-          "close": 136.46
-        },
-        {
-          "date": "2025-11-13",
-          "close": 132.45
-        },
         {
           "date": "2025-11-14",
           "close": 134.39
@@ -5181,6 +5182,26 @@
         {
           "date": "2026-11-06",
           "close": 216.9
+        },
+        {
+          "date": "2026-11-09",
+          "close": 228.58
+        },
+        {
+          "date": "2026-11-10",
+          "close": 225.76
+        },
+        {
+          "date": "2026-11-11",
+          "close": 229.06
+        },
+        {
+          "date": "2026-11-12",
+          "close": 229.87
+        },
+        {
+          "date": "2026-11-13",
+          "close": 226.61
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -5295,19 +5316,19 @@
     },
     {
       "ticker": "OKTA",
-      "fetchedAt": "2026-11-07T16:35:14.151381Z",
+      "fetchedAt": "2026-11-16T00:50:46.732425Z",
       "source": "Yahoo Finance",
       "company": "Okta, Inc.",
       "sector": "Technology",
-      "marketCap": 29490542592.0,
-      "enterpriseValue": 27244541952.0,
-      "trailingPE": 101.62,
-      "forwardPE": 38.53,
-      "pegRatio": 1.21,
-      "priceToSalesTrailing12Months": 9.6,
-      "priceToBook": 4.23,
+      "marketCap": 31969503232.0,
+      "enterpriseValue": 29723502592.0,
+      "trailingPE": 110.16,
+      "forwardPE": 41.77,
+      "pegRatio": 1.31,
+      "priceToSalesTrailing12Months": 10.4,
+      "priceToBook": 4.58,
       "grossMargins": 0.78,
-      "operatingMargins": 0.13,
+      "operatingMargins": 0.08,
       "profitMargins": 0.1,
       "returnOnAssets": 0.02,
       "returnOnEquity": 0.04,
@@ -5341,49 +5362,29 @@
       "beta": 0.72,
       "fiftyTwoWeekHigh": 235.0,
       "fiftyTwoWeekLow": 62.66,
-      "fiftyDayAverage": 196.81,
-      "twoHundredDayAverage": 126.78,
-      "averageVolume": 4275662.0,
-      "averageDailyVolume10Day": 7054970.0,
-      "previousClose": 171.16,
-      "open": 176.41,
-      "regularMarketOpen": 176.41,
-      "dayHigh": 178.95,
-      "dayLow": 164.18,
-      "regularMarketDayHigh": 178.95,
-      "regularMarketDayLow": 164.18,
-      "regularMarketVolume": 5289897.0,
-      "averageVolume10days": 7054970.0,
-      "sharesShort": 6959996.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 8205342.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 198.1,
+      "twoHundredDayAverage": 129.05,
+      "averageVolume": 4269873.0,
+      "averageDailyVolume10Day": 6679800.0,
+      "previousClose": 182.54,
+      "open": 185.73,
+      "regularMarketOpen": 185.73,
+      "dayHigh": 185.98,
+      "dayLow": 175.0,
+      "regularMarketDayHigh": 185.98,
+      "regularMarketDayLow": 175.0,
+      "regularMarketVolume": 2433038.0,
+      "averageVolume10days": 6679800.0,
+      "sharesShort": 6592564.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 7927408.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 6366.0,
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 168.69,
+      "latestPrice": 182.87,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 85.21
-        },
-        {
-          "date": "2025-11-10",
-          "close": 85.74
-        },
-        {
-          "date": "2025-11-11",
-          "close": 85.58
-        },
-        {
-          "date": "2025-11-12",
-          "close": 84.69
-        },
-        {
-          "date": "2025-11-13",
-          "close": 83.76
-        },
         {
           "date": "2025-11-14",
           "close": 83.94
@@ -6367,6 +6368,26 @@
         {
           "date": "2026-11-06",
           "close": 168.69
+        },
+        {
+          "date": "2026-11-09",
+          "close": 177.57
+        },
+        {
+          "date": "2026-11-10",
+          "close": 178.36
+        },
+        {
+          "date": "2026-11-11",
+          "close": 182.25
+        },
+        {
+          "date": "2026-11-12",
+          "close": 182.54
+        },
+        {
+          "date": "2026-11-13",
+          "close": 182.87
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -6479,19 +6500,19 @@
     },
     {
       "ticker": "FOUR",
-      "fetchedAt": "2026-11-07T16:35:15.230635Z",
+      "fetchedAt": "2026-11-16T00:50:48.832265Z",
       "source": "Yahoo Finance",
       "company": "Shift4 Payments, Inc.",
       "sector": "Technology",
-      "marketCap": 3471086848.0,
-      "enterpriseValue": 8707535872.0,
-      "trailingPE": 52.96,
-      "forwardPE": 7.59,
-      "pegRatio": 0.32,
-      "priceToSalesTrailing12Months": 0.7,
-      "priceToBook": 7.08,
+      "marketCap": 3355989760.0,
+      "enterpriseValue": 8768990208.0,
+      "trailingPE": 53.95,
+      "forwardPE": 7.95,
+      "pegRatio": 0.36,
+      "priceToSalesTrailing12Months": 0.68,
+      "priceToBook": 7.21,
       "grossMargins": 0.35,
-      "operatingMargins": 0.1,
+      "operatingMargins": 0.08,
       "profitMargins": 0.02,
       "returnOnAssets": 0.03,
       "returnOnEquity": 0.07,
@@ -6509,66 +6530,46 @@
       "currentRatio": 1.23,
       "quickRatio": 0.86,
       "bookValue": 6.21,
-      "sharesOutstanding": 78960120.0,
-      "floatShares": 41829213.0,
-      "impliedSharesOutstanding": 78960120.0,
+      "sharesOutstanding": 74943944.0,
+      "floatShares": 40054540.0,
+      "impliedSharesOutstanding": 74943944.0,
       "dividendRate": null,
       "dividendYield": 0.0,
       "payoutRatio": 0.0,
       "fiveYearAvgDividendYield": null,
-      "targetHighPrice": 94.0,
-      "targetLowPrice": 40.0,
-      "targetMeanPrice": 50.5,
+      "targetHighPrice": 77.0,
+      "targetLowPrice": 38.0,
+      "targetMeanPrice": 49.41,
       "targetMedianPrice": 47.5,
       "recommendationMean": 2.12,
       "numberOfAnalystOpinions": 22.0,
       "beta": 1.48,
       "fiftyTwoWeekHigh": 75.34,
       "fiftyTwoWeekLow": 34.56,
-      "fiftyDayAverage": 40.3,
-      "twoHundredDayAverage": 45.77,
-      "averageVolume": 2119085.0,
-      "averageDailyVolume10Day": 2893940.0,
-      "previousClose": 42.79,
-      "open": 41.23,
-      "regularMarketOpen": 41.23,
-      "dayHigh": 44.69,
-      "dayLow": 40.8,
-      "regularMarketDayHigh": 44.69,
-      "regularMarketDayLow": 40.8,
-      "regularMarketVolume": 3625006.0,
-      "averageVolume10days": 2893940.0,
-      "sharesShort": 13989027.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 14843102.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 40.35,
+      "twoHundredDayAverage": 45.3,
+      "averageVolume": 2194625.0,
+      "averageDailyVolume10Day": 3371180.0,
+      "previousClose": 41.52,
+      "open": 41.63,
+      "regularMarketOpen": 41.63,
+      "dayHigh": 44.87,
+      "dayLow": 41.42,
+      "regularMarketDayHigh": 44.87,
+      "regularMarketDayLow": 41.42,
+      "regularMarketVolume": 2901629.0,
+      "averageVolume10days": 3371180.0,
+      "sharesShort": 13987280.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 14595059.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 6300.0,
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
       "exDividendDate": "2026-10-15",
-      "latestPrice": 43.96,
+      "latestPrice": 44.78,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 66.15
-        },
-        {
-          "date": "2025-11-10",
-          "close": 70.93
-        },
-        {
-          "date": "2025-11-11",
-          "close": 71.4
-        },
-        {
-          "date": "2025-11-12",
-          "close": 73.18
-        },
-        {
-          "date": "2025-11-13",
-          "close": 72.26
-        },
         {
           "date": "2025-11-14",
           "close": 69.88
@@ -7552,16 +7553,36 @@
         {
           "date": "2026-11-06",
           "close": 43.96
+        },
+        {
+          "date": "2026-11-09",
+          "close": 45.01
+        },
+        {
+          "date": "2026-11-10",
+          "close": 43.73
+        },
+        {
+          "date": "2026-11-11",
+          "close": 43.56
+        },
+        {
+          "date": "2026-11-12",
+          "close": 41.52
+        },
+        {
+          "date": "2026-11-13",
+          "close": 44.78
         }
       ],
       "nextEarningsDate": "2027-02-25",
-      "estimatedEPS": 1.35,
+      "estimatedEPS": 1.33,
       "recentEarnings": [
         {
           "reportedDate": "2026-11-05",
           "actualEPS": 1.49,
-          "estimatedEPS": 1.37,
-          "surprisePercent": 9.14,
+          "estimatedEPS": 1.36,
+          "surprisePercent": 9.28,
           "source": "Yahoo Finance"
         },
         {
@@ -7660,17 +7681,17 @@
     },
     {
       "ticker": "DAL",
-      "fetchedAt": "2026-11-07T16:35:16.447760Z",
+      "fetchedAt": "2026-11-16T00:50:50.427503Z",
       "source": "Yahoo Finance",
       "company": "Delta Air Lines, Inc.",
       "sector": "Industrials",
-      "marketCap": 57369956352.0,
-      "enterpriseValue": 73208111104.0,
-      "trailingPE": 17.41,
-      "forwardPE": 11.95,
+      "marketCap": 56744943616.0,
+      "enterpriseValue": 72586477568.0,
+      "trailingPE": 17.22,
+      "forwardPE": 11.8,
       "pegRatio": 0.21,
-      "priceToSalesTrailing12Months": 0.8,
-      "priceToBook": 2.53,
+      "priceToSalesTrailing12Months": 0.79,
+      "priceToBook": 2.51,
       "grossMargins": 0.18,
       "operatingMargins": 0.07,
       "profitMargins": 0.05,
@@ -7691,66 +7712,46 @@
       "quickRatio": 0.24,
       "bookValue": 34.41,
       "sharesOutstanding": 657912380.0,
-      "floatShares": 650092696.0,
+      "floatShares": 650171219.0,
       "impliedSharesOutstanding": 657912380.0,
       "dividendRate": 0.86,
-      "dividendYield": 0.99,
+      "dividendYield": 1.0,
       "payoutRatio": 0.16,
       "fiveYearAvgDividendYield": 2.12,
       "targetHighPrice": 125.0,
       "targetLowPrice": 53.0,
-      "targetMeanPrice": 100.78,
+      "targetMeanPrice": 100.98,
       "targetMedianPrice": 101.5,
       "recommendationMean": 1.32,
       "numberOfAnalystOpinions": 24.0,
       "beta": 1.42,
       "fiftyTwoWeekHigh": 95.68,
       "fiftyTwoWeekLow": 55.27,
-      "fiftyDayAverage": 80.79,
-      "twoHundredDayAverage": 77.1,
-      "averageVolume": 6489192.0,
-      "averageDailyVolume10Day": 6500460.0,
-      "previousClose": 85.36,
-      "open": 86.0,
-      "regularMarketOpen": 86.0,
-      "dayHigh": 87.85,
-      "dayLow": 85.7,
-      "regularMarketDayHigh": 87.85,
-      "regularMarketDayLow": 85.7,
-      "regularMarketVolume": 6120637.0,
-      "averageVolume10days": 6500460.0,
-      "sharesShort": 21112539.0,
-      "sharesShortPreviousMonthDate": 1789430400.0,
-      "sharesShortPriorMonth": 26222815.0,
-      "dateShortInterest": 1792022400.0,
+      "fiftyDayAverage": 81.93,
+      "twoHundredDayAverage": 77.67,
+      "averageVolume": 6664081.0,
+      "averageDailyVolume10Day": 6676720.0,
+      "previousClose": 86.55,
+      "open": 87.47,
+      "regularMarketOpen": 87.47,
+      "dayHigh": 87.81,
+      "dayLow": 85.92,
+      "regularMarketDayHigh": 87.81,
+      "regularMarketDayLow": 85.92,
+      "regularMarketVolume": 5003673.0,
+      "averageVolume10days": 6676720.0,
+      "sharesShort": 15990280.0,
+      "sharesShortPreviousMonthDate": 1790726400.0,
+      "sharesShortPriorMonth": 25570890.0,
+      "dateShortInterest": 1793318400.0,
       "fullTimeEmployees": 100000.0,
       "industry": "Airlines",
       "currency": "USD",
       "recommendationKey": "strong_buy",
       "exDividendDate": "2026-10-15",
       "lastDividendDate": "2026-10-15",
-      "latestPrice": 87.2,
+      "latestPrice": 86.25,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 58.26
-        },
-        {
-          "date": "2025-11-10",
-          "close": 57.94
-        },
-        {
-          "date": "2025-11-11",
-          "close": 57.13
-        },
-        {
-          "date": "2025-11-12",
-          "close": 59.84
-        },
-        {
-          "date": "2025-11-13",
-          "close": 59.28
-        },
         {
           "date": "2025-11-14",
           "close": 57.79
@@ -8734,6 +8735,26 @@
         {
           "date": "2026-11-06",
           "close": 87.2
+        },
+        {
+          "date": "2026-11-09",
+          "close": 91.8
+        },
+        {
+          "date": "2026-11-10",
+          "close": 92.2
+        },
+        {
+          "date": "2026-11-11",
+          "close": 91.32
+        },
+        {
+          "date": "2026-11-12",
+          "close": 86.55
+        },
+        {
+          "date": "2026-11-13",
+          "close": 86.25
         }
       ],
       "nextEarningsDate": "2027-01-13",
@@ -8833,20 +8854,1335 @@
       "quarterlySource": "SEC EDGAR"
     },
     {
+      "ticker": "ANT",
+      "fetchedAt": "2026-11-10T15:56:51Z",
+      "source": "SEC EDGAR (S-1/A-2)",
+      "company": "Anthropic, PBC",
+      "sector": "Technology",
+      "totalCash": 131900000000,
+      "totalAssets": 147358000000,
+      "totalLiabilities": 117467000000,
+      "workingCapital": 130760000000,
+      "totalRevenue": 33240000000,
+      "grossProfit": null,
+      "operatingIncome": -1300000000,
+      "netIncome": -104000000000,
+      "operatingCashFlow": null,
+      "capitalExpenditures": -482000000,
+      "freeCashFlow": null,
+      "computeAndInfrastructure": 24400000000,
+      "personnel": 3152000000,
+      "salesMarketingPartnerships": 3168000000,
+      "otherOperatingAdmin": 1714000000,
+      "stockBasedCompensation": 2185000000,
+      "sharesOutstanding": 2024972990,
+      "floatShares": null,
+      "netLossPerShare": -39.88,
+      "quarterlyRevenue": {
+        "2025-03-31": 376000000,
+        "2025-06-30": 787000000,
+        "2025-09-30": 1382000000,
+        "2025-12-31": 2040000000,
+        "2026-03-31": 4731000000,
+        "2026-06-30": 11555000000,
+        "2026-09-30": 16960000000
+      },
+      "quarterlyNetIncome": {
+        "2025-03-31": -6592000000,
+        "2025-06-30": -6377000000,
+        "2025-09-30": -12138000000,
+        "2025-12-31": -16858000000,
+        "2026-03-31": -14439000000,
+        "2026-06-30": -66309000000,
+        "2026-09-30": -23290000000
+      },
+      "q3_2026_revenue": 16960000000,
+      "annualRevenue": {
+        "2023": 41000000,
+        "2024": 386000000,
+        "2025": 4585000000
+      },
+      "tickerSymbol": "ANT",
+      "exchange": "Nasdaq Global Select Market",
+      "ipoStatus": "S-1/A-2 filed 2026-11-10; proposed IPO price range $70.00-$78.00 per share; 825,000,000 Class A shares (801,351,354 by company, 23,648,646 by selling stockholders)",
+      "filingDate": "2026-11-10",
+      "filingForm": "S-1/A-2",
+      "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
+      "cik": "0002130357",
+      "publicBenefitCorporation": true,
+      "publicBenefitPurpose": "Responsible development and maintenance of advanced AI for the long-term benefit of humanity",
+      "latestValuation": 965000000000,
+      "priorValuation": 380000000000,
+      "millionDollarCustomers": 11900,
+      "tenMillionDollarCustomers": 250,
+      "revenuePerDollarComputeQ3": 1.72,
+      "adjustedOperatingMarginH1": 0.11,
+      "cashFlowPositiveQ3": true,
+      "notes": "S-1/A-2 filed 2026-11-10 (amendment no. 2): proposed IPO of 825,000,000 Class A shares at $70.00-$78.00 (801,351,354 by company, 23,648,646 by selling stockholders), Nasdaq symbol ANT. As of 2026-09-30: cash and cash equivalents $95.6B, short-term investments $36.3B ($131.9B total liquidity from cash/investments), aggregate capital raised $141.1B. 9M 2026: revenue $33.24B, operating loss $1.26B, net loss $104.04B. Q3 2026: revenue $16.96B (+1,127% YoY), operating loss $567M (adjusted operating income $2.5B), net loss $23.29B (including ~$21.9B non-cash fair-value charge on convertible notes/derivatives). Compute commitments ~$900.9B aggregate as of 2026-09-30 (~$451.6B before 2030, ~$70.7B due in next 12 months). 11,900+ customers with $100K+ ARR as of 2026-09-30.",
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2026-09-30",
+          "source": "SEC EDGAR (S-1/A)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-11-02",
+          "acceptedDate": "2026-11-02",
+          "form": "S-1/A",
+          "totalRevenue": 16960000000,
+          "netIncome": -23290000000,
+          "operatingIncome": -567000000,
+          "adjustedOperatingIncome": 2500000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null,
+          "computeAndInfrastructure": 9900000000,
+          "shortTermComputeCommitments": 5000000000,
+          "donationMatchingNoncash": 2000000000,
+          "revenuePerComputeDollar": 1.72,
+          "customerCountOver100K": 11900,
+          "computeCommitments": {
+            "aggregateCommittedSpend": 900900000000,
+            "dueBefore2030": 451600000000,
+            "dueNext12Months": 70700000000,
+            "performanceObligations": 13800000000,
+            "periodEnd": "2030-12-31",
+            "asOf": "2026-09-30",
+            "note": "Substantially all related to compute and infrastructure with CSPs including Amazon and Google (per amended S-1/A-2 disclosures)"
+          },
+          "committedSpend": 900900000000,
+          "performanceObligations": 13800000000
+        },
+        {
+          "quarterEnd": "2026-06-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 11555000000,
+          "netIncome": -66309000000,
+          "operatingIncome": 974000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2026-03-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 4731000000,
+          "netIncome": -14439000000,
+          "operatingIncome": -1667000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-12-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 2040000000,
+          "netIncome": -16858000000,
+          "operatingIncome": -2836000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-09-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 1382000000,
+          "netIncome": -12138000000,
+          "operatingIncome": -3089000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-06-30",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 787000000,
+          "netIncome": -6377000000,
+          "operatingIncome": -1200000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        },
+        {
+          "quarterEnd": "2025-03-31",
+          "source": "SEC EDGAR (S-1)",
+          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
+          "filingDate": "2026-10-26",
+          "acceptedDate": "2026-10-26",
+          "form": "S-1",
+          "totalRevenue": 376000000,
+          "netIncome": -6592000000,
+          "operatingIncome": -935000000,
+          "capitalExpenditures": null,
+          "freeCashFlow": null
+        }
+      ],
+      "quarterlySource": "SEC EDGAR (S-1/A, S-1/A-2)",
+      "lastUpdated": "2026-11-10T15:56:51Z",
+      "explanation": "Anthropic, PBC is a public benefit corporation focused on the responsible development and maintenance of advanced AI for the long-term benefit of humanity. The company develops the Claude family of AI models and filed an amended S-1/A-2 registration statement on November 10, 2026 for a proposed Nasdaq listing under ticker ANT, proposing 825,000,000 Class A shares at $70.00-$78.00 per share. Revenue grew from $41M (2023) to $386M (2024) to $4.585B (2025), with nine-month 2026 revenue of $33.242B. Q3 2026 revenue was $16.96B with a net loss of $23.29B largely driven by non-cash fair-value changes on convertible notes and derivatives. As of September 30, 2026, Anthropic reported $95.6B in cash and cash equivalents and $36.3B in short-term investments, $141.1B in aggregate capital raised, and ~11,900 customers generating at least $100K in ARR.",
+      "companyDescription": "Anthropic is an AI safety and research company developing frontier AI models, including the Claude family of assistants. It operates as a public benefit corporation with a Long-Term Benefit Trust and a special Class T common stock that gives AI-safety-focused trustees majority board representation.",
+      "explanationOverride": "Anthropic, PBC filed amendment no. 2 to Form S-1 (S-1/A-2) on November 10, 2026 for a proposed Nasdaq IPO under ticker ANT: 825,000,000 Class A shares at an estimated $70.00-$78.00 per share (801,351,354 by the company, 23,648,646 by selling stockholders). Revenue: $41M (2023), $386M (2024), $4.585B (2025), $33.242B (9M 2026: Q1 $4.731B, Q2 $11.555B, Q3 $16.960B). Q3 2026 operating loss was $567M (adjusted operating income $2.5B); net loss $23.29B included ~$21.9B non-cash fair-value charge. 9M 2026 net loss was $104.039B, driven primarily by fair-value changes on convertible notes and derivatives. As of 2026-09-30: cash and cash equivalents $95.6B, short-term investments $36.3B, aggregate capital raised $141.1B, compute commitments ~$900.9B (~$451.6B before 2030, ~$70.7B due in next 12 months), and 11,900+ customers with $100K+ ARR.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
+      "yahooUrl": "https://finance.yahoo.com/quote/ANTH.PVT/",
+      "googleFinanceUrl": "https://www.google.com/finance/quote/E10AAFF2-4D89-46D4-820B-B4F64B8D42CA:CRUNCHBASE",
+      "ipoPriceRangeLow": 70.0,
+      "ipoPriceRangeHigh": 78.0,
+      "ipoSharesOffered": 825000000,
+      "ipoSharesCompany": 801351354,
+      "ipoSharesSellingStockholders": 23648646,
+      "cashAndCashEquivalents": 95600000000,
+      "shortTermInvestments": 36300000000,
+      "totalCapitalRaised": 141100000000,
+      "committedSpend": 900900000000
+    },
+    {
+      "ticker": "BYDIF",
+      "fetchedAt": "2026-11-16T00:50:52.515292Z",
+      "source": "Yahoo Finance",
+      "company": "BYD Electronic (International) Company Limited",
+      "sector": "Technology",
+      "marketCap": 5839881728.0,
+      "enterpriseValue": 959735296.0,
+      "trailingPE": 18.57,
+      "forwardPE": null,
+      "pegRatio": 0.64,
+      "priceToSalesTrailing12Months": 0.03,
+      "priceToBook": 1.13,
+      "grossMargins": 0.05,
+      "operatingMargins": 0.01,
+      "profitMargins": 0.01,
+      "returnOnAssets": 0.02,
+      "returnOnEquity": 0.07,
+      "revenueGrowth": 0.02,
+      "earningsGrowth": -0.75,
+      "revenuePerShare": 80.68,
+      "freeCashflow": 2100296576.0,
+      "operatingCashflow": 9610302464.0,
+      "grossProfits": 9250276352.0,
+      "totalCash": 13736133632.0,
+      "totalCashPerShare": 6.1,
+      "totalDebt": 8848353280.0,
+      "totalRevenue": 181105917952.0,
+      "debtToEquity": 25.66,
+      "currentRatio": 1.23,
+      "quickRatio": 0.71,
+      "bookValue": 2.29,
+      "sharesOutstanding": 2246108500.0,
+      "floatShares": 650567735.0,
+      "impliedSharesOutstanding": 2246108500.0,
+      "dividendRate": 0.02,
+      "dividendYield": 0.88,
+      "payoutRatio": 0.16,
+      "fiveYearAvgDividendYield": 0.87,
+      "targetHighPrice": null,
+      "targetLowPrice": null,
+      "targetMeanPrice": null,
+      "targetMedianPrice": null,
+      "recommendationMean": null,
+      "numberOfAnalystOpinions": null,
+      "beta": 0.32,
+      "fiftyTwoWeekHigh": 4.79,
+      "fiftyTwoWeekLow": 2.37,
+      "fiftyDayAverage": 2.86,
+      "twoHundredDayAverage": 3.33,
+      "averageVolume": 11870.0,
+      "averageDailyVolume10Day": 5010.0,
+      "previousClose": 2.64,
+      "open": 2.55,
+      "regularMarketOpen": 2.55,
+      "dayHigh": 2.57,
+      "dayLow": 2.55,
+      "regularMarketDayHigh": 2.57,
+      "regularMarketDayLow": 2.55,
+      "regularMarketVolume": 600.0,
+      "averageVolume10days": 5010.0,
+      "sharesShort": null,
+      "sharesShortPreviousMonthDate": null,
+      "sharesShortPriorMonth": null,
+      "dateShortInterest": null,
+      "fullTimeEmployees": 162500.0,
+      "industry": "Electronic Components",
+      "currency": "USD",
+      "recommendationKey": "none",
+      "exDividendDate": "2026-06-11",
+      "lastDividendDate": "2025-06-10",
+      "latestPrice": 2.6,
+      "priceHistory": [
+        {
+          "date": "2025-11-14",
+          "close": 4.6
+        },
+        {
+          "date": "2025-11-17",
+          "close": 4.62
+        },
+        {
+          "date": "2025-11-18",
+          "close": 4.62
+        },
+        {
+          "date": "2025-11-19",
+          "close": 4.25
+        },
+        {
+          "date": "2025-11-20",
+          "close": 4.4
+        },
+        {
+          "date": "2025-11-21",
+          "close": 4.4
+        },
+        {
+          "date": "2025-11-24",
+          "close": 3.91
+        },
+        {
+          "date": "2025-11-25",
+          "close": 4.25
+        },
+        {
+          "date": "2025-11-26",
+          "close": 4.79
+        },
+        {
+          "date": "2025-11-28",
+          "close": 4.75
+        },
+        {
+          "date": "2025-12-01",
+          "close": 4.37
+        },
+        {
+          "date": "2025-12-02",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-03",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-04",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-05",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-08",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-09",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-10",
+          "close": 4.37
+        },
+        {
+          "date": "2025-12-11",
+          "close": 4.35
+        },
+        {
+          "date": "2025-12-12",
+          "close": 4.37
+        },
+        {
+          "date": "2025-12-15",
+          "close": 4.27
+        },
+        {
+          "date": "2025-12-16",
+          "close": 4.27
+        },
+        {
+          "date": "2025-12-17",
+          "close": 4.27
+        },
+        {
+          "date": "2025-12-18",
+          "close": 4.4
+        },
+        {
+          "date": "2025-12-19",
+          "close": 4.4
+        },
+        {
+          "date": "2025-12-22",
+          "close": 4.44
+        },
+        {
+          "date": "2025-12-23",
+          "close": 4.34
+        },
+        {
+          "date": "2025-12-24",
+          "close": 4.4
+        },
+        {
+          "date": "2025-12-26",
+          "close": 4.35
+        },
+        {
+          "date": "2025-12-29",
+          "close": 4.35
+        },
+        {
+          "date": "2025-12-30",
+          "close": 4.36
+        },
+        {
+          "date": "2025-12-31",
+          "close": 4.31
+        },
+        {
+          "date": "2026-01-02",
+          "close": 4.31
+        },
+        {
+          "date": "2026-01-05",
+          "close": 4.51
+        },
+        {
+          "date": "2026-01-06",
+          "close": 4.51
+        },
+        {
+          "date": "2026-01-07",
+          "close": 4.6
+        },
+        {
+          "date": "2026-01-08",
+          "close": 4.63
+        },
+        {
+          "date": "2026-01-09",
+          "close": 4.3
+        },
+        {
+          "date": "2026-01-12",
+          "close": 4.52
+        },
+        {
+          "date": "2026-01-13",
+          "close": 4.49
+        },
+        {
+          "date": "2026-01-14",
+          "close": 4.45
+        },
+        {
+          "date": "2026-01-15",
+          "close": 4.45
+        },
+        {
+          "date": "2026-01-16",
+          "close": 4.45
+        },
+        {
+          "date": "2026-01-20",
+          "close": 4.49
+        },
+        {
+          "date": "2026-01-21",
+          "close": 4.49
+        },
+        {
+          "date": "2026-01-22",
+          "close": 4.49
+        },
+        {
+          "date": "2026-01-23",
+          "close": 4.49
+        },
+        {
+          "date": "2026-01-26",
+          "close": 4.49
+        },
+        {
+          "date": "2026-01-27",
+          "close": 4.37
+        },
+        {
+          "date": "2026-01-28",
+          "close": 4.37
+        },
+        {
+          "date": "2026-01-29",
+          "close": 4.32
+        },
+        {
+          "date": "2026-01-30",
+          "close": 4.43
+        },
+        {
+          "date": "2026-02-02",
+          "close": 4.14
+        },
+        {
+          "date": "2026-02-03",
+          "close": 4.14
+        },
+        {
+          "date": "2026-02-04",
+          "close": 4.21
+        },
+        {
+          "date": "2026-02-05",
+          "close": 4.21
+        },
+        {
+          "date": "2026-02-06",
+          "close": 4.21
+        },
+        {
+          "date": "2026-02-09",
+          "close": 4.21
+        },
+        {
+          "date": "2026-02-10",
+          "close": 4.21
+        },
+        {
+          "date": "2026-02-11",
+          "close": 4.38
+        },
+        {
+          "date": "2026-02-12",
+          "close": 4.38
+        },
+        {
+          "date": "2026-02-13",
+          "close": 4.1
+        },
+        {
+          "date": "2026-02-17",
+          "close": 4.35
+        },
+        {
+          "date": "2026-02-18",
+          "close": 4.35
+        },
+        {
+          "date": "2026-02-19",
+          "close": 4.35
+        },
+        {
+          "date": "2026-02-20",
+          "close": 4.35
+        },
+        {
+          "date": "2026-02-23",
+          "close": 4.35
+        },
+        {
+          "date": "2026-02-24",
+          "close": 4.44
+        },
+        {
+          "date": "2026-02-25",
+          "close": 4.44
+        },
+        {
+          "date": "2026-02-26",
+          "close": 4.44
+        },
+        {
+          "date": "2026-02-27",
+          "close": 4.05
+        },
+        {
+          "date": "2026-03-02",
+          "close": 4.05
+        },
+        {
+          "date": "2026-03-03",
+          "close": 4.12
+        },
+        {
+          "date": "2026-03-04",
+          "close": 4.12
+        },
+        {
+          "date": "2026-03-05",
+          "close": 3.67
+        },
+        {
+          "date": "2026-03-06",
+          "close": 3.67
+        },
+        {
+          "date": "2026-03-09",
+          "close": 3.67
+        },
+        {
+          "date": "2026-03-10",
+          "close": 4.05
+        },
+        {
+          "date": "2026-03-11",
+          "close": 4.03
+        },
+        {
+          "date": "2026-03-12",
+          "close": 4.0
+        },
+        {
+          "date": "2026-03-13",
+          "close": 4.0
+        },
+        {
+          "date": "2026-03-16",
+          "close": 4.05
+        },
+        {
+          "date": "2026-03-17",
+          "close": 4.05
+        },
+        {
+          "date": "2026-03-18",
+          "close": 3.91
+        },
+        {
+          "date": "2026-03-19",
+          "close": 3.91
+        },
+        {
+          "date": "2026-03-20",
+          "close": 4.02
+        },
+        {
+          "date": "2026-03-23",
+          "close": 4.07
+        },
+        {
+          "date": "2026-03-24",
+          "close": 4.07
+        },
+        {
+          "date": "2026-03-25",
+          "close": 4.07
+        },
+        {
+          "date": "2026-03-26",
+          "close": 3.96
+        },
+        {
+          "date": "2026-03-27",
+          "close": 3.45
+        },
+        {
+          "date": "2026-03-30",
+          "close": 3.7
+        },
+        {
+          "date": "2026-03-31",
+          "close": 3.52
+        },
+        {
+          "date": "2026-04-01",
+          "close": 3.52
+        },
+        {
+          "date": "2026-04-02",
+          "close": 3.47
+        },
+        {
+          "date": "2026-04-06",
+          "close": 3.47
+        },
+        {
+          "date": "2026-04-07",
+          "close": 3.47
+        },
+        {
+          "date": "2026-04-08",
+          "close": 3.47
+        },
+        {
+          "date": "2026-04-09",
+          "close": 3.67
+        },
+        {
+          "date": "2026-04-10",
+          "close": 3.67
+        },
+        {
+          "date": "2026-04-13",
+          "close": 3.56
+        },
+        {
+          "date": "2026-04-14",
+          "close": 3.55
+        },
+        {
+          "date": "2026-04-15",
+          "close": 3.55
+        },
+        {
+          "date": "2026-04-16",
+          "close": 3.55
+        },
+        {
+          "date": "2026-04-17",
+          "close": 3.65
+        },
+        {
+          "date": "2026-04-20",
+          "close": 3.5
+        },
+        {
+          "date": "2026-04-21",
+          "close": 3.5
+        },
+        {
+          "date": "2026-04-22",
+          "close": 3.5
+        },
+        {
+          "date": "2026-04-23",
+          "close": 3.5
+        },
+        {
+          "date": "2026-04-24",
+          "close": 3.5
+        },
+        {
+          "date": "2026-04-27",
+          "close": 3.5
+        },
+        {
+          "date": "2026-04-28",
+          "close": 3.54
+        },
+        {
+          "date": "2026-04-29",
+          "close": 3.43
+        },
+        {
+          "date": "2026-04-30",
+          "close": 3.43
+        },
+        {
+          "date": "2026-05-01",
+          "close": 3.28
+        },
+        {
+          "date": "2026-05-04",
+          "close": 3.37
+        },
+        {
+          "date": "2026-05-05",
+          "close": 3.37
+        },
+        {
+          "date": "2026-05-06",
+          "close": 3.42
+        },
+        {
+          "date": "2026-05-07",
+          "close": 3.65
+        },
+        {
+          "date": "2026-05-08",
+          "close": 3.65
+        },
+        {
+          "date": "2026-05-11",
+          "close": 3.67
+        },
+        {
+          "date": "2026-05-12",
+          "close": 3.68
+        },
+        {
+          "date": "2026-05-13",
+          "close": 3.75
+        },
+        {
+          "date": "2026-05-14",
+          "close": 3.83
+        },
+        {
+          "date": "2026-05-15",
+          "close": 3.59
+        },
+        {
+          "date": "2026-05-18",
+          "close": 3.6
+        },
+        {
+          "date": "2026-05-19",
+          "close": 3.47
+        },
+        {
+          "date": "2026-05-20",
+          "close": 3.4
+        },
+        {
+          "date": "2026-05-21",
+          "close": 3.4
+        },
+        {
+          "date": "2026-05-22",
+          "close": 3.36
+        },
+        {
+          "date": "2026-05-26",
+          "close": 3.58
+        },
+        {
+          "date": "2026-05-27",
+          "close": 3.77
+        },
+        {
+          "date": "2026-05-28",
+          "close": 3.82
+        },
+        {
+          "date": "2026-05-29",
+          "close": 3.81
+        },
+        {
+          "date": "2026-06-01",
+          "close": 3.74
+        },
+        {
+          "date": "2026-06-02",
+          "close": 3.85
+        },
+        {
+          "date": "2026-06-03",
+          "close": 3.74
+        },
+        {
+          "date": "2026-06-04",
+          "close": 3.79
+        },
+        {
+          "date": "2026-06-05",
+          "close": 3.72
+        },
+        {
+          "date": "2026-06-08",
+          "close": 3.7
+        },
+        {
+          "date": "2026-06-09",
+          "close": 3.42
+        },
+        {
+          "date": "2026-06-10",
+          "close": 3.42
+        },
+        {
+          "date": "2026-06-11",
+          "close": 3.13
+        },
+        {
+          "date": "2026-06-12",
+          "close": 3.11
+        },
+        {
+          "date": "2026-06-15",
+          "close": 3.22
+        },
+        {
+          "date": "2026-06-16",
+          "close": 3.12
+        },
+        {
+          "date": "2026-06-17",
+          "close": 3.09
+        },
+        {
+          "date": "2026-06-18",
+          "close": 3.1
+        },
+        {
+          "date": "2026-06-22",
+          "close": 2.89
+        },
+        {
+          "date": "2026-06-23",
+          "close": 2.83
+        },
+        {
+          "date": "2026-06-24",
+          "close": 2.7
+        },
+        {
+          "date": "2026-06-25",
+          "close": 2.71
+        },
+        {
+          "date": "2026-06-26",
+          "close": 2.68
+        },
+        {
+          "date": "2026-06-29",
+          "close": 2.69
+        },
+        {
+          "date": "2026-06-30",
+          "close": 2.56
+        },
+        {
+          "date": "2026-07-01",
+          "close": 2.68
+        },
+        {
+          "date": "2026-07-02",
+          "close": 2.7
+        },
+        {
+          "date": "2026-07-06",
+          "close": 2.81
+        },
+        {
+          "date": "2026-07-07",
+          "close": 2.65
+        },
+        {
+          "date": "2026-07-08",
+          "close": 2.8
+        },
+        {
+          "date": "2026-07-09",
+          "close": 2.84
+        },
+        {
+          "date": "2026-07-10",
+          "close": 2.78
+        },
+        {
+          "date": "2026-07-13",
+          "close": 2.94
+        },
+        {
+          "date": "2026-07-14",
+          "close": 3.0
+        },
+        {
+          "date": "2026-07-15",
+          "close": 2.84
+        },
+        {
+          "date": "2026-07-16",
+          "close": 2.83
+        },
+        {
+          "date": "2026-07-17",
+          "close": 3.11
+        },
+        {
+          "date": "2026-07-20",
+          "close": 3.12
+        },
+        {
+          "date": "2026-07-21",
+          "close": 3.17
+        },
+        {
+          "date": "2026-07-22",
+          "close": 3.08
+        },
+        {
+          "date": "2026-07-23",
+          "close": 3.05
+        },
+        {
+          "date": "2026-07-24",
+          "close": 3.02
+        },
+        {
+          "date": "2026-07-27",
+          "close": 2.92
+        },
+        {
+          "date": "2026-07-28",
+          "close": 2.94
+        },
+        {
+          "date": "2026-07-29",
+          "close": 3.1
+        },
+        {
+          "date": "2026-07-30",
+          "close": 2.94
+        },
+        {
+          "date": "2026-07-31",
+          "close": 3.0
+        },
+        {
+          "date": "2026-08-03",
+          "close": 3.15
+        },
+        {
+          "date": "2026-08-04",
+          "close": 3.14
+        },
+        {
+          "date": "2026-08-05",
+          "close": 3.3
+        },
+        {
+          "date": "2026-08-06",
+          "close": 3.06
+        },
+        {
+          "date": "2026-08-07",
+          "close": 3.19
+        },
+        {
+          "date": "2026-08-10",
+          "close": 2.99
+        },
+        {
+          "date": "2026-08-11",
+          "close": 3.0
+        },
+        {
+          "date": "2026-08-12",
+          "close": 3.0
+        },
+        {
+          "date": "2026-08-13",
+          "close": 3.02
+        },
+        {
+          "date": "2026-08-14",
+          "close": 3.13
+        },
+        {
+          "date": "2026-08-17",
+          "close": 3.09
+        },
+        {
+          "date": "2026-08-18",
+          "close": 3.0
+        },
+        {
+          "date": "2026-08-19",
+          "close": 2.99
+        },
+        {
+          "date": "2026-08-20",
+          "close": 3.05
+        },
+        {
+          "date": "2026-08-21",
+          "close": 2.99
+        },
+        {
+          "date": "2026-08-24",
+          "close": 3.0
+        },
+        {
+          "date": "2026-08-25",
+          "close": 3.0
+        },
+        {
+          "date": "2026-08-26",
+          "close": 2.99
+        },
+        {
+          "date": "2026-08-27",
+          "close": 2.97
+        },
+        {
+          "date": "2026-08-28",
+          "close": 3.04
+        },
+        {
+          "date": "2026-08-31",
+          "close": 3.45
+        },
+        {
+          "date": "2026-09-01",
+          "close": 3.48
+        },
+        {
+          "date": "2026-09-02",
+          "close": 3.26
+        },
+        {
+          "date": "2026-09-03",
+          "close": 3.2
+        },
+        {
+          "date": "2026-09-04",
+          "close": 3.24
+        },
+        {
+          "date": "2026-09-08",
+          "close": 3.47
+        },
+        {
+          "date": "2026-09-09",
+          "close": 3.12
+        },
+        {
+          "date": "2026-09-10",
+          "close": 3.08
+        },
+        {
+          "date": "2026-09-11",
+          "close": 3.15
+        },
+        {
+          "date": "2026-09-14",
+          "close": 3.08
+        },
+        {
+          "date": "2026-09-15",
+          "close": 2.83
+        },
+        {
+          "date": "2026-09-16",
+          "close": 2.7
+        },
+        {
+          "date": "2026-09-17",
+          "close": 3.03
+        },
+        {
+          "date": "2026-09-18",
+          "close": 2.89
+        },
+        {
+          "date": "2026-09-21",
+          "close": 2.98
+        },
+        {
+          "date": "2026-09-22",
+          "close": 2.9
+        },
+        {
+          "date": "2026-09-23",
+          "close": 2.83
+        },
+        {
+          "date": "2026-09-24",
+          "close": 2.8
+        },
+        {
+          "date": "2026-09-25",
+          "close": 2.68
+        },
+        {
+          "date": "2026-09-28",
+          "close": 2.77
+        },
+        {
+          "date": "2026-09-29",
+          "close": 2.85
+        },
+        {
+          "date": "2026-09-30",
+          "close": 2.94
+        },
+        {
+          "date": "2026-10-01",
+          "close": 2.9
+        },
+        {
+          "date": "2026-10-02",
+          "close": 2.94
+        },
+        {
+          "date": "2026-10-05",
+          "close": 2.92
+        },
+        {
+          "date": "2026-10-06",
+          "close": 2.92
+        },
+        {
+          "date": "2026-10-07",
+          "close": 3.06
+        },
+        {
+          "date": "2026-10-08",
+          "close": 3.06
+        },
+        {
+          "date": "2026-10-09",
+          "close": 2.92
+        },
+        {
+          "date": "2026-10-12",
+          "close": 2.76
+        },
+        {
+          "date": "2026-10-13",
+          "close": 2.95
+        },
+        {
+          "date": "2026-10-14",
+          "close": 2.83
+        },
+        {
+          "date": "2026-10-15",
+          "close": 2.7
+        },
+        {
+          "date": "2026-10-16",
+          "close": 2.83
+        },
+        {
+          "date": "2026-10-19",
+          "close": 2.78
+        },
+        {
+          "date": "2026-10-20",
+          "close": 2.84
+        },
+        {
+          "date": "2026-10-21",
+          "close": 2.82
+        },
+        {
+          "date": "2026-10-22",
+          "close": 2.82
+        },
+        {
+          "date": "2026-10-23",
+          "close": 2.84
+        },
+        {
+          "date": "2026-10-26",
+          "close": 2.84
+        },
+        {
+          "date": "2026-10-27",
+          "close": 2.72
+        },
+        {
+          "date": "2026-10-28",
+          "close": 2.8
+        },
+        {
+          "date": "2026-10-29",
+          "close": 2.78
+        },
+        {
+          "date": "2026-10-30",
+          "close": 2.79
+        },
+        {
+          "date": "2026-11-02",
+          "close": 2.72
+        },
+        {
+          "date": "2026-11-03",
+          "close": 2.67
+        },
+        {
+          "date": "2026-11-04",
+          "close": 2.66
+        },
+        {
+          "date": "2026-11-05",
+          "close": 2.66
+        },
+        {
+          "date": "2026-11-06",
+          "close": 2.63
+        },
+        {
+          "date": "2026-11-09",
+          "close": 2.67
+        },
+        {
+          "date": "2026-11-10",
+          "close": 2.71
+        },
+        {
+          "date": "2026-11-11",
+          "close": 2.64
+        },
+        {
+          "date": "2026-11-12",
+          "close": 2.64
+        },
+        {
+          "date": "2026-11-13",
+          "close": 2.6
+        }
+      ],
+      "nextEarningsDate": "2027-03-31",
+      "quarterlyFinancials": [
+        {
+          "quarterEnd": "2025-12-31",
+          "period": "FY 2025",
+          "source": "HKEX Annual Results",
+          "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702072.pdf",
+          "filingDate": "2026-03-27",
+          "totalRevenue": 179477404000,
+          "grossProfit": 10756665000,
+          "operatingIncome": 3673979000,
+          "netIncome": 3514572000,
+          "epsBasic": 1.56,
+          "currency": "CNY"
+        },
+        {
+          "quarterEnd": "2025-06-30",
+          "period": "H1 2025 (interim)",
+          "source": "HKEX Interim Results",
+          "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0829/2025082901588.pdf",
+          "filingDate": "2025-08-29",
+          "totalRevenue": 80606000000,
+          "grossProfit": 5543000000,
+          "netIncome": 1730000000,
+          "currency": "CNY"
+        },
+        {
+          "quarterEnd": "2024-12-31",
+          "period": "FY 2024",
+          "source": "HKEX Annual Results (comparative)",
+          "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702072.pdf",
+          "filingDate": "2026-03-27",
+          "totalRevenue": 177305549000,
+          "grossProfit": 12301306000,
+          "operatingIncome": 4460834000,
+          "netIncome": 4265638000,
+          "epsBasic": 1.89,
+          "currency": "CNY"
+        }
+      ],
+      "quarterlySource": "HKEX filings"
+    },
+    {
       "ticker": "JAPAY",
-      "fetchedAt": "2026-11-07T16:35:17.620521Z",
+      "fetchedAt": "2026-11-16T00:50:55.185314Z",
       "source": "Yahoo Finance",
       "company": "Japan Tobacco Inc.",
       "sector": "Consumer Defensive",
-      "marketCap": 60293591040.0,
-      "enterpriseValue": 882458624000.0,
-      "trailingPE": 15.58,
-      "forwardPE": 12.22,
-      "pegRatio": 1.04,
+      "marketCap": 65726410752.0,
+      "enterpriseValue": 887891427328.0,
+      "trailingPE": 16.98,
+      "forwardPE": 13.32,
+      "pegRatio": 2.7,
       "priceToSalesTrailing12Months": 0.02,
-      "priceToBook": 2.31,
+      "priceToBook": 2.52,
       "grossMargins": 0.58,
-      "operatingMargins": 0.3,
+      "operatingMargins": 0.27,
       "profitMargins": 0.16,
       "returnOnAssets": 0.08,
       "returnOnEquity": 0.15,
@@ -8868,31 +10204,31 @@
       "floatShares": 2193259386.0,
       "impliedSharesOutstanding": 3550859498.0,
       "dividendRate": 0.83,
-      "dividendYield": 4.89,
+      "dividendYield": 4.48,
       "payoutRatio": 0.75,
       "fiveYearAvgDividendYield": 5.09,
-      "targetHighPrice": 26.0,
+      "targetHighPrice": 19.3,
       "targetLowPrice": 17.0,
-      "targetMeanPrice": 21.5,
-      "targetMedianPrice": 21.5,
+      "targetMeanPrice": 18.15,
+      "targetMedianPrice": 18.15,
       "recommendationMean": 2.5,
       "numberOfAnalystOpinions": 2.0,
       "beta": 0.15,
       "fiftyTwoWeekHigh": 24.54,
-      "fiftyTwoWeekLow": 16.17,
-      "fiftyDayAverage": 22.3,
-      "twoHundredDayAverage": 20.06,
-      "averageVolume": 71334.0,
-      "averageDailyVolume10Day": 86770.0,
-      "previousClose": 20.0,
-      "open": 17.69,
-      "regularMarketOpen": 17.69,
-      "dayHigh": 17.69,
-      "dayLow": 16.38,
-      "regularMarketDayHigh": 17.69,
-      "regularMarketDayLow": 16.38,
-      "regularMarketVolume": 45597.0,
-      "averageVolume10days": 86770.0,
+      "fiftyTwoWeekLow": 15.0,
+      "fiftyDayAverage": 21.85,
+      "twoHundredDayAverage": 20.04,
+      "averageVolume": 92739.0,
+      "averageDailyVolume10Day": 209470.0,
+      "previousClose": 18.56,
+      "open": 18.6,
+      "regularMarketOpen": 18.6,
+      "dayHigh": 18.6,
+      "dayLow": 18.28,
+      "regularMarketDayHigh": 18.6,
+      "regularMarketDayLow": 18.28,
+      "regularMarketVolume": 17428.0,
+      "averageVolume10days": 209470.0,
       "sharesShort": null,
       "sharesShortPreviousMonthDate": null,
       "sharesShortPriorMonth": null,
@@ -8903,28 +10239,8 @@
       "recommendationKey": "buy",
       "exDividendDate": "2026-06-30",
       "lastDividendDate": "2025-06-30",
-      "latestPrice": 16.98,
+      "latestPrice": 18.51,
       "priceHistory": [
-        {
-          "date": "2025-11-07",
-          "close": 18.16
-        },
-        {
-          "date": "2025-11-10",
-          "close": 18.03
-        },
-        {
-          "date": "2025-11-11",
-          "close": 18.13
-        },
-        {
-          "date": "2025-11-12",
-          "close": 18.3
-        },
-        {
-          "date": "2025-11-13",
-          "close": 18.22
-        },
         {
           "date": "2025-11-14",
           "close": 18.36
@@ -9908,10 +11224,30 @@
         {
           "date": "2026-11-06",
           "close": 16.98
+        },
+        {
+          "date": "2026-11-09",
+          "close": 15.21
+        },
+        {
+          "date": "2026-11-10",
+          "close": 17.47
+        },
+        {
+          "date": "2026-11-11",
+          "close": 17.36
+        },
+        {
+          "date": "2026-11-12",
+          "close": 18.56
+        },
+        {
+          "date": "2026-11-13",
+          "close": 18.51
         }
       ],
       "nextEarningsDate": "2027-02-10",
-      "estimatedEPS": 0.02,
+      "estimatedEPS": 0.09,
       "recentEarnings": [
         {
           "reportedDate": "2026-10-29",
@@ -9928,323 +11264,6 @@
           "source": "Yahoo Finance"
         }
       ]
-    },
-    {
-      "ticker": "ANT",
-      "fetchedAt": "2026-11-10T15:56:51Z",
-      "source": "SEC EDGAR (S-1/A-2)",
-      "company": "Anthropic, PBC",
-      "sector": "Technology",
-      "totalCash": 131900000000,
-      "totalAssets": 147358000000,
-      "totalLiabilities": 117467000000,
-      "workingCapital": 130760000000,
-      "totalRevenue": 33240000000,
-      "grossProfit": null,
-      "operatingIncome": -1300000000,
-      "netIncome": -104000000000,
-      "operatingCashFlow": null,
-      "capitalExpenditures": -482000000,
-      "freeCashFlow": null,
-      "computeAndInfrastructure": 24400000000,
-      "personnel": 3152000000,
-      "salesMarketingPartnerships": 3168000000,
-      "otherOperatingAdmin": 1714000000,
-      "stockBasedCompensation": 2185000000,
-      "sharesOutstanding": 2024972990,
-      "floatShares": null,
-      "netLossPerShare": -39.88,
-      "quarterlyRevenue": {
-        "2025-03-31": 376000000,
-        "2025-06-30": 787000000,
-        "2025-09-30": 1382000000,
-        "2025-12-31": 2040000000,
-        "2026-03-31": 4731000000,
-        "2026-06-30": 11555000000,
-        "2026-09-30": 16960000000
-      },
-      "quarterlyNetIncome": {
-        "2025-03-31": -6592000000,
-        "2025-06-30": -6377000000,
-        "2025-09-30": -12138000000,
-        "2025-12-31": -16858000000,
-        "2026-03-31": -14439000000,
-        "2026-06-30": -66309000000,
-        "2026-09-30": -23290000000
-      },
-      "q3_2026_revenue": 16960000000,
-      "annualRevenue": {
-        "2023": 41000000,
-        "2024": 386000000,
-        "2025": 4585000000
-      },
-      "tickerSymbol": "ANT",
-      "exchange": "Nasdaq Global Select Market",
-      "ipoStatus": "S-1/A-2 filed 2026-11-10; proposed IPO price range $70.00-$78.00 per share; 825,000,000 Class A shares (801,351,354 by company, 23,648,646 by selling stockholders)",
-      "filingDate": "2026-11-10",
-      "filingForm": "S-1/A-2",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
-      "cik": "0002130357",
-      "publicBenefitCorporation": true,
-      "publicBenefitPurpose": "Responsible development and maintenance of advanced AI for the long-term benefit of humanity",
-      "latestValuation": 965000000000,
-      "priorValuation": 380000000000,
-      "millionDollarCustomers": 11900,
-      "tenMillionDollarCustomers": 250,
-      "revenuePerDollarComputeQ3": 1.72,
-      "adjustedOperatingMarginH1": 0.11,
-      "cashFlowPositiveQ3": true,
-      "notes": "S-1/A-2 filed 2026-11-10 (amendment no. 2): proposed IPO of 825,000,000 Class A shares at $70.00-$78.00 (801,351,354 by company, 23,648,646 by selling stockholders), Nasdaq symbol ANT. As of 2026-09-30: cash and cash equivalents $95.6B, short-term investments $36.3B ($131.9B total liquidity from cash/investments), aggregate capital raised $141.1B. 9M 2026: revenue $33.24B, operating loss $1.26B, net loss $104.04B. Q3 2026: revenue $16.96B (+1,127% YoY), operating loss $567M (adjusted operating income $2.5B), net loss $23.29B (including ~$21.9B non-cash fair-value charge on convertible notes/derivatives). Compute commitments ~$900.9B aggregate as of 2026-09-30 (~$451.6B before 2030, ~$70.7B due in next 12 months). 11,900+ customers with $100K+ ARR as of 2026-09-30.",
-      "quarterlyFinancials": [
-        {
-          "quarterEnd": "2026-09-30",
-          "source": "SEC EDGAR (S-1/A)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-11-02",
-          "acceptedDate": "2026-11-02",
-          "form": "S-1/A",
-          "totalRevenue": 16960000000,
-          "netIncome": -23290000000,
-          "operatingIncome": -567000000,
-          "adjustedOperatingIncome": 2500000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null,
-          "computeAndInfrastructure": 9900000000,
-          "shortTermComputeCommitments": 5000000000,
-          "donationMatchingNoncash": 2000000000,
-          "revenuePerComputeDollar": 1.72,
-          "customerCountOver100K": 11900,
-          "computeCommitments": {
-            "aggregateCommittedSpend": 900900000000,
-            "dueBefore2030": 451600000000,
-            "dueNext12Months": 70700000000,
-            "performanceObligations": 13800000000,
-            "periodEnd": "2030-12-31",
-            "asOf": "2026-09-30",
-            "note": "Substantially all related to compute and infrastructure with CSPs including Amazon and Google (per amended S-1/A-2 disclosures)"
-          },
-          "committedSpend": 900900000000,
-          "performanceObligations": 13800000000
-        },
-        {
-          "quarterEnd": "2026-06-30",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 11555000000,
-          "netIncome": -66309000000,
-          "operatingIncome": 974000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2026-03-31",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 4731000000,
-          "netIncome": -14439000000,
-          "operatingIncome": -1667000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-12-31",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 2040000000,
-          "netIncome": -16858000000,
-          "operatingIncome": -2836000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-09-30",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 1382000000,
-          "netIncome": -12138000000,
-          "operatingIncome": -3089000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-06-30",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 787000000,
-          "netIncome": -6377000000,
-          "operatingIncome": -1200000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        },
-        {
-          "quarterEnd": "2025-03-31",
-          "source": "SEC EDGAR (S-1)",
-          "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/0001628280-26-068676-index.htm",
-          "filingDate": "2026-10-26",
-          "acceptedDate": "2026-10-26",
-          "form": "S-1",
-          "totalRevenue": 376000000,
-          "netIncome": -6592000000,
-          "operatingIncome": -935000000,
-          "capitalExpenditures": null,
-          "freeCashFlow": null
-        }
-      ],
-      "quarterlySource": "SEC EDGAR (S-1/A, S-1/A-2)",
-      "lastUpdated": "2026-11-10T15:56:51Z",
-      "explanation": "Anthropic, PBC is a public benefit corporation focused on the responsible development and maintenance of advanced AI for the long-term benefit of humanity. The company develops the Claude family of AI models and filed an amended S-1/A-2 registration statement on November 10, 2026 for a proposed Nasdaq listing under ticker ANT, proposing 825,000,000 Class A shares at $70.00-$78.00 per share. Revenue grew from $41M (2023) to $386M (2024) to $4.585B (2025), with nine-month 2026 revenue of $33.242B. Q3 2026 revenue was $16.96B with a net loss of $23.29B largely driven by non-cash fair-value changes on convertible notes and derivatives. As of September 30, 2026, Anthropic reported $95.6B in cash and cash equivalents and $36.3B in short-term investments, $141.1B in aggregate capital raised, and ~11,900 customers generating at least $100K in ARR.",
-      "companyDescription": "Anthropic is an AI safety and research company developing frontier AI models, including the Claude family of assistants. It operates as a public benefit corporation with a Long-Term Benefit Trust and a special Class T common stock that gives AI-safety-focused trustees majority board representation.",
-      "explanationOverride": "Anthropic, PBC filed amendment no. 2 to Form S-1 (S-1/A-2) on November 10, 2026 for a proposed Nasdaq IPO under ticker ANT: 825,000,000 Class A shares at an estimated $70.00-$78.00 per share (801,351,354 by the company, 23,648,646 by selling stockholders). Revenue: $41M (2023), $386M (2024), $4.585B (2025), $33.242B (9M 2026: Q1 $4.731B, Q2 $11.555B, Q3 $16.960B). Q3 2026 operating loss was $567M (adjusted operating income $2.5B); net loss $23.29B included ~$21.9B non-cash fair-value charge. 9M 2026 net loss was $104.039B, driven primarily by fair-value changes on convertible notes and derivatives. As of 2026-09-30: cash and cash equivalents $95.6B, short-term investments $36.3B, aggregate capital raised $141.1B, compute commitments ~$900.9B (~$451.6B before 2030, ~$70.7B due in next 12 months), and 11,900+ customers with $100K+ ARR.",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
-      "yahooUrl": "https://finance.yahoo.com/quote/ANTH.PVT/",
-      "googleFinanceUrl": "https://www.google.com/finance/quote/E10AAFF2-4D89-46D4-820B-B4F64B8D42CA:CRUNCHBASE",
-      "ipoPriceRangeLow": 70.0,
-      "ipoPriceRangeHigh": 78.0,
-      "ipoSharesOffered": 825000000,
-      "ipoSharesCompany": 801351354,
-      "ipoSharesSellingStockholders": 23648646,
-      "cashAndCashEquivalents": 95600000000,
-      "shortTermInvestments": 36300000000,
-      "totalCapitalRaised": 141100000000,
-      "committedSpend": 900900000000
-    },
-    {
-      "ticker": "BYDIF",
-      "fetchedAt": "2026-11-09T16:33:00.000000Z",
-      "source": "HKEX / Yahoo Finance (manual)",
-      "company": "BYD Electronic (International) Company Limited",
-      "sector": "Technology",
-      "industry": "Electronic Components",
-      "exchange": "OTC US / HKEX 0285",
-      "currency": "CNY",
-      "tickerSymbol": "BYDIF",
-      "marketCap": 6145000000,
-      "enterpriseValue": 5140000000,
-      "trailingPE": 12.81,
-      "forwardPE": 9.89,
-      "pegRatio": 0.64,
-      "priceToSalesTrailing12Months": 0.25,
-      "priceToBook": 1.3,
-      "grossMargins": 0.0599,
-      "operatingMargins": 0.0141,
-      "profitMargins": 0.0196,
-      "returnOnAssets": 0.0203,
-      "returnOnEquity": 0.1052,
-      "revenueGrowth": 0.001,
-      "earningsGrowth": -0.35,
-      "revenuePerShare": 79.83,
-      "freeCashflow": 13120000000,
-      "operatingCashflow": 18770000000,
-      "grossProfits": 10760000000,
-      "totalCash": 18180000000,
-      "totalCashPerShare": 8.07,
-      "totalDebt": 8890000000,
-      "totalRevenue": 179480000000,
-      "debtToEquity": 25.81,
-      "currentRatio": 1.17,
-      "quickRatio": null,
-      "bookValue": 2.25,
-      "sharesOutstanding": 2253204500,
-      "floatShares": 650570000,
-      "impliedSharesOutstanding": 2253204500,
-      "dividendRate": 0.02,
-      "dividendYield": 0.0082,
-      "payoutRatio": 0.363,
-      "targetHighPrice": null,
-      "targetLowPrice": null,
-      "targetMeanPrice": null,
-      "targetMedianPrice": null,
-      "recommendationMean": null,
-      "numberOfAnalystOpinions": null,
-      "beta": 0.16,
-      "fiftyTwoWeekHigh": 5.79,
-      "fiftyTwoWeekLow": 2.41,
-      "fiftyDayAverage": 3.2862,
-      "twoHundredDayAverage": 4.0802,
-      "averageVolume": 21680,
-      "averageDailyVolume10Day": 9910,
-      "previousClose": 2.68,
-      "open": 2.72,
-      "regularMarketOpen": 2.72,
-      "dayHigh": 2.72,
-      "dayLow": 2.5,
-      "regularMarketDayHigh": 2.72,
-      "regularMarketDayLow": 2.5,
-      "regularMarketVolume": 3900,
-      "averageVolume10days": 9910,
-      "sharesShort": null,
-      "fullTimeEmployees": 165000,
-      "recommendationKey": null,
-      "latestPrice": 2.7,
-      "priceHistory": [],
-      "nextEarningsDate": null,
-      "estimatedEPS": null,
-      "recentEarnings": [],
-      "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702072.pdf",
-      "source_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702072.pdf",
-      "url": "https://www.byd-electronics.com/en/investor/basic",
-      "yahooUrl": "https://finance.yahoo.com/quote/BYDIF",
-      "hkexUrl": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sym=285&sc_lang=en",
-      "lastUpdated": "2026-11-09T16:33:00.000000Z",
-      "explanation": "BYD Electronic (International) Company Limited (HKEX: 0285, OTC: BYDIF) is a Shenzhen-based electronics manufacturer and a subsidiary within the BYD group. It provides design, manufacturing, assembly, and components for smartphones, computers, AI computing infrastructure, smart home and automotive electronics, and other smart products. For the year ended 31 December 2025, revenue was RMB 179.48 billion (+1.22% YoY) and profit attributable to owners was RMB 3.51 billion (-17.61% YoY), with basic EPS of RMB 1.56; the board proposed a final dividend of RMB 0.156 per share. Management attributed the profit decline mainly to a product sales mix shift toward lower-gross-margin products. Key valuation, balance-sheet, and cash-flow figures below are from Yahoo Finance key statistics (CNY context, mrq 2025-12-31) and should be cross-checked against live filings.",
-      "companyDescription": "BYD Electronic (International) Company Limited designs and manufactures mobile handset components and modules, and provides assembly and one-stop product solutions across smartphones, computers, new energy vehicle electronics, AI server/computing infrastructure, smart home, game hardware, and IoT products. It is listed in Hong Kong (0285.HK) and trades OTC in the U.S. as BYDIF.",
-      "notes": "Manually sourced/verified from HKEX 2025 annual results announcement (2026-03-27) and Yahoo Finance key statistics. BYDIF is BYD Electronic (International), not BYD Company Limited (1211.HK/BYDDY). Financial statement figures are reported in RMB/CNY; OTC price/market data may be USD-denominated. Verify live figures before relying on them.",
-      "quarterlyFinancials": [
-        {
-          "quarterEnd": "2025-12-31",
-          "period": "FY 2025",
-          "source": "HKEX Annual Results",
-          "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702072.pdf",
-          "filingDate": "2026-03-27",
-          "totalRevenue": 179477404000,
-          "grossProfit": 10756665000,
-          "operatingIncome": 3673979000,
-          "netIncome": 3514572000,
-          "epsBasic": 1.56,
-          "currency": "CNY"
-        },
-        {
-          "quarterEnd": "2025-06-30",
-          "period": "H1 2025 (interim)",
-          "source": "HKEX Interim Results",
-          "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0829/2025082901588.pdf",
-          "filingDate": "2025-08-29",
-          "totalRevenue": 80606000000,
-          "grossProfit": 5543000000,
-          "netIncome": 1730000000,
-          "currency": "CNY"
-        },
-        {
-          "quarterEnd": "2024-12-31",
-          "period": "FY 2024",
-          "source": "HKEX Annual Results (comparative)",
-          "filingUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032702072.pdf",
-          "filingDate": "2026-03-27",
-          "totalRevenue": 177305549000,
-          "grossProfit": 12301306000,
-          "operatingIncome": 4460834000,
-          "netIncome": 4265638000,
-          "epsBasic": 1.89,
-          "currency": "CNY"
-        }
-      ],
-      "quarterlySource": "HKEX filings"
     }
   ]
 }

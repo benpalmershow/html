@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07T18:52:05.000Z",
+  "lastUpdated": "2026-11-16T18:04:05.193840Z",
   "source": "OpenFEC API",
   "source_url": "https://api.open.fec.gov/developers/",
   "cycle": 2026,
@@ -7,12 +7,10 @@
     {
       "state": "GA",
       "label": "Georgia Senate",
-      "note": "Result: Jon Ossoff (D, incumbent) won re-election over Mike Collins (R).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 8,
+        "d": 92
       },
       "kalshi_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
       "candidates": [
@@ -22,7 +20,6 @@
           "party": "DEM",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S8GA00180/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 136610982.33,
           "disbursements": 125808379.9,
@@ -35,25 +32,21 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6GA00390/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
-          "receipts": 10679277.11,
+          "receipts": 10687028.31,
           "disbursements": 10178765.75,
-          "cash_on_hand_end_period": "1103681.90",
+          "cash_on_hand_end_period": "1111433.10",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "TX",
       "label": "Texas Senate",
-      "note": "Result: James Talarico (D) won the open seat over Ken Paxton (R).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 52,
+        "d": 48
       },
       "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
       "candidates": [
@@ -63,7 +56,6 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00388/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 22327473.92,
           "disbursements": 17543065.62,
@@ -76,25 +68,21 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6TX00479/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 146349912.38,
           "disbursements": 136427054.98,
           "cash_on_hand_end_period": "9922857.40",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "OH",
       "label": "Ohio Senate",
-      "note": "Result: Sherrod Brown (D) won the special election over Jon Husted (R, incumbent appointee).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 48,
+        "d": 52
       },
       "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
       "candidates": [
@@ -104,7 +92,6 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00304/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 19894785.94,
           "disbursements": 15655689.37,
@@ -117,25 +104,21 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6OH00163/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 68409199.85,
           "disbursements": 63956396.53,
           "cash_on_hand_end_period": "4452803.32",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "NC",
       "label": "North Carolina Senate",
-      "note": "Result: Roy Cooper (D) won the open seat over Michael Whatley (R).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 8,
+        "d": 92
       },
       "kalshi_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
       "candidates": [
@@ -145,7 +128,6 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00407/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 49585341.29,
           "disbursements": 40496481.72,
@@ -158,25 +140,21 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NC00415/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 13668467.53,
           "disbursements": 12766229.48,
           "cash_on_hand_end_period": "902238.05",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "KS",
       "label": "Kansas Senate",
-      "note": "Result: Adam Hamilton (D) defeated Roger Marshall (R, incumbent).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Marshall (R) incumbent vs. Hamilton (D). Polls show Hamilton +1.0.",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 60,
+        "d": 40
       },
       "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
       "candidates": [
@@ -186,7 +164,6 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S0KS00315/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 7546611.06,
           "disbursements": 6946763.46,
@@ -199,22 +176,18 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6KS00312/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 19175044.34,
           "disbursements": 16300680.6,
           "cash_on_hand_end_period": "2874363.74",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Result: Troy Jackson (D) defeated Susan Collins (R, incumbent).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Jackson (D) won. Collins (R) incumbent.",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -227,7 +200,6 @@
           "party": "REP",
           "incumbent": true,
           "source_url": "https://www.fec.gov/data/candidate/S6ME00159/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 25225468.39,
           "disbursements": 23830778.33,
@@ -240,25 +212,21 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6ME00464/",
-          "fetchedAt": "2026-11-07T18:21:00.000000Z",
           "source": "OpenFEC API",
           "receipts": 26872873.96,
           "disbursements": 25276003.4,
           "cash_on_hand_end_period": "1596870.56",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "MI",
       "label": "Michigan Senate",
-      "note": "Result: Abdul El-Sayed (D) won the open seat over Mike Rogers (R).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 30,
+        "d": 70
       },
       "kalshi_url": "https://kalshi.com/markets/senatemi/michigan-senate-race/senatemi-26",
       "candidates": [
@@ -268,7 +236,6 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S4MI00595/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 23016438.64,
           "disbursements": 19369636.6,
@@ -281,25 +248,21 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6MI00418/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 53830872.19,
           "disbursements": 51096843.3,
           "cash_on_hand_end_period": "2734028.89",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "IA",
       "label": "Iowa Senate",
-      "note": "Result: Josh Turek (D) won the open seat over Ashley Hinson (R).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 63,
+        "d": 37
       },
       "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
       "candidates": [
@@ -309,7 +272,6 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00314/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 14147972.57,
           "disbursements": 13903059.38,
@@ -322,25 +284,21 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6IA00298/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 24290521.1,
           "disbursements": 21217670.1,
           "cash_on_hand_end_period": "3072851.00",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     },
     {
       "state": "NH",
       "label": "New Hampshire Senate",
-      "note": "Result: Chris Pappas (D) won the open seat over John E. Sununu (R).",
-      "result": "called",
-      "winner_party": "DEM",
+      "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R).",
       "kalshi": {
-        "r": 0,
-        "d": 100
+        "r": 11,
+        "d": 89
       },
       "kalshi_url": "https://kalshi.com/markets/senatenh/new-hampshire-senate-race/senatenh-26",
       "candidates": [
@@ -350,7 +308,6 @@
           "party": "DEM",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NH00141/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 23703648.39,
           "disbursements": 22126866.8,
@@ -363,95 +320,13 @@
           "party": "REP",
           "incumbent": false,
           "source_url": "https://www.fec.gov/data/candidate/S6NH00208/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
           "source": "OpenFEC API",
           "receipts": 5681528.08,
           "disbursements": 3936990.86,
           "cash_on_hand_end_period": "1711396.49",
           "coverage_end_date": "2026-10-14"
         }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
-    },
-    {
-      "state": "AK",
-      "label": "Alaska Senate",
-      "note": "Result: Race not yet called. Dan Sullivan (R, incumbent) vs. Mary Peltola (D).",
-      "result": "uncalled",
-      "kalshi": {
-        "r": 28,
-        "d": 72
-      },
-      "kalshi_url": "https://kalshi.com/markets/senateak/alaska-senate-race/senateak-26",
-      "candidates": [
-        {
-          "candidate_id": "S2AK00098",
-          "name": "Dan Sullivan",
-          "party": "REP",
-          "incumbent": true,
-          "source_url": "https://www.fec.gov/data/candidate/S2AK00098/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
-          "source": "OpenFEC API",
-          "receipts": null,
-          "disbursements": null,
-          "cash_on_hand_end_period": null,
-          "coverage_end_date": null
-        },
-        {
-          "candidate_id": "S6AK00000",
-          "name": "Mary Peltola",
-          "party": "DEM",
-          "incumbent": false,
-          "source_url": "https://www.fec.gov/data/candidate/S6AK00000/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
-          "source": "OpenFEC API",
-          "receipts": null,
-          "disbursements": null,
-          "cash_on_hand_end_period": null,
-          "coverage_end_date": null
-        }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
-    },
-    {
-      "state": "MS",
-      "label": "Mississippi Senate",
-      "note": "Result: Race not yet called (very close). Cindy Hyde-Smith (R, incumbent) vs. Ty Pinkins (D).",
-      "result": "uncalled",
-      "kalshi": {
-        "r": 1,
-        "d": 99
-      },
-      "kalshi_url": "https://kalshi.com/markets/senatems/mississippi-senate-race/senatems-26",
-      "candidates": [
-        {
-          "candidate_id": "S6MS00269",
-          "name": "Cindy Hyde-Smith",
-          "party": "REP",
-          "incumbent": true,
-          "source_url": "https://www.fec.gov/data/candidate/S6MS00269/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
-          "source": "OpenFEC API",
-          "receipts": null,
-          "disbursements": null,
-          "cash_on_hand_end_period": null,
-          "coverage_end_date": null
-        },
-        {
-          "candidate_id": "S6MS00000",
-          "name": "Ty Pinkins",
-          "party": "DEM",
-          "incumbent": false,
-          "source_url": "https://www.fec.gov/data/candidate/S6MS00000/",
-          "fetchedAt": "2026-11-06T15:20:31.601991Z",
-          "source": "OpenFEC API",
-          "receipts": null,
-          "disbursements": null,
-          "cash_on_hand_end_period": null,
-          "coverage_end_date": null
-        }
-      ],
-      "lastUpdated": "2026-11-07T18:52:05.000Z"
+      ]
     }
   ]
 }

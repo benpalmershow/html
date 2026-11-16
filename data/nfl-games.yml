@@ -982,9 +982,9 @@ games:
   game_time_iso: '2026-11-16T01:20:00Z'
   url: https://polymarket.com/sports/nfl/nfl-pit-cin-2026-11-16
   polymarket_slug: nfl-pit-cin-2026-11-16
-  PIT_win_odds: 0.1¢
+  PIT_win_odds: 0.0¢
   CIN_win_odds: 100.0¢
-  lastUpdated: '2026-11-16T03:32:11.061638Z'
+  lastUpdated: '2026-11-16T04:54:06.811531Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     PIT_win_odds: 36.0¢
@@ -1009,6 +1009,9 @@ games:
     CIN_win_odds: 91.5¢
   - timestamp: '2026-11-16T03:32:11.061638Z'
     PIT_win_odds: 0.1¢
+    CIN_win_odds: 100.0¢
+  - timestamp: '2026-11-16T04:54:06.811531Z'
+    PIT_win_odds: 0.0¢
     CIN_win_odds: 100.0¢
 - id: nfl-lac-bal-2026-11-17
   week: 10

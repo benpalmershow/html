@@ -261,17 +261,10 @@ function renderDashboard(filterCategory = 'all', sortByLatest = false, forceLate
         const sportsIndicators = financialData.indices.filter(
             ind => ind.category === 'Prediction Markets' && ind.game_time_iso
         );
-        // A title-click "reset" forces a plain lastUpdated sort, matching the
-        // other category titles; otherwise keep the kickoff ordering.
+        // Sports always orders by kickoff: upcoming games first (earliest
+        // kickoff on top), then completed games (most recent first). A
+        // title-click "reset" keeps this ordering so tonight's game stays first.
         sportsIndicators.sort((a, b) => {
-            if (forceLatestSort) {
-                const updatedA = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
-                const updatedB = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
-                if (updatedA > 0 && updatedB > 0) return updatedB - updatedA;
-                if (updatedA > 0) return -1;
-                if (updatedB > 0) return 1;
-                return String(a.name || '').localeCompare(String(b.name || ''));
-            }
             const isCompletedA = !!a.winner;
             const isCompletedB = !!b.winner;
             if (isCompletedA !== isCompletedB) return isCompletedA ? 1 : -1;

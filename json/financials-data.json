@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-16T14:32:14.747568Z",
+  "lastUpdated": "2026-11-16T15:12:47Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -2415,13 +2415,13 @@
         "august": "6.66",
         "september": "7.03",
         "october": "7.2",
-        "november": "7.2"
+        "november": "7.1"
       },
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "FRED",
       "name": "30-yr Mortgage Rate",
-      "lastUpdated": "2026-11-06T15:19:58Z",
+      "lastUpdated": "2026-11-16T15:12:47Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "change": "",
@@ -2893,7 +2893,7 @@
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "change": "",
       "explanation": "The number of individuals who filed for unemployment insurance for the first time during the reference week, presented as a monthly average and seasonally adjusted. This weekly indicator, published by the Department of Labor, serves as a real-time measure of layoffs and labor market health. The four-week moving average smooths volatility and provides a clearer trend. Initial claims below 300,000 typically indicate a healthy job market, while sustained increases may signal economic weakening. The data includes all 50 states plus the District of Columbia, Puerto Rico, and the Virgin Islands. Economists watch this indicator closely as it provides one of the most current snapshots of labor market conditions.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {

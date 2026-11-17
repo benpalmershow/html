@@ -51,23 +51,23 @@ function getFECPartyLabel(party) {
    Lean badge
    ========================================= */
 
-function createKalshiBar(race) {
-    const kalshi = race.kalshi;
-    if (!kalshi) return '';
+function createPolymarketBar(race) {
+    const polymarket = race.polymarket;
+    if (!polymarket) return '';
     if (race.result === 'called') return '';
-    const rProb = kalshi.r || 0;
-    const dProb = kalshi.d || 0;
-    const kalshiUrl = race.kalshi_url || '#';
+    const rProb = polymarket.r || 0;
+    const dProb = polymarket.d || 0;
+    const polymarketUrl = race.polymarket_url || '#';
     return `
-        <a href="${kalshiUrl}" target="_blank" rel="noopener noreferrer" class="kalshi-bar-link">
-            <div class="kalshi-bar-container">
-                <span class="kalshi-label">Kalshi:</span>
-                <div class="kalshi-bar-track">
-                    <div class="kalshi-bar-fill kalshi-bar-r" style="width: ${rProb}%;" title="Republican ${rProb}%"></div>
-                    <div class="kalshi-bar-fill kalshi-bar-d" style="width: ${dProb}%;" title="Democratic ${dProb}%"></div>
+        <a href="${polymarketUrl}" target="_blank" rel="noopener noreferrer" class="polymarket-bar-link">
+            <div class="polymarket-bar-container">
+                <span class="polymarket-label">Polymarket:</span>
+                <div class="polymarket-bar-track">
+                    <div class="polymarket-bar-fill polymarket-bar-r" style="width: ${rProb}%;" title="Republican ${rProb}%"></div>
+                    <div class="polymarket-bar-fill polymarket-bar-d" style="width: ${dProb}%;" title="Democratic ${dProb}%"></div>
                 </div>
-                <span class="kalshi-value r" style="color: var(--fec-rep);">R ${rProb}%</span>
-                <span class="kalshi-value d" style="color: var(--fec-dem);">D ${dProb}%</span>
+                <span class="polymarket-value r" style="color: var(--fec-rep);">R ${rProb}%</span>
+                <span class="polymarket-value d" style="color: var(--fec-dem);">D ${dProb}%</span>
             </div>
         </a>
     `;
@@ -95,9 +95,9 @@ function formatFECUpdatedDate(value) {
    ========================================= */
 
 function createFECCardHTML(race) {
-    const kalshi = race.kalshi || {};
+    const polymarket = race.polymarket || {};
     const isCalled = race.result === 'called';
-    const leadingParty = race.winner_party || (kalshi.r > kalshi.d ? 'REP' : kalshi.d > kalshi.r ? 'DEM' : null);
+    const leadingParty = race.winner_party || (polymarket.r > polymarket.d ? 'REP' : polymarket.d > polymarket.r ? 'DEM' : null);
     const markTitle = isCalled ? 'Won' : 'Leading';
     const markLabel = isCalled ? 'Won' : 'Leading';
 
@@ -133,7 +133,7 @@ function createFECCardHTML(race) {
 
     const note = race.note ? `<p style="margin:0 0 6px;">${race.note}</p>` : '';
 
-    const kalshiBar = createKalshiBar(race);
+    const polymarketBar = createPolymarketBar(race);
 
     const candidateLinks = (race.candidates || []).map(c => {
         const coh = c.cash_on_hand_end_period != null
@@ -180,7 +180,7 @@ function createFECCardHTML(race) {
             <div class="indicator-explanation-body">
                 ${note}
                 ${candidateLinks}
-                ${kalshiBar}
+                ${polymarketBar}
                 ${race.video_url ? `<a href="${race.video_url}" target="_blank" rel="noopener noreferrer" class="fec-source-link" style="display:inline-block;margin-top:6px;">Video</a>` : ''}
             </div>
         </div>`;
@@ -201,9 +201,9 @@ function initializeFECCards(data, container) {
     data.races.forEach(race => {
         const card = document.createElement('div');
         card.className = 'indicator';
-        const kalshi = race.kalshi || {};
-        const r = kalshi.r || 0;
-        const d = kalshi.d || 0;
+        const polymarket = race.polymarket || {};
+        const r = polymarket.r || 0;
+        const d = polymarket.d || 0;
         if (r > d) card.classList.add('fec-card-r');
         else if (d > r) card.classList.add('fec-card-d');
         card.setAttribute('data-indicator-name', race.label);

@@ -1887,8 +1887,8 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     white-space: nowrap;
 }
 
-/* Kalshi prediction bar */
-.kalshi-bar-link {
+/* Polymarket prediction bar */
+.polymarket-bar-link {
     text-decoration: none;
     color: inherit;
     display: block;
@@ -1896,7 +1896,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     margin: 0;
 }
 
-.kalshi-bar-container {
+.polymarket-bar-container {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -1905,7 +1905,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     border-top: 1px solid color-mix(in srgb, var(--border-color) 60%, transparent);
 }
 
-.kalshi-label {
+.polymarket-label {
     font-size: 0.55rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -1914,7 +1914,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     flex-shrink: 0;
 }
 
-.kalshi-bar-track {
+.polymarket-bar-track {
     flex: 1;
     height: 6px;
     display: flex;
@@ -1923,22 +1923,22 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     background: var(--bg-tertiary);
 }
 
-.kalshi-bar-fill {
+.polymarket-bar-fill {
     height: 100%;
     transition: width 0.4s ease;
 }
 
-.kalshi-bar-r {
+.polymarket-bar-r {
     background: linear-gradient(90deg, #DC2626 0%, #f1948a 100%);
     border-radius: 3px 0 0 3px;
 }
 
-.kalshi-bar-d {
+.polymarket-bar-d {
     background: linear-gradient(90deg, #2563EB 0%, #5dade2 100%);
     border-radius: 0 3px 3px 0;
 }
 
-.kalshi-value {
+.polymarket-value {
     font-size: 0.64rem;
     font-weight: 700;
     min-width: 28px;

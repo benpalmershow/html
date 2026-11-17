@@ -28,6 +28,10 @@ BASE_URL = "https://api.open.fec.gov/v1"
 CYCLE = 2026
 OUTPUT_FILE = Path(__file__).parent.parent / "json" / "fec-data.json"
 
+# Polymarket gamma API (public, no key required) - used as results source
+# when Kalshi is blocked by Cloudflare.
+POLYMARKET_GAMMA_BASE = "https://gamma-api.polymarket.com/events"
+
 # Seconds to wait between candidate requests (avoid 429s on DEMO_KEY / free tier)
 REQUEST_DELAY = 1.2
 
@@ -45,9 +49,11 @@ RACES = [
         "state": "GA",
         "label": "Georgia Senate",
         "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
-        "kalshi": {"r": 8, "d": 92},
-        "kalshi_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
+        "polymarket": {"r": 8, "d": 92},
+        "polymarket_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
         "kalshi_ticker": "SENATEGA-26",
+        "polymarket_slug": "georgia-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/georgia-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S8GA00180",
@@ -71,9 +77,11 @@ RACES = [
         "note": "Talarico (D) won. Paxton (R). Open seat - Cornyn lost primary.",
         "result": "called",
         "winner_party": "DEM",
-        "kalshi": {"r": 0, "d": 100},
-        "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
+        "polymarket": {"r": 0, "d": 100},
+        "polymarket_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
         "kalshi_ticker": "SENATX-26",
+        "polymarket_slug": "texas-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/texas-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S6TX00388",
@@ -95,9 +103,11 @@ RACES = [
         "state": "OH",
         "label": "Ohio Senate",
         "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
-        "kalshi": {"r": 48, "d": 52},
-        "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
+        "polymarket": {"r": 48, "d": 52},
+        "polymarket_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
         "kalshi_ticker": "SENATEOHS-26",
+        "polymarket_slug": "ohio-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/ohio-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S6OH00304",
@@ -119,9 +129,11 @@ RACES = [
         "state": "NC",
         "label": "North Carolina Senate",
         "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
-        "kalshi": {"r": 8, "d": 92},
-        "kalshi_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
+        "polymarket": {"r": 8, "d": 92},
+        "polymarket_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
         "kalshi_ticker": "SENATENC-26",
+        "polymarket_slug": "north-carolina-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/north-carolina-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S6NC00407",
@@ -145,9 +157,11 @@ RACES = [
         "note": "Hamilton (D) won. Marshall (R) incumbent.",
         "result": "called",
         "winner_party": "DEM",
-        "kalshi": {"r": 0, "d": 100},
-        "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
+        "polymarket": {"r": 0, "d": 100},
+        "polymarket_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
         "kalshi_ticker": "SENATEKS-26",
+        "polymarket_slug": "kansas-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/kansas-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S0KS00315",
@@ -169,9 +183,11 @@ RACES = [
         "state": "ME",
         "label": "Maine Senate",
         "note": "Jackson (D) won. Collins (R) incumbent.",
-        "kalshi": {"r": 0, "d": 100},
-        "kalshi_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
+        "polymarket": {"r": 0, "d": 100},
+        "polymarket_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
         "kalshi_ticker": "SENATEME-26",
+        "polymarket_slug": "maine-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/maine-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S6ME00159",
@@ -193,8 +209,11 @@ RACES = [
         "state": "MI",
         "label": "Michigan Senate",
         "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
-        "kalshi": {"r": 30, "d": 70},
-        "kalshi_url": "https://kalshi.com/markets/senatemi/michigan-senate-race/senatemi-26",
+        "polymarket": {"r": 30, "d": 70},
+        "polymarket_url": "https://kalshi.com/markets/senatemi/michigan-senate-race/senatemi-26",
+        "kalshi_ticker": "SENATEMI-26",
+        "polymarket_slug": "michigan-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/michigan-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S4MI00595",
@@ -218,8 +237,11 @@ RACES = [
         "note": "Turek (D) won. Hinson (R). Open seat - Ernst retiring.",
         "result": "called",
         "winner_party": "DEM",
-        "kalshi": {"r": 0, "d": 100},
-        "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
+        "polymarket": {"r": 0, "d": 100},
+        "polymarket_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
+        "kalshi_ticker": "SENATEIA-26",
+        "polymarket_slug": "iowa-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/iowa-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S6IA00314",
@@ -241,8 +263,11 @@ RACES = [
         "state": "NH",
         "label": "New Hampshire Senate",
         "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R).",
-        "kalshi": {"r": 11, "d": 89},
-        "kalshi_url": "https://kalshi.com/markets/senatenh/new-hampshire-senate-race/senatenh-26",
+        "polymarket": {"r": 11, "d": 89},
+        "polymarket_url": "https://kalshi.com/markets/senatenh/new-hampshire-senate-race/senatenh-26",
+        "kalshi_ticker": "SENATENH-26",
+        "polymarket_slug": "new-hampshire-senate-election-winner",
+        "polymarket_url": "https://polymarket.com/event/new-hampshire-senate-election-winner",
         "candidates": [
             {
                 "candidate_id": "S6NH00141",
@@ -307,6 +332,163 @@ def fetch_candidate_totals(candidate_id: str) -> dict:
     }
 
 
+def _kalshi_price_to_int(value):
+    """Convert a Kalshi price (decimal 0-1 or cents) to an integer cent value."""
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return None
+    cents = v * 100.0 if v <= 1.0 else v
+    return int(round(cents))
+
+
+def _party_from_outcome(name):
+    """Heuristically map a Kalshi outcome name to a party."""
+    n = (name or "").lower()
+    if any(k in n for k in ("dem", "democratic")):
+        return "DEM"
+    if any(k in n for k in ("rep", "republican")):
+        return "REP"
+    return None
+
+
+def fetch_kalshi_race(ticker, max_retries=3):
+    """Fetch a Kalshi market and return {r, d, called, winner_party, updated_at}.
+
+    Returns None when the API is unreachable (Cloudflare/404) so callers fall
+    back to the static kalshi values in the race definition.
+    """
+    url = f"{BASE_URL.replace('/v1', '')}/trade/api/v2/markets/{ticker}"
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, headers={"User-Agent": "howdy-stranger/1.0"}, timeout=30)
+            if resp.status_code == 429:
+                raise requests.RequestException("Rate limited (429)")
+            resp.raise_for_status()
+            data = resp.json()
+            break
+        except Exception as e:
+            if attempt == max_retries - 1:
+                logger.warning(f"Kalshi API unavailable for {ticker}: {e}")
+                return None
+            time.sleep(2 ** attempt)
+    else:
+        return None
+
+    market = data.get("market") or data
+    updated_at = market.get("last_updated") or market.get("updatedAt") or ""
+
+    r_price = None
+    d_price = None
+    called = False
+    winner_party = None
+
+    for outcome in market.get("outcomes") or []:
+        name = outcome.get("name") or outcome.get("outcome")
+        price = outcome.get("price") or outcome.get("last_price") or outcome.get("bid")
+        if name is None or price is None:
+            continue
+        cents = _kalshi_price_to_int(price)
+        if cents is None:
+            continue
+        party = _party_from_outcome(name)
+        if party == "DEM":
+            d_price = cents
+        elif party == "REP":
+            r_price = cents
+        if cents >= 100:
+            called = True
+            winner_party = party
+
+    # Fallback: yes_bid / no_bid fields (map Yes->DEM, No->REP by convention only
+    # when no partyed outcomes were found).
+    if r_price is None and d_price is None:
+        yes_bid = market.get("yes_bid")
+        no_bid = market.get("no_bid")
+        if yes_bid is not None:
+            d_price = _kalshi_price_to_int(yes_bid)
+        if no_bid is not None:
+            r_price = _kalshi_price_to_int(no_bid)
+
+    return {
+        "r": r_price,
+        "d": d_price,
+        "called": called,
+        "winner_party": winner_party,
+        "updated_at": updated_at,
+    }
+
+
+def fetch_polymarket_race(slug, max_retries=3):
+    """Fetch a Polymarket Senate event and return {r, d, called, winner_party, updated_at}.
+
+    Looks for the "Will the Democrats win the <State> Senate race in 2026?" and
+    "Will the Republicans win..." markets. A Yes price of ~1.0 means that party
+    won (market resolved). Returns None when the API is unreachable.
+    """
+    import urllib.parse
+
+    url = f"{POLYMARKET_GAMMA_BASE}?slug={urllib.parse.quote(slug)}"
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, headers={"User-Agent": "howdy-stranger/1.0"}, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            break
+        except Exception as e:
+            if attempt == max_retries - 1:
+                logger.warning(f"Polymarket API unavailable for {slug}: {e}")
+                return None
+            time.sleep(2 ** attempt)
+    else:
+        return None
+
+    events = data if isinstance(data, list) else data.get("events", [])
+    if not events:
+        logger.warning(f"No Polymarket event for slug {slug}")
+        return None
+
+    event = events[0]
+    updated_at = event.get("updatedAt") or ""
+
+    d_price = None
+    r_price = None
+    called = False
+    winner_party = None
+
+    for market in event.get("markets") or []:
+        question = (market.get("question") or "").lower()
+        outcomes = market.get("outcomes") or []
+        prices = market.get("outcomePrices") or []
+        if len(outcomes) != len(prices):
+            continue
+        try:
+            yes_price = float(prices[0]) if outcomes[0] == "Yes" else None
+        except (ValueError, TypeError, IndexError):
+            yes_price = None
+        if yes_price is None:
+            continue
+        cents = int(round(yes_price * 100.0))
+        if "democrats win" in question:
+            d_price = cents
+            if cents >= 99:
+                called = True
+                winner_party = "DEM"
+        elif "republicans win" in question:
+            r_price = cents
+            if cents >= 99:
+                called = True
+                winner_party = "REP"
+
+    return {
+        "r": r_price,
+        "d": d_price,
+        "called": called,
+        "winner_party": winner_party,
+        "updated_at": updated_at,
+    }
+
+
 # ── Main ────────────────────────────────────────────────────────────────────────
 
 def main() -> int:
@@ -338,7 +520,31 @@ def main() -> int:
             # Polite delay between requests
             time.sleep(REQUEST_DELAY)
 
-        races_out.append({**race, "candidates": candidates_out})
+        # Overlay odds / results from Polymarket (primary, reachable) with Kalshi
+        # as fallback. Falls back to the static values in the race definition when
+        # both APIs are unreachable.
+        race_out = dict(race)
+        polymarket_slug = race.get("polymarket_slug")
+        kalshi_ticker = race.get("kalshi_ticker")
+
+        overlay = None
+        if polymarket_slug:
+            overlay = fetch_polymarket_race(polymarket_slug)
+        if overlay is None and kalshi_ticker:
+            overlay = fetch_kalshi_race(kalshi_ticker)
+
+        if overlay:
+            static_polymarket = dict(race_out.get("polymarket") or {})
+            if overlay["r"] is not None:
+                static_polymarket["r"] = overlay["r"]
+            if overlay["d"] is not None:
+                static_polymarket["d"] = overlay["d"]
+            race_out["polymarket"] = static_polymarket
+            if overlay["called"] and overlay["winner_party"]:
+                race_out["result"] = "called"
+                race_out["winner_party"] = overlay["winner_party"]
+
+        races_out.append({**race_out, "candidates": candidates_out})
 
     output = {
         "source": "OpenFEC API",

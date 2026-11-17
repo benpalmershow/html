@@ -7,13 +7,14 @@
     {
       "state": "GA",
       "label": "Georgia Senate",
-      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R). Results via Kalshi.",
+      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R). Results via Polymarket.",
       "kalshi_ticker": "SENATEGA-26",
-      "kalshi": {
+      "polymarket_slug": "georgia-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/georgia-senate-election-winner",
+      "polymarket": {
         "r": 8,
         "d": 92
       },
-      "kalshi_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
       "candidates": [
         {
           "candidate_id": "S8GA00180",
@@ -44,15 +45,16 @@
     {
       "state": "TX",
       "label": "Texas Senate",
-      "note": "Talarico (D) won. Paxton (R). Open seat - Cornyn lost primary. Results via Kalshi.",
+      "note": "Talarico (D) won. Paxton (R). Open seat - Cornyn lost primary. Results via Polymarket.",
       "result": "called",
       "winner_party": "DEM",
       "kalshi_ticker": "SENATX-26",
-      "kalshi": {
+      "polymarket_slug": "texas-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/texas-senate-election-winner",
+      "polymarket": {
         "r": 0,
         "d": 100
       },
-      "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
       "candidates": [
         {
           "candidate_id": "S6TX00388",
@@ -83,13 +85,14 @@
     {
       "state": "OH",
       "label": "Ohio Senate",
-      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat. Results via Kalshi.",
+      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat. Results via Polymarket.",
       "kalshi_ticker": "SENATEOHS-26",
-      "kalshi": {
+      "polymarket_slug": "ohio-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/ohio-senate-election-winner",
+      "polymarket": {
         "r": 48,
         "d": 52
       },
-      "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
       "candidates": [
         {
           "candidate_id": "S6OH00304",
@@ -120,13 +123,14 @@
     {
       "state": "NC",
       "label": "North Carolina Senate",
-      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R). Results via Kalshi.",
+      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R). Results via Polymarket.",
       "kalshi_ticker": "SENATENC-26",
-      "kalshi": {
+      "polymarket_slug": "north-carolina-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/north-carolina-senate-election-winner",
+      "polymarket": {
         "r": 8,
         "d": 92
       },
-      "kalshi_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
       "candidates": [
         {
           "candidate_id": "S6NC00407",
@@ -157,15 +161,16 @@
     {
       "state": "KS",
       "label": "Kansas Senate",
-      "note": "Hamilton (D) won. Marshall (R) incumbent. Results via Kalshi.",
+      "note": "Hamilton (D) won. Marshall (R) incumbent. Results via Polymarket.",
       "result": "called",
       "winner_party": "DEM",
       "kalshi_ticker": "SENATEKS-26",
-      "kalshi": {
+      "polymarket_slug": "kansas-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/kansas-senate-election-winner",
+      "polymarket": {
         "r": 0,
         "d": 100
       },
-      "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
       "candidates": [
         {
           "candidate_id": "S0KS00315",
@@ -196,13 +201,14 @@
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Jackson (D) won. Collins (R) incumbent. Results via Kalshi.",
+      "note": "Jackson (D) won. Collins (R) incumbent. Results via Polymarket.",
       "kalshi_ticker": "SENATEME-26",
-      "kalshi": {
+      "polymarket_slug": "maine-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/maine-senate-election-winner",
+      "polymarket": {
         "r": 0,
         "d": 100
       },
-      "kalshi_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
       "candidates": [
         {
           "candidate_id": "S6ME00159",
@@ -233,13 +239,14 @@
     {
       "state": "MI",
       "label": "Michigan Senate",
-      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R). Results via Kalshi.",
+      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R). Results via Polymarket.",
       "kalshi_ticker": "SENATEMI-26",
-      "kalshi": {
+      "polymarket_slug": "michigan-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/michigan-senate-election-winner",
+      "polymarket": {
         "r": 30,
         "d": 70
       },
-      "kalshi_url": "https://kalshi.com/markets/senatemi/michigan-senate-race/senatemi-26",
       "candidates": [
         {
           "candidate_id": "S4MI00595",
@@ -270,15 +277,16 @@
     {
       "state": "IA",
       "label": "Iowa Senate",
-      "note": "Turek (D) won. Hinson (R). Open seat - Ernst retiring. Results via Kalshi.",
+      "note": "Turek (D) won. Hinson (R). Open seat - Ernst retiring. Results via Polymarket.",
       "result": "called",
       "winner_party": "DEM",
       "kalshi_ticker": "SENATEIA-26",
-      "kalshi": {
+      "polymarket_slug": "iowa-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/iowa-senate-election-winner",
+      "polymarket": {
         "r": 0,
         "d": 100
       },
-      "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
       "candidates": [
         {
           "candidate_id": "S6IA00314",
@@ -309,13 +317,14 @@
     {
       "state": "NH",
       "label": "New Hampshire Senate",
-      "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R). Results via Kalshi.",
+      "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R). Results via Polymarket.",
       "kalshi_ticker": "SENATENH-26",
-      "kalshi": {
+      "polymarket_slug": "new-hampshire-senate-election-winner",
+      "polymarket_url": "https://polymarket.com/event/new-hampshire-senate-election-winner",
+      "polymarket": {
         "r": 11,
         "d": 89
       },
-      "kalshi_url": "https://kalshi.com/markets/senatenh/new-hampshire-senate-race/senatenh-26",
       "candidates": [
         {
           "candidate_id": "S6NH00141",

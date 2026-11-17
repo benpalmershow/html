@@ -256,7 +256,7 @@
         headEl.className = 'entry-head' + (hasToggle ? ' has-toggle' : '');
         const titleEl = document.createElement('span');
         titleEl.className = 'entry-title';
-        titleEl.innerHTML = renderTitle(entry.title, hasLink ? entry.link : null);
+        titleEl.innerHTML = renderTitle(entry.title, null);
         const titleVideoUrl = videoUrlFromHtml(entry.title);
         if (titleVideoUrl) {
           titleEl.textContent = titleEl.textContent || entry.title || '';

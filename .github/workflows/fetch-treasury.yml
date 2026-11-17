@@ -2,8 +2,8 @@ name: Fetch Treasury Data
 
 on:
   schedule:
-    # Run daily at 9:00 AM UTC (debt-to-the-penny is daily; MTS lands mid-month)
-    - cron: '0 9 * * *'
+    # Run every hour (debt-to-the-penny is daily; MTS lands mid-month)
+    - cron: '0 * * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

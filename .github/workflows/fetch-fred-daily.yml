@@ -2,9 +2,9 @@ name: Fetch FRED Daily Indicators
 
 on:
   schedule:
-    # Run daily at 6:00 UTC for FRED daily-frequency series;
+    # Run every hour for FRED daily-frequency series;
     # only commits when a source revision or new observation exists.
-    - cron: '0 6 * * *'
+    - cron: '0 * * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

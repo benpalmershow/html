@@ -2,7 +2,10 @@ name: Fetch Earnings
 
 on:
   schedule:
-    - cron: "0 6 * * 1-5"   # Weekdays at 6am PT
+    # Earnings seasons: Jan, Apr, Jul, Oct (heavy 2-4 weeks after quarter end)
+    # Aggressive every 2 hours weekdays during earnings months; weekly otherwise
+    - cron: '0 */2 * 1,4,7,10 1-5'
+    - cron: '0 6 * * 1'
   workflow_dispatch:          # Manual trigger from GitHub UI
 
 permissions:

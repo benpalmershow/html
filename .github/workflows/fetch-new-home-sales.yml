@@ -2,8 +2,10 @@ name: Fetch New Home Sales
 
 on:
   schedule:
-    # New Residential Sales releases on the 27th of each month at 10:00 am ET.
-    - cron: '0 14 27 * *'
+    # New Residential Sales: 27th of month at 10:00 AM ET (14:00/15:00 UTC)
+    # Aggressive 25th-29th at 13-17 UTC; weekly otherwise
+    - cron: '*/15 13-17 25-29 * *'
+    - cron: '0 14 * * 1'
   workflow_dispatch:
 
 permissions:

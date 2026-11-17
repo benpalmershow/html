@@ -2,9 +2,10 @@ name: Fetch FRED Weekly Indicators
 
 on:
   schedule:
-    # Run weekly on Mondays at 6:00 UTC for FRED weekly-frequency series;
-    # only commits when a source revision or new observation exists.
-    - cron: '0 6 * * 1'
+    # FRED weekly series: Jobless Claims (Thu 8:30 ET), Mortgage Rate (Thu 12:00 ET), Petroleum (Wed/Thu)
+    # Aggressive Thu-Fri 12-20 UTC (covers 8:30 ET Thu + releases through Fri); daily otherwise
+    - cron: '*/15 12-20 * * 4,5'
+    - cron: '0 6 * * 0-3,6'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

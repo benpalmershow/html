@@ -2,9 +2,10 @@ name: Fetch USDA NASS Data
 
 on:
   schedule:
-    # Run monthly on the 5th at 7:00 UTC, after the USDA NASS price release;
-    # only commits when a new month or revision is published.
-    - cron: '0 7 5 * *'
+    # USDA NASS prices: monthly around 5th
+    # Aggressive 1st-10th at 6-12 UTC; weekly otherwise
+    - cron: '*/30 6-12 1-10 * *'
+    - cron: '0 7 * * 1'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

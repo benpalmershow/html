@@ -2,8 +2,8 @@ name: Fetch Other Indicators
 
 on:
   schedule:
-    # Run daily at 8:00 AM UTC, after FRED (7:00) and Treasury (9:00 - before)
-    - cron: '0 8 * * *'
+    # Run every hour for Polymarket and Kalshi indicators
+    - cron: '0 * * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

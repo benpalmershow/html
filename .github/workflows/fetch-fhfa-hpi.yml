@@ -2,8 +2,10 @@ name: Fetch FHFA House Price Index
 
 on:
   schedule:
-    # FHFA House Price Index releases quarterly (Feb/May/Aug/Nov).
-    - cron: '0 14 25 2,5,8,11 *'
+    # FHFA HPI: quarterly (Feb, May, Aug, Nov) around 25th at 9:00 AM ET (13:00/14:00 UTC)
+    # Aggressive 20th-28th of quarter months at 12-18 UTC; weekly otherwise
+    - cron: '*/15 12-18 20-28 2,5,8,11 *'
+    - cron: '0 14 * * 1'
   workflow_dispatch:
 
 permissions:

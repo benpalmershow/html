@@ -2,8 +2,10 @@ name: Fetch 13F Holdings
 
 on:
   schedule:
-    # 13F filings land up to 45 days after quarter end; run twice a week.
-    - cron: '30 8 * * 1,4'
+    # 13F filings: 45 days after quarter end (mid-Feb, mid-May, mid-Aug, mid-Nov)
+    # Aggressive 10th-25th of filing months at 8-16 UTC; weekly otherwise
+    - cron: '*/30 8-16 10-25 2,5,8,11 *'
+    - cron: '30 8 * * 1'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

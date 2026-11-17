@@ -2,10 +2,10 @@ name: Fetch Case-Shiller Index
 
 on:
   schedule:
-    # S&P Case-Shiller releases on the last Tuesday of each month at 9:00 am ET.
-    # Run every Tuesday at 14:00 UTC (covers 9:00 am ET under both EST and EDT);
-    # the fetch script only commits when a new month or revision is published.
-    - cron: '0 14 * * 2'
+    # S&P Case-Shiller: last Tuesday of month at 9:00 AM ET (13:00/14:00 UTC)
+    # Aggressive last Tue 12-18 UTC (days 22-28, Tue); daily otherwise
+    - cron: '*/15 12-18 22-28 * 2'
+    - cron: '0 14 * * *'
   workflow_dispatch:
 
 permissions:

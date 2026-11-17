@@ -2,10 +2,12 @@ name: Fetch BLS Data
 
 on:
   schedule:
-    # Run monthly on the 10th at 6:30 UTC, after the BLS JOLTS release
-    # (typically ~8th business day after month-end);
-    # only commits when a new month or revision is published.
-    - cron: '30 6 10 * *'
+    # BLS releases: Jobs (1st Fri 8:30 ET), CPI/PPI (mid-month ~13th 8:30 ET), JOLTS (early month ~4th 10:00 ET)
+    # Aggressive: 1st-3rd (JOLTS), 1st Fri (Jobs), 10th-15th (CPI/PPI) at 12-18 UTC; daily 6:30 otherwise
+    - cron: '*/15 12-18 1-3 * *'
+    - cron: '*/15 12-18 1-7 * 5'
+    - cron: '*/15 12-18 10-15 * *'
+    - cron: '30 6 * * *'
   workflow_dispatch:
 
 permissions:

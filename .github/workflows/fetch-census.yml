@@ -2,10 +2,10 @@ name: Fetch Census Data
 
 on:
   schedule:
-    # Run monthly on the 15th at 10:00 UTC, after the FT-900 release
-    # (roughly six weeks after month-end); skips days when the source
-    # has published no revision or new data.
-    - cron: '0 10 15 * *'
+    # Census FT-900: ~6 weeks after month-end, typically around 15th
+    # Aggressive 10th-20th at 8-16 UTC; weekly otherwise
+    - cron: '*/30 8-16 10-20 * *'
+    - cron: '0 10 * * 1'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

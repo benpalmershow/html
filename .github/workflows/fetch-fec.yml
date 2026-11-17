@@ -2,8 +2,10 @@ name: Fetch Elections
 
 on:
   schedule:
-    # Weekly on Mondays at 8am UTC (covers weekend FEC filing activity)
-    - cron: '0 8 * * 1'
+    # FEC filings continuous; quarterly deadlines (Jan/Apr/Jul/Oct 15, 30)
+    # Aggressive 1st-15th & 15th-30th of quarter months at 8-16 UTC; daily otherwise
+    - cron: '*/30 8-16 1-15,16-30 1,4,7,10 *'
+    - cron: '0 8 * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 permissions:

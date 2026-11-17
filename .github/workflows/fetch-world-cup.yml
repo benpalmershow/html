@@ -16,6 +16,7 @@ concurrency:
 jobs:
   fetch-scores:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check tournament date range
         id: date-check

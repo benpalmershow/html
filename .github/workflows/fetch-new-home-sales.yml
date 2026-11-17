@@ -16,6 +16,7 @@ concurrency:
 jobs:
   fetch-new-home-sales:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5

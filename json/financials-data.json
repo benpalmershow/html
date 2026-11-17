@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-17T18:28:40.233110Z",
+  "lastUpdated": "2026-11-17T19:10:11Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -174,7 +174,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-11-14T01:24:19Z",
+      "lastUpdated": "2026-11-17T19:10:11Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
@@ -2031,8 +2031,9 @@
         "may": "731.4B",
         "june": "732.9B",
         "july": "729.9B",
-        "august": "739.3B",
-        "september": "745.0B"
+        "august": "740.5B",
+        "september": "746.6B",
+        "october": "748B"
       },
       "2025": {
         "march": "695B",
@@ -2041,8 +2042,8 @@
         "june": "692B",
         "july": "698.3B",
         "august": "700.4B",
-        "september": "700.9B",
-        "october": "700.8B",
+        "september": "700.6B",
+        "october": "700.4B",
         "november": "705.5B",
         "december": "706B",
         "february": "684B",
@@ -2052,13 +2053,13 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Monthly Retail Sales",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-17T19:10:11Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/RSAFS",
       "source_url": "https://www.census.gov/retail/sales.html",
       "explanation": "The total value of sales at retail establishments, adjusted for seasonal variation, holiday differences, and trading days. Published by the U.S. Census Bureau, this 'advance' report is based on a sample of about 5,500 retail and food services firms. The data is divided into 13 major categories, including motor vehicles, electronics, clothing, and e-commerce. Retail sales account for about one-third of consumer spending, which drives about 70% of U.S. economic activity. The 'core' retail sales figure (excluding autos, gas, and building materials) is closely watched as a measure of underlying consumer demand. The data is volatile month-to-month, so economists often look at the three-month moving average for trends.",
       "change": "",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T14:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3550,8 +3551,9 @@
         "may": "102.7",
         "june": "103.0",
         "july": "103.2",
-        "august": "103.27",
-        "september": "104"
+        "august": "103.10",
+        "september": "104",
+        "october": "103"
       },
       "2025": {
         "april": "101.1",
@@ -3571,13 +3573,13 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Industrial Production Index",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-17T19:10:11Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/INDPRO",
       "source_url": "https://www.federalreserve.gov/releases/g17/current/",
       "change": "",
       "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3971,19 +3973,20 @@
         "may": "76.2",
         "june": "76.3",
         "july": "76.4",
-        "august": "76.4",
-        "september": "76.9"
+        "august": "76.3",
+        "september": "76.8",
+        "october": "76"
       },
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Capacity Utilization",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-17T19:10:11Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
       "explanation": "The capacity utilization rate for total industry (including manufacturing, mining, and utilities), published by the Federal Reserve. It measures the percentage of available resources being used to produce goods and services, serving as a key indicator of economic slack and inflationary pressure.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {

@@ -4,16 +4,10 @@ on:
   schedule:
     # Thursday night games (UTC) - game day
     - cron: '*/5 0-5,16-23 * * 4'
-    # Thursday night games post-game (Friday early morning UTC)
-    - cron: '*/5 0-5 * * 5'
     # Sunday games (UTC) - game day
     - cron: '*/5 12-23 * * 0'
-    # Sunday games post-game (Monday early morning UTC)
-    - cron: '*/5 0-5 * * 1'
     # Monday night games (UTC) - game day
     - cron: '*/5 0-5,16-23 * * 1'
-    # Monday night games post-game (Tuesday early morning UTC)
-    - cron: '*/5 0-5 * * 2'
   workflow_dispatch:
 
 permissions:

@@ -348,19 +348,32 @@ def main():
             and indicator.get("id") not in eligible_ids
         )
 
-    if args.replace_completed and completed_ids:
-        # Completed games are retained with their final settled odds
-        # (winner/result inferred in build_indicator); nothing to remove here.
-        pass
+    if args.replace_completed:
+        completed_ids = []
+        for indicator in indices:
+            if indicator.get("category") == DEFAULT_CATEGORY:
+                game_dt = parse_iso(indicator.get("game_time_iso"))
+                if game_dt and game_dt <= now:
+                    completed_ids.append(indicator.get("id"))
+        if completed_ids:
+            before = len(indices)
+            indices[:] = [ind for ind in indices if ind.get("id") not in completed_ids]
+            removed_completed = before - len(indices)
+            if removed_completed:
+                print(f"Removed {removed_completed} completed game(s): {', '.join(sorted(completed_ids))}")
+    else:
+        removed_completed = 0
 
     if remove_ids:
         before = len(indices)
         indices[:] = [ind for ind in indices if ind.get("id") not in remove_ids]
-        removed = before - len(indices)
-        if removed:
-            print(f"Removed {removed} unavailable game(s): {', '.join(sorted(remove_ids))}")
+        removed_other = before - len(indices)
+        if removed_other:
+            print(f"Removed {removed_other} unavailable game(s): {', '.join(sorted(remove_ids))}")
     else:
-        removed = 0
+        removed_other = 0
+
+    removed = removed_completed + removed_other
 
     if updated == 0 and removed == 0 and not appended:
         print("No NFL financials data changes; skipping write")

@@ -247,13 +247,13 @@
     {
       "name": "HARVARD MANAGEMENT CO",
       "shortName": "HARVARD",
-      "filingDate": "2026-08-14",
-      "description": "HARVARD MANAGEMENT CO is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-06-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1082621&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
+      "filingDate": "2026-11-13",
+      "description": "HARVARD MANAGEMENT CO is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-09-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1082621&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
       "firmIndex": 23,
-      "lastUpdated": "2026-11-13",
+      "lastUpdated": "2026-11-16",
       "cik": 1082621,
-      "period": "2026-06-30",
-      "previousPeriod": "2026-03-31"
+      "period": "2026-09-30",
+      "previousPeriod": "2026-06-30"
     }
   ],
   "holdings": [
@@ -143310,74 +143310,63 @@
     {
       "ticker": "SPCX",
       "name": "SPACE EXPLORATION TECHN CORP",
-      "value": 2210091186,
-      "pct": 51.8,
+      "value": 1292914251,
+      "pct": 32.7,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/SPCX",
       "cusip": "84615Q103",
-      "shares": 12935100
+      "shares": 8570292
     },
     {
       "ticker": "TSM",
       "name": "TAIWAN SEMICONDUCTOR MANUFAC",
-      "value": 349591747,
-      "pct": 8.2,
+      "value": 616530749,
+      "pct": 15.6,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/TSM",
       "cusip": "874039100",
-      "shares": 732022
+      "shares": 1351478
     },
     {
-      "ticker": "CBRS",
-      "name": "CEREBRAS SYSTEMS INC",
-      "value": 238963543,
-      "pct": 5.6,
+      "ticker": "GLD",
+      "name": "SPDR GOLD TR",
+      "value": 442155240,
+      "pct": 11.2,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/CBRS",
-      "cusip": "15675D103",
-      "shares": 1081283
+      "link": "https://www.perplexity.ai/finance/GLD",
+      "cusip": "78463V107",
+      "shares": 1161000
     },
     {
       "ticker": "AMZN",
       "name": "AMAZON COM INC",
-      "value": 234249847,
-      "pct": 5.5,
+      "value": 278883312,
+      "pct": 7.1,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/AMZN",
       "cusip": "023135106",
-      "shares": 982839
+      "shares": 1119339
     },
     {
-      "ticker": "GOOGL",
-      "name": "ALPHABET INC",
-      "value": 165162119,
-      "pct": 3.9,
+      "ticker": "AMD",
+      "name": "ADVANCED MICRO DEVICES INC",
+      "value": 198454944,
+      "pct": 5.0,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/GOOGL",
-      "cusip": "02079K305",
-      "shares": 462160
-    },
-    {
-      "ticker": "NVDA",
-      "name": "NVIDIA CORPORATION",
-      "value": 157615095,
-      "pct": 3.7,
-      "firm": "HARVARD MANAGEMENT CO",
-      "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/NVDA",
-      "cusip": "67066G104",
-      "shares": 787721
+      "link": "https://www.perplexity.ai/finance/AMD",
+      "cusip": "007903107",
+      "shares": 324400
     },
     {
       "ticker": "IAU",
       "name": "ISHARES GOLD TR",
-      "value": 149516218,
-      "pct": 3.5,
+      "value": 154644639,
+      "pct": 3.9,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/IAU",
@@ -143385,43 +143374,21 @@
       "shares": 1980085
     },
     {
-      "ticker": "MSFT",
-      "name": "MICROSOFT CORP",
-      "value": 146322690,
-      "pct": 3.4,
-      "firm": "HARVARD MANAGEMENT CO",
-      "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/MSFT",
-      "cusip": "594918104",
-      "shares": 392265
-    },
-    {
-      "ticker": "AVGO",
-      "name": "BROADCOM INC",
-      "value": 127810202,
-      "pct": 3.0,
-      "firm": "HARVARD MANAGEMENT CO",
-      "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/AVGO",
-      "cusip": "11135F101",
-      "shares": 338346
-    },
-    {
       "ticker": "META",
       "name": "META PLATFORMS INC",
-      "value": 120827958,
-      "pct": 2.8,
+      "value": 144685013,
+      "pct": 3.7,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/META",
       "cusip": "30303M102",
-      "shares": 214504
+      "shares": 199516
     },
     {
       "ticker": "IBIT",
       "name": "ISHARES BITCOIN TRUST ETF",
-      "value": 101355133,
-      "pct": 2.4,
+      "value": 144131932,
+      "pct": 3.6,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/IBIT",
@@ -143429,32 +143396,76 @@
       "shares": 3044612
     },
     {
+      "ticker": "AVGO",
+      "name": "BROADCOM INC",
+      "value": 141270041,
+      "pct": 3.6,
+      "firm": "HARVARD MANAGEMENT CO",
+      "firmIndex": 23,
+      "link": "https://www.perplexity.ai/finance/AVGO",
+      "cusip": "11135F101",
+      "shares": 402261
+    },
+    {
+      "ticker": "MSFT",
+      "name": "MICROSOFT CORP",
+      "value": 118744044,
+      "pct": 3.0,
+      "firm": "HARVARD MANAGEMENT CO",
+      "firmIndex": 23,
+      "link": "https://www.perplexity.ai/finance/MSFT",
+      "cusip": "594918104",
+      "shares": 231515
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA CORPORATION",
+      "value": 118198297,
+      "pct": 3.0,
+      "firm": "HARVARD MANAGEMENT CO",
+      "firmIndex": 23,
+      "link": "https://www.perplexity.ai/finance/NVDA",
+      "cusip": "67066G104",
+      "shares": 517551
+    },
+    {
+      "ticker": "CBRS",
+      "name": "CEREBRAS SYSTEMS INC",
+      "value": 111835827,
+      "pct": 2.8,
+      "firm": "HARVARD MANAGEMENT CO",
+      "firmIndex": 23,
+      "link": "https://www.perplexity.ai/finance/CBRS",
+      "cusip": "15675D103",
+      "shares": 629529
+    },
+    {
       "ticker": "NFLX",
       "name": "NETFLIX INC.",
-      "value": 78825600,
-      "pct": 1.8,
+      "value": 96471487,
+      "pct": 2.4,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/NFLX",
       "cusip": "64110L106",
-      "shares": 1104000
+      "shares": 1386483
     },
     {
-      "ticker": "BKNG",
-      "name": "BOOKING HOLDINGS INC",
-      "value": 73898304,
-      "pct": 1.7,
+      "ticker": "GOOGL",
+      "name": "ALPHABET INC",
+      "value": 59684117,
+      "pct": 1.5,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/BKNG",
-      "cusip": "09857L108",
-      "shares": 414600
+      "link": "https://www.perplexity.ai/finance/GOOGL",
+      "cusip": "02079K305",
+      "shares": 173460
     },
     {
       "ticker": "FERVO",
       "name": "FERVO ENERGY CO",
-      "value": 36694319,
-      "pct": 0.9,
+      "value": 17060410,
+      "pct": 0.4,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/FERVO",
@@ -143462,43 +143473,10 @@
       "shares": 1255365
     },
     {
-      "ticker": "LITE",
-      "name": "LUMENTUM HLDGS INC",
-      "value": 23376129,
-      "pct": 0.5,
-      "firm": "HARVARD MANAGEMENT CO",
-      "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/LITE",
-      "cusip": "55024U109",
-      "shares": 27243
-    },
-    {
-      "ticker": "GLD",
-      "name": "SPDR GOLD TR",
-      "value": 21683584,
-      "pct": 0.5,
-      "firm": "HARVARD MANAGEMENT CO",
-      "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/GLD",
-      "cusip": "78463V107",
-      "shares": 58862
-    },
-    {
-      "ticker": "GBIO",
-      "name": "GENERATE BIOMEDICINES INC",
-      "value": 18744257,
-      "pct": 0.4,
-      "firm": "HARVARD MANAGEMENT CO",
-      "firmIndex": 23,
-      "link": "https://www.perplexity.ai/finance/GBIO",
-      "cusip": "370920100",
-      "shares": 1111100
-    },
-    {
       "ticker": "TXG",
       "name": "10X GENOMICS INC",
-      "value": 6517800,
-      "pct": 0.2,
+      "value": 15361200,
+      "pct": 0.4,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
       "link": "https://www.perplexity.ai/finance/TXG",
@@ -143506,9 +143484,20 @@
       "shares": 170000
     },
     {
+      "ticker": "MAZE",
+      "name": "MAZE THERAPEUTICS INC",
+      "value": 1310212,
+      "pct": 0.0,
+      "firm": "HARVARD MANAGEMENT CO",
+      "firmIndex": 23,
+      "link": "https://www.perplexity.ai/finance/MAZE",
+      "cusip": "578784100",
+      "shares": 48205
+    },
+    {
       "ticker": "PCTTW",
       "name": "PURECYCLE TECHNOLOGIES INC",
-      "value": 1857141,
+      "value": 535714,
       "pct": 0.0,
       "firm": "HARVARD MANAGEMENT CO",
       "firmIndex": 23,
@@ -143517,7 +143506,7 @@
       "shares": 714285
     }
   ],
-  "lastUpdated": "2026-11-17",
+  "lastUpdated": "2026-11-13",
   "previous": {
     "ABBINGTON INVESTMENT GROUP": {
       "period": "2026-06-30",
@@ -156552,108 +156541,114 @@
       }
     },
     "HARVARD MANAGEMENT CO": {
-      "period": "2026-03-31",
-      "total": 1815664370,
+      "period": "2026-06-30",
+      "total": 4263102872,
       "holdings": {
+        "84615Q103": {
+          "ticker": "SPCX",
+          "value": 2210091186,
+          "pct": 51.8,
+          "shares": 12935100
+        },
         "874039100": {
           "ticker": "TSM",
-          "value": 232102708,
-          "pct": 12.8,
-          "shares": 686796
+          "value": 349591747,
+          "pct": 8.2,
+          "shares": 732022
         },
-        "78463V107": {
-          "ticker": "GLD",
-          "value": 199848191,
-          "pct": 11.0,
-          "shares": 464450
-        },
-        "594918104": {
-          "ticker": "MSFT",
-          "value": 189921271,
-          "pct": 10.5,
-          "shares": 513065
-        },
-        "02079K305": {
-          "ticker": "GOOGL",
-          "value": 177413018,
-          "pct": 9.8,
-          "shares": 616960
-        },
-        "907818108": {
-          "ticker": "UNP",
-          "value": 153912305,
-          "pct": 8.5,
-          "shares": 634376
+        "15675D103": {
+          "ticker": "CBRS",
+          "value": 238963543,
+          "pct": 5.6,
+          "shares": 1081283
         },
         "023135106": {
           "ticker": "AMZN",
-          "value": 149441848,
-          "pct": 8.2,
-          "shares": 717539
+          "value": 234249847,
+          "pct": 5.5,
+          "shares": 982839
         },
-        "09857L108": {
-          "ticker": "BKNG",
-          "value": 147058057,
-          "pct": 8.1,
-          "shares": 34928
-        },
-        "11135F101": {
-          "ticker": "AVGO",
-          "value": 146681741,
-          "pct": 8.1,
-          "shares": 473916
+        "02079K305": {
+          "ticker": "GOOGL",
+          "value": 165162119,
+          "pct": 3.9,
+          "shares": 462160
         },
         "67066G104": {
           "ticker": "NVDA",
-          "value": 129717150,
-          "pct": 7.1,
-          "shares": 743791
+          "value": 157615095,
+          "pct": 3.7,
+          "shares": 787721
         },
-        "46438F101": {
-          "ticker": "IBIT",
-          "value": 116973993,
-          "pct": 6.4,
-          "shares": 3044612
+        "464285204": {
+          "ticker": "IAU",
+          "value": 149516218,
+          "pct": 3.5,
+          "shares": 1980085
+        },
+        "594918104": {
+          "ticker": "MSFT",
+          "value": 146322690,
+          "pct": 3.4,
+          "shares": 392265
+        },
+        "11135F101": {
+          "ticker": "AVGO",
+          "value": 127810202,
+          "pct": 3.0,
+          "shares": 338346
         },
         "30303M102": {
           "ticker": "META",
-          "value": 111310180,
-          "pct": 6.1,
-          "shares": 194554
+          "value": 120827958,
+          "pct": 2.8,
+          "shares": 214504
         },
-        "98954M200": {
-          "ticker": "Z",
-          "value": 23257422,
-          "pct": 1.3,
-          "shares": 562045
+        "46438F101": {
+          "ticker": "IBIT",
+          "value": 101355133,
+          "pct": 2.4,
+          "shares": 3044612
         },
-        "370920100": {
-          "ticker": "GBIO",
-          "value": 13888750,
-          "pct": 0.8,
-          "shares": 1111100
+        "64110L106": {
+          "ticker": "NFLX",
+          "value": 78825600,
+          "pct": 1.8,
+          "shares": 1104000
         },
-        "98954M101": {
-          "ticker": "ZG",
-          "value": 11787872,
-          "pct": 0.6,
-          "shares": 284800
+        "09857L108": {
+          "ticker": "BKNG",
+          "value": 73898304,
+          "pct": 1.7,
+          "shares": 414600
         },
-        "G3643J108": {
-          "ticker": "FLUT",
-          "value": 8190765,
+        "31556C106": {
+          "ticker": "FERVO",
+          "value": 36694319,
+          "pct": 0.9,
+          "shares": 1255365
+        },
+        "55024U109": {
+          "ticker": "LITE",
+          "value": 23376129,
           "pct": 0.5,
-          "shares": 80341
+          "shares": 27243
+        },
+        "78463V107": {
+          "ticker": "GLD",
+          "value": 21683584,
+          "pct": 0.5,
+          "shares": 58862
         },
         "88025U109": {
           "ticker": "TXG",
-          "value": 3609100,
+          "value": 6517800,
           "pct": 0.2,
           "shares": 170000
         },
         "74623V111": {
           "ticker": "PCTTW",
-          "value": 549999,
+          "value": 1857141,
           "pct": 0.0,
           "shares": 714285
         }

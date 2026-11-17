@@ -47,6 +47,7 @@ RACES = [
         "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
         "kalshi": {"r": 8, "d": 92},
         "kalshi_url": "https://kalshi.com/markets/senatega/georgia-senate-race/senatega-26",
+        "kalshi_ticker": "SENATEGA-26",
         "candidates": [
             {
                 "candidate_id": "S8GA00180",
@@ -67,9 +68,12 @@ RACES = [
     {
         "state": "TX",
         "label": "Texas Senate",
-        "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
-        "kalshi": {"r": 52, "d": 48},
+        "note": "Talarico (D) won. Paxton (R). Open seat - Cornyn lost primary.",
+        "result": "called",
+        "winner_party": "DEM",
+        "kalshi": {"r": 0, "d": 100},
         "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
+        "kalshi_ticker": "SENATX-26",
         "candidates": [
             {
                 "candidate_id": "S6TX00388",
@@ -93,6 +97,7 @@ RACES = [
         "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
         "kalshi": {"r": 48, "d": 52},
         "kalshi_url": "https://kalshi.com/markets/senateohs/m/senateohs-26",
+        "kalshi_ticker": "SENATEOHS-26",
         "candidates": [
             {
                 "candidate_id": "S6OH00304",
@@ -116,6 +121,7 @@ RACES = [
         "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
         "kalshi": {"r": 8, "d": 92},
         "kalshi_url": "https://kalshi.com/markets/senatenc/north-carolina-senate-race/senatenc-26",
+        "kalshi_ticker": "SENATENC-26",
         "candidates": [
             {
                 "candidate_id": "S6NC00407",
@@ -136,9 +142,12 @@ RACES = [
     {
         "state": "KS",
         "label": "Kansas Senate",
-        "note": "Marshall (R) incumbent vs. Hamilton (D). Polls show Hamilton +1.0.",
-        "kalshi": {"r": 60, "d": 40},
+        "note": "Hamilton (D) won. Marshall (R) incumbent.",
+        "result": "called",
+        "winner_party": "DEM",
+        "kalshi": {"r": 0, "d": 100},
         "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
+        "kalshi_ticker": "SENATEKS-26",
         "candidates": [
             {
                 "candidate_id": "S0KS00315",
@@ -162,6 +171,7 @@ RACES = [
         "note": "Jackson (D) won. Collins (R) incumbent.",
         "kalshi": {"r": 0, "d": 100},
         "kalshi_url": "https://kalshi.com/markets/senateme/maine-senate-race/senateme-26",
+        "kalshi_ticker": "SENATEME-26",
         "candidates": [
             {
                 "candidate_id": "S6ME00159",
@@ -205,8 +215,10 @@ RACES = [
     {
         "state": "IA",
         "label": "Iowa Senate",
-        "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
-        "kalshi": {"r": 63, "d": 37},
+        "note": "Turek (D) won. Hinson (R). Open seat - Ernst retiring.",
+        "result": "called",
+        "winner_party": "DEM",
+        "kalshi": {"r": 0, "d": 100},
         "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
         "candidates": [
             {

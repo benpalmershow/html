@@ -7,7 +7,8 @@
     {
       "state": "GA",
       "label": "Georgia Senate",
-      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R).",
+      "note": "Safe D. Ossoff (D) incumbent vs. Collins (R). Results via Kalshi.",
+      "kalshi_ticker": "SENATEGA-26",
       "kalshi": {
         "r": 8,
         "d": 92
@@ -43,10 +44,13 @@
     {
       "state": "TX",
       "label": "Texas Senate",
-      "note": "Toss-up. Paxton (R) vs. Talarico (D). Open seat - Cornyn lost primary.",
+      "note": "Talarico (D) won. Paxton (R). Open seat - Cornyn lost primary. Results via Kalshi.",
+      "result": "called",
+      "winner_party": "DEM",
+      "kalshi_ticker": "SENATX-26",
       "kalshi": {
-        "r": 52,
-        "d": 48
+        "r": 0,
+        "d": 100
       },
       "kalshi_url": "https://kalshi.com/markets/senatetx/texas-senate-race/senatetx-26",
       "candidates": [
@@ -79,7 +83,8 @@
     {
       "state": "OH",
       "label": "Ohio Senate",
-      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat.",
+      "note": "Toss-up. Husted (R) incumbent vs. Brown (D). Special election for JD Vance's vacated seat. Results via Kalshi.",
+      "kalshi_ticker": "SENATEOHS-26",
       "kalshi": {
         "r": 48,
         "d": 52
@@ -115,7 +120,8 @@
     {
       "state": "NC",
       "label": "North Carolina Senate",
-      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R).",
+      "note": "Safe D. Open seat - Tillis retiring. Cooper (D) vs. Whatley (R). Results via Kalshi.",
+      "kalshi_ticker": "SENATENC-26",
       "kalshi": {
         "r": 8,
         "d": 92
@@ -151,10 +157,13 @@
     {
       "state": "KS",
       "label": "Kansas Senate",
-      "note": "Marshall (R) incumbent vs. Hamilton (D). Polls show Hamilton +1.0.",
+      "note": "Hamilton (D) won. Marshall (R) incumbent. Results via Kalshi.",
+      "result": "called",
+      "winner_party": "DEM",
+      "kalshi_ticker": "SENATEKS-26",
       "kalshi": {
-        "r": 60,
-        "d": 40
+        "r": 0,
+        "d": 100
       },
       "kalshi_url": "https://kalshi.com/markets/senateks/kansas-senate-race/senateks-26",
       "candidates": [
@@ -187,7 +196,8 @@
     {
       "state": "ME",
       "label": "Maine Senate",
-      "note": "Jackson (D) won. Collins (R) incumbent.",
+      "note": "Jackson (D) won. Collins (R) incumbent. Results via Kalshi.",
+      "kalshi_ticker": "SENATEME-26",
       "kalshi": {
         "r": 0,
         "d": 100
@@ -223,7 +233,8 @@
     {
       "state": "MI",
       "label": "Michigan Senate",
-      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R).",
+      "note": "Safe D. Open seat - Peters retiring. El-Sayed (D) vs. Rogers (R). Results via Kalshi.",
+      "kalshi_ticker": "SENATEMI-26",
       "kalshi": {
         "r": 30,
         "d": 70
@@ -259,10 +270,13 @@
     {
       "state": "IA",
       "label": "Iowa Senate",
-      "note": "Lean R. Open seat - Ernst retiring. Hinson (R) vs. Turek (D).",
+      "note": "Turek (D) won. Hinson (R). Open seat - Ernst retiring. Results via Kalshi.",
+      "result": "called",
+      "winner_party": "DEM",
+      "kalshi_ticker": "SENATEIA-26",
       "kalshi": {
-        "r": 63,
-        "d": 37
+        "r": 0,
+        "d": 100
       },
       "kalshi_url": "https://kalshi.com/markets/senateia/iowa-senate-race/senateia-26",
       "candidates": [
@@ -295,7 +309,8 @@
     {
       "state": "NH",
       "label": "New Hampshire Senate",
-      "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R).",
+      "note": "Safe D. Open seat - Shaheen retiring. Pappas (D) vs. Sununu (R). Results via Kalshi.",
+      "kalshi_ticker": "SENATENH-26",
       "kalshi": {
         "r": 11,
         "d": 89

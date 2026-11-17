@@ -177,7 +177,7 @@ main {
 }
 
 .entry-title .entry-tags {
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 400;
   line-height: 1.4;
 }
@@ -226,8 +226,8 @@ main {
 .entry-content,
 .accordion-inner {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.85rem;
+  line-height: 1.65;
 }
 
 .entry-content a,
@@ -588,18 +588,18 @@ main {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.35rem;
-  margin-left: 0.45rem;
+  gap: 0.25rem;
+  margin-left: 0.3rem;
   vertical-align: middle;
 }
 
 .entry-subcat-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.12rem 0.45rem;
+  padding: 0.1rem 0.4rem;
   color: var(--logo-teal);
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: var(--bg-secondary);
@@ -611,12 +611,12 @@ main {
   --tag: var(--text-muted);
   display: inline-flex;
   align-items: center;
-  gap: 0.28rem;
-  min-height: 1.8rem;
-  padding: 0.08rem 0.38rem;
+  gap: 0.22rem;
+  min-height: 1.5rem;
+  padding: 0.04rem 0.3rem;
   color: var(--tag);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   background: transparent;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -625,8 +625,8 @@ main {
 }
 
 .entry-tag-chip .tag-icon {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   flex-shrink: 0;
   opacity: 0.85;
 }
@@ -740,9 +740,10 @@ main {
 
   /* Larger touch targets for mobile. */
   .entry-tag-chip {
-    min-height: 2rem;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.72rem;
+    min-height: 1.5rem;
+    padding: 0.1rem 0.3rem;
+    font-size: 0.6rem;
+    gap: 0.18rem;
   }
 
   .sub-filter-btn {

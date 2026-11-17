@@ -225,13 +225,13 @@
     {
       "name": "Duquesne Family Office LLC",
       "shortName": "Duquesne",
-      "filingDate": "2026-08-14",
-      "description": "Duquesne Family Office LLC is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-06-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1536411&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
+      "filingDate": "2026-11-16",
+      "description": "Duquesne Family Office LLC is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-09-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1536411&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
       "firmIndex": 21,
-      "lastUpdated": "2026-11-12",
+      "lastUpdated": "2026-11-17",
       "cik": 1536411,
-      "period": "2026-06-30",
-      "previousPeriod": "2026-03-31"
+      "period": "2026-09-30",
+      "previousPeriod": "2026-06-30"
     },
     {
       "name": "Thrive Capital Management, LLC",
@@ -142573,294 +142573,217 @@
     {
       "ticker": "NTRA",
       "name": "Natera Inc",
-      "value": 864923000,
-      "pct": 16.6,
+      "value": 1306335000,
+      "pct": 29.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/NTRA",
       "cusip": "632307104",
-      "shares": 3186306000
-    },
-    {
-      "ticker": "INSM",
-      "name": "Insmed Inc",
-      "value": 295837000,
-      "pct": 5.7,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/INSM",
-      "cusip": "457669307",
-      "shares": 2774690000
-    },
-    {
-      "ticker": "TSM",
-      "name": "Taiwan Semiconductor Manufac",
-      "value": 281613000,
-      "pct": 5.4,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/TSM",
-      "cusip": "874039100",
-      "shares": 589680000
-    },
-    {
-      "ticker": "EWZ",
-      "name": "Ishares Inc",
-      "value": 264414000,
-      "pct": 5.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/EWZ",
-      "cusip": "464286400",
-      "shares": 7664170000
-    },
-    {
-      "ticker": "AMZN",
-      "name": "Amazon Com Inc",
-      "value": 238555000,
-      "pct": 4.6,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/AMZN",
-      "cusip": "023135106",
-      "shares": 1000900000
-    },
-    {
-      "ticker": "STM",
-      "name": "Stmicroelectronics N V",
-      "value": 232375000,
-      "pct": 4.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/STM",
-      "cusip": "861012102",
-      "shares": 3102880000
-    },
-    {
-      "ticker": "RSP",
-      "name": "Invesco Exchange Traded Fd T",
-      "value": 190514000,
-      "pct": 3.7,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/RSP",
-      "cusip": "46137V357",
-      "shares": 895400000
-    },
-    {
-      "ticker": "YPF",
-      "name": "Ypf Sociedad Anonima",
-      "value": 142726000,
-      "pct": 2.7,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/YPF",
-      "cusip": "984245100",
-      "shares": 3138897000
-    },
-    {
-      "ticker": "CDW",
-      "name": "Cdw Corp",
-      "value": 139789000,
-      "pct": 2.7,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CDW",
-      "cusip": "12514G108",
-      "shares": 993950000
-    },
-    {
-      "ticker": "TBBB",
-      "name": "Bbb Foods Inc",
-      "value": 120915000,
-      "pct": 2.3,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/TBBB",
-      "cusip": "G0896C103",
-      "shares": 2901733000
-    },
-    {
-      "ticker": "GOOGL",
-      "name": "Alphabet Inc",
-      "value": 120184000,
-      "pct": 2.3,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/GOOGL",
-      "cusip": "02079K305",
-      "shares": 336300000
+      "shares": 3160666000
     },
     {
       "ticker": "STX",
       "name": "Seagate Technology Hldngs Pl",
-      "value": 117730000,
-      "pct": 2.3,
+      "value": 405636000,
+      "pct": 9.1,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/STX",
       "cusip": "G7997R103",
-      "shares": 122000000
+      "shares": 439790000
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon Com Inc",
+      "value": 306928000,
+      "pct": 6.9,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AMZN",
+      "cusip": "023135106",
+      "shares": 1231900000
     },
     {
       "ticker": "FOXA",
       "name": "Fox Corp",
-      "value": 114992000,
-      "pct": 2.2,
+      "value": 190835000,
+      "pct": 4.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/FOXA",
       "cusip": "35137L105",
-      "shares": 2204600000
+      "shares": 3046050000
     },
     {
-      "ticker": "UAL",
-      "name": "United Airls Hldgs Inc",
-      "value": 108084000,
-      "pct": 2.1,
+      "ticker": "INSM",
+      "name": "Insmed Inc",
+      "value": 187492000,
+      "pct": 4.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/UAL",
-      "cusip": "910047109",
-      "shares": 794795000
+      "link": "https://www.perplexity.ai/finance/INSM",
+      "cusip": "457669307",
+      "shares": 1642650000
+    },
+    {
+      "ticker": "YPF",
+      "name": "Ypf Sociedad Anonima",
+      "value": 177555000,
+      "pct": 4.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/YPF",
+      "cusip": "984245100",
+      "shares": 3541897000
+    },
+    {
+      "ticker": "U",
+      "name": "Unity Software Inc",
+      "value": 161935000,
+      "pct": 3.6,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/U",
+      "cusip": "91332U101",
+      "shares": 3956385000
     },
     {
       "ticker": "SE",
       "name": "Sea Ltd",
-      "value": 105404000,
-      "pct": 2.0,
+      "value": 155072000,
+      "pct": 3.5,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/SE",
       "cusip": "81141R100",
-      "shares": 1099905000
+      "shares": 1592765000
     },
     {
-      "ticker": "NAMS",
-      "name": "Newamsterdam Pharma Company",
-      "value": 104047000,
-      "pct": 2.0,
+      "ticker": "EWZ",
+      "name": "Ishares Inc",
+      "value": 125814000,
+      "pct": 2.8,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/NAMS",
-      "cusip": "N62509109",
-      "shares": 3070146000
+      "link": "https://www.perplexity.ai/finance/EWZ",
+      "cusip": "464286400",
+      "shares": 3377570000
     },
     {
-      "ticker": "IWM",
-      "name": "Ishares Tr",
-      "value": 99149000,
-      "pct": 1.9,
+      "ticker": "CDW",
+      "name": "Cdw Corp",
+      "value": 105828000,
+      "pct": 2.4,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/IWM",
-      "cusip": "464287655",
-      "shares": 330000000
-    },
-    {
-      "ticker": "SNDK",
-      "name": "Sandisk Corp",
-      "value": 79353000,
-      "pct": 1.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/SNDK",
-      "cusip": "80004C200",
-      "shares": 34900000
+      "link": "https://www.perplexity.ai/finance/CDW",
+      "cusip": "12514G108",
+      "shares": 825750000
     },
     {
       "ticker": "RVMD",
       "name": "Revolution Medicines Inc",
-      "value": 74835000,
-      "pct": 1.4,
+      "value": 89552000,
+      "pct": 2.0,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/RVMD",
       "cusip": "76155X100",
-      "shares": 399587000
+      "shares": 436287000
     },
     {
-      "ticker": "SPY",
-      "name": "State Str Spdr S&P 500 Etf T",
-      "value": 67209000,
-      "pct": 1.3,
+      "ticker": "TBBB",
+      "name": "Bbb Foods Inc",
+      "value": 86720000,
+      "pct": 1.9,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/SPY",
-      "cusip": "78462F103",
-      "shares": 90000000
+      "link": "https://www.perplexity.ai/finance/TBBB",
+      "cusip": "G0896C103",
+      "shares": 1647408000
+    },
+    {
+      "ticker": "STM",
+      "name": "Stmicroelectronics N V",
+      "value": 86197000,
+      "pct": 1.9,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/STM",
+      "cusip": "861012102",
+      "shares": 1615380000
+    },
+    {
+      "ticker": "NAMS",
+      "name": "Newamsterdam Pharma Company",
+      "value": 81646000,
+      "pct": 1.8,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/NAMS",
+      "cusip": "N62509109",
+      "shares": 3357146000
+    },
+    {
+      "ticker": "SGI",
+      "name": "Somnigroup International Inc",
+      "value": 61712000,
+      "pct": 1.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/SGI",
+      "cusip": "88023U101",
+      "shares": 993600000
+    },
+    {
+      "ticker": "NEM",
+      "name": "Newmont Corp",
+      "value": 43875000,
+      "pct": 1.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/NEM",
+      "cusip": "651639106",
+      "shares": 380400000
+    },
+    {
+      "ticker": "B",
+      "name": "Barrick Mng Corp",
+      "value": 42891000,
+      "pct": 1.0,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/B",
+      "cusip": "06849F108",
+      "shares": 1054600000
+    },
+    {
+      "ticker": "AEM",
+      "name": "Agnico Eagle Mines Ltd",
+      "value": 42345000,
+      "pct": 0.9,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/AEM",
+      "cusip": "008474108",
+      "shares": 231050000
     },
     {
       "ticker": "BTDR",
       "name": "Bitdeer Technologies Group",
-      "value": 64670000,
-      "pct": 1.2,
+      "value": 39668000,
+      "pct": 0.9,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/BTDR",
       "cusip": "G11448100",
-      "shares": 4074993000
-    },
-    {
-      "ticker": "CRH",
-      "name": "Crh Plc",
-      "value": 59230000,
-      "pct": 1.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CRH",
-      "cusip": "G25508105",
-      "shares": 553555000
-    },
-    {
-      "ticker": "DAL",
-      "name": "Delta Air Lines Inc",
-      "value": 56477000,
-      "pct": 1.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/DAL",
-      "cusip": "247361702",
-      "shares": 603000000
-    },
-    {
-      "ticker": "TSLA",
-      "name": "Tesla Inc",
-      "value": 52996000,
-      "pct": 1.0,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/TSLA",
-      "cusip": "88160R101",
-      "shares": 126000000
-    },
-    {
-      "ticker": "FLR",
-      "name": "Fluor Corp",
-      "value": 51457000,
-      "pct": 1.0,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/FLR",
-      "cusip": "343412102",
-      "shares": 982200000
-    },
-    {
-      "ticker": "DHI",
-      "name": "D R Horton Inc",
-      "value": 48701000,
-      "pct": 0.9,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/DHI",
-      "cusip": "23331A109",
-      "shares": 299000000
+      "shares": 3781493000
     },
     {
       "ticker": "CPNG",
       "name": "Coupang Inc",
-      "value": 46334000,
-      "pct": 0.9,
+      "value": 36998000,
+      "pct": 0.8,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/CPNG",
@@ -142868,164 +142791,21 @@
       "shares": 2667485000
     },
     {
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices Inc",
-      "value": 42348000,
+      "ticker": "WDC",
+      "name": "Western Digital Corp",
+      "value": 36793000,
       "pct": 0.8,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/AMD",
-      "cusip": "007903107",
-      "shares": 72900000
-    },
-    {
-      "ticker": "PANW",
-      "name": "Palo Alto Networks Inc",
-      "value": 39780000,
-      "pct": 0.8,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/PANW",
-      "cusip": "697435105",
-      "shares": 116650000
-    },
-    {
-      "ticker": "CLF",
-      "name": "Cleveland-Cliffs Inc New",
-      "value": 39590000,
-      "pct": 0.8,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CLF",
-      "cusip": "185899101",
-      "shares": 4216184000
-    },
-    {
-      "ticker": "HUT",
-      "name": "Hut 8 Corp",
-      "value": 36267000,
-      "pct": 0.7,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/HUT",
-      "cusip": "44812J104",
-      "shares": 314150000
-    },
-    {
-      "ticker": "CAI",
-      "name": "Caris Life Sciences Inc",
-      "value": 33759000,
-      "pct": 0.6,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CAI",
-      "cusip": "142152107",
-      "shares": 1894450000
-    },
-    {
-      "ticker": "ARGT",
-      "name": "Global X Fds",
-      "value": 30019000,
-      "pct": 0.6,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/ARGT",
-      "cusip": "37950E259",
-      "shares": 328800000
-    },
-    {
-      "ticker": "FOX",
-      "name": "Fox Corp",
-      "value": 29631000,
-      "pct": 0.6,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/FOX",
-      "cusip": "35137L204",
-      "shares": 632600000
-    },
-    {
-      "ticker": "WWD",
-      "name": "Woodward Inc",
-      "value": 28587000,
-      "pct": 0.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/WWD",
-      "cusip": "980745103",
-      "shares": 67194000
-    },
-    {
-      "ticker": "META",
-      "name": "Meta Platforms Inc",
-      "value": 28165000,
-      "pct": 0.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/META",
-      "cusip": "30303M102",
-      "shares": 50000000
-    },
-    {
-      "ticker": "NUVB",
-      "name": "Nuvation Bio Inc",
-      "value": 25786000,
-      "pct": 0.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/NUVB",
-      "cusip": "67080N101",
-      "shares": 4539800000
-    },
-    {
-      "ticker": "PTGX",
-      "name": "Protagonist Therapeutics Inc",
-      "value": 25607000,
-      "pct": 0.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/PTGX",
-      "cusip": "74366E102",
-      "shares": 208900000
-    },
-    {
-      "ticker": "ROKU",
-      "name": "Roku Inc",
-      "value": 25425000,
-      "pct": 0.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/ROKU",
-      "cusip": "77543R102",
-      "shares": 184055000
-    },
-    {
-      "ticker": "CVCO",
-      "name": "Cavco Inds Inc Del",
-      "value": 24268000,
-      "pct": 0.5,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CVCO",
-      "cusip": "149568107",
-      "shares": 39500000
-    },
-    {
-      "ticker": "ADMA",
-      "name": "Adma Biologics Inc",
-      "value": 23303000,
-      "pct": 0.4,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/ADMA",
-      "cusip": "000899104",
-      "shares": 2784110000
+      "link": "https://www.perplexity.ai/finance/WDC",
+      "cusip": "958102105",
+      "shares": 80960000
     },
     {
       "ticker": "44916Y106",
       "name": "Hyperliquid Strategies Inc",
-      "value": 23150000,
-      "pct": 0.4,
+      "value": 36092000,
+      "pct": 0.8,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/44916Y106",
@@ -143033,186 +142813,164 @@
       "shares": 2941500000
     },
     {
-      "ticker": "RMBS",
-      "name": "Rambus Inc Del",
-      "value": 22964000,
-      "pct": 0.4,
+      "ticker": "FOX",
+      "name": "Fox Corp",
+      "value": 35615000,
+      "pct": 0.8,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/RMBS",
-      "cusip": "750917106",
-      "shares": 173000000
+      "link": "https://www.perplexity.ai/finance/FOX",
+      "cusip": "35137L204",
+      "shares": 632600000
     },
     {
-      "ticker": "RYTM",
-      "name": "Rhythm Pharmaceuticals Inc",
-      "value": 22608000,
-      "pct": 0.4,
+      "ticker": "FLR",
+      "name": "Fluor Corp",
+      "value": 34617000,
+      "pct": 0.8,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/RYTM",
-      "cusip": "76243J105",
-      "shares": 203618000
+      "link": "https://www.perplexity.ai/finance/FLR",
+      "cusip": "343412102",
+      "shares": 723000000
     },
     {
       "ticker": "SKY",
       "name": "Champion Homes Inc",
-      "value": 22418000,
-      "pct": 0.4,
+      "value": 31812000,
+      "pct": 0.7,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/SKY",
       "cusip": "830830105",
-      "shares": 254400000
+      "shares": 371200000
+    },
+    {
+      "ticker": "APP",
+      "name": "Applovin Corp",
+      "value": 31790000,
+      "pct": 0.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/APP",
+      "cusip": "03831W108",
+      "shares": 109460000
+    },
+    {
+      "ticker": "CVCO",
+      "name": "Cavco Inds Inc Del",
+      "value": 31722000,
+      "pct": 0.7,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/CVCO",
+      "cusip": "149568107",
+      "shares": 56620000
     },
     {
       "ticker": "DAKT",
       "name": "Daktronics Inc",
-      "value": 21968000,
-      "pct": 0.4,
+      "value": 31198000,
+      "pct": 0.7,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/DAKT",
       "cusip": "234264109",
-      "shares": 1123109000
+      "shares": 1794035000
     },
     {
-      "ticker": "PCT",
-      "name": "Purecycle Technologies Inc",
-      "value": 21746000,
-      "pct": 0.4,
+      "ticker": "SPCX",
+      "name": "Space Exploration Techn Corp",
+      "value": 30493000,
+      "pct": 0.7,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/PCT",
-      "cusip": "74623V103",
-      "shares": 2681415000
+      "link": "https://www.perplexity.ai/finance/SPCX",
+      "cusip": "84615Q103",
+      "shares": 202125000
     },
     {
-      "ticker": "SCCO",
-      "name": "Southern Copper Corp",
-      "value": 21444000,
-      "pct": 0.4,
+      "ticker": "ROKU",
+      "name": "Roku Inc",
+      "value": 28028000,
+      "pct": 0.6,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/SCCO",
-      "cusip": "84265V105",
-      "shares": 123060000
+      "link": "https://www.perplexity.ai/finance/ROKU",
+      "cusip": "77543R102",
+      "shares": 184055000
     },
     {
-      "ticker": "LIN",
-      "name": "Linde Plc",
-      "value": 21380000,
-      "pct": 0.4,
+      "ticker": "TTMI",
+      "name": "Ttm Technologies Inc",
+      "value": 27210000,
+      "pct": 0.6,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/LIN",
-      "cusip": "G54950103",
-      "shares": 41200000
+      "link": "https://www.perplexity.ai/finance/TTMI",
+      "cusip": "87305R109",
+      "shares": 221505000
     },
     {
-      "ticker": "ENTG",
-      "name": "Entegris Inc",
-      "value": 21277000,
-      "pct": 0.4,
+      "ticker": "RYTM",
+      "name": "Rhythm Pharmaceuticals Inc",
+      "value": 25699000,
+      "pct": 0.6,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/ENTG",
-      "cusip": "29362U104",
-      "shares": 118300000
+      "link": "https://www.perplexity.ai/finance/RYTM",
+      "cusip": "76243J105",
+      "shares": 269900000
     },
     {
-      "ticker": "TEVA",
-      "name": "Teva Pharmaceutical Inds Ltd",
-      "value": 21175000,
-      "pct": 0.4,
+      "ticker": "HUM",
+      "name": "Humana Inc",
+      "value": 24886000,
+      "pct": 0.6,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/TEVA",
-      "cusip": "881624209",
-      "shares": 624999000
+      "link": "https://www.perplexity.ai/finance/HUM",
+      "cusip": "444859102",
+      "shares": 65220000
     },
     {
-      "ticker": "U",
-      "name": "Unity Software Inc",
-      "value": 21114000,
-      "pct": 0.4,
+      "ticker": "TSLA",
+      "name": "Tesla Inc",
+      "value": 22353000,
+      "pct": 0.5,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/U",
-      "cusip": "91332U101",
-      "shares": 738785000
+      "link": "https://www.perplexity.ai/finance/TSLA",
+      "cusip": "88160R101",
+      "shares": 63000000
     },
     {
-      "ticker": "AEVA",
-      "name": "Aeva Technologies Inc",
-      "value": 20683000,
-      "pct": 0.4,
+      "ticker": "ADMA",
+      "name": "Adma Biologics Inc",
+      "value": 22194000,
+      "pct": 0.5,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/AEVA",
-      "cusip": "00835Q202",
-      "shares": 720175000
+      "link": "https://www.perplexity.ai/finance/ADMA",
+      "cusip": "000899104",
+      "shares": 2212810000
     },
     {
       "ticker": "RIOT",
       "name": "Riot Platforms Inc",
-      "value": 20666000,
+      "value": 18248000,
       "pct": 0.4,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/RIOT",
       "cusip": "767292105",
-      "shares": 754800000
-    },
-    {
-      "ticker": "74743L100",
-      "name": "Qnity Electronics Inc",
-      "value": 20521000,
-      "pct": 0.4,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/74743L100",
-      "cusip": "74743L100",
-      "shares": 125655000
-    },
-    {
-      "ticker": "EQIX",
-      "name": "Equinix Inc",
-      "value": 19232000,
-      "pct": 0.4,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/EQIX",
-      "cusip": "29444U700",
-      "shares": 18450000
-    },
-    {
-      "ticker": "LRCX",
-      "name": "Lam Research Corp",
-      "value": 18893000,
-      "pct": 0.4,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/LRCX",
-      "cusip": "512807306",
-      "shares": 43600000
-    },
-    {
-      "ticker": "24477V105",
-      "name": "Definium Therapeutics Inc",
-      "value": 16774000,
-      "pct": 0.3,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/24477V105",
-      "cusip": "24477V105",
-      "shares": 356600000
+      "shares": 905600000
     },
     {
       "ticker": "BLTE",
       "name": "Belite Bio Inc Sponsored",
-      "value": 16338000,
-      "pct": 0.3,
+      "value": 18018000,
+      "pct": 0.4,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/BLTE",
@@ -143220,65 +142978,76 @@
       "shares": 106100000
     },
     {
-      "ticker": "TXG",
-      "name": "10X Genomics Inc",
-      "value": 15455000,
+      "ticker": "BEAM",
+      "name": "Beam Therapeutics Inc",
+      "value": 17108000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/BEAM",
+      "cusip": "07373V105",
+      "shares": 699700000
+    },
+    {
+      "ticker": "JBS",
+      "name": "Jbs N.V.",
+      "value": 15876000,
+      "pct": 0.4,
+      "firm": "Duquesne Family Office LLC",
+      "firmIndex": 21,
+      "link": "https://www.perplexity.ai/finance/JBS",
+      "cusip": "N4732M103",
+      "shares": 1406200000
+    },
+    {
+      "ticker": "RSP",
+      "name": "Invesco Exchange Traded Fd T",
+      "value": 15477000,
       "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/TXG",
-      "cusip": "88025U109",
-      "shares": 403100000
+      "link": "https://www.perplexity.ai/finance/RSP",
+      "cusip": "46137V357",
+      "shares": 74400000
     },
     {
-      "ticker": "WAB",
-      "name": "Wabtec",
-      "value": 15258000,
+      "ticker": "RLAY",
+      "name": "Relay Therapeutics Inc",
+      "value": 15389000,
       "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/WAB",
-      "cusip": "929740108",
-      "shares": 56595000
+      "link": "https://www.perplexity.ai/finance/RLAY",
+      "cusip": "75943R102",
+      "shares": 852600000
     },
     {
-      "ticker": "LLY",
-      "name": "Eli Lilly & Co",
-      "value": 14849000,
+      "ticker": "PLTR",
+      "name": "Palantir Technologies Inc",
+      "value": 14983000,
       "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/LLY",
-      "cusip": "532457108",
-      "shares": 12380000
+      "link": "https://www.perplexity.ai/finance/PLTR",
+      "cusip": "69608A108",
+      "shares": 80100000
     },
     {
-      "ticker": "XENE",
-      "name": "Xenon Pharmaceuticals Inc",
-      "value": 14402000,
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufac",
+      "value": 14917000,
       "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/XENE",
-      "cusip": "98420N105",
-      "shares": 238600000
-    },
-    {
-      "ticker": "OLMA",
-      "name": "Olema Pharmaceuticals Inc",
-      "value": 12345000,
-      "pct": 0.2,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/OLMA",
-      "cusip": "68062P106",
-      "shares": 986827000
+      "link": "https://www.perplexity.ai/finance/TSM",
+      "cusip": "874039100",
+      "shares": 32700000
     },
     {
       "ticker": "RGEN",
       "name": "Repligen Corp",
-      "value": 10560000,
-      "pct": 0.2,
+      "value": 14879000,
+      "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/RGEN",
@@ -143286,119 +143055,75 @@
       "shares": 77400000
     },
     {
-      "ticker": "RKT",
-      "name": "Rocket Cos Inc",
-      "value": 10272000,
-      "pct": 0.2,
+      "ticker": "SNX",
+      "name": "Td Synnex Corporation",
+      "value": 14512000,
+      "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/RKT",
-      "cusip": "77311W101",
-      "shares": 652220000
+      "link": "https://www.perplexity.ai/finance/SNX",
+      "cusip": "87162W100",
+      "shares": 56500000
     },
     {
-      "ticker": "BIDU",
-      "name": "Baidu Inc",
-      "value": 10080000,
-      "pct": 0.2,
+      "ticker": "CRH",
+      "name": "Crh Plc",
+      "value": 13195000,
+      "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/BIDU",
-      "cusip": "056752108",
-      "shares": 88200000
+      "link": "https://www.perplexity.ai/finance/CRH",
+      "cusip": "G25508105",
+      "shares": 159355000
     },
     {
-      "ticker": "ARM",
-      "name": "Arm Holdings Plc",
-      "value": 9960000,
-      "pct": 0.2,
+      "ticker": "NUVB",
+      "name": "Nuvation Bio Inc",
+      "value": 12711000,
+      "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/ARM",
-      "cusip": "042068205",
-      "shares": 28090000
+      "link": "https://www.perplexity.ai/finance/NUVB",
+      "cusip": "67080N101",
+      "shares": 2269900000
     },
     {
-      "ticker": "CVNA",
-      "name": "Carvana Co",
-      "value": 9939000,
-      "pct": 0.2,
+      "ticker": "PANW",
+      "name": "Palo Alto Networks Inc",
+      "value": 11919000,
+      "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CVNA",
-      "cusip": "146869102",
-      "shares": 151000000
+      "link": "https://www.perplexity.ai/finance/PANW",
+      "cusip": "697435105",
+      "shares": 30000000
     },
     {
-      "ticker": "RDDT",
-      "name": "Reddit Inc",
-      "value": 9816000,
-      "pct": 0.2,
+      "ticker": "PCT",
+      "name": "Purecycle Technologies Inc",
+      "value": 11825000,
+      "pct": 0.3,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/RDDT",
-      "cusip": "75734B100",
-      "shares": 56550000
+      "link": "https://www.perplexity.ai/finance/PCT",
+      "cusip": "74623V103",
+      "shares": 2681415000
     },
     {
-      "ticker": "AA",
-      "name": "Alcoa Corp",
-      "value": 9679000,
+      "ticker": "NSIT",
+      "name": "Insight Enterprises Inc",
+      "value": 10489000,
       "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/AA",
-      "cusip": "013872106",
-      "shares": 185640000
-    },
-    {
-      "ticker": "TMO",
-      "name": "Thermo Fisher Scientific Inc",
-      "value": 9626000,
-      "pct": 0.2,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/TMO",
-      "cusip": "883556102",
-      "shares": 19200000
-    },
-    {
-      "ticker": "DHR",
-      "name": "Danaher Corp Del",
-      "value": 9581000,
-      "pct": 0.2,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/DHR",
-      "cusip": "235851102",
-      "shares": 50300000
-    },
-    {
-      "ticker": "FFIV",
-      "name": "F5 Inc",
-      "value": 9151000,
-      "pct": 0.2,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/FFIV",
-      "cusip": "315616102",
-      "shares": 22000000
-    },
-    {
-      "ticker": "VIST",
-      "name": "Vista Energy S.A.B. De C.V.",
-      "value": 8594000,
-      "pct": 0.2,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/VIST",
-      "cusip": "92837L109",
-      "shares": 134700000
+      "link": "https://www.perplexity.ai/finance/NSIT",
+      "cusip": "45765U103",
+      "shares": 67100000
     },
     {
       "ticker": "SKE",
       "name": "Skeena Res Ltd New",
-      "value": 8003000,
+      "value": 8925000,
       "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
@@ -143407,119 +143132,86 @@
       "shares": 300200000
     },
     {
-      "ticker": "JBS",
-      "name": "Jbs N.V.",
-      "value": 7772000,
-      "pct": 0.1,
+      "ticker": "KRSA",
+      "name": "Korsana Biosciences Inc",
+      "value": 8914000,
+      "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/JBS",
-      "cusip": "N4732M103",
-      "shares": 655900000
+      "link": "https://www.perplexity.ai/finance/KRSA",
+      "cusip": "23255M303",
+      "shares": 278561000
     },
     {
-      "ticker": "GLUE",
-      "name": "Monte Rosa Therapeutics Inc",
-      "value": 7202000,
-      "pct": 0.1,
+      "ticker": "OLMA",
+      "name": "Olema Pharmaceuticals Inc",
+      "value": 8526000,
+      "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/GLUE",
-      "cusip": "61225M102",
-      "shares": 297600000
+      "link": "https://www.perplexity.ai/finance/OLMA",
+      "cusip": "68062P106",
+      "shares": 986827000
     },
     {
-      "ticker": "RLAY",
-      "name": "Relay Therapeutics Inc",
-      "value": 6530000,
-      "pct": 0.1,
+      "ticker": "MKSI",
+      "name": "Mks Inc.",
+      "value": 8470000,
+      "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/RLAY",
-      "cusip": "75943R102",
-      "shares": 349000000
+      "link": "https://www.perplexity.ai/finance/MKSI",
+      "cusip": "55306N104",
+      "shares": 31920000
     },
     {
-      "ticker": "DBVT",
-      "name": "Dbv Technologies S A Sponsored",
-      "value": 6287000,
-      "pct": 0.1,
+      "ticker": "RKT",
+      "name": "Rocket Cos Inc",
+      "value": 7507000,
+      "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/DBVT",
-      "cusip": "23306J309",
-      "shares": 383363000
+      "link": "https://www.perplexity.ai/finance/RKT",
+      "cusip": "77311W101",
+      "shares": 652220000
     },
     {
-      "ticker": "CCCS",
-      "name": "Ccc Intelligent Solutions Hl",
-      "value": 6042000,
-      "pct": 0.1,
+      "ticker": "COGT",
+      "name": "Cogent Biosciences Inc",
+      "value": 7080000,
+      "pct": 0.2,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/CCCS",
-      "cusip": "12510Q100",
-      "shares": 1170900000
+      "link": "https://www.perplexity.ai/finance/COGT",
+      "cusip": "19240Q201",
+      "shares": 221112000
     },
     {
-      "ticker": "UWMC",
-      "name": "Uwm Holdings Corporation",
-      "value": 5915000,
+      "ticker": "MLTX",
+      "name": "Moonlake Immunotherapeutics",
+      "value": 5780000,
       "pct": 0.1,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/UWMC",
-      "cusip": "91823B109",
-      "shares": 2583000000
+      "link": "https://www.perplexity.ai/finance/MLTX",
+      "cusip": "61559X104",
+      "shares": 494000000
     },
     {
-      "ticker": "NVTS",
-      "name": "Navitas Semiconductor Corp",
-      "value": 5575000,
+      "ticker": "LLY",
+      "name": "Eli Lilly & Co",
+      "value": 4397000,
       "pct": 0.1,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/NVTS",
-      "cusip": "63942X106",
-      "shares": 311100000
-    },
-    {
-      "ticker": "83443Q103",
-      "name": "Solstice Advanced Matls Inc",
-      "value": 5540000,
-      "pct": 0.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/83443Q103",
-      "cusip": "83443Q103",
-      "shares": 62525000
-    },
-    {
-      "ticker": "FTAI",
-      "name": "Ftai Aviation Ltd",
-      "value": 5465000,
-      "pct": 0.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/FTAI",
-      "cusip": "G3730V105",
-      "shares": 20200000
-    },
-    {
-      "ticker": "BEAM",
-      "name": "Beam Therapeutics Inc",
-      "value": 5272000,
-      "pct": 0.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/BEAM",
-      "cusip": "07373V105",
-      "shares": 153600000
+      "link": "https://www.perplexity.ai/finance/LLY",
+      "cusip": "532457108",
+      "shares": 3800000
     },
     {
       "ticker": "AUR",
       "name": "Aurora Innovation Inc",
-      "value": 4322000,
+      "value": 3511000,
       "pct": 0.1,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
@@ -143528,36 +143220,25 @@
       "shares": 633700000
     },
     {
-      "ticker": "IREN",
-      "name": "Iren Limited",
-      "value": 3983000,
-      "pct": 0.1,
+      "ticker": "DBVT",
+      "name": "Dbv Technologies S A",
+      "value": 2035000,
+      "pct": 0.0,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/IREN",
-      "cusip": "Q4982L109",
-      "shares": 87100000
-    },
-    {
-      "ticker": "GGAL",
-      "name": "Grupo Financiero Galicia S.A",
-      "value": 2977000,
-      "pct": 0.1,
-      "firm": "Duquesne Family Office LLC",
-      "firmIndex": 21,
-      "link": "https://www.perplexity.ai/finance/GGAL",
-      "cusip": "399909100",
-      "shares": 59500000
+      "link": "https://www.perplexity.ai/finance/DBVT",
+      "cusip": "23306J309",
+      "shares": 173028000
     },
     {
       "ticker": "WVE",
-      "name": "Wave Life Sciences Ltd",
-      "value": 1005000,
+      "name": "Wave Life Sciences Inc",
+      "value": 640000,
       "pct": 0.0,
       "firm": "Duquesne Family Office LLC",
       "firmIndex": 21,
       "link": "https://www.perplexity.ai/finance/WVE",
-      "cusip": "Y95308105",
+      "cusip": "94352A104",
       "shares": 173000000
     },
     {
@@ -143836,7 +143517,7 @@
       "shares": 714285
     }
   ],
-  "lastUpdated": "2026-11-13",
+  "lastUpdated": "2026-11-17",
   "previous": {
     "ABBINGTON INVESTMENT GROUP": {
       "period": "2026-06-30",
@@ -156475,344 +156156,362 @@
       }
     },
     "Duquesne Family Office LLC": {
-      "period": "2026-03-31",
-      "total": 3376828000,
+      "period": "2026-06-30",
+      "total": 5210856000,
       "holdings": {
         "632307104": {
           "ticker": "NTRA",
-          "value": 612691000,
-          "pct": 18.1,
-          "shares": 3063606000
-        },
-        "464286400": {
-          "ticker": "EWZ",
-          "value": 294228000,
-          "pct": 8.7,
-          "shares": 7664170000
+          "value": 864923000,
+          "pct": 16.6,
+          "shares": 3186306000
         },
         "457669307": {
           "ticker": "INSM",
-          "value": 188717000,
-          "pct": 5.6,
-          "shares": 1154090000
+          "value": 295837000,
+          "pct": 5.7,
+          "shares": 2774690000
         },
         "874039100": {
           "ticker": "TSM",
-          "value": 167380000,
-          "pct": 5.0,
-          "shares": 495280000
+          "value": 281613000,
+          "pct": 5.4,
+          "shares": 589680000
         },
-        "46137V357": {
-          "ticker": "RSP",
-          "value": 157566000,
-          "pct": 4.7,
-          "shares": 821000000
-        },
-        "984245100": {
-          "ticker": "YPF",
-          "value": 149566000,
-          "pct": 4.4,
-          "shares": 3235962000
-        },
-        "G0896C103": {
-          "ticker": "TBBB",
-          "value": 109972000,
-          "pct": 3.3,
-          "shares": 3109202000
-        },
-        "013872106": {
-          "ticker": "AA",
-          "value": 99057000,
-          "pct": 2.9,
-          "shares": 1493390000
-        },
-        "N62509109": {
-          "ticker": "NAMS",
-          "value": 98275000,
-          "pct": 2.9,
-          "shares": 3070146000
-        },
-        "81141R100": {
-          "ticker": "SE",
-          "value": 91083000,
-          "pct": 2.7,
-          "shares": 1099905000
-        },
-        "861012102": {
-          "ticker": "STM",
-          "value": 90275000,
-          "pct": 2.7,
-          "shares": 2612880000
-        },
-        "980745103": {
-          "ticker": "WWD",
-          "value": 75648000,
-          "pct": 2.2,
-          "shares": 211355000
-        },
-        "881624209": {
-          "ticker": "TEVA",
-          "value": 71604000,
-          "pct": 2.1,
-          "shares": 2377285000
-        },
-        "77543R102": {
-          "ticker": "ROKU",
-          "value": 70983000,
-          "pct": 2.1,
-          "shares": 750190000
-        },
-        "11135F101": {
-          "ticker": "AVGO",
-          "value": 60650000,
-          "pct": 1.8,
-          "shares": 195955000
-        },
-        "78462F103": {
-          "ticker": "SPY",
-          "value": 58531000,
-          "pct": 1.7,
-          "shares": 90000000
+        "464286400": {
+          "ticker": "EWZ",
+          "value": 264414000,
+          "pct": 5.1,
+          "shares": 7664170000
         },
         "023135106": {
           "ticker": "AMZN",
-          "value": 51193000,
-          "pct": 1.5,
-          "shares": 245800000
+          "value": 238555000,
+          "pct": 4.6,
+          "shares": 1000900000
         },
-        "22266T109": {
-          "ticker": "CPNG",
-          "value": 50362000,
-          "pct": 1.5,
-          "shares": 2667485000
+        "861012102": {
+          "ticker": "STM",
+          "value": 232375000,
+          "pct": 4.5,
+          "shares": 3102880000
         },
-        "68404L201": {
-          "ticker": "OPCH",
-          "value": 50301000,
-          "pct": 1.5,
-          "shares": 1868550000
+        "46137V357": {
+          "ticker": "RSP",
+          "value": 190514000,
+          "pct": 3.7,
+          "shares": 895400000
         },
-        "G25508105": {
-          "ticker": "CRH",
-          "value": 39689000,
-          "pct": 1.2,
-          "shares": 377555000
+        "984245100": {
+          "ticker": "YPF",
+          "value": 142726000,
+          "pct": 2.7,
+          "shares": 3138897000
         },
-        "349381103": {
-          "ticker": "349381103",
-          "value": 39057000,
-          "pct": 1.2,
-          "shares": 1150415000
+        "12514G108": {
+          "ticker": "CDW",
+          "value": 139789000,
+          "pct": 2.7,
+          "shares": 993950000
         },
-        "37950E259": {
-          "ticker": "ARGT",
-          "value": 36152000,
-          "pct": 1.1,
-          "shares": 387400000
+        "G0896C103": {
+          "ticker": "TBBB",
+          "value": 120915000,
+          "pct": 2.3,
+          "shares": 2901733000
         },
-        "142152107": {
-          "ticker": "CAI",
-          "value": 33873000,
-          "pct": 1.0,
-          "shares": 1894450000
-        },
-        "76131D103": {
-          "ticker": "QSR",
-          "value": 33583000,
-          "pct": 1.0,
-          "shares": 454435000
-        },
-        "76155X100": {
-          "ticker": "RVMD",
-          "value": 30717000,
-          "pct": 0.9,
-          "shares": 315860000
-        },
-        "518415104": {
-          "ticker": "LSCC",
-          "value": 29974000,
-          "pct": 0.9,
-          "shares": 323135000
-        },
-        "80004C200": {
-          "ticker": "SNDK",
-          "value": 24241000,
-          "pct": 0.7,
-          "shares": 38155000
-        },
-        "910047109": {
-          "ticker": "UAL",
-          "value": 24168000,
-          "pct": 0.7,
-          "shares": 262495000
-        },
-        "444859102": {
-          "ticker": "HUM",
-          "value": 23842000,
-          "pct": 0.7,
-          "shares": 137505000
-        },
-        "929740108": {
-          "ticker": "WAB",
-          "value": 23715000,
-          "pct": 0.7,
-          "shares": 94895000
-        },
-        "90138F102": {
-          "ticker": "TWLO",
-          "value": 22869000,
-          "pct": 0.7,
-          "shares": 181760000
-        },
-        "466313103": {
-          "ticker": "JBL",
-          "value": 21835000,
-          "pct": 0.6,
-          "shares": 82200000
-        },
-        "84265V105": {
-          "ticker": "SCCO",
-          "value": 20964000,
-          "pct": 0.6,
-          "shares": 121843000
-        },
-        "46428R107": {
-          "ticker": "GSG",
-          "value": 20737000,
-          "pct": 0.6,
-          "shares": 643000000
-        },
-        "G54950103": {
-          "ticker": "LIN",
-          "value": 20425000,
-          "pct": 0.6,
-          "shares": 41200000
+        "02079K305": {
+          "ticker": "GOOGL",
+          "value": 120184000,
+          "pct": 2.3,
+          "shares": 336300000
         },
         "G7997R103": {
           "ticker": "STX",
-          "value": 19862000,
-          "pct": 0.6,
-          "shares": 50700000
+          "value": 117730000,
+          "pct": 2.3,
+          "shares": 122000000
+        },
+        "35137L105": {
+          "ticker": "FOXA",
+          "value": 114992000,
+          "pct": 2.2,
+          "shares": 2204600000
+        },
+        "910047109": {
+          "ticker": "UAL",
+          "value": 108084000,
+          "pct": 2.1,
+          "shares": 794795000
+        },
+        "81141R100": {
+          "ticker": "SE",
+          "value": 105404000,
+          "pct": 2.0,
+          "shares": 1099905000
+        },
+        "N62509109": {
+          "ticker": "NAMS",
+          "value": 104047000,
+          "pct": 2.0,
+          "shares": 3070146000
         },
         "464287655": {
           "ticker": "IWM",
-          "value": 19592000,
-          "pct": 0.6,
-          "shares": 79000000
+          "value": 99149000,
+          "pct": 1.9,
+          "shares": 330000000
+        },
+        "80004C200": {
+          "ticker": "SNDK",
+          "value": 79353000,
+          "pct": 1.5,
+          "shares": 34900000
+        },
+        "76155X100": {
+          "ticker": "RVMD",
+          "value": 74835000,
+          "pct": 1.4,
+          "shares": 399587000
+        },
+        "78462F103": {
+          "ticker": "SPY",
+          "value": 67209000,
+          "pct": 1.3,
+          "shares": 90000000
+        },
+        "G11448100": {
+          "ticker": "BTDR",
+          "value": 64670000,
+          "pct": 1.2,
+          "shares": 4074993000
+        },
+        "G25508105": {
+          "ticker": "CRH",
+          "value": 59230000,
+          "pct": 1.1,
+          "shares": 553555000
+        },
+        "247361702": {
+          "ticker": "DAL",
+          "value": 56477000,
+          "pct": 1.1,
+          "shares": 603000000
+        },
+        "88160R101": {
+          "ticker": "TSLA",
+          "value": 52996000,
+          "pct": 1.0,
+          "shares": 126000000
+        },
+        "343412102": {
+          "ticker": "FLR",
+          "value": 51457000,
+          "pct": 1.0,
+          "shares": 982200000
+        },
+        "23331A109": {
+          "ticker": "DHI",
+          "value": 48701000,
+          "pct": 0.9,
+          "shares": 299000000
+        },
+        "22266T109": {
+          "ticker": "CPNG",
+          "value": 46334000,
+          "pct": 0.9,
+          "shares": 2667485000
+        },
+        "007903107": {
+          "ticker": "AMD",
+          "value": 42348000,
+          "pct": 0.8,
+          "shares": 72900000
+        },
+        "697435105": {
+          "ticker": "PANW",
+          "value": 39780000,
+          "pct": 0.8,
+          "shares": 116650000
         },
         "185899101": {
           "ticker": "CLF",
-          "value": 19549000,
+          "value": 39590000,
+          "pct": 0.8,
+          "shares": 4216184000
+        },
+        "44812J104": {
+          "ticker": "HUT",
+          "value": 36267000,
+          "pct": 0.7,
+          "shares": 314150000
+        },
+        "142152107": {
+          "ticker": "CAI",
+          "value": 33759000,
           "pct": 0.6,
-          "shares": 2313455000
+          "shares": 1894450000
+        },
+        "37950E259": {
+          "ticker": "ARGT",
+          "value": 30019000,
+          "pct": 0.6,
+          "shares": 328800000
+        },
+        "35137L204": {
+          "ticker": "FOX",
+          "value": 29631000,
+          "pct": 0.6,
+          "shares": 632600000
+        },
+        "980745103": {
+          "ticker": "WWD",
+          "value": 28587000,
+          "pct": 0.5,
+          "shares": 67194000
+        },
+        "30303M102": {
+          "ticker": "META",
+          "value": 28165000,
+          "pct": 0.5,
+          "shares": 50000000
         },
         "67080N101": {
           "ticker": "NUVB",
-          "value": 19476000,
-          "pct": 0.6,
+          "value": 25786000,
+          "pct": 0.5,
           "shares": 4539800000
-        },
-        "093712107": {
-          "ticker": "BE",
-          "value": 18470000,
-          "pct": 0.5,
-          "shares": 136320000
-        },
-        "458140100": {
-          "ticker": "INTC",
-          "value": 18155000,
-          "pct": 0.5,
-          "shares": 411400000
-        },
-        "07782B104": {
-          "ticker": "BLTE",
-          "value": 16917000,
-          "pct": 0.5,
-          "shares": 106100000
         },
         "74366E102": {
           "ticker": "PTGX",
-          "value": 16832000,
+          "value": 25607000,
           "pct": 0.5,
-          "shares": 159700000
+          "shares": 208900000
         },
-        "91332U101": {
-          "ticker": "U",
-          "value": 16209000,
+        "77543R102": {
+          "ticker": "ROKU",
+          "value": 25425000,
           "pct": 0.5,
-          "shares": 738785000
+          "shares": 184055000
         },
-        "042068205": {
-          "ticker": "ARM",
-          "value": 16142000,
+        "149568107": {
+          "ticker": "CVCO",
+          "value": 24268000,
           "pct": 0.5,
-          "shares": 106700000
-        },
-        "68062P106": {
-          "ticker": "OLMA",
-          "value": 14714000,
-          "pct": 0.4,
-          "shares": 986827000
-        },
-        "74743L100": {
-          "ticker": "74743L100",
-          "value": 14498000,
-          "pct": 0.4,
-          "shares": 125655000
+          "shares": 39500000
         },
         "000899104": {
           "ticker": "ADMA",
-          "value": 13926000,
+          "value": 23303000,
           "pct": 0.4,
-          "shares": 1545610000
+          "shares": 2784110000
         },
-        "98420N105": {
-          "ticker": "XENE",
-          "value": 13875000,
+        "44916Y106": {
+          "ticker": "44916Y106",
+          "value": 23150000,
           "pct": 0.4,
-          "shares": 238600000
+          "shares": 2941500000
         },
-        "N4732M103": {
-          "ticker": "JBS",
-          "value": 11780000,
-          "pct": 0.3,
-          "shares": 655900000
+        "76243J105": {
+          "ticker": "RYTM",
+          "value": 22608000,
+          "pct": 0.4,
+          "shares": 203618000
+        },
+        "830830105": {
+          "ticker": "SKY",
+          "value": 22418000,
+          "pct": 0.4,
+          "shares": 254400000
         },
         "234264109": {
           "ticker": "DAKT",
-          "value": 11000000,
-          "pct": 0.3,
-          "shares": 562637000
-        },
-        "92837L109": {
-          "ticker": "VIST",
-          "value": 10166000,
-          "pct": 0.3,
-          "shares": 134700000
-        },
-        "23306J309": {
-          "ticker": "DBVT",
-          "value": 8008000,
-          "pct": 0.2,
-          "shares": 383363000
+          "value": 21968000,
+          "pct": 0.4,
+          "shares": 1123109000
         },
         "74623V103": {
           "ticker": "PCT",
-          "value": 4999000,
-          "pct": 0.1,
-          "shares": 963189000
+          "value": 21746000,
+          "pct": 0.4,
+          "shares": 2681415000
         },
-        "83443Q103": {
-          "ticker": "83443Q103",
-          "value": 4762000,
-          "pct": 0.1,
-          "shares": 62525000
+        "91332U101": {
+          "ticker": "U",
+          "value": 21114000,
+          "pct": 0.4,
+          "shares": 738785000
         },
-        "Y95308105": {
-          "ticker": "WVE",
-          "value": 1254000,
-          "pct": 0.0,
-          "shares": 173000000
+        "767292105": {
+          "ticker": "RIOT",
+          "value": 20666000,
+          "pct": 0.4,
+          "shares": 754800000
+        },
+        "07782B104": {
+          "ticker": "BLTE",
+          "value": 16338000,
+          "pct": 0.3,
+          "shares": 106100000
+        },
+        "532457108": {
+          "ticker": "LLY",
+          "value": 14849000,
+          "pct": 0.3,
+          "shares": 12380000
+        },
+        "68062P106": {
+          "ticker": "OLMA",
+          "value": 12345000,
+          "pct": 0.2,
+          "shares": 986827000
+        },
+        "759916109": {
+          "ticker": "RGEN",
+          "value": 10560000,
+          "pct": 0.2,
+          "shares": 77400000
+        },
+        "77311W101": {
+          "ticker": "RKT",
+          "value": 10272000,
+          "pct": 0.2,
+          "shares": 652220000
+        },
+        "83056P715": {
+          "ticker": "SKE",
+          "value": 8003000,
+          "pct": 0.2,
+          "shares": 300200000
+        },
+        "N4732M103": {
+          "ticker": "JBS",
+          "value": 7772000,
+          "pct": 0.1,
+          "shares": 655900000
+        },
+        "75943R102": {
+          "ticker": "RLAY",
+          "value": 6530000,
+          "pct": 0.1,
+          "shares": 349000000
+        },
+        "23306J309": {
+          "ticker": "DBVT",
+          "value": 6287000,
+          "pct": 0.1,
+          "shares": 383363000
+        },
+        "07373V105": {
+          "ticker": "BEAM",
+          "value": 5272000,
+          "pct": 0.1,
+          "shares": 153600000
+        },
+        "051774107": {
+          "ticker": "AUR",
+          "value": 4322000,
+          "pct": 0.1,
+          "shares": 633700000
         }
       }
     },

@@ -76,7 +76,7 @@
 
 .indicators-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
     gap: 1rem;
     align-items: start;
     align-content: start;
@@ -89,6 +89,13 @@
     contain-intrinsic-size: auto 800px;
     width: 100%;
     max-width: 100%;
+}
+
+/* Earnings cards contain dense tables/metrics; give them more horizontal room. */
+#categories[data-filter="Earnings"] .indicators-grid,
+.category[data-category="Earnings"] .indicators-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 1rem;
 }
 
 .indicator {
@@ -239,9 +246,34 @@
    already has overflow-x: auto, so a long title just widens the scroll row. */
 .month-value.game-title { white-space: nowrap; overflow: visible; text-overflow: unset; text-align: left; font-size: 0.8rem; line-height: 1.3; }
 
-.earnings-card { contain: layout style; overflow: visible; overflow-x: hidden; content-visibility: auto; contain-intrinsic-size: 380px 300px; }
+.indicator.earnings-card {
+    contain: layout style;
+    overflow: visible;
+    content-visibility: visible;
+    contain-intrinsic-size: auto none;
+}
 .earnings-card .data-rows-container { max-height: 0; overflow: clip; scrollbar-gutter: stable; }
 .earnings-card.expanded .data-rows-container { max-height: none; overflow: visible; }
+.earnings-card .month-value { white-space: normal; overflow-wrap: anywhere; text-overflow: clip; }
+.earnings-card .latest-data-row,
+.earnings-card .data-row { align-items: flex-start; flex-wrap: wrap; row-gap: 2px; }
+.earnings-card .latest-data-row .month-label,
+.earnings-card .data-row .month-label { min-inline-size: 0; }
+.earnings-card .latest-data-row .month-value,
+.earnings-card .data-row .month-value { flex: 1 1 8rem; justify-content: flex-end; text-align: end; min-inline-size: 0; }
+.earnings-card .earnings-metrics { flex-wrap: wrap; justify-content: flex-end; min-inline-size: 0; }
+.earnings-card .stat-value { white-space: normal; overflow-wrap: anywhere; }
+.earnings-card .quarterly-section,
+.earnings-card .earnings-surprise-list,
+.earnings-card .earnings-stats-grid,
+.earnings-card .growth-timeline,
+.earnings-card .funding-timeline,
+.earnings-card .competitors-section,
+.earnings-card .s1-links-section { max-inline-size: 100%; box-sizing: border-box; }
+.earnings-card .earnings-growth-header,
+.earnings-card .earnings-growth-row,
+.earnings-card .funding-timeline-header,
+.earnings-card .funding-timeline-item { min-inline-size: 0; }
 
 .earnings-company { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
 
@@ -266,22 +298,24 @@
 }
 
 /* Enhanced price row with better visual hierarchy */
-.earnings-price-row { background: rgba(var(--border-color-rgb), 0.25); border-left: 2px solid var(--border-color); padding: 6px 8px; margin: 4px 0; border-radius: 0 4px 4px 0; }
+.earnings-price-row { background: rgba(var(--border-color-rgb), 0.25); border-left: 2px solid var(--border-color); padding: 6px 8px; margin: 4px 0; border-radius: 0 4px 4px 0; overflow: visible; }
+.earnings-price-row .month-value { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 6px; }
 .earnings-price-value { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; }
 
-.earnings-day-change { font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-inline-start: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.12); }
+.earnings-day-change { font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-inline-start: 0; padding: 2px 6px; border-radius: 4px; background: rgba(var(--border-color-rgb), 0.12); }
 
 /* Price context badge */
 .price-context-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     padding: 2px 6px;
     border-radius: 4px;
-    margin-inline-start: 8px;
-    white-space: nowrap;
+    margin-inline-start: 0;
+    white-space: normal;
 }
 
 .price-context-high {
@@ -294,12 +328,6 @@
     background: rgba(239, 68, 68, 0.15);
     color: #dc2626;
     border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.price-context-mid {
-    background: rgba(209, 213, 219, 0.15);
-    color: #6b7280;
-    border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
 /* Compact layout for tighter grids (e.g., Latest Updates view) */
@@ -1136,17 +1164,31 @@
   }
 }
 
-@container category (inline-size >= 300px) and (inline-size < 500px) {
+@container category (inline-size >= 300px) and (inline-size < 560px) {
   .indicators-grid {
-    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    grid-template-columns: repeat(2, minmax(min(100%, 130px), 1fr));
     gap: 0.7rem;
   }
 }
 
-@container category (inline-size >= 500px) {
+@container category (inline-size >= 560px) {
   .indicators-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
     gap: 1rem;
+  }
+}
+
+@container category (inline-size < 720px) {
+  #categories[data-filter="Earnings"] .indicators-grid,
+  .category[data-category="Earnings"] .indicators-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container category (inline-size >= 720px) {
+  #categories[data-filter="Earnings"] .indicators-grid,
+  .category[data-category="Earnings"] .indicators-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   }
 }
 

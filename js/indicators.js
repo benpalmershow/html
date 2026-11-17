@@ -779,11 +779,10 @@ latestDataHtml = `
                 } else if (position <= 20) {
                     contextLabel = 'Near 52W Low';
                     contextClass = 'price-context-low';
-                } else {
-                    contextLabel = 'Mid-Range';
-                    contextClass = 'price-context-mid';
                 }
-                priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;
+                if (contextLabel) {
+                    priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;
+                }
             }
 
             latestItems.push(`<div class="latest-data-row earnings-price-row"><span class="month-label"><span style="font-weight: 700; margin-right: 4px;">$</span>Price:</span><span class="month-value earnings-price-value">${price}${dayChange}${priceContext}</span></div>`);

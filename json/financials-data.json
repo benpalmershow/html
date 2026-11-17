@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-17T21:24:49Z",
+  "lastUpdated": "2026-11-17T21:29:37Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-17T12:40:46.753089Z",
+      "lastUpdated": "2026-11-17T21:25:49.625546Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
@@ -16,7 +16,7 @@
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
       "rate_hold_odds": "3¢",
       "rate_cut_odds": "0¢",
-      "rate_hike_odds": "92¢",
+      "rate_hike_odds": "94¢",
       "change": "",
       "probabilities": {
         "2026-11-06": {
@@ -100,8 +100,8 @@
           "rate_cut_50_bps_odds": "0¢",
           "rate_cut_odds": "0¢",
           "rate_hold_odds": "3¢",
-          "rate_hike_odds": "92¢",
-          "rate_hike_50_bps_odds": "5¢"
+          "rate_hike_odds": "94¢",
+          "rate_hike_50_bps_odds": "4¢"
         }
       },
       "explanation": "Polymarket prediction on the December 8-9, 2026 FOMC rate decision. Market-implied odds assign 78% to a 25 bps increase, 20% to no change, and <1% to 25 bps decrease / 50+ bps increase. Current federal funds target range 3.75%-4.00%. Volume: $14.9M.",
@@ -109,7 +109,7 @@
       "releaseTimeZone": "America/New_York",
       "newMonth": true,
       "rate_cut_50_bps_odds": "0¢",
-      "rate_hike_50_bps_odds": "5¢"
+      "rate_hike_50_bps_odds": "4¢"
     },
     {
       "id": "trump-impeachment",

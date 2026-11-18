@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T03:18:25Z",
+  "lastUpdated": "2026-11-18T17:58:39Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -181,7 +181,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-11-17T19:10:11Z",
+      "lastUpdated": "2026-11-18T17:58:39Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
@@ -2066,7 +2066,7 @@
       "source_url": "https://www.census.gov/retail/sales.html",
       "explanation": "The total value of sales at retail establishments, adjusted for seasonal variation, holiday differences, and trading days. Published by the U.S. Census Bureau, this 'advance' report is based on a sample of about 5,500 retail and food services firms. The data is divided into 13 major categories, including motor vehicles, electronics, clothing, and e-commerce. Retail sales account for about one-third of consumer spending, which drives about 70% of U.S. economic activity. The 'core' retail sales figure (excluding autos, gas, and building materials) is closely watched as a measure of underlying consumer demand. The data is volatile month-to-month, so economists often look at the three-month moving average for trends.",
       "change": "",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T14:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -2601,8 +2601,9 @@
         "may": "1,182,000",
         "june": "1,439,000",
         "july": "1,369,000",
-        "august": "1,288,000",
-        "september": "1,221,000"
+        "august": "1,280,000",
+        "september": "1,191,000",
+        "october": "1,309,000"
       },
       "2025": {
         "march": "1,346,000",
@@ -2622,13 +2623,13 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Housing Starts",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-18T17:58:39Z",
       "releaseDay": 18,
       "url": "https://fred.stlouisfed.org/series/HOUST",
       "source_url": "https://www.census.gov/construction/nrc/current/index.html",
       "change": "",
       "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-18T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3586,7 +3587,7 @@
       "source_url": "https://www.federalreserve.gov/releases/g17/current/",
       "change": "",
       "explanation": "The Industrial Production Index (IPI) measures the real output of manufacturing, mining, electric and gas utilities, and other industrial sectors. Published by the Federal Reserve, it's a key indicator of economic activity and industrial capacity utilization. The index is seasonally adjusted and expressed as a percentage of real output relative to a base year (currently 2017=100). Changes in the index reflect both cyclical and structural shifts in the economy. The manufacturing component is particularly watched as a leading indicator of economic health. The report also includes capacity utilization rates, which measure how much of the nation's industrial capacity is being used.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3993,7 +3994,7 @@
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
       "explanation": "The capacity utilization rate for total industry (including manufacturing, mining, and utilities), published by the Federal Reserve. It measures the percentage of available resources being used to produce goods and services, serving as a key indicator of economic slack and inflationary pressure.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
@@ -4115,18 +4116,19 @@
         "june": "1,374,000",
         "july": "1,433,000",
         "august": "1,403,000",
-        "september": "1,398,000"
+        "september": "1,398,000",
+        "october": "1,295,000"
       },
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Building Permits",
-      "lastUpdated": "2026-11-06T15:19:52Z",
+      "lastUpdated": "2026-11-18T17:58:39Z",
       "releaseDay": 19,
       "url": "https://fred.stlouisfed.org/series/PERMIT",
       "change": "",
       "explanation": "The number of building permits issued for new privately owned housing units, published by the U.S. Census Bureau. This is a leading indicator of future residential construction activity and housing market conditions, as permits are typically filed before construction begins.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-19T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {

@@ -685,7 +685,8 @@ main {
 }
 
 /* ── Entry Permalink ─────────────────────────────────────── */
-.entry-permalink {
+.entry-permalink,
+.entry-source-link {
   flex-shrink: 0;
   margin: 0;
   color: var(--text-muted);
@@ -699,16 +700,26 @@ main {
 }
 
 .entry-permalink:hover,
-.entry-permalink:focus-visible {
+.entry-permalink:focus-visible,
+.entry-source-link:hover,
+.entry-source-link:focus-visible {
   color: var(--logo-orange);
   border-bottom-color: var(--logo-orange);
 }
 
 .entry-accordion-footer {
   display: flex;
+  align-items: baseline;
   justify-content: flex-end;
+  gap: 0.85rem;
   margin: 0;
   padding: 0;
+}
+
+/* When a source link is present it sits on the left and the permalink on the
+   right, sharing a single baseline-aligned row. */
+.entry-accordion-footer.has-source {
+  justify-content: space-between;
 }
 
 .entry-footer {

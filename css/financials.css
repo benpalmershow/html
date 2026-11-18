@@ -80,13 +80,12 @@
     gap: 1rem;
     align-items: start;
     align-content: start;
-    min-height: 800px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-gutter: stable;
     padding-bottom: 4px;
     content-visibility: auto;
-    contain-intrinsic-size: auto 800px;
+    contain-intrinsic-size: auto 400px;
     width: 100%;
     max-width: 100%;
 }
@@ -328,7 +327,7 @@
 @media (max-width: 900px) {
     .earnings-price-row { padding: 5px 6px; }
     .earnings-price-value { font-size: 1.05rem; }
-    .earnings-day-change { font-size: 0.75rem; margin-left: 6px; }
+    .earnings-day-change { font-size: 0.75rem; margin-inline-start: 6px; }
     .earnings-eps-row { padding: 4px 6px; }
     .earnings-actual { font-size: 0.9rem; }
     .earnings-surprise-pill { font-size: 0.65rem; padding: 1px 4px; }
@@ -373,11 +372,17 @@
 .quarterly-section {
     margin: 8px 0 12px;
     padding: 8px;
-    background: rgba(var(--border-color-rgb), 0.12);
+    background:
+        linear-gradient(to right, var(--bg-secondary) 30%, rgba(0, 0, 0, 0)) 0 0 / 28px 100% local no-repeat,
+        linear-gradient(to left, var(--bg-secondary) 30%, rgba(0, 0, 0, 0)) 100% 0 / 28px 100% local no-repeat,
+        linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0)) 0 0 / 14px 100% scroll no-repeat,
+        linear-gradient(to left, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0)) 100% 0 / 14px 100% scroll no-repeat,
+        rgba(var(--border-color-rgb), 0.12);
     border-radius: 8px;
     overflow: auto;
     max-inline-size: 100%;
     border: 1px solid rgba(var(--border-color-rgb), 0.2);
+    -webkit-overflow-scrolling: touch;
 }
 
 .quarterly-section:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 1px; }
@@ -399,16 +404,16 @@
 
 .quarterly-section .quarterly-table th,
 .quarterly-section .quarterly-table td {
-    padding: 6px 8px;
+    padding: 5px 6px;
     border-bottom: 1px solid rgba(var(--border-color-rgb), 0.12);
     white-space: nowrap;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
 }
 
 .quarterly-section .quarterly-table thead {
     position: sticky;
     inset-block-start: 0;
-    z-index: 1;
+    z-index: 3;
 }
 
 .quarterly-section .quarterly-table thead th {
@@ -421,6 +426,12 @@
     text-align: right;
 }
 
+.quarterly-section .quarterly-table thead th:first-child {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 4;
+}
+
 .quarterly-section .quarterly-table thead th:first-child,
 .quarterly-section .quarterly-table tbody th {
     text-align: left;
@@ -429,7 +440,7 @@
 .quarterly-section .quarterly-table tbody th {
     position: sticky;
     inset-inline-start: 0;
-    z-index: 1;
+    z-index: 2;
     background: var(--bg-primary);
     font-weight: 600;
     color: var(--text-primary);
@@ -472,13 +483,17 @@
 .quarterly-section .quarterly-table tbody tr:last-child th,
 .quarterly-section .quarterly-table tbody tr:last-child td { border-bottom: none; }
 
-.quarterly-section .quarterly-table tbody tr:hover th,
 .quarterly-section .quarterly-table tbody tr:hover td { background-color: rgba(var(--logo-teal-rgb), 0.05); }
+.quarterly-section .quarterly-table tbody tr:hover th { background-color: color-mix(in srgb, var(--logo-teal) 5%, var(--bg-primary)); }
 
 /* Highlight the most recent quarter */
 .quarterly-section .quarterly-table tbody tr.quarterly-latest {
     background-color: rgba(var(--logo-teal-rgb), 0.08);
     font-weight: 600;
+}
+
+.quarterly-section .quarterly-table tbody tr.quarterly-latest th {
+    background-color: color-mix(in srgb, var(--logo-teal) 8%, var(--bg-primary));
 }
 
 .quarterly-section .quarterly-table tbody tr.quarterly-latest th,
@@ -900,7 +915,7 @@
 
 .prediction-bar-value.yes-value { color: #22c55e; }
 .prediction-bar-value.no-value { color: #ef4444; }
-.prediction-change { font-size: 0.65rem; margin-left: 4px; font-weight: 600; }
+.prediction-change { font-size: 0.65rem; margin-inline-start: 4px; font-weight: 600; }
 .prediction-change.positive { color: #22c55e; }
 .prediction-change.negative { color: #ef4444; }
 
@@ -964,7 +979,7 @@
 .chart-overlay-close { padding: 2px 8px; border: 1px solid var(--border-color); border-radius: 6px; background: transparent; color: var(--text-muted); font-size: 0.7rem; font-weight: 500; line-height: 1; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0; }
 .chart-overlay-close:hover { background: var(--logo-teal); color: var(--color-white); border-color: var(--logo-teal); }
 .chart-overlay-range-picker { display: flex; align-items: center; gap: 4px; padding: 8px 8px 4px 8px; justify-content: flex-start; }
-.chart-overlay-range-picker .chart-overlay-close { margin-left: auto; }
+.chart-overlay-range-picker .chart-overlay-close { margin-inline-start: auto; }
 .chart-overlay-range-picker .range-btn { padding: 2px 8px; font-size: 0.7rem; }
 .chart-overlay-body { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 0; position: relative; }
 .chart-overlay-body .chart-overlay-canvas { flex: 1; min-height: 0; width: 100% !important; height: 100% !important; background: var(--bg-primary); }
@@ -1055,7 +1070,7 @@
 
 
 /* RESPONSIVE */
-@media (max-width: 768px) { .indicators-grid { gap: 0.85rem; min-height: 600px; } .indicator { padding: 0.7rem; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.46rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.95rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.75rem; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
+@media (max-width: 768px) { .indicators-grid { gap: 0.85rem; } .indicator { padding: 0.7rem; } .month-label { font-size: 0.63rem; } .month-value { font-size: 0.68rem; gap: 2px; } .month-value.game-title { font-size: 0.63rem; } .category-title { font-size: clamp(1rem, 4vw, 1.4rem); gap: 6px; } .category-icon { width: 1.25em; height: 1.25em; } .data-row { padding: 4px 0; gap: 4px; } .change-indicators { gap: 4px; } .change-metric-title { font-size: 0.46rem; } .change-metric-title-icon, .change-metric-title-icon i { width: 7px; height: 7px; } .change-metric-value { font-size: 0.8rem; } .latest-data-row { padding: 3px 4px; } .latest-data-row .month-value, .last-data-row .month-value { font-size: 0.95rem; } .latest-data-row.long-value .month-value, .last-data-row.long-value .month-value { font-size: 0.75rem; } .search-wrapper { max-width: 240px; } #essay-filters { padding: 0.5rem 0 0; } }
 
 @media (max-width: 600px) {
   .indicators-grid { gap: 0.75rem; min-height: auto; }
@@ -1173,6 +1188,9 @@
   .category[data-category="Earnings"] .indicators-grid {
     grid-template-columns: 1fr;
   }
+  .category[data-category="Earnings"] .quarterly-section { padding: 6px; }
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table th,
+  .category[data-category="Earnings"] .quarterly-section .quarterly-table td { padding: 4px 5px; font-size: 0.64rem; }
 }
 
 @container category (inline-size >= 720px) {
@@ -1315,7 +1333,7 @@
 .hormuz-top-row { display: flex; align-items: baseline; gap: 4px; line-height: 1; }
 .hormuz-count-num { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
 .hormuz-count-unit { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
-.hormuz-status-badge { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #dc2626; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 3px; padding: 1px 4px; margin-left: auto; }
+.hormuz-status-badge { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #dc2626; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 3px; padding: 1px 4px; margin-inline-start: auto; }
 .hormuz-capacity-row { display: flex; align-items: center; gap: 6px; }
 .hormuz-capacity-track { flex: 1; height: 4px; background: rgba(var(--color-primary-rgb), 0.1); border-radius: 2px; overflow: clip; }
 .hormuz-capacity-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; min-width: 2px; }
@@ -1340,7 +1358,7 @@
 .hormuz-daily--low .hormuz-daily-count { color: #dc2626; font-weight: 700; }
 .hormuz-daily-date { color: var(--text-muted); min-width: 50px; font-weight: 500; }
 .hormuz-daily-count { font-weight: 600; color: var(--text-primary); min-width: 24px; }
-.hormuz-daily-badge { font-size: 0.6rem; color: #dc2626; font-weight: 600; margin-left: auto; }
+.hormuz-daily-badge { font-size: 0.6rem; color: #dc2626; font-weight: 600; margin-inline-start: auto; }
 .hormuz-monthly-grid { display: flex; gap: 12px; }
 .hormuz-monthly-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
 .hormuz-monthly-name { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
@@ -1712,7 +1730,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 
 /* 13F styles moved to css/components/13f-holdings.css */
 
-.firm-delta { margin-left: 6px; font-size: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.firm-delta { margin-inline-start: 6px; font-size: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .firm-delta.change-positive { color: #22c55e; }
 .firm-delta.change-negative { color: #ef4444; }
 .firm-delta.change-flat { color: var(--text-muted); }
@@ -1736,7 +1754,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     font-weight: 500;
     color: var(--text-muted);
     letter-spacing: 0.03em;
-    margin-left: 0.5em;
+    margin-inline-start: 0.5em;
     text-transform: none;
     vertical-align: middle;
 }
@@ -1746,7 +1764,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 }
 
 .fec-senate-badge {
-    margin-left: 0;
+    margin-inline-start: 0;
     vertical-align: middle;
     align-self: auto;
     background: var(--logo-orange);
@@ -1818,7 +1836,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     display: inline-block;
     font-size: 0.5rem;
     color: var(--logo-teal);
-    margin-left: 2px;
+    margin-inline-start: 2px;
     vertical-align: middle;
     opacity: 0.85;
 }
@@ -1830,7 +1848,7 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
     font-size: 0.72rem;
     font-weight: 700;
     color: #16a34a;
-    margin-left: 4px;
+    margin-inline-start: 4px;
     vertical-align: middle;
     line-height: 1;
 }

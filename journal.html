@@ -210,6 +210,37 @@
         link.setAttribute('aria-label', 'Link to this entry');
         footer.appendChild(link);
         container.appendChild(footer);
+        return footer;
+      }
+
+      // Move a trailing "Source" link out of the rendered content and into the
+      // entry footer so the source and permalink share one aligned row. The link
+      // is only promoted when it is the final content in the block (only
+      // trailing <br>/whitespace follows it), so "Source | Additional" style
+      // lines and mid-content source links are left untouched.
+      function promoteSourceToFooter(contentEl, footer) {
+        if (!contentEl || !footer || footer.classList.contains('has-source')) return;
+        const anchors = contentEl.querySelectorAll('a');
+        let source = null;
+        for (let i = anchors.length - 1; i >= 0; i--) {
+          if (anchors[i].textContent.trim() === 'Source') { source = anchors[i]; break; }
+        }
+        if (!source) return;
+        let after = source.nextSibling;
+        while (after) {
+          const isTrailing = after.nodeName === 'BR' || (after.nodeType === 3 && !after.textContent.trim());
+          if (!isTrailing) return;
+          after = after.nextSibling;
+        }
+        let prev = source.previousSibling;
+        while (prev && (prev.nodeName === 'BR' || (prev.nodeType === 3 && !prev.textContent.trim()))) {
+          const stale = prev;
+          prev = prev.previousSibling;
+          stale.remove();
+        }
+        source.classList.add('entry-source-link');
+        footer.insertBefore(source, footer.firstChild);
+        footer.classList.add('has-source');
       }
 
       function getEntryTags(entry) {
@@ -295,34 +326,39 @@
           const inner = document.createElement('div');
           inner.className = 'accordion-inner';
           accordionEl.appendChild(inner);
+          let entryFooter = null;
           if (hasFile && entry.file.startsWith('article/')) {
             const slug = entry.file.split('/').pop().replace(/\.md$/, '');
-            appendPermalink(accordionEl, '/article.html?slug=' + encodeURIComponent(slug), 'Permalink');
+            entryFooter = appendPermalink(accordionEl, '/article.html?slug=' + encodeURIComponent(slug), 'Permalink');
           } else if (div.dataset.slug) {
-            appendPermalink(accordionEl, '#' + div.dataset.slug, 'Permalink');
+            entryFooter = appendPermalink(accordionEl, '#' + div.dataset.slug, 'Permalink');
           }
 
           let loaded = false;
+          function setContent(html) {
+            inner.innerHTML = html;
+            promoteSourceToFooter(inner, entryFooter);
+          }
           function loadContent() {
             if (loaded) return;
             loaded = true;
             if (hasFile) {
               inner.innerHTML = '<div class="accordion-loading"><div class="loading-spinner"></div><span>Loading content...</span></div>';
               if (mdCache[entry.file]) {
-                inner.innerHTML = normalizeContent(parseMarkdown(mdCache[entry.file]));
+                setContent(normalizeContent(parseMarkdown(mdCache[entry.file])));
                 return;
               }
               fetch(entry.file)
                 .then(response => response.ok ? response.text() : Promise.reject(response.status))
                 .then(text => {
                   mdCache[entry.file] = text;
-                  inner.innerHTML = normalizeContent(parseMarkdown(text));
+                  setContent(normalizeContent(parseMarkdown(text)));
                 })
                 .catch(() => {
                   inner.innerHTML = '<span class="loading-error">Could not load file.</span>';
                 });
             } else if (hasContent) {
-              inner.innerHTML = normalizeContent(parseInline(entry.content, true));
+              setContent(normalizeContent(parseInline(entry.content, true)));
             }
           }
           if (hasContent && !hasFile) {
@@ -412,15 +448,17 @@
           div.appendChild(videoEl);
         }
 
+        let contentEl = null;
         if (hasContent && !hasToggle) {
-          const contentEl = document.createElement('div');
+          contentEl = document.createElement('div');
           contentEl.className = 'entry-content';
           contentEl.innerHTML = normalizeContent(parseInline(entry.content, true));
           div.appendChild(contentEl);
         }
         if (accordionEl) div.appendChild(accordionEl);
         if (!hasToggle && div.dataset.slug) {
-          appendPermalink(div, '#' + div.dataset.slug, 'Permalink');
+          const footer = appendPermalink(div, '#' + div.dataset.slug, 'Permalink');
+          promoteSourceToFooter(contentEl, footer);
         }
         return div;
       }
@@ -462,6 +500,11 @@
         setTimeout(() => target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }), 50);
         return true;
       }
+
+      // Inline entries are addressed by `data-slug` rather than an element `id`,
+      // so clicking a permalink only changes the hash; without this the browser
+      // has no native anchor target and nothing scrolls or expands.
+      window.addEventListener('hashchange', scrollToHash);
 
       function renderDefault(keepHash) {
         filteredMode = false;
@@ -570,14 +613,23 @@
           if (loadingEl) loadingEl.style.display = 'none';
 
           showDefaultView();
-          if (window.location.hash) {
-            scrollToHash();
-          }
 
           if (typeof window.initJournalFilters === 'function') {
             window.initJournalFilters();
           } else if (typeof window.filterJournalEntries === 'function') {
             window.filterJournalEntries();
+          }
+
+          // Resolve the hash only after the feed's final render. Filter setup
+          // re-renders the feed (deferred to DOMContentLoaded while the document
+          // is still parsing), which would otherwise collapse a permalink's
+          // target entry immediately after scrollToHash() opened it.
+          if (window.location.hash) {
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', scrollToHash, { once: true });
+            } else {
+              scrollToHash();
+            }
           }
         })
         .catch(() => {

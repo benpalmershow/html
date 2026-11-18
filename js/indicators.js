@@ -799,14 +799,14 @@ latestDataHtml = `
                 : `${qLabel} (${form})`;
 
             const printParts = [];
-            if (rev) printParts.push(`<span title="Total Revenue">${rev}</span>`);
+            if (rev) printParts.push(`<span>${rev}</span>`);
             // For S-1 filings, show adjusted operating income instead of net income
             if (isS1Filing && latestQ.adjustedOperatingIncome != null) {
                 const adjOi = formatAmount(latestQ.adjustedOperatingIncome);
                 const adjOiClass = latestQ.adjustedOperatingIncome >= 0 ? 'earnings-positive' : 'earnings-negative';
                 printParts.push(`<span class="${adjOiClass}" title="Adjusted Operating Income (excludes SBC and noncash charitable contributions)">${adjOi} Adj. OI</span>`);
             } else if (net) {
-                printParts.push(`<span class="${netClass}" title="Net Income">${net}</span>`);
+                printParts.push(`<span class="${netClass}">${net}</span>`);
             }
             if (printParts.length) {
                 latestItems.push(`<div class="latest-data-row"><span class="month-label">${qBadge}:</span><span class="month-value">${printParts.join('<span class="earnings-sep"> · </span>')}</span></div>`);
@@ -954,17 +954,49 @@ latestDataHtml = `
                     ? `<a href="${filingUrl}" target="_blank" rel="noopener noreferrer" class="sec-filing-link" title="${rowTitle}">${dateLabel} <span class="form-badge">${filingForm}</span></a>`
                     : `${dateLabel} <span class="form-badge">${filingForm}</span>`;
 
-                // Highlight the most recent quarter
+                let qoqHtml = '\u2014';
+                if (q.totalRevenue != null && index < quarterly.length - 1) {
+                    const prev = quarterly[index + 1].totalRevenue;
+                    if (prev != null && prev !== 0) {
+                        const pct = ((q.totalRevenue - prev) / Math.abs(prev)) * 100;
+                        const sign = pct >= 0 ? '+' : '';
+                        const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
+                        qoqHtml = `<span class="${cls}">${sign}${pct.toFixed(1)}%</span>`;
+                    }
+                }
+
+                let yoyHtml = '\u2014';
+                if (q.totalRevenue != null && q.quarterEnd) {
+                    const qDate = new Date(q.quarterEnd + 'T00:00:00Z');
+                    if (!Number.isNaN(qDate.getTime())) {
+                        const targetMonth = qDate.getUTCMonth();
+                        const targetYear = qDate.getUTCFullYear() - 1;
+                        const match = quarterly.find(pq => {
+                            if (!pq.quarterEnd || pq.totalRevenue == null) return false;
+                            const pd = new Date(pq.quarterEnd + 'T00:00:00Z');
+                            return !Number.isNaN(pd.getTime()) && pd.getUTCMonth() === targetMonth && pd.getUTCFullYear() === targetYear;
+                        });
+                        if (match && match.totalRevenue !== 0) {
+                            const pct = ((q.totalRevenue - match.totalRevenue) / Math.abs(match.totalRevenue)) * 100;
+                            const sign = pct >= 0 ? '+' : '';
+                            const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
+                            yoyHtml = `<span class="${cls}">${sign}${pct.toFixed(1)}%</span>`;
+                        }
+                    }
+                }
+
                 const isLatest = index === 0;
                 const rowClass = isLatest ? 'quarterly-latest' : '';
 
                 return `<tr class="${rowClass}">
                     <th scope="row">${filingLink}</th>
-                    <td title="Total Revenue">${formatAmount(q.totalRevenue)}</td>
-                    <td class="${netIncomeClass}" title="Net Income">${formatAmount(q.netIncome)}</td>
-                    <td class="${operatingIncomeClass}" title="Operating Income">${formatAmount(q.operatingIncome)}</td>
-                    <td title="Capital Expenditures">${formatAmount(q.capitalExpenditures)}</td>
-                    <td class="${freeCashFlowClass}" title="Free Cash Flow">${formatAmount(q.freeCashFlow)}</td>
+                    <td>${formatAmount(q.totalRevenue)}</td>
+                    <td>${qoqHtml}</td>
+                    <td>${yoyHtml}</td>
+                    <td class="${netIncomeClass}">${formatAmount(q.netIncome)}</td>
+                    <td class="${operatingIncomeClass}">${formatAmount(q.operatingIncome)}</td>
+                    <td>${formatAmount(q.capitalExpenditures)}</td>
+                    <td class="${freeCashFlowClass}">${formatAmount(q.freeCashFlow)}</td>
                 </tr>`;
             }).join('');
 
@@ -975,6 +1007,8 @@ latestDataHtml = `
                         <tr>
                             <th scope="col">Qtr</th>
                             <th scope="col">Revenue</th>
+                            <th scope="col">QoQ</th>
+                            <th scope="col">YoY</th>
                             <th scope="col">Net Inc.</th>
                             <th scope="col">Op. Inc.</th>
                             <th scope="col">CapEx</th>
@@ -1015,7 +1049,7 @@ latestDataHtml = `
                             <span class="stat-value">${s.value}</span>
                         </div>
                     `).join('');
-                    historyDataHtml += `<div class="earnings-subheading">Operating Metrics</div><div class="earnings-stats-grid s1-metrics-grid">${s1StatsHtml}</div>`;
+                    historyDataHtml += `<div class="earnings-subheading">S-1 Metrics</div><div class="earnings-stats-grid s1-metrics-grid">${s1StatsHtml}</div>`;
                 }
 
                 // Section 2: Revenue Growth Timeline
@@ -1203,68 +1237,13 @@ latestDataHtml = `
             }
         }
 
-        // 1b. Quarterly Revenue Growth Highlights (QoQ and YoY per quarter)
-        if (quarterly.length > 0) {
-            hasHistory = true;
-            const growthRows = quarterly.map((q, index) => {
-                const dateLabel = formatQuarterLabel(q.quarterEnd) || q.quarterEnd || '';
-                const rev = q.totalRevenue;
-                if (rev == null) return '';
-
-                // QoQ: vs immediately preceding quarter
-                let qoqHtml = '';
-                if (index < quarterly.length - 1) {
-                    const prev = quarterly[index + 1].totalRevenue;
-                    if (prev != null && prev !== 0) {
-                        const pct = ((rev - prev) / Math.abs(prev)) * 100;
-                        const sign = pct >= 0 ? '+' : '';
-                        const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
-                        qoqHtml = `<span class="${cls}">${sign}${pct.toFixed(1)}%</span>`;
-                    }
-                }
-
-                // YoY: vs same quarter prior year
-                let yoyHtml = '';
-                const qDate = new Date(q.quarterEnd + 'T00:00:00Z');
-                if (!Number.isNaN(qDate.getTime())) {
-                    const targetMonth = qDate.getUTCMonth();
-                    const targetYear = qDate.getUTCFullYear() - 1;
-                    const match = quarterly.find(pq => {
-                        if (!pq.quarterEnd || pq.totalRevenue == null) return false;
-                        const pd = new Date(pq.quarterEnd + 'T00:00:00Z');
-                        return !Number.isNaN(pd.getTime()) && pd.getUTCMonth() === targetMonth && pd.getUTCFullYear() === targetYear;
-                    });
-                    if (match) {
-                        const pct = ((rev - match.totalRevenue) / Math.abs(match.totalRevenue)) * 100;
-                        const sign = pct >= 0 ? '+' : '';
-                        const cls = pct >= 0 ? 'earnings-positive' : 'earnings-negative';
-                        yoyHtml = `<span class="${cls}">${sign}${pct.toFixed(1)}%</span>`;
-                    }
-                }
-
-                return `<div class="earnings-growth-row">
-                    <span class="growth-quarter">${dateLabel}</span>
-                    <span class="growth-rev">${formatAmount(rev)}</span>
-                    <span class="growth-qoq">${qoqHtml || '\u2014'}</span>
-                    <span class="growth-yoy">${yoyHtml || '\u2014'}</span>
-                </div>`;
-            }).filter(Boolean).join('');
-
-            if (growthRows) {
-                historyDataHtml += `<div class="earnings-subheading">Revenue Growth</div>
-                    <div class="earnings-growth-header">
-                        <span>Quarter</span><span>Revenue</span><span>QoQ</span><span>YoY</span>
-                    </div>
-                    <div class="earnings-growth-list">${growthRows}</div>`;
-            }
-        }
-
         // 1c. Quarterly Operating Metrics (compute intensity, operating margin)
         if (quarterly.length > 0) {
-            const metricRows = quarterly.map((q, index) => {
+            const metricRows = quarterly.map((q) => {
                 const dateLabel = formatQuarterLabel(q.quarterEnd) || q.quarterEnd || '';
                 const rev = q.totalRevenue;
                 if (rev == null || rev === 0) return '';
+                if (q.computeInfrastructure == null && q.operatingMargin == null) return '';
 
                 const computeCost = q.computeInfrastructure;
                 const computePerDollar = computeCost != null
@@ -1284,7 +1263,7 @@ latestDataHtml = `
             }).filter(Boolean).join('');
 
             if (metricRows) {
-                historyDataHtml += `<div class="earnings-subheading">Operating Metrics</div>
+                historyDataHtml += `<div class="earnings-subheading">Compute & Margins</div>
                     <div class="earnings-growth-header">
                         <span>Quarter</span><span>Compute / $1 Rev</span><span>Op. Margin</span><span></span>
                     </div>
@@ -1363,11 +1342,6 @@ latestDataHtml = `
         }
         if (indicator.grossMargins != null) {
             profitabilityStats.push({ label: 'Gross Marg', value: `${(indicator.grossMargins * 100).toFixed(1)}%`, tip: 'Gross profit divided by revenue' });
-        }
-        if (indicator.revenueGrowth != null) {
-            const sign = indicator.revenueGrowth >= 0 ? '+' : '';
-            const growthClass = indicator.revenueGrowth >= 0 ? 'earnings-positive' : 'earnings-negative';
-            profitabilityStats.push({ label: 'YoY Growth', value: `<span class="${growthClass}">${sign}${(indicator.revenueGrowth * 100).toFixed(1)}%</span>`, tip: 'Year-over-year revenue growth rate' });
         }
 
         // Cash Flow metrics

@@ -19,6 +19,31 @@ function parseJournalDate(value) {
   return Date.UTC(year, Number(match[1]) - 1, Number(match[2]));
 }
 
+const VIDEO_ID_RE = /(?:youtube\.com\/(?:embed|watch\?v=|shorts)\/|youtu\.be\/|music\.youtube\.com\/watch\?v=)([A-Za-z0-9_-]+)/g;
+
+function extractVideoIds(text) {
+  if (!text) return [];
+  VIDEO_ID_RE.lastIndex = 0;
+  const ids = new Set();
+  let match;
+  while ((match = VIDEO_ID_RE.exec(text)) !== null) {
+    ids.add(match[1]);
+  }
+  return [...ids];
+}
+
+function validateVideoIds(label, text, seenIds, seenLocations) {
+  const ids = extractVideoIds(text);
+  ids.forEach(id => {
+    if (seenIds.has(id)) {
+      warn(`json/journal.json duplicate video ${id} (also at ${seenLocations.get(id)}); ${label}`);
+    } else {
+      seenIds.add(id);
+      seenLocations.set(id, label);
+    }
+  });
+}
+
 function parseTagList(value) {
   const text = String(value || '').trim();
   if (!text) return [];
@@ -109,6 +134,8 @@ function validateContentIndexes() {
       const seenDates = new Set();
       const titleDates = new Map();
       let previousDate = null;
+      const seenVideoIds = new Set();
+      const seenVideoLocations = new Map();
 
       const tagPath = path.join(ROOT, 'json/journal-tags.json');
       let fileTags = {};
@@ -199,6 +226,10 @@ function validateContentIndexes() {
               warn(`json/journal.json ${entryLabel} has ${entry.tags.length} tags (max 5)`);
             }
           }
+          validateVideoIds(entryLabel, entry.content, seenVideoIds, seenVideoLocations);
+          if (entry.link) {
+            validateVideoIds(entryLabel, entry.link, seenVideoIds, seenVideoLocations);
+          }
         });
       });
     }
@@ -255,6 +286,28 @@ function validateArticleIndex() {
       const slug = decodeURIComponent(match[1]);
       if (!ids.has(slug)) fail(`${fileName} links to an article missing from the index: ${slug}`);
     }
+  });
+}
+
+function validateMediaCatalog() {
+  const mediaPath = path.join(ROOT, 'json/media.json');
+  if (!fs.existsSync(mediaPath)) return;
+  const media = JSON.parse(read(mediaPath));
+  if (!Array.isArray(media)) return;
+  const seenVideoIds = new Set();
+  const seenVideoLocations = new Map();
+  media.forEach((entry, index) => {
+    const label = `json/media.json entry ${index} (${entry.title || 'untitled'})`;
+    const text = JSON.stringify(entry);
+    const ids = extractVideoIds(text);
+    ids.forEach(id => {
+      if (seenVideoIds.has(id)) {
+        warn(`json/media.json duplicate video ${id} (also at ${seenVideoLocations.get(id)}); ${label}`);
+      } else {
+        seenVideoIds.add(id);
+        seenVideoLocations.set(id, label);
+      }
+    });
   });
 }
 
@@ -338,6 +391,7 @@ function runValidation() {
   validateJson();
   validateContentIndexes();
   validateArticleIndex();
+  validateMediaCatalog();
   validateLocalReferences();
   validateSitemaps();
   

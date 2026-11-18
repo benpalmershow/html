@@ -776,9 +776,6 @@ latestDataHtml = `
                 if (position >= 80) {
                     contextLabel = 'Near 52W High';
                     contextClass = 'price-context-high';
-                } else if (position <= 20) {
-                    contextLabel = 'Near 52W Low';
-                    contextClass = 'price-context-low';
                 }
                 if (contextLabel) {
                     priceContext = `<span class="price-context-badge ${contextClass}" title="Current price is ${position.toFixed(0)}% of 52-week range">${contextLabel}</span>`;

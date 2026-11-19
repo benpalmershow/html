@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19T19:56:22Z",
+  "lastUpdated": "2026-11-19T20:16:24Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -2444,13 +2444,13 @@
         "august": "6.66",
         "september": "7.03",
         "october": "7.2",
-        "november": "7.1"
+        "november": "7.3"
       },
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "FRED",
       "name": "30-yr Mortgage Rate",
-      "lastUpdated": "2026-11-16T15:12:47Z",
+      "lastUpdated": "2026-11-19T20:16:24Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "change": "",
@@ -2898,7 +2898,7 @@
         "august": "206,000",
         "september": "200,500",
         "october": "195,800",
-        "november": "200,000"
+        "november": "202,500"
       },
       "2025": {
         "march": "223,000",
@@ -2918,7 +2918,7 @@
       "color": "#34495e",
       "agency": "FRED",
       "name": "Jobless Claims",
-      "lastUpdated": "2026-11-12T16:33:46Z",
+      "lastUpdated": "2026-11-19T20:16:24Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/ICSA",
       "change": "",
@@ -2927,7 +2927,7 @@
       "releaseTimeISO": "2026-10-15T12:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
-        "december": "217,667",
+        "december": "215,500",
         "november": "222,000"
       }
     },

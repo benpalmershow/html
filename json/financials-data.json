@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T18:18:16Z",
+  "lastUpdated": "2026-11-20T20:45:52Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -189,13 +189,13 @@
         "august": "51.7",
         "september": "48.1",
         "october": "48.0",
-        "november": "51.0"
+        "november": "51.5"
       },
       "category": "Consumer Indicators",
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-11-18T17:58:39Z",
+      "lastUpdated": "2026-11-20T20:45:52Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
@@ -2643,7 +2643,7 @@
       "source_url": "https://www.census.gov/construction/nrc/current/index.html",
       "change": "",
       "explanation": "The number of new residential construction projects that began during the month, as reported by the U.S. Census Bureau. This leading indicator of housing market activity includes single-family homes, townhomes, and multi-family buildings with five or more units. The data is seasonally adjusted and annualized to project yearly totals. Housing starts are sensitive to interest rates, with higher rates typically depressing new construction. The report also includes building permits (a forward-looking indicator) and housing completions. Economists monitor the ratio of single-family to multi-family starts for insights into housing market trends and demographic shifts.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-18T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -4142,7 +4142,7 @@
       "url": "https://fred.stlouisfed.org/series/PERMIT",
       "change": "",
       "explanation": "The number of building permits issued for new privately owned housing units, published by the U.S. Census Bureau. This is a leading indicator of future residential construction activity and housing market conditions, as permits are typically filed before construction begins.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-19T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {

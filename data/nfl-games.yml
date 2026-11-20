@@ -1098,9 +1098,9 @@ games:
   game_time_iso: '2026-11-20T01:15:00Z'
   url: https://polymarket.com/sports/nfl/nfl-ind-hou-2026-11-20
   polymarket_slug: nfl-ind-hou-2026-11-20
-  IND_win_odds: 19.5¢
-  HOU_win_odds: 80.5¢
-  lastUpdated: '2026-11-15T16:32:14.865556Z'
+  IND_win_odds: 0.1¢
+  HOU_win_odds: 100.0¢
+  lastUpdated: '2026-11-20T03:49:15.316476Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     IND_win_odds: 26.5¢
@@ -1117,6 +1117,9 @@ games:
   - timestamp: '2026-11-15T16:32:14.865556Z'
     IND_win_odds: 19.5¢
     HOU_win_odds: 80.5¢
+  - timestamp: '2026-11-20T03:49:15.316476Z'
+    IND_win_odds: 0.1¢
+    HOU_win_odds: 100.0¢
 - id: nfl-bal-car-2026-11-22
   week: 11
   away: BAL

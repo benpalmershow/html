@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T01:40:43Z",
+  "lastUpdated": "2026-11-20T03:51:59.278685Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -4512,8 +4512,10 @@
       "game_time": "Nov 20, 2026 1:15 AM ET",
       "game_time_iso": "2026-11-20T01:15:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ind-hou-2026-11-20",
-      "lastUpdated": "2026-11-15T16:32:14.865556Z",
+      "lastUpdated": "2026-11-20T03:49:15.316476Z",
       "week": 11,
+      "winner": "HOU",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "IND_win_odds": "26",
@@ -4527,29 +4529,33 @@
           "IND_win_odds": "20",
           "HOU_win_odds": "80"
         },
+        "2026-11-20": {
+          "IND_win_odds": "0",
+          "HOU_win_odds": "100"
+        },
         "2026-11-13": {
-          "IND_win_odds": "23",
-          "HOU_win_odds": "77"
+          "IND_win_odds": "5",
+          "HOU_win_odds": "95"
         },
         "2026-11-17": {
-          "IND_win_odds": "22",
-          "HOU_win_odds": "78"
+          "IND_win_odds": "5",
+          "HOU_win_odds": "95"
         },
         "2026-11-18": {
-          "IND_win_odds": "19",
-          "HOU_win_odds": "81"
+          "IND_win_odds": "5",
+          "HOU_win_odds": "95"
         },
         "2026-11-19": {
-          "IND_win_odds": "21",
-          "HOU_win_odds": "79"
+          "IND_win_odds": "5",
+          "HOU_win_odds": "95"
         },
-        "2026-11-20": {
-          "IND_win_odds": "20",
-          "HOU_win_odds": "80"
+        "2026-11-21": {
+          "IND_win_odds": "0",
+          "HOU_win_odds": "100"
         }
       },
-      "IND_win_odds": "20",
-      "HOU_win_odds": "80"
+      "IND_win_odds": "0",
+      "HOU_win_odds": "100"
     },
     {
       "id": "nfl-bal-car-2026-11-22",

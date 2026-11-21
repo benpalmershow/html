@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-21T07:57:53Z",
+  "lastUpdated": "2026-11-21T15:59:27Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-21T07:57:27.401084Z",
+      "lastUpdated": "2026-11-21T15:53:28.333941Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
@@ -15,8 +15,8 @@
       "kalshi_url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26dec",
       "polymarket_url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632",
       "rate_hold_odds": "8¢",
-      "rate_cut_odds": "0¢",
-      "rate_hike_odds": "90¢",
+      "rate_cut_odds": "1¢",
+      "rate_hike_odds": "88¢",
       "change": "",
       "probabilities": {
         "2026-11-06": {
@@ -126,9 +126,9 @@
         },
         "2026-11-21": {
           "rate_cut_50_bps_odds": "0¢",
-          "rate_cut_odds": "0¢",
+          "rate_cut_odds": "1¢",
           "rate_hold_odds": "8¢",
-          "rate_hike_odds": "90¢",
+          "rate_hike_odds": "88¢",
           "rate_hike_50_bps_odds": "2¢"
         }
       },

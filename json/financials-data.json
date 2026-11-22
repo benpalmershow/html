@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-22T19:02:19.291617Z",
+  "lastUpdated": "2026-11-22T20:53:45.569429Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -4526,7 +4526,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-bal-car-2026-11-22",
-      "lastUpdated": "2026-11-22T18:59:24.975219Z",
+      "lastUpdated": "2026-11-22T20:50:16.704488Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -4542,28 +4542,28 @@
           "CAR_win_odds": "55"
         },
         "2026-11-22": {
-          "BAL_win_odds": "40",
-          "CAR_win_odds": "60"
+          "BAL_win_odds": "36",
+          "CAR_win_odds": "64"
         },
         "2026-11-17": {
+          "BAL_win_odds": "34",
+          "CAR_win_odds": "66"
+        },
+        "2026-11-19": {
           "BAL_win_odds": "38",
           "CAR_win_odds": "62"
         },
-        "2026-11-19": {
-          "BAL_win_odds": "42",
-          "CAR_win_odds": "58"
-        },
         "2026-11-20": {
-          "BAL_win_odds": "39",
-          "CAR_win_odds": "61"
+          "BAL_win_odds": "35",
+          "CAR_win_odds": "65"
         },
         "2026-11-21": {
-          "BAL_win_odds": "41",
-          "CAR_win_odds": "59"
+          "BAL_win_odds": "37",
+          "CAR_win_odds": "63"
         }
       },
-      "BAL_win_odds": "40",
-      "CAR_win_odds": "60"
+      "BAL_win_odds": "36",
+      "CAR_win_odds": "64"
     },
     {
       "id": "nfl-mia-buf-2026-11-22",
@@ -4574,8 +4574,10 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-mia-buf-2026-11-22",
-      "lastUpdated": "2026-11-22T19:00:15.588956Z",
+      "lastUpdated": "2026-11-22T20:51:25.635137Z",
       "week": 11,
+      "winner": "BUF",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "MIA_win_odds": "17",
@@ -4590,8 +4592,8 @@
           "BUF_win_odds": "91"
         },
         "2026-11-22": {
-          "MIA_win_odds": "2",
-          "BUF_win_odds": "98"
+          "MIA_win_odds": "0",
+          "BUF_win_odds": "100"
         },
         "2026-11-17": {
           "MIA_win_odds": "5",
@@ -4608,10 +4610,14 @@
         "2026-11-21": {
           "MIA_win_odds": "5",
           "BUF_win_odds": "95"
+        },
+        "2026-11-23": {
+          "MIA_win_odds": "0",
+          "BUF_win_odds": "100"
         }
       },
-      "MIA_win_odds": "2",
-      "BUF_win_odds": "98"
+      "MIA_win_odds": "0",
+      "BUF_win_odds": "100"
     },
     {
       "id": "nfl-no-chi-2026-11-22",
@@ -4622,7 +4628,7 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-no-chi-2026-11-22",
-      "lastUpdated": "2026-11-22T19:01:25.965958Z",
+      "lastUpdated": "2026-11-22T20:51:25.635137Z",
       "week": 11,
       "probabilities": {
         "2026-11-10": {
@@ -4638,16 +4644,16 @@
           "CHI_win_odds": "84"
         },
         "2026-11-22": {
-          "NO_win_odds": "4",
-          "CHI_win_odds": "96"
+          "NO_win_odds": "1",
+          "CHI_win_odds": "99"
         },
         "2026-11-17": {
           "NO_win_odds": "5",
           "CHI_win_odds": "95"
         },
         "2026-11-19": {
-          "NO_win_odds": "6",
-          "CHI_win_odds": "94"
+          "NO_win_odds": "5",
+          "CHI_win_odds": "95"
         },
         "2026-11-20": {
           "NO_win_odds": "5",
@@ -4658,8 +4664,8 @@
           "CHI_win_odds": "95"
         }
       },
-      "NO_win_odds": "4",
-      "CHI_win_odds": "96"
+      "NO_win_odds": "1",
+      "CHI_win_odds": "99"
     },
     {
       "id": "nfl-tb-det-2026-11-22",
@@ -4670,8 +4676,10 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-tb-det-2026-11-22",
-      "lastUpdated": "2026-11-22T19:00:15.588831Z",
+      "lastUpdated": "2026-11-22T20:51:25.635137Z",
       "week": 11,
+      "winner": "DET",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "TB_win_odds": "36",
@@ -4686,28 +4694,32 @@
           "DET_win_odds": "70"
         },
         "2026-11-22": {
-          "TB_win_odds": "12",
-          "DET_win_odds": "88"
+          "TB_win_odds": "0",
+          "DET_win_odds": "100"
         },
         "2026-11-17": {
-          "TB_win_odds": "10",
-          "DET_win_odds": "90"
+          "TB_win_odds": "5",
+          "DET_win_odds": "95"
         },
         "2026-11-19": {
-          "TB_win_odds": "14",
-          "DET_win_odds": "86"
+          "TB_win_odds": "5",
+          "DET_win_odds": "95"
         },
         "2026-11-20": {
-          "TB_win_odds": "11",
-          "DET_win_odds": "89"
+          "TB_win_odds": "5",
+          "DET_win_odds": "95"
         },
         "2026-11-21": {
-          "TB_win_odds": "13",
-          "DET_win_odds": "87"
+          "TB_win_odds": "5",
+          "DET_win_odds": "95"
+        },
+        "2026-11-23": {
+          "TB_win_odds": "0",
+          "DET_win_odds": "100"
         }
       },
-      "TB_win_odds": "12",
-      "DET_win_odds": "88"
+      "TB_win_odds": "0",
+      "DET_win_odds": "100"
     },
     {
       "id": "nfl-ten-dal-2026-11-22",
@@ -4718,8 +4730,10 @@
       "game_time": "Nov 22, 2026 6:00 PM ET",
       "game_time_iso": "2026-11-22T18:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-ten-dal-2026-11-22",
-      "lastUpdated": "2026-11-22T19:00:31.12513Z",
+      "lastUpdated": "2026-11-22T20:51:25.635137Z",
       "week": 11,
+      "winner": "DAL",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "TEN_win_odds": "22",
@@ -4734,28 +4748,32 @@
           "DAL_win_odds": "80"
         },
         "2026-11-22": {
-          "TEN_win_odds": "6",
-          "DAL_win_odds": "94"
+          "TEN_win_odds": "0",
+          "DAL_win_odds": "100"
         },
         "2026-11-17": {
           "TEN_win_odds": "5",
           "DAL_win_odds": "95"
         },
         "2026-11-19": {
-          "TEN_win_odds": "8",
-          "DAL_win_odds": "92"
+          "TEN_win_odds": "5",
+          "DAL_win_odds": "95"
         },
         "2026-11-20": {
           "TEN_win_odds": "5",
           "DAL_win_odds": "95"
         },
         "2026-11-21": {
-          "TEN_win_odds": "7",
-          "DAL_win_odds": "93"
+          "TEN_win_odds": "5",
+          "DAL_win_odds": "95"
+        },
+        "2026-11-23": {
+          "TEN_win_odds": "0",
+          "DAL_win_odds": "100"
         }
       },
-      "TEN_win_odds": "6",
-      "DAL_win_odds": "94"
+      "TEN_win_odds": "0",
+      "DAL_win_odds": "100"
     },
     {
       "id": "nfl-gb-la-2026-11-26",

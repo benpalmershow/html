@@ -1132,9 +1132,9 @@ games:
   game_time_iso: '2026-11-22T18:00:00Z'
   url: https://polymarket.com/sports/nfl/nfl-bal-car-2026-11-22
   polymarket_slug: nfl-bal-car-2026-11-22
-  BAL_win_odds: 45.0¢
-  CAR_win_odds: 55.0¢
-  lastUpdated: '2026-11-15T16:30:09.318589Z'
+  BAL_win_odds: 39.5¢
+  CAR_win_odds: 60.5¢
+  lastUpdated: '2026-11-22T18:59:24.975219Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     BAL_win_odds: 37.5¢
@@ -1151,6 +1151,9 @@ games:
   - timestamp: '2026-11-15T16:30:09.318589Z'
     BAL_win_odds: 45.0¢
     CAR_win_odds: 55.0¢
+  - timestamp: '2026-11-22T18:59:24.975219Z'
+    BAL_win_odds: 39.5¢
+    CAR_win_odds: 60.5¢
 - id: nfl-mia-buf-2026-11-22
   week: 11
   away: MIA
@@ -1163,9 +1166,9 @@ games:
   game_time_iso: '2026-11-22T18:00:00Z'
   url: https://polymarket.com/sports/nfl/nfl-mia-buf-2026-11-22
   polymarket_slug: nfl-mia-buf-2026-11-22
-  MIA_win_odds: 9.0¢
-  BUF_win_odds: 91.0¢
-  lastUpdated: '2026-11-15T16:30:09.318589Z'
+  MIA_win_odds: 1.9¢
+  BUF_win_odds: 98.0¢
+  lastUpdated: '2026-11-22T19:00:15.588956Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     MIA_win_odds: 17.0¢
@@ -1182,6 +1185,9 @@ games:
   - timestamp: '2026-11-15T16:30:09.318589Z'
     MIA_win_odds: 9.0¢
     BUF_win_odds: 91.0¢
+  - timestamp: '2026-11-22T19:00:15.588956Z'
+    MIA_win_odds: 1.9¢
+    BUF_win_odds: 98.0¢
 - id: nfl-no-chi-2026-11-22
   week: 11
   away: 'NO'
@@ -1194,9 +1200,9 @@ games:
   game_time_iso: '2026-11-22T18:00:00Z'
   url: https://polymarket.com/sports/nfl/nfl-no-chi-2026-11-22
   polymarket_slug: nfl-no-chi-2026-11-22
-  NO_win_odds: 16.0¢
-  CHI_win_odds: 84.0¢
-  lastUpdated: '2026-11-15T16:30:09.318589Z'
+  NO_win_odds: 3.5¢
+  CHI_win_odds: 96.5¢
+  lastUpdated: '2026-11-22T19:01:25.965958Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     NO_win_odds: 21.0¢
@@ -1213,6 +1219,9 @@ games:
   - timestamp: '2026-11-15T16:30:09.318589Z'
     NO_win_odds: 16.0¢
     CHI_win_odds: 84.0¢
+  - timestamp: '2026-11-22T19:01:25.965958Z'
+    NO_win_odds: 3.5¢
+    CHI_win_odds: 96.5¢
 - id: nfl-tb-det-2026-11-22
   week: 11
   away: TB
@@ -1225,9 +1234,9 @@ games:
   game_time_iso: '2026-11-22T18:00:00Z'
   url: https://polymarket.com/sports/nfl/nfl-tb-det-2026-11-22
   polymarket_slug: nfl-tb-det-2026-11-22
-  TB_win_odds: 30.0¢
-  DET_win_odds: 70.0¢
-  lastUpdated: '2026-11-15T16:30:09.318589Z'
+  TB_win_odds: 12.5¢
+  DET_win_odds: 87.5¢
+  lastUpdated: '2026-11-22T19:00:15.588831Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     TB_win_odds: 35.5¢
@@ -1244,6 +1253,9 @@ games:
   - timestamp: '2026-11-15T16:30:09.318589Z'
     TB_win_odds: 30.0¢
     DET_win_odds: 70.0¢
+  - timestamp: '2026-11-22T19:00:15.588831Z'
+    TB_win_odds: 12.5¢
+    DET_win_odds: 87.5¢
 - id: nfl-ten-dal-2026-11-22
   week: 11
   away: TEN
@@ -1256,9 +1268,9 @@ games:
   game_time_iso: '2026-11-22T18:00:00Z'
   url: https://polymarket.com/sports/nfl/nfl-ten-dal-2026-11-22
   polymarket_slug: nfl-ten-dal-2026-11-22
-  TEN_win_odds: 19.5¢
-  DAL_win_odds: 80.5¢
-  lastUpdated: '2026-11-15T16:30:09.318589Z'
+  TEN_win_odds: 5.5¢
+  DAL_win_odds: 94.5¢
+  lastUpdated: '2026-11-22T19:00:31.12513Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     TEN_win_odds: 21.5¢
@@ -1275,6 +1287,9 @@ games:
   - timestamp: '2026-11-15T16:30:09.318589Z'
     TEN_win_odds: 19.5¢
     DAL_win_odds: 80.5¢
+  - timestamp: '2026-11-22T19:00:31.12513Z'
+    TEN_win_odds: 5.5¢
+    DAL_win_odds: 94.5¢
 - id: nfl-cin-was-2026-11-24
   week: 10
   away: CIN

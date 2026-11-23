@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T00:13:01.328795Z",
+  "lastUpdated": "2026-11-23T05:44:20Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -7,7 +7,7 @@
       "color": "#e74c3c",
       "agency": "Polymarket",
       "name": "FOMC Rate Decision - December",
-      "lastUpdated": "2026-11-22T23:13:26.074911Z",
+      "lastUpdated": "2026-11-23T05:41:23.344655Z",
       "meeting_date": "Dec 8-9, 2026",
       "announcement_time": "2:00 PM ET",
       "announcement_time_iso": "2026-12-09T14:00:00-05:00",
@@ -132,6 +132,13 @@
           "rate_hike_50_bps_odds": "2¢"
         },
         "2026-11-22": {
+          "rate_cut_50_bps_odds": "0¢",
+          "rate_cut_odds": "1¢",
+          "rate_hold_odds": "6¢",
+          "rate_hike_odds": "90¢",
+          "rate_hike_50_bps_odds": "2¢"
+        },
+        "2026-11-23": {
           "rate_cut_50_bps_odds": "0¢",
           "rate_cut_odds": "1¢",
           "rate_hold_odds": "6¢",

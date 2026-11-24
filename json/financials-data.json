@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24T14:06:44.201641Z",
+  "lastUpdated": "2026-11-24T18:10:22Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -223,7 +223,7 @@
       "color": "#9b59b6",
       "agency": "FRED",
       "name": "Consumer Sentiment",
-      "lastUpdated": "2026-11-20T20:45:52Z",
+      "lastUpdated": "2026-11-24T18:10:22Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/UMCSENT",
       "source_url": "https://www.sca.isr.umich.edu",
@@ -881,8 +881,9 @@
         "april": "333.2",
         "may": "335.6",
         "june": "336.9",
-        "july": "337.3",
-        "august": "336.7"
+        "july": "337.2",
+        "august": "336.8",
+        "september": "335.8"
       },
       "2025": {
         "january": "323.6",
@@ -902,12 +903,12 @@
       "color": "#e67e22",
       "agency": "FRED",
       "name": "Case-Shiller National Home Price Index",
-      "lastUpdated": "2026-11-14T01:24:19Z",
+      "lastUpdated": "2026-11-24T18:10:22Z",
       "releaseDay": 30,
       "url": "https://www.spglobal.com/spdji/en/indices/indicators/sp-cotality-case-shiller-us-national-home-price-nsa-index/#overview",
       "change": "",
       "explanation": "A leading measure of U.S. residential real estate prices, tracking changes in the value of residential housing nationwide. The index uses a repeat-sales pricing technique to measure home price appreciation, comparing the sale prices of the same properties over time. The base value of 100 represents home prices in January 2000. The index is published with a two-month lag and is considered one of the most reliable measures of U.S. home price trends. The data is seasonally adjusted and covers nine U.S. census divisions. The Case-Shiller Index is widely followed by economists, investors, and policymakers as a gauge of housing market health and homeowner wealth effects on consumer spending.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-30T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2024": {
@@ -3594,27 +3595,27 @@
     {
       "id": "industrial-production-index",
       "2026": {
-        "january": "101",
-        "february": "101.9",
-        "march": "101.7",
-        "april": "102.6",
-        "may": "102.7",
-        "june": "103.0",
-        "july": "103.2",
-        "august": "103.10",
-        "september": "104",
-        "october": "103"
+        "january": "100",
+        "february": "101.0",
+        "march": "101.2",
+        "april": "101.6",
+        "may": "101.8",
+        "june": "102.0",
+        "july": "102.2",
+        "august": "102.06",
+        "september": "103",
+        "october": "102"
       },
       "2025": {
-        "april": "101.1",
+        "april": "100.8",
         "may": "101",
-        "june": "101.5",
-        "july": "101.9",
-        "august": "101.6",
-        "september": "101.7",
-        "october": "101.2",
-        "november": "101.0",
-        "december": "101.5",
+        "june": "101.0",
+        "july": "101.3",
+        "august": "100.9",
+        "september": "101.0",
+        "october": "100.6",
+        "november": "100.4",
+        "december": "100.7",
         "march": "101",
         "february": "101",
         "january": "100"
@@ -3623,7 +3624,7 @@
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Industrial Production Index",
-      "lastUpdated": "2026-11-17T19:10:11Z",
+      "lastUpdated": "2026-11-24T18:10:22Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/INDPRO",
       "source_url": "https://www.federalreserve.gov/releases/g17/current/",
@@ -3647,82 +3648,82 @@
         "january": "99"
       },
       "2023": {
+        "december": "100",
+        "november": "101",
+        "october": "100",
+        "september": "100",
+        "august": "100",
+        "july": "100",
+        "june": "99",
+        "may": "100",
+        "april": "100",
+        "march": "100",
+        "february": "99",
+        "january": "100"
+      },
+      "2022": {
+        "december": "99",
+        "november": "100",
+        "october": "100",
+        "september": "100",
+        "august": "100",
+        "july": "100",
+        "june": "100",
+        "may": "100",
+        "april": "100",
+        "march": "100",
+        "february": "100",
+        "january": "99"
+      },
+      "2021": {
+        "december": "100",
+        "november": "100",
+        "october": "99",
+        "september": "98",
+        "august": "99",
+        "july": "99",
+        "june": "99",
+        "may": "98",
+        "april": "97",
+        "march": "97",
+        "february": "95",
+        "january": "98"
+      },
+      "2020": {
+        "december": "97",
+        "november": "96",
+        "october": "96",
+        "september": "95",
+        "august": "95",
+        "july": "94",
+        "june": "91",
+        "may": "85",
+        "april": "84",
+        "march": "96",
+        "february": "100",
+        "january": "100"
+      },
+      "2019": {
         "december": "101",
         "november": "101",
         "october": "100",
-        "september": "101",
-        "august": "101",
-        "july": "101",
-        "june": "100",
-        "may": "101",
-        "april": "101",
-        "march": "101",
-        "february": "101",
-        "january": "101"
-      },
-      "2022": {
-        "december": "100",
-        "november": "101",
-        "october": "101",
         "september": "101",
         "august": "101",
         "july": "101",
         "june": "101",
         "may": "101",
         "april": "101",
-        "march": "101",
-        "february": "101",
-        "january": "100"
-      },
-      "2021": {
-        "december": "101",
-        "november": "101",
-        "october": "100",
-        "september": "99",
-        "august": "100",
-        "july": "100",
-        "june": "100",
-        "may": "99",
-        "april": "99",
-        "march": "98",
-        "february": "96",
-        "january": "99"
-      },
-      "2020": {
-        "december": "98",
-        "november": "97",
-        "october": "97",
-        "september": "96",
-        "august": "96",
-        "july": "95",
-        "june": "92",
-        "may": "86",
-        "april": "85",
-        "march": "97",
-        "february": "101",
-        "january": "101"
-      },
-      "2019": {
-        "december": "102",
-        "november": "102",
-        "october": "101",
-        "september": "102",
-        "august": "103",
-        "july": "102",
-        "june": "102",
-        "may": "102",
-        "april": "102",
-        "march": "103",
-        "february": "103",
-        "january": "103"
+        "march": "102",
+        "february": "102",
+        "january": "102"
       },
       "2018": {
-        "december": "104",
-        "november": "104",
-        "october": "104",
-        "september": "104",
-        "august": "104",
-        "july": "103",
+        "december": "103",
+        "november": "103",
+        "october": "103",
+        "september": "103",
+        "august": "103",
+        "july": "102",
         "june": "103"
       }
     },
@@ -4016,22 +4017,22 @@
     {
       "id": "capacity-utilization",
       "2026": {
-        "january": "75.2",
-        "february": "75.8",
-        "march": "75.6",
-        "april": "76.2",
-        "may": "76.2",
-        "june": "76.3",
-        "july": "76.4",
-        "august": "76.3",
-        "september": "76.8",
-        "october": "76"
+        "january": "76.2",
+        "february": "76.6",
+        "march": "76.6",
+        "april": "76.9",
+        "may": "76.9",
+        "june": "77.0",
+        "july": "77.1",
+        "august": "76.8",
+        "september": "77.2",
+        "october": "77"
       },
       "category": "Business Indicators",
       "color": "#2ecc71",
       "agency": "FRED",
       "name": "Capacity Utilization",
-      "lastUpdated": "2026-11-17T19:10:11Z",
+      "lastUpdated": "2026-11-24T18:10:22Z",
       "releaseDay": 15,
       "url": "https://fred.stlouisfed.org/series/TCU",
       "change": "",
@@ -4040,53 +4041,53 @@
       "releaseTimeISO": "2026-10-15T15:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2025": {
-        "december": "76",
-        "november": "75",
-        "october": "76",
-        "september": "76",
-        "august": "76",
-        "july": "76",
-        "june": "76",
-        "may": "76",
-        "april": "76",
-        "march": "76",
-        "february": "76",
-        "january": "76"
-      },
-      "2024": {
-        "december": "76",
-        "november": "75",
-        "october": "75",
-        "september": "76",
-        "august": "76",
-        "july": "76",
-        "june": "77",
-        "may": "77",
-        "april": "76",
-        "march": "77",
-        "february": "77",
-        "january": "76"
-      },
-      "2023": {
         "december": "77",
-        "november": "77",
+        "november": "76",
         "october": "77",
         "september": "77",
         "august": "77",
         "july": "77",
         "june": "77",
+        "may": "77",
+        "april": "77",
+        "march": "77",
+        "february": "77",
+        "january": "77"
+      },
+      "2024": {
+        "december": "77",
+        "november": "76",
+        "october": "76",
+        "september": "77",
+        "august": "77",
+        "july": "77",
+        "june": "78",
         "may": "78",
+        "april": "77",
+        "march": "77",
+        "february": "77",
+        "january": "77"
+      },
+      "2023": {
+        "december": "77",
+        "november": "78",
+        "october": "77",
+        "september": "78",
+        "august": "77",
+        "july": "78",
+        "june": "77",
+        "may": "77",
         "april": "78",
         "march": "78",
-        "february": "78",
+        "february": "77",
         "january": "78"
       },
       "2022": {
         "december": "77",
         "november": "78",
         "october": "78",
-        "september": "79",
-        "august": "79",
+        "september": "78",
+        "august": "78",
         "july": "79",
         "june": "79",
         "may": "79",
@@ -4116,25 +4117,25 @@
         "september": "73",
         "august": "73",
         "july": "72",
-        "june": "70",
+        "june": "69",
         "may": "65",
         "april": "64",
         "march": "74",
         "february": "77",
-        "january": "77"
+        "january": "76"
       },
       "2019": {
         "december": "77",
         "november": "77",
         "october": "77",
-        "september": "78",
+        "september": "77",
         "august": "78",
         "july": "77",
         "june": "78",
         "may": "78",
         "april": "78",
-        "march": "79",
-        "february": "79",
+        "march": "78",
+        "february": "78",
         "january": "79"
       },
       "2018": {
@@ -4315,108 +4316,109 @@
         "q1": "712.20",
         "q2": "719.87",
         "april": "720",
-        "january": "712"
+        "january": "712",
+        "july": "723"
       },
       "2025": {
-        "january": "688.42",
-        "april": "698.69",
-        "july": "703.04",
-        "october": "707.22"
+        "january": "688.12",
+        "april": "698.28",
+        "july": "702.65",
+        "october": "707.39"
       },
       "category": "Housing Market",
       "color": "#e67e22",
       "agency": "FRED",
       "name": "FHFA House Price Index",
-      "lastUpdated": "2026-11-06T15:20:01Z",
+      "lastUpdated": "2026-11-24T18:10:22Z",
       "releaseDay": 28,
       "url": "https://fred.stlouisfed.org/series/USSTHPI",
       "source_url": "https://www.fhfa.gov/hpi",
       "change": "",
       "explanation": "The FHFA House Price Index measures changes in single-family home prices across the United States using a repeat-sales methodology. Published by the Federal Housing Finance Agency, it tracks price appreciation for homes with conforming mortgages.",
-      "newMonth": false,
+      "newMonth": true,
       "releaseTimeISO": "2026-10-28T01:00:00Z",
       "releaseTimeZone": "America/New_York",
       "2023": {
-        "january": "619.69",
-        "april": "637.85",
-        "july": "648.28",
-        "october": "648.40"
+        "january": "619.91",
+        "april": "638.08",
+        "july": "648.33",
+        "october": "648.47"
       },
       "2024": {
         "january": "657.59",
-        "april": "673.16",
-        "july": "679.81",
-        "october": "683.47"
+        "april": "673.01",
+        "july": "679.70",
+        "october": "683.37"
       },
       "2022": {
         "october": "616",
         "july": "623",
-        "april": "613",
-        "january": "576"
+        "april": "614",
+        "january": "577"
       },
       "2021": {
-        "october": "556",
+        "october": "557",
         "july": "538",
         "april": "510",
         "january": "483"
       },
       "2020": {
-        "october": "471",
-        "july": "461",
-        "april": "453",
+        "october": "472",
+        "july": "462",
+        "april": "454",
         "january": "449"
       },
       "2019": {
-        "october": "443",
+        "october": "444",
         "july": "440",
         "april": "434",
         "january": "427"
       },
       "2018": {
-        "october": "422",
+        "october": "423",
         "july": "421",
         "april": "416",
-        "january": "408"
+        "january": "409"
       },
       "2017": {
         "october": "403",
-        "july": "399",
-        "april": "393",
+        "july": "400",
+        "april": "394",
         "january": "385"
       },
       "2016": {
         "october": "382",
         "july": "379",
-        "april": "372",
+        "april": "373",
         "january": "366"
       },
       "2015": {
-        "october": "362",
-        "july": "359",
-        "april": "354",
+        "october": "363",
+        "july": "360",
+        "april": "355",
         "january": "349"
       },
       "2014": {
         "october": "345",
         "july": "342",
-        "april": "337",
+        "april": "338",
         "january": "331"
       },
       "2013": {
         "october": "328",
         "july": "326",
         "april": "321",
-        "january": "316"
+        "january": "317"
       },
       "2012": {
         "october": "315",
-        "july": "312",
+        "july": "313",
         "april": "308",
         "january": "310"
       },
       "2011": {
         "october": "313",
-        "july": "311",
+        "july": "312",
         "april": "309",
         "january": "315"
       },
@@ -4428,51 +4430,51 @@
       },
       "2009": {
         "october": "330",
-        "july": "332",
-        "april": "341",
-        "january": "350"
+        "july": "333",
+        "april": "342",
+        "january": "351"
       },
       "2008": {
         "october": "348",
         "july": "351",
-        "april": "362",
+        "april": "363",
         "january": "372"
       },
       "2007": {
         "october": "375",
         "july": "376",
         "april": "380",
-        "january": "380"
+        "january": "381"
       },
       "2006": {
         "october": "379",
         "july": "375",
         "april": "372",
-        "january": "368"
+        "january": "369"
       },
       "2005": {
-        "october": "362",
-        "july": "354",
+        "october": "363",
+        "july": "355",
         "april": "344",
-        "january": "333"
+        "january": "334"
       },
       "2004": {
         "october": "326",
         "july": "319",
-        "april": "307",
+        "april": "308",
         "january": "300"
       },
       "2003": {
-        "october": "295",
-        "july": "287",
+        "october": "296",
+        "july": "288",
         "april": "283",
-        "january": "279"
+        "january": "280"
       },
       "2002": {
         "october": "276",
         "july": "272",
         "april": "267",
-        "january": "262"
+        "january": "263"
       },
       "2001": {
         "october": "259",

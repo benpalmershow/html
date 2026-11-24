@@ -1317,9 +1317,9 @@ games:
   game_time_iso: '2026-11-24T01:15:00Z'
   url: https://polymarket.com/sports/nfl/nfl-cin-was-2026-11-24
   polymarket_slug: nfl-cin-was-2026-11-24
-  CIN_win_odds: 72.5¢
-  WAS_win_odds: 27.5¢
-  lastUpdated: '2026-11-17T00:57:11.162368Z'
+  CIN_win_odds: 83.5¢
+  WAS_win_odds: 16.5¢
+  lastUpdated: '2026-11-24T02:33:27.366664Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     CIN_win_odds: 68.5¢
@@ -1342,6 +1342,9 @@ games:
   - timestamp: '2026-11-17T00:57:11.162368Z'
     CIN_win_odds: 72.5¢
     WAS_win_odds: 27.5¢
+  - timestamp: '2026-11-24T02:33:27.366664Z'
+    CIN_win_odds: 83.5¢
+    WAS_win_odds: 16.5¢
 - id: nfl-gb-la-2026-11-26
   week: 12
   away: GB

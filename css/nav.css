@@ -234,12 +234,8 @@ html.dark-mode .dark-mode-toggle-icon .moon-icon { opacity: 1; }
   .header-nav-link img { display: none; }
 }
 
-@media (forced-colors: active) {
-  .header-nav-link.active::after {
-    background: CanvasText;
-  }
-  .header-home img,
-  .dark-mode-toggle-icon {
-    border-color: CanvasText;
+@media (prefers-reduced-motion: reduce) {
+  .page-header::after {
+    transition: none;
   }
 }

@@ -2,7 +2,17 @@ name: Update NFL Odds
 
 on:
   schedule:
-    - cron: '0 6 * * *' # Run daily at 06:00 UTC
+    # Daily refresh of current-week odds (06:00 UTC)
+    - cron: '0 6 * * *'
+    # Live odds during game days (Thu/Sun/Mon UTC)
+    - cron: '*/5 0-5,16-23 * * 4'
+    - cron: '*/5 12-23 * * 0'
+    - cron: '*/5 0-5,16-23 * * 1'
+    # Post-game cleanup (Fri/Mon/Tue UTC)
+    - cron: '30 3-5 * * 5'
+    - cron: '30 0-2 * * 1'
+    - cron: '30 3-5 * * 1'
+    - cron: '30 3-5 * * 2'
   workflow_dispatch:
 
 permissions:
@@ -15,7 +25,7 @@ concurrency:
 jobs:
   update-odds:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -26,68 +36,70 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Determine current NFL week (from game dates in YAML)
-        id: week
-        run: |
-          # NFL season weeks (1-18) are NOT the ISO calendar week number.
-          # Derive the active NFL week from data/nfl-games.yml instead:
-          # the week containing today, or the nearest upcoming week if today
-          # falls between weeks. Games from all active weeks are refreshed.
-          WEEK=$(python3 - <<'PY'
-          import datetime, sys
-          from pathlib import Path
-          try:
-              import yaml
-          except ImportError:
-              print(); sys.exit(0)
-          doc = yaml.safe_load(Path("data/nfl-games.yml").read_text()) or {}
-          now = datetime.datetime.now(datetime.timezone.utc)
-          weeks = []
-          for g in doc.get("games", []):
-              w = g.get("week")
-              iso = g.get("game_time_iso")
-              if w is None or not iso:
-                  continue
-              try:
-                  dt = datetime.datetime.fromisoformat(iso.replace("Z", "+00:00"))
-              except ValueError:
-                  continue
-              weeks.append((w, dt))
-          if not weeks:
-              print(); sys.exit(0)
-          # Active weeks: those whose game window covers today, or the next
-          # upcoming week if today is before the next game window.
-          upcoming = [w for w, dt in weeks if dt >= now]
-          if upcoming:
-              print(max(upcoming))
-          else:
-              print(max(w for w, _ in weeks))
-          PY
-          )
-          echo "week=$WEEK" >> "$GITHUB_OUTPUT"
-          echo "NFL week: $WEEK"
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Fetch NFL odds for current week
+      - name: Determine current NFL week (from game dates in YAML)
+        id: week
+        run: |
+          WEEK=$(python3 - <<'PY'
+import datetime, sys
+from pathlib import Path
+try:
+    import yaml
+except ImportError:
+    print(); sys.exit(0)
+doc = yaml.safe_load(Path("data/nfl-games.yml").read_text()) or {}
+now = datetime.datetime.now(datetime.timezone.utc)
+weeks = []
+for g in doc.get("games", []):
+    w = g.get("week")
+    iso = g.get("game_time_iso")
+    if w is None or not iso:
+        continue
+    try:
+        dt = datetime.datetime.fromisoformat(iso.replace("Z", "+00:00"))
+    except ValueError:
+        continue
+    weeks.append((w, dt))
+if not weeks:
+    print(); sys.exit(0)
+upcoming = [w for w, dt in weeks if dt >= now]
+if upcoming:
+    print(max(upcoming))
+else:
+    print(max(w for w, _ in weeks))
+PY
+)
+          echo "week=$WEEK" >> "$GITHUB_OUTPUT"
+          echo "NFL week: $WEEK"
+
+      - name: Fetch NFL odds for current week (full refresh)
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}
 
-      - name: Validate odds (custom script if present)
+      - name: Fetch live odds for games in gametime window
+        run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }} --mode live
+        continue-on-error: true
+
+      - name: Validate odds markets exist
         run: |
           if [ -f scripts/validate-nfl-odds.py ]; then
-            python3 scripts/validate-nfl-odds.py
+            python3 scripts/validate-nfl-odds.py --week ${{ steps.week.outputs.week }}
           else
-            echo "No custom validation script found, skipping."
+            echo "No validation script found, skipping."
           fi
+
+      - name: Apply NFL YAML to financials-data.json
+        run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }} --replace-completed
 
       - name: Validate merged data (JSON/YAML + targeted NFL/site checks)
         run: |
@@ -95,17 +107,29 @@ jobs:
           python3 -c "import yaml; yaml.safe_load(open('data/nfl-games.yml', encoding='utf-8'))"
           python3 scripts/validate_nfl_data.py
 
-      - name: Apply NFL YAML (weekly)
-        run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }} --replace-completed
-
       - name: Validate final site state
         run: node scripts/validate-site.js
+
+      - name: Record fetch health
+        if: always()
+        run: |
+          STATUS="${{ job.status }}"
+          case "$STATUS" in
+            success) STATUS=ok ;;
+            failure|cancelled) STATUS=failed ;;
+            skipped) STATUS=skipped ;;
+          esac
+          python3 scripts/update_fetch_status.py \
+            --workflow update-nfl-odds \
+            --status "$STATUS" \
+            --changes 0 \
+            --notes "NFL odds refresh for week ${{ steps.week.outputs.week }}"
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/nfl-games.yml json/financials-data.json
+          git add data/nfl-games.yml json/financials-data.json json/fetch-status.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

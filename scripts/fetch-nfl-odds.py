@@ -23,13 +23,10 @@ totals, are ignored.
 """
 
 import argparse
-import json
 import os
 import random
 import time
 import urllib.error
-import urllib.parse
-import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -39,53 +36,19 @@ except ImportError:
     print("PyYAML is required. Install with: pip install pyyaml")
     raise SystemExit(1)
 
+from polymarket_utils import (
+    fetch_event,
+    find_moneyline,
+    parse_game_time_iso,
+    price_to_cents,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "data" / "nfl-games.yml"
-GAMMA_BASE = "https://gamma-api.polymarket.com/events"
-
-
-def fetch_event(slug, max_retries=3):
-    """Fetch event data with retry logic for transient failures."""
-    url = f"{GAMMA_BASE}?slug={urllib.parse.quote(slug)}"
-    req = urllib.request.Request(url, headers={"User-Agent": "howdy-stranger-nfl-odds/1.0"})
-
-    for attempt in range(max_retries):
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except (urllib.error.URLError, urllib.error.HTTPError) as e:
-            if attempt == max_retries - 1:
-                raise
-            # Exponential backoff: 1s, 2s, 4s
-            wait_time = 2 ** attempt
-            print(f"  [retry {attempt + 1}/{max_retries}] waiting {wait_time}s before retry...")
-            time.sleep(wait_time)
-        except Exception as e:
-            print(f"  Unexpected error: {e}")
-            raise
-
-
-def price_to_cents(price_str):
-    """0.385 -> '38.5¢' ; 0.4 -> '40.0¢'."""
-    try:
-        value = float(price_str)
-    except (TypeError, ValueError):
-        return None
-    cents = round(value * 100, 1)
-    return f"{cents:.1f}¢"
-def parse_game_time_iso(value):
-    if not value:
-        return None
-    try:
-        if value.endswith('Z'):
-            value = value[:-1] + '+00:00'
-        return datetime.fromisoformat(value)
-    except Exception:
-        return None
 
 
 def is_live_window(game, now, pre_minutes=15, post_hours=4):
-    gt = parse_game_time_iso(game.get('game_time_iso'))
+    gt = parse_game_time_iso(game.get("game_time_iso"))
     if gt is None:
         return True
     if gt.tzinfo is None:
@@ -96,12 +59,12 @@ def is_live_window(game, now, pre_minutes=15, post_hours=4):
 
 
 def is_recently_updated(game, now, max_age_min=3):
-    lu = game.get('lastUpdated')
+    lu = game.get("lastUpdated")
     if not lu:
         return False
     try:
-        if lu.endswith('Z'):
-            lu_dt = datetime.fromisoformat(lu[:-1] + '+00:00')
+        if lu.endswith("Z"):
+            lu_dt = datetime.fromisoformat(lu[:-1] + "+00:00")
         else:
             lu_dt = datetime.fromisoformat(lu)
         if lu_dt.tzinfo is None:
@@ -109,60 +72,6 @@ def is_recently_updated(game, now, max_age_min=3):
         return (now - lu_dt) < timedelta(minutes=max_age_min)
     except Exception:
         return False
-
-
-
-def _parse_json_list(value):
-    """Polymarket returns list fields as JSON-encoded strings, e.g.
-    outcomes='["Patriots", "Seahawks"]' and outcomePrices='["0.385", "0.615"]'.
-    Parse both transparently."""
-    if isinstance(value, list):
-        return value
-    if isinstance(value, str):
-        try:
-            parsed = json.loads(value)
-            if isinstance(parsed, list):
-                return parsed
-        except (ValueError, TypeError):
-            pass
-    return []
-
-
-def _names_match(outcome, name, full=None):
-    o = outcome.strip().lower()
-    n = name.strip().lower()
-    if o == n:
-        return True
-    if full:
-        f = full.strip().lower()
-        if o == f or o in f.split():
-            return True
-    return False
-
-
-def find_moneyline(event, away_name, home_name, away_full=None, home_full=None):
-    """Return (away_price, home_price) from the full-game moneyline market, or None.
-
-    The full-game moneyline is the market with sportsMarketType == "moneyline"
-    (quarter/half moneylines are suffixed q1_moneyline, q2_moneyline, etc.).
-    """
-    for m in event.get("markets") or []:
-        if m.get("sportsMarketType") != "moneyline":
-            continue
-        outcomes = _parse_json_list(m.get("outcomes"))
-        prices = _parse_json_list(m.get("outcomePrices"))
-        if len(outcomes) != 2 or len(prices) != 2:
-            continue
-        away_idx = home_idx = None
-        for i, outcome in enumerate(outcomes):
-            if _names_match(outcome, away_name, away_full):
-                away_idx = i
-            elif _names_match(outcome, home_name, home_full):
-                home_idx = i
-        if away_idx is None or home_idx is None or away_idx == home_idx:
-            continue
-        return prices[away_idx], prices[home_idx]
-    return None
 
 
 def main():
@@ -189,6 +98,8 @@ def main():
     selected = 0
     skipped_live = 0
     skipped_recent = 0
+    missing_slug = 0
+    fetch_failures = 0
     for game in games:
         game_id = game.get("id")
         if args.game_id and game_id != args.game_id:
@@ -206,15 +117,18 @@ def main():
         slug = game.get("polymarket_slug")
         if not slug:
             print(f"[{game_id}] no polymarket_slug; skipping")
+            missing_slug += 1
             continue
 
         try:
             events = fetch_event(slug)
         except (urllib.error.URLError, urllib.error.HTTPError) as e:
             print(f"[{game_id}] API error for slug {slug} (after retries): {e}")
+            fetch_failures += 1
             continue
         except Exception as e:
             print(f"[{game_id}] unexpected error: {e}")
+            fetch_failures += 1
             continue
 
         # Rate limiting: wait small random delay between API calls to avoid rate limits
@@ -276,14 +190,14 @@ def main():
         return 0
 
     if updated == 0:
-        print(f"No NFL odds changes for {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent}); skipping write")
+        print(f"No NFL odds changes for {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent}; missing_slug={missing_slug}; fetch_failures={fetch_failures}); skipping write")
         return 0
 
     from fetch_utils import atomic_write_text
     rendered = yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=1000)
     atomic_write_text(YAML_PATH, rendered)
 
-    print(f"Refreshed odds for {updated} of {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent})")
+    print(f"Refreshed odds for {updated} of {selected} selected game(s) in {YAML_PATH} (mode={args.mode}; skipped_live={skipped_live}; skipped_recent={skipped_recent}; missing_slug={missing_slug}; fetch_failures={fetch_failures})")
     return 0
 
 

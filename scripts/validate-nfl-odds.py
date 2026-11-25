@@ -13,11 +13,8 @@ Without --week, all games in the YAML are validated.
 """
 
 import argparse
-import json
 import sys
-import urllib.error
-import urllib.parse
-import urllib.request
+import time
 from pathlib import Path
 
 try:
@@ -26,70 +23,10 @@ except ImportError:
     print("PyYAML is required. Install with: pip install pyyaml")
     raise SystemExit(1)
 
+from polymarket_utils import fetch_event, find_moneyline
+
 ROOT = Path(__file__).resolve().parent.parent
 YAML_PATH = ROOT / "data" / "nfl-games.yml"
-GAMMA_BASE = "https://gamma-api.polymarket.com/events"
-
-
-def fetch_event(slug, max_retries=3):
-    url = f"{GAMMA_BASE}?slug={urllib.parse.quote(slug)}"
-    req = urllib.request.Request(url, headers={"User-Agent": "howdy-stranger-nfl-validate/1.0"})
-    last_err = None
-    for attempt in range(max_retries):
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except (urllib.error.URLError, urllib.error.HTTPError) as e:
-            last_err = e
-            if attempt < max_retries - 1:
-                import time
-                time.sleep(2 ** attempt)
-    raise last_err
-
-
-def _parse_json_list(value):
-    if isinstance(value, list):
-        return value
-    if isinstance(value, str):
-        try:
-            parsed = json.loads(value)
-            if isinstance(parsed, list):
-                return parsed
-        except (ValueError, TypeError):
-            pass
-    return []
-
-
-def _names_match(outcome, name, full=None):
-    o = outcome.strip().lower()
-    n = name.strip().lower()
-    if o == n:
-        return True
-    if full:
-        f = full.strip().lower()
-        if o == f or o in f.split():
-            return True
-    return False
-
-
-def find_moneyline(event, away_name, home_name, away_full=None, home_full=None):
-    for m in event.get("markets") or []:
-        if m.get("sportsMarketType") != "moneyline":
-            continue
-        outcomes = _parse_json_list(m.get("outcomes"))
-        prices = _parse_json_list(m.get("outcomePrices"))
-        if len(outcomes) != 2 or len(prices) != 2:
-            continue
-        away_idx = home_idx = None
-        for i, outcome in enumerate(outcomes):
-            if _names_match(outcome, away_name, away_full):
-                away_idx = i
-            elif _names_match(outcome, home_name, home_full):
-                home_idx = i
-        if away_idx is None or home_idx is None or away_idx == home_idx:
-            continue
-        return prices[away_idx], prices[home_idx]
-    return None
 
 
 def main():
@@ -123,11 +60,8 @@ def main():
         checked += 1
         try:
             events = fetch_event(slug)
-        except (urllib.error.URLError, urllib.error.HTTPError) as e:
-            failures.append(f"[{game_id}] API error for slug {slug}: {e}")
-            continue
         except Exception as e:
-            failures.append(f"[{game_id}] unexpected error: {e}")
+            failures.append(f"[{game_id}] API error for slug {slug}: {e}")
             continue
 
         if not events:
@@ -138,8 +72,7 @@ def main():
         if not found:
             failures.append(f"[{game_id}] moneyline market not found (away={away_pm}, home={home_pm})")
 
-    import time
-    time.sleep(0.3)
+        time.sleep(0.3)
 
     if failures:
         print(f"Validation FAILED: {len(failures)} issue(s) across {checked} game(s):")

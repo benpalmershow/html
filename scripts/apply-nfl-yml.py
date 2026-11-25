@@ -338,17 +338,14 @@ def main():
 
     remove_ids = set(incomplete_odds_ids)
     if args.week is not None:
-        eligible_ids = {indicator["id"] for indicator in new_indicators}
-        remove_ids.update(
-            indicator.get("id")
-            for indicator in indices
-            if indicator.get("category") == DEFAULT_CATEGORY
-            and indicator.get("week") == args.week
-            and indicator.get("id")
-            and indicator.get("id") not in eligible_ids
-        )
+        # NOTE: deliberately do NOT remove week-N indicators that are missing
+        # from the YAML here. The YAML may be incomplete (discovery is
+        # best-effort), so removing them would delete games that simply haven't
+        # been added yet. Only --replace-completed removes games.
+        pass
 
     if args.replace_completed:
+        removed_completed = 0
         completed_ids = []
         for indicator in indices:
             if indicator.get("category") == DEFAULT_CATEGORY:

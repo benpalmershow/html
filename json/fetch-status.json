@@ -1,0 +1,96 @@
+{
+  "generated": "2026-11-25T22:20:00Z",
+  "note": "Fetch-health registry. Each scheduled fetch workflow records its last run via scripts/update_fetch_status.py so fetches remain observable (timely) and only commit when data changed (relevant). Update this file when adding/removing workflows.",
+  "workflows": {
+    "fetch-13f": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "13F filings from SEC EDGAR; aggressive mid-Feb/May/Aug/Nov"
+    },
+    "fetch-adp": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "ADP Private Employment; first Wednesday of month"
+    },
+    "fetch-bls": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "BLS Jobs/CPI/PPI/JOLTS; excludes PPI (sourced via FRED PPIFIS)"
+    },
+    "fetch-census": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "Census FT-900 trade/new-orders/construction-spending"
+    },
+    "fetch-earnings": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "Earnings (yfinance) + SEC quarterly; ANT manual entry preserved"
+    },
+    "fetch-fec": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "FEC candidate totals; quarterly deadlines"
+    },
+    "fetch-fred-daily": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "FRED daily series; hourly"
+    },
+    "fetch-fred-monthly": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "FRED monthly series incl. Case-Shiller, FHFA HPI, New Home Sales (replaces the three removed dedicated workflows)"
+    },
+    "fetch-fred-weekly": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "FRED weekly series (Jobless Claims, Mortgage Rate, Petroleum Exports)"
+    },
+    "fetch-other-indicators": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "Polymarket/Kalshi prediction market indicators; hourly"
+    },
+    "fetch-treasury": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "Treasury Fiscal Data API (debt, MTS, interest, tariffs); hourly"
+    },
+    "fetch-usda": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "USDA NASS commodity prices; monthly around 5th"
+    },
+    "fetch-world-cup": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "World Cup scores; every 10 min during June-July tournament window"
+    },
+    "update-nfl-odds": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "NFL odds refresh (daily + game-day + post-game); consolidated from update-nfl-odds / live / postgame"
+    },
+    "update-modern-web-guidance": {
+      "lastRun": null,
+      "status": null,
+      "changes": null,
+      "notes": "modern-web-guidance skill update; weekly Mondays"
+    }
+  }
+}

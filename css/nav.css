@@ -22,6 +22,29 @@
   max-width: 100%;
   /* needed so absolute .header-nav centers against the full bar */
   isolation: isolate;
+  /* State-aware sticky header: transform when actually stuck (progressive enhancement) */
+  container-type: scroll-state;
+  container-name: page-header;
+  overflow-anchor: none;
+}
+
+/* Shadow overlay revealed only when the header is stuck */
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -1px;
+  block-size: 1px;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--text-primary) 18%, transparent), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+@container page-header scroll-state(stuck: top) {
+  .page-header::after {
+    opacity: 1;
+  }
 }
 
 /* ── Logo ── */
@@ -211,9 +234,12 @@ html.dark-mode .dark-mode-toggle-icon .moon-icon { opacity: 1; }
   .header-nav-link img { display: none; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .dark-mode-toggle-icon .sun-icon,
-  .dark-mode-toggle-icon .moon-icon,
-  .dark-mode-toggle-icon,
-  .header-home img { transition: none; }
+@media (forced-colors: active) {
+  .header-nav-link.active::after {
+    background: CanvasText;
+  }
+  .header-home img,
+  .dark-mode-toggle-icon {
+    border-color: CanvasText;
+  }
 }

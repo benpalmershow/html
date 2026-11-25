@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T22:38:32.830165Z",
+  "lastUpdated": "2026-11-25T23:50:10Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -596,7 +596,7 @@
         "august": "87.03",
         "september": "97.18",
         "october": "107.56",
-        "november": "90"
+        "november": "82"
       },
       "2025": {
         "january": "75.74",
@@ -616,7 +616,7 @@
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (WTI)",
-      "lastUpdated": "2026-11-14T12:47:34Z",
+      "lastUpdated": "2026-11-25T23:50:10Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILWTICO",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -639,13 +639,13 @@
         "august": "89.75",
         "september": "115.91",
         "october": "120.15",
-        "november": "93"
+        "november": "92"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Oil (Brent)",
-      "lastUpdated": "2026-11-18T20:56:51Z",
+      "lastUpdated": "2026-11-25T23:50:10Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
       "source_url": "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_m.htm",
@@ -4304,13 +4304,13 @@
         "august": "2.90",
         "september": "3.02",
         "october": "2.42",
-        "november": "3.1"
+        "november": "3.3"
       },
       "category": "Commodities",
       "color": "#f39c12",
       "agency": "FRED",
       "name": "Natural Gas",
-      "lastUpdated": "2026-11-18T20:56:51Z",
+      "lastUpdated": "2026-11-25T23:50:10Z",
       "releaseDay": 0,
       "url": "https://fred.stlouisfed.org/series/DHHNGSP",
       "change": "",

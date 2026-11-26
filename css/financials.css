@@ -199,21 +199,6 @@
 .new-badge, .week-badge { background: var(--color-secondary); }
 .latest-month-badge, .game-final-badge { background: color-mix(in oklab, var(--color-primary), white 30%); }
 
-/* Week badge as background overlay for Prediction Markets cards */
-.category[data-category="Prediction Markets"] .indicator {
-    position: relative;
-}
-.category[data-category="Prediction Markets"] .week-badge {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    z-index: 2;
-    padding: 2px 6px;
-    font-size: 0.55rem;
-    border-radius: 4px;
-    box-shadow: var(--shadow-card);
-}
-
 .badge-link { cursor: pointer; text-decoration: none; color: inherit; }
 .badge-link:hover { opacity: 0.85; }
 

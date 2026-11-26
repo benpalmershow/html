@@ -2,9 +2,40 @@ name: Fetch Earnings
 
 on:
   schedule:
-    # Earnings seasons: Jan, Apr, Jul, Oct (heavy 2-4 weeks after quarter end)
-    # Aggressive every 2 hours weekdays during earnings months; weekly otherwise
-    - cron: '0 */2 * 1,4,7,10 1-5'
+    # Generated from actual per-stock nextEarningsDate in json/earnings.json by
+    # scripts/gen-earnings-cron.py. Polls every 5 min (GitHub cron minimum, so
+    # "immediate" is ~5 min) only on dates a tracked stock actually reports,
+    # covering pre-market (~4-10 ET = 08-14 UTC) and after-close (~16-20 ET =
+    # 20-23 UTC same day + 00-05 UTC next day). Re-run the script and paste the
+    # output here whenever nextEarningsDate rolls forward after a report.
+    # 2026-12-01
+    - cron: '*/5 8-14,20-23 1 12 *'
+    - cron: '*/5 0-5 2 12 *'
+    # 2027-01-13
+    - cron: '*/5 8-14,20-23 13 1 *'
+    - cron: '*/5 0-5 14 1 *'
+    # 2027-01-27
+    - cron: '*/5 8-14,20-23 27 1 *'
+    - cron: '*/5 0-5 28 1 *'
+    # 2027-02-03
+    - cron: '*/5 8-14,20-23 3 2 *'
+    - cron: '*/5 0-5 4 2 *'
+    # 2027-02-09
+    - cron: '*/5 8-14,20-23 9 2 *'
+    - cron: '*/5 0-5 10 2 *'
+    # 2027-02-24
+    - cron: '*/5 8-14,20-23 24 2 *'
+    - cron: '*/5 0-5 25 2 *'
+    # 2027-02-25
+    - cron: '*/5 8-14,20-23 25 2 *'
+    - cron: '*/5 0-5 26 2 *'
+    # 2027-03-02
+    - cron: '*/5 8-14,20-23 2 3 *'
+    - cron: '*/5 0-5 3 3 *'
+    # 2027-03-31
+    - cron: '*/5 8-14,20-23 31 3 *'
+    - cron: '*/5 0-5 1 4 *'
+    # Weekly fallback when no tracked stock reports
     - cron: '0 6 * * 1'
   workflow_dispatch:          # Manual trigger from GitHub UI
 
@@ -30,6 +61,15 @@ jobs:
 
       - name: Install dependencies
         run: pip install yfinance pandas lxml requests
+
+      - name: Verify cron schedule matches earnings calendar
+        run: |
+          python3 scripts/gen-earnings-cron.py | grep -E '^[[:space:]]*- cron:' > /tmp/expected-cron.txt
+          grep -E '^[[:space:]]*- cron:' .github/workflows/fetch-earnings.yml > /tmp/actual-cron.txt
+          if ! diff -u /tmp/actual-cron.txt /tmp/expected-cron.txt; then
+            echo "::warning::nextEarningsDate has rolled forward. Regenerate the schedule block:"
+            echo "::warning::  python3 scripts/gen-earnings-cron.py"
+          fi
 
       - name: Preserve ANT manual entry
         run: |

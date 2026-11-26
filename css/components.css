@@ -633,9 +633,13 @@ html.dark-mode .hero-link.secondary:focus-visible {
   padding: clamp(2rem, 6vw, 5rem) var(--content-padding);
 }
 
-/* Wordmark: initial opacity set inline in index.html before first paint */
+/* Wordmark: initial opacity set inline in index.html before first paint.
+   The one showcase of a display face (Crimson Pro, loaded via fonts.css);
+   font-size-adjust keeps the Georgia fallback x-height matched during the
+   swap so the wordmark doesn't shift. */
 .hero-wordmark {
-  font-family: var(--font-display);
+  font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+  font-size-adjust: from-font;
   font-size: clamp(4rem, 16vw, 10rem);
   line-height: 1;
   letter-spacing: -0.02em;

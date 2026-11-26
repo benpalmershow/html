@@ -658,6 +658,12 @@ latestDataHtml = `
             if (entries) return entries.map(([name, val]) => (
                 `<span class="commodity-part"><span class="commodity-name">${name}</span><span class="commodity-value">${val}</span></span>`
             )).join('');
+            if (indicator.name === 'GDP') {
+                const pct = parseFloat(String(value));
+                if (!Number.isNaN(pct)) {
+                    return `<span style="color: ${getGdpGrowthColor(pct)}">${String(value || '')}</span>`;
+                }
+            }
             return String(value || '');
         };
 
@@ -1441,6 +1447,18 @@ function getCpiYoyColor(pct) {
     return '#b91c1c';                       // dark red - very high
 }
 
+/* Real GDP growth (SAAR) color scale: contraction is blue, weak growth green,
+   accelerating growth warms through yellow/orange to red for very hot prints. */
+function getGdpGrowthColor(pct) {
+    if (pct < 0) return '#3b82f6';         // blue - contraction
+    if (pct < 2) return '#22c55e';         // green - weak
+    if (pct < 3) return '#84cc16';         // lime-green
+    if (pct < 4) return '#eab308';         // yellow
+    if (pct < 5) return '#f97316';         // orange
+    if (pct < 6) return '#ef4444';         // red
+    return '#b91c1c';                       // dark red - very hot
+}
+
 function hasInlineMonthlyChange(indicator) {
     return INLINE_CHANGE_IDS.has(indicator.id);
 }
@@ -1565,6 +1583,24 @@ function createIndicatorCard(indicator, MONTHS, MONTH_LABELS, DATA_ATTRS) {
     return buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, changeIndicators, latestDataHtml, historyDataHtml, hasHistory, sparklineValues, latestMonthTag });
 }
 
+function collectQuarterlyPoints(indicator) {
+    const QUARTERS = ['q1', 'q2', 'q3', 'q4'];
+    const yearKeys = Object.keys(indicator).filter(key => /^\d{4}$/.test(key)).map(Number).sort((a, b) => b - a);
+    const points = [];
+    for (const year of yearKeys) {
+        for (let i = QUARTERS.length - 1; i >= 0; i--) {
+            const quarter = QUARTERS[i];
+            const value = indicator[year] ? indicator[year][quarter] : undefined;
+            if (!isValidData(value)) continue;
+            const numeric = extractNumericValue(value);
+            if (numeric === null) continue;
+            points.push({ year, quarter, numeric });
+        }
+    }
+    points.sort((a, b) => (b.year - a.year) || (QUARTERS.indexOf(b.quarter) - QUARTERS.indexOf(a.quarter)));
+    return points;
+}
+
 function buildChangeIndicators(momChange, yoyChange, indicator) {
     let result = '';
     if (indicator.category === 'Earnings') {
@@ -1621,6 +1657,20 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
             const momChangeValue = momChange.percentChange;
             const momInfo = formatChangeIndicator(momChangeValue);
             result += buildChangeMetricButton('MoM', momInfo, 'Month over Month');
+        }
+        return result;
+    }
+    const quarterlyPoints = collectQuarterlyPoints(indicator);
+    if (quarterlyPoints.length >= 2) {
+        // Quarterly series (e.g. real GDP) already store a growth rate, so the
+        // QoQ/YoY buttons show the comparison quarters' rates rather than a
+        // percent change between rates (which would be meaningless).
+        const latest = quarterlyPoints[0];
+        const prevQuarter = quarterlyPoints[1];
+        result += buildChangeMetricButton('QoQ', formatChangeIndicator(prevQuarter.numeric), 'Previous quarter growth (SAAR)');
+        const sameQuarterLastYear = quarterlyPoints.find(p => p.year === latest.year - 1 && p.quarter === latest.quarter);
+        if (sameQuarterLastYear) {
+            result += buildChangeMetricButton('YoY', formatChangeIndicator(sameQuarterLastYear.numeric), 'Year-ago quarter growth (SAAR)');
         }
         return result;
     }

@@ -101,7 +101,7 @@ INDICATOR_MAP = {
     "U.S. Petroleum Exports": "PAUELS",  # weekly
     "Oil (Brent)": "DCOILBRENTEU",  # spot; not SA
     "Personal Consumption Expenditures (PCE)": "PCE",  # SA in level? PCE is nominal; check - but keep existing series; values stored as formatted
-"GDP": "GDP",  # nominal GDP in billions, SA quarterly, BEA via FRED
+"GDP": "A191RL1Q225SBEA",  # Real GDP, percent change from preceding period, SAAR quarterly, BEA via FRED
     "Dollar Value Index": "DTWEXBGS",  # daily index, not SA
     "Lumber (PPI)": "WPU081",  # PPI by Commodity: Lumber
 }
@@ -125,9 +125,9 @@ WEEKLY_SERIES = {"Jobless Claims"}
 # Quarterly series where the JSON stores quarter keys (q1..q4)
 QUARTERLY_SERIES = {"GDP"}
 # Indicators that need billions-style formatting (comma + "B" suffix)
-BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)", "GDP"}
+BILLIONS_INDICATORS = {"Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in millions and need /1000 for billions formatting
-MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)", "GDP"}
+MILLIONS_INDICATORS = {"Monthly Retail Sales", "Personal Consumption Expenditures (PCE)"}
 # Indicators whose FRED values are in thousands and need *1000 before formatting
 THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
 
@@ -136,7 +136,7 @@ THOUSANDS_INDICATORS = {"New Home Sales", "Housing Starts", "Building Permits"}
 # decimals) would drop meaningful precision for large indicators like PCE.
 DEFAULT_DECIMALS = {
     "Personal Consumption Expenditures (PCE)": 1,
-    "GDP": 2,
+    "GDP": 1,
     "Affordability Index": 1,
     "Case-Shiller National Home Price Index": 1,
     "PPI": 3,

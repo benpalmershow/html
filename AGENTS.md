@@ -68,6 +68,9 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 - World Cup automation:
   - Data fetcher: `scripts/fetch_world_cup.py` -> `json/world-cup.json`
   - Scheduled updater: `.github/workflows/fetch-world-cup.yml`
+- Earnings automation:
+  - Fetcher: `scripts/fetch_earnings.py` (yfinance) + `scripts/fetch_sec_quarterly.py` (SEC EDGAR) -> `json/earnings.json`
+  - Scheduled updater: `.github/workflows/fetch-earnings.yml` (5-min poll during Jan/Apr/Jul/Oct release windows, weekly otherwise)
 
 ## Project-specific guardrails
 - Do not change these without explicit approval:
@@ -82,9 +85,3 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 - Article bodies live in `article/**/*.md`; the browser renders them, so never hand-edit rendered article output.
 - Do not delete existing entries from JSON content files unless explicitly instructed.
 - Writing style for journal/posts: avoid em dashes in prose; use a spaced hyphen instead.
-- **ANT (Anthropic) earnings card protection**:
-  - ANT is manually sourced from SEC S-1 filing, not available via yfinance
-  - `.github/workflows/fetch-earnings.yml` backs up and restores the ANT entry
-  - `scripts/fetch_earnings.py` skips ANT symbol during yfinance fetch
-  - Do not remove ANT from `json/earnings-tickers.json` (workflow auto-adds it if missing)
-  - To update ANT data: manually edit `json/earnings.json` quarterlyFinancials entry with new S-1 fields

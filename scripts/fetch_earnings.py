@@ -7,12 +7,13 @@ Writes output to json/earnings.json for downstream consumption.
 import json
 import logging
 import os
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import yfinance as yf  # type: ignore
 import pandas as pd  # type: ignore
+
+from fetch_utils import merge_by_key
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -37,23 +38,6 @@ def load_tickers():
 
 
 TICKERS = load_tickers()
-
-# Be polite to Yahoo: pause between tickers and retry transient failures.
-THROTTLE_SECONDS = float(os.environ.get("EARNINGS_THROTTLE", "1.5"))
-RETRY_ATTEMPTS = int(os.environ.get("EARNINGS_RETRIES", "3"))
-
-
-def with_retry(fn, label):
-    """Call fn() with linear backoff; return None on persistent failure."""
-    for attempt in range(1, RETRY_ATTEMPTS + 1):
-        try:
-            return fn()
-        except Exception as e:
-            if attempt == RETRY_ATTEMPTS:
-                logger.warning(f"{label}: giving up after {attempt} attempts: {e}")
-                return None
-            time.sleep(attempt)
-    return None
 
 
 def safe_num(val):
@@ -199,87 +183,94 @@ def fetch_ticker_data(symbol):
     }
 
     # Company metadata
-    info = with_retry(lambda: t.info or {}, f"{symbol} metadata")
-    if info is not None:
+    try:
+        info = t.info or {}
         result["company"] = info.get("longName") or info.get("shortName", symbol)
         result["sector"] = info.get("sector", "")
         result.update(fetch_info_metrics(info))
-    else:
+    except Exception as e:
+        logger.warning(f"{symbol}: metadata fetch failed: {e}")
         result["company"] = symbol
 
     # Price history (12 months) for charting; last close doubles as latest price.
-    price_hist = with_retry(lambda: t.history(period="12mo"), f"{symbol} price history")
-    if price_hist is not None and not price_hist.empty:
-        result["latestPrice"] = safe_num(price_hist["Close"].iloc[-1])
-        price_history = []
-        for date, row in price_hist.iterrows():
-            price_history.append({
-                "date": pd.Timestamp(date).strftime("%Y-%m-%d"),
-                "close": safe_num(row["Close"]),
-            })
-        result["priceHistory"] = price_history
+    try:
+        price_hist = t.history(period="12mo")
+        if not price_hist.empty:
+            result["latestPrice"] = safe_num(price_hist["Close"].iloc[-1])
+            price_history = []
+            for date, row in price_hist.iterrows():
+                price_history.append({
+                    "date": pd.Timestamp(date).strftime("%Y-%m-%d"),
+                    "close": safe_num(row["Close"]),
+                })
+            result["priceHistory"] = price_history
+    except Exception as e:
+        logger.warning(f"{symbol}: price history fetch failed: {e}")
 
     # Earnings dates: one fetch feeds both the next date and recent history.
-    dates_df = with_retry(lambda: getattr(t, "earnings_dates", None), f"{symbol} earnings_dates")
-    if dates_df is None:
-        dates_df = getattr(t, "earnings_history", None)
+    try:
+        dates_df = getattr(t, "earnings_dates", None)
+        if dates_df is None:
+            dates_df = getattr(t, "earnings_history", None)
 
-    if dates_df is not None and not dates_df.empty:
-        now = pd.Timestamp.now(tz="UTC")
-        if getattr(dates_df.index, "tz", None) is None:
-            now = now.tz_localize(None)
+        if dates_df is not None and not dates_df.empty:
+            now = pd.Timestamp.now(tz="UTC")
+            if getattr(dates_df.index, "tz", None) is None:
+                now = now.tz_localize(None)
 
-        future = dates_df[dates_df.index > now]
-        if not future.empty:
-            next_dt = future.index[0]
-            result["nextEarningsDate"] = next_dt.strftime("%Y-%m-%d")
-            row = future.iloc[0]
-            est = row.get("EPS Estimate")
-            rev_est = row.get("Revenue Estimate")
-            if est is not None and not pd.isna(est):
-                result["estimatedEPS"] = safe_num(est)
-            if rev_est is not None and not pd.isna(rev_est):
-                result["revenueEstimate_M"] = safe_millions(rev_est)
+            future = dates_df[dates_df.index > now]
+            if not future.empty:
+                next_dt = future.index[0]
+                result["nextEarningsDate"] = next_dt.strftime("%Y-%m-%d")
+                row = future.iloc[0]
+                est = row.get("EPS Estimate")
+                rev_est = row.get("Revenue Estimate")
+                if est is not None and not pd.isna(est):
+                    result["estimatedEPS"] = safe_num(est)
+                if rev_est is not None and not pd.isna(rev_est):
+                    result["revenueEstimate_M"] = safe_millions(rev_est)
 
-        # Recent earnings history (last 4 reported quarters)
-        past = dates_df[dates_df.index <= now]
-        quarters = []
-        for idx, row in past.head(4).iterrows():
-            q = {"reportedDate": pd.Timestamp(idx).strftime("%Y-%m-%d")}
+            # Recent earnings history (last 4 reported quarters)
+            past = dates_df[dates_df.index <= now]
+            quarters = []
+            for idx, row in past.head(4).iterrows():
+                q = {"reportedDate": pd.Timestamp(idx).strftime("%Y-%m-%d")}
 
-            act = row.get("Reported EPS")
-            est = row.get("EPS Estimate")
-            rev_act = row.get("Reported Revenue")
-            rev_est = row.get("Revenue Estimate")
-            surprise = row.get("Surprise(%)")
+                act = row.get("Reported EPS")
+                est = row.get("EPS Estimate")
+                rev_act = row.get("Reported Revenue")
+                rev_est = row.get("Revenue Estimate")
+                surprise = row.get("Surprise(%)")
 
-            if act is not None and not pd.isna(act):
-                q["actualEPS"] = safe_num(act)
-            if est is not None and not pd.isna(est):
-                q["estimatedEPS"] = safe_num(est)
-            if rev_act is not None and not pd.isna(rev_act):
-                q["revenueActual_M"] = safe_millions(rev_act)
-            if rev_est is not None and not pd.isna(rev_est):
-                q["revenueEstimate_M"] = safe_millions(rev_est)
-            if surprise is not None and not pd.isna(surprise):
-                q["surprisePercent"] = safe_num(surprise)
+                if act is not None and not pd.isna(act):
+                    q["actualEPS"] = safe_num(act)
+                if est is not None and not pd.isna(est):
+                    q["estimatedEPS"] = safe_num(est)
+                if rev_act is not None and not pd.isna(rev_act):
+                    q["revenueActual_M"] = safe_millions(rev_act)
+                if rev_est is not None and not pd.isna(rev_est):
+                    q["revenueEstimate_M"] = safe_millions(rev_est)
+                if surprise is not None and not pd.isna(surprise):
+                    q["surprisePercent"] = safe_num(surprise)
 
-            # Calculate surprise if missing
-            if (
-                q.get("actualEPS") is not None
-                and q.get("estimatedEPS") is not None
-                and "surprisePercent" not in q
-            ):
-                e = q["estimatedEPS"]
-                a = q["actualEPS"]
-                if e:
-                    q["surprisePercent"] = round(((a - e) / abs(e)) * 100, 1)
+                # Calculate surprise if missing
+                if (
+                    q.get("actualEPS") is not None
+                    and q.get("estimatedEPS") is not None
+                    and "surprisePercent" not in q
+                ):
+                    e = q["estimatedEPS"]
+                    a = q["actualEPS"]
+                    if e:
+                        q["surprisePercent"] = round(((a - e) / abs(e)) * 100, 1)
 
-            q["source"] = "Yahoo Finance"
-            quarters.append(q)
+                q["source"] = "Yahoo Finance"
+                quarters.append(q)
 
-        if quarters:
-            result["recentEarnings"] = quarters
+            if quarters:
+                result["recentEarnings"] = quarters
+    except Exception as e:
+        logger.warning(f"{symbol}: earnings dates fetch failed: {e}")
 
     # Note: Quarterly financials are now fetched from SEC EDGAR via fetch_sec_quarterly.py
     # This provides verifiable data from the primary source (SEC.gov) rather than yfinance
@@ -307,13 +298,19 @@ def main():
     }
 
     for symbol in TICKERS:
+        previous = existing_by_ticker.get(symbol, {})
         try:
             data = fetch_ticker_data(symbol)
-            previous = existing_by_ticker.get(symbol, {})
             # Preserve fields owned by other scripts/workflow steps.
             for key in ("quarterlyFinancials", "quarterlySource"):
                 if key in previous and key not in data:
                     data[key] = previous[key]
+            # Keep earnings history: replace matching quarters, retain older ones
+            # that have rolled out of the yfinance window.
+            if data.get("recentEarnings") and previous.get("recentEarnings"):
+                data["recentEarnings"] = merge_by_key(
+                    data["recentEarnings"], previous["recentEarnings"], "reportedDate"
+                )
             comparable_new = {k: v for k, v in data.items() if k != "fetchedAt"}
             comparable_old = {k: v for k, v in previous.items() if k != "fetchedAt"}
             if comparable_new == comparable_old and comparable_old:
@@ -335,10 +332,6 @@ def main():
                         "fetchedAt": now_iso,
                     }
                 )
-        finally:
-            # Be polite to Yahoo between tickers (skip after the last one).
-            if THROTTLE_SECONDS > 0 and symbol != TICKERS[-1]:
-                time.sleep(THROTTLE_SECONDS)
 
     if OUTPUT_FILE.exists():
         try:

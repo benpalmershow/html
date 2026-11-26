@@ -7,7 +7,7 @@ This provides verifiable data from the primary source (SEC.gov).
 
 import calendar
 import json
-from fetch_utils import atomic_write_json
+from fetch_utils import atomic_write_json, merge_by_key
 import logging
 import os
 import re
@@ -561,7 +561,11 @@ def main():
             for entry in existing_data.get("earnings", []):
                 if entry.get("ticker") == ticker:
                     if quarterly:
-                        entry["quarterlyFinancials"] = quarterly
+                        # Merge over history: replace matching quarters with the
+                        # latest filing data, keep older quarters already on file.
+                        entry["quarterlyFinancials"] = merge_by_key(
+                            quarterly, entry.get("quarterlyFinancials", []), "quarterEnd"
+                        )
                         entry["quarterlySource"] = "SEC EDGAR"
                         logger.info(f"  {ticker}: updated with {len(quarterly)} quarters from SEC")
                     else:

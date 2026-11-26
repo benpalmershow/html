@@ -49,3 +49,23 @@ def strip_keys(obj: Any, keys: set[str]) -> Any:
     if isinstance(obj, list):
         return [strip_keys(v, keys) for v in obj]
     return obj
+
+
+def merge_by_key(new_items: list[dict], old_items: list[dict], key: str) -> list[dict]:
+    """Merge freshly fetched records over historical ones by ``key``.
+
+    Newer values win for matching keys (outdated data is replaced), while old
+    records whose key is absent from ``new_items`` are preserved so important
+    history is not dropped when the fetcher only returns a rolling window.
+    The result is sorted by key descending (newest first).
+    """
+    merged: dict[str, dict] = {}
+    for item in old_items or []:
+        k = item.get(key)
+        if k:
+            merged[k] = item
+    for item in new_items or []:
+        k = item.get(key)
+        if k:
+            merged[k] = item
+    return sorted(merged.values(), key=lambda i: i.get(key, ""), reverse=True)

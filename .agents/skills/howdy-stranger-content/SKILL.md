@@ -102,6 +102,8 @@ The `journal-feed.js` script on `journal.html`:
 
 All economic indicators are centralized in `json/financials-data.json`.
 
+**Most indicators are auto-fetched** by `.github/workflows/fetch-all.yml` (FRED, BLS, Census, Treasury, USDA, ADP, Polymarket/Kalshi, Manheim, NAR PHSI, NAHB HMI). Do not hand-edit values for automated sources; they are updated on release day and committed by CI. Only manually update indicators that are paywalled/delayed with no public source (e.g., Conference Board, ISM, S&P Global). See `AGENTS.md` for the full list and the `SOURCE_REGISTRY` in `scripts/fetch_other_indicators.py`.
+
 ### Structure
 
 ```json
@@ -344,10 +346,8 @@ Journal entries and posts are stored in `json/journal.json` and rendered on `jou
 When publishing a data update (e.g., monthly economic indicators):
 
 1. **Update `financials-data.json`:**
-   - Find indicator by name
-   - Update `lastUpdated` timestamp
-   - Add new month value (use previous data as reference for format)
-   - Update root-level `lastUpdated` timestamp
+   - Check whether the indicator is automated (see `fetch-all.yml` / `SOURCE_REGISTRY`); if so, do not hand-edit the value - CI updates it on release day.
+   - Otherwise: find indicator by name, update `lastUpdated`, add the new month value (match existing format), and update root-level `lastUpdated`.
 
 2. **Create post referencing the data:**
    - File: `article/posts/YYYY-MM-DD-indicator-update.md`

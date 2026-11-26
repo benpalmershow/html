@@ -1,0 +1,30 @@
+name: Fetch Health Check
+
+# Daily watchdog: verifies every fetch source recorded a recent, successful run
+# (json/fetch-status.json) and that the source registry matches the data. Fails
+# loudly when a source goes stale so breakage is not silent.
+on:
+  schedule:
+    - cron: '30 13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fetch-health-check
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Check fetch freshness
+        run: python3 scripts/check_fetch_health.py
+      - name: Check source coverage
+        run: python3 scripts/check_fetch_coverage.py

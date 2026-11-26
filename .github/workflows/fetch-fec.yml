@@ -45,14 +45,19 @@ jobs:
       - name: Validate JSON output
         run: python3 -m json.tool json/fec-data.json > /dev/null
 
-      - name: Commit and push changes
+      - name: Record fetch status
+        if: always()
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add json/fec-data.json
-          if git diff --staged --quiet; then
-            echo "No FEC data changes to commit"
-            exit 0
-          fi
-          git commit -m "chore: update FEC campaign finance data [skip ci]"
-          bash scripts/git_push_retry.sh "$(git branch --show-current)"
+          STATUS="${{ job.status }}"
+          case "$STATUS" in
+            success) STATUS=ok ;;
+            failure|cancelled) STATUS=failed ;;
+            skipped) STATUS=skipped ;;
+          esac
+          python3 scripts/update_fetch_status.py --workflow fetch-fec --status "$STATUS" --notes "FEC candidate totals" || true
+
+      - name: Commit and push changes
+        uses: ./.github/actions/commit-changes
+        with:
+          message: "chore: update FEC campaign finance data [skip ci]"
+          files: json/fec-data.json

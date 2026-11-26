@@ -42,17 +42,22 @@ jobs:
           python3 -m json.tool json/13f-holdings.json > /dev/null
           python3 -m json.tool json/13f-ticker-map.json > /dev/null
 
-      - name: Commit and push changes
+      - name: Record fetch status
+        if: always()
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add json/13f-holdings.json json/13f-ticker-map.json
-          if git diff --staged --quiet; then
-            echo "No 13F data changes to commit"
-            exit 0
-          fi
-          git commit -m "chore: refresh 13F holdings from SEC EDGAR [skip ci]"
-          bash scripts/git_push_retry.sh "$(git branch --show-current)"
+          STATUS="${{ job.status }}"
+          case "$STATUS" in
+            success) STATUS=ok ;;
+            failure|cancelled) STATUS=failed ;;
+            skipped) STATUS=skipped ;;
+          esac
+          python3 scripts/update_fetch_status.py --workflow fetch-13f --status "$STATUS" --notes "13F holdings from SEC EDGAR" || true
+
+      - name: Commit and push changes
+        uses: ./.github/actions/commit-changes
+        with:
+          message: "chore: refresh 13F holdings from SEC EDGAR [skip ci]"
+          files: json/13f-holdings.json json/13f-ticker-map.json
 
       - name: Upload logs on failure
         if: failure()

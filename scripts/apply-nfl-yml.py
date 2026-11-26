@@ -5,7 +5,7 @@ Merge data/nfl-games.yml into json/financials-data.json.
 Usage:
     python3 scripts/apply-nfl-yml.py [--week 5] [--replace-completed]
 
-Also run automatically by .github/workflows/update-nfl-markets.yml
+Also run automatically by .github/workflows/update-nfl-odds.yml
 (daily at 08:00 UTC during the NFL season).
 
 Typical sequence:

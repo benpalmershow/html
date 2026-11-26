@@ -1,0 +1,88 @@
+name: Fetch All Financial Indicators
+
+# Single serialized fetcher for every source that writes
+# json/financials-data.json. Running them in one job (sequentially, one commit)
+# removes the race condition the old per-source workflows had, where several
+# workflows could write/commit the same file at once.
+on:
+  schedule:
+    # Hourly through the US morning release window (12-21 UTC) plus an early
+    # daily catch-up. Every fetcher is idempotent and no-ops when unchanged.
+    - cron: '0 12-21 * * *'
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  # Serialize with any other financials-data writer.
+  group: financials-data
+  cancel-in-progress: false
+
+jobs:
+  fetch-all:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+      CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+      NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: pip install requests tenacity python-dotenv
+
+      - name: Run all fetchers
+        run: |
+          set -uo pipefail
+          FAILED=0
+          run() {
+            local name="$1"; shift
+            echo "::group::$name"
+            if "$@"; then st=ok; else st=failed; FAILED=1; fi
+            echo "::endgroup::"
+            python3 scripts/update_fetch_status.py --workflow "$name" --status "$st" --notes "$name" || true
+          }
+
+          run fetch-fred-daily python3 scripts/fetch_fred.py --indicators "10-yr Treasury Yield,Oil (WTI),Oil (Brent),Dollar Value Index,Natural Gas,Lumber (PPI)"
+          run fetch-fred-weekly python3 scripts/fetch_fred.py --indicators "Jobless Claims,30-yr Mortgage Rate,U.S. Petroleum Exports"
+          run fetch-fred-monthly python3 scripts/fetch_fred.py --indicators "Unemployment Rate,Jobs,Average Hourly Earnings,GDP,CPI,PPI,Monthly Retail Sales,Housing Starts,Building Permits,Industrial Production Index,Capacity Utilization,Small Business Optimism Index,Affordability Index,JOLTS Quits Rate,Personal Consumption Expenditures (PCE),Case-Shiller National Home Price Index,New Home Sales,Consumer Sentiment,FHFA House Price Index"
+          run fetch-adp python3 scripts/fetch_adp.py
+          run fetch-bls python3 scripts/fetch_bls.py
+          run fetch-census python3 scripts/fetch_census.py --indicators "trade-deficit,new-orders,construction-spending"
+          run fetch-treasury python3 scripts/fetch_treasury.py
+          run fetch-usda python3 scripts/fetch_usda.py
+          run fetch-other-indicators python3 scripts/fetch_other_indicators.py
+          run fetch-manheim python3 scripts/fetch_manheim.py
+          run fetch-housing-sentiment python3 scripts/fetch_housing_sentiment.py
+
+          echo "FETCH_FAILED=$FAILED" >> "$GITHUB_ENV"
+
+      - name: Age out stale New badges + coverage report
+        run: python3 scripts/check_fetch_coverage.py
+
+      - name: Commit and push
+        uses: ./.github/actions/commit-changes
+        with:
+          message: "chore: update financial indicators [skip ci]"
+          files: json/
+          validate: "true"
+
+      - name: Fail the run if any source failed
+        if: env.FETCH_FAILED == '1'
+        run: |
+          echo "One or more fetchers failed; see logs above."
+          exit 1

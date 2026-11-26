@@ -26,7 +26,7 @@ Use the dedicated [NFL Cards Update PRD](./nfl-cards-update-prd.md) for the
 Polymarket-backed schedule, market verification, week-scoped refresh, cleanup,
 and validation procedure. The automated implementation lives in
 `scripts/fetch-nfl-odds.py`, `scripts/apply-nfl-yml.py`, and
-`.github/workflows/update-nfl-markets.yml`.
+`.github/workflows/update-nfl-odds.yml`.
 
 ---
 
@@ -423,6 +423,10 @@ const categoryIcons = {
 
 ## Automation Opportunities
 
+### Live (automated via `.github/workflows/fetch-all.yml`)
+- FRED (daily/weekly/monthly sets), BLS, Census, Treasury, USDA, ADP, Polymarket/Kalshi (other indicators), Manheim Used Vehicle Value Index, NAR Pending Home Sales, and NAHB HMI are all fetched on release day by the single serialized `fetch-all.yml` job (one commit, shared `concurrency.group: financials-data`). Health/coverage: `fetch-health-check.yml` + `scripts/check_fetch_health.py` / `scripts/check_fetch_coverage.py`.
+- The items below are still manual or only partially automated.
+
 ### Scheduled Updates
 - Set up weekly/monthly reminders for regular data updates
 - Create scripts to scrape public APIs where available
@@ -435,8 +439,8 @@ const categoryIcons = {
 - **Merger:** `scripts/apply-nfl-yml.py` -- upserts games into
   `json/financials-data.json` by `id`, with `--replace-completed` to drop past
   games
-- **Scheduled run:** `.github/workflows/update-nfl-markets.yml` (daily 08:00
-  UTC in season) runs the fetcher, then the merger, validates, and commits
+- **Scheduled run:** `.github/workflows/update-nfl-odds.yml` (daily + game-day
+  windows in season) runs the fetcher, then the merger, validates, and commits
 - **Why Polymarket, not NFL.com/ESPN:** the NFL owns its schedule and broadcast
   footage, so official NFL sites are off-limits for scraping. Polymarket is a
   CFTC-regulated prediction-market exchange (not an NFL data feed), so its odds
@@ -453,8 +457,9 @@ const categoryIcons = {
   (including its `receipts`/`outlays` sub-objects), Interest on
   Debt, and Tariff Revenue. Supports `--dry-run` to preview
   changes without writing.
-- **Scheduled run:** `.github/workflows/fetch-treasury.yml`
-  (daily 09:00 UTC) runs the fetcher, validates the JSON, and
+- **Scheduled run:** `.github/workflows/fetch-all.yml`
+  (hourly 12-21 UTC + daily 02:00 UTC) runs the fetcher as part of the
+  serialized financials job, validates the JSON, and
   commits with `[skip ci]`.
 - **Scope:** only the current calendar year's nested year object
   (e.g. `"2026": {"january": ...}`) is written. Flat top-level
@@ -521,8 +526,9 @@ Base URL: `https://api.fiscaldata.treasury.gov/services/api/fiscal_service`
   `json/financials-data.json`: Trade Deficit, including its
   `imports`/`exports` sub-objects. Supports `--dry-run` to
   preview changes without writing.
-- **Scheduled run:** `.github/workflows/fetch-census.yml`
-  (daily 10:00 UTC) runs the fetcher, validates the JSON, and
+- **Scheduled run:** `.github/workflows/fetch-all.yml`
+  (hourly 12-21 UTC + daily 02:00 UTC) runs the fetcher as part of the
+  serialized financials job, validates the JSON, and
   commits with `[skip ci]`. Requires the `CENSUS_API_KEY`
   repository secret (also in `.env` for local runs via
   `python-dotenv`).

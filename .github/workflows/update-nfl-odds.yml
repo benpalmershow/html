@@ -126,15 +126,7 @@ PY
             --notes "NFL odds refresh for week ${{ steps.week.outputs.week }}"
 
       - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/nfl-games.yml json/financials-data.json json/fetch-status.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "Automated NFL odds update for week ${{ steps.week.outputs.week }} [skip ci]"
-            bash scripts/git_push_retry.sh "$(git branch --show-current)"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ./.github/actions/commit-changes
+        with:
+          message: "Automated NFL odds update for week ${{ steps.week.outputs.week }} [skip ci]"
+          files: data/nfl-games.yml json/financials-data.json json/fetch-status.json

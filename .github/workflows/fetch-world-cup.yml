@@ -61,18 +61,24 @@ jobs:
         run: |
           python3 -m json.tool json/world-cup.json > /dev/null
 
+      - name: Record fetch status
+        if: always()
+        run: |
+          if [ "${{ steps.date-check.outputs.skip }}" = "true" ]; then
+            st=skipped
+          elif [ "${{ job.status }}" = "success" ]; then
+            st=ok
+          else
+            st=failed
+          fi
+          python3 scripts/update_fetch_status.py --workflow fetch-world-cup --status "$st" --notes "World Cup scores" || true
+
       - name: Commit and push changes
         if: steps.date-check.outputs.skip == 'false'
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add json/world-cup.json
-          if git diff --staged --quiet; then
-            echo "No score changes to commit"
-            exit 0
-          fi
-          git commit -m "chore: update World Cup scores [skip ci]"
-          bash scripts/git_push_retry.sh "$(git branch --show-current)"
+        uses: ./.github/actions/commit-changes
+        with:
+          message: "chore: update World Cup scores [skip ci]"
+          files: json/world-cup.json
 
       - name: Upload logs on failure
         if: failure()

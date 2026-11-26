@@ -24,7 +24,7 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 - `article.html?slug=<slug>` is the single article page: it reads `json/article-index.json` (built by `scripts/build-article-index.js`), fetches the markdown source, and renders it with `js/markdown.js`
 - `json/posts.json` is legacy (RSS no longer uses it; see `scripts/generate-rss.js`)
 
-**Financial data:** `json/financials-data.json` holds all indicators and prediction markets. Charts and the financials page render from this file via `js/charts.js` and `js/financials.js`.
+**Financial data:** `json/financials-data.json` holds all indicators and prediction markets. Charts and the financials page render from this file via `js/charts.js` and `js/financials.js`. Most indicators are auto-fetched by `.github/workflows/fetch-all.yml` (single serialized job, one commit); do not hand-edit automated values or add per-source financials workflows. See root `AGENTS.md` for the fetcher list, health/coverage checks, and the `SOURCE_REGISTRY`.
 
 **JSON fetching:** Load `js/services.js` before page scripts. Fetch runtime JSON via `Services.dataService.fetchJSON(path)` (cache-busted with `meta[name="site-data-version"]`). Bump that meta when deploying data changes.
 
@@ -32,7 +32,7 @@ Then open `http://localhost:8000`. Visually verify charts render after any conte
 - `json/media.json` - curated media
 - `json/journal.json` - journal/tweet feed
 - `json/article-index.json` - generated article manifest (slug, source file, title, date, tags)
-- `json/13f-holdings.json` - 13F holdings (updated by `scripts/get_latest_13f_holdings_final.py`)
+- `json/13f-holdings.json` - 13F holdings (updated by `scripts/fetch_13f.py` via `.github/workflows/fetch-13f.yml`)
 
 **`scripts/`** contains utility scripts (RSS generation, Python data fetchers). See `documentation/financial_fetch.md` for the full data update SOP.
 

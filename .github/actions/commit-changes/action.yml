@@ -1,0 +1,44 @@
+name: Commit and push data changes
+description: >-
+  Validate (optional) and commit/push changed data files with push retry.
+  Centralizes the boilerplate that every fetch workflow used to duplicate.
+
+inputs:
+  message:
+    description: Commit message
+    required: true
+  files:
+    description: Paths to stage (space separated)
+    required: false
+    default: json/
+  validate:
+    description: Run `npm run validate` before committing (requires Node setup)
+    required: false
+    default: "false"
+  push:
+    description: Push after committing
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Validate site
+      if: inputs.validate == 'true'
+      shell: bash
+      run: npm run validate
+
+    - name: Commit and push
+      shell: bash
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add ${{ inputs.files }}
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+          exit 0
+        fi
+        git commit -m "${{ inputs.message }}"
+        if [ "${{ inputs.push }}" = "true" ]; then
+          bash scripts/git_push_retry.sh "$(git branch --show-current)"
+        fi

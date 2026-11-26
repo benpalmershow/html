@@ -67,10 +67,17 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - Article slugs come from the source file basename so URLs stay stable when a title is edited.
 - World Cup automation:
   - Data fetcher: `scripts/fetch_world_cup.py` -> `json/world-cup.json`
-  - Scheduled updater: `.github/workflows/fetch-world-cup.yml`
+  - Scheduled updater: `.github/workflows/fetch-world-cup.yml` (records `json/fetch-status.json`; commits via `.github/actions/commit-changes`)
 - Earnings automation:
   - Fetcher: `scripts/fetch_earnings.py` (yfinance) + `scripts/fetch_sec_quarterly.py` (SEC EDGAR) -> `json/earnings.json`
-  - Scheduled updater: `.github/workflows/fetch-earnings.yml` (5-min poll during Jan/Apr/Jul/Oct release windows, weekly otherwise)
+  - Scheduled updater: `.github/workflows/fetch-earnings.yml` (5-min poll during Jan/Apr/Jul/Oct release windows, weekly otherwise; records `json/fetch-status.json`)
+- Financial indicators automation (every source here writes `json/financials-data.json`):
+  - Single serialized updater: `.github/workflows/fetch-all.yml` runs all fetchers sequentially and commits once, under a shared `concurrency.group: financials-data`. Do NOT add per-source financials workflows; add the fetcher to `fetch-all.yml` instead (this is what prevents concurrent writers from racing on the file).
+  - Fetchers: `scripts/fetch_fred.py` (daily/weekly/monthly `--indicators` sets), `fetch_adp.py`, `fetch_bls.py`, `fetch_census.py`, `fetch_treasury.py`, `fetch_usda.py`, `fetch_other_indicators.py` (Polymarket/Kalshi), `fetch_manheim.py`, `fetch_housing_sentiment.py` (NAR PHSI + NAHB HMI). Same-day-release sources only; do not automate delayed/paywalled series.
+  - Shared HTTP: `scripts/fetch_utils.py` `http_get` / `http_get_text` (consistent User-Agent + exponential backoff). Use these in new fetchers instead of per-script `requests`/tenacity.
+  - Health + coverage: each run records `json/fetch-status.json` via `scripts/update_fetch_status.py`. `.github/workflows/fetch-health-check.yml` runs `scripts/check_fetch_health.py` (staleness watchdog: fails when a source's `lastRun` exceeds its cadence or last status is `failed`; seasonal workflows checked only in-season) and `scripts/check_fetch_coverage.py` (registry drift + clears stale `newMonth` badges older than 7 days).
+  - Commit boilerplate lives in `.github/actions/commit-changes` (optional `npm run validate` + commit + `git_push_retry.sh`). Reuse it in any new workflow that writes repo data.
+  - `scripts/fetch_other_indicators.py` `SOURCE_REGISTRY` is the source-of-truth list of non-FRED sources. When a source moves to its own fetcher, set `implemented: False` and add a `note` starting with "Now covered by ..." (the coverage check counts these as moved).
 
 ## Project-specific guardrails
 - Do not change these without explicit approval:
@@ -82,6 +89,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - Keep `lastUpdated` timestamps and source URLs current.
   - For NFL markets, format matchup names as `AWAY @ HOME`.
 - Keep internal Numbers links query-param based (`financials.html?filter=...`, `financials.html?indicator=<exact name>`) rather than hash-only navigation.
+- Do not reintroduce per-source financials workflows or add a second writer to `json/financials-data.json`; extend `fetch-all.yml` and keep the shared `concurrency.group: financials-data`. Do not change `scripts/check_fetch_health.py` cadence thresholds or the `newMonth` 7-day window without explicit approval.
 - Article bodies live in `article/**/*.md`; the browser renders them, so never hand-edit rendered article output.
 - Do not delete existing entries from JSON content files unless explicitly instructed.
 - Writing style for journal/posts: avoid em dashes in prose; use a spaced hyphen instead.

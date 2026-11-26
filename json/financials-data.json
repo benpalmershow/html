@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T01:32:48Z",
+  "lastUpdated": "2026-11-26T05:45:17Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -1036,7 +1036,7 @@
       "url": "https://www.usda.gov/oce/commodity-markets/wasde",
       "change": "",
       "explanation": "USDA's World Agricultural Supply and Demand Estimates (WASDE), released monthly by the World Agricultural Outlook Board, forecasts supply and use for U.S. and world wheat, corn, soybeans, and other commodities. The November report lowered U.S. corn ending stocks to 1,758 million bushels and soybeans to 300 million, while raising wheat to 743 million.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1168,7 +1168,7 @@
       },
       "change": "",
       "explanation": "Monthly federal government receipts (revenue) and outlays (spending), with the deficit calculated as outlays minus receipts. A negative value means spending exceeded revenue (deficit), while a positive value indicates a surplus. Data is organized by fiscal year (FY2025 runs October 2024 - September 2025, FY2026 runs October 2025 - September 2026). The Monthly Treasury Statement provides this data from the Treasury Department.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-10-15T16:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -1490,7 +1490,7 @@
       "explanation": "Monthly survey by The Conference Board (3,000+ households) measuring consumers' assessment of current business/labor conditions and their expectations for the next six months. The index is benchmarked to 100 (1985=100). Values above 100 indicate positive consumer sentiment. The expectations component is part of the Leading Economic Index and is closely watched for recession signals when it falls below 80. The Present Situation Index (current conditions) and Expectations Index (future conditions) provide insights into consumer spending and saving intentions. The index is a key indicator of consumer confidence and future economic activity.",
       "releaseTimeISO": "2026-10-27T14:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "used-vehicle-value-index",
@@ -2086,7 +2086,7 @@
       "explanation": "The Chicago Fed Survey of Economic Conditions (CFSEC) Activity Index measures changes in overall business activity in the Seventh Federal Reserve District, which includes Illinois, Indiana, Iowa, Michigan, and Wisconsin. The index is based on a survey of organizations and is a diffusion index where positive values indicate above-average growth and negative values indicate below-average growth. It's released monthly and serves as an early indicator of regional economic conditions.",
       "releaseTimeISO": "2026-10-22T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "monthly-retail-sales",
@@ -2245,7 +2245,7 @@
       "url": "https://tradingeconomics.com/united-states/redbook-index",
       "change": "",
       "explanation": "The Johnson Redbook Index measures year-over-year same-store sales growth across a sample of approximately 9,000 large U.S. general merchandise retailers, representing over 80% of the dollar value of the Commerce Department's official retail sales series. Published weekly by Redbook Research, the index tracks sales at locations continuously open for 12 months or longer. Values are nominal (not inflation-adjusted), so a portion of the YoY gain reflects price increases. The index provides a high-frequency read on consumer spending trends ahead of official monthly retail sales reports.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -2312,7 +2312,7 @@
       "url": "https://www.newyorkfed.org/microeconomics/hhdc",
       "change": "",
       "explanation": "Total U.S. household debt (mortgages, auto loans, student loans, credit cards, and HELOCs) as reported quarterly by the Federal Reserve Bank of New York's Center for Microeconomic Data, based on a nationally representative sample of anonymized Equifax credit data. The Q3 2026 report showed total debt expanded by $334 billion (1.8%) to $19.105 trillion, driven by a $257 billion increase in mortgage balances to $13.374 trillion. Credit card debt reached a record $1.285 trillion and auto loans rose to $1.734 trillion. The aggregate delinquency rate ticked up to 5.0%.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-10T15:00:00Z",
       "releaseTimeZone": "America/New_York"
     },
@@ -2327,7 +2327,8 @@
         "june": "72.9",
         "july": "71",
         "august": "71.2",
-        "september": "66"
+        "september": "66",
+        "october": "63.0"
       },
       "2025": {
         "march": "74.5",
@@ -2345,13 +2346,13 @@
       "color": "#e67e22",
       "agency": "NAR",
       "name": "Pending Home Sales Index",
-      "lastUpdated": "2026-10-20T14:00:00Z",
+      "lastUpdated": "2026-11-26T05:45:17Z",
       "releaseDay": 28,
       "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
       "change": "",
       "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two.",
       "newMonth": true,
-      "releaseTimeISO": "2026-10-20T15:00:00Z",
+      "releaseTimeISO": "2026-11-26T05:45:17Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -2404,7 +2405,8 @@
         "july": "34",
         "august": "35",
         "september": "32",
-        "october": "29"
+        "october": "29",
+        "november": "25"
       },
       "2025": {
         "march": "39",
@@ -2422,13 +2424,13 @@
       "color": "#e67e22",
       "agency": "NAHB",
       "name": "Housing Market Index",
-      "lastUpdated": "2026-10-20T08:05:00Z",
+      "lastUpdated": "2026-11-26T05:45:17Z",
       "releaseDay": 18,
       "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
       "change": "",
       "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity.",
       "newMonth": true,
-      "releaseTimeISO": "2026-10-20T15:00:00Z",
+      "releaseTimeISO": "2026-11-26T05:45:17Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -2821,7 +2823,7 @@
       "releaseDay": 0,
       "url": "https://www.conference-board.org/topics/employment-trends-index",
       "change": "",
-      "newMonth": true,
+      "newMonth": false,
       "explanation": "The Employment Trends Index (ETI) is a composite labor market indicator that combines eight labor market indicators into a single measure. Developed by The Conference Board, it helps forecast employment trends and turning points in the labor market. The index components include job openings, industrial production, and business confidence surveys. A rising ETI suggests job growth will improve in the coming months, while a declining index may signal weakening employment conditions. The index is published monthly with a one-month lag and is particularly useful for identifying turning points in the labor market before they appear in the unemployment rate or payroll employment data.",
       "releaseTimeISO": "2026-11-09T14:00:00Z",
       "releaseTimeZone": "America/New_York"
@@ -2900,7 +2902,7 @@
       "explanation": "The total number of job openings on the last business day of the month, as measured by the Job Openings and Labor Turnover Survey (JOLTS) from the BLS. This figure represents all positions that are open (not filled) on the last business day of the month. The job openings rate is calculated by dividing the number of job openings by the sum of employment and job openings, then multiplying by 100. This metric helps gauge labor market tightness, with higher numbers indicating more job opportunities relative to the number of unemployed workers. The ratio of unemployed persons per job opening is a key measure of labor market efficiency.",
       "releaseTimeISO": "2026-11-03T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "job-cuts-report",
@@ -3458,7 +3460,7 @@
       "explanation": "The ISM Manufacturing PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers at more than 300 manufacturing firms. A reading above 50 indicates expansion in the manufacturing sector, while below 50 indicates contraction. The index is calculated from five major survey components: new orders, inventory levels, production, supplier deliveries, and employment. The manufacturing sector is often seen as a leading indicator of overall economic health, as it responds quickly to changes in demand and business conditions. The report also includes price pressure indicators and order backlogs, providing insights into supply chain conditions and future production activity.",
       "releaseTimeISO": "2026-10-01T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "composite-pmi-flash",
@@ -3496,7 +3498,7 @@
       "change": "",
       "explanation": "The S&P Global Composite PMI (Purchasing Managers' Index) is a weighted average of the Manufacturing Output Index and the Services Business Activity Index, providing a comprehensive snapshot of private sector business activity. A reading above 50 indicates expansion, while below 50 signals contraction. This flash estimate is released about a week before the final data and is based on approximately 85% of total survey responses. The composite PMI is closely watched by economists and investors as an early indicator of economic health, as it reflects both manufacturing and services activity, which together account for the majority of economic output. The report includes sub-indices for new orders, employment, and business expectations.",
       "releaseTimeISO": "2026-10-23T15:00:00Z",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -3608,7 +3610,7 @@
       "explanation": "The ISM Services PMI (Purchasing Managers' Index) is a monthly economic indicator based on a survey of purchasing managers in the services sector. A reading above 50 indicates expansion in the services sector, while below 50 indicates contraction. The index is calculated from several components including business activity, new orders, employment, and supplier deliveries. The services sector accounts for a large portion of the U.S. economy and is closely watched as a gauge of overall economic health and consumer spending trends. The report provides insights into service industry conditions, pricing pressures, and future business expectations.",
       "releaseTimeISO": "2026-10-05T15:00:00Z",
       "releaseTimeZone": "America/New_York",
-      "newMonth": true
+      "newMonth": false
     },
     {
       "id": "industrial-production-index",

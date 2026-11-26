@@ -18,7 +18,7 @@ Usage:
   python3 scripts/fetch_manheim.py            # fetch and update the JSON
   python3 scripts/fetch_manheim.py --dry-run  # preview changes without writing
 """
-from fetch_utils import atomic_write_json
+from fetch_utils import atomic_write_json, http_get
 import argparse
 import json
 import logging
@@ -32,8 +32,6 @@ try:
 except ImportError:
     print("requests is required. Install with: pip install requests")
     sys.exit(1)
-
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 ROOT = Path(__file__).resolve().parent.parent
 FINANCIALS_PATH = ROOT / "json" / "financials-data.json"
@@ -64,15 +62,12 @@ def previous_month(now):
     return MONTHS[last_day_prev.month - 1], last_day_prev.year
 
 
-@retry(retry=retry_if_exception_type(requests.RequestException), stop=stop_after_attempt(4),
-       wait=wait_exponential(multiplier=2, min=3, max=30))
 def fetch_article(url):
-    resp = requests.get(url, headers={"User-Agent": "howdy-stranger/1.0"}, timeout=30)
+    resp = http_get(url)
     if resp.status_code == 404:
         # Article for the target month is not published yet (release is the
         # fifth business day of the following month). Treat as "nothing to do".
         return None
-    resp.raise_for_status()
     return resp.text
 
 

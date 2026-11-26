@@ -244,7 +244,7 @@ SOURCE_REGISTRY = {
         "source": "nar",
         "api_id": None,
         "implemented": False,
-        "note": "NAR Pending Home Sales Index is released as a monthly PDF/press release, no clean public API identified.",
+        "note": "Now covered by fetch-all.yml / scripts/fetch_housing_sentiment.py (NAR Pending Home Sales Snapshot page). Remove from this registry.",
     },
     "median-home-price": {
         "agency": "NAR",
@@ -314,7 +314,7 @@ SOURCE_REGISTRY = {
         "source": "manheim",
         "api_id": None,
         "implemented": False,
-        "note": "Now covered by fetch-manheim.yml / scripts/fetch_manheim.py (Cox Automotive monthly insights article). Remove from this registry.",
+        "note": "Now covered by fetch-all.yml / scripts/fetch_manheim.py (Cox Automotive monthly insights article). Remove from this registry.",
     },
     "strait-of-hormuz-daily-transits": {
         "agency": "Windward",
@@ -328,7 +328,7 @@ SOURCE_REGISTRY = {
         "source": "nahb",
         "api_id": None,
         "implemented": False,
-        "note": "NAHB Housing Market Index is released monthly; no clean public API identified.",
+        "note": "Now covered by fetch-all.yml / scripts/fetch_housing_sentiment.py (NAHB HMI page). Remove from this registry.",
     },
     "employment-trends-index": {
         "agency": "The Conference Board",
@@ -363,7 +363,7 @@ SOURCE_REGISTRY = {
         "source": "bls",
         "api_id": None,
         "implemented": False,
-        "note": "Now covered by fetch-bls.yml / scripts/fetch_bls.py (JTSJOL series added). Remove from this registry.",
+        "note": "Now covered by fetch-all.yml / scripts/fetch_bls.py (JTSJOL series added). Remove from this registry.",
     },
     "job-cuts-report": {
         "agency": "Challenger Gray & Christmas",

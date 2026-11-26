@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-16T00:50:40.426102Z",
+  "lastUpdated": "2026-11-26T04:09:26.614424Z",
   "tickers": [
     "NVDA",
     "TSLA",
@@ -15,109 +15,77 @@
   "earnings": [
     {
       "ticker": "NVDA",
-      "fetchedAt": "2026-11-16T00:50:40.426866Z",
+      "fetchedAt": "2026-11-26T04:07:13.883786Z",
       "source": "Yahoo Finance",
       "company": "NVIDIA Corporation",
       "sector": "Technology",
-      "marketCap": 3932339044352.0,
-      "enterpriseValue": 3901076013056.0,
-      "trailingPE": 20.59,
-      "forwardPE": 10.27,
-      "pegRatio": 0.2,
-      "priceToSalesTrailing12Months": 12.98,
-      "priceToBook": 17.17,
+      "marketCap": 3605147156480.0,
+      "enterpriseValue": 3539442860032.0,
+      "trailingPE": 16.68,
+      "forwardPE": 8.99,
+      "pegRatio": 0.19,
+      "priceToSalesTrailing12Months": 9.96,
+      "priceToBook": 13.5,
       "grossMargins": 0.75,
-      "operatingMargins": 0.65,
-      "profitMargins": 0.64,
-      "returnOnAssets": 0.54,
+      "operatingMargins": 0.66,
+      "profitMargins": 0.63,
+      "returnOnAssets": 0.56,
       "returnOnEquity": 1.17,
-      "revenueGrowth": 1.06,
-      "earningsGrowth": 1.28,
-      "revenuePerShare": 12.48,
-      "freeCashflow": 41809874944.0,
-      "operatingCashflow": 134359998464.0,
-      "grossProfits": 226241003520.0,
-      "totalCash": 62469001216.0,
-      "totalCashPerShare": 2.59,
-      "totalDebt": 38860001280.0,
-      "totalRevenue": 302970011648.0,
-      "debtToEquity": 16.97,
-      "currentRatio": 4.59,
-      "quickRatio": 2.92,
-      "bookValue": 9.48,
+      "revenueGrowth": 1.03,
+      "earningsGrowth": 1.08,
+      "revenuePerShare": 14.94,
+      "freeCashflow": 99241377792.0,
+      "operatingCashflow": 158862999552.0,
+      "grossProfits": 271069003776.0,
+      "totalCash": 97731002368.0,
+      "totalCashPerShare": 4.05,
+      "totalDebt": 38148001792.0,
+      "totalRevenue": 361808003072.0,
+      "debtToEquity": 14.31,
+      "currentRatio": 4.08,
+      "quickRatio": 3.29,
+      "bookValue": 11.06,
       "sharesOutstanding": 24147000000.0,
-      "floatShares": 23133590000.0,
+      "floatShares": 23138626220.0,
       "impliedSharesOutstanding": 24147000000.0,
       "dividendRate": 1.0,
-      "dividendYield": 0.61,
+      "dividendYield": 0.64,
       "payoutRatio": 0.04,
       "fiveYearAvgDividendYield": 0.03,
-      "targetHighPrice": 515.0,
-      "targetLowPrice": 170.0,
-      "targetMeanPrice": 276.56,
-      "targetMedianPrice": 275.0,
-      "recommendationMean": 1.62,
-      "numberOfAnalystOpinions": 53.0,
+      "targetHighPrice": 425.0,
+      "targetLowPrice": 130.0,
+      "targetMeanPrice": 242.43,
+      "targetMedianPrice": 240.0,
+      "recommendationMean": 1.67,
+      "numberOfAnalystOpinions": 59.0,
       "beta": 2.25,
       "fiftyTwoWeekHigh": 243.37,
-      "fiftyTwoWeekLow": 148.8,
-      "fiftyDayAverage": 214.65,
-      "twoHundredDayAverage": 204.19,
-      "averageVolume": 146134656.0,
-      "averageDailyVolume10Day": 318932360.0,
-      "previousClose": 166.19,
-      "open": 169.89,
-      "regularMarketOpen": 169.89,
-      "dayHigh": 170.0,
-      "dayLow": 158.39,
-      "regularMarketDayHigh": 170.0,
-      "regularMarketDayLow": 158.39,
-      "regularMarketVolume": 365796552.0,
-      "averageVolume10days": 318932360.0,
-      "sharesShort": 279579505.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 311389688.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyTwoWeekLow": 124.5,
+      "fiftyDayAverage": 204.95,
+      "twoHundredDayAverage": 203.07,
+      "averageVolume": 184811595.0,
+      "averageDailyVolume10Day": 466849300.0,
+      "previousClose": 155.38,
+      "open": 144.02,
+      "regularMarketOpen": 144.02,
+      "dayHigh": 150.37,
+      "dayLow": 141.17,
+      "regularMarketDayHigh": 150.37,
+      "regularMarketDayLow": 141.17,
+      "regularMarketVolume": 359527027.0,
+      "averageVolume10days": 466849300.0,
+      "sharesShort": 305326286.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 301622687.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 42000.0,
       "industry": "Semiconductors",
       "currency": "USD",
       "recommendationKey": "buy",
-      "exDividendDate": "2026-09-10",
+      "exDividendDate": "2026-12-02",
       "lastDividendDate": "2026-09-10",
-      "latestPrice": 162.85,
+      "latestPrice": 149.3,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 189.72
-        },
-        {
-          "date": "2025-11-17",
-          "close": 186.15
-        },
-        {
-          "date": "2025-11-18",
-          "close": 180.93
-        },
-        {
-          "date": "2025-11-19",
-          "close": 186.07
-        },
-        {
-          "date": "2025-11-20",
-          "close": 180.21
-        },
-        {
-          "date": "2025-11-21",
-          "close": 178.45
-        },
-        {
-          "date": "2025-11-24",
-          "close": 182.11
-        },
-        {
-          "date": "2025-11-25",
-          "close": 177.4
-        },
         {
           "date": "2025-11-26",
           "close": 179.83
@@ -1089,11 +1057,50 @@
         {
           "date": "2026-11-13",
           "close": 162.85
+        },
+        {
+          "date": "2026-11-16",
+          "close": 156.14
+        },
+        {
+          "date": "2026-11-17",
+          "close": 155.46
+        },
+        {
+          "date": "2026-11-18",
+          "close": 150.96
+        },
+        {
+          "date": "2026-11-19",
+          "close": 145.98
+        },
+        {
+          "date": "2026-11-20",
+          "close": 125.53
+        },
+        {
+          "date": "2026-11-23",
+          "close": 165.05
+        },
+        {
+          "date": "2026-11-24",
+          "close": 155.38
+        },
+        {
+          "date": "2026-11-25",
+          "close": 149.3
         }
       ],
-      "nextEarningsDate": "2026-11-17",
-      "estimatedEPS": 2.47,
+      "nextEarningsDate": "2027-02-24",
+      "estimatedEPS": 2.88,
       "recentEarnings": [
+        {
+          "reportedDate": "2026-11-17",
+          "actualEPS": 2.68,
+          "estimatedEPS": 2.47,
+          "surprisePercent": 8.36,
+          "source": "Yahoo Finance"
+        },
         {
           "reportedDate": "2026-08-26",
           "actualEPS": 2.22,
@@ -1113,13 +1120,6 @@
           "actualEPS": 1.62,
           "estimatedEPS": 1.54,
           "surprisePercent": 5.32,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2025-11-19",
-          "actualEPS": 1.3,
-          "estimatedEPS": 1.26,
-          "surprisePercent": 3.46,
           "source": "Yahoo Finance"
         }
       ],
@@ -1205,17 +1205,17 @@
     },
     {
       "ticker": "TSLA",
-      "fetchedAt": "2026-11-16T00:50:42.056391Z",
+      "fetchedAt": "2026-11-26T04:07:15.398232Z",
       "source": "Yahoo Finance",
       "company": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "marketCap": 1542445203456.0,
-      "enterpriseValue": 1514043211776.0,
-      "trailingPE": 428.81,
-      "forwardPE": 180.72,
-      "pegRatio": 4.55,
-      "priceToSalesTrailing12Months": 14.89,
-      "priceToBook": 17.28,
+      "marketCap": 1502601543680.0,
+      "enterpriseValue": 1474199420928.0,
+      "trailingPE": 417.74,
+      "forwardPE": 176.05,
+      "pegRatio": 38.0,
+      "priceToSalesTrailing12Months": 14.51,
+      "priceToBook": 16.83,
       "grossMargins": 0.19,
       "operatingMargins": 0.03,
       "profitMargins": 0.03,
@@ -1236,7 +1236,7 @@
       "quickRatio": 1.24,
       "bookValue": 22.59,
       "sharesOutstanding": 3952757946.0,
-      "floatShares": 2822308701.0,
+      "floatShares": 2822427284.0,
       "impliedSharesOutstanding": 3952757946.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -1244,68 +1244,36 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 600.0,
       "targetLowPrice": 128.11,
-      "targetMeanPrice": 412.48,
-      "targetMedianPrice": 436.0,
-      "recommendationMean": 2.3,
-      "numberOfAnalystOpinions": 40.0,
+      "targetMeanPrice": 419.05,
+      "targetMedianPrice": 442.0,
+      "recommendationMean": 2.2,
+      "numberOfAnalystOpinions": 41.0,
       "beta": 1.74,
       "fiftyTwoWeekHigh": 498.83,
       "fiftyTwoWeekLow": 297.38,
-      "fiftyDayAverage": 374.74,
-      "twoHundredDayAverage": 382.73,
-      "averageVolume": 37643070.0,
-      "averageDailyVolume10Day": 38366910.0,
-      "previousClose": 397.45,
-      "open": 401.94,
-      "regularMarketOpen": 401.94,
-      "dayHigh": 404.4,
-      "dayLow": 385.83,
-      "regularMarketDayHigh": 404.4,
-      "regularMarketDayLow": 385.83,
-      "regularMarketVolume": 32392965.0,
-      "averageVolume10days": 38366910.0,
-      "sharesShort": 65956693.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 70931312.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyDayAverage": 376.73,
+      "twoHundredDayAverage": 381.37,
+      "averageVolume": 37306476.0,
+      "averageDailyVolume10Day": 31755000.0,
+      "previousClose": 384.68,
+      "open": 370.23,
+      "regularMarketOpen": 370.23,
+      "dayHigh": 383.73,
+      "dayLow": 357.64,
+      "regularMarketDayHigh": 383.73,
+      "regularMarketDayLow": 357.64,
+      "regularMarketVolume": 33883019.0,
+      "averageVolume10days": 31755000.0,
+      "sharesShort": 63648572.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 69350469.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 134785.0,
       "industry": "Auto Manufacturers",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 390.22,
+      "latestPrice": 380.14,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 404.35
-        },
-        {
-          "date": "2025-11-17",
-          "close": 408.92
-        },
-        {
-          "date": "2025-11-18",
-          "close": 401.25
-        },
-        {
-          "date": "2025-11-19",
-          "close": 403.99
-        },
-        {
-          "date": "2025-11-20",
-          "close": 395.23
-        },
-        {
-          "date": "2025-11-21",
-          "close": 391.09
-        },
-        {
-          "date": "2025-11-24",
-          "close": 417.78
-        },
-        {
-          "date": "2025-11-25",
-          "close": 419.4
-        },
         {
           "date": "2025-11-26",
           "close": 426.58
@@ -2277,6 +2245,38 @@
         {
           "date": "2026-11-13",
           "close": 390.22
+        },
+        {
+          "date": "2026-11-16",
+          "close": 379.74
+        },
+        {
+          "date": "2026-11-17",
+          "close": 380.11
+        },
+        {
+          "date": "2026-11-18",
+          "close": 383.72
+        },
+        {
+          "date": "2026-11-19",
+          "close": 374.41
+        },
+        {
+          "date": "2026-11-20",
+          "close": 345.82
+        },
+        {
+          "date": "2026-11-23",
+          "close": 385.46
+        },
+        {
+          "date": "2026-11-24",
+          "close": 384.68
+        },
+        {
+          "date": "2026-11-25",
+          "close": 380.14
         }
       ],
       "nextEarningsDate": "2027-01-27",
@@ -2389,17 +2389,17 @@
     },
     {
       "ticker": "NYT",
-      "fetchedAt": "2026-11-16T00:50:42.959077Z",
+      "fetchedAt": "2026-11-26T04:07:16.429665Z",
       "source": "Yahoo Finance",
       "company": "The New York Times Company",
       "sector": "Communication Services",
-      "marketCap": 11642707968.0,
-      "enterpriseValue": 10969841664.0,
-      "trailingPE": 29.12,
-      "forwardPE": 22.97,
-      "pegRatio": 3.79,
-      "priceToSalesTrailing12Months": 3.86,
-      "priceToBook": 5.71,
+      "marketCap": 11465212928.0,
+      "enterpriseValue": 10792346624.0,
+      "trailingPE": 28.68,
+      "forwardPE": 22.77,
+      "pegRatio": 1.29,
+      "priceToSalesTrailing12Months": 3.8,
+      "priceToBook": 5.62,
       "grossMargins": 0.51,
       "operatingMargins": 0.17,
       "profitMargins": 0.14,
@@ -2420,78 +2420,46 @@
       "quickRatio": 1.34,
       "bookValue": 12.75,
       "sharesOutstanding": 159124622.0,
-      "floatShares": 132289693.0,
+      "floatShares": 131969882.0,
       "impliedSharesOutstanding": 159905346.0,
       "dividendRate": 0.92,
-      "dividendYield": 1.26,
+      "dividendYield": 1.31,
       "payoutRatio": 0.33,
-      "fiveYearAvgDividendYield": 0.95,
+      "fiveYearAvgDividendYield": 0.96,
       "targetHighPrice": 85.0,
       "targetLowPrice": 64.0,
-      "targetMeanPrice": 77.0,
+      "targetMeanPrice": 76.0,
       "targetMedianPrice": 76.0,
-      "recommendationMean": 1.7,
+      "recommendationMean": 1.9,
       "numberOfAnalystOpinions": 9.0,
       "beta": 0.86,
       "fiftyTwoWeekHigh": 87.1,
       "fiftyTwoWeekLow": 58.87,
-      "fiftyDayAverage": 67.76,
-      "twoHundredDayAverage": 73.31,
-      "averageVolume": 2557351.0,
-      "averageDailyVolume10Day": 3058900.0,
-      "previousClose": 71.46,
-      "open": 71.69,
-      "regularMarketOpen": 71.69,
-      "dayHigh": 73.57,
-      "dayLow": 71.65,
-      "regularMarketDayHigh": 73.57,
-      "regularMarketDayLow": 71.65,
-      "regularMarketVolume": 1347103.0,
-      "averageVolume10days": 3058900.0,
-      "sharesShort": 18606093.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 18363364.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyDayAverage": 68.1,
+      "twoHundredDayAverage": 73.32,
+      "averageVolume": 2612464.0,
+      "averageDailyVolume10Day": 1914560.0,
+      "previousClose": 70.44,
+      "open": 70.46,
+      "regularMarketOpen": 70.46,
+      "dayHigh": 72.96,
+      "dayLow": 70.33,
+      "regularMarketDayHigh": 72.96,
+      "regularMarketDayLow": 70.33,
+      "regularMarketVolume": 1632088.0,
+      "averageVolume10days": 1914560.0,
+      "sharesShort": 18419054.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 18693319.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 6000.0,
       "industry": "Publishing",
       "currency": "USD",
       "recommendationKey": "buy",
       "exDividendDate": "2026-10-07",
       "lastDividendDate": "2026-10-07",
-      "latestPrice": 72.81,
+      "latestPrice": 71.7,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 63.17
-        },
-        {
-          "date": "2025-11-17",
-          "close": 62.22
-        },
-        {
-          "date": "2025-11-18",
-          "close": 63.23
-        },
-        {
-          "date": "2025-11-19",
-          "close": 62.99
-        },
-        {
-          "date": "2025-11-20",
-          "close": 62.77
-        },
-        {
-          "date": "2025-11-21",
-          "close": 63.33
-        },
-        {
-          "date": "2025-11-24",
-          "close": 63.09
-        },
-        {
-          "date": "2025-11-25",
-          "close": 63.86
-        },
         {
           "date": "2025-11-26",
           "close": 64.28
@@ -3463,6 +3431,38 @@
         {
           "date": "2026-11-13",
           "close": 72.81
+        },
+        {
+          "date": "2026-11-16",
+          "close": 73.5
+        },
+        {
+          "date": "2026-11-17",
+          "close": 73.82
+        },
+        {
+          "date": "2026-11-18",
+          "close": 70.8
+        },
+        {
+          "date": "2026-11-19",
+          "close": 69.04
+        },
+        {
+          "date": "2026-11-20",
+          "close": 68.62
+        },
+        {
+          "date": "2026-11-23",
+          "close": 68.32
+        },
+        {
+          "date": "2026-11-24",
+          "close": 70.44
+        },
+        {
+          "date": "2026-11-25",
+          "close": 71.7
         }
       ],
       "nextEarningsDate": "2027-02-03",
@@ -3575,17 +3575,17 @@
     },
     {
       "ticker": "SPCX",
-      "fetchedAt": "2026-11-16T00:50:43.958508Z",
+      "fetchedAt": "2026-11-26T04:07:17.750856Z",
       "source": "Yahoo Finance",
       "company": "Space Exploration Technologies Corp.",
       "sector": "Industrials",
-      "marketCap": 1889261846528.0,
-      "enterpriseValue": 1838624800768.0,
-      "trailingPE": 604.83,
-      "forwardPE": 50.73,
+      "marketCap": 1730770894848.0,
+      "enterpriseValue": 1680133718016.0,
+      "trailingPE": 554.09,
+      "forwardPE": 46.47,
       "pegRatio": null,
-      "priceToSalesTrailing12Months": 58.96,
-      "priceToBook": 10.69,
+      "priceToSalesTrailing12Months": 54.01,
+      "priceToBook": 9.79,
       "grossMargins": 0.57,
       "operatingMargins": 0.02,
       "profitMargins": -0.09,
@@ -3606,7 +3606,7 @@
       "quickRatio": 2.94,
       "bookValue": 13.02,
       "sharesOutstanding": 8246541218.0,
-      "floatShares": 3047183264.0,
+      "floatShares": 4345125523.0,
       "impliedSharesOutstanding": 13581063709.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -3614,35 +3614,35 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 800.0,
       "targetLowPrice": 70.0,
-      "targetMeanPrice": 256.41,
-      "targetMedianPrice": 245.0,
-      "recommendationMean": 1.7,
-      "numberOfAnalystOpinions": 37.0,
+      "targetMeanPrice": 256.25,
+      "targetMedianPrice": 247.5,
+      "recommendationMean": 1.68,
+      "numberOfAnalystOpinions": 38.0,
       "beta": null,
       "fiftyTwoWeekHigh": 225.64,
       "fiftyTwoWeekLow": 104.83,
-      "fiftyDayAverage": 148.9,
-      "twoHundredDayAverage": 144.97,
-      "averageVolume": 95022671.0,
-      "averageDailyVolume10Day": 105962550.0,
-      "previousClose": 139.94,
-      "open": 140.17,
-      "regularMarketOpen": 140.17,
-      "dayHigh": 142.24,
-      "dayLow": 136.64,
-      "regularMarketDayHigh": 142.24,
-      "regularMarketDayLow": 136.64,
-      "regularMarketVolume": 78515464.0,
-      "averageVolume10days": 105962550.0,
-      "sharesShort": 141051437.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 180996777.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyDayAverage": 147.06,
+      "twoHundredDayAverage": 144.38,
+      "averageVolume": 97110725.0,
+      "averageDailyVolume10Day": 101048480.0,
+      "previousClose": 125.81,
+      "open": 118.45,
+      "regularMarketOpen": 118.45,
+      "dayHigh": 128.18,
+      "dayLow": 113.93,
+      "regularMarketDayHigh": 128.18,
+      "regularMarketDayLow": 113.93,
+      "regularMarketVolume": 146929059.0,
+      "averageVolume10days": 101048480.0,
+      "sharesShort": 137068748.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 167294863.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 21000.0,
       "industry": "Aerospace & Defense",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 139.11,
+      "latestPrice": 127.44,
       "priceHistory": [
         {
           "date": "2026-06-12",
@@ -4075,6 +4075,38 @@
         {
           "date": "2026-11-13",
           "close": 139.11
+        },
+        {
+          "date": "2026-11-16",
+          "close": 137.36
+        },
+        {
+          "date": "2026-11-17",
+          "close": 141.7
+        },
+        {
+          "date": "2026-11-18",
+          "close": 143.5
+        },
+        {
+          "date": "2026-11-19",
+          "close": 138.43
+        },
+        {
+          "date": "2026-11-20",
+          "close": 127.79
+        },
+        {
+          "date": "2026-11-23",
+          "close": 133.35
+        },
+        {
+          "date": "2026-11-24",
+          "close": 125.81
+        },
+        {
+          "date": "2026-11-25",
+          "close": 127.44
         }
       ],
       "nextEarningsDate": "2027-02-09",
@@ -4129,107 +4161,75 @@
     },
     {
       "ticker": "CRWD",
-      "fetchedAt": "2026-11-16T00:50:45.312957Z",
+      "fetchedAt": "2026-11-26T04:07:18.772485Z",
       "source": "Yahoo Finance",
       "company": "CrowdStrike Holdings, Inc.",
       "sector": "Technology",
-      "marketCap": 232033878016.0,
-      "enterpriseValue": 227878010880.0,
-      "trailingPE": 3776.83,
-      "forwardPE": 140.72,
-      "pegRatio": 5.85,
-      "priceToSalesTrailing12Months": 43.0,
-      "priceToBook": 45.48,
+      "marketCap": 215703863296.0,
+      "enterpriseValue": 210204000256.0,
+      "trailingPE": 1744.17,
+      "forwardPE": 126.54,
+      "pegRatio": null,
+      "priceToSalesTrailing12Months": 37.54,
+      "priceToBook": 36.32,
       "grossMargins": 0.75,
-      "operatingMargins": -0.02,
-      "profitMargins": 0.01,
+      "operatingMargins": -0.03,
+      "profitMargins": 0.02,
       "returnOnAssets": -0.01,
-      "returnOnEquity": 0.01,
-      "revenueGrowth": 0.26,
+      "returnOnEquity": 0.02,
+      "revenueGrowth": 0.28,
       "earningsGrowth": null,
-      "revenuePerShare": 5.33,
-      "freeCashflow": 1995385472.0,
-      "operatingCashflow": 2016615040.0,
-      "grossProfits": 4057167872.0,
-      "totalCash": 5013847040.0,
-      "totalCashPerShare": 4.9,
-      "totalDebt": 820179008.0,
-      "totalRevenue": 5396145152.0,
-      "debtToEquity": 15.96,
-      "currentRatio": 1.57,
-      "quickRatio": 1.37,
-      "bookValue": 4.98,
-      "sharesOutstanding": 1023934842.0,
-      "floatShares": 1007848826.0,
-      "impliedSharesOutstanding": 1023934842.0,
+      "revenuePerShare": 5.65,
+      "freeCashflow": 2035459456.0,
+      "operatingCashflow": 2284250112.0,
+      "grossProfits": 4331648000.0,
+      "totalCash": 5366650880.0,
+      "totalCashPerShare": 5.23,
+      "totalDebt": 823556992.0,
+      "totalRevenue": 5745319936.0,
+      "debtToEquity": 13.83,
+      "currentRatio": 1.59,
+      "quickRatio": 1.38,
+      "bookValue": 5.76,
+      "sharesOutstanding": 1030596521.0,
+      "floatShares": 1009806535.0,
+      "impliedSharesOutstanding": 1030596521.0,
       "dividendRate": null,
       "dividendYield": 0.0,
       "payoutRatio": 0.0,
       "fiveYearAvgDividendYield": null,
-      "targetHighPrice": 325.0,
-      "targetLowPrice": 132.0,
-      "targetMeanPrice": 250.18,
-      "targetMedianPrice": 250.0,
-      "recommendationMean": 1.66,
-      "numberOfAnalystOpinions": 50.0,
+      "targetHighPrice": 320.0,
+      "targetLowPrice": 174.0,
+      "targetMeanPrice": 249.11,
+      "targetMedianPrice": 252.0,
+      "recommendationMean": 1.58,
+      "numberOfAnalystOpinions": 48.0,
       "beta": 1.15,
       "fiftyTwoWeekHigh": 286.99,
       "fiftyTwoWeekLow": 85.68,
-      "fiftyDayAverage": 244.92,
-      "twoHundredDayAverage": 173.05,
-      "averageVolume": 10069110.0,
-      "averageDailyVolume10Day": 8819000.0,
-      "previousClose": 229.87,
-      "open": 235.5,
-      "regularMarketOpen": 235.5,
-      "dayHigh": 235.85,
-      "dayLow": 219.35,
-      "regularMarketDayHigh": 235.85,
-      "regularMarketDayLow": 219.35,
-      "regularMarketVolume": 6575059.0,
-      "averageVolume10days": 8819000.0,
-      "sharesShort": 21939047.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 26196357.0,
-      "dateShortInterest": 1793318400.0,
-      "fullTimeEmployees": 11706.0,
+      "fiftyDayAverage": 245.88,
+      "twoHundredDayAverage": 177.29,
+      "averageVolume": 10916009.0,
+      "averageDailyVolume10Day": 13104180.0,
+      "previousClose": 210.86,
+      "open": 201.51,
+      "regularMarketOpen": 201.51,
+      "dayHigh": 210.3,
+      "dayLow": 194.7,
+      "regularMarketDayHigh": 210.3,
+      "regularMarketDayLow": 194.7,
+      "regularMarketVolume": 14475572.0,
+      "averageVolume10days": 13104180.0,
+      "sharesShort": 22629556.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 24026908.0,
+      "dateShortInterest": 1794528000.0,
+      "fullTimeEmployees": 10698.0,
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 226.61,
+      "latestPrice": 209.3,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 134.39
-        },
-        {
-          "date": "2025-11-17",
-          "close": 132.45
-        },
-        {
-          "date": "2025-11-18",
-          "close": 128.42
-        },
-        {
-          "date": "2025-11-19",
-          "close": 130.15
-        },
-        {
-          "date": "2025-11-20",
-          "close": 125.33
-        },
-        {
-          "date": "2025-11-21",
-          "close": 122.67
-        },
-        {
-          "date": "2025-11-24",
-          "close": 126.71
-        },
-        {
-          "date": "2025-11-25",
-          "close": 128.09
-        },
         {
           "date": "2025-11-26",
           "close": 125.39
@@ -5201,11 +5201,50 @@
         {
           "date": "2026-11-13",
           "close": 226.61
+        },
+        {
+          "date": "2026-11-16",
+          "close": 223.21
+        },
+        {
+          "date": "2026-11-17",
+          "close": 219.58
+        },
+        {
+          "date": "2026-11-18",
+          "close": 237.03
+        },
+        {
+          "date": "2026-11-19",
+          "close": 243.46
+        },
+        {
+          "date": "2026-11-20",
+          "close": 229.44
+        },
+        {
+          "date": "2026-11-23",
+          "close": 208.97
+        },
+        {
+          "date": "2026-11-24",
+          "close": 210.86
+        },
+        {
+          "date": "2026-11-25",
+          "close": 209.3
         }
       ],
-      "nextEarningsDate": "2026-12-01",
-      "estimatedEPS": 0.31,
+      "nextEarningsDate": "2027-03-02",
+      "estimatedEPS": 0.36,
       "recentEarnings": [
+        {
+          "reportedDate": "2026-11-23",
+          "actualEPS": 0.34,
+          "estimatedEPS": 0.31,
+          "surprisePercent": 9.18,
+          "source": "Yahoo Finance"
+        },
         {
           "reportedDate": "2026-08-26",
           "actualEPS": 0.31,
@@ -5225,13 +5264,6 @@
           "actualEPS": 0.28,
           "estimatedEPS": 0.28,
           "surprisePercent": 1.56,
-          "source": "Yahoo Finance"
-        },
-        {
-          "reportedDate": "2025-12-02",
-          "actualEPS": 0.24,
-          "estimatedEPS": 0.24,
-          "surprisePercent": 1.98,
           "source": "Yahoo Finance"
         }
       ],
@@ -5315,17 +5347,17 @@
     },
     {
       "ticker": "OKTA",
-      "fetchedAt": "2026-11-16T00:50:46.732425Z",
+      "fetchedAt": "2026-11-26T04:07:19.697890Z",
       "source": "Yahoo Finance",
       "company": "Okta, Inc.",
       "sector": "Technology",
-      "marketCap": 31969503232.0,
-      "enterpriseValue": 29723502592.0,
-      "trailingPE": 110.16,
-      "forwardPE": 41.77,
-      "pegRatio": 1.31,
-      "priceToSalesTrailing12Months": 10.4,
-      "priceToBook": 4.58,
+      "marketCap": 35273617408.0,
+      "enterpriseValue": 33027618816.0,
+      "trailingPE": 121.55,
+      "forwardPE": 46.08,
+      "pegRatio": 1.34,
+      "priceToSalesTrailing12Months": 11.48,
+      "priceToBook": 5.06,
       "grossMargins": 0.78,
       "operatingMargins": 0.08,
       "profitMargins": 0.1,
@@ -5346,76 +5378,44 @@
       "quickRatio": 1.38,
       "bookValue": 39.89,
       "sharesOutstanding": 167139757.0,
-      "floatShares": 166742453.0,
+      "floatShares": 166758187.0,
       "impliedSharesOutstanding": 174820928.0,
       "dividendRate": null,
       "dividendYield": 0.0,
       "payoutRatio": 0.0,
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 250.0,
-      "targetLowPrice": 127.0,
-      "targetMeanPrice": 214.72,
+      "targetLowPrice": 150.0,
+      "targetMeanPrice": 217.73,
       "targetMedianPrice": 225.0,
-      "recommendationMean": 1.66,
-      "numberOfAnalystOpinions": 43.0,
+      "recommendationMean": 1.67,
+      "numberOfAnalystOpinions": 42.0,
       "beta": 0.72,
       "fiftyTwoWeekHigh": 235.0,
       "fiftyTwoWeekLow": 62.66,
-      "fiftyDayAverage": 198.1,
-      "twoHundredDayAverage": 129.05,
-      "averageVolume": 4269873.0,
-      "averageDailyVolume10Day": 6679800.0,
-      "previousClose": 182.54,
-      "open": 185.73,
-      "regularMarketOpen": 185.73,
-      "dayHigh": 185.98,
-      "dayLow": 175.0,
-      "regularMarketDayHigh": 185.98,
-      "regularMarketDayLow": 175.0,
-      "regularMarketVolume": 2433038.0,
-      "averageVolume10days": 6679800.0,
-      "sharesShort": 6592564.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 7927408.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyDayAverage": 200.61,
+      "twoHundredDayAverage": 132.83,
+      "averageVolume": 4371668.0,
+      "averageDailyVolume10Day": 3243400.0,
+      "previousClose": 198.12,
+      "open": 189.26,
+      "regularMarketOpen": 189.26,
+      "dayHigh": 202.22,
+      "dayLow": 184.57,
+      "regularMarketDayHigh": 202.22,
+      "regularMarketDayLow": 184.57,
+      "regularMarketVolume": 2701036.0,
+      "averageVolume10days": 3243400.0,
+      "sharesShort": 6752829.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 6959996.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 6366.0,
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
-      "latestPrice": 182.87,
+      "latestPrice": 201.77,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 83.94
-        },
-        {
-          "date": "2025-11-17",
-          "close": 81.07
-        },
-        {
-          "date": "2025-11-18",
-          "close": 81.03
-        },
-        {
-          "date": "2025-11-19",
-          "close": 80.09
-        },
-        {
-          "date": "2025-11-20",
-          "close": 78.32
-        },
-        {
-          "date": "2025-11-21",
-          "close": 78.68
-        },
-        {
-          "date": "2025-11-24",
-          "close": 79.15
-        },
-        {
-          "date": "2025-11-25",
-          "close": 81.16
-        },
         {
           "date": "2025-11-26",
           "close": 80.56
@@ -6387,6 +6387,38 @@
         {
           "date": "2026-11-13",
           "close": 182.87
+        },
+        {
+          "date": "2026-11-16",
+          "close": 178.22
+        },
+        {
+          "date": "2026-11-17",
+          "close": 174.54
+        },
+        {
+          "date": "2026-11-18",
+          "close": 195.61
+        },
+        {
+          "date": "2026-11-19",
+          "close": 206.85
+        },
+        {
+          "date": "2026-11-20",
+          "close": 191.46
+        },
+        {
+          "date": "2026-11-23",
+          "close": 206.28
+        },
+        {
+          "date": "2026-11-24",
+          "close": 198.12
+        },
+        {
+          "date": "2026-11-25",
+          "close": 201.77
         }
       ],
       "nextEarningsDate": "2026-12-01",
@@ -6499,17 +6531,17 @@
     },
     {
       "ticker": "FOUR",
-      "fetchedAt": "2026-11-16T00:50:48.832265Z",
+      "fetchedAt": "2026-11-26T04:07:20.923410Z",
       "source": "Yahoo Finance",
       "company": "Shift4 Payments, Inc.",
       "sector": "Technology",
-      "marketCap": 3355989760.0,
-      "enterpriseValue": 8768990208.0,
-      "trailingPE": 53.95,
-      "forwardPE": 7.95,
-      "pegRatio": 0.36,
-      "priceToSalesTrailing12Months": 0.68,
-      "priceToBook": 7.21,
+      "marketCap": 3266057216.0,
+      "enterpriseValue": 8679057408.0,
+      "trailingPE": 52.51,
+      "forwardPE": 7.72,
+      "pegRatio": 0.79,
+      "priceToSalesTrailing12Months": 0.66,
+      "priceToBook": 7.02,
       "grossMargins": 0.35,
       "operatingMargins": 0.08,
       "profitMargins": 0.02,
@@ -6530,7 +6562,7 @@
       "quickRatio": 0.86,
       "bookValue": 6.21,
       "sharesOutstanding": 74943944.0,
-      "floatShares": 40054540.0,
+      "floatShares": 44500215.0,
       "impliedSharesOutstanding": 74943944.0,
       "dividendRate": null,
       "dividendYield": 0.0,
@@ -6538,69 +6570,37 @@
       "fiveYearAvgDividendYield": null,
       "targetHighPrice": 77.0,
       "targetLowPrice": 38.0,
-      "targetMeanPrice": 49.41,
+      "targetMeanPrice": 49.18,
       "targetMedianPrice": 47.5,
       "recommendationMean": 2.12,
       "numberOfAnalystOpinions": 22.0,
       "beta": 1.48,
       "fiftyTwoWeekHigh": 75.34,
       "fiftyTwoWeekLow": 34.56,
-      "fiftyDayAverage": 40.35,
-      "twoHundredDayAverage": 45.3,
-      "averageVolume": 2194625.0,
-      "averageDailyVolume10Day": 3371180.0,
-      "previousClose": 41.52,
-      "open": 41.63,
-      "regularMarketOpen": 41.63,
-      "dayHigh": 44.87,
-      "dayLow": 41.42,
-      "regularMarketDayHigh": 44.87,
-      "regularMarketDayLow": 41.42,
-      "regularMarketVolume": 2901629.0,
-      "averageVolume10days": 3371180.0,
-      "sharesShort": 13987280.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 14595059.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyDayAverage": 39.9,
+      "twoHundredDayAverage": 44.69,
+      "averageVolume": 2221335.0,
+      "averageDailyVolume10Day": 2273310.0,
+      "previousClose": 41.09,
+      "open": 40.63,
+      "regularMarketOpen": 40.63,
+      "dayHigh": 44.53,
+      "dayLow": 40.17,
+      "regularMarketDayHigh": 44.53,
+      "regularMarketDayLow": 40.17,
+      "regularMarketVolume": 2168614.0,
+      "averageVolume10days": 2273310.0,
+      "sharesShort": 15910698.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 13989027.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 6300.0,
       "industry": "Software - Infrastructure",
       "currency": "USD",
       "recommendationKey": "buy",
       "exDividendDate": "2026-10-15",
-      "latestPrice": 44.78,
+      "latestPrice": 43.58,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 69.88
-        },
-        {
-          "date": "2025-11-17",
-          "close": 67.65
-        },
-        {
-          "date": "2025-11-18",
-          "close": 66.12
-        },
-        {
-          "date": "2025-11-19",
-          "close": 65.58
-        },
-        {
-          "date": "2025-11-20",
-          "close": 65.6
-        },
-        {
-          "date": "2025-11-21",
-          "close": 69.01
-        },
-        {
-          "date": "2025-11-24",
-          "close": 69.62
-        },
-        {
-          "date": "2025-11-25",
-          "close": 70.15
-        },
         {
           "date": "2025-11-26",
           "close": 70.17
@@ -7572,6 +7572,38 @@
         {
           "date": "2026-11-13",
           "close": 44.78
+        },
+        {
+          "date": "2026-11-16",
+          "close": 42.48
+        },
+        {
+          "date": "2026-11-17",
+          "close": 41.41
+        },
+        {
+          "date": "2026-11-18",
+          "close": 40.79
+        },
+        {
+          "date": "2026-11-19",
+          "close": 37.97
+        },
+        {
+          "date": "2026-11-20",
+          "close": 38.07
+        },
+        {
+          "date": "2026-11-23",
+          "close": 40.68
+        },
+        {
+          "date": "2026-11-24",
+          "close": 41.09
+        },
+        {
+          "date": "2026-11-25",
+          "close": 43.58
         }
       ],
       "nextEarningsDate": "2027-02-25",
@@ -7680,17 +7712,17 @@
     },
     {
       "ticker": "DAL",
-      "fetchedAt": "2026-11-16T00:50:50.427503Z",
+      "fetchedAt": "2026-11-26T04:07:22.067718Z",
       "source": "Yahoo Finance",
       "company": "Delta Air Lines, Inc.",
       "sector": "Industrials",
-      "marketCap": 56744943616.0,
-      "enterpriseValue": 72586477568.0,
-      "trailingPE": 17.22,
-      "forwardPE": 11.8,
-      "pegRatio": 0.21,
-      "priceToSalesTrailing12Months": 0.79,
-      "priceToBook": 2.51,
+      "marketCap": 54573830144.0,
+      "enterpriseValue": 70427090944.0,
+      "trailingPE": 16.56,
+      "forwardPE": 11.26,
+      "pegRatio": 1.78,
+      "priceToSalesTrailing12Months": 0.76,
+      "priceToBook": 2.41,
       "grossMargins": 0.18,
       "operatingMargins": 0.07,
       "profitMargins": 0.05,
@@ -7711,78 +7743,46 @@
       "quickRatio": 0.24,
       "bookValue": 34.41,
       "sharesOutstanding": 657912380.0,
-      "floatShares": 650171219.0,
+      "floatShares": 650164675.0,
       "impliedSharesOutstanding": 657912380.0,
       "dividendRate": 0.86,
-      "dividendYield": 1.0,
+      "dividendYield": 1.02,
       "payoutRatio": 0.16,
       "fiveYearAvgDividendYield": 2.12,
       "targetHighPrice": 125.0,
       "targetLowPrice": 53.0,
-      "targetMeanPrice": 100.98,
-      "targetMedianPrice": 101.5,
+      "targetMeanPrice": 101.65,
+      "targetMedianPrice": 102.3,
       "recommendationMean": 1.32,
       "numberOfAnalystOpinions": 24.0,
       "beta": 1.42,
       "fiftyTwoWeekHigh": 95.68,
-      "fiftyTwoWeekLow": 55.27,
-      "fiftyDayAverage": 81.93,
-      "twoHundredDayAverage": 77.67,
-      "averageVolume": 6664081.0,
-      "averageDailyVolume10Day": 6676720.0,
-      "previousClose": 86.55,
-      "open": 87.47,
-      "regularMarketOpen": 87.47,
-      "dayHigh": 87.81,
-      "dayLow": 85.92,
-      "regularMarketDayHigh": 87.81,
-      "regularMarketDayLow": 85.92,
-      "regularMarketVolume": 5003673.0,
-      "averageVolume10days": 6676720.0,
-      "sharesShort": 15990280.0,
-      "sharesShortPreviousMonthDate": 1790726400.0,
-      "sharesShortPriorMonth": 25570890.0,
-      "dateShortInterest": 1793318400.0,
+      "fiftyTwoWeekLow": 55.28,
+      "fiftyDayAverage": 82.59,
+      "twoHundredDayAverage": 78.13,
+      "averageVolume": 6707634.0,
+      "averageDailyVolume10Day": 5528020.0,
+      "previousClose": 84.5,
+      "open": 82.48,
+      "regularMarketOpen": 82.48,
+      "dayHigh": 83.38,
+      "dayLow": 79.64,
+      "regularMarketDayHigh": 83.38,
+      "regularMarketDayLow": 79.64,
+      "regularMarketVolume": 5123539.0,
+      "averageVolume10days": 5528020.0,
+      "sharesShort": 15421452.0,
+      "sharesShortPreviousMonthDate": 1792022400.0,
+      "sharesShortPriorMonth": 21112539.0,
+      "dateShortInterest": 1794528000.0,
       "fullTimeEmployees": 100000.0,
       "industry": "Airlines",
       "currency": "USD",
       "recommendationKey": "strong_buy",
       "exDividendDate": "2026-10-15",
       "lastDividendDate": "2026-10-15",
-      "latestPrice": 86.25,
+      "latestPrice": 82.95,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 57.79
-        },
-        {
-          "date": "2025-11-17",
-          "close": 55.17
-        },
-        {
-          "date": "2025-11-18",
-          "close": 56.53
-        },
-        {
-          "date": "2025-11-19",
-          "close": 56.27
-        },
-        {
-          "date": "2025-11-20",
-          "close": 55.38
-        },
-        {
-          "date": "2025-11-21",
-          "close": 57.95
-        },
-        {
-          "date": "2025-11-24",
-          "close": 60.03
-        },
-        {
-          "date": "2025-11-25",
-          "close": 61.49
-        },
         {
           "date": "2025-11-26",
           "close": 63.59
@@ -8754,10 +8754,42 @@
         {
           "date": "2026-11-13",
           "close": 86.25
+        },
+        {
+          "date": "2026-11-16",
+          "close": 86.6
+        },
+        {
+          "date": "2026-11-17",
+          "close": 84.3
+        },
+        {
+          "date": "2026-11-18",
+          "close": 84.88
+        },
+        {
+          "date": "2026-11-19",
+          "close": 83.17
+        },
+        {
+          "date": "2026-11-20",
+          "close": 80.01
+        },
+        {
+          "date": "2026-11-23",
+          "close": 84.34
+        },
+        {
+          "date": "2026-11-24",
+          "close": 84.5
+        },
+        {
+          "date": "2026-11-25",
+          "close": 82.95
         }
       ],
       "nextEarningsDate": "2027-01-13",
-      "estimatedEPS": 1.42,
+      "estimatedEPS": 1.43,
       "recentEarnings": [
         {
           "reportedDate": "2026-10-09",
@@ -8854,70 +8886,102 @@
     },
     {
       "ticker": "ANT",
-      "fetchedAt": "2026-11-10T15:56:51Z",
-      "source": "SEC EDGAR (S-1/A-2)",
-      "company": "Anthropic, PBC",
+      "fetchedAt": "2026-11-26T04:09:35.957153Z",
+      "source": "Yahoo Finance",
+      "company": "Anthropic, PBC Class A Common Stock",
       "sector": "Technology",
-      "totalCash": 131900000000,
-      "totalAssets": 147358000000,
-      "totalLiabilities": 117467000000,
-      "workingCapital": 130760000000,
-      "totalRevenue": 33240000000,
-      "grossProfit": null,
-      "operatingIncome": -1300000000,
-      "netIncome": -104000000000,
-      "operatingCashFlow": null,
-      "capitalExpenditures": -482000000,
-      "freeCashFlow": null,
-      "computeAndInfrastructure": 24400000000,
-      "personnel": 3152000000,
-      "salesMarketingPartnerships": 3168000000,
-      "otherOperatingAdmin": 1714000000,
-      "stockBasedCompensation": 2185000000,
-      "sharesOutstanding": 2024972990,
-      "floatShares": null,
-      "netLossPerShare": -39.88,
-      "quarterlyRevenue": {
-        "2025-03-31": 376000000,
-        "2025-06-30": 787000000,
-        "2025-09-30": 1382000000,
-        "2025-12-31": 2040000000,
-        "2026-03-31": 4731000000,
-        "2026-06-30": 11555000000,
-        "2026-09-30": 16960000000
-      },
-      "quarterlyNetIncome": {
-        "2025-03-31": -6592000000,
-        "2025-06-30": -6377000000,
-        "2025-09-30": -12138000000,
-        "2025-12-31": -16858000000,
-        "2026-03-31": -14439000000,
-        "2026-06-30": -66309000000,
-        "2026-09-30": -23290000000
-      },
-      "q3_2026_revenue": 16960000000,
-      "annualRevenue": {
-        "2023": 41000000,
-        "2024": 386000000,
-        "2025": 4585000000
-      },
-      "tickerSymbol": "ANT",
-      "exchange": "Nasdaq Global Select Market",
-      "ipoStatus": "S-1/A-2 filed 2026-11-10; proposed IPO price range $70.00-$78.00 per share; 825,000,000 Class A shares (801,351,354 by company, 23,648,646 by selling stockholders)",
-      "filingDate": "2026-11-10",
-      "filingForm": "S-1/A-2",
-      "filingUrl": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
-      "cik": "0002130357",
-      "publicBenefitCorporation": true,
-      "publicBenefitPurpose": "Responsible development and maintenance of advanced AI for the long-term benefit of humanity",
-      "latestValuation": 965000000000,
-      "priorValuation": 380000000000,
-      "millionDollarCustomers": 11900,
-      "tenMillionDollarCustomers": 250,
-      "revenuePerDollarComputeQ3": 1.72,
-      "adjustedOperatingMarginH1": 0.11,
-      "cashFlowPositiveQ3": true,
-      "notes": "S-1/A-2 filed 2026-11-10 (amendment no. 2): proposed IPO of 825,000,000 Class A shares at $70.00-$78.00 (801,351,354 by company, 23,648,646 by selling stockholders), Nasdaq symbol ANT. As of 2026-09-30: cash and cash equivalents $95.6B, short-term investments $36.3B ($131.9B total liquidity from cash/investments), aggregate capital raised $141.1B. 9M 2026: revenue $33.24B, operating loss $1.26B, net loss $104.04B. Q3 2026: revenue $16.96B (+1,127% YoY), operating loss $567M (adjusted operating income $2.5B), net loss $23.29B (including ~$21.9B non-cash fair-value charge on convertible notes/derivatives). Compute commitments ~$900.9B aggregate as of 2026-09-30 (~$451.6B before 2030, ~$70.7B due in next 12 months). 11,900+ customers with $100K+ ARR as of 2026-09-30.",
+      "marketCap": 1106624380928.0,
+      "enterpriseValue": 342741876736.0,
+      "trailingPE": null,
+      "forwardPE": 161.6,
+      "pegRatio": null,
+      "priceToSalesTrailing12Months": 31.37,
+      "priceToBook": -1.21,
+      "grossMargins": 0.22,
+      "operatingMargins": -0.12,
+      "profitMargins": 0.0,
+      "returnOnAssets": null,
+      "returnOnEquity": null,
+      "revenueGrowth": 11.27,
+      "earningsGrowth": null,
+      "revenuePerShare": 17.43,
+      "freeCashflow": null,
+      "operatingCashflow": 5955999744.0,
+      "grossProfits": 7854000128.0,
+      "totalCash": 131844997120.0,
+      "totalCashPerShare": 59.95,
+      "totalDebt": 134985998336.0,
+      "totalRevenue": 35282001920.0,
+      "debtToEquity": 1767.53,
+      "currentRatio": 12.08,
+      "quickRatio": 11.97,
+      "bookValue": -68.14,
+      "sharesOutstanding": 7730103996.0,
+      "floatShares": 179319609.0,
+      "impliedSharesOutstanding": 13366642274.0,
+      "dividendRate": null,
+      "dividendYield": 0.0,
+      "payoutRatio": null,
+      "fiveYearAvgDividendYield": null,
+      "targetHighPrice": 300.0,
+      "targetLowPrice": 92.0,
+      "targetMeanPrice": 136.33,
+      "targetMedianPrice": 130.0,
+      "recommendationMean": 1.47,
+      "numberOfAnalystOpinions": 14.0,
+      "beta": null,
+      "fiftyTwoWeekHigh": 115.1,
+      "fiftyTwoWeekLow": 73.85,
+      "fiftyDayAverage": 88.91,
+      "twoHundredDayAverage": 88.91,
+      "averageVolume": 456230125.0,
+      "averageDailyVolume10Day": 456230125.0,
+      "previousClose": 81.91,
+      "open": 77.93,
+      "regularMarketOpen": 77.93,
+      "dayHigh": 85.92,
+      "dayLow": 73.85,
+      "regularMarketDayHigh": 85.92,
+      "regularMarketDayLow": 73.85,
+      "regularMarketVolume": 292331215.0,
+      "averageVolume10days": 456230125.0,
+      "sharesShort": null,
+      "sharesShortPreviousMonthDate": null,
+      "sharesShortPriorMonth": null,
+      "dateShortInterest": null,
+      "fullTimeEmployees": 5300.0,
+      "industry": "Software - Application",
+      "currency": "USD",
+      "recommendationKey": "strong_buy",
+      "latestPrice": 82.79,
+      "priceHistory": [
+        {
+          "date": "2026-11-19",
+          "close": 97.17
+        },
+        {
+          "date": "2026-11-20",
+          "close": 88.91
+        },
+        {
+          "date": "2026-11-23",
+          "close": 87.64
+        },
+        {
+          "date": "2026-11-24",
+          "close": 81.91
+        },
+        {
+          "date": "2026-11-25",
+          "close": 82.79
+        }
+      ],
+      "recentEarnings": [
+        {
+          "reportedDate": "2026-09-30",
+          "source": "Yahoo Finance"
+        }
+      ],
       "quarterlyFinancials": [
         {
           "quarterEnd": "2026-09-30",
@@ -9028,38 +9092,21 @@
           "freeCashFlow": null
         }
       ],
-      "quarterlySource": "SEC EDGAR (S-1/A, S-1/A-2)",
-      "lastUpdated": "2026-11-10T15:56:51Z",
-      "explanation": "Anthropic, PBC is a public benefit corporation focused on the responsible development and maintenance of advanced AI for the long-term benefit of humanity. The company develops the Claude family of AI models and filed an amended S-1/A-2 registration statement on November 10, 2026 for a proposed Nasdaq listing under ticker ANT, proposing 825,000,000 Class A shares at $70.00-$78.00 per share. Revenue grew from $41M (2023) to $386M (2024) to $4.585B (2025), with nine-month 2026 revenue of $33.242B. Q3 2026 revenue was $16.96B with a net loss of $23.29B largely driven by non-cash fair-value changes on convertible notes and derivatives. As of September 30, 2026, Anthropic reported $95.6B in cash and cash equivalents and $36.3B in short-term investments, $141.1B in aggregate capital raised, and ~11,900 customers generating at least $100K in ARR.",
-      "companyDescription": "Anthropic is an AI safety and research company developing frontier AI models, including the Claude family of assistants. It operates as a public benefit corporation with a Long-Term Benefit Trust and a special Class T common stock that gives AI-safety-focused trustees majority board representation.",
-      "explanationOverride": "Anthropic, PBC filed amendment no. 2 to Form S-1 (S-1/A-2) on November 10, 2026 for a proposed Nasdaq IPO under ticker ANT: 825,000,000 Class A shares at an estimated $70.00-$78.00 per share (801,351,354 by the company, 23,648,646 by selling stockholders). Revenue: $41M (2023), $386M (2024), $4.585B (2025), $33.242B (9M 2026: Q1 $4.731B, Q2 $11.555B, Q3 $16.960B). Q3 2026 operating loss was $567M (adjusted operating income $2.5B); net loss $23.29B included ~$21.9B non-cash fair-value charge. 9M 2026 net loss was $104.039B, driven primarily by fair-value changes on convertible notes and derivatives. As of 2026-09-30: cash and cash equivalents $95.6B, short-term investments $36.3B, aggregate capital raised $141.1B, compute commitments ~$900.9B (~$451.6B before 2030, ~$70.7B due in next 12 months), and 11,900+ customers with $100K+ ARR.",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
-      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm",
-      "yahooUrl": "https://finance.yahoo.com/quote/ANTH.PVT/",
-      "googleFinanceUrl": "https://www.google.com/finance/quote/E10AAFF2-4D89-46D4-820B-B4F64B8D42CA:CRUNCHBASE",
-      "ipoPriceRangeLow": 70.0,
-      "ipoPriceRangeHigh": 78.0,
-      "ipoSharesOffered": 825000000,
-      "ipoSharesCompany": 801351354,
-      "ipoSharesSellingStockholders": 23648646,
-      "cashAndCashEquivalents": 95600000000,
-      "shortTermInvestments": 36300000000,
-      "totalCapitalRaised": 141100000000,
-      "committedSpend": 900900000000
+      "quarterlySource": "SEC EDGAR (S-1/A, S-1/A-2)"
     },
     {
       "ticker": "BYDIF",
-      "fetchedAt": "2026-11-16T00:50:52.515292Z",
+      "fetchedAt": "2026-11-26T04:07:23.299155Z",
       "source": "Yahoo Finance",
       "company": "BYD Electronic (International) Company Limited",
       "sector": "Technology",
-      "marketCap": 5839881728.0,
-      "enterpriseValue": 959735296.0,
-      "trailingPE": 18.57,
+      "marketCap": 5031282688.0,
+      "enterpriseValue": 226993216.0,
+      "trailingPE": 16.0,
       "forwardPE": null,
-      "pegRatio": 0.64,
+      "pegRatio": 3.12,
       "priceToSalesTrailing12Months": 0.03,
-      "priceToBook": 1.13,
+      "priceToBook": 0.98,
       "grossMargins": 0.05,
       "operatingMargins": 0.01,
       "profitMargins": 0.01,
@@ -9083,7 +9130,7 @@
       "floatShares": 650567735.0,
       "impliedSharesOutstanding": 2246108500.0,
       "dividendRate": 0.02,
-      "dividendYield": 0.88,
+      "dividendYield": 1.02,
       "payoutRatio": 0.16,
       "fiveYearAvgDividendYield": 0.87,
       "targetHighPrice": null,
@@ -9094,20 +9141,20 @@
       "numberOfAnalystOpinions": null,
       "beta": 0.32,
       "fiftyTwoWeekHigh": 4.79,
-      "fiftyTwoWeekLow": 2.37,
-      "fiftyDayAverage": 2.86,
-      "twoHundredDayAverage": 3.33,
-      "averageVolume": 11870.0,
-      "averageDailyVolume10Day": 5010.0,
-      "previousClose": 2.64,
-      "open": 2.55,
-      "regularMarketOpen": 2.55,
-      "dayHigh": 2.57,
-      "dayLow": 2.55,
-      "regularMarketDayHigh": 2.57,
-      "regularMarketDayLow": 2.55,
-      "regularMarketVolume": 600.0,
-      "averageVolume10days": 5010.0,
+      "fiftyTwoWeekLow": 2.16,
+      "fiftyDayAverage": 2.74,
+      "twoHundredDayAverage": 3.26,
+      "averageVolume": 11570.0,
+      "averageDailyVolume10Day": 4640.0,
+      "previousClose": 2.24,
+      "open": 2.24,
+      "regularMarketOpen": 2.24,
+      "dayHigh": 2.24,
+      "dayLow": 2.2,
+      "regularMarketDayHigh": 2.24,
+      "regularMarketDayLow": 2.2,
+      "regularMarketVolume": 1240.0,
+      "averageVolume10days": 4640.0,
       "sharesShort": null,
       "sharesShortPreviousMonthDate": null,
       "sharesShortPriorMonth": null,
@@ -9118,40 +9165,8 @@
       "recommendationKey": "none",
       "exDividendDate": "2026-06-11",
       "lastDividendDate": "2025-06-10",
-      "latestPrice": 2.6,
+      "latestPrice": 2.27,
       "priceHistory": [
-        {
-          "date": "2025-11-14",
-          "close": 4.6
-        },
-        {
-          "date": "2025-11-17",
-          "close": 4.62
-        },
-        {
-          "date": "2025-11-18",
-          "close": 4.62
-        },
-        {
-          "date": "2025-11-19",
-          "close": 4.25
-        },
-        {
-          "date": "2025-11-20",
-          "close": 4.4
-        },
-        {
-          "date": "2025-11-21",
-          "close": 4.4
-        },
-        {
-          "date": "2025-11-24",
-          "close": 3.91
-        },
-        {
-          "date": "2025-11-25",
-          "close": 4.25
-        },
         {
           "date": "2025-11-26",
           "close": 4.79
@@ -10123,6 +10138,38 @@
         {
           "date": "2026-11-13",
           "close": 2.6
+        },
+        {
+          "date": "2026-11-16",
+          "close": 2.33
+        },
+        {
+          "date": "2026-11-17",
+          "close": 2.37
+        },
+        {
+          "date": "2026-11-18",
+          "close": 2.4
+        },
+        {
+          "date": "2026-11-19",
+          "close": 2.37
+        },
+        {
+          "date": "2026-11-20",
+          "close": 2.16
+        },
+        {
+          "date": "2026-11-23",
+          "close": 2.24
+        },
+        {
+          "date": "2026-11-24",
+          "close": 2.24
+        },
+        {
+          "date": "2026-11-25",
+          "close": 2.27
         }
       ],
       "nextEarningsDate": "2027-03-31",

@@ -98,3 +98,15 @@ Additional Resources:
 - Agency Guidance on Information Integrity and Resilience (IIR) Guidance (New)
 - Interim White House Guidance on Tech Engagement (GC Summary)
 - State Department Guidance and Resources (24 STATE 27966, 23 STATE 79110, 23 STATE 81494, 21 STATE 35924, 21 STATE 36050, 23 STATE 108554, 10 FAM 184, 10 FAM 185(d))
+
+Primary Sources:
+- *Missouri v. Biden*, 5th Cir. (2023) — https://www.ca5.uscourts.gov/opinions/pub/23/23-30445-CV0.pdf
+- *Murthy v. Missouri*, 603 U.S. ___ (2024) — https://www.supremecourt.gov/opinions/23pdf/23-411_4b15.pdf
+- District Court PI Order (2023) — https://www.lamd.uscourts.gov/sites/lamd/files/opinions/2023-07-04%20Order%20Granting%20PI.pdf
+- 23 STATE 108554 — https://www.state.gov/wp-content/uploads/2023/10/23-STATE-108554.pdf
+- 24 STATE 27966 — https://www.state.gov/wp-content/uploads/2024/02/24-STATE-27966.pdf
+- White House Interim Guidance on Tech Engagement — https://www.whitehouse.gov/wp-content/uploads/2024/02/Interim-Guidance-on-Tech-Engagement.pdf
+- ADS 558 — https://www.usaid.gov/sites/default/files/2023-05/ADS_558.pdf
+- Foreign Assistance Act §7032(g) (FY23) — https://www.congress.gov/117/plaws/publ328/PLAW-117publ328.pdf
+
+[USAID Files](https://www.usaid.gov/)

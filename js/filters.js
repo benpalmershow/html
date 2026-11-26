@@ -176,7 +176,8 @@ function setupChartIconHandlers(SELECTORS, DATA_ATTRS) {
 function setupExpandHandlers(SELECTORS) {
     setupIconHandlers(SELECTORS.EXPAND_TOGGLE, function () {
         const indicator = this.closest(SELECTORS.INDICATOR);
-        indicator.classList.toggle('expanded');
+        const isExpanded = indicator.classList.toggle('expanded');
+        this.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
     });
 }
 

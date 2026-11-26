@@ -162,27 +162,31 @@ function holdingChange(holding, priorSnapshot) {
 
 function buildHoldingItem(holding, priorSnapshot, index) {
     const safeName = HtmlUtils.escapeHtml(holding.name);
-    const safeTicker = HtmlUtils.escapeHtml(holding.ticker);
+    const safeTicker = HtmlUtils.escapeHtml(holding.ticker || '');
     const isValidLink = holding.link && typeof holding.link === 'string' && (holding.link.startsWith('https://') || holding.link.startsWith('http://'));
     const safeLink = isValidLink ? holding.link : 'https://www.perplexity.ai/finance/' + safeName;
 
-    // Check if ticker is a CIK number (10 digits) or if it looks like a number
+    // Check if ticker is a CIK number (10 digits) or purely numeric
     const isCIK = /^\d{10}$/.test(holding.ticker) || /^\d+$/.test(holding.ticker);
     const displayTicker = isCIK ? '' : safeTicker;
     const displayText = isCIK ? safeName : displayTicker;
+    const hasSeparateName = !isCIK && safeName !== displayTicker;
 
     const change = holdingChange(holding, priorSnapshot);
     const changeHtml = change
         ? `<span class="holding-change ${change.className}" title="${HtmlUtils.escapeHtml(change.title)}">${change.label}</span>`
         : '';
 
+    const formattedValue = holding.value ? '$' + Number(holding.value).toLocaleString() : '';
+    const pctTitle = formattedValue ? `${formattedValue} • ${holding.pct}%` : `${holding.pct}%`;
+
     return `
-        <div class="holding-item" data-holding-index="${index}" data-pct="${holding.pct}" style="--pct-width: ${Math.min(holding.pct * 2, 100)}%; --pct-color: ${getColorByValue(holding.pct)};">
-             <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer" title="${safeName}">${displayText}</a></div>
-            <div class="holding-name">${safeName}</div>
+        <li class="holding-item" role="listitem" tabindex="0" data-holding-index="${index}" data-pct="${holding.pct}" data-value="${holding.value || 0}" data-name="${safeName.toLowerCase()}" data-is-etf="${isETF(holding)}" style="--pct-width: ${Math.min(holding.pct * 2, 100)}%; --pct-color: ${getColorByValue(holding.pct)};">
+            <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer" title="Research ${safeName} on Perplexity Finance">${displayText}<span class="visually-hidden"> (opens external financial research in new tab)</span></a></div>
+            ${hasSeparateName ? `<div class="holding-name" title="${safeName}">${safeName}</div>` : ''}
             ${changeHtml}
-            <div class="holding-pct">${holding.pct}%</div>
-        </div>
+            <div class="holding-pct" title="${pctTitle}">${holding.pct}%</div>
+        </li>
     `;
 }
 
@@ -199,7 +203,7 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
         aumDelta = `<span class="firm-delta ${deltaClass}">${arrow} ${Math.abs(delta).toFixed(1)}%</span>`;
     }
 
-const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
+    const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
     const periodRow = period
         ? `<div style="display: flex; justify-content: space-between; gap: 12px; margin-bottom: 0;">
             <span style="color: var(--text-secondary); font-size: 0.8rem;">Period:</span>
@@ -232,25 +236,26 @@ const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
 
     return `
         <div class="indicator-header">
-            <div class="firm-card-title">${HtmlUtils.escapeHtml(firmName)}</div>
+            <h3 class="firm-card-title">${HtmlUtils.escapeHtml(firmName)}</h3>
             <div class="indicator-actions">
-                <button class="firm-sort-toggle" aria-label="Sort holdings" data-firm="${firmIdx}"><i data-lucide="arrow-up-down"></i></button>
-                <button class="expand-toggle" aria-label="Toggle firm details"><i data-lucide="chevron-down"></i></button>
+                <button class="firm-sort-toggle" aria-label="Sort holdings: currently sorted by percentage" title="Sort: percentage" data-firm="${firmIdx}"><i data-lucide="arrow-up-down"></i></button>
+                <button class="expand-toggle" aria-label="Toggle firm details" aria-expanded="false"><i data-lucide="chevron-down"></i></button>
             </div>
         </div>
         ${updatedHtml}
+        <p class="visually-hidden firm-status-live" role="status" aria-live="polite"></p>
         <div class="indicator-content">
             <div class="data-rows-container">
                 <div class="firm-chart-container">
-                    <div class="firm-filter-buttons">
-                        <button class="firm-filter-btn active" data-filter="all" data-firm="${firmIdx}">All</button>
-                        <button class="firm-filter-btn" data-filter="etf" data-firm="${firmIdx}">ETFs</button>
-                        <button class="firm-filter-btn" data-filter="stock" data-firm="${firmIdx}">Stocks</button>
+                    <div class="firm-filter-buttons" role="group" aria-label="Filter holdings by asset type">
+                        <button class="firm-filter-btn active" data-filter="all" data-firm="${firmIdx}" aria-pressed="true">All</button>
+                        <button class="firm-filter-btn" data-filter="etf" data-firm="${firmIdx}" aria-pressed="false">ETFs</button>
+                        <button class="firm-filter-btn" data-filter="stock" data-firm="${firmIdx}" aria-pressed="false">Stocks</button>
                     </div>
-                    <div class="firm-holdings-list" data-firm-holdings="${firmIdx}">
+                    <ul class="firm-holdings-list" role="list" data-firm-holdings="${firmIdx}">
                         ${firmHoldings.slice(0, 13).map((h, idx) => buildHoldingItem(h, priorSnapshot, idx)).join('')}
-                    </div>
-                    <div class="firm-empty-state" style="display: none;">
+                    </ul>
+                    <div class="firm-empty-state" style="display: none;" role="note">
                         <div class="empty-state-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M4 19h16"></path>
@@ -262,17 +267,17 @@ const period = firmData && firmData[firmIdx] ? firmData[firmIdx].period : null;
                         <div class="empty-state-text">No holdings match this filter</div>
                     </div>
                     <div class="firm-show-more" style="display: ${firmHoldings.length > 13 ? 'flex' : 'none'};">
-                        <button class="firm-show-more-btn" data-firm="${firmIdx}">Show more</button>
+                        <button class="firm-show-more-btn" data-firm="${firmIdx}" aria-expanded="false">Show more (${Math.max(0, firmHoldings.length - 13)})</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="indicator-explanation">
             <div class="indicator-explanation-header">Firm details</div>
-        <div class="indicator-explanation-body">
-            ${firmDetails}
-            ${description ? `<div class="firm-description">${HtmlUtils.sanitizeHtml(description)}</div>` : ''}
-        </div>
+            <div class="indicator-explanation-body">
+                ${firmDetails}
+                ${description ? `<div class="firm-description">${HtmlUtils.sanitizeHtml(description)}</div>` : ''}
+            </div>
         </div>
     `;
 }
@@ -318,17 +323,38 @@ function initializeFirmCards() {
         const sortOptions = ['pct', 'value', 'name'];
         const sortLabels = { pct: 'percentage', value: 'value', name: 'name' };
 
-        function updateFirmDisplay() {
-            let displayHoldings = [...firmHoldings];
+        const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
+        const emptyState = card.querySelector('.firm-empty-state');
+        const showMoreDiv = card.querySelector('.firm-show-more');
+        const showMoreBtn = card.querySelector('.firm-show-more-btn');
+        const sortToggle = card.querySelector('.firm-sort-toggle');
+        const statusLive = card.querySelector('.firm-status-live');
 
-            // Apply filter
+        function toggleHoldingHighlight(item) {
+            const isHighlighted = item.classList.contains('highlighted');
+            holdingsList.querySelectorAll('.holding-item').forEach(h => {
+                h.classList.remove('highlighted');
+                h.style.borderLeft = '';
+            });
+            if (!isHighlighted) {
+                const pct = item.dataset.pct;
+                item.classList.add('highlighted');
+                item.style.borderLeft = `3px solid ${getColorByValue(pct)}`;
+            }
+        }
+
+        function updateFirmDisplay() {
+            if (!holdingsList) return;
+
+            // 1. Filter holdings
+            let displayHoldings = [...firmHoldings];
             if (firmState.filter === 'etf') {
                 displayHoldings = displayHoldings.filter(h => isETF(h));
             } else if (firmState.filter === 'stock') {
                 displayHoldings = displayHoldings.filter(h => !isETF(h));
             }
 
-            // Apply sort
+            // 2. Sort holdings
             if (firmState.sort === 'pct') {
                 displayHoldings.sort((a, b) => b.pct - a.pct);
             } else if (firmState.sort === 'value') {
@@ -337,69 +363,50 @@ function initializeFirmCards() {
                 displayHoldings.sort((a, b) => a.name.localeCompare(b.name));
             }
 
-            // Determine how many to show
-            const showCount = firmState.showMore ? displayHoldings.length : Math.min(13, displayHoldings.length);
+            // 3. Render or update empty state
+            if (displayHoldings.length === 0) {
+                holdingsList.style.display = 'none';
+                if (emptyState) emptyState.style.display = 'block';
+                if (showMoreDiv) showMoreDiv.style.display = 'none';
+                if (statusLive) statusLive.textContent = 'No holdings match this filter.';
+            } else {
+                holdingsList.style.display = 'flex';
+                if (emptyState) emptyState.style.display = 'none';
 
-            // Update holdings list
-            const holdingsList = card.querySelector(`[data-firm-holdings="${firmIdx}"]`);
-            const emptyState = card.querySelector('.firm-empty-state');
-            const showMoreDiv = card.querySelector('.firm-show-more');
-            const showMoreBtn = card.querySelector('.firm-show-more-btn');
-            const sortToggle = card.querySelector('.firm-sort-toggle');
+                const showCount = firmState.showMore ? displayHoldings.length : Math.min(13, displayHoldings.length);
+                const visibleHoldings = displayHoldings.slice(0, showCount);
 
-            if (holdingsList) {
-                if (displayHoldings.length === 0) {
-                    holdingsList.style.display = 'none';
-                    if (emptyState) emptyState.style.display = 'block';
-                    if (showMoreDiv) showMoreDiv.style.display = 'none';
-                } else {
-                    holdingsList.style.display = 'flex';
-                    if (emptyState) emptyState.style.display = 'none';
+                holdingsList.innerHTML = visibleHoldings.map((h, idx) =>
+                    buildHoldingItem(h, priorSnapshot, idx)).join('');
 
-                    holdingsList.innerHTML = displayHoldings.slice(0, showCount).map((h, idx) =>
-                        buildHoldingItem(h, priorSnapshot, idx)).join('');
-
-                    // Show/hide "Show more" button
-                    if (showMoreDiv && showMoreBtn) {
-                        if (displayHoldings.length > 13) {
-                            showMoreDiv.style.display = 'flex';
-                            showMoreBtn.textContent = firmState.showMore ? 'Show less' : `Show more (${displayHoldings.length - 13})`;
-                        } else {
-                            showMoreDiv.style.display = 'none';
-                        }
+                // Show/hide "Show more" button
+                if (showMoreDiv && showMoreBtn) {
+                    if (displayHoldings.length > 13) {
+                        showMoreDiv.style.display = 'flex';
+                        showMoreBtn.textContent = firmState.showMore ? 'Show less' : `Show more (${displayHoldings.length - 13})`;
+                        showMoreBtn.setAttribute('aria-expanded', firmState.showMore ? 'true' : 'false');
+                    } else {
+                        showMoreDiv.style.display = 'none';
                     }
+                }
 
-                    // Add click handlers for holdings
-                    holdingsList.querySelectorAll('.holding-item').forEach((item) => {
-                        item.addEventListener('click', (e) => {
-                            // If the click originated from a link, allow default navigation
-                            if (e.target.closest('a')) return;
-                            e.preventDefault();
-                            const holdingIndex = parseInt(item.dataset.holdingIndex);
-
-                            // Highlight the holding item in the list
-                            holdingsList.querySelectorAll('.holding-item').forEach(h => {
-                                h.classList.remove('highlighted');
-                                h.style.borderLeft = '';
-                                h.style.borderImage = '';
-                            });
-                            const pct = item.dataset.pct;
-                            item.classList.add('highlighted');
-                            item.style.borderLeft = `3px solid ${getColorByValue(pct)}`;
-                        });
-                    });
+                if (statusLive) {
+                    const filterText = firmState.filter === 'all' ? '' : firmState.filter + ' ';
+                    statusLive.textContent = `Showing ${showCount} of ${displayHoldings.length} ${filterText}holdings, sorted by ${sortLabels[firmState.sort]}`;
                 }
             }
 
-            // Update filter button states
+            // Update filter button states and ARIA
             card.querySelectorAll('.firm-filter-btn').forEach(btn => {
                 const isActive = btn.dataset.filter === firmState.filter;
                 btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
             });
 
-            // Update sort toggle title
+            // Update sort toggle title and ARIA
             if (sortToggle) {
-                sortToggle.title = `Sort by ${sortLabels[firmState.sort]}`;
+                sortToggle.title = `Sort: ${sortLabels[firmState.sort]}`;
+                sortToggle.setAttribute('aria-label', `Sort holdings: currently sorted by ${sortLabels[firmState.sort]}`);
             }
         }
 
@@ -413,11 +420,7 @@ function initializeFirmCards() {
         });
 
         // Setup sort toggle handler - cycles through sort options
-        const sortToggle = card.querySelector('.firm-sort-toggle');
         if (sortToggle) {
-            // Initialize with default sort
-            sortToggle.title = `Sort by ${sortLabels[firmState.sort]}`;
-
             sortToggle.addEventListener('click', () => {
                 const currentIndex = sortOptions.indexOf(firmState.sort);
                 const nextIndex = (currentIndex + 1) % sortOptions.length;
@@ -427,11 +430,33 @@ function initializeFirmCards() {
         }
 
         // Setup show more button handler
-        const showMoreBtn = card.querySelector('.firm-show-more-btn');
         if (showMoreBtn) {
             showMoreBtn.addEventListener('click', () => {
                 firmState.showMore = !firmState.showMore;
                 updateFirmDisplay();
+            });
+        }
+
+        // Setup interactive click and keyboard selection for holding items
+        if (holdingsList) {
+            holdingsList.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+                const item = e.target.closest('.holding-item');
+                if (item) {
+                    e.preventDefault();
+                    toggleHoldingHighlight(item);
+                }
+            });
+
+            holdingsList.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.target.closest('a')) return;
+                    const item = e.target.closest('.holding-item');
+                    if (item && document.activeElement === item) {
+                        e.preventDefault();
+                        toggleHoldingHighlight(item);
+                    }
+                }
             });
         }
 

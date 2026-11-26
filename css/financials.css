@@ -6,11 +6,11 @@
 
 .data-rows-container { max-height: 0; overflow: clip; interpolate-size: allow-keywords; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 
-/* 13F cards show holdings by default, so the rows container scrolls instead of
-   clipping (the holdings list itself is unbounded to avoid nested scrollers). */
-.category[data-category="13F Holdings"] .indicator .data-rows-container { max-height: 180px; overflow-y: auto; scrollbar-gutter: stable; }
+/* 13F cards show holdings by default; data-rows-container is visible so firm-holdings-list
+   handles scrolling cleanly without nested scrollbars. */
+.category[data-category="13F Holdings"] .indicator .data-rows-container { max-height: none; overflow: visible; }
 
-.category[data-category="13F Holdings"] .indicator.expanded .data-rows-container { max-height: 1200px; overflow-y: auto; scrollbar-gutter: stable; }
+.category[data-category="13F Holdings"] .indicator.expanded .data-rows-container { max-height: none; overflow: visible; }
 
 /* PAGE HEADER */
 
@@ -97,6 +97,13 @@
     gap: 1rem;
 }
 
+/* 13F cards contain multi-column portfolio rows; provide comfortable horizontal room. */
+#categories[data-filter="13F Holdings"] .indicators-grid,
+.category[data-category="13F Holdings"] .indicators-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1rem;
+}
+
 .indicator {
     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 255, 255, 0.02) 100%);
     border-radius: var(--card-radius);
@@ -149,6 +156,20 @@
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
 .indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-inline-size: 0; word-break: normal; overflow-wrap: break-word; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+
+.indicator-title-main { display: inline; }
+.indicator-title-paren {
+    display: block;
+    width: 100%;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.25;
+    max-inline-size: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* Earnings cards get larger, more prominent company name */
 .category[data-category="Earnings"] .indicator-name { font-size: 1.0rem; font-weight: 700; letter-spacing: -0.01em; }

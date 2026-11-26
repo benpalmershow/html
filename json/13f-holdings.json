@@ -254,6 +254,17 @@
       "cik": 1082621,
       "period": "2026-09-30",
       "previousPeriod": "2026-06-30"
+    },
+    {
+      "name": "Situational Awareness LP",
+      "shortName": "Situational Awareness",
+      "filingDate": "2026-11-16",
+      "description": "Situational Awareness LP is an investment management firm. The holdings shown are based on their most recent 13F filing with the SEC (period: 2026-09-30). <a href='https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2045724&type=13F-HR&dateb=&owner=include&count=10' target='_blank' style='color: var(--accent-primary); text-decoration: none;'>View SEC filings →</a>",
+      "firmIndex": 24,
+      "lastUpdated": "2026-11-25",
+      "cik": 2045724,
+      "period": "2026-09-30",
+      "previousPeriod": "2026-06-30"
     }
   ],
   "holdings": [
@@ -145231,9 +145242,108 @@
       "link": "https://www.perplexity.ai/finance/PCTTW",
       "cusip": "74623V111",
       "shares": 714285
+    },
+    {
+      "ticker": "SHAZ",
+      "name": "SHARONAI HOLDINGS INC",
+      "value": 440673870,
+      "pct": 27.9,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/SHAZ",
+      "cusip": "778920306",
+      "shares": 8070950
+    },
+    {
+      "ticker": "BE",
+      "name": "BLOOM ENERGY CORP",
+      "value": 389156900,
+      "pct": 24.7,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/BE",
+      "cusip": "093712107",
+      "shares": 1405000
+    },
+    {
+      "ticker": "NBIS",
+      "name": "NEBIUS GROUP N.V.",
+      "value": 332590800,
+      "pct": 21.1,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/NBIS",
+      "cusip": "N97284108",
+      "shares": 1410000
+    },
+    {
+      "ticker": "SNDK",
+      "name": "SANDISK CORP",
+      "value": 182688450,
+      "pct": 11.6,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/SNDK",
+      "cusip": "80004C200",
+      "shares": 105000
+    },
+    {
+      "ticker": "DRAM",
+      "name": "ROUNDHILL ETF TRUST",
+      "value": 140337000,
+      "pct": 8.9,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/DRAM",
+      "cusip": "77926X320",
+      "shares": 2325000
+    },
+    {
+      "ticker": "CLSK",
+      "name": "CLEANSPARK INC",
+      "value": 38885094,
+      "pct": 2.5,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/CLSK",
+      "cusip": "18452B209",
+      "shares": 3019029
+    },
+    {
+      "ticker": "IREN",
+      "name": "IREN LIMITED",
+      "value": 21579080,
+      "pct": 1.4,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/IREN",
+      "cusip": "Q4982L109",
+      "shares": 527864
+    },
+    {
+      "ticker": "BTDR",
+      "name": "BITDEER TECHNOLOGIES GROUP",
+      "value": 20294143,
+      "pct": 1.3,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/BTDR",
+      "cusip": "G11448100",
+      "shares": 1934618
+    },
+    {
+      "ticker": "FRMI",
+      "name": "FERMI INC",
+      "value": 11248691,
+      "pct": 0.7,
+      "firm": "Situational Awareness LP",
+      "firmIndex": 24,
+      "link": "https://www.perplexity.ai/finance/FRMI",
+      "cusip": "314911108",
+      "shares": 2671898
     }
   ],
-  "lastUpdated": "2026-11-25",
+  "lastUpdated": "2026-11-26",
   "previous": {
     "ABBINGTON INVESTMENT GROUP": {
       "period": "2026-06-30",
@@ -158366,6 +158476,102 @@
           "value": 1857141,
           "pct": 0.0,
           "shares": 714285
+        }
+      }
+    },
+    "Situational Awareness LP": {
+      "period": "2026-06-30",
+      "total": 20242292228,
+      "holdings": {
+        "80004C200": {
+          "ticker": "SNDK",
+          "value": 5673738513,
+          "pct": 28.0,
+          "shares": 2495344
+        },
+        "595112103": {
+          "ticker": "MU",
+          "value": 5573819392,
+          "pct": 27.5,
+          "shares": 4828786
+        },
+        "093712107": {
+          "ticker": "BE",
+          "value": 1942912642,
+          "pct": 9.6,
+          "shares": 6418608
+        },
+        "874039100": {
+          "ticker": "TSM",
+          "value": 1288978145,
+          "pct": 6.4,
+          "shares": 2699035
+        },
+        "N97284108": {
+          "ticker": "NBIS",
+          "value": 1232894684,
+          "pct": 6.1,
+          "shares": 4464260
+        },
+        "21873S108": {
+          "ticker": "CRWV",
+          "value": 744515203,
+          "pct": 3.7,
+          "shares": 7479558
+        },
+        "21874A106": {
+          "ticker": "CORZ",
+          "value": 665556824,
+          "pct": 3.3,
+          "shares": 26008473
+        },
+        "861012102": {
+          "ticker": "STM",
+          "value": 584344203,
+          "pct": 2.9,
+          "shares": 7802700
+        },
+        "038169207": {
+          "ticker": "APLD",
+          "value": 469022807,
+          "pct": 2.3,
+          "shares": 15384616
+        },
+        "767292105": {
+          "ticker": "RIOT",
+          "value": 468198000,
+          "pct": 2.3,
+          "shares": 17100000
+        },
+        "778920306": {
+          "ticker": "SHAZ",
+          "value": 456836112,
+          "pct": 2.3,
+          "shares": 5396127
+        },
+        "Q4982L109": {
+          "ticker": "IREN",
+          "value": 433250547,
+          "pct": 2.1,
+          "shares": 9474099
+        },
+        "18452B209": {
+          "ticker": "CLSK",
+          "value": 178617822,
+          "pct": 0.9,
+          "shares": 12276139
+        },
+        "486917107": {
+          "ticker": "KEEL",
+          "value": 151830996,
+          "pct": 0.8,
+          "shares": 26451393
+        },
+        "G11448100": {
+          "ticker": "BTDR",
+          "value": 54584072,
+          "pct": 0.3,
+          "shares": 3439450
         }
       }
     }

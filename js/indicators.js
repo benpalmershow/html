@@ -1658,6 +1658,15 @@ function buildChangeIndicators(momChange, yoyChange, indicator) {
     return result;
 }
 
+function formatIndicatorDisplayName(name) {
+    if (!name) return '';
+    const match = name.match(/^(.*?)\s*(\([^)]+\))\s*$/);
+    if (!match) return HtmlUtils.escapeHtml(name);
+    const main = HtmlUtils.escapeHtml(match[1]);
+    const paren = HtmlUtils.escapeHtml(match[2]);
+    return `<span class="indicator-title-main">${main}</span><span class="indicator-title-paren">${paren}</span>`;
+}
+
 function cleanCompanyName(name) {
     if (!name) return '';
     if (name.includes('Space') && name.includes('Exploration')) return 'SpaceX';
@@ -1762,6 +1771,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     if (indicator.category === 'Earnings' && indicator.company) {
         displayName = cleanCompanyName(indicator.company);
     }
+    const formattedTitle = formatIndicatorDisplayName(displayName);
 
     const indicatorNameAttr = htmlAttr(indicator.name);
     const badgeUrl = `financials.html?indicator=${encodeURIComponent(indicator.name)}`;
@@ -1773,7 +1783,7 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
         indicator.result ? `<a href="${badgeUrl}" class="badge-link game-final-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="final" data-sort-value="1">Final</a>` : ''
     ].filter(Boolean).join('');
 
-    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${displayName}${badges}</div><div class="indicator-actions"><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${explanationHtml}</div></div>`;
+    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${formattedTitle}${badges}</div><div class="indicator-actions"><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${explanationHtml}</div></div>`;
 }
 
 

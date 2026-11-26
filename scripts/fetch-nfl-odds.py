@@ -58,6 +58,24 @@ def is_live_window(game, now, pre_minutes=15, post_hours=4):
     return False
 
 
+def is_post_game_window(game, now, post_hours=4, immediate_hours=1):
+    """Check if we're in the immediate post-game window for aggressive polling.
+    
+    Games typically last ~3 hours. This window starts at game_time + 3 hours
+    and runs for `immediate_hours` (default 1 hour) for ultra-frequent polling
+    to catch settled odds instantly.
+    """
+    gt = parse_game_time_iso(game.get("game_time_iso"))
+    if gt is None:
+        return False
+    if gt.tzinfo is None:
+        gt = gt.replace(tzinfo=timezone.utc)
+    # Start 3 hours after kickoff (typical game duration)
+    window_start = gt + timedelta(hours=3)
+    window_end = window_start + timedelta(hours=immediate_hours)
+    return window_start <= now <= window_end
+
+
 def is_recently_updated(game, now, max_age_min=3):
     lu = game.get("lastUpdated")
     if not lu:
@@ -78,9 +96,10 @@ def main():
     parser = argparse.ArgumentParser(description="Refresh NFL moneyline odds from Polymarket.")
     parser.add_argument("--game-id", help="Refresh one game by its YAML id.")
     parser.add_argument("--week", type=int, help="Refresh only games from this NFL week.")
-    parser.add_argument("--mode", choices=["full", "live"], default=os.environ.get("NFL_MODE", "full"), help="full = all selected games; live = only games near/in gametime")
+    parser.add_argument("--mode", choices=["full", "live", "post-game"], default=os.environ.get("NFL_MODE", "full"), help="full = all selected games; live = only games near/in gametime; post-game = ultra-frequent polling right after games end")
     parser.add_argument("--pre-minutes", type=int, default=int(os.environ.get("NFL_PRE_MINUTES", "15")))
     parser.add_argument("--post-hours", type=int, default=int(os.environ.get("NFL_POST_HOURS", "4")))
+    parser.add_argument("--immediate-hours", type=int, default=int(os.environ.get("NFL_IMMEDIATE_HOURS", "1")), help="hours to poll aggressively after game ends (post-game mode)")
     parser.add_argument("--max-age-min", type=int, default=int(os.environ.get("NFL_MAX_AGE_MIN", "3")), help="skip polling if recently updated in live mode")
     parser.add_argument("--no-skip-recent", action="store_true", help="do not skip recently updated games in live mode")
     args = parser.parse_args()
@@ -113,6 +132,11 @@ def main():
             if not args.no_skip_recent and is_recently_updated(game, now, max_age_min=args.max_age_min):
                 skipped_recent += 1
                 continue
+        elif args.mode == "post-game":
+            if not is_post_game_window(game, now, post_hours=args.post_hours, immediate_hours=args.immediate_hours):
+                skipped_live += 1
+                continue
+            # In post-game mode, don't skip recent updates - we want to catch settled odds
         selected += 1
         slug = game.get("polymarket_slug")
         if not slug:
@@ -131,8 +155,12 @@ def main():
             fetch_failures += 1
             continue
 
-        # Rate limiting: wait small random delay between API calls to avoid rate limits
-        time.sleep(random.uniform(0.2, 0.6))
+        # Rate limiting: wait between API calls
+        # In post-game mode, poll every 30 seconds to catch settled odds instantly
+        if args.mode == "post-game":
+            time.sleep(30)
+        else:
+            time.sleep(random.uniform(0.2, 0.6))
 
         if not events:
             print(f"[{game_id}] no event for slug {slug}")

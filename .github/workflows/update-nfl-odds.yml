@@ -8,6 +8,13 @@ on:
     - cron: '*/5 0-5,16-23 * * 4'
     - cron: '*/5 12-23 * * 0'
     - cron: '*/5 0-5,16-23 * * 1'
+    # Post-game immediate polling: every 30 min for 2 hours after typical game end times
+    # Sunday games end ~21:00-22:00 UTC -> poll 21:00-23:00 UTC
+    - cron: '*/30 21-23 * * 0'
+    # Monday night games end ~03:00-04:00 UTC -> poll 03:00-05:00 UTC
+    - cron: '*/30 3-5 * * 1'
+    # Thursday night games end ~03:00-04:00 UTC -> poll 03:00-05:00 UTC
+    - cron: '*/30 3-5 * * 4'
     # Post-game cleanup (Fri/Mon/Tue UTC)
     - cron: '30 3-5 * * 5'
     - cron: '30 0-2 * * 1'
@@ -90,6 +97,10 @@ PY
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }} --mode live
         continue-on-error: true
 
+      - name: Fetch post-game odds (immediate refresh after games end)
+        run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }} --mode post-game
+        continue-on-error: true
+
       - name: Validate odds markets exist
         run: |
           if [ -f scripts/validate-nfl-odds.py ]; then
@@ -99,7 +110,7 @@ PY
           fi
 
       - name: Apply NFL YAML to financials-data.json
-        run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }} --replace-completed
+        run: python3 scripts/apply-nfl-yml.py --week ${{ steps.week.outputs.week }}
 
       - name: Validate merged data (JSON/YAML + targeted NFL/site checks)
         run: |

@@ -243,7 +243,6 @@ function createFirmCardHTML(firmIdx, firmName, totalValue, firmHoldings, descrip
             </div>
         </div>
         ${updatedHtml}
-        <p class="visually-hidden firm-status-live" role="status" aria-live="polite"></p>
         <div class="indicator-content">
             <div class="data-rows-container">
                 <div class="firm-chart-container">

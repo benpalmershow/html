@@ -314,7 +314,7 @@ SOURCE_REGISTRY = {
         "source": "manheim",
         "api_id": None,
         "implemented": False,
-        "note": "Manheim Used Vehicle Value Index is likely behind a subscription/API key.",
+        "note": "Now covered by fetch-manheim.yml / scripts/fetch_manheim.py (Cox Automotive monthly insights article). Remove from this registry.",
     },
     "strait-of-hormuz-daily-transits": {
         "agency": "Windward",

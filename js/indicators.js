@@ -1776,15 +1776,21 @@ function buildIndicatorCardHTML({ indicator, DATA_ATTRS, url, explanation, chang
     const indicatorNameAttr = htmlAttr(indicator.name);
     const badgeUrl = `financials.html?indicator=${encodeURIComponent(indicator.name)}`;
 
+    const isPredictionMarket = indicator.category === 'Prediction Markets';
+    const weekBadgeHtml = (indicator.game_time_iso && indicator.week && isPredictionMarket)
+        ? `<a href="${badgeUrl}" class="badge-link week-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="week" data-sort-value="${indicator.week}">W${indicator.week}</a>`
+        : '';
+
     const badges = [
         (isNew && !indicator.game_time_iso) ? `<a href="${badgeUrl}" class="badge-link new-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="new" data-sort-value="1">New</a>` : '',
         (latestMonthTag && !indicator.game_time_iso && indicator.category !== 'Prediction Markets' && indicator.category !== 'Earnings') ? `<a href="${badgeUrl}" class="badge-link latest-month-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="month" data-sort-value="${htmlAttr(latestMonthTag)}">${latestMonthTag}</a>` : '',
-        (indicator.game_time_iso && indicator.week) ? `<a href="${badgeUrl}" class="badge-link week-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="week" data-sort-value="${indicator.week}">W${indicator.week}</a>` : '',
+        (indicator.game_time_iso && indicator.week && !isPredictionMarket) ? `<a href="${badgeUrl}" class="badge-link week-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="week" data-sort-value="${indicator.week}">W${indicator.week}</a>` : '',
         indicator.result ? `<a href="${badgeUrl}" class="badge-link game-final-badge" data-indicator-name="${indicatorNameAttr}" data-sort-key="final" data-sort-value="1">Final</a>` : ''
     ].filter(Boolean).join('');
 
-    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '&quot;')}"${accentStyle}><div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${formattedTitle}${badges}</div><div class="indicator-actions"><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${explanationHtml}</div></div>`;
+    return `<div class="indicator${indicator.category === 'Earnings' ? ' earnings-card' : ''}" ${DATA_ATTRS.INDICATOR_NAME}="${indicator.name.replace(/"/g, '"')}"${accentStyle}>${weekBadgeHtml}<div class="indicator-header"><div class="indicator-name" title="${nameTitle}">${formattedTitle}${badges}</div><div class="indicator-actions"><button class="chart-btn" title="View Interactive Chart" aria-label="View chart"><i data-lucide="bar-chart-3"></i></button>${(hasHistory || indicator.category === 'Prediction Markets') ? `<button class="expand-toggle" aria-label="Toggle explanation"><i data-lucide="chevron-down"></i></button>` : ''}</div></div>${updatedHtml ? `<div class="indicator-agency">${updatedHtml}</div>` : ''}${changeIndicators ? `<div class="change-indicators">${changeIndicators}</div>` : ''}<div class="indicator-content">${decoratedLatestHtml}${sparklineValues.length > 2 ? `<div class="sparkline-container"><canvas data-sparkline='${JSON.stringify(sparklineValues)}'></canvas></div>` : ''}${(hasHistory || indicator.category === 'Prediction Markets') ? `<div class="data-rows-container">${historyDataHtml}</div>` : ''}${explanationHtml}</div></div>`;
 }
+ 
 
 
 // --- Sparkline rendering (lightweight canvas-only, no Chart.js dependency) ---

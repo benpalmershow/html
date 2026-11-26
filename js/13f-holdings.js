@@ -182,7 +182,7 @@ function buildHoldingItem(holding, priorSnapshot, index) {
 
     return `
         <li class="holding-item" role="listitem" tabindex="0" data-holding-index="${index}" data-pct="${holding.pct}" data-value="${holding.value || 0}" data-name="${safeName.toLowerCase()}" data-is-etf="${isETF(holding)}" style="--pct-width: ${Math.min(holding.pct * 2, 100)}%; --pct-color: ${getColorByValue(holding.pct)};">
-            <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer" title="Research ${safeName} on Perplexity Finance">${displayText}<span class="visually-hidden"> (opens external financial research in new tab)</span></a></div>
+            <div class="holding-ticker"><a href="${safeLink}" target="_blank" rel="noopener noreferrer" title="Research ${safeName} on Perplexity Finance">${displayText}</a></div>
             ${hasSeparateName ? `<div class="holding-name" title="${safeName}">${safeName}</div>` : ''}
             ${changeHtml}
             <div class="holding-pct" title="${pctTitle}">${holding.pct}%</div>

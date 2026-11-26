@@ -5,6 +5,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 ## Development commands
 - Install Python deps for data scripts:
   - `python3 -m pip install -r requirements.txt`
+  - To update deps: `python3 -m pip install --upgrade -r requirements.txt` then re-pin with `python3 -m pip freeze | grep -iE "requests|dotenv|tenacity|yfinance|pandas|pyyaml|lxml|pdfplumber" > requirements.txt` (or use `pip-compile`/`uv` lockfile). Run `pip-audit -r requirements.txt` after updating.
 - Local preview (no build step):
   - `python3 -m http.server 8000`
   - or `npx serve .`

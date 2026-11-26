@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T05:45:17Z",
+  "lastUpdated": "2026-11-26T06:14:12Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -2322,12 +2322,12 @@
         "january": "70.8",
         "february": "72.6",
         "march": "73.8",
-        "april": "74",
+        "april": "74.0",
         "may": "76.6",
         "june": "72.9",
-        "july": "71",
+        "july": "71.0",
         "august": "71.2",
-        "september": "66",
+        "september": "66.1",
         "october": "63.0"
       },
       "2025": {
@@ -2346,13 +2346,13 @@
       "color": "#e67e22",
       "agency": "NAR",
       "name": "Pending Home Sales Index",
-      "lastUpdated": "2026-11-26T05:45:17Z",
+      "lastUpdated": "2026-11-26T06:14:12Z",
       "releaseDay": 28,
       "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/pending-home-sales",
       "change": "",
       "explanation": "The Pending Home Sales Index (PHS), a leading indicator of housing activity, measures housing contract activity, and is based on signed real estate contracts for existing single-family homes, condos, and co-ops. Because a home goes under contract a month or two before it is sold, the Pending Home Sales Index generally leads Existing-Home Sales by a month or two.",
-      "newMonth": true,
-      "releaseTimeISO": "2026-11-26T05:45:17Z",
+      "newMonth": false,
+      "releaseTimeISO": "2026-11-26T06:14:12Z",
       "releaseTimeZone": "America/New_York"
     },
     {
@@ -2429,7 +2429,7 @@
       "url": "https://www.nahb.org/news-and-economics/housing-economics/indices/housing-market-index",
       "change": "",
       "explanation": "The NAHB/Wells Fargo Housing Market Index measures homebuilder confidence in the market for newly built single-family homes. Based on a monthly survey of NAHB members, the index ranges from 0-100, with scores above 50 indicating more builders view conditions as good than poor. The survey includes three components: current sales conditions, sales expectations for the next six months, and traffic of prospective buyers. The HMI is a leading indicator of housing market health, often predicting changes in housing starts and new home sales. The index is seasonally adjusted and has historically correlated well with future housing market activity.",
-      "newMonth": true,
+      "newMonth": false,
       "releaseTimeISO": "2026-11-26T05:45:17Z",
       "releaseTimeZone": "America/New_York"
     },

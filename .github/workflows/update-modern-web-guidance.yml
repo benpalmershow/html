@@ -22,4 +22,3 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "chore: update modern-web-guidance skill"
           git push
-</content>

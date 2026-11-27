@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T10:32:37Z",
+  "generated": "2026-11-27T16:01:55Z",
   "note": "Fetch-health registry. Each scheduled fetch workflow records its last run via scripts/update_fetch_status.py so fetches remain observable (timely) and only commit when data changed (relevant). Update this file when adding/removing workflows.",
   "workflows": {
     "fetch-13f": {
@@ -81,10 +81,10 @@
       "notes": "World Cup scores; every 10 min during June-July tournament window"
     },
     "update-nfl-odds": {
-      "lastRun": null,
-      "status": null,
-      "changes": null,
-      "notes": "NFL odds refresh (daily + game-day + post-game); consolidated from update-nfl-odds / live / postgame"
+      "lastRun": "2026-11-27T16:01:55Z",
+      "status": "ok",
+      "changes": 0,
+      "notes": "NFL odds refresh for week 12"
     },
     "update-modern-web-guidance": {
       "lastRun": null,

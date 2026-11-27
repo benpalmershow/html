@@ -1,0 +1,5 @@
+# Custom 3-way merge driver for the fetch-health registry.
+# Each workflow owns its own key under "workflows", so concurrent runs can be
+# merged JSON-aware instead of producing a rebase conflict. The driver is
+# registered in scripts/git_push_retry.sh (merge.merge-fetch-status.driver).
+json/fetch-status.json merge=merge-fetch-status

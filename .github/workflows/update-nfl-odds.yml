@@ -26,8 +26,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-nfl-odds
-  cancel-in-progress: true
+  # Share the financials-data group with fetch-all so the two workflows that
+  # commit json/financials-data.json and json/fetch-status.json never overlap.
+  # cancel-in-progress:false keeps the running job (never truncates a fetch);
+  # GitHub keeps only the latest pending run in the group.
+  group: financials-data
+  cancel-in-progress: false
 
 jobs:
   update-odds:
@@ -51,7 +55,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
 

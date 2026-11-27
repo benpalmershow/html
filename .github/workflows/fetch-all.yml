@@ -30,7 +30,7 @@ jobs:
       CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
       NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v6
         with:

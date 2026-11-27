@@ -12,6 +12,7 @@
         { id: 'book', name: 'Books', icon: '<i data-lucide="book" class="filter-icon"></i>', tags: ['book', 'books'] },
         { id: 'podcast', name: 'Podcasts', icon: '<i data-lucide="mic" class="filter-icon"></i>', tags: ['podcast'] },
         { id: 'song', name: 'Music', icon: '<i data-lucide="music" class="filter-icon"></i>', tags: ['song', 'music'] },
+        { id: 'poem', name: 'Poems', icon: '<i data-lucide="feather" class="filter-icon"></i>', tags: ['poem', 'poems', 'poetry', 'verse'] },
         { id: 'video', name: 'Videos', icon: '<i data-lucide="video" class="filter-icon"></i>', tags: ['video'] }
     ];
 

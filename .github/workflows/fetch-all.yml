@@ -46,6 +46,7 @@ jobs:
         run: pip install requests tenacity python-dotenv
 
       - name: Run all fetchers
+        id: fetch
         run: |
           set -uo pipefail
           FAILED=0
@@ -69,7 +70,7 @@ jobs:
           run fetch-manheim python3 scripts/fetch_manheim.py
           run fetch-housing-sentiment python3 scripts/fetch_housing_sentiment.py
 
-          echo "FETCH_FAILED=$FAILED" >> "$GITHUB_ENV"
+          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
 
       - name: Age out stale New badges + coverage report
         run: python3 scripts/check_fetch_coverage.py
@@ -82,7 +83,7 @@ jobs:
           validate: "true"
 
       - name: Fail the run if any source failed
-        if: env.FETCH_FAILED == '1'
+        if: steps.fetch.outputs.failed == '1'
         run: |
           echo "One or more fetchers failed; see logs above."
           exit 1

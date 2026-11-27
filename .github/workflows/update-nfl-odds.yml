@@ -58,35 +58,7 @@ jobs:
       - name: Determine current NFL week (from game dates in YAML)
         id: week
         run: |
-          WEEK=$(python3 - <<'PY'
-import datetime, sys
-from pathlib import Path
-try:
-    import yaml
-except ImportError:
-    print(); sys.exit(0)
-doc = yaml.safe_load(Path("data/nfl-games.yml").read_text()) or {}
-now = datetime.datetime.now(datetime.timezone.utc)
-weeks = []
-for g in doc.get("games", []):
-    w = g.get("week")
-    iso = g.get("game_time_iso")
-    if w is None or not iso:
-        continue
-    try:
-        dt = datetime.datetime.fromisoformat(iso.replace("Z", "+00:00"))
-    except ValueError:
-        continue
-    weeks.append((w, dt))
-if not weeks:
-    print(); sys.exit(0)
-upcoming = [w for w, dt in weeks if dt >= now]
-if upcoming:
-    print(max(upcoming))
-else:
-    print(max(w for w, _ in weeks))
-PY
-)
+          WEEK=$(python3 scripts/determine_nfl_week.py)
           echo "week=$WEEK" >> "$GITHUB_OUTPUT"
           echo "NFL week: $WEEK"
 

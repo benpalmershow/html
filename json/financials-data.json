@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T16:49:05Z",
+  "lastUpdated": "2026-11-28T00:31:55.628631Z",
   "indices": [
     {
       "id": "fomc-rate-decision-december-2026",
@@ -4672,8 +4672,10 @@
       "game_time": "Nov 27, 2026 8:00 PM ET",
       "game_time_iso": "2026-11-27T20:00:00Z",
       "url": "https://polymarket.com/sports/nfl/nfl-den-pit-2026-11-27",
-      "lastUpdated": "2026-11-27T15:59:33.974707Z",
+      "lastUpdated": "2026-11-28T00:23:44.356339Z",
       "week": 12,
+      "winner": "PIT",
+      "result": "Final",
       "probabilities": {
         "2026-11-10": {
           "DEN_win_odds": "54",
@@ -4698,10 +4700,6 @@
         "2026-11-15": {
           "DEN_win_odds": "54",
           "PIT_win_odds": "46"
-        },
-        "2026-11-16": {
-          "DEN_win_odds": "58",
-          "PIT_win_odds": "42"
         },
         "2026-11-17": {
           "DEN_win_odds": "58",
@@ -4730,10 +4728,14 @@
         "2026-11-27": {
           "DEN_win_odds": "68",
           "PIT_win_odds": "32"
+        },
+        "2026-11-28": {
+          "DEN_win_odds": "0",
+          "PIT_win_odds": "100"
         }
       },
-      "DEN_win_odds": "68",
-      "PIT_win_odds": "32"
+      "DEN_win_odds": "0",
+      "PIT_win_odds": "100"
     },
     {
       "id": "nfl-atl-min-2026-11-29",

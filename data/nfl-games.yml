@@ -1649,9 +1649,9 @@ games:
   game_time_iso: '2026-11-27T20:00:00Z'
   url: https://polymarket.com/sports/nfl/nfl-den-pit-2026-11-27
   polymarket_slug: nfl-den-pit-2026-11-27
-  DEN_win_odds: 68.5¢
-  PIT_win_odds: 31.5¢
-  lastUpdated: '2026-11-27T15:59:33.974707Z'
+  DEN_win_odds: 0.0¢
+  PIT_win_odds: 100.0¢
+  lastUpdated: '2026-11-28T00:23:44.356339Z'
   odds_history:
   - timestamp: '2026-11-10T02:08:26.40387Z'
     DEN_win_odds: 53.5¢
@@ -1710,6 +1710,9 @@ games:
   - timestamp: '2026-11-27T15:59:33.974707Z'
     DEN_win_odds: 68.5¢
     PIT_win_odds: 31.5¢
+  - timestamp: '2026-11-28T00:23:44.356339Z'
+    DEN_win_odds: 0.0¢
+    PIT_win_odds: 100.0¢
 - id: nfl-atl-min-2026-11-29
   week: 12
   away: ATL

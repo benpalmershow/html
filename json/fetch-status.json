@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T16:49:07Z",
+  "generated": "2026-11-27T20:52:10Z",
   "note": "Fetch-health registry. Each scheduled fetch workflow records its last run via scripts/update_fetch_status.py so fetches remain observable (timely) and only commit when data changed (relevant). Update this file when adding/removing workflows.",
   "workflows": {
     "fetch-13f": {
@@ -9,19 +9,19 @@
       "notes": "13F filings from SEC EDGAR; aggressive mid-Feb/May/Aug/Nov"
     },
     "fetch-adp": {
-      "lastRun": "2026-11-27T16:48:48Z",
+      "lastRun": "2026-11-27T20:50:45Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-adp"
     },
     "fetch-bls": {
-      "lastRun": "2026-11-27T16:48:50Z",
+      "lastRun": "2026-11-27T20:50:45Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-bls"
     },
     "fetch-census": {
-      "lastRun": "2026-11-27T16:49:00Z",
+      "lastRun": "2026-11-27T20:50:55Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-census"
@@ -39,37 +39,37 @@
       "notes": "FEC candidate totals; quarterly deadlines"
     },
     "fetch-fred-daily": {
-      "lastRun": "2026-11-27T16:48:38Z",
+      "lastRun": "2026-11-27T20:50:35Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-fred-daily"
     },
     "fetch-fred-monthly": {
-      "lastRun": "2026-11-27T16:48:48Z",
+      "lastRun": "2026-11-27T20:50:44Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-fred-monthly"
     },
     "fetch-fred-weekly": {
-      "lastRun": "2026-11-27T16:48:40Z",
+      "lastRun": "2026-11-27T20:50:37Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-fred-weekly"
     },
     "fetch-other-indicators": {
-      "lastRun": "2026-11-27T16:49:05Z",
+      "lastRun": "2026-11-27T20:52:09Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-other-indicators"
     },
     "fetch-treasury": {
-      "lastRun": "2026-11-27T16:49:02Z",
+      "lastRun": "2026-11-27T20:50:58Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-treasury"
     },
     "fetch-usda": {
-      "lastRun": "2026-11-27T16:49:05Z",
+      "lastRun": "2026-11-27T20:52:08Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-usda"
@@ -93,13 +93,13 @@
       "notes": "modern-web-guidance skill update; weekly Mondays"
     },
     "fetch-manheim": {
-      "lastRun": "2026-11-27T16:49:06Z",
+      "lastRun": "2026-11-27T20:52:09Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-manheim"
     },
     "fetch-housing-sentiment": {
-      "lastRun": "2026-11-27T16:49:07Z",
+      "lastRun": "2026-11-27T20:52:10Z",
       "status": "ok",
       "changes": 0,
       "notes": "fetch-housing-sentiment"

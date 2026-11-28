@@ -113,7 +113,13 @@
     const htmlBlocks = [];
     const urls = [];
     const targets = [];
-    let out = String(text).replace(/<[^>]*>/g, match => {
+    const charts = [];
+    const source = String(text).replace(/(`[^`]+`)|\{\{chart:([^}]+)\}\}/gi, (match, code, indicatorName) => {
+      if (code) return code;
+      charts.push(indicatorName.trim());
+      return '@@CHART' + (charts.length - 1) + '@@';
+    });
+    let out = source.replace(/<[^>]*>/g, match => {
       htmlBlocks.push(match);
       return '@@HTML' + (htmlBlocks.length - 1) + '@@';
     });
@@ -163,6 +169,14 @@
 
     out = out.replace(/@@LINK(\d+)@@/g, (_, i) => links[Number(i)] || '');
     out = out.replace(/@@IMAGE(\d+)@@/g, (_, i) => images[Number(i)] || '');
+    out = out.replace(/@@CHART(\d+)@@/g, (_, i) => {
+      const name = charts[Number(i)];
+      if (!name) return '';
+      return '<span class="journal-chart" data-chart-indicator="' + escapeAttr(name) +
+        '" role="img" aria-label="Chart showing ' + escapeAttr(name) + ' over time">' +
+        '<span class="journal-chart-status" aria-hidden="true">Loading chart...</span>' +
+        '<canvas aria-hidden="true"></canvas></span>';
+    });
     out = out.replace(/@@HTML(\d+)@@/g, (_, i) => htmlBlocks[Number(i)] || '');
     return out;
   }
@@ -214,6 +228,13 @@
       }
       if (inCode) {
         html += escapeHtml(line) + '\n';
+        return;
+      }
+      const standaloneChart = trimmed.match(/^\{\{chart:([^}]+)\}\}$/i);
+      if (standaloneChart) {
+        flushParagraph();
+        closeList();
+        html += parseInline(trimmed, false);
         return;
       }
       const heading = line.match(/^(#{1,6})\s+(.+)$/);

@@ -201,17 +201,16 @@ When publishing posts with financial data, calculate and verify MoM changes:
 
 ### Embedding Charts in Posts
 
-Use the chart syntax in markdown. Charts render via `js/chart-renderer.js` which is loaded on `journal.html`:
+Use the chart syntax in markdown. Charts render via `js/chart-renderer.js` on both `journal.html` and the standalone `article.html` page:
 
 ```markdown
 {{chart:Consumer Sentiment}}
 ```
 
 The chart renderer will:
-1. Replace the `{{chart:...}}` placeholder with a canvas element
-2. Lazy-load Chart.js if not already loaded
-3. Fetch indicator data from `financials-data.json`
-4. Render the chart with IntersectionObserver (visible on scroll)
+1. Replace the `{{chart:...}}` placeholder with an accessible chart container
+2. Load Chart.js and `financials-data.json` when a chart is present
+3. Render the indicator's available history, defaulting to the latest year of monthly or quarterly data
 
 ## Prediction Market Updates
 

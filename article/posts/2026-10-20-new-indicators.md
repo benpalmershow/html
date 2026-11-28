@@ -19,6 +19,10 @@ The Pending Home Sales Index is the more important of the pair, because contract
 
 Builders are not cheerful either. The NAHB Housing Market Index dropped to 29 from 32, which is 21.6% below October 2025 and the weakest reading in the series. The index has to clear 50 before more builders than not call conditions good, so builders are describing conditions as bad by a wide margin. Rising rates, elevated prices, and flat wages explain the squeeze on both sides of the transaction.
 
+{{chart:Pending Home Sales Index}}
+
+{{chart:Housing Market Index}}
+
 ## Labor: steady, with a small pullback
 
 | Indicator | Agency | Period | Value | Prior | MoM | YoY |
@@ -27,6 +31,8 @@ Builders are not cheerful either. The NAHB Housing Market Index dropped to 29 fr
 | [Employment Trends Index](financials.html?indicator=Employment%20Trends%20Index) | Conference Board | Oct 2026 | 108.36 | 108.43 | -0.1% | +2.4% |
 
 The Conference Board Employment Trends Index landed at 108.43 in September, an upward revision from the initial 107.56 reading, and climbed from 108.08 in August. October came in at 108.36, a 0.1% monthly decline, but the index remains 2.4% above a year earlier. The annual growth rate has been edging higher over the last six months, up from 1.9% in September. The blend of job openings, industrial production, and business confidence moves ahead of the unemployment rate and payrolls.
+
+{{chart:Employment Trends Index}}
 
 ## Prediction markets: six new prints
 

@@ -159,6 +159,7 @@
   </main>
 
   <script src="js/markdown.js?v=20261114"></script>
+  <script src="js/chart-renderer.js?v=20261128"></script>
   <script>
     (function () {
       'use strict';
@@ -339,6 +340,7 @@
           let loaded = false;
           function setContent(html) {
             inner.innerHTML = html;
+            window.ChartRenderer.render(inner);
             promoteSourceToFooter(inner, entryFooter);
           }
           function loadContent() {

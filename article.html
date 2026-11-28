@@ -136,6 +136,7 @@
   </noscript>
 
   <script src="/js/markdown.js?v=20261114"></script>
+  <script src="/js/chart-renderer.js?v=20261128"></script>
   <script>
     (function () {
       'use strict';
@@ -304,6 +305,7 @@
           + '<span>' + record.readingMinutes + ' min read</span>';
 
         bodyEl.innerHTML = html;
+        window.ChartRenderer.render(bodyEl);
         renderTags(record);
 
         if (window.lucide) window.lucide.createIcons();

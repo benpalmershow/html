@@ -46,7 +46,8 @@ tags: ["housing", "regulation"]
 
 **Embedding charts in posts**
 - Use `{{chart:Indicator Name}}`. The name must exactly match the `name` field in `json/financials-data.json`.
-- `js/markdown.js` renders the placeholder into a chart container consumed by `js/charts.js`.
+- `js/markdown.js` renders the placeholder into a chart container, and `js/chart-renderer.js` renders it on both `journal.html` and `article.html`.
+- Place a standalone chart token on its own line to keep it out of a paragraph; add it after the relevant discussion so the data visual supports the surrounding text.
 
 **Financial indicator JSON template (example)**
 ```json

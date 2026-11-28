@@ -281,6 +281,39 @@ main {
   margin: 0 0 0.85em;
 }
 
+.entry-content .journal-chart,
+.accordion-inner .journal-chart {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: clamp(180px, 30vw, 260px);
+  margin: 14px 0;
+  padding: 10px 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-secondary);
+}
+
+.journal-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.journal-chart-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font: 0.75rem/1.4 var(--font-body);
+}
+
+.journal-chart.is-error {
+  height: auto;
+  min-height: 48px;
+}
+
 .accordion-inner p:last-child {
   margin-bottom: 0;
 }

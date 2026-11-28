@@ -99,7 +99,7 @@ def main():
     parser.add_argument("--mode", choices=["full", "live", "post-game"], default=os.environ.get("NFL_MODE", "full"), help="full = all selected games; live = only games near/in gametime; post-game = ultra-frequent polling right after games end")
     parser.add_argument("--pre-minutes", type=int, default=int(os.environ.get("NFL_PRE_MINUTES", "15")))
     parser.add_argument("--post-hours", type=int, default=int(os.environ.get("NFL_POST_HOURS", "4")))
-    parser.add_argument("--immediate-hours", type=int, default=int(os.environ.get("NFL_IMMEDIATE_HOURS", "1")), help="hours to poll aggressively after game ends (post-game mode)")
+    parser.add_argument("--immediate-hours", type=int, default=int(os.environ.get("NFL_IMMEDIATE_HOURS", "4")), help="hours to poll aggressively after game ends (post-game mode)")
     parser.add_argument("--max-age-min", type=int, default=int(os.environ.get("NFL_MAX_AGE_MIN", "3")), help="skip polling if recently updated in live mode")
     parser.add_argument("--no-skip-recent", action="store_true", help="do not skip recently updated games in live mode")
     args = parser.parse_args()
@@ -156,9 +156,8 @@ def main():
             continue
 
         # Rate limiting: wait between API calls
-        # In post-game mode, poll every 30 seconds to catch settled odds instantly
         if args.mode == "post-game":
-            time.sleep(30)
+            time.sleep(1)
         else:
             time.sleep(random.uniform(0.2, 0.6))
 

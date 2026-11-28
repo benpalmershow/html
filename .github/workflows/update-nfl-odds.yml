@@ -4,22 +4,19 @@ on:
   schedule:
     # Daily refresh of current-week odds (06:00 UTC)
     - cron: '0 6 * * *'
-    # Live odds during game days (Thu/Sun/Mon UTC)
-    - cron: '*/5 0-5,16-23 * * 4'
-    - cron: '*/5 12-23 * * 0'
-    - cron: '*/5 0-5,16-23 * * 1'
-    # Post-game immediate polling: every 30 min for 2 hours after typical game end times
-    # Sunday games end ~21:00-22:00 UTC -> poll 21:00-23:00 UTC
-    - cron: '*/30 21-23 * * 0'
-    # Monday night games end ~03:00-04:00 UTC -> poll 03:00-05:00 UTC
-    - cron: '*/30 3-5 * * 1'
-    # Thursday night games end ~03:00-04:00 UTC -> poll 03:00-05:00 UTC
-    - cron: '*/30 3-5 * * 4'
+    # Live odds during game days (all days, every 5 min during game hours)
+    - cron: '*/5 0-5,12-23 * * *'
+    # Post-game immediate polling: every 30 min for 4 hours after typical game end times
+    # Covers all game days/end times so odds settle immediately on completion
+    - cron: '*/30 0-6 * * *'
+    - cron: '*/30 20-23 * * *'
     # Post-game cleanup (Fri/Mon/Tue UTC)
     - cron: '30 3-5 * * 5'
     - cron: '30 0-2 * * 1'
     - cron: '30 3-5 * * 1'
     - cron: '30 3-5 * * 2'
+  repository_dispatch:
+    types: [nfl-game-complete]
   workflow_dispatch:
 
 permissions:
@@ -66,8 +63,18 @@ jobs:
           echo "week=$WEEK" >> "$GITHUB_OUTPUT"
           echo "NFL week: $WEEK"
 
+      - name: Resolve game id from webhook payload
+        id: game
+        run: |
+          echo "game_id=${{ github.event.client_payload.game_id }}" >> "$GITHUB_OUTPUT"
+
       - name: Fetch NFL odds for current week (full refresh)
-        run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}
+        run: |
+          if [ -n "${{ steps.game.outputs.game_id }}" ]; then
+            python3 scripts/fetch-nfl-odds.py --game-id "${{ steps.game.outputs.game_id }}" --mode post-game --immediate-hours 4
+          else
+            python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }}
+          fi
 
       - name: Fetch live odds for games in gametime window
         run: python3 scripts/fetch-nfl-odds.py --week ${{ steps.week.outputs.week }} --mode live

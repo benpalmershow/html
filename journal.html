@@ -209,7 +209,7 @@
         const link = document.createElement('a');
         link.className = 'entry-permalink entry-permalink-bottom';
         link.href = href;
-        link.textContent = label || 'Permalink';
+        link.textContent = label || '🔗 Permalink';
         link.setAttribute('aria-label', 'Link to this entry');
         footer.appendChild(link);
         container.appendChild(footer);
@@ -332,9 +332,9 @@
           let entryFooter = null;
           if (hasFile && entry.file.startsWith('article/')) {
             const slug = entry.file.split('/').pop().replace(/\.md$/, '');
-            entryFooter = appendPermalink(accordionEl, '/article.html?slug=' + encodeURIComponent(slug), 'Permalink');
+            entryFooter = appendPermalink(accordionEl, '/article.html?slug=' + encodeURIComponent(slug), '🔗 Permalink');
           } else if (div.dataset.slug) {
-            entryFooter = appendPermalink(accordionEl, '#' + div.dataset.slug, 'Permalink');
+            entryFooter = appendPermalink(accordionEl, '#' + div.dataset.slug, '🔗 Permalink');
           }
 
           let loaded = false;
@@ -461,7 +461,7 @@
         }
         if (accordionEl) div.appendChild(accordionEl);
         if (!hasToggle && div.dataset.slug) {
-          const footer = appendPermalink(div, '#' + div.dataset.slug, 'Permalink');
+          const footer = appendPermalink(div, '#' + div.dataset.slug, '🔗 Permalink');
           promoteSourceToFooter(contentEl, footer);
         }
         return div;

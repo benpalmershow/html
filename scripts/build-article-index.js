@@ -132,6 +132,8 @@ function leadingStrongTitle(body) {
 function plainText(markdown) {
   return String(markdown || '')
     .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/\{\{chart:[^}]*\}\}/gi, ' ')
+    .replace(/<span\b(?=[^>]*\bclass=["'][^"']*\bjournal-chart\b)[^>]*>[\s\S]*?<\/span>/gi, ' ')
     .replace(/<[^>]*>/g, ' ')
     .replace(/!\[([^\]]*)]\([^)]*\)/g, '$1')
     .replace(/\[([^\]]+)]\([^)]*\)/g, '$1')

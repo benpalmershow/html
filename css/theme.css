@@ -74,22 +74,22 @@
     --color-warning: #fb8c00;
 
     /* THEME-SPECIFIC TOKENS (LIGHT MODE DEFAULT) */
-    --text-primary: var(--color-black);
-    --text-secondary: var(--color-gray-700);
-    --text-muted: var(--color-gray-500);
-    
-    --bg-primary: #fdf6e8;
-    --bg-primary-rgb: 253, 246, 232;
-    --bg-secondary: #f8f4e6;
-    --bg-secondary-rgb: 248, 244, 230;
-    --bg-tertiary: #e9e2d0;
+    --text-primary: #171917;
+    --text-secondary: #525753;
+    --text-muted: #747a76;
+
+    --bg-primary: #fafaf7;
+    --bg-primary-rgb: 250, 250, 247;
+    --bg-secondary: #f2f3ef;
+    --bg-secondary-rgb: 242, 243, 239;
+    --bg-tertiary: #e7e9e4;
 
     --accent-primary: var(--color-primary);
     --accent-primary-rgb: var(--color-primary-rgb);
     --accent-secondary: var(--color-secondary);
     
-    --border-color: #e8dcc0;
-    --border-color-rgb: 232, 220, 192;
+    --border-color: #dde1da;
+    --border-color-rgb: 221, 225, 218;
     --shadow-color: rgba(var(--color-primary-rgb), 0.1);
     --shadow-card: 0 1px 2px rgba(var(--color-black-rgb), 0.04), 0 8px 24px rgba(var(--color-primary-rgb), 0.07);
     --shadow-card-hover: 0 2px 4px rgba(var(--color-black-rgb), 0.05), 0 14px 34px rgba(var(--color-primary-rgb), 0.12);
@@ -218,8 +218,8 @@ html.dark-mode {
     --border-color: #30363d;
     --border-color-rgb: 48, 54, 61;
     --shadow-color: rgba(0, 0, 0, 0.4);
-    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
-    --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.18);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.22);
     
     --color-apple: #ffffff;
 }
@@ -306,40 +306,4 @@ html {
     ::-webkit-scrollbar-thumb:hover {
         background: var(--text-muted);
     }
-}
-
-/* ========================================
-   CROSS-DOCUMENT PAGE TRANSITIONS
-   ======================================== */
-
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition {
-    navigation: auto;
-  }
-
-  ::view-transition-old(root) {
-    animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) both fade-out;
-  }
-
-  ::view-transition-new(root) {
-    animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) both fade-in;
-  }
-
-  @keyframes fade-out {
-    to {
-      opacity: 0;
-      transform: scale(0.98);
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: scale(1.02);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 }

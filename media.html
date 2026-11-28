@@ -67,7 +67,7 @@
    <!-- Typography System Fonts (self-hosted) -->
    <link href="css/fonts.css?v=20261013" rel="stylesheet">
 
-  <link rel="preload" href="css/nav.css?v=20260821" as="style">
+  <link rel="preload" href="css/nav.css?v=20261127" as="style">
   <link rel="preload" href="css/media.css?v=20260614" as="style">
 
   <!-- Preload Font Awesome fonts -->
@@ -100,7 +100,7 @@
   <!-- Critical CSS -->
   <link rel="stylesheet" href="css/theme.css?v=20260614">
   <link rel="stylesheet" href="css/body.css?v=20260614">
-  <link rel="stylesheet" href="css/nav.css?v=20260821">
+  <link rel="stylesheet" href="css/nav.css?v=20261127">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
   <link rel="stylesheet" href="css/media.css?v=20260614">
   <link rel="stylesheet" href="css/media-overlay.css?v=20260614">
@@ -224,11 +224,13 @@
         <a href="index.html" class="header-home" aria-label="Howdy, Stranger home">
           <img src="images/logo-360x360.webp" alt="" width="44" height="44" loading="eager" decoding="async" fetchpriority="high">
         </a>
-        <ul class="header-nav" role="list" aria-label="Site navigation">
+        <nav class="site-navigation" aria-label="Primary">
+        <ul class="header-nav">
           <li><a href="financials.html" class="header-nav-link"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Numbers</a></li>
-          <li><a href="media.html"      class="header-nav-link active" aria-current="page"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Media</a></li>
+          <li><a href="media.html"      class="header-nav-link" aria-current="page"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Media</a></li>
           <li><a href="journal.html"    class="header-nav-link"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Docs</a></li>
         </ul>
+        </nav>
         <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
           <span class="dark-mode-toggle-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

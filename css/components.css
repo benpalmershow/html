@@ -11,15 +11,15 @@
     border: 1px solid var(--border-color);
     border-radius: var(--card-radius);
     padding: var(--spacing-md);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 1px 2px rgba(var(--color-black-rgb), 0.03);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .card:hover,
 .card:focus {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-card-hover);
-    border-color: var(--accent-secondary);
+    transform: none;
+    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.06);
+    border-color: color-mix(in srgb, var(--accent-primary) 35%, var(--border-color));
 }
 
 .card.expanded {
@@ -56,9 +56,9 @@
 
 .media-card:hover,
 .media-card:focus {
-    border-color: var(--accent-secondary);
-    box-shadow: 0 4px 12px var(--shadow-color);
-    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    box-shadow: none;
+    transform: none;
 }
 
 .media-card.hidden {
@@ -586,39 +586,6 @@ html.dark-mode .hero-link.secondary:focus-visible {
    so the static state is the default.
    ======================================== */
 
-@keyframes hero-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes header-slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes icon-pop-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.88);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 .hero-wrap {
   flex: 1;
   display: flex;
@@ -630,46 +597,108 @@ html.dark-mode .hero-link.secondary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(2rem, 6vw, 5rem) var(--content-padding);
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
 }
 
-/* Wordmark: initial opacity set inline in index.html before first paint.
-   The one showcase of a display face (Crimson Pro, loaded via fonts.css);
-   font-size-adjust keeps the Georgia fallback x-height matched during the
-   swap so the wordmark doesn't shift. */
+.hero-content {
+  width: 100%;
+  text-align: center;
+}
+
 .hero-wordmark {
   font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
   font-size-adjust: from-font;
-  font-size: clamp(4rem, 16vw, 10rem);
-  line-height: 1;
+  font-size: clamp(4rem, 12vw, 7.5rem);
+  line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0;
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
-  }
 }
 
-/* Header: initial opacity set inline in index.html before first paint */
-.page-header {
-  @media (prefers-reduced-motion: no-preference) {
-    animation: header-slide-down 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
+.hero-intro {
+  max-width: 560px;
+  margin: 1.25rem auto 2.25rem;
+  color: var(--text-secondary);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.55;
+  text-wrap: balance;
 }
 
-/* Social footer icons: staggered pop-in — opt-in only */
-#social-footer .social-links a {
-  @media (prefers-reduced-motion: no-preference) {
-    opacity: 0;
-    animation: icon-pop-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  }
+.hero-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  text-align: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  #social-footer .social-links a {
-    --stagger-start: 0.35s;
-    --stagger-step: 0.07s;
-    animation-delay: calc(var(--stagger-start) + sibling-index() * var(--stagger-step));
+.hero-link-card {
+  display: grid;
+  grid-template-columns: 40px 1fr 20px;
+  align-items: center;
+  gap: 12px;
+  min-height: 88px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-primary);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.hero-link-card:hover {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--accent-primary) 45%, var(--border-color));
+  background: var(--bg-secondary);
+}
+
+.hero-link-icon {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--bg-secondary);
+}
+
+.hero-link-label {
+  display: block;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-link-description {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.hero-link-arrow {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .hero-main {
+    align-items: flex-start;
+  }
+
+  .hero-links {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-link-card {
+    min-height: 76px;
   }
 }

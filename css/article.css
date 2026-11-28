@@ -10,13 +10,6 @@
   padding: 1.5rem 1rem 5rem;
 }
 
-.article { animation: article-enter .3s ease both; }
-
-@keyframes article-enter {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
-
 .article-back {
   margin: 0 0 1rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;

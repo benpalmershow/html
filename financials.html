@@ -83,7 +83,7 @@
   <!-- Critical CSS - loaded synchronously for first paint -->
   <link rel="stylesheet" href="css/theme.css?v=20260816">
   <link rel="stylesheet" href="css/body.css?v=20260816">
-  <link rel="stylesheet" href="css/nav.css?v=20260821">
+  <link rel="stylesheet" href="css/nav.css?v=20261127">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260816">
   <link rel="stylesheet" href="css/financials.css?v=20261112">
   <link rel="stylesheet" href="css/prediction-bars.css?v=20261109">
@@ -131,11 +131,13 @@
       <a href="index.html" class="header-home" aria-label="Howdy, Stranger home">
          <img src="images/logo-120x120.webp" alt="" width="44" height="44" loading="eager" decoding="async" fetchpriority="high">
       </a>
-      <ul class="header-nav" role="list" aria-label="Site navigation">
-        <li><a href="financials.html" class="header-nav-link active" aria-current="page"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Numbers</a></li>
+      <nav class="site-navigation" aria-label="Primary">
+      <ul class="header-nav">
+        <li><a href="financials.html" class="header-nav-link" aria-current="page"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Numbers</a></li>
         <li><a href="media.html"      class="header-nav-link"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Media</a></li>
         <li><a href="journal.html"    class="header-nav-link"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Docs</a></li>
       </ul>
+      </nav>
       <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
         <span class="dark-mode-toggle-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -150,11 +152,11 @@
    <main id="main-content" tabindex="-1">
     <div id="lastUpdated" class="last-updated">Last Updated: Loading&hellip;</div>
 
-<div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category" style="contain: layout; min-height: 60px;">
+<div class="filter-bar" id="financials-filters" aria-label="Filter indicators by category">
 
                
       
-              <div class="filters" id="filter-buttons" style="scrollbar-gutter: stable;">
+              <div class="filters" id="filter-buttons">
                 <div class="skeleton-filter-btn" style="width: 42px; height: 42px; flex-shrink: 0;"></div>
                 <div class="skeleton-filter-btn" style="width: 42px; height: 42px; flex-shrink: 0;"></div>
                 <div class="skeleton-filter-btn" style="width: 70px; height: 42px; flex-shrink: 0;"></div>
@@ -167,26 +169,26 @@
 <div class="content">
          <div class="categories" id="categories" style="scrollbar-gutter: stable;">
            <!-- Indicator categories rendered here by renderDashboard -->
-           <div id="indicator-categories" style="contain: layout; min-height: 600px;">
-             <div class="category skeleton-category" style="min-height: 200px;">
-               <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
-               <div class="indicators-grid" style="min-height: 180px;">
-                 <div class="skeleton-card" style="height: 160px;"></div>
-                 <div class="skeleton-card" style="height: 160px;"></div>
+           <div id="indicator-categories" class="dashboard-loading">
+             <div class="category skeleton-category dashboard-loading-category">
+               <div class="skeleton-line long dashboard-loading-line"></div>
+               <div class="indicators-grid dashboard-loading-grid">
+                 <div class="skeleton-card dashboard-loading-card"></div>
+                 <div class="skeleton-card dashboard-loading-card"></div>
                </div>
              </div>
-             <div class="category skeleton-category" style="min-height: 200px;">
-               <div class="skeleton-line long" style="height: 22px; margin-bottom: 10px;"></div>
-               <div class="indicators-grid" style="min-height: 180px;">
-                 <div class="skeleton-card" style="height: 160px;"></div>
+             <div class="category skeleton-category dashboard-loading-category">
+               <div class="skeleton-line long dashboard-loading-line"></div>
+               <div class="indicators-grid dashboard-loading-grid">
+                 <div class="skeleton-card dashboard-loading-card"></div>
                </div>
              </div>
            </div>
 
         <noscript>
-          <div class="category" style="padding:2rem;text-align:center;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--card-radius);">
-            <h2 style="color:var(--logo-teal);margin:0 0 1rem;">JavaScript Required</h2>
-            <p style="margin:0;color:var(--text-secondary);">This dashboard requires JavaScript to load and display economic indicators. Please enable JavaScript in your browser settings.</p>
+          <div class="category dashboard-noscript">
+            <h2>JavaScript Required</h2>
+            <p>This dashboard requires JavaScript to load and display economic indicators. Please enable JavaScript in your browser settings.</p>
           </div>
         </noscript>
 

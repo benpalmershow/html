@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     font: var(--type-base)/1.6 var(--font-body);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
     color: var(--text-secondary);
     background: var(--bg-primary);
     transition: background-color var(--transition-base), color var(--transition-base);
@@ -142,6 +142,55 @@ h1.page-title {
 }
 
 @keyframes spin { to { transform: rotate(360deg); } }
+
+.dashboard-loading {
+  contain: layout;
+  min-height: 600px;
+}
+
+.dashboard-loading .category,
+.dashboard-loading-category {
+  min-height: 200px;
+}
+
+.dashboard-loading-line {
+  height: 22px;
+  margin-bottom: 12px;
+}
+
+.dashboard-loading-grid {
+  min-height: 180px;
+}
+
+.dashboard-loading-card {
+  height: 160px;
+}
+
+.dashboard-noscript {
+  padding: 2rem;
+  text-align: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+}
+
+.dashboard-noscript h2 {
+  margin: 0 0 12px;
+  color: var(--logo-teal);
+}
+
+.dashboard-noscript p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.article-noscript,
+.journal-load-error {
+  padding: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
 
 @media print {
   body {

@@ -65,14 +65,6 @@
   <link href="css/fonts.css?v=20261013" rel="stylesheet">
 
 
-  <!-- Pre-hide animated elements before first paint so they don't flash visible -->
-  <style>
-    @media (prefers-reduced-motion: no-preference) {
-      .page-header { opacity: 0; }
-      .hero-wordmark { opacity: 0; }
-    }
-  </style>
-
   <!-- Apply theme before first paint to avoid flash -->
   <script>
     (function () {
@@ -94,11 +86,11 @@
   <!-- Stylesheets - deferred load for non-critical CSS -->
   <link rel="stylesheet" href="css/theme.css?v=20260614">
   <link rel="stylesheet" href="css/body.css?v=20260614">
-  <link rel="preload" href="css/nav.css?v=20260821" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="css/nav.css?v=20261127" as="style" onload="this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="css/theme.css?v=20260614">
     <link rel="stylesheet" href="css/body.css?v=20260614">
-    <link rel="stylesheet" href="css/nav.css?v=20260821">
+    <link rel="stylesheet" href="css/nav.css?v=20261127">
   </noscript>
   <link rel="preload" href="css/components.css?v=20261126" as="style" onload="this.rel='stylesheet'">
   <noscript>
@@ -126,11 +118,13 @@
     <a href="index.html" class="header-home" aria-label="Howdy, Stranger home" aria-current="page">
       <img src="images/logo-79x79.webp" alt="" width="44" height="44" loading="eager" decoding="async" fetchpriority="high">
     </a>
-    <ul class="header-nav" role="list" aria-label="Site navigation">
+    <nav class="site-navigation" aria-label="Primary">
+    <ul class="header-nav">
       <li><a href="financials.html" class="header-nav-link"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Numbers</a></li>
       <li><a href="media.html"      class="header-nav-link"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Media</a></li>
       <li><a href="journal.html"    class="header-nav-link"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Docs</a></li>
     </ul>
+    </nav>
     <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
       <span class="dark-mode-toggle-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -145,7 +139,36 @@
 
 <div class="hero-wrap">
     <main class="hero-main" aria-label="Welcome">
-      <h1 class="hero-wordmark">Howdy</h1>
+      <div class="hero-content">
+        <h1 class="hero-wordmark">Howdy</h1>
+        <p class="hero-intro">Independent commentary on economics, policy, law, markets, and the media.</p>
+        <nav class="hero-links" aria-label="Primary sections">
+          <a class="hero-link-card" href="financials.html">
+            <img class="hero-link-icon" src="images/read-60x60.webp" alt="" width="40" height="40">
+            <span>
+              <span class="hero-link-label">Numbers</span>
+              <span class="hero-link-description">Indicators and market context</span>
+            </span>
+            <span class="hero-link-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="hero-link-card" href="media.html">
+            <img class="hero-link-icon" src="images/media-60x60.webp" alt="" width="40" height="40">
+            <span>
+              <span class="hero-link-label">Media</span>
+              <span class="hero-link-description">Books, Movies, and More</span>
+            </span>
+            <span class="hero-link-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="hero-link-card" href="journal.html">
+            <img class="hero-link-icon" src="images/announcements-60x60.webp" alt="" width="40" height="40">
+            <span>
+              <span class="hero-link-label">Docs</span>
+              <span class="hero-link-description">Notes and long-form analysis</span>
+            </span>
+            <span class="hero-link-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </nav>
+      </div>
     </main>
   </div>
   <!-- Inline Footer (available without JavaScript) -->

@@ -56,7 +56,7 @@
   </script>
   <link rel="stylesheet" href="css/theme.css?v=20260614">
   <link rel="stylesheet" href="css/body.css?v=20260614">
-  <link rel="stylesheet" href="css/nav.css?v=20260821">
+  <link rel="stylesheet" href="css/nav.css?v=20261127">
   <link rel="stylesheet" href="css/filter-bar.css?v=20260614">
   <link rel="stylesheet" href="css/journal.css?v=20261114">
   <link rel="stylesheet" href="css/components/cards.css?v=20260614">
@@ -101,11 +101,13 @@
       <a href="index.html" class="header-home" aria-label="Howdy, Stranger home">
         <img src="images/logo-360x360.webp" alt="" width="44" height="44" loading="eager" decoding="async" fetchpriority="high">
       </a>
-      <ul class="header-nav" role="list" aria-label="Site navigation">
+      <nav class="site-navigation" aria-label="Primary">
+      <ul class="header-nav">
         <li><a href="financials.html" class="header-nav-link"><img src="images/read-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Numbers</a></li>
         <li><a href="media.html"      class="header-nav-link"><img src="images/media-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Media</a></li>
-        <li><a href="journal.html"    class="header-nav-link active" aria-current="page"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Docs</a></li>
+        <li><a href="journal.html"    class="header-nav-link" aria-current="page"><img src="images/announcements-60x60.webp" alt="" width="16" height="16" loading="eager" decoding="async">Docs</a></li>
       </ul>
+      </nav>
       <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
         <span class="dark-mode-toggle-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -117,7 +119,7 @@
       </button>
     </header>
 
-  <main id="main-content" tabindex="-1" style="view-transition-name: main-content;">
+  <main id="main-content" tabindex="-1">
     <div class="filter-bar" id="journal-filters" aria-label="Filter journal entries">
       <div class="filters" id="filter-buttons">
         <div class="skeleton-filter-btn" style="width: 42px; height: 42px;"></div>
@@ -635,7 +637,7 @@
         .catch(() => {
           const loadingEl = document.getElementById('feed-loading');
           if (loadingEl) loadingEl.style.display = 'none';
-          feed.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem">Failed to load journal.json</p>';
+          feed.innerHTML = '<p class="journal-load-error">Failed to load journal.json</p>';
           emptyEl.style.display = 'none';
           loadMore.style.display = 'none';
         });

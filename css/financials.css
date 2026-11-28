@@ -18,15 +18,15 @@
 
 .content { min-height: 80dvh; }
 
-.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: var(--shadow-card); transition: transform var(--transition-base), box-shadow var(--transition-base); word-break: break-word; contain: layout style paint; container: category / inline-size; content-visibility: auto; contain-intrinsic-size: auto 400px; }
+.category { --category-accent: var(--logo-teal); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 1rem clamp(1rem, 2vw, 1.3rem) 1.1rem; box-shadow: none; word-break: break-word; contain: layout style paint; container: category / inline-size; content-visibility: auto; contain-intrinsic-size: auto 400px; }
 
-.category:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.category:hover { border-color: color-mix(in srgb, var(--accent-primary) 35%, var(--border-color)); }
 
 .category-title { font-size: clamp(1.15rem, 3vw, 1.5rem); color: var(--category-accent); margin-top: 0; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.7rem; display: flex; align-items: center; gap: 10px }
 
 .category-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; color: var(--category-accent); transition: transform var(--transition-base), color var(--transition-base); }
 
-.category:hover .category-icon { transform: scale3d(1.15, 1.15, 1); color: var(--logo-orange); }
+.category:hover .category-icon { color: var(--logo-teal); }
 
 .category-icon i { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center }
 
@@ -109,14 +109,13 @@
     border-radius: var(--card-radius);
     padding: 0.75rem;
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-card);
-    transition: box-shadow var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+    box-shadow: none;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
     overflow: clip;
-    animation: cardIn 0.3s var(--ease-out-back) both;
     contain: layout style;
     content-visibility: auto;
     contain-intrinsic-size: 220px 220px;
@@ -126,8 +125,8 @@
 }
 
 .indicator:hover {
-    box-shadow: var(--shadow-card-hover);
-    transform: translateY(-2px);
+    box-shadow: none;
+    transform: none;
     border-color: color-mix(in srgb, var(--category-accent, var(--logo-teal)) 50%, transparent);
 }
 
@@ -140,19 +139,6 @@
 
 
 /* Entrance animation for cards */
-@keyframes cardIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px) scale3d(0.95, 0.95, 1);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale3d(1, 1, 1);
-    }
-}
-
-.indicators-grid > * { animation-delay: calc(sibling-index() * 0.05s); }
-
 .indicator-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; position: relative; z-index: 1; }
 
 .indicator-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; flex: 1; min-inline-size: 0; word-break: normal; overflow-wrap: break-word; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
@@ -195,14 +181,11 @@
     border-radius: 2px;
     line-height: 1.1;
 }
-.new-badge { animation: badgePulse 1.4s ease-in-out 3; }
 .new-badge, .week-badge { background: var(--color-secondary); }
 .latest-month-badge, .game-final-badge { background: color-mix(in oklab, var(--color-primary), white 30%); }
 
 .badge-link { cursor: pointer; text-decoration: none; color: inherit; }
 .badge-link:hover { opacity: 0.85; }
-
-@keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
 .data-headers { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; padding-bottom: 4px; }
 
@@ -1386,8 +1369,7 @@
 .hormuz-monthly-val { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
 .hormuz-monthly--low { color: #dc2626; }
 .indicator:focus-visible { outline: 2px solid var(--logo-teal); outline-offset: 2px; }
-.indicator-deep-link { outline: 2px solid var(--logo-teal); outline-offset: 2px; animation: deep-link-pulse 1.8s ease-out; }
-@keyframes deep-link-pulse { 0% { outline-color: var(--logo-teal); } 100% { outline-color: transparent; } }
+.indicator-deep-link { outline: 2px solid var(--logo-teal); outline-offset: 2px; }
 
 #world-cup { min-height: 500px; }
 
@@ -1743,11 +1725,6 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
   font-weight: 600;
   color: #ef4444;
 }
-
-#match-status-badge.live {
-  animation: badgePulse 2s ease-in-out infinite;
-}
-
 
 /* 13F styles moved to css/components/13f-holdings.css */
 

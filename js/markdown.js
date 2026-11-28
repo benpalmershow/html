@@ -141,7 +141,7 @@
     const images = [];
     out = out.replace(/!\[([^\]]*)]\(([^\s)]+)\)/g, (_, alt, url) => {
       const src = resolveTokens(url, urls, targets);
-      images.push('<img src="' + escapeAttr(src) + '" alt="' + escapeAttr(alt) + '">');
+      images.push('<img src="' + escapeAttr(src) + '" alt="' + escapeAttr(alt) + '" loading="lazy" decoding="async">');
       return '@@IMAGE' + (images.length - 1) + '@@';
     });
 

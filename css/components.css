@@ -502,6 +502,7 @@ html.dark-mode .hero-title {
     width: 1.1rem;
     height: 1.1rem;
     flex-shrink: 0;
+    color: var(--accent-primary);
     object-fit: cover;
     border-radius: 999px;
 }

@@ -24,7 +24,7 @@
 
   .content {
     width: 100%;
-    max-width: var(--max-content-width);
+    max-width: var(--content-wide);
     min-height: 500px;
     margin: 0 auto;
     padding: clamp(1rem, 1.5vw, 1.5rem) var(--content-padding) 2rem;
@@ -42,7 +42,7 @@ h2, h3, h4 {
 }
 
 h2 {
-  color: var(--color-primary);
+  color: var(--accent-primary);
   font-size: clamp(1.2rem, 3vw, 1.55rem);
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -118,7 +118,6 @@ h1.page-title {
 
 @media (max-width: 768px) {
   :root {
-    --content-padding: var(--spacing-sm);
     --section-spacing: var(--spacing-lg);
   }
 

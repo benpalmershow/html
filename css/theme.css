@@ -11,7 +11,9 @@
     --font-body: Georgia, 'Times New Roman', serif;
     --font-mono: Monaco, Menlo, 'Ubuntu Mono', 'Courier New', monospace;
     
-    --type-base: clamp(1rem, 3.5vw, 1.25rem);
+    --type-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+    --type-data-label: 0.75rem;
+    --type-data-value: 0.8125rem;
     --type-scale-ratio: 1.25;
 
     /* COLOR PALETTE: BASE */
@@ -40,28 +42,24 @@
     --logo-teal-dark: var(--color-teal-dark);
     --logo-orange: var(--color-secondary);
 
-    /* Category accents resolve to the single brand teal (see .category in
-       financials.css); brand orange stays reserved for accents such as the
-       NEW badge and hover states. */
-
     /* CATEGORY COLORS */
-    --color-category-ipo: #1e88e5;
-    --color-category-earnings: #43a047;
-    --color-category-policy: #fb8c00;
-    --color-category-healthcare: #10b981;
-    --color-category-legal: #2c5f5a;
-    --color-category-political: #8b5cf6;
-    --color-category-corrections: #e53935;
-    --color-category-economic: #0d9488;
-    --color-category-housing: #ca8a04;
-    --color-category-journal: #7c3aed;
-    --color-category-media: #e91e63;
-    --color-category-prediction: #ff5722;
-    --color-category-employment: #009688;
-    --color-category-consumer: #4caf50;
-    --color-category-government: #795548;
-    --color-category-business: #607d8b;
-    --color-category-trade: #9c27b0;
+    --color-category-ipo: var(--accent-primary);
+    --color-category-earnings: var(--accent-primary);
+    --color-category-policy: var(--accent-primary);
+    --color-category-healthcare: var(--accent-primary);
+    --color-category-legal: var(--accent-primary);
+    --color-category-political: var(--accent-primary);
+    --color-category-corrections: var(--accent-primary);
+    --color-category-economic: var(--accent-primary);
+    --color-category-housing: var(--accent-primary);
+    --color-category-journal: var(--accent-primary);
+    --color-category-media: var(--accent-primary);
+    --color-category-prediction: var(--accent-primary);
+    --color-category-employment: var(--accent-primary);
+    --color-category-consumer: var(--accent-primary);
+    --color-category-government: var(--accent-primary);
+    --color-category-business: var(--accent-primary);
+    --color-category-trade: var(--accent-primary);
 
     /* PLATFORM COLORS */
     --color-youtube: #FF0000;
@@ -76,7 +74,7 @@
     /* THEME-SPECIFIC TOKENS (LIGHT MODE DEFAULT) */
     --text-primary: #171917;
     --text-secondary: #525753;
-    --text-muted: #747a76;
+    --text-muted: #666c66;
 
     --bg-primary: #fafaf7;
     --bg-primary-rgb: 250, 250, 247;
@@ -86,6 +84,7 @@
 
     --accent-primary: var(--color-primary);
     --accent-primary-rgb: var(--color-primary-rgb);
+    --accent-foreground: #ffffff;
     --accent-secondary: var(--color-secondary);
     
     --border-color: #dde1da;
@@ -106,17 +105,17 @@
     /* SPACING SYSTEM */
     --spacing-xs: 0.5rem;
     --spacing-sm: 0.75rem;
-    --spacing-md: 1.25rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2.25rem;
 
     /* LAYOUT TOKENS */
-    --max-content-width: 1440px;
-    --content-narrow: 980px;
+    --max-content-width: 1200px;
+    --content-narrow: 760px;
     --content-standard: 1080px;
     --content-wide: 1200px;
-    --content-padding: var(--spacing-md);
-    --section-spacing: var(--spacing-xl);
+    --content-padding: clamp(0.75rem, 1.4vw, 1.125rem);
+    --section-spacing: clamp(1.5rem, 3vw, 2.25rem);
     
     /* COLOR SCHEME: tells the browser to theme native UI (scrollbars, form
        controls, canvas background) for both light and dark. MANDATORY per
@@ -175,22 +174,24 @@
 /* DARK MODE OVERRIDES */
 @media (prefers-color-scheme: dark) {
     html:not(.theme-init) {
-        --text-primary: #f8fafc;
-        --text-secondary: #e2e8f0;
-        --text-muted: #94a3b8;
+        --text-primary: #f4f6f2;
+        --text-secondary: #d0d5d0;
+        --text-muted: #9ea99f;
         
-        --bg-primary: #0f1419;
-        --bg-secondary: #161b22;
-        --bg-primary-rgb: 15, 20, 25;
-        --bg-secondary-rgb: 22, 27, 34;
-        --bg-tertiary: #21262d;
+        --bg-primary: #141917;
+        --bg-secondary: #1d2420;
+        --bg-primary-rgb: 20, 25, 23;
+        --bg-secondary-rgb: 29, 36, 32;
+        --bg-tertiary: #27302a;
         
-        --accent-primary: #ffffff;
-        --accent-primary-rgb: 255, 255, 255;
+        --accent-primary: #a5c7b8;
+        --accent-primary-rgb: 165, 199, 184;
+        --accent-foreground: #141917;
         --accent-secondary: #d4822a;
+        --logo-teal: var(--accent-primary);
         
-        --border-color: #30363d;
-        --border-color-rgb: 48, 54, 61;
+        --border-color: #39443d;
+        --border-color-rgb: 57, 68, 61;
         --shadow-color: rgba(0, 0, 0, 0.4);
         --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
         --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.4);
@@ -201,22 +202,24 @@
 
 /* Force dark mode via class */
 html.dark-mode {
-    --text-primary: #f8fafc;
-    --text-secondary: #e2e8f0;
-    --text-muted: #94a3b8;
+    --text-primary: #f4f6f2;
+    --text-secondary: #d0d5d0;
+    --text-muted: #9ea99f;
     
-    --bg-primary: #0f1419;
-    --bg-secondary: #161b22;
-    --bg-primary-rgb: 15, 20, 25;
-    --bg-secondary-rgb: 22, 27, 34;
-    --bg-tertiary: #21262d;
+    --bg-primary: #141917;
+    --bg-secondary: #1d2420;
+    --bg-primary-rgb: 20, 25, 23;
+    --bg-secondary-rgb: 29, 36, 32;
+    --bg-tertiary: #27302a;
     
-    --accent-primary: #ffffff;
-    --accent-primary-rgb: 255, 255, 255;
+    --accent-primary: #a5c7b8;
+    --accent-primary-rgb: 165, 199, 184;
+    --accent-foreground: #141917;
     --accent-secondary: #d4822a;
+    --logo-teal: var(--accent-primary);
     
-    --border-color: #30363d;
-    --border-color-rgb: 48, 54, 61;
+    --border-color: #39443d;
+    --border-color-rgb: 57, 68, 61;
     --shadow-color: rgba(0, 0, 0, 0.4);
     --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.18);
     --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.22);

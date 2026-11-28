@@ -105,10 +105,9 @@
   white-space: nowrap;
 }
 
-.header-nav-link img {
+.header-nav-icon {
   width: 16px;
   height: 16px;
-  border-radius: 50%;
   opacity: 0.75;
   flex-shrink: 0;
 }
@@ -118,7 +117,7 @@
   opacity: 1;
 }
 
-.header-nav-link:hover img {
+.header-nav-link:hover .header-nav-icon {
   opacity: 1;
 }
 
@@ -128,8 +127,8 @@
   position: relative;
 }
 
-.header-nav-link[aria-current="page"] img,
-.header-nav-link[aria-current="location"] img {
+.header-nav-link[aria-current="page"] .header-nav-icon,
+.header-nav-link[aria-current="location"] .header-nav-icon {
   opacity: 1;
 }
 

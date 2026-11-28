@@ -1980,3 +1980,52 @@ html[data-initial-filter="Elections"] #categories #world-cup { display: none; }
 #footer-container {
     min-height: 96px;
 }
+
+/* Keep dense financial metadata readable while tables retain their scroll behavior. */
+#categories .indicator :is(
+    .data-header-left,
+    .data-header-right,
+    .month-label,
+    .commodity-name,
+    .commodity-table thead th,
+    .commodity-table tbody th,
+    .indicator-agency,
+    .earnings-ticker-sub,
+    .earnings-sector,
+    .earnings-pill,
+    .form-badge,
+    .earnings-vs,
+    .earnings-subheading,
+    .earnings-growth-header,
+    .stat-item,
+    .stat-label,
+    .quarterly-section .quarterly-table th,
+    .quarterly-section .quarterly-table td,
+    .change-metric-title,
+    .prediction-section-label,
+    .polymarket-label,
+    .polymarket-value,
+    .hormuz-capacity-text,
+    .hormuz-metric-lbl,
+    .hormuz-section-label,
+    .hormuz-monthly-name
+) {
+    font-size: var(--type-data-label);
+}
+
+#categories .indicator .month-value:not(.game-title) {
+    font-size: var(--type-data-value);
+}
+
+#categories .indicator .change-metric-btn {
+    min-block-size: auto;
+    padding: 0.25rem 0.375rem;
+    gap: 0.125rem;
+    overflow: visible;
+}
+
+#categories .indicator .change-metric-title {
+    position: static;
+    align-self: center;
+    line-height: 1.1;
+}

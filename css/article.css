@@ -5,9 +5,9 @@
 
 .article-page {
   flex: 1;
-  width: min(100%, 760px);
+  width: min(100%, var(--content-narrow));
   margin: 0 auto;
-  padding: 1.5rem 1rem 5rem;
+  padding: 1.5rem var(--content-padding) 5rem;
 }
 
 .article-back {

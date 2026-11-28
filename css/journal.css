@@ -20,9 +20,9 @@ main {
 }
 
 .content {
-  width: min(100%, 760px);
+  width: min(100%, var(--content-narrow));
   margin: 0 auto;
-  padding: 0 1rem 5rem;
+  padding: 0 var(--content-padding) 5rem;
 }
 
 /* ── Day Group ───────────────────────────────────────────── */
@@ -65,7 +65,7 @@ main {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  width: min(100%, 760px);
+  width: min(100%, var(--content-narrow));
   margin: 0 auto 0.85rem;
   padding: 0 1rem;
 }
@@ -242,7 +242,7 @@ main {
 .entry-content a:focus-visible,
 .accordion-inner a:hover,
 .accordion-inner a:focus-visible {
-  color: var(--logo-orange);
+  color: var(--accent-primary);
 }
 
 .entry-content img,
@@ -647,10 +647,10 @@ main {
 }
 
 /* Category accent for each chip type. */
-.entry-tag-chip.tag-financials { --tag: var(--logo-teal); }
-.entry-tag-chip.tag-media      { --tag: #8b5cf6; }
-.entry-tag-chip.tag-video      { --tag: #e11d48; }
-.entry-tag-chip.tag-external   { --tag: #0284c7; }
+.entry-tag-chip.tag-financials,
+.entry-tag-chip.tag-media,
+.entry-tag-chip.tag-video,
+.entry-tag-chip.tag-external { --tag: var(--accent-primary); }
 
 /* :where() keeps specificity flat so the .active rule below always wins
    without !important. */
@@ -677,11 +677,18 @@ main {
 
 .entry-tag-chip.active,
 .entry-tag-chip.active:hover {
-  color: #fff;
-  background: var(--logo-orange);
-  border-color: var(--logo-orange);
+  color: var(--accent-foreground);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transform: none;
+}
+
+@supports (color: contrast-color(var(--accent-primary))) {
+  .entry-tag-chip.active,
+  .entry-tag-chip.active:hover {
+    color: contrast-color(var(--accent-primary));
+  }
 }
 
 /* ── Entry Permalink ─────────────────────────────────────── */

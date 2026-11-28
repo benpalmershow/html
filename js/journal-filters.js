@@ -22,7 +22,7 @@
     }, {});
     const MEDIA_IDS = new Set(MEDIA_FILTERS.map(filter => filter.id));
 
-    let currentCategory = 'all';
+    let currentCategory = 'poem';
     let currentTag = null;
     let currentTagKey = '';
     let currentSearchQuery = '';
@@ -80,7 +80,7 @@
         if (cat && (cat === 'all' || MEDIA_IDS.has(cat))) {
             currentCategory = cat;
         } else {
-            currentCategory = 'all';
+            currentCategory = 'poem';
         }
         currentTag = null;
         currentTagKey = '';
@@ -268,11 +268,13 @@
         computeCategoryCounts();
         buttonsContainer.innerHTML = '';
 
-        PILLARS.forEach(pillar => {
-            buttonsContainer.appendChild(createFilterBtn(pillar.id, pillar.icon, pillar.name, categoryCounts.all));
-        });
+        const poemFilter = MEDIA_FILTERS.find(filter => filter.id === 'poem');
+        if (poemFilter && (categoryCounts.poem || 0) > 0) {
+            buttonsContainer.appendChild(createFilterBtn(poemFilter.id, poemFilter.icon, poemFilter.name, categoryCounts.poem));
+        }
 
         MEDIA_FILTERS.forEach(filter => {
+            if (filter.id === 'poem') return;
             const count = categoryCounts[filter.id] || 0;
             if (count === 0) return;
             buttonsContainer.appendChild(createFilterBtn(filter.id, filter.icon, filter.name, count));

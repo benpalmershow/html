@@ -193,7 +193,8 @@
     const footnotes = {};
     function flushParagraph() {
       if (!paragraph.length) return;
-      html += '<p>' + parseInline(paragraph.join(' '), true) + '</p>';
+      const joined = paragraph.join(' ').replace(/@@BR@@ ?/g, '<br>');
+      html += '<p>' + parseInline(joined, true) + '</p>';
       paragraph = [];
     }
     function closeList() {
@@ -212,6 +213,7 @@
         flushParagraph();
         return;
       }
+      const hardBreak = /(?: {2,}|\\)$/.test(line);
       const codeFence = line.match(/^```(\S*)/);
       if (codeFence) {
         flushParagraph();
@@ -333,7 +335,7 @@
       // A paragraph following a list must close the list first; otherwise the
       // <p> is emitted inside the open <ul>/<ol> and inherits its left padding.
       closeList();
-      paragraph.push(trimmed);
+      paragraph.push(trimmed + (hardBreak ? '@@BR@@' : ''));
     });
     flushParagraph();
     closeList();

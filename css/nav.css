@@ -227,9 +227,6 @@ html.dark-mode .dark-mode-toggle-icon .moon-icon { opacity: 1; }
   .header-nav {
     gap: 0;
   }
-  .header-nav-link img {
-    display: none;
-  }
   .header-nav-link {
     justify-content: center;
     min-height: 44px;

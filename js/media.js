@@ -106,7 +106,7 @@
         if (!filterButtonsContainer) return;
 
         const typeIcons = {
-            'all': '<i data-lucide="grid" class="filter-icon"></i>',
+            'all': '<i data-lucide="list" class="filter-icon"></i>',
             'movie': '<i data-lucide="film" class="filter-icon"></i>',
             'book': '<i data-lucide="book" class="filter-icon"></i>',
             'podcast': '<i data-lucide="mic" class="filter-icon"></i>',

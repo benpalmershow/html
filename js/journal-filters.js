@@ -4,7 +4,7 @@
     'use strict';
 
     const PILLARS = [
-        { id: 'all', name: 'DOCS', icon: '<i data-lucide="notebook" class="filter-icon"></i>' }
+        { id: 'all', name: 'All', icon: '<i data-lucide="list" class="filter-icon"></i>' }
     ];
 
     const MEDIA_FILTERS = [
@@ -22,7 +22,7 @@
     }, {});
     const MEDIA_IDS = new Set(MEDIA_FILTERS.map(filter => filter.id));
 
-    let currentCategory = 'poem';
+    let currentCategory = 'all';
     let currentTag = null;
     let currentTagKey = '';
     let currentSearchQuery = '';
@@ -80,7 +80,7 @@
         if (cat && (cat === 'all' || MEDIA_IDS.has(cat))) {
             currentCategory = cat;
         } else {
-            currentCategory = 'poem';
+            currentCategory = 'all';
         }
         currentTag = null;
         currentTagKey = '';
@@ -267,6 +267,12 @@
 
         computeCategoryCounts();
         buttonsContainer.innerHTML = '';
+
+        // Add "All" filter button first
+        const allFilter = PILLARS.find(filter => filter.id === 'all');
+        if (allFilter) {
+            buttonsContainer.appendChild(createFilterBtn(allFilter.id, allFilter.icon, allFilter.name, categoryCounts.all));
+        }
 
         const poemFilter = MEDIA_FILTERS.find(filter => filter.id === 'poem');
         if (poemFilter && (categoryCounts.poem || 0) > 0) {

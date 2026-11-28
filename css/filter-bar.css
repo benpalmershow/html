@@ -67,7 +67,7 @@
     border: 1px solid var(--border-color);
     border-radius: 999px;
     background: var(--bg-secondary);
-    color: var(--text-secondary);
+    color: var(--logo-teal);
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
@@ -92,17 +92,15 @@
 }
 
 .filter-btn:hover {
-    background: var(--bg-tertiary, #e8e8e8);
+    background: color-mix(in srgb, var(--logo-teal) 12%, var(--bg-secondary));
     transform: translateY(-1px);
-    opacity: 1;
-    border-color: var(--logo-teal, #2c5f5a);
-    border-color: color-mix(in srgb, var(--logo-teal, #2c5f5a) 50%, transparent);
+    border-color: var(--logo-teal);
 }
 
 .filter-btn.active {
-    background: var(--logo-teal, #2c5f5a);
+    background: var(--logo-teal);
     color: white;
-    border-color: var(--logo-teal, #2c5f5a);
+    border-color: var(--logo-teal);
 }
 
 
